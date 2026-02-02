@@ -1,17 +1,16 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH.  All rights reserved.
 
-using Bodoconsult.NetworkCommunication.DataBlockCodecs;
-using Bodoconsult.NetworkCommunication.DataBlockCodingProcessors;
-using Bodoconsult.NetworkCommunication.DataMessageCodecs;
-using Bodoconsult.NetworkCommunication.DataMessageCodingProcessors;
-using Bodoconsult.NetworkCommunication.DataMessageProcessingPackages;
-using Bodoconsult.NetworkCommunication.DataMessageProcessors;
-using Bodoconsult.NetworkCommunication.DataMessageSplitters;
-using Bodoconsult.NetworkCommunication.DataMessageValidators;
+using Bodoconsult.NetworkCommunication.Communication.Sending;
+using Bodoconsult.NetworkCommunication.DataMessaging.DataBlockCodecs;
+using Bodoconsult.NetworkCommunication.DataMessaging.DataBlockCodingProcessors;
+using Bodoconsult.NetworkCommunication.DataMessaging.DataMessageCodecs;
+using Bodoconsult.NetworkCommunication.DataMessaging.DataMessageCodingProcessors;
+using Bodoconsult.NetworkCommunication.DataMessaging.DataMessageProcessors;
+using Bodoconsult.NetworkCommunication.DataMessaging.DataMessageSplitters;
+using Bodoconsult.NetworkCommunication.DataMessaging.DataMessageValidators;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig;
-using Bodoconsult.NetworkCommunication.HandshakeDataMessageValidators;
+using Bodoconsult.NetworkCommunication.DataMessaging.HandshakeDataMessageValidators;
 using Bodoconsult.NetworkCommunication.Interfaces;
-using Bodoconsult.NetworkCommunication.TcpIp.Sending;
 
 namespace Bodoconsult.NetworkCommunication.DataMessaging.DataMessageProcessingPackages;
 

@@ -1,0 +1,50 @@
+﻿{
+	"$type": "Bodoconsult.Inventory.Model.SnmpProfile, Bodoconsult.Inventory",
+	"Name": "Synology",
+	"ProfileItems": [
+		{
+			"$type": "Bodoconsult.Inventory.Model.SnmpProfileItem, Bodoconsult.Inventory",
+			"ValueNotFoundReaction": "ReactWithLowLevel",
+			"Oid": "1.3.6.1.4.1.6574.1.1.0",
+			"LimitLowValues": null,
+			"LimitMediumValues": null,
+			"LimitHighValues": null,
+			"LimitExistentialValues": "2",
+			"XmlPath": null,
+			"Description": "Systemstate: failed"
+		},
+		{
+			"$type": "Bodoconsult.Inventory.Model.SnmpProfileItem, Bodoconsult.Inventory",
+			"ValueNotFoundReaction": "ReactWithAllOk",
+			"Oid": "1.3.6.1.4.1.6574.1.2.0",
+			"LimitLowValues": "40-42",
+			"LimitMediumValues": "43-44",
+			"LimitHighValues": "46-47",
+			"LimitExistentialValues": "48-99",
+			"XmlPath": null,
+			"Description": "System temperature"
+		},
+		{
+			"$type": "Bodoconsult.Inventory.Model.SnmpProfileItem, Bodoconsult.Inventory",
+			"ValueNotFoundReaction": "ReactWithAllOk",
+			"Oid": "1.3.6.1.4.1.6574.1.5.4.0",
+			"LimitLowValues": "1",
+			"LimitMediumValues": null,
+			"LimitHighValues": null,
+			"LimitExistentialValues": null,
+			"XmlPath": null,
+			"Description": "Update available"
+		},
+		{
+			"$type": "Bodoconsult.Inventory.Model.SnmpProfileItem, Bodoconsult.Inventory",
+			"ValueNotFoundReaction": "ReactWithAllOk",
+			"Oid": "1.3.6.1.4.1.6574.3.1.1.3.0",
+			"LimitLowValues": null,
+			"LimitMediumValues": "2-10",
+			"LimitHighValues": "11",
+			"LimitExistentialValues": "12",
+			"XmlPath": null,
+			"Description": "RAID status"
+		}
+	]
+}

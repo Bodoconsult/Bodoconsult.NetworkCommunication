@@ -1,42 +1,41 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
 using System.Net;
-using Bodoconsult.NetworkCommunication.TcpIp.Transport;
+using Bodoconsult.NetworkCommunication.Protocols.TcpIp;
 
-namespace Bodoconsult.NetworkCommunication.Tests.Tcp.Transport
+namespace Bodoconsult.NetworkCommunication.Tests.Tcp.Transport;
+
+[Explicit]
+[TestFixture]
+[NonParallelizable]
+[SingleThreaded]
+public class AsyncTcpIpSocketProxyTests : BaseTestsTcpIpSocket
 {
-    [Explicit]
-    [TestFixture]
-    [NonParallelizable]
-    [SingleThreaded]
-    public class AsyncTcpIpSocketProxyTests : BaseTestsTcpIpSocket
+    /// <summary>
+    /// Setup for each test
+    /// </summary>
+    [SetUp]
+    public void TestSetup()
     {
-        /// <summary>
-        /// Setup for each test
-        /// </summary>
-        [SetUp]
-        public void TestSetup()
-        {
-            Socket = new AsyncTcpIpSocketProxy();
+        Socket = new AsyncTcpIpSocketProxy();
 
-            CurrentIpEndPoint = new IPEndPoint(IPAddress.Parse(IpAddress), Port);
-        }
+        CurrentIpEndPoint = new IPEndPoint(IPAddress.Parse(IpAddress), Port);
+    }
 
-        [Test]
-        public void Ctor_ValidEndpoint_SocketLoaded()
-        {
-            // Arrange 
-            var socket = (AsyncTcpIpSocketProxy)Socket;
+    [Test]
+    public void Ctor_ValidEndpoint_SocketLoaded()
+    {
+        // Arrange 
+        var socket = (AsyncTcpIpSocketProxy)Socket;
 
-            // Act  
+        // Act  
             
 
-            // Assert
-            Assert.That(socket.Socket, Is.Not.Null);
-
-        }
-
-
+        // Assert
+        Assert.That(socket.Socket, Is.Not.Null);
 
     }
+
+
+
 }

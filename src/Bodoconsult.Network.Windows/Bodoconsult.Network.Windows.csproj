@@ -1,0 +1,44 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net9.0-windows</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>disable</Nullable>
+		<GenerateAssemblyInfo>true</GenerateAssemblyInfo>
+		<Deterministic>False</Deterministic>
+		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
+		<PackageOutputPath>..\..\nuget\</PackageOutputPath>
+		<Copyright>Bodoconsult EDV-Dienstleistungen GmbH</Copyright>
+		<Authors>Robert Leisner</Authors>
+		<VersionPrefix>1.0.0</VersionPrefix>
+		<Version />
+		<Company>Bodoconsult EDV-Dienstleistungen GmbH</Company>
+		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+		<RepositoryType>git</RepositoryType>
+		<NeutralLanguage>en</NeutralLanguage>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
+
+		<RepositoryUrl>https://github.com/RobertLeisner/Bodoconsult.Network</RepositoryUrl>
+		<PackageId>Bodoconsult.App.Windows</PackageId>
+		<PackageTags>Network, DNS, DHCP, Active Directory</PackageTags>
+		<Description>MS Windows related tools for getting metadata from DNS or DHCP or Active Directory</Description>
+		<PackageReleaseNotes>Migration to .Net 8 and new namespace</PackageReleaseNotes>
+		<PackageProjectUrl>https://github.com/RobertLeisner/Bodoconsult.Network</PackageProjectUrl>
+
+		<IncludeSymbols>true</IncludeSymbols>
+		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.Management.Infrastructure" Version="3.0.0" />
+		<PackageReference Include="Microsoft.Windows.Compatibility" Version="9.0.6" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Include="..\..\LICENSE.md" Link="LICENSE.md" />
+		<None Include="..\..\doc\Bodoconsult.Network.Windows\README.md" Link="README.md" Pack="true" PackagePath="\" />
+	</ItemGroup>
+
+</Project>

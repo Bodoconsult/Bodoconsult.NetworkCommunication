@@ -1,0 +1,26 @@
+﻿    public static string GetObjectPermission(string fullFolderName)
+    {
+        FileSecurity fileSecure = File.GetAccessControl(fullFolderName);
+        StringBuilder acer = new StringBuilder();
+        fileSecure.GetSecurityDescriptorSddlForm(AccessControlSections.All);
+
+        foreach (FileSystemAccessRule ace in fileSecure.GetAccessRules(true, true, typeof(NTAccount)))
+        {
+            acer.Append(ace.FileSystemRights +":" + ' ' + ace.IdentityReference.Value+"\n");
+        }
+        return acer.ToString();
+    }
+
+
+
+
+	int userAccountControlValue = 544;
+UserAccountControl userAccountControl = (UserAccountControl) userAccountControlValue;
+
+// This gets a comma separated string of the flag names that apply.
+string userAccountControlFlagNames = userAccountControl.ToString();
+
+// This is how you test for an individual flag.
+bool isNormalAccount = (userAccountControl & UserAccountControl.NORMAL_ACCOUNT) == UserAccountControl.NORMAL_ACCOUNT;
+bool isAccountDisabled = (userAccountControl & UserAccountControl.ACCOUNTDISABLE) == UserAccountControl.ACCOUNTDISABLE;
+bool isAccountLockedOut = (userAccountControl & UserAccountControl.LOCKOUT) == UserAccou

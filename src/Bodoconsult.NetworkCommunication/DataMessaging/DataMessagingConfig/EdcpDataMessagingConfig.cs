@@ -9,7 +9,7 @@ namespace Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig;
 /// <summary>
 /// EDCP protocol config file for one the client-server network communication with one client device
 /// </summary>
-public class EdcpDataMessagingConfig : IDataMessagingConfigTcpIp
+public class EdcpDataMessagingConfig : IIpDataMessagingConfig
 {
 
     /// <summary>
@@ -93,12 +93,12 @@ public class EdcpDataMessagingConfig : IDataMessagingConfigTcpIp
     /// <summary>
     /// IP address of the device
     /// </summary>
-    public string IpAddress { get; set; }
+    public string IpAddress { get; set; } = "127.0.0.1";
 
     /// <summary>
     /// Port to use for device communication
     /// </summary>
-    public int Port { get; set; }
+    public int Port { get; set; } = 9000;
 
     /// <summary>
     /// The minimum blockcode sent by the client

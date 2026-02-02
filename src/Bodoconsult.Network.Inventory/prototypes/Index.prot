@@ -1,0 +1,89 @@
+﻿<h2>Hardware warnings</h2>
+
+
+<p class="Toc1">
+  <a href="Warnings.htm" class="">Network warnings (full disks...)</a>
+</p>
+
+<h2>Domain information</h2>
+
+<p class="Toc1">
+  <a href="Domain_Summary.htm">Overview domain</a>
+</p>
+
+<p class="Toc1">
+  <a href="Domain.htm">Details of domain</a>
+</p>
+
+
+<p class="Toc1">
+  <a href="DomainOverviewBySoftware.htm">Software usage in the domain</a>
+</p>
+
+<h2>Hardware items</h2>
+<p class="Toc1">
+  <a href="VirtualInfrastructure.htm">Virtualisation hosts</a>
+</p>
+
+<p class="Toc1">
+  <a href="OverviewByHostname.htm">Overview by host name</a>
+</p>
+<p class="Toc1">
+  <a href="OverviewByIp.htm">Overview by IP address</a>
+</p>
+<p class="Toc1">
+  <a href="OverviewByOs.htm">Overview by operating system</a>
+</p>
+<p class="Toc1">
+  <a href="OverviewBySoftware.htm">Overview by installed software</a>
+</p>
+<p class="Toc1">
+  <a href="OverviewBySoftwareServer.htm">Overview by installed software (only servers)</a>
+</p>
+<p class="Toc1">
+  <a href="OverviewBySoftwareClient.htm">Overview by installed software (only clients)</a>
+</p>
+<p class="Toc1">
+  <a href="MissingSoftwareClients.htm">Missing software on clients</a>
+</p>
+
+<p class="Toc1">
+  <a href="OverviewByDomainRole.htm">Overview by domain role</a>
+</p>
+<p class="Toc1">
+  <a href="OverviewByNetworkSpeed.htm">Overview by network speed</a>
+</p>
+
+<h2>Active Directory: Computers, users, groups and permissions</h2>
+
+<p class="Toc1">
+  <a href="Domain_summary.htm#Computers">Computers</a>
+</p>
+
+<p class="Toc1">
+  <a href="Domain_summary.htm#Users">Users</a>
+</p>
+
+<p class="Toc1">
+  <a href="Domain_summary.htm#Groups">Groups</a>
+</p>
+
+<p class="Toc1">
+  <a href="DomainDisabledUsers.htm">Disabled users</a>
+</p>
+
+<p class="Toc1">
+  <a href="DomainPasswordNotRequired.htm">Users with password not required</a>
+</p>
+
+<p class="Toc1">
+  <a href="DomainPasswordCantChange.htm">Domain users with password not changable by user</a>
+</p>
+
+<p class="Toc1">
+  <a href="DomainDontExpirePassword.htm">Domain users with password not expiring</a>
+</p>
+
+<p class="Toc1">
+  <a href="Shares.htm">All shares on windows computers in the network with permissions</a>
+</p>

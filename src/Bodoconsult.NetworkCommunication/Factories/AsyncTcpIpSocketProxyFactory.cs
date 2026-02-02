@@ -1,22 +1,21 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
 using Bodoconsult.NetworkCommunication.Interfaces;
-using Bodoconsult.NetworkCommunication.TcpIp.Transport;
+using Bodoconsult.NetworkCommunication.Protocols.TcpIp;
 
-namespace Bodoconsult.NetworkCommunication.Factories
+namespace Bodoconsult.NetworkCommunication.Factories;
+
+/// <summary>
+/// Factory to create an instance of <see cref="AsyncTcpIpSocketProxy"/>
+/// </summary>
+public class AsyncTcpIpSocketProxyFactory : ISocketProxyFactory
 {
     /// <summary>
-    /// Factory to create an instance of <see cref="AsyncTcpIpSocketProxy"/>
+    /// Creates an instance of <see cref="ISocketProxy"/>
     /// </summary>
-    public class AsyncTcpIpSocketProxyFactory : ISocketProxyFactory
+    /// <returns>Instance of <see cref="ISocketProxy"/></returns>
+    public ISocketProxy CreateInstance()
     {
-        /// <summary>
-        /// Creates an instance of <see cref="ISocketProxy"/>
-        /// </summary>
-        /// <returns>Instance of <see cref="ISocketProxy"/></returns>
-        public ISocketProxy CreateInstance()
-        {
-            return new AsyncTcpIpSocketProxy();
-        }
+        return new AsyncTcpIpSocketProxy();
     }
 }

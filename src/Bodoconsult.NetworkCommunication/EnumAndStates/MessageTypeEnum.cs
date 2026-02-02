@@ -1,11 +1,10 @@
 ﻿// Copyright (c) My// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 // // Licence MIT
 
-namespace Bodoconsult.NetworkCommunication.EnumAndStates
+namespace Bodoconsult.NetworkCommunication.EnumAndStates;
+
+public enum MessageTypeEnum
 {
-    public enum MessageTypeEnum
-    {
-        Received,
-        Sent
-    }
+    Received,
+    Sent
 }

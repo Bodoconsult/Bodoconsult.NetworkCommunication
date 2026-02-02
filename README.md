@@ -1,14 +1,17 @@
-# What does the library
+Bodoconsult.Network
+============
 
-Bodoconsult.NetworkCommunication is a library with basic functionality for setting up a client server network communication based on TCP/IP and a self-defined low level byte message protocol. 
+Bodoconsult is a repo containing network and network communicatioon related projects.
 
-This library contains the following Nuget packages
+## Overview
 
->	[Bodoconsult.NetworkCommunication](doc/Bodoconsult.NetworkCommunication/README.md)
+>	[Network related tools library for MS Windows OS](doc/Bodoconsult.Network.Windows/README.md):
+
+>	[TCP/IP based network communication library](doc/Bodoconsult.NetworkCommunication/README.md): Bodoconsult.NetworkCommunication is a library with basic functionality for setting up a client server network communication based on TCP/IP and a self-defined low level byte message protocol.
 
 # About us
 
-Bodoconsult <http://www.bodoconsult.de> is a Munich based software company from Germany.
+Bodoconsult (<http://www.bodoconsult.de>) is a Munich based software development company from Germany.
 
 Robert Leisner is senior software developer at Bodoconsult. See his profile on <http://www.bodoconsult.de/Curriculum_vitae_Robert_Leisner.pdf>.
 

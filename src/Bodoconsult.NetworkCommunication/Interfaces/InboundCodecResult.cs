@@ -1,28 +1,27 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 // Licence MIT
 
-namespace Bodoconsult.NetworkCommunication.Interfaces
+namespace Bodoconsult.NetworkCommunication.Interfaces;
+
+/// <summary>
+/// The result of a decoding action by a codec 
+/// </summary>
+public class InboundCodecResult
 {
     /// <summary>
-    /// The result of a decoding action by a codec 
+    /// Error code or 0 for no error
     /// </summary>
-    public class InboundCodecResult
-    {
-        /// <summary>
-        /// Error code or 0 for no error
-        /// </summary>
-        public int ErrorCode { get; set; }
+    public int ErrorCode { get; set; }
 
-        /// <summary>
-        /// If <see cref="DataMessage"/> delivers a NULL value this
-        /// message is set with the reason why messaging decoding failed
-        /// </summary>
-        public string ErrorMessage { get; set; }
+    /// <summary>
+    /// If <see cref="DataMessage"/> delivers a NULL value this
+    /// message is set with the reason why messaging decoding failed
+    /// </summary>
+    public string ErrorMessage { get; set; }
 
-        /// <summary>
-        /// Data message decoded by the codec
-        /// </summary>
-        public IDataMessage DataMessage { get; set; }
+    /// <summary>
+    /// Data message decoded by the codec
+    /// </summary>
+    public IDataMessage DataMessage { get; set; }
 
-    }
 }

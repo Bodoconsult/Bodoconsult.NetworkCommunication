@@ -2,207 +2,207 @@
 
 using Bodoconsult.App.Interfaces;
 using Bodoconsult.App.Logging;
-using Bodoconsult.NetworkCommunication.DataMessages;
+using Bodoconsult.NetworkCommunication.Communication;
+using Bodoconsult.NetworkCommunication.Communication.Sending;
+using Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
+using Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig;
 using Bodoconsult.NetworkCommunication.EnumAndStates;
 using Bodoconsult.NetworkCommunication.Interfaces;
-using Bodoconsult.NetworkCommunication.TcpIp;
-using Bodoconsult.NetworkCommunication.TcpIp.Sending;
 using Bodoconsult.NetworkCommunication.Tests.TestData;
 
-namespace Bodoconsult.NetworkCommunication.Tests.Tcp.Sending
+namespace Bodoconsult.NetworkCommunication.Tests.Tcp.Sending;
+
+public class SendPackageProcessDuplexIoTests
 {
-    public class SendPackageProcessDuplexIoTests
+
+    private readonly IAppLoggerProxy _logger = new AppLoggerProxy(new FakeLoggerFactory(), new LogDataFactory());
+
+    [OneTimeTearDown]
+    public void CleanUp()
     {
+        _logger.Dispose();
+    }
 
-        private readonly IAppLoggerProxy _logger = new AppLoggerProxy(new FakeLoggerFactory(), new LogDataFactory());
+    [Test]
+    public void Ctor_ValidSetup_PropsSetCorrectly()
+    {
+        // Arrange 
 
-        [OneTimeTearDown]
-        public void CleanUp()
-        {
-            _logger.Dispose();
-        }
+        // Act  
+        var p = new SendPacketProcess();
 
-        [Test]
-        public void Ctor_ValidSetup_PropsSetCorrectly()
-        {
-            // Arrange 
+        // Assert
+        Assert.That(p.DataMessagingConfig, Is.Null);
+        Assert.That(p.Message ,Is.Null);
+        Assert.That(p.DuplexIo, Is.Null);
 
-            // Act  
-            var p = new SendPacketProcess();
+        Assert.That(p.TotalTimeout, Is.GreaterThan(p.Timeout));
+    }
 
-            // Assert
-            Assert.That(p.DataMessagingConfig, Is.Null);
-            Assert.That(p.Message ,Is.Null);
-            Assert.That(p.DuplexIo, Is.Null);
+    [Test]
+    public void LoadDependencies_ValidSetup_PropsSetCorrectly()
+    {
+        // Arrange 
+        IDataMessagingConfig dataMessagingConfig = new DefaultDataMessagingConfig();
+        IDataMessage message = new RawDataMessage();
+        IDuplexIo duplexIo = new FakeHandshakeDuplexIo(dataMessagingConfig);
 
-            Assert.That(p.TotalTimeout, Is.GreaterThan(p.Timeout));
-        }
+        var p = new SendPacketProcess();
 
-        [Test]
-        public void LoadDependencies_ValidSetup_PropsSetCorrectly()
-        {
-            // Arrange 
-            IDataMessagingConfig dataMessagingConfig = new DefaultDataMessagingConfig();
-            IDataMessage message = new RawDataMessage();
-            IDuplexIo duplexIo = new FakeHandshakeDuplexIo(dataMessagingConfig);
+        // Act  
+        p.LoadDependencies(duplexIo, message, dataMessagingConfig);
 
-            var p = new SendPacketProcess();
-
-            // Act  
-            p.LoadDependencies(duplexIo, message, dataMessagingConfig);
-
-            // Assert
-            Assert.That(p.DataMessagingConfig, Is.Not.Null);
-            Assert.That(p.Message, Is.Not.Null);
-            Assert.That(p.DuplexIo, Is.Not.Null);
-        }
+        // Assert
+        Assert.That(p.DataMessagingConfig, Is.Not.Null);
+        Assert.That(p.Message, Is.Not.Null);
+        Assert.That(p.DuplexIo, Is.Not.Null);
+    }
 
 
-        [Test]
-        public void RegisterWaitState_ValidSetup_PropsSetCorrectly()
-        {
-            // Arrange 
-            IDataMessagingConfig dataMessagingConfig = new DefaultDataMessagingConfig();
+    [Test]
+    public void RegisterWaitState_ValidSetup_PropsSetCorrectly()
+    {
+        // Arrange 
+        IDataMessagingConfig dataMessagingConfig = new DefaultDataMessagingConfig();
 
-            dataMessagingConfig.DataMessageProcessingPackage = new DummyDataMessageProcessingPackage(dataMessagingConfig);
+        dataMessagingConfig.DataMessageProcessingPackage = new DummyDataMessageProcessingPackage(dataMessagingConfig);
             
-            IDataMessage message = new RawDataMessage();
-            IDuplexIo duplexIo = new FakeHandshakeDuplexIo(dataMessagingConfig);
+        IDataMessage message = new RawDataMessage();
+        IDuplexIo duplexIo = new FakeHandshakeDuplexIo(dataMessagingConfig);
 
-            var p = new SendPacketProcess();
+        var p = new SendPacketProcess();
 
-            p.LoadDependencies(duplexIo, message, dataMessagingConfig);
+        p.LoadDependencies(duplexIo, message, dataMessagingConfig);
 
-            // Act  
-            p.RegisterWaitState();
+        // Act  
+        p.RegisterWaitState();
 
-            // Assert
-            Assert.That(p.DataMessagingConfig, Is.Not.Null);
-            Assert.That(p.Message, Is.Not.Null);
-            Assert.That(p.DuplexIo, Is.Not.Null);
-            Assert.That(dataMessagingConfig.DataMessageProcessingPackage.WaitStateManager.Count, Is.Not.EqualTo(0));
-
-        }
-
-        [Test]
-        public void Execute_ValidSetup_PropsSetCorrectly()
-        {
-            // Arrange 
-            IDataMessagingConfig dataMessagingConfig = new DefaultDataMessagingConfig();
-            dataMessagingConfig.CheckIfDeviceIsReadyDelegate = () => true;
-            dataMessagingConfig.AppLogger = _logger;
-            dataMessagingConfig.MonitorLogger = _logger;
-
-            dataMessagingConfig.DataMessageProcessingPackage = new DummyDataMessageProcessingPackage(dataMessagingConfig);
-
-
-            IDataMessage message = new RawDataMessage();
-            IDuplexIo duplexIo = new FakeHandshakeDuplexIo(dataMessagingConfig);
-
-            var p = new SendPacketProcess();
-
-            p.LoadDependencies(duplexIo, message, dataMessagingConfig);
-            p.RegisterWaitState();
-
-            // Act  
-            p.Execute();
-
-            // Assert
-            Assert.That(p.ProcessExecutionResult, Is.SameAs(OrderExecutionResultState.Successful));
-
-        }
-
-        [Test]
-        public void Execute_ValidSetupNoHandshakeReceived_PropsSetCorrectly()
-        {
-            // Arrange 
-            IDataMessagingConfig dataMessagingConfig = new DefaultDataMessagingConfig();
-            dataMessagingConfig.CheckIfDeviceIsReadyDelegate = () => true;
-            dataMessagingConfig.AppLogger = _logger;
-            dataMessagingConfig.MonitorLogger = _logger;
-
-            dataMessagingConfig.DataMessageProcessingPackage = new DummyDataMessageProcessingPackage(dataMessagingConfig);
-
-
-            IDataMessage message = new RawDataMessage();
-
-            var duplexIo = new FakeHandshakeDuplexIo(dataMessagingConfig);
-            duplexIo.NumberOfTriesTheHandshakeIsReceived = int.MaxValue;
-
-
-            var p = new SendPacketProcess();
-
-            p.LoadDependencies(duplexIo, message, dataMessagingConfig);
-            p.RegisterWaitState();
-
-            // Act  
-            p.Execute();
-
-            // Assert
-            Assert.That(p.ProcessExecutionResult, Is.SameAs(OrderExecutionResultState.Timeout));
-            Assert.That(dataMessagingConfig.DataMessageProcessingPackage.WaitStateManager.Count, Is.EqualTo(0));
-        }
-
-
-        [Test]
-        public void Execute_ValidSetupHandshakeReceivedAfter2ndTry_PropsSetCorrectly()
-        {
-            // Arrange 
-            IDataMessagingConfig dataMessagingConfig = new DefaultDataMessagingConfig();
-            dataMessagingConfig.CheckIfDeviceIsReadyDelegate = () => true;
-            dataMessagingConfig.AppLogger = _logger;
-            dataMessagingConfig.MonitorLogger = _logger;
-
-            dataMessagingConfig.DataMessageProcessingPackage = new DummyDataMessageProcessingPackage(dataMessagingConfig);
-
-
-            IDataMessage message = new RawDataMessage();
-
-            var duplexIo = new FakeHandshakeDuplexIo(dataMessagingConfig);
-            duplexIo.NumberOfTriesTheHandshakeIsReceived = 2;
-
-
-            var p = new SendPacketProcess();
-
-            p.LoadDependencies(duplexIo, message, dataMessagingConfig);
-            p.RegisterWaitState();
-
-            // Act  
-            p.Execute();
-
-            // Assert
-            Assert.That(p.ProcessExecutionResult, Is.SameAs(OrderExecutionResultState.Successful));
-
-        }
-
-        [Test]
-        public void Execute_ValidSetupDelayedHandshake_PropsSetCorrectly()
-        {
-            // Arrange 
-            IDataMessagingConfig dataMessagingConfig = new DefaultDataMessagingConfig();
-            dataMessagingConfig.CheckIfDeviceIsReadyDelegate = () => true;
-            dataMessagingConfig.AppLogger = _logger;
-            dataMessagingConfig.MonitorLogger = _logger;
-
-            dataMessagingConfig.DataMessageProcessingPackage = new DummyDataMessageProcessingPackage(dataMessagingConfig);
-
-
-            IDataMessage message = new RawDataMessage();
-            var duplexIo = new FakeHandshakeDuplexIo(dataMessagingConfig);
-            duplexIo.ReceiverDelay = 2000;
-
-            var p = new SendPacketProcess();
-
-            p.LoadDependencies(duplexIo, message, dataMessagingConfig);
-            p.RegisterWaitState();
-
-            // Act  
-            p.Execute();
-
-            // Assert
-            Assert.That(p.ProcessExecutionResult, Is.SameAs(OrderExecutionResultState.Successful));
-
-        }
+        // Assert
+        Assert.That(p.DataMessagingConfig, Is.Not.Null);
+        Assert.That(p.Message, Is.Not.Null);
+        Assert.That(p.DuplexIo, Is.Not.Null);
+        Assert.That(dataMessagingConfig.DataMessageProcessingPackage.WaitStateManager.Count, Is.Not.EqualTo(0));
 
     }
+
+    [Test]
+    public void Execute_ValidSetup_PropsSetCorrectly()
+    {
+        // Arrange 
+        IDataMessagingConfig dataMessagingConfig = new DefaultDataMessagingConfig();
+        dataMessagingConfig.CheckIfDeviceIsReadyDelegate = () => true;
+        dataMessagingConfig.AppLogger = _logger;
+        dataMessagingConfig.MonitorLogger = _logger;
+
+        dataMessagingConfig.DataMessageProcessingPackage = new DummyDataMessageProcessingPackage(dataMessagingConfig);
+
+
+        IDataMessage message = new RawDataMessage();
+        IDuplexIo duplexIo = new FakeHandshakeDuplexIo(dataMessagingConfig);
+
+        var p = new SendPacketProcess();
+
+        p.LoadDependencies(duplexIo, message, dataMessagingConfig);
+        p.RegisterWaitState();
+
+        // Act  
+        p.Execute();
+
+        // Assert
+        Assert.That(p.ProcessExecutionResult, Is.SameAs(OrderExecutionResultState.Successful));
+
+    }
+
+    [Test]
+    public void Execute_ValidSetupNoHandshakeReceived_PropsSetCorrectly()
+    {
+        // Arrange 
+        IDataMessagingConfig dataMessagingConfig = new DefaultDataMessagingConfig();
+        dataMessagingConfig.CheckIfDeviceIsReadyDelegate = () => true;
+        dataMessagingConfig.AppLogger = _logger;
+        dataMessagingConfig.MonitorLogger = _logger;
+
+        dataMessagingConfig.DataMessageProcessingPackage = new DummyDataMessageProcessingPackage(dataMessagingConfig);
+
+
+        IDataMessage message = new RawDataMessage();
+
+        var duplexIo = new FakeHandshakeDuplexIo(dataMessagingConfig);
+        duplexIo.NumberOfTriesTheHandshakeIsReceived = int.MaxValue;
+
+
+        var p = new SendPacketProcess();
+
+        p.LoadDependencies(duplexIo, message, dataMessagingConfig);
+        p.RegisterWaitState();
+
+        // Act  
+        p.Execute();
+
+        // Assert
+        Assert.That(p.ProcessExecutionResult, Is.SameAs(OrderExecutionResultState.Timeout));
+        Assert.That(dataMessagingConfig.DataMessageProcessingPackage.WaitStateManager.Count, Is.EqualTo(0));
+    }
+
+
+    [Test]
+    public void Execute_ValidSetupHandshakeReceivedAfter2ndTry_PropsSetCorrectly()
+    {
+        // Arrange 
+        IDataMessagingConfig dataMessagingConfig = new DefaultDataMessagingConfig();
+        dataMessagingConfig.CheckIfDeviceIsReadyDelegate = () => true;
+        dataMessagingConfig.AppLogger = _logger;
+        dataMessagingConfig.MonitorLogger = _logger;
+
+        dataMessagingConfig.DataMessageProcessingPackage = new DummyDataMessageProcessingPackage(dataMessagingConfig);
+
+
+        IDataMessage message = new RawDataMessage();
+
+        var duplexIo = new FakeHandshakeDuplexIo(dataMessagingConfig);
+        duplexIo.NumberOfTriesTheHandshakeIsReceived = 2;
+
+
+        var p = new SendPacketProcess();
+
+        p.LoadDependencies(duplexIo, message, dataMessagingConfig);
+        p.RegisterWaitState();
+
+        // Act  
+        p.Execute();
+
+        // Assert
+        Assert.That(p.ProcessExecutionResult, Is.SameAs(OrderExecutionResultState.Successful));
+
+    }
+
+    [Test]
+    public void Execute_ValidSetupDelayedHandshake_PropsSetCorrectly()
+    {
+        // Arrange 
+        IDataMessagingConfig dataMessagingConfig = new DefaultDataMessagingConfig();
+        dataMessagingConfig.CheckIfDeviceIsReadyDelegate = () => true;
+        dataMessagingConfig.AppLogger = _logger;
+        dataMessagingConfig.MonitorLogger = _logger;
+
+        dataMessagingConfig.DataMessageProcessingPackage = new DummyDataMessageProcessingPackage(dataMessagingConfig);
+
+
+        IDataMessage message = new RawDataMessage();
+        var duplexIo = new FakeHandshakeDuplexIo(dataMessagingConfig);
+        duplexIo.ReceiverDelay = 2000;
+
+        var p = new SendPacketProcess();
+
+        p.LoadDependencies(duplexIo, message, dataMessagingConfig);
+        p.RegisterWaitState();
+
+        // Act  
+        p.Execute();
+
+        // Assert
+        Assert.That(p.ProcessExecutionResult, Is.SameAs(OrderExecutionResultState.Successful));
+
+    }
+
 }

@@ -1,0 +1,334 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{0ADAB817-DF7C-4FA7-8EB7-CCCC5823A55E}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Bodoconsult.Snmp</RootNamespace>
+    <AssemblyName>Bodoconsult.Snmp</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Bodoconsult.Console">
+      <HintPath>..\..\..\Dependencies\Bodoconsult.Console.dll</HintPath>
+    </Reference>
+    <Reference Include="SnmpSharpNet, Version=0.9.5.0, Culture=neutral, PublicKeyToken=b2181aa3b9571feb, processorArchitecture=MSIL">
+      <HintPath>..\packages\SnmpSharpNet.0.9.5\lib\SnmpSharpNet.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Net" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Tools, Version=0.0.0.0, Culture=neutral">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>lib\Tools.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Helpers\MibHelper.cs" />
+    <Compile Include="Helpers\NetworkHelper.cs" />
+    <Compile Include="Helpers\PasswordHelper.cs" />
+    <Compile Include="MibHandler.cs" />
+    <Compile Include="Models\SnmpBaseRequest.cs" />
+    <Compile Include="Models\SnmpResult.cs" />
+    <Compile Include="SnmpHandler.cs" />
+    <Compile Include="mib\BEGIN.cs" />
+    <Compile Include="mib\CONVENTION.cs" />
+    <Compile Include="mib\DEFINITIONS.cs" />
+    <Compile Include="mib\DESCRIPTION.cs" />
+    <Compile Include="mib\END.cs" />
+    <Compile Include="mib\EXPORTS.cs" />
+    <Compile Include="mib\FROM.cs" />
+    <Compile Include="mib\ID.cs" />
+    <Compile Include="mib\ID_1.cs" />
+    <Compile Include="mib\IMPORTS.cs" />
+    <Compile Include="mib\IS.cs" />
+    <Compile Include="mib\MACRO.cs" />
+    <Compile Include="mib\MODULE.cs" />
+    <Compile Include="mib\OBJECT.cs" />
+    <Compile Include="mib\OF.cs" />
+    <Compile Include="mib\OR.cs" />
+    <Compile Include="mib\RFC1157\Alt.cs" />
+    <Compile Include="mib\RFC1157\Asn.cs" />
+    <Compile Include="mib\RFC1157\Attrib.cs" />
+    <Compile Include="mib\RFC1157\Attribs.cs" />
+    <Compile Include="mib\RFC1157\Attribs_1.cs" />
+    <Compile Include="mib\RFC1157\Attribs_2.cs" />
+    <Compile Include="mib\RFC1157\Attrib_1.cs" />
+    <Compile Include="mib\RFC1157\Block.cs" />
+    <Compile Include="mib\RFC1157\Def.cs" />
+    <Compile Include="mib\RFC1157\Defs.cs" />
+    <Compile Include="mib\RFC1157\Def_1.cs" />
+    <Compile Include="mib\RFC1157\Entry.cs" />
+    <Compile Include="mib\RFC1157\Enum.cs" />
+    <Compile Include="mib\RFC1157\EnumItem.cs" />
+    <Compile Include="mib\RFC1157\EnumItem_1.cs" />
+    <Compile Include="mib\RFC1157\EnumItem_2.cs" />
+    <Compile Include="mib\RFC1157\EnumItem_3.cs" />
+    <Compile Include="mib\RFC1157\Exports.cs" />
+    <Compile Include="mib\RFC1157\IdList.cs" />
+    <Compile Include="mib\RFC1157\ImportId.cs" />
+    <Compile Include="mib\RFC1157\ImportList.cs" />
+    <Compile Include="mib\RFC1157\Imports.cs" />
+    <Compile Include="mib\RFC1157\MacroBit.cs" />
+    <Compile Include="mib\RFC1157\MacroBody.cs" />
+    <Compile Include="mib\RFC1157\MacroEntry.cs" />
+    <Compile Include="mib\RFC1157\MacroStuff.cs" />
+    <Compile Include="mib\RFC1157\Mgmt.cs" />
+    <Compile Include="mib\RFC1157\Mib.cs" />
+    <Compile Include="mib\RFC1157\ObjectType.cs" />
+    <Compile Include="mib\RFC1157\ObjectType_1.cs" />
+    <Compile Include="mib\RFC1157\Oid.cs" />
+    <Compile Include="mib\RFC1157\Oid_1.cs" />
+    <Compile Include="mib\RFC1157\Oid_2.cs" />
+    <Compile Include="mib\RFC1157\Range.cs" />
+    <Compile Include="mib\RFC1157\Sequence.cs" />
+    <Compile Include="mib\RFC1157\Size.cs" />
+    <Compile Include="mib\RFC1157\syntax.cs" />
+    <Compile Include="mib\RFC1157\TrapType.cs" />
+    <Compile Include="mib\RFC1157\Type.cs" />
+    <Compile Include="mib\RFC1157\Values.cs" />
+    <Compile Include="mib\RFC1157\yysyntax.cs" />
+    <Compile Include="mib\SEQUENCE.cs" />
+    <Compile Include="mib\SIZE.cs" />
+    <Compile Include="mib\STRING.cs" />
+    <Compile Include="mib\STRING_1.cs" />
+    <Compile Include="mib\SYNTAX.cs" />
+    <Compile Include="mib\TO.cs" />
+    <Compile Include="mib\tokens.cs" />
+    <Compile Include="mib\TRAP.cs" />
+    <Compile Include="mib\TYPEID.cs" />
+    <Compile Include="mib\UNSIGNED.cs" />
+    <Compile Include="mib\UNSIGNED_1.cs" />
+    <Compile Include="mib\yytokens.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Tools\ObjectList.cs" />
+    <Compile Include="Tools\Tools\AddToFunc.cs" />
+    <Compile Include="Tools\Tools\Arc.cs" />
+    <Compile Include="Tools\Tools\ArcEx.cs" />
+    <Compile Include="Tools\Tools\Builder.cs" />
+    <Compile Include="Tools\Tools\CatTest.cs" />
+    <Compile Include="Tools\Tools\Charset.cs" />
+    <Compile Include="Tools\Tools\ChTest.cs" />
+    <Compile Include="Tools\Tools\CommentList.cs" />
+    <Compile Include="Tools\Tools\CsReader.cs" />
+    <Compile Include="Tools\Tools\CSToolsException.cs" />
+    <Compile Include="Tools\Tools\CSToolsFatalException.cs" />
+    <Compile Include="Tools\Tools\CSToolsStopException.cs" />
+    <Compile Include="Tools\Tools\CSymbol.cs" />
+    <Compile Include="Tools\Tools\Dfa.cs" />
+    <Compile Include="Tools\Tools\EOF.cs" />
+    <Compile Include="Tools\Tools\error.cs" />
+    <Compile Include="Tools\Tools\ErrorHandler.cs" />
+    <Compile Include="Tools\Tools\Func.cs" />
+    <Compile Include="Tools\Tools\GenBase.cs" />
+    <Compile Include="Tools\Tools\Lexer.cs" />
+    <Compile Include="Tools\Tools\LineList.cs" />
+    <Compile Include="Tools\Tools\LineManager.cs" />
+    <Compile Include="Tools\Tools\Literal.cs" />
+    <Compile Include="Tools\Tools\LNode.cs" />
+    <Compile Include="Tools\Tools\Nfa.cs" />
+    <Compile Include="Tools\Tools\NfaNode.cs" />
+    <Compile Include="Tools\Tools\NList.cs" />
+    <Compile Include="Tools\Tools\Null.cs" />
+    <Compile Include="Tools\Tools\Parser.cs" />
+    <Compile Include="Tools\Tools\ParserAction.cs" />
+    <Compile Include="Tools\Tools\ParserEntry.cs" />
+    <Compile Include="Tools\Tools\ParserOldAction.cs" />
+    <Compile Include="Tools\Tools\ParserReduce.cs" />
+    <Compile Include="Tools\Tools\ParserShift.cs" />
+    <Compile Include="Tools\Tools\ParserSimpleAction.cs" />
+    <Compile Include="Tools\Tools\ParseStackEntry.cs" />
+    <Compile Include="Tools\Tools\ParseState.cs" />
+    <Compile Include="Tools\Tools\ParsingInfo.cs" />
+    <Compile Include="Tools\Tools\Path.cs" />
+    <Compile Include="Tools\Tools\Precedence.cs" />
+    <Compile Include="Tools\Tools\ProdItem.cs" />
+    <Compile Include="Tools\Tools\ProdItemList.cs" />
+    <Compile Include="Tools\Tools\Production.cs" />
+    <Compile Include="Tools\Tools\ReAlt.cs" />
+    <Compile Include="Tools\Tools\ReCat.cs" />
+    <Compile Include="Tools\Tools\ReCategory.cs" />
+    <Compile Include="Tools\Tools\recoveredError.cs" />
+    <Compile Include="Tools\Tools\Regex.cs" />
+    <Compile Include="Tools\Tools\Relation.cs" />
+    <Compile Include="Tools\Tools\ReOpt.cs" />
+    <Compile Include="Tools\Tools\RePlus.cs" />
+    <Compile Include="Tools\Tools\ReRange.cs" />
+    <Compile Include="Tools\Tools\ReStar.cs" />
+    <Compile Include="Tools\Tools\ReStr.cs" />
+    <Compile Include="Tools\Tools\ResWds.cs" />
+    <Compile Include="Tools\Tools\ReUStr.cs" />
+    <Compile Include="Tools\Tools\SCreator.cs" />
+    <Compile Include="Tools\Tools\Serialiser.cs" />
+    <Compile Include="Tools\Tools\Sfactory.cs" />
+    <Compile Include="Tools\Tools\SourceLineInfo.cs" />
+    <Compile Include="Tools\Tools\SYMBOL.cs" />
+    <Compile Include="Tools\Tools\SymbolSet.cs" />
+    <Compile Include="Tools\Tools\SymbolsGen.cs" />
+    <Compile Include="Tools\Tools\SymbolType.cs" />
+    <Compile Include="Tools\Tools\TCreator.cs" />
+    <Compile Include="Tools\Tools\Tfactory.cs" />
+    <Compile Include="Tools\Tools\TokClassDef.cs" />
+    <Compile Include="Tools\Tools\TOKEN.cs" />
+    <Compile Include="Tools\Tools\TokensGen.cs" />
+    <Compile Include="Tools\Tools\Transition.cs" />
+    <Compile Include="Tools\Tools\UArc.cs" />
+    <Compile Include="Tools\Tools\YyLexer.cs" />
+    <Compile Include="Tools\Tools\YyParser.cs" />
+    <Compile Include="Tools\YYClass\ANY.cs" />
+    <Compile Include="Tools\YYClass\BASE.cs" />
+    <Compile Include="Tools\YYClass\BaseCall.cs" />
+    <Compile Include="Tools\YYClass\BaseCall_1.cs" />
+    <Compile Include="Tools\YYClass\BaseCall_2.cs" />
+    <Compile Include="Tools\YYClass\BaseCall_2_1.cs" />
+    <Compile Include="Tools\YYClass\BaseCall_3.cs" />
+    <Compile Include="Tools\YYClass\BaseCall_4.cs" />
+    <Compile Include="Tools\YYClass\BaseCall_4_1.cs" />
+    <Compile Include="Tools\YYClass\BaseCall_5.cs" />
+    <Compile Include="Tools\YYClass\BaseCall_6.cs" />
+    <Compile Include="Tools\YYClass\BaseCall_6_1.cs" />
+    <Compile Include="Tools\YYClass\Call.cs" />
+    <Compile Include="Tools\YYClass\Call_1.cs" />
+    <Compile Include="Tools\YYClass\Call_2.cs" />
+    <Compile Include="Tools\YYClass\Call_2_1.cs" />
+    <Compile Include="Tools\YYClass\ClassBody.cs" />
+    <Compile Include="Tools\YYClass\ClassBody_1.cs" />
+    <Compile Include="Tools\YYClass\ClassBody_2.cs" />
+    <Compile Include="Tools\YYClass\ClassBody_2_1.cs" />
+    <Compile Include="Tools\YYClass\COLON.cs" />
+    <Compile Include="Tools\YYClass\Cons.cs" />
+    <Compile Include="Tools\YYClass\Cons_1.cs" />
+    <Compile Include="Tools\YYClass\Cons_2.cs" />
+    <Compile Include="Tools\YYClass\Cons_2_1.cs" />
+    <Compile Include="Tools\YYClass\cs0syntax.cs" />
+    <Compile Include="Tools\YYClass\cs0tokens.cs" />
+    <Compile Include="Tools\YYClass\GStuff.cs" />
+    <Compile Include="Tools\YYClass\GStuff_1.cs" />
+    <Compile Include="Tools\YYClass\GStuff_2.cs" />
+    <Compile Include="Tools\YYClass\GStuff_2_1.cs" />
+    <Compile Include="Tools\YYClass\GStuff_3.cs" />
+    <Compile Include="Tools\YYClass\GStuff_4.cs" />
+    <Compile Include="Tools\YYClass\GStuff_4_1.cs" />
+    <Compile Include="Tools\YYClass\GStuff_5.cs" />
+    <Compile Include="Tools\YYClass\GStuff_6.cs" />
+    <Compile Include="Tools\YYClass\GStuff_6_1.cs" />
+    <Compile Include="Tools\YYClass\ID.cs" />
+    <Compile Include="Tools\YYClass\Item.cs" />
+    <Compile Include="Tools\YYClass\Item_1.cs" />
+    <Compile Include="Tools\YYClass\Item_10.cs" />
+    <Compile Include="Tools\YYClass\Item_10_1.cs" />
+    <Compile Include="Tools\YYClass\Item_11.cs" />
+    <Compile Include="Tools\YYClass\Item_12.cs" />
+    <Compile Include="Tools\YYClass\Item_12_1.cs" />
+    <Compile Include="Tools\YYClass\Item_13.cs" />
+    <Compile Include="Tools\YYClass\Item_14.cs" />
+    <Compile Include="Tools\YYClass\Item_14_1.cs" />
+    <Compile Include="Tools\YYClass\Item_15.cs" />
+    <Compile Include="Tools\YYClass\Item_16.cs" />
+    <Compile Include="Tools\YYClass\Item_16_1.cs" />
+    <Compile Include="Tools\YYClass\Item_17.cs" />
+    <Compile Include="Tools\YYClass\Item_18.cs" />
+    <Compile Include="Tools\YYClass\Item_18_1.cs" />
+    <Compile Include="Tools\YYClass\Item_19.cs" />
+    <Compile Include="Tools\YYClass\Item_2.cs" />
+    <Compile Include="Tools\YYClass\Item_20.cs" />
+    <Compile Include="Tools\YYClass\Item_20_1.cs" />
+    <Compile Include="Tools\YYClass\Item_21.cs" />
+    <Compile Include="Tools\YYClass\Item_22.cs" />
+    <Compile Include="Tools\YYClass\Item_22_1.cs" />
+    <Compile Include="Tools\YYClass\Item_23.cs" />
+    <Compile Include="Tools\YYClass\Item_24.cs" />
+    <Compile Include="Tools\YYClass\Item_24_1.cs" />
+    <Compile Include="Tools\YYClass\Item_2_1.cs" />
+    <Compile Include="Tools\YYClass\Item_3.cs" />
+    <Compile Include="Tools\YYClass\Item_4.cs" />
+    <Compile Include="Tools\YYClass\Item_4_1.cs" />
+    <Compile Include="Tools\YYClass\Item_5.cs" />
+    <Compile Include="Tools\YYClass\Item_6.cs" />
+    <Compile Include="Tools\YYClass\Item_6_1.cs" />
+    <Compile Include="Tools\YYClass\Item_7.cs" />
+    <Compile Include="Tools\YYClass\Item_8.cs" />
+    <Compile Include="Tools\YYClass\Item_8_1.cs" />
+    <Compile Include="Tools\YYClass\Item_9.cs" />
+    <Compile Include="Tools\YYClass\LBRACE.cs" />
+    <Compile Include="Tools\YYClass\LBRACK.cs" />
+    <Compile Include="Tools\YYClass\LPAREN.cs" />
+    <Compile Include="Tools\YYClass\Name.cs" />
+    <Compile Include="Tools\YYClass\Name_1.cs" />
+    <Compile Include="Tools\YYClass\Name_2.cs" />
+    <Compile Include="Tools\YYClass\Name_2_1.cs" />
+    <Compile Include="Tools\YYClass\Name_3.cs" />
+    <Compile Include="Tools\YYClass\Name_4.cs" />
+    <Compile Include="Tools\YYClass\Name_4_1.cs" />
+    <Compile Include="Tools\YYClass\NEW.cs" />
+    <Compile Include="Tools\YYClass\RBRACE.cs" />
+    <Compile Include="Tools\YYClass\RBRACK.cs" />
+    <Compile Include="Tools\YYClass\RPAREN.cs" />
+    <Compile Include="Tools\YYClass\SEMICOLON.cs" />
+    <Compile Include="Tools\YYClass\Stuff.cs" />
+    <Compile Include="Tools\YYClass\Stuff_1.cs" />
+    <Compile Include="Tools\YYClass\Stuff_2.cs" />
+    <Compile Include="Tools\YYClass\Stuff_2_1.cs" />
+    <Compile Include="Tools\YYClass\Stuff_3.cs" />
+    <Compile Include="Tools\YYClass\Stuff_4.cs" />
+    <Compile Include="Tools\YYClass\Stuff_4_1.cs" />
+    <Compile Include="Tools\YYClass\THIS.cs" />
+    <Compile Include="Tools\YYClass\yycs0syntax.cs" />
+    <Compile Include="Tools\YYClass\yycs0tokens.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="lib\Tools.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="mib\mib\SNMPv2-SMI.mib" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Enums\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>if $(ConfigurationName) == Release copy /y "$(TargetDir)\*.*" d:\daten\projekte\Dependencies\Bodoconsult.Snmp\*.*</PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

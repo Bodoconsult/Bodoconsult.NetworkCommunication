@@ -1,4 +1,4 @@
-## How to contribute to Bodoconsult.NetworkCommunication library
+## How to contribute to Bodoconsult.Core.Web.Ftp library
 
 #### **Did you find a bug?**
 

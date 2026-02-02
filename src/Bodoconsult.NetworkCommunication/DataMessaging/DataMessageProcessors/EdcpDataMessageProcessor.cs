@@ -4,7 +4,7 @@ using Bodoconsult.App.Helpers;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
 using Bodoconsult.NetworkCommunication.Interfaces;
 
-namespace Bodoconsult.NetworkCommunication.DataMessageProcessors;
+namespace Bodoconsult.NetworkCommunication.DataMessaging.DataMessageProcessors;
 
 /// <summary>
 /// Current implementation of <see cref="IDataMessageProcessor"/> for EDCP protocol.

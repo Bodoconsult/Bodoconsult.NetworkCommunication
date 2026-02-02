@@ -1,0 +1,113 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <!--Project was exported from assembly: D:\Daten\Projekte\Dependencies\Mib\mib.dll-->
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{4F1640FC-D4A6-4DA2-AA71-068271821B23}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AssemblyName>mib</AssemblyName>
+    <ApplicationVersion>1.0.2230.16788</ApplicationVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Tools">
+      <HintPath>lib\Tools.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="_003CPrivateImplementationDetails_003E.cs" />
+    <Compile Include="tokens.cs" />
+    <Compile Include="yytokens.cs" />
+    <Compile Include="OR.cs" />
+    <Compile Include="STRING_1.cs" />
+    <Compile Include="TO.cs" />
+    <Compile Include="IS.cs" />
+    <Compile Include="ID_1.cs" />
+    <Compile Include="UNSIGNED_1.cs" />
+    <Compile Include="TYPEID.cs" />
+    <Compile Include="OF.cs" />
+    <Compile Include="MACRO.cs" />
+    <Compile Include="MODULE.cs" />
+    <Compile Include="SEQUENCE.cs" />
+    <Compile Include="SYNTAX.cs" />
+    <Compile Include="SIZE.cs" />
+    <Compile Include="DESCRIPTION.cs" />
+    <Compile Include="CONVENTION.cs" />
+    <Compile Include="TRAP.cs" />
+    <Compile Include="OBJECT.cs" />
+    <Compile Include="FROM.cs" />
+    <Compile Include="EXPORTS.cs" />
+    <Compile Include="IMPORTS.cs" />
+    <Compile Include="END.cs" />
+    <Compile Include="BEGIN.cs" />
+    <Compile Include="DEFINITIONS.cs" />
+    <Compile Include="STRING.cs" />
+    <Compile Include="UNSIGNED.cs" />
+    <Compile Include="ID.cs" />
+    <Compile Include="RFC1157\Mgmt.cs" />
+    <Compile Include="RFC1157\ObjectType.cs" />
+    <Compile Include="RFC1157\Defs.cs" />
+    <Compile Include="RFC1157\Def.cs" />
+    <Compile Include="RFC1157\Attrib.cs" />
+    <Compile Include="RFC1157\Attribs.cs" />
+    <Compile Include="RFC1157\Oid.cs" />
+    <Compile Include="RFC1157\EnumItem.cs" />
+    <Compile Include="RFC1157\Mib.cs" />
+    <Compile Include="RFC1157\Block.cs" />
+    <Compile Include="RFC1157\Def_1.cs" />
+    <Compile Include="RFC1157\Asn.cs" />
+    <Compile Include="RFC1157\ObjectType_1.cs" />
+    <Compile Include="RFC1157\TrapType.cs" />
+    <Compile Include="RFC1157\Attribs_1.cs" />
+    <Compile Include="RFC1157\Attribs_2.cs" />
+    <Compile Include="RFC1157\Type.cs" />
+    <Compile Include="RFC1157\MacroBody.cs" />
+    <Compile Include="RFC1157\MacroEntry.cs" />
+    <Compile Include="RFC1157\MacroStuff.cs" />
+    <Compile Include="RFC1157\MacroBit.cs" />
+    <Compile Include="RFC1157\Values.cs" />
+    <Compile Include="RFC1157\Attrib_1.cs" />
+    <Compile Include="RFC1157\Imports.cs" />
+    <Compile Include="RFC1157\ImportList.cs" />
+    <Compile Include="RFC1157\IdList.cs" />
+    <Compile Include="RFC1157\Exports.cs" />
+    <Compile Include="RFC1157\ImportId.cs" />
+    <Compile Include="RFC1157\Size.cs" />
+    <Compile Include="RFC1157\Range.cs" />
+    <Compile Include="RFC1157\Alt.cs" />
+    <Compile Include="RFC1157\Sequence.cs" />
+    <Compile Include="RFC1157\Entry.cs" />
+    <Compile Include="RFC1157\Enum.cs" />
+    <Compile Include="RFC1157\EnumItem_1.cs" />
+    <Compile Include="RFC1157\EnumItem_2.cs" />
+    <Compile Include="RFC1157\EnumItem_3.cs" />
+    <Compile Include="RFC1157\Oid_1.cs" />
+    <Compile Include="RFC1157\Oid_2.cs" />
+    <Compile Include="RFC1157\yysyntax.cs" />
+    <Compile Include="RFC1157\syntax.cs" />
+    <Compile Include="AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="mib\SNMPv2-SMI.mib" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+</Project>

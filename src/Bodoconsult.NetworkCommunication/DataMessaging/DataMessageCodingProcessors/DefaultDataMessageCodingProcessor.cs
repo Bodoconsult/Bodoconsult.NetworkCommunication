@@ -3,80 +3,79 @@
 
 using Bodoconsult.NetworkCommunication.Interfaces;
 
-namespace Bodoconsult.NetworkCommunication.DataMessageCodingProcessors
+namespace Bodoconsult.NetworkCommunication.DataMessaging.DataMessageCodingProcessors;
+
+public class DefaultDataMessageCodingProcessor : IDataMessageCodingProcessor
 {
-    public class DefaultDataMessageCodingProcessor : IDataMessageCodingProcessor
+    /// <summary>
+    /// All loaded message codecs
+    /// </summary>
+    public IList<IDataMessageCodec> MessageCodecs { get; } = new List<IDataMessageCodec>();
+
+    /// <summary>
+    /// Decode a data message
+    /// </summary>
+    /// <param name="data">Byte array with message data</param>
+    /// <returns>Coding result with a <see cref="IDataMessage"/> instance if coding was successful</returns>
+    public InboundCodecResult DecodeDataMessage(Memory<byte> data)
     {
-        /// <summary>
-        /// All loaded message codecs
-        /// </summary>
-        public IList<IDataMessageCodec> MessageCodecs { get; } = new List<IDataMessageCodec>();
 
-        /// <summary>
-        /// Decode a data message
-        /// </summary>
-        /// <param name="data">Byte array with message data</param>
-        /// <returns>Coding result with a <see cref="IDataMessage"/> instance if coding was successful</returns>
-        public InboundCodecResult DecodeDataMessage(Memory<byte> data)
+        if (MessageCodecs.Count == 0)
         {
-
-            if (MessageCodecs.Count == 0)
-            {
-                return new InboundCodecResult
-                {
-                    ErrorCode = 1,
-                    ErrorMessage = "No codecs loaded"
-                };
-            }
-
-            foreach (var codec in MessageCodecs)
-            {
-                var result = codec.DecodeDataMessage(data);
-
-                if (result.ErrorCode == 0)
-                {
-                    return result;
-                }
-            }
-
             return new InboundCodecResult
             {
-                ErrorCode = 2,
-                ErrorMessage = "No codecs found for the message"
+                ErrorCode = 1,
+                ErrorMessage = "No codecs loaded"
             };
         }
 
-        /// <summary>
-        /// Encode handshake messages to send to tower
-        /// </summary>
-        /// <param name="dataMessage">Data message to encode</param>
-        /// <returns>A result set with the message as byte array </returns>
-        public OutboundCodecResult EncodeDataMessage(IDataMessage dataMessage)
+        foreach (var codec in MessageCodecs)
         {
-            if (MessageCodecs.Count == 0)
+            var result = codec.DecodeDataMessage(data);
+
+            if (result.ErrorCode == 0)
             {
-                return new OutboundCodecResult
-                {
-                    ErrorCode = 1,
-                    ErrorMessage = "No codecs loaded"
-                };
+                return result;
             }
+        }
 
-            foreach (var codec in MessageCodecs)
-            {
-                var result = codec.EncodeDataMessage(dataMessage);
+        return new InboundCodecResult
+        {
+            ErrorCode = 2,
+            ErrorMessage = "No codecs found for the message"
+        };
+    }
 
-                if (result.ErrorCode == 0)
-                {
-                    return result;
-                }
-            }
-
+    /// <summary>
+    /// Encode handshake messages to send to tower
+    /// </summary>
+    /// <param name="dataMessage">Data message to encode</param>
+    /// <returns>A result set with the message as byte array </returns>
+    public OutboundCodecResult EncodeDataMessage(IDataMessage dataMessage)
+    {
+        if (MessageCodecs.Count == 0)
+        {
             return new OutboundCodecResult
             {
                 ErrorCode = 1,
-                ErrorMessage = "No codecs found for the message"
+                ErrorMessage = "No codecs loaded"
             };
         }
+
+        foreach (var codec in MessageCodecs)
+        {
+            var result = codec.EncodeDataMessage(dataMessage);
+
+            if (result.ErrorCode == 0)
+            {
+                return result;
+            }
+        }
+
+        return new OutboundCodecResult
+        {
+            ErrorCode = 1,
+            ErrorMessage = "No codecs found for the message"
+        };
     }
 }

@@ -1,0 +1,69 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.13.35828.75
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bodoconsult.Network.Windows", "src\Bodoconsult.Network.Windows\Bodoconsult.Network.Windows.csproj", "{CDE91EAA-18F2-405B-B72E-D782417C8AAE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "doc", "doc", "{253E98EA-052B-4C48-AE27-A282CAE6D73B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{0E8A1175-F9D0-49AD-8FC2-5F73C7DD2137}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Projektmappenelemente", "Projektmappenelemente", "{84D27F74-D2BA-6C25-2661-968F101900D9}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bodoconsult.Network.Windows.Tests", "tests\Bodoconsult.Network.Windows.Tests\Bodoconsult.Network.Windows.Tests.csproj", "{D6B79155-005D-4F7C-A5B4-56F4D586A88B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bodoconsult.NetworkCommunication", "src\Bodoconsult.NetworkCommunication\Bodoconsult.NetworkCommunication.csproj", "{14F2041D-DFBB-375D-283B-786A02DD4CCF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bodoconsult.NetworkCommunication.Tests", "tests\Bodoconsult.NetworkCommunication.Tests\Bodoconsult.NetworkCommunication.Tests.csproj", "{C54A3DB2-DA14-3C88-8423-33A43996602C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bodoconsult.Network.Inventory.Tests", "tests\Bodoconsult.Network.Inventory.Tests\Bodoconsult.Network.Inventory.Tests.csproj", "{80162CCF-DD2D-42FF-A138-A01797BED121}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "samples", "samples", "{B60CD42C-141A-437D-8043-A159935EE4DC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CDE91EAA-18F2-405B-B72E-D782417C8AAE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CDE91EAA-18F2-405B-B72E-D782417C8AAE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CDE91EAA-18F2-405B-B72E-D782417C8AAE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CDE91EAA-18F2-405B-B72E-D782417C8AAE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D6B79155-005D-4F7C-A5B4-56F4D586A88B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D6B79155-005D-4F7C-A5B4-56F4D586A88B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D6B79155-005D-4F7C-A5B4-56F4D586A88B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D6B79155-005D-4F7C-A5B4-56F4D586A88B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{14F2041D-DFBB-375D-283B-786A02DD4CCF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{14F2041D-DFBB-375D-283B-786A02DD4CCF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{14F2041D-DFBB-375D-283B-786A02DD4CCF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{14F2041D-DFBB-375D-283B-786A02DD4CCF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C54A3DB2-DA14-3C88-8423-33A43996602C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C54A3DB2-DA14-3C88-8423-33A43996602C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C54A3DB2-DA14-3C88-8423-33A43996602C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C54A3DB2-DA14-3C88-8423-33A43996602C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{80162CCF-DD2D-42FF-A138-A01797BED121}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{80162CCF-DD2D-42FF-A138-A01797BED121}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{80162CCF-DD2D-42FF-A138-A01797BED121}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{80162CCF-DD2D-42FF-A138-A01797BED121}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{CDE91EAA-18F2-405B-B72E-D782417C8AAE} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{D6B79155-005D-4F7C-A5B4-56F4D586A88B} = {0E8A1175-F9D0-49AD-8FC2-5F73C7DD2137}
+		{14F2041D-DFBB-375D-283B-786A02DD4CCF} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{C54A3DB2-DA14-3C88-8423-33A43996602C} = {0E8A1175-F9D0-49AD-8FC2-5F73C7DD2137}
+		{80162CCF-DD2D-42FF-A138-A01797BED121} = {0E8A1175-F9D0-49AD-8FC2-5F73C7DD2137}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7FDC65A1-0BE7-4D6D-BF31-0BC0C0289539}
+	EndGlobalSection
+EndGlobal

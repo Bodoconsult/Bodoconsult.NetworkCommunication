@@ -4,7 +4,7 @@ using Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
 using Bodoconsult.NetworkCommunication.EnumAndStates;
 using Bodoconsult.NetworkCommunication.Interfaces;
 
-namespace Bodoconsult.NetworkCommunication.HandshakeDataMessageValidators;
+namespace Bodoconsult.NetworkCommunication.DataMessaging.HandshakeDataMessageValidators;
 
 /// <summary>
 /// Implementation of <see cref="IHandshakeDataMessageValidator"/> for EDCP protocol

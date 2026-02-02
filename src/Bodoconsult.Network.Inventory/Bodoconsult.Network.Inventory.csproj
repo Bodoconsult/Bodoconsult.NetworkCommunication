@@ -1,0 +1,44 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>disable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="Bodoconsult.Inventory.csproj" />
+    <None Include="Bodoconsult.Inventory.csproj.user" />
+    <None Include="Bodoconsult.Inventory.sln" />
+    <None Include="Bodoconsult.Inventory.sln.DotSettings.user" />
+    <None Include="Bodoconsult.Inventory.vssscc" />
+    <None Include="Infos\SNMPDLL_src\SNMPDLL_src\SNMPDll\Backup\SNMPDll.csproj" />
+    <None Include="Infos\SNMPDLL_src\SNMPDLL_src\SNMPDll\Backup\SNMPDll.csproj.user" />
+    <None Include="Infos\SNMPDLL_src\SNMPDLL_src\SNMPDll\Backup\SNMPDll.sln" />
+    <None Include="Infos\SNMPDLL_src\SNMPDLL_src\SNMPDll\SNMPDll.csproj" />
+    <None Include="Infos\SNMPDLL_src\SNMPDLL_src\SNMPDll\SNMPDll.csproj.user" />
+    <None Include="Infos\SNMPDLL_src\SNMPDLL_src\SNMPDll\SNMPDll.sln" />
+    <None Include="Infos\SNMPDLL_src\SNMPDLL_src\TestSNMPDll\TestSNMPDll.csproj" />
+    <None Include="Infos\SNMPDLL_src\SNMPDLL_src\TestSNMPDll\TestSNMPDll.csproj.user" />
+    <None Include="Infos\SNMPDLL_src\SNMPDLL_src\TestSNMPDll\TestSNMPDll.sln" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Helper\Rfc1157\" />
+    <Folder Include="Infos\SNMPDLL_src\SNMPDLL_src\SNMPDll\bin\Debug\" />
+    <Folder Include="Infos\SNMPDLL_src\SNMPDLL_src\SNMPDll\obj\Debug\TempPE\" />
+  </ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.Management.Infrastructure" Version="3.0.0" />
+		<PackageReference Include="SnmpSharpNet-core" Version="1.0.0" />
+		<PackageReference Include="System.Data.DataSetExtensions" Version="4.5.0" />
+		<PackageReference Include="System.DirectoryServices" Version="9.0.7" />
+		<PackageReference Include="System.DirectoryServices.AccountManagement" Version="9.0.7" />
+		<PackageReference Include="System.Management" Version="9.0.7" />
+		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+		<PackageReference Include="Microsoft.AspNetCore.SystemWebAdapters" Version="2.0.0" />
+		<PackageReference Include="Microsoft.AspNetCore.SystemWebAdapters.CoreServices" Version="2.0.0" />
+	</ItemGroup>
+
+</Project>

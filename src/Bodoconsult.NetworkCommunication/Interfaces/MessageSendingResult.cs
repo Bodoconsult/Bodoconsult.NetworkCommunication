@@ -1,20 +1,19 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
-namespace Bodoconsult.NetworkCommunication.Interfaces
+namespace Bodoconsult.NetworkCommunication.Interfaces;
+
+public class MessageSendingResult
 {
-    public class MessageSendingResult
+
+    public MessageSendingResult(IDataMessage message, IOrderExecutionResultState processExecutionResult)
     {
-
-        public MessageSendingResult(IDataMessage message, IOrderExecutionResultState processExecutionResult)
-        {
-            Message = message;
-            ProcessExecutionResult = processExecutionResult;
-        }
+        Message = message;
+        ProcessExecutionResult = processExecutionResult;
+    }
 
 
-        public IDataMessage Message { get; }
+    public IDataMessage Message { get; }
 
        
-        public IOrderExecutionResultState ProcessExecutionResult { get; }
-    }
+    public IOrderExecutionResultState ProcessExecutionResult { get; }
 }

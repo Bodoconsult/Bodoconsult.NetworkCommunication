@@ -61,6 +61,14 @@ To get all this working you have to set up your IDataMessageProcessingPackage im
 
 Don't be surprised you will find rarely byte arrays in the code. MS says byte arrays are too slow for network communication and invented an underlying low level data model which much more efficient regarding memory consumption and garbage collection. One of the new classes is Memory<byte> which is the underlying base of byte[].
 
+Design targets for this library are 
+
+-	staying highly flexible
+
+-	providing performant and efficient implementations
+
+-	being unit testable
+
 # Defining your device communication protocol 
 
 Defining a client server network communication protocol may contain for Bodoconsult.NetworkCommunication the following steps:
@@ -283,7 +291,9 @@ public static class DeviceCommunicationBasics
 
 # Implement a data message splitter splitting the incoming byte stream into potential messages: IDataMessageSplitter
 
-The following implementation of IDataMessageSplitter shows how the byte stream is splitted for the SDCP protocol. 
+Splitting the incoming data stream is a crucial process in data communication. Handling byte arrays is relatively demanding for the developer. So making an internal IDataMessage implementation from a byte array is an important step for development productivity.
+
+The following implementation of IDataMessageSplitter shows how the byte stream is splitted for the SDCP protocol. You should implement good unit tests for your splitter implementation to ensure safe and stable implementation.
 
 ``` csharp
 /// <summary>
@@ -488,6 +498,8 @@ internal class SdcpDataMessageSplitterTests
 ```
 
 # Implement your data message types: IDataMessage
+
+Depending on the purpose of your network communication protocol you will implement one or more data message types. A data message is the object orientated implementation of a byte stream pattern. Data messages may be used for client to server communication, for server to client communication and for bidirectional communication as your protocol requires it.
 
 ``` csharp
 /// <summary>
@@ -735,7 +747,7 @@ public class SdcpDataMessageValidator : IDataMessageValidator
 ```
 # Implement a message forwarder for received messages: IDataMessageProcessor
 
-The IDataMessageProcessor implementations forward the received messages to the business logic handling them. Normally data messages are forwarded to business logic via IDataMessagingConfig.RaiseDataMessageReceivedDelegate delegate invoking. Handshake messages are forwarded normally to a IWaitStateManager instance handling the already sent and for a handshake waiting data messages.
+The IDataMessageProcessor implementations forwards the received messages to the business logic handling them. Normally data messages are forwarded to business logic via IDataMessagingConfig.RaiseDataMessageReceivedDelegate delegate invoking. Handshake messages are forwarded normally to a IWaitStateManager instance handling the already sent and for a handshake waiting data messages.
 
 ``` csharp
 /// <summary>
@@ -802,7 +814,7 @@ public class SdcpDataMessageProcessor : IDataMessageProcessor
 
 # Implement the message codecs to decode and encode to byte array: BaseDataMessageCodec
 
-The job of the codec Bodoconsult.NetworkCommunication is to map byte arrays received from device to internal class instances based on interfaces IDataMessage or IHandshakeMessage to be handled by business logic layer or sending messages based on on interfaces IDataMessage or IHandshakeMessage as byte array to a device.
+The job of the message codec is to map byte arrays received from device and separated by the message splitter to internal class instances based on interfaces IDataMessage or IHandshakeMessage to be handled by business logic layer or sending messages based on on interfaces IDataMessage or IHandshakeMessage as byte array to a device.
 
 ## Sending and receiving raw byte data: RawDataMessageCodec
 
@@ -816,7 +828,6 @@ For testing purposes or certain poduction tasks there is a RawDataMessageCodec. 
 /// </summary>
 public class RawDataMessageCodec : BaseDataMessageCodec
 {
-
 
 	public RawDataMessageCodec()
 	{

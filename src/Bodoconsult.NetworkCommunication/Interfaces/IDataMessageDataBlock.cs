@@ -3,18 +3,17 @@
 // Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 // Licence MIT
 
-namespace Bodoconsult.NetworkCommunication.Interfaces
+namespace Bodoconsult.NetworkCommunication.Interfaces;
+
+/// <summary>
+/// Interface for a datablock in a <see cref="IDataMessage"/>
+/// </summary>
+public interface IDataMessageDataBlock
 {
+
     /// <summary>
-    /// Interface for a datablock in a <see cref="IDataMessage"/>
+    /// Data contains the bytes of the Data except the byte representing datablock type
     /// </summary>
-    public interface IDataMessageDataBlock
-    {
+    Memory<byte> Data { set; get; }
 
-        /// <summary>
-        /// Data contains the bytes of the Data except the byte representing datablock type
-        /// </summary>
-        Memory<byte> Data { set; get; }
-
-    }
 }

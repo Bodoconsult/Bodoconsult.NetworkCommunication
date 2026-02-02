@@ -1,0 +1,5 @@
+﻿If you try to access a non-domain Windows server or computer (remote computer) from an domain computer, you have to add the remote to TrustedHosts of WinRM. 
+
+Otherwise authentification fails.
+
+winrm set winrm/config/client @{TrustedHosts="RemoteComputerName"}

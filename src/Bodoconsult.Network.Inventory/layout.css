@@ -1,0 +1,76 @@
+html {
+	width: 100%;
+}
+body {
+	margin: 0px; padding: 0px; width: 650px; color: rgb(0, 0, 0); font-family: Arial,Helvetica,sans-serif; font-size: 11pt; 
+}
+
+.wr_table {
+	margin: 10px auto; border: 1px solid rgb(208, 223, 255); border-collapse: collapse;
+}
+.wr_header {
+	margin: 0px; padding: 2px 5px; border: 1px solid rgb(208, 223, 255); text-align: center; font-size: 0.8em; background-color: rgb(208, 223, 255);
+}
+.wr_cell {
+	margin: 0px; padding: 2px 5px; border: 1px solid rgb(208, 223, 255); text-align: left; font-size: 0.8em; vertical-align: top;
+}
+.wr_cell_right {
+	margin: 0px; padding: 2px 5px; border: 1px solid rgb(208, 223, 255); text-align: right; font-size: 0.8em; vertical-align: top;
+}
+.wr_cell_center {
+	margin: 0px; padding: 2px 5px; border: 1px solid rgb(208, 223, 255); text-align: right; font-size: 0.8em; vertical-align: top;
+}
+.wr_cell_alt {
+	margin: 0px; padding: 2px 5px; border: 1px solid rgb(208, 223, 255); text-align: left; font-size: 0.8em; vertical-align: top; background-color: rgb(228, 237, 255);
+}
+.wr_cell_right_alt {
+	margin: 0px; padding: 2px 5px; border: 1px solid rgb(208, 223, 255); text-align: right; font-size: 0.8em; vertical-align: top; background-color: rgb(228, 237, 255);
+}
+.wr_cell_center_alt {
+	margin: 0px; padding: 2px 5px; border: 1px solid rgb(208, 223, 255); text-align: right; font-size: 0.8em; vertical-align: top; background-color: rgb(228, 237, 255);
+}
+.wr_cell_H1 {
+	margin: 0px; padding: 2px 5px; border: 1px solid rgb(208, 223, 255); text-align: left; font-size: 0.83em; font-weight: bold; vertical-align: top; background-color: rgb(255, 223, 127);
+}
+.wr_cell_H1_right {
+	margin: 0px; padding: 2px 5px; border: 1px solid rgb(208, 223, 255); text-align: right; font-size: 0.83em; font-weight: bold; vertical-align: top; background-color: rgb(255, 223, 127);
+}
+.wr_cell_H1_center {
+	margin: 0px; padding: 2px 5px; border: 1px solid rgb(208, 223, 255); text-align: right; font-size: 0.83em; font-weight: bold; vertical-align: top; background-color: rgb(255, 223, 127);
+}
+.wr_cell_H2 {
+	margin: 0px; padding: 2px 5px; border: 1px solid rgb(208, 223, 255); text-align: left; font-size: 0.86em; font-weight: bold; vertical-align: top; background-color: rgb(252, 221, 65);
+}
+.wr_cell_H2_right {
+	margin: 0px; padding: 2px 5px; border: 1px solid rgb(208, 223, 255); text-align: right; font-size: 0.86em; font-weight: bold; vertical-align: top; background-color: rgb(252, 221, 65);
+}
+.wr_cell_H2_center {
+	margin: 0px; padding: 2px 5px; border: 1px solid rgb(208, 223, 255); text-align: right; font-size: 0.86em; font-weight: bold; vertical-align: top; background-color: rgb(252, 221, 65);
+}
+.wr_cell_H3 {
+	margin: 0px; padding: 2px 5px; border: 1px solid rgb(208, 223, 255); text-align: left; font-size: 0.9em; font-weight: bold; vertical-align: top; background-color: rgb(77, 209, 16);
+}
+.wr_cell_H3_right {
+	margin: 0px; padding: 2px 5px; border: 1px solid rgb(208, 223, 255); text-align: right; font-size: 0.9em; font-weight: bold; vertical-align: top; background-color: rgb(77, 209, 16);
+}
+.wr_cell_H3_center {
+	margin: 0px; padding: 2px 5px; border: 1px solid rgb(208, 223, 255); text-align: right; font-size: 0.9em; font-weight: bold; vertical-align: top; background-color: rgb(77, 209, 16);
+}
+.wr_cell_risk1 {
+	margin: 0px; padding: 2px 5px; border: 1px solid rgb(208, 223, 255); text-align: left; font-size: 0.8em; vertical-align: top; background-color: rgb(255, 0, 0);
+}
+.wr_cell_risk1_right {
+	margin: 0px; padding: 2px 5px; border: 1px solid rgb(208, 223, 255); text-align: right; font-size: 0.8em; vertical-align: top; background-color: rgb(255, 0, 0);
+}
+.wr_cell_risk1_center {
+	margin: 0px; padding: 2px 5px; border: 1px solid rgb(208, 223, 255); text-align: right; font-size: 0.8em; vertical-align: top; background-color: rgb(255, 0, 0);
+}
+.wr_cell_risk2 {
+	margin: 0px; padding: 2px 5px; border: 1px solid rgb(208, 223, 255); text-align: left; font-size: 0.8em; vertical-align: top; background-color: rgb(255, 122, 235);
+}
+.wr_cell_risk2_right {
+	margin: 0px; padding: 2px 5px; border: 1px solid rgb(208, 223, 255); text-align: right; font-size: 0.8em; vertical-align: top; background-color: rgb(255, 122, 235);
+}
+.wr_cell_risk2_center {
+	margin: 0px; padding: 2px 5px; border: 1px solid rgb(208, 223, 255); text-align: right; font-size: 0.8em; vertical-align: top; background-color: rgb(255, 122, 235);
+}

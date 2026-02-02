@@ -1,0 +1,59 @@
+If you wish to report a bug or express your opinion, feel free to e-mail me:
+
+  dmitrykhudorozhkov@yahoo.com
+
+Job offers (both remote and relocation) are warmly welcome. I'm proficient in:
+
+- client-side JavaScript (incl. jQuery/mooTools/YUI/etc.);
+
+- Firefox extensions and Greasemonkey scripts;
+
+- C/C++ desktop programming (more than 9 years of experience) and a little bit of network & db coding;
+
+- XML and it's applications (XSLT/XPath, XSD, SVG, VML);
+
+- HTML & CSS (incl. tableless slicing);
+
+- a little bit of PHP and SQL.
+
+
+System.Runtime.Serialization.SerializationException wurde nicht behandelt.
+  Message=Der Aufzählungswert "VmWare" ist für den Typ "Bodoconsult.Inventory.Model.VirtualMachineType" ungültig und kann nicht serialisiert werden. Stellen Sie sicher, dass die erforderlichen Aufzählungswerte vorhanden und mit dem Attribut "EnumMemberAttribute" gekennzeichnet sind, wenn der Typ das Attribut "DataContractAttribute" aufweist.
+  Source=System.Runtime.Serialization
+  StackTrace:
+       bei System.Runtime.Serialization.EnumDataContract.WriteEnumValue(XmlWriterDelegator writer, Object value)
+       bei System.Runtime.Serialization.EnumDataContract.WriteXmlValue(XmlWriterDelegator xmlWriter, Object obj, XmlObjectSerializerWriteContext context)
+       bei System.Runtime.Serialization.XmlObjectSerializerWriteContext.WriteDataContractValue(DataContract dataContract, XmlWriterDelegator xmlWriter, Object obj, RuntimeTypeHandle declaredTypeHandle)
+       bei System.Runtime.Serialization.XmlObjectSerializerWriteContext.SerializeWithoutXsiType(DataContract dataContract, XmlWriterDelegator xmlWriter, Object obj, RuntimeTypeHandle declaredTypeHandle)
+       bei System.Runtime.Serialization.XmlObjectSerializerWriteContext.InternalSerialize(XmlWriterDelegator xmlWriter, Object obj, Boolean isDeclaredType, Boolean writeXsiType, Int32 declaredTypeID, RuntimeTypeHandle declaredTypeHandle)
+       bei WriteVirtualHostToXml(XmlWriterDelegator , Object , XmlObjectSerializerWriteContext , ClassDataContract )
+       bei System.Runtime.Serialization.ClassDataContract.WriteXmlValue(XmlWriterDelegator xmlWriter, Object obj, XmlObjectSerializerWriteContext context)
+       bei System.Runtime.Serialization.XmlObjectSerializerWriteContext.WriteDataContractValue(DataContract dataContract, XmlWriterDelegator xmlWriter, Object obj, RuntimeTypeHandle declaredTypeHandle)
+       bei System.Runtime.Serialization.XmlObjectSerializerWriteContext.SerializeWithoutXsiType(DataContract dataContract, XmlWriterDelegator xmlWriter, Object obj, RuntimeTypeHandle declaredTypeHandle)
+       bei System.Runtime.Serialization.XmlObjectSerializerWriteContext.InternalSerialize(XmlWriterDelegator xmlWriter, Object obj, Boolean isDeclaredType, Boolean writeXsiType, Int32 declaredTypeID, RuntimeTypeHandle declaredTypeHandle)
+       bei WriteArrayOfVirtualHostToXml(XmlWriterDelegator , Object , XmlObjectSerializerWriteContext , CollectionDataContract )
+       bei System.Runtime.Serialization.CollectionDataContract.WriteXmlValue(XmlWriterDelegator xmlWriter, Object obj, XmlObjectSerializerWriteContext context)
+       bei System.Runtime.Serialization.XmlObjectSerializerWriteContext.WriteDataContractValue(DataContract dataContract, XmlWriterDelegator xmlWriter, Object obj, RuntimeTypeHandle declaredTypeHandle)
+       bei System.Runtime.Serialization.XmlObjectSerializerWriteContext.SerializeWithoutXsiType(DataContract dataContract, XmlWriterDelegator xmlWriter, Object obj, RuntimeTypeHandle declaredTypeHandle)
+       bei System.Runtime.Serialization.XmlObjectSerializerWriteContext.InternalSerialize(XmlWriterDelegator xmlWriter, Object obj, Boolean isDeclaredType, Boolean writeXsiType, Int32 declaredTypeID, RuntimeTypeHandle declaredTypeHandle)
+       bei WriteVirtualInfrastructureToXml(XmlWriterDelegator , Object , XmlObjectSerializerWriteContext , ClassDataContract )
+       bei System.Runtime.Serialization.ClassDataContract.WriteXmlValue(XmlWriterDelegator xmlWriter, Object obj, XmlObjectSerializerWriteContext context)
+       bei System.Runtime.Serialization.XmlObjectSerializerWriteContext.WriteDataContractValue(DataContract dataContract, XmlWriterDelegator xmlWriter, Object obj, RuntimeTypeHandle declaredTypeHandle)
+       bei System.Runtime.Serialization.XmlObjectSerializerWriteContext.SerializeWithoutXsiType(DataContract dataContract, XmlWriterDelegator xmlWriter, Object obj, RuntimeTypeHandle declaredTypeHandle)
+       bei System.Runtime.Serialization.DataContractSerializer.InternalWriteObjectContent(XmlWriterDelegator writer, Object graph, DataContractResolver dataContractResolver)
+       bei System.Runtime.Serialization.DataContractSerializer.InternalWriteObject(XmlWriterDelegator writer, Object graph, DataContractResolver dataContractResolver)
+       bei System.Runtime.Serialization.XmlObjectSerializer.WriteObjectHandleExceptions(XmlWriterDelegator writer, Object graph, DataContractResolver dataContractResolver)
+       bei System.Runtime.Serialization.DataContractSerializer.WriteObject(XmlWriter writer, Object graph)
+       bei Bodoconsult.Web.Basics.SerializationHelper.DataContractSerialize(Object o, String indentChars) in C:\Daten\Projekte\Bodoconsult.Web.Basics\SerializationHelper.cs:Zeile 96.
+       bei Bodoconsult.Web.Basics.SerializationHelper.DataContractSerialize(Object o) in C:\Daten\Projekte\Bodoconsult.Web.Basics\SerializationHelper.cs:Zeile 69.
+       bei Bodoconsult.Inventory.InventoryHandler.SerializeInfrastructure() in C:\Daten\Projekte\Bodoconsult.Inventory\InventoryHandler.cs:Zeile 126.
+       bei Bodoconsult.Inventory.InventoryHandler.GetAllNetworkItems() in C:\Daten\Projekte\Bodoconsult.Inventory\InventoryHandler.cs:Zeile 120.
+       bei BodoInventory.Program.Main(String[] args) in C:\Daten\Projekte\BodoInventory\BodoInventory\Program.cs:Zeile 230.
+       bei System.AppDomain._nExecuteAssembly(RuntimeAssembly assembly, String[] args)
+       bei System.AppDomain.ExecuteAssembly(String assemblyFile, Evidence assemblySecurity, String[] args)
+       bei Microsoft.VisualStudio.HostingProcess.HostProc.RunUsersAssembly()
+       bei System.Threading.ThreadHelper.ThreadStart_Context(Object state)
+       bei System.Threading.ExecutionContext.Run(ExecutionContext executionContext, ContextCallback callback, Object state, Boolean ignoreSyncCtx)
+       bei System.Threading.ExecutionContext.Run(ExecutionContext executionContext, ContextCallback callback, Object state)
+       bei System.Threading.ThreadHelper.ThreadStart()
+  InnerException: 
