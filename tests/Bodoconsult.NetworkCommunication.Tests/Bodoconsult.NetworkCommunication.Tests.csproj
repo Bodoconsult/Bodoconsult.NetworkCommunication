@@ -27,6 +27,7 @@
 
   <ItemGroup>
     <Folder Include="DataMessaging\NewFolder\" />
+    <Folder Include="Edcp\" />
   </ItemGroup>
 
 </Project>
