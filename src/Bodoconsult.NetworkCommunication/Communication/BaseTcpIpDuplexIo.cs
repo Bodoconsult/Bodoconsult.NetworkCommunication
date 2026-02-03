@@ -20,6 +20,12 @@ public abstract class BaseDuplexIo : IDuplexIo
     protected BaseDuplexIo(IDataMessagingConfig deviceCommSettings, ISendPacketProcessFactory sendPacketProcessFactory)
     {
         DataMessagingConfig = deviceCommSettings ?? throw new ArgumentNullException(nameof(deviceCommSettings));
+
+        if (DataMessagingConfig.DataMessageProcessingPackage == null)
+        {
+            throw new ArgumentNullException(nameof(DataMessagingConfig.DataMessageProcessingPackage));
+        }
+
         DataMessagingConfig.DuplexIoErrorHandlerDelegate = CentralErrorHandling;
         SocketProxy = DataMessagingConfig.SocketProxy;
         _sendPacketProcessFactory = sendPacketProcessFactory;

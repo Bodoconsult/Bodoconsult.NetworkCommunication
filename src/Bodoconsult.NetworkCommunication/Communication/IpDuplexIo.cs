@@ -107,15 +107,23 @@ public class IpDuplexIo : BaseDuplexIo
     {
         await Task.Run(async () =>
         {
-            Receiver ??= new IpDuplexIoReceiver(DataMessagingConfig,
-                _duplexIoIsWorkInProgressDelegate,
-                _duplexIoSetNotInProgressDelegate);
+            try
+            {
+                Receiver ??= new IpDuplexIoReceiver(DataMessagingConfig,
+                    _duplexIoIsWorkInProgressDelegate,
+                    _duplexIoSetNotInProgressDelegate);
 
-            await Receiver.StartReceiver();
+                await Receiver.StartReceiver();
 
-            Sender ??= new IpDuplexIoSender(DataMessagingConfig,
-                _duplexIoIsWorkInProgressDelegate,
-                _duplexIoSetNotInProgressDelegate);
+                Sender ??= new IpDuplexIoSender(DataMessagingConfig,
+                    _duplexIoIsWorkInProgressDelegate,
+                    _duplexIoSetNotInProgressDelegate);
+            }
+            catch (Exception e)
+            {
+                DataMessagingConfig.AppLogger.LogError(e, "starting communication failed");
+                throw;
+            }
         });
 
         IsCommunicationStarted = true;

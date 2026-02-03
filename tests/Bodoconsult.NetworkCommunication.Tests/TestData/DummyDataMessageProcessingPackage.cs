@@ -5,9 +5,15 @@ using Bodoconsult.NetworkCommunication.Interfaces;
 
 namespace Bodoconsult.NetworkCommunication.Tests.TestData;
 
+/// <summary>
+/// Dummy implementatioon of <see cref="IDataMessageProcessingPackage"/>
+/// </summary>
 public class DummyDataMessageProcessingPackage: IDataMessageProcessingPackage
 {
-
+    /// <summary>
+    /// Default ctor
+    /// </summary>
+    /// <param name="dataMessagingConfig">Current data messaging config</param>
     public DummyDataMessageProcessingPackage(IDataMessagingConfig dataMessagingConfig)
     {
         DataMessagingConfig = dataMessagingConfig;

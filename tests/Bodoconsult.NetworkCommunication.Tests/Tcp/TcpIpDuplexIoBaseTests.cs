@@ -140,7 +140,7 @@ public abstract class TcpIpDuplexIoBaseTests : BaseTcpTests
 
 
     [Test]
-    public void TestStart()
+    public void StartCommunication_ValidSetup_Started()
     {
         // Arrange 
 

@@ -1,5 +1,6 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen. All rights reserved.
 
+using Bodoconsult.App.Helpers;
 using System.Diagnostics;
 using System.Net;
 using System.Net.Sockets;
@@ -13,6 +14,7 @@ namespace Bodoconsult.NetworkCommunication.Testing;
 public abstract class UdpBase : IDisposable
 {
     private Thread _thread;
+    private bool _isDisposed;
 
     protected bool IsServer;
 
@@ -87,10 +89,10 @@ public abstract class UdpBase : IDisposable
 
             ReceivedMessages.Add(bytes.AsMemory());
 
-            //if (!IsServer)
-            //{
-            //    Send(bytes);
-            //}
+            if (!IsServer)
+            {
+                Send(bytes);
+            }
         }
     }
 
@@ -110,13 +112,27 @@ public abstract class UdpBase : IDisposable
     /// <param name="data">Byte array to send</param>
     public virtual void Send(byte[] data)
     {
-        var result = Listener.Send(data);
-        Debug.Print($"{GetType().Name}: sent {result} byte(s)!");
+        if (_isDisposed)
+        {
+            return;
+        }
+
+        if (Listener.Client.IsBound)
+        {
+            var result = Listener.Send(data);
+            Debug.Print($"{GetType().Name}: sent {result} byte(s)!");
+        }
+        else
+        {
+            var result = Listener.Send(data, EndPoint);
+            Debug.Print($"{GetType().Name}: sent {result} byte(s)!");
+        }
     }
 
     /// <summary>Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.</summary>
     public void Dispose()
     {
+        _isDisposed = true;
         Dispose(true);
         GC.SuppressFinalize(this);
     }

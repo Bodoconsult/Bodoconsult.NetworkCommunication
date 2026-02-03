@@ -60,6 +60,10 @@ public abstract class BaseDuplexIoSender : IDuplexIoSender
     /// </summary>
     public void UpdateDataMessageProcessingPackage()
     {
+        if (DataMessagingConfig.DataMessageProcessingPackage == null)
+        {
+            throw new ArgumentNullException(nameof(DataMessagingConfig.DataMessageProcessingPackage));
+        }
         DataMessageCodingProcessor = DataMessagingConfig.DataMessageProcessingPackage.DataMessageCodingProcessor;
         DataMessageSplitter = DataMessagingConfig.DataMessageProcessingPackage.DataMessageSplitter;
     }

@@ -1,10 +1,11 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen. All rights reserved.
 
-using System.Net;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig;
 using Bodoconsult.NetworkCommunication.Protocols.TcpIp;
 using Bodoconsult.NetworkCommunication.Testing;
 using Bodoconsult.NetworkCommunication.Tests.Interfaces;
+using Bodoconsult.NetworkCommunication.Tests.TestData;
+using System.Net;
 
 namespace Bodoconsult.NetworkCommunication.Tests.Helpers;
 
@@ -16,6 +17,7 @@ public static class UdpIpTestHelper
     public static void InitServer(IUdpTests testSetup)
     {
         testSetup.DataMessagingConfig = new DefaultDataMessagingConfig();
+        testSetup.DataMessagingConfig.DataMessageProcessingPackage = new DummyDataMessageProcessingPackage(testSetup.DataMessagingConfig);
 
         testSetup.IpAddress = IPAddress.Parse(testSetup.DataMessagingConfig.IpAddress);
 

@@ -86,10 +86,10 @@ public class BaseDuplexIoReceiver : IDuplexIoReceiver
     /// </summary>
     public void UpdateDataMessageProcessingPackage()
     {
-        //if (DataMessagingConfig.DataMessageProcessingPackage==null)
-        //{
-        //    return;
-        //}
+        if (DataMessagingConfig.DataMessageProcessingPackage == null)
+        {
+            throw new ArgumentNullException(nameof(DataMessagingConfig.DataMessageProcessingPackage));
+        }
         DataMessageCodingProcessor = DataMessagingConfig.DataMessageProcessingPackage.DataMessageCodingProcessor;
         DataMessageProcessor = DataMessagingConfig.DataMessageProcessingPackage.DataMessageProcessor;
         DataMessageSplitter = DataMessagingConfig.DataMessageProcessingPackage.DataMessageSplitter;
