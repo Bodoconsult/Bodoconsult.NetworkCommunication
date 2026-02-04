@@ -11,6 +11,21 @@ namespace Bodoconsult.NetworkCommunication.Interfaces;
 public interface ISocketProxy: IDisposable
 {
     /// <summary>
+    /// IP address of the server
+    /// </summary>
+    public IPAddress IpAddress { get; set; }
+
+    /// <summary>
+    /// Port the server listens on
+    /// </summary>
+    public int Port { get; set; }
+
+    /// <summary>
+    /// Port the client listens on or 0 (then the same port as for the server is used)
+    /// </summary>
+    public int ClientPort { get; set; }
+
+    /// <summary>
     /// Is the instance already dispossed
     /// </summary>
     bool IsDisposed  { get;  }
@@ -24,7 +39,6 @@ public interface ISocketProxy: IDisposable
     /// The number of bytes available to read
     /// </summary>
     int BytesAvailable { get; }
-
 
     /// <summary>
     /// Send timeout in milliseconds. -1 means infinite.
@@ -66,21 +80,20 @@ public interface ISocketProxy: IDisposable
     /// <summary>
     /// Connect to an IP endpoint
     /// </summary>
-    /// <param name="endpoint">IP endpoint</param>
-    Task Connect(IPEndPoint endpoint);
+    Task Connect();
 
-    /// <summary>
-    /// Bind to an IP endpoint
-    /// </summary>
-    /// <param name="endpoint">IP endpoint</param>
-    void Bind(IPEndPoint endpoint);
+    ///// <summary>
+    ///// Bind to an IP endpoint
+    ///// </summary>
+    ///// <param name="endpoint">IP endpoint</param>
+    //void Bind(IPEndPoint endpoint);
 
 
-    /// <summary>
-    /// Listen
-    /// </summary>
-    /// <param name="backlog">The maximum length of pending messages queue</param>
-    void Listen(int backlog);
+    ///// <summary>
+    ///// Listen
+    ///// </summary>
+    ///// <param name="backlog">The maximum length of pending messages queue</param>
+    //void Listen(int backlog);
 
 
     /// <summary>
@@ -121,15 +134,15 @@ public interface ISocketProxy: IDisposable
     /// <returns>True, if data can be read, else false</returns>
     bool Poll();
 
-    /// <summary>
-    /// Send a file
-    /// </summary>
-    /// <param name="fileName">Full file path</param>
-    void SendFile(string fileName);
+    ///// <summary>
+    ///// Send a file
+    ///// </summary>
+    ///// <param name="fileName">Full file path</param>
+    //void SendFile(string fileName);
 
-    /// <summary>
-    /// Prepare the answer of the socket for testing
-    /// </summary>
-    /// <param name="testData">Test data to use</param>
-    void PrepareAnswer(byte[] testData);
+    ///// <summary>
+    ///// Prepare the answer of the socket for testing
+    ///// </summary>
+    ///// <param name="testData">Test data to use</param>
+    //void PrepareAnswer(byte[] testData);
 }

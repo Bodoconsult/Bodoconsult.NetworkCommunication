@@ -1,8 +1,5 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
-// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
-// Licence MIT
-
 //using System;
 //using System.Linq;
 //using System.Net;

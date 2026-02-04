@@ -3,13 +3,14 @@
 using System.Net;
 using System.Net.Sockets;
 using Bodoconsult.NetworkCommunication.Interfaces;
+using Bodoconsult.NetworkCommunication.Protocols.TcpIp;
 
 namespace Bodoconsult.NetworkCommunication.Protocols.Udp;
 
 /// <summary>
 /// Fake implementation of <see cref="ISocketProxy"/>
 /// </summary>
-public class FakeUdpSocketProxy : BaseSocketProxy
+public class FakeUdpSocketProxy : UpdSocketProxyBase
 {
     /// <summary>
     /// Data for receiving methods
@@ -156,8 +157,7 @@ public class FakeUdpSocketProxy : BaseSocketProxy
     /// <summary>
     /// Connect to an IP endpoint
     /// </summary>
-    /// <param name="endpoint">IP endpoint</param>
-    public override async Task Connect(IPEndPoint endpoint)
+    public override async Task Connect()
     {
         await Task.Run(() =>
         {

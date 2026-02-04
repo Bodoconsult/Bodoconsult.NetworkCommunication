@@ -11,7 +11,7 @@ namespace Bodoconsult.NetworkCommunication.Protocols.TcpIp;
 /// <summary>
 /// Current asynchronous implementation of <see cref="ISocketProxy"/> for TCP
 /// </summary>
-public class AsyncTcpIpSocketProxy : BaseSocketProxy
+public class AsyncTcpIpSocketProxy : TcpIpSocketProxyBase
 {
     private readonly byte[] _tmp = new byte[1];
 
@@ -138,8 +138,7 @@ public class AsyncTcpIpSocketProxy : BaseSocketProxy
     /// <summary>
     /// Connect to an IP endpoint
     /// </summary>
-    /// <param name="endpoint">IP endpoint</param>
-    public override async Task Connect(IPEndPoint endpoint)
+    public override async Task Connect()
     {
 
         try
@@ -148,7 +147,7 @@ public class AsyncTcpIpSocketProxy : BaseSocketProxy
             {
                 Socket.Shutdown(SocketShutdown.Both);
                 Socket.Close();
-                Socket = null;
+                Socket?.Dispose();
             }
         }
         catch // (Exception ex)
@@ -157,7 +156,7 @@ public class AsyncTcpIpSocketProxy : BaseSocketProxy
         }
         finally
         {
-            Socket?.Dispose();
+            Socket = null;
         }
 
         Socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp)
@@ -167,8 +166,9 @@ public class AsyncTcpIpSocketProxy : BaseSocketProxy
             NoDelay = true
         };
         Socket.SetSocketKeepAliveValues(7200000, 1000);
-            
-        await Socket.ConnectAsync(endpoint);
+
+        var ep = new IPEndPoint(IpAddress, Port);
+        await Socket.ConnectAsync(ep);
 
     }
 

@@ -14,24 +14,34 @@ using Bodoconsult.NetworkCommunication.Interfaces;
 namespace Bodoconsult.NetworkCommunication.Protocols.Udp;
 
 /// <summary>
-/// Current asynchronous implementation of <see cref="ISocketProxy"/> for UDP
+/// Current asynchronous implementation of <see cref="ISocketProxy"/> for UDP unicast
 /// </summary>
-public class AsyncUdpSocketProxy : BaseSocketProxy
+public class AsyncUdpSocketProxy : UpdSocketProxyBase
 {
     private readonly byte[] _tmp = new byte[1];
 
-    ///// <summary>
-    ///// Default ctor
-    ///// </summary>
-    //public AsyncUdpSocketProxy()
-    //{
-    //    //Socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp)
-    //    //{
-    //    //    ReceiveTimeout = ReceiveTimeout,
-    //    //    SendTimeout = SendTimeout,
-    //    //    NoDelay = true
-    //    //};
-    //}
+    /// <summary>
+    /// Endpoint for listening
+    /// </summary>
+    protected IPEndPoint EndPoint;
+
+    /// <summary>
+    /// Endpoint for listening
+    /// </summary>
+    protected IPEndPoint SendEndPoint;
+
+    /// <summary>
+    /// Default ctor
+    /// </summary>
+    public AsyncUdpSocketProxy(bool isServer)
+    {
+        IsServer = isServer;
+    }
+
+    /// <summary>
+    /// Current socket (only for testing purposes, do not access directly in production code)
+    /// </summary>
+    public UdpClient UdpClient { get; protected set; }
 
     /// <summary>
     /// Is the socket connected
@@ -40,22 +50,20 @@ public class AsyncUdpSocketProxy : BaseSocketProxy
     {
         get
         {
-
             // Replacement for Socket.Connected. See sample at the end of https://learn.microsoft.com/en-us/dotnet/api/system.net.sockets.socket.connected?redirectedfrom=MSDN&view=net-7.0#System_Net_Sockets_Socket_Connected
-
             try
             {
-                if (Socket is not { Connected: true })
+                if (UdpClient.Client is not { Connected: true })
                 {
                     return false;
                 }
 
                 // This is how you can determine whether a socket is still connected.
-                var blockingState = Socket.Blocking;
+                var blockingState = UdpClient.Client.Blocking;
                 try
                 {
-                    Socket.Blocking = false;
-                    Socket.Send(_tmp, 0, 0);
+                    UdpClient.Client.Blocking = false;
+                    UdpClient.Client.Send(_tmp, 0, 0);
                     //Console.WriteLine("Connected!");
                 }
                 catch (SocketException e)
@@ -73,7 +81,7 @@ public class AsyncUdpSocketProxy : BaseSocketProxy
                 }
                 finally
                 {
-                    Socket.Blocking = blockingState;
+                    UdpClient.Client.Blocking = blockingState;
                 }
 
                 return true;
@@ -82,8 +90,6 @@ public class AsyncUdpSocketProxy : BaseSocketProxy
             {
                 return false;
             }
-
-
         }
     }
 
@@ -96,13 +102,12 @@ public class AsyncUdpSocketProxy : BaseSocketProxy
         {
             try
             {
-                return Socket is not { Connected: true } ? 0 : Socket.Available;
+                return UdpClient.Client is not { Connected: true } ? 0 : UdpClient.Available;
             }
             catch
             {
                 return 0;
             }
-                
         }
     }
 
@@ -112,7 +117,7 @@ public class AsyncUdpSocketProxy : BaseSocketProxy
     /// <param name="bytesToSend">Byte array to send</param>
     public override Task<int> Send(byte[] bytesToSend)
     {
-        return !Socket.Connected ? Task.FromResult(0) : Socket.SendAsync(bytesToSend);
+        return !UdpClient.Client.Connected ? Task.FromResult(0) : UdpClient.SendAsync(bytesToSend, bytesToSend.Length);
     }
 
     /// <summary>
@@ -121,7 +126,7 @@ public class AsyncUdpSocketProxy : BaseSocketProxy
     /// <param name="bytesToSend">Data to send</param>
     public override ValueTask<int> Send(ReadOnlyMemory<byte> bytesToSend)
     {
-        return !Socket.Connected ? new ValueTask<int>(0) : Socket.SendAsync(bytesToSend, SocketFlags.None);
+        return !UdpClient.Client.Connected ? new ValueTask<int>(0) : UdpClient.SendAsync(bytesToSend);
     }
 
     /// <summary>
@@ -129,7 +134,7 @@ public class AsyncUdpSocketProxy : BaseSocketProxy
     /// </summary>
     public override void Shutdown()
     {
-        Socket.Shutdown(SocketShutdown.Both);
+        UdpClient.Client.Shutdown(SocketShutdown.Both);
     }
 
     /// <summary>
@@ -137,65 +142,94 @@ public class AsyncUdpSocketProxy : BaseSocketProxy
     /// </summary>
     public override void Close()
     {
-        Socket.Close();
+        UdpClient.Close();
     }
 
     /// <summary>
     /// Connect to an IP endpoint
     /// </summary>
-    /// <param name="endpoint">IP endpoint</param>
-    public override async Task Connect(IPEndPoint endpoint)
+    public override async Task Connect()
     {
-
-        try
+        await Task.Run(() =>
         {
-            if (Socket != null)
+
+            try
             {
-                Socket.Shutdown(SocketShutdown.Both);
-                Socket.Close();
-                Socket = null;
+                if (UdpClient != null)
+                {
+                    UdpClient.Client.Shutdown(SocketShutdown.Both);
+                    UdpClient.Close();
+                    UdpClient.Dispose();
+
+                }
             }
-        }
-        catch // (Exception ex)
-        {
-            // Do nothing
-        }
-        finally
-        {
-            Socket?.Dispose();
-        }
+            catch // (Exception ex)
+            {
+                // Do nothing
+            }
+            finally
+            {
+                UdpClient = null;
+            }
 
-        Socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp)
-        {
-            ReceiveTimeout = ReceiveTimeout,
-            SendTimeout = SendTimeout,
-            NoDelay = true
-        };
-        Socket.SetSocketKeepAliveValues(7200000, 1000);
-            
-        await Socket.ConnectAsync(endpoint);
+            if (ClientPort == 0)
+            {
+                ClientPort = Port;
+            }
 
+            try
+            {
+                UdpClient = new UdpClient();
+                UdpClient.ExclusiveAddressUse = false;
+                UdpClient.Client.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.ReuseAddress, true);
+                UdpClient.Client.ReceiveTimeout = ReceiveTimeout;
+                UdpClient.Client.SendTimeout = SendTimeout;
+
+                if (IsServer)
+                {
+                    var endPoint1 = new IPEndPoint(IPAddress.Any, Port);
+                    UdpClient.Client.Bind(endPoint1);
+
+                    EndPoint = new IPEndPoint(IpAddress, Port);
+                    SendEndPoint = new IPEndPoint(IpAddress, ClientPort);
+                }
+                else
+                {
+                    var ep1 = new IPEndPoint(IPAddress.Any, ClientPort);
+                    UdpClient.Client.Bind(ep1);
+
+                    EndPoint = new IPEndPoint(IpAddress, ClientPort);
+                    SendEndPoint = new IPEndPoint(IpAddress, Port);
+                }
+            }
+            catch (Exception e)
+            {
+                // ToDo: add logging
+                Console.WriteLine(e);
+                throw;
+            }
+
+
+        });
     }
 
+    ///// <summary>
+    ///// Bind to an IP endpoint
+    ///// </summary>
+    ///// <param name="endpoint">IP endpoint</param>
+    //public override void Bind(IPEndPoint endpoint)
+    //{
+    //    Socket?.Bind(endpoint);
+    //}
 
-    /// <summary>
-    /// Bind to an IP endpoint
-    /// </summary>
-    /// <param name="endpoint">IP endpoint</param>
-    public override void Bind(IPEndPoint endpoint)
-    {
-        Socket?.Bind(endpoint);
-    }
-
-
-    /// <summary>
-    /// Listen
-    /// </summary>
-    /// <param name="backlog">The maximum length of pending messages queue</param>
-    public override void Listen(int backlog)
-    {
-        Socket?.Listen(backlog);
-    }
+    ///// <summary>
+    ///// Listen
+    ///// </summary>
+    ///// <param name="backlog">The maximum length of pending messages queue</param>
+    //public override void Listen(int backlog)
+    //{
+    //    Socket?.Listen(backlog);
+    //}
 
     /// <summary>
     /// Receive data from the socket
@@ -204,7 +238,14 @@ public class AsyncUdpSocketProxy : BaseSocketProxy
     /// <returns>Number of bytes received</returns>
     public override Task<int> Receive(byte[] buffer)
     {
-        return !Socket.Connected ? Task.FromResult(0) : Socket?.ReceiveAsync(buffer);
+        if (!UdpClient.Client.Connected)
+        {
+            Task.FromResult(0);
+        }
+
+        var result = UdpClient.ReceiveAsync();
+        Buffer.BlockCopy(result.Result.Buffer, 0, buffer, 0, buffer.Length);
+        return Task.FromResult(result.Result.Buffer.Length);
     }
 
     /// <summary>
@@ -214,7 +255,14 @@ public class AsyncUdpSocketProxy : BaseSocketProxy
     /// <returns>Number of bytes received</returns>
     public override async Task<int> Receive(Memory<byte> buffer)
     {
-        return !Socket.Connected ? await Task.FromResult(0) : await Socket.ReceiveAsync(buffer, SocketFlags.None);
+        if (!UdpClient.Client.Connected)
+        {
+            await Task.FromResult(0);
+        }
+
+        var result = await UdpClient.ReceiveAsync();
+        result.Buffer.CopyTo(buffer);
+        return result.Buffer.Length;
     }
 
     /// <summary>
@@ -226,7 +274,19 @@ public class AsyncUdpSocketProxy : BaseSocketProxy
     /// <returns>Number of bytes received</returns>
     public override Task<int> Receive(byte[] buffer, int offset, int expectedBytesLength)
     {
-        return !Socket.Connected ? Task.FromResult(0) : Socket.ReceiveAsync(buffer, offset, expectedBytesLength, SocketFlags.None);
+        if (!UdpClient.Client.Connected)
+        {
+            return Task.FromResult(0);
+        }
+
+        var result = Task.Run(async ()=>
+        {
+            var result = await UdpClient.ReceiveAsync();
+            Buffer.BlockCopy(result.Buffer, offset, buffer, 0, buffer.Length -offset);
+            return result.Buffer.Length;
+        });
+
+        return result;
     }
 
     /// <summary>
@@ -238,41 +298,35 @@ public class AsyncUdpSocketProxy : BaseSocketProxy
     /// <returns></returns>
     public override Task<int> Send(byte[] bytesToSend, int offset, int messageBytesLength)
     {
-        return !Socket.Connected ? Task.FromResult(0) : Socket.SendAsync(bytesToSend, offset, messageBytesLength);
+        return !UdpClient.Client.Connected ? Task.FromResult(0) : UdpClient.Client.SendAsync(bytesToSend, offset, messageBytesLength);
     }
 
-    /// <summary>
-    /// Poll data
-    /// </summary>
-    /// <returns>True, if data can be read, else false</returns>
-    public override bool Poll()
-    {
-        return Socket.Poll(PollingTimeout, SelectMode.SelectRead);
-    }
+    ///// <summary>
+    ///// Poll data
+    ///// </summary>
+    ///// <returns>True, if data can be read, else false</returns>
+    //public override bool Poll()
+    //{
+    //    return Socket.Poll(PollingTimeout, SelectMode.SelectRead);
+    //}
 
-    /// <summary>
-    /// Send a file
-    /// </summary>
-    /// <param name="fileName">Full file path</param>
-    public override void SendFile(string fileName)
-    {
-        Socket.SendFile(fileName);
-    }
+    ///// <summary>
+    ///// Send a file
+    ///// </summary>
+    ///// <param name="fileName">Full file path</param>
+    //public override void SendFile(string fileName)
+    //{
+    //    Socket.SendFile(fileName);
+    //}
 
-    /// <summary>
-    /// Current socket (only for testing purposes, do not access directly in production code)
-    /// </summary>
-    public Socket Socket { get; protected set; }
-
-
-    /// <summary>
-    /// Prepare the answer of the socket for testing
-    /// </summary>
-    /// <param name="testData">Test data to use</param>
-    public override void PrepareAnswer(byte[] testData)
-    {
-        // Do nothing
-    }
+    ///// <summary>
+    ///// Prepare the answer of the socket for testing
+    ///// </summary>
+    ///// <param name="testData">Test data to use</param>
+    //public override void PrepareAnswer(byte[] testData)
+    //{
+    //    // Do nothing
+    //}
 
 
     /// <summary>
@@ -281,8 +335,8 @@ public class AsyncUdpSocketProxy : BaseSocketProxy
     public override void Dispose()
     {
         IsDisposed = true;
-        Socket?.Close();
-        Socket?.Dispose();
-        Socket = null;
+        UdpClient?.Close();
+        UdpClient?.Dispose();
+        UdpClient = null;
     }
 }

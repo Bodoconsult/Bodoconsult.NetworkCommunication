@@ -7,7 +7,7 @@ using Bodoconsult.NetworkCommunication.Testing;
 namespace Bodoconsult.NetworkCommunication.Tests.Testing
 {
     [TestFixture]
-    internal class UdpTestUniCastClientTests
+    internal class UdpTestUniCastServerTests
     {
 
         [Test]
@@ -18,17 +18,17 @@ namespace Bodoconsult.NetworkCommunication.Tests.Testing
 
             var ip = IPAddress.Parse("127.0.0.1");
             const int port = 65000;
+            const int clientPort = 65001;
 
-            var client = new UdpTestUniCastClient(ip, port);
+            var client = new UdpTestUniCastClient(ip, port, clientPort);
             client.Start();
 
-            var server = new UdpTestUniCastServer(ip, port);
+            var server = new UdpTestUniCastServer(ip, port, clientPort);
             server.Start();
 
             // Act  
             server.Send(data);
             
-
             Wait.Until(() => false, 500);
 
             // Assert

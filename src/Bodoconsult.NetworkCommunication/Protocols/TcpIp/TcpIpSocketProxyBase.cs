@@ -3,13 +3,28 @@
 using System.Net;
 using Bodoconsult.NetworkCommunication.Interfaces;
 
-namespace Bodoconsult.NetworkCommunication.Protocols;
+namespace Bodoconsult.NetworkCommunication.Protocols.TcpIp;
 
 /// <summary>
 /// Base class for <see cref="ISocketProxy"/> implementations
 /// </summary>
-public abstract class BaseSocketProxy : ISocketProxy
+public abstract class TcpIpSocketProxyBase : ISocketProxy
 {
+    /// <summary>
+    /// IP address of the server
+    /// </summary>
+    public IPAddress IpAddress { get; set; }
+
+    /// <summary>
+    /// Port the server listens on
+    /// </summary>
+    public int Port { get; set; }
+
+    /// <summary>
+    /// Port the client listens on or 0 (then the same port as for the server is used)
+    /// </summary>
+    public int ClientPort { get; set; }
+
     /// <summary>
     /// Is the instance already dispossed
     /// </summary>
@@ -76,10 +91,9 @@ public abstract class BaseSocketProxy : ISocketProxy
     }
 
     /// <summary>
-    /// Connect to an IP endpoint
+    /// Connect to the IP endpoint
     /// </summary>
-    /// <param name="endpoint">IP endpoint</param>
-    public virtual Task Connect(IPEndPoint endpoint)
+    public virtual Task Connect()
     {
         throw new NotSupportedException();
     }

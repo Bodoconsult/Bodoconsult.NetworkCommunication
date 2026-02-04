@@ -20,7 +20,7 @@ public sealed class EdcpHandshakeMessage : BaseHandShakeDataMessage, IHandShakeD
     }
 
     /// <summary>
-    /// Typpe of handshake as byte value
+    /// Type of handshake as byte value
     /// </summary>
     public byte HandshakeMessageType { set; get; }
 

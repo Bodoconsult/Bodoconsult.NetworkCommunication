@@ -13,14 +13,17 @@ public class UdpTestUniCastClient: UdpBase
     /// <summary>
     /// Default ctor
     /// </summary>
-    /// <param name="ipAddress">IP address</param>
-    /// <param name="port">Port</param>
-    public UdpTestUniCastClient(IPAddress ipAddress, int port) : base(new IPEndPoint(ipAddress, port))
+    /// <param name="ipAddress">Server IP address</param>
+    /// <param name="port">Port the server is listening on</param>
+    /// <param name="clientPort">Port the client listens on or 0 (then the same port as for the server is used). Setting clientPort is required normally only if UDP server and client are installed on the same machine!</param>
+    public UdpTestUniCastClient(IPAddress ipAddress, int port, int clientPort=0) : base(ipAddress, port, clientPort)
     {
-        var endPoint1 = new IPEndPoint(0, EndPoint.Port);
-        Listener.ExclusiveAddressUse = false;
-        Listener.Client.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.ReuseAddress, true);
-        Listener.Client.Bind(endPoint1);
-        Listener.Connect(EndPoint);
+        var ep1 = new IPEndPoint(IPAddress.Any, ClientPort);
+        //Listener.ExclusiveAddressUse = false;
+        //Listener.Client.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.ReuseAddress, true);
+        Listener.Client.Bind(ep1);
+
+        EndPoint = new IPEndPoint(ipAddress, ClientPort);
+        SendEndPoint = new IPEndPoint(ipAddress, Port);
     }
 }

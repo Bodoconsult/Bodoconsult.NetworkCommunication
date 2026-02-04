@@ -13,7 +13,7 @@ public class SdcpDataMessageValidator : IDataMessageValidator
 {
     public DataMessageValidatorResult IsMessageValid(IDataMessage dataMessage)
     {
-        // Update mode message or raw message: always valid
+        // Raw message: always valid
         if (dataMessage is RawDataMessage)
         {
             return new DataMessageValidatorResult(true, "Message is valid");

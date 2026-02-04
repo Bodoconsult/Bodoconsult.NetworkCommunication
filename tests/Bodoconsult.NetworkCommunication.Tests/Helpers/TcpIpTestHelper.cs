@@ -50,10 +50,11 @@ public static class TcpIpTestHelper
 
         // Load socket
         var socket = new AsyncTcpIpSocketProxy();
+        socket.IpAddress = testSetup.IpAddress;
+        socket.Port = testSetup.DataMessagingConfig.Port;
         testSetup.Socket = socket;
 
-        var ipLocalEndPoint = new IPEndPoint(testSetup.IpAddress, testSetup.DataMessagingConfig.Port);
-        testSetup.Socket.Connect(ipLocalEndPoint).Wait();
+        testSetup.Socket.Connect().Wait();
 
         testSetup.Logger = TestDataHelper.GetFakeAppLoggerProxy();
     }

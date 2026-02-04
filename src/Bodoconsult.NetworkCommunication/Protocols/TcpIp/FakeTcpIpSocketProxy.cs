@@ -1,8 +1,5 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
-// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
-// Licence MIT
-
 using System.Net;
 using System.Net.Sockets;
 using Bodoconsult.NetworkCommunication.Interfaces;
@@ -12,7 +9,7 @@ namespace Bodoconsult.NetworkCommunication.Protocols.TcpIp;
 /// <summary>
 /// Fake implementation of <see cref="ISocketProxy"/>
 /// </summary>
-public class FakeTcpIpSocketProxy : BaseSocketProxy
+public class FakeTcpIpSocketProxy : TcpIpSocketProxyBase
 {
     /// <summary>
     /// Data for receiving methods
@@ -160,8 +157,7 @@ public class FakeTcpIpSocketProxy : BaseSocketProxy
     /// <summary>
     /// Connect to an IP endpoint
     /// </summary>
-    /// <param name="endpoint">IP endpoint</param>
-    public override async Task Connect(IPEndPoint endpoint)
+    public override async Task Connect()
     {
         await Task.Run(() =>
         {

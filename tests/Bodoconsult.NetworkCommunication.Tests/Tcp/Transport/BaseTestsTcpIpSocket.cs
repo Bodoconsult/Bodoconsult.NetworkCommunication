@@ -39,7 +39,7 @@ public abstract class BaseTestsTcpIpSocket
         // Act  
         Assert.DoesNotThrow(() =>
         {
-            Socket.Connect(CurrentIpEndPoint);
+            Socket.Connect();
         });
 
         // Assert

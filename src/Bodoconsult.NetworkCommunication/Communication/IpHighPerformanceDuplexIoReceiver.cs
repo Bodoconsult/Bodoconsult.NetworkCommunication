@@ -5,11 +5,10 @@ using System.Diagnostics;
 using System.IO.Pipelines;
 using System.Net.Sockets;
 using Bodoconsult.App.Helpers;
-using Bodoconsult.NetworkCommunication.Communication;
 using Bodoconsult.NetworkCommunication.Helpers;
 using Bodoconsult.NetworkCommunication.Interfaces;
 
-namespace Bodoconsult.NetworkCommunication.Protocols.TcpIp;
+namespace Bodoconsult.NetworkCommunication.Communication;
 
 /// <summary>
 /// Comm adapter subsystem for message receiving base on high-performance pipeline implementation

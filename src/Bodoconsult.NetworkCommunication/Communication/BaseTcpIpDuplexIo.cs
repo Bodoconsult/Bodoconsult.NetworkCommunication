@@ -48,12 +48,12 @@ public abstract class BaseDuplexIo : IDuplexIo
     public bool IsCommunicationStarted { get; protected set; }
 
     /// <summary>
-    /// The receiver part used of the duplex (bi-directional) comm channels
+    /// The receiver part used of the duplex (bidirectional) comm channels
     /// </summary>
     public IDuplexIoReceiver Receiver { get; protected set; }
 
     /// <summary>
-    /// The sender part used of the duplex (bi-directional) comm channels
+    /// The sender part used of the duplex (bidirectional) comm channels
     /// </summary>
     public IDuplexIoSender Sender { get; protected set; }
 

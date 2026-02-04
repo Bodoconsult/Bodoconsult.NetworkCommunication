@@ -13,12 +13,12 @@ public interface IDuplexIo: IAsyncDisposable, IDisposable
     bool IsCommunicationStarted { get; }
 
     /// <summary>
-    /// The receiver part used of the duplex (bi-directional) comm channels
+    /// The receiver part used of the duplex (bidirectional) comm channels
     /// </summary>
     IDuplexIoReceiver Receiver { get;  }
 
     /// <summary>
-    /// The sender part used of the duplex (bi-directional) comm channels
+    /// The sender part used of the duplex (bidirectional) comm channels
     /// </summary>
     IDuplexIoSender Sender { get; }
 

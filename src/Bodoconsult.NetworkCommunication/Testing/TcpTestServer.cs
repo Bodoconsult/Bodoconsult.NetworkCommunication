@@ -4,6 +4,7 @@
 using System.Diagnostics;
 using System.Net;
 using System.Net.Sockets;
+using System.Reflection.Metadata;
 
 namespace Bodoconsult.NetworkCommunication.Testing;
 
@@ -30,6 +31,10 @@ public class TcpTestServer : IDisposable
             ReceiveTimeout = ReceiveTimeout,
             SendTimeout = SendTimeout
         };
+
+        _listener.NoDelay = true;
+        _listener.Blocking = false;
+
 
         // Establish the local endpoint
         // for the socket. Dns.GetHostName
@@ -67,10 +72,15 @@ public class TcpTestServer : IDisposable
         // Address
         _listener.Bind(_endPoint);
 
+
+        _listener.BeginAccept(AcceptCallback, _listener);
+
+
         //// Using Listen() method we create
         //// the Client list that will want
         //// to connect to Server
         _listener.Listen(10);
+
 
 
         //}
@@ -78,6 +88,24 @@ public class TcpTestServer : IDisposable
         //{
 
         //}
+    }
+
+    private void AcceptCallback(IAsyncResult ar)
+    {
+        // Get the socket that handles the client request
+        if (_clientSocket != null)
+        {
+            return;
+        }
+
+        try
+        {
+            _clientSocket = _listener.EndAccept(ar);
+        }
+        catch (Exception e)
+        {
+            Debug.Print(e.Message);
+        }
     }
 
 

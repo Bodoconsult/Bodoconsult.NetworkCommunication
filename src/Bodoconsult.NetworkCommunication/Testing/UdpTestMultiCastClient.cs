@@ -14,17 +14,20 @@ public class UdpTestMultiCastClient : UdpBase
     /// <summary>
     /// Default ctor
     /// </summary>
-    /// <param name="ipAddress">IP address</param>
-    /// <param name="port">Port</param>
-    public UdpTestMultiCastClient(IPAddress ipAddress, int port) : base(new IPEndPoint(ipAddress, port))
+    /// <param name="ipAddress">IP address of the server</param>
+    /// <param name="port">Port the server is listening on</param>
+    /// <param name="clientPort">Port the client listens on or 0 (then the same port as for the server is used)</param>
+    public UdpTestMultiCastClient(IPAddress ipAddress, int port, int clientPort = 0) : base(ipAddress, port, clientPort)
     {
-        var endPoint1 = new IPEndPoint(0, EndPoint.Port);
-        Listener.ExclusiveAddressUse = false;
-        Listener.Client.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.ReuseAddress, true);
+        var endPoint1 = new IPEndPoint(0, Port);
         Listener.Client.Bind(endPoint1);
+
 
         Listener.JoinMulticastGroup(ipAddress);
         Listener.MulticastLoopback = true;
+
+        EndPoint = new IPEndPoint(ipAddress, ClientPort);
+        SendEndPoint = new IPEndPoint(ipAddress, Port);
     }
 
     /// <summary>

@@ -4,6 +4,7 @@ using Bodoconsult.App.Helpers;
 using System.Diagnostics;
 using System.Net;
 using System.Net.Sockets;
+using System.Runtime.CompilerServices;
 using System.Text;
 
 namespace Bodoconsult.NetworkCommunication.Testing;
@@ -18,25 +19,58 @@ public abstract class UdpBase : IDisposable
 
     protected bool IsServer;
 
+
+
     /// <summary>
-    /// Current listener
+    /// Current local device listener
     /// </summary>
     protected UdpClient Listener;
 
     /// <summary>
-    /// Endpoint
+    /// Endpoint for listening
     /// </summary>
     protected IPEndPoint EndPoint;
 
     /// <summary>
-    /// Endpoint
+    /// Endpoint for listening
     /// </summary>
-    /// <param name="endPoint"></param>
-    protected UdpBase(IPEndPoint endPoint)
+    protected IPEndPoint SendEndPoint;
+
+    /// <summary>
+    /// Default ctor
+    /// </summary>
+    /// <param name="ipAddress">IP address of the server</param>
+    /// <param name="port">Port the server listens on</param>
+    /// <param name="clientPort">Port the client listens on or 0 (then the same port as for the server is used). Setting clientPort is required normally only if UDP server and client are installed on the same machine!</param>
+    protected UdpBase(IPAddress ipAddress, int port, int clientPort = 0)
     {
-        EndPoint = endPoint;
         Listener = new UdpClient();
+        Listener.ExclusiveAddressUse = false;
+        Listener.Client.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.ReuseAddress, true);
+        Listener.Client.ReceiveTimeout = ReceiveTimeout;
+        Listener.Client.SendTimeout = SendTimeout;
+        //Listener.Client.NoDelay = true;
+
+
+        IpAddress = ipAddress;
+        Port = port;
+        ClientPort = clientPort == 0 ? port : clientPort;
     }
+
+    /// <summary>
+    /// IP address of the server
+    /// </summary>
+    public IPAddress IpAddress { get; }
+
+    /// <summary>
+    /// Port the server listens on
+    /// </summary>
+    public int Port { get; }
+
+    /// <summary>
+    /// Port the client listens on or 0 (then the same port as for the server is used)
+    /// </summary>
+    public int ClientPort { get; }
 
     /// <summary>
     /// Send timeout in milliseconds. -1 means infinite.
@@ -117,16 +151,12 @@ public abstract class UdpBase : IDisposable
             return;
         }
 
-        if (Listener.Client.IsBound)
-        {
-            var result = Listener.Send(data);
-            Debug.Print($"{GetType().Name}: sent {result} byte(s)!");
-        }
-        else
-        {
-            var result = Listener.Send(data, EndPoint);
-            Debug.Print($"{GetType().Name}: sent {result} byte(s)!");
-        }
+        Debug.Print(GetType().Name);
+
+
+        var result = Listener.Send(data, SendEndPoint);
+        Debug.Print($"{GetType().Name}: sent {result} byte(s)!");
+
     }
 
     /// <summary>Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.</summary>
