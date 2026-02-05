@@ -44,6 +44,9 @@ public class SdcpDataMessageSplitter : IDataMessageSplitter
         command.CopyTo(array);
         command = new ReadOnlySequence<byte>(array).Slice(0, command.Length);
 
+        // Now remove the command out of the buffer
+        buffer = buffer.Slice(command.Length);
+
         ArrayPool.Return(array);
 
         return result;
@@ -97,7 +100,6 @@ public class SdcpDataMessageSplitter : IDataMessageSplitter
             if (HandshakeLength == 1)
             {
                 command = buffer.Slice(0, 1);
-                buffer = buffer.Slice(1);
                 return true;
             }
 
@@ -110,7 +112,6 @@ public class SdcpDataMessageSplitter : IDataMessageSplitter
                     continue;
                 }
                 command = buffer.Slice(0, i);
-                buffer = buffer.Slice(i);
                 return true;
             }
 
@@ -128,12 +129,10 @@ public class SdcpDataMessageSplitter : IDataMessageSplitter
             if (!DeviceCommunicationBasics.MessageStartTokens.Contains(nextByte))
             {
                 command = buffer.Slice(0, HandshakeLength);
-                buffer = buffer.Slice(HandshakeLength);
                 return true;
             }
 
             command = buffer.Slice(0, 1);
-            buffer = buffer.Slice(1);
             return true;
         }
 
@@ -141,7 +140,6 @@ public class SdcpDataMessageSplitter : IDataMessageSplitter
         if (firstByte != DeviceCommunicationBasics.Stx)
         {
             command = default;
-            buffer = buffer.Slice(1);
             return false;
         }
 

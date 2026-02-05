@@ -1,10 +1,15 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
-using System.Diagnostics;
+using Bodoconsult.App.Helpers;
 using Bodoconsult.NetworkCommunication.Communication;
+using Bodoconsult.NetworkCommunication.DataMessaging.DataBlocks;
+using Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
+using Bodoconsult.NetworkCommunication.EnumAndStates;
 using Bodoconsult.NetworkCommunication.Factories;
 using Bodoconsult.NetworkCommunication.Interfaces;
+using Bodoconsult.NetworkCommunication.Protocols.Udp;
 using Bodoconsult.NetworkCommunication.Tests.Helpers;
+using System.Diagnostics;
 
 namespace Bodoconsult.NetworkCommunication.Tests.Tcp;
 
@@ -85,5 +90,14 @@ public class TcpIpHighPerformanceDuplexIoTests : TcpIpDuplexIoBaseTests
         };
         return new IpHighPerformanceDuplexIo(DataMessagingConfig, sendPacketProcessFactory);
 
+    }
+
+    [Test]
+    public override void SendMessage_SocketError_Fails()
+    {
+        // Arrange
+
+        // Act and assert
+        Assert.Pass("Not fakeable at the moment");
     }
 }

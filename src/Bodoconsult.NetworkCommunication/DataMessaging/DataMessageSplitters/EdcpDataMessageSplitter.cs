@@ -44,6 +44,9 @@ public class EdcpDataMessageSplitter : IDataMessageSplitter
         command.CopyTo(array);
         command = new ReadOnlySequence<byte>(array).Slice(0, command.Length);
 
+        // Now remove the command out of the buffer
+        buffer = buffer.Slice(command.Length);
+
         ArrayPool.Return(array);
 
         return result;

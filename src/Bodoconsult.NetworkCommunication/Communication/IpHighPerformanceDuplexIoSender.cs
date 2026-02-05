@@ -1,12 +1,13 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
+using Bodoconsult.App.Helpers;
+using Bodoconsult.NetworkCommunication.Helpers;
+using Bodoconsult.NetworkCommunication.Interfaces;
+using System;
 using System.Buffers;
 using System.IO.Pipelines;
 using System.Net.Sockets;
 using System.Runtime.InteropServices;
-using Bodoconsult.App.Helpers;
-using Bodoconsult.NetworkCommunication.Helpers;
-using Bodoconsult.NetworkCommunication.Interfaces;
 
 namespace Bodoconsult.NetworkCommunication.Communication;
 
@@ -90,7 +91,7 @@ public class IpHighPerformanceDuplexIoSender : BaseDuplexIoSender
             //Debug.Print($"SendMessage: {messageBytes.Length}");
 
             await _pipe.Writer.WriteAsync(message.RawMessageData);
-                
+
             AsyncHelper.FireAndForget(() => DataMessagingConfig.RaiseDataMessageSentDelegate?.Invoke(message.RawMessageData));
 
             return message.RawMessageData.Length;
@@ -101,7 +102,7 @@ public class IpHighPerformanceDuplexIoSender : BaseDuplexIoSender
             {
                 AsyncHelper.FireAndForget(() => DataMessagingConfig.RaiseDataMessageNotSentDelegate?.Invoke(message.RawMessageData, exception.Message));
             }
-                
+
             AsyncHelper.FireAndForget(() => DataMessagingConfig.DuplexIoErrorHandlerDelegate?.Invoke(exception));
             return 0;
         }
@@ -147,6 +148,7 @@ public class IpHighPerformanceDuplexIoSender : BaseDuplexIoSender
                 }
 
                 await SendMessageInternal(buffer);
+                
                 _pipe.Reader.AdvanceTo(buffer.Start, buffer.End);
 
                 ////Debug.Print($"Parsed command: {SmddeviceMessageHelper.GetStringFromArrayCsharpStyle(ref buffer)}");
@@ -189,8 +191,8 @@ public class IpHighPerformanceDuplexIoSender : BaseDuplexIoSender
             AsyncHelper.FireAndForget(() => DataMessagingConfig.DuplexIoErrorHandlerDelegate?.Invoke(exception));
         }
 
-        _pipe.Writer.Complete();
-        _pipe.Reader.Complete();
+        await _pipe.Writer.CompleteAsync();
+        await _pipe.Reader.CompleteAsync();
     }
 
     /// <summary>
@@ -215,25 +217,26 @@ public class IpHighPerformanceDuplexIoSender : BaseDuplexIoSender
             {
                 AsyncHelper.FireAndForget(() => DataMessagingConfig.RaiseComDevCloseRequestDelegate?.Invoke("TcpIpDuplexIoSender"));
                 AsyncHelper.FireAndForget(() => DataMessagingConfig.RaiseDataMessageNotSentDelegate?.Invoke(command.ToArray(), socketException.Message));
-                throw;
+                AsyncHelper.FireAndForget(() => DataMessagingConfig.DuplexIoErrorHandlerDelegate?.Invoke(socketException));
+                return;
             }
             catch (Exception e)
             {
                 AsyncHelper.FireAndForget(() => DataMessagingConfig.RaiseDataMessageNotSentDelegate?.Invoke(command.ToArray(), e.Message));
-                throw;
+                AsyncHelper.FireAndForget(() => DataMessagingConfig.DuplexIoErrorHandlerDelegate?.Invoke(e));
+                return;
             }
-
         }
 
         if (sent <= 0)
         {
             AsyncHelper.FireAndForget(() => DataMessagingConfig.RaiseDataMessageNotSentDelegate?.Invoke(command.ToArray(), "Reason unknown"));
             DataMessagingConfig?.MonitorLogger.LogError($"{DataMessagingConfig.LoggerId}message could not be sent via TCP socket. Only {0} bytes of {command.Length} bytes are sent.");
+            return;
         }
-        else
-        {
-            DataMessagingConfig?.MonitorLogger.LogInformation($"{DataMessagingConfig.LoggerId}sent to device: {DataMessageHelper.GetStringFromArrayCsharpStyle(command.ToArray())}");
-        }
+
+        DataMessagingConfig?.MonitorLogger.LogInformation($"{DataMessagingConfig.LoggerId}sent to device: {DataMessageHelper.GetStringFromArrayCsharpStyle(command.ToArray())}");
+        return;
 
     }
 

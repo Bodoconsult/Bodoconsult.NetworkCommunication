@@ -67,10 +67,7 @@ public class IpDuplexIoSender : BaseDuplexIoSender
         // Encode message
         try
         {
-
-
             result = DataMessageCodingProcessor.EncodeDataMessage(message);
-
                 
             if (result.ErrorCode != 0)
             {
@@ -82,6 +79,7 @@ public class IpDuplexIoSender : BaseDuplexIoSender
         catch (Exception encodeException)
         {
             AsyncHelper.FireAndForget(() => DataMessagingConfig.RaiseDataMessageNotSentDelegate?.Invoke(null, encodeException.Message));
+            AsyncHelper.FireAndForget(() => DataMessagingConfig.DuplexIoErrorHandlerDelegate?.Invoke(encodeException));
             return sent;
         }
 
@@ -116,7 +114,6 @@ public class IpDuplexIoSender : BaseDuplexIoSender
                         AsyncHelper.FireAndForget(() => DataMessagingConfig.RaiseDataMessageNotSentDelegate?.Invoke(message.RawMessageData, sendException.Message));
                         throw;
                     }
-                        
                         
                     isSent = true;
                     break;

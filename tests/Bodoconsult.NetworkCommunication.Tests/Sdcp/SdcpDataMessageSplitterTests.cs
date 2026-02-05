@@ -34,6 +34,7 @@ internal class SdcpDataMessageSplitterTests
         Assert.That(command.Length, Is.Not.EqualTo(0));
 
         Assert.That(command.IsEqualTo(expectedResult));
+        Assert.That(buffer.Length, Is.EqualTo(msg.Length - command.Length));
     }
 
     [Test]
@@ -55,5 +56,6 @@ internal class SdcpDataMessageSplitterTests
         Assert.That(command.Length, Is.Not.EqualTo(0));
 
         Assert.That(command.IsEqualTo(expectedResult));
+        Assert.That(buffer.Length, Is.EqualTo(msg.Length-command.Length));
     }
 }

@@ -7,6 +7,7 @@ using Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
 using Bodoconsult.NetworkCommunication.EnumAndStates;
 using Bodoconsult.NetworkCommunication.Factories;
 using Bodoconsult.NetworkCommunication.Interfaces;
+using Bodoconsult.NetworkCommunication.Protocols.Udp;
 using Bodoconsult.NetworkCommunication.Tests.Infrastructure;
 
 namespace Bodoconsult.NetworkCommunication.Tests.Tcp;
@@ -26,6 +27,7 @@ public abstract class TcpIpDuplexIoBaseTests : BaseTcpTests
             return;
         }
 
+        DuplexIo.Dispose();
         var t = DuplexIo.DisposeAsync();
         t.AsTask().Wait(2000);
         Socket?.Dispose();
@@ -204,7 +206,7 @@ public abstract class TcpIpDuplexIoBaseTests : BaseTcpTests
             DataBlock = new SdcpDummyDatablock
             {
                 DataBlockType = 'x',
-                Data = new byte[]{0x42, 0x6c, 0x75, 0x62, 0x62}
+                Data = new byte[] { 0x42, 0x6c, 0x75, 0x62, 0x62 }
             }
         };
 
@@ -219,74 +221,85 @@ public abstract class TcpIpDuplexIoBaseTests : BaseTcpTests
         Assert.That(!IsComDevCloseFired);
     }
 
+    [Test]
+    public void SendMessage_EncodingError_Fails()
+    {
+        // Arrange
+        DuplexIo = GetDuplexIoWithFakeEncodeDecoder(Socket, FakeSendPacketProcessEnum.EncodingError);
 
+        var message = new ShouldCrashDataMessage
+        {
+            MessageType = MessageTypeEnum.Sent 
+        };
 
-    //[Test]
-    //public void SendMessage_EncodingError_Fails()
-    //{
-    //    // Arrange
-    //    DuplexIo = GetDuplexIoWithFakeEncodeDecoder(Socket, FakeSendPacketProcessEnum.EncodingError);
+        // Act
 
-    //    var message = new SmdTowerDataMessage(SmdTower.TowerSn, 0x09, 's', MessageTypeEnum.Sent)
-    //    {
-    //        BlockAndRc = 0x7f
-    //    };
+        //Assert.Throws<MessageNotSentException>(() =>
+        //{
+        Send(message);
 
-    //    // Act
+        //});
 
-    //    //Assert.Throws<MessageNotSentException>(() =>
-    //    //{
-    //    Send(message);
+        // Assert
+        Wait.Until(() => IsDataMessageNotSentFired, 2000);
+        Assert.That(!IsDataMessageSentFired);
+        Assert.That(IsDataMessageNotSentFired);
+        Assert.That(!IsComDevCloseFired);
+    }
 
-    //    //});
+    [Test]
+    public virtual void SendMessage_SocketError_Fails()
+    {
+        // Arrange
+        var socket = new FakeUdpSocketProxy();
+        socket.SenderThrowSocketException = true;
 
-    //    // Assert
-    //    Wait.Until(() => IsTowerMessageNotSentFired, 2000);
-    //    Assert.That(!IsTowerMessageSentFired);
-    //    Assert.That(IsTowerMessageNotSentFired);
-    //    Assert.That(!IsComDevCloseFired);
-    //}
+        DuplexIo = GetDuplexIoWithFakeEncodeDecoder(socket, FakeSendPacketProcessEnum.SocketError);
 
-    //[Test]
-    //public void SendMessage_SocketError_Fails()
-    //{
-    //    // Arrange
-    //    DuplexIo = GetDuplexIoWithFakeEncodeDecoder(Socket, FakeSendPacketProcessEnum.SocketError);
+        var message = new SdcpDataMessage
+        {
+            MessageType = MessageTypeEnum.Sent,
+            DataBlock = new SdcpDummyDatablock
+            {
+                DataBlockType = 'x',
+                Data = new byte[] { 0x42, 0x6c, 0x75, 0x62, 0x62 }
+            }
+        };
 
-    //    var message = new SmdTowerDataMessage(SmdTower.TowerSn, 0x09, 's', MessageTypeEnum.Sent);
+        // Act
+        Send(message);
 
-    //    // Act
+        // Assert
+        Wait.Until(() => IsDataMessageNotSentFired);
+        Assert.That(IsDataMessageSentFired, Is.False);
+        Assert.That(IsDataMessageNotSentFired, Is.True);
+        Assert.That(IsComDevCloseFired, Is.True);
+    }
 
-    //    //Assert.Throws<MessageNotSentException>(() =>
-    //    //{
-    //    Send(message);
+    [Test]
+    public void ReceiveMessageFromTower_MessageS()
+    {
 
-    //    //});
+        // Arrange
+        var message = new SdcpDataMessage
+        {
+            MessageType = MessageTypeEnum.Sent,
+            DataBlock = new SdcpDummyDatablock
+            {
+                DataBlockType = 'x',
+                Data = new byte[] { 0x2, 0x78, 0x42, 0x6c, 0x75, 0x62, 0x62, 0x3 }
+            }
+        };
 
-    //    // AssertXmlAction_
-    //    Wait.Until(() => IsTowerMessageNotSentFired);
-    //    Assert.That(!IsTowerMessageSentFired);
-    //    Assert.That(IsTowerMessageNotSentFired);
-    //    Assert.That(IsComDevCloseFired);
-    //}
+        RunBasicTests(message.DataBlock.Data.ToArray(), 1);
 
-    //[Test]
-    //public void ReceiveMessageFromTower_MessageS()
-    //{
-
-    //    // Arrange
-    //    var message = new SmdTowerDataMessage(SmdTower.TowerSn, 0x08, 's', MessageTypeEnum.Received);
-
-    //    var data = TransportTestDataHelper.GetTestDataForCommand(message.Command);
-    //    RunBasicTests(data, 1);
-
-    //    // Assert
-    //    Wait.Until(() => IsMessageReceivedFired, 2000);
-    //    Assert.That(IsMessageReceivedFired);
-    //    Assert.That(!IsMessageNotReceivedFired);
-    //    Assert.That(!IsComDevCloseFired);
-    //    Assert.That(!IsCorruptedMessageFired);
-    //    Assert.That(!IsOnNotExpectedMessageReceivedFired);
-    //}
+        // Assert
+        Wait.Until(() => IsMessageReceivedFired, 2000);
+        Assert.That(IsMessageReceivedFired);
+        Assert.That(!IsMessageNotReceivedFired);
+        Assert.That(!IsComDevCloseFired);
+        Assert.That(!IsCorruptedMessageFired);
+        Assert.That(!IsOnNotExpectedMessageReceivedFired);
+    }
 
 }

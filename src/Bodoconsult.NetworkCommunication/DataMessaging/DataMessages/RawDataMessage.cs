@@ -30,7 +30,7 @@ public class RawDataMessage : IDataMessage
     public bool WaitForAcknowledgement => false;
 
     /// <summary>
-    /// Should a acknowledgement be sent if the message is received
+    /// Should an acknowledgement be sent if the message is received
     /// </summary>
     public bool AnswerWithAcknowledgement { get; set; }
 

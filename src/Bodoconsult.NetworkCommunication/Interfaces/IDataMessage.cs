@@ -27,7 +27,7 @@ public interface IDataMessage
     bool WaitForAcknowledgement { get; }
 
     /// <summary>
-    /// Should a acknowledgement be sent if the message is received
+    /// Should an acknowledgement be sent if the message is received
     /// </summary>
     bool AnswerWithAcknowledgement { get; }
 
@@ -48,7 +48,7 @@ public interface IDataMessage
     string ToInfoString();
 
     /// <summary>
-    /// Create an short info string for logging
+    /// Create a short info string for logging
     /// </summary>
     /// <returns>Info string</returns>
     string ToShortInfoString();
