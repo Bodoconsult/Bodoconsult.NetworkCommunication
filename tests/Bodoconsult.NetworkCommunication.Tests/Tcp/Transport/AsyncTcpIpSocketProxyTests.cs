@@ -1,7 +1,7 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
-using System.Net;
 using Bodoconsult.NetworkCommunication.Protocols.TcpIp;
+using System.Net;
 
 namespace Bodoconsult.NetworkCommunication.Tests.Tcp.Transport;
 
@@ -18,6 +18,8 @@ public class AsyncTcpIpSocketProxyTests : BaseTestsTcpIpSocket
     public void TestSetup()
     {
         Socket = new AsyncTcpIpSocketProxy();
+        Socket.IpAddress = IPAddress.Parse(IpAddress);
+        Socket.Port = Port;
 
         CurrentIpEndPoint = new IPEndPoint(IPAddress.Parse(IpAddress), Port);
     }

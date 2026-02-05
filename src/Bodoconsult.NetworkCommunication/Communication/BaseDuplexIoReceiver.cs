@@ -1,6 +1,10 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
+using Bodoconsult.App.Helpers;
+using Bodoconsult.App.Interfaces;
+using Bodoconsult.NetworkCommunication.Delegates;
 using Bodoconsult.NetworkCommunication.Interfaces;
+using System.Diagnostics;
 
 namespace Bodoconsult.NetworkCommunication.Communication;
 
@@ -9,11 +13,42 @@ namespace Bodoconsult.NetworkCommunication.Communication;
 /// </summary>
 public class BaseDuplexIoReceiver : IDuplexIoReceiver
 {
+
+    /// <summary>
+    /// Current polling timeout in seconds
+    /// </summary>
     protected int PollingTimeOut;
 
-    //private readonly int _timeOut = 2000;
+    /// <summary>
+    /// Work is in progress delegate for DuplexIO
+    /// </summary>
+    protected DuplexIoIsWorkInProgressDelegate DuplexIoIsWorkInProgressDelegate;
 
+    /// <summary>
+    /// No data available delegate for DuplexIO
+    /// </summary>
+    protected DuplexIoNoDataDelegate DuplexIoNoDataDelegate;
 
+    /// <summary>
+    /// Current cancellation token source
+    /// </summary>
+    protected CancellationTokenSource CancellationSource;
+
+    /// <summary>
+    /// Current logger
+    /// </summary>
+    protected IAppLoggerProxy Logger;
+
+    /// <summary>
+    /// Default ctor
+    /// </summary>
+    /// <param name="dataMessagingConfig">Current data messaging config</param>
+    public BaseDuplexIoReceiver(IDataMessagingConfig dataMessagingConfig)
+    {
+        DataMessagingConfig = dataMessagingConfig;
+        UpdateDataMessageProcessingPackage();
+        Logger = DataMessagingConfig.MonitorLogger;
+    }
 
     /// <summary>
     /// Current device comm settings
@@ -35,21 +70,55 @@ public class BaseDuplexIoReceiver : IDuplexIoReceiver
     /// </summary>
     public IDataMessageProcessor DataMessageProcessor { get; private set; }
 
+    /// <summary>
+    /// Thread filling receiver pipeline
+    /// </summary>
+    public Thread FillPipelineTask { get; protected set; }
 
-    public BaseDuplexIoReceiver(IDataMessagingConfig deviceCommSettings)
-    {
-        DataMessagingConfig = deviceCommSettings;
-        UpdateDataMessageProcessingPackage();
-    }
-
-        
+    /// <summary>
+    /// Thread sending messages from receiver pipeline to app internal consumers
+    /// </summary>
+    public Thread SendPipelineTask { get; protected set; }
 
     /// <summary>
     /// Start the internal receiver
     /// </summary>
-    public virtual Task StartReceiver()
+    public virtual async Task StartReceiver()
     {
-        throw new NotSupportedException();
+        if (CancellationSource != null)
+        {
+            try
+            {
+                CancellationSource.Cancel();
+                CancellationSource?.Dispose();
+            }
+            catch (Exception e)
+            {
+                Logger?.LogError("CancellationToken cancelling failed", e);
+            }
+        }
+
+        CancellationSource = new();
+
+        await Task.Run(() =>
+        {
+            FillPipelineTask = new Thread(StartSendMessagePipeline)
+            {
+                Priority = ThreadPriority.Normal,
+                IsBackground = true
+            };
+            FillPipelineTask.Start();
+        });
+
+        await Task.Run(() =>
+        {
+            FillPipelineTask = new Thread(StartFillMessagePipeline)
+            {
+                Priority = ThreadPriority.AboveNormal,
+                IsBackground = true
+            };
+            FillPipelineTask.Start();
+        });
     }
 
     /// <summary>
@@ -58,6 +127,68 @@ public class BaseDuplexIoReceiver : IDuplexIoReceiver
     public virtual Task StopReceiver()
     {
         throw new NotSupportedException();
+    }
+
+    public void StartFillMessagePipeline()
+    {
+        Debug.Print("StartFillMessagePipeline in progress");
+
+        try
+        {
+
+            //while (!_cancellationSource.Token.IsCancellationRequested)
+            //{
+
+            //    if (!DataMessagingConfig.SocketProxy.Connected)
+            //    {
+            //        AsyncHelper.FireAndForget(() => DataMessagingConfig.DuplexIoErrorHandlerDelegate?.Invoke(new SocketException()));
+            //        break;
+            //    }
+
+            var task = Task.Run(FillMessagePipeline);
+            task.Wait();
+            task.Dispose();
+
+            //AsyncHelper.Delay(FillPipelineTimeout);
+
+            //}
+
+        }
+        catch (Exception exception)
+        {
+            AsyncHelper.FireAndForget(() => DataMessagingConfig.DuplexIoErrorHandlerDelegate?.Invoke(exception));
+        }
+    }
+
+    public void StartSendMessagePipeline()
+    {
+        Debug.Print("StartSendMessagePipeline in progress");
+
+        try
+        {
+
+            //while (!_cancellationSource.Token.IsCancellationRequested)
+            //{
+
+            //    if (!DataMessagingConfig.SocketProxy.Connected)
+            //    {
+            //        AsyncHelper.FireAndForget(() => DataMessagingConfig.DuplexIoErrorHandlerDelegate?.Invoke(new SocketException()));
+            //        break;
+            //    }
+
+            var task = Task.Run(SendMessagePipeline);
+            task.Wait();
+            task.Dispose();
+
+            //AsyncHelper.Delay(FillPipelineTimeout);
+
+            //}
+
+        }
+        catch (Exception exception)
+        {
+            AsyncHelper.FireAndForget(() => DataMessagingConfig.DuplexIoErrorHandlerDelegate?.Invoke(exception));
+        }
     }
 
     /// <summary>

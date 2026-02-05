@@ -58,7 +58,7 @@ public class RawDataMessage : IDataMessage
     /// <returns>Info string</returns>
     public string ToInfoString()
     {
-        return $"RawDataMessage {MessageId} Length:{RawMessageData.Length} Data:{DataMessageHelper.ByteArrayToString(RawMessageData)}";
+        return $"RawDataMessage {MessageId} Length:{RawMessageData.Length} Data:{RawMessageDataClearText}";
     }
 
     /// <summary>

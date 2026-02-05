@@ -3,6 +3,7 @@
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
 using Bodoconsult.NetworkCommunication.Helpers;
 using Bodoconsult.NetworkCommunication.Interfaces;
+using System;
 
 namespace Bodoconsult.NetworkCommunication.DataMessaging.DataMessageCodecs;
 
@@ -100,6 +101,12 @@ public class SdcpDataMessageCodec : BaseDataMessageCodec
         // Add the datablock now if required
         try
         {
+            if (tMessage.DataBlock == null)
+            {
+                result.ErrorMessage = "SdcpDataMessageCodec: datablock must not be null";
+                result.ErrorCode = 5;
+                return result;
+            }
             DataBlockCodingProcessor.FromDataBlockToBytes(data, tMessage.DataBlock);
         }
         catch (Exception exception)

@@ -1,7 +1,7 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
-using Bodoconsult.App.Helpers;
 using Bodoconsult.NetworkCommunication.EnumAndStates;
+using Bodoconsult.NetworkCommunication.Helpers;
 using Bodoconsult.NetworkCommunication.Interfaces;
 
 namespace Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
@@ -11,6 +11,7 @@ namespace Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
 /// </summary>
 public class SdcpDataMessage: IDataMessage
 {
+    private Memory<byte> _rawMessageData;
 
     /// <summary>
     /// Default ctor
@@ -43,7 +44,15 @@ public class SdcpDataMessage: IDataMessage
     /// <summary>
     /// Current raw message data as byte array
     /// </summary>
-    public Memory<byte> RawMessageData { get; set; }
+    public Memory<byte> RawMessageData
+    {
+        get => _rawMessageData;
+        set
+        {
+            _rawMessageData = value;
+            RawMessageDataClearText = DataMessageHelper.GetStringFromArrayCsharpStyle(_rawMessageData);
+        }
+    }
 
     /// <summary>
     /// Current raw message data as clear text
@@ -56,7 +65,7 @@ public class SdcpDataMessage: IDataMessage
     /// <returns>Info string</returns>
     public string ToInfoString()
     {
-        return $"SdcpDataMessage ID {MessageId} {MessageType.ToString()} {ArrayHelper.GetStringFromArrayCsharpStyle(RawMessageData)}";
+        return $"SdcpDataMessage ID {MessageId} {MessageType.ToString()} {RawMessageDataClearText}";
     }
 
     public string ToShortInfoString()

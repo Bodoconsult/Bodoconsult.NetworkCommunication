@@ -11,6 +11,11 @@ namespace Bodoconsult.NetworkCommunication.Protocols.TcpIp;
 public abstract class TcpIpSocketProxyBase : ISocketProxy
 {
     /// <summary>
+    /// Minimum buffer size
+    /// </summary>
+    public int MinimumBufferSize { get; set; } = 512;
+
+    /// <summary>
     /// IP address of the server
     /// </summary>
     public IPAddress IpAddress { get; set; }

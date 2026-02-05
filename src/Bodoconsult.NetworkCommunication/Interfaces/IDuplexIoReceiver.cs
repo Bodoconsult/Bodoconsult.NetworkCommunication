@@ -5,8 +5,18 @@ namespace Bodoconsult.NetworkCommunication.Interfaces;
 /// <summary>
 /// Interface for the receiver side of an <see cref="IDuplexIo"/> based communication interface
 /// </summary>
-public interface IDuplexIoReceiver: IAsyncDisposable, IDisposable
+public interface IDuplexIoReceiver : IAsyncDisposable, IDisposable
 {
+    /// <summary>
+    /// Thread filling receiver pipeline
+    /// </summary>
+    Thread FillPipelineTask { get; }
+
+    /// <summary>
+    /// Thread sending messages from receiver pipeline to app internal consumers
+    /// </summary>
+    Thread SendPipelineTask { get; }
+
     /// <summary>
     /// Start the internal receiver
     /// </summary>

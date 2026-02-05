@@ -13,11 +13,8 @@ namespace Bodoconsult.NetworkCommunication.Communication;
 /// </summary>
 public class IpDuplexIo : BaseDuplexIo
 {
-
     private readonly DuplexIoIsWorkInProgressDelegate _duplexIoIsWorkInProgressDelegate;
-
-    private readonly DuplexIoSetNotInProgressDelegate _duplexIoSetNotInProgressDelegate;
-
+    private readonly DuplexIoNoDataDelegate _duplexIoNoDataDelegate;
     private const int NumberOfRetriesSetWorkinProgress = 100;
 
     /// <summary>
@@ -28,8 +25,7 @@ public class IpDuplexIo : BaseDuplexIo
     /// <summary>
     /// Lock object for work in progress management
     /// </summary>
-    private static readonly object LockObject = new();
-
+    private readonly Lock _lockObject = new();
 
     /// <summary>
     /// Default ctor
@@ -37,7 +33,7 @@ public class IpDuplexIo : BaseDuplexIo
     public IpDuplexIo(IDataMessagingConfig dataMessaging, ISendPacketProcessFactory sendPacketProcessFactory) : base(dataMessaging, sendPacketProcessFactory)
     {
         _duplexIoIsWorkInProgressDelegate = DuplexIoIsWorkInProgress;
-        _duplexIoSetNotInProgressDelegate = DuplexIoSetNotInProgress;
+        _duplexIoNoDataDelegate = DuplexIoSetNotInProgress;
     }
 
     /// <summary>
@@ -81,7 +77,7 @@ public class IpDuplexIo : BaseDuplexIo
         try
         {
             //Debug.Print($"IsWorkInProgress: {value}");
-            lock (LockObject)
+            lock (_lockObject)
             {
                 IsWorkInProgress = value;
             }
@@ -93,7 +89,7 @@ public class IpDuplexIo : BaseDuplexIo
             AsyncHelper.Delay(5);
         }
 
-        lock (LockObject)
+        lock (_lockObject)
         {
             IsWorkInProgress = value;
         }
@@ -111,13 +107,13 @@ public class IpDuplexIo : BaseDuplexIo
             {
                 Receiver ??= new IpDuplexIoReceiver(DataMessagingConfig,
                     _duplexIoIsWorkInProgressDelegate,
-                    _duplexIoSetNotInProgressDelegate);
+                    _duplexIoNoDataDelegate);
 
                 await Receiver.StartReceiver();
 
                 Sender ??= new IpDuplexIoSender(DataMessagingConfig,
                     _duplexIoIsWorkInProgressDelegate,
-                    _duplexIoSetNotInProgressDelegate);
+                    _duplexIoNoDataDelegate);
             }
             catch (Exception e)
             {
@@ -164,7 +160,5 @@ public class IpDuplexIo : BaseDuplexIo
         {
             // Do nothing
         }
-
     }
-
 }

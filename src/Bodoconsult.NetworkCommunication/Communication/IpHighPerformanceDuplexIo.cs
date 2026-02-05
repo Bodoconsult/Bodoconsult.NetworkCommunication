@@ -1,8 +1,8 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
+using System.Diagnostics;
 using System.IO.Pipelines;
 using Bodoconsult.NetworkCommunication.Interfaces;
-using Bodoconsult.NetworkCommunication.Protocols.TcpIp;
 
 namespace Bodoconsult.NetworkCommunication.Communication;
 
@@ -13,6 +13,7 @@ public class IpHighPerformanceDuplexIo : BaseDuplexIo, IDuplexPipe
 {
     private readonly Pipe _readPipe;
     private readonly Pipe _writePipe;
+    private readonly IDataMessagingConfig _config;
 
     /// <summary>
     /// Timeout for polling in milliseconds
@@ -26,6 +27,7 @@ public class IpHighPerformanceDuplexIo : BaseDuplexIo, IDuplexPipe
     {
         _readPipe = new Pipe();
         _writePipe = new Pipe();
+        _config = config;
     }
 
     /// <summary>
@@ -36,20 +38,26 @@ public class IpHighPerformanceDuplexIo : BaseDuplexIo, IDuplexPipe
     {
         await Task.Run(async () =>
         {
-            if (Receiver == null)
+            try
             {
-                Receiver = new IpHighPerformanceDuplexIoReceiver(_readPipe, DataMessagingConfig, PollingTimeout);
+                if (Receiver == null)
+                {
+                    Receiver = new IpHighPerformanceDuplexIoReceiver(_readPipe, DataMessagingConfig, PollingTimeout);
+                    await Receiver.StartReceiver();
+                }
 
-                await Receiver.StartReceiver();
-
+                if (Sender == null)
+                {
+                    Sender = new IpHighPerformanceDuplexIoSender(_writePipe, DataMessagingConfig, PollingTimeout);
+                    await Sender.StartSender();
+                }
+            }
+            catch (Exception e)
+            {
+                Debug.Print(e.ToString());
+                _config.MonitorLogger?.LogError(e, "Starting comm failed");
             }
 
-            if (Sender == null)
-            {
-                Sender = new IpHighPerformanceDuplexIoSender(_writePipe, DataMessagingConfig, PollingTimeout);
-
-                await Sender.StartSender();
-            }
         });
 
         IsCommunicationStarted = true;

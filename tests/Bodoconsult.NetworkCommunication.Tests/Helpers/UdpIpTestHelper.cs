@@ -1,11 +1,12 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen. All rights reserved.
 
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig;
-using Bodoconsult.NetworkCommunication.Protocols.TcpIp;
 using Bodoconsult.NetworkCommunication.Testing;
 using Bodoconsult.NetworkCommunication.Tests.Interfaces;
 using Bodoconsult.NetworkCommunication.Tests.TestData;
 using System.Net;
+using Bodoconsult.NetworkCommunication.DataMessaging.DataMessageProcessingPackages;
+using Bodoconsult.NetworkCommunication.Protocols.Udp;
 
 namespace Bodoconsult.NetworkCommunication.Tests.Helpers;
 
@@ -17,13 +18,13 @@ public static class UdpIpTestHelper
     public static void InitServer(IUdpTests testSetup)
     {
         testSetup.DataMessagingConfig = new DefaultDataMessagingConfig();
-        testSetup.DataMessagingConfig.DataMessageProcessingPackage = new DummyDataMessageProcessingPackage(testSetup.DataMessagingConfig);
+        testSetup.DataMessagingConfig.DataMessageProcessingPackage = new SdcpDataMessageProcessingPackage(testSetup.DataMessagingConfig);
 
         testSetup.IpAddress = IPAddress.Parse(testSetup.DataMessagingConfig.IpAddress);
 
         testSetup.Server?.Dispose();
 
-        testSetup.Server = new UdpTestUniCastServer(testSetup.IpAddress, testSetup.DataMessagingConfig.Port);
+        testSetup.Server = new UdpTestUniCastServer(testSetup.IpAddress, testSetup.DataMessagingConfig.Port, testSetup.DataMessagingConfig.Port + 1);
         testSetup.Server.Start();
     }
 
@@ -36,7 +37,6 @@ public static class UdpIpTestHelper
 
         //testSetup.Server.WaitForConnections().GetAwaiter().GetResult();
 
-
         // Close socket if necessary
         try
         {
@@ -47,11 +47,11 @@ public static class UdpIpTestHelper
             // Do nothing
         }
 
-
         // Load socket
-        var socket = new AsyncTcpIpSocketProxy();
+        var socket = new AsyncUdpSocketProxy(true);
         socket.IpAddress = testSetup.IpAddress;
-        socket.Port = testSetup.DataMessagingConfig.Port;
+        socket.Port = testSetup.DataMessagingConfig.Port + 1;
+        socket.ClientPort = testSetup.DataMessagingConfig.Port;
         testSetup.Socket = socket;
 
         testSetup.Socket.Connect().Wait();

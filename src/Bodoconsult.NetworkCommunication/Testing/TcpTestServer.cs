@@ -4,7 +4,6 @@
 using System.Diagnostics;
 using System.Net;
 using System.Net.Sockets;
-using System.Reflection.Metadata;
 
 namespace Bodoconsult.NetworkCommunication.Testing;
 
@@ -65,23 +64,21 @@ public class TcpTestServer : IDisposable
     {
         //try
         //{
+
         // Using Bind() method we associate a
-        // network address to the Server Socket
+        // network address to the server socket.
         // All client that will connect to this
-        // Server Socket must know this network
+        // server socket must know this network
         // Address
         _listener.Bind(_endPoint);
 
-
-        _listener.BeginAccept(AcceptCallback, _listener);
-
-
         //// Using Listen() method we create
-        //// the Client list that will want
+        //// the client list that will want
         //// to connect to Server
         _listener.Listen(10);
 
-
+        // Now wait for client connections
+        _listener.BeginAccept(AcceptCallback, _listener);
 
         //}
         //catch (Exception e)
@@ -117,7 +114,6 @@ public class TcpTestServer : IDisposable
     {
         while (!CancellationTokenSource.Token.IsCancellationRequested)
         {
-
             // Suspend while waiting for
             // incoming connection Using
             // Accept() method the server

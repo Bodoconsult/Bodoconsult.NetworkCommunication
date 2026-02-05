@@ -15,20 +15,20 @@ public class IpDuplexIoSender : BaseDuplexIoSender
 {
 
     private readonly DuplexIoIsWorkInProgressDelegate _duplexIoIsWorkInProgressDelegate;
-    private readonly DuplexIoSetNotInProgressDelegate _duplexIoSetNotInProgressDelegate;
+    private readonly DuplexIoNoDataDelegate _duplexIoNoDataDelegate;
 
     /// <summary>
     /// Default ctor
     /// </summary>
     /// <param name="deviceCommSettings">Current device comm settings</param>
     /// <param name="duplexIoIsWorkInProgressDelegate">Delegate for checking if the socket is wokring currently</param>
-    /// <param name="duplexIoSetNotInProgressDelegate">Delegate to set socket state to no work in progress</param>
+    /// <param name="duplexIoNoDataDelegate">Delegate to set socket state to no work in progress</param>
     public IpDuplexIoSender(IDataMessagingConfig deviceCommSettings,
         DuplexIoIsWorkInProgressDelegate duplexIoIsWorkInProgressDelegate,
-        DuplexIoSetNotInProgressDelegate duplexIoSetNotInProgressDelegate): base(deviceCommSettings)
+        DuplexIoNoDataDelegate duplexIoNoDataDelegate) : base(deviceCommSettings)
     {
         _duplexIoIsWorkInProgressDelegate = duplexIoIsWorkInProgressDelegate;
-        _duplexIoSetNotInProgressDelegate = duplexIoSetNotInProgressDelegate;
+        _duplexIoNoDataDelegate = duplexIoNoDataDelegate;
     }
 
     /// <summary>
@@ -97,11 +97,11 @@ public class IpDuplexIoSender : BaseDuplexIoSender
                     try
                     {
                         sent = await DataMessagingConfig.SocketProxy.Send(message.RawMessageData);  
-                        _duplexIoSetNotInProgressDelegate();
+                        _duplexIoNoDataDelegate();
                             
                         var s = $"{message.RawMessageDataClearText}  {message.ToShortInfoString()}";
                         Debug.Print(s);
-                        DataMessagingConfig.MonitorLogger.LogInformation($"Message sent: {s}");
+                        DataMessagingConfig.MonitorLogger?.LogInformation($"Message sent: {s}");
 
                         AsyncHelper.FireAndForget(() => DataMessagingConfig.RaiseDataMessageSentDelegate?.Invoke(message.RawMessageData));
                     }
@@ -139,12 +139,12 @@ public class IpDuplexIoSender : BaseDuplexIoSender
             var msg = $"{DataMessagingConfig.LoggerId}message could not be sent via TCP socket. Only {0} bytes of {message.RawMessageData.Length} bytes are sent.";
             AsyncHelper.FireAndForget(() => DataMessagingConfig.RaiseDataMessageNotSentDelegate?.Invoke(message.RawMessageData, msg));
             DataMessagingConfig.MonitorLogger?.LogError(msg);
-            DataMessagingConfig.AppLogger.LogError($"{DataMessagingConfig.LoggerId}{msg}");
+            DataMessagingConfig.AppLogger?.LogError($"{DataMessagingConfig.LoggerId}{msg}");
             return sent;
         }
         catch (Exception exception)
         {
-            _duplexIoSetNotInProgressDelegate();
+            _duplexIoNoDataDelegate();
             AsyncHelper.FireAndForget(() => DataMessagingConfig.DuplexIoErrorHandlerDelegate?.Invoke(exception));
             return 0;
         }

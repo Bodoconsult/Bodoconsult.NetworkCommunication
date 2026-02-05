@@ -1,10 +1,13 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen. All rights reserved.
 
-using System.Diagnostics;
 using Bodoconsult.App.Helpers;
+using Bodoconsult.NetworkCommunication.DataMessaging.DataBlocks;
+using Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
+using Bodoconsult.NetworkCommunication.EnumAndStates;
 using Bodoconsult.NetworkCommunication.Factories;
 using Bodoconsult.NetworkCommunication.Interfaces;
 using Bodoconsult.NetworkCommunication.Tests.Infrastructure;
+using System.Diagnostics;
 
 namespace Bodoconsult.NetworkCommunication.Tests.Tcp;
 
@@ -137,9 +140,8 @@ public abstract class UdpIpDuplexIoBaseTests : BaseUdpTests
         Assert.That(DuplexIo.DataMessagingConfig.SocketProxy, Is.Not.Null);
     }
 
-
     [Test]
-    public void TestStart()
+    public void StartCommunication_ValidSetup_CommStarted()
     {
         // Arrange 
 
@@ -151,28 +153,68 @@ public abstract class UdpIpDuplexIoBaseTests : BaseUdpTests
         Assert.That(DuplexIo.Sender, Is.Not.Null);
 
         DuplexIo.StopCommunication();
-
     }
 
+    [Test]
+    public void StopCommunication_ValidSetup_CommStopped()
+    {
+        // Arrange 
 
-    //[Test]
-    //public void SendMessage_MessageS_Success()
-    //{
-    //    // Arrange
-    //    var message = new SmdTowerDataMessage(SmdTower.TowerSn, 0x09, 's', MessageTypeEnum.Sent);
+        // Act  
+        DuplexIo.StartCommunication().Wait();
+        DuplexIo.StopCommunication().Wait();
 
-    //    // Act
-    //    Send(message);
+        // Assert
+        Assert.That(DuplexIo.Receiver, Is.Not.Null);
+        Assert.That(DuplexIo.Sender, Is.Not.Null);
+        Assert.That(DuplexIo.Receiver.FillPipelineTask, Is.Null);
+        Assert.That(DuplexIo.Receiver.SendPipelineTask, Is.Null);
+    }
 
-    //    Wait.Until(() => IsTowerMessageSentFired);
+    [Test]
+    public void SendMessage_MessageSWithoutDatablock_NotSent()
+    {
+        // Arrange
+        var message = new SdcpDataMessage
+        {
+            MessageType = MessageTypeEnum.Sent,
+        };
 
-    //    // Assert
-    //    Assert.That(IsTowerMessageSentFired);
-    //    Assert.That(!IsTowerMessageNotSentFired);
-    //    Assert.That(!IsComDevCloseFired);
-    //}
+        // Act
+        Send(message);
 
+        Wait.Until(() => IsDataMessageSentFired);
 
+        // Assert
+        Assert.That(!IsDataMessageSentFired);
+        Assert.That(IsDataMessageNotSentFired);
+        Assert.That(!IsComDevCloseFired);
+    }
+
+    [Test]
+    public void SendMessage_MessageS_Sent()
+    {
+        // Arrange
+        var message = new SdcpDataMessage
+        {
+            MessageType = MessageTypeEnum.Sent,
+            DataBlock = new SdcpDummyDatablock
+            {
+                DataBlockType = 'x',
+                Data = new byte[] { 0x42, 0x6c, 0x75, 0x62, 0x62 }
+            }
+        };
+
+        // Act
+        Send(message);
+
+        Wait.Until(() => IsDataMessageSentFired);
+
+        // Assert
+        Assert.That(IsDataMessageSentFired);
+        Assert.That(!IsDataMessageNotSentFired);
+        Assert.That(!IsComDevCloseFired);
+    }
 
     //[Test]
     //public void SendMessage_EncodingError_Fails()

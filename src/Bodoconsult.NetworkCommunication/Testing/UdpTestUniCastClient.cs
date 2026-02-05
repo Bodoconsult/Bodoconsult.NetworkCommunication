@@ -1,7 +1,6 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen. All rights reserved.
 
 using System.Net;
-using System.Net.Sockets;
 
 namespace Bodoconsult.NetworkCommunication.Testing;
 

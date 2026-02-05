@@ -43,55 +43,50 @@ public class AsyncUdpSocketProxy : UpdSocketProxyBase
     /// </summary>
     public UdpClient UdpClient { get; protected set; }
 
-    /// <summary>
-    /// Is the socket connected
-    /// </summary>
-    public override bool Connected
-    {
-        get
-        {
-            // Replacement for Socket.Connected. See sample at the end of https://learn.microsoft.com/en-us/dotnet/api/system.net.sockets.socket.connected?redirectedfrom=MSDN&view=net-7.0#System_Net_Sockets_Socket_Connected
-            try
-            {
-                if (UdpClient.Client is not { Connected: true })
-                {
-                    return false;
-                }
+    ///// <summary>
+    ///// Is the socket connected
+    ///// </summary>
+    //public override bool Connected
+    //{
+    //    get
+    //    {
+    //        // Replacement for Socket.Connected. See sample at the end of https://learn.microsoft.com/en-us/dotnet/api/system.net.sockets.socket.connected?redirectedfrom=MSDN&view=net-7.0#System_Net_Sockets_Socket_Connected
+    //        try
+    //        {
+    //            // This is how you can determine whether a socket is still connected.
+    //            var blockingState = UdpClient.Client.Blocking;
+    //            try
+    //            {
+    //                UdpClient.Client.Blocking = false;
+    //                UdpClient.Client.Send(_tmp, 0, 0);
+    //                //Console.WriteLine("Connected!");
+    //            }
+    //            catch (SocketException e)
+    //            {
+    //                // 10035 == WSAEWOULDBLOCK
+    //                if (e.NativeErrorCode.Equals(10035))
+    //                {
+    //                    // Still connected, but the send would block;
+    //                }
+    //                else
+    //                {
+    //                    // Disconnected
+    //                    return false;
+    //                }
+    //            }
+    //            finally
+    //            {
+    //                UdpClient.Client.Blocking = blockingState;
+    //            }
 
-                // This is how you can determine whether a socket is still connected.
-                var blockingState = UdpClient.Client.Blocking;
-                try
-                {
-                    UdpClient.Client.Blocking = false;
-                    UdpClient.Client.Send(_tmp, 0, 0);
-                    //Console.WriteLine("Connected!");
-                }
-                catch (SocketException e)
-                {
-                    // 10035 == WSAEWOULDBLOCK
-                    if (e.NativeErrorCode.Equals(10035))
-                    {
-                        // Still connected, but the send would block;
-                    }
-                    else
-                    {
-                        // Disconnected
-                        return false;
-                    }
-                }
-                finally
-                {
-                    UdpClient.Client.Blocking = blockingState;
-                }
-
-                return true;
-            }
-            catch //(Exception e)
-            {
-                return false;
-            }
-        }
-    }
+    //            return true;
+    //        }
+    //        catch //(Exception e)
+    //        {
+    //            return false;
+    //        }
+    //    }
+    //}
 
     /// <summary>
     /// The number of bytes available to read
@@ -117,7 +112,7 @@ public class AsyncUdpSocketProxy : UpdSocketProxyBase
     /// <param name="bytesToSend">Byte array to send</param>
     public override Task<int> Send(byte[] bytesToSend)
     {
-        return !UdpClient.Client.Connected ? Task.FromResult(0) : UdpClient.SendAsync(bytesToSend, bytesToSend.Length);
+        return UdpClient.SendAsync(bytesToSend, bytesToSend.Length);
     }
 
     /// <summary>
@@ -126,7 +121,7 @@ public class AsyncUdpSocketProxy : UpdSocketProxyBase
     /// <param name="bytesToSend">Data to send</param>
     public override ValueTask<int> Send(ReadOnlyMemory<byte> bytesToSend)
     {
-        return !UdpClient.Client.Connected ? new ValueTask<int>(0) : UdpClient.SendAsync(bytesToSend);
+        return UdpClient.SendAsync(bytesToSend, SendEndPoint);
     }
 
     /// <summary>
@@ -298,7 +293,7 @@ public class AsyncUdpSocketProxy : UpdSocketProxyBase
     /// <returns></returns>
     public override Task<int> Send(byte[] bytesToSend, int offset, int messageBytesLength)
     {
-        return !UdpClient.Client.Connected ? Task.FromResult(0) : UdpClient.Client.SendAsync(bytesToSend, offset, messageBytesLength);
+        return UdpClient.Client.SendAsync(bytesToSend, offset, messageBytesLength);
     }
 
     ///// <summary>

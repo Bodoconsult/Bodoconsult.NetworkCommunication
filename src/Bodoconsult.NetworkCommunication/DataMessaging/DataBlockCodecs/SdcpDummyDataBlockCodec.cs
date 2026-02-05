@@ -47,10 +47,20 @@ public class SdcpDummyDataBlockCodec : IDataBlockCodec
 
         // You should add some datablock validation here
 
+        // 
+
         // Now create your datablock as request by specs here
+        if (datablockBytes.Length < 2)
+        {
+            return new SdcpDummyDatablock
+            {
+                Data = Array.Empty<byte>(),
+                DataBlockType = 'x'
+            };
+        }
         return new SdcpDummyDatablock
         {
-            Data = datablockBytes,
+            Data = datablockBytes[1..],
             DataBlockType = 'x'
         };
     }

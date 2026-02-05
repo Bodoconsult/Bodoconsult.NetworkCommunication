@@ -2,6 +2,7 @@
 
 
 using System.Net;
+using Bodoconsult.NetworkCommunication.DataMessaging.DataMessageProcessingPackages;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig;
 using Bodoconsult.NetworkCommunication.Protocols.TcpIp;
 using Bodoconsult.NetworkCommunication.Testing;
@@ -18,7 +19,7 @@ public static class TcpIpTestHelper
     public static void InitServer(ITcpTests testSetup)
     {
         testSetup.DataMessagingConfig = new DefaultDataMessagingConfig();
-        testSetup.DataMessagingConfig.DataMessageProcessingPackage = new DummyDataMessageProcessingPackage(testSetup.DataMessagingConfig);
+        testSetup.DataMessagingConfig.DataMessageProcessingPackage = new SdcpDataMessageProcessingPackage(testSetup.DataMessagingConfig);
 
         testSetup.IpAddress = IPAddress.Parse(testSetup.DataMessagingConfig.IpAddress);
 

@@ -508,6 +508,7 @@ Depending on the purpose of your network communication protocol you will impleme
 /// </summary>
 public class SdcpDataMessage: IDataMessage
 {
+    private Memory<byte> _rawMessageData;
 
     /// <summary>
     /// Default ctor
@@ -540,7 +541,15 @@ public class SdcpDataMessage: IDataMessage
     /// <summary>
     /// Current raw message data as byte array
     /// </summary>
-    public Memory<byte> RawMessageData { get; set; }
+    public Memory<byte> RawMessageData
+    {
+        get => _rawMessageData;
+        set
+        {
+            _rawMessageData = value;
+            RawMessageDataClearText = DataMessageHelper.GetStringFromArrayCsharpStyle(_rawMessageData);
+        }
+    }
 
     /// <summary>
     /// Current raw message data as clear text
@@ -553,13 +562,18 @@ public class SdcpDataMessage: IDataMessage
     /// <returns>Info string</returns>
     public string ToInfoString()
     {
-        return $"SdcpDataMessage ID {MessageId} {MessageType.ToString()} {ArrayHelper.GetStringFromArrayCsharpStyle(RawMessageData)}";
+        return $"SdcpDataMessage ID {MessageId} {MessageType.ToString()} {RawMessageDataClearText}";
     }
 
     public string ToShortInfoString()
     {
         return $"SdcpDataMessage ID {MessageId} {MessageType.ToString()}";
     }
+
+    /// <summary>
+    /// Data block stored in the message
+    /// </summary>
+    public IDataBlock DataBlock { get; set; }
 }
 ```
 # Implement your handshake message types: IDataMessage
@@ -882,6 +896,12 @@ public class RawDataMessageCodec : BaseDataMessageCodec
 }
 ```
 
+Here the implementation of base SDCP datablock:
+
+``` csharp
+
+```
+
 ## Handshake codec implementation 
 
 Here a simple handshake codec implementation for SDCP protocol:
@@ -1069,6 +1089,10 @@ public class SdcpDataMessageCodec : BaseDataMessageCodec
 
 # Implement your datablock codecs: IDataBlockCodec
 
+Your implementation of the datablock codec should have properties corresponding to the delivered information in the byte array of the datablock.
+
+The properties of the datablock will be the most interesting info for your business logic using the datablock finally.
+
 ## Implement a datablock class based on IDataBlock
 
 The following example is pretty simply take the delivered byte data in property Data.
@@ -1097,54 +1121,63 @@ public class SdcpDummyDatablock: IDataBlock
 
 ``` csharp
 /// <summary>
-/// Datablock codec example
+/// Datablock codec example for SDCP and EDCP protocol
 /// </summary>
 public class SdcpDummyDataBlockCodec : IDataBlockCodec
 {
-	/// <summary>
-	/// Method encode an instance of Datablock in bytes array.
-	/// Method is called when a message is sent to the device
-	/// </summary>
-	/// <param name="data">The array as list to add the datablock to</param>
-	/// <param name="datablock">Current datablock object</param>
-	/// <returns>a byte array with datablock infos</returns>
-	public void EncodeDataBlock(List<byte> data, IDataBlock datablock)
-	{
-		if (datablock is not SdcpDummyDatablock db)
-		{
-			throw new ArgumentException("Wrong type of datablock");
-		}
+    /// <summary>
+    /// Method encode an instance of Datablock in bytes array.
+    /// Method is called when a message is sent to the device
+    /// </summary>
+    /// <param name="data">The array as list to add the datablock to</param>
+    /// <param name="datablock">Current datablock object</param>
+    /// <returns>a byte array with datablock infos</returns>
+    public void EncodeDataBlock(List<byte> data, IDataBlock datablock)
+    {
+        if (datablock is not SdcpDummyDatablock db)
+        {
+            throw new ArgumentException("Wrong type of datablock");
+        }
 
-		// You should add some datablock validation here
+        // You should add some datablock validation here
 
-		// Add data block type
-		data.Add(Convert.ToByte(datablock.DataBlockType));
+        // Add data block type
+        data.Add(Convert.ToByte(datablock.DataBlockType));
 
-		// Now add the data or place any logic here to create byte array from your specific datablock
-		foreach (var b in db.Data.Span)
-		{
-			data.Add(b);
-		}
-	}
+        // Now add the data or place any logic here to create byte array from your specific datablock
+        foreach (var b in db.Data.Span)
+        {
+            data.Add(b);
+        }
+    }
 
-	/// <summary>
-	/// Method decodes an incoming bytes array to an instance of Datablock object
-	/// Method is used while receiving bytes from device
-	/// </summary>
-	/// <param name="datablockBytes">Datablock bytes received</param>
-	/// <returns>Datablock object</returns>
-	public IDataBlock DecodeDataBlock(Memory<byte> datablockBytes)
-	{
+    /// <summary>
+    /// Method decodes an incoming bytes array to an instance of Datablock object
+    /// Method is used while receiving bytes from device
+    /// </summary>
+    /// <param name="datablockBytes">Datablock bytes received</param>
+    /// <returns>Datablock object</returns>
+    public IDataBlock DecodeDataBlock(Memory<byte> datablockBytes)
+    {
+        // You should add some datablock validation here
 
-		// You should add some datablock validation here
+		// You should add logic for extracting of property values from the datablock array here 
 
-		// Now create your datablock as request by specs here
-		return new SdcpDummyDatablock
-		{
-			Data = datablockBytes,
-			DataBlockType = 'x'
-		};
-	}
+        // Now create your datablock as request by specs here
+        if (datablockBytes.Length < 2)
+        {
+            return new SdcpDummyDatablock
+            {
+                Data = Array.Empty<byte>(),
+                DataBlockType = 'x'
+            };
+        }
+        return new SdcpDummyDatablock
+        {
+            Data = datablockBytes[1..],
+            DataBlockType = 'x'
+        };
+    }
 }
 ```
 

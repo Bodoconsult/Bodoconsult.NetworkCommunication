@@ -18,6 +18,8 @@ public class FakeTcpIpSocketProxyTests : BaseTestsTcpIpSocket
     public void TestSetup()
     {
         Socket = new FakeTcpIpSocketProxy();
+        Socket.IpAddress = IPAddress.Parse(IpAddress);
+        Socket.Port = Port;
 
         CurrentIpEndPoint = new IPEndPoint(IPAddress.Parse(IpAddress), Port);
     }

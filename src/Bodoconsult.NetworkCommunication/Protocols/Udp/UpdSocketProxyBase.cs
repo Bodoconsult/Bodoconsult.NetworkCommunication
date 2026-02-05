@@ -16,6 +16,11 @@ public abstract class UpdSocketProxyBase : ISocketProxy
     public bool IsServer { get; protected set; }
 
     /// <summary>
+    /// Minimum buffer size
+    /// </summary>
+    public int MinimumBufferSize { get; set; } = 0x10000;
+
+    /// <summary>
     /// IP address of the server
     /// </summary>
     public IPAddress IpAddress { get; set; }
@@ -59,7 +64,7 @@ public abstract class UpdSocketProxyBase : ISocketProxy
     /// <summary>
     /// Is the socket connected
     /// </summary>
-    public virtual bool Connected { get; } = false;
+    public virtual bool Connected { get; } = true;
 
     /// <summary>
     /// Send bytes

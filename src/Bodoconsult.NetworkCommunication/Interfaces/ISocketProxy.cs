@@ -11,19 +11,24 @@ namespace Bodoconsult.NetworkCommunication.Interfaces;
 public interface ISocketProxy: IDisposable
 {
     /// <summary>
+    /// Minimum buffer size
+    /// </summary>
+    int MinimumBufferSize { get; set; } 
+
+    /// <summary>
     /// IP address of the server
     /// </summary>
-    public IPAddress IpAddress { get; set; }
+    IPAddress IpAddress { get; set; }
 
     /// <summary>
     /// Port the server listens on
     /// </summary>
-    public int Port { get; set; }
+    int Port { get; set; }
 
     /// <summary>
     /// Port the client listens on or 0 (then the same port as for the server is used)
     /// </summary>
-    public int ClientPort { get; set; }
+    int ClientPort { get; set; }
 
     /// <summary>
     /// Is the instance already dispossed

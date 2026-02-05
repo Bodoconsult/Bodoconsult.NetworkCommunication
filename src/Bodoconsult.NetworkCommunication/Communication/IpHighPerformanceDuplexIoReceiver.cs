@@ -13,13 +13,9 @@ namespace Bodoconsult.NetworkCommunication.Communication;
 /// <summary>
 /// Comm adapter subsystem for message receiving base on high-performance pipeline implementation
 /// </summary>
-public class IpHighPerformanceDuplexIoReceiver: BaseDuplexIoReceiver
+public class IpHighPerformanceDuplexIoReceiver : BaseDuplexIoReceiver
 {
-
-    private Task _fillPipelineTask;
-
     private readonly Pipe _pipe;
-
     private bool _isDone;
 
     //public static int DelayTimeForNextSocketCheck { get; set; } = 5;
@@ -30,33 +26,23 @@ public class IpHighPerformanceDuplexIoReceiver: BaseDuplexIoReceiver
 
     //private static readonly ArrayPool<byte> ArrayPool = ArrayPool<byte>.Shared;
 
+
+    /// <summary>
+    /// Default ctor
+    /// </summary>
+    /// <param name="pipe">Current pipe</param>
+    /// <param name="config">Current config</param>
+    /// <param name="pollingTimeOut">Polling timeout in seconds</param>
     public IpHighPerformanceDuplexIoReceiver(Pipe pipe, IDataMessagingConfig config, int pollingTimeOut) : base(config)
     {
         _pipe = pipe;
         PollingTimeOut = pollingTimeOut;
     }
 
-
-    /// <summary>
-    /// Start the internal receiver
-    /// </summary>
-    public override async Task StartReceiver()
-    {
-        _isDone = false;
-
-        await Task.Run(() =>
-        {
-            //// https://docs.microsoft.com/en-us/dotnet/standard/io/pipelines
-
-            _fillPipelineTask = Task.WhenAll(FillMessagePipeline(), SendMessagePipeline());
-        });
-    }
-
     private bool IsCompleted()
     {
-        return _fillPipelineTask == null || _fillPipelineTask.IsCompleted;
+        return FillPipelineTask is not { IsAlive: true };
     }
-
 
     /// <summary>
     /// Stop the internal receiver
@@ -67,18 +53,28 @@ public class IpHighPerformanceDuplexIoReceiver: BaseDuplexIoReceiver
 
         await Task.Run(() =>
         {
-            Debug.Print("Wait for completion");
-
-            if (_fillPipelineTask == null)
+            try
             {
-                return;
+                Debug.Print("Wait for completion");
+
+                if (FillPipelineTask == null)
+                {
+                    return;
+                }
+
+                Wait.Until(IsCompleted, 1000);
+
+                FillPipelineTask = null;
+                SendPipelineTask = null;
+
+                Debug.Print("Completed");
+
             }
-
-            Wait.Until(IsCompleted, 1000);
-
-            _fillPipelineTask = null;
-
-            Debug.Print("Completed");
+            catch (Exception e)
+            {
+                Debug.Print(e.ToString());
+                Logger?.LogError(e, "Stopping receiver failed");
+            }
         });
     }
 
@@ -86,8 +82,7 @@ public class IpHighPerformanceDuplexIoReceiver: BaseDuplexIoReceiver
     {
         //Debug.Print("Start fill message pipeline");
         var writer = _pipe.Writer;
-
-        const int minimumBufferSize = 512;
+        var memSize = DataMessagingConfig.SocketProxy.MinimumBufferSize;
 
         while (!_isDone)
         {
@@ -108,7 +103,7 @@ public class IpHighPerformanceDuplexIoReceiver: BaseDuplexIoReceiver
                     break;
                 }
 
-                var memory = writer.GetMemory(minimumBufferSize);
+                var memory = writer.GetMemory(memSize);
 
 
                 var bytesRead = await DataMessagingConfig.SocketProxy.Receive(memory);
@@ -123,22 +118,22 @@ public class IpHighPerformanceDuplexIoReceiver: BaseDuplexIoReceiver
 
                 // Make the data available to the PipeReader.
                 var result = await writer.FlushAsync();
-                if (result.IsCompleted || result.IsCanceled
-                                       || _isDone
-                   )
+                if (result.IsCompleted 
+                    || result.IsCanceled
+                    || _isDone)
                 {
                     break;
                 }
             }
             catch (SocketException socketException)
             {
-                DataMessagingConfig.AppLogger?.LogError("filling pipe failed", socketException);
+                Logger?.LogError("filling pipe failed", socketException);
                 _isDone = true;
                 break;
             }
             catch (Exception otherException)
             {
-                DataMessagingConfig.AppLogger?.LogError("filling pipe failed", otherException);
+                Logger?.LogError("filling pipe failed", otherException);
             }
         }
 
@@ -176,7 +171,7 @@ public class IpHighPerformanceDuplexIoReceiver: BaseDuplexIoReceiver
             }
 
             //Debug.Print($"Raw command: {ArrayHelper.GetStringFromArrayCsharpStyle(ref buffer)}");
-            DataMessagingConfig.MonitorLogger?.LogInformation($"Raw command: {DataMessageHelper.GetStringFromArrayCsharpStyle(ref buffer)}");
+            Logger?.LogInformation($"Raw command: {DataMessageHelper.GetStringFromArrayCsharpStyle(ref buffer)}");
 
             //Debug.Print($"Buffer: pre-length: {buffer.Length}");
 
@@ -208,7 +203,7 @@ public class IpHighPerformanceDuplexIoReceiver: BaseDuplexIoReceiver
                 {
                     msg = $"Parsing command failed with error code {codecResult.ErrorCode}: {codecResult.ErrorMessage}: {DataMessageHelper.GetStringFromArrayCsharpStyle(ref command)}";
                     Debug.Print(msg);
-                    DataMessagingConfig.MonitorLogger?.LogDebug(msg);
+                    Logger?.LogDebug(msg);
                 }
                 else
                 {
@@ -217,13 +212,13 @@ public class IpHighPerformanceDuplexIoReceiver: BaseDuplexIoReceiver
                     {
                         msg = $"Parsed command {DataMessageHelper.GetStringFromArrayCsharpStyle(ref command)} NOT valid: {validationResult.ValidationResult}. Message was NOT processed.";
                         Debug.Print(msg);
-                        DataMessagingConfig.MonitorLogger?.LogDebug(msg);
+                        Logger?.LogDebug(msg);
                     }
                     else
                     {
                         msg = $"Parsed command {DataMessageHelper.GetStringFromArrayCsharpStyle(ref command)}";
                         Debug.Print(msg);
-                        DataMessagingConfig.MonitorLogger?.LogDebug(msg);
+                        Logger?.LogDebug(msg);
 
                         DataMessageProcessor.ProcessMessage(codecResult.DataMessage);
                     }
@@ -255,13 +250,12 @@ public class IpHighPerformanceDuplexIoReceiver: BaseDuplexIoReceiver
 
     protected override async Task Dispose(bool disposing)
     {
-
         if (!disposing)
         {
             return;
         }
 
         await StopReceiver();
-        _fillPipelineTask = null;
+        FillPipelineTask = null;
     }
 }

@@ -7,9 +7,17 @@ namespace Bodoconsult.NetworkCommunication.Delegates;
 
 #region Data messaging basics
 
+
+/// <summary>
+/// Work is in progress delegate for DuplexIO
+/// </summary>
+/// <returns></returns>
 public delegate bool DuplexIoIsWorkInProgressDelegate();
 
-public delegate void DuplexIoSetNotInProgressDelegate();
+/// <summary>
+/// No data available delegate for DuplexIO
+/// </summary>
+public delegate void DuplexIoNoDataDelegate();
 
 /// <summary>
 /// Delegate for handling central exception handling in <see cref="IDuplexIo"/> implementations
