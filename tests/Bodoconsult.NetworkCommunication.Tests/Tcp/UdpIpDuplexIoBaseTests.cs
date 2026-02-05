@@ -273,23 +273,29 @@ public abstract class UdpIpDuplexIoBaseTests : BaseUdpTests
         Assert.That(IsComDevCloseFired, Is.True);
     }
 
-    //[Test]
-    //public void ReceiveMessageFromTower_MessageS()
-    //{
+    [Test]
+    public void ReceiveMessageFromTower_MessageS()
+    {
 
-    //    // Arrange
-    //    var message = new SmdTowerDataMessage(SmdTower.TowerSn, 0x08, 's', MessageTypeEnum.Received);
+        // Arrange
+        var message = new SdcpDataMessage
+        {
+            MessageType = MessageTypeEnum.Sent,
+            DataBlock = new SdcpDummyDatablock
+            {
+                DataBlockType = 'x',
+                Data = new byte[] { 0x2, 0x78, 0x42, 0x6c, 0x75, 0x62, 0x62, 0x3 }
+            }
+        };
 
-    //    var data = TransportTestDataHelper.GetTestDataForCommand(message.Command);
-    //    RunBasicTests(data, 1);
+        RunBasicTests(message.DataBlock.Data.ToArray(), 1);
 
-    //    // Assert
-    //    Wait.Until(() => IsMessageReceivedFired, 2000);
-    //    Assert.That(IsMessageReceivedFired);
-    //    Assert.That(!IsMessageNotReceivedFired);
-    //    Assert.That(!IsComDevCloseFired);
-    //    Assert.That(!IsCorruptedMessageFired);
-    //    Assert.That(!IsOnNotExpectedMessageReceivedFired);
-    //}
-
+        // Assert
+        Wait.Until(() => IsMessageReceivedFired, 2000);
+        Assert.That(IsMessageReceivedFired);
+        Assert.That(!IsMessageNotReceivedFired);
+        Assert.That(!IsComDevCloseFired);
+        Assert.That(!IsCorruptedMessageFired);
+        Assert.That(!IsOnNotExpectedMessageReceivedFired);
+    }
 }

@@ -97,7 +97,7 @@ public class AsyncUdpSocketProxy : UpdSocketProxyBase
         {
             try
             {
-                return UdpClient.Client is not { Connected: true } ? 0 : UdpClient.Available;
+                return UdpClient.Available;
             }
             catch
             {
@@ -155,7 +155,6 @@ public class AsyncUdpSocketProxy : UpdSocketProxyBase
                     UdpClient.Client.Shutdown(SocketShutdown.Both);
                     UdpClient.Close();
                     UdpClient.Dispose();
-
                 }
             }
             catch // (Exception ex)
@@ -233,14 +232,19 @@ public class AsyncUdpSocketProxy : UpdSocketProxyBase
     /// <returns>Number of bytes received</returns>
     public override Task<int> Receive(byte[] buffer)
     {
-        if (!UdpClient.Client.Connected)
+        if (UdpClient.Available <= 0)
         {
-            Task.FromResult(0);
+            return Task.FromResult(0);
         }
 
-        var result = UdpClient.ReceiveAsync();
-        Buffer.BlockCopy(result.Result.Buffer, 0, buffer, 0, buffer.Length);
-        return Task.FromResult(result.Result.Buffer.Length);
+        var received = Task.Run(() =>
+        {
+            var result = UdpClient.Receive(ref EndPoint);
+            Buffer.BlockCopy(result, 0, buffer, 0, buffer.Length);
+            return Task.FromResult(result.Length);
+        });
+
+        return received;
     }
 
     /// <summary>
@@ -250,14 +254,19 @@ public class AsyncUdpSocketProxy : UpdSocketProxyBase
     /// <returns>Number of bytes received</returns>
     public override async Task<int> Receive(Memory<byte> buffer)
     {
-        if (!UdpClient.Client.Connected)
+        if (UdpClient.Available <= 0)
         {
-            await Task.FromResult(0);
+            return 0;
         }
 
-        var result = await UdpClient.ReceiveAsync();
-        result.Buffer.CopyTo(buffer);
-        return result.Buffer.Length;
+        var received = await Task.Run(() =>
+        {
+            var result = UdpClient.Receive(ref EndPoint);
+            result.CopyTo(buffer);
+            return Task.FromResult(result.Length);
+        });
+
+        return received;
     }
 
     /// <summary>
@@ -269,19 +278,19 @@ public class AsyncUdpSocketProxy : UpdSocketProxyBase
     /// <returns>Number of bytes received</returns>
     public override Task<int> Receive(byte[] buffer, int offset, int expectedBytesLength)
     {
-        if (!UdpClient.Client.Connected)
+        if (UdpClient.Available<=0)
         {
             return Task.FromResult(0);
         }
 
-        var result = Task.Run(async ()=>
+        var received =  Task.Run(() =>
         {
-            var result = await UdpClient.ReceiveAsync();
-            Buffer.BlockCopy(result.Buffer, offset, buffer, 0, buffer.Length -offset);
-            return result.Buffer.Length;
+            var result = UdpClient.Receive(ref EndPoint);
+            Buffer.BlockCopy(result, offset, buffer, 0, buffer.Length-offset);
+            return Task.FromResult(result.Length);
         });
 
-        return result;
+        return received;
     }
 
     /// <summary>

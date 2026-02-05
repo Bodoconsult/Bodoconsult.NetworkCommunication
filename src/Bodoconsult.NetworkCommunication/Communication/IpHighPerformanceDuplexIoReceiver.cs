@@ -18,15 +18,6 @@ public class IpHighPerformanceDuplexIoReceiver : BaseDuplexIoReceiver
     private readonly Pipe _pipe;
     private bool _isDone;
 
-    //public static int DelayTimeForNextSocketCheck { get; set; } = 5;
-
-    //public static int SendTimeout { get; set; } = 299;
-
-    //public static int FillPipelineTimeout { get; set; } = 151;
-
-    //private static readonly ArrayPool<byte> ArrayPool = ArrayPool<byte>.Shared;
-
-
     /// <summary>
     /// Default ctor
     /// </summary>
@@ -68,7 +59,6 @@ public class IpHighPerformanceDuplexIoReceiver : BaseDuplexIoReceiver
                 SendPipelineTask = null;
 
                 Debug.Print("Completed");
-
             }
             catch (Exception e)
             {
@@ -89,13 +79,11 @@ public class IpHighPerformanceDuplexIoReceiver : BaseDuplexIoReceiver
             // Allocate at least 512 bytes from the PipeWriter.
             try
             {
-
                 if (!DataMessagingConfig.SocketProxy.Connected)
                 {
                     AsyncHelper.Delay(5);
                     continue;
                 }
-
 
                 Debug.Print($"{_isDone}");
                 if (_isDone)
@@ -114,7 +102,6 @@ public class IpHighPerformanceDuplexIoReceiver : BaseDuplexIoReceiver
                     // Tell the PipeWriter how much was read from the Socket.
                     writer.Advance(bytesRead);
                 }
-
 
                 // Make the data available to the PipeReader.
                 var result = await writer.FlushAsync();
@@ -248,6 +235,10 @@ public class IpHighPerformanceDuplexIoReceiver : BaseDuplexIoReceiver
     }
 
 
+    /// <summary>
+    /// Current implementation of disposing
+    /// </summary>
+    /// <param name="disposing">True if diposing should run</param>
     protected override async Task Dispose(bool disposing)
     {
         if (!disposing)

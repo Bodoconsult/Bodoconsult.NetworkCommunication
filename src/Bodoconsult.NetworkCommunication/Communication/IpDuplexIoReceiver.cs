@@ -111,7 +111,7 @@ public class IpDuplexIoReceiver : BaseDuplexIoReceiver
     /// </summary>
     public override async Task StopReceiver()
     {
-        if (FillPipelineTask == null && SendPipelineTask==null)
+        if (FillPipelineTask == null && SendPipelineTask == null)
         {
             return;
         }
@@ -160,7 +160,7 @@ public class IpDuplexIoReceiver : BaseDuplexIoReceiver
         while (true)
         {
 
-            // Debug.Print("FillMessagePipeline in progress");
+            Debug.Print("FillMessagePipeline in progress");
             try
             {
                 if (CancellationSource.Token.IsCancellationRequested)
