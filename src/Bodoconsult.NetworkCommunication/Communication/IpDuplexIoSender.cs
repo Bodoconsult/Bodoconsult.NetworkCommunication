@@ -20,12 +20,12 @@ public class IpDuplexIoSender : BaseDuplexIoSender
     /// <summary>
     /// Default ctor
     /// </summary>
-    /// <param name="deviceCommSettings">Current device comm settings</param>
+    /// <param name="dataMessagingConfig">Current device comm settings</param>
     /// <param name="duplexIoIsWorkInProgressDelegate">Delegate for checking if the socket is wokring currently</param>
     /// <param name="duplexIoNoDataDelegate">Delegate to set socket state to no work in progress</param>
-    public IpDuplexIoSender(IDataMessagingConfig deviceCommSettings,
+    public IpDuplexIoSender(IDataMessagingConfig dataMessagingConfig,
         DuplexIoIsWorkInProgressDelegate duplexIoIsWorkInProgressDelegate,
-        DuplexIoNoDataDelegate duplexIoNoDataDelegate) : base(deviceCommSettings)
+        DuplexIoNoDataDelegate duplexIoNoDataDelegate) : base(dataMessagingConfig)
     {
         _duplexIoIsWorkInProgressDelegate = duplexIoIsWorkInProgressDelegate;
         _duplexIoNoDataDelegate = duplexIoNoDataDelegate;

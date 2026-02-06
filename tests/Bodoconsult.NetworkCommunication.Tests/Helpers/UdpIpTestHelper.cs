@@ -5,13 +5,17 @@ using Bodoconsult.NetworkCommunication.Testing;
 using Bodoconsult.NetworkCommunication.Tests.Interfaces;
 using Bodoconsult.NetworkCommunication.Tests.TestData;
 using System.Net;
+using Bodoconsult.App.Interfaces;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessageProcessingPackages;
 using Bodoconsult.NetworkCommunication.Protocols.Udp;
+using NUnit.Framework.Internal;
 
 namespace Bodoconsult.NetworkCommunication.Tests.Helpers;
 
 public static class UdpIpTestHelper
 {
+    private static readonly IAppLoggerProxy Logger =  TestDataHelper.GetFakeAppLoggerProxy();
+    
     /// <summary>
     /// Initialize the IP communication
     /// </summary>
@@ -19,6 +23,8 @@ public static class UdpIpTestHelper
     {
         testSetup.DataMessagingConfig = new DefaultDataMessagingConfig();
         testSetup.DataMessagingConfig.DataMessageProcessingPackage = new SdcpDataMessageProcessingPackage(testSetup.DataMessagingConfig);
+        testSetup.DataMessagingConfig.AppLogger = Logger;
+        testSetup.DataMessagingConfig.MonitorLogger = Logger;
 
         testSetup.IpAddress = IPAddress.Parse(testSetup.DataMessagingConfig.IpAddress);
 
@@ -56,7 +62,7 @@ public static class UdpIpTestHelper
 
         testSetup.Socket.Connect().Wait();
 
-        testSetup.Logger = TestDataHelper.GetFakeAppLoggerProxy();
+        testSetup.Logger = Logger;
     }
 
     /// <summary>

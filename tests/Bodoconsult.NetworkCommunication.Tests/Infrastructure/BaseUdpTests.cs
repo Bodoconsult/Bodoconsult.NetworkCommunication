@@ -64,6 +64,24 @@ public class BaseUdpTests : IUdpTests
     /// </summary>
     public IAppLoggerProxy Logger { get; set; } = TestDataHelper.GetFakeAppLoggerProxy();
 
+    /// <summary>
+    ///  Bind the delegates for testing
+    /// </summary>
+    protected void BindDelegates()
+    {
+        DataMessagingConfig.SocketProxy = Socket;
+        //DataMessagingConfig.DataMessageProcessingPackage.WaitStateManager.RaiseHandshakeReceivedDelegate = OnHandshakeReceivedDelegate;
+        DataMessagingConfig.RaiseCommLayerDataMessageReceivedDelegate = OnRaiseDataMessageReceivedEvent;
+        //DataMessagingConfig.RaiseDataMessagingConfigMessageNotReceivedDelegate = OnRaiseDataMessagingConfigMessageNotReceivedEvent;
+        DataMessagingConfig.RaiseComDevCloseRequestDelegate = OnRaiseRequestComDevCloseEvent;
+        DataMessagingConfig.RaiseUnexpectedDataMessageReceivedDelegate = OnNotExpectedMessageReceivedEvent;
+        //DataMessagingConfig.RaiseDataMessagingConfigCorruptedMessageDelegate = OnCorruptedMessage;
+        DataMessagingConfig.RaiseDataMessageNotSentDelegate = OnRaiseDataMessageNotSentEvent;
+        DataMessagingConfig.RaiseDataMessageSentDelegate = OnRaiseDataMessageSentEvent;
+        //DataMessagingConfig.RaiseDataMessagingConfigMessageSentDelegate = OnRaiseDataMessagingConfigMessageSentEvent;
+        //DataMessagingConfig.RaiseDataMessagingConfigMessageNotSentDelegate = OnRaiseDataMessagingConfigMessageNotSentEvent;
+    }
+
 
     #region Event catcher methods
 

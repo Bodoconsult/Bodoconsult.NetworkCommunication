@@ -18,15 +18,11 @@ namespace Bodoconsult.NetworkCommunication.Tests.Tcp;
 [SingleThreaded]
 public class TcpIpHighPerformanceDuplexIoTests : TcpIpDuplexIoBaseTests
 {
-
-    public TcpIpHighPerformanceDuplexIoTests()
+    [SetUp]
+    protected void TestSetup()
     {
         TcpIpTestHelper.InitServer(this);
-    }
 
-    [SetUp]
-    public void TestSetup()
-    {
         Debug.Print("Start TestSetup");
 
         BaseReset();
@@ -36,8 +32,6 @@ public class TcpIpHighPerformanceDuplexIoTests : TcpIpDuplexIoBaseTests
         DuplexIo = GetDuplexIo(Socket);
 
         Debug.Print("End FTestSetup");
-
-
     }
 
     /// <summary>
@@ -48,17 +42,7 @@ public class TcpIpHighPerformanceDuplexIoTests : TcpIpDuplexIoBaseTests
     public override IDuplexIo GetDuplexIo(ISocketProxy socketProxy)
     {
         Socket = socketProxy;
-
-        DataMessagingConfig.SocketProxy = socketProxy;
-        DataMessagingConfig.DataMessageProcessingPackage.WaitStateManager.RaiseHandshakeReceivedDelegate = OnHandshakeReceivedDelegate;
-        DataMessagingConfig.RaiseCommLayerDataMessageReceivedDelegate = OnRaiseDataMessageReceivedEvent;
-        //DataMessagingConfig.RaiseDataMessagingConfigMessageNotReceivedDelegate = OnRaiseDataMessagingConfigMessageNotReceivedEvent;
-        DataMessagingConfig.RaiseComDevCloseRequestDelegate = OnRaiseRequestComDevCloseEvent;
-        DataMessagingConfig.RaiseUnexpectedDataMessageReceivedDelegate = OnNotExpectedMessageReceivedEvent;
-        //DataMessagingConfig.RaiseDataMessagingConfigCorruptedMessageDelegate = OnCorruptedMessage;
-        DataMessagingConfig.RaiseDataMessageNotSentDelegate = OnRaiseDataMessageNotSentEvent;
-        DataMessagingConfig.DuplexIoErrorHandlerDelegate = CentralErrorHandling;
-        DataMessagingConfig.RaiseDataMessageSentDelegate = OnRaiseDataMessageSentEvent;
+        BindDelegates();
 
         ISendPacketProcessFactory sendPacketProcessFactory = new FakeSendPacketProcessFactory();
         return new IpHighPerformanceDuplexIo(DataMessagingConfig, sendPacketProcessFactory);
@@ -96,6 +80,7 @@ public class TcpIpHighPerformanceDuplexIoTests : TcpIpDuplexIoBaseTests
     public override void SendMessage_SocketError_Fails()
     {
         // Arrange
+        TestSetup();
 
         // Act and assert
         Assert.Pass("Not fakeable at the moment");

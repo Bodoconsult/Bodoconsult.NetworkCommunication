@@ -22,26 +22,28 @@ public abstract class UdpIpDuplexIoBaseTests : BaseUdpTests
     [TearDown]
     public void TestCleanUp()
     {
-        if (DuplexIo == null)
+        if (DuplexIo != null)
+        {
+            DuplexIo.StopCommunication().Wait();
+            DuplexIo.Dispose();
+            var t = DuplexIo.DisposeAsync();
+            t.AsTask().Wait(2000);
+            DuplexIo = null;
+        }
+
+        if (Socket != null)
+        {
+            Socket.Dispose();
+            Socket = null;
+        }
+
+        if (Server == null)
         {
             return;
         }
-
-        DuplexIo.Dispose();
-        var t = DuplexIo.DisposeAsync();
-        t.AsTask().Wait(2000);
-        Socket?.Dispose();
-        Socket = null;
-
-        //Server?.Dispose();
-    }
-
-    [OneTimeTearDown]
-    public void TestDispose()
-    {
         Server?.Dispose();
+        Server = null;
     }
-
 
     /// <summary>
     /// Get the <see cref="IDuplexIo"/> instance to test
@@ -95,7 +97,6 @@ public abstract class UdpIpDuplexIoBaseTests : BaseUdpTests
         // Arrange
         DuplexIo.StartCommunication().Wait();
 
-
         Server.Send(data);
 
         if (data2 != null)
@@ -103,10 +104,36 @@ public abstract class UdpIpDuplexIoBaseTests : BaseUdpTests
             Server.Send(data2);
         }
 
-        Wait.Until(() => MessageCounter == expectedCount);
+
+        var tcs1 = new TaskCompletionSource<bool>();
+        var t1 = tcs1.Task;
+
+        // Start a background task that will complete tcs1.Task
+        Task.Factory.StartNew(() =>
+        {
+            var cts = new CancellationTokenSource(5000);
+            while (!cts.IsCancellationRequested)
+            {
+                if (MessageCounter >= expectedCount)
+                {
+                    tcs1.SetResult(true);
+                    return;
+                }
+                Task.Delay(50, cts.Token);
+            }
+
+            tcs1.SetResult(false);
+        });
+
+
+        var result = t1.GetAwaiter().GetResult();
+
+        // Start a background task that will complete tcs1.Task
 
         // Act
         DuplexIo.StopCommunication().Wait(1000);
+
+        Assert.That(result);
 
         Debug.Print("Process done");
     }

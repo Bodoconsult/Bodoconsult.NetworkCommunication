@@ -13,15 +13,11 @@ namespace Bodoconsult.NetworkCommunication.Tests.Tcp;
 [SingleThreaded]
 public class UdpIpDuplexIoTests : UdpIpDuplexIoBaseTests
 {
-
-    public UdpIpDuplexIoTests()
-    {
-        UdpIpTestHelper.InitServer(this);
-    }
-
     [SetUp]
     public void TestSetup()
     {
+        UdpIpTestHelper.InitServer(this);
+
         Debug.Print("Start TestSetup");
 
         BaseReset();
@@ -41,19 +37,7 @@ public class UdpIpDuplexIoTests : UdpIpDuplexIoBaseTests
     public override IDuplexIo GetDuplexIo(ISocketProxy socketProxy)
     {
         Socket = socketProxy;
-
-        DataMessagingConfig.SocketProxy = Socket;
-        DataMessagingConfig.DataMessageProcessingPackage.WaitStateManager.RaiseHandshakeReceivedDelegate = OnHandshakeReceivedDelegate;
-        DataMessagingConfig.RaiseCommLayerDataMessageReceivedDelegate = OnRaiseDataMessageReceivedEvent;
-        //DataMessagingConfig.RaiseDataMessagingConfigMessageNotReceivedDelegate = OnRaiseDataMessagingConfigMessageNotReceivedEvent;
-        DataMessagingConfig.RaiseComDevCloseRequestDelegate = OnRaiseRequestComDevCloseEvent;
-        DataMessagingConfig.RaiseUnexpectedDataMessageReceivedDelegate = OnNotExpectedMessageReceivedEvent;
-        //DataMessagingConfig.RaiseDataMessagingConfigCorruptedMessageDelegate = OnCorruptedMessage;
-        DataMessagingConfig.RaiseDataMessageNotSentDelegate = OnRaiseDataMessageNotSentEvent;
-        DataMessagingConfig.RaiseDataMessageSentDelegate = OnRaiseDataMessageSentEvent;
-        //DataMessagingConfig.RaiseDataMessagingConfigMessageSentDelegate = OnRaiseDataMessagingConfigMessageSentEvent;
-        //DataMessagingConfig.RaiseDataMessagingConfigMessageNotSentDelegate = OnRaiseDataMessagingConfigMessageNotSentEvent;
-
+        BindDelegates();
 
         ISendPacketProcessFactory sendPacketProcessFactory = new FakeSendPacketProcessFactory();
         return new IpDuplexIo(DataMessagingConfig, sendPacketProcessFactory);
@@ -70,15 +54,7 @@ public class UdpIpDuplexIoTests : UdpIpDuplexIoBaseTests
     {
 
         Socket = socketProxy;
-
-        DataMessagingConfig.SocketProxy = Socket;
-        DataMessagingConfig.RaiseAppLayerDataMessageReceivedDelegate = OnRaiseDataMessageReceivedEvent;
-        //DataMessagingConfig.RaiseDataMessagingConfigMessageNotReceivedDelegate = OnRaiseDataMessagingConfigMessageNotReceivedEvent;
-        DataMessagingConfig.RaiseComDevCloseRequestDelegate = OnRaiseRequestComDevCloseEvent;
-        DataMessagingConfig.RaiseUnexpectedDataMessageReceivedDelegate = OnNotExpectedMessageReceivedEvent;
-        //DataMessagingConfig.RaiseDataMessagingConfigCorruptedMessageDelegate = OnCorruptedMessage;
-        //DataMessagingConfig.RaiseDataMessagingConfigMessageSentDelegate = OnRaiseDataMessagingConfigMessageSentEvent;
-        //DataMessagingConfig.RaiseDataMessagingConfigMessageNotSentDelegate = OnRaiseDataMessagingConfigMessageNotSentEvent;
+        BindDelegates();
 
         var sendPacketProcessFactory = new FakeSendPacketProcessFactory
         {

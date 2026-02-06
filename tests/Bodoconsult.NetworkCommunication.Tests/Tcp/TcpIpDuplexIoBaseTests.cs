@@ -12,6 +12,9 @@ using Bodoconsult.NetworkCommunication.Tests.Infrastructure;
 
 namespace Bodoconsult.NetworkCommunication.Tests.Tcp;
 
+[TestFixture]
+[NonParallelizable]
+[SingleThreaded]
 public abstract class TcpIpDuplexIoBaseTests : BaseTcpTests
 {
     /// <summary>
@@ -22,26 +25,28 @@ public abstract class TcpIpDuplexIoBaseTests : BaseTcpTests
     [TearDown]
     public void TestCleanUp()
     {
-        if (DuplexIo == null)
+        if (DuplexIo != null)
+        {
+            DuplexIo.StopCommunication().Wait();
+            DuplexIo.Dispose();
+            var t = DuplexIo.DisposeAsync();
+            t.AsTask().Wait(2000);
+            DuplexIo = null;
+        }
+
+        if (Socket != null)
+        {
+            Socket.Dispose();
+            Socket = null;
+        }
+
+        if (Server == null)
         {
             return;
         }
-
-        DuplexIo.Dispose();
-        var t = DuplexIo.DisposeAsync();
-        t.AsTask().Wait(2000);
-        Socket?.Dispose();
-        Socket = null;
-
-        //Server?.Dispose();
-    }
-
-    [OneTimeTearDown]
-    public void TestDispose()
-    {
         Server?.Dispose();
+        Server = null;
     }
-
 
     /// <summary>
     /// Get the <see cref="IDuplexIo"/> instance to test
@@ -51,7 +56,6 @@ public abstract class TcpIpDuplexIoBaseTests : BaseTcpTests
     public virtual IDuplexIo GetDuplexIo(ISocketProxy socketProxy)
     {
         throw new NotSupportedException();
-
     }
 
     /// <summary>
@@ -90,12 +94,10 @@ public abstract class TcpIpDuplexIoBaseTests : BaseTcpTests
         DuplexIo.StopCommunication().Wait();
     }
 
-
     public virtual void SendDataAndReceive(byte[] data, int expectedCount, byte[] data2 = null)
     {
         // Arrange
         DuplexIo.StartCommunication().Wait();
-
 
         Server.Send(data);
 
@@ -104,14 +106,39 @@ public abstract class TcpIpDuplexIoBaseTests : BaseTcpTests
             Server.Send(data2);
         }
 
-        Wait.Until(() => MessageCounter == expectedCount);
+
+        var tcs1 = new TaskCompletionSource<bool>();
+        var t1 = tcs1.Task;
+
+        // Start a background task that will complete tcs1.Task
+        Task.Factory.StartNew(() =>
+        {
+            var cts = new CancellationTokenSource(5000);
+            while (!cts.IsCancellationRequested)
+            {
+                if (MessageCounter >= expectedCount)
+                {
+                    tcs1.SetResult(true);
+                    return;
+                }
+                Task.Delay(50, cts.Token);
+            }
+
+            tcs1.SetResult(false);
+        });
+
+
+        var result = t1.GetAwaiter().GetResult();
+
+        // Start a background task that will complete tcs1.Task
 
         // Act
         DuplexIo.StopCommunication().Wait(1000);
 
+        Assert.That(result);
+
         Debug.Print("Process done");
     }
-
 
     private void RunBasicTests(byte[] data, int expectedCount, byte[] data2 = null)
     {
@@ -125,14 +152,14 @@ public abstract class TcpIpDuplexIoBaseTests : BaseTcpTests
         }
         else
         {
-            Assert.That(MessageCounter > 0);
+            Assert.That(MessageCounter, Is.GreaterThan(0));
         }
 
         Assert.That(MessageCounter, Is.EqualTo(expectedCount));
     }
 
-
     [Test]
+    [NonParallelizable]
     public void Ctor_ValidSetup_PropsSetCorrectly()
     {
         // Arrange 
@@ -143,8 +170,8 @@ public abstract class TcpIpDuplexIoBaseTests : BaseTcpTests
         Assert.That(DuplexIo.DataMessagingConfig.SocketProxy, Is.Not.Null);
     }
 
-
     [Test]
+    [NonParallelizable]
     public void StartCommunication_ValidSetup_Started()
     {
         // Arrange 
@@ -155,12 +182,10 @@ public abstract class TcpIpDuplexIoBaseTests : BaseTcpTests
         // Assert
         Assert.That(DuplexIo.Receiver, Is.Not.Null);
         Assert.That(DuplexIo.Sender, Is.Not.Null);
-
-        DuplexIo.StopCommunication();
-
     }
 
     [Test]
+    [NonParallelizable]
     public void StopCommunication_ValidSetup_CommStopped()
     {
         // Arrange 
@@ -177,9 +202,11 @@ public abstract class TcpIpDuplexIoBaseTests : BaseTcpTests
     }
 
     [Test]
+    [NonParallelizable]
     public void SendMessage_MessageSWithoutDatablock_NotSent()
     {
         // Arrange
+
         var message = new SdcpDataMessage
         {
             MessageType = MessageTypeEnum.Sent
@@ -197,6 +224,7 @@ public abstract class TcpIpDuplexIoBaseTests : BaseTcpTests
     }
 
     [Test]
+    [NonParallelizable]
     public void SendMessage_MessageS_Sent()
     {
         // Arrange
@@ -222,6 +250,7 @@ public abstract class TcpIpDuplexIoBaseTests : BaseTcpTests
     }
 
     [Test]
+    [NonParallelizable]
     public void SendMessage_EncodingError_Fails()
     {
         // Arrange
@@ -229,7 +258,7 @@ public abstract class TcpIpDuplexIoBaseTests : BaseTcpTests
 
         var message = new ShouldCrashDataMessage
         {
-            MessageType = MessageTypeEnum.Sent 
+            MessageType = MessageTypeEnum.Sent
         };
 
         // Act
@@ -248,6 +277,7 @@ public abstract class TcpIpDuplexIoBaseTests : BaseTcpTests
     }
 
     [Test]
+    [NonParallelizable]
     public virtual void SendMessage_SocketError_Fails()
     {
         // Arrange
@@ -277,9 +307,9 @@ public abstract class TcpIpDuplexIoBaseTests : BaseTcpTests
     }
 
     [Test]
+    [NonParallelizable]
     public void ReceiveMessageFromTower_MessageS()
     {
-
         // Arrange
         var message = new SdcpDataMessage
         {
@@ -301,5 +331,4 @@ public abstract class TcpIpDuplexIoBaseTests : BaseTcpTests
         Assert.That(!IsCorruptedMessageFired);
         Assert.That(!IsOnNotExpectedMessageReceivedFired);
     }
-
 }

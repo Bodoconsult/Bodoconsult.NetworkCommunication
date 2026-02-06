@@ -1,14 +1,15 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
-using System.Diagnostics;
-using System.Net;
-using System.Net.Sockets;
-using System.Security;
 using Bodoconsult.App.Interfaces;
+using Bodoconsult.NetworkCommunication.Communication;
 using Bodoconsult.NetworkCommunication.Interfaces;
 using Bodoconsult.NetworkCommunication.Testing;
 using Bodoconsult.NetworkCommunication.Tests.Helpers;
 using Bodoconsult.NetworkCommunication.Tests.Interfaces;
+using System.Diagnostics;
+using System.Net;
+using System.Net.Sockets;
+using System.Security;
 
 namespace Bodoconsult.NetworkCommunication.Tests.Infrastructure;
 
@@ -62,8 +63,26 @@ public class BaseTcpTests : ITcpTests
     /// </summary>
     public IAppLoggerProxy Logger { get; set; } = TestDataHelper.GetFakeAppLoggerProxy();
 
+    /// <summary>
+    ///  Bind the delegates for testing
+    /// </summary>
+    protected void BindDelegates()
+    {
+        DataMessagingConfig.SocketProxy = Socket;
+        //DataMessagingConfig.DataMessageProcessingPackage.WaitStateManager.RaiseHandshakeReceivedDelegate = OnHandshakeReceivedDelegate;
+        DataMessagingConfig.RaiseCommLayerDataMessageReceivedDelegate = OnRaiseDataMessageReceivedEvent;
+        //DataMessagingConfig.RaiseDataMessagingConfigMessageNotReceivedDelegate = OnRaiseDataMessagingConfigMessageNotReceivedEvent;
+        DataMessagingConfig.RaiseComDevCloseRequestDelegate = OnRaiseRequestComDevCloseEvent;
+        DataMessagingConfig.RaiseUnexpectedDataMessageReceivedDelegate = OnNotExpectedMessageReceivedEvent;
+        //DataMessagingConfig.RaiseDataMessagingConfigCorruptedMessageDelegate = OnCorruptedMessage;
+        DataMessagingConfig.RaiseDataMessageNotSentDelegate = OnRaiseDataMessageNotSentEvent;
+        DataMessagingConfig.RaiseDataMessageSentDelegate = OnRaiseDataMessageSentEvent;
+        //DataMessagingConfig.RaiseDataMessagingConfigMessageSentDelegate = OnRaiseDataMessagingConfigMessageSentEvent;
+        //DataMessagingConfig.RaiseDataMessagingConfigMessageNotSentDelegate = OnRaiseDataMessagingConfigMessageNotSentEvent;
+    }
+
     #region Event catcher methods
-      
+
     protected void OnHandshakeReceivedDelegate(IDataMessage handshake)
     {
         MessageCounter++;

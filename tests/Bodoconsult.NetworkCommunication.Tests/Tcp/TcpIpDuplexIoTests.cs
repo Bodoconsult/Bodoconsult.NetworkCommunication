@@ -13,17 +13,13 @@ namespace Bodoconsult.NetworkCommunication.Tests.Tcp;
 [SingleThreaded]
 public class TcpIpDuplexIoTests : TcpIpDuplexIoBaseTests
 {
-
-    public TcpIpDuplexIoTests()
+    [SetUp]
+    protected void TestSetup()
     {
         TcpIpTestHelper.InitServer(this);
-    }
 
-    [SetUp]
-    public void TestSetup()
-    {
         Debug.Print("Start TestSetup");
-
+        
         BaseReset();
 
         TcpIpTestHelper.InitSocket(this);
@@ -41,23 +37,10 @@ public class TcpIpDuplexIoTests : TcpIpDuplexIoBaseTests
     public override IDuplexIo GetDuplexIo(ISocketProxy socketProxy)
     {
         Socket = socketProxy;
-
-        DataMessagingConfig.SocketProxy = Socket;
-        //DataMessagingConfig.DataMessageProcessingPackage.WaitStateManager.RaiseHandshakeReceivedDelegate = OnHandshakeReceivedDelegate;
-        DataMessagingConfig.RaiseCommLayerDataMessageReceivedDelegate = OnRaiseDataMessageReceivedEvent;
-        //DataMessagingConfig.RaiseDataMessagingConfigMessageNotReceivedDelegate = OnRaiseDataMessagingConfigMessageNotReceivedEvent;
-        DataMessagingConfig.RaiseComDevCloseRequestDelegate = OnRaiseRequestComDevCloseEvent;
-        DataMessagingConfig.RaiseUnexpectedDataMessageReceivedDelegate = OnNotExpectedMessageReceivedEvent;
-        //DataMessagingConfig.RaiseDataMessagingConfigCorruptedMessageDelegate = OnCorruptedMessage;
-        DataMessagingConfig.RaiseDataMessageNotSentDelegate = OnRaiseDataMessageNotSentEvent;
-        DataMessagingConfig.RaiseDataMessageSentDelegate = OnRaiseDataMessageSentEvent;
-        //DataMessagingConfig.RaiseDataMessagingConfigMessageSentDelegate = OnRaiseDataMessagingConfigMessageSentEvent;
-        //DataMessagingConfig.RaiseDataMessagingConfigMessageNotSentDelegate = OnRaiseDataMessagingConfigMessageNotSentEvent;
-
+        BindDelegates();
 
         ISendPacketProcessFactory sendPacketProcessFactory = new FakeSendPacketProcessFactory();
         return new IpDuplexIo(DataMessagingConfig, sendPacketProcessFactory);
-
     }
 
     /// <summary>
@@ -68,17 +51,8 @@ public class TcpIpDuplexIoTests : TcpIpDuplexIoBaseTests
     /// <returns></returns>
     public override IDuplexIo GetDuplexIoWithFakeEncodeDecoder(ISocketProxy socketProxy, FakeSendPacketProcessEnum expectedResult)
     {
-
         Socket = socketProxy;
-
-        DataMessagingConfig.SocketProxy = Socket;
-        DataMessagingConfig.RaiseAppLayerDataMessageReceivedDelegate = OnRaiseDataMessageReceivedEvent;
-        //DataMessagingConfig.RaiseDataMessagingConfigMessageNotReceivedDelegate = OnRaiseDataMessagingConfigMessageNotReceivedEvent;
-        DataMessagingConfig.RaiseComDevCloseRequestDelegate = OnRaiseRequestComDevCloseEvent;
-        DataMessagingConfig.RaiseUnexpectedDataMessageReceivedDelegate = OnNotExpectedMessageReceivedEvent;
-        //DataMessagingConfig.RaiseDataMessagingConfigCorruptedMessageDelegate = OnCorruptedMessage;
-        //DataMessagingConfig.RaiseDataMessagingConfigMessageSentDelegate = OnRaiseDataMessagingConfigMessageSentEvent;
-        //DataMessagingConfig.RaiseDataMessagingConfigMessageNotSentDelegate = OnRaiseDataMessagingConfigMessageNotSentEvent;
+        BindDelegates();
 
         var sendPacketProcessFactory = new FakeSendPacketProcessFactory
         {
@@ -86,6 +60,8 @@ public class TcpIpDuplexIoTests : TcpIpDuplexIoBaseTests
         };
         return new IpDuplexIo(DataMessagingConfig, sendPacketProcessFactory);
     }
+
+
 
     //public override void SendDataAndReceive(byte[] data, byte[] data2 = null)
     //{

@@ -13,15 +13,11 @@ namespace Bodoconsult.NetworkCommunication.Tests.Tcp;
 [SingleThreaded]
 public class UdpIpHighPerformanceDuplexIoTests : UdpIpDuplexIoBaseTests
 {
-
-    public UdpIpHighPerformanceDuplexIoTests()
-    {
-        UdpIpTestHelper.InitServer(this);
-    }
-
     [SetUp]
     public void TestSetup()
     {
+        UdpIpTestHelper.InitServer(this);
+
         Debug.Print("Start TestSetup");
 
         BaseReset();
@@ -31,8 +27,6 @@ public class UdpIpHighPerformanceDuplexIoTests : UdpIpDuplexIoBaseTests
         DuplexIo = GetDuplexIo(Socket);
 
         Debug.Print("End FTestSetup");
-
-
     }
 
     /// <summary>
@@ -43,17 +37,7 @@ public class UdpIpHighPerformanceDuplexIoTests : UdpIpDuplexIoBaseTests
     public override IDuplexIo GetDuplexIo(ISocketProxy socketProxy)
     {
         Socket = socketProxy;
-
-        DataMessagingConfig.SocketProxy = socketProxy;
-        DataMessagingConfig.DataMessageProcessingPackage.WaitStateManager.RaiseHandshakeReceivedDelegate = OnHandshakeReceivedDelegate;
-        DataMessagingConfig.RaiseCommLayerDataMessageReceivedDelegate = OnRaiseDataMessageReceivedEvent;
-        //DataMessagingConfig.RaiseDataMessagingConfigMessageNotReceivedDelegate = OnRaiseDataMessagingConfigMessageNotReceivedEvent;
-        DataMessagingConfig.RaiseComDevCloseRequestDelegate = OnRaiseRequestComDevCloseEvent;
-        DataMessagingConfig.RaiseUnexpectedDataMessageReceivedDelegate = OnNotExpectedMessageReceivedEvent;
-        //DataMessagingConfig.RaiseDataMessagingConfigCorruptedMessageDelegate = OnCorruptedMessage;
-        DataMessagingConfig.RaiseDataMessageNotSentDelegate = OnRaiseDataMessageNotSentEvent;
-        DataMessagingConfig.DuplexIoErrorHandlerDelegate = CentralErrorHandling;
-        DataMessagingConfig.RaiseDataMessageSentDelegate = OnRaiseDataMessageSentEvent;
+        BindDelegates();
 
         ISendPacketProcessFactory sendPacketProcessFactory = new FakeSendPacketProcessFactory();
         return new IpHighPerformanceDuplexIo(DataMessagingConfig, sendPacketProcessFactory);
@@ -68,16 +52,7 @@ public class UdpIpHighPerformanceDuplexIoTests : UdpIpDuplexIoBaseTests
     public override IDuplexIo GetDuplexIoWithFakeEncodeDecoder(ISocketProxy socketProxy, FakeSendPacketProcessEnum expectedResult)
     {
         Socket = socketProxy;
-
-        //MessageEncodingDecodingHandler = new FakeErrorDecodingEncodingHandler();
-
-        DataMessagingConfig.SocketProxy = socketProxy;
-        DataMessagingConfig.RaiseAppLayerDataMessageReceivedDelegate = OnRaiseDataMessageReceivedEvent;
-        //DataMessagingConfig.RaiseDataMessagingConfigMessageNotReceivedDelegate = OnRaiseDataMessagingConfigMessageNotReceivedEvent;
-        DataMessagingConfig.RaiseComDevCloseRequestDelegate = OnRaiseRequestComDevCloseEvent;
-        DataMessagingConfig.RaiseUnexpectedDataMessageReceivedDelegate = OnNotExpectedMessageReceivedEvent;
-        //DataMessagingConfig.RaiseDataMessagingConfigCorruptedMessageDelegate = OnCorruptedMessage;
-        DataMessagingConfig.DuplexIoErrorHandlerDelegate = CentralErrorHandling;
+        BindDelegates();
 
         var sendPacketProcessFactory = new FakeSendPacketProcessFactory
         {

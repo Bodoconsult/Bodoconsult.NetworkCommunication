@@ -160,7 +160,7 @@ public class IpDuplexIoReceiver : BaseDuplexIoReceiver
         while (true)
         {
 
-            Debug.Print("FillMessagePipeline in progress");
+            //Debug.Print("FillMessagePipeline in progress");
             try
             {
                 if (CancellationSource.Token.IsCancellationRequested)
