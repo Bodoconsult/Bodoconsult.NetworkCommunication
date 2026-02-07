@@ -16,19 +16,19 @@ public interface ISocketProxy: IDisposable
     int MinimumBufferSize { get; set; } 
 
     /// <summary>
-    /// IP address of the server
+    /// IP address of the remote device
     /// </summary>
     IPAddress IpAddress { get; set; }
 
     /// <summary>
-    /// Port the server listens on
+    /// Port the current device listens on
     /// </summary>
     int Port { get; set; }
 
     /// <summary>
-    /// Port the client listens on or 0 (then the same port as for the server is used)
+    /// Port the remote device listens on or 0 (then the same port as for the current device is used)
     /// </summary>
-    int ClientPort { get; set; }
+    int RemotePort { get; set; }
 
     /// <summary>
     /// Is the instance already dispossed

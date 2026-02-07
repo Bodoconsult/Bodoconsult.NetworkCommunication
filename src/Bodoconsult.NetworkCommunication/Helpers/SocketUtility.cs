@@ -488,9 +488,8 @@ public static class SocketUtility
     /// Set keep alive for socket
     /// </summary>
     /// <param name="instance">Current socket instance</param>
-    /// <param name="keepAliveTime">The keep alive time. (ms)</param>
-    /// <param name="keepAliveInterval">The keep alive interval. (ms)</param>
-    //[SupportedOSPlatform("windows")]
+    /// <param name="keepAliveTime">Keep alive time in ms</param>
+    /// <param name="keepAliveInterval">Keep alive interval ms</param>
     public static void SetSocketKeepAliveValues(this Socket instance, int keepAliveTime, int keepAliveInterval)
     {
         // Only on Windows

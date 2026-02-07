@@ -8,7 +8,7 @@ namespace Bodoconsult.NetworkCommunication.Testing;
 /// <summary>
 /// A simple UPD multicast client for testing
 /// </summary>
-public class UdpTestMultiCastClient : UdpBase
+public class UdpTestMultiCastClient : UdpDeviceBase
 {
     /// <summary>
     /// Default ctor
@@ -25,7 +25,7 @@ public class UdpTestMultiCastClient : UdpBase
         Listener.JoinMulticastGroup(ipAddress);
         Listener.MulticastLoopback = true;
 
-        EndPoint = new IPEndPoint(ipAddress, ClientPort);
+        EndPoint = new IPEndPoint(ipAddress, RemotePort);
         SendEndPoint = new IPEndPoint(ipAddress, Port);
     }
 

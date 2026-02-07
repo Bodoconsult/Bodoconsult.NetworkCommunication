@@ -1,5 +1,6 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen. All rights reserved.
 
+using Bodoconsult.NetworkCommunication.Interfaces;
 using System.Diagnostics;
 using System.Net;
 using System.Net.Sockets;
@@ -7,10 +8,12 @@ using System.Text;
 
 namespace Bodoconsult.NetworkCommunication.Testing;
 
+
+
 /// <summary>
 /// Base class for UDP client or server implementations
 /// </summary>
-public abstract class UdpBase : IDisposable
+public abstract class UdpDeviceBase :  IUdpDevice
 {
     private Thread _thread;
     private bool _isDisposed;
@@ -40,19 +43,17 @@ public abstract class UdpBase : IDisposable
     /// <param name="ipAddress">IP address of the server</param>
     /// <param name="port">Port the server listens on</param>
     /// <param name="clientPort">Port the client listens on or 0 (then the same port as for the server is used). Setting clientPort is required normally only if UDP server and client are installed on the same machine!</param>
-    protected UdpBase(IPAddress ipAddress, int port, int clientPort = 0)
+    protected UdpDeviceBase(IPAddress ipAddress, int port, int clientPort = 0)
     {
         Listener = new UdpClient();
         Listener.ExclusiveAddressUse = false;
         Listener.Client.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.ReuseAddress, true);
         Listener.Client.ReceiveTimeout = ReceiveTimeout;
         Listener.Client.SendTimeout = SendTimeout;
-        //Listener.Client.NoDelay = true;
-
 
         IpAddress = ipAddress;
         Port = port;
-        ClientPort = clientPort == 0 ? port : clientPort;
+        RemotePort = clientPort == 0 ? port : clientPort;
     }
 
     /// <summary>
@@ -60,15 +61,11 @@ public abstract class UdpBase : IDisposable
     /// </summary>
     public IPAddress IpAddress { get; }
 
-    /// <summary>
-    /// Port the server listens on
-    /// </summary>
+
     public int Port { get; }
 
-    /// <summary>
-    /// Port the client listens on or 0 (then the same port as for the server is used)
-    /// </summary>
-    public int ClientPort { get; }
+
+    public int RemotePort { get; }
 
     /// <summary>
     /// Send timeout in milliseconds. -1 means infinite.

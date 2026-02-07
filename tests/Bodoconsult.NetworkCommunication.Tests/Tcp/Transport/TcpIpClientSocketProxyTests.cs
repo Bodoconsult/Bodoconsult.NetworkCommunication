@@ -9,7 +9,7 @@ namespace Bodoconsult.NetworkCommunication.Tests.Tcp.Transport;
 [TestFixture]
 [NonParallelizable]
 [SingleThreaded]
-public class AsyncTcpIpSocketProxyTests : BaseTestsTcpIpSocket
+public class TcpIpClientSocketProxyTests : BaseTestsTcpIpSocket
 {
     /// <summary>
     /// Setup for each test
@@ -17,7 +17,7 @@ public class AsyncTcpIpSocketProxyTests : BaseTestsTcpIpSocket
     [SetUp]
     public void TestSetup()
     {
-        Socket = new AsyncTcpIpSocketProxy();
+        Socket = new TcpIpClientSocketProxy();
         Socket.IpAddress = IPAddress.Parse(IpAddress);
         Socket.Port = Port;
 
@@ -28,7 +28,7 @@ public class AsyncTcpIpSocketProxyTests : BaseTestsTcpIpSocket
     public void Ctor_ValidEndpoint_SocketLoaded()
     {
         // Arrange 
-        var socket = (AsyncTcpIpSocketProxy)Socket;
+        var socket = (TcpIpClientSocketProxy)Socket;
 
         // Act  
             

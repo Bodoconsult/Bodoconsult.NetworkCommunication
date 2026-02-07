@@ -6,9 +6,9 @@ using Bodoconsult.NetworkCommunication.Protocols.TcpIp;
 namespace Bodoconsult.NetworkCommunication.Factories;
 
 /// <summary>
-/// Factory to create an instance of <see cref="AsyncTcpIpSocketProxy"/>
+/// Factory to create an instance of <see cref="TcpIpClientSocketProxy"/>
 /// </summary>
-public class AsyncTcpIpSocketProxyFactory : ISocketProxyFactory
+public class TcpIpClientSocketProxyFactory : ISocketProxyFactory
 {
     /// <summary>
     /// Creates an instance of <see cref="ISocketProxy"/>
@@ -16,6 +16,6 @@ public class AsyncTcpIpSocketProxyFactory : ISocketProxyFactory
     /// <returns>Instance of <see cref="ISocketProxy"/></returns>
     public ISocketProxy CreateInstance()
     {
-        return new AsyncTcpIpSocketProxy();
+        return new TcpIpClientSocketProxy();
     }
 }

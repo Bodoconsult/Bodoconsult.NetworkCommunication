@@ -1,5 +1,6 @@
-﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen. All rights reserved.
+﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
+using System.Diagnostics;
 using Bodoconsult.App.Helpers;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataBlocks;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
@@ -8,11 +9,13 @@ using Bodoconsult.NetworkCommunication.Factories;
 using Bodoconsult.NetworkCommunication.Interfaces;
 using Bodoconsult.NetworkCommunication.Protocols.Udp;
 using Bodoconsult.NetworkCommunication.Tests.Infrastructure;
-using System.Diagnostics;
 
-namespace Bodoconsult.NetworkCommunication.Tests.Tcp;
+namespace Bodoconsult.NetworkCommunication.Tests.Tcp.Clients;
 
-public abstract class UdpIpDuplexIoBaseTests : BaseUdpTests
+[TestFixture]
+[NonParallelizable]
+[SingleThreaded]
+public abstract class TcpIpDuplexIoBaseTests : BaseTcpTests
 {
     /// <summary>
     /// Holds the duplex IO channel implementation (see <see cref="IDuplexIo"/>) to use
@@ -37,12 +40,12 @@ public abstract class UdpIpDuplexIoBaseTests : BaseUdpTests
             Socket = null;
         }
 
-        if (Server == null)
+        if (RemoteTcpIpDevice == null)
         {
             return;
         }
-        Server?.Dispose();
-        Server = null;
+        RemoteTcpIpDevice?.Dispose();
+        RemoteTcpIpDevice = null;
     }
 
     /// <summary>
@@ -91,17 +94,16 @@ public abstract class UdpIpDuplexIoBaseTests : BaseUdpTests
         DuplexIo.StopCommunication().Wait();
     }
 
-
     public virtual void SendDataAndReceive(byte[] data, int expectedCount, byte[] data2 = null)
     {
         // Arrange
         DuplexIo.StartCommunication().Wait();
 
-        Server.Send(data);
+        RemoteTcpIpDevice.Send(data);
 
         if (data2 != null)
         {
-            Server.Send(data2);
+            RemoteTcpIpDevice.Send(data2);
         }
 
 
@@ -138,7 +140,6 @@ public abstract class UdpIpDuplexIoBaseTests : BaseUdpTests
         Debug.Print("Process done");
     }
 
-
     private void RunBasicTests(byte[] data, int expectedCount, byte[] data2 = null)
     {
         // Arrange and act
@@ -151,14 +152,14 @@ public abstract class UdpIpDuplexIoBaseTests : BaseUdpTests
         }
         else
         {
-            Assert.That(MessageCounter > 0);
+            Assert.That(MessageCounter, Is.GreaterThan(0));
         }
 
         Assert.That(MessageCounter, Is.EqualTo(expectedCount));
     }
 
-
     [Test]
+    [NonParallelizable]
     public void Ctor_ValidSetup_PropsSetCorrectly()
     {
         // Arrange 
@@ -170,7 +171,8 @@ public abstract class UdpIpDuplexIoBaseTests : BaseUdpTests
     }
 
     [Test]
-    public void StartCommunication_ValidSetup_CommStarted()
+    [NonParallelizable]
+    public void StartCommunication_ValidSetup_Started()
     {
         // Arrange 
 
@@ -180,11 +182,10 @@ public abstract class UdpIpDuplexIoBaseTests : BaseUdpTests
         // Assert
         Assert.That(DuplexIo.Receiver, Is.Not.Null);
         Assert.That(DuplexIo.Sender, Is.Not.Null);
-
-        DuplexIo.StopCommunication();
     }
 
     [Test]
+    [NonParallelizable]
     public void StopCommunication_ValidSetup_CommStopped()
     {
         // Arrange 
@@ -201,12 +202,14 @@ public abstract class UdpIpDuplexIoBaseTests : BaseUdpTests
     }
 
     [Test]
+    [NonParallelizable]
     public void SendMessage_MessageSWithoutDatablock_NotSent()
     {
         // Arrange
+
         var message = new SdcpDataMessage
         {
-            MessageType = MessageTypeEnum.Sent,
+            MessageType = MessageTypeEnum.Sent
         };
 
         // Act
@@ -221,6 +224,7 @@ public abstract class UdpIpDuplexIoBaseTests : BaseUdpTests
     }
 
     [Test]
+    [NonParallelizable]
     public void SendMessage_MessageS_Sent()
     {
         // Arrange
@@ -246,6 +250,7 @@ public abstract class UdpIpDuplexIoBaseTests : BaseUdpTests
     }
 
     [Test]
+    [NonParallelizable]
     public void SendMessage_EncodingError_Fails()
     {
         // Arrange
@@ -272,6 +277,7 @@ public abstract class UdpIpDuplexIoBaseTests : BaseUdpTests
     }
 
     [Test]
+    [NonParallelizable]
     public virtual void SendMessage_SocketError_Fails()
     {
         // Arrange
@@ -301,9 +307,9 @@ public abstract class UdpIpDuplexIoBaseTests : BaseUdpTests
     }
 
     [Test]
+    [NonParallelizable]
     public void ReceiveMessageFromTower_MessageS()
     {
-
         // Arrange
         var message = new SdcpDataMessage
         {

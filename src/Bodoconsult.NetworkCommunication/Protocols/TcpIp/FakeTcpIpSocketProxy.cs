@@ -15,18 +15,22 @@ public class FakeTcpIpSocketProxy : TcpIpSocketProxyBase
     /// </summary>
     private Memory<byte> _data = Array.Empty<byte>();
 
+    ///// <summary>
+    ///// Default ctor
+    ///// </summary>
+    //public FakeTcpIpSocketProxy()
+    //{ }
+
     /// <summary>
     /// Bytes available on the socket
     /// </summary>
     public override int BytesAvailable => _data.Length;
-
 
     /// <summary>
     /// Length of data sent. If set to default value
     /// int.MinValue the array length is returned else the provide length
     /// </summary>
     public int DataLengthSent { get; set; } = int.MinValue;
-
 
     /// <summary>
     /// Queue for received messages
@@ -69,7 +73,6 @@ public class FakeTcpIpSocketProxy : TcpIpSocketProxyBase
         }
     }
 
-
     /// <summary>
     /// Used to set value for <see cref="Connected"/> prop
     /// </summary>
@@ -79,7 +82,6 @@ public class FakeTcpIpSocketProxy : TcpIpSocketProxyBase
     /// Used to set return value for <see cref="Poll"/> method
     /// </summary>
     public bool IsPoll { get; set; }
-
 
     /// <summary>
     /// Is the socket connected
@@ -116,7 +118,6 @@ public class FakeTcpIpSocketProxy : TcpIpSocketProxyBase
         return i;
     }
 
-
     /// <summary>
     /// Send bytes
     /// </summary>
@@ -135,7 +136,6 @@ public class FakeTcpIpSocketProxy : TcpIpSocketProxyBase
         });
         return i;
     }
-
 
     /// <summary>
     /// Shut the socket down
@@ -285,7 +285,6 @@ public class FakeTcpIpSocketProxy : TcpIpSocketProxyBase
     {
         throw new NotSupportedException();
     }
-
 
     /// <summary>
     /// Prepare the answer of the socket for testing

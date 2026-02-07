@@ -1,5 +1,6 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
+using System.Net.Sockets;
 using Bodoconsult.NetworkCommunication.Communication.Sending;
 using Bodoconsult.NetworkCommunication.Interfaces;
 
@@ -7,6 +8,11 @@ namespace Bodoconsult.NetworkCommunication.Delegates;
 
 #region Data messaging basics
 
+/// <summary>
+/// A delegate fired when a TCP/IP client connection was accepted
+/// </summary>
+/// <param name="clientSocket">Client connection socket to use by <see cref="ISocketProxy"/> implementation</param>
+public delegate bool ClientConnectionAcceptedDelegate(Socket clientSocket);
 
 /// <summary>
 /// Work is in progress delegate for DuplexIO

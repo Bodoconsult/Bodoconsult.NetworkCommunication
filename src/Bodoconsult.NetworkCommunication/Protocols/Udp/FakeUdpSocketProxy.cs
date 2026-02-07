@@ -15,6 +15,12 @@ public class FakeUdpSocketProxy : UpdSocketProxyBase
     /// </summary>
     private Memory<byte> _data = Array.Empty<byte>();
 
+    ///// <summary>
+    ///// Default ctor
+    ///// </summary>
+    //public FakeUdpSocketProxy()
+    //{ }
+
     /// <summary>
     /// Bytes available on the socket
     /// </summary>

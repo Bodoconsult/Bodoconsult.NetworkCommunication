@@ -11,11 +11,6 @@ namespace Bodoconsult.NetworkCommunication.Protocols.Udp;
 public abstract class UpdSocketProxyBase : ISocketProxy
 {
     /// <summary>
-    /// Is this instance a UDP server?
-    /// </summary>
-    public bool IsServer { get; protected set; }
-
-    /// <summary>
     /// Minimum buffer size
     /// </summary>
     public int MinimumBufferSize { get; set; } = 0x10000;
@@ -26,14 +21,14 @@ public abstract class UpdSocketProxyBase : ISocketProxy
     public IPAddress IpAddress { get; set; }
 
     /// <summary>
-    /// Port the server listens on
+    /// Port the current device listens on
     /// </summary>
     public int Port { get; set; }
 
     /// <summary>
-    /// Port the client listens on or 0 (then the same port as for the server is used)
+    /// Port the remote device listens on or 0 (then the same port as for the current device is used)
     /// </summary>
-    public int ClientPort { get; set; }
+    public int RemotePort { get; set; }
 
     /// <summary>
     /// Is the instance already dispossed

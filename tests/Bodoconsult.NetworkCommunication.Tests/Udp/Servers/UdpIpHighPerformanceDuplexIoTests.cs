@@ -6,7 +6,7 @@ using Bodoconsult.NetworkCommunication.Factories;
 using Bodoconsult.NetworkCommunication.Interfaces;
 using Bodoconsult.NetworkCommunication.Tests.Helpers;
 
-namespace Bodoconsult.NetworkCommunication.Tests.Tcp;
+namespace Bodoconsult.NetworkCommunication.Tests.Udp.Servers;
 
 [TestFixture]
 [NonParallelizable]
@@ -16,13 +16,13 @@ public class UdpIpHighPerformanceDuplexIoTests : UdpIpDuplexIoBaseTests
     [SetUp]
     public void TestSetup()
     {
-        UdpIpTestHelper.InitServer(this);
+        UdpServerIpTestHelper.InitServer(this);
 
         Debug.Print("Start TestSetup");
 
         BaseReset();
 
-        UdpIpTestHelper.InitSocket(this);
+        UdpServerIpTestHelper.InitSocket(this);
 
         DuplexIo = GetDuplexIo(Socket);
 

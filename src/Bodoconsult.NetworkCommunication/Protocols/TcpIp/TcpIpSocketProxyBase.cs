@@ -19,16 +19,16 @@ public abstract class TcpIpSocketProxyBase : ISocketProxy
     /// IP address of the server
     /// </summary>
     public IPAddress IpAddress { get; set; }
-
+    
     /// <summary>
-    /// Port the server listens on
+    /// Port the current device listens on
     /// </summary>
     public int Port { get; set; }
 
     /// <summary>
-    /// Port the client listens on or 0 (then the same port as for the server is used)
+    /// Port the remote device listens on or 0 (then the same port as for the current device is used)
     /// </summary>
-    public int ClientPort { get; set; }
+    public int RemotePort { get; set; }
 
     /// <summary>
     /// Is the instance already dispossed
@@ -44,7 +44,6 @@ public abstract class TcpIpSocketProxyBase : ISocketProxy
     /// The number of bytes available to read
     /// </summary>
     public virtual int BytesAvailable { get; } = 0;
-
 
     /// <summary>
     /// Send timeout in milliseconds. -1 means infinite.
@@ -104,23 +103,23 @@ public abstract class TcpIpSocketProxyBase : ISocketProxy
     }
 
 
-    /// <summary>
-    /// Bind to an IP endpoint
-    /// </summary>
-    /// <param name="ipEndPoint">IP endpoint</param>
-    public virtual void Bind(IPEndPoint ipEndPoint)
-    {
-        throw new NotSupportedException();
-    }
+    ///// <summary>
+    ///// Bind to an IP endpoint
+    ///// </summary>
+    ///// <param name="ipEndPoint">IP endpoint</param>
+    //public virtual void Bind(IPEndPoint ipEndPoint)
+    //{
+    //    throw new NotSupportedException();
+    //}
 
-    /// <summary>
-    /// Listen
-    /// </summary>
-    /// <param name="backlog">The maximum length of pending messages queue</param>
-    public virtual void Listen(int backlog)
-    {
-        throw new NotSupportedException();
-    }
+    ///// <summary>
+    ///// Listen
+    ///// </summary>
+    ///// <param name="backlog">The maximum length of pending messages queue</param>
+    //public virtual void Listen(int backlog)
+    //{
+    //    throw new NotSupportedException();
+    //}
 
 
     /// <summary>

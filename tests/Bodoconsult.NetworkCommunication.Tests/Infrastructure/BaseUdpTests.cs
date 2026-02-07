@@ -39,7 +39,7 @@ public class BaseUdpTests : IUdpTests
     /// <summary>
     /// Current TCP/IP server to send data to the socket
     /// </summary>
-    public UdpTestUniCastServer Server { get; set; }
+    public IUdpDevice RemoteUdpDevice { get; set; }
 
     /// <summary>
     /// Current IP address to use

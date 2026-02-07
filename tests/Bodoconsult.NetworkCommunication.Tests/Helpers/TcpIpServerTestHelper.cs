@@ -1,18 +1,16 @@
-﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
+﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen. All rights reserved.
 
-
+using System.Net;
 using Bodoconsult.App.Interfaces;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessageProcessingPackages;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig;
 using Bodoconsult.NetworkCommunication.Protocols.TcpIp;
 using Bodoconsult.NetworkCommunication.Testing;
 using Bodoconsult.NetworkCommunication.Tests.Interfaces;
-using Bodoconsult.NetworkCommunication.Tests.TestData;
-using System.Net;
 
 namespace Bodoconsult.NetworkCommunication.Tests.Helpers;
 
-public static class TcpIpTestHelper
+public static class TcpIpServerTestHelper
 {
     private static readonly IAppLoggerProxy Logger = TestDataHelper.GetFakeAppLoggerProxy();
 
@@ -21,7 +19,6 @@ public static class TcpIpTestHelper
     /// </summary>
     public static void InitServer(ITcpTests testSetup)
     {
-        
         testSetup.DataMessagingConfig = new DefaultDataMessagingConfig();
         testSetup.DataMessagingConfig.Port = GetRandomPort();
         testSetup.DataMessagingConfig.DataMessageProcessingPackage = new SdcpDataMessageProcessingPackage(testSetup.DataMessagingConfig);
@@ -30,17 +27,15 @@ public static class TcpIpTestHelper
 
         testSetup.IpAddress = IPAddress.Parse(testSetup.DataMessagingConfig.IpAddress);
 
-        testSetup.Server?.Dispose();
-
-        testSetup.Server = new TcpTestServer(testSetup.IpAddress, testSetup.DataMessagingConfig.Port);
-        testSetup.Server.Start();
+        testSetup.RemoteTcpIpDevice?.Dispose();
+        testSetup.RemoteTcpIpDevice = new TcpTestServer(testSetup.IpAddress, testSetup.DataMessagingConfig.Port);
+        testSetup.RemoteTcpIpDevice.Start();
     }
 
     private static int GetRandomPort()
     {
         return new Random(60000).Next(50000, 65000);
     }
-
     public static void InitSocket(ITcpTests testSetup)
     {
         //// Soft reset server
@@ -62,7 +57,7 @@ public static class TcpIpTestHelper
         }
 
         // Load socket
-        var socket = new AsyncTcpIpSocketProxy();
+        var socket = new TcpIpClientSocketProxy();
         socket.IpAddress = testSetup.IpAddress;
         socket.Port = testSetup.DataMessagingConfig.Port;
         testSetup.Socket = socket;

@@ -1,17 +1,12 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
-using Bodoconsult.App.Helpers;
+using System.Diagnostics;
 using Bodoconsult.NetworkCommunication.Communication;
-using Bodoconsult.NetworkCommunication.DataMessaging.DataBlocks;
-using Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
-using Bodoconsult.NetworkCommunication.EnumAndStates;
 using Bodoconsult.NetworkCommunication.Factories;
 using Bodoconsult.NetworkCommunication.Interfaces;
-using Bodoconsult.NetworkCommunication.Protocols.Udp;
 using Bodoconsult.NetworkCommunication.Tests.Helpers;
-using System.Diagnostics;
 
-namespace Bodoconsult.NetworkCommunication.Tests.Tcp;
+namespace Bodoconsult.NetworkCommunication.Tests.Tcp.Servers;
 
 [TestFixture]
 [NonParallelizable]
@@ -21,13 +16,13 @@ public class TcpIpHighPerformanceDuplexIoTests : TcpIpDuplexIoBaseTests
     [SetUp]
     protected void TestSetup()
     {
-        TcpIpTestHelper.InitServer(this);
+        TcpIpServerTestHelper.InitServer(this);
 
         Debug.Print("Start TestSetup");
 
         BaseReset();
 
-        TcpIpTestHelper.InitSocket(this);
+        TcpIpServerTestHelper.InitSocket(this);
 
         DuplexIo = GetDuplexIo(Socket);
 

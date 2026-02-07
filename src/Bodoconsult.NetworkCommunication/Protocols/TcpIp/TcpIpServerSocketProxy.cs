@@ -1,32 +1,28 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 // Licence MIT
 
-using System.Net;
-using System.Net.Sockets;
 using Bodoconsult.NetworkCommunication.Helpers;
 using Bodoconsult.NetworkCommunication.Interfaces;
+using System.Net;
+using System.Net.Sockets;
+using System.Reflection.Metadata;
 
 namespace Bodoconsult.NetworkCommunication.Protocols.TcpIp;
 
 /// <summary>
 /// Current asynchronous implementation of <see cref="ISocketProxy"/> for TCP
 /// </summary>
-public class AsyncTcpIpSocketProxy : TcpIpSocketProxyBase
+public class TcpIpServerSocketProxy : TcpIpSocketProxyBase
 {
     private readonly byte[] _tmp = new byte[1];
+
+    private Socket _listener;
 
     ///// <summary>
     ///// Default ctor
     ///// </summary>
-    //public AsyncTcpIpSocketProxy()
-    //{
-    //    //Socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp)
-    //    //{
-    //    //    ReceiveTimeout = ReceiveTimeout,
-    //    //    SendTimeout = SendTimeout,
-    //    //    NoDelay = true
-    //    //};
-    //}
+    //public TcpIpServerSocketProxy()
+    //{ }
 
     /// <summary>
     /// Is the socket connected
@@ -35,7 +31,6 @@ public class AsyncTcpIpSocketProxy : TcpIpSocketProxyBase
     {
         get
         {
-
             // Replacement for Socket.Connected. See sample at the end of https://learn.microsoft.com/en-us/dotnet/api/system.net.sockets.socket.connected?redirectedfrom=MSDN&view=net-7.0#System_Net_Sockets_Socket_Connected
 
             try
@@ -77,8 +72,6 @@ public class AsyncTcpIpSocketProxy : TcpIpSocketProxyBase
             {
                 return false;
             }
-
-
         }
     }
 
@@ -97,7 +90,7 @@ public class AsyncTcpIpSocketProxy : TcpIpSocketProxyBase
             {
                 return 0;
             }
-                
+
         }
     }
 
@@ -159,37 +152,54 @@ public class AsyncTcpIpSocketProxy : TcpIpSocketProxyBase
             Socket = null;
         }
 
-        Socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp)
+
+        _listener = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp)
         {
             ReceiveTimeout = ReceiveTimeout,
             SendTimeout = SendTimeout,
-            NoDelay = true
+            NoDelay = true,
+            Blocking = false
         };
-        Socket.SetSocketKeepAliveValues(7200000, 1000);
+        _listener.SetSocketKeepAliveValues(7200000, 1000);
 
-        var ep = new IPEndPoint(IpAddress, Port);
-        await Socket.ConnectAsync(ep);
+        // Bind listener to all IP addresses of the local network adapter
+        EndPoint ep = new IPEndPoint(IPAddress.Any, Port);
+        _listener.Bind(ep);
 
+        // Now start listening
+        _listener.Listen(1000);
+
+        // Now begin
+        _listener.BeginAccept(AcceptCallback, _listener);
     }
 
-
     /// <summary>
-    /// Bind to an IP endpoint
+    /// Callback for accepting new connection
     /// </summary>
-    /// <param name="endpoint">IP endpoint</param>
-    public override void Bind(IPEndPoint endpoint)
+    /// <param name="ar"></param>
+    private void AcceptCallback(IAsyncResult ar)
     {
-        Socket?.Bind(endpoint);
-    }
+        // Get the socket that handles the client request
+        _listener = (Socket)ar.AsyncState;
 
+        if (_listener == null)
+        {
+            throw new ArgumentNullException(nameof(_listener));
+        }
 
-    /// <summary>
-    /// Listen
-    /// </summary>
-    /// <param name="backlog">The maximum length of pending messages queue</param>
-    public override void Listen(int backlog)
-    {
-        Socket?.Listen(backlog);
+        if (Socket != null)
+        {
+            return;
+        }
+
+        try
+        {
+            Socket = _listener.EndAccept(ar);
+        }
+        catch (Exception e)
+        {
+            // ToDo: ???
+        }
     }
 
     /// <summary>

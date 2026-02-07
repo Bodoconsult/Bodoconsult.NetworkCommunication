@@ -40,7 +40,7 @@ public class BaseTcpTests : ITcpTests
     /// <summary>
     /// Current TCP/IP server to send data to the socket
     /// </summary>
-    public TcpTestServer Server { get; set; }
+    public TcpTestServer RemoteTcpIpDevice { get; set; }
 
     /// <summary>
     /// Current IP address to use

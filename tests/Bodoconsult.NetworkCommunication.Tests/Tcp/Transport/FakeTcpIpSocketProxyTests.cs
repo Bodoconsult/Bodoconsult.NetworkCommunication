@@ -1,6 +1,5 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
-
 using System.Net;
 using Bodoconsult.NetworkCommunication.Protocols.TcpIp;
 
@@ -24,7 +23,6 @@ public class FakeTcpIpSocketProxyTests : BaseTestsTcpIpSocket
         CurrentIpEndPoint = new IPEndPoint(IPAddress.Parse(IpAddress), Port);
     }
 
-
     [Test]
     public void Receive_MemoryLoadNextReceivedMessage_DataReceived()
     {
@@ -40,7 +38,6 @@ public class FakeTcpIpSocketProxyTests : BaseTestsTcpIpSocket
         var buffer = new Memory<byte>(data);
 
         // Act  
-            
         var task = socket.Receive(buffer);
         task.Wait();
 
@@ -65,8 +62,7 @@ public class FakeTcpIpSocketProxyTests : BaseTestsTcpIpSocket
 
         var buffer = new byte[receivedMessage.Length];
 
-        // Act  
-            
+        // Act
         var task = socket.Receive(buffer);
         task.Wait(500);
 
@@ -99,8 +95,8 @@ public class FakeTcpIpSocketProxyTests : BaseTestsTcpIpSocket
         // Assert
         Assert.That(task.Result, Is.EqualTo(receivedMessage.Length));
 
-        Assert.That(buffer.Slice(0, 1).Span[0] , Is.EqualTo(0));
-        Assert.That(buffer.Slice(1, 1).Span[0] , Is.EqualTo(0));
+        Assert.That(buffer.Slice(0, 1).Span[0], Is.EqualTo(0));
+        Assert.That(buffer.Slice(1, 1).Span[0], Is.EqualTo(0));
         Assert.That(buffer.Slice(2, 1).Span[0], Is.EqualTo(1));
     }
 
@@ -129,7 +125,7 @@ public class FakeTcpIpSocketProxyTests : BaseTestsTcpIpSocket
         Assert.That(task.Result, Is.EqualTo(receivedMessage.Length));
 
         socket.Send(receivedMessage).Wait();
-            
+
         task = socket.Receive(buffer2);
         task.Wait();
 
@@ -137,14 +133,14 @@ public class FakeTcpIpSocketProxyTests : BaseTestsTcpIpSocket
 
 
         // Assert
-        Assert.That(buffer.Slice(0, 1).Span[0] , Is.EqualTo(0));
-        Assert.That(buffer.Slice(1, 1).Span[0] , Is.EqualTo(0));
+        Assert.That(buffer.Slice(0, 1).Span[0], Is.EqualTo(0));
+        Assert.That(buffer.Slice(1, 1).Span[0], Is.EqualTo(0));
         Assert.That(buffer.Slice(2, 1).Span[0], Is.EqualTo(1));
 
-        Assert.That(buffer2.Slice(0, 1).Span[0] , Is.EqualTo(0));
+        Assert.That(buffer2.Slice(0, 1).Span[0], Is.EqualTo(0));
         Assert.That(buffer2.Slice(1, 1).Span[0], Is.EqualTo(0));
-        Assert.That(buffer2.Slice(2, 1).Span[0] , Is.EqualTo(0));
-        Assert.That(buffer2.Slice(3, 1).Span[0] , Is.EqualTo(2));
+        Assert.That(buffer2.Slice(2, 1).Span[0], Is.EqualTo(0));
+        Assert.That(buffer2.Slice(3, 1).Span[0], Is.EqualTo(2));
     }
 
     [Test]
@@ -163,8 +159,6 @@ public class FakeTcpIpSocketProxyTests : BaseTestsTcpIpSocket
         // Act  
         var task = socket.Receive(buffer);
         task.Wait();
-
-            
 
         // Assert
         Assert.That(task.Result, Is.EqualTo(receivedMessage.Length));
@@ -189,7 +183,6 @@ public class FakeTcpIpSocketProxyTests : BaseTestsTcpIpSocket
         var buffer = new byte[receivedMessage.Length];
         var buffer2 = new byte[receivedMessage2.Length];
 
-
         // Act  
         var task = socket.Receive(buffer);
         task.Wait();
@@ -197,7 +190,7 @@ public class FakeTcpIpSocketProxyTests : BaseTestsTcpIpSocket
         Assert.That(task.Result, Is.EqualTo(receivedMessage.Length));
 
         socket.Send(receivedMessage).Wait();
-            
+
         task = socket.Receive(buffer2);
         task.Wait();
 
@@ -206,12 +199,11 @@ public class FakeTcpIpSocketProxyTests : BaseTestsTcpIpSocket
         // Assert
         Assert.That(buffer[0], Is.EqualTo(0));
         Assert.That(buffer[1], Is.EqualTo(0));
-        Assert.That(buffer[2] , Is.EqualTo(1));
+        Assert.That(buffer[2], Is.EqualTo(1));
 
         Assert.That(buffer2[0], Is.EqualTo(0));
         Assert.That(buffer2[1], Is.EqualTo(0));
         Assert.That(buffer2[2], Is.EqualTo(0));
         Assert.That(buffer2[3], Is.EqualTo(2));
     }
-
 }

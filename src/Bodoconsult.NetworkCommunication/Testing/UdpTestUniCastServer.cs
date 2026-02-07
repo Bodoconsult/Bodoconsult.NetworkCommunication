@@ -7,7 +7,7 @@ namespace Bodoconsult.NetworkCommunication.Testing;
 /// <summary>
 /// Simple unicast UDP server for testing purposes
 /// </summary>
-public class UdpTestUniCastServer : UdpBase
+public class UdpTestUniCastServer : UdpDeviceBase
 {
     /// <summary>
     /// Default ctor
@@ -25,7 +25,7 @@ public class UdpTestUniCastServer : UdpBase
         Listener.Client.Bind(endPoint1);
 
         EndPoint = new IPEndPoint(ipAddress, Port);
-        SendEndPoint = new IPEndPoint(ipAddress, ClientPort);
+        SendEndPoint = new IPEndPoint(ipAddress, RemotePort);
     }
 }
 

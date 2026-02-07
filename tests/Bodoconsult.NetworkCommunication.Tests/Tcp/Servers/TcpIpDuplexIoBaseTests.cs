@@ -10,7 +10,7 @@ using Bodoconsult.NetworkCommunication.Interfaces;
 using Bodoconsult.NetworkCommunication.Protocols.Udp;
 using Bodoconsult.NetworkCommunication.Tests.Infrastructure;
 
-namespace Bodoconsult.NetworkCommunication.Tests.Tcp;
+namespace Bodoconsult.NetworkCommunication.Tests.Tcp.Servers;
 
 [TestFixture]
 [NonParallelizable]
@@ -40,12 +40,12 @@ public abstract class TcpIpDuplexIoBaseTests : BaseTcpTests
             Socket = null;
         }
 
-        if (Server == null)
+        if (RemoteTcpIpDevice == null)
         {
             return;
         }
-        Server?.Dispose();
-        Server = null;
+        RemoteTcpIpDevice?.Dispose();
+        RemoteTcpIpDevice = null;
     }
 
     /// <summary>
@@ -99,11 +99,11 @@ public abstract class TcpIpDuplexIoBaseTests : BaseTcpTests
         // Arrange
         DuplexIo.StartCommunication().Wait();
 
-        Server.Send(data);
+        RemoteTcpIpDevice.Send(data);
 
         if (data2 != null)
         {
-            Server.Send(data2);
+            RemoteTcpIpDevice.Send(data2);
         }
 
 

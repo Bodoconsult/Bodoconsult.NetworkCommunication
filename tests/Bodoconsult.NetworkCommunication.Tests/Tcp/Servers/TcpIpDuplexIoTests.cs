@@ -1,4 +1,4 @@
-﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen. All rights reserved.
+﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
 using System.Diagnostics;
 using Bodoconsult.NetworkCommunication.Communication;
@@ -6,23 +6,23 @@ using Bodoconsult.NetworkCommunication.Factories;
 using Bodoconsult.NetworkCommunication.Interfaces;
 using Bodoconsult.NetworkCommunication.Tests.Helpers;
 
-namespace Bodoconsult.NetworkCommunication.Tests.Tcp;
+namespace Bodoconsult.NetworkCommunication.Tests.Tcp.Servers;
 
 [TestFixture]
 [NonParallelizable]
 [SingleThreaded]
-public class UdpIpDuplexIoTests : UdpIpDuplexIoBaseTests
+public class TcpIpDuplexIoTests : TcpIpDuplexIoBaseTests
 {
     [SetUp]
-    public void TestSetup()
+    protected void TestSetup()
     {
-        UdpIpTestHelper.InitServer(this);
+        TcpIpServerTestHelper.InitServer(this);
 
         Debug.Print("Start TestSetup");
-
+        
         BaseReset();
 
-        UdpIpTestHelper.InitSocket(this);
+        TcpIpServerTestHelper.InitSocket(this);
 
         DuplexIo = GetDuplexIo(Socket);
 
@@ -41,7 +41,6 @@ public class UdpIpDuplexIoTests : UdpIpDuplexIoBaseTests
 
         ISendPacketProcessFactory sendPacketProcessFactory = new FakeSendPacketProcessFactory();
         return new IpDuplexIo(DataMessagingConfig, sendPacketProcessFactory);
-
     }
 
     /// <summary>
@@ -52,7 +51,6 @@ public class UdpIpDuplexIoTests : UdpIpDuplexIoBaseTests
     /// <returns></returns>
     public override IDuplexIo GetDuplexIoWithFakeEncodeDecoder(ISocketProxy socketProxy, FakeSendPacketProcessEnum expectedResult)
     {
-
         Socket = socketProxy;
         BindDelegates();
 
@@ -62,6 +60,8 @@ public class UdpIpDuplexIoTests : UdpIpDuplexIoBaseTests
         };
         return new IpDuplexIo(DataMessagingConfig, sendPacketProcessFactory);
     }
+
+
 
     //public override void SendDataAndReceive(byte[] data, byte[] data2 = null)
     //{

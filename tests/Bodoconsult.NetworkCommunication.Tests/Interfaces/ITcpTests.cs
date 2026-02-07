@@ -1,6 +1,5 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
-
 using System.Net;
 using Bodoconsult.App.Interfaces;
 using Bodoconsult.NetworkCommunication.Interfaces;
@@ -10,11 +9,10 @@ namespace Bodoconsult.NetworkCommunication.Tests.Interfaces;
 
 public interface ITcpTests
 {
-
     /// <summary>
-    /// Current TCP/IP server to send data to the socket
+    /// Current remote TCP/IP device to send data to the socket
     /// </summary>
-    TcpTestServer Server { get; set; }
+    TcpTestServer RemoteTcpIpDevice { get; set; }
 
     /// <summary>
     /// Current IP address to use
@@ -35,5 +33,4 @@ public interface ITcpTests
     /// Current <see cref="ISocketProxy"/> implementation to use
     /// </summary>
     ISocketProxy Socket { get; set; }
-
 }

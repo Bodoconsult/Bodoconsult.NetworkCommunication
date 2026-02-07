@@ -1,40 +1,45 @@
-﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen. All rights reserved.
+﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
+
+using Bodoconsult.App.Interfaces;
+using Bodoconsult.NetworkCommunication.DataMessaging.DataMessageProcessingPackages;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig;
+using Bodoconsult.NetworkCommunication.Protocols.TcpIp;
 using Bodoconsult.NetworkCommunication.Testing;
 using Bodoconsult.NetworkCommunication.Tests.Interfaces;
 using Bodoconsult.NetworkCommunication.Tests.TestData;
 using System.Net;
-using Bodoconsult.App.Interfaces;
-using Bodoconsult.NetworkCommunication.DataMessaging.DataMessageProcessingPackages;
-using Bodoconsult.NetworkCommunication.Protocols.Udp;
-using NUnit.Framework.Internal;
 
 namespace Bodoconsult.NetworkCommunication.Tests.Helpers;
 
-public static class UdpIpTestHelper
+public static class TcpIpClientTestHelper
 {
-    private static readonly IAppLoggerProxy Logger =  TestDataHelper.GetFakeAppLoggerProxy();
-    
+    private static readonly IAppLoggerProxy Logger = TestDataHelper.GetFakeAppLoggerProxy();
+
     /// <summary>
     /// Initialize the IP communication
     /// </summary>
-    public static void InitServer(IUdpTests testSetup)
+    public static void InitServer(ITcpTests testSetup)
     {
         testSetup.DataMessagingConfig = new DefaultDataMessagingConfig();
+        testSetup.DataMessagingConfig.Port = GetRandomPort();
         testSetup.DataMessagingConfig.DataMessageProcessingPackage = new SdcpDataMessageProcessingPackage(testSetup.DataMessagingConfig);
         testSetup.DataMessagingConfig.AppLogger = Logger;
         testSetup.DataMessagingConfig.MonitorLogger = Logger;
 
         testSetup.IpAddress = IPAddress.Parse(testSetup.DataMessagingConfig.IpAddress);
 
-        testSetup.Server?.Dispose();
-
-        testSetup.Server = new UdpTestUniCastServer(testSetup.IpAddress, testSetup.DataMessagingConfig.Port, testSetup.DataMessagingConfig.Port + 1);
-        testSetup.Server.Start();
+        testSetup.RemoteTcpIpDevice?.Dispose();
+        testSetup.RemoteTcpIpDevice = new TcpTestServer(testSetup.IpAddress, testSetup.DataMessagingConfig.Port);
+        testSetup.RemoteTcpIpDevice.Start();
     }
 
-    public static void InitSocket(IUdpTests testSetup)
+    private static int GetRandomPort()
+    {
+        return new Random(60000).Next(50000, 65000);
+    }
+
+    public static void InitSocket(ITcpTests testSetup)
     {
         //// Soft reset server
         //testSetup.Server.ResetClientSocket();
@@ -42,6 +47,7 @@ public static class UdpIpTestHelper
         ////testSetup.SmdTower.MonitorLogger = testSetup.Logger;
 
         //testSetup.Server.WaitForConnections().GetAwaiter().GetResult();
+
 
         // Close socket if necessary
         try
@@ -54,10 +60,9 @@ public static class UdpIpTestHelper
         }
 
         // Load socket
-        var socket = new AsyncUdpSocketProxy(true);
+        var socket = new TcpIpClientSocketProxy();
         socket.IpAddress = testSetup.IpAddress;
-        socket.Port = testSetup.DataMessagingConfig.Port + 1;
-        socket.ClientPort = testSetup.DataMessagingConfig.Port;
+        socket.Port = testSetup.DataMessagingConfig.Port;
         testSetup.Socket = socket;
 
         testSetup.Socket.Connect().Wait();

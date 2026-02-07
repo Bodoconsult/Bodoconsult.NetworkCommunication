@@ -13,5 +13,4 @@ public interface ISocketProxyFactory
     /// </summary>
     /// <returns>Instance of <see cref="ISocketProxy"/></returns>
     ISocketProxy CreateInstance();
-
 }

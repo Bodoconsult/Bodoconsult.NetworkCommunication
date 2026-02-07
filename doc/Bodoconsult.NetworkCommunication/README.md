@@ -1358,7 +1358,9 @@ public class SdcpDataMessageProcessingPackage : IDataMessageProcessingPackage
 
 ```
 
+# More information
 
+https://csharp-networking.com/chapter01/
 
 
 # About us

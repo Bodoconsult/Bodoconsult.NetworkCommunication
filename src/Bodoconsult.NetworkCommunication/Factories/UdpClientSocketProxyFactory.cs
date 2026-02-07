@@ -6,16 +6,16 @@ using Bodoconsult.NetworkCommunication.Protocols.Udp;
 namespace Bodoconsult.NetworkCommunication.Factories;
 
 /// <summary>
-/// Factory to create a server instance of <see cref="AsyncUdpSocketProxy"/>
+/// Factory to create an instance of <see cref="UdpClientSocketProxy"/>
 /// </summary>
-public class ServerAsyncUdpSocketProxyFactory : ISocketProxyFactory
+public class UdpClientSocketProxyFactory : ISocketProxyFactory
 {
     /// <summary>
-    /// Creates a server instance of <see cref="ISocketProxy"/>
+    /// Creates an instance of <see cref="ISocketProxy"/>
     /// </summary>
     /// <returns>Instance of <see cref="ISocketProxy"/></returns>
     public ISocketProxy CreateInstance()
     {
-        return new AsyncUdpSocketProxy(true);
+        return new UdpServerSocketProxy();
     }
 }

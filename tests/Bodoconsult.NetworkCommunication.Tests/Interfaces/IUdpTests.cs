@@ -10,9 +10,9 @@ namespace Bodoconsult.NetworkCommunication.Tests.Interfaces;
 public interface IUdpTests
 {
     /// <summary>
-    /// Current TCP/IP server to send data to the socket
+    /// Current UDP remote device to send data to the socket
     /// </summary>
-    UdpTestUniCastServer Server { get; set; }
+    IUdpDevice RemoteUdpDevice { get; set; }
 
     /// <summary>
     /// Current IP address to use

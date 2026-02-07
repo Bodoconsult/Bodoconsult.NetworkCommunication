@@ -16,9 +16,9 @@ namespace Bodoconsult.NetworkCommunication.Protocols.Udp;
 /// <summary>
 /// Current asynchronous implementation of <see cref="ISocketProxy"/> for UDP unicast
 /// </summary>
-public class AsyncUdpSocketProxy : UpdSocketProxyBase
+public class UdpClientSocketProxy : UpdSocketProxyBase
 {
-    private readonly byte[] _tmp = new byte[1];
+    //private readonly byte[] _tmp = new byte[1];
 
     /// <summary>
     /// Endpoint for listening
@@ -30,13 +30,11 @@ public class AsyncUdpSocketProxy : UpdSocketProxyBase
     /// </summary>
     protected IPEndPoint SendEndPoint;
 
-    /// <summary>
-    /// Default ctor
-    /// </summary>
-    public AsyncUdpSocketProxy(bool isServer)
-    {
-        IsServer = isServer;
-    }
+    ///// <summary>
+    ///// Default ctor
+    ///// </summary>
+    //public AsyncUdpSocketProxy()
+    //{ }
 
     /// <summary>
     /// Current socket (only for testing purposes, do not access directly in production code)
@@ -166,9 +164,9 @@ public class AsyncUdpSocketProxy : UpdSocketProxyBase
                 UdpClient = null;
             }
 
-            if (ClientPort == 0)
+            if (RemotePort == 0)
             {
-                ClientPort = Port;
+                RemotePort = Port;
             }
 
             try
@@ -179,22 +177,12 @@ public class AsyncUdpSocketProxy : UpdSocketProxyBase
                 UdpClient.Client.ReceiveTimeout = ReceiveTimeout;
                 UdpClient.Client.SendTimeout = SendTimeout;
 
-                if (IsServer)
-                {
-                    var endPoint1 = new IPEndPoint(IPAddress.Any, Port);
-                    UdpClient.Client.Bind(endPoint1);
+                var ep1 = new IPEndPoint(IPAddress.Any, RemotePort);
+                UdpClient.Client.Bind(ep1);
 
-                    EndPoint = new IPEndPoint(IpAddress, Port);
-                    SendEndPoint = new IPEndPoint(IpAddress, ClientPort);
-                }
-                else
-                {
-                    var ep1 = new IPEndPoint(IPAddress.Any, ClientPort);
-                    UdpClient.Client.Bind(ep1);
+                EndPoint = new IPEndPoint(IpAddress, RemotePort);
+                SendEndPoint = new IPEndPoint(IpAddress, Port);
 
-                    EndPoint = new IPEndPoint(IpAddress, ClientPort);
-                    SendEndPoint = new IPEndPoint(IpAddress, Port);
-                }
             }
             catch (Exception e)
             {
@@ -278,15 +266,15 @@ public class AsyncUdpSocketProxy : UpdSocketProxyBase
     /// <returns>Number of bytes received</returns>
     public override Task<int> Receive(byte[] buffer, int offset, int expectedBytesLength)
     {
-        if (UdpClient.Available<=0)
+        if (UdpClient.Available <= 0)
         {
             return Task.FromResult(0);
         }
 
-        var received =  Task.Run(() =>
+        var received = Task.Run(() =>
         {
             var result = UdpClient.Receive(ref EndPoint);
-            Buffer.BlockCopy(result, offset, buffer, 0, buffer.Length-offset);
+            Buffer.BlockCopy(result, offset, buffer, 0, buffer.Length - offset);
             return Task.FromResult(result.Length);
         });
 
