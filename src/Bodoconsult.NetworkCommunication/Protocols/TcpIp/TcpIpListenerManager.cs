@@ -113,6 +113,9 @@ public class TcpIpListenerManager : ITcpIpListenerManager
             NoDelay = NoDelay,
             Blocking = Blocking
         };
+
+        // ToDo: RL: make property for that
+        listener.ExclusiveAddressUse = false;
         listener.SetSocketKeepAliveValues(KeepAliveTime, KeepAliveInterval);
 
         // Bind listener to all IP addresses of the local network adapter
@@ -147,6 +150,41 @@ public class TcpIpListenerManager : ITcpIpListenerManager
         }
 
         consumers.Add(acceptDelegate);
+    }
+
+    /// <summary>
+    /// Unregister a listener on a port
+    /// </summary>
+    /// <param name="listener">Listener to unregister</param>
+    /// <param name="acceptDelegate">Accept delegate to unregister</param>
+    public void UnregisterListener(Socket listener, ClientConnectionAcceptedDelegate acceptDelegate)
+    {
+        if (!_currentConsumers.TryGetValue(listener, out var consumers))
+        {
+            return;
+        }
+
+        if (consumers?.Contains(acceptDelegate) ?? false)
+        {
+            consumers.Remove(acceptDelegate);
+        }
+
+        if (consumers?.Count > 0)
+        {
+            return;
+        }
+
+        _ = _currentConsumers.TryRemove(listener, out _);
+
+
+        var item = _currentSockets.FirstOrDefault(xx => xx.Value == listener);
+
+        if (item.Key == 0)
+        {
+            return;
+        }
+
+        _ = _currentSockets.TryRemove(item.Key, out _);
     }
 
     /// <summary>
@@ -203,23 +241,6 @@ public class TcpIpListenerManager : ITcpIpListenerManager
             return;
         }
 
-        if (!_currentConsumers.TryGetValue(listener, out var consumers))
-        {
-            return;
-        }
-
-        if (consumers?.Contains(acceptDelegate) ?? false)
-        {
-            consumers.Remove(acceptDelegate);
-        }
-
-        if (consumers?.Count > 0)
-        {
-            return;
-        }
-
-        _ = _currentConsumers.TryRemove(listener, out _);
-
-        _ = _currentSockets.TryRemove(port, out _);
+        UnregisterListener(listener, acceptDelegate);
     }
 }

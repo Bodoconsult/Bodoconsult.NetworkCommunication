@@ -12,7 +12,7 @@ public interface ITcpTests
     /// <summary>
     /// Current remote TCP/IP device to send data to the socket
     /// </summary>
-    TcpTestServer RemoteTcpIpDevice { get; set; }
+    ITcpIpDevice RemoteTcpIpDevice { get; set; }
 
     /// <summary>
     /// Current IP address to use

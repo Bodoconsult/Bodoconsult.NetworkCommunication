@@ -15,14 +15,16 @@ namespace Bodoconsult.NetworkCommunication.Protocols.TcpIp;
 public class TcpIpServerSocketProxy : TcpIpSocketProxyBase
 {
     private readonly byte[] _tmp = new byte[1];
-
+    private readonly ITcpIpListenerManager _tcpIpListenerManager;
     private Socket _listener;
 
-    ///// <summary>
-    ///// Default ctor
-    ///// </summary>
-    //public TcpIpServerSocketProxy()
-    //{ }
+    /// <summary>
+    /// Default ctor
+    /// </summary>
+    public TcpIpServerSocketProxy(ITcpIpListenerManager tcpIpListenerManager)
+    {
+        _tcpIpListenerManager = tcpIpListenerManager;
+    }
 
     /// <summary>
     /// Is the socket connected
@@ -152,54 +154,14 @@ public class TcpIpServerSocketProxy : TcpIpSocketProxyBase
             Socket = null;
         }
 
-
-        _listener = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp)
-        {
-            ReceiveTimeout = ReceiveTimeout,
-            SendTimeout = SendTimeout,
-            NoDelay = true,
-            Blocking = false
-        };
-        _listener.SetSocketKeepAliveValues(7200000, 1000);
-
-        // Bind listener to all IP addresses of the local network adapter
-        EndPoint ep = new IPEndPoint(IPAddress.Any, Port);
-        _listener.Bind(ep);
-
-        // Now start listening
-        _listener.Listen(1000);
-
-        // Now begin
-        _listener.BeginAccept(AcceptCallback, _listener);
+        _listener = _tcpIpListenerManager.RegisterListener(Port, AcceptDelegate);
     }
 
-    /// <summary>
-    /// Callback for accepting new connection
-    /// </summary>
-    /// <param name="ar"></param>
-    private void AcceptCallback(IAsyncResult ar)
+    private bool AcceptDelegate(Socket clientSocket)
     {
-        // Get the socket that handles the client request
-        _listener = (Socket)ar.AsyncState;
-
-        if (_listener == null)
-        {
-            throw new ArgumentNullException(nameof(_listener));
-        }
-
-        if (Socket != null)
-        {
-            return;
-        }
-
-        try
-        {
-            Socket = _listener.EndAccept(ar);
-        }
-        catch (Exception e)
-        {
-            // ToDo: ???
-        }
+        // ToDo: check remote IP address
+        Socket = clientSocket;
+        return true;
     }
 
     /// <summary>

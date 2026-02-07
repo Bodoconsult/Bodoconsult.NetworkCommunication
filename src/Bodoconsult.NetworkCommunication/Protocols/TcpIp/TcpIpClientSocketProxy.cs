@@ -16,7 +16,7 @@ public class TcpIpClientSocketProxy : TcpIpSocketProxyBase
 {
     private readonly byte[] _tmp = new byte[1];
 
-    private Socket _listener;
+    //private Socket _listener;
 
     ///// <summary>
     ///// Default ctor

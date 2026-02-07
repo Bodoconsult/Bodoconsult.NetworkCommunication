@@ -74,6 +74,13 @@ public interface ITcpIpListenerManager: IDisposable
     void UnregisterListener(int port, ClientConnectionAcceptedDelegate acceptDelegate);
 
     /// <summary>
+    /// Unregister a listener on a port
+    /// </summary>
+    /// <param name="listener">Listener to unregister</param>
+    /// <param name="acceptDelegate">Accept delegate to unregister</param>
+    void UnregisterListener(Socket listener, ClientConnectionAcceptedDelegate acceptDelegate);
+
+    /// <summary>
     /// Find a listener by the port it is listening on
     /// </summary>
     /// <param name="port">Local port to listen on</param>

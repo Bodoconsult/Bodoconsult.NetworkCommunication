@@ -4,6 +4,7 @@ using System.Net;
 using Bodoconsult.App.Interfaces;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessageProcessingPackages;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig;
+using Bodoconsult.NetworkCommunication.Interfaces;
 using Bodoconsult.NetworkCommunication.Protocols.TcpIp;
 using Bodoconsult.NetworkCommunication.Testing;
 using Bodoconsult.NetworkCommunication.Tests.Interfaces;
@@ -17,7 +18,7 @@ public static class TcpIpServerTestHelper
     /// <summary>
     /// Initialize the IP communication
     /// </summary>
-    public static void InitServer(ITcpTests testSetup)
+    public static void InitClient(ITcpTests testSetup)
     {
         testSetup.DataMessagingConfig = new DefaultDataMessagingConfig();
         testSetup.DataMessagingConfig.Port = GetRandomPort();
@@ -28,8 +29,8 @@ public static class TcpIpServerTestHelper
         testSetup.IpAddress = IPAddress.Parse(testSetup.DataMessagingConfig.IpAddress);
 
         testSetup.RemoteTcpIpDevice?.Dispose();
-        testSetup.RemoteTcpIpDevice = new TcpTestServer(testSetup.IpAddress, testSetup.DataMessagingConfig.Port);
-        testSetup.RemoteTcpIpDevice.Start();
+        testSetup.RemoteTcpIpDevice = new TcpTestClient(testSetup.IpAddress, testSetup.DataMessagingConfig.Port+ 1, testSetup.DataMessagingConfig.Port);
+        
     }
 
     private static int GetRandomPort()
@@ -57,7 +58,8 @@ public static class TcpIpServerTestHelper
         }
 
         // Load socket
-        var socket = new TcpIpClientSocketProxy();
+        ITcpIpListenerManager tcpIpListenerManager = new TcpIpListenerManager();
+        var socket = new TcpIpServerSocketProxy(tcpIpListenerManager);
         socket.IpAddress = testSetup.IpAddress;
         socket.Port = testSetup.DataMessagingConfig.Port;
         testSetup.Socket = socket;
@@ -65,6 +67,7 @@ public static class TcpIpServerTestHelper
         testSetup.Socket.Connect().Wait();
 
         testSetup.Logger = Logger;
+        testSetup.RemoteTcpIpDevice.Start();
     }
 
     /// <summary>

@@ -27,6 +27,8 @@ namespace Bodoconsult.NetworkCommunication.Tests.Tcp
             // Assert
             Assert.That(lm.CurrentConsumers.Count, Is.EqualTo(0));
             Assert.That(lm.CurrentSockets.Count, Is.EqualTo(0));
+
+            lm.Dispose();
         }
 
 
@@ -127,6 +129,26 @@ namespace Bodoconsult.NetworkCommunication.Tests.Tcp
 
             // Act  
             lm.UnregisterListener(Port, acceptDelegate);
+
+            // Assert
+            Assert.That(lm.CurrentConsumers.Count, Is.EqualTo(0));
+            Assert.That(lm.CurrentSockets.Count, Is.EqualTo(0));
+
+            lm.Dispose();
+        }
+
+        [Test]
+        public void UnRegisterListener_RegisteredListener_ListenerUnregistered()
+        {
+            // Arrange 
+            var lm = new TcpIpListenerManager();
+
+            ClientConnectionAcceptedDelegate acceptDelegate = AcceptDelegate1;
+
+            var listener = lm.RegisterListener(Port, acceptDelegate);
+
+            // Act  
+            lm.UnregisterListener(listener, acceptDelegate);
 
             // Assert
             Assert.That(lm.CurrentConsumers.Count, Is.EqualTo(0));

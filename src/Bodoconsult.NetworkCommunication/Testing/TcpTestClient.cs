@@ -11,36 +11,37 @@ namespace Bodoconsult.NetworkCommunication.Testing;
 /// <summary>
 /// Simple TCP/IP server for testing purposes
 /// </summary>
-public class TcpTestServer : ITcpIpDevice
+public class TcpTestClient :   ITcpIpDevice
 {
-    private readonly Socket _listener;
-    private Socket _clientSocket;
+    private readonly Socket _socket;
     private readonly IPEndPoint _endPoint;
+    private readonly IPEndPoint _SendEndPoint;
 
     /// <summary>
     /// Default ctor
     /// </summary>
     /// <param name="ipAddress">IP address</param>
-    /// <param name="port">Port</param>
-    public TcpTestServer(IPAddress ipAddress, int port)
+    /// <param name="remotePort">Remote port</param>
+    /// <param name="port">Local port</param>
+    public TcpTestClient(IPAddress ipAddress, int port, int remotePort)
     {
         // Creation TCP/IP Socket using
         // Socket Class Constructor
-        _listener = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp)
+        _socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp)
         {
             ReceiveTimeout = ReceiveTimeout,
             SendTimeout = SendTimeout
         };
-
-        _listener.NoDelay = true;
-        _listener.Blocking = false;
-
+        //_socket.ExclusiveAddressUse = false;
+        //_socket.NoDelay = true;
+        //_socket.Blocking = false;
 
         // Establish the local endpoint
         // for the socket. Dns.GetHostName
         // returns the name of the host
         // running the application.
         _endPoint = new IPEndPoint(ipAddress, port);
+        _SendEndPoint = new IPEndPoint(ipAddress, remotePort);
     }
 
     /// <summary>
@@ -66,20 +67,7 @@ public class TcpTestServer : ITcpIpDevice
         //try
         //{
 
-        // Using Bind() method we associate a
-        // network address to the server socket.
-        // All client that will connect to this
-        // server socket must know this network
-        // Address
-        _listener.Bind(_endPoint);
-
-        //// Using Listen() method we create
-        //// the client list that will want
-        //// to connect to Server
-        _listener.Listen(10);
-
-        // Now wait for client connections
-        _listener.BeginAccept(AcceptCallback, _listener);
+        _socket.Connect(_endPoint);
 
         //}
         //catch (Exception e)
@@ -88,65 +76,17 @@ public class TcpTestServer : ITcpIpDevice
         //}
     }
 
-    private void AcceptCallback(IAsyncResult ar)
-    {
-        // Get the socket that handles the client request
-        if (_clientSocket != null)
-        {
-            return;
-        }
-
-        try
-        {
-            _clientSocket = _listener.EndAccept(ar);
-        }
-        catch (Exception e)
-        {
-            Debug.Print(e.Message);
-        }
-    }
-
-
-    /// <summary>
-    /// Wait for connections
-    /// </summary>
-    /// <returns></returns>
-    public async Task WaitForConnections()
-    {
-        while (!CancellationTokenSource.Token.IsCancellationRequested)
-        {
-            // Suspend while waiting for
-            // incoming connection Using
-            // Accept() method the server
-            // will accept connection of client
-            if (_clientSocket == null)
-            {
-                try
-                {
-                    _clientSocket = await _listener.AcceptAsync();
-                }
-                catch
-                {
-                    _clientSocket = null;
-                }
-
-            }
-
-            await Task.Delay(51, CancellationTokenSource.Token);
-        }
-    }
-
     /// <summary>
     /// Reset the client socket if necessary
     /// </summary>
     public void ResetClientSocket()
     {
-        if (_clientSocket == null)
-        {
-            return;
-        }
-        _clientSocket.Close();
-        _clientSocket = null;
+        //if (_clientSocket == null)
+        //{
+        //    return;
+        //}
+        //_clientSocket.Close();
+        //_clientSocket = null;
     }
 
 
@@ -164,7 +104,7 @@ public class TcpTestServer : ITcpIpDevice
         //    clientSocket = taskCs.Result;
         //}
 
-        var task = _clientSocket.SendAsync(data);
+        var task = _socket.SendToAsync(data, _SendEndPoint);
         task.Wait(CancellationTokenSource.Token);
 
         Debug.Print($"TcpServer: sent {task.Result} byte(s)!");
@@ -181,19 +121,8 @@ public class TcpTestServer : ITcpIpDevice
 
         try
         {
-
-            _clientSocket?.Close();
-            _clientSocket?.Dispose();
-        }
-        catch
-        {
-            // Do nothing
-        }
-
-        try
-        {
-            _listener?.Close();
-            _listener?.Dispose();
+            _socket?.Close();
+            _socket?.Dispose();
         }
         catch
         {

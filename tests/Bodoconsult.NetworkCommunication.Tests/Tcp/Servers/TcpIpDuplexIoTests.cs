@@ -16,7 +16,7 @@ public class TcpIpDuplexIoTests : TcpIpDuplexIoBaseTests
     [SetUp]
     protected void TestSetup()
     {
-        TcpIpServerTestHelper.InitServer(this);
+        TcpIpServerTestHelper.InitClient(this);
 
         Debug.Print("Start TestSetup");
         
