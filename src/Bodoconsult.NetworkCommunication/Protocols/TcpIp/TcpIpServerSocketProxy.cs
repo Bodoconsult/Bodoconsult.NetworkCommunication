@@ -3,9 +3,8 @@
 
 using Bodoconsult.NetworkCommunication.Helpers;
 using Bodoconsult.NetworkCommunication.Interfaces;
-using System.Net;
+using System.Diagnostics;
 using System.Net.Sockets;
-using System.Reflection.Metadata;
 
 namespace Bodoconsult.NetworkCommunication.Protocols.TcpIp;
 
@@ -15,7 +14,7 @@ namespace Bodoconsult.NetworkCommunication.Protocols.TcpIp;
 public class TcpIpServerSocketProxy : TcpIpSocketProxyBase
 {
     private readonly byte[] _tmp = new byte[1];
-    private readonly ITcpIpListenerManager _tcpIpListenerManager;
+    public readonly ITcpIpListenerManager TcpIpListenerManager;
     private Socket _listener;
 
     /// <summary>
@@ -23,7 +22,7 @@ public class TcpIpServerSocketProxy : TcpIpSocketProxyBase
     /// </summary>
     public TcpIpServerSocketProxy(ITcpIpListenerManager tcpIpListenerManager)
     {
-        _tcpIpListenerManager = tcpIpListenerManager;
+        TcpIpListenerManager = tcpIpListenerManager;
     }
 
     /// <summary>
@@ -135,26 +134,29 @@ public class TcpIpServerSocketProxy : TcpIpSocketProxyBase
     /// </summary>
     public override async Task Connect()
     {
-
-        try
+        await Task.Run(() =>
         {
-            if (Socket != null)
+            try
             {
-                Socket.Shutdown(SocketShutdown.Both);
-                Socket.Close();
-                Socket?.Dispose();
+                if (Socket != null)
+                {
+                    Socket.Shutdown(SocketShutdown.Both);
+                    Socket.Close();
+                    Socket?.Dispose();
+                }
             }
-        }
-        catch // (Exception ex)
-        {
-            // Do nothing
-        }
-        finally
-        {
-            Socket = null;
-        }
+            catch // (Exception ex)
+            {
+                // Do nothing
+            }
+            finally
+            {
+                Socket = null;
+            }
 
-        _listener = _tcpIpListenerManager.RegisterListener(Port, AcceptDelegate);
+            Debug.Print($"Server: port {Port}");
+            _listener = TcpIpListenerManager.RegisterListener(Port, AcceptDelegate);
+        });
     }
 
     private bool AcceptDelegate(Socket clientSocket)
@@ -231,7 +233,6 @@ public class TcpIpServerSocketProxy : TcpIpSocketProxyBase
     /// </summary>
     public Socket Socket { get; protected set; }
 
-
     /// <summary>
     /// Prepare the answer of the socket for testing
     /// </summary>
@@ -246,6 +247,8 @@ public class TcpIpServerSocketProxy : TcpIpSocketProxyBase
     /// </summary>
     public override void Dispose()
     {
+        TcpIpListenerManager.UnregisterListener(_listener, AcceptDelegate);
+
         IsDisposed = true;
         Socket?.Close();
         Socket?.Dispose();

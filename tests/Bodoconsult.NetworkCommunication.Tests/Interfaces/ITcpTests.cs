@@ -3,7 +3,6 @@
 using System.Net;
 using Bodoconsult.App.Interfaces;
 using Bodoconsult.NetworkCommunication.Interfaces;
-using Bodoconsult.NetworkCommunication.Testing;
 
 namespace Bodoconsult.NetworkCommunication.Tests.Interfaces;
 

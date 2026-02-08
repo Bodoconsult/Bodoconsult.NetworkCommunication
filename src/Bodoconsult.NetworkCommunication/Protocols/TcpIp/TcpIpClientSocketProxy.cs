@@ -5,7 +5,6 @@ using Bodoconsult.NetworkCommunication.Helpers;
 using Bodoconsult.NetworkCommunication.Interfaces;
 using System.Net;
 using System.Net.Sockets;
-using System.Reflection.Metadata;
 
 namespace Bodoconsult.NetworkCommunication.Protocols.TcpIp;
 
@@ -91,7 +90,6 @@ public class TcpIpClientSocketProxy : TcpIpSocketProxyBase
             {
                 return 0;
             }
-                
         }
     }
 
@@ -134,7 +132,6 @@ public class TcpIpClientSocketProxy : TcpIpSocketProxyBase
     /// </summary>
     public override async Task Connect()
     {
-
         try
         {
             if (Socket != null)

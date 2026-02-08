@@ -51,4 +51,13 @@ public static class TestDataHelper
     }
 
     private static AppBenchProxy _bench;
+
+    /// <summary>
+    ///  Get a random port (range should be configured in Wiondws Firewall for TCP and UDP). Remember: for UDP is a second port number calculated as port number 2 = port number 1 plus 1 required
+    /// </summary>
+    /// <returns></returns>
+    public static int GetRandomPort()
+    {
+        return new Random(33025).Next(33000, 33049);
+    }
 }

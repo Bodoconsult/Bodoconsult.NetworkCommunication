@@ -15,33 +15,26 @@ public class TcpTestClient :   ITcpIpDevice
 {
     private readonly Socket _socket;
     private readonly IPEndPoint _endPoint;
-    private readonly IPEndPoint _SendEndPoint;
 
     /// <summary>
     /// Default ctor
     /// </summary>
     /// <param name="ipAddress">IP address</param>
-    /// <param name="remotePort">Remote port</param>
     /// <param name="port">Local port</param>
-    public TcpTestClient(IPAddress ipAddress, int port, int remotePort)
+    public TcpTestClient(IPAddress ipAddress, int port)
     {
-        // Creation TCP/IP Socket using
-        // Socket Class Constructor
+        Debug.Print($"Client: port {port}");
+
         _socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp)
         {
             ReceiveTimeout = ReceiveTimeout,
             SendTimeout = SendTimeout
         };
-        //_socket.ExclusiveAddressUse = false;
-        //_socket.NoDelay = true;
-        //_socket.Blocking = false;
+        _socket.ExclusiveAddressUse = false;
+        _socket.NoDelay = true;
+        _socket.Blocking = false;
 
-        // Establish the local endpoint
-        // for the socket. Dns.GetHostName
-        // returns the name of the host
-        // running the application.
         _endPoint = new IPEndPoint(ipAddress, port);
-        _SendEndPoint = new IPEndPoint(ipAddress, remotePort);
     }
 
     /// <summary>
@@ -67,7 +60,7 @@ public class TcpTestClient :   ITcpIpDevice
         //try
         //{
 
-        _socket.Connect(_endPoint);
+        _socket.ConnectAsync(_endPoint).Wait(5000);
 
         //}
         //catch (Exception e)
@@ -89,25 +82,16 @@ public class TcpTestClient :   ITcpIpDevice
         //_clientSocket = null;
     }
 
-
-
     /// <summary>
     /// Send byte array to the client
     /// </summary>
     /// <param name="data">Byte array to send</param>
     public void Send(byte[] data)
     {
-        //if (clientSocket == null)
-        //{
-        //    var taskCs = _listener.Socket.AcceptAsync();
-        //    taskCs.Wait(CancellationToken);
-        //    clientSocket = taskCs.Result;
-        //}
-
-        var task = _socket.SendToAsync(data, _SendEndPoint);
+        var task = _socket.SendToAsync(data, _endPoint);
         task.Wait(CancellationTokenSource.Token);
 
-        Debug.Print($"TcpServer: sent {task.Result} byte(s)!");
+        Debug.Print($"TcpClient: sent {task.Result} byte(s)!");
     }
 
     public virtual void Dispose(bool disposing)

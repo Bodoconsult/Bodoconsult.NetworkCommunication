@@ -1,9 +1,7 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen. All rights reserved.
 
-using System.Reflection.Metadata;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessageValidators;
-using NuGet.Frameworks;
 
 namespace Bodoconsult.NetworkCommunication.Tests.Sdcp;
 

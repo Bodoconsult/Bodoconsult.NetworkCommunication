@@ -3,12 +3,10 @@
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig;
 using Bodoconsult.NetworkCommunication.Testing;
 using Bodoconsult.NetworkCommunication.Tests.Interfaces;
-using Bodoconsult.NetworkCommunication.Tests.TestData;
 using System.Net;
 using Bodoconsult.App.Interfaces;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessageProcessingPackages;
 using Bodoconsult.NetworkCommunication.Protocols.Udp;
-using NUnit.Framework.Internal;
 
 namespace Bodoconsult.NetworkCommunication.Tests.Helpers;
 
@@ -22,6 +20,7 @@ internal static class UdpClientIpTestHelper
     public static void InitServer(IUdpTests testSetup)
     {
         testSetup.DataMessagingConfig = new DefaultDataMessagingConfig();
+        testSetup.DataMessagingConfig.Port = TestDataHelper.GetRandomPort();
         testSetup.DataMessagingConfig.DataMessageProcessingPackage = new SdcpDataMessageProcessingPackage(testSetup.DataMessagingConfig);
         testSetup.DataMessagingConfig.AppLogger = Logger;
         testSetup.DataMessagingConfig.MonitorLogger = Logger;

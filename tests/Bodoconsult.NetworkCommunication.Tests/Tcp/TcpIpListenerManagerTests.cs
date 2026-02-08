@@ -1,17 +1,14 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen. All rights reserved.
 
 using Bodoconsult.NetworkCommunication.Protocols.TcpIp;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net.Sockets;
-using System.Text;
-using System.Threading.Tasks;
 using Bodoconsult.NetworkCommunication.Delegates;
 
 namespace Bodoconsult.NetworkCommunication.Tests.Tcp
 {
     [TestFixture]
+    [NonParallelizable]
+    [SingleThreaded]
     internal class TcpIpListenerManagerTests
     {
         private const int Port = 10000;
@@ -25,8 +22,7 @@ namespace Bodoconsult.NetworkCommunication.Tests.Tcp
             var lm = new TcpIpListenerManager();
 
             // Assert
-            Assert.That(lm.CurrentConsumers.Count, Is.EqualTo(0));
-            Assert.That(lm.CurrentSockets.Count, Is.EqualTo(0));
+            Assert.That(lm.CurrentListeners.Count, Is.EqualTo(0));
 
             lm.Dispose();
         }
@@ -44,16 +40,15 @@ namespace Bodoconsult.NetworkCommunication.Tests.Tcp
             var listener = lm.RegisterListener(Port, acceptDelegate);
 
             // Assert
-            Assert.That(lm.CurrentConsumers.Count, Is.EqualTo(1));
-            Assert.That(lm.CurrentSockets.Count, Is.EqualTo(1));
+            Assert.That(lm.CurrentListeners.Count, Is.EqualTo(1));
 
-            var consumers = lm.CurrentConsumers[0].Value;
+            var data = lm.CurrentListeners[0].Value;
 
-            Assert.That(consumers.Count, Is.EqualTo(1));
+            Assert.That(data.CurrentConsumers.Count, Is.EqualTo(1));
 
-            Assert.That(lm.CurrentConsumers.Exists(x=> x.Key == listener), Is.True);
-            Assert.That(lm.CurrentSockets.Exists(x => x.Key == Port), Is.True);
-            Assert.That(lm.CurrentSockets.Exists(x => x.Value == listener), Is.True);
+            Assert.That(lm.CurrentListeners.Exists(x=> x.Key == listener), Is.True);
+            Assert.That(lm.CurrentListeners.Exists(x => x.Value.Port == Port), Is.True);
+            Assert.That(lm.CurrentListeners.Exists(x => x.Value.Listener == listener), Is.True);
 
             lm.Dispose();
         }
@@ -70,18 +65,17 @@ namespace Bodoconsult.NetworkCommunication.Tests.Tcp
             var listener2 = lm.RegisterListener(Port, AcceptDelegate2);
 
             // Assert
-            Assert.That(lm.CurrentConsumers.Count, Is.EqualTo(1));
-            Assert.That(lm.CurrentSockets.Count, Is.EqualTo(1));
+            Assert.That(lm.CurrentListeners.Count, Is.EqualTo(1));
 
-            var consumers = lm.CurrentConsumers[0].Value;
+            var data = lm.CurrentListeners[0].Value;
 
-            Assert.That(consumers.Count, Is.EqualTo(2));
+            Assert.That(data.CurrentConsumers.Count, Is.EqualTo(2));
 
             Assert.That(listener1, Is.SameAs(listener2));
 
-            Assert.That(lm.CurrentConsumers.Exists(x => x.Key == listener1), Is.True);
-            Assert.That(lm.CurrentSockets.Exists(x => x.Key == Port), Is.True);
-            Assert.That(lm.CurrentSockets.Exists(x => x.Value == listener1), Is.True);
+            Assert.That(lm.CurrentListeners.Exists(x => x.Key == listener1), Is.True);
+            Assert.That(lm.CurrentListeners.Exists(x => x.Value.Port == Port), Is.True);
+            Assert.That(lm.CurrentListeners.Exists(x => x.Value.Listener == listener1), Is.True);
 
             lm.Dispose();
         }
@@ -101,18 +95,17 @@ namespace Bodoconsult.NetworkCommunication.Tests.Tcp
             var listener2 = lm.RegisterListener(Port, acceptDelegate);
 
             // Assert
-            Assert.That(lm.CurrentConsumers.Count, Is.EqualTo(1));
-            Assert.That(lm.CurrentSockets.Count, Is.EqualTo(1));
+            Assert.That(lm.CurrentListeners.Count, Is.EqualTo(1));
 
-            var consumers = lm.CurrentConsumers[0].Value;
+            var data = lm.CurrentListeners[0].Value;
 
-            Assert.That(consumers.Count, Is.EqualTo(1));
+            Assert.That(data.CurrentConsumers.Count, Is.EqualTo(1));
 
             Assert.That(listener1, Is.SameAs(listener2));
 
-            Assert.That(lm.CurrentConsumers.Exists(x => x.Key == listener1), Is.True);
-            Assert.That(lm.CurrentSockets.Exists(x => x.Key == Port), Is.True);
-            Assert.That(lm.CurrentSockets.Exists(x => x.Value == listener1), Is.True);
+            Assert.That(lm.CurrentListeners.Exists(x => x.Key == listener1), Is.True);
+            Assert.That(lm.CurrentListeners.Exists(x => x.Value.Port == Port), Is.True);
+            Assert.That(lm.CurrentListeners.Exists(x => x.Value.Listener == listener1), Is.True);
 
             lm.Dispose();
         }
@@ -125,14 +118,13 @@ namespace Bodoconsult.NetworkCommunication.Tests.Tcp
 
             ClientConnectionAcceptedDelegate acceptDelegate = AcceptDelegate1;
 
-            var listener = lm.RegisterListener(Port, acceptDelegate);
+            lm.RegisterListener(Port, acceptDelegate);
 
             // Act  
             lm.UnregisterListener(Port, acceptDelegate);
 
             // Assert
-            Assert.That(lm.CurrentConsumers.Count, Is.EqualTo(0));
-            Assert.That(lm.CurrentSockets.Count, Is.EqualTo(0));
+            Assert.That(lm.CurrentListeners.Count, Is.EqualTo(0));
 
             lm.Dispose();
         }
@@ -151,8 +143,7 @@ namespace Bodoconsult.NetworkCommunication.Tests.Tcp
             lm.UnregisterListener(listener, acceptDelegate);
 
             // Assert
-            Assert.That(lm.CurrentConsumers.Count, Is.EqualTo(0));
-            Assert.That(lm.CurrentSockets.Count, Is.EqualTo(0));
+            Assert.That(lm.CurrentListeners.Count, Is.EqualTo(0));
 
             lm.Dispose();
         }

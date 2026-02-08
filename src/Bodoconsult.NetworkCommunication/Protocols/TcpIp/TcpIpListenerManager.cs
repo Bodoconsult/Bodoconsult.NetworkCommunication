@@ -1,31 +1,48 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen. All rights reserved.
 
-using System.Collections.Concurrent;
-using Bodoconsult.NetworkCommunication.Interfaces;
-using System.Net;
-using System.Net.Sockets;
 using Bodoconsult.NetworkCommunication.Delegates;
 using Bodoconsult.NetworkCommunication.Helpers;
+using Bodoconsult.NetworkCommunication.Interfaces;
+using System.Collections.Concurrent;
+using System.Collections.Generic;
+using System.Net;
+using System.Net.Sockets;
+using Bodoconsult.App.Helpers;
+using Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace;
 
 namespace Bodoconsult.NetworkCommunication.Protocols.TcpIp;
 
 public class TcpIpListenerManager : ITcpIpListenerManager
 {
-    private readonly ConcurrentDictionary<int, Socket> _currentSockets = new();
+    private readonly ConcurrentDictionary<Socket, ListenerData> _listeners = new();
 
-    private readonly ConcurrentDictionary<Socket, List<ClientConnectionAcceptedDelegate>> _currentConsumers = new();
+    //private readonly ConcurrentDictionary<int, Socket> _currentSockets = new();
+    //private readonly ConcurrentDictionary<Socket, List<ClientConnectionAcceptedDelegate>> _currentConsumers = new();
+
 
     /// <summary>Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.</summary>
     public void Dispose()
     {
-        _currentConsumers.Clear();
+        ClearAll();
+    }
 
-        foreach (var listener in _currentSockets.Values)
+    /// <summary>
+    /// Clear all loaded values. Mainly for testing
+    /// </summary>
+    public void ClearAll()
+    {
+        foreach (var listener in _listeners.Values)
         {
+            listener.AcceptCts?.Cancel();
+
             try
             {
-                listener.Shutdown(SocketShutdown.Both);
-                listener.Close(5000);
+                if (listener.Listener != null)
+                {
+                    listener.Listener.Shutdown(SocketShutdown.Both);
+                    listener.Listener.Close(5000);
+                }
+
             }
             catch //(Exception e)
             {
@@ -34,7 +51,7 @@ public class TcpIpListenerManager : ITcpIpListenerManager
 
             try
             {
-                listener.Dispose();
+                listener.Listener?.Dispose();
             }
             catch //(Exception e)
             {
@@ -42,7 +59,7 @@ public class TcpIpListenerManager : ITcpIpListenerManager
             }
         }
 
-        _currentSockets.Clear();
+        _listeners.Clear();
     }
 
     /// <summary>
@@ -53,12 +70,12 @@ public class TcpIpListenerManager : ITcpIpListenerManager
     /// <summary>
     /// Readonly list of all current sockets
     /// </summary>
-    public List<KeyValuePair<int, Socket>> CurrentSockets => _currentSockets.ToList();
+    public List<KeyValuePair<Socket, ListenerData>> CurrentListeners => _listeners.ToList();
 
     /// <summary>
-    /// Readonly list of all current consumers
+    /// Exclusive address use?
     /// </summary>
-    public List<KeyValuePair<Socket, List<ClientConnectionAcceptedDelegate>>> CurrentConsumers => _currentConsumers.ToList();
+    public bool ExclusiveAddressUse { get; set; } = true;
 
     /// <summary>
     /// Is the listener blocking? See Socket.Blocking for more details. Default: false
@@ -98,21 +115,39 @@ public class TcpIpListenerManager : ITcpIpListenerManager
     /// <returns>Listener socket</returns>
     public Socket RegisterListener(int port, ClientConnectionAcceptedDelegate acceptDelegate)
     {
+        ListenerData data;
+
+        var kvp = _listeners.FirstOrDefault(x => x.Value.Port == port);
+
         // Check if listener is registered already
-        if (_currentSockets.TryGetValue(port, out var listener))
+        if (kvp.Key != null)
         {
+            data = kvp.Value;
+
             // Now register a new consumer for the listener
-            RegisterConsumer(listener, acceptDelegate);
-            return listener;
+            RegisterConsumer(data, acceptDelegate);
+            return data.Listener;
         }
 
-        listener = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp)
+        data = new ListenerData
+        {
+            Port = port
+        };
+
+
+        var listener = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp)
         {
             ReceiveTimeout = ReceiveTimeout,
             SendTimeout = SendTimeout,
             NoDelay = NoDelay,
             Blocking = Blocking
         };
+
+        data.Listener = listener;
+        if (!_listeners.TryAdd(listener, data))
+        {
+            throw new ArgumentException("Adding listener data failed!");
+        }
 
         // ToDo: RL: make property for that
         listener.ExclusiveAddressUse = false;
@@ -126,30 +161,53 @@ public class TcpIpListenerManager : ITcpIpListenerManager
         listener.Listen(ListenBacklog);
 
         // Now begin
-        listener.BeginAccept(AcceptCallback, listener);
+        data.AcceptCts = new CancellationTokenSource();
+        data.AcceptTask = WaitForAccept(data.Listener, data.AcceptCts.Token);
 
-        // Keep the listener instance
-        _currentSockets.TryAdd(port, listener);
+        AsyncHelper.FireAndForget(() =>
+        {
+            data.AcceptTask.GetAwaiter().GetResult();
+        });
+
+
+        //// Keep the listener instance
+        //_currentSockets.TryAdd(port, listener);
 
         // Now register a new consumer for the listener
-        RegisterConsumer(listener, acceptDelegate);
+        RegisterConsumer(data, acceptDelegate);
         return listener;
     }
 
-    private void RegisterConsumer(Socket listener, ClientConnectionAcceptedDelegate acceptDelegate)
+    private async Task WaitForAccept(Socket listener, CancellationToken token)
     {
-        if (!_currentConsumers.TryGetValue(listener, out var consumers))
+        while (!token.IsCancellationRequested)
         {
-            consumers = [acceptDelegate];
-            _currentConsumers.TryAdd(listener, consumers);
-        }
+            var clientSocket = await listener.AcceptAsync(token);
 
-        if (consumers.Contains(acceptDelegate))
+            // Now deliver the client socket to the consumer
+            if (!_listeners.TryGetValue(listener, out var data))
+            {
+                return;
+            }
+
+            foreach (var consumer in data.CurrentConsumers)
+            {
+                if (consumer.Invoke(clientSocket))
+                {
+                    return;
+                }
+            }
+        }
+    }
+
+    private static void RegisterConsumer(ListenerData data, ClientConnectionAcceptedDelegate acceptDelegate)
+    {
+        if (data.CurrentConsumers.Contains(acceptDelegate))
         {
             return;
         }
 
-        consumers.Add(acceptDelegate);
+        data.CurrentConsumers.Add(acceptDelegate);
     }
 
     /// <summary>
@@ -159,32 +217,39 @@ public class TcpIpListenerManager : ITcpIpListenerManager
     /// <param name="acceptDelegate">Accept delegate to unregister</param>
     public void UnregisterListener(Socket listener, ClientConnectionAcceptedDelegate acceptDelegate)
     {
-        if (!_currentConsumers.TryGetValue(listener, out var consumers))
+        if (!_listeners.TryGetValue(listener, out var data))
         {
             return;
         }
 
-        if (consumers?.Contains(acceptDelegate) ?? false)
+        if (data.CurrentConsumers.Contains(acceptDelegate))
         {
-            consumers.Remove(acceptDelegate);
+            data.CurrentConsumers.Remove(acceptDelegate);
         }
 
-        if (consumers?.Count > 0)
-        {
-            return;
-        }
-
-        _ = _currentConsumers.TryRemove(listener, out _);
-
-
-        var item = _currentSockets.FirstOrDefault(xx => xx.Value == listener);
-
-        if (item.Key == 0)
+        if (data.CurrentConsumers?.Count > 0)
         {
             return;
         }
 
-        _ = _currentSockets.TryRemove(item.Key, out _);
+        data.AcceptCts?.Cancel();
+
+        if (data.Listener != null)
+        {
+            try
+            {
+                data.Listener.Shutdown(SocketShutdown.Both);
+            }
+            catch //(Exception e)
+            {
+                // Do nothing
+            }
+
+            data.Listener.Close(1000);
+            data.Listener.Dispose();
+        }
+
+        _ = _listeners.TryRemove(listener, out _);
     }
 
     /// <summary>
@@ -215,12 +280,12 @@ public class TcpIpListenerManager : ITcpIpListenerManager
         var clientSocket = listener.EndAccept(ar);
 
         // Now deliver the client socket to the consumer
-        if (!_currentConsumers.TryGetValue(listener, out var consumers))
+        if (!_listeners.TryGetValue(listener, out var data))
         {
             return;
         }
 
-        foreach (var consumer in consumers)
+        foreach (var consumer in data.CurrentConsumers)
         {
             if (consumer.Invoke(clientSocket))
             {
@@ -236,11 +301,14 @@ public class TcpIpListenerManager : ITcpIpListenerManager
     /// <param name="acceptDelegate">Accept delegate to unregister</param>
     public void UnregisterListener(int port, ClientConnectionAcceptedDelegate acceptDelegate)
     {
-        if (!_currentSockets.TryGetValue(port, out var listener))
+        var kvp = _listeners.FirstOrDefault(x => x.Value.Port == port);
+
+        // Check if listener is registered already
+        if (kvp.Key == null)
         {
             return;
         }
 
-        UnregisterListener(listener, acceptDelegate);
+        UnregisterListener(kvp.Value.Listener, acceptDelegate);
     }
 }

@@ -7,7 +7,6 @@ using Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig;
 using Bodoconsult.NetworkCommunication.Protocols.TcpIp;
 using Bodoconsult.NetworkCommunication.Testing;
 using Bodoconsult.NetworkCommunication.Tests.Interfaces;
-using Bodoconsult.NetworkCommunication.Tests.TestData;
 using System.Net;
 
 namespace Bodoconsult.NetworkCommunication.Tests.Helpers;
@@ -22,7 +21,7 @@ public static class TcpIpClientTestHelper
     public static void InitServer(ITcpTests testSetup)
     {
         testSetup.DataMessagingConfig = new DefaultDataMessagingConfig();
-        testSetup.DataMessagingConfig.Port = GetRandomPort();
+        testSetup.DataMessagingConfig.Port = TestDataHelper.GetRandomPort();
         testSetup.DataMessagingConfig.DataMessageProcessingPackage = new SdcpDataMessageProcessingPackage(testSetup.DataMessagingConfig);
         testSetup.DataMessagingConfig.AppLogger = Logger;
         testSetup.DataMessagingConfig.MonitorLogger = Logger;
@@ -34,10 +33,6 @@ public static class TcpIpClientTestHelper
         testSetup.RemoteTcpIpDevice.Start();
     }
 
-    private static int GetRandomPort()
-    {
-        return new Random(60000).Next(50000, 65000);
-    }
 
     public static void InitSocket(ITcpTests testSetup)
     {

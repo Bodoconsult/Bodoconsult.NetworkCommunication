@@ -20,6 +20,7 @@ internal static class UdpServerIpTestHelper
     public static void InitServer(IUdpTests testSetup)
     {
         testSetup.DataMessagingConfig = new DefaultDataMessagingConfig();
+        testSetup.DataMessagingConfig.Port = TestDataHelper.GetRandomPort();
         testSetup.DataMessagingConfig.DataMessageProcessingPackage = new SdcpDataMessageProcessingPackage(testSetup.DataMessagingConfig);
         testSetup.DataMessagingConfig.AppLogger = Logger;
         testSetup.DataMessagingConfig.MonitorLogger = Logger;

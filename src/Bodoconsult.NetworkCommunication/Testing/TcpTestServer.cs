@@ -24,8 +24,6 @@ public class TcpTestServer : ITcpIpDevice
     /// <param name="port">Port</param>
     public TcpTestServer(IPAddress ipAddress, int port)
     {
-        // Creation TCP/IP Socket using
-        // Socket Class Constructor
         _listener = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp)
         {
             ReceiveTimeout = ReceiveTimeout,
@@ -35,11 +33,6 @@ public class TcpTestServer : ITcpIpDevice
         _listener.NoDelay = true;
         _listener.Blocking = false;
 
-
-        // Establish the local endpoint
-        // for the socket. Dns.GetHostName
-        // returns the name of the host
-        // running the application.
         _endPoint = new IPEndPoint(ipAddress, port);
     }
 
@@ -106,36 +99,6 @@ public class TcpTestServer : ITcpIpDevice
         }
     }
 
-
-    /// <summary>
-    /// Wait for connections
-    /// </summary>
-    /// <returns></returns>
-    public async Task WaitForConnections()
-    {
-        while (!CancellationTokenSource.Token.IsCancellationRequested)
-        {
-            // Suspend while waiting for
-            // incoming connection Using
-            // Accept() method the server
-            // will accept connection of client
-            if (_clientSocket == null)
-            {
-                try
-                {
-                    _clientSocket = await _listener.AcceptAsync();
-                }
-                catch
-                {
-                    _clientSocket = null;
-                }
-
-            }
-
-            await Task.Delay(51, CancellationTokenSource.Token);
-        }
-    }
-
     /// <summary>
     /// Reset the client socket if necessary
     /// </summary>
@@ -149,21 +112,12 @@ public class TcpTestServer : ITcpIpDevice
         _clientSocket = null;
     }
 
-
-
     /// <summary>
     /// Send byte array to the client
     /// </summary>
     /// <param name="data">Byte array to send</param>
     public void Send(byte[] data)
     {
-        //if (clientSocket == null)
-        //{
-        //    var taskCs = _listener.Socket.AcceptAsync();
-        //    taskCs.Wait(CancellationToken);
-        //    clientSocket = taskCs.Result;
-        //}
-
         var task = _clientSocket.SendAsync(data);
         task.Wait(CancellationTokenSource.Token);
 

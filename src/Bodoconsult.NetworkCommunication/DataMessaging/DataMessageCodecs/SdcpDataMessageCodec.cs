@@ -3,7 +3,6 @@
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
 using Bodoconsult.NetworkCommunication.Helpers;
 using Bodoconsult.NetworkCommunication.Interfaces;
-using System;
 
 namespace Bodoconsult.NetworkCommunication.DataMessaging.DataMessageCodecs;
 

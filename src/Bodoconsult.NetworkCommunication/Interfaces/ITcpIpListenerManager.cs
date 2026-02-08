@@ -1,8 +1,8 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen. All rights reserved.
 
 using Bodoconsult.NetworkCommunication.Delegates;
-using System.Collections.Concurrent;
 using System.Net.Sockets;
+using Bodoconsult.NetworkCommunication.Protocols.TcpIp;
 
 namespace Bodoconsult.NetworkCommunication.Interfaces;
 
@@ -13,6 +13,11 @@ namespace Bodoconsult.NetworkCommunication.Interfaces;
 /// </summary>
 public interface ITcpIpListenerManager: IDisposable
 {
+    /// <summary>
+    /// Exclusive address use?
+    /// </summary>
+    bool ExclusiveAddressUse { get; set; }
+
     /// <summary>
     /// Is the listener blocking? See Socket.Blocking for more details
     /// </summary>
@@ -51,12 +56,7 @@ public interface ITcpIpListenerManager: IDisposable
     /// <summary>
     /// Readonly list of all current sockets
     /// </summary>
-    List<KeyValuePair<int, Socket>> CurrentSockets { get; }
-
-    /// <summary>
-    /// Readonly list of all current consumers
-    /// </summary>
-    List<KeyValuePair<Socket, List<ClientConnectionAcceptedDelegate>>> CurrentConsumers { get; }
+    List<KeyValuePair<Socket, ListenerData>> CurrentListeners { get; }
 
     /// <summary>
     /// Register a listener for a certain port on the local machine
