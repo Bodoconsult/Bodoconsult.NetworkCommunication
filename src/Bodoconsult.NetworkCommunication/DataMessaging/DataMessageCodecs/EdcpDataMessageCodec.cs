@@ -24,7 +24,7 @@ public class EdcpDataMessageCodec : BaseDataMessageCodec
     }
 
     /// <summary>
-    /// Decode a data message to an <see cref="IDataMessage"/> instance
+    /// Decode a data message to an <see cref="IInboundDataMessage"/> instance
     /// </summary>
     /// <param name="data">Data message bytes received</param>
     /// <returns>Decoding result</returns>
@@ -59,7 +59,7 @@ public class EdcpDataMessageCodec : BaseDataMessageCodec
             }
 
 
-            var dataMessage = new EdcpDataMessage
+            var dataMessage = new EdcpInboundDataMessage
             {
                 DataBlock = dataBlock,
                 BlockCode = blockCode
@@ -83,10 +83,10 @@ public class EdcpDataMessageCodec : BaseDataMessageCodec
     /// </summary>
     /// <param name="message">Data message to send</param>
     /// <returns>Byte array as optimized <see cref="ReadOnlyMemory{T}"/> to send</returns>
-    public override OutboundCodecResult EncodeDataMessage(IDataMessage message)
+    public override OutboundCodecResult EncodeDataMessage(IOutboundDataMessage message)
     {
         var result = new OutboundCodecResult();
-        if (message is not EdcpDataMessage tMessage)
+        if (message is not EdcpInboundDataMessage tMessage)
         {
             result.ErrorMessage = "EdcpDataMessage required for EdcpDataMessageCodec";
             result.ErrorCode = 1;

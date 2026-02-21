@@ -4,11 +4,9 @@ using Bodoconsult.NetworkCommunication.Delegates;
 using Bodoconsult.NetworkCommunication.Helpers;
 using Bodoconsult.NetworkCommunication.Interfaces;
 using System.Collections.Concurrent;
-using System.Collections.Generic;
 using System.Net;
 using System.Net.Sockets;
 using Bodoconsult.App.Helpers;
-using Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace;
 
 namespace Bodoconsult.NetworkCommunication.Protocols.TcpIp;
 

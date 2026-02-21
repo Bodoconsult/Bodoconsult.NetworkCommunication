@@ -7,7 +7,7 @@ namespace Bodoconsult.NetworkCommunication.Interfaces;
 
 /// <summary>
 /// This class is implemented by classes used to encode or decode
-/// bytes contained in the datablock of a incoming <see cref="IDataMessage"/>
+/// bytes contained in the datablock of a incoming <see cref="IInboundDataMessage"/>
 /// </summary>
 public interface IDataMessageDataBlockCodec
 {

@@ -17,9 +17,9 @@ Bodoconsult.NetworkCommunication is a library with basic functionality for setti
 
 >	[Implement your data message types: IDataMessage](#implement-your-data-message-types-idatamessage)
 
->	[Implement a handshake validator: IHandshakeDataMessageValidator](#implement-a-handshake-validator-ihandshakedatamessagevalidator)
+>	[Implement a handshake validator for inbound handshakes: IHandshakeDataMessageValidator](#implement-a-handshake-validator-for-inbound-handshakes-ihandshakedatamessagevalidator)
 
->	[Implement a data message validator: IDataMessageValidator](#implement-a-data-message-validator-idatamessagevalidator)
+>	[Implement a data message validator for inbound data messages: IDataMessageValidator](#implement-a-data-message-validator-for-inbound-data-messages-idatamessagevalidator)
 
 >	[Implement a message forwarder for received messages: IDataMessageProcessor](#implement-a-message-forwarder-for-received-messages-idatamessageprocessor)
 
@@ -497,22 +497,24 @@ internal class SdcpDataMessageSplitterTests
 }
 ```
 
-# Implement your data message types: IDataMessage
+# Implement your data message types for inbound messages: IInboundDataMessage
 
-Depending on the purpose of your network communication protocol you will implement one or more data message types. A data message is the object orientated implementation of a byte stream pattern. Data messages may be used for client to server communication, for server to client communication and for bidirectional communication as your protocol requires it.
+Inbound messages are messages your app receives from another app via network.
+
+Depending on the purpose of your network communication protocol you will implement one or more inbound data message types. A data message is the object orientated implementation of a byte stream pattern. Data messages may be used for client to server communication, for server to client communication and for bidirectional communication as your protocol requires it.
 
 ``` csharp
 /// <summary>
-/// Basic implementation of <see cref="IDataMessage"/> for SDCP protocol
+/// Basic implementation of <see cref="IInboundDataMessage"/> for SDCP protocol
 /// </summary>
-public class SdcpDataMessage: IDataMessage
+public class SdcpInboundDataMessage: IInboundDataMessage
 {
     private Memory<byte> _rawMessageData;
 
     /// <summary>
     /// Default ctor
     /// </summary>
-    public SdcpDataMessage()
+    public SdcpInboundDataMessage()
     {
         MessageId = DateTime.Now.ToFileTimeUtc();
     }
@@ -523,17 +525,12 @@ public class SdcpDataMessage: IDataMessage
     public long MessageId { get; }
 
     /// <summary>
-    /// The message type of the message
-    /// </summary>
-    public MessageTypeEnum MessageType { get; set; } = MessageTypeEnum.Received;
-
-    /// <summary>
     /// Is waiting for acknowledgement by the device required for the message
     /// </summary>
     public bool WaitForAcknowledgement { get; set; }
 
     /// <summary>
-    /// Should a acknowledgement be sent if the message is received
+    /// Should an acknowledgement be sent if the message is received
     /// </summary>
     public bool AnswerWithAcknowledgement { get; set; }
 
@@ -561,12 +558,12 @@ public class SdcpDataMessage: IDataMessage
     /// <returns>Info string</returns>
     public string ToInfoString()
     {
-        return $"SdcpDataMessage ID {MessageId} {MessageType.ToString()} {RawMessageDataClearText}";
+        return $"SdcpInboundDataMessage ID {MessageId} {RawMessageDataClearText}";
     }
 
     public string ToShortInfoString()
     {
-        return $"SdcpDataMessage ID {MessageId} {MessageType.ToString()}";
+        return $"SdcpInboundDataMessage ID {MessageId}";
     }
 
     /// <summary>
@@ -575,29 +572,107 @@ public class SdcpDataMessage: IDataMessage
     public IDataBlock DataBlock { get; set; }
 }
 ```
-# Implement your handshake message types: IDataMessage
 
-If required by your protocol define handshake messages as required. Technical details see data message implementation above.
+# Implement your data message types for outbound messages: IOutboundDataMessage
 
-SDCP protocol uses the default Handshake class as handshake message. For another implementation see the handshake for EDCP protocol:
+Outbound messages are messages your app sends to another app via network.
+
+Depending on the purpose of your network communication protocol you will implement one or more outbound data message types. A data message is the object orientated implementation of a byte stream pattern. Data messages may be used for client to server communication, for server to client communication and for bidirectional communication as your protocol requires it.
+
+``` csharp
+/// <summary>
+/// Basic implementation of <see cref="IOutboundDataMessage"/> for SDCP protocol
+/// </summary>
+public class SdcpOutboundDataMessage: IOutboundDataMessage
+{
+    private Memory<byte> _rawMessageData;
+
+    /// <summary>
+    /// Default ctor
+    /// </summary>
+    public SdcpOutboundDataMessage()
+    {
+        MessageId = DateTime.Now.ToFileTimeUtc();
+    }
+
+    /// <summary>
+    /// A unique ID to identify the message
+    /// </summary>
+    public long MessageId { get; }
+
+    /// <summary>
+    /// Is waiting for acknowledgement by the device required for the message
+    /// </summary>
+    public bool WaitForAcknowledgement { get; set; }
+
+    /// <summary>
+    /// Should an acknowledgement be sent if the message is received
+    /// </summary>
+    public bool AnswerWithAcknowledgement { get; set; }
+
+    /// <summary>
+    /// Current raw message data as byte array
+    /// </summary>
+    public Memory<byte> RawMessageData
+    {
+        get => _rawMessageData;
+        set
+        {
+            _rawMessageData = value;
+            RawMessageDataClearText = DataMessageHelper.GetStringFromArrayCsharpStyle(_rawMessageData);
+        }
+    }
+
+    /// <summary>
+    /// Current raw message data as clear text
+    /// </summary>
+    public string RawMessageDataClearText { get; set; }
+
+    /// <summary>
+    /// Create an info string for logging
+    /// </summary>
+    /// <returns>Info string</returns>
+    public string ToInfoString()
+    {
+        return $"SdcpOutboundDataMessage ID {MessageId} {RawMessageDataClearText}";
+    }
+
+    public string ToShortInfoString()
+    {
+        return $"SdcpOutboundDataMessage ID {MessageId}";
+    }
+
+    /// <summary>
+    /// Data block stored in the message
+    /// </summary>
+    public IDataBlock DataBlock { get; set; }
+}
+```
+
+
+# Implement your inbound handshake message types: IInboundHandShakeDataMessage
+
+If required by your protocol define inbound handshake messages as required. Technical details see data message implementation above.
+
+SDCP protocol uses the default InboundHandshake class as handshake message. For another implementation see the handshake for EDCP protocol:
 
 ``` csharp
 /// <summary>
 /// Represents an EDCP protocol handshake message
 /// </summary>
-public sealed class EdcpHandshakeMessage : BaseHandShakeDataMessage, IHandShakeDataMessage
+public sealed class EdcpInboundHandshakeMessage : BaseInboundHandShakeDataMessage, IInboundHandShakeDataMessage
 {
     /// <summary>
     /// Default ctor
     /// </summary>
     /// <param name="messageType">Current message type</param>
-    public EdcpHandshakeMessage(MessageTypeEnum messageType)
+    public EdcpInboundHandshakeMessage(MessageTypeEnum messageType)
     {
         MessageType = messageType;
     }
 
     /// <summary>
-    /// Typpe of handshake as byte value
+    /// Type of handshake as byte value
     /// </summary>
     public byte HandshakeMessageType { set; get; }
 
@@ -612,10 +687,10 @@ public sealed class EdcpHandshakeMessage : BaseHandShakeDataMessage, IHandShakeD
     {
         return $"{HandshakeMessageType switch
         {
-            6 => "EdcpHandshake ACK",
-            21 => "EdcpHandshake NAK",
-            24 => "EdcpHandshake CAN",
-            _ => "EdcpHandshake Unknown"
+            6 => "EdcpInboundHandshake ACK",
+            21 => "EdcpInboundHandshake NAK",
+            24 => "EdcpInboundHandshake CAN",
+            _ => "EdcpInboundHandshake Unknown"
         }} BlockCode {BlockCode}";
     }
 
@@ -627,10 +702,10 @@ public sealed class EdcpHandshakeMessage : BaseHandShakeDataMessage, IHandShakeD
     {
         return $"{HandshakeMessageType switch
         {
-            6 => "EdcpHandshake ACK",
-            21 => "EdcpHandshake NAK",
-            24 => "EdcpHandshake CAN",
-            _ => "EdcpHandshake Unknown"
+            6 => "EdcpInboundHandshake ACK",
+            21 => "EdcpInboundHandshake NAK",
+            24 => "EdcpInboundHandshake CAN",
+            _ => "EdcpInboundHandshake Unknown"
         }} BlockCode {BlockCode}";
     }
 
@@ -642,16 +717,85 @@ public sealed class EdcpHandshakeMessage : BaseHandShakeDataMessage, IHandShakeD
     {
         return $"{HandshakeMessageType switch
         {
-            6 => "EdcpHandshake ACK",
-            21 => "EdcpHandshake NAK",
-            24 => "EdcpHandshake CAN",
-            _ => "EdcpHandshake Unknown"
+            6 => "EdcpInboundHandshake ACK",
+            21 => "EdcpInboundHandshake NAK",
+            24 => "EdcpInboundHandshake CAN",
+            _ => "EdcpInboundHandshake Unknown"
         }} BlockCode {BlockCode}";
     }
 }
 ```
 
-# Implement a handshake validator: IHandshakeDataMessageValidator
+# Implement your outbound handshake message types: IOutboundHandShakeDataMessage
+
+If required by your protocol define outbound handshake messages as required. Technical details see data message implementation above.
+
+SDCP protocol uses the default OutboundHandshake class as handshake message. For another implementation see the handshake for EDCP protocol:
+
+``` csharp
+/// <summary>
+/// Represents an EDCP protocol handshake message
+/// </summary>
+public sealed class EdcpOutboundHandshakeMessage : BaseOutboundHandShakeDataMessage, IOutboundHandShakeDataMessage
+{
+    /// <summary>
+    /// Type of handshake as byte value
+    /// </summary>
+    public byte HandshakeMessageType { set; get; }
+
+    /// <summary>
+    /// Block code of the data message this handshake is acknowledging
+    /// </summary>
+    public byte BlockCode { get; set; }
+
+    /// <summary>Returns a string that represents the current object.</summary>
+    /// <returns>A string that represents the current object.</returns>
+    public override string ToString()
+    {
+        return $"{HandshakeMessageType switch
+        {
+            6 => "EdcpOutboundHandshake ACK",
+            21 => "EdcpOutboundHandshake NAK",
+            24 => "EdcpOutboundHandshake CAN",
+            _ => "EdcpOutboundHandshake Unknown"
+        }} BlockCode {BlockCode}";
+    }
+
+
+    /// <summary>
+    /// Create an info string for logging
+    /// </summary>
+    /// <returns>Info string</returns>
+    public override string ToInfoString()
+    {
+        return $"{HandshakeMessageType switch
+        {
+            6 => "EdcpOutboundHandshake ACK",
+            21 => "EdcpOutboundHandshake NAK",
+            24 => "EdcpOutboundHandshake CAN",
+            _ => "EdcpOutboundHandshake Unknown"
+        }} BlockCode {BlockCode}";
+    }
+
+    /// <summary>
+    /// Create a short info string for logging
+    /// </summary>
+    /// <returns>Info string</returns>
+    public override string ToShortInfoString()
+    {
+        return $"{HandshakeMessageType switch
+        {
+            6 => "EdcpOutboundHandshake ACK",
+            21 => "EdcpOutboundHandshake NAK",
+            24 => "EdcpOutboundHandshake CAN",
+            _ => "EdcpOutboundHandshake Unknown"
+        }} BlockCode {BlockCode}";
+    }
+}
+```
+
+
+# Implement a handshake validator for inbound handshakes: IHandshakeDataMessageValidator
 
 A handshake validator checks first in method IsHandshakeForSentMessage() if a received handshake is for a certain sent message. Second it sets the ProcessExecutionResult for the responsible send process (ISendPacketProcess):
 
@@ -660,78 +804,81 @@ A handshake validator checks first in method IsHandshakeForSentMessage() if a re
 /// Implementation of <see cref="IHandshakeDataMessageValidator"/> for SDCP protocol
 /// </summary>
 public class SdcpHandshakeDataMessageValidator : IHandshakeDataMessageValidator
+
 {
-	/// <summary>
-	/// Is a received message a handshake for a sent message
-	/// </summary>
-	/// <param name="sentMessage">Sent message</param>
-	/// <param name="handshakeMessage">Received handshake message</param>
-	/// <returns>True if the message was the handshake for the sent message</returns>
-	public DataMessageValidatorResult IsHandshakeForSentMessage(IDataMessage sentMessage, IDataMessage handshakeMessage)
-	{
+    /// <summary>
+    /// Is a received message a handshake for a sent message
+    /// </summary>
+    /// <param name="sentMessage">Sent message</param>
+    /// <param name="handshakeMessage">Received handshake message</param>
+    /// <returns>True if the message was the handshake for the sent message</returns>
+    public DataMessageValidatorResult IsHandshakeForSentMessage(IOutboundDataMessage sentMessage,
+        IInboundDataMessage handshakeMessage)
+    {
 
-		if (sentMessage is not SdcpDataMessage)
-		{
-			return new DataMessageValidatorResult(false, "No SDCP data message sent");
-		}
+        if (sentMessage is not SdcpInboundDataMessage)
+        {
+            return new DataMessageValidatorResult(false, "No SDCP data message sent");
+        }
 
-		if (handshakeMessage is not HandshakeMessage)
-		{
-			return new DataMessageValidatorResult(false, "Received message is NOT a handshake message");
-		}
+        if (handshakeMessage is not InboundHandshakeMessage)
+        {
+            return new DataMessageValidatorResult(false, "Received message is NOT a valid handshake message");
+        }
 
-		return new DataMessageValidatorResult(true, string.Empty);
-	}
+        return new DataMessageValidatorResult(true, string.Empty);
+    }
 
-	/// <summary>
-	/// Handle the received handshake and sets the ProcessExecutionResult for the responsible send process <see cref="ISendPacketProcess"/>
-	/// </summary>
-	/// <param name="context">Current send message process</param>
-	/// <param name="handshake">Received handshake</param>
-	public void HandleHandshake(ISendPacketProcess context, IDataMessage handshake)
-	{
-		if (handshake == null)
-		{
-			context.ProcessExecutionResult = OrderExecutionResultState.Error;
-			return;
-		}
 
-		if (handshake is not HandshakeMessage hs)
-		{
-			//todo result wrong message?
-			context.ProcessExecutionResult = OrderExecutionResultState.NoResponseFromDevice;
-			context.DataMessagingConfig.MonitorLogger?.LogWarning($"Message {context.Message.MessageId}: No handshake received. Current Sent Attempt Count > MaxRepeatCount. No ResponseFromTower! ");
-			return;
-		}
+    /// <summary>
+    /// Handle the received handshake and sets the ProcessExecutionResult for the responsible send process <see cref="ISendPacketProcess"/>
+    /// </summary>
+    /// <param name="context">Current send message process</param>
+    /// <param name="handshake">Received handshake</param>
+    public void HandleHandshake(ISendPacketProcess context, IInboundDataMessage handshake)
+    {
+        if (handshake == null)
+        {
+            context.ProcessExecutionResult = OrderExecutionResultState.Error;
+            return;
+        }
 
-		switch (hs.HandshakeMessageType)
-		{
-			case HandShakeMessageType.Ack:
-				context.ProcessExecutionResult = OrderExecutionResultState.Successful;
-				context.CurrentSendAttempsCount = 0;
-				context.DataMessagingConfig.MonitorLogger?.LogDebug($"Message {context.Message.MessageId}: ACK received [{hs.HandshakeMessageType:X2}]");
-				break;
+        if (handshake is not InboundHandshakeMessage hs)
+        {
+            //todo result wrong message?
+            context.ProcessExecutionResult = OrderExecutionResultState.NoResponseFromDevice;
+            context.DataMessagingConfig.MonitorLogger?.LogWarning($"Message {context.Message.MessageId}: No handshake received. Current Sent Attempt Count > MaxRepeatCount. No ResponseFromTower! ");
+            return;
+        }
 
-			case HandShakeMessageType.Nack:
-				context.ProcessExecutionResult = OrderExecutionResultState.Nack;
-				context.DataMessagingConfig.MonitorLogger?.LogWarning($"Message {context.Message.MessageId} : NAK received [ {hs.HandshakeMessageType:X2}]");
-				break;
+        switch (hs.HandshakeMessageType)
+        {
+            case HandShakeMessageType.Ack:
+                context.ProcessExecutionResult = OrderExecutionResultState.Successful;
+                context.CurrentSendAttempsCount = 0;
+                context.DataMessagingConfig.MonitorLogger?.LogDebug($"Message {context.Message.MessageId}: ACK received");
+                break;
 
-			case HandShakeMessageType.Can:
-				context.ProcessExecutionResult = OrderExecutionResultState.Can;
-				//IMPORTANT clear
-				context.CurrentSendAttempsCount = 0;
-				context.DataMessagingConfig.MonitorLogger?.LogWarning($"Message {context.Message.MessageId}: CAN received");
-				break;
-			default:
-				context.ProcessExecutionResult = OrderExecutionResultState.Error;
-				break;
-		}
-	}
+            case HandShakeMessageType.Nack:
+                context.ProcessExecutionResult = OrderExecutionResultState.Nack;
+                context.DataMessagingConfig.MonitorLogger?.LogWarning($"Message {context.Message.MessageId}: NAK received");
+                break;
+
+            case HandShakeMessageType.Can:
+                context.ProcessExecutionResult = OrderExecutionResultState.Can;
+                //IMPORTANT clear
+                context.CurrentSendAttempsCount = 0;
+                context.DataMessagingConfig.MonitorLogger?.LogWarning($"Message {context.Message.MessageId}: CAN received");
+                break;
+            default:
+                context.ProcessExecutionResult = OrderExecutionResultState.Error;
+                break;
+        }
+    }
 }
 ```
 
-# Implement a data message validator: IDataMessageValidator
+# Implement a data message validator for inbound data messages: IDataMessageValidator
 
 A data message validator checks in method IsMessageValid() if the received message is basically a valid message. No detailed checks for datablock content etc. at this point.
 
@@ -841,57 +988,59 @@ For testing purposes or certain poduction tasks there is a RawDataMessageCodec. 
 /// Codec to encode and decode raw data messages
 /// </summary>
 public class RawDataMessageCodec : BaseDataMessageCodec
-{
+{´
+    /// <summary>
+    /// Default ctor
+    /// </summary>
+    public RawDataMessageCodec()
+    {
+        ExpectedMinimumLength = 1;
+        ExpectedMaximumLength = int.MaxValue;
+    }
 
-	public RawDataMessageCodec()
-	{
-		ExpectedMinimumLength = 1;
-		ExpectedMaximumLength = int.MaxValue;
-	}
+    /// <summary>
+    /// Decode a data message to an <see cref="IInboundDataMessage"/> instance
+    /// </summary>
+    /// <param name="data">Data message bytes received</param>
+    /// <returns>Decoding result</returns>
+    public override InboundCodecResult DecodeDataMessage(Memory<byte> data)
+    {
+        var result = new InboundCodecResult
+        {
+            DataMessage =new RawInboundDataMessage
+            {
+                RawMessageData = data
+            },
+            ErrorCode = 0
+        };
+        return result;
+    }
 
-	/// <summary>
-	/// Decode a data message to an <see cref="IDataMessage"/> instance
-	/// </summary>
-	/// <param name="data">Data message bytes received</param>
-	/// <returns>Decoding result</returns>
-	public override InboundCodecResult DecodeDataMessage(Memory<byte> data)
-	{
-		var result = new InboundCodecResult
-		{
-			DataMessage =new RawDataMessage
-			{
-				RawMessageData = data
-			},
-			ErrorCode = 0
-		};
-		return result;
-	}
+    /// <summary>
+    /// Encodes a message to a byte array to send to receiver
+    /// </summary>
+    /// <param name="message">Data message to send</param>
+    /// <returns>Byte array as optimized <see cref="ReadOnlyMemory{T}"/> to send</returns>
+    public override OutboundCodecResult EncodeDataMessage(IOutboundDataMessage message)
+    {
+        var result = new OutboundCodecResult();
+        if (message is not RawOutboundDataMessage rm)
+        {
+            result.ErrorMessage = "RawDataMessage required for RawDataMessageCodec";
+            result.ErrorCode= 1;
+            return result;
+        }
 
-	/// <summary>
-	/// Encodes a message to a byte array to send to receiver
-	/// </summary>
-	/// <param name="message">Data message to send</param>
-	/// <returns>Byte array as optimized <see cref="ReadOnlyMemory{T}"/> to send</returns>
-	public override OutboundCodecResult EncodeDataMessage(IDataMessage message)
-	{
-		var result = new OutboundCodecResult();
-		if (message is not RawDataMessage rm)
-		{
-			result.ErrorMessage = "RawDataMessage required for RawDataMessageCodec";
-			result.ErrorCode= 1;
-			return result;
-		}
+        if (message.RawMessageData.Length==0)
+        {
+            result.ErrorMessage = "No data provided for message";
+            result.ErrorCode= 1;
+            return result;
+        }
 
-		if (message.RawMessageData.Length==0)
-		{
-			result.ErrorMessage = "No data provided for message";
-			result.ErrorCode= 1;
-			return result;
-		}
-
-		message.RawMessageData = rm.RawMessageData;
-		return result;
-	}
+        message.RawMessageData = rm.RawMessageData;
+        return result;
+    }
 }
 ```
 
@@ -912,60 +1061,60 @@ Here a simple handshake codec implementation for SDCP protocol:
 public class SdcpHandshakeMessageCodec : BaseDataMessageCodec
 {
 
-	public SdcpHandshakeMessageCodec()
-	{
-		ExpectedMinimumLength = 1;
-		ExpectedMaximumLength = 1;
-	}
+    public SdcpHandshakeMessageCodec()
+    {
+        ExpectedMinimumLength = 1;
+        ExpectedMaximumLength = 1;
+    }
 
-	/// <summary>
-	/// Decode a data message to an <see cref="IDataMessage"/> instance
-	/// </summary>
-	/// <param name="data">Data message bytes received</param>
-	/// <returns>Decoding result</returns>
-	public override InboundCodecResult DecodeDataMessage(Memory<byte> data)
-	{
-		var result = CheckExpectedLengths(data.Length);
+    /// <summary>
+    /// Decode a data message to an <see cref="IInboundDataMessage"/> instance
+    /// </summary>
+    /// <param name="data">Data message bytes received</param>
+    /// <returns>Decoding result</returns>
+    public override InboundCodecResult DecodeDataMessage(Memory<byte> data)
+    {
+        var result = CheckExpectedLengths(data.Length);
 
-		if (result.ErrorCode != 0)
-		{
-			return result;
-		}
+        if (result.ErrorCode != 0)
+        {
+            return result;
+        }
 
-		if (!DeviceCommunicationBasics.HandshakeMessageStartTokens.Contains(data.Span[0]))
-		{
-			result.ErrorCode = 3;
-			result.ErrorMessage = $"First char {data.Span[0]:X2} is not an allowed handshake char!";
-			return result;
-		}
+        if (!DeviceCommunicationBasics.HandshakeMessageStartTokens.Contains(data.Span[0]))
+        {
+            result.ErrorCode = 3;
+            result.ErrorMessage = $"First char {data.Span[0]:X2} is not an allowed handshake char!";
+            return result;
+        }
 
-		result.DataMessage = new HandshakeMessage(MessageTypeEnum.Received)
-		{
-			HandshakeMessageType = data.Span[0],
-			RawMessageData = data.ToArray()
-		};
-		return result;
-	}
+        result.DataMessage = new InboundHandshakeMessage(MessageTypeEnum.Received)
+        {
+            HandshakeMessageType = data.Span[0],
+            RawMessageData = data.ToArray()
+        };
+        return result;
+    }
 
-	/// <summary>
-	/// Encodes a message to a byte array to send to receiver
-	/// </summary>
-	/// <param name="message">Data message to send</param>
-	/// <returns>Byte array as optimized <see cref="ReadOnlyMemory{T}"/> to send</returns>
-	public override OutboundCodecResult EncodeDataMessage(IDataMessage message)
-	{
-		var result = new OutboundCodecResult();
+    /// <summary>
+    /// Encodes a message to a byte array to send to receiver
+    /// </summary>
+    /// <param name="message">Data message to send</param>
+    /// <returns>Byte array as optimized <see cref="ReadOnlyMemory{T}"/> to send</returns>
+    public override OutboundCodecResult EncodeDataMessage(IOutboundDataMessage message)
+    {
+        var result = new OutboundCodecResult();
 
-		if (message is not HandshakeMessage hMessage)
-		{
-			result.ErrorMessage = "HandshakeMessage required for HandshakeMessageCodec";
-			result.ErrorCode = 1;
-			return result;
-		}
+        if (message is not OutboundHandshakeMessage hMessage)
+        {
+            result.ErrorMessage = "HandshakeMessage required for HandshakeMessageCodec";
+            result.ErrorCode = 1;
+            return result;
+        }
 
-		message.RawMessageData = new[] { hMessage.HandshakeMessageType };
-		return result;
-	}
+        message.RawMessageData = new[] { hMessage.HandshakeMessageType};
+        return result;
+    }
 }
 ```
 
@@ -992,7 +1141,7 @@ public class SdcpDataMessageCodec : BaseDataMessageCodec
     }
 
     /// <summary>
-    /// Decode a data message to an <see cref="IDataMessage"/> instance
+    /// Decode a data message to an <see cref="IInboundDataMessage"/> instance
     /// </summary>
     /// <param name="data">Data message bytes received</param>
     /// <returns>Decoding result</returns>
@@ -1030,7 +1179,7 @@ public class SdcpDataMessageCodec : BaseDataMessageCodec
 
 
 
-            var dataMessage = new SdcpDataMessage
+            var dataMessage = new SdcpInboundDataMessage
             {
                 DataBlock = dataBlock
             };
@@ -1045,6 +1194,7 @@ public class SdcpDataMessageCodec : BaseDataMessageCodec
             result.ErrorCode = 5;
             return result;
         }
+
     }
 
     /// <summary>
@@ -1052,10 +1202,10 @@ public class SdcpDataMessageCodec : BaseDataMessageCodec
     /// </summary>
     /// <param name="message">Data message to send</param>
     /// <returns>Byte array as optimized <see cref="ReadOnlyMemory{T}"/> to send</returns>
-    public override OutboundCodecResult EncodeDataMessage(IDataMessage message)
+    public override OutboundCodecResult EncodeDataMessage(IOutboundDataMessage message)
     {
         var result = new OutboundCodecResult();
-        if (message is not SdcpDataMessage tMessage)
+        if (message is not SdcpInboundDataMessage tMessage)
         {
             result.ErrorMessage = "SdcpDataMessage required for SdcpDataMessageCodec";
             result.ErrorCode = 1;
@@ -1067,6 +1217,12 @@ public class SdcpDataMessageCodec : BaseDataMessageCodec
         // Add the datablock now if required
         try
         {
+            if (tMessage.DataBlock == null)
+            {
+                result.ErrorMessage = "SdcpDataMessageCodec: datablock must not be null";
+                result.ErrorCode = 5;
+                return result;
+            }
             DataBlockCodingProcessor.FromDataBlockToBytes(data, tMessage.DataBlock);
         }
         catch (Exception exception)

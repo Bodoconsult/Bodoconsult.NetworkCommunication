@@ -25,6 +25,6 @@ public interface IOrderReceiver: IDisposable
     /// Adds a received message to the receiver queue for further processing
     /// </summary>
     /// <param name="receivedMessage">Received message</param>
-    void AddReceivedMessage(IDataMessage receivedMessage);
+    void AddReceivedMessage(IInboundDataMessage receivedMessage);
 
 }

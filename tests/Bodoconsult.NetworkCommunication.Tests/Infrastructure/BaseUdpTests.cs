@@ -85,7 +85,7 @@ public class BaseUdpTests : IUdpTests
     #region Event catcher methods
 
 
-    protected void OnHandshakeReceivedDelegate(IDataMessage handshake)
+    protected void OnHandshakeReceivedDelegate(IInboundDataMessage handshake)
     {
         MessageCounter++;
         IsUpdateModeReceived = true;
@@ -97,7 +97,7 @@ public class BaseUdpTests : IUdpTests
         IsCorruptedMessageFired = true;
     }
 
-    protected void OnNotExpectedMessageReceivedEvent(IDataMessage message)
+    protected void OnNotExpectedMessageReceivedEvent(IInboundDataMessage message)
     {
         IsOnNotExpectedMessageReceivedFired = true;
     }
@@ -107,7 +107,7 @@ public class BaseUdpTests : IUdpTests
         IsComDevCloseFired = true;
     }
 
-    protected void OnRaiseDataMessageReceivedEvent(IDataMessage message)
+    protected void OnRaiseDataMessageReceivedEvent(IInboundDataMessage message)
     {
         MessageCounter++;
         IsMessageReceivedFired = true;

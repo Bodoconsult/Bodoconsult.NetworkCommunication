@@ -1,35 +1,21 @@
-﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
-// Licence MIT
-
-using Bodoconsult.NetworkCommunication.EnumAndStates;
+﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen. All rights reserved.
 
 namespace Bodoconsult.NetworkCommunication.Interfaces;
 
 /// <summary>
-/// Interface for byte stream based messaging i.e. via TCP/IP
+/// Interface for byte based outbound messaging i.e. via TCP/IP or UDP
 /// </summary>
-public interface IDataMessage
+public interface IOutboundDataMessage
 {
-
     /// <summary>
     /// A unique ID to identify the message
     /// </summary>
     long MessageId { get; }
 
     /// <summary>
-    /// The message type of the message
-    /// </summary>
-    MessageTypeEnum MessageType { get; }
-
-    /// <summary>
     /// Is waiting for acknowledgement by the device required for the message
     /// </summary>
     bool WaitForAcknowledgement { get; }
-
-    /// <summary>
-    /// Should an acknowledgement be sent if the message is received
-    /// </summary>
-    bool AnswerWithAcknowledgement { get; }
 
     /// <summary>
     /// Current raw message data as byte array

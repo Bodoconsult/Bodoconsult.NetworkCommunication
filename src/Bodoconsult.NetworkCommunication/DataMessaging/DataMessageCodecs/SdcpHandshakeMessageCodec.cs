@@ -19,7 +19,7 @@ public class SdcpHandshakeMessageCodec : BaseDataMessageCodec
     }
 
     /// <summary>
-    /// Decode a data message to an <see cref="IDataMessage"/> instance
+    /// Decode a data message to an <see cref="IInboundDataMessage"/> instance
     /// </summary>
     /// <param name="data">Data message bytes received</param>
     /// <returns>Decoding result</returns>
@@ -39,7 +39,7 @@ public class SdcpHandshakeMessageCodec : BaseDataMessageCodec
             return result;
         }
 
-        result.DataMessage = new HandshakeMessage(MessageTypeEnum.Received)
+        result.DataMessage = new InboundHandshakeMessage(MessageTypeEnum.Received)
         {
             HandshakeMessageType = data.Span[0],
             RawMessageData = data.ToArray()
@@ -52,11 +52,11 @@ public class SdcpHandshakeMessageCodec : BaseDataMessageCodec
     /// </summary>
     /// <param name="message">Data message to send</param>
     /// <returns>Byte array as optimized <see cref="ReadOnlyMemory{T}"/> to send</returns>
-    public override OutboundCodecResult EncodeDataMessage(IDataMessage message)
+    public override OutboundCodecResult EncodeDataMessage(IOutboundDataMessage message)
     {
         var result = new OutboundCodecResult();
 
-        if (message is not HandshakeMessage hMessage)
+        if (message is not OutboundHandshakeMessage hMessage)
         {
             result.ErrorMessage = "HandshakeMessage required for HandshakeMessageCodec";
             result.ErrorCode = 1;

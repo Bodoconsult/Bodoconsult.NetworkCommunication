@@ -5,7 +5,7 @@ namespace Bodoconsult.NetworkCommunication.Interfaces;
 /// <summary>
 /// Interface for data messages used for commands
 /// </summary>
-public interface ICommandDataMessage : IDataMessage
+public interface ICommandDataMessage : IInboundDataMessage
 {
 
     /// <summary>

@@ -1,5 +1,5 @@
-﻿// Copyright (c) My// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
-// // Licence MIT
+﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
+// Licence MIT
 
 namespace Bodoconsult.NetworkCommunication.EnumAndStates;
 

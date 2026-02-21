@@ -62,7 +62,7 @@ public delegate void RaiseDataMessageSentDelegate(ReadOnlyMemory<byte> message);
 /// Delegate fired if a handshake has been received by the wait state manager
 /// </summary>
 /// <param name="message">Handshake message</param>
-public delegate void RaiseDataMessageHandshakeReceivedDelegate(IDataMessage message);
+public delegate void RaiseDataMessageHandshakeReceivedDelegate(IInboundDataMessage message);
 
 /// <summary>
 /// Update the data message processing package
@@ -72,13 +72,13 @@ public delegate void UpdateDataMessageProcessingPackageDelegate();
 /// <summary>
 /// Delegate for delivering a received data message to the app next level
 /// </summary>
-public delegate void RaiseDataMessageReceivedDelegate(IDataMessage message);
+public delegate void RaiseDataMessageReceivedDelegate(IInboundDataMessage message);
 
 /// <summary>
 /// Unexpected data message received delegate
 /// </summary>
 /// <param name="message"></param>
-public delegate void RaiseUnexpectedDataMessageReceivedDelegate(IDataMessage message);
+public delegate void RaiseUnexpectedDataMessageReceivedDelegate(IInboundDataMessage message);
 
 /// <summary>
 /// Request a closing of the current communication connection from the business logic delegate
@@ -92,7 +92,7 @@ public delegate void RaiseComDevCloseRequestDelegate(string requestSource);
     
 // ****** Receiver delegates ****** 
     
-public delegate void RaisedeviceMessageNotReceivedDelegate(IDataMessage message);
+public delegate void RaisedeviceMessageNotReceivedDelegate(IInboundDataMessage message);
 public delegate void RaisedeviceMessageCorruptedDelegate(byte messageBlockAndRc, string reason);
 
 // ****** Sender delegates ****** 
@@ -104,7 +104,7 @@ public delegate void RaisedeviceMessageCorruptedDelegate(byte messageBlockAndRc,
 /// </summary>
 /// <param name="message">Message received from tower as expected</param>
 /// <returns>True if the message was handled successfully else false</returns>
-public delegate bool OrderReceiverCheckMessageDelegate(IDataMessage message);
+public delegate bool OrderReceiverCheckMessageDelegate(IInboundDataMessage message);
 
 /// <summary>
 /// Delegate for actions bound to request steps messages

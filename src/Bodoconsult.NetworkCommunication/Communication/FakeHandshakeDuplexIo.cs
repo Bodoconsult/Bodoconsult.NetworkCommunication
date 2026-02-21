@@ -29,7 +29,7 @@ public class FakeHandshakeDuplexIo : IDuplexIo
     /// <summary>
     /// The handshale message to be "received" on sending a message
     /// </summary>
-    public IHandShakeDataMessage HandShakeDataMessage { get; set; } = new HandshakeMessage(MessageTypeEnum.Sent);
+    public IInboundHandShakeDataMessage HandShakeDataMessage { get; set; } = new InboundHandshakeMessage(MessageTypeEnum.Sent);
 
     /// <summary>Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources asynchronously.</summary>
     /// <returns>A task that represents the asynchronous dispose operation.</returns>
@@ -50,12 +50,12 @@ public class FakeHandshakeDuplexIo : IDuplexIo
     public bool IsCommunicationStarted { get; set; }
 
     /// <summary>
-    /// The receiver part used of the duplex (bi-directional) comm channels
+    /// The receiver part used of the duplex (bidirectional) comm channels
     /// </summary>
     public IDuplexIoReceiver Receiver { get; set; }
 
     /// <summary>
-    /// The sender part used of the duplex (bi-directional) comm channels
+    /// The sender part used of the duplex (bidirectional) comm channels
     /// </summary>
     public IDuplexIoSender Sender { get; set; }
 
@@ -78,7 +78,7 @@ public class FakeHandshakeDuplexIo : IDuplexIo
     /// Send a message to the device.
     /// </summary>
     /// <param name="message">Current message to send</param>
-    public Task<MessageSendingResult> SendMessage(IDataMessage message)
+    public Task<MessageSendingResult> SendMessage(IOutboundDataMessage message)
     {
         _counter++;
         if (_counter >= NumberOfTriesTheHandshakeIsReceived)
@@ -100,7 +100,7 @@ public class FakeHandshakeDuplexIo : IDuplexIo
     /// Send a message to the device directly. This method is intended for internal purposes only. Do NOT use directly. Use <see cref="IDuplexIo.SendMessage"/> instead. This method makes faking easier!
     /// </summary>
     /// <param name="message">Current message to send</param>
-    public Task<MessageSendingResult> SendMessageInternal(IDataMessage message)
+    public Task<MessageSendingResult> SendMessageInternal(IOutboundDataMessage message)
     {
         _counter++;
         if (_counter >= NumberOfTriesTheHandshakeIsReceived)

@@ -22,6 +22,6 @@ public class InboundCodecResult
     /// <summary>
     /// Data message decoded by the codec
     /// </summary>
-    public IDataMessage DataMessage { get; set; }
+    public IInboundDataMessage DataMessage { get; set; }
 
 }

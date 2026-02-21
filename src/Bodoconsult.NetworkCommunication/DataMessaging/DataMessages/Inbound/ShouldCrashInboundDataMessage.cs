@@ -1,4 +1,4 @@
-﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
+﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen. All rights reserved.
 
 using Bodoconsult.NetworkCommunication.EnumAndStates;
 using Bodoconsult.NetworkCommunication.Helpers;
@@ -7,27 +7,26 @@ using Bodoconsult.NetworkCommunication.Interfaces;
 namespace Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
 
 /// <summary>
-/// Sends a raw byte data message to the device. Intended mainly for outgoing message to send
+/// Dummy message for tests letting the converter fail for SDCP and EDCP
 /// </summary>
-public class RawDataMessage : IDataMessage
+public class ShouldCrashInboundDataMessage : IInboundDataMessage
 {
-
     private Memory<byte> _rawMessageData;
 
     /// <summary>
     /// A unique ID to identify the message
     /// </summary>
-    public long MessageId { get; }= DateTime.Now.Ticks;
+    public long MessageId { get; } = DateTime.Now.Ticks;
 
     /// <summary>
     /// The message type of the message
     /// </summary>
-    public MessageTypeEnum MessageType => MessageTypeEnum.Sent;
+    public MessageTypeEnum MessageType { get; set; }
 
     /// <summary>
     /// Is waiting for acknowledgement by the device required for the message
     /// </summary>
-    public bool WaitForAcknowledgement => false;
+    public bool WaitForAcknowledgement { get; set; }
 
     /// <summary>
     /// Should an acknowledgement be sent if the message is received
@@ -58,7 +57,7 @@ public class RawDataMessage : IDataMessage
     /// <returns>Info string</returns>
     public string ToInfoString()
     {
-        return $"RawDataMessage {MessageId} Length:{RawMessageData.Length} Data:{RawMessageDataClearText}";
+        return $"ShouldCrashDataMessage {MessageId} Length:{RawMessageData.Length} Data:{RawMessageDataClearText}";
     }
 
     /// <summary>
@@ -67,6 +66,6 @@ public class RawDataMessage : IDataMessage
     /// <returns>Info string</returns>
     public string ToShortInfoString()
     {
-        return $"RawDataMessage {MessageId} Length:{RawMessageData.Length}";
+        return $"ShouldCrashDataMessage {MessageId} Length:{RawMessageData.Length}";
     }
 }

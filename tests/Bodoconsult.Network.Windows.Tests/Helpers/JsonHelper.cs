@@ -3,7 +3,7 @@ using System.Reflection;
 using System.Text;
 using Newtonsoft.Json;
 
-namespace Bodoconsult.App.Windows.Test.Helpers;
+namespace Bodoconsult.Network.Windows.Tests.Helpers;
 
 /// <summary>
 /// Helper class to handle JSON in JobExecuter

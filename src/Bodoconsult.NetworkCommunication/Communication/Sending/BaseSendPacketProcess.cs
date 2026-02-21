@@ -52,7 +52,7 @@ public abstract class BaseSendPacketProcess : ISendPacketProcess, IAsyncDisposab
     /// <param name="duplexIo">Current IO messaging system</param>
     /// <param name="message">Current data message to send to the device</param>
     /// <param name="dataMessagingConfig">Current device</param>
-    public void LoadDependencies(IDuplexIo duplexIo, IDataMessage message, IDataMessagingConfig dataMessagingConfig)
+    public void LoadDependencies(IDuplexIo duplexIo, IOutboundDataMessage message, IDataMessagingConfig dataMessagingConfig)
     {
         Message = message;
         DuplexIo = duplexIo;
@@ -186,7 +186,7 @@ public abstract class BaseSendPacketProcess : ISendPacketProcess, IAsyncDisposab
     /// <summary>
     /// Current device data message to send
     /// </summary>
-    public IDataMessage Message { get; set; }
+    public IOutboundDataMessage Message { get; set; }
 
     /// <summary>
     /// Send the message

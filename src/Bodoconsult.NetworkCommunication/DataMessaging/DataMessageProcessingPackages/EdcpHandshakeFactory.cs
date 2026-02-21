@@ -16,18 +16,18 @@ public class EdcpHandshakeFactory : IDataMessageHandshakeFactory
     /// </summary>
     /// <param name="message">Current message received</param>
     /// <returns>ACK handshake message to send</returns>
-    public IDataMessage GetAckResponse(IDataMessage message)
+    public IInboundDataMessage GetAckResponse(IInboundDataMessage message)
     {
-        if (message is not EdcpDataMessage em)
+        if (message is not EdcpInboundDataMessage em)
         {
-            var can = new EdcpHandshakeMessage(MessageTypeEnum.Sent)
+            var can = new EdcpInboundHandshakeMessage(MessageTypeEnum.Sent)
             {
                 HandshakeMessageType = HandShakeMessageType.Can,
             };
             return can;
         }
 
-        var ack = new EdcpHandshakeMessage(MessageTypeEnum.Sent)
+        var ack = new EdcpInboundHandshakeMessage(MessageTypeEnum.Sent)
         {
             HandshakeMessageType = HandShakeMessageType.Ack,
             BlockCode = em.BlockCode
@@ -41,18 +41,18 @@ public class EdcpHandshakeFactory : IDataMessageHandshakeFactory
     /// </summary>
     /// <param name="message">Current message received</param>
     /// <returns>NAK handshake message to send</returns>
-    public IDataMessage GetNakResponse(IDataMessage message)
+    public IInboundDataMessage GetNakResponse(IInboundDataMessage message)
     {
-        if (message is not EdcpDataMessage em)
+        if (message is not EdcpInboundDataMessage em)
         {
-            var can = new EdcpHandshakeMessage(MessageTypeEnum.Sent)
+            var can = new EdcpInboundHandshakeMessage(MessageTypeEnum.Sent)
             {
                 HandshakeMessageType = HandShakeMessageType.Can,
             };
             return can;
         }
 
-        var nak = new EdcpHandshakeMessage(MessageTypeEnum.Sent)
+        var nak = new EdcpInboundHandshakeMessage(MessageTypeEnum.Sent)
         {
             HandshakeMessageType = HandShakeMessageType.Nack,
             BlockCode = em.BlockCode
@@ -65,18 +65,18 @@ public class EdcpHandshakeFactory : IDataMessageHandshakeFactory
     /// </summary>
     /// <param name="message">Current message received</param>
     /// <returns>CAN handshake message to send</returns>
-    public IDataMessage GetCanResponse(IDataMessage message)
+    public IInboundDataMessage GetCanResponse(IInboundDataMessage message)
     {
-        if (message is not EdcpDataMessage em)
+        if (message is not EdcpInboundDataMessage em)
         {
-            var can1 = new EdcpHandshakeMessage(MessageTypeEnum.Sent)
+            var can1 = new EdcpInboundHandshakeMessage(MessageTypeEnum.Sent)
             {
                 HandshakeMessageType = HandShakeMessageType.Can,
             };
             return can1;
         }
 
-        var can = new EdcpHandshakeMessage(MessageTypeEnum.Sent)
+        var can = new EdcpInboundHandshakeMessage(MessageTypeEnum.Sent)
         {
             HandshakeMessageType = HandShakeMessageType.Can,
             BlockCode = em.BlockCode

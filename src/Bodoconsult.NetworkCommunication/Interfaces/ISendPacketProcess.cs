@@ -15,7 +15,7 @@ public interface ISendPacketProcess : IResetable, IDisposable
     /// <param name="duplexIo">Current IO messaging system</param>
     /// <param name="message">Current data message to send to the device</param>
     /// <param name="dataMessagingConfig">Current device</param>
-    void LoadDependencies(IDuplexIo duplexIo, IDataMessage message, IDataMessagingConfig dataMessagingConfig);
+    void LoadDependencies(IDuplexIo duplexIo, IOutboundDataMessage message, IDataMessagingConfig dataMessagingConfig);
 
     /// <summary>
     /// Current SMD device
@@ -26,7 +26,6 @@ public interface ISendPacketProcess : IResetable, IDisposable
     /// Maximum number of send attemps
     /// </summary>
     int MaxSendAttemptCount { get; set; }
-
 
     /// <summary>
     /// Timeout for waiting for an ackknowledgement
@@ -61,7 +60,7 @@ public interface ISendPacketProcess : IResetable, IDisposable
     /// <summary>
     /// Current device data message to send
     /// </summary>
-    IDataMessage Message { get; }
+    IOutboundDataMessage Message { get; }
         
     /// <summary>
     /// Is the communication online?

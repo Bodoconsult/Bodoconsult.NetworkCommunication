@@ -31,17 +31,17 @@ public class SdcpDataMessageProcessor : IDataMessageProcessor
     /// Process the message
     /// </summary>
     /// <param name="message">Message to process</param>
-    public void ProcessMessage(IDataMessage message)
+    public void ProcessMessage(IInboundDataMessage message)
     {
         // handshake received
-        if (message is HandshakeMessage handShake)
+        if (message is InboundHandshakeMessage handShake)
         {
             ProcessHandshakes(handShake);
             return;
         }
 
         // Tower data message received
-        if (message is SdcpDataMessage dataMessage)
+        if (message is SdcpInboundDataMessage dataMessage)
         {
             AsyncHelper.FireAndForget2(() => Config.RaiseCommLayerDataMessageReceivedDelegate?.Invoke(dataMessage)).ContinueWith(Callback);
         }
@@ -50,7 +50,7 @@ public class SdcpDataMessageProcessor : IDataMessageProcessor
     }
 
     // ReSharper disable once SuggestBaseTypeForParameter
-    private void ProcessHandshakes(HandshakeMessage handShake)
+    private void ProcessHandshakes(InboundHandshakeMessage handShake)
     {
         // fire and forget but let CallBack() be run at the end
         AsyncHelper.FireAndForget2(() =>

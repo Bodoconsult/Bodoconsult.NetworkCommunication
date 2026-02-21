@@ -1,45 +1,26 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
-using Bodoconsult.NetworkCommunication.EnumAndStates;
 using Bodoconsult.NetworkCommunication.Helpers;
 using Bodoconsult.NetworkCommunication.Interfaces;
 
 namespace Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
 
 /// <summary>
-/// Basic implementation of <see cref="IDataMessage"/> for SDCP protocol
+/// Recieved a raw byte data message to the device. Intended mainly for outgoing message to send
 /// </summary>
-public class SdcpDataMessage: IDataMessage
+public class RawInboundDataMessage : IInboundDataMessage
 {
     private Memory<byte> _rawMessageData;
 
     /// <summary>
-    /// Default ctor
-    /// </summary>
-    public SdcpDataMessage()
-    {
-        MessageId = DateTime.Now.ToFileTimeUtc();
-    }
-
-    /// <summary>
     /// A unique ID to identify the message
     /// </summary>
-    public long MessageId { get; }
-
-    /// <summary>
-    /// The message type of the message
-    /// </summary>
-    public MessageTypeEnum MessageType { get; set; } = MessageTypeEnum.Received;
-
-    /// <summary>
-    /// Is waiting for acknowledgement by the device required for the message
-    /// </summary>
-    public bool WaitForAcknowledgement { get; set; }
+    public long MessageId { get; }= DateTime.Now.Ticks;
 
     /// <summary>
     /// Should an acknowledgement be sent if the message is received
     /// </summary>
-    public bool AnswerWithAcknowledgement { get; set; }
+    public bool AnswerWithAcknowledgement => false;
 
     /// <summary>
     /// Current raw message data as byte array
@@ -57,7 +38,7 @@ public class SdcpDataMessage: IDataMessage
     /// <summary>
     /// Current raw message data as clear text
     /// </summary>
-    public string RawMessageDataClearText { get; set; }
+    public string RawMessageDataClearText { get; private set; }
 
     /// <summary>
     /// Create an info string for logging
@@ -65,16 +46,15 @@ public class SdcpDataMessage: IDataMessage
     /// <returns>Info string</returns>
     public string ToInfoString()
     {
-        return $"SdcpDataMessage ID {MessageId} {MessageType.ToString()} {RawMessageDataClearText}";
-    }
-
-    public string ToShortInfoString()
-    {
-        return $"SdcpDataMessage ID {MessageId} {MessageType.ToString()}";
+        return $"RawInboundDataMessage {MessageId} Length:{RawMessageData.Length} Data:{RawMessageDataClearText}";
     }
 
     /// <summary>
-    /// Data block stored in the message
+    /// Create an short info string for logging
     /// </summary>
-    public IDataBlock DataBlock { get; set; }
+    /// <returns>Info string</returns>
+    public string ToShortInfoString()
+    {
+        return $"RawInboundDataMessage {MessageId} Length:{RawMessageData.Length}";
+    }
 }

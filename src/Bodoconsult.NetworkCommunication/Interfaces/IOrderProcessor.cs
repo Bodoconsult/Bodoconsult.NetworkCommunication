@@ -139,7 +139,7 @@ public interface IOrderProcessor : IDisposable
     /// Handle a received error
     /// </summary>
     /// <param name="receivedMessage">Received message</param>
-    void HandleError(IDataMessage receivedMessage);
+    void HandleError(IInboundDataMessage receivedMessage);
 
     /// <summary>
     /// Initiate a hardware init and run the order directly
@@ -218,7 +218,7 @@ public interface IOrderProcessor : IDisposable
     /// </summary>
     /// <param name="receivedMessage">A message received from the tower</param>
     /// <returns>True if the message was an expected answer of the current request</returns>
-    bool CheckReceivedMessage(IDataMessage receivedMessage);
+    bool CheckReceivedMessage(IInboundDataMessage receivedMessage);
 
 
     /// <summary>

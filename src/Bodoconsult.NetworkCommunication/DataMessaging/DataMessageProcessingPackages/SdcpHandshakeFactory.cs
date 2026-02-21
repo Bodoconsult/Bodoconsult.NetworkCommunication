@@ -16,9 +16,9 @@ public class SdcpHandshakeFactory : IDataMessageHandshakeFactory
     /// </summary>
     /// <param name="message">Current message received</param>
     /// <returns>ACK handshake message to send</returns>
-    public IDataMessage GetAckResponse(IDataMessage message)
+    public IInboundDataMessage GetAckResponse(IInboundDataMessage message)
     {
-        var ack = new HandshakeMessage( MessageTypeEnum.Sent)
+        var ack = new InboundHandshakeMessage( MessageTypeEnum.Sent)
         {
             HandshakeMessageType = HandShakeMessageType.Ack,
         };
@@ -31,9 +31,9 @@ public class SdcpHandshakeFactory : IDataMessageHandshakeFactory
     /// </summary>
     /// <param name="message">Current message received</param>
     /// <returns>NAK handshake message to send</returns>
-    public IDataMessage GetNakResponse(IDataMessage message)
+    public IInboundDataMessage GetNakResponse(IInboundDataMessage message)
     {
-        var nak = new HandshakeMessage(MessageTypeEnum.Sent)
+        var nak = new InboundHandshakeMessage(MessageTypeEnum.Sent)
         {
             HandshakeMessageType = HandShakeMessageType.Nack,
         };
@@ -45,9 +45,9 @@ public class SdcpHandshakeFactory : IDataMessageHandshakeFactory
     /// </summary>
     /// <param name="message">Current message received</param>
     /// <returns>CAN handshake message to send</returns>
-    public IDataMessage GetCanResponse(IDataMessage message)
+    public IInboundDataMessage GetCanResponse(IInboundDataMessage message)
     {
-        var can = new HandshakeMessage(MessageTypeEnum.Sent)
+        var can = new InboundHandshakeMessage(MessageTypeEnum.Sent)
         {
             HandshakeMessageType = HandShakeMessageType.Can,
         };

@@ -78,14 +78,9 @@ public abstract class BaseDuplexIo : IDuplexIo
     /// Send a message to the device
     /// </summary>
     /// <param name="message">Current message to send</param>
-    public virtual async Task<MessageSendingResult> SendMessage(IDataMessage message)
+    public virtual async Task<MessageSendingResult> SendMessage(IOutboundDataMessage message)
     {
 
-        if (message.MessageType == MessageTypeEnum.Received)
-        {
-            return await Task.Run(() => new MessageSendingResult(message, OrderExecutionResultState.Unsuccessful));
-        }
-            
         if (message.WaitForAcknowledgement)
         {
             // Send and wait for handshake
@@ -106,7 +101,7 @@ public abstract class BaseDuplexIo : IDuplexIo
     /// Send a message to the device directly. This method is intended for internal purposes only. Do NOT use directly. Use <see cref="IDuplexIo.SendMessage"/> instead. This method makes faking easier!
     /// </summary>
     /// <param name="message">Current message to send</param>
-    public async Task<MessageSendingResult> SendMessageInternal(IDataMessage message)
+    public async Task<MessageSendingResult> SendMessageInternal(IOutboundDataMessage message)
     {
         var count = await Sender.SendMessage(message);
         return count == 0 ? new MessageSendingResult(message, OrderExecutionResultState.Unsuccessful) : new MessageSendingResult(message, OrderExecutionResultState.Successful);
@@ -117,7 +112,7 @@ public abstract class BaseDuplexIo : IDuplexIo
     /// </summary>
     /// <param name="message">Current message to send</param>
     /// <returns>Result of the message sending process</returns>
-    public MessageSendingResult StartMessageSendingProcess(IDataMessage message)
+    public MessageSendingResult StartMessageSendingProcess(IOutboundDataMessage message)
     {
         // New send process
         var currentSendPacketProcess = _sendPacketProcessFactory.CreateInstance(this,

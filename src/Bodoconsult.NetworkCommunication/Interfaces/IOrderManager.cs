@@ -67,7 +67,7 @@ public interface IOrderManager
     /// Event handling method for binding to <see cref="MessagingConfig"/>.NotifyTowerMessageReceived event
     /// </summary>
     /// <param name="dataMessage">Received message</param>
-    void OnTowerMessageReceived(IDataMessage dataMessage);
+    void OnTowerMessageReceived(IInboundDataMessage dataMessage);
 
     /// <summary>
     /// Starts the watchdog for the order processing

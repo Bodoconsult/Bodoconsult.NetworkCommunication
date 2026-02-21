@@ -3,7 +3,7 @@
 namespace Bodoconsult.NetworkCommunication.Interfaces;
 
 /// <summary>
-/// Interface for duplex (bi-directional) comm channels
+/// Interface for duplex (bidirectional) comm channels
 /// </summary>
 public interface IDuplexIo: IAsyncDisposable, IDisposable
 {
@@ -38,13 +38,13 @@ public interface IDuplexIo: IAsyncDisposable, IDisposable
     /// Send a message to the device.
     /// </summary>
     /// <param name="message">Current message to send</param>
-    Task<MessageSendingResult> SendMessage(IDataMessage message);
+    Task<MessageSendingResult> SendMessage(IOutboundDataMessage message);
 
     /// <summary>
     /// Send a message to the device directly. This method is intended for internal purposes only. Do NOT use directly. Use <see cref="SendMessage"/> instead. This method makes faking easier!
     /// </summary>
     /// <param name="message">Current message to send</param>
-    Task<MessageSendingResult> SendMessageInternal(IDataMessage message);
+    Task<MessageSendingResult> SendMessageInternal(IOutboundDataMessage message);
 
     ///// <summary>
     ///// Starts the message sending process either with waiting for a response from devive or without it

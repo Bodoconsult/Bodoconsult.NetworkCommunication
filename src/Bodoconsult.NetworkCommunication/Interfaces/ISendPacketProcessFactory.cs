@@ -15,7 +15,7 @@ public interface ISendPacketProcessFactory
     /// <param name="smdtower">Current tower instance</param>
     /// <returns>A send packet process instance to hande the message to send</returns>
     ISendPacketProcess CreateInstance(IDuplexIo duplexIo,
-        IDataMessage message,
+        IOutboundDataMessage message,
         IDataMessagingConfig smdtower);
 
     /// <summary>

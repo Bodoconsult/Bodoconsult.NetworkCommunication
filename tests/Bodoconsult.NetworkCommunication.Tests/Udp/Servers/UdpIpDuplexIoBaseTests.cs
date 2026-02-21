@@ -4,7 +4,6 @@ using System.Diagnostics;
 using Bodoconsult.App.Helpers;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataBlocks;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
-using Bodoconsult.NetworkCommunication.EnumAndStates;
 using Bodoconsult.NetworkCommunication.Factories;
 using Bodoconsult.NetworkCommunication.Interfaces;
 using Bodoconsult.NetworkCommunication.Protocols.Udp;
@@ -70,7 +69,7 @@ public abstract class UdpIpDuplexIoBaseTests : BaseUdpTests
     /// Send a message with the <see cref="IDuplexIo"/> instance to test
     /// </summary>
     /// <param name="message">Current message to send</param>
-    public virtual void Send(IDataMessage message)
+    public virtual void Send(IOutboundDataMessage message)
     {
         DuplexIo.StartCommunication().Wait();
 
@@ -204,10 +203,7 @@ public abstract class UdpIpDuplexIoBaseTests : BaseUdpTests
     public void SendMessage_MessageSWithoutDatablock_NotSent()
     {
         // Arrange
-        var message = new SdcpDataMessage
-        {
-            MessageType = MessageTypeEnum.Sent,
-        };
+        var message = new SdcpOutboundDataMessage();
 
         // Act
         Send(message);
@@ -224,9 +220,8 @@ public abstract class UdpIpDuplexIoBaseTests : BaseUdpTests
     public void SendMessage_MessageS_Sent()
     {
         // Arrange
-        var message = new SdcpDataMessage
+        var message = new SdcpOutboundDataMessage()
         {
-            MessageType = MessageTypeEnum.Sent,
             DataBlock = new SdcpDummyDatablock
             {
                 DataBlockType = 'x',
@@ -251,10 +246,7 @@ public abstract class UdpIpDuplexIoBaseTests : BaseUdpTests
         // Arrange
         DuplexIo = GetDuplexIoWithFakeEncodeDecoder(Socket, FakeSendPacketProcessEnum.EncodingError);
 
-        var message = new ShouldCrashDataMessage
-        {
-            MessageType = MessageTypeEnum.Sent
-        };
+        var message = new ShouldCrashOutboundDataMessage();
 
         // Act
         Send(message);
@@ -275,9 +267,8 @@ public abstract class UdpIpDuplexIoBaseTests : BaseUdpTests
 
         DuplexIo = GetDuplexIoWithFakeEncodeDecoder(socket, FakeSendPacketProcessEnum.SocketError);
 
-        var message = new SdcpDataMessage
+        var message = new SdcpOutboundDataMessage()
         {
-            MessageType = MessageTypeEnum.Sent,
             DataBlock = new SdcpDummyDatablock
             {
                 DataBlockType = 'x',
@@ -300,9 +291,8 @@ public abstract class UdpIpDuplexIoBaseTests : BaseUdpTests
     {
 
         // Arrange
-        var message = new SdcpDataMessage
+        var message = new SdcpOutboundDataMessage()
         {
-            MessageType = MessageTypeEnum.Sent,
             DataBlock = new SdcpDummyDatablock
             {
                 DataBlockType = 'x',

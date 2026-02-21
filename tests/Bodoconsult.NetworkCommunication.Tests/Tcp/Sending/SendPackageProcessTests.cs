@@ -44,7 +44,7 @@ public class SendPackageProcessDuplexIoTests
     {
         // Arrange 
         IDataMessagingConfig dataMessagingConfig = new DefaultDataMessagingConfig();
-        IDataMessage message = new RawDataMessage();
+        IOutboundDataMessage message = new RawOutboundDataMessage();
         IDuplexIo duplexIo = new FakeHandshakeDuplexIo(dataMessagingConfig);
 
         var p = new SendPacketProcess();
@@ -67,7 +67,7 @@ public class SendPackageProcessDuplexIoTests
 
         dataMessagingConfig.DataMessageProcessingPackage = new DummyDataMessageProcessingPackage(dataMessagingConfig);
             
-        IDataMessage message = new RawDataMessage();
+        IOutboundDataMessage message = new RawOutboundDataMessage();
         IDuplexIo duplexIo = new FakeHandshakeDuplexIo(dataMessagingConfig);
 
         var p = new SendPacketProcess();
@@ -97,7 +97,7 @@ public class SendPackageProcessDuplexIoTests
         dataMessagingConfig.DataMessageProcessingPackage = new DummyDataMessageProcessingPackage(dataMessagingConfig);
 
 
-        IDataMessage message = new RawDataMessage();
+        IOutboundDataMessage message = new RawOutboundDataMessage();
         IDuplexIo duplexIo = new FakeHandshakeDuplexIo(dataMessagingConfig);
 
         var p = new SendPacketProcess();
@@ -125,7 +125,7 @@ public class SendPackageProcessDuplexIoTests
         dataMessagingConfig.DataMessageProcessingPackage = new DummyDataMessageProcessingPackage(dataMessagingConfig);
 
 
-        IDataMessage message = new RawDataMessage();
+        IOutboundDataMessage message = new RawOutboundDataMessage();
 
         var duplexIo = new FakeHandshakeDuplexIo(dataMessagingConfig);
         duplexIo.NumberOfTriesTheHandshakeIsReceived = int.MaxValue;
@@ -157,7 +157,7 @@ public class SendPackageProcessDuplexIoTests
         dataMessagingConfig.DataMessageProcessingPackage = new DummyDataMessageProcessingPackage(dataMessagingConfig);
 
 
-        IDataMessage message = new RawDataMessage();
+        IOutboundDataMessage message = new RawOutboundDataMessage();
 
         var duplexIo = new FakeHandshakeDuplexIo(dataMessagingConfig);
         duplexIo.NumberOfTriesTheHandshakeIsReceived = 2;
@@ -188,7 +188,7 @@ public class SendPackageProcessDuplexIoTests
         dataMessagingConfig.DataMessageProcessingPackage = new DummyDataMessageProcessingPackage(dataMessagingConfig);
 
 
-        IDataMessage message = new RawDataMessage();
+        IOutboundDataMessage message = new RawOutboundDataMessage();
         var duplexIo = new FakeHandshakeDuplexIo(dataMessagingConfig);
         duplexIo.ReceiverDelay = 2000;
 

@@ -1,22 +1,21 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH.  All rights reserved.
 
-using Bodoconsult.NetworkCommunication.EnumAndStates;
 using Bodoconsult.NetworkCommunication.Helpers;
 using Bodoconsult.NetworkCommunication.Interfaces;
 
 namespace Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
 
 /// <summary>
-/// Basic implementation of <see cref="IDataMessage"/> for EDCP protocol
+/// Basic implementation of <see cref="IInboundDataMessage"/> for EDCP protocol
 /// </summary>
-public class EdcpDataMessage : IDataMessage
+public class EdcpInboundDataMessage : IInboundDataMessage
 {
     private Memory<byte> _rawMessageData;
 
     /// <summary>
     /// Default ctor
     /// </summary>
-    public EdcpDataMessage()
+    public EdcpInboundDataMessage()
     {
         MessageId = DateTime.Now.ToFileTimeUtc();
     }
@@ -25,16 +24,6 @@ public class EdcpDataMessage : IDataMessage
     /// A unique ID to identify the message
     /// </summary>
     public long MessageId { get; }
-
-    /// <summary>
-    /// The message type of the message
-    /// </summary>
-    public MessageTypeEnum MessageType { get; set; } = MessageTypeEnum.Received;
-
-    /// <summary>
-    /// Is waiting for acknowledgement by the device required for the message
-    /// </summary>
-    public bool WaitForAcknowledgement { get; set; }
 
     /// <summary>
     /// Should an acknowledgement be sent if the message is received
@@ -76,12 +65,12 @@ public class EdcpDataMessage : IDataMessage
     /// <returns>Info string</returns>
     public string ToInfoString()
     {
-        return $"EdcpDataMessage ID {MessageId} {MessageType.ToString()} Block {BlockCode}: {RawMessageDataClearText}";
+        return $"EdcpInboundDataMessage ID {MessageId} Block {BlockCode}: {RawMessageDataClearText}";
     }
 
     public string ToShortInfoString()
     {
-        return $"EdcpDataMessage ID {MessageId} {MessageType.ToString()} Block {BlockCode}";
+        return $"EdcpInboundDataMessage ID {MessageId} Block {BlockCode}";
     }
 
     /// <summary>

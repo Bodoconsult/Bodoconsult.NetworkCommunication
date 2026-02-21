@@ -24,7 +24,7 @@ public class FakeSendPacketProcessFactory : ISendPacketProcessFactory
     /// <param name="message">Current message to send</param>
     /// <param name="config">Current device config</param>
     /// <returns>A send packet process instance to hande the message to send</returns>
-    public ISendPacketProcess CreateInstance(IDuplexIo duplexIo, IDataMessage message,
+    public ISendPacketProcess CreateInstance(IDuplexIo duplexIo, IOutboundDataMessage message,
         IDataMessagingConfig config)
     {
         switch (TypeOfFakeSendPacketProcessEnum)
@@ -49,7 +49,7 @@ public class FakeSendPacketProcessFactory : ISendPacketProcessFactory
         // Do nothing
     }
 
-    private static ISendPacketProcess CreateInstanceFakeSendPacketProcess(IDataMessage message, IDataMessagingConfig config)
+    private static ISendPacketProcess CreateInstanceFakeSendPacketProcess(IOutboundDataMessage message, IDataMessagingConfig config)
     {
         var process = new FakeSendPacketProcess
         {
@@ -59,7 +59,7 @@ public class FakeSendPacketProcessFactory : ISendPacketProcessFactory
         return process;
     }
 
-    private static ISendPacketProcess CreateInstanceFakeSendPacketProcessEncodingError(IDataMessage message, IDataMessagingConfig config)
+    private static ISendPacketProcess CreateInstanceFakeSendPacketProcessEncodingError(IOutboundDataMessage message, IDataMessagingConfig config)
     {
         var process = new FakeSendPacketProcessEncodingError
         {
@@ -69,7 +69,7 @@ public class FakeSendPacketProcessFactory : ISendPacketProcessFactory
         return process;
     }
 
-    private static ISendPacketProcess CreateInstanceFakeSendPacketProcessSocketError(IDataMessage message, IDataMessagingConfig config)
+    private static ISendPacketProcess CreateInstanceFakeSendPacketProcessSocketError(IOutboundDataMessage message, IDataMessagingConfig config)
     {
         var process = new FakeSendPacketProcessSocketError
         {

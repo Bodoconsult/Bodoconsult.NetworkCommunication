@@ -81,7 +81,7 @@ public class BaseTcpTests : ITcpTests
 
     #region Event catcher methods
 
-    protected void OnHandshakeReceivedDelegate(IDataMessage handshake)
+    protected void OnHandshakeReceivedDelegate(IInboundDataMessage handshake)
     {
         MessageCounter++;
         IsUpdateModeReceived = true;
@@ -91,7 +91,7 @@ public class BaseTcpTests : ITcpTests
     {
         IsCorruptedMessageFired = true;
     }
-    protected void OnNotExpectedMessageReceivedEvent(IDataMessage message)
+    protected void OnNotExpectedMessageReceivedEvent(IInboundDataMessage message)
     {
         IsOnNotExpectedMessageReceivedFired = true;
     }
@@ -99,7 +99,7 @@ public class BaseTcpTests : ITcpTests
     {
         IsComDevCloseFired = true;
     }
-    protected void OnRaiseDataMessageReceivedEvent(IDataMessage message)
+    protected void OnRaiseDataMessageReceivedEvent(IInboundDataMessage message)
     {
         MessageCounter++;
         IsMessageReceivedFired = true;

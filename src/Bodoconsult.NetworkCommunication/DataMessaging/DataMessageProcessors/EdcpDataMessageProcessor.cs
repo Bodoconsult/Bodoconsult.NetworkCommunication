@@ -31,17 +31,17 @@ public class EdcpDataMessageProcessor : IDataMessageProcessor
     /// Process the message
     /// </summary>
     /// <param name="message">Message to process</param>
-    public void ProcessMessage(IDataMessage message)
+    public void ProcessMessage(IInboundDataMessage message)
     {
         // handshake received
-        if (message is EdcpHandshakeMessage handShake)
+        if (message is EdcpInboundHandshakeMessage handShake)
         {
             ProcessHandshakes(handShake);
             return;
         }
 
         // Tower data message received
-        if (message is EdcpDataMessage dataMessage)
+        if (message is EdcpInboundDataMessage dataMessage)
         {
             AsyncHelper.FireAndForget2(() => Config.RaiseCommLayerDataMessageReceivedDelegate?.Invoke(dataMessage)).ContinueWith(Callback);
         }
@@ -50,7 +50,7 @@ public class EdcpDataMessageProcessor : IDataMessageProcessor
     }
 
     // ReSharper disable once SuggestBaseTypeForParameter
-    private void ProcessHandshakes(EdcpHandshakeMessage handShake)
+    private void ProcessHandshakes(EdcpInboundHandshakeMessage handShake)
     {
         // fire and forget but let CallBack() be run at the end
         AsyncHelper.FireAndForget2(() =>

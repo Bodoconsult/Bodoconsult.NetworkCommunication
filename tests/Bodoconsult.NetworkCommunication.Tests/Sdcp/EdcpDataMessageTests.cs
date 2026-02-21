@@ -5,7 +5,7 @@ using Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
 namespace Bodoconsult.NetworkCommunication.Tests.Sdcp;
 
 [TestFixture]
-internal class EdcpDataMessageTests
+internal class EdcpInboundDataMessageTests
 {
 
     [Test]
@@ -14,7 +14,7 @@ internal class EdcpDataMessageTests
         // Arrange 
 
         // Act  
-        var msg = new EdcpDataMessage();
+        var msg = new EdcpInboundDataMessage();
 
         // Assert
         Assert.That(msg.MessageId, Is.Not.EqualTo(0));

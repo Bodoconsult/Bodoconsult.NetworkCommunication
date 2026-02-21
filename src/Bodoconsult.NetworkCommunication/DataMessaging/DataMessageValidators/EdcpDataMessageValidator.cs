@@ -10,16 +10,16 @@ namespace Bodoconsult.NetworkCommunication.DataMessaging.DataMessageValidators;
 /// </summary>
 public class EdcpDataMessageValidator : IDataMessageValidator
 {
-    public DataMessageValidatorResult IsMessageValid(IDataMessage dataMessage)
+    public DataMessageValidatorResult IsMessageValid(IInboundDataMessage dataMessage)
     {
         // Update mode message or raw message: always valid
-        if (dataMessage is RawDataMessage)
+        if (dataMessage is RawInboundDataMessage)
         {
             return new DataMessageValidatorResult(true, "Message is valid");
         }
 
         // No SDCP data message: always valid
-        if (dataMessage is not EdcpDataMessage)
+        if (dataMessage is not EdcpInboundDataMessage)
         {
             return new DataMessageValidatorResult(false, "Message is NOT a valid EDCP message");
         }

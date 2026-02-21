@@ -6,7 +6,7 @@
 namespace Bodoconsult.NetworkCommunication.Interfaces;
 
 /// <summary>
-/// Interface for a datablock in a <see cref="IDataMessage"/>
+/// Interface for a datablock in a <see cref="IInboundDataMessage"/>
 /// </summary>
 public interface IDataMessageDataBlock
 {

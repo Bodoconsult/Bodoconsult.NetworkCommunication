@@ -20,7 +20,7 @@ public abstract class BaseDataMessageCodec: IDataMessageCodec
     public int ExpectedMaximumLength { get; protected set; }
 
     /// <summary>
-    /// Decode a data message to an <see cref="IDataMessage"/> instance
+    /// Decode a data message to an <see cref="IInboundDataMessage"/> instance
     /// </summary>
     /// <param name="data">Data message bytes received</param>
     /// <returns>Decoding result</returns>
@@ -34,7 +34,7 @@ public abstract class BaseDataMessageCodec: IDataMessageCodec
     /// </summary>
     /// <param name="message">Data message to send</param>
     /// <returns>Codex result with a byte array as optimized <see cref="ReadOnlyMemory{T}"/> to send</returns>
-    public virtual OutboundCodecResult EncodeDataMessage(IDataMessage message)
+    public virtual OutboundCodecResult EncodeDataMessage(IOutboundDataMessage message)
     {
         throw new NotSupportedException();
     }

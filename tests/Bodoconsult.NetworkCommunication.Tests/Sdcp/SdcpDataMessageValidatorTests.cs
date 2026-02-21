@@ -8,14 +8,13 @@ namespace Bodoconsult.NetworkCommunication.Tests.Sdcp;
 [TestFixture]
 internal class SdcpDataMessageValidatorTests
 {
-
     [Test]
     public void IsMessageValid_RawDataMessage_ReturnsTrue()
     {
         // Arrange 
         var validator = new SdcpDataMessageValidator();
 
-        var msg = new RawDataMessage();
+        var msg = new RawInboundDataMessage();
 
         // Act  
         var result = validator.IsMessageValid(msg);
@@ -30,7 +29,7 @@ internal class SdcpDataMessageValidatorTests
         // Arrange 
         var validator = new SdcpDataMessageValidator();
 
-        var msg = new SdcpDataMessage();
+        var msg = new SdcpInboundDataMessage();
 
         // Act  
         var result = validator.IsMessageValid(msg);
@@ -45,7 +44,7 @@ internal class SdcpDataMessageValidatorTests
         // Arrange 
         var validator = new SdcpDataMessageValidator();
 
-        var msg = new EdcpDataMessage();
+        var msg = new EdcpInboundDataMessage();
 
         // Act  
         var result = validator.IsMessageValid(msg);

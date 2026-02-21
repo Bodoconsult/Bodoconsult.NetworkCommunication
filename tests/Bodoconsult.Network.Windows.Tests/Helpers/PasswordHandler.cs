@@ -5,7 +5,7 @@ using System.Collections;
 using System.Globalization;
 using System.Security.Cryptography;
 
-namespace Bodoconsult.App.Windows.Test.Helpers;
+namespace Bodoconsult.Network.Windows.Tests.Helpers;
 
 /// <summary>
 /// Encrypts und decrypts passwords for console application start parameters

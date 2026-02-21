@@ -27,7 +27,13 @@ public class FakeSendPacketProcess : ISendPacketProcess
     /// </summary>
     public IAppLoggerProxy MonitorLogger { get; set; }
 
-    public void LoadDependencies(IDuplexIo duplexIo, IDataMessage message, IDataMessagingConfig smdtower)
+    /// <summary>
+    /// Load dependencies
+    /// </summary>
+    /// <param name="duplexIo">Current IO messaging system</param>
+    /// <param name="message">Current data message to send to the device</param>
+    /// <param name="dataMessagingConfig">Current device</param>
+    public void LoadDependencies(IDuplexIo duplexIo, IOutboundDataMessage message, IDataMessagingConfig dataMessagingConfig)
     {
         throw new NotImplementedException();
     }
@@ -77,7 +83,7 @@ public class FakeSendPacketProcess : ISendPacketProcess
     /// <summary>
     /// Current tower data message to send
     /// </summary>
-    public IDataMessage Message { get; set; }
+    public IOutboundDataMessage Message { get; set; }
 
     /// <summary>
     /// Is the tower communication online?

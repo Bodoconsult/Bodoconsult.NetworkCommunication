@@ -1,27 +1,29 @@
-﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen. All rights reserved.
+﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH.  All rights reserved.
 
-using Bodoconsult.NetworkCommunication.EnumAndStates;
 using Bodoconsult.NetworkCommunication.Helpers;
 using Bodoconsult.NetworkCommunication.Interfaces;
 
 namespace Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
 
 /// <summary>
-/// Dummy message for tests letting the converter fail for SDCP and EDCP
+/// Basic implementation of <see cref="IOutboundDataMessage"/> for EDCP protocol
 /// </summary>
-public class ShouldCrashDataMessage : IDataMessage
+public class EdcpOutboundDataMessage : IOutboundDataMessage
 {
     private Memory<byte> _rawMessageData;
 
     /// <summary>
-    /// A unique ID to identify the message
+    /// Default ctor
     /// </summary>
-    public long MessageId { get; } = DateTime.Now.Ticks;
+    public EdcpOutboundDataMessage()
+    {
+        MessageId = DateTime.Now.ToFileTimeUtc();
+    }
 
     /// <summary>
-    /// The message type of the message
+    /// A unique ID to identify the message
     /// </summary>
-    public MessageTypeEnum MessageType { get; set; }
+    public long MessageId { get; }
 
     /// <summary>
     /// Is waiting for acknowledgement by the device required for the message
@@ -29,9 +31,15 @@ public class ShouldCrashDataMessage : IDataMessage
     public bool WaitForAcknowledgement { get; set; }
 
     /// <summary>
-    /// Should an acknowledgement be sent if the message is received
+    /// Current block code of this message
     /// </summary>
-    public bool AnswerWithAcknowledgement { get; set; }
+    public byte BlockCode { get; set; }
+
+    /// <summary>
+    /// Block code of the requesting data message this message is an answer for.
+    /// Set and use this field in your business logic to build command chains.
+    /// </summary>
+    public byte RequestBlockCode { get; set; }
 
     /// <summary>
     /// Current raw message data as byte array
@@ -49,7 +57,7 @@ public class ShouldCrashDataMessage : IDataMessage
     /// <summary>
     /// Current raw message data as clear text
     /// </summary>
-    public string RawMessageDataClearText { get; private set; }
+    public string RawMessageDataClearText { get; set; }
 
     /// <summary>
     /// Create an info string for logging
@@ -57,15 +65,16 @@ public class ShouldCrashDataMessage : IDataMessage
     /// <returns>Info string</returns>
     public string ToInfoString()
     {
-        return $"ShouldCrashDataMessage {MessageId} Length:{RawMessageData.Length} Data:{RawMessageDataClearText}";
+        return $"EdcpOutboundDataMessage ID {MessageId} Block {BlockCode}: {RawMessageDataClearText}";
+    }
+
+    public string ToShortInfoString()
+    {
+        return $"EdcpOutboundDataMessage ID {MessageId} Block {BlockCode}";
     }
 
     /// <summary>
-    /// Create an short info string for logging
+    /// Data block stored in the message
     /// </summary>
-    /// <returns>Info string</returns>
-    public string ToShortInfoString()
-    {
-        return $"ShouldCrashDataMessage {MessageId} Length:{RawMessageData.Length}";
-    }
+    public IDataBlock DataBlock { get; set; }
 }

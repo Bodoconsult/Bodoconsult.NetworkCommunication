@@ -18,15 +18,16 @@ public class EdcpHandshakeDataMessageValidator : IHandshakeDataMessageValidator
     /// <param name="sentMessage">Sent message</param>
     /// <param name="handshakeMessage">Received handshake message</param>
     /// <returns>True if the message was the handshake for the sent message</returns>
-    public DataMessageValidatorResult IsHandshakeForSentMessage(IDataMessage sentMessage, IDataMessage handshakeMessage)
+    public DataMessageValidatorResult IsHandshakeForSentMessage(IOutboundDataMessage sentMessage,
+        IInboundDataMessage handshakeMessage)
     {
 
-        if (sentMessage is not EdcpDataMessage sm)
+        if (sentMessage is not EdcpInboundDataMessage sm)
         {
             return new DataMessageValidatorResult(false, "No EDCP data message sent");
         }
 
-        if (handshakeMessage is not EdcpHandshakeMessage hm)
+        if (handshakeMessage is not EdcpInboundHandshakeMessage hm)
         {
             return new DataMessageValidatorResult(false, "Received message is NOT a valid handshake message");
         }
@@ -42,7 +43,7 @@ public class EdcpHandshakeDataMessageValidator : IHandshakeDataMessageValidator
     /// </summary>
     /// <param name="context">Current send message process</param>
     /// <param name="handshake">Received handshake</param>
-    public void HandleHandshake(ISendPacketProcess context, IDataMessage handshake)
+    public void HandleHandshake(ISendPacketProcess context, IInboundDataMessage handshake)
     {
         if (handshake == null)
         {
@@ -50,7 +51,7 @@ public class EdcpHandshakeDataMessageValidator : IHandshakeDataMessageValidator
             return;
         }
 
-        if (handshake is not HandshakeMessage hs)
+        if (handshake is not InboundHandshakeMessage hs)
         {
             //todo result wrong message?
             context.ProcessExecutionResult = OrderExecutionResultState.NoResponseFromDevice;

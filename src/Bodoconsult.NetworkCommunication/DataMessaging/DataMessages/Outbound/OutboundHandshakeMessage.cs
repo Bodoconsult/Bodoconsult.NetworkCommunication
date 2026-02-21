@@ -1,6 +1,5 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
-using Bodoconsult.NetworkCommunication.EnumAndStates;
 using Bodoconsult.NetworkCommunication.Interfaces;
 
 namespace Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
@@ -8,17 +7,8 @@ namespace Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
 /// <summary>
 /// Represents a handshake message
 /// </summary>
-public sealed class HandshakeMessage : BaseHandShakeDataMessage, IHandShakeDataMessage
+public sealed class OutboundHandshakeMessage : BaseOutboundHandShakeDataMessage, IOutboundHandShakeDataMessage
 {
-    /// <summary>
-    /// Default ctor
-    /// </summary>
-    /// <param name="messageType">Current message type</param>
-    public HandshakeMessage(MessageTypeEnum messageType)
-    {
-        MessageType = messageType;
-    }
-
     /// <summary>
     /// Typpe of handshake as byte value
     /// </summary>
@@ -30,10 +20,10 @@ public sealed class HandshakeMessage : BaseHandShakeDataMessage, IHandShakeDataM
     {
         return HandshakeMessageType switch
         {
-            6 => "Handshake ACK",
-            21 => "Handshake NAK",
-            24 => "Handshake CAN",
-            _ => "Handshake Unknown"
+            6 => "OutboundHandshake ACK",
+            21 => "OutboundHandshake NAK",
+            24 => "OutboundHandshake CAN",
+            _ => "OutboundHandshake Unknown"
         };
     }
 
@@ -45,10 +35,10 @@ public sealed class HandshakeMessage : BaseHandShakeDataMessage, IHandShakeDataM
     {
         return HandshakeMessageType switch
         {
-            6 => "Handshake ACK",
-            21 => "Handshake NAK",
-            24 => "Handshake CAN",
-            _ => "Handshake Unknown"
+            6 => "OutboundHandshake ACK",
+            21 => "OutboundHandshake NAK",
+            24 => "OutboundHandshake CAN",
+            _ => "OutboundHandshake Unknown"
         };
     }
 
@@ -60,10 +50,10 @@ public sealed class HandshakeMessage : BaseHandShakeDataMessage, IHandShakeDataM
     {
         return HandshakeMessageType switch
         {
-            6 => "Handshake ACK",
-            21 => "Handshake NAK",
-            24 => "Handshake CAN",
-            _ => "Handshake Unknown"
+            6 => "OutboundHandshake ACK",
+            21 => "OutboundHandshake NAK",
+            24 => "OutboundHandshake CAN",
+            _ => "OutboundHandshake Unknown"
         };
     }
 }

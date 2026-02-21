@@ -41,7 +41,8 @@ public class SendPacketProcessFactory : ISendPacketProcessFactory
     /// <param name="message">Current message to send</param>
     /// <param name="smdtower">Current tower instance</param>
     /// <returns>A send packet process instance to hande the message to send</returns>
-    public ISendPacketProcess CreateInstance(IDuplexIo duplexIo, IDataMessage message, IDataMessagingConfig smdtower)
+    public ISendPacketProcess CreateInstance(IDuplexIo duplexIo, IOutboundDataMessage message,
+        IDataMessagingConfig smdtower)
     {
         var result = _bufferPool.Dequeue();
         result.LoadDependencies(duplexIo, message, smdtower);

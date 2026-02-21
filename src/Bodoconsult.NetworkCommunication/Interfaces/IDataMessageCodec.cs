@@ -20,7 +20,7 @@ public interface IDataMessageCodec
     int ExpectedMaximumLength { get;  }
 
     /// <summary>
-    /// Decode a data message to an <see cref="IDataMessage"/> instance
+    /// Decode a data message to an <see cref="IInboundDataMessage"/> instance
     /// </summary>
     /// <param name="data">Data message bytes received</param>
     /// <returns>Decoding result</returns>
@@ -31,6 +31,6 @@ public interface IDataMessageCodec
     /// </summary>
     /// <param name="message">Data message to send</param>
     /// <returns>Codex result with a byte array as optimized <see cref="ReadOnlyMemory{T}"/> to send</returns>
-    OutboundCodecResult EncodeDataMessage(IDataMessage message);
+    OutboundCodecResult EncodeDataMessage(IOutboundDataMessage message);
 
 }

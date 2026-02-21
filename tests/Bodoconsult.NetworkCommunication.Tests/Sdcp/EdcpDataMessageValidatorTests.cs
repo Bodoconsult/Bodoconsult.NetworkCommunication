@@ -15,7 +15,7 @@ internal class EdcpDataMessageValidatorTests
         // Arrange 
         var validator = new EdcpDataMessageValidator();
 
-        var msg = new RawDataMessage();
+        var msg = new RawInboundDataMessage();
 
         // Act  
         var result = validator.IsMessageValid(msg);
@@ -30,7 +30,7 @@ internal class EdcpDataMessageValidatorTests
         // Arrange 
         var validator = new EdcpDataMessageValidator();
 
-        var msg = new SdcpDataMessage();
+        var msg = new SdcpInboundDataMessage();
 
         // Act  
         var result = validator.IsMessageValid(msg);
@@ -45,7 +45,7 @@ internal class EdcpDataMessageValidatorTests
         // Arrange 
         var validator = new EdcpDataMessageValidator();
 
-        var msg = new EdcpDataMessage();
+        var msg = new EdcpInboundDataMessage();
 
         // Act  
         var result = validator.IsMessageValid(msg);

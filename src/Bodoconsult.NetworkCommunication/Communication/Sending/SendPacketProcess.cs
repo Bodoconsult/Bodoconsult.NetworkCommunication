@@ -4,8 +4,8 @@ using Bodoconsult.NetworkCommunication.Delegates;
 using Bodoconsult.NetworkCommunication.Interfaces;
 using Bodoconsult.App.Helpers;
 using System.Diagnostics;
-using Bodoconsult.NetworkCommunication.EnumAndStates;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
+using Bodoconsult.NetworkCommunication.EnumAndStates;
 
 namespace Bodoconsult.NetworkCommunication.Communication.Sending;
 
@@ -17,7 +17,7 @@ public class SendPacketProcess : BaseSendPacketProcess
 
     private CancellationTokenSource _ctsWait;
 
-    private TaskCompletionSource<IHandShakeDataMessage> _taskCompletionSourceWait;
+    private TaskCompletionSource<IInboundHandShakeDataMessage> _taskCompletionSourceWait;
     private TaskCompletionSource<bool> _taskCompletionSourceSend;
 
     /// <summary>
@@ -69,7 +69,7 @@ public class SendPacketProcess : BaseSendPacketProcess
 
         });
 
-        _taskCompletionSourceWait = new TaskCompletionSource<IHandShakeDataMessage>(TaskCreationOptions.RunContinuationsAsynchronously);
+        _taskCompletionSourceWait = new TaskCompletionSource<IInboundHandShakeDataMessage>(TaskCreationOptions.RunContinuationsAsynchronously);
         _taskCompletionSourceSend.SetResult(true);
 
         Debug.Print($"SSP:    start SEND waiting {DateTime.Now:O}");
@@ -140,13 +140,13 @@ public class SendPacketProcess : BaseSendPacketProcess
     /// Receive a handshake message
     /// </summary>
     /// <param name="handshakeMessage">Current handshake message</param>
-    public void HandshakeReceived(HandshakeMessage handshakeMessage)
+    public void HandshakeReceived(InboundHandshakeMessage handshakeMessage)
     {
         Debug.Print($"SPP: Handshake received {DateTime.Now:O}");
         //DataMessagingConfig.MonitorLogger?.LogDebug($"Message {Message.MessageId}: received handshake [{handshakeMessage.HandshakeMessageType:X2} {handshakeMessage.BlockAndRc:X2}]");
         DataMessagingConfig.MonitorLogger?.LogDebug($"Message {Message.MessageId}: received handshake [{handshakeMessage.HandshakeMessageType:X2}]");
 
-        IDataMessage rm = handshakeMessage;
+        IInboundDataMessage rm = handshakeMessage;
 
         if (rm == null || _taskCompletionSourceWait == null)
         {

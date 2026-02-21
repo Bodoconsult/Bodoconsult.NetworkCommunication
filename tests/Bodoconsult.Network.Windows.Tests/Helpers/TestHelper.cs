@@ -3,7 +3,6 @@
 using System.Diagnostics;
 using System.Reflection;
 using System.Security;
-using Bodoconsult.App.Windows.Test.Helpers;
 using Bodoconsult.Network.Windows.Tests.Model;
 
 namespace Bodoconsult.Network.Windows.Tests.Helpers;

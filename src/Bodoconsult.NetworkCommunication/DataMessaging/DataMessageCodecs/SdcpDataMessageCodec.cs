@@ -24,7 +24,7 @@ public class SdcpDataMessageCodec : BaseDataMessageCodec
     }
 
     /// <summary>
-    /// Decode a data message to an <see cref="IDataMessage"/> instance
+    /// Decode a data message to an <see cref="IInboundDataMessage"/> instance
     /// </summary>
     /// <param name="data">Data message bytes received</param>
     /// <returns>Decoding result</returns>
@@ -62,7 +62,7 @@ public class SdcpDataMessageCodec : BaseDataMessageCodec
 
 
 
-            var dataMessage = new SdcpDataMessage
+            var dataMessage = new SdcpInboundDataMessage
             {
                 DataBlock = dataBlock
             };
@@ -85,10 +85,10 @@ public class SdcpDataMessageCodec : BaseDataMessageCodec
     /// </summary>
     /// <param name="message">Data message to send</param>
     /// <returns>Byte array as optimized <see cref="ReadOnlyMemory{T}"/> to send</returns>
-    public override OutboundCodecResult EncodeDataMessage(IDataMessage message)
+    public override OutboundCodecResult EncodeDataMessage(IOutboundDataMessage message)
     {
         var result = new OutboundCodecResult();
-        if (message is not SdcpDataMessage tMessage)
+        if (message is not SdcpInboundDataMessage tMessage)
         {
             result.ErrorMessage = "SdcpDataMessage required for SdcpDataMessageCodec";
             result.ErrorCode = 1;

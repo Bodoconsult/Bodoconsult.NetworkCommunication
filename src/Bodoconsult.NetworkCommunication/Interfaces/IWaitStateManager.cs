@@ -11,7 +11,6 @@ namespace Bodoconsult.NetworkCommunication.Interfaces;
 /// </summary>
 public interface IWaitStateManager: IDisposable
 {
-
     /// <summary>
     /// Current data messaging config
     /// </summary>
@@ -26,7 +25,7 @@ public interface IWaitStateManager: IDisposable
     /// Method used to bind to a delegate for receiving handshakes
     /// </summary>
     /// <param name="msg">Data message</param>
-    void OnHandshakeReceived(IHandShakeDataMessage msg);
+    void OnHandshakeReceived(IInboundHandShakeDataMessage msg);
 
     /// <summary>
     /// Register a wait for ACK state to be handled

@@ -10,8 +10,9 @@ namespace Bodoconsult.NetworkCommunication.DataMessaging.DataMessageCodecs;
 /// </summary>
 public class RawDataMessageCodec : BaseDataMessageCodec
 {
-
-
+    /// <summary>
+    /// Default ctor
+    /// </summary>
     public RawDataMessageCodec()
     {
         ExpectedMinimumLength = 1;
@@ -19,7 +20,7 @@ public class RawDataMessageCodec : BaseDataMessageCodec
     }
 
     /// <summary>
-    /// Decode a data message to an <see cref="IDataMessage"/> instance
+    /// Decode a data message to an <see cref="IInboundDataMessage"/> instance
     /// </summary>
     /// <param name="data">Data message bytes received</param>
     /// <returns>Decoding result</returns>
@@ -27,7 +28,7 @@ public class RawDataMessageCodec : BaseDataMessageCodec
     {
         var result = new InboundCodecResult
         {
-            DataMessage =new RawDataMessage
+            DataMessage =new RawInboundDataMessage
             {
                 RawMessageData = data
             },
@@ -41,10 +42,10 @@ public class RawDataMessageCodec : BaseDataMessageCodec
     /// </summary>
     /// <param name="message">Data message to send</param>
     /// <returns>Byte array as optimized <see cref="ReadOnlyMemory{T}"/> to send</returns>
-    public override OutboundCodecResult EncodeDataMessage(IDataMessage message)
+    public override OutboundCodecResult EncodeDataMessage(IOutboundDataMessage message)
     {
         var result = new OutboundCodecResult();
-        if (message is not RawDataMessage rm)
+        if (message is not RawOutboundDataMessage rm)
         {
             result.ErrorMessage = "RawDataMessage required for RawDataMessageCodec";
             result.ErrorCode= 1;

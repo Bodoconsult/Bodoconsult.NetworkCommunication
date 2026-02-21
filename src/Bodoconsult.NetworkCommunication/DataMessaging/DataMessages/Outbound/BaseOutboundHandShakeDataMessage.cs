@@ -1,16 +1,15 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
-using Bodoconsult.NetworkCommunication.EnumAndStates;
 using Bodoconsult.NetworkCommunication.Interfaces;
 
 namespace Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
 
 /// <summary>
-/// Base class for <see cref="IDataMessage"/> implementations
+/// Base class for <see cref="IOutboundDataMessage"/> handshake implementations
 /// </summary>
-public class BaseHandShakeDataMessage: IDataMessage
+public class BaseOutboundHandShakeDataMessage: IOutboundDataMessage
 {
-    public BaseHandShakeDataMessage()
+    public BaseOutboundHandShakeDataMessage()
     {
         MessageId = DateTime.Now.ToFileTimeUtc();
     }
@@ -21,19 +20,9 @@ public class BaseHandShakeDataMessage: IDataMessage
     public long MessageId { get;  }
 
     /// <summary>
-    /// The message type of the message
-    /// </summary>
-    public MessageTypeEnum MessageType { get; set; }
-
-    /// <summary>
     /// Is waiting for acknowledgement by the device required for the message
     /// </summary>
     public bool WaitForAcknowledgement => false;
-
-    /// <summary>
-    /// Should a acknowledgement be sent if the message is received
-    /// </summary>
-    public bool AnswerWithAcknowledgement => false;
 
     /// <summary>
     /// Current raw message data as byte array

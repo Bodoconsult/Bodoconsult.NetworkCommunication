@@ -8,13 +8,13 @@ namespace Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
 /// <summary>
 /// Represents an EDCP protocol handshake message
 /// </summary>
-public sealed class EdcpHandshakeMessage : BaseHandShakeDataMessage, IHandShakeDataMessage
+public sealed class EdcpInboundHandshakeMessage : BaseInboundHandShakeDataMessage, IInboundHandShakeDataMessage
 {
     /// <summary>
     /// Default ctor
     /// </summary>
     /// <param name="messageType">Current message type</param>
-    public EdcpHandshakeMessage(MessageTypeEnum messageType)
+    public EdcpInboundHandshakeMessage(MessageTypeEnum messageType)
     {
         MessageType = messageType;
     }
@@ -35,10 +35,10 @@ public sealed class EdcpHandshakeMessage : BaseHandShakeDataMessage, IHandShakeD
     {
         return $"{HandshakeMessageType switch
         {
-            6 => "EdcpHandshake ACK",
-            21 => "EdcpHandshake NAK",
-            24 => "EdcpHandshake CAN",
-            _ => "EdcpHandshake Unknown"
+            6 => "EdcpInboundHandshake ACK",
+            21 => "EdcpInboundHandshake NAK",
+            24 => "EdcpInboundHandshake CAN",
+            _ => "EdcpInboundHandshake Unknown"
         }} BlockCode {BlockCode}";
     }
 
@@ -50,10 +50,10 @@ public sealed class EdcpHandshakeMessage : BaseHandShakeDataMessage, IHandShakeD
     {
         return $"{HandshakeMessageType switch
         {
-            6 => "EdcpHandshake ACK",
-            21 => "EdcpHandshake NAK",
-            24 => "EdcpHandshake CAN",
-            _ => "EdcpHandshake Unknown"
+            6 => "EdcpInboundHandshake ACK",
+            21 => "EdcpInboundHandshake NAK",
+            24 => "EdcpInboundHandshake CAN",
+            _ => "EdcpInboundHandshake Unknown"
         }} BlockCode {BlockCode}";
     }
 
@@ -65,10 +65,10 @@ public sealed class EdcpHandshakeMessage : BaseHandShakeDataMessage, IHandShakeD
     {
         return $"{HandshakeMessageType switch
         {
-            6 => "EdcpHandshake ACK",
-            21 => "EdcpHandshake NAK",
-            24 => "EdcpHandshake CAN",
-            _ => "EdcpHandshake Unknown"
+            6 => "EdcpInboundHandshake ACK",
+            21 => "EdcpInboundHandshake NAK",
+            24 => "EdcpInboundHandshake CAN",
+            _ => "EdcpInboundHandshake Unknown"
         }} BlockCode {BlockCode}";
     }
 }

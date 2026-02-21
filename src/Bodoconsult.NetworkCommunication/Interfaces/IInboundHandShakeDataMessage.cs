@@ -4,9 +4,9 @@
 namespace Bodoconsult.NetworkCommunication.Interfaces;
 
 /// <summary>
-/// Interface for handshake data messages
+/// Interface for inbound handshake data messages
 /// </summary>
-public interface IHandShakeDataMessage: IDataMessage
+public interface IInboundHandShakeDataMessage: IInboundDataMessage
 {
     /// <summary>
     /// Typpe of handshake as byte value

@@ -12,7 +12,7 @@ public interface IDuplexIoSender: IAsyncDisposable, IDisposable
     /// Send a message to the device
     /// </summary>
     /// <param name="message">Current message to send</param>
-    Task<int> SendMessage(IDataMessage message);
+    Task<int> SendMessage(IOutboundDataMessage message);
 
     /// <summary>
     /// Start the message sender

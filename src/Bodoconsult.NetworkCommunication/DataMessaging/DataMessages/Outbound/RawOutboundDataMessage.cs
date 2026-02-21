@@ -1,0 +1,60 @@
+﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
+
+using Bodoconsult.NetworkCommunication.Helpers;
+using Bodoconsult.NetworkCommunication.Interfaces;
+
+namespace Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
+
+/// <summary>
+/// Sends a raw byte data message to the device. Intended mainly for outgoing message to send
+/// </summary>
+public class RawOutboundDataMessage : IOutboundDataMessage
+{
+    private Memory<byte> _rawMessageData;
+
+    /// <summary>
+    /// A unique ID to identify the message
+    /// </summary>
+    public long MessageId { get; }= DateTime.Now.Ticks;
+
+    /// <summary>
+    /// Is waiting for acknowledgement by the device required for the message
+    /// </summary>
+    public bool WaitForAcknowledgement => false;
+
+    /// <summary>
+    /// Current raw message data as byte array
+    /// </summary>
+    public Memory<byte> RawMessageData
+    {
+        get => _rawMessageData;
+        set
+        {
+            _rawMessageData = value;
+            RawMessageDataClearText = DataMessageHelper.GetStringFromArrayCsharpStyle(_rawMessageData);
+        }
+    }
+
+    /// <summary>
+    /// Current raw message data as clear text
+    /// </summary>
+    public string RawMessageDataClearText { get; private set; }
+
+    /// <summary>
+    /// Create an info string for logging
+    /// </summary>
+    /// <returns>Info string</returns>
+    public string ToInfoString()
+    {
+        return $"RawOutboundDataMessage {MessageId} Length:{RawMessageData.Length} Data:{RawMessageDataClearText}";
+    }
+
+    /// <summary>
+    /// Create an short info string for logging
+    /// </summary>
+    /// <returns>Info string</returns>
+    public string ToShortInfoString()
+    {
+        return $"RawOutboundDataMessage {MessageId} Length:{RawMessageData.Length}";
+    }
+}

@@ -14,7 +14,7 @@ namespace Bodoconsult.NetworkCommunication.Communication.Sending;
 /// </summary>
 public abstract class BaseWaitStateManager : IWaitStateManager
 {
-    protected readonly IProducerConsumerQueue<HandshakeMessage> ReceivedHandshakes = new ProducerConsumerQueue<HandshakeMessage>();
+    protected readonly IProducerConsumerQueue<InboundHandshakeMessage> ReceivedHandshakes = new ProducerConsumerQueue<InboundHandshakeMessage>();
     protected readonly List<SendPacketProcess> WaitStates = new();
 
     private readonly object _waitStateLock = new();
@@ -50,12 +50,12 @@ public abstract class BaseWaitStateManager : IWaitStateManager
     /// Method used to bind to a delegate for receiving handshakes
     /// </summary>
     /// <param name="msg">Data message</param>
-    public virtual void OnHandshakeReceived(IHandShakeDataMessage msg)
+    public virtual void OnHandshakeReceived(IInboundHandShakeDataMessage msg)
     {
 
         Debug.Print("Handshake reached wait state manager 1");
 
-        if (msg is not HandshakeMessage handshake)
+        if (msg is not InboundHandshakeMessage handshake)
         {
             // Do nothing
             return;
@@ -137,7 +137,7 @@ public abstract class BaseWaitStateManager : IWaitStateManager
         }
     }
 
-    private void ConsumerTaskDelegate(HandshakeMessage handshake)
+    private void ConsumerTaskDelegate(InboundHandshakeMessage handshake)
     {
         // Get the counters at method start to avoid later change resulting from new input
         var waitStateCount = Count;
