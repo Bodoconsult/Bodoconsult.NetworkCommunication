@@ -25,7 +25,7 @@ public interface IWaitStateManager: IDisposable
     /// Method used to bind to a delegate for receiving handshakes
     /// </summary>
     /// <param name="msg">Data message</param>
-    void OnHandshakeReceived(IInboundHandShakeDataMessage msg);
+    void OnHandshakeReceived(IInboundHandShakeMessage msg);
 
     /// <summary>
     /// Register a wait for ACK state to be handled

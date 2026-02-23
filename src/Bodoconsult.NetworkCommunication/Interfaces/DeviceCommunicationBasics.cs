@@ -37,7 +37,7 @@ public static class DeviceCommunicationBasics
     public static int DefaultTimeout { get; set; } = 2000;
 
     /// <summary>
-    /// Timeout for a PING sent to the tower
+    /// Timeout for a PING sent to the device
     /// </summary>
     public static int PingTimeout { get; set; } = 500;
 

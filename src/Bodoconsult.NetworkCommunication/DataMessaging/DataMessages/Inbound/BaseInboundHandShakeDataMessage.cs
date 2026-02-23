@@ -1,6 +1,5 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
-using Bodoconsult.NetworkCommunication.EnumAndStates;
 using Bodoconsult.NetworkCommunication.Interfaces;
 
 namespace Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
@@ -8,9 +7,9 @@ namespace Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
 /// <summary>
 /// Base class for <see cref="IInboundDataMessage"/> handshake implementations
 /// </summary>
-public class BaseInboundHandShakeDataMessage: IInboundDataMessage
+public class BaseInboundHandShakeMessage: IInboundHandShakeMessage
 {
-    public BaseInboundHandShakeDataMessage()
+    public BaseInboundHandShakeMessage()
     {
         MessageId = DateTime.Now.ToFileTimeUtc();
     }
@@ -19,16 +18,6 @@ public class BaseInboundHandShakeDataMessage: IInboundDataMessage
     /// A unique ID to identify the message
     /// </summary>
     public long MessageId { get;  }
-
-    /// <summary>
-    /// The message type of the message
-    /// </summary>
-    public MessageTypeEnum MessageType { get; set; }
-
-    /// <summary>
-    /// Should a acknowledgement be sent if the message is received
-    /// </summary>
-    public bool AnswerWithAcknowledgement => false;
 
     /// <summary>
     /// Current raw message data as byte array
@@ -58,4 +47,8 @@ public class BaseInboundHandShakeDataMessage: IInboundDataMessage
         throw new NotSupportedException();
     }
 
+    /// <summary>
+    /// Type of handshake as byte value
+    /// </summary>
+    public byte HandshakeMessageType { get; set; }
 }

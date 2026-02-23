@@ -19,19 +19,20 @@ public class ShouldCrashInboundDataMessage : IInboundDataMessage
     public long MessageId { get; } = DateTime.Now.Ticks;
 
     /// <summary>
-    /// The message type of the message
-    /// </summary>
-    public MessageTypeEnum MessageType { get; set; }
-
-    /// <summary>
-    /// Is waiting for acknowledgement by the device required for the message
-    /// </summary>
-    public bool WaitForAcknowledgement { get; set; }
-
-    /// <summary>
     /// Should an acknowledgement be sent if the message is received
     /// </summary>
     public bool AnswerWithAcknowledgement { get; set; }
+
+    /// <summary>
+    /// First plausibilty check if a received message can the expected answer to the request. 
+    /// </summary>
+    /// <param name="sentMessage">The message sent from the request to the device</param>
+    /// <param name="errors">List with error messages to fill</param>
+    /// <returns>True if the message was as expected as answer of the sent message else false</returns>
+    public bool CheckReceivedMessage(IOutboundDataMessage sentMessage, IList<string> errors)
+    {
+        return false;
+    }
 
     /// <summary>
     /// Current raw message data as byte array

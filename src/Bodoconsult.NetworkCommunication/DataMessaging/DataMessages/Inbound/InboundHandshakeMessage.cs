@@ -1,6 +1,5 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
-using Bodoconsult.NetworkCommunication.EnumAndStates;
 using Bodoconsult.NetworkCommunication.Interfaces;
 
 namespace Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
@@ -8,22 +7,8 @@ namespace Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
 /// <summary>
 /// Represents a handshake message
 /// </summary>
-public sealed class InboundHandshakeMessage : BaseInboundHandShakeDataMessage, IInboundHandShakeDataMessage
+public sealed class InboundHandshakeMessage : BaseInboundHandShakeMessage, IInboundHandShakeMessage
 {
-    /// <summary>
-    /// Default ctor
-    /// </summary>
-    /// <param name="messageType">Current message type</param>
-    public InboundHandshakeMessage(MessageTypeEnum messageType)
-    {
-        MessageType = messageType;
-    }
-
-    /// <summary>
-    /// Typpe of handshake as byte value
-    /// </summary>
-    public byte HandshakeMessageType { set; get; }
-
     /// <summary>Returns a string that represents the current object.</summary>
     /// <returns>A string that represents the current object.</returns>
     public override string ToString()

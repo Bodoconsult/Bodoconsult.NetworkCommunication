@@ -1,4 +1,4 @@
-﻿// Copyright (c) Mycronic. All rights reserved.
+﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
 using Bodoconsult.NetworkCommunication.Delegates;
 
@@ -42,9 +42,9 @@ public interface IRequestProcessor: IDisposable
     /// <summary>
     /// Check a received message
     /// </summary>
-    /// <param name="receivedMessage">A message received from the tower</param>
+    /// <param name="receivedMessage">A message received from the device</param>
     /// <returns>True if the message was an expected answer of the current request</returns>
-    bool CheckReceivedMessage(ICommandDataMessage receivedMessage);
+    bool CheckReceivedMessage(IInboundDataMessage receivedMessage);
 
 
     /// <summary>

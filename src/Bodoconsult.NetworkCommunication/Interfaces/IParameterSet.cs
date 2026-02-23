@@ -1,4 +1,4 @@
-﻿// Copyright (c) Mycronic. All rights reserved.
+﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
 using System.ComponentModel.DataAnnotations;
 
@@ -31,9 +31,9 @@ public interface IParameterSet: IDisposable
     string UserRequestingTheOrderRun { get; set; }
 
     /// <summary>
-    /// Send a CANCEL command to the tower if request step was unsuccessful. Default: false
+    /// Send a CANCEL command to the device if request step was unsuccessful. Default: false
     /// </summary>
-    bool SendCancelToTowerIfUnsuccessful { get; set; }
+    bool SendCancelTodeviceIfUnsuccessful { get; set; }
 
     /// <summary>
     /// Do not notify the client after order running

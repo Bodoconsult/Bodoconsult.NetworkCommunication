@@ -5,7 +5,7 @@ namespace Bodoconsult.NetworkCommunication.Interfaces;
 /// <summary>
 /// Interface for outbound handshake data messages
 /// </summary>
-public interface IOutboundHandShakeDataMessage : IOutboundDataMessage
+public interface IOutboundHandShakeDataMessage : IOutboundMessage
 {
     /// <summary>
     /// Typpe of handshake as byte value

@@ -14,7 +14,7 @@ public class DummyHandshakeValidator : IHandshakeDataMessageValidator
     /// <param name="handshakeMessage">Received handshake message</param>
     /// <returns>True if the message was the handshake for the sent message</returns>
     public DataMessageValidatorResult IsHandshakeForSentMessage(IOutboundDataMessage sentMessage,
-        IInboundDataMessage handshakeMessage)
+        IInboundHandShakeMessage handshakeMessage)
     {
         return new DataMessageValidatorResult(true, null);
     }
@@ -25,10 +25,10 @@ public class DummyHandshakeValidator : IHandshakeDataMessageValidator
     /// </summary>
     /// <param name="context">Current context</param>
     /// <param name="handshake">Received handshake</param>
-    public void HandleHandshake(ISendPacketProcess context, IInboundDataMessage handshake)
+    public void HandleHandshake(ISendPacketProcess context, IInboundHandShakeMessage handshake)
     {
 
-        if (handshake is not IInboundHandShakeDataMessage hs)
+        if (handshake is not IInboundHandShakeMessage hs)
         {
             context.ProcessExecutionResult = OrderExecutionResultState.Unsuccessful;
             return;

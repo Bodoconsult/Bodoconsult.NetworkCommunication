@@ -35,51 +35,51 @@ public class OrderExecutionResultState: IOrderExecutionResultState
     /// <summary>
     /// Order was processed successfully
     /// </summary>
-    public static OrderExecutionResultState Successful { get; } = new OrderExecutionResultState(0, string.Intern("Successful"));
+    public static OrderExecutionResultState Successful { get; } = new(0, string.Intern("Successful"));
 
     /// <summary>
     /// Order was processed unsuccessfully
     /// </summary>
-    public static OrderExecutionResultState Unsuccessful { get; } = new OrderExecutionResultState(1, string.Intern("Unsuccessful"));
+    public static OrderExecutionResultState Unsuccessful { get; } = new(1, string.Intern("Unsuccessful"));
 
     /// <summary>
     /// Order has timed out
     /// </summary>
-    public static OrderExecutionResultState Timeout { get; } = new OrderExecutionResultState(2, string.Intern("Timeout"));
+    public static OrderExecutionResultState Timeout { get; } = new(2, string.Intern("Timeout"));
 
     /// <summary>
     /// Order was processed with an error
     /// </summary>
-    public static OrderExecutionResultState Error { get; } = new OrderExecutionResultState(3, string.Intern("Error"));
+    public static OrderExecutionResultState Error { get; } = new(3, string.Intern("Error"));
 
     /// <summary>
     /// Order was NOT processed at all
     /// </summary>
-    public static OrderExecutionResultState NotProcessed { get; } = new OrderExecutionResultState(4, string.Intern("NotProcessed"));
+    public static OrderExecutionResultState NotProcessed { get; } = new(4, string.Intern("NotProcessed"));
 
     /// <summary>
     /// Order execution not possible due to device was NOT answering
     /// </summary>
-    public static OrderExecutionResultState NoResponseFromDevice { get; } = new OrderExecutionResultState(5, string.Intern("NoResponseFromDevice"));
+    public static OrderExecutionResultState NoResponseFromDevice { get; } = new(5, string.Intern("NoResponseFromDevice"));
 
     /// <summary>
     /// Device returned a CAN
     /// </summary>
-    public static OrderExecutionResultState Can { get; } = new OrderExecutionResultState(6, string.Intern("Can"));
+    public static OrderExecutionResultState Can { get; } = new(6, string.Intern("Can"));
 
     /// <summary>
     /// Device returned a NACK
     /// </summary>
-    public static OrderExecutionResultState Nack { get; } = new OrderExecutionResultState(7, string.Intern("Nack"));
+    public static OrderExecutionResultState Nack { get; } = new(7, string.Intern("Nack"));
 
     /// <summary>
     /// device hardware error
     /// </summary>
-    public static OrderExecutionResultState HardwareError { get; } = new OrderExecutionResultState(8, string.Intern("HardwareError"));
+    public static OrderExecutionResultState HardwareError { get; } = new(8, string.Intern("HardwareError"));
 
     /// <summary>
     /// Device is in firmware update mode
     /// </summary>
-    public static OrderExecutionResultState UpdateMode { get; } = new OrderExecutionResultState(9, string.Intern("UpdateMode"));
+    public static OrderExecutionResultState UpdateMode { get; } = new(9, string.Intern("UpdateMode"));
 
 }

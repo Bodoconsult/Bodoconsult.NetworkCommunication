@@ -23,6 +23,17 @@ public class RawInboundDataMessage : IInboundDataMessage
     public bool AnswerWithAcknowledgement => false;
 
     /// <summary>
+    /// First plausibilty check if a received message can be the expected answer to the request. 
+    /// </summary>
+    /// <param name="sentMessage">The message sent from the request to the device</param>
+    /// <param name="errors">List with error messages to fill</param>
+    /// <returns>True if the message was as expected as answer of the sent message else false</returns>
+    public bool CheckReceivedMessage(IOutboundDataMessage sentMessage, IList<string> errors)
+    {
+        return false;
+    }
+
+    /// <summary>
     /// Current raw message data as byte array
     /// </summary>
     public Memory<byte> RawMessageData
@@ -50,7 +61,7 @@ public class RawInboundDataMessage : IInboundDataMessage
     }
 
     /// <summary>
-    /// Create an short info string for logging
+    /// Create a short info string for logging
     /// </summary>
     /// <returns>Info string</returns>
     public string ToShortInfoString()

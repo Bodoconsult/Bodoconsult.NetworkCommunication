@@ -11,7 +11,7 @@ namespace Bodoconsult.NetworkCommunication.DataMessaging.DataMessageValidators;
 /// </summary>
 public class SdcpDataMessageValidator : IDataMessageValidator
 {
-    public DataMessageValidatorResult IsMessageValid(IInboundDataMessage dataMessage)
+    public DataMessageValidatorResult IsMessageValid(IInboundMessage dataMessage)
     {
         // Raw message: always valid
         if (dataMessage is RawInboundDataMessage)

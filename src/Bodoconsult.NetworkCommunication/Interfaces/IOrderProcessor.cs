@@ -1,4 +1,4 @@
-﻿// Copyright (c) Mycronic. All rights reserved.
+﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
 using Bodoconsult.NetworkCommunication.EnumAndStates;
 
@@ -25,7 +25,7 @@ public interface IOrderProcessor : IDisposable
     public ISyncOrderManager SyncOrderManager { get; }
 
     /// <summary>
-    /// Current tower server instance
+    /// Current device server instance
     /// </summary>
     IOrderManagementDevice CurrentDevice { get; }
 
@@ -77,9 +77,9 @@ public interface IOrderProcessor : IDisposable
     bool IsAnyOrderToProcess { get; }
 
     /// <summary>
-    /// Is there a order running or in the queue breaking a tower properties update
+    /// Is there a order running or in the queue breaking a device properties update
     /// </summary>
-    bool IsAnyOrderBreakingTowerPropertiesUpdateToProcess { get; }
+    bool IsAnyOrderBreakingdevicePropertiesUpdateToProcess { get; }
 
     /// <summary>
     /// Get the current order processing
@@ -130,9 +130,9 @@ public interface IOrderProcessor : IDisposable
     void AddOrderWithPriority(IOrder order);
 
     /// <summary>
-    /// Cancel all running orders and run a tower order init if required
+    /// Cancel all running orders and run a device order init if required
     /// </summary>
-    /// <param name="errorCode">Provided error code from tower. Hardware errors are error codes greater equal 175 and not 229, 223, 249</param>
+    /// <param name="errorCode">Provided error code from device. Hardware errors are error codes greater equal 175 and not 229, 223, 249</param>
     void CancelRunningOrders(byte errorCode);
 
     /// <summary>
@@ -150,7 +150,7 @@ public interface IOrderProcessor : IDisposable
     /// Initiate a hardware init
     /// </summary>
     /// <param name="runTheOrder">Run the order directly: yes or no</param>
-    /// <returns>Tower hardware init order</returns>
+    /// <returns>device hardware init order</returns>
     IOrder InitiateHardwareInit(bool runTheOrder);
 
 
@@ -216,7 +216,7 @@ public interface IOrderProcessor : IDisposable
     /// <summary>
     /// Check a received message
     /// </summary>
-    /// <param name="receivedMessage">A message received from the tower</param>
+    /// <param name="receivedMessage">A message received from the device</param>
     /// <returns>True if the message was an expected answer of the current request</returns>
     bool CheckReceivedMessage(IInboundDataMessage receivedMessage);
 
@@ -239,37 +239,6 @@ public interface IOrderProcessor : IDisposable
     /// <param name="carrierUid">UID of the carrier to unload</param>
     /// <returns>True if the carrier was added to an existing order else false</returns>
     bool Check4UnloadOrdersForSameContainer(Guid containerUid, Guid carrierUid);
-}
-
-/// <summary>
-/// Interface for implementing the management of sync running orders. As long as the order IDs are unique instance can be singleton
-/// </summary>
-public interface ISyncOrderManager : IDisposable
-{
-    /// <summary>
-    /// Is queue with the sync running orders empty
-    /// </summary>
-    bool IsSyncRunningOrderEmpty { get; }
-
-    /// <summary>
-    /// Add a order to the sync execution queue
-    /// </summary>
-    /// <param name="orderId">ID of the order</param>
-    /// <param name="timeout">Timeout in ms</param>
-    SyncExecutionData AddSyncExecutionOrder(long orderId, int timeout);
-
-    /// <summary>
-    /// Remove a sync execution order from  sync execution queue
-    /// </summary>
-    /// <param name="orderId">ID of the order</param>
-    void RemoveSyncExecutionOrder(long orderId);
-
-    /// <summary>
-    /// Get the sync running execution data for a order
-    /// </summary>
-    /// <param name="orderId">ID of the order</param>
-    /// <returns>Sync running execution data or null</returns>
-    SyncExecutionData GetSyncExecutionDataForOrder(long orderId);
 }
 
 /// <summary>

@@ -23,9 +23,9 @@ public class DefaultDataBlockCodingProcessor : IDataBlockCodingProcessor
     }
 
     /// <summary>
-    /// Create a byte array to send to tower from datablock
+    /// Create a byte array to send to device from datablock
     /// </summary>
-    /// <param name="data">Tower message data to send</param>
+    /// <param name="data">device message data to send</param>
     /// <param name="dataBlock">Current datablock instance</param>
     public void FromDataBlockToBytes(List<byte> data, IDataBlock dataBlock)
     {

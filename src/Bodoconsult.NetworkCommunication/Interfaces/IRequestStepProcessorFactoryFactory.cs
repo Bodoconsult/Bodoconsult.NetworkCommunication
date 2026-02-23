@@ -1,14 +1,14 @@
-﻿// Copyright (c) Mycronic. All rights reserved.
+﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
 namespace Bodoconsult.NetworkCommunication.Interfaces;
 
 /// <summary>
-/// Interface for factories for <see cref="IRequestStepProcessorFactory"/> instances per tower
+/// Interface for factories for <see cref="IRequestStepProcessorFactory"/> instances per device
 /// </summary>
 public interface IRequestStepProcessorFactoryFactory
 {
     /// <summary>
-    /// Create a <see cref="IRequestStepProcessorFactory"/> instance per tower
+    /// Create a <see cref="IRequestStepProcessorFactory"/> instance per device
     /// </summary>
     /// <param name="communicationAdapter">Current communication adapter to use</param>
     /// <returns>A <see cref="IRequestStepProcessorFactory"/> instance</returns>

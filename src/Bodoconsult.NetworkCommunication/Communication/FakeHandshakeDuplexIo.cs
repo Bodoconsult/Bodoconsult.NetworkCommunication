@@ -29,7 +29,7 @@ public class FakeHandshakeDuplexIo : IDuplexIo
     /// <summary>
     /// The handshale message to be "received" on sending a message
     /// </summary>
-    public IInboundHandShakeDataMessage HandShakeDataMessage { get; set; } = new InboundHandshakeMessage(MessageTypeEnum.Sent);
+    public IInboundHandShakeMessage HandShakeDataMessage { get; set; } = new InboundHandshakeMessage();
 
     /// <summary>Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources asynchronously.</summary>
     /// <returns>A task that represents the asynchronous dispose operation.</returns>

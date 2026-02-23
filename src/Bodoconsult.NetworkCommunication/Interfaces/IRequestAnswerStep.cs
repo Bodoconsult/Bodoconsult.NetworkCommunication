@@ -15,7 +15,7 @@ public interface IRequestAnswerStep : IDisposable
     IRequestSpec RequestSpec { get; }
 
     /// <summary>
-    /// Allowed request answers: one of the items has to be received as answer from tower
+    /// Allowed request answers: one of the items has to be received as answer from device
     /// </summary>
     IList<IRequestAnswer> AllowedRequestAnswers { get; }
 
@@ -50,7 +50,7 @@ public interface IRequestAnswerStep : IDisposable
     /// </summary>
     /// <param name="receivedMessage">Received message</param>
     /// <returns>True if the received message is fitting to the current request else false</returns>
-    IEnumerable<string> CheckReceivedMessage(ICommandDataMessage receivedMessage);
+    IEnumerable<string> CheckReceivedMessage(IInboundDataMessage receivedMessage);
 
     /// <summary>
     /// Handles the answer of the request step
@@ -97,13 +97,13 @@ public interface IRequestAnswerStep : IDisposable
     /// <summary>
     /// Check if a received message is the expected answer to the request step.
     /// </summary>
-    /// <param name="sentMessage">The message sent from the request to the tower</param>
-    /// <param name="receivedMessage">A received message from the tower</param>
+    /// <param name="sentMessage">The message sent from the request to the device</param>
+    /// <param name="receivedMessage">A received message from the device</param>
     /// <param name="errors">List with error messages to fill</param> <returns>True if the message was as expected as answer of the sent message else false</returns>
-    bool CheckReceivedMessage(ICommandDataMessage sentMessage, ICommandDataMessage receivedMessage, IList<string> errors);
+    bool CheckReceivedMessage(IOutboundDataMessage sentMessage, IInboundDataMessage receivedMessage, IList<string> errors);
 
     /// <summary>
     /// The accepted message leading <see cref="WasSuccessful"/> being true
     /// </summary>
-    ICommandDataMessage AcceptedMessage { get; }
+    IInboundDataMessage AcceptedMessage { get; }
 }

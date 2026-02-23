@@ -5,11 +5,11 @@ namespace Bodoconsult.NetworkCommunication.Interfaces;
 /// <summary>
 /// Interface for data messages used for commands delivering a <see cref="IDataBlock"/>
 /// </summary>
-public interface ICommandDataWithDataBlockMessage : ICommandDataMessage
+public interface ICommandDataWithDataBlockMessage : IInboundDataMessage
 {
 
     /// <summary>
-    /// Length of the datablock  or 0 if no data block is contained
+    /// Length of the datablock or 0 if no data block is contained
     /// </summary>
     public int DataBlockLength { get; set; }
 

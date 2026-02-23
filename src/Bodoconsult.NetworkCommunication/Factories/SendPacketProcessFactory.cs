@@ -35,17 +35,17 @@ public class SendPacketProcessFactory : ISendPacketProcessFactory
     }
 
     /// <summary>
-    /// Create an instance of <see cref="ISendPacketProcess "/> to send a message to the tower
+    /// Create an instance of <see cref="ISendPacketProcess "/> to send a message to the device
     /// </summary>
     /// <param name="duplexIo">Current Duplex-IO instance</param>
     /// <param name="message">Current message to send</param>
-    /// <param name="smdtower">Current tower instance</param>
+    /// <param name="smddevice">Current device instance</param>
     /// <returns>A send packet process instance to hande the message to send</returns>
     public ISendPacketProcess CreateInstance(IDuplexIo duplexIo, IOutboundDataMessage message,
-        IDataMessagingConfig smdtower)
+        IDataMessagingConfig smddevice)
     {
         var result = _bufferPool.Dequeue();
-        result.LoadDependencies(duplexIo, message, smdtower);
+        result.LoadDependencies(duplexIo, message, smddevice);
         result.RegisterWaitState();
         return result;
     }

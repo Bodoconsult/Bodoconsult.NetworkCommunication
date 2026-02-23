@@ -18,7 +18,7 @@ public class FakeSendPacketProcessFactory : ISendPacketProcessFactory
         FakeSendPacketProcessEnum.Successful;
 
     /// <summary>
-    /// Create a instance of <see cref="ISendPacketProcess "/> to send a message to the tower
+    /// Create a instance of <see cref="ISendPacketProcess "/> to send a message to the device
     /// </summary>
     /// <param name="duplexIo">Current Duplex-IO instance</param>
     /// <param name="message">Current message to send</param>

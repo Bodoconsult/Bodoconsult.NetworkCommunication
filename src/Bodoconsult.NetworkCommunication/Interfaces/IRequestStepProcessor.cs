@@ -1,11 +1,11 @@
-﻿// Copyright (c) Mycronic. All rights reserved.
+﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
 using Bodoconsult.App.Interfaces;
 
 namespace Bodoconsult.NetworkCommunication.Interfaces;
 
 /// <summary>
-/// Interface for executing request steps of a tower request
+/// Interface for executing request steps of a device request
 /// </summary>
 public interface IRequestStepProcessor : IDisposable
 {
@@ -30,9 +30,9 @@ public interface IRequestStepProcessor : IDisposable
     IRequestSpec RequestSpec { get; set; }
 
     /// <summary>
-    /// Message to send to tower
+    /// Message to send to device
     /// </summary>
-    public ICommandDataMessage SentMessage { get; }
+    public IOutboundDataMessage SentMessage { get; }
 
     /// <summary>
     /// The number of messages to be sent
@@ -63,10 +63,9 @@ public interface IRequestStepProcessor : IDisposable
     /// <summary>
     /// Check a received message
     /// </summary>
-    /// <param name="receivedMessage">A message received from the tower</param>
+    /// <param name="receivedMessage">A message received from the device</param>
     /// <returns>True if the message was an expected answer of the current request</returns>
-    bool CheckReceivedMessage(ICommandDataMessage receivedMessage);
-
+    bool CheckReceivedMessage(IInboundDataMessage receivedMessage);
 
     /// <summary>
     /// Cancel the current request step processor
@@ -77,5 +76,4 @@ public interface IRequestStepProcessor : IDisposable
     /// The current processed chain element
     /// </summary>
     IRequestAnswerStep CurrentChainElement { get; set; }
-
 }

@@ -3,7 +3,7 @@
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessageValidators;
 
-namespace Bodoconsult.NetworkCommunication.Tests.Sdcp;
+namespace Bodoconsult.NetworkCommunication.Tests.Edcp;
 
 [TestFixture]
 internal class EdcpDataMessageValidatorTests

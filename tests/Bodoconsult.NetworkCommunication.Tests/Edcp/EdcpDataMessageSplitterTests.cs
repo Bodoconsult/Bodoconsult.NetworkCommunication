@@ -4,7 +4,7 @@ using Bodoconsult.NetworkCommunication.App.Abstractions;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessageSplitters;
 using System.Buffers;
 
-namespace Bodoconsult.NetworkCommunication.Tests.Sdcp;
+namespace Bodoconsult.NetworkCommunication.Tests.Edcp;
 
 [TestFixture]
 internal class EdcpDataMessageSplitterTests

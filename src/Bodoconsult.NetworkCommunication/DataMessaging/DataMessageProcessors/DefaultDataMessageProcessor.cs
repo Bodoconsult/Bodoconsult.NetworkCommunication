@@ -1,28 +1,30 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
 using Bodoconsult.App.Helpers;
-using Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
 using Bodoconsult.NetworkCommunication.Interfaces;
 
 namespace Bodoconsult.NetworkCommunication.DataMessaging.DataMessageProcessors;
 
 /// <summary>
-/// Current implementation of <see cref="IDataMessageProcessor"/> for SDCP protocol.
+/// Current implementation of <see cref="IDataMessageProcessor"/>. Delivers messages in the order of reaching it via <see cref="ProcessMessage"/>
 /// Should invoke IDataMessagingConfig.RaiseDataMessageReceivedDelegate for data messages and IDataMessagingConfig.DataMessageProcessingPackage.WaitStateManager?.OnHandshakeReceived for handshakes
 /// </summary>
-public class SdcpDataMessageProcessor : IDataMessageProcessor
+public class DefaultDataMessageProcessor : IDataMessageProcessor
 {
 
     private readonly AutoResetEvent _stopped = new(false);
 
     private const int TimeOut = 2000;
 
+    /// <summary>
+    /// Current <see cref="IDataMessagingConfig"/> instance
+    /// </summary>
     public readonly IDataMessagingConfig Config;
 
     /// <summary>
     /// Default ctor
     /// </summary>
-    public SdcpDataMessageProcessor(IDataMessagingConfig config)
+    public DefaultDataMessageProcessor(IDataMessagingConfig config)
     {
         Config = config;
     }
@@ -31,17 +33,17 @@ public class SdcpDataMessageProcessor : IDataMessageProcessor
     /// Process the message
     /// </summary>
     /// <param name="message">Message to process</param>
-    public void ProcessMessage(IInboundDataMessage message)
+    public void ProcessMessage(IInboundMessage message)
     {
-        // handshake received
-        if (message is InboundHandshakeMessage handShake)
+        // Handshake received
+        if (message is IInboundHandShakeMessage handShake)
         {
             ProcessHandshakes(handShake);
             return;
         }
 
-        // Tower data message received
-        if (message is SdcpInboundDataMessage dataMessage)
+        // Data message received
+        if (message is IInboundDataMessage dataMessage)
         {
             AsyncHelper.FireAndForget2(() => Config.RaiseCommLayerDataMessageReceivedDelegate?.Invoke(dataMessage)).ContinueWith(Callback);
         }
@@ -50,7 +52,7 @@ public class SdcpDataMessageProcessor : IDataMessageProcessor
     }
 
     // ReSharper disable once SuggestBaseTypeForParameter
-    private void ProcessHandshakes(InboundHandshakeMessage handShake)
+    private void ProcessHandshakes(IInboundHandShakeMessage handShake)
     {
         // fire and forget but let CallBack() be run at the end
         AsyncHelper.FireAndForget2(() =>

@@ -50,7 +50,7 @@ public class TcpTestClient :   ITcpIpDevice
     /// <summary>
     /// Current cancellation token
     /// </summary>
-    public CancellationTokenSource CancellationTokenSource { get; set; } = new CancellationTokenSource();
+    public CancellationTokenSource CancellationTokenSource { get; set; } = new();
 
     /// <summary>
     /// Start the server mode

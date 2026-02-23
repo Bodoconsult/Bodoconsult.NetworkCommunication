@@ -1,4 +1,4 @@
-﻿// Copyright (c) Mycronic. All rights reserved.
+﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
 using Bodoconsult.App.Interfaces;
 
@@ -17,9 +17,9 @@ public interface IOrderExecutionNotification : IClientNotification
 
 
     ///// <summary>
-    ///// The tower serial number
+    ///// The device serial number
     ///// </summary>
-    //string TowerSn { get; }
+    //string deviceSn { get; }
         
     ///// <summary>
     ///// The UID of the carrier entity
@@ -47,7 +47,7 @@ public interface IOrderExecutionNotification : IClientNotification
     //string CarrierName { get; }
 
     ///// <summary>
-    ///// The tower magazine slot UID
+    ///// The device magazine slot UID
     ///// </summary>
     //Guid SlotUid { get; }
         

@@ -8,15 +8,15 @@ namespace Bodoconsult.NetworkCommunication.Interfaces;
 public interface ISendPacketProcessFactory
 {
     /// <summary>
-    /// Create a instance of <see cref="ISendPacketProcess "/> to send a message to the tower
+    /// Create a instance of <see cref="ISendPacketProcess "/> to send a message to the device
     /// </summary>
     /// <param name="duplexIo">Current Duplex-IO instance</param>
     /// <param name="message">Current message to send</param>
-    /// <param name="smdtower">Current tower instance</param>
+    /// <param name="smddevice">Current device instance</param>
     /// <returns>A send packet process instance to hande the message to send</returns>
     ISendPacketProcess CreateInstance(IDuplexIo duplexIo,
         IOutboundDataMessage message,
-        IDataMessagingConfig smdtower);
+        IDataMessagingConfig smddevice);
 
     /// <summary>
     /// Reset the <see cref="ISendPacketProcess"/> instance and give it back to pool

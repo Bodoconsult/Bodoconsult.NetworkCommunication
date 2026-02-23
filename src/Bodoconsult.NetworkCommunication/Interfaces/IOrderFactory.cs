@@ -1,17 +1,17 @@
-﻿// Copyright (c) Mycronic. All rights reserved.
+﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
 namespace Bodoconsult.NetworkCommunication.Interfaces;
 
 /// <summary>
-/// Interface for tower orders  providing only first level logic for creation of orders
+/// Interface for device orders  providing only first level logic for creation of orders
 /// NOT bound to business objects outside TOM
 /// </summary>
 public interface IOrderFactory
 {
     /// <summary>
-    /// Create a tower order
+    /// Create a device order
     /// </summary>
-    /// <param name="parameterSet">Parameter set to use for the tower order</param>
+    /// <param name="parameterSet">Parameter set to use for the device order</param>
     /// <returns></returns>
     IOrder CreateOrder(IParameterSet parameterSet);
 

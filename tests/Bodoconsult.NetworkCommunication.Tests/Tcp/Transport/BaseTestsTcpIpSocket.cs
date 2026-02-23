@@ -16,12 +16,12 @@ public abstract class BaseTestsTcpIpSocket
     protected IPEndPoint CurrentIpEndPoint;
 
     /// <summary>
-    /// IP address (use the one from test tower development)
+    /// IP address (use the one from test device development)
     /// </summary>
     protected const string IpAddress = "127.0.0.1";
 
     /// <summary>
-    /// Default port for SMD tower (9001 simulator)
+    /// Default port for SMD device (9001 simulator)
     /// </summary>
     protected const int Port = 9000;
 

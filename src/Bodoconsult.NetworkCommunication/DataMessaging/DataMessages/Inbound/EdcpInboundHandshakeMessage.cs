@@ -1,29 +1,12 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH.  All rights reserved.
 
-using Bodoconsult.NetworkCommunication.EnumAndStates;
-using Bodoconsult.NetworkCommunication.Interfaces;
-
 namespace Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
 
 /// <summary>
 /// Represents an EDCP protocol handshake message
 /// </summary>
-public sealed class EdcpInboundHandshakeMessage : BaseInboundHandShakeDataMessage, IInboundHandShakeDataMessage
+public sealed class EdcpInboundHandshakeMessage : BaseInboundHandShakeMessage
 {
-    /// <summary>
-    /// Default ctor
-    /// </summary>
-    /// <param name="messageType">Current message type</param>
-    public EdcpInboundHandshakeMessage(MessageTypeEnum messageType)
-    {
-        MessageType = messageType;
-    }
-
-    /// <summary>
-    /// Type of handshake as byte value
-    /// </summary>
-    public byte HandshakeMessageType { set; get; }
-
     /// <summary>
     /// Block code of the data message this handshake is acknowledging
     /// </summary>

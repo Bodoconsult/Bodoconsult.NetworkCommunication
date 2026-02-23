@@ -1,11 +1,14 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen. All rights reserved.
 
+
+// Copyright (c) Bodoconsult EDV-Dienstleistungen. All rights reserved.
+
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
 
-namespace Bodoconsult.NetworkCommunication.Tests.Sdcp;
+namespace Bodoconsult.NetworkCommunication.Tests.Edcp;
 
 [TestFixture]
-internal class EdcpOutboundDataMessageTests
+internal class EdcpInboundDataMessageTests
 {
 
     [Test]
@@ -14,7 +17,7 @@ internal class EdcpOutboundDataMessageTests
         // Arrange 
 
         // Act  
-        var msg = new EdcpOutboundDataMessage();
+        var msg = new EdcpInboundDataMessage();
 
         // Assert
         Assert.That(msg.MessageId, Is.Not.EqualTo(0));

@@ -12,5 +12,5 @@ public interface IDataMessageProcessor
     /// Process the message
     /// </summary>
     /// <param name="message">Message to process</param>
-    public void ProcessMessage(IInboundDataMessage message);
+    public void ProcessMessage(IInboundMessage message);
 }

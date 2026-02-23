@@ -6,10 +6,10 @@ namespace Bodoconsult.NetworkCommunication.Interfaces;
 /// <summary>
 /// Interface for inbound handshake data messages
 /// </summary>
-public interface IInboundHandShakeDataMessage: IInboundDataMessage
+public interface IInboundHandShakeMessage: IInboundMessage
 {
     /// <summary>
-    /// Typpe of handshake as byte value
+    /// Type of handshake as byte value
     /// </summary>
     public byte HandshakeMessageType { set; get; }
 }

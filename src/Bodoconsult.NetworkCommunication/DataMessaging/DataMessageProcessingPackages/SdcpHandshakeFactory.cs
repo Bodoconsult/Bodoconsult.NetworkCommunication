@@ -1,7 +1,6 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH.  All rights reserved.
 
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
-using Bodoconsult.NetworkCommunication.EnumAndStates;
 using Bodoconsult.NetworkCommunication.Interfaces;
 
 namespace Bodoconsult.NetworkCommunication.DataMessaging.DataMessageProcessingPackages;
@@ -16,9 +15,9 @@ public class SdcpHandshakeFactory : IDataMessageHandshakeFactory
     /// </summary>
     /// <param name="message">Current message received</param>
     /// <returns>ACK handshake message to send</returns>
-    public IInboundDataMessage GetAckResponse(IInboundDataMessage message)
+    public IOutboundHandShakeDataMessage GetAckResponse(IInboundDataMessage message)
     {
-        var ack = new InboundHandshakeMessage( MessageTypeEnum.Sent)
+        var ack = new OutboundHandshakeMessage()
         {
             HandshakeMessageType = HandShakeMessageType.Ack,
         };
@@ -31,9 +30,9 @@ public class SdcpHandshakeFactory : IDataMessageHandshakeFactory
     /// </summary>
     /// <param name="message">Current message received</param>
     /// <returns>NAK handshake message to send</returns>
-    public IInboundDataMessage GetNakResponse(IInboundDataMessage message)
+    public IOutboundHandShakeDataMessage GetNakResponse(IInboundDataMessage message)
     {
-        var nak = new InboundHandshakeMessage(MessageTypeEnum.Sent)
+        var nak = new OutboundHandshakeMessage()
         {
             HandshakeMessageType = HandShakeMessageType.Nack,
         };
@@ -45,9 +44,9 @@ public class SdcpHandshakeFactory : IDataMessageHandshakeFactory
     /// </summary>
     /// <param name="message">Current message received</param>
     /// <returns>CAN handshake message to send</returns>
-    public IInboundDataMessage GetCanResponse(IInboundDataMessage message)
+    public IOutboundHandShakeDataMessage GetCanResponse(IInboundDataMessage message)
     {
-        var can = new InboundHandshakeMessage(MessageTypeEnum.Sent)
+        var can = new OutboundHandshakeMessage()
         {
             HandshakeMessageType = HandShakeMessageType.Can,
         };

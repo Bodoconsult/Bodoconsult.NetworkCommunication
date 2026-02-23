@@ -4,39 +4,20 @@
 namespace Bodoconsult.NetworkCommunication.Interfaces;
 
 /// <summary>
-/// Interface for byte based inbound messaging i.e. via TCP/IP or UDP
+/// Interface for byte based inbound messaging containing data i.e. via TCP/IP or UDP
 /// </summary>
-public interface IInboundDataMessage
+public interface IInboundDataMessage : IInboundMessage
 {
-    /// <summary>
-    /// A unique ID to identify the message
-    /// </summary>
-    long MessageId { get; }
-
     /// <summary>
     /// Should an acknowledgement be sent if the message is received
     /// </summary>
     bool AnswerWithAcknowledgement { get; }
 
     /// <summary>
-    /// Current raw message data as byte array
+    /// First plausibilty check if a received message can be the expected answer to the request. 
     /// </summary>
-    Memory<byte> RawMessageData { get; set; }
-
-    /// <summary>
-    /// Current raw message data as clear text
-    /// </summary>
-    string RawMessageDataClearText { get; }
-
-    /// <summary>
-    /// Create an info string for logging
-    /// </summary>
-    /// <returns>Info string</returns>
-    string ToInfoString();
-
-    /// <summary>
-    /// Create a short info string for logging
-    /// </summary>
-    /// <returns>Info string</returns>
-    string ToShortInfoString();
+    /// <param name="sentMessage">The message sent from the request to the device</param>
+    /// <param name="errors">List with error messages to fill</param>
+    /// <returns>True if the message was as expected as answer of the sent message else false</returns>
+    bool CheckReceivedMessage(IOutboundDataMessage sentMessage, IList<string> errors);
 }

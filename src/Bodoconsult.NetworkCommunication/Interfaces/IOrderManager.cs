@@ -1,4 +1,4 @@
-﻿// Copyright (c) Mycronic. All rights reserved.
+﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
 namespace Bodoconsult.NetworkCommunication.Interfaces;
 
@@ -51,7 +51,7 @@ public interface IOrderManager
 
 
     /// <summary>
-    /// Adds a received tower message to the receiver queue for further processing
+    /// Adds a received device message to the receiver queue for further processing
     /// </summary>
     /// <param name="order">Order to add to the message queue</param>
     void AddOrder(IOrder order);
@@ -64,10 +64,10 @@ public interface IOrderManager
 
 
     /// <summary>
-    /// Event handling method for binding to <see cref="MessagingConfig"/>.NotifyTowerMessageReceived event
+    /// Event handling method for binding to <see cref="MessagingConfig"/>.NotifydeviceMessageReceived event
     /// </summary>
     /// <param name="dataMessage">Received message</param>
-    void OnTowerMessageReceived(IInboundDataMessage dataMessage);
+    void OndeviceMessageReceived(IInboundDataMessage dataMessage);
 
     /// <summary>
     /// Starts the watchdog for the order processing

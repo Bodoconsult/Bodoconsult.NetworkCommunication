@@ -20,7 +20,7 @@ public class SdcpHandshakeDataMessageValidator : IHandshakeDataMessageValidator
     /// <param name="handshakeMessage">Received handshake message</param>
     /// <returns>True if the message was the handshake for the sent message</returns>
     public DataMessageValidatorResult IsHandshakeForSentMessage(IOutboundDataMessage sentMessage,
-        IInboundDataMessage handshakeMessage)
+        IInboundHandShakeMessage handshakeMessage)
     {
 
         if (sentMessage is not SdcpInboundDataMessage)
@@ -42,7 +42,7 @@ public class SdcpHandshakeDataMessageValidator : IHandshakeDataMessageValidator
     /// </summary>
     /// <param name="context">Current send message process</param>
     /// <param name="handshake">Received handshake</param>
-    public void HandleHandshake(ISendPacketProcess context, IInboundDataMessage handshake)
+    public void HandleHandshake(ISendPacketProcess context, IInboundHandShakeMessage handshake)
     {
         if (handshake == null)
         {
@@ -54,7 +54,7 @@ public class SdcpHandshakeDataMessageValidator : IHandshakeDataMessageValidator
         {
             //todo result wrong message?
             context.ProcessExecutionResult = OrderExecutionResultState.NoResponseFromDevice;
-            context.DataMessagingConfig.MonitorLogger?.LogWarning($"Message {context.Message.MessageId}: No handshake received. Current Sent Attempt Count > MaxRepeatCount. No ResponseFromTower! ");
+            context.DataMessagingConfig.MonitorLogger?.LogWarning($"Message {context.Message.MessageId}: No handshake received. Current Sent Attempt Count > MaxRepeatCount. No ResponseFromdevice! ");
             return;
         }
 

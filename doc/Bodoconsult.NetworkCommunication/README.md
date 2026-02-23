@@ -910,24 +910,29 @@ public class SdcpDataMessageValidator : IDataMessageValidator
 
 The IDataMessageProcessor implementations forwards the received messages to the business logic handling them. Normally data messages are forwarded to business logic via IDataMessagingConfig.RaiseDataMessageReceivedDelegate delegate invoking. Handshake messages are forwarded normally to a IWaitStateManager instance handling the already sent and for a handshake waiting data messages.
 
+There is a default implementation of IDataMessageProcessor called DefaultDataMessageProcessor. See the code:
+
 ``` csharp
 /// <summary>
-/// Current implementation of <see cref="IDataMessageProcessor"/> for SDCP protocol.
+/// Current implementation of <see cref="IDataMessageProcessor"/>. Delivers messages in the order of reaching it via <see cref="ProcessMessage"/>
 /// Should invoke IDataMessagingConfig.RaiseDataMessageReceivedDelegate for data messages and IDataMessagingConfig.DataMessageProcessingPackage.WaitStateManager?.OnHandshakeReceived for handshakes
 /// </summary>
-public class SdcpDataMessageProcessor : IDataMessageProcessor
+public class DefaultDataMessageProcessor : IDataMessageProcessor
 {
 
     private readonly AutoResetEvent _stopped = new(false);
 
     private const int TimeOut = 2000;
 
+    /// <summary>
+    /// Current <see cref="IDataMessagingConfig"/> instance
+    /// </summary>
     public readonly IDataMessagingConfig Config;
 
     /// <summary>
     /// Default ctor
     /// </summary>
-    public SdcpDataMessageProcessor(IDataMessagingConfig config)
+    public DefaultDataMessageProcessor(IDataMessagingConfig config)
     {
         Config = config;
     }
@@ -936,17 +941,17 @@ public class SdcpDataMessageProcessor : IDataMessageProcessor
     /// Process the message
     /// </summary>
     /// <param name="message">Message to process</param>
-    public void ProcessMessage(IDataMessage message)
+    public void ProcessMessage(IInboundMessage message)
     {
-        // handshake received
-        if (message is HandshakeMessage handShake)
+        // Handshake received
+        if (message is IInboundHandShakeDataMessage handShake)
         {
             ProcessHandshakes(handShake);
             return;
         }
 
-        // Tower data message received
-        if (message is SdcpDataMessage dataMessage)
+        // Data message received
+        if (message is IInboundDataMessage dataMessage)
         {
             AsyncHelper.FireAndForget2(() => Config.RaiseCommLayerDataMessageReceivedDelegate?.Invoke(dataMessage)).ContinueWith(Callback);
         }
@@ -955,7 +960,7 @@ public class SdcpDataMessageProcessor : IDataMessageProcessor
     }
 
     // ReSharper disable once SuggestBaseTypeForParameter
-    private void ProcessHandshakes(HandshakeMessage handShake)
+    private void ProcessHandshakes(IInboundHandShakeDataMessage handShake)
     {
         // fire and forget but let CallBack() be run at the end
         AsyncHelper.FireAndForget2(() =>

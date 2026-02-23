@@ -1,17 +1,17 @@
-﻿// Copyright (c) Mycronic. All rights reserved.
+﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
 using Bodoconsult.NetworkCommunication.Delegates;
 
 namespace Bodoconsult.NetworkCommunication.Interfaces;
 
 /// <summary>
-/// The receiver module of the tower order management
+/// The receiver module of the device order management
 /// </summary>
 public interface IOrderReceiver: IDisposable
 {
 
     /// <summary>
-    /// Delegate for handling a received tower message
+    /// Delegate for handling a received device message
     /// </summary>
     OrderReceiverCheckMessageDelegate OrderReceiverCheckMessageDelegate { get; set; }
 

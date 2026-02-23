@@ -38,7 +38,7 @@ public class SdcpDataMessageProcessingPackage : IDataMessageProcessingPackage
         LoadCodecs();
 
         // 3. Internal forwarding
-        DataMessageProcessor = new SdcpDataMessageProcessor(dataMessagingConfig);
+        DataMessageProcessor = new DefaultDataMessageProcessor(dataMessagingConfig);
 
         // 4. Wait state handler
         WaitStateManager = new DefaultWaitStateManager(dataMessagingConfig);
@@ -63,8 +63,8 @@ public class SdcpDataMessageProcessingPackage : IDataMessageProcessingPackage
         // Load your datablock codes here
         processor.LoadDataBlockCodecs('x', new SdcpDummyDataBlockCodec());
 
-        var towerMessageCodec = new SdcpDataMessageCodec(processor);
-        DataMessageCodingProcessor.MessageCodecs.Add(towerMessageCodec);
+        var deviceMessageCodec = new SdcpDataMessageCodec(processor);
+        DataMessageCodingProcessor.MessageCodecs.Add(deviceMessageCodec);
 
         var rawCodec = new RawDataMessageCodec();
         DataMessageCodingProcessor.MessageCodecs.Add(rawCodec);

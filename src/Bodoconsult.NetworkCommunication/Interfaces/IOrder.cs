@@ -1,4 +1,4 @@
-﻿// Copyright (c) Mycronic. All rights reserved.
+﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
 using Bodoconsult.App.Benchmarking;
 using Bodoconsult.NetworkCommunication.Delegates;
@@ -13,12 +13,10 @@ public delegate bool RequestAnswerStepIsStartedDelegate();
 
 /// <summary>
 /// This interface is for representing process related
-/// to the tower 
+/// to the device 
 /// </summary>
 public interface IOrder : IDisposable
 {
-
-
     #region Order meta data
 
     /// <summary>
@@ -27,7 +25,7 @@ public interface IOrder : IDisposable
     long Id { get; }
 
     /// <summary>
-    /// The next order in a chain of orders like trial run
+    /// The next order in a chain of orders
     /// </summary>
     IOrder NextOrder { get; set; }
 
@@ -74,16 +72,9 @@ public interface IOrder : IDisposable
     IList<string> AllowedParallelOrderTypes { get; }
 
     /// <summary>
-    /// Send a CAN command to the tower if order fails or is cancelled
+    /// Send a CAN command to the device if order fails or is cancelled
     /// </summary>
-    bool SendCancelToTowerIfCancelledOrUnsuccessful { get; set; }
-
-    // ToDo: RL: remove it IsTowerHardwareInitRequiredOnHardwareError as it is not needed anymor
-
-    ///// <summary>
-    ///// Does the order require a tower hardware init in case on a hardware error
-    ///// </summary>
-    //bool IsTowerHardwareInitRequiredOnHardwareError { get; }
+    bool SendCancelTodeviceIfCancelledOrUnsuccessful { get; set; }
 
     /// <summary>
     /// Action running after successful processing of the order
@@ -131,14 +122,9 @@ public interface IOrder : IDisposable
     bool IsCancelledOnComDevClose  { get; set; }
 
     /// <summary>
-    /// Should the order be cancelled on a tower properties update
+    /// Should the order be cancelled on a device properties update
     /// </summary>
-    bool IsCancelledOnTowerPropertyUpdate  { get; set; }
-
-    ///// <summary>
-    ///// A list of tower error codes which should should not influence the order running
-    ///// </summary>
-    //List<byte> TowerErrorCodesToIgnore { get; }
+    bool IsCancelledOndevicePropertyUpdate  { get; set; }
 
     #endregion
 
@@ -206,7 +192,6 @@ public interface IOrder : IDisposable
     public int OrderError { get; set; }
 
     #endregion
-
 
     #region Tracing
 

@@ -35,7 +35,7 @@ public class TestDeviceState : IDeviceState
     public override string ToString() => $"{Id} {Name}";
 
     /// <summary>
-    /// Tower firmware is not reachable via network. Hardware code: 0x07
+    /// device firmware is not reachable via network. Hardware code: 0x07
     /// </summary>
     public static TestDeviceState DeviceStateOffline =
         new TestDeviceState(0, "Device is not reachable via network");

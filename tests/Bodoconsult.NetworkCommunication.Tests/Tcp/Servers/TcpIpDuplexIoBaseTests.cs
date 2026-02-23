@@ -299,7 +299,7 @@ public abstract class TcpIpDuplexIoBaseTests : BaseTcpTests
 
     [Test]
     [NonParallelizable]
-    public void ReceiveMessageFromTower_MessageS()
+    public void ReceiveMessageFromdevice_MessageS()
     {
         // Arrange
         var message = new SdcpOutboundDataMessage()

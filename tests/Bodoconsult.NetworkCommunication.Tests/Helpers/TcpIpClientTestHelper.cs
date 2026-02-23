@@ -38,8 +38,8 @@ public static class TcpIpClientTestHelper
     {
         //// Soft reset server
         //testSetup.Server.ResetClientSocket();
-        ////testSetup.SmdTower.AppLogger = testSetup.Logger;
-        ////testSetup.SmdTower.MonitorLogger = testSetup.Logger;
+        ////testSetup.Smddevice.AppLogger = testSetup.Logger;
+        ////testSetup.Smddevice.MonitorLogger = testSetup.Logger;
 
         //testSetup.Server.WaitForConnections().GetAwaiter().GetResult();
 
@@ -77,7 +77,7 @@ public static class TcpIpClientTestHelper
 
     }
 
-    //public static void InitFakeSocket(ITcpTowerTests testSetup)
+    //public static void InitFakeSocket(ITcpdeviceTests testSetup)
     //{
     //    testSetup.Socket = new FakeTcpIpSocketProxy();
     //}

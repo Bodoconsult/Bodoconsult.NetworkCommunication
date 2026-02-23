@@ -8,10 +8,7 @@
 
   <ItemGroup>
     <PackageReference Include="Bodoconsult.App" Version="1.0.2" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="OrderManagement\" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
   </ItemGroup>
 
 </Project>

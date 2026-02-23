@@ -62,7 +62,7 @@ public delegate void RaiseDataMessageSentDelegate(ReadOnlyMemory<byte> message);
 /// Delegate fired if a handshake has been received by the wait state manager
 /// </summary>
 /// <param name="message">Handshake message</param>
-public delegate void RaiseDataMessageHandshakeReceivedDelegate(IInboundDataMessage message);
+public delegate void RaiseDataMessageHandshakeReceivedDelegate(IInboundHandShakeMessage message);
 
 /// <summary>
 /// Update the data message processing package
@@ -100,9 +100,9 @@ public delegate void RaisedeviceMessageCorruptedDelegate(byte messageBlockAndRc,
 #region Order management related delegates
 
 /// <summary>
-/// Delegate for handling a received tower message
+/// Delegate for handling a received device message
 /// </summary>
-/// <param name="message">Message received from tower as expected</param>
+/// <param name="message">Message received from device as expected</param>
 /// <returns>True if the message was handled successfully else false</returns>
 public delegate bool OrderReceiverCheckMessageDelegate(IInboundDataMessage message);
 
@@ -130,20 +130,20 @@ public delegate void OrderProcessingFinishedDelegate(long orderId);
 /// <summary>
 /// Delegate for handling request answer messages
 /// </summary>
-/// <param name="message">Message received from tower as expected</param>
+/// <param name="message">Message received from device as expected</param>
 /// <param name="transportObject">Transport object to deliver a state to the method</param>
 /// <param name="parameterSet">Current parameter set</param>
 /// <returns>Result of the message handling</returns>
-public delegate MessageHandlingResult HandleRequestAnswerDelegate(ICommandDataMessage message, object transportObject, IParameterSet parameterSet);
+public delegate MessageHandlingResult HandleRequestAnswerDelegate(IInboundDataMessage message, object transportObject, IParameterSet parameterSet);
 
 /// <summary>
 /// Delegate for handling request answer messages
 /// </summary>
-/// <param name="message">Message received from tower as expected</param>
+/// <param name="message">Message received from device as expected</param>
 /// <param name="messageHandlingResult">Message handling result built so far</param>
 /// <param name="parameterSet">Current parameter set</param>
 /// <returns>Result of the message handling</returns>
-public delegate MessageHandlingResult HandleUnexpectedRequestAnswerDelegate(ICommandDataMessage message, MessageHandlingResult messageHandlingResult, IParameterSet parameterSet);
+public delegate MessageHandlingResult HandleUnexpectedRequestAnswerDelegate(IInboundDataMessage message, MessageHandlingResult messageHandlingResult, IParameterSet parameterSet);
 
 /// <summary>
 /// Delegate for doing something if a RequestAnswerStep failed

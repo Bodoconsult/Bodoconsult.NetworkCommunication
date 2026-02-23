@@ -31,6 +31,17 @@ public class EdcpInboundDataMessage : IInboundDataMessage
     public bool AnswerWithAcknowledgement { get; set; }
 
     /// <summary>
+    /// First plausibilty check if a received message can be the expected answer to the request. 
+    /// </summary>
+    /// <param name="sentMessage">The message sent from the request to the device</param>
+    /// <param name="errors">List with error messages to fill</param>
+    /// <returns>True if the message was as expected as answer of the sent message else false</returns>
+    public bool CheckReceivedMessage(IOutboundDataMessage sentMessage, IList<string> errors)
+    {
+        return sentMessage is EdcpOutboundDataMessage;
+    }
+
+    /// <summary>
     /// Current block code of this message
     /// </summary>
     public byte BlockCode { get; set; }
@@ -68,6 +79,10 @@ public class EdcpInboundDataMessage : IInboundDataMessage
         return $"EdcpInboundDataMessage ID {MessageId} Block {BlockCode}: {RawMessageDataClearText}";
     }
 
+    /// <summary>
+    /// Create a short info string for logging
+    /// </summary>
+    /// <returns>Info string</returns>
     public string ToShortInfoString()
     {
         return $"EdcpInboundDataMessage ID {MessageId} Block {BlockCode}";

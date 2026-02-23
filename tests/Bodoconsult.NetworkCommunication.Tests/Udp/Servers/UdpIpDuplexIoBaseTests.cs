@@ -287,7 +287,7 @@ public abstract class UdpIpDuplexIoBaseTests : BaseUdpTests
     }
 
     [Test]
-    public void ReceiveMessageFromTower_MessageS()
+    public void ReceiveMessageFromdevice_MessageS()
     {
 
         // Arrange

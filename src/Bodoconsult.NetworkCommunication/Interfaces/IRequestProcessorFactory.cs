@@ -1,16 +1,16 @@
-﻿// Copyright (c) Mycronic. All rights reserved.
+﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
 namespace Bodoconsult.NetworkCommunication.Interfaces;
 
 /// <summary>
-/// Interface for tower order request processors
+/// Interface for device order request processors
 /// </summary>
 public interface IRequestProcessorFactory
 {
     /// <summary>
-    /// Create a tower order
+    /// Create a device order
     /// </summary>
-    /// <param name="order">Current tower order to process</param>
+    /// <param name="order">Current device order to process</param>
     /// <returns>A request processor for the order</returns>
     IRequestProcessor CreateRequestProcessor(IOrder order);
 

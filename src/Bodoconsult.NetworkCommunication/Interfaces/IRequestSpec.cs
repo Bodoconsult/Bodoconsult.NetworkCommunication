@@ -1,9 +1,9 @@
-﻿// Copyright (c) Mycronic. All rights reserved.
+﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
 namespace Bodoconsult.NetworkCommunication.Interfaces;
 
 /// <summary>
-/// Interface for tower request specifications
+/// Interface for device request specifications
 /// </summary>
 public interface IRequestSpec: IDisposable
 {
@@ -23,7 +23,7 @@ public interface IRequestSpec: IDisposable
     IParameterSet ParameterSet { get; }
 
     /// <summary>
-    /// Command sent to the tower
+    /// Command sent to the device
     /// </summary>
     char Command { get; }
 
@@ -38,7 +38,7 @@ public interface IRequestSpec: IDisposable
     int NumberOfRepeatsInCaseOfNoSuccess { get; }
 
     /// <summary>
-    /// Is the request internal and does not send a message to the tower
+    /// Is the request internal and does not send a message to the device
     /// </summary>
     bool IsInternalRequest { get; }
         
@@ -64,10 +64,10 @@ public interface IRequestSpec: IDisposable
 
 
     /// <summary>
-    /// The messages to send. This message are processed all in the same way
+    /// The messages to send. These messages are processed all in the same way
     /// defined by the request
     /// </summary>
-    IList<ICommandDataMessage> SentMessage { get; }
+    IList<IOutboundDataMessage> SentMessage { get; }
 
     /// <summary>
     /// The expected handshake if the message was sent

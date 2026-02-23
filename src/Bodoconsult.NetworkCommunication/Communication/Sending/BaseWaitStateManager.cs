@@ -50,7 +50,7 @@ public abstract class BaseWaitStateManager : IWaitStateManager
     /// Method used to bind to a delegate for receiving handshakes
     /// </summary>
     /// <param name="msg">Data message</param>
-    public virtual void OnHandshakeReceived(IInboundHandShakeDataMessage msg)
+    public virtual void OnHandshakeReceived(IInboundHandShakeMessage msg)
     {
 
         Debug.Print("Handshake reached wait state manager 1");

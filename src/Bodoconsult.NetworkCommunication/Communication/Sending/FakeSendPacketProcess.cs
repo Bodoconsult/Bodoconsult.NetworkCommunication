@@ -39,7 +39,7 @@ public class FakeSendPacketProcess : ISendPacketProcess
     }
 
     /// <summary>
-    /// Current SMD tower
+    /// Current SMD device
     /// </summary>
     public IDataMessagingConfig DataMessagingConfig { get; set; }
 
@@ -81,12 +81,12 @@ public class FakeSendPacketProcess : ISendPacketProcess
     public bool HasFinishedWithoutTimeout { get; set; }
 
     /// <summary>
-    /// Current tower data message to send
+    /// Current device data message to send
     /// </summary>
     public IOutboundDataMessage Message { get; set; }
 
     /// <summary>
-    /// Is the tower communication online?
+    /// Is the device communication online?
     /// </summary>
     public bool IsComOnline { get; set; }
 

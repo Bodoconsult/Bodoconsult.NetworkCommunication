@@ -34,21 +34,21 @@ public class OrderSource
     /// <summary>
     /// Order created by the application and sent to device
     /// </summary>
-    public static OrderSource AppOrderSource = new OrderSource(0, "Application order");
+    public static OrderSource AppOrderSource = new(0, "Application order");
 
     /// <summary>
     /// Ann app internal order not send to the device and sent to device
     /// </summary>
-    public static OrderSource AppInternalOrderSource = new OrderSource(1, "Application internal order");
+    public static OrderSource AppInternalOrderSource = new(1, "Application internal order");
 
     /// <summary>
     /// An order ccreated by a webservice interface and sent to device
     /// </summary>
-    public static OrderSource WebserviceOrderSource = new OrderSource(2, "Webservice order");
+    public static OrderSource WebserviceOrderSource = new(2, "Webservice order");
 
     /// <summary>
     /// An order created by a remote order call via plain text, JSON or XML based file and sent to device
     /// </summary>
-    public static OrderSource RemoteOrderSource = new OrderSource(0, "Order created by remote order");
+    public static OrderSource RemoteOrderSource = new(0, "Order created by remote order");
 
 }

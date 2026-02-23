@@ -1,4 +1,4 @@
-﻿// Copyright (c) Mycronic. All rights reserved.
+﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
 namespace Bodoconsult.NetworkCommunication.Interfaces;
 
@@ -14,9 +14,9 @@ public delegate void SetOrderProcessingStateDelegate(bool isActivated);
 public interface IOrderManagementCommunicationAdapter
 {
     /// <summary>
-    /// Is the tower successfully pinged?
+    /// Is the device successfully pinged?
     /// </summary>
-    /// <returns>True if the tower was pinged successfully else false</returns>
+    /// <returns>True if the device was pinged successfully else false</returns>
     Task<bool> IsPingableAsync();
 
     /// <summary>
@@ -36,18 +36,18 @@ public interface IOrderManagementCommunicationAdapter
     SetOrderProcessingStateDelegate SetOrderProcessingStateDelegate { get; set; }
 
     /// <summary>
-    /// Initialize the communication with the tower
+    /// Initialize the communication with the device
     /// </summary>
     /// <returns>True if the initialiazation was successfull else false</returns>
     bool ComDevInit();
 
     /// <summary>
-    /// Close the communication channel with the tower
+    /// Close the communication channel with the device
     /// </summary>
     void ComDevClose();
 
     /// <summary>
-    /// Reset the com dev to a defined state as if there were never a communication with the tower. No logging for ComDevClose activated
+    /// Reset the com dev to a defined state as if there were never a communication with the device. No logging for ComDevClose activated
     /// </summary>
     void ComDevReset();
 
@@ -62,11 +62,11 @@ public interface IOrderManagementCommunicationAdapter
     IDataMessagingConfig DataMessagingConfig { get; }
 
     /// <summary>
-    /// Send a command to the tower
+    /// Send a command to the device
     /// </summary>
     /// <param name="command">Command to send</param>
-    /// <returns>Reply of the tower</returns>
-    MessageSendingResult SendCommandDataMessage(ICommandDataMessage command);
+    /// <returns>Reply of the device</returns>
+    MessageSendingResult SendCommandDataMessage(IOutboundDataMessage command);
 
     /// <summary>
     /// Cancel the currently running operation on the device

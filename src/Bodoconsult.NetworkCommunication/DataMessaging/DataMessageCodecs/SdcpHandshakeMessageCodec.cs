@@ -1,7 +1,6 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
-using Bodoconsult.NetworkCommunication.EnumAndStates;
 using Bodoconsult.NetworkCommunication.Interfaces;
 
 namespace Bodoconsult.NetworkCommunication.DataMessaging.DataMessageCodecs;
@@ -39,7 +38,7 @@ public class SdcpHandshakeMessageCodec : BaseDataMessageCodec
             return result;
         }
 
-        result.DataMessage = new InboundHandshakeMessage(MessageTypeEnum.Received)
+        result.DataMessage = new InboundHandshakeMessage()
         {
             HandshakeMessageType = data.Span[0],
             RawMessageData = data.ToArray()

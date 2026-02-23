@@ -12,6 +12,6 @@ public interface IDataMessageValidator
     /// </summary>
     /// <param name="dataMessage">Received data message</param>
     /// <returns>True if the message was the handshake for the sent message</returns>
-    DataMessageValidatorResult IsMessageValid(IInboundDataMessage dataMessage);
+    DataMessageValidatorResult IsMessageValid(IInboundMessage dataMessage);
 
 }

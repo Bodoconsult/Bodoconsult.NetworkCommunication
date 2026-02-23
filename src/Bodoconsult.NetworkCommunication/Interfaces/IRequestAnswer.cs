@@ -10,11 +10,6 @@ namespace Bodoconsult.NetworkCommunication.Interfaces;
 public interface IRequestAnswer : IDisposable
 {
     /// <summary>
-    /// Command requested
-    /// </summary>
-    char Command { get; }
-
-    /// <summary>
     /// Has the answer a datablock?
     /// </summary>
     bool HasDatablock { get; }
@@ -22,8 +17,7 @@ public interface IRequestAnswer : IDisposable
     /// <summary>
     /// Type of the data block if <see cref="HasDatablock"/> is true
     /// </summary>
-    char DataBlockType { get; }
-
+    Type DataBlockType { get; }
 
     /// <summary>
     /// The answer was successfully received
@@ -31,9 +25,9 @@ public interface IRequestAnswer : IDisposable
     bool WasReceived { get; }
 
     /// <summary>
-    /// The succesfully received answer from the tower
+    /// The succesfully received answer from the device
     /// </summary>
-    ICommandDataMessage ReceivedMessage { get; }
+    IInboundDataMessage ReceivedMessage { get; }
 
     /// <summary>
     /// Delegate for handling request answer messages
@@ -46,23 +40,16 @@ public interface IRequestAnswer : IDisposable
     /// </summary>
     HandleUnexpectedRequestAnswerDelegate HandleUnexpectedRequestAnswerDelegate { get; }
 
-
-    ///// <summary>
-    ///// The result of the action HandleRequestAnswer
-    ///// </summary>
-    //MessageHandlingResult ResultOfHandleRequestAnswerDelegateAction { get; set; }
-
-
     /// <summary>
     /// Check if a received message is the expected answer to the request.
-    /// If the message is the requested answer from the tower the properties <see cref="WasReceived"/>
+    /// If the message is the requested answer from the device the properties <see cref="WasReceived"/>
     /// and <see cref="ReceivedMessage"/> are set to true and the received message.
     /// </summary>
-    /// <param name="sentMessage">The message sent from the request to the tower</param>
-    /// <param name="receivedMessage">A received message from the tower</param>
+    /// <param name="sentMessage">The message sent from the request to the device</param>
+    /// <param name="receivedMessage">A received message from the device</param>
     /// <param name="errors">List with error messages to fill</param>
     /// <returns>True if the message was as expected as answer of the sent message else false</returns>
-    bool CheckReceivedMessage(ICommandDataMessage sentMessage, ICommandDataMessage receivedMessage, IList<string> errors);
+    bool CheckReceivedMessage(IOutboundDataMessage sentMessage, IInboundDataMessage receivedMessage, IList<string> errors);
 
     /// <summary>
     /// Set <see cref="WasReceived"/> to true

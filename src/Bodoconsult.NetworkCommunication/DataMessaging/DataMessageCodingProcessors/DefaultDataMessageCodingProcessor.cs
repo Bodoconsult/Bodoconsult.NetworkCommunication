@@ -5,6 +5,9 @@ using Bodoconsult.NetworkCommunication.Interfaces;
 
 namespace Bodoconsult.NetworkCommunication.DataMessaging.DataMessageCodingProcessors;
 
+/// <summary>
+/// Default implementation of <see cref=" IDataMessageCodingProcessor"/>
+/// </summary>
 public class DefaultDataMessageCodingProcessor : IDataMessageCodingProcessor
 {
     /// <summary>
@@ -47,7 +50,7 @@ public class DefaultDataMessageCodingProcessor : IDataMessageCodingProcessor
     }
 
     /// <summary>
-    /// Encode handshake messages to send to tower
+    /// Encode handshake messages to send to device
     /// </summary>
     /// <param name="dataMessage">Data message to encode</param>
     /// <returns>A result set with the message as byte array </returns>

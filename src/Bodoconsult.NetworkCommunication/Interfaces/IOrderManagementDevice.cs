@@ -1,4 +1,4 @@
-﻿// Copyright (c) Mycronic. All rights reserved.
+﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
 using System.Runtime.CompilerServices;
 using System.Text.Json.Serialization;
@@ -21,7 +21,7 @@ public interface IOrderManagementDevice
     IOrderManagementCommunicationAdapter CommunicationAdapter { get; }
 
     /// <summary>
-    /// Current instance of the tower order processor
+    /// Current instance of the device order processor
     /// </summary>
     [JsonIgnore]
     IOrderProcessor OrderProcessor { get; }
@@ -151,14 +151,14 @@ public interface IOrderManagementDevice
     /// </summary>
     /// <param name="receivedMessage">Received message</param>
     /// <returns>True if the message was an expected answer of the current request or should not be handled at all else false</returns>
-    bool DoBasicCheckForReceivedMessage(ICommandDataMessage receivedMessage);
+    bool DoBasicCheckForReceivedMessage(IInboundDataMessage receivedMessage);
 
     /// <summary>
     /// Check if the message is an error message
     /// </summary>
     /// <param name="receivedMessage">Received message</param>
     /// <returns>True if the message was an handled as error message else false</returns>
-    bool DoCheckForErrorMessage(ICommandDataMessage receivedMessage);
+    bool DoCheckForErrorMessage(IInboundDataMessage receivedMessage);
 
     /// <summary>
     /// Cancel the currently running operation
@@ -202,7 +202,7 @@ public interface IOrderManagementDevice
     /// <summary>
     /// Send an app notfication
     /// </summary>
-    /// <param name="state">Business or tower state to send the notification for</param>
+    /// <param name="state">Business or device state to send the notification for</param>
     /// <param name="memberName">Do not set this value</param>
     /// <param name="lineNumber">Do not set this value</param>
     void DoNotify(IDeviceState state,
