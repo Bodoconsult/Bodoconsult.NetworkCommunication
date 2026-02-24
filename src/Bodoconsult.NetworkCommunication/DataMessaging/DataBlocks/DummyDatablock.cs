@@ -7,7 +7,7 @@ namespace Bodoconsult.NetworkCommunication.DataMessaging.DataBlocks;
 /// <summary>
 /// Dummy data block
 /// </summary>
-public class SdcpDummyDatablock: IDataBlock
+public class DummyDatablock: IDataBlock
 {
     /// <summary>
     /// Data contains the bytes of the Data except the byte representing datablock type

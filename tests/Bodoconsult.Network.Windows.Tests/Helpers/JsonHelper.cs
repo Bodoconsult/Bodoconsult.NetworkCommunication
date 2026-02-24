@@ -97,7 +97,7 @@ public class JsonHelper
         {
             Formatting = Formatting.Indented,
             TypeNameHandling = TypeNameHandling.Objects,
-            TypeNameAssemblyFormatHandling = TypeNameAssemblyFormatHandling.Simple,
+            TypeNameAssemblyFormatHandling = TypeNameAssemblyFormatHandling.Simple
         };
 
         jsonSerializer.Converters.Add(new Newtonsoft.Json.Converters.StringEnumConverter());

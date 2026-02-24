@@ -55,7 +55,7 @@ namespace Bodoconsult.NetworkCommunication.Helpers
         private static readonly JsonSerializerSettings ReadSettings = new()
         {
             TypeNameHandling = TypeNameHandling.Auto,
-            ReferenceLoopHandling = ReferenceLoopHandling.Ignore,
+            ReferenceLoopHandling = ReferenceLoopHandling.Ignore
             // MaxDepth = 10  // Do not set MaxDepth!!!!
         };
 
@@ -233,7 +233,7 @@ namespace Bodoconsult.NetworkCommunication.Helpers
                     var serializer = new JsonSerializer
                     {
                         TypeNameHandling = TypeNameHandling.Auto,
-                        ReferenceLoopHandling = ReferenceLoopHandling.Ignore,
+                        ReferenceLoopHandling = ReferenceLoopHandling.Ignore
                         // MaxDepth = 10
                     };
 

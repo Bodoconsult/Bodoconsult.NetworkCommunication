@@ -1,5 +1,4 @@
-﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
-
+﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen. All rights reserved.
 
 using Bodoconsult.NetworkCommunication.Communication.Sending;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataBlockCodecs;
@@ -15,14 +14,14 @@ using Bodoconsult.NetworkCommunication.Interfaces;
 namespace Bodoconsult.NetworkCommunication.DataMessaging.DataMessageProcessingPackages;
 
 /// <summary>
-/// Current implementation of <see cref="IDataMessageProcessingPackage"/> for SDCP protocol
+/// Current implementation of <see cref="IDataMessageProcessingPackage"/> for BTCP protocol
 /// </summary>
-public class SdcpDataMessageProcessingPackage : IDataMessageProcessingPackage
+public class BtcpDataMessageProcessingPackage : IDataMessageProcessingPackage
 {
     /// <summary>
     /// Default ctor
     /// </summary>
-    public SdcpDataMessageProcessingPackage(IDataMessagingConfig dataMessagingConfig)
+    public BtcpDataMessageProcessingPackage(IDataMessagingConfig dataMessagingConfig)
     {
         DataMessagingConfig = dataMessagingConfig;
 
@@ -30,7 +29,7 @@ public class SdcpDataMessageProcessingPackage : IDataMessageProcessingPackage
         // Now setup the dependent objects
 
         // 1. Message splitter
-        DataMessageSplitter = new SdcpDataMessageSplitter();
+        DataMessageSplitter = new BtcpDataMessageSplitter();
 
         // 2. Codecs
         DataMessageCodingProcessor = new DefaultDataMessageCodingProcessor();
@@ -43,25 +42,25 @@ public class SdcpDataMessageProcessingPackage : IDataMessageProcessingPackage
         WaitStateManager = new DefaultWaitStateManager(dataMessagingConfig);
 
         // 5. Handshake validator
-        HandshakeDataMessageValidator = new SdcpHandshakeDataMessageValidator();
+        HandshakeDataMessageValidator = new BtcpHandshakeDataMessageValidator();
 
         // 6. Data message validator
-        DataMessageValidator = new SdcpDataMessageValidator();
+        DataMessageValidator = new BtcpDataMessageValidator();
 
         // 7. Handshake creation factory
-        DataMessageHandshakeFactory = new SdcpHandshakeFactory();
+        DataMessageHandshakeFactory = new BtcpHandshakeFactory();
     }
 
     private void LoadCodecs()
     {
-        var handShakeCodec = new SdcpHandshakeMessageCodec();
+        var handShakeCodec = new BtcpHandshakeMessageCodec();
         DataMessageCodingProcessor.MessageCodecs.Add(handShakeCodec);
 
         DataBlockCodingProcessor = new DefaultDataBlockCodingProcessor();
 
         LoadCustomDataBlockCodecs();
 
-        var deviceMessageCodec = new SdcpDataMessageCodec(DataBlockCodingProcessor);
+        var deviceMessageCodec = new BtcpDataMessageCodec(DataBlockCodingProcessor);
         DataMessageCodingProcessor.MessageCodecs.Add(deviceMessageCodec);
 
         var rawCodec = new RawDataMessageCodec();

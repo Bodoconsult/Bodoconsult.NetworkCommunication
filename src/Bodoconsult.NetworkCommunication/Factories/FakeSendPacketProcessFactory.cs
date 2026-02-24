@@ -54,7 +54,7 @@ public class FakeSendPacketProcessFactory : ISendPacketProcessFactory
         var process = new FakeSendPacketProcess
         {
             DataMessagingConfig = config,
-            Message = message,
+            Message = message
         };
         return process;
     }
@@ -64,7 +64,7 @@ public class FakeSendPacketProcessFactory : ISendPacketProcessFactory
         var process = new FakeSendPacketProcessEncodingError
         {
             DataMessagingConfig = config,
-            Message = message,
+            Message = message
         };
         return process;
     }
@@ -74,7 +74,7 @@ public class FakeSendPacketProcessFactory : ISendPacketProcessFactory
         var process = new FakeSendPacketProcessSocketError
         {
             DataMessagingConfig = config,
-            Message = message,
+            Message = message
         };
         return process;
     }

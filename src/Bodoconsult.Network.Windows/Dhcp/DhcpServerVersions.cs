@@ -19,5 +19,5 @@ public enum DhcpServerVersions : long
     /// <summary>
     /// Represents Windows Server 2016 and greater
     /// </summary>
-    WindowsServer = 0xA0000,
+    WindowsServer = 0xA0000
 }

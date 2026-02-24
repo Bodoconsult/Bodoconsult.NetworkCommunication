@@ -32,5 +32,5 @@ internal enum DhcpFailoverRelationshipSetFlags
     /// <summary>
     /// The prevState member in pRelationship parameter structure is populated.
     /// </summary>
-    Prevstate = 0x00000020,
+    Prevstate = 0x00000020
 }

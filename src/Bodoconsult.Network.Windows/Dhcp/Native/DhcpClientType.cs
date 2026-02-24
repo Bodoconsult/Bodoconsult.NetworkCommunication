@@ -32,5 +32,5 @@ internal enum DhcpClientType : byte
     /// <summary>
     /// Backward compatibility for manual addressing.
     /// </summary>
-    ClientTypeNone = 0x64,
+    ClientTypeNone = 0x64
 }

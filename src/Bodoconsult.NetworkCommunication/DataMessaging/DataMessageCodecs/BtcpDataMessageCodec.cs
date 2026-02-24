@@ -1,5 +1,6 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
+using System.Text;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
 using Bodoconsult.NetworkCommunication.Helpers;
 using Bodoconsult.NetworkCommunication.Interfaces;
@@ -7,10 +8,13 @@ using Bodoconsult.NetworkCommunication.Interfaces;
 namespace Bodoconsult.NetworkCommunication.DataMessaging.DataMessageCodecs;
 
 /// <summary>
-/// Codec to encode and decode device data messages for SDCP protocol
+/// Codec to encode and decode device data messages for BTCP protocol
 /// </summary>
-public class SdcpDataMessageCodec : BaseDataMessageCodec
+public class BtcpDataMessageCodec : BaseDataMessageCodec
 {
+
+    private readonly Encoding _encoding = Encoding.UTF8;
+
     /// <summary>
     /// Current <see cref="IDataBlockCodingProcessor"/> instance
     /// </summary>
@@ -20,7 +24,7 @@ public class SdcpDataMessageCodec : BaseDataMessageCodec
     /// Default ctor
     /// </summary>
     /// <param name="dataBlockCodingProcessor">Current <see cref="IDataBlockCodingProcessor"/> instance</param>
-    public SdcpDataMessageCodec(IDataBlockCodingProcessor dataBlockCodingProcessor)
+    public BtcpDataMessageCodec(IDataBlockCodingProcessor dataBlockCodingProcessor)
     {
         DataBlockCodingProcessor = dataBlockCodingProcessor;
 
@@ -63,15 +67,37 @@ public class SdcpDataMessageCodec : BaseDataMessageCodec
             return result;
         }
 
-        try
-        {
-            IDataBlock dataBlock;
+        //try
+        //{
 
-            // Extract header data from the byte array and store it to message properties if provided
+        IDataBlock dataBlock = null;
+
+        var posEot = 0;
+
+        for (var i = 0; i < data.Length; i++)
+        {
+            var b = data.Slice(i, 1).Span[0];
+            if (b == DeviceCommunicationBasics.Eot || b == DeviceCommunicationBasics.Etx)
+            {
+                posEot = i;
+                break;
+            }
+        }
+
+        // Find business transaction ID
+
+        var nArray = data.Slice(1, posEot - 1).ToArray();
+
+        var s = _encoding.GetString(nArray);
+
+        var bt = Convert.ToInt32(s);
+
+        // Datablock delivered?
+        if (posEot != data.Length - 1)
+        {
 
             // Now get the delivered datablock
-
-            var dataBlockBytes = data.Slice(1, data.Length - 1);
+            var dataBlockBytes = data.Slice(posEot + 1, data.Length - posEot - 2);
 
             try
             {
@@ -83,22 +109,23 @@ public class SdcpDataMessageCodec : BaseDataMessageCodec
                 result.ErrorCode = 4;
                 return result;
             }
-
-            var dataMessage = new SdcpInboundDataMessage
-            {
-                DataBlock = dataBlock
-            };
-
-            result.DataMessage = dataMessage;
-            return result;
-
         }
-        catch (Exception exception)
+
+        var dataMessage = new BtcpInboundDataMessage(bt)
         {
-            result.ErrorMessage = $"DataMessage {DataMessageHelper.ByteArrayToString(data)}: decoding failed: {exception.Message}";
-            result.ErrorCode = 5;
-            return result;
-        }
+            DataBlock = dataBlock
+        };
+
+        result.DataMessage = dataMessage;
+        return result;
+
+        //}
+        //catch (Exception exception)
+        //{
+        //    result.ErrorMessage = $"DataMessage {DataMessageHelper.ByteArrayToString(data)}: decoding failed: {exception.Message}";
+        //    result.ErrorCode = 5;
+        //    return result;
+        //}
 
     }
 
@@ -110,29 +137,31 @@ public class SdcpDataMessageCodec : BaseDataMessageCodec
     public override OutboundCodecResult EncodeDataMessage(IOutboundDataMessage message)
     {
         var result = new OutboundCodecResult();
-        if (message is not SdcpOutboundDataMessage tMessage)
+        if (message is not BtcpOutboundDataMessage tMessage)
         {
-            result.ErrorMessage = "SdcpDataMessage required for SdcpDataMessageCodec";
+            result.ErrorMessage = "BtcpOutboundDataMessage required for BtcpDataMessageCodec";
             result.ErrorCode = 1;
             return result;
         }
 
         var data = new List<byte> { DeviceCommunicationBasics.Stx };
 
+        // Now add the business ransaction ID
+        var s = tMessage.BusinessTransactionId.ToString("###0");
+        data.AddRange(_encoding.GetBytes(s));
+
         // Add the datablock now if required
         try
         {
-            if (tMessage.DataBlock == null)
+            if (tMessage.DataBlock != null)
             {
-                result.ErrorMessage = "SdcpDataMessageCodec: datablock must not be null";
-                result.ErrorCode = 5;
-                return result;
+                data.Add(DeviceCommunicationBasics.Eot);
+                DataBlockCodingProcessor.FromDataBlockToBytes(data, tMessage.DataBlock);
             }
-            DataBlockCodingProcessor.FromDataBlockToBytes(data, tMessage.DataBlock);
         }
         catch (Exception exception)
         {
-            result.ErrorMessage = $"SdcpDataMessageCodec: exception raised during encoding: {exception}";
+            result.ErrorMessage = $"BtcpDataMessageCodec: exception raised during encoding: {exception}";
             result.ErrorCode = 4;
             return result;
         }

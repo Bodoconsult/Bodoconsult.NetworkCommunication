@@ -64,7 +64,7 @@ public class AdTree
 
         Domain = new AdDomain(dn)
         {
-            FqdnName = domainName,
+            FqdnName = domainName
         };
 
         Users = new List<AdUser>();

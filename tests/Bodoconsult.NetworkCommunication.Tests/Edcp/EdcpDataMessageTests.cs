@@ -12,7 +12,7 @@ internal class EdcpInboundDataMessageTests
 {
 
     [Test]
-    public void Ctor_ValidSetuo_PropsSetCorrectly()
+    public void Ctor_ValidSetup_PropsSetCorrectly()
     {
         // Arrange 
 

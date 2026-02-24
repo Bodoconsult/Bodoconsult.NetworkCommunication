@@ -3,16 +3,16 @@
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessageValidators;
 
-namespace Bodoconsult.NetworkCommunication.Tests.Edcp;
+namespace Bodoconsult.NetworkCommunication.Tests.Btcp;
 
 [TestFixture]
-internal class EdcpDataMessageValidatorTests
+internal class BtcpDataMessageValidatorTests
 {
     [Test]
     public void IsMessageValid_RawDataMessage_ReturnsTrue()
     {
         // Arrange 
-        var validator = new EdcpDataMessageValidator();
+        var validator = new BtcpDataMessageValidator();
 
         var msg = new RawInboundDataMessage();
 
@@ -24,10 +24,10 @@ internal class EdcpDataMessageValidatorTests
     }
 
     [Test]
-    public void IsMessageValid_ScdpDataMessage_ReturnsFalse()
+    public void IsMessageValid_SdcpDataMessage_ReturnsFalse()
     {
         // Arrange 
-        var validator = new EdcpDataMessageValidator();
+        var validator = new BtcpDataMessageValidator();
 
         var msg = new SdcpInboundDataMessage();
 
@@ -39,12 +39,27 @@ internal class EdcpDataMessageValidatorTests
     }
 
     [Test]
-    public void IsMessageValid_EcdpDataMessage_ReturnsTrue()
+    public void IsMessageValid_EdcpDataMessage_ReturnsFalse()
     {
         // Arrange 
-        var validator = new EdcpDataMessageValidator();
+        var validator = new BtcpDataMessageValidator();
 
-        var msg = new EdcpInboundDataMessage();
+        var msg = new SdcpInboundDataMessage();
+
+        // Act  
+        var result = validator.IsMessageValid(msg);
+
+        // Assert
+        Assert.That(result.IsMessageValid, Is.False);
+    }
+
+    [Test]
+    public void IsMessageValid_BtdpDataMessage_ReturnsTrue()
+    {
+        // Arrange 
+        var validator = new BtcpDataMessageValidator();
+
+        var msg = new BtcpInboundDataMessage(1);
 
         // Act  
         var result = validator.IsMessageValid(msg);

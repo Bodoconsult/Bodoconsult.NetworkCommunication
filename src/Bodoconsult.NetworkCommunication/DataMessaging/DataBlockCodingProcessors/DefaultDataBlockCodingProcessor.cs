@@ -8,7 +8,6 @@ namespace Bodoconsult.NetworkCommunication.DataMessaging.DataBlockCodingProcesso
 /// Default implementation for handling of the usage of the correct datablock codec for processing a datablock 
 /// </summary>
 public class DefaultDataBlockCodingProcessor : IDataBlockCodingProcessor
-
 {
     protected readonly Dictionary<char, IDataBlockCodec> DatablockCodecs = new();
 
@@ -29,7 +28,6 @@ public class DefaultDataBlockCodingProcessor : IDataBlockCodingProcessor
     /// <param name="dataBlock">Current datablock instance</param>
     public void FromDataBlockToBytes(List<byte> data, IDataBlock dataBlock)
     {
-
         //throw new NotImplementedException();
 
         var result = new DataBlockCodecResult();
@@ -51,7 +49,7 @@ public class DefaultDataBlockCodingProcessor : IDataBlockCodingProcessor
     /// <returns>Codec or null if no fitting codec was found</returns>
     public IDataBlockCodec GetDatablockCodecCanBeNull(char datablockType)
     {
-        DatablockCodecs.TryGetValue(datablockType, out IDataBlockCodec dataBlockCodec);
+        DatablockCodecs.TryGetValue(datablockType, out var dataBlockCodec);
         return dataBlockCodec;
     }
 
@@ -64,7 +62,6 @@ public class DefaultDataBlockCodingProcessor : IDataBlockCodingProcessor
     {
         if (dataBlockBytes.Length == 0)
         {
-
             return null;
         }
 

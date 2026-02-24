@@ -25,5 +25,5 @@ public enum DhcpServerClientDnsStates
     /// <summary>
     /// The DNS State is unknown or not supported by the server.
     /// </summary>
-    Unknown = -1,
+    Unknown = -1
 }

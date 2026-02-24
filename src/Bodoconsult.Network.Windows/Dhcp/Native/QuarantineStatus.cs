@@ -35,5 +35,5 @@ internal enum QuarantineStatus
     /// <summary>
     /// No quarantine.
     /// </summary>
-    Noquarinfo = 6,
+    Noquarinfo = 6
 }

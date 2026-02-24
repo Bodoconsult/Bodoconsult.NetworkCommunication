@@ -38,7 +38,7 @@ public class EdcpHandshakeMessageCodec : BaseDataMessageCodec
             return result;
         }
 
-        result.DataMessage = new EdcpInboundHandshakeMessage()
+        result.DataMessage = new EdcpInboundHandshakeMessage
         {
             HandshakeMessageType = data.Span[0],
             RawMessageData = data.ToArray(),

@@ -34,7 +34,7 @@ internal readonly struct DhcpClientInfoArrayV4 : IDisposable
             for (var i = 0; i < NumElements; i++)
             {
                 var clientPtr = Marshal.ReadIntPtr(iter);
-                yield return new ClientTuple()
+                yield return new ClientTuple
                 {
                     Pointer = clientPtr,
                     Value = clientPtr.MarshalToStructure<DhcpClientInfoV4>()

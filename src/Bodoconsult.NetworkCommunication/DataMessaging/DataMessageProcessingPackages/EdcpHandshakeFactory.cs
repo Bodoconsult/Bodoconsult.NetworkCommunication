@@ -19,14 +19,14 @@ public class EdcpHandshakeFactory : IDataMessageHandshakeFactory
     {
         if (message is not EdcpInboundDataMessage em)
         {
-            var can = new EdcpOutboundHandshakeMessage()
+            var can = new EdcpOutboundHandshakeMessage
             {
-                HandshakeMessageType = HandShakeMessageType.Can,
+                HandshakeMessageType = HandShakeMessageType.Can
             };
             return can;
         }
 
-        var ack = new EdcpOutboundHandshakeMessage()
+        var ack = new EdcpOutboundHandshakeMessage
         {
             HandshakeMessageType = HandShakeMessageType.Ack,
             BlockCode = em.BlockCode
@@ -44,14 +44,14 @@ public class EdcpHandshakeFactory : IDataMessageHandshakeFactory
     {
         if (message is not EdcpInboundDataMessage em)
         {
-            var can = new EdcpOutboundHandshakeMessage()
+            var can = new EdcpOutboundHandshakeMessage
             {
-                HandshakeMessageType = HandShakeMessageType.Can,
+                HandshakeMessageType = HandShakeMessageType.Can
             };
             return can;
         }
 
-        var nak = new EdcpOutboundHandshakeMessage()
+        var nak = new EdcpOutboundHandshakeMessage
         {
             HandshakeMessageType = HandShakeMessageType.Nack,
             BlockCode = em.BlockCode
@@ -68,14 +68,14 @@ public class EdcpHandshakeFactory : IDataMessageHandshakeFactory
     {
         if (message is not EdcpInboundDataMessage em)
         {
-            var can1 = new EdcpOutboundHandshakeMessage()
+            var can1 = new EdcpOutboundHandshakeMessage
             {
-                HandshakeMessageType = HandShakeMessageType.Can,
+                HandshakeMessageType = HandShakeMessageType.Can
             };
             return can1;
         }
 
-        var can = new EdcpOutboundHandshakeMessage()
+        var can = new EdcpOutboundHandshakeMessage
         {
             HandshakeMessageType = HandShakeMessageType.Can,
             BlockCode = em.BlockCode

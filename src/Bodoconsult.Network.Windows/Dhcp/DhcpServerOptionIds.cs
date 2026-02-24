@@ -1246,5 +1246,5 @@ public enum DhcpServerOptionIds : byte
     /// Non-standard, Site-local; see: https://en.wikipedia.org/wiki/Web_Proxy_Auto-Discovery_Protocol
     /// </summary>
     [DhcpServerOptionIdType(DhcpServerOptionIdTypes.Utf8String)]
-    AutoProxyConfig = 252,
+    AutoProxyConfig = 252
 }

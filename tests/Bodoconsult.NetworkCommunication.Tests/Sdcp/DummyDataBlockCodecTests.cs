@@ -6,13 +6,13 @@ using Bodoconsult.NetworkCommunication.DataMessaging.DataBlockCodecs;
 namespace Bodoconsult.NetworkCommunication.Tests.Sdcp;
 
 [TestFixture]
-internal class SdcpDummyDataBlockCodecTests
+internal class DummyDataBlockCodecTests
 {
     [Test]
     public void DecodeDataBlock_ValidData_ReturnsDataBlock()
     {
         // Arrange 
-        var codec = new SdcpDummyDataBlockCodec();
+        var codec = new DummyDataBlockCodec();
         var data = new byte[] { 0x78, 0x42, 0x6c, 0x75, 0x62, 0x62 }.AsMemory();
 
         // Act  
@@ -28,7 +28,7 @@ internal class SdcpDummyDataBlockCodecTests
     public void EncodeDataBlock_ValidData_ReturnsDataBlock()
     {
         // Arrange 
-        var codec = new SdcpDummyDataBlockCodec();
+        var codec = new DummyDataBlockCodec();
         var data = new byte[] { 0x78, 0x42, 0x6c, 0x75, 0x62, 0x62 }.AsMemory();
 
         var db = codec.DecodeDataBlock(data);

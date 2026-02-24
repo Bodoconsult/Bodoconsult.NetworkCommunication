@@ -1,5 +1,4 @@
-﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
-
+﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen. All rights reserved.
 
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
 using Bodoconsult.NetworkCommunication.EnumAndStates;
@@ -8,10 +7,9 @@ using Bodoconsult.NetworkCommunication.Interfaces;
 namespace Bodoconsult.NetworkCommunication.DataMessaging.HandshakeDataMessageValidators;
 
 /// <summary>
-/// Implementation of <see cref="IHandshakeDataMessageValidator"/> for SDCP protocol
+/// Implementation of <see cref="IHandshakeDataMessageValidator"/> for BTCP protocol
 /// </summary>
-public class SdcpHandshakeDataMessageValidator : IHandshakeDataMessageValidator
-
+public class BtcpHandshakeDataMessageValidator : IHandshakeDataMessageValidator
 {
     /// <summary>
     /// Is a received message a handshake for a sent message
@@ -23,9 +21,9 @@ public class SdcpHandshakeDataMessageValidator : IHandshakeDataMessageValidator
         IInboundHandShakeMessage handshakeMessage)
     {
 
-        if (sentMessage is not SdcpOutboundDataMessage)
+        if (sentMessage is not BtcpOutboundDataMessage)
         {
-            return new DataMessageValidatorResult(false, "No SDCP data message sent");
+            return new DataMessageValidatorResult(false, "No BTCP data message sent");
         }
 
         if (handshakeMessage is not InboundHandshakeMessage)

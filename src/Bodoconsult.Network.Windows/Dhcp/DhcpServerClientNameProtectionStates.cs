@@ -27,5 +27,5 @@ public enum DhcpServerClientNameProtectionStates
     /// <summary>
     /// The Name Protection State is unknown or not supported by the server.
     /// </summary>
-    Unknown = -1,
+    Unknown = -1
 }

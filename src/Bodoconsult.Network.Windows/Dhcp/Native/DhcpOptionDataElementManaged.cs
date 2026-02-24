@@ -21,31 +21,31 @@ internal readonly struct DhcpOptionDataElementManaged : IDisposable
     public DhcpOptionDataElementManaged(byte dataByte)
     {
         OptionType = (IntPtr)DhcpOptionDataType.DhcpByteOption;
-        Data = new DhcpOptionDataElementManagedValue() { DataByte = dataByte };
+        Data = new DhcpOptionDataElementManagedValue { DataByte = dataByte };
     }
 
     public DhcpOptionDataElementManaged(short dataWord)
     {
         OptionType = (IntPtr)DhcpOptionDataType.DhcpWordOption;
-        Data = new DhcpOptionDataElementManagedValue() { DataWord = dataWord };
+        Data = new DhcpOptionDataElementManagedValue { DataWord = dataWord };
     }
 
     public DhcpOptionDataElementManaged(int dataDWord)
     {
         OptionType = (IntPtr)DhcpOptionDataType.DhcpDWordOption;
-        Data = new DhcpOptionDataElementManagedValue() { DataDWord = dataDWord };
+        Data = new DhcpOptionDataElementManagedValue { DataDWord = dataDWord };
     }
 
     public DhcpOptionDataElementManaged(long dataDWordDWord)
     {
         OptionType = (IntPtr)DhcpOptionDataType.DhcpDWordDWordOption;
-        Data = new DhcpOptionDataElementManagedValue() { DataDWordDWord = dataDWordDWord };
+        Data = new DhcpOptionDataElementManagedValue { DataDWordDWord = dataDWordDWord };
     }
 
     public DhcpOptionDataElementManaged(DhcpIpAddress dataIpAddress)
     {
         OptionType = (IntPtr)DhcpOptionDataType.DhcpIpAddressOption;
-        Data = new DhcpOptionDataElementManagedValue() { DataIpAddress = dataIpAddress };
+        Data = new DhcpOptionDataElementManagedValue { DataIpAddress = dataIpAddress };
     }
 
     public DhcpOptionDataElementManaged(DhcpOptionDataType type, string dataString)
@@ -54,11 +54,11 @@ internal readonly struct DhcpOptionDataElementManaged : IDisposable
         {
             case DhcpOptionDataType.DhcpStringDataOption:
                 OptionType = (IntPtr)DhcpOptionDataType.DhcpStringDataOption;
-                Data = new DhcpOptionDataElementManagedValue() { DataString = Marshal.StringToHGlobalUni(dataString) };
+                Data = new DhcpOptionDataElementManagedValue { DataString = Marshal.StringToHGlobalUni(dataString) };
                 break;
             case DhcpOptionDataType.DhcpIpv6AddressOption:
                 OptionType = (IntPtr)DhcpOptionDataType.DhcpIpv6AddressOption;
-                Data = new DhcpOptionDataElementManagedValue() { DataIpv6Address = Marshal.StringToHGlobalUni(dataString) };
+                Data = new DhcpOptionDataElementManagedValue { DataIpv6Address = Marshal.StringToHGlobalUni(dataString) };
                 break;
             default:
                 throw new ArgumentOutOfRangeException(nameof(type));
@@ -71,11 +71,11 @@ internal readonly struct DhcpOptionDataElementManaged : IDisposable
         {
             case DhcpOptionDataType.DhcpBinaryDataOption:
                 OptionType = (IntPtr)DhcpOptionDataType.DhcpBinaryDataOption;
-                Data = new DhcpOptionDataElementManagedValue() { DataBinary = dataBinary };
+                Data = new DhcpOptionDataElementManagedValue { DataBinary = dataBinary };
                 break;
             case DhcpOptionDataType.DhcpEncapsulatedDataOption:
                 OptionType = (IntPtr)DhcpOptionDataType.DhcpEncapsulatedDataOption;
-                Data = new DhcpOptionDataElementManagedValue() { DataBinary = dataBinary };
+                Data = new DhcpOptionDataElementManagedValue { DataBinary = dataBinary };
                 break;
             default:
                 throw new ArgumentOutOfRangeException(nameof(type));

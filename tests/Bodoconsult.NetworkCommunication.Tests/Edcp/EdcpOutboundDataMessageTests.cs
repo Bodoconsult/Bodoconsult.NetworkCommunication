@@ -1,8 +1,5 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen. All rights reserved.
 
-
-// Copyright (c) Bodoconsult EDV-Dienstleistungen. All rights reserved.
-
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
 
 namespace Bodoconsult.NetworkCommunication.Tests.Edcp;
@@ -12,7 +9,7 @@ internal class EdcpOutboundDataMessageTests
 {
 
     [Test]
-    public void Ctor_ValidSetuo_PropsSetCorrectly()
+    public void Ctor_ValidSetup_PropsSetCorrectly()
     {
         // Arrange 
 

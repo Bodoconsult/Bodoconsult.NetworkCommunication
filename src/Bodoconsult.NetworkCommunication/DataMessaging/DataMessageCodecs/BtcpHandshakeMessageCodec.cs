@@ -1,4 +1,4 @@
-﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
+﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen. All rights reserved.
 
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
 using Bodoconsult.NetworkCommunication.Interfaces;
@@ -6,12 +6,14 @@ using Bodoconsult.NetworkCommunication.Interfaces;
 namespace Bodoconsult.NetworkCommunication.DataMessaging.DataMessageCodecs;
 
 /// <summary>
-/// Codec to encode and decode handshake messages for SDCP protocol
+/// Codec to encode and decode handshake messages for BTCP protocol
 /// </summary>
-public class SdcpHandshakeMessageCodec : BaseDataMessageCodec
+public class BtcpHandshakeMessageCodec : BaseDataMessageCodec
 {
-
-    public SdcpHandshakeMessageCodec()
+    /// <summary>
+    /// Default ctor
+    /// </summary>
+    public BtcpHandshakeMessageCodec()
     {
         ExpectedMinimumLength = 1;
         ExpectedMaximumLength = 1;
@@ -62,7 +64,7 @@ public class SdcpHandshakeMessageCodec : BaseDataMessageCodec
             return result;
         }
 
-        message.RawMessageData = new[] { hMessage.HandshakeMessageType};
+        message.RawMessageData = new[] { hMessage.HandshakeMessageType };
         return result;
     }
 }

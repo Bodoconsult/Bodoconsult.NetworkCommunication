@@ -24,5 +24,5 @@ internal enum DhcpSubnetState : uint
     /// <summary>
     /// The subnet is in an invalid state.
     /// </summary>
-    DhcpSubnetInvalidState,
+    DhcpSubnetInvalidState
 }

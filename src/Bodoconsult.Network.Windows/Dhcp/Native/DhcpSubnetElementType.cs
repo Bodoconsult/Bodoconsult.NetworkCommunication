@@ -40,5 +40,5 @@ internal enum DhcpSubnetElementType
     /// <summary>
     /// The subnet element contains the IP addresses served by BOOTP to the subnet (specifically excluding DHCP-served addresses).
     /// </summary>
-    DhcpIpRangesBootpOnly,
+    DhcpIpRangesBootpOnly
 }

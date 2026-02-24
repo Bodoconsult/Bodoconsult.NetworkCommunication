@@ -22,7 +22,7 @@ public class EdcpHandshakeDataMessageValidator : IHandshakeDataMessageValidator
         IInboundHandShakeMessage handshakeMessage)
     {
 
-        if (sentMessage is not EdcpInboundDataMessage sm)
+        if (sentMessage is not EdcpOutboundDataMessage sm)
         {
             return new DataMessageValidatorResult(false, "No EDCP data message sent");
         }

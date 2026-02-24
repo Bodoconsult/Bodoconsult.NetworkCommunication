@@ -11,10 +11,15 @@ namespace Bodoconsult.NetworkCommunication.DataMessaging.DataMessageCodecs;
 /// </summary>
 public class EdcpDataMessageCodec : BaseDataMessageCodec
 {
-
+    /// <summary>
+    /// Current <see cref="IDataBlockCodingProcessor"/> instance
+    /// </summary>
     public readonly IDataBlockCodingProcessor DataBlockCodingProcessor;
 
-
+    /// <summary>
+    /// Default ctor
+    /// </summary>
+    /// <param name="dataBlockCodingProcessor">Current <see cref="IDataBlockCodingProcessor"/> instance</param>
     public EdcpDataMessageCodec(IDataBlockCodingProcessor dataBlockCodingProcessor)
     {
         DataBlockCodingProcessor = dataBlockCodingProcessor;
@@ -30,7 +35,27 @@ public class EdcpDataMessageCodec : BaseDataMessageCodec
     /// <returns>Decoding result</returns>
     public override InboundCodecResult DecodeDataMessage(Memory<byte> data)
     {
+        // Check STX
+        if (data[..1].Span[0] != DeviceCommunicationBasics.Stx)
+        {
+            return new InboundCodecResult
+            {
+                ErrorCode = 98,
+                ErrorMessage = "STX is missing"
+            };
+        }
 
+        // Check ETX
+        if (data.Slice(data.Length - 1, 1).Span[0] != DeviceCommunicationBasics.Etx)
+        {
+            return new InboundCodecResult
+            {
+                ErrorCode = 99,
+                ErrorMessage = "ETX is missing"
+            };
+        }
+
+        // Check length
         var result = CheckExpectedLengths(data.Length);
 
         if (result.ErrorCode != 0)
@@ -40,12 +65,11 @@ public class EdcpDataMessageCodec : BaseDataMessageCodec
 
         try
         {
-
             IDataBlock dataBlock;
 
             var blockCode = data.Slice(1, 1).Span[0];
 
-            var dataBlockBytes = data.Slice(2, data.Length - 1);
+            var dataBlockBytes = data.Slice(2, data.Length - 2);
 
             try
             {
@@ -86,7 +110,7 @@ public class EdcpDataMessageCodec : BaseDataMessageCodec
     public override OutboundCodecResult EncodeDataMessage(IOutboundDataMessage message)
     {
         var result = new OutboundCodecResult();
-        if (message is not EdcpInboundDataMessage tMessage)
+        if (message is not EdcpOutboundDataMessage tMessage)
         {
             result.ErrorMessage = "EdcpDataMessage required for EdcpDataMessageCodec";
             result.ErrorCode = 1;

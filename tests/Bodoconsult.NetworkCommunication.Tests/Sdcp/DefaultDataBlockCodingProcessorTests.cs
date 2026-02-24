@@ -30,7 +30,7 @@ internal class DefaultDataBlockCodingProcessorTests
         var dbcp = new DefaultDataBlockCodingProcessor();
 
         // Act  
-        dbcp.LoadDataBlockCodecs('x', new SdcpDummyDataBlockCodec());
+        dbcp.LoadDataBlockCodecs('x', new DummyDataBlockCodec());
 
         // Assert
         var dbc = dbcp.GetDatablockCodecCanBeNull('x');
@@ -43,7 +43,7 @@ internal class DefaultDataBlockCodingProcessorTests
     {
         // Arrange 
         var dbcp = new DefaultDataBlockCodingProcessor();
-        dbcp.LoadDataBlockCodecs('x', new SdcpDummyDataBlockCodec());
+        dbcp.LoadDataBlockCodecs('x', new DummyDataBlockCodec());
 
         var data = new byte[] { 0x78, 0x42, 0x6c, 0x75, 0x62, 0x62 }.AsMemory();
 
@@ -61,7 +61,7 @@ internal class DefaultDataBlockCodingProcessorTests
     {
         // Arrange 
         var dbcp = new DefaultDataBlockCodingProcessor();
-        dbcp.LoadDataBlockCodecs('x', new SdcpDummyDataBlockCodec());
+        dbcp.LoadDataBlockCodecs('x', new DummyDataBlockCodec());
 
         var data = new byte[] { 0x78, 0x42, 0x6c, 0x75, 0x62, 0x62 }.AsMemory();
         var db = dbcp.FromBytesToDataBlock(data);

@@ -10,7 +10,6 @@ namespace Bodoconsult.NetworkCommunication.Interfaces;
 /// </summary>
 public interface IDataMessageProcessingPackage
 {
-
     /// <summary>
     /// Current data messaging config
     /// </summary>
@@ -32,6 +31,11 @@ public interface IDataMessageProcessingPackage
     IDataMessageProcessor DataMessageProcessor { get; }
 
     /// <summary>
+    /// Current <see cref="IDataBlockCodingProcessor"/> instance
+    /// </summary>
+    IDataBlockCodingProcessor DataBlockCodingProcessor { get; }
+
+    /// <summary>
     /// Current wait state manager
     /// </summary>
     IWaitStateManager WaitStateManager { get; }
@@ -51,4 +55,8 @@ public interface IDataMessageProcessingPackage
     /// </summary>
     IDataMessageHandshakeFactory DataMessageHandshakeFactory { get; }
 
+    /// <summary>
+    /// Load custom data block codecs. This method should be overwritten to load your app specific codecs
+    /// </summary>
+    void LoadCustomDataBlockCodecs();
 }

@@ -1,0 +1,29 @@
+﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH.  All rights reserved.
+
+using Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
+using Bodoconsult.NetworkCommunication.Interfaces;
+
+namespace Bodoconsult.NetworkCommunication.DataMessaging.DataMessageValidators;
+
+/// <summary>
+/// BTCP protocol implementation of <see cref="IDataMessageValidator"/>
+/// </summary>
+public class BtcpDataMessageValidator : IDataMessageValidator
+{
+    public DataMessageValidatorResult IsMessageValid(IInboundMessage dataMessage)
+    {
+        // Update mode message or raw message: always valid
+        if (dataMessage is RawInboundDataMessage)
+        {
+            return new DataMessageValidatorResult(true, "Message is valid");
+        }
+
+        // No SDCP data message: always valid
+        if (dataMessage is not BtcpInboundDataMessage)
+        {
+            return new DataMessageValidatorResult(false, "Message is NOT a valid BTCP message");
+        }
+
+        return new DataMessageValidatorResult(true, "Message is a valid BTCP message");
+    }
+}

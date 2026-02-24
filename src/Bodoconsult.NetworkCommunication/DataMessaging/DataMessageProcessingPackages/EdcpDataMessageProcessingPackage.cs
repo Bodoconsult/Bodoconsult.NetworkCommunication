@@ -24,7 +24,6 @@ public class EdcpDataMessageProcessingPackage : IDataMessageProcessingPackage
     /// </summary>
     public EdcpDataMessageProcessingPackage(IDataMessagingConfig dataMessagingConfig)
     {
-
         if (dataMessagingConfig is not EdcpDataMessagingConfig)
         {
             throw new ArgumentException("dataMessagingConfig must be or inherit from EdcpDataMessagingConfig");
@@ -63,12 +62,11 @@ public class EdcpDataMessageProcessingPackage : IDataMessageProcessingPackage
         var handShakeCodec = new EdcpHandshakeMessageCodec();
         DataMessageCodingProcessor.MessageCodecs.Add(handShakeCodec);
 
-        var processor = new DefaultDataBlockCodingProcessor();
+        DataBlockCodingProcessor = new DefaultDataBlockCodingProcessor();
+        
+        LoadCustomDataBlockCodecs();
 
-        // Load your datablock codes here
-        processor.LoadDataBlockCodecs('x', new SdcpDummyDataBlockCodec());
-
-        var deviceMessageCodec = new EdcpDataMessageCodec(processor);
+        var deviceMessageCodec = new EdcpDataMessageCodec(DataBlockCodingProcessor);
         DataMessageCodingProcessor.MessageCodecs.Add(deviceMessageCodec);
 
         var rawCodec = new RawDataMessageCodec();
@@ -96,6 +94,11 @@ public class EdcpDataMessageProcessingPackage : IDataMessageProcessingPackage
     public IDataMessageProcessor DataMessageProcessor { get; }
 
     /// <summary>
+    /// Current <see cref="IDataBlockCodingProcessor"/> instance
+    /// </summary>
+    public IDataBlockCodingProcessor DataBlockCodingProcessor { get; protected set; }
+
+    /// <summary>
     /// Current wait state manager
     /// </summary>
     public IWaitStateManager WaitStateManager { get; }
@@ -114,4 +117,13 @@ public class EdcpDataMessageProcessingPackage : IDataMessageProcessingPackage
     /// Factory for creation of handshakes to be sent for received messages
     /// </summary>
     public IDataMessageHandshakeFactory DataMessageHandshakeFactory { get; }
+
+    /// <summary>
+    /// Load custom data block codecs. This method should be overwritten to load your app specific codecs
+    /// </summary>
+    public virtual void LoadCustomDataBlockCodecs()
+    {
+        // Load your datablock codes here
+        DataBlockCodingProcessor.LoadDataBlockCodecs('x', new DummyDataBlockCodec());
+    }
 }

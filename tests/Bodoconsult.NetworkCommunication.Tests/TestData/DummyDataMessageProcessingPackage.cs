@@ -42,6 +42,11 @@ public class DummyDataMessageProcessingPackage: IDataMessageProcessingPackage
     public IDataMessageProcessor DataMessageProcessor { get; set; }
 
     /// <summary>
+    /// Current <see cref="IDataBlockCodingProcessor"/> instance
+    /// </summary>
+    public IDataBlockCodingProcessor DataBlockCodingProcessor { get; set; }
+
+    /// <summary>
     /// Current wait state manager
     /// </summary>
     public IWaitStateManager WaitStateManager { get; }
@@ -60,4 +65,9 @@ public class DummyDataMessageProcessingPackage: IDataMessageProcessingPackage
     /// Factory for creation of handshakes to be sent for received messages
     /// </summary>
     public IDataMessageHandshakeFactory DataMessageHandshakeFactory { get; set; }
+
+    public void LoadCustomDataBlockCodecs()
+    {
+        throw new NotImplementedException();
+    }
 }

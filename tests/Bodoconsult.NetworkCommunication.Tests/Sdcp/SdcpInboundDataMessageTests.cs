@@ -9,7 +9,7 @@ internal class SdcpInboundDataMessageTests
 {
 
     [Test]
-    public void Ctor_ValidSetuo_PropsSetCorrectly()
+    public void Ctor_ValidSetup_PropsSetCorrectly()
     {
         // Arrange 
             

@@ -29,5 +29,5 @@ public enum DhcpServerClientTypes
     /// <summary>
     /// Backward compatibility for manual addressing.
     /// </summary>
-    None = 0x64,
+    None = 0x64
 }

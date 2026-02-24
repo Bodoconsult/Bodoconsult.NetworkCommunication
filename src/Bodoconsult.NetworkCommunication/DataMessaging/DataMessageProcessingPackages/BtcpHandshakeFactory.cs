@@ -1,4 +1,4 @@
-﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH.  All rights reserved.
+﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen. All rights reserved.
 
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
 using Bodoconsult.NetworkCommunication.Interfaces;
@@ -6,9 +6,9 @@ using Bodoconsult.NetworkCommunication.Interfaces;
 namespace Bodoconsult.NetworkCommunication.DataMessaging.DataMessageProcessingPackages;
 
 /// <summary>
-/// Factory for creating handshakes for SDCP protocol to sent to the client
+/// Factory for creating handshakes for BTCP protocol to sent to the client
 /// </summary>
-public class SdcpHandshakeFactory : IDataMessageHandshakeFactory
+public class BtcpHandshakeFactory : IDataMessageHandshakeFactory
 {
     /// <summary>
     /// Get an ACK handshake message
@@ -21,7 +21,6 @@ public class SdcpHandshakeFactory : IDataMessageHandshakeFactory
         {
             HandshakeMessageType = HandShakeMessageType.Ack
         };
-
         return ack;
     }
 

@@ -25,5 +25,5 @@ public enum DhcpServerHardwareType : byte
     FibreChannel = 18,
     AsynchronousTransmissionMode19 = 19,
     SerialLine = 20,
-    AsynchronousTransmissionMode21 = 21,
+    AsynchronousTransmissionMode21 = 21
 }

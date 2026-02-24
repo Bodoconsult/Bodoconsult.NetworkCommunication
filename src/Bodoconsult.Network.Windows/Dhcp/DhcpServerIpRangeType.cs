@@ -9,5 +9,5 @@ public enum DhcpServerIpRangeType
     Excluded = 3,
     ScopeDhcpOnly = 5,
     ScopeDhcpAndBootp = 6,
-    ScopeBootpOnly = 7,
+    ScopeBootpOnly = 7
 }

@@ -253,5 +253,5 @@ internal enum DhcpErrors : uint
     [DhcpErrorDescription("Windows 8 or later: A scope supporting BOOTP clients cannot be added to a failover relationship.")]
     FoBootNotSupported = 20131,
     [DhcpErrorDescription("Windows 8 or later: An IP address range of a scope which is part of a failover relationship cannot be deleted. The scope will need to be removed from the failover relationship before deleting the range.")]
-    FoRangePartOfRel = 20132,
+    FoRangePartOfRel = 20132
 }
