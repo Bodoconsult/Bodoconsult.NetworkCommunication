@@ -7,7 +7,7 @@ using Bodoconsult.NetworkCommunication.Delegates;
 using Bodoconsult.NetworkCommunication.EnumAndStates;
 using Bodoconsult.NetworkCommunication.Interfaces;
 
-namespace Bodoconsult.NetworkCommunication.OrderManagement;
+namespace Bodoconsult.NetworkCommunication.OrderManagement.Orders;
 
 /// <summary>
 /// Base class for device orders

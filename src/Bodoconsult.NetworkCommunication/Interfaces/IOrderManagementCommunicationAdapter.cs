@@ -11,7 +11,7 @@ public delegate void SetOrderProcessingStateDelegate(bool isActivated);
 /// <summary>
 /// Communication adapter used for order management
 /// </summary>
-public interface IOrderManagementCommunicationAdapter
+public interface IOrderManagementCommunicationAdapter: IDisposable
 {
     /// <summary>
     /// Is the device successfully pinged?
@@ -25,8 +25,7 @@ public interface IOrderManagementCommunicationAdapter
     bool IsConnected { get; }
 
     /// <summary>
-    ///     This property returns whether the communication object is valid i.e
-    ///     and can be used
+    /// This property returns whether the communication object is valid can be used
     /// </summary>
     bool IsCommunicationHandlerNotNull { get; }
 
@@ -72,7 +71,4 @@ public interface IOrderManagementCommunicationAdapter
     /// Cancel the currently running operation on the device
     /// </summary>
     MessageSendingResult CancelRunningOperation();
-
-
-
 }

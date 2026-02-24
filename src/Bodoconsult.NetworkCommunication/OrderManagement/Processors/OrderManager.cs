@@ -11,11 +11,8 @@ namespace Bodoconsult.NetworkCommunication.OrderManagement.Processors;
 /// </summary>
 public class OrderManager: IOrderManager
 {
-
     private readonly IAppLoggerProxy _appLogger;
-
     private readonly string _loggerId;
-
 
     /// <summary>
     /// Default ctor

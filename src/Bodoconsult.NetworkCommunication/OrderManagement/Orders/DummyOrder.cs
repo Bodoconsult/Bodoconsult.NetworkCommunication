@@ -4,7 +4,7 @@ using Bodoconsult.App.Interfaces;
 using Bodoconsult.NetworkCommunication.App.Abstractions;
 using Bodoconsult.NetworkCommunication.Interfaces;
 
-namespace Bodoconsult.NetworkCommunication.OrderManagement;
+namespace Bodoconsult.NetworkCommunication.OrderManagement.Orders;
 
 /// <summary>
 /// Dummy order doing nothing
