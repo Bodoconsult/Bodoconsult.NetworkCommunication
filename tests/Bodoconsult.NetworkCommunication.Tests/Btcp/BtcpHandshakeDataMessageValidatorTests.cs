@@ -1,7 +1,6 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen. All rights reserved.
 
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
-using Bodoconsult.NetworkCommunication.DataMessaging.DataMessageValidators;
 using Bodoconsult.NetworkCommunication.DataMessaging.HandshakeDataMessageValidators;
 using Bodoconsult.NetworkCommunication.Interfaces;
 

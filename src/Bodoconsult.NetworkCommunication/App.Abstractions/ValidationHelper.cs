@@ -1,4 +1,4 @@
-﻿
+﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
 using System.ComponentModel.DataAnnotations;
 using System.Diagnostics;
@@ -18,7 +18,6 @@ public static class ValidationHelper
     /// <returns>(Empty) list of validation results. Empty list means there were no validation errors, the object is valid.</returns>
     public static ICollection<ValidationResult> ValidateObject(object data)
     {
-
         var vc = new ValidationContext(data);
 
         ICollection<ValidationResult> results = new List<ValidationResult>(); // Will contain the results of the validation

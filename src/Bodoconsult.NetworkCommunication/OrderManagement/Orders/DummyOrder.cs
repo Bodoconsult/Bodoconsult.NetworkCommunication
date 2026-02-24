@@ -1,8 +1,8 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen. All rights reserved.
 
 using Bodoconsult.App.Interfaces;
-using Bodoconsult.NetworkCommunication.App.Abstractions;
 using Bodoconsult.NetworkCommunication.Interfaces;
+using IAppDateService = Bodoconsult.NetworkCommunication.App.Abstractions.IAppDateService;
 
 namespace Bodoconsult.NetworkCommunication.OrderManagement.Orders;
 
@@ -17,6 +17,6 @@ public class DummyOrder: BaseOrder
     /// <param name="parameterSet">Parameter set</param>
     /// <param name="dateTimeService">Datetime service</param>
     /// <param name="benchLogger">Bench logger instance for benchmarking</param>
-    public DummyOrder(IParameterSet parameterSet, IDateTimeService dateTimeService, IAppBenchProxy benchLogger) : base(parameterSet, dateTimeService, benchLogger)
+    public DummyOrder(IParameterSet parameterSet, IAppDateService dateTimeService, IAppBenchProxy benchLogger) : base(parameterSet, dateTimeService, benchLogger)
     { }
 }

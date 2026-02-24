@@ -60,6 +60,24 @@ public class InternalRequestStepProcessor : IRequestStepProcessor
     }
 
     /// <summary>
+    /// Check if cancelled
+    /// </summary>
+    /// <returns>True if cancelled else false</returns>
+    public bool CheckIsCancelled()
+    {
+        return false;
+    }
+
+    /// <summary>
+    /// Set the result state
+    /// </summary>
+    /// <param name="state">State to set as result</param>
+    public void SetResult(IOrderExecutionResultState state)
+    {
+        Result = state;
+    }
+
+    /// <summary>
     /// Message to send to tower
     /// </summary>
     public IOutboundDataMessage SentMessage { get; set; }

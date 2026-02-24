@@ -19,6 +19,8 @@ public class BaseRequestAnswerStep : IRequestAnswerStep
     private TaskCompletionSource<IOrderExecutionResultState> _taskCompletionSource;
     private CancellationTokenSource _ctsMain;
 
+    private readonly IOrder _order;
+
     /// <summary>
     /// Default ctor
     /// </summary>
@@ -26,17 +28,24 @@ public class BaseRequestAnswerStep : IRequestAnswerStep
     public BaseRequestAnswerStep(IRequestSpec requestSpec)
     {
         RequestSpec = requestSpec ?? throw new ArgumentNullException(nameof(requestSpec));
+
+        if (RequestSpec.ParameterSet == null)
+        {
+            throw new ArgumentNullException(nameof(RequestSpec.ParameterSet));
+        }
+
+        _order = RequestSpec.ParameterSet.CurrentOrder ?? throw new ArgumentNullException(nameof(RequestSpec.ParameterSet.CurrentOrder));
     }
 
     /// <summary>
     /// Current request spec
     /// </summary>
-    public IRequestSpec RequestSpec { get; set; }
+    public IRequestSpec RequestSpec { get; }
 
     /// <summary>
     /// Allowed request answers: one of the items has to be received as answer from tower
     /// </summary>
-    public IList<IRequestAnswer> AllowedRequestAnswers { get; } = new List<IRequestAnswer>();
+    public List<IRequestAnswer> AllowedRequestAnswers { get; } = new();
 
     /// <summary>
     /// Cancel the step
@@ -76,23 +85,16 @@ public class BaseRequestAnswerStep : IRequestAnswerStep
                 return;
             }
 
-            var order = RequestSpec.ParameterSet?.CurrentOrder;
-
             if (!value)
             {
                 RequestSpec.WasSuccessful = false;
-                RequestSpec.CurrentRequestStepProcessor.Result = OrderExecutionResultState.Unsuccessful;
+                RequestSpec.RequestStepProcessorSetResultDelegate.Invoke(OrderExecutionResultState.Unsuccessful);
 
-                if (order == null)
-                {
-                    return;
-                }
-
-                order.WasSuccessful = false;
+                _order.WasSuccessful = false;
                 return;
             }
 
-            RequestSpec.CurrentRequestStepProcessor.Result = OrderExecutionResultState.Successful;
+            RequestSpec.RequestStepProcessorSetResultDelegate.Invoke(OrderExecutionResultState.Successful);
 
             // Check if all steps are done. If yes the step was done successfully
             if (!RequestSpec.RequestAnswerSteps.All(x => x.WasSuccessful))
@@ -103,14 +105,9 @@ public class BaseRequestAnswerStep : IRequestAnswerStep
             RequestSpec.WasSuccessful = true;
 
             // Check now if the order was successful
-            if (order == null)
+            if (_order.RequestSpecs.All(x => x is { WasSuccessful: true }))
             {
-                return;
-            }
-
-            if (order.RequestSpecs.All(x => x is { WasSuccessful: true }))
-            {
-                order.WasSuccessful = true;
+                _order.WasSuccessful = true;
             }
         }
     }
@@ -166,7 +163,7 @@ public class BaseRequestAnswerStep : IRequestAnswerStep
         //            }
         //#endif
 
-        var success = CheckReceivedMessage(RequestSpec.CurrentRequestStepProcessor.SentMessage, receivedMessage, errors);
+        var success = CheckReceivedMessage(RequestSpec.CurrentSentMessage, receivedMessage, errors);
         //Debug.Print($"RSP: check message: command {receivedMessage?.ToInfoString()}: {success} ");
 
         // Check if received message is a breaking async message
@@ -253,17 +250,15 @@ public class BaseRequestAnswerStep : IRequestAnswerStep
             };
         }
 
-        var order = requestSpec.ParameterSet?.CurrentOrder;
-
-        var rsp = requestSpec.CurrentRequestStepProcessor;
-        if (rsp == null)
-        {
-            return new MessageHandlingResult
-            {
-                ExecutionResult = OrderExecutionResultState.Unsuccessful,
-                ErrorDescription = "No CurrentRequestStepProcessor instance"
-            };
-        }
+        //var rsp = requestSpec.CurrentRequestStepProcessor;
+        //if (rsp == null)
+        //{
+        //    return new MessageHandlingResult
+        //    {
+        //        ExecutionResult = OrderExecutionResultState.Unsuccessful,
+        //        ErrorDescription = "No CurrentRequestStepProcessor instance"
+        //    };
+        //}
 
         var answer = requestSpec.IsInternalRequest ? AllowedRequestAnswers.FirstOrDefault() : AllowedRequestAnswers.FirstOrDefault(x => x.WasReceived);
 
@@ -292,19 +287,11 @@ public class BaseRequestAnswerStep : IRequestAnswerStep
             // Handle the answer on success delegate
             if (!requestSpec.IsInternalRequest)
             {
-                if (order == null)
+                if (requestSpec.RequestStepProcessorIsCancelledDelegate() || _order.IsFinished || _order.IsCancelled)
                 {
                     return new MessageHandlingResult
                     {
-                        ExecutionResult = OrderExecutionResultState.Unsuccessful
-                    };
-                }
-
-                if (rsp.IsCancelled || order.IsFinished || order.IsCancelled)
-                {
-                    return new MessageHandlingResult
-                    {
-                        ExecutionResult = order.ExecutionResult
+                        ExecutionResult = _order.ExecutionResult
                     };
                 }
             }
@@ -352,7 +339,7 @@ public class BaseRequestAnswerStep : IRequestAnswerStep
     public virtual void Reset()
     {
         WasSuccessful = false;
-        RequestSpec.CurrentRequestStepProcessor.Result = OrderExecutionResultState.Unsuccessful;
+        RequestSpec.RequestStepProcessorSetResultDelegate.Invoke(OrderExecutionResultState.Unsuccessful);
 
         foreach (var answer in AllowedRequestAnswers)
         {
@@ -367,12 +354,12 @@ public class BaseRequestAnswerStep : IRequestAnswerStep
     {
         WasSuccessful = false;
 
-        var rsp = RequestSpec.CurrentRequestStepProcessor;
+        //var rsp = RequestSpec.CurrentRequestStepProcessor;
 
-        if (rsp == null)
-        {
-            return;
-        }
+        //if (rsp == null)
+        //{
+        //    return;
+        //}
 
         //try
         //{
@@ -388,12 +375,12 @@ public class BaseRequestAnswerStep : IRequestAnswerStep
 
         Debug.Print($"RAS: left waiting with result: {taskResult}");
 
-        rsp.AppLogger.LogDebug($"Left waiting. Order: {rsp.RequestSpec?.ParameterSet?.CurrentOrder?.Id} Step: {AllowedRequestAnswers.Count} StepSuccessful {WasSuccessful} Result: {taskResult}");
+        RequestSpec.AppLogger.LogDebug($"Left waiting. Order: {_order.Id} Step: {AllowedRequestAnswers.Count} StepSuccessful {WasSuccessful} Result: {taskResult}");
 
         if (taskResult.Id != OrderExecutionResultState.Successful.Id)
         {
             WasSuccessful = false;
-            rsp.Result = taskResult;
+            RequestSpec.RequestStepProcessorSetResultDelegate.Invoke(taskResult);
             return;
         }
 
@@ -402,10 +389,10 @@ public class BaseRequestAnswerStep : IRequestAnswerStep
 
         if (result.ExecutionResult.Id != OrderExecutionResultState.Successful.Id)
         {
-            rsp.AppLogger.LogInformation($"{rsp.OrderLoggerId}RequestAnswerStep {this}: handle business logic for step was unsuccessful: {result.ErrorDescription}");
+            RequestSpec.AppLogger.LogInformation($"{_order.LoggerId}RequestAnswerStep {this}: handle business logic for step was unsuccessful: {result.ErrorDescription}");
             WasSuccessful = false;
 
-            rsp.Result = result.ExecutionResult;
+            RequestSpec.RequestStepProcessorSetResultDelegate.Invoke(result.ExecutionResult);
 
             return;
         }
@@ -415,15 +402,6 @@ public class BaseRequestAnswerStep : IRequestAnswerStep
         {
             RequestSpec.ResultTransportObject = result.TransportObject;
         }
-
-
-        //CurrentRequestStepProcessor.Result = OrderExecutionResultState.Successful;
-
-        //// Check if all steps are done. If yes the step was done successfully
-        //if (RequestSpec.RequestAnswerSteps.All(x => x.WasSuccessful))
-        //{
-        //    RequestSpec.WasSuccessful = true;
-        //}
     }
 
     private Task<IOrderExecutionResultState> CreateWaitingTask()
@@ -490,7 +468,7 @@ public class BaseRequestAnswerStep : IRequestAnswerStep
     /// <summary>Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.</summary>
     public virtual void Dispose()
     {
-        var rsp = RequestSpec.CurrentRequestStepProcessor;
+        //var rsp = RequestSpec.CurrentRequestStepProcessor;
 
         //if (rsp != null)
         //{
@@ -500,7 +478,6 @@ public class BaseRequestAnswerStep : IRequestAnswerStep
         Debug.Print($"RAS: dispose");
         //Debug.Print($"RAS: dispose {Environment.StackTrace}");
 
-        RequestSpec = null;
         NextChainElement = null;
 
         foreach (var allowedRequestAnswer in AllowedRequestAnswers)

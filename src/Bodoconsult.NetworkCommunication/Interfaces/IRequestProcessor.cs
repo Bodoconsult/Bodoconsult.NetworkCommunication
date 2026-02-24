@@ -19,10 +19,10 @@ public interface IRequestProcessor: IDisposable
     /// </summary>
     IRequestStepProcessor CurrentRequestStepProcessor { get; }
 
-    /// <summary>
-    /// Prepare the chain by creating the required elements
-    /// </summary>
-    public void PrepareTheChain();
+    ///// <summary>
+    ///// Prepare the chain by creating the required elements
+    ///// </summary>
+    //public void PrepareTheChain();
 
     /// <summary>
     /// Execute the order request by request
@@ -30,14 +30,12 @@ public interface IRequestProcessor: IDisposable
     /// <returns>Execution result</returns>
     IOrderExecutionResultState ExecuteOrder();
 
-
     /// <summary>
     /// Execute a single step
     /// </summary>
-    /// <param name="requestSpec">Current request spec</param>
+    /// <param name="processor">Current request step processor</param>
     /// <returns>Execution result</returns>
-    IOrderExecutionResultState ExecuteRequest(IRequestSpec requestSpec);
-
+    IOrderExecutionResultState ExecuteRequest(IRequestSpec processor);
 
     /// <summary>
     /// Check a received message
@@ -45,7 +43,6 @@ public interface IRequestProcessor: IDisposable
     /// <param name="receivedMessage">A message received from the device</param>
     /// <returns>True if the message was an expected answer of the current request</returns>
     bool CheckReceivedMessage(IInboundDataMessage receivedMessage);
-
 
     /// <summary>
     /// Cancel a not running processor
@@ -64,12 +61,10 @@ public interface IRequestProcessor: IDisposable
     /// <param name="isHardwareError">Is the reason for cancelling a hardware error</param>
     void Cancel(bool isRunning, bool isHardwareError);
 
-
     /// <summary>
     /// A delegate to implement a call back to say the <see cref="IOrderProcessor"/> that order is processed
     /// </summary>
     OrderProcessingFinishedDelegate OrderProcessingFinishedDelegate { get; set; }
-
 
     /// <summary>
     /// The task the <see cref="ExecuteOrder"/> command is running in
@@ -80,5 +75,4 @@ public interface IRequestProcessor: IDisposable
     /// Used to cancel <see cref="CurrentTask"/> if required
     /// </summary>
     CancellationTokenSource CancellationTokenSource { get; } 
-
 }

@@ -2,10 +2,10 @@
 
 using Bodoconsult.App.Benchmarking;
 using Bodoconsult.App.Interfaces;
-using Bodoconsult.NetworkCommunication.App.Abstractions;
 using Bodoconsult.NetworkCommunication.Delegates;
 using Bodoconsult.NetworkCommunication.EnumAndStates;
 using Bodoconsult.NetworkCommunication.Interfaces;
+using IAppDateService = Bodoconsult.NetworkCommunication.App.Abstractions.IAppDateService;
 
 namespace Bodoconsult.NetworkCommunication.OrderManagement.Orders;
 
@@ -15,8 +15,8 @@ namespace Bodoconsult.NetworkCommunication.OrderManagement.Orders;
 public abstract class BaseOrder : IOrder
 {
     private string _name;
-    private readonly IDateTimeService _dateTimeService;
-    protected string _loggerId;
+    private readonly IAppDateService _dateTimeService;
+    private string _loggerId;
     private bool _isCancelled;
     private readonly Lock _isCancelledObject = new();
     private readonly IAppBenchProxy _benchLogger;
@@ -25,7 +25,7 @@ public abstract class BaseOrder : IOrder
     /// <summary>
     /// Base class default ctor
     /// </summary>
-    protected BaseOrder(IParameterSet parameterSet, IDateTimeService dateTimeService, IAppBenchProxy benchLogger)
+    protected BaseOrder(IParameterSet parameterSet, IAppDateService dateTimeService, IAppBenchProxy benchLogger)
     {
         ParameterSet = parameterSet;
         _dateTimeService = dateTimeService;
@@ -63,7 +63,7 @@ public abstract class BaseOrder : IOrder
         {
             if (string.IsNullOrEmpty(value))
             {
-                _name = GetType().Name;
+                _name = TypeName;
                 _loggerId = $"{_name} ID {Id}: ";
                 return;
             }
@@ -75,8 +75,7 @@ public abstract class BaseOrder : IOrder
 
             _name = value;
 
-            _loggerId = _name == GetType().Name ? $"{_name} ID {Id}: " : $"{GetType().Name} ID {Id} Name {_name}: ";
-
+            _loggerId = _name == TypeName ? $"{_name} ID {Id}: " : $"{TypeName} ID {Id} Name {_name}: ";
         }
     }
 

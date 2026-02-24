@@ -1,7 +1,5 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
-using Bodoconsult.App.Interfaces;
-
 namespace Bodoconsult.NetworkCommunication.Interfaces;
 
 /// <summary>
@@ -9,16 +7,6 @@ namespace Bodoconsult.NetworkCommunication.Interfaces;
 /// </summary>
 public interface IRequestStepProcessor : IDisposable
 {
-    /// <summary>
-    /// Current app logger
-    /// </summary>
-    IAppLoggerProxy AppLogger { get;  }
-
-    /// <summary>
-    /// Current order ID for logging
-    /// </summary>
-    string OrderLoggerId  { get;  }
-
     /// <summary>
     /// Current execution result
     /// </summary>
@@ -28,11 +16,6 @@ public interface IRequestStepProcessor : IDisposable
     /// Current request spec to use for the processor
     /// </summary>
     IRequestSpec RequestSpec { get; set; }
-
-    /// <summary>
-    /// Message to send to device
-    /// </summary>
-    public IOutboundDataMessage SentMessage { get; }
 
     /// <summary>
     /// The number of messages to be sent
@@ -47,7 +30,7 @@ public interface IRequestStepProcessor : IDisposable
     /// <summary>
     /// Is the request processor cancelled
     /// </summary>
-    public bool IsCancelled { get; }
+    bool IsCancelled { get; }
 
     /// <summary>
     /// Prepare the chain by creating the required elements
@@ -76,4 +59,16 @@ public interface IRequestStepProcessor : IDisposable
     /// The current processed chain element
     /// </summary>
     IRequestAnswerStep CurrentChainElement { get; set; }
+
+    /// <summary>
+    /// Set the result state
+    /// </summary>
+    /// <param name="state">State to set as result</param>
+    void SetResult(IOrderExecutionResultState state);
+
+    /// <summary>
+    /// Check if cancelled
+    /// </summary>
+    /// <returns>True if cancelled else false</returns>
+    bool CheckIsCancelled();
 }

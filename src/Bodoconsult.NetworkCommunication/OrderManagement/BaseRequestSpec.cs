@@ -1,6 +1,8 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
+using Bodoconsult.App.Interfaces;
 using Bodoconsult.NetworkCommunication.App.Abstractions;
+using Bodoconsult.NetworkCommunication.Delegates;
 using Bodoconsult.NetworkCommunication.EnumAndStates;
 using Bodoconsult.NetworkCommunication.Interfaces;
 
@@ -14,10 +16,40 @@ public class BaseRequestSpec : IRequestSpec
     private bool _wasSuccessful;
     private readonly Lock _wasSuccessfulObject = new();
 
+    ///// <summary>
+    ///// The currently processed request step of the order
+    ///// </summary>
+    //public IRequestStepProcessor CurrentRequestStepProcessor { get; set; }
+
     /// <summary>
-    /// The currently processed request step of the order
+    /// Delegate to set the state for a <see cref="IRequestStepProcessor"/> instance
     /// </summary>
-    public IRequestStepProcessor CurrentRequestStepProcessor { get; set; }
+    public RequestStepProcessorSetResultDelegate RequestStepProcessorSetResultDelegate { get; set; }
+
+    /// <summary>
+    /// Is the <see cref="IRequestStepProcessor"/> instance cancelled?
+    /// </summary>
+    public RequestStepProcessorIsCancelledDelegate RequestStepProcessorIsCancelledDelegate { get; set; }
+
+    /// <summary>
+    /// Current app logger
+    /// </summary>
+    public IAppLoggerProxy AppLogger { get; set; }
+
+    /// <summary>
+    /// Send an app notfication
+    /// </summary>
+    public DoNotifyDelegate DoNotifyDelegate { get; set; }
+
+    /// <summary>
+    /// Delegate to cancel running operation on comm adapter level
+    /// </summary>
+    public CancelRunningOperationDelegate CancelRunningOperationDelegate { get; set; }
+
+    /// <summary>
+    /// Send a data message to the device
+    /// </summary>
+    public SendDataMessageDelegate SendDataMessageDelegate { get; set; }
 
     /// <summary>
     /// Clear text name of the request
@@ -35,10 +67,9 @@ public class BaseRequestSpec : IRequestSpec
     public char Command { get; protected set; }
 
     /// <summary>
-    /// Total calculated timeout for the answer(s) of an request in milliseconds
+    /// Total calculated timeout for the answer(s) of a request in milliseconds
     /// </summary>
     public int Timeout { get; protected set; }
-
 
     /// <summary>
     /// The number of repeatings in case the step was not successful
@@ -50,9 +81,8 @@ public class BaseRequestSpec : IRequestSpec
     /// </summary>
     public bool IsInternalRequest { get; protected set; }
 
-
     /// <summary>
-    /// A object to transferred from a predecessing request spec to the the current one
+    /// An object to transferred from a predecessing request spec to the current one
     /// </summary>
     public object TransportObject { get; set; }
 
@@ -74,7 +104,7 @@ public class BaseRequestSpec : IRequestSpec
     /// <summary>
     /// The expected handshake if the message was sent
     /// </summary>
-    public IList<IOrderExecutionResultState> ExpectedHandshakeForSentMessage { get; protected set; } = new List<IOrderExecutionResultState> { OrderExecutionResultState.Successful};
+    public List<IOrderExecutionResultState> ExpectedHandshakeForSentMessage { get; protected set; } = [OrderExecutionResultState.Successful];
 
     /// <summary>
     /// Does the request require only a (valid) handshake as answer to be successful
@@ -87,15 +117,25 @@ public class BaseRequestSpec : IRequestSpec
     public RequestAnswerStepIsStartedDelegate RequestAnswerStepIsStartedDelegate { get; set; }
 
     /// <summary>
+    /// Order logger ID
+    /// </summary>
+    public string OrderLoggerId { get; set; }
+
+    /// <summary>
     /// The messages to send. These messages are processed all in the same way
     /// defined by the request
     /// </summary>
-    public IList<IOutboundDataMessage> SentMessage { get; } = new List<IOutboundDataMessage>();
+    public List<IOutboundDataMessage> SentMessage { get; } = new();
+
+    /// <summary>
+    /// Current sent message
+    /// </summary>
+    public IOutboundDataMessage CurrentSentMessage { get; set; }
 
     /// <summary>
     /// Represents a timeline of request answers
     /// </summary>
-    public IList<IRequestAnswerStep> RequestAnswerSteps { get; } = new List<IRequestAnswerStep>();
+    public List<IRequestAnswerStep> RequestAnswerSteps { get; } = new();
 
     /// <summary>
     /// The step was successfully processed in all steps
@@ -207,6 +247,5 @@ public class BaseRequestSpec : IRequestSpec
         //RequestAnswerSteps.Clear();
 
         SentMessage.Clear();
-        CurrentRequestStepProcessor = null;
     }
 }

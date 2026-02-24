@@ -61,11 +61,11 @@ public interface IOrderManagementCommunicationAdapter: IDisposable
     IDataMessagingConfig DataMessagingConfig { get; }
 
     /// <summary>
-    /// Send a command to the device
+    /// Send a data message to the device
     /// </summary>
     /// <param name="command">Command to send</param>
     /// <returns>Reply of the device</returns>
-    MessageSendingResult SendCommandDataMessage(IOutboundDataMessage command);
+    MessageSendingResult SendDataMessage(IOutboundDataMessage command);
 
     /// <summary>
     /// Cancel the currently running operation on the device

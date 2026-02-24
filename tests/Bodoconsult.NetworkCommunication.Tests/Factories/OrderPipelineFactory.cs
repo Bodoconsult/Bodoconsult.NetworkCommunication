@@ -1,9 +1,9 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
 using Bodoconsult.App.Interfaces;
-using Bodoconsult.NetworkCommunication.App.Abstractions;
 using Bodoconsult.NetworkCommunication.Interfaces;
 using Bodoconsult.NetworkCommunication.OrderManagement.Processors;
+using IAppDateService = Bodoconsult.NetworkCommunication.App.Abstractions.IAppDateService;
 
 namespace Bodoconsult.NetworkCommunication.Tests.Factories;
 
@@ -12,13 +12,13 @@ namespace Bodoconsult.NetworkCommunication.Tests.Factories;
 /// </summary>
 public class OrderPipelineFactory: IOrderPipelineFactory
 {
-    private readonly IDateTimeService _dateTimeService;
+    private readonly IAppDateService _dateTimeService;
     private readonly IAppLoggerProxy _appLogger;
 
     /// <summary>
     /// Default ctor
     /// </summary>
-    public OrderPipelineFactory(IDateTimeService dateTimeService, IAppLoggerProxy appLogger)
+    public OrderPipelineFactory(IAppDateService dateTimeService, IAppLoggerProxy appLogger)
     {
         _dateTimeService = dateTimeService;
         _appLogger = appLogger;

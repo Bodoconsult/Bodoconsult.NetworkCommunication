@@ -14,15 +14,15 @@ public class RequestStepProcessorFactory : IRequestStepProcessorFactory
     /// Create a tower request step processor
     /// </summary>
     /// <param name="requestSpec">Current request</param>
-    /// <param name="towerServer">Current tower server</param>
+    /// <param name="device">Current device</param>
     /// <returns>A valid tower request step processor instance</returns>
-    public IRequestStepProcessor CreateProcessor(IRequestSpec requestSpec, IOrderManagementDevice towerServer)
+    public IRequestStepProcessor CreateProcessor(IRequestSpec requestSpec, IOrderManagementDevice device)
     {
         if (requestSpec.IsInternalRequest)
         {
-            return new InternalRequestStepProcessor( requestSpec, towerServer);
+            return new InternalRequestStepProcessor( requestSpec, device);
         }
 
-        return new RequestStepProcessor(requestSpec, towerServer);
+        return new RequestStepProcessor(requestSpec);
     }
 }

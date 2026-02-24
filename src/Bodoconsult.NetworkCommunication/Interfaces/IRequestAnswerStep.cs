@@ -17,7 +17,7 @@ public interface IRequestAnswerStep : IDisposable
     /// <summary>
     /// Allowed request answers: one of the items has to be received as answer from device
     /// </summary>
-    IList<IRequestAnswer> AllowedRequestAnswers { get; }
+    List<IRequestAnswer> AllowedRequestAnswers { get; }
 
     /// <summary>
     /// The next step in the chain

@@ -1,5 +1,8 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
+using Bodoconsult.App.Interfaces;
+using Bodoconsult.NetworkCommunication.Delegates;
+
 namespace Bodoconsult.NetworkCommunication.Interfaces;
 
 /// <summary>
@@ -7,10 +10,40 @@ namespace Bodoconsult.NetworkCommunication.Interfaces;
 /// </summary>
 public interface IRequestSpec: IDisposable
 {
+    ///// <summary>
+    ///// The currently processed request step of the order
+    ///// </summary>
+    //IRequestStepProcessor CurrentRequestStepProcessor { get; set; }
+
     /// <summary>
-    /// The currently processed request step of the order
+    /// Delegate to set the state for a <see cref="IRequestStepProcessor"/> instance
     /// </summary>
-    IRequestStepProcessor CurrentRequestStepProcessor { get; set; }
+    RequestStepProcessorSetResultDelegate RequestStepProcessorSetResultDelegate { get; set; }
+
+    /// <summary>
+    /// Is the <see cref="IRequestStepProcessor"/> instance cancelled?
+    /// </summary>
+    RequestStepProcessorIsCancelledDelegate RequestStepProcessorIsCancelledDelegate { get; set; }
+
+    /// <summary>
+    /// Current app logger
+    /// </summary>
+    IAppLoggerProxy AppLogger { get; set; }
+
+    /// <summary>
+    /// Send an app notfication
+    /// </summary>
+    DoNotifyDelegate DoNotifyDelegate { get; set; }
+
+    /// <summary>
+    /// Delegate to cancel running operation on comm adapter level
+    /// </summary>
+    CancelRunningOperationDelegate CancelRunningOperationDelegate { get; set; }
+
+    /// <summary>
+    /// Send a data message to the device
+    /// </summary>
+    SendDataMessageDelegate SendDataMessageDelegate { get; set; }
 
     /// <summary>
     /// Clear text name of the request
@@ -43,7 +76,7 @@ public interface IRequestSpec: IDisposable
     bool IsInternalRequest { get; }
         
     /// <summary>
-    /// A object to transferred from a predecessing request spec to the the current one
+    /// An object to transferred from a predecessing request spec to the current one
     /// </summary>
     object TransportObject { get; set; }
 
@@ -62,17 +95,21 @@ public interface IRequestSpec: IDisposable
     /// </summary>
     bool DoNotRunRequestSpecIfThereIsSameOrderTypeInQueue { get; }
 
-
     /// <summary>
     /// The messages to send. These messages are processed all in the same way
     /// defined by the request
     /// </summary>
-    IList<IOutboundDataMessage> SentMessage { get; }
+    List<IOutboundDataMessage> SentMessage { get; }
+
+    /// <summary>
+    /// Current sent message
+    /// </summary>
+    IOutboundDataMessage CurrentSentMessage { get; set; }
 
     /// <summary>
     /// The expected handshake if the message was sent
     /// </summary>
-    IList<IOrderExecutionResultState> ExpectedHandshakeForSentMessage { get; }
+    List<IOrderExecutionResultState> ExpectedHandshakeForSentMessage { get; }
 
     /// <summary>
     /// Does the request require only a (valid) handshake as answer to be successful
@@ -82,8 +119,7 @@ public interface IRequestSpec: IDisposable
     /// <summary>
     /// Represents a timeline of request answers
     /// </summary>
-    IList<IRequestAnswerStep> RequestAnswerSteps { get; }
-
+    List<IRequestAnswerStep> RequestAnswerSteps { get; }
 
     /// <summary>
     /// The step was successfully processed in all steps
@@ -96,7 +132,6 @@ public interface IRequestSpec: IDisposable
     /// <param name="transportObject">Object from predecessing request</param>
     void SetTransportObject(object transportObject);
 
-
     /// <summary>
     /// Create all messages to process in the step. This message are processed all in the same way
     /// defined by the request
@@ -108,14 +143,17 @@ public interface IRequestSpec: IDisposable
     /// </summary>
     void CalculateTotalTimeout();
 
-
-
     #region For testing
 
     /// <summary>
     /// A delegate for testing order executing. Not intended for production use
     /// </summary>
     public RequestAnswerStepIsStartedDelegate RequestAnswerStepIsStartedDelegate { get; set; }
+
+    /// <summary>
+    /// Order logger ID
+    /// </summary>
+    string OrderLoggerId { get; set; }
 
     #endregion
 }

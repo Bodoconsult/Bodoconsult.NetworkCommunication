@@ -5,14 +5,14 @@ namespace Bodoconsult.NetworkCommunication.App.Abstractions;
 /// <summary>
 /// Concrete implementation returning system DateTime
 /// </summary>
-public class DateTimeService : IDateTimeService
+public class AppDateService : IAppDateService
 {
     /// <summary>
-    /// Factory method for <see cref="DateTimeService"/>
+    /// Factory method for <see cref="AppDateService"/>
     /// </summary>
-    /// <returns>Fresh instance of <see cref="DateTimeService"/></returns>
-    public IDateTimeService CreateInstance() {
-        var dts = new DateTimeService();
+    /// <returns>Fresh instance of <see cref="AppDateService"/></returns>
+    public IAppDateService CreateInstance() {
+        var dts = new AppDateService();
         return dts;
     }
 

@@ -2,18 +2,18 @@
 
 using System.Collections.Concurrent;
 using Bodoconsult.App.Interfaces;
-using Bodoconsult.NetworkCommunication.App.Abstractions;
 using Bodoconsult.NetworkCommunication.Delegates;
 using Bodoconsult.NetworkCommunication.EnumAndStates;
 using Bodoconsult.NetworkCommunication.Helpers;
 using Bodoconsult.NetworkCommunication.Interfaces;
 using Bodoconsult.NetworkCommunication.OrderManagement.Orders;
+using IAppDateService = Bodoconsult.NetworkCommunication.App.Abstractions.IAppDateService;
 
 namespace Bodoconsult.NetworkCommunication.OrderManagement.Processors;
 
 public class OrderPipeline : IOrderPipeline
 {
-    private readonly IDateTimeService _dateTimeService;
+    private readonly IAppDateService _dateTimeService;
 
     private readonly IRequestProcessorFactory _requestProcessorFactory;
 
@@ -24,7 +24,7 @@ public class OrderPipeline : IOrderPipeline
     /// <summary>
     /// Default ctor
     /// </summary>
-    public OrderPipeline(IDateTimeService dateTimeService, IRequestProcessorFactory requestProcessorFactory, IAppLoggerProxy appLogger, string loggerId)
+    public OrderPipeline(IAppDateService dateTimeService, IRequestProcessorFactory requestProcessorFactory, IAppLoggerProxy appLogger, string loggerId)
     {
         _dateTimeService = dateTimeService;
         _requestProcessorFactory = requestProcessorFactory;
@@ -110,7 +110,7 @@ public class OrderPipeline : IOrderPipeline
     /// <summary>
     /// Is a certain order type running or waiting for execution
     /// </summary>
-    /// <param name="orderTypeCode">Order type code: see <see cref="OrderTypeCodes"/> for valid values</param>
+    /// <param name="orderTypeCode">Order type code</param>
     /// <returns>True if an order is running or waiting in the queue else false</returns>
     public bool IsOrderTypeInTheQueue(int orderTypeCode)
     {
@@ -138,8 +138,6 @@ public class OrderPipeline : IOrderPipeline
     /// Is queue with the waiting priority and NOT cancelled orders empty
     /// </summary>
     public bool IsWaitingPriorityOrdersEmpty => _ordersWithPriorityQueue.IsEmpty || _ordersWithPriorityQueue.All(x => x.IsCancelled);
-
-
 
     /// <summary>
     /// Add a non-priority order
@@ -606,9 +604,6 @@ public class OrderPipeline : IOrderPipeline
     /// <param name="requestProcessor">Current request processor to execute</param>
     public void ExecuteOrder(IRequestProcessor requestProcessor)
     {
-        requestProcessor.PrepareTheChain();
-
-
         var order = requestProcessor.Order;
         order.StartTime = _dateTimeService.Now;
 

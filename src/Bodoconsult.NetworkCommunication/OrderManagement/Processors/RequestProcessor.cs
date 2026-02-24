@@ -2,6 +2,7 @@
 
 using System.Diagnostics;
 using Bodoconsult.App.Helpers;
+using Bodoconsult.App.Interfaces;
 using Bodoconsult.NetworkCommunication.Delegates;
 using Bodoconsult.NetworkCommunication.EnumAndStates;
 using Bodoconsult.NetworkCommunication.Interfaces;
@@ -13,25 +14,18 @@ namespace Bodoconsult.NetworkCommunication.OrderManagement.Processors;
 /// </summary>
 public class RequestProcessor : IRequestProcessor
 {
-
     private readonly IRequestStepProcessorFactory _requestStepProcessorFactory;
-
     private readonly IOrderManagementDevice _device;
-
     private bool _isCancelled;
     private readonly Lock _cancelLockObject = new();
-
     private readonly Lock _stepProcessorObject = new();
-
     private readonly string _orderLoggerId;
-
-    private object _transportObject = null;
-
+    private object _transportObject;
     private bool _isDisposing;
     private bool _isExitActionFired;
     private readonly Lock _isExitActionFiredLock = new();
     private IRequestStepProcessor _currentRequestStepProcessor;
-
+    private readonly IAppLoggerProxy _appLogger;
 
     /// <summary>
     /// Is the request processor cancelled
@@ -54,27 +48,31 @@ public class RequestProcessor : IRequestProcessor
         }
     }
 
-
     /// <summary>
     /// Default ctor
     /// </summary>
     /// <param name="order">Current order to process</param>
     /// <param name="requestStepProcessorFactory">Current factory to create <see cref="IRequestStepProcessor"/> instances.</param>
-    /// <param name="deviceServer">Current device server</param>
-    public RequestProcessor(IOrder order, IRequestStepProcessorFactory requestStepProcessorFactory, IOrderManagementDevice deviceServer)
+    /// <param name="device">Current device</param>
+    public RequestProcessor(IOrder order, IRequestStepProcessorFactory requestStepProcessorFactory, IOrderManagementDevice device)
     {
         Order = order;
         Order.WasSuccessful = false;
         _requestStepProcessorFactory = requestStepProcessorFactory;
-        _device = deviceServer;
+        _device = device ?? throw new ArgumentNullException(nameof(device));
+
+        if (_device.DataMessagingConfig == null)
+        {
+            return;
+        }
         _orderLoggerId = $"{_device.DataMessagingConfig.LoggerId}{Order.LoggerId}";
+        _appLogger = _device.DataMessagingConfig.AppLogger;
     }
 
     /// <summary>
     /// Current order to process
     /// </summary>
     public IOrder Order { get; private set; }
-
 
     /// <summary>
     /// The currently processed request step of the order
@@ -97,22 +95,6 @@ public class RequestProcessor : IRequestProcessor
         }
     }
 
-
-    /// <summary>
-    /// Prepare the request spec chain
-    /// </summary>
-    public void PrepareTheChain()
-    {
-        foreach (var requestSpec in Order.RequestSpecs)
-        {
-            var processor = _requestStepProcessorFactory.CreateProcessor(requestSpec, _device);
-            processor.PrepareTheChain();
-
-            requestSpec.CurrentRequestStepProcessor = processor;
-        }
-    }
-
-
     /// <summary>
     /// Execute the order request by request
     /// </summary>
@@ -121,7 +103,6 @@ public class RequestProcessor : IRequestProcessor
     {
         // Fetch the order here to avoid multithread issues
         var order = Order;
-        var st = _device?.DataMessagingConfig;
 
         //try
         //{
@@ -141,7 +122,7 @@ public class RequestProcessor : IRequestProcessor
 
             if (IsCancelled || order.IsCancelled)
             {
-                st?.AppLogger.LogInformation($"{st.LoggerId}{order.LoggerId}{requestSpec.Name} was cancelled");
+                _appLogger?.LogInformation($"{_orderLoggerId}{requestSpec.Name} was cancelled");
                 return ExitAction(order, OrderExecutionResultState.Unsuccessful);
             }
 
@@ -158,16 +139,16 @@ public class RequestProcessor : IRequestProcessor
 
             if (IsCancelled || order.IsCancelled)
             {
-                st?.AppLogger.LogInformation($"{_orderLoggerId} was cancelled");
+                _appLogger?.LogInformation($"{_orderLoggerId} was cancelled");
                 return ExitAction(order, OrderExecutionResultState.Unsuccessful);
             }
 
-            st?.AppLogger.LogInformation($"{_orderLoggerId}exit {requestSpec.Name} with code {result}");
+            _appLogger?.LogInformation($"{_orderLoggerId}exit {requestSpec.Name} with code {result}");
             return ExitAction(order, result);
 
         }
 
-        st?.AppLogger.LogInformation($"{_orderLoggerId} finished successful");
+        _appLogger?.LogInformation($"{_orderLoggerId} finished successful");
 
         // If all requests were successful, the complete order was successful
         if (order.RequestSpecs.All(x => x.WasSuccessful))
@@ -184,7 +165,6 @@ public class RequestProcessor : IRequestProcessor
         //}
     }
 
-
     /// <summary>
     /// Prepare the request processor for correct exit
     /// </summary>
@@ -193,7 +173,6 @@ public class RequestProcessor : IRequestProcessor
     /// <returns>Current state of the order</returns>
     private IOrderExecutionResultState ExitAction(IOrder order, IOrderExecutionResultState currentState)
     {
-
         if (order != null)
         {
             // Safety check
@@ -229,14 +208,12 @@ public class RequestProcessor : IRequestProcessor
             OrderProcessingFinishedDelegate?.Invoke(order.Id);
         }
 
-
         // Deactivate informing device order processor for safety reasons. OrderProcessingFinished should not be called more than one times
         CurrentRequestStepProcessor = null;
         Order = null;
         OrderProcessingFinishedDelegate = null;
         return currentState;
     }
-
 
     /// <summary>
     /// Execute a single step
@@ -245,7 +222,6 @@ public class RequestProcessor : IRequestProcessor
     /// <returns>Execution result</returns>
     public IOrderExecutionResultState ExecuteRequest(IRequestSpec requestSpec)
     {
-
         // Fetch the order here to avoid multithread issues
         var order = Order;
 
@@ -254,8 +230,18 @@ public class RequestProcessor : IRequestProcessor
             return SetUnsuccessful(order);
         }
 
-        var processor = requestSpec.CurrentRequestStepProcessor;
-        requestSpec.SetTransportObject(_transportObject);
+        requestSpec.DoNotifyDelegate = _device.DoNotify;
+        requestSpec.SendDataMessageDelegate = _device.CommunicationAdapter.SendDataMessage;
+        requestSpec.CancelRunningOperationDelegate = _device.CommunicationAdapter.CancelRunningOperation;
+        requestSpec.AppLogger = _appLogger;
+        requestSpec.OrderLoggerId = $"{_orderLoggerId}RSP: {requestSpec.Name} ";
+        
+        var processor = _requestStepProcessorFactory.CreateProcessor(requestSpec, _device);
+        requestSpec.RequestStepProcessorSetResultDelegate = processor.SetResult;
+        requestSpec.RequestStepProcessorIsCancelledDelegate = processor.CheckIsCancelled;
+        processor.PrepareTheChain();
+
+        processor.RequestSpec.SetTransportObject(_transportObject);
 
         CurrentRequestStepProcessor = processor;
 
@@ -387,7 +373,6 @@ public class RequestProcessor : IRequestProcessor
         Cancel(false, false);
     }
 
-
     /// <summary>
     /// Cancel the processor
     /// </summary>
@@ -426,8 +411,6 @@ public class RequestProcessor : IRequestProcessor
             return;
         }
 
-
-
         // avoid cancellation of operation if not required or not possible
         if (isHardwareError || !order.SendCancelTodeviceIfCancelledOrUnsuccessful)
         {
@@ -435,8 +418,6 @@ public class RequestProcessor : IRequestProcessor
         }
 
         _device.CancelRunningOperation();
-
-
     }
 
     /// <summary>
@@ -449,6 +430,9 @@ public class RequestProcessor : IRequestProcessor
     /// </summary>
     public Task CurrentTask { get; set; }
 
+    /// <summary>
+    /// Used to cancel <see cref="IRequestProcessor.CurrentTask"/> if required
+    /// </summary>
     public CancellationTokenSource CancellationTokenSource { get; } = new(5000);
 
     /// <summary>Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.</summary>
@@ -473,8 +457,5 @@ public class RequestProcessor : IRequestProcessor
         }
         Order = null;
         OrderProcessingFinishedDelegate = null;
-
-
     }
-
 }

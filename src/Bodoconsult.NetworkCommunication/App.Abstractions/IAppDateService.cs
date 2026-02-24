@@ -7,7 +7,7 @@ namespace Bodoconsult.NetworkCommunication.App.Abstractions;
 /// Production will use a service returning same DateTime as the system
 /// UnitTests will use another implem allowing to change DateTime
 /// </summary>
-public interface IDateTimeService
+public interface IAppDateService
 {
     /// <summary>
     /// return current date and time

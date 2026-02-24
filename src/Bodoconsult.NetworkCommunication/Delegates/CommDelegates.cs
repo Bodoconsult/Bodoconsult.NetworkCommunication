@@ -1,8 +1,9 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
-using System.Net.Sockets;
 using Bodoconsult.NetworkCommunication.Communication.Sending;
 using Bodoconsult.NetworkCommunication.Interfaces;
+using System.Net.Sockets;
+using System.Runtime.CompilerServices;
 
 namespace Bodoconsult.NetworkCommunication.Delegates;
 
@@ -51,7 +52,7 @@ public delegate bool CheckIfDeviceIsReadyDelegate();
 /// <summary>
 /// Data message not sent delegate
 /// </summary>
-public delegate void  RaiseDataMessageNotSentDelegate(ReadOnlyMemory<byte> message, string reason);
+public delegate void RaiseDataMessageNotSentDelegate(ReadOnlyMemory<byte> message, string reason);
 
 /// <summary>
 /// Message sent delegate
@@ -89,9 +90,9 @@ public delegate void RaiseComDevCloseRequestDelegate(string requestSource);
 #endregion
 
 // ****** Delegates for sender and reciever ****** 
-    
+
 // ****** Receiver delegates ****** 
-    
+
 public delegate void RaisedeviceMessageNotReceivedDelegate(IInboundDataMessage message);
 public delegate void RaisedeviceMessageCorruptedDelegate(byte messageBlockAndRc, string reason);
 
@@ -119,7 +120,6 @@ public delegate MessageHandlingResult ActionRequestStepDelegate(object transport
 /// </summary>
 /// <param name="order">The order the state was changed</param>
 public delegate void DoNotifyOrderStateChangedDelegate(IOrder order);
-
 
 /// <summary>
 /// A delegate to implement a call back to say the <see cref="IOrderProcessor"/> that order is processed
@@ -150,6 +150,38 @@ public delegate MessageHandlingResult HandleUnexpectedRequestAnswerDelegate(IInb
 /// </summary>
 public delegate void HandleRequestAnswerStepFailedDelegate();
 
+/// <summary>
+/// Delegate to set the state for a <see cref="IRequestStepProcessor"/> instance
+/// </summary>
+/// <param name="state">State to set</param>
+public delegate void RequestStepProcessorSetResultDelegate(IOrderExecutionResultState state);
 
+/// <summary>
+/// Is the <see cref="IRequestStepProcessor"/> instance cancelled?
+/// </summary>
+/// <returns>True, if cancelled else false</returns>
+public delegate bool RequestStepProcessorIsCancelledDelegate();
+
+/// <summary>
+/// Send an app notfication
+/// </summary>
+/// <param name="state">Business or device state to send the notification for</param>
+/// <param name="memberName">Do not set this value</param>
+/// <param name="lineNumber">Do not set this value</param>
+public delegate void DoNotifyDelegate(IDeviceState state,
+    [CallerMemberName] string memberName = "",
+    [CallerLineNumber] int lineNumber = 0);
+
+/// <summary>
+/// Delegate to cancel running operation on comm adapter level
+/// </summary>
+public delegate MessageSendingResult CancelRunningOperationDelegate();
+
+/// <summary>
+/// Send a data message to the device
+/// </summary>
+/// <param name="command">Command to send</param>
+/// <returns>Reply of the device</returns>
+public delegate MessageSendingResult SendDataMessageDelegate(IOutboundDataMessage command);
 
 #endregion
