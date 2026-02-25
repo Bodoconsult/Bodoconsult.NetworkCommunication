@@ -7,7 +7,7 @@ namespace Bodoconsult.NetworkCommunication.Interfaces;
 /// <summary>
 /// Base interface for TOM parameter sets
 /// </summary>
-public interface IParameterSet: IDisposable
+public interface IParameterSet: ITypedOutboundDataBlock, IDisposable
 {
     /// <summary>
     /// User ID
@@ -41,14 +41,12 @@ public interface IParameterSet: IDisposable
     bool DoNotNotifyClient { get; set; }
 
     /// <summary>
-    /// A result object filled by the the order execution process
+    /// A result object filled by the order execution process
     /// </summary>
     object OrderResult { get; set; }
-
 
     /// <summary>
     /// Is the parameter set valid?
     /// </summary>
     ICollection<ValidationResult> IsValid { get; }
-
 }

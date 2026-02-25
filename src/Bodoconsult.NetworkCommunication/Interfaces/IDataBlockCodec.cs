@@ -15,7 +15,7 @@ public interface IDataBlockCodec
     /// <param name="data">The array as list to add the datablock to</param>
     /// <param name="datablock">Current datablock object</param>
     /// <returns>a byte array with datablock infos</returns>
-    void EncodeDataBlock(List<byte> data, IDataBlock datablock);
+    void EncodeDataBlock(List<byte> data, ITypedOutboundDataBlock datablock);
 
 
     /// <summary>
@@ -24,5 +24,5 @@ public interface IDataBlockCodec
     /// </summary>
     /// <param name="datablockBytes">Datablock bytes received</param>
     /// <returns>Datablock object</returns>
-    IDataBlock DecodeDataBlock(Memory<byte> datablockBytes);
+    ITypedInboundDataBlock DecodeDataBlock(Memory<byte> datablockBytes);
 }

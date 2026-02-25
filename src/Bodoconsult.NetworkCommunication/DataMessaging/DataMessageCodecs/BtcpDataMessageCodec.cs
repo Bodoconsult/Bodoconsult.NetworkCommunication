@@ -70,7 +70,7 @@ public class BtcpDataMessageCodec : BaseDataMessageCodec
         //try
         //{
 
-        IDataBlock dataBlock = null;
+        ITypedInboundDataBlock dataBlock = null;
 
         var posEot = 0;
 

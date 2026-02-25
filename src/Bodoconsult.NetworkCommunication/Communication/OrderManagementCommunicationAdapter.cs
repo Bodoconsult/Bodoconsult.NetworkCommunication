@@ -14,8 +14,8 @@ public class OrderManagementCommunicationAdapter : IOrderManagementCommunication
 {
 
     private ICommunicationHandler _communicationHandler;
-
-    private IDeviceState _towerState = DefaultDeviceStates.DeviceStateOffline;
+    private readonly ICommunicationHandlerFactory _communicationHandlerFactory;
+    private IDeviceState _deviceState = DefaultDeviceStates.DeviceStateOffline;
 
     ///// <summary>
     ///// Current send message block number
@@ -37,16 +37,27 @@ public class OrderManagementCommunicationAdapter : IOrderManagementCommunication
     /// <summary>
     /// Default ctor
     /// </summary>
-    public OrderManagementCommunicationAdapter(IIpDataMessagingConfig dataMessagingConfig)
+    public OrderManagementCommunicationAdapter(IIpDataMessagingConfig dataMessagingConfig,
+        ICommunicationHandlerFactory communicationHandlerFactory)
     {
         DataMessagingConfig = dataMessagingConfig;
+        _communicationHandlerFactory = communicationHandlerFactory;
 
         ////DataMessagingConfig.GetTowerStateDelegate = GetTowerState;
-        //DataMessagingConfig.CheckIfCommunicationIsOnlineDelegate = CheckIfCommunicationIsOnline;
+        DataMessagingConfig.CheckIfCommunicationIsOnlineDelegate = CheckIfCommunicationIsOnline;
         //DataMessagingConfig.CheckIfDeviceIsReadyDelegate = CheckIfTowerIsReady;
 
         //DataMessagingConfig.RaiseUpdateModeReceivedDelegate = OnUpdateModeReceived;
-        //DataMessagingConfig.RaiseComDevCloseRequestDelegate = OnRequestComDevClose;
+        DataMessagingConfig.RaiseComDevCloseRequestDelegate = OnRequestComDevClose;
+    }
+
+    /// <summary>
+    /// Check if the tower comm is online
+    /// </summary>
+    /// <returns>True if the communication is online else false</returns>
+    public bool CheckIfCommunicationIsOnline()
+    {
+        return _deviceState != DefaultDeviceStates.DeviceStateOffline;
     }
 
     /// <summary>
@@ -223,6 +234,7 @@ public class OrderManagementCommunicationAdapter : IOrderManagementCommunication
             // Leave here if no error happened before
             if (!isCloseRequired)
             {
+                _deviceState = DefaultDeviceStates.DeviceStateOnline;
                 return IsCommunicationHandlerNotNull;
             }
 
@@ -331,74 +343,14 @@ public class OrderManagementCommunicationAdapter : IOrderManagementCommunication
             //_currentBlockNo = TowerCommunicationBasics.MaxBlockNoStStys;
         }
 
-        //var receiveTimeOutStr = "10000"; //WebConfigurationManager.AppSettings.Get("SocketReceiveTimeout");
-        //var sendTimeOutStr = "10000"; //WebConfigurationManager.AppSettings.Get("SocketSendTimeout");
-        //var sendPacketTimeOutStr = "10000"; //WebConfigurationManager.AppSettings.Get("SendPacketTimeout");
-
-        //if (!int.TryParse(receiveTimeOutStr, out var socketReceiveTimeOut))
-        //{
-        //    throw new ArgumentException($"{DataMessagingConfig.LoggerId}receive timeout value for socket could not be parsed from config file.");
-        //}
-
-        //if (!int.TryParse(sendTimeOutStr, out var socketSendTimeOut))
-        //{
-        //    throw new ArgumentException($"{DataMessagingConfig.LoggerId}send timeout value for socket could not be parsed from config file.");
-        //}
-
-        //if (!int.TryParse(sendPacketTimeOutStr, out var sendPacketTimeOut))
-        //{
-        //    throw new ArgumentException($"{DataMessagingConfig.LoggerId}send message timeout could not be parsed from config file.");
-        //}
-
+        _communicationHandler = _communicationHandlerFactory.CreateInstance(DataMessagingConfig);
         _communicationHandler.Connect();
 
         //_currentBlockNo = TowerCommunicationBasics.MaxBlockNoStStys;
 
         var connectionEstablishedMessage = $"{DataMessagingConfig.LoggerId}connection to {DataMessagingConfig.IpAddress}:{DataMessagingConfig.Port} established: {_communicationHandler?.IsConnected}.";
         DataMessagingConfig.AppLogger.LogInformation(connectionEstablishedMessage);
-
-        //IsFirmwwareUpdateRunning = CheckIfIsTowerUpdateMode();
-        //if (IsFirmwwareUpdateRunning)
-        //{
-        //    DataMessagingConfig.AppLogger.LogDebug($"{DataMessagingConfig.LoggerId}is in UPDATE mode.");
-        //    TowerState = StSysTowerHardwareState.TowerStateUpdate;
-        //}
-        //else
-        //{
-        //    DataMessagingConfig.AppLogger.LogDebug($"{DataMessagingConfig.LoggerId}is online.");
-        //    TowerState = StSysTowerHardwareState.TowerStateOnline;
-        //}
     }
-
-    ///// <summary>
-    ///// Public method to init comm handler for unit testing
-    ///// </summary>
-    //public void InitCommunicationObjectsForTests()
-    //{
-    //    var commHandlerFactory = Globals.Instance.DiContainer.Get<ISmdTowerCommunicationHandlerFactory>();
-
-    //    DataMessagingConfig.RaiseComDevCloseRequestDelegate = OnRequestComDevClose;
-
-    //    _communicationHandler = commHandlerFactory.CreateInstance(SmdTower);
-    //}
-
-    //private bool CheckIfIsTowerUpdateMode()
-    //{
-    //    if (_communicationHandler == null || TowerState == StSysTowerHardwareState.TowerStateUpdateBusy)
-    //    {
-    //        return false;
-    //    }
-
-    //    try
-    //    {
-    //        return _isInUpdateMode;
-    //    }
-    //    catch (Exception e)
-    //    {
-    //        DataMessagingConfig.AppLogger.LogError($"{DataMessagingConfig.LoggerId}request is in UPDATE mode - Tower does NOT answer.", e);
-    //        return false;
-    //    }
-    //}
 
     private void OnRequestComDevClose(string requestSource)
     {
@@ -412,12 +364,6 @@ public class OrderManagementCommunicationAdapter : IOrderManagementCommunication
             DataMessagingConfig.AppLogger.LogError("ComDevClose failed", e);
         }
     }
-
-
-    //private void OnMessageReceived(IDataMessage message)
-    //{
-    //    NotifyTowerMessageReceivedDelegate.Invoke(message);
-    //}
 
     private readonly Dictionary<string, Ping> _pingInstances = new();
 

@@ -7,20 +7,10 @@ using Bodoconsult.NetworkCommunication.Interfaces;
 namespace Bodoconsult.NetworkCommunication.OrderManagement.ParameterSets;
 
 /// <summary>
-/// Parameter set for requests not requiring any parameters
+/// Parameter set for requests 
 /// </summary>
-public class EmptyParameterSet: IParameterSet
+public class BusinessTransactionParameterSet : IParameterSet
 {
-    /// <summary>
-    /// Data contains the bytes of the Data except the byte representing datablock type
-    /// </summary>
-    public Memory<byte> Data { get; set; }
-
-    /// <summary>
-    /// Type code for the type of the outbound datablock
-    /// </summary>
-    public char DataBlockType => 'e';
-
     /// <summary>
     /// The order the parameter set is bound to
     /// </summary>
@@ -39,6 +29,16 @@ public class EmptyParameterSet: IParameterSet
         }
         CurrentOrder = order;
     }
+
+    /// <summary>
+    /// The ID of the requested business transaction
+    /// </summary>
+    public int BusinessTransactionId { get; set; }
+
+    /// <summary>
+    /// The payload datablock for the business transaction. Contains parameters for the requested business transaction
+    /// </summary>
+    public ITypedInboundDataBlock DataBlock { get; set; }
 
     /// <summary>
     /// User ID
@@ -75,6 +75,15 @@ public class EmptyParameterSet: IParameterSet
     {
         CurrentOrder = null;
         OrderResult = null;
-        Data = null;
     }
+
+    /// <summary>
+    /// Data contains the bytes of the Data except the byte representing datablock type
+    /// </summary>
+    public Memory<byte> Data { get; set; }
+
+    /// <summary>
+    /// Type code for the type of the outbound datablock
+    /// </summary>
+    public char DataBlockType => 'b';
 }

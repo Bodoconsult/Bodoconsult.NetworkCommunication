@@ -71,7 +71,7 @@ public class BtcpOutboundDataMessage: IOutboundBusinessTransactionDataMessage
     /// <summary>
     /// Data block stored in the message
     /// </summary>
-    public IDataBlock DataBlock { get; set; }
+    public ITypedOutboundDataBlock DataBlock { get; set; }
 
     /// <summary>
     /// ID of the business transaction

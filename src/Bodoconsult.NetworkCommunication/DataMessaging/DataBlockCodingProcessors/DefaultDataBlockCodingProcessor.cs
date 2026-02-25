@@ -26,7 +26,7 @@ public class DefaultDataBlockCodingProcessor : IDataBlockCodingProcessor
     /// </summary>
     /// <param name="data">device message data to send</param>
     /// <param name="dataBlock">Current datablock instance</param>
-    public void FromDataBlockToBytes(List<byte> data, IDataBlock dataBlock)
+    public void FromDataBlockToBytes(List<byte> data, ITypedOutboundDataBlock dataBlock)
     {
         //throw new NotImplementedException();
 
@@ -58,7 +58,7 @@ public class DefaultDataBlockCodingProcessor : IDataBlockCodingProcessor
     /// </summary>
     /// <param name="dataBlockBytes">Received datablock as byte array</param>
     /// <returns>Datablock object or null if no fitting codec was found</returns>
-    public IDataBlock FromBytesToDataBlock(Memory<byte> dataBlockBytes)
+    public ITypedInboundDataBlock FromBytesToDataBlock(Memory<byte> dataBlockBytes)
     {
         if (dataBlockBytes.Length == 0)
         {

@@ -69,6 +69,16 @@ Design targets for this library are
 
 -	being unit testable
 
+# Principles of data communication used in Bodoconsult.Network
+
+-   Resource efficient implementation
+
+-   RAM usage cares
+
+-   Garbage collector usage cares
+
+-   Inbound communication separated from outbound communication on message and datablock level at least
+
 # Defining your device communication protocol 
 
 Defining a client server network communication protocol may contain for Bodoconsult.NetworkCommunication the following steps:

@@ -5,9 +5,9 @@ using Bodoconsult.NetworkCommunication.Interfaces;
 namespace Bodoconsult.NetworkCommunication.DataMessaging.DataBlocks;
 
 /// <summary>
-/// Dummy data block
+/// Dummy outbound data block
 /// </summary>
-public class DummyDatablock: IDataBlock
+public class DummyOutboundDatablock : ITypedOutboundDataBlock
 {
     /// <summary>
     /// Data contains the bytes of the Data except the byte representing datablock type
@@ -15,7 +15,7 @@ public class DummyDatablock: IDataBlock
     public Memory<byte> Data { get; set; }
 
     /// <summary>
-    /// Code for the datablock type
+    /// Type code for the type of the outbound datablock
     /// </summary>
-    public char DataBlockType { get; set; }= 'x';
+    public char DataBlockType { get; set; } = 'x';
 }

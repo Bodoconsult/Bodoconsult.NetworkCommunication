@@ -22,6 +22,6 @@ public class DataBlockCodecResult
     /// <summary>
     /// Data message decoded by the codec
     /// </summary>
-    public IDataMessageDataBlock DataBlock { get; set; }
+    public IInboundDataBlock DataBlock { get; set; }
 
 }

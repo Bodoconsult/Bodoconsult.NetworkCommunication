@@ -18,7 +18,7 @@ public interface IDataMessageDataBlockCodec
     /// </summary>
     /// <param name="datablockBytes">Datablock bytes received</param>
     /// <returns>Datablock object</returns>
-    IDataMessageDataBlock DecodeDataBlock(Memory<byte> datablockBytes);
+    IInboundDataBlock DecodeDataBlock(Memory<byte> datablockBytes);
 
     /// <summary>
     /// Method encode an instance of Datablock in bytes array.
@@ -27,5 +27,5 @@ public interface IDataMessageDataBlockCodec
     /// <param name="data">The array as list to add the datablock to</param>
     /// <param name="datablock">Current datablock object</param>
     /// <returns>a byte array with datablock infos</returns>
-    void EncodeDataBlock(List<byte> data, IDataBlock datablock);
+    void EncodeDataBlock(List<byte> data, ITypedInboundDataBlock datablock);
 }

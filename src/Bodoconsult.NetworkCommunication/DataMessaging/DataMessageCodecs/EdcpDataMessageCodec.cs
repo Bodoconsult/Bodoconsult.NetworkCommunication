@@ -65,7 +65,7 @@ public class EdcpDataMessageCodec : BaseDataMessageCodec
 
         try
         {
-            IDataBlock dataBlock;
+            ITypedInboundDataBlock dataBlock;
 
             var blockCode = data.Slice(1, 1).Span[0];
 

@@ -12,7 +12,7 @@ public interface IDataMessageDataBlockCodingProcessor
     /// </summary>
     /// <param name="data">device message data to send</param>
     /// <param name="dataBlock">Current datablock instance</param>
-    DataBlockCodecResult FromDataBlockToBytes(List<byte> data, IDataBlock dataBlock);
+    DataBlockCodecResult FromDataBlockToBytes(List<byte> data, ITypedInboundDataBlock dataBlock);
 
     /// <summary>
     /// Get the correct codec for a given datablock
@@ -27,5 +27,4 @@ public interface IDataMessageDataBlockCodingProcessor
     /// <param name="dataBlockBytes">Received datablock as byte array</param>
     /// <returns>Datablock object or null if no fitting codec was found</returns>
     DataBlockCodecResult FromBytesToDataBlock(Memory<byte> dataBlockBytes);
-
 }

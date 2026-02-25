@@ -20,8 +20,7 @@ public abstract class BaseOrder : IOrder
     private bool _isCancelled;
     private readonly Lock _isCancelledObject = new();
     private readonly IAppBenchProxy _benchLogger;
-
-
+    
     /// <summary>
     /// Base class default ctor
     /// </summary>
@@ -160,7 +159,7 @@ public abstract class BaseOrder : IOrder
     public bool IsNextOrderStartAllowed { get; set; }
 
     /// <summary>
-    /// If the orders fails, a ComDevCose is required
+    /// If the orders fail, a ComDevCose is required
     /// </summary>
     public bool FailingOrderRequiresComDevClose { get; set; }
 

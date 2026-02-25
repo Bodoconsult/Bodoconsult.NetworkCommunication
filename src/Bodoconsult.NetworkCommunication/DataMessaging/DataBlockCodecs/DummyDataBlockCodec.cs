@@ -17,9 +17,9 @@ public class DummyDataBlockCodec : IDataBlockCodec
     /// <param name="data">The array as list to add the datablock to</param>
     /// <param name="datablock">Current datablock object</param>
     /// <returns>a byte array with datablock infos</returns>
-    public void EncodeDataBlock(List<byte> data, IDataBlock datablock)
+    public void EncodeDataBlock(List<byte> data, ITypedOutboundDataBlock datablock)
     {
-        if (datablock is not DummyDatablock db)
+        if (datablock is not DummyOutboundDatablock db)
         {
             throw new ArgumentException("Wrong type of datablock");
         }
@@ -42,7 +42,7 @@ public class DummyDataBlockCodec : IDataBlockCodec
     /// </summary>
     /// <param name="datablockBytes">Datablock bytes received</param>
     /// <returns>Datablock object</returns>
-    public IDataBlock DecodeDataBlock(Memory<byte> datablockBytes)
+    public ITypedInboundDataBlock DecodeDataBlock(Memory<byte> datablockBytes)
     {
 
         // You should add some datablock validation here
@@ -52,13 +52,13 @@ public class DummyDataBlockCodec : IDataBlockCodec
         // Now create your datablock as request by specs here
         if (datablockBytes.Length < 2)
         {
-            return new DummyDatablock
+            return new DummyInboundDatablock
             {
                 Data = Array.Empty<byte>(),
                 DataBlockType = 'x'
             };
         }
-        return new DummyDatablock
+        return new DummyInboundDatablock
         {
             Data = datablockBytes[1..],
             DataBlockType = 'x'

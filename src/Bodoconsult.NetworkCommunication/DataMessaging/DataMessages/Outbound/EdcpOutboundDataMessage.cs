@@ -76,5 +76,5 @@ public class EdcpOutboundDataMessage : IOutboundDataMessage
     /// <summary>
     /// Data block stored in the message
     /// </summary>
-    public IDataBlock DataBlock { get; set; }
+    public ITypedOutboundDataBlock DataBlock { get; set; }
 }

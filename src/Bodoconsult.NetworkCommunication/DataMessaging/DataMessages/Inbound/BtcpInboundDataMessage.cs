@@ -87,7 +87,7 @@ public class BtcpInboundDataMessage : IInboundBusinessTransactionDataMessage
     /// <summary>
     /// Data block stored in the message
     /// </summary>
-    public IDataBlock DataBlock { get; set; }
+    public ITypedInboundDataBlock DataBlock { get; set; }
 
     /// <summary>
     /// ID of the business transaction

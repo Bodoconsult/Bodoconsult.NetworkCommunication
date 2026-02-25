@@ -3,7 +3,7 @@
 namespace Bodoconsult.NetworkCommunication.Interfaces;
 
 /// <summary>
-/// Interface for data messages used for commands delivering a <see cref="IDataBlock"/>
+/// Interface for data messages used for commands delivering a <see cref="ITypedInboundDataBlock"/>
 /// </summary>
 public interface ICommandDataWithDataBlockMessage : IInboundDataMessage
 {
@@ -16,5 +16,5 @@ public interface ICommandDataWithDataBlockMessage : IInboundDataMessage
     /// <summary>
     /// The datablock instance bound to this message or null
     /// </summary>
-    public IDataBlock DataBlock { get; set; }
+    public ITypedInboundDataBlock DataBlock { get; set; }
 }

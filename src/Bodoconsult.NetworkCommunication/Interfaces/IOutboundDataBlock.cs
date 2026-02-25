@@ -1,12 +1,11 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
-// Licence MIT
 
 namespace Bodoconsult.NetworkCommunication.Interfaces;
 
 /// <summary>
-/// Interface for an inbound datablock in a <see cref="IInboundDataMessage"/>
+/// Interface for an outbound datablock in a <see cref="IInboundDataMessage"/>
 /// </summary>
-public interface IInboundDataBlock
+public interface IOutboundDataBlock
 {
     /// <summary>
     /// Data contains the bytes of the Data except the byte representing datablock type

@@ -16,3 +16,4 @@ public interface IMonitorLoggerFactoryFactory
     /// <returns></returns>
     IMonitorLoggerFactory CreateInstance(string deviceName);
 }
+

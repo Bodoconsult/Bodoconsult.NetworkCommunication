@@ -3,6 +3,7 @@
 using Bodoconsult.NetworkCommunication.App.Abstractions;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataBlockCodecs;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataBlockCodingProcessors;
+using Bodoconsult.NetworkCommunication.DataMessaging.DataBlocks;
 
 namespace Bodoconsult.NetworkCommunication.Tests.Sdcp;
 
@@ -64,15 +65,19 @@ internal class DefaultDataBlockCodingProcessorTests
         dbcp.LoadDataBlockCodecs('x', new DummyDataBlockCodec());
 
         var data = new byte[] { 0x78, 0x42, 0x6c, 0x75, 0x62, 0x62 }.AsMemory();
-        var db = dbcp.FromBytesToDataBlock(data);
+        var dataBlock = new DummyOutboundDatablock
+        {
+            Data = data,
+            DataBlockType = 'x'
+        };
 
         var list = new List<byte>();
         Assert.That(list.Count, Is.EqualTo(0));
 
         // Act  
-        dbcp.FromDataBlockToBytes(list, db);
+        dbcp.FromDataBlockToBytes(list, dataBlock);
 
         // Assert
-        Assert.That(list.Count, Is.EqualTo(data.Length));
+        Assert.That(list.Count, Is.EqualTo(data.Length + 1));
     }
 }

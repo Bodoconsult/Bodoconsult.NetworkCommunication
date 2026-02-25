@@ -66,7 +66,7 @@ internal class SdcpDataMessageCodecTests
         // Arrange 
         var data = new byte[] { 0x75, 0x62, 0x62, 0x6b, 0x75, 0x62, 0x62 };
 
-        var dataBlock = new DummyDatablock
+        var dataBlock = new DummyOutboundDatablock
         {
             Data = data,
             DataBlockType = 'x'
