@@ -28,16 +28,16 @@ public interface ICommunicationHandler:  IDisposable
     void Disconnect();
 
     /// <summary>
-    /// Send a message to the tower.
+    /// Send a message to the device
     /// </summary>
     /// <param name="message">Current message to send</param>
-    MessageSendingResult SendMessage(IOutboundDataMessage message);
+    MessageSendingResult SendMessage(IOutboundMessage message);
 
     /// <summary>
     /// This method should check if sending a handshake is required and send it if yes. This method is public mainly for testing.
     /// </summary>
     /// <param name="message">Data message received</param>
-    void OnReceivedMessage(IOutboundDataMessage message);
+    void OnReceivedMessage(IInboundDataMessage message);
 
     /// <summary>
     /// This message should be fired if a message has not been sent

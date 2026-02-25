@@ -25,7 +25,7 @@ public interface IOrderManagementCommunicationAdapter: IDisposable
     bool IsConnected { get; }
 
     /// <summary>
-    /// This property returns whether the communication object is valid can be used
+    /// This property returns whether the communication object is valid and can be used
     /// </summary>
     bool IsCommunicationHandlerNotNull { get; }
 
@@ -58,7 +58,7 @@ public interface IOrderManagementCommunicationAdapter: IDisposable
     /// <summary>
     /// Device configuration for data messaging
     /// </summary>
-    IDataMessagingConfig DataMessagingConfig { get; }
+    IIpDataMessagingConfig DataMessagingConfig { get; }
 
     /// <summary>
     /// Send a data message to the device

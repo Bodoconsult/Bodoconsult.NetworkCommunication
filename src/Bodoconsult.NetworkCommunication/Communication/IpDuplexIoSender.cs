@@ -54,7 +54,7 @@ public class IpDuplexIoSender : BaseDuplexIoSender
     /// Send a message to the device
     /// </summary>
     /// <param name="message">Current message to send</param>
-    public override async Task<int> SendMessage(IOutboundDataMessage message)
+    public override async Task<int> SendMessage(IOutboundMessage message)
     {
 
         var sent = 0;

@@ -13,7 +13,7 @@ namespace Bodoconsult.NetworkCommunication.Communication;
 public abstract class BaseDuplexIo : IDuplexIo
 {
     private readonly ISendPacketProcessFactory _sendPacketProcessFactory;
-        
+
     /// <summary>
     /// Default ctor
     /// </summary>
@@ -31,11 +31,10 @@ public abstract class BaseDuplexIo : IDuplexIo
         _sendPacketProcessFactory = sendPacketProcessFactory;
     }
 
-
     /// <summary>
     /// Current data messaging config
     /// </summary>
-    public IDataMessagingConfig DataMessagingConfig { get;  }
+    public IDataMessagingConfig DataMessagingConfig { get; }
 
     /// <summary>
     /// Current socket to use
@@ -78,21 +77,20 @@ public abstract class BaseDuplexIo : IDuplexIo
     /// Send a message to the device
     /// </summary>
     /// <param name="message">Current message to send</param>
-    public virtual async Task<MessageSendingResult> SendMessage(IOutboundDataMessage message)
+    public virtual async Task<MessageSendingResult> SendMessage(IOutboundMessage message)
     {
-
-        if (message.WaitForAcknowledgement)
+        if (message is IOutboundDataMessage { WaitForAcknowledgement: true } msg)
         {
             // Send and wait for handshake
-            return await Task.Run(() => StartMessageSendingProcess(message));
+            return await Task.Run(() => StartMessageSendingProcess(msg));
         }
 
-        // Send and do NOT wait for handshake
+        // Send and do NOT wait for handshake or direct sent messages
         return await Task.Run(async () =>
         {
             var result = await Sender.SendMessage(message);
-            return result == 0 ? 
-                new MessageSendingResult(message, OrderExecutionResultState.Unsuccessful) : 
+            return result == 0 ?
+                new MessageSendingResult(message, OrderExecutionResultState.Unsuccessful) :
                 new MessageSendingResult(message, OrderExecutionResultState.Successful);
         });
     }
@@ -146,35 +144,6 @@ public abstract class BaseDuplexIo : IDuplexIo
     {
         throw new NotSupportedException();
     }
-
-    //public virtual async Task<byte[]> ReceiveFwUpdateMessageFromdevice()
-    //{
-    //    var bytes = new List<byte>();
-    //    var receiveBuffer = new byte[1];
-    //    var availableData = SocketProxy.BytesAvailable;
-    //    if (availableData <= 0)
-    //    {
-    //        return Array.Empty<byte>();
-    //    }
-    //    var receivedByteCount = await SocketProxy.Receive(receiveBuffer);
-    //    try
-    //    {
-    //        while (receivedByteCount > 0)
-    //        {
-    //            var receivedByte = receiveBuffer[0];
-    //            bytes.Add(receivedByte);
-    //            receivedByteCount = await SocketProxy.Receive(receiveBuffer);
-    //        }
-    //    }
-    //    catch (SocketException exception)
-    //    {
-    //        var msg = $"{DataMessagingConfig.LoggerId}receiving firmware update message fails";
-    //        DataMessagingConfig.AppLogger.LogError(msg, exception);
-    //        DataMessagingConfig.MonitorLogger.LogError(msg, exception);
-    //    }
-
-    //    return bytes.ToArray();
-    //}
 
     /// <summary>
     /// Update the data message processing package

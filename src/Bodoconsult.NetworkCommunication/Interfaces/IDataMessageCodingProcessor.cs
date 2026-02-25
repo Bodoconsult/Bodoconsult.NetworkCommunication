@@ -26,6 +26,6 @@ public interface IDataMessageCodingProcessor
     /// </summary>
     /// <param name="dataMessage">Data message to encode</param>
     /// <returns>A result set with the message as byte array </returns>
-    OutboundCodecResult EncodeDataMessage(IOutboundDataMessage dataMessage);
+    OutboundCodecResult EncodeDataMessage(IOutboundMessage dataMessage);
 
 }

@@ -1,4 +1,4 @@
-﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen. All rights reserved.
+﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
 using Bodoconsult.NetworkCommunication.Delegates;
 using Bodoconsult.NetworkCommunication.Helpers;
@@ -10,55 +10,12 @@ using Bodoconsult.App.Helpers;
 
 namespace Bodoconsult.NetworkCommunication.Protocols.TcpIp;
 
+/// <summary>
+/// Current implementation of <see cref="ITcpIpListenerManager"/>
+/// </summary>
 public class TcpIpListenerManager : ITcpIpListenerManager
 {
     private readonly ConcurrentDictionary<Socket, ListenerData> _listeners = new();
-
-    //private readonly ConcurrentDictionary<int, Socket> _currentSockets = new();
-    //private readonly ConcurrentDictionary<Socket, List<ClientConnectionAcceptedDelegate>> _currentConsumers = new();
-
-
-    /// <summary>Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.</summary>
-    public void Dispose()
-    {
-        ClearAll();
-    }
-
-    /// <summary>
-    /// Clear all loaded values. Mainly for testing
-    /// </summary>
-    public void ClearAll()
-    {
-        foreach (var listener in _listeners.Values)
-        {
-            listener.AcceptCts?.Cancel();
-
-            try
-            {
-                if (listener.Listener != null)
-                {
-                    listener.Listener.Shutdown(SocketShutdown.Both);
-                    listener.Listener.Close(5000);
-                }
-
-            }
-            catch //(Exception e)
-            {
-                // Do nothing
-            }
-
-            try
-            {
-                listener.Listener?.Dispose();
-            }
-            catch //(Exception e)
-            {
-                // Do nothing
-            }
-        }
-
-        _listeners.Clear();
-    }
 
     /// <summary>
     /// The maximum length of the pending connections queue. Default: 1
@@ -104,6 +61,48 @@ public class TcpIpListenerManager : ITcpIpListenerManager
     /// Receive timeout in milliseconds. -1 means infinite.
     /// </summary>
     public int ReceiveTimeout { get; set; } = 10000;
+
+    /// <summary>Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.</summary>
+    public void Dispose()
+    {
+        ClearAll();
+    }
+
+    /// <summary>
+    /// Clear all loaded values. Mainly for testing
+    /// </summary>
+    public void ClearAll()
+    {
+        foreach (var listener in _listeners.Values)
+        {
+            listener.AcceptCts?.Cancel();
+
+            try
+            {
+                if (listener.Listener != null)
+                {
+                    listener.Listener.Shutdown(SocketShutdown.Both);
+                    listener.Listener.Close(5000);
+                }
+
+            }
+            catch //(Exception e)
+            {
+                // Do nothing
+            }
+
+            try
+            {
+                listener.Listener?.Dispose();
+            }
+            catch //(Exception e)
+            {
+                // Do nothing
+            }
+        }
+
+        _listeners.Clear();
+    }
 
     /// <summary>
     /// Register a listener for a certain port on the local machine
@@ -260,37 +259,37 @@ public class TcpIpListenerManager : ITcpIpListenerManager
         throw new NotImplementedException();
     }
 
-    /// <summary>
-    /// Callback for accepting new connection
-    /// </summary>
-    /// <param name="ar"></param>
-    private void AcceptCallback(IAsyncResult ar)
-    {
-        // Get the socket that handles the client request
-        var listener = (Socket)ar.AsyncState;
+    ///// <summary>
+    ///// Callback for accepting new connection
+    ///// </summary>
+    ///// <param name="ar"></param>
+    //private void AcceptCallback(IAsyncResult ar)
+    //{
+    //    // Get the socket that handles the client request
+    //    var listener = (Socket)ar.AsyncState;
 
-        if (listener == null)
-        {
-            return;
-        }
+    //    if (listener == null)
+    //    {
+    //        return;
+    //    }
 
-        // Get the client socket
-        var clientSocket = listener.EndAccept(ar);
+    //    // Get the client socket
+    //    var clientSocket = listener.EndAccept(ar);
 
-        // Now deliver the client socket to the consumer
-        if (!_listeners.TryGetValue(listener, out var data))
-        {
-            return;
-        }
+    //    // Now deliver the client socket to the consumer
+    //    if (!_listeners.TryGetValue(listener, out var data))
+    //    {
+    //        return;
+    //    }
 
-        foreach (var consumer in data.CurrentConsumers)
-        {
-            if (consumer.Invoke(clientSocket))
-            {
-                return;
-            }
-        }
-    }
+    //    foreach (var consumer in data.CurrentConsumers)
+    //    {
+    //        if (consumer.Invoke(clientSocket))
+    //        {
+    //            return;
+    //        }
+    //    }
+    //}
 
     /// <summary>
     /// Unregister a listener on a port

@@ -1,9 +1,10 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 // Licence MIT
 
-using System.Text.Json.Serialization;
 using Bodoconsult.App.Interfaces;
 using Bodoconsult.NetworkCommunication.Delegates;
+using Bodoconsult.NetworkCommunication.EnumAndStates;
+using System.Text.Json.Serialization;
 
 namespace Bodoconsult.NetworkCommunication.Interfaces;
 
@@ -12,11 +13,15 @@ namespace Bodoconsult.NetworkCommunication.Interfaces;
 /// </summary>
 public interface IDataMessagingConfig
 {
-
     /// <summary>
     /// A readable string for identitying the device used for logging
     /// </summary>
     string LoggerId { get; }
+
+    /// <summary>
+    /// IP based protocol used for this config
+    /// </summary>
+    IpProtocolEnum IpProtocol { get; set; }
 
     /// <summary>
     /// Current socket to use
@@ -60,7 +65,6 @@ public interface IDataMessagingConfig
     /// <returns>true if the device is ready else false</returns>
     [JsonIgnore]
     CheckIfDeviceIsReadyDelegate CheckIfDeviceIsReadyDelegate { get; set; }
-
 
     /// <summary>
     /// Request a closing of the current communication connection from the business logic delegate

@@ -1,0 +1,477 @@
+﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
+
+using Bodoconsult.NetworkCommunication.Interfaces;
+using System.Net;
+using System.Net.NetworkInformation;
+using System.Net.Sockets;
+
+namespace Bodoconsult.NetworkCommunication.Communication;
+
+/// <summary>
+/// Current TCP/IP based implementation of <see cref="IOrderManagementCommunicationAdapter"/>
+/// </summary>
+public class OrderManagementCommunicationAdapter : IOrderManagementCommunicationAdapter
+{
+
+    private ICommunicationHandler _communicationHandler;
+
+    private IDeviceState _towerState = DefaultDeviceStates.DeviceStateOffline;
+
+    ///// <summary>
+    ///// Current send message block number
+    ///// </summary>
+    //private byte _currentBlockNo;
+
+    //private readonly object _blockNoLock = new();
+
+    private readonly Lock _comDevActionLockObject = new();
+
+    /// <summary>
+    /// Is a ComDev action in progress. DO NOT ACCESS directly. Use <see cref="IsComDevActionInProgress"/> instead
+    /// </summary>
+    private bool _isComDevActionInProgress;
+
+    private int _errorCounter;
+
+
+    /// <summary>
+    /// Default ctor
+    /// </summary>
+    public OrderManagementCommunicationAdapter(IIpDataMessagingConfig dataMessagingConfig)
+    {
+        DataMessagingConfig = dataMessagingConfig;
+
+        ////DataMessagingConfig.GetTowerStateDelegate = GetTowerState;
+        //DataMessagingConfig.CheckIfCommunicationIsOnlineDelegate = CheckIfCommunicationIsOnline;
+        //DataMessagingConfig.CheckIfDeviceIsReadyDelegate = CheckIfTowerIsReady;
+
+        //DataMessagingConfig.RaiseUpdateModeReceivedDelegate = OnUpdateModeReceived;
+        //DataMessagingConfig.RaiseComDevCloseRequestDelegate = OnRequestComDevClose;
+    }
+
+    /// <summary>
+    /// Is a COM DEV operation running currently
+    /// </summary>
+
+    public bool IsComDevActionInProgress
+    {
+        get
+        {
+            lock (_comDevActionLockObject)
+            {
+                return _isComDevActionInProgress;
+            }
+
+        }
+        private set
+        {
+            lock (_comDevActionLockObject)
+            {
+                _isComDevActionInProgress = value;
+            }
+        }
+    }
+
+    /// <summary>
+    /// Set the order processing state delegate
+    /// </summary>
+    public SetOrderProcessingStateDelegate SetOrderProcessingStateDelegate { get; set; }
+
+    /// <summary>
+    ///     This property returns the value of the Error-Byte in
+    ///     the message coming from Tower
+    /// </summary>
+    public int Error { get; set; }
+
+    /// <summary>
+    /// This property returns whether the communication object is valid and can be used
+    /// </summary>
+    public bool IsCommunicationHandlerNotNull => _communicationHandler != null;
+
+    /// <summary>
+    /// Is the adapter connected
+    /// </summary>
+    public bool IsConnected => IsFakeSendingActivated || (_communicationHandler?.IsConnected ?? false);
+
+    /// <summary>
+    /// This is the last state received from tower
+    /// </summary>
+    public string StatusRequestReceivedState { get; set; }
+
+    /// <summary>
+    /// This property has to be set to false for production. Is only for testing
+    /// </summary>
+    public bool IsFakeSendingActivated { get; set; }
+
+    /// <summary>
+    /// Device configuration for data messaging
+    /// </summary>
+    public IIpDataMessagingConfig DataMessagingConfig { get; }
+
+    /// <summary>
+    /// Send a data message to the device
+    /// </summary>
+    /// <param name="command">Command to send</param>
+    /// <returns>Reply of the device</returns>
+    public MessageSendingResult SendDataMessage(IOutboundDataMessage command)
+    {
+        return _communicationHandler.SendMessage(command);
+    }
+
+    /// <summary>
+    /// Cancel the currently running operation on the device
+    /// </summary>
+    public virtual MessageSendingResult CancelRunningOperation()
+    {
+        throw new NotSupportedException("Override in derived class");
+    }
+
+    /// <summary>
+    /// Reset the com dev without breaking the communication
+    /// </summary>
+    public void ResetInternalState()
+    {
+        IsComDevActionInProgress = false;
+    }
+
+    /// <summary>
+    /// Initialize the communication with the tower
+    /// </summary>
+    /// <returns>True if the initialiazation was successfull else false</returns>
+    public bool ComDevInit()
+    {
+        //Debug.Print("ComDevInit");
+
+        string msg;
+
+        try
+        {
+            if (IsComDevActionInProgress)
+            {
+                DataMessagingConfig.AppLogger.LogWarning($"{DataMessagingConfig.LoggerId}ComDevInit not possible due to another call to ComDevInit or ComDevClose in progress");
+                return IsCommunicationHandlerNotNull;
+            }
+
+
+            if (IsCommunicationHandlerNotNull)
+            {
+                msg = "ComDev for device is not valid. Request ComDevClose";
+                DataMessagingConfig.MonitorLogger.LogWarning(msg);
+                DataMessagingConfig.AppLogger.LogWarning($"{DataMessagingConfig.LoggerId}{msg}");
+                ComDevCloseInternal();
+            }
+
+            var isCloseRequired = false;
+
+            try
+            {
+                IsComDevActionInProgress = true;
+
+                // Stop order handling now in case it is still running 
+                SetOrderProcessingStateDelegate?.Invoke(false);
+
+                InitCommunicationObjects();
+                //Debug.Print("ComDevInit successful");
+
+                msg = "ComDevInit successful";
+                DataMessagingConfig.MonitorLogger.LogInformation(msg);
+                DataMessagingConfig.AppLogger.LogInformation($"{DataMessagingConfig.LoggerId}{msg}");
+            }
+            catch (SocketException se)
+            {
+                // Logging only every 10 comm checks to keep log file tiny
+                _errorCounter++;
+
+                if (_errorCounter == 1 //|| PreviousTowerState != StSysTowerHardwareState.TowerStateOffline
+                   )
+                {
+                    msg = $"socket connection to {DataMessagingConfig.IpAddress}:{DataMessagingConfig.Port} failed: error code {se.ErrorCode}. Request ComDevClose";
+                    DataMessagingConfig.MonitorLogger.LogWarning(msg);
+                    DataMessagingConfig.AppLogger.LogWarning($"{DataMessagingConfig.LoggerId}{msg}");
+                }
+
+                if (_errorCounter > 10)
+                {
+                    _errorCounter = 0;
+                }
+
+                isCloseRequired = true;
+
+            }
+            catch (Exception e)
+            {
+                if (e.StackTrace != null && e.StackTrace.Contains("Socket"))
+                {
+                    msg = $"ComDev init to {DataMessagingConfig.IpAddress}:{DataMessagingConfig.Port} failed. Request ComDevClose";
+                }
+                else
+                {
+                    msg = $"ComDev init to {DataMessagingConfig.IpAddress}:{DataMessagingConfig.Port} failed: {e.Message} {e.StackTrace}. Request ComDevClose";
+                }
+
+                DataMessagingConfig.MonitorLogger.LogWarning(msg);
+                DataMessagingConfig.AppLogger.LogWarning($"{DataMessagingConfig.LoggerId}{msg}");
+
+                isCloseRequired = true;
+            }
+            finally
+            {
+                IsComDevActionInProgress = false;
+                SetOrderProcessingStateDelegate?.Invoke(true);
+            }
+
+            // Leave here if no error happened before
+            if (!isCloseRequired)
+            {
+                return IsCommunicationHandlerNotNull;
+            }
+
+            // Close tower comm otherwise
+            ComDevCloseInternal(true);
+
+            IsComDevActionInProgress = false;
+            SetOrderProcessingStateDelegate?.Invoke(true);
+
+        }
+        catch (Exception e)
+        {
+            msg = "ComDevInit failed";
+            DataMessagingConfig.MonitorLogger.LogError(msg, e);
+            DataMessagingConfig.AppLogger.LogError($"{DataMessagingConfig.LoggerId}{msg}", e);
+
+            _communicationHandler = null;
+            IsComDevActionInProgress = false;
+            SetOrderProcessingStateDelegate?.Invoke(true);
+        }
+
+        return IsCommunicationHandlerNotNull;
+    }
+
+    /// <summary>
+    /// Method for closing the communication channel with the tower
+    /// </summary>
+    public void ComDevClose()
+    {
+        if (IsComDevActionInProgress)
+        {
+            return;
+        }
+
+        ComDevCloseInternal();
+        IsComDevActionInProgress = false;
+    }
+
+    private void ComDevCloseInternal(bool noLogging = false)
+    {
+
+        if (IsComDevActionInProgress)
+        {
+            return;
+        }
+
+        SetOrderProcessingStateDelegate?.Invoke(false);
+
+        if (_communicationHandler == null)
+        {
+            SetOrderProcessingStateDelegate?.Invoke(true);
+            IsComDevActionInProgress = false;
+            return;
+        }
+
+        try
+        {
+            IsComDevActionInProgress = true;
+
+            if (_communicationHandler.IsConnected)
+            {
+                _communicationHandler.Disconnect();
+                //_currentBlockNo = TowerCommunicationBasics.MaxBlockNoStStys;
+            }
+
+            _communicationHandler.Dispose();
+
+        }
+        catch (Exception e)
+        {
+            // Do nothing
+            DataMessagingConfig.MonitorLogger.LogError("error occured while trying to close the communication ", e);
+        }
+        finally
+        {
+            // RL: Comm handler has to be reset in every case!!!!!!!
+            _communicationHandler = null;
+
+            SetOrderProcessingStateDelegate?.Invoke(true);
+
+            IsComDevActionInProgress = false;
+
+            //// Handle the communication break on higher business logic levels
+            //HandleComDevCloseDelegate?.Invoke();
+
+            // ReSharper disable once InvertIf
+            if (!noLogging)
+            {
+                const string msg = "ComDevClose: all steps performed";
+                DataMessagingConfig.MonitorLogger.LogError(msg);
+                DataMessagingConfig.AppLogger.LogError($"{DataMessagingConfig.LoggerId}{msg}");
+                //Debug.Print($"ComDevClose: tower state {TowerState}");
+                //DataMessagingConfig.AppLogger.LogInformation($"{DataMessagingConfig.LoggerId}ComDevClose: all steps performed ");
+            }
+        }
+    }
+
+
+    private void InitCommunicationObjects()
+    {
+        if (_communicationHandler != null)
+        {
+            _communicationHandler.Disconnect();
+            _communicationHandler.Dispose();
+            _communicationHandler = null;
+            //_currentBlockNo = TowerCommunicationBasics.MaxBlockNoStStys;
+        }
+
+        //var receiveTimeOutStr = "10000"; //WebConfigurationManager.AppSettings.Get("SocketReceiveTimeout");
+        //var sendTimeOutStr = "10000"; //WebConfigurationManager.AppSettings.Get("SocketSendTimeout");
+        //var sendPacketTimeOutStr = "10000"; //WebConfigurationManager.AppSettings.Get("SendPacketTimeout");
+
+        //if (!int.TryParse(receiveTimeOutStr, out var socketReceiveTimeOut))
+        //{
+        //    throw new ArgumentException($"{DataMessagingConfig.LoggerId}receive timeout value for socket could not be parsed from config file.");
+        //}
+
+        //if (!int.TryParse(sendTimeOutStr, out var socketSendTimeOut))
+        //{
+        //    throw new ArgumentException($"{DataMessagingConfig.LoggerId}send timeout value for socket could not be parsed from config file.");
+        //}
+
+        //if (!int.TryParse(sendPacketTimeOutStr, out var sendPacketTimeOut))
+        //{
+        //    throw new ArgumentException($"{DataMessagingConfig.LoggerId}send message timeout could not be parsed from config file.");
+        //}
+
+        _communicationHandler.Connect();
+
+        //_currentBlockNo = TowerCommunicationBasics.MaxBlockNoStStys;
+
+        var connectionEstablishedMessage = $"{DataMessagingConfig.LoggerId}connection to {DataMessagingConfig.IpAddress}:{DataMessagingConfig.Port} established: {_communicationHandler?.IsConnected}.";
+        DataMessagingConfig.AppLogger.LogInformation(connectionEstablishedMessage);
+
+        //IsFirmwwareUpdateRunning = CheckIfIsTowerUpdateMode();
+        //if (IsFirmwwareUpdateRunning)
+        //{
+        //    DataMessagingConfig.AppLogger.LogDebug($"{DataMessagingConfig.LoggerId}is in UPDATE mode.");
+        //    TowerState = StSysTowerHardwareState.TowerStateUpdate;
+        //}
+        //else
+        //{
+        //    DataMessagingConfig.AppLogger.LogDebug($"{DataMessagingConfig.LoggerId}is online.");
+        //    TowerState = StSysTowerHardwareState.TowerStateOnline;
+        //}
+    }
+
+    ///// <summary>
+    ///// Public method to init comm handler for unit testing
+    ///// </summary>
+    //public void InitCommunicationObjectsForTests()
+    //{
+    //    var commHandlerFactory = Globals.Instance.DiContainer.Get<ISmdTowerCommunicationHandlerFactory>();
+
+    //    DataMessagingConfig.RaiseComDevCloseRequestDelegate = OnRequestComDevClose;
+
+    //    _communicationHandler = commHandlerFactory.CreateInstance(SmdTower);
+    //}
+
+    //private bool CheckIfIsTowerUpdateMode()
+    //{
+    //    if (_communicationHandler == null || TowerState == StSysTowerHardwareState.TowerStateUpdateBusy)
+    //    {
+    //        return false;
+    //    }
+
+    //    try
+    //    {
+    //        return _isInUpdateMode;
+    //    }
+    //    catch (Exception e)
+    //    {
+    //        DataMessagingConfig.AppLogger.LogError($"{DataMessagingConfig.LoggerId}request is in UPDATE mode - Tower does NOT answer.", e);
+    //        return false;
+    //    }
+    //}
+
+    private void OnRequestComDevClose(string requestSource)
+    {
+        try
+        {
+            DataMessagingConfig.AppLogger.LogWarning($"{DataMessagingConfig.LoggerId}CLOSE requested for connection because of error while reading bytes on socket. Close reason: {requestSource}.");
+            ComDevClose();
+        }
+        catch (Exception e)
+        {
+            DataMessagingConfig.AppLogger.LogError("ComDevClose failed", e);
+        }
+    }
+
+
+    //private void OnMessageReceived(IDataMessage message)
+    //{
+    //    NotifyTowerMessageReceivedDelegate.Invoke(message);
+    //}
+
+    private readonly Dictionary<string, Ping> _pingInstances = new();
+
+    /// <summary>
+    /// Is the tower pingable. Each IP address uses its own PING instance
+    /// </summary>
+    /// <returns>True if the tower is pingable</returns>
+    public async Task<bool> IsPingableAsync()
+    {
+        var ipAddress = DataMessagingConfig.IpAddress;
+
+        // Do not ping localhost
+        if (ipAddress == "127.0.0.1")
+        {
+            return true;
+        }
+
+        var ipObject = IPAddress.Parse(ipAddress);
+
+        PingReply pingResult;
+
+        //lock (PingLock)
+        {
+            var success = _pingInstances.TryGetValue(ipAddress, out var ping);
+
+            if (!success)
+            {
+                ping = new Ping();
+                _pingInstances.Add(ipAddress, ping);
+            }
+
+            pingResult = await ping.SendPingAsync(ipObject, DeviceCommunicationBasics.PingTimeout);
+
+        }
+
+        return pingResult is { Status: IPStatus.Success };
+    }
+
+    /// <summary>
+    /// The timestamp of the last message received
+    /// </summary>
+    public long LastMessageTimeStamp => DataMessagingConfig.DataMessageProcessingPackage?.WaitStateManager?.LastMessageTimeStamp ?? 0;
+
+    /// <summary>
+    /// Reset the com dev to a defined state as if there were never a communication with the tower. No logging for ComDevClose activated
+    /// </summary>
+    public void ComDevReset()
+    {
+        ComDevCloseInternal(true);
+    }
+
+    /// <summary>Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.</summary>
+    public void Dispose()
+    {
+        _communicationHandler?.Dispose();
+    }
+}

@@ -2,7 +2,7 @@
 
 using Bodoconsult.NetworkCommunication.Interfaces;
 
-namespace Bodoconsult.NetworkCommunication.Tests.Factories;
+namespace Bodoconsult.NetworkCommunication.Factories;
 
 /// <summary>
 /// Current implementation of <see cref="IRequestStepProcessorFactoryFactory"/>

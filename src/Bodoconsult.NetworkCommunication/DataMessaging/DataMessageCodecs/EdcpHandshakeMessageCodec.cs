@@ -52,7 +52,7 @@ public class EdcpHandshakeMessageCodec : BaseDataMessageCodec
     /// </summary>
     /// <param name="message">Data message to send</param>
     /// <returns>Byte array as optimized <see cref="ReadOnlyMemory{T}"/> to send</returns>
-    public override OutboundCodecResult EncodeDataMessage(IOutboundDataMessage message)
+    public override OutboundCodecResult EncodeDataMessage(IOutboundMessage message)
     {
         var result = new OutboundCodecResult();
 

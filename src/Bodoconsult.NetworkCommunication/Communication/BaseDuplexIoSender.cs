@@ -34,7 +34,7 @@ public abstract class BaseDuplexIoSender : IDuplexIoSender
     /// Send a message to the device
     /// </summary>
     /// <param name="message">Current message to send</param>
-    public virtual Task<int> SendMessage(IOutboundDataMessage message)
+    public virtual Task<int> SendMessage(IOutboundMessage message)
     {
         throw new NotSupportedException();
     }

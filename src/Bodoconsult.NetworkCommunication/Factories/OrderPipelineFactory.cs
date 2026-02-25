@@ -5,7 +5,7 @@ using Bodoconsult.NetworkCommunication.Interfaces;
 using Bodoconsult.NetworkCommunication.OrderManagement.Processors;
 using IAppDateService = Bodoconsult.NetworkCommunication.App.Abstractions.IAppDateService;
 
-namespace Bodoconsult.NetworkCommunication.Tests.Factories;
+namespace Bodoconsult.NetworkCommunication.Factories;
 
 /// <summary>
 /// Current implementation of <see cref="IOrderPipelineFactory"/>

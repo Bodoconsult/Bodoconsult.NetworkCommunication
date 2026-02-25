@@ -2,6 +2,7 @@
 
 using Bodoconsult.App.Interfaces;
 using Bodoconsult.NetworkCommunication.Delegates;
+using Bodoconsult.NetworkCommunication.EnumAndStates;
 using Bodoconsult.NetworkCommunication.Interfaces;
 
 namespace Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig;
@@ -16,6 +17,11 @@ public class EdcpDataMessagingConfig : IIpDataMessagingConfig
     /// A readable string for identitying the device used for logging
     /// </summary>
     public string LoggerId => "TestDevice";
+
+    /// <summary>
+    /// IP based protocol used for this config
+    /// </summary>
+    public IpProtocolEnum IpProtocol { get; set; } = IpProtocolEnum.Tcp;
 
     /// <summary>
     /// Current socket to use

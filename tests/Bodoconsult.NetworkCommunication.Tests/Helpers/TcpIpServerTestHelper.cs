@@ -1,4 +1,4 @@
-﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen. All rights reserved.
+﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
 using System.Net;
 using Bodoconsult.App.Interfaces;
@@ -14,7 +14,18 @@ public static class TcpIpServerTestHelper
 {
     private static readonly IAppLoggerProxy Logger = TestDataHelper.GetFakeAppLoggerProxy();
 
-    private static readonly TcpIpListenerManager TcpIpListenerManager =  new();
+    /// <summary>
+    /// Default ctor
+    /// </summary>
+    static TcpIpServerTestHelper()
+    {
+        TcpIpListenerManager = new();
+    }
+
+    /// <summary>
+    /// Current <see cref="TcpIpListenerManager"/> instance
+    /// </summary>
+    public static TcpIpListenerManager TcpIpListenerManager { get; }
 
     /// <summary>
     /// Initialize the IP communication

@@ -34,7 +34,7 @@ public abstract class BaseDataMessageCodec: IDataMessageCodec
     /// </summary>
     /// <param name="message">Data message to send</param>
     /// <returns>Codex result with a byte array as optimized <see cref="ReadOnlyMemory{T}"/> to send</returns>
-    public virtual OutboundCodecResult EncodeDataMessage(IOutboundDataMessage message)
+    public virtual OutboundCodecResult EncodeDataMessage(IOutboundMessage message)
     {
         throw new NotSupportedException();
     }

@@ -1,6 +1,8 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 // Licence MIT
 
+using Bodoconsult.NetworkCommunication.EnumAndStates;
+
 namespace Bodoconsult.NetworkCommunication.Interfaces;
 
 /// <summary>
@@ -11,6 +13,7 @@ public interface ISocketProxyFactory
     /// <summary>
     /// Creates an instance of <see cref="ISocketProxy"/>
     /// </summary>
+    /// <param name="protocol">IP base protocol to be used</param>
     /// <returns>Instance of <see cref="ISocketProxy"/></returns>
-    ISocketProxy CreateInstance();
+    ISocketProxy CreateInstance(IpProtocolEnum protocol);
 }

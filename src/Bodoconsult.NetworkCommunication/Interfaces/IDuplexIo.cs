@@ -38,7 +38,7 @@ public interface IDuplexIo: IAsyncDisposable, IDisposable
     /// Send a message to the device.
     /// </summary>
     /// <param name="message">Current message to send</param>
-    Task<MessageSendingResult> SendMessage(IOutboundDataMessage message);
+    Task<MessageSendingResult> SendMessage(IOutboundMessage message);
 
     /// <summary>
     /// Send a message to the device directly. This method is intended for internal purposes only. Do NOT use directly. Use <see cref="SendMessage"/> instead. This method makes faking easier!

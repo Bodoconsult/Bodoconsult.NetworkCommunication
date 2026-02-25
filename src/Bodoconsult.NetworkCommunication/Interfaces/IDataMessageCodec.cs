@@ -31,6 +31,6 @@ public interface IDataMessageCodec
     /// </summary>
     /// <param name="message">Data message to send</param>
     /// <returns>Codex result with a byte array as optimized <see cref="ReadOnlyMemory{T}"/> to send</returns>
-    OutboundCodecResult EncodeDataMessage(IOutboundDataMessage message);
+    OutboundCodecResult EncodeDataMessage(IOutboundMessage message);
 
 }

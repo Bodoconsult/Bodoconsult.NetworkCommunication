@@ -3,7 +3,7 @@
 using Bodoconsult.NetworkCommunication.Interfaces;
 using Bodoconsult.NetworkCommunication.OrderManagement.Processors;
 
-namespace Bodoconsult.NetworkCommunication.Tests.Factories;
+namespace Bodoconsult.NetworkCommunication.Factories;
 
 /// <summary>
 /// Factory for <see cref="IRequestProcessor"/> instances based on <see cref="RequestProcessor"/>

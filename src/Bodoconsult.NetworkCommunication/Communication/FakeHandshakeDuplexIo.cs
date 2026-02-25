@@ -78,7 +78,7 @@ public class FakeHandshakeDuplexIo : IDuplexIo
     /// Send a message to the device.
     /// </summary>
     /// <param name="message">Current message to send</param>
-    public Task<MessageSendingResult> SendMessage(IOutboundDataMessage message)
+    public Task<MessageSendingResult> SendMessage(IOutboundMessage message)
     {
         _counter++;
         if (_counter >= NumberOfTriesTheHandshakeIsReceived)

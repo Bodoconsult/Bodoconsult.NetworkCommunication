@@ -1,4 +1,4 @@
-// Copyright (c) Bodoconsult EDV-Dienstleistungen. All rights reserved.
+// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
 namespace Bodoconsult.Network.Windows.Tests;
 

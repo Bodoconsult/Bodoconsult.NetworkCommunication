@@ -22,7 +22,6 @@ public class DefaultDataMessageCodingProcessor : IDataMessageCodingProcessor
     /// <returns>Coding result with a <see cref="IInboundDataMessage"/> instance if coding was successful</returns>
     public InboundCodecResult DecodeDataMessage(Memory<byte> data)
     {
-
         if (MessageCodecs.Count == 0)
         {
             return new InboundCodecResult
@@ -54,7 +53,7 @@ public class DefaultDataMessageCodingProcessor : IDataMessageCodingProcessor
     /// </summary>
     /// <param name="dataMessage">Data message to encode</param>
     /// <returns>A result set with the message as byte array </returns>
-    public OutboundCodecResult EncodeDataMessage(IOutboundDataMessage dataMessage)
+    public OutboundCodecResult EncodeDataMessage(IOutboundMessage dataMessage)
     {
         if (MessageCodecs.Count == 0)
         {
