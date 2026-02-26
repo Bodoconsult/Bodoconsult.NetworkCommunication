@@ -20,4 +20,9 @@ public interface IInboundDataMessage : IInboundMessage
     /// <param name="errors">List with error messages to fill</param>
     /// <returns>True if the message was as expected as answer of the sent message else false</returns>
     bool CheckReceivedMessage(IOutboundDataMessage sentMessage, IList<string> errors);
+
+    /// <summary>
+    /// Data block stored in the message
+    /// </summary>
+    ITypedInboundDataBlock DataBlock { get; set; }
 }

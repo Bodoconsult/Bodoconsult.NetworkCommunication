@@ -9,7 +9,6 @@ namespace Bodoconsult.NetworkCommunication.Interfaces;
 /// </summary>
 public interface IOrderReceiver: IDisposable
 {
-
     /// <summary>
     /// Delegate for handling a received device message
     /// </summary>
@@ -26,5 +25,4 @@ public interface IOrderReceiver: IDisposable
     /// </summary>
     /// <param name="receivedMessage">Received message</param>
     void AddReceivedMessage(IInboundDataMessage receivedMessage);
-
 }

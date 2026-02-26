@@ -1,15 +1,16 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
 using Bodoconsult.App.Interfaces;
+using Bodoconsult.NetworkCommunication.EnumAndStates;
 using Bodoconsult.NetworkCommunication.Interfaces;
 using IAppDateService = Bodoconsult.NetworkCommunication.App.Abstractions.IAppDateService;
 
 namespace Bodoconsult.NetworkCommunication.OrderManagement.Orders;
 
 /// <summary>
-/// Order running a business transaction
+/// Order running a telnet style transaction
 /// </summary>
-public class BusinessTransactionOrder : BaseOrder
+public class TelnetOrder : BaseOrder
 {
     /// <summary>
     /// Default ctor
@@ -17,6 +18,11 @@ public class BusinessTransactionOrder : BaseOrder
     /// <param name="parameterSet">Parameter set</param>
     /// <param name="dateTimeService">Datetime service</param>
     /// <param name="benchLogger">Bench logger instance for benchmarking</param>
-    public BusinessTransactionOrder(IParameterSet parameterSet, IAppDateService dateTimeService, IAppBenchProxy benchLogger) : base(parameterSet, dateTimeService, benchLogger)
-    { }
+    public TelnetOrder(IParameterSet parameterSet, IAppDateService dateTimeService, IAppBenchProxy benchLogger) : base(parameterSet, dateTimeService, benchLogger)
+    {
+        TraceCodeSuccess = TraceCodes.IdsMsgBtcpOrderOk;
+        TraceCodeError = TraceCodes.IdsMsgBtcpOrderFails;
+
+        TraceMessage = "Telnet outbound order";
+    }
 }

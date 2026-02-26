@@ -113,5 +113,10 @@ public interface IDataMessagingConfig
     /// </summary>
     RaiseUnexpectedDataMessageReceivedDelegate RaiseUnexpectedDataMessageReceivedDelegate { get; set; }
 
+    /// <summary>
+    /// Reset the <see cref="IOutboundDataMessageFactory"/>
+    /// </summary>
+    ResetOutboundDataMessageFactoryDelegate ResetOutboundDataMessageFactoryDelegate { get; set; }
+
     #endregion
 }

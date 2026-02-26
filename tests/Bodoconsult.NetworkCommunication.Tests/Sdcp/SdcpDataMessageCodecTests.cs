@@ -66,7 +66,7 @@ internal class SdcpDataMessageCodecTests
         // Arrange 
         var data = new byte[] { 0x75, 0x62, 0x62, 0x6b, 0x75, 0x62, 0x62 };
 
-        var dataBlock = new DummyOutboundDatablock
+        var dataBlock = new BasicOutboundDatablock
         {
             Data = data,
             DataBlockType = 'x'
@@ -80,7 +80,7 @@ internal class SdcpDataMessageCodecTests
         Assert.That(msg.RawMessageData.Length, Is.EqualTo(0));
 
         var dataBlockCodingProcessor = new DefaultDataBlockCodingProcessor();
-        dataBlockCodingProcessor.LoadDataBlockCodecs('x', new DummyDataBlockCodec());
+        dataBlockCodingProcessor.LoadDataBlockCodecs('x', new BasicDataBlockCodec());
         var codec = new SdcpDataMessageCodec(dataBlockCodingProcessor);
 
         // Act  
@@ -105,7 +105,7 @@ internal class SdcpDataMessageCodecTests
         Assert.That(msg.RawMessageData.Length, Is.EqualTo(0));
 
         var dataBlockCodingProcessor = new DefaultDataBlockCodingProcessor();
-        dataBlockCodingProcessor.LoadDataBlockCodecs('x', new DummyDataBlockCodec());
+        dataBlockCodingProcessor.LoadDataBlockCodecs('x', new BasicDataBlockCodec());
         var codec = new SdcpDataMessageCodec(dataBlockCodingProcessor);
 
         // Act  

@@ -12,9 +12,9 @@ namespace Bodoconsult.NetworkCommunication.Communication;
 /// </summary>
 public class OrderManagementCommunicationAdapter : IOrderManagementCommunicationAdapter
 {
-
     private ICommunicationHandler _communicationHandler;
     private readonly ICommunicationHandlerFactory _communicationHandlerFactory;
+    private readonly IOutboundDataMessageFactory _outboundDataMessageFactory;
     private IDeviceState _deviceState = DefaultDeviceStates.DeviceStateOffline;
 
     ///// <summary>
@@ -38,17 +38,19 @@ public class OrderManagementCommunicationAdapter : IOrderManagementCommunication
     /// Default ctor
     /// </summary>
     public OrderManagementCommunicationAdapter(IIpDataMessagingConfig dataMessagingConfig,
-        ICommunicationHandlerFactory communicationHandlerFactory)
+        ICommunicationHandlerFactory communicationHandlerFactory,
+        IOutboundDataMessageFactory outboundDataMessageFactory)
     {
         DataMessagingConfig = dataMessagingConfig;
         _communicationHandlerFactory = communicationHandlerFactory;
+        _outboundDataMessageFactory = outboundDataMessageFactory;
 
         ////DataMessagingConfig.GetTowerStateDelegate = GetTowerState;
         DataMessagingConfig.CheckIfCommunicationIsOnlineDelegate = CheckIfCommunicationIsOnline;
-        //DataMessagingConfig.CheckIfDeviceIsReadyDelegate = CheckIfTowerIsReady;
+        //DataMessagingConfig.CheckIfDeviceIsReadyDelegate = CheckIfDeviceIsReady;
 
-        //DataMessagingConfig.RaiseUpdateModeReceivedDelegate = OnUpdateModeReceived;
         DataMessagingConfig.RaiseComDevCloseRequestDelegate = OnRequestComDevClose;
+        DataMessagingConfig.ResetOutboundDataMessageFactoryDelegate = _outboundDataMessageFactory.Reset;
     }
 
     /// <summary>
@@ -120,12 +122,23 @@ public class OrderManagementCommunicationAdapter : IOrderManagementCommunication
     public IIpDataMessagingConfig DataMessagingConfig { get; }
 
     /// <summary>
-    /// Send a data message to the device
+    /// Send a data message to the device 
     /// </summary>
     /// <param name="command">Command to send</param>
     /// <returns>Reply of the device</returns>
     public MessageSendingResult SendDataMessage(IOutboundDataMessage command)
     {
+        return _communicationHandler.SendMessage(command);
+    }
+
+    /// <summary>
+    /// Send an order to the device
+    /// </summary>
+    /// <param name="order">Order to send as command to device</param>
+    /// <returns>Reply of the device</returns>
+    public MessageSendingResult SendDataMessage(IOrder order)
+    {
+        var command = _outboundDataMessageFactory.CreateInstance(order);
         return _communicationHandler.SendMessage(command);
     }
 
@@ -162,7 +175,6 @@ public class OrderManagementCommunicationAdapter : IOrderManagementCommunication
                 DataMessagingConfig.AppLogger.LogWarning($"{DataMessagingConfig.LoggerId}ComDevInit not possible due to another call to ComDevInit or ComDevClose in progress");
                 return IsCommunicationHandlerNotNull;
             }
-
 
             if (IsCommunicationHandlerNotNull)
             {
@@ -297,7 +309,7 @@ public class OrderManagementCommunicationAdapter : IOrderManagementCommunication
             if (_communicationHandler.IsConnected)
             {
                 _communicationHandler.Disconnect();
-                //_currentBlockNo = TowerCommunicationBasics.MaxBlockNoStStys;
+                DataMessagingConfig.ResetOutboundDataMessageFactoryDelegate?.Invoke();
             }
 
             _communicationHandler.Dispose();
@@ -317,8 +329,8 @@ public class OrderManagementCommunicationAdapter : IOrderManagementCommunication
 
             IsComDevActionInProgress = false;
 
-            //// Handle the communication break on higher business logic levels
-            //HandleComDevCloseDelegate?.Invoke();
+            // Handle the communication break on higher business logic levels
+            DataMessagingConfig.ResetOutboundDataMessageFactoryDelegate?.Invoke();
 
             // ReSharper disable once InvertIf
             if (!noLogging)

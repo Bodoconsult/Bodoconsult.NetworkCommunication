@@ -13,7 +13,7 @@ internal class DummyDataBlockCodecTests
     public void DecodeDataBlock_ValidData_ReturnsDataBlock()
     {
         // Arrange 
-        var codec = new DummyDataBlockCodec();
+        var codec = new BasicDataBlockCodec();
         var data = new byte[] { 0x78, 0x42, 0x6c, 0x75, 0x62, 0x62 }.AsMemory();
 
         // Act  
@@ -29,10 +29,10 @@ internal class DummyDataBlockCodecTests
     public void EncodeDataBlock_ValidData_ReturnsDataBlock()
     {
         // Arrange 
-        var codec = new DummyDataBlockCodec();
+        var codec = new BasicDataBlockCodec();
         var data = new byte[] { 0x78, 0x42, 0x6c, 0x75, 0x62, 0x62 }.AsMemory();
 
-        var dataBlock = new DummyOutboundDatablock
+        var dataBlock = new BasicOutboundDatablock
         {
             Data = data,
             DataBlockType = 'x'

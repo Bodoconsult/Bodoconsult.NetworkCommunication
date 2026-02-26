@@ -17,7 +17,7 @@ internal class BtcpDataMessageCodecTests
     {
         // Arrange 
         var dataBlockCodingProcessor = new DefaultDataBlockCodingProcessor();
-        dataBlockCodingProcessor.LoadDataBlockCodecs('x', new DummyDataBlockCodec());
+        dataBlockCodingProcessor.LoadDataBlockCodecs('x', new BasicDataBlockCodec());
 
         // Act  
         var codec = new BtcpDataMessageCodec(dataBlockCodingProcessor);
@@ -27,13 +27,13 @@ internal class BtcpDataMessageCodecTests
     }
 
     [Test]
-    public void DecodeDataMessage_ValidInputWithDataBlock_MessageDecoded()
+    public void DecodeDataMessage_ValidInputWithDataBlockReply_MessageDecoded()
     {
         // Arrange 
-        var msg = new byte[] { 0x2, 0x31, 0x4, 0x78, 0x75, 0x62, 0x62, 0x3, 0x2, 0x2, 0x4, 0x6b, 0x75, 0x62, 0x62, 0x3 };
+        var msg = new byte[] { 0x2, 0x0, 0x31, 0x4, 0x78, 0x75, 0x62, 0x62, 0x3, 0x2, 0x2, 0x4, 0x6b, 0x75, 0x62, 0x62, 0x3 };
 
         var dataBlockCodingProcessor = new DefaultDataBlockCodingProcessor();
-        dataBlockCodingProcessor.LoadDataBlockCodecs('x', new DummyDataBlockCodec());
+        dataBlockCodingProcessor.LoadDataBlockCodecs('x', new BasicDataBlockCodec());
         var codec = new BtcpDataMessageCodec(dataBlockCodingProcessor);
 
         // Act  
@@ -48,16 +48,42 @@ internal class BtcpDataMessageCodecTests
         Assert.That(btcpMsg.BusinessTransactionId, Is.EqualTo(1));
         Assert.That(btcpMsg.DataBlock, Is.Not.Null);
         Assert.That(btcpMsg.DataBlock.Data.Length, Is.EqualTo(11));
+        Assert.That(btcpMsg.IsRequest, Is.False);
     }
 
     [Test]
-    public void DecodeDataMessage_ValidInputNoDataBlockWithEot_MessageDecoded()
+    public void DecodeDataMessage_ValidInputWithDataBlockRequest_MessageDecoded()
     {
         // Arrange 
-        var msg = new byte[] { 0x2, 0x31, 0x4, 0x3 };
+        var msg = new byte[] { 0x2, 0x1, 0x31, 0x4, 0x78, 0x75, 0x62, 0x62, 0x3, 0x2, 0x2, 0x4, 0x6b, 0x75, 0x62, 0x62, 0x3 };
 
         var dataBlockCodingProcessor = new DefaultDataBlockCodingProcessor();
-        dataBlockCodingProcessor.LoadDataBlockCodecs('x', new DummyDataBlockCodec());
+        dataBlockCodingProcessor.LoadDataBlockCodecs('x', new BasicDataBlockCodec());
+        var codec = new BtcpDataMessageCodec(dataBlockCodingProcessor);
+
+        // Act  
+        var result = codec.DecodeDataMessage(msg);
+
+        // Assert
+        Assert.That(result, Is.Not.Null);
+        Assert.That(result.ErrorCode, Is.EqualTo(0));
+
+        var btcpMsg = (BtcpInboundDataMessage)result.DataMessage;
+
+        Assert.That(btcpMsg.BusinessTransactionId, Is.EqualTo(1));
+        Assert.That(btcpMsg.DataBlock, Is.Not.Null);
+        Assert.That(btcpMsg.DataBlock.Data.Length, Is.EqualTo(11));
+        Assert.That(btcpMsg.IsRequest, Is.True);
+    }
+
+    [Test]
+    public void DecodeDataMessage_ValidInputNoDataBlockWithEotReply_MessageDecoded()
+    {
+        // Arrange 
+        var msg = new byte[] { 0x2, 0x0, 0x31, 0x4, 0x3 };
+
+        var dataBlockCodingProcessor = new DefaultDataBlockCodingProcessor();
+        dataBlockCodingProcessor.LoadDataBlockCodecs('x', new BasicDataBlockCodec());
         var codec = new BtcpDataMessageCodec(dataBlockCodingProcessor);
 
         // Act  
@@ -71,16 +97,17 @@ internal class BtcpDataMessageCodecTests
 
         Assert.That(btcpMsg.BusinessTransactionId, Is.EqualTo(1));
         Assert.That(btcpMsg.DataBlock, Is.Null);
+        Assert.That(btcpMsg.IsRequest, Is.False);
     }
 
     [Test]
-    public void DecodeDataMessage_ValidInputNoDataBlockNoEot_MessageDecoded()
+    public void DecodeDataMessage_ValidInputNoDataBlockWithEotRequest_MessageDecoded()
     {
         // Arrange 
-        var msg = new byte[] { 0x2, 0x31, 0x4, 0x3 };
+        var msg = new byte[] { 0x2, 0x1, 0x31, 0x4, 0x3 };
 
         var dataBlockCodingProcessor = new DefaultDataBlockCodingProcessor();
-        dataBlockCodingProcessor.LoadDataBlockCodecs('x', new DummyDataBlockCodec());
+        dataBlockCodingProcessor.LoadDataBlockCodecs('x', new BasicDataBlockCodec());
         var codec = new BtcpDataMessageCodec(dataBlockCodingProcessor);
 
         // Act  
@@ -94,6 +121,55 @@ internal class BtcpDataMessageCodecTests
 
         Assert.That(btcpMsg.BusinessTransactionId, Is.EqualTo(1));
         Assert.That(btcpMsg.DataBlock, Is.Null);
+        Assert.That(btcpMsg.IsRequest, Is.True);
+    }
+
+    [Test]
+    public void DecodeDataMessage_ValidInputNoDataBlockNoEotReply_MessageDecoded()
+    {
+        // Arrange 
+        var msg = new byte[] { 0x2, 0x0, 0x31, 0x4, 0x3 };
+
+        var dataBlockCodingProcessor = new DefaultDataBlockCodingProcessor();
+        dataBlockCodingProcessor.LoadDataBlockCodecs('x', new BasicDataBlockCodec());
+        var codec = new BtcpDataMessageCodec(dataBlockCodingProcessor);
+
+        // Act  
+        var result = codec.DecodeDataMessage(msg);
+
+        // Assert
+        Assert.That(result, Is.Not.Null);
+        Assert.That(result.ErrorCode, Is.EqualTo(0));
+
+        var btcpMsg = (BtcpInboundDataMessage)result.DataMessage;
+
+        Assert.That(btcpMsg.BusinessTransactionId, Is.EqualTo(1));
+        Assert.That(btcpMsg.DataBlock, Is.Null);
+        Assert.That(btcpMsg.IsRequest, Is.False);
+    }
+
+    [Test]
+    public void DecodeDataMessage_ValidInputNoDataBlockNoEotRequest_MessageDecoded()
+    {
+        // Arrange 
+        var msg = new byte[] { 0x2, 0x1, 0x31, 0x4, 0x3 };
+
+        var dataBlockCodingProcessor = new DefaultDataBlockCodingProcessor();
+        dataBlockCodingProcessor.LoadDataBlockCodecs('x', new BasicDataBlockCodec());
+        var codec = new BtcpDataMessageCodec(dataBlockCodingProcessor);
+
+        // Act  
+        var result = codec.DecodeDataMessage(msg);
+
+        // Assert
+        Assert.That(result, Is.Not.Null);
+        Assert.That(result.ErrorCode, Is.EqualTo(0));
+
+        var btcpMsg = (BtcpInboundDataMessage)result.DataMessage;
+
+        Assert.That(btcpMsg.BusinessTransactionId, Is.EqualTo(1));
+        Assert.That(btcpMsg.DataBlock, Is.Null);
+        Assert.That(btcpMsg.IsRequest, Is.True);
     }
 
     [Test]
@@ -103,7 +179,7 @@ internal class BtcpDataMessageCodecTests
         var msg = new byte[] { 0x2, 0x31 };
 
         var dataBlockCodingProcessor = new DefaultDataBlockCodingProcessor();
-        dataBlockCodingProcessor.LoadDataBlockCodecs('x', new DummyDataBlockCodec());
+        dataBlockCodingProcessor.LoadDataBlockCodecs('x', new BasicDataBlockCodec());
         var codec = new BtcpDataMessageCodec(dataBlockCodingProcessor);
 
         // Act  
@@ -115,15 +191,55 @@ internal class BtcpDataMessageCodecTests
         Assert.That(result.DataMessage, Is.Null);
     }
 
+    //[Test]
+    //public void EncodeDataMessage_ValidInput_MessageEncoded()
+    //{
+    //    // Arrange 
+    //    var transactionId = 1;
+
+    //    var data = new byte[] { 0x75, 0x62, 0x62, 0x6b, 0x75, 0x62, 0x62 };
+
+    //    var dataBlock = new DummyOutboundDatablock
+    //    {
+    //        Data = data,
+    //        DataBlockType = 'x'
+    //    };
+
+    //    var msg = new BtcpOutboundDataMessage(transactionId)
+    //    {
+    //        DataBlock = dataBlock
+    //    };
+
+    //    Assert.That(msg.RawMessageData.Length, Is.EqualTo(0));
+
+    //    var dataBlockCodingProcessor = new DefaultDataBlockCodingProcessor();
+    //    dataBlockCodingProcessor.LoadDataBlockCodecs('x', new DummyDataBlockCodec());
+    //    var codec = new BtcpDataMessageCodec(dataBlockCodingProcessor);
+
+    //    // Act  
+    //    var result = codec.EncodeDataMessage(msg);
+
+    //    // Assert
+    //    Assert.That(result, Is.Not.Null);
+    //    Assert.That(result.ErrorCode, Is.EqualTo(0));
+    //    Assert.That(msg.RawMessageData.Length, Is.Not.EqualTo(0));
+
+    //    Assert.That(msg.RawMessageData.Span[0], Is.EqualTo(DeviceCommunicationBasics.Stx));
+    //    Assert.That(msg.RawMessageData.Span[1], Is.EqualTo(0x31));
+    //    Assert.That(msg.RawMessageData.Span[2], Is.EqualTo(DeviceCommunicationBasics.Eot));
+
+    //    Assert.That(msg.RawMessageData.Span[msg.RawMessageData.Length - 1], Is.EqualTo(DeviceCommunicationBasics.Etx));
+    //}
+
     [Test]
-    public void EncodeDataMessage_ValidInput_MessageEncoded()
+    public void EncodeDataMessage_ValidInputReply_MessageEncoded()
     {
         // Arrange 
         var transactionId = 1;
 
         var data = new byte[] { 0x75, 0x62, 0x62, 0x6b, 0x75, 0x62, 0x62 };
 
-        var dataBlock = new DummyOutboundDatablock
+        var dataBlock = new BasicOutboundDatablock
         {
             Data = data,
             DataBlockType = 'x'
@@ -137,7 +253,7 @@ internal class BtcpDataMessageCodecTests
         Assert.That(msg.RawMessageData.Length, Is.EqualTo(0));
 
         var dataBlockCodingProcessor = new DefaultDataBlockCodingProcessor();
-        dataBlockCodingProcessor.LoadDataBlockCodecs('x', new DummyDataBlockCodec());
+        dataBlockCodingProcessor.LoadDataBlockCodecs('x', new BasicDataBlockCodec());
         var codec = new BtcpDataMessageCodec(dataBlockCodingProcessor);
 
         // Act  
@@ -149,14 +265,58 @@ internal class BtcpDataMessageCodecTests
         Assert.That(msg.RawMessageData.Length, Is.Not.EqualTo(0));
 
         Assert.That(msg.RawMessageData.Span[0], Is.EqualTo(DeviceCommunicationBasics.Stx));
-        Assert.That(msg.RawMessageData.Span[1], Is.EqualTo(0x31));
-        Assert.That(msg.RawMessageData.Span[2], Is.EqualTo(DeviceCommunicationBasics.Eot));
+        Assert.That(msg.RawMessageData.Span[1], Is.EqualTo(0x0));
+        Assert.That(msg.RawMessageData.Span[2], Is.EqualTo(0x31));
+        Assert.That(msg.RawMessageData.Span[3], Is.EqualTo(DeviceCommunicationBasics.Eot));
 
         Assert.That(msg.RawMessageData.Span[msg.RawMessageData.Length - 1], Is.EqualTo(DeviceCommunicationBasics.Etx));
     }
 
     [Test]
-    public void EncodeDataMessage_ValidInputNoDataBlock_MessageEncoded()
+    public void EncodeDataMessage_ValidInputRequest_MessageEncoded()
+    {
+        // Arrange 
+        var transactionId = 1;
+
+        var data = new byte[] { 0x75, 0x62, 0x62, 0x6b, 0x75, 0x62, 0x62 };
+
+        var dataBlock = new BasicOutboundDatablock
+        {
+            Data = data,
+            DataBlockType = 'x'
+        };
+
+        var msg = new BtcpOutboundDataMessage(transactionId)
+        {
+            DataBlock = dataBlock,
+            IsRequest = true
+        };
+
+        Assert.That(msg.RawMessageData.Length, Is.EqualTo(0));
+
+        var dataBlockCodingProcessor = new DefaultDataBlockCodingProcessor();
+        dataBlockCodingProcessor.LoadDataBlockCodecs('x', new BasicDataBlockCodec());
+        var codec = new BtcpDataMessageCodec(dataBlockCodingProcessor);
+
+        // Act  
+        var result = codec.EncodeDataMessage(msg);
+
+        // Assert
+        Assert.That(result, Is.Not.Null);
+        Assert.That(result.ErrorCode, Is.EqualTo(0));
+        Assert.That(msg.RawMessageData.Length, Is.Not.EqualTo(0));
+
+        Assert.That(msg.RawMessageData.Span[0], Is.EqualTo(DeviceCommunicationBasics.Stx));
+        Assert.That(msg.RawMessageData.Span[1], Is.EqualTo(0x1));
+        Assert.That(msg.RawMessageData.Span[2], Is.EqualTo(0x31));
+        Assert.That(msg.RawMessageData.Span[3], Is.EqualTo(DeviceCommunicationBasics.Eot));
+
+
+        Assert.That(msg.RawMessageData.Span[msg.RawMessageData.Length - 1], Is.EqualTo(DeviceCommunicationBasics.Etx));
+    }
+
+    [Test]
+    public void EncodeDataMessage_ValidInputNoDataBlockReply_MessageEncoded()
     {
         // Arrange 
         var transactionId = 1;
@@ -166,7 +326,7 @@ internal class BtcpDataMessageCodecTests
         Assert.That(msg.RawMessageData.Length, Is.EqualTo(0));
 
         var dataBlockCodingProcessor = new DefaultDataBlockCodingProcessor();
-        dataBlockCodingProcessor.LoadDataBlockCodecs('x', new DummyDataBlockCodec());
+        dataBlockCodingProcessor.LoadDataBlockCodecs('x', new BasicDataBlockCodec());
         var codec = new BtcpDataMessageCodec(dataBlockCodingProcessor);
 
         // Act  
@@ -178,7 +338,39 @@ internal class BtcpDataMessageCodecTests
         Assert.That(msg.RawMessageData.Length, Is.Not.EqualTo(0));
 
         Assert.That(msg.RawMessageData.Span[0], Is.EqualTo(DeviceCommunicationBasics.Stx));
-        Assert.That(msg.RawMessageData.Span[1], Is.EqualTo(0x31));
-        Assert.That(msg.RawMessageData.Span[2], Is.EqualTo(DeviceCommunicationBasics.Etx));
+        Assert.That(msg.RawMessageData.Span[1], Is.EqualTo(0x0));
+        Assert.That(msg.RawMessageData.Span[2], Is.EqualTo(0x31));
+        Assert.That(msg.RawMessageData.Span[3], Is.EqualTo(DeviceCommunicationBasics.Etx));
+    }
+
+    [Test]
+    public void EncodeDataMessage_ValidInputNoDataBlockRequest_MessageEncoded()
+    {
+        // Arrange 
+        var transactionId = 1;
+
+        var msg = new BtcpOutboundDataMessage(transactionId)
+        {
+            IsRequest = true
+        };
+
+        Assert.That(msg.RawMessageData.Length, Is.EqualTo(0));
+
+        var dataBlockCodingProcessor = new DefaultDataBlockCodingProcessor();
+        dataBlockCodingProcessor.LoadDataBlockCodecs('x', new BasicDataBlockCodec());
+        var codec = new BtcpDataMessageCodec(dataBlockCodingProcessor);
+
+        // Act  
+        var result = codec.EncodeDataMessage(msg);
+
+        // Assert
+        Assert.That(result, Is.Not.Null);
+        Assert.That(result.ErrorCode, Is.EqualTo(0));
+        Assert.That(msg.RawMessageData.Length, Is.Not.EqualTo(0));
+
+        Assert.That(msg.RawMessageData.Span[0], Is.EqualTo(DeviceCommunicationBasics.Stx));
+        Assert.That(msg.RawMessageData.Span[1], Is.EqualTo(0x1));
+        Assert.That(msg.RawMessageData.Span[2], Is.EqualTo(0x31));
+        Assert.That(msg.RawMessageData.Span[3], Is.EqualTo(DeviceCommunicationBasics.Etx));
     }
 }

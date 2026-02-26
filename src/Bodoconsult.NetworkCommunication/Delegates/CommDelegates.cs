@@ -184,4 +184,9 @@ public delegate MessageSendingResult CancelRunningOperationDelegate();
 /// <returns>Reply of the device</returns>
 public delegate MessageSendingResult SendDataMessageDelegate(IOutboundDataMessage command);
 
+/// <summary>
+/// Reset the <see cref="IOutboundDataMessageFactory"/>
+/// </summary>
+public delegate void ResetOutboundDataMessageFactoryDelegate();
+
 #endregion

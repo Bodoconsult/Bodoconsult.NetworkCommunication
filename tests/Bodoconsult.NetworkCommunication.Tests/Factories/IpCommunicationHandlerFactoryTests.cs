@@ -2,7 +2,6 @@
 
 using Bodoconsult.App.Factories;
 using Bodoconsult.App.Interfaces;
-using Bodoconsult.App.Logging;
 using Bodoconsult.NetworkCommunication.App.Abstractions;
 using Bodoconsult.NetworkCommunication.Factories;
 using Bodoconsult.NetworkCommunication.Interfaces;

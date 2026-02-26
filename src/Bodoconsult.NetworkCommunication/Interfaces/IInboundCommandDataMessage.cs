@@ -11,9 +11,4 @@ public interface IInboundCommandDataMessage : IInboundDataMessage
     /// Command requested
     /// </summary>
     char Command { get; }
-
-    /// <summary>
-    /// Current block code
-    /// </summary>
-    public byte Block { get; }
 }

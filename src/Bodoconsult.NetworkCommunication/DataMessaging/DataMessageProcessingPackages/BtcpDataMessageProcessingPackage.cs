@@ -118,6 +118,6 @@ public class BtcpDataMessageProcessingPackage : IDataMessageProcessingPackage
     public virtual void LoadCustomDataBlockCodecs()
     {
         // Load your datablock codes here
-        DataBlockCodingProcessor.LoadDataBlockCodecs('x', new DummyDataBlockCodec());
+        DataBlockCodingProcessor.LoadDataBlockCodecs('x', new BasicDataBlockCodec());
     }
 }

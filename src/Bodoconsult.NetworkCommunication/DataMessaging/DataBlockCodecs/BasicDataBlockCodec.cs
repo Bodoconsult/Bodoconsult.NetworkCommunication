@@ -6,9 +6,9 @@ using Bodoconsult.NetworkCommunication.Interfaces;
 namespace Bodoconsult.NetworkCommunication.DataMessaging.DataBlockCodecs;
 
 /// <summary>
-/// Datablock codec example for SDCP, EDCP and BTCP protocol
+/// Basic datablock codec for SDCP, EDCP and BTCP protocol
 /// </summary>
-public class DummyDataBlockCodec : IDataBlockCodec
+public class BasicDataBlockCodec : IDataBlockCodec
 {
     /// <summary>
     /// Method encode an instance of Datablock in bytes array.
@@ -19,7 +19,7 @@ public class DummyDataBlockCodec : IDataBlockCodec
     /// <returns>a byte array with datablock infos</returns>
     public void EncodeDataBlock(List<byte> data, ITypedOutboundDataBlock datablock)
     {
-        if (datablock is not DummyOutboundDatablock db)
+        if (datablock is not BasicOutboundDatablock db)
         {
             throw new ArgumentException("Wrong type of datablock");
         }
@@ -52,13 +52,13 @@ public class DummyDataBlockCodec : IDataBlockCodec
         // Now create your datablock as request by specs here
         if (datablockBytes.Length < 2)
         {
-            return new DummyInboundDatablock
+            return new BasicInboundDatablock
             {
                 Data = Array.Empty<byte>(),
                 DataBlockType = 'x'
             };
         }
-        return new DummyInboundDatablock
+        return new BasicInboundDatablock
         {
             Data = datablockBytes[1..],
             DataBlockType = 'x'

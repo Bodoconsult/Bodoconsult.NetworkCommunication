@@ -9,7 +9,7 @@ namespace Bodoconsult.NetworkCommunication.Interfaces;
 public interface IInboundDataBlock
 {
     /// <summary>
-    /// Data contains the bytes of the Data except the byte representing datablock type
+    /// Data contains the bytes of the DataBlock except the byte representing datablock type
     /// </summary>
     Memory<byte> Data { set; get; }
 }

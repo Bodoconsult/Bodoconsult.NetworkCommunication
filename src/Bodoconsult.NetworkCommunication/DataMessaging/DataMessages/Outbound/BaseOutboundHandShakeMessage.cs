@@ -7,9 +7,12 @@ namespace Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
 /// <summary>
 /// Base class for <see cref="IOutboundDataMessage"/> handshake implementations
 /// </summary>
-public class BaseOutboundHandShakeDataMessage: IOutboundDataMessage
+public abstract class BaseOutboundHandShakeMessage: IOutboundHandShakeMessage
 {
-    public BaseOutboundHandShakeDataMessage()
+    /// <summary>
+    /// Default ctor
+    /// </summary>
+    protected BaseOutboundHandShakeMessage()
     {
         MessageId = DateTime.Now.ToFileTimeUtc();
     }
@@ -19,10 +22,7 @@ public class BaseOutboundHandShakeDataMessage: IOutboundDataMessage
     /// </summary>
     public long MessageId { get;  }
 
-    /// <summary>
-    /// Is waiting for acknowledgement by the device required for the message
-    /// </summary>
-    public bool WaitForAcknowledgement => false;
+    public ITypedOutboundDataBlock DataBlock { get; set; }
 
     /// <summary>
     /// Current raw message data as byte array
@@ -52,4 +52,8 @@ public class BaseOutboundHandShakeDataMessage: IOutboundDataMessage
         throw new NotSupportedException();
     }
 
+    /// <summary>
+    /// Type of handshake as byte value
+    /// </summary>
+    public byte HandshakeMessageType { get; set; }
 }

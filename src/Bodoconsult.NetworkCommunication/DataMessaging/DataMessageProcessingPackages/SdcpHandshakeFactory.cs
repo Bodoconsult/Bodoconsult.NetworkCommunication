@@ -15,7 +15,7 @@ public class SdcpHandshakeFactory : IDataMessageHandshakeFactory
     /// </summary>
     /// <param name="message">Current message received</param>
     /// <returns>ACK handshake message to send</returns>
-    public IOutboundHandShakeDataMessage GetAckResponse(IInboundDataMessage message)
+    public IOutboundHandShakeMessage GetAckResponse(IInboundDataMessage message)
     {
         var ack = new OutboundHandshakeMessage
         {
@@ -30,7 +30,7 @@ public class SdcpHandshakeFactory : IDataMessageHandshakeFactory
     /// </summary>
     /// <param name="message">Current message received</param>
     /// <returns>NAK handshake message to send</returns>
-    public IOutboundHandShakeDataMessage GetNakResponse(IInboundDataMessage message)
+    public IOutboundHandShakeMessage GetNakResponse(IInboundDataMessage message)
     {
         var nak = new OutboundHandshakeMessage
         {
@@ -44,7 +44,7 @@ public class SdcpHandshakeFactory : IDataMessageHandshakeFactory
     /// </summary>
     /// <param name="message">Current message received</param>
     /// <returns>CAN handshake message to send</returns>
-    public IOutboundHandShakeDataMessage GetCanResponse(IInboundDataMessage message)
+    public IOutboundHandShakeMessage GetCanResponse(IInboundDataMessage message)
     {
         var can = new OutboundHandshakeMessage
         {

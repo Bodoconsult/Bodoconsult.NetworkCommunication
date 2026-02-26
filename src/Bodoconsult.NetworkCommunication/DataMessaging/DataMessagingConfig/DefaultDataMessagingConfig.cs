@@ -96,6 +96,11 @@ public class DefaultDataMessagingConfig: IIpDataMessagingConfig
     public RaiseUnexpectedDataMessageReceivedDelegate RaiseUnexpectedDataMessageReceivedDelegate { get; set; }
 
     /// <summary>
+    /// Reset the <see cref="IOutboundDataMessageFactory"/>
+    /// </summary>
+    public ResetOutboundDataMessageFactoryDelegate ResetOutboundDataMessageFactoryDelegate { get; set; }
+
+    /// <summary>
     /// IP address of the device
     /// </summary>
     public string IpAddress { get; set; } = "127.0.0.1";

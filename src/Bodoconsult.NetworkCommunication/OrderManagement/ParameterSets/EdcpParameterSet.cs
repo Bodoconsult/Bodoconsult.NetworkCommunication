@@ -7,9 +7,9 @@ using Bodoconsult.NetworkCommunication.Interfaces;
 namespace Bodoconsult.NetworkCommunication.OrderManagement.ParameterSets;
 
 /// <summary>
-/// Parameter set for requests 
+/// Parameter set for EDCP requests 
 /// </summary>
-public class BusinessTransactionParameterSet : IParameterSet
+public class EdcpParameterSet : IParameterSet
 {
     /// <summary>
     /// The order the parameter set is bound to
@@ -31,14 +31,9 @@ public class BusinessTransactionParameterSet : IParameterSet
     }
 
     /// <summary>
-    /// The ID of the requested business transaction
+    /// Payload to send with the emssage
     /// </summary>
-    public int BusinessTransactionId { get; set; }
-
-    /// <summary>
-    /// The payload datablock for the business transaction. Contains parameters for the requested business transaction
-    /// </summary>
-    public ITypedInboundDataBlock DataBlock { get; set; }
+    public Memory<byte> Payload { get; set; }
 
     /// <summary>
     /// User ID
@@ -85,5 +80,5 @@ public class BusinessTransactionParameterSet : IParameterSet
     /// <summary>
     /// Type code for the type of the outbound datablock
     /// </summary>
-    public char DataBlockType => 'b';
+    public char DataBlockType => 'x';
 }

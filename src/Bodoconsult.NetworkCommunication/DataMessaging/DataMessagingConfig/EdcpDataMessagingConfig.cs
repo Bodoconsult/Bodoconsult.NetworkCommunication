@@ -97,6 +97,11 @@ public class EdcpDataMessagingConfig : IIpDataMessagingConfig
     public RaiseUnexpectedDataMessageReceivedDelegate RaiseUnexpectedDataMessageReceivedDelegate { get; set; }
 
     /// <summary>
+    /// Reset the <see cref="IOutboundDataMessageFactory"/>
+    /// </summary>
+    public ResetOutboundDataMessageFactoryDelegate ResetOutboundDataMessageFactoryDelegate { get; set; }
+
+    /// <summary>
     /// IP address of the device
     /// </summary>
     public string IpAddress { get; set; } = "127.0.0.1";
@@ -109,22 +114,22 @@ public class EdcpDataMessagingConfig : IIpDataMessagingConfig
     /// <summary>
     /// The minimum blockcode sent by the client
     /// </summary>
-    public int ClientSendMinimumBlockCode { get; set; } = 21;
+    public byte ClientSendMinimumBlockCode { get; set; } = 128;
 
     /// <summary>
     /// The maximum blockcode sent by the client
     /// </summary>
-    public int ClientSendMaximumBlockCode { get; set; } = 40;
+    public byte ClientSendMaximumBlockCode { get; set; } = 255;
 
     /// <summary>
     /// The minimum blockcode sent by the server
     /// </summary>
-    public int ServerSendMinimumBlockCode { get; set; } = 1;
+    public int ServerSendMinimumBlockCode { get; set; } = 0;
 
     /// <summary>
     /// The maximum blockcode sent by the server
     /// </summary>
-    public int ServerSendMaximumBlockCode { get; set; } = 20;
+    public int ServerSendMaximumBlockCode { get; set; } = 127;
 
 
 

@@ -1,19 +1,12 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH.  All rights reserved.
 
-using Bodoconsult.NetworkCommunication.Interfaces;
-
 namespace Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
 
 /// <summary>
 /// Represents an EDCP protocol handshake message
 /// </summary>
-public sealed class EdcpOutboundHandshakeMessage : BaseOutboundHandShakeDataMessage, IOutboundHandShakeDataMessage
+public sealed class EdcpOutboundHandshakeMessage : BaseOutboundHandShakeMessage
 {
-    /// <summary>
-    /// Type of handshake as byte value
-    /// </summary>
-    public byte HandshakeMessageType { set; get; }
-
     /// <summary>
     /// Block code of the data message this handshake is acknowledging
     /// </summary>

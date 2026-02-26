@@ -23,6 +23,11 @@ public class ShouldCrashOutboundDataMessage : IOutboundDataMessage
     public bool WaitForAcknowledgement { get; set; }
 
     /// <summary>
+    /// Data block stored in the message
+    /// </summary>
+    public ITypedOutboundDataBlock DataBlock { get; set; }
+
+    /// <summary>
     /// Current raw message data as byte array
     /// </summary>
     public Memory<byte> RawMessageData

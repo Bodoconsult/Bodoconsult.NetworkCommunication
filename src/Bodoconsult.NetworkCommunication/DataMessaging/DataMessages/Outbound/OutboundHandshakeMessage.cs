@@ -1,19 +1,12 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
-using Bodoconsult.NetworkCommunication.Interfaces;
-
 namespace Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
 
 /// <summary>
 /// Represents a handshake message
 /// </summary>
-public sealed class OutboundHandshakeMessage : BaseOutboundHandShakeDataMessage, IOutboundHandShakeDataMessage
+public class OutboundHandshakeMessage : BaseOutboundHandShakeMessage
 {
-    /// <summary>
-    /// Typpe of handshake as byte value
-    /// </summary>
-    public byte HandshakeMessageType { set; get; }
-
     /// <summary>Returns a string that represents the current object.</summary>
     /// <returns>A string that represents the current object.</returns>
     public override string ToString()

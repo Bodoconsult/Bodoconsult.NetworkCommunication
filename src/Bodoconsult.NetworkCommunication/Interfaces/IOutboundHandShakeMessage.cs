@@ -3,12 +3,12 @@
 namespace Bodoconsult.NetworkCommunication.Interfaces;
 
 /// <summary>
-/// Interface for outbound handshake data messages
+/// Interface for outbound handshake messages
 /// </summary>
-public interface IOutboundHandShakeDataMessage : IOutboundMessage
+public interface IOutboundHandShakeMessage : IOutboundMessage
 {
     /// <summary>
-    /// Typpe of handshake as byte value
+    /// Type of handshake as byte value
     /// </summary>
     public byte HandshakeMessageType { set; get; }
 }

@@ -5,12 +5,12 @@ using Bodoconsult.NetworkCommunication.Interfaces;
 namespace Bodoconsult.NetworkCommunication.DataMessaging.DataBlocks;
 
 /// <summary>
-/// Dummy outbound data block
+/// Basic outbound data block
 /// </summary>
-public class DummyOutboundDatablock : ITypedOutboundDataBlock
+public class BasicOutboundDatablock : ITypedOutboundDataBlock
 {
     /// <summary>
-    /// Data contains the bytes of the Data except the byte representing datablock type
+    /// Data contains the bytes of the DataBlock except the byte representing datablock type
     /// </summary>
     public Memory<byte> Data { get; set; }
 

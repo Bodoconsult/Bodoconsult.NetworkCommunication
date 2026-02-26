@@ -11,4 +11,9 @@ public interface IOutboundDataMessage: IOutboundMessage
     /// Is waiting for acknowledgement by the device required for the message
     /// </summary>
     bool WaitForAcknowledgement { get; }
+
+    /// <summary>
+    /// Data block stored in the message
+    /// </summary>
+    public ITypedOutboundDataBlock DataBlock { get; set; }
 }

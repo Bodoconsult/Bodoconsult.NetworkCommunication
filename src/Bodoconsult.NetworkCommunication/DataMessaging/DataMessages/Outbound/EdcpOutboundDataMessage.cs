@@ -31,15 +31,10 @@ public class EdcpOutboundDataMessage : IOutboundDataMessage
     public bool WaitForAcknowledgement { get; set; }
 
     /// <summary>
-    /// Current block code of this message
-    /// </summary>
-    public byte BlockCode { get; set; }
-
-    /// <summary>
     /// Block code of the requesting data message this message is an answer for.
     /// Set and use this field in your business logic to build command chains.
     /// </summary>
-    public byte RequestBlockCode { get; set; }
+    public byte BlockCode { get; set; }
 
     /// <summary>
     /// Current raw message data as byte array

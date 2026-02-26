@@ -96,6 +96,21 @@ public static class DeviceCommunicationBasics
     public const byte Ack = 6;      // 0x06
 
     /// <summary>
+    /// Carriage return
+    /// </summary>
+    public const byte Cr = 13;      // 0x0d
+
+    /// <summary>
+    /// Line feed
+    /// </summary>
+    public const byte Lf = 10;      // 0x0a
+
+    /// <summary>
+    /// Comma
+    /// </summary>
+    public const byte Comma = 44;   // 0x2c
+
+    /// <summary>
     /// Handshake NACK
     /// </summary>
     public const byte Nack = 21;    // 0x15
@@ -111,6 +126,4 @@ public static class DeviceCommunicationBasics
     public const byte NullByte = 0x0;
 
     #endregion
-
-        
 }

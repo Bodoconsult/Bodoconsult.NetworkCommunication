@@ -2,6 +2,7 @@
 
 using Bodoconsult.App.Benchmarking;
 using Bodoconsult.App.Logging;
+using Bodoconsult.NetworkCommunication.App.Abstractions;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessageProcessingPackages;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig;
 using Bodoconsult.NetworkCommunication.Interfaces;
@@ -73,5 +74,15 @@ public static class TestDataHelper
         config.DataMessageProcessingPackage = new BtcpDataMessageProcessingPackage(config);
 
         return config;
+    }
+
+    /// <summary>
+    /// Get a fake <see cref="IAppDateService"/> instance
+    /// </summary>
+    /// <returns></returns>
+    public static IAppDateService GetFakeDateTimeService()
+    {
+        // ToDo: change to fake later
+        return new AppDateService();
     }
 }

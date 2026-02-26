@@ -32,9 +32,9 @@ public class BtcpOutboundDataMessage: IOutboundBusinessTransactionDataMessage
     public bool WaitForAcknowledgement { get; set; }
 
     /// <summary>
-    /// Should an acknowledgement be sent if the message is received
+    /// Is the message a request for running a business transaction? True = request for running a business transaction, false reply on a request to run a business transaction
     /// </summary>
-    public bool AnswerWithAcknowledgement { get; set; }
+    public bool IsRequest { get; set; }
 
     /// <summary>
     /// Current raw message data as byte array

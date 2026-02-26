@@ -12,7 +12,6 @@ namespace Bodoconsult.NetworkCommunication.DataMessaging.DataMessageCodecs;
 /// </summary>
 public class BtcpDataMessageCodec : BaseDataMessageCodec
 {
-
     private readonly Encoding _encoding = Encoding.UTF8;
 
     /// <summary>
@@ -28,7 +27,7 @@ public class BtcpDataMessageCodec : BaseDataMessageCodec
     {
         DataBlockCodingProcessor = dataBlockCodingProcessor;
 
-        ExpectedMinimumLength = DeviceCommunicationBasics.DataMessageMinPacketSize;
+        ExpectedMinimumLength = 2;
         ExpectedMaximumLength = DeviceCommunicationBasics.DataMessageMaxPacketSize;
     }
 
@@ -70,6 +69,8 @@ public class BtcpDataMessageCodec : BaseDataMessageCodec
         //try
         //{
 
+        var isRequest = data.Slice(1, 1).Span[0] == 1;
+
         ITypedInboundDataBlock dataBlock = null;
 
         var posEot = 0;
@@ -86,7 +87,7 @@ public class BtcpDataMessageCodec : BaseDataMessageCodec
 
         // Find business transaction ID
 
-        var nArray = data.Slice(1, posEot - 1).ToArray();
+        var nArray = data.Slice(2, posEot - 2).ToArray();
 
         var s = _encoding.GetString(nArray);
 
@@ -95,7 +96,6 @@ public class BtcpDataMessageCodec : BaseDataMessageCodec
         // Datablock delivered?
         if (posEot != data.Length - 1)
         {
-
             // Now get the delivered datablock
             var dataBlockBytes = data.Slice(posEot + 1, data.Length - posEot - 2);
 
@@ -113,7 +113,8 @@ public class BtcpDataMessageCodec : BaseDataMessageCodec
 
         var dataMessage = new BtcpInboundDataMessage(bt)
         {
-            DataBlock = dataBlock
+            DataBlock = dataBlock,
+            IsRequest = isRequest
         };
 
         result.DataMessage = dataMessage;
@@ -144,7 +145,11 @@ public class BtcpDataMessageCodec : BaseDataMessageCodec
             return result;
         }
 
-        var data = new List<byte> { DeviceCommunicationBasics.Stx };
+        var data = new List<byte>
+        {
+            DeviceCommunicationBasics.Stx,
+            (byte)(tMessage.IsRequest ? 1 : 0)
+        };
 
         // Now add the business ransaction ID
         var s = tMessage.BusinessTransactionId.ToString("###0");

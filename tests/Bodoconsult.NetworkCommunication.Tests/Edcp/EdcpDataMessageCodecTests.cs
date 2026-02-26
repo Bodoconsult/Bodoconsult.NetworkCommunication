@@ -17,7 +17,7 @@ internal class EdcpDataMessageCodecTests
     {
         // Arrange 
         var dataBlockCodingProcessor = new DefaultDataBlockCodingProcessor();
-        dataBlockCodingProcessor.LoadDataBlockCodecs('x', new DummyDataBlockCodec());
+        dataBlockCodingProcessor.LoadDataBlockCodecs('x', new BasicDataBlockCodec());
 
         // Act  
         var codec = new EdcpDataMessageCodec(dataBlockCodingProcessor);
@@ -33,7 +33,7 @@ internal class EdcpDataMessageCodecTests
         var msg = new byte[] { 0x2, 0x31, 0x4, 0x6c, 0x75, 0x62, 0x62, 0x3, 0x2, 0x2, 0x4, 0x6b, 0x75, 0x62, 0x62, 0x3 };
 
         var dataBlockCodingProcessor = new DefaultDataBlockCodingProcessor();
-        dataBlockCodingProcessor.LoadDataBlockCodecs('x', new DummyDataBlockCodec());
+        dataBlockCodingProcessor.LoadDataBlockCodecs('x', new BasicDataBlockCodec());
         var codec = new EdcpDataMessageCodec(dataBlockCodingProcessor);
 
         // Act  
@@ -55,7 +55,7 @@ internal class EdcpDataMessageCodecTests
         var msg = new byte[] { 0x2, 0x31 };
 
         var dataBlockCodingProcessor = new DefaultDataBlockCodingProcessor();
-        dataBlockCodingProcessor.LoadDataBlockCodecs('x', new DummyDataBlockCodec());
+        dataBlockCodingProcessor.LoadDataBlockCodecs('x', new BasicDataBlockCodec());
         var codec = new EdcpDataMessageCodec(dataBlockCodingProcessor);
 
         // Act  
@@ -75,7 +75,7 @@ internal class EdcpDataMessageCodecTests
 
         var data = new byte[] { 0x75, 0x62, 0x62, 0x6b, 0x75, 0x62, 0x62 };
 
-        var dataBlock = new DummyOutboundDatablock
+        var dataBlock = new BasicOutboundDatablock
         {
             Data = data,
             DataBlockType = 'x'
@@ -90,7 +90,7 @@ internal class EdcpDataMessageCodecTests
         Assert.That(msg.RawMessageData.Length, Is.EqualTo(0));
 
         var dataBlockCodingProcessor = new DefaultDataBlockCodingProcessor();
-        dataBlockCodingProcessor.LoadDataBlockCodecs('x', new DummyDataBlockCodec());
+        dataBlockCodingProcessor.LoadDataBlockCodecs('x', new BasicDataBlockCodec());
         var codec = new EdcpDataMessageCodec(dataBlockCodingProcessor);
 
         // Act  
@@ -120,7 +120,7 @@ internal class EdcpDataMessageCodecTests
         Assert.That(msg.RawMessageData.Length, Is.EqualTo(0));
 
         var dataBlockCodingProcessor = new DefaultDataBlockCodingProcessor();
-        dataBlockCodingProcessor.LoadDataBlockCodecs('x', new DummyDataBlockCodec());
+        dataBlockCodingProcessor.LoadDataBlockCodecs('x', new BasicDataBlockCodec());
         var codec = new  EdcpDataMessageCodec(dataBlockCodingProcessor);
 
         // Act  

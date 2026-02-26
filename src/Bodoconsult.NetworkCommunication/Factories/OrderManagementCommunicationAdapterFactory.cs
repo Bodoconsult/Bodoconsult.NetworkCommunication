@@ -11,13 +11,15 @@ namespace Bodoconsult.NetworkCommunication.Factories;
 public class OrderManagementCommunicationAdapterFactory : IOrderManagementCommunicationAdapterFactory
 {
     private readonly ICommunicationHandlerFactory _communicationHandlerFactory;
+    private readonly IOutboundDataMessageFactory _outboundDataMessageFactory;
 
     /// <summary>
     /// Default ctor
     /// </summary>
-    public OrderManagementCommunicationAdapterFactory(ICommunicationHandlerFactory smdTowerCommunicationHandlerFactory)
+    public OrderManagementCommunicationAdapterFactory(ICommunicationHandlerFactory smdTowerCommunicationHandlerFactory, IOutboundDataMessageFactory outboundDataMessageFactory)
     {
         _communicationHandlerFactory = smdTowerCommunicationHandlerFactory;
+        _outboundDataMessageFactory = outboundDataMessageFactory;
     }
 
     /// <summary>
@@ -32,6 +34,6 @@ public class OrderManagementCommunicationAdapterFactory : IOrderManagementCommun
             throw new NullReferenceException("dataMessagingConfig may not be NULL");
         }
 
-        return new OrderManagementCommunicationAdapter(dataMessagingConfig, _communicationHandlerFactory);
+        return new OrderManagementCommunicationAdapter(dataMessagingConfig, _communicationHandlerFactory, _outboundDataMessageFactory);
     }
 }
