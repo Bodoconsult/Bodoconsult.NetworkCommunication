@@ -35,7 +35,7 @@ public class BtcpOutboundDataMessageFactory : IOutboundDataMessageFactory
 
         var msg = new BtcpOutboundDataMessage(ps.BusinessTransactionId)
         {
-            DataBlock = parameterSet
+            DataBlock = ps
         };
 
         return msg;

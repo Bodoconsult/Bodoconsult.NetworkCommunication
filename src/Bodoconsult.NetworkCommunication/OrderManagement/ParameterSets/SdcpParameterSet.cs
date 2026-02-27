@@ -2,6 +2,7 @@
 
 using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
+using Bodoconsult.NetworkCommunication.DataMessaging.DataBlocks;
 using Bodoconsult.NetworkCommunication.Interfaces;
 
 namespace Bodoconsult.NetworkCommunication.OrderManagement.ParameterSets;
@@ -9,7 +10,7 @@ namespace Bodoconsult.NetworkCommunication.OrderManagement.ParameterSets;
 /// <summary>
 /// Parameter set for SDCP requests 
 /// </summary>
-public class SdcpParameterSet : IParameterSet
+public class SdcpParameterSet : BasicOutboundDatablock, IParameterSet
 {
     /// <summary>
     /// The order the parameter set is bound to
@@ -71,14 +72,4 @@ public class SdcpParameterSet : IParameterSet
         CurrentOrder = null;
         OrderResult = null;
     }
-
-    /// <summary>
-    /// Data contains the bytes of the Data except the byte representing datablock type
-    /// </summary>
-    public Memory<byte> Data { get; set; }
-
-    /// <summary>
-    /// Type code for the type of the outbound datablock
-    /// </summary>
-    public char DataBlockType => 'x';
 }

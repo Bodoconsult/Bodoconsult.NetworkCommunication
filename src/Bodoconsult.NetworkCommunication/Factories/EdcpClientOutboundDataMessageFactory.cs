@@ -57,9 +57,9 @@ public class EdcpClientOutboundDataMessageFactory : IOutboundDataMessageFactory
             throw new ArgumentException($"ParameterSet is not of type {nameof(EdcpParameterSet)}");
         }
 
-        var msg = new EdcpOutboundDataMessage()
+        var msg = new EdcpOutboundDataMessage
         {
-            DataBlock = parameterSet,
+            DataBlock = ps,
             BlockCode = _blockCode
         };
 

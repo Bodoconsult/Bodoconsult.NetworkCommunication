@@ -1,15 +1,16 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
+using Bodoconsult.NetworkCommunication.DataMessaging.DataBlocks;
+using Bodoconsult.NetworkCommunication.Interfaces;
 using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
-using Bodoconsult.NetworkCommunication.Interfaces;
 
 namespace Bodoconsult.NetworkCommunication.OrderManagement.ParameterSets;
 
 /// <summary>
 /// Parameter set for EDCP requests 
 /// </summary>
-public class EdcpParameterSet : IParameterSet
+public class EdcpParameterSet : BasicOutboundDatablock, IParameterSet
 {
     /// <summary>
     /// The order the parameter set is bound to
@@ -71,14 +72,4 @@ public class EdcpParameterSet : IParameterSet
         CurrentOrder = null;
         OrderResult = null;
     }
-
-    /// <summary>
-    /// Data contains the bytes of the Data except the byte representing datablock type
-    /// </summary>
-    public Memory<byte> Data { get; set; }
-
-    /// <summary>
-    /// Type code for the type of the outbound datablock
-    /// </summary>
-    public char DataBlockType => 'x';
 }

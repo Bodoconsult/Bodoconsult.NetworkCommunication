@@ -279,7 +279,6 @@ public class OrderManagementCommunicationAdapter : IOrderManagementCommunication
 
     private void ComDevCloseInternal(bool noLogging = false)
     {
-
         if (IsComDevActionInProgress)
         {
             return;
@@ -305,7 +304,6 @@ public class OrderManagementCommunicationAdapter : IOrderManagementCommunication
             }
 
             _communicationHandler.Dispose();
-
         }
         catch (Exception e)
         {

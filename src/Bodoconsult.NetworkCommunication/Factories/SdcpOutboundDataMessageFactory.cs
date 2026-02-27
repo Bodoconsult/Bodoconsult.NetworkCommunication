@@ -33,9 +33,9 @@ public class SdcpOutboundDataMessageFactory : IOutboundDataMessageFactory
             throw new ArgumentException($"ParameterSet is not of type {nameof(SdcpParameterSet)}");
         }
 
-        var msg = new SdcpOutboundDataMessage()
+        var msg = new SdcpOutboundDataMessage
         {
-            DataBlock = parameterSet
+            DataBlock = ps
         };
 
         return msg;
