@@ -1,21 +1,26 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
 using Bodoconsult.App.Benchmarking;
+using Bodoconsult.App.Factories;
+using Bodoconsult.App.Interfaces;
 using Bodoconsult.App.Logging;
 using Bodoconsult.NetworkCommunication.App.Abstractions;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessageProcessingPackages;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig;
 using Bodoconsult.NetworkCommunication.Interfaces;
+using IAppDateService = Bodoconsult.NetworkCommunication.App.Abstractions.IAppDateService;
 
 namespace Bodoconsult.NetworkCommunication.Tests.Helpers;
 
 public static class TestDataHelper
 {
-
     static TestDataHelper()
     {
         LogDataFactory = new LogDataFactory();
         LoggingConfig = new LoggingConfig();
+        AppEventSourceFactory = new FakeAppEventSourceFactory();
+        // ToDo: change to fake later
+        AppDateService = new AppDateService();
     }
 
     public static LogDataFactory LogDataFactory { get; }
@@ -77,12 +82,12 @@ public static class TestDataHelper
     }
 
     /// <summary>
-    /// Get a fake <see cref="IAppDateService"/> instance
+    /// Get a fake <see cref="NetworkCommunication.App.Abstractions.IAppDateService"/> instance
     /// </summary>
-    /// <returns></returns>
-    public static IAppDateService GetFakeDateTimeService()
-    {
-        // ToDo: change to fake later
-        return new AppDateService();
-    }
+    public static IAppDateService AppDateService { get; }
+
+    /// <summary>
+    /// Get a fake <see cref="IAppEventSourceFactory"/> instance
+    /// </summary>
+    public static IAppEventSourceFactory AppEventSourceFactory { get; }
 }

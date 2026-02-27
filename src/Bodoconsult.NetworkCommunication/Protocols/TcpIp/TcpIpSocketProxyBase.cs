@@ -58,7 +58,7 @@ public abstract class TcpIpSocketProxyBase : ISocketProxy
     /// <summary>
     /// Is the socket connected
     /// </summary>
-    public virtual bool Connected { get; } = false;
+    public virtual bool Connected => false;
 
     /// <summary>
     /// Send bytes

@@ -18,7 +18,7 @@ internal class BtcpOutboundDataMessageFactoryTests
         var ps = new BtcpParameterSet();
         ps.BusinessTransactionId = 57;
 
-        var order = new BtcpOrder(ps, TestDataHelper.GetFakeDateTimeService(), TestDataHelper.GetFakeAppBenchProxy());
+        var order = new BtcpOrder(ps, TestDataHelper.AppDateService, TestDataHelper.GetFakeAppBenchProxy());
 
         var factory = new BtcpOutboundDataMessageFactory();
 
