@@ -114,18 +114,15 @@ public class TcpIpServerSocketProxy : TcpIpSocketProxyBase
     }
 
     /// <summary>
-    /// Shut the socket down
-    /// </summary>
-    public override void Shutdown()
-    {
-        Socket.Shutdown(SocketShutdown.Both);
-    }
-
-    /// <summary>
     /// Close the socket
     /// </summary>
     public override void Close()
     {
+        if (_listener != null)
+        {
+            TcpIpListenerManager.UnregisterListener(_listener, AcceptDelegate);
+        }
+        Socket.Shutdown(SocketShutdown.Both);
         Socket.Close();
     }
 

@@ -78,13 +78,13 @@ public abstract class TcpIpSocketProxyBase : ISocketProxy
         throw new NotSupportedException();
     }
 
-    /// <summary>
-    /// Shut the socket down
-    /// </summary>
-    public virtual void Shutdown()
-    {
-        throw new NotSupportedException();
-    }
+    ///// <summary>
+    ///// Shut the socket down
+    ///// </summary>
+    //public virtual void Shutdown()
+    //{
+    //    throw new NotSupportedException();
+    //}
 
     /// <summary>
     /// Close the socket

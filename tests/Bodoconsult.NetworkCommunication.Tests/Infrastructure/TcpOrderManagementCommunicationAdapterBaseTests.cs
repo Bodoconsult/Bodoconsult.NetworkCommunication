@@ -2,32 +2,27 @@
 
 using System.Diagnostics;
 using Bodoconsult.App.Helpers;
+using Bodoconsult.NetworkCommunication.Communication;
 using Bodoconsult.NetworkCommunication.Factories;
 using Bodoconsult.NetworkCommunication.Interfaces;
-using Bodoconsult.NetworkCommunication.Tests.Infrastructure;
 
-namespace Bodoconsult.NetworkCommunication.Tests.Tcp.Clients;
+namespace Bodoconsult.NetworkCommunication.Tests.Infrastructure;
 
 [TestFixture]
 [NonParallelizable]
 [SingleThreaded]
-public abstract class IpCommunicationHandlerBaseTests : BaseTcpTests
+public abstract class TcpOrderManagementCommunicationAdapterBaseTests : BaseTcpTests
 {
-    /// <summary>
-    /// Holds the duplex IO channel implementation (see <see cref="IDuplexIo"/>) to use
-    /// </summary>
-    protected IDuplexIo DuplexIo;
+
+    protected OrderManagementCommunicationAdapter OrderManagementCommunicationAdapter;
 
     [TearDown]
     public void TestCleanUp()
     {
-        if (DuplexIo != null)
+        if (OrderManagementCommunicationAdapter != null)
         {
-            DuplexIo.StopCommunication().Wait();
-            DuplexIo.Dispose();
-            var t = DuplexIo.DisposeAsync();
-            t.AsTask().Wait(2000);
-            DuplexIo = null;
+            OrderManagementCommunicationAdapter.Dispose();
+            OrderManagementCommunicationAdapter = null;
         }
 
         if (Socket != null)
@@ -71,9 +66,7 @@ public abstract class IpCommunicationHandlerBaseTests : BaseTcpTests
     /// <param name="message">Current message to send</param>
     public virtual void Send(IOutboundDataMessage message)
     {
-        DuplexIo.StartCommunication().Wait();
-
-        DuplexIo.SendMessage(message).Wait();
+        OrderManagementCommunicationAdapter.SendDataMessage(message);
 
         var task = Task.Run(() =>
         {
@@ -86,22 +79,16 @@ public abstract class IpCommunicationHandlerBaseTests : BaseTcpTests
 
         });
         task.Wait();
-
-        DuplexIo.StopCommunication().Wait();
     }
 
     public virtual void SendDataAndReceive(byte[] data, int expectedCount, byte[] data2 = null)
     {
-        // Arrange
-        DuplexIo.StartCommunication().Wait();
-
         RemoteTcpIpDevice.Send(data);
 
         if (data2 != null)
         {
             RemoteTcpIpDevice.Send(data2);
         }
-
 
         var tcs1 = new TaskCompletionSource<bool>();
         var t1 = tcs1.Task;
@@ -125,11 +112,6 @@ public abstract class IpCommunicationHandlerBaseTests : BaseTcpTests
 
 
         var result = t1.GetAwaiter().GetResult();
-
-        // Start a background task that will complete tcs1.Task
-
-        // Act
-        DuplexIo.StopCommunication().Wait(1000);
 
         Assert.That(result);
 

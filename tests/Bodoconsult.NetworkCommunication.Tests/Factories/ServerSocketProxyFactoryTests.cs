@@ -1,5 +1,6 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
+using System.Net;
 using Bodoconsult.NetworkCommunication.Factories;
 using Bodoconsult.NetworkCommunication.Tests.Helpers;
 using Bodoconsult.NetworkCommunication.EnumAndStates;
@@ -11,6 +12,9 @@ namespace Bodoconsult.NetworkCommunication.Tests.Factories;
 [TestFixture]
 internal class ServerSocketProxyFactoryTests
 {
+    private readonly IPAddress _ipAddress = IPAddress.Parse("127.0.0.1");
+    private readonly int _port = 9999;
+
     [Test]
     public void CreateInstance_Tcp_InstanceCreated()
     {
@@ -20,7 +24,7 @@ internal class ServerSocketProxyFactoryTests
         var protocol = IpProtocolEnum.Tcp;
 
         // Act  
-        var result = factory.CreateInstance(protocol);
+        var result = factory.CreateInstance(protocol, _ipAddress, _port);
 
         // Assert
         Assert.That(result, Is.Not.Null);
@@ -36,7 +40,7 @@ internal class ServerSocketProxyFactoryTests
         var protocol = IpProtocolEnum.Udp;
 
         // Act  
-        var result = factory.CreateInstance(protocol);
+        var result = factory.CreateInstance(protocol, _ipAddress, _port);
 
         // Assert
         Assert.That(result, Is.Not.Null);

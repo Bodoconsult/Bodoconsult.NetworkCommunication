@@ -122,19 +122,20 @@ public class UdpClientSocketProxy : UpdSocketProxyBase
         return UdpClient.SendAsync(bytesToSend, SendEndPoint);
     }
 
-    /// <summary>
-    /// Shut the socket down
-    /// </summary>
-    public override void Shutdown()
-    {
-        UdpClient.Client.Shutdown(SocketShutdown.Both);
-    }
+    ///// <summary>
+    ///// Shut the socket down
+    ///// </summary>
+    //public override void Shutdown()
+    //{
+    //    UdpClient.Client.Shutdown(SocketShutdown.Both);
+    //}
 
     /// <summary>
     /// Close the socket
     /// </summary>
     public override void Close()
     {
+        UdpClient.Client.Shutdown(SocketShutdown.Both);
         UdpClient.Close();
     }
 

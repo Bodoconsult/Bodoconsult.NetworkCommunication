@@ -1,5 +1,6 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
+using System.Net;
 using Bodoconsult.App.Interfaces;
 using Bodoconsult.NetworkCommunication.App.Abstractions;
 using Bodoconsult.NetworkCommunication.Communication;
@@ -44,8 +45,7 @@ public class IpCommunicationHandlerFactory : ICommunicationHandlerFactory
     /// <returns>An instance implementing <see cref="ICommunicationHandler"/></returns>
     public ICommunicationHandler CreateInstance(IIpDataMessagingConfig dataMessagingConfig)
     {
-
-        var socketProxy = _socketProxyFactory.CreateInstance(dataMessagingConfig.IpProtocol);
+        var socketProxy = _socketProxyFactory.CreateInstance(dataMessagingConfig.IpProtocol, IPAddress.Parse(dataMessagingConfig.IpAddress), dataMessagingConfig.Port);
 
         if (dataMessagingConfig.MonitorLogger == null)
         {

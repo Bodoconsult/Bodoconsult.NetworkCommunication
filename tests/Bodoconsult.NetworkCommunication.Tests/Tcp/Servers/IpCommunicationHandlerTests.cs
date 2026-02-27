@@ -1,7 +1,7 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
+using System.Diagnostics;
 using Bodoconsult.App.Helpers;
-using Bodoconsult.App.Interfaces;
 using Bodoconsult.NetworkCommunication.Communication;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataBlocks;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
@@ -9,10 +9,8 @@ using Bodoconsult.NetworkCommunication.Factories;
 using Bodoconsult.NetworkCommunication.Interfaces;
 using Bodoconsult.NetworkCommunication.Tests.Helpers;
 using Bodoconsult.NetworkCommunication.Tests.Infrastructure;
-using Microsoft.VisualStudio.TestPlatform.CommunicationUtilities;
-using System.Diagnostics;
 
-namespace Bodoconsult.NetworkCommunication.Tests.Tcp.Clients;
+namespace Bodoconsult.NetworkCommunication.Tests.Tcp.Servers;
 
 [TestFixture]
 [NonParallelizable]
@@ -24,13 +22,13 @@ internal class IpCommunicationHandlerTests : TcpIpCommunicationHandlerBaseTests
     [SetUp]
     protected void TestSetup()
     {
-        TcpIpClientTestHelper.InitServer(this);
+        TcpIpServerTestHelper.InitClient(this);
 
         Debug.Print("Start TestSetup");
 
         BaseReset();
 
-        TcpIpClientTestHelper.InitSocket(this);
+        TcpIpServerTestHelper.InitSocket(this);
 
         DuplexIo = GetDuplexIo(Socket);
 
@@ -124,6 +122,11 @@ internal class IpCommunicationHandlerTests : TcpIpCommunicationHandlerBaseTests
 
         // Act  
         ch.Connect();
+        TcpIpServerTestHelper.InitClient(this);
+        RemoteTcpIpDevice.Start();
+
+
+        Wait.Until(() => ch.IsConnected);
 
         // Assert
         Assert.That(ch.IsConnected, Is.True);

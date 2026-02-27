@@ -15,15 +15,6 @@ public class TcpIpClientSocketProxy : TcpIpSocketProxyBase
 {
     private readonly byte[] _tmp = new byte[1];
 
-    //private Socket _listener;
-
-    ///// <summary>
-    ///// Default ctor
-    ///// </summary>
-    ///// <param name="isServer">Is this instance a TCP/IP server?</param>
-    //public AsyncTcpIpSocketProxy()
-    //{ }
-
     /// <summary>
     /// Is the socket connected
     /// </summary>
@@ -112,18 +103,11 @@ public class TcpIpClientSocketProxy : TcpIpSocketProxyBase
     }
 
     /// <summary>
-    /// Shut the socket down
-    /// </summary>
-    public override void Shutdown()
-    {
-        Socket.Shutdown(SocketShutdown.Both);
-    }
-
-    /// <summary>
     /// Close the socket
     /// </summary>
     public override void Close()
     {
+        Socket.Shutdown(SocketShutdown.Both);
         Socket.Close();
     }
 

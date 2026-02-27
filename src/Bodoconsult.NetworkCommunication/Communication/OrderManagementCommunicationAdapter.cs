@@ -16,14 +16,6 @@ public class OrderManagementCommunicationAdapter : IOrderManagementCommunication
     private readonly ICommunicationHandlerFactory _communicationHandlerFactory;
     private readonly IOutboundDataMessageFactory _outboundDataMessageFactory;
     private IDeviceState _deviceState = DefaultDeviceStates.DeviceStateOffline;
-
-    ///// <summary>
-    ///// Current send message block number
-    ///// </summary>
-    //private byte _currentBlockNo;
-
-    //private readonly object _blockNoLock = new();
-
     private readonly Lock _comDevActionLockObject = new();
 
     /// <summary>
@@ -352,13 +344,10 @@ public class OrderManagementCommunicationAdapter : IOrderManagementCommunication
             _communicationHandler.Disconnect();
             _communicationHandler.Dispose();
             _communicationHandler = null;
-            //_currentBlockNo = TowerCommunicationBasics.MaxBlockNoStStys;
         }
 
         _communicationHandler = _communicationHandlerFactory.CreateInstance(DataMessagingConfig);
         _communicationHandler.Connect();
-
-        //_currentBlockNo = TowerCommunicationBasics.MaxBlockNoStStys;
 
         var connectionEstablishedMessage = $"{DataMessagingConfig.LoggerId}connection to {DataMessagingConfig.IpAddress}:{DataMessagingConfig.Port} established: {_communicationHandler?.IsConnected}.";
         DataMessagingConfig.AppLogger.LogInformation(connectionEstablishedMessage);

@@ -140,8 +140,7 @@ public class IpCommunicationHandler : ICommunicationHandler
     /// </summary>
     public void Disconnect()
     {
-        DuplexIo.StopCommunication();
-        SocketProxy.Shutdown();
+        DuplexIo.StopCommunication().Wait(2000);
         SocketProxy.Close();
         DataMessagingConfig.MonitorLogger.LogDebug($"{DataMessagingConfig.LoggerId}disconnect - Socket has been closed.");
     }

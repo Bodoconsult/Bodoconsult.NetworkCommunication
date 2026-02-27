@@ -4,6 +4,7 @@ using Bodoconsult.NetworkCommunication.EnumAndStates;
 using Bodoconsult.NetworkCommunication.Interfaces;
 using Bodoconsult.NetworkCommunication.Protocols.TcpIp;
 using Bodoconsult.NetworkCommunication.Protocols.Udp;
+using System.Net;
 
 namespace Bodoconsult.NetworkCommunication.Factories;
 
@@ -16,13 +17,23 @@ public class ClientSocketProxyFactory : ISocketProxyFactory
     /// Creates an instance of <see cref="ISocketProxy"/>
     /// </summary>
     /// <param name="protocol">IP base protocol to be used</param>
+    /// <param name="ipAddress">IP address</param>
+    /// <param name="port">Port</param>
     /// <returns>Instance of <see cref="ISocketProxy"/></returns>
-    public ISocketProxy CreateInstance(IpProtocolEnum protocol)
+    public ISocketProxy CreateInstance(IpProtocolEnum protocol, IPAddress ipAddress, int port)
     {
         if (protocol == IpProtocolEnum.Udp)
         {
-            return new UdpClientSocketProxy();
+            return new UdpClientSocketProxy
+                {
+                    IpAddress = ipAddress,
+                    Port = port
+                };
         }
-        return new TcpIpClientSocketProxy();
+        return new TcpIpClientSocketProxy
+            {
+                IpAddress = ipAddress,
+                Port = port
+            };
     }
 }

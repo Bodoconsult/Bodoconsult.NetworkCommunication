@@ -1,5 +1,6 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
+using System.Net;
 using Bodoconsult.NetworkCommunication.EnumAndStates;
 using Bodoconsult.NetworkCommunication.Interfaces;
 using Bodoconsult.NetworkCommunication.Protocols.TcpIp;
@@ -23,18 +24,29 @@ public class ServerSocketProxyFactory : ISocketProxyFactory
         _tcpIpListenerManager = tcpIpListenerManager;
     }
 
+
     /// <summary>
     /// Creates an instance of <see cref="ISocketProxy"/>
     /// </summary>
     /// <param name="protocol">IP base protocol to be used</param>
+    /// <param name="ipAddress">IP address</param>
+    /// <param name="port">Port</param>
     /// <returns>Instance of <see cref="ISocketProxy"/></returns>
-    public ISocketProxy CreateInstance(IpProtocolEnum protocol)
+    public ISocketProxy CreateInstance(IpProtocolEnum protocol, IPAddress ipAddress, int port)
     {
         if (protocol == IpProtocolEnum.Udp)
         {
-            return new UdpServerSocketProxy();
+            return new UdpServerSocketProxy
+                {
+                    IpAddress = ipAddress,
+                    Port = port
+                };
         }
 
-        return new TcpIpServerSocketProxy(_tcpIpListenerManager);
+        return new TcpIpServerSocketProxy(_tcpIpListenerManager)
+            {
+                IpAddress = ipAddress,
+                Port = port
+            };
     }
 }

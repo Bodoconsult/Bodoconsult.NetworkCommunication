@@ -137,13 +137,13 @@ public class FakeTcpIpSocketProxy : TcpIpSocketProxyBase
         return i;
     }
 
-    /// <summary>
-    /// Shut the socket down
-    /// </summary>
-    public override void Shutdown()
-    {
-        // Do nothing
-    }
+    ///// <summary>
+    ///// Shut the socket down
+    ///// </summary>
+    //public override void Shutdown()
+    //{
+    //    // Do nothing
+    //}
 
     /// <summary>
     /// Close the socket
