@@ -23,8 +23,12 @@ public interface IOrderManagementDevice
     /// <summary>
     /// Current instance of the device order processor
     /// </summary>
-    [JsonIgnore]
     IOrderProcessor OrderProcessor { get; }
+
+    /// <summary>
+    /// Current order manager
+    /// </summary>
+    IOrderManager OrderManager { get; }
 
     /// <summary>
     /// Is the device connected?

@@ -8,7 +8,6 @@ using Bodoconsult.NetworkCommunication.Interfaces;
 using Bodoconsult.NetworkCommunication.Protocols.Udp;
 using Bodoconsult.NetworkCommunication.Tests.Infrastructure;
 using System.Diagnostics;
-using System.Net.Sockets;
 
 namespace Bodoconsult.NetworkCommunication.Tests.Tcp.Clients;
 
