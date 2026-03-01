@@ -7,6 +7,9 @@ using Bodoconsult.NetworkCommunication.Interfaces;
 
 namespace Bodoconsult.NetworkCommunication.OrderManagement.Processors;
 
+/// <summary>
+/// Base class for order management devices
+/// </summary>
 public abstract class BaseOrderManagementDevice : IOrderManagementDevice
 {
     protected bool _isOrderProcessingActivated;
@@ -14,6 +17,10 @@ public abstract class BaseOrderManagementDevice : IOrderManagementDevice
     protected readonly IAppLoggerProxy _appLogger;
     protected readonly IAppLoggerProxy _monitorLogger;
 
+    /// <summary>
+    /// Default ctor
+    /// </summary>
+    /// <param name="dataMessagingConfig">Current messaging config</param>
     protected BaseOrderManagementDevice(IDataMessagingConfig dataMessagingConfig)
     {
         DataMessagingConfig = dataMessagingConfig ?? throw new ArgumentNullException(nameof(dataMessagingConfig));
@@ -42,6 +49,11 @@ public abstract class BaseOrderManagementDevice : IOrderManagementDevice
     /// Current order manager
     /// </summary>
     public IOrderManager OrderManager { get; protected set; }
+
+    /// <summary>
+    /// Device states used for init process
+    /// </summary>
+    public IList<IDeviceState> DeviceStatesInitProcess { get; } = new List<IDeviceState>();
 
     /// <summary>
     /// Is the device connected?
@@ -161,23 +173,60 @@ public abstract class BaseOrderManagementDevice : IOrderManagementDevice
         CommunicationAdapter.ComDevReset();
     }
 
+
+    /// <summary>
+    /// Is running the order allowed at the current timepoint
+    /// </summary>
+    /// <param name="order">Order to run</param>
+    /// <param name="runningOrders">Current running orders</param>
+    /// <returns>True if it is allowed to run the order else false</returns>
     public virtual bool IsRunningTheOrderAllowed(IOrder order, IList<IOrder> runningOrders)
     {
-        throw new NotImplementedException();
+        // No orders running at all
+        if (!runningOrders.Any())
+        {
+            return true;
+        }
+
+        // Check if the type of order is allowed to run parallel to the current orders
+        foreach (var rOrder in runningOrders)
+        {
+            if (rOrder == null)
+            {
+                continue;
+            }
+
+            var pOrders = rOrder.AllowedParallelOrderTypes;
+
+            // If the new order is allowed to run at the moment leave here
+            if (pOrders.Contains(order.TypeName))
+            {
+                continue;
+            }
+
+            //_smdTower.AppLogger.LogInformation($"{_smdTower.LoggerId}: {order.Name} {order.Id} NOT allowed to run parallel");
+            return false;
+        }
+
+        return true;
     }
 
     /// <summary>
     /// Is the device pingable
     /// </summary>
     /// <returns>True if the device is pingable else false</returns>
-    public virtual bool IsPingable { get; protected set; }
+    public virtual bool IsPingable => CommunicationAdapter.IsPingableAsync().GetAwaiter().GetResult();
 
     /// <summary>
     /// Clear the internal state without breaking comm
     /// </summary>
     public virtual void ResetInternalState()
     {
-        throw new NotImplementedException();
+        CommunicationAdapter.ResetInternalState();
+        //_isRunning = false;
+        OrderProcessor.IsInitInProcessing = false;
+        OrderProcessor.IsRunnerStopped = false;
+        _appLogger.LogInformation("Internal state was reset");
     }
 
     /// <summary>
@@ -185,7 +234,7 @@ public abstract class BaseOrderManagementDevice : IOrderManagementDevice
     /// </summary>
     public void RequestDeviceInit()
     {
-        throw new NotImplementedException();
+        throw new NotSupportedException("Override in derived classes if needed");
     }
 
     /// <summary>
@@ -210,16 +259,68 @@ public abstract class BaseOrderManagementDevice : IOrderManagementDevice
     /// </summary>
     public virtual IOrder GetNextOrderToRun()
     {
-        throw new NotImplementedException();
+        IOrder order;
+        //var isState = DeviceStatesInitProcess.Contains(DeviceState);
+        var isInit = OrderProcessor.IsInitInProcessing;
+
+        var s = $"{DataMessagingConfig.LoggerId}{OrderProcessor.OrderPipeline.CurrentOrderState} Init {isInit}";
+        Debug.Print(s);
+        _appLogger.LogDebug(s);
+
+        // ****************************
+        // StSys tower init is running: run only priority orders stsys init and tower hardware init
+        // ****************************
+        if (isInit)
+        {
+            order = OrderProcessor.OrderPipeline.GetNextPriorityOrder();
+            if (order == null)
+            {
+
+                return null;
+            }
+
+            order.IsHighPriorityOrder = true;
+            return order;
+        }
+
+        // ****************************
+        // If tower is READY: try to run priority orders first, then all other orders
+        // ****************************
+
+        // Check if priority orders have to be built: CheckSlot for open unload orders
+        CheckIfThereAreOrdersToBeCreated();
+
+        // Now check the priority orders
+        order = OrderProcessor.OrderPipeline.GetNextPriorityOrder();
+        if (order != null)
+        {
+            order.IsHighPriorityOrder = true;
+            return order;
+        }
+
+        // Do not run normal orders if runner is deactivated
+        if (OrderProcessor.IsRunnerStopped)
+        {
+            return null;
+        }
+
+        order = OrderProcessor.OrderPipeline.GetNextNonPriorityOrder();
+        if (order == null)
+        {
+            return null;
+        }
+
+        order.IsHighPriorityOrder = false;
+        return order;
     }
 
     /// <summary>
-    /// Check if other orders following the current order have to be removed from the queue  by cancelling them
+    /// Check if other orders following the current order have to be removed from the queue by cancelling them
     /// </summary>
     /// <param name="order">Current order</param>
     public virtual void Check4ConcurrentOrders(IOrder order)
     {
-        throw new NotImplementedException();
+        throw new NotSupportedException("Override in derived classes if needed");
     }
 
     /// <summary>
@@ -228,7 +329,23 @@ public abstract class BaseOrderManagementDevice : IOrderManagementDevice
     /// <param name="order">Current order</param>
     public virtual void OrderFinishedSuccessful(IOrder order)
     {
-        throw new NotImplementedException();
+        // Now run an order specific successfully finished action
+        if (order.OrderFinishedSuccessfulAction != null)
+        {
+            // Get the transport object from the last request. May be null
+            var tro = order.RequestSpecs[^1].TransportObject;
+            order.OrderFinishedSuccessfulAction(tro, order.ParameterSet);
+        }
+
+        // Now logging and notifications
+        if (order.StateToNotifyOnSuccess != DefaultDeviceStates.DeviceStateOffline)
+        {
+            DoNotify(order.StateToNotifyOnSuccess);
+        }
+
+        order.ExecutionState = OrderState.FinishedSuccessfully;
+        _appLogger.LogDebug($"{DataMessagingConfig.LoggerId}{order.LoggerId}has finished successful");
+        //MessagingBusinessDelegate?.DoNotifyOrderStateChanged(this, order);
     }
 
     /// <summary>

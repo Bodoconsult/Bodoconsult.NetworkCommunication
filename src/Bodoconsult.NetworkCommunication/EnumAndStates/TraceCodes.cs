@@ -22,9 +22,14 @@ public static class TraceCodes
     public static int IdsMsgBtcpOrderOk => 3000;
     public static int IdsMsgBtcpOrderFails => 3001;
 
-    // Range 4000: telnet style comm
+    // Range 4000: TNCP telnet style comm
 
-    public static int IdsMsgTelnetOrderOk => 4000;
-    public static int IdsMsgTelnetOrderFails => 4001;
+    public static int IdsMsgTncpOrderOk => 4000;
+    public static int IdsMsgTncpOrderFails => 4001;
+
+    // Range 5000: Test order
+
+    public static int IdsMsgTestOrderOk => 5000;
+    public static int IdsMsgTestOrderFails => 5001;
 
 }

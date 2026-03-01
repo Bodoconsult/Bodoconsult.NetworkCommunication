@@ -1,16 +1,17 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
+using System.ComponentModel.DataAnnotations;
+using System.Text;
+using System.Text.Json.Serialization;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataBlocks;
 using Bodoconsult.NetworkCommunication.Interfaces;
-using System.ComponentModel.DataAnnotations;
-using System.Text.Json.Serialization;
 
 namespace Bodoconsult.NetworkCommunication.OrderManagement.ParameterSets;
 
 /// <summary>
-/// Parameter set for EDCP requests 
+/// Parameter set for TNCP requests 
 /// </summary>
-public class EdcpParameterSet : BasicOutboundDatablock, IParameterSet
+public class TncpParameterSet : BasicOutboundDatablock, IParameterSet
 {
     /// <summary>
     /// The order the parameter set is bound to
@@ -32,9 +33,9 @@ public class EdcpParameterSet : BasicOutboundDatablock, IParameterSet
     }
 
     /// <summary>
-    /// Payload to send with the emssage
+    /// Telnet command to send
     /// </summary>
-    public Memory<byte> Payload { get; set; }
+    public string TelnetCommand { get; set; }
 
     /// <summary>
     /// User ID
@@ -70,9 +71,9 @@ public class EdcpParameterSet : BasicOutboundDatablock, IParameterSet
         {
             var result = new List<ValidationResult>();
 
-            if (Payload.Length==0)
+            if (string.IsNullOrEmpty(TelnetCommand))
             {
-                result.Add(new ValidationResult($"Length of {nameof(Payload)} may not be 0"));
+                result.Add(new ValidationResult($"{nameof(TelnetCommand)} may not be 0"));
             }
 
             return result;
@@ -84,7 +85,13 @@ public class EdcpParameterSet : BasicOutboundDatablock, IParameterSet
     /// </summary>
     public virtual void ToDataBlock()
     {
-        Data = Payload;
+        if (string.IsNullOrEmpty(TelnetCommand))
+        {
+            return;
+        }
+
+        var bytes = Encoding.ASCII.GetBytes(TelnetCommand);
+        Data = new Memory<byte>(bytes);
     }
 
     /// <summary>Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.</summary>

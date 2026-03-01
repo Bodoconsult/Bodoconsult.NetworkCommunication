@@ -8,9 +8,9 @@ using IAppDateService = Bodoconsult.NetworkCommunication.App.Abstractions.IAppDa
 namespace Bodoconsult.NetworkCommunication.OrderManagement.Orders;
 
 /// <summary>
-/// Order running a telnet style transaction
+/// Order running a TNCP transaction
 /// </summary>
-public class TelnetOrder : BaseOrder
+public class TestOrder : BaseOrder
 {
     /// <summary>
     /// Default ctor
@@ -18,11 +18,11 @@ public class TelnetOrder : BaseOrder
     /// <param name="parameterSet">Parameter set</param>
     /// <param name="dateTimeService">Datetime service</param>
     /// <param name="benchLogger">Bench logger instance for benchmarking</param>
-    public TelnetOrder(IParameterSet parameterSet, IAppDateService dateTimeService, IAppBenchProxy benchLogger) : base(parameterSet, dateTimeService, benchLogger)
+    public TestOrder(IParameterSet parameterSet, IAppDateService dateTimeService, IAppBenchProxy benchLogger) : base(parameterSet, dateTimeService, benchLogger)
     {
-        TraceCodeSuccess = TraceCodes.IdsMsgBtcpOrderOk;
-        TraceCodeError = TraceCodes.IdsMsgBtcpOrderFails;
+        TraceCodeSuccess = TraceCodes.IdsMsgTestOrderOk;
+        TraceCodeError = TraceCodes.IdsMsgTestOrderFails;
 
-        TraceMessage = "Telnet outbound order";
+        TraceMessage = "Test outbound order";
     }
 }

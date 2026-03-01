@@ -127,7 +127,7 @@ public interface IOrderPipeline : IDisposable
     void CancelOrderBySourceUid(Guid sourceUid);
 
     /// <summary>
-    /// Cancel a order via its ID
+    /// Cancel an order via its ID
     /// </summary>
     /// <param name="orderId">ID of the order to cancel</param>
     void CancelOrder(long orderId);

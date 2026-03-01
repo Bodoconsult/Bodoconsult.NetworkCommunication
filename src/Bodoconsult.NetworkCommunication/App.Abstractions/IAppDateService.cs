@@ -1,5 +1,7 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
+using System.Threading;
+
 namespace Bodoconsult.NetworkCommunication.App.Abstractions;
 
 /// <summary>

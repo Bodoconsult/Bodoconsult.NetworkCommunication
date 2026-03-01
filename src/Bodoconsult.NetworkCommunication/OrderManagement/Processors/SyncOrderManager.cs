@@ -23,7 +23,7 @@ public class SyncOrderManager: ISyncOrderManager
     public bool IsSyncRunningOrderEmpty => _syncExecutionQueue.IsEmpty;
 
     /// <summary>
-    /// Add a order to the sync execution queue
+    /// Add an order to the sync execution queue
     /// </summary>
     /// <param name="orderId">ID of the order</param>
     /// <param name="timeout">Timeout in ms</param>
@@ -45,7 +45,7 @@ public class SyncOrderManager: ISyncOrderManager
     }
 
     /// <summary>
-    /// Get the sync running execution data for a order
+    /// Get the sync running execution data for an order
     /// </summary>
     /// <param name="orderId">ID of the order</param>
     /// <returns>Sync running execution data or null</returns>

@@ -31,6 +31,11 @@ public interface IOrderManagementDevice
     IOrderManager OrderManager { get; }
 
     /// <summary>
+    /// Device states used for init process
+    /// </summary>
+    IList<IDeviceState> DeviceStatesInitProcess { get; }
+
+    /// <summary>
     /// Is the device connected?
     /// </summary>
     bool IsConnected { get; }
@@ -92,7 +97,7 @@ public interface IOrderManagementDevice
     IOrder GetNextOrderToRun();
 
     /// <summary>
-    /// Check if other orders following the current order have to be removed from the queue  by cancelling them
+    /// Check if other orders following the current order have to be removed from the queue by cancelling them
     /// </summary>
     /// <param name="order">Current order</param>
     void Check4ConcurrentOrders(IOrder order);

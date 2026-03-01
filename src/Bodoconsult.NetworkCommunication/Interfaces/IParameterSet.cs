@@ -49,4 +49,9 @@ public interface IParameterSet: ITypedOutboundDataBlock, IDisposable
     /// Is the parameter set valid?
     /// </summary>
     ICollection<ValidationResult> IsValid { get; }
+
+    /// <summary>
+    /// Convert the properties of the parameterset into the bytes for the datablock
+    /// </summary>
+    void ToDataBlock();
 }

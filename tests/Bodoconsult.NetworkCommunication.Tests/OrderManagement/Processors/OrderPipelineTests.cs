@@ -27,8 +27,14 @@ public class OrderPipelineTests
     public OrderPipelineTests()
     {
         IRequestStepProcessorFactory requestStepProcessorFactory = new RequestStepProcessorFactory();
-        IOrderManagementDevice device = new ;
+        IOrderManagementDevice device = new SimpleDevice(TestDataHelper.GetDataMessagingConfig());
         _requestProcessorFactory = new RequestProcessorFactory(requestStepProcessorFactory, device);
+    }
+
+    [OneTimeTearDown]
+    public void Cleanup()
+    {
+        _benchLogger.Dispose();
     }
 
     private void OrderProcessingFinishedDelegate(long orderid)
@@ -71,7 +77,7 @@ public class OrderPipelineTests
         op.AddOrder(order);
 
         // Assert
-        Assert.Multiple(() =>
+        using(Assert.EnterMultipleScope())
         {
             Assert.That(op.AllWaitingOrders.Count, Is.EqualTo(1));
             Assert.That(op.WaitingOrders.Count, Is.EqualTo(1));
@@ -80,7 +86,7 @@ public class OrderPipelineTests
             Assert.That(op.WaitingPriorityOrders.Count, Is.EqualTo(0));
             Assert.That(op.IsWaitingPriorityOrdersEmpty, Is.True);
             Assert.That(order.ExecutionState, Is.EqualTo(OrderState.Added));
-        });
+        };
 
     }
 
@@ -120,7 +126,7 @@ public class OrderPipelineTests
         op.AddOrder(order);
 
         // Assert
-        Assert.Multiple(() =>
+        using(Assert.EnterMultipleScope())
         {
             Assert.That(op.AllWaitingOrders.Count, Is.EqualTo(1));
             Assert.That(op.WaitingOrders.Count, Is.EqualTo(0));
@@ -129,7 +135,7 @@ public class OrderPipelineTests
             Assert.That(op.WaitingPriorityOrders.Count, Is.EqualTo(0));
             Assert.That(op.IsWaitingPriorityOrdersEmpty, Is.True);
             Assert.That(order.ExecutionState, Is.EqualTo(OrderState.Added));
-        });
+        }
 
     }
 
@@ -149,7 +155,7 @@ public class OrderPipelineTests
         op.AddPriorityOrder(order);
 
         // Assert
-        Assert.Multiple(() =>
+        using(Assert.EnterMultipleScope())
         {
             Assert.That(op.AllWaitingOrders.Count, Is.EqualTo(0));
             Assert.That(op.WaitingOrders.Count, Is.EqualTo(0));
@@ -158,7 +164,7 @@ public class OrderPipelineTests
             Assert.That(op.WaitingPriorityOrders.Count, Is.EqualTo(1));
             Assert.That(op.IsWaitingPriorityOrdersEmpty, Is.False);
             Assert.That(order.ExecutionState, Is.EqualTo(OrderState.Added));
-        });
+        }
 
     }
 
@@ -199,7 +205,7 @@ public class OrderPipelineTests
         op.AddPriorityOrder(order);
 
         // Assert
-        Assert.Multiple(() =>
+        using(Assert.EnterMultipleScope())
         {
             Assert.That(op.AllWaitingOrders.Count, Is.EqualTo(0));
             Assert.That(op.WaitingOrders.Count, Is.EqualTo(0));
@@ -208,7 +214,7 @@ public class OrderPipelineTests
             Assert.That(op.WaitingPriorityOrders.Count, Is.EqualTo(0));
             Assert.That(op.IsWaitingPriorityOrdersEmpty, Is.True);
             Assert.That(order.ExecutionState, Is.EqualTo(OrderState.Added));
-        });
+        }
 
     }
 
@@ -230,7 +236,7 @@ public class OrderPipelineTests
         op.DequeueOrder(order);
 
         // Assert
-        Assert.Multiple(() =>
+        using(Assert.EnterMultipleScope())
         {
             Assert.That(op.AllWaitingOrders.Count, Is.EqualTo(0));
             Assert.That(op.WaitingOrders.Count, Is.EqualTo(0));
@@ -238,7 +244,7 @@ public class OrderPipelineTests
             Assert.That(op.AllWaitingPriorityOrders.Count, Is.EqualTo(0));
             Assert.That(op.WaitingPriorityOrders.Count, Is.EqualTo(0));
             Assert.That(op.IsWaitingPriorityOrdersEmpty, Is.True);
-        });
+        }
 
     }
 
@@ -260,7 +266,7 @@ public class OrderPipelineTests
         op.DequeueOrder(order);
 
         // Assert
-        Assert.Multiple(() =>
+        using(Assert.EnterMultipleScope())
         {
             Assert.That(op.AllWaitingOrders.Count, Is.EqualTo(0));
             Assert.That(op.WaitingOrders.Count, Is.EqualTo(0));
@@ -268,8 +274,7 @@ public class OrderPipelineTests
             Assert.That(op.AllWaitingPriorityOrders.Count, Is.EqualTo(0));
             Assert.That(op.WaitingPriorityOrders.Count, Is.EqualTo(0));
             Assert.That(op.IsWaitingPriorityOrdersEmpty, Is.True);
-        });
-
+        }
     }
 
     [Test]
@@ -290,7 +295,7 @@ public class OrderPipelineTests
         op.CancelWaitingOrders();
 
         // Assert
-        Assert.Multiple(() =>
+        using(Assert.EnterMultipleScope())
         {
             Assert.That(op.AllWaitingOrders.Count, Is.EqualTo(1));
             Assert.That(op.WaitingOrders.Count, Is.EqualTo(0));
@@ -298,8 +303,7 @@ public class OrderPipelineTests
             Assert.That(op.AllWaitingPriorityOrders.Count, Is.EqualTo(0));
             Assert.That(op.WaitingPriorityOrders.Count, Is.EqualTo(0));
             Assert.That(op.IsWaitingPriorityOrdersEmpty, Is.True);
-        });
-
+        }
     }
 
     [Test]
@@ -320,7 +324,7 @@ public class OrderPipelineTests
         op.CancelWaitingPriorityOrders();
 
         // Assert
-        Assert.Multiple(() =>
+        using(Assert.EnterMultipleScope())
         {
             Assert.That(op.AllWaitingOrders.Count, Is.EqualTo(0));
             Assert.That(op.WaitingOrders.Count, Is.EqualTo(0));
@@ -328,8 +332,7 @@ public class OrderPipelineTests
             Assert.That(op.AllWaitingPriorityOrders.Count, Is.EqualTo(1));
             Assert.That(op.WaitingPriorityOrders.Count, Is.EqualTo(0));
             Assert.That(op.IsWaitingPriorityOrdersEmpty, Is.True);
-        });
-
+        }
     }
 
     [Test]
@@ -352,7 +355,7 @@ public class OrderPipelineTests
         var nextOrder = op.GetNextNonPriorityOrder();
 
         // Assert
-        Assert.Multiple(() =>
+        using(Assert.EnterMultipleScope())
         {
             Assert.That(nextOrder, Is.Null);
             Assert.That(op.AllWaitingOrders.Count, Is.EqualTo(0));
@@ -361,8 +364,7 @@ public class OrderPipelineTests
             Assert.That(op.AllWaitingPriorityOrders.Count, Is.EqualTo(0));
             Assert.That(op.WaitingPriorityOrders.Count, Is.EqualTo(0));
             Assert.That(op.IsWaitingPriorityOrdersEmpty, Is.True);
-        });
-
+        }
     }
 
     [Test]
@@ -385,7 +387,7 @@ public class OrderPipelineTests
         var nextOrder = op.GetNextPriorityOrder();
 
         // Assert
-        Assert.Multiple(() =>
+        using(Assert.EnterMultipleScope())
         {
             Assert.That(nextOrder, Is.Null);
             Assert.That(op.AllWaitingOrders.Count, Is.EqualTo(0));
@@ -394,7 +396,7 @@ public class OrderPipelineTests
             Assert.That(op.AllWaitingPriorityOrders.Count, Is.EqualTo(0));
             Assert.That(op.WaitingPriorityOrders.Count, Is.EqualTo(0));
             Assert.That(op.IsWaitingPriorityOrdersEmpty, Is.True);
-        });
+        }
     }
 
     [Test]
@@ -413,13 +415,13 @@ public class OrderPipelineTests
         var success = op.PrepareOrderStart(order, OrderProcessingFinishedDelegate, out var rp);
 
         // Assert
-        Assert.Multiple(() =>
+        using(Assert.EnterMultipleScope())
         {
             Assert.That(success, Is.False);
             Assert.That(rp, Is.Not.Null);
             Assert.That(rp.Order, Is.EqualTo(order));
             Assert.That(rp.OrderProcessingFinishedDelegate, Is.Not.Null);
-        });
+        }
     }
 
     [Test]
@@ -440,11 +442,11 @@ public class OrderPipelineTests
         op.ExecuteOrder(rp);
 
         // Assert
-        Assert.Multiple(() =>
+        using(Assert.EnterMultipleScope())
         {
             Assert.That(rp.CurrentTask, Is.Not.Null);
             Assert.That(rp.Order.ExecutionState, Is.EqualTo(OrderState.Started));
-        });
+        }
 
         rp.Cancel(true, false);
     }
@@ -472,11 +474,12 @@ public class OrderPipelineTests
         var rp2 = op.GetFromExecutionQueue(order.Id);
 
         // Assert
-        Assert.Multiple(() =>
+        using(Assert.EnterMultipleScope())
         {
             Assert.That(rp2, Is.Not.Null);
             Assert.That(op.IsRunningOrdersEmpty, Is.False);
-        });
+            Assert.That(_isOrderProcessingFinishedDelegateFired, Is.False);
+        }
 
         rp.Cancel(true, false);
     }
@@ -504,10 +507,10 @@ public class OrderPipelineTests
         op.RemoveFromExecutionQueue(order.Id);
 
         // Assert
-        Assert.Multiple(() =>
+        using(Assert.EnterMultipleScope())
         {
             Assert.That(op.IsRunningOrdersEmpty, Is.True);
-        });
+        }
 
         rp.Cancel(true, false);
     }

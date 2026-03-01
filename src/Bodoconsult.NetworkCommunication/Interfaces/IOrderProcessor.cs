@@ -12,7 +12,7 @@ public interface IOrderProcessor : IDisposable
     /// <summary>
     /// Current order management messing instance
     /// </summary>
-    IOrderManagementMessaging OrderManagementMessaging { get; }
+    IOrderManagementClientNotificationManager ClientNotificationManager { get; }
 
     /// <summary>
     /// Current order pipeline
@@ -37,7 +37,7 @@ public interface IOrderProcessor : IDisposable
     /// <summary>
     /// Is a certain order type running or waiting for execution
     /// </summary>
-    /// <param name="orderTypeCode">Order type code: see <see cref="OrderTypeCodes"/> for valid values</param>
+    /// <param name="orderTypeCode">Order type code</param>
     /// <returns>True if an order is running or waiting in the queue else false</returns>
     bool IsOrderTypeInTheQueue(int orderTypeCode);
 
@@ -77,7 +77,7 @@ public interface IOrderProcessor : IDisposable
     bool IsAnyOrderToProcess { get; }
 
     /// <summary>
-    /// Is there a order running or in the queue breaking a device properties update
+    /// Is there an order running or in the queue breaking a device properties update
     /// </summary>
     bool IsAnyOrderBreakingdevicePropertiesUpdateToProcess { get; }
 
@@ -95,11 +95,6 @@ public interface IOrderProcessor : IDisposable
     IRequestProcessor GetRequestProcessorForOrder(long orderId);
 
     long CurrentOrderExecutionDuration { get; }
-
-    /// <summary>
-    /// Is a previous unload still processing
-    /// </summary>
-    bool IsPreviousUnloadProcessing { get; }
 
     /// <summary>
     /// Number of orders in processing
@@ -132,7 +127,7 @@ public interface IOrderProcessor : IDisposable
     /// <summary>
     /// Cancel all running orders and run a device order init if required
     /// </summary>
-    /// <param name="errorCode">Provided error code from device. Hardware errors are error codes greater equal 175 and not 229, 223, 249</param>
+    /// <param name="errorCode">Provided error code from device</param>
     void CancelRunningOrders(byte errorCode);
 
     /// <summary>
@@ -195,7 +190,7 @@ public interface IOrderProcessor : IDisposable
     void CancelOrder(IOrder order);
 
     /// <summary>
-    /// Cancel a order via its ID
+    /// Cancel an order via its ID
     /// </summary>
     /// <param name="orderId">ID of the order to cancel</param>
     void CancelOrder(long orderId);

@@ -64,7 +64,28 @@ public class SdcpParameterSet : BasicOutboundDatablock, IParameterSet
     /// <summary>
     /// Is the parameter set valid?
     /// </summary>
-    public ICollection<ValidationResult> IsValid => new List<ValidationResult>();
+    public virtual ICollection<ValidationResult> IsValid
+    {
+        get
+        {
+            var result = new List<ValidationResult>();
+
+            if (Payload.Length == 0)
+            {
+                result.Add(new ValidationResult($"Length of {nameof(Payload)} may not be 0"));
+            }
+
+            return result;
+        }
+    }
+
+    /// <summary>
+    /// Convert the properties of the parameterset into the bytes for the datablock
+    /// </summary>
+    public virtual void ToDataBlock()
+    {
+        Data = Payload;
+    }
 
     /// <summary>Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.</summary>
     public void Dispose()

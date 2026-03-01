@@ -370,7 +370,7 @@ public class OrderPipeline : IOrderPipeline
 
 
     /// <summary>
-    /// Cancel a order via its ID
+    /// Cancel an order via its ID
     /// </summary>
     /// <param name="orderId">ID of the order to cancel</param>
     public void CancelOrder(long orderId)

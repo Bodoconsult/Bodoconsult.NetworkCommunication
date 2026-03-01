@@ -7,7 +7,6 @@ namespace Bodoconsult.NetworkCommunication.Interfaces;
 /// </summary>
 public interface IOrderManager
 {
-
     /// <summary>
     /// Current messaging config
     /// </summary>
@@ -48,8 +47,6 @@ public interface IOrderManager
     ///// </summary>
     //int OrdersInProcessingCount { get; }
 
-
-
     /// <summary>
     /// Adds a received device message to the receiver queue for further processing
     /// </summary>
@@ -62,7 +59,6 @@ public interface IOrderManager
     ///// <param name="order">Order to cancel</param>
     //void CancelOrder(IOrder order);
 
-
     /// <summary>
     /// Event handling method for binding to <see cref="MessagingConfig"/>.NotifydeviceMessageReceived event
     /// </summary>
@@ -74,11 +70,8 @@ public interface IOrderManager
     /// </summary>
     void StartOrderProcessing();
 
-
     /// <summary>
     /// Stops the watchdog for the order processing
     /// </summary>
     void StopOrderProcessing();
-
-
 }

@@ -70,6 +70,14 @@ public class EmptyParameterSet: IParameterSet
     /// </summary>
     public ICollection<ValidationResult> IsValid => new List<ValidationResult>();
 
+    /// <summary>
+    /// Convert the properties of the parameterset into the bytes for the datablock
+    /// </summary>
+    public void ToDataBlock()
+    {
+        // Do nothing
+    }
+
     /// <summary>Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.</summary>
     public void Dispose()
     {
