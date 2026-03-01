@@ -13,7 +13,8 @@ public class SimpleDevice: BaseOrderManagementDevice
     /// Default ctor
     /// </summary>
     /// <param name="dataMessagingConfig">Current messaging config</param>
-    public SimpleDevice(IDataMessagingConfig dataMessagingConfig) : base(dataMessagingConfig)
+    /// <param name="clientNotificationManager">Current client notification manager</param>
+    public SimpleDevice(IDataMessagingConfig dataMessagingConfig, IOrderManagementClientNotificationManager clientNotificationManager) : base(dataMessagingConfig, clientNotificationManager)
     {
     }
 }

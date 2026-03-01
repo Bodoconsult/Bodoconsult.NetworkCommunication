@@ -1,6 +1,7 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
 using Bodoconsult.App.Interfaces;
+using Bodoconsult.NetworkCommunication.StateManagement;
 
 namespace Bodoconsult.NetworkCommunication.App.Abstractions;
 
@@ -35,6 +36,13 @@ public interface ICentralClientNotificationManager
     /// <param name="percentage">Current percentage</param>
     /// <param name="complete">Is completed?</param>
     void DoNotifyProgressEvent(object sender, int currentProgressType, int percentage, bool complete);
+
+    /// <summary>
+    /// Send an exception notification
+    /// </summary>
+    /// <param name="sender">Sender</param>
+    /// <param name="e">Exception to report</param>
+    void DoNotifyException(object sender, Exception e);
 
     #endregion
 }

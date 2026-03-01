@@ -7,28 +7,14 @@ using Bodoconsult.NetworkCommunication.StateManagement;
 namespace Bodoconsult.NetworkCommunication.ClientNotifications;
 
 /// <summary>
-/// Current implementation of <see cref="IOrderManagementClientNotificationManager"/> for central event notification handling
+/// Fake implementation of <see cref="IOrderManagementClientNotificationManager"/> doing nothing
 /// </summary>
-public abstract class OrderManagementClientNotificationManagerBase : IOrderManagementClientNotificationManager
+public class FakeOrderManagementClientNotificationManager : IOrderManagementClientNotificationManager
 {
-    #region Delegate definitions
-
     /// <summary>
     /// Delegate for sending a notification to the client
     /// </summary>
     public TransferToClientDelegate NotifyClient { get; set; }
-
-    #endregion
-
-    public void DoNotifyStateManagementStateEvent(object sender, IStateManagementState state)
-    {
-        var notification = new StateManagementStateNotification()
-        {
-            State = state
-        };
-
-        NotifyClient?.Invoke(sender, notification);
-    }
 
     /// <summary>
     /// Send a progress notification
@@ -39,14 +25,7 @@ public abstract class OrderManagementClientNotificationManagerBase : IOrderManag
     /// <param name="complete">Is completed?</param>
     public void DoNotifyProgressEvent(object sender, int currentProgressType, int percentage, bool complete)
     {
-        var notification = new ProgressNotification
-        {
-            Completed = complete,
-            Type = currentProgressType,
-            Progress = percentage
-        };
-
-        NotifyClient?.Invoke(sender, notification);
+        // Do nothing
     }
 
     /// <summary>
@@ -56,12 +35,17 @@ public abstract class OrderManagementClientNotificationManagerBase : IOrderManag
     /// <param name="e">Exception to report</param>
     public void DoNotifyException(object sender, Exception e)
     {
-        var notification = new ExceptionNotification
-        {
-            Exception = e
-        };
+        // Do nothing
+    }
 
-        NotifyClient?.Invoke(sender, notification);
+    /// <summary>
+    /// Send a string notification
+    /// </summary>
+    /// <param name="sender">Sender</param>
+    /// <param name="state">State to send to client</param>
+    public void DoNotifyStateManagementStateEvent(object sender, IStateManagementState state)
+    {
+        // Do nothing
     }
 
     /// <summary>
@@ -71,11 +55,6 @@ public abstract class OrderManagementClientNotificationManagerBase : IOrderManag
     /// <param name="order">Current order</param>
     public void DoNotifyOrderStateChanged(object sender, IOrder order)
     {
-        var notification = new OrderExecutionNotification
-        {
-            Order = order,
-        };
-
-        NotifyClient?.Invoke(sender, notification);
+        // Do nothing
     }
 }

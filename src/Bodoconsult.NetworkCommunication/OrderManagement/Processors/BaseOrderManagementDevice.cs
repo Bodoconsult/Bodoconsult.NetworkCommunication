@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using Bodoconsult.App.Interfaces;
 using Bodoconsult.NetworkCommunication.Interfaces;
+using Bodoconsult.NetworkCommunication.StateManagement;
 
 namespace Bodoconsult.NetworkCommunication.OrderManagement.Processors;
 
@@ -17,15 +18,18 @@ public abstract class BaseOrderManagementDevice : IOrderManagementDevice
     protected readonly IAppLoggerProxy _appLogger;
     protected readonly IAppLoggerProxy _monitorLogger;
 
+
     /// <summary>
     /// Default ctor
     /// </summary>
     /// <param name="dataMessagingConfig">Current messaging config</param>
-    protected BaseOrderManagementDevice(IDataMessagingConfig dataMessagingConfig)
+    /// <param name="clientNotificationManager">Current client notification manager</param>
+    protected BaseOrderManagementDevice(IDataMessagingConfig dataMessagingConfig, IOrderManagementClientNotificationManager clientNotificationManager)
     {
         DataMessagingConfig = dataMessagingConfig ?? throw new ArgumentNullException(nameof(dataMessagingConfig));
         _appLogger = dataMessagingConfig.AppLogger; 
         _monitorLogger = dataMessagingConfig.MonitorLogger;
+        ClientNotificationManager = clientNotificationManager;
     }
 
     /// <summary>
@@ -49,6 +53,11 @@ public abstract class BaseOrderManagementDevice : IOrderManagementDevice
     /// Current order manager
     /// </summary>
     public IOrderManager OrderManager { get; protected set; }
+
+    /// <summary>
+    /// Client notification manager
+    /// </summary>
+    public IOrderManagementClientNotificationManager ClientNotificationManager { get; }
 
     /// <summary>
     /// Device states used for init process
@@ -108,7 +117,6 @@ public abstract class BaseOrderManagementDevice : IOrderManagementDevice
             {
                 OrderManager.OrderReceiver.IsReceivedMessageProcessingActivated = _isOrderProcessingActivated;
             }
-
         }
     }
 
@@ -141,11 +149,6 @@ public abstract class BaseOrderManagementDevice : IOrderManagementDevice
     /// No order in processing
     /// </summary>
     public bool IsNoOrderInProcessing => OrderProcessor.IsNoOrderInProcessing;
-
-    /// <summary>
-    /// Is a previous unload still processing
-    /// </summary>
-    public bool IsPreviousUnloadProcessing => OrderProcessor.IsPreviousUnloadProcessing;
 
     /// <summary>
     /// Number of orders in processing
@@ -548,20 +551,16 @@ public abstract class BaseOrderManagementDevice : IOrderManagementDevice
     /// <summary>
     /// Send an app notfication
     /// </summary>
-    /// <param name="state">Business or Device state to send the notification for</param>
-    /// <param name="memberName">Do not set this value</param>
-    /// <param name="lineNumber">Do not set this value</param>
-    public void DoNotify(IDeviceState state,
-        [CallerMemberName] string memberName = "",
-        [CallerLineNumber] int lineNumber = 0)
+    /// <param name="state">State management state</param>
+    public void DoNotify(IStateManagementState state)
     {
-
         if (OrderProcessor == null)
         {
             return;
         }
 
-        //Debug.Print($"State: {state} Caller: {memberName} Line: {lineNumber}");
+        ClientNotificationManager.DoNotifyStateManagementStateEvent(this, state);
+
 
         //IOrder currentOrder = null;
         //try
@@ -597,45 +596,6 @@ public abstract class BaseOrderManagementDevice : IOrderManagementDevice
         //    currentOrder?.Id ?? 0,
         //    PreviousDeviceState, terminal);
 
-    }
-
-    /// <summary>
-    /// Send an app notification
-    /// </summary>
-    /// <param name="state">Current state</param>
-    /// <param name="terminal">Current terminal</param>
-    /// <param name="memberName">Do not set a value</param>
-    /// <param name="lineNumber">Do not set a value</param>
-    public void DoNotify(IDeviceState state,
-        int terminal,
-        [CallerMemberName] string memberName = "",
-        [CallerLineNumber] int lineNumber = 0)
-
-    {
-        Debug.Print($"State: {state} Caller: {memberName} Line: {lineNumber}");
-
-        if (OrderProcessor == null)
-        {
-            return;
-        }
-
-        _appLogger.LogDebug($"{DataMessagingConfig.LoggerId}: IsAnyOrderToProcess: {IsAnyOrderToProcess} OrdersInProcessingCount: {OrdersInProcessingCount}");
-        IOrder currentOrder = null;
-        try
-        {
-            currentOrder = OrderProcessor.GetCurrentProcessingOrder();
-        }
-        catch (Exception e)
-        {
-            _appLogger.LogError($"{DataMessagingConfig.LoggerId}: exception {e.Message} happened", e);
-        }
-
-        //MessagingBusinessDelegate.DoNotifyApplicationBusinessEvent(this,
-        //    state.Name,
-        //    SmdDevice.DeviceSn, state, ApplicationMessageEnum.Device,
-        //    currentOrder?.Id ?? 0,
-        //    PreviousDeviceState, terminal
-        //);
     }
 
     /// <summary>

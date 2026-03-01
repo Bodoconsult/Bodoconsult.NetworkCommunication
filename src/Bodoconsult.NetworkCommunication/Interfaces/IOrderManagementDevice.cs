@@ -1,5 +1,6 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
+using Bodoconsult.NetworkCommunication.StateManagement;
 using System.Runtime.CompilerServices;
 using System.Text.Json.Serialization;
 
@@ -31,6 +32,11 @@ public interface IOrderManagementDevice
     IOrderManager OrderManager { get; }
 
     /// <summary>
+    /// Client notification manager
+    /// </summary>
+    IOrderManagementClientNotificationManager ClientNotificationManager { get; }
+
+    /// <summary>
     /// Device states used for init process
     /// </summary>
     IList<IDeviceState> DeviceStatesInitProcess { get; }
@@ -52,6 +58,36 @@ public interface IOrderManagementDevice
     /// <param name="runningOrders">Current running orders</param>
     /// <returns>True if it is allowed to run the order else false</returns>
     bool IsRunningTheOrderAllowed(IOrder order, IList<IOrder> runningOrders);
+
+    /// <summary>
+    /// Is the order processing currently activated
+    /// </summary>
+    public bool IsOrderProcessingActivated { get; set; }
+
+    /// <summary>
+    /// Get all orders in the queue
+    /// </summary>
+    public IList<IOrder> OrdersInQueue { get; }
+
+    /// <summary>
+    /// Get all orders currently in processing
+    /// </summary>
+    IList<IOrder> OrdersInProcessing { get; }
+
+    /// <summary>
+    /// No order in processing
+    /// </summary>
+    public bool IsNoOrderInProcessing { get; }
+
+    /// <summary>
+    /// Number of orders in processing
+    /// </summary>
+    public int OrdersInProcessingCount { get; }
+
+    /// <summary>
+    /// Is any order to process?
+    /// </summary>
+    public bool IsAnyOrderToProcess { get; }
 
     /// <summary>
     /// Is the device pingable
@@ -125,26 +161,6 @@ public interface IOrderManagementDevice
     /// <param name="errorCode">Error code received from device or business logic</param>
     void CancelRunningOrders(byte errorCode);
 
-    ///// <summary>
-    ///// Set the business state from an order to be execute. Runs before order execution starts
-    ///// </summary>
-    ///// <param name="order">Current order to execute</param>
-    //void SetBusinessStateFromOrder(IOrder order);
-
-    ///// <summary>
-    ///// Handle a received error
-    ///// </summary>
-    ///// <param name="receivedMessage">Received message</param>
-    //void HandleError(IDataMessage receivedMessage);
-
-    ///// <summary>
-    ///// Handle async sent message from device
-    ///// </summary>
-    ///// <param name="message">Received message</param>
-    ///// <returns>The result of the message handling</returns>
-    //MessageHandlingResult HandleAsyncMessage(IDataMessage message);
-
-
     /// <summary>
     /// Create a hardware init order
     /// </summary>
@@ -211,10 +227,6 @@ public interface IOrderManagementDevice
     /// <summary>
     /// Send an app notfication
     /// </summary>
-    /// <param name="state">Business or device state to send the notification for</param>
-    /// <param name="memberName">Do not set this value</param>
-    /// <param name="lineNumber">Do not set this value</param>
-    void DoNotify(IDeviceState state,
-        [CallerMemberName] string memberName = "",
-        [CallerLineNumber] int lineNumber = 0);
+    /// <param name="state">State management state</param>
+    void DoNotify(IStateManagementState state);
 }

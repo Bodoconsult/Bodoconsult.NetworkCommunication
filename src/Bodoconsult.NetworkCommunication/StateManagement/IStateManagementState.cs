@@ -27,10 +27,16 @@ public interface IStateManagementState
     /// <summary>
     /// Current context
     /// </summary>
-    IStateManagementContext CurrentContext { get; set; }
+    IStateManagementContext CurrentContext { get; }
 
+    /// <summary>
+    /// Type name of the order
+    /// </summary>
     string Name { get; }
 
+    /// <summary>
+    /// Is cancellation of running orders required on error?
+    /// </summary>
     bool IsRunningOrdersCancellationRequired { get; set; }
 
     /// <summary>
@@ -64,6 +70,18 @@ public interface IStateManagementState
     void RunNextOrder();
 
     /// <summary>
+    /// The order was finished successfully and now do the last work on the order
+    /// </summary>
+    /// <param name="order">Current order</param>
+    public void OrderFinishedSuccessful(IOrder order);
+
+    /// <summary>
+    /// The order was NOT finished succesfully and now do the last work on the order
+    /// </summary>
+    /// <param name="order">Current order</param>
+    void OrderFinishedUnsuccessful(IOrder order);
+
+    /// <summary>
     /// Handle a ComDevClose event
     /// </summary>
     void HandleComDevClose();
@@ -79,4 +97,10 @@ public interface IStateManagementState
     /// </summary>
     /// <param name="message">Async received message</param>
     void HandleAsyncMessage(IInboundDataMessage message);
+
+    /// <summary>
+    /// Create a string for logging
+    /// </summary>
+    /// <returns>String with state info</returns>
+    string ToLogString();
 }

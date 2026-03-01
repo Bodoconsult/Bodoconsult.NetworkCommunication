@@ -1,6 +1,7 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
 using Bodoconsult.NetworkCommunication.Interfaces;
+using System.Runtime.CompilerServices;
 
 namespace Bodoconsult.NetworkCommunication.StateManagement;
 
@@ -9,6 +10,11 @@ namespace Bodoconsult.NetworkCommunication.StateManagement;
 /// </summary>
 public interface IStateManagementContext
 {
+    /// <summary>
+    /// Current instance of the Device order processor
+    /// </summary>
+    public IOrderProcessor OrderProcessor { get; protected set; }
+
     /// <summary>
     /// Current device state
     /// </summary>
@@ -42,4 +48,38 @@ public interface IStateManagementContext
     /// </summary>
     /// <param name="state"></param>
     void LoadState(IStateManagementState state);
+
+    /// <summary>
+    /// Send an app notfication
+    /// </summary>
+    /// <param name="state">State management state</param>
+    void DoNotify(IStateManagementState state);
+
+    #region Logging
+
+    /// <summary>
+    /// Log in DEBUG mode
+    /// </summary>
+    /// <param name="message">Message to log</param>
+    public void LogDebug(string message);
+
+    /// <summary>
+    /// Log in INFORMATION mode
+    /// </summary>
+    /// <param name="message">Message to log</param>
+    public void LogInformation(string message);
+
+    /// <summary>
+    /// Log in WARNING mode
+    /// </summary>
+    /// <param name="message">Message to log</param>
+    public void LogWarning(string message);
+
+    /// <summary>
+    /// Log in ERROR mode
+    /// </summary>
+    /// <param name="message">Message to log</param>
+    public void LogError(string message);
+
+    #endregion
 }

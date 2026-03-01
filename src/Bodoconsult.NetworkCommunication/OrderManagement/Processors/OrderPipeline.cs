@@ -497,7 +497,6 @@ public class OrderPipeline : IOrderPipeline
         {
             _appLogger.LogError($"Cancelling order {o.Id} failed", e);
         }
-
     }
 
     /// <summary>
@@ -595,7 +594,6 @@ public class OrderPipeline : IOrderPipeline
         var s = $"{_loggerId}next order {order.Id} could not be added to ExecutionQueue";
         _appLogger.LogError(s);
         return true;
-
     }
 
     /// <summary>
@@ -606,7 +604,6 @@ public class OrderPipeline : IOrderPipeline
     {
         var order = requestProcessor.Order;
         order.StartTime = _dateTimeService.Now;
-
 
         var task = Task.Run(() =>
         {
@@ -636,7 +633,6 @@ public class OrderPipeline : IOrderPipeline
         _appLogger.LogWarning($"{_loggerId}RequestProcessor could not be removed");
         return null;
     }
-
 
     /// <summary>
     /// Remove an order request processor from the execution queue by order ID

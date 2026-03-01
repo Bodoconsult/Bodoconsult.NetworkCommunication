@@ -956,12 +956,12 @@ public class OrderProcessor : IOrderProcessor
 
         string msg;
 
-        if (receivedMessage is not IInboundDataMessage rm)
-        {
-            msg = $"received {receivedMessage.ToInfoString()} {OrderPipeline.CurrentOrderState}";
-            LogInformation(msg);
-            return false;
-        }
+        //if (receivedMessage is not IInboundDataMessage rm)
+        //{
+        //    msg = $"received {receivedMessage.ToInfoString()} {OrderPipeline.CurrentOrderState}";
+        //    LogInformation(msg);
+        //    return false;
+        //}
 
         Debug.Print($"TOP: message received: {receivedMessage.ToInfoString()}");
 
@@ -969,7 +969,7 @@ public class OrderProcessor : IOrderProcessor
         // TOP 1 A X message with a error code of 0 makes no sense: throw this message away
         // This other X messages should be given to the order pipeline first and after that it should be handled befor given to async message handler
         //*********************
-        if (CurrentDevice.DoBasicCheckForReceivedMessage(rm))
+        if (CurrentDevice.DoBasicCheckForReceivedMessage(receivedMessage))
         {
             return true;
         }
@@ -997,7 +997,7 @@ public class OrderProcessor : IOrderProcessor
         //*********************
         // TOP 4 Handle an error message now if not handled by any order before
         //*********************
-        if (CurrentDevice.DoCheckForErrorMessage(rm))
+        if (CurrentDevice.DoCheckForErrorMessage(receivedMessage))
         {
             return true;
         }
@@ -1005,7 +1005,7 @@ public class OrderProcessor : IOrderProcessor
         //*********************
         // TOP 5 Last chance for message handling: async message handling
         //*********************
-        var result = CurrentDevice.HandleAsyncMessage(receivedMessage);
+        var result = CurrentDevice.CurrentState.HandleAsyncMessage(receivedMessage);
 
         //IsRunnerStopped = false;
 
