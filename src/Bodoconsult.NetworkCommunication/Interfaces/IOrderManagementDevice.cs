@@ -1,15 +1,13 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
 using Bodoconsult.NetworkCommunication.StateManagement;
-using System.Runtime.CompilerServices;
-using System.Text.Json.Serialization;
 
 namespace Bodoconsult.NetworkCommunication.Interfaces;
 
 /// <summary>
 /// Interface for implementing a device with order management
 /// </summary>
-public interface IOrderManagementDevice
+public interface IOrderManagementDevice: IStateManagementContext
 {
     /// <summary>
     /// Device configuration for data messaging
@@ -20,11 +18,6 @@ public interface IOrderManagementDevice
     /// Communication adapter to use for order management
     /// </summary>
     IOrderManagementCommunicationAdapter CommunicationAdapter { get; }
-
-    /// <summary>
-    /// Current instance of the device order processor
-    /// </summary>
-    IOrderProcessor OrderProcessor { get; }
 
     /// <summary>
     /// Current order manager
@@ -194,39 +187,4 @@ public interface IOrderManagementDevice
     /// Check if there are any orders to be created 
     /// </summary>
     void CheckIfThereAreOrdersToBeCreated();
-
-    #region Logging
-
-    /// <summary>
-    /// Log in DEBUG mode
-    /// </summary>
-    /// <param name="message">Message to log</param>
-    public void LogDebug(string message);
-
-    /// <summary>
-    /// Log in INFORMATION mode
-    /// </summary>
-    /// <param name="message">Message to log</param>
-    public void LogInformation(string message);
-
-    /// <summary>
-    /// Log in WARNING mode
-    /// </summary>
-    /// <param name="message">Message to log</param>
-    public void LogWarning(string message);
-
-    /// <summary>
-    /// Log in ERROR mode
-    /// </summary>
-    /// <param name="message">Message to log</param>
-    public void LogError(string message);
-
-    #endregion
-
-
-    /// <summary>
-    /// Send an app notfication
-    /// </summary>
-    /// <param name="state">State management state</param>
-    void DoNotify(IStateManagementState state);
 }

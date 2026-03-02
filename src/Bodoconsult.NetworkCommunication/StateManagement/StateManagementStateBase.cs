@@ -1,5 +1,6 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
+using Bodoconsult.NetworkCommunication.EnumAndStates;
 using Bodoconsult.NetworkCommunication.Interfaces;
 
 namespace Bodoconsult.NetworkCommunication.StateManagement;
@@ -113,11 +114,11 @@ public abstract class StateManagementStateBase: IStateManagementState
             order.OrderFinishedSuccessfulAction(tro, order.ParameterSet);
         }
 
-        // Now logging and notifications
-        if (order.StateToNotifyOnSuccess != DefaultDeviceStates.DeviceStateOffline)
-        {
-            CurrentContext.DoNotify(order.StateToNotifyOnSuccess);
-        }
+        //// Now logging and notifications
+        //if (order.StateToNotifyOnSuccess != DefaultDeviceStates.DeviceStateOffline)
+        //{
+        //    CurrentContext.DoNotify(this);
+        //}
 
         order.ExecutionState = OrderState.FinishedSuccessfully;
         CurrentContext.LogDebug($"{order.LoggerId}has finished successful");
@@ -154,9 +155,14 @@ public abstract class StateManagementStateBase: IStateManagementState
     /// Handle an async received message sent by the device
     /// </summary>
     /// <param name="message">Async received message</param>
-    public virtual void HandleAsyncMessage(IInboundDataMessage message)
+    public virtual MessageHandlingResult HandleAsyncMessage(IInboundDataMessage message)
     {
         // Do nothing
+        return new MessageHandlingResult
+            {
+                Error = 0,
+                ExecutionResult = OrderExecutionResultState.Successful
+            };
     }
 
     /// <summary>

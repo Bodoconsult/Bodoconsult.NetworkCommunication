@@ -1,7 +1,6 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
 using System.Diagnostics;
-using System.Runtime.CompilerServices;
 using Bodoconsult.App.Interfaces;
 using Bodoconsult.NetworkCommunication.Interfaces;
 using Bodoconsult.NetworkCommunication.StateManagement;
@@ -11,7 +10,7 @@ namespace Bodoconsult.NetworkCommunication.OrderManagement.Processors;
 /// <summary>
 /// Base class for order management devices
 /// </summary>
-public abstract class BaseOrderManagementDevice : IOrderManagementDevice
+public abstract class BaseOrderManagementDevice : IOrderManagementDevice, IStateManagementContext
 {
     protected bool _isOrderProcessingActivated;
 
@@ -50,6 +49,35 @@ public abstract class BaseOrderManagementDevice : IOrderManagementDevice
     public IOrderProcessor OrderProcessor { get; protected set; }
 
     /// <summary>
+    /// Current device state
+    /// </summary>
+    public IDeviceState DeviceState => CurrentState?.DeviceState;
+
+    /// <summary>
+    /// Current business state
+    /// </summary>
+    public IBusinessState BusinessState => CurrentState?.BusinessState;
+
+    /// <summary>
+    /// Current business substate
+    /// </summary>
+    public IBusinessSubState BusinessSubState => CurrentState?.BusinessSubState;
+
+    /// <summary>
+    /// The current <see cref="IStateManagementState"/>
+    /// </summary>
+    public IStateManagementState CurrentState { get; private set; }
+    public void SetInitialStates(IDeviceState deviceState, IBusinessState businessState, IBusinessState businessSubState)
+    {
+        throw new NotImplementedException();
+    }
+
+    public void LoadState(IStateManagementState state)
+    {
+        CurrentState = state;
+    }
+
+    /// <summary>
     /// Current order manager
     /// </summary>
     public IOrderManager OrderManager { get; protected set; }
@@ -75,7 +103,7 @@ public abstract class BaseOrderManagementDevice : IOrderManagementDevice
             {
                 // RL: ComDev should be reset to initial state here under all circumstances to avoid any hanging comm parts
                 CommunicationAdapter.ComDevReset();
-                DoNotify(DefaultDeviceStates.DeviceStateOffline);
+                DoNotify(CurrentState);
                 //_monitorLogger?.LogError($"Ping NOT successful for IP {SmdDevice.IpAddress}");
                 SetOrderProcessingStateDelegate(false);
                 return false;
@@ -340,11 +368,11 @@ public abstract class BaseOrderManagementDevice : IOrderManagementDevice
             order.OrderFinishedSuccessfulAction(tro, order.ParameterSet);
         }
 
-        // Now logging and notifications
-        if (order.StateToNotifyOnSuccess != DefaultDeviceStates.DeviceStateOffline)
-        {
-            DoNotify(order.StateToNotifyOnSuccess);
-        }
+        //// Now logging and notifications
+        //if (order.StateToNotifyOnSuccess != DefaultDeviceStates.DeviceStateOffline)
+        //{
+        //    DoNotify(order.StateToNotifyOnSuccess);
+        //}
 
         order.ExecutionState = OrderState.FinishedSuccessfully;
         _appLogger.LogDebug($"{DataMessagingConfig.LoggerId}{order.LoggerId}has finished successful");

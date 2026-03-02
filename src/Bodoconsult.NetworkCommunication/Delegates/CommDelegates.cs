@@ -4,6 +4,7 @@ using Bodoconsult.NetworkCommunication.Communication.Sending;
 using Bodoconsult.NetworkCommunication.Interfaces;
 using System.Net.Sockets;
 using System.Runtime.CompilerServices;
+using Bodoconsult.NetworkCommunication.StateManagement;
 
 namespace Bodoconsult.NetworkCommunication.Delegates;
 
@@ -168,9 +169,7 @@ public delegate bool RequestStepProcessorIsCancelledDelegate();
 /// <param name="state">Business or device state to send the notification for</param>
 /// <param name="memberName">Do not set this value</param>
 /// <param name="lineNumber">Do not set this value</param>
-public delegate void DoNotifyDelegate(IDeviceState state,
-    [CallerMemberName] string memberName = "",
-    [CallerLineNumber] int lineNumber = 0);
+public delegate void DoNotifyDelegate(IStateManagementState stateManagementState);
 
 /// <summary>
 /// Delegate to cancel running operation on comm adapter level

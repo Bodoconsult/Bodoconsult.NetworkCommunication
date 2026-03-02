@@ -2,6 +2,7 @@
 
 using Bodoconsult.App.Benchmarking;
 using Bodoconsult.App.Interfaces;
+using Bodoconsult.NetworkCommunication.ClientNotifications;
 using Bodoconsult.NetworkCommunication.Factories;
 using Bodoconsult.NetworkCommunication.Interfaces;
 using Bodoconsult.NetworkCommunication.OrderManagement.Orders;
@@ -27,7 +28,8 @@ public class OrderPipelineTests
     public OrderPipelineTests()
     {
         IRequestStepProcessorFactory requestStepProcessorFactory = new RequestStepProcessorFactory();
-        IOrderManagementDevice device = new SimpleDevice(TestDataHelper.GetDataMessagingConfig());
+        IOrderManagementClientNotificationManager clientNotificationManager = new FakeOrderManagementClientNotificationManager();
+        IOrderManagementDevice device = new SimpleDevice(TestDataHelper.GetDataMessagingConfig(), clientNotificationManager);
         _requestProcessorFactory = new RequestProcessorFactory(requestStepProcessorFactory, device);
     }
 

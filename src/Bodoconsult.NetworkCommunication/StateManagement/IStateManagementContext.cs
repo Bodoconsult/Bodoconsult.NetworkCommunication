@@ -1,7 +1,6 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
 using Bodoconsult.NetworkCommunication.Interfaces;
-using System.Runtime.CompilerServices;
 
 namespace Bodoconsult.NetworkCommunication.StateManagement;
 
@@ -13,7 +12,7 @@ public interface IStateManagementContext
     /// <summary>
     /// Current instance of the Device order processor
     /// </summary>
-    public IOrderProcessor OrderProcessor { get; protected set; }
+    IOrderProcessor OrderProcessor { get; }
 
     /// <summary>
     /// Current device state

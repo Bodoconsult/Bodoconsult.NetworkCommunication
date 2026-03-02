@@ -131,7 +131,7 @@ public interface IOrderProcessor : IDisposable
     void CancelRunningOrders(byte errorCode);
 
     /// <summary>
-    /// Handle a received error
+    /// Handle a received error message
     /// </summary>
     /// <param name="receivedMessage">Received message</param>
     void HandleError(IInboundDataMessage receivedMessage);

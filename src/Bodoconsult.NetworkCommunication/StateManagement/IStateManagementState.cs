@@ -96,7 +96,7 @@ public interface IStateManagementState
     /// Handle an async received message sent by the device
     /// </summary>
     /// <param name="message">Async received message</param>
-    void HandleAsyncMessage(IInboundDataMessage message);
+    MessageHandlingResult HandleAsyncMessage(IInboundDataMessage message);
 
     /// <summary>
     /// Create a string for logging

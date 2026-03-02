@@ -82,7 +82,7 @@ public class OrderProcessor : IOrderProcessor
         _dateTimeService = dateTimeService;
         _appLogger = deviceServer.DataMessagingConfig.AppLogger;
         _loggerId = deviceServer.DataMessagingConfig.LoggerId;
-        _monitorLogger = deviceServer.DataMessagingConfig.MonitorLogger
+        _monitorLogger = deviceServer.DataMessagingConfig.MonitorLogger;
     }
 
     /// <summary>
@@ -145,13 +145,21 @@ public class OrderProcessor : IOrderProcessor
     /// <summary>
     /// Is a certain order type running or waiting for execution
     /// </summary>
-    /// <param name="orderTypeCode">Order type code: see <see cref="OrderTypeCodes"/> for valid values</param>
+    /// <param name="orderTypeCode">Order type code</param>
     /// <returns>True if an order is running or waiting in the queue else false</returns>
     public bool IsOrderTypeInTheQueue(int orderTypeCode)
     {
         return OrderPipeline.IsOrderTypeInTheQueue(orderTypeCode);
     }
 
+    /// <summary>
+    /// Handle a received error message
+    /// </summary>
+    /// <param name="receivedMessage">Received message</param>
+    public virtual void HandleError(IInboundDataMessage receivedMessage)
+    {
+        throw new NotImplementedException();
+    }
 
     /// <summary>
     /// Initiate a hardware init and run the order directly
@@ -313,7 +321,7 @@ public class OrderProcessor : IOrderProcessor
         }
         else
         {
-            _appLogger.LogDebug($"{_loggerId}{order.LoggerId}order has been finished {erg.LastStepExecutionResult}");
+            _appLogger.LogDebug($"{_loggerId}{order.LoggerId}order has been finished {erg}");
         }
 
         // Dispose the order now if needed
@@ -894,12 +902,10 @@ public class OrderProcessor : IOrderProcessor
         //    return false;
         //}
 
-        IList<IOrder> orders = null;
-
         // Check request specs here
         if (order.RequestSpecs.Any(x => x.DoNotRunRequestSpecIfThereIsSameOrderTypeInQueue))
         {
-            orders = AllOrders;
+            var orders = AllOrders;
             CheckRequestSpecs(order, orders);
         }
 
@@ -909,16 +915,10 @@ public class OrderProcessor : IOrderProcessor
             return false;
         }
 
-        var sParameterSet = (ISDataBlockParameterSet)order.ParameterSet;
-        if (sParameterSet.TestMode)
-        {
-            return false;
-        }
-
         // Check if there is already an order for the same carrier
         var ps = order.ParameterSet;
 
-        return ps.IsValid.Any();
+        return ps.IsValid.Count == 0;
     }
 
     /// <summary>
@@ -981,7 +981,7 @@ public class OrderProcessor : IOrderProcessor
         // TOP 2 Deliver message to order pipeline with all running orders with higher priority to check
         //*********************
         var requestProcessors = OrderPipeline.RunningRequestProcessors;
-        if (CheckOrders(requestProcessors.Where(x => x.Order != null && x.Order.IsCheckedWithPriority && !x.Order.WasSuccessful && !x.Order.IsFinished), rm))
+        if (CheckOrders(requestProcessors.Where(x => x.Order != null && x.Order.IsCheckedWithPriority && !x.Order.WasSuccessful && !x.Order.IsFinished), receivedMessage))
         {
             return true;
         }
@@ -989,7 +989,7 @@ public class OrderProcessor : IOrderProcessor
         //*********************
         // TOP 3 Deliver message to order pipeline with all running orders with normal priority to check
         //*********************
-        if (CheckOrders(requestProcessors.Where(x => x.Order != null && !x.Order.IsCheckedWithPriority && !x.Order.WasSuccessful && !x.Order.IsFinished), rm))
+        if (CheckOrders(requestProcessors.Where(x => x.Order != null && !x.Order.IsCheckedWithPriority && !x.Order.WasSuccessful && !x.Order.IsFinished), receivedMessage))
         {
             return true;
         }
@@ -1155,7 +1155,12 @@ public class OrderProcessor : IOrderProcessor
 
     }
 
-    
+    public bool Check4UnloadOrdersForSameContainer(Guid containerUid, Guid carrierUid)
+    {
+        throw new NotImplementedException();
+    }
+
+
     /// <summary>
     /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
     /// </summary>

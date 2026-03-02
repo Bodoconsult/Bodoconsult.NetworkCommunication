@@ -1,7 +1,6 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
 using Bodoconsult.App.Interfaces;
-using Bodoconsult.NetworkCommunication.StateManagement;
 
 namespace Bodoconsult.NetworkCommunication.App.Abstractions;
 

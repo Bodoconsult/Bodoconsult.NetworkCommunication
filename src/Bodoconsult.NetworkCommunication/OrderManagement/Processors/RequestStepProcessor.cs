@@ -497,7 +497,8 @@ public class RequestStepProcessor : IRequestStepProcessor
         // If an app notification is required before running the current step
         var s = $"{requestSpec.OrderLoggerId}RequestAnswerStep {step}: send state {step.StateToNotifyBeforeRunning} to app before sending message";
         requestSpec.AppLogger.LogDebug(s);
-        requestSpec.DoNotifyDelegate?.Invoke(step.StateToNotifyBeforeRunning);
+        // ToDo: needed??
+        //requestSpec.DoNotifyDelegate?.Invoke(step.StateToNotifyBeforeRunning);
     }
 
     /// <summary>
