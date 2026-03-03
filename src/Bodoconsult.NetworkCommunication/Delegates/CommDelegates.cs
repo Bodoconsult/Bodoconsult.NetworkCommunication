@@ -3,7 +3,6 @@
 using Bodoconsult.NetworkCommunication.Communication.Sending;
 using Bodoconsult.NetworkCommunication.Interfaces;
 using System.Net.Sockets;
-using System.Runtime.CompilerServices;
 using Bodoconsult.NetworkCommunication.StateManagement;
 
 namespace Bodoconsult.NetworkCommunication.Delegates;
@@ -166,9 +165,7 @@ public delegate bool RequestStepProcessorIsCancelledDelegate();
 /// <summary>
 /// Send an app notfication
 /// </summary>
-/// <param name="state">Business or device state to send the notification for</param>
-/// <param name="memberName">Do not set this value</param>
-/// <param name="lineNumber">Do not set this value</param>
+/// <param name="stateManagementState">Business or device state to send the notification for</param>
 public delegate void DoNotifyDelegate(IStateManagementState stateManagementState);
 
 /// <summary>
@@ -187,5 +184,16 @@ public delegate MessageSendingResult SendDataMessageDelegate(IOutboundDataMessag
 /// Reset the <see cref="IOutboundDataMessageFactory"/>
 /// </summary>
 public delegate void ResetOutboundDataMessageFactoryDelegate();
+
+/// <summary>
+/// Check if a received message is the expected answer to the request.
+/// If the message is the requested answer from the device the properties <see cref="IRequestAnswer.WasReceived"/>
+/// and <see cref="IRequestAnswer.ReceivedMessage"/> are set to true and the received message.
+/// </summary>
+/// <param name="sentMessage">The message sent from the request to the device</param>
+/// <param name="receivedMessage">A received message from the device</param>
+/// <param name="errors">List with error messages to fill</param>
+/// <returns>True if the message was as expected as answer of the sent message else false</returns>
+public delegate bool CheckReceivedMessageDelegate(IRequestAnswer requestAnswer, IOutboundDataMessage sentMessage, IInboundDataMessage receivedMessage, IList<string> errors);
 
 #endregion

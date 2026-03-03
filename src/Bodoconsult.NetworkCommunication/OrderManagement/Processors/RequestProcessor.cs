@@ -128,7 +128,12 @@ public class RequestProcessor : IRequestProcessor
 
             Debug.Print($"RP: {requestSpec.GetType().Name}: start execution...");
 
-            var result = ExecuteRequest(requestSpec);
+            var result = requestSpec switch
+            {
+                IInternalRequestSpec irs => ExecuteRequest(irs),
+                IDeviceRequestSpec drs => ExecuteRequest(drs),
+                _ => OrderExecutionResultState.NotProcessed
+            };
 
             Debug.Print($"RP: {requestSpec.GetType().Name}: execution ended with {result}");
 
@@ -216,11 +221,11 @@ public class RequestProcessor : IRequestProcessor
     }
 
     /// <summary>
-    /// Execute a single step
+    /// Execute a single device bound step
     /// </summary>
     /// <param name="requestSpec">Current request spec</param>
     /// <returns>Execution result</returns>
-    public IOrderExecutionResultState ExecuteRequest(IRequestSpec requestSpec)
+    public IOrderExecutionResultState ExecuteRequest(IDeviceRequestSpec requestSpec)
     {
         // Fetch the order here to avoid multithread issues
         var order = Order;
@@ -236,7 +241,66 @@ public class RequestProcessor : IRequestProcessor
         requestSpec.AppLogger = _appLogger;
         requestSpec.OrderLoggerId = $"{_orderLoggerId}RSP: {requestSpec.Name} ";
         
-        var processor = _requestStepProcessorFactory.CreateProcessor(requestSpec, _device);
+        var processor = _requestStepProcessorFactory.CreateDeviceProcessor(requestSpec);
+        requestSpec.RequestStepProcessorSetResultDelegate = processor.SetResult;
+        requestSpec.RequestStepProcessorIsCancelledDelegate = processor.CheckIsCancelled;
+        processor.PrepareTheChain();
+
+        processor.RequestSpec.SetTransportObject(_transportObject);
+
+        CurrentRequestStepProcessor = processor;
+
+        if (IsCancelled || order.IsCancelled)
+        {
+            processor.Cancel();
+            return SetUnsuccessful(order);
+        }
+
+        var result = processor.ExecuteRequest();
+
+        if (result.Id == OrderExecutionResultState.Successful.Id)
+        {
+            _transportObject = processor.RequestSpec.ResultTransportObject;
+            processor.Dispose();
+            Debug.Print("ExecuteRequest successful");
+            return OrderExecutionResultState.Successful;
+        }
+
+        // ToDo: add logging
+
+        Debug.Print("ExecuteRequest failed");
+
+        // If the order has been finished already or is disposable: do not change order state again
+        if (order.IsFinished || order.IsDisposable)
+        {
+            return order.ExecutionResult;
+        }
+
+        order.ExecutionResult = result;
+        return result;
+    }
+
+    /// <summary>
+    /// Execute a single device bound step
+    /// </summary>
+    /// <param name="requestSpec">Current request spec</param>
+    /// <returns>Execution result</returns>
+    public IOrderExecutionResultState ExecuteRequest(IInternalRequestSpec requestSpec)
+    {
+        // Fetch the order here to avoid multithread issues
+        var order = Order;
+
+        if (order == null || IsCancelled || order.IsCancelled)
+        {
+            return SetUnsuccessful(order);
+        }
+
+        requestSpec.DoNotifyDelegate = _device.DoNotify;
+        requestSpec.CancelRunningOperationDelegate = _device.CommunicationAdapter.CancelRunningOperation;
+        requestSpec.AppLogger = _appLogger;
+        requestSpec.OrderLoggerId = $"{_orderLoggerId}RSP: {requestSpec.Name} ";
+
+        var processor = _requestStepProcessorFactory.CreateInternalProcessor(requestSpec);
         requestSpec.RequestStepProcessorSetResultDelegate = processor.SetResult;
         requestSpec.RequestStepProcessorIsCancelledDelegate = processor.CheckIsCancelled;
         processor.PrepareTheChain();

@@ -5,17 +5,23 @@ namespace Bodoconsult.NetworkCommunication.Interfaces;
 /// <summary>
 /// Interface for executing request steps of a device request
 /// </summary>
-public interface IRequestStepProcessor : IDisposable
+public interface IInternalRequestStepProcessor : IRequestStepProcessor
 {
     /// <summary>
-    /// Current execution result
+    /// Currentinternal request spec
     /// </summary>
-    IOrderExecutionResultState Result { get; set; } 
+    IInternalRequestSpec InternalRequestSpec { get; }
+}
 
+/// <summary>
+/// Interface for executing request steps of a device request
+/// </summary>
+public interface IDeviceRequestStepProcessor : IRequestStepProcessor
+{
     /// <summary>
-    /// Current request spec to use for the processor
+    /// Current device request spec
     /// </summary>
-    IRequestSpec RequestSpec { get; set; }
+    IDeviceRequestSpec DeviceRequestSpec { get; }
 
     /// <summary>
     /// The number of messages to be sent
@@ -26,6 +32,27 @@ public interface IRequestStepProcessor : IDisposable
     /// The current number of messages already sent
     /// </summary>
     int CurrentNumberOfMessagesSent { get; }
+
+    /// <summary>
+    /// The current processed chain element
+    /// </summary>
+    IDeviceRequestAnswerStep CurrentChainElement { get; set; }
+}
+
+/// <summary>
+/// Interface for executing request steps of a device request
+/// </summary>
+public interface IRequestStepProcessor : IDisposable
+{
+    /// <summary>
+    /// Current execution result
+    /// </summary>
+    IOrderExecutionResultState Result { get; set; }
+
+    /// <summary>
+    /// Current request spec to use for the processor
+    /// </summary>
+    IRequestSpec RequestSpec { get; set; }
 
     /// <summary>
     /// Is the request processor cancelled
@@ -54,11 +81,6 @@ public interface IRequestStepProcessor : IDisposable
     /// Cancel the current request step processor
     /// </summary>
     void Cancel();
-
-    /// <summary>
-    /// The current processed chain element
-    /// </summary>
-    IRequestAnswerStep CurrentChainElement { get; set; }
 
     /// <summary>
     /// Set the result state

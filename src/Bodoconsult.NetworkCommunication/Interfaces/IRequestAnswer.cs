@@ -10,6 +10,11 @@ namespace Bodoconsult.NetworkCommunication.Interfaces;
 public interface IRequestAnswer : IDisposable
 {
     /// <summary>
+    /// Name of the request answer
+    /// </summary>
+    string Name { get; }
+
+    /// <summary>
     /// Has the answer a datablock?
     /// </summary>
     bool HasDatablock { get; }
@@ -34,27 +39,23 @@ public interface IRequestAnswer : IDisposable
     /// </summary>
     HandleRequestAnswerDelegate HandleRequestAnswerOnSuccessDelegate { get; }
 
-
-    /// <summary>
-    /// Delegate for handling request answer messages
-    /// </summary>
-    HandleUnexpectedRequestAnswerDelegate HandleUnexpectedRequestAnswerDelegate { get; }
+    ///// <summary>
+    ///// Delegate for handling request answer messages
+    ///// </summary>
+    //HandleUnexpectedRequestAnswerDelegate HandleUnexpectedRequestAnswerDelegate { get; }
 
     /// <summary>
     /// Check if a received message is the expected answer to the request.
-    /// If the message is the requested answer from the device the properties <see cref="WasReceived"/>
-    /// and <see cref="ReceivedMessage"/> are set to true and the received message.
+    /// If the message is the requested answer from the device the properties <see cref="IRequestAnswer.WasReceived"/>
+    /// and <see cref="IRequestAnswer.ReceivedMessage"/> are set to true and the received message.
     /// </summary>
-    /// <param name="sentMessage">The message sent from the request to the device</param>
-    /// <param name="receivedMessage">A received message from the device</param>
-    /// <param name="errors">List with error messages to fill</param>
-    /// <returns>True if the message was as expected as answer of the sent message else false</returns>
-    bool CheckReceivedMessage(IOutboundDataMessage sentMessage, IInboundDataMessage receivedMessage, IList<string> errors);
-
+    CheckReceivedMessageDelegate CheckReceivedMessageDelegate { get; }
+    
     /// <summary>
     /// Set <see cref="WasReceived"/> to true
     /// </summary>
-    void SetWasReceived();
+    /// <param name="receivedMessage">Received message</param>>
+    void SetWasReceived(IInboundDataMessage receivedMessage);
 
     /// <summary>
     /// Reset the answers for a step

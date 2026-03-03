@@ -11,8 +11,13 @@ public interface IRequestStepProcessorFactory
     /// Create a device request step processor
     /// </summary>
     /// <param name="requestSpec">Current request</param>
-    /// <param name="deviceServer">Current device server</param>
     /// <returns>A valid device request step processor instance</returns>
-    IRequestStepProcessor CreateProcessor(IRequestSpec requestSpec, IOrderManagementDevice deviceServer);
+    IDeviceRequestStepProcessor CreateDeviceProcessor(IDeviceRequestSpec requestSpec);
 
+    /// <summary>
+    /// Create an internal request step processor
+    /// </summary>
+    /// <param name="requestSpec">Current request</param>
+    /// <returns>A valid device request step processor instance</returns>
+    IInternalRequestStepProcessor CreateInternalProcessor(IInternalRequestSpec requestSpec);
 }

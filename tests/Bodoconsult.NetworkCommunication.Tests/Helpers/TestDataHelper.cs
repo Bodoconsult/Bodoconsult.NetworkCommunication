@@ -8,6 +8,8 @@ using Bodoconsult.NetworkCommunication.App.Abstractions;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessageProcessingPackages;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig;
 using Bodoconsult.NetworkCommunication.Interfaces;
+using Bodoconsult.NetworkCommunication.OrderManagement.Orders;
+using Bodoconsult.NetworkCommunication.OrderManagement.ParameterSets;
 using IAppDateService = Bodoconsult.NetworkCommunication.App.Abstractions.IAppDateService;
 
 namespace Bodoconsult.NetworkCommunication.Tests.Helpers;
@@ -90,4 +92,17 @@ public static class TestDataHelper
     /// Get a fake <see cref="IAppEventSourceFactory"/> instance
     /// </summary>
     public static IAppEventSourceFactory AppEventSourceFactory { get; }
+
+    /// <summary>
+    /// Create a SDCP order for testing
+    /// </summary>
+    /// <returns></returns>
+    public static IOrder CreateOrder()
+    {
+        var ps = new SdcpParameterSet();
+        ps.Payload = new byte[] { 0x42, 0x6c, 0x75, 0x62, 0x62 };
+
+        var order = new SdcpOrder(ps, AppDateService, GetFakeAppBenchProxy());
+        return order;
+    }
 }

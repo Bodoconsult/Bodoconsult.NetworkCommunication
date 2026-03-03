@@ -11,10 +11,19 @@ namespace Bodoconsult.NetworkCommunication.OrderManagement;
 /// <summary>
 /// Base class for request specs
 /// </summary>
-public class BaseRequestSpec : IRequestSpec
+public abstract class BaseRequestSpec : IRequestSpec
 {
     private bool _wasSuccessful;
     private readonly Lock _wasSuccessfulObject = new();
+
+    /// <summary>
+    /// Default ctor
+    /// </summary>
+    /// <param name="parameterSet">Current parameter set</param>
+    protected BaseRequestSpec(IParameterSet parameterSet)
+    {
+        ParameterSet = parameterSet;
+    }
 
     ///// <summary>
     ///// The currently processed request step of the order
@@ -47,11 +56,6 @@ public class BaseRequestSpec : IRequestSpec
     public CancelRunningOperationDelegate CancelRunningOperationDelegate { get; set; }
 
     /// <summary>
-    /// Send a data message to the device
-    /// </summary>
-    public SendDataMessageDelegate SendDataMessageDelegate { get; set; }
-
-    /// <summary>
     /// Clear text name of the request
     /// </summary>
     public string Name { get; protected set; }
@@ -59,12 +63,12 @@ public class BaseRequestSpec : IRequestSpec
     /// <summary>
     /// Current parameter set to use for the request
     /// </summary>
-    public IParameterSet ParameterSet { get; protected set; }
+    public IParameterSet ParameterSet { get; private set; }
 
     /// <summary>
-    /// Command sent to the device
+    /// Order logger ID
     /// </summary>
-    public char Command { get; protected set; }
+    public string OrderLoggerId { get; set; }
 
     /// <summary>
     /// Total calculated timeout for the answer(s) of a request in milliseconds
@@ -116,21 +120,7 @@ public class BaseRequestSpec : IRequestSpec
     /// </summary>
     public RequestAnswerStepIsStartedDelegate RequestAnswerStepIsStartedDelegate { get; set; }
 
-    /// <summary>
-    /// Order logger ID
-    /// </summary>
-    public string OrderLoggerId { get; set; }
 
-    /// <summary>
-    /// The messages to send. These messages are processed all in the same way
-    /// defined by the request
-    /// </summary>
-    public List<IOutboundDataMessage> SentMessage { get; } = new();
-
-    /// <summary>
-    /// Current sent message
-    /// </summary>
-    public IOutboundDataMessage CurrentSentMessage { get; set; }
 
     /// <summary>
     /// Represents a timeline of request answers
@@ -233,19 +223,10 @@ public class BaseRequestSpec : IRequestSpec
     }
 
     /// <summary>Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.</summary>
-    public void Dispose()
+    public virtual void Dispose()
     {
         ResultTransportObject = null;
         TransportObject = null;
         ParameterSet = null;
-
-        //foreach (var requestAnswerStep in RequestAnswerSteps)
-        //{
-        //    requestAnswerStep.Dispose();
-        //}
-
-        //RequestAnswerSteps.Clear();
-
-        SentMessage.Clear();
     }
 }

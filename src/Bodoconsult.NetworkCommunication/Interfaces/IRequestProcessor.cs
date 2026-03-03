@@ -31,13 +31,6 @@ public interface IRequestProcessor: IDisposable
     IOrderExecutionResultState ExecuteOrder();
 
     /// <summary>
-    /// Execute a single step
-    /// </summary>
-    /// <param name="processor">Current request step processor</param>
-    /// <returns>Execution result</returns>
-    IOrderExecutionResultState ExecuteRequest(IRequestSpec processor);
-
-    /// <summary>
     /// Check a received message
     /// </summary>
     /// <param name="receivedMessage">A message received from the device</param>

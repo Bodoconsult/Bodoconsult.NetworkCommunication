@@ -6,7 +6,7 @@ using Bodoconsult.NetworkCommunication.OrderManagement.Processors;
 namespace Bodoconsult.NetworkCommunication.Factories;
 
 /// <summary>
-/// Factory for <see cref="RequestStepProcessor"/> instances
+/// Factory for <see cref="DeviceRequestStepProcessor"/> instances
 /// </summary>
 public class RequestStepProcessorFactory : IRequestStepProcessorFactory
 {
@@ -14,15 +14,19 @@ public class RequestStepProcessorFactory : IRequestStepProcessorFactory
     /// Create a tower request step processor
     /// </summary>
     /// <param name="requestSpec">Current request</param>
-    /// <param name="device">Current device</param>
     /// <returns>A valid tower request step processor instance</returns>
-    public IRequestStepProcessor CreateProcessor(IRequestSpec requestSpec, IOrderManagementDevice device)
+    public IDeviceRequestStepProcessor CreateDeviceProcessor(IDeviceRequestSpec requestSpec)
     {
-        if (requestSpec.IsInternalRequest)
-        {
-            return new InternalRequestStepProcessor( requestSpec, device);
-        }
+        return new DeviceRequestStepProcessor(requestSpec);
+    }
 
-        return new RequestStepProcessor(requestSpec);
+    /// <summary>
+    /// Create a tower request step processor
+    /// </summary>
+    /// <param name="requestSpec">Current request</param>
+    /// <returns>A valid tower request step processor instance</returns>
+    public IInternalRequestStepProcessor CreateInternalProcessor(IInternalRequestSpec requestSpec)
+    {
+            return new InternalRequestStepProcessor(requestSpec);
     }
 }

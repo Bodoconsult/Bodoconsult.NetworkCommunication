@@ -10,7 +10,7 @@ namespace Bodoconsult.NetworkCommunication.OrderManagement.Processors;
 /// <summary>
 /// Current implementation of <see cref="IRequestStepProcessor"/> for internal requests
 /// </summary>
-public class InternalRequestStepProcessor : IRequestStepProcessor
+public class InternalRequestStepProcessor : IInternalRequestStepProcessor
 {
     private readonly Lock _cancelLockObject = new();
     private IRequestAnswerStep _currentChainElement;
@@ -20,13 +20,18 @@ public class InternalRequestStepProcessor : IRequestStepProcessor
     /// Default ctor
     /// </summary>
     /// <param name="requestSpec">Current request spec to execute</param>
-    /// <param name="currentDevice">Current tower server</param>
-    public InternalRequestStepProcessor(IRequestSpec requestSpec, IOrderManagementDevice currentDevice)
+    public InternalRequestStepProcessor(IInternalRequestSpec requestSpec)
     {
         RequestSpec = requestSpec;
-        AppLogger = currentDevice.DataMessagingConfig.AppLogger;
-        OrderLoggerId = $"{currentDevice.DataMessagingConfig.LoggerId}{RequestSpec.ParameterSet.CurrentOrder?.LoggerId}";
+        InternalRequestSpec = requestSpec;
+        AppLogger = requestSpec.AppLogger;
+        OrderLoggerId = $"{requestSpec.OrderLoggerId}";
     }
+
+    /// <summary>
+    /// Currentinternal request spec
+    /// </summary>
+    public IInternalRequestSpec InternalRequestSpec { get; }
 
     /// <summary>
     /// Current app logger
@@ -126,7 +131,7 @@ public class InternalRequestStepProcessor : IRequestStepProcessor
         try
         {
             // Fetch the request spec here to avoid multithread issues
-            var requestSpec = RequestSpec;
+            var requestSpec = InternalRequestSpec;
 
             if (requestSpec == null || IsCancelled)
             {
@@ -155,7 +160,7 @@ public class InternalRequestStepProcessor : IRequestStepProcessor
     /// </summary>
     /// <param name="requestSpec">Current request spec</param>
     /// <returns>Execution result</returns>
-    private IOrderExecutionResultState ExecuteInternalLoop(IRequestSpec requestSpec)
+    private IOrderExecutionResultState ExecuteInternalLoop(IInternalRequestSpec requestSpec)
     {
         var repeatCount = 0;
         IOrderExecutionResultState result;
@@ -185,7 +190,7 @@ public class InternalRequestStepProcessor : IRequestStepProcessor
     /// </summary>
     /// <param name="requestSpec"></param>
     /// <returns></returns>
-    private IOrderExecutionResultState ExecuteInternal(IRequestSpec requestSpec)
+    private IOrderExecutionResultState ExecuteInternal(IInternalRequestSpec requestSpec)
     {
         var step = requestSpec.RequestAnswerSteps[0];
 
@@ -249,4 +254,6 @@ public class InternalRequestStepProcessor : IRequestStepProcessor
         CurrentChainElement = null;
         RequestSpec = null;
     }
+
+
 }

@@ -9,28 +9,34 @@ namespace Bodoconsult.NetworkCommunication.OrderManagement.Processors;
 /// <summary>
 /// Current implementation of <see cref="IRequestStepProcessor"/> for device request steps
 /// </summary>
-public class RequestStepProcessor : IRequestStepProcessor
+public class DeviceRequestStepProcessor : IDeviceRequestStepProcessor
 {
     public const int WaitInterval = 20;
 
     private bool _isCancelled;
     private readonly Lock _isCancelledLockObject = new();
     private CancellationTokenSource _tcs;
-    private IRequestAnswerStep _currentChainElement;
+    private IDeviceRequestAnswerStep _currentChainElement;
     private readonly Lock _currentChainElementObject = new();
 
     /// <summary>
     /// Default ctor
     /// </summary>
-    public RequestStepProcessor(IRequestSpec requestSpec)
+    public DeviceRequestStepProcessor(IDeviceRequestSpec requestSpec)
     {
         RequestSpec = requestSpec;
+        DeviceRequestSpec = requestSpec;
     }
+
+    /// <summary>
+    /// Current device request spec
+    /// </summary>
+    public IDeviceRequestSpec DeviceRequestSpec { get; }
 
     /// <summary>
     /// The current processed chain element
     /// </summary>
-    public IRequestAnswerStep CurrentChainElement
+    public IDeviceRequestAnswerStep CurrentChainElement
     {
         get
         {
@@ -112,16 +118,16 @@ public class RequestStepProcessor : IRequestStepProcessor
     /// </summary>
     public void PrepareTheChain()
     {
-        for (var index = 0; index < RequestSpec.RequestAnswerSteps.Count; index++)
+        for (var index = 0; index < DeviceRequestSpec.RequestAnswerSteps.Count; index++)
         {
-            var step = RequestSpec.RequestAnswerSteps[index];
+            var step = (IDeviceRequestAnswerStep)DeviceRequestSpec.RequestAnswerSteps[index];
 
             if (index <= 0)
             {
                 continue;
             }
 
-            var elementBefore = RequestSpec.RequestAnswerSteps[index - 1];
+            var elementBefore = (IDeviceRequestAnswerStep)DeviceRequestSpec.RequestAnswerSteps[index - 1];
             elementBefore.NextChainElement = step;
         }
     }
@@ -136,7 +142,7 @@ public class RequestStepProcessor : IRequestStepProcessor
         {
             // Fetch the request spec here to avoid multithread issues
 
-            var requestSpec = RequestSpec;
+            var requestSpec = DeviceRequestSpec;
 
 
             if (requestSpec == null || IsCancelled)
@@ -242,7 +248,7 @@ public class RequestStepProcessor : IRequestStepProcessor
     /// <returns>Execution result</returns>
     /// <remarks>The execution of a request step consists of two major steps. Step 1 is sending a message to the device. Step 2 is waiting for the answer of the device. The device is normally responsive.
     /// A timelag between step1 and step2 may lead to failing device orders due to "lost" device messages. Therefore we start step 2 before step 1 is fired.</remarks>
-    public IOrderExecutionResultState ExecuteRequest(IOutboundDataMessage message, IRequestSpec requestSpec)
+    public IOrderExecutionResultState ExecuteRequest(IOutboundDataMessage message, IDeviceRequestSpec requestSpec)
     {
         // Set the next request answer step
         requestSpec.CurrentSentMessage = message;
@@ -278,7 +284,7 @@ public class RequestStepProcessor : IRequestStepProcessor
         // ******************
     }
 
-    private static IOrderExecutionResultState RunStep1(IOutboundDataMessage message, IRequestSpec requestSpec,
+    private static IOrderExecutionResultState RunStep1(IOutboundDataMessage message, IDeviceRequestSpec requestSpec,
         Task<IOrderExecutionResultState> task, CancellationTokenSource tcs)
     {
         string s;
@@ -325,7 +331,7 @@ public class RequestStepProcessor : IRequestStepProcessor
         return result2;
     }
 
-    private static Task<IOrderExecutionResultState> RunStep2Task(RequestStepProcessor processor, CancellationTokenSource tcs)
+    private static Task<IOrderExecutionResultState> RunStep2Task(DeviceRequestStepProcessor processor, CancellationTokenSource tcs)
     {
         return Task.Run(() =>
         {
@@ -445,7 +451,7 @@ public class RequestStepProcessor : IRequestStepProcessor
     {
         var requestSpec = RequestSpec;
 
-        CurrentChainElement = RequestSpec.RequestAnswerSteps[0];
+        CurrentChainElement = (IDeviceRequestAnswerStep)RequestSpec.RequestAnswerSteps[0];
 
         Debug.Print($"RSP {requestSpec.GetType().Name}: chain started");
         while (true)

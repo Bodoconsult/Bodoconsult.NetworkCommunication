@@ -6,15 +6,45 @@ using Bodoconsult.NetworkCommunication.Delegates;
 namespace Bodoconsult.NetworkCommunication.Interfaces;
 
 /// <summary>
+/// Interface for internal request specifications
+/// </summary>
+public interface IInternalRequestSpec: IRequestSpec
+{
+}
+
+/// <summary>
+/// Interface for device request specifications
+/// </summary>
+public interface IDeviceRequestSpec: IRequestSpec
+{
+    /// <summary>
+    /// Current sent message
+    /// </summary>
+    IOutboundDataMessage CurrentSentMessage { get; set; }
+
+    /// <summary>
+    /// The messages to send. These messages are processed all in the same way
+    /// defined by the request
+    /// </summary>
+    List<IOutboundDataMessage> SentMessage { get; }
+
+    /// <summary>
+    /// Send a data message to the device
+    /// </summary>
+    SendDataMessageDelegate SendDataMessageDelegate { get; set; }
+
+    /// <summary>
+    /// The next step in the chain
+    /// </summary>
+    IRequestAnswerStep NextChainElement { get; set; }
+
+}
+
+/// <summary>
 /// Interface for device request specifications
 /// </summary>
 public interface IRequestSpec: IDisposable
 {
-    ///// <summary>
-    ///// The currently processed request step of the order
-    ///// </summary>
-    //IRequestStepProcessor CurrentRequestStepProcessor { get; set; }
-
     /// <summary>
     /// Delegate to set the state for a <see cref="IRequestStepProcessor"/> instance
     /// </summary>
@@ -41,11 +71,6 @@ public interface IRequestSpec: IDisposable
     CancelRunningOperationDelegate CancelRunningOperationDelegate { get; set; }
 
     /// <summary>
-    /// Send a data message to the device
-    /// </summary>
-    SendDataMessageDelegate SendDataMessageDelegate { get; set; }
-
-    /// <summary>
     /// Clear text name of the request
     /// </summary>
     string Name { get; }
@@ -56,12 +81,7 @@ public interface IRequestSpec: IDisposable
     IParameterSet ParameterSet { get; }
 
     /// <summary>
-    /// Command sent to the device
-    /// </summary>
-    char Command { get; }
-
-    /// <summary>
-    /// Total calculated timeout for the answer(s) of an request in milliseconds
+    /// Total calculated timeout for the answer(s) of a request in milliseconds
     /// </summary>
     int Timeout { get; }
 
@@ -70,11 +90,6 @@ public interface IRequestSpec: IDisposable
     /// </summary>
     int NumberOfRepeatsInCaseOfNoSuccess { get; }
 
-    /// <summary>
-    /// Is the request internal and does not send a message to the device
-    /// </summary>
-    bool IsInternalRequest { get; }
-        
     /// <summary>
     /// An object to transferred from a predecessing request spec to the current one
     /// </summary>
@@ -94,17 +109,6 @@ public interface IRequestSpec: IDisposable
     /// Do not run this request spec if there is the same order type in the queue already. Use for ExpressUnload currently
     /// </summary>
     bool DoNotRunRequestSpecIfThereIsSameOrderTypeInQueue { get; }
-
-    /// <summary>
-    /// The messages to send. These messages are processed all in the same way
-    /// defined by the request
-    /// </summary>
-    List<IOutboundDataMessage> SentMessage { get; }
-
-    /// <summary>
-    /// Current sent message
-    /// </summary>
-    IOutboundDataMessage CurrentSentMessage { get; set; }
 
     /// <summary>
     /// The expected handshake if the message was sent
