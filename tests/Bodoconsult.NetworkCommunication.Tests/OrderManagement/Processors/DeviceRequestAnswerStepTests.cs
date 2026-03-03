@@ -37,7 +37,7 @@ internal class DeviceRequestAnswerStepTests
         var ps = new EmptyParameterSet();
         ps.LoadOrder(order);
 
-        var dr = new DeviceRequestSpec(ps);
+        var dr = new DeviceRequestSpec("Test", ps);
 
         // Act  
         var irs = new DeviceRequestAnswerStep(dr);
@@ -55,7 +55,7 @@ internal class DeviceRequestAnswerStepTests
 
         var ps = new EmptyParameterSet();
         ps.LoadOrder(order);
-        var dr = new DeviceRequestSpec(ps);
+        var dr = new DeviceRequestSpec("Test", ps);
 
         var answer = new RequestAnswer(false, null, "TestAnswer");
         answer.HandleRequestAnswerOnSuccessDelegate = HandleRequestAnswerOnSuccessDelegate;
@@ -82,7 +82,7 @@ internal class DeviceRequestAnswerStepTests
 
         var ps = new EmptyParameterSet();
         ps.LoadOrder(order);
-        var dr = new DeviceRequestSpec(ps);
+        var dr = new DeviceRequestSpec("Test", ps);
 
         var irs = new DeviceRequestAnswerStep(dr);
 
@@ -102,7 +102,7 @@ internal class DeviceRequestAnswerStepTests
 
         var ps = new EmptyParameterSet();
         ps.LoadOrder(order);
-        var dr = new DeviceRequestSpec(ps);
+        var dr = new DeviceRequestSpec("Test", ps);
 
         dr.RequestStepProcessorSetResultDelegate = RequestStepProcessorSetResultDelegate;
 
@@ -137,7 +137,7 @@ internal class DeviceRequestAnswerStepTests
 
         var ps = new EmptyParameterSet();
         ps.LoadOrder(order);
-        var dr = new DeviceRequestSpec(ps);
+        var dr = new DeviceRequestSpec("Test", ps);
 
         dr.RequestStepProcessorSetResultDelegate = RequestStepProcessorSetResultDelegate;
 

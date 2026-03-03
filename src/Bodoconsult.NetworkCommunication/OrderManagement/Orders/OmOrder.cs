@@ -5,38 +5,30 @@ using Bodoconsult.App.Interfaces;
 using Bodoconsult.NetworkCommunication.Delegates;
 using Bodoconsult.NetworkCommunication.EnumAndStates;
 using Bodoconsult.NetworkCommunication.Interfaces;
-using IAppDateService = Bodoconsult.NetworkCommunication.App.Abstractions.IAppDateService;
 
 namespace Bodoconsult.NetworkCommunication.OrderManagement.Orders;
 
 /// <summary>
-/// Base class for device orders
+/// Order management order
 /// </summary>
-public abstract class BaseOrder : IOrder
+public class OmOrder : IOrder
 {
     private string _name;
-    private readonly IAppDateService _dateTimeService;
     private string _loggerId;
     private bool _isCancelled;
     private readonly Lock _isCancelledObject = new();
-    private readonly IAppBenchProxy _benchLogger;
-    
+
     /// <summary>
     /// Base class default ctor
     /// </summary>
-    protected BaseOrder(IParameterSet parameterSet, IAppDateService dateTimeService, IAppBenchProxy benchLogger)
+    public OmOrder(long id, string name, IParameterSet parameterSet)
     {
         ParameterSet = parameterSet;
-        _dateTimeService = dateTimeService;
-        _benchLogger = benchLogger;
-        Id = dateTimeService.GetCurrentTicks();
-
-        Name = string.Intern(GetType().Name);
+        Id = id;
+        Name = name;
         TypeName = Name;
         ParameterSet.LoadOrder(this);
     }
-
-        
 
     #region New TOM
 
@@ -320,7 +312,7 @@ public abstract class BaseOrder : IOrder
     }
 
     /// <summary>
-    /// Benchmark object (see output in StSys_Benchmark.csv)
+    /// Benchmark object (see output in Benchmark.csv)
     /// Make sure to create it, addStep, and dispose it 
     /// </summary>
     public Bench Benchmark { get; set; }

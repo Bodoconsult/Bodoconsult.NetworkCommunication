@@ -11,7 +11,6 @@ namespace Bodoconsult.NetworkCommunication.Tests.OrderManagement.Processors;
 [TestFixture]
 internal class InternalRequestAnswerStepTests
 {
-
     private bool _isHandleResultFired;
 
     [SetUp]
@@ -25,7 +24,7 @@ internal class InternalRequestAnswerStepTests
     {
         // Arrange 
         var ps = new EmptyParameterSet();
-        var ir = new InternalRequestSpec(ps);
+        var ir = new InternalRequestSpec("Test", ps);
 
         // Act  
         var irs = new InternalRequestAnswerStep(ir);
@@ -40,7 +39,7 @@ internal class InternalRequestAnswerStepTests
     {
         // Arrange 
         var ps = new EmptyParameterSet();
-        var ir = new InternalRequestSpec(ps);
+        var ir = new InternalRequestSpec("Test", ps);
 
         var answer = new RequestAnswer(false, null, "TestAnswer");
         answer.HandleRequestAnswerOnSuccessDelegate = HandleRequestAnswerOnSuccessDelegate;
@@ -62,7 +61,7 @@ internal class InternalRequestAnswerStepTests
     {
         // Arrange 
         var ps = new EmptyParameterSet();
-        var ir = new InternalRequestSpec(ps);
+        var ir = new InternalRequestSpec("Test", ps);
 
         var irs = new InternalRequestAnswerStep(ir);
 

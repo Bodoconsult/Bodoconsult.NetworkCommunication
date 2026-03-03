@@ -19,10 +19,12 @@ public abstract class BaseRequestSpec : IRequestSpec
     /// <summary>
     /// Default ctor
     /// </summary>
+    /// <param name="name">Request name</param>
     /// <param name="parameterSet">Current parameter set</param>
-    protected BaseRequestSpec(IParameterSet parameterSet)
+    protected BaseRequestSpec(string name, IParameterSet parameterSet)
     {
         ParameterSet = parameterSet;
+        Name = name;
     }
 
     ///// <summary>
@@ -58,7 +60,7 @@ public abstract class BaseRequestSpec : IRequestSpec
     /// <summary>
     /// Clear text name of the request
     /// </summary>
-    public string Name { get; protected set; }
+    public string Name { get; }
 
     /// <summary>
     /// Current parameter set to use for the request
@@ -119,8 +121,6 @@ public abstract class BaseRequestSpec : IRequestSpec
     /// A delegate for testing order executing. Not intended for production use
     /// </summary>
     public RequestAnswerStepIsStartedDelegate RequestAnswerStepIsStartedDelegate { get; set; }
-
-
 
     /// <summary>
     /// Represents a timeline of request answers

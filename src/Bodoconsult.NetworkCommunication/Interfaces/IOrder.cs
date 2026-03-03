@@ -208,17 +208,17 @@ public interface IOrder : IDisposable
     /// <summary>
     /// Trace code to log on success
     /// </summary>
-    int TraceCodeSuccess { get; }
+    int TraceCodeSuccess { get; set; }
 
     /// <summary>
     /// Trace code to log on error
     /// </summary>
-    int TraceCodeError { get; }
+    int TraceCodeError { get; set; }
 
     /// <summary>
     /// Trace message to log
     /// </summary>
-    string TraceMessage { get; }
+    string TraceMessage { get; set; }
 
     /// <summary>
     /// Trace entry to create for the order
@@ -231,7 +231,8 @@ public interface IOrder : IDisposable
     /// </summary>
     /// <param name="lastStepExecutionResult">Execution result</param>
     /// <param name="communicationAdapterError">Error on the communication adapter</param>
-    void CreateTraceEntry(IOrderExecutionResultState lastStepExecutionResult, in int communicationAdapterError);
+    /// <param name="timeStamp">App date service</param>
+    void CreateTraceEntry(IOrderExecutionResultState lastStepExecutionResult, in int communicationAdapterError, DateTime timeStamp);
         
     /// <summary>
     /// Benchmark object (see output in StSys_Benchmark.csv)

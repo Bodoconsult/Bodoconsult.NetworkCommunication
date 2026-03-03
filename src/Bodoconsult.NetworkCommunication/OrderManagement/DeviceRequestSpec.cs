@@ -13,8 +13,9 @@ public class DeviceRequestSpec : BaseRequestSpec, IDeviceRequestSpec
     /// <summary>
     /// Default ctor
     /// </summary>
+    /// <param name="name">Request name</param>
     /// <param name="parameterSet">Current parameter set</param>
-    public DeviceRequestSpec(IParameterSet parameterSet) : base(parameterSet)
+    public DeviceRequestSpec(string name, IParameterSet parameterSet) : base(name, parameterSet)
     { }
 
     /// <summary>

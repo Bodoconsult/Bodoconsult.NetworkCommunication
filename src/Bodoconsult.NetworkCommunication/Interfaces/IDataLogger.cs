@@ -45,5 +45,4 @@ public interface IDataLogger
     /// </summary>
     /// <param name="data">Byte data to log</param>
     void Add(ReadOnlyMemory<byte> data);
-
 }

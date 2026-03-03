@@ -12,8 +12,8 @@ public class InternalRequestSpec : BaseRequestSpec, IInternalRequestSpec
     /// <summary>
     /// Default ctor
     /// </summary>
+    /// <param name="name">Request name</param>
     /// <param name="parameterSet">Current parameter set</param>
-    public InternalRequestSpec(IParameterSet parameterSet) : base(parameterSet)
-    {
-    }
+    public InternalRequestSpec(string name, IParameterSet parameterSet) : base(name, parameterSet)
+    { }
 }
