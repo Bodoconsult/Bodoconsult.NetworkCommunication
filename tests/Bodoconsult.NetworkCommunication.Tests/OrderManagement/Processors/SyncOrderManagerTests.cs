@@ -28,7 +28,7 @@ public class SyncOrderManagerTests
         var ps = new SdcpParameterSet();
         ps.Payload = new byte[] { 0x42, 0x6c, 0x75, 0x62, 0x62 };
 
-        var order = new SdcpOrder(ps, TestDataHelper.AppDateService, TestDataHelper.GetFakeAppBenchProxy());
+        var order = TestDataHelper.CreateSdcpOrder(ps);
         order.IsHighPriorityOrder = true;
 
         // Act 
@@ -54,7 +54,7 @@ public class SyncOrderManagerTests
         var ps = new SdcpParameterSet();
         ps.Payload = new byte[] { 0x42, 0x6c, 0x75, 0x62, 0x62 };
 
-        var order = new SdcpOrder(ps, TestDataHelper.AppDateService, TestDataHelper.GetFakeAppBenchProxy());
+        var order = TestDataHelper.CreateSdcpOrder(ps);
         order.IsHighPriorityOrder = true;
 
         var result = op.AddSyncExecutionOrder(order.Id, 1000);

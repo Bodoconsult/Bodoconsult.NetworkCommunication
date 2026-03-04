@@ -13,7 +13,7 @@ internal class InternalRequestSpecTests
     public void Ctor_ValidSetup_PropsSetCorectly()
     {
         // Arrange 
-        var order = TestDataHelper.CreateOrder();
+        var order = TestDataHelper.CreateSdcpOrder();
 
         var ps = new EmptyParameterSet();
         ps.LoadOrder(order);

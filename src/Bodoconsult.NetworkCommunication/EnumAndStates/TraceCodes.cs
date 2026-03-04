@@ -32,4 +32,14 @@ public static class TraceCodes
     public static int IdsMsgTestOrderOk => 5000;
     public static int IdsMsgTestOrderFails => 5001;
 
+    // Range 6000: Dummy order
+
+    public static int IdsMsgDummyOrderOk => 6000;
+    public static int IdsMsgDummyOrderFails => 6001;
+
+    // Range 7000: Empty order
+
+    public static int IdsMsgEmptyOrderOk => 7000;
+    public static int IdsMsgEmptyOrderFails => 7001;
+
 }

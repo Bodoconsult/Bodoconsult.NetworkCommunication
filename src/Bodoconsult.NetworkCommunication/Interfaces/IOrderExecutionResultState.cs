@@ -5,7 +5,7 @@ namespace Bodoconsult.NetworkCommunication.Interfaces;
 /// <summary>
 /// Interface order execution result states
 /// </summary>
-public interface IOrderExecutionResultState
+public interface IOrderExecutionResultState: IEquatable<IOrderExecutionResultState>
 {
     /// <summary>
     /// The ID of the state

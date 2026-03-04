@@ -34,31 +34,29 @@ public abstract class BaseOrderBuilder : IOrderBuilder
     public string OrderTypeName { get; }
 
     /// <summary>
-    /// ParameterSet to use for the order
-    /// </summary>
-    public IParameterSet ParameterSet { get; private set; }
-
-    /// <summary>
     /// Create the (raw) order
     /// </summary>
     /// <param name="id">ID of the order</param>
     /// <param name="parameterSet">ParameterSet to use for the order</param>
     public IOrder CreateOrder(long id, IParameterSet parameterSet)
     {
-        var type = parameterSet.GetType();
-        if (type != ParameterSetType)
+        if (ParameterSetType != null)
         {
-            throw new ArgumentException($"ParameterSet should be {ParameterSetType.Name} but was {type.Name}");
+            var type = parameterSet.GetType();
+            if (type != ParameterSetType)
+            {
+                throw new ArgumentException($"ParameterSet should be {ParameterSetType.Name} but was {type.Name}");
+            }
         }
 
-        ParameterSet = parameterSet;
-        var order = new OmOrder(id, OrderTypeName, ParameterSet);
+        var order = new OmOrder(id, OrderTypeName, parameterSet);
         ConfigureOrder(order);
         return order;
     }
 
+
     /// <summary>
-    /// Configure the order
+    /// Configure the order. Implementation of this method may require to add dependencies to your business logic layer
     /// </summary>
     public virtual void ConfigureOrder(IOrder order)
     {
@@ -73,7 +71,7 @@ public abstract class BaseOrderBuilder : IOrderBuilder
     /// <returns><see cref="DeviceRequestSpec"/> instance </returns>
     public IDeviceRequestSpec CreateDeviceRequestSpec(IOrder order, string name)
     {
-        var rs = new DeviceRequestSpec(name, ParameterSet);
+        var rs = new DeviceRequestSpec(name, order.ParameterSet);
         order.RequestSpecs.Add(rs);
         return rs;
     }
@@ -86,7 +84,7 @@ public abstract class BaseOrderBuilder : IOrderBuilder
     /// <returns><see cref="InternalRequestSpec"/> instance </returns>
     public IInternalRequestSpec CreateInternalRequestSpec(IOrder order, string name)
     {
-        var rs = new InternalRequestSpec(name, ParameterSet);
+        var rs = new InternalRequestSpec(name, order.ParameterSet);
         order.RequestSpecs.Add(rs);
         return rs;
     }

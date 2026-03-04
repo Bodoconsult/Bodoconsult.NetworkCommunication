@@ -233,7 +233,12 @@ public interface IOrder : IDisposable
     /// <param name="communicationAdapterError">Error on the communication adapter</param>
     /// <param name="timeStamp">App date service</param>
     void CreateTraceEntry(IOrderExecutionResultState lastStepExecutionResult, in int communicationAdapterError, DateTime timeStamp);
-        
+
+    /// <summary>
+    /// This order will be benchmarked? True or false
+    /// </summary>
+    bool IsBenchable { get; set; }
+
     /// <summary>
     /// Benchmark object (see output in StSys_Benchmark.csv)
     /// Make sure to create it, addStep, and dispose it 

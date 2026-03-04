@@ -101,32 +101,6 @@ internal class TcpOrderManagementCommunicationAdapterTests : TcpOrderManagementC
     }
 
     [Test]
-    public void SendMessage_ValidOrder_MessageSent()
-    {
-        // Arrange 
-        var ps = new SdcpParameterSet();
-        ps.Payload = new byte[] { 0x42, 0x6c, 0x75, 0x62, 0x62 };
-
-        var order = new SdcpOrder(ps, TestDataHelper.AppDateService, TestDataHelper.GetFakeAppBenchProxy());
-
-        DataMessagingConfig.RaiseDataMessageSentDelegate = OnRaiseDataMessageSentEvent;
-
-        OrderManagementCommunicationAdapter.ComDevInit();
-
-        Assert.That(OrderManagementCommunicationAdapter.IsConnected);
-
-        // Act
-        Send(order);
-
-        Wait.Until(() => IsDataMessageSentFired);
-
-        // Assert
-        Assert.That(IsDataMessageSentFired, Is.True);
-
-        OrderManagementCommunicationAdapter.ComDevClose();
-    }
-
-    [Test]
     public void ComDevInit_ValidSetup_InitSuccessful()
     {
         // Arrange 

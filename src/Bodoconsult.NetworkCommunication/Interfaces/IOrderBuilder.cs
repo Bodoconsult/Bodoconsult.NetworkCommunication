@@ -21,11 +21,6 @@ public interface IOrderBuilder
     string OrderTypeName { get; }
 
     /// <summary>
-    /// ParameterSet to use for the order
-    /// </summary>
-    IParameterSet ParameterSet { get; }
-
-    /// <summary>
     /// Create the (raw) order
     /// </summary>
     /// <param name="id">ID of the order</param>
@@ -33,7 +28,7 @@ public interface IOrderBuilder
     IOrder CreateOrder(long id, IParameterSet parameterSet);
 
     /// <summary>
-    /// Configure the order
+    /// Configure the order. Implementation of this method may require to add dependencies to your business logic layer
     /// </summary>
     void ConfigureOrder(IOrder order);
 

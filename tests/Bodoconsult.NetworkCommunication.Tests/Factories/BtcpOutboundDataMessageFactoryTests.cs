@@ -18,12 +18,10 @@ internal class BtcpOutboundDataMessageFactoryTests
         var ps = new BtcpParameterSet();
         ps.BusinessTransactionId = 57;
 
-        var order = new BtcpOrder(ps, TestDataHelper.AppDateService, TestDataHelper.GetFakeAppBenchProxy());
-
         var factory = new BtcpOutboundDataMessageFactory();
 
         // Act  
-        var message = (BtcpOutboundDataMessage)factory.CreateInstance(order);
+        var message = (BtcpOutboundDataMessage)factory.CreateInstance(ps);
 
         // Assert
         Assert.That(message, Is.Not.Null);

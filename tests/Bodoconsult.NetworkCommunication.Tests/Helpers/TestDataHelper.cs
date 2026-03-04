@@ -5,11 +5,16 @@ using Bodoconsult.App.Factories;
 using Bodoconsult.App.Interfaces;
 using Bodoconsult.App.Logging;
 using Bodoconsult.NetworkCommunication.App.Abstractions;
+using Bodoconsult.NetworkCommunication.ClientNotifications;
+using Bodoconsult.NetworkCommunication.Communication;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessageProcessingPackages;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig;
+using Bodoconsult.NetworkCommunication.Factories;
 using Bodoconsult.NetworkCommunication.Interfaces;
+using Bodoconsult.NetworkCommunication.OrderManagement.OrderBuilders;
 using Bodoconsult.NetworkCommunication.OrderManagement.Orders;
 using Bodoconsult.NetworkCommunication.OrderManagement.ParameterSets;
+using Bodoconsult.NetworkCommunication.OrderManagement.Processors;
 using IAppDateService = Bodoconsult.NetworkCommunication.App.Abstractions.IAppDateService;
 
 namespace Bodoconsult.NetworkCommunication.Tests.Helpers;
@@ -23,6 +28,7 @@ public static class TestDataHelper
         AppEventSourceFactory = new FakeAppEventSourceFactory();
         // ToDo: change to fake later
         AppDateService = new AppDateService();
+        FakeOrderManagementCommunicationAdapter = new FakeOrderManagementCommunicationAdapter();
     }
 
     public static LogDataFactory LogDataFactory { get; }
@@ -79,6 +85,8 @@ public static class TestDataHelper
         var config = new DefaultDataMessagingConfig();
 
         config.DataMessageProcessingPackage = new BtcpDataMessageProcessingPackage(config);
+        config.AppLogger = _logger;
+        config.MonitorLogger = _logger;
 
         return config;
     }
@@ -94,15 +102,107 @@ public static class TestDataHelper
     public static IAppEventSourceFactory AppEventSourceFactory { get; }
 
     /// <summary>
+    /// Get a <see cref="FakeOrderManagementCommunicationAdapter"/> instance
+    /// </summary>
+    public static FakeOrderManagementCommunicationAdapter FakeOrderManagementCommunicationAdapter { get; }
+
+    /// <summary>
     /// Create a SDCP order for testing
     /// </summary>
     /// <returns></returns>
-    public static IOrder CreateOrder()
+    public static IOrder CreateSdcpOrder()
     {
         var ps = new SdcpParameterSet();
         ps.Payload = new byte[] { 0x42, 0x6c, 0x75, 0x62, 0x62 };
 
-        var order = new SdcpOrder(ps, AppDateService, GetFakeAppBenchProxy());
+        var builder = new SdcpOrderBuilder();
+
+        var order = builder.CreateOrder(1, ps);
         return order;
+    }
+
+    /// <summary>
+    /// Create a SDCP order for testing
+    /// </summary>
+    /// <returns></returns>
+    public static IOrder CreateSdcpOrder(SdcpParameterSet ps)
+    {
+        var builder = new SdcpOrderBuilder();
+
+        var order = builder.CreateOrder(1, ps);
+        return order;
+    }
+
+    /// <summary>
+    /// Create a test order for testing
+    /// </summary>
+    /// <returns></returns>
+    public static IOrder CreateTestOrder()
+    {
+        var ps = new SdcpParameterSet();
+        ps.Payload = new byte[] { 0x42, 0x6c, 0x75, 0x62, 0x62 };
+
+        var builder = new TestOrderBuilder();
+
+        var order = builder.CreateOrder(1, ps);
+        return order;
+    }
+
+    /// <summary>
+    /// Create a test order for testing
+    /// </summary>
+    /// <returns></returns>
+    public static IOrder CreateTestOrder(IParameterSet ps)
+    {
+        var builder = new TestOrderBuilder();
+
+        var order = builder.CreateOrder(1, ps);
+        return order;
+    }
+
+    /// <summary>
+    /// Create a EDCP client order for testing
+    /// </summary>
+    /// <returns></returns>
+    public static IOrder CreateEdcpClientOrder(IParameterSet ps)
+    {
+        var builder = new EdcpClientOrderBuilder();
+
+        var order = builder.CreateOrder(1, ps);
+        return order;
+    }
+
+    /// <summary>
+    /// Create a EDCP server order for testing
+    /// </summary>
+    /// <returns></returns>
+    public static IOrder CreateEdcpServerOrder(IParameterSet ps)
+    {
+        var builder = new EdcpServerOrderBuilder();
+
+        var order = builder.CreateOrder(1, ps);
+        return order;
+    }
+
+    /// <summary>
+    /// Create a BTCP order for testing
+    /// </summary>
+    /// <returns></returns>
+    public static IOrder CreateBtcpOrder(IParameterSet ps)
+    {
+        var builder = new BtcpOrderBuilder();
+
+        var order = builder.CreateOrder(1, ps);
+        return order;
+    }
+
+    /// <summary>
+    /// Create a simple order management device
+    /// </summary>
+    /// <returns></returns>
+    public static FakeDevice CreateDevice()
+    {
+        var device = new FakeDevice(GetDataMessagingConfig(), new FakeOrderManagementClientNotificationManager());
+        return device;
     }
 }

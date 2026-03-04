@@ -5,7 +5,7 @@ namespace Bodoconsult.NetworkCommunication.StateManagement;
 /// <summary>
 /// Business state interface
 /// </summary>
-public interface IBusinessState
+public interface IBusinessState : IEquatable<IBusinessState>
 {
     /// <summary>
     /// The ID of the business state

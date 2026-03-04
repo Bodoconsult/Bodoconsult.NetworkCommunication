@@ -28,6 +28,20 @@ public class OrderExecutionResultState: IOrderExecutionResultState
     /// </summary>
     public string Name { get; set; }
 
+    /// <summary>Indicates whether the current object is equal to another object of the same type.</summary>
+    /// <param name="other">An object to compare with this object.</param>
+    /// <returns>
+    /// <see langword="true" /> if the current object is equal to the <paramref name="other" /> parameter; otherwise, <see langword="false" />.</returns>
+    public bool Equals(IOrderExecutionResultState other)
+    {
+        if (other == null)
+        {
+            return false;
+        }
+
+        return Id == other.Id;
+    }
+
     /// <summary>Returns a string that represents the current object.</summary>
     /// <returns>A string that represents the current object.</returns>
     public override string ToString() => $"{Id} {Name}";

@@ -68,13 +68,6 @@ public interface IOrderManagementCommunicationAdapter: IDisposable
     MessageSendingResult SendDataMessage(IOutboundDataMessage command);
 
     /// <summary>
-    /// Send an order to the device
-    /// </summary>
-    /// <param name="order">Order to send as command to device</param>
-    /// <returns>Reply of the device</returns>
-    MessageSendingResult SendDataMessage(IOrder order);
-
-    /// <summary>
     /// Cancel the currently running operation on the device
     /// </summary>
     MessageSendingResult CancelRunningOperation();

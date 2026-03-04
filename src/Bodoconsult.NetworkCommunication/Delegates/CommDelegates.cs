@@ -196,4 +196,11 @@ public delegate void ResetOutboundDataMessageFactoryDelegate();
 /// <returns>True if the message was as expected as answer of the sent message else false</returns>
 public delegate bool CheckReceivedMessageDelegate(IRequestAnswer requestAnswer, IOutboundDataMessage sentMessage, IInboundDataMessage receivedMessage, IList<string> errors);
 
+/// <summary>
+/// Delegate for creating data messages to sent to the device
+/// </summary>
+/// <param name="parameterSet">Current parameter set</param>
+/// <returns>List with orders to send to the device</returns>
+public delegate List<IOutboundDataMessage> CreateMessagesToSentDelegate(IParameterSet parameterSet);
+
 #endregion

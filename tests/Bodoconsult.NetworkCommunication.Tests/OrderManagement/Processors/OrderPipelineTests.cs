@@ -73,7 +73,7 @@ public class OrderPipelineTests
         var ps = new SdcpParameterSet();
         ps.Payload = new byte[] { 0x42, 0x6c, 0x75, 0x62, 0x62 };
 
-        var order = new SdcpOrder(ps, TestDataHelper.AppDateService, TestDataHelper.GetFakeAppBenchProxy());
+        var order = TestDataHelper.CreateSdcpOrder(ps);
 
         // Act 
         op.AddOrder(order);
@@ -101,7 +101,7 @@ public class OrderPipelineTests
         var ps = new SdcpParameterSet();
         ps.Payload = new byte[] { 0x42, 0x6c, 0x75, 0x62, 0x62 };
 
-        var order = new SdcpOrder(ps, TestDataHelper.AppDateService, TestDataHelper.GetFakeAppBenchProxy());
+        var order = TestDataHelper.CreateSdcpOrder(ps);
         order.IsHighPriorityOrder = true;
 
         // Act and assert
@@ -120,7 +120,7 @@ public class OrderPipelineTests
         var ps = new SdcpParameterSet();
         ps.Payload = new byte[] { 0x42, 0x6c, 0x75, 0x62, 0x62 };
 
-        var order = new SdcpOrder(ps, TestDataHelper.AppDateService, TestDataHelper.GetFakeAppBenchProxy());
+        var order = TestDataHelper.CreateSdcpOrder(ps);
         order.IsHighPriorityOrder = false;
         order.IsCancelled = true;
 
@@ -150,7 +150,7 @@ public class OrderPipelineTests
         var ps = new SdcpParameterSet();
         ps.Payload = new byte[] { 0x42, 0x6c, 0x75, 0x62, 0x62 };
 
-        var order = new SdcpOrder(ps, TestDataHelper.AppDateService, TestDataHelper.GetFakeAppBenchProxy());
+        var order = TestDataHelper.CreateSdcpOrder(ps);
         order.IsHighPriorityOrder = true;
 
         // Act 
@@ -179,7 +179,7 @@ public class OrderPipelineTests
         var ps = new SdcpParameterSet();
         ps.Payload = new byte[] { 0x42, 0x6c, 0x75, 0x62, 0x62 };
 
-        var order = new SdcpOrder(ps, TestDataHelper.AppDateService, TestDataHelper.GetFakeAppBenchProxy());
+        var order = TestDataHelper.CreateSdcpOrder(ps);
         order.IsHighPriorityOrder = false;
 
         // Act and assert
@@ -199,7 +199,7 @@ public class OrderPipelineTests
         var ps = new SdcpParameterSet();
         ps.Payload = new byte[] { 0x42, 0x6c, 0x75, 0x62, 0x62 };
 
-        var order = new SdcpOrder(ps, TestDataHelper.AppDateService, TestDataHelper.GetFakeAppBenchProxy());
+        var order = TestDataHelper.CreateSdcpOrder(ps);
         order.IsHighPriorityOrder = true;
         order.IsCancelled = true;
 
@@ -229,7 +229,7 @@ public class OrderPipelineTests
         var ps = new SdcpParameterSet();
         ps.Payload = new byte[] { 0x42, 0x6c, 0x75, 0x62, 0x62 };
 
-        var order = new SdcpOrder(ps, TestDataHelper.AppDateService, TestDataHelper.GetFakeAppBenchProxy());
+        var order = TestDataHelper.CreateSdcpOrder(ps);
         order.IsHighPriorityOrder = false;
 
         op.AddOrder(order);
@@ -259,7 +259,7 @@ public class OrderPipelineTests
         var ps = new SdcpParameterSet();
         ps.Payload = new byte[] { 0x42, 0x6c, 0x75, 0x62, 0x62 };
 
-        var order = new SdcpOrder(ps, TestDataHelper.AppDateService, TestDataHelper.GetFakeAppBenchProxy());
+        var order = TestDataHelper.CreateSdcpOrder(ps);
         order.IsHighPriorityOrder = true;
 
         op.AddPriorityOrder(order);
@@ -288,7 +288,7 @@ public class OrderPipelineTests
         var ps = new SdcpParameterSet();
         ps.Payload = new byte[] { 0x42, 0x6c, 0x75, 0x62, 0x62 };
 
-        var order = new SdcpOrder(ps, TestDataHelper.AppDateService, TestDataHelper.GetFakeAppBenchProxy());
+        var order = TestDataHelper.CreateSdcpOrder(ps);
         order.IsHighPriorityOrder = false;
 
         op.AddOrder(order);
@@ -317,7 +317,7 @@ public class OrderPipelineTests
         var ps = new SdcpParameterSet();
         ps.Payload = new byte[] { 0x42, 0x6c, 0x75, 0x62, 0x62 };
 
-        var order = new SdcpOrder(ps, TestDataHelper.AppDateService, TestDataHelper.GetFakeAppBenchProxy());
+        var order = TestDataHelper.CreateSdcpOrder(ps);
         order.IsHighPriorityOrder = true;
 
         op.AddPriorityOrder(order);
@@ -346,7 +346,7 @@ public class OrderPipelineTests
         var ps = new SdcpParameterSet();
         ps.Payload = new byte[] { 0x42, 0x6c, 0x75, 0x62, 0x62 };
 
-        var order = new SdcpOrder(ps, TestDataHelper.AppDateService, TestDataHelper.GetFakeAppBenchProxy());
+        var order = TestDataHelper.CreateSdcpOrder(ps);
         order.IsHighPriorityOrder = false;
 
         op.AddOrder(order);
@@ -378,7 +378,7 @@ public class OrderPipelineTests
         var ps = new SdcpParameterSet();
         ps.Payload = new byte[] { 0x42, 0x6c, 0x75, 0x62, 0x62 };
 
-        var order = new SdcpOrder(ps, TestDataHelper.AppDateService, TestDataHelper.GetFakeAppBenchProxy());
+        var order = TestDataHelper.CreateSdcpOrder(ps);
         order.IsHighPriorityOrder = true;
 
         op.AddPriorityOrder(order);
@@ -410,7 +410,7 @@ public class OrderPipelineTests
         var ps = new SdcpParameterSet();
         ps.Payload = new byte[] { 0x42, 0x6c, 0x75, 0x62, 0x62 };
 
-        var order = new SdcpOrder(ps, TestDataHelper.AppDateService, TestDataHelper.GetFakeAppBenchProxy());
+        var order = TestDataHelper.CreateSdcpOrder(ps);
         order.IsHighPriorityOrder = true;
 
         // Act 
@@ -435,7 +435,7 @@ public class OrderPipelineTests
         var ps = new SdcpParameterSet();
         ps.Payload = new byte[] { 0x42, 0x6c, 0x75, 0x62, 0x62 };
 
-        var order = new SdcpOrder(ps, TestDataHelper.AppDateService, TestDataHelper.GetFakeAppBenchProxy());
+        var order = TestDataHelper.CreateSdcpOrder(ps);
         order.IsHighPriorityOrder = true;
 
         var success = op.PrepareOrderStart(order, OrderProcessingFinishedDelegate, out var rp);
@@ -462,7 +462,7 @@ public class OrderPipelineTests
         var ps = new SdcpParameterSet();
         ps.Payload = new byte[] { 0x42, 0x6c, 0x75, 0x62, 0x62 };
 
-        var order = new SdcpOrder(ps, TestDataHelper.AppDateService, TestDataHelper.GetFakeAppBenchProxy());
+        var order = TestDataHelper.CreateSdcpOrder(ps);
         order.IsHighPriorityOrder = true;
 
         var success = op.PrepareOrderStart(order, OrderProcessingFinishedDelegate, out var rp);
@@ -495,7 +495,7 @@ public class OrderPipelineTests
         var ps = new SdcpParameterSet();
         ps.Payload = new byte[] { 0x42, 0x6c, 0x75, 0x62, 0x62 };
 
-        var order = new SdcpOrder(ps, TestDataHelper.AppDateService, TestDataHelper.GetFakeAppBenchProxy());
+        var order = TestDataHelper.CreateSdcpOrder(ps);
         order.IsHighPriorityOrder = true;
 
         var success = op.PrepareOrderStart(order, OrderProcessingFinishedDelegate, out var rp);

@@ -32,7 +32,7 @@ internal class DeviceRequestAnswerStepTests
     public void Ctor_ValidSetup_PropsSetCorrectly()
     {
         // Arrange 
-        var order = TestDataHelper.CreateOrder();
+        var order = TestDataHelper.CreateSdcpOrder();
 
         var ps = new EmptyParameterSet();
         ps.LoadOrder(order);
@@ -51,7 +51,7 @@ internal class DeviceRequestAnswerStepTests
     public void HandleResult_ValidSetup_Successful()
     {
         // Arrange 
-        var order = TestDataHelper.CreateOrder();
+        var order = TestDataHelper.CreateSdcpOrder();
 
         var ps = new EmptyParameterSet();
         ps.LoadOrder(order);
@@ -78,7 +78,7 @@ internal class DeviceRequestAnswerStepTests
     public void HandleResult_NoAnswer_Unsuccessful()
     {
         // Arrange 
-        var order = TestDataHelper.CreateOrder();
+        var order = TestDataHelper.CreateSdcpOrder();
 
         var ps = new EmptyParameterSet();
         ps.LoadOrder(order);
@@ -98,7 +98,7 @@ internal class DeviceRequestAnswerStepTests
     public void CheckReceivedMessage_ReceivedMessage_Successful()
     {
         // Arrange 
-        var order = TestDataHelper.CreateOrder();
+        var order = TestDataHelper.CreateSdcpOrder();
 
         var ps = new EmptyParameterSet();
         ps.LoadOrder(order);
@@ -133,7 +133,7 @@ internal class DeviceRequestAnswerStepTests
         // Arrange 
         _checkResult = false;
 
-        var order = TestDataHelper.CreateOrder();
+        var order = TestDataHelper.CreateSdcpOrder();
 
         var ps = new EmptyParameterSet();
         ps.LoadOrder(order);

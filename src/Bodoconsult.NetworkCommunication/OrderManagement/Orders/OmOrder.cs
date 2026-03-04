@@ -254,7 +254,7 @@ public class OmOrder : IOrder
     #region Tracing
 
     /// <summary>
-    /// ID of an not TOM related transaction the order is part of. Used for trialrun
+    /// ID of a not TOM related transaction the order is part of. Used for trialrun
     /// </summary>
     public int TransactionId { get; set; }
 
@@ -310,6 +310,11 @@ public class OmOrder : IOrder
         TraceEntry.TraceDate = timeStamp;
         //TraceEntry.Uid = GetFormattedUser();
     }
+
+    /// <summary>
+    /// This order will be benchmarked? True or false
+    /// </summary>
+    public bool IsBenchable { get; set; } = false;
 
     /// <summary>
     /// Benchmark object (see output in Benchmark.csv)

@@ -1,6 +1,7 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
 using Bodoconsult.NetworkCommunication.Interfaces;
+using Microsoft.Diagnostics.Utilities;
 using System.Net;
 using System.Net.NetworkInformation;
 using System.Net.Sockets;
@@ -120,17 +121,6 @@ public class OrderManagementCommunicationAdapter : IOrderManagementCommunication
     /// <returns>Reply of the device</returns>
     public MessageSendingResult SendDataMessage(IOutboundDataMessage command)
     {
-        return _communicationHandler.SendMessage(command);
-    }
-
-    /// <summary>
-    /// Send an order to the device
-    /// </summary>
-    /// <param name="order">Order to send as command to device</param>
-    /// <returns>Reply of the device</returns>
-    public MessageSendingResult SendDataMessage(IOrder order)
-    {
-        var command = _outboundDataMessageFactory.CreateInstance(order);
         return _communicationHandler.SendMessage(command);
     }
 

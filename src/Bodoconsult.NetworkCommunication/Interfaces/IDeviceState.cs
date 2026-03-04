@@ -5,7 +5,7 @@ namespace Bodoconsult.NetworkCommunication.Interfaces;
 /// <summary>
 /// Interface for device hardware states
 /// </summary>
-public interface IDeviceState
+public interface IDeviceState:  IEquatable<IDeviceState>
 {
     /// <summary>
     /// The ID of the state

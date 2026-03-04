@@ -57,11 +57,8 @@ internal class TncpParameterSetTests
         // Arrange 
         var ps = new TncpParameterSet();
 
-        var dateTimeService = TestDataHelper.AppDateService;
-        var benchLogger = TestDataHelper.GetFakeAppBenchProxy();
-
         // Act  
-        IOrder order = new TestOrder(ps, dateTimeService, benchLogger);
+        var order = TestDataHelper.CreateTestOrder(ps);
 
         // Assert
         Assert.That(order, Is.Not.Null);

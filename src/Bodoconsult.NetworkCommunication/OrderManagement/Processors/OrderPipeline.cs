@@ -222,7 +222,7 @@ public class OrderPipeline : IOrderPipeline
                 }
 
                 // Break loop now if order was not cancelled and order is not a dummy order
-                if (order.TypeName == nameof(DummyOrder))
+                if (order.TypeName == BuiltinOrders.DummyOrder)
                 {
                     continue;
                 }
@@ -525,7 +525,7 @@ public class OrderPipeline : IOrderPipeline
             }
 
             // Break loop now if order was not cancelled and order is not a dummy order
-            if (!order.IsCancelled && order.TypeName != nameof(DummyOrder))
+            if (!order.IsCancelled && order.TypeName != BuiltinOrders.DummyOrder)
             {
                 return order;
             }
@@ -562,8 +562,7 @@ public class OrderPipeline : IOrderPipeline
             }
 
             // Break loop now if order was not cancelled and order is not a dummy order
-            if (!order.IsCancelled
-                && order.TypeName != nameof(DummyOrder))
+            if (!order.IsCancelled && order.TypeName != BuiltinOrders.DummyOrder)
             {
                 return order;
             }

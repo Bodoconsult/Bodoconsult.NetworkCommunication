@@ -15,7 +15,8 @@ public class DeviceRequestSpec : BaseRequestSpec, IDeviceRequestSpec
     /// </summary>
     /// <param name="name">Request name</param>
     /// <param name="parameterSet">Current parameter set</param>
-    public DeviceRequestSpec(string name, IParameterSet parameterSet) : base(name, parameterSet)
+    public DeviceRequestSpec(string name, IParameterSet parameterSet) : 
+        base(name, parameterSet)
     { }
 
     /// <summary>
@@ -39,12 +40,18 @@ public class DeviceRequestSpec : BaseRequestSpec, IDeviceRequestSpec
     /// </summary>
     public IRequestAnswerStep NextChainElement { get; set; }
 
+    /// <summary>
+    /// Delegate for creating data messages to sent to the device
+    /// </summary>
+    public CreateMessagesToSentDelegate CreateMessagesToSentDelegate { get; set; }
+
     /// <summary>Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.</summary>
     public override void Dispose()
     {
         ResultTransportObject = null;
         TransportObject = null;
         SentMessage.Clear();
+        CreateMessagesToSentDelegate = null;
         base.Dispose();
 
         //foreach (var requestAnswerStep in RequestAnswerSteps)

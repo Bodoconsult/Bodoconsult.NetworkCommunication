@@ -46,7 +46,7 @@ internal class EmptyParameterSetTests
         var benchLogger = TestDataHelper.GetFakeAppBenchProxy();
 
         // Act  
-        IOrder order = new TestOrder(ps, dateTimeService, benchLogger);
+        var order = TestDataHelper.CreateTestOrder(ps);
 
         // Assert
         Assert.That(order, Is.Not.Null);

@@ -36,16 +36,6 @@ public class EdcpServerOutboundDataMessageFactory : IOutboundDataMessageFactory
     public byte MaximumBlockCode { get; }
 
     /// <summary>
-    /// Create am outbound data message from an order management order
-    /// </summary>
-    /// <param name="order">Order management order</param>
-    /// <returns>Outbound data message</returns>
-    public IOutboundDataMessage CreateInstance(IOrder order)
-    {
-        return CreateInstance(order.ParameterSet);
-    }
-
-    /// <summary>
     /// Create am outbound data message from an order management parameter set
     /// </summary>
     /// <param name="parameterSet">Order management parameterset</param>

@@ -17,12 +17,10 @@ internal class SdcpOutboundDataMessageFactoryTests
         // Arrange 
         var ps = new SdcpParameterSet();
 
-        var order = new SdcpOrder(ps, TestDataHelper.AppDateService, TestDataHelper.GetFakeAppBenchProxy());
-
         var factory = new SdcpOutboundDataMessageFactory();
 
         // Act  
-        var message = (SdcpOutboundDataMessage)factory.CreateInstance(order);
+        var message = (SdcpOutboundDataMessage)factory.CreateInstance(ps);
 
         // Assert
         Assert.That(message, Is.Not.Null);

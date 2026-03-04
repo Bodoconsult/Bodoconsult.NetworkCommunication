@@ -17,12 +17,10 @@ internal class EdcpClientOutboundDataMessageFactoryTests
         // Arrange 
         var ps = new EdcpParameterSet();
 
-        var order = new EdcpOrder(ps, TestDataHelper.AppDateService, TestDataHelper.GetFakeAppBenchProxy());
-
         var factory = new EdcpClientOutboundDataMessageFactory();
 
         // Act  
-        var message = (EdcpOutboundDataMessage)factory.CreateInstance(order);
+        var message = (EdcpOutboundDataMessage)factory.CreateInstance(ps);
 
         // Assert
         Assert.That(message, Is.Not.Null);
@@ -34,8 +32,6 @@ internal class EdcpClientOutboundDataMessageFactoryTests
         // Arrange 
         var ps = new EdcpParameterSet();
 
-        var order = new EdcpOrder(ps, TestDataHelper.AppDateService, TestDataHelper.GetFakeAppBenchProxy());
-
         var factory = new EdcpClientOutboundDataMessageFactory();
 
         // Act  
@@ -43,7 +39,7 @@ internal class EdcpClientOutboundDataMessageFactoryTests
         for (var i = 128; i < 259; i++)
         {
             // Act
-            var message = (EdcpOutboundDataMessage)factory.CreateInstance(order);
+            var message = (EdcpOutboundDataMessage)factory.CreateInstance(ps);
 
             // Assert
             Assert.That(message, Is.Not.Null);

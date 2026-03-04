@@ -81,27 +81,6 @@ public abstract class TcpOrderManagementCommunicationAdapterBaseTests : BaseTcpT
         task.Wait();
     }
 
-    /// <summary>
-    /// Send an order with the <see cref="IDuplexIo"/> instance to test
-    /// </summary>
-    /// <param name="order">Current order to send</param>
-    public virtual void Send(IOrder order)
-    {
-        OrderManagementCommunicationAdapter.SendDataMessage(order);
-
-        var task = Task.Run(() =>
-        {
-            var i = 0;
-            while (i < 200)
-            {
-                AsyncHelper.Delay(5);
-                i++;
-            }
-
-        });
-        task.Wait();
-    }
-
     public virtual void SendDataAndReceive(byte[] data, int expectedCount, byte[] data2 = null)
     {
         RemoteTcpIpDevice.Send(data);

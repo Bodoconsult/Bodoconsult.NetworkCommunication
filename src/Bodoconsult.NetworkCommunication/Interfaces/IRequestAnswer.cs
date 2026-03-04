@@ -49,8 +49,8 @@ public interface IRequestAnswer : IDisposable
     /// If the message is the requested answer from the device the properties <see cref="IRequestAnswer.WasReceived"/>
     /// and <see cref="IRequestAnswer.ReceivedMessage"/> are set to true and the received message.
     /// </summary>
-    CheckReceivedMessageDelegate CheckReceivedMessageDelegate { get; }
-    
+    CheckReceivedMessageDelegate CheckReceivedMessageDelegate { get; set; }
+
     /// <summary>
     /// Set <see cref="WasReceived"/> to true
     /// </summary>

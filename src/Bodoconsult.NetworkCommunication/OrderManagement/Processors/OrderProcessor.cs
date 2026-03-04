@@ -1,6 +1,7 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
 using System.Diagnostics;
+using Bodoconsult.App.Benchmarking;
 using Bodoconsult.App.Helpers;
 using Bodoconsult.App.Interfaces;
 using Bodoconsult.NetworkCommunication.EnumAndStates;
@@ -41,6 +42,7 @@ public class OrderProcessor : IOrderProcessor
     private readonly IAppLoggerProxy _appLogger;
     private readonly string _loggerId;
     private readonly IAppLoggerProxy _monitorLogger;
+    private readonly IAppBenchProxy _appBenchProxy;
 
     private bool IsCancellationRunningOrders
     {
@@ -69,7 +71,8 @@ public class OrderProcessor : IOrderProcessor
         IAppDateService dateTimeService,
         IOrderPipeline orderPipeline,
         ISyncOrderManager syncOrderManager,
-        IOrderManagementClientNotificationManager clientNotificationManager)
+        IOrderManagementClientNotificationManager clientNotificationManager,
+        IAppBenchProxy appBenchProxy)
     {
         CurrentDevice = deviceServer;
         _smddevice = deviceServer;
@@ -83,6 +86,7 @@ public class OrderProcessor : IOrderProcessor
         _appLogger = deviceServer.DataMessagingConfig.AppLogger;
         _loggerId = deviceServer.DataMessagingConfig.LoggerId;
         _monitorLogger = deviceServer.DataMessagingConfig.MonitorLogger;
+        _appBenchProxy = appBenchProxy;
     }
 
     /// <summary>
@@ -541,10 +545,16 @@ public class OrderProcessor : IOrderProcessor
             return;
         }
 
+        // Start benchmarking if necessary
+        if (order.IsBenchable)
+        {
+            order.Benchmark = new Bench(_appBenchProxy, $"{order.DeviceId}_{order.LoggerId}");
+        }
+
         // Execute the order
-        order.Benchmark.AddStep("Before execute");
+        order.Benchmark?.AddStep("Before execute");
         ExecuteOrder(p);
-        order.Benchmark.AddStep("After execute");
+        order.Benchmark?.AddStep("After execute");
     }
 
     /// <summary>
@@ -597,7 +607,7 @@ public class OrderProcessor : IOrderProcessor
 
         var order = requestProcessor.Order;
         order.ExecutionResult ??= OrderExecutionResultState.Unsuccessful;
-        order.Benchmark.AddStep("Order processing finished");
+        order.Benchmark?.AddStep("Order processing finished");
 
         _appLogger.LogDebug($"{_loggerId}{order.LoggerId}has finished. {OrderPipeline.CurrentOrderState}");
 
@@ -605,12 +615,12 @@ public class OrderProcessor : IOrderProcessor
         if (order.ExecutionResult.Id == OrderExecutionResultState.Successful.Id)
         {
             CurrentDevice.OrderFinishedSuccessful(order);
-            order.Benchmark.AddStep("Order finished Successful");
+            order.Benchmark?.AddStep("Order finished Successful");
         }
         else // Process unsuccessful orders
         {
             CurrentDevice.OrderFinishedUnsuccessful(order);
-            order.Benchmark.AddStep("Order finished Unsuccessful");
+            order.Benchmark?.AddStep("Order finished Unsuccessful");
         }
 
         // Now clean the execution queue
@@ -620,7 +630,7 @@ public class OrderProcessor : IOrderProcessor
         // Set the order running endtime
         order.EndTime = _dateTimeService.Now;
         order.IsFinished = true;
-        order.Benchmark.AddStep("Disposing now");
+        order.Benchmark?.AddStep("Disposing now");
 
         // Async order: dispose now
 
@@ -635,9 +645,7 @@ public class OrderProcessor : IOrderProcessor
 
             order.IsDisposable = true;
             StopExecutionOfSyncOrder(order.Id, erg);
-
         }
-
 
         Debug.Print($"TOP: {OrderPipeline.CurrentOrderState}");
     }
@@ -910,7 +918,7 @@ public class OrderProcessor : IOrderProcessor
         }
 
         // Do not add dummy orders
-        if (order is DummyOrder)
+        if (order.TypeName == BuiltinOrders.DummyOrder)
         {
             return false;
         }

@@ -8,13 +8,6 @@ namespace Bodoconsult.NetworkCommunication.Interfaces;
 public interface IOutboundDataMessageFactory
 {
     /// <summary>
-    /// Create am outbound data message from an order management order
-    /// </summary>
-    /// <param name="order">Order management order</param>
-    /// <returns>Outbound data message</returns>
-    IOutboundDataMessage CreateInstance(IOrder order);
-
-    /// <summary>
     /// Create am outbound data message from an order management parameter set
     /// </summary>
     /// <param name="parameterSet">Order management parameterset</param>
