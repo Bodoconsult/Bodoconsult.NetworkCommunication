@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Bodoconsult.Network.Windows | Bodoconsult.Network </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Bodoconsult.Network.Windows | Bodoconsult.Network ">
+      
+      
+      <link rel="icon" href="../../favicon.ico">
+      <link rel="stylesheet" href="../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../public/main.css">
+      <meta name="docfx:navrel" content="../../toc.html">
+      <meta name="docfx:tocrel" content="../toc.html">
+      
+      <meta name="docfx:rel" content="../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/doc/Bodoconsult.Network.Windows/README.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../../index.html">
+            <img id="logo" class="svg" src="../../logo.svg" alt="Bodoconsult.Network">
+            Bodoconsult.Network
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="bodoconsultnetworkwindows">Bodoconsult.Network.Windows</h1>
+
+<h2 id="what-does-the-library">What does the library</h2>
+<p>Bodoconsult.Network.Windows provides tools for getting network information froma Windows domain network and other tools like SSH handling.</p>
+<h2 id="how-to-use-the-library">How to use the library</h2>
+<p>The source code contain a NUnit test classes, the following source code is extracted from. The samples below show the most helpful use cases for the library.</p>
+<h1 id="sshhandler-class">SshHandler class</h1>
+<h2 id="overview">Overview</h2>
+<p>The main class in the library is the class SshHandler with the following methods:</p>
+<ul>
+<li>Connect()</li>
+<li>Disconnect()</li>
+<li>Put(string localPath, string remotePath)</li>
+<li>RemoveFile(string remotePath)</li>
+<li>Exists(string path)</li>
+<li>CreateDirectory(string remotePath)</li>
+<li>RemoveDirectory(string remotePath)</li>
+<li>GetDirectoryItems(string remotePath)</li>
+<li>GetDirectoryItemsRaw(string remotePath)</li>
+<li>DownloadFile(string remotePath, string localPath)</li>
+</ul>
+<h2 id="samples">Samples</h2>
+<pre><code class="lang-C#">[TestFixture]
+public class UnitTestSshHandler
+{
+
+	private readonly SshCredentials _credentials = TestHelper.GetCredentials();
+
+	[Test]
+	public void TestConnect()
+	{
+
+		// Arrange
+		var s = new SshHandler(_credentials);
+		
+		// Act
+		s.Connect();
+
+		var erg = s.IsConnected;
+
+		s.Disconnect();
+
+		// Assert
+		Assert.IsTrue(erg);
+	}
+
+
+	[Test]
+	public void TestPutMainDirectory()
+	{
+
+		// Arrange
+		var localPath = TestHelper.FtpTestFilePath;
+
+		const string remotePath = &quot;/&quot;+TestHelper.FtpTestFileName;
+
+		var s = new SshHandler(_credentials);
+
+
+		// Act
+		s.Connect();
+
+		var erg1 = s.IsConnected;
+
+		
+		s.Put(localPath, remotePath);
+
+		s.Disconnect();
+
+		// Assert
+		Assert.IsTrue(erg1);
+	}
+
+
+	[Test]
+	public void TestPutDirectory()
+	{
+
+		// Arrange
+		var localPath = TestHelper.FtpTestFilePath;
+
+		var remotePath = $&quot;{TestHelper.FtpSubDir}/{TestHelper.FtpTestFileName}&quot;;
+
+		var s = new SshHandler(_credentials);
+
+
+		// Act
+		s.Connect();
+
+		var erg1 = s.IsConnected;
+
+
+		s.Put(localPath, remotePath);
+
+		s.Disconnect();
+
+		// Assert
+		Assert.IsTrue(erg1);
+	}
+
+
+	[Test]
+	public void TestRemoveFile()
+	{
+
+		// Arrange
+		var localPath = TestHelper.FtpTestFilePath;
+
+		var remotePath = $&quot;{TestHelper.FtpSubDir}/{TestHelper.FtpTestFileName}&quot;;
+
+		var s = new SshHandler(_credentials);
+
+
+		// Act
+		s.Connect();
+
+		var erg1 = s.IsConnected;
+
+		s.Put(localPath, remotePath);
+
+		Assert.IsTrue(s.Exists(remotePath));
+
+		// Act
+		s.RemoveFile(remotePath);
+		var erg2 = s.Exists(remotePath);
+		s.Disconnect();
+
+		// Assert
+		Assert.IsTrue(erg1);
+		Assert.IsFalse(erg2);
+	}
+
+
+	[Test]
+	public void TestRemoveFileFileNotExisting()
+	{
+
+		// Arrange
+		var localPath = TestHelper.FtpTestFilePath;
+
+		var remotePath = $&quot;{TestHelper.FtpSubDir}/AAA{TestHelper.FtpTestFileName}&quot;;
+
+		var s = new SshHandler(_credentials);
+
+		s.Connect();
+
+		var erg1 = s.IsConnected;
+
+		s.Put(localPath, remotePath);
+
+		// Act
+		s.RemoveFile(remotePath);
+		var erg2 = s.Exists(remotePath);
+		s.Disconnect();
+
+		// Assert
+		Assert.IsTrue(erg1);
+		Assert.IsFalse(erg2);
+	}
+
+
+	[Test]
+	public void TestCreateDirectory()
+	{
+
+		// Arrange
+		var remotePath = TestHelper.FtpSubDirCreate;
+
+		var s = new SshHandler(_credentials);
+
+
+		// Act
+		s.Connect();
+
+		var erg1 = s.IsConnected;
+
+		s.RemoveDirectory(remotePath);
+		Assert.IsFalse(s.Exists(remotePath));
+
+		// Act
+		s.CreateDirectory(remotePath);
+		var erg2 = s.Exists(remotePath);
+		s.Disconnect();
+
+		// Assert
+		Assert.IsTrue(erg1);
+		Assert.IsTrue(erg2);
+	}
+
+
+	[Test]
+	public void TestListDirectory()
+	{
+
+		// Arrange
+		const string remotePath = TestHelper.FtpSubDir;
+
+		var remotePath1 = TestHelper.FtpSubDirCreate;
+
+		var s = new SshHandler(_credentials);
+
+		s.Connect();
+
+		if (!s.Exists(remotePath1)) s.CreateDirectory(remotePath1);
+
+		var erg1 = s.IsConnected;
+
+		var localPath = TestHelper.FtpTestFilePath;
+
+		var remotePathFile = $&quot;{TestHelper.FtpSubDir}/{TestHelper.FtpTestFileName}&quot;;
+
+		if (!s.Exists(remotePathFile)) s.Put(localPath, remotePathFile);
+
+		// Act
+		var erg2 = s.GetDirectoryItems(remotePath).ToList();
+
+		s.Disconnect();
+
+		// Assert
+		Assert.IsTrue(erg1);
+		Assert.IsTrue(erg2.Any());
+		Assert.IsTrue(erg2.Any(x =&gt; x.IsDirectory));
+		Assert.IsTrue(erg2.Any(x =&gt; !x.IsDirectory));
+	}
+
+
+
+	[Test]
+	public void TestListDirectoryRaw()
+	{
+
+		// Arrange
+		const string remotePath = TestHelper.FtpSubDir;
+
+		var remotePath1 = TestHelper.FtpSubDirCreate;
+
+		var s = new SshHandler(_credentials);
+
+		s.Connect();
+
+		if (!s.Exists(remotePath1)) s.CreateDirectory(remotePath1);
+
+		var erg1 = s.IsConnected;
+
+		var localPath = TestHelper.FtpTestFilePath;
+
+		var remotePathFile = $&quot;{TestHelper.FtpSubDir}/{TestHelper.FtpTestFileName}&quot;;
+
+		if (!s.Exists(remotePathFile)) s.Put(localPath, remotePathFile);
+
+		// Act
+		var erg2 = s.GetDirectoryItems(remotePath).ToList();
+
+		s.Disconnect();
+
+		// Assert
+		Assert.IsTrue(erg1);
+		Assert.IsTrue(erg2.Any());
+		Assert.IsTrue(erg2.Any(x =&gt; x.IsDirectory));
+		Assert.IsTrue(erg2.Any(x =&gt; !x.IsDirectory));
+	}
+
+	[Test]
+	public void TestDownloadFile()
+	{
+
+		// Arrange
+		var remotePath = &quot;/&quot;+ TestHelper.FtpTestFileName;
+		var localPath = Path.Combine(TestHelper.LocalTargetPath,&quot;AAA.txt&quot;);
+
+		var s = new SshHandler(_credentials);
+
+
+		if (File.Exists(localPath))
+		{
+			File.Delete(localPath);
+		}
+
+
+		// Act
+		s.Connect();
+
+		var erg1 = s.IsConnected;
+
+		// Act
+		s.DownloadFile(remotePath, localPath);
+		s.Disconnect();
+
+		var erg2 = File.Exists(localPath);
+
+		// Assert
+		Assert.IsTrue(erg1);
+		Assert.IsTrue(erg2);
+	}
+
+
+	[Test]
+	public void TestRemoveDirectory()
+	{
+
+		// Arrange
+		var remotePath1 = TestHelper.FtpSubDirCreate;
+
+		var s = new SshHandler(_credentials);
+
+		s.Connect();
+
+		if (!s.Exists(remotePath1)) s.CreateDirectory(remotePath1);
+
+		var erg1 = s.IsConnected;
+
+		// Act
+		s.RemoveDirectory(remotePath1);
+
+		// Assert
+		var erg2 = s.Exists(remotePath1);
+
+		s.Disconnect();
+
+		
+		Assert.IsTrue(erg1);
+		Assert.IsFalse(erg2);
+	}
+
+}
+</code></pre>
+<h1 id="dhcp-server-api">DHCP server API</h1>
+<p>A .NET (C#, Visual Basic.NET, etc) wrapper for the native DHCP management APIs exposed by Windows.</p>
+<p>An initial focus has been made for read-only access to the data via the APIs, but the project can be easily extended to support read-write access.</p>
+<h2 id="connect-to-a-dhcp-server">Connect to a DHCP Server</h2>
+<p>Method 1: Discovering via directory services</p>
+<pre><code class="lang-C#">// Discover DHCP Servers
+foreach (var dhcpServer in DhcpServer.Servers)
+{
+    Console.WriteLine(dhcpServer.Name);
+}
+</code></pre>
+<p>Method 2: Connecting directly</p>
+<pre><code class="lang-C#">// Connect to DHCP Server
+var dhcpServer = DhcpServer.Connect(&quot;SRV-DHCP-01&quot;); // or 192.168.1.1
+
+Console.WriteLine(dhcpServer.Name);
+</code></pre>
+<h2 id="read-basic-dhcp-configuration">Read Basic DHCP Configuration</h2>
+<pre><code class="lang-C#">// Connect to DHCP Server
+var dhcpServer = DhcpServer.Servers.First();
+
+// Display some configuration
+Console.WriteLine($&quot;Protocol Support: {dhcpServer.Configuration.ApiProtocolSupport}&quot;);
+Console.WriteLine($&quot;Database Name: {dhcpServer.Configuration.DatabaseName}&quot;);
+Console.WriteLine($&quot;Database Path: {dhcpServer.Configuration.DatabasePath}&quot;);
+
+// Show all bound interfaces
+foreach (var binding in dhcpServer.BindingElements)
+{
+    Console.WriteLine($&quot;Binding Interface Id: {binding.InterfaceGuidId}&quot;);
+    Console.WriteLine($&quot;  Description: {binding.InterfaceDescription}&quot;);
+    Console.WriteLine($&quot;  Adapter Address: {binding.AdapterPrimaryIpAddress}&quot;);
+    Console.WriteLine($&quot;  Adapter Subnet: {binding.AdapterSubnetAddress}&quot;);
+}
+</code></pre>
+<h2 id="show-dhcp-scopes">Show DHCP Scopes</h2>
+<pre><code class="lang-C#">// Connect to DHCP Server
+var dhcpServer = DhcpServer.Servers.First();
+
+// Display scope information
+foreach (var scope in dhcpServer.Scopes)
+{
+    Console.WriteLine($&quot;Scope: {scope.Name}&quot;);
+    Console.WriteLine($&quot;  Address: {scope.Address}&quot;);
+    Console.WriteLine($&quot;  Mask: {scope.Mask}&quot;);
+    Console.WriteLine($&quot;  Range: {scope.IpRange}&quot;);
+    Console.WriteLine($&quot;  State: {scope.State}&quot;);
+}
+</code></pre>
+<h2 id="show-client-leases">Show Client Leases</h2>
+<p>Client leases can be retrieved globally (all leases on the server) or individually for each scope.</p>
+<pre><code class="lang-C#">// Connect to DHCP Server
+var dhcpServer = DhcpServer.Servers.Skip(1).First();
+
+// Get a scope
+var scope = dhcpServer.Scopes.First();
+
+Console.WriteLine($&quot;Scope '{scope.Name}' Clients&quot;);
+Console.WriteLine();
+
+// Get active client leases
+var activeClients = scope.Clients
+    .Where(c =&gt; c.AddressState == DhcpServerClientAddressStates.Active);
+
+// Display client information
+foreach (var client in activeClients)
+{
+    Console.WriteLine($&quot;{client.IpAddress} [{client.HardwareAddress}] {client.Name}, Expires: {client.LeaseExpires}&quot;);
+}
+</code></pre>
+<h2 id="show-reservations">Show Reservations</h2>
+<pre><code class="lang-C#">// Connect to DHCP Server
+var dhcpServer = DhcpServer.Servers.First();
+
+// Get a scope
+var scope = dhcpServer.Scopes.First();
+
+Console.WriteLine($&quot;Scope '{scope.Name}' Reservations&quot;);
+Console.WriteLine();
+
+// Display reservation information
+foreach (var reservation in scope.Reservations)
+{
+    Console.WriteLine($&quot;{reservation.IpAddress} [{reservation.HardwareAddress}] {reservation.Client.Name}&quot;);
+}
+</code></pre>
+<h2 id="show-scope-options">Show Scope Options</h2>
+<p>Options can be retrieved globally (all options on the server), for scopes or individual reservations.</p>
+<pre><code class="lang-C#">// Connect to DHCP Server
+var dhcpServer = DhcpServer.Servers.Skip(1).First();
+
+// Get a scope
+var scope = dhcpServer.Scopes.First();
+
+Console.WriteLine($&quot;Scope '{scope.Name}' Options&quot;);
+Console.WriteLine();
+
+// Get option values
+foreach (var optionValue in scope.OptionValues)
+{
+    Console.WriteLine($&quot;{optionValue.Option.Name} [{optionValue.OptionId}]:&quot;);
+
+    foreach (var value in optionValue.Values)
+    {
+        Console.WriteLine($&quot;  {value.Value} [{value.Type}]&quot;);
+    }
+}
+</code></pre>
+<p>A generic dotnet (C#, Visual Basic.NET, etc) library designed for managing DNS Servers.</p>
+<p>A provider (implementation) is planned for Windows Server DNS Server (via the <a href="https://docs.microsoft.com/en-us/windows/win32/dns/dns-wmi-provider">WMI Provider</a>. Providers for other DNS Servers is possible and contributions are welcome.</p>
+<h1 id="dns-server-api">DNS server API</h1>
+<p>A simple hierachy is present: <code>DnsServer &gt; DnsZone &gt; DnsRecord</code>.</p>
+<p>Both <code>DnsServer</code> and <code>DnsZone</code> are abstract and must be implemented by the provider.</p>
+<h2 id="zones">Zones</h2>
+<pre><code class="lang-csharp">// connect to DNS server via provider
+using (var server = new MockDnsServer())
+{
+    // create zone
+    var myZone = server.CreateZone(&quot;myzone.mock&quot;);
+
+    // get zone by name
+    var myZoneRef = server.GetZone(&quot;myzone.mock&quot;);
+
+    // enumerate zones
+    foreach (var zone in server.Zones)
+    {
+        Console.WriteLine(zone.DomainName);
+    }
+
+    // delete zone
+    myZone.Delete();
+    // or: server.DeleteZone(zone);
+    // or: server.DeleteZone(&quot;myzone.mock&quot;);
+}
+</code></pre>
+<h2 id="records">Records</h2>
+<pre><code class="lang-csharp">// connect to DNS server
+using (var server = new MockDnsServer())
+{
+    // create zone
+    var zone = server.CreateZone(&quot;myzone.mock&quot;);
+
+    // get records
+    var myServerRecords = zone.GetRecords(DnsRecordTypes.A, &quot;myserver.myzone.mock&quot;);
+
+    // search records
+    var allMyServerRecords = zone.SearchRecords(&quot;MyServer&quot;);
+    var hostMyServerRecords = zone.SearchRecords(DnsRecordTypes.A, &quot;MyServer&quot;);
+
+    // update record
+    var soa = zone.StartOfAuthority;
+    soa.TimeToLive = TimeSpan.FromMinutes(30);
+    soa.ResponsiblePerson = &quot;responsible.hostmaster.&quot;;
+    soa.Save();
+    // or: zone.SaveRecord(soa);
+
+    // create host record
+    var hostTemplate = new DnsARecord(&quot;myhost.myzone.mock&quot;, TimeSpan.FromHours(1), &quot;192.168.1.50&quot;);
+    var hostRecord = zone.CreateRecord(hostTemplate);
+
+    // add second host record
+    hostTemplate.IpAddress = &quot;192.168.1.51&quot;;
+    var hostRecord2 = zone.CreateRecord(hostTemplate);
+
+    // create alias record
+    var cnameTemplate = new DnsCNAMERecord(&quot;myhostalias.myzone.mock&quot;, TimeSpan.FromHours(1), &quot;myhost.myzone.mock&quot;);
+    var cnameRecord = zone.CreateRecord(cnameTemplate);
+
+    // create service locator record
+    var srvTemplate = new DnsSRVRecord(
+            domainName: &quot;myzone.mock&quot;,
+            service: DnsSRVRecord.ServiceNames.LDAP,
+            protocol: DnsSRVRecord.ProtocolNames.TCP,
+            timeToLive: TimeSpan.FromHours(1),
+            priority: 0,
+            weight: 10,
+            port: DnsSRVRecord.ServicePorts.LDAP,
+            targetDomainName: &quot;mycontroller.myzone.mock&quot;);
+    var srvRecord = zone.CreateRecord(srvTemplate);
+
+    // delete record
+    hostRecord.Delete();
+    // or: zone.DeleteRecord(aRecord);
+}
+</code></pre>
+<h1 id="about-us">About us</h1>
+<p>Bodoconsult (<a href="http://www.bodoconsult.de">http://www.bodoconsult.de</a>) is a Munich based software development company from Germany.</p>
+<p>Robert Leisner is senior software developer at Bodoconsult. See his profile on <a href="http://www.bodoconsult.de/Curriculum_vitae_Robert_Leisner.pdf">http://www.bodoconsult.de/Curriculum_vitae_Robert_Leisner.pdf</a>.</p>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/doc/Bodoconsult.Network.Windows/README.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

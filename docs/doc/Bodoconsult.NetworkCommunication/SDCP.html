@@ -1,0 +1,1478 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Simple data communication protocol (SDCP) | Bodoconsult.Network </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Simple data communication protocol (SDCP) | Bodoconsult.Network ">
+      
+      
+      <link rel="icon" href="../../favicon.ico">
+      <link rel="stylesheet" href="../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../public/main.css">
+      <meta name="docfx:navrel" content="../../toc.html">
+      <meta name="docfx:tocrel" content="../toc.html">
+      
+      <meta name="docfx:rel" content="../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/doc/Bodoconsult.NetworkCommunication/SDCP.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../../index.html">
+            <img id="logo" class="svg" src="../../logo.svg" alt="Bodoconsult.Network">
+            Bodoconsult.Network
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="simple-data-communication-protocol-sdcp">Simple data communication protocol (SDCP)</h1>
+
+<blockquote>
+<p><a href="#overview">Overview</a></p>
+</blockquote>
+<blockquote>
+<p><a href="#message-format">Message format</a></p>
+</blockquote>
+<blockquote>
+<p><a href="#setting-up-messaging-configuration-idatamessagingconfig">Setting up messaging configuration: IDataMessagingConfig</a></p>
+</blockquote>
+<blockquote>
+<p><a href="#define-message-limiting-bytes-devicecommunicationbasics">Define message limiting bytes: DeviceCommunicationBasics</a></p>
+</blockquote>
+<blockquote>
+<p><a href="#define-message-limiting-bytes-devicecommunicationbasics">Implement a data message splitter splitting the incoming byte stream into potential messages: IDataMessageSplitter</a></p>
+</blockquote>
+<blockquote>
+<p><a href="#implement-your-data-message-types-for-inbound-messages-iinbounddatamessage">Implement your data message types for inbound messages: IInboundDataMessage</a></p>
+</blockquote>
+<blockquote>
+<p><a href="#implement-your-data-message-types-for-outbound-messages-ioutbounddatamessage">Implement your data message types for outbound messages: IInboundDataMessage</a></p>
+</blockquote>
+<blockquote>
+<p><a href="#implement-a-handshake-validator-for-inbound-handshakes-ihandshakedatamessagevalidator">Implement a handshake validator for inbound handshakes: IHandshakeDataMessageValidator</a></p>
+</blockquote>
+<blockquote>
+<p><a href="#implement-a-data-message-validator-for-inbound-data-messages-idatamessagevalidator">Implement a data message validator for inbound data messages: IDataMessageValidator</a></p>
+</blockquote>
+<blockquote>
+<p><a href="#implement-a-message-forwarder-for-received-messages-idatamessageprocessor">Implement a message forwarder for received messages: IDataMessageProcessor</a></p>
+</blockquote>
+<blockquote>
+<p><a href="#implement-the-message-codecs-to-decode-and-encode-to-byte-array-basedatamessagecodec">Implement the message codecs to decode and encode to byte array: BaseDataMessageCodec</a></p>
+</blockquote>
+<blockquote>
+<p><a href="#datablock-coding-processor-idatablockcodingprocessor">Datablock coding processor: IDataBlockCodingProcessor</a></p>
+</blockquote>
+<blockquote>
+<p><a href="#implement-your-messaging-package-idatamessageprocessingpackage">Implement your messaging package: IDataMessageProcessingPackage</a></p>
+</blockquote>
+<h1 id="overview">Overview</h1>
+<p>For the usage in this documentation there will be implemented the following Simple Device Communication Protocol (SDCP).</p>
+<p>The SDCP knows two basic types of messages:</p>
+<ul>
+<li><p><strong>Data messages</strong> starting with STX char and ending with ETX char. Everything between STX and ETX is handled as datablock. It is up to you to define IDataBlockCodecs to give the transported bytes a meaning.</p>
+</li>
+<li><p><strong>Handshakes</strong>: a 1-byte-message with either ACK (message received successfully), NACK (message NOT received successfully) or CAN (device not ready) sent when a data message was received.</p>
+</li>
+</ul>
+<p>The content of a data message is a datablock with the first byte indicating the type of datablock.</p>
+<p>Each data message received will be answered by a handshake.</p>
+<p>The SDCP protocol is very simple but of limited usage in reality. The main drawback of SDCP are the missing identification of data message and its coresponding handshake</p>
+<h1 id="message-format">Message format</h1>
+<p>A SDCP messages are structured as follows:</p>
+<p>STX[BlockCode]XXXETX</p>
+<p>There is no difference between a request and a reply. This may limit the potential use cases.</p>
+<p>STX     Message start (0x2)</p>
+<p>XXX     Minimum 0 bytes of payload. No maximum length defined by EDCP. First byte of payload as char is used to indentity the type of payload</p>
+<p>ETX     End of message (0x3)</p>
+<pre><code class="lang-csharp">
+</code></pre>
+<h1 id="setting-up-messaging-configuration-idatamessagingconfig">Setting up messaging configuration: IDataMessagingConfig</h1>
+<pre><code class="lang-csharp">/// &lt;summary&gt;
+/// Config file for one the client-server network communication with one client device
+/// &lt;/summary&gt;
+public class TestDataMessagingConfig: IDataMessagingConfigTcpIp
+{
+	/// &lt;summary&gt;
+	/// A readable string for identitying the device used for logging
+	/// &lt;/summary&gt;
+	public string LoggerId =&gt; &quot;TestDevice&quot;;
+
+	/// &lt;summary&gt;
+	/// Current socket to use
+	/// &lt;/summary&gt;
+	public ISocketProxy SocketProxy { get; set; }
+
+	/// &lt;summary&gt;
+	/// Data message procssing package
+	/// &lt;/summary&gt;
+	public IDataMessageProcessingPackage DataMessageProcessingPackage { get; set; }
+
+	/// &lt;summary&gt;
+	/// Update data message processing package
+	/// &lt;/summary&gt;
+	public UpdateDataMessageProcessingPackageDelegate UpdateDataMessageProcessingPackageDelegate { get; set; }
+
+	/// &lt;summary&gt;
+	/// Current general logger
+	/// &lt;/summary&gt;
+	public IAppLoggerProxy AppLogger { get; set; }
+
+	/// &lt;summary&gt;
+	/// Current monitor logger
+	/// &lt;/summary&gt;
+	public IAppLoggerProxy MonitorLogger { get; set; }
+
+	/// &lt;summary&gt;
+	/// A delegate for a method returning true if the communications is online or false if offline
+	/// &lt;/summary&gt;
+	/// &lt;returns&gt;A delegate&lt;/returns&gt;
+	public CheckIfCommunicationIsOnlineDelegate CheckIfCommunicationIsOnlineDelegate { get; set; }
+
+	/// &lt;summary&gt;
+	/// A delegate for a method returning true if the device is or false if not
+	/// &lt;/summary&gt;
+	/// &lt;returns&gt;true if the device is ready else false&lt;/returns&gt;
+	public CheckIfDeviceIsReadyDelegate CheckIfDeviceIsReadyDelegate { get; set; }
+
+	/// &lt;summary&gt;
+	/// Request a closing of the current communication connection from the business logic delegate
+	/// &lt;/summary&gt;
+	public RaiseComDevCloseRequestDelegate RaiseComDevCloseRequestDelegate { get; set; }
+
+	/// &lt;summary&gt;
+	/// Delegate for handling central exception handling in &lt;see cref=&quot;IDuplexIo&quot;/&gt; implementations.
+	/// Set internally normally. Public implementation intended for testing purposes.
+	/// &lt;/summary&gt;
+	public DuplexIoErrorHandlerDelegate DuplexIoErrorHandlerDelegate { get; set; }
+
+	/// &lt;summary&gt;
+	/// Message not sent delegate
+	/// &lt;/summary&gt;
+	public RaiseDataMessageNotSentDelegate RaiseDataMessageNotSentDelegate { get; set; }
+
+	/// &lt;summary&gt;
+	/// Message sent delegate
+	/// &lt;/summary&gt;
+	public RaiseDataMessageSentDelegate RaiseDataMessageSentDelegate { get; set; }
+
+	/// &lt;summary&gt;
+	/// Delegate fired on comm level if a data message has been received. Should be used in &lt;see cref=&quot;ICommunicationHandler&quot;/&gt; impls to implement there handshake responses and then forward to the next layer
+	/// &lt;/summary&gt;
+	public RaiseDataMessageReceivedDelegate RaiseCommLayerDataMessageReceivedDelegate { get; set; }
+
+	/// &lt;summary&gt;
+	/// Delegate raised on app level if data message was received
+	/// &lt;/summary&gt;
+	public RaiseDataMessageReceivedDelegate RaiseAppLayerDataMessageReceivedDelegate { get; set; }
+
+	/// &lt;summary&gt;
+	/// Delegate raised if a device message does not fit the expectations (length, content, ...)
+	/// &lt;/summary&gt;
+	public RaiseUnexpectedDataMessageReceivedDelegate RaiseUnexpectedDataMessageReceivedDelegate { get; set; }
+
+	/// &lt;summary&gt;
+	/// IP address of the device
+	/// &lt;/summary&gt;
+	public string IpAddress { get; set; }
+
+	/// &lt;summary&gt;
+	/// Port to use for device communication
+	/// &lt;/summary&gt;
+	public int Port { get; set; }
+}
+</code></pre>
+<h1 id="define-message-limiting-bytes-devicecommunicationbasics">Define message limiting bytes: DeviceCommunicationBasics</h1>
+<p>The static class DeviceCommunicationBasics holds default values used by the communication layer like timeouts, message start tokens and handshake start tokens. If the default settings are not fitting to your requirements, adjust the values as required.</p>
+<pre><code class="lang-csharp">/// &lt;summary&gt;
+/// A holder class for basic device communication values
+/// &lt;/summary&gt;
+public static class DeviceCommunicationBasics
+{
+	public static int MaxSendAttemptCount { get; set; } =  4;
+
+
+	#region Command timeouts
+
+	/// &lt;summary&gt;
+	/// The default timeout in milliseconds
+	/// &lt;/summary&gt;
+	public static int DefaultTimeout { get; set; } = 2000;
+
+	/// &lt;summary&gt;
+	/// Timeout for a PING sent to the tower
+	/// &lt;/summary&gt;
+	public static int PingTimeout { get; set; } = 500;
+
+	/// &lt;summary&gt;
+	/// Timeout for waiting for a handshake like ACK, NACK or CAN
+	/// &lt;/summary&gt;
+	public static int WaitForAckTimeout { get; set; } = 12000;
+
+	#endregion
+
+	#region Message tokens
+
+	/// &lt;summary&gt;
+	/// All tokens a message can start with
+	/// &lt;/summary&gt;
+	public static List&lt;byte&gt; MessageStartTokens = new() {
+		Ack,
+		Can,
+		Nack,
+		Stx
+	};
+
+	/// &lt;summary&gt;
+	/// All tokens a handshake message can start with
+	/// &lt;/summary&gt;
+	public static List&lt;byte&gt; HandshakeMessageStartTokens = new() {
+		Ack,
+		Can,
+		Nack
+	};
+
+	#endregion
+
+	#region Constants
+
+	public const byte Stx = 2;      // 0x02
+
+	public const byte Etx = 3;      // 0x03
+
+	public const byte Ack = 6;      // 0x06
+
+	public const byte Nack = 21;    // 0x15
+
+	public const byte Can = 24;     // 0x18
+
+	public const byte NullByte = 0x0;
+
+	#endregion
+}
+</code></pre>
+<h1 id="implement-a-data-message-splitter-splitting-the-incoming-byte-stream-into-potential-messages-idatamessagesplitter">Implement a data message splitter splitting the incoming byte stream into potential messages: IDataMessageSplitter</h1>
+<p>Splitting the incoming data stream is a crucial process in data communication. Handling byte arrays is relatively demanding for the developer. So making an internal IDataMessage implementation from a byte array is an important step for development productivity.</p>
+<p>The following implementation of IDataMessageSplitter shows how the byte stream is splitted for the SDCP protocol. You should implement good unit tests for your splitter implementation to ensure safe and stable implementation.</p>
+<pre><code class="lang-csharp">/// &lt;summary&gt;
+/// Implementation for &lt;see cref=&quot;IDataMessageSplitter&quot;/&gt; for SDCP protocol
+/// &lt;/summary&gt;
+public class SdcpDataMessageSplitter : IDataMessageSplitter
+{
+
+    // Array pool is okay as shared instance here
+    private static readonly ArrayPool&lt;byte&gt; ArrayPool = ArrayPool&lt;byte&gt;.Shared;
+
+    /// &lt;summary&gt;
+    /// Length of handshake messages
+    /// &lt;/summary&gt;
+    protected int HandshakeLength = 1;
+
+    /// &lt;summary&gt;
+    /// Main method for TCP/IP message receiving: split the inbound byte stream in commands to process later
+    /// &lt;/summary&gt;
+    /// &lt;param name=&quot;buffer&quot;&gt;Receiving buffer&lt;/param&gt;
+    /// &lt;param name=&quot;command&quot;&gt;The received command. May have a length of zero. Then no valid message was received so far&lt;/param&gt;
+    /// &lt;returns&gt;True if a command was successfuly extract from the buffer else false&lt;/returns&gt;
+    public virtual bool TryReadCommand(ref ReadOnlySequence&lt;byte&gt; buffer, out ReadOnlySequence&lt;byte&gt; command)
+    {
+        var result = TryReadCommandInternal(ref buffer, out command);
+
+        // Check for nulls string the
+
+        command = DataMessageHelper.CheckCommandForNullAtTheEnd(command);
+
+        // Now copy the command if required
+        if (command.Length &lt;= 0)
+        {
+            return result;
+        }
+        var array = ArrayPool.Rent((int)command.Length);
+
+        command.CopyTo(array);
+        command = new ReadOnlySequence&lt;byte&gt;(array).Slice(0, command.Length);
+
+        // Now remove the command out of the buffer
+        buffer = buffer.Slice(command.Length);
+
+        ArrayPool.Return(array);
+
+        return result;
+    }
+
+    private bool TryReadCommandInternal(ref ReadOnlySequence&lt;byte&gt; buffer, out ReadOnlySequence&lt;byte&gt; command)
+    {
+        //Debug.Print($&quot;TryReadCommand: {GetStringFromArray(buffer.ToArray())}&quot;);
+
+        if (buffer.Length == 0)
+        {
+            command = default;
+            return false;
+        }
+
+        var firstByte = buffer.Slice(0, 1).FirstSpan[0];
+
+        // First byte is no message start: remove byte until next message start
+        while (true)
+        {
+            // First byte is message start byte
+            if (DeviceCommunicationBasics.MessageStartTokens.Contains(firstByte))
+            {
+                break;
+            }
+
+            // Remove byte if no message start byte
+            buffer = buffer.Slice(1);
+
+            if (buffer.Length == 0)
+            {
+                command = default;
+                return false;
+            }
+
+            firstByte = buffer.Slice(0, 1).FirstSpan[0];
+
+        }
+
+        // No other
+        if (buffer.Length &lt; 1)
+        {
+            command = default;
+            return false;
+        }
+
+        // First token is not a message start token
+        if (!DeviceCommunicationBasics.MessageStartTokens.Contains(firstByte))
+        {
+            // Handshake with length 1?
+            if (HandshakeLength == 1)
+            {
+                command = buffer.Slice(0, 1);
+                return true;
+            }
+
+            // Check if there is a message start token following: if yes return invalid message
+            for (var i = 1; i &lt; HandshakeLength; i++)
+            {
+                var nextByte = buffer.Slice(i, 1).FirstSpan[0];
+                if (!DeviceCommunicationBasics.MessageStartTokens.Contains(nextByte))
+                {
+                    continue;
+                }
+                command = buffer.Slice(0, i);
+                return true;
+            }
+
+
+            command = default;
+            return false;
+        }
+
+        // Handshake
+        if (DeviceCommunicationBasics.HandshakeMessageStartTokens.Contains(firstByte))
+        {
+
+            var nextByte = buffer.Slice(1, 1).FirstSpan[0];
+
+            if (!DeviceCommunicationBasics.MessageStartTokens.Contains(nextByte))
+            {
+                command = buffer.Slice(0, HandshakeLength);
+                return true;
+            }
+
+            command = buffer.Slice(0, 1);
+            return true;
+        }
+
+        // Data message
+        if (firstByte != DeviceCommunicationBasics.Stx)
+        {
+            command = default;
+            return false;
+        }
+
+        // Find end of message ETX
+        int etxPos;
+        var etxFound = false;
+        for (etxPos = 0; etxPos &lt; buffer.Length; etxPos++)
+        {
+            if (buffer.Slice(etxPos, 1).FirstSpan[0] == DeviceCommunicationBasics.Etx)
+            {
+                etxFound = true;
+                break;
+            }
+        }
+
+        if (!etxFound)
+        {
+            command = default;
+            return false;
+        }
+
+        command = buffer.Slice(0, etxPos + 1);
+        return true;
+    }
+
+    /// &lt;summary&gt;
+    /// Compute the datablock length depending on firmware version
+    /// &lt;/summary&gt;
+    /// &lt;param name=&quot;messageBytes&quot;&gt;Raw data as byte array&lt;/param&gt;
+    /// &lt;returns&gt;Length of the datablock&lt;/returns&gt;
+    public int ComputeDataLength(ref ReadOnlySequence&lt;byte&gt; messageBytes)
+    {
+        // Not needed for SDCP
+        return 0;
+    }
+
+}
+</code></pre>
+<p>See the tests in the the repo for this class for how to test IDataMessageSplitter implementations:</p>
+<pre><code class="lang-csharp">[TestFixture]
+internal class SdcpDataMessageSplitterTests
+{
+	private readonly SdcpDataMessageSplitter _splitter = new();
+
+	[Test]
+	public void TryReadCommand_NoValidMessage_NullReturned()
+	{
+		// Arrange 
+		var data = new byte[] { 0x99,  0x99 };
+		var ros = new ReadOnlySequence&lt;byte&gt;(data);
+
+		// Act  
+		var result = _splitter.TryReadCommand(ref ros, out var command);
+
+		// Assert
+		Assert.That(result, Is.False);
+	}
+
+	...
+	
+}
+</code></pre>
+<h1 id="implement-your-data-message-types-for-inbound-messages-iinbounddatamessage">Implement your data message types for inbound messages: IInboundDataMessage</h1>
+<p>Inbound messages are messages your app receives from another app via network.</p>
+<p>Depending on the purpose of your network communication protocol you will implement one or more inbound data message types. A data message is the object orientated implementation of a byte stream pattern. Data messages may be used for client to server communication, for server to client communication and for bidirectional communication as your protocol requires it.</p>
+<pre><code class="lang-csharp">/// &lt;summary&gt;
+/// Basic implementation of &lt;see cref=&quot;IInboundDataMessage&quot;/&gt; for SDCP protocol
+/// &lt;/summary&gt;
+public class SdcpInboundDataMessage: IInboundDataMessage
+{
+    private Memory&lt;byte&gt; _rawMessageData;
+
+    /// &lt;summary&gt;
+    /// Default ctor
+    /// &lt;/summary&gt;
+    public SdcpInboundDataMessage()
+    {
+        MessageId = DateTime.Now.ToFileTimeUtc();
+    }
+
+    /// &lt;summary&gt;
+    /// A unique ID to identify the message
+    /// &lt;/summary&gt;
+    public long MessageId { get; }
+
+    /// &lt;summary&gt;
+    /// Is waiting for acknowledgement by the device required for the message
+    /// &lt;/summary&gt;
+    public bool WaitForAcknowledgement { get; set; }
+
+    /// &lt;summary&gt;
+    /// Should an acknowledgement be sent if the message is received
+    /// &lt;/summary&gt;
+    public bool AnswerWithAcknowledgement { get; set; }
+
+    /// &lt;summary&gt;
+    /// Current raw message data as byte array
+    /// &lt;/summary&gt;
+    public Memory&lt;byte&gt; RawMessageData
+    {
+        get =&gt; _rawMessageData;
+        set
+        {
+            _rawMessageData = value;
+            RawMessageDataClearText = DataMessageHelper.GetStringFromArrayCsharpStyle(_rawMessageData);
+        }
+    }
+
+    /// &lt;summary&gt;
+    /// Current raw message data as clear text
+    /// &lt;/summary&gt;
+    public string RawMessageDataClearText { get; set; }
+
+    /// &lt;summary&gt;
+    /// Create an info string for logging
+    /// &lt;/summary&gt;
+    /// &lt;returns&gt;Info string&lt;/returns&gt;
+    public string ToInfoString()
+    {
+        return $&quot;SdcpInboundDataMessage ID {MessageId} {RawMessageDataClearText}&quot;;
+    }
+
+    public string ToShortInfoString()
+    {
+        return $&quot;SdcpInboundDataMessage ID {MessageId}&quot;;
+    }
+
+    /// &lt;summary&gt;
+    /// Data block stored in the message
+    /// &lt;/summary&gt;
+    public IDataBlock DataBlock { get; set; }
+}
+</code></pre>
+<h1 id="implement-your-data-message-types-for-outbound-messages-ioutbounddatamessage">Implement your data message types for outbound messages: IOutboundDataMessage</h1>
+<p>Outbound messages are messages your app sends to another app via network.</p>
+<p>Depending on the purpose of your network communication protocol you will implement one or more outbound data message types. A data message is the object orientated implementation of a byte stream pattern. Data messages may be used for client to server communication, for server to client communication and for bidirectional communication as your protocol requires it.</p>
+<pre><code class="lang-csharp">/// &lt;summary&gt;
+/// Basic implementation of &lt;see cref=&quot;IOutboundDataMessage&quot;/&gt; for SDCP protocol
+/// &lt;/summary&gt;
+public class SdcpOutboundDataMessage: IOutboundDataMessage
+{
+    private Memory&lt;byte&gt; _rawMessageData;
+
+    /// &lt;summary&gt;
+    /// Default ctor
+    /// &lt;/summary&gt;
+    public SdcpOutboundDataMessage()
+    {
+        MessageId = DateTime.Now.ToFileTimeUtc();
+    }
+
+    /// &lt;summary&gt;
+    /// A unique ID to identify the message
+    /// &lt;/summary&gt;
+    public long MessageId { get; }
+
+    /// &lt;summary&gt;
+    /// Is waiting for acknowledgement by the device required for the message
+    /// &lt;/summary&gt;
+    public bool WaitForAcknowledgement { get; set; }
+
+    /// &lt;summary&gt;
+    /// Should an acknowledgement be sent if the message is received
+    /// &lt;/summary&gt;
+    public bool AnswerWithAcknowledgement { get; set; }
+
+    /// &lt;summary&gt;
+    /// Current raw message data as byte array
+    /// &lt;/summary&gt;
+    public Memory&lt;byte&gt; RawMessageData
+    {
+        get =&gt; _rawMessageData;
+        set
+        {
+            _rawMessageData = value;
+            RawMessageDataClearText = DataMessageHelper.GetStringFromArrayCsharpStyle(_rawMessageData);
+        }
+    }
+
+    /// &lt;summary&gt;
+    /// Current raw message data as clear text
+    /// &lt;/summary&gt;
+    public string RawMessageDataClearText { get; set; }
+
+    /// &lt;summary&gt;
+    /// Create an info string for logging
+    /// &lt;/summary&gt;
+    /// &lt;returns&gt;Info string&lt;/returns&gt;
+    public string ToInfoString()
+    {
+        return $&quot;SdcpOutboundDataMessage ID {MessageId} {RawMessageDataClearText}&quot;;
+    }
+
+    public string ToShortInfoString()
+    {
+        return $&quot;SdcpOutboundDataMessage ID {MessageId}&quot;;
+    }
+
+    /// &lt;summary&gt;
+    /// Data block stored in the message
+    /// &lt;/summary&gt;
+    public IDataBlock DataBlock { get; set; }
+}
+</code></pre>
+<h1 id="implement-your-inbound-handshake-message-types-iinboundhandshakedatamessage">Implement your inbound handshake message types: IInboundHandShakeDataMessage</h1>
+<p>If required by your protocol define inbound handshake messages as required. Technical details see data message implementation above.</p>
+<p>SDCP protocol uses the default InboundHandshake class as handshake message. For another implementation see the handshake for EDCP protocol:</p>
+<pre><code class="lang-csharp">/// &lt;summary&gt;
+/// Represents an EDCP protocol handshake message
+/// &lt;/summary&gt;
+public sealed class EdcpInboundHandshakeMessage : BaseInboundHandShakeDataMessage, IInboundHandShakeDataMessage
+{
+    /// &lt;summary&gt;
+    /// Default ctor
+    /// &lt;/summary&gt;
+    /// &lt;param name=&quot;messageType&quot;&gt;Current message type&lt;/param&gt;
+    public EdcpInboundHandshakeMessage(MessageTypeEnum messageType)
+    {
+        MessageType = messageType;
+    }
+
+    /// &lt;summary&gt;
+    /// Type of handshake as byte value
+    /// &lt;/summary&gt;
+    public byte HandshakeMessageType { set; get; }
+
+    /// &lt;summary&gt;
+    /// Block code of the data message this handshake is acknowledging
+    /// &lt;/summary&gt;
+    public byte BlockCode { get; set; }
+
+    /// &lt;summary&gt;Returns a string that represents the current object.&lt;/summary&gt;
+    /// &lt;returns&gt;A string that represents the current object.&lt;/returns&gt;
+    public override string ToString()
+    {
+        return $&quot;{HandshakeMessageType switch
+        {
+            6 =&gt; &quot;EdcpInboundHandshake ACK&quot;,
+            21 =&gt; &quot;EdcpInboundHandshake NAK&quot;,
+            24 =&gt; &quot;EdcpInboundHandshake CAN&quot;,
+            _ =&gt; &quot;EdcpInboundHandshake Unknown&quot;
+        }} BlockCode {BlockCode}&quot;;
+    }
+
+    /// &lt;summary&gt;
+    /// Create an info string for logging
+    /// &lt;/summary&gt;
+    /// &lt;returns&gt;Info string&lt;/returns&gt;
+    public override string ToInfoString()
+    {
+        return $&quot;{HandshakeMessageType switch
+        {
+            6 =&gt; &quot;EdcpInboundHandshake ACK&quot;,
+            21 =&gt; &quot;EdcpInboundHandshake NAK&quot;,
+            24 =&gt; &quot;EdcpInboundHandshake CAN&quot;,
+            _ =&gt; &quot;EdcpInboundHandshake Unknown&quot;
+        }} BlockCode {BlockCode}&quot;;
+    }
+
+    /// &lt;summary&gt;
+    /// Create a short info string for logging
+    /// &lt;/summary&gt;
+    /// &lt;returns&gt;Info string&lt;/returns&gt;
+    public override string ToShortInfoString()
+    {
+        return $&quot;{HandshakeMessageType switch
+        {
+            6 =&gt; &quot;EdcpInboundHandshake ACK&quot;,
+            21 =&gt; &quot;EdcpInboundHandshake NAK&quot;,
+            24 =&gt; &quot;EdcpInboundHandshake CAN&quot;,
+            _ =&gt; &quot;EdcpInboundHandshake Unknown&quot;
+        }} BlockCode {BlockCode}&quot;;
+    }
+}
+</code></pre>
+<h1 id="implement-your-outbound-handshake-message-types-ioutboundhandshakedatamessage">Implement your outbound handshake message types: IOutboundHandShakeDataMessage</h1>
+<p>If required by your protocol define outbound handshake messages as required. Technical details see data message implementation above.</p>
+<p>SDCP protocol uses the default OutboundHandshake class as handshake message. For another implementation see the handshake for EDCP protocol:</p>
+<pre><code class="lang-csharp">/// &lt;summary&gt;
+/// Represents an EDCP protocol handshake message
+/// &lt;/summary&gt;
+public sealed class EdcpOutboundHandshakeMessage : BaseOutboundHandShakeDataMessage, IOutboundHandShakeDataMessage
+{
+    /// &lt;summary&gt;
+    /// Type of handshake as byte value
+    /// &lt;/summary&gt;
+    public byte HandshakeMessageType { set; get; }
+
+    /// &lt;summary&gt;
+    /// Block code of the data message this handshake is acknowledging
+    /// &lt;/summary&gt;
+    public byte BlockCode { get; set; }
+
+    /// &lt;summary&gt;Returns a string that represents the current object.&lt;/summary&gt;
+    /// &lt;returns&gt;A string that represents the current object.&lt;/returns&gt;
+    public override string ToString()
+    {
+        return $&quot;{HandshakeMessageType switch
+        {
+            6 =&gt; &quot;EdcpOutboundHandshake ACK&quot;,
+            21 =&gt; &quot;EdcpOutboundHandshake NAK&quot;,
+            24 =&gt; &quot;EdcpOutboundHandshake CAN&quot;,
+            _ =&gt; &quot;EdcpOutboundHandshake Unknown&quot;
+        }} BlockCode {BlockCode}&quot;;
+    }
+
+
+    /// &lt;summary&gt;
+    /// Create an info string for logging
+    /// &lt;/summary&gt;
+    /// &lt;returns&gt;Info string&lt;/returns&gt;
+    public override string ToInfoString()
+    {
+        return $&quot;{HandshakeMessageType switch
+        {
+            6 =&gt; &quot;EdcpOutboundHandshake ACK&quot;,
+            21 =&gt; &quot;EdcpOutboundHandshake NAK&quot;,
+            24 =&gt; &quot;EdcpOutboundHandshake CAN&quot;,
+            _ =&gt; &quot;EdcpOutboundHandshake Unknown&quot;
+        }} BlockCode {BlockCode}&quot;;
+    }
+
+    /// &lt;summary&gt;
+    /// Create a short info string for logging
+    /// &lt;/summary&gt;
+    /// &lt;returns&gt;Info string&lt;/returns&gt;
+    public override string ToShortInfoString()
+    {
+        return $&quot;{HandshakeMessageType switch
+        {
+            6 =&gt; &quot;EdcpOutboundHandshake ACK&quot;,
+            21 =&gt; &quot;EdcpOutboundHandshake NAK&quot;,
+            24 =&gt; &quot;EdcpOutboundHandshake CAN&quot;,
+            _ =&gt; &quot;EdcpOutboundHandshake Unknown&quot;
+        }} BlockCode {BlockCode}&quot;;
+    }
+}
+</code></pre>
+<h1 id="implement-a-handshake-validator-for-inbound-handshakes-ihandshakedatamessagevalidator">Implement a handshake validator for inbound handshakes: IHandshakeDataMessageValidator</h1>
+<p>A handshake validator checks first in method IsHandshakeForSentMessage() if a received handshake is for a certain sent message. Second it sets the ProcessExecutionResult for the responsible send process (ISendPacketProcess):</p>
+<pre><code class="lang-csharp">/// &lt;summary&gt;
+/// Implementation of &lt;see cref=&quot;IHandshakeDataMessageValidator&quot;/&gt; for SDCP protocol
+/// &lt;/summary&gt;
+public class SdcpHandshakeDataMessageValidator : IHandshakeDataMessageValidator
+
+{
+    /// &lt;summary&gt;
+    /// Is a received message a handshake for a sent message
+    /// &lt;/summary&gt;
+    /// &lt;param name=&quot;sentMessage&quot;&gt;Sent message&lt;/param&gt;
+    /// &lt;param name=&quot;handshakeMessage&quot;&gt;Received handshake message&lt;/param&gt;
+    /// &lt;returns&gt;True if the message was the handshake for the sent message&lt;/returns&gt;
+    public DataMessageValidatorResult IsHandshakeForSentMessage(IOutboundDataMessage sentMessage,
+        IInboundDataMessage handshakeMessage)
+    {
+
+        if (sentMessage is not SdcpInboundDataMessage)
+        {
+            return new DataMessageValidatorResult(false, &quot;No SDCP data message sent&quot;);
+        }
+
+        if (handshakeMessage is not InboundHandshakeMessage)
+        {
+            return new DataMessageValidatorResult(false, &quot;Received message is NOT a valid handshake message&quot;);
+        }
+
+        return new DataMessageValidatorResult(true, string.Empty);
+    }
+
+
+    /// &lt;summary&gt;
+    /// Handle the received handshake and sets the ProcessExecutionResult for the responsible send process &lt;see cref=&quot;ISendPacketProcess&quot;/&gt;
+    /// &lt;/summary&gt;
+    /// &lt;param name=&quot;context&quot;&gt;Current send message process&lt;/param&gt;
+    /// &lt;param name=&quot;handshake&quot;&gt;Received handshake&lt;/param&gt;
+    public void HandleHandshake(ISendPacketProcess context, IInboundDataMessage handshake)
+    {
+        if (handshake == null)
+        {
+            context.ProcessExecutionResult = OrderExecutionResultState.Error;
+            return;
+        }
+
+        if (handshake is not InboundHandshakeMessage hs)
+        {
+            //todo result wrong message?
+            context.ProcessExecutionResult = OrderExecutionResultState.NoResponseFromDevice;
+            context.DataMessagingConfig.MonitorLogger?.LogWarning($&quot;Message {context.Message.MessageId}: No handshake received. Current Sent Attempt Count &gt; MaxRepeatCount. No ResponseFromTower! &quot;);
+            return;
+        }
+
+        switch (hs.HandshakeMessageType)
+        {
+            case HandShakeMessageType.Ack:
+                context.ProcessExecutionResult = OrderExecutionResultState.Successful;
+                context.CurrentSendAttempsCount = 0;
+                context.DataMessagingConfig.MonitorLogger?.LogDebug($&quot;Message {context.Message.MessageId}: ACK received&quot;);
+                break;
+
+            case HandShakeMessageType.Nack:
+                context.ProcessExecutionResult = OrderExecutionResultState.Nack;
+                context.DataMessagingConfig.MonitorLogger?.LogWarning($&quot;Message {context.Message.MessageId}: NAK received&quot;);
+                break;
+
+            case HandShakeMessageType.Can:
+                context.ProcessExecutionResult = OrderExecutionResultState.Can;
+                //IMPORTANT clear
+                context.CurrentSendAttempsCount = 0;
+                context.DataMessagingConfig.MonitorLogger?.LogWarning($&quot;Message {context.Message.MessageId}: CAN received&quot;);
+                break;
+            default:
+                context.ProcessExecutionResult = OrderExecutionResultState.Error;
+                break;
+        }
+    }
+}
+</code></pre>
+<h1 id="implement-a-data-message-validator-for-inbound-data-messages-idatamessagevalidator">Implement a data message validator for inbound data messages: IDataMessageValidator</h1>
+<p>A data message validator checks in method IsMessageValid() if the received message is basically a valid message. No detailed checks for datablock content etc. at this point.</p>
+<pre><code class="lang-csharp">/// &lt;summary&gt;
+/// SDCP protocol implementation of &lt;see cref=&quot;IDataMessageValidator&quot;/&gt;
+/// &lt;/summary&gt;
+public class SdcpDataMessageValidator : IDataMessageValidator
+{
+	public DataMessageValidatorResult IsMessageValid(IDataMessage dataMessage)
+	{
+		// Update mode message or raw message: always valid
+		if (dataMessage is RawDataMessage)
+		{
+			return new DataMessageValidatorResult(true, &quot;Message is valid&quot;);
+		}
+
+		// No SDCP data message: always valid
+		if (dataMessage is not SdcpDataMessage)
+		{
+			return new DataMessageValidatorResult(false, &quot;Message is NOT a valid SDCP message&quot;);
+		}
+
+		return new DataMessageValidatorResult(true, &quot;Message is a valid SDCP message&quot;);
+	}
+}
+</code></pre>
+<h1 id="implement-a-message-forwarder-for-received-messages-idatamessageprocessor">Implement a message forwarder for received messages: IDataMessageProcessor</h1>
+<p>The IDataMessageProcessor implementations forwards the received messages to the business logic handling them. Normally data messages are forwarded to business logic via IDataMessagingConfig.RaiseDataMessageReceivedDelegate delegate invoking. Handshake messages are forwarded normally to a IWaitStateManager instance handling the already sent and for a handshake waiting data messages.</p>
+<p>There is a default implementation of IDataMessageProcessor called DefaultDataMessageProcessor. See the code:</p>
+<pre><code class="lang-csharp">/// &lt;summary&gt;
+/// Current implementation of &lt;see cref=&quot;IDataMessageProcessor&quot;/&gt;. Delivers messages in the order of reaching it via &lt;see cref=&quot;ProcessMessage&quot;/&gt;
+/// Should invoke IDataMessagingConfig.RaiseDataMessageReceivedDelegate for data messages and IDataMessagingConfig.DataMessageProcessingPackage.WaitStateManager?.OnHandshakeReceived for handshakes
+/// &lt;/summary&gt;
+public class DefaultDataMessageProcessor : IDataMessageProcessor
+{
+
+    private readonly AutoResetEvent _stopped = new(false);
+
+    private const int TimeOut = 2000;
+
+    /// &lt;summary&gt;
+    /// Current &lt;see cref=&quot;IDataMessagingConfig&quot;/&gt; instance
+    /// &lt;/summary&gt;
+    public readonly IDataMessagingConfig Config;
+
+    /// &lt;summary&gt;
+    /// Default ctor
+    /// &lt;/summary&gt;
+    public DefaultDataMessageProcessor(IDataMessagingConfig config)
+    {
+        Config = config;
+    }
+
+    /// &lt;summary&gt;
+    /// Process the message
+    /// &lt;/summary&gt;
+    /// &lt;param name=&quot;message&quot;&gt;Message to process&lt;/param&gt;
+    public void ProcessMessage(IInboundMessage message)
+    {
+        // Handshake received
+        if (message is IInboundHandShakeDataMessage handShake)
+        {
+            ProcessHandshakes(handShake);
+            return;
+        }
+
+        // Data message received
+        if (message is IInboundDataMessage dataMessage)
+        {
+            AsyncHelper.FireAndForget2(() =&gt; Config.RaiseCommLayerDataMessageReceivedDelegate?.Invoke(dataMessage)).ContinueWith(Callback);
+        }
+
+        // No valid message
+    }
+
+    // ReSharper disable once SuggestBaseTypeForParameter
+    private void ProcessHandshakes(IInboundHandShakeDataMessage handShake)
+    {
+        // fire and forget but let CallBack() be run at the end
+        AsyncHelper.FireAndForget2(() =&gt;
+                Config.DataMessageProcessingPackage.WaitStateManager?.OnHandshakeReceived(handShake))
+            .ContinueWith(Callback);
+        _stopped.WaitOne(TimeOut);
+        //Config.MonitorLogger?.LogInformation($&quot;received handshake message [{hs.HandshakeMessageType:X2}]&quot;);
+
+    }
+
+    private void Callback(IAsyncResult ar)
+    {
+        _stopped.Set();
+    }
+}
+</code></pre>
+<h1 id="implement-the-message-codecs-to-decode-and-encode-to-byte-array-basedatamessagecodec">Implement the message codecs to decode and encode to byte array: BaseDataMessageCodec</h1>
+<p>The job of the message codec is to map byte arrays received from device and separated by the message splitter to internal class instances based on interfaces IDataMessage or IHandshakeMessage to be handled by business logic layer or sending messages based on on interfaces IDataMessage or IHandshakeMessage as byte array to a device.</p>
+<h2 id="sending-and-receiving-raw-byte-data-rawdatamessagecodec">Sending and receiving raw byte data: RawDataMessageCodec</h2>
+<p>You need a minimum of two codes to decode and encode to byte array: one handshake codec and one data message codec.</p>
+<p>For testing purposes or certain poduction tasks there is a RawDataMessageCodec. It forwards the received or sent bytes plain into or from RawDataMessageCodec.RawMessageData.</p>
+<pre><code class="lang-csharp">/// &lt;summary&gt;
+/// Codec to encode and decode raw data messages
+/// &lt;/summary&gt;
+public class RawDataMessageCodec : BaseDataMessageCodec
+{´
+    /// &lt;summary&gt;
+    /// Default ctor
+    /// &lt;/summary&gt;
+    public RawDataMessageCodec()
+    {
+        ExpectedMinimumLength = 1;
+        ExpectedMaximumLength = int.MaxValue;
+    }
+
+    /// &lt;summary&gt;
+    /// Decode a data message to an &lt;see cref=&quot;IInboundDataMessage&quot;/&gt; instance
+    /// &lt;/summary&gt;
+    /// &lt;param name=&quot;data&quot;&gt;Data message bytes received&lt;/param&gt;
+    /// &lt;returns&gt;Decoding result&lt;/returns&gt;
+    public override InboundCodecResult DecodeDataMessage(Memory&lt;byte&gt; data)
+    {
+        var result = new InboundCodecResult
+        {
+            DataMessage =new RawInboundDataMessage
+            {
+                RawMessageData = data
+            },
+            ErrorCode = 0
+        };
+        return result;
+    }
+
+    /// &lt;summary&gt;
+    /// Encodes a message to a byte array to send to receiver
+    /// &lt;/summary&gt;
+    /// &lt;param name=&quot;message&quot;&gt;Data message to send&lt;/param&gt;
+    /// &lt;returns&gt;Byte array as optimized &lt;see cref=&quot;ReadOnlyMemory{T}&quot;/&gt; to send&lt;/returns&gt;
+    public override OutboundCodecResult EncodeDataMessage(IOutboundDataMessage message)
+    {
+        var result = new OutboundCodecResult();
+        if (message is not RawOutboundDataMessage rm)
+        {
+            result.ErrorMessage = &quot;RawDataMessage required for RawDataMessageCodec&quot;;
+            result.ErrorCode= 1;
+            return result;
+        }
+
+        if (message.RawMessageData.Length==0)
+        {
+            result.ErrorMessage = &quot;No data provided for message&quot;;
+            result.ErrorCode= 1;
+            return result;
+        }
+
+        message.RawMessageData = rm.RawMessageData;
+        return result;
+    }
+}
+</code></pre>
+<p>Here the implementation of base SDCP datablock:</p>
+<pre><code class="lang-csharp">
+</code></pre>
+<h2 id="handshake-codec-implementation">Handshake codec implementation</h2>
+<p>Here a simple handshake codec implementation for SDCP protocol:</p>
+<pre><code class="lang-csharp">/// &lt;summary&gt;
+/// Codec to encode and decode handshake messages for SDCP protocol
+/// &lt;/summary&gt;
+public class SdcpHandshakeMessageCodec : BaseDataMessageCodec
+{
+
+    public SdcpHandshakeMessageCodec()
+    {
+        ExpectedMinimumLength = 1;
+        ExpectedMaximumLength = 1;
+    }
+
+    /// &lt;summary&gt;
+    /// Decode a data message to an &lt;see cref=&quot;IInboundDataMessage&quot;/&gt; instance
+    /// &lt;/summary&gt;
+    /// &lt;param name=&quot;data&quot;&gt;Data message bytes received&lt;/param&gt;
+    /// &lt;returns&gt;Decoding result&lt;/returns&gt;
+    public override InboundCodecResult DecodeDataMessage(Memory&lt;byte&gt; data)
+    {
+        var result = CheckExpectedLengths(data.Length);
+
+        if (result.ErrorCode != 0)
+        {
+            return result;
+        }
+
+        if (!DeviceCommunicationBasics.HandshakeMessageStartTokens.Contains(data.Span[0]))
+        {
+            result.ErrorCode = 3;
+            result.ErrorMessage = $&quot;First char {data.Span[0]:X2} is not an allowed handshake char!&quot;;
+            return result;
+        }
+
+        result.DataMessage = new InboundHandshakeMessage(MessageTypeEnum.Received)
+        {
+            HandshakeMessageType = data.Span[0],
+            RawMessageData = data.ToArray()
+        };
+        return result;
+    }
+
+    /// &lt;summary&gt;
+    /// Encodes a message to a byte array to send to receiver
+    /// &lt;/summary&gt;
+    /// &lt;param name=&quot;message&quot;&gt;Data message to send&lt;/param&gt;
+    /// &lt;returns&gt;Byte array as optimized &lt;see cref=&quot;ReadOnlyMemory{T}&quot;/&gt; to send&lt;/returns&gt;
+    public override OutboundCodecResult EncodeDataMessage(IOutboundDataMessage message)
+    {
+        var result = new OutboundCodecResult();
+
+        if (message is not OutboundHandshakeMessage hMessage)
+        {
+            result.ErrorMessage = &quot;HandshakeMessage required for HandshakeMessageCodec&quot;;
+            result.ErrorCode = 1;
+            return result;
+        }
+
+        message.RawMessageData = new[] { hMessage.HandshakeMessageType};
+        return result;
+    }
+}
+</code></pre>
+<h2 id="data-message-codec-implementation">Data message codec implementation</h2>
+<p>In the most case you will have to implement either a set off different data message codecs to encode and decode IDataMessage implementation or you implement one basic data message code for a base message containing different data blocks to be encode or decode by different IDataBlockCodec implementations.</p>
+<pre><code class="lang-csharp">/// &lt;summary&gt;
+/// Codec to encode and decode device data messages for SDCP protocol
+/// &lt;/summary&gt;
+public class SdcpDataMessageCodec : BaseDataMessageCodec
+{
+
+    public readonly IDataBlockCodingProcessor DataBlockCodingProcessor;
+
+
+    public SdcpDataMessageCodec(IDataBlockCodingProcessor dataBlockCodingProcessor)
+    {
+        DataBlockCodingProcessor = dataBlockCodingProcessor;
+
+        ExpectedMinimumLength = DeviceCommunicationBasics.DataMessageMinPacketSize;
+        ExpectedMaximumLength = DeviceCommunicationBasics.DataMessageMaxPacketSize;
+    }
+
+    /// &lt;summary&gt;
+    /// Decode a data message to an &lt;see cref=&quot;IInboundDataMessage&quot;/&gt; instance
+    /// &lt;/summary&gt;
+    /// &lt;param name=&quot;data&quot;&gt;Data message bytes received&lt;/param&gt;
+    /// &lt;returns&gt;Decoding result&lt;/returns&gt;
+    public override InboundCodecResult DecodeDataMessage(Memory&lt;byte&gt; data)
+    {
+
+        var result = CheckExpectedLengths(data.Length);
+
+        if (result.ErrorCode != 0)
+        {
+            return result;
+        }
+
+        try
+        {
+
+            IDataBlock dataBlock;
+
+            // Extract header data from the byte array and store it to message properties if provided
+
+            // Now get the delivered datablock
+
+            var dataBlockBytes = data.Slice(1, data.Length - 1);
+
+            try
+            {
+                dataBlock = DataBlockCodingProcessor.FromBytesToDataBlock(dataBlockBytes);
+            }
+            catch (Exception dataBlockException)
+            {
+                result.ErrorMessage = $&quot;DataBlock {DataMessageHelper.ByteArrayToString(dataBlockBytes)}: decoding failed: {dataBlockException}&quot;;
+                result.ErrorCode = 4;
+                return result;
+            }
+
+
+
+            var dataMessage = new SdcpInboundDataMessage
+            {
+                DataBlock = dataBlock
+            };
+
+            result.DataMessage = dataMessage;
+            return result;
+
+        }
+        catch (Exception exception)
+        {
+            result.ErrorMessage = $&quot;DataMessage {DataMessageHelper.ByteArrayToString(data)}: decoding failed: {exception.Message}&quot;;
+            result.ErrorCode = 5;
+            return result;
+        }
+
+    }
+
+    /// &lt;summary&gt;
+    /// Encodes a message to a byte array to send to receiver
+    /// &lt;/summary&gt;
+    /// &lt;param name=&quot;message&quot;&gt;Data message to send&lt;/param&gt;
+    /// &lt;returns&gt;Byte array as optimized &lt;see cref=&quot;ReadOnlyMemory{T}&quot;/&gt; to send&lt;/returns&gt;
+    public override OutboundCodecResult EncodeDataMessage(IOutboundDataMessage message)
+    {
+        var result = new OutboundCodecResult();
+        if (message is not SdcpInboundDataMessage tMessage)
+        {
+            result.ErrorMessage = &quot;SdcpDataMessage required for SdcpDataMessageCodec&quot;;
+            result.ErrorCode = 1;
+            return result;
+        }
+
+        var data = new List&lt;byte&gt; { DeviceCommunicationBasics.Stx };
+
+        // Add the datablock now if required
+        try
+        {
+            if (tMessage.DataBlock == null)
+            {
+                result.ErrorMessage = &quot;SdcpDataMessageCodec: datablock must not be null&quot;;
+                result.ErrorCode = 5;
+                return result;
+            }
+            DataBlockCodingProcessor.FromDataBlockToBytes(data, tMessage.DataBlock);
+        }
+        catch (Exception exception)
+        {
+            result.ErrorMessage = $&quot;SdcpDataMessageCodec: exception raised during encoding: {exception}&quot;;
+            result.ErrorCode = 4;
+            return result;
+        }
+
+        // Add the final ETX now
+        data.Add(DeviceCommunicationBasics.Etx);
+
+        tMessage.RawMessageData = data.ToArray().AsMemory();
+
+        return result;
+    }
+}
+</code></pre>
+<h1 id="implement-your-datablock-codecs-idatablockcodec">Implement your datablock codecs: IDataBlockCodec</h1>
+<p>Your implementation of the datablock codec should have properties corresponding to the delivered information in the byte array of the datablock.</p>
+<p>The properties of the datablock will be the most interesting info for your business logic using the datablock finally.</p>
+<h2 id="implement-a-datablock-class-based-on-idatablock">Implement a datablock class based on IDataBlock</h2>
+<p>The following example is pretty simply take the delivered byte data in property Data.</p>
+<p>In the real world you normally will add another properties loaded by the codec implementation for decoding codec and generating a byte array from them for a encoding codec.</p>
+<pre><code class="lang-csharp">/// &lt;summary&gt;
+/// Dummy data block
+/// &lt;/summary&gt;
+public class SdcpDummyDatablock: IDataBlock
+{
+	/// &lt;summary&gt;
+	/// Data contains the bytes of the Data except the byte representing datablock type
+	/// &lt;/summary&gt;
+	public Memory&lt;byte&gt; Data { get; set; }
+
+	/// &lt;summary&gt;
+	/// Code for the datablock type
+	/// &lt;/summary&gt;
+	public char DataBlockType { get; set; }= 'x';
+}
+</code></pre>
+<h2 id="implement-the-codec-now">Implement the codec now</h2>
+<pre><code class="lang-csharp">/// &lt;summary&gt;
+/// Datablock codec example for SDCP and EDCP protocol
+/// &lt;/summary&gt;
+public class SdcpDummyDataBlockCodec : IDataBlockCodec
+{
+    /// &lt;summary&gt;
+    /// Method encode an instance of Datablock in bytes array.
+    /// Method is called when a message is sent to the device
+    /// &lt;/summary&gt;
+    /// &lt;param name=&quot;data&quot;&gt;The array as list to add the datablock to&lt;/param&gt;
+    /// &lt;param name=&quot;datablock&quot;&gt;Current datablock object&lt;/param&gt;
+    /// &lt;returns&gt;a byte array with datablock infos&lt;/returns&gt;
+    public void EncodeDataBlock(List&lt;byte&gt; data, IDataBlock datablock)
+    {
+        if (datablock is not SdcpDummyDatablock db)
+        {
+            throw new ArgumentException(&quot;Wrong type of datablock&quot;);
+        }
+
+        // You should add some datablock validation here
+
+        // Add data block type
+        data.Add(Convert.ToByte(datablock.DataBlockType));
+
+        // Now add the data or place any logic here to create byte array from your specific datablock
+        foreach (var b in db.Data.Span)
+        {
+            data.Add(b);
+        }
+    }
+
+    /// &lt;summary&gt;
+    /// Method decodes an incoming bytes array to an instance of Datablock object
+    /// Method is used while receiving bytes from device
+    /// &lt;/summary&gt;
+    /// &lt;param name=&quot;datablockBytes&quot;&gt;Datablock bytes received&lt;/param&gt;
+    /// &lt;returns&gt;Datablock object&lt;/returns&gt;
+    public IDataBlock DecodeDataBlock(Memory&lt;byte&gt; datablockBytes)
+    {
+        // You should add some datablock validation here
+
+		// You should add logic for extracting of property values from the datablock array here 
+
+        // Now create your datablock as request by specs here
+        if (datablockBytes.Length &lt; 2)
+        {
+            return new SdcpDummyDatablock
+            {
+                Data = Array.Empty&lt;byte&gt;(),
+                DataBlockType = 'x'
+            };
+        }
+        return new SdcpDummyDatablock
+        {
+            Data = datablockBytes[1..],
+            DataBlockType = 'x'
+        };
+    }
+}
+</code></pre>
+<h1 id="implement-factory-for-handshakes-to-sent-to-device-idatamessagehandshakefactory">Implement factory for handshakes to sent to device: IDataMessageHandshakeFactory</h1>
+<p>If one of the methods should not be needed for your protocol you should throw a NotSupportedException.</p>
+<pre><code class="lang-csharp">/// &lt;summary&gt;
+/// Factory for creating handshakes for SDCP protocol to sent to the client
+/// &lt;/summary&gt;
+public class SdcpHandshakeFactory : IDataMessageHandshakeFactory
+{
+    /// &lt;summary&gt;
+    /// Get an ACK handshake message
+    /// &lt;/summary&gt;
+    /// &lt;param name=&quot;message&quot;&gt;Current message received&lt;/param&gt;
+    /// &lt;returns&gt;ACK handshake message to send&lt;/returns&gt;
+    public IDataMessage GetAckResponse(IDataMessage message)
+    {
+        var ack = new HandshakeMessage( MessageTypeEnum.Sent)
+        {
+            HandshakeMessageType = HandShakeMessageType.Ack,
+        };
+
+        return ack;
+    }
+
+    /// &lt;summary&gt;
+    /// Get a NAK handshake message
+    /// &lt;/summary&gt;
+    /// &lt;param name=&quot;message&quot;&gt;Current message received&lt;/param&gt;
+    /// &lt;returns&gt;NAK handshake message to send&lt;/returns&gt;
+    public IDataMessage GetNakResponse(IDataMessage message)
+    {
+        var nak = new HandshakeMessage(MessageTypeEnum.Sent)
+        {
+            HandshakeMessageType = HandShakeMessageType.Nack,
+        };
+        return nak;
+    }
+
+    /// &lt;summary&gt;
+    /// Get a CAN handshake message
+    /// &lt;/summary&gt;
+    /// &lt;param name=&quot;message&quot;&gt;Current message received&lt;/param&gt;
+    /// &lt;returns&gt;CAN handshake message to send&lt;/returns&gt;
+    public IDataMessage GetCanResponse(IDataMessage message)
+    {
+        var can = new HandshakeMessage(MessageTypeEnum.Sent)
+        {
+            HandshakeMessageType = HandShakeMessageType.Can,
+        };
+        return can;
+    }
+}
+</code></pre>
+<h1 id="datablock-coding-processor-idatablockcodingprocessor">Datablock coding processor: IDataBlockCodingProcessor</h1>
+<p>The datablock coding processor is responsible for selecting the correct datablock codec. There is a default implementation called DefaultDataBlockCodingProcessor. You have to feed the DefaultDataBlockCodingProcessor your available datablock codecs. There is normally no need to implement a fully selfmade implemenation of IDataBlockCodingProcessor.</p>
+<p>For loading the datablock codecs to DefaultDataBlockCodingProcessor see the sample for the next step below.</p>
+<h1 id="implement-your-messaging-package-idatamessageprocessingpackage">Implement your messaging package: IDataMessageProcessingPackage</h1>
+<p>The implementation of IDataMessageProcessingPackage brings all components required for client server network communication based on Bodoconsult.NetworkCommunication together.</p>
+<p>The implementation should have a ctor loading the IDataMessagingConfig to use. See example below for SDCP protocol:</p>
+<pre><code class="lang-csharp">/// &lt;summary&gt;
+/// Current implementation of &lt;see cref=&quot;IDataMessageProcessingPackage&quot;/&gt; for SDCP protocol
+/// &lt;/summary&gt;
+public class SdcpDataMessageProcessingPackage : IDataMessageProcessingPackage
+{
+	/// &lt;summary&gt;
+	/// Default ctor
+	/// &lt;/summary&gt;
+	public SdcpDataMessageProcessingPackage(IDataMessagingConfig dataMessagingConfig)
+	{
+
+		DataMessagingConfig = dataMessagingConfig;
+
+		// *******************************
+		// Now setup the dependent objects
+
+		// 1. Message splitter
+		DataMessageSplitter = new SdcpDataMessageSplitter();
+
+		// 2. Codecs
+		DataMessageCodingProcessor = new DefaultDataMessageCodingProcessor();
+		LoadCodecs();
+
+		// 3. Internal forwarding
+		DataMessageProcessor = new SdcpDataMessageProcessor(dataMessagingConfig);
+
+		// 4. Wait state handler
+		WaitStateManager = new DefaultWaitStateManager(dataMessagingConfig);
+
+		// 5. Handshake validator
+		HandshakeDataMessageValidator = new SdcpHandshakeDataMessageValidator();
+
+		// 6. Data message validator
+		DataMessageValidator = new SdcpDataMessageValidator();
+
+		// 7. Handshake creation factory
+		DataMessageHandshakeFactory = new SdcpHandshakeFactory();
+	}
+
+	private void LoadCodecs()
+	{
+		var handShakeCodec = new SdcpHandshakeMessageCodec();
+		DataMessageCodingProcessor.MessageCodecs.Add(handShakeCodec);
+
+		var processor = new DefaultDataBlockCodingProcessor();
+
+		// Load your datablock codes here
+		processor.LoadDataBlockCodecs('x', new SdcpDummyDataBlockCodec());
+
+		var towerMessageCodec = new SdcpDataMessageCodec(processor);
+		DataMessageCodingProcessor.MessageCodecs.Add(towerMessageCodec);
+
+		var rawCodec = new RawDataMessageCodec();
+		DataMessageCodingProcessor.MessageCodecs.Add(rawCodec);
+	}
+
+	/// &lt;summary&gt;
+	/// Current data messaging config
+	/// &lt;/summary&gt;
+	public IDataMessagingConfig DataMessagingConfig { get; }
+
+	/// &lt;summary&gt;
+	/// Current data message splitter
+	/// &lt;/summary&gt;
+	public IDataMessageSplitter DataMessageSplitter { get; }
+
+	/// &lt;summary&gt;
+	/// Current data message coding processor
+	/// &lt;/summary&gt;
+	public IDataMessageCodingProcessor DataMessageCodingProcessor { get; }
+
+	/// &lt;summary&gt;
+	/// Current data message processor for internal forwarding of the received messages
+	/// &lt;/summary&gt;
+	public IDataMessageProcessor DataMessageProcessor { get; }
+
+	/// &lt;summary&gt;
+	/// Current wait state manager
+	/// &lt;/summary&gt;
+	public IWaitStateManager WaitStateManager { get; }
+
+	/// &lt;summary&gt;
+	/// Current validator impl for handshake messages
+	/// &lt;/summary&gt;
+	public IHandshakeDataMessageValidator HandshakeDataMessageValidator { get; }
+
+	/// &lt;summary&gt;
+	/// Current validator impl for data messages
+	/// &lt;/summary&gt;
+	public IDataMessageValidator DataMessageValidator { get; }
+
+	/// &lt;summary&gt;
+	/// Factory for creation of handshakes to be sent for received messages
+	/// &lt;/summary&gt;
+	public IDataMessageHandshakeFactory DataMessageHandshakeFactory { get; }
+}
+</code></pre>
+<pre><code class="lang-csharp">
+</code></pre>
+<pre><code class="lang-csharp">
+</code></pre>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/doc/Bodoconsult.NetworkCommunication/SDCP.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

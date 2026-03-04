@@ -1,0 +1,147 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IOrderReceiverFactory
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.IOrderReceiverFactory
+  id: IOrderReceiverFactory
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  children:
+  - Bodoconsult.NetworkCommunication.Interfaces.IOrderReceiverFactory.CreateInstance(Bodoconsult.App.Interfaces.IAppLoggerProxy)
+  langs:
+  - csharp
+  - vb
+  name: IOrderReceiverFactory
+  nameWithType: IOrderReceiverFactory
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IOrderReceiverFactory
+  type: Interface
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/IOrderReceiverFactory.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: IOrderReceiverFactory
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/IOrderReceiverFactory.cs
+    startLine: 9
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Interface for order receiver implementations
+  example: []
+  syntax:
+    content: public interface IOrderReceiverFactory
+    content.vb: Public Interface IOrderReceiverFactory
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IOrderReceiverFactory.CreateInstance(Bodoconsult.App.Interfaces.IAppLoggerProxy)
+  commentId: M:Bodoconsult.NetworkCommunication.Interfaces.IOrderReceiverFactory.CreateInstance(Bodoconsult.App.Interfaces.IAppLoggerProxy)
+  id: CreateInstance(Bodoconsult.App.Interfaces.IAppLoggerProxy)
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IOrderReceiverFactory
+  langs:
+  - csharp
+  - vb
+  name: CreateInstance(IAppLoggerProxy)
+  nameWithType: IOrderReceiverFactory.CreateInstance(IAppLoggerProxy)
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IOrderReceiverFactory.CreateInstance(Bodoconsult.App.Interfaces.IAppLoggerProxy)
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/IOrderReceiverFactory.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: CreateInstance
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/IOrderReceiverFactory.cs
+    startLine: 17
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Create a device order receiver instance
+  example: []
+  syntax:
+    content: IOrderReceiver CreateInstance(IAppLoggerProxy logger)
+    parameters:
+    - id: logger
+      type: Bodoconsult.App.Interfaces.IAppLoggerProxy
+      description: Current monitor logger
+    return:
+      type: Bodoconsult.NetworkCommunication.Interfaces.IOrderReceiver
+      description: A device order receiver instance
+    content.vb: Function CreateInstance(logger As IAppLoggerProxy) As IOrderReceiver
+  overload: Bodoconsult.NetworkCommunication.Interfaces.IOrderReceiverFactory.CreateInstance*
+references:
+- uid: Bodoconsult.NetworkCommunication.Interfaces
+  commentId: N:Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.html
+  name: Bodoconsult.NetworkCommunication.Interfaces
+  nameWithType: Bodoconsult.NetworkCommunication.Interfaces
+  fullName: Bodoconsult.NetworkCommunication.Interfaces
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Interfaces
+    name: Interfaces
+    href: Bodoconsult.NetworkCommunication.Interfaces.html
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Interfaces
+    name: Interfaces
+    href: Bodoconsult.NetworkCommunication.Interfaces.html
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IOrderReceiverFactory.CreateInstance*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.IOrderReceiverFactory.CreateInstance
+  href: Bodoconsult.NetworkCommunication.Interfaces.IOrderReceiverFactory.html#Bodoconsult_NetworkCommunication_Interfaces_IOrderReceiverFactory_CreateInstance_Bodoconsult_App_Interfaces_IAppLoggerProxy_
+  name: CreateInstance
+  nameWithType: IOrderReceiverFactory.CreateInstance
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IOrderReceiverFactory.CreateInstance
+- uid: Bodoconsult.App.Interfaces.IAppLoggerProxy
+  commentId: T:Bodoconsult.App.Interfaces.IAppLoggerProxy
+  parent: Bodoconsult.App.Interfaces
+  isExternal: true
+  name: IAppLoggerProxy
+  nameWithType: IAppLoggerProxy
+  fullName: Bodoconsult.App.Interfaces.IAppLoggerProxy
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IOrderReceiver
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.IOrderReceiver
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.NetworkCommunication.Interfaces.IOrderReceiver.html
+  name: IOrderReceiver
+  nameWithType: IOrderReceiver
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IOrderReceiver
+- uid: Bodoconsult.App.Interfaces
+  commentId: N:Bodoconsult.App.Interfaces
+  isExternal: true
+  name: Bodoconsult.App.Interfaces
+  nameWithType: Bodoconsult.App.Interfaces
+  fullName: Bodoconsult.App.Interfaces
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    isExternal: true
+  - name: .
+  - uid: Bodoconsult.App
+    name: App
+    isExternal: true
+  - name: .
+  - uid: Bodoconsult.App.Interfaces
+    name: Interfaces
+    isExternal: true
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    isExternal: true
+  - name: .
+  - uid: Bodoconsult.App
+    name: App
+    isExternal: true
+  - name: .
+  - uid: Bodoconsult.App.Interfaces
+    name: Interfaces
+    isExternal: true

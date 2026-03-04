@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Class StateManagementStateBase | Bodoconsult.Network </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class StateManagementStateBase | Bodoconsult.Network ">
+      
+      <meta name="description" content="Base class for  instances">
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/new/main/apiSpec/new?filename=Bodoconsult_NetworkCommunication_StateManagement_StateManagementStateBase.md&amp;value=---%0Auid%3A%20Bodoconsult.NetworkCommunication.StateManagement.StateManagementStateBase%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../logo.svg" alt="Bodoconsult.Network">
+            Bodoconsult.Network
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="Bodoconsult.NetworkCommunication.StateManagement.StateManagementStateBase">
+
+
+
+  <h1 id="Bodoconsult_NetworkCommunication_StateManagement_StateManagementStateBase" data-uid="Bodoconsult.NetworkCommunication.StateManagement.StateManagementStateBase" class="text-break">
+Class StateManagementStateBase  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/StateManagement/StateManagementStateBase.cs/#L11"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="Bodoconsult.html">Bodoconsult</a>.<a class="xref" href="Bodoconsult.NetworkCommunication.html">NetworkCommunication</a>.<a class="xref" href="Bodoconsult.NetworkCommunication.StateManagement.html">StateManagement</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>Bodoconsult.NetworkCommunication.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p>Base class for <a class="xref" href="Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState.html">IStateManagementState</a> instances</p>
+</div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public abstract class StateManagementStateBase : IStateManagementState</code></pre>
+  </div>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><span class="xref">StateManagementStateBase</span></div>
+    </dd>
+  </dl>
+
+  <dl class="typelist implements">
+    <dt>Implements</dt>
+    <dd>
+      <div><a class="xref" href="Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState.html">IStateManagementState</a></div>
+    </dd>
+  </dl>
+
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone">object.MemberwiseClone()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
+    </div>
+  </dd></dl>
+
+
+
+
+
+
+  <h2 class="section" id="constructors">Constructors
+</h2>
+
+
+  <a id="Bodoconsult_NetworkCommunication_StateManagement_StateManagementStateBase__ctor_" data-uid="Bodoconsult.NetworkCommunication.StateManagement.StateManagementStateBase.#ctor*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_StateManagement_StateManagementStateBase__ctor_Bodoconsult_NetworkCommunication_StateManagement_IStateManagementContext_" data-uid="Bodoconsult.NetworkCommunication.StateManagement.StateManagementStateBase.#ctor(Bodoconsult.NetworkCommunication.StateManagement.IStateManagementContext)">
+  StateManagementStateBase(IStateManagementContext)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/StateManagement/StateManagementStateBase.cs/#L19"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Default ctor</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected StateManagementStateBase(IStateManagementContext currentContext)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>currentContext</code> <a class="xref" href="Bodoconsult.NetworkCommunication.StateManagement.IStateManagementContext.html">IStateManagementContext</a></dt>
+    <dd><p>Current context</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
+  <a id="Bodoconsult_NetworkCommunication_StateManagement_StateManagementStateBase_AllowedNextStates_" data-uid="Bodoconsult.NetworkCommunication.StateManagement.StateManagementStateBase.AllowedNextStates*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_StateManagement_StateManagementStateBase_AllowedNextStates" data-uid="Bodoconsult.NetworkCommunication.StateManagement.StateManagementStateBase.AllowedNextStates">
+  AllowedNextStates
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/StateManagement/StateManagementStateBase.cs/#L58"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Allowed next states</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public List&lt;string&gt; AllowedNextStates { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_StateManagement_StateManagementStateBase_BusinessState_" data-uid="Bodoconsult.NetworkCommunication.StateManagement.StateManagementStateBase.BusinessState*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_StateManagement_StateManagementStateBase_BusinessState" data-uid="Bodoconsult.NetworkCommunication.StateManagement.StateManagementStateBase.BusinessState">
+  BusinessState
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/StateManagement/StateManagementStateBase.cs/#L33"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Current business state</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IBusinessState BusinessState { get; protected set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Bodoconsult.NetworkCommunication.StateManagement.IBusinessState.html">IBusinessState</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_StateManagement_StateManagementStateBase_BusinessSubState_" data-uid="Bodoconsult.NetworkCommunication.StateManagement.StateManagementStateBase.BusinessSubState*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_StateManagement_StateManagementStateBase_BusinessSubState" data-uid="Bodoconsult.NetworkCommunication.StateManagement.StateManagementStateBase.BusinessSubState">
+  BusinessSubState
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/StateManagement/StateManagementStateBase.cs/#L38"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Current business substate</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IBusinessSubState BusinessSubState { get; protected set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Bodoconsult.NetworkCommunication.StateManagement.IBusinessSubState.html">IBusinessSubState</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_StateManagement_StateManagementStateBase_CurrentContext_" data-uid="Bodoconsult.NetworkCommunication.StateManagement.StateManagementStateBase.CurrentContext*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_StateManagement_StateManagementStateBase_CurrentContext" data-uid="Bodoconsult.NetworkCommunication.StateManagement.StateManagementStateBase.CurrentContext">
+  CurrentContext
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/StateManagement/StateManagementStateBase.cs/#L43"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Current context</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IStateManagementContext CurrentContext { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Bodoconsult.NetworkCommunication.StateManagement.IStateManagementContext.html">IStateManagementContext</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_StateManagement_StateManagementStateBase_CurrentOrderId_" data-uid="Bodoconsult.NetworkCommunication.StateManagement.StateManagementStateBase.CurrentOrderId*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_StateManagement_StateManagementStateBase_CurrentOrderId" data-uid="Bodoconsult.NetworkCommunication.StateManagement.StateManagementStateBase.CurrentOrderId">
+  CurrentOrderId
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/StateManagement/StateManagementStateBase.cs/#L13"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int CurrentOrderId { get; protected set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_StateManagement_StateManagementStateBase_DeviceState_" data-uid="Bodoconsult.NetworkCommunication.StateManagement.StateManagementStateBase.DeviceState*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_StateManagement_StateManagementStateBase_DeviceState" data-uid="Bodoconsult.NetworkCommunication.StateManagement.StateManagementStateBase.DeviceState">
+  DeviceState
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/StateManagement/StateManagementStateBase.cs/#L28"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Current device state</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IDeviceState DeviceState { get; protected set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Bodoconsult.NetworkCommunication.Interfaces.IDeviceState.html">IDeviceState</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_StateManagement_StateManagementStateBase_IsRunningOrdersCancellationRequired_" data-uid="Bodoconsult.NetworkCommunication.StateManagement.StateManagementStateBase.IsRunningOrdersCancellationRequired*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_StateManagement_StateManagementStateBase_IsRunningOrdersCancellationRequired" data-uid="Bodoconsult.NetworkCommunication.StateManagement.StateManagementStateBase.IsRunningOrdersCancellationRequired">
+  IsRunningOrdersCancellationRequired
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/StateManagement/StateManagementStateBase.cs/#L53"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Is cancellation of running orders required on error?</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsRunningOrdersCancellationRequired { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_StateManagement_StateManagementStateBase_Name_" data-uid="Bodoconsult.NetworkCommunication.StateManagement.StateManagementStateBase.Name*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_StateManagement_StateManagementStateBase_Name" data-uid="Bodoconsult.NetworkCommunication.StateManagement.StateManagementStateBase.Name">
+  Name
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/StateManagement/StateManagementStateBase.cs/#L48"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Type name of the order</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string Name { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_StateManagement_StateManagementStateBase_NextState_" data-uid="Bodoconsult.NetworkCommunication.StateManagement.StateManagementStateBase.NextState*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_StateManagement_StateManagementStateBase_NextState" data-uid="Bodoconsult.NetworkCommunication.StateManagement.StateManagementStateBase.NextState">
+  NextState
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/StateManagement/StateManagementStateBase.cs/#L68"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>The next state to run after all orders for this state were running</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IStateManagementState NextState { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState.html">IStateManagementState</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_StateManagement_StateManagementStateBase_Orders_" data-uid="Bodoconsult.NetworkCommunication.StateManagement.StateManagementStateBase.Orders*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_StateManagement_StateManagementStateBase_Orders" data-uid="Bodoconsult.NetworkCommunication.StateManagement.StateManagementStateBase.Orders">
+  Orders
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/StateManagement/StateManagementStateBase.cs/#L63"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Read only list all orders required by this state</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public List&lt;IOrder&gt; Orders { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="Bodoconsult.NetworkCommunication.Interfaces.IOrder.html">IOrder</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="Bodoconsult_NetworkCommunication_StateManagement_StateManagementStateBase_HandleAsyncMessage_" data-uid="Bodoconsult.NetworkCommunication.StateManagement.StateManagementStateBase.HandleAsyncMessage*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_StateManagement_StateManagementStateBase_HandleAsyncMessage_Bodoconsult_NetworkCommunication_Interfaces_IInboundDataMessage_" data-uid="Bodoconsult.NetworkCommunication.StateManagement.StateManagementStateBase.HandleAsyncMessage(Bodoconsult.NetworkCommunication.Interfaces.IInboundDataMessage)">
+  HandleAsyncMessage(IInboundDataMessage)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/StateManagement/StateManagementStateBase.cs/#L158"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Handle an async received message sent by the device</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual MessageHandlingResult HandleAsyncMessage(IInboundDataMessage message)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>message</code> <a class="xref" href="Bodoconsult.NetworkCommunication.Interfaces.IInboundDataMessage.html">IInboundDataMessage</a></dt>
+    <dd><p>Async received message</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Bodoconsult.NetworkCommunication.Interfaces.MessageHandlingResult.html">MessageHandlingResult</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_StateManagement_StateManagementStateBase_HandleComDevClose_" data-uid="Bodoconsult.NetworkCommunication.StateManagement.StateManagementStateBase.HandleComDevClose*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_StateManagement_StateManagementStateBase_HandleComDevClose" data-uid="Bodoconsult.NetworkCommunication.StateManagement.StateManagementStateBase.HandleComDevClose">
+  HandleComDevClose()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/StateManagement/StateManagementStateBase.cs/#L140"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Handle a ComDevClose event</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void HandleComDevClose()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_StateManagement_StateManagementStateBase_HandleErrorMessage_" data-uid="Bodoconsult.NetworkCommunication.StateManagement.StateManagementStateBase.HandleErrorMessage*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_StateManagement_StateManagementStateBase_HandleErrorMessage_Bodoconsult_NetworkCommunication_Interfaces_IInboundDataMessage_" data-uid="Bodoconsult.NetworkCommunication.StateManagement.StateManagementStateBase.HandleErrorMessage(Bodoconsult.NetworkCommunication.Interfaces.IInboundDataMessage)">
+  HandleErrorMessage(IInboundDataMessage)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/StateManagement/StateManagementStateBase.cs/#L149"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Handle an error message sent by the device</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void HandleErrorMessage(IInboundDataMessage message)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>message</code> <a class="xref" href="Bodoconsult.NetworkCommunication.Interfaces.IInboundDataMessage.html">IInboundDataMessage</a></dt>
+    <dd><p>Error message</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_StateManagement_StateManagementStateBase_InitiateState_" data-uid="Bodoconsult.NetworkCommunication.StateManagement.StateManagementStateBase.InitiateState*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_StateManagement_StateManagementStateBase_InitiateState" data-uid="Bodoconsult.NetworkCommunication.StateManagement.StateManagementStateBase.InitiateState">
+  InitiateState()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/StateManagement/StateManagementStateBase.cs/#L73"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Initiate the state i.e. with creating required orders</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void InitiateState()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_StateManagement_StateManagementStateBase_OrderFinishedSuccessful_" data-uid="Bodoconsult.NetworkCommunication.StateManagement.StateManagementStateBase.OrderFinishedSuccessful*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_StateManagement_StateManagementStateBase_OrderFinishedSuccessful_Bodoconsult_NetworkCommunication_Interfaces_IOrder_" data-uid="Bodoconsult.NetworkCommunication.StateManagement.StateManagementStateBase.OrderFinishedSuccessful(Bodoconsult.NetworkCommunication.Interfaces.IOrder)">
+  OrderFinishedSuccessful(IOrder)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/StateManagement/StateManagementStateBase.cs/#L107"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>The order was finished successfully and now do the last work on the order</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void OrderFinishedSuccessful(IOrder order)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>order</code> <a class="xref" href="Bodoconsult.NetworkCommunication.Interfaces.IOrder.html">IOrder</a></dt>
+    <dd><p>Current order</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_StateManagement_StateManagementStateBase_OrderFinishedUnsuccessful_" data-uid="Bodoconsult.NetworkCommunication.StateManagement.StateManagementStateBase.OrderFinishedUnsuccessful*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_StateManagement_StateManagementStateBase_OrderFinishedUnsuccessful_Bodoconsult_NetworkCommunication_Interfaces_IOrder_" data-uid="Bodoconsult.NetworkCommunication.StateManagement.StateManagementStateBase.OrderFinishedUnsuccessful(Bodoconsult.NetworkCommunication.Interfaces.IOrder)">
+  OrderFinishedUnsuccessful(IOrder)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/StateManagement/StateManagementStateBase.cs/#L132"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>The order was NOT finished succesfully and now do the last work on the order</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void OrderFinishedUnsuccessful(IOrder order)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>order</code> <a class="xref" href="Bodoconsult.NetworkCommunication.Interfaces.IOrder.html">IOrder</a></dt>
+    <dd><p>Current order</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_StateManagement_StateManagementStateBase_RunNextOrder_" data-uid="Bodoconsult.NetworkCommunication.StateManagement.StateManagementStateBase.RunNextOrder*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_StateManagement_StateManagementStateBase_RunNextOrder" data-uid="Bodoconsult.NetworkCommunication.StateManagement.StateManagementStateBase.RunNextOrder">
+  RunNextOrder()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/StateManagement/StateManagementStateBase.cs/#L89"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Run the next order for the state</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void RunNextOrder()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_StateManagement_StateManagementStateBase_SetInitalStates_" data-uid="Bodoconsult.NetworkCommunication.StateManagement.StateManagementStateBase.SetInitalStates*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_StateManagement_StateManagementStateBase_SetInitalStates" data-uid="Bodoconsult.NetworkCommunication.StateManagement.StateManagementStateBase.SetInitalStates">
+  SetInitalStates()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/StateManagement/StateManagementStateBase.cs/#L81"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Ser the initial states for this state</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void SetInitalStates()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_StateManagement_StateManagementStateBase_ToLogString_" data-uid="Bodoconsult.NetworkCommunication.StateManagement.StateManagementStateBase.ToLogString*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_StateManagement_StateManagementStateBase_ToLogString" data-uid="Bodoconsult.NetworkCommunication.StateManagement.StateManagementStateBase.ToLogString">
+  ToLogString()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/StateManagement/StateManagementStateBase.cs/#L172"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Create a string for logging</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual string ToLogString()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>String with state info</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/StateManagement/StateManagementStateBase.cs/#L11" class="edit-link">Edit this page</a>
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

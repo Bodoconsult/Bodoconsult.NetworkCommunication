@@ -1,0 +1,141 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IOrderPipelineFactory
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.IOrderPipelineFactory
+  id: IOrderPipelineFactory
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  children:
+  - Bodoconsult.NetworkCommunication.Interfaces.IOrderPipelineFactory.CreateInstance(System.String,Bodoconsult.NetworkCommunication.Interfaces.IRequestProcessorFactory)
+  langs:
+  - csharp
+  - vb
+  name: IOrderPipelineFactory
+  nameWithType: IOrderPipelineFactory
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IOrderPipelineFactory
+  type: Interface
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/IOrderPipelineFactory.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: IOrderPipelineFactory
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/IOrderPipelineFactory.cs
+    startLine: 7
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Factory for creating <xref href="Bodoconsult.NetworkCommunication.Interfaces.IOrderPipeline" data-throw-if-not-resolved="false"></xref>
+  example: []
+  syntax:
+    content: public interface IOrderPipelineFactory
+    content.vb: Public Interface IOrderPipelineFactory
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IOrderPipelineFactory.CreateInstance(System.String,Bodoconsult.NetworkCommunication.Interfaces.IRequestProcessorFactory)
+  commentId: M:Bodoconsult.NetworkCommunication.Interfaces.IOrderPipelineFactory.CreateInstance(System.String,Bodoconsult.NetworkCommunication.Interfaces.IRequestProcessorFactory)
+  id: CreateInstance(System.String,Bodoconsult.NetworkCommunication.Interfaces.IRequestProcessorFactory)
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IOrderPipelineFactory
+  langs:
+  - csharp
+  - vb
+  name: CreateInstance(string, IRequestProcessorFactory)
+  nameWithType: IOrderPipelineFactory.CreateInstance(string, IRequestProcessorFactory)
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IOrderPipelineFactory.CreateInstance(string, Bodoconsult.NetworkCommunication.Interfaces.IRequestProcessorFactory)
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/IOrderPipelineFactory.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: CreateInstance
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/IOrderPipelineFactory.cs
+    startLine: 15
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Create a new instance of <xref href="Bodoconsult.NetworkCommunication.Interfaces.IOrderPipeline" data-throw-if-not-resolved="false"></xref>
+  example: []
+  syntax:
+    content: IOrderPipeline CreateInstance(string loggerId, IRequestProcessorFactory requestProcessorFactory)
+    parameters:
+    - id: loggerId
+      type: System.String
+      description: Logger ID to identity
+    - id: requestProcessorFactory
+      type: Bodoconsult.NetworkCommunication.Interfaces.IRequestProcessorFactory
+      description: Current request processor factory
+    return:
+      type: Bodoconsult.NetworkCommunication.Interfaces.IOrderPipeline
+      description: Instance of <xref href="Bodoconsult.NetworkCommunication.Interfaces.IOrderPipeline" data-throw-if-not-resolved="false"></xref> created
+    content.vb: Function CreateInstance(loggerId As String, requestProcessorFactory As IRequestProcessorFactory) As IOrderPipeline
+  overload: Bodoconsult.NetworkCommunication.Interfaces.IOrderPipelineFactory.CreateInstance*
+  nameWithType.vb: IOrderPipelineFactory.CreateInstance(String, IRequestProcessorFactory)
+  fullName.vb: Bodoconsult.NetworkCommunication.Interfaces.IOrderPipelineFactory.CreateInstance(String, Bodoconsult.NetworkCommunication.Interfaces.IRequestProcessorFactory)
+  name.vb: CreateInstance(String, IRequestProcessorFactory)
+references:
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IOrderPipeline
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.IOrderPipeline
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.NetworkCommunication.Interfaces.IOrderPipeline.html
+  name: IOrderPipeline
+  nameWithType: IOrderPipeline
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IOrderPipeline
+- uid: Bodoconsult.NetworkCommunication.Interfaces
+  commentId: N:Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.html
+  name: Bodoconsult.NetworkCommunication.Interfaces
+  nameWithType: Bodoconsult.NetworkCommunication.Interfaces
+  fullName: Bodoconsult.NetworkCommunication.Interfaces
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Interfaces
+    name: Interfaces
+    href: Bodoconsult.NetworkCommunication.Interfaces.html
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Interfaces
+    name: Interfaces
+    href: Bodoconsult.NetworkCommunication.Interfaces.html
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IOrderPipelineFactory.CreateInstance*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.IOrderPipelineFactory.CreateInstance
+  href: Bodoconsult.NetworkCommunication.Interfaces.IOrderPipelineFactory.html#Bodoconsult_NetworkCommunication_Interfaces_IOrderPipelineFactory_CreateInstance_System_String_Bodoconsult_NetworkCommunication_Interfaces_IRequestProcessorFactory_
+  name: CreateInstance
+  nameWithType: IOrderPipelineFactory.CreateInstance
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IOrderPipelineFactory.CreateInstance
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IRequestProcessorFactory
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.IRequestProcessorFactory
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.NetworkCommunication.Interfaces.IRequestProcessorFactory.html
+  name: IRequestProcessorFactory
+  nameWithType: IRequestProcessorFactory
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IRequestProcessorFactory
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System

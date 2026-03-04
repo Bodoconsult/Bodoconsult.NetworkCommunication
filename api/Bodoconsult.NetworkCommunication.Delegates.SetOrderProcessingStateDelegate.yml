@@ -1,0 +1,83 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bodoconsult.NetworkCommunication.Delegates.SetOrderProcessingStateDelegate
+  commentId: T:Bodoconsult.NetworkCommunication.Delegates.SetOrderProcessingStateDelegate
+  id: SetOrderProcessingStateDelegate
+  parent: Bodoconsult.NetworkCommunication.Delegates
+  children: []
+  langs:
+  - csharp
+  - vb
+  name: SetOrderProcessingStateDelegate
+  nameWithType: SetOrderProcessingStateDelegate
+  fullName: Bodoconsult.NetworkCommunication.Delegates.SetOrderProcessingStateDelegate
+  type: Delegate
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Delegates/CommDelegates.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: SetOrderProcessingStateDelegate
+    path: src/Bodoconsult.NetworkCommunication/Delegates/CommDelegates.cs
+    startLine: 106
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Delegates
+  summary: Set the order processing state delegate
+  example: []
+  syntax:
+    content: public delegate void SetOrderProcessingStateDelegate(bool isActivated)
+    parameters:
+    - id: isActivated
+      type: System.Boolean
+      description: 'Is the order processing activated: true or false?'
+    content.vb: Public Delegate Sub SetOrderProcessingStateDelegate(isActivated As Boolean)
+references:
+- uid: Bodoconsult.NetworkCommunication.Delegates
+  commentId: N:Bodoconsult.NetworkCommunication.Delegates
+  href: Bodoconsult.html
+  name: Bodoconsult.NetworkCommunication.Delegates
+  nameWithType: Bodoconsult.NetworkCommunication.Delegates
+  fullName: Bodoconsult.NetworkCommunication.Delegates
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Delegates
+    name: Delegates
+    href: Bodoconsult.NetworkCommunication.Delegates.html
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Delegates
+    name: Delegates
+    href: Bodoconsult.NetworkCommunication.Delegates.html
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System

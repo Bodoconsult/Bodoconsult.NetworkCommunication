@@ -1,0 +1,332 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IMasterOrderFactory
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.IMasterOrderFactory
+  id: IMasterOrderFactory
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  children:
+  - Bodoconsult.NetworkCommunication.Interfaces.IMasterOrderFactory.GetFactory(System.String)
+  - Bodoconsult.NetworkCommunication.Interfaces.IMasterOrderFactory.GetOrder(System.String,Bodoconsult.NetworkCommunication.Interfaces.IParameterSet)
+  - Bodoconsult.NetworkCommunication.Interfaces.IMasterOrderFactory.RegisteredFactories
+  langs:
+  - csharp
+  - vb
+  name: IMasterOrderFactory
+  nameWithType: IMasterOrderFactory
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IMasterOrderFactory
+  type: Interface
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/IMasterOrderFactory.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: IMasterOrderFactory
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/IMasterOrderFactory.cs
+    startLine: 8
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: >-
+    An interface for central order generation via factories for each order type
+
+    One implementation of this interface is intended to be hold in DI container as singleton
+  example: []
+  syntax:
+    content: public interface IMasterOrderFactory
+    content.vb: Public Interface IMasterOrderFactory
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IMasterOrderFactory.RegisteredFactories
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IMasterOrderFactory.RegisteredFactories
+  id: RegisteredFactories
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IMasterOrderFactory
+  langs:
+  - csharp
+  - vb
+  name: RegisteredFactories
+  nameWithType: IMasterOrderFactory.RegisteredFactories
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IMasterOrderFactory.RegisteredFactories
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/IMasterOrderFactory.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: RegisteredFactories
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/IMasterOrderFactory.cs
+    startLine: 13
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: All registered factories
+  example: []
+  syntax:
+    content: IList<IOrderFactory> RegisteredFactories { get; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.IList{Bodoconsult.NetworkCommunication.Interfaces.IOrderFactory}
+    content.vb: ReadOnly Property RegisteredFactories As IList(Of IOrderFactory)
+  overload: Bodoconsult.NetworkCommunication.Interfaces.IMasterOrderFactory.RegisteredFactories*
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IMasterOrderFactory.GetFactory(System.String)
+  commentId: M:Bodoconsult.NetworkCommunication.Interfaces.IMasterOrderFactory.GetFactory(System.String)
+  id: GetFactory(System.String)
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IMasterOrderFactory
+  langs:
+  - csharp
+  - vb
+  name: GetFactory(string)
+  nameWithType: IMasterOrderFactory.GetFactory(string)
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IMasterOrderFactory.GetFactory(string)
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/IMasterOrderFactory.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: GetFactory
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/IMasterOrderFactory.cs
+    startLine: 20
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Get a factory for a certain order type
+  example: []
+  syntax:
+    content: IOrderFactory GetFactory(string requestedTypeOfOrder)
+    parameters:
+    - id: requestedTypeOfOrder
+      type: System.String
+      description: Requested order type
+    return:
+      type: Bodoconsult.NetworkCommunication.Interfaces.IOrderFactory
+      description: ''
+    content.vb: Function GetFactory(requestedTypeOfOrder As String) As IOrderFactory
+  overload: Bodoconsult.NetworkCommunication.Interfaces.IMasterOrderFactory.GetFactory*
+  nameWithType.vb: IMasterOrderFactory.GetFactory(String)
+  fullName.vb: Bodoconsult.NetworkCommunication.Interfaces.IMasterOrderFactory.GetFactory(String)
+  name.vb: GetFactory(String)
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IMasterOrderFactory.GetOrder(System.String,Bodoconsult.NetworkCommunication.Interfaces.IParameterSet)
+  commentId: M:Bodoconsult.NetworkCommunication.Interfaces.IMasterOrderFactory.GetOrder(System.String,Bodoconsult.NetworkCommunication.Interfaces.IParameterSet)
+  id: GetOrder(System.String,Bodoconsult.NetworkCommunication.Interfaces.IParameterSet)
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IMasterOrderFactory
+  langs:
+  - csharp
+  - vb
+  name: GetOrder(string, IParameterSet)
+  nameWithType: IMasterOrderFactory.GetOrder(string, IParameterSet)
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IMasterOrderFactory.GetOrder(string, Bodoconsult.NetworkCommunication.Interfaces.IParameterSet)
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/IMasterOrderFactory.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: GetOrder
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/IMasterOrderFactory.cs
+    startLine: 28
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Get an order for a certain order type
+  example: []
+  syntax:
+    content: IOrder GetOrder(string requestedTypeOfOrder, IParameterSet parameterSet)
+    parameters:
+    - id: requestedTypeOfOrder
+      type: System.String
+      description: Requested order type
+    - id: parameterSet
+      type: Bodoconsult.NetworkCommunication.Interfaces.IParameterSet
+      description: Current parameter set to use for the newly created order
+    return:
+      type: Bodoconsult.NetworkCommunication.Interfaces.IOrder
+      description: ''
+    content.vb: Function GetOrder(requestedTypeOfOrder As String, parameterSet As IParameterSet) As IOrder
+  overload: Bodoconsult.NetworkCommunication.Interfaces.IMasterOrderFactory.GetOrder*
+  nameWithType.vb: IMasterOrderFactory.GetOrder(String, IParameterSet)
+  fullName.vb: Bodoconsult.NetworkCommunication.Interfaces.IMasterOrderFactory.GetOrder(String, Bodoconsult.NetworkCommunication.Interfaces.IParameterSet)
+  name.vb: GetOrder(String, IParameterSet)
+references:
+- uid: Bodoconsult.NetworkCommunication.Interfaces
+  commentId: N:Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.html
+  name: Bodoconsult.NetworkCommunication.Interfaces
+  nameWithType: Bodoconsult.NetworkCommunication.Interfaces
+  fullName: Bodoconsult.NetworkCommunication.Interfaces
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Interfaces
+    name: Interfaces
+    href: Bodoconsult.NetworkCommunication.Interfaces.html
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Interfaces
+    name: Interfaces
+    href: Bodoconsult.NetworkCommunication.Interfaces.html
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IMasterOrderFactory.RegisteredFactories*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.IMasterOrderFactory.RegisteredFactories
+  href: Bodoconsult.NetworkCommunication.Interfaces.IMasterOrderFactory.html#Bodoconsult_NetworkCommunication_Interfaces_IMasterOrderFactory_RegisteredFactories
+  name: RegisteredFactories
+  nameWithType: IMasterOrderFactory.RegisteredFactories
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IMasterOrderFactory.RegisteredFactories
+- uid: System.Collections.Generic.IList{Bodoconsult.NetworkCommunication.Interfaces.IOrderFactory}
+  commentId: T:System.Collections.Generic.IList{Bodoconsult.NetworkCommunication.Interfaces.IOrderFactory}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IList`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1
+  name: IList<IOrderFactory>
+  nameWithType: IList<IOrderFactory>
+  fullName: System.Collections.Generic.IList<Bodoconsult.NetworkCommunication.Interfaces.IOrderFactory>
+  nameWithType.vb: IList(Of IOrderFactory)
+  fullName.vb: System.Collections.Generic.IList(Of Bodoconsult.NetworkCommunication.Interfaces.IOrderFactory)
+  name.vb: IList(Of IOrderFactory)
+  spec.csharp:
+  - uid: System.Collections.Generic.IList`1
+    name: IList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1
+  - name: <
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IOrderFactory
+    name: IOrderFactory
+    href: Bodoconsult.NetworkCommunication.Interfaces.IOrderFactory.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IList`1
+    name: IList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IOrderFactory
+    name: IOrderFactory
+    href: Bodoconsult.NetworkCommunication.Interfaces.IOrderFactory.html
+  - name: )
+- uid: System.Collections.Generic.IList`1
+  commentId: T:System.Collections.Generic.IList`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1
+  name: IList<T>
+  nameWithType: IList<T>
+  fullName: System.Collections.Generic.IList<T>
+  nameWithType.vb: IList(Of T)
+  fullName.vb: System.Collections.Generic.IList(Of T)
+  name.vb: IList(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IList`1
+    name: IList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IList`1
+    name: IList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IMasterOrderFactory.GetFactory*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.IMasterOrderFactory.GetFactory
+  href: Bodoconsult.NetworkCommunication.Interfaces.IMasterOrderFactory.html#Bodoconsult_NetworkCommunication_Interfaces_IMasterOrderFactory_GetFactory_System_String_
+  name: GetFactory
+  nameWithType: IMasterOrderFactory.GetFactory
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IMasterOrderFactory.GetFactory
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IOrderFactory
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.IOrderFactory
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.NetworkCommunication.Interfaces.IOrderFactory.html
+  name: IOrderFactory
+  nameWithType: IOrderFactory
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IOrderFactory
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IMasterOrderFactory.GetOrder*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.IMasterOrderFactory.GetOrder
+  href: Bodoconsult.NetworkCommunication.Interfaces.IMasterOrderFactory.html#Bodoconsult_NetworkCommunication_Interfaces_IMasterOrderFactory_GetOrder_System_String_Bodoconsult_NetworkCommunication_Interfaces_IParameterSet_
+  name: GetOrder
+  nameWithType: IMasterOrderFactory.GetOrder
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IMasterOrderFactory.GetOrder
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IParameterSet
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.IParameterSet
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.NetworkCommunication.Interfaces.IParameterSet.html
+  name: IParameterSet
+  nameWithType: IParameterSet
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IParameterSet
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IOrder
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.IOrder
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.NetworkCommunication.Interfaces.IOrder.html
+  name: IOrder
+  nameWithType: IOrder
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IOrder

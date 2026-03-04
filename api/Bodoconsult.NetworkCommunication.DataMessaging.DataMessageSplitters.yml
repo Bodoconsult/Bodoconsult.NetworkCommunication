@@ -1,0 +1,37 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bodoconsult.NetworkCommunication.DataMessaging.DataMessageSplitters
+  commentId: N:Bodoconsult.NetworkCommunication.DataMessaging.DataMessageSplitters
+  id: Bodoconsult.NetworkCommunication.DataMessaging.DataMessageSplitters
+  children:
+  - Bodoconsult.NetworkCommunication.DataMessaging.DataMessageSplitters.BtcpDataMessageSplitter
+  - Bodoconsult.NetworkCommunication.DataMessaging.DataMessageSplitters.EdcpDataMessageSplitter
+  - Bodoconsult.NetworkCommunication.DataMessaging.DataMessageSplitters.SdcpDataMessageSplitter
+  langs:
+  - csharp
+  - vb
+  name: Bodoconsult.NetworkCommunication.DataMessaging.DataMessageSplitters
+  nameWithType: Bodoconsult.NetworkCommunication.DataMessaging.DataMessageSplitters
+  fullName: Bodoconsult.NetworkCommunication.DataMessaging.DataMessageSplitters
+  type: Namespace
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+references:
+- uid: Bodoconsult.NetworkCommunication.DataMessaging.DataMessageSplitters.BtcpDataMessageSplitter
+  commentId: T:Bodoconsult.NetworkCommunication.DataMessaging.DataMessageSplitters.BtcpDataMessageSplitter
+  href: Bodoconsult.NetworkCommunication.DataMessaging.DataMessageSplitters.BtcpDataMessageSplitter.html
+  name: BtcpDataMessageSplitter
+  nameWithType: BtcpDataMessageSplitter
+  fullName: Bodoconsult.NetworkCommunication.DataMessaging.DataMessageSplitters.BtcpDataMessageSplitter
+- uid: Bodoconsult.NetworkCommunication.DataMessaging.DataMessageSplitters.EdcpDataMessageSplitter
+  commentId: T:Bodoconsult.NetworkCommunication.DataMessaging.DataMessageSplitters.EdcpDataMessageSplitter
+  href: Bodoconsult.NetworkCommunication.DataMessaging.DataMessageSplitters.EdcpDataMessageSplitter.html
+  name: EdcpDataMessageSplitter
+  nameWithType: EdcpDataMessageSplitter
+  fullName: Bodoconsult.NetworkCommunication.DataMessaging.DataMessageSplitters.EdcpDataMessageSplitter
+- uid: Bodoconsult.NetworkCommunication.DataMessaging.DataMessageSplitters.SdcpDataMessageSplitter
+  commentId: T:Bodoconsult.NetworkCommunication.DataMessaging.DataMessageSplitters.SdcpDataMessageSplitter
+  href: Bodoconsult.NetworkCommunication.DataMessaging.DataMessageSplitters.SdcpDataMessageSplitter.html
+  name: SdcpDataMessageSplitter
+  nameWithType: SdcpDataMessageSplitter
+  fullName: Bodoconsult.NetworkCommunication.DataMessaging.DataMessageSplitters.SdcpDataMessageSplitter

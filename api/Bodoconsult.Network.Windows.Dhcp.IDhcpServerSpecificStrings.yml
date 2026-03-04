@@ -1,0 +1,157 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerSpecificStrings
+  commentId: T:Bodoconsult.Network.Windows.Dhcp.IDhcpServerSpecificStrings
+  id: IDhcpServerSpecificStrings
+  parent: Bodoconsult.Network.Windows.Dhcp
+  children:
+  - Bodoconsult.Network.Windows.Dhcp.IDhcpServerSpecificStrings.DefaultUserClassName
+  - Bodoconsult.Network.Windows.Dhcp.IDhcpServerSpecificStrings.DefaultVendorClassName
+  langs:
+  - csharp
+  - vb
+  name: IDhcpServerSpecificStrings
+  nameWithType: IDhcpServerSpecificStrings
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerSpecificStrings
+  type: Interface
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/IDhcpServerSpecificStrings.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: IDhcpServerSpecificStrings
+    path: src/Bodoconsult.Network.Windows/Dhcp/IDhcpServerSpecificStrings.cs
+    startLine: 5
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: public interface IDhcpServerSpecificStrings
+    content.vb: Public Interface IDhcpServerSpecificStrings
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerSpecificStrings.DefaultUserClassName
+  commentId: P:Bodoconsult.Network.Windows.Dhcp.IDhcpServerSpecificStrings.DefaultUserClassName
+  id: DefaultUserClassName
+  parent: Bodoconsult.Network.Windows.Dhcp.IDhcpServerSpecificStrings
+  langs:
+  - csharp
+  - vb
+  name: DefaultUserClassName
+  nameWithType: IDhcpServerSpecificStrings.DefaultUserClassName
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerSpecificStrings.DefaultUserClassName
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/IDhcpServerSpecificStrings.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: DefaultUserClassName
+    path: src/Bodoconsult.Network.Windows/Dhcp/IDhcpServerSpecificStrings.cs
+    startLine: 7
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: string DefaultUserClassName { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: ReadOnly Property DefaultUserClassName As String
+  overload: Bodoconsult.Network.Windows.Dhcp.IDhcpServerSpecificStrings.DefaultUserClassName*
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerSpecificStrings.DefaultVendorClassName
+  commentId: P:Bodoconsult.Network.Windows.Dhcp.IDhcpServerSpecificStrings.DefaultVendorClassName
+  id: DefaultVendorClassName
+  parent: Bodoconsult.Network.Windows.Dhcp.IDhcpServerSpecificStrings
+  langs:
+  - csharp
+  - vb
+  name: DefaultVendorClassName
+  nameWithType: IDhcpServerSpecificStrings.DefaultVendorClassName
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerSpecificStrings.DefaultVendorClassName
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/IDhcpServerSpecificStrings.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: DefaultVendorClassName
+    path: src/Bodoconsult.Network.Windows/Dhcp/IDhcpServerSpecificStrings.cs
+    startLine: 8
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: string DefaultVendorClassName { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: ReadOnly Property DefaultVendorClassName As String
+  overload: Bodoconsult.Network.Windows.Dhcp.IDhcpServerSpecificStrings.DefaultVendorClassName*
+references:
+- uid: Bodoconsult.Network.Windows.Dhcp
+  commentId: N:Bodoconsult.Network.Windows.Dhcp
+  href: Bodoconsult.html
+  name: Bodoconsult.Network.Windows.Dhcp
+  nameWithType: Bodoconsult.Network.Windows.Dhcp
+  fullName: Bodoconsult.Network.Windows.Dhcp
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.Network
+    name: Network
+    href: Bodoconsult.Network.html
+  - name: .
+  - uid: Bodoconsult.Network.Windows
+    name: Windows
+    href: Bodoconsult.Network.Windows.html
+  - name: .
+  - uid: Bodoconsult.Network.Windows.Dhcp
+    name: Dhcp
+    href: Bodoconsult.Network.Windows.Dhcp.html
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.Network
+    name: Network
+    href: Bodoconsult.Network.html
+  - name: .
+  - uid: Bodoconsult.Network.Windows
+    name: Windows
+    href: Bodoconsult.Network.Windows.html
+  - name: .
+  - uid: Bodoconsult.Network.Windows.Dhcp
+    name: Dhcp
+    href: Bodoconsult.Network.Windows.Dhcp.html
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerSpecificStrings.DefaultUserClassName*
+  commentId: Overload:Bodoconsult.Network.Windows.Dhcp.IDhcpServerSpecificStrings.DefaultUserClassName
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerSpecificStrings.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerSpecificStrings_DefaultUserClassName
+  name: DefaultUserClassName
+  nameWithType: IDhcpServerSpecificStrings.DefaultUserClassName
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerSpecificStrings.DefaultUserClassName
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerSpecificStrings.DefaultVendorClassName*
+  commentId: Overload:Bodoconsult.Network.Windows.Dhcp.IDhcpServerSpecificStrings.DefaultVendorClassName
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerSpecificStrings.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerSpecificStrings_DefaultVendorClassName
+  name: DefaultVendorClassName
+  nameWithType: IDhcpServerSpecificStrings.DefaultVendorClassName
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerSpecificStrings.DefaultVendorClassName

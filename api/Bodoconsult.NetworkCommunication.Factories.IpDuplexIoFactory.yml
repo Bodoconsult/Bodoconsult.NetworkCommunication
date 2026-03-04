@@ -1,0 +1,481 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bodoconsult.NetworkCommunication.Factories.IpDuplexIoFactory
+  commentId: T:Bodoconsult.NetworkCommunication.Factories.IpDuplexIoFactory
+  id: IpDuplexIoFactory
+  parent: Bodoconsult.NetworkCommunication.Factories
+  children:
+  - Bodoconsult.NetworkCommunication.Factories.IpDuplexIoFactory.#ctor(Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcessFactory)
+  - Bodoconsult.NetworkCommunication.Factories.IpDuplexIoFactory.CreateInstance(Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig)
+  langs:
+  - csharp
+  - vb
+  name: IpDuplexIoFactory
+  nameWithType: IpDuplexIoFactory
+  fullName: Bodoconsult.NetworkCommunication.Factories.IpDuplexIoFactory
+  type: Class
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Factories/IpDuplexIoFactory.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: IpDuplexIoFactory
+    path: src/Bodoconsult.NetworkCommunication/Factories/IpDuplexIoFactory.cs
+    startLine: 11
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Factories
+  summary: Own pipeline implementation of <xref href="Bodoconsult.NetworkCommunication.Interfaces.IDuplexIo" data-throw-if-not-resolved="false"></xref>
+  example: []
+  syntax:
+    content: 'public class IpDuplexIoFactory : IDuplexIoFactory'
+    content.vb: Public Class IpDuplexIoFactory Implements IDuplexIoFactory
+  inheritance:
+  - System.Object
+  implements:
+  - Bodoconsult.NetworkCommunication.Interfaces.IDuplexIoFactory
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: Bodoconsult.NetworkCommunication.Factories.IpDuplexIoFactory.#ctor(Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcessFactory)
+  commentId: M:Bodoconsult.NetworkCommunication.Factories.IpDuplexIoFactory.#ctor(Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcessFactory)
+  id: '#ctor(Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcessFactory)'
+  parent: Bodoconsult.NetworkCommunication.Factories.IpDuplexIoFactory
+  langs:
+  - csharp
+  - vb
+  name: IpDuplexIoFactory(ISendPacketProcessFactory)
+  nameWithType: IpDuplexIoFactory.IpDuplexIoFactory(ISendPacketProcessFactory)
+  fullName: Bodoconsult.NetworkCommunication.Factories.IpDuplexIoFactory.IpDuplexIoFactory(Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcessFactory)
+  type: Constructor
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Factories/IpDuplexIoFactory.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: .ctor
+    path: src/Bodoconsult.NetworkCommunication/Factories/IpDuplexIoFactory.cs
+    startLine: 18
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Factories
+  summary: Default ctor
+  example: []
+  syntax:
+    content: public IpDuplexIoFactory(ISendPacketProcessFactory sendPacketProcessFactory)
+    parameters:
+    - id: sendPacketProcessFactory
+      type: Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcessFactory
+    content.vb: Public Sub New(sendPacketProcessFactory As ISendPacketProcessFactory)
+  overload: Bodoconsult.NetworkCommunication.Factories.IpDuplexIoFactory.#ctor*
+  nameWithType.vb: IpDuplexIoFactory.New(ISendPacketProcessFactory)
+  fullName.vb: Bodoconsult.NetworkCommunication.Factories.IpDuplexIoFactory.New(Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcessFactory)
+  name.vb: New(ISendPacketProcessFactory)
+- uid: Bodoconsult.NetworkCommunication.Factories.IpDuplexIoFactory.CreateInstance(Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig)
+  commentId: M:Bodoconsult.NetworkCommunication.Factories.IpDuplexIoFactory.CreateInstance(Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig)
+  id: CreateInstance(Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig)
+  parent: Bodoconsult.NetworkCommunication.Factories.IpDuplexIoFactory
+  langs:
+  - csharp
+  - vb
+  name: CreateInstance(IDataMessagingConfig)
+  nameWithType: IpDuplexIoFactory.CreateInstance(IDataMessagingConfig)
+  fullName: Bodoconsult.NetworkCommunication.Factories.IpDuplexIoFactory.CreateInstance(Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig)
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Factories/IpDuplexIoFactory.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: CreateInstance
+    path: src/Bodoconsult.NetworkCommunication/Factories/IpDuplexIoFactory.cs
+    startLine: 28
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Factories
+  summary: Creates an instance of <xref href="Bodoconsult.NetworkCommunication.Interfaces.IDuplexIo" data-throw-if-not-resolved="false"></xref>
+  example: []
+  syntax:
+    content: public IDuplexIo CreateInstance(IDataMessagingConfig config)
+    parameters:
+    - id: config
+      type: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig
+      description: Current data messaging config
+    return:
+      type: Bodoconsult.NetworkCommunication.Interfaces.IDuplexIo
+      description: Instance of <xref href="Bodoconsult.NetworkCommunication.Interfaces.IDuplexIo" data-throw-if-not-resolved="false"></xref>
+    content.vb: Public Function CreateInstance(config As IDataMessagingConfig) As IDuplexIo
+  overload: Bodoconsult.NetworkCommunication.Factories.IpDuplexIoFactory.CreateInstance*
+  implements:
+  - Bodoconsult.NetworkCommunication.Interfaces.IDuplexIoFactory.CreateInstance(Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig)
+references:
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IDuplexIo
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.IDuplexIo
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.NetworkCommunication.Interfaces.IDuplexIo.html
+  name: IDuplexIo
+  nameWithType: IDuplexIo
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IDuplexIo
+- uid: Bodoconsult.NetworkCommunication.Factories
+  commentId: N:Bodoconsult.NetworkCommunication.Factories
+  href: Bodoconsult.html
+  name: Bodoconsult.NetworkCommunication.Factories
+  nameWithType: Bodoconsult.NetworkCommunication.Factories
+  fullName: Bodoconsult.NetworkCommunication.Factories
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Factories
+    name: Factories
+    href: Bodoconsult.NetworkCommunication.Factories.html
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Factories
+    name: Factories
+    href: Bodoconsult.NetworkCommunication.Factories.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IDuplexIoFactory
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.IDuplexIoFactory
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.NetworkCommunication.Interfaces.IDuplexIoFactory.html
+  name: IDuplexIoFactory
+  nameWithType: IDuplexIoFactory
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IDuplexIoFactory
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: Bodoconsult.NetworkCommunication.Interfaces
+  commentId: N:Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.html
+  name: Bodoconsult.NetworkCommunication.Interfaces
+  nameWithType: Bodoconsult.NetworkCommunication.Interfaces
+  fullName: Bodoconsult.NetworkCommunication.Interfaces
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Interfaces
+    name: Interfaces
+    href: Bodoconsult.NetworkCommunication.Interfaces.html
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Interfaces
+    name: Interfaces
+    href: Bodoconsult.NetworkCommunication.Interfaces.html
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Bodoconsult.NetworkCommunication.Factories.IpDuplexIoFactory.#ctor*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Factories.IpDuplexIoFactory.#ctor
+  href: Bodoconsult.NetworkCommunication.Factories.IpDuplexIoFactory.html#Bodoconsult_NetworkCommunication_Factories_IpDuplexIoFactory__ctor_Bodoconsult_NetworkCommunication_Interfaces_ISendPacketProcessFactory_
+  name: IpDuplexIoFactory
+  nameWithType: IpDuplexIoFactory.IpDuplexIoFactory
+  fullName: Bodoconsult.NetworkCommunication.Factories.IpDuplexIoFactory.IpDuplexIoFactory
+  nameWithType.vb: IpDuplexIoFactory.New
+  fullName.vb: Bodoconsult.NetworkCommunication.Factories.IpDuplexIoFactory.New
+  name.vb: New
+- uid: Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcessFactory
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcessFactory
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcessFactory.html
+  name: ISendPacketProcessFactory
+  nameWithType: ISendPacketProcessFactory
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcessFactory
+- uid: Bodoconsult.NetworkCommunication.Factories.IpDuplexIoFactory.CreateInstance*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Factories.IpDuplexIoFactory.CreateInstance
+  href: Bodoconsult.NetworkCommunication.Factories.IpDuplexIoFactory.html#Bodoconsult_NetworkCommunication_Factories_IpDuplexIoFactory_CreateInstance_Bodoconsult_NetworkCommunication_Interfaces_IDataMessagingConfig_
+  name: CreateInstance
+  nameWithType: IpDuplexIoFactory.CreateInstance
+  fullName: Bodoconsult.NetworkCommunication.Factories.IpDuplexIoFactory.CreateInstance
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IDuplexIoFactory.CreateInstance(Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig)
+  commentId: M:Bodoconsult.NetworkCommunication.Interfaces.IDuplexIoFactory.CreateInstance(Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig)
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IDuplexIoFactory
+  href: Bodoconsult.NetworkCommunication.Interfaces.IDuplexIoFactory.html#Bodoconsult_NetworkCommunication_Interfaces_IDuplexIoFactory_CreateInstance_Bodoconsult_NetworkCommunication_Interfaces_IDataMessagingConfig_
+  name: CreateInstance(IDataMessagingConfig)
+  nameWithType: IDuplexIoFactory.CreateInstance(IDataMessagingConfig)
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IDuplexIoFactory.CreateInstance(Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig)
+  spec.csharp:
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IDuplexIoFactory.CreateInstance(Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig)
+    name: CreateInstance
+    href: Bodoconsult.NetworkCommunication.Interfaces.IDuplexIoFactory.html#Bodoconsult_NetworkCommunication_Interfaces_IDuplexIoFactory_CreateInstance_Bodoconsult_NetworkCommunication_Interfaces_IDataMessagingConfig_
+  - name: (
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig
+    name: IDataMessagingConfig
+    href: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig.html
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IDuplexIoFactory.CreateInstance(Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig)
+    name: CreateInstance
+    href: Bodoconsult.NetworkCommunication.Interfaces.IDuplexIoFactory.html#Bodoconsult_NetworkCommunication_Interfaces_IDuplexIoFactory_CreateInstance_Bodoconsult_NetworkCommunication_Interfaces_IDataMessagingConfig_
+  - name: (
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig
+    name: IDataMessagingConfig
+    href: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig.html
+  - name: )
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig.html
+  name: IDataMessagingConfig
+  nameWithType: IDataMessagingConfig
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig

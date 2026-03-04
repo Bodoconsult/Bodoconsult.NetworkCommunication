@@ -1,0 +1,2923 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder
+  commentId: T:Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder
+  id: OmOrder
+  parent: Bodoconsult.NetworkCommunication.OrderManagement.Orders
+  children:
+  - Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.#ctor(System.Int64,System.String,Bodoconsult.NetworkCommunication.Interfaces.IParameterSet)
+  - Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.AllowedParallelOrderTypes
+  - Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.Benchmark
+  - Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.CreateTraceEntry(Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionResultState,System.Int32@,System.DateTime)
+  - Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.DeviceId
+  - Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.Dispose
+  - Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.EndTime
+  - Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.ExecutionResult
+  - Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.ExecutionState
+  - Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.FailingOrderRequiresComDevClose
+  - Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.GetFormattedUser
+  - Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.Id
+  - Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.IsBenchable
+  - Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.IsCancelled
+  - Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.IsCancelledLockObject
+  - Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.IsCancelledOnComDevClose
+  - Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.IsCancelledOndevicePropertyUpdate
+  - Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.IsCheckedWithPriority
+  - Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.IsClientNotificationTurnedOff
+  - Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.IsDisposable
+  - Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.IsFinished
+  - Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.IsHighPriorityOrder
+  - Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.IsNextOrderStartAllowed
+  - Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.IsRunningSync
+  - Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.LoggerId
+  - Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.Name
+  - Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.NextOrder
+  - Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.OrderError
+  - Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.OrderFinishedSuccessfulAction
+  - Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.OrderFinishedUnsuccessfulAction
+  - Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.OrderSource
+  - Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.OrderTypeCode
+  - Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.ParameterSet
+  - Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.RequestSpecs
+  - Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.SendCancelTodeviceIfCancelledOrUnsuccessful
+  - Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.SourceUid
+  - Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.StartTime
+  - Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.StateToNotifyOnSuccess
+  - Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.TraceCodeError
+  - Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.TraceCodeSuccess
+  - Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.TraceEntry
+  - Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.TraceMessage
+  - Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.TransactionId
+  - Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.TypeName
+  - Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.WasSuccessful
+  langs:
+  - csharp
+  - vb
+  name: OmOrder
+  nameWithType: OmOrder
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder
+  type: Class
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/OrderManagement/Orders/OmOrder.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: OmOrder
+    path: src/Bodoconsult.NetworkCommunication/OrderManagement/Orders/OmOrder.cs
+    startLine: 13
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.OrderManagement.Orders
+  summary: Order management order
+  example: []
+  syntax:
+    content: 'public class OmOrder : IOrder, IDisposable'
+    content.vb: Public Class OmOrder Implements IOrder, IDisposable
+  inheritance:
+  - System.Object
+  implements:
+  - Bodoconsult.NetworkCommunication.Interfaces.IOrder
+  - System.IDisposable
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.#ctor(System.Int64,System.String,Bodoconsult.NetworkCommunication.Interfaces.IParameterSet)
+  commentId: M:Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.#ctor(System.Int64,System.String,Bodoconsult.NetworkCommunication.Interfaces.IParameterSet)
+  id: '#ctor(System.Int64,System.String,Bodoconsult.NetworkCommunication.Interfaces.IParameterSet)'
+  parent: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder
+  langs:
+  - csharp
+  - vb
+  name: OmOrder(long, string, IParameterSet)
+  nameWithType: OmOrder.OmOrder(long, string, IParameterSet)
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.OmOrder(long, string, Bodoconsult.NetworkCommunication.Interfaces.IParameterSet)
+  type: Constructor
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/OrderManagement/Orders/OmOrder.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: .ctor
+    path: src/Bodoconsult.NetworkCommunication/OrderManagement/Orders/OmOrder.cs
+    startLine: 23
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.OrderManagement.Orders
+  summary: Base class default ctor
+  example: []
+  syntax:
+    content: public OmOrder(long id, string name, IParameterSet parameterSet)
+    parameters:
+    - id: id
+      type: System.Int64
+    - id: name
+      type: System.String
+    - id: parameterSet
+      type: Bodoconsult.NetworkCommunication.Interfaces.IParameterSet
+    content.vb: Public Sub New(id As Long, name As String, parameterSet As IParameterSet)
+  overload: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.#ctor*
+  nameWithType.vb: OmOrder.New(Long, String, IParameterSet)
+  fullName.vb: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.New(Long, String, Bodoconsult.NetworkCommunication.Interfaces.IParameterSet)
+  name.vb: New(Long, String, IParameterSet)
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.Id
+  commentId: P:Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.Id
+  id: Id
+  parent: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder
+  langs:
+  - csharp
+  - vb
+  name: Id
+  nameWithType: OmOrder.Id
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.Id
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/OrderManagement/Orders/OmOrder.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Id
+    path: src/Bodoconsult.NetworkCommunication/OrderManagement/Orders/OmOrder.cs
+    startLine: 39
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.OrderManagement.Orders
+  summary: Unique Order-ID
+  example: []
+  syntax:
+    content: public long Id { get; }
+    parameters: []
+    return:
+      type: System.Int64
+    content.vb: Public ReadOnly Property Id As Long
+  overload: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.Id*
+  implements:
+  - Bodoconsult.NetworkCommunication.Interfaces.IOrder.Id
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.NextOrder
+  commentId: P:Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.NextOrder
+  id: NextOrder
+  parent: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder
+  langs:
+  - csharp
+  - vb
+  name: NextOrder
+  nameWithType: OmOrder.NextOrder
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.NextOrder
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/OrderManagement/Orders/OmOrder.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: NextOrder
+    path: src/Bodoconsult.NetworkCommunication/OrderManagement/Orders/OmOrder.cs
+    startLine: 44
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.OrderManagement.Orders
+  summary: The next order in a chain of orders like trial run
+  example: []
+  syntax:
+    content: public IOrder NextOrder { get; set; }
+    parameters: []
+    return:
+      type: Bodoconsult.NetworkCommunication.Interfaces.IOrder
+    content.vb: Public Property NextOrder As IOrder
+  overload: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.NextOrder*
+  implements:
+  - Bodoconsult.NetworkCommunication.Interfaces.IOrder.NextOrder
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.Name
+  commentId: P:Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.Name
+  id: Name
+  parent: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder
+  langs:
+  - csharp
+  - vb
+  name: Name
+  nameWithType: OmOrder.Name
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.Name
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/OrderManagement/Orders/OmOrder.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Name
+    path: src/Bodoconsult.NetworkCommunication/OrderManagement/Orders/OmOrder.cs
+    startLine: 49
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.OrderManagement.Orders
+  summary: Name of the order
+  example: []
+  syntax:
+    content: public string Name { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property Name As String
+  overload: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.Name*
+  implements:
+  - Bodoconsult.NetworkCommunication.Interfaces.IOrder.Name
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.TypeName
+  commentId: P:Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.TypeName
+  id: TypeName
+  parent: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder
+  langs:
+  - csharp
+  - vb
+  name: TypeName
+  nameWithType: OmOrder.TypeName
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.TypeName
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/OrderManagement/Orders/OmOrder.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: TypeName
+    path: src/Bodoconsult.NetworkCommunication/OrderManagement/Orders/OmOrder.cs
+    startLine: 75
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.OrderManagement.Orders
+  summary: Type name of the order
+  example: []
+  syntax:
+    content: public string TypeName { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public ReadOnly Property TypeName As String
+  overload: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.TypeName*
+  implements:
+  - Bodoconsult.NetworkCommunication.Interfaces.IOrder.TypeName
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.OrderSource
+  commentId: P:Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.OrderSource
+  id: OrderSource
+  parent: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder
+  langs:
+  - csharp
+  - vb
+  name: OrderSource
+  nameWithType: OmOrder.OrderSource
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.OrderSource
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/OrderManagement/Orders/OmOrder.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: OrderSource
+    path: src/Bodoconsult.NetworkCommunication/OrderManagement/Orders/OmOrder.cs
+    startLine: 80
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.OrderManagement.Orders
+  summary: Order source
+  example: []
+  syntax:
+    content: public OrderSource OrderSource { get; protected set; }
+    parameters: []
+    return:
+      type: Bodoconsult.NetworkCommunication.EnumAndStates.OrderSource
+    content.vb: Public Property OrderSource As OrderSource
+  overload: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.OrderSource*
+  implements:
+  - Bodoconsult.NetworkCommunication.Interfaces.IOrder.OrderSource
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.SourceUid
+  commentId: P:Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.SourceUid
+  id: SourceUid
+  parent: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder
+  langs:
+  - csharp
+  - vb
+  name: SourceUid
+  nameWithType: OmOrder.SourceUid
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.SourceUid
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/OrderManagement/Orders/OmOrder.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: SourceUid
+    path: src/Bodoconsult.NetworkCommunication/OrderManagement/Orders/OmOrder.cs
+    startLine: 85
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.OrderManagement.Orders
+  summary: The UID of a source item like a joblist the order is bound to
+  example: []
+  syntax:
+    content: public Guid? SourceUid { get; set; }
+    parameters: []
+    return:
+      type: System.Nullable{System.Guid}
+    content.vb: Public Property SourceUid As Guid?
+  overload: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.SourceUid*
+  implements:
+  - Bodoconsult.NetworkCommunication.Interfaces.IOrder.SourceUid
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.OrderTypeCode
+  commentId: P:Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.OrderTypeCode
+  id: OrderTypeCode
+  parent: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder
+  langs:
+  - csharp
+  - vb
+  name: OrderTypeCode
+  nameWithType: OmOrder.OrderTypeCode
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.OrderTypeCode
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/OrderManagement/Orders/OmOrder.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: OrderTypeCode
+    path: src/Bodoconsult.NetworkCommunication/OrderManagement/Orders/OmOrder.cs
+    startLine: 90
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.OrderManagement.Orders
+  summary: Type of order sent to client
+  example: []
+  syntax:
+    content: public int OrderTypeCode { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property OrderTypeCode As Integer
+  overload: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.OrderTypeCode*
+  implements:
+  - Bodoconsult.NetworkCommunication.Interfaces.IOrder.OrderTypeCode
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.LoggerId
+  commentId: P:Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.LoggerId
+  id: LoggerId
+  parent: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder
+  langs:
+  - csharp
+  - vb
+  name: LoggerId
+  nameWithType: OmOrder.LoggerId
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.LoggerId
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/OrderManagement/Orders/OmOrder.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: LoggerId
+    path: src/Bodoconsult.NetworkCommunication/OrderManagement/Orders/OmOrder.cs
+    startLine: 95
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.OrderManagement.Orders
+  summary: Formatted ID for logging
+  example: []
+  syntax:
+    content: public virtual string LoggerId { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Overridable ReadOnly Property LoggerId As String
+  overload: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.LoggerId*
+  implements:
+  - Bodoconsult.NetworkCommunication.Interfaces.IOrder.LoggerId
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.RequestSpecs
+  commentId: P:Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.RequestSpecs
+  id: RequestSpecs
+  parent: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder
+  langs:
+  - csharp
+  - vb
+  name: RequestSpecs
+  nameWithType: OmOrder.RequestSpecs
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.RequestSpecs
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/OrderManagement/Orders/OmOrder.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: RequestSpecs
+    path: src/Bodoconsult.NetworkCommunication/OrderManagement/Orders/OmOrder.cs
+    startLine: 100
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.OrderManagement.Orders
+  summary: Current request specs of the order
+  example: []
+  syntax:
+    content: public IList<IRequestSpec> RequestSpecs { get; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.IList{Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec}
+    content.vb: Public ReadOnly Property RequestSpecs As IList(Of IRequestSpec)
+  overload: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.RequestSpecs*
+  implements:
+  - Bodoconsult.NetworkCommunication.Interfaces.IOrder.RequestSpecs
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.AllowedParallelOrderTypes
+  commentId: P:Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.AllowedParallelOrderTypes
+  id: AllowedParallelOrderTypes
+  parent: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder
+  langs:
+  - csharp
+  - vb
+  name: AllowedParallelOrderTypes
+  nameWithType: OmOrder.AllowedParallelOrderTypes
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.AllowedParallelOrderTypes
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/OrderManagement/Orders/OmOrder.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: AllowedParallelOrderTypes
+    path: src/Bodoconsult.NetworkCommunication/OrderManagement/Orders/OmOrder.cs
+    startLine: 105
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.OrderManagement.Orders
+  summary: The names of allowed order types for running parallel to the current order
+  example: []
+  syntax:
+    content: public IList<string> AllowedParallelOrderTypes { get; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.IList{System.String}
+    content.vb: Public ReadOnly Property AllowedParallelOrderTypes As IList(Of String)
+  overload: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.AllowedParallelOrderTypes*
+  implements:
+  - Bodoconsult.NetworkCommunication.Interfaces.IOrder.AllowedParallelOrderTypes
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.SendCancelTodeviceIfCancelledOrUnsuccessful
+  commentId: P:Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.SendCancelTodeviceIfCancelledOrUnsuccessful
+  id: SendCancelTodeviceIfCancelledOrUnsuccessful
+  parent: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder
+  langs:
+  - csharp
+  - vb
+  name: SendCancelTodeviceIfCancelledOrUnsuccessful
+  nameWithType: OmOrder.SendCancelTodeviceIfCancelledOrUnsuccessful
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.SendCancelTodeviceIfCancelledOrUnsuccessful
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/OrderManagement/Orders/OmOrder.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: SendCancelTodeviceIfCancelledOrUnsuccessful
+    path: src/Bodoconsult.NetworkCommunication/OrderManagement/Orders/OmOrder.cs
+    startLine: 110
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.OrderManagement.Orders
+  summary: Send a CAN command to the device if order fails or is cancelled
+  example: []
+  syntax:
+    content: public bool SendCancelTodeviceIfCancelledOrUnsuccessful { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property SendCancelTodeviceIfCancelledOrUnsuccessful As Boolean
+  overload: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.SendCancelTodeviceIfCancelledOrUnsuccessful*
+  implements:
+  - Bodoconsult.NetworkCommunication.Interfaces.IOrder.SendCancelTodeviceIfCancelledOrUnsuccessful
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.OrderFinishedSuccessfulAction
+  commentId: P:Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.OrderFinishedSuccessfulAction
+  id: OrderFinishedSuccessfulAction
+  parent: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder
+  langs:
+  - csharp
+  - vb
+  name: OrderFinishedSuccessfulAction
+  nameWithType: OmOrder.OrderFinishedSuccessfulAction
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.OrderFinishedSuccessfulAction
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/OrderManagement/Orders/OmOrder.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: OrderFinishedSuccessfulAction
+    path: src/Bodoconsult.NetworkCommunication/OrderManagement/Orders/OmOrder.cs
+    startLine: 120
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.OrderManagement.Orders
+  summary: Action running after successful processing of the order
+  example: []
+  syntax:
+    content: public ActionRequestStepDelegate OrderFinishedSuccessfulAction { get; protected set; }
+    parameters: []
+    return:
+      type: Bodoconsult.NetworkCommunication.Delegates.ActionRequestStepDelegate
+    content.vb: Public Property OrderFinishedSuccessfulAction As ActionRequestStepDelegate
+  overload: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.OrderFinishedSuccessfulAction*
+  implements:
+  - Bodoconsult.NetworkCommunication.Interfaces.IOrder.OrderFinishedSuccessfulAction
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.OrderFinishedUnsuccessfulAction
+  commentId: P:Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.OrderFinishedUnsuccessfulAction
+  id: OrderFinishedUnsuccessfulAction
+  parent: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder
+  langs:
+  - csharp
+  - vb
+  name: OrderFinishedUnsuccessfulAction
+  nameWithType: OmOrder.OrderFinishedUnsuccessfulAction
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.OrderFinishedUnsuccessfulAction
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/OrderManagement/Orders/OmOrder.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: OrderFinishedUnsuccessfulAction
+    path: src/Bodoconsult.NetworkCommunication/OrderManagement/Orders/OmOrder.cs
+    startLine: 125
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.OrderManagement.Orders
+  summary: Action running after unsuccessful processing of the order
+  example: []
+  syntax:
+    content: public ActionRequestStepDelegate OrderFinishedUnsuccessfulAction { get; protected set; }
+    parameters: []
+    return:
+      type: Bodoconsult.NetworkCommunication.Delegates.ActionRequestStepDelegate
+    content.vb: Public Property OrderFinishedUnsuccessfulAction As ActionRequestStepDelegate
+  overload: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.OrderFinishedUnsuccessfulAction*
+  implements:
+  - Bodoconsult.NetworkCommunication.Interfaces.IOrder.OrderFinishedUnsuccessfulAction
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.StateToNotifyOnSuccess
+  commentId: P:Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.StateToNotifyOnSuccess
+  id: StateToNotifyOnSuccess
+  parent: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder
+  langs:
+  - csharp
+  - vb
+  name: StateToNotifyOnSuccess
+  nameWithType: OmOrder.StateToNotifyOnSuccess
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.StateToNotifyOnSuccess
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/OrderManagement/Orders/OmOrder.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: StateToNotifyOnSuccess
+    path: src/Bodoconsult.NetworkCommunication/OrderManagement/Orders/OmOrder.cs
+    startLine: 130
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.OrderManagement.Orders
+  summary: The state to notify the app in case of order was successfully running
+  example: []
+  syntax:
+    content: public IDeviceState StateToNotifyOnSuccess { get; protected set; }
+    parameters: []
+    return:
+      type: Bodoconsult.NetworkCommunication.Interfaces.IDeviceState
+    content.vb: Public Property StateToNotifyOnSuccess As IDeviceState
+  overload: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.StateToNotifyOnSuccess*
+  implements:
+  - Bodoconsult.NetworkCommunication.Interfaces.IOrder.StateToNotifyOnSuccess
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.IsRunningSync
+  commentId: P:Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.IsRunningSync
+  id: IsRunningSync
+  parent: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder
+  langs:
+  - csharp
+  - vb
+  name: IsRunningSync
+  nameWithType: OmOrder.IsRunningSync
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.IsRunningSync
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/OrderManagement/Orders/OmOrder.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: IsRunningSync
+    path: src/Bodoconsult.NetworkCommunication/OrderManagement/Orders/OmOrder.cs
+    startLine: 135
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.OrderManagement.Orders
+  summary: 'Is the order running in sync mode? Default: false means async'
+  example: []
+  syntax:
+    content: public bool IsRunningSync { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property IsRunningSync As Boolean
+  overload: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.IsRunningSync*
+  implements:
+  - Bodoconsult.NetworkCommunication.Interfaces.IOrder.IsRunningSync
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.IsDisposable
+  commentId: P:Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.IsDisposable
+  id: IsDisposable
+  parent: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder
+  langs:
+  - csharp
+  - vb
+  name: IsDisposable
+  nameWithType: OmOrder.IsDisposable
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.IsDisposable
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/OrderManagement/Orders/OmOrder.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: IsDisposable
+    path: src/Bodoconsult.NetworkCommunication/OrderManagement/Orders/OmOrder.cs
+    startLine: 140
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.OrderManagement.Orders
+  summary: Is the order ready for disposing
+  example: []
+  syntax:
+    content: public bool IsDisposable { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property IsDisposable As Boolean
+  overload: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.IsDisposable*
+  implements:
+  - Bodoconsult.NetworkCommunication.Interfaces.IOrder.IsDisposable
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.IsClientNotificationTurnedOff
+  commentId: P:Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.IsClientNotificationTurnedOff
+  id: IsClientNotificationTurnedOff
+  parent: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder
+  langs:
+  - csharp
+  - vb
+  name: IsClientNotificationTurnedOff
+  nameWithType: OmOrder.IsClientNotificationTurnedOff
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.IsClientNotificationTurnedOff
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/OrderManagement/Orders/OmOrder.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: IsClientNotificationTurnedOff
+    path: src/Bodoconsult.NetworkCommunication/OrderManagement/Orders/OmOrder.cs
+    startLine: 145
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.OrderManagement.Orders
+  summary: If client notification is turned off, the client will not be informed on this order
+  example: []
+  syntax:
+    content: public bool IsClientNotificationTurnedOff { get; protected set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property IsClientNotificationTurnedOff As Boolean
+  overload: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.IsClientNotificationTurnedOff*
+  implements:
+  - Bodoconsult.NetworkCommunication.Interfaces.IOrder.IsClientNotificationTurnedOff
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.IsNextOrderStartAllowed
+  commentId: P:Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.IsNextOrderStartAllowed
+  id: IsNextOrderStartAllowed
+  parent: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder
+  langs:
+  - csharp
+  - vb
+  name: IsNextOrderStartAllowed
+  nameWithType: OmOrder.IsNextOrderStartAllowed
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.IsNextOrderStartAllowed
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/OrderManagement/Orders/OmOrder.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: IsNextOrderStartAllowed
+    path: src/Bodoconsult.NetworkCommunication/OrderManagement/Orders/OmOrder.cs
+    startLine: 150
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.OrderManagement.Orders
+  summary: Start the next order of the same type (used for ExpressUnload i.e.)
+  example: []
+  syntax:
+    content: public bool IsNextOrderStartAllowed { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property IsNextOrderStartAllowed As Boolean
+  overload: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.IsNextOrderStartAllowed*
+  implements:
+  - Bodoconsult.NetworkCommunication.Interfaces.IOrder.IsNextOrderStartAllowed
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.FailingOrderRequiresComDevClose
+  commentId: P:Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.FailingOrderRequiresComDevClose
+  id: FailingOrderRequiresComDevClose
+  parent: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder
+  langs:
+  - csharp
+  - vb
+  name: FailingOrderRequiresComDevClose
+  nameWithType: OmOrder.FailingOrderRequiresComDevClose
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.FailingOrderRequiresComDevClose
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/OrderManagement/Orders/OmOrder.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: FailingOrderRequiresComDevClose
+    path: src/Bodoconsult.NetworkCommunication/OrderManagement/Orders/OmOrder.cs
+    startLine: 155
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.OrderManagement.Orders
+  summary: If the orders fail, a ComDevCose is required
+  example: []
+  syntax:
+    content: public bool FailingOrderRequiresComDevClose { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property FailingOrderRequiresComDevClose As Boolean
+  overload: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.FailingOrderRequiresComDevClose*
+  implements:
+  - Bodoconsult.NetworkCommunication.Interfaces.IOrder.FailingOrderRequiresComDevClose
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.IsCancelledOnComDevClose
+  commentId: P:Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.IsCancelledOnComDevClose
+  id: IsCancelledOnComDevClose
+  parent: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder
+  langs:
+  - csharp
+  - vb
+  name: IsCancelledOnComDevClose
+  nameWithType: OmOrder.IsCancelledOnComDevClose
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.IsCancelledOnComDevClose
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/OrderManagement/Orders/OmOrder.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: IsCancelledOnComDevClose
+    path: src/Bodoconsult.NetworkCommunication/OrderManagement/Orders/OmOrder.cs
+    startLine: 160
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.OrderManagement.Orders
+  summary: Should the order be cancelled on a ComDevClose. Valid only for normal orders. Priority orders to not pay attention to this field
+  example: []
+  syntax:
+    content: public bool IsCancelledOnComDevClose { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property IsCancelledOnComDevClose As Boolean
+  overload: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.IsCancelledOnComDevClose*
+  implements:
+  - Bodoconsult.NetworkCommunication.Interfaces.IOrder.IsCancelledOnComDevClose
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.IsCancelledOndevicePropertyUpdate
+  commentId: P:Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.IsCancelledOndevicePropertyUpdate
+  id: IsCancelledOndevicePropertyUpdate
+  parent: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder
+  langs:
+  - csharp
+  - vb
+  name: IsCancelledOndevicePropertyUpdate
+  nameWithType: OmOrder.IsCancelledOndevicePropertyUpdate
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.IsCancelledOndevicePropertyUpdate
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/OrderManagement/Orders/OmOrder.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: IsCancelledOndevicePropertyUpdate
+    path: src/Bodoconsult.NetworkCommunication/OrderManagement/Orders/OmOrder.cs
+    startLine: 165
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.OrderManagement.Orders
+  summary: Should the order be cancelled on a device properties update
+  example: []
+  syntax:
+    content: public bool IsCancelledOndevicePropertyUpdate { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property IsCancelledOndevicePropertyUpdate As Boolean
+  overload: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.IsCancelledOndevicePropertyUpdate*
+  implements:
+  - Bodoconsult.NetworkCommunication.Interfaces.IOrder.IsCancelledOndevicePropertyUpdate
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.GetFormattedUser
+  commentId: M:Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.GetFormattedUser
+  id: GetFormattedUser
+  parent: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder
+  langs:
+  - csharp
+  - vb
+  name: GetFormattedUser()
+  nameWithType: OmOrder.GetFormattedUser()
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.GetFormattedUser()
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/OrderManagement/Orders/OmOrder.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: GetFormattedUser
+    path: src/Bodoconsult.NetworkCommunication/OrderManagement/Orders/OmOrder.cs
+    startLine: 168
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.OrderManagement.Orders
+  syntax:
+    content: protected string GetFormattedUser()
+    return:
+      type: System.String
+    content.vb: Protected Function GetFormattedUser() As String
+  overload: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.GetFormattedUser*
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.IsHighPriorityOrder
+  commentId: P:Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.IsHighPriorityOrder
+  id: IsHighPriorityOrder
+  parent: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder
+  langs:
+  - csharp
+  - vb
+  name: IsHighPriorityOrder
+  nameWithType: OmOrder.IsHighPriorityOrder
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.IsHighPriorityOrder
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/OrderManagement/Orders/OmOrder.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: IsHighPriorityOrder
+    path: src/Bodoconsult.NetworkCommunication/OrderManagement/Orders/OmOrder.cs
+    startLine: 182
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.OrderManagement.Orders
+  summary: Is the order a high priority order
+  example: []
+  syntax:
+    content: public bool IsHighPriorityOrder { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property IsHighPriorityOrder As Boolean
+  overload: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.IsHighPriorityOrder*
+  implements:
+  - Bodoconsult.NetworkCommunication.Interfaces.IOrder.IsHighPriorityOrder
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.IsCheckedWithPriority
+  commentId: P:Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.IsCheckedWithPriority
+  id: IsCheckedWithPriority
+  parent: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder
+  langs:
+  - csharp
+  - vb
+  name: IsCheckedWithPriority
+  nameWithType: OmOrder.IsCheckedWithPriority
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.IsCheckedWithPriority
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/OrderManagement/Orders/OmOrder.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: IsCheckedWithPriority
+    path: src/Bodoconsult.NetworkCommunication/OrderManagement/Orders/OmOrder.cs
+    startLine: 187
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.OrderManagement.Orders
+  summary: Is this order prioritized when receiving messages
+  example: []
+  syntax:
+    content: public bool IsCheckedWithPriority { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property IsCheckedWithPriority As Boolean
+  overload: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.IsCheckedWithPriority*
+  implements:
+  - Bodoconsult.NetworkCommunication.Interfaces.IOrder.IsCheckedWithPriority
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.ParameterSet
+  commentId: P:Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.ParameterSet
+  id: ParameterSet
+  parent: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder
+  langs:
+  - csharp
+  - vb
+  name: ParameterSet
+  nameWithType: OmOrder.ParameterSet
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.ParameterSet
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/OrderManagement/Orders/OmOrder.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: ParameterSet
+    path: src/Bodoconsult.NetworkCommunication/OrderManagement/Orders/OmOrder.cs
+    startLine: 192
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.OrderManagement.Orders
+  summary: Current parameter set to use for the order. Must include the parameter sets of all contained requests by interface.
+  example: []
+  syntax:
+    content: public IParameterSet ParameterSet { get; set; }
+    parameters: []
+    return:
+      type: Bodoconsult.NetworkCommunication.Interfaces.IParameterSet
+    content.vb: Public Property ParameterSet As IParameterSet
+  overload: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.ParameterSet*
+  implements:
+  - Bodoconsult.NetworkCommunication.Interfaces.IOrder.ParameterSet
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.WasSuccessful
+  commentId: P:Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.WasSuccessful
+  id: WasSuccessful
+  parent: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder
+  langs:
+  - csharp
+  - vb
+  name: WasSuccessful
+  nameWithType: OmOrder.WasSuccessful
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.WasSuccessful
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/OrderManagement/Orders/OmOrder.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: WasSuccessful
+    path: src/Bodoconsult.NetworkCommunication/OrderManagement/Orders/OmOrder.cs
+    startLine: 197
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.OrderManagement.Orders
+  summary: The step was successfully processed in all steps
+  example: []
+  syntax:
+    content: public bool WasSuccessful { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property WasSuccessful As Boolean
+  overload: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.WasSuccessful*
+  implements:
+  - Bodoconsult.NetworkCommunication.Interfaces.IOrder.WasSuccessful
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.IsCancelled
+  commentId: P:Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.IsCancelled
+  id: IsCancelled
+  parent: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder
+  langs:
+  - csharp
+  - vb
+  name: IsCancelled
+  nameWithType: OmOrder.IsCancelled
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.IsCancelled
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/OrderManagement/Orders/OmOrder.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: IsCancelled
+    path: src/Bodoconsult.NetworkCommunication/OrderManagement/Orders/OmOrder.cs
+    startLine: 202
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.OrderManagement.Orders
+  summary: The order is cancelled
+  example: []
+  syntax:
+    content: public bool IsCancelled { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property IsCancelled As Boolean
+  overload: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.IsCancelled*
+  implements:
+  - Bodoconsult.NetworkCommunication.Interfaces.IOrder.IsCancelled
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.IsCancelledLockObject
+  commentId: P:Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.IsCancelledLockObject
+  id: IsCancelledLockObject
+  parent: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder
+  langs:
+  - csharp
+  - vb
+  name: IsCancelledLockObject
+  nameWithType: OmOrder.IsCancelledLockObject
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.IsCancelledLockObject
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/OrderManagement/Orders/OmOrder.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: IsCancelledLockObject
+    path: src/Bodoconsult.NetworkCommunication/OrderManagement/Orders/OmOrder.cs
+    startLine: 223
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.OrderManagement.Orders
+  summary: An object to lock the property <xref href="Bodoconsult.NetworkCommunication.Interfaces.IOrder.IsCancelled" data-throw-if-not-resolved="false"></xref>
+  example: []
+  syntax:
+    content: public object IsCancelledLockObject { get; set; }
+    parameters: []
+    return:
+      type: System.Object
+    content.vb: Public Property IsCancelledLockObject As Object
+  overload: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.IsCancelledLockObject*
+  implements:
+  - Bodoconsult.NetworkCommunication.Interfaces.IOrder.IsCancelledLockObject
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.StartTime
+  commentId: P:Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.StartTime
+  id: StartTime
+  parent: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder
+  langs:
+  - csharp
+  - vb
+  name: StartTime
+  nameWithType: OmOrder.StartTime
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.StartTime
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/OrderManagement/Orders/OmOrder.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: StartTime
+    path: src/Bodoconsult.NetworkCommunication/OrderManagement/Orders/OmOrder.cs
+    startLine: 228
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.OrderManagement.Orders
+  summary: Order processing start time
+  example: []
+  syntax:
+    content: public DateTime StartTime { get; set; }
+    parameters: []
+    return:
+      type: System.DateTime
+    content.vb: Public Property StartTime As Date
+  overload: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.StartTime*
+  implements:
+  - Bodoconsult.NetworkCommunication.Interfaces.IOrder.StartTime
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.EndTime
+  commentId: P:Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.EndTime
+  id: EndTime
+  parent: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder
+  langs:
+  - csharp
+  - vb
+  name: EndTime
+  nameWithType: OmOrder.EndTime
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.EndTime
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/OrderManagement/Orders/OmOrder.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: EndTime
+    path: src/Bodoconsult.NetworkCommunication/OrderManagement/Orders/OmOrder.cs
+    startLine: 233
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.OrderManagement.Orders
+  summary: Order processing end time
+  example: []
+  syntax:
+    content: public DateTime EndTime { get; set; }
+    parameters: []
+    return:
+      type: System.DateTime
+    content.vb: Public Property EndTime As Date
+  overload: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.EndTime*
+  implements:
+  - Bodoconsult.NetworkCommunication.Interfaces.IOrder.EndTime
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.ExecutionResult
+  commentId: P:Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.ExecutionResult
+  id: ExecutionResult
+  parent: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder
+  langs:
+  - csharp
+  - vb
+  name: ExecutionResult
+  nameWithType: OmOrder.ExecutionResult
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.ExecutionResult
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/OrderManagement/Orders/OmOrder.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: ExecutionResult
+    path: src/Bodoconsult.NetworkCommunication/OrderManagement/Orders/OmOrder.cs
+    startLine: 238
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.OrderManagement.Orders
+  summary: The execution result of the order
+  example: []
+  syntax:
+    content: public IOrderExecutionResultState ExecutionResult { get; set; }
+    parameters: []
+    return:
+      type: Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionResultState
+    content.vb: Public Property ExecutionResult As IOrderExecutionResultState
+  overload: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.ExecutionResult*
+  implements:
+  - Bodoconsult.NetworkCommunication.Interfaces.IOrder.ExecutionResult
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.ExecutionState
+  commentId: P:Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.ExecutionState
+  id: ExecutionState
+  parent: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder
+  langs:
+  - csharp
+  - vb
+  name: ExecutionState
+  nameWithType: OmOrder.ExecutionState
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.ExecutionState
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/OrderManagement/Orders/OmOrder.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: ExecutionState
+    path: src/Bodoconsult.NetworkCommunication/OrderManagement/Orders/OmOrder.cs
+    startLine: 243
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.OrderManagement.Orders
+  summary: Current execution state
+  example: []
+  syntax:
+    content: public IOrderState ExecutionState { get; set; }
+    parameters: []
+    return:
+      type: Bodoconsult.NetworkCommunication.Interfaces.IOrderState
+    content.vb: Public Property ExecutionState As IOrderState
+  overload: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.ExecutionState*
+  implements:
+  - Bodoconsult.NetworkCommunication.Interfaces.IOrder.ExecutionState
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.IsFinished
+  commentId: P:Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.IsFinished
+  id: IsFinished
+  parent: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder
+  langs:
+  - csharp
+  - vb
+  name: IsFinished
+  nameWithType: OmOrder.IsFinished
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.IsFinished
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/OrderManagement/Orders/OmOrder.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: IsFinished
+    path: src/Bodoconsult.NetworkCommunication/OrderManagement/Orders/OmOrder.cs
+    startLine: 248
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.OrderManagement.Orders
+  summary: Is the order already finished
+  example: []
+  syntax:
+    content: public bool IsFinished { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property IsFinished As Boolean
+  overload: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.IsFinished*
+  implements:
+  - Bodoconsult.NetworkCommunication.Interfaces.IOrder.IsFinished
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.TransactionId
+  commentId: P:Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.TransactionId
+  id: TransactionId
+  parent: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder
+  langs:
+  - csharp
+  - vb
+  name: TransactionId
+  nameWithType: OmOrder.TransactionId
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.TransactionId
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/OrderManagement/Orders/OmOrder.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: TransactionId
+    path: src/Bodoconsult.NetworkCommunication/OrderManagement/Orders/OmOrder.cs
+    startLine: 258
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.OrderManagement.Orders
+  summary: ID of a not TOM related transaction the order is part of. Used for trialrun
+  example: []
+  syntax:
+    content: public int TransactionId { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property TransactionId As Integer
+  overload: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.TransactionId*
+  implements:
+  - Bodoconsult.NetworkCommunication.Interfaces.IOrder.TransactionId
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.DeviceId
+  commentId: P:Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.DeviceId
+  id: DeviceId
+  parent: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder
+  langs:
+  - csharp
+  - vb
+  name: DeviceId
+  nameWithType: OmOrder.DeviceId
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.DeviceId
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/OrderManagement/Orders/OmOrder.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: DeviceId
+    path: src/Bodoconsult.NetworkCommunication/OrderManagement/Orders/OmOrder.cs
+    startLine: 263
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.OrderManagement.Orders
+  summary: Current device ID
+  example: []
+  syntax:
+    content: public string DeviceId { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property DeviceId As String
+  overload: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.DeviceId*
+  implements:
+  - Bodoconsult.NetworkCommunication.Interfaces.IOrder.DeviceId
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.TraceCodeSuccess
+  commentId: P:Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.TraceCodeSuccess
+  id: TraceCodeSuccess
+  parent: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder
+  langs:
+  - csharp
+  - vb
+  name: TraceCodeSuccess
+  nameWithType: OmOrder.TraceCodeSuccess
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.TraceCodeSuccess
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/OrderManagement/Orders/OmOrder.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: TraceCodeSuccess
+    path: src/Bodoconsult.NetworkCommunication/OrderManagement/Orders/OmOrder.cs
+    startLine: 268
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.OrderManagement.Orders
+  summary: Trace code to log on success
+  example: []
+  syntax:
+    content: public int TraceCodeSuccess { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property TraceCodeSuccess As Integer
+  overload: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.TraceCodeSuccess*
+  implements:
+  - Bodoconsult.NetworkCommunication.Interfaces.IOrder.TraceCodeSuccess
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.TraceCodeError
+  commentId: P:Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.TraceCodeError
+  id: TraceCodeError
+  parent: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder
+  langs:
+  - csharp
+  - vb
+  name: TraceCodeError
+  nameWithType: OmOrder.TraceCodeError
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.TraceCodeError
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/OrderManagement/Orders/OmOrder.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: TraceCodeError
+    path: src/Bodoconsult.NetworkCommunication/OrderManagement/Orders/OmOrder.cs
+    startLine: 273
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.OrderManagement.Orders
+  summary: Trace code to log on error
+  example: []
+  syntax:
+    content: public int TraceCodeError { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property TraceCodeError As Integer
+  overload: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.TraceCodeError*
+  implements:
+  - Bodoconsult.NetworkCommunication.Interfaces.IOrder.TraceCodeError
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.TraceMessage
+  commentId: P:Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.TraceMessage
+  id: TraceMessage
+  parent: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder
+  langs:
+  - csharp
+  - vb
+  name: TraceMessage
+  nameWithType: OmOrder.TraceMessage
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.TraceMessage
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/OrderManagement/Orders/OmOrder.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: TraceMessage
+    path: src/Bodoconsult.NetworkCommunication/OrderManagement/Orders/OmOrder.cs
+    startLine: 278
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.OrderManagement.Orders
+  summary: Trace message to log
+  example: []
+  syntax:
+    content: public string TraceMessage { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property TraceMessage As String
+  overload: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.TraceMessage*
+  implements:
+  - Bodoconsult.NetworkCommunication.Interfaces.IOrder.TraceMessage
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.OrderError
+  commentId: P:Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.OrderError
+  id: OrderError
+  parent: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder
+  langs:
+  - csharp
+  - vb
+  name: OrderError
+  nameWithType: OmOrder.OrderError
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.OrderError
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/OrderManagement/Orders/OmOrder.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: OrderError
+    path: src/Bodoconsult.NetworkCommunication/OrderManagement/Orders/OmOrder.cs
+    startLine: 283
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.OrderManagement.Orders
+  summary: ErrorCode to trace
+  example: []
+  syntax:
+    content: public int OrderError { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property OrderError As Integer
+  overload: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.OrderError*
+  implements:
+  - Bodoconsult.NetworkCommunication.Interfaces.IOrder.OrderError
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.TraceEntry
+  commentId: P:Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.TraceEntry
+  id: TraceEntry
+  parent: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder
+  langs:
+  - csharp
+  - vb
+  name: TraceEntry
+  nameWithType: OmOrder.TraceEntry
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.TraceEntry
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/OrderManagement/Orders/OmOrder.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: TraceEntry
+    path: src/Bodoconsult.NetworkCommunication/OrderManagement/Orders/OmOrder.cs
+    startLine: 288
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.OrderManagement.Orders
+  summary: Trace entry to create for the order
+  example: []
+  syntax:
+    content: public ITraceEntry TraceEntry { get; set; }
+    parameters: []
+    return:
+      type: Bodoconsult.NetworkCommunication.Interfaces.ITraceEntry
+    content.vb: Public Property TraceEntry As ITraceEntry
+  overload: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.TraceEntry*
+  implements:
+  - Bodoconsult.NetworkCommunication.Interfaces.IOrder.TraceEntry
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.CreateTraceEntry(Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionResultState,System.Int32@,System.DateTime)
+  commentId: M:Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.CreateTraceEntry(Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionResultState,System.Int32@,System.DateTime)
+  id: CreateTraceEntry(Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionResultState,System.Int32@,System.DateTime)
+  parent: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder
+  langs:
+  - csharp
+  - vb
+  name: CreateTraceEntry(IOrderExecutionResultState, in int, DateTime)
+  nameWithType: OmOrder.CreateTraceEntry(IOrderExecutionResultState, in int, DateTime)
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.CreateTraceEntry(Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionResultState, in int, System.DateTime)
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/OrderManagement/Orders/OmOrder.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: CreateTraceEntry
+    path: src/Bodoconsult.NetworkCommunication/OrderManagement/Orders/OmOrder.cs
+    startLine: 296
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.OrderManagement.Orders
+  summary: Create a trace entry (do not use directly, public only for unit testing)
+  example: []
+  syntax:
+    content: public virtual void CreateTraceEntry(IOrderExecutionResultState lastStepExecutionResult, in int communicationAdapterError, DateTime timeStamp)
+    parameters:
+    - id: lastStepExecutionResult
+      type: Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionResultState
+      description: Execution result
+    - id: communicationAdapterError
+      type: System.Int32
+      description: Error on the communication adapter
+    - id: timeStamp
+      type: System.DateTime
+      description: App date service
+    content.vb: Public Overridable Sub CreateTraceEntry(lastStepExecutionResult As IOrderExecutionResultState, communicationAdapterError As Integer, timeStamp As Date)
+  overload: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.CreateTraceEntry*
+  implements:
+  - Bodoconsult.NetworkCommunication.Interfaces.IOrder.CreateTraceEntry(Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionResultState,System.Int32@,System.DateTime)
+  nameWithType.vb: OmOrder.CreateTraceEntry(IOrderExecutionResultState, Integer, Date)
+  fullName.vb: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.CreateTraceEntry(Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionResultState, Integer, Date)
+  name.vb: CreateTraceEntry(IOrderExecutionResultState, Integer, Date)
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.IsBenchable
+  commentId: P:Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.IsBenchable
+  id: IsBenchable
+  parent: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder
+  langs:
+  - csharp
+  - vb
+  name: IsBenchable
+  nameWithType: OmOrder.IsBenchable
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.IsBenchable
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/OrderManagement/Orders/OmOrder.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: IsBenchable
+    path: src/Bodoconsult.NetworkCommunication/OrderManagement/Orders/OmOrder.cs
+    startLine: 316
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.OrderManagement.Orders
+  summary: This order will be benchmarked? True or false
+  example: []
+  syntax:
+    content: public bool IsBenchable { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property IsBenchable As Boolean
+  overload: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.IsBenchable*
+  implements:
+  - Bodoconsult.NetworkCommunication.Interfaces.IOrder.IsBenchable
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.Benchmark
+  commentId: P:Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.Benchmark
+  id: Benchmark
+  parent: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder
+  langs:
+  - csharp
+  - vb
+  name: Benchmark
+  nameWithType: OmOrder.Benchmark
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.Benchmark
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/OrderManagement/Orders/OmOrder.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Benchmark
+    path: src/Bodoconsult.NetworkCommunication/OrderManagement/Orders/OmOrder.cs
+    startLine: 322
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.OrderManagement.Orders
+  summary: >-
+    Benchmark object (see output in Benchmark.csv)
+
+    Make sure to create it, addStep, and dispose it
+  example: []
+  syntax:
+    content: public Bench Benchmark { get; set; }
+    parameters: []
+    return:
+      type: Bodoconsult.App.Benchmarking.Bench
+    content.vb: Public Property Benchmark As Bench
+  overload: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.Benchmark*
+  implements:
+  - Bodoconsult.NetworkCommunication.Interfaces.IOrder.Benchmark
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.Dispose
+  commentId: M:Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.Dispose
+  id: Dispose
+  parent: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder
+  langs:
+  - csharp
+  - vb
+  name: Dispose()
+  nameWithType: OmOrder.Dispose()
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.Dispose()
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/OrderManagement/Orders/OmOrder.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Dispose
+    path: src/Bodoconsult.NetworkCommunication/OrderManagement/Orders/OmOrder.cs
+    startLine: 328
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.OrderManagement.Orders
+  summary: Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+  example: []
+  syntax:
+    content: public virtual void Dispose()
+    content.vb: Public Overridable Sub Dispose()
+  overload: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.Dispose*
+  implements:
+  - System.IDisposable.Dispose
+references:
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Orders
+  commentId: N:Bodoconsult.NetworkCommunication.OrderManagement.Orders
+  href: Bodoconsult.html
+  name: Bodoconsult.NetworkCommunication.OrderManagement.Orders
+  nameWithType: Bodoconsult.NetworkCommunication.OrderManagement.Orders
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Orders
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.OrderManagement
+    name: OrderManagement
+    href: Bodoconsult.NetworkCommunication.OrderManagement.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.OrderManagement.Orders
+    name: Orders
+    href: Bodoconsult.NetworkCommunication.OrderManagement.Orders.html
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.OrderManagement
+    name: OrderManagement
+    href: Bodoconsult.NetworkCommunication.OrderManagement.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.OrderManagement.Orders
+    name: Orders
+    href: Bodoconsult.NetworkCommunication.OrderManagement.Orders.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IOrder
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.IOrder
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.NetworkCommunication.Interfaces.IOrder.html
+  name: IOrder
+  nameWithType: IOrder
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IOrder
+- uid: System.IDisposable
+  commentId: T:System.IDisposable
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable
+  name: IDisposable
+  nameWithType: IDisposable
+  fullName: System.IDisposable
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Bodoconsult.NetworkCommunication.Interfaces
+  commentId: N:Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.html
+  name: Bodoconsult.NetworkCommunication.Interfaces
+  nameWithType: Bodoconsult.NetworkCommunication.Interfaces
+  fullName: Bodoconsult.NetworkCommunication.Interfaces
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Interfaces
+    name: Interfaces
+    href: Bodoconsult.NetworkCommunication.Interfaces.html
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Interfaces
+    name: Interfaces
+    href: Bodoconsult.NetworkCommunication.Interfaces.html
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.#ctor*
+  commentId: Overload:Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.#ctor
+  href: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.html#Bodoconsult_NetworkCommunication_OrderManagement_Orders_OmOrder__ctor_System_Int64_System_String_Bodoconsult_NetworkCommunication_Interfaces_IParameterSet_
+  name: OmOrder
+  nameWithType: OmOrder.OmOrder
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.OmOrder
+  nameWithType.vb: OmOrder.New
+  fullName.vb: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.New
+  name.vb: New
+- uid: System.Int64
+  commentId: T:System.Int64
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int64
+  name: long
+  nameWithType: long
+  fullName: long
+  nameWithType.vb: Long
+  fullName.vb: Long
+  name.vb: Long
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IParameterSet
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.IParameterSet
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.NetworkCommunication.Interfaces.IParameterSet.html
+  name: IParameterSet
+  nameWithType: IParameterSet
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IParameterSet
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.Id*
+  commentId: Overload:Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.Id
+  href: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.html#Bodoconsult_NetworkCommunication_OrderManagement_Orders_OmOrder_Id
+  name: Id
+  nameWithType: OmOrder.Id
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.Id
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IOrder.Id
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IOrder.Id
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IOrder
+  href: Bodoconsult.NetworkCommunication.Interfaces.IOrder.html#Bodoconsult_NetworkCommunication_Interfaces_IOrder_Id
+  name: Id
+  nameWithType: IOrder.Id
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IOrder.Id
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.NextOrder*
+  commentId: Overload:Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.NextOrder
+  href: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.html#Bodoconsult_NetworkCommunication_OrderManagement_Orders_OmOrder_NextOrder
+  name: NextOrder
+  nameWithType: OmOrder.NextOrder
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.NextOrder
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IOrder.NextOrder
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IOrder.NextOrder
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IOrder
+  href: Bodoconsult.NetworkCommunication.Interfaces.IOrder.html#Bodoconsult_NetworkCommunication_Interfaces_IOrder_NextOrder
+  name: NextOrder
+  nameWithType: IOrder.NextOrder
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IOrder.NextOrder
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.Name*
+  commentId: Overload:Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.Name
+  href: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.html#Bodoconsult_NetworkCommunication_OrderManagement_Orders_OmOrder_Name
+  name: Name
+  nameWithType: OmOrder.Name
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.Name
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IOrder.Name
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IOrder.Name
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IOrder
+  href: Bodoconsult.NetworkCommunication.Interfaces.IOrder.html#Bodoconsult_NetworkCommunication_Interfaces_IOrder_Name
+  name: Name
+  nameWithType: IOrder.Name
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IOrder.Name
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.TypeName*
+  commentId: Overload:Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.TypeName
+  href: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.html#Bodoconsult_NetworkCommunication_OrderManagement_Orders_OmOrder_TypeName
+  name: TypeName
+  nameWithType: OmOrder.TypeName
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.TypeName
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IOrder.TypeName
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IOrder.TypeName
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IOrder
+  href: Bodoconsult.NetworkCommunication.Interfaces.IOrder.html#Bodoconsult_NetworkCommunication_Interfaces_IOrder_TypeName
+  name: TypeName
+  nameWithType: IOrder.TypeName
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IOrder.TypeName
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.OrderSource*
+  commentId: Overload:Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.OrderSource
+  href: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.html#Bodoconsult_NetworkCommunication_OrderManagement_Orders_OmOrder_OrderSource
+  name: OrderSource
+  nameWithType: OmOrder.OrderSource
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.OrderSource
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IOrder.OrderSource
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IOrder.OrderSource
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IOrder
+  href: Bodoconsult.NetworkCommunication.Interfaces.IOrder.html#Bodoconsult_NetworkCommunication_Interfaces_IOrder_OrderSource
+  name: OrderSource
+  nameWithType: IOrder.OrderSource
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IOrder.OrderSource
+- uid: Bodoconsult.NetworkCommunication.EnumAndStates.OrderSource
+  commentId: T:Bodoconsult.NetworkCommunication.EnumAndStates.OrderSource
+  parent: Bodoconsult.NetworkCommunication.EnumAndStates
+  href: Bodoconsult.NetworkCommunication.EnumAndStates.OrderSource.html
+  name: OrderSource
+  nameWithType: OrderSource
+  fullName: Bodoconsult.NetworkCommunication.EnumAndStates.OrderSource
+- uid: Bodoconsult.NetworkCommunication.EnumAndStates
+  commentId: N:Bodoconsult.NetworkCommunication.EnumAndStates
+  href: Bodoconsult.html
+  name: Bodoconsult.NetworkCommunication.EnumAndStates
+  nameWithType: Bodoconsult.NetworkCommunication.EnumAndStates
+  fullName: Bodoconsult.NetworkCommunication.EnumAndStates
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.EnumAndStates
+    name: EnumAndStates
+    href: Bodoconsult.NetworkCommunication.EnumAndStates.html
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.EnumAndStates
+    name: EnumAndStates
+    href: Bodoconsult.NetworkCommunication.EnumAndStates.html
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.SourceUid*
+  commentId: Overload:Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.SourceUid
+  href: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.html#Bodoconsult_NetworkCommunication_OrderManagement_Orders_OmOrder_SourceUid
+  name: SourceUid
+  nameWithType: OmOrder.SourceUid
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.SourceUid
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IOrder.SourceUid
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IOrder.SourceUid
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IOrder
+  href: Bodoconsult.NetworkCommunication.Interfaces.IOrder.html#Bodoconsult_NetworkCommunication_Interfaces_IOrder_SourceUid
+  name: SourceUid
+  nameWithType: IOrder.SourceUid
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IOrder.SourceUid
+- uid: System.Nullable{System.Guid}
+  commentId: T:System.Nullable{System.Guid}
+  parent: System
+  definition: System.Nullable`1
+  href: https://learn.microsoft.com/dotnet/api/system.guid
+  name: Guid?
+  nameWithType: Guid?
+  fullName: System.Guid?
+  spec.csharp:
+  - uid: System.Guid
+    name: Guid
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.guid
+  - name: '?'
+  spec.vb:
+  - uid: System.Guid
+    name: Guid
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.guid
+  - name: '?'
+- uid: System.Nullable`1
+  commentId: T:System.Nullable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  name: Nullable<T>
+  nameWithType: Nullable<T>
+  fullName: System.Nullable<T>
+  nameWithType.vb: Nullable(Of T)
+  fullName.vb: System.Nullable(Of T)
+  name.vb: Nullable(Of T)
+  spec.csharp:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.OrderTypeCode*
+  commentId: Overload:Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.OrderTypeCode
+  href: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.html#Bodoconsult_NetworkCommunication_OrderManagement_Orders_OmOrder_OrderTypeCode
+  name: OrderTypeCode
+  nameWithType: OmOrder.OrderTypeCode
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.OrderTypeCode
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IOrder.OrderTypeCode
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IOrder.OrderTypeCode
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IOrder
+  href: Bodoconsult.NetworkCommunication.Interfaces.IOrder.html#Bodoconsult_NetworkCommunication_Interfaces_IOrder_OrderTypeCode
+  name: OrderTypeCode
+  nameWithType: IOrder.OrderTypeCode
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IOrder.OrderTypeCode
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.LoggerId*
+  commentId: Overload:Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.LoggerId
+  href: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.html#Bodoconsult_NetworkCommunication_OrderManagement_Orders_OmOrder_LoggerId
+  name: LoggerId
+  nameWithType: OmOrder.LoggerId
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.LoggerId
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IOrder.LoggerId
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IOrder.LoggerId
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IOrder
+  href: Bodoconsult.NetworkCommunication.Interfaces.IOrder.html#Bodoconsult_NetworkCommunication_Interfaces_IOrder_LoggerId
+  name: LoggerId
+  nameWithType: IOrder.LoggerId
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IOrder.LoggerId
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.RequestSpecs*
+  commentId: Overload:Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.RequestSpecs
+  href: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.html#Bodoconsult_NetworkCommunication_OrderManagement_Orders_OmOrder_RequestSpecs
+  name: RequestSpecs
+  nameWithType: OmOrder.RequestSpecs
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.RequestSpecs
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IOrder.RequestSpecs
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IOrder.RequestSpecs
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IOrder
+  href: Bodoconsult.NetworkCommunication.Interfaces.IOrder.html#Bodoconsult_NetworkCommunication_Interfaces_IOrder_RequestSpecs
+  name: RequestSpecs
+  nameWithType: IOrder.RequestSpecs
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IOrder.RequestSpecs
+- uid: System.Collections.Generic.IList{Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec}
+  commentId: T:System.Collections.Generic.IList{Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IList`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1
+  name: IList<IRequestSpec>
+  nameWithType: IList<IRequestSpec>
+  fullName: System.Collections.Generic.IList<Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec>
+  nameWithType.vb: IList(Of IRequestSpec)
+  fullName.vb: System.Collections.Generic.IList(Of Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec)
+  name.vb: IList(Of IRequestSpec)
+  spec.csharp:
+  - uid: System.Collections.Generic.IList`1
+    name: IList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1
+  - name: <
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec
+    name: IRequestSpec
+    href: Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IList`1
+    name: IList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec
+    name: IRequestSpec
+    href: Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec.html
+  - name: )
+- uid: System.Collections.Generic.IList`1
+  commentId: T:System.Collections.Generic.IList`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1
+  name: IList<T>
+  nameWithType: IList<T>
+  fullName: System.Collections.Generic.IList<T>
+  nameWithType.vb: IList(Of T)
+  fullName.vb: System.Collections.Generic.IList(Of T)
+  name.vb: IList(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IList`1
+    name: IList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IList`1
+    name: IList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.AllowedParallelOrderTypes*
+  commentId: Overload:Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.AllowedParallelOrderTypes
+  href: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.html#Bodoconsult_NetworkCommunication_OrderManagement_Orders_OmOrder_AllowedParallelOrderTypes
+  name: AllowedParallelOrderTypes
+  nameWithType: OmOrder.AllowedParallelOrderTypes
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.AllowedParallelOrderTypes
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IOrder.AllowedParallelOrderTypes
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IOrder.AllowedParallelOrderTypes
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IOrder
+  href: Bodoconsult.NetworkCommunication.Interfaces.IOrder.html#Bodoconsult_NetworkCommunication_Interfaces_IOrder_AllowedParallelOrderTypes
+  name: AllowedParallelOrderTypes
+  nameWithType: IOrder.AllowedParallelOrderTypes
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IOrder.AllowedParallelOrderTypes
+- uid: System.Collections.Generic.IList{System.String}
+  commentId: T:System.Collections.Generic.IList{System.String}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IList`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1
+  name: IList<string>
+  nameWithType: IList<string>
+  fullName: System.Collections.Generic.IList<string>
+  nameWithType.vb: IList(Of String)
+  fullName.vb: System.Collections.Generic.IList(Of String)
+  name.vb: IList(Of String)
+  spec.csharp:
+  - uid: System.Collections.Generic.IList`1
+    name: IList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IList`1
+    name: IList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.SendCancelTodeviceIfCancelledOrUnsuccessful*
+  commentId: Overload:Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.SendCancelTodeviceIfCancelledOrUnsuccessful
+  href: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.html#Bodoconsult_NetworkCommunication_OrderManagement_Orders_OmOrder_SendCancelTodeviceIfCancelledOrUnsuccessful
+  name: SendCancelTodeviceIfCancelledOrUnsuccessful
+  nameWithType: OmOrder.SendCancelTodeviceIfCancelledOrUnsuccessful
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.SendCancelTodeviceIfCancelledOrUnsuccessful
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IOrder.SendCancelTodeviceIfCancelledOrUnsuccessful
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IOrder.SendCancelTodeviceIfCancelledOrUnsuccessful
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IOrder
+  href: Bodoconsult.NetworkCommunication.Interfaces.IOrder.html#Bodoconsult_NetworkCommunication_Interfaces_IOrder_SendCancelTodeviceIfCancelledOrUnsuccessful
+  name: SendCancelTodeviceIfCancelledOrUnsuccessful
+  nameWithType: IOrder.SendCancelTodeviceIfCancelledOrUnsuccessful
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IOrder.SendCancelTodeviceIfCancelledOrUnsuccessful
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.OrderFinishedSuccessfulAction*
+  commentId: Overload:Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.OrderFinishedSuccessfulAction
+  href: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.html#Bodoconsult_NetworkCommunication_OrderManagement_Orders_OmOrder_OrderFinishedSuccessfulAction
+  name: OrderFinishedSuccessfulAction
+  nameWithType: OmOrder.OrderFinishedSuccessfulAction
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.OrderFinishedSuccessfulAction
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IOrder.OrderFinishedSuccessfulAction
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IOrder.OrderFinishedSuccessfulAction
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IOrder
+  href: Bodoconsult.NetworkCommunication.Interfaces.IOrder.html#Bodoconsult_NetworkCommunication_Interfaces_IOrder_OrderFinishedSuccessfulAction
+  name: OrderFinishedSuccessfulAction
+  nameWithType: IOrder.OrderFinishedSuccessfulAction
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IOrder.OrderFinishedSuccessfulAction
+- uid: Bodoconsult.NetworkCommunication.Delegates.ActionRequestStepDelegate
+  commentId: T:Bodoconsult.NetworkCommunication.Delegates.ActionRequestStepDelegate
+  parent: Bodoconsult.NetworkCommunication.Delegates
+  href: Bodoconsult.NetworkCommunication.Delegates.ActionRequestStepDelegate.html
+  name: ActionRequestStepDelegate
+  nameWithType: ActionRequestStepDelegate
+  fullName: Bodoconsult.NetworkCommunication.Delegates.ActionRequestStepDelegate
+- uid: Bodoconsult.NetworkCommunication.Delegates
+  commentId: N:Bodoconsult.NetworkCommunication.Delegates
+  href: Bodoconsult.html
+  name: Bodoconsult.NetworkCommunication.Delegates
+  nameWithType: Bodoconsult.NetworkCommunication.Delegates
+  fullName: Bodoconsult.NetworkCommunication.Delegates
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Delegates
+    name: Delegates
+    href: Bodoconsult.NetworkCommunication.Delegates.html
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Delegates
+    name: Delegates
+    href: Bodoconsult.NetworkCommunication.Delegates.html
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.OrderFinishedUnsuccessfulAction*
+  commentId: Overload:Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.OrderFinishedUnsuccessfulAction
+  href: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.html#Bodoconsult_NetworkCommunication_OrderManagement_Orders_OmOrder_OrderFinishedUnsuccessfulAction
+  name: OrderFinishedUnsuccessfulAction
+  nameWithType: OmOrder.OrderFinishedUnsuccessfulAction
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.OrderFinishedUnsuccessfulAction
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IOrder.OrderFinishedUnsuccessfulAction
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IOrder.OrderFinishedUnsuccessfulAction
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IOrder
+  href: Bodoconsult.NetworkCommunication.Interfaces.IOrder.html#Bodoconsult_NetworkCommunication_Interfaces_IOrder_OrderFinishedUnsuccessfulAction
+  name: OrderFinishedUnsuccessfulAction
+  nameWithType: IOrder.OrderFinishedUnsuccessfulAction
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IOrder.OrderFinishedUnsuccessfulAction
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.StateToNotifyOnSuccess*
+  commentId: Overload:Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.StateToNotifyOnSuccess
+  href: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.html#Bodoconsult_NetworkCommunication_OrderManagement_Orders_OmOrder_StateToNotifyOnSuccess
+  name: StateToNotifyOnSuccess
+  nameWithType: OmOrder.StateToNotifyOnSuccess
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.StateToNotifyOnSuccess
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IOrder.StateToNotifyOnSuccess
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IOrder.StateToNotifyOnSuccess
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IOrder
+  href: Bodoconsult.NetworkCommunication.Interfaces.IOrder.html#Bodoconsult_NetworkCommunication_Interfaces_IOrder_StateToNotifyOnSuccess
+  name: StateToNotifyOnSuccess
+  nameWithType: IOrder.StateToNotifyOnSuccess
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IOrder.StateToNotifyOnSuccess
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IDeviceState
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.IDeviceState
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.NetworkCommunication.Interfaces.IDeviceState.html
+  name: IDeviceState
+  nameWithType: IDeviceState
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IDeviceState
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.IsRunningSync*
+  commentId: Overload:Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.IsRunningSync
+  href: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.html#Bodoconsult_NetworkCommunication_OrderManagement_Orders_OmOrder_IsRunningSync
+  name: IsRunningSync
+  nameWithType: OmOrder.IsRunningSync
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.IsRunningSync
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IOrder.IsRunningSync
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IOrder.IsRunningSync
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IOrder
+  href: Bodoconsult.NetworkCommunication.Interfaces.IOrder.html#Bodoconsult_NetworkCommunication_Interfaces_IOrder_IsRunningSync
+  name: IsRunningSync
+  nameWithType: IOrder.IsRunningSync
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IOrder.IsRunningSync
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.IsDisposable*
+  commentId: Overload:Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.IsDisposable
+  href: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.html#Bodoconsult_NetworkCommunication_OrderManagement_Orders_OmOrder_IsDisposable
+  name: IsDisposable
+  nameWithType: OmOrder.IsDisposable
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.IsDisposable
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IOrder.IsDisposable
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IOrder.IsDisposable
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IOrder
+  href: Bodoconsult.NetworkCommunication.Interfaces.IOrder.html#Bodoconsult_NetworkCommunication_Interfaces_IOrder_IsDisposable
+  name: IsDisposable
+  nameWithType: IOrder.IsDisposable
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IOrder.IsDisposable
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.IsClientNotificationTurnedOff*
+  commentId: Overload:Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.IsClientNotificationTurnedOff
+  href: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.html#Bodoconsult_NetworkCommunication_OrderManagement_Orders_OmOrder_IsClientNotificationTurnedOff
+  name: IsClientNotificationTurnedOff
+  nameWithType: OmOrder.IsClientNotificationTurnedOff
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.IsClientNotificationTurnedOff
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IOrder.IsClientNotificationTurnedOff
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IOrder.IsClientNotificationTurnedOff
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IOrder
+  href: Bodoconsult.NetworkCommunication.Interfaces.IOrder.html#Bodoconsult_NetworkCommunication_Interfaces_IOrder_IsClientNotificationTurnedOff
+  name: IsClientNotificationTurnedOff
+  nameWithType: IOrder.IsClientNotificationTurnedOff
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IOrder.IsClientNotificationTurnedOff
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.IsNextOrderStartAllowed*
+  commentId: Overload:Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.IsNextOrderStartAllowed
+  href: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.html#Bodoconsult_NetworkCommunication_OrderManagement_Orders_OmOrder_IsNextOrderStartAllowed
+  name: IsNextOrderStartAllowed
+  nameWithType: OmOrder.IsNextOrderStartAllowed
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.IsNextOrderStartAllowed
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IOrder.IsNextOrderStartAllowed
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IOrder.IsNextOrderStartAllowed
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IOrder
+  href: Bodoconsult.NetworkCommunication.Interfaces.IOrder.html#Bodoconsult_NetworkCommunication_Interfaces_IOrder_IsNextOrderStartAllowed
+  name: IsNextOrderStartAllowed
+  nameWithType: IOrder.IsNextOrderStartAllowed
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IOrder.IsNextOrderStartAllowed
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.FailingOrderRequiresComDevClose*
+  commentId: Overload:Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.FailingOrderRequiresComDevClose
+  href: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.html#Bodoconsult_NetworkCommunication_OrderManagement_Orders_OmOrder_FailingOrderRequiresComDevClose
+  name: FailingOrderRequiresComDevClose
+  nameWithType: OmOrder.FailingOrderRequiresComDevClose
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.FailingOrderRequiresComDevClose
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IOrder.FailingOrderRequiresComDevClose
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IOrder.FailingOrderRequiresComDevClose
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IOrder
+  href: Bodoconsult.NetworkCommunication.Interfaces.IOrder.html#Bodoconsult_NetworkCommunication_Interfaces_IOrder_FailingOrderRequiresComDevClose
+  name: FailingOrderRequiresComDevClose
+  nameWithType: IOrder.FailingOrderRequiresComDevClose
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IOrder.FailingOrderRequiresComDevClose
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.IsCancelledOnComDevClose*
+  commentId: Overload:Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.IsCancelledOnComDevClose
+  href: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.html#Bodoconsult_NetworkCommunication_OrderManagement_Orders_OmOrder_IsCancelledOnComDevClose
+  name: IsCancelledOnComDevClose
+  nameWithType: OmOrder.IsCancelledOnComDevClose
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.IsCancelledOnComDevClose
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IOrder.IsCancelledOnComDevClose
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IOrder.IsCancelledOnComDevClose
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IOrder
+  href: Bodoconsult.NetworkCommunication.Interfaces.IOrder.html#Bodoconsult_NetworkCommunication_Interfaces_IOrder_IsCancelledOnComDevClose
+  name: IsCancelledOnComDevClose
+  nameWithType: IOrder.IsCancelledOnComDevClose
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IOrder.IsCancelledOnComDevClose
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.IsCancelledOndevicePropertyUpdate*
+  commentId: Overload:Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.IsCancelledOndevicePropertyUpdate
+  href: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.html#Bodoconsult_NetworkCommunication_OrderManagement_Orders_OmOrder_IsCancelledOndevicePropertyUpdate
+  name: IsCancelledOndevicePropertyUpdate
+  nameWithType: OmOrder.IsCancelledOndevicePropertyUpdate
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.IsCancelledOndevicePropertyUpdate
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IOrder.IsCancelledOndevicePropertyUpdate
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IOrder.IsCancelledOndevicePropertyUpdate
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IOrder
+  href: Bodoconsult.NetworkCommunication.Interfaces.IOrder.html#Bodoconsult_NetworkCommunication_Interfaces_IOrder_IsCancelledOndevicePropertyUpdate
+  name: IsCancelledOndevicePropertyUpdate
+  nameWithType: IOrder.IsCancelledOndevicePropertyUpdate
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IOrder.IsCancelledOndevicePropertyUpdate
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.GetFormattedUser*
+  commentId: Overload:Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.GetFormattedUser
+  href: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.html#Bodoconsult_NetworkCommunication_OrderManagement_Orders_OmOrder_GetFormattedUser
+  name: GetFormattedUser
+  nameWithType: OmOrder.GetFormattedUser
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.GetFormattedUser
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.IsHighPriorityOrder*
+  commentId: Overload:Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.IsHighPriorityOrder
+  href: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.html#Bodoconsult_NetworkCommunication_OrderManagement_Orders_OmOrder_IsHighPriorityOrder
+  name: IsHighPriorityOrder
+  nameWithType: OmOrder.IsHighPriorityOrder
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.IsHighPriorityOrder
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IOrder.IsHighPriorityOrder
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IOrder.IsHighPriorityOrder
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IOrder
+  href: Bodoconsult.NetworkCommunication.Interfaces.IOrder.html#Bodoconsult_NetworkCommunication_Interfaces_IOrder_IsHighPriorityOrder
+  name: IsHighPriorityOrder
+  nameWithType: IOrder.IsHighPriorityOrder
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IOrder.IsHighPriorityOrder
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.IsCheckedWithPriority*
+  commentId: Overload:Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.IsCheckedWithPriority
+  href: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.html#Bodoconsult_NetworkCommunication_OrderManagement_Orders_OmOrder_IsCheckedWithPriority
+  name: IsCheckedWithPriority
+  nameWithType: OmOrder.IsCheckedWithPriority
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.IsCheckedWithPriority
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IOrder.IsCheckedWithPriority
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IOrder.IsCheckedWithPriority
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IOrder
+  href: Bodoconsult.NetworkCommunication.Interfaces.IOrder.html#Bodoconsult_NetworkCommunication_Interfaces_IOrder_IsCheckedWithPriority
+  name: IsCheckedWithPriority
+  nameWithType: IOrder.IsCheckedWithPriority
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IOrder.IsCheckedWithPriority
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.ParameterSet*
+  commentId: Overload:Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.ParameterSet
+  href: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.html#Bodoconsult_NetworkCommunication_OrderManagement_Orders_OmOrder_ParameterSet
+  name: ParameterSet
+  nameWithType: OmOrder.ParameterSet
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.ParameterSet
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IOrder.ParameterSet
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IOrder.ParameterSet
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IOrder
+  href: Bodoconsult.NetworkCommunication.Interfaces.IOrder.html#Bodoconsult_NetworkCommunication_Interfaces_IOrder_ParameterSet
+  name: ParameterSet
+  nameWithType: IOrder.ParameterSet
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IOrder.ParameterSet
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.WasSuccessful*
+  commentId: Overload:Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.WasSuccessful
+  href: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.html#Bodoconsult_NetworkCommunication_OrderManagement_Orders_OmOrder_WasSuccessful
+  name: WasSuccessful
+  nameWithType: OmOrder.WasSuccessful
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.WasSuccessful
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IOrder.WasSuccessful
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IOrder.WasSuccessful
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IOrder
+  href: Bodoconsult.NetworkCommunication.Interfaces.IOrder.html#Bodoconsult_NetworkCommunication_Interfaces_IOrder_WasSuccessful
+  name: WasSuccessful
+  nameWithType: IOrder.WasSuccessful
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IOrder.WasSuccessful
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.IsCancelled*
+  commentId: Overload:Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.IsCancelled
+  href: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.html#Bodoconsult_NetworkCommunication_OrderManagement_Orders_OmOrder_IsCancelled
+  name: IsCancelled
+  nameWithType: OmOrder.IsCancelled
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.IsCancelled
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IOrder.IsCancelled
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IOrder.IsCancelled
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IOrder
+  href: Bodoconsult.NetworkCommunication.Interfaces.IOrder.html#Bodoconsult_NetworkCommunication_Interfaces_IOrder_IsCancelled
+  name: IsCancelled
+  nameWithType: IOrder.IsCancelled
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IOrder.IsCancelled
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.IsCancelledLockObject*
+  commentId: Overload:Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.IsCancelledLockObject
+  href: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.html#Bodoconsult_NetworkCommunication_OrderManagement_Orders_OmOrder_IsCancelledLockObject
+  name: IsCancelledLockObject
+  nameWithType: OmOrder.IsCancelledLockObject
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.IsCancelledLockObject
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IOrder.IsCancelledLockObject
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IOrder.IsCancelledLockObject
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IOrder
+  href: Bodoconsult.NetworkCommunication.Interfaces.IOrder.html#Bodoconsult_NetworkCommunication_Interfaces_IOrder_IsCancelledLockObject
+  name: IsCancelledLockObject
+  nameWithType: IOrder.IsCancelledLockObject
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IOrder.IsCancelledLockObject
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.StartTime*
+  commentId: Overload:Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.StartTime
+  href: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.html#Bodoconsult_NetworkCommunication_OrderManagement_Orders_OmOrder_StartTime
+  name: StartTime
+  nameWithType: OmOrder.StartTime
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.StartTime
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IOrder.StartTime
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IOrder.StartTime
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IOrder
+  href: Bodoconsult.NetworkCommunication.Interfaces.IOrder.html#Bodoconsult_NetworkCommunication_Interfaces_IOrder_StartTime
+  name: StartTime
+  nameWithType: IOrder.StartTime
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IOrder.StartTime
+- uid: System.DateTime
+  commentId: T:System.DateTime
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.datetime
+  name: DateTime
+  nameWithType: DateTime
+  fullName: System.DateTime
+  nameWithType.vb: Date
+  fullName.vb: Date
+  name.vb: Date
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.EndTime*
+  commentId: Overload:Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.EndTime
+  href: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.html#Bodoconsult_NetworkCommunication_OrderManagement_Orders_OmOrder_EndTime
+  name: EndTime
+  nameWithType: OmOrder.EndTime
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.EndTime
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IOrder.EndTime
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IOrder.EndTime
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IOrder
+  href: Bodoconsult.NetworkCommunication.Interfaces.IOrder.html#Bodoconsult_NetworkCommunication_Interfaces_IOrder_EndTime
+  name: EndTime
+  nameWithType: IOrder.EndTime
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IOrder.EndTime
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.ExecutionResult*
+  commentId: Overload:Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.ExecutionResult
+  href: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.html#Bodoconsult_NetworkCommunication_OrderManagement_Orders_OmOrder_ExecutionResult
+  name: ExecutionResult
+  nameWithType: OmOrder.ExecutionResult
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.ExecutionResult
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IOrder.ExecutionResult
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IOrder.ExecutionResult
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IOrder
+  href: Bodoconsult.NetworkCommunication.Interfaces.IOrder.html#Bodoconsult_NetworkCommunication_Interfaces_IOrder_ExecutionResult
+  name: ExecutionResult
+  nameWithType: IOrder.ExecutionResult
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IOrder.ExecutionResult
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionResultState
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionResultState
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionResultState.html
+  name: IOrderExecutionResultState
+  nameWithType: IOrderExecutionResultState
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionResultState
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.ExecutionState*
+  commentId: Overload:Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.ExecutionState
+  href: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.html#Bodoconsult_NetworkCommunication_OrderManagement_Orders_OmOrder_ExecutionState
+  name: ExecutionState
+  nameWithType: OmOrder.ExecutionState
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.ExecutionState
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IOrder.ExecutionState
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IOrder.ExecutionState
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IOrder
+  href: Bodoconsult.NetworkCommunication.Interfaces.IOrder.html#Bodoconsult_NetworkCommunication_Interfaces_IOrder_ExecutionState
+  name: ExecutionState
+  nameWithType: IOrder.ExecutionState
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IOrder.ExecutionState
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IOrderState
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.IOrderState
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.NetworkCommunication.Interfaces.IOrderState.html
+  name: IOrderState
+  nameWithType: IOrderState
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IOrderState
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.IsFinished*
+  commentId: Overload:Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.IsFinished
+  href: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.html#Bodoconsult_NetworkCommunication_OrderManagement_Orders_OmOrder_IsFinished
+  name: IsFinished
+  nameWithType: OmOrder.IsFinished
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.IsFinished
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IOrder.IsFinished
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IOrder.IsFinished
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IOrder
+  href: Bodoconsult.NetworkCommunication.Interfaces.IOrder.html#Bodoconsult_NetworkCommunication_Interfaces_IOrder_IsFinished
+  name: IsFinished
+  nameWithType: IOrder.IsFinished
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IOrder.IsFinished
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.TransactionId*
+  commentId: Overload:Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.TransactionId
+  href: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.html#Bodoconsult_NetworkCommunication_OrderManagement_Orders_OmOrder_TransactionId
+  name: TransactionId
+  nameWithType: OmOrder.TransactionId
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.TransactionId
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IOrder.TransactionId
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IOrder.TransactionId
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IOrder
+  href: Bodoconsult.NetworkCommunication.Interfaces.IOrder.html#Bodoconsult_NetworkCommunication_Interfaces_IOrder_TransactionId
+  name: TransactionId
+  nameWithType: IOrder.TransactionId
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IOrder.TransactionId
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.DeviceId*
+  commentId: Overload:Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.DeviceId
+  href: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.html#Bodoconsult_NetworkCommunication_OrderManagement_Orders_OmOrder_DeviceId
+  name: DeviceId
+  nameWithType: OmOrder.DeviceId
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.DeviceId
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IOrder.DeviceId
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IOrder.DeviceId
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IOrder
+  href: Bodoconsult.NetworkCommunication.Interfaces.IOrder.html#Bodoconsult_NetworkCommunication_Interfaces_IOrder_DeviceId
+  name: DeviceId
+  nameWithType: IOrder.DeviceId
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IOrder.DeviceId
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.TraceCodeSuccess*
+  commentId: Overload:Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.TraceCodeSuccess
+  href: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.html#Bodoconsult_NetworkCommunication_OrderManagement_Orders_OmOrder_TraceCodeSuccess
+  name: TraceCodeSuccess
+  nameWithType: OmOrder.TraceCodeSuccess
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.TraceCodeSuccess
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IOrder.TraceCodeSuccess
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IOrder.TraceCodeSuccess
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IOrder
+  href: Bodoconsult.NetworkCommunication.Interfaces.IOrder.html#Bodoconsult_NetworkCommunication_Interfaces_IOrder_TraceCodeSuccess
+  name: TraceCodeSuccess
+  nameWithType: IOrder.TraceCodeSuccess
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IOrder.TraceCodeSuccess
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.TraceCodeError*
+  commentId: Overload:Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.TraceCodeError
+  href: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.html#Bodoconsult_NetworkCommunication_OrderManagement_Orders_OmOrder_TraceCodeError
+  name: TraceCodeError
+  nameWithType: OmOrder.TraceCodeError
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.TraceCodeError
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IOrder.TraceCodeError
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IOrder.TraceCodeError
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IOrder
+  href: Bodoconsult.NetworkCommunication.Interfaces.IOrder.html#Bodoconsult_NetworkCommunication_Interfaces_IOrder_TraceCodeError
+  name: TraceCodeError
+  nameWithType: IOrder.TraceCodeError
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IOrder.TraceCodeError
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.TraceMessage*
+  commentId: Overload:Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.TraceMessage
+  href: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.html#Bodoconsult_NetworkCommunication_OrderManagement_Orders_OmOrder_TraceMessage
+  name: TraceMessage
+  nameWithType: OmOrder.TraceMessage
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.TraceMessage
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IOrder.TraceMessage
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IOrder.TraceMessage
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IOrder
+  href: Bodoconsult.NetworkCommunication.Interfaces.IOrder.html#Bodoconsult_NetworkCommunication_Interfaces_IOrder_TraceMessage
+  name: TraceMessage
+  nameWithType: IOrder.TraceMessage
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IOrder.TraceMessage
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.OrderError*
+  commentId: Overload:Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.OrderError
+  href: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.html#Bodoconsult_NetworkCommunication_OrderManagement_Orders_OmOrder_OrderError
+  name: OrderError
+  nameWithType: OmOrder.OrderError
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.OrderError
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IOrder.OrderError
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IOrder.OrderError
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IOrder
+  href: Bodoconsult.NetworkCommunication.Interfaces.IOrder.html#Bodoconsult_NetworkCommunication_Interfaces_IOrder_OrderError
+  name: OrderError
+  nameWithType: IOrder.OrderError
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IOrder.OrderError
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.TraceEntry*
+  commentId: Overload:Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.TraceEntry
+  href: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.html#Bodoconsult_NetworkCommunication_OrderManagement_Orders_OmOrder_TraceEntry
+  name: TraceEntry
+  nameWithType: OmOrder.TraceEntry
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.TraceEntry
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IOrder.TraceEntry
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IOrder.TraceEntry
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IOrder
+  href: Bodoconsult.NetworkCommunication.Interfaces.IOrder.html#Bodoconsult_NetworkCommunication_Interfaces_IOrder_TraceEntry
+  name: TraceEntry
+  nameWithType: IOrder.TraceEntry
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IOrder.TraceEntry
+- uid: Bodoconsult.NetworkCommunication.Interfaces.ITraceEntry
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.ITraceEntry
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.NetworkCommunication.Interfaces.ITraceEntry.html
+  name: ITraceEntry
+  nameWithType: ITraceEntry
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.ITraceEntry
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.CreateTraceEntry*
+  commentId: Overload:Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.CreateTraceEntry
+  href: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.html#Bodoconsult_NetworkCommunication_OrderManagement_Orders_OmOrder_CreateTraceEntry_Bodoconsult_NetworkCommunication_Interfaces_IOrderExecutionResultState_System_Int32__System_DateTime_
+  name: CreateTraceEntry
+  nameWithType: OmOrder.CreateTraceEntry
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.CreateTraceEntry
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IOrder.CreateTraceEntry(Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionResultState,System.Int32@,System.DateTime)
+  commentId: M:Bodoconsult.NetworkCommunication.Interfaces.IOrder.CreateTraceEntry(Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionResultState,System.Int32@,System.DateTime)
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IOrder
+  isExternal: true
+  href: Bodoconsult.NetworkCommunication.Interfaces.IOrder.html#Bodoconsult_NetworkCommunication_Interfaces_IOrder_CreateTraceEntry_Bodoconsult_NetworkCommunication_Interfaces_IOrderExecutionResultState_System_Int32__System_DateTime_
+  name: CreateTraceEntry(IOrderExecutionResultState, in int, DateTime)
+  nameWithType: IOrder.CreateTraceEntry(IOrderExecutionResultState, in int, DateTime)
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IOrder.CreateTraceEntry(Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionResultState, in int, System.DateTime)
+  nameWithType.vb: IOrder.CreateTraceEntry(IOrderExecutionResultState, Integer, Date)
+  fullName.vb: Bodoconsult.NetworkCommunication.Interfaces.IOrder.CreateTraceEntry(Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionResultState, Integer, Date)
+  name.vb: CreateTraceEntry(IOrderExecutionResultState, Integer, Date)
+  spec.csharp:
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IOrder.CreateTraceEntry(Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionResultState,System.Int32@,System.DateTime)
+    name: CreateTraceEntry
+    href: Bodoconsult.NetworkCommunication.Interfaces.IOrder.html#Bodoconsult_NetworkCommunication_Interfaces_IOrder_CreateTraceEntry_Bodoconsult_NetworkCommunication_Interfaces_IOrderExecutionResultState_System_Int32__System_DateTime_
+  - name: (
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionResultState
+    name: IOrderExecutionResultState
+    href: Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionResultState.html
+  - name: ','
+  - name: " "
+  - name: in
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.DateTime
+    name: DateTime
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.datetime
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IOrder.CreateTraceEntry(Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionResultState,System.Int32@,System.DateTime)
+    name: CreateTraceEntry
+    href: Bodoconsult.NetworkCommunication.Interfaces.IOrder.html#Bodoconsult_NetworkCommunication_Interfaces_IOrder_CreateTraceEntry_Bodoconsult_NetworkCommunication_Interfaces_IOrderExecutionResultState_System_Int32__System_DateTime_
+  - name: (
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionResultState
+    name: IOrderExecutionResultState
+    href: Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionResultState.html
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.DateTime
+    name: Date
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.datetime
+  - name: )
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.IsBenchable*
+  commentId: Overload:Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.IsBenchable
+  href: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.html#Bodoconsult_NetworkCommunication_OrderManagement_Orders_OmOrder_IsBenchable
+  name: IsBenchable
+  nameWithType: OmOrder.IsBenchable
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.IsBenchable
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IOrder.IsBenchable
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IOrder.IsBenchable
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IOrder
+  href: Bodoconsult.NetworkCommunication.Interfaces.IOrder.html#Bodoconsult_NetworkCommunication_Interfaces_IOrder_IsBenchable
+  name: IsBenchable
+  nameWithType: IOrder.IsBenchable
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IOrder.IsBenchable
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.Benchmark*
+  commentId: Overload:Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.Benchmark
+  href: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.html#Bodoconsult_NetworkCommunication_OrderManagement_Orders_OmOrder_Benchmark
+  name: Benchmark
+  nameWithType: OmOrder.Benchmark
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.Benchmark
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IOrder.Benchmark
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IOrder.Benchmark
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IOrder
+  href: Bodoconsult.NetworkCommunication.Interfaces.IOrder.html#Bodoconsult_NetworkCommunication_Interfaces_IOrder_Benchmark
+  name: Benchmark
+  nameWithType: IOrder.Benchmark
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IOrder.Benchmark
+- uid: Bodoconsult.App.Benchmarking.Bench
+  commentId: T:Bodoconsult.App.Benchmarking.Bench
+  parent: Bodoconsult.App.Benchmarking
+  isExternal: true
+  name: Bench
+  nameWithType: Bench
+  fullName: Bodoconsult.App.Benchmarking.Bench
+- uid: Bodoconsult.App.Benchmarking
+  commentId: N:Bodoconsult.App.Benchmarking
+  isExternal: true
+  name: Bodoconsult.App.Benchmarking
+  nameWithType: Bodoconsult.App.Benchmarking
+  fullName: Bodoconsult.App.Benchmarking
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    isExternal: true
+  - name: .
+  - uid: Bodoconsult.App
+    name: App
+    isExternal: true
+  - name: .
+  - uid: Bodoconsult.App.Benchmarking
+    name: Benchmarking
+    isExternal: true
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    isExternal: true
+  - name: .
+  - uid: Bodoconsult.App
+    name: App
+    isExternal: true
+  - name: .
+  - uid: Bodoconsult.App.Benchmarking
+    name: Benchmarking
+    isExternal: true
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.Dispose*
+  commentId: Overload:Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.Dispose
+  href: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.html#Bodoconsult_NetworkCommunication_OrderManagement_Orders_OmOrder_Dispose
+  name: Dispose
+  nameWithType: OmOrder.Dispose
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.Dispose
+- uid: System.IDisposable.Dispose
+  commentId: M:System.IDisposable.Dispose
+  parent: System.IDisposable
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  name: Dispose()
+  nameWithType: IDisposable.Dispose()
+  fullName: System.IDisposable.Dispose()
+  spec.csharp:
+  - uid: System.IDisposable.Dispose
+    name: Dispose
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.IDisposable.Dispose
+    name: Dispose
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  - name: (
+  - name: )

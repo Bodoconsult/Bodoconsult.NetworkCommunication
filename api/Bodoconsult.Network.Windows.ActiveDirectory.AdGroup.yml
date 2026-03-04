@@ -1,0 +1,690 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bodoconsult.Network.Windows.ActiveDirectory.AdGroup
+  commentId: T:Bodoconsult.Network.Windows.ActiveDirectory.AdGroup
+  id: AdGroup
+  parent: Bodoconsult.Network.Windows.ActiveDirectory
+  children:
+  - Bodoconsult.Network.Windows.ActiveDirectory.AdGroup.#ctor
+  - Bodoconsult.Network.Windows.ActiveDirectory.AdGroup.DistinguishedName
+  - Bodoconsult.Network.Windows.ActiveDirectory.AdGroup.GroupType
+  - Bodoconsult.Network.Windows.ActiveDirectory.AdGroup.Members
+  - Bodoconsult.Network.Windows.ActiveDirectory.AdGroup.Name
+  - Bodoconsult.Network.Windows.ActiveDirectory.AdGroup.Path
+  langs:
+  - csharp
+  - vb
+  name: AdGroup
+  nameWithType: AdGroup
+  fullName: Bodoconsult.Network.Windows.ActiveDirectory.AdGroup
+  type: Class
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/ActiveDirectory/AdGroup.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: AdGroup
+    path: src/Bodoconsult.Network.Windows/ActiveDirectory/AdGroup.cs
+    startLine: 10
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.ActiveDirectory
+  summary: Represents a AD groups
+  example: []
+  syntax:
+    content: 'public class AdGroup : IAdObject'
+    content.vb: Public Class AdGroup Implements IAdObject
+  inheritance:
+  - System.Object
+  implements:
+  - Bodoconsult.Network.Windows.ActiveDirectory.IAdObject
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: Bodoconsult.Network.Windows.ActiveDirectory.AdGroup.#ctor
+  commentId: M:Bodoconsult.Network.Windows.ActiveDirectory.AdGroup.#ctor
+  id: '#ctor'
+  parent: Bodoconsult.Network.Windows.ActiveDirectory.AdGroup
+  langs:
+  - csharp
+  - vb
+  name: AdGroup()
+  nameWithType: AdGroup.AdGroup()
+  fullName: Bodoconsult.Network.Windows.ActiveDirectory.AdGroup.AdGroup()
+  type: Constructor
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/ActiveDirectory/AdGroup.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: .ctor
+    path: src/Bodoconsult.Network.Windows/ActiveDirectory/AdGroup.cs
+    startLine: 16
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.ActiveDirectory
+  summary: default ctor
+  example: []
+  syntax:
+    content: public AdGroup()
+    content.vb: Public Sub New()
+  overload: Bodoconsult.Network.Windows.ActiveDirectory.AdGroup.#ctor*
+  nameWithType.vb: AdGroup.New()
+  fullName.vb: Bodoconsult.Network.Windows.ActiveDirectory.AdGroup.New()
+  name.vb: New()
+- uid: Bodoconsult.Network.Windows.ActiveDirectory.AdGroup.DistinguishedName
+  commentId: P:Bodoconsult.Network.Windows.ActiveDirectory.AdGroup.DistinguishedName
+  id: DistinguishedName
+  parent: Bodoconsult.Network.Windows.ActiveDirectory.AdGroup
+  langs:
+  - csharp
+  - vb
+  name: DistinguishedName
+  nameWithType: AdGroup.DistinguishedName
+  fullName: Bodoconsult.Network.Windows.ActiveDirectory.AdGroup.DistinguishedName
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/ActiveDirectory/AdGroup.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: DistinguishedName
+    path: src/Bodoconsult.Network.Windows/ActiveDirectory/AdGroup.cs
+    startLine: 24
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.ActiveDirectory
+  summary: the distinguished name of the group
+  example: []
+  syntax:
+    content: public string DistinguishedName { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property DistinguishedName As String
+  overload: Bodoconsult.Network.Windows.ActiveDirectory.AdGroup.DistinguishedName*
+- uid: Bodoconsult.Network.Windows.ActiveDirectory.AdGroup.Path
+  commentId: P:Bodoconsult.Network.Windows.ActiveDirectory.AdGroup.Path
+  id: Path
+  parent: Bodoconsult.Network.Windows.ActiveDirectory.AdGroup
+  langs:
+  - csharp
+  - vb
+  name: Path
+  nameWithType: AdGroup.Path
+  fullName: Bodoconsult.Network.Windows.ActiveDirectory.AdGroup.Path
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/ActiveDirectory/AdGroup.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Path
+    path: src/Bodoconsult.Network.Windows/ActiveDirectory/AdGroup.cs
+    startLine: 30
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.ActiveDirectory
+  summary: LDAP path to the group
+  example: []
+  syntax:
+    content: public string Path { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property Path As String
+  overload: Bodoconsult.Network.Windows.ActiveDirectory.AdGroup.Path*
+  implements:
+  - Bodoconsult.Network.Windows.ActiveDirectory.IAdObject.Path
+- uid: Bodoconsult.Network.Windows.ActiveDirectory.AdGroup.Name
+  commentId: P:Bodoconsult.Network.Windows.ActiveDirectory.AdGroup.Name
+  id: Name
+  parent: Bodoconsult.Network.Windows.ActiveDirectory.AdGroup
+  langs:
+  - csharp
+  - vb
+  name: Name
+  nameWithType: AdGroup.Name
+  fullName: Bodoconsult.Network.Windows.ActiveDirectory.AdGroup.Name
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/ActiveDirectory/AdGroup.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Name
+    path: src/Bodoconsult.Network.Windows/ActiveDirectory/AdGroup.cs
+    startLine: 35
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.ActiveDirectory
+  summary: Name of the group
+  example: []
+  syntax:
+    content: public string Name { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property Name As String
+  overload: Bodoconsult.Network.Windows.ActiveDirectory.AdGroup.Name*
+  implements:
+  - Bodoconsult.Network.Windows.ActiveDirectory.IAdObject.Name
+- uid: Bodoconsult.Network.Windows.ActiveDirectory.AdGroup.Members
+  commentId: P:Bodoconsult.Network.Windows.ActiveDirectory.AdGroup.Members
+  id: Members
+  parent: Bodoconsult.Network.Windows.ActiveDirectory.AdGroup
+  langs:
+  - csharp
+  - vb
+  name: Members
+  nameWithType: AdGroup.Members
+  fullName: Bodoconsult.Network.Windows.ActiveDirectory.AdGroup.Members
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/ActiveDirectory/AdGroup.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Members
+    path: src/Bodoconsult.Network.Windows/ActiveDirectory/AdGroup.cs
+    startLine: 41
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.ActiveDirectory
+  summary: Members of the group
+  example: []
+  syntax:
+    content: public IList<IAdObject> Members { get; set; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.IList{Bodoconsult.Network.Windows.ActiveDirectory.IAdObject}
+    content.vb: Public Property Members As IList(Of IAdObject)
+  overload: Bodoconsult.Network.Windows.ActiveDirectory.AdGroup.Members*
+- uid: Bodoconsult.Network.Windows.ActiveDirectory.AdGroup.GroupType
+  commentId: P:Bodoconsult.Network.Windows.ActiveDirectory.AdGroup.GroupType
+  id: GroupType
+  parent: Bodoconsult.Network.Windows.ActiveDirectory.AdGroup
+  langs:
+  - csharp
+  - vb
+  name: GroupType
+  nameWithType: AdGroup.GroupType
+  fullName: Bodoconsult.Network.Windows.ActiveDirectory.AdGroup.GroupType
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/ActiveDirectory/AdGroup.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: GroupType
+    path: src/Bodoconsult.Network.Windows/ActiveDirectory/AdGroup.cs
+    startLine: 46
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.ActiveDirectory
+  summary: Type of the current AD group
+  example: []
+  syntax:
+    content: public AdGroupType GroupType { get; set; }
+    parameters: []
+    return:
+      type: Bodoconsult.Network.Windows.ActiveDirectory.AdGroupType
+    content.vb: Public Property GroupType As AdGroupType
+  overload: Bodoconsult.Network.Windows.ActiveDirectory.AdGroup.GroupType*
+references:
+- uid: Bodoconsult.Network.Windows.ActiveDirectory
+  commentId: N:Bodoconsult.Network.Windows.ActiveDirectory
+  href: Bodoconsult.html
+  name: Bodoconsult.Network.Windows.ActiveDirectory
+  nameWithType: Bodoconsult.Network.Windows.ActiveDirectory
+  fullName: Bodoconsult.Network.Windows.ActiveDirectory
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.Network
+    name: Network
+    href: Bodoconsult.Network.html
+  - name: .
+  - uid: Bodoconsult.Network.Windows
+    name: Windows
+    href: Bodoconsult.Network.Windows.html
+  - name: .
+  - uid: Bodoconsult.Network.Windows.ActiveDirectory
+    name: ActiveDirectory
+    href: Bodoconsult.Network.Windows.ActiveDirectory.html
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.Network
+    name: Network
+    href: Bodoconsult.Network.html
+  - name: .
+  - uid: Bodoconsult.Network.Windows
+    name: Windows
+    href: Bodoconsult.Network.Windows.html
+  - name: .
+  - uid: Bodoconsult.Network.Windows.ActiveDirectory
+    name: ActiveDirectory
+    href: Bodoconsult.Network.Windows.ActiveDirectory.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Bodoconsult.Network.Windows.ActiveDirectory.IAdObject
+  commentId: T:Bodoconsult.Network.Windows.ActiveDirectory.IAdObject
+  parent: Bodoconsult.Network.Windows.ActiveDirectory
+  href: Bodoconsult.Network.Windows.ActiveDirectory.IAdObject.html
+  name: IAdObject
+  nameWithType: IAdObject
+  fullName: Bodoconsult.Network.Windows.ActiveDirectory.IAdObject
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Bodoconsult.Network.Windows.ActiveDirectory.AdGroup.#ctor*
+  commentId: Overload:Bodoconsult.Network.Windows.ActiveDirectory.AdGroup.#ctor
+  href: Bodoconsult.Network.Windows.ActiveDirectory.AdGroup.html#Bodoconsult_Network_Windows_ActiveDirectory_AdGroup__ctor
+  name: AdGroup
+  nameWithType: AdGroup.AdGroup
+  fullName: Bodoconsult.Network.Windows.ActiveDirectory.AdGroup.AdGroup
+  nameWithType.vb: AdGroup.New
+  fullName.vb: Bodoconsult.Network.Windows.ActiveDirectory.AdGroup.New
+  name.vb: New
+- uid: Bodoconsult.Network.Windows.ActiveDirectory.AdGroup.DistinguishedName*
+  commentId: Overload:Bodoconsult.Network.Windows.ActiveDirectory.AdGroup.DistinguishedName
+  href: Bodoconsult.Network.Windows.ActiveDirectory.AdGroup.html#Bodoconsult_Network_Windows_ActiveDirectory_AdGroup_DistinguishedName
+  name: DistinguishedName
+  nameWithType: AdGroup.DistinguishedName
+  fullName: Bodoconsult.Network.Windows.ActiveDirectory.AdGroup.DistinguishedName
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Bodoconsult.Network.Windows.ActiveDirectory.AdGroup.Path*
+  commentId: Overload:Bodoconsult.Network.Windows.ActiveDirectory.AdGroup.Path
+  href: Bodoconsult.Network.Windows.ActiveDirectory.AdGroup.html#Bodoconsult_Network_Windows_ActiveDirectory_AdGroup_Path
+  name: Path
+  nameWithType: AdGroup.Path
+  fullName: Bodoconsult.Network.Windows.ActiveDirectory.AdGroup.Path
+- uid: Bodoconsult.Network.Windows.ActiveDirectory.IAdObject.Path
+  commentId: P:Bodoconsult.Network.Windows.ActiveDirectory.IAdObject.Path
+  parent: Bodoconsult.Network.Windows.ActiveDirectory.IAdObject
+  href: Bodoconsult.Network.Windows.ActiveDirectory.IAdObject.html#Bodoconsult_Network_Windows_ActiveDirectory_IAdObject_Path
+  name: Path
+  nameWithType: IAdObject.Path
+  fullName: Bodoconsult.Network.Windows.ActiveDirectory.IAdObject.Path
+- uid: Bodoconsult.Network.Windows.ActiveDirectory.AdGroup.Name*
+  commentId: Overload:Bodoconsult.Network.Windows.ActiveDirectory.AdGroup.Name
+  href: Bodoconsult.Network.Windows.ActiveDirectory.AdGroup.html#Bodoconsult_Network_Windows_ActiveDirectory_AdGroup_Name
+  name: Name
+  nameWithType: AdGroup.Name
+  fullName: Bodoconsult.Network.Windows.ActiveDirectory.AdGroup.Name
+- uid: Bodoconsult.Network.Windows.ActiveDirectory.IAdObject.Name
+  commentId: P:Bodoconsult.Network.Windows.ActiveDirectory.IAdObject.Name
+  parent: Bodoconsult.Network.Windows.ActiveDirectory.IAdObject
+  href: Bodoconsult.Network.Windows.ActiveDirectory.IAdObject.html#Bodoconsult_Network_Windows_ActiveDirectory_IAdObject_Name
+  name: Name
+  nameWithType: IAdObject.Name
+  fullName: Bodoconsult.Network.Windows.ActiveDirectory.IAdObject.Name
+- uid: Bodoconsult.Network.Windows.ActiveDirectory.AdGroup.Members*
+  commentId: Overload:Bodoconsult.Network.Windows.ActiveDirectory.AdGroup.Members
+  href: Bodoconsult.Network.Windows.ActiveDirectory.AdGroup.html#Bodoconsult_Network_Windows_ActiveDirectory_AdGroup_Members
+  name: Members
+  nameWithType: AdGroup.Members
+  fullName: Bodoconsult.Network.Windows.ActiveDirectory.AdGroup.Members
+- uid: System.Collections.Generic.IList{Bodoconsult.Network.Windows.ActiveDirectory.IAdObject}
+  commentId: T:System.Collections.Generic.IList{Bodoconsult.Network.Windows.ActiveDirectory.IAdObject}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IList`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1
+  name: IList<IAdObject>
+  nameWithType: IList<IAdObject>
+  fullName: System.Collections.Generic.IList<Bodoconsult.Network.Windows.ActiveDirectory.IAdObject>
+  nameWithType.vb: IList(Of IAdObject)
+  fullName.vb: System.Collections.Generic.IList(Of Bodoconsult.Network.Windows.ActiveDirectory.IAdObject)
+  name.vb: IList(Of IAdObject)
+  spec.csharp:
+  - uid: System.Collections.Generic.IList`1
+    name: IList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1
+  - name: <
+  - uid: Bodoconsult.Network.Windows.ActiveDirectory.IAdObject
+    name: IAdObject
+    href: Bodoconsult.Network.Windows.ActiveDirectory.IAdObject.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IList`1
+    name: IList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Bodoconsult.Network.Windows.ActiveDirectory.IAdObject
+    name: IAdObject
+    href: Bodoconsult.Network.Windows.ActiveDirectory.IAdObject.html
+  - name: )
+- uid: System.Collections.Generic.IList`1
+  commentId: T:System.Collections.Generic.IList`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1
+  name: IList<T>
+  nameWithType: IList<T>
+  fullName: System.Collections.Generic.IList<T>
+  nameWithType.vb: IList(Of T)
+  fullName.vb: System.Collections.Generic.IList(Of T)
+  name.vb: IList(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IList`1
+    name: IList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IList`1
+    name: IList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: Bodoconsult.Network.Windows.ActiveDirectory.AdGroup.GroupType*
+  commentId: Overload:Bodoconsult.Network.Windows.ActiveDirectory.AdGroup.GroupType
+  href: Bodoconsult.Network.Windows.ActiveDirectory.AdGroup.html#Bodoconsult_Network_Windows_ActiveDirectory_AdGroup_GroupType
+  name: GroupType
+  nameWithType: AdGroup.GroupType
+  fullName: Bodoconsult.Network.Windows.ActiveDirectory.AdGroup.GroupType
+- uid: Bodoconsult.Network.Windows.ActiveDirectory.AdGroupType
+  commentId: T:Bodoconsult.Network.Windows.ActiveDirectory.AdGroupType
+  parent: Bodoconsult.Network.Windows.ActiveDirectory
+  href: Bodoconsult.Network.Windows.ActiveDirectory.AdGroupType.html
+  name: AdGroupType
+  nameWithType: AdGroupType
+  fullName: Bodoconsult.Network.Windows.ActiveDirectory.AdGroupType

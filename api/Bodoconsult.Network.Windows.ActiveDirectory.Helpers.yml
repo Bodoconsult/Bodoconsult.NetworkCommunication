@@ -1,0 +1,23 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bodoconsult.Network.Windows.ActiveDirectory.Helpers
+  commentId: N:Bodoconsult.Network.Windows.ActiveDirectory.Helpers
+  id: Bodoconsult.Network.Windows.ActiveDirectory.Helpers
+  children:
+  - Bodoconsult.Network.Windows.ActiveDirectory.Helpers.AdHelper
+  langs:
+  - csharp
+  - vb
+  name: Bodoconsult.Network.Windows.ActiveDirectory.Helpers
+  nameWithType: Bodoconsult.Network.Windows.ActiveDirectory.Helpers
+  fullName: Bodoconsult.Network.Windows.ActiveDirectory.Helpers
+  type: Namespace
+  assemblies:
+  - Bodoconsult.Network.Windows
+references:
+- uid: Bodoconsult.Network.Windows.ActiveDirectory.Helpers.AdHelper
+  commentId: T:Bodoconsult.Network.Windows.ActiveDirectory.Helpers.AdHelper
+  href: Bodoconsult.Network.Windows.ActiveDirectory.Helpers.AdHelper.html
+  name: AdHelper
+  nameWithType: AdHelper
+  fullName: Bodoconsult.Network.Windows.ActiveDirectory.Helpers.AdHelper

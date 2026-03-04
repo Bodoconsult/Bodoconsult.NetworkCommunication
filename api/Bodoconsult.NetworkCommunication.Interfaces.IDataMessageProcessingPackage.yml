@@ -1,0 +1,501 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageProcessingPackage
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.IDataMessageProcessingPackage
+  id: IDataMessageProcessingPackage
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  children:
+  - Bodoconsult.NetworkCommunication.Interfaces.IDataMessageProcessingPackage.DataBlockCodingProcessor
+  - Bodoconsult.NetworkCommunication.Interfaces.IDataMessageProcessingPackage.DataMessageCodingProcessor
+  - Bodoconsult.NetworkCommunication.Interfaces.IDataMessageProcessingPackage.DataMessageHandshakeFactory
+  - Bodoconsult.NetworkCommunication.Interfaces.IDataMessageProcessingPackage.DataMessageProcessor
+  - Bodoconsult.NetworkCommunication.Interfaces.IDataMessageProcessingPackage.DataMessageSplitter
+  - Bodoconsult.NetworkCommunication.Interfaces.IDataMessageProcessingPackage.DataMessageValidator
+  - Bodoconsult.NetworkCommunication.Interfaces.IDataMessageProcessingPackage.DataMessagingConfig
+  - Bodoconsult.NetworkCommunication.Interfaces.IDataMessageProcessingPackage.HandshakeDataMessageValidator
+  - Bodoconsult.NetworkCommunication.Interfaces.IDataMessageProcessingPackage.LoadCustomDataBlockCodecs
+  - Bodoconsult.NetworkCommunication.Interfaces.IDataMessageProcessingPackage.WaitStateManager
+  langs:
+  - csharp
+  - vb
+  name: IDataMessageProcessingPackage
+  nameWithType: IDataMessageProcessingPackage
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageProcessingPackage
+  type: Interface
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/IDataMessageProcessingPackage.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: IDataMessageProcessingPackage
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/IDataMessageProcessingPackage.cs
+    startLine: 10
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Interface for processing of byte based messages i.e. via TCP/IP. This is the top level class for technology and firmware specific protocol implementations
+  example: []
+  syntax:
+    content: public interface IDataMessageProcessingPackage
+    content.vb: Public Interface IDataMessageProcessingPackage
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageProcessingPackage.DataMessagingConfig
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IDataMessageProcessingPackage.DataMessagingConfig
+  id: DataMessagingConfig
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageProcessingPackage
+  langs:
+  - csharp
+  - vb
+  name: DataMessagingConfig
+  nameWithType: IDataMessageProcessingPackage.DataMessagingConfig
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageProcessingPackage.DataMessagingConfig
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/IDataMessageProcessingPackage.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: DataMessagingConfig
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/IDataMessageProcessingPackage.cs
+    startLine: 15
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Current data messaging config
+  example: []
+  syntax:
+    content: IDataMessagingConfig DataMessagingConfig { get; }
+    parameters: []
+    return:
+      type: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig
+    content.vb: ReadOnly Property DataMessagingConfig As IDataMessagingConfig
+  overload: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageProcessingPackage.DataMessagingConfig*
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageProcessingPackage.DataMessageSplitter
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IDataMessageProcessingPackage.DataMessageSplitter
+  id: DataMessageSplitter
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageProcessingPackage
+  langs:
+  - csharp
+  - vb
+  name: DataMessageSplitter
+  nameWithType: IDataMessageProcessingPackage.DataMessageSplitter
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageProcessingPackage.DataMessageSplitter
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/IDataMessageProcessingPackage.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: DataMessageSplitter
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/IDataMessageProcessingPackage.cs
+    startLine: 20
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Current data message splitter
+  example: []
+  syntax:
+    content: IDataMessageSplitter DataMessageSplitter { get; }
+    parameters: []
+    return:
+      type: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageSplitter
+    content.vb: ReadOnly Property DataMessageSplitter As IDataMessageSplitter
+  overload: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageProcessingPackage.DataMessageSplitter*
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageProcessingPackage.DataMessageCodingProcessor
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IDataMessageProcessingPackage.DataMessageCodingProcessor
+  id: DataMessageCodingProcessor
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageProcessingPackage
+  langs:
+  - csharp
+  - vb
+  name: DataMessageCodingProcessor
+  nameWithType: IDataMessageProcessingPackage.DataMessageCodingProcessor
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageProcessingPackage.DataMessageCodingProcessor
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/IDataMessageProcessingPackage.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: DataMessageCodingProcessor
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/IDataMessageProcessingPackage.cs
+    startLine: 25
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Current data message coding processor
+  example: []
+  syntax:
+    content: IDataMessageCodingProcessor DataMessageCodingProcessor { get; }
+    parameters: []
+    return:
+      type: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageCodingProcessor
+    content.vb: ReadOnly Property DataMessageCodingProcessor As IDataMessageCodingProcessor
+  overload: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageProcessingPackage.DataMessageCodingProcessor*
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageProcessingPackage.DataMessageProcessor
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IDataMessageProcessingPackage.DataMessageProcessor
+  id: DataMessageProcessor
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageProcessingPackage
+  langs:
+  - csharp
+  - vb
+  name: DataMessageProcessor
+  nameWithType: IDataMessageProcessingPackage.DataMessageProcessor
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageProcessingPackage.DataMessageProcessor
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/IDataMessageProcessingPackage.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: DataMessageProcessor
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/IDataMessageProcessingPackage.cs
+    startLine: 30
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Current data message processor for internal forwarding of the received messages
+  example: []
+  syntax:
+    content: IDataMessageProcessor DataMessageProcessor { get; }
+    parameters: []
+    return:
+      type: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageProcessor
+    content.vb: ReadOnly Property DataMessageProcessor As IDataMessageProcessor
+  overload: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageProcessingPackage.DataMessageProcessor*
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageProcessingPackage.DataBlockCodingProcessor
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IDataMessageProcessingPackage.DataBlockCodingProcessor
+  id: DataBlockCodingProcessor
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageProcessingPackage
+  langs:
+  - csharp
+  - vb
+  name: DataBlockCodingProcessor
+  nameWithType: IDataMessageProcessingPackage.DataBlockCodingProcessor
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageProcessingPackage.DataBlockCodingProcessor
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/IDataMessageProcessingPackage.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: DataBlockCodingProcessor
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/IDataMessageProcessingPackage.cs
+    startLine: 35
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Current <xref href="Bodoconsult.NetworkCommunication.Interfaces.IDataBlockCodingProcessor" data-throw-if-not-resolved="false"></xref> instance
+  example: []
+  syntax:
+    content: IDataBlockCodingProcessor DataBlockCodingProcessor { get; }
+    parameters: []
+    return:
+      type: Bodoconsult.NetworkCommunication.Interfaces.IDataBlockCodingProcessor
+    content.vb: ReadOnly Property DataBlockCodingProcessor As IDataBlockCodingProcessor
+  overload: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageProcessingPackage.DataBlockCodingProcessor*
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageProcessingPackage.WaitStateManager
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IDataMessageProcessingPackage.WaitStateManager
+  id: WaitStateManager
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageProcessingPackage
+  langs:
+  - csharp
+  - vb
+  name: WaitStateManager
+  nameWithType: IDataMessageProcessingPackage.WaitStateManager
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageProcessingPackage.WaitStateManager
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/IDataMessageProcessingPackage.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: WaitStateManager
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/IDataMessageProcessingPackage.cs
+    startLine: 40
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Current wait state manager
+  example: []
+  syntax:
+    content: IWaitStateManager WaitStateManager { get; }
+    parameters: []
+    return:
+      type: Bodoconsult.NetworkCommunication.Interfaces.IWaitStateManager
+    content.vb: ReadOnly Property WaitStateManager As IWaitStateManager
+  overload: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageProcessingPackage.WaitStateManager*
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageProcessingPackage.HandshakeDataMessageValidator
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IDataMessageProcessingPackage.HandshakeDataMessageValidator
+  id: HandshakeDataMessageValidator
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageProcessingPackage
+  langs:
+  - csharp
+  - vb
+  name: HandshakeDataMessageValidator
+  nameWithType: IDataMessageProcessingPackage.HandshakeDataMessageValidator
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageProcessingPackage.HandshakeDataMessageValidator
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/IDataMessageProcessingPackage.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: HandshakeDataMessageValidator
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/IDataMessageProcessingPackage.cs
+    startLine: 45
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Current validator impl for handshake messages
+  example: []
+  syntax:
+    content: IHandshakeDataMessageValidator HandshakeDataMessageValidator { get; }
+    parameters: []
+    return:
+      type: Bodoconsult.NetworkCommunication.Interfaces.IHandshakeDataMessageValidator
+    content.vb: ReadOnly Property HandshakeDataMessageValidator As IHandshakeDataMessageValidator
+  overload: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageProcessingPackage.HandshakeDataMessageValidator*
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageProcessingPackage.DataMessageValidator
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IDataMessageProcessingPackage.DataMessageValidator
+  id: DataMessageValidator
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageProcessingPackage
+  langs:
+  - csharp
+  - vb
+  name: DataMessageValidator
+  nameWithType: IDataMessageProcessingPackage.DataMessageValidator
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageProcessingPackage.DataMessageValidator
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/IDataMessageProcessingPackage.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: DataMessageValidator
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/IDataMessageProcessingPackage.cs
+    startLine: 50
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Current validator impl for data messages
+  example: []
+  syntax:
+    content: IDataMessageValidator DataMessageValidator { get; }
+    parameters: []
+    return:
+      type: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageValidator
+    content.vb: ReadOnly Property DataMessageValidator As IDataMessageValidator
+  overload: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageProcessingPackage.DataMessageValidator*
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageProcessingPackage.DataMessageHandshakeFactory
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IDataMessageProcessingPackage.DataMessageHandshakeFactory
+  id: DataMessageHandshakeFactory
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageProcessingPackage
+  langs:
+  - csharp
+  - vb
+  name: DataMessageHandshakeFactory
+  nameWithType: IDataMessageProcessingPackage.DataMessageHandshakeFactory
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageProcessingPackage.DataMessageHandshakeFactory
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/IDataMessageProcessingPackage.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: DataMessageHandshakeFactory
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/IDataMessageProcessingPackage.cs
+    startLine: 55
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Factory for creation of handshakes to be sent for received messages
+  example: []
+  syntax:
+    content: IDataMessageHandshakeFactory DataMessageHandshakeFactory { get; }
+    parameters: []
+    return:
+      type: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageHandshakeFactory
+    content.vb: ReadOnly Property DataMessageHandshakeFactory As IDataMessageHandshakeFactory
+  overload: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageProcessingPackage.DataMessageHandshakeFactory*
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageProcessingPackage.LoadCustomDataBlockCodecs
+  commentId: M:Bodoconsult.NetworkCommunication.Interfaces.IDataMessageProcessingPackage.LoadCustomDataBlockCodecs
+  id: LoadCustomDataBlockCodecs
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageProcessingPackage
+  langs:
+  - csharp
+  - vb
+  name: LoadCustomDataBlockCodecs()
+  nameWithType: IDataMessageProcessingPackage.LoadCustomDataBlockCodecs()
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageProcessingPackage.LoadCustomDataBlockCodecs()
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/IDataMessageProcessingPackage.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: LoadCustomDataBlockCodecs
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/IDataMessageProcessingPackage.cs
+    startLine: 60
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Load custom data block codecs. This method should be overwritten to load your app specific codecs
+  example: []
+  syntax:
+    content: void LoadCustomDataBlockCodecs()
+    content.vb: Sub LoadCustomDataBlockCodecs()
+  overload: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageProcessingPackage.LoadCustomDataBlockCodecs*
+references:
+- uid: Bodoconsult.NetworkCommunication.Interfaces
+  commentId: N:Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.html
+  name: Bodoconsult.NetworkCommunication.Interfaces
+  nameWithType: Bodoconsult.NetworkCommunication.Interfaces
+  fullName: Bodoconsult.NetworkCommunication.Interfaces
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Interfaces
+    name: Interfaces
+    href: Bodoconsult.NetworkCommunication.Interfaces.html
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Interfaces
+    name: Interfaces
+    href: Bodoconsult.NetworkCommunication.Interfaces.html
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageProcessingPackage.DataMessagingConfig*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.IDataMessageProcessingPackage.DataMessagingConfig
+  href: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageProcessingPackage.html#Bodoconsult_NetworkCommunication_Interfaces_IDataMessageProcessingPackage_DataMessagingConfig
+  name: DataMessagingConfig
+  nameWithType: IDataMessageProcessingPackage.DataMessagingConfig
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageProcessingPackage.DataMessagingConfig
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig.html
+  name: IDataMessagingConfig
+  nameWithType: IDataMessagingConfig
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageProcessingPackage.DataMessageSplitter*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.IDataMessageProcessingPackage.DataMessageSplitter
+  href: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageProcessingPackage.html#Bodoconsult_NetworkCommunication_Interfaces_IDataMessageProcessingPackage_DataMessageSplitter
+  name: DataMessageSplitter
+  nameWithType: IDataMessageProcessingPackage.DataMessageSplitter
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageProcessingPackage.DataMessageSplitter
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageSplitter
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.IDataMessageSplitter
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageSplitter.html
+  name: IDataMessageSplitter
+  nameWithType: IDataMessageSplitter
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageSplitter
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageProcessingPackage.DataMessageCodingProcessor*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.IDataMessageProcessingPackage.DataMessageCodingProcessor
+  href: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageProcessingPackage.html#Bodoconsult_NetworkCommunication_Interfaces_IDataMessageProcessingPackage_DataMessageCodingProcessor
+  name: DataMessageCodingProcessor
+  nameWithType: IDataMessageProcessingPackage.DataMessageCodingProcessor
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageProcessingPackage.DataMessageCodingProcessor
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageCodingProcessor
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.IDataMessageCodingProcessor
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageCodingProcessor.html
+  name: IDataMessageCodingProcessor
+  nameWithType: IDataMessageCodingProcessor
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageCodingProcessor
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageProcessingPackage.DataMessageProcessor*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.IDataMessageProcessingPackage.DataMessageProcessor
+  href: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageProcessingPackage.html#Bodoconsult_NetworkCommunication_Interfaces_IDataMessageProcessingPackage_DataMessageProcessor
+  name: DataMessageProcessor
+  nameWithType: IDataMessageProcessingPackage.DataMessageProcessor
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageProcessingPackage.DataMessageProcessor
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageProcessor
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.IDataMessageProcessor
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageProcessor.html
+  name: IDataMessageProcessor
+  nameWithType: IDataMessageProcessor
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageProcessor
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IDataBlockCodingProcessor
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.IDataBlockCodingProcessor
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.NetworkCommunication.Interfaces.IDataBlockCodingProcessor.html
+  name: IDataBlockCodingProcessor
+  nameWithType: IDataBlockCodingProcessor
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IDataBlockCodingProcessor
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageProcessingPackage.DataBlockCodingProcessor*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.IDataMessageProcessingPackage.DataBlockCodingProcessor
+  href: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageProcessingPackage.html#Bodoconsult_NetworkCommunication_Interfaces_IDataMessageProcessingPackage_DataBlockCodingProcessor
+  name: DataBlockCodingProcessor
+  nameWithType: IDataMessageProcessingPackage.DataBlockCodingProcessor
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageProcessingPackage.DataBlockCodingProcessor
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageProcessingPackage.WaitStateManager*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.IDataMessageProcessingPackage.WaitStateManager
+  href: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageProcessingPackage.html#Bodoconsult_NetworkCommunication_Interfaces_IDataMessageProcessingPackage_WaitStateManager
+  name: WaitStateManager
+  nameWithType: IDataMessageProcessingPackage.WaitStateManager
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageProcessingPackage.WaitStateManager
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IWaitStateManager
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.IWaitStateManager
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.NetworkCommunication.Interfaces.IWaitStateManager.html
+  name: IWaitStateManager
+  nameWithType: IWaitStateManager
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IWaitStateManager
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageProcessingPackage.HandshakeDataMessageValidator*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.IDataMessageProcessingPackage.HandshakeDataMessageValidator
+  href: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageProcessingPackage.html#Bodoconsult_NetworkCommunication_Interfaces_IDataMessageProcessingPackage_HandshakeDataMessageValidator
+  name: HandshakeDataMessageValidator
+  nameWithType: IDataMessageProcessingPackage.HandshakeDataMessageValidator
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageProcessingPackage.HandshakeDataMessageValidator
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IHandshakeDataMessageValidator
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.IHandshakeDataMessageValidator
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.NetworkCommunication.Interfaces.IHandshakeDataMessageValidator.html
+  name: IHandshakeDataMessageValidator
+  nameWithType: IHandshakeDataMessageValidator
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IHandshakeDataMessageValidator
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageProcessingPackage.DataMessageValidator*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.IDataMessageProcessingPackage.DataMessageValidator
+  href: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageProcessingPackage.html#Bodoconsult_NetworkCommunication_Interfaces_IDataMessageProcessingPackage_DataMessageValidator
+  name: DataMessageValidator
+  nameWithType: IDataMessageProcessingPackage.DataMessageValidator
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageProcessingPackage.DataMessageValidator
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageValidator
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.IDataMessageValidator
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageValidator.html
+  name: IDataMessageValidator
+  nameWithType: IDataMessageValidator
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageValidator
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageProcessingPackage.DataMessageHandshakeFactory*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.IDataMessageProcessingPackage.DataMessageHandshakeFactory
+  href: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageProcessingPackage.html#Bodoconsult_NetworkCommunication_Interfaces_IDataMessageProcessingPackage_DataMessageHandshakeFactory
+  name: DataMessageHandshakeFactory
+  nameWithType: IDataMessageProcessingPackage.DataMessageHandshakeFactory
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageProcessingPackage.DataMessageHandshakeFactory
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageHandshakeFactory
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.IDataMessageHandshakeFactory
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageHandshakeFactory.html
+  name: IDataMessageHandshakeFactory
+  nameWithType: IDataMessageHandshakeFactory
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageHandshakeFactory
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageProcessingPackage.LoadCustomDataBlockCodecs*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.IDataMessageProcessingPackage.LoadCustomDataBlockCodecs
+  href: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageProcessingPackage.html#Bodoconsult_NetworkCommunication_Interfaces_IDataMessageProcessingPackage_LoadCustomDataBlockCodecs
+  name: LoadCustomDataBlockCodecs
+  nameWithType: IDataMessageProcessingPackage.LoadCustomDataBlockCodecs
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageProcessingPackage.LoadCustomDataBlockCodecs

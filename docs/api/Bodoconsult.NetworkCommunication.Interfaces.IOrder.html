@@ -1,0 +1,1513 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Interface IOrder | Bodoconsult.Network </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Interface IOrder | Bodoconsult.Network ">
+      
+      <meta name="description" content="This interface is for representing process related to the device">
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/new/main/apiSpec/new?filename=Bodoconsult_NetworkCommunication_Interfaces_IOrder.md&amp;value=---%0Auid%3A%20Bodoconsult.NetworkCommunication.Interfaces.IOrder%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../logo.svg" alt="Bodoconsult.Network">
+            Bodoconsult.Network
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="Bodoconsult.NetworkCommunication.Interfaces.IOrder">
+
+
+
+  <h1 id="Bodoconsult_NetworkCommunication_Interfaces_IOrder" data-uid="Bodoconsult.NetworkCommunication.Interfaces.IOrder" class="text-break">
+Interface IOrder  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/Interfaces/IOrder.cs/#L18"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="Bodoconsult.html">Bodoconsult</a>.<a class="xref" href="Bodoconsult.NetworkCommunication.html">NetworkCommunication</a>.<a class="xref" href="Bodoconsult.NetworkCommunication.Interfaces.html">Interfaces</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>Bodoconsult.NetworkCommunication.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p>This interface is for representing process related
+to the device</p>
+</div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public interface IOrder : IDisposable</code></pre>
+  </div>
+
+
+
+
+
+
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.idisposable.dispose">IDisposable.Dispose()</a>
+    </div>
+  </dd></dl>
+
+
+
+
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
+  <a id="Bodoconsult_NetworkCommunication_Interfaces_IOrder_AllowedParallelOrderTypes_" data-uid="Bodoconsult.NetworkCommunication.Interfaces.IOrder.AllowedParallelOrderTypes*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_Interfaces_IOrder_AllowedParallelOrderTypes" data-uid="Bodoconsult.NetworkCommunication.Interfaces.IOrder.AllowedParallelOrderTypes">
+  AllowedParallelOrderTypes
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/Interfaces/IOrder.cs/#L72"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>The names of allowed order types for running parallel to the current order</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IList&lt;string&gt; AllowedParallelOrderTypes { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1">IList</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_Interfaces_IOrder_Benchmark_" data-uid="Bodoconsult.NetworkCommunication.Interfaces.IOrder.Benchmark*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_Interfaces_IOrder_Benchmark" data-uid="Bodoconsult.NetworkCommunication.Interfaces.IOrder.Benchmark">
+  Benchmark
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/Interfaces/IOrder.cs/#L246"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Benchmark object (see output in StSys_Benchmark.csv)
+Make sure to create it, addStep, and dispose it</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Bench Benchmark { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">Bench</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_Interfaces_IOrder_DeviceId_" data-uid="Bodoconsult.NetworkCommunication.Interfaces.IOrder.DeviceId*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_Interfaces_IOrder_DeviceId" data-uid="Bodoconsult.NetworkCommunication.Interfaces.IOrder.DeviceId">
+  DeviceId
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/Interfaces/IOrder.cs/#L206"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Current device ID</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">string DeviceId { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_Interfaces_IOrder_EndTime_" data-uid="Bodoconsult.NetworkCommunication.Interfaces.IOrder.EndTime*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_Interfaces_IOrder_EndTime" data-uid="Bodoconsult.NetworkCommunication.Interfaces.IOrder.EndTime">
+  EndTime
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/Interfaces/IOrder.cs/#L177"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Order processing end time</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">DateTime EndTime { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.datetime">DateTime</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_Interfaces_IOrder_ExecutionResult_" data-uid="Bodoconsult.NetworkCommunication.Interfaces.IOrder.ExecutionResult*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_Interfaces_IOrder_ExecutionResult" data-uid="Bodoconsult.NetworkCommunication.Interfaces.IOrder.ExecutionResult">
+  ExecutionResult
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/Interfaces/IOrder.cs/#L182"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>The execution result of the order</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IOrderExecutionResultState ExecutionResult { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionResultState.html">IOrderExecutionResultState</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_Interfaces_IOrder_ExecutionState_" data-uid="Bodoconsult.NetworkCommunication.Interfaces.IOrder.ExecutionState*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_Interfaces_IOrder_ExecutionState" data-uid="Bodoconsult.NetworkCommunication.Interfaces.IOrder.ExecutionState">
+  ExecutionState
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/Interfaces/IOrder.cs/#L187"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Current execution state</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IOrderState ExecutionState { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Bodoconsult.NetworkCommunication.Interfaces.IOrderState.html">IOrderState</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_Interfaces_IOrder_FailingOrderRequiresComDevClose_" data-uid="Bodoconsult.NetworkCommunication.Interfaces.IOrder.FailingOrderRequiresComDevClose*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_Interfaces_IOrder_FailingOrderRequiresComDevClose" data-uid="Bodoconsult.NetworkCommunication.Interfaces.IOrder.FailingOrderRequiresComDevClose">
+  FailingOrderRequiresComDevClose
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/Interfaces/IOrder.cs/#L117"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>If the order fails a ComDevClose has to be initialized</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool FailingOrderRequiresComDevClose { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_Interfaces_IOrder_Id_" data-uid="Bodoconsult.NetworkCommunication.Interfaces.IOrder.Id*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_Interfaces_IOrder_Id" data-uid="Bodoconsult.NetworkCommunication.Interfaces.IOrder.Id">
+  Id
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/Interfaces/IOrder.cs/#L25"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Unique Order-ID</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">long Id { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int64">long</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_Interfaces_IOrder_IsBenchable_" data-uid="Bodoconsult.NetworkCommunication.Interfaces.IOrder.IsBenchable*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_Interfaces_IOrder_IsBenchable" data-uid="Bodoconsult.NetworkCommunication.Interfaces.IOrder.IsBenchable">
+  IsBenchable
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/Interfaces/IOrder.cs/#L240"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>This order will be benchmarked? True or false</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool IsBenchable { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_Interfaces_IOrder_IsCancelled_" data-uid="Bodoconsult.NetworkCommunication.Interfaces.IOrder.IsCancelled*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_Interfaces_IOrder_IsCancelled" data-uid="Bodoconsult.NetworkCommunication.Interfaces.IOrder.IsCancelled">
+  IsCancelled
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/Interfaces/IOrder.cs/#L161"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>The order is cancelled</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool IsCancelled { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_Interfaces_IOrder_IsCancelledLockObject_" data-uid="Bodoconsult.NetworkCommunication.Interfaces.IOrder.IsCancelledLockObject*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_Interfaces_IOrder_IsCancelledLockObject" data-uid="Bodoconsult.NetworkCommunication.Interfaces.IOrder.IsCancelledLockObject">
+  IsCancelledLockObject
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/Interfaces/IOrder.cs/#L166"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>An object to lock the property <a class="xref" href="Bodoconsult.NetworkCommunication.Interfaces.IOrder.html#Bodoconsult_NetworkCommunication_Interfaces_IOrder_IsCancelled">IsCancelled</a></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">object IsCancelledLockObject { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_Interfaces_IOrder_IsCancelledOnComDevClose_" data-uid="Bodoconsult.NetworkCommunication.Interfaces.IOrder.IsCancelledOnComDevClose*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_Interfaces_IOrder_IsCancelledOnComDevClose" data-uid="Bodoconsult.NetworkCommunication.Interfaces.IOrder.IsCancelledOnComDevClose">
+  IsCancelledOnComDevClose
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/Interfaces/IOrder.cs/#L122"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Should the order be cancelled on a ComDevClose. Valid only for normal orders. Priority orders to not pay attention to this field</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool IsCancelledOnComDevClose { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_Interfaces_IOrder_IsCancelledOndevicePropertyUpdate_" data-uid="Bodoconsult.NetworkCommunication.Interfaces.IOrder.IsCancelledOndevicePropertyUpdate*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_Interfaces_IOrder_IsCancelledOndevicePropertyUpdate" data-uid="Bodoconsult.NetworkCommunication.Interfaces.IOrder.IsCancelledOndevicePropertyUpdate">
+  IsCancelledOndevicePropertyUpdate
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/Interfaces/IOrder.cs/#L127"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Should the order be cancelled on a device properties update</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool IsCancelledOndevicePropertyUpdate { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_Interfaces_IOrder_IsCheckedWithPriority_" data-uid="Bodoconsult.NetworkCommunication.Interfaces.IOrder.IsCheckedWithPriority*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_Interfaces_IOrder_IsCheckedWithPriority" data-uid="Bodoconsult.NetworkCommunication.Interfaces.IOrder.IsCheckedWithPriority">
+  IsCheckedWithPriority
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/Interfaces/IOrder.cs/#L141"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Is this order prioritized when receiving messages</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool IsCheckedWithPriority { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_Interfaces_IOrder_IsClientNotificationTurnedOff_" data-uid="Bodoconsult.NetworkCommunication.Interfaces.IOrder.IsClientNotificationTurnedOff*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_Interfaces_IOrder_IsClientNotificationTurnedOff" data-uid="Bodoconsult.NetworkCommunication.Interfaces.IOrder.IsClientNotificationTurnedOff">
+  IsClientNotificationTurnedOff
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/Interfaces/IOrder.cs/#L107"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>If client notification is turned off, the client will not be informed on this order</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool IsClientNotificationTurnedOff { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_Interfaces_IOrder_IsDisposable_" data-uid="Bodoconsult.NetworkCommunication.Interfaces.IOrder.IsDisposable*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_Interfaces_IOrder_IsDisposable" data-uid="Bodoconsult.NetworkCommunication.Interfaces.IOrder.IsDisposable">
+  IsDisposable
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/Interfaces/IOrder.cs/#L102"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Is the order ready for disposing</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool IsDisposable { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_Interfaces_IOrder_IsFinished_" data-uid="Bodoconsult.NetworkCommunication.Interfaces.IOrder.IsFinished*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_Interfaces_IOrder_IsFinished" data-uid="Bodoconsult.NetworkCommunication.Interfaces.IOrder.IsFinished">
+  IsFinished
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/Interfaces/IOrder.cs/#L146"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Is the order already finished</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool IsFinished { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_Interfaces_IOrder_IsHighPriorityOrder_" data-uid="Bodoconsult.NetworkCommunication.Interfaces.IOrder.IsHighPriorityOrder*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_Interfaces_IOrder_IsHighPriorityOrder" data-uid="Bodoconsult.NetworkCommunication.Interfaces.IOrder.IsHighPriorityOrder">
+  IsHighPriorityOrder
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/Interfaces/IOrder.cs/#L136"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Is the order a high priority order</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool IsHighPriorityOrder { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_Interfaces_IOrder_IsNextOrderStartAllowed_" data-uid="Bodoconsult.NetworkCommunication.Interfaces.IOrder.IsNextOrderStartAllowed*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_Interfaces_IOrder_IsNextOrderStartAllowed" data-uid="Bodoconsult.NetworkCommunication.Interfaces.IOrder.IsNextOrderStartAllowed">
+  IsNextOrderStartAllowed
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/Interfaces/IOrder.cs/#L112"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Start the next order of the same type (used for ExpressUnload i.e.)</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool IsNextOrderStartAllowed { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_Interfaces_IOrder_IsRunningSync_" data-uid="Bodoconsult.NetworkCommunication.Interfaces.IOrder.IsRunningSync*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_Interfaces_IOrder_IsRunningSync" data-uid="Bodoconsult.NetworkCommunication.Interfaces.IOrder.IsRunningSync">
+  IsRunningSync
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/Interfaces/IOrder.cs/#L97"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Is the order running in sync mode? Default: false means async</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool IsRunningSync { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_Interfaces_IOrder_LoggerId_" data-uid="Bodoconsult.NetworkCommunication.Interfaces.IOrder.LoggerId*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_Interfaces_IOrder_LoggerId" data-uid="Bodoconsult.NetworkCommunication.Interfaces.IOrder.LoggerId">
+  LoggerId
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/Interfaces/IOrder.cs/#L61"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Current ID to log</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">string LoggerId { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_Interfaces_IOrder_Name_" data-uid="Bodoconsult.NetworkCommunication.Interfaces.IOrder.Name*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_Interfaces_IOrder_Name" data-uid="Bodoconsult.NetworkCommunication.Interfaces.IOrder.Name">
+  Name
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/Interfaces/IOrder.cs/#L35"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Name of the order</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">string Name { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_Interfaces_IOrder_NextOrder_" data-uid="Bodoconsult.NetworkCommunication.Interfaces.IOrder.NextOrder*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_Interfaces_IOrder_NextOrder" data-uid="Bodoconsult.NetworkCommunication.Interfaces.IOrder.NextOrder">
+  NextOrder
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/Interfaces/IOrder.cs/#L30"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>The next order in a chain of orders</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IOrder NextOrder { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Bodoconsult.NetworkCommunication.Interfaces.IOrder.html">IOrder</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_Interfaces_IOrder_OrderError_" data-uid="Bodoconsult.NetworkCommunication.Interfaces.IOrder.OrderError*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_Interfaces_IOrder_OrderError" data-uid="Bodoconsult.NetworkCommunication.Interfaces.IOrder.OrderError">
+  OrderError
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/Interfaces/IOrder.cs/#L192"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>ErrorCode to trace</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">int OrderError { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_Interfaces_IOrder_OrderFinishedSuccessfulAction_" data-uid="Bodoconsult.NetworkCommunication.Interfaces.IOrder.OrderFinishedSuccessfulAction*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_Interfaces_IOrder_OrderFinishedSuccessfulAction" data-uid="Bodoconsult.NetworkCommunication.Interfaces.IOrder.OrderFinishedSuccessfulAction">
+  OrderFinishedSuccessfulAction
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/Interfaces/IOrder.cs/#L82"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Action running after successful processing of the order</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">ActionRequestStepDelegate OrderFinishedSuccessfulAction { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Bodoconsult.NetworkCommunication.Delegates.ActionRequestStepDelegate.html">ActionRequestStepDelegate</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_Interfaces_IOrder_OrderFinishedUnsuccessfulAction_" data-uid="Bodoconsult.NetworkCommunication.Interfaces.IOrder.OrderFinishedUnsuccessfulAction*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_Interfaces_IOrder_OrderFinishedUnsuccessfulAction" data-uid="Bodoconsult.NetworkCommunication.Interfaces.IOrder.OrderFinishedUnsuccessfulAction">
+  OrderFinishedUnsuccessfulAction
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/Interfaces/IOrder.cs/#L87"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Action running after unsuccessful processing of the order</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">ActionRequestStepDelegate OrderFinishedUnsuccessfulAction { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Bodoconsult.NetworkCommunication.Delegates.ActionRequestStepDelegate.html">ActionRequestStepDelegate</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_Interfaces_IOrder_OrderSource_" data-uid="Bodoconsult.NetworkCommunication.Interfaces.IOrder.OrderSource*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_Interfaces_IOrder_OrderSource" data-uid="Bodoconsult.NetworkCommunication.Interfaces.IOrder.OrderSource">
+  OrderSource
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/Interfaces/IOrder.cs/#L50"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Order source</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">OrderSource OrderSource { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Bodoconsult.NetworkCommunication.EnumAndStates.OrderSource.html">OrderSource</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_Interfaces_IOrder_OrderTypeCode_" data-uid="Bodoconsult.NetworkCommunication.Interfaces.IOrder.OrderTypeCode*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_Interfaces_IOrder_OrderTypeCode" data-uid="Bodoconsult.NetworkCommunication.Interfaces.IOrder.OrderTypeCode">
+  OrderTypeCode
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/Interfaces/IOrder.cs/#L45"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Type of order sent to client</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">int OrderTypeCode { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_Interfaces_IOrder_ParameterSet_" data-uid="Bodoconsult.NetworkCommunication.Interfaces.IOrder.ParameterSet*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_Interfaces_IOrder_ParameterSet" data-uid="Bodoconsult.NetworkCommunication.Interfaces.IOrder.ParameterSet">
+  ParameterSet
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/Interfaces/IOrder.cs/#L151"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Current runtime parameter set to use for the order. Must include the parameter sets of all contained requests by interface.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IParameterSet ParameterSet { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Bodoconsult.NetworkCommunication.Interfaces.IParameterSet.html">IParameterSet</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_Interfaces_IOrder_RequestSpecs_" data-uid="Bodoconsult.NetworkCommunication.Interfaces.IOrder.RequestSpecs*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_Interfaces_IOrder_RequestSpecs" data-uid="Bodoconsult.NetworkCommunication.Interfaces.IOrder.RequestSpecs">
+  RequestSpecs
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/Interfaces/IOrder.cs/#L67"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Current request specs of the order</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IList&lt;IRequestSpec&gt; RequestSpecs { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1">IList</a>&lt;<a class="xref" href="Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec.html">IRequestSpec</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_Interfaces_IOrder_SendCancelTodeviceIfCancelledOrUnsuccessful_" data-uid="Bodoconsult.NetworkCommunication.Interfaces.IOrder.SendCancelTodeviceIfCancelledOrUnsuccessful*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_Interfaces_IOrder_SendCancelTodeviceIfCancelledOrUnsuccessful" data-uid="Bodoconsult.NetworkCommunication.Interfaces.IOrder.SendCancelTodeviceIfCancelledOrUnsuccessful">
+  SendCancelTodeviceIfCancelledOrUnsuccessful
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/Interfaces/IOrder.cs/#L77"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Send a CAN command to the device if order fails or is cancelled</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool SendCancelTodeviceIfCancelledOrUnsuccessful { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_Interfaces_IOrder_SourceUid_" data-uid="Bodoconsult.NetworkCommunication.Interfaces.IOrder.SourceUid*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_Interfaces_IOrder_SourceUid" data-uid="Bodoconsult.NetworkCommunication.Interfaces.IOrder.SourceUid">
+  SourceUid
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/Interfaces/IOrder.cs/#L55"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>The UID of a source item like a joblist or a trial run the order is bound to</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Guid? SourceUid { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.guid">Guid</a>?</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_Interfaces_IOrder_StartTime_" data-uid="Bodoconsult.NetworkCommunication.Interfaces.IOrder.StartTime*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_Interfaces_IOrder_StartTime" data-uid="Bodoconsult.NetworkCommunication.Interfaces.IOrder.StartTime">
+  StartTime
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/Interfaces/IOrder.cs/#L172"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Order processing start time</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">DateTime StartTime { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.datetime">DateTime</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_Interfaces_IOrder_StateToNotifyOnSuccess_" data-uid="Bodoconsult.NetworkCommunication.Interfaces.IOrder.StateToNotifyOnSuccess*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_Interfaces_IOrder_StateToNotifyOnSuccess" data-uid="Bodoconsult.NetworkCommunication.Interfaces.IOrder.StateToNotifyOnSuccess">
+  StateToNotifyOnSuccess
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/Interfaces/IOrder.cs/#L92"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>The state to notify the app in case of order was successfully running</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IDeviceState StateToNotifyOnSuccess { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Bodoconsult.NetworkCommunication.Interfaces.IDeviceState.html">IDeviceState</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_Interfaces_IOrder_TraceCodeError_" data-uid="Bodoconsult.NetworkCommunication.Interfaces.IOrder.TraceCodeError*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_Interfaces_IOrder_TraceCodeError" data-uid="Bodoconsult.NetworkCommunication.Interfaces.IOrder.TraceCodeError">
+  TraceCodeError
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/Interfaces/IOrder.cs/#L216"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Trace code to log on error</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">int TraceCodeError { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_Interfaces_IOrder_TraceCodeSuccess_" data-uid="Bodoconsult.NetworkCommunication.Interfaces.IOrder.TraceCodeSuccess*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_Interfaces_IOrder_TraceCodeSuccess" data-uid="Bodoconsult.NetworkCommunication.Interfaces.IOrder.TraceCodeSuccess">
+  TraceCodeSuccess
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/Interfaces/IOrder.cs/#L211"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Trace code to log on success</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">int TraceCodeSuccess { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_Interfaces_IOrder_TraceEntry_" data-uid="Bodoconsult.NetworkCommunication.Interfaces.IOrder.TraceEntry*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_Interfaces_IOrder_TraceEntry" data-uid="Bodoconsult.NetworkCommunication.Interfaces.IOrder.TraceEntry">
+  TraceEntry
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/Interfaces/IOrder.cs/#L226"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Trace entry to create for the order</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">ITraceEntry TraceEntry { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Bodoconsult.NetworkCommunication.Interfaces.ITraceEntry.html">ITraceEntry</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_Interfaces_IOrder_TraceMessage_" data-uid="Bodoconsult.NetworkCommunication.Interfaces.IOrder.TraceMessage*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_Interfaces_IOrder_TraceMessage" data-uid="Bodoconsult.NetworkCommunication.Interfaces.IOrder.TraceMessage">
+  TraceMessage
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/Interfaces/IOrder.cs/#L221"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Trace message to log</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">string TraceMessage { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_Interfaces_IOrder_TransactionId_" data-uid="Bodoconsult.NetworkCommunication.Interfaces.IOrder.TransactionId*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_Interfaces_IOrder_TransactionId" data-uid="Bodoconsult.NetworkCommunication.Interfaces.IOrder.TransactionId">
+  TransactionId
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/Interfaces/IOrder.cs/#L201"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>ID of a not OM related transaction the order is part of. Used for trialrun steps</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">int TransactionId { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_Interfaces_IOrder_TypeName_" data-uid="Bodoconsult.NetworkCommunication.Interfaces.IOrder.TypeName*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_Interfaces_IOrder_TypeName" data-uid="Bodoconsult.NetworkCommunication.Interfaces.IOrder.TypeName">
+  TypeName
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/Interfaces/IOrder.cs/#L40"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Type name of the order</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">string TypeName { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_Interfaces_IOrder_WasSuccessful_" data-uid="Bodoconsult.NetworkCommunication.Interfaces.IOrder.WasSuccessful*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_Interfaces_IOrder_WasSuccessful" data-uid="Bodoconsult.NetworkCommunication.Interfaces.IOrder.WasSuccessful">
+  WasSuccessful
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/Interfaces/IOrder.cs/#L156"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>The step was successfully processed in all steps</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool WasSuccessful { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="Bodoconsult_NetworkCommunication_Interfaces_IOrder_CreateTraceEntry_" data-uid="Bodoconsult.NetworkCommunication.Interfaces.IOrder.CreateTraceEntry*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_Interfaces_IOrder_CreateTraceEntry_Bodoconsult_NetworkCommunication_Interfaces_IOrderExecutionResultState_System_Int32__System_DateTime_" data-uid="Bodoconsult.NetworkCommunication.Interfaces.IOrder.CreateTraceEntry(Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionResultState,System.Int32@,System.DateTime)">
+  CreateTraceEntry(IOrderExecutionResultState, in int, DateTime)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/Interfaces/IOrder.cs/#L235"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Create a trace entry (do not use directly, public only for unit testing)</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void CreateTraceEntry(IOrderExecutionResultState lastStepExecutionResult, in int communicationAdapterError, DateTime timeStamp)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>lastStepExecutionResult</code> <a class="xref" href="Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionResultState.html">IOrderExecutionResultState</a></dt>
+    <dd><p>Execution result</p>
+</dd>
+    <dt><code>communicationAdapterError</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Error on the communication adapter</p>
+</dd>
+    <dt><code>timeStamp</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.datetime">DateTime</a></dt>
+    <dd><p>App date service</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/Interfaces/IOrder.cs/#L18" class="edit-link">Edit this page</a>
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

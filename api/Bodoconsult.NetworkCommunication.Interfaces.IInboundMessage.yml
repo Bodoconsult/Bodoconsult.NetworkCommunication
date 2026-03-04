@@ -1,0 +1,343 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IInboundMessage
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.IInboundMessage
+  id: IInboundMessage
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  children:
+  - Bodoconsult.NetworkCommunication.Interfaces.IInboundMessage.MessageId
+  - Bodoconsult.NetworkCommunication.Interfaces.IInboundMessage.RawMessageData
+  - Bodoconsult.NetworkCommunication.Interfaces.IInboundMessage.RawMessageDataClearText
+  - Bodoconsult.NetworkCommunication.Interfaces.IInboundMessage.ToInfoString
+  - Bodoconsult.NetworkCommunication.Interfaces.IInboundMessage.ToShortInfoString
+  langs:
+  - csharp
+  - vb
+  name: IInboundMessage
+  nameWithType: IInboundMessage
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IInboundMessage
+  type: Interface
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/IInboundMessage.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: IInboundMessage
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/IInboundMessage.cs
+    startLine: 7
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Base interface for byte based inbound messaging i.e. via TCP/IP or UDP
+  example: []
+  syntax:
+    content: public interface IInboundMessage
+    content.vb: Public Interface IInboundMessage
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IInboundMessage.MessageId
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IInboundMessage.MessageId
+  id: MessageId
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IInboundMessage
+  langs:
+  - csharp
+  - vb
+  name: MessageId
+  nameWithType: IInboundMessage.MessageId
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IInboundMessage.MessageId
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/IInboundMessage.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: MessageId
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/IInboundMessage.cs
+    startLine: 12
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: A unique ID to identify the message
+  example: []
+  syntax:
+    content: long MessageId { get; }
+    parameters: []
+    return:
+      type: System.Int64
+    content.vb: ReadOnly Property MessageId As Long
+  overload: Bodoconsult.NetworkCommunication.Interfaces.IInboundMessage.MessageId*
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IInboundMessage.RawMessageData
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IInboundMessage.RawMessageData
+  id: RawMessageData
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IInboundMessage
+  langs:
+  - csharp
+  - vb
+  name: RawMessageData
+  nameWithType: IInboundMessage.RawMessageData
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IInboundMessage.RawMessageData
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/IInboundMessage.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: RawMessageData
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/IInboundMessage.cs
+    startLine: 17
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Current raw message data as byte array
+  example: []
+  syntax:
+    content: Memory<byte> RawMessageData { get; set; }
+    parameters: []
+    return:
+      type: System.Memory{System.Byte}
+    content.vb: Property RawMessageData As Memory(Of Byte)
+  overload: Bodoconsult.NetworkCommunication.Interfaces.IInboundMessage.RawMessageData*
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IInboundMessage.RawMessageDataClearText
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IInboundMessage.RawMessageDataClearText
+  id: RawMessageDataClearText
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IInboundMessage
+  langs:
+  - csharp
+  - vb
+  name: RawMessageDataClearText
+  nameWithType: IInboundMessage.RawMessageDataClearText
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IInboundMessage.RawMessageDataClearText
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/IInboundMessage.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: RawMessageDataClearText
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/IInboundMessage.cs
+    startLine: 22
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Current raw message data as clear text
+  example: []
+  syntax:
+    content: string RawMessageDataClearText { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: ReadOnly Property RawMessageDataClearText As String
+  overload: Bodoconsult.NetworkCommunication.Interfaces.IInboundMessage.RawMessageDataClearText*
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IInboundMessage.ToInfoString
+  commentId: M:Bodoconsult.NetworkCommunication.Interfaces.IInboundMessage.ToInfoString
+  id: ToInfoString
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IInboundMessage
+  langs:
+  - csharp
+  - vb
+  name: ToInfoString()
+  nameWithType: IInboundMessage.ToInfoString()
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IInboundMessage.ToInfoString()
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/IInboundMessage.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: ToInfoString
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/IInboundMessage.cs
+    startLine: 28
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Create an info string for logging
+  example: []
+  syntax:
+    content: string ToInfoString()
+    return:
+      type: System.String
+      description: Info string
+    content.vb: Function ToInfoString() As String
+  overload: Bodoconsult.NetworkCommunication.Interfaces.IInboundMessage.ToInfoString*
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IInboundMessage.ToShortInfoString
+  commentId: M:Bodoconsult.NetworkCommunication.Interfaces.IInboundMessage.ToShortInfoString
+  id: ToShortInfoString
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IInboundMessage
+  langs:
+  - csharp
+  - vb
+  name: ToShortInfoString()
+  nameWithType: IInboundMessage.ToShortInfoString()
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IInboundMessage.ToShortInfoString()
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/IInboundMessage.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: ToShortInfoString
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/IInboundMessage.cs
+    startLine: 34
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Create a short info string for logging
+  example: []
+  syntax:
+    content: string ToShortInfoString()
+    return:
+      type: System.String
+      description: Info string
+    content.vb: Function ToShortInfoString() As String
+  overload: Bodoconsult.NetworkCommunication.Interfaces.IInboundMessage.ToShortInfoString*
+references:
+- uid: Bodoconsult.NetworkCommunication.Interfaces
+  commentId: N:Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.html
+  name: Bodoconsult.NetworkCommunication.Interfaces
+  nameWithType: Bodoconsult.NetworkCommunication.Interfaces
+  fullName: Bodoconsult.NetworkCommunication.Interfaces
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Interfaces
+    name: Interfaces
+    href: Bodoconsult.NetworkCommunication.Interfaces.html
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Interfaces
+    name: Interfaces
+    href: Bodoconsult.NetworkCommunication.Interfaces.html
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IInboundMessage.MessageId*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.IInboundMessage.MessageId
+  href: Bodoconsult.NetworkCommunication.Interfaces.IInboundMessage.html#Bodoconsult_NetworkCommunication_Interfaces_IInboundMessage_MessageId
+  name: MessageId
+  nameWithType: IInboundMessage.MessageId
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IInboundMessage.MessageId
+- uid: System.Int64
+  commentId: T:System.Int64
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int64
+  name: long
+  nameWithType: long
+  fullName: long
+  nameWithType.vb: Long
+  fullName.vb: Long
+  name.vb: Long
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IInboundMessage.RawMessageData*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.IInboundMessage.RawMessageData
+  href: Bodoconsult.NetworkCommunication.Interfaces.IInboundMessage.html#Bodoconsult_NetworkCommunication_Interfaces_IInboundMessage_RawMessageData
+  name: RawMessageData
+  nameWithType: IInboundMessage.RawMessageData
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IInboundMessage.RawMessageData
+- uid: System.Memory{System.Byte}
+  commentId: T:System.Memory{System.Byte}
+  parent: System
+  definition: System.Memory`1
+  href: https://learn.microsoft.com/dotnet/api/system.memory-1
+  name: Memory<byte>
+  nameWithType: Memory<byte>
+  fullName: System.Memory<byte>
+  nameWithType.vb: Memory(Of Byte)
+  fullName.vb: System.Memory(Of Byte)
+  name.vb: Memory(Of Byte)
+  spec.csharp:
+  - uid: System.Memory`1
+    name: Memory
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.memory-1
+  - name: <
+  - uid: System.Byte
+    name: byte
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.byte
+  - name: '>'
+  spec.vb:
+  - uid: System.Memory`1
+    name: Memory
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.memory-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Byte
+    name: Byte
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.byte
+  - name: )
+- uid: System.Memory`1
+  commentId: T:System.Memory`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.memory-1
+  name: Memory<T>
+  nameWithType: Memory<T>
+  fullName: System.Memory<T>
+  nameWithType.vb: Memory(Of T)
+  fullName.vb: System.Memory(Of T)
+  name.vb: Memory(Of T)
+  spec.csharp:
+  - uid: System.Memory`1
+    name: Memory
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.memory-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Memory`1
+    name: Memory
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.memory-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IInboundMessage.RawMessageDataClearText*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.IInboundMessage.RawMessageDataClearText
+  href: Bodoconsult.NetworkCommunication.Interfaces.IInboundMessage.html#Bodoconsult_NetworkCommunication_Interfaces_IInboundMessage_RawMessageDataClearText
+  name: RawMessageDataClearText
+  nameWithType: IInboundMessage.RawMessageDataClearText
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IInboundMessage.RawMessageDataClearText
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IInboundMessage.ToInfoString*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.IInboundMessage.ToInfoString
+  href: Bodoconsult.NetworkCommunication.Interfaces.IInboundMessage.html#Bodoconsult_NetworkCommunication_Interfaces_IInboundMessage_ToInfoString
+  name: ToInfoString
+  nameWithType: IInboundMessage.ToInfoString
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IInboundMessage.ToInfoString
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IInboundMessage.ToShortInfoString*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.IInboundMessage.ToShortInfoString
+  href: Bodoconsult.NetworkCommunication.Interfaces.IInboundMessage.html#Bodoconsult_NetworkCommunication_Interfaces_IInboundMessage_ToShortInfoString
+  name: ToShortInfoString
+  nameWithType: IInboundMessage.ToShortInfoString
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IInboundMessage.ToShortInfoString

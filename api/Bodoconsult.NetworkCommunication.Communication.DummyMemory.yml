@@ -1,0 +1,510 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bodoconsult.NetworkCommunication.Communication.DummyMemory
+  commentId: T:Bodoconsult.NetworkCommunication.Communication.DummyMemory
+  id: DummyMemory
+  parent: Bodoconsult.NetworkCommunication.Communication
+  children:
+  - Bodoconsult.NetworkCommunication.Communication.DummyMemory.Memory
+  - Bodoconsult.NetworkCommunication.Communication.DummyMemory.Reset
+  langs:
+  - csharp
+  - vb
+  name: DummyMemory
+  nameWithType: DummyMemory
+  fullName: Bodoconsult.NetworkCommunication.Communication.DummyMemory
+  type: Class
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Communication/DummyMemory.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: DummyMemory
+    path: src/Bodoconsult.NetworkCommunication/Communication/DummyMemory.cs
+    startLine: 30
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Communication
+  summary: Helepr class for <xref href="Bodoconsult.NetworkCommunication.Communication.IpDuplexIoReceiver" data-throw-if-not-resolved="false"></xref>
+  example: []
+  syntax:
+    content: 'public class DummyMemory : IResetable'
+    content.vb: Public Class DummyMemory Implements IResetable
+  inheritance:
+  - System.Object
+  implements:
+  - Bodoconsult.App.Interfaces.IResetable
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: Bodoconsult.NetworkCommunication.Communication.DummyMemory.Memory
+  commentId: P:Bodoconsult.NetworkCommunication.Communication.DummyMemory.Memory
+  id: Memory
+  parent: Bodoconsult.NetworkCommunication.Communication.DummyMemory
+  langs:
+  - csharp
+  - vb
+  name: Memory
+  nameWithType: DummyMemory.Memory
+  fullName: Bodoconsult.NetworkCommunication.Communication.DummyMemory.Memory
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Communication/DummyMemory.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Memory
+    path: src/Bodoconsult.NetworkCommunication/Communication/DummyMemory.cs
+    startLine: 36
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Communication
+  summary: Memory instance
+  example: []
+  syntax:
+    content: public Memory<byte> Memory { get; set; }
+    parameters: []
+    return:
+      type: System.Memory{System.Byte}
+    content.vb: Public Property Memory As Memory(Of Byte)
+  overload: Bodoconsult.NetworkCommunication.Communication.DummyMemory.Memory*
+- uid: Bodoconsult.NetworkCommunication.Communication.DummyMemory.Reset
+  commentId: M:Bodoconsult.NetworkCommunication.Communication.DummyMemory.Reset
+  id: Reset
+  parent: Bodoconsult.NetworkCommunication.Communication.DummyMemory
+  langs:
+  - csharp
+  - vb
+  name: Reset()
+  nameWithType: DummyMemory.Reset()
+  fullName: Bodoconsult.NetworkCommunication.Communication.DummyMemory.Reset()
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Communication/DummyMemory.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Reset
+    path: src/Bodoconsult.NetworkCommunication/Communication/DummyMemory.cs
+    startLine: 41
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Communication
+  summary: Reset the class to default values
+  example: []
+  syntax:
+    content: public void Reset()
+    content.vb: Public Sub Reset()
+  overload: Bodoconsult.NetworkCommunication.Communication.DummyMemory.Reset*
+  implements:
+  - Bodoconsult.App.Interfaces.IResetable.Reset
+references:
+- uid: Bodoconsult.NetworkCommunication.Communication.IpDuplexIoReceiver
+  commentId: T:Bodoconsult.NetworkCommunication.Communication.IpDuplexIoReceiver
+  href: Bodoconsult.NetworkCommunication.Communication.IpDuplexIoReceiver.html
+  name: IpDuplexIoReceiver
+  nameWithType: IpDuplexIoReceiver
+  fullName: Bodoconsult.NetworkCommunication.Communication.IpDuplexIoReceiver
+- uid: Bodoconsult.NetworkCommunication.Communication
+  commentId: N:Bodoconsult.NetworkCommunication.Communication
+  href: Bodoconsult.html
+  name: Bodoconsult.NetworkCommunication.Communication
+  nameWithType: Bodoconsult.NetworkCommunication.Communication
+  fullName: Bodoconsult.NetworkCommunication.Communication
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Communication
+    name: Communication
+    href: Bodoconsult.NetworkCommunication.Communication.html
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Communication
+    name: Communication
+    href: Bodoconsult.NetworkCommunication.Communication.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Bodoconsult.App.Interfaces.IResetable
+  commentId: T:Bodoconsult.App.Interfaces.IResetable
+  parent: Bodoconsult.App.Interfaces
+  isExternal: true
+  name: IResetable
+  nameWithType: IResetable
+  fullName: Bodoconsult.App.Interfaces.IResetable
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Bodoconsult.App.Interfaces
+  commentId: N:Bodoconsult.App.Interfaces
+  isExternal: true
+  name: Bodoconsult.App.Interfaces
+  nameWithType: Bodoconsult.App.Interfaces
+  fullName: Bodoconsult.App.Interfaces
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    isExternal: true
+  - name: .
+  - uid: Bodoconsult.App
+    name: App
+    isExternal: true
+  - name: .
+  - uid: Bodoconsult.App.Interfaces
+    name: Interfaces
+    isExternal: true
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    isExternal: true
+  - name: .
+  - uid: Bodoconsult.App
+    name: App
+    isExternal: true
+  - name: .
+  - uid: Bodoconsult.App.Interfaces
+    name: Interfaces
+    isExternal: true
+- uid: Bodoconsult.NetworkCommunication.Communication.DummyMemory.Memory*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Communication.DummyMemory.Memory
+  href: Bodoconsult.NetworkCommunication.Communication.DummyMemory.html#Bodoconsult_NetworkCommunication_Communication_DummyMemory_Memory
+  name: Memory
+  nameWithType: DummyMemory.Memory
+  fullName: Bodoconsult.NetworkCommunication.Communication.DummyMemory.Memory
+- uid: System.Memory{System.Byte}
+  commentId: T:System.Memory{System.Byte}
+  parent: System
+  definition: System.Memory`1
+  href: https://learn.microsoft.com/dotnet/api/system.memory-1
+  name: Memory<byte>
+  nameWithType: Memory<byte>
+  fullName: System.Memory<byte>
+  nameWithType.vb: Memory(Of Byte)
+  fullName.vb: System.Memory(Of Byte)
+  name.vb: Memory(Of Byte)
+  spec.csharp:
+  - uid: System.Memory`1
+    name: Memory
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.memory-1
+  - name: <
+  - uid: System.Byte
+    name: byte
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.byte
+  - name: '>'
+  spec.vb:
+  - uid: System.Memory`1
+    name: Memory
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.memory-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Byte
+    name: Byte
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.byte
+  - name: )
+- uid: System.Memory`1
+  commentId: T:System.Memory`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.memory-1
+  name: Memory<T>
+  nameWithType: Memory<T>
+  fullName: System.Memory<T>
+  nameWithType.vb: Memory(Of T)
+  fullName.vb: System.Memory(Of T)
+  name.vb: Memory(Of T)
+  spec.csharp:
+  - uid: System.Memory`1
+    name: Memory
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.memory-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Memory`1
+    name: Memory
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.memory-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Bodoconsult.NetworkCommunication.Communication.DummyMemory.Reset*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Communication.DummyMemory.Reset
+  href: Bodoconsult.NetworkCommunication.Communication.DummyMemory.html#Bodoconsult_NetworkCommunication_Communication_DummyMemory_Reset
+  name: Reset
+  nameWithType: DummyMemory.Reset
+  fullName: Bodoconsult.NetworkCommunication.Communication.DummyMemory.Reset
+- uid: Bodoconsult.App.Interfaces.IResetable.Reset
+  commentId: M:Bodoconsult.App.Interfaces.IResetable.Reset
+  parent: Bodoconsult.App.Interfaces.IResetable
+  isExternal: true
+  name: Reset()
+  nameWithType: IResetable.Reset()
+  fullName: Bodoconsult.App.Interfaces.IResetable.Reset()
+  spec.csharp:
+  - uid: Bodoconsult.App.Interfaces.IResetable.Reset
+    name: Reset
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.App.Interfaces.IResetable.Reset
+    name: Reset
+    isExternal: true
+  - name: (
+  - name: )

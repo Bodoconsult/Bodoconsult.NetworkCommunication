@@ -1,0 +1,423 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeFailoverStatistics
+  commentId: T:Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeFailoverStatistics
+  id: IDhcpServerScopeFailoverStatistics
+  parent: Bodoconsult.Network.Windows.Dhcp
+  children:
+  - Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeFailoverStatistics.AddressesFree
+  - Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeFailoverStatistics.AddressesInUse
+  - Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeFailoverStatistics.AddressesTotal
+  - Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeFailoverStatistics.LocalAddressesFree
+  - Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeFailoverStatistics.LocalAddressesInUse
+  - Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeFailoverStatistics.PartnerAddressesFree
+  - Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeFailoverStatistics.PartnerAddressesInUse
+  - Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeFailoverStatistics.Scope
+  - Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeFailoverStatistics.Server
+  langs:
+  - csharp
+  - vb
+  name: IDhcpServerScopeFailoverStatistics
+  nameWithType: IDhcpServerScopeFailoverStatistics
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeFailoverStatistics
+  type: Interface
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/IDhcpServerScopeFailoverStatistics.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: IDhcpServerScopeFailoverStatistics
+    path: src/Bodoconsult.Network.Windows/Dhcp/IDhcpServerScopeFailoverStatistics.cs
+    startLine: 5
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: public interface IDhcpServerScopeFailoverStatistics
+    content.vb: Public Interface IDhcpServerScopeFailoverStatistics
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeFailoverStatistics.AddressesFree
+  commentId: P:Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeFailoverStatistics.AddressesFree
+  id: AddressesFree
+  parent: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeFailoverStatistics
+  langs:
+  - csharp
+  - vb
+  name: AddressesFree
+  nameWithType: IDhcpServerScopeFailoverStatistics.AddressesFree
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeFailoverStatistics.AddressesFree
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/IDhcpServerScopeFailoverStatistics.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: AddressesFree
+    path: src/Bodoconsult.Network.Windows/Dhcp/IDhcpServerScopeFailoverStatistics.cs
+    startLine: 7
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: int AddressesFree { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: ReadOnly Property AddressesFree As Integer
+  overload: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeFailoverStatistics.AddressesFree*
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeFailoverStatistics.AddressesInUse
+  commentId: P:Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeFailoverStatistics.AddressesInUse
+  id: AddressesInUse
+  parent: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeFailoverStatistics
+  langs:
+  - csharp
+  - vb
+  name: AddressesInUse
+  nameWithType: IDhcpServerScopeFailoverStatistics.AddressesInUse
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeFailoverStatistics.AddressesInUse
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/IDhcpServerScopeFailoverStatistics.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: AddressesInUse
+    path: src/Bodoconsult.Network.Windows/Dhcp/IDhcpServerScopeFailoverStatistics.cs
+    startLine: 8
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: int AddressesInUse { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: ReadOnly Property AddressesInUse As Integer
+  overload: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeFailoverStatistics.AddressesInUse*
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeFailoverStatistics.AddressesTotal
+  commentId: P:Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeFailoverStatistics.AddressesTotal
+  id: AddressesTotal
+  parent: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeFailoverStatistics
+  langs:
+  - csharp
+  - vb
+  name: AddressesTotal
+  nameWithType: IDhcpServerScopeFailoverStatistics.AddressesTotal
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeFailoverStatistics.AddressesTotal
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/IDhcpServerScopeFailoverStatistics.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: AddressesTotal
+    path: src/Bodoconsult.Network.Windows/Dhcp/IDhcpServerScopeFailoverStatistics.cs
+    startLine: 9
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: int AddressesTotal { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: ReadOnly Property AddressesTotal As Integer
+  overload: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeFailoverStatistics.AddressesTotal*
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeFailoverStatistics.LocalAddressesFree
+  commentId: P:Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeFailoverStatistics.LocalAddressesFree
+  id: LocalAddressesFree
+  parent: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeFailoverStatistics
+  langs:
+  - csharp
+  - vb
+  name: LocalAddressesFree
+  nameWithType: IDhcpServerScopeFailoverStatistics.LocalAddressesFree
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeFailoverStatistics.LocalAddressesFree
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/IDhcpServerScopeFailoverStatistics.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: LocalAddressesFree
+    path: src/Bodoconsult.Network.Windows/Dhcp/IDhcpServerScopeFailoverStatistics.cs
+    startLine: 10
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: int LocalAddressesFree { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: ReadOnly Property LocalAddressesFree As Integer
+  overload: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeFailoverStatistics.LocalAddressesFree*
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeFailoverStatistics.LocalAddressesInUse
+  commentId: P:Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeFailoverStatistics.LocalAddressesInUse
+  id: LocalAddressesInUse
+  parent: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeFailoverStatistics
+  langs:
+  - csharp
+  - vb
+  name: LocalAddressesInUse
+  nameWithType: IDhcpServerScopeFailoverStatistics.LocalAddressesInUse
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeFailoverStatistics.LocalAddressesInUse
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/IDhcpServerScopeFailoverStatistics.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: LocalAddressesInUse
+    path: src/Bodoconsult.Network.Windows/Dhcp/IDhcpServerScopeFailoverStatistics.cs
+    startLine: 11
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: int LocalAddressesInUse { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: ReadOnly Property LocalAddressesInUse As Integer
+  overload: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeFailoverStatistics.LocalAddressesInUse*
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeFailoverStatistics.PartnerAddressesFree
+  commentId: P:Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeFailoverStatistics.PartnerAddressesFree
+  id: PartnerAddressesFree
+  parent: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeFailoverStatistics
+  langs:
+  - csharp
+  - vb
+  name: PartnerAddressesFree
+  nameWithType: IDhcpServerScopeFailoverStatistics.PartnerAddressesFree
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeFailoverStatistics.PartnerAddressesFree
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/IDhcpServerScopeFailoverStatistics.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: PartnerAddressesFree
+    path: src/Bodoconsult.Network.Windows/Dhcp/IDhcpServerScopeFailoverStatistics.cs
+    startLine: 12
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: int PartnerAddressesFree { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: ReadOnly Property PartnerAddressesFree As Integer
+  overload: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeFailoverStatistics.PartnerAddressesFree*
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeFailoverStatistics.PartnerAddressesInUse
+  commentId: P:Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeFailoverStatistics.PartnerAddressesInUse
+  id: PartnerAddressesInUse
+  parent: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeFailoverStatistics
+  langs:
+  - csharp
+  - vb
+  name: PartnerAddressesInUse
+  nameWithType: IDhcpServerScopeFailoverStatistics.PartnerAddressesInUse
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeFailoverStatistics.PartnerAddressesInUse
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/IDhcpServerScopeFailoverStatistics.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: PartnerAddressesInUse
+    path: src/Bodoconsult.Network.Windows/Dhcp/IDhcpServerScopeFailoverStatistics.cs
+    startLine: 13
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: int PartnerAddressesInUse { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: ReadOnly Property PartnerAddressesInUse As Integer
+  overload: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeFailoverStatistics.PartnerAddressesInUse*
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeFailoverStatistics.Scope
+  commentId: P:Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeFailoverStatistics.Scope
+  id: Scope
+  parent: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeFailoverStatistics
+  langs:
+  - csharp
+  - vb
+  name: Scope
+  nameWithType: IDhcpServerScopeFailoverStatistics.Scope
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeFailoverStatistics.Scope
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/IDhcpServerScopeFailoverStatistics.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Scope
+    path: src/Bodoconsult.Network.Windows/Dhcp/IDhcpServerScopeFailoverStatistics.cs
+    startLine: 14
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: IDhcpServerScope Scope { get; }
+    parameters: []
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope
+    content.vb: ReadOnly Property Scope As IDhcpServerScope
+  overload: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeFailoverStatistics.Scope*
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeFailoverStatistics.Server
+  commentId: P:Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeFailoverStatistics.Server
+  id: Server
+  parent: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeFailoverStatistics
+  langs:
+  - csharp
+  - vb
+  name: Server
+  nameWithType: IDhcpServerScopeFailoverStatistics.Server
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeFailoverStatistics.Server
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/IDhcpServerScopeFailoverStatistics.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Server
+    path: src/Bodoconsult.Network.Windows/Dhcp/IDhcpServerScopeFailoverStatistics.cs
+    startLine: 15
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: IDhcpServer Server { get; }
+    parameters: []
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.IDhcpServer
+    content.vb: ReadOnly Property Server As IDhcpServer
+  overload: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeFailoverStatistics.Server*
+references:
+- uid: Bodoconsult.Network.Windows.Dhcp
+  commentId: N:Bodoconsult.Network.Windows.Dhcp
+  href: Bodoconsult.html
+  name: Bodoconsult.Network.Windows.Dhcp
+  nameWithType: Bodoconsult.Network.Windows.Dhcp
+  fullName: Bodoconsult.Network.Windows.Dhcp
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.Network
+    name: Network
+    href: Bodoconsult.Network.html
+  - name: .
+  - uid: Bodoconsult.Network.Windows
+    name: Windows
+    href: Bodoconsult.Network.Windows.html
+  - name: .
+  - uid: Bodoconsult.Network.Windows.Dhcp
+    name: Dhcp
+    href: Bodoconsult.Network.Windows.Dhcp.html
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.Network
+    name: Network
+    href: Bodoconsult.Network.html
+  - name: .
+  - uid: Bodoconsult.Network.Windows
+    name: Windows
+    href: Bodoconsult.Network.Windows.html
+  - name: .
+  - uid: Bodoconsult.Network.Windows.Dhcp
+    name: Dhcp
+    href: Bodoconsult.Network.Windows.Dhcp.html
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeFailoverStatistics.AddressesFree*
+  commentId: Overload:Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeFailoverStatistics.AddressesFree
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeFailoverStatistics.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerScopeFailoverStatistics_AddressesFree
+  name: AddressesFree
+  nameWithType: IDhcpServerScopeFailoverStatistics.AddressesFree
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeFailoverStatistics.AddressesFree
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeFailoverStatistics.AddressesInUse*
+  commentId: Overload:Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeFailoverStatistics.AddressesInUse
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeFailoverStatistics.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerScopeFailoverStatistics_AddressesInUse
+  name: AddressesInUse
+  nameWithType: IDhcpServerScopeFailoverStatistics.AddressesInUse
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeFailoverStatistics.AddressesInUse
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeFailoverStatistics.AddressesTotal*
+  commentId: Overload:Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeFailoverStatistics.AddressesTotal
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeFailoverStatistics.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerScopeFailoverStatistics_AddressesTotal
+  name: AddressesTotal
+  nameWithType: IDhcpServerScopeFailoverStatistics.AddressesTotal
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeFailoverStatistics.AddressesTotal
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeFailoverStatistics.LocalAddressesFree*
+  commentId: Overload:Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeFailoverStatistics.LocalAddressesFree
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeFailoverStatistics.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerScopeFailoverStatistics_LocalAddressesFree
+  name: LocalAddressesFree
+  nameWithType: IDhcpServerScopeFailoverStatistics.LocalAddressesFree
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeFailoverStatistics.LocalAddressesFree
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeFailoverStatistics.LocalAddressesInUse*
+  commentId: Overload:Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeFailoverStatistics.LocalAddressesInUse
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeFailoverStatistics.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerScopeFailoverStatistics_LocalAddressesInUse
+  name: LocalAddressesInUse
+  nameWithType: IDhcpServerScopeFailoverStatistics.LocalAddressesInUse
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeFailoverStatistics.LocalAddressesInUse
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeFailoverStatistics.PartnerAddressesFree*
+  commentId: Overload:Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeFailoverStatistics.PartnerAddressesFree
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeFailoverStatistics.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerScopeFailoverStatistics_PartnerAddressesFree
+  name: PartnerAddressesFree
+  nameWithType: IDhcpServerScopeFailoverStatistics.PartnerAddressesFree
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeFailoverStatistics.PartnerAddressesFree
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeFailoverStatistics.PartnerAddressesInUse*
+  commentId: Overload:Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeFailoverStatistics.PartnerAddressesInUse
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeFailoverStatistics.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerScopeFailoverStatistics_PartnerAddressesInUse
+  name: PartnerAddressesInUse
+  nameWithType: IDhcpServerScopeFailoverStatistics.PartnerAddressesInUse
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeFailoverStatistics.PartnerAddressesInUse
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeFailoverStatistics.Scope*
+  commentId: Overload:Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeFailoverStatistics.Scope
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeFailoverStatistics.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerScopeFailoverStatistics_Scope
+  name: Scope
+  nameWithType: IDhcpServerScopeFailoverStatistics.Scope
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeFailoverStatistics.Scope
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope
+  commentId: T:Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope
+  parent: Bodoconsult.Network.Windows.Dhcp
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.html
+  name: IDhcpServerScope
+  nameWithType: IDhcpServerScope
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeFailoverStatistics.Server*
+  commentId: Overload:Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeFailoverStatistics.Server
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeFailoverStatistics.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerScopeFailoverStatistics_Server
+  name: Server
+  nameWithType: IDhcpServerScopeFailoverStatistics.Server
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeFailoverStatistics.Server
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServer
+  commentId: T:Bodoconsult.Network.Windows.Dhcp.IDhcpServer
+  parent: Bodoconsult.Network.Windows.Dhcp
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServer.html
+  name: IDhcpServer
+  nameWithType: IDhcpServer
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServer

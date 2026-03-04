@@ -1,0 +1,283 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerAuditLog
+  commentId: T:Bodoconsult.Network.Windows.Dhcp.IDhcpServerAuditLog
+  id: IDhcpServerAuditLog
+  parent: Bodoconsult.Network.Windows.Dhcp
+  children:
+  - Bodoconsult.Network.Windows.Dhcp.IDhcpServerAuditLog.AuditLogDirectory
+  - Bodoconsult.Network.Windows.Dhcp.IDhcpServerAuditLog.DiskCheckInterval
+  - Bodoconsult.Network.Windows.Dhcp.IDhcpServerAuditLog.MaxLogFilesSize
+  - Bodoconsult.Network.Windows.Dhcp.IDhcpServerAuditLog.MinSpaceOnDisk
+  - Bodoconsult.Network.Windows.Dhcp.IDhcpServerAuditLog.Server
+  langs:
+  - csharp
+  - vb
+  name: IDhcpServerAuditLog
+  nameWithType: IDhcpServerAuditLog
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerAuditLog
+  type: Interface
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/IDhcpServerAuditLog.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: IDhcpServerAuditLog
+    path: src/Bodoconsult.Network.Windows/Dhcp/IDhcpServerAuditLog.cs
+    startLine: 5
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: public interface IDhcpServerAuditLog
+    content.vb: Public Interface IDhcpServerAuditLog
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerAuditLog.AuditLogDirectory
+  commentId: P:Bodoconsult.Network.Windows.Dhcp.IDhcpServerAuditLog.AuditLogDirectory
+  id: AuditLogDirectory
+  parent: Bodoconsult.Network.Windows.Dhcp.IDhcpServerAuditLog
+  langs:
+  - csharp
+  - vb
+  name: AuditLogDirectory
+  nameWithType: IDhcpServerAuditLog.AuditLogDirectory
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerAuditLog.AuditLogDirectory
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/IDhcpServerAuditLog.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: AuditLogDirectory
+    path: src/Bodoconsult.Network.Windows/Dhcp/IDhcpServerAuditLog.cs
+    startLine: 7
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: string AuditLogDirectory { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: ReadOnly Property AuditLogDirectory As String
+  overload: Bodoconsult.Network.Windows.Dhcp.IDhcpServerAuditLog.AuditLogDirectory*
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerAuditLog.DiskCheckInterval
+  commentId: P:Bodoconsult.Network.Windows.Dhcp.IDhcpServerAuditLog.DiskCheckInterval
+  id: DiskCheckInterval
+  parent: Bodoconsult.Network.Windows.Dhcp.IDhcpServerAuditLog
+  langs:
+  - csharp
+  - vb
+  name: DiskCheckInterval
+  nameWithType: IDhcpServerAuditLog.DiskCheckInterval
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerAuditLog.DiskCheckInterval
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/IDhcpServerAuditLog.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: DiskCheckInterval
+    path: src/Bodoconsult.Network.Windows/Dhcp/IDhcpServerAuditLog.cs
+    startLine: 8
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: int DiskCheckInterval { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: ReadOnly Property DiskCheckInterval As Integer
+  overload: Bodoconsult.Network.Windows.Dhcp.IDhcpServerAuditLog.DiskCheckInterval*
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerAuditLog.MaxLogFilesSize
+  commentId: P:Bodoconsult.Network.Windows.Dhcp.IDhcpServerAuditLog.MaxLogFilesSize
+  id: MaxLogFilesSize
+  parent: Bodoconsult.Network.Windows.Dhcp.IDhcpServerAuditLog
+  langs:
+  - csharp
+  - vb
+  name: MaxLogFilesSize
+  nameWithType: IDhcpServerAuditLog.MaxLogFilesSize
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerAuditLog.MaxLogFilesSize
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/IDhcpServerAuditLog.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: MaxLogFilesSize
+    path: src/Bodoconsult.Network.Windows/Dhcp/IDhcpServerAuditLog.cs
+    startLine: 9
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: int MaxLogFilesSize { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: ReadOnly Property MaxLogFilesSize As Integer
+  overload: Bodoconsult.Network.Windows.Dhcp.IDhcpServerAuditLog.MaxLogFilesSize*
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerAuditLog.MinSpaceOnDisk
+  commentId: P:Bodoconsult.Network.Windows.Dhcp.IDhcpServerAuditLog.MinSpaceOnDisk
+  id: MinSpaceOnDisk
+  parent: Bodoconsult.Network.Windows.Dhcp.IDhcpServerAuditLog
+  langs:
+  - csharp
+  - vb
+  name: MinSpaceOnDisk
+  nameWithType: IDhcpServerAuditLog.MinSpaceOnDisk
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerAuditLog.MinSpaceOnDisk
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/IDhcpServerAuditLog.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: MinSpaceOnDisk
+    path: src/Bodoconsult.Network.Windows/Dhcp/IDhcpServerAuditLog.cs
+    startLine: 10
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: int MinSpaceOnDisk { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: ReadOnly Property MinSpaceOnDisk As Integer
+  overload: Bodoconsult.Network.Windows.Dhcp.IDhcpServerAuditLog.MinSpaceOnDisk*
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerAuditLog.Server
+  commentId: P:Bodoconsult.Network.Windows.Dhcp.IDhcpServerAuditLog.Server
+  id: Server
+  parent: Bodoconsult.Network.Windows.Dhcp.IDhcpServerAuditLog
+  langs:
+  - csharp
+  - vb
+  name: Server
+  nameWithType: IDhcpServerAuditLog.Server
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerAuditLog.Server
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/IDhcpServerAuditLog.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Server
+    path: src/Bodoconsult.Network.Windows/Dhcp/IDhcpServerAuditLog.cs
+    startLine: 11
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: IDhcpServer Server { get; }
+    parameters: []
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.IDhcpServer
+    content.vb: ReadOnly Property Server As IDhcpServer
+  overload: Bodoconsult.Network.Windows.Dhcp.IDhcpServerAuditLog.Server*
+references:
+- uid: Bodoconsult.Network.Windows.Dhcp
+  commentId: N:Bodoconsult.Network.Windows.Dhcp
+  href: Bodoconsult.html
+  name: Bodoconsult.Network.Windows.Dhcp
+  nameWithType: Bodoconsult.Network.Windows.Dhcp
+  fullName: Bodoconsult.Network.Windows.Dhcp
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.Network
+    name: Network
+    href: Bodoconsult.Network.html
+  - name: .
+  - uid: Bodoconsult.Network.Windows
+    name: Windows
+    href: Bodoconsult.Network.Windows.html
+  - name: .
+  - uid: Bodoconsult.Network.Windows.Dhcp
+    name: Dhcp
+    href: Bodoconsult.Network.Windows.Dhcp.html
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.Network
+    name: Network
+    href: Bodoconsult.Network.html
+  - name: .
+  - uid: Bodoconsult.Network.Windows
+    name: Windows
+    href: Bodoconsult.Network.Windows.html
+  - name: .
+  - uid: Bodoconsult.Network.Windows.Dhcp
+    name: Dhcp
+    href: Bodoconsult.Network.Windows.Dhcp.html
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerAuditLog.AuditLogDirectory*
+  commentId: Overload:Bodoconsult.Network.Windows.Dhcp.IDhcpServerAuditLog.AuditLogDirectory
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerAuditLog.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerAuditLog_AuditLogDirectory
+  name: AuditLogDirectory
+  nameWithType: IDhcpServerAuditLog.AuditLogDirectory
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerAuditLog.AuditLogDirectory
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerAuditLog.DiskCheckInterval*
+  commentId: Overload:Bodoconsult.Network.Windows.Dhcp.IDhcpServerAuditLog.DiskCheckInterval
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerAuditLog.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerAuditLog_DiskCheckInterval
+  name: DiskCheckInterval
+  nameWithType: IDhcpServerAuditLog.DiskCheckInterval
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerAuditLog.DiskCheckInterval
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerAuditLog.MaxLogFilesSize*
+  commentId: Overload:Bodoconsult.Network.Windows.Dhcp.IDhcpServerAuditLog.MaxLogFilesSize
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerAuditLog.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerAuditLog_MaxLogFilesSize
+  name: MaxLogFilesSize
+  nameWithType: IDhcpServerAuditLog.MaxLogFilesSize
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerAuditLog.MaxLogFilesSize
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerAuditLog.MinSpaceOnDisk*
+  commentId: Overload:Bodoconsult.Network.Windows.Dhcp.IDhcpServerAuditLog.MinSpaceOnDisk
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerAuditLog.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerAuditLog_MinSpaceOnDisk
+  name: MinSpaceOnDisk
+  nameWithType: IDhcpServerAuditLog.MinSpaceOnDisk
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerAuditLog.MinSpaceOnDisk
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerAuditLog.Server*
+  commentId: Overload:Bodoconsult.Network.Windows.Dhcp.IDhcpServerAuditLog.Server
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerAuditLog.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerAuditLog_Server
+  name: Server
+  nameWithType: IDhcpServerAuditLog.Server
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerAuditLog.Server
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServer
+  commentId: T:Bodoconsult.Network.Windows.Dhcp.IDhcpServer
+  parent: Bodoconsult.Network.Windows.Dhcp
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServer.html
+  name: IDhcpServer
+  nameWithType: IDhcpServer
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServer

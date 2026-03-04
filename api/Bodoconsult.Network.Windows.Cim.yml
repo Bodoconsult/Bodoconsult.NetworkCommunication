@@ -1,0 +1,23 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bodoconsult.Network.Windows.Cim
+  commentId: N:Bodoconsult.Network.Windows.Cim
+  id: Bodoconsult.Network.Windows.Cim
+  children:
+  - Bodoconsult.Network.Windows.Cim.WmiCimHelper
+  langs:
+  - csharp
+  - vb
+  name: Bodoconsult.Network.Windows.Cim
+  nameWithType: Bodoconsult.Network.Windows.Cim
+  fullName: Bodoconsult.Network.Windows.Cim
+  type: Namespace
+  assemblies:
+  - Bodoconsult.Network.Windows
+references:
+- uid: Bodoconsult.Network.Windows.Cim.WmiCimHelper
+  commentId: T:Bodoconsult.Network.Windows.Cim.WmiCimHelper
+  href: Bodoconsult.Network.Windows.Cim.WmiCimHelper.html
+  name: WmiCimHelper
+  nameWithType: WmiCimHelper
+  fullName: Bodoconsult.Network.Windows.Cim.WmiCimHelper

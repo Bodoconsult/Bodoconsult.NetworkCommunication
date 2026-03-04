@@ -1,0 +1,897 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bodoconsult.NetworkCommunication.Helpers.DataMessageHelper
+  commentId: T:Bodoconsult.NetworkCommunication.Helpers.DataMessageHelper
+  id: DataMessageHelper
+  parent: Bodoconsult.NetworkCommunication.Helpers
+  children:
+  - Bodoconsult.NetworkCommunication.Helpers.DataMessageHelper.ByteArrayToString(System.Memory{System.Byte},System.String)
+  - Bodoconsult.NetworkCommunication.Helpers.DataMessageHelper.CheckCommandForNullAtTheEnd(System.Buffers.ReadOnlySequence{System.Byte}@)
+  - Bodoconsult.NetworkCommunication.Helpers.DataMessageHelper.GetStringFromArray(System.Byte[])
+  - Bodoconsult.NetworkCommunication.Helpers.DataMessageHelper.GetStringFromArray(System.Memory{System.Byte})
+  - Bodoconsult.NetworkCommunication.Helpers.DataMessageHelper.GetStringFromArray(System.ReadOnlyMemory{System.Byte})
+  - Bodoconsult.NetworkCommunication.Helpers.DataMessageHelper.GetStringFromArrayCsharpStyle(System.Buffers.ReadOnlySequence{System.Byte}@)
+  - Bodoconsult.NetworkCommunication.Helpers.DataMessageHelper.GetStringFromArrayCsharpStyle(System.Byte[])
+  - Bodoconsult.NetworkCommunication.Helpers.DataMessageHelper.GetStringFromArrayCsharpStyle(System.ReadOnlyMemory{System.Byte})
+  langs:
+  - csharp
+  - vb
+  name: DataMessageHelper
+  nameWithType: DataMessageHelper
+  fullName: Bodoconsult.NetworkCommunication.Helpers.DataMessageHelper
+  type: Class
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Helpers/DataMessageHelper.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: DataMessageHelper
+    path: src/Bodoconsult.NetworkCommunication/Helpers/DataMessageHelper.cs
+    startLine: 11
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Helpers
+  summary: Helper class for data messaging
+  example: []
+  syntax:
+    content: public static class DataMessageHelper
+    content.vb: Public Module DataMessageHelper
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: Bodoconsult.NetworkCommunication.Helpers.DataMessageHelper.ByteArrayToString(System.Memory{System.Byte},System.String)
+  commentId: M:Bodoconsult.NetworkCommunication.Helpers.DataMessageHelper.ByteArrayToString(System.Memory{System.Byte},System.String)
+  id: ByteArrayToString(System.Memory{System.Byte},System.String)
+  parent: Bodoconsult.NetworkCommunication.Helpers.DataMessageHelper
+  langs:
+  - csharp
+  - vb
+  name: ByteArrayToString(Memory<byte>, string)
+  nameWithType: DataMessageHelper.ByteArrayToString(Memory<byte>, string)
+  fullName: Bodoconsult.NetworkCommunication.Helpers.DataMessageHelper.ByteArrayToString(System.Memory<byte>, string)
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Helpers/DataMessageHelper.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: ByteArrayToString
+    path: src/Bodoconsult.NetworkCommunication/Helpers/DataMessageHelper.cs
+    startLine: 20
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Helpers
+  summary: Create a string from a byte array
+  example: []
+  syntax:
+    content: public static string ByteArrayToString(Memory<byte> ba, string prefix = null)
+    parameters:
+    - id: ba
+      type: System.Memory{System.Byte}
+      description: Byte array
+    - id: prefix
+      type: System.String
+      description: Prefix to add to the string
+    return:
+      type: System.String
+      description: String with prefix and attached byte array
+    content.vb: Public Shared Function ByteArrayToString(ba As Memory(Of Byte), prefix As String = Nothing) As String
+  overload: Bodoconsult.NetworkCommunication.Helpers.DataMessageHelper.ByteArrayToString*
+  nameWithType.vb: DataMessageHelper.ByteArrayToString(Memory(Of Byte), String)
+  fullName.vb: Bodoconsult.NetworkCommunication.Helpers.DataMessageHelper.ByteArrayToString(System.Memory(Of Byte), String)
+  name.vb: ByteArrayToString(Memory(Of Byte), String)
+- uid: Bodoconsult.NetworkCommunication.Helpers.DataMessageHelper.GetStringFromArray(System.Byte[])
+  commentId: M:Bodoconsult.NetworkCommunication.Helpers.DataMessageHelper.GetStringFromArray(System.Byte[])
+  id: GetStringFromArray(System.Byte[])
+  parent: Bodoconsult.NetworkCommunication.Helpers.DataMessageHelper
+  langs:
+  - csharp
+  - vb
+  name: GetStringFromArray(byte[])
+  nameWithType: DataMessageHelper.GetStringFromArray(byte[])
+  fullName: Bodoconsult.NetworkCommunication.Helpers.DataMessageHelper.GetStringFromArray(byte[])
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Helpers/DataMessageHelper.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: GetStringFromArray
+    path: src/Bodoconsult.NetworkCommunication/Helpers/DataMessageHelper.cs
+    startLine: 37
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Helpers
+  summary: Get a string from a byte array
+  example: []
+  syntax:
+    content: public static string GetStringFromArray(byte[] data)
+    parameters:
+    - id: data
+      type: System.Byte[]
+      description: Byte array
+    return:
+      type: System.String
+      description: Byte array as string
+    content.vb: Public Shared Function GetStringFromArray(data As Byte()) As String
+  overload: Bodoconsult.NetworkCommunication.Helpers.DataMessageHelper.GetStringFromArray*
+  nameWithType.vb: DataMessageHelper.GetStringFromArray(Byte())
+  fullName.vb: Bodoconsult.NetworkCommunication.Helpers.DataMessageHelper.GetStringFromArray(Byte())
+  name.vb: GetStringFromArray(Byte())
+- uid: Bodoconsult.NetworkCommunication.Helpers.DataMessageHelper.GetStringFromArray(System.ReadOnlyMemory{System.Byte})
+  commentId: M:Bodoconsult.NetworkCommunication.Helpers.DataMessageHelper.GetStringFromArray(System.ReadOnlyMemory{System.Byte})
+  id: GetStringFromArray(System.ReadOnlyMemory{System.Byte})
+  parent: Bodoconsult.NetworkCommunication.Helpers.DataMessageHelper
+  langs:
+  - csharp
+  - vb
+  name: GetStringFromArray(ReadOnlyMemory<byte>)
+  nameWithType: DataMessageHelper.GetStringFromArray(ReadOnlyMemory<byte>)
+  fullName: Bodoconsult.NetworkCommunication.Helpers.DataMessageHelper.GetStringFromArray(System.ReadOnlyMemory<byte>)
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Helpers/DataMessageHelper.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: GetStringFromArray
+    path: src/Bodoconsult.NetworkCommunication/Helpers/DataMessageHelper.cs
+    startLine: 60
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Helpers
+  summary: Get a string from a byte array
+  example: []
+  syntax:
+    content: public static string GetStringFromArray(ReadOnlyMemory<byte> data)
+    parameters:
+    - id: data
+      type: System.ReadOnlyMemory{System.Byte}
+      description: Byte array
+    return:
+      type: System.String
+      description: Byte array as string
+    content.vb: Public Shared Function GetStringFromArray(data As ReadOnlyMemory(Of Byte)) As String
+  overload: Bodoconsult.NetworkCommunication.Helpers.DataMessageHelper.GetStringFromArray*
+  nameWithType.vb: DataMessageHelper.GetStringFromArray(ReadOnlyMemory(Of Byte))
+  fullName.vb: Bodoconsult.NetworkCommunication.Helpers.DataMessageHelper.GetStringFromArray(System.ReadOnlyMemory(Of Byte))
+  name.vb: GetStringFromArray(ReadOnlyMemory(Of Byte))
+- uid: Bodoconsult.NetworkCommunication.Helpers.DataMessageHelper.GetStringFromArray(System.Memory{System.Byte})
+  commentId: M:Bodoconsult.NetworkCommunication.Helpers.DataMessageHelper.GetStringFromArray(System.Memory{System.Byte})
+  id: GetStringFromArray(System.Memory{System.Byte})
+  parent: Bodoconsult.NetworkCommunication.Helpers.DataMessageHelper
+  langs:
+  - csharp
+  - vb
+  name: GetStringFromArray(Memory<byte>)
+  nameWithType: DataMessageHelper.GetStringFromArray(Memory<byte>)
+  fullName: Bodoconsult.NetworkCommunication.Helpers.DataMessageHelper.GetStringFromArray(System.Memory<byte>)
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Helpers/DataMessageHelper.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: GetStringFromArray
+    path: src/Bodoconsult.NetworkCommunication/Helpers/DataMessageHelper.cs
+    startLine: 110
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Helpers
+  summary: Get a string from a byte array
+  example: []
+  syntax:
+    content: public static string GetStringFromArray(Memory<byte> data)
+    parameters:
+    - id: data
+      type: System.Memory{System.Byte}
+      description: Byte array
+    return:
+      type: System.String
+      description: Byte array as string
+    content.vb: Public Shared Function GetStringFromArray(data As Memory(Of Byte)) As String
+  overload: Bodoconsult.NetworkCommunication.Helpers.DataMessageHelper.GetStringFromArray*
+  nameWithType.vb: DataMessageHelper.GetStringFromArray(Memory(Of Byte))
+  fullName.vb: Bodoconsult.NetworkCommunication.Helpers.DataMessageHelper.GetStringFromArray(System.Memory(Of Byte))
+  name.vb: GetStringFromArray(Memory(Of Byte))
+- uid: Bodoconsult.NetworkCommunication.Helpers.DataMessageHelper.GetStringFromArrayCsharpStyle(System.Byte[])
+  commentId: M:Bodoconsult.NetworkCommunication.Helpers.DataMessageHelper.GetStringFromArrayCsharpStyle(System.Byte[])
+  id: GetStringFromArrayCsharpStyle(System.Byte[])
+  parent: Bodoconsult.NetworkCommunication.Helpers.DataMessageHelper
+  langs:
+  - csharp
+  - vb
+  name: GetStringFromArrayCsharpStyle(byte[])
+  nameWithType: DataMessageHelper.GetStringFromArrayCsharpStyle(byte[])
+  fullName: Bodoconsult.NetworkCommunication.Helpers.DataMessageHelper.GetStringFromArrayCsharpStyle(byte[])
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Helpers/DataMessageHelper.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: GetStringFromArrayCsharpStyle
+    path: src/Bodoconsult.NetworkCommunication/Helpers/DataMessageHelper.cs
+    startLine: 135
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Helpers
+  summary: Get a string from a byte array in C# style (for copying it to unit tests)
+  example: []
+  syntax:
+    content: public static string GetStringFromArrayCsharpStyle(byte[] data)
+    parameters:
+    - id: data
+      type: System.Byte[]
+      description: Byte array
+    return:
+      type: System.String
+      description: Byte array as string
+    content.vb: Public Shared Function GetStringFromArrayCsharpStyle(data As Byte()) As String
+  overload: Bodoconsult.NetworkCommunication.Helpers.DataMessageHelper.GetStringFromArrayCsharpStyle*
+  nameWithType.vb: DataMessageHelper.GetStringFromArrayCsharpStyle(Byte())
+  fullName.vb: Bodoconsult.NetworkCommunication.Helpers.DataMessageHelper.GetStringFromArrayCsharpStyle(Byte())
+  name.vb: GetStringFromArrayCsharpStyle(Byte())
+- uid: Bodoconsult.NetworkCommunication.Helpers.DataMessageHelper.GetStringFromArrayCsharpStyle(System.ReadOnlyMemory{System.Byte})
+  commentId: M:Bodoconsult.NetworkCommunication.Helpers.DataMessageHelper.GetStringFromArrayCsharpStyle(System.ReadOnlyMemory{System.Byte})
+  id: GetStringFromArrayCsharpStyle(System.ReadOnlyMemory{System.Byte})
+  parent: Bodoconsult.NetworkCommunication.Helpers.DataMessageHelper
+  langs:
+  - csharp
+  - vb
+  name: GetStringFromArrayCsharpStyle(ReadOnlyMemory<byte>)
+  nameWithType: DataMessageHelper.GetStringFromArrayCsharpStyle(ReadOnlyMemory<byte>)
+  fullName: Bodoconsult.NetworkCommunication.Helpers.DataMessageHelper.GetStringFromArrayCsharpStyle(System.ReadOnlyMemory<byte>)
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Helpers/DataMessageHelper.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: GetStringFromArrayCsharpStyle
+    path: src/Bodoconsult.NetworkCommunication/Helpers/DataMessageHelper.cs
+    startLine: 161
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Helpers
+  summary: Get a string from a byte array in C# style (for copying it to unit tests)
+  example: []
+  syntax:
+    content: public static string GetStringFromArrayCsharpStyle(ReadOnlyMemory<byte> data)
+    parameters:
+    - id: data
+      type: System.ReadOnlyMemory{System.Byte}
+      description: Byte array as read only memory
+    return:
+      type: System.String
+      description: Byte array as string
+    content.vb: Public Shared Function GetStringFromArrayCsharpStyle(data As ReadOnlyMemory(Of Byte)) As String
+  overload: Bodoconsult.NetworkCommunication.Helpers.DataMessageHelper.GetStringFromArrayCsharpStyle*
+  nameWithType.vb: DataMessageHelper.GetStringFromArrayCsharpStyle(ReadOnlyMemory(Of Byte))
+  fullName.vb: Bodoconsult.NetworkCommunication.Helpers.DataMessageHelper.GetStringFromArrayCsharpStyle(System.ReadOnlyMemory(Of Byte))
+  name.vb: GetStringFromArrayCsharpStyle(ReadOnlyMemory(Of Byte))
+- uid: Bodoconsult.NetworkCommunication.Helpers.DataMessageHelper.GetStringFromArrayCsharpStyle(System.Buffers.ReadOnlySequence{System.Byte}@)
+  commentId: M:Bodoconsult.NetworkCommunication.Helpers.DataMessageHelper.GetStringFromArrayCsharpStyle(System.Buffers.ReadOnlySequence{System.Byte}@)
+  id: GetStringFromArrayCsharpStyle(System.Buffers.ReadOnlySequence{System.Byte}@)
+  parent: Bodoconsult.NetworkCommunication.Helpers.DataMessageHelper
+  langs:
+  - csharp
+  - vb
+  name: GetStringFromArrayCsharpStyle(ref ReadOnlySequence<byte>)
+  nameWithType: DataMessageHelper.GetStringFromArrayCsharpStyle(ref ReadOnlySequence<byte>)
+  fullName: Bodoconsult.NetworkCommunication.Helpers.DataMessageHelper.GetStringFromArrayCsharpStyle(ref System.Buffers.ReadOnlySequence<byte>)
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Helpers/DataMessageHelper.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: GetStringFromArrayCsharpStyle
+    path: src/Bodoconsult.NetworkCommunication/Helpers/DataMessageHelper.cs
+    startLine: 187
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Helpers
+  summary: Get a string from a byte array in C# style (for copying it to unit tests)
+  example: []
+  syntax:
+    content: public static string GetStringFromArrayCsharpStyle(ref ReadOnlySequence<byte> data)
+    parameters:
+    - id: data
+      type: System.Buffers.ReadOnlySequence{System.Byte}
+      description: Byte array as readonly span
+    return:
+      type: System.String
+      description: Byte array as string
+    content.vb: Public Shared Function GetStringFromArrayCsharpStyle(data As ReadOnlySequence(Of Byte)) As String
+  overload: Bodoconsult.NetworkCommunication.Helpers.DataMessageHelper.GetStringFromArrayCsharpStyle*
+  nameWithType.vb: DataMessageHelper.GetStringFromArrayCsharpStyle(ReadOnlySequence(Of Byte))
+  fullName.vb: Bodoconsult.NetworkCommunication.Helpers.DataMessageHelper.GetStringFromArrayCsharpStyle(System.Buffers.ReadOnlySequence(Of Byte))
+  name.vb: GetStringFromArrayCsharpStyle(ReadOnlySequence(Of Byte))
+- uid: Bodoconsult.NetworkCommunication.Helpers.DataMessageHelper.CheckCommandForNullAtTheEnd(System.Buffers.ReadOnlySequence{System.Byte}@)
+  commentId: M:Bodoconsult.NetworkCommunication.Helpers.DataMessageHelper.CheckCommandForNullAtTheEnd(System.Buffers.ReadOnlySequence{System.Byte}@)
+  id: CheckCommandForNullAtTheEnd(System.Buffers.ReadOnlySequence{System.Byte}@)
+  parent: Bodoconsult.NetworkCommunication.Helpers.DataMessageHelper
+  langs:
+  - csharp
+  - vb
+  name: CheckCommandForNullAtTheEnd(in ReadOnlySequence<byte>)
+  nameWithType: DataMessageHelper.CheckCommandForNullAtTheEnd(in ReadOnlySequence<byte>)
+  fullName: Bodoconsult.NetworkCommunication.Helpers.DataMessageHelper.CheckCommandForNullAtTheEnd(in System.Buffers.ReadOnlySequence<byte>)
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Helpers/DataMessageHelper.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: CheckCommandForNullAtTheEnd
+    path: src/Bodoconsult.NetworkCommunication/Helpers/DataMessageHelper.cs
+    startLine: 213
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Helpers
+  summary: Check if command has 0x0 bytes at the end and remove them if case of
+  example: []
+  syntax:
+    content: public static ReadOnlySequence<byte> CheckCommandForNullAtTheEnd(in ReadOnlySequence<byte> command)
+    parameters:
+    - id: command
+      type: System.Buffers.ReadOnlySequence{System.Byte}
+      description: Comman to check
+    return:
+      type: System.Buffers.ReadOnlySequence{System.Byte}
+      description: Cleaned command
+    content.vb: Public Shared Function CheckCommandForNullAtTheEnd(command As ReadOnlySequence(Of Byte)) As ReadOnlySequence(Of Byte)
+  overload: Bodoconsult.NetworkCommunication.Helpers.DataMessageHelper.CheckCommandForNullAtTheEnd*
+  nameWithType.vb: DataMessageHelper.CheckCommandForNullAtTheEnd(ReadOnlySequence(Of Byte))
+  fullName.vb: Bodoconsult.NetworkCommunication.Helpers.DataMessageHelper.CheckCommandForNullAtTheEnd(System.Buffers.ReadOnlySequence(Of Byte))
+  name.vb: CheckCommandForNullAtTheEnd(ReadOnlySequence(Of Byte))
+references:
+- uid: Bodoconsult.NetworkCommunication.Helpers
+  commentId: N:Bodoconsult.NetworkCommunication.Helpers
+  href: Bodoconsult.html
+  name: Bodoconsult.NetworkCommunication.Helpers
+  nameWithType: Bodoconsult.NetworkCommunication.Helpers
+  fullName: Bodoconsult.NetworkCommunication.Helpers
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Helpers
+    name: Helpers
+    href: Bodoconsult.NetworkCommunication.Helpers.html
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Helpers
+    name: Helpers
+    href: Bodoconsult.NetworkCommunication.Helpers.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Bodoconsult.NetworkCommunication.Helpers.DataMessageHelper.ByteArrayToString*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Helpers.DataMessageHelper.ByteArrayToString
+  href: Bodoconsult.NetworkCommunication.Helpers.DataMessageHelper.html#Bodoconsult_NetworkCommunication_Helpers_DataMessageHelper_ByteArrayToString_System_Memory_System_Byte__System_String_
+  name: ByteArrayToString
+  nameWithType: DataMessageHelper.ByteArrayToString
+  fullName: Bodoconsult.NetworkCommunication.Helpers.DataMessageHelper.ByteArrayToString
+- uid: System.Memory{System.Byte}
+  commentId: T:System.Memory{System.Byte}
+  parent: System
+  definition: System.Memory`1
+  href: https://learn.microsoft.com/dotnet/api/system.memory-1
+  name: Memory<byte>
+  nameWithType: Memory<byte>
+  fullName: System.Memory<byte>
+  nameWithType.vb: Memory(Of Byte)
+  fullName.vb: System.Memory(Of Byte)
+  name.vb: Memory(Of Byte)
+  spec.csharp:
+  - uid: System.Memory`1
+    name: Memory
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.memory-1
+  - name: <
+  - uid: System.Byte
+    name: byte
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.byte
+  - name: '>'
+  spec.vb:
+  - uid: System.Memory`1
+    name: Memory
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.memory-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Byte
+    name: Byte
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.byte
+  - name: )
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: System.Memory`1
+  commentId: T:System.Memory`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.memory-1
+  name: Memory<T>
+  nameWithType: Memory<T>
+  fullName: System.Memory<T>
+  nameWithType.vb: Memory(Of T)
+  fullName.vb: System.Memory(Of T)
+  name.vb: Memory(Of T)
+  spec.csharp:
+  - uid: System.Memory`1
+    name: Memory
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.memory-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Memory`1
+    name: Memory
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.memory-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Bodoconsult.NetworkCommunication.Helpers.DataMessageHelper.GetStringFromArray*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Helpers.DataMessageHelper.GetStringFromArray
+  href: Bodoconsult.NetworkCommunication.Helpers.DataMessageHelper.html#Bodoconsult_NetworkCommunication_Helpers_DataMessageHelper_GetStringFromArray_System_Byte___
+  name: GetStringFromArray
+  nameWithType: DataMessageHelper.GetStringFromArray
+  fullName: Bodoconsult.NetworkCommunication.Helpers.DataMessageHelper.GetStringFromArray
+- uid: System.Byte[]
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.byte
+  name: byte[]
+  nameWithType: byte[]
+  fullName: byte[]
+  nameWithType.vb: Byte()
+  fullName.vb: Byte()
+  name.vb: Byte()
+  spec.csharp:
+  - uid: System.Byte
+    name: byte
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.byte
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: System.Byte
+    name: Byte
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.byte
+  - name: (
+  - name: )
+- uid: System.ReadOnlyMemory{System.Byte}
+  commentId: T:System.ReadOnlyMemory{System.Byte}
+  parent: System
+  definition: System.ReadOnlyMemory`1
+  href: https://learn.microsoft.com/dotnet/api/system.readonlymemory-1
+  name: ReadOnlyMemory<byte>
+  nameWithType: ReadOnlyMemory<byte>
+  fullName: System.ReadOnlyMemory<byte>
+  nameWithType.vb: ReadOnlyMemory(Of Byte)
+  fullName.vb: System.ReadOnlyMemory(Of Byte)
+  name.vb: ReadOnlyMemory(Of Byte)
+  spec.csharp:
+  - uid: System.ReadOnlyMemory`1
+    name: ReadOnlyMemory
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.readonlymemory-1
+  - name: <
+  - uid: System.Byte
+    name: byte
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.byte
+  - name: '>'
+  spec.vb:
+  - uid: System.ReadOnlyMemory`1
+    name: ReadOnlyMemory
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.readonlymemory-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Byte
+    name: Byte
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.byte
+  - name: )
+- uid: System.ReadOnlyMemory`1
+  commentId: T:System.ReadOnlyMemory`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.readonlymemory-1
+  name: ReadOnlyMemory<T>
+  nameWithType: ReadOnlyMemory<T>
+  fullName: System.ReadOnlyMemory<T>
+  nameWithType.vb: ReadOnlyMemory(Of T)
+  fullName.vb: System.ReadOnlyMemory(Of T)
+  name.vb: ReadOnlyMemory(Of T)
+  spec.csharp:
+  - uid: System.ReadOnlyMemory`1
+    name: ReadOnlyMemory
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.readonlymemory-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.ReadOnlyMemory`1
+    name: ReadOnlyMemory
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.readonlymemory-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Bodoconsult.NetworkCommunication.Helpers.DataMessageHelper.GetStringFromArrayCsharpStyle*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Helpers.DataMessageHelper.GetStringFromArrayCsharpStyle
+  href: Bodoconsult.NetworkCommunication.Helpers.DataMessageHelper.html#Bodoconsult_NetworkCommunication_Helpers_DataMessageHelper_GetStringFromArrayCsharpStyle_System_Byte___
+  name: GetStringFromArrayCsharpStyle
+  nameWithType: DataMessageHelper.GetStringFromArrayCsharpStyle
+  fullName: Bodoconsult.NetworkCommunication.Helpers.DataMessageHelper.GetStringFromArrayCsharpStyle
+- uid: System.Buffers.ReadOnlySequence{System.Byte}
+  commentId: T:System.Buffers.ReadOnlySequence{System.Byte}
+  parent: System.Buffers
+  definition: System.Buffers.ReadOnlySequence`1
+  href: https://learn.microsoft.com/dotnet/api/system.buffers.readonlysequence-1
+  name: ReadOnlySequence<byte>
+  nameWithType: ReadOnlySequence<byte>
+  fullName: System.Buffers.ReadOnlySequence<byte>
+  nameWithType.vb: ReadOnlySequence(Of Byte)
+  fullName.vb: System.Buffers.ReadOnlySequence(Of Byte)
+  name.vb: ReadOnlySequence(Of Byte)
+  spec.csharp:
+  - uid: System.Buffers.ReadOnlySequence`1
+    name: ReadOnlySequence
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.buffers.readonlysequence-1
+  - name: <
+  - uid: System.Byte
+    name: byte
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.byte
+  - name: '>'
+  spec.vb:
+  - uid: System.Buffers.ReadOnlySequence`1
+    name: ReadOnlySequence
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.buffers.readonlysequence-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Byte
+    name: Byte
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.byte
+  - name: )
+- uid: System.Buffers.ReadOnlySequence`1
+  commentId: T:System.Buffers.ReadOnlySequence`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.buffers.readonlysequence-1
+  name: ReadOnlySequence<T>
+  nameWithType: ReadOnlySequence<T>
+  fullName: System.Buffers.ReadOnlySequence<T>
+  nameWithType.vb: ReadOnlySequence(Of T)
+  fullName.vb: System.Buffers.ReadOnlySequence(Of T)
+  name.vb: ReadOnlySequence(Of T)
+  spec.csharp:
+  - uid: System.Buffers.ReadOnlySequence`1
+    name: ReadOnlySequence
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.buffers.readonlysequence-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Buffers.ReadOnlySequence`1
+    name: ReadOnlySequence
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.buffers.readonlysequence-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Buffers
+  commentId: N:System.Buffers
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Buffers
+  nameWithType: System.Buffers
+  fullName: System.Buffers
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Buffers
+    name: Buffers
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.buffers
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Buffers
+    name: Buffers
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.buffers
+- uid: Bodoconsult.NetworkCommunication.Helpers.DataMessageHelper.CheckCommandForNullAtTheEnd*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Helpers.DataMessageHelper.CheckCommandForNullAtTheEnd
+  href: Bodoconsult.NetworkCommunication.Helpers.DataMessageHelper.html#Bodoconsult_NetworkCommunication_Helpers_DataMessageHelper_CheckCommandForNullAtTheEnd_System_Buffers_ReadOnlySequence_System_Byte___
+  name: CheckCommandForNullAtTheEnd
+  nameWithType: DataMessageHelper.CheckCommandForNullAtTheEnd
+  fullName: Bodoconsult.NetworkCommunication.Helpers.DataMessageHelper.CheckCommandForNullAtTheEnd

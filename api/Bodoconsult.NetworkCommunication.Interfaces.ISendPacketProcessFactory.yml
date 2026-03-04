@@ -1,0 +1,176 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcessFactory
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcessFactory
+  id: ISendPacketProcessFactory
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  children:
+  - Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcessFactory.CreateInstance(Bodoconsult.NetworkCommunication.Interfaces.IDuplexIo,Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessage,Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig)
+  - Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcessFactory.EnqueueInstance(Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess)
+  langs:
+  - csharp
+  - vb
+  name: ISendPacketProcessFactory
+  nameWithType: ISendPacketProcessFactory
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcessFactory
+  type: Interface
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/ISendPacketProcessFactory.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: ISendPacketProcessFactory
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/ISendPacketProcessFactory.cs
+    startLine: 7
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Factory interface for <xref href="Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess" data-throw-if-not-resolved="false"></xref> implementations
+  example: []
+  syntax:
+    content: public interface ISendPacketProcessFactory
+    content.vb: Public Interface ISendPacketProcessFactory
+- uid: Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcessFactory.CreateInstance(Bodoconsult.NetworkCommunication.Interfaces.IDuplexIo,Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessage,Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig)
+  commentId: M:Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcessFactory.CreateInstance(Bodoconsult.NetworkCommunication.Interfaces.IDuplexIo,Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessage,Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig)
+  id: CreateInstance(Bodoconsult.NetworkCommunication.Interfaces.IDuplexIo,Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessage,Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig)
+  parent: Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcessFactory
+  langs:
+  - csharp
+  - vb
+  name: CreateInstance(IDuplexIo, IOutboundDataMessage, IDataMessagingConfig)
+  nameWithType: ISendPacketProcessFactory.CreateInstance(IDuplexIo, IOutboundDataMessage, IDataMessagingConfig)
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcessFactory.CreateInstance(Bodoconsult.NetworkCommunication.Interfaces.IDuplexIo, Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessage, Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig)
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/ISendPacketProcessFactory.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: CreateInstance
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/ISendPacketProcessFactory.cs
+    startLine: 16
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Create a instance of <xref href="Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess" data-throw-if-not-resolved="false"></xref> to send a message to the device
+  example: []
+  syntax:
+    content: ISendPacketProcess CreateInstance(IDuplexIo duplexIo, IOutboundDataMessage message, IDataMessagingConfig smddevice)
+    parameters:
+    - id: duplexIo
+      type: Bodoconsult.NetworkCommunication.Interfaces.IDuplexIo
+      description: Current Duplex-IO instance
+    - id: message
+      type: Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessage
+      description: Current message to send
+    - id: smddevice
+      type: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig
+      description: Current device instance
+    return:
+      type: Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess
+      description: A send packet process instance to hande the message to send
+    content.vb: Function CreateInstance(duplexIo As IDuplexIo, message As IOutboundDataMessage, smddevice As IDataMessagingConfig) As ISendPacketProcess
+  overload: Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcessFactory.CreateInstance*
+- uid: Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcessFactory.EnqueueInstance(Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess)
+  commentId: M:Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcessFactory.EnqueueInstance(Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess)
+  id: EnqueueInstance(Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess)
+  parent: Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcessFactory
+  langs:
+  - csharp
+  - vb
+  name: EnqueueInstance(ISendPacketProcess)
+  nameWithType: ISendPacketProcessFactory.EnqueueInstance(ISendPacketProcess)
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcessFactory.EnqueueInstance(Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess)
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/ISendPacketProcessFactory.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: EnqueueInstance
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/ISendPacketProcessFactory.cs
+    startLine: 24
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Reset the <xref href="Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess" data-throw-if-not-resolved="false"></xref> instance and give it back to pool
+  example: []
+  syntax:
+    content: void EnqueueInstance(ISendPacketProcess sendPacketProcess)
+    parameters:
+    - id: sendPacketProcess
+      type: Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess
+      description: Instance to return
+    content.vb: Sub EnqueueInstance(sendPacketProcess As ISendPacketProcess)
+  overload: Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcessFactory.EnqueueInstance*
+references:
+- uid: Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess.html
+  name: ISendPacketProcess
+  nameWithType: ISendPacketProcess
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess
+- uid: Bodoconsult.NetworkCommunication.Interfaces
+  commentId: N:Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.html
+  name: Bodoconsult.NetworkCommunication.Interfaces
+  nameWithType: Bodoconsult.NetworkCommunication.Interfaces
+  fullName: Bodoconsult.NetworkCommunication.Interfaces
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Interfaces
+    name: Interfaces
+    href: Bodoconsult.NetworkCommunication.Interfaces.html
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Interfaces
+    name: Interfaces
+    href: Bodoconsult.NetworkCommunication.Interfaces.html
+- uid: Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcessFactory.CreateInstance*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcessFactory.CreateInstance
+  href: Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcessFactory.html#Bodoconsult_NetworkCommunication_Interfaces_ISendPacketProcessFactory_CreateInstance_Bodoconsult_NetworkCommunication_Interfaces_IDuplexIo_Bodoconsult_NetworkCommunication_Interfaces_IOutboundDataMessage_Bodoconsult_NetworkCommunication_Interfaces_IDataMessagingConfig_
+  name: CreateInstance
+  nameWithType: ISendPacketProcessFactory.CreateInstance
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcessFactory.CreateInstance
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IDuplexIo
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.IDuplexIo
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.NetworkCommunication.Interfaces.IDuplexIo.html
+  name: IDuplexIo
+  nameWithType: IDuplexIo
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IDuplexIo
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessage
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessage
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessage.html
+  name: IOutboundDataMessage
+  nameWithType: IOutboundDataMessage
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessage
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig.html
+  name: IDataMessagingConfig
+  nameWithType: IDataMessagingConfig
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig
+- uid: Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcessFactory.EnqueueInstance*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcessFactory.EnqueueInstance
+  href: Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcessFactory.html#Bodoconsult_NetworkCommunication_Interfaces_ISendPacketProcessFactory_EnqueueInstance_Bodoconsult_NetworkCommunication_Interfaces_ISendPacketProcess_
+  name: EnqueueInstance
+  nameWithType: ISendPacketProcessFactory.EnqueueInstance
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcessFactory.EnqueueInstance

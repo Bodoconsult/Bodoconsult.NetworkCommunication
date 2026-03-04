@@ -1,0 +1,104 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bodoconsult.NetworkCommunication.Protocols.TcpIp
+  commentId: N:Bodoconsult.NetworkCommunication.Protocols.TcpIp
+  id: Bodoconsult.NetworkCommunication.Protocols.TcpIp
+  children:
+  - Bodoconsult.NetworkCommunication.Protocols.TcpIp.FakeTcpIpSocketProxy
+  - Bodoconsult.NetworkCommunication.Protocols.TcpIp.ListenerData
+  - Bodoconsult.NetworkCommunication.Protocols.TcpIp.StateObject
+  - Bodoconsult.NetworkCommunication.Protocols.TcpIp.TcpIpClientSocketProxy
+  - Bodoconsult.NetworkCommunication.Protocols.TcpIp.TcpIpListenerManager
+  - Bodoconsult.NetworkCommunication.Protocols.TcpIp.TcpIpServerSocketProxy
+  - Bodoconsult.NetworkCommunication.Protocols.TcpIp.TcpIpSocketProxyBase
+  langs:
+  - csharp
+  - vb
+  name: Bodoconsult.NetworkCommunication.Protocols.TcpIp
+  nameWithType: Bodoconsult.NetworkCommunication.Protocols.TcpIp
+  fullName: Bodoconsult.NetworkCommunication.Protocols.TcpIp
+  type: Namespace
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+references:
+- uid: Bodoconsult.NetworkCommunication.Protocols.TcpIp.FakeTcpIpSocketProxy
+  commentId: T:Bodoconsult.NetworkCommunication.Protocols.TcpIp.FakeTcpIpSocketProxy
+  href: Bodoconsult.NetworkCommunication.Protocols.TcpIp.FakeTcpIpSocketProxy.html
+  name: FakeTcpIpSocketProxy
+  nameWithType: FakeTcpIpSocketProxy
+  fullName: Bodoconsult.NetworkCommunication.Protocols.TcpIp.FakeTcpIpSocketProxy
+- uid: Bodoconsult.NetworkCommunication.Protocols.TcpIp.ListenerData
+  commentId: T:Bodoconsult.NetworkCommunication.Protocols.TcpIp.ListenerData
+  href: Bodoconsult.NetworkCommunication.Protocols.TcpIp.ListenerData.html
+  name: ListenerData
+  nameWithType: ListenerData
+  fullName: Bodoconsult.NetworkCommunication.Protocols.TcpIp.ListenerData
+- uid: Bodoconsult.NetworkCommunication.Protocols.TcpIp.StateObject
+  commentId: T:Bodoconsult.NetworkCommunication.Protocols.TcpIp.StateObject
+  href: Bodoconsult.NetworkCommunication.Protocols.TcpIp.StateObject.html
+  name: StateObject
+  nameWithType: StateObject
+  fullName: Bodoconsult.NetworkCommunication.Protocols.TcpIp.StateObject
+- uid: Bodoconsult.NetworkCommunication.Protocols.TcpIp.TcpIpClientSocketProxy
+  commentId: T:Bodoconsult.NetworkCommunication.Protocols.TcpIp.TcpIpClientSocketProxy
+  href: Bodoconsult.NetworkCommunication.Protocols.TcpIp.TcpIpClientSocketProxy.html
+  name: TcpIpClientSocketProxy
+  nameWithType: TcpIpClientSocketProxy
+  fullName: Bodoconsult.NetworkCommunication.Protocols.TcpIp.TcpIpClientSocketProxy
+- uid: Bodoconsult.NetworkCommunication.Protocols.TcpIp.TcpIpListenerManager
+  commentId: T:Bodoconsult.NetworkCommunication.Protocols.TcpIp.TcpIpListenerManager
+  href: Bodoconsult.NetworkCommunication.Protocols.TcpIp.TcpIpListenerManager.html
+  name: TcpIpListenerManager
+  nameWithType: TcpIpListenerManager
+  fullName: Bodoconsult.NetworkCommunication.Protocols.TcpIp.TcpIpListenerManager
+- uid: Bodoconsult.NetworkCommunication.Protocols.TcpIp.TcpIpServerSocketProxy
+  commentId: T:Bodoconsult.NetworkCommunication.Protocols.TcpIp.TcpIpServerSocketProxy
+  href: Bodoconsult.NetworkCommunication.Protocols.TcpIp.TcpIpServerSocketProxy.html
+  name: TcpIpServerSocketProxy
+  nameWithType: TcpIpServerSocketProxy
+  fullName: Bodoconsult.NetworkCommunication.Protocols.TcpIp.TcpIpServerSocketProxy
+- uid: Bodoconsult.NetworkCommunication.Protocols.TcpIp.TcpIpSocketProxyBase
+  commentId: T:Bodoconsult.NetworkCommunication.Protocols.TcpIp.TcpIpSocketProxyBase
+  parent: Bodoconsult.NetworkCommunication.Protocols.TcpIp
+  href: Bodoconsult.NetworkCommunication.Protocols.TcpIp.TcpIpSocketProxyBase.html
+  name: TcpIpSocketProxyBase
+  nameWithType: TcpIpSocketProxyBase
+  fullName: Bodoconsult.NetworkCommunication.Protocols.TcpIp.TcpIpSocketProxyBase
+- uid: Bodoconsult.NetworkCommunication.Protocols.TcpIp
+  commentId: N:Bodoconsult.NetworkCommunication.Protocols.TcpIp
+  href: Bodoconsult.html
+  name: Bodoconsult.NetworkCommunication.Protocols.TcpIp
+  nameWithType: Bodoconsult.NetworkCommunication.Protocols.TcpIp
+  fullName: Bodoconsult.NetworkCommunication.Protocols.TcpIp
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Protocols
+    name: Protocols
+    href: Bodoconsult.NetworkCommunication.Protocols.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Protocols.TcpIp
+    name: TcpIp
+    href: Bodoconsult.NetworkCommunication.Protocols.TcpIp.html
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Protocols
+    name: Protocols
+    href: Bodoconsult.NetworkCommunication.Protocols.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Protocols.TcpIp
+    name: TcpIp
+    href: Bodoconsult.NetworkCommunication.Protocols.TcpIp.html

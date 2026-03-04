@@ -1,0 +1,466 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bodoconsult.NetworkCommunication.App.Abstractions.ReadOnlySequenceExtensions
+  commentId: T:Bodoconsult.NetworkCommunication.App.Abstractions.ReadOnlySequenceExtensions
+  id: ReadOnlySequenceExtensions
+  parent: Bodoconsult.NetworkCommunication.App.Abstractions
+  children:
+  - Bodoconsult.NetworkCommunication.App.Abstractions.ReadOnlySequenceExtensions.IsEqualTo(System.Buffers.ReadOnlySequence{System.Byte},System.Buffers.ReadOnlySequence{System.Byte})
+  langs:
+  - csharp
+  - vb
+  name: ReadOnlySequenceExtensions
+  nameWithType: ReadOnlySequenceExtensions
+  fullName: Bodoconsult.NetworkCommunication.App.Abstractions.ReadOnlySequenceExtensions
+  type: Class
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/App.Abstractions/ReadOnlySequenceExtensions.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: ReadOnlySequenceExtensions
+    path: src/Bodoconsult.NetworkCommunication/App.Abstractions/ReadOnlySequenceExtensions.cs
+    startLine: 9
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.App.Abstractions
+  summary: Extension methods for ReadOnlySequence&lt;byte&gt; instances
+  example: []
+  syntax:
+    content: public static class ReadOnlySequenceExtensions
+    content.vb: Public Module ReadOnlySequenceExtensions
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: Bodoconsult.NetworkCommunication.App.Abstractions.ReadOnlySequenceExtensions.IsEqualTo(System.Buffers.ReadOnlySequence{System.Byte},System.Buffers.ReadOnlySequence{System.Byte})
+  commentId: M:Bodoconsult.NetworkCommunication.App.Abstractions.ReadOnlySequenceExtensions.IsEqualTo(System.Buffers.ReadOnlySequence{System.Byte},System.Buffers.ReadOnlySequence{System.Byte})
+  id: IsEqualTo(System.Buffers.ReadOnlySequence{System.Byte},System.Buffers.ReadOnlySequence{System.Byte})
+  isExtensionMethod: true
+  parent: Bodoconsult.NetworkCommunication.App.Abstractions.ReadOnlySequenceExtensions
+  langs:
+  - csharp
+  - vb
+  name: IsEqualTo(ReadOnlySequence<byte>, ReadOnlySequence<byte>)
+  nameWithType: ReadOnlySequenceExtensions.IsEqualTo(ReadOnlySequence<byte>, ReadOnlySequence<byte>)
+  fullName: Bodoconsult.NetworkCommunication.App.Abstractions.ReadOnlySequenceExtensions.IsEqualTo(System.Buffers.ReadOnlySequence<byte>, System.Buffers.ReadOnlySequence<byte>)
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/App.Abstractions/ReadOnlySequenceExtensions.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: IsEqualTo
+    path: src/Bodoconsult.NetworkCommunication/App.Abstractions/ReadOnlySequenceExtensions.cs
+    startLine: 17
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.App.Abstractions
+  summary: Is the instance content the same as the one of the checkInstance
+  example: []
+  syntax:
+    content: public static bool IsEqualTo(this ReadOnlySequence<byte> instance, ReadOnlySequence<byte> checkInstance)
+    parameters:
+    - id: instance
+      type: System.Buffers.ReadOnlySequence{System.Byte}
+      description: Current instance
+    - id: checkInstance
+      type: System.Buffers.ReadOnlySequence{System.Byte}
+      description: Instance to compare with
+    return:
+      type: System.Boolean
+      description: True if both instances have the same byte content else false
+    content.vb: Public Shared Function IsEqualTo(instance As ReadOnlySequence(Of Byte), checkInstance As ReadOnlySequence(Of Byte)) As Boolean
+  overload: Bodoconsult.NetworkCommunication.App.Abstractions.ReadOnlySequenceExtensions.IsEqualTo*
+  nameWithType.vb: ReadOnlySequenceExtensions.IsEqualTo(ReadOnlySequence(Of Byte), ReadOnlySequence(Of Byte))
+  fullName.vb: Bodoconsult.NetworkCommunication.App.Abstractions.ReadOnlySequenceExtensions.IsEqualTo(System.Buffers.ReadOnlySequence(Of Byte), System.Buffers.ReadOnlySequence(Of Byte))
+  name.vb: IsEqualTo(ReadOnlySequence(Of Byte), ReadOnlySequence(Of Byte))
+references:
+- uid: Bodoconsult.NetworkCommunication.App.Abstractions
+  commentId: N:Bodoconsult.NetworkCommunication.App.Abstractions
+  href: Bodoconsult.html
+  name: Bodoconsult.NetworkCommunication.App.Abstractions
+  nameWithType: Bodoconsult.NetworkCommunication.App.Abstractions
+  fullName: Bodoconsult.NetworkCommunication.App.Abstractions
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.App
+    name: App
+    href: Bodoconsult.NetworkCommunication.App.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.App.Abstractions
+    name: Abstractions
+    href: Bodoconsult.NetworkCommunication.App.Abstractions.html
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.App
+    name: App
+    href: Bodoconsult.NetworkCommunication.App.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.App.Abstractions
+    name: Abstractions
+    href: Bodoconsult.NetworkCommunication.App.Abstractions.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Bodoconsult.NetworkCommunication.App.Abstractions.ReadOnlySequenceExtensions.IsEqualTo*
+  commentId: Overload:Bodoconsult.NetworkCommunication.App.Abstractions.ReadOnlySequenceExtensions.IsEqualTo
+  href: Bodoconsult.NetworkCommunication.App.Abstractions.ReadOnlySequenceExtensions.html#Bodoconsult_NetworkCommunication_App_Abstractions_ReadOnlySequenceExtensions_IsEqualTo_System_Buffers_ReadOnlySequence_System_Byte__System_Buffers_ReadOnlySequence_System_Byte__
+  name: IsEqualTo
+  nameWithType: ReadOnlySequenceExtensions.IsEqualTo
+  fullName: Bodoconsult.NetworkCommunication.App.Abstractions.ReadOnlySequenceExtensions.IsEqualTo
+- uid: System.Buffers.ReadOnlySequence{System.Byte}
+  commentId: T:System.Buffers.ReadOnlySequence{System.Byte}
+  parent: System.Buffers
+  definition: System.Buffers.ReadOnlySequence`1
+  href: https://learn.microsoft.com/dotnet/api/system.buffers.readonlysequence-1
+  name: ReadOnlySequence<byte>
+  nameWithType: ReadOnlySequence<byte>
+  fullName: System.Buffers.ReadOnlySequence<byte>
+  nameWithType.vb: ReadOnlySequence(Of Byte)
+  fullName.vb: System.Buffers.ReadOnlySequence(Of Byte)
+  name.vb: ReadOnlySequence(Of Byte)
+  spec.csharp:
+  - uid: System.Buffers.ReadOnlySequence`1
+    name: ReadOnlySequence
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.buffers.readonlysequence-1
+  - name: <
+  - uid: System.Byte
+    name: byte
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.byte
+  - name: '>'
+  spec.vb:
+  - uid: System.Buffers.ReadOnlySequence`1
+    name: ReadOnlySequence
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.buffers.readonlysequence-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Byte
+    name: Byte
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.byte
+  - name: )
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: System.Buffers.ReadOnlySequence`1
+  commentId: T:System.Buffers.ReadOnlySequence`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.buffers.readonlysequence-1
+  name: ReadOnlySequence<T>
+  nameWithType: ReadOnlySequence<T>
+  fullName: System.Buffers.ReadOnlySequence<T>
+  nameWithType.vb: ReadOnlySequence(Of T)
+  fullName.vb: System.Buffers.ReadOnlySequence(Of T)
+  name.vb: ReadOnlySequence(Of T)
+  spec.csharp:
+  - uid: System.Buffers.ReadOnlySequence`1
+    name: ReadOnlySequence
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.buffers.readonlysequence-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Buffers.ReadOnlySequence`1
+    name: ReadOnlySequence
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.buffers.readonlysequence-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Buffers
+  commentId: N:System.Buffers
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Buffers
+  nameWithType: System.Buffers
+  fullName: System.Buffers
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Buffers
+    name: Buffers
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.buffers
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Buffers
+    name: Buffers
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.buffers

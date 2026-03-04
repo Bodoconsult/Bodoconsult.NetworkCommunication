@@ -1,0 +1,502 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverState
+  commentId: T:Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverState
+  id: DhcpServerFailoverState
+  parent: Bodoconsult.Network.Windows.Dhcp
+  children:
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverState.CommunicationInterupted
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverState.ConflictDone
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverState.Initialization
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverState.None
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverState.Normal
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverState.PartnerDown
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverState.Paused
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverState.PotentialConflict
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverState.Recover
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverState.RecoverDone
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverState.RecoverWait
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverState.ResolutionInterupted
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverState.Shutdown
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverState.Startup
+  langs:
+  - csharp
+  - vb
+  name: DhcpServerFailoverState
+  nameWithType: DhcpServerFailoverState
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverState
+  type: Enum
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerFailoverState.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: DhcpServerFailoverState
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerFailoverState.cs
+    startLine: 5
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: public enum DhcpServerFailoverState
+    content.vb: Public Enum DhcpServerFailoverState
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverState.None
+  commentId: F:Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverState.None
+  id: None
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverState
+  langs:
+  - csharp
+  - vb
+  name: None
+  nameWithType: DhcpServerFailoverState.None
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverState.None
+  type: Field
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerFailoverState.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: None
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerFailoverState.cs
+    startLine: 10
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  summary: Indicates that no state is configured for the DHCPv4 failover relationship.
+  example: []
+  syntax:
+    content: None = 0
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverState
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverState.Initialization
+  commentId: F:Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverState.Initialization
+  id: Initialization
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverState
+  langs:
+  - csharp
+  - vb
+  name: Initialization
+  nameWithType: DhcpServerFailoverState.Initialization
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverState.Initialization
+  type: Field
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerFailoverState.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Initialization
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerFailoverState.cs
+    startLine: 14
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  summary: Indicates that the failover relationship on the DHCPv4 server is in the initialization state.
+  example: []
+  syntax:
+    content: Initialization = 1
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverState
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverState.Startup
+  commentId: F:Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverState.Startup
+  id: Startup
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverState
+  langs:
+  - csharp
+  - vb
+  name: Startup
+  nameWithType: DhcpServerFailoverState.Startup
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverState.Startup
+  type: Field
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerFailoverState.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Startup
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerFailoverState.cs
+    startLine: 18
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  summary: Indicates that each server participating in the failover relationship can probe its partner server before starting the DHCP client service. A DHCPv4 server moves into the STARTUP state after INIT.
+  example: []
+  syntax:
+    content: Startup = 2
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverState
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverState.Normal
+  commentId: F:Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverState.Normal
+  id: Normal
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverState
+  langs:
+  - csharp
+  - vb
+  name: Normal
+  nameWithType: DhcpServerFailoverState.Normal
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverState.Normal
+  type: Field
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerFailoverState.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Normal
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerFailoverState.cs
+    startLine: 22
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  summary: Indicates that each server in the failover relationship can service DHCPDISCOVER messages and all other DHCP requests as defined in RFC2131. DHCPv4 servers in the NORMAL state can not service DHCPREQUEST/RENEWAL or DHCPREQUEST/REBINDING requests from the client set defined according to the load balancing algorithm in RFC3074. However, each server can service DHCPREQUEST/RENEWAL or DHCPDISCOVER/REBINDING requests from any client.
+  example: []
+  syntax:
+    content: Normal = 3
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverState
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverState.CommunicationInterupted
+  commentId: F:Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverState.CommunicationInterupted
+  id: CommunicationInterupted
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverState
+  langs:
+  - csharp
+  - vb
+  name: CommunicationInterupted
+  nameWithType: DhcpServerFailoverState.CommunicationInterupted
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverState.CommunicationInterupted
+  type: Field
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerFailoverState.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: CommunicationInterupted
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerFailoverState.cs
+    startLine: 26
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  summary: Indicates that each server in a failover relationship is operating independently, but neither assumes that their partner is not operating. The partner server might be operating and simply unable to communicate with this server, or it might not be operating at all.
+  example: []
+  syntax:
+    content: CommunicationInterupted = 4
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverState
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverState.PartnerDown
+  commentId: F:Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverState.PartnerDown
+  id: PartnerDown
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverState
+  langs:
+  - csharp
+  - vb
+  name: PartnerDown
+  nameWithType: DhcpServerFailoverState.PartnerDown
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverState.PartnerDown
+  type: Field
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerFailoverState.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: PartnerDown
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerFailoverState.cs
+    startLine: 30
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  summary: Indicates that a server assumes its partner is not currently operating.
+  example: []
+  syntax:
+    content: PartnerDown = 5
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverState
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverState.PotentialConflict
+  commentId: F:Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverState.PotentialConflict
+  id: PotentialConflict
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverState
+  langs:
+  - csharp
+  - vb
+  name: PotentialConflict
+  nameWithType: DhcpServerFailoverState.PotentialConflict
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverState.PotentialConflict
+  type: Field
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerFailoverState.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: PotentialConflict
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerFailoverState.cs
+    startLine: 34
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  summary: Indicates that a failover relationship between two DHCPv4 servers is attempting to reestablish itself.
+  example: []
+  syntax:
+    content: PotentialConflict = 6
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverState
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverState.ConflictDone
+  commentId: F:Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverState.ConflictDone
+  id: ConflictDone
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverState
+  langs:
+  - csharp
+  - vb
+  name: ConflictDone
+  nameWithType: DhcpServerFailoverState.ConflictDone
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverState.ConflictDone
+  type: Field
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerFailoverState.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: ConflictDone
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerFailoverState.cs
+    startLine: 38
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  summary: Indicates that the primary server has received all updates from the secondary server during the failover relationship reintegration process.
+  example: []
+  syntax:
+    content: ConflictDone = 7
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverState
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverState.ResolutionInterupted
+  commentId: F:Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverState.ResolutionInterupted
+  id: ResolutionInterupted
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverState
+  langs:
+  - csharp
+  - vb
+  name: ResolutionInterupted
+  nameWithType: DhcpServerFailoverState.ResolutionInterupted
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverState.ResolutionInterupted
+  type: Field
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerFailoverState.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: ResolutionInterupted
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerFailoverState.cs
+    startLine: 42
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  summary: Indicates that two servers in the POTENTIAL_CONFLICT state were attempting to reintegrate their failover relationship with each other, but communications between them failed prior to completion of the reintegration.
+  example: []
+  syntax:
+    content: ResolutionInterupted = 8
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverState
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverState.Recover
+  commentId: F:Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverState.Recover
+  id: Recover
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverState
+  langs:
+  - csharp
+  - vb
+  name: Recover
+  nameWithType: DhcpServerFailoverState.Recover
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverState.Recover
+  type: Field
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerFailoverState.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Recover
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerFailoverState.cs
+    startLine: 46
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  summary: Indicates that a server in a failover relationship has no information in its stable storage facility or that it is reintegrating with a server in the PARTNER_DOWN state.
+  example: []
+  syntax:
+    content: Recover = 9
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverState
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverState.RecoverWait
+  commentId: F:Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverState.RecoverWait
+  id: RecoverWait
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverState
+  langs:
+  - csharp
+  - vb
+  name: RecoverWait
+  nameWithType: DhcpServerFailoverState.RecoverWait
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverState.RecoverWait
+  type: Field
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerFailoverState.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: RecoverWait
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerFailoverState.cs
+    startLine: 50
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  summary: Indicates that the DHCPv4 server should wait for a time period equal to Maximum Client Lead Time (MCLT) before moving to the RECOVER_DONE state. The MCLT is the maximum time, in seconds, that one server can extend a lease for a client beyond the lease time known by the partner server.
+  example: []
+  syntax:
+    content: RecoverWait = 10
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverState
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverState.RecoverDone
+  commentId: F:Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverState.RecoverDone
+  id: RecoverDone
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverState
+  langs:
+  - csharp
+  - vb
+  name: RecoverDone
+  nameWithType: DhcpServerFailoverState.RecoverDone
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverState.RecoverDone
+  type: Field
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerFailoverState.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: RecoverDone
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerFailoverState.cs
+    startLine: 54
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  summary: This value enables an interlocked transition of one server from the RECOVER state and another server from the PARTNER_DOWN or COMMUNICATION-INT state to the NORMAL state.
+  example: []
+  syntax:
+    content: RecoverDone = 11
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverState
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverState.Paused
+  commentId: F:Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverState.Paused
+  id: Paused
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverState
+  langs:
+  - csharp
+  - vb
+  name: Paused
+  nameWithType: DhcpServerFailoverState.Paused
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverState.Paused
+  type: Field
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerFailoverState.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Paused
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerFailoverState.cs
+    startLine: 58
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  summary: Reserved. Do not use.
+  example: []
+  syntax:
+    content: >-
+      [Obsolete]
+
+      Paused = 12
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverState
+    content.vb: >-
+      <Obsolete>
+
+      Paused = 12
+  attributes:
+  - type: System.ObsoleteAttribute
+    ctor: System.ObsoleteAttribute.#ctor
+    arguments: []
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverState.Shutdown
+  commentId: F:Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverState.Shutdown
+  id: Shutdown
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverState
+  langs:
+  - csharp
+  - vb
+  name: Shutdown
+  nameWithType: DhcpServerFailoverState.Shutdown
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverState.Shutdown
+  type: Field
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerFailoverState.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Shutdown
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerFailoverState.cs
+    startLine: 63
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  summary: Reserved. Do not use.
+  example: []
+  syntax:
+    content: >-
+      [Obsolete]
+
+      Shutdown = 13
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverState
+    content.vb: >-
+      <Obsolete>
+
+      Shutdown = 13
+  attributes:
+  - type: System.ObsoleteAttribute
+    ctor: System.ObsoleteAttribute.#ctor
+    arguments: []
+references:
+- uid: Bodoconsult.Network.Windows.Dhcp
+  commentId: N:Bodoconsult.Network.Windows.Dhcp
+  href: Bodoconsult.html
+  name: Bodoconsult.Network.Windows.Dhcp
+  nameWithType: Bodoconsult.Network.Windows.Dhcp
+  fullName: Bodoconsult.Network.Windows.Dhcp
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.Network
+    name: Network
+    href: Bodoconsult.Network.html
+  - name: .
+  - uid: Bodoconsult.Network.Windows
+    name: Windows
+    href: Bodoconsult.Network.Windows.html
+  - name: .
+  - uid: Bodoconsult.Network.Windows.Dhcp
+    name: Dhcp
+    href: Bodoconsult.Network.Windows.Dhcp.html
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.Network
+    name: Network
+    href: Bodoconsult.Network.html
+  - name: .
+  - uid: Bodoconsult.Network.Windows
+    name: Windows
+    href: Bodoconsult.Network.Windows.html
+  - name: .
+  - uid: Bodoconsult.Network.Windows.Dhcp
+    name: Dhcp
+    href: Bodoconsult.Network.Windows.Dhcp.html
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverState
+  commentId: T:Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverState
+  parent: Bodoconsult.Network.Windows.Dhcp
+  href: Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverState.html
+  name: DhcpServerFailoverState
+  nameWithType: DhcpServerFailoverState
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverState

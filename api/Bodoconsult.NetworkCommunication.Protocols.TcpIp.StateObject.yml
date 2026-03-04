@@ -1,0 +1,542 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bodoconsult.NetworkCommunication.Protocols.TcpIp.StateObject
+  commentId: T:Bodoconsult.NetworkCommunication.Protocols.TcpIp.StateObject
+  id: StateObject
+  parent: Bodoconsult.NetworkCommunication.Protocols.TcpIp
+  children:
+  - Bodoconsult.NetworkCommunication.Protocols.TcpIp.StateObject.BufferSize
+  - Bodoconsult.NetworkCommunication.Protocols.TcpIp.StateObject.buffer
+  - Bodoconsult.NetworkCommunication.Protocols.TcpIp.StateObject.sb
+  - Bodoconsult.NetworkCommunication.Protocols.TcpIp.StateObject.workSocket
+  langs:
+  - csharp
+  - vb
+  name: StateObject
+  nameWithType: StateObject
+  fullName: Bodoconsult.NetworkCommunication.Protocols.TcpIp.StateObject
+  type: Class
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Protocols/TcpIp/StateObject.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: StateObject
+    path: src/Bodoconsult.NetworkCommunication/Protocols/TcpIp/StateObject.cs
+    startLine: 11
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Protocols.TcpIp
+  summary: State object for receiving data from remote device.
+  example: []
+  syntax:
+    content: public class StateObject
+    content.vb: Public Class StateObject
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: Bodoconsult.NetworkCommunication.Protocols.TcpIp.StateObject.workSocket
+  commentId: F:Bodoconsult.NetworkCommunication.Protocols.TcpIp.StateObject.workSocket
+  id: workSocket
+  parent: Bodoconsult.NetworkCommunication.Protocols.TcpIp.StateObject
+  langs:
+  - csharp
+  - vb
+  name: workSocket
+  nameWithType: StateObject.workSocket
+  fullName: Bodoconsult.NetworkCommunication.Protocols.TcpIp.StateObject.workSocket
+  type: Field
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Protocols/TcpIp/StateObject.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: workSocket
+    path: src/Bodoconsult.NetworkCommunication/Protocols/TcpIp/StateObject.cs
+    startLine: 14
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Protocols.TcpIp
+  syntax:
+    content: public Socket workSocket
+    return:
+      type: System.Net.Sockets.Socket
+    content.vb: Public workSocket As Socket
+- uid: Bodoconsult.NetworkCommunication.Protocols.TcpIp.StateObject.BufferSize
+  commentId: F:Bodoconsult.NetworkCommunication.Protocols.TcpIp.StateObject.BufferSize
+  id: BufferSize
+  parent: Bodoconsult.NetworkCommunication.Protocols.TcpIp.StateObject
+  langs:
+  - csharp
+  - vb
+  name: BufferSize
+  nameWithType: StateObject.BufferSize
+  fullName: Bodoconsult.NetworkCommunication.Protocols.TcpIp.StateObject.BufferSize
+  type: Field
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Protocols/TcpIp/StateObject.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: BufferSize
+    path: src/Bodoconsult.NetworkCommunication/Protocols/TcpIp/StateObject.cs
+    startLine: 16
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Protocols.TcpIp
+  syntax:
+    content: public const int BufferSize = 256
+    return:
+      type: System.Int32
+    content.vb: Public Const BufferSize As Integer = 256
+- uid: Bodoconsult.NetworkCommunication.Protocols.TcpIp.StateObject.buffer
+  commentId: F:Bodoconsult.NetworkCommunication.Protocols.TcpIp.StateObject.buffer
+  id: buffer
+  parent: Bodoconsult.NetworkCommunication.Protocols.TcpIp.StateObject
+  langs:
+  - csharp
+  - vb
+  name: buffer
+  nameWithType: StateObject.buffer
+  fullName: Bodoconsult.NetworkCommunication.Protocols.TcpIp.StateObject.buffer
+  type: Field
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Protocols/TcpIp/StateObject.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: buffer
+    path: src/Bodoconsult.NetworkCommunication/Protocols/TcpIp/StateObject.cs
+    startLine: 18
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Protocols.TcpIp
+  syntax:
+    content: public byte[] buffer
+    return:
+      type: System.Byte[]
+    content.vb: Public buffer As Byte()
+- uid: Bodoconsult.NetworkCommunication.Protocols.TcpIp.StateObject.sb
+  commentId: F:Bodoconsult.NetworkCommunication.Protocols.TcpIp.StateObject.sb
+  id: sb
+  parent: Bodoconsult.NetworkCommunication.Protocols.TcpIp.StateObject
+  langs:
+  - csharp
+  - vb
+  name: sb
+  nameWithType: StateObject.sb
+  fullName: Bodoconsult.NetworkCommunication.Protocols.TcpIp.StateObject.sb
+  type: Field
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Protocols/TcpIp/StateObject.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: sb
+    path: src/Bodoconsult.NetworkCommunication/Protocols/TcpIp/StateObject.cs
+    startLine: 20
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Protocols.TcpIp
+  syntax:
+    content: public StringBuilder sb
+    return:
+      type: System.Text.StringBuilder
+    content.vb: Public sb As StringBuilder
+references:
+- uid: Bodoconsult.NetworkCommunication.Protocols.TcpIp
+  commentId: N:Bodoconsult.NetworkCommunication.Protocols.TcpIp
+  href: Bodoconsult.html
+  name: Bodoconsult.NetworkCommunication.Protocols.TcpIp
+  nameWithType: Bodoconsult.NetworkCommunication.Protocols.TcpIp
+  fullName: Bodoconsult.NetworkCommunication.Protocols.TcpIp
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Protocols
+    name: Protocols
+    href: Bodoconsult.NetworkCommunication.Protocols.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Protocols.TcpIp
+    name: TcpIp
+    href: Bodoconsult.NetworkCommunication.Protocols.TcpIp.html
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Protocols
+    name: Protocols
+    href: Bodoconsult.NetworkCommunication.Protocols.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Protocols.TcpIp
+    name: TcpIp
+    href: Bodoconsult.NetworkCommunication.Protocols.TcpIp.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.Net.Sockets.Socket
+  commentId: T:System.Net.Sockets.Socket
+  parent: System.Net.Sockets
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.net.sockets.socket
+  name: Socket
+  nameWithType: Socket
+  fullName: System.Net.Sockets.Socket
+- uid: System.Net.Sockets
+  commentId: N:System.Net.Sockets
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Net.Sockets
+  nameWithType: System.Net.Sockets
+  fullName: System.Net.Sockets
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Net
+    name: Net
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.net
+  - name: .
+  - uid: System.Net.Sockets
+    name: Sockets
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.net.sockets
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Net
+    name: Net
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.net
+  - name: .
+  - uid: System.Net.Sockets
+    name: Sockets
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.net.sockets
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: System.Byte[]
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.byte
+  name: byte[]
+  nameWithType: byte[]
+  fullName: byte[]
+  nameWithType.vb: Byte()
+  fullName.vb: Byte()
+  name.vb: Byte()
+  spec.csharp:
+  - uid: System.Byte
+    name: byte
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.byte
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: System.Byte
+    name: Byte
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.byte
+  - name: (
+  - name: )
+- uid: System.Text.StringBuilder
+  commentId: T:System.Text.StringBuilder
+  parent: System.Text
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.text.stringbuilder
+  name: StringBuilder
+  nameWithType: StringBuilder
+  fullName: System.Text.StringBuilder
+- uid: System.Text
+  commentId: N:System.Text
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Text
+  nameWithType: System.Text
+  fullName: System.Text
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Text
+    name: Text
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.text
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Text
+    name: Text
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.text

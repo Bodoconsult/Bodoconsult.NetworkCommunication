@@ -1,0 +1,98 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bodoconsult.NetworkCommunication.Delegates.ResetOutboundDataMessageFactoryDelegate
+  commentId: T:Bodoconsult.NetworkCommunication.Delegates.ResetOutboundDataMessageFactoryDelegate
+  id: ResetOutboundDataMessageFactoryDelegate
+  parent: Bodoconsult.NetworkCommunication.Delegates
+  children: []
+  langs:
+  - csharp
+  - vb
+  name: ResetOutboundDataMessageFactoryDelegate
+  nameWithType: ResetOutboundDataMessageFactoryDelegate
+  fullName: Bodoconsult.NetworkCommunication.Delegates.ResetOutboundDataMessageFactoryDelegate
+  type: Delegate
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Delegates/CommDelegates.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: ResetOutboundDataMessageFactoryDelegate
+    path: src/Bodoconsult.NetworkCommunication/Delegates/CommDelegates.cs
+    startLine: 191
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Delegates
+  summary: Reset the <xref href="Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessageFactory" data-throw-if-not-resolved="false"></xref>
+  example: []
+  syntax:
+    content: public delegate void ResetOutboundDataMessageFactoryDelegate()
+    content.vb: Public Delegate Sub ResetOutboundDataMessageFactoryDelegate()
+references:
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessageFactory
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessageFactory
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessageFactory.html
+  name: IOutboundDataMessageFactory
+  nameWithType: IOutboundDataMessageFactory
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessageFactory
+- uid: Bodoconsult.NetworkCommunication.Delegates
+  commentId: N:Bodoconsult.NetworkCommunication.Delegates
+  href: Bodoconsult.html
+  name: Bodoconsult.NetworkCommunication.Delegates
+  nameWithType: Bodoconsult.NetworkCommunication.Delegates
+  fullName: Bodoconsult.NetworkCommunication.Delegates
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Delegates
+    name: Delegates
+    href: Bodoconsult.NetworkCommunication.Delegates.html
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Delegates
+    name: Delegates
+    href: Bodoconsult.NetworkCommunication.Delegates.html
+- uid: Bodoconsult.NetworkCommunication.Interfaces
+  commentId: N:Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.html
+  name: Bodoconsult.NetworkCommunication.Interfaces
+  nameWithType: Bodoconsult.NetworkCommunication.Interfaces
+  fullName: Bodoconsult.NetworkCommunication.Interfaces
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Interfaces
+    name: Interfaces
+    href: Bodoconsult.NetworkCommunication.Interfaces.html
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Interfaces
+    name: Interfaces
+    href: Bodoconsult.NetworkCommunication.Interfaces.html

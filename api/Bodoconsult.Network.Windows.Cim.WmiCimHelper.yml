@@ -1,0 +1,651 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bodoconsult.Network.Windows.Cim.WmiCimHelper
+  commentId: T:Bodoconsult.Network.Windows.Cim.WmiCimHelper
+  id: WmiCimHelper
+  parent: Bodoconsult.Network.Windows.Cim
+  children:
+  - Bodoconsult.Network.Windows.Cim.WmiCimHelper.ExecuteQuery(Microsoft.Management.Infrastructure.CimSession,System.String,System.String)
+  - Bodoconsult.Network.Windows.Cim.WmiCimHelper.GetSession(System.String)
+  - Bodoconsult.Network.Windows.Cim.WmiCimHelper.GetSession(System.String,System.String,System.String,System.Security.SecureString)
+  langs:
+  - csharp
+  - vb
+  name: WmiCimHelper
+  nameWithType: WmiCimHelper
+  fullName: Bodoconsult.Network.Windows.Cim.WmiCimHelper
+  type: Class
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Cim/WmiCimHelper.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: WmiCimHelper
+    path: src/Bodoconsult.Network.Windows/Cim/WmiCimHelper.cs
+    startLine: 13
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Cim
+  summary: Helper class for WMI access via Microsoft.Management.Infrastructure
+  example: []
+  syntax:
+    content: public class WmiCimHelper
+    content.vb: Public Class WmiCimHelper
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: Bodoconsult.Network.Windows.Cim.WmiCimHelper.GetSession(System.String,System.String,System.String,System.Security.SecureString)
+  commentId: M:Bodoconsult.Network.Windows.Cim.WmiCimHelper.GetSession(System.String,System.String,System.String,System.Security.SecureString)
+  id: GetSession(System.String,System.String,System.String,System.Security.SecureString)
+  parent: Bodoconsult.Network.Windows.Cim.WmiCimHelper
+  langs:
+  - csharp
+  - vb
+  name: GetSession(string, string, string, SecureString)
+  nameWithType: WmiCimHelper.GetSession(string, string, string, SecureString)
+  fullName: Bodoconsult.Network.Windows.Cim.WmiCimHelper.GetSession(string, string, string, System.Security.SecureString)
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Cim/WmiCimHelper.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: GetSession
+    path: src/Bodoconsult.Network.Windows/Cim/WmiCimHelper.cs
+    startLine: 23
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Cim
+  summary: Get a CIM session for WMI access to computer
+  example: []
+  syntax:
+    content: public static CimSession GetSession(string domain, string computer, string username, SecureString password)
+    parameters:
+    - id: domain
+      type: System.String
+      description: name of the domain
+    - id: computer
+      type: System.String
+      description: host name or IP address
+    - id: username
+      type: System.String
+      description: username to use for WMI access
+    - id: password
+      type: System.Security.SecureString
+      description: password to use for WMI access
+    return:
+      type: Microsoft.Management.Infrastructure.CimSession
+      description: ''
+    content.vb: Public Shared Function GetSession(domain As String, computer As String, username As String, password As SecureString) As CimSession
+  overload: Bodoconsult.Network.Windows.Cim.WmiCimHelper.GetSession*
+  nameWithType.vb: WmiCimHelper.GetSession(String, String, String, SecureString)
+  fullName.vb: Bodoconsult.Network.Windows.Cim.WmiCimHelper.GetSession(String, String, String, System.Security.SecureString)
+  name.vb: GetSession(String, String, String, SecureString)
+- uid: Bodoconsult.Network.Windows.Cim.WmiCimHelper.GetSession(System.String)
+  commentId: M:Bodoconsult.Network.Windows.Cim.WmiCimHelper.GetSession(System.String)
+  id: GetSession(System.String)
+  parent: Bodoconsult.Network.Windows.Cim.WmiCimHelper
+  langs:
+  - csharp
+  - vb
+  name: GetSession(string)
+  nameWithType: WmiCimHelper.GetSession(string)
+  fullName: Bodoconsult.Network.Windows.Cim.WmiCimHelper.GetSession(string)
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Cim/WmiCimHelper.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: GetSession
+    path: src/Bodoconsult.Network.Windows/Cim/WmiCimHelper.cs
+    startLine: 56
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Cim
+  summary: Get a CIM session for WMI access to computer
+  example: []
+  syntax:
+    content: public static CimSession GetSession(string computer)
+    parameters:
+    - id: computer
+      type: System.String
+      description: host name or IP address
+    return:
+      type: Microsoft.Management.Infrastructure.CimSession
+      description: ''
+    content.vb: Public Shared Function GetSession(computer As String) As CimSession
+  overload: Bodoconsult.Network.Windows.Cim.WmiCimHelper.GetSession*
+  nameWithType.vb: WmiCimHelper.GetSession(String)
+  fullName.vb: Bodoconsult.Network.Windows.Cim.WmiCimHelper.GetSession(String)
+  name.vb: GetSession(String)
+- uid: Bodoconsult.Network.Windows.Cim.WmiCimHelper.ExecuteQuery(Microsoft.Management.Infrastructure.CimSession,System.String,System.String)
+  commentId: M:Bodoconsult.Network.Windows.Cim.WmiCimHelper.ExecuteQuery(Microsoft.Management.Infrastructure.CimSession,System.String,System.String)
+  id: ExecuteQuery(Microsoft.Management.Infrastructure.CimSession,System.String,System.String)
+  parent: Bodoconsult.Network.Windows.Cim.WmiCimHelper
+  langs:
+  - csharp
+  - vb
+  name: ExecuteQuery(CimSession, string, string)
+  nameWithType: WmiCimHelper.ExecuteQuery(CimSession, string, string)
+  fullName: Bodoconsult.Network.Windows.Cim.WmiCimHelper.ExecuteQuery(Microsoft.Management.Infrastructure.CimSession, string, string)
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Cim/WmiCimHelper.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: ExecuteQuery
+    path: src/Bodoconsult.Network.Windows/Cim/WmiCimHelper.cs
+    startLine: 76
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Cim
+  summary: Execute a WQL query via CIM
+  example: []
+  syntax:
+    content: public static IEnumerable<CimInstance> ExecuteQuery(CimSession session, string namespacePath, string wql)
+    parameters:
+    - id: session
+      type: Microsoft.Management.Infrastructure.CimSession
+      description: ''
+    - id: namespacePath
+      type: System.String
+      description: ''
+    - id: wql
+      type: System.String
+      description: ''
+    return:
+      type: System.Collections.Generic.IEnumerable{Microsoft.Management.Infrastructure.CimInstance}
+      description: ''
+    content.vb: Public Shared Function ExecuteQuery(session As CimSession, namespacePath As String, wql As String) As IEnumerable(Of CimInstance)
+  overload: Bodoconsult.Network.Windows.Cim.WmiCimHelper.ExecuteQuery*
+  nameWithType.vb: WmiCimHelper.ExecuteQuery(CimSession, String, String)
+  fullName.vb: Bodoconsult.Network.Windows.Cim.WmiCimHelper.ExecuteQuery(Microsoft.Management.Infrastructure.CimSession, String, String)
+  name.vb: ExecuteQuery(CimSession, String, String)
+references:
+- uid: Bodoconsult.Network.Windows.Cim
+  commentId: N:Bodoconsult.Network.Windows.Cim
+  href: Bodoconsult.html
+  name: Bodoconsult.Network.Windows.Cim
+  nameWithType: Bodoconsult.Network.Windows.Cim
+  fullName: Bodoconsult.Network.Windows.Cim
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.Network
+    name: Network
+    href: Bodoconsult.Network.html
+  - name: .
+  - uid: Bodoconsult.Network.Windows
+    name: Windows
+    href: Bodoconsult.Network.Windows.html
+  - name: .
+  - uid: Bodoconsult.Network.Windows.Cim
+    name: Cim
+    href: Bodoconsult.Network.Windows.Cim.html
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.Network
+    name: Network
+    href: Bodoconsult.Network.html
+  - name: .
+  - uid: Bodoconsult.Network.Windows
+    name: Windows
+    href: Bodoconsult.Network.Windows.html
+  - name: .
+  - uid: Bodoconsult.Network.Windows.Cim
+    name: Cim
+    href: Bodoconsult.Network.Windows.Cim.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Bodoconsult.Network.Windows.Cim.WmiCimHelper.GetSession*
+  commentId: Overload:Bodoconsult.Network.Windows.Cim.WmiCimHelper.GetSession
+  href: Bodoconsult.Network.Windows.Cim.WmiCimHelper.html#Bodoconsult_Network_Windows_Cim_WmiCimHelper_GetSession_System_String_System_String_System_String_System_Security_SecureString_
+  name: GetSession
+  nameWithType: WmiCimHelper.GetSession
+  fullName: Bodoconsult.Network.Windows.Cim.WmiCimHelper.GetSession
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: System.Security.SecureString
+  commentId: T:System.Security.SecureString
+  parent: System.Security
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.security.securestring
+  name: SecureString
+  nameWithType: SecureString
+  fullName: System.Security.SecureString
+- uid: Microsoft.Management.Infrastructure.CimSession
+  commentId: T:Microsoft.Management.Infrastructure.CimSession
+  parent: Microsoft.Management.Infrastructure
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft.management.infrastructure.cimsession
+  name: CimSession
+  nameWithType: CimSession
+  fullName: Microsoft.Management.Infrastructure.CimSession
+- uid: System.Security
+  commentId: N:System.Security
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Security
+  nameWithType: System.Security
+  fullName: System.Security
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Security
+    name: Security
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.security
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Security
+    name: Security
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.security
+- uid: Microsoft.Management.Infrastructure
+  commentId: N:Microsoft.Management.Infrastructure
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft
+  name: Microsoft.Management.Infrastructure
+  nameWithType: Microsoft.Management.Infrastructure
+  fullName: Microsoft.Management.Infrastructure
+  spec.csharp:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft
+  - name: .
+  - uid: Microsoft.Management
+    name: Management
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.management
+  - name: .
+  - uid: Microsoft.Management.Infrastructure
+    name: Infrastructure
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.management.infrastructure
+  spec.vb:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft
+  - name: .
+  - uid: Microsoft.Management
+    name: Management
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.management
+  - name: .
+  - uid: Microsoft.Management.Infrastructure
+    name: Infrastructure
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.management.infrastructure
+- uid: Bodoconsult.Network.Windows.Cim.WmiCimHelper.ExecuteQuery*
+  commentId: Overload:Bodoconsult.Network.Windows.Cim.WmiCimHelper.ExecuteQuery
+  href: Bodoconsult.Network.Windows.Cim.WmiCimHelper.html#Bodoconsult_Network_Windows_Cim_WmiCimHelper_ExecuteQuery_Microsoft_Management_Infrastructure_CimSession_System_String_System_String_
+  name: ExecuteQuery
+  nameWithType: WmiCimHelper.ExecuteQuery
+  fullName: Bodoconsult.Network.Windows.Cim.WmiCimHelper.ExecuteQuery
+- uid: System.Collections.Generic.IEnumerable{Microsoft.Management.Infrastructure.CimInstance}
+  commentId: T:System.Collections.Generic.IEnumerable{Microsoft.Management.Infrastructure.CimInstance}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IEnumerable`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<CimInstance>
+  nameWithType: IEnumerable<CimInstance>
+  fullName: System.Collections.Generic.IEnumerable<Microsoft.Management.Infrastructure.CimInstance>
+  nameWithType.vb: IEnumerable(Of CimInstance)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of Microsoft.Management.Infrastructure.CimInstance)
+  name.vb: IEnumerable(Of CimInstance)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - uid: Microsoft.Management.Infrastructure.CimInstance
+    name: CimInstance
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.management.infrastructure.ciminstance
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Microsoft.Management.Infrastructure.CimInstance
+    name: CimInstance
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.management.infrastructure.ciminstance
+  - name: )
+- uid: System.Collections.Generic.IEnumerable`1
+  commentId: T:System.Collections.Generic.IEnumerable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<T>
+  nameWithType: IEnumerable<T>
+  fullName: System.Collections.Generic.IEnumerable<T>
+  nameWithType.vb: IEnumerable(Of T)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of T)
+  name.vb: IEnumerable(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic

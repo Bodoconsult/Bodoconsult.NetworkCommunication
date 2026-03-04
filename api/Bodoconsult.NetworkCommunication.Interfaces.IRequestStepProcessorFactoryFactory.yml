@@ -1,0 +1,117 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IRequestStepProcessorFactoryFactory
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.IRequestStepProcessorFactoryFactory
+  id: IRequestStepProcessorFactoryFactory
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  children:
+  - Bodoconsult.NetworkCommunication.Interfaces.IRequestStepProcessorFactoryFactory.CreateProcessorStepFactory(Bodoconsult.NetworkCommunication.Interfaces.ICommunicationAdapter)
+  langs:
+  - csharp
+  - vb
+  name: IRequestStepProcessorFactoryFactory
+  nameWithType: IRequestStepProcessorFactoryFactory
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IRequestStepProcessorFactoryFactory
+  type: Interface
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/IRequestStepProcessorFactoryFactory.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: IRequestStepProcessorFactoryFactory
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/IRequestStepProcessorFactoryFactory.cs
+    startLine: 7
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Interface for factories for <xref href="Bodoconsult.NetworkCommunication.Interfaces.IRequestStepProcessorFactory" data-throw-if-not-resolved="false"></xref> instances per device
+  example: []
+  syntax:
+    content: public interface IRequestStepProcessorFactoryFactory
+    content.vb: Public Interface IRequestStepProcessorFactoryFactory
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IRequestStepProcessorFactoryFactory.CreateProcessorStepFactory(Bodoconsult.NetworkCommunication.Interfaces.ICommunicationAdapter)
+  commentId: M:Bodoconsult.NetworkCommunication.Interfaces.IRequestStepProcessorFactoryFactory.CreateProcessorStepFactory(Bodoconsult.NetworkCommunication.Interfaces.ICommunicationAdapter)
+  id: CreateProcessorStepFactory(Bodoconsult.NetworkCommunication.Interfaces.ICommunicationAdapter)
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IRequestStepProcessorFactoryFactory
+  langs:
+  - csharp
+  - vb
+  name: CreateProcessorStepFactory(ICommunicationAdapter)
+  nameWithType: IRequestStepProcessorFactoryFactory.CreateProcessorStepFactory(ICommunicationAdapter)
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IRequestStepProcessorFactoryFactory.CreateProcessorStepFactory(Bodoconsult.NetworkCommunication.Interfaces.ICommunicationAdapter)
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/IRequestStepProcessorFactoryFactory.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: CreateProcessorStepFactory
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/IRequestStepProcessorFactoryFactory.cs
+    startLine: 14
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Create a <xref href="Bodoconsult.NetworkCommunication.Interfaces.IRequestStepProcessorFactory" data-throw-if-not-resolved="false"></xref> instance per device
+  example: []
+  syntax:
+    content: IRequestStepProcessorFactory CreateProcessorStepFactory(ICommunicationAdapter communicationAdapter)
+    parameters:
+    - id: communicationAdapter
+      type: Bodoconsult.NetworkCommunication.Interfaces.ICommunicationAdapter
+      description: Current communication adapter to use
+    return:
+      type: Bodoconsult.NetworkCommunication.Interfaces.IRequestStepProcessorFactory
+      description: A <xref href="Bodoconsult.NetworkCommunication.Interfaces.IRequestStepProcessorFactory" data-throw-if-not-resolved="false"></xref> instance
+    content.vb: Function CreateProcessorStepFactory(communicationAdapter As ICommunicationAdapter) As IRequestStepProcessorFactory
+  overload: Bodoconsult.NetworkCommunication.Interfaces.IRequestStepProcessorFactoryFactory.CreateProcessorStepFactory*
+references:
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IRequestStepProcessorFactory
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.IRequestStepProcessorFactory
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.NetworkCommunication.Interfaces.IRequestStepProcessorFactory.html
+  name: IRequestStepProcessorFactory
+  nameWithType: IRequestStepProcessorFactory
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IRequestStepProcessorFactory
+- uid: Bodoconsult.NetworkCommunication.Interfaces
+  commentId: N:Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.html
+  name: Bodoconsult.NetworkCommunication.Interfaces
+  nameWithType: Bodoconsult.NetworkCommunication.Interfaces
+  fullName: Bodoconsult.NetworkCommunication.Interfaces
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Interfaces
+    name: Interfaces
+    href: Bodoconsult.NetworkCommunication.Interfaces.html
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Interfaces
+    name: Interfaces
+    href: Bodoconsult.NetworkCommunication.Interfaces.html
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IRequestStepProcessorFactoryFactory.CreateProcessorStepFactory*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.IRequestStepProcessorFactoryFactory.CreateProcessorStepFactory
+  href: Bodoconsult.NetworkCommunication.Interfaces.IRequestStepProcessorFactoryFactory.html#Bodoconsult_NetworkCommunication_Interfaces_IRequestStepProcessorFactoryFactory_CreateProcessorStepFactory_Bodoconsult_NetworkCommunication_Interfaces_ICommunicationAdapter_
+  name: CreateProcessorStepFactory
+  nameWithType: IRequestStepProcessorFactoryFactory.CreateProcessorStepFactory
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IRequestStepProcessorFactoryFactory.CreateProcessorStepFactory
+- uid: Bodoconsult.NetworkCommunication.Interfaces.ICommunicationAdapter
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.ICommunicationAdapter
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.NetworkCommunication.Interfaces.ICommunicationAdapter.html
+  name: ICommunicationAdapter
+  nameWithType: ICommunicationAdapter
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.ICommunicationAdapter

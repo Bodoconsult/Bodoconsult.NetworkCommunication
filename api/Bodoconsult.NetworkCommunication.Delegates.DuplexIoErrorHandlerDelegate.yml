@@ -1,0 +1,116 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bodoconsult.NetworkCommunication.Delegates.DuplexIoErrorHandlerDelegate
+  commentId: T:Bodoconsult.NetworkCommunication.Delegates.DuplexIoErrorHandlerDelegate
+  id: DuplexIoErrorHandlerDelegate
+  parent: Bodoconsult.NetworkCommunication.Delegates
+  children: []
+  langs:
+  - csharp
+  - vb
+  name: DuplexIoErrorHandlerDelegate
+  nameWithType: DuplexIoErrorHandlerDelegate
+  fullName: Bodoconsult.NetworkCommunication.Delegates.DuplexIoErrorHandlerDelegate
+  type: Delegate
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Delegates/CommDelegates.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: DuplexIoErrorHandlerDelegate
+    path: src/Bodoconsult.NetworkCommunication/Delegates/CommDelegates.cs
+    startLine: 31
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Delegates
+  summary: Delegate for handling central exception handling in <xref href="Bodoconsult.NetworkCommunication.Interfaces.IDuplexIo" data-throw-if-not-resolved="false"></xref> implementations
+  example: []
+  syntax:
+    content: public delegate void DuplexIoErrorHandlerDelegate(Exception e)
+    parameters:
+    - id: e
+      type: System.Exception
+    content.vb: Public Delegate Sub DuplexIoErrorHandlerDelegate(e As Exception)
+references:
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IDuplexIo
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.IDuplexIo
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.NetworkCommunication.Interfaces.IDuplexIo.html
+  name: IDuplexIo
+  nameWithType: IDuplexIo
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IDuplexIo
+- uid: Bodoconsult.NetworkCommunication.Delegates
+  commentId: N:Bodoconsult.NetworkCommunication.Delegates
+  href: Bodoconsult.html
+  name: Bodoconsult.NetworkCommunication.Delegates
+  nameWithType: Bodoconsult.NetworkCommunication.Delegates
+  fullName: Bodoconsult.NetworkCommunication.Delegates
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Delegates
+    name: Delegates
+    href: Bodoconsult.NetworkCommunication.Delegates.html
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Delegates
+    name: Delegates
+    href: Bodoconsult.NetworkCommunication.Delegates.html
+- uid: System.Exception
+  commentId: T:System.Exception
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.exception
+  name: Exception
+  nameWithType: Exception
+  fullName: System.Exception
+- uid: Bodoconsult.NetworkCommunication.Interfaces
+  commentId: N:Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.html
+  name: Bodoconsult.NetworkCommunication.Interfaces
+  nameWithType: Bodoconsult.NetworkCommunication.Interfaces
+  fullName: Bodoconsult.NetworkCommunication.Interfaces
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Interfaces
+    name: Interfaces
+    href: Bodoconsult.NetworkCommunication.Interfaces.html
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Interfaces
+    name: Interfaces
+    href: Bodoconsult.NetworkCommunication.Interfaces.html
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System

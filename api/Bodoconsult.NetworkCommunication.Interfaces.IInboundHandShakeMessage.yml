@@ -1,0 +1,189 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IInboundHandShakeMessage
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.IInboundHandShakeMessage
+  id: IInboundHandShakeMessage
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  children:
+  - Bodoconsult.NetworkCommunication.Interfaces.IInboundHandShakeMessage.HandshakeMessageType
+  langs:
+  - csharp
+  - vb
+  name: IInboundHandShakeMessage
+  nameWithType: IInboundHandShakeMessage
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IInboundHandShakeMessage
+  type: Interface
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/IInboundHandShakeMessage.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: IInboundHandShakeMessage
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/IInboundHandShakeMessage.cs
+    startLine: 8
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Interface for inbound handshake data messages
+  example: []
+  syntax:
+    content: 'public interface IInboundHandShakeMessage : IInboundMessage'
+    content.vb: Public Interface IInboundHandShakeMessage Inherits IInboundMessage
+  inheritedMembers:
+  - Bodoconsult.NetworkCommunication.Interfaces.IInboundMessage.MessageId
+  - Bodoconsult.NetworkCommunication.Interfaces.IInboundMessage.RawMessageData
+  - Bodoconsult.NetworkCommunication.Interfaces.IInboundMessage.RawMessageDataClearText
+  - Bodoconsult.NetworkCommunication.Interfaces.IInboundMessage.ToInfoString
+  - Bodoconsult.NetworkCommunication.Interfaces.IInboundMessage.ToShortInfoString
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IInboundHandShakeMessage.HandshakeMessageType
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IInboundHandShakeMessage.HandshakeMessageType
+  id: HandshakeMessageType
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IInboundHandShakeMessage
+  langs:
+  - csharp
+  - vb
+  name: HandshakeMessageType
+  nameWithType: IInboundHandShakeMessage.HandshakeMessageType
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IInboundHandShakeMessage.HandshakeMessageType
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/IInboundHandShakeMessage.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: HandshakeMessageType
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/IInboundHandShakeMessage.cs
+    startLine: 13
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Type of handshake as byte value
+  example: []
+  syntax:
+    content: byte HandshakeMessageType { get; set; }
+    parameters: []
+    return:
+      type: System.Byte
+    content.vb: Property HandshakeMessageType As Byte
+  overload: Bodoconsult.NetworkCommunication.Interfaces.IInboundHandShakeMessage.HandshakeMessageType*
+references:
+- uid: Bodoconsult.NetworkCommunication.Interfaces
+  commentId: N:Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.html
+  name: Bodoconsult.NetworkCommunication.Interfaces
+  nameWithType: Bodoconsult.NetworkCommunication.Interfaces
+  fullName: Bodoconsult.NetworkCommunication.Interfaces
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Interfaces
+    name: Interfaces
+    href: Bodoconsult.NetworkCommunication.Interfaces.html
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Interfaces
+    name: Interfaces
+    href: Bodoconsult.NetworkCommunication.Interfaces.html
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IInboundMessage.MessageId
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IInboundMessage.MessageId
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IInboundMessage
+  href: Bodoconsult.NetworkCommunication.Interfaces.IInboundMessage.html#Bodoconsult_NetworkCommunication_Interfaces_IInboundMessage_MessageId
+  name: MessageId
+  nameWithType: IInboundMessage.MessageId
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IInboundMessage.MessageId
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IInboundMessage.RawMessageData
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IInboundMessage.RawMessageData
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IInboundMessage
+  href: Bodoconsult.NetworkCommunication.Interfaces.IInboundMessage.html#Bodoconsult_NetworkCommunication_Interfaces_IInboundMessage_RawMessageData
+  name: RawMessageData
+  nameWithType: IInboundMessage.RawMessageData
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IInboundMessage.RawMessageData
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IInboundMessage.RawMessageDataClearText
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IInboundMessage.RawMessageDataClearText
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IInboundMessage
+  href: Bodoconsult.NetworkCommunication.Interfaces.IInboundMessage.html#Bodoconsult_NetworkCommunication_Interfaces_IInboundMessage_RawMessageDataClearText
+  name: RawMessageDataClearText
+  nameWithType: IInboundMessage.RawMessageDataClearText
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IInboundMessage.RawMessageDataClearText
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IInboundMessage.ToInfoString
+  commentId: M:Bodoconsult.NetworkCommunication.Interfaces.IInboundMessage.ToInfoString
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IInboundMessage
+  href: Bodoconsult.NetworkCommunication.Interfaces.IInboundMessage.html#Bodoconsult_NetworkCommunication_Interfaces_IInboundMessage_ToInfoString
+  name: ToInfoString()
+  nameWithType: IInboundMessage.ToInfoString()
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IInboundMessage.ToInfoString()
+  spec.csharp:
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IInboundMessage.ToInfoString
+    name: ToInfoString
+    href: Bodoconsult.NetworkCommunication.Interfaces.IInboundMessage.html#Bodoconsult_NetworkCommunication_Interfaces_IInboundMessage_ToInfoString
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IInboundMessage.ToInfoString
+    name: ToInfoString
+    href: Bodoconsult.NetworkCommunication.Interfaces.IInboundMessage.html#Bodoconsult_NetworkCommunication_Interfaces_IInboundMessage_ToInfoString
+  - name: (
+  - name: )
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IInboundMessage.ToShortInfoString
+  commentId: M:Bodoconsult.NetworkCommunication.Interfaces.IInboundMessage.ToShortInfoString
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IInboundMessage
+  href: Bodoconsult.NetworkCommunication.Interfaces.IInboundMessage.html#Bodoconsult_NetworkCommunication_Interfaces_IInboundMessage_ToShortInfoString
+  name: ToShortInfoString()
+  nameWithType: IInboundMessage.ToShortInfoString()
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IInboundMessage.ToShortInfoString()
+  spec.csharp:
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IInboundMessage.ToShortInfoString
+    name: ToShortInfoString
+    href: Bodoconsult.NetworkCommunication.Interfaces.IInboundMessage.html#Bodoconsult_NetworkCommunication_Interfaces_IInboundMessage_ToShortInfoString
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IInboundMessage.ToShortInfoString
+    name: ToShortInfoString
+    href: Bodoconsult.NetworkCommunication.Interfaces.IInboundMessage.html#Bodoconsult_NetworkCommunication_Interfaces_IInboundMessage_ToShortInfoString
+  - name: (
+  - name: )
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IInboundMessage
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.IInboundMessage
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.NetworkCommunication.Interfaces.IInboundMessage.html
+  name: IInboundMessage
+  nameWithType: IInboundMessage
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IInboundMessage
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IInboundHandShakeMessage.HandshakeMessageType*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.IInboundHandShakeMessage.HandshakeMessageType
+  href: Bodoconsult.NetworkCommunication.Interfaces.IInboundHandShakeMessage.html#Bodoconsult_NetworkCommunication_Interfaces_IInboundHandShakeMessage_HandshakeMessageType
+  name: HandshakeMessageType
+  nameWithType: IInboundHandShakeMessage.HandshakeMessageType
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IInboundHandShakeMessage.HandshakeMessageType
+- uid: System.Byte
+  commentId: T:System.Byte
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.byte
+  name: byte
+  nameWithType: byte
+  fullName: byte
+  nameWithType.vb: Byte
+  fullName.vb: Byte
+  name.vb: Byte
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System

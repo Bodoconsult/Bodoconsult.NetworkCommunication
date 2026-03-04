@@ -1,0 +1,117 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IWaitStateManagerFactory
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.IWaitStateManagerFactory
+  id: IWaitStateManagerFactory
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  children:
+  - Bodoconsult.NetworkCommunication.Interfaces.IWaitStateManagerFactory.CreateInstance(Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig)
+  langs:
+  - csharp
+  - vb
+  name: IWaitStateManagerFactory
+  nameWithType: IWaitStateManagerFactory
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IWaitStateManagerFactory
+  type: Interface
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/IWaitStateManagerFactory.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: IWaitStateManagerFactory
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/IWaitStateManagerFactory.cs
+    startLine: 8
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Interface for creating <xref href="Bodoconsult.NetworkCommunication.Interfaces.IWaitStateManager" data-throw-if-not-resolved="false"></xref> based implementations
+  example: []
+  syntax:
+    content: public interface IWaitStateManagerFactory
+    content.vb: Public Interface IWaitStateManagerFactory
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IWaitStateManagerFactory.CreateInstance(Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig)
+  commentId: M:Bodoconsult.NetworkCommunication.Interfaces.IWaitStateManagerFactory.CreateInstance(Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig)
+  id: CreateInstance(Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig)
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IWaitStateManagerFactory
+  langs:
+  - csharp
+  - vb
+  name: CreateInstance(IDataMessagingConfig)
+  nameWithType: IWaitStateManagerFactory.CreateInstance(IDataMessagingConfig)
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IWaitStateManagerFactory.CreateInstance(Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig)
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/IWaitStateManagerFactory.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: CreateInstance
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/IWaitStateManagerFactory.cs
+    startLine: 16
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Create a instance implementing <xref href="Bodoconsult.NetworkCommunication.Interfaces.IWaitStateManager" data-throw-if-not-resolved="false"></xref>
+  example: []
+  syntax:
+    content: IWaitStateManager CreateInstance(IDataMessagingConfig config)
+    parameters:
+    - id: config
+      type: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig
+      description: Current config to use
+    return:
+      type: Bodoconsult.NetworkCommunication.Interfaces.IWaitStateManager
+      description: New instance of <xref href="Bodoconsult.NetworkCommunication.Interfaces.IWaitStateManager" data-throw-if-not-resolved="false"></xref>
+    content.vb: Function CreateInstance(config As IDataMessagingConfig) As IWaitStateManager
+  overload: Bodoconsult.NetworkCommunication.Interfaces.IWaitStateManagerFactory.CreateInstance*
+references:
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IWaitStateManager
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.IWaitStateManager
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.NetworkCommunication.Interfaces.IWaitStateManager.html
+  name: IWaitStateManager
+  nameWithType: IWaitStateManager
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IWaitStateManager
+- uid: Bodoconsult.NetworkCommunication.Interfaces
+  commentId: N:Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.html
+  name: Bodoconsult.NetworkCommunication.Interfaces
+  nameWithType: Bodoconsult.NetworkCommunication.Interfaces
+  fullName: Bodoconsult.NetworkCommunication.Interfaces
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Interfaces
+    name: Interfaces
+    href: Bodoconsult.NetworkCommunication.Interfaces.html
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Interfaces
+    name: Interfaces
+    href: Bodoconsult.NetworkCommunication.Interfaces.html
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IWaitStateManagerFactory.CreateInstance*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.IWaitStateManagerFactory.CreateInstance
+  href: Bodoconsult.NetworkCommunication.Interfaces.IWaitStateManagerFactory.html#Bodoconsult_NetworkCommunication_Interfaces_IWaitStateManagerFactory_CreateInstance_Bodoconsult_NetworkCommunication_Interfaces_IDataMessagingConfig_
+  name: CreateInstance
+  nameWithType: IWaitStateManagerFactory.CreateInstance
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IWaitStateManagerFactory.CreateInstance
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig.html
+  name: IDataMessagingConfig
+  nameWithType: IDataMessagingConfig
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig

@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Interface IRequestSpec | Bodoconsult.Network </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Interface IRequestSpec | Bodoconsult.Network ">
+      
+      <meta name="description" content="Interface for device request specifications">
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/new/main/apiSpec/new?filename=Bodoconsult_NetworkCommunication_Interfaces_IRequestSpec.md&amp;value=---%0Auid%3A%20Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../logo.svg" alt="Bodoconsult.Network">
+            Bodoconsult.Network
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec">
+
+
+
+  <h1 id="Bodoconsult_NetworkCommunication_Interfaces_IRequestSpec" data-uid="Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec" class="text-break">
+Interface IRequestSpec  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/Interfaces/IRequestSpec.cs/#L11"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="Bodoconsult.html">Bodoconsult</a>.<a class="xref" href="Bodoconsult.NetworkCommunication.html">NetworkCommunication</a>.<a class="xref" href="Bodoconsult.NetworkCommunication.Interfaces.html">Interfaces</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>Bodoconsult.NetworkCommunication.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p>Interface for device request specifications</p>
+</div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public interface IRequestSpec : IDisposable</code></pre>
+  </div>
+
+
+
+
+
+
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.idisposable.dispose">IDisposable.Dispose()</a>
+    </div>
+  </dd></dl>
+
+
+
+
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
+  <a id="Bodoconsult_NetworkCommunication_Interfaces_IRequestSpec_AppLogger_" data-uid="Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec.AppLogger*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_Interfaces_IRequestSpec_AppLogger" data-uid="Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec.AppLogger">
+  AppLogger
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/Interfaces/IRequestSpec.cs/#L26"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Current app logger</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IAppLoggerProxy AppLogger { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">IAppLoggerProxy</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_Interfaces_IRequestSpec_CancelRunningOperationDelegate_" data-uid="Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec.CancelRunningOperationDelegate*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_Interfaces_IRequestSpec_CancelRunningOperationDelegate" data-uid="Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec.CancelRunningOperationDelegate">
+  CancelRunningOperationDelegate
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/Interfaces/IRequestSpec.cs/#L36"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Delegate to cancel running operation on comm adapter level</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">CancelRunningOperationDelegate CancelRunningOperationDelegate { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Bodoconsult.NetworkCommunication.Delegates.CancelRunningOperationDelegate.html">CancelRunningOperationDelegate</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_Interfaces_IRequestSpec_DoNotRunRequestSpecIfThereIsSameOrderTypeInQueue_" data-uid="Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec.DoNotRunRequestSpecIfThereIsSameOrderTypeInQueue*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_Interfaces_IRequestSpec_DoNotRunRequestSpecIfThereIsSameOrderTypeInQueue" data-uid="Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec.DoNotRunRequestSpecIfThereIsSameOrderTypeInQueue">
+  DoNotRunRequestSpecIfThereIsSameOrderTypeInQueue
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/Interfaces/IRequestSpec.cs/#L76"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Do not run this request spec if there is the same order type in the queue already. Use for ExpressUnload currently</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool DoNotRunRequestSpecIfThereIsSameOrderTypeInQueue { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_Interfaces_IRequestSpec_DoNotifyDelegate_" data-uid="Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec.DoNotifyDelegate*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_Interfaces_IRequestSpec_DoNotifyDelegate" data-uid="Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec.DoNotifyDelegate">
+  DoNotifyDelegate
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/Interfaces/IRequestSpec.cs/#L31"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Send an app notfication</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">DoNotifyDelegate DoNotifyDelegate { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Bodoconsult.NetworkCommunication.Delegates.DoNotifyDelegate.html">DoNotifyDelegate</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_Interfaces_IRequestSpec_ExpectedHandshakeForSentMessage_" data-uid="Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec.ExpectedHandshakeForSentMessage*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_Interfaces_IRequestSpec_ExpectedHandshakeForSentMessage" data-uid="Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec.ExpectedHandshakeForSentMessage">
+  ExpectedHandshakeForSentMessage
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/Interfaces/IRequestSpec.cs/#L81"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>The expected handshake if the message was sent</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">List&lt;IOrderExecutionResultState&gt; ExpectedHandshakeForSentMessage { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionResultState.html">IOrderExecutionResultState</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_Interfaces_IRequestSpec_Name_" data-uid="Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec.Name*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_Interfaces_IRequestSpec_Name" data-uid="Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec.Name">
+  Name
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/Interfaces/IRequestSpec.cs/#L41"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Clear text name of the request</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">string Name { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_Interfaces_IRequestSpec_NumberOfRepeatsInCaseOfNoSuccess_" data-uid="Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec.NumberOfRepeatsInCaseOfNoSuccess*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_Interfaces_IRequestSpec_NumberOfRepeatsInCaseOfNoSuccess" data-uid="Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec.NumberOfRepeatsInCaseOfNoSuccess">
+  NumberOfRepeatsInCaseOfNoSuccess
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/Interfaces/IRequestSpec.cs/#L56"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>The number of repeatings in case the step was not successful</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">int NumberOfRepeatsInCaseOfNoSuccess { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_Interfaces_IRequestSpec_OrderLoggerId_" data-uid="Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec.OrderLoggerId*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_Interfaces_IRequestSpec_OrderLoggerId" data-uid="Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec.OrderLoggerId">
+  OrderLoggerId
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/Interfaces/IRequestSpec.cs/#L119"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Order logger ID</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">string OrderLoggerId { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_Interfaces_IRequestSpec_ParameterSet_" data-uid="Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec.ParameterSet*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_Interfaces_IRequestSpec_ParameterSet" data-uid="Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec.ParameterSet">
+  ParameterSet
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/Interfaces/IRequestSpec.cs/#L46"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Current parameter set to use for the request</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IParameterSet ParameterSet { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Bodoconsult.NetworkCommunication.Interfaces.IParameterSet.html">IParameterSet</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_Interfaces_IRequestSpec_RequestAnswerStepIsStartedDelegate_" data-uid="Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec.RequestAnswerStepIsStartedDelegate*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_Interfaces_IRequestSpec_RequestAnswerStepIsStartedDelegate" data-uid="Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec.RequestAnswerStepIsStartedDelegate">
+  RequestAnswerStepIsStartedDelegate
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/Interfaces/IRequestSpec.cs/#L114"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>A delegate for testing order executing. Not intended for production use</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">RequestAnswerStepIsStartedDelegate RequestAnswerStepIsStartedDelegate { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Bodoconsult.NetworkCommunication.Interfaces.RequestAnswerStepIsStartedDelegate.html">RequestAnswerStepIsStartedDelegate</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_Interfaces_IRequestSpec_RequestAnswerSteps_" data-uid="Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec.RequestAnswerSteps*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_Interfaces_IRequestSpec_RequestAnswerSteps" data-uid="Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec.RequestAnswerSteps">
+  RequestAnswerSteps
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/Interfaces/IRequestSpec.cs/#L91"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Represents a timeline of request answers</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">List&lt;IRequestAnswerStep&gt; RequestAnswerSteps { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswerStep.html">IRequestAnswerStep</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_Interfaces_IRequestSpec_RequestRequiresOnlyAHandshakeAsAnswer_" data-uid="Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec.RequestRequiresOnlyAHandshakeAsAnswer*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_Interfaces_IRequestSpec_RequestRequiresOnlyAHandshakeAsAnswer" data-uid="Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec.RequestRequiresOnlyAHandshakeAsAnswer">
+  RequestRequiresOnlyAHandshakeAsAnswer
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/Interfaces/IRequestSpec.cs/#L86"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Does the request require only a (valid) handshake as answer to be successful</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool RequestRequiresOnlyAHandshakeAsAnswer { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_Interfaces_IRequestSpec_RequestStepProcessorIsCancelledDelegate_" data-uid="Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec.RequestStepProcessorIsCancelledDelegate*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_Interfaces_IRequestSpec_RequestStepProcessorIsCancelledDelegate" data-uid="Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec.RequestStepProcessorIsCancelledDelegate">
+  RequestStepProcessorIsCancelledDelegate
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/Interfaces/IRequestSpec.cs/#L21"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Is the <a class="xref" href="Bodoconsult.NetworkCommunication.Interfaces.IRequestStepProcessor.html">IRequestStepProcessor</a> instance cancelled?</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">RequestStepProcessorIsCancelledDelegate RequestStepProcessorIsCancelledDelegate { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Bodoconsult.NetworkCommunication.Delegates.RequestStepProcessorIsCancelledDelegate.html">RequestStepProcessorIsCancelledDelegate</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_Interfaces_IRequestSpec_RequestStepProcessorSetResultDelegate_" data-uid="Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec.RequestStepProcessorSetResultDelegate*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_Interfaces_IRequestSpec_RequestStepProcessorSetResultDelegate" data-uid="Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec.RequestStepProcessorSetResultDelegate">
+  RequestStepProcessorSetResultDelegate
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/Interfaces/IRequestSpec.cs/#L16"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Delegate to set the state for a <a class="xref" href="Bodoconsult.NetworkCommunication.Interfaces.IRequestStepProcessor.html">IRequestStepProcessor</a> instance</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">RequestStepProcessorSetResultDelegate RequestStepProcessorSetResultDelegate { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Bodoconsult.NetworkCommunication.Delegates.RequestStepProcessorSetResultDelegate.html">RequestStepProcessorSetResultDelegate</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_Interfaces_IRequestSpec_RequiresTransportObject_" data-uid="Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec.RequiresTransportObject*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_Interfaces_IRequestSpec_RequiresTransportObject" data-uid="Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec.RequiresTransportObject">
+  RequiresTransportObject
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/Interfaces/IRequestSpec.cs/#L71"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Requires transport object from predecessing request injected via <a class="xref" href="Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec.html#Bodoconsult_NetworkCommunication_Interfaces_IRequestSpec_SetTransportObject_System_Object_">SetTransportObject(object)</a></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool RequiresTransportObject { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_Interfaces_IRequestSpec_ResultTransportObject_" data-uid="Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec.ResultTransportObject*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_Interfaces_IRequestSpec_ResultTransportObject" data-uid="Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec.ResultTransportObject">
+  ResultTransportObject
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/Interfaces/IRequestSpec.cs/#L66"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>A resulting object to transferred from this request spec to the next</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">object ResultTransportObject { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_Interfaces_IRequestSpec_Timeout_" data-uid="Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec.Timeout*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_Interfaces_IRequestSpec_Timeout" data-uid="Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec.Timeout">
+  Timeout
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/Interfaces/IRequestSpec.cs/#L51"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Total calculated timeout for the answer(s) of a request in milliseconds</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">int Timeout { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_Interfaces_IRequestSpec_TransportObject_" data-uid="Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec.TransportObject*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_Interfaces_IRequestSpec_TransportObject" data-uid="Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec.TransportObject">
+  TransportObject
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/Interfaces/IRequestSpec.cs/#L61"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>An object to transferred from a predecessing request spec to the current one</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">object TransportObject { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_Interfaces_IRequestSpec_WasSuccessful_" data-uid="Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec.WasSuccessful*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_Interfaces_IRequestSpec_WasSuccessful" data-uid="Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec.WasSuccessful">
+  WasSuccessful
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/Interfaces/IRequestSpec.cs/#L96"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>The step was successfully processed in all steps</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool WasSuccessful { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="Bodoconsult_NetworkCommunication_Interfaces_IRequestSpec_CalculateTotalTimeout_" data-uid="Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec.CalculateTotalTimeout*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_Interfaces_IRequestSpec_CalculateTotalTimeout" data-uid="Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec.CalculateTotalTimeout">
+  CalculateTotalTimeout()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/Interfaces/IRequestSpec.cs/#L107"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Calculate the total timeout and store it in <a class="xref" href="Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec.html#Bodoconsult_NetworkCommunication_Interfaces_IRequestSpec_Timeout">Timeout</a></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void CalculateTotalTimeout()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_Interfaces_IRequestSpec_SetTransportObject_" data-uid="Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec.SetTransportObject*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_Interfaces_IRequestSpec_SetTransportObject_System_Object_" data-uid="Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec.SetTransportObject(System.Object)">
+  SetTransportObject(object)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/Interfaces/IRequestSpec.cs/#L102"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Set  the <a class="xref" href="Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec.html#Bodoconsult_NetworkCommunication_Interfaces_IRequestSpec_TransportObject">TransportObject</a> with an object from predecessing request</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void SetTransportObject(object transportObject)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>transportObject</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></dt>
+    <dd><p>Object from predecessing request</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/Interfaces/IRequestSpec.cs/#L11" class="edit-link">Edit this page</a>
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

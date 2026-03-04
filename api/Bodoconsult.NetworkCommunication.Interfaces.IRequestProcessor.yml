@@ -1,0 +1,678 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IRequestProcessor
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.IRequestProcessor
+  id: IRequestProcessor
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  children:
+  - Bodoconsult.NetworkCommunication.Interfaces.IRequestProcessor.Cancel
+  - Bodoconsult.NetworkCommunication.Interfaces.IRequestProcessor.Cancel(System.Boolean,System.Boolean)
+  - Bodoconsult.NetworkCommunication.Interfaces.IRequestProcessor.CancellationTokenSource
+  - Bodoconsult.NetworkCommunication.Interfaces.IRequestProcessor.CheckReceivedMessage(Bodoconsult.NetworkCommunication.Interfaces.IInboundDataMessage)
+  - Bodoconsult.NetworkCommunication.Interfaces.IRequestProcessor.CurrentRequestStepProcessor
+  - Bodoconsult.NetworkCommunication.Interfaces.IRequestProcessor.CurrentTask
+  - Bodoconsult.NetworkCommunication.Interfaces.IRequestProcessor.ExecuteOrder
+  - Bodoconsult.NetworkCommunication.Interfaces.IRequestProcessor.IsCancelled
+  - Bodoconsult.NetworkCommunication.Interfaces.IRequestProcessor.Order
+  - Bodoconsult.NetworkCommunication.Interfaces.IRequestProcessor.OrderProcessingFinishedDelegate
+  langs:
+  - csharp
+  - vb
+  name: IRequestProcessor
+  nameWithType: IRequestProcessor
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IRequestProcessor
+  type: Interface
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/IRequestProcessor.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: IRequestProcessor
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/IRequestProcessor.cs
+    startLine: 9
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Interface for a request processor implementations
+  example: []
+  syntax:
+    content: 'public interface IRequestProcessor : IDisposable'
+    content.vb: Public Interface IRequestProcessor Inherits IDisposable
+  inheritedMembers:
+  - System.IDisposable.Dispose
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IRequestProcessor.Order
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IRequestProcessor.Order
+  id: Order
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IRequestProcessor
+  langs:
+  - csharp
+  - vb
+  name: Order
+  nameWithType: IRequestProcessor.Order
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IRequestProcessor.Order
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/IRequestProcessor.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Order
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/IRequestProcessor.cs
+    startLine: 14
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Current order to process
+  example: []
+  syntax:
+    content: IOrder Order { get; }
+    parameters: []
+    return:
+      type: Bodoconsult.NetworkCommunication.Interfaces.IOrder
+    content.vb: ReadOnly Property Order As IOrder
+  overload: Bodoconsult.NetworkCommunication.Interfaces.IRequestProcessor.Order*
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IRequestProcessor.CurrentRequestStepProcessor
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IRequestProcessor.CurrentRequestStepProcessor
+  id: CurrentRequestStepProcessor
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IRequestProcessor
+  langs:
+  - csharp
+  - vb
+  name: CurrentRequestStepProcessor
+  nameWithType: IRequestProcessor.CurrentRequestStepProcessor
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IRequestProcessor.CurrentRequestStepProcessor
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/IRequestProcessor.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: CurrentRequestStepProcessor
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/IRequestProcessor.cs
+    startLine: 19
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: The currently processed request step of the order
+  example: []
+  syntax:
+    content: IRequestStepProcessor CurrentRequestStepProcessor { get; }
+    parameters: []
+    return:
+      type: Bodoconsult.NetworkCommunication.Interfaces.IRequestStepProcessor
+    content.vb: ReadOnly Property CurrentRequestStepProcessor As IRequestStepProcessor
+  overload: Bodoconsult.NetworkCommunication.Interfaces.IRequestProcessor.CurrentRequestStepProcessor*
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IRequestProcessor.ExecuteOrder
+  commentId: M:Bodoconsult.NetworkCommunication.Interfaces.IRequestProcessor.ExecuteOrder
+  id: ExecuteOrder
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IRequestProcessor
+  langs:
+  - csharp
+  - vb
+  name: ExecuteOrder()
+  nameWithType: IRequestProcessor.ExecuteOrder()
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IRequestProcessor.ExecuteOrder()
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/IRequestProcessor.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: ExecuteOrder
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/IRequestProcessor.cs
+    startLine: 30
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Execute the order request by request
+  example: []
+  syntax:
+    content: IOrderExecutionResultState ExecuteOrder()
+    return:
+      type: Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionResultState
+      description: Execution result
+    content.vb: Function ExecuteOrder() As IOrderExecutionResultState
+  overload: Bodoconsult.NetworkCommunication.Interfaces.IRequestProcessor.ExecuteOrder*
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IRequestProcessor.CheckReceivedMessage(Bodoconsult.NetworkCommunication.Interfaces.IInboundDataMessage)
+  commentId: M:Bodoconsult.NetworkCommunication.Interfaces.IRequestProcessor.CheckReceivedMessage(Bodoconsult.NetworkCommunication.Interfaces.IInboundDataMessage)
+  id: CheckReceivedMessage(Bodoconsult.NetworkCommunication.Interfaces.IInboundDataMessage)
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IRequestProcessor
+  langs:
+  - csharp
+  - vb
+  name: CheckReceivedMessage(IInboundDataMessage)
+  nameWithType: IRequestProcessor.CheckReceivedMessage(IInboundDataMessage)
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IRequestProcessor.CheckReceivedMessage(Bodoconsult.NetworkCommunication.Interfaces.IInboundDataMessage)
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/IRequestProcessor.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: CheckReceivedMessage
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/IRequestProcessor.cs
+    startLine: 37
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Check a received message
+  example: []
+  syntax:
+    content: bool CheckReceivedMessage(IInboundDataMessage receivedMessage)
+    parameters:
+    - id: receivedMessage
+      type: Bodoconsult.NetworkCommunication.Interfaces.IInboundDataMessage
+      description: A message received from the device
+    return:
+      type: System.Boolean
+      description: True if the message was an expected answer of the current request
+    content.vb: Function CheckReceivedMessage(receivedMessage As IInboundDataMessage) As Boolean
+  overload: Bodoconsult.NetworkCommunication.Interfaces.IRequestProcessor.CheckReceivedMessage*
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IRequestProcessor.Cancel
+  commentId: M:Bodoconsult.NetworkCommunication.Interfaces.IRequestProcessor.Cancel
+  id: Cancel
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IRequestProcessor
+  langs:
+  - csharp
+  - vb
+  name: Cancel()
+  nameWithType: IRequestProcessor.Cancel()
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IRequestProcessor.Cancel()
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/IRequestProcessor.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Cancel
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/IRequestProcessor.cs
+    startLine: 42
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Cancel a not running processor
+  example: []
+  syntax:
+    content: void Cancel()
+    content.vb: Sub Cancel()
+  overload: Bodoconsult.NetworkCommunication.Interfaces.IRequestProcessor.Cancel*
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IRequestProcessor.IsCancelled
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IRequestProcessor.IsCancelled
+  id: IsCancelled
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IRequestProcessor
+  langs:
+  - csharp
+  - vb
+  name: IsCancelled
+  nameWithType: IRequestProcessor.IsCancelled
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IRequestProcessor.IsCancelled
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/IRequestProcessor.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: IsCancelled
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/IRequestProcessor.cs
+    startLine: 47
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Is the request processor cancelled
+  example: []
+  syntax:
+    content: bool IsCancelled { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: ReadOnly Property IsCancelled As Boolean
+  overload: Bodoconsult.NetworkCommunication.Interfaces.IRequestProcessor.IsCancelled*
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IRequestProcessor.Cancel(System.Boolean,System.Boolean)
+  commentId: M:Bodoconsult.NetworkCommunication.Interfaces.IRequestProcessor.Cancel(System.Boolean,System.Boolean)
+  id: Cancel(System.Boolean,System.Boolean)
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IRequestProcessor
+  langs:
+  - csharp
+  - vb
+  name: Cancel(bool, bool)
+  nameWithType: IRequestProcessor.Cancel(bool, bool)
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IRequestProcessor.Cancel(bool, bool)
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/IRequestProcessor.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Cancel
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/IRequestProcessor.cs
+    startLine: 54
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Cancel the processor
+  example: []
+  syntax:
+    content: void Cancel(bool isRunning, bool isHardwareError)
+    parameters:
+    - id: isRunning
+      type: System.Boolean
+      description: Is the order running at the moment
+    - id: isHardwareError
+      type: System.Boolean
+      description: Is the reason for cancelling a hardware error
+    content.vb: Sub Cancel(isRunning As Boolean, isHardwareError As Boolean)
+  overload: Bodoconsult.NetworkCommunication.Interfaces.IRequestProcessor.Cancel*
+  nameWithType.vb: IRequestProcessor.Cancel(Boolean, Boolean)
+  fullName.vb: Bodoconsult.NetworkCommunication.Interfaces.IRequestProcessor.Cancel(Boolean, Boolean)
+  name.vb: Cancel(Boolean, Boolean)
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IRequestProcessor.OrderProcessingFinishedDelegate
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IRequestProcessor.OrderProcessingFinishedDelegate
+  id: OrderProcessingFinishedDelegate
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IRequestProcessor
+  langs:
+  - csharp
+  - vb
+  name: OrderProcessingFinishedDelegate
+  nameWithType: IRequestProcessor.OrderProcessingFinishedDelegate
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IRequestProcessor.OrderProcessingFinishedDelegate
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/IRequestProcessor.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: OrderProcessingFinishedDelegate
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/IRequestProcessor.cs
+    startLine: 59
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: A delegate to implement a call back to say the <xref href="Bodoconsult.NetworkCommunication.Interfaces.IOrderProcessor" data-throw-if-not-resolved="false"></xref> that order is processed
+  example: []
+  syntax:
+    content: OrderProcessingFinishedDelegate OrderProcessingFinishedDelegate { get; set; }
+    parameters: []
+    return:
+      type: Bodoconsult.NetworkCommunication.Delegates.OrderProcessingFinishedDelegate
+    content.vb: Property OrderProcessingFinishedDelegate As OrderProcessingFinishedDelegate
+  overload: Bodoconsult.NetworkCommunication.Interfaces.IRequestProcessor.OrderProcessingFinishedDelegate*
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IRequestProcessor.CurrentTask
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IRequestProcessor.CurrentTask
+  id: CurrentTask
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IRequestProcessor
+  langs:
+  - csharp
+  - vb
+  name: CurrentTask
+  nameWithType: IRequestProcessor.CurrentTask
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IRequestProcessor.CurrentTask
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/IRequestProcessor.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: CurrentTask
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/IRequestProcessor.cs
+    startLine: 64
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: The task the <xref href="Bodoconsult.NetworkCommunication.Interfaces.IRequestProcessor.ExecuteOrder" data-throw-if-not-resolved="false"></xref> command is running in
+  example: []
+  syntax:
+    content: Task CurrentTask { get; set; }
+    parameters: []
+    return:
+      type: System.Threading.Tasks.Task
+    content.vb: Property CurrentTask As Task
+  overload: Bodoconsult.NetworkCommunication.Interfaces.IRequestProcessor.CurrentTask*
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IRequestProcessor.CancellationTokenSource
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IRequestProcessor.CancellationTokenSource
+  id: CancellationTokenSource
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IRequestProcessor
+  langs:
+  - csharp
+  - vb
+  name: CancellationTokenSource
+  nameWithType: IRequestProcessor.CancellationTokenSource
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IRequestProcessor.CancellationTokenSource
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/IRequestProcessor.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: CancellationTokenSource
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/IRequestProcessor.cs
+    startLine: 69
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Used to cancel <xref href="Bodoconsult.NetworkCommunication.Interfaces.IRequestProcessor.CurrentTask" data-throw-if-not-resolved="false"></xref> if required
+  example: []
+  syntax:
+    content: CancellationTokenSource CancellationTokenSource { get; }
+    parameters: []
+    return:
+      type: System.Threading.CancellationTokenSource
+    content.vb: ReadOnly Property CancellationTokenSource As CancellationTokenSource
+  overload: Bodoconsult.NetworkCommunication.Interfaces.IRequestProcessor.CancellationTokenSource*
+references:
+- uid: Bodoconsult.NetworkCommunication.Interfaces
+  commentId: N:Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.html
+  name: Bodoconsult.NetworkCommunication.Interfaces
+  nameWithType: Bodoconsult.NetworkCommunication.Interfaces
+  fullName: Bodoconsult.NetworkCommunication.Interfaces
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Interfaces
+    name: Interfaces
+    href: Bodoconsult.NetworkCommunication.Interfaces.html
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Interfaces
+    name: Interfaces
+    href: Bodoconsult.NetworkCommunication.Interfaces.html
+- uid: System.IDisposable.Dispose
+  commentId: M:System.IDisposable.Dispose
+  parent: System.IDisposable
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  name: Dispose()
+  nameWithType: IDisposable.Dispose()
+  fullName: System.IDisposable.Dispose()
+  spec.csharp:
+  - uid: System.IDisposable.Dispose
+    name: Dispose
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.IDisposable.Dispose
+    name: Dispose
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  - name: (
+  - name: )
+- uid: System.IDisposable
+  commentId: T:System.IDisposable
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable
+  name: IDisposable
+  nameWithType: IDisposable
+  fullName: System.IDisposable
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IRequestProcessor.Order*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.IRequestProcessor.Order
+  href: Bodoconsult.NetworkCommunication.Interfaces.IRequestProcessor.html#Bodoconsult_NetworkCommunication_Interfaces_IRequestProcessor_Order
+  name: Order
+  nameWithType: IRequestProcessor.Order
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IRequestProcessor.Order
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IOrder
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.IOrder
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.NetworkCommunication.Interfaces.IOrder.html
+  name: IOrder
+  nameWithType: IOrder
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IOrder
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IRequestProcessor.CurrentRequestStepProcessor*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.IRequestProcessor.CurrentRequestStepProcessor
+  href: Bodoconsult.NetworkCommunication.Interfaces.IRequestProcessor.html#Bodoconsult_NetworkCommunication_Interfaces_IRequestProcessor_CurrentRequestStepProcessor
+  name: CurrentRequestStepProcessor
+  nameWithType: IRequestProcessor.CurrentRequestStepProcessor
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IRequestProcessor.CurrentRequestStepProcessor
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IRequestStepProcessor
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.IRequestStepProcessor
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.NetworkCommunication.Interfaces.IRequestStepProcessor.html
+  name: IRequestStepProcessor
+  nameWithType: IRequestStepProcessor
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IRequestStepProcessor
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IRequestProcessor.ExecuteOrder*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.IRequestProcessor.ExecuteOrder
+  href: Bodoconsult.NetworkCommunication.Interfaces.IRequestProcessor.html#Bodoconsult_NetworkCommunication_Interfaces_IRequestProcessor_ExecuteOrder
+  name: ExecuteOrder
+  nameWithType: IRequestProcessor.ExecuteOrder
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IRequestProcessor.ExecuteOrder
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionResultState
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionResultState
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionResultState.html
+  name: IOrderExecutionResultState
+  nameWithType: IOrderExecutionResultState
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionResultState
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IRequestProcessor.CheckReceivedMessage*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.IRequestProcessor.CheckReceivedMessage
+  href: Bodoconsult.NetworkCommunication.Interfaces.IRequestProcessor.html#Bodoconsult_NetworkCommunication_Interfaces_IRequestProcessor_CheckReceivedMessage_Bodoconsult_NetworkCommunication_Interfaces_IInboundDataMessage_
+  name: CheckReceivedMessage
+  nameWithType: IRequestProcessor.CheckReceivedMessage
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IRequestProcessor.CheckReceivedMessage
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IInboundDataMessage
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.IInboundDataMessage
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.NetworkCommunication.Interfaces.IInboundDataMessage.html
+  name: IInboundDataMessage
+  nameWithType: IInboundDataMessage
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IInboundDataMessage
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IRequestProcessor.Cancel*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.IRequestProcessor.Cancel
+  href: Bodoconsult.NetworkCommunication.Interfaces.IRequestProcessor.html#Bodoconsult_NetworkCommunication_Interfaces_IRequestProcessor_Cancel
+  name: Cancel
+  nameWithType: IRequestProcessor.Cancel
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IRequestProcessor.Cancel
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IRequestProcessor.IsCancelled*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.IRequestProcessor.IsCancelled
+  href: Bodoconsult.NetworkCommunication.Interfaces.IRequestProcessor.html#Bodoconsult_NetworkCommunication_Interfaces_IRequestProcessor_IsCancelled
+  name: IsCancelled
+  nameWithType: IRequestProcessor.IsCancelled
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IRequestProcessor.IsCancelled
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IOrderProcessor
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.IOrderProcessor
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.NetworkCommunication.Interfaces.IOrderProcessor.html
+  name: IOrderProcessor
+  nameWithType: IOrderProcessor
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IOrderProcessor
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IRequestProcessor.OrderProcessingFinishedDelegate*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.IRequestProcessor.OrderProcessingFinishedDelegate
+  href: Bodoconsult.NetworkCommunication.Interfaces.IRequestProcessor.html#Bodoconsult_NetworkCommunication_Interfaces_IRequestProcessor_OrderProcessingFinishedDelegate
+  name: OrderProcessingFinishedDelegate
+  nameWithType: IRequestProcessor.OrderProcessingFinishedDelegate
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IRequestProcessor.OrderProcessingFinishedDelegate
+- uid: Bodoconsult.NetworkCommunication.Delegates.OrderProcessingFinishedDelegate
+  commentId: T:Bodoconsult.NetworkCommunication.Delegates.OrderProcessingFinishedDelegate
+  parent: Bodoconsult.NetworkCommunication.Delegates
+  href: Bodoconsult.NetworkCommunication.Delegates.OrderProcessingFinishedDelegate.html
+  name: OrderProcessingFinishedDelegate
+  nameWithType: OrderProcessingFinishedDelegate
+  fullName: Bodoconsult.NetworkCommunication.Delegates.OrderProcessingFinishedDelegate
+- uid: Bodoconsult.NetworkCommunication.Delegates
+  commentId: N:Bodoconsult.NetworkCommunication.Delegates
+  href: Bodoconsult.html
+  name: Bodoconsult.NetworkCommunication.Delegates
+  nameWithType: Bodoconsult.NetworkCommunication.Delegates
+  fullName: Bodoconsult.NetworkCommunication.Delegates
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Delegates
+    name: Delegates
+    href: Bodoconsult.NetworkCommunication.Delegates.html
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Delegates
+    name: Delegates
+    href: Bodoconsult.NetworkCommunication.Delegates.html
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IRequestProcessor.ExecuteOrder
+  commentId: M:Bodoconsult.NetworkCommunication.Interfaces.IRequestProcessor.ExecuteOrder
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IRequestProcessor
+  href: Bodoconsult.NetworkCommunication.Interfaces.IRequestProcessor.html#Bodoconsult_NetworkCommunication_Interfaces_IRequestProcessor_ExecuteOrder
+  name: ExecuteOrder()
+  nameWithType: IRequestProcessor.ExecuteOrder()
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IRequestProcessor.ExecuteOrder()
+  spec.csharp:
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IRequestProcessor.ExecuteOrder
+    name: ExecuteOrder
+    href: Bodoconsult.NetworkCommunication.Interfaces.IRequestProcessor.html#Bodoconsult_NetworkCommunication_Interfaces_IRequestProcessor_ExecuteOrder
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IRequestProcessor.ExecuteOrder
+    name: ExecuteOrder
+    href: Bodoconsult.NetworkCommunication.Interfaces.IRequestProcessor.html#Bodoconsult_NetworkCommunication_Interfaces_IRequestProcessor_ExecuteOrder
+  - name: (
+  - name: )
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IRequestProcessor.CurrentTask*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.IRequestProcessor.CurrentTask
+  href: Bodoconsult.NetworkCommunication.Interfaces.IRequestProcessor.html#Bodoconsult_NetworkCommunication_Interfaces_IRequestProcessor_CurrentTask
+  name: CurrentTask
+  nameWithType: IRequestProcessor.CurrentTask
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IRequestProcessor.CurrentTask
+- uid: System.Threading.Tasks.Task
+  commentId: T:System.Threading.Tasks.Task
+  parent: System.Threading.Tasks
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task
+  name: Task
+  nameWithType: Task
+  fullName: System.Threading.Tasks.Task
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IRequestProcessor
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.IRequestProcessor
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.NetworkCommunication.Interfaces.IRequestProcessor.html
+  name: IRequestProcessor
+  nameWithType: IRequestProcessor
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IRequestProcessor
+- uid: System.Threading.Tasks
+  commentId: N:System.Threading.Tasks
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Threading.Tasks
+  nameWithType: System.Threading.Tasks
+  fullName: System.Threading.Tasks
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IRequestProcessor.CurrentTask
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IRequestProcessor.CurrentTask
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IRequestProcessor
+  href: Bodoconsult.NetworkCommunication.Interfaces.IRequestProcessor.html#Bodoconsult_NetworkCommunication_Interfaces_IRequestProcessor_CurrentTask
+  name: CurrentTask
+  nameWithType: IRequestProcessor.CurrentTask
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IRequestProcessor.CurrentTask
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IRequestProcessor.CancellationTokenSource*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.IRequestProcessor.CancellationTokenSource
+  href: Bodoconsult.NetworkCommunication.Interfaces.IRequestProcessor.html#Bodoconsult_NetworkCommunication_Interfaces_IRequestProcessor_CancellationTokenSource
+  name: CancellationTokenSource
+  nameWithType: IRequestProcessor.CancellationTokenSource
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IRequestProcessor.CancellationTokenSource
+- uid: System.Threading.CancellationTokenSource
+  commentId: T:System.Threading.CancellationTokenSource
+  parent: System.Threading
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtokensource
+  name: CancellationTokenSource
+  nameWithType: CancellationTokenSource
+  fullName: System.Threading.CancellationTokenSource
+- uid: System.Threading
+  commentId: N:System.Threading
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Threading
+  nameWithType: System.Threading
+  fullName: System.Threading
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading

@@ -1,0 +1,64 @@
+<mxfile host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/27.0.5 Chrome/134.0.6998.205 Electron/35.3.0 Safari/537.36" version="27.0.5">
+  <diagram name="Seite-1" id="H0ggHBI83sExS-HZn2yW">
+    <mxGraphModel dx="1213" dy="828" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="ay68n4W80iG7V_7q9e0b-1" value="STX" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="130" y="250" width="40" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="ay68n4W80iG7V_7q9e0b-2" value="ETX" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="570" y="250" width="40" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="ay68n4W80iG7V_7q9e0b-3" value="Datablock" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="170" y="250" width="400" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="ay68n4W80iG7V_7q9e0b-4" value="Simple data message with only a datablock" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="130" y="190" width="350" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="ay68n4W80iG7V_7q9e0b-5" value="STX" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="130" y="400" width="40" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="ay68n4W80iG7V_7q9e0b-6" value="ETX" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="570" y="400" width="40" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="ay68n4W80iG7V_7q9e0b-7" value="Datablock" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="210" y="400" width="360" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="ay68n4W80iG7V_7q9e0b-8" value="Simple data message with block code and a datablock" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="130" y="340" width="440" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="ay68n4W80iG7V_7q9e0b-9" value="Block-code" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="170" y="400" width="40" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="ay68n4W80iG7V_7q9e0b-10" value="STX" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="130" y="550" width="40" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="ay68n4W80iG7V_7q9e0b-11" value="ETX" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="570" y="550" width="40" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="ay68n4W80iG7V_7q9e0b-12" value="Datablock" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="370" y="550" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="ay68n4W80iG7V_7q9e0b-13" value="Data message with block code, header and a datablock" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="130" y="490" width="480" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="ay68n4W80iG7V_7q9e0b-14" value="Block-code" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="170" y="550" width="40" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="ay68n4W80iG7V_7q9e0b-15" value="Header" style="rounded=0;whiteSpace=wrap;html=1;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="210" y="550" width="160" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="ay68n4W80iG7V_7q9e0b-16" value="Client UID" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="210" y="580" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="ay68n4W80iG7V_7q9e0b-17" value="Error-&lt;div&gt;code&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="330" y="580" width="40" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="ay68n4W80iG7V_7q9e0b-18" value="Command" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="270" y="580" width="60" height="30" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

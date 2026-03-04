@@ -1,0 +1,44 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bodoconsult.NetworkCommunication.ClientNotifications
+  commentId: N:Bodoconsult.NetworkCommunication.ClientNotifications
+  id: Bodoconsult.NetworkCommunication.ClientNotifications
+  children:
+  - Bodoconsult.NetworkCommunication.ClientNotifications.FakeOrderManagementClientNotificationManager
+  - Bodoconsult.NetworkCommunication.ClientNotifications.OrderExecutionNotification
+  - Bodoconsult.NetworkCommunication.ClientNotifications.OrderManagementClientNotificationManagerBase
+  - Bodoconsult.NetworkCommunication.ClientNotifications.StateManagementStateNotification
+  langs:
+  - csharp
+  - vb
+  name: Bodoconsult.NetworkCommunication.ClientNotifications
+  nameWithType: Bodoconsult.NetworkCommunication.ClientNotifications
+  fullName: Bodoconsult.NetworkCommunication.ClientNotifications
+  type: Namespace
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+references:
+- uid: Bodoconsult.NetworkCommunication.ClientNotifications.FakeOrderManagementClientNotificationManager
+  commentId: T:Bodoconsult.NetworkCommunication.ClientNotifications.FakeOrderManagementClientNotificationManager
+  href: Bodoconsult.NetworkCommunication.ClientNotifications.FakeOrderManagementClientNotificationManager.html
+  name: FakeOrderManagementClientNotificationManager
+  nameWithType: FakeOrderManagementClientNotificationManager
+  fullName: Bodoconsult.NetworkCommunication.ClientNotifications.FakeOrderManagementClientNotificationManager
+- uid: Bodoconsult.NetworkCommunication.ClientNotifications.OrderExecutionNotification
+  commentId: T:Bodoconsult.NetworkCommunication.ClientNotifications.OrderExecutionNotification
+  href: Bodoconsult.NetworkCommunication.ClientNotifications.OrderExecutionNotification.html
+  name: OrderExecutionNotification
+  nameWithType: OrderExecutionNotification
+  fullName: Bodoconsult.NetworkCommunication.ClientNotifications.OrderExecutionNotification
+- uid: Bodoconsult.NetworkCommunication.ClientNotifications.OrderManagementClientNotificationManagerBase
+  commentId: T:Bodoconsult.NetworkCommunication.ClientNotifications.OrderManagementClientNotificationManagerBase
+  href: Bodoconsult.NetworkCommunication.ClientNotifications.OrderManagementClientNotificationManagerBase.html
+  name: OrderManagementClientNotificationManagerBase
+  nameWithType: OrderManagementClientNotificationManagerBase
+  fullName: Bodoconsult.NetworkCommunication.ClientNotifications.OrderManagementClientNotificationManagerBase
+- uid: Bodoconsult.NetworkCommunication.ClientNotifications.StateManagementStateNotification
+  commentId: T:Bodoconsult.NetworkCommunication.ClientNotifications.StateManagementStateNotification
+  href: Bodoconsult.NetworkCommunication.ClientNotifications.StateManagementStateNotification.html
+  name: StateManagementStateNotification
+  nameWithType: StateManagementStateNotification
+  fullName: Bodoconsult.NetworkCommunication.ClientNotifications.StateManagementStateNotification

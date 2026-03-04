@@ -1,0 +1,77 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bodoconsult.NetworkCommunication.EnumAndStates
+  commentId: N:Bodoconsult.NetworkCommunication.EnumAndStates
+  id: Bodoconsult.NetworkCommunication.EnumAndStates
+  children:
+  - Bodoconsult.NetworkCommunication.EnumAndStates.IpProtocolEnum
+  - Bodoconsult.NetworkCommunication.EnumAndStates.OrderExecutionResultState
+  - Bodoconsult.NetworkCommunication.EnumAndStates.OrderSource
+  - Bodoconsult.NetworkCommunication.EnumAndStates.TraceCodes
+  langs:
+  - csharp
+  - vb
+  name: Bodoconsult.NetworkCommunication.EnumAndStates
+  nameWithType: Bodoconsult.NetworkCommunication.EnumAndStates
+  fullName: Bodoconsult.NetworkCommunication.EnumAndStates
+  type: Namespace
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+references:
+- uid: Bodoconsult.NetworkCommunication.EnumAndStates.IpProtocolEnum
+  commentId: T:Bodoconsult.NetworkCommunication.EnumAndStates.IpProtocolEnum
+  parent: Bodoconsult.NetworkCommunication.EnumAndStates
+  href: Bodoconsult.NetworkCommunication.EnumAndStates.IpProtocolEnum.html
+  name: IpProtocolEnum
+  nameWithType: IpProtocolEnum
+  fullName: Bodoconsult.NetworkCommunication.EnumAndStates.IpProtocolEnum
+- uid: Bodoconsult.NetworkCommunication.EnumAndStates.OrderExecutionResultState
+  commentId: T:Bodoconsult.NetworkCommunication.EnumAndStates.OrderExecutionResultState
+  parent: Bodoconsult.NetworkCommunication.EnumAndStates
+  href: Bodoconsult.NetworkCommunication.EnumAndStates.OrderExecutionResultState.html
+  name: OrderExecutionResultState
+  nameWithType: OrderExecutionResultState
+  fullName: Bodoconsult.NetworkCommunication.EnumAndStates.OrderExecutionResultState
+- uid: Bodoconsult.NetworkCommunication.EnumAndStates.OrderSource
+  commentId: T:Bodoconsult.NetworkCommunication.EnumAndStates.OrderSource
+  parent: Bodoconsult.NetworkCommunication.EnumAndStates
+  href: Bodoconsult.NetworkCommunication.EnumAndStates.OrderSource.html
+  name: OrderSource
+  nameWithType: OrderSource
+  fullName: Bodoconsult.NetworkCommunication.EnumAndStates.OrderSource
+- uid: Bodoconsult.NetworkCommunication.EnumAndStates.TraceCodes
+  commentId: T:Bodoconsult.NetworkCommunication.EnumAndStates.TraceCodes
+  href: Bodoconsult.NetworkCommunication.EnumAndStates.TraceCodes.html
+  name: TraceCodes
+  nameWithType: TraceCodes
+  fullName: Bodoconsult.NetworkCommunication.EnumAndStates.TraceCodes
+- uid: Bodoconsult.NetworkCommunication.EnumAndStates
+  commentId: N:Bodoconsult.NetworkCommunication.EnumAndStates
+  href: Bodoconsult.html
+  name: Bodoconsult.NetworkCommunication.EnumAndStates
+  nameWithType: Bodoconsult.NetworkCommunication.EnumAndStates
+  fullName: Bodoconsult.NetworkCommunication.EnumAndStates
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.EnumAndStates
+    name: EnumAndStates
+    href: Bodoconsult.NetworkCommunication.EnumAndStates.html
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.EnumAndStates
+    name: EnumAndStates
+    href: Bodoconsult.NetworkCommunication.EnumAndStates.html

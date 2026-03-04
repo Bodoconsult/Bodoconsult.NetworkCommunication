@@ -1,0 +1,117 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bodoconsult.NetworkCommunication.Interfaces.ICommunicationHandlerFactory
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.ICommunicationHandlerFactory
+  id: ICommunicationHandlerFactory
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  children:
+  - Bodoconsult.NetworkCommunication.Interfaces.ICommunicationHandlerFactory.CreateInstance(Bodoconsult.NetworkCommunication.Interfaces.IIpDataMessagingConfig)
+  langs:
+  - csharp
+  - vb
+  name: ICommunicationHandlerFactory
+  nameWithType: ICommunicationHandlerFactory
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.ICommunicationHandlerFactory
+  type: Interface
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/ICommunicationHandlerFactory.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: ICommunicationHandlerFactory
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/ICommunicationHandlerFactory.cs
+    startLine: 7
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Interface for factories to create an instance of <xref href="Bodoconsult.NetworkCommunication.Interfaces.ICommunicationHandler" data-throw-if-not-resolved="false"></xref> implementations
+  example: []
+  syntax:
+    content: public interface ICommunicationHandlerFactory
+    content.vb: Public Interface ICommunicationHandlerFactory
+- uid: Bodoconsult.NetworkCommunication.Interfaces.ICommunicationHandlerFactory.CreateInstance(Bodoconsult.NetworkCommunication.Interfaces.IIpDataMessagingConfig)
+  commentId: M:Bodoconsult.NetworkCommunication.Interfaces.ICommunicationHandlerFactory.CreateInstance(Bodoconsult.NetworkCommunication.Interfaces.IIpDataMessagingConfig)
+  id: CreateInstance(Bodoconsult.NetworkCommunication.Interfaces.IIpDataMessagingConfig)
+  parent: Bodoconsult.NetworkCommunication.Interfaces.ICommunicationHandlerFactory
+  langs:
+  - csharp
+  - vb
+  name: CreateInstance(IIpDataMessagingConfig)
+  nameWithType: ICommunicationHandlerFactory.CreateInstance(IIpDataMessagingConfig)
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.ICommunicationHandlerFactory.CreateInstance(Bodoconsult.NetworkCommunication.Interfaces.IIpDataMessagingConfig)
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/ICommunicationHandlerFactory.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: CreateInstance
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/ICommunicationHandlerFactory.cs
+    startLine: 14
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Create an instance implementing <xref href="Bodoconsult.NetworkCommunication.Interfaces.ICommunicationHandler" data-throw-if-not-resolved="false"></xref>
+  example: []
+  syntax:
+    content: ICommunicationHandler CreateInstance(IIpDataMessagingConfig dataMessagingConfig)
+    parameters:
+    - id: dataMessagingConfig
+      type: Bodoconsult.NetworkCommunication.Interfaces.IIpDataMessagingConfig
+      description: Current data messaging config
+    return:
+      type: Bodoconsult.NetworkCommunication.Interfaces.ICommunicationHandler
+      description: An instance implementing <xref href="Bodoconsult.NetworkCommunication.Interfaces.ICommunicationHandler" data-throw-if-not-resolved="false"></xref>
+    content.vb: Function CreateInstance(dataMessagingConfig As IIpDataMessagingConfig) As ICommunicationHandler
+  overload: Bodoconsult.NetworkCommunication.Interfaces.ICommunicationHandlerFactory.CreateInstance*
+references:
+- uid: Bodoconsult.NetworkCommunication.Interfaces.ICommunicationHandler
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.ICommunicationHandler
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.NetworkCommunication.Interfaces.ICommunicationHandler.html
+  name: ICommunicationHandler
+  nameWithType: ICommunicationHandler
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.ICommunicationHandler
+- uid: Bodoconsult.NetworkCommunication.Interfaces
+  commentId: N:Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.html
+  name: Bodoconsult.NetworkCommunication.Interfaces
+  nameWithType: Bodoconsult.NetworkCommunication.Interfaces
+  fullName: Bodoconsult.NetworkCommunication.Interfaces
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Interfaces
+    name: Interfaces
+    href: Bodoconsult.NetworkCommunication.Interfaces.html
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Interfaces
+    name: Interfaces
+    href: Bodoconsult.NetworkCommunication.Interfaces.html
+- uid: Bodoconsult.NetworkCommunication.Interfaces.ICommunicationHandlerFactory.CreateInstance*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.ICommunicationHandlerFactory.CreateInstance
+  href: Bodoconsult.NetworkCommunication.Interfaces.ICommunicationHandlerFactory.html#Bodoconsult_NetworkCommunication_Interfaces_ICommunicationHandlerFactory_CreateInstance_Bodoconsult_NetworkCommunication_Interfaces_IIpDataMessagingConfig_
+  name: CreateInstance
+  nameWithType: ICommunicationHandlerFactory.CreateInstance
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.ICommunicationHandlerFactory.CreateInstance
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IIpDataMessagingConfig
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.IIpDataMessagingConfig
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.NetworkCommunication.Interfaces.IIpDataMessagingConfig.html
+  name: IIpDataMessagingConfig
+  nameWithType: IIpDataMessagingConfig
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IIpDataMessagingConfig

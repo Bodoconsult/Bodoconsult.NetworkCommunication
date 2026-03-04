@@ -1,0 +1,133 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bodoconsult.NetworkCommunication.Interfaces.ITypedOutboundDataBlock
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.ITypedOutboundDataBlock
+  id: ITypedOutboundDataBlock
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  children:
+  - Bodoconsult.NetworkCommunication.Interfaces.ITypedOutboundDataBlock.DataBlockType
+  langs:
+  - csharp
+  - vb
+  name: ITypedOutboundDataBlock
+  nameWithType: ITypedOutboundDataBlock
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.ITypedOutboundDataBlock
+  type: Interface
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/ITypedOutboundDataBlock.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: ITypedOutboundDataBlock
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/ITypedOutboundDataBlock.cs
+    startLine: 7
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Interface for outbound datablocks having a char properties containing an info about the type of datablock
+  example: []
+  syntax:
+    content: 'public interface ITypedOutboundDataBlock : IOutboundDataBlock'
+    content.vb: Public Interface ITypedOutboundDataBlock Inherits IOutboundDataBlock
+  inheritedMembers:
+  - Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataBlock.Data
+- uid: Bodoconsult.NetworkCommunication.Interfaces.ITypedOutboundDataBlock.DataBlockType
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.ITypedOutboundDataBlock.DataBlockType
+  id: DataBlockType
+  parent: Bodoconsult.NetworkCommunication.Interfaces.ITypedOutboundDataBlock
+  langs:
+  - csharp
+  - vb
+  name: DataBlockType
+  nameWithType: ITypedOutboundDataBlock.DataBlockType
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.ITypedOutboundDataBlock.DataBlockType
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/ITypedOutboundDataBlock.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: DataBlockType
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/ITypedOutboundDataBlock.cs
+    startLine: 12
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Type code for the type of the outbound datablock
+  example: []
+  syntax:
+    content: char DataBlockType { get; }
+    parameters: []
+    return:
+      type: System.Char
+    content.vb: ReadOnly Property DataBlockType As Char
+  overload: Bodoconsult.NetworkCommunication.Interfaces.ITypedOutboundDataBlock.DataBlockType*
+references:
+- uid: Bodoconsult.NetworkCommunication.Interfaces
+  commentId: N:Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.html
+  name: Bodoconsult.NetworkCommunication.Interfaces
+  nameWithType: Bodoconsult.NetworkCommunication.Interfaces
+  fullName: Bodoconsult.NetworkCommunication.Interfaces
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Interfaces
+    name: Interfaces
+    href: Bodoconsult.NetworkCommunication.Interfaces.html
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Interfaces
+    name: Interfaces
+    href: Bodoconsult.NetworkCommunication.Interfaces.html
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataBlock.Data
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataBlock.Data
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataBlock
+  href: Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataBlock.html#Bodoconsult_NetworkCommunication_Interfaces_IOutboundDataBlock_Data
+  name: Data
+  nameWithType: IOutboundDataBlock.Data
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataBlock.Data
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataBlock
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataBlock
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataBlock.html
+  name: IOutboundDataBlock
+  nameWithType: IOutboundDataBlock
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataBlock
+- uid: Bodoconsult.NetworkCommunication.Interfaces.ITypedOutboundDataBlock.DataBlockType*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.ITypedOutboundDataBlock.DataBlockType
+  href: Bodoconsult.NetworkCommunication.Interfaces.ITypedOutboundDataBlock.html#Bodoconsult_NetworkCommunication_Interfaces_ITypedOutboundDataBlock_DataBlockType
+  name: DataBlockType
+  nameWithType: ITypedOutboundDataBlock.DataBlockType
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.ITypedOutboundDataBlock.DataBlockType
+- uid: System.Char
+  commentId: T:System.Char
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.char
+  name: char
+  nameWithType: char
+  fullName: char
+  nameWithType.vb: Char
+  fullName.vb: Char
+  name.vb: Char
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System

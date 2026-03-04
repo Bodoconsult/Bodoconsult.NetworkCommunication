@@ -1,0 +1,1223 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bodoconsult.NetworkCommunication.Communication.FakeIpCommunicationAdapter
+  commentId: T:Bodoconsult.NetworkCommunication.Communication.FakeIpCommunicationAdapter
+  id: FakeIpCommunicationAdapter
+  parent: Bodoconsult.NetworkCommunication.Communication
+  children:
+  - Bodoconsult.NetworkCommunication.Communication.FakeIpCommunicationAdapter.CancelRunningOperation
+  - Bodoconsult.NetworkCommunication.Communication.FakeIpCommunicationAdapter.ComDevClose
+  - Bodoconsult.NetworkCommunication.Communication.FakeIpCommunicationAdapter.ComDevInit
+  - Bodoconsult.NetworkCommunication.Communication.FakeIpCommunicationAdapter.ComDevReset
+  - Bodoconsult.NetworkCommunication.Communication.FakeIpCommunicationAdapter.DataMessagingConfig
+  - Bodoconsult.NetworkCommunication.Communication.FakeIpCommunicationAdapter.Dispose
+  - Bodoconsult.NetworkCommunication.Communication.FakeIpCommunicationAdapter.IsCommunicationHandlerNotNull
+  - Bodoconsult.NetworkCommunication.Communication.FakeIpCommunicationAdapter.IsConnected
+  - Bodoconsult.NetworkCommunication.Communication.FakeIpCommunicationAdapter.IsPingableAsync
+  - Bodoconsult.NetworkCommunication.Communication.FakeIpCommunicationAdapter.PingResult
+  - Bodoconsult.NetworkCommunication.Communication.FakeIpCommunicationAdapter.ResetInternalState
+  - Bodoconsult.NetworkCommunication.Communication.FakeIpCommunicationAdapter.SendDataMessage(Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessage)
+  - Bodoconsult.NetworkCommunication.Communication.FakeIpCommunicationAdapter.SetOrderProcessingStateDelegate
+  langs:
+  - csharp
+  - vb
+  name: FakeIpCommunicationAdapter
+  nameWithType: FakeIpCommunicationAdapter
+  fullName: Bodoconsult.NetworkCommunication.Communication.FakeIpCommunicationAdapter
+  type: Class
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Communication/FakeIpCommunicationAdapter.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: FakeIpCommunicationAdapter
+    path: src/Bodoconsult.NetworkCommunication/Communication/FakeIpCommunicationAdapter.cs
+    startLine: 11
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Communication
+  summary: Fake implementation of <xref href="Bodoconsult.NetworkCommunication.Interfaces.ICommunicationAdapter" data-throw-if-not-resolved="false"></xref>
+  example: []
+  syntax:
+    content: 'public class FakeIpCommunicationAdapter : ICommunicationAdapter, IDisposable'
+    content.vb: Public Class FakeIpCommunicationAdapter Implements ICommunicationAdapter, IDisposable
+  inheritance:
+  - System.Object
+  implements:
+  - Bodoconsult.NetworkCommunication.Interfaces.ICommunicationAdapter
+  - System.IDisposable
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: Bodoconsult.NetworkCommunication.Communication.FakeIpCommunicationAdapter.PingResult
+  commentId: P:Bodoconsult.NetworkCommunication.Communication.FakeIpCommunicationAdapter.PingResult
+  id: PingResult
+  parent: Bodoconsult.NetworkCommunication.Communication.FakeIpCommunicationAdapter
+  langs:
+  - csharp
+  - vb
+  name: PingResult
+  nameWithType: FakeIpCommunicationAdapter.PingResult
+  fullName: Bodoconsult.NetworkCommunication.Communication.FakeIpCommunicationAdapter.PingResult
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Communication/FakeIpCommunicationAdapter.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: PingResult
+    path: src/Bodoconsult.NetworkCommunication/Communication/FakeIpCommunicationAdapter.cs
+    startLine: 16
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Communication
+  summary: The expected PING result
+  example: []
+  syntax:
+    content: public bool PingResult { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property PingResult As Boolean
+  overload: Bodoconsult.NetworkCommunication.Communication.FakeIpCommunicationAdapter.PingResult*
+- uid: Bodoconsult.NetworkCommunication.Communication.FakeIpCommunicationAdapter.Dispose
+  commentId: M:Bodoconsult.NetworkCommunication.Communication.FakeIpCommunicationAdapter.Dispose
+  id: Dispose
+  parent: Bodoconsult.NetworkCommunication.Communication.FakeIpCommunicationAdapter
+  langs:
+  - csharp
+  - vb
+  name: Dispose()
+  nameWithType: FakeIpCommunicationAdapter.Dispose()
+  fullName: Bodoconsult.NetworkCommunication.Communication.FakeIpCommunicationAdapter.Dispose()
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Communication/FakeIpCommunicationAdapter.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Dispose
+    path: src/Bodoconsult.NetworkCommunication/Communication/FakeIpCommunicationAdapter.cs
+    startLine: 19
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Communication
+  summary: Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+  example: []
+  syntax:
+    content: public void Dispose()
+    content.vb: Public Sub Dispose()
+  overload: Bodoconsult.NetworkCommunication.Communication.FakeIpCommunicationAdapter.Dispose*
+  implements:
+  - System.IDisposable.Dispose
+- uid: Bodoconsult.NetworkCommunication.Communication.FakeIpCommunicationAdapter.IsPingableAsync
+  commentId: M:Bodoconsult.NetworkCommunication.Communication.FakeIpCommunicationAdapter.IsPingableAsync
+  id: IsPingableAsync
+  parent: Bodoconsult.NetworkCommunication.Communication.FakeIpCommunicationAdapter
+  langs:
+  - csharp
+  - vb
+  name: IsPingableAsync()
+  nameWithType: FakeIpCommunicationAdapter.IsPingableAsync()
+  fullName: Bodoconsult.NetworkCommunication.Communication.FakeIpCommunicationAdapter.IsPingableAsync()
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Communication/FakeIpCommunicationAdapter.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: IsPingableAsync
+    path: src/Bodoconsult.NetworkCommunication/Communication/FakeIpCommunicationAdapter.cs
+    startLine: 28
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Communication
+  summary: Is the device successfully pinged?
+  example: []
+  syntax:
+    content: public Task<bool> IsPingableAsync()
+    return:
+      type: System.Threading.Tasks.Task{System.Boolean}
+      description: True if the device was pinged successfully else false
+    content.vb: Public Function IsPingableAsync() As Task(Of Boolean)
+  overload: Bodoconsult.NetworkCommunication.Communication.FakeIpCommunicationAdapter.IsPingableAsync*
+  implements:
+  - Bodoconsult.NetworkCommunication.Interfaces.ICommunicationAdapter.IsPingableAsync
+- uid: Bodoconsult.NetworkCommunication.Communication.FakeIpCommunicationAdapter.IsConnected
+  commentId: P:Bodoconsult.NetworkCommunication.Communication.FakeIpCommunicationAdapter.IsConnected
+  id: IsConnected
+  parent: Bodoconsult.NetworkCommunication.Communication.FakeIpCommunicationAdapter
+  langs:
+  - csharp
+  - vb
+  name: IsConnected
+  nameWithType: FakeIpCommunicationAdapter.IsConnected
+  fullName: Bodoconsult.NetworkCommunication.Communication.FakeIpCommunicationAdapter.IsConnected
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Communication/FakeIpCommunicationAdapter.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: IsConnected
+    path: src/Bodoconsult.NetworkCommunication/Communication/FakeIpCommunicationAdapter.cs
+    startLine: 36
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Communication
+  summary: Is the adapter connected
+  example: []
+  syntax:
+    content: public bool IsConnected { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public ReadOnly Property IsConnected As Boolean
+  overload: Bodoconsult.NetworkCommunication.Communication.FakeIpCommunicationAdapter.IsConnected*
+  implements:
+  - Bodoconsult.NetworkCommunication.Interfaces.ICommunicationAdapter.IsConnected
+- uid: Bodoconsult.NetworkCommunication.Communication.FakeIpCommunicationAdapter.IsCommunicationHandlerNotNull
+  commentId: P:Bodoconsult.NetworkCommunication.Communication.FakeIpCommunicationAdapter.IsCommunicationHandlerNotNull
+  id: IsCommunicationHandlerNotNull
+  parent: Bodoconsult.NetworkCommunication.Communication.FakeIpCommunicationAdapter
+  langs:
+  - csharp
+  - vb
+  name: IsCommunicationHandlerNotNull
+  nameWithType: FakeIpCommunicationAdapter.IsCommunicationHandlerNotNull
+  fullName: Bodoconsult.NetworkCommunication.Communication.FakeIpCommunicationAdapter.IsCommunicationHandlerNotNull
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Communication/FakeIpCommunicationAdapter.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: IsCommunicationHandlerNotNull
+    path: src/Bodoconsult.NetworkCommunication/Communication/FakeIpCommunicationAdapter.cs
+    startLine: 41
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Communication
+  summary: This property returns whether the communication object is valid and can be used
+  example: []
+  syntax:
+    content: public bool IsCommunicationHandlerNotNull { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public ReadOnly Property IsCommunicationHandlerNotNull As Boolean
+  overload: Bodoconsult.NetworkCommunication.Communication.FakeIpCommunicationAdapter.IsCommunicationHandlerNotNull*
+  implements:
+  - Bodoconsult.NetworkCommunication.Interfaces.ICommunicationAdapter.IsCommunicationHandlerNotNull
+- uid: Bodoconsult.NetworkCommunication.Communication.FakeIpCommunicationAdapter.SetOrderProcessingStateDelegate
+  commentId: P:Bodoconsult.NetworkCommunication.Communication.FakeIpCommunicationAdapter.SetOrderProcessingStateDelegate
+  id: SetOrderProcessingStateDelegate
+  parent: Bodoconsult.NetworkCommunication.Communication.FakeIpCommunicationAdapter
+  langs:
+  - csharp
+  - vb
+  name: SetOrderProcessingStateDelegate
+  nameWithType: FakeIpCommunicationAdapter.SetOrderProcessingStateDelegate
+  fullName: Bodoconsult.NetworkCommunication.Communication.FakeIpCommunicationAdapter.SetOrderProcessingStateDelegate
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Communication/FakeIpCommunicationAdapter.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: SetOrderProcessingStateDelegate
+    path: src/Bodoconsult.NetworkCommunication/Communication/FakeIpCommunicationAdapter.cs
+    startLine: 46
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Communication
+  summary: Set or get the current order processing state delegate
+  example: []
+  syntax:
+    content: public SetOrderProcessingStateDelegate SetOrderProcessingStateDelegate { get; set; }
+    parameters: []
+    return:
+      type: Bodoconsult.NetworkCommunication.Delegates.SetOrderProcessingStateDelegate
+    content.vb: Public Property SetOrderProcessingStateDelegate As SetOrderProcessingStateDelegate
+  overload: Bodoconsult.NetworkCommunication.Communication.FakeIpCommunicationAdapter.SetOrderProcessingStateDelegate*
+  implements:
+  - Bodoconsult.NetworkCommunication.Interfaces.ICommunicationAdapter.SetOrderProcessingStateDelegate
+- uid: Bodoconsult.NetworkCommunication.Communication.FakeIpCommunicationAdapter.ComDevInit
+  commentId: M:Bodoconsult.NetworkCommunication.Communication.FakeIpCommunicationAdapter.ComDevInit
+  id: ComDevInit
+  parent: Bodoconsult.NetworkCommunication.Communication.FakeIpCommunicationAdapter
+  langs:
+  - csharp
+  - vb
+  name: ComDevInit()
+  nameWithType: FakeIpCommunicationAdapter.ComDevInit()
+  fullName: Bodoconsult.NetworkCommunication.Communication.FakeIpCommunicationAdapter.ComDevInit()
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Communication/FakeIpCommunicationAdapter.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: ComDevInit
+    path: src/Bodoconsult.NetworkCommunication/Communication/FakeIpCommunicationAdapter.cs
+    startLine: 52
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Communication
+  summary: Initialize the communication with the device
+  example: []
+  syntax:
+    content: public bool ComDevInit()
+    return:
+      type: System.Boolean
+      description: True if the initialiazation was successfull else false
+    content.vb: Public Function ComDevInit() As Boolean
+  overload: Bodoconsult.NetworkCommunication.Communication.FakeIpCommunicationAdapter.ComDevInit*
+  implements:
+  - Bodoconsult.NetworkCommunication.Interfaces.ICommunicationAdapter.ComDevInit
+- uid: Bodoconsult.NetworkCommunication.Communication.FakeIpCommunicationAdapter.ComDevClose
+  commentId: M:Bodoconsult.NetworkCommunication.Communication.FakeIpCommunicationAdapter.ComDevClose
+  id: ComDevClose
+  parent: Bodoconsult.NetworkCommunication.Communication.FakeIpCommunicationAdapter
+  langs:
+  - csharp
+  - vb
+  name: ComDevClose()
+  nameWithType: FakeIpCommunicationAdapter.ComDevClose()
+  fullName: Bodoconsult.NetworkCommunication.Communication.FakeIpCommunicationAdapter.ComDevClose()
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Communication/FakeIpCommunicationAdapter.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: ComDevClose
+    path: src/Bodoconsult.NetworkCommunication/Communication/FakeIpCommunicationAdapter.cs
+    startLine: 58
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Communication
+  summary: Close the communication channel with the device
+  example: []
+  syntax:
+    content: public void ComDevClose()
+    content.vb: Public Sub ComDevClose()
+  overload: Bodoconsult.NetworkCommunication.Communication.FakeIpCommunicationAdapter.ComDevClose*
+  implements:
+  - Bodoconsult.NetworkCommunication.Interfaces.ICommunicationAdapter.ComDevClose
+- uid: Bodoconsult.NetworkCommunication.Communication.FakeIpCommunicationAdapter.ComDevReset
+  commentId: M:Bodoconsult.NetworkCommunication.Communication.FakeIpCommunicationAdapter.ComDevReset
+  id: ComDevReset
+  parent: Bodoconsult.NetworkCommunication.Communication.FakeIpCommunicationAdapter
+  langs:
+  - csharp
+  - vb
+  name: ComDevReset()
+  nameWithType: FakeIpCommunicationAdapter.ComDevReset()
+  fullName: Bodoconsult.NetworkCommunication.Communication.FakeIpCommunicationAdapter.ComDevReset()
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Communication/FakeIpCommunicationAdapter.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: ComDevReset
+    path: src/Bodoconsult.NetworkCommunication/Communication/FakeIpCommunicationAdapter.cs
+    startLine: 63
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Communication
+  summary: Reset the com dev to a defined state as if there were never a communication with the device. No logging for ComDevClose activated
+  example: []
+  syntax:
+    content: public void ComDevReset()
+    content.vb: Public Sub ComDevReset()
+  overload: Bodoconsult.NetworkCommunication.Communication.FakeIpCommunicationAdapter.ComDevReset*
+  implements:
+  - Bodoconsult.NetworkCommunication.Interfaces.ICommunicationAdapter.ComDevReset
+- uid: Bodoconsult.NetworkCommunication.Communication.FakeIpCommunicationAdapter.ResetInternalState
+  commentId: M:Bodoconsult.NetworkCommunication.Communication.FakeIpCommunicationAdapter.ResetInternalState
+  id: ResetInternalState
+  parent: Bodoconsult.NetworkCommunication.Communication.FakeIpCommunicationAdapter
+  langs:
+  - csharp
+  - vb
+  name: ResetInternalState()
+  nameWithType: FakeIpCommunicationAdapter.ResetInternalState()
+  fullName: Bodoconsult.NetworkCommunication.Communication.FakeIpCommunicationAdapter.ResetInternalState()
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Communication/FakeIpCommunicationAdapter.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: ResetInternalState
+    path: src/Bodoconsult.NetworkCommunication/Communication/FakeIpCommunicationAdapter.cs
+    startLine: 68
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Communication
+  summary: Reset the com dev without breaking the communication
+  example: []
+  syntax:
+    content: public void ResetInternalState()
+    content.vb: Public Sub ResetInternalState()
+  overload: Bodoconsult.NetworkCommunication.Communication.FakeIpCommunicationAdapter.ResetInternalState*
+  implements:
+  - Bodoconsult.NetworkCommunication.Interfaces.ICommunicationAdapter.ResetInternalState
+- uid: Bodoconsult.NetworkCommunication.Communication.FakeIpCommunicationAdapter.DataMessagingConfig
+  commentId: P:Bodoconsult.NetworkCommunication.Communication.FakeIpCommunicationAdapter.DataMessagingConfig
+  id: DataMessagingConfig
+  parent: Bodoconsult.NetworkCommunication.Communication.FakeIpCommunicationAdapter
+  langs:
+  - csharp
+  - vb
+  name: DataMessagingConfig
+  nameWithType: FakeIpCommunicationAdapter.DataMessagingConfig
+  fullName: Bodoconsult.NetworkCommunication.Communication.FakeIpCommunicationAdapter.DataMessagingConfig
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Communication/FakeIpCommunicationAdapter.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: DataMessagingConfig
+    path: src/Bodoconsult.NetworkCommunication/Communication/FakeIpCommunicationAdapter.cs
+    startLine: 76
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Communication
+  summary: Device configuration for data messaging
+  example: []
+  syntax:
+    content: public IIpDataMessagingConfig DataMessagingConfig { get; set; }
+    parameters: []
+    return:
+      type: Bodoconsult.NetworkCommunication.Interfaces.IIpDataMessagingConfig
+    content.vb: Public Property DataMessagingConfig As IIpDataMessagingConfig
+  overload: Bodoconsult.NetworkCommunication.Communication.FakeIpCommunicationAdapter.DataMessagingConfig*
+  implements:
+  - Bodoconsult.NetworkCommunication.Interfaces.ICommunicationAdapter.DataMessagingConfig
+- uid: Bodoconsult.NetworkCommunication.Communication.FakeIpCommunicationAdapter.SendDataMessage(Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessage)
+  commentId: M:Bodoconsult.NetworkCommunication.Communication.FakeIpCommunicationAdapter.SendDataMessage(Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessage)
+  id: SendDataMessage(Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessage)
+  parent: Bodoconsult.NetworkCommunication.Communication.FakeIpCommunicationAdapter
+  langs:
+  - csharp
+  - vb
+  name: SendDataMessage(IOutboundDataMessage)
+  nameWithType: FakeIpCommunicationAdapter.SendDataMessage(IOutboundDataMessage)
+  fullName: Bodoconsult.NetworkCommunication.Communication.FakeIpCommunicationAdapter.SendDataMessage(Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessage)
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Communication/FakeIpCommunicationAdapter.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: SendDataMessage
+    path: src/Bodoconsult.NetworkCommunication/Communication/FakeIpCommunicationAdapter.cs
+    startLine: 83
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Communication
+  summary: Send a data message to the device
+  example: []
+  syntax:
+    content: public MessageSendingResult SendDataMessage(IOutboundDataMessage command)
+    parameters:
+    - id: command
+      type: Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessage
+      description: Command to send
+    return:
+      type: Bodoconsult.NetworkCommunication.Interfaces.MessageSendingResult
+      description: Reply of the device
+    content.vb: Public Function SendDataMessage(command As IOutboundDataMessage) As MessageSendingResult
+  overload: Bodoconsult.NetworkCommunication.Communication.FakeIpCommunicationAdapter.SendDataMessage*
+  implements:
+  - Bodoconsult.NetworkCommunication.Interfaces.ICommunicationAdapter.SendDataMessage(Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessage)
+- uid: Bodoconsult.NetworkCommunication.Communication.FakeIpCommunicationAdapter.CancelRunningOperation
+  commentId: M:Bodoconsult.NetworkCommunication.Communication.FakeIpCommunicationAdapter.CancelRunningOperation
+  id: CancelRunningOperation
+  parent: Bodoconsult.NetworkCommunication.Communication.FakeIpCommunicationAdapter
+  langs:
+  - csharp
+  - vb
+  name: CancelRunningOperation()
+  nameWithType: FakeIpCommunicationAdapter.CancelRunningOperation()
+  fullName: Bodoconsult.NetworkCommunication.Communication.FakeIpCommunicationAdapter.CancelRunningOperation()
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Communication/FakeIpCommunicationAdapter.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: CancelRunningOperation
+    path: src/Bodoconsult.NetworkCommunication/Communication/FakeIpCommunicationAdapter.cs
+    startLine: 92
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Communication
+  summary: Cancel the currently running operation on the device
+  example: []
+  syntax:
+    content: public MessageSendingResult CancelRunningOperation()
+    return:
+      type: Bodoconsult.NetworkCommunication.Interfaces.MessageSendingResult
+    content.vb: Public Function CancelRunningOperation() As MessageSendingResult
+  overload: Bodoconsult.NetworkCommunication.Communication.FakeIpCommunicationAdapter.CancelRunningOperation*
+  implements:
+  - Bodoconsult.NetworkCommunication.Interfaces.ICommunicationAdapter.CancelRunningOperation
+references:
+- uid: Bodoconsult.NetworkCommunication.Interfaces.ICommunicationAdapter
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.ICommunicationAdapter
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.NetworkCommunication.Interfaces.ICommunicationAdapter.html
+  name: ICommunicationAdapter
+  nameWithType: ICommunicationAdapter
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.ICommunicationAdapter
+- uid: Bodoconsult.NetworkCommunication.Communication
+  commentId: N:Bodoconsult.NetworkCommunication.Communication
+  href: Bodoconsult.html
+  name: Bodoconsult.NetworkCommunication.Communication
+  nameWithType: Bodoconsult.NetworkCommunication.Communication
+  fullName: Bodoconsult.NetworkCommunication.Communication
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Communication
+    name: Communication
+    href: Bodoconsult.NetworkCommunication.Communication.html
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Communication
+    name: Communication
+    href: Bodoconsult.NetworkCommunication.Communication.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.IDisposable
+  commentId: T:System.IDisposable
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable
+  name: IDisposable
+  nameWithType: IDisposable
+  fullName: System.IDisposable
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: Bodoconsult.NetworkCommunication.Interfaces
+  commentId: N:Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.html
+  name: Bodoconsult.NetworkCommunication.Interfaces
+  nameWithType: Bodoconsult.NetworkCommunication.Interfaces
+  fullName: Bodoconsult.NetworkCommunication.Interfaces
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Interfaces
+    name: Interfaces
+    href: Bodoconsult.NetworkCommunication.Interfaces.html
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Interfaces
+    name: Interfaces
+    href: Bodoconsult.NetworkCommunication.Interfaces.html
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Bodoconsult.NetworkCommunication.Communication.FakeIpCommunicationAdapter.PingResult*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Communication.FakeIpCommunicationAdapter.PingResult
+  href: Bodoconsult.NetworkCommunication.Communication.FakeIpCommunicationAdapter.html#Bodoconsult_NetworkCommunication_Communication_FakeIpCommunicationAdapter_PingResult
+  name: PingResult
+  nameWithType: FakeIpCommunicationAdapter.PingResult
+  fullName: Bodoconsult.NetworkCommunication.Communication.FakeIpCommunicationAdapter.PingResult
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: Bodoconsult.NetworkCommunication.Communication.FakeIpCommunicationAdapter.Dispose*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Communication.FakeIpCommunicationAdapter.Dispose
+  href: Bodoconsult.NetworkCommunication.Communication.FakeIpCommunicationAdapter.html#Bodoconsult_NetworkCommunication_Communication_FakeIpCommunicationAdapter_Dispose
+  name: Dispose
+  nameWithType: FakeIpCommunicationAdapter.Dispose
+  fullName: Bodoconsult.NetworkCommunication.Communication.FakeIpCommunicationAdapter.Dispose
+- uid: System.IDisposable.Dispose
+  commentId: M:System.IDisposable.Dispose
+  parent: System.IDisposable
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  name: Dispose()
+  nameWithType: IDisposable.Dispose()
+  fullName: System.IDisposable.Dispose()
+  spec.csharp:
+  - uid: System.IDisposable.Dispose
+    name: Dispose
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.IDisposable.Dispose
+    name: Dispose
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  - name: (
+  - name: )
+- uid: Bodoconsult.NetworkCommunication.Communication.FakeIpCommunicationAdapter.IsPingableAsync*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Communication.FakeIpCommunicationAdapter.IsPingableAsync
+  href: Bodoconsult.NetworkCommunication.Communication.FakeIpCommunicationAdapter.html#Bodoconsult_NetworkCommunication_Communication_FakeIpCommunicationAdapter_IsPingableAsync
+  name: IsPingableAsync
+  nameWithType: FakeIpCommunicationAdapter.IsPingableAsync
+  fullName: Bodoconsult.NetworkCommunication.Communication.FakeIpCommunicationAdapter.IsPingableAsync
+- uid: Bodoconsult.NetworkCommunication.Interfaces.ICommunicationAdapter.IsPingableAsync
+  commentId: M:Bodoconsult.NetworkCommunication.Interfaces.ICommunicationAdapter.IsPingableAsync
+  parent: Bodoconsult.NetworkCommunication.Interfaces.ICommunicationAdapter
+  href: Bodoconsult.NetworkCommunication.Interfaces.ICommunicationAdapter.html#Bodoconsult_NetworkCommunication_Interfaces_ICommunicationAdapter_IsPingableAsync
+  name: IsPingableAsync()
+  nameWithType: ICommunicationAdapter.IsPingableAsync()
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.ICommunicationAdapter.IsPingableAsync()
+  spec.csharp:
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.ICommunicationAdapter.IsPingableAsync
+    name: IsPingableAsync
+    href: Bodoconsult.NetworkCommunication.Interfaces.ICommunicationAdapter.html#Bodoconsult_NetworkCommunication_Interfaces_ICommunicationAdapter_IsPingableAsync
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.ICommunicationAdapter.IsPingableAsync
+    name: IsPingableAsync
+    href: Bodoconsult.NetworkCommunication.Interfaces.ICommunicationAdapter.html#Bodoconsult_NetworkCommunication_Interfaces_ICommunicationAdapter_IsPingableAsync
+  - name: (
+  - name: )
+- uid: System.Threading.Tasks.Task{System.Boolean}
+  commentId: T:System.Threading.Tasks.Task{System.Boolean}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<bool>
+  nameWithType: Task<bool>
+  fullName: System.Threading.Tasks.Task<bool>
+  nameWithType.vb: Task(Of Boolean)
+  fullName.vb: System.Threading.Tasks.Task(Of Boolean)
+  name.vb: Task(Of Boolean)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: System.Threading.Tasks.Task`1
+  commentId: T:System.Threading.Tasks.Task`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<TResult>
+  nameWithType: Task<TResult>
+  fullName: System.Threading.Tasks.Task<TResult>
+  nameWithType.vb: Task(Of TResult)
+  fullName.vb: System.Threading.Tasks.Task(Of TResult)
+  name.vb: Task(Of TResult)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - name: TResult
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TResult
+  - name: )
+- uid: System.Threading.Tasks
+  commentId: N:System.Threading.Tasks
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Threading.Tasks
+  nameWithType: System.Threading.Tasks
+  fullName: System.Threading.Tasks
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+- uid: Bodoconsult.NetworkCommunication.Communication.FakeIpCommunicationAdapter.IsConnected*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Communication.FakeIpCommunicationAdapter.IsConnected
+  href: Bodoconsult.NetworkCommunication.Communication.FakeIpCommunicationAdapter.html#Bodoconsult_NetworkCommunication_Communication_FakeIpCommunicationAdapter_IsConnected
+  name: IsConnected
+  nameWithType: FakeIpCommunicationAdapter.IsConnected
+  fullName: Bodoconsult.NetworkCommunication.Communication.FakeIpCommunicationAdapter.IsConnected
+- uid: Bodoconsult.NetworkCommunication.Interfaces.ICommunicationAdapter.IsConnected
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.ICommunicationAdapter.IsConnected
+  parent: Bodoconsult.NetworkCommunication.Interfaces.ICommunicationAdapter
+  href: Bodoconsult.NetworkCommunication.Interfaces.ICommunicationAdapter.html#Bodoconsult_NetworkCommunication_Interfaces_ICommunicationAdapter_IsConnected
+  name: IsConnected
+  nameWithType: ICommunicationAdapter.IsConnected
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.ICommunicationAdapter.IsConnected
+- uid: Bodoconsult.NetworkCommunication.Communication.FakeIpCommunicationAdapter.IsCommunicationHandlerNotNull*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Communication.FakeIpCommunicationAdapter.IsCommunicationHandlerNotNull
+  href: Bodoconsult.NetworkCommunication.Communication.FakeIpCommunicationAdapter.html#Bodoconsult_NetworkCommunication_Communication_FakeIpCommunicationAdapter_IsCommunicationHandlerNotNull
+  name: IsCommunicationHandlerNotNull
+  nameWithType: FakeIpCommunicationAdapter.IsCommunicationHandlerNotNull
+  fullName: Bodoconsult.NetworkCommunication.Communication.FakeIpCommunicationAdapter.IsCommunicationHandlerNotNull
+- uid: Bodoconsult.NetworkCommunication.Interfaces.ICommunicationAdapter.IsCommunicationHandlerNotNull
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.ICommunicationAdapter.IsCommunicationHandlerNotNull
+  parent: Bodoconsult.NetworkCommunication.Interfaces.ICommunicationAdapter
+  href: Bodoconsult.NetworkCommunication.Interfaces.ICommunicationAdapter.html#Bodoconsult_NetworkCommunication_Interfaces_ICommunicationAdapter_IsCommunicationHandlerNotNull
+  name: IsCommunicationHandlerNotNull
+  nameWithType: ICommunicationAdapter.IsCommunicationHandlerNotNull
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.ICommunicationAdapter.IsCommunicationHandlerNotNull
+- uid: Bodoconsult.NetworkCommunication.Communication.FakeIpCommunicationAdapter.SetOrderProcessingStateDelegate*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Communication.FakeIpCommunicationAdapter.SetOrderProcessingStateDelegate
+  href: Bodoconsult.NetworkCommunication.Communication.FakeIpCommunicationAdapter.html#Bodoconsult_NetworkCommunication_Communication_FakeIpCommunicationAdapter_SetOrderProcessingStateDelegate
+  name: SetOrderProcessingStateDelegate
+  nameWithType: FakeIpCommunicationAdapter.SetOrderProcessingStateDelegate
+  fullName: Bodoconsult.NetworkCommunication.Communication.FakeIpCommunicationAdapter.SetOrderProcessingStateDelegate
+- uid: Bodoconsult.NetworkCommunication.Interfaces.ICommunicationAdapter.SetOrderProcessingStateDelegate
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.ICommunicationAdapter.SetOrderProcessingStateDelegate
+  parent: Bodoconsult.NetworkCommunication.Interfaces.ICommunicationAdapter
+  href: Bodoconsult.NetworkCommunication.Interfaces.ICommunicationAdapter.html#Bodoconsult_NetworkCommunication_Interfaces_ICommunicationAdapter_SetOrderProcessingStateDelegate
+  name: SetOrderProcessingStateDelegate
+  nameWithType: ICommunicationAdapter.SetOrderProcessingStateDelegate
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.ICommunicationAdapter.SetOrderProcessingStateDelegate
+- uid: Bodoconsult.NetworkCommunication.Delegates.SetOrderProcessingStateDelegate
+  commentId: T:Bodoconsult.NetworkCommunication.Delegates.SetOrderProcessingStateDelegate
+  parent: Bodoconsult.NetworkCommunication.Delegates
+  href: Bodoconsult.NetworkCommunication.Delegates.SetOrderProcessingStateDelegate.html
+  name: SetOrderProcessingStateDelegate
+  nameWithType: SetOrderProcessingStateDelegate
+  fullName: Bodoconsult.NetworkCommunication.Delegates.SetOrderProcessingStateDelegate
+- uid: Bodoconsult.NetworkCommunication.Delegates
+  commentId: N:Bodoconsult.NetworkCommunication.Delegates
+  href: Bodoconsult.html
+  name: Bodoconsult.NetworkCommunication.Delegates
+  nameWithType: Bodoconsult.NetworkCommunication.Delegates
+  fullName: Bodoconsult.NetworkCommunication.Delegates
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Delegates
+    name: Delegates
+    href: Bodoconsult.NetworkCommunication.Delegates.html
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Delegates
+    name: Delegates
+    href: Bodoconsult.NetworkCommunication.Delegates.html
+- uid: Bodoconsult.NetworkCommunication.Communication.FakeIpCommunicationAdapter.ComDevInit*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Communication.FakeIpCommunicationAdapter.ComDevInit
+  href: Bodoconsult.NetworkCommunication.Communication.FakeIpCommunicationAdapter.html#Bodoconsult_NetworkCommunication_Communication_FakeIpCommunicationAdapter_ComDevInit
+  name: ComDevInit
+  nameWithType: FakeIpCommunicationAdapter.ComDevInit
+  fullName: Bodoconsult.NetworkCommunication.Communication.FakeIpCommunicationAdapter.ComDevInit
+- uid: Bodoconsult.NetworkCommunication.Interfaces.ICommunicationAdapter.ComDevInit
+  commentId: M:Bodoconsult.NetworkCommunication.Interfaces.ICommunicationAdapter.ComDevInit
+  parent: Bodoconsult.NetworkCommunication.Interfaces.ICommunicationAdapter
+  href: Bodoconsult.NetworkCommunication.Interfaces.ICommunicationAdapter.html#Bodoconsult_NetworkCommunication_Interfaces_ICommunicationAdapter_ComDevInit
+  name: ComDevInit()
+  nameWithType: ICommunicationAdapter.ComDevInit()
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.ICommunicationAdapter.ComDevInit()
+  spec.csharp:
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.ICommunicationAdapter.ComDevInit
+    name: ComDevInit
+    href: Bodoconsult.NetworkCommunication.Interfaces.ICommunicationAdapter.html#Bodoconsult_NetworkCommunication_Interfaces_ICommunicationAdapter_ComDevInit
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.ICommunicationAdapter.ComDevInit
+    name: ComDevInit
+    href: Bodoconsult.NetworkCommunication.Interfaces.ICommunicationAdapter.html#Bodoconsult_NetworkCommunication_Interfaces_ICommunicationAdapter_ComDevInit
+  - name: (
+  - name: )
+- uid: Bodoconsult.NetworkCommunication.Communication.FakeIpCommunicationAdapter.ComDevClose*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Communication.FakeIpCommunicationAdapter.ComDevClose
+  href: Bodoconsult.NetworkCommunication.Communication.FakeIpCommunicationAdapter.html#Bodoconsult_NetworkCommunication_Communication_FakeIpCommunicationAdapter_ComDevClose
+  name: ComDevClose
+  nameWithType: FakeIpCommunicationAdapter.ComDevClose
+  fullName: Bodoconsult.NetworkCommunication.Communication.FakeIpCommunicationAdapter.ComDevClose
+- uid: Bodoconsult.NetworkCommunication.Interfaces.ICommunicationAdapter.ComDevClose
+  commentId: M:Bodoconsult.NetworkCommunication.Interfaces.ICommunicationAdapter.ComDevClose
+  parent: Bodoconsult.NetworkCommunication.Interfaces.ICommunicationAdapter
+  href: Bodoconsult.NetworkCommunication.Interfaces.ICommunicationAdapter.html#Bodoconsult_NetworkCommunication_Interfaces_ICommunicationAdapter_ComDevClose
+  name: ComDevClose()
+  nameWithType: ICommunicationAdapter.ComDevClose()
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.ICommunicationAdapter.ComDevClose()
+  spec.csharp:
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.ICommunicationAdapter.ComDevClose
+    name: ComDevClose
+    href: Bodoconsult.NetworkCommunication.Interfaces.ICommunicationAdapter.html#Bodoconsult_NetworkCommunication_Interfaces_ICommunicationAdapter_ComDevClose
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.ICommunicationAdapter.ComDevClose
+    name: ComDevClose
+    href: Bodoconsult.NetworkCommunication.Interfaces.ICommunicationAdapter.html#Bodoconsult_NetworkCommunication_Interfaces_ICommunicationAdapter_ComDevClose
+  - name: (
+  - name: )
+- uid: Bodoconsult.NetworkCommunication.Communication.FakeIpCommunicationAdapter.ComDevReset*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Communication.FakeIpCommunicationAdapter.ComDevReset
+  href: Bodoconsult.NetworkCommunication.Communication.FakeIpCommunicationAdapter.html#Bodoconsult_NetworkCommunication_Communication_FakeIpCommunicationAdapter_ComDevReset
+  name: ComDevReset
+  nameWithType: FakeIpCommunicationAdapter.ComDevReset
+  fullName: Bodoconsult.NetworkCommunication.Communication.FakeIpCommunicationAdapter.ComDevReset
+- uid: Bodoconsult.NetworkCommunication.Interfaces.ICommunicationAdapter.ComDevReset
+  commentId: M:Bodoconsult.NetworkCommunication.Interfaces.ICommunicationAdapter.ComDevReset
+  parent: Bodoconsult.NetworkCommunication.Interfaces.ICommunicationAdapter
+  href: Bodoconsult.NetworkCommunication.Interfaces.ICommunicationAdapter.html#Bodoconsult_NetworkCommunication_Interfaces_ICommunicationAdapter_ComDevReset
+  name: ComDevReset()
+  nameWithType: ICommunicationAdapter.ComDevReset()
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.ICommunicationAdapter.ComDevReset()
+  spec.csharp:
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.ICommunicationAdapter.ComDevReset
+    name: ComDevReset
+    href: Bodoconsult.NetworkCommunication.Interfaces.ICommunicationAdapter.html#Bodoconsult_NetworkCommunication_Interfaces_ICommunicationAdapter_ComDevReset
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.ICommunicationAdapter.ComDevReset
+    name: ComDevReset
+    href: Bodoconsult.NetworkCommunication.Interfaces.ICommunicationAdapter.html#Bodoconsult_NetworkCommunication_Interfaces_ICommunicationAdapter_ComDevReset
+  - name: (
+  - name: )
+- uid: Bodoconsult.NetworkCommunication.Communication.FakeIpCommunicationAdapter.ResetInternalState*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Communication.FakeIpCommunicationAdapter.ResetInternalState
+  href: Bodoconsult.NetworkCommunication.Communication.FakeIpCommunicationAdapter.html#Bodoconsult_NetworkCommunication_Communication_FakeIpCommunicationAdapter_ResetInternalState
+  name: ResetInternalState
+  nameWithType: FakeIpCommunicationAdapter.ResetInternalState
+  fullName: Bodoconsult.NetworkCommunication.Communication.FakeIpCommunicationAdapter.ResetInternalState
+- uid: Bodoconsult.NetworkCommunication.Interfaces.ICommunicationAdapter.ResetInternalState
+  commentId: M:Bodoconsult.NetworkCommunication.Interfaces.ICommunicationAdapter.ResetInternalState
+  parent: Bodoconsult.NetworkCommunication.Interfaces.ICommunicationAdapter
+  href: Bodoconsult.NetworkCommunication.Interfaces.ICommunicationAdapter.html#Bodoconsult_NetworkCommunication_Interfaces_ICommunicationAdapter_ResetInternalState
+  name: ResetInternalState()
+  nameWithType: ICommunicationAdapter.ResetInternalState()
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.ICommunicationAdapter.ResetInternalState()
+  spec.csharp:
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.ICommunicationAdapter.ResetInternalState
+    name: ResetInternalState
+    href: Bodoconsult.NetworkCommunication.Interfaces.ICommunicationAdapter.html#Bodoconsult_NetworkCommunication_Interfaces_ICommunicationAdapter_ResetInternalState
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.ICommunicationAdapter.ResetInternalState
+    name: ResetInternalState
+    href: Bodoconsult.NetworkCommunication.Interfaces.ICommunicationAdapter.html#Bodoconsult_NetworkCommunication_Interfaces_ICommunicationAdapter_ResetInternalState
+  - name: (
+  - name: )
+- uid: Bodoconsult.NetworkCommunication.Communication.FakeIpCommunicationAdapter.DataMessagingConfig*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Communication.FakeIpCommunicationAdapter.DataMessagingConfig
+  href: Bodoconsult.NetworkCommunication.Communication.FakeIpCommunicationAdapter.html#Bodoconsult_NetworkCommunication_Communication_FakeIpCommunicationAdapter_DataMessagingConfig
+  name: DataMessagingConfig
+  nameWithType: FakeIpCommunicationAdapter.DataMessagingConfig
+  fullName: Bodoconsult.NetworkCommunication.Communication.FakeIpCommunicationAdapter.DataMessagingConfig
+- uid: Bodoconsult.NetworkCommunication.Interfaces.ICommunicationAdapter.DataMessagingConfig
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.ICommunicationAdapter.DataMessagingConfig
+  parent: Bodoconsult.NetworkCommunication.Interfaces.ICommunicationAdapter
+  href: Bodoconsult.NetworkCommunication.Interfaces.ICommunicationAdapter.html#Bodoconsult_NetworkCommunication_Interfaces_ICommunicationAdapter_DataMessagingConfig
+  name: DataMessagingConfig
+  nameWithType: ICommunicationAdapter.DataMessagingConfig
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.ICommunicationAdapter.DataMessagingConfig
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IIpDataMessagingConfig
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.IIpDataMessagingConfig
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.NetworkCommunication.Interfaces.IIpDataMessagingConfig.html
+  name: IIpDataMessagingConfig
+  nameWithType: IIpDataMessagingConfig
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IIpDataMessagingConfig
+- uid: Bodoconsult.NetworkCommunication.Communication.FakeIpCommunicationAdapter.SendDataMessage*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Communication.FakeIpCommunicationAdapter.SendDataMessage
+  href: Bodoconsult.NetworkCommunication.Communication.FakeIpCommunicationAdapter.html#Bodoconsult_NetworkCommunication_Communication_FakeIpCommunicationAdapter_SendDataMessage_Bodoconsult_NetworkCommunication_Interfaces_IOutboundDataMessage_
+  name: SendDataMessage
+  nameWithType: FakeIpCommunicationAdapter.SendDataMessage
+  fullName: Bodoconsult.NetworkCommunication.Communication.FakeIpCommunicationAdapter.SendDataMessage
+- uid: Bodoconsult.NetworkCommunication.Interfaces.ICommunicationAdapter.SendDataMessage(Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessage)
+  commentId: M:Bodoconsult.NetworkCommunication.Interfaces.ICommunicationAdapter.SendDataMessage(Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessage)
+  parent: Bodoconsult.NetworkCommunication.Interfaces.ICommunicationAdapter
+  href: Bodoconsult.NetworkCommunication.Interfaces.ICommunicationAdapter.html#Bodoconsult_NetworkCommunication_Interfaces_ICommunicationAdapter_SendDataMessage_Bodoconsult_NetworkCommunication_Interfaces_IOutboundDataMessage_
+  name: SendDataMessage(IOutboundDataMessage)
+  nameWithType: ICommunicationAdapter.SendDataMessage(IOutboundDataMessage)
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.ICommunicationAdapter.SendDataMessage(Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessage)
+  spec.csharp:
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.ICommunicationAdapter.SendDataMessage(Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessage)
+    name: SendDataMessage
+    href: Bodoconsult.NetworkCommunication.Interfaces.ICommunicationAdapter.html#Bodoconsult_NetworkCommunication_Interfaces_ICommunicationAdapter_SendDataMessage_Bodoconsult_NetworkCommunication_Interfaces_IOutboundDataMessage_
+  - name: (
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessage
+    name: IOutboundDataMessage
+    href: Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessage.html
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.ICommunicationAdapter.SendDataMessage(Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessage)
+    name: SendDataMessage
+    href: Bodoconsult.NetworkCommunication.Interfaces.ICommunicationAdapter.html#Bodoconsult_NetworkCommunication_Interfaces_ICommunicationAdapter_SendDataMessage_Bodoconsult_NetworkCommunication_Interfaces_IOutboundDataMessage_
+  - name: (
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessage
+    name: IOutboundDataMessage
+    href: Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessage.html
+  - name: )
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessage
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessage
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessage.html
+  name: IOutboundDataMessage
+  nameWithType: IOutboundDataMessage
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessage
+- uid: Bodoconsult.NetworkCommunication.Interfaces.MessageSendingResult
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.MessageSendingResult
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.NetworkCommunication.Interfaces.MessageSendingResult.html
+  name: MessageSendingResult
+  nameWithType: MessageSendingResult
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.MessageSendingResult
+- uid: Bodoconsult.NetworkCommunication.Communication.FakeIpCommunicationAdapter.CancelRunningOperation*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Communication.FakeIpCommunicationAdapter.CancelRunningOperation
+  href: Bodoconsult.NetworkCommunication.Communication.FakeIpCommunicationAdapter.html#Bodoconsult_NetworkCommunication_Communication_FakeIpCommunicationAdapter_CancelRunningOperation
+  name: CancelRunningOperation
+  nameWithType: FakeIpCommunicationAdapter.CancelRunningOperation
+  fullName: Bodoconsult.NetworkCommunication.Communication.FakeIpCommunicationAdapter.CancelRunningOperation
+- uid: Bodoconsult.NetworkCommunication.Interfaces.ICommunicationAdapter.CancelRunningOperation
+  commentId: M:Bodoconsult.NetworkCommunication.Interfaces.ICommunicationAdapter.CancelRunningOperation
+  parent: Bodoconsult.NetworkCommunication.Interfaces.ICommunicationAdapter
+  href: Bodoconsult.NetworkCommunication.Interfaces.ICommunicationAdapter.html#Bodoconsult_NetworkCommunication_Interfaces_ICommunicationAdapter_CancelRunningOperation
+  name: CancelRunningOperation()
+  nameWithType: ICommunicationAdapter.CancelRunningOperation()
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.ICommunicationAdapter.CancelRunningOperation()
+  spec.csharp:
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.ICommunicationAdapter.CancelRunningOperation
+    name: CancelRunningOperation
+    href: Bodoconsult.NetworkCommunication.Interfaces.ICommunicationAdapter.html#Bodoconsult_NetworkCommunication_Interfaces_ICommunicationAdapter_CancelRunningOperation
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.ICommunicationAdapter.CancelRunningOperation
+    name: CancelRunningOperation
+    href: Bodoconsult.NetworkCommunication.Interfaces.ICommunicationAdapter.html#Bodoconsult_NetworkCommunication_Interfaces_ICommunicationAdapter_CancelRunningOperation
+  - name: (
+  - name: )

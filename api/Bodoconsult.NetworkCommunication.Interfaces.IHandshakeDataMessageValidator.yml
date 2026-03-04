@@ -1,0 +1,176 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IHandshakeDataMessageValidator
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.IHandshakeDataMessageValidator
+  id: IHandshakeDataMessageValidator
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  children:
+  - Bodoconsult.NetworkCommunication.Interfaces.IHandshakeDataMessageValidator.HandleHandshake(Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess,Bodoconsult.NetworkCommunication.Interfaces.IInboundHandShakeMessage)
+  - Bodoconsult.NetworkCommunication.Interfaces.IHandshakeDataMessageValidator.IsHandshakeForSentMessage(Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessage,Bodoconsult.NetworkCommunication.Interfaces.IInboundHandShakeMessage)
+  langs:
+  - csharp
+  - vb
+  name: IHandshakeDataMessageValidator
+  nameWithType: IHandshakeDataMessageValidator
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IHandshakeDataMessageValidator
+  type: Interface
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/IHandShakeDataMessageValidator.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: IHandshakeDataMessageValidator
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/IHandShakeDataMessageValidator.cs
+    startLine: 8
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Interface for validating customer specific handshake message. Used in
+  example: []
+  syntax:
+    content: public interface IHandshakeDataMessageValidator
+    content.vb: Public Interface IHandshakeDataMessageValidator
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IHandshakeDataMessageValidator.IsHandshakeForSentMessage(Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessage,Bodoconsult.NetworkCommunication.Interfaces.IInboundHandShakeMessage)
+  commentId: M:Bodoconsult.NetworkCommunication.Interfaces.IHandshakeDataMessageValidator.IsHandshakeForSentMessage(Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessage,Bodoconsult.NetworkCommunication.Interfaces.IInboundHandShakeMessage)
+  id: IsHandshakeForSentMessage(Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessage,Bodoconsult.NetworkCommunication.Interfaces.IInboundHandShakeMessage)
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IHandshakeDataMessageValidator
+  langs:
+  - csharp
+  - vb
+  name: IsHandshakeForSentMessage(IOutboundDataMessage, IInboundHandShakeMessage)
+  nameWithType: IHandshakeDataMessageValidator.IsHandshakeForSentMessage(IOutboundDataMessage, IInboundHandShakeMessage)
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IHandshakeDataMessageValidator.IsHandshakeForSentMessage(Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessage, Bodoconsult.NetworkCommunication.Interfaces.IInboundHandShakeMessage)
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/IHandShakeDataMessageValidator.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: IsHandshakeForSentMessage
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/IHandShakeDataMessageValidator.cs
+    startLine: 16
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Is a received message a handshake for a sent message
+  example: []
+  syntax:
+    content: DataMessageValidatorResult IsHandshakeForSentMessage(IOutboundDataMessage sentMessage, IInboundHandShakeMessage handshakeMessage)
+    parameters:
+    - id: sentMessage
+      type: Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessage
+      description: Sent message
+    - id: handshakeMessage
+      type: Bodoconsult.NetworkCommunication.Interfaces.IInboundHandShakeMessage
+      description: Received handshake message
+    return:
+      type: Bodoconsult.NetworkCommunication.Interfaces.DataMessageValidatorResult
+      description: True if the message was the handshake for the sent message
+    content.vb: Function IsHandshakeForSentMessage(sentMessage As IOutboundDataMessage, handshakeMessage As IInboundHandShakeMessage) As DataMessageValidatorResult
+  overload: Bodoconsult.NetworkCommunication.Interfaces.IHandshakeDataMessageValidator.IsHandshakeForSentMessage*
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IHandshakeDataMessageValidator.HandleHandshake(Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess,Bodoconsult.NetworkCommunication.Interfaces.IInboundHandShakeMessage)
+  commentId: M:Bodoconsult.NetworkCommunication.Interfaces.IHandshakeDataMessageValidator.HandleHandshake(Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess,Bodoconsult.NetworkCommunication.Interfaces.IInboundHandShakeMessage)
+  id: HandleHandshake(Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess,Bodoconsult.NetworkCommunication.Interfaces.IInboundHandShakeMessage)
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IHandshakeDataMessageValidator
+  langs:
+  - csharp
+  - vb
+  name: HandleHandshake(ISendPacketProcess, IInboundHandShakeMessage)
+  nameWithType: IHandshakeDataMessageValidator.HandleHandshake(ISendPacketProcess, IInboundHandShakeMessage)
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IHandshakeDataMessageValidator.HandleHandshake(Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess, Bodoconsult.NetworkCommunication.Interfaces.IInboundHandShakeMessage)
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/IHandShakeDataMessageValidator.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: HandleHandshake
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/IHandShakeDataMessageValidator.cs
+    startLine: 24
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Handle the received handshake and sets the ProcessExecutionResult for the responsible send process <xref href="Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess" data-throw-if-not-resolved="false"></xref>
+  example: []
+  syntax:
+    content: void HandleHandshake(ISendPacketProcess context, IInboundHandShakeMessage handshake)
+    parameters:
+    - id: context
+      type: Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess
+      description: Current send message process
+    - id: handshake
+      type: Bodoconsult.NetworkCommunication.Interfaces.IInboundHandShakeMessage
+      description: Received handshake
+    content.vb: Sub HandleHandshake(context As ISendPacketProcess, handshake As IInboundHandShakeMessage)
+  overload: Bodoconsult.NetworkCommunication.Interfaces.IHandshakeDataMessageValidator.HandleHandshake*
+references:
+- uid: Bodoconsult.NetworkCommunication.Interfaces
+  commentId: N:Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.html
+  name: Bodoconsult.NetworkCommunication.Interfaces
+  nameWithType: Bodoconsult.NetworkCommunication.Interfaces
+  fullName: Bodoconsult.NetworkCommunication.Interfaces
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Interfaces
+    name: Interfaces
+    href: Bodoconsult.NetworkCommunication.Interfaces.html
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Interfaces
+    name: Interfaces
+    href: Bodoconsult.NetworkCommunication.Interfaces.html
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IHandshakeDataMessageValidator.IsHandshakeForSentMessage*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.IHandshakeDataMessageValidator.IsHandshakeForSentMessage
+  href: Bodoconsult.NetworkCommunication.Interfaces.IHandshakeDataMessageValidator.html#Bodoconsult_NetworkCommunication_Interfaces_IHandshakeDataMessageValidator_IsHandshakeForSentMessage_Bodoconsult_NetworkCommunication_Interfaces_IOutboundDataMessage_Bodoconsult_NetworkCommunication_Interfaces_IInboundHandShakeMessage_
+  name: IsHandshakeForSentMessage
+  nameWithType: IHandshakeDataMessageValidator.IsHandshakeForSentMessage
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IHandshakeDataMessageValidator.IsHandshakeForSentMessage
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessage
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessage
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessage.html
+  name: IOutboundDataMessage
+  nameWithType: IOutboundDataMessage
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessage
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IInboundHandShakeMessage
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.IInboundHandShakeMessage
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.NetworkCommunication.Interfaces.IInboundHandShakeMessage.html
+  name: IInboundHandShakeMessage
+  nameWithType: IInboundHandShakeMessage
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IInboundHandShakeMessage
+- uid: Bodoconsult.NetworkCommunication.Interfaces.DataMessageValidatorResult
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.DataMessageValidatorResult
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.NetworkCommunication.Interfaces.DataMessageValidatorResult.html
+  name: DataMessageValidatorResult
+  nameWithType: DataMessageValidatorResult
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.DataMessageValidatorResult
+- uid: Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess.html
+  name: ISendPacketProcess
+  nameWithType: ISendPacketProcess
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IHandshakeDataMessageValidator.HandleHandshake*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.IHandshakeDataMessageValidator.HandleHandshake
+  href: Bodoconsult.NetworkCommunication.Interfaces.IHandshakeDataMessageValidator.html#Bodoconsult_NetworkCommunication_Interfaces_IHandshakeDataMessageValidator_HandleHandshake_Bodoconsult_NetworkCommunication_Interfaces_ISendPacketProcess_Bodoconsult_NetworkCommunication_Interfaces_IInboundHandShakeMessage_
+  name: HandleHandshake
+  nameWithType: IHandshakeDataMessageValidator.HandleHandshake
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IHandshakeDataMessageValidator.HandleHandshake

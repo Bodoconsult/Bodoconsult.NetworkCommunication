@@ -1,0 +1,258 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bodoconsult.NetworkCommunication.App.Abstractions.ICentralClientNotificationManager
+  commentId: T:Bodoconsult.NetworkCommunication.App.Abstractions.ICentralClientNotificationManager
+  id: ICentralClientNotificationManager
+  parent: Bodoconsult.NetworkCommunication.App.Abstractions
+  children:
+  - Bodoconsult.NetworkCommunication.App.Abstractions.ICentralClientNotificationManager.DoNotifyException(System.Object,System.Exception)
+  - Bodoconsult.NetworkCommunication.App.Abstractions.ICentralClientNotificationManager.DoNotifyProgressEvent(System.Object,System.Int32,System.Int32,System.Boolean)
+  - Bodoconsult.NetworkCommunication.App.Abstractions.ICentralClientNotificationManager.NotifyClient
+  langs:
+  - csharp
+  - vb
+  name: ICentralClientNotificationManager
+  nameWithType: ICentralClientNotificationManager
+  fullName: Bodoconsult.NetworkCommunication.App.Abstractions.ICentralClientNotificationManager
+  type: Interface
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/App.Abstractions/ICentralClientNotificationManager.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: ICentralClientNotificationManager
+    path: src/Bodoconsult.NetworkCommunication/App.Abstractions/ICentralClientNotificationManager.cs
+    startLine: 16
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.App.Abstractions
+  summary: Interface for central event message handling for client notifications
+  example: []
+  syntax:
+    content: public interface ICentralClientNotificationManager
+    content.vb: Public Interface ICentralClientNotificationManager
+- uid: Bodoconsult.NetworkCommunication.App.Abstractions.ICentralClientNotificationManager.NotifyClient
+  commentId: P:Bodoconsult.NetworkCommunication.App.Abstractions.ICentralClientNotificationManager.NotifyClient
+  id: NotifyClient
+  parent: Bodoconsult.NetworkCommunication.App.Abstractions.ICentralClientNotificationManager
+  langs:
+  - csharp
+  - vb
+  name: NotifyClient
+  nameWithType: ICentralClientNotificationManager.NotifyClient
+  fullName: Bodoconsult.NetworkCommunication.App.Abstractions.ICentralClientNotificationManager.NotifyClient
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/App.Abstractions/ICentralClientNotificationManager.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: NotifyClient
+    path: src/Bodoconsult.NetworkCommunication/App.Abstractions/ICentralClientNotificationManager.cs
+    startLine: 23
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.App.Abstractions
+  summary: Delegate for sending a notification to the client
+  example: []
+  syntax:
+    content: TransferToClientDelegate NotifyClient { get; set; }
+    parameters: []
+    return:
+      type: Bodoconsult.NetworkCommunication.App.Abstractions.TransferToClientDelegate
+    content.vb: Property NotifyClient As TransferToClientDelegate
+  overload: Bodoconsult.NetworkCommunication.App.Abstractions.ICentralClientNotificationManager.NotifyClient*
+- uid: Bodoconsult.NetworkCommunication.App.Abstractions.ICentralClientNotificationManager.DoNotifyProgressEvent(System.Object,System.Int32,System.Int32,System.Boolean)
+  commentId: M:Bodoconsult.NetworkCommunication.App.Abstractions.ICentralClientNotificationManager.DoNotifyProgressEvent(System.Object,System.Int32,System.Int32,System.Boolean)
+  id: DoNotifyProgressEvent(System.Object,System.Int32,System.Int32,System.Boolean)
+  parent: Bodoconsult.NetworkCommunication.App.Abstractions.ICentralClientNotificationManager
+  langs:
+  - csharp
+  - vb
+  name: DoNotifyProgressEvent(object, int, int, bool)
+  nameWithType: ICentralClientNotificationManager.DoNotifyProgressEvent(object, int, int, bool)
+  fullName: Bodoconsult.NetworkCommunication.App.Abstractions.ICentralClientNotificationManager.DoNotifyProgressEvent(object, int, int, bool)
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/App.Abstractions/ICentralClientNotificationManager.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: DoNotifyProgressEvent
+    path: src/Bodoconsult.NetworkCommunication/App.Abstractions/ICentralClientNotificationManager.cs
+    startLine: 36
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.App.Abstractions
+  summary: Send a progress notification
+  example: []
+  syntax:
+    content: void DoNotifyProgressEvent(object sender, int currentProgressType, int percentage, bool complete)
+    parameters:
+    - id: sender
+      type: System.Object
+      description: Sender
+    - id: currentProgressType
+      type: System.Int32
+      description: Current progress type. Define your own types in an enum
+    - id: percentage
+      type: System.Int32
+      description: Current percentage
+    - id: complete
+      type: System.Boolean
+      description: Is completed?
+    content.vb: Sub DoNotifyProgressEvent(sender As Object, currentProgressType As Integer, percentage As Integer, complete As Boolean)
+  overload: Bodoconsult.NetworkCommunication.App.Abstractions.ICentralClientNotificationManager.DoNotifyProgressEvent*
+  nameWithType.vb: ICentralClientNotificationManager.DoNotifyProgressEvent(Object, Integer, Integer, Boolean)
+  fullName.vb: Bodoconsult.NetworkCommunication.App.Abstractions.ICentralClientNotificationManager.DoNotifyProgressEvent(Object, Integer, Integer, Boolean)
+  name.vb: DoNotifyProgressEvent(Object, Integer, Integer, Boolean)
+- uid: Bodoconsult.NetworkCommunication.App.Abstractions.ICentralClientNotificationManager.DoNotifyException(System.Object,System.Exception)
+  commentId: M:Bodoconsult.NetworkCommunication.App.Abstractions.ICentralClientNotificationManager.DoNotifyException(System.Object,System.Exception)
+  id: DoNotifyException(System.Object,System.Exception)
+  parent: Bodoconsult.NetworkCommunication.App.Abstractions.ICentralClientNotificationManager
+  langs:
+  - csharp
+  - vb
+  name: DoNotifyException(object, Exception)
+  nameWithType: ICentralClientNotificationManager.DoNotifyException(object, Exception)
+  fullName: Bodoconsult.NetworkCommunication.App.Abstractions.ICentralClientNotificationManager.DoNotifyException(object, System.Exception)
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/App.Abstractions/ICentralClientNotificationManager.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: DoNotifyException
+    path: src/Bodoconsult.NetworkCommunication/App.Abstractions/ICentralClientNotificationManager.cs
+    startLine: 43
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.App.Abstractions
+  summary: Send an exception notification
+  example: []
+  syntax:
+    content: void DoNotifyException(object sender, Exception e)
+    parameters:
+    - id: sender
+      type: System.Object
+      description: Sender
+    - id: e
+      type: System.Exception
+      description: Exception to report
+    content.vb: Sub DoNotifyException(sender As Object, e As Exception)
+  overload: Bodoconsult.NetworkCommunication.App.Abstractions.ICentralClientNotificationManager.DoNotifyException*
+  nameWithType.vb: ICentralClientNotificationManager.DoNotifyException(Object, Exception)
+  fullName.vb: Bodoconsult.NetworkCommunication.App.Abstractions.ICentralClientNotificationManager.DoNotifyException(Object, System.Exception)
+  name.vb: DoNotifyException(Object, Exception)
+references:
+- uid: Bodoconsult.NetworkCommunication.App.Abstractions
+  commentId: N:Bodoconsult.NetworkCommunication.App.Abstractions
+  href: Bodoconsult.html
+  name: Bodoconsult.NetworkCommunication.App.Abstractions
+  nameWithType: Bodoconsult.NetworkCommunication.App.Abstractions
+  fullName: Bodoconsult.NetworkCommunication.App.Abstractions
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.App
+    name: App
+    href: Bodoconsult.NetworkCommunication.App.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.App.Abstractions
+    name: Abstractions
+    href: Bodoconsult.NetworkCommunication.App.Abstractions.html
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.App
+    name: App
+    href: Bodoconsult.NetworkCommunication.App.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.App.Abstractions
+    name: Abstractions
+    href: Bodoconsult.NetworkCommunication.App.Abstractions.html
+- uid: Bodoconsult.NetworkCommunication.App.Abstractions.ICentralClientNotificationManager.NotifyClient*
+  commentId: Overload:Bodoconsult.NetworkCommunication.App.Abstractions.ICentralClientNotificationManager.NotifyClient
+  href: Bodoconsult.NetworkCommunication.App.Abstractions.ICentralClientNotificationManager.html#Bodoconsult_NetworkCommunication_App_Abstractions_ICentralClientNotificationManager_NotifyClient
+  name: NotifyClient
+  nameWithType: ICentralClientNotificationManager.NotifyClient
+  fullName: Bodoconsult.NetworkCommunication.App.Abstractions.ICentralClientNotificationManager.NotifyClient
+- uid: Bodoconsult.NetworkCommunication.App.Abstractions.TransferToClientDelegate
+  commentId: T:Bodoconsult.NetworkCommunication.App.Abstractions.TransferToClientDelegate
+  parent: Bodoconsult.NetworkCommunication.App.Abstractions
+  href: Bodoconsult.NetworkCommunication.App.Abstractions.TransferToClientDelegate.html
+  name: TransferToClientDelegate
+  nameWithType: TransferToClientDelegate
+  fullName: Bodoconsult.NetworkCommunication.App.Abstractions.TransferToClientDelegate
+- uid: Bodoconsult.NetworkCommunication.App.Abstractions.ICentralClientNotificationManager.DoNotifyProgressEvent*
+  commentId: Overload:Bodoconsult.NetworkCommunication.App.Abstractions.ICentralClientNotificationManager.DoNotifyProgressEvent
+  href: Bodoconsult.NetworkCommunication.App.Abstractions.ICentralClientNotificationManager.html#Bodoconsult_NetworkCommunication_App_Abstractions_ICentralClientNotificationManager_DoNotifyProgressEvent_System_Object_System_Int32_System_Int32_System_Boolean_
+  name: DoNotifyProgressEvent
+  nameWithType: ICentralClientNotificationManager.DoNotifyProgressEvent
+  fullName: Bodoconsult.NetworkCommunication.App.Abstractions.ICentralClientNotificationManager.DoNotifyProgressEvent
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Bodoconsult.NetworkCommunication.App.Abstractions.ICentralClientNotificationManager.DoNotifyException*
+  commentId: Overload:Bodoconsult.NetworkCommunication.App.Abstractions.ICentralClientNotificationManager.DoNotifyException
+  href: Bodoconsult.NetworkCommunication.App.Abstractions.ICentralClientNotificationManager.html#Bodoconsult_NetworkCommunication_App_Abstractions_ICentralClientNotificationManager_DoNotifyException_System_Object_System_Exception_
+  name: DoNotifyException
+  nameWithType: ICentralClientNotificationManager.DoNotifyException
+  fullName: Bodoconsult.NetworkCommunication.App.Abstractions.ICentralClientNotificationManager.DoNotifyException
+- uid: System.Exception
+  commentId: T:System.Exception
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.exception
+  name: Exception
+  nameWithType: Exception
+  fullName: System.Exception

@@ -1,0 +1,163 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bodoconsult.Network.Windows.ActiveDirectory.IAdObject
+  commentId: T:Bodoconsult.Network.Windows.ActiveDirectory.IAdObject
+  id: IAdObject
+  parent: Bodoconsult.Network.Windows.ActiveDirectory
+  children:
+  - Bodoconsult.Network.Windows.ActiveDirectory.IAdObject.Name
+  - Bodoconsult.Network.Windows.ActiveDirectory.IAdObject.Path
+  langs:
+  - csharp
+  - vb
+  name: IAdObject
+  nameWithType: IAdObject
+  fullName: Bodoconsult.Network.Windows.ActiveDirectory.IAdObject
+  type: Interface
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/ActiveDirectory/IAdObject.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: IAdObject
+    path: src/Bodoconsult.Network.Windows/ActiveDirectory/IAdObject.cs
+    startLine: 9
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.ActiveDirectory
+  summary: General interface of AD objects
+  example: []
+  syntax:
+    content: public interface IAdObject
+    content.vb: Public Interface IAdObject
+- uid: Bodoconsult.Network.Windows.ActiveDirectory.IAdObject.Path
+  commentId: P:Bodoconsult.Network.Windows.ActiveDirectory.IAdObject.Path
+  id: Path
+  parent: Bodoconsult.Network.Windows.ActiveDirectory.IAdObject
+  langs:
+  - csharp
+  - vb
+  name: Path
+  nameWithType: IAdObject.Path
+  fullName: Bodoconsult.Network.Windows.ActiveDirectory.IAdObject.Path
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/ActiveDirectory/IAdObject.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Path
+    path: src/Bodoconsult.Network.Windows/ActiveDirectory/IAdObject.cs
+    startLine: 15
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.ActiveDirectory
+  summary: LDAP path to the object
+  example: []
+  syntax:
+    content: string Path { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Property Path As String
+  overload: Bodoconsult.Network.Windows.ActiveDirectory.IAdObject.Path*
+- uid: Bodoconsult.Network.Windows.ActiveDirectory.IAdObject.Name
+  commentId: P:Bodoconsult.Network.Windows.ActiveDirectory.IAdObject.Name
+  id: Name
+  parent: Bodoconsult.Network.Windows.ActiveDirectory.IAdObject
+  langs:
+  - csharp
+  - vb
+  name: Name
+  nameWithType: IAdObject.Name
+  fullName: Bodoconsult.Network.Windows.ActiveDirectory.IAdObject.Name
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/ActiveDirectory/IAdObject.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Name
+    path: src/Bodoconsult.Network.Windows/ActiveDirectory/IAdObject.cs
+    startLine: 20
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.ActiveDirectory
+  summary: Name of the object
+  example: []
+  syntax:
+    content: string Name { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Property Name As String
+  overload: Bodoconsult.Network.Windows.ActiveDirectory.IAdObject.Name*
+references:
+- uid: Bodoconsult.Network.Windows.ActiveDirectory
+  commentId: N:Bodoconsult.Network.Windows.ActiveDirectory
+  href: Bodoconsult.html
+  name: Bodoconsult.Network.Windows.ActiveDirectory
+  nameWithType: Bodoconsult.Network.Windows.ActiveDirectory
+  fullName: Bodoconsult.Network.Windows.ActiveDirectory
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.Network
+    name: Network
+    href: Bodoconsult.Network.html
+  - name: .
+  - uid: Bodoconsult.Network.Windows
+    name: Windows
+    href: Bodoconsult.Network.Windows.html
+  - name: .
+  - uid: Bodoconsult.Network.Windows.ActiveDirectory
+    name: ActiveDirectory
+    href: Bodoconsult.Network.Windows.ActiveDirectory.html
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.Network
+    name: Network
+    href: Bodoconsult.Network.html
+  - name: .
+  - uid: Bodoconsult.Network.Windows
+    name: Windows
+    href: Bodoconsult.Network.Windows.html
+  - name: .
+  - uid: Bodoconsult.Network.Windows.ActiveDirectory
+    name: ActiveDirectory
+    href: Bodoconsult.Network.Windows.ActiveDirectory.html
+- uid: Bodoconsult.Network.Windows.ActiveDirectory.IAdObject.Path*
+  commentId: Overload:Bodoconsult.Network.Windows.ActiveDirectory.IAdObject.Path
+  href: Bodoconsult.Network.Windows.ActiveDirectory.IAdObject.html#Bodoconsult_Network_Windows_ActiveDirectory_IAdObject_Path
+  name: Path
+  nameWithType: IAdObject.Path
+  fullName: Bodoconsult.Network.Windows.ActiveDirectory.IAdObject.Path
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Bodoconsult.Network.Windows.ActiveDirectory.IAdObject.Name*
+  commentId: Overload:Bodoconsult.Network.Windows.ActiveDirectory.IAdObject.Name
+  href: Bodoconsult.Network.Windows.ActiveDirectory.IAdObject.html#Bodoconsult_Network_Windows_ActiveDirectory_IAdObject_Name
+  name: Name
+  nameWithType: IAdObject.Name
+  fullName: Bodoconsult.Network.Windows.ActiveDirectory.IAdObject.Name

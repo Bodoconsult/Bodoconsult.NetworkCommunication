@@ -1,0 +1,892 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerClientCollection
+  commentId: T:Bodoconsult.Network.Windows.Dhcp.DhcpServerClientCollection
+  id: DhcpServerClientCollection
+  parent: Bodoconsult.Network.Windows.Dhcp
+  children:
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerClientCollection.GetEnumerator
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerClientCollection.RemoveClient(Bodoconsult.Network.Windows.Dhcp.IDhcpServerClient)
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerClientCollection.Server
+  langs:
+  - csharp
+  - vb
+  name: DhcpServerClientCollection
+  nameWithType: DhcpServerClientCollection
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerClientCollection
+  type: Class
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerClientCollection.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: DhcpServerClientCollection
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerClientCollection.cs
+    startLine: 7
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: 'public class DhcpServerClientCollection : IDhcpServerClientCollection, IEnumerable<IDhcpServerClient>, IEnumerable'
+    content.vb: Public Class DhcpServerClientCollection Implements IDhcpServerClientCollection, IEnumerable(Of IDhcpServerClient), IEnumerable
+  inheritance:
+  - System.Object
+  implements:
+  - Bodoconsult.Network.Windows.Dhcp.IDhcpServerClientCollection
+  - System.Collections.Generic.IEnumerable{Bodoconsult.Network.Windows.Dhcp.IDhcpServerClient}
+  - System.Collections.IEnumerable
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  extensionMethods:
+  - System.Collections.Generic.IEnumerable{Bodoconsult.Network.Windows.Dhcp.IDhcpServerClient}.Bodoconsult.NetworkCommunication.App.Abstractions.LambdaExpressionHelper.OrderBy``1(System.String)
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerClientCollection.Server
+  commentId: P:Bodoconsult.Network.Windows.Dhcp.DhcpServerClientCollection.Server
+  id: Server
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerClientCollection
+  langs:
+  - csharp
+  - vb
+  name: Server
+  nameWithType: DhcpServerClientCollection.Server
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerClientCollection.Server
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerClientCollection.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Server
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerClientCollection.cs
+    startLine: 9
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: public DhcpServer Server { get; }
+    parameters: []
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServer
+    content.vb: Public ReadOnly Property Server As DhcpServer
+  overload: Bodoconsult.Network.Windows.Dhcp.DhcpServerClientCollection.Server*
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerClientCollection.GetEnumerator
+  commentId: M:Bodoconsult.Network.Windows.Dhcp.DhcpServerClientCollection.GetEnumerator
+  id: GetEnumerator
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerClientCollection
+  langs:
+  - csharp
+  - vb
+  name: GetEnumerator()
+  nameWithType: DhcpServerClientCollection.GetEnumerator()
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerClientCollection.GetEnumerator()
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerClientCollection.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: GetEnumerator
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerClientCollection.cs
+    startLine: 17
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  summary: Returns an enumerator that iterates through the collection.
+  example: []
+  syntax:
+    content: public IEnumerator<IDhcpServerClient> GetEnumerator()
+    return:
+      type: System.Collections.Generic.IEnumerator{Bodoconsult.Network.Windows.Dhcp.IDhcpServerClient}
+      description: An enumerator that can be used to iterate through the collection.
+    content.vb: Public Function GetEnumerator() As IEnumerator(Of IDhcpServerClient)
+  overload: Bodoconsult.Network.Windows.Dhcp.DhcpServerClientCollection.GetEnumerator*
+  implements:
+  - System.Collections.Generic.IEnumerable{Bodoconsult.Network.Windows.Dhcp.IDhcpServerClient}.GetEnumerator
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerClientCollection.RemoveClient(Bodoconsult.Network.Windows.Dhcp.IDhcpServerClient)
+  commentId: M:Bodoconsult.Network.Windows.Dhcp.DhcpServerClientCollection.RemoveClient(Bodoconsult.Network.Windows.Dhcp.IDhcpServerClient)
+  id: RemoveClient(Bodoconsult.Network.Windows.Dhcp.IDhcpServerClient)
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerClientCollection
+  langs:
+  - csharp
+  - vb
+  name: RemoveClient(IDhcpServerClient)
+  nameWithType: DhcpServerClientCollection.RemoveClient(IDhcpServerClient)
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerClientCollection.RemoveClient(Bodoconsult.Network.Windows.Dhcp.IDhcpServerClient)
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerClientCollection.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: RemoveClient
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerClientCollection.cs
+    startLine: 23
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  example: []
+  syntax:
+    content: public void RemoveClient(IDhcpServerClient client)
+    parameters:
+    - id: client
+      type: Bodoconsult.Network.Windows.Dhcp.IDhcpServerClient
+    content.vb: Public Sub RemoveClient(client As IDhcpServerClient)
+  overload: Bodoconsult.Network.Windows.Dhcp.DhcpServerClientCollection.RemoveClient*
+  implements:
+  - Bodoconsult.Network.Windows.Dhcp.IDhcpServerClientCollection.RemoveClient(Bodoconsult.Network.Windows.Dhcp.IDhcpServerClient)
+references:
+- uid: Bodoconsult.Network.Windows.Dhcp
+  commentId: N:Bodoconsult.Network.Windows.Dhcp
+  href: Bodoconsult.html
+  name: Bodoconsult.Network.Windows.Dhcp
+  nameWithType: Bodoconsult.Network.Windows.Dhcp
+  fullName: Bodoconsult.Network.Windows.Dhcp
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.Network
+    name: Network
+    href: Bodoconsult.Network.html
+  - name: .
+  - uid: Bodoconsult.Network.Windows
+    name: Windows
+    href: Bodoconsult.Network.Windows.html
+  - name: .
+  - uid: Bodoconsult.Network.Windows.Dhcp
+    name: Dhcp
+    href: Bodoconsult.Network.Windows.Dhcp.html
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.Network
+    name: Network
+    href: Bodoconsult.Network.html
+  - name: .
+  - uid: Bodoconsult.Network.Windows
+    name: Windows
+    href: Bodoconsult.Network.Windows.html
+  - name: .
+  - uid: Bodoconsult.Network.Windows.Dhcp
+    name: Dhcp
+    href: Bodoconsult.Network.Windows.Dhcp.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerClientCollection
+  commentId: T:Bodoconsult.Network.Windows.Dhcp.IDhcpServerClientCollection
+  parent: Bodoconsult.Network.Windows.Dhcp
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerClientCollection.html
+  name: IDhcpServerClientCollection
+  nameWithType: IDhcpServerClientCollection
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerClientCollection
+- uid: System.Collections.Generic.IEnumerable{Bodoconsult.Network.Windows.Dhcp.IDhcpServerClient}
+  commentId: T:System.Collections.Generic.IEnumerable{Bodoconsult.Network.Windows.Dhcp.IDhcpServerClient}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IEnumerable`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<IDhcpServerClient>
+  nameWithType: IEnumerable<IDhcpServerClient>
+  fullName: System.Collections.Generic.IEnumerable<Bodoconsult.Network.Windows.Dhcp.IDhcpServerClient>
+  nameWithType.vb: IEnumerable(Of IDhcpServerClient)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of Bodoconsult.Network.Windows.Dhcp.IDhcpServerClient)
+  name.vb: IEnumerable(Of IDhcpServerClient)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerClient
+    name: IDhcpServerClient
+    href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerClient.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerClient
+    name: IDhcpServerClient
+    href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerClient.html
+  - name: )
+- uid: System.Collections.IEnumerable
+  commentId: T:System.Collections.IEnumerable
+  parent: System.Collections
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.ienumerable
+  name: IEnumerable
+  nameWithType: IEnumerable
+  fullName: System.Collections.IEnumerable
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System.Collections.Generic.IEnumerable{Bodoconsult.Network.Windows.Dhcp.IDhcpServerClient}.Bodoconsult.NetworkCommunication.App.Abstractions.LambdaExpressionHelper.OrderBy``1(System.String)
+  commentId: M:Bodoconsult.NetworkCommunication.App.Abstractions.LambdaExpressionHelper.OrderBy``1(System.Collections.Generic.IEnumerable{``0},System.String)
+  parent: Bodoconsult.NetworkCommunication.App.Abstractions.LambdaExpressionHelper
+  definition: Bodoconsult.NetworkCommunication.App.Abstractions.LambdaExpressionHelper.OrderBy``1(System.Collections.Generic.IEnumerable{``0},System.String)
+  href: Bodoconsult.NetworkCommunication.App.Abstractions.LambdaExpressionHelper.html#Bodoconsult_NetworkCommunication_App_Abstractions_LambdaExpressionHelper_OrderBy__1_System_Collections_Generic_IEnumerable___0__System_String_
+  name: OrderBy<IDhcpServerClient>(IEnumerable<IDhcpServerClient>, string)
+  nameWithType: LambdaExpressionHelper.OrderBy<IDhcpServerClient>(IEnumerable<IDhcpServerClient>, string)
+  fullName: Bodoconsult.NetworkCommunication.App.Abstractions.LambdaExpressionHelper.OrderBy<Bodoconsult.Network.Windows.Dhcp.IDhcpServerClient>(System.Collections.Generic.IEnumerable<Bodoconsult.Network.Windows.Dhcp.IDhcpServerClient>, string)
+  nameWithType.vb: LambdaExpressionHelper.OrderBy(Of IDhcpServerClient)(IEnumerable(Of IDhcpServerClient), String)
+  fullName.vb: Bodoconsult.NetworkCommunication.App.Abstractions.LambdaExpressionHelper.OrderBy(Of Bodoconsult.Network.Windows.Dhcp.IDhcpServerClient)(System.Collections.Generic.IEnumerable(Of Bodoconsult.Network.Windows.Dhcp.IDhcpServerClient), String)
+  name.vb: OrderBy(Of IDhcpServerClient)(IEnumerable(Of IDhcpServerClient), String)
+  spec.csharp:
+  - uid: Bodoconsult.NetworkCommunication.App.Abstractions.LambdaExpressionHelper.OrderBy``1(System.Collections.Generic.IEnumerable{Bodoconsult.Network.Windows.Dhcp.IDhcpServerClient},System.String)
+    name: OrderBy
+    href: Bodoconsult.NetworkCommunication.App.Abstractions.LambdaExpressionHelper.html#Bodoconsult_NetworkCommunication_App_Abstractions_LambdaExpressionHelper_OrderBy__1_System_Collections_Generic_IEnumerable___0__System_String_
+  - name: <
+  - uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerClient
+    name: IDhcpServerClient
+    href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerClient.html
+  - name: '>'
+  - name: (
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerClient
+    name: IDhcpServerClient
+    href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerClient.html
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.NetworkCommunication.App.Abstractions.LambdaExpressionHelper.OrderBy``1(System.Collections.Generic.IEnumerable{Bodoconsult.Network.Windows.Dhcp.IDhcpServerClient},System.String)
+    name: OrderBy
+    href: Bodoconsult.NetworkCommunication.App.Abstractions.LambdaExpressionHelper.html#Bodoconsult_NetworkCommunication_App_Abstractions_LambdaExpressionHelper_OrderBy__1_System_Collections_Generic_IEnumerable___0__System_String_
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerClient
+    name: IDhcpServerClient
+    href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerClient.html
+  - name: )
+  - name: (
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerClient
+    name: IDhcpServerClient
+    href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerClient.html
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.Collections.Generic.IEnumerable`1
+  commentId: T:System.Collections.Generic.IEnumerable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<T>
+  nameWithType: IEnumerable<T>
+  fullName: System.Collections.Generic.IEnumerable<T>
+  nameWithType.vb: IEnumerable(Of T)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of T)
+  name.vb: IEnumerable(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: System.Collections
+  commentId: N:System.Collections
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections
+  nameWithType: System.Collections
+  fullName: System.Collections
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+- uid: Bodoconsult.NetworkCommunication.App.Abstractions.LambdaExpressionHelper.OrderBy``1(System.Collections.Generic.IEnumerable{``0},System.String)
+  commentId: M:Bodoconsult.NetworkCommunication.App.Abstractions.LambdaExpressionHelper.OrderBy``1(System.Collections.Generic.IEnumerable{``0},System.String)
+  isExternal: true
+  href: Bodoconsult.NetworkCommunication.App.Abstractions.LambdaExpressionHelper.html#Bodoconsult_NetworkCommunication_App_Abstractions_LambdaExpressionHelper_OrderBy__1_System_Collections_Generic_IEnumerable___0__System_String_
+  name: OrderBy<TSource>(IEnumerable<TSource>, string)
+  nameWithType: LambdaExpressionHelper.OrderBy<TSource>(IEnumerable<TSource>, string)
+  fullName: Bodoconsult.NetworkCommunication.App.Abstractions.LambdaExpressionHelper.OrderBy<TSource>(System.Collections.Generic.IEnumerable<TSource>, string)
+  nameWithType.vb: LambdaExpressionHelper.OrderBy(Of TSource)(IEnumerable(Of TSource), String)
+  fullName.vb: Bodoconsult.NetworkCommunication.App.Abstractions.LambdaExpressionHelper.OrderBy(Of TSource)(System.Collections.Generic.IEnumerable(Of TSource), String)
+  name.vb: OrderBy(Of TSource)(IEnumerable(Of TSource), String)
+  spec.csharp:
+  - uid: Bodoconsult.NetworkCommunication.App.Abstractions.LambdaExpressionHelper.OrderBy``1(System.Collections.Generic.IEnumerable{``0},System.String)
+    name: OrderBy
+    href: Bodoconsult.NetworkCommunication.App.Abstractions.LambdaExpressionHelper.html#Bodoconsult_NetworkCommunication_App_Abstractions_LambdaExpressionHelper_OrderBy__1_System_Collections_Generic_IEnumerable___0__System_String_
+  - name: <
+  - name: TSource
+  - name: '>'
+  - name: (
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - name: TSource
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.NetworkCommunication.App.Abstractions.LambdaExpressionHelper.OrderBy``1(System.Collections.Generic.IEnumerable{``0},System.String)
+    name: OrderBy
+    href: Bodoconsult.NetworkCommunication.App.Abstractions.LambdaExpressionHelper.html#Bodoconsult_NetworkCommunication_App_Abstractions_LambdaExpressionHelper_OrderBy__1_System_Collections_Generic_IEnumerable___0__System_String_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TSource
+  - name: )
+  - name: (
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TSource
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: Bodoconsult.NetworkCommunication.App.Abstractions.LambdaExpressionHelper
+  commentId: T:Bodoconsult.NetworkCommunication.App.Abstractions.LambdaExpressionHelper
+  parent: Bodoconsult.NetworkCommunication.App.Abstractions
+  href: Bodoconsult.NetworkCommunication.App.Abstractions.LambdaExpressionHelper.html
+  name: LambdaExpressionHelper
+  nameWithType: LambdaExpressionHelper
+  fullName: Bodoconsult.NetworkCommunication.App.Abstractions.LambdaExpressionHelper
+- uid: Bodoconsult.NetworkCommunication.App.Abstractions
+  commentId: N:Bodoconsult.NetworkCommunication.App.Abstractions
+  href: Bodoconsult.html
+  name: Bodoconsult.NetworkCommunication.App.Abstractions
+  nameWithType: Bodoconsult.NetworkCommunication.App.Abstractions
+  fullName: Bodoconsult.NetworkCommunication.App.Abstractions
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.App
+    name: App
+    href: Bodoconsult.NetworkCommunication.App.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.App.Abstractions
+    name: Abstractions
+    href: Bodoconsult.NetworkCommunication.App.Abstractions.html
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.App
+    name: App
+    href: Bodoconsult.NetworkCommunication.App.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.App.Abstractions
+    name: Abstractions
+    href: Bodoconsult.NetworkCommunication.App.Abstractions.html
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerClientCollection.Server*
+  commentId: Overload:Bodoconsult.Network.Windows.Dhcp.DhcpServerClientCollection.Server
+  href: Bodoconsult.Network.Windows.Dhcp.DhcpServerClientCollection.html#Bodoconsult_Network_Windows_Dhcp_DhcpServerClientCollection_Server
+  name: Server
+  nameWithType: DhcpServerClientCollection.Server
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerClientCollection.Server
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServer
+  commentId: T:Bodoconsult.Network.Windows.Dhcp.DhcpServer
+  parent: Bodoconsult.Network.Windows.Dhcp
+  href: Bodoconsult.Network.Windows.Dhcp.DhcpServer.html
+  name: DhcpServer
+  nameWithType: DhcpServer
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServer
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerClientCollection.GetEnumerator*
+  commentId: Overload:Bodoconsult.Network.Windows.Dhcp.DhcpServerClientCollection.GetEnumerator
+  href: Bodoconsult.Network.Windows.Dhcp.DhcpServerClientCollection.html#Bodoconsult_Network_Windows_Dhcp_DhcpServerClientCollection_GetEnumerator
+  name: GetEnumerator
+  nameWithType: DhcpServerClientCollection.GetEnumerator
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerClientCollection.GetEnumerator
+- uid: System.Collections.Generic.IEnumerable{Bodoconsult.Network.Windows.Dhcp.IDhcpServerClient}.GetEnumerator
+  commentId: M:System.Collections.Generic.IEnumerable{Bodoconsult.Network.Windows.Dhcp.IDhcpServerClient}.GetEnumerator
+  parent: System.Collections.Generic.IEnumerable{Bodoconsult.Network.Windows.Dhcp.IDhcpServerClient}
+  definition: System.Collections.Generic.IEnumerable`1.GetEnumerator
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1.getenumerator
+  name: GetEnumerator()
+  nameWithType: IEnumerable<IDhcpServerClient>.GetEnumerator()
+  fullName: System.Collections.Generic.IEnumerable<Bodoconsult.Network.Windows.Dhcp.IDhcpServerClient>.GetEnumerator()
+  nameWithType.vb: IEnumerable(Of IDhcpServerClient).GetEnumerator()
+  fullName.vb: System.Collections.Generic.IEnumerable(Of Bodoconsult.Network.Windows.Dhcp.IDhcpServerClient).GetEnumerator()
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable{Bodoconsult.Network.Windows.Dhcp.IDhcpServerClient}.GetEnumerator
+    name: GetEnumerator
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1.getenumerator
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable{Bodoconsult.Network.Windows.Dhcp.IDhcpServerClient}.GetEnumerator
+    name: GetEnumerator
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1.getenumerator
+  - name: (
+  - name: )
+- uid: System.Collections.Generic.IEnumerator{Bodoconsult.Network.Windows.Dhcp.IDhcpServerClient}
+  commentId: T:System.Collections.Generic.IEnumerator{Bodoconsult.Network.Windows.Dhcp.IDhcpServerClient}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IEnumerator`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerator-1
+  name: IEnumerator<IDhcpServerClient>
+  nameWithType: IEnumerator<IDhcpServerClient>
+  fullName: System.Collections.Generic.IEnumerator<Bodoconsult.Network.Windows.Dhcp.IDhcpServerClient>
+  nameWithType.vb: IEnumerator(Of IDhcpServerClient)
+  fullName.vb: System.Collections.Generic.IEnumerator(Of Bodoconsult.Network.Windows.Dhcp.IDhcpServerClient)
+  name.vb: IEnumerator(Of IDhcpServerClient)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerator`1
+    name: IEnumerator
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerator-1
+  - name: <
+  - uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerClient
+    name: IDhcpServerClient
+    href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerClient.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerator`1
+    name: IEnumerator
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerator-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerClient
+    name: IDhcpServerClient
+    href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerClient.html
+  - name: )
+- uid: System.Collections.Generic.IEnumerable`1.GetEnumerator
+  commentId: M:System.Collections.Generic.IEnumerable`1.GetEnumerator
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1.getenumerator
+  name: GetEnumerator()
+  nameWithType: IEnumerable<T>.GetEnumerator()
+  fullName: System.Collections.Generic.IEnumerable<T>.GetEnumerator()
+  nameWithType.vb: IEnumerable(Of T).GetEnumerator()
+  fullName.vb: System.Collections.Generic.IEnumerable(Of T).GetEnumerator()
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1.GetEnumerator
+    name: GetEnumerator
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1.getenumerator
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1.GetEnumerator
+    name: GetEnumerator
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1.getenumerator
+  - name: (
+  - name: )
+- uid: System.Collections.Generic.IEnumerator`1
+  commentId: T:System.Collections.Generic.IEnumerator`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerator-1
+  name: IEnumerator<T>
+  nameWithType: IEnumerator<T>
+  fullName: System.Collections.Generic.IEnumerator<T>
+  nameWithType.vb: IEnumerator(Of T)
+  fullName.vb: System.Collections.Generic.IEnumerator(Of T)
+  name.vb: IEnumerator(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerator`1
+    name: IEnumerator
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerator-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerator`1
+    name: IEnumerator
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerator-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerClientCollection.RemoveClient*
+  commentId: Overload:Bodoconsult.Network.Windows.Dhcp.DhcpServerClientCollection.RemoveClient
+  href: Bodoconsult.Network.Windows.Dhcp.DhcpServerClientCollection.html#Bodoconsult_Network_Windows_Dhcp_DhcpServerClientCollection_RemoveClient_Bodoconsult_Network_Windows_Dhcp_IDhcpServerClient_
+  name: RemoveClient
+  nameWithType: DhcpServerClientCollection.RemoveClient
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerClientCollection.RemoveClient
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerClientCollection.RemoveClient(Bodoconsult.Network.Windows.Dhcp.IDhcpServerClient)
+  commentId: M:Bodoconsult.Network.Windows.Dhcp.IDhcpServerClientCollection.RemoveClient(Bodoconsult.Network.Windows.Dhcp.IDhcpServerClient)
+  parent: Bodoconsult.Network.Windows.Dhcp.IDhcpServerClientCollection
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerClientCollection.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerClientCollection_RemoveClient_Bodoconsult_Network_Windows_Dhcp_IDhcpServerClient_
+  name: RemoveClient(IDhcpServerClient)
+  nameWithType: IDhcpServerClientCollection.RemoveClient(IDhcpServerClient)
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerClientCollection.RemoveClient(Bodoconsult.Network.Windows.Dhcp.IDhcpServerClient)
+  spec.csharp:
+  - uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerClientCollection.RemoveClient(Bodoconsult.Network.Windows.Dhcp.IDhcpServerClient)
+    name: RemoveClient
+    href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerClientCollection.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerClientCollection_RemoveClient_Bodoconsult_Network_Windows_Dhcp_IDhcpServerClient_
+  - name: (
+  - uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerClient
+    name: IDhcpServerClient
+    href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerClient.html
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerClientCollection.RemoveClient(Bodoconsult.Network.Windows.Dhcp.IDhcpServerClient)
+    name: RemoveClient
+    href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerClientCollection.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerClientCollection_RemoveClient_Bodoconsult_Network_Windows_Dhcp_IDhcpServerClient_
+  - name: (
+  - uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerClient
+    name: IDhcpServerClient
+    href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerClient.html
+  - name: )
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerClient
+  commentId: T:Bodoconsult.Network.Windows.Dhcp.IDhcpServerClient
+  parent: Bodoconsult.Network.Windows.Dhcp
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerClient.html
+  name: IDhcpServerClient
+  nameWithType: IDhcpServerClient
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerClient

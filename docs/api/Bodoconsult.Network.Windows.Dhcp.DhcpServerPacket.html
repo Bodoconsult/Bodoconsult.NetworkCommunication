@@ -1,0 +1,1598 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Class DhcpServerPacket | Bodoconsult.Network </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class DhcpServerPacket | Bodoconsult.Network ">
+      
+      
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/new/main/apiSpec/new?filename=Bodoconsult_Network_Windows_Dhcp_DhcpServerPacket.md&amp;value=---%0Auid%3A%20Bodoconsult.Network.Windows.Dhcp.DhcpServerPacket%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../logo.svg" alt="Bodoconsult.Network">
+            Bodoconsult.Network
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="Bodoconsult.Network.Windows.Dhcp.DhcpServerPacket">
+
+
+
+  <h1 id="Bodoconsult_Network_Windows_Dhcp_DhcpServerPacket" data-uid="Bodoconsult.Network.Windows.Dhcp.DhcpServerPacket" class="text-break">
+Class DhcpServerPacket  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.Network.Windows/Dhcp/DhcpServerPacket.cs/#L10"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="Bodoconsult.html">Bodoconsult</a>.<a class="xref" href="Bodoconsult.Network.html">Network</a>.<a class="xref" href="Bodoconsult.Network.Windows.html">Windows</a>.<a class="xref" href="Bodoconsult.Network.Windows.Dhcp.html">Dhcp</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>Bodoconsult.Network.Windows.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"></div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class DhcpServerPacket : MarshalByRefObject, IDhcpServerPacketRaw, IDhcpServerPacket</code></pre>
+  </div>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.marshalbyrefobject">MarshalByRefObject</a></div>
+      <div><span class="xref">DhcpServerPacket</span></div>
+    </dd>
+  </dl>
+
+  <dl class="typelist implements">
+    <dt>Implements</dt>
+    <dd>
+      <div><a class="xref" href="Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacketRaw.html">IDhcpServerPacketRaw</a></div>
+      <div><a class="xref" href="Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.html">IDhcpServerPacket</a></div>
+    </dd>
+  </dl>
+
+  <dl class="typelist derived">
+    <dt>Derived</dt>
+    <dd>
+      <div><a class="xref" href="Bodoconsult.Network.Windows.Dhcp.DhcpServerPacketWritable.html">DhcpServerPacketWritable</a></div>
+    </dd>
+  </dl>
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.marshalbyrefobject.getlifetimeservice">MarshalByRefObject.GetLifetimeService()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.marshalbyrefobject.initializelifetimeservice">MarshalByRefObject.InitializeLifetimeService()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.marshalbyrefobject.memberwiseclone">MarshalByRefObject.MemberwiseClone(bool)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone">object.MemberwiseClone()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+  </dd></dl>
+
+
+
+
+
+
+  <h2 class="section" id="constructors">Constructors
+</h2>
+
+
+  <a id="Bodoconsult_Network_Windows_Dhcp_DhcpServerPacket__ctor_" data-uid="Bodoconsult.Network.Windows.Dhcp.DhcpServerPacket.#ctor*"></a>
+
+  <h3 id="Bodoconsult_Network_Windows_Dhcp_DhcpServerPacket__ctor_System_IntPtr_System_Int32_" data-uid="Bodoconsult.Network.Windows.Dhcp.DhcpServerPacket.#ctor(System.IntPtr,System.Int32)">
+  DhcpServerPacket(nint, int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.Network.Windows/Dhcp/DhcpServerPacket.cs/#L18"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public DhcpServerPacket(nint pointer, int size)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>pointer</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.intptr">nint</a></dt>
+    <dd></dd>
+    <dt><code>size</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="fields">Fields
+</h2>
+
+
+
+  <h3 id="Bodoconsult_Network_Windows_Dhcp_DhcpServerPacket_BufferInternal" data-uid="Bodoconsult.Network.Windows.Dhcp.DhcpServerPacket.BufferInternal">
+  BufferInternal
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.Network.Windows/Dhcp/DhcpServerPacket.cs/#L16"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected byte[] BufferInternal</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Bodoconsult_Network_Windows_Dhcp_DhcpServerPacket_ChaddrOffset" data-uid="Bodoconsult.Network.Windows.Dhcp.DhcpServerPacket.ChaddrOffset">
+  ChaddrOffset
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.Network.Windows/Dhcp/DhcpServerPacket.cs/#L111"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected const int ChaddrOffset = 28</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Bodoconsult_Network_Windows_Dhcp_DhcpServerPacket_CiaddrOffset" data-uid="Bodoconsult.Network.Windows.Dhcp.DhcpServerPacket.CiaddrOffset">
+  CiaddrOffset
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.Network.Windows/Dhcp/DhcpServerPacket.cs/#L95"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected const int CiaddrOffset = 12</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Bodoconsult_Network_Windows_Dhcp_DhcpServerPacket_FileOffset" data-uid="Bodoconsult.Network.Windows.Dhcp.DhcpServerPacket.FileOffset">
+  FileOffset
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.Network.Windows/Dhcp/DhcpServerPacket.cs/#L120"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected const int FileOffset = 108</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Bodoconsult_Network_Windows_Dhcp_DhcpServerPacket_FlagsOffset" data-uid="Bodoconsult.Network.Windows.Dhcp.DhcpServerPacket.FlagsOffset">
+  FlagsOffset
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.Network.Windows/Dhcp/DhcpServerPacket.cs/#L91"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected const int FlagsOffset = 10</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Bodoconsult_Network_Windows_Dhcp_DhcpServerPacket_GiaddrOffset" data-uid="Bodoconsult.Network.Windows.Dhcp.DhcpServerPacket.GiaddrOffset">
+  GiaddrOffset
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.Network.Windows/Dhcp/DhcpServerPacket.cs/#L107"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected const int GiaddrOffset = 24</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Bodoconsult_Network_Windows_Dhcp_DhcpServerPacket_HlenOffset" data-uid="Bodoconsult.Network.Windows.Dhcp.DhcpServerPacket.HlenOffset">
+  HlenOffset
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.Network.Windows/Dhcp/DhcpServerPacket.cs/#L75"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected const int HlenOffset = 2</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Bodoconsult_Network_Windows_Dhcp_DhcpServerPacket_HopsOffset" data-uid="Bodoconsult.Network.Windows.Dhcp.DhcpServerPacket.HopsOffset">
+  HopsOffset
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.Network.Windows/Dhcp/DhcpServerPacket.cs/#L79"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected const int HopsOffset = 3</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Bodoconsult_Network_Windows_Dhcp_DhcpServerPacket_HtypeOffset" data-uid="Bodoconsult.Network.Windows.Dhcp.DhcpServerPacket.HtypeOffset">
+  HtypeOffset
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.Network.Windows/Dhcp/DhcpServerPacket.cs/#L71"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected const int HtypeOffset = 1</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Bodoconsult_Network_Windows_Dhcp_DhcpServerPacket_Length" data-uid="Bodoconsult.Network.Windows.Dhcp.DhcpServerPacket.Length">
+  Length
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.Network.Windows/Dhcp/DhcpServerPacket.cs/#L15"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected int Length</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Bodoconsult_Network_Windows_Dhcp_DhcpServerPacket_MagicCookieOffset" data-uid="Bodoconsult.Network.Windows.Dhcp.DhcpServerPacket.MagicCookieOffset">
+  MagicCookieOffset
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.Network.Windows/Dhcp/DhcpServerPacket.cs/#L124"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected const int MagicCookieOffset = 236</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Bodoconsult_Network_Windows_Dhcp_DhcpServerPacket_OpOffset" data-uid="Bodoconsult.Network.Windows.Dhcp.DhcpServerPacket.OpOffset">
+  OpOffset
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.Network.Windows/Dhcp/DhcpServerPacket.cs/#L67"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected const int OpOffset = 0</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Bodoconsult_Network_Windows_Dhcp_DhcpServerPacket_OptionsOffset" data-uid="Bodoconsult.Network.Windows.Dhcp.DhcpServerPacket.OptionsOffset">
+  OptionsOffset
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.Network.Windows/Dhcp/DhcpServerPacket.cs/#L143"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected const int OptionsOffset = 240</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Bodoconsult_Network_Windows_Dhcp_DhcpServerPacket_Pointer" data-uid="Bodoconsult.Network.Windows.Dhcp.DhcpServerPacket.Pointer">
+  Pointer
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.Network.Windows/Dhcp/DhcpServerPacket.cs/#L13"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected readonly nint Pointer</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.intptr">nint</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Bodoconsult_Network_Windows_Dhcp_DhcpServerPacket_SecsOffset" data-uid="Bodoconsult.Network.Windows.Dhcp.DhcpServerPacket.SecsOffset">
+  SecsOffset
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.Network.Windows/Dhcp/DhcpServerPacket.cs/#L87"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected const int SecsOffset = 8</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Bodoconsult_Network_Windows_Dhcp_DhcpServerPacket_SiaddrOffset" data-uid="Bodoconsult.Network.Windows.Dhcp.DhcpServerPacket.SiaddrOffset">
+  SiaddrOffset
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.Network.Windows/Dhcp/DhcpServerPacket.cs/#L103"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected const int SiaddrOffset = 20</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Bodoconsult_Network_Windows_Dhcp_DhcpServerPacket_Size" data-uid="Bodoconsult.Network.Windows.Dhcp.DhcpServerPacket.Size">
+  Size
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.Network.Windows/Dhcp/DhcpServerPacket.cs/#L14"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected readonly int Size</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Bodoconsult_Network_Windows_Dhcp_DhcpServerPacket_SnameOffset" data-uid="Bodoconsult.Network.Windows.Dhcp.DhcpServerPacket.SnameOffset">
+  SnameOffset
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.Network.Windows/Dhcp/DhcpServerPacket.cs/#L116"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected const int SnameOffset = 44</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Bodoconsult_Network_Windows_Dhcp_DhcpServerPacket_XidOffset" data-uid="Bodoconsult.Network.Windows.Dhcp.DhcpServerPacket.XidOffset">
+  XidOffset
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.Network.Windows/Dhcp/DhcpServerPacket.cs/#L83"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected const int XidOffset = 4</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Bodoconsult_Network_Windows_Dhcp_DhcpServerPacket_YiaddrOffset" data-uid="Bodoconsult.Network.Windows.Dhcp.DhcpServerPacket.YiaddrOffset">
+  YiaddrOffset
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.Network.Windows/Dhcp/DhcpServerPacket.cs/#L99"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected const int YiaddrOffset = 16</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
+  <a id="Bodoconsult_Network_Windows_Dhcp_DhcpServerPacket_Buffer_" data-uid="Bodoconsult.Network.Windows.Dhcp.DhcpServerPacket.Buffer*"></a>
+
+  <h3 id="Bodoconsult_Network_Windows_Dhcp_DhcpServerPacket_Buffer" data-uid="Bodoconsult.Network.Windows.Dhcp.DhcpServerPacket.Buffer">
+  Buffer
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.Network.Windows/Dhcp/DhcpServerPacket.cs/#L26"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Returns the buffer containing the raw packet bytes</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public byte[] Buffer { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_Network_Windows_Dhcp_DhcpServerPacket_ClientHardwareAddress_" data-uid="Bodoconsult.Network.Windows.Dhcp.DhcpServerPacket.ClientHardwareAddress*"></a>
+
+  <h3 id="Bodoconsult_Network_Windows_Dhcp_DhcpServerPacket_ClientHardwareAddress" data-uid="Bodoconsult.Network.Windows.Dhcp.DhcpServerPacket.ClientHardwareAddress">
+  ClientHardwareAddress
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.Network.Windows/Dhcp/DhcpServerPacket.cs/#L113"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Client hardware address (CHADDR)</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public DhcpServerHardwareAddress ClientHardwareAddress { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Bodoconsult.Network.Windows.Dhcp.DhcpServerHardwareAddress.html">DhcpServerHardwareAddress</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_Network_Windows_Dhcp_DhcpServerPacket_ClientIpAddress_" data-uid="Bodoconsult.Network.Windows.Dhcp.DhcpServerPacket.ClientIpAddress*"></a>
+
+  <h3 id="Bodoconsult_Network_Windows_Dhcp_DhcpServerPacket_ClientIpAddress" data-uid="Bodoconsult.Network.Windows.Dhcp.DhcpServerPacket.ClientIpAddress">
+  ClientIpAddress
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.Network.Windows/Dhcp/DhcpServerPacket.cs/#L97"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Client IP Address; only filled in if client is in BOUND, RENEW or REBINDING state and can respond to ARP requests (CIADDR)</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public DhcpServerIpAddress ClientIpAddress { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.html">DhcpServerIpAddress</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_Network_Windows_Dhcp_DhcpServerPacket_DhcpMessageType_" data-uid="Bodoconsult.Network.Windows.Dhcp.DhcpServerPacket.DhcpMessageType*"></a>
+
+  <h3 id="Bodoconsult_Network_Windows_Dhcp_DhcpServerPacket_DhcpMessageType" data-uid="Bodoconsult.Network.Windows.Dhcp.DhcpServerPacket.DhcpMessageType">
+  DhcpMessageType
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.Network.Windows/Dhcp/DhcpServerPacket.cs/#L130"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public DhcpServerPacketMessageTypes DhcpMessageType { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Bodoconsult.Network.Windows.Dhcp.DhcpServerPacketMessageTypes.html">DhcpServerPacketMessageTypes</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_Network_Windows_Dhcp_DhcpServerPacket_FileName_" data-uid="Bodoconsult.Network.Windows.Dhcp.DhcpServerPacket.FileName*"></a>
+
+  <h3 id="Bodoconsult_Network_Windows_Dhcp_DhcpServerPacket_FileName" data-uid="Bodoconsult.Network.Windows.Dhcp.DhcpServerPacket.FileName">
+  FileName
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.Network.Windows/Dhcp/DhcpServerPacket.cs/#L122"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Boot file name; &quot;generic&quot; name or null in DHCPDISCOVER, fully qualified directory-path name in DHCPOFFER (FILE)</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string FileName { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_Network_Windows_Dhcp_DhcpServerPacket_Flags_" data-uid="Bodoconsult.Network.Windows.Dhcp.DhcpServerPacket.Flags*"></a>
+
+  <h3 id="Bodoconsult_Network_Windows_Dhcp_DhcpServerPacket_Flags" data-uid="Bodoconsult.Network.Windows.Dhcp.DhcpServerPacket.Flags">
+  Flags
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.Network.Windows/Dhcp/DhcpServerPacket.cs/#L93"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Flags (FLAGS)</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public DhcpServerPacketFlags Flags { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Bodoconsult.Network.Windows.Dhcp.DhcpServerPacketFlags.html">DhcpServerPacketFlags</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_Network_Windows_Dhcp_DhcpServerPacket_GatewayHops_" data-uid="Bodoconsult.Network.Windows.Dhcp.DhcpServerPacket.GatewayHops*"></a>
+
+  <h3 id="Bodoconsult_Network_Windows_Dhcp_DhcpServerPacket_GatewayHops" data-uid="Bodoconsult.Network.Windows.Dhcp.DhcpServerPacket.GatewayHops">
+  GatewayHops
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.Network.Windows/Dhcp/DhcpServerPacket.cs/#L81"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Optionally used by relay agents when booting via a relay agent (HOPS)</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public byte GatewayHops { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_Network_Windows_Dhcp_DhcpServerPacket_HardwareAddressLength_" data-uid="Bodoconsult.Network.Windows.Dhcp.DhcpServerPacket.HardwareAddressLength*"></a>
+
+  <h3 id="Bodoconsult_Network_Windows_Dhcp_DhcpServerPacket_HardwareAddressLength" data-uid="Bodoconsult.Network.Windows.Dhcp.DhcpServerPacket.HardwareAddressLength">
+  HardwareAddressLength
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.Network.Windows/Dhcp/DhcpServerPacket.cs/#L77"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Length (in bytes) of the Hardware Address (HLEN)</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public byte HardwareAddressLength { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_Network_Windows_Dhcp_DhcpServerPacket_HardwareAddressType_" data-uid="Bodoconsult.Network.Windows.Dhcp.DhcpServerPacket.HardwareAddressType*"></a>
+
+  <h3 id="Bodoconsult_Network_Windows_Dhcp_DhcpServerPacket_HardwareAddressType" data-uid="Bodoconsult.Network.Windows.Dhcp.DhcpServerPacket.HardwareAddressType">
+  HardwareAddressType
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.Network.Windows/Dhcp/DhcpServerPacket.cs/#L73"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Type of Hardware Address (HTYPE)</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public DhcpServerHardwareType HardwareAddressType { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Bodoconsult.Network.Windows.Dhcp.DhcpServerHardwareType.html">DhcpServerHardwareType</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_Network_Windows_Dhcp_DhcpServerPacket_MessageType_" data-uid="Bodoconsult.Network.Windows.Dhcp.DhcpServerPacket.MessageType*"></a>
+
+  <h3 id="Bodoconsult_Network_Windows_Dhcp_DhcpServerPacket_MessageType" data-uid="Bodoconsult.Network.Windows.Dhcp.DhcpServerPacket.MessageType">
+  MessageType
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.Network.Windows/Dhcp/DhcpServerPacket.cs/#L69"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Packet OP Code/Message Type (OP)</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public DhcpServerMessageTypes MessageType { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Bodoconsult.Network.Windows.Dhcp.DhcpServerMessageTypes.html">DhcpServerMessageTypes</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_Network_Windows_Dhcp_DhcpServerPacket_NextServerIpAddress_" data-uid="Bodoconsult.Network.Windows.Dhcp.DhcpServerPacket.NextServerIpAddress*"></a>
+
+  <h3 id="Bodoconsult_Network_Windows_Dhcp_DhcpServerPacket_NextServerIpAddress" data-uid="Bodoconsult.Network.Windows.Dhcp.DhcpServerPacket.NextServerIpAddress">
+  NextServerIpAddress
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.Network.Windows/Dhcp/DhcpServerPacket.cs/#L105"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>IP address of next server to use in bootstrap; returned in DHCPOFFER, DHCPACK by server (SIADDR)</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public DhcpServerIpAddress NextServerIpAddress { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.html">DhcpServerIpAddress</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_Network_Windows_Dhcp_DhcpServerPacket_Options_" data-uid="Bodoconsult.Network.Windows.Dhcp.DhcpServerPacket.Options*"></a>
+
+  <h3 id="Bodoconsult_Network_Windows_Dhcp_DhcpServerPacket_Options" data-uid="Bodoconsult.Network.Windows.Dhcp.DhcpServerPacket.Options">
+  Options
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.Network.Windows/Dhcp/DhcpServerPacket.cs/#L144"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ReadOnlyCollection&lt;DhcpServerPacketOption&gt; Options { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.objectmodel.readonlycollection-1">ReadOnlyCollection</a>&lt;<a class="xref" href="Bodoconsult.Network.Windows.Dhcp.DhcpServerPacketOption.html">DhcpServerPacketOption</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_Network_Windows_Dhcp_DhcpServerPacket_OptionsMagicCookie_" data-uid="Bodoconsult.Network.Windows.Dhcp.DhcpServerPacket.OptionsMagicCookie*"></a>
+
+  <h3 id="Bodoconsult_Network_Windows_Dhcp_DhcpServerPacket_OptionsMagicCookie" data-uid="Bodoconsult.Network.Windows.Dhcp.DhcpServerPacket.OptionsMagicCookie">
+  OptionsMagicCookie
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.Network.Windows/Dhcp/DhcpServerPacket.cs/#L125"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int OptionsMagicCookie { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_Network_Windows_Dhcp_DhcpServerPacket_RelayAgentIpAddress_" data-uid="Bodoconsult.Network.Windows.Dhcp.DhcpServerPacket.RelayAgentIpAddress*"></a>
+
+  <h3 id="Bodoconsult_Network_Windows_Dhcp_DhcpServerPacket_RelayAgentIpAddress" data-uid="Bodoconsult.Network.Windows.Dhcp.DhcpServerPacket.RelayAgentIpAddress">
+  RelayAgentIpAddress
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.Network.Windows/Dhcp/DhcpServerPacket.cs/#L109"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Relay agent IP address, used in booting via a relay agent (GIADDR)</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public DhcpServerIpAddress RelayAgentIpAddress { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.html">DhcpServerIpAddress</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_Network_Windows_Dhcp_DhcpServerPacket_SecondsElapsed_" data-uid="Bodoconsult.Network.Windows.Dhcp.DhcpServerPacket.SecondsElapsed*"></a>
+
+  <h3 id="Bodoconsult_Network_Windows_Dhcp_DhcpServerPacket_SecondsElapsed" data-uid="Bodoconsult.Network.Windows.Dhcp.DhcpServerPacket.SecondsElapsed">
+  SecondsElapsed
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.Network.Windows/Dhcp/DhcpServerPacket.cs/#L89"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Seconds elapsed since client started trying to boot (SECS)</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ushort SecondsElapsed { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint16">ushort</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_Network_Windows_Dhcp_DhcpServerPacket_ServerHostName_" data-uid="Bodoconsult.Network.Windows.Dhcp.DhcpServerPacket.ServerHostName*"></a>
+
+  <h3 id="Bodoconsult_Network_Windows_Dhcp_DhcpServerPacket_ServerHostName" data-uid="Bodoconsult.Network.Windows.Dhcp.DhcpServerPacket.ServerHostName">
+  ServerHostName
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.Network.Windows/Dhcp/DhcpServerPacket.cs/#L118"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Optional server host name (SNAME)</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string ServerHostName { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_Network_Windows_Dhcp_DhcpServerPacket_TransactionId_" data-uid="Bodoconsult.Network.Windows.Dhcp.DhcpServerPacket.TransactionId*"></a>
+
+  <h3 id="Bodoconsult_Network_Windows_Dhcp_DhcpServerPacket_TransactionId" data-uid="Bodoconsult.Network.Windows.Dhcp.DhcpServerPacket.TransactionId">
+  TransactionId
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.Network.Windows/Dhcp/DhcpServerPacket.cs/#L85"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Transaction Id, a random number, used to match this boot request with the responses it generates (XID)</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int TransactionId { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_Network_Windows_Dhcp_DhcpServerPacket_YourIpAddress_" data-uid="Bodoconsult.Network.Windows.Dhcp.DhcpServerPacket.YourIpAddress*"></a>
+
+  <h3 id="Bodoconsult_Network_Windows_Dhcp_DhcpServerPacket_YourIpAddress" data-uid="Bodoconsult.Network.Windows.Dhcp.DhcpServerPacket.YourIpAddress">
+  YourIpAddress
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.Network.Windows/Dhcp/DhcpServerPacket.cs/#L101"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>'your' (client) IP address (YIADDR)</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public DhcpServerIpAddress YourIpAddress { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.html">DhcpServerIpAddress</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="Bodoconsult_Network_Windows_Dhcp_DhcpServerPacket_GetLength_" data-uid="Bodoconsult.Network.Windows.Dhcp.DhcpServerPacket.GetLength*"></a>
+
+  <h3 id="Bodoconsult_Network_Windows_Dhcp_DhcpServerPacket_GetLength" data-uid="Bodoconsult.Network.Windows.Dhcp.DhcpServerPacket.GetLength">
+  GetLength()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.Network.Windows/Dhcp/DhcpServerPacket.cs/#L41"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Calculates the length of the packet</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int GetLength()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The length of the packet in the buffer</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_Network_Windows_Dhcp_DhcpServerPacket_ToString_" data-uid="Bodoconsult.Network.Windows.Dhcp.DhcpServerPacket.ToString*"></a>
+
+  <h3 id="Bodoconsult_Network_Windows_Dhcp_DhcpServerPacket_ToString" data-uid="Bodoconsult.Network.Windows.Dhcp.DhcpServerPacket.ToString">
+  ToString()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.Network.Windows/Dhcp/DhcpServerPacket.cs/#L199"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Returns a string that represents the current object.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override string ToString()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>A string that represents the current object.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_Network_Windows_Dhcp_DhcpServerPacket_TryGetOption_" data-uid="Bodoconsult.Network.Windows.Dhcp.DhcpServerPacket.TryGetOption*"></a>
+
+  <h3 id="Bodoconsult_Network_Windows_Dhcp_DhcpServerPacket_TryGetOption_Bodoconsult_Network_Windows_Dhcp_DhcpServerOptionIds_Bodoconsult_Network_Windows_Dhcp_DhcpServerPacketOption__" data-uid="Bodoconsult.Network.Windows.Dhcp.DhcpServerPacket.TryGetOption(Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIds,Bodoconsult.Network.Windows.Dhcp.DhcpServerPacketOption@)">
+  TryGetOption(DhcpServerOptionIds, out DhcpServerPacketOption)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.Network.Windows/Dhcp/DhcpServerPacket.cs/#L145"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool TryGetOption(DhcpServerOptionIds optionId, out DhcpServerPacketOption option)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>optionId</code> <a class="xref" href="Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIds.html">DhcpServerOptionIds</a></dt>
+    <dd></dd>
+    <dt><code>option</code> <a class="xref" href="Bodoconsult.Network.Windows.Dhcp.DhcpServerPacketOption.html">DhcpServerPacketOption</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_Network_Windows_Dhcp_DhcpServerPacket_TryGetOption_" data-uid="Bodoconsult.Network.Windows.Dhcp.DhcpServerPacket.TryGetOption*"></a>
+
+  <h3 id="Bodoconsult_Network_Windows_Dhcp_DhcpServerPacket_TryGetOption_System_Byte_Bodoconsult_Network_Windows_Dhcp_DhcpServerPacketOption__" data-uid="Bodoconsult.Network.Windows.Dhcp.DhcpServerPacket.TryGetOption(System.Byte,Bodoconsult.Network.Windows.Dhcp.DhcpServerPacketOption@)">
+  TryGetOption(byte, out DhcpServerPacketOption)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.Network.Windows/Dhcp/DhcpServerPacket.cs/#L156"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool TryGetOption(byte optionId, out DhcpServerPacketOption option)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>optionId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a></dt>
+    <dd></dd>
+    <dt><code>option</code> <a class="xref" href="Bodoconsult.Network.Windows.Dhcp.DhcpServerPacketOption.html">DhcpServerPacketOption</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_Network_Windows_Dhcp_DhcpServerPacket_TryGetOptionIndex_" data-uid="Bodoconsult.Network.Windows.Dhcp.DhcpServerPacket.TryGetOptionIndex*"></a>
+
+  <h3 id="Bodoconsult_Network_Windows_Dhcp_DhcpServerPacket_TryGetOptionIndex_Bodoconsult_Network_Windows_Dhcp_DhcpServerOptionIds_System_Int32__" data-uid="Bodoconsult.Network.Windows.Dhcp.DhcpServerPacket.TryGetOptionIndex(Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIds,System.Int32@)">
+  TryGetOptionIndex(DhcpServerOptionIds, out int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.Network.Windows/Dhcp/DhcpServerPacket.cs/#L158"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected bool TryGetOptionIndex(DhcpServerOptionIds optionId, out int optionIndex)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>optionId</code> <a class="xref" href="Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIds.html">DhcpServerOptionIds</a></dt>
+    <dd></dd>
+    <dt><code>optionIndex</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.Network.Windows/Dhcp/DhcpServerPacket.cs/#L10" class="edit-link">Edit this page</a>
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

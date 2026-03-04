@@ -1,0 +1,259 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerClientTypes
+  commentId: T:Bodoconsult.Network.Windows.Dhcp.DhcpServerClientTypes
+  id: DhcpServerClientTypes
+  parent: Bodoconsult.Network.Windows.Dhcp
+  children:
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerClientTypes.Bootp
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerClientTypes.Dhcp
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerClientTypes.DhcpAndBootp
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerClientTypes.None
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerClientTypes.Reservation
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerClientTypes.Unspecified
+  langs:
+  - csharp
+  - vb
+  name: DhcpServerClientTypes
+  nameWithType: DhcpServerClientTypes
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerClientTypes
+  type: Enum
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerClientTypes.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: DhcpServerClientTypes
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerClientTypes.cs
+    startLine: 5
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: >-
+      [Flags]
+
+      public enum DhcpServerClientTypes
+    content.vb: >-
+      <Flags>
+
+      Public Enum DhcpServerClientTypes
+  attributes:
+  - type: System.FlagsAttribute
+    ctor: System.FlagsAttribute.#ctor
+    arguments: []
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerClientTypes.Unspecified
+  commentId: F:Bodoconsult.Network.Windows.Dhcp.DhcpServerClientTypes.Unspecified
+  id: Unspecified
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerClientTypes
+  langs:
+  - csharp
+  - vb
+  name: Unspecified
+  nameWithType: DhcpServerClientTypes.Unspecified
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerClientTypes.Unspecified
+  type: Field
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerClientTypes.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Unspecified
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerClientTypes.cs
+    startLine: 11
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  summary: A client other than ones defined in this table.
+  example: []
+  syntax:
+    content: Unspecified = 0
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerClientTypes
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerClientTypes.Dhcp
+  commentId: F:Bodoconsult.Network.Windows.Dhcp.DhcpServerClientTypes.Dhcp
+  id: Dhcp
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerClientTypes
+  langs:
+  - csharp
+  - vb
+  name: Dhcp
+  nameWithType: DhcpServerClientTypes.Dhcp
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerClientTypes.Dhcp
+  type: Field
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerClientTypes.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Dhcp
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerClientTypes.cs
+    startLine: 15
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  summary: Supports the DHCP protocol.
+  example: []
+  syntax:
+    content: Dhcp = 1
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerClientTypes
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerClientTypes.Bootp
+  commentId: F:Bodoconsult.Network.Windows.Dhcp.DhcpServerClientTypes.Bootp
+  id: Bootp
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerClientTypes
+  langs:
+  - csharp
+  - vb
+  name: Bootp
+  nameWithType: DhcpServerClientTypes.Bootp
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerClientTypes.Bootp
+  type: Field
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerClientTypes.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Bootp
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerClientTypes.cs
+    startLine: 19
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  summary: Supports the BOOTP protocol.
+  example: []
+  syntax:
+    content: Bootp = 2
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerClientTypes
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerClientTypes.DhcpAndBootp
+  commentId: F:Bodoconsult.Network.Windows.Dhcp.DhcpServerClientTypes.DhcpAndBootp
+  id: DhcpAndBootp
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerClientTypes
+  langs:
+  - csharp
+  - vb
+  name: DhcpAndBootp
+  nameWithType: DhcpServerClientTypes.DhcpAndBootp
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerClientTypes.DhcpAndBootp
+  type: Field
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerClientTypes.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: DhcpAndBootp
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerClientTypes.cs
+    startLine: 23
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  summary: Supports the DHCP and BOOTP protocols.
+  example: []
+  syntax:
+    content: DhcpAndBootp = Dhcp | Bootp
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerClientTypes
+    content.vb: DhcpAndBootp = Dhcp Or Bootp
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerClientTypes.Reservation
+  commentId: F:Bodoconsult.Network.Windows.Dhcp.DhcpServerClientTypes.Reservation
+  id: Reservation
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerClientTypes
+  langs:
+  - csharp
+  - vb
+  name: Reservation
+  nameWithType: DhcpServerClientTypes.Reservation
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerClientTypes.Reservation
+  type: Field
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerClientTypes.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Reservation
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerClientTypes.cs
+    startLine: 27
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  summary: There is an IPv4 reservation created for the DHCPv4 client.
+  example: []
+  syntax:
+    content: Reservation = 4
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerClientTypes
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerClientTypes.None
+  commentId: F:Bodoconsult.Network.Windows.Dhcp.DhcpServerClientTypes.None
+  id: None
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerClientTypes
+  langs:
+  - csharp
+  - vb
+  name: None
+  nameWithType: DhcpServerClientTypes.None
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerClientTypes.None
+  type: Field
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerClientTypes.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: None
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerClientTypes.cs
+    startLine: 31
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  summary: Backward compatibility for manual addressing.
+  example: []
+  syntax:
+    content: None = 100
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerClientTypes
+references:
+- uid: Bodoconsult.Network.Windows.Dhcp
+  commentId: N:Bodoconsult.Network.Windows.Dhcp
+  href: Bodoconsult.html
+  name: Bodoconsult.Network.Windows.Dhcp
+  nameWithType: Bodoconsult.Network.Windows.Dhcp
+  fullName: Bodoconsult.Network.Windows.Dhcp
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.Network
+    name: Network
+    href: Bodoconsult.Network.html
+  - name: .
+  - uid: Bodoconsult.Network.Windows
+    name: Windows
+    href: Bodoconsult.Network.Windows.html
+  - name: .
+  - uid: Bodoconsult.Network.Windows.Dhcp
+    name: Dhcp
+    href: Bodoconsult.Network.Windows.Dhcp.html
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.Network
+    name: Network
+    href: Bodoconsult.Network.html
+  - name: .
+  - uid: Bodoconsult.Network.Windows
+    name: Windows
+    href: Bodoconsult.Network.Windows.html
+  - name: .
+  - uid: Bodoconsult.Network.Windows.Dhcp
+    name: Dhcp
+    href: Bodoconsult.Network.Windows.Dhcp.html
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerClientTypes
+  commentId: T:Bodoconsult.Network.Windows.Dhcp.DhcpServerClientTypes
+  parent: Bodoconsult.Network.Windows.Dhcp
+  href: Bodoconsult.Network.Windows.Dhcp.DhcpServerClientTypes.html
+  name: DhcpServerClientTypes
+  nameWithType: DhcpServerClientTypes
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerClientTypes

@@ -1,0 +1,2094 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Class BaseOrderManagementDevice | Bodoconsult.Network </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class BaseOrderManagementDevice | Bodoconsult.Network ">
+      
+      <meta name="description" content="Base class for order management devices">
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/new/main/apiSpec/new?filename=Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice.md&amp;value=---%0Auid%3A%20Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../logo.svg" alt="Bodoconsult.Network">
+            Bodoconsult.Network
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice">
+
+
+
+  <h1 id="Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice" class="text-break">
+Class BaseOrderManagementDevice  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/OrderManagement/Devices/BaseOrderManagementDevice.cs/#L13"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="Bodoconsult.html">Bodoconsult</a>.<a class="xref" href="Bodoconsult.NetworkCommunication.html">NetworkCommunication</a>.<a class="xref" href="Bodoconsult.NetworkCommunication.OrderManagement.html">OrderManagement</a>.<a class="xref" href="Bodoconsult.NetworkCommunication.OrderManagement.Devices.html">Devices</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>Bodoconsult.NetworkCommunication.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p>Base class for order management devices</p>
+</div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public abstract class BaseOrderManagementDevice : IOrderManagementDevice, IStateManagementContext</code></pre>
+  </div>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><span class="xref">BaseOrderManagementDevice</span></div>
+    </dd>
+  </dl>
+
+  <dl class="typelist implements">
+    <dt>Implements</dt>
+    <dd>
+      <div><a class="xref" href="Bodoconsult.NetworkCommunication.Interfaces.IOrderManagementDevice.html">IOrderManagementDevice</a></div>
+      <div><a class="xref" href="Bodoconsult.NetworkCommunication.StateManagement.IStateManagementContext.html">IStateManagementContext</a></div>
+    </dd>
+  </dl>
+
+  <dl class="typelist derived">
+    <dt>Derived</dt>
+    <dd>
+      <div><a class="xref" href="Bodoconsult.NetworkCommunication.OrderManagement.Devices.FakeDevice.html">FakeDevice</a></div>
+      <div><a class="xref" href="Bodoconsult.NetworkCommunication.OrderManagement.Devices.SimpleDevice.html">SimpleDevice</a></div>
+    </dd>
+  </dl>
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone">object.MemberwiseClone()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
+    </div>
+  </dd></dl>
+
+
+
+
+
+
+  <h2 class="section" id="constructors">Constructors
+</h2>
+
+
+  <a id="Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice__ctor_" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.#ctor*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice__ctor_Bodoconsult_NetworkCommunication_Interfaces_IDataMessagingConfig_Bodoconsult_NetworkCommunication_Interfaces_IOrderManagementClientNotificationManager_" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.#ctor(Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig,Bodoconsult.NetworkCommunication.Interfaces.IOrderManagementClientNotificationManager)">
+  BaseOrderManagementDevice(IDataMessagingConfig, IOrderManagementClientNotificationManager)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/OrderManagement/Devices/BaseOrderManagementDevice.cs/#L26"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Default ctor</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected BaseOrderManagementDevice(IDataMessagingConfig dataMessagingConfig, IOrderManagementClientNotificationManager clientNotificationManager)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>dataMessagingConfig</code> <a class="xref" href="Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig.html">IDataMessagingConfig</a></dt>
+    <dd><p>Current messaging config</p>
+</dd>
+    <dt><code>clientNotificationManager</code> <a class="xref" href="Bodoconsult.NetworkCommunication.Interfaces.IOrderManagementClientNotificationManager.html">IOrderManagementClientNotificationManager</a></dt>
+    <dd><p>Current client notification manager</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="fields">Fields
+</h2>
+
+
+
+  <h3 id="Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice__appLogger" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice._appLogger">
+  _appLogger
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/OrderManagement/Devices/BaseOrderManagementDevice.cs/#L17"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected readonly IAppLoggerProxy _appLogger</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">IAppLoggerProxy</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice__isOrderProcessingActivated" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice._isOrderProcessingActivated">
+  _isOrderProcessingActivated
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/OrderManagement/Devices/BaseOrderManagementDevice.cs/#L15"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected bool _isOrderProcessingActivated</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice__monitorLogger" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice._monitorLogger">
+  _monitorLogger
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/OrderManagement/Devices/BaseOrderManagementDevice.cs/#L18"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected readonly IAppLoggerProxy _monitorLogger</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">IAppLoggerProxy</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
+  <a id="Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_BusinessState_" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.BusinessState*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_BusinessState" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.BusinessState">
+  BusinessState
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/OrderManagement/Devices/BaseOrderManagementDevice.cs/#L59"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Current business state</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IBusinessState BusinessState { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Bodoconsult.NetworkCommunication.StateManagement.IBusinessState.html">IBusinessState</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_BusinessSubState_" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.BusinessSubState*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_BusinessSubState" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.BusinessSubState">
+  BusinessSubState
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/OrderManagement/Devices/BaseOrderManagementDevice.cs/#L64"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Current business substate</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IBusinessSubState BusinessSubState { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Bodoconsult.NetworkCommunication.StateManagement.IBusinessSubState.html">IBusinessSubState</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_ClientNotificationManager_" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.ClientNotificationManager*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_ClientNotificationManager" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.ClientNotificationManager">
+  ClientNotificationManager
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/OrderManagement/Devices/BaseOrderManagementDevice.cs/#L88"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Client notification manager</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IOrderManagementClientNotificationManager ClientNotificationManager { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Bodoconsult.NetworkCommunication.Interfaces.IOrderManagementClientNotificationManager.html">IOrderManagementClientNotificationManager</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_CommunicationAdapter_" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.CommunicationAdapter*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_CommunicationAdapter" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.CommunicationAdapter">
+  CommunicationAdapter
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/OrderManagement/Devices/BaseOrderManagementDevice.cs/#L43"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Communication adapter to use for order management</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ICommunicationAdapter CommunicationAdapter { get; protected set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Bodoconsult.NetworkCommunication.Interfaces.ICommunicationAdapter.html">ICommunicationAdapter</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_CurrentState_" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.CurrentState*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_CurrentState" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.CurrentState">
+  CurrentState
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/OrderManagement/Devices/BaseOrderManagementDevice.cs/#L69"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>The current <a class="xref" href="Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState.html">IStateManagementState</a></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IStateManagementState CurrentState { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState.html">IStateManagementState</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_DataMessagingConfig_" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.DataMessagingConfig*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_DataMessagingConfig" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.DataMessagingConfig">
+  DataMessagingConfig
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/OrderManagement/Devices/BaseOrderManagementDevice.cs/#L37"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Device configuration for data messaging</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IDataMessagingConfig DataMessagingConfig { get; protected set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig.html">IDataMessagingConfig</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_DeviceState_" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.DeviceState*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_DeviceState" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.DeviceState">
+  DeviceState
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/OrderManagement/Devices/BaseOrderManagementDevice.cs/#L54"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Current device state</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IDeviceState DeviceState { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Bodoconsult.NetworkCommunication.Interfaces.IDeviceState.html">IDeviceState</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_DeviceStatesInitProcess_" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.DeviceStatesInitProcess*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_DeviceStatesInitProcess" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.DeviceStatesInitProcess">
+  DeviceStatesInitProcess
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/OrderManagement/Devices/BaseOrderManagementDevice.cs/#L93"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Device states used for init process</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IList&lt;IDeviceState&gt; DeviceStatesInitProcess { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1">IList</a>&lt;<a class="xref" href="Bodoconsult.NetworkCommunication.Interfaces.IDeviceState.html">IDeviceState</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_IsAnyOrderToProcess_" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.IsAnyOrderToProcess*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_IsAnyOrderToProcess" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.IsAnyOrderToProcess">
+  IsAnyOrderToProcess
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/OrderManagement/Devices/BaseOrderManagementDevice.cs/#L199"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Is any order to process?</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsAnyOrderToProcess { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_IsConnected_" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.IsConnected*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_IsConnected" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.IsConnected">
+  IsConnected
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/OrderManagement/Devices/BaseOrderManagementDevice.cs/#L98"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Is the device connected?</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsConnected { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_IsNoOrderInProcessing_" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.IsNoOrderInProcessing*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_IsNoOrderInProcessing" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.IsNoOrderInProcessing">
+  IsNoOrderInProcessing
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/OrderManagement/Devices/BaseOrderManagementDevice.cs/#L189"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>No order in processing</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsNoOrderInProcessing { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_IsOrderProcessingActivated_" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.IsOrderProcessingActivated*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_IsOrderProcessingActivated" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.IsOrderProcessingActivated">
+  IsOrderProcessingActivated
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/OrderManagement/Devices/BaseOrderManagementDevice.cs/#L130"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Is the order processing currently activated</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsOrderProcessingActivated { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_IsPingable_" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.IsPingable*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_IsPingable" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.IsPingable">
+  IsPingable
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/OrderManagement/Devices/BaseOrderManagementDevice.cs/#L259"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Is the device pingable</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual bool IsPingable { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>True if the device is pingable else false</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_IsRunningOrdersAllowed_" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.IsRunningOrdersAllowed*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_IsRunningOrdersAllowed" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.IsRunningOrdersAllowed">
+  IsRunningOrdersAllowed
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/OrderManagement/Devices/BaseOrderManagementDevice.cs/#L125"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Is the running of orders allowed currently</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsRunningOrdersAllowed { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_MasterOrderFactory_" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.MasterOrderFactory*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_MasterOrderFactory" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.MasterOrderFactory">
+  MasterOrderFactory
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/OrderManagement/Devices/BaseOrderManagementDevice.cs/#L160"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Current master order factory. This prop is intended for testing purposes. Do not use directly</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IMasterOrderFactory MasterOrderFactory { get; protected set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Bodoconsult.NetworkCommunication.Interfaces.IMasterOrderFactory.html">IMasterOrderFactory</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_OrderManager_" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.OrderManager*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_OrderManager" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.OrderManager">
+  OrderManager
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/OrderManagement/Devices/BaseOrderManagementDevice.cs/#L83"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Current order manager</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IOrderManager OrderManager { get; protected set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Bodoconsult.NetworkCommunication.Interfaces.IOrderManager.html">IOrderManager</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_OrderProcessor_" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.OrderProcessor*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_OrderProcessor" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.OrderProcessor">
+  OrderProcessor
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/OrderManagement/Devices/BaseOrderManagementDevice.cs/#L49"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Current instance of the Device order processor</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IOrderProcessor OrderProcessor { get; protected set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Bodoconsult.NetworkCommunication.Interfaces.IOrderProcessor.html">IOrderProcessor</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_OrdersInProcessing_" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.OrdersInProcessing*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_OrdersInProcessing" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.OrdersInProcessing">
+  OrdersInProcessing
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/OrderManagement/Devices/BaseOrderManagementDevice.cs/#L184"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Get all orders currently in processing</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IList&lt;IOrder&gt; OrdersInProcessing { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1">IList</a>&lt;<a class="xref" href="Bodoconsult.NetworkCommunication.Interfaces.IOrder.html">IOrder</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_OrdersInProcessingCount_" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.OrdersInProcessingCount*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_OrdersInProcessingCount" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.OrdersInProcessingCount">
+  OrdersInProcessingCount
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/OrderManagement/Devices/BaseOrderManagementDevice.cs/#L194"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Number of orders in processing</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int OrdersInProcessingCount { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_OrdersInQueue_" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.OrdersInQueue*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_OrdersInQueue" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.OrdersInQueue">
+  OrdersInQueue
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/OrderManagement/Devices/BaseOrderManagementDevice.cs/#L165"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Get all orders in the queue</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IList&lt;IOrder&gt; OrdersInQueue { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1">IList</a>&lt;<a class="xref" href="Bodoconsult.NetworkCommunication.Interfaces.IOrder.html">IOrder</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_CancelDeviceOrder_" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.CancelDeviceOrder*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_CancelDeviceOrder_System_Int64_" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.CancelDeviceOrder(System.Int64)">
+  CancelDeviceOrder(long)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/OrderManagement/Devices/BaseOrderManagementDevice.cs/#L563"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Cancel ongoing Device order task</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void CancelDeviceOrder(long order)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>order</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int64">long</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_CancelDeviceOrdersBySourceUid_" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.CancelDeviceOrdersBySourceUid*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_CancelDeviceOrdersBySourceUid_System_Guid_" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.CancelDeviceOrdersBySourceUid(System.Guid)">
+  CancelDeviceOrdersBySourceUid(Guid)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/OrderManagement/Devices/BaseOrderManagementDevice.cs/#L643"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Cancel the execution of orders by its sourceUid</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void CancelDeviceOrdersBySourceUid(Guid uid)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>uid</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.guid">Guid</a></dt>
+    <dd><p>Uid of the object the orders are bound to</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_CancelOrdersWithSpecialHandling_" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.CancelOrdersWithSpecialHandling*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_CancelOrdersWithSpecialHandling" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.CancelOrdersWithSpecialHandling">
+  CancelOrdersWithSpecialHandling()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/OrderManagement/Devices/BaseOrderManagementDevice.cs/#L404"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Cancel orders with special handling</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void CancelOrdersWithSpecialHandling()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_CancelRunningOperation_" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.CancelRunningOperation*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_CancelRunningOperation" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.CancelRunningOperation">
+  CancelRunningOperation()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/OrderManagement/Devices/BaseOrderManagementDevice.cs/#L454"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Cancel the currently running operation</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void CancelRunningOperation()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_CancelRunningOrders_" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.CancelRunningOrders*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_CancelRunningOrders_System_Byte_" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.CancelRunningOrders(System.Byte)">
+  CancelRunningOrders(byte)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/OrderManagement/Devices/BaseOrderManagementDevice.cs/#L413"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Cancel all running orders</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void CancelRunningOrders(byte errorCode)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>errorCode</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a></dt>
+    <dd><p>Error code received from device or business logic</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_Check4ConcurrentOrders_" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.Check4ConcurrentOrders*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_Check4ConcurrentOrders_Bodoconsult_NetworkCommunication_Interfaces_IOrder_" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.Check4ConcurrentOrders(Bodoconsult.NetworkCommunication.Interfaces.IOrder)">
+  Check4ConcurrentOrders(IOrder)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/OrderManagement/Devices/BaseOrderManagementDevice.cs/#L362"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Check if other orders following the current order have to be removed from the queue by cancelling them</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void Check4ConcurrentOrders(IOrder order)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>order</code> <a class="xref" href="Bodoconsult.NetworkCommunication.Interfaces.IOrder.html">IOrder</a></dt>
+    <dd><p>Current order</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_CheckIfThereAreOrdersToBeCreated_" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.CheckIfThereAreOrdersToBeCreated*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_CheckIfThereAreOrdersToBeCreated" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.CheckIfThereAreOrdersToBeCreated">
+  CheckIfThereAreOrdersToBeCreated()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/OrderManagement/Devices/BaseOrderManagementDevice.cs/#L462"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Check if there are any orders to be created</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void CheckIfThereAreOrdersToBeCreated()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_CreateHardwareInitOrder_" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.CreateHardwareInitOrder*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_CreateHardwareInitOrder" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.CreateHardwareInitOrder">
+  CreateHardwareInitOrder()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/OrderManagement/Devices/BaseOrderManagementDevice.cs/#L421"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Create a hardware init order</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IOrder CreateHardwareInitOrder()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Bodoconsult.NetworkCommunication.Interfaces.IOrder.html">IOrder</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_CreateOrder_" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.CreateOrder*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_CreateOrder_System_Type_Bodoconsult_NetworkCommunication_Interfaces_IParameterSet_" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.CreateOrder(System.Type,Bodoconsult.NetworkCommunication.Interfaces.IParameterSet)">
+  CreateOrder(Type, IParameterSet)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/OrderManagement/Devices/BaseOrderManagementDevice.cs/#L554"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Create a new order of a requested type</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IOrder CreateOrder(Type orderType, IParameterSet parameterSet)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>orderType</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Type</a></dt>
+    <dd><p>Order type</p>
+</dd>
+    <dt><code>parameterSet</code> <a class="xref" href="Bodoconsult.NetworkCommunication.Interfaces.IParameterSet.html">IParameterSet</a></dt>
+    <dd><p>Current parameter set to use for the newly created order</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Bodoconsult.NetworkCommunication.Interfaces.IOrder.html">IOrder</a></dt>
+    <dd><p>An order to let it execute by TOM</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_Dispose_" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.Dispose*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_Dispose" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.Dispose">
+  Dispose()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/OrderManagement/Devices/BaseOrderManagementDevice.cs/#L515"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Dispose()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_DoBasicCheckForReceivedMessage_" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.DoBasicCheckForReceivedMessage*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_DoBasicCheckForReceivedMessage_Bodoconsult_NetworkCommunication_Interfaces_IInboundDataMessage_" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.DoBasicCheckForReceivedMessage(Bodoconsult.NetworkCommunication.Interfaces.IInboundDataMessage)">
+  DoBasicCheckForReceivedMessage(IInboundDataMessage)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/OrderManagement/Devices/BaseOrderManagementDevice.cs/#L439"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Do a basic check for the received message</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool DoBasicCheckForReceivedMessage(IInboundDataMessage receivedMessage)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>receivedMessage</code> <a class="xref" href="Bodoconsult.NetworkCommunication.Interfaces.IInboundDataMessage.html">IInboundDataMessage</a></dt>
+    <dd><p>Received message</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>True if the message was an expected answer of the current request or should not be handled at all else false</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_DoCheckForErrorMessage_" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.DoCheckForErrorMessage*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_DoCheckForErrorMessage_Bodoconsult_NetworkCommunication_Interfaces_IInboundDataMessage_" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.DoCheckForErrorMessage(Bodoconsult.NetworkCommunication.Interfaces.IInboundDataMessage)">
+  DoCheckForErrorMessage(IInboundDataMessage)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/OrderManagement/Devices/BaseOrderManagementDevice.cs/#L449"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Check if the message is an error message</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool DoCheckForErrorMessage(IInboundDataMessage receivedMessage)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>receivedMessage</code> <a class="xref" href="Bodoconsult.NetworkCommunication.Interfaces.IInboundDataMessage.html">IInboundDataMessage</a></dt>
+    <dd><p>Received message</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>True if the message was an handled as error message else false</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_DoNotify_" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.DoNotify*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_DoNotify_Bodoconsult_NetworkCommunication_StateManagement_IStateManagementState_" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.DoNotify(Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState)">
+  DoNotify(IStateManagementState)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/OrderManagement/Devices/BaseOrderManagementDevice.cs/#L593"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Send an app notfication</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void DoNotify(IStateManagementState state)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>state</code> <a class="xref" href="Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState.html">IStateManagementState</a></dt>
+    <dd><p>State management state</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_DoNotifyHardwareInitRequested_" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.DoNotifyHardwareInitRequested*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_DoNotifyHardwareInitRequested" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.DoNotifyHardwareInitRequested">
+  DoNotifyHardwareInitRequested()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/OrderManagement/Devices/BaseOrderManagementDevice.cs/#L429"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Do notify that a hardware init was requested</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void DoNotifyHardwareInitRequested()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_GetNextOrderToRun_" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.GetNextOrderToRun*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_GetNextOrderToRun" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.GetNextOrderToRun">
+  GetNextOrderToRun()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/OrderManagement/Devices/BaseOrderManagementDevice.cs/#L301"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Get next order to run</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual IOrder GetNextOrderToRun()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Bodoconsult.NetworkCommunication.Interfaces.IOrder.html">IOrder</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_IsRunningTheOrderAllowed_" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.IsRunningTheOrderAllowed*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_IsRunningTheOrderAllowed_Bodoconsult_NetworkCommunication_Interfaces_IOrder_System_Collections_Generic_IList_Bodoconsult_NetworkCommunication_Interfaces_IOrder__" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.IsRunningTheOrderAllowed(Bodoconsult.NetworkCommunication.Interfaces.IOrder,System.Collections.Generic.IList{Bodoconsult.NetworkCommunication.Interfaces.IOrder})">
+  IsRunningTheOrderAllowed(IOrder, IList&lt;IOrder&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/OrderManagement/Devices/BaseOrderManagementDevice.cs/#L224"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Is running the order allowed at the current timepoint</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual bool IsRunningTheOrderAllowed(IOrder order, IList&lt;IOrder&gt; runningOrders)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>order</code> <a class="xref" href="Bodoconsult.NetworkCommunication.Interfaces.IOrder.html">IOrder</a></dt>
+    <dd><p>Order to run</p>
+</dd>
+    <dt><code>runningOrders</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1">IList</a>&lt;<a class="xref" href="Bodoconsult.NetworkCommunication.Interfaces.IOrder.html">IOrder</a>&gt;</dt>
+    <dd><p>Current running orders</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>True if it is allowed to run the order else false</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_LoadDeviceOrderManager_" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.LoadDeviceOrderManager*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_LoadDeviceOrderManager_Bodoconsult_NetworkCommunication_Interfaces_IOrderManager_" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.LoadDeviceOrderManager(Bodoconsult.NetworkCommunication.Interfaces.IOrderManager)">
+  LoadDeviceOrderManager(IOrderManager)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/OrderManagement/Devices/BaseOrderManagementDevice.cs/#L540"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Load the Device order manager to use for this device</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void LoadDeviceOrderManager(IOrderManager orderManager)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>orderManager</code> <a class="xref" href="Bodoconsult.NetworkCommunication.Interfaces.IOrderManager.html">IOrderManager</a></dt>
+    <dd><p>Device order manager</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h4 class="section" id="Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_LoadDeviceOrderManager_Bodoconsult_NetworkCommunication_Interfaces_IOrderManager__remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>Injecting via ctor not possible due to circular references otherwise</p>
+</div>
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_LoadMasterOrderFactory_" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.LoadMasterOrderFactory*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_LoadMasterOrderFactory_Bodoconsult_NetworkCommunication_Interfaces_IMasterOrderFactory_" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.LoadMasterOrderFactory(Bodoconsult.NetworkCommunication.Interfaces.IMasterOrderFactory)">
+  LoadMasterOrderFactory(IMasterOrderFactory)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/OrderManagement/Devices/BaseOrderManagementDevice.cs/#L530"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Load Device master order factory instance as current <a class="xref" href="Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.html#Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_MasterOrderFactory">MasterOrderFactory</a> instance</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void LoadMasterOrderFactory(IMasterOrderFactory masterOrderFactory)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>masterOrderFactory</code> <a class="xref" href="Bodoconsult.NetworkCommunication.Interfaces.IMasterOrderFactory.html">IMasterOrderFactory</a></dt>
+    <dd><p>Current master order factory to load</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_LoadState_" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.LoadState*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_LoadState_Bodoconsult_NetworkCommunication_StateManagement_IStateManagementState_" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.LoadState(Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState)">
+  LoadState(IStateManagementState)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/OrderManagement/Devices/BaseOrderManagementDevice.cs/#L75"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Load a <a class="xref" href="Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState.html">IStateManagementState</a> instance. DO NOT USE this method from your code. Should be called only from a <a class="xref" href="Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState.html">IStateManagementState</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void LoadState(IStateManagementState state)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>state</code> <a class="xref" href="Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState.html">IStateManagementState</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_LogDebug_" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.LogDebug*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_LogDebug_System_String_" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.LogDebug(System.String)">
+  LogDebug(string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/OrderManagement/Devices/BaseOrderManagementDevice.cs/#L473"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Log in DEBUG mode</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void LogDebug(string message)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>message</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Message to log</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_LogError_" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.LogError*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_LogError_System_String_" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.LogError(System.String)">
+  LogError(string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/OrderManagement/Devices/BaseOrderManagementDevice.cs/#L506"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Log in ERROR mode</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void LogError(string message)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>message</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Message to log</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_LogInformation_" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.LogInformation*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_LogInformation_System_String_" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.LogInformation(System.String)">
+  LogInformation(string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/OrderManagement/Devices/BaseOrderManagementDevice.cs/#L484"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Log in INFORMATION mode</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void LogInformation(string message)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>message</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Message to log</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_LogWarning_" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.LogWarning*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_LogWarning_System_String_" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.LogWarning(System.String)">
+  LogWarning(string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/OrderManagement/Devices/BaseOrderManagementDevice.cs/#L495"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Log in WARNING mode</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void LogWarning(string message)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>message</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Message to log</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_OrderFinishedSuccessful_" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.OrderFinishedSuccessful*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_OrderFinishedSuccessful_Bodoconsult_NetworkCommunication_Interfaces_IOrder_" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.OrderFinishedSuccessful(Bodoconsult.NetworkCommunication.Interfaces.IOrder)">
+  OrderFinishedSuccessful(IOrder)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/OrderManagement/Devices/BaseOrderManagementDevice.cs/#L371"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>The order was finished successfully and now do the last work on the order</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void OrderFinishedSuccessful(IOrder order)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>order</code> <a class="xref" href="Bodoconsult.NetworkCommunication.Interfaces.IOrder.html">IOrder</a></dt>
+    <dd><p>Current order</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_OrderFinishedUnsuccessful_" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.OrderFinishedUnsuccessful*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_OrderFinishedUnsuccessful_Bodoconsult_NetworkCommunication_Interfaces_IOrder_" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.OrderFinishedUnsuccessful(Bodoconsult.NetworkCommunication.Interfaces.IOrder)">
+  OrderFinishedUnsuccessful(IOrder)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/OrderManagement/Devices/BaseOrderManagementDevice.cs/#L396"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>The order was NOT finished succesfully and now do the last work on the order</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void OrderFinishedUnsuccessful(IOrder order)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>order</code> <a class="xref" href="Bodoconsult.NetworkCommunication.Interfaces.IOrder.html">IOrder</a></dt>
+    <dd><p>Current order</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_PrepareDeviceInit_" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.PrepareDeviceInit*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_PrepareDeviceInit" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.PrepareDeviceInit">
+  PrepareDeviceInit()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/OrderManagement/Devices/BaseOrderManagementDevice.cs/#L293"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Prepare the orders for the software side of device init process</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual List&lt;IOrder&gt; PrepareDeviceInit()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="Bodoconsult.NetworkCommunication.Interfaces.IOrder.html">IOrder</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_PrepareUpdateModeCheck_" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.PrepareUpdateModeCheck*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_PrepareUpdateModeCheck" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.PrepareUpdateModeCheck">
+  PrepareUpdateModeCheck()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/OrderManagement/Devices/BaseOrderManagementDevice.cs/#L285"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Prepare the orders required to check if the device is in update mode</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual List&lt;IOrder&gt; PrepareUpdateModeCheck()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="Bodoconsult.NetworkCommunication.Interfaces.IOrder.html">IOrder</a>&gt;</dt>
+    <dd><p>Orders to be processed for the update mode check</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_RequestDeviceInit_" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.RequestDeviceInit*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_RequestDeviceInit" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.RequestDeviceInit">
+  RequestDeviceInit()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/OrderManagement/Devices/BaseOrderManagementDevice.cs/#L276"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Start the software side of device init process</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void RequestDeviceInit()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_ResetComm_" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.ResetComm*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_ResetComm" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.ResetComm">
+  ResetComm()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/OrderManagement/Devices/BaseOrderManagementDevice.cs/#L212"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Reset the communication</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void ResetComm()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_ResetInternalState_" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.ResetInternalState*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_ResetInternalState" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.ResetInternalState">
+  ResetInternalState()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/OrderManagement/Devices/BaseOrderManagementDevice.cs/#L264"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Clear the internal state without breaking comm</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void ResetInternalState()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_SetInitialStates_" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.SetInitialStates*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_SetInitialStates_Bodoconsult_NetworkCommunication_Interfaces_IDeviceState_Bodoconsult_NetworkCommunication_StateManagement_IBusinessState_Bodoconsult_NetworkCommunication_StateManagement_IBusinessState_" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.SetInitialStates(Bodoconsult.NetworkCommunication.Interfaces.IDeviceState,Bodoconsult.NetworkCommunication.StateManagement.IBusinessState,Bodoconsult.NetworkCommunication.StateManagement.IBusinessState)">
+  SetInitialStates(IDeviceState, IBusinessState, IBusinessState)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/OrderManagement/Devices/BaseOrderManagementDevice.cs/#L70"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Set the states for the context. DO NOT USE this method from your code. Should be called only from a <a class="xref" href="Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState.html">IStateManagementState</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetInitialStates(IDeviceState deviceState, IBusinessState businessState, IBusinessState businessSubState)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>deviceState</code> <a class="xref" href="Bodoconsult.NetworkCommunication.Interfaces.IDeviceState.html">IDeviceState</a></dt>
+    <dd></dd>
+    <dt><code>businessState</code> <a class="xref" href="Bodoconsult.NetworkCommunication.StateManagement.IBusinessState.html">IBusinessState</a></dt>
+    <dd></dd>
+    <dt><code>businessSubState</code> <a class="xref" href="Bodoconsult.NetworkCommunication.StateManagement.IBusinessState.html">IBusinessState</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_SetOrderProcessingStateDelegate_" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.SetOrderProcessingStateDelegate*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_SetOrderProcessingStateDelegate_System_Boolean_" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.SetOrderProcessingStateDelegate(System.Boolean)">
+  SetOrderProcessingStateDelegate(bool)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/OrderManagement/Devices/BaseOrderManagementDevice.cs/#L652"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Set the order processing state</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected void SetOrderProcessingStateDelegate(bool isActivated)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>isActivated</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>Is the order processing activated: yes or no (ComDevClose)?</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_Start_" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.Start*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_Start" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.Start">
+  Start()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/OrderManagement/Devices/BaseOrderManagementDevice.cs/#L571"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Starts the Device order processing</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Start()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_StartComm_" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.StartComm*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_StartComm" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.StartComm">
+  StartComm()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/OrderManagement/Devices/BaseOrderManagementDevice.cs/#L204"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Start the communication</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void StartComm()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_Stop_" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.Stop*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_Stop" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.Stop">
+  Stop()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/OrderManagement/Devices/BaseOrderManagementDevice.cs/#L581"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Stops the Device order processing</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Stop()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/OrderManagement/Devices/BaseOrderManagementDevice.cs/#L13" class="edit-link">Edit this page</a>
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

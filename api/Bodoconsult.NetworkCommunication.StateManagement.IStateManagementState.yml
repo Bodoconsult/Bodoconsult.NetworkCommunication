@@ -1,0 +1,987 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState
+  commentId: T:Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState
+  id: IStateManagementState
+  parent: Bodoconsult.NetworkCommunication.StateManagement
+  children:
+  - Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState.AllowedNextStates
+  - Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState.BusinessState
+  - Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState.BusinessSubState
+  - Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState.CurrentContext
+  - Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState.DeviceState
+  - Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState.HandleAsyncMessage(Bodoconsult.NetworkCommunication.Interfaces.IInboundDataMessage)
+  - Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState.HandleComDevClose
+  - Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState.HandleErrorMessage(Bodoconsult.NetworkCommunication.Interfaces.IInboundDataMessage)
+  - Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState.InitiateState
+  - Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState.IsRunningOrdersCancellationRequired
+  - Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState.Name
+  - Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState.NextState
+  - Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState.OrderFinishedSuccessful(Bodoconsult.NetworkCommunication.Interfaces.IOrder)
+  - Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState.OrderFinishedUnsuccessful(Bodoconsult.NetworkCommunication.Interfaces.IOrder)
+  - Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState.Orders
+  - Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState.RunNextOrder
+  - Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState.SetInitalStates
+  - Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState.ToLogString
+  langs:
+  - csharp
+  - vb
+  name: IStateManagementState
+  nameWithType: IStateManagementState
+  fullName: Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState
+  type: Interface
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/StateManagement/IStateManagementState.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: IStateManagementState
+    path: src/Bodoconsult.NetworkCommunication/StateManagement/IStateManagementState.cs
+    startLine: 9
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.StateManagement
+  summary: State managament state
+  example: []
+  syntax:
+    content: public interface IStateManagementState
+    content.vb: Public Interface IStateManagementState
+- uid: Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState.DeviceState
+  commentId: P:Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState.DeviceState
+  id: DeviceState
+  parent: Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState
+  langs:
+  - csharp
+  - vb
+  name: DeviceState
+  nameWithType: IStateManagementState.DeviceState
+  fullName: Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState.DeviceState
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/StateManagement/IStateManagementState.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: DeviceState
+    path: src/Bodoconsult.NetworkCommunication/StateManagement/IStateManagementState.cs
+    startLine: 14
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.StateManagement
+  summary: Current device state
+  example: []
+  syntax:
+    content: IDeviceState DeviceState { get; }
+    parameters: []
+    return:
+      type: Bodoconsult.NetworkCommunication.Interfaces.IDeviceState
+    content.vb: ReadOnly Property DeviceState As IDeviceState
+  overload: Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState.DeviceState*
+- uid: Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState.BusinessState
+  commentId: P:Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState.BusinessState
+  id: BusinessState
+  parent: Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState
+  langs:
+  - csharp
+  - vb
+  name: BusinessState
+  nameWithType: IStateManagementState.BusinessState
+  fullName: Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState.BusinessState
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/StateManagement/IStateManagementState.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: BusinessState
+    path: src/Bodoconsult.NetworkCommunication/StateManagement/IStateManagementState.cs
+    startLine: 19
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.StateManagement
+  summary: Current business state
+  example: []
+  syntax:
+    content: IBusinessState BusinessState { get; }
+    parameters: []
+    return:
+      type: Bodoconsult.NetworkCommunication.StateManagement.IBusinessState
+    content.vb: ReadOnly Property BusinessState As IBusinessState
+  overload: Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState.BusinessState*
+- uid: Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState.BusinessSubState
+  commentId: P:Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState.BusinessSubState
+  id: BusinessSubState
+  parent: Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState
+  langs:
+  - csharp
+  - vb
+  name: BusinessSubState
+  nameWithType: IStateManagementState.BusinessSubState
+  fullName: Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState.BusinessSubState
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/StateManagement/IStateManagementState.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: BusinessSubState
+    path: src/Bodoconsult.NetworkCommunication/StateManagement/IStateManagementState.cs
+    startLine: 24
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.StateManagement
+  summary: Current business substate
+  example: []
+  syntax:
+    content: IBusinessSubState BusinessSubState { get; }
+    parameters: []
+    return:
+      type: Bodoconsult.NetworkCommunication.StateManagement.IBusinessSubState
+    content.vb: ReadOnly Property BusinessSubState As IBusinessSubState
+  overload: Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState.BusinessSubState*
+- uid: Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState.CurrentContext
+  commentId: P:Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState.CurrentContext
+  id: CurrentContext
+  parent: Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState
+  langs:
+  - csharp
+  - vb
+  name: CurrentContext
+  nameWithType: IStateManagementState.CurrentContext
+  fullName: Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState.CurrentContext
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/StateManagement/IStateManagementState.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: CurrentContext
+    path: src/Bodoconsult.NetworkCommunication/StateManagement/IStateManagementState.cs
+    startLine: 29
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.StateManagement
+  summary: Current context
+  example: []
+  syntax:
+    content: IStateManagementContext CurrentContext { get; }
+    parameters: []
+    return:
+      type: Bodoconsult.NetworkCommunication.StateManagement.IStateManagementContext
+    content.vb: ReadOnly Property CurrentContext As IStateManagementContext
+  overload: Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState.CurrentContext*
+- uid: Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState.Name
+  commentId: P:Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState.Name
+  id: Name
+  parent: Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState
+  langs:
+  - csharp
+  - vb
+  name: Name
+  nameWithType: IStateManagementState.Name
+  fullName: Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState.Name
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/StateManagement/IStateManagementState.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Name
+    path: src/Bodoconsult.NetworkCommunication/StateManagement/IStateManagementState.cs
+    startLine: 34
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.StateManagement
+  summary: Type name of the order
+  example: []
+  syntax:
+    content: string Name { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: ReadOnly Property Name As String
+  overload: Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState.Name*
+- uid: Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState.IsRunningOrdersCancellationRequired
+  commentId: P:Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState.IsRunningOrdersCancellationRequired
+  id: IsRunningOrdersCancellationRequired
+  parent: Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState
+  langs:
+  - csharp
+  - vb
+  name: IsRunningOrdersCancellationRequired
+  nameWithType: IStateManagementState.IsRunningOrdersCancellationRequired
+  fullName: Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState.IsRunningOrdersCancellationRequired
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/StateManagement/IStateManagementState.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: IsRunningOrdersCancellationRequired
+    path: src/Bodoconsult.NetworkCommunication/StateManagement/IStateManagementState.cs
+    startLine: 39
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.StateManagement
+  summary: Is cancellation of running orders required on error?
+  example: []
+  syntax:
+    content: bool IsRunningOrdersCancellationRequired { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Property IsRunningOrdersCancellationRequired As Boolean
+  overload: Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState.IsRunningOrdersCancellationRequired*
+- uid: Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState.AllowedNextStates
+  commentId: P:Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState.AllowedNextStates
+  id: AllowedNextStates
+  parent: Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState
+  langs:
+  - csharp
+  - vb
+  name: AllowedNextStates
+  nameWithType: IStateManagementState.AllowedNextStates
+  fullName: Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState.AllowedNextStates
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/StateManagement/IStateManagementState.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: AllowedNextStates
+    path: src/Bodoconsult.NetworkCommunication/StateManagement/IStateManagementState.cs
+    startLine: 44
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.StateManagement
+  summary: Allowed next states
+  example: []
+  syntax:
+    content: List<string> AllowedNextStates { get; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.List{System.String}
+    content.vb: ReadOnly Property AllowedNextStates As List(Of String)
+  overload: Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState.AllowedNextStates*
+- uid: Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState.Orders
+  commentId: P:Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState.Orders
+  id: Orders
+  parent: Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState
+  langs:
+  - csharp
+  - vb
+  name: Orders
+  nameWithType: IStateManagementState.Orders
+  fullName: Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState.Orders
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/StateManagement/IStateManagementState.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Orders
+    path: src/Bodoconsult.NetworkCommunication/StateManagement/IStateManagementState.cs
+    startLine: 49
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.StateManagement
+  summary: Read only list all orders required by this state
+  example: []
+  syntax:
+    content: List<IOrder> Orders { get; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.List{Bodoconsult.NetworkCommunication.Interfaces.IOrder}
+    content.vb: ReadOnly Property Orders As List(Of IOrder)
+  overload: Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState.Orders*
+- uid: Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState.NextState
+  commentId: P:Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState.NextState
+  id: NextState
+  parent: Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState
+  langs:
+  - csharp
+  - vb
+  name: NextState
+  nameWithType: IStateManagementState.NextState
+  fullName: Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState.NextState
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/StateManagement/IStateManagementState.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: NextState
+    path: src/Bodoconsult.NetworkCommunication/StateManagement/IStateManagementState.cs
+    startLine: 54
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.StateManagement
+  summary: The next state to run after all orders for this state were running
+  example: []
+  syntax:
+    content: IStateManagementState NextState { get; set; }
+    parameters: []
+    return:
+      type: Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState
+    content.vb: Property NextState As IStateManagementState
+  overload: Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState.NextState*
+- uid: Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState.InitiateState
+  commentId: M:Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState.InitiateState
+  id: InitiateState
+  parent: Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState
+  langs:
+  - csharp
+  - vb
+  name: InitiateState()
+  nameWithType: IStateManagementState.InitiateState()
+  fullName: Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState.InitiateState()
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/StateManagement/IStateManagementState.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: InitiateState
+    path: src/Bodoconsult.NetworkCommunication/StateManagement/IStateManagementState.cs
+    startLine: 59
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.StateManagement
+  summary: Initiate the state i.e. with creating required orders
+  example: []
+  syntax:
+    content: void InitiateState()
+    content.vb: Sub InitiateState()
+  overload: Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState.InitiateState*
+- uid: Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState.SetInitalStates
+  commentId: M:Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState.SetInitalStates
+  id: SetInitalStates
+  parent: Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState
+  langs:
+  - csharp
+  - vb
+  name: SetInitalStates()
+  nameWithType: IStateManagementState.SetInitalStates()
+  fullName: Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState.SetInitalStates()
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/StateManagement/IStateManagementState.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: SetInitalStates
+    path: src/Bodoconsult.NetworkCommunication/StateManagement/IStateManagementState.cs
+    startLine: 64
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.StateManagement
+  summary: Ser the initial states for this state
+  example: []
+  syntax:
+    content: void SetInitalStates()
+    content.vb: Sub SetInitalStates()
+  overload: Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState.SetInitalStates*
+- uid: Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState.RunNextOrder
+  commentId: M:Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState.RunNextOrder
+  id: RunNextOrder
+  parent: Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState
+  langs:
+  - csharp
+  - vb
+  name: RunNextOrder()
+  nameWithType: IStateManagementState.RunNextOrder()
+  fullName: Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState.RunNextOrder()
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/StateManagement/IStateManagementState.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: RunNextOrder
+    path: src/Bodoconsult.NetworkCommunication/StateManagement/IStateManagementState.cs
+    startLine: 69
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.StateManagement
+  summary: Run the next order for the state
+  example: []
+  syntax:
+    content: void RunNextOrder()
+    content.vb: Sub RunNextOrder()
+  overload: Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState.RunNextOrder*
+- uid: Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState.OrderFinishedSuccessful(Bodoconsult.NetworkCommunication.Interfaces.IOrder)
+  commentId: M:Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState.OrderFinishedSuccessful(Bodoconsult.NetworkCommunication.Interfaces.IOrder)
+  id: OrderFinishedSuccessful(Bodoconsult.NetworkCommunication.Interfaces.IOrder)
+  parent: Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState
+  langs:
+  - csharp
+  - vb
+  name: OrderFinishedSuccessful(IOrder)
+  nameWithType: IStateManagementState.OrderFinishedSuccessful(IOrder)
+  fullName: Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState.OrderFinishedSuccessful(Bodoconsult.NetworkCommunication.Interfaces.IOrder)
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/StateManagement/IStateManagementState.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: OrderFinishedSuccessful
+    path: src/Bodoconsult.NetworkCommunication/StateManagement/IStateManagementState.cs
+    startLine: 75
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.StateManagement
+  summary: The order was finished successfully and now do the last work on the order
+  example: []
+  syntax:
+    content: void OrderFinishedSuccessful(IOrder order)
+    parameters:
+    - id: order
+      type: Bodoconsult.NetworkCommunication.Interfaces.IOrder
+      description: Current order
+    content.vb: Sub OrderFinishedSuccessful(order As IOrder)
+  overload: Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState.OrderFinishedSuccessful*
+- uid: Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState.OrderFinishedUnsuccessful(Bodoconsult.NetworkCommunication.Interfaces.IOrder)
+  commentId: M:Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState.OrderFinishedUnsuccessful(Bodoconsult.NetworkCommunication.Interfaces.IOrder)
+  id: OrderFinishedUnsuccessful(Bodoconsult.NetworkCommunication.Interfaces.IOrder)
+  parent: Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState
+  langs:
+  - csharp
+  - vb
+  name: OrderFinishedUnsuccessful(IOrder)
+  nameWithType: IStateManagementState.OrderFinishedUnsuccessful(IOrder)
+  fullName: Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState.OrderFinishedUnsuccessful(Bodoconsult.NetworkCommunication.Interfaces.IOrder)
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/StateManagement/IStateManagementState.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: OrderFinishedUnsuccessful
+    path: src/Bodoconsult.NetworkCommunication/StateManagement/IStateManagementState.cs
+    startLine: 81
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.StateManagement
+  summary: The order was NOT finished succesfully and now do the last work on the order
+  example: []
+  syntax:
+    content: void OrderFinishedUnsuccessful(IOrder order)
+    parameters:
+    - id: order
+      type: Bodoconsult.NetworkCommunication.Interfaces.IOrder
+      description: Current order
+    content.vb: Sub OrderFinishedUnsuccessful(order As IOrder)
+  overload: Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState.OrderFinishedUnsuccessful*
+- uid: Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState.HandleComDevClose
+  commentId: M:Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState.HandleComDevClose
+  id: HandleComDevClose
+  parent: Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState
+  langs:
+  - csharp
+  - vb
+  name: HandleComDevClose()
+  nameWithType: IStateManagementState.HandleComDevClose()
+  fullName: Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState.HandleComDevClose()
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/StateManagement/IStateManagementState.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: HandleComDevClose
+    path: src/Bodoconsult.NetworkCommunication/StateManagement/IStateManagementState.cs
+    startLine: 86
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.StateManagement
+  summary: Handle a ComDevClose event
+  example: []
+  syntax:
+    content: void HandleComDevClose()
+    content.vb: Sub HandleComDevClose()
+  overload: Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState.HandleComDevClose*
+- uid: Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState.HandleErrorMessage(Bodoconsult.NetworkCommunication.Interfaces.IInboundDataMessage)
+  commentId: M:Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState.HandleErrorMessage(Bodoconsult.NetworkCommunication.Interfaces.IInboundDataMessage)
+  id: HandleErrorMessage(Bodoconsult.NetworkCommunication.Interfaces.IInboundDataMessage)
+  parent: Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState
+  langs:
+  - csharp
+  - vb
+  name: HandleErrorMessage(IInboundDataMessage)
+  nameWithType: IStateManagementState.HandleErrorMessage(IInboundDataMessage)
+  fullName: Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState.HandleErrorMessage(Bodoconsult.NetworkCommunication.Interfaces.IInboundDataMessage)
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/StateManagement/IStateManagementState.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: HandleErrorMessage
+    path: src/Bodoconsult.NetworkCommunication/StateManagement/IStateManagementState.cs
+    startLine: 92
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.StateManagement
+  summary: Handle an error message sent by the device
+  example: []
+  syntax:
+    content: void HandleErrorMessage(IInboundDataMessage message)
+    parameters:
+    - id: message
+      type: Bodoconsult.NetworkCommunication.Interfaces.IInboundDataMessage
+      description: Error message
+    content.vb: Sub HandleErrorMessage(message As IInboundDataMessage)
+  overload: Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState.HandleErrorMessage*
+- uid: Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState.HandleAsyncMessage(Bodoconsult.NetworkCommunication.Interfaces.IInboundDataMessage)
+  commentId: M:Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState.HandleAsyncMessage(Bodoconsult.NetworkCommunication.Interfaces.IInboundDataMessage)
+  id: HandleAsyncMessage(Bodoconsult.NetworkCommunication.Interfaces.IInboundDataMessage)
+  parent: Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState
+  langs:
+  - csharp
+  - vb
+  name: HandleAsyncMessage(IInboundDataMessage)
+  nameWithType: IStateManagementState.HandleAsyncMessage(IInboundDataMessage)
+  fullName: Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState.HandleAsyncMessage(Bodoconsult.NetworkCommunication.Interfaces.IInboundDataMessage)
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/StateManagement/IStateManagementState.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: HandleAsyncMessage
+    path: src/Bodoconsult.NetworkCommunication/StateManagement/IStateManagementState.cs
+    startLine: 98
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.StateManagement
+  summary: Handle an async received message sent by the device
+  example: []
+  syntax:
+    content: MessageHandlingResult HandleAsyncMessage(IInboundDataMessage message)
+    parameters:
+    - id: message
+      type: Bodoconsult.NetworkCommunication.Interfaces.IInboundDataMessage
+      description: Async received message
+    return:
+      type: Bodoconsult.NetworkCommunication.Interfaces.MessageHandlingResult
+    content.vb: Function HandleAsyncMessage(message As IInboundDataMessage) As MessageHandlingResult
+  overload: Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState.HandleAsyncMessage*
+- uid: Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState.ToLogString
+  commentId: M:Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState.ToLogString
+  id: ToLogString
+  parent: Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState
+  langs:
+  - csharp
+  - vb
+  name: ToLogString()
+  nameWithType: IStateManagementState.ToLogString()
+  fullName: Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState.ToLogString()
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/StateManagement/IStateManagementState.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: ToLogString
+    path: src/Bodoconsult.NetworkCommunication/StateManagement/IStateManagementState.cs
+    startLine: 104
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.StateManagement
+  summary: Create a string for logging
+  example: []
+  syntax:
+    content: string ToLogString()
+    return:
+      type: System.String
+      description: String with state info
+    content.vb: Function ToLogString() As String
+  overload: Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState.ToLogString*
+references:
+- uid: Bodoconsult.NetworkCommunication.StateManagement
+  commentId: N:Bodoconsult.NetworkCommunication.StateManagement
+  href: Bodoconsult.html
+  name: Bodoconsult.NetworkCommunication.StateManagement
+  nameWithType: Bodoconsult.NetworkCommunication.StateManagement
+  fullName: Bodoconsult.NetworkCommunication.StateManagement
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.StateManagement
+    name: StateManagement
+    href: Bodoconsult.NetworkCommunication.StateManagement.html
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.StateManagement
+    name: StateManagement
+    href: Bodoconsult.NetworkCommunication.StateManagement.html
+- uid: Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState.DeviceState*
+  commentId: Overload:Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState.DeviceState
+  href: Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState.html#Bodoconsult_NetworkCommunication_StateManagement_IStateManagementState_DeviceState
+  name: DeviceState
+  nameWithType: IStateManagementState.DeviceState
+  fullName: Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState.DeviceState
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IDeviceState
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.IDeviceState
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.NetworkCommunication.Interfaces.IDeviceState.html
+  name: IDeviceState
+  nameWithType: IDeviceState
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IDeviceState
+- uid: Bodoconsult.NetworkCommunication.Interfaces
+  commentId: N:Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.html
+  name: Bodoconsult.NetworkCommunication.Interfaces
+  nameWithType: Bodoconsult.NetworkCommunication.Interfaces
+  fullName: Bodoconsult.NetworkCommunication.Interfaces
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Interfaces
+    name: Interfaces
+    href: Bodoconsult.NetworkCommunication.Interfaces.html
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Interfaces
+    name: Interfaces
+    href: Bodoconsult.NetworkCommunication.Interfaces.html
+- uid: Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState.BusinessState*
+  commentId: Overload:Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState.BusinessState
+  href: Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState.html#Bodoconsult_NetworkCommunication_StateManagement_IStateManagementState_BusinessState
+  name: BusinessState
+  nameWithType: IStateManagementState.BusinessState
+  fullName: Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState.BusinessState
+- uid: Bodoconsult.NetworkCommunication.StateManagement.IBusinessState
+  commentId: T:Bodoconsult.NetworkCommunication.StateManagement.IBusinessState
+  parent: Bodoconsult.NetworkCommunication.StateManagement
+  href: Bodoconsult.NetworkCommunication.StateManagement.IBusinessState.html
+  name: IBusinessState
+  nameWithType: IBusinessState
+  fullName: Bodoconsult.NetworkCommunication.StateManagement.IBusinessState
+- uid: Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState.BusinessSubState*
+  commentId: Overload:Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState.BusinessSubState
+  href: Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState.html#Bodoconsult_NetworkCommunication_StateManagement_IStateManagementState_BusinessSubState
+  name: BusinessSubState
+  nameWithType: IStateManagementState.BusinessSubState
+  fullName: Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState.BusinessSubState
+- uid: Bodoconsult.NetworkCommunication.StateManagement.IBusinessSubState
+  commentId: T:Bodoconsult.NetworkCommunication.StateManagement.IBusinessSubState
+  parent: Bodoconsult.NetworkCommunication.StateManagement
+  href: Bodoconsult.NetworkCommunication.StateManagement.IBusinessSubState.html
+  name: IBusinessSubState
+  nameWithType: IBusinessSubState
+  fullName: Bodoconsult.NetworkCommunication.StateManagement.IBusinessSubState
+- uid: Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState.CurrentContext*
+  commentId: Overload:Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState.CurrentContext
+  href: Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState.html#Bodoconsult_NetworkCommunication_StateManagement_IStateManagementState_CurrentContext
+  name: CurrentContext
+  nameWithType: IStateManagementState.CurrentContext
+  fullName: Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState.CurrentContext
+- uid: Bodoconsult.NetworkCommunication.StateManagement.IStateManagementContext
+  commentId: T:Bodoconsult.NetworkCommunication.StateManagement.IStateManagementContext
+  parent: Bodoconsult.NetworkCommunication.StateManagement
+  href: Bodoconsult.NetworkCommunication.StateManagement.IStateManagementContext.html
+  name: IStateManagementContext
+  nameWithType: IStateManagementContext
+  fullName: Bodoconsult.NetworkCommunication.StateManagement.IStateManagementContext
+- uid: Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState.Name*
+  commentId: Overload:Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState.Name
+  href: Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState.html#Bodoconsult_NetworkCommunication_StateManagement_IStateManagementState_Name
+  name: Name
+  nameWithType: IStateManagementState.Name
+  fullName: Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState.Name
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState.IsRunningOrdersCancellationRequired*
+  commentId: Overload:Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState.IsRunningOrdersCancellationRequired
+  href: Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState.html#Bodoconsult_NetworkCommunication_StateManagement_IStateManagementState_IsRunningOrdersCancellationRequired
+  name: IsRunningOrdersCancellationRequired
+  nameWithType: IStateManagementState.IsRunningOrdersCancellationRequired
+  fullName: Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState.IsRunningOrdersCancellationRequired
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState.AllowedNextStates*
+  commentId: Overload:Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState.AllowedNextStates
+  href: Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState.html#Bodoconsult_NetworkCommunication_StateManagement_IStateManagementState_AllowedNextStates
+  name: AllowedNextStates
+  nameWithType: IStateManagementState.AllowedNextStates
+  fullName: Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState.AllowedNextStates
+- uid: System.Collections.Generic.List{System.String}
+  commentId: T:System.Collections.Generic.List{System.String}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.List`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  name: List<string>
+  nameWithType: List<string>
+  fullName: System.Collections.Generic.List<string>
+  nameWithType.vb: List(Of String)
+  fullName.vb: System.Collections.Generic.List(Of String)
+  name.vb: List(Of String)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: System.Collections.Generic.List`1
+  commentId: T:System.Collections.Generic.List`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  name: List<T>
+  nameWithType: List<T>
+  fullName: System.Collections.Generic.List<T>
+  nameWithType.vb: List(Of T)
+  fullName.vb: System.Collections.Generic.List(Of T)
+  name.vb: List(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState.Orders*
+  commentId: Overload:Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState.Orders
+  href: Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState.html#Bodoconsult_NetworkCommunication_StateManagement_IStateManagementState_Orders
+  name: Orders
+  nameWithType: IStateManagementState.Orders
+  fullName: Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState.Orders
+- uid: System.Collections.Generic.List{Bodoconsult.NetworkCommunication.Interfaces.IOrder}
+  commentId: T:System.Collections.Generic.List{Bodoconsult.NetworkCommunication.Interfaces.IOrder}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.List`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  name: List<IOrder>
+  nameWithType: List<IOrder>
+  fullName: System.Collections.Generic.List<Bodoconsult.NetworkCommunication.Interfaces.IOrder>
+  nameWithType.vb: List(Of IOrder)
+  fullName.vb: System.Collections.Generic.List(Of Bodoconsult.NetworkCommunication.Interfaces.IOrder)
+  name.vb: List(Of IOrder)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IOrder
+    name: IOrder
+    href: Bodoconsult.NetworkCommunication.Interfaces.IOrder.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IOrder
+    name: IOrder
+    href: Bodoconsult.NetworkCommunication.Interfaces.IOrder.html
+  - name: )
+- uid: Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState.NextState*
+  commentId: Overload:Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState.NextState
+  href: Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState.html#Bodoconsult_NetworkCommunication_StateManagement_IStateManagementState_NextState
+  name: NextState
+  nameWithType: IStateManagementState.NextState
+  fullName: Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState.NextState
+- uid: Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState
+  commentId: T:Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState
+  parent: Bodoconsult.NetworkCommunication.StateManagement
+  href: Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState.html
+  name: IStateManagementState
+  nameWithType: IStateManagementState
+  fullName: Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState
+- uid: Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState.InitiateState*
+  commentId: Overload:Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState.InitiateState
+  href: Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState.html#Bodoconsult_NetworkCommunication_StateManagement_IStateManagementState_InitiateState
+  name: InitiateState
+  nameWithType: IStateManagementState.InitiateState
+  fullName: Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState.InitiateState
+- uid: Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState.SetInitalStates*
+  commentId: Overload:Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState.SetInitalStates
+  href: Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState.html#Bodoconsult_NetworkCommunication_StateManagement_IStateManagementState_SetInitalStates
+  name: SetInitalStates
+  nameWithType: IStateManagementState.SetInitalStates
+  fullName: Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState.SetInitalStates
+- uid: Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState.RunNextOrder*
+  commentId: Overload:Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState.RunNextOrder
+  href: Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState.html#Bodoconsult_NetworkCommunication_StateManagement_IStateManagementState_RunNextOrder
+  name: RunNextOrder
+  nameWithType: IStateManagementState.RunNextOrder
+  fullName: Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState.RunNextOrder
+- uid: Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState.OrderFinishedSuccessful*
+  commentId: Overload:Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState.OrderFinishedSuccessful
+  href: Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState.html#Bodoconsult_NetworkCommunication_StateManagement_IStateManagementState_OrderFinishedSuccessful_Bodoconsult_NetworkCommunication_Interfaces_IOrder_
+  name: OrderFinishedSuccessful
+  nameWithType: IStateManagementState.OrderFinishedSuccessful
+  fullName: Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState.OrderFinishedSuccessful
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IOrder
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.IOrder
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.NetworkCommunication.Interfaces.IOrder.html
+  name: IOrder
+  nameWithType: IOrder
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IOrder
+- uid: Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState.OrderFinishedUnsuccessful*
+  commentId: Overload:Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState.OrderFinishedUnsuccessful
+  href: Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState.html#Bodoconsult_NetworkCommunication_StateManagement_IStateManagementState_OrderFinishedUnsuccessful_Bodoconsult_NetworkCommunication_Interfaces_IOrder_
+  name: OrderFinishedUnsuccessful
+  nameWithType: IStateManagementState.OrderFinishedUnsuccessful
+  fullName: Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState.OrderFinishedUnsuccessful
+- uid: Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState.HandleComDevClose*
+  commentId: Overload:Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState.HandleComDevClose
+  href: Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState.html#Bodoconsult_NetworkCommunication_StateManagement_IStateManagementState_HandleComDevClose
+  name: HandleComDevClose
+  nameWithType: IStateManagementState.HandleComDevClose
+  fullName: Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState.HandleComDevClose
+- uid: Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState.HandleErrorMessage*
+  commentId: Overload:Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState.HandleErrorMessage
+  href: Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState.html#Bodoconsult_NetworkCommunication_StateManagement_IStateManagementState_HandleErrorMessage_Bodoconsult_NetworkCommunication_Interfaces_IInboundDataMessage_
+  name: HandleErrorMessage
+  nameWithType: IStateManagementState.HandleErrorMessage
+  fullName: Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState.HandleErrorMessage
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IInboundDataMessage
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.IInboundDataMessage
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.NetworkCommunication.Interfaces.IInboundDataMessage.html
+  name: IInboundDataMessage
+  nameWithType: IInboundDataMessage
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IInboundDataMessage
+- uid: Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState.HandleAsyncMessage*
+  commentId: Overload:Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState.HandleAsyncMessage
+  href: Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState.html#Bodoconsult_NetworkCommunication_StateManagement_IStateManagementState_HandleAsyncMessage_Bodoconsult_NetworkCommunication_Interfaces_IInboundDataMessage_
+  name: HandleAsyncMessage
+  nameWithType: IStateManagementState.HandleAsyncMessage
+  fullName: Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState.HandleAsyncMessage
+- uid: Bodoconsult.NetworkCommunication.Interfaces.MessageHandlingResult
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.MessageHandlingResult
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.NetworkCommunication.Interfaces.MessageHandlingResult.html
+  name: MessageHandlingResult
+  nameWithType: MessageHandlingResult
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.MessageHandlingResult
+- uid: Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState.ToLogString*
+  commentId: Overload:Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState.ToLogString
+  href: Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState.html#Bodoconsult_NetworkCommunication_StateManagement_IStateManagementState_ToLogString
+  name: ToLogString
+  nameWithType: IStateManagementState.ToLogString
+  fullName: Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState.ToLogString

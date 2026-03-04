@@ -1,0 +1,261 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bodoconsult.NetworkCommunication.Interfaces.ITraceEntry
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.ITraceEntry
+  id: ITraceEntry
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  children:
+  - Bodoconsult.NetworkCommunication.Interfaces.ITraceEntry.Message
+  - Bodoconsult.NetworkCommunication.Interfaces.ITraceEntry.MessageCode
+  - Bodoconsult.NetworkCommunication.Interfaces.ITraceEntry.TraceDate
+  - Bodoconsult.NetworkCommunication.Interfaces.ITraceEntry.Uid
+  langs:
+  - csharp
+  - vb
+  name: ITraceEntry
+  nameWithType: ITraceEntry
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.ITraceEntry
+  type: Interface
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/ITraceEntry.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: ITraceEntry
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/ITraceEntry.cs
+    startLine: 7
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Interface for tracing events
+  example: []
+  syntax:
+    content: public interface ITraceEntry
+    content.vb: Public Interface ITraceEntry
+- uid: Bodoconsult.NetworkCommunication.Interfaces.ITraceEntry.Uid
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.ITraceEntry.Uid
+  id: Uid
+  parent: Bodoconsult.NetworkCommunication.Interfaces.ITraceEntry
+  langs:
+  - csharp
+  - vb
+  name: Uid
+  nameWithType: ITraceEntry.Uid
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.ITraceEntry.Uid
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/ITraceEntry.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Uid
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/ITraceEntry.cs
+    startLine: 12
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Primary key column with unique values
+  example: []
+  syntax:
+    content: Guid Uid { get; set; }
+    parameters: []
+    return:
+      type: System.Guid
+    content.vb: Property Uid As Guid
+  overload: Bodoconsult.NetworkCommunication.Interfaces.ITraceEntry.Uid*
+- uid: Bodoconsult.NetworkCommunication.Interfaces.ITraceEntry.TraceDate
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.ITraceEntry.TraceDate
+  id: TraceDate
+  parent: Bodoconsult.NetworkCommunication.Interfaces.ITraceEntry
+  langs:
+  - csharp
+  - vb
+  name: TraceDate
+  nameWithType: ITraceEntry.TraceDate
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.ITraceEntry.TraceDate
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/ITraceEntry.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: TraceDate
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/ITraceEntry.cs
+    startLine: 17
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Trace date
+  example: []
+  syntax:
+    content: DateTime TraceDate { get; set; }
+    parameters: []
+    return:
+      type: System.DateTime
+    content.vb: Property TraceDate As Date
+  overload: Bodoconsult.NetworkCommunication.Interfaces.ITraceEntry.TraceDate*
+- uid: Bodoconsult.NetworkCommunication.Interfaces.ITraceEntry.Message
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.ITraceEntry.Message
+  id: Message
+  parent: Bodoconsult.NetworkCommunication.Interfaces.ITraceEntry
+  langs:
+  - csharp
+  - vb
+  name: Message
+  nameWithType: ITraceEntry.Message
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.ITraceEntry.Message
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/ITraceEntry.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Message
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/ITraceEntry.cs
+    startLine: 22
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Trace message content
+  example: []
+  syntax:
+    content: string Message { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Property Message As String
+  overload: Bodoconsult.NetworkCommunication.Interfaces.ITraceEntry.Message*
+- uid: Bodoconsult.NetworkCommunication.Interfaces.ITraceEntry.MessageCode
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.ITraceEntry.MessageCode
+  id: MessageCode
+  parent: Bodoconsult.NetworkCommunication.Interfaces.ITraceEntry
+  langs:
+  - csharp
+  - vb
+  name: MessageCode
+  nameWithType: ITraceEntry.MessageCode
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.ITraceEntry.MessageCode
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/ITraceEntry.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: MessageCode
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/ITraceEntry.cs
+    startLine: 27
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Message code for identifying different types of traces
+  example: []
+  syntax:
+    content: int MessageCode { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Property MessageCode As Integer
+  overload: Bodoconsult.NetworkCommunication.Interfaces.ITraceEntry.MessageCode*
+references:
+- uid: Bodoconsult.NetworkCommunication.Interfaces
+  commentId: N:Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.html
+  name: Bodoconsult.NetworkCommunication.Interfaces
+  nameWithType: Bodoconsult.NetworkCommunication.Interfaces
+  fullName: Bodoconsult.NetworkCommunication.Interfaces
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Interfaces
+    name: Interfaces
+    href: Bodoconsult.NetworkCommunication.Interfaces.html
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Interfaces
+    name: Interfaces
+    href: Bodoconsult.NetworkCommunication.Interfaces.html
+- uid: Bodoconsult.NetworkCommunication.Interfaces.ITraceEntry.Uid*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.ITraceEntry.Uid
+  href: Bodoconsult.NetworkCommunication.Interfaces.ITraceEntry.html#Bodoconsult_NetworkCommunication_Interfaces_ITraceEntry_Uid
+  name: Uid
+  nameWithType: ITraceEntry.Uid
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.ITraceEntry.Uid
+- uid: System.Guid
+  commentId: T:System.Guid
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.guid
+  name: Guid
+  nameWithType: Guid
+  fullName: System.Guid
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Bodoconsult.NetworkCommunication.Interfaces.ITraceEntry.TraceDate*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.ITraceEntry.TraceDate
+  href: Bodoconsult.NetworkCommunication.Interfaces.ITraceEntry.html#Bodoconsult_NetworkCommunication_Interfaces_ITraceEntry_TraceDate
+  name: TraceDate
+  nameWithType: ITraceEntry.TraceDate
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.ITraceEntry.TraceDate
+- uid: System.DateTime
+  commentId: T:System.DateTime
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.datetime
+  name: DateTime
+  nameWithType: DateTime
+  fullName: System.DateTime
+  nameWithType.vb: Date
+  fullName.vb: Date
+  name.vb: Date
+- uid: Bodoconsult.NetworkCommunication.Interfaces.ITraceEntry.Message*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.ITraceEntry.Message
+  href: Bodoconsult.NetworkCommunication.Interfaces.ITraceEntry.html#Bodoconsult_NetworkCommunication_Interfaces_ITraceEntry_Message
+  name: Message
+  nameWithType: ITraceEntry.Message
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.ITraceEntry.Message
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Bodoconsult.NetworkCommunication.Interfaces.ITraceEntry.MessageCode*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.ITraceEntry.MessageCode
+  href: Bodoconsult.NetworkCommunication.Interfaces.ITraceEntry.html#Bodoconsult_NetworkCommunication_Interfaces_ITraceEntry_MessageCode
+  name: MessageCode
+  nameWithType: ITraceEntry.MessageCode
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.ITraceEntry.MessageCode
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer

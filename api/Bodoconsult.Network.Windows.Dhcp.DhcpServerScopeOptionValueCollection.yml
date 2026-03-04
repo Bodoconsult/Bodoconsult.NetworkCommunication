@@ -1,0 +1,2347 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection
+  commentId: T:Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection
+  id: DhcpServerScopeOptionValueCollection
+  parent: Bodoconsult.Network.Windows.Dhcp
+  children:
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection.AddOrSetOptionValue(Bodoconsult.Network.Windows.Dhcp.IDhcpServerOptionValue)
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection.GetDefaultOptionValue(Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIds)
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection.GetDefaultOptionValue(System.Int32)
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection.GetDefaultOptionValues
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection.GetEnumerator
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection.GetOptionValue(Bodoconsult.Network.Windows.Dhcp.IDhcpServerOption)
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection.GetUserOptionValue(System.String,Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIds)
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection.GetUserOptionValue(System.String,System.Int32)
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection.GetUserOptionValues(System.String)
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection.GetVendorOptionValue(System.String,Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIds)
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection.GetVendorOptionValue(System.String,System.Int32)
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection.GetVendorOptionValues(System.String)
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection.RemoveOptionValue(Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIds)
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection.RemoveOptionValue(Bodoconsult.Network.Windows.Dhcp.IDhcpServerOptionValue)
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection.RemoveOptionValue(System.Int32)
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection.RemoveUserOptionValue(System.String,Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIds)
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection.RemoveUserOptionValue(System.String,System.Int32)
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection.RemoveVendorOptionValue(System.String,Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIds)
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection.RemoveVendorOptionValue(System.String,System.Int32)
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection.Scope
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection.Server
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection.SetOptionValue(Bodoconsult.Network.Windows.Dhcp.IDhcpServerOptionValue)
+  langs:
+  - csharp
+  - vb
+  name: DhcpServerScopeOptionValueCollection
+  nameWithType: DhcpServerScopeOptionValueCollection
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection
+  type: Class
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerScopeOptionValueCollection.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: DhcpServerScopeOptionValueCollection
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerScopeOptionValueCollection.cs
+    startLine: 7
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: 'public class DhcpServerScopeOptionValueCollection : IDhcpServerScopeOptionValueCollection, IEnumerable<IDhcpServerOptionValue>, IEnumerable'
+    content.vb: Public Class DhcpServerScopeOptionValueCollection Implements IDhcpServerScopeOptionValueCollection, IEnumerable(Of IDhcpServerOptionValue), IEnumerable
+  inheritance:
+  - System.Object
+  implements:
+  - Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection
+  - System.Collections.Generic.IEnumerable{Bodoconsult.Network.Windows.Dhcp.IDhcpServerOptionValue}
+  - System.Collections.IEnumerable
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  extensionMethods:
+  - System.Collections.Generic.IEnumerable{Bodoconsult.Network.Windows.Dhcp.IDhcpServerOptionValue}.Bodoconsult.NetworkCommunication.App.Abstractions.LambdaExpressionHelper.OrderBy``1(System.String)
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection.Server
+  commentId: P:Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection.Server
+  id: Server
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection
+  langs:
+  - csharp
+  - vb
+  name: Server
+  nameWithType: DhcpServerScopeOptionValueCollection.Server
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection.Server
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerScopeOptionValueCollection.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Server
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerScopeOptionValueCollection.cs
+    startLine: 9
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: public DhcpServer Server { get; }
+    parameters: []
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServer
+    content.vb: Public ReadOnly Property Server As DhcpServer
+  overload: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection.Server*
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection.Scope
+  commentId: P:Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection.Scope
+  id: Scope
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection
+  langs:
+  - csharp
+  - vb
+  name: Scope
+  nameWithType: DhcpServerScopeOptionValueCollection.Scope
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection.Scope
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerScopeOptionValueCollection.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Scope
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerScopeOptionValueCollection.cs
+    startLine: 11
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: public DhcpServerScope Scope { get; }
+    parameters: []
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope
+    content.vb: Public ReadOnly Property Scope As DhcpServerScope
+  overload: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection.Scope*
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection.GetEnumerator
+  commentId: M:Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection.GetEnumerator
+  id: GetEnumerator
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection
+  langs:
+  - csharp
+  - vb
+  name: GetEnumerator()
+  nameWithType: DhcpServerScopeOptionValueCollection.GetEnumerator()
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection.GetEnumerator()
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerScopeOptionValueCollection.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: GetEnumerator
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerScopeOptionValueCollection.cs
+    startLine: 23
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  summary: Enumerates a list of All Option Values, including vendor/user class option values, associated with the DHCP Scope
+  example: []
+  syntax:
+    content: public IEnumerator<IDhcpServerOptionValue> GetEnumerator()
+    return:
+      type: System.Collections.Generic.IEnumerator{Bodoconsult.Network.Windows.Dhcp.IDhcpServerOptionValue}
+    content.vb: Public Function GetEnumerator() As IEnumerator(Of IDhcpServerOptionValue)
+  overload: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection.GetEnumerator*
+  implements:
+  - System.Collections.Generic.IEnumerable{Bodoconsult.Network.Windows.Dhcp.IDhcpServerOptionValue}.GetEnumerator
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection.GetDefaultOptionValues
+  commentId: M:Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection.GetDefaultOptionValues
+  id: GetDefaultOptionValues
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection
+  langs:
+  - csharp
+  - vb
+  name: GetDefaultOptionValues()
+  nameWithType: DhcpServerScopeOptionValueCollection.GetDefaultOptionValues()
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection.GetDefaultOptionValues()
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerScopeOptionValueCollection.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: GetDefaultOptionValues
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerScopeOptionValueCollection.cs
+    startLine: 35
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  summary: Enumerates a list of Default Option Values associated with the DHCP Scope
+  example: []
+  syntax:
+    content: public IEnumerable<IDhcpServerOptionValue> GetDefaultOptionValues()
+    return:
+      type: System.Collections.Generic.IEnumerable{Bodoconsult.Network.Windows.Dhcp.IDhcpServerOptionValue}
+    content.vb: Public Function GetDefaultOptionValues() As IEnumerable(Of IDhcpServerOptionValue)
+  overload: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection.GetDefaultOptionValues*
+  implements:
+  - Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection.GetDefaultOptionValues
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection.GetUserOptionValues(System.String)
+  commentId: M:Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection.GetUserOptionValues(System.String)
+  id: GetUserOptionValues(System.String)
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection
+  langs:
+  - csharp
+  - vb
+  name: GetUserOptionValues(string)
+  nameWithType: DhcpServerScopeOptionValueCollection.GetUserOptionValues(string)
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection.GetUserOptionValues(string)
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerScopeOptionValueCollection.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: GetUserOptionValues
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerScopeOptionValueCollection.cs
+    startLine: 38
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  example: []
+  syntax:
+    content: public IEnumerable<IDhcpServerOptionValue> GetUserOptionValues(string className)
+    parameters:
+    - id: className
+      type: System.String
+    return:
+      type: System.Collections.Generic.IEnumerable{Bodoconsult.Network.Windows.Dhcp.IDhcpServerOptionValue}
+    content.vb: Public Function GetUserOptionValues(className As String) As IEnumerable(Of IDhcpServerOptionValue)
+  overload: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection.GetUserOptionValues*
+  implements:
+  - Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection.GetUserOptionValues(System.String)
+  nameWithType.vb: DhcpServerScopeOptionValueCollection.GetUserOptionValues(String)
+  fullName.vb: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection.GetUserOptionValues(String)
+  name.vb: GetUserOptionValues(String)
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection.GetVendorOptionValues(System.String)
+  commentId: M:Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection.GetVendorOptionValues(System.String)
+  id: GetVendorOptionValues(System.String)
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection
+  langs:
+  - csharp
+  - vb
+  name: GetVendorOptionValues(string)
+  nameWithType: DhcpServerScopeOptionValueCollection.GetVendorOptionValues(string)
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection.GetVendorOptionValues(string)
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerScopeOptionValueCollection.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: GetVendorOptionValues
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerScopeOptionValueCollection.cs
+    startLine: 41
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  example: []
+  syntax:
+    content: public IEnumerable<IDhcpServerOptionValue> GetVendorOptionValues(string vendorName)
+    parameters:
+    - id: vendorName
+      type: System.String
+    return:
+      type: System.Collections.Generic.IEnumerable{Bodoconsult.Network.Windows.Dhcp.IDhcpServerOptionValue}
+    content.vb: Public Function GetVendorOptionValues(vendorName As String) As IEnumerable(Of IDhcpServerOptionValue)
+  overload: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection.GetVendorOptionValues*
+  implements:
+  - Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection.GetVendorOptionValues(System.String)
+  nameWithType.vb: DhcpServerScopeOptionValueCollection.GetVendorOptionValues(String)
+  fullName.vb: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection.GetVendorOptionValues(String)
+  name.vb: GetVendorOptionValues(String)
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection.GetOptionValue(Bodoconsult.Network.Windows.Dhcp.IDhcpServerOption)
+  commentId: M:Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection.GetOptionValue(Bodoconsult.Network.Windows.Dhcp.IDhcpServerOption)
+  id: GetOptionValue(Bodoconsult.Network.Windows.Dhcp.IDhcpServerOption)
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection
+  langs:
+  - csharp
+  - vb
+  name: GetOptionValue(IDhcpServerOption)
+  nameWithType: DhcpServerScopeOptionValueCollection.GetOptionValue(IDhcpServerOption)
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection.GetOptionValue(Bodoconsult.Network.Windows.Dhcp.IDhcpServerOption)
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerScopeOptionValueCollection.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: GetOptionValue
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerScopeOptionValueCollection.cs
+    startLine: 49
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  summary: Retrieves the Option Value associated with the Option and Scope
+  example: []
+  syntax:
+    content: public IDhcpServerOptionValue GetOptionValue(IDhcpServerOption option)
+    parameters:
+    - id: option
+      type: Bodoconsult.Network.Windows.Dhcp.IDhcpServerOption
+      description: The associated option to retrieve the option value for
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.IDhcpServerOptionValue
+      description: A <xref href="Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionValue" data-throw-if-not-resolved="false"></xref>.
+    content.vb: Public Function GetOptionValue([option] As IDhcpServerOption) As IDhcpServerOptionValue
+  overload: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection.GetOptionValue*
+  implements:
+  - Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection.GetOptionValue(Bodoconsult.Network.Windows.Dhcp.IDhcpServerOption)
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection.GetDefaultOptionValue(System.Int32)
+  commentId: M:Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection.GetDefaultOptionValue(System.Int32)
+  id: GetDefaultOptionValue(System.Int32)
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection
+  langs:
+  - csharp
+  - vb
+  name: GetDefaultOptionValue(int)
+  nameWithType: DhcpServerScopeOptionValueCollection.GetDefaultOptionValue(int)
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection.GetDefaultOptionValue(int)
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerScopeOptionValueCollection.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: GetDefaultOptionValue
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerScopeOptionValueCollection.cs
+    startLine: 56
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  summary: Retrieves the Option Value associated with the Option and Scope from the Default options
+  example: []
+  syntax:
+    content: public IDhcpServerOptionValue GetDefaultOptionValue(int optionId)
+    parameters:
+    - id: optionId
+      type: System.Int32
+      description: The identifier for the option value to retrieve
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.IDhcpServerOptionValue
+      description: A <xref href="Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionValue" data-throw-if-not-resolved="false"></xref>.
+    content.vb: Public Function GetDefaultOptionValue(optionId As Integer) As IDhcpServerOptionValue
+  overload: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection.GetDefaultOptionValue*
+  implements:
+  - Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection.GetDefaultOptionValue(System.Int32)
+  nameWithType.vb: DhcpServerScopeOptionValueCollection.GetDefaultOptionValue(Integer)
+  fullName.vb: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection.GetDefaultOptionValue(Integer)
+  name.vb: GetDefaultOptionValue(Integer)
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection.GetDefaultOptionValue(Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIds)
+  commentId: M:Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection.GetDefaultOptionValue(Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIds)
+  id: GetDefaultOptionValue(Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIds)
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection
+  langs:
+  - csharp
+  - vb
+  name: GetDefaultOptionValue(DhcpServerOptionIds)
+  nameWithType: DhcpServerScopeOptionValueCollection.GetDefaultOptionValue(DhcpServerOptionIds)
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection.GetDefaultOptionValue(Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIds)
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerScopeOptionValueCollection.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: GetDefaultOptionValue
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerScopeOptionValueCollection.cs
+    startLine: 63
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  summary: Retrieves the Option Value associated with the Option and Scope from the Default options
+  example: []
+  syntax:
+    content: public IDhcpServerOptionValue GetDefaultOptionValue(DhcpServerOptionIds optionId)
+    parameters:
+    - id: optionId
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIds
+      description: The identifier for the option value to retrieve
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.IDhcpServerOptionValue
+      description: A <xref href="Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionValue" data-throw-if-not-resolved="false"></xref>.
+    content.vb: Public Function GetDefaultOptionValue(optionId As DhcpServerOptionIds) As IDhcpServerOptionValue
+  overload: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection.GetDefaultOptionValue*
+  implements:
+  - Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection.GetDefaultOptionValue(Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIds)
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection.GetUserOptionValue(System.String,System.Int32)
+  commentId: M:Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection.GetUserOptionValue(System.String,System.Int32)
+  id: GetUserOptionValue(System.String,System.Int32)
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection
+  langs:
+  - csharp
+  - vb
+  name: GetUserOptionValue(string, int)
+  nameWithType: DhcpServerScopeOptionValueCollection.GetUserOptionValue(string, int)
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection.GetUserOptionValue(string, int)
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerScopeOptionValueCollection.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: GetUserOptionValue
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerScopeOptionValueCollection.cs
+    startLine: 72
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  summary: Retrieves the Option Value associated with the Option and Scope within a User Class
+  example: []
+  syntax:
+    content: public IDhcpServerOptionValue GetUserOptionValue(string className, int optionId)
+    parameters:
+    - id: className
+      type: System.String
+      description: The name of the User Class to retrieve the Option from
+    - id: optionId
+      type: System.Int32
+      description: The identifier for the option value to retrieve
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.IDhcpServerOptionValue
+      description: A <xref href="Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionValue" data-throw-if-not-resolved="false"></xref>.
+    content.vb: Public Function GetUserOptionValue(className As String, optionId As Integer) As IDhcpServerOptionValue
+  overload: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection.GetUserOptionValue*
+  implements:
+  - Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection.GetUserOptionValue(System.String,System.Int32)
+  nameWithType.vb: DhcpServerScopeOptionValueCollection.GetUserOptionValue(String, Integer)
+  fullName.vb: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection.GetUserOptionValue(String, Integer)
+  name.vb: GetUserOptionValue(String, Integer)
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection.GetUserOptionValue(System.String,Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIds)
+  commentId: M:Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection.GetUserOptionValue(System.String,Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIds)
+  id: GetUserOptionValue(System.String,Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIds)
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection
+  langs:
+  - csharp
+  - vb
+  name: GetUserOptionValue(string, DhcpServerOptionIds)
+  nameWithType: DhcpServerScopeOptionValueCollection.GetUserOptionValue(string, DhcpServerOptionIds)
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection.GetUserOptionValue(string, Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIds)
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerScopeOptionValueCollection.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: GetUserOptionValue
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerScopeOptionValueCollection.cs
+    startLine: 80
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  summary: Retrieves the Option Value associated with the Option and Scope within a User Class
+  example: []
+  syntax:
+    content: public IDhcpServerOptionValue GetUserOptionValue(string className, DhcpServerOptionIds optionId)
+    parameters:
+    - id: className
+      type: System.String
+      description: The name of the User Class to retrieve the Option from
+    - id: optionId
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIds
+      description: The identifier for the option value to retrieve
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.IDhcpServerOptionValue
+      description: A <xref href="Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionValue" data-throw-if-not-resolved="false"></xref>.
+    content.vb: Public Function GetUserOptionValue(className As String, optionId As DhcpServerOptionIds) As IDhcpServerOptionValue
+  overload: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection.GetUserOptionValue*
+  implements:
+  - Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection.GetUserOptionValue(System.String,Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIds)
+  nameWithType.vb: DhcpServerScopeOptionValueCollection.GetUserOptionValue(String, DhcpServerOptionIds)
+  fullName.vb: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection.GetUserOptionValue(String, Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIds)
+  name.vb: GetUserOptionValue(String, DhcpServerOptionIds)
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection.GetVendorOptionValue(System.String,System.Int32)
+  commentId: M:Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection.GetVendorOptionValue(System.String,System.Int32)
+  id: GetVendorOptionValue(System.String,System.Int32)
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection
+  langs:
+  - csharp
+  - vb
+  name: GetVendorOptionValue(string, int)
+  nameWithType: DhcpServerScopeOptionValueCollection.GetVendorOptionValue(string, int)
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection.GetVendorOptionValue(string, int)
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerScopeOptionValueCollection.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: GetVendorOptionValue
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerScopeOptionValueCollection.cs
+    startLine: 89
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  summary: Retrieves the Option Value associated with the Option and Scope within a Vendor Class
+  example: []
+  syntax:
+    content: public IDhcpServerOptionValue GetVendorOptionValue(string vendorName, int optionId)
+    parameters:
+    - id: vendorName
+      type: System.String
+      description: The name of the Vendor Class to retrieve the Option from
+    - id: optionId
+      type: System.Int32
+      description: The identifier for the option value to retrieve
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.IDhcpServerOptionValue
+      description: A <xref href="Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionValue" data-throw-if-not-resolved="false"></xref>.
+    content.vb: Public Function GetVendorOptionValue(vendorName As String, optionId As Integer) As IDhcpServerOptionValue
+  overload: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection.GetVendorOptionValue*
+  implements:
+  - Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection.GetVendorOptionValue(System.String,System.Int32)
+  nameWithType.vb: DhcpServerScopeOptionValueCollection.GetVendorOptionValue(String, Integer)
+  fullName.vb: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection.GetVendorOptionValue(String, Integer)
+  name.vb: GetVendorOptionValue(String, Integer)
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection.GetVendorOptionValue(System.String,Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIds)
+  commentId: M:Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection.GetVendorOptionValue(System.String,Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIds)
+  id: GetVendorOptionValue(System.String,Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIds)
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection
+  langs:
+  - csharp
+  - vb
+  name: GetVendorOptionValue(string, DhcpServerOptionIds)
+  nameWithType: DhcpServerScopeOptionValueCollection.GetVendorOptionValue(string, DhcpServerOptionIds)
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection.GetVendorOptionValue(string, Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIds)
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerScopeOptionValueCollection.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: GetVendorOptionValue
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerScopeOptionValueCollection.cs
+    startLine: 97
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  summary: Retrieves the Option Value associated with the Option and Scope within a Vendor Class
+  example: []
+  syntax:
+    content: public IDhcpServerOptionValue GetVendorOptionValue(string vendorName, DhcpServerOptionIds optionId)
+    parameters:
+    - id: vendorName
+      type: System.String
+      description: The name of the Vendor Class to retrieve the Option from
+    - id: optionId
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIds
+      description: The identifier for the option value to retrieve
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.IDhcpServerOptionValue
+      description: A <xref href="Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionValue" data-throw-if-not-resolved="false"></xref>.
+    content.vb: Public Function GetVendorOptionValue(vendorName As String, optionId As DhcpServerOptionIds) As IDhcpServerOptionValue
+  overload: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection.GetVendorOptionValue*
+  implements:
+  - Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection.GetVendorOptionValue(System.String,Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIds)
+  nameWithType.vb: DhcpServerScopeOptionValueCollection.GetVendorOptionValue(String, DhcpServerOptionIds)
+  fullName.vb: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection.GetVendorOptionValue(String, Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIds)
+  name.vb: GetVendorOptionValue(String, DhcpServerOptionIds)
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection.SetOptionValue(Bodoconsult.Network.Windows.Dhcp.IDhcpServerOptionValue)
+  commentId: M:Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection.SetOptionValue(Bodoconsult.Network.Windows.Dhcp.IDhcpServerOptionValue)
+  id: SetOptionValue(Bodoconsult.Network.Windows.Dhcp.IDhcpServerOptionValue)
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection
+  langs:
+  - csharp
+  - vb
+  name: SetOptionValue(IDhcpServerOptionValue)
+  nameWithType: DhcpServerScopeOptionValueCollection.SetOptionValue(IDhcpServerOptionValue)
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection.SetOptionValue(Bodoconsult.Network.Windows.Dhcp.IDhcpServerOptionValue)
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerScopeOptionValueCollection.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: SetOptionValue
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerScopeOptionValueCollection.cs
+    startLine: 100
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  example: []
+  syntax:
+    content: public void SetOptionValue(IDhcpServerOptionValue value)
+    parameters:
+    - id: value
+      type: Bodoconsult.Network.Windows.Dhcp.IDhcpServerOptionValue
+    content.vb: Public Sub SetOptionValue(value As IDhcpServerOptionValue)
+  overload: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection.SetOptionValue*
+  implements:
+  - Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection.SetOptionValue(Bodoconsult.Network.Windows.Dhcp.IDhcpServerOptionValue)
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection.AddOrSetOptionValue(Bodoconsult.Network.Windows.Dhcp.IDhcpServerOptionValue)
+  commentId: M:Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection.AddOrSetOptionValue(Bodoconsult.Network.Windows.Dhcp.IDhcpServerOptionValue)
+  id: AddOrSetOptionValue(Bodoconsult.Network.Windows.Dhcp.IDhcpServerOptionValue)
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection
+  langs:
+  - csharp
+  - vb
+  name: AddOrSetOptionValue(IDhcpServerOptionValue)
+  nameWithType: DhcpServerScopeOptionValueCollection.AddOrSetOptionValue(IDhcpServerOptionValue)
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection.AddOrSetOptionValue(Bodoconsult.Network.Windows.Dhcp.IDhcpServerOptionValue)
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerScopeOptionValueCollection.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: AddOrSetOptionValue
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerScopeOptionValueCollection.cs
+    startLine: 102
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  example: []
+  syntax:
+    content: public void AddOrSetOptionValue(IDhcpServerOptionValue value)
+    parameters:
+    - id: value
+      type: Bodoconsult.Network.Windows.Dhcp.IDhcpServerOptionValue
+    content.vb: Public Sub AddOrSetOptionValue(value As IDhcpServerOptionValue)
+  overload: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection.AddOrSetOptionValue*
+  implements:
+  - Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection.AddOrSetOptionValue(Bodoconsult.Network.Windows.Dhcp.IDhcpServerOptionValue)
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection.RemoveUserOptionValue(System.String,System.Int32)
+  commentId: M:Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection.RemoveUserOptionValue(System.String,System.Int32)
+  id: RemoveUserOptionValue(System.String,System.Int32)
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection
+  langs:
+  - csharp
+  - vb
+  name: RemoveUserOptionValue(string, int)
+  nameWithType: DhcpServerScopeOptionValueCollection.RemoveUserOptionValue(string, int)
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection.RemoveUserOptionValue(string, int)
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerScopeOptionValueCollection.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: RemoveUserOptionValue
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerScopeOptionValueCollection.cs
+    startLine: 110
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  summary: Deletes the Option Value associated with the Option and Scope within a User Class
+  example: []
+  syntax:
+    content: public void RemoveUserOptionValue(string className, int optionId)
+    parameters:
+    - id: className
+      type: System.String
+      description: The name of the User Class
+    - id: optionId
+      type: System.Int32
+      description: The identifier for the option value
+    content.vb: Public Sub RemoveUserOptionValue(className As String, optionId As Integer)
+  overload: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection.RemoveUserOptionValue*
+  implements:
+  - Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection.RemoveUserOptionValue(System.String,System.Int32)
+  nameWithType.vb: DhcpServerScopeOptionValueCollection.RemoveUserOptionValue(String, Integer)
+  fullName.vb: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection.RemoveUserOptionValue(String, Integer)
+  name.vb: RemoveUserOptionValue(String, Integer)
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection.RemoveUserOptionValue(System.String,Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIds)
+  commentId: M:Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection.RemoveUserOptionValue(System.String,Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIds)
+  id: RemoveUserOptionValue(System.String,Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIds)
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection
+  langs:
+  - csharp
+  - vb
+  name: RemoveUserOptionValue(string, DhcpServerOptionIds)
+  nameWithType: DhcpServerScopeOptionValueCollection.RemoveUserOptionValue(string, DhcpServerOptionIds)
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection.RemoveUserOptionValue(string, Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIds)
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerScopeOptionValueCollection.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: RemoveUserOptionValue
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerScopeOptionValueCollection.cs
+    startLine: 118
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  summary: Retrieves the Option Value associated with the Option and Scope within a User Class
+  example: []
+  syntax:
+    content: public void RemoveUserOptionValue(string className, DhcpServerOptionIds optionId)
+    parameters:
+    - id: className
+      type: System.String
+      description: The name of the User Class to retrieve the Option from
+    - id: optionId
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIds
+      description: The identifier for the option value to retrieve
+    content.vb: Public Sub RemoveUserOptionValue(className As String, optionId As DhcpServerOptionIds)
+  overload: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection.RemoveUserOptionValue*
+  implements:
+  - Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection.RemoveUserOptionValue(System.String,Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIds)
+  nameWithType.vb: DhcpServerScopeOptionValueCollection.RemoveUserOptionValue(String, DhcpServerOptionIds)
+  fullName.vb: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection.RemoveUserOptionValue(String, Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIds)
+  name.vb: RemoveUserOptionValue(String, DhcpServerOptionIds)
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection.RemoveVendorOptionValue(System.String,System.Int32)
+  commentId: M:Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection.RemoveVendorOptionValue(System.String,System.Int32)
+  id: RemoveVendorOptionValue(System.String,System.Int32)
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection
+  langs:
+  - csharp
+  - vb
+  name: RemoveVendorOptionValue(string, int)
+  nameWithType: DhcpServerScopeOptionValueCollection.RemoveVendorOptionValue(string, int)
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection.RemoveVendorOptionValue(string, int)
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerScopeOptionValueCollection.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: RemoveVendorOptionValue
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerScopeOptionValueCollection.cs
+    startLine: 127
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  summary: Retrieves the Option Value associated with the Option and Scope within a Vendor Class
+  example: []
+  syntax:
+    content: public void RemoveVendorOptionValue(string vendorName, int optionId)
+    parameters:
+    - id: vendorName
+      type: System.String
+      description: The name of the Vendor Class to retrieve the Option from
+    - id: optionId
+      type: System.Int32
+      description: The identifier for the option value to retrieve
+    content.vb: Public Sub RemoveVendorOptionValue(vendorName As String, optionId As Integer)
+  overload: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection.RemoveVendorOptionValue*
+  implements:
+  - Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection.RemoveVendorOptionValue(System.String,System.Int32)
+  nameWithType.vb: DhcpServerScopeOptionValueCollection.RemoveVendorOptionValue(String, Integer)
+  fullName.vb: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection.RemoveVendorOptionValue(String, Integer)
+  name.vb: RemoveVendorOptionValue(String, Integer)
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection.RemoveVendorOptionValue(System.String,Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIds)
+  commentId: M:Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection.RemoveVendorOptionValue(System.String,Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIds)
+  id: RemoveVendorOptionValue(System.String,Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIds)
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection
+  langs:
+  - csharp
+  - vb
+  name: RemoveVendorOptionValue(string, DhcpServerOptionIds)
+  nameWithType: DhcpServerScopeOptionValueCollection.RemoveVendorOptionValue(string, DhcpServerOptionIds)
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection.RemoveVendorOptionValue(string, Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIds)
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerScopeOptionValueCollection.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: RemoveVendorOptionValue
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerScopeOptionValueCollection.cs
+    startLine: 135
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  summary: Retrieves the Option Value associated with the Option and Scope within a Vendor Class
+  example: []
+  syntax:
+    content: public void RemoveVendorOptionValue(string vendorName, DhcpServerOptionIds optionId)
+    parameters:
+    - id: vendorName
+      type: System.String
+      description: The name of the Vendor Class to retrieve the Option from
+    - id: optionId
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIds
+      description: The identifier for the option value to retrieve
+    content.vb: Public Sub RemoveVendorOptionValue(vendorName As String, optionId As DhcpServerOptionIds)
+  overload: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection.RemoveVendorOptionValue*
+  implements:
+  - Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection.RemoveVendorOptionValue(System.String,Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIds)
+  nameWithType.vb: DhcpServerScopeOptionValueCollection.RemoveVendorOptionValue(String, DhcpServerOptionIds)
+  fullName.vb: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection.RemoveVendorOptionValue(String, Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIds)
+  name.vb: RemoveVendorOptionValue(String, DhcpServerOptionIds)
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection.RemoveOptionValue(System.Int32)
+  commentId: M:Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection.RemoveOptionValue(System.Int32)
+  id: RemoveOptionValue(System.Int32)
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection
+  langs:
+  - csharp
+  - vb
+  name: RemoveOptionValue(int)
+  nameWithType: DhcpServerScopeOptionValueCollection.RemoveOptionValue(int)
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection.RemoveOptionValue(int)
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerScopeOptionValueCollection.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: RemoveOptionValue
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerScopeOptionValueCollection.cs
+    startLine: 137
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  example: []
+  syntax:
+    content: public void RemoveOptionValue(int optionId)
+    parameters:
+    - id: optionId
+      type: System.Int32
+    content.vb: Public Sub RemoveOptionValue(optionId As Integer)
+  overload: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection.RemoveOptionValue*
+  implements:
+  - Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection.RemoveOptionValue(System.Int32)
+  nameWithType.vb: DhcpServerScopeOptionValueCollection.RemoveOptionValue(Integer)
+  fullName.vb: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection.RemoveOptionValue(Integer)
+  name.vb: RemoveOptionValue(Integer)
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection.RemoveOptionValue(Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIds)
+  commentId: M:Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection.RemoveOptionValue(Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIds)
+  id: RemoveOptionValue(Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIds)
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection
+  langs:
+  - csharp
+  - vb
+  name: RemoveOptionValue(DhcpServerOptionIds)
+  nameWithType: DhcpServerScopeOptionValueCollection.RemoveOptionValue(DhcpServerOptionIds)
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection.RemoveOptionValue(Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIds)
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerScopeOptionValueCollection.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: RemoveOptionValue
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerScopeOptionValueCollection.cs
+    startLine: 139
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  example: []
+  syntax:
+    content: public void RemoveOptionValue(DhcpServerOptionIds optionId)
+    parameters:
+    - id: optionId
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIds
+    content.vb: Public Sub RemoveOptionValue(optionId As DhcpServerOptionIds)
+  overload: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection.RemoveOptionValue*
+  implements:
+  - Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection.RemoveOptionValue(Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIds)
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection.RemoveOptionValue(Bodoconsult.Network.Windows.Dhcp.IDhcpServerOptionValue)
+  commentId: M:Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection.RemoveOptionValue(Bodoconsult.Network.Windows.Dhcp.IDhcpServerOptionValue)
+  id: RemoveOptionValue(Bodoconsult.Network.Windows.Dhcp.IDhcpServerOptionValue)
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection
+  langs:
+  - csharp
+  - vb
+  name: RemoveOptionValue(IDhcpServerOptionValue)
+  nameWithType: DhcpServerScopeOptionValueCollection.RemoveOptionValue(IDhcpServerOptionValue)
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection.RemoveOptionValue(Bodoconsult.Network.Windows.Dhcp.IDhcpServerOptionValue)
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerScopeOptionValueCollection.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: RemoveOptionValue
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerScopeOptionValueCollection.cs
+    startLine: 141
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  example: []
+  syntax:
+    content: public void RemoveOptionValue(IDhcpServerOptionValue value)
+    parameters:
+    - id: value
+      type: Bodoconsult.Network.Windows.Dhcp.IDhcpServerOptionValue
+    content.vb: Public Sub RemoveOptionValue(value As IDhcpServerOptionValue)
+  overload: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection.RemoveOptionValue*
+  implements:
+  - Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection.RemoveOptionValue(Bodoconsult.Network.Windows.Dhcp.IDhcpServerOptionValue)
+references:
+- uid: Bodoconsult.Network.Windows.Dhcp
+  commentId: N:Bodoconsult.Network.Windows.Dhcp
+  href: Bodoconsult.html
+  name: Bodoconsult.Network.Windows.Dhcp
+  nameWithType: Bodoconsult.Network.Windows.Dhcp
+  fullName: Bodoconsult.Network.Windows.Dhcp
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.Network
+    name: Network
+    href: Bodoconsult.Network.html
+  - name: .
+  - uid: Bodoconsult.Network.Windows
+    name: Windows
+    href: Bodoconsult.Network.Windows.html
+  - name: .
+  - uid: Bodoconsult.Network.Windows.Dhcp
+    name: Dhcp
+    href: Bodoconsult.Network.Windows.Dhcp.html
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.Network
+    name: Network
+    href: Bodoconsult.Network.html
+  - name: .
+  - uid: Bodoconsult.Network.Windows
+    name: Windows
+    href: Bodoconsult.Network.Windows.html
+  - name: .
+  - uid: Bodoconsult.Network.Windows.Dhcp
+    name: Dhcp
+    href: Bodoconsult.Network.Windows.Dhcp.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection
+  commentId: T:Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection
+  parent: Bodoconsult.Network.Windows.Dhcp
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection.html
+  name: IDhcpServerScopeOptionValueCollection
+  nameWithType: IDhcpServerScopeOptionValueCollection
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection
+- uid: System.Collections.Generic.IEnumerable{Bodoconsult.Network.Windows.Dhcp.IDhcpServerOptionValue}
+  commentId: T:System.Collections.Generic.IEnumerable{Bodoconsult.Network.Windows.Dhcp.IDhcpServerOptionValue}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IEnumerable`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<IDhcpServerOptionValue>
+  nameWithType: IEnumerable<IDhcpServerOptionValue>
+  fullName: System.Collections.Generic.IEnumerable<Bodoconsult.Network.Windows.Dhcp.IDhcpServerOptionValue>
+  nameWithType.vb: IEnumerable(Of IDhcpServerOptionValue)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of Bodoconsult.Network.Windows.Dhcp.IDhcpServerOptionValue)
+  name.vb: IEnumerable(Of IDhcpServerOptionValue)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerOptionValue
+    name: IDhcpServerOptionValue
+    href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerOptionValue.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerOptionValue
+    name: IDhcpServerOptionValue
+    href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerOptionValue.html
+  - name: )
+- uid: System.Collections.IEnumerable
+  commentId: T:System.Collections.IEnumerable
+  parent: System.Collections
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.ienumerable
+  name: IEnumerable
+  nameWithType: IEnumerable
+  fullName: System.Collections.IEnumerable
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System.Collections.Generic.IEnumerable{Bodoconsult.Network.Windows.Dhcp.IDhcpServerOptionValue}.Bodoconsult.NetworkCommunication.App.Abstractions.LambdaExpressionHelper.OrderBy``1(System.String)
+  commentId: M:Bodoconsult.NetworkCommunication.App.Abstractions.LambdaExpressionHelper.OrderBy``1(System.Collections.Generic.IEnumerable{``0},System.String)
+  parent: Bodoconsult.NetworkCommunication.App.Abstractions.LambdaExpressionHelper
+  definition: Bodoconsult.NetworkCommunication.App.Abstractions.LambdaExpressionHelper.OrderBy``1(System.Collections.Generic.IEnumerable{``0},System.String)
+  href: Bodoconsult.NetworkCommunication.App.Abstractions.LambdaExpressionHelper.html#Bodoconsult_NetworkCommunication_App_Abstractions_LambdaExpressionHelper_OrderBy__1_System_Collections_Generic_IEnumerable___0__System_String_
+  name: OrderBy<IDhcpServerOptionValue>(IEnumerable<IDhcpServerOptionValue>, string)
+  nameWithType: LambdaExpressionHelper.OrderBy<IDhcpServerOptionValue>(IEnumerable<IDhcpServerOptionValue>, string)
+  fullName: Bodoconsult.NetworkCommunication.App.Abstractions.LambdaExpressionHelper.OrderBy<Bodoconsult.Network.Windows.Dhcp.IDhcpServerOptionValue>(System.Collections.Generic.IEnumerable<Bodoconsult.Network.Windows.Dhcp.IDhcpServerOptionValue>, string)
+  nameWithType.vb: LambdaExpressionHelper.OrderBy(Of IDhcpServerOptionValue)(IEnumerable(Of IDhcpServerOptionValue), String)
+  fullName.vb: Bodoconsult.NetworkCommunication.App.Abstractions.LambdaExpressionHelper.OrderBy(Of Bodoconsult.Network.Windows.Dhcp.IDhcpServerOptionValue)(System.Collections.Generic.IEnumerable(Of Bodoconsult.Network.Windows.Dhcp.IDhcpServerOptionValue), String)
+  name.vb: OrderBy(Of IDhcpServerOptionValue)(IEnumerable(Of IDhcpServerOptionValue), String)
+  spec.csharp:
+  - uid: Bodoconsult.NetworkCommunication.App.Abstractions.LambdaExpressionHelper.OrderBy``1(System.Collections.Generic.IEnumerable{Bodoconsult.Network.Windows.Dhcp.IDhcpServerOptionValue},System.String)
+    name: OrderBy
+    href: Bodoconsult.NetworkCommunication.App.Abstractions.LambdaExpressionHelper.html#Bodoconsult_NetworkCommunication_App_Abstractions_LambdaExpressionHelper_OrderBy__1_System_Collections_Generic_IEnumerable___0__System_String_
+  - name: <
+  - uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerOptionValue
+    name: IDhcpServerOptionValue
+    href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerOptionValue.html
+  - name: '>'
+  - name: (
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerOptionValue
+    name: IDhcpServerOptionValue
+    href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerOptionValue.html
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.NetworkCommunication.App.Abstractions.LambdaExpressionHelper.OrderBy``1(System.Collections.Generic.IEnumerable{Bodoconsult.Network.Windows.Dhcp.IDhcpServerOptionValue},System.String)
+    name: OrderBy
+    href: Bodoconsult.NetworkCommunication.App.Abstractions.LambdaExpressionHelper.html#Bodoconsult_NetworkCommunication_App_Abstractions_LambdaExpressionHelper_OrderBy__1_System_Collections_Generic_IEnumerable___0__System_String_
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerOptionValue
+    name: IDhcpServerOptionValue
+    href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerOptionValue.html
+  - name: )
+  - name: (
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerOptionValue
+    name: IDhcpServerOptionValue
+    href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerOptionValue.html
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.Collections.Generic.IEnumerable`1
+  commentId: T:System.Collections.Generic.IEnumerable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<T>
+  nameWithType: IEnumerable<T>
+  fullName: System.Collections.Generic.IEnumerable<T>
+  nameWithType.vb: IEnumerable(Of T)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of T)
+  name.vb: IEnumerable(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: System.Collections
+  commentId: N:System.Collections
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections
+  nameWithType: System.Collections
+  fullName: System.Collections
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+- uid: Bodoconsult.NetworkCommunication.App.Abstractions.LambdaExpressionHelper.OrderBy``1(System.Collections.Generic.IEnumerable{``0},System.String)
+  commentId: M:Bodoconsult.NetworkCommunication.App.Abstractions.LambdaExpressionHelper.OrderBy``1(System.Collections.Generic.IEnumerable{``0},System.String)
+  isExternal: true
+  href: Bodoconsult.NetworkCommunication.App.Abstractions.LambdaExpressionHelper.html#Bodoconsult_NetworkCommunication_App_Abstractions_LambdaExpressionHelper_OrderBy__1_System_Collections_Generic_IEnumerable___0__System_String_
+  name: OrderBy<TSource>(IEnumerable<TSource>, string)
+  nameWithType: LambdaExpressionHelper.OrderBy<TSource>(IEnumerable<TSource>, string)
+  fullName: Bodoconsult.NetworkCommunication.App.Abstractions.LambdaExpressionHelper.OrderBy<TSource>(System.Collections.Generic.IEnumerable<TSource>, string)
+  nameWithType.vb: LambdaExpressionHelper.OrderBy(Of TSource)(IEnumerable(Of TSource), String)
+  fullName.vb: Bodoconsult.NetworkCommunication.App.Abstractions.LambdaExpressionHelper.OrderBy(Of TSource)(System.Collections.Generic.IEnumerable(Of TSource), String)
+  name.vb: OrderBy(Of TSource)(IEnumerable(Of TSource), String)
+  spec.csharp:
+  - uid: Bodoconsult.NetworkCommunication.App.Abstractions.LambdaExpressionHelper.OrderBy``1(System.Collections.Generic.IEnumerable{``0},System.String)
+    name: OrderBy
+    href: Bodoconsult.NetworkCommunication.App.Abstractions.LambdaExpressionHelper.html#Bodoconsult_NetworkCommunication_App_Abstractions_LambdaExpressionHelper_OrderBy__1_System_Collections_Generic_IEnumerable___0__System_String_
+  - name: <
+  - name: TSource
+  - name: '>'
+  - name: (
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - name: TSource
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.NetworkCommunication.App.Abstractions.LambdaExpressionHelper.OrderBy``1(System.Collections.Generic.IEnumerable{``0},System.String)
+    name: OrderBy
+    href: Bodoconsult.NetworkCommunication.App.Abstractions.LambdaExpressionHelper.html#Bodoconsult_NetworkCommunication_App_Abstractions_LambdaExpressionHelper_OrderBy__1_System_Collections_Generic_IEnumerable___0__System_String_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TSource
+  - name: )
+  - name: (
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TSource
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: Bodoconsult.NetworkCommunication.App.Abstractions.LambdaExpressionHelper
+  commentId: T:Bodoconsult.NetworkCommunication.App.Abstractions.LambdaExpressionHelper
+  parent: Bodoconsult.NetworkCommunication.App.Abstractions
+  href: Bodoconsult.NetworkCommunication.App.Abstractions.LambdaExpressionHelper.html
+  name: LambdaExpressionHelper
+  nameWithType: LambdaExpressionHelper
+  fullName: Bodoconsult.NetworkCommunication.App.Abstractions.LambdaExpressionHelper
+- uid: Bodoconsult.NetworkCommunication.App.Abstractions
+  commentId: N:Bodoconsult.NetworkCommunication.App.Abstractions
+  href: Bodoconsult.html
+  name: Bodoconsult.NetworkCommunication.App.Abstractions
+  nameWithType: Bodoconsult.NetworkCommunication.App.Abstractions
+  fullName: Bodoconsult.NetworkCommunication.App.Abstractions
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.App
+    name: App
+    href: Bodoconsult.NetworkCommunication.App.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.App.Abstractions
+    name: Abstractions
+    href: Bodoconsult.NetworkCommunication.App.Abstractions.html
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.App
+    name: App
+    href: Bodoconsult.NetworkCommunication.App.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.App.Abstractions
+    name: Abstractions
+    href: Bodoconsult.NetworkCommunication.App.Abstractions.html
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection.Server*
+  commentId: Overload:Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection.Server
+  href: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection.html#Bodoconsult_Network_Windows_Dhcp_DhcpServerScopeOptionValueCollection_Server
+  name: Server
+  nameWithType: DhcpServerScopeOptionValueCollection.Server
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection.Server
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServer
+  commentId: T:Bodoconsult.Network.Windows.Dhcp.DhcpServer
+  parent: Bodoconsult.Network.Windows.Dhcp
+  href: Bodoconsult.Network.Windows.Dhcp.DhcpServer.html
+  name: DhcpServer
+  nameWithType: DhcpServer
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServer
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection.Scope*
+  commentId: Overload:Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection.Scope
+  href: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection.html#Bodoconsult_Network_Windows_Dhcp_DhcpServerScopeOptionValueCollection_Scope
+  name: Scope
+  nameWithType: DhcpServerScopeOptionValueCollection.Scope
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection.Scope
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope
+  commentId: T:Bodoconsult.Network.Windows.Dhcp.DhcpServerScope
+  parent: Bodoconsult.Network.Windows.Dhcp
+  href: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.html
+  name: DhcpServerScope
+  nameWithType: DhcpServerScope
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection.GetEnumerator*
+  commentId: Overload:Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection.GetEnumerator
+  href: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection.html#Bodoconsult_Network_Windows_Dhcp_DhcpServerScopeOptionValueCollection_GetEnumerator
+  name: GetEnumerator
+  nameWithType: DhcpServerScopeOptionValueCollection.GetEnumerator
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection.GetEnumerator
+- uid: System.Collections.Generic.IEnumerable{Bodoconsult.Network.Windows.Dhcp.IDhcpServerOptionValue}.GetEnumerator
+  commentId: M:System.Collections.Generic.IEnumerable{Bodoconsult.Network.Windows.Dhcp.IDhcpServerOptionValue}.GetEnumerator
+  parent: System.Collections.Generic.IEnumerable{Bodoconsult.Network.Windows.Dhcp.IDhcpServerOptionValue}
+  definition: System.Collections.Generic.IEnumerable`1.GetEnumerator
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1.getenumerator
+  name: GetEnumerator()
+  nameWithType: IEnumerable<IDhcpServerOptionValue>.GetEnumerator()
+  fullName: System.Collections.Generic.IEnumerable<Bodoconsult.Network.Windows.Dhcp.IDhcpServerOptionValue>.GetEnumerator()
+  nameWithType.vb: IEnumerable(Of IDhcpServerOptionValue).GetEnumerator()
+  fullName.vb: System.Collections.Generic.IEnumerable(Of Bodoconsult.Network.Windows.Dhcp.IDhcpServerOptionValue).GetEnumerator()
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable{Bodoconsult.Network.Windows.Dhcp.IDhcpServerOptionValue}.GetEnumerator
+    name: GetEnumerator
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1.getenumerator
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable{Bodoconsult.Network.Windows.Dhcp.IDhcpServerOptionValue}.GetEnumerator
+    name: GetEnumerator
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1.getenumerator
+  - name: (
+  - name: )
+- uid: System.Collections.Generic.IEnumerator{Bodoconsult.Network.Windows.Dhcp.IDhcpServerOptionValue}
+  commentId: T:System.Collections.Generic.IEnumerator{Bodoconsult.Network.Windows.Dhcp.IDhcpServerOptionValue}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IEnumerator`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerator-1
+  name: IEnumerator<IDhcpServerOptionValue>
+  nameWithType: IEnumerator<IDhcpServerOptionValue>
+  fullName: System.Collections.Generic.IEnumerator<Bodoconsult.Network.Windows.Dhcp.IDhcpServerOptionValue>
+  nameWithType.vb: IEnumerator(Of IDhcpServerOptionValue)
+  fullName.vb: System.Collections.Generic.IEnumerator(Of Bodoconsult.Network.Windows.Dhcp.IDhcpServerOptionValue)
+  name.vb: IEnumerator(Of IDhcpServerOptionValue)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerator`1
+    name: IEnumerator
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerator-1
+  - name: <
+  - uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerOptionValue
+    name: IDhcpServerOptionValue
+    href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerOptionValue.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerator`1
+    name: IEnumerator
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerator-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerOptionValue
+    name: IDhcpServerOptionValue
+    href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerOptionValue.html
+  - name: )
+- uid: System.Collections.Generic.IEnumerable`1.GetEnumerator
+  commentId: M:System.Collections.Generic.IEnumerable`1.GetEnumerator
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1.getenumerator
+  name: GetEnumerator()
+  nameWithType: IEnumerable<T>.GetEnumerator()
+  fullName: System.Collections.Generic.IEnumerable<T>.GetEnumerator()
+  nameWithType.vb: IEnumerable(Of T).GetEnumerator()
+  fullName.vb: System.Collections.Generic.IEnumerable(Of T).GetEnumerator()
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1.GetEnumerator
+    name: GetEnumerator
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1.getenumerator
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1.GetEnumerator
+    name: GetEnumerator
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1.getenumerator
+  - name: (
+  - name: )
+- uid: System.Collections.Generic.IEnumerator`1
+  commentId: T:System.Collections.Generic.IEnumerator`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerator-1
+  name: IEnumerator<T>
+  nameWithType: IEnumerator<T>
+  fullName: System.Collections.Generic.IEnumerator<T>
+  nameWithType.vb: IEnumerator(Of T)
+  fullName.vb: System.Collections.Generic.IEnumerator(Of T)
+  name.vb: IEnumerator(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerator`1
+    name: IEnumerator
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerator-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerator`1
+    name: IEnumerator
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerator-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection.GetDefaultOptionValues*
+  commentId: Overload:Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection.GetDefaultOptionValues
+  href: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection.html#Bodoconsult_Network_Windows_Dhcp_DhcpServerScopeOptionValueCollection_GetDefaultOptionValues
+  name: GetDefaultOptionValues
+  nameWithType: DhcpServerScopeOptionValueCollection.GetDefaultOptionValues
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection.GetDefaultOptionValues
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection.GetDefaultOptionValues
+  commentId: M:Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection.GetDefaultOptionValues
+  parent: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerScopeOptionValueCollection_GetDefaultOptionValues
+  name: GetDefaultOptionValues()
+  nameWithType: IDhcpServerScopeOptionValueCollection.GetDefaultOptionValues()
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection.GetDefaultOptionValues()
+  spec.csharp:
+  - uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection.GetDefaultOptionValues
+    name: GetDefaultOptionValues
+    href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerScopeOptionValueCollection_GetDefaultOptionValues
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection.GetDefaultOptionValues
+    name: GetDefaultOptionValues
+    href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerScopeOptionValueCollection_GetDefaultOptionValues
+  - name: (
+  - name: )
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection.GetUserOptionValues*
+  commentId: Overload:Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection.GetUserOptionValues
+  href: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection.html#Bodoconsult_Network_Windows_Dhcp_DhcpServerScopeOptionValueCollection_GetUserOptionValues_System_String_
+  name: GetUserOptionValues
+  nameWithType: DhcpServerScopeOptionValueCollection.GetUserOptionValues
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection.GetUserOptionValues
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection.GetUserOptionValues(System.String)
+  commentId: M:Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection.GetUserOptionValues(System.String)
+  parent: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection
+  isExternal: true
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerScopeOptionValueCollection_GetUserOptionValues_System_String_
+  name: GetUserOptionValues(string)
+  nameWithType: IDhcpServerScopeOptionValueCollection.GetUserOptionValues(string)
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection.GetUserOptionValues(string)
+  nameWithType.vb: IDhcpServerScopeOptionValueCollection.GetUserOptionValues(String)
+  fullName.vb: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection.GetUserOptionValues(String)
+  name.vb: GetUserOptionValues(String)
+  spec.csharp:
+  - uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection.GetUserOptionValues(System.String)
+    name: GetUserOptionValues
+    href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerScopeOptionValueCollection_GetUserOptionValues_System_String_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection.GetUserOptionValues(System.String)
+    name: GetUserOptionValues
+    href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerScopeOptionValueCollection_GetUserOptionValues_System_String_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection.GetVendorOptionValues*
+  commentId: Overload:Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection.GetVendorOptionValues
+  href: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection.html#Bodoconsult_Network_Windows_Dhcp_DhcpServerScopeOptionValueCollection_GetVendorOptionValues_System_String_
+  name: GetVendorOptionValues
+  nameWithType: DhcpServerScopeOptionValueCollection.GetVendorOptionValues
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection.GetVendorOptionValues
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection.GetVendorOptionValues(System.String)
+  commentId: M:Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection.GetVendorOptionValues(System.String)
+  parent: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection
+  isExternal: true
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerScopeOptionValueCollection_GetVendorOptionValues_System_String_
+  name: GetVendorOptionValues(string)
+  nameWithType: IDhcpServerScopeOptionValueCollection.GetVendorOptionValues(string)
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection.GetVendorOptionValues(string)
+  nameWithType.vb: IDhcpServerScopeOptionValueCollection.GetVendorOptionValues(String)
+  fullName.vb: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection.GetVendorOptionValues(String)
+  name.vb: GetVendorOptionValues(String)
+  spec.csharp:
+  - uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection.GetVendorOptionValues(System.String)
+    name: GetVendorOptionValues
+    href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerScopeOptionValueCollection_GetVendorOptionValues_System_String_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection.GetVendorOptionValues(System.String)
+    name: GetVendorOptionValues
+    href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerScopeOptionValueCollection_GetVendorOptionValues_System_String_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionValue
+  commentId: T:Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionValue
+  href: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionValue.html
+  name: DhcpServerOptionValue
+  nameWithType: DhcpServerOptionValue
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionValue
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection.GetOptionValue*
+  commentId: Overload:Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection.GetOptionValue
+  href: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection.html#Bodoconsult_Network_Windows_Dhcp_DhcpServerScopeOptionValueCollection_GetOptionValue_Bodoconsult_Network_Windows_Dhcp_IDhcpServerOption_
+  name: GetOptionValue
+  nameWithType: DhcpServerScopeOptionValueCollection.GetOptionValue
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection.GetOptionValue
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection.GetOptionValue(Bodoconsult.Network.Windows.Dhcp.IDhcpServerOption)
+  commentId: M:Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection.GetOptionValue(Bodoconsult.Network.Windows.Dhcp.IDhcpServerOption)
+  parent: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerScopeOptionValueCollection_GetOptionValue_Bodoconsult_Network_Windows_Dhcp_IDhcpServerOption_
+  name: GetOptionValue(IDhcpServerOption)
+  nameWithType: IDhcpServerScopeOptionValueCollection.GetOptionValue(IDhcpServerOption)
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection.GetOptionValue(Bodoconsult.Network.Windows.Dhcp.IDhcpServerOption)
+  spec.csharp:
+  - uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection.GetOptionValue(Bodoconsult.Network.Windows.Dhcp.IDhcpServerOption)
+    name: GetOptionValue
+    href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerScopeOptionValueCollection_GetOptionValue_Bodoconsult_Network_Windows_Dhcp_IDhcpServerOption_
+  - name: (
+  - uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerOption
+    name: IDhcpServerOption
+    href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerOption.html
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection.GetOptionValue(Bodoconsult.Network.Windows.Dhcp.IDhcpServerOption)
+    name: GetOptionValue
+    href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerScopeOptionValueCollection_GetOptionValue_Bodoconsult_Network_Windows_Dhcp_IDhcpServerOption_
+  - name: (
+  - uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerOption
+    name: IDhcpServerOption
+    href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerOption.html
+  - name: )
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerOption
+  commentId: T:Bodoconsult.Network.Windows.Dhcp.IDhcpServerOption
+  parent: Bodoconsult.Network.Windows.Dhcp
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerOption.html
+  name: IDhcpServerOption
+  nameWithType: IDhcpServerOption
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerOption
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerOptionValue
+  commentId: T:Bodoconsult.Network.Windows.Dhcp.IDhcpServerOptionValue
+  parent: Bodoconsult.Network.Windows.Dhcp
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerOptionValue.html
+  name: IDhcpServerOptionValue
+  nameWithType: IDhcpServerOptionValue
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerOptionValue
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection.GetDefaultOptionValue*
+  commentId: Overload:Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection.GetDefaultOptionValue
+  href: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection.html#Bodoconsult_Network_Windows_Dhcp_DhcpServerScopeOptionValueCollection_GetDefaultOptionValue_System_Int32_
+  name: GetDefaultOptionValue
+  nameWithType: DhcpServerScopeOptionValueCollection.GetDefaultOptionValue
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection.GetDefaultOptionValue
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection.GetDefaultOptionValue(System.Int32)
+  commentId: M:Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection.GetDefaultOptionValue(System.Int32)
+  parent: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection
+  isExternal: true
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerScopeOptionValueCollection_GetDefaultOptionValue_System_Int32_
+  name: GetDefaultOptionValue(int)
+  nameWithType: IDhcpServerScopeOptionValueCollection.GetDefaultOptionValue(int)
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection.GetDefaultOptionValue(int)
+  nameWithType.vb: IDhcpServerScopeOptionValueCollection.GetDefaultOptionValue(Integer)
+  fullName.vb: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection.GetDefaultOptionValue(Integer)
+  name.vb: GetDefaultOptionValue(Integer)
+  spec.csharp:
+  - uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection.GetDefaultOptionValue(System.Int32)
+    name: GetDefaultOptionValue
+    href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerScopeOptionValueCollection_GetDefaultOptionValue_System_Int32_
+  - name: (
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection.GetDefaultOptionValue(System.Int32)
+    name: GetDefaultOptionValue
+    href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerScopeOptionValueCollection_GetDefaultOptionValue_System_Int32_
+  - name: (
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection.GetDefaultOptionValue(Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIds)
+  commentId: M:Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection.GetDefaultOptionValue(Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIds)
+  parent: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerScopeOptionValueCollection_GetDefaultOptionValue_Bodoconsult_Network_Windows_Dhcp_DhcpServerOptionIds_
+  name: GetDefaultOptionValue(DhcpServerOptionIds)
+  nameWithType: IDhcpServerScopeOptionValueCollection.GetDefaultOptionValue(DhcpServerOptionIds)
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection.GetDefaultOptionValue(Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIds)
+  spec.csharp:
+  - uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection.GetDefaultOptionValue(Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIds)
+    name: GetDefaultOptionValue
+    href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerScopeOptionValueCollection_GetDefaultOptionValue_Bodoconsult_Network_Windows_Dhcp_DhcpServerOptionIds_
+  - name: (
+  - uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIds
+    name: DhcpServerOptionIds
+    href: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIds.html
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection.GetDefaultOptionValue(Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIds)
+    name: GetDefaultOptionValue
+    href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerScopeOptionValueCollection_GetDefaultOptionValue_Bodoconsult_Network_Windows_Dhcp_DhcpServerOptionIds_
+  - name: (
+  - uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIds
+    name: DhcpServerOptionIds
+    href: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIds.html
+  - name: )
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIds
+  commentId: T:Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIds
+  parent: Bodoconsult.Network.Windows.Dhcp
+  href: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIds.html
+  name: DhcpServerOptionIds
+  nameWithType: DhcpServerOptionIds
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIds
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection.GetUserOptionValue*
+  commentId: Overload:Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection.GetUserOptionValue
+  href: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection.html#Bodoconsult_Network_Windows_Dhcp_DhcpServerScopeOptionValueCollection_GetUserOptionValue_System_String_System_Int32_
+  name: GetUserOptionValue
+  nameWithType: DhcpServerScopeOptionValueCollection.GetUserOptionValue
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection.GetUserOptionValue
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection.GetUserOptionValue(System.String,System.Int32)
+  commentId: M:Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection.GetUserOptionValue(System.String,System.Int32)
+  parent: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection
+  isExternal: true
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerScopeOptionValueCollection_GetUserOptionValue_System_String_System_Int32_
+  name: GetUserOptionValue(string, int)
+  nameWithType: IDhcpServerScopeOptionValueCollection.GetUserOptionValue(string, int)
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection.GetUserOptionValue(string, int)
+  nameWithType.vb: IDhcpServerScopeOptionValueCollection.GetUserOptionValue(String, Integer)
+  fullName.vb: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection.GetUserOptionValue(String, Integer)
+  name.vb: GetUserOptionValue(String, Integer)
+  spec.csharp:
+  - uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection.GetUserOptionValue(System.String,System.Int32)
+    name: GetUserOptionValue
+    href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerScopeOptionValueCollection_GetUserOptionValue_System_String_System_Int32_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection.GetUserOptionValue(System.String,System.Int32)
+    name: GetUserOptionValue
+    href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerScopeOptionValueCollection_GetUserOptionValue_System_String_System_Int32_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection.GetUserOptionValue(System.String,Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIds)
+  commentId: M:Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection.GetUserOptionValue(System.String,Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIds)
+  parent: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection
+  isExternal: true
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerScopeOptionValueCollection_GetUserOptionValue_System_String_Bodoconsult_Network_Windows_Dhcp_DhcpServerOptionIds_
+  name: GetUserOptionValue(string, DhcpServerOptionIds)
+  nameWithType: IDhcpServerScopeOptionValueCollection.GetUserOptionValue(string, DhcpServerOptionIds)
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection.GetUserOptionValue(string, Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIds)
+  nameWithType.vb: IDhcpServerScopeOptionValueCollection.GetUserOptionValue(String, DhcpServerOptionIds)
+  fullName.vb: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection.GetUserOptionValue(String, Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIds)
+  name.vb: GetUserOptionValue(String, DhcpServerOptionIds)
+  spec.csharp:
+  - uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection.GetUserOptionValue(System.String,Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIds)
+    name: GetUserOptionValue
+    href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerScopeOptionValueCollection_GetUserOptionValue_System_String_Bodoconsult_Network_Windows_Dhcp_DhcpServerOptionIds_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIds
+    name: DhcpServerOptionIds
+    href: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIds.html
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection.GetUserOptionValue(System.String,Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIds)
+    name: GetUserOptionValue
+    href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerScopeOptionValueCollection_GetUserOptionValue_System_String_Bodoconsult_Network_Windows_Dhcp_DhcpServerOptionIds_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIds
+    name: DhcpServerOptionIds
+    href: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIds.html
+  - name: )
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection.GetVendorOptionValue*
+  commentId: Overload:Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection.GetVendorOptionValue
+  href: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection.html#Bodoconsult_Network_Windows_Dhcp_DhcpServerScopeOptionValueCollection_GetVendorOptionValue_System_String_System_Int32_
+  name: GetVendorOptionValue
+  nameWithType: DhcpServerScopeOptionValueCollection.GetVendorOptionValue
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection.GetVendorOptionValue
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection.GetVendorOptionValue(System.String,System.Int32)
+  commentId: M:Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection.GetVendorOptionValue(System.String,System.Int32)
+  parent: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection
+  isExternal: true
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerScopeOptionValueCollection_GetVendorOptionValue_System_String_System_Int32_
+  name: GetVendorOptionValue(string, int)
+  nameWithType: IDhcpServerScopeOptionValueCollection.GetVendorOptionValue(string, int)
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection.GetVendorOptionValue(string, int)
+  nameWithType.vb: IDhcpServerScopeOptionValueCollection.GetVendorOptionValue(String, Integer)
+  fullName.vb: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection.GetVendorOptionValue(String, Integer)
+  name.vb: GetVendorOptionValue(String, Integer)
+  spec.csharp:
+  - uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection.GetVendorOptionValue(System.String,System.Int32)
+    name: GetVendorOptionValue
+    href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerScopeOptionValueCollection_GetVendorOptionValue_System_String_System_Int32_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection.GetVendorOptionValue(System.String,System.Int32)
+    name: GetVendorOptionValue
+    href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerScopeOptionValueCollection_GetVendorOptionValue_System_String_System_Int32_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection.GetVendorOptionValue(System.String,Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIds)
+  commentId: M:Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection.GetVendorOptionValue(System.String,Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIds)
+  parent: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection
+  isExternal: true
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerScopeOptionValueCollection_GetVendorOptionValue_System_String_Bodoconsult_Network_Windows_Dhcp_DhcpServerOptionIds_
+  name: GetVendorOptionValue(string, DhcpServerOptionIds)
+  nameWithType: IDhcpServerScopeOptionValueCollection.GetVendorOptionValue(string, DhcpServerOptionIds)
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection.GetVendorOptionValue(string, Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIds)
+  nameWithType.vb: IDhcpServerScopeOptionValueCollection.GetVendorOptionValue(String, DhcpServerOptionIds)
+  fullName.vb: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection.GetVendorOptionValue(String, Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIds)
+  name.vb: GetVendorOptionValue(String, DhcpServerOptionIds)
+  spec.csharp:
+  - uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection.GetVendorOptionValue(System.String,Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIds)
+    name: GetVendorOptionValue
+    href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerScopeOptionValueCollection_GetVendorOptionValue_System_String_Bodoconsult_Network_Windows_Dhcp_DhcpServerOptionIds_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIds
+    name: DhcpServerOptionIds
+    href: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIds.html
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection.GetVendorOptionValue(System.String,Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIds)
+    name: GetVendorOptionValue
+    href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerScopeOptionValueCollection_GetVendorOptionValue_System_String_Bodoconsult_Network_Windows_Dhcp_DhcpServerOptionIds_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIds
+    name: DhcpServerOptionIds
+    href: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIds.html
+  - name: )
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection.SetOptionValue*
+  commentId: Overload:Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection.SetOptionValue
+  href: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection.html#Bodoconsult_Network_Windows_Dhcp_DhcpServerScopeOptionValueCollection_SetOptionValue_Bodoconsult_Network_Windows_Dhcp_IDhcpServerOptionValue_
+  name: SetOptionValue
+  nameWithType: DhcpServerScopeOptionValueCollection.SetOptionValue
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection.SetOptionValue
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection.SetOptionValue(Bodoconsult.Network.Windows.Dhcp.IDhcpServerOptionValue)
+  commentId: M:Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection.SetOptionValue(Bodoconsult.Network.Windows.Dhcp.IDhcpServerOptionValue)
+  parent: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerScopeOptionValueCollection_SetOptionValue_Bodoconsult_Network_Windows_Dhcp_IDhcpServerOptionValue_
+  name: SetOptionValue(IDhcpServerOptionValue)
+  nameWithType: IDhcpServerScopeOptionValueCollection.SetOptionValue(IDhcpServerOptionValue)
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection.SetOptionValue(Bodoconsult.Network.Windows.Dhcp.IDhcpServerOptionValue)
+  spec.csharp:
+  - uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection.SetOptionValue(Bodoconsult.Network.Windows.Dhcp.IDhcpServerOptionValue)
+    name: SetOptionValue
+    href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerScopeOptionValueCollection_SetOptionValue_Bodoconsult_Network_Windows_Dhcp_IDhcpServerOptionValue_
+  - name: (
+  - uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerOptionValue
+    name: IDhcpServerOptionValue
+    href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerOptionValue.html
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection.SetOptionValue(Bodoconsult.Network.Windows.Dhcp.IDhcpServerOptionValue)
+    name: SetOptionValue
+    href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerScopeOptionValueCollection_SetOptionValue_Bodoconsult_Network_Windows_Dhcp_IDhcpServerOptionValue_
+  - name: (
+  - uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerOptionValue
+    name: IDhcpServerOptionValue
+    href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerOptionValue.html
+  - name: )
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection.AddOrSetOptionValue*
+  commentId: Overload:Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection.AddOrSetOptionValue
+  href: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection.html#Bodoconsult_Network_Windows_Dhcp_DhcpServerScopeOptionValueCollection_AddOrSetOptionValue_Bodoconsult_Network_Windows_Dhcp_IDhcpServerOptionValue_
+  name: AddOrSetOptionValue
+  nameWithType: DhcpServerScopeOptionValueCollection.AddOrSetOptionValue
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection.AddOrSetOptionValue
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection.AddOrSetOptionValue(Bodoconsult.Network.Windows.Dhcp.IDhcpServerOptionValue)
+  commentId: M:Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection.AddOrSetOptionValue(Bodoconsult.Network.Windows.Dhcp.IDhcpServerOptionValue)
+  parent: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerScopeOptionValueCollection_AddOrSetOptionValue_Bodoconsult_Network_Windows_Dhcp_IDhcpServerOptionValue_
+  name: AddOrSetOptionValue(IDhcpServerOptionValue)
+  nameWithType: IDhcpServerScopeOptionValueCollection.AddOrSetOptionValue(IDhcpServerOptionValue)
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection.AddOrSetOptionValue(Bodoconsult.Network.Windows.Dhcp.IDhcpServerOptionValue)
+  spec.csharp:
+  - uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection.AddOrSetOptionValue(Bodoconsult.Network.Windows.Dhcp.IDhcpServerOptionValue)
+    name: AddOrSetOptionValue
+    href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerScopeOptionValueCollection_AddOrSetOptionValue_Bodoconsult_Network_Windows_Dhcp_IDhcpServerOptionValue_
+  - name: (
+  - uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerOptionValue
+    name: IDhcpServerOptionValue
+    href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerOptionValue.html
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection.AddOrSetOptionValue(Bodoconsult.Network.Windows.Dhcp.IDhcpServerOptionValue)
+    name: AddOrSetOptionValue
+    href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerScopeOptionValueCollection_AddOrSetOptionValue_Bodoconsult_Network_Windows_Dhcp_IDhcpServerOptionValue_
+  - name: (
+  - uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerOptionValue
+    name: IDhcpServerOptionValue
+    href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerOptionValue.html
+  - name: )
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection.RemoveUserOptionValue*
+  commentId: Overload:Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection.RemoveUserOptionValue
+  href: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection.html#Bodoconsult_Network_Windows_Dhcp_DhcpServerScopeOptionValueCollection_RemoveUserOptionValue_System_String_System_Int32_
+  name: RemoveUserOptionValue
+  nameWithType: DhcpServerScopeOptionValueCollection.RemoveUserOptionValue
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection.RemoveUserOptionValue
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection.RemoveUserOptionValue(System.String,System.Int32)
+  commentId: M:Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection.RemoveUserOptionValue(System.String,System.Int32)
+  parent: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection
+  isExternal: true
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerScopeOptionValueCollection_RemoveUserOptionValue_System_String_System_Int32_
+  name: RemoveUserOptionValue(string, int)
+  nameWithType: IDhcpServerScopeOptionValueCollection.RemoveUserOptionValue(string, int)
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection.RemoveUserOptionValue(string, int)
+  nameWithType.vb: IDhcpServerScopeOptionValueCollection.RemoveUserOptionValue(String, Integer)
+  fullName.vb: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection.RemoveUserOptionValue(String, Integer)
+  name.vb: RemoveUserOptionValue(String, Integer)
+  spec.csharp:
+  - uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection.RemoveUserOptionValue(System.String,System.Int32)
+    name: RemoveUserOptionValue
+    href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerScopeOptionValueCollection_RemoveUserOptionValue_System_String_System_Int32_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection.RemoveUserOptionValue(System.String,System.Int32)
+    name: RemoveUserOptionValue
+    href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerScopeOptionValueCollection_RemoveUserOptionValue_System_String_System_Int32_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection.RemoveUserOptionValue(System.String,Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIds)
+  commentId: M:Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection.RemoveUserOptionValue(System.String,Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIds)
+  parent: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection
+  isExternal: true
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerScopeOptionValueCollection_RemoveUserOptionValue_System_String_Bodoconsult_Network_Windows_Dhcp_DhcpServerOptionIds_
+  name: RemoveUserOptionValue(string, DhcpServerOptionIds)
+  nameWithType: IDhcpServerScopeOptionValueCollection.RemoveUserOptionValue(string, DhcpServerOptionIds)
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection.RemoveUserOptionValue(string, Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIds)
+  nameWithType.vb: IDhcpServerScopeOptionValueCollection.RemoveUserOptionValue(String, DhcpServerOptionIds)
+  fullName.vb: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection.RemoveUserOptionValue(String, Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIds)
+  name.vb: RemoveUserOptionValue(String, DhcpServerOptionIds)
+  spec.csharp:
+  - uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection.RemoveUserOptionValue(System.String,Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIds)
+    name: RemoveUserOptionValue
+    href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerScopeOptionValueCollection_RemoveUserOptionValue_System_String_Bodoconsult_Network_Windows_Dhcp_DhcpServerOptionIds_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIds
+    name: DhcpServerOptionIds
+    href: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIds.html
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection.RemoveUserOptionValue(System.String,Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIds)
+    name: RemoveUserOptionValue
+    href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerScopeOptionValueCollection_RemoveUserOptionValue_System_String_Bodoconsult_Network_Windows_Dhcp_DhcpServerOptionIds_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIds
+    name: DhcpServerOptionIds
+    href: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIds.html
+  - name: )
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection.RemoveVendorOptionValue*
+  commentId: Overload:Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection.RemoveVendorOptionValue
+  href: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection.html#Bodoconsult_Network_Windows_Dhcp_DhcpServerScopeOptionValueCollection_RemoveVendorOptionValue_System_String_System_Int32_
+  name: RemoveVendorOptionValue
+  nameWithType: DhcpServerScopeOptionValueCollection.RemoveVendorOptionValue
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection.RemoveVendorOptionValue
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection.RemoveVendorOptionValue(System.String,System.Int32)
+  commentId: M:Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection.RemoveVendorOptionValue(System.String,System.Int32)
+  parent: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection
+  isExternal: true
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerScopeOptionValueCollection_RemoveVendorOptionValue_System_String_System_Int32_
+  name: RemoveVendorOptionValue(string, int)
+  nameWithType: IDhcpServerScopeOptionValueCollection.RemoveVendorOptionValue(string, int)
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection.RemoveVendorOptionValue(string, int)
+  nameWithType.vb: IDhcpServerScopeOptionValueCollection.RemoveVendorOptionValue(String, Integer)
+  fullName.vb: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection.RemoveVendorOptionValue(String, Integer)
+  name.vb: RemoveVendorOptionValue(String, Integer)
+  spec.csharp:
+  - uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection.RemoveVendorOptionValue(System.String,System.Int32)
+    name: RemoveVendorOptionValue
+    href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerScopeOptionValueCollection_RemoveVendorOptionValue_System_String_System_Int32_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection.RemoveVendorOptionValue(System.String,System.Int32)
+    name: RemoveVendorOptionValue
+    href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerScopeOptionValueCollection_RemoveVendorOptionValue_System_String_System_Int32_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection.RemoveVendorOptionValue(System.String,Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIds)
+  commentId: M:Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection.RemoveVendorOptionValue(System.String,Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIds)
+  parent: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection
+  isExternal: true
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerScopeOptionValueCollection_RemoveVendorOptionValue_System_String_Bodoconsult_Network_Windows_Dhcp_DhcpServerOptionIds_
+  name: RemoveVendorOptionValue(string, DhcpServerOptionIds)
+  nameWithType: IDhcpServerScopeOptionValueCollection.RemoveVendorOptionValue(string, DhcpServerOptionIds)
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection.RemoveVendorOptionValue(string, Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIds)
+  nameWithType.vb: IDhcpServerScopeOptionValueCollection.RemoveVendorOptionValue(String, DhcpServerOptionIds)
+  fullName.vb: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection.RemoveVendorOptionValue(String, Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIds)
+  name.vb: RemoveVendorOptionValue(String, DhcpServerOptionIds)
+  spec.csharp:
+  - uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection.RemoveVendorOptionValue(System.String,Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIds)
+    name: RemoveVendorOptionValue
+    href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerScopeOptionValueCollection_RemoveVendorOptionValue_System_String_Bodoconsult_Network_Windows_Dhcp_DhcpServerOptionIds_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIds
+    name: DhcpServerOptionIds
+    href: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIds.html
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection.RemoveVendorOptionValue(System.String,Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIds)
+    name: RemoveVendorOptionValue
+    href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerScopeOptionValueCollection_RemoveVendorOptionValue_System_String_Bodoconsult_Network_Windows_Dhcp_DhcpServerOptionIds_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIds
+    name: DhcpServerOptionIds
+    href: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIds.html
+  - name: )
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection.RemoveOptionValue*
+  commentId: Overload:Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection.RemoveOptionValue
+  href: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection.html#Bodoconsult_Network_Windows_Dhcp_DhcpServerScopeOptionValueCollection_RemoveOptionValue_System_Int32_
+  name: RemoveOptionValue
+  nameWithType: DhcpServerScopeOptionValueCollection.RemoveOptionValue
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection.RemoveOptionValue
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection.RemoveOptionValue(System.Int32)
+  commentId: M:Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection.RemoveOptionValue(System.Int32)
+  parent: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection
+  isExternal: true
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerScopeOptionValueCollection_RemoveOptionValue_System_Int32_
+  name: RemoveOptionValue(int)
+  nameWithType: IDhcpServerScopeOptionValueCollection.RemoveOptionValue(int)
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection.RemoveOptionValue(int)
+  nameWithType.vb: IDhcpServerScopeOptionValueCollection.RemoveOptionValue(Integer)
+  fullName.vb: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection.RemoveOptionValue(Integer)
+  name.vb: RemoveOptionValue(Integer)
+  spec.csharp:
+  - uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection.RemoveOptionValue(System.Int32)
+    name: RemoveOptionValue
+    href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerScopeOptionValueCollection_RemoveOptionValue_System_Int32_
+  - name: (
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection.RemoveOptionValue(System.Int32)
+    name: RemoveOptionValue
+    href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerScopeOptionValueCollection_RemoveOptionValue_System_Int32_
+  - name: (
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection.RemoveOptionValue(Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIds)
+  commentId: M:Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection.RemoveOptionValue(Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIds)
+  parent: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerScopeOptionValueCollection_RemoveOptionValue_Bodoconsult_Network_Windows_Dhcp_DhcpServerOptionIds_
+  name: RemoveOptionValue(DhcpServerOptionIds)
+  nameWithType: IDhcpServerScopeOptionValueCollection.RemoveOptionValue(DhcpServerOptionIds)
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection.RemoveOptionValue(Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIds)
+  spec.csharp:
+  - uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection.RemoveOptionValue(Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIds)
+    name: RemoveOptionValue
+    href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerScopeOptionValueCollection_RemoveOptionValue_Bodoconsult_Network_Windows_Dhcp_DhcpServerOptionIds_
+  - name: (
+  - uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIds
+    name: DhcpServerOptionIds
+    href: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIds.html
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection.RemoveOptionValue(Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIds)
+    name: RemoveOptionValue
+    href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerScopeOptionValueCollection_RemoveOptionValue_Bodoconsult_Network_Windows_Dhcp_DhcpServerOptionIds_
+  - name: (
+  - uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIds
+    name: DhcpServerOptionIds
+    href: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIds.html
+  - name: )
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection.RemoveOptionValue(Bodoconsult.Network.Windows.Dhcp.IDhcpServerOptionValue)
+  commentId: M:Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection.RemoveOptionValue(Bodoconsult.Network.Windows.Dhcp.IDhcpServerOptionValue)
+  parent: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerScopeOptionValueCollection_RemoveOptionValue_Bodoconsult_Network_Windows_Dhcp_IDhcpServerOptionValue_
+  name: RemoveOptionValue(IDhcpServerOptionValue)
+  nameWithType: IDhcpServerScopeOptionValueCollection.RemoveOptionValue(IDhcpServerOptionValue)
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection.RemoveOptionValue(Bodoconsult.Network.Windows.Dhcp.IDhcpServerOptionValue)
+  spec.csharp:
+  - uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection.RemoveOptionValue(Bodoconsult.Network.Windows.Dhcp.IDhcpServerOptionValue)
+    name: RemoveOptionValue
+    href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerScopeOptionValueCollection_RemoveOptionValue_Bodoconsult_Network_Windows_Dhcp_IDhcpServerOptionValue_
+  - name: (
+  - uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerOptionValue
+    name: IDhcpServerOptionValue
+    href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerOptionValue.html
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection.RemoveOptionValue(Bodoconsult.Network.Windows.Dhcp.IDhcpServerOptionValue)
+    name: RemoveOptionValue
+    href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerScopeOptionValueCollection_RemoveOptionValue_Bodoconsult_Network_Windows_Dhcp_IDhcpServerOptionValue_
+  - name: (
+  - uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerOptionValue
+    name: IDhcpServerOptionValue
+    href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerOptionValue.html
+  - name: )

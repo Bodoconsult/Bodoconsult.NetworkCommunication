@@ -1,0 +1,284 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionResultState
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionResultState
+  id: IOrderExecutionResultState
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  children:
+  - Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionResultState.Id
+  - Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionResultState.Name
+  langs:
+  - csharp
+  - vb
+  name: IOrderExecutionResultState
+  nameWithType: IOrderExecutionResultState
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionResultState
+  type: Interface
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/IOrderExecutionResultState.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: IOrderExecutionResultState
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/IOrderExecutionResultState.cs
+    startLine: 7
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Interface order execution result states
+  example: []
+  syntax:
+    content: 'public interface IOrderExecutionResultState : IEquatable<IOrderExecutionResultState>'
+    content.vb: Public Interface IOrderExecutionResultState Inherits IEquatable(Of IOrderExecutionResultState)
+  inheritedMembers:
+  - System.IEquatable{Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionResultState}.Equals(Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionResultState)
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionResultState.Id
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionResultState.Id
+  id: Id
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionResultState
+  langs:
+  - csharp
+  - vb
+  name: Id
+  nameWithType: IOrderExecutionResultState.Id
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionResultState.Id
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/IOrderExecutionResultState.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Id
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/IOrderExecutionResultState.cs
+    startLine: 12
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: The ID of the state
+  example: []
+  syntax:
+    content: int Id { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: ReadOnly Property Id As Integer
+  overload: Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionResultState.Id*
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionResultState.Name
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionResultState.Name
+  id: Name
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionResultState
+  langs:
+  - csharp
+  - vb
+  name: Name
+  nameWithType: IOrderExecutionResultState.Name
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionResultState.Name
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/IOrderExecutionResultState.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Name
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/IOrderExecutionResultState.cs
+    startLine: 17
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: The cleartext name of the state
+  example: []
+  syntax:
+    content: string Name { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Property Name As String
+  overload: Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionResultState.Name*
+references:
+- uid: Bodoconsult.NetworkCommunication.Interfaces
+  commentId: N:Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.html
+  name: Bodoconsult.NetworkCommunication.Interfaces
+  nameWithType: Bodoconsult.NetworkCommunication.Interfaces
+  fullName: Bodoconsult.NetworkCommunication.Interfaces
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Interfaces
+    name: Interfaces
+    href: Bodoconsult.NetworkCommunication.Interfaces.html
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Interfaces
+    name: Interfaces
+    href: Bodoconsult.NetworkCommunication.Interfaces.html
+- uid: System.IEquatable{Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionResultState}.Equals(Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionResultState)
+  commentId: M:System.IEquatable{Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionResultState}.Equals(Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionResultState)
+  parent: System.IEquatable{Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionResultState}
+  definition: System.IEquatable`1.Equals(`0)
+  href: https://learn.microsoft.com/dotnet/api/system.iequatable-1.equals
+  name: Equals(IOrderExecutionResultState)
+  nameWithType: IEquatable<IOrderExecutionResultState>.Equals(IOrderExecutionResultState)
+  fullName: System.IEquatable<Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionResultState>.Equals(Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionResultState)
+  nameWithType.vb: IEquatable(Of IOrderExecutionResultState).Equals(IOrderExecutionResultState)
+  fullName.vb: System.IEquatable(Of Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionResultState).Equals(Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionResultState)
+  spec.csharp:
+  - uid: System.IEquatable{Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionResultState}.Equals(Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionResultState)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1.equals
+  - name: (
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionResultState
+    name: IOrderExecutionResultState
+    href: Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionResultState.html
+  - name: )
+  spec.vb:
+  - uid: System.IEquatable{Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionResultState}.Equals(Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionResultState)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1.equals
+  - name: (
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionResultState
+    name: IOrderExecutionResultState
+    href: Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionResultState.html
+  - name: )
+- uid: System.IEquatable`1.Equals(`0)
+  commentId: M:System.IEquatable`1.Equals(`0)
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.iequatable-1.equals
+  name: Equals(T)
+  nameWithType: IEquatable<T>.Equals(T)
+  fullName: System.IEquatable<T>.Equals(T)
+  nameWithType.vb: IEquatable(Of T).Equals(T)
+  fullName.vb: System.IEquatable(Of T).Equals(T)
+  spec.csharp:
+  - uid: System.IEquatable`1.Equals(`0)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1.equals
+  - name: (
+  - name: T
+  - name: )
+  spec.vb:
+  - uid: System.IEquatable`1.Equals(`0)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1.equals
+  - name: (
+  - name: T
+  - name: )
+- uid: System.IEquatable{Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionResultState}
+  commentId: T:System.IEquatable{Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionResultState}
+  parent: System
+  definition: System.IEquatable`1
+  href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  name: IEquatable<IOrderExecutionResultState>
+  nameWithType: IEquatable<IOrderExecutionResultState>
+  fullName: System.IEquatable<Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionResultState>
+  nameWithType.vb: IEquatable(Of IOrderExecutionResultState)
+  fullName.vb: System.IEquatable(Of Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionResultState)
+  name.vb: IEquatable(Of IOrderExecutionResultState)
+  spec.csharp:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: <
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionResultState
+    name: IOrderExecutionResultState
+    href: Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionResultState.html
+  - name: '>'
+  spec.vb:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionResultState
+    name: IOrderExecutionResultState
+    href: Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionResultState.html
+  - name: )
+- uid: System.IEquatable`1
+  commentId: T:System.IEquatable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  name: IEquatable<T>
+  nameWithType: IEquatable<T>
+  fullName: System.IEquatable<T>
+  nameWithType.vb: IEquatable(Of T)
+  fullName.vb: System.IEquatable(Of T)
+  name.vb: IEquatable(Of T)
+  spec.csharp:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionResultState.Id*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionResultState.Id
+  href: Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionResultState.html#Bodoconsult_NetworkCommunication_Interfaces_IOrderExecutionResultState_Id
+  name: Id
+  nameWithType: IOrderExecutionResultState.Id
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionResultState.Id
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionResultState.Name*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionResultState.Name
+  href: Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionResultState.html#Bodoconsult_NetworkCommunication_Interfaces_IOrderExecutionResultState_Name
+  name: Name
+  nameWithType: IOrderExecutionResultState.Name
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionResultState.Name
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String

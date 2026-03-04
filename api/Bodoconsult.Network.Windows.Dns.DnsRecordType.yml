@@ -1,0 +1,797 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bodoconsult.Network.Windows.Dns.DnsRecordType
+  commentId: T:Bodoconsult.Network.Windows.Dns.DnsRecordType
+  id: DnsRecordType
+  parent: Bodoconsult.Network.Windows.Dns
+  children:
+  - Bodoconsult.Network.Windows.Dns.DnsRecordType.#ctor(System.String)
+  - Bodoconsult.Network.Windows.Dns.DnsRecordType.A
+  - Bodoconsult.Network.Windows.Dns.DnsRecordType.Aaaa
+  - Bodoconsult.Network.Windows.Dns.DnsRecordType.Cname
+  - Bodoconsult.Network.Windows.Dns.DnsRecordType.Mx
+  - Bodoconsult.Network.Windows.Dns.DnsRecordType.Ns
+  - Bodoconsult.Network.Windows.Dns.DnsRecordType.Ptr
+  - Bodoconsult.Network.Windows.Dns.DnsRecordType.RecordMode
+  - Bodoconsult.Network.Windows.Dns.DnsRecordType.Soa
+  - Bodoconsult.Network.Windows.Dns.DnsRecordType.TextRepresentation
+  - Bodoconsult.Network.Windows.Dns.DnsRecordType.ToString
+  - Bodoconsult.Network.Windows.Dns.DnsRecordType.Txt
+  langs:
+  - csharp
+  - vb
+  name: DnsRecordType
+  nameWithType: DnsRecordType
+  fullName: Bodoconsult.Network.Windows.Dns.DnsRecordType
+  type: Class
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dns/DnsRecordType.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: DnsRecordType
+    path: src/Bodoconsult.Network.Windows/Dns/DnsRecordType.cs
+    startLine: 5
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dns
+  summary: The type of record in Microsoft (r) DNS server
+  example: []
+  syntax:
+    content: public class DnsRecordType
+    content.vb: Public Class DnsRecordType
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+- uid: Bodoconsult.Network.Windows.Dns.DnsRecordType.#ctor(System.String)
+  commentId: M:Bodoconsult.Network.Windows.Dns.DnsRecordType.#ctor(System.String)
+  id: '#ctor(System.String)'
+  parent: Bodoconsult.Network.Windows.Dns.DnsRecordType
+  langs:
+  - csharp
+  - vb
+  name: DnsRecordType(string)
+  nameWithType: DnsRecordType.DnsRecordType(string)
+  fullName: Bodoconsult.Network.Windows.Dns.DnsRecordType.DnsRecordType(string)
+  type: Constructor
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dns/DnsRecordType.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: .ctor
+    path: src/Bodoconsult.Network.Windows/Dns/DnsRecordType.cs
+    startLine: 11
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dns
+  summary: Create a new DNS record type
+  example: []
+  syntax:
+    content: public DnsRecordType(string textRepresentation)
+    parameters:
+    - id: textRepresentation
+      type: System.String
+      description: The type to create
+    content.vb: Public Sub New(textRepresentation As String)
+  overload: Bodoconsult.Network.Windows.Dns.DnsRecordType.#ctor*
+  nameWithType.vb: DnsRecordType.New(String)
+  fullName.vb: Bodoconsult.Network.Windows.Dns.DnsRecordType.New(String)
+  name.vb: New(String)
+- uid: Bodoconsult.Network.Windows.Dns.DnsRecordType.TextRepresentation
+  commentId: P:Bodoconsult.Network.Windows.Dns.DnsRecordType.TextRepresentation
+  id: TextRepresentation
+  parent: Bodoconsult.Network.Windows.Dns.DnsRecordType
+  langs:
+  - csharp
+  - vb
+  name: TextRepresentation
+  nameWithType: DnsRecordType.TextRepresentation
+  fullName: Bodoconsult.Network.Windows.Dns.DnsRecordType.TextRepresentation
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dns/DnsRecordType.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: TextRepresentation
+    path: src/Bodoconsult.Network.Windows/Dns/DnsRecordType.cs
+    startLine: 20
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dns
+  summary: The text representation of the record type
+  example: []
+  syntax:
+    content: public string TextRepresentation { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public ReadOnly Property TextRepresentation As String
+  overload: Bodoconsult.Network.Windows.Dns.DnsRecordType.TextRepresentation*
+- uid: Bodoconsult.Network.Windows.Dns.DnsRecordType.RecordMode
+  commentId: P:Bodoconsult.Network.Windows.Dns.DnsRecordType.RecordMode
+  id: RecordMode
+  parent: Bodoconsult.Network.Windows.Dns.DnsRecordType
+  langs:
+  - csharp
+  - vb
+  name: RecordMode
+  nameWithType: DnsRecordType.RecordMode
+  fullName: Bodoconsult.Network.Windows.Dns.DnsRecordType.RecordMode
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dns/DnsRecordType.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: RecordMode
+    path: src/Bodoconsult.Network.Windows/Dns/DnsRecordType.cs
+    startLine: 25
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dns
+  summary: The mode of the record, usually IN but could oneday be something else like OUT
+  example: []
+  syntax:
+    content: public string RecordMode { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property RecordMode As String
+  overload: Bodoconsult.Network.Windows.Dns.DnsRecordType.RecordMode*
+- uid: Bodoconsult.Network.Windows.Dns.DnsRecordType.ToString
+  commentId: M:Bodoconsult.Network.Windows.Dns.DnsRecordType.ToString
+  id: ToString
+  parent: Bodoconsult.Network.Windows.Dns.DnsRecordType
+  langs:
+  - csharp
+  - vb
+  name: ToString()
+  nameWithType: DnsRecordType.ToString()
+  fullName: Bodoconsult.Network.Windows.Dns.DnsRecordType.ToString()
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dns/DnsRecordType.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: ToString
+    path: src/Bodoconsult.Network.Windows/Dns/DnsRecordType.cs
+    startLine: 27
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dns
+  summary: Returns a string that represents the current object.
+  example: []
+  syntax:
+    content: public override string ToString()
+    return:
+      type: System.String
+      description: A string that represents the current object.
+    content.vb: Public Overrides Function ToString() As String
+  overridden: System.Object.ToString
+  overload: Bodoconsult.Network.Windows.Dns.DnsRecordType.ToString*
+- uid: Bodoconsult.Network.Windows.Dns.DnsRecordType.Cname
+  commentId: P:Bodoconsult.Network.Windows.Dns.DnsRecordType.Cname
+  id: Cname
+  parent: Bodoconsult.Network.Windows.Dns.DnsRecordType
+  langs:
+  - csharp
+  - vb
+  name: Cname
+  nameWithType: DnsRecordType.Cname
+  fullName: Bodoconsult.Network.Windows.Dns.DnsRecordType.Cname
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dns/DnsRecordType.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Cname
+    path: src/Bodoconsult.Network.Windows/Dns/DnsRecordType.cs
+    startLine: 36
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dns
+  summary: An alias
+  example: []
+  syntax:
+    content: public static DnsRecordType Cname { get; }
+    parameters: []
+    return:
+      type: Bodoconsult.Network.Windows.Dns.DnsRecordType
+    content.vb: Public Shared ReadOnly Property Cname As DnsRecordType
+  overload: Bodoconsult.Network.Windows.Dns.DnsRecordType.Cname*
+- uid: Bodoconsult.Network.Windows.Dns.DnsRecordType.A
+  commentId: P:Bodoconsult.Network.Windows.Dns.DnsRecordType.A
+  id: A
+  parent: Bodoconsult.Network.Windows.Dns.DnsRecordType
+  langs:
+  - csharp
+  - vb
+  name: A
+  nameWithType: DnsRecordType.A
+  fullName: Bodoconsult.Network.Windows.Dns.DnsRecordType.A
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dns/DnsRecordType.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: A
+    path: src/Bodoconsult.Network.Windows/Dns/DnsRecordType.cs
+    startLine: 41
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dns
+  summary: An IPv4 address
+  example: []
+  syntax:
+    content: public static DnsRecordType A { get; }
+    parameters: []
+    return:
+      type: Bodoconsult.Network.Windows.Dns.DnsRecordType
+    content.vb: Public Shared ReadOnly Property A As DnsRecordType
+  overload: Bodoconsult.Network.Windows.Dns.DnsRecordType.A*
+- uid: Bodoconsult.Network.Windows.Dns.DnsRecordType.Ptr
+  commentId: P:Bodoconsult.Network.Windows.Dns.DnsRecordType.Ptr
+  id: Ptr
+  parent: Bodoconsult.Network.Windows.Dns.DnsRecordType
+  langs:
+  - csharp
+  - vb
+  name: Ptr
+  nameWithType: DnsRecordType.Ptr
+  fullName: Bodoconsult.Network.Windows.Dns.DnsRecordType.Ptr
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dns/DnsRecordType.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Ptr
+    path: src/Bodoconsult.Network.Windows/Dns/DnsRecordType.cs
+    startLine: 46
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dns
+  summary: A reverse host address inside yoursubnet.in-addr.arpa
+  example: []
+  syntax:
+    content: public static DnsRecordType Ptr { get; }
+    parameters: []
+    return:
+      type: Bodoconsult.Network.Windows.Dns.DnsRecordType
+    content.vb: Public Shared ReadOnly Property Ptr As DnsRecordType
+  overload: Bodoconsult.Network.Windows.Dns.DnsRecordType.Ptr*
+- uid: Bodoconsult.Network.Windows.Dns.DnsRecordType.Mx
+  commentId: P:Bodoconsult.Network.Windows.Dns.DnsRecordType.Mx
+  id: Mx
+  parent: Bodoconsult.Network.Windows.Dns.DnsRecordType
+  langs:
+  - csharp
+  - vb
+  name: Mx
+  nameWithType: DnsRecordType.Mx
+  fullName: Bodoconsult.Network.Windows.Dns.DnsRecordType.Mx
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dns/DnsRecordType.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Mx
+    path: src/Bodoconsult.Network.Windows/Dns/DnsRecordType.cs
+    startLine: 51
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dns
+  summary: An MX record (mail exchange)
+  example: []
+  syntax:
+    content: public static DnsRecordType Mx { get; }
+    parameters: []
+    return:
+      type: Bodoconsult.Network.Windows.Dns.DnsRecordType
+    content.vb: Public Shared ReadOnly Property Mx As DnsRecordType
+  overload: Bodoconsult.Network.Windows.Dns.DnsRecordType.Mx*
+- uid: Bodoconsult.Network.Windows.Dns.DnsRecordType.Aaaa
+  commentId: P:Bodoconsult.Network.Windows.Dns.DnsRecordType.Aaaa
+  id: Aaaa
+  parent: Bodoconsult.Network.Windows.Dns.DnsRecordType
+  langs:
+  - csharp
+  - vb
+  name: Aaaa
+  nameWithType: DnsRecordType.Aaaa
+  fullName: Bodoconsult.Network.Windows.Dns.DnsRecordType.Aaaa
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dns/DnsRecordType.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Aaaa
+    path: src/Bodoconsult.Network.Windows/Dns/DnsRecordType.cs
+    startLine: 56
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dns
+  summary: An IPv6 host address
+  example: []
+  syntax:
+    content: public static DnsRecordType Aaaa { get; }
+    parameters: []
+    return:
+      type: Bodoconsult.Network.Windows.Dns.DnsRecordType
+    content.vb: Public Shared ReadOnly Property Aaaa As DnsRecordType
+  overload: Bodoconsult.Network.Windows.Dns.DnsRecordType.Aaaa*
+- uid: Bodoconsult.Network.Windows.Dns.DnsRecordType.Txt
+  commentId: P:Bodoconsult.Network.Windows.Dns.DnsRecordType.Txt
+  id: Txt
+  parent: Bodoconsult.Network.Windows.Dns.DnsRecordType
+  langs:
+  - csharp
+  - vb
+  name: Txt
+  nameWithType: DnsRecordType.Txt
+  fullName: Bodoconsult.Network.Windows.Dns.DnsRecordType.Txt
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dns/DnsRecordType.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Txt
+    path: src/Bodoconsult.Network.Windows/Dns/DnsRecordType.cs
+    startLine: 61
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dns
+  summary: A text record
+  example: []
+  syntax:
+    content: public static DnsRecordType Txt { get; }
+    parameters: []
+    return:
+      type: Bodoconsult.Network.Windows.Dns.DnsRecordType
+    content.vb: Public Shared ReadOnly Property Txt As DnsRecordType
+  overload: Bodoconsult.Network.Windows.Dns.DnsRecordType.Txt*
+- uid: Bodoconsult.Network.Windows.Dns.DnsRecordType.Ns
+  commentId: P:Bodoconsult.Network.Windows.Dns.DnsRecordType.Ns
+  id: Ns
+  parent: Bodoconsult.Network.Windows.Dns.DnsRecordType
+  langs:
+  - csharp
+  - vb
+  name: Ns
+  nameWithType: DnsRecordType.Ns
+  fullName: Bodoconsult.Network.Windows.Dns.DnsRecordType.Ns
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dns/DnsRecordType.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Ns
+    path: src/Bodoconsult.Network.Windows/Dns/DnsRecordType.cs
+    startLine: 66
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dns
+  summary: A nameserver record (domain delegation)
+  example: []
+  syntax:
+    content: public static DnsRecordType Ns { get; }
+    parameters: []
+    return:
+      type: Bodoconsult.Network.Windows.Dns.DnsRecordType
+    content.vb: Public Shared ReadOnly Property Ns As DnsRecordType
+  overload: Bodoconsult.Network.Windows.Dns.DnsRecordType.Ns*
+- uid: Bodoconsult.Network.Windows.Dns.DnsRecordType.Soa
+  commentId: P:Bodoconsult.Network.Windows.Dns.DnsRecordType.Soa
+  id: Soa
+  parent: Bodoconsult.Network.Windows.Dns.DnsRecordType
+  langs:
+  - csharp
+  - vb
+  name: Soa
+  nameWithType: DnsRecordType.Soa
+  fullName: Bodoconsult.Network.Windows.Dns.DnsRecordType.Soa
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dns/DnsRecordType.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Soa
+    path: src/Bodoconsult.Network.Windows/Dns/DnsRecordType.cs
+    startLine: 71
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dns
+  summary: An SOA record (start of authority)
+  example: []
+  syntax:
+    content: public static DnsRecordType Soa { get; }
+    parameters: []
+    return:
+      type: Bodoconsult.Network.Windows.Dns.DnsRecordType
+    content.vb: Public Shared ReadOnly Property Soa As DnsRecordType
+  overload: Bodoconsult.Network.Windows.Dns.DnsRecordType.Soa*
+references:
+- uid: Bodoconsult.Network.Windows.Dns
+  commentId: N:Bodoconsult.Network.Windows.Dns
+  href: Bodoconsult.html
+  name: Bodoconsult.Network.Windows.Dns
+  nameWithType: Bodoconsult.Network.Windows.Dns
+  fullName: Bodoconsult.Network.Windows.Dns
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.Network
+    name: Network
+    href: Bodoconsult.Network.html
+  - name: .
+  - uid: Bodoconsult.Network.Windows
+    name: Windows
+    href: Bodoconsult.Network.Windows.html
+  - name: .
+  - uid: Bodoconsult.Network.Windows.Dns
+    name: Dns
+    href: Bodoconsult.Network.Windows.Dns.html
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.Network
+    name: Network
+    href: Bodoconsult.Network.html
+  - name: .
+  - uid: Bodoconsult.Network.Windows
+    name: Windows
+    href: Bodoconsult.Network.Windows.html
+  - name: .
+  - uid: Bodoconsult.Network.Windows.Dns
+    name: Dns
+    href: Bodoconsult.Network.Windows.Dns.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Bodoconsult.Network.Windows.Dns.DnsRecordType.#ctor*
+  commentId: Overload:Bodoconsult.Network.Windows.Dns.DnsRecordType.#ctor
+  href: Bodoconsult.Network.Windows.Dns.DnsRecordType.html#Bodoconsult_Network_Windows_Dns_DnsRecordType__ctor_System_String_
+  name: DnsRecordType
+  nameWithType: DnsRecordType.DnsRecordType
+  fullName: Bodoconsult.Network.Windows.Dns.DnsRecordType.DnsRecordType
+  nameWithType.vb: DnsRecordType.New
+  fullName.vb: Bodoconsult.Network.Windows.Dns.DnsRecordType.New
+  name.vb: New
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Bodoconsult.Network.Windows.Dns.DnsRecordType.TextRepresentation*
+  commentId: Overload:Bodoconsult.Network.Windows.Dns.DnsRecordType.TextRepresentation
+  href: Bodoconsult.Network.Windows.Dns.DnsRecordType.html#Bodoconsult_Network_Windows_Dns_DnsRecordType_TextRepresentation
+  name: TextRepresentation
+  nameWithType: DnsRecordType.TextRepresentation
+  fullName: Bodoconsult.Network.Windows.Dns.DnsRecordType.TextRepresentation
+- uid: Bodoconsult.Network.Windows.Dns.DnsRecordType.RecordMode*
+  commentId: Overload:Bodoconsult.Network.Windows.Dns.DnsRecordType.RecordMode
+  href: Bodoconsult.Network.Windows.Dns.DnsRecordType.html#Bodoconsult_Network_Windows_Dns_DnsRecordType_RecordMode
+  name: RecordMode
+  nameWithType: DnsRecordType.RecordMode
+  fullName: Bodoconsult.Network.Windows.Dns.DnsRecordType.RecordMode
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: Bodoconsult.Network.Windows.Dns.DnsRecordType.ToString*
+  commentId: Overload:Bodoconsult.Network.Windows.Dns.DnsRecordType.ToString
+  href: Bodoconsult.Network.Windows.Dns.DnsRecordType.html#Bodoconsult_Network_Windows_Dns_DnsRecordType_ToString
+  name: ToString
+  nameWithType: DnsRecordType.ToString
+  fullName: Bodoconsult.Network.Windows.Dns.DnsRecordType.ToString
+- uid: Bodoconsult.Network.Windows.Dns.DnsRecordType.Cname*
+  commentId: Overload:Bodoconsult.Network.Windows.Dns.DnsRecordType.Cname
+  href: Bodoconsult.Network.Windows.Dns.DnsRecordType.html#Bodoconsult_Network_Windows_Dns_DnsRecordType_Cname
+  name: Cname
+  nameWithType: DnsRecordType.Cname
+  fullName: Bodoconsult.Network.Windows.Dns.DnsRecordType.Cname
+- uid: Bodoconsult.Network.Windows.Dns.DnsRecordType
+  commentId: T:Bodoconsult.Network.Windows.Dns.DnsRecordType
+  parent: Bodoconsult.Network.Windows.Dns
+  href: Bodoconsult.Network.Windows.Dns.DnsRecordType.html
+  name: DnsRecordType
+  nameWithType: DnsRecordType
+  fullName: Bodoconsult.Network.Windows.Dns.DnsRecordType
+- uid: Bodoconsult.Network.Windows.Dns.DnsRecordType.A*
+  commentId: Overload:Bodoconsult.Network.Windows.Dns.DnsRecordType.A
+  href: Bodoconsult.Network.Windows.Dns.DnsRecordType.html#Bodoconsult_Network_Windows_Dns_DnsRecordType_A
+  name: A
+  nameWithType: DnsRecordType.A
+  fullName: Bodoconsult.Network.Windows.Dns.DnsRecordType.A
+- uid: Bodoconsult.Network.Windows.Dns.DnsRecordType.Ptr*
+  commentId: Overload:Bodoconsult.Network.Windows.Dns.DnsRecordType.Ptr
+  href: Bodoconsult.Network.Windows.Dns.DnsRecordType.html#Bodoconsult_Network_Windows_Dns_DnsRecordType_Ptr
+  name: Ptr
+  nameWithType: DnsRecordType.Ptr
+  fullName: Bodoconsult.Network.Windows.Dns.DnsRecordType.Ptr
+- uid: Bodoconsult.Network.Windows.Dns.DnsRecordType.Mx*
+  commentId: Overload:Bodoconsult.Network.Windows.Dns.DnsRecordType.Mx
+  href: Bodoconsult.Network.Windows.Dns.DnsRecordType.html#Bodoconsult_Network_Windows_Dns_DnsRecordType_Mx
+  name: Mx
+  nameWithType: DnsRecordType.Mx
+  fullName: Bodoconsult.Network.Windows.Dns.DnsRecordType.Mx
+- uid: Bodoconsult.Network.Windows.Dns.DnsRecordType.Aaaa*
+  commentId: Overload:Bodoconsult.Network.Windows.Dns.DnsRecordType.Aaaa
+  href: Bodoconsult.Network.Windows.Dns.DnsRecordType.html#Bodoconsult_Network_Windows_Dns_DnsRecordType_Aaaa
+  name: Aaaa
+  nameWithType: DnsRecordType.Aaaa
+  fullName: Bodoconsult.Network.Windows.Dns.DnsRecordType.Aaaa
+- uid: Bodoconsult.Network.Windows.Dns.DnsRecordType.Txt*
+  commentId: Overload:Bodoconsult.Network.Windows.Dns.DnsRecordType.Txt
+  href: Bodoconsult.Network.Windows.Dns.DnsRecordType.html#Bodoconsult_Network_Windows_Dns_DnsRecordType_Txt
+  name: Txt
+  nameWithType: DnsRecordType.Txt
+  fullName: Bodoconsult.Network.Windows.Dns.DnsRecordType.Txt
+- uid: Bodoconsult.Network.Windows.Dns.DnsRecordType.Ns*
+  commentId: Overload:Bodoconsult.Network.Windows.Dns.DnsRecordType.Ns
+  href: Bodoconsult.Network.Windows.Dns.DnsRecordType.html#Bodoconsult_Network_Windows_Dns_DnsRecordType_Ns
+  name: Ns
+  nameWithType: DnsRecordType.Ns
+  fullName: Bodoconsult.Network.Windows.Dns.DnsRecordType.Ns
+- uid: Bodoconsult.Network.Windows.Dns.DnsRecordType.Soa*
+  commentId: Overload:Bodoconsult.Network.Windows.Dns.DnsRecordType.Soa
+  href: Bodoconsult.Network.Windows.Dns.DnsRecordType.html#Bodoconsult_Network_Windows_Dns_DnsRecordType_Soa
+  name: Soa
+  nameWithType: DnsRecordType.Soa
+  fullName: Bodoconsult.Network.Windows.Dns.DnsRecordType.Soa

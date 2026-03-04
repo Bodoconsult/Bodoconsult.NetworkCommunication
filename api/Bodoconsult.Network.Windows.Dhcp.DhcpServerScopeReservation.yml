@@ -1,0 +1,778 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeReservation
+  commentId: T:Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeReservation
+  id: DhcpServerScopeReservation
+  parent: Bodoconsult.Network.Windows.Dhcp
+  children:
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeReservation.Address
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeReservation.AllowedClientTypes
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeReservation.Client
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeReservation.Delete
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeReservation.HardwareAddress
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeReservation.Options
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeReservation.Scope
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeReservation.Server
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeReservation.ToString
+  langs:
+  - csharp
+  - vb
+  name: DhcpServerScopeReservation
+  nameWithType: DhcpServerScopeReservation
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeReservation
+  type: Class
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerScopeReservation.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: DhcpServerScopeReservation
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerScopeReservation.cs
+    startLine: 7
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: 'public class DhcpServerScopeReservation : IDhcpServerScopeReservation'
+    content.vb: Public Class DhcpServerScopeReservation Implements IDhcpServerScopeReservation
+  inheritance:
+  - System.Object
+  implements:
+  - Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeReservation
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeReservation.Server
+  commentId: P:Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeReservation.Server
+  id: Server
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeReservation
+  langs:
+  - csharp
+  - vb
+  name: Server
+  nameWithType: DhcpServerScopeReservation.Server
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeReservation.Server
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerScopeReservation.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Server
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerScopeReservation.cs
+    startLine: 9
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: public DhcpServer Server { get; }
+    parameters: []
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServer
+    content.vb: Public ReadOnly Property Server As DhcpServer
+  overload: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeReservation.Server*
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeReservation.Scope
+  commentId: P:Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeReservation.Scope
+  id: Scope
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeReservation
+  langs:
+  - csharp
+  - vb
+  name: Scope
+  nameWithType: DhcpServerScopeReservation.Scope
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeReservation.Scope
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerScopeReservation.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Scope
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerScopeReservation.cs
+    startLine: 11
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: public DhcpServerScope Scope { get; }
+    parameters: []
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope
+    content.vb: Public ReadOnly Property Scope As DhcpServerScope
+  overload: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeReservation.Scope*
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeReservation.Address
+  commentId: P:Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeReservation.Address
+  id: Address
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeReservation
+  langs:
+  - csharp
+  - vb
+  name: Address
+  nameWithType: DhcpServerScopeReservation.Address
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeReservation.Address
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerScopeReservation.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Address
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerScopeReservation.cs
+    startLine: 15
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  example: []
+  syntax:
+    content: public DhcpServerIpAddress Address { get; }
+    parameters: []
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress
+    content.vb: Public ReadOnly Property Address As DhcpServerIpAddress
+  overload: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeReservation.Address*
+  implements:
+  - Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeReservation.Address
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeReservation.HardwareAddress
+  commentId: P:Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeReservation.HardwareAddress
+  id: HardwareAddress
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeReservation
+  langs:
+  - csharp
+  - vb
+  name: HardwareAddress
+  nameWithType: DhcpServerScopeReservation.HardwareAddress
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeReservation.HardwareAddress
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerScopeReservation.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: HardwareAddress
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerScopeReservation.cs
+    startLine: 16
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  example: []
+  syntax:
+    content: public DhcpServerHardwareAddress HardwareAddress { get; }
+    parameters: []
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerHardwareAddress
+    content.vb: Public ReadOnly Property HardwareAddress As DhcpServerHardwareAddress
+  overload: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeReservation.HardwareAddress*
+  implements:
+  - Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeReservation.HardwareAddress
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeReservation.AllowedClientTypes
+  commentId: P:Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeReservation.AllowedClientTypes
+  id: AllowedClientTypes
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeReservation
+  langs:
+  - csharp
+  - vb
+  name: AllowedClientTypes
+  nameWithType: DhcpServerScopeReservation.AllowedClientTypes
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeReservation.AllowedClientTypes
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerScopeReservation.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: AllowedClientTypes
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerScopeReservation.cs
+    startLine: 18
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  example: []
+  syntax:
+    content: public DhcpServerClientTypes AllowedClientTypes { get; }
+    parameters: []
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerClientTypes
+    content.vb: Public ReadOnly Property AllowedClientTypes As DhcpServerClientTypes
+  overload: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeReservation.AllowedClientTypes*
+  implements:
+  - Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeReservation.AllowedClientTypes
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeReservation.Client
+  commentId: P:Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeReservation.Client
+  id: Client
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeReservation
+  langs:
+  - csharp
+  - vb
+  name: Client
+  nameWithType: DhcpServerScopeReservation.Client
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeReservation.Client
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerScopeReservation.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Client
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerScopeReservation.cs
+    startLine: 20
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  example: []
+  syntax:
+    content: public IDhcpServerClient Client { get; }
+    parameters: []
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.IDhcpServerClient
+    content.vb: Public ReadOnly Property Client As IDhcpServerClient
+  overload: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeReservation.Client*
+  implements:
+  - Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeReservation.Client
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeReservation.Options
+  commentId: P:Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeReservation.Options
+  id: Options
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeReservation
+  langs:
+  - csharp
+  - vb
+  name: Options
+  nameWithType: DhcpServerScopeReservation.Options
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeReservation.Options
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerScopeReservation.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Options
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerScopeReservation.cs
+    startLine: 22
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  example: []
+  syntax:
+    content: public IDhcpServerScopeReservationOptionValueCollection Options { get; }
+    parameters: []
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeReservationOptionValueCollection
+    content.vb: Public ReadOnly Property Options As IDhcpServerScopeReservationOptionValueCollection
+  overload: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeReservation.Options*
+  implements:
+  - Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeReservation.Options
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeReservation.Delete
+  commentId: M:Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeReservation.Delete
+  id: Delete
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeReservation
+  langs:
+  - csharp
+  - vb
+  name: Delete()
+  nameWithType: DhcpServerScopeReservation.Delete()
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeReservation.Delete()
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerScopeReservation.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Delete
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerScopeReservation.cs
+    startLine: 34
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  example: []
+  syntax:
+    content: public void Delete()
+    content.vb: Public Sub Delete()
+  overload: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeReservation.Delete*
+  implements:
+  - Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeReservation.Delete
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeReservation.ToString
+  commentId: M:Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeReservation.ToString
+  id: ToString
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeReservation
+  langs:
+  - csharp
+  - vb
+  name: ToString()
+  nameWithType: DhcpServerScopeReservation.ToString()
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeReservation.ToString()
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerScopeReservation.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: ToString
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerScopeReservation.cs
+    startLine: 97
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  summary: Returns a string that represents the current object.
+  example: []
+  syntax:
+    content: public override string ToString()
+    return:
+      type: System.String
+      description: A string that represents the current object.
+    content.vb: Public Overrides Function ToString() As String
+  overridden: System.Object.ToString
+  overload: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeReservation.ToString*
+references:
+- uid: Bodoconsult.Network.Windows.Dhcp
+  commentId: N:Bodoconsult.Network.Windows.Dhcp
+  href: Bodoconsult.html
+  name: Bodoconsult.Network.Windows.Dhcp
+  nameWithType: Bodoconsult.Network.Windows.Dhcp
+  fullName: Bodoconsult.Network.Windows.Dhcp
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.Network
+    name: Network
+    href: Bodoconsult.Network.html
+  - name: .
+  - uid: Bodoconsult.Network.Windows
+    name: Windows
+    href: Bodoconsult.Network.Windows.html
+  - name: .
+  - uid: Bodoconsult.Network.Windows.Dhcp
+    name: Dhcp
+    href: Bodoconsult.Network.Windows.Dhcp.html
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.Network
+    name: Network
+    href: Bodoconsult.Network.html
+  - name: .
+  - uid: Bodoconsult.Network.Windows
+    name: Windows
+    href: Bodoconsult.Network.Windows.html
+  - name: .
+  - uid: Bodoconsult.Network.Windows.Dhcp
+    name: Dhcp
+    href: Bodoconsult.Network.Windows.Dhcp.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeReservation
+  commentId: T:Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeReservation
+  parent: Bodoconsult.Network.Windows.Dhcp
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeReservation.html
+  name: IDhcpServerScopeReservation
+  nameWithType: IDhcpServerScopeReservation
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeReservation
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeReservation.Server*
+  commentId: Overload:Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeReservation.Server
+  href: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeReservation.html#Bodoconsult_Network_Windows_Dhcp_DhcpServerScopeReservation_Server
+  name: Server
+  nameWithType: DhcpServerScopeReservation.Server
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeReservation.Server
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServer
+  commentId: T:Bodoconsult.Network.Windows.Dhcp.DhcpServer
+  parent: Bodoconsult.Network.Windows.Dhcp
+  href: Bodoconsult.Network.Windows.Dhcp.DhcpServer.html
+  name: DhcpServer
+  nameWithType: DhcpServer
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServer
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeReservation.Scope*
+  commentId: Overload:Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeReservation.Scope
+  href: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeReservation.html#Bodoconsult_Network_Windows_Dhcp_DhcpServerScopeReservation_Scope
+  name: Scope
+  nameWithType: DhcpServerScopeReservation.Scope
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeReservation.Scope
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope
+  commentId: T:Bodoconsult.Network.Windows.Dhcp.DhcpServerScope
+  parent: Bodoconsult.Network.Windows.Dhcp
+  href: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.html
+  name: DhcpServerScope
+  nameWithType: DhcpServerScope
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeReservation.Address*
+  commentId: Overload:Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeReservation.Address
+  href: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeReservation.html#Bodoconsult_Network_Windows_Dhcp_DhcpServerScopeReservation_Address
+  name: Address
+  nameWithType: DhcpServerScopeReservation.Address
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeReservation.Address
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeReservation.Address
+  commentId: P:Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeReservation.Address
+  parent: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeReservation
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeReservation.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerScopeReservation_Address
+  name: Address
+  nameWithType: IDhcpServerScopeReservation.Address
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeReservation.Address
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress
+  commentId: T:Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress
+  parent: Bodoconsult.Network.Windows.Dhcp
+  href: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.html
+  name: DhcpServerIpAddress
+  nameWithType: DhcpServerIpAddress
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeReservation.HardwareAddress*
+  commentId: Overload:Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeReservation.HardwareAddress
+  href: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeReservation.html#Bodoconsult_Network_Windows_Dhcp_DhcpServerScopeReservation_HardwareAddress
+  name: HardwareAddress
+  nameWithType: DhcpServerScopeReservation.HardwareAddress
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeReservation.HardwareAddress
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeReservation.HardwareAddress
+  commentId: P:Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeReservation.HardwareAddress
+  parent: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeReservation
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeReservation.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerScopeReservation_HardwareAddress
+  name: HardwareAddress
+  nameWithType: IDhcpServerScopeReservation.HardwareAddress
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeReservation.HardwareAddress
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerHardwareAddress
+  commentId: T:Bodoconsult.Network.Windows.Dhcp.DhcpServerHardwareAddress
+  parent: Bodoconsult.Network.Windows.Dhcp
+  href: Bodoconsult.Network.Windows.Dhcp.DhcpServerHardwareAddress.html
+  name: DhcpServerHardwareAddress
+  nameWithType: DhcpServerHardwareAddress
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerHardwareAddress
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeReservation.AllowedClientTypes*
+  commentId: Overload:Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeReservation.AllowedClientTypes
+  href: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeReservation.html#Bodoconsult_Network_Windows_Dhcp_DhcpServerScopeReservation_AllowedClientTypes
+  name: AllowedClientTypes
+  nameWithType: DhcpServerScopeReservation.AllowedClientTypes
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeReservation.AllowedClientTypes
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeReservation.AllowedClientTypes
+  commentId: P:Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeReservation.AllowedClientTypes
+  parent: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeReservation
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeReservation.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerScopeReservation_AllowedClientTypes
+  name: AllowedClientTypes
+  nameWithType: IDhcpServerScopeReservation.AllowedClientTypes
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeReservation.AllowedClientTypes
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerClientTypes
+  commentId: T:Bodoconsult.Network.Windows.Dhcp.DhcpServerClientTypes
+  parent: Bodoconsult.Network.Windows.Dhcp
+  href: Bodoconsult.Network.Windows.Dhcp.DhcpServerClientTypes.html
+  name: DhcpServerClientTypes
+  nameWithType: DhcpServerClientTypes
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerClientTypes
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeReservation.Client*
+  commentId: Overload:Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeReservation.Client
+  href: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeReservation.html#Bodoconsult_Network_Windows_Dhcp_DhcpServerScopeReservation_Client
+  name: Client
+  nameWithType: DhcpServerScopeReservation.Client
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeReservation.Client
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeReservation.Client
+  commentId: P:Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeReservation.Client
+  parent: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeReservation
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeReservation.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerScopeReservation_Client
+  name: Client
+  nameWithType: IDhcpServerScopeReservation.Client
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeReservation.Client
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerClient
+  commentId: T:Bodoconsult.Network.Windows.Dhcp.IDhcpServerClient
+  parent: Bodoconsult.Network.Windows.Dhcp
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerClient.html
+  name: IDhcpServerClient
+  nameWithType: IDhcpServerClient
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerClient
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeReservation.Options*
+  commentId: Overload:Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeReservation.Options
+  href: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeReservation.html#Bodoconsult_Network_Windows_Dhcp_DhcpServerScopeReservation_Options
+  name: Options
+  nameWithType: DhcpServerScopeReservation.Options
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeReservation.Options
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeReservation.Options
+  commentId: P:Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeReservation.Options
+  parent: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeReservation
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeReservation.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerScopeReservation_Options
+  name: Options
+  nameWithType: IDhcpServerScopeReservation.Options
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeReservation.Options
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeReservationOptionValueCollection
+  commentId: T:Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeReservationOptionValueCollection
+  parent: Bodoconsult.Network.Windows.Dhcp
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeReservationOptionValueCollection.html
+  name: IDhcpServerScopeReservationOptionValueCollection
+  nameWithType: IDhcpServerScopeReservationOptionValueCollection
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeReservationOptionValueCollection
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeReservation.Delete*
+  commentId: Overload:Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeReservation.Delete
+  href: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeReservation.html#Bodoconsult_Network_Windows_Dhcp_DhcpServerScopeReservation_Delete
+  name: Delete
+  nameWithType: DhcpServerScopeReservation.Delete
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeReservation.Delete
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeReservation.Delete
+  commentId: M:Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeReservation.Delete
+  parent: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeReservation
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeReservation.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerScopeReservation_Delete
+  name: Delete()
+  nameWithType: IDhcpServerScopeReservation.Delete()
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeReservation.Delete()
+  spec.csharp:
+  - uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeReservation.Delete
+    name: Delete
+    href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeReservation.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerScopeReservation_Delete
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeReservation.Delete
+    name: Delete
+    href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeReservation.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerScopeReservation_Delete
+  - name: (
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeReservation.ToString*
+  commentId: Overload:Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeReservation.ToString
+  href: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeReservation.html#Bodoconsult_Network_Windows_Dhcp_DhcpServerScopeReservation_ToString
+  name: ToString
+  nameWithType: DhcpServerScopeReservation.ToString
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeReservation.ToString
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String

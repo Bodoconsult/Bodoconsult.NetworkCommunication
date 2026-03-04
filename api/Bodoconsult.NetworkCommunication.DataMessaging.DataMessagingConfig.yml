@@ -1,0 +1,30 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig
+  commentId: N:Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig
+  id: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig
+  children:
+  - Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.DefaultDataMessagingConfig
+  - Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig
+  langs:
+  - csharp
+  - vb
+  name: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig
+  nameWithType: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig
+  fullName: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig
+  type: Namespace
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+references:
+- uid: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.DefaultDataMessagingConfig
+  commentId: T:Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.DefaultDataMessagingConfig
+  href: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.DefaultDataMessagingConfig.html
+  name: DefaultDataMessagingConfig
+  nameWithType: DefaultDataMessagingConfig
+  fullName: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.DefaultDataMessagingConfig
+- uid: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig
+  commentId: T:Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig
+  href: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.html
+  name: EdcpDataMessagingConfig
+  nameWithType: EdcpDataMessagingConfig
+  fullName: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig

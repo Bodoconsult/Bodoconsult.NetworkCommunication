@@ -1,0 +1,1313 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep
+  commentId: T:Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep
+  id: BaseRequestAnswerStep
+  parent: Bodoconsult.NetworkCommunication.OrderManagement.Processors
+  children:
+  - Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.#ctor(Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec)
+  - Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.AllowedRequestAnswers
+  - Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.BeforeExecuteActionDelegate
+  - Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.BreakingAsyncCommands
+  - Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.Cancel
+  - Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.CancelActionDelegate
+  - Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.Dispose
+  - Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.HandleRequestAnswerStepFailedDelegate
+  - Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.HandleResult
+  - Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.RequestSpec
+  - Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.Reset
+  - Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.StateToNotifyBeforeRunning
+  - Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.Timeout
+  - Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.WasSuccessful
+  langs:
+  - csharp
+  - vb
+  name: BaseRequestAnswerStep
+  nameWithType: BaseRequestAnswerStep
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep
+  type: Class
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/OrderManagement/Processors/BaseRequestAnswerStep.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: BaseRequestAnswerStep
+    path: src/Bodoconsult.NetworkCommunication/OrderManagement/Processors/BaseRequestAnswerStep.cs
+    startLine: 13
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.OrderManagement.Processors
+  summary: Defines a base class for request steps
+  example: []
+  syntax:
+    content: 'public class BaseRequestAnswerStep : IRequestAnswerStep, IDisposable'
+    content.vb: Public Class BaseRequestAnswerStep Implements IRequestAnswerStep, IDisposable
+  inheritance:
+  - System.Object
+  derivedClasses:
+  - Bodoconsult.NetworkCommunication.OrderManagement.Processors.DeviceRequestAnswerStep
+  - Bodoconsult.NetworkCommunication.OrderManagement.Processors.InternalRequestAnswerStep
+  implements:
+  - Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswerStep
+  - System.IDisposable
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.#ctor(Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec)
+  commentId: M:Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.#ctor(Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec)
+  id: '#ctor(Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec)'
+  parent: Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep
+  langs:
+  - csharp
+  - vb
+  name: BaseRequestAnswerStep(IRequestSpec)
+  nameWithType: BaseRequestAnswerStep.BaseRequestAnswerStep(IRequestSpec)
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.BaseRequestAnswerStep(Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec)
+  type: Constructor
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/OrderManagement/Processors/BaseRequestAnswerStep.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: .ctor
+    path: src/Bodoconsult.NetworkCommunication/OrderManagement/Processors/BaseRequestAnswerStep.cs
+    startLine: 19
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.OrderManagement.Processors
+  summary: Default ctor
+  example: []
+  syntax:
+    content: public BaseRequestAnswerStep(IRequestSpec requestSpec)
+    parameters:
+    - id: requestSpec
+      type: Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec
+      description: The request spec this object is bound to
+    content.vb: Public Sub New(requestSpec As IRequestSpec)
+  overload: Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.#ctor*
+  nameWithType.vb: BaseRequestAnswerStep.New(IRequestSpec)
+  fullName.vb: Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.New(Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec)
+  name.vb: New(IRequestSpec)
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.RequestSpec
+  commentId: P:Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.RequestSpec
+  id: RequestSpec
+  parent: Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep
+  langs:
+  - csharp
+  - vb
+  name: RequestSpec
+  nameWithType: BaseRequestAnswerStep.RequestSpec
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.RequestSpec
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/OrderManagement/Processors/BaseRequestAnswerStep.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: RequestSpec
+    path: src/Bodoconsult.NetworkCommunication/OrderManagement/Processors/BaseRequestAnswerStep.cs
+    startLine: 32
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.OrderManagement.Processors
+  summary: Current request spec
+  example: []
+  syntax:
+    content: public IRequestSpec RequestSpec { get; }
+    parameters: []
+    return:
+      type: Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec
+    content.vb: Public ReadOnly Property RequestSpec As IRequestSpec
+  overload: Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.RequestSpec*
+  implements:
+  - Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswerStep.RequestSpec
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.AllowedRequestAnswers
+  commentId: P:Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.AllowedRequestAnswers
+  id: AllowedRequestAnswers
+  parent: Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep
+  langs:
+  - csharp
+  - vb
+  name: AllowedRequestAnswers
+  nameWithType: BaseRequestAnswerStep.AllowedRequestAnswers
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.AllowedRequestAnswers
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/OrderManagement/Processors/BaseRequestAnswerStep.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: AllowedRequestAnswers
+    path: src/Bodoconsult.NetworkCommunication/OrderManagement/Processors/BaseRequestAnswerStep.cs
+    startLine: 37
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.OrderManagement.Processors
+  summary: 'Allowed request answers: one of the items has to be received as answer from tower'
+  example: []
+  syntax:
+    content: public List<IRequestAnswer> AllowedRequestAnswers { get; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.List{Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswer}
+    content.vb: Public ReadOnly Property AllowedRequestAnswers As List(Of IRequestAnswer)
+  overload: Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.AllowedRequestAnswers*
+  implements:
+  - Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswerStep.AllowedRequestAnswers
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.WasSuccessful
+  commentId: P:Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.WasSuccessful
+  id: WasSuccessful
+  parent: Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep
+  langs:
+  - csharp
+  - vb
+  name: WasSuccessful
+  nameWithType: BaseRequestAnswerStep.WasSuccessful
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.WasSuccessful
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/OrderManagement/Processors/BaseRequestAnswerStep.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: WasSuccessful
+    path: src/Bodoconsult.NetworkCommunication/OrderManagement/Processors/BaseRequestAnswerStep.cs
+    startLine: 42
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.OrderManagement.Processors
+  summary: The step was successfully processed in all steps
+  example: []
+  syntax:
+    content: public virtual bool WasSuccessful { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Overridable Property WasSuccessful As Boolean
+  overload: Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.WasSuccessful*
+  implements:
+  - Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswerStep.WasSuccessful
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.Cancel
+  commentId: M:Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.Cancel
+  id: Cancel
+  parent: Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep
+  langs:
+  - csharp
+  - vb
+  name: Cancel()
+  nameWithType: BaseRequestAnswerStep.Cancel()
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.Cancel()
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/OrderManagement/Processors/BaseRequestAnswerStep.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Cancel
+    path: src/Bodoconsult.NetworkCommunication/OrderManagement/Processors/BaseRequestAnswerStep.cs
+    startLine: 47
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.OrderManagement.Processors
+  summary: Cancel the step
+  example: []
+  syntax:
+    content: public virtual void Cancel()
+    content.vb: Public Overridable Sub Cancel()
+  overload: Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.Cancel*
+  implements:
+  - Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswerStep.Cancel
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.Timeout
+  commentId: P:Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.Timeout
+  id: Timeout
+  parent: Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep
+  langs:
+  - csharp
+  - vb
+  name: Timeout
+  nameWithType: BaseRequestAnswerStep.Timeout
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.Timeout
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/OrderManagement/Processors/BaseRequestAnswerStep.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Timeout
+    path: src/Bodoconsult.NetworkCommunication/OrderManagement/Processors/BaseRequestAnswerStep.cs
+    startLine: 55
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.OrderManagement.Processors
+  summary: Total timeout for the answer(s) of a request in milliseconds
+  example: []
+  syntax:
+    content: public int Timeout { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property Timeout As Integer
+  overload: Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.Timeout*
+  implements:
+  - Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswerStep.Timeout
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.CancelActionDelegate
+  commentId: P:Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.CancelActionDelegate
+  id: CancelActionDelegate
+  parent: Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep
+  langs:
+  - csharp
+  - vb
+  name: CancelActionDelegate
+  nameWithType: BaseRequestAnswerStep.CancelActionDelegate
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.CancelActionDelegate
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/OrderManagement/Processors/BaseRequestAnswerStep.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: CancelActionDelegate
+    path: src/Bodoconsult.NetworkCommunication/OrderManagement/Processors/BaseRequestAnswerStep.cs
+    startLine: 60
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.OrderManagement.Processors
+  summary: Delegate for action after cancelling the request step
+  example: []
+  syntax:
+    content: public ActionRequestStepDelegate CancelActionDelegate { get; set; }
+    parameters: []
+    return:
+      type: Bodoconsult.NetworkCommunication.Delegates.ActionRequestStepDelegate
+    content.vb: Public Property CancelActionDelegate As ActionRequestStepDelegate
+  overload: Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.CancelActionDelegate*
+  implements:
+  - Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswerStep.CancelActionDelegate
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.BeforeExecuteActionDelegate
+  commentId: P:Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.BeforeExecuteActionDelegate
+  id: BeforeExecuteActionDelegate
+  parent: Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep
+  langs:
+  - csharp
+  - vb
+  name: BeforeExecuteActionDelegate
+  nameWithType: BaseRequestAnswerStep.BeforeExecuteActionDelegate
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.BeforeExecuteActionDelegate
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/OrderManagement/Processors/BaseRequestAnswerStep.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: BeforeExecuteActionDelegate
+    path: src/Bodoconsult.NetworkCommunication/OrderManagement/Processors/BaseRequestAnswerStep.cs
+    startLine: 65
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.OrderManagement.Processors
+  summary: Delegate for action before the step is executed
+  example: []
+  syntax:
+    content: public ActionRequestStepDelegate BeforeExecuteActionDelegate { get; set; }
+    parameters: []
+    return:
+      type: Bodoconsult.NetworkCommunication.Delegates.ActionRequestStepDelegate
+    content.vb: Public Property BeforeExecuteActionDelegate As ActionRequestStepDelegate
+  overload: Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.BeforeExecuteActionDelegate*
+  implements:
+  - Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswerStep.BeforeExecuteActionDelegate
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.HandleRequestAnswerStepFailedDelegate
+  commentId: P:Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.HandleRequestAnswerStepFailedDelegate
+  id: HandleRequestAnswerStepFailedDelegate
+  parent: Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep
+  langs:
+  - csharp
+  - vb
+  name: HandleRequestAnswerStepFailedDelegate
+  nameWithType: BaseRequestAnswerStep.HandleRequestAnswerStepFailedDelegate
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.HandleRequestAnswerStepFailedDelegate
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/OrderManagement/Processors/BaseRequestAnswerStep.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: HandleRequestAnswerStepFailedDelegate
+    path: src/Bodoconsult.NetworkCommunication/OrderManagement/Processors/BaseRequestAnswerStep.cs
+    startLine: 70
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.OrderManagement.Processors
+  summary: Delegate for doing something if a RequestAnswerStep failed
+  example: []
+  syntax:
+    content: public HandleRequestAnswerStepFailedDelegate HandleRequestAnswerStepFailedDelegate { get; set; }
+    parameters: []
+    return:
+      type: Bodoconsult.NetworkCommunication.Delegates.HandleRequestAnswerStepFailedDelegate
+    content.vb: Public Property HandleRequestAnswerStepFailedDelegate As HandleRequestAnswerStepFailedDelegate
+  overload: Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.HandleRequestAnswerStepFailedDelegate*
+  implements:
+  - Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswerStep.HandleRequestAnswerStepFailedDelegate
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.StateToNotifyBeforeRunning
+  commentId: P:Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.StateToNotifyBeforeRunning
+  id: StateToNotifyBeforeRunning
+  parent: Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep
+  langs:
+  - csharp
+  - vb
+  name: StateToNotifyBeforeRunning
+  nameWithType: BaseRequestAnswerStep.StateToNotifyBeforeRunning
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.StateToNotifyBeforeRunning
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/OrderManagement/Processors/BaseRequestAnswerStep.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: StateToNotifyBeforeRunning
+    path: src/Bodoconsult.NetworkCommunication/OrderManagement/Processors/BaseRequestAnswerStep.cs
+    startLine: 75
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.OrderManagement.Processors
+  summary: The state to notify the app before the step is running
+  example: []
+  syntax:
+    content: public IDeviceState StateToNotifyBeforeRunning { get; set; }
+    parameters: []
+    return:
+      type: Bodoconsult.NetworkCommunication.Interfaces.IDeviceState
+    content.vb: Public Property StateToNotifyBeforeRunning As IDeviceState
+  overload: Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.StateToNotifyBeforeRunning*
+  implements:
+  - Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswerStep.StateToNotifyBeforeRunning
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.BreakingAsyncCommands
+  commentId: P:Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.BreakingAsyncCommands
+  id: BreakingAsyncCommands
+  parent: Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep
+  langs:
+  - csharp
+  - vb
+  name: BreakingAsyncCommands
+  nameWithType: BaseRequestAnswerStep.BreakingAsyncCommands
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.BreakingAsyncCommands
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/OrderManagement/Processors/BaseRequestAnswerStep.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: BreakingAsyncCommands
+    path: src/Bodoconsult.NetworkCommunication/OrderManagement/Processors/BaseRequestAnswerStep.cs
+    startLine: 80
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.OrderManagement.Processors
+  summary: Defines a list of async received command who break or unbreak the current request step
+  example: []
+  syntax:
+    content: public IList<char> BreakingAsyncCommands { get; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.IList{System.Char}
+    content.vb: Public ReadOnly Property BreakingAsyncCommands As IList(Of Char)
+  overload: Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.BreakingAsyncCommands*
+  implements:
+  - Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswerStep.BreakingAsyncCommands
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.HandleResult
+  commentId: M:Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.HandleResult
+  id: HandleResult
+  parent: Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep
+  langs:
+  - csharp
+  - vb
+  name: HandleResult()
+  nameWithType: BaseRequestAnswerStep.HandleResult()
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.HandleResult()
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/OrderManagement/Processors/BaseRequestAnswerStep.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: HandleResult
+    path: src/Bodoconsult.NetworkCommunication/OrderManagement/Processors/BaseRequestAnswerStep.cs
+    startLine: 86
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.OrderManagement.Processors
+  summary: Handles the answer of the request
+  example: []
+  syntax:
+    content: public virtual MessageHandlingResult HandleResult()
+    return:
+      type: Bodoconsult.NetworkCommunication.Interfaces.MessageHandlingResult
+      description: Message handling result
+    content.vb: Public Overridable Function HandleResult() As MessageHandlingResult
+  overload: Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.HandleResult*
+  implements:
+  - Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswerStep.HandleResult
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.Reset
+  commentId: M:Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.Reset
+  id: Reset
+  parent: Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep
+  langs:
+  - csharp
+  - vb
+  name: Reset()
+  nameWithType: BaseRequestAnswerStep.Reset()
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.Reset()
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/OrderManagement/Processors/BaseRequestAnswerStep.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Reset
+    path: src/Bodoconsult.NetworkCommunication/OrderManagement/Processors/BaseRequestAnswerStep.cs
+    startLine: 94
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.OrderManagement.Processors
+  summary: Reset the answers for a step
+  example: []
+  syntax:
+    content: public virtual void Reset()
+    content.vb: Public Overridable Sub Reset()
+  overload: Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.Reset*
+  implements:
+  - Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswerStep.Reset
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.Dispose
+  commentId: M:Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.Dispose
+  id: Dispose
+  parent: Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep
+  langs:
+  - csharp
+  - vb
+  name: Dispose()
+  nameWithType: BaseRequestAnswerStep.Dispose()
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.Dispose()
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/OrderManagement/Processors/BaseRequestAnswerStep.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Dispose
+    path: src/Bodoconsult.NetworkCommunication/OrderManagement/Processors/BaseRequestAnswerStep.cs
+    startLine: 106
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.OrderManagement.Processors
+  summary: Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+  example: []
+  syntax:
+    content: public virtual void Dispose()
+    content.vb: Public Overridable Sub Dispose()
+  overload: Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.Dispose*
+  implements:
+  - System.IDisposable.Dispose
+references:
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Processors
+  commentId: N:Bodoconsult.NetworkCommunication.OrderManagement.Processors
+  href: Bodoconsult.html
+  name: Bodoconsult.NetworkCommunication.OrderManagement.Processors
+  nameWithType: Bodoconsult.NetworkCommunication.OrderManagement.Processors
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Processors
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.OrderManagement
+    name: OrderManagement
+    href: Bodoconsult.NetworkCommunication.OrderManagement.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.OrderManagement.Processors
+    name: Processors
+    href: Bodoconsult.NetworkCommunication.OrderManagement.Processors.html
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.OrderManagement
+    name: OrderManagement
+    href: Bodoconsult.NetworkCommunication.OrderManagement.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.OrderManagement.Processors
+    name: Processors
+    href: Bodoconsult.NetworkCommunication.OrderManagement.Processors.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswerStep
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswerStep
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswerStep.html
+  name: IRequestAnswerStep
+  nameWithType: IRequestAnswerStep
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswerStep
+- uid: System.IDisposable
+  commentId: T:System.IDisposable
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable
+  name: IDisposable
+  nameWithType: IDisposable
+  fullName: System.IDisposable
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Bodoconsult.NetworkCommunication.Interfaces
+  commentId: N:Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.html
+  name: Bodoconsult.NetworkCommunication.Interfaces
+  nameWithType: Bodoconsult.NetworkCommunication.Interfaces
+  fullName: Bodoconsult.NetworkCommunication.Interfaces
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Interfaces
+    name: Interfaces
+    href: Bodoconsult.NetworkCommunication.Interfaces.html
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Interfaces
+    name: Interfaces
+    href: Bodoconsult.NetworkCommunication.Interfaces.html
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.#ctor*
+  commentId: Overload:Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.#ctor
+  href: Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.html#Bodoconsult_NetworkCommunication_OrderManagement_Processors_BaseRequestAnswerStep__ctor_Bodoconsult_NetworkCommunication_Interfaces_IRequestSpec_
+  name: BaseRequestAnswerStep
+  nameWithType: BaseRequestAnswerStep.BaseRequestAnswerStep
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.BaseRequestAnswerStep
+  nameWithType.vb: BaseRequestAnswerStep.New
+  fullName.vb: Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.New
+  name.vb: New
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec.html
+  name: IRequestSpec
+  nameWithType: IRequestSpec
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.RequestSpec*
+  commentId: Overload:Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.RequestSpec
+  href: Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.html#Bodoconsult_NetworkCommunication_OrderManagement_Processors_BaseRequestAnswerStep_RequestSpec
+  name: RequestSpec
+  nameWithType: BaseRequestAnswerStep.RequestSpec
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.RequestSpec
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswerStep.RequestSpec
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswerStep.RequestSpec
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswerStep
+  href: Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswerStep.html#Bodoconsult_NetworkCommunication_Interfaces_IRequestAnswerStep_RequestSpec
+  name: RequestSpec
+  nameWithType: IRequestAnswerStep.RequestSpec
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswerStep.RequestSpec
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.AllowedRequestAnswers*
+  commentId: Overload:Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.AllowedRequestAnswers
+  href: Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.html#Bodoconsult_NetworkCommunication_OrderManagement_Processors_BaseRequestAnswerStep_AllowedRequestAnswers
+  name: AllowedRequestAnswers
+  nameWithType: BaseRequestAnswerStep.AllowedRequestAnswers
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.AllowedRequestAnswers
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswerStep.AllowedRequestAnswers
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswerStep.AllowedRequestAnswers
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswerStep
+  href: Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswerStep.html#Bodoconsult_NetworkCommunication_Interfaces_IRequestAnswerStep_AllowedRequestAnswers
+  name: AllowedRequestAnswers
+  nameWithType: IRequestAnswerStep.AllowedRequestAnswers
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswerStep.AllowedRequestAnswers
+- uid: System.Collections.Generic.List{Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswer}
+  commentId: T:System.Collections.Generic.List{Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswer}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.List`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  name: List<IRequestAnswer>
+  nameWithType: List<IRequestAnswer>
+  fullName: System.Collections.Generic.List<Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswer>
+  nameWithType.vb: List(Of IRequestAnswer)
+  fullName.vb: System.Collections.Generic.List(Of Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswer)
+  name.vb: List(Of IRequestAnswer)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswer
+    name: IRequestAnswer
+    href: Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswer.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswer
+    name: IRequestAnswer
+    href: Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswer.html
+  - name: )
+- uid: System.Collections.Generic.List`1
+  commentId: T:System.Collections.Generic.List`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  name: List<T>
+  nameWithType: List<T>
+  fullName: System.Collections.Generic.List<T>
+  nameWithType.vb: List(Of T)
+  fullName.vb: System.Collections.Generic.List(Of T)
+  name.vb: List(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.WasSuccessful*
+  commentId: Overload:Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.WasSuccessful
+  href: Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.html#Bodoconsult_NetworkCommunication_OrderManagement_Processors_BaseRequestAnswerStep_WasSuccessful
+  name: WasSuccessful
+  nameWithType: BaseRequestAnswerStep.WasSuccessful
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.WasSuccessful
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswerStep.WasSuccessful
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswerStep.WasSuccessful
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswerStep
+  href: Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswerStep.html#Bodoconsult_NetworkCommunication_Interfaces_IRequestAnswerStep_WasSuccessful
+  name: WasSuccessful
+  nameWithType: IRequestAnswerStep.WasSuccessful
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswerStep.WasSuccessful
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.Cancel*
+  commentId: Overload:Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.Cancel
+  href: Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.html#Bodoconsult_NetworkCommunication_OrderManagement_Processors_BaseRequestAnswerStep_Cancel
+  name: Cancel
+  nameWithType: BaseRequestAnswerStep.Cancel
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.Cancel
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswerStep.Cancel
+  commentId: M:Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswerStep.Cancel
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswerStep
+  href: Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswerStep.html#Bodoconsult_NetworkCommunication_Interfaces_IRequestAnswerStep_Cancel
+  name: Cancel()
+  nameWithType: IRequestAnswerStep.Cancel()
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswerStep.Cancel()
+  spec.csharp:
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswerStep.Cancel
+    name: Cancel
+    href: Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswerStep.html#Bodoconsult_NetworkCommunication_Interfaces_IRequestAnswerStep_Cancel
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswerStep.Cancel
+    name: Cancel
+    href: Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswerStep.html#Bodoconsult_NetworkCommunication_Interfaces_IRequestAnswerStep_Cancel
+  - name: (
+  - name: )
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.Timeout*
+  commentId: Overload:Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.Timeout
+  href: Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.html#Bodoconsult_NetworkCommunication_OrderManagement_Processors_BaseRequestAnswerStep_Timeout
+  name: Timeout
+  nameWithType: BaseRequestAnswerStep.Timeout
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.Timeout
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswerStep.Timeout
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswerStep.Timeout
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswerStep
+  href: Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswerStep.html#Bodoconsult_NetworkCommunication_Interfaces_IRequestAnswerStep_Timeout
+  name: Timeout
+  nameWithType: IRequestAnswerStep.Timeout
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswerStep.Timeout
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.CancelActionDelegate*
+  commentId: Overload:Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.CancelActionDelegate
+  href: Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.html#Bodoconsult_NetworkCommunication_OrderManagement_Processors_BaseRequestAnswerStep_CancelActionDelegate
+  name: CancelActionDelegate
+  nameWithType: BaseRequestAnswerStep.CancelActionDelegate
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.CancelActionDelegate
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswerStep.CancelActionDelegate
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswerStep.CancelActionDelegate
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswerStep
+  href: Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswerStep.html#Bodoconsult_NetworkCommunication_Interfaces_IRequestAnswerStep_CancelActionDelegate
+  name: CancelActionDelegate
+  nameWithType: IRequestAnswerStep.CancelActionDelegate
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswerStep.CancelActionDelegate
+- uid: Bodoconsult.NetworkCommunication.Delegates.ActionRequestStepDelegate
+  commentId: T:Bodoconsult.NetworkCommunication.Delegates.ActionRequestStepDelegate
+  parent: Bodoconsult.NetworkCommunication.Delegates
+  href: Bodoconsult.NetworkCommunication.Delegates.ActionRequestStepDelegate.html
+  name: ActionRequestStepDelegate
+  nameWithType: ActionRequestStepDelegate
+  fullName: Bodoconsult.NetworkCommunication.Delegates.ActionRequestStepDelegate
+- uid: Bodoconsult.NetworkCommunication.Delegates
+  commentId: N:Bodoconsult.NetworkCommunication.Delegates
+  href: Bodoconsult.html
+  name: Bodoconsult.NetworkCommunication.Delegates
+  nameWithType: Bodoconsult.NetworkCommunication.Delegates
+  fullName: Bodoconsult.NetworkCommunication.Delegates
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Delegates
+    name: Delegates
+    href: Bodoconsult.NetworkCommunication.Delegates.html
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Delegates
+    name: Delegates
+    href: Bodoconsult.NetworkCommunication.Delegates.html
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.BeforeExecuteActionDelegate*
+  commentId: Overload:Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.BeforeExecuteActionDelegate
+  href: Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.html#Bodoconsult_NetworkCommunication_OrderManagement_Processors_BaseRequestAnswerStep_BeforeExecuteActionDelegate
+  name: BeforeExecuteActionDelegate
+  nameWithType: BaseRequestAnswerStep.BeforeExecuteActionDelegate
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.BeforeExecuteActionDelegate
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswerStep.BeforeExecuteActionDelegate
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswerStep.BeforeExecuteActionDelegate
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswerStep
+  href: Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswerStep.html#Bodoconsult_NetworkCommunication_Interfaces_IRequestAnswerStep_BeforeExecuteActionDelegate
+  name: BeforeExecuteActionDelegate
+  nameWithType: IRequestAnswerStep.BeforeExecuteActionDelegate
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswerStep.BeforeExecuteActionDelegate
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.HandleRequestAnswerStepFailedDelegate*
+  commentId: Overload:Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.HandleRequestAnswerStepFailedDelegate
+  href: Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.html#Bodoconsult_NetworkCommunication_OrderManagement_Processors_BaseRequestAnswerStep_HandleRequestAnswerStepFailedDelegate
+  name: HandleRequestAnswerStepFailedDelegate
+  nameWithType: BaseRequestAnswerStep.HandleRequestAnswerStepFailedDelegate
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.HandleRequestAnswerStepFailedDelegate
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswerStep.HandleRequestAnswerStepFailedDelegate
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswerStep.HandleRequestAnswerStepFailedDelegate
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswerStep
+  href: Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswerStep.html#Bodoconsult_NetworkCommunication_Interfaces_IRequestAnswerStep_HandleRequestAnswerStepFailedDelegate
+  name: HandleRequestAnswerStepFailedDelegate
+  nameWithType: IRequestAnswerStep.HandleRequestAnswerStepFailedDelegate
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswerStep.HandleRequestAnswerStepFailedDelegate
+- uid: Bodoconsult.NetworkCommunication.Delegates.HandleRequestAnswerStepFailedDelegate
+  commentId: T:Bodoconsult.NetworkCommunication.Delegates.HandleRequestAnswerStepFailedDelegate
+  parent: Bodoconsult.NetworkCommunication.Delegates
+  href: Bodoconsult.NetworkCommunication.Delegates.HandleRequestAnswerStepFailedDelegate.html
+  name: HandleRequestAnswerStepFailedDelegate
+  nameWithType: HandleRequestAnswerStepFailedDelegate
+  fullName: Bodoconsult.NetworkCommunication.Delegates.HandleRequestAnswerStepFailedDelegate
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.StateToNotifyBeforeRunning*
+  commentId: Overload:Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.StateToNotifyBeforeRunning
+  href: Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.html#Bodoconsult_NetworkCommunication_OrderManagement_Processors_BaseRequestAnswerStep_StateToNotifyBeforeRunning
+  name: StateToNotifyBeforeRunning
+  nameWithType: BaseRequestAnswerStep.StateToNotifyBeforeRunning
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.StateToNotifyBeforeRunning
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswerStep.StateToNotifyBeforeRunning
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswerStep.StateToNotifyBeforeRunning
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswerStep
+  href: Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswerStep.html#Bodoconsult_NetworkCommunication_Interfaces_IRequestAnswerStep_StateToNotifyBeforeRunning
+  name: StateToNotifyBeforeRunning
+  nameWithType: IRequestAnswerStep.StateToNotifyBeforeRunning
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswerStep.StateToNotifyBeforeRunning
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IDeviceState
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.IDeviceState
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.NetworkCommunication.Interfaces.IDeviceState.html
+  name: IDeviceState
+  nameWithType: IDeviceState
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IDeviceState
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.BreakingAsyncCommands*
+  commentId: Overload:Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.BreakingAsyncCommands
+  href: Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.html#Bodoconsult_NetworkCommunication_OrderManagement_Processors_BaseRequestAnswerStep_BreakingAsyncCommands
+  name: BreakingAsyncCommands
+  nameWithType: BaseRequestAnswerStep.BreakingAsyncCommands
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.BreakingAsyncCommands
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswerStep.BreakingAsyncCommands
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswerStep.BreakingAsyncCommands
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswerStep
+  href: Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswerStep.html#Bodoconsult_NetworkCommunication_Interfaces_IRequestAnswerStep_BreakingAsyncCommands
+  name: BreakingAsyncCommands
+  nameWithType: IRequestAnswerStep.BreakingAsyncCommands
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswerStep.BreakingAsyncCommands
+- uid: System.Collections.Generic.IList{System.Char}
+  commentId: T:System.Collections.Generic.IList{System.Char}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IList`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1
+  name: IList<char>
+  nameWithType: IList<char>
+  fullName: System.Collections.Generic.IList<char>
+  nameWithType.vb: IList(Of Char)
+  fullName.vb: System.Collections.Generic.IList(Of Char)
+  name.vb: IList(Of Char)
+  spec.csharp:
+  - uid: System.Collections.Generic.IList`1
+    name: IList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1
+  - name: <
+  - uid: System.Char
+    name: char
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.char
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IList`1
+    name: IList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Char
+    name: Char
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.char
+  - name: )
+- uid: System.Collections.Generic.IList`1
+  commentId: T:System.Collections.Generic.IList`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1
+  name: IList<T>
+  nameWithType: IList<T>
+  fullName: System.Collections.Generic.IList<T>
+  nameWithType.vb: IList(Of T)
+  fullName.vb: System.Collections.Generic.IList(Of T)
+  name.vb: IList(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IList`1
+    name: IList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IList`1
+    name: IList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.HandleResult*
+  commentId: Overload:Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.HandleResult
+  href: Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.html#Bodoconsult_NetworkCommunication_OrderManagement_Processors_BaseRequestAnswerStep_HandleResult
+  name: HandleResult
+  nameWithType: BaseRequestAnswerStep.HandleResult
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.HandleResult
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswerStep.HandleResult
+  commentId: M:Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswerStep.HandleResult
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswerStep
+  href: Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswerStep.html#Bodoconsult_NetworkCommunication_Interfaces_IRequestAnswerStep_HandleResult
+  name: HandleResult()
+  nameWithType: IRequestAnswerStep.HandleResult()
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswerStep.HandleResult()
+  spec.csharp:
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswerStep.HandleResult
+    name: HandleResult
+    href: Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswerStep.html#Bodoconsult_NetworkCommunication_Interfaces_IRequestAnswerStep_HandleResult
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswerStep.HandleResult
+    name: HandleResult
+    href: Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswerStep.html#Bodoconsult_NetworkCommunication_Interfaces_IRequestAnswerStep_HandleResult
+  - name: (
+  - name: )
+- uid: Bodoconsult.NetworkCommunication.Interfaces.MessageHandlingResult
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.MessageHandlingResult
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.NetworkCommunication.Interfaces.MessageHandlingResult.html
+  name: MessageHandlingResult
+  nameWithType: MessageHandlingResult
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.MessageHandlingResult
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.Reset*
+  commentId: Overload:Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.Reset
+  href: Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.html#Bodoconsult_NetworkCommunication_OrderManagement_Processors_BaseRequestAnswerStep_Reset
+  name: Reset
+  nameWithType: BaseRequestAnswerStep.Reset
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.Reset
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswerStep.Reset
+  commentId: M:Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswerStep.Reset
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswerStep
+  href: Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswerStep.html#Bodoconsult_NetworkCommunication_Interfaces_IRequestAnswerStep_Reset
+  name: Reset()
+  nameWithType: IRequestAnswerStep.Reset()
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswerStep.Reset()
+  spec.csharp:
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswerStep.Reset
+    name: Reset
+    href: Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswerStep.html#Bodoconsult_NetworkCommunication_Interfaces_IRequestAnswerStep_Reset
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswerStep.Reset
+    name: Reset
+    href: Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswerStep.html#Bodoconsult_NetworkCommunication_Interfaces_IRequestAnswerStep_Reset
+  - name: (
+  - name: )
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.Dispose*
+  commentId: Overload:Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.Dispose
+  href: Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.html#Bodoconsult_NetworkCommunication_OrderManagement_Processors_BaseRequestAnswerStep_Dispose
+  name: Dispose
+  nameWithType: BaseRequestAnswerStep.Dispose
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.Dispose
+- uid: System.IDisposable.Dispose
+  commentId: M:System.IDisposable.Dispose
+  parent: System.IDisposable
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  name: Dispose()
+  nameWithType: IDisposable.Dispose()
+  fullName: System.IDisposable.Dispose()
+  spec.csharp:
+  - uid: System.IDisposable.Dispose
+    name: Dispose
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.IDisposable.Dispose
+    name: Dispose
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  - name: (
+  - name: )

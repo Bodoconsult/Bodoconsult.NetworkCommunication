@@ -1,0 +1,126 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bodoconsult.NetworkCommunication.EnumAndStates.IpProtocolEnum
+  commentId: T:Bodoconsult.NetworkCommunication.EnumAndStates.IpProtocolEnum
+  id: IpProtocolEnum
+  parent: Bodoconsult.NetworkCommunication.EnumAndStates
+  children:
+  - Bodoconsult.NetworkCommunication.EnumAndStates.IpProtocolEnum.Tcp
+  - Bodoconsult.NetworkCommunication.EnumAndStates.IpProtocolEnum.Udp
+  langs:
+  - csharp
+  - vb
+  name: IpProtocolEnum
+  nameWithType: IpProtocolEnum
+  fullName: Bodoconsult.NetworkCommunication.EnumAndStates.IpProtocolEnum
+  type: Enum
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/EnumAndStates/IpProtocolEnum.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: IpProtocolEnum
+    path: src/Bodoconsult.NetworkCommunication/EnumAndStates/IpProtocolEnum.cs
+    startLine: 8
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.EnumAndStates
+  summary: Enum for IP based protocols supported by this library
+  example: []
+  syntax:
+    content: public enum IpProtocolEnum
+    content.vb: Public Enum IpProtocolEnum
+- uid: Bodoconsult.NetworkCommunication.EnumAndStates.IpProtocolEnum.Tcp
+  commentId: F:Bodoconsult.NetworkCommunication.EnumAndStates.IpProtocolEnum.Tcp
+  id: Tcp
+  parent: Bodoconsult.NetworkCommunication.EnumAndStates.IpProtocolEnum
+  langs:
+  - csharp
+  - vb
+  name: Tcp
+  nameWithType: IpProtocolEnum.Tcp
+  fullName: Bodoconsult.NetworkCommunication.EnumAndStates.IpProtocolEnum.Tcp
+  type: Field
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/EnumAndStates/IpProtocolEnum.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Tcp
+    path: src/Bodoconsult.NetworkCommunication/EnumAndStates/IpProtocolEnum.cs
+    startLine: 13
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.EnumAndStates
+  summary: Bidirectional and connection based TCP/IP protocol
+  example: []
+  syntax:
+    content: Tcp = 0
+    return:
+      type: Bodoconsult.NetworkCommunication.EnumAndStates.IpProtocolEnum
+- uid: Bodoconsult.NetworkCommunication.EnumAndStates.IpProtocolEnum.Udp
+  commentId: F:Bodoconsult.NetworkCommunication.EnumAndStates.IpProtocolEnum.Udp
+  id: Udp
+  parent: Bodoconsult.NetworkCommunication.EnumAndStates.IpProtocolEnum
+  langs:
+  - csharp
+  - vb
+  name: Udp
+  nameWithType: IpProtocolEnum.Udp
+  fullName: Bodoconsult.NetworkCommunication.EnumAndStates.IpProtocolEnum.Udp
+  type: Field
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/EnumAndStates/IpProtocolEnum.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Udp
+    path: src/Bodoconsult.NetworkCommunication/EnumAndStates/IpProtocolEnum.cs
+    startLine: 18
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.EnumAndStates
+  summary: Connectionless UDP protocol
+  example: []
+  syntax:
+    content: Udp = 1
+    return:
+      type: Bodoconsult.NetworkCommunication.EnumAndStates.IpProtocolEnum
+references:
+- uid: Bodoconsult.NetworkCommunication.EnumAndStates
+  commentId: N:Bodoconsult.NetworkCommunication.EnumAndStates
+  href: Bodoconsult.html
+  name: Bodoconsult.NetworkCommunication.EnumAndStates
+  nameWithType: Bodoconsult.NetworkCommunication.EnumAndStates
+  fullName: Bodoconsult.NetworkCommunication.EnumAndStates
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.EnumAndStates
+    name: EnumAndStates
+    href: Bodoconsult.NetworkCommunication.EnumAndStates.html
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.EnumAndStates
+    name: EnumAndStates
+    href: Bodoconsult.NetworkCommunication.EnumAndStates.html
+- uid: Bodoconsult.NetworkCommunication.EnumAndStates.IpProtocolEnum
+  commentId: T:Bodoconsult.NetworkCommunication.EnumAndStates.IpProtocolEnum
+  parent: Bodoconsult.NetworkCommunication.EnumAndStates
+  href: Bodoconsult.NetworkCommunication.EnumAndStates.IpProtocolEnum.html
+  name: IpProtocolEnum
+  nameWithType: IpProtocolEnum
+  fullName: Bodoconsult.NetworkCommunication.EnumAndStates.IpProtocolEnum

@@ -1,0 +1,1018 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bodoconsult.NetworkCommunication.Interfaces.DeviceCommunicationBasics
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.DeviceCommunicationBasics
+  id: DeviceCommunicationBasics
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  children:
+  - Bodoconsult.NetworkCommunication.Interfaces.DeviceCommunicationBasics.Ack
+  - Bodoconsult.NetworkCommunication.Interfaces.DeviceCommunicationBasics.Can
+  - Bodoconsult.NetworkCommunication.Interfaces.DeviceCommunicationBasics.Comma
+  - Bodoconsult.NetworkCommunication.Interfaces.DeviceCommunicationBasics.Cr
+  - Bodoconsult.NetworkCommunication.Interfaces.DeviceCommunicationBasics.DataMessageMaxPacketSize
+  - Bodoconsult.NetworkCommunication.Interfaces.DeviceCommunicationBasics.DataMessageMinPacketSize
+  - Bodoconsult.NetworkCommunication.Interfaces.DeviceCommunicationBasics.DefaultTimeout
+  - Bodoconsult.NetworkCommunication.Interfaces.DeviceCommunicationBasics.Eot
+  - Bodoconsult.NetworkCommunication.Interfaces.DeviceCommunicationBasics.Etx
+  - Bodoconsult.NetworkCommunication.Interfaces.DeviceCommunicationBasics.HandshakeMessageStartTokens
+  - Bodoconsult.NetworkCommunication.Interfaces.DeviceCommunicationBasics.Lf
+  - Bodoconsult.NetworkCommunication.Interfaces.DeviceCommunicationBasics.MaxSendAttemptCount
+  - Bodoconsult.NetworkCommunication.Interfaces.DeviceCommunicationBasics.MessageStartTokens
+  - Bodoconsult.NetworkCommunication.Interfaces.DeviceCommunicationBasics.Nack
+  - Bodoconsult.NetworkCommunication.Interfaces.DeviceCommunicationBasics.NullByte
+  - Bodoconsult.NetworkCommunication.Interfaces.DeviceCommunicationBasics.PingTimeout
+  - Bodoconsult.NetworkCommunication.Interfaces.DeviceCommunicationBasics.Stx
+  - Bodoconsult.NetworkCommunication.Interfaces.DeviceCommunicationBasics.WaitForAckTimeout
+  langs:
+  - csharp
+  - vb
+  name: DeviceCommunicationBasics
+  nameWithType: DeviceCommunicationBasics
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.DeviceCommunicationBasics
+  type: Class
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/DeviceCommunicationBasics.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: DeviceCommunicationBasics
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/DeviceCommunicationBasics.cs
+    startLine: 7
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: A holder class for basic device communication values
+  example: []
+  syntax:
+    content: public static class DeviceCommunicationBasics
+    content.vb: Public Module DeviceCommunicationBasics
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: Bodoconsult.NetworkCommunication.Interfaces.DeviceCommunicationBasics.MaxSendAttemptCount
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.DeviceCommunicationBasics.MaxSendAttemptCount
+  id: MaxSendAttemptCount
+  parent: Bodoconsult.NetworkCommunication.Interfaces.DeviceCommunicationBasics
+  langs:
+  - csharp
+  - vb
+  name: MaxSendAttemptCount
+  nameWithType: DeviceCommunicationBasics.MaxSendAttemptCount
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.DeviceCommunicationBasics.MaxSendAttemptCount
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/DeviceCommunicationBasics.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: MaxSendAttemptCount
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/DeviceCommunicationBasics.cs
+    startLine: 16
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Maximum number of send attemps
+  example: []
+  syntax:
+    content: public static int MaxSendAttemptCount { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Shared Property MaxSendAttemptCount As Integer
+  overload: Bodoconsult.NetworkCommunication.Interfaces.DeviceCommunicationBasics.MaxSendAttemptCount*
+- uid: Bodoconsult.NetworkCommunication.Interfaces.DeviceCommunicationBasics.DataMessageMinPacketSize
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.DeviceCommunicationBasics.DataMessageMinPacketSize
+  id: DataMessageMinPacketSize
+  parent: Bodoconsult.NetworkCommunication.Interfaces.DeviceCommunicationBasics
+  langs:
+  - csharp
+  - vb
+  name: DataMessageMinPacketSize
+  nameWithType: DeviceCommunicationBasics.DataMessageMinPacketSize
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.DeviceCommunicationBasics.DataMessageMinPacketSize
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/DeviceCommunicationBasics.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: DataMessageMinPacketSize
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/DeviceCommunicationBasics.cs
+    startLine: 21
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: The minimum size of a data message excluding start, end and data block bytes
+  example: []
+  syntax:
+    content: public static int DataMessageMinPacketSize { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Shared Property DataMessageMinPacketSize As Integer
+  overload: Bodoconsult.NetworkCommunication.Interfaces.DeviceCommunicationBasics.DataMessageMinPacketSize*
+- uid: Bodoconsult.NetworkCommunication.Interfaces.DeviceCommunicationBasics.DataMessageMaxPacketSize
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.DeviceCommunicationBasics.DataMessageMaxPacketSize
+  id: DataMessageMaxPacketSize
+  parent: Bodoconsult.NetworkCommunication.Interfaces.DeviceCommunicationBasics
+  langs:
+  - csharp
+  - vb
+  name: DataMessageMaxPacketSize
+  nameWithType: DeviceCommunicationBasics.DataMessageMaxPacketSize
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.DeviceCommunicationBasics.DataMessageMaxPacketSize
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/DeviceCommunicationBasics.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: DataMessageMaxPacketSize
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/DeviceCommunicationBasics.cs
+    startLine: 26
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: The maximum size of a data message excluding start, end and data block bytes
+  example: []
+  syntax:
+    content: public static int DataMessageMaxPacketSize { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Shared Property DataMessageMaxPacketSize As Integer
+  overload: Bodoconsult.NetworkCommunication.Interfaces.DeviceCommunicationBasics.DataMessageMaxPacketSize*
+- uid: Bodoconsult.NetworkCommunication.Interfaces.DeviceCommunicationBasics.DefaultTimeout
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.DeviceCommunicationBasics.DefaultTimeout
+  id: DefaultTimeout
+  parent: Bodoconsult.NetworkCommunication.Interfaces.DeviceCommunicationBasics
+  langs:
+  - csharp
+  - vb
+  name: DefaultTimeout
+  nameWithType: DeviceCommunicationBasics.DefaultTimeout
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.DeviceCommunicationBasics.DefaultTimeout
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/DeviceCommunicationBasics.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: DefaultTimeout
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/DeviceCommunicationBasics.cs
+    startLine: 36
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: The default timeout in milliseconds
+  example: []
+  syntax:
+    content: public static int DefaultTimeout { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Shared Property DefaultTimeout As Integer
+  overload: Bodoconsult.NetworkCommunication.Interfaces.DeviceCommunicationBasics.DefaultTimeout*
+- uid: Bodoconsult.NetworkCommunication.Interfaces.DeviceCommunicationBasics.PingTimeout
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.DeviceCommunicationBasics.PingTimeout
+  id: PingTimeout
+  parent: Bodoconsult.NetworkCommunication.Interfaces.DeviceCommunicationBasics
+  langs:
+  - csharp
+  - vb
+  name: PingTimeout
+  nameWithType: DeviceCommunicationBasics.PingTimeout
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.DeviceCommunicationBasics.PingTimeout
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/DeviceCommunicationBasics.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: PingTimeout
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/DeviceCommunicationBasics.cs
+    startLine: 41
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Timeout for a PING sent to the device
+  example: []
+  syntax:
+    content: public static int PingTimeout { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Shared Property PingTimeout As Integer
+  overload: Bodoconsult.NetworkCommunication.Interfaces.DeviceCommunicationBasics.PingTimeout*
+- uid: Bodoconsult.NetworkCommunication.Interfaces.DeviceCommunicationBasics.WaitForAckTimeout
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.DeviceCommunicationBasics.WaitForAckTimeout
+  id: WaitForAckTimeout
+  parent: Bodoconsult.NetworkCommunication.Interfaces.DeviceCommunicationBasics
+  langs:
+  - csharp
+  - vb
+  name: WaitForAckTimeout
+  nameWithType: DeviceCommunicationBasics.WaitForAckTimeout
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.DeviceCommunicationBasics.WaitForAckTimeout
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/DeviceCommunicationBasics.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: WaitForAckTimeout
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/DeviceCommunicationBasics.cs
+    startLine: 46
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Timeout for waiting for a handshake like ACK, NACK or CAN
+  example: []
+  syntax:
+    content: public static int WaitForAckTimeout { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Shared Property WaitForAckTimeout As Integer
+  overload: Bodoconsult.NetworkCommunication.Interfaces.DeviceCommunicationBasics.WaitForAckTimeout*
+- uid: Bodoconsult.NetworkCommunication.Interfaces.DeviceCommunicationBasics.MessageStartTokens
+  commentId: F:Bodoconsult.NetworkCommunication.Interfaces.DeviceCommunicationBasics.MessageStartTokens
+  id: MessageStartTokens
+  parent: Bodoconsult.NetworkCommunication.Interfaces.DeviceCommunicationBasics
+  langs:
+  - csharp
+  - vb
+  name: MessageStartTokens
+  nameWithType: DeviceCommunicationBasics.MessageStartTokens
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.DeviceCommunicationBasics.MessageStartTokens
+  type: Field
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/DeviceCommunicationBasics.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: MessageStartTokens
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/DeviceCommunicationBasics.cs
+    startLine: 55
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: All tokens a message can start with
+  example: []
+  syntax:
+    content: public static List<byte> MessageStartTokens
+    return:
+      type: System.Collections.Generic.List{System.Byte}
+    content.vb: Public Shared MessageStartTokens As List(Of Byte)
+- uid: Bodoconsult.NetworkCommunication.Interfaces.DeviceCommunicationBasics.HandshakeMessageStartTokens
+  commentId: F:Bodoconsult.NetworkCommunication.Interfaces.DeviceCommunicationBasics.HandshakeMessageStartTokens
+  id: HandshakeMessageStartTokens
+  parent: Bodoconsult.NetworkCommunication.Interfaces.DeviceCommunicationBasics
+  langs:
+  - csharp
+  - vb
+  name: HandshakeMessageStartTokens
+  nameWithType: DeviceCommunicationBasics.HandshakeMessageStartTokens
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.DeviceCommunicationBasics.HandshakeMessageStartTokens
+  type: Field
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/DeviceCommunicationBasics.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: HandshakeMessageStartTokens
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/DeviceCommunicationBasics.cs
+    startLine: 66
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: All tokens a handshake message can start with
+  example: []
+  syntax:
+    content: public static List<byte> HandshakeMessageStartTokens
+    return:
+      type: System.Collections.Generic.List{System.Byte}
+    content.vb: Public Shared HandshakeMessageStartTokens As List(Of Byte)
+- uid: Bodoconsult.NetworkCommunication.Interfaces.DeviceCommunicationBasics.Stx
+  commentId: F:Bodoconsult.NetworkCommunication.Interfaces.DeviceCommunicationBasics.Stx
+  id: Stx
+  parent: Bodoconsult.NetworkCommunication.Interfaces.DeviceCommunicationBasics
+  langs:
+  - csharp
+  - vb
+  name: Stx
+  nameWithType: DeviceCommunicationBasics.Stx
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.DeviceCommunicationBasics.Stx
+  type: Field
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/DeviceCommunicationBasics.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Stx
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/DeviceCommunicationBasics.cs
+    startLine: 80
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Data message start
+  example: []
+  syntax:
+    content: public const byte Stx = 2
+    return:
+      type: System.Byte
+    content.vb: Public Const Stx As Byte = 2
+- uid: Bodoconsult.NetworkCommunication.Interfaces.DeviceCommunicationBasics.Etx
+  commentId: F:Bodoconsult.NetworkCommunication.Interfaces.DeviceCommunicationBasics.Etx
+  id: Etx
+  parent: Bodoconsult.NetworkCommunication.Interfaces.DeviceCommunicationBasics
+  langs:
+  - csharp
+  - vb
+  name: Etx
+  nameWithType: DeviceCommunicationBasics.Etx
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.DeviceCommunicationBasics.Etx
+  type: Field
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/DeviceCommunicationBasics.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Etx
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/DeviceCommunicationBasics.cs
+    startLine: 85
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Data message end
+  example: []
+  syntax:
+    content: public const byte Etx = 3
+    return:
+      type: System.Byte
+    content.vb: Public Const Etx As Byte = 3
+- uid: Bodoconsult.NetworkCommunication.Interfaces.DeviceCommunicationBasics.Eot
+  commentId: F:Bodoconsult.NetworkCommunication.Interfaces.DeviceCommunicationBasics.Eot
+  id: Eot
+  parent: Bodoconsult.NetworkCommunication.Interfaces.DeviceCommunicationBasics
+  langs:
+  - csharp
+  - vb
+  name: Eot
+  nameWithType: DeviceCommunicationBasics.Eot
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.DeviceCommunicationBasics.Eot
+  type: Field
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/DeviceCommunicationBasics.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Eot
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/DeviceCommunicationBasics.cs
+    startLine: 90
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Payload separator
+  example: []
+  syntax:
+    content: public const byte Eot = 4
+    return:
+      type: System.Byte
+    content.vb: Public Const Eot As Byte = 4
+- uid: Bodoconsult.NetworkCommunication.Interfaces.DeviceCommunicationBasics.Ack
+  commentId: F:Bodoconsult.NetworkCommunication.Interfaces.DeviceCommunicationBasics.Ack
+  id: Ack
+  parent: Bodoconsult.NetworkCommunication.Interfaces.DeviceCommunicationBasics
+  langs:
+  - csharp
+  - vb
+  name: Ack
+  nameWithType: DeviceCommunicationBasics.Ack
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.DeviceCommunicationBasics.Ack
+  type: Field
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/DeviceCommunicationBasics.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Ack
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/DeviceCommunicationBasics.cs
+    startLine: 95
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Handshake ACK
+  example: []
+  syntax:
+    content: public const byte Ack = 6
+    return:
+      type: System.Byte
+    content.vb: Public Const Ack As Byte = 6
+- uid: Bodoconsult.NetworkCommunication.Interfaces.DeviceCommunicationBasics.Cr
+  commentId: F:Bodoconsult.NetworkCommunication.Interfaces.DeviceCommunicationBasics.Cr
+  id: Cr
+  parent: Bodoconsult.NetworkCommunication.Interfaces.DeviceCommunicationBasics
+  langs:
+  - csharp
+  - vb
+  name: Cr
+  nameWithType: DeviceCommunicationBasics.Cr
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.DeviceCommunicationBasics.Cr
+  type: Field
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/DeviceCommunicationBasics.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Cr
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/DeviceCommunicationBasics.cs
+    startLine: 100
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Carriage return
+  example: []
+  syntax:
+    content: public const byte Cr = 13
+    return:
+      type: System.Byte
+    content.vb: Public Const Cr As Byte = 13
+- uid: Bodoconsult.NetworkCommunication.Interfaces.DeviceCommunicationBasics.Lf
+  commentId: F:Bodoconsult.NetworkCommunication.Interfaces.DeviceCommunicationBasics.Lf
+  id: Lf
+  parent: Bodoconsult.NetworkCommunication.Interfaces.DeviceCommunicationBasics
+  langs:
+  - csharp
+  - vb
+  name: Lf
+  nameWithType: DeviceCommunicationBasics.Lf
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.DeviceCommunicationBasics.Lf
+  type: Field
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/DeviceCommunicationBasics.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Lf
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/DeviceCommunicationBasics.cs
+    startLine: 105
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Line feed
+  example: []
+  syntax:
+    content: public const byte Lf = 10
+    return:
+      type: System.Byte
+    content.vb: Public Const Lf As Byte = 10
+- uid: Bodoconsult.NetworkCommunication.Interfaces.DeviceCommunicationBasics.Comma
+  commentId: F:Bodoconsult.NetworkCommunication.Interfaces.DeviceCommunicationBasics.Comma
+  id: Comma
+  parent: Bodoconsult.NetworkCommunication.Interfaces.DeviceCommunicationBasics
+  langs:
+  - csharp
+  - vb
+  name: Comma
+  nameWithType: DeviceCommunicationBasics.Comma
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.DeviceCommunicationBasics.Comma
+  type: Field
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/DeviceCommunicationBasics.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Comma
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/DeviceCommunicationBasics.cs
+    startLine: 110
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Comma
+  example: []
+  syntax:
+    content: public const byte Comma = 44
+    return:
+      type: System.Byte
+    content.vb: Public Const Comma As Byte = 44
+- uid: Bodoconsult.NetworkCommunication.Interfaces.DeviceCommunicationBasics.Nack
+  commentId: F:Bodoconsult.NetworkCommunication.Interfaces.DeviceCommunicationBasics.Nack
+  id: Nack
+  parent: Bodoconsult.NetworkCommunication.Interfaces.DeviceCommunicationBasics
+  langs:
+  - csharp
+  - vb
+  name: Nack
+  nameWithType: DeviceCommunicationBasics.Nack
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.DeviceCommunicationBasics.Nack
+  type: Field
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/DeviceCommunicationBasics.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Nack
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/DeviceCommunicationBasics.cs
+    startLine: 115
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Handshake NACK
+  example: []
+  syntax:
+    content: public const byte Nack = 21
+    return:
+      type: System.Byte
+    content.vb: Public Const Nack As Byte = 21
+- uid: Bodoconsult.NetworkCommunication.Interfaces.DeviceCommunicationBasics.Can
+  commentId: F:Bodoconsult.NetworkCommunication.Interfaces.DeviceCommunicationBasics.Can
+  id: Can
+  parent: Bodoconsult.NetworkCommunication.Interfaces.DeviceCommunicationBasics
+  langs:
+  - csharp
+  - vb
+  name: Can
+  nameWithType: DeviceCommunicationBasics.Can
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.DeviceCommunicationBasics.Can
+  type: Field
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/DeviceCommunicationBasics.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Can
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/DeviceCommunicationBasics.cs
+    startLine: 120
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Handshake CAN
+  example: []
+  syntax:
+    content: public const byte Can = 24
+    return:
+      type: System.Byte
+    content.vb: Public Const Can As Byte = 24
+- uid: Bodoconsult.NetworkCommunication.Interfaces.DeviceCommunicationBasics.NullByte
+  commentId: F:Bodoconsult.NetworkCommunication.Interfaces.DeviceCommunicationBasics.NullByte
+  id: NullByte
+  parent: Bodoconsult.NetworkCommunication.Interfaces.DeviceCommunicationBasics
+  langs:
+  - csharp
+  - vb
+  name: NullByte
+  nameWithType: DeviceCommunicationBasics.NullByte
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.DeviceCommunicationBasics.NullByte
+  type: Field
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/DeviceCommunicationBasics.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: NullByte
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/DeviceCommunicationBasics.cs
+    startLine: 125
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Null byte
+  example: []
+  syntax:
+    content: public const byte NullByte = 0
+    return:
+      type: System.Byte
+    content.vb: Public Const NullByte As Byte = 0
+references:
+- uid: Bodoconsult.NetworkCommunication.Interfaces
+  commentId: N:Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.html
+  name: Bodoconsult.NetworkCommunication.Interfaces
+  nameWithType: Bodoconsult.NetworkCommunication.Interfaces
+  fullName: Bodoconsult.NetworkCommunication.Interfaces
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Interfaces
+    name: Interfaces
+    href: Bodoconsult.NetworkCommunication.Interfaces.html
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Interfaces
+    name: Interfaces
+    href: Bodoconsult.NetworkCommunication.Interfaces.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Bodoconsult.NetworkCommunication.Interfaces.DeviceCommunicationBasics.MaxSendAttemptCount*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.DeviceCommunicationBasics.MaxSendAttemptCount
+  href: Bodoconsult.NetworkCommunication.Interfaces.DeviceCommunicationBasics.html#Bodoconsult_NetworkCommunication_Interfaces_DeviceCommunicationBasics_MaxSendAttemptCount
+  name: MaxSendAttemptCount
+  nameWithType: DeviceCommunicationBasics.MaxSendAttemptCount
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.DeviceCommunicationBasics.MaxSendAttemptCount
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: Bodoconsult.NetworkCommunication.Interfaces.DeviceCommunicationBasics.DataMessageMinPacketSize*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.DeviceCommunicationBasics.DataMessageMinPacketSize
+  href: Bodoconsult.NetworkCommunication.Interfaces.DeviceCommunicationBasics.html#Bodoconsult_NetworkCommunication_Interfaces_DeviceCommunicationBasics_DataMessageMinPacketSize
+  name: DataMessageMinPacketSize
+  nameWithType: DeviceCommunicationBasics.DataMessageMinPacketSize
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.DeviceCommunicationBasics.DataMessageMinPacketSize
+- uid: Bodoconsult.NetworkCommunication.Interfaces.DeviceCommunicationBasics.DataMessageMaxPacketSize*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.DeviceCommunicationBasics.DataMessageMaxPacketSize
+  href: Bodoconsult.NetworkCommunication.Interfaces.DeviceCommunicationBasics.html#Bodoconsult_NetworkCommunication_Interfaces_DeviceCommunicationBasics_DataMessageMaxPacketSize
+  name: DataMessageMaxPacketSize
+  nameWithType: DeviceCommunicationBasics.DataMessageMaxPacketSize
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.DeviceCommunicationBasics.DataMessageMaxPacketSize
+- uid: Bodoconsult.NetworkCommunication.Interfaces.DeviceCommunicationBasics.DefaultTimeout*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.DeviceCommunicationBasics.DefaultTimeout
+  href: Bodoconsult.NetworkCommunication.Interfaces.DeviceCommunicationBasics.html#Bodoconsult_NetworkCommunication_Interfaces_DeviceCommunicationBasics_DefaultTimeout
+  name: DefaultTimeout
+  nameWithType: DeviceCommunicationBasics.DefaultTimeout
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.DeviceCommunicationBasics.DefaultTimeout
+- uid: Bodoconsult.NetworkCommunication.Interfaces.DeviceCommunicationBasics.PingTimeout*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.DeviceCommunicationBasics.PingTimeout
+  href: Bodoconsult.NetworkCommunication.Interfaces.DeviceCommunicationBasics.html#Bodoconsult_NetworkCommunication_Interfaces_DeviceCommunicationBasics_PingTimeout
+  name: PingTimeout
+  nameWithType: DeviceCommunicationBasics.PingTimeout
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.DeviceCommunicationBasics.PingTimeout
+- uid: Bodoconsult.NetworkCommunication.Interfaces.DeviceCommunicationBasics.WaitForAckTimeout*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.DeviceCommunicationBasics.WaitForAckTimeout
+  href: Bodoconsult.NetworkCommunication.Interfaces.DeviceCommunicationBasics.html#Bodoconsult_NetworkCommunication_Interfaces_DeviceCommunicationBasics_WaitForAckTimeout
+  name: WaitForAckTimeout
+  nameWithType: DeviceCommunicationBasics.WaitForAckTimeout
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.DeviceCommunicationBasics.WaitForAckTimeout
+- uid: System.Collections.Generic.List{System.Byte}
+  commentId: T:System.Collections.Generic.List{System.Byte}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.List`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  name: List<byte>
+  nameWithType: List<byte>
+  fullName: System.Collections.Generic.List<byte>
+  nameWithType.vb: List(Of Byte)
+  fullName.vb: System.Collections.Generic.List(Of Byte)
+  name.vb: List(Of Byte)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - uid: System.Byte
+    name: byte
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.byte
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Byte
+    name: Byte
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.byte
+  - name: )
+- uid: System.Collections.Generic.List`1
+  commentId: T:System.Collections.Generic.List`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  name: List<T>
+  nameWithType: List<T>
+  fullName: System.Collections.Generic.List<T>
+  nameWithType.vb: List(Of T)
+  fullName.vb: System.Collections.Generic.List(Of T)
+  name.vb: List(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: System.Byte
+  commentId: T:System.Byte
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.byte
+  name: byte
+  nameWithType: byte
+  fullName: byte
+  nameWithType.vb: Byte
+  fullName.vb: Byte
+  name.vb: Byte

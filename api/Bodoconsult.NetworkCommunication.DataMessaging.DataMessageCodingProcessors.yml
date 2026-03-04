@@ -1,0 +1,23 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bodoconsult.NetworkCommunication.DataMessaging.DataMessageCodingProcessors
+  commentId: N:Bodoconsult.NetworkCommunication.DataMessaging.DataMessageCodingProcessors
+  id: Bodoconsult.NetworkCommunication.DataMessaging.DataMessageCodingProcessors
+  children:
+  - Bodoconsult.NetworkCommunication.DataMessaging.DataMessageCodingProcessors.DefaultDataMessageCodingProcessor
+  langs:
+  - csharp
+  - vb
+  name: Bodoconsult.NetworkCommunication.DataMessaging.DataMessageCodingProcessors
+  nameWithType: Bodoconsult.NetworkCommunication.DataMessaging.DataMessageCodingProcessors
+  fullName: Bodoconsult.NetworkCommunication.DataMessaging.DataMessageCodingProcessors
+  type: Namespace
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+references:
+- uid: Bodoconsult.NetworkCommunication.DataMessaging.DataMessageCodingProcessors.DefaultDataMessageCodingProcessor
+  commentId: T:Bodoconsult.NetworkCommunication.DataMessaging.DataMessageCodingProcessors.DefaultDataMessageCodingProcessor
+  href: Bodoconsult.NetworkCommunication.DataMessaging.DataMessageCodingProcessors.DefaultDataMessageCodingProcessor.html
+  name: DefaultDataMessageCodingProcessor
+  nameWithType: DefaultDataMessageCodingProcessor
+  fullName: Bodoconsult.NetworkCommunication.DataMessaging.DataMessageCodingProcessors.DefaultDataMessageCodingProcessor

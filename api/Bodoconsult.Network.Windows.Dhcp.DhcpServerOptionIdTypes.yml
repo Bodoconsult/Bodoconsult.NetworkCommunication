@@ -1,0 +1,749 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIdTypes
+  commentId: T:Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIdTypes
+  id: DhcpServerOptionIdTypes
+  parent: Bodoconsult.Network.Windows.Dhcp
+  children:
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIdTypes.AsciiString
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIdTypes.Byte
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIdTypes.ClientFqdn
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIdTypes.ClientUuid
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIdTypes.DhcpMessageType
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIdTypes.DhcpParameterRequestList
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIdTypes.DhcpState
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIdTypes.DnsName
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIdTypes.DnsNameList
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIdTypes.End
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIdTypes.Hex
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIdTypes.Int16
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIdTypes.Int32
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIdTypes.IpAddress
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIdTypes.IpAddressAndIpAddress
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIdTypes.IpAddressAndSubnet
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIdTypes.IpAddressList
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIdTypes.Pad
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIdTypes.SipServers
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIdTypes.StatusCode
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIdTypes.UInt16
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIdTypes.UInt16List
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIdTypes.UInt32
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIdTypes.Utf8String
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIdTypes.ZeroLengthFlag
+  langs:
+  - csharp
+  - vb
+  name: DhcpServerOptionIdTypes
+  nameWithType: DhcpServerOptionIdTypes
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIdTypes
+  type: Enum
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerOptionIdTypes.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: DhcpServerOptionIdTypes
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerOptionIdTypes.cs
+    startLine: 5
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: 'public enum DhcpServerOptionIdTypes : byte'
+    content.vb: Public Enum DhcpServerOptionIdTypes As Byte
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIdTypes.Hex
+  commentId: F:Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIdTypes.Hex
+  id: Hex
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIdTypes
+  langs:
+  - csharp
+  - vb
+  name: Hex
+  nameWithType: DhcpServerOptionIdTypes.Hex
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIdTypes.Hex
+  type: Field
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerOptionIdTypes.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Hex
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerOptionIdTypes.cs
+    startLine: 7
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: Hex = 0
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIdTypes
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIdTypes.Pad
+  commentId: F:Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIdTypes.Pad
+  id: Pad
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIdTypes
+  langs:
+  - csharp
+  - vb
+  name: Pad
+  nameWithType: DhcpServerOptionIdTypes.Pad
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIdTypes.Pad
+  type: Field
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerOptionIdTypes.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Pad
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerOptionIdTypes.cs
+    startLine: 8
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: Pad = 1
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIdTypes
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIdTypes.End
+  commentId: F:Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIdTypes.End
+  id: End
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIdTypes
+  langs:
+  - csharp
+  - vb
+  name: End
+  nameWithType: DhcpServerOptionIdTypes.End
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIdTypes.End
+  type: Field
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerOptionIdTypes.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: End
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerOptionIdTypes.cs
+    startLine: 9
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: End = 2
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIdTypes
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIdTypes.IpAddress
+  commentId: F:Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIdTypes.IpAddress
+  id: IpAddress
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIdTypes
+  langs:
+  - csharp
+  - vb
+  name: IpAddress
+  nameWithType: DhcpServerOptionIdTypes.IpAddress
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIdTypes.IpAddress
+  type: Field
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerOptionIdTypes.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: IpAddress
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerOptionIdTypes.cs
+    startLine: 10
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: IpAddress = 3
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIdTypes
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIdTypes.IpAddressList
+  commentId: F:Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIdTypes.IpAddressList
+  id: IpAddressList
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIdTypes
+  langs:
+  - csharp
+  - vb
+  name: IpAddressList
+  nameWithType: DhcpServerOptionIdTypes.IpAddressList
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIdTypes.IpAddressList
+  type: Field
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerOptionIdTypes.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: IpAddressList
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerOptionIdTypes.cs
+    startLine: 11
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: IpAddressList = 4
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIdTypes
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIdTypes.Byte
+  commentId: F:Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIdTypes.Byte
+  id: Byte
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIdTypes
+  langs:
+  - csharp
+  - vb
+  name: Byte
+  nameWithType: DhcpServerOptionIdTypes.Byte
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIdTypes.Byte
+  type: Field
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerOptionIdTypes.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Byte
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerOptionIdTypes.cs
+    startLine: 12
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: Byte = 5
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIdTypes
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIdTypes.Int16
+  commentId: F:Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIdTypes.Int16
+  id: Int16
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIdTypes
+  langs:
+  - csharp
+  - vb
+  name: Int16
+  nameWithType: DhcpServerOptionIdTypes.Int16
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIdTypes.Int16
+  type: Field
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerOptionIdTypes.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Int16
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerOptionIdTypes.cs
+    startLine: 13
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: Int16 = 6
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIdTypes
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIdTypes.UInt16
+  commentId: F:Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIdTypes.UInt16
+  id: UInt16
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIdTypes
+  langs:
+  - csharp
+  - vb
+  name: UInt16
+  nameWithType: DhcpServerOptionIdTypes.UInt16
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIdTypes.UInt16
+  type: Field
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerOptionIdTypes.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: UInt16
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerOptionIdTypes.cs
+    startLine: 14
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: UInt16 = 7
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIdTypes
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIdTypes.Int32
+  commentId: F:Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIdTypes.Int32
+  id: Int32
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIdTypes
+  langs:
+  - csharp
+  - vb
+  name: Int32
+  nameWithType: DhcpServerOptionIdTypes.Int32
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIdTypes.Int32
+  type: Field
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerOptionIdTypes.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Int32
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerOptionIdTypes.cs
+    startLine: 15
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: Int32 = 8
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIdTypes
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIdTypes.UInt32
+  commentId: F:Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIdTypes.UInt32
+  id: UInt32
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIdTypes
+  langs:
+  - csharp
+  - vb
+  name: UInt32
+  nameWithType: DhcpServerOptionIdTypes.UInt32
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIdTypes.UInt32
+  type: Field
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerOptionIdTypes.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: UInt32
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerOptionIdTypes.cs
+    startLine: 16
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: UInt32 = 9
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIdTypes
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIdTypes.AsciiString
+  commentId: F:Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIdTypes.AsciiString
+  id: AsciiString
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIdTypes
+  langs:
+  - csharp
+  - vb
+  name: AsciiString
+  nameWithType: DhcpServerOptionIdTypes.AsciiString
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIdTypes.AsciiString
+  type: Field
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerOptionIdTypes.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: AsciiString
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerOptionIdTypes.cs
+    startLine: 17
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: AsciiString = 10
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIdTypes
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIdTypes.Utf8String
+  commentId: F:Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIdTypes.Utf8String
+  id: Utf8String
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIdTypes
+  langs:
+  - csharp
+  - vb
+  name: Utf8String
+  nameWithType: DhcpServerOptionIdTypes.Utf8String
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIdTypes.Utf8String
+  type: Field
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerOptionIdTypes.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Utf8String
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerOptionIdTypes.cs
+    startLine: 18
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: Utf8String = 11
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIdTypes
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIdTypes.IpAddressAndSubnet
+  commentId: F:Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIdTypes.IpAddressAndSubnet
+  id: IpAddressAndSubnet
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIdTypes
+  langs:
+  - csharp
+  - vb
+  name: IpAddressAndSubnet
+  nameWithType: DhcpServerOptionIdTypes.IpAddressAndSubnet
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIdTypes.IpAddressAndSubnet
+  type: Field
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerOptionIdTypes.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: IpAddressAndSubnet
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerOptionIdTypes.cs
+    startLine: 19
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: IpAddressAndSubnet = 12
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIdTypes
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIdTypes.IpAddressAndIpAddress
+  commentId: F:Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIdTypes.IpAddressAndIpAddress
+  id: IpAddressAndIpAddress
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIdTypes
+  langs:
+  - csharp
+  - vb
+  name: IpAddressAndIpAddress
+  nameWithType: DhcpServerOptionIdTypes.IpAddressAndIpAddress
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIdTypes.IpAddressAndIpAddress
+  type: Field
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerOptionIdTypes.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: IpAddressAndIpAddress
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerOptionIdTypes.cs
+    startLine: 20
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: IpAddressAndIpAddress = 13
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIdTypes
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIdTypes.UInt16List
+  commentId: F:Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIdTypes.UInt16List
+  id: UInt16List
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIdTypes
+  langs:
+  - csharp
+  - vb
+  name: UInt16List
+  nameWithType: DhcpServerOptionIdTypes.UInt16List
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIdTypes.UInt16List
+  type: Field
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerOptionIdTypes.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: UInt16List
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerOptionIdTypes.cs
+    startLine: 21
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: UInt16List = 14
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIdTypes
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIdTypes.DhcpMessageType
+  commentId: F:Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIdTypes.DhcpMessageType
+  id: DhcpMessageType
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIdTypes
+  langs:
+  - csharp
+  - vb
+  name: DhcpMessageType
+  nameWithType: DhcpServerOptionIdTypes.DhcpMessageType
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIdTypes.DhcpMessageType
+  type: Field
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerOptionIdTypes.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: DhcpMessageType
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerOptionIdTypes.cs
+    startLine: 22
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: DhcpMessageType = 15
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIdTypes
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIdTypes.DhcpParameterRequestList
+  commentId: F:Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIdTypes.DhcpParameterRequestList
+  id: DhcpParameterRequestList
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIdTypes
+  langs:
+  - csharp
+  - vb
+  name: DhcpParameterRequestList
+  nameWithType: DhcpServerOptionIdTypes.DhcpParameterRequestList
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIdTypes.DhcpParameterRequestList
+  type: Field
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerOptionIdTypes.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: DhcpParameterRequestList
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerOptionIdTypes.cs
+    startLine: 23
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: DhcpParameterRequestList = 16
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIdTypes
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIdTypes.ZeroLengthFlag
+  commentId: F:Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIdTypes.ZeroLengthFlag
+  id: ZeroLengthFlag
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIdTypes
+  langs:
+  - csharp
+  - vb
+  name: ZeroLengthFlag
+  nameWithType: DhcpServerOptionIdTypes.ZeroLengthFlag
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIdTypes.ZeroLengthFlag
+  type: Field
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerOptionIdTypes.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: ZeroLengthFlag
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerOptionIdTypes.cs
+    startLine: 24
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: ZeroLengthFlag = 17
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIdTypes
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIdTypes.ClientFqdn
+  commentId: F:Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIdTypes.ClientFqdn
+  id: ClientFqdn
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIdTypes
+  langs:
+  - csharp
+  - vb
+  name: ClientFqdn
+  nameWithType: DhcpServerOptionIdTypes.ClientFqdn
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIdTypes.ClientFqdn
+  type: Field
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerOptionIdTypes.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: ClientFqdn
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerOptionIdTypes.cs
+    startLine: 25
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: ClientFqdn = 18
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIdTypes
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIdTypes.DnsName
+  commentId: F:Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIdTypes.DnsName
+  id: DnsName
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIdTypes
+  langs:
+  - csharp
+  - vb
+  name: DnsName
+  nameWithType: DhcpServerOptionIdTypes.DnsName
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIdTypes.DnsName
+  type: Field
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerOptionIdTypes.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: DnsName
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerOptionIdTypes.cs
+    startLine: 26
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: DnsName = 19
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIdTypes
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIdTypes.DnsNameList
+  commentId: F:Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIdTypes.DnsNameList
+  id: DnsNameList
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIdTypes
+  langs:
+  - csharp
+  - vb
+  name: DnsNameList
+  nameWithType: DhcpServerOptionIdTypes.DnsNameList
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIdTypes.DnsNameList
+  type: Field
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerOptionIdTypes.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: DnsNameList
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerOptionIdTypes.cs
+    startLine: 27
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: DnsNameList = 20
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIdTypes
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIdTypes.ClientUuid
+  commentId: F:Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIdTypes.ClientUuid
+  id: ClientUuid
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIdTypes
+  langs:
+  - csharp
+  - vb
+  name: ClientUuid
+  nameWithType: DhcpServerOptionIdTypes.ClientUuid
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIdTypes.ClientUuid
+  type: Field
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerOptionIdTypes.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: ClientUuid
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerOptionIdTypes.cs
+    startLine: 28
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: ClientUuid = 21
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIdTypes
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIdTypes.SipServers
+  commentId: F:Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIdTypes.SipServers
+  id: SipServers
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIdTypes
+  langs:
+  - csharp
+  - vb
+  name: SipServers
+  nameWithType: DhcpServerOptionIdTypes.SipServers
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIdTypes.SipServers
+  type: Field
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerOptionIdTypes.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: SipServers
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerOptionIdTypes.cs
+    startLine: 29
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: SipServers = 22
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIdTypes
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIdTypes.StatusCode
+  commentId: F:Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIdTypes.StatusCode
+  id: StatusCode
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIdTypes
+  langs:
+  - csharp
+  - vb
+  name: StatusCode
+  nameWithType: DhcpServerOptionIdTypes.StatusCode
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIdTypes.StatusCode
+  type: Field
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerOptionIdTypes.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: StatusCode
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerOptionIdTypes.cs
+    startLine: 30
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: StatusCode = 23
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIdTypes
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIdTypes.DhcpState
+  commentId: F:Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIdTypes.DhcpState
+  id: DhcpState
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIdTypes
+  langs:
+  - csharp
+  - vb
+  name: DhcpState
+  nameWithType: DhcpServerOptionIdTypes.DhcpState
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIdTypes.DhcpState
+  type: Field
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerOptionIdTypes.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: DhcpState
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerOptionIdTypes.cs
+    startLine: 31
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: DhcpState = 24
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIdTypes
+references:
+- uid: Bodoconsult.Network.Windows.Dhcp
+  commentId: N:Bodoconsult.Network.Windows.Dhcp
+  href: Bodoconsult.html
+  name: Bodoconsult.Network.Windows.Dhcp
+  nameWithType: Bodoconsult.Network.Windows.Dhcp
+  fullName: Bodoconsult.Network.Windows.Dhcp
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.Network
+    name: Network
+    href: Bodoconsult.Network.html
+  - name: .
+  - uid: Bodoconsult.Network.Windows
+    name: Windows
+    href: Bodoconsult.Network.Windows.html
+  - name: .
+  - uid: Bodoconsult.Network.Windows.Dhcp
+    name: Dhcp
+    href: Bodoconsult.Network.Windows.Dhcp.html
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.Network
+    name: Network
+    href: Bodoconsult.Network.html
+  - name: .
+  - uid: Bodoconsult.Network.Windows
+    name: Windows
+    href: Bodoconsult.Network.Windows.html
+  - name: .
+  - uid: Bodoconsult.Network.Windows.Dhcp
+    name: Dhcp
+    href: Bodoconsult.Network.Windows.Dhcp.html
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIdTypes
+  commentId: T:Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIdTypes
+  parent: Bodoconsult.Network.Windows.Dhcp
+  href: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIdTypes.html
+  name: DhcpServerOptionIdTypes
+  nameWithType: DhcpServerOptionIdTypes
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIdTypes

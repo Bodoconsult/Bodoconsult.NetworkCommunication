@@ -1,0 +1,131 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bodoconsult.NetworkCommunication.App.Abstractions.TransferToClientDelegate
+  commentId: T:Bodoconsult.NetworkCommunication.App.Abstractions.TransferToClientDelegate
+  id: TransferToClientDelegate
+  parent: Bodoconsult.NetworkCommunication.App.Abstractions
+  children: []
+  langs:
+  - csharp
+  - vb
+  name: TransferToClientDelegate
+  nameWithType: TransferToClientDelegate
+  fullName: Bodoconsult.NetworkCommunication.App.Abstractions.TransferToClientDelegate
+  type: Delegate
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/App.Abstractions/ICentralClientNotificationManager.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: TransferToClientDelegate
+    path: src/Bodoconsult.NetworkCommunication/App.Abstractions/ICentralClientNotificationManager.cs
+    startLine: 11
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.App.Abstractions
+  summary: A delegate use to transfer data to the client
+  example: []
+  syntax:
+    content: public delegate void TransferToClientDelegate(object source, IClientNotification notification)
+    parameters:
+    - id: source
+      type: System.Object
+      description: Source object of current notification
+    - id: notification
+      type: Bodoconsult.App.Interfaces.IClientNotification
+      description: Current notification
+    content.vb: Public Delegate Sub TransferToClientDelegate(source As Object, notification As IClientNotification)
+references:
+- uid: Bodoconsult.NetworkCommunication.App.Abstractions
+  commentId: N:Bodoconsult.NetworkCommunication.App.Abstractions
+  href: Bodoconsult.html
+  name: Bodoconsult.NetworkCommunication.App.Abstractions
+  nameWithType: Bodoconsult.NetworkCommunication.App.Abstractions
+  fullName: Bodoconsult.NetworkCommunication.App.Abstractions
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.App
+    name: App
+    href: Bodoconsult.NetworkCommunication.App.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.App.Abstractions
+    name: Abstractions
+    href: Bodoconsult.NetworkCommunication.App.Abstractions.html
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.App
+    name: App
+    href: Bodoconsult.NetworkCommunication.App.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.App.Abstractions
+    name: Abstractions
+    href: Bodoconsult.NetworkCommunication.App.Abstractions.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Bodoconsult.App.Interfaces.IClientNotification
+  commentId: T:Bodoconsult.App.Interfaces.IClientNotification
+  parent: Bodoconsult.App.Interfaces
+  isExternal: true
+  name: IClientNotification
+  nameWithType: IClientNotification
+  fullName: Bodoconsult.App.Interfaces.IClientNotification
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Bodoconsult.App.Interfaces
+  commentId: N:Bodoconsult.App.Interfaces
+  isExternal: true
+  name: Bodoconsult.App.Interfaces
+  nameWithType: Bodoconsult.App.Interfaces
+  fullName: Bodoconsult.App.Interfaces
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    isExternal: true
+  - name: .
+  - uid: Bodoconsult.App
+    name: App
+    isExternal: true
+  - name: .
+  - uid: Bodoconsult.App.Interfaces
+    name: Interfaces
+    isExternal: true
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    isExternal: true
+  - name: .
+  - uid: Bodoconsult.App
+    name: App
+    isExternal: true
+  - name: .
+  - uid: Bodoconsult.App.Interfaces
+    name: Interfaces
+    isExternal: true

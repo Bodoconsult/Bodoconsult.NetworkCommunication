@@ -1,0 +1,176 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bodoconsult.NetworkCommunication.DataMessaging.DataMessages
+  commentId: N:Bodoconsult.NetworkCommunication.DataMessaging.DataMessages
+  id: Bodoconsult.NetworkCommunication.DataMessaging.DataMessages
+  children:
+  - Bodoconsult.NetworkCommunication.DataMessaging.DataMessages.BaseInboundHandShakeMessage
+  - Bodoconsult.NetworkCommunication.DataMessaging.DataMessages.BaseOutboundHandShakeMessage
+  - Bodoconsult.NetworkCommunication.DataMessaging.DataMessages.BtcpInboundDataMessage
+  - Bodoconsult.NetworkCommunication.DataMessaging.DataMessages.BtcpOutboundDataMessage
+  - Bodoconsult.NetworkCommunication.DataMessaging.DataMessages.EdcpInboundDataMessage
+  - Bodoconsult.NetworkCommunication.DataMessaging.DataMessages.EdcpInboundHandshakeMessage
+  - Bodoconsult.NetworkCommunication.DataMessaging.DataMessages.EdcpOutboundDataMessage
+  - Bodoconsult.NetworkCommunication.DataMessaging.DataMessages.EdcpOutboundHandshakeMessage
+  - Bodoconsult.NetworkCommunication.DataMessaging.DataMessages.HandShakeMessageType
+  - Bodoconsult.NetworkCommunication.DataMessaging.DataMessages.InboundHandshakeMessage
+  - Bodoconsult.NetworkCommunication.DataMessaging.DataMessages.OutboundHandshakeMessage
+  - Bodoconsult.NetworkCommunication.DataMessaging.DataMessages.RawInboundDataMessage
+  - Bodoconsult.NetworkCommunication.DataMessaging.DataMessages.RawOutboundDataMessage
+  - Bodoconsult.NetworkCommunication.DataMessaging.DataMessages.SdcpInboundDataMessage
+  - Bodoconsult.NetworkCommunication.DataMessaging.DataMessages.SdcpOutboundDataMessage
+  - Bodoconsult.NetworkCommunication.DataMessaging.DataMessages.ShouldCrashInboundDataMessage
+  - Bodoconsult.NetworkCommunication.DataMessaging.DataMessages.ShouldCrashOutboundDataMessage
+  langs:
+  - csharp
+  - vb
+  name: Bodoconsult.NetworkCommunication.DataMessaging.DataMessages
+  nameWithType: Bodoconsult.NetworkCommunication.DataMessaging.DataMessages
+  fullName: Bodoconsult.NetworkCommunication.DataMessaging.DataMessages
+  type: Namespace
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+references:
+- uid: Bodoconsult.NetworkCommunication.DataMessaging.DataMessages.HandShakeMessageType
+  commentId: T:Bodoconsult.NetworkCommunication.DataMessaging.DataMessages.HandShakeMessageType
+  href: Bodoconsult.NetworkCommunication.DataMessaging.DataMessages.HandShakeMessageType.html
+  name: HandShakeMessageType
+  nameWithType: HandShakeMessageType
+  fullName: Bodoconsult.NetworkCommunication.DataMessaging.DataMessages.HandShakeMessageType
+- uid: Bodoconsult.NetworkCommunication.DataMessaging.DataMessages.BaseInboundHandShakeMessage
+  commentId: T:Bodoconsult.NetworkCommunication.DataMessaging.DataMessages.BaseInboundHandShakeMessage
+  parent: Bodoconsult.NetworkCommunication.DataMessaging.DataMessages
+  href: Bodoconsult.NetworkCommunication.DataMessaging.DataMessages.BaseInboundHandShakeMessage.html
+  name: BaseInboundHandShakeMessage
+  nameWithType: BaseInboundHandShakeMessage
+  fullName: Bodoconsult.NetworkCommunication.DataMessaging.DataMessages.BaseInboundHandShakeMessage
+- uid: Bodoconsult.NetworkCommunication.DataMessaging.DataMessages.BtcpInboundDataMessage
+  commentId: T:Bodoconsult.NetworkCommunication.DataMessaging.DataMessages.BtcpInboundDataMessage
+  href: Bodoconsult.NetworkCommunication.DataMessaging.DataMessages.BtcpInboundDataMessage.html
+  name: BtcpInboundDataMessage
+  nameWithType: BtcpInboundDataMessage
+  fullName: Bodoconsult.NetworkCommunication.DataMessaging.DataMessages.BtcpInboundDataMessage
+- uid: Bodoconsult.NetworkCommunication.DataMessaging.DataMessages.EdcpInboundDataMessage
+  commentId: T:Bodoconsult.NetworkCommunication.DataMessaging.DataMessages.EdcpInboundDataMessage
+  href: Bodoconsult.NetworkCommunication.DataMessaging.DataMessages.EdcpInboundDataMessage.html
+  name: EdcpInboundDataMessage
+  nameWithType: EdcpInboundDataMessage
+  fullName: Bodoconsult.NetworkCommunication.DataMessaging.DataMessages.EdcpInboundDataMessage
+- uid: Bodoconsult.NetworkCommunication.DataMessaging.DataMessages.EdcpInboundHandshakeMessage
+  commentId: T:Bodoconsult.NetworkCommunication.DataMessaging.DataMessages.EdcpInboundHandshakeMessage
+  href: Bodoconsult.NetworkCommunication.DataMessaging.DataMessages.EdcpInboundHandshakeMessage.html
+  name: EdcpInboundHandshakeMessage
+  nameWithType: EdcpInboundHandshakeMessage
+  fullName: Bodoconsult.NetworkCommunication.DataMessaging.DataMessages.EdcpInboundHandshakeMessage
+- uid: Bodoconsult.NetworkCommunication.DataMessaging.DataMessages.InboundHandshakeMessage
+  commentId: T:Bodoconsult.NetworkCommunication.DataMessaging.DataMessages.InboundHandshakeMessage
+  parent: Bodoconsult.NetworkCommunication.DataMessaging.DataMessages
+  href: Bodoconsult.NetworkCommunication.DataMessaging.DataMessages.InboundHandshakeMessage.html
+  name: InboundHandshakeMessage
+  nameWithType: InboundHandshakeMessage
+  fullName: Bodoconsult.NetworkCommunication.DataMessaging.DataMessages.InboundHandshakeMessage
+- uid: Bodoconsult.NetworkCommunication.DataMessaging.DataMessages.RawInboundDataMessage
+  commentId: T:Bodoconsult.NetworkCommunication.DataMessaging.DataMessages.RawInboundDataMessage
+  href: Bodoconsult.NetworkCommunication.DataMessaging.DataMessages.RawInboundDataMessage.html
+  name: RawInboundDataMessage
+  nameWithType: RawInboundDataMessage
+  fullName: Bodoconsult.NetworkCommunication.DataMessaging.DataMessages.RawInboundDataMessage
+- uid: Bodoconsult.NetworkCommunication.DataMessaging.DataMessages.SdcpInboundDataMessage
+  commentId: T:Bodoconsult.NetworkCommunication.DataMessaging.DataMessages.SdcpInboundDataMessage
+  href: Bodoconsult.NetworkCommunication.DataMessaging.DataMessages.SdcpInboundDataMessage.html
+  name: SdcpInboundDataMessage
+  nameWithType: SdcpInboundDataMessage
+  fullName: Bodoconsult.NetworkCommunication.DataMessaging.DataMessages.SdcpInboundDataMessage
+- uid: Bodoconsult.NetworkCommunication.DataMessaging.DataMessages.ShouldCrashInboundDataMessage
+  commentId: T:Bodoconsult.NetworkCommunication.DataMessaging.DataMessages.ShouldCrashInboundDataMessage
+  href: Bodoconsult.NetworkCommunication.DataMessaging.DataMessages.ShouldCrashInboundDataMessage.html
+  name: ShouldCrashInboundDataMessage
+  nameWithType: ShouldCrashInboundDataMessage
+  fullName: Bodoconsult.NetworkCommunication.DataMessaging.DataMessages.ShouldCrashInboundDataMessage
+- uid: Bodoconsult.NetworkCommunication.DataMessaging.DataMessages.BaseOutboundHandShakeMessage
+  commentId: T:Bodoconsult.NetworkCommunication.DataMessaging.DataMessages.BaseOutboundHandShakeMessage
+  parent: Bodoconsult.NetworkCommunication.DataMessaging.DataMessages
+  href: Bodoconsult.NetworkCommunication.DataMessaging.DataMessages.BaseOutboundHandShakeMessage.html
+  name: BaseOutboundHandShakeMessage
+  nameWithType: BaseOutboundHandShakeMessage
+  fullName: Bodoconsult.NetworkCommunication.DataMessaging.DataMessages.BaseOutboundHandShakeMessage
+- uid: Bodoconsult.NetworkCommunication.DataMessaging.DataMessages.BtcpOutboundDataMessage
+  commentId: T:Bodoconsult.NetworkCommunication.DataMessaging.DataMessages.BtcpOutboundDataMessage
+  href: Bodoconsult.NetworkCommunication.DataMessaging.DataMessages.BtcpOutboundDataMessage.html
+  name: BtcpOutboundDataMessage
+  nameWithType: BtcpOutboundDataMessage
+  fullName: Bodoconsult.NetworkCommunication.DataMessaging.DataMessages.BtcpOutboundDataMessage
+- uid: Bodoconsult.NetworkCommunication.DataMessaging.DataMessages.EdcpOutboundDataMessage
+  commentId: T:Bodoconsult.NetworkCommunication.DataMessaging.DataMessages.EdcpOutboundDataMessage
+  href: Bodoconsult.NetworkCommunication.DataMessaging.DataMessages.EdcpOutboundDataMessage.html
+  name: EdcpOutboundDataMessage
+  nameWithType: EdcpOutboundDataMessage
+  fullName: Bodoconsult.NetworkCommunication.DataMessaging.DataMessages.EdcpOutboundDataMessage
+- uid: Bodoconsult.NetworkCommunication.DataMessaging.DataMessages.EdcpOutboundHandshakeMessage
+  commentId: T:Bodoconsult.NetworkCommunication.DataMessaging.DataMessages.EdcpOutboundHandshakeMessage
+  href: Bodoconsult.NetworkCommunication.DataMessaging.DataMessages.EdcpOutboundHandshakeMessage.html
+  name: EdcpOutboundHandshakeMessage
+  nameWithType: EdcpOutboundHandshakeMessage
+  fullName: Bodoconsult.NetworkCommunication.DataMessaging.DataMessages.EdcpOutboundHandshakeMessage
+- uid: Bodoconsult.NetworkCommunication.DataMessaging.DataMessages.OutboundHandshakeMessage
+  commentId: T:Bodoconsult.NetworkCommunication.DataMessaging.DataMessages.OutboundHandshakeMessage
+  href: Bodoconsult.NetworkCommunication.DataMessaging.DataMessages.OutboundHandshakeMessage.html
+  name: OutboundHandshakeMessage
+  nameWithType: OutboundHandshakeMessage
+  fullName: Bodoconsult.NetworkCommunication.DataMessaging.DataMessages.OutboundHandshakeMessage
+- uid: Bodoconsult.NetworkCommunication.DataMessaging.DataMessages.RawOutboundDataMessage
+  commentId: T:Bodoconsult.NetworkCommunication.DataMessaging.DataMessages.RawOutboundDataMessage
+  href: Bodoconsult.NetworkCommunication.DataMessaging.DataMessages.RawOutboundDataMessage.html
+  name: RawOutboundDataMessage
+  nameWithType: RawOutboundDataMessage
+  fullName: Bodoconsult.NetworkCommunication.DataMessaging.DataMessages.RawOutboundDataMessage
+- uid: Bodoconsult.NetworkCommunication.DataMessaging.DataMessages.SdcpOutboundDataMessage
+  commentId: T:Bodoconsult.NetworkCommunication.DataMessaging.DataMessages.SdcpOutboundDataMessage
+  href: Bodoconsult.NetworkCommunication.DataMessaging.DataMessages.SdcpOutboundDataMessage.html
+  name: SdcpOutboundDataMessage
+  nameWithType: SdcpOutboundDataMessage
+  fullName: Bodoconsult.NetworkCommunication.DataMessaging.DataMessages.SdcpOutboundDataMessage
+- uid: Bodoconsult.NetworkCommunication.DataMessaging.DataMessages.ShouldCrashOutboundDataMessage
+  commentId: T:Bodoconsult.NetworkCommunication.DataMessaging.DataMessages.ShouldCrashOutboundDataMessage
+  href: Bodoconsult.NetworkCommunication.DataMessaging.DataMessages.ShouldCrashOutboundDataMessage.html
+  name: ShouldCrashOutboundDataMessage
+  nameWithType: ShouldCrashOutboundDataMessage
+  fullName: Bodoconsult.NetworkCommunication.DataMessaging.DataMessages.ShouldCrashOutboundDataMessage
+- uid: Bodoconsult.NetworkCommunication.DataMessaging.DataMessages
+  commentId: N:Bodoconsult.NetworkCommunication.DataMessaging.DataMessages
+  href: Bodoconsult.html
+  name: Bodoconsult.NetworkCommunication.DataMessaging.DataMessages
+  nameWithType: Bodoconsult.NetworkCommunication.DataMessaging.DataMessages
+  fullName: Bodoconsult.NetworkCommunication.DataMessaging.DataMessages
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.DataMessaging
+    name: DataMessaging
+    href: Bodoconsult.NetworkCommunication.DataMessaging.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.DataMessaging.DataMessages
+    name: DataMessages
+    href: Bodoconsult.NetworkCommunication.DataMessaging.DataMessages.html
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.DataMessaging
+    name: DataMessaging
+    href: Bodoconsult.NetworkCommunication.DataMessaging.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.DataMessaging.DataMessages
+    name: DataMessages
+    href: Bodoconsult.NetworkCommunication.DataMessaging.DataMessages.html

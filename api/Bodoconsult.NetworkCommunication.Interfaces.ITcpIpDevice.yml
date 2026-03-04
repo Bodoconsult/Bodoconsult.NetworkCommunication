@@ -1,0 +1,372 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bodoconsult.NetworkCommunication.Interfaces.ITcpIpDevice
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.ITcpIpDevice
+  id: ITcpIpDevice
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  children:
+  - Bodoconsult.NetworkCommunication.Interfaces.ITcpIpDevice.Dispose(System.Boolean)
+  - Bodoconsult.NetworkCommunication.Interfaces.ITcpIpDevice.ReceiveTimeout
+  - Bodoconsult.NetworkCommunication.Interfaces.ITcpIpDevice.ResetClientSocket
+  - Bodoconsult.NetworkCommunication.Interfaces.ITcpIpDevice.Send(System.Byte[])
+  - Bodoconsult.NetworkCommunication.Interfaces.ITcpIpDevice.SendTimeout
+  - Bodoconsult.NetworkCommunication.Interfaces.ITcpIpDevice.Start
+  langs:
+  - csharp
+  - vb
+  name: ITcpIpDevice
+  nameWithType: ITcpIpDevice
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.ITcpIpDevice
+  type: Interface
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/ITcpTestDevice.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: ITcpIpDevice
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/ITcpTestDevice.cs
+    startLine: 7
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Interface for TCP/IP devices for testing
+  example: []
+  syntax:
+    content: 'public interface ITcpIpDevice : IDisposable'
+    content.vb: Public Interface ITcpIpDevice Inherits IDisposable
+  inheritedMembers:
+  - System.IDisposable.Dispose
+- uid: Bodoconsult.NetworkCommunication.Interfaces.ITcpIpDevice.SendTimeout
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.ITcpIpDevice.SendTimeout
+  id: SendTimeout
+  parent: Bodoconsult.NetworkCommunication.Interfaces.ITcpIpDevice
+  langs:
+  - csharp
+  - vb
+  name: SendTimeout
+  nameWithType: ITcpIpDevice.SendTimeout
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.ITcpIpDevice.SendTimeout
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/ITcpTestDevice.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: SendTimeout
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/ITcpTestDevice.cs
+    startLine: 12
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Send timeout in milliseconds. -1 means infinite.
+  example: []
+  syntax:
+    content: int SendTimeout { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Property SendTimeout As Integer
+  overload: Bodoconsult.NetworkCommunication.Interfaces.ITcpIpDevice.SendTimeout*
+- uid: Bodoconsult.NetworkCommunication.Interfaces.ITcpIpDevice.ReceiveTimeout
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.ITcpIpDevice.ReceiveTimeout
+  id: ReceiveTimeout
+  parent: Bodoconsult.NetworkCommunication.Interfaces.ITcpIpDevice
+  langs:
+  - csharp
+  - vb
+  name: ReceiveTimeout
+  nameWithType: ITcpIpDevice.ReceiveTimeout
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.ITcpIpDevice.ReceiveTimeout
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/ITcpTestDevice.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: ReceiveTimeout
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/ITcpTestDevice.cs
+    startLine: 17
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Receive timeout in milliseconds. -1 means infinite.
+  example: []
+  syntax:
+    content: int ReceiveTimeout { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Property ReceiveTimeout As Integer
+  overload: Bodoconsult.NetworkCommunication.Interfaces.ITcpIpDevice.ReceiveTimeout*
+- uid: Bodoconsult.NetworkCommunication.Interfaces.ITcpIpDevice.Start
+  commentId: M:Bodoconsult.NetworkCommunication.Interfaces.ITcpIpDevice.Start
+  id: Start
+  parent: Bodoconsult.NetworkCommunication.Interfaces.ITcpIpDevice
+  langs:
+  - csharp
+  - vb
+  name: Start()
+  nameWithType: ITcpIpDevice.Start()
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.ITcpIpDevice.Start()
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/ITcpTestDevice.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Start
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/ITcpTestDevice.cs
+    startLine: 22
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Start the server mode
+  example: []
+  syntax:
+    content: void Start()
+    content.vb: Sub Start()
+  overload: Bodoconsult.NetworkCommunication.Interfaces.ITcpIpDevice.Start*
+- uid: Bodoconsult.NetworkCommunication.Interfaces.ITcpIpDevice.ResetClientSocket
+  commentId: M:Bodoconsult.NetworkCommunication.Interfaces.ITcpIpDevice.ResetClientSocket
+  id: ResetClientSocket
+  parent: Bodoconsult.NetworkCommunication.Interfaces.ITcpIpDevice
+  langs:
+  - csharp
+  - vb
+  name: ResetClientSocket()
+  nameWithType: ITcpIpDevice.ResetClientSocket()
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.ITcpIpDevice.ResetClientSocket()
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/ITcpTestDevice.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: ResetClientSocket
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/ITcpTestDevice.cs
+    startLine: 27
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Reset the client socket if necessary
+  example: []
+  syntax:
+    content: void ResetClientSocket()
+    content.vb: Sub ResetClientSocket()
+  overload: Bodoconsult.NetworkCommunication.Interfaces.ITcpIpDevice.ResetClientSocket*
+- uid: Bodoconsult.NetworkCommunication.Interfaces.ITcpIpDevice.Send(System.Byte[])
+  commentId: M:Bodoconsult.NetworkCommunication.Interfaces.ITcpIpDevice.Send(System.Byte[])
+  id: Send(System.Byte[])
+  parent: Bodoconsult.NetworkCommunication.Interfaces.ITcpIpDevice
+  langs:
+  - csharp
+  - vb
+  name: Send(byte[])
+  nameWithType: ITcpIpDevice.Send(byte[])
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.ITcpIpDevice.Send(byte[])
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/ITcpTestDevice.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Send
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/ITcpTestDevice.cs
+    startLine: 33
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Send byte array to the client
+  example: []
+  syntax:
+    content: void Send(byte[] data)
+    parameters:
+    - id: data
+      type: System.Byte[]
+      description: Byte array to send
+    content.vb: Sub Send(data As Byte())
+  overload: Bodoconsult.NetworkCommunication.Interfaces.ITcpIpDevice.Send*
+  nameWithType.vb: ITcpIpDevice.Send(Byte())
+  fullName.vb: Bodoconsult.NetworkCommunication.Interfaces.ITcpIpDevice.Send(Byte())
+  name.vb: Send(Byte())
+- uid: Bodoconsult.NetworkCommunication.Interfaces.ITcpIpDevice.Dispose(System.Boolean)
+  commentId: M:Bodoconsult.NetworkCommunication.Interfaces.ITcpIpDevice.Dispose(System.Boolean)
+  id: Dispose(System.Boolean)
+  parent: Bodoconsult.NetworkCommunication.Interfaces.ITcpIpDevice
+  langs:
+  - csharp
+  - vb
+  name: Dispose(bool)
+  nameWithType: ITcpIpDevice.Dispose(bool)
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.ITcpIpDevice.Dispose(bool)
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/ITcpTestDevice.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Dispose
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/ITcpTestDevice.cs
+    startLine: 35
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  syntax:
+    content: void Dispose(bool disposing)
+    parameters:
+    - id: disposing
+      type: System.Boolean
+    content.vb: Sub Dispose(disposing As Boolean)
+  overload: Bodoconsult.NetworkCommunication.Interfaces.ITcpIpDevice.Dispose*
+  nameWithType.vb: ITcpIpDevice.Dispose(Boolean)
+  fullName.vb: Bodoconsult.NetworkCommunication.Interfaces.ITcpIpDevice.Dispose(Boolean)
+  name.vb: Dispose(Boolean)
+references:
+- uid: Bodoconsult.NetworkCommunication.Interfaces
+  commentId: N:Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.html
+  name: Bodoconsult.NetworkCommunication.Interfaces
+  nameWithType: Bodoconsult.NetworkCommunication.Interfaces
+  fullName: Bodoconsult.NetworkCommunication.Interfaces
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Interfaces
+    name: Interfaces
+    href: Bodoconsult.NetworkCommunication.Interfaces.html
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Interfaces
+    name: Interfaces
+    href: Bodoconsult.NetworkCommunication.Interfaces.html
+- uid: System.IDisposable.Dispose
+  commentId: M:System.IDisposable.Dispose
+  parent: System.IDisposable
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  name: Dispose()
+  nameWithType: IDisposable.Dispose()
+  fullName: System.IDisposable.Dispose()
+  spec.csharp:
+  - uid: System.IDisposable.Dispose
+    name: Dispose
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.IDisposable.Dispose
+    name: Dispose
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  - name: (
+  - name: )
+- uid: System.IDisposable
+  commentId: T:System.IDisposable
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable
+  name: IDisposable
+  nameWithType: IDisposable
+  fullName: System.IDisposable
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Bodoconsult.NetworkCommunication.Interfaces.ITcpIpDevice.SendTimeout*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.ITcpIpDevice.SendTimeout
+  href: Bodoconsult.NetworkCommunication.Interfaces.ITcpIpDevice.html#Bodoconsult_NetworkCommunication_Interfaces_ITcpIpDevice_SendTimeout
+  name: SendTimeout
+  nameWithType: ITcpIpDevice.SendTimeout
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.ITcpIpDevice.SendTimeout
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: Bodoconsult.NetworkCommunication.Interfaces.ITcpIpDevice.ReceiveTimeout*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.ITcpIpDevice.ReceiveTimeout
+  href: Bodoconsult.NetworkCommunication.Interfaces.ITcpIpDevice.html#Bodoconsult_NetworkCommunication_Interfaces_ITcpIpDevice_ReceiveTimeout
+  name: ReceiveTimeout
+  nameWithType: ITcpIpDevice.ReceiveTimeout
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.ITcpIpDevice.ReceiveTimeout
+- uid: Bodoconsult.NetworkCommunication.Interfaces.ITcpIpDevice.Start*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.ITcpIpDevice.Start
+  href: Bodoconsult.NetworkCommunication.Interfaces.ITcpIpDevice.html#Bodoconsult_NetworkCommunication_Interfaces_ITcpIpDevice_Start
+  name: Start
+  nameWithType: ITcpIpDevice.Start
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.ITcpIpDevice.Start
+- uid: Bodoconsult.NetworkCommunication.Interfaces.ITcpIpDevice.ResetClientSocket*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.ITcpIpDevice.ResetClientSocket
+  href: Bodoconsult.NetworkCommunication.Interfaces.ITcpIpDevice.html#Bodoconsult_NetworkCommunication_Interfaces_ITcpIpDevice_ResetClientSocket
+  name: ResetClientSocket
+  nameWithType: ITcpIpDevice.ResetClientSocket
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.ITcpIpDevice.ResetClientSocket
+- uid: Bodoconsult.NetworkCommunication.Interfaces.ITcpIpDevice.Send*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.ITcpIpDevice.Send
+  href: Bodoconsult.NetworkCommunication.Interfaces.ITcpIpDevice.html#Bodoconsult_NetworkCommunication_Interfaces_ITcpIpDevice_Send_System_Byte___
+  name: Send
+  nameWithType: ITcpIpDevice.Send
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.ITcpIpDevice.Send
+- uid: System.Byte[]
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.byte
+  name: byte[]
+  nameWithType: byte[]
+  fullName: byte[]
+  nameWithType.vb: Byte()
+  fullName.vb: Byte()
+  name.vb: Byte()
+  spec.csharp:
+  - uid: System.Byte
+    name: byte
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.byte
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: System.Byte
+    name: Byte
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.byte
+  - name: (
+  - name: )
+- uid: Bodoconsult.NetworkCommunication.Interfaces.ITcpIpDevice.Dispose*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.ITcpIpDevice.Dispose
+  href: Bodoconsult.NetworkCommunication.Interfaces.ITcpIpDevice.html#Bodoconsult_NetworkCommunication_Interfaces_ITcpIpDevice_Dispose_System_Boolean_
+  name: Dispose
+  nameWithType: ITcpIpDevice.Dispose
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.ITcpIpDevice.Dispose
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean

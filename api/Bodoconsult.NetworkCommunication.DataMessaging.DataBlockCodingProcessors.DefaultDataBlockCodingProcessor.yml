@@ -1,0 +1,1017 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bodoconsult.NetworkCommunication.DataMessaging.DataBlockCodingProcessors.DefaultDataBlockCodingProcessor
+  commentId: T:Bodoconsult.NetworkCommunication.DataMessaging.DataBlockCodingProcessors.DefaultDataBlockCodingProcessor
+  id: DefaultDataBlockCodingProcessor
+  parent: Bodoconsult.NetworkCommunication.DataMessaging.DataBlockCodingProcessors
+  children:
+  - Bodoconsult.NetworkCommunication.DataMessaging.DataBlockCodingProcessors.DefaultDataBlockCodingProcessor.DatablockCodecs
+  - Bodoconsult.NetworkCommunication.DataMessaging.DataBlockCodingProcessors.DefaultDataBlockCodingProcessor.FromBytesToDataBlock(System.Memory{System.Byte})
+  - Bodoconsult.NetworkCommunication.DataMessaging.DataBlockCodingProcessors.DefaultDataBlockCodingProcessor.FromDataBlockToBytes(System.Collections.Generic.List{System.Byte},Bodoconsult.NetworkCommunication.Interfaces.ITypedOutboundDataBlock)
+  - Bodoconsult.NetworkCommunication.DataMessaging.DataBlockCodingProcessors.DefaultDataBlockCodingProcessor.GetDatablockCodecCanBeNull(System.Char)
+  - Bodoconsult.NetworkCommunication.DataMessaging.DataBlockCodingProcessors.DefaultDataBlockCodingProcessor.LoadDataBlockCodecs(System.Char,Bodoconsult.NetworkCommunication.Interfaces.IDataBlockCodec)
+  langs:
+  - csharp
+  - vb
+  name: DefaultDataBlockCodingProcessor
+  nameWithType: DefaultDataBlockCodingProcessor
+  fullName: Bodoconsult.NetworkCommunication.DataMessaging.DataBlockCodingProcessors.DefaultDataBlockCodingProcessor
+  type: Class
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/DataMessaging/DataBlockCodingProcessors/DefaultDataBlockCodingProcessor.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: DefaultDataBlockCodingProcessor
+    path: src/Bodoconsult.NetworkCommunication/DataMessaging/DataBlockCodingProcessors/DefaultDataBlockCodingProcessor.cs
+    startLine: 9
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.DataMessaging.DataBlockCodingProcessors
+  summary: Default implementation for handling of the usage of the correct datablock codec for processing a datablock
+  example: []
+  syntax:
+    content: 'public class DefaultDataBlockCodingProcessor : IDataBlockCodingProcessor'
+    content.vb: Public Class DefaultDataBlockCodingProcessor Implements IDataBlockCodingProcessor
+  inheritance:
+  - System.Object
+  implements:
+  - Bodoconsult.NetworkCommunication.Interfaces.IDataBlockCodingProcessor
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: Bodoconsult.NetworkCommunication.DataMessaging.DataBlockCodingProcessors.DefaultDataBlockCodingProcessor.DatablockCodecs
+  commentId: F:Bodoconsult.NetworkCommunication.DataMessaging.DataBlockCodingProcessors.DefaultDataBlockCodingProcessor.DatablockCodecs
+  id: DatablockCodecs
+  parent: Bodoconsult.NetworkCommunication.DataMessaging.DataBlockCodingProcessors.DefaultDataBlockCodingProcessor
+  langs:
+  - csharp
+  - vb
+  name: DatablockCodecs
+  nameWithType: DefaultDataBlockCodingProcessor.DatablockCodecs
+  fullName: Bodoconsult.NetworkCommunication.DataMessaging.DataBlockCodingProcessors.DefaultDataBlockCodingProcessor.DatablockCodecs
+  type: Field
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/DataMessaging/DataBlockCodingProcessors/DefaultDataBlockCodingProcessor.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: DatablockCodecs
+    path: src/Bodoconsult.NetworkCommunication/DataMessaging/DataBlockCodingProcessors/DefaultDataBlockCodingProcessor.cs
+    startLine: 11
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.DataMessaging.DataBlockCodingProcessors
+  syntax:
+    content: protected readonly Dictionary<char, IDataBlockCodec> DatablockCodecs
+    return:
+      type: System.Collections.Generic.Dictionary{System.Char,Bodoconsult.NetworkCommunication.Interfaces.IDataBlockCodec}
+    content.vb: Protected ReadOnly DatablockCodecs As Dictionary(Of Char, IDataBlockCodec)
+- uid: Bodoconsult.NetworkCommunication.DataMessaging.DataBlockCodingProcessors.DefaultDataBlockCodingProcessor.LoadDataBlockCodecs(System.Char,Bodoconsult.NetworkCommunication.Interfaces.IDataBlockCodec)
+  commentId: M:Bodoconsult.NetworkCommunication.DataMessaging.DataBlockCodingProcessors.DefaultDataBlockCodingProcessor.LoadDataBlockCodecs(System.Char,Bodoconsult.NetworkCommunication.Interfaces.IDataBlockCodec)
+  id: LoadDataBlockCodecs(System.Char,Bodoconsult.NetworkCommunication.Interfaces.IDataBlockCodec)
+  parent: Bodoconsult.NetworkCommunication.DataMessaging.DataBlockCodingProcessors.DefaultDataBlockCodingProcessor
+  langs:
+  - csharp
+  - vb
+  name: LoadDataBlockCodecs(char, IDataBlockCodec)
+  nameWithType: DefaultDataBlockCodingProcessor.LoadDataBlockCodecs(char, IDataBlockCodec)
+  fullName: Bodoconsult.NetworkCommunication.DataMessaging.DataBlockCodingProcessors.DefaultDataBlockCodingProcessor.LoadDataBlockCodecs(char, Bodoconsult.NetworkCommunication.Interfaces.IDataBlockCodec)
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/DataMessaging/DataBlockCodingProcessors/DefaultDataBlockCodingProcessor.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: LoadDataBlockCodecs
+    path: src/Bodoconsult.NetworkCommunication/DataMessaging/DataBlockCodingProcessors/DefaultDataBlockCodingProcessor.cs
+    startLine: 18
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.DataMessaging.DataBlockCodingProcessors
+  summary: Load a <xref href="Bodoconsult.NetworkCommunication.Interfaces.IDataBlockCodec" data-throw-if-not-resolved="false"></xref> with the key char to identify the datablock. Key char is always the first char in a datablock byte array
+  example: []
+  syntax:
+    content: public void LoadDataBlockCodecs(char key, IDataBlockCodec dataBlockCodec)
+    parameters:
+    - id: key
+      type: System.Char
+      description: Key char to identify the datablock. Key char is always the first char in a datablock byte array
+    - id: dataBlockCodec
+      type: Bodoconsult.NetworkCommunication.Interfaces.IDataBlockCodec
+      description: Data block codec to load for the key char
+    content.vb: Public Sub LoadDataBlockCodecs(key As Char, dataBlockCodec As IDataBlockCodec)
+  overload: Bodoconsult.NetworkCommunication.DataMessaging.DataBlockCodingProcessors.DefaultDataBlockCodingProcessor.LoadDataBlockCodecs*
+  implements:
+  - Bodoconsult.NetworkCommunication.Interfaces.IDataBlockCodingProcessor.LoadDataBlockCodecs(System.Char,Bodoconsult.NetworkCommunication.Interfaces.IDataBlockCodec)
+  nameWithType.vb: DefaultDataBlockCodingProcessor.LoadDataBlockCodecs(Char, IDataBlockCodec)
+  fullName.vb: Bodoconsult.NetworkCommunication.DataMessaging.DataBlockCodingProcessors.DefaultDataBlockCodingProcessor.LoadDataBlockCodecs(Char, Bodoconsult.NetworkCommunication.Interfaces.IDataBlockCodec)
+  name.vb: LoadDataBlockCodecs(Char, IDataBlockCodec)
+- uid: Bodoconsult.NetworkCommunication.DataMessaging.DataBlockCodingProcessors.DefaultDataBlockCodingProcessor.FromDataBlockToBytes(System.Collections.Generic.List{System.Byte},Bodoconsult.NetworkCommunication.Interfaces.ITypedOutboundDataBlock)
+  commentId: M:Bodoconsult.NetworkCommunication.DataMessaging.DataBlockCodingProcessors.DefaultDataBlockCodingProcessor.FromDataBlockToBytes(System.Collections.Generic.List{System.Byte},Bodoconsult.NetworkCommunication.Interfaces.ITypedOutboundDataBlock)
+  id: FromDataBlockToBytes(System.Collections.Generic.List{System.Byte},Bodoconsult.NetworkCommunication.Interfaces.ITypedOutboundDataBlock)
+  parent: Bodoconsult.NetworkCommunication.DataMessaging.DataBlockCodingProcessors.DefaultDataBlockCodingProcessor
+  langs:
+  - csharp
+  - vb
+  name: FromDataBlockToBytes(List<byte>, ITypedOutboundDataBlock)
+  nameWithType: DefaultDataBlockCodingProcessor.FromDataBlockToBytes(List<byte>, ITypedOutboundDataBlock)
+  fullName: Bodoconsult.NetworkCommunication.DataMessaging.DataBlockCodingProcessors.DefaultDataBlockCodingProcessor.FromDataBlockToBytes(System.Collections.Generic.List<byte>, Bodoconsult.NetworkCommunication.Interfaces.ITypedOutboundDataBlock)
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/DataMessaging/DataBlockCodingProcessors/DefaultDataBlockCodingProcessor.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: FromDataBlockToBytes
+    path: src/Bodoconsult.NetworkCommunication/DataMessaging/DataBlockCodingProcessors/DefaultDataBlockCodingProcessor.cs
+    startLine: 28
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.DataMessaging.DataBlockCodingProcessors
+  summary: Create a byte array to send to device from datablock
+  example: []
+  syntax:
+    content: public void FromDataBlockToBytes(List<byte> data, ITypedOutboundDataBlock dataBlock)
+    parameters:
+    - id: data
+      type: System.Collections.Generic.List{System.Byte}
+      description: device message data to send
+    - id: dataBlock
+      type: Bodoconsult.NetworkCommunication.Interfaces.ITypedOutboundDataBlock
+      description: Current datablock instance
+    content.vb: Public Sub FromDataBlockToBytes(data As List(Of Byte), dataBlock As ITypedOutboundDataBlock)
+  overload: Bodoconsult.NetworkCommunication.DataMessaging.DataBlockCodingProcessors.DefaultDataBlockCodingProcessor.FromDataBlockToBytes*
+  implements:
+  - Bodoconsult.NetworkCommunication.Interfaces.IDataBlockCodingProcessor.FromDataBlockToBytes(System.Collections.Generic.List{System.Byte},Bodoconsult.NetworkCommunication.Interfaces.ITypedOutboundDataBlock)
+  nameWithType.vb: DefaultDataBlockCodingProcessor.FromDataBlockToBytes(List(Of Byte), ITypedOutboundDataBlock)
+  fullName.vb: Bodoconsult.NetworkCommunication.DataMessaging.DataBlockCodingProcessors.DefaultDataBlockCodingProcessor.FromDataBlockToBytes(System.Collections.Generic.List(Of Byte), Bodoconsult.NetworkCommunication.Interfaces.ITypedOutboundDataBlock)
+  name.vb: FromDataBlockToBytes(List(Of Byte), ITypedOutboundDataBlock)
+- uid: Bodoconsult.NetworkCommunication.DataMessaging.DataBlockCodingProcessors.DefaultDataBlockCodingProcessor.GetDatablockCodecCanBeNull(System.Char)
+  commentId: M:Bodoconsult.NetworkCommunication.DataMessaging.DataBlockCodingProcessors.DefaultDataBlockCodingProcessor.GetDatablockCodecCanBeNull(System.Char)
+  id: GetDatablockCodecCanBeNull(System.Char)
+  parent: Bodoconsult.NetworkCommunication.DataMessaging.DataBlockCodingProcessors.DefaultDataBlockCodingProcessor
+  langs:
+  - csharp
+  - vb
+  name: GetDatablockCodecCanBeNull(char)
+  nameWithType: DefaultDataBlockCodingProcessor.GetDatablockCodecCanBeNull(char)
+  fullName: Bodoconsult.NetworkCommunication.DataMessaging.DataBlockCodingProcessors.DefaultDataBlockCodingProcessor.GetDatablockCodecCanBeNull(char)
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/DataMessaging/DataBlockCodingProcessors/DefaultDataBlockCodingProcessor.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: GetDatablockCodecCanBeNull
+    path: src/Bodoconsult.NetworkCommunication/DataMessaging/DataBlockCodingProcessors/DefaultDataBlockCodingProcessor.cs
+    startLine: 49
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.DataMessaging.DataBlockCodingProcessors
+  summary: Get the correct codec for a given datablock
+  example: []
+  syntax:
+    content: public IDataBlockCodec GetDatablockCodecCanBeNull(char datablockType)
+    parameters:
+    - id: datablockType
+      type: System.Char
+      description: Type of the datablock
+    return:
+      type: Bodoconsult.NetworkCommunication.Interfaces.IDataBlockCodec
+      description: Codec or null if no fitting codec was found
+    content.vb: Public Function GetDatablockCodecCanBeNull(datablockType As Char) As IDataBlockCodec
+  overload: Bodoconsult.NetworkCommunication.DataMessaging.DataBlockCodingProcessors.DefaultDataBlockCodingProcessor.GetDatablockCodecCanBeNull*
+  implements:
+  - Bodoconsult.NetworkCommunication.Interfaces.IDataBlockCodingProcessor.GetDatablockCodecCanBeNull(System.Char)
+  nameWithType.vb: DefaultDataBlockCodingProcessor.GetDatablockCodecCanBeNull(Char)
+  fullName.vb: Bodoconsult.NetworkCommunication.DataMessaging.DataBlockCodingProcessors.DefaultDataBlockCodingProcessor.GetDatablockCodecCanBeNull(Char)
+  name.vb: GetDatablockCodecCanBeNull(Char)
+- uid: Bodoconsult.NetworkCommunication.DataMessaging.DataBlockCodingProcessors.DefaultDataBlockCodingProcessor.FromBytesToDataBlock(System.Memory{System.Byte})
+  commentId: M:Bodoconsult.NetworkCommunication.DataMessaging.DataBlockCodingProcessors.DefaultDataBlockCodingProcessor.FromBytesToDataBlock(System.Memory{System.Byte})
+  id: FromBytesToDataBlock(System.Memory{System.Byte})
+  parent: Bodoconsult.NetworkCommunication.DataMessaging.DataBlockCodingProcessors.DefaultDataBlockCodingProcessor
+  langs:
+  - csharp
+  - vb
+  name: FromBytesToDataBlock(Memory<byte>)
+  nameWithType: DefaultDataBlockCodingProcessor.FromBytesToDataBlock(Memory<byte>)
+  fullName: Bodoconsult.NetworkCommunication.DataMessaging.DataBlockCodingProcessors.DefaultDataBlockCodingProcessor.FromBytesToDataBlock(System.Memory<byte>)
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/DataMessaging/DataBlockCodingProcessors/DefaultDataBlockCodingProcessor.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: FromBytesToDataBlock
+    path: src/Bodoconsult.NetworkCommunication/DataMessaging/DataBlockCodingProcessors/DefaultDataBlockCodingProcessor.cs
+    startLine: 60
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.DataMessaging.DataBlockCodingProcessors
+  summary: Decode a given datablock as byte array to the related internal datablock object
+  example: []
+  syntax:
+    content: public ITypedInboundDataBlock FromBytesToDataBlock(Memory<byte> dataBlockBytes)
+    parameters:
+    - id: dataBlockBytes
+      type: System.Memory{System.Byte}
+      description: Received datablock as byte array
+    return:
+      type: Bodoconsult.NetworkCommunication.Interfaces.ITypedInboundDataBlock
+      description: Datablock object or null if no fitting codec was found
+    content.vb: Public Function FromBytesToDataBlock(dataBlockBytes As Memory(Of Byte)) As ITypedInboundDataBlock
+  overload: Bodoconsult.NetworkCommunication.DataMessaging.DataBlockCodingProcessors.DefaultDataBlockCodingProcessor.FromBytesToDataBlock*
+  implements:
+  - Bodoconsult.NetworkCommunication.Interfaces.IDataBlockCodingProcessor.FromBytesToDataBlock(System.Memory{System.Byte})
+  nameWithType.vb: DefaultDataBlockCodingProcessor.FromBytesToDataBlock(Memory(Of Byte))
+  fullName.vb: Bodoconsult.NetworkCommunication.DataMessaging.DataBlockCodingProcessors.DefaultDataBlockCodingProcessor.FromBytesToDataBlock(System.Memory(Of Byte))
+  name.vb: FromBytesToDataBlock(Memory(Of Byte))
+references:
+- uid: Bodoconsult.NetworkCommunication.DataMessaging.DataBlockCodingProcessors
+  commentId: N:Bodoconsult.NetworkCommunication.DataMessaging.DataBlockCodingProcessors
+  href: Bodoconsult.html
+  name: Bodoconsult.NetworkCommunication.DataMessaging.DataBlockCodingProcessors
+  nameWithType: Bodoconsult.NetworkCommunication.DataMessaging.DataBlockCodingProcessors
+  fullName: Bodoconsult.NetworkCommunication.DataMessaging.DataBlockCodingProcessors
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.DataMessaging
+    name: DataMessaging
+    href: Bodoconsult.NetworkCommunication.DataMessaging.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.DataMessaging.DataBlockCodingProcessors
+    name: DataBlockCodingProcessors
+    href: Bodoconsult.NetworkCommunication.DataMessaging.DataBlockCodingProcessors.html
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.DataMessaging
+    name: DataMessaging
+    href: Bodoconsult.NetworkCommunication.DataMessaging.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.DataMessaging.DataBlockCodingProcessors
+    name: DataBlockCodingProcessors
+    href: Bodoconsult.NetworkCommunication.DataMessaging.DataBlockCodingProcessors.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IDataBlockCodingProcessor
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.IDataBlockCodingProcessor
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.NetworkCommunication.Interfaces.IDataBlockCodingProcessor.html
+  name: IDataBlockCodingProcessor
+  nameWithType: IDataBlockCodingProcessor
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IDataBlockCodingProcessor
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Bodoconsult.NetworkCommunication.Interfaces
+  commentId: N:Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.html
+  name: Bodoconsult.NetworkCommunication.Interfaces
+  nameWithType: Bodoconsult.NetworkCommunication.Interfaces
+  fullName: Bodoconsult.NetworkCommunication.Interfaces
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Interfaces
+    name: Interfaces
+    href: Bodoconsult.NetworkCommunication.Interfaces.html
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Interfaces
+    name: Interfaces
+    href: Bodoconsult.NetworkCommunication.Interfaces.html
+- uid: System.Collections.Generic.Dictionary{System.Char,Bodoconsult.NetworkCommunication.Interfaces.IDataBlockCodec}
+  commentId: T:System.Collections.Generic.Dictionary{System.Char,Bodoconsult.NetworkCommunication.Interfaces.IDataBlockCodec}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.Dictionary`2
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  name: Dictionary<char, IDataBlockCodec>
+  nameWithType: Dictionary<char, IDataBlockCodec>
+  fullName: System.Collections.Generic.Dictionary<char, Bodoconsult.NetworkCommunication.Interfaces.IDataBlockCodec>
+  nameWithType.vb: Dictionary(Of Char, IDataBlockCodec)
+  fullName.vb: System.Collections.Generic.Dictionary(Of Char, Bodoconsult.NetworkCommunication.Interfaces.IDataBlockCodec)
+  name.vb: Dictionary(Of Char, IDataBlockCodec)
+  spec.csharp:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  - name: <
+  - uid: System.Char
+    name: char
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.char
+  - name: ','
+  - name: " "
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IDataBlockCodec
+    name: IDataBlockCodec
+    href: Bodoconsult.NetworkCommunication.Interfaces.IDataBlockCodec.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Char
+    name: Char
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.char
+  - name: ','
+  - name: " "
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IDataBlockCodec
+    name: IDataBlockCodec
+    href: Bodoconsult.NetworkCommunication.Interfaces.IDataBlockCodec.html
+  - name: )
+- uid: System.Collections.Generic.Dictionary`2
+  commentId: T:System.Collections.Generic.Dictionary`2
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  name: Dictionary<TKey, TValue>
+  nameWithType: Dictionary<TKey, TValue>
+  fullName: System.Collections.Generic.Dictionary<TKey, TValue>
+  nameWithType.vb: Dictionary(Of TKey, TValue)
+  fullName.vb: System.Collections.Generic.Dictionary(Of TKey, TValue)
+  name.vb: Dictionary(Of TKey, TValue)
+  spec.csharp:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  - name: <
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IDataBlockCodec
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.IDataBlockCodec
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.NetworkCommunication.Interfaces.IDataBlockCodec.html
+  name: IDataBlockCodec
+  nameWithType: IDataBlockCodec
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IDataBlockCodec
+- uid: Bodoconsult.NetworkCommunication.DataMessaging.DataBlockCodingProcessors.DefaultDataBlockCodingProcessor.LoadDataBlockCodecs*
+  commentId: Overload:Bodoconsult.NetworkCommunication.DataMessaging.DataBlockCodingProcessors.DefaultDataBlockCodingProcessor.LoadDataBlockCodecs
+  href: Bodoconsult.NetworkCommunication.DataMessaging.DataBlockCodingProcessors.DefaultDataBlockCodingProcessor.html#Bodoconsult_NetworkCommunication_DataMessaging_DataBlockCodingProcessors_DefaultDataBlockCodingProcessor_LoadDataBlockCodecs_System_Char_Bodoconsult_NetworkCommunication_Interfaces_IDataBlockCodec_
+  name: LoadDataBlockCodecs
+  nameWithType: DefaultDataBlockCodingProcessor.LoadDataBlockCodecs
+  fullName: Bodoconsult.NetworkCommunication.DataMessaging.DataBlockCodingProcessors.DefaultDataBlockCodingProcessor.LoadDataBlockCodecs
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IDataBlockCodingProcessor.LoadDataBlockCodecs(System.Char,Bodoconsult.NetworkCommunication.Interfaces.IDataBlockCodec)
+  commentId: M:Bodoconsult.NetworkCommunication.Interfaces.IDataBlockCodingProcessor.LoadDataBlockCodecs(System.Char,Bodoconsult.NetworkCommunication.Interfaces.IDataBlockCodec)
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IDataBlockCodingProcessor
+  isExternal: true
+  href: Bodoconsult.NetworkCommunication.Interfaces.IDataBlockCodingProcessor.html#Bodoconsult_NetworkCommunication_Interfaces_IDataBlockCodingProcessor_LoadDataBlockCodecs_System_Char_Bodoconsult_NetworkCommunication_Interfaces_IDataBlockCodec_
+  name: LoadDataBlockCodecs(char, IDataBlockCodec)
+  nameWithType: IDataBlockCodingProcessor.LoadDataBlockCodecs(char, IDataBlockCodec)
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IDataBlockCodingProcessor.LoadDataBlockCodecs(char, Bodoconsult.NetworkCommunication.Interfaces.IDataBlockCodec)
+  nameWithType.vb: IDataBlockCodingProcessor.LoadDataBlockCodecs(Char, IDataBlockCodec)
+  fullName.vb: Bodoconsult.NetworkCommunication.Interfaces.IDataBlockCodingProcessor.LoadDataBlockCodecs(Char, Bodoconsult.NetworkCommunication.Interfaces.IDataBlockCodec)
+  name.vb: LoadDataBlockCodecs(Char, IDataBlockCodec)
+  spec.csharp:
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IDataBlockCodingProcessor.LoadDataBlockCodecs(System.Char,Bodoconsult.NetworkCommunication.Interfaces.IDataBlockCodec)
+    name: LoadDataBlockCodecs
+    href: Bodoconsult.NetworkCommunication.Interfaces.IDataBlockCodingProcessor.html#Bodoconsult_NetworkCommunication_Interfaces_IDataBlockCodingProcessor_LoadDataBlockCodecs_System_Char_Bodoconsult_NetworkCommunication_Interfaces_IDataBlockCodec_
+  - name: (
+  - uid: System.Char
+    name: char
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.char
+  - name: ','
+  - name: " "
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IDataBlockCodec
+    name: IDataBlockCodec
+    href: Bodoconsult.NetworkCommunication.Interfaces.IDataBlockCodec.html
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IDataBlockCodingProcessor.LoadDataBlockCodecs(System.Char,Bodoconsult.NetworkCommunication.Interfaces.IDataBlockCodec)
+    name: LoadDataBlockCodecs
+    href: Bodoconsult.NetworkCommunication.Interfaces.IDataBlockCodingProcessor.html#Bodoconsult_NetworkCommunication_Interfaces_IDataBlockCodingProcessor_LoadDataBlockCodecs_System_Char_Bodoconsult_NetworkCommunication_Interfaces_IDataBlockCodec_
+  - name: (
+  - uid: System.Char
+    name: Char
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.char
+  - name: ','
+  - name: " "
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IDataBlockCodec
+    name: IDataBlockCodec
+    href: Bodoconsult.NetworkCommunication.Interfaces.IDataBlockCodec.html
+  - name: )
+- uid: System.Char
+  commentId: T:System.Char
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.char
+  name: char
+  nameWithType: char
+  fullName: char
+  nameWithType.vb: Char
+  fullName.vb: Char
+  name.vb: Char
+- uid: Bodoconsult.NetworkCommunication.DataMessaging.DataBlockCodingProcessors.DefaultDataBlockCodingProcessor.FromDataBlockToBytes*
+  commentId: Overload:Bodoconsult.NetworkCommunication.DataMessaging.DataBlockCodingProcessors.DefaultDataBlockCodingProcessor.FromDataBlockToBytes
+  href: Bodoconsult.NetworkCommunication.DataMessaging.DataBlockCodingProcessors.DefaultDataBlockCodingProcessor.html#Bodoconsult_NetworkCommunication_DataMessaging_DataBlockCodingProcessors_DefaultDataBlockCodingProcessor_FromDataBlockToBytes_System_Collections_Generic_List_System_Byte__Bodoconsult_NetworkCommunication_Interfaces_ITypedOutboundDataBlock_
+  name: FromDataBlockToBytes
+  nameWithType: DefaultDataBlockCodingProcessor.FromDataBlockToBytes
+  fullName: Bodoconsult.NetworkCommunication.DataMessaging.DataBlockCodingProcessors.DefaultDataBlockCodingProcessor.FromDataBlockToBytes
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IDataBlockCodingProcessor.FromDataBlockToBytes(System.Collections.Generic.List{System.Byte},Bodoconsult.NetworkCommunication.Interfaces.ITypedOutboundDataBlock)
+  commentId: M:Bodoconsult.NetworkCommunication.Interfaces.IDataBlockCodingProcessor.FromDataBlockToBytes(System.Collections.Generic.List{System.Byte},Bodoconsult.NetworkCommunication.Interfaces.ITypedOutboundDataBlock)
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IDataBlockCodingProcessor
+  isExternal: true
+  href: Bodoconsult.NetworkCommunication.Interfaces.IDataBlockCodingProcessor.html#Bodoconsult_NetworkCommunication_Interfaces_IDataBlockCodingProcessor_FromDataBlockToBytes_System_Collections_Generic_List_System_Byte__Bodoconsult_NetworkCommunication_Interfaces_ITypedOutboundDataBlock_
+  name: FromDataBlockToBytes(List<byte>, ITypedOutboundDataBlock)
+  nameWithType: IDataBlockCodingProcessor.FromDataBlockToBytes(List<byte>, ITypedOutboundDataBlock)
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IDataBlockCodingProcessor.FromDataBlockToBytes(System.Collections.Generic.List<byte>, Bodoconsult.NetworkCommunication.Interfaces.ITypedOutboundDataBlock)
+  nameWithType.vb: IDataBlockCodingProcessor.FromDataBlockToBytes(List(Of Byte), ITypedOutboundDataBlock)
+  fullName.vb: Bodoconsult.NetworkCommunication.Interfaces.IDataBlockCodingProcessor.FromDataBlockToBytes(System.Collections.Generic.List(Of Byte), Bodoconsult.NetworkCommunication.Interfaces.ITypedOutboundDataBlock)
+  name.vb: FromDataBlockToBytes(List(Of Byte), ITypedOutboundDataBlock)
+  spec.csharp:
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IDataBlockCodingProcessor.FromDataBlockToBytes(System.Collections.Generic.List{System.Byte},Bodoconsult.NetworkCommunication.Interfaces.ITypedOutboundDataBlock)
+    name: FromDataBlockToBytes
+    href: Bodoconsult.NetworkCommunication.Interfaces.IDataBlockCodingProcessor.html#Bodoconsult_NetworkCommunication_Interfaces_IDataBlockCodingProcessor_FromDataBlockToBytes_System_Collections_Generic_List_System_Byte__Bodoconsult_NetworkCommunication_Interfaces_ITypedOutboundDataBlock_
+  - name: (
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - uid: System.Byte
+    name: byte
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.byte
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.ITypedOutboundDataBlock
+    name: ITypedOutboundDataBlock
+    href: Bodoconsult.NetworkCommunication.Interfaces.ITypedOutboundDataBlock.html
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IDataBlockCodingProcessor.FromDataBlockToBytes(System.Collections.Generic.List{System.Byte},Bodoconsult.NetworkCommunication.Interfaces.ITypedOutboundDataBlock)
+    name: FromDataBlockToBytes
+    href: Bodoconsult.NetworkCommunication.Interfaces.IDataBlockCodingProcessor.html#Bodoconsult_NetworkCommunication_Interfaces_IDataBlockCodingProcessor_FromDataBlockToBytes_System_Collections_Generic_List_System_Byte__Bodoconsult_NetworkCommunication_Interfaces_ITypedOutboundDataBlock_
+  - name: (
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Byte
+    name: Byte
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.byte
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.ITypedOutboundDataBlock
+    name: ITypedOutboundDataBlock
+    href: Bodoconsult.NetworkCommunication.Interfaces.ITypedOutboundDataBlock.html
+  - name: )
+- uid: System.Collections.Generic.List{System.Byte}
+  commentId: T:System.Collections.Generic.List{System.Byte}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.List`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  name: List<byte>
+  nameWithType: List<byte>
+  fullName: System.Collections.Generic.List<byte>
+  nameWithType.vb: List(Of Byte)
+  fullName.vb: System.Collections.Generic.List(Of Byte)
+  name.vb: List(Of Byte)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - uid: System.Byte
+    name: byte
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.byte
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Byte
+    name: Byte
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.byte
+  - name: )
+- uid: Bodoconsult.NetworkCommunication.Interfaces.ITypedOutboundDataBlock
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.ITypedOutboundDataBlock
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.NetworkCommunication.Interfaces.ITypedOutboundDataBlock.html
+  name: ITypedOutboundDataBlock
+  nameWithType: ITypedOutboundDataBlock
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.ITypedOutboundDataBlock
+- uid: System.Collections.Generic.List`1
+  commentId: T:System.Collections.Generic.List`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  name: List<T>
+  nameWithType: List<T>
+  fullName: System.Collections.Generic.List<T>
+  nameWithType.vb: List(Of T)
+  fullName.vb: System.Collections.Generic.List(Of T)
+  name.vb: List(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Bodoconsult.NetworkCommunication.DataMessaging.DataBlockCodingProcessors.DefaultDataBlockCodingProcessor.GetDatablockCodecCanBeNull*
+  commentId: Overload:Bodoconsult.NetworkCommunication.DataMessaging.DataBlockCodingProcessors.DefaultDataBlockCodingProcessor.GetDatablockCodecCanBeNull
+  href: Bodoconsult.NetworkCommunication.DataMessaging.DataBlockCodingProcessors.DefaultDataBlockCodingProcessor.html#Bodoconsult_NetworkCommunication_DataMessaging_DataBlockCodingProcessors_DefaultDataBlockCodingProcessor_GetDatablockCodecCanBeNull_System_Char_
+  name: GetDatablockCodecCanBeNull
+  nameWithType: DefaultDataBlockCodingProcessor.GetDatablockCodecCanBeNull
+  fullName: Bodoconsult.NetworkCommunication.DataMessaging.DataBlockCodingProcessors.DefaultDataBlockCodingProcessor.GetDatablockCodecCanBeNull
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IDataBlockCodingProcessor.GetDatablockCodecCanBeNull(System.Char)
+  commentId: M:Bodoconsult.NetworkCommunication.Interfaces.IDataBlockCodingProcessor.GetDatablockCodecCanBeNull(System.Char)
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IDataBlockCodingProcessor
+  isExternal: true
+  href: Bodoconsult.NetworkCommunication.Interfaces.IDataBlockCodingProcessor.html#Bodoconsult_NetworkCommunication_Interfaces_IDataBlockCodingProcessor_GetDatablockCodecCanBeNull_System_Char_
+  name: GetDatablockCodecCanBeNull(char)
+  nameWithType: IDataBlockCodingProcessor.GetDatablockCodecCanBeNull(char)
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IDataBlockCodingProcessor.GetDatablockCodecCanBeNull(char)
+  nameWithType.vb: IDataBlockCodingProcessor.GetDatablockCodecCanBeNull(Char)
+  fullName.vb: Bodoconsult.NetworkCommunication.Interfaces.IDataBlockCodingProcessor.GetDatablockCodecCanBeNull(Char)
+  name.vb: GetDatablockCodecCanBeNull(Char)
+  spec.csharp:
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IDataBlockCodingProcessor.GetDatablockCodecCanBeNull(System.Char)
+    name: GetDatablockCodecCanBeNull
+    href: Bodoconsult.NetworkCommunication.Interfaces.IDataBlockCodingProcessor.html#Bodoconsult_NetworkCommunication_Interfaces_IDataBlockCodingProcessor_GetDatablockCodecCanBeNull_System_Char_
+  - name: (
+  - uid: System.Char
+    name: char
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.char
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IDataBlockCodingProcessor.GetDatablockCodecCanBeNull(System.Char)
+    name: GetDatablockCodecCanBeNull
+    href: Bodoconsult.NetworkCommunication.Interfaces.IDataBlockCodingProcessor.html#Bodoconsult_NetworkCommunication_Interfaces_IDataBlockCodingProcessor_GetDatablockCodecCanBeNull_System_Char_
+  - name: (
+  - uid: System.Char
+    name: Char
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.char
+  - name: )
+- uid: Bodoconsult.NetworkCommunication.DataMessaging.DataBlockCodingProcessors.DefaultDataBlockCodingProcessor.FromBytesToDataBlock*
+  commentId: Overload:Bodoconsult.NetworkCommunication.DataMessaging.DataBlockCodingProcessors.DefaultDataBlockCodingProcessor.FromBytesToDataBlock
+  href: Bodoconsult.NetworkCommunication.DataMessaging.DataBlockCodingProcessors.DefaultDataBlockCodingProcessor.html#Bodoconsult_NetworkCommunication_DataMessaging_DataBlockCodingProcessors_DefaultDataBlockCodingProcessor_FromBytesToDataBlock_System_Memory_System_Byte__
+  name: FromBytesToDataBlock
+  nameWithType: DefaultDataBlockCodingProcessor.FromBytesToDataBlock
+  fullName: Bodoconsult.NetworkCommunication.DataMessaging.DataBlockCodingProcessors.DefaultDataBlockCodingProcessor.FromBytesToDataBlock
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IDataBlockCodingProcessor.FromBytesToDataBlock(System.Memory{System.Byte})
+  commentId: M:Bodoconsult.NetworkCommunication.Interfaces.IDataBlockCodingProcessor.FromBytesToDataBlock(System.Memory{System.Byte})
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IDataBlockCodingProcessor
+  isExternal: true
+  href: Bodoconsult.NetworkCommunication.Interfaces.IDataBlockCodingProcessor.html#Bodoconsult_NetworkCommunication_Interfaces_IDataBlockCodingProcessor_FromBytesToDataBlock_System_Memory_System_Byte__
+  name: FromBytesToDataBlock(Memory<byte>)
+  nameWithType: IDataBlockCodingProcessor.FromBytesToDataBlock(Memory<byte>)
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IDataBlockCodingProcessor.FromBytesToDataBlock(System.Memory<byte>)
+  nameWithType.vb: IDataBlockCodingProcessor.FromBytesToDataBlock(Memory(Of Byte))
+  fullName.vb: Bodoconsult.NetworkCommunication.Interfaces.IDataBlockCodingProcessor.FromBytesToDataBlock(System.Memory(Of Byte))
+  name.vb: FromBytesToDataBlock(Memory(Of Byte))
+  spec.csharp:
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IDataBlockCodingProcessor.FromBytesToDataBlock(System.Memory{System.Byte})
+    name: FromBytesToDataBlock
+    href: Bodoconsult.NetworkCommunication.Interfaces.IDataBlockCodingProcessor.html#Bodoconsult_NetworkCommunication_Interfaces_IDataBlockCodingProcessor_FromBytesToDataBlock_System_Memory_System_Byte__
+  - name: (
+  - uid: System.Memory`1
+    name: Memory
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.memory-1
+  - name: <
+  - uid: System.Byte
+    name: byte
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.byte
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IDataBlockCodingProcessor.FromBytesToDataBlock(System.Memory{System.Byte})
+    name: FromBytesToDataBlock
+    href: Bodoconsult.NetworkCommunication.Interfaces.IDataBlockCodingProcessor.html#Bodoconsult_NetworkCommunication_Interfaces_IDataBlockCodingProcessor_FromBytesToDataBlock_System_Memory_System_Byte__
+  - name: (
+  - uid: System.Memory`1
+    name: Memory
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.memory-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Byte
+    name: Byte
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.byte
+  - name: )
+  - name: )
+- uid: System.Memory{System.Byte}
+  commentId: T:System.Memory{System.Byte}
+  parent: System
+  definition: System.Memory`1
+  href: https://learn.microsoft.com/dotnet/api/system.memory-1
+  name: Memory<byte>
+  nameWithType: Memory<byte>
+  fullName: System.Memory<byte>
+  nameWithType.vb: Memory(Of Byte)
+  fullName.vb: System.Memory(Of Byte)
+  name.vb: Memory(Of Byte)
+  spec.csharp:
+  - uid: System.Memory`1
+    name: Memory
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.memory-1
+  - name: <
+  - uid: System.Byte
+    name: byte
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.byte
+  - name: '>'
+  spec.vb:
+  - uid: System.Memory`1
+    name: Memory
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.memory-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Byte
+    name: Byte
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.byte
+  - name: )
+- uid: Bodoconsult.NetworkCommunication.Interfaces.ITypedInboundDataBlock
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.ITypedInboundDataBlock
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.NetworkCommunication.Interfaces.ITypedInboundDataBlock.html
+  name: ITypedInboundDataBlock
+  nameWithType: ITypedInboundDataBlock
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.ITypedInboundDataBlock
+- uid: System.Memory`1
+  commentId: T:System.Memory`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.memory-1
+  name: Memory<T>
+  nameWithType: Memory<T>
+  fullName: System.Memory<T>
+  nameWithType.vb: Memory(Of T)
+  fullName.vb: System.Memory(Of T)
+  name.vb: Memory(Of T)
+  spec.csharp:
+  - uid: System.Memory`1
+    name: Memory
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.memory-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Memory`1
+    name: Memory
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.memory-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )

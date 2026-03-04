@@ -1,0 +1,261 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IOutboundCommandBlockDataMessage
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.IOutboundCommandBlockDataMessage
+  id: IOutboundCommandBlockDataMessage
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  children:
+  - Bodoconsult.NetworkCommunication.Interfaces.IOutboundCommandBlockDataMessage.Block
+  - Bodoconsult.NetworkCommunication.Interfaces.IOutboundCommandBlockDataMessage.Command
+  langs:
+  - csharp
+  - vb
+  name: IOutboundCommandBlockDataMessage
+  nameWithType: IOutboundCommandBlockDataMessage
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IOutboundCommandBlockDataMessage
+  type: Interface
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/IOutboundCommandBlockDataMessage.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: IOutboundCommandBlockDataMessage
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/IOutboundCommandBlockDataMessage.cs
+    startLine: 7
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Interface for byte based outbound messaging containing a command and a block code with data i.e. via TCP/IP or UDP
+  example: []
+  syntax:
+    content: 'public interface IOutboundCommandBlockDataMessage : IOutboundDataMessage, IOutboundMessage'
+    content.vb: Public Interface IOutboundCommandBlockDataMessage Inherits IOutboundDataMessage, IOutboundMessage
+  inheritedMembers:
+  - Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessage.WaitForAcknowledgement
+  - Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessage.DataBlock
+  - Bodoconsult.NetworkCommunication.Interfaces.IOutboundMessage.MessageId
+  - Bodoconsult.NetworkCommunication.Interfaces.IOutboundMessage.RawMessageData
+  - Bodoconsult.NetworkCommunication.Interfaces.IOutboundMessage.RawMessageDataClearText
+  - Bodoconsult.NetworkCommunication.Interfaces.IOutboundMessage.ToInfoString
+  - Bodoconsult.NetworkCommunication.Interfaces.IOutboundMessage.ToShortInfoString
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IOutboundCommandBlockDataMessage.Command
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IOutboundCommandBlockDataMessage.Command
+  id: Command
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IOutboundCommandBlockDataMessage
+  langs:
+  - csharp
+  - vb
+  name: Command
+  nameWithType: IOutboundCommandBlockDataMessage.Command
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IOutboundCommandBlockDataMessage.Command
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/IOutboundCommandBlockDataMessage.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Command
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/IOutboundCommandBlockDataMessage.cs
+    startLine: 12
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Command requested
+  example: []
+  syntax:
+    content: char Command { get; }
+    parameters: []
+    return:
+      type: System.Char
+    content.vb: ReadOnly Property Command As Char
+  overload: Bodoconsult.NetworkCommunication.Interfaces.IOutboundCommandBlockDataMessage.Command*
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IOutboundCommandBlockDataMessage.Block
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IOutboundCommandBlockDataMessage.Block
+  id: Block
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IOutboundCommandBlockDataMessage
+  langs:
+  - csharp
+  - vb
+  name: Block
+  nameWithType: IOutboundCommandBlockDataMessage.Block
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IOutboundCommandBlockDataMessage.Block
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/IOutboundCommandBlockDataMessage.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Block
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/IOutboundCommandBlockDataMessage.cs
+    startLine: 17
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Current block code
+  example: []
+  syntax:
+    content: byte Block { get; }
+    parameters: []
+    return:
+      type: System.Byte
+    content.vb: ReadOnly Property Block As Byte
+  overload: Bodoconsult.NetworkCommunication.Interfaces.IOutboundCommandBlockDataMessage.Block*
+references:
+- uid: Bodoconsult.NetworkCommunication.Interfaces
+  commentId: N:Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.html
+  name: Bodoconsult.NetworkCommunication.Interfaces
+  nameWithType: Bodoconsult.NetworkCommunication.Interfaces
+  fullName: Bodoconsult.NetworkCommunication.Interfaces
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Interfaces
+    name: Interfaces
+    href: Bodoconsult.NetworkCommunication.Interfaces.html
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Interfaces
+    name: Interfaces
+    href: Bodoconsult.NetworkCommunication.Interfaces.html
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessage.WaitForAcknowledgement
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessage.WaitForAcknowledgement
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessage
+  href: Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessage.html#Bodoconsult_NetworkCommunication_Interfaces_IOutboundDataMessage_WaitForAcknowledgement
+  name: WaitForAcknowledgement
+  nameWithType: IOutboundDataMessage.WaitForAcknowledgement
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessage.WaitForAcknowledgement
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessage.DataBlock
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessage.DataBlock
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessage
+  href: Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessage.html#Bodoconsult_NetworkCommunication_Interfaces_IOutboundDataMessage_DataBlock
+  name: DataBlock
+  nameWithType: IOutboundDataMessage.DataBlock
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessage.DataBlock
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IOutboundMessage.MessageId
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IOutboundMessage.MessageId
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IOutboundMessage
+  href: Bodoconsult.NetworkCommunication.Interfaces.IOutboundMessage.html#Bodoconsult_NetworkCommunication_Interfaces_IOutboundMessage_MessageId
+  name: MessageId
+  nameWithType: IOutboundMessage.MessageId
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IOutboundMessage.MessageId
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IOutboundMessage.RawMessageData
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IOutboundMessage.RawMessageData
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IOutboundMessage
+  href: Bodoconsult.NetworkCommunication.Interfaces.IOutboundMessage.html#Bodoconsult_NetworkCommunication_Interfaces_IOutboundMessage_RawMessageData
+  name: RawMessageData
+  nameWithType: IOutboundMessage.RawMessageData
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IOutboundMessage.RawMessageData
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IOutboundMessage.RawMessageDataClearText
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IOutboundMessage.RawMessageDataClearText
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IOutboundMessage
+  href: Bodoconsult.NetworkCommunication.Interfaces.IOutboundMessage.html#Bodoconsult_NetworkCommunication_Interfaces_IOutboundMessage_RawMessageDataClearText
+  name: RawMessageDataClearText
+  nameWithType: IOutboundMessage.RawMessageDataClearText
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IOutboundMessage.RawMessageDataClearText
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IOutboundMessage.ToInfoString
+  commentId: M:Bodoconsult.NetworkCommunication.Interfaces.IOutboundMessage.ToInfoString
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IOutboundMessage
+  href: Bodoconsult.NetworkCommunication.Interfaces.IOutboundMessage.html#Bodoconsult_NetworkCommunication_Interfaces_IOutboundMessage_ToInfoString
+  name: ToInfoString()
+  nameWithType: IOutboundMessage.ToInfoString()
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IOutboundMessage.ToInfoString()
+  spec.csharp:
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IOutboundMessage.ToInfoString
+    name: ToInfoString
+    href: Bodoconsult.NetworkCommunication.Interfaces.IOutboundMessage.html#Bodoconsult_NetworkCommunication_Interfaces_IOutboundMessage_ToInfoString
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IOutboundMessage.ToInfoString
+    name: ToInfoString
+    href: Bodoconsult.NetworkCommunication.Interfaces.IOutboundMessage.html#Bodoconsult_NetworkCommunication_Interfaces_IOutboundMessage_ToInfoString
+  - name: (
+  - name: )
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IOutboundMessage.ToShortInfoString
+  commentId: M:Bodoconsult.NetworkCommunication.Interfaces.IOutboundMessage.ToShortInfoString
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IOutboundMessage
+  href: Bodoconsult.NetworkCommunication.Interfaces.IOutboundMessage.html#Bodoconsult_NetworkCommunication_Interfaces_IOutboundMessage_ToShortInfoString
+  name: ToShortInfoString()
+  nameWithType: IOutboundMessage.ToShortInfoString()
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IOutboundMessage.ToShortInfoString()
+  spec.csharp:
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IOutboundMessage.ToShortInfoString
+    name: ToShortInfoString
+    href: Bodoconsult.NetworkCommunication.Interfaces.IOutboundMessage.html#Bodoconsult_NetworkCommunication_Interfaces_IOutboundMessage_ToShortInfoString
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IOutboundMessage.ToShortInfoString
+    name: ToShortInfoString
+    href: Bodoconsult.NetworkCommunication.Interfaces.IOutboundMessage.html#Bodoconsult_NetworkCommunication_Interfaces_IOutboundMessage_ToShortInfoString
+  - name: (
+  - name: )
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessage
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessage
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessage.html
+  name: IOutboundDataMessage
+  nameWithType: IOutboundDataMessage
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessage
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IOutboundMessage
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.IOutboundMessage
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.NetworkCommunication.Interfaces.IOutboundMessage.html
+  name: IOutboundMessage
+  nameWithType: IOutboundMessage
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IOutboundMessage
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IOutboundCommandBlockDataMessage.Command*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.IOutboundCommandBlockDataMessage.Command
+  href: Bodoconsult.NetworkCommunication.Interfaces.IOutboundCommandBlockDataMessage.html#Bodoconsult_NetworkCommunication_Interfaces_IOutboundCommandBlockDataMessage_Command
+  name: Command
+  nameWithType: IOutboundCommandBlockDataMessage.Command
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IOutboundCommandBlockDataMessage.Command
+- uid: System.Char
+  commentId: T:System.Char
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.char
+  name: char
+  nameWithType: char
+  fullName: char
+  nameWithType.vb: Char
+  fullName.vb: Char
+  name.vb: Char
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IOutboundCommandBlockDataMessage.Block*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.IOutboundCommandBlockDataMessage.Block
+  href: Bodoconsult.NetworkCommunication.Interfaces.IOutboundCommandBlockDataMessage.html#Bodoconsult_NetworkCommunication_Interfaces_IOutboundCommandBlockDataMessage_Block
+  name: Block
+  nameWithType: IOutboundCommandBlockDataMessage.Block
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IOutboundCommandBlockDataMessage.Block
+- uid: System.Byte
+  commentId: T:System.Byte
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.byte
+  name: byte
+  nameWithType: byte
+  fullName: byte
+  nameWithType.vb: Byte
+  fullName.vb: Byte
+  name.vb: Byte

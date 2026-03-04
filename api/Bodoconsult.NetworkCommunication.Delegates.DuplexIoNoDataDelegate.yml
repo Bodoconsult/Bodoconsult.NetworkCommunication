@@ -1,0 +1,61 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bodoconsult.NetworkCommunication.Delegates.DuplexIoNoDataDelegate
+  commentId: T:Bodoconsult.NetworkCommunication.Delegates.DuplexIoNoDataDelegate
+  id: DuplexIoNoDataDelegate
+  parent: Bodoconsult.NetworkCommunication.Delegates
+  children: []
+  langs:
+  - csharp
+  - vb
+  name: DuplexIoNoDataDelegate
+  nameWithType: DuplexIoNoDataDelegate
+  fullName: Bodoconsult.NetworkCommunication.Delegates.DuplexIoNoDataDelegate
+  type: Delegate
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Delegates/CommDelegates.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: DuplexIoNoDataDelegate
+    path: src/Bodoconsult.NetworkCommunication/Delegates/CommDelegates.cs
+    startLine: 26
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Delegates
+  summary: No data available delegate for DuplexIO
+  example: []
+  syntax:
+    content: public delegate void DuplexIoNoDataDelegate()
+    content.vb: Public Delegate Sub DuplexIoNoDataDelegate()
+references:
+- uid: Bodoconsult.NetworkCommunication.Delegates
+  commentId: N:Bodoconsult.NetworkCommunication.Delegates
+  href: Bodoconsult.html
+  name: Bodoconsult.NetworkCommunication.Delegates
+  nameWithType: Bodoconsult.NetworkCommunication.Delegates
+  fullName: Bodoconsult.NetworkCommunication.Delegates
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Delegates
+    name: Delegates
+    href: Bodoconsult.NetworkCommunication.Delegates.html
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Delegates
+    name: Delegates
+    href: Bodoconsult.NetworkCommunication.Delegates.html

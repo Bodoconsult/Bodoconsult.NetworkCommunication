@@ -1,0 +1,117 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IDuplexIoFactory
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.IDuplexIoFactory
+  id: IDuplexIoFactory
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  children:
+  - Bodoconsult.NetworkCommunication.Interfaces.IDuplexIoFactory.CreateInstance(Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig)
+  langs:
+  - csharp
+  - vb
+  name: IDuplexIoFactory
+  nameWithType: IDuplexIoFactory
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IDuplexIoFactory
+  type: Interface
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/IDuplexIoFactory.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: IDuplexIoFactory
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/IDuplexIoFactory.cs
+    startLine: 7
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Interface for factories for <xref href="Bodoconsult.NetworkCommunication.Interfaces.IDuplexIo" data-throw-if-not-resolved="false"></xref> implementations
+  example: []
+  syntax:
+    content: public interface IDuplexIoFactory
+    content.vb: Public Interface IDuplexIoFactory
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IDuplexIoFactory.CreateInstance(Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig)
+  commentId: M:Bodoconsult.NetworkCommunication.Interfaces.IDuplexIoFactory.CreateInstance(Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig)
+  id: CreateInstance(Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig)
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IDuplexIoFactory
+  langs:
+  - csharp
+  - vb
+  name: CreateInstance(IDataMessagingConfig)
+  nameWithType: IDuplexIoFactory.CreateInstance(IDataMessagingConfig)
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IDuplexIoFactory.CreateInstance(Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig)
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/IDuplexIoFactory.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: CreateInstance
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/IDuplexIoFactory.cs
+    startLine: 14
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Creates an instance of <xref href="Bodoconsult.NetworkCommunication.Interfaces.IDuplexIo" data-throw-if-not-resolved="false"></xref>
+  example: []
+  syntax:
+    content: IDuplexIo CreateInstance(IDataMessagingConfig config)
+    parameters:
+    - id: config
+      type: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig
+      description: Current data messaging config
+    return:
+      type: Bodoconsult.NetworkCommunication.Interfaces.IDuplexIo
+      description: Instance of <xref href="Bodoconsult.NetworkCommunication.Interfaces.IDuplexIo" data-throw-if-not-resolved="false"></xref>
+    content.vb: Function CreateInstance(config As IDataMessagingConfig) As IDuplexIo
+  overload: Bodoconsult.NetworkCommunication.Interfaces.IDuplexIoFactory.CreateInstance*
+references:
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IDuplexIo
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.IDuplexIo
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.NetworkCommunication.Interfaces.IDuplexIo.html
+  name: IDuplexIo
+  nameWithType: IDuplexIo
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IDuplexIo
+- uid: Bodoconsult.NetworkCommunication.Interfaces
+  commentId: N:Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.html
+  name: Bodoconsult.NetworkCommunication.Interfaces
+  nameWithType: Bodoconsult.NetworkCommunication.Interfaces
+  fullName: Bodoconsult.NetworkCommunication.Interfaces
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Interfaces
+    name: Interfaces
+    href: Bodoconsult.NetworkCommunication.Interfaces.html
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Interfaces
+    name: Interfaces
+    href: Bodoconsult.NetworkCommunication.Interfaces.html
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IDuplexIoFactory.CreateInstance*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.IDuplexIoFactory.CreateInstance
+  href: Bodoconsult.NetworkCommunication.Interfaces.IDuplexIoFactory.html#Bodoconsult_NetworkCommunication_Interfaces_IDuplexIoFactory_CreateInstance_Bodoconsult_NetworkCommunication_Interfaces_IDataMessagingConfig_
+  name: CreateInstance
+  nameWithType: IDuplexIoFactory.CreateInstance
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IDuplexIoFactory.CreateInstance
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig.html
+  name: IDataMessagingConfig
+  nameWithType: IDataMessagingConfig
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig

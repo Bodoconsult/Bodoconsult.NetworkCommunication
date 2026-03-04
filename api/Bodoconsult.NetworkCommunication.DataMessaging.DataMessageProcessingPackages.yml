@@ -1,0 +1,58 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bodoconsult.NetworkCommunication.DataMessaging.DataMessageProcessingPackages
+  commentId: N:Bodoconsult.NetworkCommunication.DataMessaging.DataMessageProcessingPackages
+  id: Bodoconsult.NetworkCommunication.DataMessaging.DataMessageProcessingPackages
+  children:
+  - Bodoconsult.NetworkCommunication.DataMessaging.DataMessageProcessingPackages.BtcpDataMessageProcessingPackage
+  - Bodoconsult.NetworkCommunication.DataMessaging.DataMessageProcessingPackages.BtcpHandshakeFactory
+  - Bodoconsult.NetworkCommunication.DataMessaging.DataMessageProcessingPackages.EdcpDataMessageProcessingPackage
+  - Bodoconsult.NetworkCommunication.DataMessaging.DataMessageProcessingPackages.EdcpHandshakeFactory
+  - Bodoconsult.NetworkCommunication.DataMessaging.DataMessageProcessingPackages.SdcpDataMessageProcessingPackage
+  - Bodoconsult.NetworkCommunication.DataMessaging.DataMessageProcessingPackages.SdcpHandshakeFactory
+  langs:
+  - csharp
+  - vb
+  name: Bodoconsult.NetworkCommunication.DataMessaging.DataMessageProcessingPackages
+  nameWithType: Bodoconsult.NetworkCommunication.DataMessaging.DataMessageProcessingPackages
+  fullName: Bodoconsult.NetworkCommunication.DataMessaging.DataMessageProcessingPackages
+  type: Namespace
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+references:
+- uid: Bodoconsult.NetworkCommunication.DataMessaging.DataMessageProcessingPackages.BtcpDataMessageProcessingPackage
+  commentId: T:Bodoconsult.NetworkCommunication.DataMessaging.DataMessageProcessingPackages.BtcpDataMessageProcessingPackage
+  href: Bodoconsult.NetworkCommunication.DataMessaging.DataMessageProcessingPackages.BtcpDataMessageProcessingPackage.html
+  name: BtcpDataMessageProcessingPackage
+  nameWithType: BtcpDataMessageProcessingPackage
+  fullName: Bodoconsult.NetworkCommunication.DataMessaging.DataMessageProcessingPackages.BtcpDataMessageProcessingPackage
+- uid: Bodoconsult.NetworkCommunication.DataMessaging.DataMessageProcessingPackages.BtcpHandshakeFactory
+  commentId: T:Bodoconsult.NetworkCommunication.DataMessaging.DataMessageProcessingPackages.BtcpHandshakeFactory
+  href: Bodoconsult.NetworkCommunication.DataMessaging.DataMessageProcessingPackages.BtcpHandshakeFactory.html
+  name: BtcpHandshakeFactory
+  nameWithType: BtcpHandshakeFactory
+  fullName: Bodoconsult.NetworkCommunication.DataMessaging.DataMessageProcessingPackages.BtcpHandshakeFactory
+- uid: Bodoconsult.NetworkCommunication.DataMessaging.DataMessageProcessingPackages.EdcpDataMessageProcessingPackage
+  commentId: T:Bodoconsult.NetworkCommunication.DataMessaging.DataMessageProcessingPackages.EdcpDataMessageProcessingPackage
+  href: Bodoconsult.NetworkCommunication.DataMessaging.DataMessageProcessingPackages.EdcpDataMessageProcessingPackage.html
+  name: EdcpDataMessageProcessingPackage
+  nameWithType: EdcpDataMessageProcessingPackage
+  fullName: Bodoconsult.NetworkCommunication.DataMessaging.DataMessageProcessingPackages.EdcpDataMessageProcessingPackage
+- uid: Bodoconsult.NetworkCommunication.DataMessaging.DataMessageProcessingPackages.EdcpHandshakeFactory
+  commentId: T:Bodoconsult.NetworkCommunication.DataMessaging.DataMessageProcessingPackages.EdcpHandshakeFactory
+  href: Bodoconsult.NetworkCommunication.DataMessaging.DataMessageProcessingPackages.EdcpHandshakeFactory.html
+  name: EdcpHandshakeFactory
+  nameWithType: EdcpHandshakeFactory
+  fullName: Bodoconsult.NetworkCommunication.DataMessaging.DataMessageProcessingPackages.EdcpHandshakeFactory
+- uid: Bodoconsult.NetworkCommunication.DataMessaging.DataMessageProcessingPackages.SdcpDataMessageProcessingPackage
+  commentId: T:Bodoconsult.NetworkCommunication.DataMessaging.DataMessageProcessingPackages.SdcpDataMessageProcessingPackage
+  href: Bodoconsult.NetworkCommunication.DataMessaging.DataMessageProcessingPackages.SdcpDataMessageProcessingPackage.html
+  name: SdcpDataMessageProcessingPackage
+  nameWithType: SdcpDataMessageProcessingPackage
+  fullName: Bodoconsult.NetworkCommunication.DataMessaging.DataMessageProcessingPackages.SdcpDataMessageProcessingPackage
+- uid: Bodoconsult.NetworkCommunication.DataMessaging.DataMessageProcessingPackages.SdcpHandshakeFactory
+  commentId: T:Bodoconsult.NetworkCommunication.DataMessaging.DataMessageProcessingPackages.SdcpHandshakeFactory
+  href: Bodoconsult.NetworkCommunication.DataMessaging.DataMessageProcessingPackages.SdcpHandshakeFactory.html
+  name: SdcpHandshakeFactory
+  nameWithType: SdcpHandshakeFactory
+  fullName: Bodoconsult.NetworkCommunication.DataMessaging.DataMessageProcessingPackages.SdcpHandshakeFactory

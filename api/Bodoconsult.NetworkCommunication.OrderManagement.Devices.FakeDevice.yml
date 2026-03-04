@@ -1,0 +1,1619 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Devices.FakeDevice
+  commentId: T:Bodoconsult.NetworkCommunication.OrderManagement.Devices.FakeDevice
+  id: FakeDevice
+  parent: Bodoconsult.NetworkCommunication.OrderManagement.Devices
+  children:
+  - Bodoconsult.NetworkCommunication.OrderManagement.Devices.FakeDevice.#ctor(Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig,Bodoconsult.NetworkCommunication.Interfaces.IOrderManagementClientNotificationManager)
+  - Bodoconsult.NetworkCommunication.OrderManagement.Devices.FakeDevice.LoadCommAdapter(Bodoconsult.NetworkCommunication.Interfaces.ICommunicationAdapter)
+  langs:
+  - csharp
+  - vb
+  name: FakeDevice
+  nameWithType: FakeDevice
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Devices.FakeDevice
+  type: Class
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/OrderManagement/Devices/FakeDevice.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: FakeDevice
+    path: src/Bodoconsult.NetworkCommunication/OrderManagement/Devices/FakeDevice.cs
+    startLine: 12
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.OrderManagement.Devices
+  summary: A fake device supporting order management
+  example: []
+  syntax:
+    content: 'public class FakeDevice : BaseOrderManagementDevice, IOrderManagementDevice, IStateManagementContext'
+    content.vb: Public Class FakeDevice Inherits BaseOrderManagementDevice Implements IOrderManagementDevice, IStateManagementContext
+  inheritance:
+  - System.Object
+  - Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice
+  implements:
+  - Bodoconsult.NetworkCommunication.Interfaces.IOrderManagementDevice
+  - Bodoconsult.NetworkCommunication.StateManagement.IStateManagementContext
+  inheritedMembers:
+  - Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice._isOrderProcessingActivated
+  - Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice._appLogger
+  - Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice._monitorLogger
+  - Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.DataMessagingConfig
+  - Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.CommunicationAdapter
+  - Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.OrderProcessor
+  - Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.DeviceState
+  - Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.BusinessState
+  - Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.BusinessSubState
+  - Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.CurrentState
+  - Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.SetInitialStates(Bodoconsult.NetworkCommunication.Interfaces.IDeviceState,Bodoconsult.NetworkCommunication.StateManagement.IBusinessState,Bodoconsult.NetworkCommunication.StateManagement.IBusinessState)
+  - Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.LoadState(Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState)
+  - Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.OrderManager
+  - Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.ClientNotificationManager
+  - Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.DeviceStatesInitProcess
+  - Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.IsConnected
+  - Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.IsRunningOrdersAllowed
+  - Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.IsOrderProcessingActivated
+  - Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.MasterOrderFactory
+  - Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.OrdersInQueue
+  - Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.OrdersInProcessing
+  - Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.IsNoOrderInProcessing
+  - Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.OrdersInProcessingCount
+  - Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.IsAnyOrderToProcess
+  - Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.StartComm
+  - Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.ResetComm
+  - Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.IsRunningTheOrderAllowed(Bodoconsult.NetworkCommunication.Interfaces.IOrder,System.Collections.Generic.IList{Bodoconsult.NetworkCommunication.Interfaces.IOrder})
+  - Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.IsPingable
+  - Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.ResetInternalState
+  - Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.RequestDeviceInit
+  - Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.PrepareUpdateModeCheck
+  - Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.PrepareDeviceInit
+  - Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.GetNextOrderToRun
+  - Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.Check4ConcurrentOrders(Bodoconsult.NetworkCommunication.Interfaces.IOrder)
+  - Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.OrderFinishedSuccessful(Bodoconsult.NetworkCommunication.Interfaces.IOrder)
+  - Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.OrderFinishedUnsuccessful(Bodoconsult.NetworkCommunication.Interfaces.IOrder)
+  - Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.CancelOrdersWithSpecialHandling
+  - Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.CancelRunningOrders(System.Byte)
+  - Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.CreateHardwareInitOrder
+  - Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.DoNotifyHardwareInitRequested
+  - Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.DoBasicCheckForReceivedMessage(Bodoconsult.NetworkCommunication.Interfaces.IInboundDataMessage)
+  - Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.DoCheckForErrorMessage(Bodoconsult.NetworkCommunication.Interfaces.IInboundDataMessage)
+  - Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.CancelRunningOperation
+  - Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.CheckIfThereAreOrdersToBeCreated
+  - Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.LogDebug(System.String)
+  - Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.LogInformation(System.String)
+  - Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.LogWarning(System.String)
+  - Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.LogError(System.String)
+  - Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.Dispose
+  - Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.LoadMasterOrderFactory(Bodoconsult.NetworkCommunication.Interfaces.IMasterOrderFactory)
+  - Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.LoadDeviceOrderManager(Bodoconsult.NetworkCommunication.Interfaces.IOrderManager)
+  - Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.CreateOrder(System.Type,Bodoconsult.NetworkCommunication.Interfaces.IParameterSet)
+  - Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.CancelDeviceOrder(System.Int64)
+  - Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.Start
+  - Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.Stop
+  - Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.DoNotify(Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState)
+  - Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.CancelDeviceOrdersBySourceUid(System.Guid)
+  - Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.SetOrderProcessingStateDelegate(System.Boolean)
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Devices.FakeDevice.#ctor(Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig,Bodoconsult.NetworkCommunication.Interfaces.IOrderManagementClientNotificationManager)
+  commentId: M:Bodoconsult.NetworkCommunication.OrderManagement.Devices.FakeDevice.#ctor(Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig,Bodoconsult.NetworkCommunication.Interfaces.IOrderManagementClientNotificationManager)
+  id: '#ctor(Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig,Bodoconsult.NetworkCommunication.Interfaces.IOrderManagementClientNotificationManager)'
+  parent: Bodoconsult.NetworkCommunication.OrderManagement.Devices.FakeDevice
+  langs:
+  - csharp
+  - vb
+  name: FakeDevice(IDataMessagingConfig, IOrderManagementClientNotificationManager)
+  nameWithType: FakeDevice.FakeDevice(IDataMessagingConfig, IOrderManagementClientNotificationManager)
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Devices.FakeDevice.FakeDevice(Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig, Bodoconsult.NetworkCommunication.Interfaces.IOrderManagementClientNotificationManager)
+  type: Constructor
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/OrderManagement/Devices/FakeDevice.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: .ctor
+    path: src/Bodoconsult.NetworkCommunication/OrderManagement/Devices/FakeDevice.cs
+    startLine: 19
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.OrderManagement.Devices
+  summary: Default ctor
+  example: []
+  syntax:
+    content: public FakeDevice(IDataMessagingConfig dataMessagingConfig, IOrderManagementClientNotificationManager clientNotificationManager)
+    parameters:
+    - id: dataMessagingConfig
+      type: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig
+      description: Current messaging config
+    - id: clientNotificationManager
+      type: Bodoconsult.NetworkCommunication.Interfaces.IOrderManagementClientNotificationManager
+      description: Current client notification manager
+    content.vb: Public Sub New(dataMessagingConfig As IDataMessagingConfig, clientNotificationManager As IOrderManagementClientNotificationManager)
+  overload: Bodoconsult.NetworkCommunication.OrderManagement.Devices.FakeDevice.#ctor*
+  nameWithType.vb: FakeDevice.New(IDataMessagingConfig, IOrderManagementClientNotificationManager)
+  fullName.vb: Bodoconsult.NetworkCommunication.OrderManagement.Devices.FakeDevice.New(Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig, Bodoconsult.NetworkCommunication.Interfaces.IOrderManagementClientNotificationManager)
+  name.vb: New(IDataMessagingConfig, IOrderManagementClientNotificationManager)
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Devices.FakeDevice.LoadCommAdapter(Bodoconsult.NetworkCommunication.Interfaces.ICommunicationAdapter)
+  commentId: M:Bodoconsult.NetworkCommunication.OrderManagement.Devices.FakeDevice.LoadCommAdapter(Bodoconsult.NetworkCommunication.Interfaces.ICommunicationAdapter)
+  id: LoadCommAdapter(Bodoconsult.NetworkCommunication.Interfaces.ICommunicationAdapter)
+  parent: Bodoconsult.NetworkCommunication.OrderManagement.Devices.FakeDevice
+  langs:
+  - csharp
+  - vb
+  name: LoadCommAdapter(ICommunicationAdapter)
+  nameWithType: FakeDevice.LoadCommAdapter(ICommunicationAdapter)
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Devices.FakeDevice.LoadCommAdapter(Bodoconsult.NetworkCommunication.Interfaces.ICommunicationAdapter)
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/OrderManagement/Devices/FakeDevice.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: LoadCommAdapter
+    path: src/Bodoconsult.NetworkCommunication/OrderManagement/Devices/FakeDevice.cs
+    startLine: 26
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.OrderManagement.Devices
+  summary: Load a comm adapter
+  example: []
+  syntax:
+    content: public void LoadCommAdapter(ICommunicationAdapter commAdapter)
+    parameters:
+    - id: commAdapter
+      type: Bodoconsult.NetworkCommunication.Interfaces.ICommunicationAdapter
+      description: Current comm adapter
+    content.vb: Public Sub LoadCommAdapter(commAdapter As ICommunicationAdapter)
+  overload: Bodoconsult.NetworkCommunication.OrderManagement.Devices.FakeDevice.LoadCommAdapter*
+references:
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Devices
+  commentId: N:Bodoconsult.NetworkCommunication.OrderManagement.Devices
+  href: Bodoconsult.html
+  name: Bodoconsult.NetworkCommunication.OrderManagement.Devices
+  nameWithType: Bodoconsult.NetworkCommunication.OrderManagement.Devices
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Devices
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.OrderManagement
+    name: OrderManagement
+    href: Bodoconsult.NetworkCommunication.OrderManagement.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.OrderManagement.Devices
+    name: Devices
+    href: Bodoconsult.NetworkCommunication.OrderManagement.Devices.html
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.OrderManagement
+    name: OrderManagement
+    href: Bodoconsult.NetworkCommunication.OrderManagement.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.OrderManagement.Devices
+    name: Devices
+    href: Bodoconsult.NetworkCommunication.OrderManagement.Devices.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice
+  commentId: T:Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice
+  parent: Bodoconsult.NetworkCommunication.OrderManagement.Devices
+  href: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.html
+  name: BaseOrderManagementDevice
+  nameWithType: BaseOrderManagementDevice
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IOrderManagementDevice
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.IOrderManagementDevice
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.NetworkCommunication.Interfaces.IOrderManagementDevice.html
+  name: IOrderManagementDevice
+  nameWithType: IOrderManagementDevice
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IOrderManagementDevice
+- uid: Bodoconsult.NetworkCommunication.StateManagement.IStateManagementContext
+  commentId: T:Bodoconsult.NetworkCommunication.StateManagement.IStateManagementContext
+  parent: Bodoconsult.NetworkCommunication.StateManagement
+  href: Bodoconsult.NetworkCommunication.StateManagement.IStateManagementContext.html
+  name: IStateManagementContext
+  nameWithType: IStateManagementContext
+  fullName: Bodoconsult.NetworkCommunication.StateManagement.IStateManagementContext
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice._isOrderProcessingActivated
+  commentId: F:Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice._isOrderProcessingActivated
+  parent: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice
+  href: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.html#Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice__isOrderProcessingActivated
+  name: _isOrderProcessingActivated
+  nameWithType: BaseOrderManagementDevice._isOrderProcessingActivated
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice._isOrderProcessingActivated
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice._appLogger
+  commentId: F:Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice._appLogger
+  parent: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice
+  href: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.html#Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice__appLogger
+  name: _appLogger
+  nameWithType: BaseOrderManagementDevice._appLogger
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice._appLogger
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice._monitorLogger
+  commentId: F:Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice._monitorLogger
+  parent: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice
+  href: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.html#Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice__monitorLogger
+  name: _monitorLogger
+  nameWithType: BaseOrderManagementDevice._monitorLogger
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice._monitorLogger
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.DataMessagingConfig
+  commentId: P:Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.DataMessagingConfig
+  parent: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice
+  href: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.html#Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_DataMessagingConfig
+  name: DataMessagingConfig
+  nameWithType: BaseOrderManagementDevice.DataMessagingConfig
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.DataMessagingConfig
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.CommunicationAdapter
+  commentId: P:Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.CommunicationAdapter
+  parent: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice
+  href: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.html#Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_CommunicationAdapter
+  name: CommunicationAdapter
+  nameWithType: BaseOrderManagementDevice.CommunicationAdapter
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.CommunicationAdapter
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.OrderProcessor
+  commentId: P:Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.OrderProcessor
+  parent: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice
+  href: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.html#Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_OrderProcessor
+  name: OrderProcessor
+  nameWithType: BaseOrderManagementDevice.OrderProcessor
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.OrderProcessor
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.DeviceState
+  commentId: P:Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.DeviceState
+  parent: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice
+  href: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.html#Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_DeviceState
+  name: DeviceState
+  nameWithType: BaseOrderManagementDevice.DeviceState
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.DeviceState
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.BusinessState
+  commentId: P:Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.BusinessState
+  parent: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice
+  href: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.html#Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_BusinessState
+  name: BusinessState
+  nameWithType: BaseOrderManagementDevice.BusinessState
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.BusinessState
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.BusinessSubState
+  commentId: P:Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.BusinessSubState
+  parent: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice
+  href: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.html#Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_BusinessSubState
+  name: BusinessSubState
+  nameWithType: BaseOrderManagementDevice.BusinessSubState
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.BusinessSubState
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.CurrentState
+  commentId: P:Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.CurrentState
+  parent: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice
+  href: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.html#Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_CurrentState
+  name: CurrentState
+  nameWithType: BaseOrderManagementDevice.CurrentState
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.CurrentState
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.SetInitialStates(Bodoconsult.NetworkCommunication.Interfaces.IDeviceState,Bodoconsult.NetworkCommunication.StateManagement.IBusinessState,Bodoconsult.NetworkCommunication.StateManagement.IBusinessState)
+  commentId: M:Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.SetInitialStates(Bodoconsult.NetworkCommunication.Interfaces.IDeviceState,Bodoconsult.NetworkCommunication.StateManagement.IBusinessState,Bodoconsult.NetworkCommunication.StateManagement.IBusinessState)
+  parent: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice
+  href: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.html#Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_SetInitialStates_Bodoconsult_NetworkCommunication_Interfaces_IDeviceState_Bodoconsult_NetworkCommunication_StateManagement_IBusinessState_Bodoconsult_NetworkCommunication_StateManagement_IBusinessState_
+  name: SetInitialStates(IDeviceState, IBusinessState, IBusinessState)
+  nameWithType: BaseOrderManagementDevice.SetInitialStates(IDeviceState, IBusinessState, IBusinessState)
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.SetInitialStates(Bodoconsult.NetworkCommunication.Interfaces.IDeviceState, Bodoconsult.NetworkCommunication.StateManagement.IBusinessState, Bodoconsult.NetworkCommunication.StateManagement.IBusinessState)
+  spec.csharp:
+  - uid: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.SetInitialStates(Bodoconsult.NetworkCommunication.Interfaces.IDeviceState,Bodoconsult.NetworkCommunication.StateManagement.IBusinessState,Bodoconsult.NetworkCommunication.StateManagement.IBusinessState)
+    name: SetInitialStates
+    href: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.html#Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_SetInitialStates_Bodoconsult_NetworkCommunication_Interfaces_IDeviceState_Bodoconsult_NetworkCommunication_StateManagement_IBusinessState_Bodoconsult_NetworkCommunication_StateManagement_IBusinessState_
+  - name: (
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IDeviceState
+    name: IDeviceState
+    href: Bodoconsult.NetworkCommunication.Interfaces.IDeviceState.html
+  - name: ','
+  - name: " "
+  - uid: Bodoconsult.NetworkCommunication.StateManagement.IBusinessState
+    name: IBusinessState
+    href: Bodoconsult.NetworkCommunication.StateManagement.IBusinessState.html
+  - name: ','
+  - name: " "
+  - uid: Bodoconsult.NetworkCommunication.StateManagement.IBusinessState
+    name: IBusinessState
+    href: Bodoconsult.NetworkCommunication.StateManagement.IBusinessState.html
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.SetInitialStates(Bodoconsult.NetworkCommunication.Interfaces.IDeviceState,Bodoconsult.NetworkCommunication.StateManagement.IBusinessState,Bodoconsult.NetworkCommunication.StateManagement.IBusinessState)
+    name: SetInitialStates
+    href: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.html#Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_SetInitialStates_Bodoconsult_NetworkCommunication_Interfaces_IDeviceState_Bodoconsult_NetworkCommunication_StateManagement_IBusinessState_Bodoconsult_NetworkCommunication_StateManagement_IBusinessState_
+  - name: (
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IDeviceState
+    name: IDeviceState
+    href: Bodoconsult.NetworkCommunication.Interfaces.IDeviceState.html
+  - name: ','
+  - name: " "
+  - uid: Bodoconsult.NetworkCommunication.StateManagement.IBusinessState
+    name: IBusinessState
+    href: Bodoconsult.NetworkCommunication.StateManagement.IBusinessState.html
+  - name: ','
+  - name: " "
+  - uid: Bodoconsult.NetworkCommunication.StateManagement.IBusinessState
+    name: IBusinessState
+    href: Bodoconsult.NetworkCommunication.StateManagement.IBusinessState.html
+  - name: )
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.LoadState(Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState)
+  commentId: M:Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.LoadState(Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState)
+  parent: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice
+  href: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.html#Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_LoadState_Bodoconsult_NetworkCommunication_StateManagement_IStateManagementState_
+  name: LoadState(IStateManagementState)
+  nameWithType: BaseOrderManagementDevice.LoadState(IStateManagementState)
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.LoadState(Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState)
+  spec.csharp:
+  - uid: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.LoadState(Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState)
+    name: LoadState
+    href: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.html#Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_LoadState_Bodoconsult_NetworkCommunication_StateManagement_IStateManagementState_
+  - name: (
+  - uid: Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState
+    name: IStateManagementState
+    href: Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState.html
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.LoadState(Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState)
+    name: LoadState
+    href: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.html#Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_LoadState_Bodoconsult_NetworkCommunication_StateManagement_IStateManagementState_
+  - name: (
+  - uid: Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState
+    name: IStateManagementState
+    href: Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState.html
+  - name: )
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.OrderManager
+  commentId: P:Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.OrderManager
+  parent: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice
+  href: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.html#Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_OrderManager
+  name: OrderManager
+  nameWithType: BaseOrderManagementDevice.OrderManager
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.OrderManager
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.ClientNotificationManager
+  commentId: P:Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.ClientNotificationManager
+  parent: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice
+  href: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.html#Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_ClientNotificationManager
+  name: ClientNotificationManager
+  nameWithType: BaseOrderManagementDevice.ClientNotificationManager
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.ClientNotificationManager
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.DeviceStatesInitProcess
+  commentId: P:Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.DeviceStatesInitProcess
+  parent: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice
+  href: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.html#Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_DeviceStatesInitProcess
+  name: DeviceStatesInitProcess
+  nameWithType: BaseOrderManagementDevice.DeviceStatesInitProcess
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.DeviceStatesInitProcess
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.IsConnected
+  commentId: P:Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.IsConnected
+  parent: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice
+  href: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.html#Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_IsConnected
+  name: IsConnected
+  nameWithType: BaseOrderManagementDevice.IsConnected
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.IsConnected
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.IsRunningOrdersAllowed
+  commentId: P:Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.IsRunningOrdersAllowed
+  parent: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice
+  href: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.html#Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_IsRunningOrdersAllowed
+  name: IsRunningOrdersAllowed
+  nameWithType: BaseOrderManagementDevice.IsRunningOrdersAllowed
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.IsRunningOrdersAllowed
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.IsOrderProcessingActivated
+  commentId: P:Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.IsOrderProcessingActivated
+  parent: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice
+  href: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.html#Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_IsOrderProcessingActivated
+  name: IsOrderProcessingActivated
+  nameWithType: BaseOrderManagementDevice.IsOrderProcessingActivated
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.IsOrderProcessingActivated
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.MasterOrderFactory
+  commentId: P:Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.MasterOrderFactory
+  parent: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice
+  href: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.html#Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_MasterOrderFactory
+  name: MasterOrderFactory
+  nameWithType: BaseOrderManagementDevice.MasterOrderFactory
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.MasterOrderFactory
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.OrdersInQueue
+  commentId: P:Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.OrdersInQueue
+  parent: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice
+  href: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.html#Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_OrdersInQueue
+  name: OrdersInQueue
+  nameWithType: BaseOrderManagementDevice.OrdersInQueue
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.OrdersInQueue
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.OrdersInProcessing
+  commentId: P:Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.OrdersInProcessing
+  parent: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice
+  href: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.html#Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_OrdersInProcessing
+  name: OrdersInProcessing
+  nameWithType: BaseOrderManagementDevice.OrdersInProcessing
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.OrdersInProcessing
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.IsNoOrderInProcessing
+  commentId: P:Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.IsNoOrderInProcessing
+  parent: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice
+  href: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.html#Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_IsNoOrderInProcessing
+  name: IsNoOrderInProcessing
+  nameWithType: BaseOrderManagementDevice.IsNoOrderInProcessing
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.IsNoOrderInProcessing
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.OrdersInProcessingCount
+  commentId: P:Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.OrdersInProcessingCount
+  parent: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice
+  href: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.html#Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_OrdersInProcessingCount
+  name: OrdersInProcessingCount
+  nameWithType: BaseOrderManagementDevice.OrdersInProcessingCount
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.OrdersInProcessingCount
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.IsAnyOrderToProcess
+  commentId: P:Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.IsAnyOrderToProcess
+  parent: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice
+  href: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.html#Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_IsAnyOrderToProcess
+  name: IsAnyOrderToProcess
+  nameWithType: BaseOrderManagementDevice.IsAnyOrderToProcess
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.IsAnyOrderToProcess
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.StartComm
+  commentId: M:Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.StartComm
+  parent: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice
+  href: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.html#Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_StartComm
+  name: StartComm()
+  nameWithType: BaseOrderManagementDevice.StartComm()
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.StartComm()
+  spec.csharp:
+  - uid: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.StartComm
+    name: StartComm
+    href: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.html#Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_StartComm
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.StartComm
+    name: StartComm
+    href: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.html#Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_StartComm
+  - name: (
+  - name: )
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.ResetComm
+  commentId: M:Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.ResetComm
+  parent: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice
+  href: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.html#Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_ResetComm
+  name: ResetComm()
+  nameWithType: BaseOrderManagementDevice.ResetComm()
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.ResetComm()
+  spec.csharp:
+  - uid: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.ResetComm
+    name: ResetComm
+    href: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.html#Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_ResetComm
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.ResetComm
+    name: ResetComm
+    href: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.html#Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_ResetComm
+  - name: (
+  - name: )
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.IsRunningTheOrderAllowed(Bodoconsult.NetworkCommunication.Interfaces.IOrder,System.Collections.Generic.IList{Bodoconsult.NetworkCommunication.Interfaces.IOrder})
+  commentId: M:Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.IsRunningTheOrderAllowed(Bodoconsult.NetworkCommunication.Interfaces.IOrder,System.Collections.Generic.IList{Bodoconsult.NetworkCommunication.Interfaces.IOrder})
+  parent: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice
+  isExternal: true
+  href: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.html#Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_IsRunningTheOrderAllowed_Bodoconsult_NetworkCommunication_Interfaces_IOrder_System_Collections_Generic_IList_Bodoconsult_NetworkCommunication_Interfaces_IOrder__
+  name: IsRunningTheOrderAllowed(IOrder, IList<IOrder>)
+  nameWithType: BaseOrderManagementDevice.IsRunningTheOrderAllowed(IOrder, IList<IOrder>)
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.IsRunningTheOrderAllowed(Bodoconsult.NetworkCommunication.Interfaces.IOrder, System.Collections.Generic.IList<Bodoconsult.NetworkCommunication.Interfaces.IOrder>)
+  nameWithType.vb: BaseOrderManagementDevice.IsRunningTheOrderAllowed(IOrder, IList(Of IOrder))
+  fullName.vb: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.IsRunningTheOrderAllowed(Bodoconsult.NetworkCommunication.Interfaces.IOrder, System.Collections.Generic.IList(Of Bodoconsult.NetworkCommunication.Interfaces.IOrder))
+  name.vb: IsRunningTheOrderAllowed(IOrder, IList(Of IOrder))
+  spec.csharp:
+  - uid: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.IsRunningTheOrderAllowed(Bodoconsult.NetworkCommunication.Interfaces.IOrder,System.Collections.Generic.IList{Bodoconsult.NetworkCommunication.Interfaces.IOrder})
+    name: IsRunningTheOrderAllowed
+    href: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.html#Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_IsRunningTheOrderAllowed_Bodoconsult_NetworkCommunication_Interfaces_IOrder_System_Collections_Generic_IList_Bodoconsult_NetworkCommunication_Interfaces_IOrder__
+  - name: (
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IOrder
+    name: IOrder
+    href: Bodoconsult.NetworkCommunication.Interfaces.IOrder.html
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IList`1
+    name: IList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1
+  - name: <
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IOrder
+    name: IOrder
+    href: Bodoconsult.NetworkCommunication.Interfaces.IOrder.html
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.IsRunningTheOrderAllowed(Bodoconsult.NetworkCommunication.Interfaces.IOrder,System.Collections.Generic.IList{Bodoconsult.NetworkCommunication.Interfaces.IOrder})
+    name: IsRunningTheOrderAllowed
+    href: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.html#Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_IsRunningTheOrderAllowed_Bodoconsult_NetworkCommunication_Interfaces_IOrder_System_Collections_Generic_IList_Bodoconsult_NetworkCommunication_Interfaces_IOrder__
+  - name: (
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IOrder
+    name: IOrder
+    href: Bodoconsult.NetworkCommunication.Interfaces.IOrder.html
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IList`1
+    name: IList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IOrder
+    name: IOrder
+    href: Bodoconsult.NetworkCommunication.Interfaces.IOrder.html
+  - name: )
+  - name: )
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.IsPingable
+  commentId: P:Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.IsPingable
+  parent: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice
+  href: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.html#Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_IsPingable
+  name: IsPingable
+  nameWithType: BaseOrderManagementDevice.IsPingable
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.IsPingable
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.ResetInternalState
+  commentId: M:Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.ResetInternalState
+  parent: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice
+  href: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.html#Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_ResetInternalState
+  name: ResetInternalState()
+  nameWithType: BaseOrderManagementDevice.ResetInternalState()
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.ResetInternalState()
+  spec.csharp:
+  - uid: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.ResetInternalState
+    name: ResetInternalState
+    href: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.html#Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_ResetInternalState
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.ResetInternalState
+    name: ResetInternalState
+    href: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.html#Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_ResetInternalState
+  - name: (
+  - name: )
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.RequestDeviceInit
+  commentId: M:Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.RequestDeviceInit
+  parent: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice
+  href: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.html#Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_RequestDeviceInit
+  name: RequestDeviceInit()
+  nameWithType: BaseOrderManagementDevice.RequestDeviceInit()
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.RequestDeviceInit()
+  spec.csharp:
+  - uid: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.RequestDeviceInit
+    name: RequestDeviceInit
+    href: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.html#Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_RequestDeviceInit
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.RequestDeviceInit
+    name: RequestDeviceInit
+    href: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.html#Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_RequestDeviceInit
+  - name: (
+  - name: )
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.PrepareUpdateModeCheck
+  commentId: M:Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.PrepareUpdateModeCheck
+  parent: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice
+  href: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.html#Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_PrepareUpdateModeCheck
+  name: PrepareUpdateModeCheck()
+  nameWithType: BaseOrderManagementDevice.PrepareUpdateModeCheck()
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.PrepareUpdateModeCheck()
+  spec.csharp:
+  - uid: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.PrepareUpdateModeCheck
+    name: PrepareUpdateModeCheck
+    href: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.html#Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_PrepareUpdateModeCheck
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.PrepareUpdateModeCheck
+    name: PrepareUpdateModeCheck
+    href: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.html#Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_PrepareUpdateModeCheck
+  - name: (
+  - name: )
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.PrepareDeviceInit
+  commentId: M:Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.PrepareDeviceInit
+  parent: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice
+  href: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.html#Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_PrepareDeviceInit
+  name: PrepareDeviceInit()
+  nameWithType: BaseOrderManagementDevice.PrepareDeviceInit()
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.PrepareDeviceInit()
+  spec.csharp:
+  - uid: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.PrepareDeviceInit
+    name: PrepareDeviceInit
+    href: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.html#Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_PrepareDeviceInit
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.PrepareDeviceInit
+    name: PrepareDeviceInit
+    href: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.html#Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_PrepareDeviceInit
+  - name: (
+  - name: )
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.GetNextOrderToRun
+  commentId: M:Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.GetNextOrderToRun
+  parent: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice
+  href: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.html#Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_GetNextOrderToRun
+  name: GetNextOrderToRun()
+  nameWithType: BaseOrderManagementDevice.GetNextOrderToRun()
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.GetNextOrderToRun()
+  spec.csharp:
+  - uid: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.GetNextOrderToRun
+    name: GetNextOrderToRun
+    href: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.html#Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_GetNextOrderToRun
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.GetNextOrderToRun
+    name: GetNextOrderToRun
+    href: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.html#Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_GetNextOrderToRun
+  - name: (
+  - name: )
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.Check4ConcurrentOrders(Bodoconsult.NetworkCommunication.Interfaces.IOrder)
+  commentId: M:Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.Check4ConcurrentOrders(Bodoconsult.NetworkCommunication.Interfaces.IOrder)
+  parent: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice
+  href: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.html#Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_Check4ConcurrentOrders_Bodoconsult_NetworkCommunication_Interfaces_IOrder_
+  name: Check4ConcurrentOrders(IOrder)
+  nameWithType: BaseOrderManagementDevice.Check4ConcurrentOrders(IOrder)
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.Check4ConcurrentOrders(Bodoconsult.NetworkCommunication.Interfaces.IOrder)
+  spec.csharp:
+  - uid: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.Check4ConcurrentOrders(Bodoconsult.NetworkCommunication.Interfaces.IOrder)
+    name: Check4ConcurrentOrders
+    href: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.html#Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_Check4ConcurrentOrders_Bodoconsult_NetworkCommunication_Interfaces_IOrder_
+  - name: (
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IOrder
+    name: IOrder
+    href: Bodoconsult.NetworkCommunication.Interfaces.IOrder.html
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.Check4ConcurrentOrders(Bodoconsult.NetworkCommunication.Interfaces.IOrder)
+    name: Check4ConcurrentOrders
+    href: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.html#Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_Check4ConcurrentOrders_Bodoconsult_NetworkCommunication_Interfaces_IOrder_
+  - name: (
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IOrder
+    name: IOrder
+    href: Bodoconsult.NetworkCommunication.Interfaces.IOrder.html
+  - name: )
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.OrderFinishedSuccessful(Bodoconsult.NetworkCommunication.Interfaces.IOrder)
+  commentId: M:Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.OrderFinishedSuccessful(Bodoconsult.NetworkCommunication.Interfaces.IOrder)
+  parent: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice
+  href: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.html#Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_OrderFinishedSuccessful_Bodoconsult_NetworkCommunication_Interfaces_IOrder_
+  name: OrderFinishedSuccessful(IOrder)
+  nameWithType: BaseOrderManagementDevice.OrderFinishedSuccessful(IOrder)
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.OrderFinishedSuccessful(Bodoconsult.NetworkCommunication.Interfaces.IOrder)
+  spec.csharp:
+  - uid: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.OrderFinishedSuccessful(Bodoconsult.NetworkCommunication.Interfaces.IOrder)
+    name: OrderFinishedSuccessful
+    href: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.html#Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_OrderFinishedSuccessful_Bodoconsult_NetworkCommunication_Interfaces_IOrder_
+  - name: (
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IOrder
+    name: IOrder
+    href: Bodoconsult.NetworkCommunication.Interfaces.IOrder.html
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.OrderFinishedSuccessful(Bodoconsult.NetworkCommunication.Interfaces.IOrder)
+    name: OrderFinishedSuccessful
+    href: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.html#Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_OrderFinishedSuccessful_Bodoconsult_NetworkCommunication_Interfaces_IOrder_
+  - name: (
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IOrder
+    name: IOrder
+    href: Bodoconsult.NetworkCommunication.Interfaces.IOrder.html
+  - name: )
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.OrderFinishedUnsuccessful(Bodoconsult.NetworkCommunication.Interfaces.IOrder)
+  commentId: M:Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.OrderFinishedUnsuccessful(Bodoconsult.NetworkCommunication.Interfaces.IOrder)
+  parent: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice
+  href: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.html#Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_OrderFinishedUnsuccessful_Bodoconsult_NetworkCommunication_Interfaces_IOrder_
+  name: OrderFinishedUnsuccessful(IOrder)
+  nameWithType: BaseOrderManagementDevice.OrderFinishedUnsuccessful(IOrder)
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.OrderFinishedUnsuccessful(Bodoconsult.NetworkCommunication.Interfaces.IOrder)
+  spec.csharp:
+  - uid: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.OrderFinishedUnsuccessful(Bodoconsult.NetworkCommunication.Interfaces.IOrder)
+    name: OrderFinishedUnsuccessful
+    href: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.html#Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_OrderFinishedUnsuccessful_Bodoconsult_NetworkCommunication_Interfaces_IOrder_
+  - name: (
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IOrder
+    name: IOrder
+    href: Bodoconsult.NetworkCommunication.Interfaces.IOrder.html
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.OrderFinishedUnsuccessful(Bodoconsult.NetworkCommunication.Interfaces.IOrder)
+    name: OrderFinishedUnsuccessful
+    href: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.html#Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_OrderFinishedUnsuccessful_Bodoconsult_NetworkCommunication_Interfaces_IOrder_
+  - name: (
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IOrder
+    name: IOrder
+    href: Bodoconsult.NetworkCommunication.Interfaces.IOrder.html
+  - name: )
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.CancelOrdersWithSpecialHandling
+  commentId: M:Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.CancelOrdersWithSpecialHandling
+  parent: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice
+  href: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.html#Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_CancelOrdersWithSpecialHandling
+  name: CancelOrdersWithSpecialHandling()
+  nameWithType: BaseOrderManagementDevice.CancelOrdersWithSpecialHandling()
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.CancelOrdersWithSpecialHandling()
+  spec.csharp:
+  - uid: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.CancelOrdersWithSpecialHandling
+    name: CancelOrdersWithSpecialHandling
+    href: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.html#Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_CancelOrdersWithSpecialHandling
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.CancelOrdersWithSpecialHandling
+    name: CancelOrdersWithSpecialHandling
+    href: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.html#Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_CancelOrdersWithSpecialHandling
+  - name: (
+  - name: )
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.CancelRunningOrders(System.Byte)
+  commentId: M:Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.CancelRunningOrders(System.Byte)
+  parent: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice
+  isExternal: true
+  href: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.html#Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_CancelRunningOrders_System_Byte_
+  name: CancelRunningOrders(byte)
+  nameWithType: BaseOrderManagementDevice.CancelRunningOrders(byte)
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.CancelRunningOrders(byte)
+  nameWithType.vb: BaseOrderManagementDevice.CancelRunningOrders(Byte)
+  fullName.vb: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.CancelRunningOrders(Byte)
+  name.vb: CancelRunningOrders(Byte)
+  spec.csharp:
+  - uid: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.CancelRunningOrders(System.Byte)
+    name: CancelRunningOrders
+    href: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.html#Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_CancelRunningOrders_System_Byte_
+  - name: (
+  - uid: System.Byte
+    name: byte
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.byte
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.CancelRunningOrders(System.Byte)
+    name: CancelRunningOrders
+    href: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.html#Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_CancelRunningOrders_System_Byte_
+  - name: (
+  - uid: System.Byte
+    name: Byte
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.byte
+  - name: )
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.CreateHardwareInitOrder
+  commentId: M:Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.CreateHardwareInitOrder
+  parent: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice
+  href: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.html#Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_CreateHardwareInitOrder
+  name: CreateHardwareInitOrder()
+  nameWithType: BaseOrderManagementDevice.CreateHardwareInitOrder()
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.CreateHardwareInitOrder()
+  spec.csharp:
+  - uid: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.CreateHardwareInitOrder
+    name: CreateHardwareInitOrder
+    href: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.html#Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_CreateHardwareInitOrder
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.CreateHardwareInitOrder
+    name: CreateHardwareInitOrder
+    href: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.html#Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_CreateHardwareInitOrder
+  - name: (
+  - name: )
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.DoNotifyHardwareInitRequested
+  commentId: M:Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.DoNotifyHardwareInitRequested
+  parent: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice
+  href: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.html#Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_DoNotifyHardwareInitRequested
+  name: DoNotifyHardwareInitRequested()
+  nameWithType: BaseOrderManagementDevice.DoNotifyHardwareInitRequested()
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.DoNotifyHardwareInitRequested()
+  spec.csharp:
+  - uid: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.DoNotifyHardwareInitRequested
+    name: DoNotifyHardwareInitRequested
+    href: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.html#Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_DoNotifyHardwareInitRequested
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.DoNotifyHardwareInitRequested
+    name: DoNotifyHardwareInitRequested
+    href: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.html#Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_DoNotifyHardwareInitRequested
+  - name: (
+  - name: )
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.DoBasicCheckForReceivedMessage(Bodoconsult.NetworkCommunication.Interfaces.IInboundDataMessage)
+  commentId: M:Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.DoBasicCheckForReceivedMessage(Bodoconsult.NetworkCommunication.Interfaces.IInboundDataMessage)
+  parent: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice
+  href: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.html#Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_DoBasicCheckForReceivedMessage_Bodoconsult_NetworkCommunication_Interfaces_IInboundDataMessage_
+  name: DoBasicCheckForReceivedMessage(IInboundDataMessage)
+  nameWithType: BaseOrderManagementDevice.DoBasicCheckForReceivedMessage(IInboundDataMessage)
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.DoBasicCheckForReceivedMessage(Bodoconsult.NetworkCommunication.Interfaces.IInboundDataMessage)
+  spec.csharp:
+  - uid: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.DoBasicCheckForReceivedMessage(Bodoconsult.NetworkCommunication.Interfaces.IInboundDataMessage)
+    name: DoBasicCheckForReceivedMessage
+    href: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.html#Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_DoBasicCheckForReceivedMessage_Bodoconsult_NetworkCommunication_Interfaces_IInboundDataMessage_
+  - name: (
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IInboundDataMessage
+    name: IInboundDataMessage
+    href: Bodoconsult.NetworkCommunication.Interfaces.IInboundDataMessage.html
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.DoBasicCheckForReceivedMessage(Bodoconsult.NetworkCommunication.Interfaces.IInboundDataMessage)
+    name: DoBasicCheckForReceivedMessage
+    href: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.html#Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_DoBasicCheckForReceivedMessage_Bodoconsult_NetworkCommunication_Interfaces_IInboundDataMessage_
+  - name: (
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IInboundDataMessage
+    name: IInboundDataMessage
+    href: Bodoconsult.NetworkCommunication.Interfaces.IInboundDataMessage.html
+  - name: )
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.DoCheckForErrorMessage(Bodoconsult.NetworkCommunication.Interfaces.IInboundDataMessage)
+  commentId: M:Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.DoCheckForErrorMessage(Bodoconsult.NetworkCommunication.Interfaces.IInboundDataMessage)
+  parent: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice
+  href: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.html#Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_DoCheckForErrorMessage_Bodoconsult_NetworkCommunication_Interfaces_IInboundDataMessage_
+  name: DoCheckForErrorMessage(IInboundDataMessage)
+  nameWithType: BaseOrderManagementDevice.DoCheckForErrorMessage(IInboundDataMessage)
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.DoCheckForErrorMessage(Bodoconsult.NetworkCommunication.Interfaces.IInboundDataMessage)
+  spec.csharp:
+  - uid: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.DoCheckForErrorMessage(Bodoconsult.NetworkCommunication.Interfaces.IInboundDataMessage)
+    name: DoCheckForErrorMessage
+    href: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.html#Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_DoCheckForErrorMessage_Bodoconsult_NetworkCommunication_Interfaces_IInboundDataMessage_
+  - name: (
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IInboundDataMessage
+    name: IInboundDataMessage
+    href: Bodoconsult.NetworkCommunication.Interfaces.IInboundDataMessage.html
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.DoCheckForErrorMessage(Bodoconsult.NetworkCommunication.Interfaces.IInboundDataMessage)
+    name: DoCheckForErrorMessage
+    href: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.html#Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_DoCheckForErrorMessage_Bodoconsult_NetworkCommunication_Interfaces_IInboundDataMessage_
+  - name: (
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IInboundDataMessage
+    name: IInboundDataMessage
+    href: Bodoconsult.NetworkCommunication.Interfaces.IInboundDataMessage.html
+  - name: )
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.CancelRunningOperation
+  commentId: M:Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.CancelRunningOperation
+  parent: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice
+  href: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.html#Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_CancelRunningOperation
+  name: CancelRunningOperation()
+  nameWithType: BaseOrderManagementDevice.CancelRunningOperation()
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.CancelRunningOperation()
+  spec.csharp:
+  - uid: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.CancelRunningOperation
+    name: CancelRunningOperation
+    href: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.html#Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_CancelRunningOperation
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.CancelRunningOperation
+    name: CancelRunningOperation
+    href: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.html#Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_CancelRunningOperation
+  - name: (
+  - name: )
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.CheckIfThereAreOrdersToBeCreated
+  commentId: M:Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.CheckIfThereAreOrdersToBeCreated
+  parent: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice
+  href: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.html#Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_CheckIfThereAreOrdersToBeCreated
+  name: CheckIfThereAreOrdersToBeCreated()
+  nameWithType: BaseOrderManagementDevice.CheckIfThereAreOrdersToBeCreated()
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.CheckIfThereAreOrdersToBeCreated()
+  spec.csharp:
+  - uid: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.CheckIfThereAreOrdersToBeCreated
+    name: CheckIfThereAreOrdersToBeCreated
+    href: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.html#Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_CheckIfThereAreOrdersToBeCreated
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.CheckIfThereAreOrdersToBeCreated
+    name: CheckIfThereAreOrdersToBeCreated
+    href: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.html#Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_CheckIfThereAreOrdersToBeCreated
+  - name: (
+  - name: )
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.LogDebug(System.String)
+  commentId: M:Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.LogDebug(System.String)
+  parent: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice
+  isExternal: true
+  href: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.html#Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_LogDebug_System_String_
+  name: LogDebug(string)
+  nameWithType: BaseOrderManagementDevice.LogDebug(string)
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.LogDebug(string)
+  nameWithType.vb: BaseOrderManagementDevice.LogDebug(String)
+  fullName.vb: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.LogDebug(String)
+  name.vb: LogDebug(String)
+  spec.csharp:
+  - uid: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.LogDebug(System.String)
+    name: LogDebug
+    href: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.html#Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_LogDebug_System_String_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.LogDebug(System.String)
+    name: LogDebug
+    href: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.html#Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_LogDebug_System_String_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.LogInformation(System.String)
+  commentId: M:Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.LogInformation(System.String)
+  parent: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice
+  isExternal: true
+  href: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.html#Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_LogInformation_System_String_
+  name: LogInformation(string)
+  nameWithType: BaseOrderManagementDevice.LogInformation(string)
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.LogInformation(string)
+  nameWithType.vb: BaseOrderManagementDevice.LogInformation(String)
+  fullName.vb: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.LogInformation(String)
+  name.vb: LogInformation(String)
+  spec.csharp:
+  - uid: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.LogInformation(System.String)
+    name: LogInformation
+    href: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.html#Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_LogInformation_System_String_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.LogInformation(System.String)
+    name: LogInformation
+    href: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.html#Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_LogInformation_System_String_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.LogWarning(System.String)
+  commentId: M:Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.LogWarning(System.String)
+  parent: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice
+  isExternal: true
+  href: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.html#Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_LogWarning_System_String_
+  name: LogWarning(string)
+  nameWithType: BaseOrderManagementDevice.LogWarning(string)
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.LogWarning(string)
+  nameWithType.vb: BaseOrderManagementDevice.LogWarning(String)
+  fullName.vb: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.LogWarning(String)
+  name.vb: LogWarning(String)
+  spec.csharp:
+  - uid: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.LogWarning(System.String)
+    name: LogWarning
+    href: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.html#Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_LogWarning_System_String_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.LogWarning(System.String)
+    name: LogWarning
+    href: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.html#Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_LogWarning_System_String_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.LogError(System.String)
+  commentId: M:Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.LogError(System.String)
+  parent: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice
+  isExternal: true
+  href: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.html#Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_LogError_System_String_
+  name: LogError(string)
+  nameWithType: BaseOrderManagementDevice.LogError(string)
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.LogError(string)
+  nameWithType.vb: BaseOrderManagementDevice.LogError(String)
+  fullName.vb: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.LogError(String)
+  name.vb: LogError(String)
+  spec.csharp:
+  - uid: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.LogError(System.String)
+    name: LogError
+    href: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.html#Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_LogError_System_String_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.LogError(System.String)
+    name: LogError
+    href: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.html#Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_LogError_System_String_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.Dispose
+  commentId: M:Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.Dispose
+  parent: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice
+  href: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.html#Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_Dispose
+  name: Dispose()
+  nameWithType: BaseOrderManagementDevice.Dispose()
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.Dispose()
+  spec.csharp:
+  - uid: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.Dispose
+    name: Dispose
+    href: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.html#Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_Dispose
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.Dispose
+    name: Dispose
+    href: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.html#Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_Dispose
+  - name: (
+  - name: )
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.LoadMasterOrderFactory(Bodoconsult.NetworkCommunication.Interfaces.IMasterOrderFactory)
+  commentId: M:Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.LoadMasterOrderFactory(Bodoconsult.NetworkCommunication.Interfaces.IMasterOrderFactory)
+  parent: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice
+  href: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.html#Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_LoadMasterOrderFactory_Bodoconsult_NetworkCommunication_Interfaces_IMasterOrderFactory_
+  name: LoadMasterOrderFactory(IMasterOrderFactory)
+  nameWithType: BaseOrderManagementDevice.LoadMasterOrderFactory(IMasterOrderFactory)
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.LoadMasterOrderFactory(Bodoconsult.NetworkCommunication.Interfaces.IMasterOrderFactory)
+  spec.csharp:
+  - uid: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.LoadMasterOrderFactory(Bodoconsult.NetworkCommunication.Interfaces.IMasterOrderFactory)
+    name: LoadMasterOrderFactory
+    href: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.html#Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_LoadMasterOrderFactory_Bodoconsult_NetworkCommunication_Interfaces_IMasterOrderFactory_
+  - name: (
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IMasterOrderFactory
+    name: IMasterOrderFactory
+    href: Bodoconsult.NetworkCommunication.Interfaces.IMasterOrderFactory.html
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.LoadMasterOrderFactory(Bodoconsult.NetworkCommunication.Interfaces.IMasterOrderFactory)
+    name: LoadMasterOrderFactory
+    href: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.html#Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_LoadMasterOrderFactory_Bodoconsult_NetworkCommunication_Interfaces_IMasterOrderFactory_
+  - name: (
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IMasterOrderFactory
+    name: IMasterOrderFactory
+    href: Bodoconsult.NetworkCommunication.Interfaces.IMasterOrderFactory.html
+  - name: )
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.LoadDeviceOrderManager(Bodoconsult.NetworkCommunication.Interfaces.IOrderManager)
+  commentId: M:Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.LoadDeviceOrderManager(Bodoconsult.NetworkCommunication.Interfaces.IOrderManager)
+  parent: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice
+  href: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.html#Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_LoadDeviceOrderManager_Bodoconsult_NetworkCommunication_Interfaces_IOrderManager_
+  name: LoadDeviceOrderManager(IOrderManager)
+  nameWithType: BaseOrderManagementDevice.LoadDeviceOrderManager(IOrderManager)
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.LoadDeviceOrderManager(Bodoconsult.NetworkCommunication.Interfaces.IOrderManager)
+  spec.csharp:
+  - uid: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.LoadDeviceOrderManager(Bodoconsult.NetworkCommunication.Interfaces.IOrderManager)
+    name: LoadDeviceOrderManager
+    href: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.html#Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_LoadDeviceOrderManager_Bodoconsult_NetworkCommunication_Interfaces_IOrderManager_
+  - name: (
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IOrderManager
+    name: IOrderManager
+    href: Bodoconsult.NetworkCommunication.Interfaces.IOrderManager.html
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.LoadDeviceOrderManager(Bodoconsult.NetworkCommunication.Interfaces.IOrderManager)
+    name: LoadDeviceOrderManager
+    href: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.html#Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_LoadDeviceOrderManager_Bodoconsult_NetworkCommunication_Interfaces_IOrderManager_
+  - name: (
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IOrderManager
+    name: IOrderManager
+    href: Bodoconsult.NetworkCommunication.Interfaces.IOrderManager.html
+  - name: )
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.CreateOrder(System.Type,Bodoconsult.NetworkCommunication.Interfaces.IParameterSet)
+  commentId: M:Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.CreateOrder(System.Type,Bodoconsult.NetworkCommunication.Interfaces.IParameterSet)
+  parent: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice
+  isExternal: true
+  href: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.html#Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_CreateOrder_System_Type_Bodoconsult_NetworkCommunication_Interfaces_IParameterSet_
+  name: CreateOrder(Type, IParameterSet)
+  nameWithType: BaseOrderManagementDevice.CreateOrder(Type, IParameterSet)
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.CreateOrder(System.Type, Bodoconsult.NetworkCommunication.Interfaces.IParameterSet)
+  spec.csharp:
+  - uid: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.CreateOrder(System.Type,Bodoconsult.NetworkCommunication.Interfaces.IParameterSet)
+    name: CreateOrder
+    href: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.html#Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_CreateOrder_System_Type_Bodoconsult_NetworkCommunication_Interfaces_IParameterSet_
+  - name: (
+  - uid: System.Type
+    name: Type
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.type
+  - name: ','
+  - name: " "
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IParameterSet
+    name: IParameterSet
+    href: Bodoconsult.NetworkCommunication.Interfaces.IParameterSet.html
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.CreateOrder(System.Type,Bodoconsult.NetworkCommunication.Interfaces.IParameterSet)
+    name: CreateOrder
+    href: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.html#Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_CreateOrder_System_Type_Bodoconsult_NetworkCommunication_Interfaces_IParameterSet_
+  - name: (
+  - uid: System.Type
+    name: Type
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.type
+  - name: ','
+  - name: " "
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IParameterSet
+    name: IParameterSet
+    href: Bodoconsult.NetworkCommunication.Interfaces.IParameterSet.html
+  - name: )
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.CancelDeviceOrder(System.Int64)
+  commentId: M:Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.CancelDeviceOrder(System.Int64)
+  parent: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice
+  isExternal: true
+  href: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.html#Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_CancelDeviceOrder_System_Int64_
+  name: CancelDeviceOrder(long)
+  nameWithType: BaseOrderManagementDevice.CancelDeviceOrder(long)
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.CancelDeviceOrder(long)
+  nameWithType.vb: BaseOrderManagementDevice.CancelDeviceOrder(Long)
+  fullName.vb: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.CancelDeviceOrder(Long)
+  name.vb: CancelDeviceOrder(Long)
+  spec.csharp:
+  - uid: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.CancelDeviceOrder(System.Int64)
+    name: CancelDeviceOrder
+    href: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.html#Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_CancelDeviceOrder_System_Int64_
+  - name: (
+  - uid: System.Int64
+    name: long
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int64
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.CancelDeviceOrder(System.Int64)
+    name: CancelDeviceOrder
+    href: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.html#Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_CancelDeviceOrder_System_Int64_
+  - name: (
+  - uid: System.Int64
+    name: Long
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int64
+  - name: )
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.Start
+  commentId: M:Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.Start
+  parent: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice
+  href: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.html#Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_Start
+  name: Start()
+  nameWithType: BaseOrderManagementDevice.Start()
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.Start()
+  spec.csharp:
+  - uid: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.Start
+    name: Start
+    href: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.html#Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_Start
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.Start
+    name: Start
+    href: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.html#Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_Start
+  - name: (
+  - name: )
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.Stop
+  commentId: M:Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.Stop
+  parent: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice
+  href: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.html#Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_Stop
+  name: Stop()
+  nameWithType: BaseOrderManagementDevice.Stop()
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.Stop()
+  spec.csharp:
+  - uid: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.Stop
+    name: Stop
+    href: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.html#Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_Stop
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.Stop
+    name: Stop
+    href: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.html#Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_Stop
+  - name: (
+  - name: )
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.DoNotify(Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState)
+  commentId: M:Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.DoNotify(Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState)
+  parent: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice
+  href: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.html#Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_DoNotify_Bodoconsult_NetworkCommunication_StateManagement_IStateManagementState_
+  name: DoNotify(IStateManagementState)
+  nameWithType: BaseOrderManagementDevice.DoNotify(IStateManagementState)
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.DoNotify(Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState)
+  spec.csharp:
+  - uid: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.DoNotify(Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState)
+    name: DoNotify
+    href: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.html#Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_DoNotify_Bodoconsult_NetworkCommunication_StateManagement_IStateManagementState_
+  - name: (
+  - uid: Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState
+    name: IStateManagementState
+    href: Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState.html
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.DoNotify(Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState)
+    name: DoNotify
+    href: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.html#Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_DoNotify_Bodoconsult_NetworkCommunication_StateManagement_IStateManagementState_
+  - name: (
+  - uid: Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState
+    name: IStateManagementState
+    href: Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState.html
+  - name: )
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.CancelDeviceOrdersBySourceUid(System.Guid)
+  commentId: M:Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.CancelDeviceOrdersBySourceUid(System.Guid)
+  parent: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice
+  isExternal: true
+  href: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.html#Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_CancelDeviceOrdersBySourceUid_System_Guid_
+  name: CancelDeviceOrdersBySourceUid(Guid)
+  nameWithType: BaseOrderManagementDevice.CancelDeviceOrdersBySourceUid(Guid)
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.CancelDeviceOrdersBySourceUid(System.Guid)
+  spec.csharp:
+  - uid: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.CancelDeviceOrdersBySourceUid(System.Guid)
+    name: CancelDeviceOrdersBySourceUid
+    href: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.html#Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_CancelDeviceOrdersBySourceUid_System_Guid_
+  - name: (
+  - uid: System.Guid
+    name: Guid
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.guid
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.CancelDeviceOrdersBySourceUid(System.Guid)
+    name: CancelDeviceOrdersBySourceUid
+    href: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.html#Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_CancelDeviceOrdersBySourceUid_System_Guid_
+  - name: (
+  - uid: System.Guid
+    name: Guid
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.guid
+  - name: )
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.SetOrderProcessingStateDelegate(System.Boolean)
+  commentId: M:Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.SetOrderProcessingStateDelegate(System.Boolean)
+  parent: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice
+  isExternal: true
+  href: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.html#Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_SetOrderProcessingStateDelegate_System_Boolean_
+  name: SetOrderProcessingStateDelegate(bool)
+  nameWithType: BaseOrderManagementDevice.SetOrderProcessingStateDelegate(bool)
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.SetOrderProcessingStateDelegate(bool)
+  nameWithType.vb: BaseOrderManagementDevice.SetOrderProcessingStateDelegate(Boolean)
+  fullName.vb: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.SetOrderProcessingStateDelegate(Boolean)
+  name.vb: SetOrderProcessingStateDelegate(Boolean)
+  spec.csharp:
+  - uid: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.SetOrderProcessingStateDelegate(System.Boolean)
+    name: SetOrderProcessingStateDelegate
+    href: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.html#Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_SetOrderProcessingStateDelegate_System_Boolean_
+  - name: (
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.SetOrderProcessingStateDelegate(System.Boolean)
+    name: SetOrderProcessingStateDelegate
+    href: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice.html#Bodoconsult_NetworkCommunication_OrderManagement_Devices_BaseOrderManagementDevice_SetOrderProcessingStateDelegate_System_Boolean_
+  - name: (
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Bodoconsult.NetworkCommunication.Interfaces
+  commentId: N:Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.html
+  name: Bodoconsult.NetworkCommunication.Interfaces
+  nameWithType: Bodoconsult.NetworkCommunication.Interfaces
+  fullName: Bodoconsult.NetworkCommunication.Interfaces
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Interfaces
+    name: Interfaces
+    href: Bodoconsult.NetworkCommunication.Interfaces.html
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Interfaces
+    name: Interfaces
+    href: Bodoconsult.NetworkCommunication.Interfaces.html
+- uid: Bodoconsult.NetworkCommunication.StateManagement
+  commentId: N:Bodoconsult.NetworkCommunication.StateManagement
+  href: Bodoconsult.html
+  name: Bodoconsult.NetworkCommunication.StateManagement
+  nameWithType: Bodoconsult.NetworkCommunication.StateManagement
+  fullName: Bodoconsult.NetworkCommunication.StateManagement
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.StateManagement
+    name: StateManagement
+    href: Bodoconsult.NetworkCommunication.StateManagement.html
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.StateManagement
+    name: StateManagement
+    href: Bodoconsult.NetworkCommunication.StateManagement.html
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Devices.FakeDevice.#ctor*
+  commentId: Overload:Bodoconsult.NetworkCommunication.OrderManagement.Devices.FakeDevice.#ctor
+  href: Bodoconsult.NetworkCommunication.OrderManagement.Devices.FakeDevice.html#Bodoconsult_NetworkCommunication_OrderManagement_Devices_FakeDevice__ctor_Bodoconsult_NetworkCommunication_Interfaces_IDataMessagingConfig_Bodoconsult_NetworkCommunication_Interfaces_IOrderManagementClientNotificationManager_
+  name: FakeDevice
+  nameWithType: FakeDevice.FakeDevice
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Devices.FakeDevice.FakeDevice
+  nameWithType.vb: FakeDevice.New
+  fullName.vb: Bodoconsult.NetworkCommunication.OrderManagement.Devices.FakeDevice.New
+  name.vb: New
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig.html
+  name: IDataMessagingConfig
+  nameWithType: IDataMessagingConfig
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IOrderManagementClientNotificationManager
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.IOrderManagementClientNotificationManager
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.NetworkCommunication.Interfaces.IOrderManagementClientNotificationManager.html
+  name: IOrderManagementClientNotificationManager
+  nameWithType: IOrderManagementClientNotificationManager
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IOrderManagementClientNotificationManager
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Devices.FakeDevice.LoadCommAdapter*
+  commentId: Overload:Bodoconsult.NetworkCommunication.OrderManagement.Devices.FakeDevice.LoadCommAdapter
+  href: Bodoconsult.NetworkCommunication.OrderManagement.Devices.FakeDevice.html#Bodoconsult_NetworkCommunication_OrderManagement_Devices_FakeDevice_LoadCommAdapter_Bodoconsult_NetworkCommunication_Interfaces_ICommunicationAdapter_
+  name: LoadCommAdapter
+  nameWithType: FakeDevice.LoadCommAdapter
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Devices.FakeDevice.LoadCommAdapter
+- uid: Bodoconsult.NetworkCommunication.Interfaces.ICommunicationAdapter
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.ICommunicationAdapter
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.NetworkCommunication.Interfaces.ICommunicationAdapter.html
+  name: ICommunicationAdapter
+  nameWithType: ICommunicationAdapter
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.ICommunicationAdapter

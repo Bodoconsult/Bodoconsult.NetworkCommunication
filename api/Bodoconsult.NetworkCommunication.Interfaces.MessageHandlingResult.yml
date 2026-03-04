@@ -1,0 +1,526 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bodoconsult.NetworkCommunication.Interfaces.MessageHandlingResult
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.MessageHandlingResult
+  id: MessageHandlingResult
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  children:
+  - Bodoconsult.NetworkCommunication.Interfaces.MessageHandlingResult.#ctor
+  - Bodoconsult.NetworkCommunication.Interfaces.MessageHandlingResult.Error
+  - Bodoconsult.NetworkCommunication.Interfaces.MessageHandlingResult.ErrorDescription
+  - Bodoconsult.NetworkCommunication.Interfaces.MessageHandlingResult.ExecutionResult
+  - Bodoconsult.NetworkCommunication.Interfaces.MessageHandlingResult.TransportObject
+  langs:
+  - csharp
+  - vb
+  name: MessageHandlingResult
+  nameWithType: MessageHandlingResult
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.MessageHandlingResult
+  type: Class
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/MessageHandlingResult.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: MessageHandlingResult
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/MessageHandlingResult.cs
+    startLine: 6
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  syntax:
+    content: public class MessageHandlingResult
+    content.vb: Public Class MessageHandlingResult
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: Bodoconsult.NetworkCommunication.Interfaces.MessageHandlingResult.#ctor
+  commentId: M:Bodoconsult.NetworkCommunication.Interfaces.MessageHandlingResult.#ctor
+  id: '#ctor'
+  parent: Bodoconsult.NetworkCommunication.Interfaces.MessageHandlingResult
+  langs:
+  - csharp
+  - vb
+  name: MessageHandlingResult()
+  nameWithType: MessageHandlingResult.MessageHandlingResult()
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.MessageHandlingResult.MessageHandlingResult()
+  type: Constructor
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/MessageHandlingResult.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: .ctor
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/MessageHandlingResult.cs
+    startLine: 8
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  syntax:
+    content: public MessageHandlingResult()
+    content.vb: Public Sub New()
+  overload: Bodoconsult.NetworkCommunication.Interfaces.MessageHandlingResult.#ctor*
+  nameWithType.vb: MessageHandlingResult.New()
+  fullName.vb: Bodoconsult.NetworkCommunication.Interfaces.MessageHandlingResult.New()
+  name.vb: New()
+- uid: Bodoconsult.NetworkCommunication.Interfaces.MessageHandlingResult.ExecutionResult
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.MessageHandlingResult.ExecutionResult
+  id: ExecutionResult
+  parent: Bodoconsult.NetworkCommunication.Interfaces.MessageHandlingResult
+  langs:
+  - csharp
+  - vb
+  name: ExecutionResult
+  nameWithType: MessageHandlingResult.ExecutionResult
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.MessageHandlingResult.ExecutionResult
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/MessageHandlingResult.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: ExecutionResult
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/MessageHandlingResult.cs
+    startLine: 18
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: The result of the message execution
+  example: []
+  syntax:
+    content: public IOrderExecutionResultState ExecutionResult { get; set; }
+    parameters: []
+    return:
+      type: Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionResultState
+    content.vb: Public Property ExecutionResult As IOrderExecutionResultState
+  overload: Bodoconsult.NetworkCommunication.Interfaces.MessageHandlingResult.ExecutionResult*
+- uid: Bodoconsult.NetworkCommunication.Interfaces.MessageHandlingResult.TransportObject
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.MessageHandlingResult.TransportObject
+  id: TransportObject
+  parent: Bodoconsult.NetworkCommunication.Interfaces.MessageHandlingResult
+  langs:
+  - csharp
+  - vb
+  name: TransportObject
+  nameWithType: MessageHandlingResult.TransportObject
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.MessageHandlingResult.TransportObject
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/MessageHandlingResult.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: TransportObject
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/MessageHandlingResult.cs
+    startLine: 23
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: A object to transferred from one request spec to the next
+  example: []
+  syntax:
+    content: public object TransportObject { get; set; }
+    parameters: []
+    return:
+      type: System.Object
+    content.vb: Public Property TransportObject As Object
+  overload: Bodoconsult.NetworkCommunication.Interfaces.MessageHandlingResult.TransportObject*
+- uid: Bodoconsult.NetworkCommunication.Interfaces.MessageHandlingResult.ErrorDescription
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.MessageHandlingResult.ErrorDescription
+  id: ErrorDescription
+  parent: Bodoconsult.NetworkCommunication.Interfaces.MessageHandlingResult
+  langs:
+  - csharp
+  - vb
+  name: ErrorDescription
+  nameWithType: MessageHandlingResult.ErrorDescription
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.MessageHandlingResult.ErrorDescription
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/MessageHandlingResult.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: ErrorDescription
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/MessageHandlingResult.cs
+    startLine: 28
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: In case of an error the clear text description of the error
+  example: []
+  syntax:
+    content: public string ErrorDescription { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property ErrorDescription As String
+  overload: Bodoconsult.NetworkCommunication.Interfaces.MessageHandlingResult.ErrorDescription*
+- uid: Bodoconsult.NetworkCommunication.Interfaces.MessageHandlingResult.Error
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.MessageHandlingResult.Error
+  id: Error
+  parent: Bodoconsult.NetworkCommunication.Interfaces.MessageHandlingResult
+  langs:
+  - csharp
+  - vb
+  name: Error
+  nameWithType: MessageHandlingResult.Error
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.MessageHandlingResult.Error
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/MessageHandlingResult.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Error
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/MessageHandlingResult.cs
+    startLine: 40
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Error code
+  example: []
+  syntax:
+    content: public byte Error { get; set; }
+    parameters: []
+    return:
+      type: System.Byte
+    content.vb: Public Property [Error] As Byte
+  overload: Bodoconsult.NetworkCommunication.Interfaces.MessageHandlingResult.Error*
+references:
+- uid: Bodoconsult.NetworkCommunication.Interfaces
+  commentId: N:Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.html
+  name: Bodoconsult.NetworkCommunication.Interfaces
+  nameWithType: Bodoconsult.NetworkCommunication.Interfaces
+  fullName: Bodoconsult.NetworkCommunication.Interfaces
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Interfaces
+    name: Interfaces
+    href: Bodoconsult.NetworkCommunication.Interfaces.html
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Interfaces
+    name: Interfaces
+    href: Bodoconsult.NetworkCommunication.Interfaces.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Bodoconsult.NetworkCommunication.Interfaces.MessageHandlingResult.#ctor*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.MessageHandlingResult.#ctor
+  href: Bodoconsult.NetworkCommunication.Interfaces.MessageHandlingResult.html#Bodoconsult_NetworkCommunication_Interfaces_MessageHandlingResult__ctor
+  name: MessageHandlingResult
+  nameWithType: MessageHandlingResult.MessageHandlingResult
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.MessageHandlingResult.MessageHandlingResult
+  nameWithType.vb: MessageHandlingResult.New
+  fullName.vb: Bodoconsult.NetworkCommunication.Interfaces.MessageHandlingResult.New
+  name.vb: New
+- uid: Bodoconsult.NetworkCommunication.Interfaces.MessageHandlingResult.ExecutionResult*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.MessageHandlingResult.ExecutionResult
+  href: Bodoconsult.NetworkCommunication.Interfaces.MessageHandlingResult.html#Bodoconsult_NetworkCommunication_Interfaces_MessageHandlingResult_ExecutionResult
+  name: ExecutionResult
+  nameWithType: MessageHandlingResult.ExecutionResult
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.MessageHandlingResult.ExecutionResult
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionResultState
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionResultState
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionResultState.html
+  name: IOrderExecutionResultState
+  nameWithType: IOrderExecutionResultState
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionResultState
+- uid: Bodoconsult.NetworkCommunication.Interfaces.MessageHandlingResult.TransportObject*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.MessageHandlingResult.TransportObject
+  href: Bodoconsult.NetworkCommunication.Interfaces.MessageHandlingResult.html#Bodoconsult_NetworkCommunication_Interfaces_MessageHandlingResult_TransportObject
+  name: TransportObject
+  nameWithType: MessageHandlingResult.TransportObject
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.MessageHandlingResult.TransportObject
+- uid: Bodoconsult.NetworkCommunication.Interfaces.MessageHandlingResult.ErrorDescription*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.MessageHandlingResult.ErrorDescription
+  href: Bodoconsult.NetworkCommunication.Interfaces.MessageHandlingResult.html#Bodoconsult_NetworkCommunication_Interfaces_MessageHandlingResult_ErrorDescription
+  name: ErrorDescription
+  nameWithType: MessageHandlingResult.ErrorDescription
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.MessageHandlingResult.ErrorDescription
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Bodoconsult.NetworkCommunication.Interfaces.MessageHandlingResult.Error*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.MessageHandlingResult.Error
+  href: Bodoconsult.NetworkCommunication.Interfaces.MessageHandlingResult.html#Bodoconsult_NetworkCommunication_Interfaces_MessageHandlingResult_Error
+  name: Error
+  nameWithType: MessageHandlingResult.Error
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.MessageHandlingResult.Error
+- uid: System.Byte
+  commentId: T:System.Byte
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.byte
+  name: byte
+  nameWithType: byte
+  fullName: byte
+  nameWithType.vb: Byte
+  fullName.vb: Byte
+  name.vb: Byte

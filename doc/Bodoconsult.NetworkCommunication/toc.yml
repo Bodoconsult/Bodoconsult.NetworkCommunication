@@ -1,0 +1,13 @@
+- name: Readme
+  href: README.md
+- name: Release notes
+  href: ReleaseNotes.md
+- name: Simple data communication protocol SDCP
+  href: SDCP.md
+- name: Enhanced data communication protocol EDCP
+  href: EDCP.md
+- name: Business transaction communication protocol BTCP
+  href: BTCP.md
+- name: Telnet communication protocol TNCP
+  href: TNCP.md
+

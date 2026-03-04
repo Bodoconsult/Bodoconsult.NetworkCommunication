@@ -1,0 +1,265 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bodoconsult.Network.Windows.ActiveDirectory.AdGroupType
+  commentId: T:Bodoconsult.Network.Windows.ActiveDirectory.AdGroupType
+  id: AdGroupType
+  parent: Bodoconsult.Network.Windows.ActiveDirectory
+  children:
+  - Bodoconsult.Network.Windows.ActiveDirectory.AdGroupType.BuiltInSecurityGroup
+  - Bodoconsult.Network.Windows.ActiveDirectory.AdGroupType.DomainLocalDistributionGroup
+  - Bodoconsult.Network.Windows.ActiveDirectory.AdGroupType.DomainLocalSecurityGroup
+  - Bodoconsult.Network.Windows.ActiveDirectory.AdGroupType.GlobalDistributionGroup
+  - Bodoconsult.Network.Windows.ActiveDirectory.AdGroupType.GlobalSecurityGroup
+  - Bodoconsult.Network.Windows.ActiveDirectory.AdGroupType.UniversalDistributionGroup
+  - Bodoconsult.Network.Windows.ActiveDirectory.AdGroupType.UniversalSecurityGroup
+  langs:
+  - csharp
+  - vb
+  name: AdGroupType
+  nameWithType: AdGroupType
+  fullName: Bodoconsult.Network.Windows.ActiveDirectory.AdGroupType
+  type: Enum
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/ActiveDirectory/AdGroupType.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: AdGroupType
+    path: src/Bodoconsult.Network.Windows/ActiveDirectory/AdGroupType.cs
+    startLine: 8
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.ActiveDirectory
+  summary: Typ of AD group
+  example: []
+  syntax:
+    content: public enum AdGroupType
+    content.vb: Public Enum AdGroupType
+- uid: Bodoconsult.Network.Windows.ActiveDirectory.AdGroupType.GlobalDistributionGroup
+  commentId: F:Bodoconsult.Network.Windows.ActiveDirectory.AdGroupType.GlobalDistributionGroup
+  id: GlobalDistributionGroup
+  parent: Bodoconsult.Network.Windows.ActiveDirectory.AdGroupType
+  langs:
+  - csharp
+  - vb
+  name: GlobalDistributionGroup
+  nameWithType: AdGroupType.GlobalDistributionGroup
+  fullName: Bodoconsult.Network.Windows.ActiveDirectory.AdGroupType.GlobalDistributionGroup
+  type: Field
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/ActiveDirectory/AdGroupType.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: GlobalDistributionGroup
+    path: src/Bodoconsult.Network.Windows/ActiveDirectory/AdGroupType.cs
+    startLine: 10
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.ActiveDirectory
+  syntax:
+    content: GlobalDistributionGroup = 2
+    return:
+      type: Bodoconsult.Network.Windows.ActiveDirectory.AdGroupType
+- uid: Bodoconsult.Network.Windows.ActiveDirectory.AdGroupType.DomainLocalDistributionGroup
+  commentId: F:Bodoconsult.Network.Windows.ActiveDirectory.AdGroupType.DomainLocalDistributionGroup
+  id: DomainLocalDistributionGroup
+  parent: Bodoconsult.Network.Windows.ActiveDirectory.AdGroupType
+  langs:
+  - csharp
+  - vb
+  name: DomainLocalDistributionGroup
+  nameWithType: AdGroupType.DomainLocalDistributionGroup
+  fullName: Bodoconsult.Network.Windows.ActiveDirectory.AdGroupType.DomainLocalDistributionGroup
+  type: Field
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/ActiveDirectory/AdGroupType.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: DomainLocalDistributionGroup
+    path: src/Bodoconsult.Network.Windows/ActiveDirectory/AdGroupType.cs
+    startLine: 11
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.ActiveDirectory
+  syntax:
+    content: DomainLocalDistributionGroup = 4
+    return:
+      type: Bodoconsult.Network.Windows.ActiveDirectory.AdGroupType
+- uid: Bodoconsult.Network.Windows.ActiveDirectory.AdGroupType.UniversalDistributionGroup
+  commentId: F:Bodoconsult.Network.Windows.ActiveDirectory.AdGroupType.UniversalDistributionGroup
+  id: UniversalDistributionGroup
+  parent: Bodoconsult.Network.Windows.ActiveDirectory.AdGroupType
+  langs:
+  - csharp
+  - vb
+  name: UniversalDistributionGroup
+  nameWithType: AdGroupType.UniversalDistributionGroup
+  fullName: Bodoconsult.Network.Windows.ActiveDirectory.AdGroupType.UniversalDistributionGroup
+  type: Field
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/ActiveDirectory/AdGroupType.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: UniversalDistributionGroup
+    path: src/Bodoconsult.Network.Windows/ActiveDirectory/AdGroupType.cs
+    startLine: 12
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.ActiveDirectory
+  syntax:
+    content: UniversalDistributionGroup = 8
+    return:
+      type: Bodoconsult.Network.Windows.ActiveDirectory.AdGroupType
+- uid: Bodoconsult.Network.Windows.ActiveDirectory.AdGroupType.GlobalSecurityGroup
+  commentId: F:Bodoconsult.Network.Windows.ActiveDirectory.AdGroupType.GlobalSecurityGroup
+  id: GlobalSecurityGroup
+  parent: Bodoconsult.Network.Windows.ActiveDirectory.AdGroupType
+  langs:
+  - csharp
+  - vb
+  name: GlobalSecurityGroup
+  nameWithType: AdGroupType.GlobalSecurityGroup
+  fullName: Bodoconsult.Network.Windows.ActiveDirectory.AdGroupType.GlobalSecurityGroup
+  type: Field
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/ActiveDirectory/AdGroupType.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: GlobalSecurityGroup
+    path: src/Bodoconsult.Network.Windows/ActiveDirectory/AdGroupType.cs
+    startLine: 13
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.ActiveDirectory
+  syntax:
+    content: GlobalSecurityGroup = -2147483646
+    return:
+      type: Bodoconsult.Network.Windows.ActiveDirectory.AdGroupType
+- uid: Bodoconsult.Network.Windows.ActiveDirectory.AdGroupType.DomainLocalSecurityGroup
+  commentId: F:Bodoconsult.Network.Windows.ActiveDirectory.AdGroupType.DomainLocalSecurityGroup
+  id: DomainLocalSecurityGroup
+  parent: Bodoconsult.Network.Windows.ActiveDirectory.AdGroupType
+  langs:
+  - csharp
+  - vb
+  name: DomainLocalSecurityGroup
+  nameWithType: AdGroupType.DomainLocalSecurityGroup
+  fullName: Bodoconsult.Network.Windows.ActiveDirectory.AdGroupType.DomainLocalSecurityGroup
+  type: Field
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/ActiveDirectory/AdGroupType.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: DomainLocalSecurityGroup
+    path: src/Bodoconsult.Network.Windows/ActiveDirectory/AdGroupType.cs
+    startLine: 14
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.ActiveDirectory
+  syntax:
+    content: DomainLocalSecurityGroup = -2147483644
+    return:
+      type: Bodoconsult.Network.Windows.ActiveDirectory.AdGroupType
+- uid: Bodoconsult.Network.Windows.ActiveDirectory.AdGroupType.UniversalSecurityGroup
+  commentId: F:Bodoconsult.Network.Windows.ActiveDirectory.AdGroupType.UniversalSecurityGroup
+  id: UniversalSecurityGroup
+  parent: Bodoconsult.Network.Windows.ActiveDirectory.AdGroupType
+  langs:
+  - csharp
+  - vb
+  name: UniversalSecurityGroup
+  nameWithType: AdGroupType.UniversalSecurityGroup
+  fullName: Bodoconsult.Network.Windows.ActiveDirectory.AdGroupType.UniversalSecurityGroup
+  type: Field
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/ActiveDirectory/AdGroupType.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: UniversalSecurityGroup
+    path: src/Bodoconsult.Network.Windows/ActiveDirectory/AdGroupType.cs
+    startLine: 15
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.ActiveDirectory
+  syntax:
+    content: UniversalSecurityGroup = -2147483640
+    return:
+      type: Bodoconsult.Network.Windows.ActiveDirectory.AdGroupType
+- uid: Bodoconsult.Network.Windows.ActiveDirectory.AdGroupType.BuiltInSecurityGroup
+  commentId: F:Bodoconsult.Network.Windows.ActiveDirectory.AdGroupType.BuiltInSecurityGroup
+  id: BuiltInSecurityGroup
+  parent: Bodoconsult.Network.Windows.ActiveDirectory.AdGroupType
+  langs:
+  - csharp
+  - vb
+  name: BuiltInSecurityGroup
+  nameWithType: AdGroupType.BuiltInSecurityGroup
+  fullName: Bodoconsult.Network.Windows.ActiveDirectory.AdGroupType.BuiltInSecurityGroup
+  type: Field
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/ActiveDirectory/AdGroupType.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: BuiltInSecurityGroup
+    path: src/Bodoconsult.Network.Windows/ActiveDirectory/AdGroupType.cs
+    startLine: 16
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.ActiveDirectory
+  syntax:
+    content: BuiltInSecurityGroup = -2147483643
+    return:
+      type: Bodoconsult.Network.Windows.ActiveDirectory.AdGroupType
+references:
+- uid: Bodoconsult.Network.Windows.ActiveDirectory
+  commentId: N:Bodoconsult.Network.Windows.ActiveDirectory
+  href: Bodoconsult.html
+  name: Bodoconsult.Network.Windows.ActiveDirectory
+  nameWithType: Bodoconsult.Network.Windows.ActiveDirectory
+  fullName: Bodoconsult.Network.Windows.ActiveDirectory
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.Network
+    name: Network
+    href: Bodoconsult.Network.html
+  - name: .
+  - uid: Bodoconsult.Network.Windows
+    name: Windows
+    href: Bodoconsult.Network.Windows.html
+  - name: .
+  - uid: Bodoconsult.Network.Windows.ActiveDirectory
+    name: ActiveDirectory
+    href: Bodoconsult.Network.Windows.ActiveDirectory.html
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.Network
+    name: Network
+    href: Bodoconsult.Network.html
+  - name: .
+  - uid: Bodoconsult.Network.Windows
+    name: Windows
+    href: Bodoconsult.Network.Windows.html
+  - name: .
+  - uid: Bodoconsult.Network.Windows.ActiveDirectory
+    name: ActiveDirectory
+    href: Bodoconsult.Network.Windows.ActiveDirectory.html
+- uid: Bodoconsult.Network.Windows.ActiveDirectory.AdGroupType
+  commentId: T:Bodoconsult.Network.Windows.ActiveDirectory.AdGroupType
+  parent: Bodoconsult.Network.Windows.ActiveDirectory
+  href: Bodoconsult.Network.Windows.ActiveDirectory.AdGroupType.html
+  name: AdGroupType
+  nameWithType: AdGroupType
+  fullName: Bodoconsult.Network.Windows.ActiveDirectory.AdGroupType

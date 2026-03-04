@@ -1,0 +1,823 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bodoconsult.NetworkCommunication.EnumAndStates.TraceCodes
+  commentId: T:Bodoconsult.NetworkCommunication.EnumAndStates.TraceCodes
+  id: TraceCodes
+  parent: Bodoconsult.NetworkCommunication.EnumAndStates
+  children:
+  - Bodoconsult.NetworkCommunication.EnumAndStates.TraceCodes.IdsMsgBtcpOrderFails
+  - Bodoconsult.NetworkCommunication.EnumAndStates.TraceCodes.IdsMsgBtcpOrderOk
+  - Bodoconsult.NetworkCommunication.EnumAndStates.TraceCodes.IdsMsgDummyOrderFails
+  - Bodoconsult.NetworkCommunication.EnumAndStates.TraceCodes.IdsMsgDummyOrderOk
+  - Bodoconsult.NetworkCommunication.EnumAndStates.TraceCodes.IdsMsgEdcpOrderFails
+  - Bodoconsult.NetworkCommunication.EnumAndStates.TraceCodes.IdsMsgEdcpOrderOk
+  - Bodoconsult.NetworkCommunication.EnumAndStates.TraceCodes.IdsMsgEmptyOrderFails
+  - Bodoconsult.NetworkCommunication.EnumAndStates.TraceCodes.IdsMsgEmptyOrderOk
+  - Bodoconsult.NetworkCommunication.EnumAndStates.TraceCodes.IdsMsgSdcpOrderFails
+  - Bodoconsult.NetworkCommunication.EnumAndStates.TraceCodes.IdsMsgSdcpOrderOk
+  - Bodoconsult.NetworkCommunication.EnumAndStates.TraceCodes.IdsMsgTestOrderFails
+  - Bodoconsult.NetworkCommunication.EnumAndStates.TraceCodes.IdsMsgTestOrderOk
+  - Bodoconsult.NetworkCommunication.EnumAndStates.TraceCodes.IdsMsgTncpOrderFails
+  - Bodoconsult.NetworkCommunication.EnumAndStates.TraceCodes.IdsMsgTncpOrderOk
+  langs:
+  - csharp
+  - vb
+  name: TraceCodes
+  nameWithType: TraceCodes
+  fullName: Bodoconsult.NetworkCommunication.EnumAndStates.TraceCodes
+  type: Class
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/EnumAndStates/TraceCodes.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: TraceCodes
+    path: src/Bodoconsult.NetworkCommunication/EnumAndStates/TraceCodes.cs
+    startLine: 7
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.EnumAndStates
+  summary: Default trace codes
+  example: []
+  syntax:
+    content: public static class TraceCodes
+    content.vb: Public Module TraceCodes
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: Bodoconsult.NetworkCommunication.EnumAndStates.TraceCodes.IdsMsgSdcpOrderOk
+  commentId: P:Bodoconsult.NetworkCommunication.EnumAndStates.TraceCodes.IdsMsgSdcpOrderOk
+  id: IdsMsgSdcpOrderOk
+  parent: Bodoconsult.NetworkCommunication.EnumAndStates.TraceCodes
+  langs:
+  - csharp
+  - vb
+  name: IdsMsgSdcpOrderOk
+  nameWithType: TraceCodes.IdsMsgSdcpOrderOk
+  fullName: Bodoconsult.NetworkCommunication.EnumAndStates.TraceCodes.IdsMsgSdcpOrderOk
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/EnumAndStates/TraceCodes.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: IdsMsgSdcpOrderOk
+    path: src/Bodoconsult.NetworkCommunication/EnumAndStates/TraceCodes.cs
+    startLine: 11
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.EnumAndStates
+  syntax:
+    content: public static int IdsMsgSdcpOrderOk { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Shared ReadOnly Property IdsMsgSdcpOrderOk As Integer
+  overload: Bodoconsult.NetworkCommunication.EnumAndStates.TraceCodes.IdsMsgSdcpOrderOk*
+- uid: Bodoconsult.NetworkCommunication.EnumAndStates.TraceCodes.IdsMsgSdcpOrderFails
+  commentId: P:Bodoconsult.NetworkCommunication.EnumAndStates.TraceCodes.IdsMsgSdcpOrderFails
+  id: IdsMsgSdcpOrderFails
+  parent: Bodoconsult.NetworkCommunication.EnumAndStates.TraceCodes
+  langs:
+  - csharp
+  - vb
+  name: IdsMsgSdcpOrderFails
+  nameWithType: TraceCodes.IdsMsgSdcpOrderFails
+  fullName: Bodoconsult.NetworkCommunication.EnumAndStates.TraceCodes.IdsMsgSdcpOrderFails
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/EnumAndStates/TraceCodes.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: IdsMsgSdcpOrderFails
+    path: src/Bodoconsult.NetworkCommunication/EnumAndStates/TraceCodes.cs
+    startLine: 12
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.EnumAndStates
+  syntax:
+    content: public static int IdsMsgSdcpOrderFails { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Shared ReadOnly Property IdsMsgSdcpOrderFails As Integer
+  overload: Bodoconsult.NetworkCommunication.EnumAndStates.TraceCodes.IdsMsgSdcpOrderFails*
+- uid: Bodoconsult.NetworkCommunication.EnumAndStates.TraceCodes.IdsMsgEdcpOrderOk
+  commentId: P:Bodoconsult.NetworkCommunication.EnumAndStates.TraceCodes.IdsMsgEdcpOrderOk
+  id: IdsMsgEdcpOrderOk
+  parent: Bodoconsult.NetworkCommunication.EnumAndStates.TraceCodes
+  langs:
+  - csharp
+  - vb
+  name: IdsMsgEdcpOrderOk
+  nameWithType: TraceCodes.IdsMsgEdcpOrderOk
+  fullName: Bodoconsult.NetworkCommunication.EnumAndStates.TraceCodes.IdsMsgEdcpOrderOk
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/EnumAndStates/TraceCodes.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: IdsMsgEdcpOrderOk
+    path: src/Bodoconsult.NetworkCommunication/EnumAndStates/TraceCodes.cs
+    startLine: 16
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.EnumAndStates
+  syntax:
+    content: public static int IdsMsgEdcpOrderOk { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Shared ReadOnly Property IdsMsgEdcpOrderOk As Integer
+  overload: Bodoconsult.NetworkCommunication.EnumAndStates.TraceCodes.IdsMsgEdcpOrderOk*
+- uid: Bodoconsult.NetworkCommunication.EnumAndStates.TraceCodes.IdsMsgEdcpOrderFails
+  commentId: P:Bodoconsult.NetworkCommunication.EnumAndStates.TraceCodes.IdsMsgEdcpOrderFails
+  id: IdsMsgEdcpOrderFails
+  parent: Bodoconsult.NetworkCommunication.EnumAndStates.TraceCodes
+  langs:
+  - csharp
+  - vb
+  name: IdsMsgEdcpOrderFails
+  nameWithType: TraceCodes.IdsMsgEdcpOrderFails
+  fullName: Bodoconsult.NetworkCommunication.EnumAndStates.TraceCodes.IdsMsgEdcpOrderFails
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/EnumAndStates/TraceCodes.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: IdsMsgEdcpOrderFails
+    path: src/Bodoconsult.NetworkCommunication/EnumAndStates/TraceCodes.cs
+    startLine: 17
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.EnumAndStates
+  syntax:
+    content: public static int IdsMsgEdcpOrderFails { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Shared ReadOnly Property IdsMsgEdcpOrderFails As Integer
+  overload: Bodoconsult.NetworkCommunication.EnumAndStates.TraceCodes.IdsMsgEdcpOrderFails*
+- uid: Bodoconsult.NetworkCommunication.EnumAndStates.TraceCodes.IdsMsgBtcpOrderOk
+  commentId: P:Bodoconsult.NetworkCommunication.EnumAndStates.TraceCodes.IdsMsgBtcpOrderOk
+  id: IdsMsgBtcpOrderOk
+  parent: Bodoconsult.NetworkCommunication.EnumAndStates.TraceCodes
+  langs:
+  - csharp
+  - vb
+  name: IdsMsgBtcpOrderOk
+  nameWithType: TraceCodes.IdsMsgBtcpOrderOk
+  fullName: Bodoconsult.NetworkCommunication.EnumAndStates.TraceCodes.IdsMsgBtcpOrderOk
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/EnumAndStates/TraceCodes.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: IdsMsgBtcpOrderOk
+    path: src/Bodoconsult.NetworkCommunication/EnumAndStates/TraceCodes.cs
+    startLine: 21
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.EnumAndStates
+  syntax:
+    content: public static int IdsMsgBtcpOrderOk { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Shared ReadOnly Property IdsMsgBtcpOrderOk As Integer
+  overload: Bodoconsult.NetworkCommunication.EnumAndStates.TraceCodes.IdsMsgBtcpOrderOk*
+- uid: Bodoconsult.NetworkCommunication.EnumAndStates.TraceCodes.IdsMsgBtcpOrderFails
+  commentId: P:Bodoconsult.NetworkCommunication.EnumAndStates.TraceCodes.IdsMsgBtcpOrderFails
+  id: IdsMsgBtcpOrderFails
+  parent: Bodoconsult.NetworkCommunication.EnumAndStates.TraceCodes
+  langs:
+  - csharp
+  - vb
+  name: IdsMsgBtcpOrderFails
+  nameWithType: TraceCodes.IdsMsgBtcpOrderFails
+  fullName: Bodoconsult.NetworkCommunication.EnumAndStates.TraceCodes.IdsMsgBtcpOrderFails
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/EnumAndStates/TraceCodes.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: IdsMsgBtcpOrderFails
+    path: src/Bodoconsult.NetworkCommunication/EnumAndStates/TraceCodes.cs
+    startLine: 22
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.EnumAndStates
+  syntax:
+    content: public static int IdsMsgBtcpOrderFails { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Shared ReadOnly Property IdsMsgBtcpOrderFails As Integer
+  overload: Bodoconsult.NetworkCommunication.EnumAndStates.TraceCodes.IdsMsgBtcpOrderFails*
+- uid: Bodoconsult.NetworkCommunication.EnumAndStates.TraceCodes.IdsMsgTncpOrderOk
+  commentId: P:Bodoconsult.NetworkCommunication.EnumAndStates.TraceCodes.IdsMsgTncpOrderOk
+  id: IdsMsgTncpOrderOk
+  parent: Bodoconsult.NetworkCommunication.EnumAndStates.TraceCodes
+  langs:
+  - csharp
+  - vb
+  name: IdsMsgTncpOrderOk
+  nameWithType: TraceCodes.IdsMsgTncpOrderOk
+  fullName: Bodoconsult.NetworkCommunication.EnumAndStates.TraceCodes.IdsMsgTncpOrderOk
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/EnumAndStates/TraceCodes.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: IdsMsgTncpOrderOk
+    path: src/Bodoconsult.NetworkCommunication/EnumAndStates/TraceCodes.cs
+    startLine: 26
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.EnumAndStates
+  syntax:
+    content: public static int IdsMsgTncpOrderOk { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Shared ReadOnly Property IdsMsgTncpOrderOk As Integer
+  overload: Bodoconsult.NetworkCommunication.EnumAndStates.TraceCodes.IdsMsgTncpOrderOk*
+- uid: Bodoconsult.NetworkCommunication.EnumAndStates.TraceCodes.IdsMsgTncpOrderFails
+  commentId: P:Bodoconsult.NetworkCommunication.EnumAndStates.TraceCodes.IdsMsgTncpOrderFails
+  id: IdsMsgTncpOrderFails
+  parent: Bodoconsult.NetworkCommunication.EnumAndStates.TraceCodes
+  langs:
+  - csharp
+  - vb
+  name: IdsMsgTncpOrderFails
+  nameWithType: TraceCodes.IdsMsgTncpOrderFails
+  fullName: Bodoconsult.NetworkCommunication.EnumAndStates.TraceCodes.IdsMsgTncpOrderFails
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/EnumAndStates/TraceCodes.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: IdsMsgTncpOrderFails
+    path: src/Bodoconsult.NetworkCommunication/EnumAndStates/TraceCodes.cs
+    startLine: 27
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.EnumAndStates
+  syntax:
+    content: public static int IdsMsgTncpOrderFails { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Shared ReadOnly Property IdsMsgTncpOrderFails As Integer
+  overload: Bodoconsult.NetworkCommunication.EnumAndStates.TraceCodes.IdsMsgTncpOrderFails*
+- uid: Bodoconsult.NetworkCommunication.EnumAndStates.TraceCodes.IdsMsgTestOrderOk
+  commentId: P:Bodoconsult.NetworkCommunication.EnumAndStates.TraceCodes.IdsMsgTestOrderOk
+  id: IdsMsgTestOrderOk
+  parent: Bodoconsult.NetworkCommunication.EnumAndStates.TraceCodes
+  langs:
+  - csharp
+  - vb
+  name: IdsMsgTestOrderOk
+  nameWithType: TraceCodes.IdsMsgTestOrderOk
+  fullName: Bodoconsult.NetworkCommunication.EnumAndStates.TraceCodes.IdsMsgTestOrderOk
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/EnumAndStates/TraceCodes.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: IdsMsgTestOrderOk
+    path: src/Bodoconsult.NetworkCommunication/EnumAndStates/TraceCodes.cs
+    startLine: 31
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.EnumAndStates
+  syntax:
+    content: public static int IdsMsgTestOrderOk { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Shared ReadOnly Property IdsMsgTestOrderOk As Integer
+  overload: Bodoconsult.NetworkCommunication.EnumAndStates.TraceCodes.IdsMsgTestOrderOk*
+- uid: Bodoconsult.NetworkCommunication.EnumAndStates.TraceCodes.IdsMsgTestOrderFails
+  commentId: P:Bodoconsult.NetworkCommunication.EnumAndStates.TraceCodes.IdsMsgTestOrderFails
+  id: IdsMsgTestOrderFails
+  parent: Bodoconsult.NetworkCommunication.EnumAndStates.TraceCodes
+  langs:
+  - csharp
+  - vb
+  name: IdsMsgTestOrderFails
+  nameWithType: TraceCodes.IdsMsgTestOrderFails
+  fullName: Bodoconsult.NetworkCommunication.EnumAndStates.TraceCodes.IdsMsgTestOrderFails
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/EnumAndStates/TraceCodes.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: IdsMsgTestOrderFails
+    path: src/Bodoconsult.NetworkCommunication/EnumAndStates/TraceCodes.cs
+    startLine: 32
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.EnumAndStates
+  syntax:
+    content: public static int IdsMsgTestOrderFails { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Shared ReadOnly Property IdsMsgTestOrderFails As Integer
+  overload: Bodoconsult.NetworkCommunication.EnumAndStates.TraceCodes.IdsMsgTestOrderFails*
+- uid: Bodoconsult.NetworkCommunication.EnumAndStates.TraceCodes.IdsMsgDummyOrderOk
+  commentId: P:Bodoconsult.NetworkCommunication.EnumAndStates.TraceCodes.IdsMsgDummyOrderOk
+  id: IdsMsgDummyOrderOk
+  parent: Bodoconsult.NetworkCommunication.EnumAndStates.TraceCodes
+  langs:
+  - csharp
+  - vb
+  name: IdsMsgDummyOrderOk
+  nameWithType: TraceCodes.IdsMsgDummyOrderOk
+  fullName: Bodoconsult.NetworkCommunication.EnumAndStates.TraceCodes.IdsMsgDummyOrderOk
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/EnumAndStates/TraceCodes.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: IdsMsgDummyOrderOk
+    path: src/Bodoconsult.NetworkCommunication/EnumAndStates/TraceCodes.cs
+    startLine: 36
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.EnumAndStates
+  syntax:
+    content: public static int IdsMsgDummyOrderOk { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Shared ReadOnly Property IdsMsgDummyOrderOk As Integer
+  overload: Bodoconsult.NetworkCommunication.EnumAndStates.TraceCodes.IdsMsgDummyOrderOk*
+- uid: Bodoconsult.NetworkCommunication.EnumAndStates.TraceCodes.IdsMsgDummyOrderFails
+  commentId: P:Bodoconsult.NetworkCommunication.EnumAndStates.TraceCodes.IdsMsgDummyOrderFails
+  id: IdsMsgDummyOrderFails
+  parent: Bodoconsult.NetworkCommunication.EnumAndStates.TraceCodes
+  langs:
+  - csharp
+  - vb
+  name: IdsMsgDummyOrderFails
+  nameWithType: TraceCodes.IdsMsgDummyOrderFails
+  fullName: Bodoconsult.NetworkCommunication.EnumAndStates.TraceCodes.IdsMsgDummyOrderFails
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/EnumAndStates/TraceCodes.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: IdsMsgDummyOrderFails
+    path: src/Bodoconsult.NetworkCommunication/EnumAndStates/TraceCodes.cs
+    startLine: 37
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.EnumAndStates
+  syntax:
+    content: public static int IdsMsgDummyOrderFails { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Shared ReadOnly Property IdsMsgDummyOrderFails As Integer
+  overload: Bodoconsult.NetworkCommunication.EnumAndStates.TraceCodes.IdsMsgDummyOrderFails*
+- uid: Bodoconsult.NetworkCommunication.EnumAndStates.TraceCodes.IdsMsgEmptyOrderOk
+  commentId: P:Bodoconsult.NetworkCommunication.EnumAndStates.TraceCodes.IdsMsgEmptyOrderOk
+  id: IdsMsgEmptyOrderOk
+  parent: Bodoconsult.NetworkCommunication.EnumAndStates.TraceCodes
+  langs:
+  - csharp
+  - vb
+  name: IdsMsgEmptyOrderOk
+  nameWithType: TraceCodes.IdsMsgEmptyOrderOk
+  fullName: Bodoconsult.NetworkCommunication.EnumAndStates.TraceCodes.IdsMsgEmptyOrderOk
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/EnumAndStates/TraceCodes.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: IdsMsgEmptyOrderOk
+    path: src/Bodoconsult.NetworkCommunication/EnumAndStates/TraceCodes.cs
+    startLine: 41
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.EnumAndStates
+  syntax:
+    content: public static int IdsMsgEmptyOrderOk { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Shared ReadOnly Property IdsMsgEmptyOrderOk As Integer
+  overload: Bodoconsult.NetworkCommunication.EnumAndStates.TraceCodes.IdsMsgEmptyOrderOk*
+- uid: Bodoconsult.NetworkCommunication.EnumAndStates.TraceCodes.IdsMsgEmptyOrderFails
+  commentId: P:Bodoconsult.NetworkCommunication.EnumAndStates.TraceCodes.IdsMsgEmptyOrderFails
+  id: IdsMsgEmptyOrderFails
+  parent: Bodoconsult.NetworkCommunication.EnumAndStates.TraceCodes
+  langs:
+  - csharp
+  - vb
+  name: IdsMsgEmptyOrderFails
+  nameWithType: TraceCodes.IdsMsgEmptyOrderFails
+  fullName: Bodoconsult.NetworkCommunication.EnumAndStates.TraceCodes.IdsMsgEmptyOrderFails
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/EnumAndStates/TraceCodes.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: IdsMsgEmptyOrderFails
+    path: src/Bodoconsult.NetworkCommunication/EnumAndStates/TraceCodes.cs
+    startLine: 42
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.EnumAndStates
+  syntax:
+    content: public static int IdsMsgEmptyOrderFails { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Shared ReadOnly Property IdsMsgEmptyOrderFails As Integer
+  overload: Bodoconsult.NetworkCommunication.EnumAndStates.TraceCodes.IdsMsgEmptyOrderFails*
+references:
+- uid: Bodoconsult.NetworkCommunication.EnumAndStates
+  commentId: N:Bodoconsult.NetworkCommunication.EnumAndStates
+  href: Bodoconsult.html
+  name: Bodoconsult.NetworkCommunication.EnumAndStates
+  nameWithType: Bodoconsult.NetworkCommunication.EnumAndStates
+  fullName: Bodoconsult.NetworkCommunication.EnumAndStates
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.EnumAndStates
+    name: EnumAndStates
+    href: Bodoconsult.NetworkCommunication.EnumAndStates.html
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.EnumAndStates
+    name: EnumAndStates
+    href: Bodoconsult.NetworkCommunication.EnumAndStates.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Bodoconsult.NetworkCommunication.EnumAndStates.TraceCodes.IdsMsgSdcpOrderOk*
+  commentId: Overload:Bodoconsult.NetworkCommunication.EnumAndStates.TraceCodes.IdsMsgSdcpOrderOk
+  href: Bodoconsult.NetworkCommunication.EnumAndStates.TraceCodes.html#Bodoconsult_NetworkCommunication_EnumAndStates_TraceCodes_IdsMsgSdcpOrderOk
+  name: IdsMsgSdcpOrderOk
+  nameWithType: TraceCodes.IdsMsgSdcpOrderOk
+  fullName: Bodoconsult.NetworkCommunication.EnumAndStates.TraceCodes.IdsMsgSdcpOrderOk
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: Bodoconsult.NetworkCommunication.EnumAndStates.TraceCodes.IdsMsgSdcpOrderFails*
+  commentId: Overload:Bodoconsult.NetworkCommunication.EnumAndStates.TraceCodes.IdsMsgSdcpOrderFails
+  href: Bodoconsult.NetworkCommunication.EnumAndStates.TraceCodes.html#Bodoconsult_NetworkCommunication_EnumAndStates_TraceCodes_IdsMsgSdcpOrderFails
+  name: IdsMsgSdcpOrderFails
+  nameWithType: TraceCodes.IdsMsgSdcpOrderFails
+  fullName: Bodoconsult.NetworkCommunication.EnumAndStates.TraceCodes.IdsMsgSdcpOrderFails
+- uid: Bodoconsult.NetworkCommunication.EnumAndStates.TraceCodes.IdsMsgEdcpOrderOk*
+  commentId: Overload:Bodoconsult.NetworkCommunication.EnumAndStates.TraceCodes.IdsMsgEdcpOrderOk
+  href: Bodoconsult.NetworkCommunication.EnumAndStates.TraceCodes.html#Bodoconsult_NetworkCommunication_EnumAndStates_TraceCodes_IdsMsgEdcpOrderOk
+  name: IdsMsgEdcpOrderOk
+  nameWithType: TraceCodes.IdsMsgEdcpOrderOk
+  fullName: Bodoconsult.NetworkCommunication.EnumAndStates.TraceCodes.IdsMsgEdcpOrderOk
+- uid: Bodoconsult.NetworkCommunication.EnumAndStates.TraceCodes.IdsMsgEdcpOrderFails*
+  commentId: Overload:Bodoconsult.NetworkCommunication.EnumAndStates.TraceCodes.IdsMsgEdcpOrderFails
+  href: Bodoconsult.NetworkCommunication.EnumAndStates.TraceCodes.html#Bodoconsult_NetworkCommunication_EnumAndStates_TraceCodes_IdsMsgEdcpOrderFails
+  name: IdsMsgEdcpOrderFails
+  nameWithType: TraceCodes.IdsMsgEdcpOrderFails
+  fullName: Bodoconsult.NetworkCommunication.EnumAndStates.TraceCodes.IdsMsgEdcpOrderFails
+- uid: Bodoconsult.NetworkCommunication.EnumAndStates.TraceCodes.IdsMsgBtcpOrderOk*
+  commentId: Overload:Bodoconsult.NetworkCommunication.EnumAndStates.TraceCodes.IdsMsgBtcpOrderOk
+  href: Bodoconsult.NetworkCommunication.EnumAndStates.TraceCodes.html#Bodoconsult_NetworkCommunication_EnumAndStates_TraceCodes_IdsMsgBtcpOrderOk
+  name: IdsMsgBtcpOrderOk
+  nameWithType: TraceCodes.IdsMsgBtcpOrderOk
+  fullName: Bodoconsult.NetworkCommunication.EnumAndStates.TraceCodes.IdsMsgBtcpOrderOk
+- uid: Bodoconsult.NetworkCommunication.EnumAndStates.TraceCodes.IdsMsgBtcpOrderFails*
+  commentId: Overload:Bodoconsult.NetworkCommunication.EnumAndStates.TraceCodes.IdsMsgBtcpOrderFails
+  href: Bodoconsult.NetworkCommunication.EnumAndStates.TraceCodes.html#Bodoconsult_NetworkCommunication_EnumAndStates_TraceCodes_IdsMsgBtcpOrderFails
+  name: IdsMsgBtcpOrderFails
+  nameWithType: TraceCodes.IdsMsgBtcpOrderFails
+  fullName: Bodoconsult.NetworkCommunication.EnumAndStates.TraceCodes.IdsMsgBtcpOrderFails
+- uid: Bodoconsult.NetworkCommunication.EnumAndStates.TraceCodes.IdsMsgTncpOrderOk*
+  commentId: Overload:Bodoconsult.NetworkCommunication.EnumAndStates.TraceCodes.IdsMsgTncpOrderOk
+  href: Bodoconsult.NetworkCommunication.EnumAndStates.TraceCodes.html#Bodoconsult_NetworkCommunication_EnumAndStates_TraceCodes_IdsMsgTncpOrderOk
+  name: IdsMsgTncpOrderOk
+  nameWithType: TraceCodes.IdsMsgTncpOrderOk
+  fullName: Bodoconsult.NetworkCommunication.EnumAndStates.TraceCodes.IdsMsgTncpOrderOk
+- uid: Bodoconsult.NetworkCommunication.EnumAndStates.TraceCodes.IdsMsgTncpOrderFails*
+  commentId: Overload:Bodoconsult.NetworkCommunication.EnumAndStates.TraceCodes.IdsMsgTncpOrderFails
+  href: Bodoconsult.NetworkCommunication.EnumAndStates.TraceCodes.html#Bodoconsult_NetworkCommunication_EnumAndStates_TraceCodes_IdsMsgTncpOrderFails
+  name: IdsMsgTncpOrderFails
+  nameWithType: TraceCodes.IdsMsgTncpOrderFails
+  fullName: Bodoconsult.NetworkCommunication.EnumAndStates.TraceCodes.IdsMsgTncpOrderFails
+- uid: Bodoconsult.NetworkCommunication.EnumAndStates.TraceCodes.IdsMsgTestOrderOk*
+  commentId: Overload:Bodoconsult.NetworkCommunication.EnumAndStates.TraceCodes.IdsMsgTestOrderOk
+  href: Bodoconsult.NetworkCommunication.EnumAndStates.TraceCodes.html#Bodoconsult_NetworkCommunication_EnumAndStates_TraceCodes_IdsMsgTestOrderOk
+  name: IdsMsgTestOrderOk
+  nameWithType: TraceCodes.IdsMsgTestOrderOk
+  fullName: Bodoconsult.NetworkCommunication.EnumAndStates.TraceCodes.IdsMsgTestOrderOk
+- uid: Bodoconsult.NetworkCommunication.EnumAndStates.TraceCodes.IdsMsgTestOrderFails*
+  commentId: Overload:Bodoconsult.NetworkCommunication.EnumAndStates.TraceCodes.IdsMsgTestOrderFails
+  href: Bodoconsult.NetworkCommunication.EnumAndStates.TraceCodes.html#Bodoconsult_NetworkCommunication_EnumAndStates_TraceCodes_IdsMsgTestOrderFails
+  name: IdsMsgTestOrderFails
+  nameWithType: TraceCodes.IdsMsgTestOrderFails
+  fullName: Bodoconsult.NetworkCommunication.EnumAndStates.TraceCodes.IdsMsgTestOrderFails
+- uid: Bodoconsult.NetworkCommunication.EnumAndStates.TraceCodes.IdsMsgDummyOrderOk*
+  commentId: Overload:Bodoconsult.NetworkCommunication.EnumAndStates.TraceCodes.IdsMsgDummyOrderOk
+  href: Bodoconsult.NetworkCommunication.EnumAndStates.TraceCodes.html#Bodoconsult_NetworkCommunication_EnumAndStates_TraceCodes_IdsMsgDummyOrderOk
+  name: IdsMsgDummyOrderOk
+  nameWithType: TraceCodes.IdsMsgDummyOrderOk
+  fullName: Bodoconsult.NetworkCommunication.EnumAndStates.TraceCodes.IdsMsgDummyOrderOk
+- uid: Bodoconsult.NetworkCommunication.EnumAndStates.TraceCodes.IdsMsgDummyOrderFails*
+  commentId: Overload:Bodoconsult.NetworkCommunication.EnumAndStates.TraceCodes.IdsMsgDummyOrderFails
+  href: Bodoconsult.NetworkCommunication.EnumAndStates.TraceCodes.html#Bodoconsult_NetworkCommunication_EnumAndStates_TraceCodes_IdsMsgDummyOrderFails
+  name: IdsMsgDummyOrderFails
+  nameWithType: TraceCodes.IdsMsgDummyOrderFails
+  fullName: Bodoconsult.NetworkCommunication.EnumAndStates.TraceCodes.IdsMsgDummyOrderFails
+- uid: Bodoconsult.NetworkCommunication.EnumAndStates.TraceCodes.IdsMsgEmptyOrderOk*
+  commentId: Overload:Bodoconsult.NetworkCommunication.EnumAndStates.TraceCodes.IdsMsgEmptyOrderOk
+  href: Bodoconsult.NetworkCommunication.EnumAndStates.TraceCodes.html#Bodoconsult_NetworkCommunication_EnumAndStates_TraceCodes_IdsMsgEmptyOrderOk
+  name: IdsMsgEmptyOrderOk
+  nameWithType: TraceCodes.IdsMsgEmptyOrderOk
+  fullName: Bodoconsult.NetworkCommunication.EnumAndStates.TraceCodes.IdsMsgEmptyOrderOk
+- uid: Bodoconsult.NetworkCommunication.EnumAndStates.TraceCodes.IdsMsgEmptyOrderFails*
+  commentId: Overload:Bodoconsult.NetworkCommunication.EnumAndStates.TraceCodes.IdsMsgEmptyOrderFails
+  href: Bodoconsult.NetworkCommunication.EnumAndStates.TraceCodes.html#Bodoconsult_NetworkCommunication_EnumAndStates_TraceCodes_IdsMsgEmptyOrderFails
+  name: IdsMsgEmptyOrderFails
+  nameWithType: TraceCodes.IdsMsgEmptyOrderFails
+  fullName: Bodoconsult.NetworkCommunication.EnumAndStates.TraceCodes.IdsMsgEmptyOrderFails

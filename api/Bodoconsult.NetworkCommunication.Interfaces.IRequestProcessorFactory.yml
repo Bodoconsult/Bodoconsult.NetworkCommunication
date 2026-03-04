@@ -1,0 +1,117 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IRequestProcessorFactory
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.IRequestProcessorFactory
+  id: IRequestProcessorFactory
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  children:
+  - Bodoconsult.NetworkCommunication.Interfaces.IRequestProcessorFactory.CreateRequestProcessor(Bodoconsult.NetworkCommunication.Interfaces.IOrder)
+  langs:
+  - csharp
+  - vb
+  name: IRequestProcessorFactory
+  nameWithType: IRequestProcessorFactory
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IRequestProcessorFactory
+  type: Interface
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/IRequestProcessorFactory.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: IRequestProcessorFactory
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/IRequestProcessorFactory.cs
+    startLine: 7
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Interface for device order request processors
+  example: []
+  syntax:
+    content: public interface IRequestProcessorFactory
+    content.vb: Public Interface IRequestProcessorFactory
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IRequestProcessorFactory.CreateRequestProcessor(Bodoconsult.NetworkCommunication.Interfaces.IOrder)
+  commentId: M:Bodoconsult.NetworkCommunication.Interfaces.IRequestProcessorFactory.CreateRequestProcessor(Bodoconsult.NetworkCommunication.Interfaces.IOrder)
+  id: CreateRequestProcessor(Bodoconsult.NetworkCommunication.Interfaces.IOrder)
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IRequestProcessorFactory
+  langs:
+  - csharp
+  - vb
+  name: CreateRequestProcessor(IOrder)
+  nameWithType: IRequestProcessorFactory.CreateRequestProcessor(IOrder)
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IRequestProcessorFactory.CreateRequestProcessor(Bodoconsult.NetworkCommunication.Interfaces.IOrder)
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/IRequestProcessorFactory.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: CreateRequestProcessor
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/IRequestProcessorFactory.cs
+    startLine: 14
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Create a device order
+  example: []
+  syntax:
+    content: IRequestProcessor CreateRequestProcessor(IOrder order)
+    parameters:
+    - id: order
+      type: Bodoconsult.NetworkCommunication.Interfaces.IOrder
+      description: Current device order to process
+    return:
+      type: Bodoconsult.NetworkCommunication.Interfaces.IRequestProcessor
+      description: A request processor for the order
+    content.vb: Function CreateRequestProcessor(order As IOrder) As IRequestProcessor
+  overload: Bodoconsult.NetworkCommunication.Interfaces.IRequestProcessorFactory.CreateRequestProcessor*
+references:
+- uid: Bodoconsult.NetworkCommunication.Interfaces
+  commentId: N:Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.html
+  name: Bodoconsult.NetworkCommunication.Interfaces
+  nameWithType: Bodoconsult.NetworkCommunication.Interfaces
+  fullName: Bodoconsult.NetworkCommunication.Interfaces
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Interfaces
+    name: Interfaces
+    href: Bodoconsult.NetworkCommunication.Interfaces.html
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Interfaces
+    name: Interfaces
+    href: Bodoconsult.NetworkCommunication.Interfaces.html
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IRequestProcessorFactory.CreateRequestProcessor*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.IRequestProcessorFactory.CreateRequestProcessor
+  href: Bodoconsult.NetworkCommunication.Interfaces.IRequestProcessorFactory.html#Bodoconsult_NetworkCommunication_Interfaces_IRequestProcessorFactory_CreateRequestProcessor_Bodoconsult_NetworkCommunication_Interfaces_IOrder_
+  name: CreateRequestProcessor
+  nameWithType: IRequestProcessorFactory.CreateRequestProcessor
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IRequestProcessorFactory.CreateRequestProcessor
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IOrder
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.IOrder
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.NetworkCommunication.Interfaces.IOrder.html
+  name: IOrder
+  nameWithType: IOrder
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IOrder
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IRequestProcessor
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.IRequestProcessor
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.NetworkCommunication.Interfaces.IRequestProcessor.html
+  name: IRequestProcessor
+  nameWithType: IRequestProcessor
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IRequestProcessor

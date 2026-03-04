@@ -1,0 +1,496 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bodoconsult.NetworkCommunication.Factories.OrderManagementCommunicationAdapterFactory
+  commentId: T:Bodoconsult.NetworkCommunication.Factories.OrderManagementCommunicationAdapterFactory
+  id: OrderManagementCommunicationAdapterFactory
+  parent: Bodoconsult.NetworkCommunication.Factories
+  children:
+  - Bodoconsult.NetworkCommunication.Factories.OrderManagementCommunicationAdapterFactory.#ctor(Bodoconsult.NetworkCommunication.Interfaces.ICommunicationHandlerFactory,Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessageFactory)
+  - Bodoconsult.NetworkCommunication.Factories.OrderManagementCommunicationAdapterFactory.CreateInstance(Bodoconsult.NetworkCommunication.Interfaces.IIpDataMessagingConfig)
+  langs:
+  - csharp
+  - vb
+  name: OrderManagementCommunicationAdapterFactory
+  nameWithType: OrderManagementCommunicationAdapterFactory
+  fullName: Bodoconsult.NetworkCommunication.Factories.OrderManagementCommunicationAdapterFactory
+  type: Class
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Factories/OrderManagementCommunicationAdapterFactory.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: OrderManagementCommunicationAdapterFactory
+    path: src/Bodoconsult.NetworkCommunication/Factories/OrderManagementCommunicationAdapterFactory.cs
+    startLine: 10
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Factories
+  summary: Current implementation of <xref href="Bodoconsult.NetworkCommunication.Interfaces.IOrderManagementCommunicationAdapterFactory" data-throw-if-not-resolved="false"></xref>
+  example: []
+  syntax:
+    content: 'public class OrderManagementCommunicationAdapterFactory : IOrderManagementCommunicationAdapterFactory'
+    content.vb: Public Class OrderManagementCommunicationAdapterFactory Implements IOrderManagementCommunicationAdapterFactory
+  inheritance:
+  - System.Object
+  implements:
+  - Bodoconsult.NetworkCommunication.Interfaces.IOrderManagementCommunicationAdapterFactory
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: Bodoconsult.NetworkCommunication.Factories.OrderManagementCommunicationAdapterFactory.#ctor(Bodoconsult.NetworkCommunication.Interfaces.ICommunicationHandlerFactory,Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessageFactory)
+  commentId: M:Bodoconsult.NetworkCommunication.Factories.OrderManagementCommunicationAdapterFactory.#ctor(Bodoconsult.NetworkCommunication.Interfaces.ICommunicationHandlerFactory,Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessageFactory)
+  id: '#ctor(Bodoconsult.NetworkCommunication.Interfaces.ICommunicationHandlerFactory,Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessageFactory)'
+  parent: Bodoconsult.NetworkCommunication.Factories.OrderManagementCommunicationAdapterFactory
+  langs:
+  - csharp
+  - vb
+  name: OrderManagementCommunicationAdapterFactory(ICommunicationHandlerFactory, IOutboundDataMessageFactory)
+  nameWithType: OrderManagementCommunicationAdapterFactory.OrderManagementCommunicationAdapterFactory(ICommunicationHandlerFactory, IOutboundDataMessageFactory)
+  fullName: Bodoconsult.NetworkCommunication.Factories.OrderManagementCommunicationAdapterFactory.OrderManagementCommunicationAdapterFactory(Bodoconsult.NetworkCommunication.Interfaces.ICommunicationHandlerFactory, Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessageFactory)
+  type: Constructor
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Factories/OrderManagementCommunicationAdapterFactory.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: .ctor
+    path: src/Bodoconsult.NetworkCommunication/Factories/OrderManagementCommunicationAdapterFactory.cs
+    startLine: 18
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Factories
+  summary: Default ctor
+  example: []
+  syntax:
+    content: public OrderManagementCommunicationAdapterFactory(ICommunicationHandlerFactory smdTowerCommunicationHandlerFactory, IOutboundDataMessageFactory outboundDataMessageFactory)
+    parameters:
+    - id: smdTowerCommunicationHandlerFactory
+      type: Bodoconsult.NetworkCommunication.Interfaces.ICommunicationHandlerFactory
+    - id: outboundDataMessageFactory
+      type: Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessageFactory
+    content.vb: Public Sub New(smdTowerCommunicationHandlerFactory As ICommunicationHandlerFactory, outboundDataMessageFactory As IOutboundDataMessageFactory)
+  overload: Bodoconsult.NetworkCommunication.Factories.OrderManagementCommunicationAdapterFactory.#ctor*
+  nameWithType.vb: OrderManagementCommunicationAdapterFactory.New(ICommunicationHandlerFactory, IOutboundDataMessageFactory)
+  fullName.vb: Bodoconsult.NetworkCommunication.Factories.OrderManagementCommunicationAdapterFactory.New(Bodoconsult.NetworkCommunication.Interfaces.ICommunicationHandlerFactory, Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessageFactory)
+  name.vb: New(ICommunicationHandlerFactory, IOutboundDataMessageFactory)
+- uid: Bodoconsult.NetworkCommunication.Factories.OrderManagementCommunicationAdapterFactory.CreateInstance(Bodoconsult.NetworkCommunication.Interfaces.IIpDataMessagingConfig)
+  commentId: M:Bodoconsult.NetworkCommunication.Factories.OrderManagementCommunicationAdapterFactory.CreateInstance(Bodoconsult.NetworkCommunication.Interfaces.IIpDataMessagingConfig)
+  id: CreateInstance(Bodoconsult.NetworkCommunication.Interfaces.IIpDataMessagingConfig)
+  parent: Bodoconsult.NetworkCommunication.Factories.OrderManagementCommunicationAdapterFactory
+  langs:
+  - csharp
+  - vb
+  name: CreateInstance(IIpDataMessagingConfig)
+  nameWithType: OrderManagementCommunicationAdapterFactory.CreateInstance(IIpDataMessagingConfig)
+  fullName: Bodoconsult.NetworkCommunication.Factories.OrderManagementCommunicationAdapterFactory.CreateInstance(Bodoconsult.NetworkCommunication.Interfaces.IIpDataMessagingConfig)
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Factories/OrderManagementCommunicationAdapterFactory.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: CreateInstance
+    path: src/Bodoconsult.NetworkCommunication/Factories/OrderManagementCommunicationAdapterFactory.cs
+    startLine: 29
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Factories
+  summary: Create an instance implementing <xref href="Bodoconsult.NetworkCommunication.Communication.IpCommunicationAdapter" data-throw-if-not-resolved="false"></xref>
+  example: []
+  syntax:
+    content: public ICommunicationAdapter CreateInstance(IIpDataMessagingConfig dataMessagingConfig)
+    parameters:
+    - id: dataMessagingConfig
+      type: Bodoconsult.NetworkCommunication.Interfaces.IIpDataMessagingConfig
+      description: Current data messaging config
+    return:
+      type: Bodoconsult.NetworkCommunication.Interfaces.ICommunicationAdapter
+      description: An instance implementing <xref href="Bodoconsult.NetworkCommunication.Communication.IpCommunicationAdapter" data-throw-if-not-resolved="false"></xref>
+    content.vb: Public Function CreateInstance(dataMessagingConfig As IIpDataMessagingConfig) As ICommunicationAdapter
+  overload: Bodoconsult.NetworkCommunication.Factories.OrderManagementCommunicationAdapterFactory.CreateInstance*
+  implements:
+  - Bodoconsult.NetworkCommunication.Interfaces.IOrderManagementCommunicationAdapterFactory.CreateInstance(Bodoconsult.NetworkCommunication.Interfaces.IIpDataMessagingConfig)
+references:
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IOrderManagementCommunicationAdapterFactory
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.IOrderManagementCommunicationAdapterFactory
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.NetworkCommunication.Interfaces.IOrderManagementCommunicationAdapterFactory.html
+  name: IOrderManagementCommunicationAdapterFactory
+  nameWithType: IOrderManagementCommunicationAdapterFactory
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IOrderManagementCommunicationAdapterFactory
+- uid: Bodoconsult.NetworkCommunication.Factories
+  commentId: N:Bodoconsult.NetworkCommunication.Factories
+  href: Bodoconsult.html
+  name: Bodoconsult.NetworkCommunication.Factories
+  nameWithType: Bodoconsult.NetworkCommunication.Factories
+  fullName: Bodoconsult.NetworkCommunication.Factories
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Factories
+    name: Factories
+    href: Bodoconsult.NetworkCommunication.Factories.html
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Factories
+    name: Factories
+    href: Bodoconsult.NetworkCommunication.Factories.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: Bodoconsult.NetworkCommunication.Interfaces
+  commentId: N:Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.html
+  name: Bodoconsult.NetworkCommunication.Interfaces
+  nameWithType: Bodoconsult.NetworkCommunication.Interfaces
+  fullName: Bodoconsult.NetworkCommunication.Interfaces
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Interfaces
+    name: Interfaces
+    href: Bodoconsult.NetworkCommunication.Interfaces.html
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Interfaces
+    name: Interfaces
+    href: Bodoconsult.NetworkCommunication.Interfaces.html
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Bodoconsult.NetworkCommunication.Factories.OrderManagementCommunicationAdapterFactory.#ctor*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Factories.OrderManagementCommunicationAdapterFactory.#ctor
+  href: Bodoconsult.NetworkCommunication.Factories.OrderManagementCommunicationAdapterFactory.html#Bodoconsult_NetworkCommunication_Factories_OrderManagementCommunicationAdapterFactory__ctor_Bodoconsult_NetworkCommunication_Interfaces_ICommunicationHandlerFactory_Bodoconsult_NetworkCommunication_Interfaces_IOutboundDataMessageFactory_
+  name: OrderManagementCommunicationAdapterFactory
+  nameWithType: OrderManagementCommunicationAdapterFactory.OrderManagementCommunicationAdapterFactory
+  fullName: Bodoconsult.NetworkCommunication.Factories.OrderManagementCommunicationAdapterFactory.OrderManagementCommunicationAdapterFactory
+  nameWithType.vb: OrderManagementCommunicationAdapterFactory.New
+  fullName.vb: Bodoconsult.NetworkCommunication.Factories.OrderManagementCommunicationAdapterFactory.New
+  name.vb: New
+- uid: Bodoconsult.NetworkCommunication.Interfaces.ICommunicationHandlerFactory
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.ICommunicationHandlerFactory
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.NetworkCommunication.Interfaces.ICommunicationHandlerFactory.html
+  name: ICommunicationHandlerFactory
+  nameWithType: ICommunicationHandlerFactory
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.ICommunicationHandlerFactory
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessageFactory
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessageFactory
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessageFactory.html
+  name: IOutboundDataMessageFactory
+  nameWithType: IOutboundDataMessageFactory
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessageFactory
+- uid: Bodoconsult.NetworkCommunication.Communication.IpCommunicationAdapter
+  commentId: T:Bodoconsult.NetworkCommunication.Communication.IpCommunicationAdapter
+  href: Bodoconsult.NetworkCommunication.Communication.IpCommunicationAdapter.html
+  name: IpCommunicationAdapter
+  nameWithType: IpCommunicationAdapter
+  fullName: Bodoconsult.NetworkCommunication.Communication.IpCommunicationAdapter
+- uid: Bodoconsult.NetworkCommunication.Factories.OrderManagementCommunicationAdapterFactory.CreateInstance*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Factories.OrderManagementCommunicationAdapterFactory.CreateInstance
+  href: Bodoconsult.NetworkCommunication.Factories.OrderManagementCommunicationAdapterFactory.html#Bodoconsult_NetworkCommunication_Factories_OrderManagementCommunicationAdapterFactory_CreateInstance_Bodoconsult_NetworkCommunication_Interfaces_IIpDataMessagingConfig_
+  name: CreateInstance
+  nameWithType: OrderManagementCommunicationAdapterFactory.CreateInstance
+  fullName: Bodoconsult.NetworkCommunication.Factories.OrderManagementCommunicationAdapterFactory.CreateInstance
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IOrderManagementCommunicationAdapterFactory.CreateInstance(Bodoconsult.NetworkCommunication.Interfaces.IIpDataMessagingConfig)
+  commentId: M:Bodoconsult.NetworkCommunication.Interfaces.IOrderManagementCommunicationAdapterFactory.CreateInstance(Bodoconsult.NetworkCommunication.Interfaces.IIpDataMessagingConfig)
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IOrderManagementCommunicationAdapterFactory
+  href: Bodoconsult.NetworkCommunication.Interfaces.IOrderManagementCommunicationAdapterFactory.html#Bodoconsult_NetworkCommunication_Interfaces_IOrderManagementCommunicationAdapterFactory_CreateInstance_Bodoconsult_NetworkCommunication_Interfaces_IIpDataMessagingConfig_
+  name: CreateInstance(IIpDataMessagingConfig)
+  nameWithType: IOrderManagementCommunicationAdapterFactory.CreateInstance(IIpDataMessagingConfig)
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IOrderManagementCommunicationAdapterFactory.CreateInstance(Bodoconsult.NetworkCommunication.Interfaces.IIpDataMessagingConfig)
+  spec.csharp:
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IOrderManagementCommunicationAdapterFactory.CreateInstance(Bodoconsult.NetworkCommunication.Interfaces.IIpDataMessagingConfig)
+    name: CreateInstance
+    href: Bodoconsult.NetworkCommunication.Interfaces.IOrderManagementCommunicationAdapterFactory.html#Bodoconsult_NetworkCommunication_Interfaces_IOrderManagementCommunicationAdapterFactory_CreateInstance_Bodoconsult_NetworkCommunication_Interfaces_IIpDataMessagingConfig_
+  - name: (
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IIpDataMessagingConfig
+    name: IIpDataMessagingConfig
+    href: Bodoconsult.NetworkCommunication.Interfaces.IIpDataMessagingConfig.html
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IOrderManagementCommunicationAdapterFactory.CreateInstance(Bodoconsult.NetworkCommunication.Interfaces.IIpDataMessagingConfig)
+    name: CreateInstance
+    href: Bodoconsult.NetworkCommunication.Interfaces.IOrderManagementCommunicationAdapterFactory.html#Bodoconsult_NetworkCommunication_Interfaces_IOrderManagementCommunicationAdapterFactory_CreateInstance_Bodoconsult_NetworkCommunication_Interfaces_IIpDataMessagingConfig_
+  - name: (
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IIpDataMessagingConfig
+    name: IIpDataMessagingConfig
+    href: Bodoconsult.NetworkCommunication.Interfaces.IIpDataMessagingConfig.html
+  - name: )
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IIpDataMessagingConfig
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.IIpDataMessagingConfig
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.NetworkCommunication.Interfaces.IIpDataMessagingConfig.html
+  name: IIpDataMessagingConfig
+  nameWithType: IIpDataMessagingConfig
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IIpDataMessagingConfig
+- uid: Bodoconsult.NetworkCommunication.Interfaces.ICommunicationAdapter
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.ICommunicationAdapter
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.NetworkCommunication.Interfaces.ICommunicationAdapter.html
+  name: ICommunicationAdapter
+  nameWithType: ICommunicationAdapter
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.ICommunicationAdapter

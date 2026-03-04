@@ -1,0 +1,401 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeReservation
+  commentId: T:Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeReservation
+  id: IDhcpServerScopeReservation
+  parent: Bodoconsult.Network.Windows.Dhcp
+  children:
+  - Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeReservation.Address
+  - Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeReservation.AllowedClientTypes
+  - Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeReservation.Client
+  - Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeReservation.Delete
+  - Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeReservation.HardwareAddress
+  - Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeReservation.Options
+  - Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeReservation.Scope
+  - Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeReservation.Server
+  langs:
+  - csharp
+  - vb
+  name: IDhcpServerScopeReservation
+  nameWithType: IDhcpServerScopeReservation
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeReservation
+  type: Interface
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/IDhcpServerScopeReservation.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: IDhcpServerScopeReservation
+    path: src/Bodoconsult.Network.Windows/Dhcp/IDhcpServerScopeReservation.cs
+    startLine: 5
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: public interface IDhcpServerScopeReservation
+    content.vb: Public Interface IDhcpServerScopeReservation
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeReservation.Address
+  commentId: P:Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeReservation.Address
+  id: Address
+  parent: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeReservation
+  langs:
+  - csharp
+  - vb
+  name: Address
+  nameWithType: IDhcpServerScopeReservation.Address
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeReservation.Address
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/IDhcpServerScopeReservation.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Address
+    path: src/Bodoconsult.Network.Windows/Dhcp/IDhcpServerScopeReservation.cs
+    startLine: 7
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: DhcpServerIpAddress Address { get; }
+    parameters: []
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress
+    content.vb: ReadOnly Property Address As DhcpServerIpAddress
+  overload: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeReservation.Address*
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeReservation.AllowedClientTypes
+  commentId: P:Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeReservation.AllowedClientTypes
+  id: AllowedClientTypes
+  parent: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeReservation
+  langs:
+  - csharp
+  - vb
+  name: AllowedClientTypes
+  nameWithType: IDhcpServerScopeReservation.AllowedClientTypes
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeReservation.AllowedClientTypes
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/IDhcpServerScopeReservation.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: AllowedClientTypes
+    path: src/Bodoconsult.Network.Windows/Dhcp/IDhcpServerScopeReservation.cs
+    startLine: 8
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: DhcpServerClientTypes AllowedClientTypes { get; }
+    parameters: []
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerClientTypes
+    content.vb: ReadOnly Property AllowedClientTypes As DhcpServerClientTypes
+  overload: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeReservation.AllowedClientTypes*
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeReservation.Client
+  commentId: P:Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeReservation.Client
+  id: Client
+  parent: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeReservation
+  langs:
+  - csharp
+  - vb
+  name: Client
+  nameWithType: IDhcpServerScopeReservation.Client
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeReservation.Client
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/IDhcpServerScopeReservation.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Client
+    path: src/Bodoconsult.Network.Windows/Dhcp/IDhcpServerScopeReservation.cs
+    startLine: 9
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: IDhcpServerClient Client { get; }
+    parameters: []
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.IDhcpServerClient
+    content.vb: ReadOnly Property Client As IDhcpServerClient
+  overload: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeReservation.Client*
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeReservation.HardwareAddress
+  commentId: P:Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeReservation.HardwareAddress
+  id: HardwareAddress
+  parent: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeReservation
+  langs:
+  - csharp
+  - vb
+  name: HardwareAddress
+  nameWithType: IDhcpServerScopeReservation.HardwareAddress
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeReservation.HardwareAddress
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/IDhcpServerScopeReservation.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: HardwareAddress
+    path: src/Bodoconsult.Network.Windows/Dhcp/IDhcpServerScopeReservation.cs
+    startLine: 10
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: DhcpServerHardwareAddress HardwareAddress { get; }
+    parameters: []
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerHardwareAddress
+    content.vb: ReadOnly Property HardwareAddress As DhcpServerHardwareAddress
+  overload: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeReservation.HardwareAddress*
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeReservation.Options
+  commentId: P:Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeReservation.Options
+  id: Options
+  parent: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeReservation
+  langs:
+  - csharp
+  - vb
+  name: Options
+  nameWithType: IDhcpServerScopeReservation.Options
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeReservation.Options
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/IDhcpServerScopeReservation.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Options
+    path: src/Bodoconsult.Network.Windows/Dhcp/IDhcpServerScopeReservation.cs
+    startLine: 11
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: IDhcpServerScopeReservationOptionValueCollection Options { get; }
+    parameters: []
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeReservationOptionValueCollection
+    content.vb: ReadOnly Property Options As IDhcpServerScopeReservationOptionValueCollection
+  overload: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeReservation.Options*
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeReservation.Scope
+  commentId: P:Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeReservation.Scope
+  id: Scope
+  parent: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeReservation
+  langs:
+  - csharp
+  - vb
+  name: Scope
+  nameWithType: IDhcpServerScopeReservation.Scope
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeReservation.Scope
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/IDhcpServerScopeReservation.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Scope
+    path: src/Bodoconsult.Network.Windows/Dhcp/IDhcpServerScopeReservation.cs
+    startLine: 12
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: IDhcpServerScope Scope { get; }
+    parameters: []
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope
+    content.vb: ReadOnly Property Scope As IDhcpServerScope
+  overload: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeReservation.Scope*
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeReservation.Server
+  commentId: P:Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeReservation.Server
+  id: Server
+  parent: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeReservation
+  langs:
+  - csharp
+  - vb
+  name: Server
+  nameWithType: IDhcpServerScopeReservation.Server
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeReservation.Server
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/IDhcpServerScopeReservation.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Server
+    path: src/Bodoconsult.Network.Windows/Dhcp/IDhcpServerScopeReservation.cs
+    startLine: 13
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: IDhcpServer Server { get; }
+    parameters: []
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.IDhcpServer
+    content.vb: ReadOnly Property Server As IDhcpServer
+  overload: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeReservation.Server*
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeReservation.Delete
+  commentId: M:Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeReservation.Delete
+  id: Delete
+  parent: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeReservation
+  langs:
+  - csharp
+  - vb
+  name: Delete()
+  nameWithType: IDhcpServerScopeReservation.Delete()
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeReservation.Delete()
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/IDhcpServerScopeReservation.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Delete
+    path: src/Bodoconsult.Network.Windows/Dhcp/IDhcpServerScopeReservation.cs
+    startLine: 15
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: void Delete()
+    content.vb: Sub Delete()
+  overload: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeReservation.Delete*
+references:
+- uid: Bodoconsult.Network.Windows.Dhcp
+  commentId: N:Bodoconsult.Network.Windows.Dhcp
+  href: Bodoconsult.html
+  name: Bodoconsult.Network.Windows.Dhcp
+  nameWithType: Bodoconsult.Network.Windows.Dhcp
+  fullName: Bodoconsult.Network.Windows.Dhcp
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.Network
+    name: Network
+    href: Bodoconsult.Network.html
+  - name: .
+  - uid: Bodoconsult.Network.Windows
+    name: Windows
+    href: Bodoconsult.Network.Windows.html
+  - name: .
+  - uid: Bodoconsult.Network.Windows.Dhcp
+    name: Dhcp
+    href: Bodoconsult.Network.Windows.Dhcp.html
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.Network
+    name: Network
+    href: Bodoconsult.Network.html
+  - name: .
+  - uid: Bodoconsult.Network.Windows
+    name: Windows
+    href: Bodoconsult.Network.Windows.html
+  - name: .
+  - uid: Bodoconsult.Network.Windows.Dhcp
+    name: Dhcp
+    href: Bodoconsult.Network.Windows.Dhcp.html
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeReservation.Address*
+  commentId: Overload:Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeReservation.Address
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeReservation.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerScopeReservation_Address
+  name: Address
+  nameWithType: IDhcpServerScopeReservation.Address
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeReservation.Address
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress
+  commentId: T:Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress
+  parent: Bodoconsult.Network.Windows.Dhcp
+  href: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.html
+  name: DhcpServerIpAddress
+  nameWithType: DhcpServerIpAddress
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeReservation.AllowedClientTypes*
+  commentId: Overload:Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeReservation.AllowedClientTypes
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeReservation.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerScopeReservation_AllowedClientTypes
+  name: AllowedClientTypes
+  nameWithType: IDhcpServerScopeReservation.AllowedClientTypes
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeReservation.AllowedClientTypes
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerClientTypes
+  commentId: T:Bodoconsult.Network.Windows.Dhcp.DhcpServerClientTypes
+  parent: Bodoconsult.Network.Windows.Dhcp
+  href: Bodoconsult.Network.Windows.Dhcp.DhcpServerClientTypes.html
+  name: DhcpServerClientTypes
+  nameWithType: DhcpServerClientTypes
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerClientTypes
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeReservation.Client*
+  commentId: Overload:Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeReservation.Client
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeReservation.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerScopeReservation_Client
+  name: Client
+  nameWithType: IDhcpServerScopeReservation.Client
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeReservation.Client
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerClient
+  commentId: T:Bodoconsult.Network.Windows.Dhcp.IDhcpServerClient
+  parent: Bodoconsult.Network.Windows.Dhcp
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerClient.html
+  name: IDhcpServerClient
+  nameWithType: IDhcpServerClient
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerClient
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeReservation.HardwareAddress*
+  commentId: Overload:Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeReservation.HardwareAddress
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeReservation.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerScopeReservation_HardwareAddress
+  name: HardwareAddress
+  nameWithType: IDhcpServerScopeReservation.HardwareAddress
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeReservation.HardwareAddress
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerHardwareAddress
+  commentId: T:Bodoconsult.Network.Windows.Dhcp.DhcpServerHardwareAddress
+  parent: Bodoconsult.Network.Windows.Dhcp
+  href: Bodoconsult.Network.Windows.Dhcp.DhcpServerHardwareAddress.html
+  name: DhcpServerHardwareAddress
+  nameWithType: DhcpServerHardwareAddress
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerHardwareAddress
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeReservation.Options*
+  commentId: Overload:Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeReservation.Options
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeReservation.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerScopeReservation_Options
+  name: Options
+  nameWithType: IDhcpServerScopeReservation.Options
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeReservation.Options
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeReservationOptionValueCollection
+  commentId: T:Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeReservationOptionValueCollection
+  parent: Bodoconsult.Network.Windows.Dhcp
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeReservationOptionValueCollection.html
+  name: IDhcpServerScopeReservationOptionValueCollection
+  nameWithType: IDhcpServerScopeReservationOptionValueCollection
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeReservationOptionValueCollection
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeReservation.Scope*
+  commentId: Overload:Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeReservation.Scope
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeReservation.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerScopeReservation_Scope
+  name: Scope
+  nameWithType: IDhcpServerScopeReservation.Scope
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeReservation.Scope
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope
+  commentId: T:Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope
+  parent: Bodoconsult.Network.Windows.Dhcp
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.html
+  name: IDhcpServerScope
+  nameWithType: IDhcpServerScope
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeReservation.Server*
+  commentId: Overload:Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeReservation.Server
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeReservation.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerScopeReservation_Server
+  name: Server
+  nameWithType: IDhcpServerScopeReservation.Server
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeReservation.Server
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServer
+  commentId: T:Bodoconsult.Network.Windows.Dhcp.IDhcpServer
+  parent: Bodoconsult.Network.Windows.Dhcp
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServer.html
+  name: IDhcpServer
+  nameWithType: IDhcpServer
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServer
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeReservation.Delete*
+  commentId: Overload:Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeReservation.Delete
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeReservation.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerScopeReservation_Delete
+  name: Delete
+  nameWithType: IDhcpServerScopeReservation.Delete
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeReservation.Delete

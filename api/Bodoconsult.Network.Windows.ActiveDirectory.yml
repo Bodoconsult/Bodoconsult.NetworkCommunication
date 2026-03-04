@@ -1,0 +1,117 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bodoconsult.Network.Windows.ActiveDirectory
+  commentId: N:Bodoconsult.Network.Windows.ActiveDirectory
+  id: Bodoconsult.Network.Windows.ActiveDirectory
+  children:
+  - Bodoconsult.Network.Windows.ActiveDirectory.AdComputer
+  - Bodoconsult.Network.Windows.ActiveDirectory.AdDomain
+  - Bodoconsult.Network.Windows.ActiveDirectory.AdGroup
+  - Bodoconsult.Network.Windows.ActiveDirectory.AdGroupType
+  - Bodoconsult.Network.Windows.ActiveDirectory.AdGroupTypeShort
+  - Bodoconsult.Network.Windows.ActiveDirectory.AdTree
+  - Bodoconsult.Network.Windows.ActiveDirectory.AdUser
+  - Bodoconsult.Network.Windows.ActiveDirectory.IAdObject
+  langs:
+  - csharp
+  - vb
+  name: Bodoconsult.Network.Windows.ActiveDirectory
+  nameWithType: Bodoconsult.Network.Windows.ActiveDirectory
+  fullName: Bodoconsult.Network.Windows.ActiveDirectory
+  type: Namespace
+  assemblies:
+  - Bodoconsult.Network.Windows
+references:
+- uid: Bodoconsult.Network.Windows.ActiveDirectory.AdComputer
+  commentId: T:Bodoconsult.Network.Windows.ActiveDirectory.AdComputer
+  parent: Bodoconsult.Network.Windows.ActiveDirectory
+  href: Bodoconsult.Network.Windows.ActiveDirectory.AdComputer.html
+  name: AdComputer
+  nameWithType: AdComputer
+  fullName: Bodoconsult.Network.Windows.ActiveDirectory.AdComputer
+- uid: Bodoconsult.Network.Windows.ActiveDirectory.AdDomain
+  commentId: T:Bodoconsult.Network.Windows.ActiveDirectory.AdDomain
+  parent: Bodoconsult.Network.Windows.ActiveDirectory
+  href: Bodoconsult.Network.Windows.ActiveDirectory.AdDomain.html
+  name: AdDomain
+  nameWithType: AdDomain
+  fullName: Bodoconsult.Network.Windows.ActiveDirectory.AdDomain
+- uid: Bodoconsult.Network.Windows.ActiveDirectory.AdGroup
+  commentId: T:Bodoconsult.Network.Windows.ActiveDirectory.AdGroup
+  parent: Bodoconsult.Network.Windows.ActiveDirectory
+  href: Bodoconsult.Network.Windows.ActiveDirectory.AdGroup.html
+  name: AdGroup
+  nameWithType: AdGroup
+  fullName: Bodoconsult.Network.Windows.ActiveDirectory.AdGroup
+- uid: Bodoconsult.Network.Windows.ActiveDirectory.AdGroupType
+  commentId: T:Bodoconsult.Network.Windows.ActiveDirectory.AdGroupType
+  parent: Bodoconsult.Network.Windows.ActiveDirectory
+  href: Bodoconsult.Network.Windows.ActiveDirectory.AdGroupType.html
+  name: AdGroupType
+  nameWithType: AdGroupType
+  fullName: Bodoconsult.Network.Windows.ActiveDirectory.AdGroupType
+- uid: Bodoconsult.Network.Windows.ActiveDirectory.AdGroupTypeShort
+  commentId: T:Bodoconsult.Network.Windows.ActiveDirectory.AdGroupTypeShort
+  parent: Bodoconsult.Network.Windows.ActiveDirectory
+  href: Bodoconsult.Network.Windows.ActiveDirectory.AdGroupTypeShort.html
+  name: AdGroupTypeShort
+  nameWithType: AdGroupTypeShort
+  fullName: Bodoconsult.Network.Windows.ActiveDirectory.AdGroupTypeShort
+- uid: Bodoconsult.Network.Windows.ActiveDirectory.AdTree
+  commentId: T:Bodoconsult.Network.Windows.ActiveDirectory.AdTree
+  href: Bodoconsult.Network.Windows.ActiveDirectory.AdTree.html
+  name: AdTree
+  nameWithType: AdTree
+  fullName: Bodoconsult.Network.Windows.ActiveDirectory.AdTree
+- uid: Bodoconsult.Network.Windows.ActiveDirectory.AdUser
+  commentId: T:Bodoconsult.Network.Windows.ActiveDirectory.AdUser
+  parent: Bodoconsult.Network.Windows.ActiveDirectory
+  href: Bodoconsult.Network.Windows.ActiveDirectory.AdUser.html
+  name: AdUser
+  nameWithType: AdUser
+  fullName: Bodoconsult.Network.Windows.ActiveDirectory.AdUser
+- uid: Bodoconsult.Network.Windows.ActiveDirectory.IAdObject
+  commentId: T:Bodoconsult.Network.Windows.ActiveDirectory.IAdObject
+  parent: Bodoconsult.Network.Windows.ActiveDirectory
+  href: Bodoconsult.Network.Windows.ActiveDirectory.IAdObject.html
+  name: IAdObject
+  nameWithType: IAdObject
+  fullName: Bodoconsult.Network.Windows.ActiveDirectory.IAdObject
+- uid: Bodoconsult.Network.Windows.ActiveDirectory
+  commentId: N:Bodoconsult.Network.Windows.ActiveDirectory
+  href: Bodoconsult.html
+  name: Bodoconsult.Network.Windows.ActiveDirectory
+  nameWithType: Bodoconsult.Network.Windows.ActiveDirectory
+  fullName: Bodoconsult.Network.Windows.ActiveDirectory
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.Network
+    name: Network
+    href: Bodoconsult.Network.html
+  - name: .
+  - uid: Bodoconsult.Network.Windows
+    name: Windows
+    href: Bodoconsult.Network.Windows.html
+  - name: .
+  - uid: Bodoconsult.Network.Windows.ActiveDirectory
+    name: ActiveDirectory
+    href: Bodoconsult.Network.Windows.ActiveDirectory.html
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.Network
+    name: Network
+    href: Bodoconsult.Network.html
+  - name: .
+  - uid: Bodoconsult.Network.Windows
+    name: Windows
+    href: Bodoconsult.Network.Windows.html
+  - name: .
+  - uid: Bodoconsult.Network.Windows.ActiveDirectory
+    name: ActiveDirectory
+    href: Bodoconsult.Network.Windows.ActiveDirectory.html

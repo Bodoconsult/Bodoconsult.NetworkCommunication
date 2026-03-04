@@ -1,0 +1,1432 @@
+### YamlMime:TableOfContent
+items:
+- uid: Bodoconsult.Network.Windows.ActiveDirectory
+  name: Bodoconsult.Network.Windows.ActiveDirectory
+  type: Namespace
+  items:
+  - uid: Bodoconsult.Network.Windows.ActiveDirectory.AdComputer
+    name: AdComputer
+    type: Class
+  - uid: Bodoconsult.Network.Windows.ActiveDirectory.AdDomain
+    name: AdDomain
+    type: Class
+  - uid: Bodoconsult.Network.Windows.ActiveDirectory.AdGroup
+    name: AdGroup
+    type: Class
+  - uid: Bodoconsult.Network.Windows.ActiveDirectory.AdGroupType
+    name: AdGroupType
+    type: Enum
+  - uid: Bodoconsult.Network.Windows.ActiveDirectory.AdGroupTypeShort
+    name: AdGroupTypeShort
+    type: Enum
+  - uid: Bodoconsult.Network.Windows.ActiveDirectory.AdTree
+    name: AdTree
+    type: Class
+  - uid: Bodoconsult.Network.Windows.ActiveDirectory.AdUser
+    name: AdUser
+    type: Class
+  - uid: Bodoconsult.Network.Windows.ActiveDirectory.IAdObject
+    name: IAdObject
+    type: Interface
+- uid: Bodoconsult.Network.Windows.ActiveDirectory.Helpers
+  name: Bodoconsult.Network.Windows.ActiveDirectory.Helpers
+  type: Namespace
+  items:
+  - uid: Bodoconsult.Network.Windows.ActiveDirectory.Helpers.AdHelper
+    name: AdHelper
+    type: Class
+- uid: Bodoconsult.Network.Windows.Cim
+  name: Bodoconsult.Network.Windows.Cim
+  type: Namespace
+  items:
+  - uid: Bodoconsult.Network.Windows.Cim.WmiCimHelper
+    name: WmiCimHelper
+    type: Class
+- uid: Bodoconsult.Network.Windows.Dhcp
+  name: Bodoconsult.Network.Windows.Dhcp
+  type: Namespace
+  items:
+  - uid: Bodoconsult.Network.Windows.Dhcp.DhcpServer
+    name: DhcpServer
+    type: Class
+  - uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerApiProtocol
+    name: DhcpServerApiProtocol
+    type: Enum
+  - uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerAuditLog
+    name: DhcpServerAuditLog
+    type: Class
+  - uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerBindingElement
+    name: DhcpServerBindingElement
+    type: Class
+  - uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerBindingElementCollection
+    name: DhcpServerBindingElementCollection
+    type: Class
+  - uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerClass
+    name: DhcpServerClass
+    type: Class
+  - uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerClassCollection
+    name: DhcpServerClassCollection
+    type: Class
+  - uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerClient
+    name: DhcpServerClient
+    type: Class
+  - uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerClientAddressStates
+    name: DhcpServerClientAddressStates
+    type: Enum
+  - uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerClientCollection
+    name: DhcpServerClientCollection
+    type: Class
+  - uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerClientDnsStates
+    name: DhcpServerClientDnsStates
+    type: Enum
+  - uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerClientNameProtectionStates
+    name: DhcpServerClientNameProtectionStates
+    type: Enum
+  - uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerClientQuarantineStatuses
+    name: DhcpServerClientQuarantineStatuses
+    type: Enum
+  - uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerClientTypes
+    name: DhcpServerClientTypes
+    type: Enum
+  - uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerConfiguration
+    name: DhcpServerConfiguration
+    type: Class
+  - uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerDnsSettings
+    name: DhcpServerDnsSettings
+    type: Class
+  - uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerException
+    name: DhcpServerException
+    type: Class
+  - uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverMode
+    name: DhcpServerFailoverMode
+    type: Enum
+  - uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverRelationship
+    name: DhcpServerFailoverRelationship
+    type: Class
+  - uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverRelationshipCollection
+    name: DhcpServerFailoverRelationshipCollection
+    type: Class
+  - uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverServerType
+    name: DhcpServerFailoverServerType
+    type: Enum
+  - uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverState
+    name: DhcpServerFailoverState
+    type: Enum
+  - uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerHardwareAddress
+    name: DhcpServerHardwareAddress
+    type: Struct
+  - uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerHardwareType
+    name: DhcpServerHardwareType
+    type: Enum
+  - uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerHost
+    name: DhcpServerHost
+    type: Class
+  - uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress
+    name: DhcpServerIpAddress
+    type: Struct
+  - uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpMask
+    name: DhcpServerIpMask
+    type: Struct
+  - uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpRange
+    name: DhcpServerIpRange
+    type: Struct
+  - uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpRangeType
+    name: DhcpServerIpRangeType
+    type: Enum
+  - uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerMessageTypes
+    name: DhcpServerMessageTypes
+    type: Enum
+  - uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerOption
+    name: DhcpServerOption
+    type: Class
+  - uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionCollection
+    name: DhcpServerOptionCollection
+    type: Class
+  - uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionElement
+    name: DhcpServerOptionElement
+    type: Class
+  - uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionElementBinary
+    name: DhcpServerOptionElementBinary
+    type: Class
+  - uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionElementByte
+    name: DhcpServerOptionElementByte
+    type: Class
+  - uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionElementDWord
+    name: DhcpServerOptionElementDWord
+    type: Class
+  - uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionElementDWordDWord
+    name: DhcpServerOptionElementDWordDWord
+    type: Class
+  - uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionElementIpAddress
+    name: DhcpServerOptionElementIpAddress
+    type: Class
+  - uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionElementIpv6Address
+    name: DhcpServerOptionElementIpv6Address
+    type: Class
+  - uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionElementString
+    name: DhcpServerOptionElementString
+    type: Class
+  - uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionElementType
+    name: DhcpServerOptionElementType
+    type: Enum
+  - uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionElementWord
+    name: DhcpServerOptionElementWord
+    type: Class
+  - uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIdTypeAttribute
+    name: DhcpServerOptionIdTypeAttribute
+    type: Class
+  - uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIdTypes
+    name: DhcpServerOptionIdTypes
+    type: Enum
+  - uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIds
+    name: DhcpServerOptionIds
+    type: Enum
+  - uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionValue
+    name: DhcpServerOptionValue
+    type: Class
+  - uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerPacket
+    name: DhcpServerPacket
+    type: Class
+  - uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerPacketFlags
+    name: DhcpServerPacketFlags
+    type: Enum
+  - uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerPacketMessageTypes
+    name: DhcpServerPacketMessageTypes
+    type: Enum
+  - uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerPacketOption
+    name: DhcpServerPacketOption
+    type: Struct
+  - uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerPacketOptions
+    name: DhcpServerPacketOptions
+    type: Class
+  - uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerPacketWritable
+    name: DhcpServerPacketWritable
+    type: Class
+  - uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope
+    name: DhcpServerScope
+    type: Class
+  - uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeClientCollection
+    name: DhcpServerScopeClientCollection
+    type: Class
+  - uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeCollection
+    name: DhcpServerScopeCollection
+    type: Class
+  - uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeExcludedIpRangeCollection
+    name: DhcpServerScopeExcludedIpRangeCollection
+    type: Class
+  - uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeFailoverStatistics
+    name: DhcpServerScopeFailoverStatistics
+    type: Class
+  - uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeOptionValueCollection
+    name: DhcpServerScopeOptionValueCollection
+    type: Class
+  - uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeReservation
+    name: DhcpServerScopeReservation
+    type: Class
+  - uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeReservationCollection
+    name: DhcpServerScopeReservationCollection
+    type: Class
+  - uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeReservationOptionValueCollection
+    name: DhcpServerScopeReservationOptionValueCollection
+    type: Class
+  - uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeState
+    name: DhcpServerScopeState
+    type: Enum
+  - uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerSpecificStrings
+    name: DhcpServerSpecificStrings
+    type: Class
+  - uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerVersions
+    name: DhcpServerVersions
+    type: Enum
+  - uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServer
+    name: IDhcpServer
+    type: Interface
+  - uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerAuditLog
+    name: IDhcpServerAuditLog
+    type: Interface
+  - uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerBindingElement
+    name: IDhcpServerBindingElement
+    type: Interface
+  - uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerBindingElementCollection
+    name: IDhcpServerBindingElementCollection
+    type: Interface
+  - uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerClass
+    name: IDhcpServerClass
+    type: Interface
+  - uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerClassCollection
+    name: IDhcpServerClassCollection
+    type: Interface
+  - uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerClient
+    name: IDhcpServerClient
+    type: Interface
+  - uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerClientCollection
+    name: IDhcpServerClientCollection
+    type: Interface
+  - uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerConfiguration
+    name: IDhcpServerConfiguration
+    type: Interface
+  - uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerDnsSettings
+    name: IDhcpServerDnsSettings
+    type: Interface
+  - uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerFailoverRelationship
+    name: IDhcpServerFailoverRelationship
+    type: Interface
+  - uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerFailoverRelationshipCollection
+    name: IDhcpServerFailoverRelationshipCollection
+    type: Interface
+  - uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerHost
+    name: IDhcpServerHost
+    type: Interface
+  - uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerOption
+    name: IDhcpServerOption
+    type: Interface
+  - uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerOptionCollection
+    name: IDhcpServerOptionCollection
+    type: Interface
+  - uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerOptionElement
+    name: IDhcpServerOptionElement
+    type: Interface
+  - uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerOptionValue
+    name: IDhcpServerOptionValue
+    type: Interface
+  - uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket
+    name: IDhcpServerPacket
+    type: Interface
+  - uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacketRaw
+    name: IDhcpServerPacketRaw
+    type: Interface
+  - uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacketRawWritable
+    name: IDhcpServerPacketRawWritable
+    type: Interface
+  - uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacketWritable
+    name: IDhcpServerPacketWritable
+    type: Interface
+  - uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope
+    name: IDhcpServerScope
+    type: Interface
+  - uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeClientCollection
+    name: IDhcpServerScopeClientCollection
+    type: Interface
+  - uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeCollection
+    name: IDhcpServerScopeCollection
+    type: Interface
+  - uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeExcludedIpRangeCollection
+    name: IDhcpServerScopeExcludedIpRangeCollection
+    type: Interface
+  - uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeFailoverStatistics
+    name: IDhcpServerScopeFailoverStatistics
+    type: Interface
+  - uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection
+    name: IDhcpServerScopeOptionValueCollection
+    type: Interface
+  - uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeReservation
+    name: IDhcpServerScopeReservation
+    type: Interface
+  - uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeReservationCollection
+    name: IDhcpServerScopeReservationCollection
+    type: Interface
+  - uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeReservationOptionValueCollection
+    name: IDhcpServerScopeReservationOptionValueCollection
+    type: Interface
+  - uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerSpecificStrings
+    name: IDhcpServerSpecificStrings
+    type: Interface
+- uid: Bodoconsult.Network.Windows.Dns
+  name: Bodoconsult.Network.Windows.Dns
+  type: Namespace
+  items:
+  - uid: Bodoconsult.Network.Windows.Dns.DnsDomain
+    name: DnsDomain
+    type: Class
+  - uid: Bodoconsult.Network.Windows.Dns.DnsRecord
+    name: DnsRecord
+    type: Class
+  - uid: Bodoconsult.Network.Windows.Dns.DnsRecordType
+    name: DnsRecordType
+    type: Class
+  - uid: Bodoconsult.Network.Windows.Dns.DnsServer
+    name: DnsServer
+    type: Class
+  - uid: Bodoconsult.Network.Windows.Dns.NewZoneType
+    name: NewZoneType
+    type: Enum
+  - uid: Bodoconsult.Network.Windows.Dns.ZoneType
+    name: ZoneType
+    type: Enum
+- uid: Bodoconsult.NetworkCommunication.App.Abstractions
+  name: Bodoconsult.NetworkCommunication.App.Abstractions
+  type: Namespace
+  items:
+  - uid: Bodoconsult.NetworkCommunication.App.Abstractions.AppDateService
+    name: AppDateService
+    type: Class
+  - uid: Bodoconsult.NetworkCommunication.App.Abstractions.BaseClientNotification
+    name: BaseClientNotification
+    type: Class
+  - uid: Bodoconsult.NetworkCommunication.App.Abstractions.ExceptionNotification
+    name: ExceptionNotification
+    type: Class
+  - uid: Bodoconsult.NetworkCommunication.App.Abstractions.IAppDateService
+    name: IAppDateService
+    type: Interface
+  - uid: Bodoconsult.NetworkCommunication.App.Abstractions.ICentralClientNotificationManager
+    name: ICentralClientNotificationManager
+    type: Interface
+  - uid: Bodoconsult.NetworkCommunication.App.Abstractions.IMonitorLoggerFactoryFactory
+    name: IMonitorLoggerFactoryFactory
+    type: Interface
+  - uid: Bodoconsult.NetworkCommunication.App.Abstractions.LambdaExpressionHelper
+    name: LambdaExpressionHelper
+    type: Class
+  - uid: Bodoconsult.NetworkCommunication.App.Abstractions.MemoryExtensions
+    name: MemoryExtensions
+    type: Class
+  - uid: Bodoconsult.NetworkCommunication.App.Abstractions.MonitorLoggerFactory
+    name: MonitorLoggerFactory
+    type: Class
+  - uid: Bodoconsult.NetworkCommunication.App.Abstractions.MonitorLoggerFactoryFactory
+    name: MonitorLoggerFactoryFactory
+    type: Class
+  - uid: Bodoconsult.NetworkCommunication.App.Abstractions.ProgressNotification
+    name: ProgressNotification
+    type: Class
+  - uid: Bodoconsult.NetworkCommunication.App.Abstractions.ReadOnlySequenceExtensions
+    name: ReadOnlySequenceExtensions
+    type: Class
+  - uid: Bodoconsult.NetworkCommunication.App.Abstractions.TransferToClientDelegate
+    name: TransferToClientDelegate
+    type: Delegate
+  - uid: Bodoconsult.NetworkCommunication.App.Abstractions.ValidationHelper
+    name: ValidationHelper
+    type: Class
+- uid: Bodoconsult.NetworkCommunication.ClientNotifications
+  name: Bodoconsult.NetworkCommunication.ClientNotifications
+  type: Namespace
+  items:
+  - uid: Bodoconsult.NetworkCommunication.ClientNotifications.FakeOrderManagementClientNotificationManager
+    name: FakeOrderManagementClientNotificationManager
+    type: Class
+  - uid: Bodoconsult.NetworkCommunication.ClientNotifications.OrderExecutionNotification
+    name: OrderExecutionNotification
+    type: Class
+  - uid: Bodoconsult.NetworkCommunication.ClientNotifications.OrderManagementClientNotificationManagerBase
+    name: OrderManagementClientNotificationManagerBase
+    type: Class
+  - uid: Bodoconsult.NetworkCommunication.ClientNotifications.StateManagementStateNotification
+    name: StateManagementStateNotification
+    type: Class
+- uid: Bodoconsult.NetworkCommunication.Communication
+  name: Bodoconsult.NetworkCommunication.Communication
+  type: Namespace
+  items:
+  - uid: Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo
+    name: BaseDuplexIo
+    type: Class
+  - uid: Bodoconsult.NetworkCommunication.Communication.BaseDuplexIoReceiver
+    name: BaseDuplexIoReceiver
+    type: Class
+  - uid: Bodoconsult.NetworkCommunication.Communication.BaseDuplexIoSender
+    name: BaseDuplexIoSender
+    type: Class
+  - uid: Bodoconsult.NetworkCommunication.Communication.ChunkedSequence`1
+    name: ChunkedSequence<T>
+    type: Class
+  - uid: Bodoconsult.NetworkCommunication.Communication.DummyMemory
+    name: DummyMemory
+    type: Class
+  - uid: Bodoconsult.NetworkCommunication.Communication.FakeHandshakeDuplexIo
+    name: FakeHandshakeDuplexIo
+    type: Class
+  - uid: Bodoconsult.NetworkCommunication.Communication.FakeIpCommunicationAdapter
+    name: FakeIpCommunicationAdapter
+    type: Class
+  - uid: Bodoconsult.NetworkCommunication.Communication.IpCommunicationAdapter
+    name: IpCommunicationAdapter
+    type: Class
+  - uid: Bodoconsult.NetworkCommunication.Communication.IpCommunicationHandler
+    name: IpCommunicationHandler
+    type: Class
+  - uid: Bodoconsult.NetworkCommunication.Communication.IpDuplexIo
+    name: IpDuplexIo
+    type: Class
+  - uid: Bodoconsult.NetworkCommunication.Communication.IpDuplexIoReceiver
+    name: IpDuplexIoReceiver
+    type: Class
+  - uid: Bodoconsult.NetworkCommunication.Communication.IpDuplexIoSender
+    name: IpDuplexIoSender
+    type: Class
+  - uid: Bodoconsult.NetworkCommunication.Communication.IpHighPerformanceDuplexIo
+    name: IpHighPerformanceDuplexIo
+    type: Class
+  - uid: Bodoconsult.NetworkCommunication.Communication.IpHighPerformanceDuplexIoReceiver
+    name: IpHighPerformanceDuplexIoReceiver
+    type: Class
+  - uid: Bodoconsult.NetworkCommunication.Communication.IpHighPerformanceDuplexIoSender
+    name: IpHighPerformanceDuplexIoSender
+    type: Class
+- uid: Bodoconsult.NetworkCommunication.Communication.Logging
+  name: Bodoconsult.NetworkCommunication.Communication.Logging
+  type: Namespace
+  items:
+  - uid: Bodoconsult.NetworkCommunication.Communication.Logging.DoNothingDataLogger
+    name: DoNothingDataLogger
+    type: Class
+- uid: Bodoconsult.NetworkCommunication.Communication.Sending
+  name: Bodoconsult.NetworkCommunication.Communication.Sending
+  type: Namespace
+  items:
+  - uid: Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess
+    name: BaseSendPacketProcess
+    type: Class
+  - uid: Bodoconsult.NetworkCommunication.Communication.Sending.BaseWaitStateManager
+    name: BaseWaitStateManager
+    type: Class
+  - uid: Bodoconsult.NetworkCommunication.Communication.Sending.DefaultWaitStateManager
+    name: DefaultWaitStateManager
+    type: Class
+  - uid: Bodoconsult.NetworkCommunication.Communication.Sending.DirectSendPacketProcess
+    name: DirectSendPacketProcess
+    type: Class
+  - uid: Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcess
+    name: FakeSendPacketProcess
+    type: Class
+  - uid: Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcessEncodingError
+    name: FakeSendPacketProcessEncodingError
+    type: Class
+  - uid: Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcessSocketError
+    name: FakeSendPacketProcessSocketError
+    type: Class
+  - uid: Bodoconsult.NetworkCommunication.Communication.Sending.SendPacketProcess
+    name: SendPacketProcess
+    type: Class
+- uid: Bodoconsult.NetworkCommunication.DataMessaging.DataBlockCodecs
+  name: Bodoconsult.NetworkCommunication.DataMessaging.DataBlockCodecs
+  type: Namespace
+  items:
+  - uid: Bodoconsult.NetworkCommunication.DataMessaging.DataBlockCodecs.BasicDataBlockCodec
+    name: BasicDataBlockCodec
+    type: Class
+- uid: Bodoconsult.NetworkCommunication.DataMessaging.DataBlockCodingProcessors
+  name: Bodoconsult.NetworkCommunication.DataMessaging.DataBlockCodingProcessors
+  type: Namespace
+  items:
+  - uid: Bodoconsult.NetworkCommunication.DataMessaging.DataBlockCodingProcessors.DefaultDataBlockCodingProcessor
+    name: DefaultDataBlockCodingProcessor
+    type: Class
+- uid: Bodoconsult.NetworkCommunication.DataMessaging.DataBlocks
+  name: Bodoconsult.NetworkCommunication.DataMessaging.DataBlocks
+  type: Namespace
+  items:
+  - uid: Bodoconsult.NetworkCommunication.DataMessaging.DataBlocks.BasicInboundDatablock
+    name: BasicInboundDatablock
+    type: Class
+  - uid: Bodoconsult.NetworkCommunication.DataMessaging.DataBlocks.BasicOutboundDatablock
+    name: BasicOutboundDatablock
+    type: Class
+- uid: Bodoconsult.NetworkCommunication.DataMessaging.DataMessageCodecs
+  name: Bodoconsult.NetworkCommunication.DataMessaging.DataMessageCodecs
+  type: Namespace
+  items:
+  - uid: Bodoconsult.NetworkCommunication.DataMessaging.DataMessageCodecs.BaseDataMessageCodec
+    name: BaseDataMessageCodec
+    type: Class
+  - uid: Bodoconsult.NetworkCommunication.DataMessaging.DataMessageCodecs.BtcpDataMessageCodec
+    name: BtcpDataMessageCodec
+    type: Class
+  - uid: Bodoconsult.NetworkCommunication.DataMessaging.DataMessageCodecs.BtcpHandshakeMessageCodec
+    name: BtcpHandshakeMessageCodec
+    type: Class
+  - uid: Bodoconsult.NetworkCommunication.DataMessaging.DataMessageCodecs.EdcpDataMessageCodec
+    name: EdcpDataMessageCodec
+    type: Class
+  - uid: Bodoconsult.NetworkCommunication.DataMessaging.DataMessageCodecs.EdcpHandshakeMessageCodec
+    name: EdcpHandshakeMessageCodec
+    type: Class
+  - uid: Bodoconsult.NetworkCommunication.DataMessaging.DataMessageCodecs.RawDataMessageCodec
+    name: RawDataMessageCodec
+    type: Class
+  - uid: Bodoconsult.NetworkCommunication.DataMessaging.DataMessageCodecs.SdcpDataMessageCodec
+    name: SdcpDataMessageCodec
+    type: Class
+  - uid: Bodoconsult.NetworkCommunication.DataMessaging.DataMessageCodecs.SdcpHandshakeMessageCodec
+    name: SdcpHandshakeMessageCodec
+    type: Class
+- uid: Bodoconsult.NetworkCommunication.DataMessaging.DataMessageCodingProcessors
+  name: Bodoconsult.NetworkCommunication.DataMessaging.DataMessageCodingProcessors
+  type: Namespace
+  items:
+  - uid: Bodoconsult.NetworkCommunication.DataMessaging.DataMessageCodingProcessors.DefaultDataMessageCodingProcessor
+    name: DefaultDataMessageCodingProcessor
+    type: Class
+- uid: Bodoconsult.NetworkCommunication.DataMessaging.DataMessageProcessingPackages
+  name: Bodoconsult.NetworkCommunication.DataMessaging.DataMessageProcessingPackages
+  type: Namespace
+  items:
+  - uid: Bodoconsult.NetworkCommunication.DataMessaging.DataMessageProcessingPackages.BtcpDataMessageProcessingPackage
+    name: BtcpDataMessageProcessingPackage
+    type: Class
+  - uid: Bodoconsult.NetworkCommunication.DataMessaging.DataMessageProcessingPackages.BtcpHandshakeFactory
+    name: BtcpHandshakeFactory
+    type: Class
+  - uid: Bodoconsult.NetworkCommunication.DataMessaging.DataMessageProcessingPackages.EdcpDataMessageProcessingPackage
+    name: EdcpDataMessageProcessingPackage
+    type: Class
+  - uid: Bodoconsult.NetworkCommunication.DataMessaging.DataMessageProcessingPackages.EdcpHandshakeFactory
+    name: EdcpHandshakeFactory
+    type: Class
+  - uid: Bodoconsult.NetworkCommunication.DataMessaging.DataMessageProcessingPackages.SdcpDataMessageProcessingPackage
+    name: SdcpDataMessageProcessingPackage
+    type: Class
+  - uid: Bodoconsult.NetworkCommunication.DataMessaging.DataMessageProcessingPackages.SdcpHandshakeFactory
+    name: SdcpHandshakeFactory
+    type: Class
+- uid: Bodoconsult.NetworkCommunication.DataMessaging.DataMessageProcessors
+  name: Bodoconsult.NetworkCommunication.DataMessaging.DataMessageProcessors
+  type: Namespace
+  items:
+  - uid: Bodoconsult.NetworkCommunication.DataMessaging.DataMessageProcessors.DefaultDataMessageProcessor
+    name: DefaultDataMessageProcessor
+    type: Class
+- uid: Bodoconsult.NetworkCommunication.DataMessaging.DataMessageSplitters
+  name: Bodoconsult.NetworkCommunication.DataMessaging.DataMessageSplitters
+  type: Namespace
+  items:
+  - uid: Bodoconsult.NetworkCommunication.DataMessaging.DataMessageSplitters.BtcpDataMessageSplitter
+    name: BtcpDataMessageSplitter
+    type: Class
+  - uid: Bodoconsult.NetworkCommunication.DataMessaging.DataMessageSplitters.EdcpDataMessageSplitter
+    name: EdcpDataMessageSplitter
+    type: Class
+  - uid: Bodoconsult.NetworkCommunication.DataMessaging.DataMessageSplitters.SdcpDataMessageSplitter
+    name: SdcpDataMessageSplitter
+    type: Class
+- uid: Bodoconsult.NetworkCommunication.DataMessaging.DataMessageValidators
+  name: Bodoconsult.NetworkCommunication.DataMessaging.DataMessageValidators
+  type: Namespace
+  items:
+  - uid: Bodoconsult.NetworkCommunication.DataMessaging.DataMessageValidators.BtcpDataMessageValidator
+    name: BtcpDataMessageValidator
+    type: Class
+  - uid: Bodoconsult.NetworkCommunication.DataMessaging.DataMessageValidators.EdcpDataMessageValidator
+    name: EdcpDataMessageValidator
+    type: Class
+  - uid: Bodoconsult.NetworkCommunication.DataMessaging.DataMessageValidators.SdcpDataMessageValidator
+    name: SdcpDataMessageValidator
+    type: Class
+- uid: Bodoconsult.NetworkCommunication.DataMessaging.DataMessages
+  name: Bodoconsult.NetworkCommunication.DataMessaging.DataMessages
+  type: Namespace
+  items:
+  - uid: Bodoconsult.NetworkCommunication.DataMessaging.DataMessages.BaseInboundHandShakeMessage
+    name: BaseInboundHandShakeMessage
+    type: Class
+  - uid: Bodoconsult.NetworkCommunication.DataMessaging.DataMessages.BaseOutboundHandShakeMessage
+    name: BaseOutboundHandShakeMessage
+    type: Class
+  - uid: Bodoconsult.NetworkCommunication.DataMessaging.DataMessages.BtcpInboundDataMessage
+    name: BtcpInboundDataMessage
+    type: Class
+  - uid: Bodoconsult.NetworkCommunication.DataMessaging.DataMessages.BtcpOutboundDataMessage
+    name: BtcpOutboundDataMessage
+    type: Class
+  - uid: Bodoconsult.NetworkCommunication.DataMessaging.DataMessages.EdcpInboundDataMessage
+    name: EdcpInboundDataMessage
+    type: Class
+  - uid: Bodoconsult.NetworkCommunication.DataMessaging.DataMessages.EdcpInboundHandshakeMessage
+    name: EdcpInboundHandshakeMessage
+    type: Class
+  - uid: Bodoconsult.NetworkCommunication.DataMessaging.DataMessages.EdcpOutboundDataMessage
+    name: EdcpOutboundDataMessage
+    type: Class
+  - uid: Bodoconsult.NetworkCommunication.DataMessaging.DataMessages.EdcpOutboundHandshakeMessage
+    name: EdcpOutboundHandshakeMessage
+    type: Class
+  - uid: Bodoconsult.NetworkCommunication.DataMessaging.DataMessages.HandShakeMessageType
+    name: HandShakeMessageType
+    type: Class
+  - uid: Bodoconsult.NetworkCommunication.DataMessaging.DataMessages.InboundHandshakeMessage
+    name: InboundHandshakeMessage
+    type: Class
+  - uid: Bodoconsult.NetworkCommunication.DataMessaging.DataMessages.OutboundHandshakeMessage
+    name: OutboundHandshakeMessage
+    type: Class
+  - uid: Bodoconsult.NetworkCommunication.DataMessaging.DataMessages.RawInboundDataMessage
+    name: RawInboundDataMessage
+    type: Class
+  - uid: Bodoconsult.NetworkCommunication.DataMessaging.DataMessages.RawOutboundDataMessage
+    name: RawOutboundDataMessage
+    type: Class
+  - uid: Bodoconsult.NetworkCommunication.DataMessaging.DataMessages.SdcpInboundDataMessage
+    name: SdcpInboundDataMessage
+    type: Class
+  - uid: Bodoconsult.NetworkCommunication.DataMessaging.DataMessages.SdcpOutboundDataMessage
+    name: SdcpOutboundDataMessage
+    type: Class
+  - uid: Bodoconsult.NetworkCommunication.DataMessaging.DataMessages.ShouldCrashInboundDataMessage
+    name: ShouldCrashInboundDataMessage
+    type: Class
+  - uid: Bodoconsult.NetworkCommunication.DataMessaging.DataMessages.ShouldCrashOutboundDataMessage
+    name: ShouldCrashOutboundDataMessage
+    type: Class
+- uid: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig
+  name: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig
+  type: Namespace
+  items:
+  - uid: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.DefaultDataMessagingConfig
+    name: DefaultDataMessagingConfig
+    type: Class
+  - uid: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig
+    name: EdcpDataMessagingConfig
+    type: Class
+- uid: Bodoconsult.NetworkCommunication.DataMessaging.HandshakeDataMessageValidators
+  name: Bodoconsult.NetworkCommunication.DataMessaging.HandshakeDataMessageValidators
+  type: Namespace
+  items:
+  - uid: Bodoconsult.NetworkCommunication.DataMessaging.HandshakeDataMessageValidators.BtcpHandshakeDataMessageValidator
+    name: BtcpHandshakeDataMessageValidator
+    type: Class
+  - uid: Bodoconsult.NetworkCommunication.DataMessaging.HandshakeDataMessageValidators.EdcpHandshakeDataMessageValidator
+    name: EdcpHandshakeDataMessageValidator
+    type: Class
+  - uid: Bodoconsult.NetworkCommunication.DataMessaging.HandshakeDataMessageValidators.SdcpHandshakeDataMessageValidator
+    name: SdcpHandshakeDataMessageValidator
+    type: Class
+- uid: Bodoconsult.NetworkCommunication.Delegates
+  name: Bodoconsult.NetworkCommunication.Delegates
+  type: Namespace
+  items:
+  - uid: Bodoconsult.NetworkCommunication.Delegates.ActionRequestStepDelegate
+    name: ActionRequestStepDelegate
+    type: Delegate
+  - uid: Bodoconsult.NetworkCommunication.Delegates.CancelRunningOperationDelegate
+    name: CancelRunningOperationDelegate
+    type: Delegate
+  - uid: Bodoconsult.NetworkCommunication.Delegates.CheckIfCommunicationIsOnlineDelegate
+    name: CheckIfCommunicationIsOnlineDelegate
+    type: Delegate
+  - uid: Bodoconsult.NetworkCommunication.Delegates.CheckIfDeviceIsReadyDelegate
+    name: CheckIfDeviceIsReadyDelegate
+    type: Delegate
+  - uid: Bodoconsult.NetworkCommunication.Delegates.CheckReceivedMessageDelegate
+    name: CheckReceivedMessageDelegate
+    type: Delegate
+  - uid: Bodoconsult.NetworkCommunication.Delegates.ClientConnectionAcceptedDelegate
+    name: ClientConnectionAcceptedDelegate
+    type: Delegate
+  - uid: Bodoconsult.NetworkCommunication.Delegates.CreateMessagesToSentDelegate
+    name: CreateMessagesToSentDelegate
+    type: Delegate
+  - uid: Bodoconsult.NetworkCommunication.Delegates.DoNotifyDelegate
+    name: DoNotifyDelegate
+    type: Delegate
+  - uid: Bodoconsult.NetworkCommunication.Delegates.DoNotifyOrderStateChangedDelegate
+    name: DoNotifyOrderStateChangedDelegate
+    type: Delegate
+  - uid: Bodoconsult.NetworkCommunication.Delegates.DuplexIoErrorHandlerDelegate
+    name: DuplexIoErrorHandlerDelegate
+    type: Delegate
+  - uid: Bodoconsult.NetworkCommunication.Delegates.DuplexIoIsWorkInProgressDelegate
+    name: DuplexIoIsWorkInProgressDelegate
+    type: Delegate
+  - uid: Bodoconsult.NetworkCommunication.Delegates.DuplexIoNoDataDelegate
+    name: DuplexIoNoDataDelegate
+    type: Delegate
+  - uid: Bodoconsult.NetworkCommunication.Delegates.HandleRequestAnswerDelegate
+    name: HandleRequestAnswerDelegate
+    type: Delegate
+  - uid: Bodoconsult.NetworkCommunication.Delegates.HandleRequestAnswerStepFailedDelegate
+    name: HandleRequestAnswerStepFailedDelegate
+    type: Delegate
+  - uid: Bodoconsult.NetworkCommunication.Delegates.HandleUnexpectedRequestAnswerDelegate
+    name: HandleUnexpectedRequestAnswerDelegate
+    type: Delegate
+  - uid: Bodoconsult.NetworkCommunication.Delegates.OrderProcessingFinishedDelegate
+    name: OrderProcessingFinishedDelegate
+    type: Delegate
+  - uid: Bodoconsult.NetworkCommunication.Delegates.OrderReceiverCheckMessageDelegate
+    name: OrderReceiverCheckMessageDelegate
+    type: Delegate
+  - uid: Bodoconsult.NetworkCommunication.Delegates.RaiseComDevCloseRequestDelegate
+    name: RaiseComDevCloseRequestDelegate
+    type: Delegate
+  - uid: Bodoconsult.NetworkCommunication.Delegates.RaiseDataMessageHandshakeReceivedDelegate
+    name: RaiseDataMessageHandshakeReceivedDelegate
+    type: Delegate
+  - uid: Bodoconsult.NetworkCommunication.Delegates.RaiseDataMessageNotSentDelegate
+    name: RaiseDataMessageNotSentDelegate
+    type: Delegate
+  - uid: Bodoconsult.NetworkCommunication.Delegates.RaiseDataMessageReceivedDelegate
+    name: RaiseDataMessageReceivedDelegate
+    type: Delegate
+  - uid: Bodoconsult.NetworkCommunication.Delegates.RaiseDataMessageSentDelegate
+    name: RaiseDataMessageSentDelegate
+    type: Delegate
+  - uid: Bodoconsult.NetworkCommunication.Delegates.RaiseUnexpectedDataMessageReceivedDelegate
+    name: RaiseUnexpectedDataMessageReceivedDelegate
+    type: Delegate
+  - uid: Bodoconsult.NetworkCommunication.Delegates.RaisedeviceMessageCorruptedDelegate
+    name: RaisedeviceMessageCorruptedDelegate
+    type: Delegate
+  - uid: Bodoconsult.NetworkCommunication.Delegates.RaisedeviceMessageNotReceivedDelegate
+    name: RaisedeviceMessageNotReceivedDelegate
+    type: Delegate
+  - uid: Bodoconsult.NetworkCommunication.Delegates.RequestStepProcessorIsCancelledDelegate
+    name: RequestStepProcessorIsCancelledDelegate
+    type: Delegate
+  - uid: Bodoconsult.NetworkCommunication.Delegates.RequestStepProcessorSetResultDelegate
+    name: RequestStepProcessorSetResultDelegate
+    type: Delegate
+  - uid: Bodoconsult.NetworkCommunication.Delegates.ResetOutboundDataMessageFactoryDelegate
+    name: ResetOutboundDataMessageFactoryDelegate
+    type: Delegate
+  - uid: Bodoconsult.NetworkCommunication.Delegates.SendDataMessageDelegate
+    name: SendDataMessageDelegate
+    type: Delegate
+  - uid: Bodoconsult.NetworkCommunication.Delegates.SetOrderProcessingStateDelegate
+    name: SetOrderProcessingStateDelegate
+    type: Delegate
+  - uid: Bodoconsult.NetworkCommunication.Delegates.UnregisterWaitStateDelegate
+    name: UnregisterWaitStateDelegate
+    type: Delegate
+  - uid: Bodoconsult.NetworkCommunication.Delegates.UpdateDataMessageProcessingPackageDelegate
+    name: UpdateDataMessageProcessingPackageDelegate
+    type: Delegate
+- uid: Bodoconsult.NetworkCommunication.EnumAndStates
+  name: Bodoconsult.NetworkCommunication.EnumAndStates
+  type: Namespace
+  items:
+  - uid: Bodoconsult.NetworkCommunication.EnumAndStates.IpProtocolEnum
+    name: IpProtocolEnum
+    type: Enum
+  - uid: Bodoconsult.NetworkCommunication.EnumAndStates.OrderExecutionResultState
+    name: OrderExecutionResultState
+    type: Class
+  - uid: Bodoconsult.NetworkCommunication.EnumAndStates.OrderSource
+    name: OrderSource
+    type: Class
+  - uid: Bodoconsult.NetworkCommunication.EnumAndStates.TraceCodes
+    name: TraceCodes
+    type: Class
+- uid: Bodoconsult.NetworkCommunication.EventSources
+  name: Bodoconsult.NetworkCommunication.EventSources
+  type: Namespace
+  items:
+  - uid: Bodoconsult.NetworkCommunication.EventSources.DataMessagingEventSourceProvider
+    name: DataMessagingEventSourceProvider
+    type: Class
+- uid: Bodoconsult.NetworkCommunication.Factories
+  name: Bodoconsult.NetworkCommunication.Factories
+  type: Namespace
+  items:
+  - uid: Bodoconsult.NetworkCommunication.Factories.BtcpOutboundDataMessageFactory
+    name: BtcpOutboundDataMessageFactory
+    type: Class
+  - uid: Bodoconsult.NetworkCommunication.Factories.ClientSocketProxyFactory
+    name: ClientSocketProxyFactory
+    type: Class
+  - uid: Bodoconsult.NetworkCommunication.Factories.EdcpClientOutboundDataMessageFactory
+    name: EdcpClientOutboundDataMessageFactory
+    type: Class
+  - uid: Bodoconsult.NetworkCommunication.Factories.EdcpServerOutboundDataMessageFactory
+    name: EdcpServerOutboundDataMessageFactory
+    type: Class
+  - uid: Bodoconsult.NetworkCommunication.Factories.FakeSendPacketProcessEnum
+    name: FakeSendPacketProcessEnum
+    type: Enum
+  - uid: Bodoconsult.NetworkCommunication.Factories.FakeSendPacketProcessFactory
+    name: FakeSendPacketProcessFactory
+    type: Class
+  - uid: Bodoconsult.NetworkCommunication.Factories.IpCommunicationHandlerFactory
+    name: IpCommunicationHandlerFactory
+    type: Class
+  - uid: Bodoconsult.NetworkCommunication.Factories.IpDuplexIoFactory
+    name: IpDuplexIoFactory
+    type: Class
+  - uid: Bodoconsult.NetworkCommunication.Factories.IpHighPerformanceDuplexIoFactory
+    name: IpHighPerformanceDuplexIoFactory
+    type: Class
+  - uid: Bodoconsult.NetworkCommunication.Factories.OrderManagementCommunicationAdapterFactory
+    name: OrderManagementCommunicationAdapterFactory
+    type: Class
+  - uid: Bodoconsult.NetworkCommunication.Factories.OrderPipelineFactory
+    name: OrderPipelineFactory
+    type: Class
+  - uid: Bodoconsult.NetworkCommunication.Factories.OrderReceiverFactory
+    name: OrderReceiverFactory
+    type: Class
+  - uid: Bodoconsult.NetworkCommunication.Factories.RequestProcessorFactory
+    name: RequestProcessorFactory
+    type: Class
+  - uid: Bodoconsult.NetworkCommunication.Factories.RequestProcessorFactoryFactory
+    name: RequestProcessorFactoryFactory
+    type: Class
+  - uid: Bodoconsult.NetworkCommunication.Factories.RequestStepProcessorFactory
+    name: RequestStepProcessorFactory
+    type: Class
+  - uid: Bodoconsult.NetworkCommunication.Factories.RequestStepProcessorFactoryFactory
+    name: RequestStepProcessorFactoryFactory
+    type: Class
+  - uid: Bodoconsult.NetworkCommunication.Factories.SdcpOutboundDataMessageFactory
+    name: SdcpOutboundDataMessageFactory
+    type: Class
+  - uid: Bodoconsult.NetworkCommunication.Factories.SendPacketProcessFactory
+    name: SendPacketProcessFactory
+    type: Class
+  - uid: Bodoconsult.NetworkCommunication.Factories.ServerSocketProxyFactory
+    name: ServerSocketProxyFactory
+    type: Class
+  - uid: Bodoconsult.NetworkCommunication.Factories.TncpOutboundDataMessageFactory
+    name: TncpOutboundDataMessageFactory
+    type: Class
+- uid: Bodoconsult.NetworkCommunication.Helpers
+  name: Bodoconsult.NetworkCommunication.Helpers
+  type: Namespace
+  items:
+  - uid: Bodoconsult.NetworkCommunication.Helpers.DataMessageHelper
+    name: DataMessageHelper
+    type: Class
+  - uid: Bodoconsult.NetworkCommunication.Helpers.IpHelper
+    name: IpHelper
+    type: Class
+  - uid: Bodoconsult.NetworkCommunication.Helpers.JsonHelper
+    name: JsonHelper
+    type: Class
+  - uid: Bodoconsult.NetworkCommunication.Helpers.SocketAwaitable
+    name: SocketAwaitable
+    type: Class
+  - uid: Bodoconsult.NetworkCommunication.Helpers.SocketUtility
+    name: SocketUtility
+    type: Class
+  - uid: Bodoconsult.NetworkCommunication.Helpers.SocketUtility.Void
+    name: SocketUtility.Void
+    type: Class
+  - uid: Bodoconsult.NetworkCommunication.Helpers.SubnetMask
+    name: SubnetMask
+    type: Class
+- uid: Bodoconsult.NetworkCommunication.Interfaces
+  name: Bodoconsult.NetworkCommunication.Interfaces
+  type: Namespace
+  items:
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.BuiltinOrders
+    name: BuiltinOrders
+    type: Class
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.DataBlockCodecResult
+    name: DataBlockCodecResult
+    type: Class
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.DataMessageValidatorResult
+    name: DataMessageValidatorResult
+    type: Struct
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.DefaultDeviceStates
+    name: DefaultDeviceStates
+    type: Class
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.DeviceCommunicationBasics
+    name: DeviceCommunicationBasics
+    type: Class
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.DeviceState
+    name: DeviceState
+    type: Class
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.ICommunicationAdapter
+    name: ICommunicationAdapter
+    type: Interface
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.ICommunicationHandler
+    name: ICommunicationHandler
+    type: Interface
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.ICommunicationHandlerFactory
+    name: ICommunicationHandlerFactory
+    type: Interface
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IDataBlockCodec
+    name: IDataBlockCodec
+    type: Interface
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IDataBlockCodingProcessor
+    name: IDataBlockCodingProcessor
+    type: Interface
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IDataBlockCodingProcessorFactory
+    name: IDataBlockCodingProcessorFactory
+    type: Interface
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IDataLogger
+    name: IDataLogger
+    type: Interface
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageCodec
+    name: IDataMessageCodec
+    type: Interface
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageCodingProcessor
+    name: IDataMessageCodingProcessor
+    type: Interface
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageDataBlockCodec
+    name: IDataMessageDataBlockCodec
+    type: Interface
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageDataBlockCodingProcessor
+    name: IDataMessageDataBlockCodingProcessor
+    type: Interface
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageHandshakeFactory
+    name: IDataMessageHandshakeFactory
+    type: Interface
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageProcessingPackage
+    name: IDataMessageProcessingPackage
+    type: Interface
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageProcessingPackageFactory
+    name: IDataMessageProcessingPackageFactory
+    type: Interface
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageProcessor
+    name: IDataMessageProcessor
+    type: Interface
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageSplitter
+    name: IDataMessageSplitter
+    type: Interface
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageSplitterFactory
+    name: IDataMessageSplitterFactory
+    type: Interface
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageValidator
+    name: IDataMessageValidator
+    type: Interface
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig
+    name: IDataMessagingConfig
+    type: Interface
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IDeviceRequestAnswerStep
+    name: IDeviceRequestAnswerStep
+    type: Interface
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IDeviceRequestSpec
+    name: IDeviceRequestSpec
+    type: Interface
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IDeviceRequestStepProcessor
+    name: IDeviceRequestStepProcessor
+    type: Interface
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IDeviceState
+    name: IDeviceState
+    type: Interface
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IDuplexIo
+    name: IDuplexIo
+    type: Interface
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IDuplexIoFactory
+    name: IDuplexIoFactory
+    type: Interface
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IDuplexIoReceiver
+    name: IDuplexIoReceiver
+    type: Interface
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IDuplexIoSender
+    name: IDuplexIoSender
+    type: Interface
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IHandshakeDataMessageValidator
+    name: IHandshakeDataMessageValidator
+    type: Interface
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IInboundBusinessTransactionDataMessage
+    name: IInboundBusinessTransactionDataMessage
+    type: Interface
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IInboundCommandBlockDataMessage
+    name: IInboundCommandBlockDataMessage
+    type: Interface
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IInboundCommandDataMessage
+    name: IInboundCommandDataMessage
+    type: Interface
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IInboundDataBlock
+    name: IInboundDataBlock
+    type: Interface
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IInboundDataMessage
+    name: IInboundDataMessage
+    type: Interface
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IInboundHandShakeMessage
+    name: IInboundHandShakeMessage
+    type: Interface
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IInboundMessage
+    name: IInboundMessage
+    type: Interface
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IInternalRequestAnswerStep
+    name: IInternalRequestAnswerStep
+    type: Interface
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IInternalRequestSpec
+    name: IInternalRequestSpec
+    type: Interface
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IInternalRequestStepProcessor
+    name: IInternalRequestStepProcessor
+    type: Interface
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IIpDataMessagingConfig
+    name: IIpDataMessagingConfig
+    type: Interface
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IMasterOrderFactory
+    name: IMasterOrderFactory
+    type: Interface
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IMasterOrderFactoryFactory
+    name: IMasterOrderFactoryFactory
+    type: Interface
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IOrder
+    name: IOrder
+    type: Interface
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IOrderBuilder
+    name: IOrderBuilder
+    type: Interface
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionNotification
+    name: IOrderExecutionNotification
+    type: Interface
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionResultState
+    name: IOrderExecutionResultState
+    type: Interface
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IOrderFactory
+    name: IOrderFactory
+    type: Interface
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IOrderManagementClientNotificationManager
+    name: IOrderManagementClientNotificationManager
+    type: Interface
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IOrderManagementCommunicationAdapterFactory
+    name: IOrderManagementCommunicationAdapterFactory
+    type: Interface
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IOrderManagementDevice
+    name: IOrderManagementDevice
+    type: Interface
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IOrderManager
+    name: IOrderManager
+    type: Interface
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IOrderPipeline
+    name: IOrderPipeline
+    type: Interface
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IOrderPipelineFactory
+    name: IOrderPipelineFactory
+    type: Interface
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IOrderProcessor
+    name: IOrderProcessor
+    type: Interface
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IOrderReceiver
+    name: IOrderReceiver
+    type: Interface
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IOrderReceiverFactory
+    name: IOrderReceiverFactory
+    type: Interface
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IOrderState
+    name: IOrderState
+    type: Interface
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IOutboundBusinessTransactionDataMessage
+    name: IOutboundBusinessTransactionDataMessage
+    type: Interface
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IOutboundCommandBlockDataMessage
+    name: IOutboundCommandBlockDataMessage
+    type: Interface
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IOutboundCommandDataMessage
+    name: IOutboundCommandDataMessage
+    type: Interface
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataBlock
+    name: IOutboundDataBlock
+    type: Interface
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessage
+    name: IOutboundDataMessage
+    type: Interface
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessageFactory
+    name: IOutboundDataMessageFactory
+    type: Interface
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IOutboundHandShakeMessage
+    name: IOutboundHandShakeMessage
+    type: Interface
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IOutboundMessage
+    name: IOutboundMessage
+    type: Interface
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IParameterSet
+    name: IParameterSet
+    type: Interface
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswer
+    name: IRequestAnswer
+    type: Interface
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswerStep
+    name: IRequestAnswerStep
+    type: Interface
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IRequestProcessor
+    name: IRequestProcessor
+    type: Interface
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IRequestProcessorFactory
+    name: IRequestProcessorFactory
+    type: Interface
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IRequestProcessorFactoryFactory
+    name: IRequestProcessorFactoryFactory
+    type: Interface
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec
+    name: IRequestSpec
+    type: Interface
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IRequestStepProcessor
+    name: IRequestStepProcessor
+    type: Interface
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IRequestStepProcessorFactory
+    name: IRequestStepProcessorFactory
+    type: Interface
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IRequestStepProcessorFactoryFactory
+    name: IRequestStepProcessorFactoryFactory
+    type: Interface
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess
+    name: ISendPacketProcess
+    type: Interface
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcessFactory
+    name: ISendPacketProcessFactory
+    type: Interface
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.ISocketProxy
+    name: ISocketProxy
+    type: Interface
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.ISocketProxyFactory
+    name: ISocketProxyFactory
+    type: Interface
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.ISyncOrderManager
+    name: ISyncOrderManager
+    type: Interface
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.ITcpIpDevice
+    name: ITcpIpDevice
+    type: Interface
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.ITcpIpListenerManager
+    name: ITcpIpListenerManager
+    type: Interface
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.ITraceEntry
+    name: ITraceEntry
+    type: Interface
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.ITypedInboundDataBlock
+    name: ITypedInboundDataBlock
+    type: Interface
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.ITypedOutboundDataBlock
+    name: ITypedOutboundDataBlock
+    type: Interface
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IUdpDevice
+    name: IUdpDevice
+    type: Interface
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IWaitStateManager
+    name: IWaitStateManager
+    type: Interface
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IWaitStateManagerFactory
+    name: IWaitStateManagerFactory
+    type: Interface
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.InboundCodecResult
+    name: InboundCodecResult
+    type: Class
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.MessageHandlingResult
+    name: MessageHandlingResult
+    type: Class
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.MessageSendingResult
+    name: MessageSendingResult
+    type: Class
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.OrderManagementBasics
+    name: OrderManagementBasics
+    type: Class
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.OrderState
+    name: OrderState
+    type: Class
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.OutboundCodecResult
+    name: OutboundCodecResult
+    type: Class
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.RequestAnswerStepIsStartedDelegate
+    name: RequestAnswerStepIsStartedDelegate
+    type: Delegate
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.SyncExecutionData
+    name: SyncExecutionData
+    type: Class
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Devices
+  name: Bodoconsult.NetworkCommunication.OrderManagement.Devices
+  type: Namespace
+  items:
+  - uid: Bodoconsult.NetworkCommunication.OrderManagement.Devices.BaseOrderManagementDevice
+    name: BaseOrderManagementDevice
+    type: Class
+  - uid: Bodoconsult.NetworkCommunication.OrderManagement.Devices.FakeDevice
+    name: FakeDevice
+    type: Class
+  - uid: Bodoconsult.NetworkCommunication.OrderManagement.Devices.SimpleDevice
+    name: SimpleDevice
+    type: Class
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.OrderBuilders
+  name: Bodoconsult.NetworkCommunication.OrderManagement.OrderBuilders
+  type: Namespace
+  items:
+  - uid: Bodoconsult.NetworkCommunication.OrderManagement.OrderBuilders.BaseOrderBuilder
+    name: BaseOrderBuilder
+    type: Class
+  - uid: Bodoconsult.NetworkCommunication.OrderManagement.OrderBuilders.BtcpOrderBuilder
+    name: BtcpOrderBuilder
+    type: Class
+  - uid: Bodoconsult.NetworkCommunication.OrderManagement.OrderBuilders.DummyOrderBuilder
+    name: DummyOrderBuilder
+    type: Class
+  - uid: Bodoconsult.NetworkCommunication.OrderManagement.OrderBuilders.EdcpClientOrderBuilder
+    name: EdcpClientOrderBuilder
+    type: Class
+  - uid: Bodoconsult.NetworkCommunication.OrderManagement.OrderBuilders.EdcpServerOrderBuilder
+    name: EdcpServerOrderBuilder
+    type: Class
+  - uid: Bodoconsult.NetworkCommunication.OrderManagement.OrderBuilders.EmptyOrderBuilder
+    name: EmptyOrderBuilder
+    type: Class
+  - uid: Bodoconsult.NetworkCommunication.OrderManagement.OrderBuilders.SdcpOrderBuilder
+    name: SdcpOrderBuilder
+    type: Class
+  - uid: Bodoconsult.NetworkCommunication.OrderManagement.OrderBuilders.TestOrderBuilder
+    name: TestOrderBuilder
+    type: Class
+  - uid: Bodoconsult.NetworkCommunication.OrderManagement.OrderBuilders.TncpOrderBuilder
+    name: TncpOrderBuilder
+    type: Class
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Orders
+  name: Bodoconsult.NetworkCommunication.OrderManagement.Orders
+  type: Namespace
+  items:
+  - uid: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder
+    name: OmOrder
+    type: Class
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.ParameterSets
+  name: Bodoconsult.NetworkCommunication.OrderManagement.ParameterSets
+  type: Namespace
+  items:
+  - uid: Bodoconsult.NetworkCommunication.OrderManagement.ParameterSets.BtcpParameterSet
+    name: BtcpParameterSet
+    type: Class
+  - uid: Bodoconsult.NetworkCommunication.OrderManagement.ParameterSets.EdcpParameterSet
+    name: EdcpParameterSet
+    type: Class
+  - uid: Bodoconsult.NetworkCommunication.OrderManagement.ParameterSets.EmptyParameterSet
+    name: EmptyParameterSet
+    type: Class
+  - uid: Bodoconsult.NetworkCommunication.OrderManagement.ParameterSets.SdcpParameterSet
+    name: SdcpParameterSet
+    type: Class
+  - uid: Bodoconsult.NetworkCommunication.OrderManagement.ParameterSets.TncpParameterSet
+    name: TncpParameterSet
+    type: Class
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Processors
+  name: Bodoconsult.NetworkCommunication.OrderManagement.Processors
+  type: Namespace
+  items:
+  - uid: Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep
+    name: BaseRequestAnswerStep
+    type: Class
+  - uid: Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestSpec
+    name: BaseRequestSpec
+    type: Class
+  - uid: Bodoconsult.NetworkCommunication.OrderManagement.Processors.DeviceRequestAnswerStep
+    name: DeviceRequestAnswerStep
+    type: Class
+  - uid: Bodoconsult.NetworkCommunication.OrderManagement.Processors.DeviceRequestSpec
+    name: DeviceRequestSpec
+    type: Class
+  - uid: Bodoconsult.NetworkCommunication.OrderManagement.Processors.DeviceRequestStepProcessor
+    name: DeviceRequestStepProcessor
+    type: Class
+  - uid: Bodoconsult.NetworkCommunication.OrderManagement.Processors.InternalRequestAnswerStep
+    name: InternalRequestAnswerStep
+    type: Class
+  - uid: Bodoconsult.NetworkCommunication.OrderManagement.Processors.InternalRequestSpec
+    name: InternalRequestSpec
+    type: Class
+  - uid: Bodoconsult.NetworkCommunication.OrderManagement.Processors.InternalRequestStepProcessor
+    name: InternalRequestStepProcessor
+    type: Class
+  - uid: Bodoconsult.NetworkCommunication.OrderManagement.Processors.OrderManager
+    name: OrderManager
+    type: Class
+  - uid: Bodoconsult.NetworkCommunication.OrderManagement.Processors.OrderPipeline
+    name: OrderPipeline
+    type: Class
+  - uid: Bodoconsult.NetworkCommunication.OrderManagement.Processors.OrderProcessor
+    name: OrderProcessor
+    type: Class
+  - uid: Bodoconsult.NetworkCommunication.OrderManagement.Processors.OrderReceiver
+    name: OrderReceiver
+    type: Class
+  - uid: Bodoconsult.NetworkCommunication.OrderManagement.Processors.RequestAnswer
+    name: RequestAnswer
+    type: Class
+  - uid: Bodoconsult.NetworkCommunication.OrderManagement.Processors.RequestProcessor
+    name: RequestProcessor
+    type: Class
+  - uid: Bodoconsult.NetworkCommunication.OrderManagement.Processors.SyncOrderManager
+    name: SyncOrderManager
+    type: Class
+- uid: Bodoconsult.NetworkCommunication.Protocols.TcpIp
+  name: Bodoconsult.NetworkCommunication.Protocols.TcpIp
+  type: Namespace
+  items:
+  - uid: Bodoconsult.NetworkCommunication.Protocols.TcpIp.FakeTcpIpSocketProxy
+    name: FakeTcpIpSocketProxy
+    type: Class
+  - uid: Bodoconsult.NetworkCommunication.Protocols.TcpIp.ListenerData
+    name: ListenerData
+    type: Class
+  - uid: Bodoconsult.NetworkCommunication.Protocols.TcpIp.StateObject
+    name: StateObject
+    type: Class
+  - uid: Bodoconsult.NetworkCommunication.Protocols.TcpIp.TcpIpClientSocketProxy
+    name: TcpIpClientSocketProxy
+    type: Class
+  - uid: Bodoconsult.NetworkCommunication.Protocols.TcpIp.TcpIpListenerManager
+    name: TcpIpListenerManager
+    type: Class
+  - uid: Bodoconsult.NetworkCommunication.Protocols.TcpIp.TcpIpServerSocketProxy
+    name: TcpIpServerSocketProxy
+    type: Class
+  - uid: Bodoconsult.NetworkCommunication.Protocols.TcpIp.TcpIpSocketProxyBase
+    name: TcpIpSocketProxyBase
+    type: Class
+- uid: Bodoconsult.NetworkCommunication.Protocols.Udp
+  name: Bodoconsult.NetworkCommunication.Protocols.Udp
+  type: Namespace
+  items:
+  - uid: Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy
+    name: FakeUdpSocketProxy
+    type: Class
+  - uid: Bodoconsult.NetworkCommunication.Protocols.Udp.UdpClientSocketProxy
+    name: UdpClientSocketProxy
+    type: Class
+  - uid: Bodoconsult.NetworkCommunication.Protocols.Udp.UdpServerSocketProxy
+    name: UdpServerSocketProxy
+    type: Class
+  - uid: Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase
+    name: UpdSocketProxyBase
+    type: Class
+- uid: Bodoconsult.NetworkCommunication.StateManagement
+  name: Bodoconsult.NetworkCommunication.StateManagement
+  type: Namespace
+  items:
+  - uid: Bodoconsult.NetworkCommunication.StateManagement.BusinessState
+    name: BusinessState
+    type: Class
+  - uid: Bodoconsult.NetworkCommunication.StateManagement.BusinessSubState
+    name: BusinessSubState
+    type: Class
+  - uid: Bodoconsult.NetworkCommunication.StateManagement.DefaultBusinessStates
+    name: DefaultBusinessStates
+    type: Class
+  - uid: Bodoconsult.NetworkCommunication.StateManagement.DefaultBusinessSubStates
+    name: DefaultBusinessSubStates
+    type: Class
+  - uid: Bodoconsult.NetworkCommunication.StateManagement.IActionStateManagementState
+    name: IActionStateManagementState
+    type: Interface
+  - uid: Bodoconsult.NetworkCommunication.StateManagement.IBusinessState
+    name: IBusinessState
+    type: Interface
+  - uid: Bodoconsult.NetworkCommunication.StateManagement.IBusinessSubState
+    name: IBusinessSubState
+    type: Interface
+  - uid: Bodoconsult.NetworkCommunication.StateManagement.IStateManagementContext
+    name: IStateManagementContext
+    type: Interface
+  - uid: Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState
+    name: IStateManagementState
+    type: Interface
+  - uid: Bodoconsult.NetworkCommunication.StateManagement.StateManagementStateBase
+    name: StateManagementStateBase
+    type: Class
+- uid: Bodoconsult.NetworkCommunication.Testing
+  name: Bodoconsult.NetworkCommunication.Testing
+  type: Namespace
+  items:
+  - uid: Bodoconsult.NetworkCommunication.Testing.TcpTestClient
+    name: TcpTestClient
+    type: Class
+  - uid: Bodoconsult.NetworkCommunication.Testing.TcpTestServer
+    name: TcpTestServer
+    type: Class
+  - uid: Bodoconsult.NetworkCommunication.Testing.UdpDeviceBase
+    name: UdpDeviceBase
+    type: Class
+  - uid: Bodoconsult.NetworkCommunication.Testing.UdpTestMultiCastClient
+    name: UdpTestMultiCastClient
+    type: Class
+  - uid: Bodoconsult.NetworkCommunication.Testing.UdpTestMultiCastServer
+    name: UdpTestMultiCastServer
+    type: Class
+  - uid: Bodoconsult.NetworkCommunication.Testing.UdpTestUniCastClient
+    name: UdpTestUniCastClient
+    type: Class
+  - uid: Bodoconsult.NetworkCommunication.Testing.UdpTestUniCastServer
+    name: UdpTestUniCastServer
+    type: Class
+memberLayout: SamePage

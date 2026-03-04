@@ -1,0 +1,301 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerDnsSettings
+  commentId: T:Bodoconsult.Network.Windows.Dhcp.IDhcpServerDnsSettings
+  id: IDhcpServerDnsSettings
+  parent: Bodoconsult.Network.Windows.Dhcp
+  children:
+  - Bodoconsult.Network.Windows.Dhcp.IDhcpServerDnsSettings.DisableDynamicPtrRecordUpdates
+  - Bodoconsult.Network.Windows.Dhcp.IDhcpServerDnsSettings.DiscardRecordsWhenLeasesDeleted
+  - Bodoconsult.Network.Windows.Dhcp.IDhcpServerDnsSettings.DynamicDnsUpdatedAlways
+  - Bodoconsult.Network.Windows.Dhcp.IDhcpServerDnsSettings.DynamicDnsUpdatedOnlyWhenRequested
+  - Bodoconsult.Network.Windows.Dhcp.IDhcpServerDnsSettings.DynamicDnsUpdatesEnabled
+  - Bodoconsult.Network.Windows.Dhcp.IDhcpServerDnsSettings.UpdateRecordsForDownLevelClients
+  langs:
+  - csharp
+  - vb
+  name: IDhcpServerDnsSettings
+  nameWithType: IDhcpServerDnsSettings
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerDnsSettings
+  type: Interface
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/IDhcpServerDnsSettings.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: IDhcpServerDnsSettings
+    path: src/Bodoconsult.Network.Windows/Dhcp/IDhcpServerDnsSettings.cs
+    startLine: 5
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: public interface IDhcpServerDnsSettings
+    content.vb: Public Interface IDhcpServerDnsSettings
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerDnsSettings.DisableDynamicPtrRecordUpdates
+  commentId: P:Bodoconsult.Network.Windows.Dhcp.IDhcpServerDnsSettings.DisableDynamicPtrRecordUpdates
+  id: DisableDynamicPtrRecordUpdates
+  parent: Bodoconsult.Network.Windows.Dhcp.IDhcpServerDnsSettings
+  langs:
+  - csharp
+  - vb
+  name: DisableDynamicPtrRecordUpdates
+  nameWithType: IDhcpServerDnsSettings.DisableDynamicPtrRecordUpdates
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerDnsSettings.DisableDynamicPtrRecordUpdates
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/IDhcpServerDnsSettings.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: DisableDynamicPtrRecordUpdates
+    path: src/Bodoconsult.Network.Windows/Dhcp/IDhcpServerDnsSettings.cs
+    startLine: 7
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: bool DisableDynamicPtrRecordUpdates { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: ReadOnly Property DisableDynamicPtrRecordUpdates As Boolean
+  overload: Bodoconsult.Network.Windows.Dhcp.IDhcpServerDnsSettings.DisableDynamicPtrRecordUpdates*
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerDnsSettings.DiscardRecordsWhenLeasesDeleted
+  commentId: P:Bodoconsult.Network.Windows.Dhcp.IDhcpServerDnsSettings.DiscardRecordsWhenLeasesDeleted
+  id: DiscardRecordsWhenLeasesDeleted
+  parent: Bodoconsult.Network.Windows.Dhcp.IDhcpServerDnsSettings
+  langs:
+  - csharp
+  - vb
+  name: DiscardRecordsWhenLeasesDeleted
+  nameWithType: IDhcpServerDnsSettings.DiscardRecordsWhenLeasesDeleted
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerDnsSettings.DiscardRecordsWhenLeasesDeleted
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/IDhcpServerDnsSettings.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: DiscardRecordsWhenLeasesDeleted
+    path: src/Bodoconsult.Network.Windows/Dhcp/IDhcpServerDnsSettings.cs
+    startLine: 8
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: bool DiscardRecordsWhenLeasesDeleted { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: ReadOnly Property DiscardRecordsWhenLeasesDeleted As Boolean
+  overload: Bodoconsult.Network.Windows.Dhcp.IDhcpServerDnsSettings.DiscardRecordsWhenLeasesDeleted*
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerDnsSettings.DynamicDnsUpdatedAlways
+  commentId: P:Bodoconsult.Network.Windows.Dhcp.IDhcpServerDnsSettings.DynamicDnsUpdatedAlways
+  id: DynamicDnsUpdatedAlways
+  parent: Bodoconsult.Network.Windows.Dhcp.IDhcpServerDnsSettings
+  langs:
+  - csharp
+  - vb
+  name: DynamicDnsUpdatedAlways
+  nameWithType: IDhcpServerDnsSettings.DynamicDnsUpdatedAlways
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerDnsSettings.DynamicDnsUpdatedAlways
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/IDhcpServerDnsSettings.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: DynamicDnsUpdatedAlways
+    path: src/Bodoconsult.Network.Windows/Dhcp/IDhcpServerDnsSettings.cs
+    startLine: 9
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: bool DynamicDnsUpdatedAlways { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: ReadOnly Property DynamicDnsUpdatedAlways As Boolean
+  overload: Bodoconsult.Network.Windows.Dhcp.IDhcpServerDnsSettings.DynamicDnsUpdatedAlways*
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerDnsSettings.DynamicDnsUpdatedOnlyWhenRequested
+  commentId: P:Bodoconsult.Network.Windows.Dhcp.IDhcpServerDnsSettings.DynamicDnsUpdatedOnlyWhenRequested
+  id: DynamicDnsUpdatedOnlyWhenRequested
+  parent: Bodoconsult.Network.Windows.Dhcp.IDhcpServerDnsSettings
+  langs:
+  - csharp
+  - vb
+  name: DynamicDnsUpdatedOnlyWhenRequested
+  nameWithType: IDhcpServerDnsSettings.DynamicDnsUpdatedOnlyWhenRequested
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerDnsSettings.DynamicDnsUpdatedOnlyWhenRequested
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/IDhcpServerDnsSettings.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: DynamicDnsUpdatedOnlyWhenRequested
+    path: src/Bodoconsult.Network.Windows/Dhcp/IDhcpServerDnsSettings.cs
+    startLine: 10
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: bool DynamicDnsUpdatedOnlyWhenRequested { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: ReadOnly Property DynamicDnsUpdatedOnlyWhenRequested As Boolean
+  overload: Bodoconsult.Network.Windows.Dhcp.IDhcpServerDnsSettings.DynamicDnsUpdatedOnlyWhenRequested*
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerDnsSettings.DynamicDnsUpdatesEnabled
+  commentId: P:Bodoconsult.Network.Windows.Dhcp.IDhcpServerDnsSettings.DynamicDnsUpdatesEnabled
+  id: DynamicDnsUpdatesEnabled
+  parent: Bodoconsult.Network.Windows.Dhcp.IDhcpServerDnsSettings
+  langs:
+  - csharp
+  - vb
+  name: DynamicDnsUpdatesEnabled
+  nameWithType: IDhcpServerDnsSettings.DynamicDnsUpdatesEnabled
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerDnsSettings.DynamicDnsUpdatesEnabled
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/IDhcpServerDnsSettings.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: DynamicDnsUpdatesEnabled
+    path: src/Bodoconsult.Network.Windows/Dhcp/IDhcpServerDnsSettings.cs
+    startLine: 11
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: bool DynamicDnsUpdatesEnabled { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: ReadOnly Property DynamicDnsUpdatesEnabled As Boolean
+  overload: Bodoconsult.Network.Windows.Dhcp.IDhcpServerDnsSettings.DynamicDnsUpdatesEnabled*
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerDnsSettings.UpdateRecordsForDownLevelClients
+  commentId: P:Bodoconsult.Network.Windows.Dhcp.IDhcpServerDnsSettings.UpdateRecordsForDownLevelClients
+  id: UpdateRecordsForDownLevelClients
+  parent: Bodoconsult.Network.Windows.Dhcp.IDhcpServerDnsSettings
+  langs:
+  - csharp
+  - vb
+  name: UpdateRecordsForDownLevelClients
+  nameWithType: IDhcpServerDnsSettings.UpdateRecordsForDownLevelClients
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerDnsSettings.UpdateRecordsForDownLevelClients
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/IDhcpServerDnsSettings.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: UpdateRecordsForDownLevelClients
+    path: src/Bodoconsult.Network.Windows/Dhcp/IDhcpServerDnsSettings.cs
+    startLine: 12
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: bool UpdateRecordsForDownLevelClients { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: ReadOnly Property UpdateRecordsForDownLevelClients As Boolean
+  overload: Bodoconsult.Network.Windows.Dhcp.IDhcpServerDnsSettings.UpdateRecordsForDownLevelClients*
+references:
+- uid: Bodoconsult.Network.Windows.Dhcp
+  commentId: N:Bodoconsult.Network.Windows.Dhcp
+  href: Bodoconsult.html
+  name: Bodoconsult.Network.Windows.Dhcp
+  nameWithType: Bodoconsult.Network.Windows.Dhcp
+  fullName: Bodoconsult.Network.Windows.Dhcp
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.Network
+    name: Network
+    href: Bodoconsult.Network.html
+  - name: .
+  - uid: Bodoconsult.Network.Windows
+    name: Windows
+    href: Bodoconsult.Network.Windows.html
+  - name: .
+  - uid: Bodoconsult.Network.Windows.Dhcp
+    name: Dhcp
+    href: Bodoconsult.Network.Windows.Dhcp.html
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.Network
+    name: Network
+    href: Bodoconsult.Network.html
+  - name: .
+  - uid: Bodoconsult.Network.Windows
+    name: Windows
+    href: Bodoconsult.Network.Windows.html
+  - name: .
+  - uid: Bodoconsult.Network.Windows.Dhcp
+    name: Dhcp
+    href: Bodoconsult.Network.Windows.Dhcp.html
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerDnsSettings.DisableDynamicPtrRecordUpdates*
+  commentId: Overload:Bodoconsult.Network.Windows.Dhcp.IDhcpServerDnsSettings.DisableDynamicPtrRecordUpdates
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerDnsSettings.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerDnsSettings_DisableDynamicPtrRecordUpdates
+  name: DisableDynamicPtrRecordUpdates
+  nameWithType: IDhcpServerDnsSettings.DisableDynamicPtrRecordUpdates
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerDnsSettings.DisableDynamicPtrRecordUpdates
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerDnsSettings.DiscardRecordsWhenLeasesDeleted*
+  commentId: Overload:Bodoconsult.Network.Windows.Dhcp.IDhcpServerDnsSettings.DiscardRecordsWhenLeasesDeleted
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerDnsSettings.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerDnsSettings_DiscardRecordsWhenLeasesDeleted
+  name: DiscardRecordsWhenLeasesDeleted
+  nameWithType: IDhcpServerDnsSettings.DiscardRecordsWhenLeasesDeleted
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerDnsSettings.DiscardRecordsWhenLeasesDeleted
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerDnsSettings.DynamicDnsUpdatedAlways*
+  commentId: Overload:Bodoconsult.Network.Windows.Dhcp.IDhcpServerDnsSettings.DynamicDnsUpdatedAlways
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerDnsSettings.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerDnsSettings_DynamicDnsUpdatedAlways
+  name: DynamicDnsUpdatedAlways
+  nameWithType: IDhcpServerDnsSettings.DynamicDnsUpdatedAlways
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerDnsSettings.DynamicDnsUpdatedAlways
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerDnsSettings.DynamicDnsUpdatedOnlyWhenRequested*
+  commentId: Overload:Bodoconsult.Network.Windows.Dhcp.IDhcpServerDnsSettings.DynamicDnsUpdatedOnlyWhenRequested
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerDnsSettings.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerDnsSettings_DynamicDnsUpdatedOnlyWhenRequested
+  name: DynamicDnsUpdatedOnlyWhenRequested
+  nameWithType: IDhcpServerDnsSettings.DynamicDnsUpdatedOnlyWhenRequested
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerDnsSettings.DynamicDnsUpdatedOnlyWhenRequested
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerDnsSettings.DynamicDnsUpdatesEnabled*
+  commentId: Overload:Bodoconsult.Network.Windows.Dhcp.IDhcpServerDnsSettings.DynamicDnsUpdatesEnabled
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerDnsSettings.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerDnsSettings_DynamicDnsUpdatesEnabled
+  name: DynamicDnsUpdatesEnabled
+  nameWithType: IDhcpServerDnsSettings.DynamicDnsUpdatesEnabled
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerDnsSettings.DynamicDnsUpdatesEnabled
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerDnsSettings.UpdateRecordsForDownLevelClients*
+  commentId: Overload:Bodoconsult.Network.Windows.Dhcp.IDhcpServerDnsSettings.UpdateRecordsForDownLevelClients
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerDnsSettings.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerDnsSettings_UpdateRecordsForDownLevelClients
+  name: UpdateRecordsForDownLevelClients
+  nameWithType: IDhcpServerDnsSettings.UpdateRecordsForDownLevelClients
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerDnsSettings.UpdateRecordsForDownLevelClients

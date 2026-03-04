@@ -1,0 +1,229 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerClientDnsStates
+  commentId: T:Bodoconsult.Network.Windows.Dhcp.DhcpServerClientDnsStates
+  id: DhcpServerClientDnsStates
+  parent: Bodoconsult.Network.Windows.Dhcp
+  children:
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerClientDnsStates.Cleanup
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerClientDnsStates.Deleted
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerClientDnsStates.Unknown
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerClientDnsStates.Unregistered
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerClientDnsStates.UpdateBothRecords
+  langs:
+  - csharp
+  - vb
+  name: DhcpServerClientDnsStates
+  nameWithType: DhcpServerClientDnsStates
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerClientDnsStates
+  type: Enum
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerClientDnsStates.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: DhcpServerClientDnsStates
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerClientDnsStates.cs
+    startLine: 5
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: >-
+      [Flags]
+
+      public enum DhcpServerClientDnsStates
+    content.vb: >-
+      <Flags>
+
+      Public Enum DhcpServerClientDnsStates
+  attributes:
+  - type: System.FlagsAttribute
+    ctor: System.FlagsAttribute.#ctor
+    arguments: []
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerClientDnsStates.Cleanup
+  commentId: F:Bodoconsult.Network.Windows.Dhcp.DhcpServerClientDnsStates.Cleanup
+  id: Cleanup
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerClientDnsStates
+  langs:
+  - csharp
+  - vb
+  name: Cleanup
+  nameWithType: DhcpServerClientDnsStates.Cleanup
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerClientDnsStates.Cleanup
+  type: Field
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerClientDnsStates.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Cleanup
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerClientDnsStates.cs
+    startLine: 11
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  summary: The DNS update for the DHCPv4 client lease record needs to be deleted from the DNS server when the lease is deleted.
+  example: []
+  syntax:
+    content: Cleanup = 1
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerClientDnsStates
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerClientDnsStates.UpdateBothRecords
+  commentId: F:Bodoconsult.Network.Windows.Dhcp.DhcpServerClientDnsStates.UpdateBothRecords
+  id: UpdateBothRecords
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerClientDnsStates
+  langs:
+  - csharp
+  - vb
+  name: UpdateBothRecords
+  nameWithType: DhcpServerClientDnsStates.UpdateBothRecords
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerClientDnsStates.UpdateBothRecords
+  type: Field
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerClientDnsStates.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: UpdateBothRecords
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerClientDnsStates.cs
+    startLine: 15
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  summary: The DNS update needs to be sent for both A and PTR resource records ([RFC1034] section 3.6).
+  example: []
+  syntax:
+    content: UpdateBothRecords = 2
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerClientDnsStates
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerClientDnsStates.Unregistered
+  commentId: F:Bodoconsult.Network.Windows.Dhcp.DhcpServerClientDnsStates.Unregistered
+  id: Unregistered
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerClientDnsStates
+  langs:
+  - csharp
+  - vb
+  name: Unregistered
+  nameWithType: DhcpServerClientDnsStates.Unregistered
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerClientDnsStates.Unregistered
+  type: Field
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerClientDnsStates.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Unregistered
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerClientDnsStates.cs
+    startLine: 19
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  summary: The DNS update is not completed for the lease record.
+  example: []
+  syntax:
+    content: Unregistered = 4
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerClientDnsStates
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerClientDnsStates.Deleted
+  commentId: F:Bodoconsult.Network.Windows.Dhcp.DhcpServerClientDnsStates.Deleted
+  id: Deleted
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerClientDnsStates
+  langs:
+  - csharp
+  - vb
+  name: Deleted
+  nameWithType: DhcpServerClientDnsStates.Deleted
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerClientDnsStates.Deleted
+  type: Field
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerClientDnsStates.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Deleted
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerClientDnsStates.cs
+    startLine: 23
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  summary: The address lease is expired, but the DNS updates for the lease record have not been deleted from the DNS server.
+  example: []
+  syntax:
+    content: Deleted = 8
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerClientDnsStates
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerClientDnsStates.Unknown
+  commentId: F:Bodoconsult.Network.Windows.Dhcp.DhcpServerClientDnsStates.Unknown
+  id: Unknown
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerClientDnsStates
+  langs:
+  - csharp
+  - vb
+  name: Unknown
+  nameWithType: DhcpServerClientDnsStates.Unknown
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerClientDnsStates.Unknown
+  type: Field
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerClientDnsStates.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Unknown
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerClientDnsStates.cs
+    startLine: 27
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  summary: The DNS State is unknown or not supported by the server.
+  example: []
+  syntax:
+    content: Unknown = -1
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerClientDnsStates
+references:
+- uid: Bodoconsult.Network.Windows.Dhcp
+  commentId: N:Bodoconsult.Network.Windows.Dhcp
+  href: Bodoconsult.html
+  name: Bodoconsult.Network.Windows.Dhcp
+  nameWithType: Bodoconsult.Network.Windows.Dhcp
+  fullName: Bodoconsult.Network.Windows.Dhcp
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.Network
+    name: Network
+    href: Bodoconsult.Network.html
+  - name: .
+  - uid: Bodoconsult.Network.Windows
+    name: Windows
+    href: Bodoconsult.Network.Windows.html
+  - name: .
+  - uid: Bodoconsult.Network.Windows.Dhcp
+    name: Dhcp
+    href: Bodoconsult.Network.Windows.Dhcp.html
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.Network
+    name: Network
+    href: Bodoconsult.Network.html
+  - name: .
+  - uid: Bodoconsult.Network.Windows
+    name: Windows
+    href: Bodoconsult.Network.Windows.html
+  - name: .
+  - uid: Bodoconsult.Network.Windows.Dhcp
+    name: Dhcp
+    href: Bodoconsult.Network.Windows.Dhcp.html
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerClientDnsStates
+  commentId: T:Bodoconsult.Network.Windows.Dhcp.DhcpServerClientDnsStates
+  parent: Bodoconsult.Network.Windows.Dhcp
+  href: Bodoconsult.Network.Windows.Dhcp.DhcpServerClientDnsStates.html
+  name: DhcpServerClientDnsStates
+  nameWithType: DhcpServerClientDnsStates
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerClientDnsStates

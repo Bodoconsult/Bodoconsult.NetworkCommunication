@@ -1,0 +1,112 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bodoconsult.NetworkCommunication.Helpers
+  commentId: N:Bodoconsult.NetworkCommunication.Helpers
+  id: Bodoconsult.NetworkCommunication.Helpers
+  children:
+  - Bodoconsult.NetworkCommunication.Helpers.DataMessageHelper
+  - Bodoconsult.NetworkCommunication.Helpers.IpHelper
+  - Bodoconsult.NetworkCommunication.Helpers.JsonHelper
+  - Bodoconsult.NetworkCommunication.Helpers.SocketAwaitable
+  - Bodoconsult.NetworkCommunication.Helpers.SocketUtility
+  - Bodoconsult.NetworkCommunication.Helpers.SocketUtility.Void
+  - Bodoconsult.NetworkCommunication.Helpers.SubnetMask
+  langs:
+  - csharp
+  - vb
+  name: Bodoconsult.NetworkCommunication.Helpers
+  nameWithType: Bodoconsult.NetworkCommunication.Helpers
+  fullName: Bodoconsult.NetworkCommunication.Helpers
+  type: Namespace
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+references:
+- uid: Bodoconsult.NetworkCommunication.Helpers.DataMessageHelper
+  commentId: T:Bodoconsult.NetworkCommunication.Helpers.DataMessageHelper
+  href: Bodoconsult.NetworkCommunication.Helpers.DataMessageHelper.html
+  name: DataMessageHelper
+  nameWithType: DataMessageHelper
+  fullName: Bodoconsult.NetworkCommunication.Helpers.DataMessageHelper
+- uid: Bodoconsult.NetworkCommunication.Helpers.IpHelper
+  commentId: T:Bodoconsult.NetworkCommunication.Helpers.IpHelper
+  href: Bodoconsult.NetworkCommunication.Helpers.IpHelper.html
+  name: IpHelper
+  nameWithType: IpHelper
+  fullName: Bodoconsult.NetworkCommunication.Helpers.IpHelper
+- uid: Bodoconsult.NetworkCommunication.Helpers.JsonHelper
+  commentId: T:Bodoconsult.NetworkCommunication.Helpers.JsonHelper
+  href: Bodoconsult.NetworkCommunication.Helpers.JsonHelper.html
+  name: JsonHelper
+  nameWithType: JsonHelper
+  fullName: Bodoconsult.NetworkCommunication.Helpers.JsonHelper
+- uid: Bodoconsult.NetworkCommunication.Helpers.SocketAwaitable
+  commentId: T:Bodoconsult.NetworkCommunication.Helpers.SocketAwaitable
+  parent: Bodoconsult.NetworkCommunication.Helpers
+  href: Bodoconsult.NetworkCommunication.Helpers.SocketAwaitable.html
+  name: SocketAwaitable
+  nameWithType: SocketAwaitable
+  fullName: Bodoconsult.NetworkCommunication.Helpers.SocketAwaitable
+- uid: Bodoconsult.NetworkCommunication.Helpers.SocketUtility
+  commentId: T:Bodoconsult.NetworkCommunication.Helpers.SocketUtility
+  href: Bodoconsult.NetworkCommunication.Helpers.SocketUtility.html
+  name: SocketUtility
+  nameWithType: SocketUtility
+  fullName: Bodoconsult.NetworkCommunication.Helpers.SocketUtility
+- uid: Bodoconsult.NetworkCommunication.Helpers.SocketUtility.Void
+  commentId: T:Bodoconsult.NetworkCommunication.Helpers.SocketUtility.Void
+  href: Bodoconsult.NetworkCommunication.Helpers.SocketUtility.html
+  name: SocketUtility.Void
+  nameWithType: SocketUtility.Void
+  fullName: Bodoconsult.NetworkCommunication.Helpers.SocketUtility.Void
+  spec.csharp:
+  - uid: Bodoconsult.NetworkCommunication.Helpers.SocketUtility
+    name: SocketUtility
+    href: Bodoconsult.NetworkCommunication.Helpers.SocketUtility.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Helpers.SocketUtility.Void
+    name: Void
+    href: Bodoconsult.NetworkCommunication.Helpers.SocketUtility.Void.html
+  spec.vb:
+  - uid: Bodoconsult.NetworkCommunication.Helpers.SocketUtility
+    name: SocketUtility
+    href: Bodoconsult.NetworkCommunication.Helpers.SocketUtility.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Helpers.SocketUtility.Void
+    name: Void
+    href: Bodoconsult.NetworkCommunication.Helpers.SocketUtility.Void.html
+- uid: Bodoconsult.NetworkCommunication.Helpers.SubnetMask
+  commentId: T:Bodoconsult.NetworkCommunication.Helpers.SubnetMask
+  href: Bodoconsult.NetworkCommunication.Helpers.SubnetMask.html
+  name: SubnetMask
+  nameWithType: SubnetMask
+  fullName: Bodoconsult.NetworkCommunication.Helpers.SubnetMask
+- uid: Bodoconsult.NetworkCommunication.Helpers
+  commentId: N:Bodoconsult.NetworkCommunication.Helpers
+  href: Bodoconsult.html
+  name: Bodoconsult.NetworkCommunication.Helpers
+  nameWithType: Bodoconsult.NetworkCommunication.Helpers
+  fullName: Bodoconsult.NetworkCommunication.Helpers
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Helpers
+    name: Helpers
+    href: Bodoconsult.NetworkCommunication.Helpers.html
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Helpers
+    name: Helpers
+    href: Bodoconsult.NetworkCommunication.Helpers.html

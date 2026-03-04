@@ -6,7 +6,7 @@
         {
           "src": "src",
           "files": [ "**.csproj" ],
-		  "exclude": [ "**/bin/**", "**/obj/**" ]
+		  "exclude": [ "**/bin/**", "**/obj/**", "**/Bodoconsult.Network.Inventory/**", "**/BodoInventory/**", "**/Bodoconsult.Network.SNMP/**" ]
         }
       ],
       "dest": "api"

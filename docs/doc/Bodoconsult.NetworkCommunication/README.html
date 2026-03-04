@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Bodoconsult.NetworkCommunication | Bodoconsult.Network </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Bodoconsult.NetworkCommunication | Bodoconsult.Network ">
+      
+      
+      <link rel="icon" href="../../favicon.ico">
+      <link rel="stylesheet" href="../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../public/main.css">
+      <meta name="docfx:navrel" content="../../toc.html">
+      <meta name="docfx:tocrel" content="../toc.html">
+      
+      <meta name="docfx:rel" content="../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/doc/Bodoconsult.NetworkCommunication/README.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../../index.html">
+            <img id="logo" class="svg" src="../../logo.svg" alt="Bodoconsult.Network">
+            Bodoconsult.Network
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="bodoconsultnetworkcommunication">Bodoconsult.NetworkCommunication</h1>
+
+<h1 id="what-does-the-library">What does the library</h1>
+<p>Bodoconsult.NetworkCommunication is a library with basic functionality for setting up a client server network communication based on TCP/IP and a self-defined low level byte message protocol.</p>
+<blockquote>
+<p><a href="#network-communication-overview">Network communication overview</a></p>
+</blockquote>
+<blockquote>
+<p><a href="#some-remarks-to-the-implementation">Some remarks to the implementation</a></p>
+</blockquote>
+<blockquote>
+<p><a href="#defining-your-device-communication-protocol">Defining your device communication protocol</a></p>
+</blockquote>
+<blockquote>
+<p><a href=""></a></p>
+</blockquote>
+<blockquote>
+<p><a href="#more-information">More information</a></p>
+</blockquote>
+<p>For more information regarding the protcolos like BTCP or TNCP see:</p>
+<blockquote>
+<p><a href="SDCP.html">↪ Simple data communication protocol SDCP</a></p>
+</blockquote>
+<blockquote>
+<p><a href="EDCP.html">↪ Enhanced data communication protocol EDCP</a></p>
+</blockquote>
+<blockquote>
+<p><a href="BTCP.html">↪ Business transaction communication protocol BTCP</a></p>
+</blockquote>
+<blockquote>
+<p><a href="TNCP.html">↪ Telnet communication protocol TNCP</a></p>
+</blockquote>
+<blockquote>
+<p><a href=""></a></p>
+</blockquote>
+<blockquote>
+<p><a href=""></a></p>
+</blockquote>
+<blockquote>
+<p><a href=""></a></p>
+</blockquote>
+<h1 id="how-to-use-the-library">How to use the library</h1>
+<p>The source code contains NUnit test classes the following source code is extracted from. The samples below show the most helpful use cases for the library.</p>
+<h1 id="network-communication-overview">Network communication overview</h1>
+<p>The basic idea of this library is sending message to the device as byte array (outbound message) and receiving messages from the device as byte array (inbound message).</p>
+<p>Internally all messages sent or received are a implementation of IDataMessage. There are two basic classes of messages: handshake messages and data messages.</p>
+<p>Handshake messages are used to sent acknowledgements to the client or wait for ackknowledgement from client for sent message.</p>
+<p>Data messages are all other types of messages transporting all kinds of data as your protocol defines it.</p>
+<h2 id="simple-commmunication-layer">Simple commmunication layer</h2>
+<p>The simple version of a network communication layer does not employ order management and state management:</p>
+<p><img src="../../images/DataFlow.png" alt="Network communication overview"></p>
+<h2 id="communication-layer-with-order-and-state-management">Communication layer with order and state management</h2>
+<p>Normally you will have to employ order management and state management to keep a correct workflow in your app. With state management you can keep track with the current state the device and your app are in. The order management sends requested actions as data messages to the device and waits for an answer (if required).</p>
+<p><img src="../../images/DataFlowWithOrdermanagementAndStateManagement.png" alt="Network communication overview"></p>
+<p>To get all this working you have to set up your IDataMessageProcessingPackage implemetation carefully at the end and inject it to IDuplexIo via ctor injection via your IDataMessagingConfig instance. The following documentation shows how to do that step by step.</p>
+<h1 id="some-remarks-to-the-implementation">Some remarks to the implementation</h1>
+<p>Don't be surprised you will find rarely byte arrays in the code. MS says byte arrays are too slow for network communication and invented an underlying low level data model which much more efficient regarding memory consumption and garbage collection. One of the new classes is Memory<byte> which is the underlying base of byte[].</byte></p>
+<p>Design targets for this library are</p>
+<ul>
+<li><p>staying highly flexible</p>
+</li>
+<li><p>providing performant and efficient implementations</p>
+</li>
+<li><p>being unit testable</p>
+</li>
+</ul>
+<h1 id="principles-of-data-communication-used-in-bodoconsultnetwork">Principles of data communication used in Bodoconsult.Network</h1>
+<ul>
+<li><p>Resource efficient implementation</p>
+</li>
+<li><p>RAM usage cares</p>
+</li>
+<li><p>Garbage collector usage cares</p>
+</li>
+<li><p>Inbound communication separated from outbound communication on message and datablock level at least</p>
+</li>
+</ul>
+<h1 id="defining-your-device-communication-protocol">Defining your device communication protocol</h1>
+<p>Defining a client server network communication protocol may contain for Bodoconsult.NetworkCommunication the following steps:</p>
+<ul>
+<li><p><strong>Choosing message delimiters</strong>: how to identify a message in a stream of bytes? Default is STX as message start and ETX char as message end.</p>
+</li>
+<li><p><strong>Data message</strong> versus <strong>handshake</strong>: A data message contains any data your business logic will normally react on. A handshake is a simple answer to the other side: yes I got your data message (ACK) or not (NACK).</p>
+</li>
+<li><p><strong>The message content</strong>: Defining the general content of a data message. Does a data message require a kind of header to be delivered always containg data like device ID or error codes or not?</p>
+</li>
+<li><p><strong>Datablock content</strong>: This the important data delivered mainly to your business logic on both side of the communication. The prupose of your communication protocol defines the data structures of the datablocks needed for your protocol.</p>
+</li>
+</ul>
+<p><img src="../../images/Messages.png" alt="Messages"></p>
+<h2 id="example-1-simple-device-communication-protocol-sdcp">Example 1: Simple Device Communication Protocol (SDCP)</h2>
+<p>For the usage in this documentation there will be implemented the following Simple Device Communication Protocol (SDCP).</p>
+<p>The SDCP knows two basic types of messages:</p>
+<ul>
+<li><p><strong>Data messages</strong> starting with STX char and ending with ETX char. Everything between STX and ETX is handled as datablock. It is up to you to define IDataBlockCodecs to give the transported bytes a meaning.</p>
+</li>
+<li><p><strong>Handshakes</strong>: a 1-byte-message with either ACK (message received successfully), NACK (message NOT received successfully) or CAN (device not ready) sent when a data message was received.</p>
+</li>
+</ul>
+<p>The content of a data message is a datablock with the first byte indicating the type of datablock.</p>
+<p>Each data message received will be answered by a handshake.</p>
+<p>The SDCP protocol is very simple but of limited usage in reality. The main drawback of SDCP are the missing identification of data message and its coresponding handshake.</p>
+<p>See <a href="SDCP.html">↪ Simple data communication protocol SDCP</a> for details!</p>
+<h2 id="example-2-enhanced-device-communication-protocol-edcp">Example 2: Enhanced Device Communication Protocol (EDCP)</h2>
+<p>Basically the EDCP protocol is same as SDCP protocol but the second byte of each message is a a block code. Client and server use different number ranges for the block code. Let's say server uses block codes from 1 to 20 and client from 21 up to 40. If each party answers a received data message with a handshake it adds the block code received with the data nessage. So the sender of a data message can recognize the handshake received for the sent message clarly.</p>
+<p>Another enhancement of EDCP protocl is byte 3 may contain a block code of a requesting data message. This enhancement makes it possible to implemenent data message requests answer by the other side by one or more data messages. If there is no block code for byte 3 delivered it means a data message sent without a request from the other side.</p>
+<p>The repo Bodoconsult.NetworkCommunication contains a full implementation of EDCP protocol.</p>
+<p>See <a href="EDCP.html">↪ Enhanced data communication protocol EDCP</a> for details!</p>
+<h2 id="example-3-business-transaction-communication-protocol-btcp">Example 3: Business Transaction Communication Protocol (BTCP)</h2>
+<p>See <a href="BTCP.html">↪ Business transaction communication protocol BTCP</a> for details!</p>
+<h2 id="example-4-telent-communication-protocol-tncp">Example 4: Telent Communication Protocol (TNCP)</h2>
+<p>See <a href="TNCP.html">↪ Telnet communication protocol TNCP</a> for details!</p>
+<h2 id="further-potential-enhancements">Further potential enhancements</h2>
+<h3 id="other-message-delimiters">Other message delimiters</h3>
+<p>Instead of STX and ETX you can use other message delimiter chars.</p>
+<h2 id="adding-a-general-data-message-header">Adding a general data message header</h2>
+<p>Instead of handling everything between STX and ETX as a datablock you can decide to start every message with a defined header containing a device ID, a request command, error codes, a device state and then after the header follows a data block with a certain purpose and its own definiton.</p>
+<p>Adding a general data message header may reduce the implementation effort as you more the implementation from each data block code to the more general message code.</p>
+<h1 id="steps-required-to-setup-your-network-communication-protocol">Steps required to setup your network communication protocol</h1>
+<blockquote>
+<p><a href="SDCP.html#setting-up-messaging-configuration-idatamessagingconfig">Setting up messaging configuration: IDataMessagingConfig</a></p>
+</blockquote>
+<blockquote>
+<p><a href="SDCP.html#define-message-limiting-bytes-devicecommunicationbasics">Define message limiting bytes: DeviceCommunicationBasics</a></p>
+</blockquote>
+<blockquote>
+<p><a href="SDCP.html#define-message-limiting-bytes-devicecommunicationbasics">Implement a data message splitter splitting the incoming byte stream into potential messages: IDataMessageSplitter</a></p>
+</blockquote>
+<blockquote>
+<p><a href="SDCP.html#implement-your-data-message-types-for-inbound-messages-iinbounddatamessage">Implement your data message types for inbound messages</a></p>
+</blockquote>
+<blockquote>
+<p><a href="SDCP.html#implement-your-data-message-types-for-outbound-messages-ioutbounddatamessage">Implement your data message types for outbound messages</a></p>
+</blockquote>
+<blockquote>
+<p><a href="SDCP.html#implement-a-handshake-validator-for-inbound-handshakes-ihandshakedatamessagevalidator">Implement a handshake validator for inbound handshakes: IHandshakeDataMessageValidator</a></p>
+</blockquote>
+<blockquote>
+<p><a href="SDCP.html#implement-a-data-message-validator-for-inbound-data-messages-idatamessagevalidator">Implement a data message validator for inbound data messages: IDataMessageValidator</a></p>
+</blockquote>
+<blockquote>
+<p><a href="SDCP.html#implement-a-message-forwarder-for-received-messages-idatamessageprocessor">Implement a message forwarder for received messages: IDataMessageProcessor</a></p>
+</blockquote>
+<blockquote>
+<p><a href="SDCP.html#implement-the-message-codecs-to-decode-and-encode-to-byte-array-basedatamessagecodec">Implement the message codecs to decode and encode to byte array: BaseDataMessageCodec</a></p>
+</blockquote>
+<blockquote>
+<p><a href="SDCP.html#datablock-coding-processor-idatablockcodingprocessor">Datablock coding processor: IDataBlockCodingProcessor</a></p>
+</blockquote>
+<blockquote>
+<p><a href="SDCP.html#implement-your-messaging-package-idatamessageprocessingpackage">Implement your messaging package: IDataMessageProcessingPackage</a></p>
+</blockquote>
+<h1 id="more-information">More information</h1>
+<p><a href="https://csharp-networking.com/chapter01/">https://csharp-networking.com/chapter01/</a></p>
+<h1 id="about-us">About us</h1>
+<p>Bodoconsult <a href="http://www.bodoconsult.de">http://www.bodoconsult.de</a> is a Munich based software company from Germany.</p>
+<p>Robert Leisner is senior software developer at Bodoconsult. See his profile on <a href="http://www.bodoconsult.de/Curriculum_vitae_Robert_Leisner.pdf">http://www.bodoconsult.de/Curriculum_vitae_Robert_Leisner.pdf</a>.</p>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/doc/Bodoconsult.NetworkCommunication/README.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,769 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServer
+  commentId: T:Bodoconsult.Network.Windows.Dhcp.IDhcpServer
+  id: IDhcpServer
+  parent: Bodoconsult.Network.Windows.Dhcp
+  children:
+  - Bodoconsult.Network.Windows.Dhcp.IDhcpServer.Address
+  - Bodoconsult.Network.Windows.Dhcp.IDhcpServer.AuditLog
+  - Bodoconsult.Network.Windows.Dhcp.IDhcpServer.BindingElements
+  - Bodoconsult.Network.Windows.Dhcp.IDhcpServer.Classes
+  - Bodoconsult.Network.Windows.Dhcp.IDhcpServer.Clients
+  - Bodoconsult.Network.Windows.Dhcp.IDhcpServer.Configuration
+  - Bodoconsult.Network.Windows.Dhcp.IDhcpServer.DnsSettings
+  - Bodoconsult.Network.Windows.Dhcp.IDhcpServer.FailoverRelationships
+  - Bodoconsult.Network.Windows.Dhcp.IDhcpServer.IsCompatible(Bodoconsult.Network.Windows.Dhcp.DhcpServerVersions)
+  - Bodoconsult.Network.Windows.Dhcp.IDhcpServer.Name
+  - Bodoconsult.Network.Windows.Dhcp.IDhcpServer.Options
+  - Bodoconsult.Network.Windows.Dhcp.IDhcpServer.Scopes
+  - Bodoconsult.Network.Windows.Dhcp.IDhcpServer.SpecificStrings
+  - Bodoconsult.Network.Windows.Dhcp.IDhcpServer.Version
+  - Bodoconsult.Network.Windows.Dhcp.IDhcpServer.VersionMajor
+  - Bodoconsult.Network.Windows.Dhcp.IDhcpServer.VersionMinor
+  langs:
+  - csharp
+  - vb
+  name: IDhcpServer
+  nameWithType: IDhcpServer
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServer
+  type: Interface
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/IDhcpServer.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: IDhcpServer
+    path: src/Bodoconsult.Network.Windows/Dhcp/IDhcpServer.cs
+    startLine: 5
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: public interface IDhcpServer
+    content.vb: Public Interface IDhcpServer
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServer.Address
+  commentId: P:Bodoconsult.Network.Windows.Dhcp.IDhcpServer.Address
+  id: Address
+  parent: Bodoconsult.Network.Windows.Dhcp.IDhcpServer
+  langs:
+  - csharp
+  - vb
+  name: Address
+  nameWithType: IDhcpServer.Address
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServer.Address
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/IDhcpServer.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Address
+    path: src/Bodoconsult.Network.Windows/Dhcp/IDhcpServer.cs
+    startLine: 7
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: DhcpServerIpAddress Address { get; }
+    parameters: []
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress
+    content.vb: ReadOnly Property Address As DhcpServerIpAddress
+  overload: Bodoconsult.Network.Windows.Dhcp.IDhcpServer.Address*
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServer.AuditLog
+  commentId: P:Bodoconsult.Network.Windows.Dhcp.IDhcpServer.AuditLog
+  id: AuditLog
+  parent: Bodoconsult.Network.Windows.Dhcp.IDhcpServer
+  langs:
+  - csharp
+  - vb
+  name: AuditLog
+  nameWithType: IDhcpServer.AuditLog
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServer.AuditLog
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/IDhcpServer.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: AuditLog
+    path: src/Bodoconsult.Network.Windows/Dhcp/IDhcpServer.cs
+    startLine: 8
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: IDhcpServerAuditLog AuditLog { get; }
+    parameters: []
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.IDhcpServerAuditLog
+    content.vb: ReadOnly Property AuditLog As IDhcpServerAuditLog
+  overload: Bodoconsult.Network.Windows.Dhcp.IDhcpServer.AuditLog*
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServer.BindingElements
+  commentId: P:Bodoconsult.Network.Windows.Dhcp.IDhcpServer.BindingElements
+  id: BindingElements
+  parent: Bodoconsult.Network.Windows.Dhcp.IDhcpServer
+  langs:
+  - csharp
+  - vb
+  name: BindingElements
+  nameWithType: IDhcpServer.BindingElements
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServer.BindingElements
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/IDhcpServer.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: BindingElements
+    path: src/Bodoconsult.Network.Windows/Dhcp/IDhcpServer.cs
+    startLine: 9
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: IDhcpServerBindingElementCollection BindingElements { get; }
+    parameters: []
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.IDhcpServerBindingElementCollection
+    content.vb: ReadOnly Property BindingElements As IDhcpServerBindingElementCollection
+  overload: Bodoconsult.Network.Windows.Dhcp.IDhcpServer.BindingElements*
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServer.Classes
+  commentId: P:Bodoconsult.Network.Windows.Dhcp.IDhcpServer.Classes
+  id: Classes
+  parent: Bodoconsult.Network.Windows.Dhcp.IDhcpServer
+  langs:
+  - csharp
+  - vb
+  name: Classes
+  nameWithType: IDhcpServer.Classes
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServer.Classes
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/IDhcpServer.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Classes
+    path: src/Bodoconsult.Network.Windows/Dhcp/IDhcpServer.cs
+    startLine: 10
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: IDhcpServerClassCollection Classes { get; }
+    parameters: []
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.IDhcpServerClassCollection
+    content.vb: ReadOnly Property Classes As IDhcpServerClassCollection
+  overload: Bodoconsult.Network.Windows.Dhcp.IDhcpServer.Classes*
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServer.Clients
+  commentId: P:Bodoconsult.Network.Windows.Dhcp.IDhcpServer.Clients
+  id: Clients
+  parent: Bodoconsult.Network.Windows.Dhcp.IDhcpServer
+  langs:
+  - csharp
+  - vb
+  name: Clients
+  nameWithType: IDhcpServer.Clients
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServer.Clients
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/IDhcpServer.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Clients
+    path: src/Bodoconsult.Network.Windows/Dhcp/IDhcpServer.cs
+    startLine: 11
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: IDhcpServerClientCollection Clients { get; }
+    parameters: []
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.IDhcpServerClientCollection
+    content.vb: ReadOnly Property Clients As IDhcpServerClientCollection
+  overload: Bodoconsult.Network.Windows.Dhcp.IDhcpServer.Clients*
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServer.Configuration
+  commentId: P:Bodoconsult.Network.Windows.Dhcp.IDhcpServer.Configuration
+  id: Configuration
+  parent: Bodoconsult.Network.Windows.Dhcp.IDhcpServer
+  langs:
+  - csharp
+  - vb
+  name: Configuration
+  nameWithType: IDhcpServer.Configuration
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServer.Configuration
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/IDhcpServer.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Configuration
+    path: src/Bodoconsult.Network.Windows/Dhcp/IDhcpServer.cs
+    startLine: 12
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: IDhcpServerConfiguration Configuration { get; }
+    parameters: []
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.IDhcpServerConfiguration
+    content.vb: ReadOnly Property Configuration As IDhcpServerConfiguration
+  overload: Bodoconsult.Network.Windows.Dhcp.IDhcpServer.Configuration*
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServer.DnsSettings
+  commentId: P:Bodoconsult.Network.Windows.Dhcp.IDhcpServer.DnsSettings
+  id: DnsSettings
+  parent: Bodoconsult.Network.Windows.Dhcp.IDhcpServer
+  langs:
+  - csharp
+  - vb
+  name: DnsSettings
+  nameWithType: IDhcpServer.DnsSettings
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServer.DnsSettings
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/IDhcpServer.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: DnsSettings
+    path: src/Bodoconsult.Network.Windows/Dhcp/IDhcpServer.cs
+    startLine: 13
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: IDhcpServerDnsSettings DnsSettings { get; }
+    parameters: []
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.IDhcpServerDnsSettings
+    content.vb: ReadOnly Property DnsSettings As IDhcpServerDnsSettings
+  overload: Bodoconsult.Network.Windows.Dhcp.IDhcpServer.DnsSettings*
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServer.FailoverRelationships
+  commentId: P:Bodoconsult.Network.Windows.Dhcp.IDhcpServer.FailoverRelationships
+  id: FailoverRelationships
+  parent: Bodoconsult.Network.Windows.Dhcp.IDhcpServer
+  langs:
+  - csharp
+  - vb
+  name: FailoverRelationships
+  nameWithType: IDhcpServer.FailoverRelationships
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServer.FailoverRelationships
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/IDhcpServer.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: FailoverRelationships
+    path: src/Bodoconsult.Network.Windows/Dhcp/IDhcpServer.cs
+    startLine: 14
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: IDhcpServerFailoverRelationshipCollection FailoverRelationships { get; }
+    parameters: []
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.IDhcpServerFailoverRelationshipCollection
+    content.vb: ReadOnly Property FailoverRelationships As IDhcpServerFailoverRelationshipCollection
+  overload: Bodoconsult.Network.Windows.Dhcp.IDhcpServer.FailoverRelationships*
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServer.Name
+  commentId: P:Bodoconsult.Network.Windows.Dhcp.IDhcpServer.Name
+  id: Name
+  parent: Bodoconsult.Network.Windows.Dhcp.IDhcpServer
+  langs:
+  - csharp
+  - vb
+  name: Name
+  nameWithType: IDhcpServer.Name
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServer.Name
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/IDhcpServer.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Name
+    path: src/Bodoconsult.Network.Windows/Dhcp/IDhcpServer.cs
+    startLine: 15
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: string Name { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: ReadOnly Property Name As String
+  overload: Bodoconsult.Network.Windows.Dhcp.IDhcpServer.Name*
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServer.Options
+  commentId: P:Bodoconsult.Network.Windows.Dhcp.IDhcpServer.Options
+  id: Options
+  parent: Bodoconsult.Network.Windows.Dhcp.IDhcpServer
+  langs:
+  - csharp
+  - vb
+  name: Options
+  nameWithType: IDhcpServer.Options
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServer.Options
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/IDhcpServer.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Options
+    path: src/Bodoconsult.Network.Windows/Dhcp/IDhcpServer.cs
+    startLine: 16
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: IDhcpServerOptionCollection Options { get; }
+    parameters: []
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.IDhcpServerOptionCollection
+    content.vb: ReadOnly Property Options As IDhcpServerOptionCollection
+  overload: Bodoconsult.Network.Windows.Dhcp.IDhcpServer.Options*
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServer.Scopes
+  commentId: P:Bodoconsult.Network.Windows.Dhcp.IDhcpServer.Scopes
+  id: Scopes
+  parent: Bodoconsult.Network.Windows.Dhcp.IDhcpServer
+  langs:
+  - csharp
+  - vb
+  name: Scopes
+  nameWithType: IDhcpServer.Scopes
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServer.Scopes
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/IDhcpServer.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Scopes
+    path: src/Bodoconsult.Network.Windows/Dhcp/IDhcpServer.cs
+    startLine: 17
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: IDhcpServerScopeCollection Scopes { get; }
+    parameters: []
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeCollection
+    content.vb: ReadOnly Property Scopes As IDhcpServerScopeCollection
+  overload: Bodoconsult.Network.Windows.Dhcp.IDhcpServer.Scopes*
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServer.SpecificStrings
+  commentId: P:Bodoconsult.Network.Windows.Dhcp.IDhcpServer.SpecificStrings
+  id: SpecificStrings
+  parent: Bodoconsult.Network.Windows.Dhcp.IDhcpServer
+  langs:
+  - csharp
+  - vb
+  name: SpecificStrings
+  nameWithType: IDhcpServer.SpecificStrings
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServer.SpecificStrings
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/IDhcpServer.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: SpecificStrings
+    path: src/Bodoconsult.Network.Windows/Dhcp/IDhcpServer.cs
+    startLine: 18
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: IDhcpServerSpecificStrings SpecificStrings { get; }
+    parameters: []
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.IDhcpServerSpecificStrings
+    content.vb: ReadOnly Property SpecificStrings As IDhcpServerSpecificStrings
+  overload: Bodoconsult.Network.Windows.Dhcp.IDhcpServer.SpecificStrings*
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServer.Version
+  commentId: P:Bodoconsult.Network.Windows.Dhcp.IDhcpServer.Version
+  id: Version
+  parent: Bodoconsult.Network.Windows.Dhcp.IDhcpServer
+  langs:
+  - csharp
+  - vb
+  name: Version
+  nameWithType: IDhcpServer.Version
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServer.Version
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/IDhcpServer.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Version
+    path: src/Bodoconsult.Network.Windows/Dhcp/IDhcpServer.cs
+    startLine: 19
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: DhcpServerVersions Version { get; }
+    parameters: []
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerVersions
+    content.vb: ReadOnly Property Version As DhcpServerVersions
+  overload: Bodoconsult.Network.Windows.Dhcp.IDhcpServer.Version*
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServer.VersionMajor
+  commentId: P:Bodoconsult.Network.Windows.Dhcp.IDhcpServer.VersionMajor
+  id: VersionMajor
+  parent: Bodoconsult.Network.Windows.Dhcp.IDhcpServer
+  langs:
+  - csharp
+  - vb
+  name: VersionMajor
+  nameWithType: IDhcpServer.VersionMajor
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServer.VersionMajor
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/IDhcpServer.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: VersionMajor
+    path: src/Bodoconsult.Network.Windows/Dhcp/IDhcpServer.cs
+    startLine: 20
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: int VersionMajor { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: ReadOnly Property VersionMajor As Integer
+  overload: Bodoconsult.Network.Windows.Dhcp.IDhcpServer.VersionMajor*
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServer.VersionMinor
+  commentId: P:Bodoconsult.Network.Windows.Dhcp.IDhcpServer.VersionMinor
+  id: VersionMinor
+  parent: Bodoconsult.Network.Windows.Dhcp.IDhcpServer
+  langs:
+  - csharp
+  - vb
+  name: VersionMinor
+  nameWithType: IDhcpServer.VersionMinor
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServer.VersionMinor
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/IDhcpServer.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: VersionMinor
+    path: src/Bodoconsult.Network.Windows/Dhcp/IDhcpServer.cs
+    startLine: 21
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: int VersionMinor { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: ReadOnly Property VersionMinor As Integer
+  overload: Bodoconsult.Network.Windows.Dhcp.IDhcpServer.VersionMinor*
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServer.IsCompatible(Bodoconsult.Network.Windows.Dhcp.DhcpServerVersions)
+  commentId: M:Bodoconsult.Network.Windows.Dhcp.IDhcpServer.IsCompatible(Bodoconsult.Network.Windows.Dhcp.DhcpServerVersions)
+  id: IsCompatible(Bodoconsult.Network.Windows.Dhcp.DhcpServerVersions)
+  parent: Bodoconsult.Network.Windows.Dhcp.IDhcpServer
+  langs:
+  - csharp
+  - vb
+  name: IsCompatible(DhcpServerVersions)
+  nameWithType: IDhcpServer.IsCompatible(DhcpServerVersions)
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServer.IsCompatible(Bodoconsult.Network.Windows.Dhcp.DhcpServerVersions)
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/IDhcpServer.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: IsCompatible
+    path: src/Bodoconsult.Network.Windows/Dhcp/IDhcpServer.cs
+    startLine: 23
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: bool IsCompatible(DhcpServerVersions version)
+    parameters:
+    - id: version
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerVersions
+    return:
+      type: System.Boolean
+    content.vb: Function IsCompatible(version As DhcpServerVersions) As Boolean
+  overload: Bodoconsult.Network.Windows.Dhcp.IDhcpServer.IsCompatible*
+references:
+- uid: Bodoconsult.Network.Windows.Dhcp
+  commentId: N:Bodoconsult.Network.Windows.Dhcp
+  href: Bodoconsult.html
+  name: Bodoconsult.Network.Windows.Dhcp
+  nameWithType: Bodoconsult.Network.Windows.Dhcp
+  fullName: Bodoconsult.Network.Windows.Dhcp
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.Network
+    name: Network
+    href: Bodoconsult.Network.html
+  - name: .
+  - uid: Bodoconsult.Network.Windows
+    name: Windows
+    href: Bodoconsult.Network.Windows.html
+  - name: .
+  - uid: Bodoconsult.Network.Windows.Dhcp
+    name: Dhcp
+    href: Bodoconsult.Network.Windows.Dhcp.html
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.Network
+    name: Network
+    href: Bodoconsult.Network.html
+  - name: .
+  - uid: Bodoconsult.Network.Windows
+    name: Windows
+    href: Bodoconsult.Network.Windows.html
+  - name: .
+  - uid: Bodoconsult.Network.Windows.Dhcp
+    name: Dhcp
+    href: Bodoconsult.Network.Windows.Dhcp.html
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServer.Address*
+  commentId: Overload:Bodoconsult.Network.Windows.Dhcp.IDhcpServer.Address
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServer.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServer_Address
+  name: Address
+  nameWithType: IDhcpServer.Address
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServer.Address
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress
+  commentId: T:Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress
+  parent: Bodoconsult.Network.Windows.Dhcp
+  href: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.html
+  name: DhcpServerIpAddress
+  nameWithType: DhcpServerIpAddress
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServer.AuditLog*
+  commentId: Overload:Bodoconsult.Network.Windows.Dhcp.IDhcpServer.AuditLog
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServer.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServer_AuditLog
+  name: AuditLog
+  nameWithType: IDhcpServer.AuditLog
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServer.AuditLog
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerAuditLog
+  commentId: T:Bodoconsult.Network.Windows.Dhcp.IDhcpServerAuditLog
+  parent: Bodoconsult.Network.Windows.Dhcp
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerAuditLog.html
+  name: IDhcpServerAuditLog
+  nameWithType: IDhcpServerAuditLog
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerAuditLog
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServer.BindingElements*
+  commentId: Overload:Bodoconsult.Network.Windows.Dhcp.IDhcpServer.BindingElements
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServer.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServer_BindingElements
+  name: BindingElements
+  nameWithType: IDhcpServer.BindingElements
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServer.BindingElements
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerBindingElementCollection
+  commentId: T:Bodoconsult.Network.Windows.Dhcp.IDhcpServerBindingElementCollection
+  parent: Bodoconsult.Network.Windows.Dhcp
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerBindingElementCollection.html
+  name: IDhcpServerBindingElementCollection
+  nameWithType: IDhcpServerBindingElementCollection
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerBindingElementCollection
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServer.Classes*
+  commentId: Overload:Bodoconsult.Network.Windows.Dhcp.IDhcpServer.Classes
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServer.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServer_Classes
+  name: Classes
+  nameWithType: IDhcpServer.Classes
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServer.Classes
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerClassCollection
+  commentId: T:Bodoconsult.Network.Windows.Dhcp.IDhcpServerClassCollection
+  parent: Bodoconsult.Network.Windows.Dhcp
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerClassCollection.html
+  name: IDhcpServerClassCollection
+  nameWithType: IDhcpServerClassCollection
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerClassCollection
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServer.Clients*
+  commentId: Overload:Bodoconsult.Network.Windows.Dhcp.IDhcpServer.Clients
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServer.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServer_Clients
+  name: Clients
+  nameWithType: IDhcpServer.Clients
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServer.Clients
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerClientCollection
+  commentId: T:Bodoconsult.Network.Windows.Dhcp.IDhcpServerClientCollection
+  parent: Bodoconsult.Network.Windows.Dhcp
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerClientCollection.html
+  name: IDhcpServerClientCollection
+  nameWithType: IDhcpServerClientCollection
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerClientCollection
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServer.Configuration*
+  commentId: Overload:Bodoconsult.Network.Windows.Dhcp.IDhcpServer.Configuration
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServer.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServer_Configuration
+  name: Configuration
+  nameWithType: IDhcpServer.Configuration
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServer.Configuration
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerConfiguration
+  commentId: T:Bodoconsult.Network.Windows.Dhcp.IDhcpServerConfiguration
+  parent: Bodoconsult.Network.Windows.Dhcp
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerConfiguration.html
+  name: IDhcpServerConfiguration
+  nameWithType: IDhcpServerConfiguration
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerConfiguration
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServer.DnsSettings*
+  commentId: Overload:Bodoconsult.Network.Windows.Dhcp.IDhcpServer.DnsSettings
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServer.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServer_DnsSettings
+  name: DnsSettings
+  nameWithType: IDhcpServer.DnsSettings
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServer.DnsSettings
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerDnsSettings
+  commentId: T:Bodoconsult.Network.Windows.Dhcp.IDhcpServerDnsSettings
+  parent: Bodoconsult.Network.Windows.Dhcp
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerDnsSettings.html
+  name: IDhcpServerDnsSettings
+  nameWithType: IDhcpServerDnsSettings
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerDnsSettings
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServer.FailoverRelationships*
+  commentId: Overload:Bodoconsult.Network.Windows.Dhcp.IDhcpServer.FailoverRelationships
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServer.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServer_FailoverRelationships
+  name: FailoverRelationships
+  nameWithType: IDhcpServer.FailoverRelationships
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServer.FailoverRelationships
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerFailoverRelationshipCollection
+  commentId: T:Bodoconsult.Network.Windows.Dhcp.IDhcpServerFailoverRelationshipCollection
+  parent: Bodoconsult.Network.Windows.Dhcp
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerFailoverRelationshipCollection.html
+  name: IDhcpServerFailoverRelationshipCollection
+  nameWithType: IDhcpServerFailoverRelationshipCollection
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerFailoverRelationshipCollection
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServer.Name*
+  commentId: Overload:Bodoconsult.Network.Windows.Dhcp.IDhcpServer.Name
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServer.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServer_Name
+  name: Name
+  nameWithType: IDhcpServer.Name
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServer.Name
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServer.Options*
+  commentId: Overload:Bodoconsult.Network.Windows.Dhcp.IDhcpServer.Options
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServer.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServer_Options
+  name: Options
+  nameWithType: IDhcpServer.Options
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServer.Options
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerOptionCollection
+  commentId: T:Bodoconsult.Network.Windows.Dhcp.IDhcpServerOptionCollection
+  parent: Bodoconsult.Network.Windows.Dhcp
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerOptionCollection.html
+  name: IDhcpServerOptionCollection
+  nameWithType: IDhcpServerOptionCollection
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerOptionCollection
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServer.Scopes*
+  commentId: Overload:Bodoconsult.Network.Windows.Dhcp.IDhcpServer.Scopes
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServer.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServer_Scopes
+  name: Scopes
+  nameWithType: IDhcpServer.Scopes
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServer.Scopes
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeCollection
+  commentId: T:Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeCollection
+  parent: Bodoconsult.Network.Windows.Dhcp
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeCollection.html
+  name: IDhcpServerScopeCollection
+  nameWithType: IDhcpServerScopeCollection
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeCollection
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServer.SpecificStrings*
+  commentId: Overload:Bodoconsult.Network.Windows.Dhcp.IDhcpServer.SpecificStrings
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServer.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServer_SpecificStrings
+  name: SpecificStrings
+  nameWithType: IDhcpServer.SpecificStrings
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServer.SpecificStrings
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerSpecificStrings
+  commentId: T:Bodoconsult.Network.Windows.Dhcp.IDhcpServerSpecificStrings
+  parent: Bodoconsult.Network.Windows.Dhcp
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerSpecificStrings.html
+  name: IDhcpServerSpecificStrings
+  nameWithType: IDhcpServerSpecificStrings
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerSpecificStrings
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServer.Version*
+  commentId: Overload:Bodoconsult.Network.Windows.Dhcp.IDhcpServer.Version
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServer.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServer_Version
+  name: Version
+  nameWithType: IDhcpServer.Version
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServer.Version
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerVersions
+  commentId: T:Bodoconsult.Network.Windows.Dhcp.DhcpServerVersions
+  parent: Bodoconsult.Network.Windows.Dhcp
+  href: Bodoconsult.Network.Windows.Dhcp.DhcpServerVersions.html
+  name: DhcpServerVersions
+  nameWithType: DhcpServerVersions
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerVersions
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServer.VersionMajor*
+  commentId: Overload:Bodoconsult.Network.Windows.Dhcp.IDhcpServer.VersionMajor
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServer.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServer_VersionMajor
+  name: VersionMajor
+  nameWithType: IDhcpServer.VersionMajor
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServer.VersionMajor
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServer.VersionMinor*
+  commentId: Overload:Bodoconsult.Network.Windows.Dhcp.IDhcpServer.VersionMinor
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServer.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServer_VersionMinor
+  name: VersionMinor
+  nameWithType: IDhcpServer.VersionMinor
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServer.VersionMinor
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServer.IsCompatible*
+  commentId: Overload:Bodoconsult.Network.Windows.Dhcp.IDhcpServer.IsCompatible
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServer.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServer_IsCompatible_Bodoconsult_Network_Windows_Dhcp_DhcpServerVersions_
+  name: IsCompatible
+  nameWithType: IDhcpServer.IsCompatible
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServer.IsCompatible
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean

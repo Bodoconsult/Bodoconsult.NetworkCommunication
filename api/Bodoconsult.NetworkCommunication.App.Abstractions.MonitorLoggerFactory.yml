@@ -1,0 +1,739 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bodoconsult.NetworkCommunication.App.Abstractions.MonitorLoggerFactory
+  commentId: T:Bodoconsult.NetworkCommunication.App.Abstractions.MonitorLoggerFactory
+  id: MonitorLoggerFactory
+  parent: Bodoconsult.NetworkCommunication.App.Abstractions
+  children:
+  - Bodoconsult.NetworkCommunication.App.Abstractions.MonitorLoggerFactory.#ctor(System.String)
+  - Bodoconsult.NetworkCommunication.App.Abstractions.MonitorLoggerFactory.AddProvider(Microsoft.Extensions.Logging.ILoggerProvider)
+  - Bodoconsult.NetworkCommunication.App.Abstractions.MonitorLoggerFactory.CreateLogger(System.String)
+  - Bodoconsult.NetworkCommunication.App.Abstractions.MonitorLoggerFactory.Dispose
+  - Bodoconsult.NetworkCommunication.App.Abstractions.MonitorLoggerFactory.FileName
+  langs:
+  - csharp
+  - vb
+  name: MonitorLoggerFactory
+  nameWithType: MonitorLoggerFactory
+  fullName: Bodoconsult.NetworkCommunication.App.Abstractions.MonitorLoggerFactory
+  type: Class
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/App.Abstractions/MonitorLoggerFactory.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: MonitorLoggerFactory
+    path: src/Bodoconsult.NetworkCommunication/App.Abstractions/MonitorLoggerFactory.cs
+    startLine: 11
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.App.Abstractions
+  summary: Server logger factory for tower bound monitor logging
+  example: []
+  syntax:
+    content: 'public class MonitorLoggerFactory : IMonitorLoggerFactory, ILoggerFactory, IDisposable'
+    content.vb: Public Class MonitorLoggerFactory Implements IMonitorLoggerFactory, ILoggerFactory, IDisposable
+  inheritance:
+  - System.Object
+  implements:
+  - Bodoconsult.App.Interfaces.IMonitorLoggerFactory
+  - Microsoft.Extensions.Logging.ILoggerFactory
+  - System.IDisposable
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: Bodoconsult.NetworkCommunication.App.Abstractions.MonitorLoggerFactory.#ctor(System.String)
+  commentId: M:Bodoconsult.NetworkCommunication.App.Abstractions.MonitorLoggerFactory.#ctor(System.String)
+  id: '#ctor(System.String)'
+  parent: Bodoconsult.NetworkCommunication.App.Abstractions.MonitorLoggerFactory
+  langs:
+  - csharp
+  - vb
+  name: MonitorLoggerFactory(string)
+  nameWithType: MonitorLoggerFactory.MonitorLoggerFactory(string)
+  fullName: Bodoconsult.NetworkCommunication.App.Abstractions.MonitorLoggerFactory.MonitorLoggerFactory(string)
+  type: Constructor
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/App.Abstractions/MonitorLoggerFactory.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: .ctor
+    path: src/Bodoconsult.NetworkCommunication/App.Abstractions/MonitorLoggerFactory.cs
+    startLine: 22
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.App.Abstractions
+  summary: Default ctor
+  example: []
+  syntax:
+    content: public MonitorLoggerFactory(string fileName)
+    parameters:
+    - id: fileName
+      type: System.String
+      description: Current full file path to log in
+    content.vb: Public Sub New(fileName As String)
+  overload: Bodoconsult.NetworkCommunication.App.Abstractions.MonitorLoggerFactory.#ctor*
+  nameWithType.vb: MonitorLoggerFactory.New(String)
+  fullName.vb: Bodoconsult.NetworkCommunication.App.Abstractions.MonitorLoggerFactory.New(String)
+  name.vb: New(String)
+- uid: Bodoconsult.NetworkCommunication.App.Abstractions.MonitorLoggerFactory.Dispose
+  commentId: M:Bodoconsult.NetworkCommunication.App.Abstractions.MonitorLoggerFactory.Dispose
+  id: Dispose
+  parent: Bodoconsult.NetworkCommunication.App.Abstractions.MonitorLoggerFactory
+  langs:
+  - csharp
+  - vb
+  name: Dispose()
+  nameWithType: MonitorLoggerFactory.Dispose()
+  fullName: Bodoconsult.NetworkCommunication.App.Abstractions.MonitorLoggerFactory.Dispose()
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/App.Abstractions/MonitorLoggerFactory.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Dispose
+    path: src/Bodoconsult.NetworkCommunication/App.Abstractions/MonitorLoggerFactory.cs
+    startLine: 29
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.App.Abstractions
+  summary: Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+  example: []
+  syntax:
+    content: public void Dispose()
+    content.vb: Public Sub Dispose()
+  overload: Bodoconsult.NetworkCommunication.App.Abstractions.MonitorLoggerFactory.Dispose*
+  implements:
+  - System.IDisposable.Dispose
+- uid: Bodoconsult.NetworkCommunication.App.Abstractions.MonitorLoggerFactory.CreateLogger(System.String)
+  commentId: M:Bodoconsult.NetworkCommunication.App.Abstractions.MonitorLoggerFactory.CreateLogger(System.String)
+  id: CreateLogger(System.String)
+  parent: Bodoconsult.NetworkCommunication.App.Abstractions.MonitorLoggerFactory
+  langs:
+  - csharp
+  - vb
+  name: CreateLogger(string)
+  nameWithType: MonitorLoggerFactory.CreateLogger(string)
+  fullName: Bodoconsult.NetworkCommunication.App.Abstractions.MonitorLoggerFactory.CreateLogger(string)
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/App.Abstractions/MonitorLoggerFactory.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: CreateLogger
+    path: src/Bodoconsult.NetworkCommunication/App.Abstractions/MonitorLoggerFactory.cs
+    startLine: 39
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.App.Abstractions
+  summary: Creates a new <xref href="Microsoft.Extensions.Logging.ILogger" data-throw-if-not-resolved="false"></xref> instance.
+  example: []
+  syntax:
+    content: public ILogger CreateLogger(string categoryName)
+    parameters:
+    - id: categoryName
+      type: System.String
+      description: The category name for messages produced by the logger.
+    return:
+      type: Microsoft.Extensions.Logging.ILogger
+      description: The <xref href="Microsoft.Extensions.Logging.ILogger" data-throw-if-not-resolved="false"></xref>.
+    content.vb: Public Function CreateLogger(categoryName As String) As ILogger
+  overload: Bodoconsult.NetworkCommunication.App.Abstractions.MonitorLoggerFactory.CreateLogger*
+  implements:
+  - Microsoft.Extensions.Logging.ILoggerFactory.CreateLogger(System.String)
+  nameWithType.vb: MonitorLoggerFactory.CreateLogger(String)
+  fullName.vb: Bodoconsult.NetworkCommunication.App.Abstractions.MonitorLoggerFactory.CreateLogger(String)
+  name.vb: CreateLogger(String)
+- uid: Bodoconsult.NetworkCommunication.App.Abstractions.MonitorLoggerFactory.AddProvider(Microsoft.Extensions.Logging.ILoggerProvider)
+  commentId: M:Bodoconsult.NetworkCommunication.App.Abstractions.MonitorLoggerFactory.AddProvider(Microsoft.Extensions.Logging.ILoggerProvider)
+  id: AddProvider(Microsoft.Extensions.Logging.ILoggerProvider)
+  parent: Bodoconsult.NetworkCommunication.App.Abstractions.MonitorLoggerFactory
+  langs:
+  - csharp
+  - vb
+  name: AddProvider(ILoggerProvider)
+  nameWithType: MonitorLoggerFactory.AddProvider(ILoggerProvider)
+  fullName: Bodoconsult.NetworkCommunication.App.Abstractions.MonitorLoggerFactory.AddProvider(Microsoft.Extensions.Logging.ILoggerProvider)
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/App.Abstractions/MonitorLoggerFactory.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: AddProvider
+    path: src/Bodoconsult.NetworkCommunication/App.Abstractions/MonitorLoggerFactory.cs
+    startLine: 76
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.App.Abstractions
+  summary: Adds an <xref href="Microsoft.Extensions.Logging.ILoggerProvider" data-throw-if-not-resolved="false"></xref> to the logging system.
+  example: []
+  syntax:
+    content: public void AddProvider(ILoggerProvider provider)
+    parameters:
+    - id: provider
+      type: Microsoft.Extensions.Logging.ILoggerProvider
+      description: The <xref href="Microsoft.Extensions.Logging.ILoggerProvider" data-throw-if-not-resolved="false"></xref>.
+    content.vb: Public Sub AddProvider(provider As ILoggerProvider)
+  overload: Bodoconsult.NetworkCommunication.App.Abstractions.MonitorLoggerFactory.AddProvider*
+  implements:
+  - Microsoft.Extensions.Logging.ILoggerFactory.AddProvider(Microsoft.Extensions.Logging.ILoggerProvider)
+- uid: Bodoconsult.NetworkCommunication.App.Abstractions.MonitorLoggerFactory.FileName
+  commentId: P:Bodoconsult.NetworkCommunication.App.Abstractions.MonitorLoggerFactory.FileName
+  id: FileName
+  parent: Bodoconsult.NetworkCommunication.App.Abstractions.MonitorLoggerFactory
+  langs:
+  - csharp
+  - vb
+  name: FileName
+  nameWithType: MonitorLoggerFactory.FileName
+  fullName: Bodoconsult.NetworkCommunication.App.Abstractions.MonitorLoggerFactory.FileName
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/App.Abstractions/MonitorLoggerFactory.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: FileName
+    path: src/Bodoconsult.NetworkCommunication/App.Abstractions/MonitorLoggerFactory.cs
+    startLine: 84
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.App.Abstractions
+  summary: Full file path of the log file
+  example: []
+  syntax:
+    content: public string FileName { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public ReadOnly Property FileName As String
+  overload: Bodoconsult.NetworkCommunication.App.Abstractions.MonitorLoggerFactory.FileName*
+  implements:
+  - Bodoconsult.App.Interfaces.IMonitorLoggerFactory.FileName
+references:
+- uid: Bodoconsult.NetworkCommunication.App.Abstractions
+  commentId: N:Bodoconsult.NetworkCommunication.App.Abstractions
+  href: Bodoconsult.html
+  name: Bodoconsult.NetworkCommunication.App.Abstractions
+  nameWithType: Bodoconsult.NetworkCommunication.App.Abstractions
+  fullName: Bodoconsult.NetworkCommunication.App.Abstractions
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.App
+    name: App
+    href: Bodoconsult.NetworkCommunication.App.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.App.Abstractions
+    name: Abstractions
+    href: Bodoconsult.NetworkCommunication.App.Abstractions.html
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.App
+    name: App
+    href: Bodoconsult.NetworkCommunication.App.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.App.Abstractions
+    name: Abstractions
+    href: Bodoconsult.NetworkCommunication.App.Abstractions.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Bodoconsult.App.Interfaces.IMonitorLoggerFactory
+  commentId: T:Bodoconsult.App.Interfaces.IMonitorLoggerFactory
+  parent: Bodoconsult.App.Interfaces
+  isExternal: true
+  name: IMonitorLoggerFactory
+  nameWithType: IMonitorLoggerFactory
+  fullName: Bodoconsult.App.Interfaces.IMonitorLoggerFactory
+- uid: Microsoft.Extensions.Logging.ILoggerFactory
+  commentId: T:Microsoft.Extensions.Logging.ILoggerFactory
+  parent: Microsoft.Extensions.Logging
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging.iloggerfactory
+  name: ILoggerFactory
+  nameWithType: ILoggerFactory
+  fullName: Microsoft.Extensions.Logging.ILoggerFactory
+- uid: System.IDisposable
+  commentId: T:System.IDisposable
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable
+  name: IDisposable
+  nameWithType: IDisposable
+  fullName: System.IDisposable
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Bodoconsult.App.Interfaces
+  commentId: N:Bodoconsult.App.Interfaces
+  isExternal: true
+  name: Bodoconsult.App.Interfaces
+  nameWithType: Bodoconsult.App.Interfaces
+  fullName: Bodoconsult.App.Interfaces
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    isExternal: true
+  - name: .
+  - uid: Bodoconsult.App
+    name: App
+    isExternal: true
+  - name: .
+  - uid: Bodoconsult.App.Interfaces
+    name: Interfaces
+    isExternal: true
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    isExternal: true
+  - name: .
+  - uid: Bodoconsult.App
+    name: App
+    isExternal: true
+  - name: .
+  - uid: Bodoconsult.App.Interfaces
+    name: Interfaces
+    isExternal: true
+- uid: Microsoft.Extensions.Logging
+  commentId: N:Microsoft.Extensions.Logging
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft
+  name: Microsoft.Extensions.Logging
+  nameWithType: Microsoft.Extensions.Logging
+  fullName: Microsoft.Extensions.Logging
+  spec.csharp:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft
+  - name: .
+  - uid: Microsoft.Extensions
+    name: Extensions
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions
+  - name: .
+  - uid: Microsoft.Extensions.Logging
+    name: Logging
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging
+  spec.vb:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft
+  - name: .
+  - uid: Microsoft.Extensions
+    name: Extensions
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions
+  - name: .
+  - uid: Microsoft.Extensions.Logging
+    name: Logging
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging
+- uid: Bodoconsult.NetworkCommunication.App.Abstractions.MonitorLoggerFactory.#ctor*
+  commentId: Overload:Bodoconsult.NetworkCommunication.App.Abstractions.MonitorLoggerFactory.#ctor
+  href: Bodoconsult.NetworkCommunication.App.Abstractions.MonitorLoggerFactory.html#Bodoconsult_NetworkCommunication_App_Abstractions_MonitorLoggerFactory__ctor_System_String_
+  name: MonitorLoggerFactory
+  nameWithType: MonitorLoggerFactory.MonitorLoggerFactory
+  fullName: Bodoconsult.NetworkCommunication.App.Abstractions.MonitorLoggerFactory.MonitorLoggerFactory
+  nameWithType.vb: MonitorLoggerFactory.New
+  fullName.vb: Bodoconsult.NetworkCommunication.App.Abstractions.MonitorLoggerFactory.New
+  name.vb: New
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Bodoconsult.NetworkCommunication.App.Abstractions.MonitorLoggerFactory.Dispose*
+  commentId: Overload:Bodoconsult.NetworkCommunication.App.Abstractions.MonitorLoggerFactory.Dispose
+  href: Bodoconsult.NetworkCommunication.App.Abstractions.MonitorLoggerFactory.html#Bodoconsult_NetworkCommunication_App_Abstractions_MonitorLoggerFactory_Dispose
+  name: Dispose
+  nameWithType: MonitorLoggerFactory.Dispose
+  fullName: Bodoconsult.NetworkCommunication.App.Abstractions.MonitorLoggerFactory.Dispose
+- uid: System.IDisposable.Dispose
+  commentId: M:System.IDisposable.Dispose
+  parent: System.IDisposable
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  name: Dispose()
+  nameWithType: IDisposable.Dispose()
+  fullName: System.IDisposable.Dispose()
+  spec.csharp:
+  - uid: System.IDisposable.Dispose
+    name: Dispose
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.IDisposable.Dispose
+    name: Dispose
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  - name: (
+  - name: )
+- uid: Microsoft.Extensions.Logging.ILogger
+  commentId: T:Microsoft.Extensions.Logging.ILogger
+  parent: Microsoft.Extensions.Logging
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger
+  name: ILogger
+  nameWithType: ILogger
+  fullName: Microsoft.Extensions.Logging.ILogger
+- uid: Bodoconsult.NetworkCommunication.App.Abstractions.MonitorLoggerFactory.CreateLogger*
+  commentId: Overload:Bodoconsult.NetworkCommunication.App.Abstractions.MonitorLoggerFactory.CreateLogger
+  href: Bodoconsult.NetworkCommunication.App.Abstractions.MonitorLoggerFactory.html#Bodoconsult_NetworkCommunication_App_Abstractions_MonitorLoggerFactory_CreateLogger_System_String_
+  name: CreateLogger
+  nameWithType: MonitorLoggerFactory.CreateLogger
+  fullName: Bodoconsult.NetworkCommunication.App.Abstractions.MonitorLoggerFactory.CreateLogger
+- uid: Microsoft.Extensions.Logging.ILoggerFactory.CreateLogger(System.String)
+  commentId: M:Microsoft.Extensions.Logging.ILoggerFactory.CreateLogger(System.String)
+  parent: Microsoft.Extensions.Logging.ILoggerFactory
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging.iloggerfactory.createlogger
+  name: CreateLogger(string)
+  nameWithType: ILoggerFactory.CreateLogger(string)
+  fullName: Microsoft.Extensions.Logging.ILoggerFactory.CreateLogger(string)
+  nameWithType.vb: ILoggerFactory.CreateLogger(String)
+  fullName.vb: Microsoft.Extensions.Logging.ILoggerFactory.CreateLogger(String)
+  name.vb: CreateLogger(String)
+  spec.csharp:
+  - uid: Microsoft.Extensions.Logging.ILoggerFactory.CreateLogger(System.String)
+    name: CreateLogger
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging.iloggerfactory.createlogger
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: Microsoft.Extensions.Logging.ILoggerFactory.CreateLogger(System.String)
+    name: CreateLogger
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging.iloggerfactory.createlogger
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: Microsoft.Extensions.Logging.ILoggerProvider
+  commentId: T:Microsoft.Extensions.Logging.ILoggerProvider
+  parent: Microsoft.Extensions.Logging
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging.iloggerprovider
+  name: ILoggerProvider
+  nameWithType: ILoggerProvider
+  fullName: Microsoft.Extensions.Logging.ILoggerProvider
+- uid: Bodoconsult.NetworkCommunication.App.Abstractions.MonitorLoggerFactory.AddProvider*
+  commentId: Overload:Bodoconsult.NetworkCommunication.App.Abstractions.MonitorLoggerFactory.AddProvider
+  href: Bodoconsult.NetworkCommunication.App.Abstractions.MonitorLoggerFactory.html#Bodoconsult_NetworkCommunication_App_Abstractions_MonitorLoggerFactory_AddProvider_Microsoft_Extensions_Logging_ILoggerProvider_
+  name: AddProvider
+  nameWithType: MonitorLoggerFactory.AddProvider
+  fullName: Bodoconsult.NetworkCommunication.App.Abstractions.MonitorLoggerFactory.AddProvider
+- uid: Microsoft.Extensions.Logging.ILoggerFactory.AddProvider(Microsoft.Extensions.Logging.ILoggerProvider)
+  commentId: M:Microsoft.Extensions.Logging.ILoggerFactory.AddProvider(Microsoft.Extensions.Logging.ILoggerProvider)
+  parent: Microsoft.Extensions.Logging.ILoggerFactory
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging.iloggerfactory.addprovider
+  name: AddProvider(ILoggerProvider)
+  nameWithType: ILoggerFactory.AddProvider(ILoggerProvider)
+  fullName: Microsoft.Extensions.Logging.ILoggerFactory.AddProvider(Microsoft.Extensions.Logging.ILoggerProvider)
+  spec.csharp:
+  - uid: Microsoft.Extensions.Logging.ILoggerFactory.AddProvider(Microsoft.Extensions.Logging.ILoggerProvider)
+    name: AddProvider
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging.iloggerfactory.addprovider
+  - name: (
+  - uid: Microsoft.Extensions.Logging.ILoggerProvider
+    name: ILoggerProvider
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging.iloggerprovider
+  - name: )
+  spec.vb:
+  - uid: Microsoft.Extensions.Logging.ILoggerFactory.AddProvider(Microsoft.Extensions.Logging.ILoggerProvider)
+    name: AddProvider
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging.iloggerfactory.addprovider
+  - name: (
+  - uid: Microsoft.Extensions.Logging.ILoggerProvider
+    name: ILoggerProvider
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging.iloggerprovider
+  - name: )
+- uid: Bodoconsult.NetworkCommunication.App.Abstractions.MonitorLoggerFactory.FileName*
+  commentId: Overload:Bodoconsult.NetworkCommunication.App.Abstractions.MonitorLoggerFactory.FileName
+  href: Bodoconsult.NetworkCommunication.App.Abstractions.MonitorLoggerFactory.html#Bodoconsult_NetworkCommunication_App_Abstractions_MonitorLoggerFactory_FileName
+  name: FileName
+  nameWithType: MonitorLoggerFactory.FileName
+  fullName: Bodoconsult.NetworkCommunication.App.Abstractions.MonitorLoggerFactory.FileName
+- uid: Bodoconsult.App.Interfaces.IMonitorLoggerFactory.FileName
+  commentId: P:Bodoconsult.App.Interfaces.IMonitorLoggerFactory.FileName
+  parent: Bodoconsult.App.Interfaces.IMonitorLoggerFactory
+  isExternal: true
+  name: FileName
+  nameWithType: IMonitorLoggerFactory.FileName
+  fullName: Bodoconsult.App.Interfaces.IMonitorLoggerFactory.FileName

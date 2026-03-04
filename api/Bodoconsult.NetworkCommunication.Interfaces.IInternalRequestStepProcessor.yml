@@ -1,0 +1,308 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IInternalRequestStepProcessor
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.IInternalRequestStepProcessor
+  id: IInternalRequestStepProcessor
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  children:
+  - Bodoconsult.NetworkCommunication.Interfaces.IInternalRequestStepProcessor.InternalRequestSpec
+  langs:
+  - csharp
+  - vb
+  name: IInternalRequestStepProcessor
+  nameWithType: IInternalRequestStepProcessor
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IInternalRequestStepProcessor
+  type: Interface
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/IRequestStepProcessor.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: IInternalRequestStepProcessor
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/IRequestStepProcessor.cs
+    startLine: 7
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Interface for executing request steps of a device request
+  example: []
+  syntax:
+    content: 'public interface IInternalRequestStepProcessor : IRequestStepProcessor, IDisposable'
+    content.vb: Public Interface IInternalRequestStepProcessor Inherits IRequestStepProcessor, IDisposable
+  inheritedMembers:
+  - Bodoconsult.NetworkCommunication.Interfaces.IRequestStepProcessor.Result
+  - Bodoconsult.NetworkCommunication.Interfaces.IRequestStepProcessor.RequestSpec
+  - Bodoconsult.NetworkCommunication.Interfaces.IRequestStepProcessor.IsCancelled
+  - Bodoconsult.NetworkCommunication.Interfaces.IRequestStepProcessor.PrepareTheChain
+  - Bodoconsult.NetworkCommunication.Interfaces.IRequestStepProcessor.ExecuteRequest
+  - Bodoconsult.NetworkCommunication.Interfaces.IRequestStepProcessor.CheckReceivedMessage(Bodoconsult.NetworkCommunication.Interfaces.IInboundDataMessage)
+  - Bodoconsult.NetworkCommunication.Interfaces.IRequestStepProcessor.Cancel
+  - Bodoconsult.NetworkCommunication.Interfaces.IRequestStepProcessor.SetResult(Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionResultState)
+  - Bodoconsult.NetworkCommunication.Interfaces.IRequestStepProcessor.CheckIsCancelled
+  - System.IDisposable.Dispose
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IInternalRequestStepProcessor.InternalRequestSpec
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IInternalRequestStepProcessor.InternalRequestSpec
+  id: InternalRequestSpec
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IInternalRequestStepProcessor
+  langs:
+  - csharp
+  - vb
+  name: InternalRequestSpec
+  nameWithType: IInternalRequestStepProcessor.InternalRequestSpec
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IInternalRequestStepProcessor.InternalRequestSpec
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/IRequestStepProcessor.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: InternalRequestSpec
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/IRequestStepProcessor.cs
+    startLine: 12
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Currentinternal request spec
+  example: []
+  syntax:
+    content: IInternalRequestSpec InternalRequestSpec { get; }
+    parameters: []
+    return:
+      type: Bodoconsult.NetworkCommunication.Interfaces.IInternalRequestSpec
+    content.vb: ReadOnly Property InternalRequestSpec As IInternalRequestSpec
+  overload: Bodoconsult.NetworkCommunication.Interfaces.IInternalRequestStepProcessor.InternalRequestSpec*
+references:
+- uid: Bodoconsult.NetworkCommunication.Interfaces
+  commentId: N:Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.html
+  name: Bodoconsult.NetworkCommunication.Interfaces
+  nameWithType: Bodoconsult.NetworkCommunication.Interfaces
+  fullName: Bodoconsult.NetworkCommunication.Interfaces
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Interfaces
+    name: Interfaces
+    href: Bodoconsult.NetworkCommunication.Interfaces.html
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Interfaces
+    name: Interfaces
+    href: Bodoconsult.NetworkCommunication.Interfaces.html
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IRequestStepProcessor.Result
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IRequestStepProcessor.Result
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IRequestStepProcessor
+  href: Bodoconsult.NetworkCommunication.Interfaces.IRequestStepProcessor.html#Bodoconsult_NetworkCommunication_Interfaces_IRequestStepProcessor_Result
+  name: Result
+  nameWithType: IRequestStepProcessor.Result
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IRequestStepProcessor.Result
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IRequestStepProcessor.RequestSpec
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IRequestStepProcessor.RequestSpec
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IRequestStepProcessor
+  href: Bodoconsult.NetworkCommunication.Interfaces.IRequestStepProcessor.html#Bodoconsult_NetworkCommunication_Interfaces_IRequestStepProcessor_RequestSpec
+  name: RequestSpec
+  nameWithType: IRequestStepProcessor.RequestSpec
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IRequestStepProcessor.RequestSpec
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IRequestStepProcessor.IsCancelled
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IRequestStepProcessor.IsCancelled
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IRequestStepProcessor
+  href: Bodoconsult.NetworkCommunication.Interfaces.IRequestStepProcessor.html#Bodoconsult_NetworkCommunication_Interfaces_IRequestStepProcessor_IsCancelled
+  name: IsCancelled
+  nameWithType: IRequestStepProcessor.IsCancelled
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IRequestStepProcessor.IsCancelled
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IRequestStepProcessor.PrepareTheChain
+  commentId: M:Bodoconsult.NetworkCommunication.Interfaces.IRequestStepProcessor.PrepareTheChain
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IRequestStepProcessor
+  href: Bodoconsult.NetworkCommunication.Interfaces.IRequestStepProcessor.html#Bodoconsult_NetworkCommunication_Interfaces_IRequestStepProcessor_PrepareTheChain
+  name: PrepareTheChain()
+  nameWithType: IRequestStepProcessor.PrepareTheChain()
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IRequestStepProcessor.PrepareTheChain()
+  spec.csharp:
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IRequestStepProcessor.PrepareTheChain
+    name: PrepareTheChain
+    href: Bodoconsult.NetworkCommunication.Interfaces.IRequestStepProcessor.html#Bodoconsult_NetworkCommunication_Interfaces_IRequestStepProcessor_PrepareTheChain
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IRequestStepProcessor.PrepareTheChain
+    name: PrepareTheChain
+    href: Bodoconsult.NetworkCommunication.Interfaces.IRequestStepProcessor.html#Bodoconsult_NetworkCommunication_Interfaces_IRequestStepProcessor_PrepareTheChain
+  - name: (
+  - name: )
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IRequestStepProcessor.ExecuteRequest
+  commentId: M:Bodoconsult.NetworkCommunication.Interfaces.IRequestStepProcessor.ExecuteRequest
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IRequestStepProcessor
+  href: Bodoconsult.NetworkCommunication.Interfaces.IRequestStepProcessor.html#Bodoconsult_NetworkCommunication_Interfaces_IRequestStepProcessor_ExecuteRequest
+  name: ExecuteRequest()
+  nameWithType: IRequestStepProcessor.ExecuteRequest()
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IRequestStepProcessor.ExecuteRequest()
+  spec.csharp:
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IRequestStepProcessor.ExecuteRequest
+    name: ExecuteRequest
+    href: Bodoconsult.NetworkCommunication.Interfaces.IRequestStepProcessor.html#Bodoconsult_NetworkCommunication_Interfaces_IRequestStepProcessor_ExecuteRequest
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IRequestStepProcessor.ExecuteRequest
+    name: ExecuteRequest
+    href: Bodoconsult.NetworkCommunication.Interfaces.IRequestStepProcessor.html#Bodoconsult_NetworkCommunication_Interfaces_IRequestStepProcessor_ExecuteRequest
+  - name: (
+  - name: )
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IRequestStepProcessor.CheckReceivedMessage(Bodoconsult.NetworkCommunication.Interfaces.IInboundDataMessage)
+  commentId: M:Bodoconsult.NetworkCommunication.Interfaces.IRequestStepProcessor.CheckReceivedMessage(Bodoconsult.NetworkCommunication.Interfaces.IInboundDataMessage)
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IRequestStepProcessor
+  href: Bodoconsult.NetworkCommunication.Interfaces.IRequestStepProcessor.html#Bodoconsult_NetworkCommunication_Interfaces_IRequestStepProcessor_CheckReceivedMessage_Bodoconsult_NetworkCommunication_Interfaces_IInboundDataMessage_
+  name: CheckReceivedMessage(IInboundDataMessage)
+  nameWithType: IRequestStepProcessor.CheckReceivedMessage(IInboundDataMessage)
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IRequestStepProcessor.CheckReceivedMessage(Bodoconsult.NetworkCommunication.Interfaces.IInboundDataMessage)
+  spec.csharp:
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IRequestStepProcessor.CheckReceivedMessage(Bodoconsult.NetworkCommunication.Interfaces.IInboundDataMessage)
+    name: CheckReceivedMessage
+    href: Bodoconsult.NetworkCommunication.Interfaces.IRequestStepProcessor.html#Bodoconsult_NetworkCommunication_Interfaces_IRequestStepProcessor_CheckReceivedMessage_Bodoconsult_NetworkCommunication_Interfaces_IInboundDataMessage_
+  - name: (
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IInboundDataMessage
+    name: IInboundDataMessage
+    href: Bodoconsult.NetworkCommunication.Interfaces.IInboundDataMessage.html
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IRequestStepProcessor.CheckReceivedMessage(Bodoconsult.NetworkCommunication.Interfaces.IInboundDataMessage)
+    name: CheckReceivedMessage
+    href: Bodoconsult.NetworkCommunication.Interfaces.IRequestStepProcessor.html#Bodoconsult_NetworkCommunication_Interfaces_IRequestStepProcessor_CheckReceivedMessage_Bodoconsult_NetworkCommunication_Interfaces_IInboundDataMessage_
+  - name: (
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IInboundDataMessage
+    name: IInboundDataMessage
+    href: Bodoconsult.NetworkCommunication.Interfaces.IInboundDataMessage.html
+  - name: )
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IRequestStepProcessor.Cancel
+  commentId: M:Bodoconsult.NetworkCommunication.Interfaces.IRequestStepProcessor.Cancel
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IRequestStepProcessor
+  href: Bodoconsult.NetworkCommunication.Interfaces.IRequestStepProcessor.html#Bodoconsult_NetworkCommunication_Interfaces_IRequestStepProcessor_Cancel
+  name: Cancel()
+  nameWithType: IRequestStepProcessor.Cancel()
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IRequestStepProcessor.Cancel()
+  spec.csharp:
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IRequestStepProcessor.Cancel
+    name: Cancel
+    href: Bodoconsult.NetworkCommunication.Interfaces.IRequestStepProcessor.html#Bodoconsult_NetworkCommunication_Interfaces_IRequestStepProcessor_Cancel
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IRequestStepProcessor.Cancel
+    name: Cancel
+    href: Bodoconsult.NetworkCommunication.Interfaces.IRequestStepProcessor.html#Bodoconsult_NetworkCommunication_Interfaces_IRequestStepProcessor_Cancel
+  - name: (
+  - name: )
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IRequestStepProcessor.SetResult(Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionResultState)
+  commentId: M:Bodoconsult.NetworkCommunication.Interfaces.IRequestStepProcessor.SetResult(Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionResultState)
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IRequestStepProcessor
+  href: Bodoconsult.NetworkCommunication.Interfaces.IRequestStepProcessor.html#Bodoconsult_NetworkCommunication_Interfaces_IRequestStepProcessor_SetResult_Bodoconsult_NetworkCommunication_Interfaces_IOrderExecutionResultState_
+  name: SetResult(IOrderExecutionResultState)
+  nameWithType: IRequestStepProcessor.SetResult(IOrderExecutionResultState)
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IRequestStepProcessor.SetResult(Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionResultState)
+  spec.csharp:
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IRequestStepProcessor.SetResult(Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionResultState)
+    name: SetResult
+    href: Bodoconsult.NetworkCommunication.Interfaces.IRequestStepProcessor.html#Bodoconsult_NetworkCommunication_Interfaces_IRequestStepProcessor_SetResult_Bodoconsult_NetworkCommunication_Interfaces_IOrderExecutionResultState_
+  - name: (
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionResultState
+    name: IOrderExecutionResultState
+    href: Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionResultState.html
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IRequestStepProcessor.SetResult(Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionResultState)
+    name: SetResult
+    href: Bodoconsult.NetworkCommunication.Interfaces.IRequestStepProcessor.html#Bodoconsult_NetworkCommunication_Interfaces_IRequestStepProcessor_SetResult_Bodoconsult_NetworkCommunication_Interfaces_IOrderExecutionResultState_
+  - name: (
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionResultState
+    name: IOrderExecutionResultState
+    href: Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionResultState.html
+  - name: )
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IRequestStepProcessor.CheckIsCancelled
+  commentId: M:Bodoconsult.NetworkCommunication.Interfaces.IRequestStepProcessor.CheckIsCancelled
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IRequestStepProcessor
+  href: Bodoconsult.NetworkCommunication.Interfaces.IRequestStepProcessor.html#Bodoconsult_NetworkCommunication_Interfaces_IRequestStepProcessor_CheckIsCancelled
+  name: CheckIsCancelled()
+  nameWithType: IRequestStepProcessor.CheckIsCancelled()
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IRequestStepProcessor.CheckIsCancelled()
+  spec.csharp:
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IRequestStepProcessor.CheckIsCancelled
+    name: CheckIsCancelled
+    href: Bodoconsult.NetworkCommunication.Interfaces.IRequestStepProcessor.html#Bodoconsult_NetworkCommunication_Interfaces_IRequestStepProcessor_CheckIsCancelled
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IRequestStepProcessor.CheckIsCancelled
+    name: CheckIsCancelled
+    href: Bodoconsult.NetworkCommunication.Interfaces.IRequestStepProcessor.html#Bodoconsult_NetworkCommunication_Interfaces_IRequestStepProcessor_CheckIsCancelled
+  - name: (
+  - name: )
+- uid: System.IDisposable.Dispose
+  commentId: M:System.IDisposable.Dispose
+  parent: System.IDisposable
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  name: Dispose()
+  nameWithType: IDisposable.Dispose()
+  fullName: System.IDisposable.Dispose()
+  spec.csharp:
+  - uid: System.IDisposable.Dispose
+    name: Dispose
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.IDisposable.Dispose
+    name: Dispose
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  - name: (
+  - name: )
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IRequestStepProcessor
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.IRequestStepProcessor
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.NetworkCommunication.Interfaces.IRequestStepProcessor.html
+  name: IRequestStepProcessor
+  nameWithType: IRequestStepProcessor
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IRequestStepProcessor
+- uid: System.IDisposable
+  commentId: T:System.IDisposable
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable
+  name: IDisposable
+  nameWithType: IDisposable
+  fullName: System.IDisposable
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IInternalRequestStepProcessor.InternalRequestSpec*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.IInternalRequestStepProcessor.InternalRequestSpec
+  href: Bodoconsult.NetworkCommunication.Interfaces.IInternalRequestStepProcessor.html#Bodoconsult_NetworkCommunication_Interfaces_IInternalRequestStepProcessor_InternalRequestSpec
+  name: InternalRequestSpec
+  nameWithType: IInternalRequestStepProcessor.InternalRequestSpec
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IInternalRequestStepProcessor.InternalRequestSpec
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IInternalRequestSpec
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.IInternalRequestSpec
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.NetworkCommunication.Interfaces.IInternalRequestSpec.html
+  name: IInternalRequestSpec
+  nameWithType: IInternalRequestSpec
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IInternalRequestSpec

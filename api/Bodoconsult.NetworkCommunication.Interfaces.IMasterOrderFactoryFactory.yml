@@ -1,0 +1,157 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IMasterOrderFactoryFactory
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.IMasterOrderFactoryFactory
+  id: IMasterOrderFactoryFactory
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  children:
+  - Bodoconsult.NetworkCommunication.Interfaces.IMasterOrderFactoryFactory.GetFactory(Bodoconsult.App.Interfaces.IAppDateService,Bodoconsult.App.Interfaces.IAppBenchProxy)
+  langs:
+  - csharp
+  - vb
+  name: IMasterOrderFactoryFactory
+  nameWithType: IMasterOrderFactoryFactory
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IMasterOrderFactoryFactory
+  type: Interface
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/IMasterOrderFactoryFactory.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: IMasterOrderFactoryFactory
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/IMasterOrderFactoryFactory.cs
+    startLine: 9
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: An interface to create <xref href="Bodoconsult.NetworkCommunication.Interfaces.IMasterOrderFactory" data-throw-if-not-resolved="false"></xref> per device
+  example: []
+  syntax:
+    content: public interface IMasterOrderFactoryFactory
+    content.vb: Public Interface IMasterOrderFactoryFactory
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IMasterOrderFactoryFactory.GetFactory(Bodoconsult.App.Interfaces.IAppDateService,Bodoconsult.App.Interfaces.IAppBenchProxy)
+  commentId: M:Bodoconsult.NetworkCommunication.Interfaces.IMasterOrderFactoryFactory.GetFactory(Bodoconsult.App.Interfaces.IAppDateService,Bodoconsult.App.Interfaces.IAppBenchProxy)
+  id: GetFactory(Bodoconsult.App.Interfaces.IAppDateService,Bodoconsult.App.Interfaces.IAppBenchProxy)
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IMasterOrderFactoryFactory
+  langs:
+  - csharp
+  - vb
+  name: GetFactory(IAppDateService, IAppBenchProxy)
+  nameWithType: IMasterOrderFactoryFactory.GetFactory(IAppDateService, IAppBenchProxy)
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IMasterOrderFactoryFactory.GetFactory(Bodoconsult.App.Interfaces.IAppDateService, Bodoconsult.App.Interfaces.IAppBenchProxy)
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/IMasterOrderFactoryFactory.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: GetFactory
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/IMasterOrderFactoryFactory.cs
+    startLine: 17
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Get a new <xref href="Bodoconsult.NetworkCommunication.Interfaces.IMasterOrderFactory" data-throw-if-not-resolved="false"></xref> instance for a device
+  example: []
+  syntax:
+    content: IMasterOrderFactory GetFactory(IAppDateService dateTimeService, IAppBenchProxy benchLogger)
+    parameters:
+    - id: dateTimeService
+      type: Bodoconsult.App.Interfaces.IAppDateService
+      description: Current date and time service
+    - id: benchLogger
+      type: Bodoconsult.App.Interfaces.IAppBenchProxy
+      description: Current bench logger service
+    return:
+      type: Bodoconsult.NetworkCommunication.Interfaces.IMasterOrderFactory
+      description: Current <xref href="Bodoconsult.NetworkCommunication.Interfaces.IMasterOrderFactory" data-throw-if-not-resolved="false"></xref> implementation instance
+    content.vb: Function GetFactory(dateTimeService As IAppDateService, benchLogger As IAppBenchProxy) As IMasterOrderFactory
+  overload: Bodoconsult.NetworkCommunication.Interfaces.IMasterOrderFactoryFactory.GetFactory*
+references:
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IMasterOrderFactory
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.IMasterOrderFactory
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.NetworkCommunication.Interfaces.IMasterOrderFactory.html
+  name: IMasterOrderFactory
+  nameWithType: IMasterOrderFactory
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IMasterOrderFactory
+- uid: Bodoconsult.NetworkCommunication.Interfaces
+  commentId: N:Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.html
+  name: Bodoconsult.NetworkCommunication.Interfaces
+  nameWithType: Bodoconsult.NetworkCommunication.Interfaces
+  fullName: Bodoconsult.NetworkCommunication.Interfaces
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Interfaces
+    name: Interfaces
+    href: Bodoconsult.NetworkCommunication.Interfaces.html
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Interfaces
+    name: Interfaces
+    href: Bodoconsult.NetworkCommunication.Interfaces.html
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IMasterOrderFactoryFactory.GetFactory*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.IMasterOrderFactoryFactory.GetFactory
+  href: Bodoconsult.NetworkCommunication.Interfaces.IMasterOrderFactoryFactory.html#Bodoconsult_NetworkCommunication_Interfaces_IMasterOrderFactoryFactory_GetFactory_Bodoconsult_App_Interfaces_IAppDateService_Bodoconsult_App_Interfaces_IAppBenchProxy_
+  name: GetFactory
+  nameWithType: IMasterOrderFactoryFactory.GetFactory
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IMasterOrderFactoryFactory.GetFactory
+- uid: Bodoconsult.App.Interfaces.IAppDateService
+  commentId: T:Bodoconsult.App.Interfaces.IAppDateService
+  parent: Bodoconsult.App.Interfaces
+  isExternal: true
+  name: IAppDateService
+  nameWithType: IAppDateService
+  fullName: Bodoconsult.App.Interfaces.IAppDateService
+- uid: Bodoconsult.App.Interfaces.IAppBenchProxy
+  commentId: T:Bodoconsult.App.Interfaces.IAppBenchProxy
+  parent: Bodoconsult.App.Interfaces
+  isExternal: true
+  name: IAppBenchProxy
+  nameWithType: IAppBenchProxy
+  fullName: Bodoconsult.App.Interfaces.IAppBenchProxy
+- uid: Bodoconsult.App.Interfaces
+  commentId: N:Bodoconsult.App.Interfaces
+  isExternal: true
+  name: Bodoconsult.App.Interfaces
+  nameWithType: Bodoconsult.App.Interfaces
+  fullName: Bodoconsult.App.Interfaces
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    isExternal: true
+  - name: .
+  - uid: Bodoconsult.App
+    name: App
+    isExternal: true
+  - name: .
+  - uid: Bodoconsult.App.Interfaces
+    name: Interfaces
+    isExternal: true
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    isExternal: true
+  - name: .
+  - uid: Bodoconsult.App
+    name: App
+    isExternal: true
+  - name: .
+  - uid: Bodoconsult.App.Interfaces
+    name: Interfaces
+    isExternal: true

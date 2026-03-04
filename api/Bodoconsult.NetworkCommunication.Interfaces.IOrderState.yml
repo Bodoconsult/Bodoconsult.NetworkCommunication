@@ -1,0 +1,166 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IOrderState
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.IOrderState
+  id: IOrderState
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  children:
+  - Bodoconsult.NetworkCommunication.Interfaces.IOrderState.Id
+  - Bodoconsult.NetworkCommunication.Interfaces.IOrderState.Name
+  langs:
+  - csharp
+  - vb
+  name: IOrderState
+  nameWithType: IOrderState
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IOrderState
+  type: Interface
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/IOrderState.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: IOrderState
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/IOrderState.cs
+    startLine: 7
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Interface for order states
+  example: []
+  syntax:
+    content: public interface IOrderState
+    content.vb: Public Interface IOrderState
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IOrderState.Id
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IOrderState.Id
+  id: Id
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IOrderState
+  langs:
+  - csharp
+  - vb
+  name: Id
+  nameWithType: IOrderState.Id
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IOrderState.Id
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/IOrderState.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Id
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/IOrderState.cs
+    startLine: 12
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: The ID of the state
+  example: []
+  syntax:
+    content: int Id { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: ReadOnly Property Id As Integer
+  overload: Bodoconsult.NetworkCommunication.Interfaces.IOrderState.Id*
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IOrderState.Name
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IOrderState.Name
+  id: Name
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IOrderState
+  langs:
+  - csharp
+  - vb
+  name: Name
+  nameWithType: IOrderState.Name
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IOrderState.Name
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/IOrderState.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Name
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/IOrderState.cs
+    startLine: 17
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: The cleartext name of the state
+  example: []
+  syntax:
+    content: string Name { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Property Name As String
+  overload: Bodoconsult.NetworkCommunication.Interfaces.IOrderState.Name*
+references:
+- uid: Bodoconsult.NetworkCommunication.Interfaces
+  commentId: N:Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.html
+  name: Bodoconsult.NetworkCommunication.Interfaces
+  nameWithType: Bodoconsult.NetworkCommunication.Interfaces
+  fullName: Bodoconsult.NetworkCommunication.Interfaces
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Interfaces
+    name: Interfaces
+    href: Bodoconsult.NetworkCommunication.Interfaces.html
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Interfaces
+    name: Interfaces
+    href: Bodoconsult.NetworkCommunication.Interfaces.html
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IOrderState.Id*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.IOrderState.Id
+  href: Bodoconsult.NetworkCommunication.Interfaces.IOrderState.html#Bodoconsult_NetworkCommunication_Interfaces_IOrderState_Id
+  name: Id
+  nameWithType: IOrderState.Id
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IOrderState.Id
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IOrderState.Name*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.IOrderState.Name
+  href: Bodoconsult.NetworkCommunication.Interfaces.IOrderState.html#Bodoconsult_NetworkCommunication_Interfaces_IOrderState_Name
+  name: Name
+  nameWithType: IOrderState.Name
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IOrderState.Name
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String

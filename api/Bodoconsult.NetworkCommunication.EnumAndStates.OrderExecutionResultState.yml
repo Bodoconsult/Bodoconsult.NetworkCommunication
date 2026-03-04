@@ -1,0 +1,1106 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bodoconsult.NetworkCommunication.EnumAndStates.OrderExecutionResultState
+  commentId: T:Bodoconsult.NetworkCommunication.EnumAndStates.OrderExecutionResultState
+  id: OrderExecutionResultState
+  parent: Bodoconsult.NetworkCommunication.EnumAndStates
+  children:
+  - Bodoconsult.NetworkCommunication.EnumAndStates.OrderExecutionResultState.#ctor(System.Int32,System.String)
+  - Bodoconsult.NetworkCommunication.EnumAndStates.OrderExecutionResultState.Can
+  - Bodoconsult.NetworkCommunication.EnumAndStates.OrderExecutionResultState.Equals(Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionResultState)
+  - Bodoconsult.NetworkCommunication.EnumAndStates.OrderExecutionResultState.Error
+  - Bodoconsult.NetworkCommunication.EnumAndStates.OrderExecutionResultState.HardwareError
+  - Bodoconsult.NetworkCommunication.EnumAndStates.OrderExecutionResultState.Id
+  - Bodoconsult.NetworkCommunication.EnumAndStates.OrderExecutionResultState.Nack
+  - Bodoconsult.NetworkCommunication.EnumAndStates.OrderExecutionResultState.Name
+  - Bodoconsult.NetworkCommunication.EnumAndStates.OrderExecutionResultState.NoResponseFromDevice
+  - Bodoconsult.NetworkCommunication.EnumAndStates.OrderExecutionResultState.NotProcessed
+  - Bodoconsult.NetworkCommunication.EnumAndStates.OrderExecutionResultState.Successful
+  - Bodoconsult.NetworkCommunication.EnumAndStates.OrderExecutionResultState.Timeout
+  - Bodoconsult.NetworkCommunication.EnumAndStates.OrderExecutionResultState.ToString
+  - Bodoconsult.NetworkCommunication.EnumAndStates.OrderExecutionResultState.Unsuccessful
+  - Bodoconsult.NetworkCommunication.EnumAndStates.OrderExecutionResultState.UpdateMode
+  langs:
+  - csharp
+  - vb
+  name: OrderExecutionResultState
+  nameWithType: OrderExecutionResultState
+  fullName: Bodoconsult.NetworkCommunication.EnumAndStates.OrderExecutionResultState
+  type: Class
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/EnumAndStates/OrderExecutionResultState.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: OrderExecutionResultState
+    path: src/Bodoconsult.NetworkCommunication/EnumAndStates/OrderExecutionResultState.cs
+    startLine: 9
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.EnumAndStates
+  summary: Default order execution result states
+  example: []
+  syntax:
+    content: 'public class OrderExecutionResultState : IOrderExecutionResultState, IEquatable<IOrderExecutionResultState>'
+    content.vb: Public Class OrderExecutionResultState Implements IOrderExecutionResultState, IEquatable(Of IOrderExecutionResultState)
+  inheritance:
+  - System.Object
+  implements:
+  - Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionResultState
+  - System.IEquatable{Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionResultState}
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+- uid: Bodoconsult.NetworkCommunication.EnumAndStates.OrderExecutionResultState.#ctor(System.Int32,System.String)
+  commentId: M:Bodoconsult.NetworkCommunication.EnumAndStates.OrderExecutionResultState.#ctor(System.Int32,System.String)
+  id: '#ctor(System.Int32,System.String)'
+  parent: Bodoconsult.NetworkCommunication.EnumAndStates.OrderExecutionResultState
+  langs:
+  - csharp
+  - vb
+  name: OrderExecutionResultState(int, string)
+  nameWithType: OrderExecutionResultState.OrderExecutionResultState(int, string)
+  fullName: Bodoconsult.NetworkCommunication.EnumAndStates.OrderExecutionResultState.OrderExecutionResultState(int, string)
+  type: Constructor
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/EnumAndStates/OrderExecutionResultState.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: .ctor
+    path: src/Bodoconsult.NetworkCommunication/EnumAndStates/OrderExecutionResultState.cs
+    startLine: 14
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.EnumAndStates
+  summary: Default ctor
+  example: []
+  syntax:
+    content: public OrderExecutionResultState(int id, string name)
+    parameters:
+    - id: id
+      type: System.Int32
+    - id: name
+      type: System.String
+    content.vb: Public Sub New(id As Integer, name As String)
+  overload: Bodoconsult.NetworkCommunication.EnumAndStates.OrderExecutionResultState.#ctor*
+  nameWithType.vb: OrderExecutionResultState.New(Integer, String)
+  fullName.vb: Bodoconsult.NetworkCommunication.EnumAndStates.OrderExecutionResultState.New(Integer, String)
+  name.vb: New(Integer, String)
+- uid: Bodoconsult.NetworkCommunication.EnumAndStates.OrderExecutionResultState.Id
+  commentId: P:Bodoconsult.NetworkCommunication.EnumAndStates.OrderExecutionResultState.Id
+  id: Id
+  parent: Bodoconsult.NetworkCommunication.EnumAndStates.OrderExecutionResultState
+  langs:
+  - csharp
+  - vb
+  name: Id
+  nameWithType: OrderExecutionResultState.Id
+  fullName: Bodoconsult.NetworkCommunication.EnumAndStates.OrderExecutionResultState.Id
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/EnumAndStates/OrderExecutionResultState.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Id
+    path: src/Bodoconsult.NetworkCommunication/EnumAndStates/OrderExecutionResultState.cs
+    startLine: 23
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.EnumAndStates
+  summary: The ID of the state
+  example: []
+  syntax:
+    content: public int Id { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public ReadOnly Property Id As Integer
+  overload: Bodoconsult.NetworkCommunication.EnumAndStates.OrderExecutionResultState.Id*
+  implements:
+  - Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionResultState.Id
+- uid: Bodoconsult.NetworkCommunication.EnumAndStates.OrderExecutionResultState.Name
+  commentId: P:Bodoconsult.NetworkCommunication.EnumAndStates.OrderExecutionResultState.Name
+  id: Name
+  parent: Bodoconsult.NetworkCommunication.EnumAndStates.OrderExecutionResultState
+  langs:
+  - csharp
+  - vb
+  name: Name
+  nameWithType: OrderExecutionResultState.Name
+  fullName: Bodoconsult.NetworkCommunication.EnumAndStates.OrderExecutionResultState.Name
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/EnumAndStates/OrderExecutionResultState.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Name
+    path: src/Bodoconsult.NetworkCommunication/EnumAndStates/OrderExecutionResultState.cs
+    startLine: 28
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.EnumAndStates
+  summary: The cleartext name of the state
+  example: []
+  syntax:
+    content: public string Name { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property Name As String
+  overload: Bodoconsult.NetworkCommunication.EnumAndStates.OrderExecutionResultState.Name*
+  implements:
+  - Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionResultState.Name
+- uid: Bodoconsult.NetworkCommunication.EnumAndStates.OrderExecutionResultState.Equals(Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionResultState)
+  commentId: M:Bodoconsult.NetworkCommunication.EnumAndStates.OrderExecutionResultState.Equals(Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionResultState)
+  id: Equals(Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionResultState)
+  parent: Bodoconsult.NetworkCommunication.EnumAndStates.OrderExecutionResultState
+  langs:
+  - csharp
+  - vb
+  name: Equals(IOrderExecutionResultState)
+  nameWithType: OrderExecutionResultState.Equals(IOrderExecutionResultState)
+  fullName: Bodoconsult.NetworkCommunication.EnumAndStates.OrderExecutionResultState.Equals(Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionResultState)
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/EnumAndStates/OrderExecutionResultState.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Equals
+    path: src/Bodoconsult.NetworkCommunication/EnumAndStates/OrderExecutionResultState.cs
+    startLine: 34
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.EnumAndStates
+  summary: Indicates whether the current object is equal to another object of the same type.
+  example: []
+  syntax:
+    content: public bool Equals(IOrderExecutionResultState other)
+    parameters:
+    - id: other
+      type: Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionResultState
+      description: An object to compare with this object.
+    return:
+      type: System.Boolean
+      description: <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> if the current object is equal to the <code class="paramref">other</code> parameter; otherwise, <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>.
+    content.vb: Public Function Equals(other As IOrderExecutionResultState) As Boolean
+  overload: Bodoconsult.NetworkCommunication.EnumAndStates.OrderExecutionResultState.Equals*
+  implements:
+  - System.IEquatable{Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionResultState}.Equals(Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionResultState)
+- uid: Bodoconsult.NetworkCommunication.EnumAndStates.OrderExecutionResultState.ToString
+  commentId: M:Bodoconsult.NetworkCommunication.EnumAndStates.OrderExecutionResultState.ToString
+  id: ToString
+  parent: Bodoconsult.NetworkCommunication.EnumAndStates.OrderExecutionResultState
+  langs:
+  - csharp
+  - vb
+  name: ToString()
+  nameWithType: OrderExecutionResultState.ToString()
+  fullName: Bodoconsult.NetworkCommunication.EnumAndStates.OrderExecutionResultState.ToString()
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/EnumAndStates/OrderExecutionResultState.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: ToString
+    path: src/Bodoconsult.NetworkCommunication/EnumAndStates/OrderExecutionResultState.cs
+    startLine: 46
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.EnumAndStates
+  summary: Returns a string that represents the current object.
+  example: []
+  syntax:
+    content: public override string ToString()
+    return:
+      type: System.String
+      description: A string that represents the current object.
+    content.vb: Public Overrides Function ToString() As String
+  overridden: System.Object.ToString
+  overload: Bodoconsult.NetworkCommunication.EnumAndStates.OrderExecutionResultState.ToString*
+- uid: Bodoconsult.NetworkCommunication.EnumAndStates.OrderExecutionResultState.Successful
+  commentId: P:Bodoconsult.NetworkCommunication.EnumAndStates.OrderExecutionResultState.Successful
+  id: Successful
+  parent: Bodoconsult.NetworkCommunication.EnumAndStates.OrderExecutionResultState
+  langs:
+  - csharp
+  - vb
+  name: Successful
+  nameWithType: OrderExecutionResultState.Successful
+  fullName: Bodoconsult.NetworkCommunication.EnumAndStates.OrderExecutionResultState.Successful
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/EnumAndStates/OrderExecutionResultState.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Successful
+    path: src/Bodoconsult.NetworkCommunication/EnumAndStates/OrderExecutionResultState.cs
+    startLine: 51
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.EnumAndStates
+  summary: Order was processed successfully
+  example: []
+  syntax:
+    content: public static OrderExecutionResultState Successful { get; }
+    parameters: []
+    return:
+      type: Bodoconsult.NetworkCommunication.EnumAndStates.OrderExecutionResultState
+    content.vb: Public Shared ReadOnly Property Successful As OrderExecutionResultState
+  overload: Bodoconsult.NetworkCommunication.EnumAndStates.OrderExecutionResultState.Successful*
+- uid: Bodoconsult.NetworkCommunication.EnumAndStates.OrderExecutionResultState.Unsuccessful
+  commentId: P:Bodoconsult.NetworkCommunication.EnumAndStates.OrderExecutionResultState.Unsuccessful
+  id: Unsuccessful
+  parent: Bodoconsult.NetworkCommunication.EnumAndStates.OrderExecutionResultState
+  langs:
+  - csharp
+  - vb
+  name: Unsuccessful
+  nameWithType: OrderExecutionResultState.Unsuccessful
+  fullName: Bodoconsult.NetworkCommunication.EnumAndStates.OrderExecutionResultState.Unsuccessful
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/EnumAndStates/OrderExecutionResultState.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Unsuccessful
+    path: src/Bodoconsult.NetworkCommunication/EnumAndStates/OrderExecutionResultState.cs
+    startLine: 56
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.EnumAndStates
+  summary: Order was processed unsuccessfully
+  example: []
+  syntax:
+    content: public static OrderExecutionResultState Unsuccessful { get; }
+    parameters: []
+    return:
+      type: Bodoconsult.NetworkCommunication.EnumAndStates.OrderExecutionResultState
+    content.vb: Public Shared ReadOnly Property Unsuccessful As OrderExecutionResultState
+  overload: Bodoconsult.NetworkCommunication.EnumAndStates.OrderExecutionResultState.Unsuccessful*
+- uid: Bodoconsult.NetworkCommunication.EnumAndStates.OrderExecutionResultState.Timeout
+  commentId: P:Bodoconsult.NetworkCommunication.EnumAndStates.OrderExecutionResultState.Timeout
+  id: Timeout
+  parent: Bodoconsult.NetworkCommunication.EnumAndStates.OrderExecutionResultState
+  langs:
+  - csharp
+  - vb
+  name: Timeout
+  nameWithType: OrderExecutionResultState.Timeout
+  fullName: Bodoconsult.NetworkCommunication.EnumAndStates.OrderExecutionResultState.Timeout
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/EnumAndStates/OrderExecutionResultState.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Timeout
+    path: src/Bodoconsult.NetworkCommunication/EnumAndStates/OrderExecutionResultState.cs
+    startLine: 61
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.EnumAndStates
+  summary: Order has timed out
+  example: []
+  syntax:
+    content: public static OrderExecutionResultState Timeout { get; }
+    parameters: []
+    return:
+      type: Bodoconsult.NetworkCommunication.EnumAndStates.OrderExecutionResultState
+    content.vb: Public Shared ReadOnly Property Timeout As OrderExecutionResultState
+  overload: Bodoconsult.NetworkCommunication.EnumAndStates.OrderExecutionResultState.Timeout*
+- uid: Bodoconsult.NetworkCommunication.EnumAndStates.OrderExecutionResultState.Error
+  commentId: P:Bodoconsult.NetworkCommunication.EnumAndStates.OrderExecutionResultState.Error
+  id: Error
+  parent: Bodoconsult.NetworkCommunication.EnumAndStates.OrderExecutionResultState
+  langs:
+  - csharp
+  - vb
+  name: Error
+  nameWithType: OrderExecutionResultState.Error
+  fullName: Bodoconsult.NetworkCommunication.EnumAndStates.OrderExecutionResultState.Error
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/EnumAndStates/OrderExecutionResultState.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Error
+    path: src/Bodoconsult.NetworkCommunication/EnumAndStates/OrderExecutionResultState.cs
+    startLine: 66
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.EnumAndStates
+  summary: Order was processed with an error
+  example: []
+  syntax:
+    content: public static OrderExecutionResultState Error { get; }
+    parameters: []
+    return:
+      type: Bodoconsult.NetworkCommunication.EnumAndStates.OrderExecutionResultState
+    content.vb: Public Shared ReadOnly Property [Error] As OrderExecutionResultState
+  overload: Bodoconsult.NetworkCommunication.EnumAndStates.OrderExecutionResultState.Error*
+- uid: Bodoconsult.NetworkCommunication.EnumAndStates.OrderExecutionResultState.NotProcessed
+  commentId: P:Bodoconsult.NetworkCommunication.EnumAndStates.OrderExecutionResultState.NotProcessed
+  id: NotProcessed
+  parent: Bodoconsult.NetworkCommunication.EnumAndStates.OrderExecutionResultState
+  langs:
+  - csharp
+  - vb
+  name: NotProcessed
+  nameWithType: OrderExecutionResultState.NotProcessed
+  fullName: Bodoconsult.NetworkCommunication.EnumAndStates.OrderExecutionResultState.NotProcessed
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/EnumAndStates/OrderExecutionResultState.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: NotProcessed
+    path: src/Bodoconsult.NetworkCommunication/EnumAndStates/OrderExecutionResultState.cs
+    startLine: 71
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.EnumAndStates
+  summary: Order was NOT processed at all
+  example: []
+  syntax:
+    content: public static OrderExecutionResultState NotProcessed { get; }
+    parameters: []
+    return:
+      type: Bodoconsult.NetworkCommunication.EnumAndStates.OrderExecutionResultState
+    content.vb: Public Shared ReadOnly Property NotProcessed As OrderExecutionResultState
+  overload: Bodoconsult.NetworkCommunication.EnumAndStates.OrderExecutionResultState.NotProcessed*
+- uid: Bodoconsult.NetworkCommunication.EnumAndStates.OrderExecutionResultState.NoResponseFromDevice
+  commentId: P:Bodoconsult.NetworkCommunication.EnumAndStates.OrderExecutionResultState.NoResponseFromDevice
+  id: NoResponseFromDevice
+  parent: Bodoconsult.NetworkCommunication.EnumAndStates.OrderExecutionResultState
+  langs:
+  - csharp
+  - vb
+  name: NoResponseFromDevice
+  nameWithType: OrderExecutionResultState.NoResponseFromDevice
+  fullName: Bodoconsult.NetworkCommunication.EnumAndStates.OrderExecutionResultState.NoResponseFromDevice
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/EnumAndStates/OrderExecutionResultState.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: NoResponseFromDevice
+    path: src/Bodoconsult.NetworkCommunication/EnumAndStates/OrderExecutionResultState.cs
+    startLine: 76
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.EnumAndStates
+  summary: Order execution not possible due to device was NOT answering
+  example: []
+  syntax:
+    content: public static OrderExecutionResultState NoResponseFromDevice { get; }
+    parameters: []
+    return:
+      type: Bodoconsult.NetworkCommunication.EnumAndStates.OrderExecutionResultState
+    content.vb: Public Shared ReadOnly Property NoResponseFromDevice As OrderExecutionResultState
+  overload: Bodoconsult.NetworkCommunication.EnumAndStates.OrderExecutionResultState.NoResponseFromDevice*
+- uid: Bodoconsult.NetworkCommunication.EnumAndStates.OrderExecutionResultState.Can
+  commentId: P:Bodoconsult.NetworkCommunication.EnumAndStates.OrderExecutionResultState.Can
+  id: Can
+  parent: Bodoconsult.NetworkCommunication.EnumAndStates.OrderExecutionResultState
+  langs:
+  - csharp
+  - vb
+  name: Can
+  nameWithType: OrderExecutionResultState.Can
+  fullName: Bodoconsult.NetworkCommunication.EnumAndStates.OrderExecutionResultState.Can
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/EnumAndStates/OrderExecutionResultState.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Can
+    path: src/Bodoconsult.NetworkCommunication/EnumAndStates/OrderExecutionResultState.cs
+    startLine: 81
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.EnumAndStates
+  summary: Device returned a CAN
+  example: []
+  syntax:
+    content: public static OrderExecutionResultState Can { get; }
+    parameters: []
+    return:
+      type: Bodoconsult.NetworkCommunication.EnumAndStates.OrderExecutionResultState
+    content.vb: Public Shared ReadOnly Property Can As OrderExecutionResultState
+  overload: Bodoconsult.NetworkCommunication.EnumAndStates.OrderExecutionResultState.Can*
+- uid: Bodoconsult.NetworkCommunication.EnumAndStates.OrderExecutionResultState.Nack
+  commentId: P:Bodoconsult.NetworkCommunication.EnumAndStates.OrderExecutionResultState.Nack
+  id: Nack
+  parent: Bodoconsult.NetworkCommunication.EnumAndStates.OrderExecutionResultState
+  langs:
+  - csharp
+  - vb
+  name: Nack
+  nameWithType: OrderExecutionResultState.Nack
+  fullName: Bodoconsult.NetworkCommunication.EnumAndStates.OrderExecutionResultState.Nack
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/EnumAndStates/OrderExecutionResultState.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Nack
+    path: src/Bodoconsult.NetworkCommunication/EnumAndStates/OrderExecutionResultState.cs
+    startLine: 86
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.EnumAndStates
+  summary: Device returned a NACK
+  example: []
+  syntax:
+    content: public static OrderExecutionResultState Nack { get; }
+    parameters: []
+    return:
+      type: Bodoconsult.NetworkCommunication.EnumAndStates.OrderExecutionResultState
+    content.vb: Public Shared ReadOnly Property Nack As OrderExecutionResultState
+  overload: Bodoconsult.NetworkCommunication.EnumAndStates.OrderExecutionResultState.Nack*
+- uid: Bodoconsult.NetworkCommunication.EnumAndStates.OrderExecutionResultState.HardwareError
+  commentId: P:Bodoconsult.NetworkCommunication.EnumAndStates.OrderExecutionResultState.HardwareError
+  id: HardwareError
+  parent: Bodoconsult.NetworkCommunication.EnumAndStates.OrderExecutionResultState
+  langs:
+  - csharp
+  - vb
+  name: HardwareError
+  nameWithType: OrderExecutionResultState.HardwareError
+  fullName: Bodoconsult.NetworkCommunication.EnumAndStates.OrderExecutionResultState.HardwareError
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/EnumAndStates/OrderExecutionResultState.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: HardwareError
+    path: src/Bodoconsult.NetworkCommunication/EnumAndStates/OrderExecutionResultState.cs
+    startLine: 91
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.EnumAndStates
+  summary: device hardware error
+  example: []
+  syntax:
+    content: public static OrderExecutionResultState HardwareError { get; }
+    parameters: []
+    return:
+      type: Bodoconsult.NetworkCommunication.EnumAndStates.OrderExecutionResultState
+    content.vb: Public Shared ReadOnly Property HardwareError As OrderExecutionResultState
+  overload: Bodoconsult.NetworkCommunication.EnumAndStates.OrderExecutionResultState.HardwareError*
+- uid: Bodoconsult.NetworkCommunication.EnumAndStates.OrderExecutionResultState.UpdateMode
+  commentId: P:Bodoconsult.NetworkCommunication.EnumAndStates.OrderExecutionResultState.UpdateMode
+  id: UpdateMode
+  parent: Bodoconsult.NetworkCommunication.EnumAndStates.OrderExecutionResultState
+  langs:
+  - csharp
+  - vb
+  name: UpdateMode
+  nameWithType: OrderExecutionResultState.UpdateMode
+  fullName: Bodoconsult.NetworkCommunication.EnumAndStates.OrderExecutionResultState.UpdateMode
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/EnumAndStates/OrderExecutionResultState.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: UpdateMode
+    path: src/Bodoconsult.NetworkCommunication/EnumAndStates/OrderExecutionResultState.cs
+    startLine: 96
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.EnumAndStates
+  summary: Device is in firmware update mode
+  example: []
+  syntax:
+    content: public static OrderExecutionResultState UpdateMode { get; }
+    parameters: []
+    return:
+      type: Bodoconsult.NetworkCommunication.EnumAndStates.OrderExecutionResultState
+    content.vb: Public Shared ReadOnly Property UpdateMode As OrderExecutionResultState
+  overload: Bodoconsult.NetworkCommunication.EnumAndStates.OrderExecutionResultState.UpdateMode*
+references:
+- uid: Bodoconsult.NetworkCommunication.EnumAndStates
+  commentId: N:Bodoconsult.NetworkCommunication.EnumAndStates
+  href: Bodoconsult.html
+  name: Bodoconsult.NetworkCommunication.EnumAndStates
+  nameWithType: Bodoconsult.NetworkCommunication.EnumAndStates
+  fullName: Bodoconsult.NetworkCommunication.EnumAndStates
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.EnumAndStates
+    name: EnumAndStates
+    href: Bodoconsult.NetworkCommunication.EnumAndStates.html
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.EnumAndStates
+    name: EnumAndStates
+    href: Bodoconsult.NetworkCommunication.EnumAndStates.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionResultState
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionResultState
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionResultState.html
+  name: IOrderExecutionResultState
+  nameWithType: IOrderExecutionResultState
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionResultState
+- uid: System.IEquatable{Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionResultState}
+  commentId: T:System.IEquatable{Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionResultState}
+  parent: System
+  definition: System.IEquatable`1
+  href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  name: IEquatable<IOrderExecutionResultState>
+  nameWithType: IEquatable<IOrderExecutionResultState>
+  fullName: System.IEquatable<Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionResultState>
+  nameWithType.vb: IEquatable(Of IOrderExecutionResultState)
+  fullName.vb: System.IEquatable(Of Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionResultState)
+  name.vb: IEquatable(Of IOrderExecutionResultState)
+  spec.csharp:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: <
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionResultState
+    name: IOrderExecutionResultState
+    href: Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionResultState.html
+  - name: '>'
+  spec.vb:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionResultState
+    name: IOrderExecutionResultState
+    href: Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionResultState.html
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Bodoconsult.NetworkCommunication.Interfaces
+  commentId: N:Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.html
+  name: Bodoconsult.NetworkCommunication.Interfaces
+  nameWithType: Bodoconsult.NetworkCommunication.Interfaces
+  fullName: Bodoconsult.NetworkCommunication.Interfaces
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Interfaces
+    name: Interfaces
+    href: Bodoconsult.NetworkCommunication.Interfaces.html
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Interfaces
+    name: Interfaces
+    href: Bodoconsult.NetworkCommunication.Interfaces.html
+- uid: System.IEquatable`1
+  commentId: T:System.IEquatable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  name: IEquatable<T>
+  nameWithType: IEquatable<T>
+  fullName: System.IEquatable<T>
+  nameWithType.vb: IEquatable(Of T)
+  fullName.vb: System.IEquatable(Of T)
+  name.vb: IEquatable(Of T)
+  spec.csharp:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Bodoconsult.NetworkCommunication.EnumAndStates.OrderExecutionResultState.#ctor*
+  commentId: Overload:Bodoconsult.NetworkCommunication.EnumAndStates.OrderExecutionResultState.#ctor
+  href: Bodoconsult.NetworkCommunication.EnumAndStates.OrderExecutionResultState.html#Bodoconsult_NetworkCommunication_EnumAndStates_OrderExecutionResultState__ctor_System_Int32_System_String_
+  name: OrderExecutionResultState
+  nameWithType: OrderExecutionResultState.OrderExecutionResultState
+  fullName: Bodoconsult.NetworkCommunication.EnumAndStates.OrderExecutionResultState.OrderExecutionResultState
+  nameWithType.vb: OrderExecutionResultState.New
+  fullName.vb: Bodoconsult.NetworkCommunication.EnumAndStates.OrderExecutionResultState.New
+  name.vb: New
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Bodoconsult.NetworkCommunication.EnumAndStates.OrderExecutionResultState.Id*
+  commentId: Overload:Bodoconsult.NetworkCommunication.EnumAndStates.OrderExecutionResultState.Id
+  href: Bodoconsult.NetworkCommunication.EnumAndStates.OrderExecutionResultState.html#Bodoconsult_NetworkCommunication_EnumAndStates_OrderExecutionResultState_Id
+  name: Id
+  nameWithType: OrderExecutionResultState.Id
+  fullName: Bodoconsult.NetworkCommunication.EnumAndStates.OrderExecutionResultState.Id
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionResultState.Id
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionResultState.Id
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionResultState
+  href: Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionResultState.html#Bodoconsult_NetworkCommunication_Interfaces_IOrderExecutionResultState_Id
+  name: Id
+  nameWithType: IOrderExecutionResultState.Id
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionResultState.Id
+- uid: Bodoconsult.NetworkCommunication.EnumAndStates.OrderExecutionResultState.Name*
+  commentId: Overload:Bodoconsult.NetworkCommunication.EnumAndStates.OrderExecutionResultState.Name
+  href: Bodoconsult.NetworkCommunication.EnumAndStates.OrderExecutionResultState.html#Bodoconsult_NetworkCommunication_EnumAndStates_OrderExecutionResultState_Name
+  name: Name
+  nameWithType: OrderExecutionResultState.Name
+  fullName: Bodoconsult.NetworkCommunication.EnumAndStates.OrderExecutionResultState.Name
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionResultState.Name
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionResultState.Name
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionResultState
+  href: Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionResultState.html#Bodoconsult_NetworkCommunication_Interfaces_IOrderExecutionResultState_Name
+  name: Name
+  nameWithType: IOrderExecutionResultState.Name
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionResultState.Name
+- uid: Bodoconsult.NetworkCommunication.EnumAndStates.OrderExecutionResultState.Equals*
+  commentId: Overload:Bodoconsult.NetworkCommunication.EnumAndStates.OrderExecutionResultState.Equals
+  href: Bodoconsult.NetworkCommunication.EnumAndStates.OrderExecutionResultState.html#Bodoconsult_NetworkCommunication_EnumAndStates_OrderExecutionResultState_Equals_Bodoconsult_NetworkCommunication_Interfaces_IOrderExecutionResultState_
+  name: Equals
+  nameWithType: OrderExecutionResultState.Equals
+  fullName: Bodoconsult.NetworkCommunication.EnumAndStates.OrderExecutionResultState.Equals
+- uid: System.IEquatable{Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionResultState}.Equals(Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionResultState)
+  commentId: M:System.IEquatable{Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionResultState}.Equals(Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionResultState)
+  parent: System.IEquatable{Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionResultState}
+  definition: System.IEquatable`1.Equals(`0)
+  href: https://learn.microsoft.com/dotnet/api/system.iequatable-1.equals
+  name: Equals(IOrderExecutionResultState)
+  nameWithType: IEquatable<IOrderExecutionResultState>.Equals(IOrderExecutionResultState)
+  fullName: System.IEquatable<Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionResultState>.Equals(Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionResultState)
+  nameWithType.vb: IEquatable(Of IOrderExecutionResultState).Equals(IOrderExecutionResultState)
+  fullName.vb: System.IEquatable(Of Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionResultState).Equals(Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionResultState)
+  spec.csharp:
+  - uid: System.IEquatable{Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionResultState}.Equals(Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionResultState)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1.equals
+  - name: (
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionResultState
+    name: IOrderExecutionResultState
+    href: Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionResultState.html
+  - name: )
+  spec.vb:
+  - uid: System.IEquatable{Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionResultState}.Equals(Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionResultState)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1.equals
+  - name: (
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionResultState
+    name: IOrderExecutionResultState
+    href: Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionResultState.html
+  - name: )
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: System.IEquatable`1.Equals(`0)
+  commentId: M:System.IEquatable`1.Equals(`0)
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.iequatable-1.equals
+  name: Equals(T)
+  nameWithType: IEquatable<T>.Equals(T)
+  fullName: System.IEquatable<T>.Equals(T)
+  nameWithType.vb: IEquatable(Of T).Equals(T)
+  fullName.vb: System.IEquatable(Of T).Equals(T)
+  spec.csharp:
+  - uid: System.IEquatable`1.Equals(`0)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1.equals
+  - name: (
+  - name: T
+  - name: )
+  spec.vb:
+  - uid: System.IEquatable`1.Equals(`0)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1.equals
+  - name: (
+  - name: T
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: Bodoconsult.NetworkCommunication.EnumAndStates.OrderExecutionResultState.ToString*
+  commentId: Overload:Bodoconsult.NetworkCommunication.EnumAndStates.OrderExecutionResultState.ToString
+  href: Bodoconsult.NetworkCommunication.EnumAndStates.OrderExecutionResultState.html#Bodoconsult_NetworkCommunication_EnumAndStates_OrderExecutionResultState_ToString
+  name: ToString
+  nameWithType: OrderExecutionResultState.ToString
+  fullName: Bodoconsult.NetworkCommunication.EnumAndStates.OrderExecutionResultState.ToString
+- uid: Bodoconsult.NetworkCommunication.EnumAndStates.OrderExecutionResultState.Successful*
+  commentId: Overload:Bodoconsult.NetworkCommunication.EnumAndStates.OrderExecutionResultState.Successful
+  href: Bodoconsult.NetworkCommunication.EnumAndStates.OrderExecutionResultState.html#Bodoconsult_NetworkCommunication_EnumAndStates_OrderExecutionResultState_Successful
+  name: Successful
+  nameWithType: OrderExecutionResultState.Successful
+  fullName: Bodoconsult.NetworkCommunication.EnumAndStates.OrderExecutionResultState.Successful
+- uid: Bodoconsult.NetworkCommunication.EnumAndStates.OrderExecutionResultState
+  commentId: T:Bodoconsult.NetworkCommunication.EnumAndStates.OrderExecutionResultState
+  parent: Bodoconsult.NetworkCommunication.EnumAndStates
+  href: Bodoconsult.NetworkCommunication.EnumAndStates.OrderExecutionResultState.html
+  name: OrderExecutionResultState
+  nameWithType: OrderExecutionResultState
+  fullName: Bodoconsult.NetworkCommunication.EnumAndStates.OrderExecutionResultState
+- uid: Bodoconsult.NetworkCommunication.EnumAndStates.OrderExecutionResultState.Unsuccessful*
+  commentId: Overload:Bodoconsult.NetworkCommunication.EnumAndStates.OrderExecutionResultState.Unsuccessful
+  href: Bodoconsult.NetworkCommunication.EnumAndStates.OrderExecutionResultState.html#Bodoconsult_NetworkCommunication_EnumAndStates_OrderExecutionResultState_Unsuccessful
+  name: Unsuccessful
+  nameWithType: OrderExecutionResultState.Unsuccessful
+  fullName: Bodoconsult.NetworkCommunication.EnumAndStates.OrderExecutionResultState.Unsuccessful
+- uid: Bodoconsult.NetworkCommunication.EnumAndStates.OrderExecutionResultState.Timeout*
+  commentId: Overload:Bodoconsult.NetworkCommunication.EnumAndStates.OrderExecutionResultState.Timeout
+  href: Bodoconsult.NetworkCommunication.EnumAndStates.OrderExecutionResultState.html#Bodoconsult_NetworkCommunication_EnumAndStates_OrderExecutionResultState_Timeout
+  name: Timeout
+  nameWithType: OrderExecutionResultState.Timeout
+  fullName: Bodoconsult.NetworkCommunication.EnumAndStates.OrderExecutionResultState.Timeout
+- uid: Bodoconsult.NetworkCommunication.EnumAndStates.OrderExecutionResultState.Error*
+  commentId: Overload:Bodoconsult.NetworkCommunication.EnumAndStates.OrderExecutionResultState.Error
+  href: Bodoconsult.NetworkCommunication.EnumAndStates.OrderExecutionResultState.html#Bodoconsult_NetworkCommunication_EnumAndStates_OrderExecutionResultState_Error
+  name: Error
+  nameWithType: OrderExecutionResultState.Error
+  fullName: Bodoconsult.NetworkCommunication.EnumAndStates.OrderExecutionResultState.Error
+- uid: Bodoconsult.NetworkCommunication.EnumAndStates.OrderExecutionResultState.NotProcessed*
+  commentId: Overload:Bodoconsult.NetworkCommunication.EnumAndStates.OrderExecutionResultState.NotProcessed
+  href: Bodoconsult.NetworkCommunication.EnumAndStates.OrderExecutionResultState.html#Bodoconsult_NetworkCommunication_EnumAndStates_OrderExecutionResultState_NotProcessed
+  name: NotProcessed
+  nameWithType: OrderExecutionResultState.NotProcessed
+  fullName: Bodoconsult.NetworkCommunication.EnumAndStates.OrderExecutionResultState.NotProcessed
+- uid: Bodoconsult.NetworkCommunication.EnumAndStates.OrderExecutionResultState.NoResponseFromDevice*
+  commentId: Overload:Bodoconsult.NetworkCommunication.EnumAndStates.OrderExecutionResultState.NoResponseFromDevice
+  href: Bodoconsult.NetworkCommunication.EnumAndStates.OrderExecutionResultState.html#Bodoconsult_NetworkCommunication_EnumAndStates_OrderExecutionResultState_NoResponseFromDevice
+  name: NoResponseFromDevice
+  nameWithType: OrderExecutionResultState.NoResponseFromDevice
+  fullName: Bodoconsult.NetworkCommunication.EnumAndStates.OrderExecutionResultState.NoResponseFromDevice
+- uid: Bodoconsult.NetworkCommunication.EnumAndStates.OrderExecutionResultState.Can*
+  commentId: Overload:Bodoconsult.NetworkCommunication.EnumAndStates.OrderExecutionResultState.Can
+  href: Bodoconsult.NetworkCommunication.EnumAndStates.OrderExecutionResultState.html#Bodoconsult_NetworkCommunication_EnumAndStates_OrderExecutionResultState_Can
+  name: Can
+  nameWithType: OrderExecutionResultState.Can
+  fullName: Bodoconsult.NetworkCommunication.EnumAndStates.OrderExecutionResultState.Can
+- uid: Bodoconsult.NetworkCommunication.EnumAndStates.OrderExecutionResultState.Nack*
+  commentId: Overload:Bodoconsult.NetworkCommunication.EnumAndStates.OrderExecutionResultState.Nack
+  href: Bodoconsult.NetworkCommunication.EnumAndStates.OrderExecutionResultState.html#Bodoconsult_NetworkCommunication_EnumAndStates_OrderExecutionResultState_Nack
+  name: Nack
+  nameWithType: OrderExecutionResultState.Nack
+  fullName: Bodoconsult.NetworkCommunication.EnumAndStates.OrderExecutionResultState.Nack
+- uid: Bodoconsult.NetworkCommunication.EnumAndStates.OrderExecutionResultState.HardwareError*
+  commentId: Overload:Bodoconsult.NetworkCommunication.EnumAndStates.OrderExecutionResultState.HardwareError
+  href: Bodoconsult.NetworkCommunication.EnumAndStates.OrderExecutionResultState.html#Bodoconsult_NetworkCommunication_EnumAndStates_OrderExecutionResultState_HardwareError
+  name: HardwareError
+  nameWithType: OrderExecutionResultState.HardwareError
+  fullName: Bodoconsult.NetworkCommunication.EnumAndStates.OrderExecutionResultState.HardwareError
+- uid: Bodoconsult.NetworkCommunication.EnumAndStates.OrderExecutionResultState.UpdateMode*
+  commentId: Overload:Bodoconsult.NetworkCommunication.EnumAndStates.OrderExecutionResultState.UpdateMode
+  href: Bodoconsult.NetworkCommunication.EnumAndStates.OrderExecutionResultState.html#Bodoconsult_NetworkCommunication_EnumAndStates_OrderExecutionResultState_UpdateMode
+  name: UpdateMode
+  nameWithType: OrderExecutionResultState.UpdateMode
+  fullName: Bodoconsult.NetworkCommunication.EnumAndStates.OrderExecutionResultState.UpdateMode

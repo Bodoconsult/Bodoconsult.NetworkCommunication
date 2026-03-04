@@ -1,0 +1,484 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bodoconsult.NetworkCommunication.Interfaces.ICommunicationHandler
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.ICommunicationHandler
+  id: ICommunicationHandler
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  children:
+  - Bodoconsult.NetworkCommunication.Interfaces.ICommunicationHandler.Connect
+  - Bodoconsult.NetworkCommunication.Interfaces.ICommunicationHandler.Disconnect
+  - Bodoconsult.NetworkCommunication.Interfaces.ICommunicationHandler.DuplexIo
+  - Bodoconsult.NetworkCommunication.Interfaces.ICommunicationHandler.IsConnected
+  - Bodoconsult.NetworkCommunication.Interfaces.ICommunicationHandler.OnMessageNotSent(System.ReadOnlyMemory{System.Byte},System.String)
+  - Bodoconsult.NetworkCommunication.Interfaces.ICommunicationHandler.OnReceivedMessage(Bodoconsult.NetworkCommunication.Interfaces.IInboundDataMessage)
+  - Bodoconsult.NetworkCommunication.Interfaces.ICommunicationHandler.SendMessage(Bodoconsult.NetworkCommunication.Interfaces.IOutboundMessage)
+  langs:
+  - csharp
+  - vb
+  name: ICommunicationHandler
+  nameWithType: ICommunicationHandler
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.ICommunicationHandler
+  type: Interface
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/ICommunicationHandler.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: ICommunicationHandler
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/ICommunicationHandler.cs
+    startLine: 7
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Base interface for communication handler
+  example: []
+  syntax:
+    content: 'public interface ICommunicationHandler : IDisposable'
+    content.vb: Public Interface ICommunicationHandler Inherits IDisposable
+  inheritedMembers:
+  - System.IDisposable.Dispose
+- uid: Bodoconsult.NetworkCommunication.Interfaces.ICommunicationHandler.DuplexIo
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.ICommunicationHandler.DuplexIo
+  id: DuplexIo
+  parent: Bodoconsult.NetworkCommunication.Interfaces.ICommunicationHandler
+  langs:
+  - csharp
+  - vb
+  name: DuplexIo
+  nameWithType: ICommunicationHandler.DuplexIo
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.ICommunicationHandler.DuplexIo
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/ICommunicationHandler.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: DuplexIo
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/ICommunicationHandler.cs
+    startLine: 12
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Current <xref href="Bodoconsult.NetworkCommunication.Interfaces.IDuplexIo" data-throw-if-not-resolved="false"></xref> instance to use
+  example: []
+  syntax:
+    content: IDuplexIo DuplexIo { get; }
+    parameters: []
+    return:
+      type: Bodoconsult.NetworkCommunication.Interfaces.IDuplexIo
+    content.vb: ReadOnly Property DuplexIo As IDuplexIo
+  overload: Bodoconsult.NetworkCommunication.Interfaces.ICommunicationHandler.DuplexIo*
+- uid: Bodoconsult.NetworkCommunication.Interfaces.ICommunicationHandler.IsConnected
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.ICommunicationHandler.IsConnected
+  id: IsConnected
+  parent: Bodoconsult.NetworkCommunication.Interfaces.ICommunicationHandler
+  langs:
+  - csharp
+  - vb
+  name: IsConnected
+  nameWithType: ICommunicationHandler.IsConnected
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.ICommunicationHandler.IsConnected
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/ICommunicationHandler.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: IsConnected
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/ICommunicationHandler.cs
+    startLine: 17
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Is the device connected
+  example: []
+  syntax:
+    content: bool IsConnected { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: ReadOnly Property IsConnected As Boolean
+  overload: Bodoconsult.NetworkCommunication.Interfaces.ICommunicationHandler.IsConnected*
+- uid: Bodoconsult.NetworkCommunication.Interfaces.ICommunicationHandler.Connect
+  commentId: M:Bodoconsult.NetworkCommunication.Interfaces.ICommunicationHandler.Connect
+  id: Connect
+  parent: Bodoconsult.NetworkCommunication.Interfaces.ICommunicationHandler
+  langs:
+  - csharp
+  - vb
+  name: Connect()
+  nameWithType: ICommunicationHandler.Connect()
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.ICommunicationHandler.Connect()
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/ICommunicationHandler.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Connect
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/ICommunicationHandler.cs
+    startLine: 22
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Connect to the tower
+  example: []
+  syntax:
+    content: void Connect()
+    content.vb: Sub Connect()
+  overload: Bodoconsult.NetworkCommunication.Interfaces.ICommunicationHandler.Connect*
+- uid: Bodoconsult.NetworkCommunication.Interfaces.ICommunicationHandler.Disconnect
+  commentId: M:Bodoconsult.NetworkCommunication.Interfaces.ICommunicationHandler.Disconnect
+  id: Disconnect
+  parent: Bodoconsult.NetworkCommunication.Interfaces.ICommunicationHandler
+  langs:
+  - csharp
+  - vb
+  name: Disconnect()
+  nameWithType: ICommunicationHandler.Disconnect()
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.ICommunicationHandler.Disconnect()
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/ICommunicationHandler.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Disconnect
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/ICommunicationHandler.cs
+    startLine: 27
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Disconnect from tower
+  example: []
+  syntax:
+    content: void Disconnect()
+    content.vb: Sub Disconnect()
+  overload: Bodoconsult.NetworkCommunication.Interfaces.ICommunicationHandler.Disconnect*
+- uid: Bodoconsult.NetworkCommunication.Interfaces.ICommunicationHandler.SendMessage(Bodoconsult.NetworkCommunication.Interfaces.IOutboundMessage)
+  commentId: M:Bodoconsult.NetworkCommunication.Interfaces.ICommunicationHandler.SendMessage(Bodoconsult.NetworkCommunication.Interfaces.IOutboundMessage)
+  id: SendMessage(Bodoconsult.NetworkCommunication.Interfaces.IOutboundMessage)
+  parent: Bodoconsult.NetworkCommunication.Interfaces.ICommunicationHandler
+  langs:
+  - csharp
+  - vb
+  name: SendMessage(IOutboundMessage)
+  nameWithType: ICommunicationHandler.SendMessage(IOutboundMessage)
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.ICommunicationHandler.SendMessage(Bodoconsult.NetworkCommunication.Interfaces.IOutboundMessage)
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/ICommunicationHandler.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: SendMessage
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/ICommunicationHandler.cs
+    startLine: 33
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Send a message to the device
+  example: []
+  syntax:
+    content: MessageSendingResult SendMessage(IOutboundMessage message)
+    parameters:
+    - id: message
+      type: Bodoconsult.NetworkCommunication.Interfaces.IOutboundMessage
+      description: Current message to send
+    return:
+      type: Bodoconsult.NetworkCommunication.Interfaces.MessageSendingResult
+    content.vb: Function SendMessage(message As IOutboundMessage) As MessageSendingResult
+  overload: Bodoconsult.NetworkCommunication.Interfaces.ICommunicationHandler.SendMessage*
+- uid: Bodoconsult.NetworkCommunication.Interfaces.ICommunicationHandler.OnReceivedMessage(Bodoconsult.NetworkCommunication.Interfaces.IInboundDataMessage)
+  commentId: M:Bodoconsult.NetworkCommunication.Interfaces.ICommunicationHandler.OnReceivedMessage(Bodoconsult.NetworkCommunication.Interfaces.IInboundDataMessage)
+  id: OnReceivedMessage(Bodoconsult.NetworkCommunication.Interfaces.IInboundDataMessage)
+  parent: Bodoconsult.NetworkCommunication.Interfaces.ICommunicationHandler
+  langs:
+  - csharp
+  - vb
+  name: OnReceivedMessage(IInboundDataMessage)
+  nameWithType: ICommunicationHandler.OnReceivedMessage(IInboundDataMessage)
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.ICommunicationHandler.OnReceivedMessage(Bodoconsult.NetworkCommunication.Interfaces.IInboundDataMessage)
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/ICommunicationHandler.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: OnReceivedMessage
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/ICommunicationHandler.cs
+    startLine: 39
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: This method should check if sending a handshake is required and send it if yes. This method is public mainly for testing.
+  example: []
+  syntax:
+    content: void OnReceivedMessage(IInboundDataMessage message)
+    parameters:
+    - id: message
+      type: Bodoconsult.NetworkCommunication.Interfaces.IInboundDataMessage
+      description: Data message received
+    content.vb: Sub OnReceivedMessage(message As IInboundDataMessage)
+  overload: Bodoconsult.NetworkCommunication.Interfaces.ICommunicationHandler.OnReceivedMessage*
+- uid: Bodoconsult.NetworkCommunication.Interfaces.ICommunicationHandler.OnMessageNotSent(System.ReadOnlyMemory{System.Byte},System.String)
+  commentId: M:Bodoconsult.NetworkCommunication.Interfaces.ICommunicationHandler.OnMessageNotSent(System.ReadOnlyMemory{System.Byte},System.String)
+  id: OnMessageNotSent(System.ReadOnlyMemory{System.Byte},System.String)
+  parent: Bodoconsult.NetworkCommunication.Interfaces.ICommunicationHandler
+  langs:
+  - csharp
+  - vb
+  name: OnMessageNotSent(ReadOnlyMemory<byte>, string)
+  nameWithType: ICommunicationHandler.OnMessageNotSent(ReadOnlyMemory<byte>, string)
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.ICommunicationHandler.OnMessageNotSent(System.ReadOnlyMemory<byte>, string)
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/ICommunicationHandler.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: OnMessageNotSent
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/ICommunicationHandler.cs
+    startLine: 46
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: This message should be fired if a message has not been sent
+  example: []
+  syntax:
+    content: void OnMessageNotSent(ReadOnlyMemory<byte> message, string reason)
+    parameters:
+    - id: message
+      type: System.ReadOnlyMemory{System.Byte}
+      description: Message not sent
+    - id: reason
+      type: System.String
+      description: The reason why the message was not sent
+    content.vb: Sub OnMessageNotSent(message As ReadOnlyMemory(Of Byte), reason As String)
+  overload: Bodoconsult.NetworkCommunication.Interfaces.ICommunicationHandler.OnMessageNotSent*
+  nameWithType.vb: ICommunicationHandler.OnMessageNotSent(ReadOnlyMemory(Of Byte), String)
+  fullName.vb: Bodoconsult.NetworkCommunication.Interfaces.ICommunicationHandler.OnMessageNotSent(System.ReadOnlyMemory(Of Byte), String)
+  name.vb: OnMessageNotSent(ReadOnlyMemory(Of Byte), String)
+references:
+- uid: Bodoconsult.NetworkCommunication.Interfaces
+  commentId: N:Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.html
+  name: Bodoconsult.NetworkCommunication.Interfaces
+  nameWithType: Bodoconsult.NetworkCommunication.Interfaces
+  fullName: Bodoconsult.NetworkCommunication.Interfaces
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Interfaces
+    name: Interfaces
+    href: Bodoconsult.NetworkCommunication.Interfaces.html
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Interfaces
+    name: Interfaces
+    href: Bodoconsult.NetworkCommunication.Interfaces.html
+- uid: System.IDisposable.Dispose
+  commentId: M:System.IDisposable.Dispose
+  parent: System.IDisposable
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  name: Dispose()
+  nameWithType: IDisposable.Dispose()
+  fullName: System.IDisposable.Dispose()
+  spec.csharp:
+  - uid: System.IDisposable.Dispose
+    name: Dispose
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.IDisposable.Dispose
+    name: Dispose
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  - name: (
+  - name: )
+- uid: System.IDisposable
+  commentId: T:System.IDisposable
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable
+  name: IDisposable
+  nameWithType: IDisposable
+  fullName: System.IDisposable
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IDuplexIo
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.IDuplexIo
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.NetworkCommunication.Interfaces.IDuplexIo.html
+  name: IDuplexIo
+  nameWithType: IDuplexIo
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IDuplexIo
+- uid: Bodoconsult.NetworkCommunication.Interfaces.ICommunicationHandler.DuplexIo*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.ICommunicationHandler.DuplexIo
+  href: Bodoconsult.NetworkCommunication.Interfaces.ICommunicationHandler.html#Bodoconsult_NetworkCommunication_Interfaces_ICommunicationHandler_DuplexIo
+  name: DuplexIo
+  nameWithType: ICommunicationHandler.DuplexIo
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.ICommunicationHandler.DuplexIo
+- uid: Bodoconsult.NetworkCommunication.Interfaces.ICommunicationHandler.IsConnected*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.ICommunicationHandler.IsConnected
+  href: Bodoconsult.NetworkCommunication.Interfaces.ICommunicationHandler.html#Bodoconsult_NetworkCommunication_Interfaces_ICommunicationHandler_IsConnected
+  name: IsConnected
+  nameWithType: ICommunicationHandler.IsConnected
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.ICommunicationHandler.IsConnected
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: Bodoconsult.NetworkCommunication.Interfaces.ICommunicationHandler.Connect*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.ICommunicationHandler.Connect
+  href: Bodoconsult.NetworkCommunication.Interfaces.ICommunicationHandler.html#Bodoconsult_NetworkCommunication_Interfaces_ICommunicationHandler_Connect
+  name: Connect
+  nameWithType: ICommunicationHandler.Connect
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.ICommunicationHandler.Connect
+- uid: Bodoconsult.NetworkCommunication.Interfaces.ICommunicationHandler.Disconnect*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.ICommunicationHandler.Disconnect
+  href: Bodoconsult.NetworkCommunication.Interfaces.ICommunicationHandler.html#Bodoconsult_NetworkCommunication_Interfaces_ICommunicationHandler_Disconnect
+  name: Disconnect
+  nameWithType: ICommunicationHandler.Disconnect
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.ICommunicationHandler.Disconnect
+- uid: Bodoconsult.NetworkCommunication.Interfaces.ICommunicationHandler.SendMessage*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.ICommunicationHandler.SendMessage
+  href: Bodoconsult.NetworkCommunication.Interfaces.ICommunicationHandler.html#Bodoconsult_NetworkCommunication_Interfaces_ICommunicationHandler_SendMessage_Bodoconsult_NetworkCommunication_Interfaces_IOutboundMessage_
+  name: SendMessage
+  nameWithType: ICommunicationHandler.SendMessage
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.ICommunicationHandler.SendMessage
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IOutboundMessage
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.IOutboundMessage
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.NetworkCommunication.Interfaces.IOutboundMessage.html
+  name: IOutboundMessage
+  nameWithType: IOutboundMessage
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IOutboundMessage
+- uid: Bodoconsult.NetworkCommunication.Interfaces.MessageSendingResult
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.MessageSendingResult
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.NetworkCommunication.Interfaces.MessageSendingResult.html
+  name: MessageSendingResult
+  nameWithType: MessageSendingResult
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.MessageSendingResult
+- uid: Bodoconsult.NetworkCommunication.Interfaces.ICommunicationHandler.OnReceivedMessage*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.ICommunicationHandler.OnReceivedMessage
+  href: Bodoconsult.NetworkCommunication.Interfaces.ICommunicationHandler.html#Bodoconsult_NetworkCommunication_Interfaces_ICommunicationHandler_OnReceivedMessage_Bodoconsult_NetworkCommunication_Interfaces_IInboundDataMessage_
+  name: OnReceivedMessage
+  nameWithType: ICommunicationHandler.OnReceivedMessage
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.ICommunicationHandler.OnReceivedMessage
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IInboundDataMessage
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.IInboundDataMessage
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.NetworkCommunication.Interfaces.IInboundDataMessage.html
+  name: IInboundDataMessage
+  nameWithType: IInboundDataMessage
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IInboundDataMessage
+- uid: Bodoconsult.NetworkCommunication.Interfaces.ICommunicationHandler.OnMessageNotSent*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.ICommunicationHandler.OnMessageNotSent
+  href: Bodoconsult.NetworkCommunication.Interfaces.ICommunicationHandler.html#Bodoconsult_NetworkCommunication_Interfaces_ICommunicationHandler_OnMessageNotSent_System_ReadOnlyMemory_System_Byte__System_String_
+  name: OnMessageNotSent
+  nameWithType: ICommunicationHandler.OnMessageNotSent
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.ICommunicationHandler.OnMessageNotSent
+- uid: System.ReadOnlyMemory{System.Byte}
+  commentId: T:System.ReadOnlyMemory{System.Byte}
+  parent: System
+  definition: System.ReadOnlyMemory`1
+  href: https://learn.microsoft.com/dotnet/api/system.readonlymemory-1
+  name: ReadOnlyMemory<byte>
+  nameWithType: ReadOnlyMemory<byte>
+  fullName: System.ReadOnlyMemory<byte>
+  nameWithType.vb: ReadOnlyMemory(Of Byte)
+  fullName.vb: System.ReadOnlyMemory(Of Byte)
+  name.vb: ReadOnlyMemory(Of Byte)
+  spec.csharp:
+  - uid: System.ReadOnlyMemory`1
+    name: ReadOnlyMemory
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.readonlymemory-1
+  - name: <
+  - uid: System.Byte
+    name: byte
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.byte
+  - name: '>'
+  spec.vb:
+  - uid: System.ReadOnlyMemory`1
+    name: ReadOnlyMemory
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.readonlymemory-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Byte
+    name: Byte
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.byte
+  - name: )
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: System.ReadOnlyMemory`1
+  commentId: T:System.ReadOnlyMemory`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.readonlymemory-1
+  name: ReadOnlyMemory<T>
+  nameWithType: ReadOnlyMemory<T>
+  fullName: System.ReadOnlyMemory<T>
+  nameWithType.vb: ReadOnlyMemory(Of T)
+  fullName.vb: System.ReadOnlyMemory(Of T)
+  name.vb: ReadOnlyMemory(Of T)
+  spec.csharp:
+  - uid: System.ReadOnlyMemory`1
+    name: ReadOnlyMemory
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.readonlymemory-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.ReadOnlyMemory`1
+    name: ReadOnlyMemory
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.readonlymemory-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )

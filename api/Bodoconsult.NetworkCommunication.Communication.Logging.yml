@@ -1,0 +1,23 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bodoconsult.NetworkCommunication.Communication.Logging
+  commentId: N:Bodoconsult.NetworkCommunication.Communication.Logging
+  id: Bodoconsult.NetworkCommunication.Communication.Logging
+  children:
+  - Bodoconsult.NetworkCommunication.Communication.Logging.DoNothingDataLogger
+  langs:
+  - csharp
+  - vb
+  name: Bodoconsult.NetworkCommunication.Communication.Logging
+  nameWithType: Bodoconsult.NetworkCommunication.Communication.Logging
+  fullName: Bodoconsult.NetworkCommunication.Communication.Logging
+  type: Namespace
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+references:
+- uid: Bodoconsult.NetworkCommunication.Communication.Logging.DoNothingDataLogger
+  commentId: T:Bodoconsult.NetworkCommunication.Communication.Logging.DoNothingDataLogger
+  href: Bodoconsult.NetworkCommunication.Communication.Logging.DoNothingDataLogger.html
+  name: DoNothingDataLogger
+  nameWithType: DoNothingDataLogger
+  fullName: Bodoconsult.NetworkCommunication.Communication.Logging.DoNothingDataLogger

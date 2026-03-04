@@ -1,0 +1,705 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bodoconsult.NetworkCommunication.App.Abstractions.AppDateService
+  commentId: T:Bodoconsult.NetworkCommunication.App.Abstractions.AppDateService
+  id: AppDateService
+  parent: Bodoconsult.NetworkCommunication.App.Abstractions
+  children:
+  - Bodoconsult.NetworkCommunication.App.Abstractions.AppDateService.AccessMinDate
+  - Bodoconsult.NetworkCommunication.App.Abstractions.AppDateService.CreateInstance
+  - Bodoconsult.NetworkCommunication.App.Abstractions.AppDateService.GetCurrentTicks
+  - Bodoconsult.NetworkCommunication.App.Abstractions.AppDateService.GetValidAccessDate(System.Nullable{System.DateTime})
+  - Bodoconsult.NetworkCommunication.App.Abstractions.AppDateService.Now
+  - Bodoconsult.NetworkCommunication.App.Abstractions.AppDateService.Today
+  langs:
+  - csharp
+  - vb
+  name: AppDateService
+  nameWithType: AppDateService
+  fullName: Bodoconsult.NetworkCommunication.App.Abstractions.AppDateService
+  type: Class
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/App.Abstractions/AppDateService.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: AppDateService
+    path: src/Bodoconsult.NetworkCommunication/App.Abstractions/AppDateService.cs
+    startLine: 7
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.App.Abstractions
+  summary: Concrete implementation returning system DateTime
+  example: []
+  syntax:
+    content: 'public class AppDateService : IAppDateService'
+    content.vb: Public Class AppDateService Implements IAppDateService
+  inheritance:
+  - System.Object
+  implements:
+  - Bodoconsult.NetworkCommunication.App.Abstractions.IAppDateService
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: Bodoconsult.NetworkCommunication.App.Abstractions.AppDateService.CreateInstance
+  commentId: M:Bodoconsult.NetworkCommunication.App.Abstractions.AppDateService.CreateInstance
+  id: CreateInstance
+  parent: Bodoconsult.NetworkCommunication.App.Abstractions.AppDateService
+  langs:
+  - csharp
+  - vb
+  name: CreateInstance()
+  nameWithType: AppDateService.CreateInstance()
+  fullName: Bodoconsult.NetworkCommunication.App.Abstractions.AppDateService.CreateInstance()
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/App.Abstractions/AppDateService.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: CreateInstance
+    path: src/Bodoconsult.NetworkCommunication/App.Abstractions/AppDateService.cs
+    startLine: 13
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.App.Abstractions
+  summary: Factory method for <xref href="Bodoconsult.NetworkCommunication.App.Abstractions.AppDateService" data-throw-if-not-resolved="false"></xref>
+  example: []
+  syntax:
+    content: public IAppDateService CreateInstance()
+    return:
+      type: Bodoconsult.NetworkCommunication.App.Abstractions.IAppDateService
+      description: Fresh instance of <xref href="Bodoconsult.NetworkCommunication.App.Abstractions.AppDateService" data-throw-if-not-resolved="false"></xref>
+    content.vb: Public Function CreateInstance() As IAppDateService
+  overload: Bodoconsult.NetworkCommunication.App.Abstractions.AppDateService.CreateInstance*
+- uid: Bodoconsult.NetworkCommunication.App.Abstractions.AppDateService.AccessMinDate
+  commentId: F:Bodoconsult.NetworkCommunication.App.Abstractions.AppDateService.AccessMinDate
+  id: AccessMinDate
+  parent: Bodoconsult.NetworkCommunication.App.Abstractions.AppDateService
+  langs:
+  - csharp
+  - vb
+  name: AccessMinDate
+  nameWithType: AppDateService.AccessMinDate
+  fullName: Bodoconsult.NetworkCommunication.App.Abstractions.AppDateService.AccessMinDate
+  type: Field
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/App.Abstractions/AppDateService.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: AccessMinDate
+    path: src/Bodoconsult.NetworkCommunication/App.Abstractions/AppDateService.cs
+    startLine: 21
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.App.Abstractions
+  summary: Minimum date MS Access can handle
+  example: []
+  syntax:
+    content: public readonly DateTime AccessMinDate
+    return:
+      type: System.DateTime
+    content.vb: Public ReadOnly AccessMinDate As Date
+- uid: Bodoconsult.NetworkCommunication.App.Abstractions.AppDateService.Now
+  commentId: P:Bodoconsult.NetworkCommunication.App.Abstractions.AppDateService.Now
+  id: Now
+  parent: Bodoconsult.NetworkCommunication.App.Abstractions.AppDateService
+  langs:
+  - csharp
+  - vb
+  name: Now
+  nameWithType: AppDateService.Now
+  fullName: Bodoconsult.NetworkCommunication.App.Abstractions.AppDateService.Now
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/App.Abstractions/AppDateService.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Now
+    path: src/Bodoconsult.NetworkCommunication/App.Abstractions/AppDateService.cs
+    startLine: 30
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.App.Abstractions
+  summary: return current date and time
+  example: []
+  syntax:
+    content: public DateTime Now { get; }
+    parameters: []
+    return:
+      type: System.DateTime
+    content.vb: Public ReadOnly Property Now As Date
+  overload: Bodoconsult.NetworkCommunication.App.Abstractions.AppDateService.Now*
+  implements:
+  - Bodoconsult.NetworkCommunication.App.Abstractions.IAppDateService.Now
+- uid: Bodoconsult.NetworkCommunication.App.Abstractions.AppDateService.Today
+  commentId: P:Bodoconsult.NetworkCommunication.App.Abstractions.AppDateService.Today
+  id: Today
+  parent: Bodoconsult.NetworkCommunication.App.Abstractions.AppDateService
+  langs:
+  - csharp
+  - vb
+  name: Today
+  nameWithType: AppDateService.Today
+  fullName: Bodoconsult.NetworkCommunication.App.Abstractions.AppDateService.Today
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/App.Abstractions/AppDateService.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Today
+    path: src/Bodoconsult.NetworkCommunication/App.Abstractions/AppDateService.cs
+    startLine: 35
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.App.Abstractions
+  summary: return the current date only
+  example: []
+  syntax:
+    content: public DateTime Today { get; }
+    parameters: []
+    return:
+      type: System.DateTime
+    content.vb: Public ReadOnly Property Today As Date
+  overload: Bodoconsult.NetworkCommunication.App.Abstractions.AppDateService.Today*
+  implements:
+  - Bodoconsult.NetworkCommunication.App.Abstractions.IAppDateService.Today
+- uid: Bodoconsult.NetworkCommunication.App.Abstractions.AppDateService.GetValidAccessDate(System.Nullable{System.DateTime})
+  commentId: M:Bodoconsult.NetworkCommunication.App.Abstractions.AppDateService.GetValidAccessDate(System.Nullable{System.DateTime})
+  id: GetValidAccessDate(System.Nullable{System.DateTime})
+  parent: Bodoconsult.NetworkCommunication.App.Abstractions.AppDateService
+  langs:
+  - csharp
+  - vb
+  name: GetValidAccessDate(DateTime?)
+  nameWithType: AppDateService.GetValidAccessDate(DateTime?)
+  fullName: Bodoconsult.NetworkCommunication.App.Abstractions.AppDateService.GetValidAccessDate(System.DateTime?)
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/App.Abstractions/AppDateService.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: GetValidAccessDate
+    path: src/Bodoconsult.NetworkCommunication/App.Abstractions/AppDateService.cs
+    startLine: 42
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.App.Abstractions
+  summary: Get a valid MS Access datetime value. Values before 1/1/1900 are set to this value
+  example: []
+  syntax:
+    content: public DateTime GetValidAccessDate(DateTime? date)
+    parameters:
+    - id: date
+      type: System.Nullable{System.DateTime}
+      description: ''
+    return:
+      type: System.DateTime
+      description: Valid MS Access datetime value
+    content.vb: Public Function GetValidAccessDate([date] As Date?) As Date
+  overload: Bodoconsult.NetworkCommunication.App.Abstractions.AppDateService.GetValidAccessDate*
+  implements:
+  - Bodoconsult.NetworkCommunication.App.Abstractions.IAppDateService.GetValidAccessDate(System.Nullable{System.DateTime})
+  nameWithType.vb: AppDateService.GetValidAccessDate(Date?)
+  fullName.vb: Bodoconsult.NetworkCommunication.App.Abstractions.AppDateService.GetValidAccessDate(Date?)
+  name.vb: GetValidAccessDate(Date?)
+- uid: Bodoconsult.NetworkCommunication.App.Abstractions.AppDateService.GetCurrentTicks
+  commentId: M:Bodoconsult.NetworkCommunication.App.Abstractions.AppDateService.GetCurrentTicks
+  id: GetCurrentTicks
+  parent: Bodoconsult.NetworkCommunication.App.Abstractions.AppDateService
+  langs:
+  - csharp
+  - vb
+  name: GetCurrentTicks()
+  nameWithType: AppDateService.GetCurrentTicks()
+  fullName: Bodoconsult.NetworkCommunication.App.Abstractions.AppDateService.GetCurrentTicks()
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/App.Abstractions/AppDateService.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: GetCurrentTicks
+    path: src/Bodoconsult.NetworkCommunication/App.Abstractions/AppDateService.cs
+    startLine: 59
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.App.Abstractions
+  summary: Get the number of ticks from the beginning of time. Only one access per time possible!
+  example: []
+  syntax:
+    content: public long GetCurrentTicks()
+    return:
+      type: System.Int64
+      description: Ticks from the beginning of time
+    content.vb: Public Function GetCurrentTicks() As Long
+  overload: Bodoconsult.NetworkCommunication.App.Abstractions.AppDateService.GetCurrentTicks*
+  implements:
+  - Bodoconsult.NetworkCommunication.App.Abstractions.IAppDateService.GetCurrentTicks
+references:
+- uid: Bodoconsult.NetworkCommunication.App.Abstractions
+  commentId: N:Bodoconsult.NetworkCommunication.App.Abstractions
+  href: Bodoconsult.html
+  name: Bodoconsult.NetworkCommunication.App.Abstractions
+  nameWithType: Bodoconsult.NetworkCommunication.App.Abstractions
+  fullName: Bodoconsult.NetworkCommunication.App.Abstractions
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.App
+    name: App
+    href: Bodoconsult.NetworkCommunication.App.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.App.Abstractions
+    name: Abstractions
+    href: Bodoconsult.NetworkCommunication.App.Abstractions.html
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.App
+    name: App
+    href: Bodoconsult.NetworkCommunication.App.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.App.Abstractions
+    name: Abstractions
+    href: Bodoconsult.NetworkCommunication.App.Abstractions.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Bodoconsult.NetworkCommunication.App.Abstractions.IAppDateService
+  commentId: T:Bodoconsult.NetworkCommunication.App.Abstractions.IAppDateService
+  parent: Bodoconsult.NetworkCommunication.App.Abstractions
+  href: Bodoconsult.NetworkCommunication.App.Abstractions.IAppDateService.html
+  name: IAppDateService
+  nameWithType: IAppDateService
+  fullName: Bodoconsult.NetworkCommunication.App.Abstractions.IAppDateService
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Bodoconsult.NetworkCommunication.App.Abstractions.AppDateService
+  commentId: T:Bodoconsult.NetworkCommunication.App.Abstractions.AppDateService
+  href: Bodoconsult.NetworkCommunication.App.Abstractions.AppDateService.html
+  name: AppDateService
+  nameWithType: AppDateService
+  fullName: Bodoconsult.NetworkCommunication.App.Abstractions.AppDateService
+- uid: Bodoconsult.NetworkCommunication.App.Abstractions.AppDateService.CreateInstance*
+  commentId: Overload:Bodoconsult.NetworkCommunication.App.Abstractions.AppDateService.CreateInstance
+  href: Bodoconsult.NetworkCommunication.App.Abstractions.AppDateService.html#Bodoconsult_NetworkCommunication_App_Abstractions_AppDateService_CreateInstance
+  name: CreateInstance
+  nameWithType: AppDateService.CreateInstance
+  fullName: Bodoconsult.NetworkCommunication.App.Abstractions.AppDateService.CreateInstance
+- uid: System.DateTime
+  commentId: T:System.DateTime
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.datetime
+  name: DateTime
+  nameWithType: DateTime
+  fullName: System.DateTime
+  nameWithType.vb: Date
+  fullName.vb: Date
+  name.vb: Date
+- uid: Bodoconsult.NetworkCommunication.App.Abstractions.AppDateService.Now*
+  commentId: Overload:Bodoconsult.NetworkCommunication.App.Abstractions.AppDateService.Now
+  href: Bodoconsult.NetworkCommunication.App.Abstractions.AppDateService.html#Bodoconsult_NetworkCommunication_App_Abstractions_AppDateService_Now
+  name: Now
+  nameWithType: AppDateService.Now
+  fullName: Bodoconsult.NetworkCommunication.App.Abstractions.AppDateService.Now
+- uid: Bodoconsult.NetworkCommunication.App.Abstractions.IAppDateService.Now
+  commentId: P:Bodoconsult.NetworkCommunication.App.Abstractions.IAppDateService.Now
+  parent: Bodoconsult.NetworkCommunication.App.Abstractions.IAppDateService
+  href: Bodoconsult.NetworkCommunication.App.Abstractions.IAppDateService.html#Bodoconsult_NetworkCommunication_App_Abstractions_IAppDateService_Now
+  name: Now
+  nameWithType: IAppDateService.Now
+  fullName: Bodoconsult.NetworkCommunication.App.Abstractions.IAppDateService.Now
+- uid: Bodoconsult.NetworkCommunication.App.Abstractions.AppDateService.Today*
+  commentId: Overload:Bodoconsult.NetworkCommunication.App.Abstractions.AppDateService.Today
+  href: Bodoconsult.NetworkCommunication.App.Abstractions.AppDateService.html#Bodoconsult_NetworkCommunication_App_Abstractions_AppDateService_Today
+  name: Today
+  nameWithType: AppDateService.Today
+  fullName: Bodoconsult.NetworkCommunication.App.Abstractions.AppDateService.Today
+- uid: Bodoconsult.NetworkCommunication.App.Abstractions.IAppDateService.Today
+  commentId: P:Bodoconsult.NetworkCommunication.App.Abstractions.IAppDateService.Today
+  parent: Bodoconsult.NetworkCommunication.App.Abstractions.IAppDateService
+  href: Bodoconsult.NetworkCommunication.App.Abstractions.IAppDateService.html#Bodoconsult_NetworkCommunication_App_Abstractions_IAppDateService_Today
+  name: Today
+  nameWithType: IAppDateService.Today
+  fullName: Bodoconsult.NetworkCommunication.App.Abstractions.IAppDateService.Today
+- uid: Bodoconsult.NetworkCommunication.App.Abstractions.AppDateService.GetValidAccessDate*
+  commentId: Overload:Bodoconsult.NetworkCommunication.App.Abstractions.AppDateService.GetValidAccessDate
+  href: Bodoconsult.NetworkCommunication.App.Abstractions.AppDateService.html#Bodoconsult_NetworkCommunication_App_Abstractions_AppDateService_GetValidAccessDate_System_Nullable_System_DateTime__
+  name: GetValidAccessDate
+  nameWithType: AppDateService.GetValidAccessDate
+  fullName: Bodoconsult.NetworkCommunication.App.Abstractions.AppDateService.GetValidAccessDate
+- uid: Bodoconsult.NetworkCommunication.App.Abstractions.IAppDateService.GetValidAccessDate(System.Nullable{System.DateTime})
+  commentId: M:Bodoconsult.NetworkCommunication.App.Abstractions.IAppDateService.GetValidAccessDate(System.Nullable{System.DateTime})
+  parent: Bodoconsult.NetworkCommunication.App.Abstractions.IAppDateService
+  isExternal: true
+  href: Bodoconsult.NetworkCommunication.App.Abstractions.IAppDateService.html#Bodoconsult_NetworkCommunication_App_Abstractions_IAppDateService_GetValidAccessDate_System_Nullable_System_DateTime__
+  name: GetValidAccessDate(DateTime?)
+  nameWithType: IAppDateService.GetValidAccessDate(DateTime?)
+  fullName: Bodoconsult.NetworkCommunication.App.Abstractions.IAppDateService.GetValidAccessDate(System.DateTime?)
+  nameWithType.vb: IAppDateService.GetValidAccessDate(Date?)
+  fullName.vb: Bodoconsult.NetworkCommunication.App.Abstractions.IAppDateService.GetValidAccessDate(Date?)
+  name.vb: GetValidAccessDate(Date?)
+  spec.csharp:
+  - uid: Bodoconsult.NetworkCommunication.App.Abstractions.IAppDateService.GetValidAccessDate(System.Nullable{System.DateTime})
+    name: GetValidAccessDate
+    href: Bodoconsult.NetworkCommunication.App.Abstractions.IAppDateService.html#Bodoconsult_NetworkCommunication_App_Abstractions_IAppDateService_GetValidAccessDate_System_Nullable_System_DateTime__
+  - name: (
+  - uid: System.DateTime
+    name: DateTime
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.datetime
+  - name: '?'
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.NetworkCommunication.App.Abstractions.IAppDateService.GetValidAccessDate(System.Nullable{System.DateTime})
+    name: GetValidAccessDate
+    href: Bodoconsult.NetworkCommunication.App.Abstractions.IAppDateService.html#Bodoconsult_NetworkCommunication_App_Abstractions_IAppDateService_GetValidAccessDate_System_Nullable_System_DateTime__
+  - name: (
+  - uid: System.DateTime
+    name: Date
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.datetime
+  - name: '?'
+  - name: )
+- uid: System.Nullable{System.DateTime}
+  commentId: T:System.Nullable{System.DateTime}
+  parent: System
+  definition: System.Nullable`1
+  href: https://learn.microsoft.com/dotnet/api/system.datetime
+  name: DateTime?
+  nameWithType: DateTime?
+  fullName: System.DateTime?
+  nameWithType.vb: Date?
+  fullName.vb: Date?
+  name.vb: Date?
+  spec.csharp:
+  - uid: System.DateTime
+    name: DateTime
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.datetime
+  - name: '?'
+  spec.vb:
+  - uid: System.DateTime
+    name: Date
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.datetime
+  - name: '?'
+- uid: System.Nullable`1
+  commentId: T:System.Nullable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  name: Nullable<T>
+  nameWithType: Nullable<T>
+  fullName: System.Nullable<T>
+  nameWithType.vb: Nullable(Of T)
+  fullName.vb: System.Nullable(Of T)
+  name.vb: Nullable(Of T)
+  spec.csharp:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Bodoconsult.NetworkCommunication.App.Abstractions.AppDateService.GetCurrentTicks*
+  commentId: Overload:Bodoconsult.NetworkCommunication.App.Abstractions.AppDateService.GetCurrentTicks
+  href: Bodoconsult.NetworkCommunication.App.Abstractions.AppDateService.html#Bodoconsult_NetworkCommunication_App_Abstractions_AppDateService_GetCurrentTicks
+  name: GetCurrentTicks
+  nameWithType: AppDateService.GetCurrentTicks
+  fullName: Bodoconsult.NetworkCommunication.App.Abstractions.AppDateService.GetCurrentTicks
+- uid: Bodoconsult.NetworkCommunication.App.Abstractions.IAppDateService.GetCurrentTicks
+  commentId: M:Bodoconsult.NetworkCommunication.App.Abstractions.IAppDateService.GetCurrentTicks
+  parent: Bodoconsult.NetworkCommunication.App.Abstractions.IAppDateService
+  href: Bodoconsult.NetworkCommunication.App.Abstractions.IAppDateService.html#Bodoconsult_NetworkCommunication_App_Abstractions_IAppDateService_GetCurrentTicks
+  name: GetCurrentTicks()
+  nameWithType: IAppDateService.GetCurrentTicks()
+  fullName: Bodoconsult.NetworkCommunication.App.Abstractions.IAppDateService.GetCurrentTicks()
+  spec.csharp:
+  - uid: Bodoconsult.NetworkCommunication.App.Abstractions.IAppDateService.GetCurrentTicks
+    name: GetCurrentTicks
+    href: Bodoconsult.NetworkCommunication.App.Abstractions.IAppDateService.html#Bodoconsult_NetworkCommunication_App_Abstractions_IAppDateService_GetCurrentTicks
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.NetworkCommunication.App.Abstractions.IAppDateService.GetCurrentTicks
+    name: GetCurrentTicks
+    href: Bodoconsult.NetworkCommunication.App.Abstractions.IAppDateService.html#Bodoconsult_NetworkCommunication_App_Abstractions_IAppDateService_GetCurrentTicks
+  - name: (
+  - name: )
+- uid: System.Int64
+  commentId: T:System.Int64
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int64
+  name: long
+  nameWithType: long
+  fullName: long
+  nameWithType.vb: Long
+  fullName.vb: Long
+  name.vb: Long

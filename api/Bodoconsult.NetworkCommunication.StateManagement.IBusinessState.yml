@@ -1,0 +1,284 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bodoconsult.NetworkCommunication.StateManagement.IBusinessState
+  commentId: T:Bodoconsult.NetworkCommunication.StateManagement.IBusinessState
+  id: IBusinessState
+  parent: Bodoconsult.NetworkCommunication.StateManagement
+  children:
+  - Bodoconsult.NetworkCommunication.StateManagement.IBusinessState.Id
+  - Bodoconsult.NetworkCommunication.StateManagement.IBusinessState.Name
+  langs:
+  - csharp
+  - vb
+  name: IBusinessState
+  nameWithType: IBusinessState
+  fullName: Bodoconsult.NetworkCommunication.StateManagement.IBusinessState
+  type: Interface
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/StateManagement/IBusinessState.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: IBusinessState
+    path: src/Bodoconsult.NetworkCommunication/StateManagement/IBusinessState.cs
+    startLine: 7
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.StateManagement
+  summary: Business state interface
+  example: []
+  syntax:
+    content: 'public interface IBusinessState : IEquatable<IBusinessState>'
+    content.vb: Public Interface IBusinessState Inherits IEquatable(Of IBusinessState)
+  inheritedMembers:
+  - System.IEquatable{Bodoconsult.NetworkCommunication.StateManagement.IBusinessState}.Equals(Bodoconsult.NetworkCommunication.StateManagement.IBusinessState)
+- uid: Bodoconsult.NetworkCommunication.StateManagement.IBusinessState.Id
+  commentId: P:Bodoconsult.NetworkCommunication.StateManagement.IBusinessState.Id
+  id: Id
+  parent: Bodoconsult.NetworkCommunication.StateManagement.IBusinessState
+  langs:
+  - csharp
+  - vb
+  name: Id
+  nameWithType: IBusinessState.Id
+  fullName: Bodoconsult.NetworkCommunication.StateManagement.IBusinessState.Id
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/StateManagement/IBusinessState.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Id
+    path: src/Bodoconsult.NetworkCommunication/StateManagement/IBusinessState.cs
+    startLine: 12
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.StateManagement
+  summary: The ID of the business state
+  example: []
+  syntax:
+    content: int Id { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: ReadOnly Property Id As Integer
+  overload: Bodoconsult.NetworkCommunication.StateManagement.IBusinessState.Id*
+- uid: Bodoconsult.NetworkCommunication.StateManagement.IBusinessState.Name
+  commentId: P:Bodoconsult.NetworkCommunication.StateManagement.IBusinessState.Name
+  id: Name
+  parent: Bodoconsult.NetworkCommunication.StateManagement.IBusinessState
+  langs:
+  - csharp
+  - vb
+  name: Name
+  nameWithType: IBusinessState.Name
+  fullName: Bodoconsult.NetworkCommunication.StateManagement.IBusinessState.Name
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/StateManagement/IBusinessState.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Name
+    path: src/Bodoconsult.NetworkCommunication/StateManagement/IBusinessState.cs
+    startLine: 17
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.StateManagement
+  summary: The cleartext name of the business state
+  example: []
+  syntax:
+    content: string Name { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: ReadOnly Property Name As String
+  overload: Bodoconsult.NetworkCommunication.StateManagement.IBusinessState.Name*
+references:
+- uid: Bodoconsult.NetworkCommunication.StateManagement
+  commentId: N:Bodoconsult.NetworkCommunication.StateManagement
+  href: Bodoconsult.html
+  name: Bodoconsult.NetworkCommunication.StateManagement
+  nameWithType: Bodoconsult.NetworkCommunication.StateManagement
+  fullName: Bodoconsult.NetworkCommunication.StateManagement
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.StateManagement
+    name: StateManagement
+    href: Bodoconsult.NetworkCommunication.StateManagement.html
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.StateManagement
+    name: StateManagement
+    href: Bodoconsult.NetworkCommunication.StateManagement.html
+- uid: System.IEquatable{Bodoconsult.NetworkCommunication.StateManagement.IBusinessState}.Equals(Bodoconsult.NetworkCommunication.StateManagement.IBusinessState)
+  commentId: M:System.IEquatable{Bodoconsult.NetworkCommunication.StateManagement.IBusinessState}.Equals(Bodoconsult.NetworkCommunication.StateManagement.IBusinessState)
+  parent: System.IEquatable{Bodoconsult.NetworkCommunication.StateManagement.IBusinessState}
+  definition: System.IEquatable`1.Equals(`0)
+  href: https://learn.microsoft.com/dotnet/api/system.iequatable-1.equals
+  name: Equals(IBusinessState)
+  nameWithType: IEquatable<IBusinessState>.Equals(IBusinessState)
+  fullName: System.IEquatable<Bodoconsult.NetworkCommunication.StateManagement.IBusinessState>.Equals(Bodoconsult.NetworkCommunication.StateManagement.IBusinessState)
+  nameWithType.vb: IEquatable(Of IBusinessState).Equals(IBusinessState)
+  fullName.vb: System.IEquatable(Of Bodoconsult.NetworkCommunication.StateManagement.IBusinessState).Equals(Bodoconsult.NetworkCommunication.StateManagement.IBusinessState)
+  spec.csharp:
+  - uid: System.IEquatable{Bodoconsult.NetworkCommunication.StateManagement.IBusinessState}.Equals(Bodoconsult.NetworkCommunication.StateManagement.IBusinessState)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1.equals
+  - name: (
+  - uid: Bodoconsult.NetworkCommunication.StateManagement.IBusinessState
+    name: IBusinessState
+    href: Bodoconsult.NetworkCommunication.StateManagement.IBusinessState.html
+  - name: )
+  spec.vb:
+  - uid: System.IEquatable{Bodoconsult.NetworkCommunication.StateManagement.IBusinessState}.Equals(Bodoconsult.NetworkCommunication.StateManagement.IBusinessState)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1.equals
+  - name: (
+  - uid: Bodoconsult.NetworkCommunication.StateManagement.IBusinessState
+    name: IBusinessState
+    href: Bodoconsult.NetworkCommunication.StateManagement.IBusinessState.html
+  - name: )
+- uid: System.IEquatable`1.Equals(`0)
+  commentId: M:System.IEquatable`1.Equals(`0)
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.iequatable-1.equals
+  name: Equals(T)
+  nameWithType: IEquatable<T>.Equals(T)
+  fullName: System.IEquatable<T>.Equals(T)
+  nameWithType.vb: IEquatable(Of T).Equals(T)
+  fullName.vb: System.IEquatable(Of T).Equals(T)
+  spec.csharp:
+  - uid: System.IEquatable`1.Equals(`0)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1.equals
+  - name: (
+  - name: T
+  - name: )
+  spec.vb:
+  - uid: System.IEquatable`1.Equals(`0)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1.equals
+  - name: (
+  - name: T
+  - name: )
+- uid: System.IEquatable{Bodoconsult.NetworkCommunication.StateManagement.IBusinessState}
+  commentId: T:System.IEquatable{Bodoconsult.NetworkCommunication.StateManagement.IBusinessState}
+  parent: System
+  definition: System.IEquatable`1
+  href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  name: IEquatable<IBusinessState>
+  nameWithType: IEquatable<IBusinessState>
+  fullName: System.IEquatable<Bodoconsult.NetworkCommunication.StateManagement.IBusinessState>
+  nameWithType.vb: IEquatable(Of IBusinessState)
+  fullName.vb: System.IEquatable(Of Bodoconsult.NetworkCommunication.StateManagement.IBusinessState)
+  name.vb: IEquatable(Of IBusinessState)
+  spec.csharp:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: <
+  - uid: Bodoconsult.NetworkCommunication.StateManagement.IBusinessState
+    name: IBusinessState
+    href: Bodoconsult.NetworkCommunication.StateManagement.IBusinessState.html
+  - name: '>'
+  spec.vb:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Bodoconsult.NetworkCommunication.StateManagement.IBusinessState
+    name: IBusinessState
+    href: Bodoconsult.NetworkCommunication.StateManagement.IBusinessState.html
+  - name: )
+- uid: System.IEquatable`1
+  commentId: T:System.IEquatable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  name: IEquatable<T>
+  nameWithType: IEquatable<T>
+  fullName: System.IEquatable<T>
+  nameWithType.vb: IEquatable(Of T)
+  fullName.vb: System.IEquatable(Of T)
+  name.vb: IEquatable(Of T)
+  spec.csharp:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Bodoconsult.NetworkCommunication.StateManagement.IBusinessState.Id*
+  commentId: Overload:Bodoconsult.NetworkCommunication.StateManagement.IBusinessState.Id
+  href: Bodoconsult.NetworkCommunication.StateManagement.IBusinessState.html#Bodoconsult_NetworkCommunication_StateManagement_IBusinessState_Id
+  name: Id
+  nameWithType: IBusinessState.Id
+  fullName: Bodoconsult.NetworkCommunication.StateManagement.IBusinessState.Id
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: Bodoconsult.NetworkCommunication.StateManagement.IBusinessState.Name*
+  commentId: Overload:Bodoconsult.NetworkCommunication.StateManagement.IBusinessState.Name
+  href: Bodoconsult.NetworkCommunication.StateManagement.IBusinessState.html#Bodoconsult_NetworkCommunication_StateManagement_IBusinessState_Name
+  name: Name
+  nameWithType: IBusinessState.Name
+  fullName: Bodoconsult.NetworkCommunication.StateManagement.IBusinessState.Name
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String

@@ -1,0 +1,379 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IOrderManagementClientNotificationManager
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.IOrderManagementClientNotificationManager
+  id: IOrderManagementClientNotificationManager
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  children:
+  - Bodoconsult.NetworkCommunication.Interfaces.IOrderManagementClientNotificationManager.DoNotifyOrderStateChanged(System.Object,Bodoconsult.NetworkCommunication.Interfaces.IOrder)
+  - Bodoconsult.NetworkCommunication.Interfaces.IOrderManagementClientNotificationManager.DoNotifyStateManagementStateEvent(System.Object,Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState)
+  langs:
+  - csharp
+  - vb
+  name: IOrderManagementClientNotificationManager
+  nameWithType: IOrderManagementClientNotificationManager
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IOrderManagementClientNotificationManager
+  type: Interface
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/IOrderManagementClientNotificationManager.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: IOrderManagementClientNotificationManager
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/IOrderManagementClientNotificationManager.cs
+    startLine: 10
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Interface to implemented order management related messaging to clients etc.
+  example: []
+  syntax:
+    content: 'public interface IOrderManagementClientNotificationManager : ICentralClientNotificationManager'
+    content.vb: Public Interface IOrderManagementClientNotificationManager Inherits ICentralClientNotificationManager
+  inheritedMembers:
+  - Bodoconsult.NetworkCommunication.App.Abstractions.ICentralClientNotificationManager.NotifyClient
+  - Bodoconsult.NetworkCommunication.App.Abstractions.ICentralClientNotificationManager.DoNotifyProgressEvent(System.Object,System.Int32,System.Int32,System.Boolean)
+  - Bodoconsult.NetworkCommunication.App.Abstractions.ICentralClientNotificationManager.DoNotifyException(System.Object,System.Exception)
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IOrderManagementClientNotificationManager.DoNotifyStateManagementStateEvent(System.Object,Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState)
+  commentId: M:Bodoconsult.NetworkCommunication.Interfaces.IOrderManagementClientNotificationManager.DoNotifyStateManagementStateEvent(System.Object,Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState)
+  id: DoNotifyStateManagementStateEvent(System.Object,Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState)
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IOrderManagementClientNotificationManager
+  langs:
+  - csharp
+  - vb
+  name: DoNotifyStateManagementStateEvent(object, IStateManagementState)
+  nameWithType: IOrderManagementClientNotificationManager.DoNotifyStateManagementStateEvent(object, IStateManagementState)
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IOrderManagementClientNotificationManager.DoNotifyStateManagementStateEvent(object, Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState)
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/IOrderManagementClientNotificationManager.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: DoNotifyStateManagementStateEvent
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/IOrderManagementClientNotificationManager.cs
+    startLine: 17
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Send a string notification
+  example: []
+  syntax:
+    content: void DoNotifyStateManagementStateEvent(object sender, IStateManagementState state)
+    parameters:
+    - id: sender
+      type: System.Object
+      description: Sender
+    - id: state
+      type: Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState
+      description: State to send to client
+    content.vb: Sub DoNotifyStateManagementStateEvent(sender As Object, state As IStateManagementState)
+  overload: Bodoconsult.NetworkCommunication.Interfaces.IOrderManagementClientNotificationManager.DoNotifyStateManagementStateEvent*
+  nameWithType.vb: IOrderManagementClientNotificationManager.DoNotifyStateManagementStateEvent(Object, IStateManagementState)
+  fullName.vb: Bodoconsult.NetworkCommunication.Interfaces.IOrderManagementClientNotificationManager.DoNotifyStateManagementStateEvent(Object, Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState)
+  name.vb: DoNotifyStateManagementStateEvent(Object, IStateManagementState)
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IOrderManagementClientNotificationManager.DoNotifyOrderStateChanged(System.Object,Bodoconsult.NetworkCommunication.Interfaces.IOrder)
+  commentId: M:Bodoconsult.NetworkCommunication.Interfaces.IOrderManagementClientNotificationManager.DoNotifyOrderStateChanged(System.Object,Bodoconsult.NetworkCommunication.Interfaces.IOrder)
+  id: DoNotifyOrderStateChanged(System.Object,Bodoconsult.NetworkCommunication.Interfaces.IOrder)
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IOrderManagementClientNotificationManager
+  langs:
+  - csharp
+  - vb
+  name: DoNotifyOrderStateChanged(object, IOrder)
+  nameWithType: IOrderManagementClientNotificationManager.DoNotifyOrderStateChanged(object, IOrder)
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IOrderManagementClientNotificationManager.DoNotifyOrderStateChanged(object, Bodoconsult.NetworkCommunication.Interfaces.IOrder)
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/IOrderManagementClientNotificationManager.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: DoNotifyOrderStateChanged
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/IOrderManagementClientNotificationManager.cs
+    startLine: 24
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Do notify order state changed
+  example: []
+  syntax:
+    content: void DoNotifyOrderStateChanged(object sender, IOrder order)
+    parameters:
+    - id: sender
+      type: System.Object
+      description: Sender of the notification
+    - id: order
+      type: Bodoconsult.NetworkCommunication.Interfaces.IOrder
+      description: Current order
+    content.vb: Sub DoNotifyOrderStateChanged(sender As Object, order As IOrder)
+  overload: Bodoconsult.NetworkCommunication.Interfaces.IOrderManagementClientNotificationManager.DoNotifyOrderStateChanged*
+  nameWithType.vb: IOrderManagementClientNotificationManager.DoNotifyOrderStateChanged(Object, IOrder)
+  fullName.vb: Bodoconsult.NetworkCommunication.Interfaces.IOrderManagementClientNotificationManager.DoNotifyOrderStateChanged(Object, Bodoconsult.NetworkCommunication.Interfaces.IOrder)
+  name.vb: DoNotifyOrderStateChanged(Object, IOrder)
+references:
+- uid: Bodoconsult.NetworkCommunication.Interfaces
+  commentId: N:Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.html
+  name: Bodoconsult.NetworkCommunication.Interfaces
+  nameWithType: Bodoconsult.NetworkCommunication.Interfaces
+  fullName: Bodoconsult.NetworkCommunication.Interfaces
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Interfaces
+    name: Interfaces
+    href: Bodoconsult.NetworkCommunication.Interfaces.html
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Interfaces
+    name: Interfaces
+    href: Bodoconsult.NetworkCommunication.Interfaces.html
+- uid: Bodoconsult.NetworkCommunication.App.Abstractions.ICentralClientNotificationManager.NotifyClient
+  commentId: P:Bodoconsult.NetworkCommunication.App.Abstractions.ICentralClientNotificationManager.NotifyClient
+  parent: Bodoconsult.NetworkCommunication.App.Abstractions.ICentralClientNotificationManager
+  href: Bodoconsult.NetworkCommunication.App.Abstractions.ICentralClientNotificationManager.html#Bodoconsult_NetworkCommunication_App_Abstractions_ICentralClientNotificationManager_NotifyClient
+  name: NotifyClient
+  nameWithType: ICentralClientNotificationManager.NotifyClient
+  fullName: Bodoconsult.NetworkCommunication.App.Abstractions.ICentralClientNotificationManager.NotifyClient
+- uid: Bodoconsult.NetworkCommunication.App.Abstractions.ICentralClientNotificationManager.DoNotifyProgressEvent(System.Object,System.Int32,System.Int32,System.Boolean)
+  commentId: M:Bodoconsult.NetworkCommunication.App.Abstractions.ICentralClientNotificationManager.DoNotifyProgressEvent(System.Object,System.Int32,System.Int32,System.Boolean)
+  parent: Bodoconsult.NetworkCommunication.App.Abstractions.ICentralClientNotificationManager
+  isExternal: true
+  href: Bodoconsult.NetworkCommunication.App.Abstractions.ICentralClientNotificationManager.html#Bodoconsult_NetworkCommunication_App_Abstractions_ICentralClientNotificationManager_DoNotifyProgressEvent_System_Object_System_Int32_System_Int32_System_Boolean_
+  name: DoNotifyProgressEvent(object, int, int, bool)
+  nameWithType: ICentralClientNotificationManager.DoNotifyProgressEvent(object, int, int, bool)
+  fullName: Bodoconsult.NetworkCommunication.App.Abstractions.ICentralClientNotificationManager.DoNotifyProgressEvent(object, int, int, bool)
+  nameWithType.vb: ICentralClientNotificationManager.DoNotifyProgressEvent(Object, Integer, Integer, Boolean)
+  fullName.vb: Bodoconsult.NetworkCommunication.App.Abstractions.ICentralClientNotificationManager.DoNotifyProgressEvent(Object, Integer, Integer, Boolean)
+  name.vb: DoNotifyProgressEvent(Object, Integer, Integer, Boolean)
+  spec.csharp:
+  - uid: Bodoconsult.NetworkCommunication.App.Abstractions.ICentralClientNotificationManager.DoNotifyProgressEvent(System.Object,System.Int32,System.Int32,System.Boolean)
+    name: DoNotifyProgressEvent
+    href: Bodoconsult.NetworkCommunication.App.Abstractions.ICentralClientNotificationManager.html#Bodoconsult_NetworkCommunication_App_Abstractions_ICentralClientNotificationManager_DoNotifyProgressEvent_System_Object_System_Int32_System_Int32_System_Boolean_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.NetworkCommunication.App.Abstractions.ICentralClientNotificationManager.DoNotifyProgressEvent(System.Object,System.Int32,System.Int32,System.Boolean)
+    name: DoNotifyProgressEvent
+    href: Bodoconsult.NetworkCommunication.App.Abstractions.ICentralClientNotificationManager.html#Bodoconsult_NetworkCommunication_App_Abstractions_ICentralClientNotificationManager_DoNotifyProgressEvent_System_Object_System_Int32_System_Int32_System_Boolean_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: Bodoconsult.NetworkCommunication.App.Abstractions.ICentralClientNotificationManager.DoNotifyException(System.Object,System.Exception)
+  commentId: M:Bodoconsult.NetworkCommunication.App.Abstractions.ICentralClientNotificationManager.DoNotifyException(System.Object,System.Exception)
+  parent: Bodoconsult.NetworkCommunication.App.Abstractions.ICentralClientNotificationManager
+  isExternal: true
+  href: Bodoconsult.NetworkCommunication.App.Abstractions.ICentralClientNotificationManager.html#Bodoconsult_NetworkCommunication_App_Abstractions_ICentralClientNotificationManager_DoNotifyException_System_Object_System_Exception_
+  name: DoNotifyException(object, Exception)
+  nameWithType: ICentralClientNotificationManager.DoNotifyException(object, Exception)
+  fullName: Bodoconsult.NetworkCommunication.App.Abstractions.ICentralClientNotificationManager.DoNotifyException(object, System.Exception)
+  nameWithType.vb: ICentralClientNotificationManager.DoNotifyException(Object, Exception)
+  fullName.vb: Bodoconsult.NetworkCommunication.App.Abstractions.ICentralClientNotificationManager.DoNotifyException(Object, System.Exception)
+  name.vb: DoNotifyException(Object, Exception)
+  spec.csharp:
+  - uid: Bodoconsult.NetworkCommunication.App.Abstractions.ICentralClientNotificationManager.DoNotifyException(System.Object,System.Exception)
+    name: DoNotifyException
+    href: Bodoconsult.NetworkCommunication.App.Abstractions.ICentralClientNotificationManager.html#Bodoconsult_NetworkCommunication_App_Abstractions_ICentralClientNotificationManager_DoNotifyException_System_Object_System_Exception_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Exception
+    name: Exception
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.exception
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.NetworkCommunication.App.Abstractions.ICentralClientNotificationManager.DoNotifyException(System.Object,System.Exception)
+    name: DoNotifyException
+    href: Bodoconsult.NetworkCommunication.App.Abstractions.ICentralClientNotificationManager.html#Bodoconsult_NetworkCommunication_App_Abstractions_ICentralClientNotificationManager_DoNotifyException_System_Object_System_Exception_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Exception
+    name: Exception
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.exception
+  - name: )
+- uid: Bodoconsult.NetworkCommunication.App.Abstractions.ICentralClientNotificationManager
+  commentId: T:Bodoconsult.NetworkCommunication.App.Abstractions.ICentralClientNotificationManager
+  parent: Bodoconsult.NetworkCommunication.App.Abstractions
+  href: Bodoconsult.NetworkCommunication.App.Abstractions.ICentralClientNotificationManager.html
+  name: ICentralClientNotificationManager
+  nameWithType: ICentralClientNotificationManager
+  fullName: Bodoconsult.NetworkCommunication.App.Abstractions.ICentralClientNotificationManager
+- uid: Bodoconsult.NetworkCommunication.App.Abstractions
+  commentId: N:Bodoconsult.NetworkCommunication.App.Abstractions
+  href: Bodoconsult.html
+  name: Bodoconsult.NetworkCommunication.App.Abstractions
+  nameWithType: Bodoconsult.NetworkCommunication.App.Abstractions
+  fullName: Bodoconsult.NetworkCommunication.App.Abstractions
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.App
+    name: App
+    href: Bodoconsult.NetworkCommunication.App.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.App.Abstractions
+    name: Abstractions
+    href: Bodoconsult.NetworkCommunication.App.Abstractions.html
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.App
+    name: App
+    href: Bodoconsult.NetworkCommunication.App.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.App.Abstractions
+    name: Abstractions
+    href: Bodoconsult.NetworkCommunication.App.Abstractions.html
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IOrderManagementClientNotificationManager.DoNotifyStateManagementStateEvent*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.IOrderManagementClientNotificationManager.DoNotifyStateManagementStateEvent
+  href: Bodoconsult.NetworkCommunication.Interfaces.IOrderManagementClientNotificationManager.html#Bodoconsult_NetworkCommunication_Interfaces_IOrderManagementClientNotificationManager_DoNotifyStateManagementStateEvent_System_Object_Bodoconsult_NetworkCommunication_StateManagement_IStateManagementState_
+  name: DoNotifyStateManagementStateEvent
+  nameWithType: IOrderManagementClientNotificationManager.DoNotifyStateManagementStateEvent
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IOrderManagementClientNotificationManager.DoNotifyStateManagementStateEvent
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState
+  commentId: T:Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState
+  parent: Bodoconsult.NetworkCommunication.StateManagement
+  href: Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState.html
+  name: IStateManagementState
+  nameWithType: IStateManagementState
+  fullName: Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Bodoconsult.NetworkCommunication.StateManagement
+  commentId: N:Bodoconsult.NetworkCommunication.StateManagement
+  href: Bodoconsult.html
+  name: Bodoconsult.NetworkCommunication.StateManagement
+  nameWithType: Bodoconsult.NetworkCommunication.StateManagement
+  fullName: Bodoconsult.NetworkCommunication.StateManagement
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.StateManagement
+    name: StateManagement
+    href: Bodoconsult.NetworkCommunication.StateManagement.html
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.StateManagement
+    name: StateManagement
+    href: Bodoconsult.NetworkCommunication.StateManagement.html
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IOrderManagementClientNotificationManager.DoNotifyOrderStateChanged*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.IOrderManagementClientNotificationManager.DoNotifyOrderStateChanged
+  href: Bodoconsult.NetworkCommunication.Interfaces.IOrderManagementClientNotificationManager.html#Bodoconsult_NetworkCommunication_Interfaces_IOrderManagementClientNotificationManager_DoNotifyOrderStateChanged_System_Object_Bodoconsult_NetworkCommunication_Interfaces_IOrder_
+  name: DoNotifyOrderStateChanged
+  nameWithType: IOrderManagementClientNotificationManager.DoNotifyOrderStateChanged
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IOrderManagementClientNotificationManager.DoNotifyOrderStateChanged
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IOrder
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.IOrder
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.NetworkCommunication.Interfaces.IOrder.html
+  name: IOrder
+  nameWithType: IOrder
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IOrder

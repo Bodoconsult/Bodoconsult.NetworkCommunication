@@ -1,0 +1,221 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerClientNameProtectionStates
+  commentId: T:Bodoconsult.Network.Windows.Dhcp.DhcpServerClientNameProtectionStates
+  id: DhcpServerClientNameProtectionStates
+  parent: Bodoconsult.Network.Windows.Dhcp
+  children:
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerClientNameProtectionStates.DhcidWithClientIdOption
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerClientNameProtectionStates.DhcidWithDuid
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerClientNameProtectionStates.NoClientIdOption
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerClientNameProtectionStates.NoDhcid
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerClientNameProtectionStates.Unknown
+  langs:
+  - csharp
+  - vb
+  name: DhcpServerClientNameProtectionStates
+  nameWithType: DhcpServerClientNameProtectionStates
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerClientNameProtectionStates
+  type: Enum
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerClientNameProtectionStates.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: DhcpServerClientNameProtectionStates
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerClientNameProtectionStates.cs
+    startLine: 8
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  summary: Client Name Protection States
+  example: []
+  syntax:
+    content: public enum DhcpServerClientNameProtectionStates
+    content.vb: Public Enum DhcpServerClientNameProtectionStates
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerClientNameProtectionStates.NoDhcid
+  commentId: F:Bodoconsult.Network.Windows.Dhcp.DhcpServerClientNameProtectionStates.NoDhcid
+  id: NoDhcid
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerClientNameProtectionStates
+  langs:
+  - csharp
+  - vb
+  name: NoDhcid
+  nameWithType: DhcpServerClientNameProtectionStates.NoDhcid
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerClientNameProtectionStates.NoDhcid
+  type: Field
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerClientNameProtectionStates.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: NoDhcid
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerClientNameProtectionStates.cs
+    startLine: 13
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  summary: The address is leased to the DHCPv4 client without DHCID (sections 3 and 3.5 of [RFC4701]).
+  example: []
+  syntax:
+    content: NoDhcid = 0
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerClientNameProtectionStates
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerClientNameProtectionStates.NoClientIdOption
+  commentId: F:Bodoconsult.Network.Windows.Dhcp.DhcpServerClientNameProtectionStates.NoClientIdOption
+  id: NoClientIdOption
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerClientNameProtectionStates
+  langs:
+  - csharp
+  - vb
+  name: NoClientIdOption
+  nameWithType: DhcpServerClientNameProtectionStates.NoClientIdOption
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerClientNameProtectionStates.NoClientIdOption
+  type: Field
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerClientNameProtectionStates.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: NoClientIdOption
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerClientNameProtectionStates.cs
+    startLine: 17
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  summary: The address is leased to the DHCPv4 client with DHCID as specified in section 3.5.3 of [RFC4701].
+  example: []
+  syntax:
+    content: NoClientIdOption = 1
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerClientNameProtectionStates
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerClientNameProtectionStates.DhcidWithClientIdOption
+  commentId: F:Bodoconsult.Network.Windows.Dhcp.DhcpServerClientNameProtectionStates.DhcidWithClientIdOption
+  id: DhcidWithClientIdOption
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerClientNameProtectionStates
+  langs:
+  - csharp
+  - vb
+  name: DhcidWithClientIdOption
+  nameWithType: DhcpServerClientNameProtectionStates.DhcidWithClientIdOption
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerClientNameProtectionStates.DhcidWithClientIdOption
+  type: Field
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerClientNameProtectionStates.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: DhcidWithClientIdOption
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerClientNameProtectionStates.cs
+    startLine: 21
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  summary: The address is leased to the DHCPv4 client with DHCID as specified in section 3.5.2 of [RFC4701].
+  example: []
+  syntax:
+    content: DhcidWithClientIdOption = 2
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerClientNameProtectionStates
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerClientNameProtectionStates.DhcidWithDuid
+  commentId: F:Bodoconsult.Network.Windows.Dhcp.DhcpServerClientNameProtectionStates.DhcidWithDuid
+  id: DhcidWithDuid
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerClientNameProtectionStates
+  langs:
+  - csharp
+  - vb
+  name: DhcidWithDuid
+  nameWithType: DhcpServerClientNameProtectionStates.DhcidWithDuid
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerClientNameProtectionStates.DhcidWithDuid
+  type: Field
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerClientNameProtectionStates.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: DhcidWithDuid
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerClientNameProtectionStates.cs
+    startLine: 25
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  summary: The address is leased to the DHCPv4 client with DHCID as specified in section 3.5.1 of [RFC4701].
+  example: []
+  syntax:
+    content: DhcidWithDuid = 3
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerClientNameProtectionStates
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerClientNameProtectionStates.Unknown
+  commentId: F:Bodoconsult.Network.Windows.Dhcp.DhcpServerClientNameProtectionStates.Unknown
+  id: Unknown
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerClientNameProtectionStates
+  langs:
+  - csharp
+  - vb
+  name: Unknown
+  nameWithType: DhcpServerClientNameProtectionStates.Unknown
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerClientNameProtectionStates.Unknown
+  type: Field
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerClientNameProtectionStates.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Unknown
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerClientNameProtectionStates.cs
+    startLine: 29
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  summary: The Name Protection State is unknown or not supported by the server.
+  example: []
+  syntax:
+    content: Unknown = -1
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerClientNameProtectionStates
+references:
+- uid: Bodoconsult.Network.Windows.Dhcp
+  commentId: N:Bodoconsult.Network.Windows.Dhcp
+  href: Bodoconsult.html
+  name: Bodoconsult.Network.Windows.Dhcp
+  nameWithType: Bodoconsult.Network.Windows.Dhcp
+  fullName: Bodoconsult.Network.Windows.Dhcp
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.Network
+    name: Network
+    href: Bodoconsult.Network.html
+  - name: .
+  - uid: Bodoconsult.Network.Windows
+    name: Windows
+    href: Bodoconsult.Network.Windows.html
+  - name: .
+  - uid: Bodoconsult.Network.Windows.Dhcp
+    name: Dhcp
+    href: Bodoconsult.Network.Windows.Dhcp.html
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.Network
+    name: Network
+    href: Bodoconsult.Network.html
+  - name: .
+  - uid: Bodoconsult.Network.Windows
+    name: Windows
+    href: Bodoconsult.Network.Windows.html
+  - name: .
+  - uid: Bodoconsult.Network.Windows.Dhcp
+    name: Dhcp
+    href: Bodoconsult.Network.Windows.Dhcp.html
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerClientNameProtectionStates
+  commentId: T:Bodoconsult.Network.Windows.Dhcp.DhcpServerClientNameProtectionStates
+  parent: Bodoconsult.Network.Windows.Dhcp
+  href: Bodoconsult.Network.Windows.Dhcp.DhcpServerClientNameProtectionStates.html
+  name: DhcpServerClientNameProtectionStates
+  nameWithType: DhcpServerClientNameProtectionStates
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerClientNameProtectionStates

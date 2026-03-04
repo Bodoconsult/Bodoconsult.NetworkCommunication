@@ -1,0 +1,799 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bodoconsult.NetworkCommunication.EventSources.DataMessagingEventSourceProvider
+  commentId: T:Bodoconsult.NetworkCommunication.EventSources.DataMessagingEventSourceProvider
+  id: DataMessagingEventSourceProvider
+  parent: Bodoconsult.NetworkCommunication.EventSources
+  children:
+  - Bodoconsult.NetworkCommunication.EventSources.DataMessagingEventSourceProvider.AddEventCounters(Bodoconsult.App.EventCounters.AppApmEventSource)
+  - Bodoconsult.NetworkCommunication.EventSources.DataMessagingEventSourceProvider.AddIncrementingEventCounters(Bodoconsult.App.EventCounters.AppApmEventSource)
+  - Bodoconsult.NetworkCommunication.EventSources.DataMessagingEventSourceProvider.AddIncrementingPollingCounters(Bodoconsult.App.EventCounters.AppApmEventSource)
+  - Bodoconsult.NetworkCommunication.EventSources.DataMessagingEventSourceProvider.AddPollingCounters(Bodoconsult.App.EventCounters.AppApmEventSource)
+  - Bodoconsult.NetworkCommunication.EventSources.DataMessagingEventSourceProvider.DclReceivedDataMessageBytes
+  - Bodoconsult.NetworkCommunication.EventSources.DataMessagingEventSourceProvider.DclReceivedDataMessageCount
+  - Bodoconsult.NetworkCommunication.EventSources.DataMessagingEventSourceProvider.DclSentDataMessageBytes
+  - Bodoconsult.NetworkCommunication.EventSources.DataMessagingEventSourceProvider.DclSentDataMessageCount
+  langs:
+  - csharp
+  - vb
+  name: DataMessagingEventSourceProvider
+  nameWithType: DataMessagingEventSourceProvider
+  fullName: Bodoconsult.NetworkCommunication.EventSources.DataMessagingEventSourceProvider
+  type: Class
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/EventSources/DataMessagingEventSourceProvider.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: DataMessagingEventSourceProvider
+    path: src/Bodoconsult.NetworkCommunication/EventSources/DataMessagingEventSourceProvider.cs
+    startLine: 11
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.EventSources
+  summary: Provider for device comm general event counters (DCL = device communication layer)
+  example: []
+  syntax:
+    content: 'public class DataMessagingEventSourceProvider : IEventSourceProvider'
+    content.vb: Public Class DataMessagingEventSourceProvider Implements IEventSourceProvider
+  inheritance:
+  - System.Object
+  implements:
+  - Bodoconsult.App.Interfaces.IEventSourceProvider
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: Bodoconsult.NetworkCommunication.EventSources.DataMessagingEventSourceProvider.DclSentDataMessageCount
+  commentId: F:Bodoconsult.NetworkCommunication.EventSources.DataMessagingEventSourceProvider.DclSentDataMessageCount
+  id: DclSentDataMessageCount
+  parent: Bodoconsult.NetworkCommunication.EventSources.DataMessagingEventSourceProvider
+  langs:
+  - csharp
+  - vb
+  name: DclSentDataMessageCount
+  nameWithType: DataMessagingEventSourceProvider.DclSentDataMessageCount
+  fullName: Bodoconsult.NetworkCommunication.EventSources.DataMessagingEventSourceProvider.DclSentDataMessageCount
+  type: Field
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/EventSources/DataMessagingEventSourceProvider.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: DclSentDataMessageCount
+    path: src/Bodoconsult.NetworkCommunication/EventSources/DataMessagingEventSourceProvider.cs
+    startLine: 13
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.EventSources
+  syntax:
+    content: public const string DclSentDataMessageCount = "DCL.SentDataMessage.Count"
+    return:
+      type: System.String
+    content.vb: Public Const DclSentDataMessageCount As String = "DCL.SentDataMessage.Count"
+- uid: Bodoconsult.NetworkCommunication.EventSources.DataMessagingEventSourceProvider.DclSentDataMessageBytes
+  commentId: F:Bodoconsult.NetworkCommunication.EventSources.DataMessagingEventSourceProvider.DclSentDataMessageBytes
+  id: DclSentDataMessageBytes
+  parent: Bodoconsult.NetworkCommunication.EventSources.DataMessagingEventSourceProvider
+  langs:
+  - csharp
+  - vb
+  name: DclSentDataMessageBytes
+  nameWithType: DataMessagingEventSourceProvider.DclSentDataMessageBytes
+  fullName: Bodoconsult.NetworkCommunication.EventSources.DataMessagingEventSourceProvider.DclSentDataMessageBytes
+  type: Field
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/EventSources/DataMessagingEventSourceProvider.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: DclSentDataMessageBytes
+    path: src/Bodoconsult.NetworkCommunication/EventSources/DataMessagingEventSourceProvider.cs
+    startLine: 15
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.EventSources
+  syntax:
+    content: public const string DclSentDataMessageBytes = "DCL.SentDataMessage.Bytes"
+    return:
+      type: System.String
+    content.vb: Public Const DclSentDataMessageBytes As String = "DCL.SentDataMessage.Bytes"
+- uid: Bodoconsult.NetworkCommunication.EventSources.DataMessagingEventSourceProvider.DclReceivedDataMessageCount
+  commentId: F:Bodoconsult.NetworkCommunication.EventSources.DataMessagingEventSourceProvider.DclReceivedDataMessageCount
+  id: DclReceivedDataMessageCount
+  parent: Bodoconsult.NetworkCommunication.EventSources.DataMessagingEventSourceProvider
+  langs:
+  - csharp
+  - vb
+  name: DclReceivedDataMessageCount
+  nameWithType: DataMessagingEventSourceProvider.DclReceivedDataMessageCount
+  fullName: Bodoconsult.NetworkCommunication.EventSources.DataMessagingEventSourceProvider.DclReceivedDataMessageCount
+  type: Field
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/EventSources/DataMessagingEventSourceProvider.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: DclReceivedDataMessageCount
+    path: src/Bodoconsult.NetworkCommunication/EventSources/DataMessagingEventSourceProvider.cs
+    startLine: 17
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.EventSources
+  syntax:
+    content: public const string DclReceivedDataMessageCount = "DCL.ReceivedDataMessage.Count"
+    return:
+      type: System.String
+    content.vb: Public Const DclReceivedDataMessageCount As String = "DCL.ReceivedDataMessage.Count"
+- uid: Bodoconsult.NetworkCommunication.EventSources.DataMessagingEventSourceProvider.DclReceivedDataMessageBytes
+  commentId: F:Bodoconsult.NetworkCommunication.EventSources.DataMessagingEventSourceProvider.DclReceivedDataMessageBytes
+  id: DclReceivedDataMessageBytes
+  parent: Bodoconsult.NetworkCommunication.EventSources.DataMessagingEventSourceProvider
+  langs:
+  - csharp
+  - vb
+  name: DclReceivedDataMessageBytes
+  nameWithType: DataMessagingEventSourceProvider.DclReceivedDataMessageBytes
+  fullName: Bodoconsult.NetworkCommunication.EventSources.DataMessagingEventSourceProvider.DclReceivedDataMessageBytes
+  type: Field
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/EventSources/DataMessagingEventSourceProvider.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: DclReceivedDataMessageBytes
+    path: src/Bodoconsult.NetworkCommunication/EventSources/DataMessagingEventSourceProvider.cs
+    startLine: 19
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.EventSources
+  syntax:
+    content: public const string DclReceivedDataMessageBytes = "DCL.ReceivedDataMessage.Bytes"
+    return:
+      type: System.String
+    content.vb: Public Const DclReceivedDataMessageBytes As String = "DCL.ReceivedDataMessage.Bytes"
+- uid: Bodoconsult.NetworkCommunication.EventSources.DataMessagingEventSourceProvider.AddEventCounters(Bodoconsult.App.EventCounters.AppApmEventSource)
+  commentId: M:Bodoconsult.NetworkCommunication.EventSources.DataMessagingEventSourceProvider.AddEventCounters(Bodoconsult.App.EventCounters.AppApmEventSource)
+  id: AddEventCounters(Bodoconsult.App.EventCounters.AppApmEventSource)
+  parent: Bodoconsult.NetworkCommunication.EventSources.DataMessagingEventSourceProvider
+  langs:
+  - csharp
+  - vb
+  name: AddEventCounters(AppApmEventSource)
+  nameWithType: DataMessagingEventSourceProvider.AddEventCounters(AppApmEventSource)
+  fullName: Bodoconsult.NetworkCommunication.EventSources.DataMessagingEventSourceProvider.AddEventCounters(Bodoconsult.App.EventCounters.AppApmEventSource)
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/EventSources/DataMessagingEventSourceProvider.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: AddEventCounters
+    path: src/Bodoconsult.NetworkCommunication/EventSources/DataMessagingEventSourceProvider.cs
+    startLine: 25
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.EventSources
+  summary: Add <xref href="System.Diagnostics.Tracing.EventCounter" data-throw-if-not-resolved="false"></xref> to the event source
+  example: []
+  syntax:
+    content: public void AddEventCounters(AppApmEventSource eventSource)
+    parameters:
+    - id: eventSource
+      type: Bodoconsult.App.EventCounters.AppApmEventSource
+      description: Current event source
+    content.vb: Public Sub AddEventCounters(eventSource As AppApmEventSource)
+  overload: Bodoconsult.NetworkCommunication.EventSources.DataMessagingEventSourceProvider.AddEventCounters*
+  implements:
+  - Bodoconsult.App.Interfaces.IEventSourceProvider.AddEventCounters(Bodoconsult.App.EventCounters.AppApmEventSource)
+- uid: Bodoconsult.NetworkCommunication.EventSources.DataMessagingEventSourceProvider.AddIncrementingEventCounters(Bodoconsult.App.EventCounters.AppApmEventSource)
+  commentId: M:Bodoconsult.NetworkCommunication.EventSources.DataMessagingEventSourceProvider.AddIncrementingEventCounters(Bodoconsult.App.EventCounters.AppApmEventSource)
+  id: AddIncrementingEventCounters(Bodoconsult.App.EventCounters.AppApmEventSource)
+  parent: Bodoconsult.NetworkCommunication.EventSources.DataMessagingEventSourceProvider
+  langs:
+  - csharp
+  - vb
+  name: AddIncrementingEventCounters(AppApmEventSource)
+  nameWithType: DataMessagingEventSourceProvider.AddIncrementingEventCounters(AppApmEventSource)
+  fullName: Bodoconsult.NetworkCommunication.EventSources.DataMessagingEventSourceProvider.AddIncrementingEventCounters(Bodoconsult.App.EventCounters.AppApmEventSource)
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/EventSources/DataMessagingEventSourceProvider.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: AddIncrementingEventCounters
+    path: src/Bodoconsult.NetworkCommunication/EventSources/DataMessagingEventSourceProvider.cs
+    startLine: 68
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.EventSources
+  summary: Add <xref href="System.Diagnostics.Tracing.IncrementingEventCounter" data-throw-if-not-resolved="false"></xref> to the event source
+  example: []
+  syntax:
+    content: public void AddIncrementingEventCounters(AppApmEventSource eventSource)
+    parameters:
+    - id: eventSource
+      type: Bodoconsult.App.EventCounters.AppApmEventSource
+      description: Current event source
+    content.vb: Public Sub AddIncrementingEventCounters(eventSource As AppApmEventSource)
+  overload: Bodoconsult.NetworkCommunication.EventSources.DataMessagingEventSourceProvider.AddIncrementingEventCounters*
+  implements:
+  - Bodoconsult.App.Interfaces.IEventSourceProvider.AddIncrementingEventCounters(Bodoconsult.App.EventCounters.AppApmEventSource)
+- uid: Bodoconsult.NetworkCommunication.EventSources.DataMessagingEventSourceProvider.AddPollingCounters(Bodoconsult.App.EventCounters.AppApmEventSource)
+  commentId: M:Bodoconsult.NetworkCommunication.EventSources.DataMessagingEventSourceProvider.AddPollingCounters(Bodoconsult.App.EventCounters.AppApmEventSource)
+  id: AddPollingCounters(Bodoconsult.App.EventCounters.AppApmEventSource)
+  parent: Bodoconsult.NetworkCommunication.EventSources.DataMessagingEventSourceProvider
+  langs:
+  - csharp
+  - vb
+  name: AddPollingCounters(AppApmEventSource)
+  nameWithType: DataMessagingEventSourceProvider.AddPollingCounters(AppApmEventSource)
+  fullName: Bodoconsult.NetworkCommunication.EventSources.DataMessagingEventSourceProvider.AddPollingCounters(Bodoconsult.App.EventCounters.AppApmEventSource)
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/EventSources/DataMessagingEventSourceProvider.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: AddPollingCounters
+    path: src/Bodoconsult.NetworkCommunication/EventSources/DataMessagingEventSourceProvider.cs
+    startLine: 110
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.EventSources
+  summary: Add e<xref href="System.Diagnostics.Tracing.PollingCounter" data-throw-if-not-resolved="false"></xref> to the event source
+  example: []
+  syntax:
+    content: public void AddPollingCounters(AppApmEventSource eventSource)
+    parameters:
+    - id: eventSource
+      type: Bodoconsult.App.EventCounters.AppApmEventSource
+      description: Current event source
+    content.vb: Public Sub AddPollingCounters(eventSource As AppApmEventSource)
+  overload: Bodoconsult.NetworkCommunication.EventSources.DataMessagingEventSourceProvider.AddPollingCounters*
+  implements:
+  - Bodoconsult.App.Interfaces.IEventSourceProvider.AddPollingCounters(Bodoconsult.App.EventCounters.AppApmEventSource)
+- uid: Bodoconsult.NetworkCommunication.EventSources.DataMessagingEventSourceProvider.AddIncrementingPollingCounters(Bodoconsult.App.EventCounters.AppApmEventSource)
+  commentId: M:Bodoconsult.NetworkCommunication.EventSources.DataMessagingEventSourceProvider.AddIncrementingPollingCounters(Bodoconsult.App.EventCounters.AppApmEventSource)
+  id: AddIncrementingPollingCounters(Bodoconsult.App.EventCounters.AppApmEventSource)
+  parent: Bodoconsult.NetworkCommunication.EventSources.DataMessagingEventSourceProvider
+  langs:
+  - csharp
+  - vb
+  name: AddIncrementingPollingCounters(AppApmEventSource)
+  nameWithType: DataMessagingEventSourceProvider.AddIncrementingPollingCounters(AppApmEventSource)
+  fullName: Bodoconsult.NetworkCommunication.EventSources.DataMessagingEventSourceProvider.AddIncrementingPollingCounters(Bodoconsult.App.EventCounters.AppApmEventSource)
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/EventSources/DataMessagingEventSourceProvider.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: AddIncrementingPollingCounters
+    path: src/Bodoconsult.NetworkCommunication/EventSources/DataMessagingEventSourceProvider.cs
+    startLine: 119
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.EventSources
+  summary: Add <xref href="System.Diagnostics.Tracing.IncrementingPollingCounter" data-throw-if-not-resolved="false"></xref> to the event source
+  example: []
+  syntax:
+    content: public void AddIncrementingPollingCounters(AppApmEventSource eventSource)
+    parameters:
+    - id: eventSource
+      type: Bodoconsult.App.EventCounters.AppApmEventSource
+      description: Current event source
+    content.vb: Public Sub AddIncrementingPollingCounters(eventSource As AppApmEventSource)
+  overload: Bodoconsult.NetworkCommunication.EventSources.DataMessagingEventSourceProvider.AddIncrementingPollingCounters*
+  implements:
+  - Bodoconsult.App.Interfaces.IEventSourceProvider.AddIncrementingPollingCounters(Bodoconsult.App.EventCounters.AppApmEventSource)
+references:
+- uid: Bodoconsult.NetworkCommunication.EventSources
+  commentId: N:Bodoconsult.NetworkCommunication.EventSources
+  href: Bodoconsult.html
+  name: Bodoconsult.NetworkCommunication.EventSources
+  nameWithType: Bodoconsult.NetworkCommunication.EventSources
+  fullName: Bodoconsult.NetworkCommunication.EventSources
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.EventSources
+    name: EventSources
+    href: Bodoconsult.NetworkCommunication.EventSources.html
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.EventSources
+    name: EventSources
+    href: Bodoconsult.NetworkCommunication.EventSources.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Bodoconsult.App.Interfaces.IEventSourceProvider
+  commentId: T:Bodoconsult.App.Interfaces.IEventSourceProvider
+  parent: Bodoconsult.App.Interfaces
+  isExternal: true
+  name: IEventSourceProvider
+  nameWithType: IEventSourceProvider
+  fullName: Bodoconsult.App.Interfaces.IEventSourceProvider
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Bodoconsult.App.Interfaces
+  commentId: N:Bodoconsult.App.Interfaces
+  isExternal: true
+  name: Bodoconsult.App.Interfaces
+  nameWithType: Bodoconsult.App.Interfaces
+  fullName: Bodoconsult.App.Interfaces
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    isExternal: true
+  - name: .
+  - uid: Bodoconsult.App
+    name: App
+    isExternal: true
+  - name: .
+  - uid: Bodoconsult.App.Interfaces
+    name: Interfaces
+    isExternal: true
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    isExternal: true
+  - name: .
+  - uid: Bodoconsult.App
+    name: App
+    isExternal: true
+  - name: .
+  - uid: Bodoconsult.App.Interfaces
+    name: Interfaces
+    isExternal: true
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: System.Diagnostics.Tracing.EventCounter
+  commentId: T:System.Diagnostics.Tracing.EventCounter
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.diagnostics.tracing.eventcounter
+  name: EventCounter
+  nameWithType: EventCounter
+  fullName: System.Diagnostics.Tracing.EventCounter
+- uid: Bodoconsult.NetworkCommunication.EventSources.DataMessagingEventSourceProvider.AddEventCounters*
+  commentId: Overload:Bodoconsult.NetworkCommunication.EventSources.DataMessagingEventSourceProvider.AddEventCounters
+  href: Bodoconsult.NetworkCommunication.EventSources.DataMessagingEventSourceProvider.html#Bodoconsult_NetworkCommunication_EventSources_DataMessagingEventSourceProvider_AddEventCounters_Bodoconsult_App_EventCounters_AppApmEventSource_
+  name: AddEventCounters
+  nameWithType: DataMessagingEventSourceProvider.AddEventCounters
+  fullName: Bodoconsult.NetworkCommunication.EventSources.DataMessagingEventSourceProvider.AddEventCounters
+- uid: Bodoconsult.App.Interfaces.IEventSourceProvider.AddEventCounters(Bodoconsult.App.EventCounters.AppApmEventSource)
+  commentId: M:Bodoconsult.App.Interfaces.IEventSourceProvider.AddEventCounters(Bodoconsult.App.EventCounters.AppApmEventSource)
+  parent: Bodoconsult.App.Interfaces.IEventSourceProvider
+  isExternal: true
+  name: AddEventCounters(AppApmEventSource)
+  nameWithType: IEventSourceProvider.AddEventCounters(AppApmEventSource)
+  fullName: Bodoconsult.App.Interfaces.IEventSourceProvider.AddEventCounters(Bodoconsult.App.EventCounters.AppApmEventSource)
+  spec.csharp:
+  - uid: Bodoconsult.App.Interfaces.IEventSourceProvider.AddEventCounters(Bodoconsult.App.EventCounters.AppApmEventSource)
+    name: AddEventCounters
+    isExternal: true
+  - name: (
+  - uid: Bodoconsult.App.EventCounters.AppApmEventSource
+    name: AppApmEventSource
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.App.Interfaces.IEventSourceProvider.AddEventCounters(Bodoconsult.App.EventCounters.AppApmEventSource)
+    name: AddEventCounters
+    isExternal: true
+  - name: (
+  - uid: Bodoconsult.App.EventCounters.AppApmEventSource
+    name: AppApmEventSource
+    isExternal: true
+  - name: )
+- uid: Bodoconsult.App.EventCounters.AppApmEventSource
+  commentId: T:Bodoconsult.App.EventCounters.AppApmEventSource
+  parent: Bodoconsult.App.EventCounters
+  isExternal: true
+  name: AppApmEventSource
+  nameWithType: AppApmEventSource
+  fullName: Bodoconsult.App.EventCounters.AppApmEventSource
+- uid: Bodoconsult.App.EventCounters
+  commentId: N:Bodoconsult.App.EventCounters
+  isExternal: true
+  name: Bodoconsult.App.EventCounters
+  nameWithType: Bodoconsult.App.EventCounters
+  fullName: Bodoconsult.App.EventCounters
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    isExternal: true
+  - name: .
+  - uid: Bodoconsult.App
+    name: App
+    isExternal: true
+  - name: .
+  - uid: Bodoconsult.App.EventCounters
+    name: EventCounters
+    isExternal: true
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    isExternal: true
+  - name: .
+  - uid: Bodoconsult.App
+    name: App
+    isExternal: true
+  - name: .
+  - uid: Bodoconsult.App.EventCounters
+    name: EventCounters
+    isExternal: true
+- uid: System.Diagnostics.Tracing.IncrementingEventCounter
+  commentId: T:System.Diagnostics.Tracing.IncrementingEventCounter
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.diagnostics.tracing.incrementingeventcounter
+  name: IncrementingEventCounter
+  nameWithType: IncrementingEventCounter
+  fullName: System.Diagnostics.Tracing.IncrementingEventCounter
+- uid: Bodoconsult.NetworkCommunication.EventSources.DataMessagingEventSourceProvider.AddIncrementingEventCounters*
+  commentId: Overload:Bodoconsult.NetworkCommunication.EventSources.DataMessagingEventSourceProvider.AddIncrementingEventCounters
+  href: Bodoconsult.NetworkCommunication.EventSources.DataMessagingEventSourceProvider.html#Bodoconsult_NetworkCommunication_EventSources_DataMessagingEventSourceProvider_AddIncrementingEventCounters_Bodoconsult_App_EventCounters_AppApmEventSource_
+  name: AddIncrementingEventCounters
+  nameWithType: DataMessagingEventSourceProvider.AddIncrementingEventCounters
+  fullName: Bodoconsult.NetworkCommunication.EventSources.DataMessagingEventSourceProvider.AddIncrementingEventCounters
+- uid: Bodoconsult.App.Interfaces.IEventSourceProvider.AddIncrementingEventCounters(Bodoconsult.App.EventCounters.AppApmEventSource)
+  commentId: M:Bodoconsult.App.Interfaces.IEventSourceProvider.AddIncrementingEventCounters(Bodoconsult.App.EventCounters.AppApmEventSource)
+  parent: Bodoconsult.App.Interfaces.IEventSourceProvider
+  isExternal: true
+  name: AddIncrementingEventCounters(AppApmEventSource)
+  nameWithType: IEventSourceProvider.AddIncrementingEventCounters(AppApmEventSource)
+  fullName: Bodoconsult.App.Interfaces.IEventSourceProvider.AddIncrementingEventCounters(Bodoconsult.App.EventCounters.AppApmEventSource)
+  spec.csharp:
+  - uid: Bodoconsult.App.Interfaces.IEventSourceProvider.AddIncrementingEventCounters(Bodoconsult.App.EventCounters.AppApmEventSource)
+    name: AddIncrementingEventCounters
+    isExternal: true
+  - name: (
+  - uid: Bodoconsult.App.EventCounters.AppApmEventSource
+    name: AppApmEventSource
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.App.Interfaces.IEventSourceProvider.AddIncrementingEventCounters(Bodoconsult.App.EventCounters.AppApmEventSource)
+    name: AddIncrementingEventCounters
+    isExternal: true
+  - name: (
+  - uid: Bodoconsult.App.EventCounters.AppApmEventSource
+    name: AppApmEventSource
+    isExternal: true
+  - name: )
+- uid: System.Diagnostics.Tracing.PollingCounter
+  commentId: T:System.Diagnostics.Tracing.PollingCounter
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.diagnostics.tracing.pollingcounter
+  name: PollingCounter
+  nameWithType: PollingCounter
+  fullName: System.Diagnostics.Tracing.PollingCounter
+- uid: Bodoconsult.NetworkCommunication.EventSources.DataMessagingEventSourceProvider.AddPollingCounters*
+  commentId: Overload:Bodoconsult.NetworkCommunication.EventSources.DataMessagingEventSourceProvider.AddPollingCounters
+  href: Bodoconsult.NetworkCommunication.EventSources.DataMessagingEventSourceProvider.html#Bodoconsult_NetworkCommunication_EventSources_DataMessagingEventSourceProvider_AddPollingCounters_Bodoconsult_App_EventCounters_AppApmEventSource_
+  name: AddPollingCounters
+  nameWithType: DataMessagingEventSourceProvider.AddPollingCounters
+  fullName: Bodoconsult.NetworkCommunication.EventSources.DataMessagingEventSourceProvider.AddPollingCounters
+- uid: Bodoconsult.App.Interfaces.IEventSourceProvider.AddPollingCounters(Bodoconsult.App.EventCounters.AppApmEventSource)
+  commentId: M:Bodoconsult.App.Interfaces.IEventSourceProvider.AddPollingCounters(Bodoconsult.App.EventCounters.AppApmEventSource)
+  parent: Bodoconsult.App.Interfaces.IEventSourceProvider
+  isExternal: true
+  name: AddPollingCounters(AppApmEventSource)
+  nameWithType: IEventSourceProvider.AddPollingCounters(AppApmEventSource)
+  fullName: Bodoconsult.App.Interfaces.IEventSourceProvider.AddPollingCounters(Bodoconsult.App.EventCounters.AppApmEventSource)
+  spec.csharp:
+  - uid: Bodoconsult.App.Interfaces.IEventSourceProvider.AddPollingCounters(Bodoconsult.App.EventCounters.AppApmEventSource)
+    name: AddPollingCounters
+    isExternal: true
+  - name: (
+  - uid: Bodoconsult.App.EventCounters.AppApmEventSource
+    name: AppApmEventSource
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.App.Interfaces.IEventSourceProvider.AddPollingCounters(Bodoconsult.App.EventCounters.AppApmEventSource)
+    name: AddPollingCounters
+    isExternal: true
+  - name: (
+  - uid: Bodoconsult.App.EventCounters.AppApmEventSource
+    name: AppApmEventSource
+    isExternal: true
+  - name: )
+- uid: System.Diagnostics.Tracing.IncrementingPollingCounter
+  commentId: T:System.Diagnostics.Tracing.IncrementingPollingCounter
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.diagnostics.tracing.incrementingpollingcounter
+  name: IncrementingPollingCounter
+  nameWithType: IncrementingPollingCounter
+  fullName: System.Diagnostics.Tracing.IncrementingPollingCounter
+- uid: Bodoconsult.NetworkCommunication.EventSources.DataMessagingEventSourceProvider.AddIncrementingPollingCounters*
+  commentId: Overload:Bodoconsult.NetworkCommunication.EventSources.DataMessagingEventSourceProvider.AddIncrementingPollingCounters
+  href: Bodoconsult.NetworkCommunication.EventSources.DataMessagingEventSourceProvider.html#Bodoconsult_NetworkCommunication_EventSources_DataMessagingEventSourceProvider_AddIncrementingPollingCounters_Bodoconsult_App_EventCounters_AppApmEventSource_
+  name: AddIncrementingPollingCounters
+  nameWithType: DataMessagingEventSourceProvider.AddIncrementingPollingCounters
+  fullName: Bodoconsult.NetworkCommunication.EventSources.DataMessagingEventSourceProvider.AddIncrementingPollingCounters
+- uid: Bodoconsult.App.Interfaces.IEventSourceProvider.AddIncrementingPollingCounters(Bodoconsult.App.EventCounters.AppApmEventSource)
+  commentId: M:Bodoconsult.App.Interfaces.IEventSourceProvider.AddIncrementingPollingCounters(Bodoconsult.App.EventCounters.AppApmEventSource)
+  parent: Bodoconsult.App.Interfaces.IEventSourceProvider
+  isExternal: true
+  name: AddIncrementingPollingCounters(AppApmEventSource)
+  nameWithType: IEventSourceProvider.AddIncrementingPollingCounters(AppApmEventSource)
+  fullName: Bodoconsult.App.Interfaces.IEventSourceProvider.AddIncrementingPollingCounters(Bodoconsult.App.EventCounters.AppApmEventSource)
+  spec.csharp:
+  - uid: Bodoconsult.App.Interfaces.IEventSourceProvider.AddIncrementingPollingCounters(Bodoconsult.App.EventCounters.AppApmEventSource)
+    name: AddIncrementingPollingCounters
+    isExternal: true
+  - name: (
+  - uid: Bodoconsult.App.EventCounters.AppApmEventSource
+    name: AppApmEventSource
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.App.Interfaces.IEventSourceProvider.AddIncrementingPollingCounters(Bodoconsult.App.EventCounters.AppApmEventSource)
+    name: AddIncrementingPollingCounters
+    isExternal: true
+  - name: (
+  - uid: Bodoconsult.App.EventCounters.AppApmEventSource
+    name: AppApmEventSource
+    isExternal: true
+  - name: )

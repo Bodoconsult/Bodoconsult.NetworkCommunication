@@ -1,0 +1,1075 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Class SocketUtility | Bodoconsult.Network </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class SocketUtility | Bodoconsult.Network ">
+      
+      <meta name="description" content="Provides a set of extension methods to use the TAP pattern with sockets">
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/new/main/apiSpec/new?filename=Bodoconsult_NetworkCommunication_Helpers_SocketUtility.md&amp;value=---%0Auid%3A%20Bodoconsult.NetworkCommunication.Helpers.SocketUtility%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../logo.svg" alt="Bodoconsult.Network">
+            Bodoconsult.Network
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="Bodoconsult.NetworkCommunication.Helpers.SocketUtility">
+
+
+
+  <h1 id="Bodoconsult_NetworkCommunication_Helpers_SocketUtility" data-uid="Bodoconsult.NetworkCommunication.Helpers.SocketUtility" class="text-break">
+Class SocketUtility  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/Helpers/SocketUtility.cs/#L16"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="Bodoconsult.html">Bodoconsult</a>.<a class="xref" href="Bodoconsult.NetworkCommunication.html">NetworkCommunication</a>.<a class="xref" href="Bodoconsult.NetworkCommunication.Helpers.html">Helpers</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>Bodoconsult.NetworkCommunication.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p>Provides a set of extension methods to use the TAP pattern with sockets</p>
+</div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static class SocketUtility</code></pre>
+  </div>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><span class="xref">SocketUtility</span></div>
+    </dd>
+  </dl>
+
+
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone">object.MemberwiseClone()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
+    </div>
+  </dd></dl>
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="Bodoconsult_NetworkCommunication_Helpers_SocketUtility_AcceptTaskAsync_" data-uid="Bodoconsult.NetworkCommunication.Helpers.SocketUtility.AcceptTaskAsync*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_Helpers_SocketUtility_AcceptTaskAsync_System_Net_Sockets_Socket_" data-uid="Bodoconsult.NetworkCommunication.Helpers.SocketUtility.AcceptTaskAsync(System.Net.Sockets.Socket)">
+  AcceptTaskAsync(Socket)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/Helpers/SocketUtility.cs/#L417"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Asynchronously accepts a socket</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Task&lt;Socket&gt; AcceptTaskAsync(this Socket socket)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>socket</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.net.sockets.socket">Socket</a></dt>
+    <dd><p>The socket</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.net.sockets.socket">Socket</a>&gt;</dt>
+    <dd><p>A <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task&lt;TResult&gt;</a> for performing the operation</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_Helpers_SocketUtility_AcceptTaskAsync_" data-uid="Bodoconsult.NetworkCommunication.Helpers.SocketUtility.AcceptTaskAsync*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_Helpers_SocketUtility_AcceptTaskAsync_System_Net_Sockets_Socket_System_Int32_" data-uid="Bodoconsult.NetworkCommunication.Helpers.SocketUtility.AcceptTaskAsync(System.Net.Sockets.Socket,System.Int32)">
+  AcceptTaskAsync(Socket, int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/Helpers/SocketUtility.cs/#L442"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Asynchronously accepts a socket</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Task&lt;Socket&gt; AcceptTaskAsync(this Socket socket, int receiveSize)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>socket</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.net.sockets.socket">Socket</a></dt>
+    <dd><p>The socket</p>
+</dd>
+    <dt><code>receiveSize</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The receive buffer size</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.net.sockets.socket">Socket</a>&gt;</dt>
+    <dd><p>A <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task&lt;TResult&gt;</a> for performing the operation</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_Helpers_SocketUtility_AcceptTaskAsync_" data-uid="Bodoconsult.NetworkCommunication.Helpers.SocketUtility.AcceptTaskAsync*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_Helpers_SocketUtility_AcceptTaskAsync_System_Net_Sockets_Socket_System_Net_Sockets_Socket_System_Int32_" data-uid="Bodoconsult.NetworkCommunication.Helpers.SocketUtility.AcceptTaskAsync(System.Net.Sockets.Socket,System.Net.Sockets.Socket,System.Int32)">
+  AcceptTaskAsync(Socket, Socket, int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/Helpers/SocketUtility.cs/#L468"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Asynchronously accepts a socket</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Task&lt;Socket&gt; AcceptTaskAsync(this Socket socket, Socket acceptSocket, int receiveSize)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>socket</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.net.sockets.socket">Socket</a></dt>
+    <dd><p>The socket</p>
+</dd>
+    <dt><code>acceptSocket</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.net.sockets.socket">Socket</a></dt>
+    <dd><p>The accept socket</p>
+</dd>
+    <dt><code>receiveSize</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The receive buffer size</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.net.sockets.socket">Socket</a>&gt;</dt>
+    <dd><p>A <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task&lt;TResult&gt;</a> for performing the operation</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_Helpers_SocketUtility_ConnectAsync_" data-uid="Bodoconsult.NetworkCommunication.Helpers.SocketUtility.ConnectAsync*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_Helpers_SocketUtility_ConnectAsync_System_Net_Sockets_Socket_System_Net_EndPoint_" data-uid="Bodoconsult.NetworkCommunication.Helpers.SocketUtility.ConnectAsync(System.Net.Sockets.Socket,System.Net.EndPoint)">
+  ConnectAsync(Socket, EndPoint)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/Helpers/SocketUtility.cs/#L286"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Asynchronously connects a socket</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Task ConnectAsync(this Socket socket, EndPoint remoteEp)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>socket</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.net.sockets.socket">Socket</a></dt>
+    <dd><p>The socket</p>
+</dd>
+    <dt><code>remoteEp</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.net.endpoint">EndPoint</a></dt>
+    <dd><p>The remote endpoint</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd><p>A <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a> for performing the operation</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_Helpers_SocketUtility_ConnectAsync_" data-uid="Bodoconsult.NetworkCommunication.Helpers.SocketUtility.ConnectAsync*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_Helpers_SocketUtility_ConnectAsync_System_Net_Sockets_Socket_System_Net_IPAddress_System_Int32_" data-uid="Bodoconsult.NetworkCommunication.Helpers.SocketUtility.ConnectAsync(System.Net.Sockets.Socket,System.Net.IPAddress,System.Int32)">
+  ConnectAsync(Socket, IPAddress, int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/Helpers/SocketUtility.cs/#L313"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Asynchronously connects a socket</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Task ConnectAsync(this Socket socket, IPAddress address, int port)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>socket</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.net.sockets.socket">Socket</a></dt>
+    <dd><p>The socket</p>
+</dd>
+    <dt><code>address</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.net.ipaddress">IPAddress</a></dt>
+    <dd><p>The remote endpoint IP address</p>
+</dd>
+    <dt><code>port</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The remote port</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd><p>A <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a> for performing the operation</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_Helpers_SocketUtility_ConnectAsync_" data-uid="Bodoconsult.NetworkCommunication.Helpers.SocketUtility.ConnectAsync*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_Helpers_SocketUtility_ConnectAsync_System_Net_Sockets_Socket_System_Net_IPAddress___System_Int32_" data-uid="Bodoconsult.NetworkCommunication.Helpers.SocketUtility.ConnectAsync(System.Net.Sockets.Socket,System.Net.IPAddress[],System.Int32)">
+  ConnectAsync(Socket, IPAddress[], int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/Helpers/SocketUtility.cs/#L339"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Asynchronously connects a socket</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Task ConnectAsync(this Socket socket, IPAddress[] addresses, int port)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>socket</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.net.sockets.socket">Socket</a></dt>
+    <dd><p>The socket</p>
+</dd>
+    <dt><code>addresses</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.net.ipaddress">IPAddress</a>[]</dt>
+    <dd><p>The remote endpoint IP addresses to connect to</p>
+</dd>
+    <dt><code>port</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The remote port</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd><p>A <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a> for performing the operation</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_Helpers_SocketUtility_ConnectAsync_" data-uid="Bodoconsult.NetworkCommunication.Helpers.SocketUtility.ConnectAsync*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_Helpers_SocketUtility_ConnectAsync_System_Net_Sockets_Socket_System_String_System_Int32_" data-uid="Bodoconsult.NetworkCommunication.Helpers.SocketUtility.ConnectAsync(System.Net.Sockets.Socket,System.String,System.Int32)">
+  ConnectAsync(Socket, string, int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/Helpers/SocketUtility.cs/#L366"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Asynchronously connects a socket</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Task ConnectAsync(this Socket socket, string host, int port)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>socket</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.net.sockets.socket">Socket</a></dt>
+    <dd><p>The socket</p>
+</dd>
+    <dt><code>host</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The remote host</p>
+</dd>
+    <dt><code>port</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The remote port</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd><p>A <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a> for performing the operation</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_Helpers_SocketUtility_DisconnectAsync_" data-uid="Bodoconsult.NetworkCommunication.Helpers.SocketUtility.DisconnectAsync*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_Helpers_SocketUtility_DisconnectAsync_System_Net_Sockets_Socket_System_Boolean_" data-uid="Bodoconsult.NetworkCommunication.Helpers.SocketUtility.DisconnectAsync(System.Net.Sockets.Socket,System.Boolean)">
+  DisconnectAsync(Socket, bool)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/Helpers/SocketUtility.cs/#L392"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Asynchronously disconnect a socket</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Task DisconnectAsync(this Socket socket, bool reuseSocket)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>socket</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.net.sockets.socket">Socket</a></dt>
+    <dd><p>The socket</p>
+</dd>
+    <dt><code>reuseSocket</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>True if the socket is to be reused, otherwise false</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd><p>A <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a> representing the operation</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_Helpers_SocketUtility_ReceiveAsync_" data-uid="Bodoconsult.NetworkCommunication.Helpers.SocketUtility.ReceiveAsync*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_Helpers_SocketUtility_ReceiveAsync_System_Net_Sockets_Socket_Bodoconsult_NetworkCommunication_Helpers_SocketAwaitable_" data-uid="Bodoconsult.NetworkCommunication.Helpers.SocketUtility.ReceiveAsync(System.Net.Sockets.Socket,Bodoconsult.NetworkCommunication.Helpers.SocketAwaitable)">
+  ReceiveAsync(Socket, SocketAwaitable)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/Helpers/SocketUtility.cs/#L29"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Receive data using the specified awaitable class</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static SocketAwaitable ReceiveAsync(this Socket socket, SocketAwaitable awaitable)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>socket</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.net.sockets.socket">Socket</a></dt>
+    <dd><p>The socket</p>
+</dd>
+    <dt><code>awaitable</code> <a class="xref" href="Bodoconsult.NetworkCommunication.Helpers.SocketAwaitable.html">SocketAwaitable</a></dt>
+    <dd><p>An instance of <a class="xref" href="Bodoconsult.NetworkCommunication.Helpers.SocketAwaitable.html">SocketAwaitable</a></p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Bodoconsult.NetworkCommunication.Helpers.SocketAwaitable.html">SocketAwaitable</a></dt>
+    <dd><p><code class="paramref">awaitable</code></p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_Helpers_SocketUtility_ReceiveAsync_" data-uid="Bodoconsult.NetworkCommunication.Helpers.SocketUtility.ReceiveAsync*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_Helpers_SocketUtility_ReceiveAsync_System_Net_Sockets_Socket_System_Byte___" data-uid="Bodoconsult.NetworkCommunication.Helpers.SocketUtility.ReceiveAsync(System.Net.Sockets.Socket,System.Byte[])">
+  ReceiveAsync(Socket, byte[])
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/Helpers/SocketUtility.cs/#L57"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Asynchronously receives data on a <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.net.sockets.socket">Socket</a></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Task&lt;int&gt; ReceiveAsync(this Socket socket, byte[] buffer)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>socket</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.net.sockets.socket">Socket</a></dt>
+    <dd><p>The socket</p>
+</dd>
+    <dt><code>buffer</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a>[]</dt>
+    <dd><p>The buffer to hold the data to receive</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>&gt;</dt>
+    <dd><p>A <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task&lt;TResult&gt;</a> containing the number of bytes received</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_Helpers_SocketUtility_ReceiveAsync_" data-uid="Bodoconsult.NetworkCommunication.Helpers.SocketUtility.ReceiveAsync*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_Helpers_SocketUtility_ReceiveAsync_System_Net_Sockets_Socket_System_Byte___System_Int32_System_Int32_System_Net_Sockets_SocketFlags_" data-uid="Bodoconsult.NetworkCommunication.Helpers.SocketUtility.ReceiveAsync(System.Net.Sockets.Socket,System.Byte[],System.Int32,System.Int32,System.Net.Sockets.SocketFlags)">
+  ReceiveAsync(Socket, byte[], int, int, SocketFlags)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/Helpers/SocketUtility.cs/#L72"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Asynchronously receives data on a <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.net.sockets.socket">Socket</a></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Task&lt;int&gt; ReceiveAsync(this Socket socket, byte[] buffer, int offset, int length, SocketFlags socketFlags)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>socket</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.net.sockets.socket">Socket</a></dt>
+    <dd><p>The socket</p>
+</dd>
+    <dt><code>buffer</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a>[]</dt>
+    <dd><p>The buffer to hold the data to receive</p>
+</dd>
+    <dt><code>offset</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>An offset into <code class="paramref">buffer</code> to use</p>
+</dd>
+    <dt><code>length</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The length of the data to be received into <code class="paramref">buffer</code></p>
+</dd>
+    <dt><code>socketFlags</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.net.sockets.socketflags">SocketFlags</a></dt>
+    <dd><p>The socket flags</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>&gt;</dt>
+    <dd><p>A <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task&lt;TResult&gt;</a> containing the number of bytes received</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_Helpers_SocketUtility_SendAsync_" data-uid="Bodoconsult.NetworkCommunication.Helpers.SocketUtility.SendAsync*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_Helpers_SocketUtility_SendAsync_System_Net_Sockets_Socket_Bodoconsult_NetworkCommunication_Helpers_SocketAwaitable_" data-uid="Bodoconsult.NetworkCommunication.Helpers.SocketUtility.SendAsync(System.Net.Sockets.Socket,Bodoconsult.NetworkCommunication.Helpers.SocketAwaitable)">
+  SendAsync(Socket, SocketAwaitable)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/Helpers/SocketUtility.cs/#L42"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Sends data using the specified awaitable class</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static SocketAwaitable SendAsync(this Socket socket, SocketAwaitable awaitable)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>socket</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.net.sockets.socket">Socket</a></dt>
+    <dd><p>The socket</p>
+</dd>
+    <dt><code>awaitable</code> <a class="xref" href="Bodoconsult.NetworkCommunication.Helpers.SocketAwaitable.html">SocketAwaitable</a></dt>
+    <dd><p>An instance of <a class="xref" href="Bodoconsult.NetworkCommunication.Helpers.SocketAwaitable.html">SocketAwaitable</a></p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Bodoconsult.NetworkCommunication.Helpers.SocketAwaitable.html">SocketAwaitable</a></dt>
+    <dd><p><code class="paramref">awaitable</code></p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_Helpers_SocketUtility_SendAsync_" data-uid="Bodoconsult.NetworkCommunication.Helpers.SocketUtility.SendAsync*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_Helpers_SocketUtility_SendAsync_System_Net_Sockets_Socket_System_Byte___" data-uid="Bodoconsult.NetworkCommunication.Helpers.SocketUtility.SendAsync(System.Net.Sockets.Socket,System.Byte[])">
+  SendAsync(Socket, byte[])
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/Helpers/SocketUtility.cs/#L125"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Asynchronously sends data on a <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.net.sockets.socket">Socket</a></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Task&lt;int&gt; SendAsync(this Socket socket, byte[] buffer)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>socket</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.net.sockets.socket">Socket</a></dt>
+    <dd><p>The socket</p>
+</dd>
+    <dt><code>buffer</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a>[]</dt>
+    <dd><p>The buffer of data to send</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>&gt;</dt>
+    <dd><p>A <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task&lt;TResult&gt;</a> containing the number of bytes sent</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_Helpers_SocketUtility_SendAsync_" data-uid="Bodoconsult.NetworkCommunication.Helpers.SocketUtility.SendAsync*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_Helpers_SocketUtility_SendAsync_System_Net_Sockets_Socket_System_Byte___System_Int32_System_Int32_System_Net_Sockets_SocketFlags_" data-uid="Bodoconsult.NetworkCommunication.Helpers.SocketUtility.SendAsync(System.Net.Sockets.Socket,System.Byte[],System.Int32,System.Int32,System.Net.Sockets.SocketFlags)">
+  SendAsync(Socket, byte[], int, int, SocketFlags)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/Helpers/SocketUtility.cs/#L139"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Asynchronously sends data on a <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.net.sockets.socket">Socket</a></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Task&lt;int&gt; SendAsync(this Socket socket, byte[] buffer, int offset, int length, SocketFlags socketFlags = SocketFlags.None)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>socket</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.net.sockets.socket">Socket</a></dt>
+    <dd><p>The socket</p>
+</dd>
+    <dt><code>buffer</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a>[]</dt>
+    <dd><p>The buffer of data to send</p>
+</dd>
+    <dt><code>offset</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>An offset into the <code class="paramref">buffer</code> to use</p>
+</dd>
+    <dt><code>length</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The length of the data in <code class="paramref">buffer</code> to send</p>
+</dd>
+    <dt><code>socketFlags</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.net.sockets.socketflags">SocketFlags</a></dt>
+    <dd><p>The socket flags</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>&gt;</dt>
+    <dd><p>A <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task&lt;TResult&gt;</a> containing the number of bytes sent</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_Helpers_SocketUtility_SendAsync_" data-uid="Bodoconsult.NetworkCommunication.Helpers.SocketUtility.SendAsync*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_Helpers_SocketUtility_SendAsync_System_Net_Sockets_Socket_System_Collections_Generic_IList_System_ArraySegment_System_Byte___System_Net_Sockets_SocketFlags_" data-uid="Bodoconsult.NetworkCommunication.Helpers.SocketUtility.SendAsync(System.Net.Sockets.Socket,System.Collections.Generic.IList{System.ArraySegment{System.Byte}},System.Net.Sockets.SocketFlags)">
+  SendAsync(Socket, IList&lt;ArraySegment&lt;byte&gt;&gt;, SocketFlags)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/Helpers/SocketUtility.cs/#L98"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Asynchronously sends data on a <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.net.sockets.socket">Socket</a></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Task&lt;int&gt; SendAsync(this Socket socket, IList&lt;ArraySegment&lt;byte&gt;&gt; buffers, SocketFlags socketFlags = SocketFlags.None)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>socket</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.net.sockets.socket">Socket</a></dt>
+    <dd><p>The socket</p>
+</dd>
+    <dt><code>buffers</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1">IList</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.arraysegment-1">ArraySegment</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a>&gt;&gt;</dt>
+    <dd><p>The buffers of data to send</p>
+</dd>
+    <dt><code>socketFlags</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.net.sockets.socketflags">SocketFlags</a></dt>
+    <dd><p>The socket flags</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>&gt;</dt>
+    <dd><p>A <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task&lt;TResult&gt;</a> containing the number of bytes sent</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_Helpers_SocketUtility_SendAsync_" data-uid="Bodoconsult.NetworkCommunication.Helpers.SocketUtility.SendAsync*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_Helpers_SocketUtility_SendAsync_System_Net_Sockets_Socket_System_String_System_Text_Encoding_System_Net_Sockets_SocketFlags_" data-uid="Bodoconsult.NetworkCommunication.Helpers.SocketUtility.SendAsync(System.Net.Sockets.Socket,System.String,System.Text.Encoding,System.Net.Sockets.SocketFlags)">
+  SendAsync(Socket, string, Encoding, SocketFlags)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/Helpers/SocketUtility.cs/#L270"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Asynchronously sends data on a <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.net.sockets.socket">Socket</a></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Task&lt;int&gt; SendAsync(this Socket socket, string text, Encoding encoding = null, SocketFlags socketFlags = SocketFlags.None)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>socket</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.net.sockets.socket">Socket</a></dt>
+    <dd><p>The socket</p>
+</dd>
+    <dt><code>text</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The text to send</p>
+</dd>
+    <dt><code>encoding</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.text.encoding">Encoding</a></dt>
+    <dd><p>The encoding to use</p>
+</dd>
+    <dt><code>socketFlags</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.net.sockets.socketflags">SocketFlags</a></dt>
+    <dd><p>The socket flags</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>&gt;</dt>
+    <dd><p>A <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task&lt;TResult&gt;</a> containing the number of bytes sent</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_Helpers_SocketUtility_SendFileAsync_" data-uid="Bodoconsult.NetworkCommunication.Helpers.SocketUtility.SendFileAsync*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_Helpers_SocketUtility_SendFileAsync_System_Net_Sockets_Socket_System_String_" data-uid="Bodoconsult.NetworkCommunication.Helpers.SocketUtility.SendFileAsync(System.Net.Sockets.Socket,System.String)">
+  SendFileAsync(Socket, string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/Helpers/SocketUtility.cs/#L236"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Asynchronously sends a file on a <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.net.sockets.socket">Socket</a></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Task SendFileAsync(this Socket socket, string fileName)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>socket</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.net.sockets.socket">Socket</a></dt>
+    <dd><p>The socket</p>
+</dd>
+    <dt><code>fileName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The file name</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd><p>A <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task&lt;TResult&gt;</a> containing the number of bytes sent</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_Helpers_SocketUtility_SendFileAsync_" data-uid="Bodoconsult.NetworkCommunication.Helpers.SocketUtility.SendFileAsync*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_Helpers_SocketUtility_SendFileAsync_System_Net_Sockets_Socket_System_String_System_Byte___System_Byte___System_Net_Sockets_TransmitFileOptions_" data-uid="Bodoconsult.NetworkCommunication.Helpers.SocketUtility.SendFileAsync(System.Net.Sockets.Socket,System.String,System.Byte[],System.Byte[],System.Net.Sockets.TransmitFileOptions)">
+  SendFileAsync(Socket, string, byte[], byte[], TransmitFileOptions)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/Helpers/SocketUtility.cs/#L206"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Asynchronously sends a file on a <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.net.sockets.socket">Socket</a></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Task&lt;int&gt; SendFileAsync(this Socket socket, string fileName, byte[] preBuffer, byte[] postBuffer, TransmitFileOptions flags)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>socket</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.net.sockets.socket">Socket</a></dt>
+    <dd><p>The socket</p>
+</dd>
+    <dt><code>fileName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The file name</p>
+</dd>
+    <dt><code>preBuffer</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a>[]</dt>
+    <dd><p>A buffer to prepend</p>
+</dd>
+    <dt><code>postBuffer</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a>[]</dt>
+    <dd><p>A buffer to append</p>
+</dd>
+    <dt><code>flags</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.net.sockets.transmitfileoptions">TransmitFileOptions</a></dt>
+    <dd><p>The transmission options</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>&gt;</dt>
+    <dd><p>A <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task&lt;TResult&gt;</a> containing the number of bytes sent</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_Helpers_SocketUtility_SendToAsync_" data-uid="Bodoconsult.NetworkCommunication.Helpers.SocketUtility.SendToAsync*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_Helpers_SocketUtility_SendToAsync_System_Net_Sockets_Socket_System_Byte___System_Int32_System_Int32_System_Net_Sockets_SocketFlags_System_Net_EndPoint_" data-uid="Bodoconsult.NetworkCommunication.Helpers.SocketUtility.SendToAsync(System.Net.Sockets.Socket,System.Byte[],System.Int32,System.Int32,System.Net.Sockets.SocketFlags,System.Net.EndPoint)">
+  SendToAsync(Socket, byte[], int, int, SocketFlags, EndPoint)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/Helpers/SocketUtility.cs/#L173"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Asynchronously sends data on a <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.net.sockets.socket">Socket</a></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Task&lt;int&gt; SendToAsync(this Socket socket, byte[] buffer, int offset, int length, SocketFlags socketFlags, EndPoint remoteEp)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>socket</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.net.sockets.socket">Socket</a></dt>
+    <dd><p>The socket</p>
+</dd>
+    <dt><code>buffer</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a>[]</dt>
+    <dd><p>The buffer of data to send</p>
+</dd>
+    <dt><code>offset</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>An offset into the <code class="paramref">buffer</code> to use</p>
+</dd>
+    <dt><code>length</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The length of the data in <code class="paramref">buffer</code> to send</p>
+</dd>
+    <dt><code>socketFlags</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.net.sockets.socketflags">SocketFlags</a></dt>
+    <dd><p>The socket flags</p>
+</dd>
+    <dt><code>remoteEp</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.net.endpoint">EndPoint</a></dt>
+    <dd><p>The remote <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.net.endpoint">EndPoint</a></p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>&gt;</dt>
+    <dd><p>A <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task&lt;TResult&gt;</a> containing the number of bytes sent</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_Helpers_SocketUtility_SetSocketKeepAliveValues_" data-uid="Bodoconsult.NetworkCommunication.Helpers.SocketUtility.SetSocketKeepAliveValues*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_Helpers_SocketUtility_SetSocketKeepAliveValues_System_Net_Sockets_Socket_System_Int32_System_Int32_" data-uid="Bodoconsult.NetworkCommunication.Helpers.SocketUtility.SetSocketKeepAliveValues(System.Net.Sockets.Socket,System.Int32,System.Int32)">
+  SetSocketKeepAliveValues(Socket, int, int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/Helpers/SocketUtility.cs/#L493"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Set keep alive for socket</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void SetSocketKeepAliveValues(this Socket instance, int keepAliveTime, int keepAliveInterval)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>instance</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.net.sockets.socket">Socket</a></dt>
+    <dd><p>Current socket instance</p>
+</dd>
+    <dt><code>keepAliveTime</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Keep alive time in ms</p>
+</dd>
+    <dt><code>keepAliveInterval</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Keep alive interval ms</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/Helpers/SocketUtility.cs/#L16" class="edit-link">Edit this page</a>
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

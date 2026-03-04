@@ -1,0 +1,382 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageCodingProcessor
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.IDataMessageCodingProcessor
+  id: IDataMessageCodingProcessor
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  children:
+  - Bodoconsult.NetworkCommunication.Interfaces.IDataMessageCodingProcessor.DecodeDataMessage(System.Memory{System.Byte})
+  - Bodoconsult.NetworkCommunication.Interfaces.IDataMessageCodingProcessor.EncodeDataMessage(Bodoconsult.NetworkCommunication.Interfaces.IOutboundMessage)
+  - Bodoconsult.NetworkCommunication.Interfaces.IDataMessageCodingProcessor.MessageCodecs
+  langs:
+  - csharp
+  - vb
+  name: IDataMessageCodingProcessor
+  nameWithType: IDataMessageCodingProcessor
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageCodingProcessor
+  type: Interface
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/IDataMessageCodingProcessor.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: IDataMessageCodingProcessor
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/IDataMessageCodingProcessor.cs
+    startLine: 9
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Interface for encoding and decoding data messages
+  example: []
+  syntax:
+    content: public interface IDataMessageCodingProcessor
+    content.vb: Public Interface IDataMessageCodingProcessor
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageCodingProcessor.MessageCodecs
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IDataMessageCodingProcessor.MessageCodecs
+  id: MessageCodecs
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageCodingProcessor
+  langs:
+  - csharp
+  - vb
+  name: MessageCodecs
+  nameWithType: IDataMessageCodingProcessor.MessageCodecs
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageCodingProcessor.MessageCodecs
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/IDataMessageCodingProcessor.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: MessageCodecs
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/IDataMessageCodingProcessor.cs
+    startLine: 14
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: All loaded message codecs
+  example: []
+  syntax:
+    content: IList<IDataMessageCodec> MessageCodecs { get; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.IList{Bodoconsult.NetworkCommunication.Interfaces.IDataMessageCodec}
+    content.vb: ReadOnly Property MessageCodecs As IList(Of IDataMessageCodec)
+  overload: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageCodingProcessor.MessageCodecs*
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageCodingProcessor.DecodeDataMessage(System.Memory{System.Byte})
+  commentId: M:Bodoconsult.NetworkCommunication.Interfaces.IDataMessageCodingProcessor.DecodeDataMessage(System.Memory{System.Byte})
+  id: DecodeDataMessage(System.Memory{System.Byte})
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageCodingProcessor
+  langs:
+  - csharp
+  - vb
+  name: DecodeDataMessage(Memory<byte>)
+  nameWithType: IDataMessageCodingProcessor.DecodeDataMessage(Memory<byte>)
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageCodingProcessor.DecodeDataMessage(System.Memory<byte>)
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/IDataMessageCodingProcessor.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: DecodeDataMessage
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/IDataMessageCodingProcessor.cs
+    startLine: 21
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Decode a data message
+  example: []
+  syntax:
+    content: InboundCodecResult DecodeDataMessage(Memory<byte> data)
+    parameters:
+    - id: data
+      type: System.Memory{System.Byte}
+      description: Byte array with message data
+    return:
+      type: Bodoconsult.NetworkCommunication.Interfaces.InboundCodecResult
+      description: Coding result with a <xref href="Bodoconsult.NetworkCommunication.Interfaces.IInboundDataMessage" data-throw-if-not-resolved="false"></xref> instance if coding was successful
+    content.vb: Function DecodeDataMessage(data As Memory(Of Byte)) As InboundCodecResult
+  overload: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageCodingProcessor.DecodeDataMessage*
+  nameWithType.vb: IDataMessageCodingProcessor.DecodeDataMessage(Memory(Of Byte))
+  fullName.vb: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageCodingProcessor.DecodeDataMessage(System.Memory(Of Byte))
+  name.vb: DecodeDataMessage(Memory(Of Byte))
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageCodingProcessor.EncodeDataMessage(Bodoconsult.NetworkCommunication.Interfaces.IOutboundMessage)
+  commentId: M:Bodoconsult.NetworkCommunication.Interfaces.IDataMessageCodingProcessor.EncodeDataMessage(Bodoconsult.NetworkCommunication.Interfaces.IOutboundMessage)
+  id: EncodeDataMessage(Bodoconsult.NetworkCommunication.Interfaces.IOutboundMessage)
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageCodingProcessor
+  langs:
+  - csharp
+  - vb
+  name: EncodeDataMessage(IOutboundMessage)
+  nameWithType: IDataMessageCodingProcessor.EncodeDataMessage(IOutboundMessage)
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageCodingProcessor.EncodeDataMessage(Bodoconsult.NetworkCommunication.Interfaces.IOutboundMessage)
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/IDataMessageCodingProcessor.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: EncodeDataMessage
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/IDataMessageCodingProcessor.cs
+    startLine: 28
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Encode handshake messages to send to device
+  example: []
+  syntax:
+    content: OutboundCodecResult EncodeDataMessage(IOutboundMessage dataMessage)
+    parameters:
+    - id: dataMessage
+      type: Bodoconsult.NetworkCommunication.Interfaces.IOutboundMessage
+      description: Data message to encode
+    return:
+      type: Bodoconsult.NetworkCommunication.Interfaces.OutboundCodecResult
+      description: A result set with the message as byte array
+    content.vb: Function EncodeDataMessage(dataMessage As IOutboundMessage) As OutboundCodecResult
+  overload: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageCodingProcessor.EncodeDataMessage*
+references:
+- uid: Bodoconsult.NetworkCommunication.Interfaces
+  commentId: N:Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.html
+  name: Bodoconsult.NetworkCommunication.Interfaces
+  nameWithType: Bodoconsult.NetworkCommunication.Interfaces
+  fullName: Bodoconsult.NetworkCommunication.Interfaces
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Interfaces
+    name: Interfaces
+    href: Bodoconsult.NetworkCommunication.Interfaces.html
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Interfaces
+    name: Interfaces
+    href: Bodoconsult.NetworkCommunication.Interfaces.html
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageCodingProcessor.MessageCodecs*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.IDataMessageCodingProcessor.MessageCodecs
+  href: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageCodingProcessor.html#Bodoconsult_NetworkCommunication_Interfaces_IDataMessageCodingProcessor_MessageCodecs
+  name: MessageCodecs
+  nameWithType: IDataMessageCodingProcessor.MessageCodecs
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageCodingProcessor.MessageCodecs
+- uid: System.Collections.Generic.IList{Bodoconsult.NetworkCommunication.Interfaces.IDataMessageCodec}
+  commentId: T:System.Collections.Generic.IList{Bodoconsult.NetworkCommunication.Interfaces.IDataMessageCodec}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IList`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1
+  name: IList<IDataMessageCodec>
+  nameWithType: IList<IDataMessageCodec>
+  fullName: System.Collections.Generic.IList<Bodoconsult.NetworkCommunication.Interfaces.IDataMessageCodec>
+  nameWithType.vb: IList(Of IDataMessageCodec)
+  fullName.vb: System.Collections.Generic.IList(Of Bodoconsult.NetworkCommunication.Interfaces.IDataMessageCodec)
+  name.vb: IList(Of IDataMessageCodec)
+  spec.csharp:
+  - uid: System.Collections.Generic.IList`1
+    name: IList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1
+  - name: <
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageCodec
+    name: IDataMessageCodec
+    href: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageCodec.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IList`1
+    name: IList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageCodec
+    name: IDataMessageCodec
+    href: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageCodec.html
+  - name: )
+- uid: System.Collections.Generic.IList`1
+  commentId: T:System.Collections.Generic.IList`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1
+  name: IList<T>
+  nameWithType: IList<T>
+  fullName: System.Collections.Generic.IList<T>
+  nameWithType.vb: IList(Of T)
+  fullName.vb: System.Collections.Generic.IList(Of T)
+  name.vb: IList(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IList`1
+    name: IList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IList`1
+    name: IList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IInboundDataMessage
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.IInboundDataMessage
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.NetworkCommunication.Interfaces.IInboundDataMessage.html
+  name: IInboundDataMessage
+  nameWithType: IInboundDataMessage
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IInboundDataMessage
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageCodingProcessor.DecodeDataMessage*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.IDataMessageCodingProcessor.DecodeDataMessage
+  href: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageCodingProcessor.html#Bodoconsult_NetworkCommunication_Interfaces_IDataMessageCodingProcessor_DecodeDataMessage_System_Memory_System_Byte__
+  name: DecodeDataMessage
+  nameWithType: IDataMessageCodingProcessor.DecodeDataMessage
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageCodingProcessor.DecodeDataMessage
+- uid: System.Memory{System.Byte}
+  commentId: T:System.Memory{System.Byte}
+  parent: System
+  definition: System.Memory`1
+  href: https://learn.microsoft.com/dotnet/api/system.memory-1
+  name: Memory<byte>
+  nameWithType: Memory<byte>
+  fullName: System.Memory<byte>
+  nameWithType.vb: Memory(Of Byte)
+  fullName.vb: System.Memory(Of Byte)
+  name.vb: Memory(Of Byte)
+  spec.csharp:
+  - uid: System.Memory`1
+    name: Memory
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.memory-1
+  - name: <
+  - uid: System.Byte
+    name: byte
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.byte
+  - name: '>'
+  spec.vb:
+  - uid: System.Memory`1
+    name: Memory
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.memory-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Byte
+    name: Byte
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.byte
+  - name: )
+- uid: Bodoconsult.NetworkCommunication.Interfaces.InboundCodecResult
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.InboundCodecResult
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.NetworkCommunication.Interfaces.InboundCodecResult.html
+  name: InboundCodecResult
+  nameWithType: InboundCodecResult
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.InboundCodecResult
+- uid: System.Memory`1
+  commentId: T:System.Memory`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.memory-1
+  name: Memory<T>
+  nameWithType: Memory<T>
+  fullName: System.Memory<T>
+  nameWithType.vb: Memory(Of T)
+  fullName.vb: System.Memory(Of T)
+  name.vb: Memory(Of T)
+  spec.csharp:
+  - uid: System.Memory`1
+    name: Memory
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.memory-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Memory`1
+    name: Memory
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.memory-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageCodingProcessor.EncodeDataMessage*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.IDataMessageCodingProcessor.EncodeDataMessage
+  href: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageCodingProcessor.html#Bodoconsult_NetworkCommunication_Interfaces_IDataMessageCodingProcessor_EncodeDataMessage_Bodoconsult_NetworkCommunication_Interfaces_IOutboundMessage_
+  name: EncodeDataMessage
+  nameWithType: IDataMessageCodingProcessor.EncodeDataMessage
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageCodingProcessor.EncodeDataMessage
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IOutboundMessage
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.IOutboundMessage
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.NetworkCommunication.Interfaces.IOutboundMessage.html
+  name: IOutboundMessage
+  nameWithType: IOutboundMessage
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IOutboundMessage
+- uid: Bodoconsult.NetworkCommunication.Interfaces.OutboundCodecResult
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.OutboundCodecResult
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.NetworkCommunication.Interfaces.OutboundCodecResult.html
+  name: OutboundCodecResult
+  nameWithType: OutboundCodecResult
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.OutboundCodecResult

@@ -1,0 +1,117 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageValidator
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.IDataMessageValidator
+  id: IDataMessageValidator
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  children:
+  - Bodoconsult.NetworkCommunication.Interfaces.IDataMessageValidator.IsMessageValid(Bodoconsult.NetworkCommunication.Interfaces.IInboundMessage)
+  langs:
+  - csharp
+  - vb
+  name: IDataMessageValidator
+  nameWithType: IDataMessageValidator
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageValidator
+  type: Interface
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/IDataMessageValidator.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: IDataMessageValidator
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/IDataMessageValidator.cs
+    startLine: 7
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Interface for validating customer specific data message.
+  example: []
+  syntax:
+    content: public interface IDataMessageValidator
+    content.vb: Public Interface IDataMessageValidator
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageValidator.IsMessageValid(Bodoconsult.NetworkCommunication.Interfaces.IInboundMessage)
+  commentId: M:Bodoconsult.NetworkCommunication.Interfaces.IDataMessageValidator.IsMessageValid(Bodoconsult.NetworkCommunication.Interfaces.IInboundMessage)
+  id: IsMessageValid(Bodoconsult.NetworkCommunication.Interfaces.IInboundMessage)
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageValidator
+  langs:
+  - csharp
+  - vb
+  name: IsMessageValid(IInboundMessage)
+  nameWithType: IDataMessageValidator.IsMessageValid(IInboundMessage)
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageValidator.IsMessageValid(Bodoconsult.NetworkCommunication.Interfaces.IInboundMessage)
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/IDataMessageValidator.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: IsMessageValid
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/IDataMessageValidator.cs
+    startLine: 14
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Check if a data message is valid data message to be processed
+  example: []
+  syntax:
+    content: DataMessageValidatorResult IsMessageValid(IInboundMessage dataMessage)
+    parameters:
+    - id: dataMessage
+      type: Bodoconsult.NetworkCommunication.Interfaces.IInboundMessage
+      description: Received data message
+    return:
+      type: Bodoconsult.NetworkCommunication.Interfaces.DataMessageValidatorResult
+      description: True if the message was the handshake for the sent message
+    content.vb: Function IsMessageValid(dataMessage As IInboundMessage) As DataMessageValidatorResult
+  overload: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageValidator.IsMessageValid*
+references:
+- uid: Bodoconsult.NetworkCommunication.Interfaces
+  commentId: N:Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.html
+  name: Bodoconsult.NetworkCommunication.Interfaces
+  nameWithType: Bodoconsult.NetworkCommunication.Interfaces
+  fullName: Bodoconsult.NetworkCommunication.Interfaces
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Interfaces
+    name: Interfaces
+    href: Bodoconsult.NetworkCommunication.Interfaces.html
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Interfaces
+    name: Interfaces
+    href: Bodoconsult.NetworkCommunication.Interfaces.html
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageValidator.IsMessageValid*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.IDataMessageValidator.IsMessageValid
+  href: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageValidator.html#Bodoconsult_NetworkCommunication_Interfaces_IDataMessageValidator_IsMessageValid_Bodoconsult_NetworkCommunication_Interfaces_IInboundMessage_
+  name: IsMessageValid
+  nameWithType: IDataMessageValidator.IsMessageValid
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageValidator.IsMessageValid
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IInboundMessage
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.IInboundMessage
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.NetworkCommunication.Interfaces.IInboundMessage.html
+  name: IInboundMessage
+  nameWithType: IInboundMessage
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IInboundMessage
+- uid: Bodoconsult.NetworkCommunication.Interfaces.DataMessageValidatorResult
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.DataMessageValidatorResult
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.NetworkCommunication.Interfaces.DataMessageValidatorResult.html
+  name: DataMessageValidatorResult
+  nameWithType: DataMessageValidatorResult
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.DataMessageValidatorResult

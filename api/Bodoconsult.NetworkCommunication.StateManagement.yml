@@ -1,0 +1,120 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bodoconsult.NetworkCommunication.StateManagement
+  commentId: N:Bodoconsult.NetworkCommunication.StateManagement
+  id: Bodoconsult.NetworkCommunication.StateManagement
+  children:
+  - Bodoconsult.NetworkCommunication.StateManagement.BusinessState
+  - Bodoconsult.NetworkCommunication.StateManagement.BusinessSubState
+  - Bodoconsult.NetworkCommunication.StateManagement.DefaultBusinessStates
+  - Bodoconsult.NetworkCommunication.StateManagement.DefaultBusinessSubStates
+  - Bodoconsult.NetworkCommunication.StateManagement.IActionStateManagementState
+  - Bodoconsult.NetworkCommunication.StateManagement.IBusinessState
+  - Bodoconsult.NetworkCommunication.StateManagement.IBusinessSubState
+  - Bodoconsult.NetworkCommunication.StateManagement.IStateManagementContext
+  - Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState
+  - Bodoconsult.NetworkCommunication.StateManagement.StateManagementStateBase
+  langs:
+  - csharp
+  - vb
+  name: Bodoconsult.NetworkCommunication.StateManagement
+  nameWithType: Bodoconsult.NetworkCommunication.StateManagement
+  fullName: Bodoconsult.NetworkCommunication.StateManagement
+  type: Namespace
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+references:
+- uid: Bodoconsult.NetworkCommunication.StateManagement.BusinessState
+  commentId: T:Bodoconsult.NetworkCommunication.StateManagement.BusinessState
+  href: Bodoconsult.NetworkCommunication.StateManagement.BusinessState.html
+  name: BusinessState
+  nameWithType: BusinessState
+  fullName: Bodoconsult.NetworkCommunication.StateManagement.BusinessState
+- uid: Bodoconsult.NetworkCommunication.StateManagement.BusinessSubState
+  commentId: T:Bodoconsult.NetworkCommunication.StateManagement.BusinessSubState
+  href: Bodoconsult.NetworkCommunication.StateManagement.BusinessSubState.html
+  name: BusinessSubState
+  nameWithType: BusinessSubState
+  fullName: Bodoconsult.NetworkCommunication.StateManagement.BusinessSubState
+- uid: Bodoconsult.NetworkCommunication.StateManagement.DefaultBusinessStates
+  commentId: T:Bodoconsult.NetworkCommunication.StateManagement.DefaultBusinessStates
+  href: Bodoconsult.NetworkCommunication.StateManagement.DefaultBusinessStates.html
+  name: DefaultBusinessStates
+  nameWithType: DefaultBusinessStates
+  fullName: Bodoconsult.NetworkCommunication.StateManagement.DefaultBusinessStates
+- uid: Bodoconsult.NetworkCommunication.StateManagement.DefaultBusinessSubStates
+  commentId: T:Bodoconsult.NetworkCommunication.StateManagement.DefaultBusinessSubStates
+  href: Bodoconsult.NetworkCommunication.StateManagement.DefaultBusinessSubStates.html
+  name: DefaultBusinessSubStates
+  nameWithType: DefaultBusinessSubStates
+  fullName: Bodoconsult.NetworkCommunication.StateManagement.DefaultBusinessSubStates
+- uid: Bodoconsult.NetworkCommunication.StateManagement.IActionStateManagementState
+  commentId: T:Bodoconsult.NetworkCommunication.StateManagement.IActionStateManagementState
+  href: Bodoconsult.NetworkCommunication.StateManagement.IActionStateManagementState.html
+  name: IActionStateManagementState
+  nameWithType: IActionStateManagementState
+  fullName: Bodoconsult.NetworkCommunication.StateManagement.IActionStateManagementState
+- uid: Bodoconsult.NetworkCommunication.StateManagement.IBusinessState
+  commentId: T:Bodoconsult.NetworkCommunication.StateManagement.IBusinessState
+  parent: Bodoconsult.NetworkCommunication.StateManagement
+  href: Bodoconsult.NetworkCommunication.StateManagement.IBusinessState.html
+  name: IBusinessState
+  nameWithType: IBusinessState
+  fullName: Bodoconsult.NetworkCommunication.StateManagement.IBusinessState
+- uid: Bodoconsult.NetworkCommunication.StateManagement.IBusinessSubState
+  commentId: T:Bodoconsult.NetworkCommunication.StateManagement.IBusinessSubState
+  parent: Bodoconsult.NetworkCommunication.StateManagement
+  href: Bodoconsult.NetworkCommunication.StateManagement.IBusinessSubState.html
+  name: IBusinessSubState
+  nameWithType: IBusinessSubState
+  fullName: Bodoconsult.NetworkCommunication.StateManagement.IBusinessSubState
+- uid: Bodoconsult.NetworkCommunication.StateManagement.IStateManagementContext
+  commentId: T:Bodoconsult.NetworkCommunication.StateManagement.IStateManagementContext
+  parent: Bodoconsult.NetworkCommunication.StateManagement
+  href: Bodoconsult.NetworkCommunication.StateManagement.IStateManagementContext.html
+  name: IStateManagementContext
+  nameWithType: IStateManagementContext
+  fullName: Bodoconsult.NetworkCommunication.StateManagement.IStateManagementContext
+- uid: Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState
+  commentId: T:Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState
+  parent: Bodoconsult.NetworkCommunication.StateManagement
+  href: Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState.html
+  name: IStateManagementState
+  nameWithType: IStateManagementState
+  fullName: Bodoconsult.NetworkCommunication.StateManagement.IStateManagementState
+- uid: Bodoconsult.NetworkCommunication.StateManagement.StateManagementStateBase
+  commentId: T:Bodoconsult.NetworkCommunication.StateManagement.StateManagementStateBase
+  href: Bodoconsult.NetworkCommunication.StateManagement.StateManagementStateBase.html
+  name: StateManagementStateBase
+  nameWithType: StateManagementStateBase
+  fullName: Bodoconsult.NetworkCommunication.StateManagement.StateManagementStateBase
+- uid: Bodoconsult.NetworkCommunication.StateManagement
+  commentId: N:Bodoconsult.NetworkCommunication.StateManagement
+  href: Bodoconsult.html
+  name: Bodoconsult.NetworkCommunication.StateManagement
+  nameWithType: Bodoconsult.NetworkCommunication.StateManagement
+  fullName: Bodoconsult.NetworkCommunication.StateManagement
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.StateManagement
+    name: StateManagement
+    href: Bodoconsult.NetworkCommunication.StateManagement.html
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.StateManagement
+    name: StateManagement
+    href: Bodoconsult.NetworkCommunication.StateManagement.html

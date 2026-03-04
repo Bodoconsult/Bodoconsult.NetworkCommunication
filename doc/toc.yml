@@ -1,0 +1,10 @@
+- name: Introduction
+  href: introduction.md
+- name: Getting Started
+  href: getting-started.md
+- name: Bodoconsult.Network.Windows
+  href: Bodoconsult.Network.Windows/toc.yml
+  topicHref: Bodoconsult.Network.Windows/README.md
+- name: Bodoconsult.NetworkCommunication
+  href: Bodoconsult.NetworkCommunication/toc.yml
+  topicHref: Bodoconsult.NetworkCommunication/README.md

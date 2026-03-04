@@ -1,0 +1,270 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IOrderReceiver
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.IOrderReceiver
+  id: IOrderReceiver
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  children:
+  - Bodoconsult.NetworkCommunication.Interfaces.IOrderReceiver.AddReceivedMessage(Bodoconsult.NetworkCommunication.Interfaces.IInboundDataMessage)
+  - Bodoconsult.NetworkCommunication.Interfaces.IOrderReceiver.IsReceivedMessageProcessingActivated
+  - Bodoconsult.NetworkCommunication.Interfaces.IOrderReceiver.OrderReceiverCheckMessageDelegate
+  langs:
+  - csharp
+  - vb
+  name: IOrderReceiver
+  nameWithType: IOrderReceiver
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IOrderReceiver
+  type: Interface
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/IOrderReceiver.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: IOrderReceiver
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/IOrderReceiver.cs
+    startLine: 9
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: The receiver module of the device order management
+  example: []
+  syntax:
+    content: 'public interface IOrderReceiver : IDisposable'
+    content.vb: Public Interface IOrderReceiver Inherits IDisposable
+  inheritedMembers:
+  - System.IDisposable.Dispose
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IOrderReceiver.OrderReceiverCheckMessageDelegate
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IOrderReceiver.OrderReceiverCheckMessageDelegate
+  id: OrderReceiverCheckMessageDelegate
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IOrderReceiver
+  langs:
+  - csharp
+  - vb
+  name: OrderReceiverCheckMessageDelegate
+  nameWithType: IOrderReceiver.OrderReceiverCheckMessageDelegate
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IOrderReceiver.OrderReceiverCheckMessageDelegate
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/IOrderReceiver.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: OrderReceiverCheckMessageDelegate
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/IOrderReceiver.cs
+    startLine: 14
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Delegate for handling a received device message
+  example: []
+  syntax:
+    content: OrderReceiverCheckMessageDelegate OrderReceiverCheckMessageDelegate { get; set; }
+    parameters: []
+    return:
+      type: Bodoconsult.NetworkCommunication.Delegates.OrderReceiverCheckMessageDelegate
+    content.vb: Property OrderReceiverCheckMessageDelegate As OrderReceiverCheckMessageDelegate
+  overload: Bodoconsult.NetworkCommunication.Interfaces.IOrderReceiver.OrderReceiverCheckMessageDelegate*
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IOrderReceiver.IsReceivedMessageProcessingActivated
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IOrderReceiver.IsReceivedMessageProcessingActivated
+  id: IsReceivedMessageProcessingActivated
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IOrderReceiver
+  langs:
+  - csharp
+  - vb
+  name: IsReceivedMessageProcessingActivated
+  nameWithType: IOrderReceiver.IsReceivedMessageProcessingActivated
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IOrderReceiver.IsReceivedMessageProcessingActivated
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/IOrderReceiver.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: IsReceivedMessageProcessingActivated
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/IOrderReceiver.cs
+    startLine: 19
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Is the received message processing activated?
+  example: []
+  syntax:
+    content: bool IsReceivedMessageProcessingActivated { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Property IsReceivedMessageProcessingActivated As Boolean
+  overload: Bodoconsult.NetworkCommunication.Interfaces.IOrderReceiver.IsReceivedMessageProcessingActivated*
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IOrderReceiver.AddReceivedMessage(Bodoconsult.NetworkCommunication.Interfaces.IInboundDataMessage)
+  commentId: M:Bodoconsult.NetworkCommunication.Interfaces.IOrderReceiver.AddReceivedMessage(Bodoconsult.NetworkCommunication.Interfaces.IInboundDataMessage)
+  id: AddReceivedMessage(Bodoconsult.NetworkCommunication.Interfaces.IInboundDataMessage)
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IOrderReceiver
+  langs:
+  - csharp
+  - vb
+  name: AddReceivedMessage(IInboundDataMessage)
+  nameWithType: IOrderReceiver.AddReceivedMessage(IInboundDataMessage)
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IOrderReceiver.AddReceivedMessage(Bodoconsult.NetworkCommunication.Interfaces.IInboundDataMessage)
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/IOrderReceiver.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: AddReceivedMessage
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/IOrderReceiver.cs
+    startLine: 26
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Adds a received message to the receiver queue for further processing
+  example: []
+  syntax:
+    content: void AddReceivedMessage(IInboundDataMessage receivedMessage)
+    parameters:
+    - id: receivedMessage
+      type: Bodoconsult.NetworkCommunication.Interfaces.IInboundDataMessage
+      description: Received message
+    content.vb: Sub AddReceivedMessage(receivedMessage As IInboundDataMessage)
+  overload: Bodoconsult.NetworkCommunication.Interfaces.IOrderReceiver.AddReceivedMessage*
+references:
+- uid: Bodoconsult.NetworkCommunication.Interfaces
+  commentId: N:Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.html
+  name: Bodoconsult.NetworkCommunication.Interfaces
+  nameWithType: Bodoconsult.NetworkCommunication.Interfaces
+  fullName: Bodoconsult.NetworkCommunication.Interfaces
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Interfaces
+    name: Interfaces
+    href: Bodoconsult.NetworkCommunication.Interfaces.html
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Interfaces
+    name: Interfaces
+    href: Bodoconsult.NetworkCommunication.Interfaces.html
+- uid: System.IDisposable.Dispose
+  commentId: M:System.IDisposable.Dispose
+  parent: System.IDisposable
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  name: Dispose()
+  nameWithType: IDisposable.Dispose()
+  fullName: System.IDisposable.Dispose()
+  spec.csharp:
+  - uid: System.IDisposable.Dispose
+    name: Dispose
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.IDisposable.Dispose
+    name: Dispose
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  - name: (
+  - name: )
+- uid: System.IDisposable
+  commentId: T:System.IDisposable
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable
+  name: IDisposable
+  nameWithType: IDisposable
+  fullName: System.IDisposable
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IOrderReceiver.OrderReceiverCheckMessageDelegate*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.IOrderReceiver.OrderReceiverCheckMessageDelegate
+  href: Bodoconsult.NetworkCommunication.Interfaces.IOrderReceiver.html#Bodoconsult_NetworkCommunication_Interfaces_IOrderReceiver_OrderReceiverCheckMessageDelegate
+  name: OrderReceiverCheckMessageDelegate
+  nameWithType: IOrderReceiver.OrderReceiverCheckMessageDelegate
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IOrderReceiver.OrderReceiverCheckMessageDelegate
+- uid: Bodoconsult.NetworkCommunication.Delegates.OrderReceiverCheckMessageDelegate
+  commentId: T:Bodoconsult.NetworkCommunication.Delegates.OrderReceiverCheckMessageDelegate
+  parent: Bodoconsult.NetworkCommunication.Delegates
+  href: Bodoconsult.NetworkCommunication.Delegates.OrderReceiverCheckMessageDelegate.html
+  name: OrderReceiverCheckMessageDelegate
+  nameWithType: OrderReceiverCheckMessageDelegate
+  fullName: Bodoconsult.NetworkCommunication.Delegates.OrderReceiverCheckMessageDelegate
+- uid: Bodoconsult.NetworkCommunication.Delegates
+  commentId: N:Bodoconsult.NetworkCommunication.Delegates
+  href: Bodoconsult.html
+  name: Bodoconsult.NetworkCommunication.Delegates
+  nameWithType: Bodoconsult.NetworkCommunication.Delegates
+  fullName: Bodoconsult.NetworkCommunication.Delegates
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Delegates
+    name: Delegates
+    href: Bodoconsult.NetworkCommunication.Delegates.html
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Delegates
+    name: Delegates
+    href: Bodoconsult.NetworkCommunication.Delegates.html
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IOrderReceiver.IsReceivedMessageProcessingActivated*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.IOrderReceiver.IsReceivedMessageProcessingActivated
+  href: Bodoconsult.NetworkCommunication.Interfaces.IOrderReceiver.html#Bodoconsult_NetworkCommunication_Interfaces_IOrderReceiver_IsReceivedMessageProcessingActivated
+  name: IsReceivedMessageProcessingActivated
+  nameWithType: IOrderReceiver.IsReceivedMessageProcessingActivated
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IOrderReceiver.IsReceivedMessageProcessingActivated
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IOrderReceiver.AddReceivedMessage*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.IOrderReceiver.AddReceivedMessage
+  href: Bodoconsult.NetworkCommunication.Interfaces.IOrderReceiver.html#Bodoconsult_NetworkCommunication_Interfaces_IOrderReceiver_AddReceivedMessage_Bodoconsult_NetworkCommunication_Interfaces_IInboundDataMessage_
+  name: AddReceivedMessage
+  nameWithType: IOrderReceiver.AddReceivedMessage
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IOrderReceiver.AddReceivedMessage
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IInboundDataMessage
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.IInboundDataMessage
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.NetworkCommunication.Interfaces.IInboundDataMessage.html
+  name: IInboundDataMessage
+  nameWithType: IInboundDataMessage
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IInboundDataMessage

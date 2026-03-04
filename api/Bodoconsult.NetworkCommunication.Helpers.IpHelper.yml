@@ -1,0 +1,635 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bodoconsult.NetworkCommunication.Helpers.IpHelper
+  commentId: T:Bodoconsult.NetworkCommunication.Helpers.IpHelper
+  id: IpHelper
+  parent: Bodoconsult.NetworkCommunication.Helpers
+  children:
+  - Bodoconsult.NetworkCommunication.Helpers.IpHelper.GetBroadcastAddress(System.Net.IPAddress,System.Net.IPAddress)
+  - Bodoconsult.NetworkCommunication.Helpers.IpHelper.GetLocalIpAddress
+  - Bodoconsult.NetworkCommunication.Helpers.IpHelper.GetNetworkAddress(System.Net.IPAddress,System.Net.IPAddress)
+  - Bodoconsult.NetworkCommunication.Helpers.IpHelper.IsInSameSubnet(System.Net.IPAddress,System.Net.IPAddress,System.Net.IPAddress)
+  - Bodoconsult.NetworkCommunication.Helpers.IpHelper.TestHostConnection(System.String,System.Int32)
+  - Bodoconsult.NetworkCommunication.Helpers.IpHelper.TestIpConnection(System.String,System.Int32)
+  langs:
+  - csharp
+  - vb
+  name: IpHelper
+  nameWithType: IpHelper
+  fullName: Bodoconsult.NetworkCommunication.Helpers.IpHelper
+  type: Class
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Helpers/IpHelper.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: IpHelper
+    path: src/Bodoconsult.NetworkCommunication/Helpers/IpHelper.cs
+    startLine: 9
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Helpers
+  summary: Helper class for TCP based / related methods
+  example: []
+  syntax:
+    content: public static class IpHelper
+    content.vb: Public Module IpHelper
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: Bodoconsult.NetworkCommunication.Helpers.IpHelper.GetLocalIpAddress
+  commentId: M:Bodoconsult.NetworkCommunication.Helpers.IpHelper.GetLocalIpAddress
+  id: GetLocalIpAddress
+  parent: Bodoconsult.NetworkCommunication.Helpers.IpHelper
+  langs:
+  - csharp
+  - vb
+  name: GetLocalIpAddress()
+  nameWithType: IpHelper.GetLocalIpAddress()
+  fullName: Bodoconsult.NetworkCommunication.Helpers.IpHelper.GetLocalIpAddress()
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Helpers/IpHelper.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: GetLocalIpAddress
+    path: src/Bodoconsult.NetworkCommunication/Helpers/IpHelper.cs
+    startLine: 15
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Helpers
+  summary: Get the IP address of the local network interface
+  example: []
+  syntax:
+    content: public static IPAddress GetLocalIpAddress()
+    return:
+      type: System.Net.IPAddress
+      description: ''
+    content.vb: Public Shared Function GetLocalIpAddress() As IPAddress
+  overload: Bodoconsult.NetworkCommunication.Helpers.IpHelper.GetLocalIpAddress*
+- uid: Bodoconsult.NetworkCommunication.Helpers.IpHelper.TestIpConnection(System.String,System.Int32)
+  commentId: M:Bodoconsult.NetworkCommunication.Helpers.IpHelper.TestIpConnection(System.String,System.Int32)
+  id: TestIpConnection(System.String,System.Int32)
+  parent: Bodoconsult.NetworkCommunication.Helpers.IpHelper
+  langs:
+  - csharp
+  - vb
+  name: TestIpConnection(string, int)
+  nameWithType: IpHelper.TestIpConnection(string, int)
+  fullName: Bodoconsult.NetworkCommunication.Helpers.IpHelper.TestIpConnection(string, int)
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Helpers/IpHelper.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: TestIpConnection
+    path: src/Bodoconsult.NetworkCommunication/Helpers/IpHelper.cs
+    startLine: 28
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Helpers
+  summary: Test if a TCP/IP connection to a certain IP host is possible for the requested port number
+  example: []
+  syntax:
+    content: public static bool TestIpConnection(string ipAddress, int portNumber)
+    parameters:
+    - id: ipAddress
+      type: System.String
+      description: Requested IP address
+    - id: portNumber
+      type: System.Int32
+      description: Requested port number
+    return:
+      type: System.Boolean
+      description: ''
+    content.vb: Public Shared Function TestIpConnection(ipAddress As String, portNumber As Integer) As Boolean
+  overload: Bodoconsult.NetworkCommunication.Helpers.IpHelper.TestIpConnection*
+  nameWithType.vb: IpHelper.TestIpConnection(String, Integer)
+  fullName.vb: Bodoconsult.NetworkCommunication.Helpers.IpHelper.TestIpConnection(String, Integer)
+  name.vb: TestIpConnection(String, Integer)
+- uid: Bodoconsult.NetworkCommunication.Helpers.IpHelper.TestHostConnection(System.String,System.Int32)
+  commentId: M:Bodoconsult.NetworkCommunication.Helpers.IpHelper.TestHostConnection(System.String,System.Int32)
+  id: TestHostConnection(System.String,System.Int32)
+  parent: Bodoconsult.NetworkCommunication.Helpers.IpHelper
+  langs:
+  - csharp
+  - vb
+  name: TestHostConnection(string, int)
+  nameWithType: IpHelper.TestHostConnection(string, int)
+  fullName: Bodoconsult.NetworkCommunication.Helpers.IpHelper.TestHostConnection(string, int)
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Helpers/IpHelper.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: TestHostConnection
+    path: src/Bodoconsult.NetworkCommunication/Helpers/IpHelper.cs
+    startLine: 60
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Helpers
+  summary: Test if a TCP/IP connection to a certain host is possible for the requested port number
+  example: []
+  syntax:
+    content: public static bool TestHostConnection(string hostname, int portNumber)
+    parameters:
+    - id: hostname
+      type: System.String
+      description: Requested host name
+    - id: portNumber
+      type: System.Int32
+      description: Requested port number
+    return:
+      type: System.Boolean
+      description: ''
+    content.vb: Public Shared Function TestHostConnection(hostname As String, portNumber As Integer) As Boolean
+  overload: Bodoconsult.NetworkCommunication.Helpers.IpHelper.TestHostConnection*
+  nameWithType.vb: IpHelper.TestHostConnection(String, Integer)
+  fullName.vb: Bodoconsult.NetworkCommunication.Helpers.IpHelper.TestHostConnection(String, Integer)
+  name.vb: TestHostConnection(String, Integer)
+- uid: Bodoconsult.NetworkCommunication.Helpers.IpHelper.GetBroadcastAddress(System.Net.IPAddress,System.Net.IPAddress)
+  commentId: M:Bodoconsult.NetworkCommunication.Helpers.IpHelper.GetBroadcastAddress(System.Net.IPAddress,System.Net.IPAddress)
+  id: GetBroadcastAddress(System.Net.IPAddress,System.Net.IPAddress)
+  isExtensionMethod: true
+  parent: Bodoconsult.NetworkCommunication.Helpers.IpHelper
+  langs:
+  - csharp
+  - vb
+  name: GetBroadcastAddress(IPAddress, IPAddress)
+  nameWithType: IpHelper.GetBroadcastAddress(IPAddress, IPAddress)
+  fullName: Bodoconsult.NetworkCommunication.Helpers.IpHelper.GetBroadcastAddress(System.Net.IPAddress, System.Net.IPAddress)
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Helpers/IpHelper.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: GetBroadcastAddress
+    path: src/Bodoconsult.NetworkCommunication/Helpers/IpHelper.cs
+    startLine: 85
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Helpers
+  syntax:
+    content: public static IPAddress GetBroadcastAddress(this IPAddress address, IPAddress subnetMask)
+    parameters:
+    - id: address
+      type: System.Net.IPAddress
+    - id: subnetMask
+      type: System.Net.IPAddress
+    return:
+      type: System.Net.IPAddress
+    content.vb: Public Shared Function GetBroadcastAddress(address As IPAddress, subnetMask As IPAddress) As IPAddress
+  overload: Bodoconsult.NetworkCommunication.Helpers.IpHelper.GetBroadcastAddress*
+- uid: Bodoconsult.NetworkCommunication.Helpers.IpHelper.GetNetworkAddress(System.Net.IPAddress,System.Net.IPAddress)
+  commentId: M:Bodoconsult.NetworkCommunication.Helpers.IpHelper.GetNetworkAddress(System.Net.IPAddress,System.Net.IPAddress)
+  id: GetNetworkAddress(System.Net.IPAddress,System.Net.IPAddress)
+  isExtensionMethod: true
+  parent: Bodoconsult.NetworkCommunication.Helpers.IpHelper
+  langs:
+  - csharp
+  - vb
+  name: GetNetworkAddress(IPAddress, IPAddress)
+  nameWithType: IpHelper.GetNetworkAddress(IPAddress, IPAddress)
+  fullName: Bodoconsult.NetworkCommunication.Helpers.IpHelper.GetNetworkAddress(System.Net.IPAddress, System.Net.IPAddress)
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Helpers/IpHelper.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: GetNetworkAddress
+    path: src/Bodoconsult.NetworkCommunication/Helpers/IpHelper.cs
+    startLine: 103
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Helpers
+  syntax:
+    content: public static IPAddress GetNetworkAddress(this IPAddress address, IPAddress subnetMask)
+    parameters:
+    - id: address
+      type: System.Net.IPAddress
+    - id: subnetMask
+      type: System.Net.IPAddress
+    return:
+      type: System.Net.IPAddress
+    content.vb: Public Shared Function GetNetworkAddress(address As IPAddress, subnetMask As IPAddress) As IPAddress
+  overload: Bodoconsult.NetworkCommunication.Helpers.IpHelper.GetNetworkAddress*
+- uid: Bodoconsult.NetworkCommunication.Helpers.IpHelper.IsInSameSubnet(System.Net.IPAddress,System.Net.IPAddress,System.Net.IPAddress)
+  commentId: M:Bodoconsult.NetworkCommunication.Helpers.IpHelper.IsInSameSubnet(System.Net.IPAddress,System.Net.IPAddress,System.Net.IPAddress)
+  id: IsInSameSubnet(System.Net.IPAddress,System.Net.IPAddress,System.Net.IPAddress)
+  isExtensionMethod: true
+  parent: Bodoconsult.NetworkCommunication.Helpers.IpHelper
+  langs:
+  - csharp
+  - vb
+  name: IsInSameSubnet(IPAddress, IPAddress, IPAddress)
+  nameWithType: IpHelper.IsInSameSubnet(IPAddress, IPAddress, IPAddress)
+  fullName: Bodoconsult.NetworkCommunication.Helpers.IpHelper.IsInSameSubnet(System.Net.IPAddress, System.Net.IPAddress, System.Net.IPAddress)
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Helpers/IpHelper.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: IsInSameSubnet
+    path: src/Bodoconsult.NetworkCommunication/Helpers/IpHelper.cs
+    startLine: 121
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Helpers
+  syntax:
+    content: public static bool IsInSameSubnet(this IPAddress address2, IPAddress address, IPAddress subnetMask)
+    parameters:
+    - id: address2
+      type: System.Net.IPAddress
+    - id: address
+      type: System.Net.IPAddress
+    - id: subnetMask
+      type: System.Net.IPAddress
+    return:
+      type: System.Boolean
+    content.vb: Public Shared Function IsInSameSubnet(address2 As IPAddress, address As IPAddress, subnetMask As IPAddress) As Boolean
+  overload: Bodoconsult.NetworkCommunication.Helpers.IpHelper.IsInSameSubnet*
+references:
+- uid: Bodoconsult.NetworkCommunication.Helpers
+  commentId: N:Bodoconsult.NetworkCommunication.Helpers
+  href: Bodoconsult.html
+  name: Bodoconsult.NetworkCommunication.Helpers
+  nameWithType: Bodoconsult.NetworkCommunication.Helpers
+  fullName: Bodoconsult.NetworkCommunication.Helpers
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Helpers
+    name: Helpers
+    href: Bodoconsult.NetworkCommunication.Helpers.html
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Helpers
+    name: Helpers
+    href: Bodoconsult.NetworkCommunication.Helpers.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Bodoconsult.NetworkCommunication.Helpers.IpHelper.GetLocalIpAddress*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Helpers.IpHelper.GetLocalIpAddress
+  href: Bodoconsult.NetworkCommunication.Helpers.IpHelper.html#Bodoconsult_NetworkCommunication_Helpers_IpHelper_GetLocalIpAddress
+  name: GetLocalIpAddress
+  nameWithType: IpHelper.GetLocalIpAddress
+  fullName: Bodoconsult.NetworkCommunication.Helpers.IpHelper.GetLocalIpAddress
+- uid: System.Net.IPAddress
+  commentId: T:System.Net.IPAddress
+  parent: System.Net
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.net.ipaddress
+  name: IPAddress
+  nameWithType: IPAddress
+  fullName: System.Net.IPAddress
+- uid: System.Net
+  commentId: N:System.Net
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Net
+  nameWithType: System.Net
+  fullName: System.Net
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Net
+    name: Net
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.net
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Net
+    name: Net
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.net
+- uid: Bodoconsult.NetworkCommunication.Helpers.IpHelper.TestIpConnection*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Helpers.IpHelper.TestIpConnection
+  href: Bodoconsult.NetworkCommunication.Helpers.IpHelper.html#Bodoconsult_NetworkCommunication_Helpers_IpHelper_TestIpConnection_System_String_System_Int32_
+  name: TestIpConnection
+  nameWithType: IpHelper.TestIpConnection
+  fullName: Bodoconsult.NetworkCommunication.Helpers.IpHelper.TestIpConnection
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: Bodoconsult.NetworkCommunication.Helpers.IpHelper.TestHostConnection*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Helpers.IpHelper.TestHostConnection
+  href: Bodoconsult.NetworkCommunication.Helpers.IpHelper.html#Bodoconsult_NetworkCommunication_Helpers_IpHelper_TestHostConnection_System_String_System_Int32_
+  name: TestHostConnection
+  nameWithType: IpHelper.TestHostConnection
+  fullName: Bodoconsult.NetworkCommunication.Helpers.IpHelper.TestHostConnection
+- uid: Bodoconsult.NetworkCommunication.Helpers.IpHelper.GetBroadcastAddress*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Helpers.IpHelper.GetBroadcastAddress
+  href: Bodoconsult.NetworkCommunication.Helpers.IpHelper.html#Bodoconsult_NetworkCommunication_Helpers_IpHelper_GetBroadcastAddress_System_Net_IPAddress_System_Net_IPAddress_
+  name: GetBroadcastAddress
+  nameWithType: IpHelper.GetBroadcastAddress
+  fullName: Bodoconsult.NetworkCommunication.Helpers.IpHelper.GetBroadcastAddress
+- uid: Bodoconsult.NetworkCommunication.Helpers.IpHelper.GetNetworkAddress*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Helpers.IpHelper.GetNetworkAddress
+  href: Bodoconsult.NetworkCommunication.Helpers.IpHelper.html#Bodoconsult_NetworkCommunication_Helpers_IpHelper_GetNetworkAddress_System_Net_IPAddress_System_Net_IPAddress_
+  name: GetNetworkAddress
+  nameWithType: IpHelper.GetNetworkAddress
+  fullName: Bodoconsult.NetworkCommunication.Helpers.IpHelper.GetNetworkAddress
+- uid: Bodoconsult.NetworkCommunication.Helpers.IpHelper.IsInSameSubnet*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Helpers.IpHelper.IsInSameSubnet
+  href: Bodoconsult.NetworkCommunication.Helpers.IpHelper.html#Bodoconsult_NetworkCommunication_Helpers_IpHelper_IsInSameSubnet_System_Net_IPAddress_System_Net_IPAddress_System_Net_IPAddress_
+  name: IsInSameSubnet
+  nameWithType: IpHelper.IsInSameSubnet
+  fullName: Bodoconsult.NetworkCommunication.Helpers.IpHelper.IsInSameSubnet

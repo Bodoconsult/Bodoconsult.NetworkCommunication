@@ -1,0 +1,587 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerPacketMessageTypes
+  commentId: T:Bodoconsult.Network.Windows.Dhcp.DhcpServerPacketMessageTypes
+  id: DhcpServerPacketMessageTypes
+  parent: Bodoconsult.Network.Windows.Dhcp
+  children:
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerPacketMessageTypes.Acknowledgment
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerPacketMessageTypes.ActiveLeaseQuery
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerPacketMessageTypes.BulkLeaseQuery
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerPacketMessageTypes.Decline
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerPacketMessageTypes.Discover
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerPacketMessageTypes.ForceRenew
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerPacketMessageTypes.Inform
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerPacketMessageTypes.LeaseActive
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerPacketMessageTypes.LeaseQuery
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerPacketMessageTypes.LeaseQueryDone
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerPacketMessageTypes.LeaseQueryStatus
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerPacketMessageTypes.LeaseUknown
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerPacketMessageTypes.LeaseUnassigned
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerPacketMessageTypes.NegativeAcknowledgment
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerPacketMessageTypes.Offer
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerPacketMessageTypes.Release
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerPacketMessageTypes.Request
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerPacketMessageTypes.Tls
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerPacketMessageTypes.Unknown
+  langs:
+  - csharp
+  - vb
+  name: DhcpServerPacketMessageTypes
+  nameWithType: DhcpServerPacketMessageTypes
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerPacketMessageTypes
+  type: Enum
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerPacketMessageTypes.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: DhcpServerPacketMessageTypes
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerPacketMessageTypes.cs
+    startLine: 5
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: 'public enum DhcpServerPacketMessageTypes : byte'
+    content.vb: Public Enum DhcpServerPacketMessageTypes As Byte
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerPacketMessageTypes.Unknown
+  commentId: F:Bodoconsult.Network.Windows.Dhcp.DhcpServerPacketMessageTypes.Unknown
+  id: Unknown
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerPacketMessageTypes
+  langs:
+  - csharp
+  - vb
+  name: Unknown
+  nameWithType: DhcpServerPacketMessageTypes.Unknown
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerPacketMessageTypes.Unknown
+  type: Field
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerPacketMessageTypes.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Unknown
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerPacketMessageTypes.cs
+    startLine: 7
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: Unknown = 0
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerPacketMessageTypes
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerPacketMessageTypes.Discover
+  commentId: F:Bodoconsult.Network.Windows.Dhcp.DhcpServerPacketMessageTypes.Discover
+  id: Discover
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerPacketMessageTypes
+  langs:
+  - csharp
+  - vb
+  name: Discover
+  nameWithType: DhcpServerPacketMessageTypes.Discover
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerPacketMessageTypes.Discover
+  type: Field
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerPacketMessageTypes.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Discover
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerPacketMessageTypes.cs
+    startLine: 8
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: Discover = 1
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerPacketMessageTypes
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerPacketMessageTypes.Offer
+  commentId: F:Bodoconsult.Network.Windows.Dhcp.DhcpServerPacketMessageTypes.Offer
+  id: Offer
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerPacketMessageTypes
+  langs:
+  - csharp
+  - vb
+  name: Offer
+  nameWithType: DhcpServerPacketMessageTypes.Offer
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerPacketMessageTypes.Offer
+  type: Field
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerPacketMessageTypes.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Offer
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerPacketMessageTypes.cs
+    startLine: 9
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: Offer = 2
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerPacketMessageTypes
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerPacketMessageTypes.Request
+  commentId: F:Bodoconsult.Network.Windows.Dhcp.DhcpServerPacketMessageTypes.Request
+  id: Request
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerPacketMessageTypes
+  langs:
+  - csharp
+  - vb
+  name: Request
+  nameWithType: DhcpServerPacketMessageTypes.Request
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerPacketMessageTypes.Request
+  type: Field
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerPacketMessageTypes.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Request
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerPacketMessageTypes.cs
+    startLine: 10
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: Request = 3
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerPacketMessageTypes
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerPacketMessageTypes.Decline
+  commentId: F:Bodoconsult.Network.Windows.Dhcp.DhcpServerPacketMessageTypes.Decline
+  id: Decline
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerPacketMessageTypes
+  langs:
+  - csharp
+  - vb
+  name: Decline
+  nameWithType: DhcpServerPacketMessageTypes.Decline
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerPacketMessageTypes.Decline
+  type: Field
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerPacketMessageTypes.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Decline
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerPacketMessageTypes.cs
+    startLine: 11
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: Decline = 4
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerPacketMessageTypes
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerPacketMessageTypes.Acknowledgment
+  commentId: F:Bodoconsult.Network.Windows.Dhcp.DhcpServerPacketMessageTypes.Acknowledgment
+  id: Acknowledgment
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerPacketMessageTypes
+  langs:
+  - csharp
+  - vb
+  name: Acknowledgment
+  nameWithType: DhcpServerPacketMessageTypes.Acknowledgment
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerPacketMessageTypes.Acknowledgment
+  type: Field
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerPacketMessageTypes.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Acknowledgment
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerPacketMessageTypes.cs
+    startLine: 12
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: Acknowledgment = 5
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerPacketMessageTypes
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerPacketMessageTypes.NegativeAcknowledgment
+  commentId: F:Bodoconsult.Network.Windows.Dhcp.DhcpServerPacketMessageTypes.NegativeAcknowledgment
+  id: NegativeAcknowledgment
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerPacketMessageTypes
+  langs:
+  - csharp
+  - vb
+  name: NegativeAcknowledgment
+  nameWithType: DhcpServerPacketMessageTypes.NegativeAcknowledgment
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerPacketMessageTypes.NegativeAcknowledgment
+  type: Field
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerPacketMessageTypes.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: NegativeAcknowledgment
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerPacketMessageTypes.cs
+    startLine: 13
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: NegativeAcknowledgment = 6
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerPacketMessageTypes
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerPacketMessageTypes.Release
+  commentId: F:Bodoconsult.Network.Windows.Dhcp.DhcpServerPacketMessageTypes.Release
+  id: Release
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerPacketMessageTypes
+  langs:
+  - csharp
+  - vb
+  name: Release
+  nameWithType: DhcpServerPacketMessageTypes.Release
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerPacketMessageTypes.Release
+  type: Field
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerPacketMessageTypes.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Release
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerPacketMessageTypes.cs
+    startLine: 14
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: Release = 7
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerPacketMessageTypes
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerPacketMessageTypes.Inform
+  commentId: F:Bodoconsult.Network.Windows.Dhcp.DhcpServerPacketMessageTypes.Inform
+  id: Inform
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerPacketMessageTypes
+  langs:
+  - csharp
+  - vb
+  name: Inform
+  nameWithType: DhcpServerPacketMessageTypes.Inform
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerPacketMessageTypes.Inform
+  type: Field
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerPacketMessageTypes.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Inform
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerPacketMessageTypes.cs
+    startLine: 15
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: Inform = 8
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerPacketMessageTypes
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerPacketMessageTypes.ForceRenew
+  commentId: F:Bodoconsult.Network.Windows.Dhcp.DhcpServerPacketMessageTypes.ForceRenew
+  id: ForceRenew
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerPacketMessageTypes
+  langs:
+  - csharp
+  - vb
+  name: ForceRenew
+  nameWithType: DhcpServerPacketMessageTypes.ForceRenew
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerPacketMessageTypes.ForceRenew
+  type: Field
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerPacketMessageTypes.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: ForceRenew
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerPacketMessageTypes.cs
+    startLine: 16
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: ForceRenew = 9
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerPacketMessageTypes
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerPacketMessageTypes.LeaseQuery
+  commentId: F:Bodoconsult.Network.Windows.Dhcp.DhcpServerPacketMessageTypes.LeaseQuery
+  id: LeaseQuery
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerPacketMessageTypes
+  langs:
+  - csharp
+  - vb
+  name: LeaseQuery
+  nameWithType: DhcpServerPacketMessageTypes.LeaseQuery
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerPacketMessageTypes.LeaseQuery
+  type: Field
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerPacketMessageTypes.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: LeaseQuery
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerPacketMessageTypes.cs
+    startLine: 17
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: LeaseQuery = 10
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerPacketMessageTypes
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerPacketMessageTypes.LeaseUnassigned
+  commentId: F:Bodoconsult.Network.Windows.Dhcp.DhcpServerPacketMessageTypes.LeaseUnassigned
+  id: LeaseUnassigned
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerPacketMessageTypes
+  langs:
+  - csharp
+  - vb
+  name: LeaseUnassigned
+  nameWithType: DhcpServerPacketMessageTypes.LeaseUnassigned
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerPacketMessageTypes.LeaseUnassigned
+  type: Field
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerPacketMessageTypes.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: LeaseUnassigned
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerPacketMessageTypes.cs
+    startLine: 18
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: LeaseUnassigned = 11
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerPacketMessageTypes
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerPacketMessageTypes.LeaseUknown
+  commentId: F:Bodoconsult.Network.Windows.Dhcp.DhcpServerPacketMessageTypes.LeaseUknown
+  id: LeaseUknown
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerPacketMessageTypes
+  langs:
+  - csharp
+  - vb
+  name: LeaseUknown
+  nameWithType: DhcpServerPacketMessageTypes.LeaseUknown
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerPacketMessageTypes.LeaseUknown
+  type: Field
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerPacketMessageTypes.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: LeaseUknown
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerPacketMessageTypes.cs
+    startLine: 19
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: LeaseUknown = 12
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerPacketMessageTypes
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerPacketMessageTypes.LeaseActive
+  commentId: F:Bodoconsult.Network.Windows.Dhcp.DhcpServerPacketMessageTypes.LeaseActive
+  id: LeaseActive
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerPacketMessageTypes
+  langs:
+  - csharp
+  - vb
+  name: LeaseActive
+  nameWithType: DhcpServerPacketMessageTypes.LeaseActive
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerPacketMessageTypes.LeaseActive
+  type: Field
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerPacketMessageTypes.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: LeaseActive
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerPacketMessageTypes.cs
+    startLine: 20
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: LeaseActive = 13
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerPacketMessageTypes
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerPacketMessageTypes.BulkLeaseQuery
+  commentId: F:Bodoconsult.Network.Windows.Dhcp.DhcpServerPacketMessageTypes.BulkLeaseQuery
+  id: BulkLeaseQuery
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerPacketMessageTypes
+  langs:
+  - csharp
+  - vb
+  name: BulkLeaseQuery
+  nameWithType: DhcpServerPacketMessageTypes.BulkLeaseQuery
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerPacketMessageTypes.BulkLeaseQuery
+  type: Field
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerPacketMessageTypes.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: BulkLeaseQuery
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerPacketMessageTypes.cs
+    startLine: 21
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: BulkLeaseQuery = 14
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerPacketMessageTypes
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerPacketMessageTypes.LeaseQueryDone
+  commentId: F:Bodoconsult.Network.Windows.Dhcp.DhcpServerPacketMessageTypes.LeaseQueryDone
+  id: LeaseQueryDone
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerPacketMessageTypes
+  langs:
+  - csharp
+  - vb
+  name: LeaseQueryDone
+  nameWithType: DhcpServerPacketMessageTypes.LeaseQueryDone
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerPacketMessageTypes.LeaseQueryDone
+  type: Field
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerPacketMessageTypes.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: LeaseQueryDone
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerPacketMessageTypes.cs
+    startLine: 22
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: LeaseQueryDone = 15
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerPacketMessageTypes
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerPacketMessageTypes.ActiveLeaseQuery
+  commentId: F:Bodoconsult.Network.Windows.Dhcp.DhcpServerPacketMessageTypes.ActiveLeaseQuery
+  id: ActiveLeaseQuery
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerPacketMessageTypes
+  langs:
+  - csharp
+  - vb
+  name: ActiveLeaseQuery
+  nameWithType: DhcpServerPacketMessageTypes.ActiveLeaseQuery
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerPacketMessageTypes.ActiveLeaseQuery
+  type: Field
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerPacketMessageTypes.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: ActiveLeaseQuery
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerPacketMessageTypes.cs
+    startLine: 23
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: ActiveLeaseQuery = 16
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerPacketMessageTypes
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerPacketMessageTypes.LeaseQueryStatus
+  commentId: F:Bodoconsult.Network.Windows.Dhcp.DhcpServerPacketMessageTypes.LeaseQueryStatus
+  id: LeaseQueryStatus
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerPacketMessageTypes
+  langs:
+  - csharp
+  - vb
+  name: LeaseQueryStatus
+  nameWithType: DhcpServerPacketMessageTypes.LeaseQueryStatus
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerPacketMessageTypes.LeaseQueryStatus
+  type: Field
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerPacketMessageTypes.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: LeaseQueryStatus
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerPacketMessageTypes.cs
+    startLine: 24
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: LeaseQueryStatus = 17
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerPacketMessageTypes
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerPacketMessageTypes.Tls
+  commentId: F:Bodoconsult.Network.Windows.Dhcp.DhcpServerPacketMessageTypes.Tls
+  id: Tls
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerPacketMessageTypes
+  langs:
+  - csharp
+  - vb
+  name: Tls
+  nameWithType: DhcpServerPacketMessageTypes.Tls
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerPacketMessageTypes.Tls
+  type: Field
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerPacketMessageTypes.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Tls
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerPacketMessageTypes.cs
+    startLine: 25
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: Tls = 18
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerPacketMessageTypes
+references:
+- uid: Bodoconsult.Network.Windows.Dhcp
+  commentId: N:Bodoconsult.Network.Windows.Dhcp
+  href: Bodoconsult.html
+  name: Bodoconsult.Network.Windows.Dhcp
+  nameWithType: Bodoconsult.Network.Windows.Dhcp
+  fullName: Bodoconsult.Network.Windows.Dhcp
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.Network
+    name: Network
+    href: Bodoconsult.Network.html
+  - name: .
+  - uid: Bodoconsult.Network.Windows
+    name: Windows
+    href: Bodoconsult.Network.Windows.html
+  - name: .
+  - uid: Bodoconsult.Network.Windows.Dhcp
+    name: Dhcp
+    href: Bodoconsult.Network.Windows.Dhcp.html
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.Network
+    name: Network
+    href: Bodoconsult.Network.html
+  - name: .
+  - uid: Bodoconsult.Network.Windows
+    name: Windows
+    href: Bodoconsult.Network.Windows.html
+  - name: .
+  - uid: Bodoconsult.Network.Windows.Dhcp
+    name: Dhcp
+    href: Bodoconsult.Network.Windows.Dhcp.html
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerPacketMessageTypes
+  commentId: T:Bodoconsult.Network.Windows.Dhcp.DhcpServerPacketMessageTypes
+  parent: Bodoconsult.Network.Windows.Dhcp
+  href: Bodoconsult.Network.Windows.Dhcp.DhcpServerPacketMessageTypes.html
+  name: DhcpServerPacketMessageTypes
+  nameWithType: DhcpServerPacketMessageTypes
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerPacketMessageTypes

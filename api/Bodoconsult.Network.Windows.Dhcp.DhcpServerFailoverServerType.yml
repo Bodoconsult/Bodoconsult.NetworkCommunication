@@ -1,0 +1,132 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverServerType
+  commentId: T:Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverServerType
+  id: DhcpServerFailoverServerType
+  parent: Bodoconsult.Network.Windows.Dhcp
+  children:
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverServerType.PrimaryServer
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverServerType.SecondaryServer
+  langs:
+  - csharp
+  - vb
+  name: DhcpServerFailoverServerType
+  nameWithType: DhcpServerFailoverServerType
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverServerType
+  type: Enum
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerFailoverServerType.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: DhcpServerFailoverServerType
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerFailoverServerType.cs
+    startLine: 5
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: public enum DhcpServerFailoverServerType
+    content.vb: Public Enum DhcpServerFailoverServerType
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverServerType.PrimaryServer
+  commentId: F:Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverServerType.PrimaryServer
+  id: PrimaryServer
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverServerType
+  langs:
+  - csharp
+  - vb
+  name: PrimaryServer
+  nameWithType: DhcpServerFailoverServerType.PrimaryServer
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverServerType.PrimaryServer
+  type: Field
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerFailoverServerType.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: PrimaryServer
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerFailoverServerType.cs
+    startLine: 10
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  summary: The server is a primary server in the failover relationship.
+  example: []
+  syntax:
+    content: PrimaryServer = 0
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverServerType
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverServerType.SecondaryServer
+  commentId: F:Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverServerType.SecondaryServer
+  id: SecondaryServer
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverServerType
+  langs:
+  - csharp
+  - vb
+  name: SecondaryServer
+  nameWithType: DhcpServerFailoverServerType.SecondaryServer
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverServerType.SecondaryServer
+  type: Field
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerFailoverServerType.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: SecondaryServer
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerFailoverServerType.cs
+    startLine: 14
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  summary: The server is a secondary server in the failover relationship.
+  example: []
+  syntax:
+    content: SecondaryServer = 1
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverServerType
+references:
+- uid: Bodoconsult.Network.Windows.Dhcp
+  commentId: N:Bodoconsult.Network.Windows.Dhcp
+  href: Bodoconsult.html
+  name: Bodoconsult.Network.Windows.Dhcp
+  nameWithType: Bodoconsult.Network.Windows.Dhcp
+  fullName: Bodoconsult.Network.Windows.Dhcp
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.Network
+    name: Network
+    href: Bodoconsult.Network.html
+  - name: .
+  - uid: Bodoconsult.Network.Windows
+    name: Windows
+    href: Bodoconsult.Network.Windows.html
+  - name: .
+  - uid: Bodoconsult.Network.Windows.Dhcp
+    name: Dhcp
+    href: Bodoconsult.Network.Windows.Dhcp.html
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.Network
+    name: Network
+    href: Bodoconsult.Network.html
+  - name: .
+  - uid: Bodoconsult.Network.Windows
+    name: Windows
+    href: Bodoconsult.Network.Windows.html
+  - name: .
+  - uid: Bodoconsult.Network.Windows.Dhcp
+    name: Dhcp
+    href: Bodoconsult.Network.Windows.Dhcp.html
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverServerType
+  commentId: T:Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverServerType
+  parent: Bodoconsult.Network.Windows.Dhcp
+  href: Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverServerType.html
+  name: DhcpServerFailoverServerType
+  nameWithType: DhcpServerFailoverServerType
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverServerType

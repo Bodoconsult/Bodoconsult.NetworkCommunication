@@ -1,0 +1,111 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bodoconsult.NetworkCommunication.DataMessaging.DataMessageCodecs
+  commentId: N:Bodoconsult.NetworkCommunication.DataMessaging.DataMessageCodecs
+  id: Bodoconsult.NetworkCommunication.DataMessaging.DataMessageCodecs
+  children:
+  - Bodoconsult.NetworkCommunication.DataMessaging.DataMessageCodecs.BaseDataMessageCodec
+  - Bodoconsult.NetworkCommunication.DataMessaging.DataMessageCodecs.BtcpDataMessageCodec
+  - Bodoconsult.NetworkCommunication.DataMessaging.DataMessageCodecs.BtcpHandshakeMessageCodec
+  - Bodoconsult.NetworkCommunication.DataMessaging.DataMessageCodecs.EdcpDataMessageCodec
+  - Bodoconsult.NetworkCommunication.DataMessaging.DataMessageCodecs.EdcpHandshakeMessageCodec
+  - Bodoconsult.NetworkCommunication.DataMessaging.DataMessageCodecs.RawDataMessageCodec
+  - Bodoconsult.NetworkCommunication.DataMessaging.DataMessageCodecs.SdcpDataMessageCodec
+  - Bodoconsult.NetworkCommunication.DataMessaging.DataMessageCodecs.SdcpHandshakeMessageCodec
+  langs:
+  - csharp
+  - vb
+  name: Bodoconsult.NetworkCommunication.DataMessaging.DataMessageCodecs
+  nameWithType: Bodoconsult.NetworkCommunication.DataMessaging.DataMessageCodecs
+  fullName: Bodoconsult.NetworkCommunication.DataMessaging.DataMessageCodecs
+  type: Namespace
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+references:
+- uid: Bodoconsult.NetworkCommunication.DataMessaging.DataMessageCodecs.BaseDataMessageCodec
+  commentId: T:Bodoconsult.NetworkCommunication.DataMessaging.DataMessageCodecs.BaseDataMessageCodec
+  parent: Bodoconsult.NetworkCommunication.DataMessaging.DataMessageCodecs
+  href: Bodoconsult.NetworkCommunication.DataMessaging.DataMessageCodecs.BaseDataMessageCodec.html
+  name: BaseDataMessageCodec
+  nameWithType: BaseDataMessageCodec
+  fullName: Bodoconsult.NetworkCommunication.DataMessaging.DataMessageCodecs.BaseDataMessageCodec
+- uid: Bodoconsult.NetworkCommunication.DataMessaging.DataMessageCodecs.BtcpDataMessageCodec
+  commentId: T:Bodoconsult.NetworkCommunication.DataMessaging.DataMessageCodecs.BtcpDataMessageCodec
+  href: Bodoconsult.NetworkCommunication.DataMessaging.DataMessageCodecs.BtcpDataMessageCodec.html
+  name: BtcpDataMessageCodec
+  nameWithType: BtcpDataMessageCodec
+  fullName: Bodoconsult.NetworkCommunication.DataMessaging.DataMessageCodecs.BtcpDataMessageCodec
+- uid: Bodoconsult.NetworkCommunication.DataMessaging.DataMessageCodecs.BtcpHandshakeMessageCodec
+  commentId: T:Bodoconsult.NetworkCommunication.DataMessaging.DataMessageCodecs.BtcpHandshakeMessageCodec
+  href: Bodoconsult.NetworkCommunication.DataMessaging.DataMessageCodecs.BtcpHandshakeMessageCodec.html
+  name: BtcpHandshakeMessageCodec
+  nameWithType: BtcpHandshakeMessageCodec
+  fullName: Bodoconsult.NetworkCommunication.DataMessaging.DataMessageCodecs.BtcpHandshakeMessageCodec
+- uid: Bodoconsult.NetworkCommunication.DataMessaging.DataMessageCodecs.EdcpDataMessageCodec
+  commentId: T:Bodoconsult.NetworkCommunication.DataMessaging.DataMessageCodecs.EdcpDataMessageCodec
+  href: Bodoconsult.NetworkCommunication.DataMessaging.DataMessageCodecs.EdcpDataMessageCodec.html
+  name: EdcpDataMessageCodec
+  nameWithType: EdcpDataMessageCodec
+  fullName: Bodoconsult.NetworkCommunication.DataMessaging.DataMessageCodecs.EdcpDataMessageCodec
+- uid: Bodoconsult.NetworkCommunication.DataMessaging.DataMessageCodecs.EdcpHandshakeMessageCodec
+  commentId: T:Bodoconsult.NetworkCommunication.DataMessaging.DataMessageCodecs.EdcpHandshakeMessageCodec
+  href: Bodoconsult.NetworkCommunication.DataMessaging.DataMessageCodecs.EdcpHandshakeMessageCodec.html
+  name: EdcpHandshakeMessageCodec
+  nameWithType: EdcpHandshakeMessageCodec
+  fullName: Bodoconsult.NetworkCommunication.DataMessaging.DataMessageCodecs.EdcpHandshakeMessageCodec
+- uid: Bodoconsult.NetworkCommunication.DataMessaging.DataMessageCodecs.RawDataMessageCodec
+  commentId: T:Bodoconsult.NetworkCommunication.DataMessaging.DataMessageCodecs.RawDataMessageCodec
+  href: Bodoconsult.NetworkCommunication.DataMessaging.DataMessageCodecs.RawDataMessageCodec.html
+  name: RawDataMessageCodec
+  nameWithType: RawDataMessageCodec
+  fullName: Bodoconsult.NetworkCommunication.DataMessaging.DataMessageCodecs.RawDataMessageCodec
+- uid: Bodoconsult.NetworkCommunication.DataMessaging.DataMessageCodecs.SdcpDataMessageCodec
+  commentId: T:Bodoconsult.NetworkCommunication.DataMessaging.DataMessageCodecs.SdcpDataMessageCodec
+  href: Bodoconsult.NetworkCommunication.DataMessaging.DataMessageCodecs.SdcpDataMessageCodec.html
+  name: SdcpDataMessageCodec
+  nameWithType: SdcpDataMessageCodec
+  fullName: Bodoconsult.NetworkCommunication.DataMessaging.DataMessageCodecs.SdcpDataMessageCodec
+- uid: Bodoconsult.NetworkCommunication.DataMessaging.DataMessageCodecs.SdcpHandshakeMessageCodec
+  commentId: T:Bodoconsult.NetworkCommunication.DataMessaging.DataMessageCodecs.SdcpHandshakeMessageCodec
+  href: Bodoconsult.NetworkCommunication.DataMessaging.DataMessageCodecs.SdcpHandshakeMessageCodec.html
+  name: SdcpHandshakeMessageCodec
+  nameWithType: SdcpHandshakeMessageCodec
+  fullName: Bodoconsult.NetworkCommunication.DataMessaging.DataMessageCodecs.SdcpHandshakeMessageCodec
+- uid: Bodoconsult.NetworkCommunication.DataMessaging.DataMessageCodecs
+  commentId: N:Bodoconsult.NetworkCommunication.DataMessaging.DataMessageCodecs
+  href: Bodoconsult.html
+  name: Bodoconsult.NetworkCommunication.DataMessaging.DataMessageCodecs
+  nameWithType: Bodoconsult.NetworkCommunication.DataMessaging.DataMessageCodecs
+  fullName: Bodoconsult.NetworkCommunication.DataMessaging.DataMessageCodecs
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.DataMessaging
+    name: DataMessaging
+    href: Bodoconsult.NetworkCommunication.DataMessaging.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.DataMessaging.DataMessageCodecs
+    name: DataMessageCodecs
+    href: Bodoconsult.NetworkCommunication.DataMessaging.DataMessageCodecs.html
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.DataMessaging
+    name: DataMessaging
+    href: Bodoconsult.NetworkCommunication.DataMessaging.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.DataMessaging.DataMessageCodecs
+    name: DataMessageCodecs
+    href: Bodoconsult.NetworkCommunication.DataMessaging.DataMessageCodecs.html

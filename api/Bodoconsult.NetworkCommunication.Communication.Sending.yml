@@ -1,0 +1,114 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bodoconsult.NetworkCommunication.Communication.Sending
+  commentId: N:Bodoconsult.NetworkCommunication.Communication.Sending
+  id: Bodoconsult.NetworkCommunication.Communication.Sending
+  children:
+  - Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess
+  - Bodoconsult.NetworkCommunication.Communication.Sending.BaseWaitStateManager
+  - Bodoconsult.NetworkCommunication.Communication.Sending.DefaultWaitStateManager
+  - Bodoconsult.NetworkCommunication.Communication.Sending.DirectSendPacketProcess
+  - Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcess
+  - Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcessEncodingError
+  - Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcessSocketError
+  - Bodoconsult.NetworkCommunication.Communication.Sending.SendPacketProcess
+  langs:
+  - csharp
+  - vb
+  name: Bodoconsult.NetworkCommunication.Communication.Sending
+  nameWithType: Bodoconsult.NetworkCommunication.Communication.Sending
+  fullName: Bodoconsult.NetworkCommunication.Communication.Sending
+  type: Namespace
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+references:
+- uid: Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess
+  commentId: T:Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess
+  parent: Bodoconsult.NetworkCommunication.Communication.Sending
+  href: Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.html
+  name: BaseSendPacketProcess
+  nameWithType: BaseSendPacketProcess
+  fullName: Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess
+- uid: Bodoconsult.NetworkCommunication.Communication.Sending.BaseWaitStateManager
+  commentId: T:Bodoconsult.NetworkCommunication.Communication.Sending.BaseWaitStateManager
+  parent: Bodoconsult.NetworkCommunication.Communication.Sending
+  href: Bodoconsult.NetworkCommunication.Communication.Sending.BaseWaitStateManager.html
+  name: BaseWaitStateManager
+  nameWithType: BaseWaitStateManager
+  fullName: Bodoconsult.NetworkCommunication.Communication.Sending.BaseWaitStateManager
+- uid: Bodoconsult.NetworkCommunication.Communication.Sending.DefaultWaitStateManager
+  commentId: T:Bodoconsult.NetworkCommunication.Communication.Sending.DefaultWaitStateManager
+  href: Bodoconsult.NetworkCommunication.Communication.Sending.DefaultWaitStateManager.html
+  name: DefaultWaitStateManager
+  nameWithType: DefaultWaitStateManager
+  fullName: Bodoconsult.NetworkCommunication.Communication.Sending.DefaultWaitStateManager
+- uid: Bodoconsult.NetworkCommunication.Communication.Sending.DirectSendPacketProcess
+  commentId: T:Bodoconsult.NetworkCommunication.Communication.Sending.DirectSendPacketProcess
+  href: Bodoconsult.NetworkCommunication.Communication.Sending.DirectSendPacketProcess.html
+  name: DirectSendPacketProcess
+  nameWithType: DirectSendPacketProcess
+  fullName: Bodoconsult.NetworkCommunication.Communication.Sending.DirectSendPacketProcess
+- uid: Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcess
+  commentId: T:Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcess
+  parent: Bodoconsult.NetworkCommunication.Communication.Sending
+  href: Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcess.html
+  name: FakeSendPacketProcess
+  nameWithType: FakeSendPacketProcess
+  fullName: Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcess
+- uid: Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcessEncodingError
+  commentId: T:Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcessEncodingError
+  href: Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcessEncodingError.html
+  name: FakeSendPacketProcessEncodingError
+  nameWithType: FakeSendPacketProcessEncodingError
+  fullName: Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcessEncodingError
+- uid: Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcessSocketError
+  commentId: T:Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcessSocketError
+  href: Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcessSocketError.html
+  name: FakeSendPacketProcessSocketError
+  nameWithType: FakeSendPacketProcessSocketError
+  fullName: Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcessSocketError
+- uid: Bodoconsult.NetworkCommunication.Communication.Sending.SendPacketProcess
+  commentId: T:Bodoconsult.NetworkCommunication.Communication.Sending.SendPacketProcess
+  parent: Bodoconsult.NetworkCommunication.Communication.Sending
+  href: Bodoconsult.NetworkCommunication.Communication.Sending.SendPacketProcess.html
+  name: SendPacketProcess
+  nameWithType: SendPacketProcess
+  fullName: Bodoconsult.NetworkCommunication.Communication.Sending.SendPacketProcess
+- uid: Bodoconsult.NetworkCommunication.Communication.Sending
+  commentId: N:Bodoconsult.NetworkCommunication.Communication.Sending
+  href: Bodoconsult.html
+  name: Bodoconsult.NetworkCommunication.Communication.Sending
+  nameWithType: Bodoconsult.NetworkCommunication.Communication.Sending
+  fullName: Bodoconsult.NetworkCommunication.Communication.Sending
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Communication
+    name: Communication
+    href: Bodoconsult.NetworkCommunication.Communication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Communication.Sending
+    name: Sending
+    href: Bodoconsult.NetworkCommunication.Communication.Sending.html
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Communication
+    name: Communication
+    href: Bodoconsult.NetworkCommunication.Communication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Communication.Sending
+    name: Sending
+    href: Bodoconsult.NetworkCommunication.Communication.Sending.html

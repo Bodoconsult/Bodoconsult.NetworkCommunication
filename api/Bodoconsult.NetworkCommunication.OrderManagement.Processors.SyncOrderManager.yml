@@ -1,0 +1,755 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Processors.SyncOrderManager
+  commentId: T:Bodoconsult.NetworkCommunication.OrderManagement.Processors.SyncOrderManager
+  id: SyncOrderManager
+  parent: Bodoconsult.NetworkCommunication.OrderManagement.Processors
+  children:
+  - Bodoconsult.NetworkCommunication.OrderManagement.Processors.SyncOrderManager.AddSyncExecutionOrder(System.Int64,System.Int32)
+  - Bodoconsult.NetworkCommunication.OrderManagement.Processors.SyncOrderManager.Dispose
+  - Bodoconsult.NetworkCommunication.OrderManagement.Processors.SyncOrderManager.GetSyncExecutionDataForOrder(System.Int64)
+  - Bodoconsult.NetworkCommunication.OrderManagement.Processors.SyncOrderManager.IsSyncRunningOrderEmpty
+  - Bodoconsult.NetworkCommunication.OrderManagement.Processors.SyncOrderManager.RemoveSyncExecutionOrder(System.Int64)
+  langs:
+  - csharp
+  - vb
+  name: SyncOrderManager
+  nameWithType: SyncOrderManager
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Processors.SyncOrderManager
+  type: Class
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/OrderManagement/Processors/SyncOrderManager.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: SyncOrderManager
+    path: src/Bodoconsult.NetworkCommunication/OrderManagement/Processors/SyncOrderManager.cs
+    startLine: 10
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.OrderManagement.Processors
+  summary: Current implementation of <xref href="Bodoconsult.NetworkCommunication.Interfaces.ISyncOrderManager" data-throw-if-not-resolved="false"></xref>
+  example: []
+  syntax:
+    content: 'public class SyncOrderManager : ISyncOrderManager, IDisposable'
+    content.vb: Public Class SyncOrderManager Implements ISyncOrderManager, IDisposable
+  inheritance:
+  - System.Object
+  implements:
+  - Bodoconsult.NetworkCommunication.Interfaces.ISyncOrderManager
+  - System.IDisposable
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Processors.SyncOrderManager.IsSyncRunningOrderEmpty
+  commentId: P:Bodoconsult.NetworkCommunication.OrderManagement.Processors.SyncOrderManager.IsSyncRunningOrderEmpty
+  id: IsSyncRunningOrderEmpty
+  parent: Bodoconsult.NetworkCommunication.OrderManagement.Processors.SyncOrderManager
+  langs:
+  - csharp
+  - vb
+  name: IsSyncRunningOrderEmpty
+  nameWithType: SyncOrderManager.IsSyncRunningOrderEmpty
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Processors.SyncOrderManager.IsSyncRunningOrderEmpty
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/OrderManagement/Processors/SyncOrderManager.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: IsSyncRunningOrderEmpty
+    path: src/Bodoconsult.NetworkCommunication/OrderManagement/Processors/SyncOrderManager.cs
+    startLine: 22
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.OrderManagement.Processors
+  summary: Is queue with the sync running orders empty
+  example: []
+  syntax:
+    content: public bool IsSyncRunningOrderEmpty { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public ReadOnly Property IsSyncRunningOrderEmpty As Boolean
+  overload: Bodoconsult.NetworkCommunication.OrderManagement.Processors.SyncOrderManager.IsSyncRunningOrderEmpty*
+  implements:
+  - Bodoconsult.NetworkCommunication.Interfaces.ISyncOrderManager.IsSyncRunningOrderEmpty
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Processors.SyncOrderManager.AddSyncExecutionOrder(System.Int64,System.Int32)
+  commentId: M:Bodoconsult.NetworkCommunication.OrderManagement.Processors.SyncOrderManager.AddSyncExecutionOrder(System.Int64,System.Int32)
+  id: AddSyncExecutionOrder(System.Int64,System.Int32)
+  parent: Bodoconsult.NetworkCommunication.OrderManagement.Processors.SyncOrderManager
+  langs:
+  - csharp
+  - vb
+  name: AddSyncExecutionOrder(long, int)
+  nameWithType: SyncOrderManager.AddSyncExecutionOrder(long, int)
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Processors.SyncOrderManager.AddSyncExecutionOrder(long, int)
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/OrderManagement/Processors/SyncOrderManager.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: AddSyncExecutionOrder
+    path: src/Bodoconsult.NetworkCommunication/OrderManagement/Processors/SyncOrderManager.cs
+    startLine: 29
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.OrderManagement.Processors
+  summary: Add an order to the sync execution queue
+  example: []
+  syntax:
+    content: public SyncExecutionData AddSyncExecutionOrder(long orderId, int timeout)
+    parameters:
+    - id: orderId
+      type: System.Int64
+      description: ID of the order
+    - id: timeout
+      type: System.Int32
+      description: Timeout in ms
+    return:
+      type: Bodoconsult.NetworkCommunication.Interfaces.SyncExecutionData
+    content.vb: Public Function AddSyncExecutionOrder(orderId As Long, timeout As Integer) As SyncExecutionData
+  overload: Bodoconsult.NetworkCommunication.OrderManagement.Processors.SyncOrderManager.AddSyncExecutionOrder*
+  implements:
+  - Bodoconsult.NetworkCommunication.Interfaces.ISyncOrderManager.AddSyncExecutionOrder(System.Int64,System.Int32)
+  nameWithType.vb: SyncOrderManager.AddSyncExecutionOrder(Long, Integer)
+  fullName.vb: Bodoconsult.NetworkCommunication.OrderManagement.Processors.SyncOrderManager.AddSyncExecutionOrder(Long, Integer)
+  name.vb: AddSyncExecutionOrder(Long, Integer)
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Processors.SyncOrderManager.RemoveSyncExecutionOrder(System.Int64)
+  commentId: M:Bodoconsult.NetworkCommunication.OrderManagement.Processors.SyncOrderManager.RemoveSyncExecutionOrder(System.Int64)
+  id: RemoveSyncExecutionOrder(System.Int64)
+  parent: Bodoconsult.NetworkCommunication.OrderManagement.Processors.SyncOrderManager
+  langs:
+  - csharp
+  - vb
+  name: RemoveSyncExecutionOrder(long)
+  nameWithType: SyncOrderManager.RemoveSyncExecutionOrder(long)
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Processors.SyncOrderManager.RemoveSyncExecutionOrder(long)
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/OrderManagement/Processors/SyncOrderManager.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: RemoveSyncExecutionOrder
+    path: src/Bodoconsult.NetworkCommunication/OrderManagement/Processors/SyncOrderManager.cs
+    startLine: 40
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.OrderManagement.Processors
+  summary: Remove a sync execution order from  sync execution queue
+  example: []
+  syntax:
+    content: public void RemoveSyncExecutionOrder(long orderId)
+    parameters:
+    - id: orderId
+      type: System.Int64
+      description: ID of the order
+    content.vb: Public Sub RemoveSyncExecutionOrder(orderId As Long)
+  overload: Bodoconsult.NetworkCommunication.OrderManagement.Processors.SyncOrderManager.RemoveSyncExecutionOrder*
+  implements:
+  - Bodoconsult.NetworkCommunication.Interfaces.ISyncOrderManager.RemoveSyncExecutionOrder(System.Int64)
+  nameWithType.vb: SyncOrderManager.RemoveSyncExecutionOrder(Long)
+  fullName.vb: Bodoconsult.NetworkCommunication.OrderManagement.Processors.SyncOrderManager.RemoveSyncExecutionOrder(Long)
+  name.vb: RemoveSyncExecutionOrder(Long)
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Processors.SyncOrderManager.GetSyncExecutionDataForOrder(System.Int64)
+  commentId: M:Bodoconsult.NetworkCommunication.OrderManagement.Processors.SyncOrderManager.GetSyncExecutionDataForOrder(System.Int64)
+  id: GetSyncExecutionDataForOrder(System.Int64)
+  parent: Bodoconsult.NetworkCommunication.OrderManagement.Processors.SyncOrderManager
+  langs:
+  - csharp
+  - vb
+  name: GetSyncExecutionDataForOrder(long)
+  nameWithType: SyncOrderManager.GetSyncExecutionDataForOrder(long)
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Processors.SyncOrderManager.GetSyncExecutionDataForOrder(long)
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/OrderManagement/Processors/SyncOrderManager.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: GetSyncExecutionDataForOrder
+    path: src/Bodoconsult.NetworkCommunication/OrderManagement/Processors/SyncOrderManager.cs
+    startLine: 51
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.OrderManagement.Processors
+  summary: Get the sync running execution data for an order
+  example: []
+  syntax:
+    content: public SyncExecutionData GetSyncExecutionDataForOrder(long orderId)
+    parameters:
+    - id: orderId
+      type: System.Int64
+      description: ID of the order
+    return:
+      type: Bodoconsult.NetworkCommunication.Interfaces.SyncExecutionData
+      description: Sync running execution data or null
+    content.vb: Public Function GetSyncExecutionDataForOrder(orderId As Long) As SyncExecutionData
+  overload: Bodoconsult.NetworkCommunication.OrderManagement.Processors.SyncOrderManager.GetSyncExecutionDataForOrder*
+  implements:
+  - Bodoconsult.NetworkCommunication.Interfaces.ISyncOrderManager.GetSyncExecutionDataForOrder(System.Int64)
+  nameWithType.vb: SyncOrderManager.GetSyncExecutionDataForOrder(Long)
+  fullName.vb: Bodoconsult.NetworkCommunication.OrderManagement.Processors.SyncOrderManager.GetSyncExecutionDataForOrder(Long)
+  name.vb: GetSyncExecutionDataForOrder(Long)
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Processors.SyncOrderManager.Dispose
+  commentId: M:Bodoconsult.NetworkCommunication.OrderManagement.Processors.SyncOrderManager.Dispose
+  id: Dispose
+  parent: Bodoconsult.NetworkCommunication.OrderManagement.Processors.SyncOrderManager
+  langs:
+  - csharp
+  - vb
+  name: Dispose()
+  nameWithType: SyncOrderManager.Dispose()
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Processors.SyncOrderManager.Dispose()
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/OrderManagement/Processors/SyncOrderManager.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Dispose
+    path: src/Bodoconsult.NetworkCommunication/OrderManagement/Processors/SyncOrderManager.cs
+    startLine: 58
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.OrderManagement.Processors
+  summary: Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+  example: []
+  syntax:
+    content: public void Dispose()
+    content.vb: Public Sub Dispose()
+  overload: Bodoconsult.NetworkCommunication.OrderManagement.Processors.SyncOrderManager.Dispose*
+  implements:
+  - System.IDisposable.Dispose
+references:
+- uid: Bodoconsult.NetworkCommunication.Interfaces.ISyncOrderManager
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.ISyncOrderManager
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.NetworkCommunication.Interfaces.ISyncOrderManager.html
+  name: ISyncOrderManager
+  nameWithType: ISyncOrderManager
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.ISyncOrderManager
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Processors
+  commentId: N:Bodoconsult.NetworkCommunication.OrderManagement.Processors
+  href: Bodoconsult.html
+  name: Bodoconsult.NetworkCommunication.OrderManagement.Processors
+  nameWithType: Bodoconsult.NetworkCommunication.OrderManagement.Processors
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Processors
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.OrderManagement
+    name: OrderManagement
+    href: Bodoconsult.NetworkCommunication.OrderManagement.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.OrderManagement.Processors
+    name: Processors
+    href: Bodoconsult.NetworkCommunication.OrderManagement.Processors.html
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.OrderManagement
+    name: OrderManagement
+    href: Bodoconsult.NetworkCommunication.OrderManagement.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.OrderManagement.Processors
+    name: Processors
+    href: Bodoconsult.NetworkCommunication.OrderManagement.Processors.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.IDisposable
+  commentId: T:System.IDisposable
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable
+  name: IDisposable
+  nameWithType: IDisposable
+  fullName: System.IDisposable
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: Bodoconsult.NetworkCommunication.Interfaces
+  commentId: N:Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.html
+  name: Bodoconsult.NetworkCommunication.Interfaces
+  nameWithType: Bodoconsult.NetworkCommunication.Interfaces
+  fullName: Bodoconsult.NetworkCommunication.Interfaces
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Interfaces
+    name: Interfaces
+    href: Bodoconsult.NetworkCommunication.Interfaces.html
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Interfaces
+    name: Interfaces
+    href: Bodoconsult.NetworkCommunication.Interfaces.html
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Processors.SyncOrderManager.IsSyncRunningOrderEmpty*
+  commentId: Overload:Bodoconsult.NetworkCommunication.OrderManagement.Processors.SyncOrderManager.IsSyncRunningOrderEmpty
+  href: Bodoconsult.NetworkCommunication.OrderManagement.Processors.SyncOrderManager.html#Bodoconsult_NetworkCommunication_OrderManagement_Processors_SyncOrderManager_IsSyncRunningOrderEmpty
+  name: IsSyncRunningOrderEmpty
+  nameWithType: SyncOrderManager.IsSyncRunningOrderEmpty
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Processors.SyncOrderManager.IsSyncRunningOrderEmpty
+- uid: Bodoconsult.NetworkCommunication.Interfaces.ISyncOrderManager.IsSyncRunningOrderEmpty
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.ISyncOrderManager.IsSyncRunningOrderEmpty
+  parent: Bodoconsult.NetworkCommunication.Interfaces.ISyncOrderManager
+  href: Bodoconsult.NetworkCommunication.Interfaces.ISyncOrderManager.html#Bodoconsult_NetworkCommunication_Interfaces_ISyncOrderManager_IsSyncRunningOrderEmpty
+  name: IsSyncRunningOrderEmpty
+  nameWithType: ISyncOrderManager.IsSyncRunningOrderEmpty
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.ISyncOrderManager.IsSyncRunningOrderEmpty
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Processors.SyncOrderManager.AddSyncExecutionOrder*
+  commentId: Overload:Bodoconsult.NetworkCommunication.OrderManagement.Processors.SyncOrderManager.AddSyncExecutionOrder
+  href: Bodoconsult.NetworkCommunication.OrderManagement.Processors.SyncOrderManager.html#Bodoconsult_NetworkCommunication_OrderManagement_Processors_SyncOrderManager_AddSyncExecutionOrder_System_Int64_System_Int32_
+  name: AddSyncExecutionOrder
+  nameWithType: SyncOrderManager.AddSyncExecutionOrder
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Processors.SyncOrderManager.AddSyncExecutionOrder
+- uid: Bodoconsult.NetworkCommunication.Interfaces.ISyncOrderManager.AddSyncExecutionOrder(System.Int64,System.Int32)
+  commentId: M:Bodoconsult.NetworkCommunication.Interfaces.ISyncOrderManager.AddSyncExecutionOrder(System.Int64,System.Int32)
+  parent: Bodoconsult.NetworkCommunication.Interfaces.ISyncOrderManager
+  isExternal: true
+  href: Bodoconsult.NetworkCommunication.Interfaces.ISyncOrderManager.html#Bodoconsult_NetworkCommunication_Interfaces_ISyncOrderManager_AddSyncExecutionOrder_System_Int64_System_Int32_
+  name: AddSyncExecutionOrder(long, int)
+  nameWithType: ISyncOrderManager.AddSyncExecutionOrder(long, int)
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.ISyncOrderManager.AddSyncExecutionOrder(long, int)
+  nameWithType.vb: ISyncOrderManager.AddSyncExecutionOrder(Long, Integer)
+  fullName.vb: Bodoconsult.NetworkCommunication.Interfaces.ISyncOrderManager.AddSyncExecutionOrder(Long, Integer)
+  name.vb: AddSyncExecutionOrder(Long, Integer)
+  spec.csharp:
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.ISyncOrderManager.AddSyncExecutionOrder(System.Int64,System.Int32)
+    name: AddSyncExecutionOrder
+    href: Bodoconsult.NetworkCommunication.Interfaces.ISyncOrderManager.html#Bodoconsult_NetworkCommunication_Interfaces_ISyncOrderManager_AddSyncExecutionOrder_System_Int64_System_Int32_
+  - name: (
+  - uid: System.Int64
+    name: long
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int64
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.ISyncOrderManager.AddSyncExecutionOrder(System.Int64,System.Int32)
+    name: AddSyncExecutionOrder
+    href: Bodoconsult.NetworkCommunication.Interfaces.ISyncOrderManager.html#Bodoconsult_NetworkCommunication_Interfaces_ISyncOrderManager_AddSyncExecutionOrder_System_Int64_System_Int32_
+  - name: (
+  - uid: System.Int64
+    name: Long
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int64
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: System.Int64
+  commentId: T:System.Int64
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int64
+  name: long
+  nameWithType: long
+  fullName: long
+  nameWithType.vb: Long
+  fullName.vb: Long
+  name.vb: Long
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: Bodoconsult.NetworkCommunication.Interfaces.SyncExecutionData
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.SyncExecutionData
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.NetworkCommunication.Interfaces.SyncExecutionData.html
+  name: SyncExecutionData
+  nameWithType: SyncExecutionData
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.SyncExecutionData
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Processors.SyncOrderManager.RemoveSyncExecutionOrder*
+  commentId: Overload:Bodoconsult.NetworkCommunication.OrderManagement.Processors.SyncOrderManager.RemoveSyncExecutionOrder
+  href: Bodoconsult.NetworkCommunication.OrderManagement.Processors.SyncOrderManager.html#Bodoconsult_NetworkCommunication_OrderManagement_Processors_SyncOrderManager_RemoveSyncExecutionOrder_System_Int64_
+  name: RemoveSyncExecutionOrder
+  nameWithType: SyncOrderManager.RemoveSyncExecutionOrder
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Processors.SyncOrderManager.RemoveSyncExecutionOrder
+- uid: Bodoconsult.NetworkCommunication.Interfaces.ISyncOrderManager.RemoveSyncExecutionOrder(System.Int64)
+  commentId: M:Bodoconsult.NetworkCommunication.Interfaces.ISyncOrderManager.RemoveSyncExecutionOrder(System.Int64)
+  parent: Bodoconsult.NetworkCommunication.Interfaces.ISyncOrderManager
+  isExternal: true
+  href: Bodoconsult.NetworkCommunication.Interfaces.ISyncOrderManager.html#Bodoconsult_NetworkCommunication_Interfaces_ISyncOrderManager_RemoveSyncExecutionOrder_System_Int64_
+  name: RemoveSyncExecutionOrder(long)
+  nameWithType: ISyncOrderManager.RemoveSyncExecutionOrder(long)
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.ISyncOrderManager.RemoveSyncExecutionOrder(long)
+  nameWithType.vb: ISyncOrderManager.RemoveSyncExecutionOrder(Long)
+  fullName.vb: Bodoconsult.NetworkCommunication.Interfaces.ISyncOrderManager.RemoveSyncExecutionOrder(Long)
+  name.vb: RemoveSyncExecutionOrder(Long)
+  spec.csharp:
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.ISyncOrderManager.RemoveSyncExecutionOrder(System.Int64)
+    name: RemoveSyncExecutionOrder
+    href: Bodoconsult.NetworkCommunication.Interfaces.ISyncOrderManager.html#Bodoconsult_NetworkCommunication_Interfaces_ISyncOrderManager_RemoveSyncExecutionOrder_System_Int64_
+  - name: (
+  - uid: System.Int64
+    name: long
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int64
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.ISyncOrderManager.RemoveSyncExecutionOrder(System.Int64)
+    name: RemoveSyncExecutionOrder
+    href: Bodoconsult.NetworkCommunication.Interfaces.ISyncOrderManager.html#Bodoconsult_NetworkCommunication_Interfaces_ISyncOrderManager_RemoveSyncExecutionOrder_System_Int64_
+  - name: (
+  - uid: System.Int64
+    name: Long
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int64
+  - name: )
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Processors.SyncOrderManager.GetSyncExecutionDataForOrder*
+  commentId: Overload:Bodoconsult.NetworkCommunication.OrderManagement.Processors.SyncOrderManager.GetSyncExecutionDataForOrder
+  href: Bodoconsult.NetworkCommunication.OrderManagement.Processors.SyncOrderManager.html#Bodoconsult_NetworkCommunication_OrderManagement_Processors_SyncOrderManager_GetSyncExecutionDataForOrder_System_Int64_
+  name: GetSyncExecutionDataForOrder
+  nameWithType: SyncOrderManager.GetSyncExecutionDataForOrder
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Processors.SyncOrderManager.GetSyncExecutionDataForOrder
+- uid: Bodoconsult.NetworkCommunication.Interfaces.ISyncOrderManager.GetSyncExecutionDataForOrder(System.Int64)
+  commentId: M:Bodoconsult.NetworkCommunication.Interfaces.ISyncOrderManager.GetSyncExecutionDataForOrder(System.Int64)
+  parent: Bodoconsult.NetworkCommunication.Interfaces.ISyncOrderManager
+  isExternal: true
+  href: Bodoconsult.NetworkCommunication.Interfaces.ISyncOrderManager.html#Bodoconsult_NetworkCommunication_Interfaces_ISyncOrderManager_GetSyncExecutionDataForOrder_System_Int64_
+  name: GetSyncExecutionDataForOrder(long)
+  nameWithType: ISyncOrderManager.GetSyncExecutionDataForOrder(long)
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.ISyncOrderManager.GetSyncExecutionDataForOrder(long)
+  nameWithType.vb: ISyncOrderManager.GetSyncExecutionDataForOrder(Long)
+  fullName.vb: Bodoconsult.NetworkCommunication.Interfaces.ISyncOrderManager.GetSyncExecutionDataForOrder(Long)
+  name.vb: GetSyncExecutionDataForOrder(Long)
+  spec.csharp:
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.ISyncOrderManager.GetSyncExecutionDataForOrder(System.Int64)
+    name: GetSyncExecutionDataForOrder
+    href: Bodoconsult.NetworkCommunication.Interfaces.ISyncOrderManager.html#Bodoconsult_NetworkCommunication_Interfaces_ISyncOrderManager_GetSyncExecutionDataForOrder_System_Int64_
+  - name: (
+  - uid: System.Int64
+    name: long
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int64
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.ISyncOrderManager.GetSyncExecutionDataForOrder(System.Int64)
+    name: GetSyncExecutionDataForOrder
+    href: Bodoconsult.NetworkCommunication.Interfaces.ISyncOrderManager.html#Bodoconsult_NetworkCommunication_Interfaces_ISyncOrderManager_GetSyncExecutionDataForOrder_System_Int64_
+  - name: (
+  - uid: System.Int64
+    name: Long
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int64
+  - name: )
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Processors.SyncOrderManager.Dispose*
+  commentId: Overload:Bodoconsult.NetworkCommunication.OrderManagement.Processors.SyncOrderManager.Dispose
+  href: Bodoconsult.NetworkCommunication.OrderManagement.Processors.SyncOrderManager.html#Bodoconsult_NetworkCommunication_OrderManagement_Processors_SyncOrderManager_Dispose
+  name: Dispose
+  nameWithType: SyncOrderManager.Dispose
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Processors.SyncOrderManager.Dispose
+- uid: System.IDisposable.Dispose
+  commentId: M:System.IDisposable.Dispose
+  parent: System.IDisposable
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  name: Dispose()
+  nameWithType: IDisposable.Dispose()
+  fullName: System.IDisposable.Dispose()
+  spec.csharp:
+  - uid: System.IDisposable.Dispose
+    name: Dispose
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.IDisposable.Dispose
+    name: Dispose
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  - name: (
+  - name: )

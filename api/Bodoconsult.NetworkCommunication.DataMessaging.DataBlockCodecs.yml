@@ -1,0 +1,23 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bodoconsult.NetworkCommunication.DataMessaging.DataBlockCodecs
+  commentId: N:Bodoconsult.NetworkCommunication.DataMessaging.DataBlockCodecs
+  id: Bodoconsult.NetworkCommunication.DataMessaging.DataBlockCodecs
+  children:
+  - Bodoconsult.NetworkCommunication.DataMessaging.DataBlockCodecs.BasicDataBlockCodec
+  langs:
+  - csharp
+  - vb
+  name: Bodoconsult.NetworkCommunication.DataMessaging.DataBlockCodecs
+  nameWithType: Bodoconsult.NetworkCommunication.DataMessaging.DataBlockCodecs
+  fullName: Bodoconsult.NetworkCommunication.DataMessaging.DataBlockCodecs
+  type: Namespace
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+references:
+- uid: Bodoconsult.NetworkCommunication.DataMessaging.DataBlockCodecs.BasicDataBlockCodec
+  commentId: T:Bodoconsult.NetworkCommunication.DataMessaging.DataBlockCodecs.BasicDataBlockCodec
+  href: Bodoconsult.NetworkCommunication.DataMessaging.DataBlockCodecs.BasicDataBlockCodec.html
+  name: BasicDataBlockCodec
+  nameWithType: BasicDataBlockCodec
+  fullName: Bodoconsult.NetworkCommunication.DataMessaging.DataBlockCodecs.BasicDataBlockCodec

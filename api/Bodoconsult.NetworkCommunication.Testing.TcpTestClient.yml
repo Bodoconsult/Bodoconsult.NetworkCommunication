@@ -1,0 +1,968 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bodoconsult.NetworkCommunication.Testing.TcpTestClient
+  commentId: T:Bodoconsult.NetworkCommunication.Testing.TcpTestClient
+  id: TcpTestClient
+  parent: Bodoconsult.NetworkCommunication.Testing
+  children:
+  - Bodoconsult.NetworkCommunication.Testing.TcpTestClient.#ctor(System.Net.IPAddress,System.Int32)
+  - Bodoconsult.NetworkCommunication.Testing.TcpTestClient.CancellationTokenSource
+  - Bodoconsult.NetworkCommunication.Testing.TcpTestClient.Dispose
+  - Bodoconsult.NetworkCommunication.Testing.TcpTestClient.Dispose(System.Boolean)
+  - Bodoconsult.NetworkCommunication.Testing.TcpTestClient.ReceiveTimeout
+  - Bodoconsult.NetworkCommunication.Testing.TcpTestClient.ResetClientSocket
+  - Bodoconsult.NetworkCommunication.Testing.TcpTestClient.Send(System.Byte[])
+  - Bodoconsult.NetworkCommunication.Testing.TcpTestClient.SendTimeout
+  - Bodoconsult.NetworkCommunication.Testing.TcpTestClient.Start
+  langs:
+  - csharp
+  - vb
+  name: TcpTestClient
+  nameWithType: TcpTestClient
+  fullName: Bodoconsult.NetworkCommunication.Testing.TcpTestClient
+  type: Class
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Testing/TcpTestClient.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: TcpTestClient
+    path: src/Bodoconsult.NetworkCommunication/Testing/TcpTestClient.cs
+    startLine: 13
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Testing
+  summary: Simple TCP/IP server for testing purposes
+  example: []
+  syntax:
+    content: 'public class TcpTestClient : ITcpIpDevice, IDisposable'
+    content.vb: Public Class TcpTestClient Implements ITcpIpDevice, IDisposable
+  inheritance:
+  - System.Object
+  implements:
+  - Bodoconsult.NetworkCommunication.Interfaces.ITcpIpDevice
+  - System.IDisposable
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: Bodoconsult.NetworkCommunication.Testing.TcpTestClient.#ctor(System.Net.IPAddress,System.Int32)
+  commentId: M:Bodoconsult.NetworkCommunication.Testing.TcpTestClient.#ctor(System.Net.IPAddress,System.Int32)
+  id: '#ctor(System.Net.IPAddress,System.Int32)'
+  parent: Bodoconsult.NetworkCommunication.Testing.TcpTestClient
+  langs:
+  - csharp
+  - vb
+  name: TcpTestClient(IPAddress, int)
+  nameWithType: TcpTestClient.TcpTestClient(IPAddress, int)
+  fullName: Bodoconsult.NetworkCommunication.Testing.TcpTestClient.TcpTestClient(System.Net.IPAddress, int)
+  type: Constructor
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Testing/TcpTestClient.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: .ctor
+    path: src/Bodoconsult.NetworkCommunication/Testing/TcpTestClient.cs
+    startLine: 23
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Testing
+  summary: Default ctor
+  example: []
+  syntax:
+    content: public TcpTestClient(IPAddress ipAddress, int port)
+    parameters:
+    - id: ipAddress
+      type: System.Net.IPAddress
+      description: IP address
+    - id: port
+      type: System.Int32
+      description: Local port
+    content.vb: Public Sub New(ipAddress As IPAddress, port As Integer)
+  overload: Bodoconsult.NetworkCommunication.Testing.TcpTestClient.#ctor*
+  nameWithType.vb: TcpTestClient.New(IPAddress, Integer)
+  fullName.vb: Bodoconsult.NetworkCommunication.Testing.TcpTestClient.New(System.Net.IPAddress, Integer)
+  name.vb: New(IPAddress, Integer)
+- uid: Bodoconsult.NetworkCommunication.Testing.TcpTestClient.SendTimeout
+  commentId: P:Bodoconsult.NetworkCommunication.Testing.TcpTestClient.SendTimeout
+  id: SendTimeout
+  parent: Bodoconsult.NetworkCommunication.Testing.TcpTestClient
+  langs:
+  - csharp
+  - vb
+  name: SendTimeout
+  nameWithType: TcpTestClient.SendTimeout
+  fullName: Bodoconsult.NetworkCommunication.Testing.TcpTestClient.SendTimeout
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Testing/TcpTestClient.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: SendTimeout
+    path: src/Bodoconsult.NetworkCommunication/Testing/TcpTestClient.cs
+    startLine: 42
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Testing
+  summary: Send timeout in milliseconds. -1 means infinite.
+  example: []
+  syntax:
+    content: public int SendTimeout { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property SendTimeout As Integer
+  overload: Bodoconsult.NetworkCommunication.Testing.TcpTestClient.SendTimeout*
+  implements:
+  - Bodoconsult.NetworkCommunication.Interfaces.ITcpIpDevice.SendTimeout
+- uid: Bodoconsult.NetworkCommunication.Testing.TcpTestClient.ReceiveTimeout
+  commentId: P:Bodoconsult.NetworkCommunication.Testing.TcpTestClient.ReceiveTimeout
+  id: ReceiveTimeout
+  parent: Bodoconsult.NetworkCommunication.Testing.TcpTestClient
+  langs:
+  - csharp
+  - vb
+  name: ReceiveTimeout
+  nameWithType: TcpTestClient.ReceiveTimeout
+  fullName: Bodoconsult.NetworkCommunication.Testing.TcpTestClient.ReceiveTimeout
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Testing/TcpTestClient.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: ReceiveTimeout
+    path: src/Bodoconsult.NetworkCommunication/Testing/TcpTestClient.cs
+    startLine: 47
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Testing
+  summary: Receive timeout in milliseconds. -1 means infinite.
+  example: []
+  syntax:
+    content: public int ReceiveTimeout { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property ReceiveTimeout As Integer
+  overload: Bodoconsult.NetworkCommunication.Testing.TcpTestClient.ReceiveTimeout*
+  implements:
+  - Bodoconsult.NetworkCommunication.Interfaces.ITcpIpDevice.ReceiveTimeout
+- uid: Bodoconsult.NetworkCommunication.Testing.TcpTestClient.CancellationTokenSource
+  commentId: P:Bodoconsult.NetworkCommunication.Testing.TcpTestClient.CancellationTokenSource
+  id: CancellationTokenSource
+  parent: Bodoconsult.NetworkCommunication.Testing.TcpTestClient
+  langs:
+  - csharp
+  - vb
+  name: CancellationTokenSource
+  nameWithType: TcpTestClient.CancellationTokenSource
+  fullName: Bodoconsult.NetworkCommunication.Testing.TcpTestClient.CancellationTokenSource
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Testing/TcpTestClient.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: CancellationTokenSource
+    path: src/Bodoconsult.NetworkCommunication/Testing/TcpTestClient.cs
+    startLine: 52
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Testing
+  summary: Current cancellation token
+  example: []
+  syntax:
+    content: public CancellationTokenSource CancellationTokenSource { get; set; }
+    parameters: []
+    return:
+      type: System.Threading.CancellationTokenSource
+    content.vb: Public Property CancellationTokenSource As CancellationTokenSource
+  overload: Bodoconsult.NetworkCommunication.Testing.TcpTestClient.CancellationTokenSource*
+- uid: Bodoconsult.NetworkCommunication.Testing.TcpTestClient.Start
+  commentId: M:Bodoconsult.NetworkCommunication.Testing.TcpTestClient.Start
+  id: Start
+  parent: Bodoconsult.NetworkCommunication.Testing.TcpTestClient
+  langs:
+  - csharp
+  - vb
+  name: Start()
+  nameWithType: TcpTestClient.Start()
+  fullName: Bodoconsult.NetworkCommunication.Testing.TcpTestClient.Start()
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Testing/TcpTestClient.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Start
+    path: src/Bodoconsult.NetworkCommunication/Testing/TcpTestClient.cs
+    startLine: 57
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Testing
+  summary: Start the server mode
+  example: []
+  syntax:
+    content: public void Start()
+    content.vb: Public Sub Start()
+  overload: Bodoconsult.NetworkCommunication.Testing.TcpTestClient.Start*
+  implements:
+  - Bodoconsult.NetworkCommunication.Interfaces.ITcpIpDevice.Start
+- uid: Bodoconsult.NetworkCommunication.Testing.TcpTestClient.ResetClientSocket
+  commentId: M:Bodoconsult.NetworkCommunication.Testing.TcpTestClient.ResetClientSocket
+  id: ResetClientSocket
+  parent: Bodoconsult.NetworkCommunication.Testing.TcpTestClient
+  langs:
+  - csharp
+  - vb
+  name: ResetClientSocket()
+  nameWithType: TcpTestClient.ResetClientSocket()
+  fullName: Bodoconsult.NetworkCommunication.Testing.TcpTestClient.ResetClientSocket()
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Testing/TcpTestClient.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: ResetClientSocket
+    path: src/Bodoconsult.NetworkCommunication/Testing/TcpTestClient.cs
+    startLine: 74
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Testing
+  summary: Reset the client socket if necessary
+  example: []
+  syntax:
+    content: public void ResetClientSocket()
+    content.vb: Public Sub ResetClientSocket()
+  overload: Bodoconsult.NetworkCommunication.Testing.TcpTestClient.ResetClientSocket*
+  implements:
+  - Bodoconsult.NetworkCommunication.Interfaces.ITcpIpDevice.ResetClientSocket
+- uid: Bodoconsult.NetworkCommunication.Testing.TcpTestClient.Send(System.Byte[])
+  commentId: M:Bodoconsult.NetworkCommunication.Testing.TcpTestClient.Send(System.Byte[])
+  id: Send(System.Byte[])
+  parent: Bodoconsult.NetworkCommunication.Testing.TcpTestClient
+  langs:
+  - csharp
+  - vb
+  name: Send(byte[])
+  nameWithType: TcpTestClient.Send(byte[])
+  fullName: Bodoconsult.NetworkCommunication.Testing.TcpTestClient.Send(byte[])
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Testing/TcpTestClient.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Send
+    path: src/Bodoconsult.NetworkCommunication/Testing/TcpTestClient.cs
+    startLine: 88
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Testing
+  summary: Send byte array to the client
+  example: []
+  syntax:
+    content: public void Send(byte[] data)
+    parameters:
+    - id: data
+      type: System.Byte[]
+      description: Byte array to send
+    content.vb: Public Sub Send(data As Byte())
+  overload: Bodoconsult.NetworkCommunication.Testing.TcpTestClient.Send*
+  implements:
+  - Bodoconsult.NetworkCommunication.Interfaces.ITcpIpDevice.Send(System.Byte[])
+  nameWithType.vb: TcpTestClient.Send(Byte())
+  fullName.vb: Bodoconsult.NetworkCommunication.Testing.TcpTestClient.Send(Byte())
+  name.vb: Send(Byte())
+- uid: Bodoconsult.NetworkCommunication.Testing.TcpTestClient.Dispose(System.Boolean)
+  commentId: M:Bodoconsult.NetworkCommunication.Testing.TcpTestClient.Dispose(System.Boolean)
+  id: Dispose(System.Boolean)
+  parent: Bodoconsult.NetworkCommunication.Testing.TcpTestClient
+  langs:
+  - csharp
+  - vb
+  name: Dispose(bool)
+  nameWithType: TcpTestClient.Dispose(bool)
+  fullName: Bodoconsult.NetworkCommunication.Testing.TcpTestClient.Dispose(bool)
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Testing/TcpTestClient.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Dispose
+    path: src/Bodoconsult.NetworkCommunication/Testing/TcpTestClient.cs
+    startLine: 96
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Testing
+  example: []
+  syntax:
+    content: public virtual void Dispose(bool disposing)
+    parameters:
+    - id: disposing
+      type: System.Boolean
+    content.vb: Public Overridable Sub Dispose(disposing As Boolean)
+  overload: Bodoconsult.NetworkCommunication.Testing.TcpTestClient.Dispose*
+  implements:
+  - Bodoconsult.NetworkCommunication.Interfaces.ITcpIpDevice.Dispose(System.Boolean)
+  nameWithType.vb: TcpTestClient.Dispose(Boolean)
+  fullName.vb: Bodoconsult.NetworkCommunication.Testing.TcpTestClient.Dispose(Boolean)
+  name.vb: Dispose(Boolean)
+- uid: Bodoconsult.NetworkCommunication.Testing.TcpTestClient.Dispose
+  commentId: M:Bodoconsult.NetworkCommunication.Testing.TcpTestClient.Dispose
+  id: Dispose
+  parent: Bodoconsult.NetworkCommunication.Testing.TcpTestClient
+  langs:
+  - csharp
+  - vb
+  name: Dispose()
+  nameWithType: TcpTestClient.Dispose()
+  fullName: Bodoconsult.NetworkCommunication.Testing.TcpTestClient.Dispose()
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Testing/TcpTestClient.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Dispose
+    path: src/Bodoconsult.NetworkCommunication/Testing/TcpTestClient.cs
+    startLine: 117
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Testing
+  summary: Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+  example: []
+  syntax:
+    content: public void Dispose()
+    content.vb: Public Sub Dispose()
+  overload: Bodoconsult.NetworkCommunication.Testing.TcpTestClient.Dispose*
+  implements:
+  - System.IDisposable.Dispose
+references:
+- uid: Bodoconsult.NetworkCommunication.Testing
+  commentId: N:Bodoconsult.NetworkCommunication.Testing
+  href: Bodoconsult.html
+  name: Bodoconsult.NetworkCommunication.Testing
+  nameWithType: Bodoconsult.NetworkCommunication.Testing
+  fullName: Bodoconsult.NetworkCommunication.Testing
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Testing
+    name: Testing
+    href: Bodoconsult.NetworkCommunication.Testing.html
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Testing
+    name: Testing
+    href: Bodoconsult.NetworkCommunication.Testing.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Bodoconsult.NetworkCommunication.Interfaces.ITcpIpDevice
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.ITcpIpDevice
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.NetworkCommunication.Interfaces.ITcpIpDevice.html
+  name: ITcpIpDevice
+  nameWithType: ITcpIpDevice
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.ITcpIpDevice
+- uid: System.IDisposable
+  commentId: T:System.IDisposable
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable
+  name: IDisposable
+  nameWithType: IDisposable
+  fullName: System.IDisposable
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Bodoconsult.NetworkCommunication.Interfaces
+  commentId: N:Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.html
+  name: Bodoconsult.NetworkCommunication.Interfaces
+  nameWithType: Bodoconsult.NetworkCommunication.Interfaces
+  fullName: Bodoconsult.NetworkCommunication.Interfaces
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Interfaces
+    name: Interfaces
+    href: Bodoconsult.NetworkCommunication.Interfaces.html
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Interfaces
+    name: Interfaces
+    href: Bodoconsult.NetworkCommunication.Interfaces.html
+- uid: Bodoconsult.NetworkCommunication.Testing.TcpTestClient.#ctor*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Testing.TcpTestClient.#ctor
+  href: Bodoconsult.NetworkCommunication.Testing.TcpTestClient.html#Bodoconsult_NetworkCommunication_Testing_TcpTestClient__ctor_System_Net_IPAddress_System_Int32_
+  name: TcpTestClient
+  nameWithType: TcpTestClient.TcpTestClient
+  fullName: Bodoconsult.NetworkCommunication.Testing.TcpTestClient.TcpTestClient
+  nameWithType.vb: TcpTestClient.New
+  fullName.vb: Bodoconsult.NetworkCommunication.Testing.TcpTestClient.New
+  name.vb: New
+- uid: System.Net.IPAddress
+  commentId: T:System.Net.IPAddress
+  parent: System.Net
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.net.ipaddress
+  name: IPAddress
+  nameWithType: IPAddress
+  fullName: System.Net.IPAddress
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: System.Net
+  commentId: N:System.Net
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Net
+  nameWithType: System.Net
+  fullName: System.Net
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Net
+    name: Net
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.net
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Net
+    name: Net
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.net
+- uid: Bodoconsult.NetworkCommunication.Testing.TcpTestClient.SendTimeout*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Testing.TcpTestClient.SendTimeout
+  href: Bodoconsult.NetworkCommunication.Testing.TcpTestClient.html#Bodoconsult_NetworkCommunication_Testing_TcpTestClient_SendTimeout
+  name: SendTimeout
+  nameWithType: TcpTestClient.SendTimeout
+  fullName: Bodoconsult.NetworkCommunication.Testing.TcpTestClient.SendTimeout
+- uid: Bodoconsult.NetworkCommunication.Interfaces.ITcpIpDevice.SendTimeout
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.ITcpIpDevice.SendTimeout
+  parent: Bodoconsult.NetworkCommunication.Interfaces.ITcpIpDevice
+  href: Bodoconsult.NetworkCommunication.Interfaces.ITcpIpDevice.html#Bodoconsult_NetworkCommunication_Interfaces_ITcpIpDevice_SendTimeout
+  name: SendTimeout
+  nameWithType: ITcpIpDevice.SendTimeout
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.ITcpIpDevice.SendTimeout
+- uid: Bodoconsult.NetworkCommunication.Testing.TcpTestClient.ReceiveTimeout*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Testing.TcpTestClient.ReceiveTimeout
+  href: Bodoconsult.NetworkCommunication.Testing.TcpTestClient.html#Bodoconsult_NetworkCommunication_Testing_TcpTestClient_ReceiveTimeout
+  name: ReceiveTimeout
+  nameWithType: TcpTestClient.ReceiveTimeout
+  fullName: Bodoconsult.NetworkCommunication.Testing.TcpTestClient.ReceiveTimeout
+- uid: Bodoconsult.NetworkCommunication.Interfaces.ITcpIpDevice.ReceiveTimeout
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.ITcpIpDevice.ReceiveTimeout
+  parent: Bodoconsult.NetworkCommunication.Interfaces.ITcpIpDevice
+  href: Bodoconsult.NetworkCommunication.Interfaces.ITcpIpDevice.html#Bodoconsult_NetworkCommunication_Interfaces_ITcpIpDevice_ReceiveTimeout
+  name: ReceiveTimeout
+  nameWithType: ITcpIpDevice.ReceiveTimeout
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.ITcpIpDevice.ReceiveTimeout
+- uid: Bodoconsult.NetworkCommunication.Testing.TcpTestClient.CancellationTokenSource*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Testing.TcpTestClient.CancellationTokenSource
+  href: Bodoconsult.NetworkCommunication.Testing.TcpTestClient.html#Bodoconsult_NetworkCommunication_Testing_TcpTestClient_CancellationTokenSource
+  name: CancellationTokenSource
+  nameWithType: TcpTestClient.CancellationTokenSource
+  fullName: Bodoconsult.NetworkCommunication.Testing.TcpTestClient.CancellationTokenSource
+- uid: System.Threading.CancellationTokenSource
+  commentId: T:System.Threading.CancellationTokenSource
+  parent: System.Threading
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtokensource
+  name: CancellationTokenSource
+  nameWithType: CancellationTokenSource
+  fullName: System.Threading.CancellationTokenSource
+- uid: System.Threading
+  commentId: N:System.Threading
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Threading
+  nameWithType: System.Threading
+  fullName: System.Threading
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+- uid: Bodoconsult.NetworkCommunication.Testing.TcpTestClient.Start*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Testing.TcpTestClient.Start
+  href: Bodoconsult.NetworkCommunication.Testing.TcpTestClient.html#Bodoconsult_NetworkCommunication_Testing_TcpTestClient_Start
+  name: Start
+  nameWithType: TcpTestClient.Start
+  fullName: Bodoconsult.NetworkCommunication.Testing.TcpTestClient.Start
+- uid: Bodoconsult.NetworkCommunication.Interfaces.ITcpIpDevice.Start
+  commentId: M:Bodoconsult.NetworkCommunication.Interfaces.ITcpIpDevice.Start
+  parent: Bodoconsult.NetworkCommunication.Interfaces.ITcpIpDevice
+  href: Bodoconsult.NetworkCommunication.Interfaces.ITcpIpDevice.html#Bodoconsult_NetworkCommunication_Interfaces_ITcpIpDevice_Start
+  name: Start()
+  nameWithType: ITcpIpDevice.Start()
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.ITcpIpDevice.Start()
+  spec.csharp:
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.ITcpIpDevice.Start
+    name: Start
+    href: Bodoconsult.NetworkCommunication.Interfaces.ITcpIpDevice.html#Bodoconsult_NetworkCommunication_Interfaces_ITcpIpDevice_Start
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.ITcpIpDevice.Start
+    name: Start
+    href: Bodoconsult.NetworkCommunication.Interfaces.ITcpIpDevice.html#Bodoconsult_NetworkCommunication_Interfaces_ITcpIpDevice_Start
+  - name: (
+  - name: )
+- uid: Bodoconsult.NetworkCommunication.Testing.TcpTestClient.ResetClientSocket*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Testing.TcpTestClient.ResetClientSocket
+  href: Bodoconsult.NetworkCommunication.Testing.TcpTestClient.html#Bodoconsult_NetworkCommunication_Testing_TcpTestClient_ResetClientSocket
+  name: ResetClientSocket
+  nameWithType: TcpTestClient.ResetClientSocket
+  fullName: Bodoconsult.NetworkCommunication.Testing.TcpTestClient.ResetClientSocket
+- uid: Bodoconsult.NetworkCommunication.Interfaces.ITcpIpDevice.ResetClientSocket
+  commentId: M:Bodoconsult.NetworkCommunication.Interfaces.ITcpIpDevice.ResetClientSocket
+  parent: Bodoconsult.NetworkCommunication.Interfaces.ITcpIpDevice
+  href: Bodoconsult.NetworkCommunication.Interfaces.ITcpIpDevice.html#Bodoconsult_NetworkCommunication_Interfaces_ITcpIpDevice_ResetClientSocket
+  name: ResetClientSocket()
+  nameWithType: ITcpIpDevice.ResetClientSocket()
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.ITcpIpDevice.ResetClientSocket()
+  spec.csharp:
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.ITcpIpDevice.ResetClientSocket
+    name: ResetClientSocket
+    href: Bodoconsult.NetworkCommunication.Interfaces.ITcpIpDevice.html#Bodoconsult_NetworkCommunication_Interfaces_ITcpIpDevice_ResetClientSocket
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.ITcpIpDevice.ResetClientSocket
+    name: ResetClientSocket
+    href: Bodoconsult.NetworkCommunication.Interfaces.ITcpIpDevice.html#Bodoconsult_NetworkCommunication_Interfaces_ITcpIpDevice_ResetClientSocket
+  - name: (
+  - name: )
+- uid: Bodoconsult.NetworkCommunication.Testing.TcpTestClient.Send*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Testing.TcpTestClient.Send
+  href: Bodoconsult.NetworkCommunication.Testing.TcpTestClient.html#Bodoconsult_NetworkCommunication_Testing_TcpTestClient_Send_System_Byte___
+  name: Send
+  nameWithType: TcpTestClient.Send
+  fullName: Bodoconsult.NetworkCommunication.Testing.TcpTestClient.Send
+- uid: Bodoconsult.NetworkCommunication.Interfaces.ITcpIpDevice.Send(System.Byte[])
+  commentId: M:Bodoconsult.NetworkCommunication.Interfaces.ITcpIpDevice.Send(System.Byte[])
+  parent: Bodoconsult.NetworkCommunication.Interfaces.ITcpIpDevice
+  isExternal: true
+  href: Bodoconsult.NetworkCommunication.Interfaces.ITcpIpDevice.html#Bodoconsult_NetworkCommunication_Interfaces_ITcpIpDevice_Send_System_Byte___
+  name: Send(byte[])
+  nameWithType: ITcpIpDevice.Send(byte[])
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.ITcpIpDevice.Send(byte[])
+  nameWithType.vb: ITcpIpDevice.Send(Byte())
+  fullName.vb: Bodoconsult.NetworkCommunication.Interfaces.ITcpIpDevice.Send(Byte())
+  name.vb: Send(Byte())
+  spec.csharp:
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.ITcpIpDevice.Send(System.Byte[])
+    name: Send
+    href: Bodoconsult.NetworkCommunication.Interfaces.ITcpIpDevice.html#Bodoconsult_NetworkCommunication_Interfaces_ITcpIpDevice_Send_System_Byte___
+  - name: (
+  - uid: System.Byte
+    name: byte
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.byte
+  - name: '['
+  - name: ']'
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.ITcpIpDevice.Send(System.Byte[])
+    name: Send
+    href: Bodoconsult.NetworkCommunication.Interfaces.ITcpIpDevice.html#Bodoconsult_NetworkCommunication_Interfaces_ITcpIpDevice_Send_System_Byte___
+  - name: (
+  - uid: System.Byte
+    name: Byte
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.byte
+  - name: (
+  - name: )
+  - name: )
+- uid: System.Byte[]
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.byte
+  name: byte[]
+  nameWithType: byte[]
+  fullName: byte[]
+  nameWithType.vb: Byte()
+  fullName.vb: Byte()
+  name.vb: Byte()
+  spec.csharp:
+  - uid: System.Byte
+    name: byte
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.byte
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: System.Byte
+    name: Byte
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.byte
+  - name: (
+  - name: )
+- uid: Bodoconsult.NetworkCommunication.Testing.TcpTestClient.Dispose*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Testing.TcpTestClient.Dispose
+  href: Bodoconsult.NetworkCommunication.Testing.TcpTestClient.html#Bodoconsult_NetworkCommunication_Testing_TcpTestClient_Dispose_System_Boolean_
+  name: Dispose
+  nameWithType: TcpTestClient.Dispose
+  fullName: Bodoconsult.NetworkCommunication.Testing.TcpTestClient.Dispose
+- uid: Bodoconsult.NetworkCommunication.Interfaces.ITcpIpDevice.Dispose(System.Boolean)
+  commentId: M:Bodoconsult.NetworkCommunication.Interfaces.ITcpIpDevice.Dispose(System.Boolean)
+  parent: Bodoconsult.NetworkCommunication.Interfaces.ITcpIpDevice
+  isExternal: true
+  href: Bodoconsult.NetworkCommunication.Interfaces.ITcpIpDevice.html#Bodoconsult_NetworkCommunication_Interfaces_ITcpIpDevice_Dispose_System_Boolean_
+  name: Dispose(bool)
+  nameWithType: ITcpIpDevice.Dispose(bool)
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.ITcpIpDevice.Dispose(bool)
+  nameWithType.vb: ITcpIpDevice.Dispose(Boolean)
+  fullName.vb: Bodoconsult.NetworkCommunication.Interfaces.ITcpIpDevice.Dispose(Boolean)
+  name.vb: Dispose(Boolean)
+  spec.csharp:
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.ITcpIpDevice.Dispose(System.Boolean)
+    name: Dispose
+    href: Bodoconsult.NetworkCommunication.Interfaces.ITcpIpDevice.html#Bodoconsult_NetworkCommunication_Interfaces_ITcpIpDevice_Dispose_System_Boolean_
+  - name: (
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.ITcpIpDevice.Dispose(System.Boolean)
+    name: Dispose
+    href: Bodoconsult.NetworkCommunication.Interfaces.ITcpIpDevice.html#Bodoconsult_NetworkCommunication_Interfaces_ITcpIpDevice_Dispose_System_Boolean_
+  - name: (
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: System.IDisposable.Dispose
+  commentId: M:System.IDisposable.Dispose
+  parent: System.IDisposable
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  name: Dispose()
+  nameWithType: IDisposable.Dispose()
+  fullName: System.IDisposable.Dispose()
+  spec.csharp:
+  - uid: System.IDisposable.Dispose
+    name: Dispose
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.IDisposable.Dispose
+    name: Dispose
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  - name: (
+  - name: )

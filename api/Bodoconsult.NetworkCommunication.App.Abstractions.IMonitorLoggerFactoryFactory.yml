@@ -1,0 +1,169 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bodoconsult.NetworkCommunication.App.Abstractions.IMonitorLoggerFactoryFactory
+  commentId: T:Bodoconsult.NetworkCommunication.App.Abstractions.IMonitorLoggerFactoryFactory
+  id: IMonitorLoggerFactoryFactory
+  parent: Bodoconsult.NetworkCommunication.App.Abstractions
+  children:
+  - Bodoconsult.NetworkCommunication.App.Abstractions.IMonitorLoggerFactoryFactory.CreateInstance(System.String)
+  langs:
+  - csharp
+  - vb
+  name: IMonitorLoggerFactoryFactory
+  nameWithType: IMonitorLoggerFactoryFactory
+  fullName: Bodoconsult.NetworkCommunication.App.Abstractions.IMonitorLoggerFactoryFactory
+  type: Interface
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/App.Abstractions/IMonitorLoggerFactoryFactory.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: IMonitorLoggerFactoryFactory
+    path: src/Bodoconsult.NetworkCommunication/App.Abstractions/IMonitorLoggerFactoryFactory.cs
+    startLine: 9
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.App.Abstractions
+  summary: Interface to create <xref href="Bodoconsult.App.Interfaces.IMonitorLoggerFactory" data-throw-if-not-resolved="false"></xref> factories
+  example: []
+  syntax:
+    content: public interface IMonitorLoggerFactoryFactory
+    content.vb: Public Interface IMonitorLoggerFactoryFactory
+- uid: Bodoconsult.NetworkCommunication.App.Abstractions.IMonitorLoggerFactoryFactory.CreateInstance(System.String)
+  commentId: M:Bodoconsult.NetworkCommunication.App.Abstractions.IMonitorLoggerFactoryFactory.CreateInstance(System.String)
+  id: CreateInstance(System.String)
+  parent: Bodoconsult.NetworkCommunication.App.Abstractions.IMonitorLoggerFactoryFactory
+  langs:
+  - csharp
+  - vb
+  name: CreateInstance(string)
+  nameWithType: IMonitorLoggerFactoryFactory.CreateInstance(string)
+  fullName: Bodoconsult.NetworkCommunication.App.Abstractions.IMonitorLoggerFactoryFactory.CreateInstance(string)
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/App.Abstractions/IMonitorLoggerFactoryFactory.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: CreateInstance
+    path: src/Bodoconsult.NetworkCommunication/App.Abstractions/IMonitorLoggerFactoryFactory.cs
+    startLine: 16
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.App.Abstractions
+  summary: Create a monitor logger factory
+  example: []
+  syntax:
+    content: IMonitorLoggerFactory CreateInstance(string deviceName)
+    parameters:
+    - id: deviceName
+      type: System.String
+      description: Current tower serial number
+    return:
+      type: Bodoconsult.App.Interfaces.IMonitorLoggerFactory
+      description: ''
+    content.vb: Function CreateInstance(deviceName As String) As IMonitorLoggerFactory
+  overload: Bodoconsult.NetworkCommunication.App.Abstractions.IMonitorLoggerFactoryFactory.CreateInstance*
+  nameWithType.vb: IMonitorLoggerFactoryFactory.CreateInstance(String)
+  fullName.vb: Bodoconsult.NetworkCommunication.App.Abstractions.IMonitorLoggerFactoryFactory.CreateInstance(String)
+  name.vb: CreateInstance(String)
+references:
+- uid: Bodoconsult.App.Interfaces.IMonitorLoggerFactory
+  commentId: T:Bodoconsult.App.Interfaces.IMonitorLoggerFactory
+  parent: Bodoconsult.App.Interfaces
+  isExternal: true
+  name: IMonitorLoggerFactory
+  nameWithType: IMonitorLoggerFactory
+  fullName: Bodoconsult.App.Interfaces.IMonitorLoggerFactory
+- uid: Bodoconsult.NetworkCommunication.App.Abstractions
+  commentId: N:Bodoconsult.NetworkCommunication.App.Abstractions
+  href: Bodoconsult.html
+  name: Bodoconsult.NetworkCommunication.App.Abstractions
+  nameWithType: Bodoconsult.NetworkCommunication.App.Abstractions
+  fullName: Bodoconsult.NetworkCommunication.App.Abstractions
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.App
+    name: App
+    href: Bodoconsult.NetworkCommunication.App.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.App.Abstractions
+    name: Abstractions
+    href: Bodoconsult.NetworkCommunication.App.Abstractions.html
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.App
+    name: App
+    href: Bodoconsult.NetworkCommunication.App.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.App.Abstractions
+    name: Abstractions
+    href: Bodoconsult.NetworkCommunication.App.Abstractions.html
+- uid: Bodoconsult.App.Interfaces
+  commentId: N:Bodoconsult.App.Interfaces
+  isExternal: true
+  name: Bodoconsult.App.Interfaces
+  nameWithType: Bodoconsult.App.Interfaces
+  fullName: Bodoconsult.App.Interfaces
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    isExternal: true
+  - name: .
+  - uid: Bodoconsult.App
+    name: App
+    isExternal: true
+  - name: .
+  - uid: Bodoconsult.App.Interfaces
+    name: Interfaces
+    isExternal: true
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    isExternal: true
+  - name: .
+  - uid: Bodoconsult.App
+    name: App
+    isExternal: true
+  - name: .
+  - uid: Bodoconsult.App.Interfaces
+    name: Interfaces
+    isExternal: true
+- uid: Bodoconsult.NetworkCommunication.App.Abstractions.IMonitorLoggerFactoryFactory.CreateInstance*
+  commentId: Overload:Bodoconsult.NetworkCommunication.App.Abstractions.IMonitorLoggerFactoryFactory.CreateInstance
+  href: Bodoconsult.NetworkCommunication.App.Abstractions.IMonitorLoggerFactoryFactory.html#Bodoconsult_NetworkCommunication_App_Abstractions_IMonitorLoggerFactoryFactory_CreateInstance_System_String_
+  name: CreateInstance
+  nameWithType: IMonitorLoggerFactoryFactory.CreateInstance
+  fullName: Bodoconsult.NetworkCommunication.App.Abstractions.IMonitorLoggerFactoryFactory.CreateInstance
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System

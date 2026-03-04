@@ -1,0 +1,978 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverRelationshipCollection
+  commentId: T:Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverRelationshipCollection
+  id: DhcpServerFailoverRelationshipCollection
+  parent: Bodoconsult.Network.Windows.Dhcp
+  children:
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverRelationshipCollection.GetEnumerator
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverRelationshipCollection.GetRelationship(System.String)
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverRelationshipCollection.RemoveRelationship(Bodoconsult.Network.Windows.Dhcp.IDhcpServerFailoverRelationship)
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverRelationshipCollection.Server
+  langs:
+  - csharp
+  - vb
+  name: DhcpServerFailoverRelationshipCollection
+  nameWithType: DhcpServerFailoverRelationshipCollection
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverRelationshipCollection
+  type: Class
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerFailoverRelationshipCollection.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: DhcpServerFailoverRelationshipCollection
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerFailoverRelationshipCollection.cs
+    startLine: 7
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: 'public class DhcpServerFailoverRelationshipCollection : IDhcpServerFailoverRelationshipCollection, IEnumerable<IDhcpServerFailoverRelationship>, IEnumerable'
+    content.vb: Public Class DhcpServerFailoverRelationshipCollection Implements IDhcpServerFailoverRelationshipCollection, IEnumerable(Of IDhcpServerFailoverRelationship), IEnumerable
+  inheritance:
+  - System.Object
+  implements:
+  - Bodoconsult.Network.Windows.Dhcp.IDhcpServerFailoverRelationshipCollection
+  - System.Collections.Generic.IEnumerable{Bodoconsult.Network.Windows.Dhcp.IDhcpServerFailoverRelationship}
+  - System.Collections.IEnumerable
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  extensionMethods:
+  - System.Collections.Generic.IEnumerable{Bodoconsult.Network.Windows.Dhcp.IDhcpServerFailoverRelationship}.Bodoconsult.NetworkCommunication.App.Abstractions.LambdaExpressionHelper.OrderBy``1(System.String)
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverRelationshipCollection.Server
+  commentId: P:Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverRelationshipCollection.Server
+  id: Server
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverRelationshipCollection
+  langs:
+  - csharp
+  - vb
+  name: Server
+  nameWithType: DhcpServerFailoverRelationshipCollection.Server
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverRelationshipCollection.Server
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerFailoverRelationshipCollection.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Server
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerFailoverRelationshipCollection.cs
+    startLine: 9
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: public DhcpServer Server { get; }
+    parameters: []
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServer
+    content.vb: Public ReadOnly Property Server As DhcpServer
+  overload: Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverRelationshipCollection.Server*
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverRelationshipCollection.GetRelationship(System.String)
+  commentId: M:Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverRelationshipCollection.GetRelationship(System.String)
+  id: GetRelationship(System.String)
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverRelationshipCollection
+  langs:
+  - csharp
+  - vb
+  name: GetRelationship(string)
+  nameWithType: DhcpServerFailoverRelationshipCollection.GetRelationship(string)
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverRelationshipCollection.GetRelationship(string)
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerFailoverRelationshipCollection.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: GetRelationship
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerFailoverRelationshipCollection.cs
+    startLine: 17
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  example: []
+  syntax:
+    content: public IDhcpServerFailoverRelationship GetRelationship(string relationshipName)
+    parameters:
+    - id: relationshipName
+      type: System.String
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.IDhcpServerFailoverRelationship
+    content.vb: Public Function GetRelationship(relationshipName As String) As IDhcpServerFailoverRelationship
+  overload: Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverRelationshipCollection.GetRelationship*
+  implements:
+  - Bodoconsult.Network.Windows.Dhcp.IDhcpServerFailoverRelationshipCollection.GetRelationship(System.String)
+  nameWithType.vb: DhcpServerFailoverRelationshipCollection.GetRelationship(String)
+  fullName.vb: Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverRelationshipCollection.GetRelationship(String)
+  name.vb: GetRelationship(String)
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverRelationshipCollection.RemoveRelationship(Bodoconsult.Network.Windows.Dhcp.IDhcpServerFailoverRelationship)
+  commentId: M:Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverRelationshipCollection.RemoveRelationship(Bodoconsult.Network.Windows.Dhcp.IDhcpServerFailoverRelationship)
+  id: RemoveRelationship(Bodoconsult.Network.Windows.Dhcp.IDhcpServerFailoverRelationship)
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverRelationshipCollection
+  langs:
+  - csharp
+  - vb
+  name: RemoveRelationship(IDhcpServerFailoverRelationship)
+  nameWithType: DhcpServerFailoverRelationshipCollection.RemoveRelationship(IDhcpServerFailoverRelationship)
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverRelationshipCollection.RemoveRelationship(Bodoconsult.Network.Windows.Dhcp.IDhcpServerFailoverRelationship)
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerFailoverRelationshipCollection.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: RemoveRelationship
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerFailoverRelationshipCollection.cs
+    startLine: 20
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  example: []
+  syntax:
+    content: public void RemoveRelationship(IDhcpServerFailoverRelationship relationship)
+    parameters:
+    - id: relationship
+      type: Bodoconsult.Network.Windows.Dhcp.IDhcpServerFailoverRelationship
+    content.vb: Public Sub RemoveRelationship(relationship As IDhcpServerFailoverRelationship)
+  overload: Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverRelationshipCollection.RemoveRelationship*
+  implements:
+  - Bodoconsult.Network.Windows.Dhcp.IDhcpServerFailoverRelationshipCollection.RemoveRelationship(Bodoconsult.Network.Windows.Dhcp.IDhcpServerFailoverRelationship)
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverRelationshipCollection.GetEnumerator
+  commentId: M:Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverRelationshipCollection.GetEnumerator
+  id: GetEnumerator
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverRelationshipCollection
+  langs:
+  - csharp
+  - vb
+  name: GetEnumerator()
+  nameWithType: DhcpServerFailoverRelationshipCollection.GetEnumerator()
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverRelationshipCollection.GetEnumerator()
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerFailoverRelationshipCollection.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: GetEnumerator
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerFailoverRelationshipCollection.cs
+    startLine: 23
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  summary: Returns an enumerator that iterates through the collection.
+  example: []
+  syntax:
+    content: public IEnumerator<IDhcpServerFailoverRelationship> GetEnumerator()
+    return:
+      type: System.Collections.Generic.IEnumerator{Bodoconsult.Network.Windows.Dhcp.IDhcpServerFailoverRelationship}
+      description: An enumerator that can be used to iterate through the collection.
+    content.vb: Public Function GetEnumerator() As IEnumerator(Of IDhcpServerFailoverRelationship)
+  overload: Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverRelationshipCollection.GetEnumerator*
+  implements:
+  - System.Collections.Generic.IEnumerable{Bodoconsult.Network.Windows.Dhcp.IDhcpServerFailoverRelationship}.GetEnumerator
+references:
+- uid: Bodoconsult.Network.Windows.Dhcp
+  commentId: N:Bodoconsult.Network.Windows.Dhcp
+  href: Bodoconsult.html
+  name: Bodoconsult.Network.Windows.Dhcp
+  nameWithType: Bodoconsult.Network.Windows.Dhcp
+  fullName: Bodoconsult.Network.Windows.Dhcp
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.Network
+    name: Network
+    href: Bodoconsult.Network.html
+  - name: .
+  - uid: Bodoconsult.Network.Windows
+    name: Windows
+    href: Bodoconsult.Network.Windows.html
+  - name: .
+  - uid: Bodoconsult.Network.Windows.Dhcp
+    name: Dhcp
+    href: Bodoconsult.Network.Windows.Dhcp.html
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.Network
+    name: Network
+    href: Bodoconsult.Network.html
+  - name: .
+  - uid: Bodoconsult.Network.Windows
+    name: Windows
+    href: Bodoconsult.Network.Windows.html
+  - name: .
+  - uid: Bodoconsult.Network.Windows.Dhcp
+    name: Dhcp
+    href: Bodoconsult.Network.Windows.Dhcp.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerFailoverRelationshipCollection
+  commentId: T:Bodoconsult.Network.Windows.Dhcp.IDhcpServerFailoverRelationshipCollection
+  parent: Bodoconsult.Network.Windows.Dhcp
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerFailoverRelationshipCollection.html
+  name: IDhcpServerFailoverRelationshipCollection
+  nameWithType: IDhcpServerFailoverRelationshipCollection
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerFailoverRelationshipCollection
+- uid: System.Collections.Generic.IEnumerable{Bodoconsult.Network.Windows.Dhcp.IDhcpServerFailoverRelationship}
+  commentId: T:System.Collections.Generic.IEnumerable{Bodoconsult.Network.Windows.Dhcp.IDhcpServerFailoverRelationship}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IEnumerable`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<IDhcpServerFailoverRelationship>
+  nameWithType: IEnumerable<IDhcpServerFailoverRelationship>
+  fullName: System.Collections.Generic.IEnumerable<Bodoconsult.Network.Windows.Dhcp.IDhcpServerFailoverRelationship>
+  nameWithType.vb: IEnumerable(Of IDhcpServerFailoverRelationship)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of Bodoconsult.Network.Windows.Dhcp.IDhcpServerFailoverRelationship)
+  name.vb: IEnumerable(Of IDhcpServerFailoverRelationship)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerFailoverRelationship
+    name: IDhcpServerFailoverRelationship
+    href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerFailoverRelationship.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerFailoverRelationship
+    name: IDhcpServerFailoverRelationship
+    href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerFailoverRelationship.html
+  - name: )
+- uid: System.Collections.IEnumerable
+  commentId: T:System.Collections.IEnumerable
+  parent: System.Collections
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.ienumerable
+  name: IEnumerable
+  nameWithType: IEnumerable
+  fullName: System.Collections.IEnumerable
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System.Collections.Generic.IEnumerable{Bodoconsult.Network.Windows.Dhcp.IDhcpServerFailoverRelationship}.Bodoconsult.NetworkCommunication.App.Abstractions.LambdaExpressionHelper.OrderBy``1(System.String)
+  commentId: M:Bodoconsult.NetworkCommunication.App.Abstractions.LambdaExpressionHelper.OrderBy``1(System.Collections.Generic.IEnumerable{``0},System.String)
+  parent: Bodoconsult.NetworkCommunication.App.Abstractions.LambdaExpressionHelper
+  definition: Bodoconsult.NetworkCommunication.App.Abstractions.LambdaExpressionHelper.OrderBy``1(System.Collections.Generic.IEnumerable{``0},System.String)
+  href: Bodoconsult.NetworkCommunication.App.Abstractions.LambdaExpressionHelper.html#Bodoconsult_NetworkCommunication_App_Abstractions_LambdaExpressionHelper_OrderBy__1_System_Collections_Generic_IEnumerable___0__System_String_
+  name: OrderBy<IDhcpServerFailoverRelationship>(IEnumerable<IDhcpServerFailoverRelationship>, string)
+  nameWithType: LambdaExpressionHelper.OrderBy<IDhcpServerFailoverRelationship>(IEnumerable<IDhcpServerFailoverRelationship>, string)
+  fullName: Bodoconsult.NetworkCommunication.App.Abstractions.LambdaExpressionHelper.OrderBy<Bodoconsult.Network.Windows.Dhcp.IDhcpServerFailoverRelationship>(System.Collections.Generic.IEnumerable<Bodoconsult.Network.Windows.Dhcp.IDhcpServerFailoverRelationship>, string)
+  nameWithType.vb: LambdaExpressionHelper.OrderBy(Of IDhcpServerFailoverRelationship)(IEnumerable(Of IDhcpServerFailoverRelationship), String)
+  fullName.vb: Bodoconsult.NetworkCommunication.App.Abstractions.LambdaExpressionHelper.OrderBy(Of Bodoconsult.Network.Windows.Dhcp.IDhcpServerFailoverRelationship)(System.Collections.Generic.IEnumerable(Of Bodoconsult.Network.Windows.Dhcp.IDhcpServerFailoverRelationship), String)
+  name.vb: OrderBy(Of IDhcpServerFailoverRelationship)(IEnumerable(Of IDhcpServerFailoverRelationship), String)
+  spec.csharp:
+  - uid: Bodoconsult.NetworkCommunication.App.Abstractions.LambdaExpressionHelper.OrderBy``1(System.Collections.Generic.IEnumerable{Bodoconsult.Network.Windows.Dhcp.IDhcpServerFailoverRelationship},System.String)
+    name: OrderBy
+    href: Bodoconsult.NetworkCommunication.App.Abstractions.LambdaExpressionHelper.html#Bodoconsult_NetworkCommunication_App_Abstractions_LambdaExpressionHelper_OrderBy__1_System_Collections_Generic_IEnumerable___0__System_String_
+  - name: <
+  - uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerFailoverRelationship
+    name: IDhcpServerFailoverRelationship
+    href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerFailoverRelationship.html
+  - name: '>'
+  - name: (
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerFailoverRelationship
+    name: IDhcpServerFailoverRelationship
+    href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerFailoverRelationship.html
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.NetworkCommunication.App.Abstractions.LambdaExpressionHelper.OrderBy``1(System.Collections.Generic.IEnumerable{Bodoconsult.Network.Windows.Dhcp.IDhcpServerFailoverRelationship},System.String)
+    name: OrderBy
+    href: Bodoconsult.NetworkCommunication.App.Abstractions.LambdaExpressionHelper.html#Bodoconsult_NetworkCommunication_App_Abstractions_LambdaExpressionHelper_OrderBy__1_System_Collections_Generic_IEnumerable___0__System_String_
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerFailoverRelationship
+    name: IDhcpServerFailoverRelationship
+    href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerFailoverRelationship.html
+  - name: )
+  - name: (
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerFailoverRelationship
+    name: IDhcpServerFailoverRelationship
+    href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerFailoverRelationship.html
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.Collections.Generic.IEnumerable`1
+  commentId: T:System.Collections.Generic.IEnumerable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<T>
+  nameWithType: IEnumerable<T>
+  fullName: System.Collections.Generic.IEnumerable<T>
+  nameWithType.vb: IEnumerable(Of T)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of T)
+  name.vb: IEnumerable(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: System.Collections
+  commentId: N:System.Collections
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections
+  nameWithType: System.Collections
+  fullName: System.Collections
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+- uid: Bodoconsult.NetworkCommunication.App.Abstractions.LambdaExpressionHelper.OrderBy``1(System.Collections.Generic.IEnumerable{``0},System.String)
+  commentId: M:Bodoconsult.NetworkCommunication.App.Abstractions.LambdaExpressionHelper.OrderBy``1(System.Collections.Generic.IEnumerable{``0},System.String)
+  isExternal: true
+  href: Bodoconsult.NetworkCommunication.App.Abstractions.LambdaExpressionHelper.html#Bodoconsult_NetworkCommunication_App_Abstractions_LambdaExpressionHelper_OrderBy__1_System_Collections_Generic_IEnumerable___0__System_String_
+  name: OrderBy<TSource>(IEnumerable<TSource>, string)
+  nameWithType: LambdaExpressionHelper.OrderBy<TSource>(IEnumerable<TSource>, string)
+  fullName: Bodoconsult.NetworkCommunication.App.Abstractions.LambdaExpressionHelper.OrderBy<TSource>(System.Collections.Generic.IEnumerable<TSource>, string)
+  nameWithType.vb: LambdaExpressionHelper.OrderBy(Of TSource)(IEnumerable(Of TSource), String)
+  fullName.vb: Bodoconsult.NetworkCommunication.App.Abstractions.LambdaExpressionHelper.OrderBy(Of TSource)(System.Collections.Generic.IEnumerable(Of TSource), String)
+  name.vb: OrderBy(Of TSource)(IEnumerable(Of TSource), String)
+  spec.csharp:
+  - uid: Bodoconsult.NetworkCommunication.App.Abstractions.LambdaExpressionHelper.OrderBy``1(System.Collections.Generic.IEnumerable{``0},System.String)
+    name: OrderBy
+    href: Bodoconsult.NetworkCommunication.App.Abstractions.LambdaExpressionHelper.html#Bodoconsult_NetworkCommunication_App_Abstractions_LambdaExpressionHelper_OrderBy__1_System_Collections_Generic_IEnumerable___0__System_String_
+  - name: <
+  - name: TSource
+  - name: '>'
+  - name: (
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - name: TSource
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.NetworkCommunication.App.Abstractions.LambdaExpressionHelper.OrderBy``1(System.Collections.Generic.IEnumerable{``0},System.String)
+    name: OrderBy
+    href: Bodoconsult.NetworkCommunication.App.Abstractions.LambdaExpressionHelper.html#Bodoconsult_NetworkCommunication_App_Abstractions_LambdaExpressionHelper_OrderBy__1_System_Collections_Generic_IEnumerable___0__System_String_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TSource
+  - name: )
+  - name: (
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TSource
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: Bodoconsult.NetworkCommunication.App.Abstractions.LambdaExpressionHelper
+  commentId: T:Bodoconsult.NetworkCommunication.App.Abstractions.LambdaExpressionHelper
+  parent: Bodoconsult.NetworkCommunication.App.Abstractions
+  href: Bodoconsult.NetworkCommunication.App.Abstractions.LambdaExpressionHelper.html
+  name: LambdaExpressionHelper
+  nameWithType: LambdaExpressionHelper
+  fullName: Bodoconsult.NetworkCommunication.App.Abstractions.LambdaExpressionHelper
+- uid: Bodoconsult.NetworkCommunication.App.Abstractions
+  commentId: N:Bodoconsult.NetworkCommunication.App.Abstractions
+  href: Bodoconsult.html
+  name: Bodoconsult.NetworkCommunication.App.Abstractions
+  nameWithType: Bodoconsult.NetworkCommunication.App.Abstractions
+  fullName: Bodoconsult.NetworkCommunication.App.Abstractions
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.App
+    name: App
+    href: Bodoconsult.NetworkCommunication.App.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.App.Abstractions
+    name: Abstractions
+    href: Bodoconsult.NetworkCommunication.App.Abstractions.html
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.App
+    name: App
+    href: Bodoconsult.NetworkCommunication.App.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.App.Abstractions
+    name: Abstractions
+    href: Bodoconsult.NetworkCommunication.App.Abstractions.html
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverRelationshipCollection.Server*
+  commentId: Overload:Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverRelationshipCollection.Server
+  href: Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverRelationshipCollection.html#Bodoconsult_Network_Windows_Dhcp_DhcpServerFailoverRelationshipCollection_Server
+  name: Server
+  nameWithType: DhcpServerFailoverRelationshipCollection.Server
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverRelationshipCollection.Server
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServer
+  commentId: T:Bodoconsult.Network.Windows.Dhcp.DhcpServer
+  parent: Bodoconsult.Network.Windows.Dhcp
+  href: Bodoconsult.Network.Windows.Dhcp.DhcpServer.html
+  name: DhcpServer
+  nameWithType: DhcpServer
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServer
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverRelationshipCollection.GetRelationship*
+  commentId: Overload:Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverRelationshipCollection.GetRelationship
+  href: Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverRelationshipCollection.html#Bodoconsult_Network_Windows_Dhcp_DhcpServerFailoverRelationshipCollection_GetRelationship_System_String_
+  name: GetRelationship
+  nameWithType: DhcpServerFailoverRelationshipCollection.GetRelationship
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverRelationshipCollection.GetRelationship
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerFailoverRelationshipCollection.GetRelationship(System.String)
+  commentId: M:Bodoconsult.Network.Windows.Dhcp.IDhcpServerFailoverRelationshipCollection.GetRelationship(System.String)
+  parent: Bodoconsult.Network.Windows.Dhcp.IDhcpServerFailoverRelationshipCollection
+  isExternal: true
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerFailoverRelationshipCollection.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerFailoverRelationshipCollection_GetRelationship_System_String_
+  name: GetRelationship(string)
+  nameWithType: IDhcpServerFailoverRelationshipCollection.GetRelationship(string)
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerFailoverRelationshipCollection.GetRelationship(string)
+  nameWithType.vb: IDhcpServerFailoverRelationshipCollection.GetRelationship(String)
+  fullName.vb: Bodoconsult.Network.Windows.Dhcp.IDhcpServerFailoverRelationshipCollection.GetRelationship(String)
+  name.vb: GetRelationship(String)
+  spec.csharp:
+  - uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerFailoverRelationshipCollection.GetRelationship(System.String)
+    name: GetRelationship
+    href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerFailoverRelationshipCollection.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerFailoverRelationshipCollection_GetRelationship_System_String_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerFailoverRelationshipCollection.GetRelationship(System.String)
+    name: GetRelationship
+    href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerFailoverRelationshipCollection.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerFailoverRelationshipCollection_GetRelationship_System_String_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerFailoverRelationship
+  commentId: T:Bodoconsult.Network.Windows.Dhcp.IDhcpServerFailoverRelationship
+  parent: Bodoconsult.Network.Windows.Dhcp
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerFailoverRelationship.html
+  name: IDhcpServerFailoverRelationship
+  nameWithType: IDhcpServerFailoverRelationship
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerFailoverRelationship
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverRelationshipCollection.RemoveRelationship*
+  commentId: Overload:Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverRelationshipCollection.RemoveRelationship
+  href: Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverRelationshipCollection.html#Bodoconsult_Network_Windows_Dhcp_DhcpServerFailoverRelationshipCollection_RemoveRelationship_Bodoconsult_Network_Windows_Dhcp_IDhcpServerFailoverRelationship_
+  name: RemoveRelationship
+  nameWithType: DhcpServerFailoverRelationshipCollection.RemoveRelationship
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverRelationshipCollection.RemoveRelationship
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerFailoverRelationshipCollection.RemoveRelationship(Bodoconsult.Network.Windows.Dhcp.IDhcpServerFailoverRelationship)
+  commentId: M:Bodoconsult.Network.Windows.Dhcp.IDhcpServerFailoverRelationshipCollection.RemoveRelationship(Bodoconsult.Network.Windows.Dhcp.IDhcpServerFailoverRelationship)
+  parent: Bodoconsult.Network.Windows.Dhcp.IDhcpServerFailoverRelationshipCollection
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerFailoverRelationshipCollection.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerFailoverRelationshipCollection_RemoveRelationship_Bodoconsult_Network_Windows_Dhcp_IDhcpServerFailoverRelationship_
+  name: RemoveRelationship(IDhcpServerFailoverRelationship)
+  nameWithType: IDhcpServerFailoverRelationshipCollection.RemoveRelationship(IDhcpServerFailoverRelationship)
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerFailoverRelationshipCollection.RemoveRelationship(Bodoconsult.Network.Windows.Dhcp.IDhcpServerFailoverRelationship)
+  spec.csharp:
+  - uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerFailoverRelationshipCollection.RemoveRelationship(Bodoconsult.Network.Windows.Dhcp.IDhcpServerFailoverRelationship)
+    name: RemoveRelationship
+    href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerFailoverRelationshipCollection.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerFailoverRelationshipCollection_RemoveRelationship_Bodoconsult_Network_Windows_Dhcp_IDhcpServerFailoverRelationship_
+  - name: (
+  - uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerFailoverRelationship
+    name: IDhcpServerFailoverRelationship
+    href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerFailoverRelationship.html
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerFailoverRelationshipCollection.RemoveRelationship(Bodoconsult.Network.Windows.Dhcp.IDhcpServerFailoverRelationship)
+    name: RemoveRelationship
+    href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerFailoverRelationshipCollection.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerFailoverRelationshipCollection_RemoveRelationship_Bodoconsult_Network_Windows_Dhcp_IDhcpServerFailoverRelationship_
+  - name: (
+  - uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerFailoverRelationship
+    name: IDhcpServerFailoverRelationship
+    href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerFailoverRelationship.html
+  - name: )
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverRelationshipCollection.GetEnumerator*
+  commentId: Overload:Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverRelationshipCollection.GetEnumerator
+  href: Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverRelationshipCollection.html#Bodoconsult_Network_Windows_Dhcp_DhcpServerFailoverRelationshipCollection_GetEnumerator
+  name: GetEnumerator
+  nameWithType: DhcpServerFailoverRelationshipCollection.GetEnumerator
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverRelationshipCollection.GetEnumerator
+- uid: System.Collections.Generic.IEnumerable{Bodoconsult.Network.Windows.Dhcp.IDhcpServerFailoverRelationship}.GetEnumerator
+  commentId: M:System.Collections.Generic.IEnumerable{Bodoconsult.Network.Windows.Dhcp.IDhcpServerFailoverRelationship}.GetEnumerator
+  parent: System.Collections.Generic.IEnumerable{Bodoconsult.Network.Windows.Dhcp.IDhcpServerFailoverRelationship}
+  definition: System.Collections.Generic.IEnumerable`1.GetEnumerator
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1.getenumerator
+  name: GetEnumerator()
+  nameWithType: IEnumerable<IDhcpServerFailoverRelationship>.GetEnumerator()
+  fullName: System.Collections.Generic.IEnumerable<Bodoconsult.Network.Windows.Dhcp.IDhcpServerFailoverRelationship>.GetEnumerator()
+  nameWithType.vb: IEnumerable(Of IDhcpServerFailoverRelationship).GetEnumerator()
+  fullName.vb: System.Collections.Generic.IEnumerable(Of Bodoconsult.Network.Windows.Dhcp.IDhcpServerFailoverRelationship).GetEnumerator()
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable{Bodoconsult.Network.Windows.Dhcp.IDhcpServerFailoverRelationship}.GetEnumerator
+    name: GetEnumerator
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1.getenumerator
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable{Bodoconsult.Network.Windows.Dhcp.IDhcpServerFailoverRelationship}.GetEnumerator
+    name: GetEnumerator
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1.getenumerator
+  - name: (
+  - name: )
+- uid: System.Collections.Generic.IEnumerator{Bodoconsult.Network.Windows.Dhcp.IDhcpServerFailoverRelationship}
+  commentId: T:System.Collections.Generic.IEnumerator{Bodoconsult.Network.Windows.Dhcp.IDhcpServerFailoverRelationship}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IEnumerator`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerator-1
+  name: IEnumerator<IDhcpServerFailoverRelationship>
+  nameWithType: IEnumerator<IDhcpServerFailoverRelationship>
+  fullName: System.Collections.Generic.IEnumerator<Bodoconsult.Network.Windows.Dhcp.IDhcpServerFailoverRelationship>
+  nameWithType.vb: IEnumerator(Of IDhcpServerFailoverRelationship)
+  fullName.vb: System.Collections.Generic.IEnumerator(Of Bodoconsult.Network.Windows.Dhcp.IDhcpServerFailoverRelationship)
+  name.vb: IEnumerator(Of IDhcpServerFailoverRelationship)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerator`1
+    name: IEnumerator
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerator-1
+  - name: <
+  - uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerFailoverRelationship
+    name: IDhcpServerFailoverRelationship
+    href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerFailoverRelationship.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerator`1
+    name: IEnumerator
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerator-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerFailoverRelationship
+    name: IDhcpServerFailoverRelationship
+    href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerFailoverRelationship.html
+  - name: )
+- uid: System.Collections.Generic.IEnumerable`1.GetEnumerator
+  commentId: M:System.Collections.Generic.IEnumerable`1.GetEnumerator
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1.getenumerator
+  name: GetEnumerator()
+  nameWithType: IEnumerable<T>.GetEnumerator()
+  fullName: System.Collections.Generic.IEnumerable<T>.GetEnumerator()
+  nameWithType.vb: IEnumerable(Of T).GetEnumerator()
+  fullName.vb: System.Collections.Generic.IEnumerable(Of T).GetEnumerator()
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1.GetEnumerator
+    name: GetEnumerator
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1.getenumerator
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1.GetEnumerator
+    name: GetEnumerator
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1.getenumerator
+  - name: (
+  - name: )
+- uid: System.Collections.Generic.IEnumerator`1
+  commentId: T:System.Collections.Generic.IEnumerator`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerator-1
+  name: IEnumerator<T>
+  nameWithType: IEnumerator<T>
+  fullName: System.Collections.Generic.IEnumerator<T>
+  nameWithType.vb: IEnumerator(Of T)
+  fullName.vb: System.Collections.Generic.IEnumerator(Of T)
+  name.vb: IEnumerator(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerator`1
+    name: IEnumerator
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerator-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerator`1
+    name: IEnumerator
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerator-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )

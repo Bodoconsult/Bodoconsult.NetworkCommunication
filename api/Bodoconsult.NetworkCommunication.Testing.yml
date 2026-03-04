@@ -1,0 +1,96 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bodoconsult.NetworkCommunication.Testing
+  commentId: N:Bodoconsult.NetworkCommunication.Testing
+  id: Bodoconsult.NetworkCommunication.Testing
+  children:
+  - Bodoconsult.NetworkCommunication.Testing.TcpTestClient
+  - Bodoconsult.NetworkCommunication.Testing.TcpTestServer
+  - Bodoconsult.NetworkCommunication.Testing.UdpDeviceBase
+  - Bodoconsult.NetworkCommunication.Testing.UdpTestMultiCastClient
+  - Bodoconsult.NetworkCommunication.Testing.UdpTestMultiCastServer
+  - Bodoconsult.NetworkCommunication.Testing.UdpTestUniCastClient
+  - Bodoconsult.NetworkCommunication.Testing.UdpTestUniCastServer
+  langs:
+  - csharp
+  - vb
+  name: Bodoconsult.NetworkCommunication.Testing
+  nameWithType: Bodoconsult.NetworkCommunication.Testing
+  fullName: Bodoconsult.NetworkCommunication.Testing
+  type: Namespace
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+references:
+- uid: Bodoconsult.NetworkCommunication.Testing.TcpTestClient
+  commentId: T:Bodoconsult.NetworkCommunication.Testing.TcpTestClient
+  href: Bodoconsult.NetworkCommunication.Testing.TcpTestClient.html
+  name: TcpTestClient
+  nameWithType: TcpTestClient
+  fullName: Bodoconsult.NetworkCommunication.Testing.TcpTestClient
+- uid: Bodoconsult.NetworkCommunication.Testing.TcpTestServer
+  commentId: T:Bodoconsult.NetworkCommunication.Testing.TcpTestServer
+  href: Bodoconsult.NetworkCommunication.Testing.TcpTestServer.html
+  name: TcpTestServer
+  nameWithType: TcpTestServer
+  fullName: Bodoconsult.NetworkCommunication.Testing.TcpTestServer
+- uid: Bodoconsult.NetworkCommunication.Testing.UdpDeviceBase
+  commentId: T:Bodoconsult.NetworkCommunication.Testing.UdpDeviceBase
+  parent: Bodoconsult.NetworkCommunication.Testing
+  href: Bodoconsult.NetworkCommunication.Testing.UdpDeviceBase.html
+  name: UdpDeviceBase
+  nameWithType: UdpDeviceBase
+  fullName: Bodoconsult.NetworkCommunication.Testing.UdpDeviceBase
+- uid: Bodoconsult.NetworkCommunication.Testing.UdpTestMultiCastClient
+  commentId: T:Bodoconsult.NetworkCommunication.Testing.UdpTestMultiCastClient
+  href: Bodoconsult.NetworkCommunication.Testing.UdpTestMultiCastClient.html
+  name: UdpTestMultiCastClient
+  nameWithType: UdpTestMultiCastClient
+  fullName: Bodoconsult.NetworkCommunication.Testing.UdpTestMultiCastClient
+- uid: Bodoconsult.NetworkCommunication.Testing.UdpTestMultiCastServer
+  commentId: T:Bodoconsult.NetworkCommunication.Testing.UdpTestMultiCastServer
+  href: Bodoconsult.NetworkCommunication.Testing.UdpTestMultiCastServer.html
+  name: UdpTestMultiCastServer
+  nameWithType: UdpTestMultiCastServer
+  fullName: Bodoconsult.NetworkCommunication.Testing.UdpTestMultiCastServer
+- uid: Bodoconsult.NetworkCommunication.Testing.UdpTestUniCastClient
+  commentId: T:Bodoconsult.NetworkCommunication.Testing.UdpTestUniCastClient
+  href: Bodoconsult.NetworkCommunication.Testing.UdpTestUniCastClient.html
+  name: UdpTestUniCastClient
+  nameWithType: UdpTestUniCastClient
+  fullName: Bodoconsult.NetworkCommunication.Testing.UdpTestUniCastClient
+- uid: Bodoconsult.NetworkCommunication.Testing.UdpTestUniCastServer
+  commentId: T:Bodoconsult.NetworkCommunication.Testing.UdpTestUniCastServer
+  href: Bodoconsult.NetworkCommunication.Testing.UdpTestUniCastServer.html
+  name: UdpTestUniCastServer
+  nameWithType: UdpTestUniCastServer
+  fullName: Bodoconsult.NetworkCommunication.Testing.UdpTestUniCastServer
+- uid: Bodoconsult.NetworkCommunication.Testing
+  commentId: N:Bodoconsult.NetworkCommunication.Testing
+  href: Bodoconsult.html
+  name: Bodoconsult.NetworkCommunication.Testing
+  nameWithType: Bodoconsult.NetworkCommunication.Testing
+  fullName: Bodoconsult.NetworkCommunication.Testing
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Testing
+    name: Testing
+    href: Bodoconsult.NetworkCommunication.Testing.html
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Testing
+    name: Testing
+    href: Bodoconsult.NetworkCommunication.Testing.html

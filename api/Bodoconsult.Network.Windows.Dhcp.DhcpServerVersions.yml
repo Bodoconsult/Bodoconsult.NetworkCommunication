@@ -1,0 +1,400 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerVersions
+  commentId: T:Bodoconsult.Network.Windows.Dhcp.DhcpServerVersions
+  id: DhcpServerVersions
+  parent: Bodoconsult.Network.Windows.Dhcp
+  children:
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerVersions.Windows2000
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerVersions.Windows2003
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerVersions.Windows2003R2
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerVersions.Windows2008
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerVersions.Windows2008R2
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerVersions.Windows2012
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerVersions.Windows2012R2
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerVersions.WindowsNt310
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerVersions.WindowsNt350
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerVersions.WindowsNt351
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerVersions.WindowsNt40
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerVersions.WindowsServer
+  langs:
+  - csharp
+  - vb
+  name: DhcpServerVersions
+  nameWithType: DhcpServerVersions
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerVersions
+  type: Enum
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerVersions.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: DhcpServerVersions
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerVersions.cs
+    startLine: 5
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: 'public enum DhcpServerVersions : long'
+    content.vb: Public Enum DhcpServerVersions As Long
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerVersions.WindowsNt310
+  commentId: F:Bodoconsult.Network.Windows.Dhcp.DhcpServerVersions.WindowsNt310
+  id: WindowsNt310
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerVersions
+  langs:
+  - csharp
+  - vb
+  name: WindowsNt310
+  nameWithType: DhcpServerVersions.WindowsNt310
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerVersions.WindowsNt310
+  type: Field
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerVersions.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: WindowsNt310
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerVersions.cs
+    startLine: 7
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: WindowsNt310 = 196618
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerVersions
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerVersions.WindowsNt350
+  commentId: F:Bodoconsult.Network.Windows.Dhcp.DhcpServerVersions.WindowsNt350
+  id: WindowsNt350
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerVersions
+  langs:
+  - csharp
+  - vb
+  name: WindowsNt350
+  nameWithType: DhcpServerVersions.WindowsNt350
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerVersions.WindowsNt350
+  type: Field
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerVersions.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: WindowsNt350
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerVersions.cs
+    startLine: 8
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: WindowsNt350 = 196658
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerVersions
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerVersions.WindowsNt351
+  commentId: F:Bodoconsult.Network.Windows.Dhcp.DhcpServerVersions.WindowsNt351
+  id: WindowsNt351
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerVersions
+  langs:
+  - csharp
+  - vb
+  name: WindowsNt351
+  nameWithType: DhcpServerVersions.WindowsNt351
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerVersions.WindowsNt351
+  type: Field
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerVersions.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: WindowsNt351
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerVersions.cs
+    startLine: 9
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: WindowsNt351 = 196659
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerVersions
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerVersions.WindowsNt40
+  commentId: F:Bodoconsult.Network.Windows.Dhcp.DhcpServerVersions.WindowsNt40
+  id: WindowsNt40
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerVersions
+  langs:
+  - csharp
+  - vb
+  name: WindowsNt40
+  nameWithType: DhcpServerVersions.WindowsNt40
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerVersions.WindowsNt40
+  type: Field
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerVersions.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: WindowsNt40
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerVersions.cs
+    startLine: 10
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: WindowsNt40 = 262144
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerVersions
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerVersions.Windows2000
+  commentId: F:Bodoconsult.Network.Windows.Dhcp.DhcpServerVersions.Windows2000
+  id: Windows2000
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerVersions
+  langs:
+  - csharp
+  - vb
+  name: Windows2000
+  nameWithType: DhcpServerVersions.Windows2000
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerVersions.Windows2000
+  type: Field
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerVersions.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Windows2000
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerVersions.cs
+    startLine: 11
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: Windows2000 = 327680
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerVersions
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerVersions.Windows2003
+  commentId: F:Bodoconsult.Network.Windows.Dhcp.DhcpServerVersions.Windows2003
+  id: Windows2003
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerVersions
+  langs:
+  - csharp
+  - vb
+  name: Windows2003
+  nameWithType: DhcpServerVersions.Windows2003
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerVersions.Windows2003
+  type: Field
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerVersions.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Windows2003
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerVersions.cs
+    startLine: 12
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: Windows2003 = 327682
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerVersions
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerVersions.Windows2003R2
+  commentId: F:Bodoconsult.Network.Windows.Dhcp.DhcpServerVersions.Windows2003R2
+  id: Windows2003R2
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerVersions
+  langs:
+  - csharp
+  - vb
+  name: Windows2003R2
+  nameWithType: DhcpServerVersions.Windows2003R2
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerVersions.Windows2003R2
+  type: Field
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerVersions.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Windows2003R2
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerVersions.cs
+    startLine: 13
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: Windows2003R2 = 327682
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerVersions
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerVersions.Windows2008
+  commentId: F:Bodoconsult.Network.Windows.Dhcp.DhcpServerVersions.Windows2008
+  id: Windows2008
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerVersions
+  langs:
+  - csharp
+  - vb
+  name: Windows2008
+  nameWithType: DhcpServerVersions.Windows2008
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerVersions.Windows2008
+  type: Field
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerVersions.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Windows2008
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerVersions.cs
+    startLine: 14
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: Windows2008 = 393216
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerVersions
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerVersions.Windows2008R2
+  commentId: F:Bodoconsult.Network.Windows.Dhcp.DhcpServerVersions.Windows2008R2
+  id: Windows2008R2
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerVersions
+  langs:
+  - csharp
+  - vb
+  name: Windows2008R2
+  nameWithType: DhcpServerVersions.Windows2008R2
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerVersions.Windows2008R2
+  type: Field
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerVersions.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Windows2008R2
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerVersions.cs
+    startLine: 15
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: Windows2008R2 = 393217
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerVersions
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerVersions.Windows2012
+  commentId: F:Bodoconsult.Network.Windows.Dhcp.DhcpServerVersions.Windows2012
+  id: Windows2012
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerVersions
+  langs:
+  - csharp
+  - vb
+  name: Windows2012
+  nameWithType: DhcpServerVersions.Windows2012
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerVersions.Windows2012
+  type: Field
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerVersions.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Windows2012
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerVersions.cs
+    startLine: 16
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: Windows2012 = 393218
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerVersions
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerVersions.Windows2012R2
+  commentId: F:Bodoconsult.Network.Windows.Dhcp.DhcpServerVersions.Windows2012R2
+  id: Windows2012R2
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerVersions
+  langs:
+  - csharp
+  - vb
+  name: Windows2012R2
+  nameWithType: DhcpServerVersions.Windows2012R2
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerVersions.Windows2012R2
+  type: Field
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerVersions.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Windows2012R2
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerVersions.cs
+    startLine: 17
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: Windows2012R2 = 393219
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerVersions
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerVersions.WindowsServer
+  commentId: F:Bodoconsult.Network.Windows.Dhcp.DhcpServerVersions.WindowsServer
+  id: WindowsServer
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerVersions
+  langs:
+  - csharp
+  - vb
+  name: WindowsServer
+  nameWithType: DhcpServerVersions.WindowsServer
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerVersions.WindowsServer
+  type: Field
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerVersions.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: WindowsServer
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerVersions.cs
+    startLine: 21
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  summary: Represents Windows Server 2016 and greater
+  example: []
+  syntax:
+    content: WindowsServer = 655360
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerVersions
+references:
+- uid: Bodoconsult.Network.Windows.Dhcp
+  commentId: N:Bodoconsult.Network.Windows.Dhcp
+  href: Bodoconsult.html
+  name: Bodoconsult.Network.Windows.Dhcp
+  nameWithType: Bodoconsult.Network.Windows.Dhcp
+  fullName: Bodoconsult.Network.Windows.Dhcp
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.Network
+    name: Network
+    href: Bodoconsult.Network.html
+  - name: .
+  - uid: Bodoconsult.Network.Windows
+    name: Windows
+    href: Bodoconsult.Network.Windows.html
+  - name: .
+  - uid: Bodoconsult.Network.Windows.Dhcp
+    name: Dhcp
+    href: Bodoconsult.Network.Windows.Dhcp.html
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.Network
+    name: Network
+    href: Bodoconsult.Network.html
+  - name: .
+  - uid: Bodoconsult.Network.Windows
+    name: Windows
+    href: Bodoconsult.Network.Windows.html
+  - name: .
+  - uid: Bodoconsult.Network.Windows.Dhcp
+    name: Dhcp
+    href: Bodoconsult.Network.Windows.Dhcp.html
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerVersions
+  commentId: T:Bodoconsult.Network.Windows.Dhcp.DhcpServerVersions
+  parent: Bodoconsult.Network.Windows.Dhcp
+  href: Bodoconsult.Network.Windows.Dhcp.DhcpServerVersions.html
+  name: DhcpServerVersions
+  nameWithType: DhcpServerVersions
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerVersions

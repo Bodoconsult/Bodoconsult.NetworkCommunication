@@ -1,0 +1,337 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionElementType
+  commentId: T:Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionElementType
+  id: DhcpServerOptionElementType
+  parent: Bodoconsult.Network.Windows.Dhcp
+  children:
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionElementType.BinaryData
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionElementType.Byte
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionElementType.DWord
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionElementType.DWordDWord
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionElementType.EncapsulatedData
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionElementType.IpAddress
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionElementType.Ipv6Address
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionElementType.StringData
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionElementType.Word
+  langs:
+  - csharp
+  - vb
+  name: DhcpServerOptionElementType
+  nameWithType: DhcpServerOptionElementType
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionElementType
+  type: Enum
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerOptionElementType.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: DhcpServerOptionElementType
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerOptionElementType.cs
+    startLine: 8
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  summary: Defines the set of formats that represent DHCP option data
+  example: []
+  syntax:
+    content: public enum DhcpServerOptionElementType
+    content.vb: Public Enum DhcpServerOptionElementType
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionElementType.Byte
+  commentId: F:Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionElementType.Byte
+  id: Byte
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionElementType
+  langs:
+  - csharp
+  - vb
+  name: Byte
+  nameWithType: DhcpServerOptionElementType.Byte
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionElementType.Byte
+  type: Field
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerOptionElementType.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Byte
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerOptionElementType.cs
+    startLine: 13
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  summary: The option data is stored as a BYTE value.
+  example: []
+  syntax:
+    content: Byte = 0
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionElementType
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionElementType.Word
+  commentId: F:Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionElementType.Word
+  id: Word
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionElementType
+  langs:
+  - csharp
+  - vb
+  name: Word
+  nameWithType: DhcpServerOptionElementType.Word
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionElementType.Word
+  type: Field
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerOptionElementType.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Word
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerOptionElementType.cs
+    startLine: 17
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  summary: The option data is stored as a WORD value.
+  example: []
+  syntax:
+    content: Word = 1
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionElementType
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionElementType.DWord
+  commentId: F:Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionElementType.DWord
+  id: DWord
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionElementType
+  langs:
+  - csharp
+  - vb
+  name: DWord
+  nameWithType: DhcpServerOptionElementType.DWord
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionElementType.DWord
+  type: Field
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerOptionElementType.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: DWord
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerOptionElementType.cs
+    startLine: 21
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  summary: The option data is stored as a DWORD value.
+  example: []
+  syntax:
+    content: DWord = 2
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionElementType
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionElementType.DWordDWord
+  commentId: F:Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionElementType.DWordDWord
+  id: DWordDWord
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionElementType
+  langs:
+  - csharp
+  - vb
+  name: DWordDWord
+  nameWithType: DhcpServerOptionElementType.DWordDWord
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionElementType.DWordDWord
+  type: Field
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerOptionElementType.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: DWordDWord
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerOptionElementType.cs
+    startLine: 25
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  summary: The option data is stored as a DWORD_DWORD value.
+  example: []
+  syntax:
+    content: DWordDWord = 3
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionElementType
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionElementType.IpAddress
+  commentId: F:Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionElementType.IpAddress
+  id: IpAddress
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionElementType
+  langs:
+  - csharp
+  - vb
+  name: IpAddress
+  nameWithType: DhcpServerOptionElementType.IpAddress
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionElementType.IpAddress
+  type: Field
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerOptionElementType.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: IpAddress
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerOptionElementType.cs
+    startLine: 29
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  summary: The option data is an IP address, stored as a DHCP_IP_ADDRESS value (DWORD).
+  example: []
+  syntax:
+    content: IpAddress = 4
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionElementType
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionElementType.StringData
+  commentId: F:Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionElementType.StringData
+  id: StringData
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionElementType
+  langs:
+  - csharp
+  - vb
+  name: StringData
+  nameWithType: DhcpServerOptionElementType.StringData
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionElementType.StringData
+  type: Field
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerOptionElementType.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: StringData
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerOptionElementType.cs
+    startLine: 33
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  summary: The option data is stored as a Unicode string.
+  example: []
+  syntax:
+    content: StringData = 5
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionElementType
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionElementType.BinaryData
+  commentId: F:Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionElementType.BinaryData
+  id: BinaryData
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionElementType
+  langs:
+  - csharp
+  - vb
+  name: BinaryData
+  nameWithType: DhcpServerOptionElementType.BinaryData
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionElementType.BinaryData
+  type: Field
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerOptionElementType.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: BinaryData
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerOptionElementType.cs
+    startLine: 37
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  summary: The option data is stored as a binary structure.
+  example: []
+  syntax:
+    content: BinaryData = 6
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionElementType
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionElementType.EncapsulatedData
+  commentId: F:Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionElementType.EncapsulatedData
+  id: EncapsulatedData
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionElementType
+  langs:
+  - csharp
+  - vb
+  name: EncapsulatedData
+  nameWithType: DhcpServerOptionElementType.EncapsulatedData
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionElementType.EncapsulatedData
+  type: Field
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerOptionElementType.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: EncapsulatedData
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerOptionElementType.cs
+    startLine: 41
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  summary: The option data is encapsulated and stored as a binary structure.
+  example: []
+  syntax:
+    content: EncapsulatedData = 7
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionElementType
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionElementType.Ipv6Address
+  commentId: F:Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionElementType.Ipv6Address
+  id: Ipv6Address
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionElementType
+  langs:
+  - csharp
+  - vb
+  name: Ipv6Address
+  nameWithType: DhcpServerOptionElementType.Ipv6Address
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionElementType.Ipv6Address
+  type: Field
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerOptionElementType.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Ipv6Address
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerOptionElementType.cs
+    startLine: 45
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  summary: The option data is stored as a Unicode string.
+  example: []
+  syntax:
+    content: Ipv6Address = 8
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionElementType
+references:
+- uid: Bodoconsult.Network.Windows.Dhcp
+  commentId: N:Bodoconsult.Network.Windows.Dhcp
+  href: Bodoconsult.html
+  name: Bodoconsult.Network.Windows.Dhcp
+  nameWithType: Bodoconsult.Network.Windows.Dhcp
+  fullName: Bodoconsult.Network.Windows.Dhcp
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.Network
+    name: Network
+    href: Bodoconsult.Network.html
+  - name: .
+  - uid: Bodoconsult.Network.Windows
+    name: Windows
+    href: Bodoconsult.Network.Windows.html
+  - name: .
+  - uid: Bodoconsult.Network.Windows.Dhcp
+    name: Dhcp
+    href: Bodoconsult.Network.Windows.Dhcp.html
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.Network
+    name: Network
+    href: Bodoconsult.Network.html
+  - name: .
+  - uid: Bodoconsult.Network.Windows
+    name: Windows
+    href: Bodoconsult.Network.Windows.html
+  - name: .
+  - uid: Bodoconsult.Network.Windows.Dhcp
+    name: Dhcp
+    href: Bodoconsult.Network.Windows.Dhcp.html
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionElementType
+  commentId: T:Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionElementType
+  parent: Bodoconsult.Network.Windows.Dhcp
+  href: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionElementType.html
+  name: DhcpServerOptionElementType
+  nameWithType: DhcpServerOptionElementType
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionElementType

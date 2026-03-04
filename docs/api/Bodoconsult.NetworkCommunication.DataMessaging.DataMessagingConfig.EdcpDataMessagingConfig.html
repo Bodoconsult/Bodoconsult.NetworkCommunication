@@ -1,0 +1,927 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Class EdcpDataMessagingConfig | Bodoconsult.Network </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class EdcpDataMessagingConfig | Bodoconsult.Network ">
+      
+      <meta name="description" content="EDCP protocol config file for one the client-server network communication with one client device">
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/new/main/apiSpec/new?filename=Bodoconsult_NetworkCommunication_DataMessaging_DataMessagingConfig_EdcpDataMessagingConfig.md&amp;value=---%0Auid%3A%20Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../logo.svg" alt="Bodoconsult.Network">
+            Bodoconsult.Network
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig">
+
+
+
+  <h1 id="Bodoconsult_NetworkCommunication_DataMessaging_DataMessagingConfig_EdcpDataMessagingConfig" data-uid="Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig" class="text-break">
+Class EdcpDataMessagingConfig  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/DataMessaging/DataMessagingConfig/EdcpDataMessagingConfig.cs/#L13"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="Bodoconsult.html">Bodoconsult</a>.<a class="xref" href="Bodoconsult.NetworkCommunication.html">NetworkCommunication</a>.<a class="xref" href="Bodoconsult.NetworkCommunication.DataMessaging.html">DataMessaging</a>.<a class="xref" href="Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.html">DataMessagingConfig</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>Bodoconsult.NetworkCommunication.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p>EDCP protocol config file for one the client-server network communication with one client device</p>
+</div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class EdcpDataMessagingConfig : IIpDataMessagingConfig, IDataMessagingConfig</code></pre>
+  </div>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><span class="xref">EdcpDataMessagingConfig</span></div>
+    </dd>
+  </dl>
+
+  <dl class="typelist implements">
+    <dt>Implements</dt>
+    <dd>
+      <div><a class="xref" href="Bodoconsult.NetworkCommunication.Interfaces.IIpDataMessagingConfig.html">IIpDataMessagingConfig</a></div>
+      <div><a class="xref" href="Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig.html">IDataMessagingConfig</a></div>
+    </dd>
+  </dl>
+
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone">object.MemberwiseClone()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
+    </div>
+  </dd></dl>
+
+
+
+
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
+  <a id="Bodoconsult_NetworkCommunication_DataMessaging_DataMessagingConfig_EdcpDataMessagingConfig_AppLogger_" data-uid="Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.AppLogger*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_DataMessaging_DataMessagingConfig_EdcpDataMessagingConfig_AppLogger" data-uid="Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.AppLogger">
+  AppLogger
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/DataMessaging/DataMessagingConfig/EdcpDataMessagingConfig.cs/#L44"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Current general logger</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IAppLoggerProxy AppLogger { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">IAppLoggerProxy</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_DataMessaging_DataMessagingConfig_EdcpDataMessagingConfig_CheckIfCommunicationIsOnlineDelegate_" data-uid="Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.CheckIfCommunicationIsOnlineDelegate*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_DataMessaging_DataMessagingConfig_EdcpDataMessagingConfig_CheckIfCommunicationIsOnlineDelegate" data-uid="Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.CheckIfCommunicationIsOnlineDelegate">
+  CheckIfCommunicationIsOnlineDelegate
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/DataMessaging/DataMessagingConfig/EdcpDataMessagingConfig.cs/#L55"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>A delegate for a method returning true if the communications is online or false if offline</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public CheckIfCommunicationIsOnlineDelegate CheckIfCommunicationIsOnlineDelegate { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Bodoconsult.NetworkCommunication.Delegates.CheckIfCommunicationIsOnlineDelegate.html">CheckIfCommunicationIsOnlineDelegate</a></dt>
+    <dd><p>A delegate</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_DataMessaging_DataMessagingConfig_EdcpDataMessagingConfig_CheckIfDeviceIsReadyDelegate_" data-uid="Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.CheckIfDeviceIsReadyDelegate*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_DataMessaging_DataMessagingConfig_EdcpDataMessagingConfig_CheckIfDeviceIsReadyDelegate" data-uid="Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.CheckIfDeviceIsReadyDelegate">
+  CheckIfDeviceIsReadyDelegate
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/DataMessaging/DataMessagingConfig/EdcpDataMessagingConfig.cs/#L61"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>A delegate for a method returning true if the device is or false if not</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public CheckIfDeviceIsReadyDelegate CheckIfDeviceIsReadyDelegate { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Bodoconsult.NetworkCommunication.Delegates.CheckIfDeviceIsReadyDelegate.html">CheckIfDeviceIsReadyDelegate</a></dt>
+    <dd><p>true if the device is ready else false</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_DataMessaging_DataMessagingConfig_EdcpDataMessagingConfig_ClientSendMaximumBlockCode_" data-uid="Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.ClientSendMaximumBlockCode*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_DataMessaging_DataMessagingConfig_EdcpDataMessagingConfig_ClientSendMaximumBlockCode" data-uid="Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.ClientSendMaximumBlockCode">
+  ClientSendMaximumBlockCode
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/DataMessaging/DataMessagingConfig/EdcpDataMessagingConfig.cs/#L122"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>The maximum blockcode sent by the client</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public byte ClientSendMaximumBlockCode { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_DataMessaging_DataMessagingConfig_EdcpDataMessagingConfig_ClientSendMinimumBlockCode_" data-uid="Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.ClientSendMinimumBlockCode*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_DataMessaging_DataMessagingConfig_EdcpDataMessagingConfig_ClientSendMinimumBlockCode" data-uid="Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.ClientSendMinimumBlockCode">
+  ClientSendMinimumBlockCode
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/DataMessaging/DataMessagingConfig/EdcpDataMessagingConfig.cs/#L117"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>The minimum blockcode sent by the client</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public byte ClientSendMinimumBlockCode { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_DataMessaging_DataMessagingConfig_EdcpDataMessagingConfig_DataMessageProcessingPackage_" data-uid="Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.DataMessageProcessingPackage*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_DataMessaging_DataMessagingConfig_EdcpDataMessagingConfig_DataMessageProcessingPackage" data-uid="Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.DataMessageProcessingPackage">
+  DataMessageProcessingPackage
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/DataMessaging/DataMessagingConfig/EdcpDataMessagingConfig.cs/#L34"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Data message procssing package</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IDataMessageProcessingPackage DataMessageProcessingPackage { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Bodoconsult.NetworkCommunication.Interfaces.IDataMessageProcessingPackage.html">IDataMessageProcessingPackage</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_DataMessaging_DataMessagingConfig_EdcpDataMessagingConfig_DuplexIoErrorHandlerDelegate_" data-uid="Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.DuplexIoErrorHandlerDelegate*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_DataMessaging_DataMessagingConfig_EdcpDataMessagingConfig_DuplexIoErrorHandlerDelegate" data-uid="Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.DuplexIoErrorHandlerDelegate">
+  DuplexIoErrorHandlerDelegate
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/DataMessaging/DataMessagingConfig/EdcpDataMessagingConfig.cs/#L72"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Delegate for handling central exception handling in <a class="xref" href="Bodoconsult.NetworkCommunication.Interfaces.IDuplexIo.html">IDuplexIo</a> implementations.
+Set internally normally. Public implementation intended for testing purposes.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public DuplexIoErrorHandlerDelegate DuplexIoErrorHandlerDelegate { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Bodoconsult.NetworkCommunication.Delegates.DuplexIoErrorHandlerDelegate.html">DuplexIoErrorHandlerDelegate</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_DataMessaging_DataMessagingConfig_EdcpDataMessagingConfig_IpAddress_" data-uid="Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.IpAddress*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_DataMessaging_DataMessagingConfig_EdcpDataMessagingConfig_IpAddress" data-uid="Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.IpAddress">
+  IpAddress
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/DataMessaging/DataMessagingConfig/EdcpDataMessagingConfig.cs/#L107"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>IP address of the device</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string IpAddress { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_DataMessaging_DataMessagingConfig_EdcpDataMessagingConfig_IpProtocol_" data-uid="Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.IpProtocol*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_DataMessaging_DataMessagingConfig_EdcpDataMessagingConfig_IpProtocol" data-uid="Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.IpProtocol">
+  IpProtocol
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/DataMessaging/DataMessagingConfig/EdcpDataMessagingConfig.cs/#L24"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>IP based protocol used for this config</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IpProtocolEnum IpProtocol { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Bodoconsult.NetworkCommunication.EnumAndStates.IpProtocolEnum.html">IpProtocolEnum</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_DataMessaging_DataMessagingConfig_EdcpDataMessagingConfig_LoggerId_" data-uid="Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.LoggerId*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_DataMessaging_DataMessagingConfig_EdcpDataMessagingConfig_LoggerId" data-uid="Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.LoggerId">
+  LoggerId
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/DataMessaging/DataMessagingConfig/EdcpDataMessagingConfig.cs/#L19"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>A readable string for identitying the device used for logging</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string LoggerId { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_DataMessaging_DataMessagingConfig_EdcpDataMessagingConfig_MonitorLogger_" data-uid="Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.MonitorLogger*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_DataMessaging_DataMessagingConfig_EdcpDataMessagingConfig_MonitorLogger" data-uid="Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.MonitorLogger">
+  MonitorLogger
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/DataMessaging/DataMessagingConfig/EdcpDataMessagingConfig.cs/#L49"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Current monitor logger</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IAppLoggerProxy MonitorLogger { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">IAppLoggerProxy</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_DataMessaging_DataMessagingConfig_EdcpDataMessagingConfig_Port_" data-uid="Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.Port*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_DataMessaging_DataMessagingConfig_EdcpDataMessagingConfig_Port" data-uid="Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.Port">
+  Port
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/DataMessaging/DataMessagingConfig/EdcpDataMessagingConfig.cs/#L112"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Port to use for device communication</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int Port { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_DataMessaging_DataMessagingConfig_EdcpDataMessagingConfig_RaiseAppLayerDataMessageReceivedDelegate_" data-uid="Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.RaiseAppLayerDataMessageReceivedDelegate*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_DataMessaging_DataMessagingConfig_EdcpDataMessagingConfig_RaiseAppLayerDataMessageReceivedDelegate" data-uid="Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.RaiseAppLayerDataMessageReceivedDelegate">
+  RaiseAppLayerDataMessageReceivedDelegate
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/DataMessaging/DataMessagingConfig/EdcpDataMessagingConfig.cs/#L92"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Delegate raised on app level if data message was received</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public RaiseDataMessageReceivedDelegate RaiseAppLayerDataMessageReceivedDelegate { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Bodoconsult.NetworkCommunication.Delegates.RaiseDataMessageReceivedDelegate.html">RaiseDataMessageReceivedDelegate</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_DataMessaging_DataMessagingConfig_EdcpDataMessagingConfig_RaiseComDevCloseRequestDelegate_" data-uid="Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.RaiseComDevCloseRequestDelegate*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_DataMessaging_DataMessagingConfig_EdcpDataMessagingConfig_RaiseComDevCloseRequestDelegate" data-uid="Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.RaiseComDevCloseRequestDelegate">
+  RaiseComDevCloseRequestDelegate
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/DataMessaging/DataMessagingConfig/EdcpDataMessagingConfig.cs/#L66"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Request a closing of the current communication connection from the business logic delegate</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public RaiseComDevCloseRequestDelegate RaiseComDevCloseRequestDelegate { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Bodoconsult.NetworkCommunication.Delegates.RaiseComDevCloseRequestDelegate.html">RaiseComDevCloseRequestDelegate</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_DataMessaging_DataMessagingConfig_EdcpDataMessagingConfig_RaiseCommLayerDataMessageReceivedDelegate_" data-uid="Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.RaiseCommLayerDataMessageReceivedDelegate*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_DataMessaging_DataMessagingConfig_EdcpDataMessagingConfig_RaiseCommLayerDataMessageReceivedDelegate" data-uid="Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.RaiseCommLayerDataMessageReceivedDelegate">
+  RaiseCommLayerDataMessageReceivedDelegate
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/DataMessaging/DataMessagingConfig/EdcpDataMessagingConfig.cs/#L87"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Delegate fired on comm level if a data message has been received. Should be used in <a class="xref" href="Bodoconsult.NetworkCommunication.Interfaces.ICommunicationHandler.html">ICommunicationHandler</a> impls to implement there handshake responses and then forward to the next layer</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public RaiseDataMessageReceivedDelegate RaiseCommLayerDataMessageReceivedDelegate { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Bodoconsult.NetworkCommunication.Delegates.RaiseDataMessageReceivedDelegate.html">RaiseDataMessageReceivedDelegate</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_DataMessaging_DataMessagingConfig_EdcpDataMessagingConfig_RaiseDataMessageNotSentDelegate_" data-uid="Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.RaiseDataMessageNotSentDelegate*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_DataMessaging_DataMessagingConfig_EdcpDataMessagingConfig_RaiseDataMessageNotSentDelegate" data-uid="Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.RaiseDataMessageNotSentDelegate">
+  RaiseDataMessageNotSentDelegate
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/DataMessaging/DataMessagingConfig/EdcpDataMessagingConfig.cs/#L77"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Message not sent delegate</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public RaiseDataMessageNotSentDelegate RaiseDataMessageNotSentDelegate { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Bodoconsult.NetworkCommunication.Delegates.RaiseDataMessageNotSentDelegate.html">RaiseDataMessageNotSentDelegate</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_DataMessaging_DataMessagingConfig_EdcpDataMessagingConfig_RaiseDataMessageSentDelegate_" data-uid="Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.RaiseDataMessageSentDelegate*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_DataMessaging_DataMessagingConfig_EdcpDataMessagingConfig_RaiseDataMessageSentDelegate" data-uid="Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.RaiseDataMessageSentDelegate">
+  RaiseDataMessageSentDelegate
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/DataMessaging/DataMessagingConfig/EdcpDataMessagingConfig.cs/#L82"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Message sent delegate</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public RaiseDataMessageSentDelegate RaiseDataMessageSentDelegate { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Bodoconsult.NetworkCommunication.Delegates.RaiseDataMessageSentDelegate.html">RaiseDataMessageSentDelegate</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_DataMessaging_DataMessagingConfig_EdcpDataMessagingConfig_RaiseUnexpectedDataMessageReceivedDelegate_" data-uid="Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.RaiseUnexpectedDataMessageReceivedDelegate*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_DataMessaging_DataMessagingConfig_EdcpDataMessagingConfig_RaiseUnexpectedDataMessageReceivedDelegate" data-uid="Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.RaiseUnexpectedDataMessageReceivedDelegate">
+  RaiseUnexpectedDataMessageReceivedDelegate
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/DataMessaging/DataMessagingConfig/EdcpDataMessagingConfig.cs/#L97"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Delegate raised if a device message does not fit the expectations (length, content, ...)</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public RaiseUnexpectedDataMessageReceivedDelegate RaiseUnexpectedDataMessageReceivedDelegate { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Bodoconsult.NetworkCommunication.Delegates.RaiseUnexpectedDataMessageReceivedDelegate.html">RaiseUnexpectedDataMessageReceivedDelegate</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_DataMessaging_DataMessagingConfig_EdcpDataMessagingConfig_ResetOutboundDataMessageFactoryDelegate_" data-uid="Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.ResetOutboundDataMessageFactoryDelegate*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_DataMessaging_DataMessagingConfig_EdcpDataMessagingConfig_ResetOutboundDataMessageFactoryDelegate" data-uid="Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.ResetOutboundDataMessageFactoryDelegate">
+  ResetOutboundDataMessageFactoryDelegate
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/DataMessaging/DataMessagingConfig/EdcpDataMessagingConfig.cs/#L102"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Reset the <a class="xref" href="Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessageFactory.html">IOutboundDataMessageFactory</a></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ResetOutboundDataMessageFactoryDelegate ResetOutboundDataMessageFactoryDelegate { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Bodoconsult.NetworkCommunication.Delegates.ResetOutboundDataMessageFactoryDelegate.html">ResetOutboundDataMessageFactoryDelegate</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_DataMessaging_DataMessagingConfig_EdcpDataMessagingConfig_ServerSendMaximumBlockCode_" data-uid="Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.ServerSendMaximumBlockCode*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_DataMessaging_DataMessagingConfig_EdcpDataMessagingConfig_ServerSendMaximumBlockCode" data-uid="Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.ServerSendMaximumBlockCode">
+  ServerSendMaximumBlockCode
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/DataMessaging/DataMessagingConfig/EdcpDataMessagingConfig.cs/#L132"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>The maximum blockcode sent by the server</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int ServerSendMaximumBlockCode { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_DataMessaging_DataMessagingConfig_EdcpDataMessagingConfig_ServerSendMinimumBlockCode_" data-uid="Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.ServerSendMinimumBlockCode*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_DataMessaging_DataMessagingConfig_EdcpDataMessagingConfig_ServerSendMinimumBlockCode" data-uid="Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.ServerSendMinimumBlockCode">
+  ServerSendMinimumBlockCode
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/DataMessaging/DataMessagingConfig/EdcpDataMessagingConfig.cs/#L127"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>The minimum blockcode sent by the server</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int ServerSendMinimumBlockCode { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_DataMessaging_DataMessagingConfig_EdcpDataMessagingConfig_SocketProxy_" data-uid="Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.SocketProxy*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_DataMessaging_DataMessagingConfig_EdcpDataMessagingConfig_SocketProxy" data-uid="Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.SocketProxy">
+  SocketProxy
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/DataMessaging/DataMessagingConfig/EdcpDataMessagingConfig.cs/#L29"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Current socket to use</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ISocketProxy SocketProxy { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Bodoconsult.NetworkCommunication.Interfaces.ISocketProxy.html">ISocketProxy</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_DataMessaging_DataMessagingConfig_EdcpDataMessagingConfig_UpdateDataMessageProcessingPackageDelegate_" data-uid="Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.UpdateDataMessageProcessingPackageDelegate*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_DataMessaging_DataMessagingConfig_EdcpDataMessagingConfig_UpdateDataMessageProcessingPackageDelegate" data-uid="Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.UpdateDataMessageProcessingPackageDelegate">
+  UpdateDataMessageProcessingPackageDelegate
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/DataMessaging/DataMessagingConfig/EdcpDataMessagingConfig.cs/#L39"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Update data message processing package</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public UpdateDataMessageProcessingPackageDelegate UpdateDataMessageProcessingPackageDelegate { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Bodoconsult.NetworkCommunication.Delegates.UpdateDataMessageProcessingPackageDelegate.html">UpdateDataMessageProcessingPackageDelegate</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/DataMessaging/DataMessagingConfig/EdcpDataMessagingConfig.cs/#L13" class="edit-link">Edit this page</a>
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

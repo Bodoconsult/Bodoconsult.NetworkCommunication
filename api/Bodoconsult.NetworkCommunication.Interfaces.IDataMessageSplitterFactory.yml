@@ -1,0 +1,131 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageSplitterFactory
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.IDataMessageSplitterFactory
+  id: IDataMessageSplitterFactory
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  children:
+  - Bodoconsult.NetworkCommunication.Interfaces.IDataMessageSplitterFactory.CreateInstance(System.UInt32)
+  langs:
+  - csharp
+  - vb
+  name: IDataMessageSplitterFactory
+  nameWithType: IDataMessageSplitterFactory
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageSplitterFactory
+  type: Interface
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/IDataMessageSplitterFactory.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: IDataMessageSplitterFactory
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/IDataMessageSplitterFactory.cs
+    startLine: 7
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Factory interface for creating an instance of <xref href="Bodoconsult.NetworkCommunication.Interfaces.IDataMessageSplitter" data-throw-if-not-resolved="false"></xref> based on the current firmware version
+  example: []
+  syntax:
+    content: public interface IDataMessageSplitterFactory
+    content.vb: Public Interface IDataMessageSplitterFactory
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageSplitterFactory.CreateInstance(System.UInt32)
+  commentId: M:Bodoconsult.NetworkCommunication.Interfaces.IDataMessageSplitterFactory.CreateInstance(System.UInt32)
+  id: CreateInstance(System.UInt32)
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageSplitterFactory
+  langs:
+  - csharp
+  - vb
+  name: CreateInstance(uint)
+  nameWithType: IDataMessageSplitterFactory.CreateInstance(uint)
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageSplitterFactory.CreateInstance(uint)
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/IDataMessageSplitterFactory.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: CreateInstance
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/IDataMessageSplitterFactory.cs
+    startLine: 15
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Create an instance of <xref href="Bodoconsult.NetworkCommunication.Interfaces.IDataMessageSplitter" data-throw-if-not-resolved="false"></xref> based on the current firmware version
+  example: []
+  syntax:
+    content: IDataMessageSplitter CreateInstance(uint firmware)
+    parameters:
+    - id: firmware
+      type: System.UInt32
+      description: ''
+    return:
+      type: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageSplitter
+      description: ''
+    content.vb: Function CreateInstance(firmware As UInteger) As IDataMessageSplitter
+  overload: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageSplitterFactory.CreateInstance*
+  nameWithType.vb: IDataMessageSplitterFactory.CreateInstance(UInteger)
+  fullName.vb: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageSplitterFactory.CreateInstance(UInteger)
+  name.vb: CreateInstance(UInteger)
+references:
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageSplitter
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.IDataMessageSplitter
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageSplitter.html
+  name: IDataMessageSplitter
+  nameWithType: IDataMessageSplitter
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageSplitter
+- uid: Bodoconsult.NetworkCommunication.Interfaces
+  commentId: N:Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.html
+  name: Bodoconsult.NetworkCommunication.Interfaces
+  nameWithType: Bodoconsult.NetworkCommunication.Interfaces
+  fullName: Bodoconsult.NetworkCommunication.Interfaces
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Interfaces
+    name: Interfaces
+    href: Bodoconsult.NetworkCommunication.Interfaces.html
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Interfaces
+    name: Interfaces
+    href: Bodoconsult.NetworkCommunication.Interfaces.html
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageSplitterFactory.CreateInstance*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.IDataMessageSplitterFactory.CreateInstance
+  href: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageSplitterFactory.html#Bodoconsult_NetworkCommunication_Interfaces_IDataMessageSplitterFactory_CreateInstance_System_UInt32_
+  name: CreateInstance
+  nameWithType: IDataMessageSplitterFactory.CreateInstance
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageSplitterFactory.CreateInstance
+- uid: System.UInt32
+  commentId: T:System.UInt32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.uint32
+  name: uint
+  nameWithType: uint
+  fullName: uint
+  nameWithType.vb: UInteger
+  fullName.vb: UInteger
+  name.vb: UInteger
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System

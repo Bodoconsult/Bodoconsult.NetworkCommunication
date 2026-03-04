@@ -1,0 +1,128 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerMessageTypes
+  commentId: T:Bodoconsult.Network.Windows.Dhcp.DhcpServerMessageTypes
+  id: DhcpServerMessageTypes
+  parent: Bodoconsult.Network.Windows.Dhcp
+  children:
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerMessageTypes.BootReply
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerMessageTypes.BootRequest
+  langs:
+  - csharp
+  - vb
+  name: DhcpServerMessageTypes
+  nameWithType: DhcpServerMessageTypes
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerMessageTypes
+  type: Enum
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerMessageTypes.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: DhcpServerMessageTypes
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerMessageTypes.cs
+    startLine: 5
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: 'public enum DhcpServerMessageTypes : byte'
+    content.vb: Public Enum DhcpServerMessageTypes As Byte
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerMessageTypes.BootRequest
+  commentId: F:Bodoconsult.Network.Windows.Dhcp.DhcpServerMessageTypes.BootRequest
+  id: BootRequest
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerMessageTypes
+  langs:
+  - csharp
+  - vb
+  name: BootRequest
+  nameWithType: DhcpServerMessageTypes.BootRequest
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerMessageTypes.BootRequest
+  type: Field
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerMessageTypes.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: BootRequest
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerMessageTypes.cs
+    startLine: 7
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: BootRequest = 1
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerMessageTypes
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerMessageTypes.BootReply
+  commentId: F:Bodoconsult.Network.Windows.Dhcp.DhcpServerMessageTypes.BootReply
+  id: BootReply
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerMessageTypes
+  langs:
+  - csharp
+  - vb
+  name: BootReply
+  nameWithType: DhcpServerMessageTypes.BootReply
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerMessageTypes.BootReply
+  type: Field
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerMessageTypes.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: BootReply
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerMessageTypes.cs
+    startLine: 8
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: BootReply = 2
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerMessageTypes
+references:
+- uid: Bodoconsult.Network.Windows.Dhcp
+  commentId: N:Bodoconsult.Network.Windows.Dhcp
+  href: Bodoconsult.html
+  name: Bodoconsult.Network.Windows.Dhcp
+  nameWithType: Bodoconsult.Network.Windows.Dhcp
+  fullName: Bodoconsult.Network.Windows.Dhcp
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.Network
+    name: Network
+    href: Bodoconsult.Network.html
+  - name: .
+  - uid: Bodoconsult.Network.Windows
+    name: Windows
+    href: Bodoconsult.Network.Windows.html
+  - name: .
+  - uid: Bodoconsult.Network.Windows.Dhcp
+    name: Dhcp
+    href: Bodoconsult.Network.Windows.Dhcp.html
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.Network
+    name: Network
+    href: Bodoconsult.Network.html
+  - name: .
+  - uid: Bodoconsult.Network.Windows
+    name: Windows
+    href: Bodoconsult.Network.Windows.html
+  - name: .
+  - uid: Bodoconsult.Network.Windows.Dhcp
+    name: Dhcp
+    href: Bodoconsult.Network.Windows.Dhcp.html
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerMessageTypes
+  commentId: T:Bodoconsult.Network.Windows.Dhcp.DhcpServerMessageTypes
+  parent: Bodoconsult.Network.Windows.Dhcp
+  href: Bodoconsult.Network.Windows.Dhcp.DhcpServerMessageTypes.html
+  name: DhcpServerMessageTypes
+  nameWithType: DhcpServerMessageTypes
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerMessageTypes

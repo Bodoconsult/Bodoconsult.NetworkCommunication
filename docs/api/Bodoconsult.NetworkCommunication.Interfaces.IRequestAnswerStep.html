@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Interface IRequestAnswerStep | Bodoconsult.Network </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Interface IRequestAnswerStep | Bodoconsult.Network ">
+      
+      <meta name="description" content="Interface for defining a request answer step">
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/new/main/apiSpec/new?filename=Bodoconsult_NetworkCommunication_Interfaces_IRequestAnswerStep.md&amp;value=---%0Auid%3A%20Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswerStep%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../logo.svg" alt="Bodoconsult.Network">
+            Bodoconsult.Network
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswerStep">
+
+
+
+  <h1 id="Bodoconsult_NetworkCommunication_Interfaces_IRequestAnswerStep" data-uid="Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswerStep" class="text-break">
+Interface IRequestAnswerStep  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/Interfaces/IRequestAnswerStep.cs/#L10"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="Bodoconsult.html">Bodoconsult</a>.<a class="xref" href="Bodoconsult.NetworkCommunication.html">NetworkCommunication</a>.<a class="xref" href="Bodoconsult.NetworkCommunication.Interfaces.html">Interfaces</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>Bodoconsult.NetworkCommunication.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p>Interface for defining a request answer step</p>
+</div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public interface IRequestAnswerStep : IDisposable</code></pre>
+  </div>
+
+
+
+
+
+
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.idisposable.dispose">IDisposable.Dispose()</a>
+    </div>
+  </dd></dl>
+
+
+
+
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
+  <a id="Bodoconsult_NetworkCommunication_Interfaces_IRequestAnswerStep_AllowedRequestAnswers_" data-uid="Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswerStep.AllowedRequestAnswers*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_Interfaces_IRequestAnswerStep_AllowedRequestAnswers" data-uid="Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswerStep.AllowedRequestAnswers">
+  AllowedRequestAnswers
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/Interfaces/IRequestAnswerStep.cs/#L20"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Allowed request answers: one of the items has to be received as answer from device</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">List&lt;IRequestAnswer&gt; AllowedRequestAnswers { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswer.html">IRequestAnswer</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_Interfaces_IRequestAnswerStep_BeforeExecuteActionDelegate_" data-uid="Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswerStep.BeforeExecuteActionDelegate*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_Interfaces_IRequestAnswerStep_BeforeExecuteActionDelegate" data-uid="Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswerStep.BeforeExecuteActionDelegate">
+  BeforeExecuteActionDelegate
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/Interfaces/IRequestAnswerStep.cs/#L56"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Delegate for action before the step is executed</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">ActionRequestStepDelegate BeforeExecuteActionDelegate { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Bodoconsult.NetworkCommunication.Delegates.ActionRequestStepDelegate.html">ActionRequestStepDelegate</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_Interfaces_IRequestAnswerStep_BreakingAsyncCommands_" data-uid="Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswerStep.BreakingAsyncCommands*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_Interfaces_IRequestAnswerStep_BreakingAsyncCommands" data-uid="Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswerStep.BreakingAsyncCommands">
+  BreakingAsyncCommands
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/Interfaces/IRequestAnswerStep.cs/#L71"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Defines a list of async received command who break or unbreak the current request step</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IList&lt;char&gt; BreakingAsyncCommands { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1">IList</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.char">char</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_Interfaces_IRequestAnswerStep_CancelActionDelegate_" data-uid="Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswerStep.CancelActionDelegate*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_Interfaces_IRequestAnswerStep_CancelActionDelegate" data-uid="Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswerStep.CancelActionDelegate">
+  CancelActionDelegate
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/Interfaces/IRequestAnswerStep.cs/#L51"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Delegate for action after cancelling the request step</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">ActionRequestStepDelegate CancelActionDelegate { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Bodoconsult.NetworkCommunication.Delegates.ActionRequestStepDelegate.html">ActionRequestStepDelegate</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_Interfaces_IRequestAnswerStep_HandleRequestAnswerStepFailedDelegate_" data-uid="Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswerStep.HandleRequestAnswerStepFailedDelegate*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_Interfaces_IRequestAnswerStep_HandleRequestAnswerStepFailedDelegate" data-uid="Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswerStep.HandleRequestAnswerStepFailedDelegate">
+  HandleRequestAnswerStepFailedDelegate
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/Interfaces/IRequestAnswerStep.cs/#L61"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Delegate for doing something if a RequestAnswerStep failed</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">HandleRequestAnswerStepFailedDelegate HandleRequestAnswerStepFailedDelegate { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Bodoconsult.NetworkCommunication.Delegates.HandleRequestAnswerStepFailedDelegate.html">HandleRequestAnswerStepFailedDelegate</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_Interfaces_IRequestAnswerStep_RequestSpec_" data-uid="Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswerStep.RequestSpec*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_Interfaces_IRequestAnswerStep_RequestSpec" data-uid="Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswerStep.RequestSpec">
+  RequestSpec
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/Interfaces/IRequestAnswerStep.cs/#L15"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Current request spec</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IRequestSpec RequestSpec { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec.html">IRequestSpec</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_Interfaces_IRequestAnswerStep_StateToNotifyBeforeRunning_" data-uid="Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswerStep.StateToNotifyBeforeRunning*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_Interfaces_IRequestAnswerStep_StateToNotifyBeforeRunning" data-uid="Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswerStep.StateToNotifyBeforeRunning">
+  StateToNotifyBeforeRunning
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/Interfaces/IRequestAnswerStep.cs/#L66"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>The state to notify the app before the step is running</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IDeviceState StateToNotifyBeforeRunning { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Bodoconsult.NetworkCommunication.Interfaces.IDeviceState.html">IDeviceState</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_Interfaces_IRequestAnswerStep_Timeout_" data-uid="Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswerStep.Timeout*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_Interfaces_IRequestAnswerStep_Timeout" data-uid="Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswerStep.Timeout">
+  Timeout
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/Interfaces/IRequestAnswerStep.cs/#L25"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Total timeout for the answer(s) of a request in milliseconds</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">int Timeout { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_Interfaces_IRequestAnswerStep_WasSuccessful_" data-uid="Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswerStep.WasSuccessful*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_Interfaces_IRequestAnswerStep_WasSuccessful" data-uid="Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswerStep.WasSuccessful">
+  WasSuccessful
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/Interfaces/IRequestAnswerStep.cs/#L30"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>The step was successfully processed in all steps</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool WasSuccessful { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="Bodoconsult_NetworkCommunication_Interfaces_IRequestAnswerStep_Cancel_" data-uid="Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswerStep.Cancel*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_Interfaces_IRequestAnswerStep_Cancel" data-uid="Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswerStep.Cancel">
+  Cancel()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/Interfaces/IRequestAnswerStep.cs/#L35"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Cancel the step</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void Cancel()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_Interfaces_IRequestAnswerStep_HandleResult_" data-uid="Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswerStep.HandleResult*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_Interfaces_IRequestAnswerStep_HandleResult" data-uid="Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswerStep.HandleResult">
+  HandleResult()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/Interfaces/IRequestAnswerStep.cs/#L41"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Handles the answer of the request step</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">MessageHandlingResult HandleResult()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Bodoconsult.NetworkCommunication.Interfaces.MessageHandlingResult.html">MessageHandlingResult</a></dt>
+    <dd><p>Message handling result</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_Interfaces_IRequestAnswerStep_Reset_" data-uid="Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswerStep.Reset*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_Interfaces_IRequestAnswerStep_Reset" data-uid="Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswerStep.Reset">
+  Reset()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/Interfaces/IRequestAnswerStep.cs/#L46"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Reset the answers for a step</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void Reset()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/Interfaces/IRequestAnswerStep.cs/#L10" class="edit-link">Edit this page</a>
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

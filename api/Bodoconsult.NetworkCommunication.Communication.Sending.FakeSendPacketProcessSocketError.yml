@@ -1,0 +1,791 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcessSocketError
+  commentId: T:Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcessSocketError
+  id: FakeSendPacketProcessSocketError
+  parent: Bodoconsult.NetworkCommunication.Communication.Sending
+  children:
+  - Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcessSocketError.Execute
+  - Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcessSocketError.SendMessage
+  langs:
+  - csharp
+  - vb
+  name: FakeSendPacketProcessSocketError
+  nameWithType: FakeSendPacketProcessSocketError
+  fullName: Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcessSocketError
+  type: Class
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Communication/Sending/FakeSendPacketProcessSocketError.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: FakeSendPacketProcessSocketError
+    path: src/Bodoconsult.NetworkCommunication/Communication/Sending/FakeSendPacketProcessSocketError.cs
+    startLine: 11
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Communication.Sending
+  summary: Fake implementation of <xref href="Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess" data-throw-if-not-resolved="false"></xref> to avoid real TCP/IP sending of messages. Simulates a socket error
+  example: []
+  syntax:
+    content: 'public class FakeSendPacketProcessSocketError : FakeSendPacketProcess, ISendPacketProcess, IResetable, IDisposable'
+    content.vb: Public Class FakeSendPacketProcessSocketError Inherits FakeSendPacketProcess Implements ISendPacketProcess, IResetable, IDisposable
+  inheritance:
+  - System.Object
+  - Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcess
+  implements:
+  - Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess
+  - Bodoconsult.App.Interfaces.IResetable
+  - System.IDisposable
+  inheritedMembers:
+  - Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcess.MonitorLogger
+  - Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcess.LoadDependencies(Bodoconsult.NetworkCommunication.Interfaces.IDuplexIo,Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessage,Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig)
+  - Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcess.DataMessagingConfig
+  - Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcess.MaxSendAttemptCount
+  - Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcess.Timeout
+  - Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcess.WaitingIntervalBetweenRetries
+  - Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcess.TotalTransactionTime
+  - Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcess.SendTimeout
+  - Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcess.TotalTimeout
+  - Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcess.HasFinishedWithoutTimeout
+  - Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcess.Message
+  - Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcess.IsComOnline
+  - Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcess.CurrentSendAttempsCount
+  - Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcess.IsSocketConnected
+  - Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcess.ProcessExecutionResult
+  - Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcess.RegisterWaitState
+  - Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcess.UnregisterWaitState
+  - Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcess.ProcessDone
+  - Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcess.Dispose
+  - Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcess.Reset
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcessSocketError.Execute
+  commentId: M:Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcessSocketError.Execute
+  id: Execute
+  parent: Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcessSocketError
+  langs:
+  - csharp
+  - vb
+  name: Execute()
+  nameWithType: FakeSendPacketProcessSocketError.Execute()
+  fullName: Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcessSocketError.Execute()
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Communication/Sending/FakeSendPacketProcessSocketError.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Execute
+    path: src/Bodoconsult.NetworkCommunication/Communication/Sending/FakeSendPacketProcessSocketError.cs
+    startLine: 16
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Communication.Sending
+  summary: Excute the step
+  example: []
+  syntax:
+    content: public override void Execute()
+    content.vb: Public Overrides Sub Execute()
+  overridden: Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcess.Execute
+  overload: Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcessSocketError.Execute*
+- uid: Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcessSocketError.SendMessage
+  commentId: M:Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcessSocketError.SendMessage
+  id: SendMessage
+  parent: Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcessSocketError
+  langs:
+  - csharp
+  - vb
+  name: SendMessage()
+  nameWithType: FakeSendPacketProcessSocketError.SendMessage()
+  fullName: Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcessSocketError.SendMessage()
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Communication/Sending/FakeSendPacketProcessSocketError.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: SendMessage
+    path: src/Bodoconsult.NetworkCommunication/Communication/Sending/FakeSendPacketProcessSocketError.cs
+    startLine: 25
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Communication.Sending
+  summary: Send the message
+  example: []
+  syntax:
+    content: public override bool SendMessage()
+    return:
+      type: System.Boolean
+    content.vb: Public Overrides Function SendMessage() As Boolean
+  overridden: Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcess.SendMessage
+  overload: Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcessSocketError.SendMessage*
+references:
+- uid: Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess.html
+  name: ISendPacketProcess
+  nameWithType: ISendPacketProcess
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess
+- uid: Bodoconsult.NetworkCommunication.Communication.Sending
+  commentId: N:Bodoconsult.NetworkCommunication.Communication.Sending
+  href: Bodoconsult.html
+  name: Bodoconsult.NetworkCommunication.Communication.Sending
+  nameWithType: Bodoconsult.NetworkCommunication.Communication.Sending
+  fullName: Bodoconsult.NetworkCommunication.Communication.Sending
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Communication
+    name: Communication
+    href: Bodoconsult.NetworkCommunication.Communication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Communication.Sending
+    name: Sending
+    href: Bodoconsult.NetworkCommunication.Communication.Sending.html
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Communication
+    name: Communication
+    href: Bodoconsult.NetworkCommunication.Communication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Communication.Sending
+    name: Sending
+    href: Bodoconsult.NetworkCommunication.Communication.Sending.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcess
+  commentId: T:Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcess
+  parent: Bodoconsult.NetworkCommunication.Communication.Sending
+  href: Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcess.html
+  name: FakeSendPacketProcess
+  nameWithType: FakeSendPacketProcess
+  fullName: Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcess
+- uid: Bodoconsult.App.Interfaces.IResetable
+  commentId: T:Bodoconsult.App.Interfaces.IResetable
+  parent: Bodoconsult.App.Interfaces
+  isExternal: true
+  name: IResetable
+  nameWithType: IResetable
+  fullName: Bodoconsult.App.Interfaces.IResetable
+- uid: System.IDisposable
+  commentId: T:System.IDisposable
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable
+  name: IDisposable
+  nameWithType: IDisposable
+  fullName: System.IDisposable
+- uid: Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcess.MonitorLogger
+  commentId: P:Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcess.MonitorLogger
+  parent: Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcess
+  href: Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcess.html#Bodoconsult_NetworkCommunication_Communication_Sending_FakeSendPacketProcess_MonitorLogger
+  name: MonitorLogger
+  nameWithType: FakeSendPacketProcess.MonitorLogger
+  fullName: Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcess.MonitorLogger
+- uid: Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcess.LoadDependencies(Bodoconsult.NetworkCommunication.Interfaces.IDuplexIo,Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessage,Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig)
+  commentId: M:Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcess.LoadDependencies(Bodoconsult.NetworkCommunication.Interfaces.IDuplexIo,Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessage,Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig)
+  parent: Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcess
+  href: Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcess.html#Bodoconsult_NetworkCommunication_Communication_Sending_FakeSendPacketProcess_LoadDependencies_Bodoconsult_NetworkCommunication_Interfaces_IDuplexIo_Bodoconsult_NetworkCommunication_Interfaces_IOutboundDataMessage_Bodoconsult_NetworkCommunication_Interfaces_IDataMessagingConfig_
+  name: LoadDependencies(IDuplexIo, IOutboundDataMessage, IDataMessagingConfig)
+  nameWithType: FakeSendPacketProcess.LoadDependencies(IDuplexIo, IOutboundDataMessage, IDataMessagingConfig)
+  fullName: Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcess.LoadDependencies(Bodoconsult.NetworkCommunication.Interfaces.IDuplexIo, Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessage, Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig)
+  spec.csharp:
+  - uid: Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcess.LoadDependencies(Bodoconsult.NetworkCommunication.Interfaces.IDuplexIo,Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessage,Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig)
+    name: LoadDependencies
+    href: Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcess.html#Bodoconsult_NetworkCommunication_Communication_Sending_FakeSendPacketProcess_LoadDependencies_Bodoconsult_NetworkCommunication_Interfaces_IDuplexIo_Bodoconsult_NetworkCommunication_Interfaces_IOutboundDataMessage_Bodoconsult_NetworkCommunication_Interfaces_IDataMessagingConfig_
+  - name: (
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IDuplexIo
+    name: IDuplexIo
+    href: Bodoconsult.NetworkCommunication.Interfaces.IDuplexIo.html
+  - name: ','
+  - name: " "
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessage
+    name: IOutboundDataMessage
+    href: Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessage.html
+  - name: ','
+  - name: " "
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig
+    name: IDataMessagingConfig
+    href: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig.html
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcess.LoadDependencies(Bodoconsult.NetworkCommunication.Interfaces.IDuplexIo,Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessage,Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig)
+    name: LoadDependencies
+    href: Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcess.html#Bodoconsult_NetworkCommunication_Communication_Sending_FakeSendPacketProcess_LoadDependencies_Bodoconsult_NetworkCommunication_Interfaces_IDuplexIo_Bodoconsult_NetworkCommunication_Interfaces_IOutboundDataMessage_Bodoconsult_NetworkCommunication_Interfaces_IDataMessagingConfig_
+  - name: (
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IDuplexIo
+    name: IDuplexIo
+    href: Bodoconsult.NetworkCommunication.Interfaces.IDuplexIo.html
+  - name: ','
+  - name: " "
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessage
+    name: IOutboundDataMessage
+    href: Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessage.html
+  - name: ','
+  - name: " "
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig
+    name: IDataMessagingConfig
+    href: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig.html
+  - name: )
+- uid: Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcess.DataMessagingConfig
+  commentId: P:Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcess.DataMessagingConfig
+  parent: Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcess
+  href: Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcess.html#Bodoconsult_NetworkCommunication_Communication_Sending_FakeSendPacketProcess_DataMessagingConfig
+  name: DataMessagingConfig
+  nameWithType: FakeSendPacketProcess.DataMessagingConfig
+  fullName: Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcess.DataMessagingConfig
+- uid: Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcess.MaxSendAttemptCount
+  commentId: P:Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcess.MaxSendAttemptCount
+  parent: Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcess
+  href: Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcess.html#Bodoconsult_NetworkCommunication_Communication_Sending_FakeSendPacketProcess_MaxSendAttemptCount
+  name: MaxSendAttemptCount
+  nameWithType: FakeSendPacketProcess.MaxSendAttemptCount
+  fullName: Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcess.MaxSendAttemptCount
+- uid: Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcess.Timeout
+  commentId: P:Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcess.Timeout
+  parent: Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcess
+  href: Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcess.html#Bodoconsult_NetworkCommunication_Communication_Sending_FakeSendPacketProcess_Timeout
+  name: Timeout
+  nameWithType: FakeSendPacketProcess.Timeout
+  fullName: Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcess.Timeout
+- uid: Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcess.WaitingIntervalBetweenRetries
+  commentId: P:Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcess.WaitingIntervalBetweenRetries
+  parent: Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcess
+  href: Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcess.html#Bodoconsult_NetworkCommunication_Communication_Sending_FakeSendPacketProcess_WaitingIntervalBetweenRetries
+  name: WaitingIntervalBetweenRetries
+  nameWithType: FakeSendPacketProcess.WaitingIntervalBetweenRetries
+  fullName: Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcess.WaitingIntervalBetweenRetries
+- uid: Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcess.TotalTransactionTime
+  commentId: P:Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcess.TotalTransactionTime
+  parent: Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcess
+  href: Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcess.html#Bodoconsult_NetworkCommunication_Communication_Sending_FakeSendPacketProcess_TotalTransactionTime
+  name: TotalTransactionTime
+  nameWithType: FakeSendPacketProcess.TotalTransactionTime
+  fullName: Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcess.TotalTransactionTime
+- uid: Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcess.SendTimeout
+  commentId: P:Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcess.SendTimeout
+  parent: Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcess
+  href: Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcess.html#Bodoconsult_NetworkCommunication_Communication_Sending_FakeSendPacketProcess_SendTimeout
+  name: SendTimeout
+  nameWithType: FakeSendPacketProcess.SendTimeout
+  fullName: Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcess.SendTimeout
+- uid: Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcess.TotalTimeout
+  commentId: P:Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcess.TotalTimeout
+  parent: Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcess
+  href: Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcess.html#Bodoconsult_NetworkCommunication_Communication_Sending_FakeSendPacketProcess_TotalTimeout
+  name: TotalTimeout
+  nameWithType: FakeSendPacketProcess.TotalTimeout
+  fullName: Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcess.TotalTimeout
+- uid: Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcess.HasFinishedWithoutTimeout
+  commentId: P:Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcess.HasFinishedWithoutTimeout
+  parent: Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcess
+  href: Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcess.html#Bodoconsult_NetworkCommunication_Communication_Sending_FakeSendPacketProcess_HasFinishedWithoutTimeout
+  name: HasFinishedWithoutTimeout
+  nameWithType: FakeSendPacketProcess.HasFinishedWithoutTimeout
+  fullName: Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcess.HasFinishedWithoutTimeout
+- uid: Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcess.Message
+  commentId: P:Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcess.Message
+  parent: Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcess
+  href: Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcess.html#Bodoconsult_NetworkCommunication_Communication_Sending_FakeSendPacketProcess_Message
+  name: Message
+  nameWithType: FakeSendPacketProcess.Message
+  fullName: Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcess.Message
+- uid: Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcess.IsComOnline
+  commentId: P:Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcess.IsComOnline
+  parent: Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcess
+  href: Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcess.html#Bodoconsult_NetworkCommunication_Communication_Sending_FakeSendPacketProcess_IsComOnline
+  name: IsComOnline
+  nameWithType: FakeSendPacketProcess.IsComOnline
+  fullName: Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcess.IsComOnline
+- uid: Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcess.CurrentSendAttempsCount
+  commentId: P:Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcess.CurrentSendAttempsCount
+  parent: Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcess
+  href: Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcess.html#Bodoconsult_NetworkCommunication_Communication_Sending_FakeSendPacketProcess_CurrentSendAttempsCount
+  name: CurrentSendAttempsCount
+  nameWithType: FakeSendPacketProcess.CurrentSendAttempsCount
+  fullName: Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcess.CurrentSendAttempsCount
+- uid: Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcess.IsSocketConnected
+  commentId: P:Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcess.IsSocketConnected
+  parent: Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcess
+  href: Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcess.html#Bodoconsult_NetworkCommunication_Communication_Sending_FakeSendPacketProcess_IsSocketConnected
+  name: IsSocketConnected
+  nameWithType: FakeSendPacketProcess.IsSocketConnected
+  fullName: Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcess.IsSocketConnected
+- uid: Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcess.ProcessExecutionResult
+  commentId: P:Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcess.ProcessExecutionResult
+  parent: Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcess
+  href: Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcess.html#Bodoconsult_NetworkCommunication_Communication_Sending_FakeSendPacketProcess_ProcessExecutionResult
+  name: ProcessExecutionResult
+  nameWithType: FakeSendPacketProcess.ProcessExecutionResult
+  fullName: Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcess.ProcessExecutionResult
+- uid: Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcess.RegisterWaitState
+  commentId: M:Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcess.RegisterWaitState
+  parent: Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcess
+  href: Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcess.html#Bodoconsult_NetworkCommunication_Communication_Sending_FakeSendPacketProcess_RegisterWaitState
+  name: RegisterWaitState()
+  nameWithType: FakeSendPacketProcess.RegisterWaitState()
+  fullName: Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcess.RegisterWaitState()
+  spec.csharp:
+  - uid: Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcess.RegisterWaitState
+    name: RegisterWaitState
+    href: Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcess.html#Bodoconsult_NetworkCommunication_Communication_Sending_FakeSendPacketProcess_RegisterWaitState
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcess.RegisterWaitState
+    name: RegisterWaitState
+    href: Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcess.html#Bodoconsult_NetworkCommunication_Communication_Sending_FakeSendPacketProcess_RegisterWaitState
+  - name: (
+  - name: )
+- uid: Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcess.UnregisterWaitState
+  commentId: M:Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcess.UnregisterWaitState
+  parent: Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcess
+  href: Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcess.html#Bodoconsult_NetworkCommunication_Communication_Sending_FakeSendPacketProcess_UnregisterWaitState
+  name: UnregisterWaitState()
+  nameWithType: FakeSendPacketProcess.UnregisterWaitState()
+  fullName: Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcess.UnregisterWaitState()
+  spec.csharp:
+  - uid: Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcess.UnregisterWaitState
+    name: UnregisterWaitState
+    href: Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcess.html#Bodoconsult_NetworkCommunication_Communication_Sending_FakeSendPacketProcess_UnregisterWaitState
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcess.UnregisterWaitState
+    name: UnregisterWaitState
+    href: Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcess.html#Bodoconsult_NetworkCommunication_Communication_Sending_FakeSendPacketProcess_UnregisterWaitState
+  - name: (
+  - name: )
+- uid: Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcess.ProcessDone
+  commentId: M:Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcess.ProcessDone
+  parent: Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcess
+  href: Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcess.html#Bodoconsult_NetworkCommunication_Communication_Sending_FakeSendPacketProcess_ProcessDone
+  name: ProcessDone()
+  nameWithType: FakeSendPacketProcess.ProcessDone()
+  fullName: Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcess.ProcessDone()
+  spec.csharp:
+  - uid: Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcess.ProcessDone
+    name: ProcessDone
+    href: Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcess.html#Bodoconsult_NetworkCommunication_Communication_Sending_FakeSendPacketProcess_ProcessDone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcess.ProcessDone
+    name: ProcessDone
+    href: Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcess.html#Bodoconsult_NetworkCommunication_Communication_Sending_FakeSendPacketProcess_ProcessDone
+  - name: (
+  - name: )
+- uid: Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcess.Dispose
+  commentId: M:Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcess.Dispose
+  parent: Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcess
+  href: Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcess.html#Bodoconsult_NetworkCommunication_Communication_Sending_FakeSendPacketProcess_Dispose
+  name: Dispose()
+  nameWithType: FakeSendPacketProcess.Dispose()
+  fullName: Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcess.Dispose()
+  spec.csharp:
+  - uid: Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcess.Dispose
+    name: Dispose
+    href: Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcess.html#Bodoconsult_NetworkCommunication_Communication_Sending_FakeSendPacketProcess_Dispose
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcess.Dispose
+    name: Dispose
+    href: Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcess.html#Bodoconsult_NetworkCommunication_Communication_Sending_FakeSendPacketProcess_Dispose
+  - name: (
+  - name: )
+- uid: Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcess.Reset
+  commentId: M:Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcess.Reset
+  parent: Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcess
+  href: Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcess.html#Bodoconsult_NetworkCommunication_Communication_Sending_FakeSendPacketProcess_Reset
+  name: Reset()
+  nameWithType: FakeSendPacketProcess.Reset()
+  fullName: Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcess.Reset()
+  spec.csharp:
+  - uid: Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcess.Reset
+    name: Reset
+    href: Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcess.html#Bodoconsult_NetworkCommunication_Communication_Sending_FakeSendPacketProcess_Reset
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcess.Reset
+    name: Reset
+    href: Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcess.html#Bodoconsult_NetworkCommunication_Communication_Sending_FakeSendPacketProcess_Reset
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: Bodoconsult.NetworkCommunication.Interfaces
+  commentId: N:Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.html
+  name: Bodoconsult.NetworkCommunication.Interfaces
+  nameWithType: Bodoconsult.NetworkCommunication.Interfaces
+  fullName: Bodoconsult.NetworkCommunication.Interfaces
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Interfaces
+    name: Interfaces
+    href: Bodoconsult.NetworkCommunication.Interfaces.html
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Interfaces
+    name: Interfaces
+    href: Bodoconsult.NetworkCommunication.Interfaces.html
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Bodoconsult.App.Interfaces
+  commentId: N:Bodoconsult.App.Interfaces
+  isExternal: true
+  name: Bodoconsult.App.Interfaces
+  nameWithType: Bodoconsult.App.Interfaces
+  fullName: Bodoconsult.App.Interfaces
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    isExternal: true
+  - name: .
+  - uid: Bodoconsult.App
+    name: App
+    isExternal: true
+  - name: .
+  - uid: Bodoconsult.App.Interfaces
+    name: Interfaces
+    isExternal: true
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    isExternal: true
+  - name: .
+  - uid: Bodoconsult.App
+    name: App
+    isExternal: true
+  - name: .
+  - uid: Bodoconsult.App.Interfaces
+    name: Interfaces
+    isExternal: true
+- uid: Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcess.Execute
+  commentId: M:Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcess.Execute
+  parent: Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcess
+  href: Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcess.html#Bodoconsult_NetworkCommunication_Communication_Sending_FakeSendPacketProcess_Execute
+  name: Execute()
+  nameWithType: FakeSendPacketProcess.Execute()
+  fullName: Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcess.Execute()
+  spec.csharp:
+  - uid: Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcess.Execute
+    name: Execute
+    href: Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcess.html#Bodoconsult_NetworkCommunication_Communication_Sending_FakeSendPacketProcess_Execute
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcess.Execute
+    name: Execute
+    href: Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcess.html#Bodoconsult_NetworkCommunication_Communication_Sending_FakeSendPacketProcess_Execute
+  - name: (
+  - name: )
+- uid: Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcessSocketError.Execute*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcessSocketError.Execute
+  href: Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcessSocketError.html#Bodoconsult_NetworkCommunication_Communication_Sending_FakeSendPacketProcessSocketError_Execute
+  name: Execute
+  nameWithType: FakeSendPacketProcessSocketError.Execute
+  fullName: Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcessSocketError.Execute
+- uid: Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcess.SendMessage
+  commentId: M:Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcess.SendMessage
+  parent: Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcess
+  href: Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcess.html#Bodoconsult_NetworkCommunication_Communication_Sending_FakeSendPacketProcess_SendMessage
+  name: SendMessage()
+  nameWithType: FakeSendPacketProcess.SendMessage()
+  fullName: Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcess.SendMessage()
+  spec.csharp:
+  - uid: Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcess.SendMessage
+    name: SendMessage
+    href: Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcess.html#Bodoconsult_NetworkCommunication_Communication_Sending_FakeSendPacketProcess_SendMessage
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcess.SendMessage
+    name: SendMessage
+    href: Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcess.html#Bodoconsult_NetworkCommunication_Communication_Sending_FakeSendPacketProcess_SendMessage
+  - name: (
+  - name: )
+- uid: Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcessSocketError.SendMessage*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcessSocketError.SendMessage
+  href: Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcessSocketError.html#Bodoconsult_NetworkCommunication_Communication_Sending_FakeSendPacketProcessSocketError_SendMessage
+  name: SendMessage
+  nameWithType: FakeSendPacketProcessSocketError.SendMessage
+  fullName: Bodoconsult.NetworkCommunication.Communication.Sending.FakeSendPacketProcessSocketError.SendMessage
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean

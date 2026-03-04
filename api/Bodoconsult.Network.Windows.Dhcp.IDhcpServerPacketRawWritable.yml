@@ -1,0 +1,415 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacketRawWritable
+  commentId: T:Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacketRawWritable
+  id: IDhcpServerPacketRawWritable
+  parent: Bodoconsult.Network.Windows.Dhcp
+  children:
+  - Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacketRawWritable.TryAdjustBuffer(System.Int32,System.Int32)
+  langs:
+  - csharp
+  - vb
+  name: IDhcpServerPacketRawWritable
+  nameWithType: IDhcpServerPacketRawWritable
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacketRawWritable
+  type: Interface
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/IDhcpServerPacketRawWritable.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: IDhcpServerPacketRawWritable
+    path: src/Bodoconsult.Network.Windows/Dhcp/IDhcpServerPacketRawWritable.cs
+    startLine: 5
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: 'public interface IDhcpServerPacketRawWritable : IDhcpServerPacketWritable, IDhcpServerPacketRaw, IDhcpServerPacket'
+    content.vb: Public Interface IDhcpServerPacketRawWritable Inherits IDhcpServerPacketWritable, IDhcpServerPacketRaw, IDhcpServerPacket
+  inheritedMembers:
+  - Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacketWritable.MessageType
+  - Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacketWritable.HardwareAddressType
+  - Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacketWritable.HardwareAddressLength
+  - Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacketWritable.GatewayHops
+  - Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacketWritable.TransactionId
+  - Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacketWritable.SecondsElapsed
+  - Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacketWritable.Flags
+  - Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacketWritable.ClientIpAddress
+  - Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacketWritable.YourIpAddress
+  - Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacketWritable.NextServerIpAddress
+  - Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacketWritable.RelayAgentIpAddress
+  - Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacketWritable.ClientHardwareAddress
+  - Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacketWritable.ServerHostName
+  - Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacketWritable.FileName
+  - Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacketWritable.OptionsMagicCookie
+  - Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacketRaw.Buffer
+  - Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacketRaw.GetLength
+  - Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.DhcpMessageType
+  - Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.Options
+  - Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.TryGetOption(Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIds,Bodoconsult.Network.Windows.Dhcp.DhcpServerPacketOption@)
+  - Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.TryGetOption(System.Byte,Bodoconsult.Network.Windows.Dhcp.DhcpServerPacketOption@)
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacketRawWritable.TryAdjustBuffer(System.Int32,System.Int32)
+  commentId: M:Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacketRawWritable.TryAdjustBuffer(System.Int32,System.Int32)
+  id: TryAdjustBuffer(System.Int32,System.Int32)
+  parent: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacketRawWritable
+  langs:
+  - csharp
+  - vb
+  name: TryAdjustBuffer(int, int)
+  nameWithType: IDhcpServerPacketRawWritable.TryAdjustBuffer(int, int)
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacketRawWritable.TryAdjustBuffer(int, int)
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/IDhcpServerPacketRawWritable.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: TryAdjustBuffer
+    path: src/Bodoconsult.Network.Windows/Dhcp/IDhcpServerPacketRawWritable.cs
+    startLine: 14
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  summary: Attempts to increase or decrease the packet buffer at the <code class="paramref">index</code> by the <code class="paramref">adjustmentAmount</code>.
+  example: []
+  syntax:
+    content: bool TryAdjustBuffer(int index, int adjustmentAmount)
+    parameters:
+    - id: index
+      type: System.Int32
+      description: The buffer index where the adjustment should be made.
+    - id: adjustmentAmount
+      type: System.Int32
+      description: The amount to adjust the buffer by. Positive numbers increase the buffer, negative numbers shrink the buffer.
+    return:
+      type: System.Boolean
+      description: true if the adjustment was successful
+    content.vb: Function TryAdjustBuffer(index As Integer, adjustmentAmount As Integer) As Boolean
+  overload: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacketRawWritable.TryAdjustBuffer*
+  nameWithType.vb: IDhcpServerPacketRawWritable.TryAdjustBuffer(Integer, Integer)
+  fullName.vb: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacketRawWritable.TryAdjustBuffer(Integer, Integer)
+  name.vb: TryAdjustBuffer(Integer, Integer)
+references:
+- uid: Bodoconsult.Network.Windows.Dhcp
+  commentId: N:Bodoconsult.Network.Windows.Dhcp
+  href: Bodoconsult.html
+  name: Bodoconsult.Network.Windows.Dhcp
+  nameWithType: Bodoconsult.Network.Windows.Dhcp
+  fullName: Bodoconsult.Network.Windows.Dhcp
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.Network
+    name: Network
+    href: Bodoconsult.Network.html
+  - name: .
+  - uid: Bodoconsult.Network.Windows
+    name: Windows
+    href: Bodoconsult.Network.Windows.html
+  - name: .
+  - uid: Bodoconsult.Network.Windows.Dhcp
+    name: Dhcp
+    href: Bodoconsult.Network.Windows.Dhcp.html
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.Network
+    name: Network
+    href: Bodoconsult.Network.html
+  - name: .
+  - uid: Bodoconsult.Network.Windows
+    name: Windows
+    href: Bodoconsult.Network.Windows.html
+  - name: .
+  - uid: Bodoconsult.Network.Windows.Dhcp
+    name: Dhcp
+    href: Bodoconsult.Network.Windows.Dhcp.html
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacketWritable.MessageType
+  commentId: P:Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacketWritable.MessageType
+  parent: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacketWritable
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacketWritable.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerPacketWritable_MessageType
+  name: MessageType
+  nameWithType: IDhcpServerPacketWritable.MessageType
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacketWritable.MessageType
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacketWritable.HardwareAddressType
+  commentId: P:Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacketWritable.HardwareAddressType
+  parent: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacketWritable
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacketWritable.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerPacketWritable_HardwareAddressType
+  name: HardwareAddressType
+  nameWithType: IDhcpServerPacketWritable.HardwareAddressType
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacketWritable.HardwareAddressType
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacketWritable.HardwareAddressLength
+  commentId: P:Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacketWritable.HardwareAddressLength
+  parent: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacketWritable
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacketWritable.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerPacketWritable_HardwareAddressLength
+  name: HardwareAddressLength
+  nameWithType: IDhcpServerPacketWritable.HardwareAddressLength
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacketWritable.HardwareAddressLength
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacketWritable.GatewayHops
+  commentId: P:Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacketWritable.GatewayHops
+  parent: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacketWritable
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacketWritable.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerPacketWritable_GatewayHops
+  name: GatewayHops
+  nameWithType: IDhcpServerPacketWritable.GatewayHops
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacketWritable.GatewayHops
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacketWritable.TransactionId
+  commentId: P:Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacketWritable.TransactionId
+  parent: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacketWritable
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacketWritable.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerPacketWritable_TransactionId
+  name: TransactionId
+  nameWithType: IDhcpServerPacketWritable.TransactionId
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacketWritable.TransactionId
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacketWritable.SecondsElapsed
+  commentId: P:Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacketWritable.SecondsElapsed
+  parent: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacketWritable
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacketWritable.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerPacketWritable_SecondsElapsed
+  name: SecondsElapsed
+  nameWithType: IDhcpServerPacketWritable.SecondsElapsed
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacketWritable.SecondsElapsed
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacketWritable.Flags
+  commentId: P:Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacketWritable.Flags
+  parent: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacketWritable
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacketWritable.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerPacketWritable_Flags
+  name: Flags
+  nameWithType: IDhcpServerPacketWritable.Flags
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacketWritable.Flags
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacketWritable.ClientIpAddress
+  commentId: P:Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacketWritable.ClientIpAddress
+  parent: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacketWritable
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacketWritable.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerPacketWritable_ClientIpAddress
+  name: ClientIpAddress
+  nameWithType: IDhcpServerPacketWritable.ClientIpAddress
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacketWritable.ClientIpAddress
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacketWritable.YourIpAddress
+  commentId: P:Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacketWritable.YourIpAddress
+  parent: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacketWritable
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacketWritable.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerPacketWritable_YourIpAddress
+  name: YourIpAddress
+  nameWithType: IDhcpServerPacketWritable.YourIpAddress
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacketWritable.YourIpAddress
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacketWritable.NextServerIpAddress
+  commentId: P:Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacketWritable.NextServerIpAddress
+  parent: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacketWritable
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacketWritable.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerPacketWritable_NextServerIpAddress
+  name: NextServerIpAddress
+  nameWithType: IDhcpServerPacketWritable.NextServerIpAddress
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacketWritable.NextServerIpAddress
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacketWritable.RelayAgentIpAddress
+  commentId: P:Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacketWritable.RelayAgentIpAddress
+  parent: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacketWritable
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacketWritable.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerPacketWritable_RelayAgentIpAddress
+  name: RelayAgentIpAddress
+  nameWithType: IDhcpServerPacketWritable.RelayAgentIpAddress
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacketWritable.RelayAgentIpAddress
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacketWritable.ClientHardwareAddress
+  commentId: P:Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacketWritable.ClientHardwareAddress
+  parent: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacketWritable
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacketWritable.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerPacketWritable_ClientHardwareAddress
+  name: ClientHardwareAddress
+  nameWithType: IDhcpServerPacketWritable.ClientHardwareAddress
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacketWritable.ClientHardwareAddress
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacketWritable.ServerHostName
+  commentId: P:Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacketWritable.ServerHostName
+  parent: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacketWritable
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacketWritable.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerPacketWritable_ServerHostName
+  name: ServerHostName
+  nameWithType: IDhcpServerPacketWritable.ServerHostName
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacketWritable.ServerHostName
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacketWritable.FileName
+  commentId: P:Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacketWritable.FileName
+  parent: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacketWritable
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacketWritable.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerPacketWritable_FileName
+  name: FileName
+  nameWithType: IDhcpServerPacketWritable.FileName
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacketWritable.FileName
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacketWritable.OptionsMagicCookie
+  commentId: P:Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacketWritable.OptionsMagicCookie
+  parent: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacketWritable
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacketWritable.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerPacketWritable_OptionsMagicCookie
+  name: OptionsMagicCookie
+  nameWithType: IDhcpServerPacketWritable.OptionsMagicCookie
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacketWritable.OptionsMagicCookie
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacketRaw.Buffer
+  commentId: P:Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacketRaw.Buffer
+  parent: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacketRaw
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacketRaw.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerPacketRaw_Buffer
+  name: Buffer
+  nameWithType: IDhcpServerPacketRaw.Buffer
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacketRaw.Buffer
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacketRaw.GetLength
+  commentId: M:Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacketRaw.GetLength
+  parent: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacketRaw
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacketRaw.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerPacketRaw_GetLength
+  name: GetLength()
+  nameWithType: IDhcpServerPacketRaw.GetLength()
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacketRaw.GetLength()
+  spec.csharp:
+  - uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacketRaw.GetLength
+    name: GetLength
+    href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacketRaw.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerPacketRaw_GetLength
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacketRaw.GetLength
+    name: GetLength
+    href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacketRaw.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerPacketRaw_GetLength
+  - name: (
+  - name: )
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.DhcpMessageType
+  commentId: P:Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.DhcpMessageType
+  parent: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerPacket_DhcpMessageType
+  name: DhcpMessageType
+  nameWithType: IDhcpServerPacket.DhcpMessageType
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.DhcpMessageType
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.Options
+  commentId: P:Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.Options
+  parent: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerPacket_Options
+  name: Options
+  nameWithType: IDhcpServerPacket.Options
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.Options
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.TryGetOption(Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIds,Bodoconsult.Network.Windows.Dhcp.DhcpServerPacketOption@)
+  commentId: M:Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.TryGetOption(Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIds,Bodoconsult.Network.Windows.Dhcp.DhcpServerPacketOption@)
+  parent: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerPacket_TryGetOption_Bodoconsult_Network_Windows_Dhcp_DhcpServerOptionIds_Bodoconsult_Network_Windows_Dhcp_DhcpServerPacketOption__
+  name: TryGetOption(DhcpServerOptionIds, out DhcpServerPacketOption)
+  nameWithType: IDhcpServerPacket.TryGetOption(DhcpServerOptionIds, out DhcpServerPacketOption)
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.TryGetOption(Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIds, out Bodoconsult.Network.Windows.Dhcp.DhcpServerPacketOption)
+  nameWithType.vb: IDhcpServerPacket.TryGetOption(DhcpServerOptionIds, DhcpServerPacketOption)
+  fullName.vb: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.TryGetOption(Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIds, Bodoconsult.Network.Windows.Dhcp.DhcpServerPacketOption)
+  name.vb: TryGetOption(DhcpServerOptionIds, DhcpServerPacketOption)
+  spec.csharp:
+  - uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.TryGetOption(Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIds,Bodoconsult.Network.Windows.Dhcp.DhcpServerPacketOption@)
+    name: TryGetOption
+    href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerPacket_TryGetOption_Bodoconsult_Network_Windows_Dhcp_DhcpServerOptionIds_Bodoconsult_Network_Windows_Dhcp_DhcpServerPacketOption__
+  - name: (
+  - uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIds
+    name: DhcpServerOptionIds
+    href: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIds.html
+  - name: ','
+  - name: " "
+  - name: out
+  - name: " "
+  - uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerPacketOption
+    name: DhcpServerPacketOption
+    href: Bodoconsult.Network.Windows.Dhcp.DhcpServerPacketOption.html
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.TryGetOption(Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIds,Bodoconsult.Network.Windows.Dhcp.DhcpServerPacketOption@)
+    name: TryGetOption
+    href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerPacket_TryGetOption_Bodoconsult_Network_Windows_Dhcp_DhcpServerOptionIds_Bodoconsult_Network_Windows_Dhcp_DhcpServerPacketOption__
+  - name: (
+  - uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIds
+    name: DhcpServerOptionIds
+    href: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIds.html
+  - name: ','
+  - name: " "
+  - uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerPacketOption
+    name: DhcpServerPacketOption
+    href: Bodoconsult.Network.Windows.Dhcp.DhcpServerPacketOption.html
+  - name: )
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.TryGetOption(System.Byte,Bodoconsult.Network.Windows.Dhcp.DhcpServerPacketOption@)
+  commentId: M:Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.TryGetOption(System.Byte,Bodoconsult.Network.Windows.Dhcp.DhcpServerPacketOption@)
+  parent: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket
+  isExternal: true
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerPacket_TryGetOption_System_Byte_Bodoconsult_Network_Windows_Dhcp_DhcpServerPacketOption__
+  name: TryGetOption(byte, out DhcpServerPacketOption)
+  nameWithType: IDhcpServerPacket.TryGetOption(byte, out DhcpServerPacketOption)
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.TryGetOption(byte, out Bodoconsult.Network.Windows.Dhcp.DhcpServerPacketOption)
+  nameWithType.vb: IDhcpServerPacket.TryGetOption(Byte, DhcpServerPacketOption)
+  fullName.vb: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.TryGetOption(Byte, Bodoconsult.Network.Windows.Dhcp.DhcpServerPacketOption)
+  name.vb: TryGetOption(Byte, DhcpServerPacketOption)
+  spec.csharp:
+  - uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.TryGetOption(System.Byte,Bodoconsult.Network.Windows.Dhcp.DhcpServerPacketOption@)
+    name: TryGetOption
+    href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerPacket_TryGetOption_System_Byte_Bodoconsult_Network_Windows_Dhcp_DhcpServerPacketOption__
+  - name: (
+  - uid: System.Byte
+    name: byte
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.byte
+  - name: ','
+  - name: " "
+  - name: out
+  - name: " "
+  - uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerPacketOption
+    name: DhcpServerPacketOption
+    href: Bodoconsult.Network.Windows.Dhcp.DhcpServerPacketOption.html
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.TryGetOption(System.Byte,Bodoconsult.Network.Windows.Dhcp.DhcpServerPacketOption@)
+    name: TryGetOption
+    href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerPacket_TryGetOption_System_Byte_Bodoconsult_Network_Windows_Dhcp_DhcpServerPacketOption__
+  - name: (
+  - uid: System.Byte
+    name: Byte
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.byte
+  - name: ','
+  - name: " "
+  - uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerPacketOption
+    name: DhcpServerPacketOption
+    href: Bodoconsult.Network.Windows.Dhcp.DhcpServerPacketOption.html
+  - name: )
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacketWritable
+  commentId: T:Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacketWritable
+  parent: Bodoconsult.Network.Windows.Dhcp
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacketWritable.html
+  name: IDhcpServerPacketWritable
+  nameWithType: IDhcpServerPacketWritable
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacketWritable
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacketRaw
+  commentId: T:Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacketRaw
+  parent: Bodoconsult.Network.Windows.Dhcp
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacketRaw.html
+  name: IDhcpServerPacketRaw
+  nameWithType: IDhcpServerPacketRaw
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacketRaw
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket
+  commentId: T:Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket
+  parent: Bodoconsult.Network.Windows.Dhcp
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.html
+  name: IDhcpServerPacket
+  nameWithType: IDhcpServerPacket
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacketRawWritable.TryAdjustBuffer*
+  commentId: Overload:Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacketRawWritable.TryAdjustBuffer
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacketRawWritable.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerPacketRawWritable_TryAdjustBuffer_System_Int32_System_Int32_
+  name: TryAdjustBuffer
+  nameWithType: IDhcpServerPacketRawWritable.TryAdjustBuffer
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacketRawWritable.TryAdjustBuffer
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System

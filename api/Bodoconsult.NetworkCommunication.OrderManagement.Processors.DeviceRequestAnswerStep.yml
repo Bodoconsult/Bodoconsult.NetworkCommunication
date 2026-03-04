@@ -1,0 +1,1456 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Processors.DeviceRequestAnswerStep
+  commentId: T:Bodoconsult.NetworkCommunication.OrderManagement.Processors.DeviceRequestAnswerStep
+  id: DeviceRequestAnswerStep
+  parent: Bodoconsult.NetworkCommunication.OrderManagement.Processors
+  children:
+  - Bodoconsult.NetworkCommunication.OrderManagement.Processors.DeviceRequestAnswerStep.#ctor(Bodoconsult.NetworkCommunication.Interfaces.IDeviceRequestSpec)
+  - Bodoconsult.NetworkCommunication.OrderManagement.Processors.DeviceRequestAnswerStep.AcceptedMessage
+  - Bodoconsult.NetworkCommunication.OrderManagement.Processors.DeviceRequestAnswerStep.Cancel
+  - Bodoconsult.NetworkCommunication.OrderManagement.Processors.DeviceRequestAnswerStep.CheckReceivedMessage(Bodoconsult.NetworkCommunication.Interfaces.IInboundDataMessage)
+  - Bodoconsult.NetworkCommunication.OrderManagement.Processors.DeviceRequestAnswerStep.CheckReceivedMessage(Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessage,Bodoconsult.NetworkCommunication.Interfaces.IInboundDataMessage,System.Collections.Generic.IList{System.String})
+  - Bodoconsult.NetworkCommunication.OrderManagement.Processors.DeviceRequestAnswerStep.DeviceRequestSpec
+  - Bodoconsult.NetworkCommunication.OrderManagement.Processors.DeviceRequestAnswerStep.Dispose
+  - Bodoconsult.NetworkCommunication.OrderManagement.Processors.DeviceRequestAnswerStep.HandleResult
+  - Bodoconsult.NetworkCommunication.OrderManagement.Processors.DeviceRequestAnswerStep.NextChainElement
+  - Bodoconsult.NetworkCommunication.OrderManagement.Processors.DeviceRequestAnswerStep.Order
+  - Bodoconsult.NetworkCommunication.OrderManagement.Processors.DeviceRequestAnswerStep.ProcessChainElement
+  - Bodoconsult.NetworkCommunication.OrderManagement.Processors.DeviceRequestAnswerStep.SetResult(Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionResultState)
+  - Bodoconsult.NetworkCommunication.OrderManagement.Processors.DeviceRequestAnswerStep.WasSuccessful
+  langs:
+  - csharp
+  - vb
+  name: DeviceRequestAnswerStep
+  nameWithType: DeviceRequestAnswerStep
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Processors.DeviceRequestAnswerStep
+  type: Class
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/OrderManagement/Processors/DeviceRequestAnswerStep.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: DeviceRequestAnswerStep
+    path: src/Bodoconsult.NetworkCommunication/OrderManagement/Processors/DeviceRequestAnswerStep.cs
+    startLine: 14
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.OrderManagement.Processors
+  summary: Defines a device bound request step
+  example: []
+  syntax:
+    content: 'public class DeviceRequestAnswerStep : BaseRequestAnswerStep, IDeviceRequestAnswerStep, IRequestAnswerStep, IDisposable'
+    content.vb: Public Class DeviceRequestAnswerStep Inherits BaseRequestAnswerStep Implements IDeviceRequestAnswerStep, IRequestAnswerStep, IDisposable
+  inheritance:
+  - System.Object
+  - Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep
+  implements:
+  - Bodoconsult.NetworkCommunication.Interfaces.IDeviceRequestAnswerStep
+  - Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswerStep
+  - System.IDisposable
+  inheritedMembers:
+  - Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.RequestSpec
+  - Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.AllowedRequestAnswers
+  - Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.Timeout
+  - Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.CancelActionDelegate
+  - Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.BeforeExecuteActionDelegate
+  - Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.HandleRequestAnswerStepFailedDelegate
+  - Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.StateToNotifyBeforeRunning
+  - Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.BreakingAsyncCommands
+  - Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.Reset
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Processors.DeviceRequestAnswerStep.Order
+  commentId: F:Bodoconsult.NetworkCommunication.OrderManagement.Processors.DeviceRequestAnswerStep.Order
+  id: Order
+  parent: Bodoconsult.NetworkCommunication.OrderManagement.Processors.DeviceRequestAnswerStep
+  langs:
+  - csharp
+  - vb
+  name: Order
+  nameWithType: DeviceRequestAnswerStep.Order
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Processors.DeviceRequestAnswerStep.Order
+  type: Field
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/OrderManagement/Processors/DeviceRequestAnswerStep.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Order
+    path: src/Bodoconsult.NetworkCommunication/OrderManagement/Processors/DeviceRequestAnswerStep.cs
+    startLine: 18
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.OrderManagement.Processors
+  syntax:
+    content: protected readonly IOrder Order
+    return:
+      type: Bodoconsult.NetworkCommunication.Interfaces.IOrder
+    content.vb: Protected ReadOnly Order As IOrder
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Processors.DeviceRequestAnswerStep.#ctor(Bodoconsult.NetworkCommunication.Interfaces.IDeviceRequestSpec)
+  commentId: M:Bodoconsult.NetworkCommunication.OrderManagement.Processors.DeviceRequestAnswerStep.#ctor(Bodoconsult.NetworkCommunication.Interfaces.IDeviceRequestSpec)
+  id: '#ctor(Bodoconsult.NetworkCommunication.Interfaces.IDeviceRequestSpec)'
+  parent: Bodoconsult.NetworkCommunication.OrderManagement.Processors.DeviceRequestAnswerStep
+  langs:
+  - csharp
+  - vb
+  name: DeviceRequestAnswerStep(IDeviceRequestSpec)
+  nameWithType: DeviceRequestAnswerStep.DeviceRequestAnswerStep(IDeviceRequestSpec)
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Processors.DeviceRequestAnswerStep.DeviceRequestAnswerStep(Bodoconsult.NetworkCommunication.Interfaces.IDeviceRequestSpec)
+  type: Constructor
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/OrderManagement/Processors/DeviceRequestAnswerStep.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: .ctor
+    path: src/Bodoconsult.NetworkCommunication/OrderManagement/Processors/DeviceRequestAnswerStep.cs
+    startLine: 26
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.OrderManagement.Processors
+  summary: Default ctor
+  example: []
+  syntax:
+    content: public DeviceRequestAnswerStep(IDeviceRequestSpec requestSpec)
+    parameters:
+    - id: requestSpec
+      type: Bodoconsult.NetworkCommunication.Interfaces.IDeviceRequestSpec
+      description: The request spec this object is bound to
+    content.vb: Public Sub New(requestSpec As IDeviceRequestSpec)
+  overload: Bodoconsult.NetworkCommunication.OrderManagement.Processors.DeviceRequestAnswerStep.#ctor*
+  nameWithType.vb: DeviceRequestAnswerStep.New(IDeviceRequestSpec)
+  fullName.vb: Bodoconsult.NetworkCommunication.OrderManagement.Processors.DeviceRequestAnswerStep.New(Bodoconsult.NetworkCommunication.Interfaces.IDeviceRequestSpec)
+  name.vb: New(IDeviceRequestSpec)
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Processors.DeviceRequestAnswerStep.DeviceRequestSpec
+  commentId: P:Bodoconsult.NetworkCommunication.OrderManagement.Processors.DeviceRequestAnswerStep.DeviceRequestSpec
+  id: DeviceRequestSpec
+  parent: Bodoconsult.NetworkCommunication.OrderManagement.Processors.DeviceRequestAnswerStep
+  langs:
+  - csharp
+  - vb
+  name: DeviceRequestSpec
+  nameWithType: DeviceRequestAnswerStep.DeviceRequestSpec
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Processors.DeviceRequestAnswerStep.DeviceRequestSpec
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/OrderManagement/Processors/DeviceRequestAnswerStep.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: DeviceRequestSpec
+    path: src/Bodoconsult.NetworkCommunication/OrderManagement/Processors/DeviceRequestAnswerStep.cs
+    startLine: 35
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.OrderManagement.Processors
+  summary: Device bound request spec
+  example: []
+  syntax:
+    content: public IDeviceRequestSpec DeviceRequestSpec { get; }
+    parameters: []
+    return:
+      type: Bodoconsult.NetworkCommunication.Interfaces.IDeviceRequestSpec
+    content.vb: Public ReadOnly Property DeviceRequestSpec As IDeviceRequestSpec
+  overload: Bodoconsult.NetworkCommunication.OrderManagement.Processors.DeviceRequestAnswerStep.DeviceRequestSpec*
+  implements:
+  - Bodoconsult.NetworkCommunication.Interfaces.IDeviceRequestAnswerStep.DeviceRequestSpec
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Processors.DeviceRequestAnswerStep.HandleResult
+  commentId: M:Bodoconsult.NetworkCommunication.OrderManagement.Processors.DeviceRequestAnswerStep.HandleResult
+  id: HandleResult
+  parent: Bodoconsult.NetworkCommunication.OrderManagement.Processors.DeviceRequestAnswerStep
+  langs:
+  - csharp
+  - vb
+  name: HandleResult()
+  nameWithType: DeviceRequestAnswerStep.HandleResult()
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Processors.DeviceRequestAnswerStep.HandleResult()
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/OrderManagement/Processors/DeviceRequestAnswerStep.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: HandleResult
+    path: src/Bodoconsult.NetworkCommunication/OrderManagement/Processors/DeviceRequestAnswerStep.cs
+    startLine: 41
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.OrderManagement.Processors
+  summary: Handles the answer of the request
+  example: []
+  syntax:
+    content: public override MessageHandlingResult HandleResult()
+    return:
+      type: Bodoconsult.NetworkCommunication.Interfaces.MessageHandlingResult
+      description: Message handling result
+    content.vb: Public Overrides Function HandleResult() As MessageHandlingResult
+  overridden: Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.HandleResult
+  overload: Bodoconsult.NetworkCommunication.OrderManagement.Processors.DeviceRequestAnswerStep.HandleResult*
+  implements:
+  - Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswerStep.HandleResult
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Processors.DeviceRequestAnswerStep.CheckReceivedMessage(Bodoconsult.NetworkCommunication.Interfaces.IInboundDataMessage)
+  commentId: M:Bodoconsult.NetworkCommunication.OrderManagement.Processors.DeviceRequestAnswerStep.CheckReceivedMessage(Bodoconsult.NetworkCommunication.Interfaces.IInboundDataMessage)
+  id: CheckReceivedMessage(Bodoconsult.NetworkCommunication.Interfaces.IInboundDataMessage)
+  parent: Bodoconsult.NetworkCommunication.OrderManagement.Processors.DeviceRequestAnswerStep
+  langs:
+  - csharp
+  - vb
+  name: CheckReceivedMessage(IInboundDataMessage)
+  nameWithType: DeviceRequestAnswerStep.CheckReceivedMessage(IInboundDataMessage)
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Processors.DeviceRequestAnswerStep.CheckReceivedMessage(Bodoconsult.NetworkCommunication.Interfaces.IInboundDataMessage)
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/OrderManagement/Processors/DeviceRequestAnswerStep.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: CheckReceivedMessage
+    path: src/Bodoconsult.NetworkCommunication/OrderManagement/Processors/DeviceRequestAnswerStep.cs
+    startLine: 148
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.OrderManagement.Processors
+  summary: Check the received message is fitting to the current request
+  example: []
+  syntax:
+    content: public IEnumerable<string> CheckReceivedMessage(IInboundDataMessage receivedMessage)
+    parameters:
+    - id: receivedMessage
+      type: Bodoconsult.NetworkCommunication.Interfaces.IInboundDataMessage
+      description: Received message
+    return:
+      type: System.Collections.Generic.IEnumerable{System.String}
+      description: True if the received message is fitting to the current request else false
+    content.vb: Public Function CheckReceivedMessage(receivedMessage As IInboundDataMessage) As IEnumerable(Of String)
+  overload: Bodoconsult.NetworkCommunication.OrderManagement.Processors.DeviceRequestAnswerStep.CheckReceivedMessage*
+  implements:
+  - Bodoconsult.NetworkCommunication.Interfaces.IDeviceRequestAnswerStep.CheckReceivedMessage(Bodoconsult.NetworkCommunication.Interfaces.IInboundDataMessage)
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Processors.DeviceRequestAnswerStep.CheckReceivedMessage(Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessage,Bodoconsult.NetworkCommunication.Interfaces.IInboundDataMessage,System.Collections.Generic.IList{System.String})
+  commentId: M:Bodoconsult.NetworkCommunication.OrderManagement.Processors.DeviceRequestAnswerStep.CheckReceivedMessage(Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessage,Bodoconsult.NetworkCommunication.Interfaces.IInboundDataMessage,System.Collections.Generic.IList{System.String})
+  id: CheckReceivedMessage(Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessage,Bodoconsult.NetworkCommunication.Interfaces.IInboundDataMessage,System.Collections.Generic.IList{System.String})
+  parent: Bodoconsult.NetworkCommunication.OrderManagement.Processors.DeviceRequestAnswerStep
+  langs:
+  - csharp
+  - vb
+  name: CheckReceivedMessage(IOutboundDataMessage, IInboundDataMessage, IList<string>)
+  nameWithType: DeviceRequestAnswerStep.CheckReceivedMessage(IOutboundDataMessage, IInboundDataMessage, IList<string>)
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Processors.DeviceRequestAnswerStep.CheckReceivedMessage(Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessage, Bodoconsult.NetworkCommunication.Interfaces.IInboundDataMessage, System.Collections.Generic.IList<string>)
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/OrderManagement/Processors/DeviceRequestAnswerStep.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: CheckReceivedMessage
+    path: src/Bodoconsult.NetworkCommunication/OrderManagement/Processors/DeviceRequestAnswerStep.cs
+    startLine: 236
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.OrderManagement.Processors
+  summary: Check if a received message is the expected answer to the request step.
+  example: []
+  syntax:
+    content: public virtual bool CheckReceivedMessage(IOutboundDataMessage sentMessage, IInboundDataMessage receivedMessage, IList<string> errors)
+    parameters:
+    - id: sentMessage
+      type: Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessage
+      description: The message sent from the request to the tower
+    - id: receivedMessage
+      type: Bodoconsult.NetworkCommunication.Interfaces.IInboundDataMessage
+      description: A received message from the tower
+    - id: errors
+      type: System.Collections.Generic.IList{System.String}
+      description: List with error messages to fill
+    return:
+      type: System.Boolean
+      description: True if the message was as expected as answer of the sent message else false
+    content.vb: Public Overridable Function CheckReceivedMessage(sentMessage As IOutboundDataMessage, receivedMessage As IInboundDataMessage, errors As IList(Of String)) As Boolean
+  overload: Bodoconsult.NetworkCommunication.OrderManagement.Processors.DeviceRequestAnswerStep.CheckReceivedMessage*
+  implements:
+  - Bodoconsult.NetworkCommunication.Interfaces.IDeviceRequestAnswerStep.CheckReceivedMessage(Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessage,Bodoconsult.NetworkCommunication.Interfaces.IInboundDataMessage,System.Collections.Generic.IList{System.String})
+  nameWithType.vb: DeviceRequestAnswerStep.CheckReceivedMessage(IOutboundDataMessage, IInboundDataMessage, IList(Of String))
+  fullName.vb: Bodoconsult.NetworkCommunication.OrderManagement.Processors.DeviceRequestAnswerStep.CheckReceivedMessage(Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessage, Bodoconsult.NetworkCommunication.Interfaces.IInboundDataMessage, System.Collections.Generic.IList(Of String))
+  name.vb: CheckReceivedMessage(IOutboundDataMessage, IInboundDataMessage, IList(Of String))
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Processors.DeviceRequestAnswerStep.AcceptedMessage
+  commentId: P:Bodoconsult.NetworkCommunication.OrderManagement.Processors.DeviceRequestAnswerStep.AcceptedMessage
+  id: AcceptedMessage
+  parent: Bodoconsult.NetworkCommunication.OrderManagement.Processors.DeviceRequestAnswerStep
+  langs:
+  - csharp
+  - vb
+  name: AcceptedMessage
+  nameWithType: DeviceRequestAnswerStep.AcceptedMessage
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Processors.DeviceRequestAnswerStep.AcceptedMessage
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/OrderManagement/Processors/DeviceRequestAnswerStep.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: AcceptedMessage
+    path: src/Bodoconsult.NetworkCommunication/OrderManagement/Processors/DeviceRequestAnswerStep.cs
+    startLine: 261
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.OrderManagement.Processors
+  summary: The accepted message leading <xref href="Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswerStep.WasSuccessful" data-throw-if-not-resolved="false"></xref> being true
+  example: []
+  syntax:
+    content: public IInboundDataMessage AcceptedMessage { get; protected set; }
+    parameters: []
+    return:
+      type: Bodoconsult.NetworkCommunication.Interfaces.IInboundDataMessage
+    content.vb: Public Property AcceptedMessage As IInboundDataMessage
+  overload: Bodoconsult.NetworkCommunication.OrderManagement.Processors.DeviceRequestAnswerStep.AcceptedMessage*
+  implements:
+  - Bodoconsult.NetworkCommunication.Interfaces.IDeviceRequestAnswerStep.AcceptedMessage
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Processors.DeviceRequestAnswerStep.NextChainElement
+  commentId: P:Bodoconsult.NetworkCommunication.OrderManagement.Processors.DeviceRequestAnswerStep.NextChainElement
+  id: NextChainElement
+  parent: Bodoconsult.NetworkCommunication.OrderManagement.Processors.DeviceRequestAnswerStep
+  langs:
+  - csharp
+  - vb
+  name: NextChainElement
+  nameWithType: DeviceRequestAnswerStep.NextChainElement
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Processors.DeviceRequestAnswerStep.NextChainElement
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/OrderManagement/Processors/DeviceRequestAnswerStep.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: NextChainElement
+    path: src/Bodoconsult.NetworkCommunication/OrderManagement/Processors/DeviceRequestAnswerStep.cs
+    startLine: 266
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.OrderManagement.Processors
+  summary: Next chain element
+  example: []
+  syntax:
+    content: public IDeviceRequestAnswerStep NextChainElement { get; set; }
+    parameters: []
+    return:
+      type: Bodoconsult.NetworkCommunication.Interfaces.IDeviceRequestAnswerStep
+    content.vb: Public Property NextChainElement As IDeviceRequestAnswerStep
+  overload: Bodoconsult.NetworkCommunication.OrderManagement.Processors.DeviceRequestAnswerStep.NextChainElement*
+  implements:
+  - Bodoconsult.NetworkCommunication.Interfaces.IDeviceRequestAnswerStep.NextChainElement
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Processors.DeviceRequestAnswerStep.WasSuccessful
+  commentId: P:Bodoconsult.NetworkCommunication.OrderManagement.Processors.DeviceRequestAnswerStep.WasSuccessful
+  id: WasSuccessful
+  parent: Bodoconsult.NetworkCommunication.OrderManagement.Processors.DeviceRequestAnswerStep
+  langs:
+  - csharp
+  - vb
+  name: WasSuccessful
+  nameWithType: DeviceRequestAnswerStep.WasSuccessful
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Processors.DeviceRequestAnswerStep.WasSuccessful
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/OrderManagement/Processors/DeviceRequestAnswerStep.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: WasSuccessful
+    path: src/Bodoconsult.NetworkCommunication/OrderManagement/Processors/DeviceRequestAnswerStep.cs
+    startLine: 271
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.OrderManagement.Processors
+  summary: The step was successfully processed in all steps
+  example: []
+  syntax:
+    content: public override bool WasSuccessful { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Overrides Property WasSuccessful As Boolean
+  overridden: Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.WasSuccessful
+  overload: Bodoconsult.NetworkCommunication.OrderManagement.Processors.DeviceRequestAnswerStep.WasSuccessful*
+  implements:
+  - Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswerStep.WasSuccessful
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Processors.DeviceRequestAnswerStep.Cancel
+  commentId: M:Bodoconsult.NetworkCommunication.OrderManagement.Processors.DeviceRequestAnswerStep.Cancel
+  id: Cancel
+  parent: Bodoconsult.NetworkCommunication.OrderManagement.Processors.DeviceRequestAnswerStep
+  langs:
+  - csharp
+  - vb
+  name: Cancel()
+  nameWithType: DeviceRequestAnswerStep.Cancel()
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Processors.DeviceRequestAnswerStep.Cancel()
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/OrderManagement/Processors/DeviceRequestAnswerStep.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Cancel
+    path: src/Bodoconsult.NetworkCommunication/OrderManagement/Processors/DeviceRequestAnswerStep.cs
+    startLine: 322
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.OrderManagement.Processors
+  summary: Cancel the step
+  example: []
+  syntax:
+    content: public override void Cancel()
+    content.vb: Public Overrides Sub Cancel()
+  overridden: Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.Cancel
+  overload: Bodoconsult.NetworkCommunication.OrderManagement.Processors.DeviceRequestAnswerStep.Cancel*
+  implements:
+  - Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswerStep.Cancel
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Processors.DeviceRequestAnswerStep.Dispose
+  commentId: M:Bodoconsult.NetworkCommunication.OrderManagement.Processors.DeviceRequestAnswerStep.Dispose
+  id: Dispose
+  parent: Bodoconsult.NetworkCommunication.OrderManagement.Processors.DeviceRequestAnswerStep
+  langs:
+  - csharp
+  - vb
+  name: Dispose()
+  nameWithType: DeviceRequestAnswerStep.Dispose()
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Processors.DeviceRequestAnswerStep.Dispose()
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/OrderManagement/Processors/DeviceRequestAnswerStep.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Dispose
+    path: src/Bodoconsult.NetworkCommunication/OrderManagement/Processors/DeviceRequestAnswerStep.cs
+    startLine: 329
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.OrderManagement.Processors
+  summary: Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+  example: []
+  syntax:
+    content: public override void Dispose()
+    content.vb: Public Overrides Sub Dispose()
+  overridden: Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.Dispose
+  overload: Bodoconsult.NetworkCommunication.OrderManagement.Processors.DeviceRequestAnswerStep.Dispose*
+  implements:
+  - System.IDisposable.Dispose
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Processors.DeviceRequestAnswerStep.ProcessChainElement
+  commentId: M:Bodoconsult.NetworkCommunication.OrderManagement.Processors.DeviceRequestAnswerStep.ProcessChainElement
+  id: ProcessChainElement
+  parent: Bodoconsult.NetworkCommunication.OrderManagement.Processors.DeviceRequestAnswerStep
+  langs:
+  - csharp
+  - vb
+  name: ProcessChainElement()
+  nameWithType: DeviceRequestAnswerStep.ProcessChainElement()
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Processors.DeviceRequestAnswerStep.ProcessChainElement()
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/OrderManagement/Processors/DeviceRequestAnswerStep.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: ProcessChainElement
+    path: src/Bodoconsult.NetworkCommunication/OrderManagement/Processors/DeviceRequestAnswerStep.cs
+    startLine: 363
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.OrderManagement.Processors
+  summary: Process the current request answer step in a chain
+  example: []
+  syntax:
+    content: public void ProcessChainElement()
+    content.vb: Public Sub ProcessChainElement()
+  overload: Bodoconsult.NetworkCommunication.OrderManagement.Processors.DeviceRequestAnswerStep.ProcessChainElement*
+  implements:
+  - Bodoconsult.NetworkCommunication.Interfaces.IDeviceRequestAnswerStep.ProcessChainElement
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Processors.DeviceRequestAnswerStep.SetResult(Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionResultState)
+  commentId: M:Bodoconsult.NetworkCommunication.OrderManagement.Processors.DeviceRequestAnswerStep.SetResult(Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionResultState)
+  id: SetResult(Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionResultState)
+  parent: Bodoconsult.NetworkCommunication.OrderManagement.Processors.DeviceRequestAnswerStep
+  langs:
+  - csharp
+  - vb
+  name: SetResult(IOrderExecutionResultState)
+  nameWithType: DeviceRequestAnswerStep.SetResult(IOrderExecutionResultState)
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Processors.DeviceRequestAnswerStep.SetResult(Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionResultState)
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/OrderManagement/Processors/DeviceRequestAnswerStep.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: SetResult
+    path: src/Bodoconsult.NetworkCommunication/OrderManagement/Processors/DeviceRequestAnswerStep.cs
+    startLine: 417
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.OrderManagement.Processors
+  syntax:
+    content: protected void SetResult(IOrderExecutionResultState result)
+    parameters:
+    - id: result
+      type: Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionResultState
+    content.vb: Protected Sub SetResult(result As IOrderExecutionResultState)
+  overload: Bodoconsult.NetworkCommunication.OrderManagement.Processors.DeviceRequestAnswerStep.SetResult*
+references:
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Processors
+  commentId: N:Bodoconsult.NetworkCommunication.OrderManagement.Processors
+  href: Bodoconsult.html
+  name: Bodoconsult.NetworkCommunication.OrderManagement.Processors
+  nameWithType: Bodoconsult.NetworkCommunication.OrderManagement.Processors
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Processors
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.OrderManagement
+    name: OrderManagement
+    href: Bodoconsult.NetworkCommunication.OrderManagement.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.OrderManagement.Processors
+    name: Processors
+    href: Bodoconsult.NetworkCommunication.OrderManagement.Processors.html
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.OrderManagement
+    name: OrderManagement
+    href: Bodoconsult.NetworkCommunication.OrderManagement.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.OrderManagement.Processors
+    name: Processors
+    href: Bodoconsult.NetworkCommunication.OrderManagement.Processors.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep
+  commentId: T:Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep
+  parent: Bodoconsult.NetworkCommunication.OrderManagement.Processors
+  href: Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.html
+  name: BaseRequestAnswerStep
+  nameWithType: BaseRequestAnswerStep
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IDeviceRequestAnswerStep
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.IDeviceRequestAnswerStep
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.NetworkCommunication.Interfaces.IDeviceRequestAnswerStep.html
+  name: IDeviceRequestAnswerStep
+  nameWithType: IDeviceRequestAnswerStep
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IDeviceRequestAnswerStep
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswerStep
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswerStep
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswerStep.html
+  name: IRequestAnswerStep
+  nameWithType: IRequestAnswerStep
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswerStep
+- uid: System.IDisposable
+  commentId: T:System.IDisposable
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable
+  name: IDisposable
+  nameWithType: IDisposable
+  fullName: System.IDisposable
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.RequestSpec
+  commentId: P:Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.RequestSpec
+  parent: Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep
+  href: Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.html#Bodoconsult_NetworkCommunication_OrderManagement_Processors_BaseRequestAnswerStep_RequestSpec
+  name: RequestSpec
+  nameWithType: BaseRequestAnswerStep.RequestSpec
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.RequestSpec
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.AllowedRequestAnswers
+  commentId: P:Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.AllowedRequestAnswers
+  parent: Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep
+  href: Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.html#Bodoconsult_NetworkCommunication_OrderManagement_Processors_BaseRequestAnswerStep_AllowedRequestAnswers
+  name: AllowedRequestAnswers
+  nameWithType: BaseRequestAnswerStep.AllowedRequestAnswers
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.AllowedRequestAnswers
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.Timeout
+  commentId: P:Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.Timeout
+  parent: Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep
+  href: Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.html#Bodoconsult_NetworkCommunication_OrderManagement_Processors_BaseRequestAnswerStep_Timeout
+  name: Timeout
+  nameWithType: BaseRequestAnswerStep.Timeout
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.Timeout
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.CancelActionDelegate
+  commentId: P:Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.CancelActionDelegate
+  parent: Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep
+  href: Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.html#Bodoconsult_NetworkCommunication_OrderManagement_Processors_BaseRequestAnswerStep_CancelActionDelegate
+  name: CancelActionDelegate
+  nameWithType: BaseRequestAnswerStep.CancelActionDelegate
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.CancelActionDelegate
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.BeforeExecuteActionDelegate
+  commentId: P:Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.BeforeExecuteActionDelegate
+  parent: Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep
+  href: Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.html#Bodoconsult_NetworkCommunication_OrderManagement_Processors_BaseRequestAnswerStep_BeforeExecuteActionDelegate
+  name: BeforeExecuteActionDelegate
+  nameWithType: BaseRequestAnswerStep.BeforeExecuteActionDelegate
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.BeforeExecuteActionDelegate
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.HandleRequestAnswerStepFailedDelegate
+  commentId: P:Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.HandleRequestAnswerStepFailedDelegate
+  parent: Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep
+  href: Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.html#Bodoconsult_NetworkCommunication_OrderManagement_Processors_BaseRequestAnswerStep_HandleRequestAnswerStepFailedDelegate
+  name: HandleRequestAnswerStepFailedDelegate
+  nameWithType: BaseRequestAnswerStep.HandleRequestAnswerStepFailedDelegate
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.HandleRequestAnswerStepFailedDelegate
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.StateToNotifyBeforeRunning
+  commentId: P:Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.StateToNotifyBeforeRunning
+  parent: Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep
+  href: Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.html#Bodoconsult_NetworkCommunication_OrderManagement_Processors_BaseRequestAnswerStep_StateToNotifyBeforeRunning
+  name: StateToNotifyBeforeRunning
+  nameWithType: BaseRequestAnswerStep.StateToNotifyBeforeRunning
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.StateToNotifyBeforeRunning
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.BreakingAsyncCommands
+  commentId: P:Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.BreakingAsyncCommands
+  parent: Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep
+  href: Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.html#Bodoconsult_NetworkCommunication_OrderManagement_Processors_BaseRequestAnswerStep_BreakingAsyncCommands
+  name: BreakingAsyncCommands
+  nameWithType: BaseRequestAnswerStep.BreakingAsyncCommands
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.BreakingAsyncCommands
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.Reset
+  commentId: M:Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.Reset
+  parent: Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep
+  href: Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.html#Bodoconsult_NetworkCommunication_OrderManagement_Processors_BaseRequestAnswerStep_Reset
+  name: Reset()
+  nameWithType: BaseRequestAnswerStep.Reset()
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.Reset()
+  spec.csharp:
+  - uid: Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.Reset
+    name: Reset
+    href: Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.html#Bodoconsult_NetworkCommunication_OrderManagement_Processors_BaseRequestAnswerStep_Reset
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.Reset
+    name: Reset
+    href: Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.html#Bodoconsult_NetworkCommunication_OrderManagement_Processors_BaseRequestAnswerStep_Reset
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Bodoconsult.NetworkCommunication.Interfaces
+  commentId: N:Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.html
+  name: Bodoconsult.NetworkCommunication.Interfaces
+  nameWithType: Bodoconsult.NetworkCommunication.Interfaces
+  fullName: Bodoconsult.NetworkCommunication.Interfaces
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Interfaces
+    name: Interfaces
+    href: Bodoconsult.NetworkCommunication.Interfaces.html
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Interfaces
+    name: Interfaces
+    href: Bodoconsult.NetworkCommunication.Interfaces.html
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IOrder
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.IOrder
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.NetworkCommunication.Interfaces.IOrder.html
+  name: IOrder
+  nameWithType: IOrder
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IOrder
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Processors.DeviceRequestAnswerStep.#ctor*
+  commentId: Overload:Bodoconsult.NetworkCommunication.OrderManagement.Processors.DeviceRequestAnswerStep.#ctor
+  href: Bodoconsult.NetworkCommunication.OrderManagement.Processors.DeviceRequestAnswerStep.html#Bodoconsult_NetworkCommunication_OrderManagement_Processors_DeviceRequestAnswerStep__ctor_Bodoconsult_NetworkCommunication_Interfaces_IDeviceRequestSpec_
+  name: DeviceRequestAnswerStep
+  nameWithType: DeviceRequestAnswerStep.DeviceRequestAnswerStep
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Processors.DeviceRequestAnswerStep.DeviceRequestAnswerStep
+  nameWithType.vb: DeviceRequestAnswerStep.New
+  fullName.vb: Bodoconsult.NetworkCommunication.OrderManagement.Processors.DeviceRequestAnswerStep.New
+  name.vb: New
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IDeviceRequestSpec
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.IDeviceRequestSpec
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.NetworkCommunication.Interfaces.IDeviceRequestSpec.html
+  name: IDeviceRequestSpec
+  nameWithType: IDeviceRequestSpec
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IDeviceRequestSpec
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Processors.DeviceRequestAnswerStep.DeviceRequestSpec*
+  commentId: Overload:Bodoconsult.NetworkCommunication.OrderManagement.Processors.DeviceRequestAnswerStep.DeviceRequestSpec
+  href: Bodoconsult.NetworkCommunication.OrderManagement.Processors.DeviceRequestAnswerStep.html#Bodoconsult_NetworkCommunication_OrderManagement_Processors_DeviceRequestAnswerStep_DeviceRequestSpec
+  name: DeviceRequestSpec
+  nameWithType: DeviceRequestAnswerStep.DeviceRequestSpec
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Processors.DeviceRequestAnswerStep.DeviceRequestSpec
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IDeviceRequestAnswerStep.DeviceRequestSpec
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IDeviceRequestAnswerStep.DeviceRequestSpec
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IDeviceRequestAnswerStep
+  href: Bodoconsult.NetworkCommunication.Interfaces.IDeviceRequestAnswerStep.html#Bodoconsult_NetworkCommunication_Interfaces_IDeviceRequestAnswerStep_DeviceRequestSpec
+  name: DeviceRequestSpec
+  nameWithType: IDeviceRequestAnswerStep.DeviceRequestSpec
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IDeviceRequestAnswerStep.DeviceRequestSpec
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.HandleResult
+  commentId: M:Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.HandleResult
+  parent: Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep
+  href: Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.html#Bodoconsult_NetworkCommunication_OrderManagement_Processors_BaseRequestAnswerStep_HandleResult
+  name: HandleResult()
+  nameWithType: BaseRequestAnswerStep.HandleResult()
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.HandleResult()
+  spec.csharp:
+  - uid: Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.HandleResult
+    name: HandleResult
+    href: Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.html#Bodoconsult_NetworkCommunication_OrderManagement_Processors_BaseRequestAnswerStep_HandleResult
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.HandleResult
+    name: HandleResult
+    href: Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.html#Bodoconsult_NetworkCommunication_OrderManagement_Processors_BaseRequestAnswerStep_HandleResult
+  - name: (
+  - name: )
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Processors.DeviceRequestAnswerStep.HandleResult*
+  commentId: Overload:Bodoconsult.NetworkCommunication.OrderManagement.Processors.DeviceRequestAnswerStep.HandleResult
+  href: Bodoconsult.NetworkCommunication.OrderManagement.Processors.DeviceRequestAnswerStep.html#Bodoconsult_NetworkCommunication_OrderManagement_Processors_DeviceRequestAnswerStep_HandleResult
+  name: HandleResult
+  nameWithType: DeviceRequestAnswerStep.HandleResult
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Processors.DeviceRequestAnswerStep.HandleResult
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswerStep.HandleResult
+  commentId: M:Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswerStep.HandleResult
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswerStep
+  href: Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswerStep.html#Bodoconsult_NetworkCommunication_Interfaces_IRequestAnswerStep_HandleResult
+  name: HandleResult()
+  nameWithType: IRequestAnswerStep.HandleResult()
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswerStep.HandleResult()
+  spec.csharp:
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswerStep.HandleResult
+    name: HandleResult
+    href: Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswerStep.html#Bodoconsult_NetworkCommunication_Interfaces_IRequestAnswerStep_HandleResult
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswerStep.HandleResult
+    name: HandleResult
+    href: Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswerStep.html#Bodoconsult_NetworkCommunication_Interfaces_IRequestAnswerStep_HandleResult
+  - name: (
+  - name: )
+- uid: Bodoconsult.NetworkCommunication.Interfaces.MessageHandlingResult
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.MessageHandlingResult
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.NetworkCommunication.Interfaces.MessageHandlingResult.html
+  name: MessageHandlingResult
+  nameWithType: MessageHandlingResult
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.MessageHandlingResult
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Processors.DeviceRequestAnswerStep.CheckReceivedMessage*
+  commentId: Overload:Bodoconsult.NetworkCommunication.OrderManagement.Processors.DeviceRequestAnswerStep.CheckReceivedMessage
+  href: Bodoconsult.NetworkCommunication.OrderManagement.Processors.DeviceRequestAnswerStep.html#Bodoconsult_NetworkCommunication_OrderManagement_Processors_DeviceRequestAnswerStep_CheckReceivedMessage_Bodoconsult_NetworkCommunication_Interfaces_IInboundDataMessage_
+  name: CheckReceivedMessage
+  nameWithType: DeviceRequestAnswerStep.CheckReceivedMessage
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Processors.DeviceRequestAnswerStep.CheckReceivedMessage
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IDeviceRequestAnswerStep.CheckReceivedMessage(Bodoconsult.NetworkCommunication.Interfaces.IInboundDataMessage)
+  commentId: M:Bodoconsult.NetworkCommunication.Interfaces.IDeviceRequestAnswerStep.CheckReceivedMessage(Bodoconsult.NetworkCommunication.Interfaces.IInboundDataMessage)
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IDeviceRequestAnswerStep
+  href: Bodoconsult.NetworkCommunication.Interfaces.IDeviceRequestAnswerStep.html#Bodoconsult_NetworkCommunication_Interfaces_IDeviceRequestAnswerStep_CheckReceivedMessage_Bodoconsult_NetworkCommunication_Interfaces_IInboundDataMessage_
+  name: CheckReceivedMessage(IInboundDataMessage)
+  nameWithType: IDeviceRequestAnswerStep.CheckReceivedMessage(IInboundDataMessage)
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IDeviceRequestAnswerStep.CheckReceivedMessage(Bodoconsult.NetworkCommunication.Interfaces.IInboundDataMessage)
+  spec.csharp:
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IDeviceRequestAnswerStep.CheckReceivedMessage(Bodoconsult.NetworkCommunication.Interfaces.IInboundDataMessage)
+    name: CheckReceivedMessage
+    href: Bodoconsult.NetworkCommunication.Interfaces.IDeviceRequestAnswerStep.html#Bodoconsult_NetworkCommunication_Interfaces_IDeviceRequestAnswerStep_CheckReceivedMessage_Bodoconsult_NetworkCommunication_Interfaces_IInboundDataMessage_
+  - name: (
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IInboundDataMessage
+    name: IInboundDataMessage
+    href: Bodoconsult.NetworkCommunication.Interfaces.IInboundDataMessage.html
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IDeviceRequestAnswerStep.CheckReceivedMessage(Bodoconsult.NetworkCommunication.Interfaces.IInboundDataMessage)
+    name: CheckReceivedMessage
+    href: Bodoconsult.NetworkCommunication.Interfaces.IDeviceRequestAnswerStep.html#Bodoconsult_NetworkCommunication_Interfaces_IDeviceRequestAnswerStep_CheckReceivedMessage_Bodoconsult_NetworkCommunication_Interfaces_IInboundDataMessage_
+  - name: (
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IInboundDataMessage
+    name: IInboundDataMessage
+    href: Bodoconsult.NetworkCommunication.Interfaces.IInboundDataMessage.html
+  - name: )
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IInboundDataMessage
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.IInboundDataMessage
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.NetworkCommunication.Interfaces.IInboundDataMessage.html
+  name: IInboundDataMessage
+  nameWithType: IInboundDataMessage
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IInboundDataMessage
+- uid: System.Collections.Generic.IEnumerable{System.String}
+  commentId: T:System.Collections.Generic.IEnumerable{System.String}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IEnumerable`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<string>
+  nameWithType: IEnumerable<string>
+  fullName: System.Collections.Generic.IEnumerable<string>
+  nameWithType.vb: IEnumerable(Of String)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of String)
+  name.vb: IEnumerable(Of String)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: System.Collections.Generic.IEnumerable`1
+  commentId: T:System.Collections.Generic.IEnumerable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<T>
+  nameWithType: IEnumerable<T>
+  fullName: System.Collections.Generic.IEnumerable<T>
+  nameWithType.vb: IEnumerable(Of T)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of T)
+  name.vb: IEnumerable(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IDeviceRequestAnswerStep.CheckReceivedMessage(Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessage,Bodoconsult.NetworkCommunication.Interfaces.IInboundDataMessage,System.Collections.Generic.IList{System.String})
+  commentId: M:Bodoconsult.NetworkCommunication.Interfaces.IDeviceRequestAnswerStep.CheckReceivedMessage(Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessage,Bodoconsult.NetworkCommunication.Interfaces.IInboundDataMessage,System.Collections.Generic.IList{System.String})
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IDeviceRequestAnswerStep
+  isExternal: true
+  href: Bodoconsult.NetworkCommunication.Interfaces.IDeviceRequestAnswerStep.html#Bodoconsult_NetworkCommunication_Interfaces_IDeviceRequestAnswerStep_CheckReceivedMessage_Bodoconsult_NetworkCommunication_Interfaces_IOutboundDataMessage_Bodoconsult_NetworkCommunication_Interfaces_IInboundDataMessage_System_Collections_Generic_IList_System_String__
+  name: CheckReceivedMessage(IOutboundDataMessage, IInboundDataMessage, IList<string>)
+  nameWithType: IDeviceRequestAnswerStep.CheckReceivedMessage(IOutboundDataMessage, IInboundDataMessage, IList<string>)
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IDeviceRequestAnswerStep.CheckReceivedMessage(Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessage, Bodoconsult.NetworkCommunication.Interfaces.IInboundDataMessage, System.Collections.Generic.IList<string>)
+  nameWithType.vb: IDeviceRequestAnswerStep.CheckReceivedMessage(IOutboundDataMessage, IInboundDataMessage, IList(Of String))
+  fullName.vb: Bodoconsult.NetworkCommunication.Interfaces.IDeviceRequestAnswerStep.CheckReceivedMessage(Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessage, Bodoconsult.NetworkCommunication.Interfaces.IInboundDataMessage, System.Collections.Generic.IList(Of String))
+  name.vb: CheckReceivedMessage(IOutboundDataMessage, IInboundDataMessage, IList(Of String))
+  spec.csharp:
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IDeviceRequestAnswerStep.CheckReceivedMessage(Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessage,Bodoconsult.NetworkCommunication.Interfaces.IInboundDataMessage,System.Collections.Generic.IList{System.String})
+    name: CheckReceivedMessage
+    href: Bodoconsult.NetworkCommunication.Interfaces.IDeviceRequestAnswerStep.html#Bodoconsult_NetworkCommunication_Interfaces_IDeviceRequestAnswerStep_CheckReceivedMessage_Bodoconsult_NetworkCommunication_Interfaces_IOutboundDataMessage_Bodoconsult_NetworkCommunication_Interfaces_IInboundDataMessage_System_Collections_Generic_IList_System_String__
+  - name: (
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessage
+    name: IOutboundDataMessage
+    href: Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessage.html
+  - name: ','
+  - name: " "
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IInboundDataMessage
+    name: IInboundDataMessage
+    href: Bodoconsult.NetworkCommunication.Interfaces.IInboundDataMessage.html
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IList`1
+    name: IList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IDeviceRequestAnswerStep.CheckReceivedMessage(Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessage,Bodoconsult.NetworkCommunication.Interfaces.IInboundDataMessage,System.Collections.Generic.IList{System.String})
+    name: CheckReceivedMessage
+    href: Bodoconsult.NetworkCommunication.Interfaces.IDeviceRequestAnswerStep.html#Bodoconsult_NetworkCommunication_Interfaces_IDeviceRequestAnswerStep_CheckReceivedMessage_Bodoconsult_NetworkCommunication_Interfaces_IOutboundDataMessage_Bodoconsult_NetworkCommunication_Interfaces_IInboundDataMessage_System_Collections_Generic_IList_System_String__
+  - name: (
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessage
+    name: IOutboundDataMessage
+    href: Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessage.html
+  - name: ','
+  - name: " "
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IInboundDataMessage
+    name: IInboundDataMessage
+    href: Bodoconsult.NetworkCommunication.Interfaces.IInboundDataMessage.html
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IList`1
+    name: IList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  - name: )
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessage
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessage
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessage.html
+  name: IOutboundDataMessage
+  nameWithType: IOutboundDataMessage
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessage
+- uid: System.Collections.Generic.IList{System.String}
+  commentId: T:System.Collections.Generic.IList{System.String}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IList`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1
+  name: IList<string>
+  nameWithType: IList<string>
+  fullName: System.Collections.Generic.IList<string>
+  nameWithType.vb: IList(Of String)
+  fullName.vb: System.Collections.Generic.IList(Of String)
+  name.vb: IList(Of String)
+  spec.csharp:
+  - uid: System.Collections.Generic.IList`1
+    name: IList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IList`1
+    name: IList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: System.Collections.Generic.IList`1
+  commentId: T:System.Collections.Generic.IList`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1
+  name: IList<T>
+  nameWithType: IList<T>
+  fullName: System.Collections.Generic.IList<T>
+  nameWithType.vb: IList(Of T)
+  fullName.vb: System.Collections.Generic.IList(Of T)
+  name.vb: IList(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IList`1
+    name: IList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IList`1
+    name: IList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswerStep.WasSuccessful
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswerStep.WasSuccessful
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswerStep
+  href: Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswerStep.html#Bodoconsult_NetworkCommunication_Interfaces_IRequestAnswerStep_WasSuccessful
+  name: WasSuccessful
+  nameWithType: IRequestAnswerStep.WasSuccessful
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswerStep.WasSuccessful
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Processors.DeviceRequestAnswerStep.AcceptedMessage*
+  commentId: Overload:Bodoconsult.NetworkCommunication.OrderManagement.Processors.DeviceRequestAnswerStep.AcceptedMessage
+  href: Bodoconsult.NetworkCommunication.OrderManagement.Processors.DeviceRequestAnswerStep.html#Bodoconsult_NetworkCommunication_OrderManagement_Processors_DeviceRequestAnswerStep_AcceptedMessage
+  name: AcceptedMessage
+  nameWithType: DeviceRequestAnswerStep.AcceptedMessage
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Processors.DeviceRequestAnswerStep.AcceptedMessage
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IDeviceRequestAnswerStep.AcceptedMessage
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IDeviceRequestAnswerStep.AcceptedMessage
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IDeviceRequestAnswerStep
+  href: Bodoconsult.NetworkCommunication.Interfaces.IDeviceRequestAnswerStep.html#Bodoconsult_NetworkCommunication_Interfaces_IDeviceRequestAnswerStep_AcceptedMessage
+  name: AcceptedMessage
+  nameWithType: IDeviceRequestAnswerStep.AcceptedMessage
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IDeviceRequestAnswerStep.AcceptedMessage
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Processors.DeviceRequestAnswerStep.NextChainElement*
+  commentId: Overload:Bodoconsult.NetworkCommunication.OrderManagement.Processors.DeviceRequestAnswerStep.NextChainElement
+  href: Bodoconsult.NetworkCommunication.OrderManagement.Processors.DeviceRequestAnswerStep.html#Bodoconsult_NetworkCommunication_OrderManagement_Processors_DeviceRequestAnswerStep_NextChainElement
+  name: NextChainElement
+  nameWithType: DeviceRequestAnswerStep.NextChainElement
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Processors.DeviceRequestAnswerStep.NextChainElement
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IDeviceRequestAnswerStep.NextChainElement
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IDeviceRequestAnswerStep.NextChainElement
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IDeviceRequestAnswerStep
+  href: Bodoconsult.NetworkCommunication.Interfaces.IDeviceRequestAnswerStep.html#Bodoconsult_NetworkCommunication_Interfaces_IDeviceRequestAnswerStep_NextChainElement
+  name: NextChainElement
+  nameWithType: IDeviceRequestAnswerStep.NextChainElement
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IDeviceRequestAnswerStep.NextChainElement
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.WasSuccessful
+  commentId: P:Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.WasSuccessful
+  parent: Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep
+  href: Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.html#Bodoconsult_NetworkCommunication_OrderManagement_Processors_BaseRequestAnswerStep_WasSuccessful
+  name: WasSuccessful
+  nameWithType: BaseRequestAnswerStep.WasSuccessful
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.WasSuccessful
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Processors.DeviceRequestAnswerStep.WasSuccessful*
+  commentId: Overload:Bodoconsult.NetworkCommunication.OrderManagement.Processors.DeviceRequestAnswerStep.WasSuccessful
+  href: Bodoconsult.NetworkCommunication.OrderManagement.Processors.DeviceRequestAnswerStep.html#Bodoconsult_NetworkCommunication_OrderManagement_Processors_DeviceRequestAnswerStep_WasSuccessful
+  name: WasSuccessful
+  nameWithType: DeviceRequestAnswerStep.WasSuccessful
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Processors.DeviceRequestAnswerStep.WasSuccessful
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.Cancel
+  commentId: M:Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.Cancel
+  parent: Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep
+  href: Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.html#Bodoconsult_NetworkCommunication_OrderManagement_Processors_BaseRequestAnswerStep_Cancel
+  name: Cancel()
+  nameWithType: BaseRequestAnswerStep.Cancel()
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.Cancel()
+  spec.csharp:
+  - uid: Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.Cancel
+    name: Cancel
+    href: Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.html#Bodoconsult_NetworkCommunication_OrderManagement_Processors_BaseRequestAnswerStep_Cancel
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.Cancel
+    name: Cancel
+    href: Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.html#Bodoconsult_NetworkCommunication_OrderManagement_Processors_BaseRequestAnswerStep_Cancel
+  - name: (
+  - name: )
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Processors.DeviceRequestAnswerStep.Cancel*
+  commentId: Overload:Bodoconsult.NetworkCommunication.OrderManagement.Processors.DeviceRequestAnswerStep.Cancel
+  href: Bodoconsult.NetworkCommunication.OrderManagement.Processors.DeviceRequestAnswerStep.html#Bodoconsult_NetworkCommunication_OrderManagement_Processors_DeviceRequestAnswerStep_Cancel
+  name: Cancel
+  nameWithType: DeviceRequestAnswerStep.Cancel
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Processors.DeviceRequestAnswerStep.Cancel
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswerStep.Cancel
+  commentId: M:Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswerStep.Cancel
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswerStep
+  href: Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswerStep.html#Bodoconsult_NetworkCommunication_Interfaces_IRequestAnswerStep_Cancel
+  name: Cancel()
+  nameWithType: IRequestAnswerStep.Cancel()
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswerStep.Cancel()
+  spec.csharp:
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswerStep.Cancel
+    name: Cancel
+    href: Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswerStep.html#Bodoconsult_NetworkCommunication_Interfaces_IRequestAnswerStep_Cancel
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswerStep.Cancel
+    name: Cancel
+    href: Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswerStep.html#Bodoconsult_NetworkCommunication_Interfaces_IRequestAnswerStep_Cancel
+  - name: (
+  - name: )
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.Dispose
+  commentId: M:Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.Dispose
+  parent: Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep
+  href: Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.html#Bodoconsult_NetworkCommunication_OrderManagement_Processors_BaseRequestAnswerStep_Dispose
+  name: Dispose()
+  nameWithType: BaseRequestAnswerStep.Dispose()
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.Dispose()
+  spec.csharp:
+  - uid: Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.Dispose
+    name: Dispose
+    href: Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.html#Bodoconsult_NetworkCommunication_OrderManagement_Processors_BaseRequestAnswerStep_Dispose
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.Dispose
+    name: Dispose
+    href: Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.html#Bodoconsult_NetworkCommunication_OrderManagement_Processors_BaseRequestAnswerStep_Dispose
+  - name: (
+  - name: )
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Processors.DeviceRequestAnswerStep.Dispose*
+  commentId: Overload:Bodoconsult.NetworkCommunication.OrderManagement.Processors.DeviceRequestAnswerStep.Dispose
+  href: Bodoconsult.NetworkCommunication.OrderManagement.Processors.DeviceRequestAnswerStep.html#Bodoconsult_NetworkCommunication_OrderManagement_Processors_DeviceRequestAnswerStep_Dispose
+  name: Dispose
+  nameWithType: DeviceRequestAnswerStep.Dispose
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Processors.DeviceRequestAnswerStep.Dispose
+- uid: System.IDisposable.Dispose
+  commentId: M:System.IDisposable.Dispose
+  parent: System.IDisposable
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  name: Dispose()
+  nameWithType: IDisposable.Dispose()
+  fullName: System.IDisposable.Dispose()
+  spec.csharp:
+  - uid: System.IDisposable.Dispose
+    name: Dispose
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.IDisposable.Dispose
+    name: Dispose
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  - name: (
+  - name: )
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Processors.DeviceRequestAnswerStep.ProcessChainElement*
+  commentId: Overload:Bodoconsult.NetworkCommunication.OrderManagement.Processors.DeviceRequestAnswerStep.ProcessChainElement
+  href: Bodoconsult.NetworkCommunication.OrderManagement.Processors.DeviceRequestAnswerStep.html#Bodoconsult_NetworkCommunication_OrderManagement_Processors_DeviceRequestAnswerStep_ProcessChainElement
+  name: ProcessChainElement
+  nameWithType: DeviceRequestAnswerStep.ProcessChainElement
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Processors.DeviceRequestAnswerStep.ProcessChainElement
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IDeviceRequestAnswerStep.ProcessChainElement
+  commentId: M:Bodoconsult.NetworkCommunication.Interfaces.IDeviceRequestAnswerStep.ProcessChainElement
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IDeviceRequestAnswerStep
+  href: Bodoconsult.NetworkCommunication.Interfaces.IDeviceRequestAnswerStep.html#Bodoconsult_NetworkCommunication_Interfaces_IDeviceRequestAnswerStep_ProcessChainElement
+  name: ProcessChainElement()
+  nameWithType: IDeviceRequestAnswerStep.ProcessChainElement()
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IDeviceRequestAnswerStep.ProcessChainElement()
+  spec.csharp:
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IDeviceRequestAnswerStep.ProcessChainElement
+    name: ProcessChainElement
+    href: Bodoconsult.NetworkCommunication.Interfaces.IDeviceRequestAnswerStep.html#Bodoconsult_NetworkCommunication_Interfaces_IDeviceRequestAnswerStep_ProcessChainElement
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IDeviceRequestAnswerStep.ProcessChainElement
+    name: ProcessChainElement
+    href: Bodoconsult.NetworkCommunication.Interfaces.IDeviceRequestAnswerStep.html#Bodoconsult_NetworkCommunication_Interfaces_IDeviceRequestAnswerStep_ProcessChainElement
+  - name: (
+  - name: )
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Processors.DeviceRequestAnswerStep.SetResult*
+  commentId: Overload:Bodoconsult.NetworkCommunication.OrderManagement.Processors.DeviceRequestAnswerStep.SetResult
+  href: Bodoconsult.NetworkCommunication.OrderManagement.Processors.DeviceRequestAnswerStep.html#Bodoconsult_NetworkCommunication_OrderManagement_Processors_DeviceRequestAnswerStep_SetResult_Bodoconsult_NetworkCommunication_Interfaces_IOrderExecutionResultState_
+  name: SetResult
+  nameWithType: DeviceRequestAnswerStep.SetResult
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Processors.DeviceRequestAnswerStep.SetResult
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionResultState
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionResultState
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionResultState.html
+  name: IOrderExecutionResultState
+  nameWithType: IOrderExecutionResultState
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionResultState

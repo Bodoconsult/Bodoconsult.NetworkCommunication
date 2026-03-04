@@ -1,0 +1,540 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bodoconsult.Network.Windows.ActiveDirectory.Helpers.AdHelper
+  commentId: T:Bodoconsult.Network.Windows.ActiveDirectory.Helpers.AdHelper
+  id: AdHelper
+  parent: Bodoconsult.Network.Windows.ActiveDirectory.Helpers
+  children:
+  - Bodoconsult.Network.Windows.ActiveDirectory.Helpers.AdHelper.FriendlyDomainToLdapDomain(System.String)
+  - Bodoconsult.Network.Windows.ActiveDirectory.Helpers.AdHelper.GetDomainName
+  - Bodoconsult.Network.Windows.ActiveDirectory.Helpers.AdHelper.GetLdapDomainForCurrentUser
+  - Bodoconsult.Network.Windows.ActiveDirectory.Helpers.AdHelper.GetUserData(Bodoconsult.Network.Windows.ActiveDirectory.AdDomain)
+  langs:
+  - csharp
+  - vb
+  name: AdHelper
+  nameWithType: AdHelper
+  fullName: Bodoconsult.Network.Windows.ActiveDirectory.Helpers.AdHelper
+  type: Class
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/ActiveDirectory/Helpers/AdHelper.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: AdHelper
+    path: src/Bodoconsult.Network.Windows/ActiveDirectory/Helpers/AdHelper.cs
+    startLine: 13
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.ActiveDirectory.Helpers
+  summary: Helper class with AD functionality
+  example: []
+  syntax:
+    content: public class AdHelper
+    content.vb: Public Class AdHelper
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: Bodoconsult.Network.Windows.ActiveDirectory.Helpers.AdHelper.FriendlyDomainToLdapDomain(System.String)
+  commentId: M:Bodoconsult.Network.Windows.ActiveDirectory.Helpers.AdHelper.FriendlyDomainToLdapDomain(System.String)
+  id: FriendlyDomainToLdapDomain(System.String)
+  parent: Bodoconsult.Network.Windows.ActiveDirectory.Helpers.AdHelper
+  langs:
+  - csharp
+  - vb
+  name: FriendlyDomainToLdapDomain(string)
+  nameWithType: AdHelper.FriendlyDomainToLdapDomain(string)
+  fullName: Bodoconsult.Network.Windows.ActiveDirectory.Helpers.AdHelper.FriendlyDomainToLdapDomain(string)
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/ActiveDirectory/Helpers/AdHelper.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: FriendlyDomainToLdapDomain
+    path: src/Bodoconsult.Network.Windows/ActiveDirectory/Helpers/AdHelper.cs
+    startLine: 22
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.ActiveDirectory.Helpers
+  summary: Convert friendly domain name to LDAP domain path
+  example: []
+  syntax:
+    content: public static string FriendlyDomainToLdapDomain(string friendlyDomainName)
+    parameters:
+    - id: friendlyDomainName
+      type: System.String
+      description: friendly domain name
+    return:
+      type: System.String
+      description: ''
+    content.vb: Public Shared Function FriendlyDomainToLdapDomain(friendlyDomainName As String) As String
+  overload: Bodoconsult.Network.Windows.ActiveDirectory.Helpers.AdHelper.FriendlyDomainToLdapDomain*
+  nameWithType.vb: AdHelper.FriendlyDomainToLdapDomain(String)
+  fullName.vb: Bodoconsult.Network.Windows.ActiveDirectory.Helpers.AdHelper.FriendlyDomainToLdapDomain(String)
+  name.vb: FriendlyDomainToLdapDomain(String)
+- uid: Bodoconsult.Network.Windows.ActiveDirectory.Helpers.AdHelper.GetLdapDomainForCurrentUser
+  commentId: M:Bodoconsult.Network.Windows.ActiveDirectory.Helpers.AdHelper.GetLdapDomainForCurrentUser
+  id: GetLdapDomainForCurrentUser
+  parent: Bodoconsult.Network.Windows.ActiveDirectory.Helpers.AdHelper
+  langs:
+  - csharp
+  - vb
+  name: GetLdapDomainForCurrentUser()
+  nameWithType: AdHelper.GetLdapDomainForCurrentUser()
+  fullName: Bodoconsult.Network.Windows.ActiveDirectory.Helpers.AdHelper.GetLdapDomainForCurrentUser()
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/ActiveDirectory/Helpers/AdHelper.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: GetLdapDomainForCurrentUser
+    path: src/Bodoconsult.Network.Windows/ActiveDirectory/Helpers/AdHelper.cs
+    startLine: 57
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.ActiveDirectory.Helpers
+  summary: Get the (user) domain for the current user
+  example: []
+  syntax:
+    content: public static string GetLdapDomainForCurrentUser()
+    return:
+      type: System.String
+      description: ''
+    content.vb: Public Shared Function GetLdapDomainForCurrentUser() As String
+  overload: Bodoconsult.Network.Windows.ActiveDirectory.Helpers.AdHelper.GetLdapDomainForCurrentUser*
+- uid: Bodoconsult.Network.Windows.ActiveDirectory.Helpers.AdHelper.GetDomainName
+  commentId: M:Bodoconsult.Network.Windows.ActiveDirectory.Helpers.AdHelper.GetDomainName
+  id: GetDomainName
+  parent: Bodoconsult.Network.Windows.ActiveDirectory.Helpers.AdHelper
+  langs:
+  - csharp
+  - vb
+  name: GetDomainName()
+  nameWithType: AdHelper.GetDomainName()
+  fullName: Bodoconsult.Network.Windows.ActiveDirectory.Helpers.AdHelper.GetDomainName()
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/ActiveDirectory/Helpers/AdHelper.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: GetDomainName
+    path: src/Bodoconsult.Network.Windows/ActiveDirectory/Helpers/AdHelper.cs
+    startLine: 68
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.ActiveDirectory.Helpers
+  summary: Get current AD domain name
+  example: []
+  syntax:
+    content: public static string GetDomainName()
+    return:
+      type: System.String
+      description: domain name
+    content.vb: Public Shared Function GetDomainName() As String
+  overload: Bodoconsult.Network.Windows.ActiveDirectory.Helpers.AdHelper.GetDomainName*
+- uid: Bodoconsult.Network.Windows.ActiveDirectory.Helpers.AdHelper.GetUserData(Bodoconsult.Network.Windows.ActiveDirectory.AdDomain)
+  commentId: M:Bodoconsult.Network.Windows.ActiveDirectory.Helpers.AdHelper.GetUserData(Bodoconsult.Network.Windows.ActiveDirectory.AdDomain)
+  id: GetUserData(Bodoconsult.Network.Windows.ActiveDirectory.AdDomain)
+  parent: Bodoconsult.Network.Windows.ActiveDirectory.Helpers.AdHelper
+  langs:
+  - csharp
+  - vb
+  name: GetUserData(AdDomain)
+  nameWithType: AdHelper.GetUserData(AdDomain)
+  fullName: Bodoconsult.Network.Windows.ActiveDirectory.Helpers.AdHelper.GetUserData(Bodoconsult.Network.Windows.ActiveDirectory.AdDomain)
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/ActiveDirectory/Helpers/AdHelper.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: GetUserData
+    path: src/Bodoconsult.Network.Windows/ActiveDirectory/Helpers/AdHelper.cs
+    startLine: 79
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.ActiveDirectory.Helpers
+  summary: Get detail data for the users
+  example: []
+  syntax:
+    content: public static void GetUserData(AdDomain domain)
+    parameters:
+    - id: domain
+      type: Bodoconsult.Network.Windows.ActiveDirectory.AdDomain
+      description: AD domain filled with user data
+    content.vb: Public Shared Sub GetUserData(domain As AdDomain)
+  overload: Bodoconsult.Network.Windows.ActiveDirectory.Helpers.AdHelper.GetUserData*
+references:
+- uid: Bodoconsult.Network.Windows.ActiveDirectory.Helpers
+  commentId: N:Bodoconsult.Network.Windows.ActiveDirectory.Helpers
+  href: Bodoconsult.html
+  name: Bodoconsult.Network.Windows.ActiveDirectory.Helpers
+  nameWithType: Bodoconsult.Network.Windows.ActiveDirectory.Helpers
+  fullName: Bodoconsult.Network.Windows.ActiveDirectory.Helpers
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.Network
+    name: Network
+    href: Bodoconsult.Network.html
+  - name: .
+  - uid: Bodoconsult.Network.Windows
+    name: Windows
+    href: Bodoconsult.Network.Windows.html
+  - name: .
+  - uid: Bodoconsult.Network.Windows.ActiveDirectory
+    name: ActiveDirectory
+    href: Bodoconsult.Network.Windows.ActiveDirectory.html
+  - name: .
+  - uid: Bodoconsult.Network.Windows.ActiveDirectory.Helpers
+    name: Helpers
+    href: Bodoconsult.Network.Windows.ActiveDirectory.Helpers.html
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.Network
+    name: Network
+    href: Bodoconsult.Network.html
+  - name: .
+  - uid: Bodoconsult.Network.Windows
+    name: Windows
+    href: Bodoconsult.Network.Windows.html
+  - name: .
+  - uid: Bodoconsult.Network.Windows.ActiveDirectory
+    name: ActiveDirectory
+    href: Bodoconsult.Network.Windows.ActiveDirectory.html
+  - name: .
+  - uid: Bodoconsult.Network.Windows.ActiveDirectory.Helpers
+    name: Helpers
+    href: Bodoconsult.Network.Windows.ActiveDirectory.Helpers.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Bodoconsult.Network.Windows.ActiveDirectory.Helpers.AdHelper.FriendlyDomainToLdapDomain*
+  commentId: Overload:Bodoconsult.Network.Windows.ActiveDirectory.Helpers.AdHelper.FriendlyDomainToLdapDomain
+  href: Bodoconsult.Network.Windows.ActiveDirectory.Helpers.AdHelper.html#Bodoconsult_Network_Windows_ActiveDirectory_Helpers_AdHelper_FriendlyDomainToLdapDomain_System_String_
+  name: FriendlyDomainToLdapDomain
+  nameWithType: AdHelper.FriendlyDomainToLdapDomain
+  fullName: Bodoconsult.Network.Windows.ActiveDirectory.Helpers.AdHelper.FriendlyDomainToLdapDomain
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Bodoconsult.Network.Windows.ActiveDirectory.Helpers.AdHelper.GetLdapDomainForCurrentUser*
+  commentId: Overload:Bodoconsult.Network.Windows.ActiveDirectory.Helpers.AdHelper.GetLdapDomainForCurrentUser
+  href: Bodoconsult.Network.Windows.ActiveDirectory.Helpers.AdHelper.html#Bodoconsult_Network_Windows_ActiveDirectory_Helpers_AdHelper_GetLdapDomainForCurrentUser
+  name: GetLdapDomainForCurrentUser
+  nameWithType: AdHelper.GetLdapDomainForCurrentUser
+  fullName: Bodoconsult.Network.Windows.ActiveDirectory.Helpers.AdHelper.GetLdapDomainForCurrentUser
+- uid: Bodoconsult.Network.Windows.ActiveDirectory.Helpers.AdHelper.GetDomainName*
+  commentId: Overload:Bodoconsult.Network.Windows.ActiveDirectory.Helpers.AdHelper.GetDomainName
+  href: Bodoconsult.Network.Windows.ActiveDirectory.Helpers.AdHelper.html#Bodoconsult_Network_Windows_ActiveDirectory_Helpers_AdHelper_GetDomainName
+  name: GetDomainName
+  nameWithType: AdHelper.GetDomainName
+  fullName: Bodoconsult.Network.Windows.ActiveDirectory.Helpers.AdHelper.GetDomainName
+- uid: Bodoconsult.Network.Windows.ActiveDirectory.Helpers.AdHelper.GetUserData*
+  commentId: Overload:Bodoconsult.Network.Windows.ActiveDirectory.Helpers.AdHelper.GetUserData
+  href: Bodoconsult.Network.Windows.ActiveDirectory.Helpers.AdHelper.html#Bodoconsult_Network_Windows_ActiveDirectory_Helpers_AdHelper_GetUserData_Bodoconsult_Network_Windows_ActiveDirectory_AdDomain_
+  name: GetUserData
+  nameWithType: AdHelper.GetUserData
+  fullName: Bodoconsult.Network.Windows.ActiveDirectory.Helpers.AdHelper.GetUserData
+- uid: Bodoconsult.Network.Windows.ActiveDirectory.AdDomain
+  commentId: T:Bodoconsult.Network.Windows.ActiveDirectory.AdDomain
+  parent: Bodoconsult.Network.Windows.ActiveDirectory
+  href: Bodoconsult.Network.Windows.ActiveDirectory.AdDomain.html
+  name: AdDomain
+  nameWithType: AdDomain
+  fullName: Bodoconsult.Network.Windows.ActiveDirectory.AdDomain
+- uid: Bodoconsult.Network.Windows.ActiveDirectory
+  commentId: N:Bodoconsult.Network.Windows.ActiveDirectory
+  href: Bodoconsult.html
+  name: Bodoconsult.Network.Windows.ActiveDirectory
+  nameWithType: Bodoconsult.Network.Windows.ActiveDirectory
+  fullName: Bodoconsult.Network.Windows.ActiveDirectory
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.Network
+    name: Network
+    href: Bodoconsult.Network.html
+  - name: .
+  - uid: Bodoconsult.Network.Windows
+    name: Windows
+    href: Bodoconsult.Network.Windows.html
+  - name: .
+  - uid: Bodoconsult.Network.Windows.ActiveDirectory
+    name: ActiveDirectory
+    href: Bodoconsult.Network.Windows.ActiveDirectory.html
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.Network
+    name: Network
+    href: Bodoconsult.Network.html
+  - name: .
+  - uid: Bodoconsult.Network.Windows
+    name: Windows
+    href: Bodoconsult.Network.Windows.html
+  - name: .
+  - uid: Bodoconsult.Network.Windows.ActiveDirectory
+    name: ActiveDirectory
+    href: Bodoconsult.Network.Windows.ActiveDirectory.html

@@ -1,0 +1,621 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bodoconsult.NetworkCommunication.Factories.EdcpServerOutboundDataMessageFactory
+  commentId: T:Bodoconsult.NetworkCommunication.Factories.EdcpServerOutboundDataMessageFactory
+  id: EdcpServerOutboundDataMessageFactory
+  parent: Bodoconsult.NetworkCommunication.Factories
+  children:
+  - Bodoconsult.NetworkCommunication.Factories.EdcpServerOutboundDataMessageFactory.#ctor(System.Byte,System.Byte)
+  - Bodoconsult.NetworkCommunication.Factories.EdcpServerOutboundDataMessageFactory.CreateInstance(Bodoconsult.NetworkCommunication.Interfaces.IParameterSet)
+  - Bodoconsult.NetworkCommunication.Factories.EdcpServerOutboundDataMessageFactory.MaximumBlockCode
+  - Bodoconsult.NetworkCommunication.Factories.EdcpServerOutboundDataMessageFactory.MinimumBlockCode
+  - Bodoconsult.NetworkCommunication.Factories.EdcpServerOutboundDataMessageFactory.Reset
+  langs:
+  - csharp
+  - vb
+  name: EdcpServerOutboundDataMessageFactory
+  nameWithType: EdcpServerOutboundDataMessageFactory
+  fullName: Bodoconsult.NetworkCommunication.Factories.EdcpServerOutboundDataMessageFactory
+  type: Class
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Factories/EdcpServerOutboundDataMessageFactory.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: EdcpServerOutboundDataMessageFactory
+    path: src/Bodoconsult.NetworkCommunication/Factories/EdcpServerOutboundDataMessageFactory.cs
+    startLine: 11
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Factories
+  summary: EDCP server side implementation of an <xref href="Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessageFactory" data-throw-if-not-resolved="false"></xref>. Creates a block code from 0 to 127
+  example: []
+  syntax:
+    content: 'public class EdcpServerOutboundDataMessageFactory : IOutboundDataMessageFactory'
+    content.vb: Public Class EdcpServerOutboundDataMessageFactory Implements IOutboundDataMessageFactory
+  inheritance:
+  - System.Object
+  implements:
+  - Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessageFactory
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: Bodoconsult.NetworkCommunication.Factories.EdcpServerOutboundDataMessageFactory.#ctor(System.Byte,System.Byte)
+  commentId: M:Bodoconsult.NetworkCommunication.Factories.EdcpServerOutboundDataMessageFactory.#ctor(System.Byte,System.Byte)
+  id: '#ctor(System.Byte,System.Byte)'
+  parent: Bodoconsult.NetworkCommunication.Factories.EdcpServerOutboundDataMessageFactory
+  langs:
+  - csharp
+  - vb
+  name: EdcpServerOutboundDataMessageFactory(byte, byte)
+  nameWithType: EdcpServerOutboundDataMessageFactory.EdcpServerOutboundDataMessageFactory(byte, byte)
+  fullName: Bodoconsult.NetworkCommunication.Factories.EdcpServerOutboundDataMessageFactory.EdcpServerOutboundDataMessageFactory(byte, byte)
+  type: Constructor
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Factories/EdcpServerOutboundDataMessageFactory.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: .ctor
+    path: src/Bodoconsult.NetworkCommunication/Factories/EdcpServerOutboundDataMessageFactory.cs
+    startLine: 20
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Factories
+  summary: Default ctor
+  example: []
+  syntax:
+    content: public EdcpServerOutboundDataMessageFactory(byte minimumBlockCode = 0, byte maximumBlockCode = 127)
+    parameters:
+    - id: minimumBlockCode
+      type: System.Byte
+      description: 'The minimum blockcode sent by the client. Default: 0'
+    - id: maximumBlockCode
+      type: System.Byte
+      description: 'The maximum blockcode sent by the client. Default: 127'
+    content.vb: Public Sub New(minimumBlockCode As Byte = 0, maximumBlockCode As Byte = 127)
+  overload: Bodoconsult.NetworkCommunication.Factories.EdcpServerOutboundDataMessageFactory.#ctor*
+  nameWithType.vb: EdcpServerOutboundDataMessageFactory.New(Byte, Byte)
+  fullName.vb: Bodoconsult.NetworkCommunication.Factories.EdcpServerOutboundDataMessageFactory.New(Byte, Byte)
+  name.vb: New(Byte, Byte)
+- uid: Bodoconsult.NetworkCommunication.Factories.EdcpServerOutboundDataMessageFactory.MinimumBlockCode
+  commentId: P:Bodoconsult.NetworkCommunication.Factories.EdcpServerOutboundDataMessageFactory.MinimumBlockCode
+  id: MinimumBlockCode
+  parent: Bodoconsult.NetworkCommunication.Factories.EdcpServerOutboundDataMessageFactory
+  langs:
+  - csharp
+  - vb
+  name: MinimumBlockCode
+  nameWithType: EdcpServerOutboundDataMessageFactory.MinimumBlockCode
+  fullName: Bodoconsult.NetworkCommunication.Factories.EdcpServerOutboundDataMessageFactory.MinimumBlockCode
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Factories/EdcpServerOutboundDataMessageFactory.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: MinimumBlockCode
+    path: src/Bodoconsult.NetworkCommunication/Factories/EdcpServerOutboundDataMessageFactory.cs
+    startLine: 30
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Factories
+  summary: 'The minimum blockcode sent by the client. Default: 0'
+  example: []
+  syntax:
+    content: public byte MinimumBlockCode { get; }
+    parameters: []
+    return:
+      type: System.Byte
+    content.vb: Public ReadOnly Property MinimumBlockCode As Byte
+  overload: Bodoconsult.NetworkCommunication.Factories.EdcpServerOutboundDataMessageFactory.MinimumBlockCode*
+- uid: Bodoconsult.NetworkCommunication.Factories.EdcpServerOutboundDataMessageFactory.MaximumBlockCode
+  commentId: P:Bodoconsult.NetworkCommunication.Factories.EdcpServerOutboundDataMessageFactory.MaximumBlockCode
+  id: MaximumBlockCode
+  parent: Bodoconsult.NetworkCommunication.Factories.EdcpServerOutboundDataMessageFactory
+  langs:
+  - csharp
+  - vb
+  name: MaximumBlockCode
+  nameWithType: EdcpServerOutboundDataMessageFactory.MaximumBlockCode
+  fullName: Bodoconsult.NetworkCommunication.Factories.EdcpServerOutboundDataMessageFactory.MaximumBlockCode
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Factories/EdcpServerOutboundDataMessageFactory.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: MaximumBlockCode
+    path: src/Bodoconsult.NetworkCommunication/Factories/EdcpServerOutboundDataMessageFactory.cs
+    startLine: 35
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Factories
+  summary: 'The maximum blockcode sent by the client. Default: 127'
+  example: []
+  syntax:
+    content: public byte MaximumBlockCode { get; }
+    parameters: []
+    return:
+      type: System.Byte
+    content.vb: Public ReadOnly Property MaximumBlockCode As Byte
+  overload: Bodoconsult.NetworkCommunication.Factories.EdcpServerOutboundDataMessageFactory.MaximumBlockCode*
+- uid: Bodoconsult.NetworkCommunication.Factories.EdcpServerOutboundDataMessageFactory.CreateInstance(Bodoconsult.NetworkCommunication.Interfaces.IParameterSet)
+  commentId: M:Bodoconsult.NetworkCommunication.Factories.EdcpServerOutboundDataMessageFactory.CreateInstance(Bodoconsult.NetworkCommunication.Interfaces.IParameterSet)
+  id: CreateInstance(Bodoconsult.NetworkCommunication.Interfaces.IParameterSet)
+  parent: Bodoconsult.NetworkCommunication.Factories.EdcpServerOutboundDataMessageFactory
+  langs:
+  - csharp
+  - vb
+  name: CreateInstance(IParameterSet)
+  nameWithType: EdcpServerOutboundDataMessageFactory.CreateInstance(IParameterSet)
+  fullName: Bodoconsult.NetworkCommunication.Factories.EdcpServerOutboundDataMessageFactory.CreateInstance(Bodoconsult.NetworkCommunication.Interfaces.IParameterSet)
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Factories/EdcpServerOutboundDataMessageFactory.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: CreateInstance
+    path: src/Bodoconsult.NetworkCommunication/Factories/EdcpServerOutboundDataMessageFactory.cs
+    startLine: 42
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Factories
+  summary: Create am outbound data message from an order management parameter set
+  example: []
+  syntax:
+    content: public IOutboundDataMessage CreateInstance(IParameterSet parameterSet)
+    parameters:
+    - id: parameterSet
+      type: Bodoconsult.NetworkCommunication.Interfaces.IParameterSet
+      description: Order management parameterset
+    return:
+      type: Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessage
+      description: Outbound data message
+    content.vb: Public Function CreateInstance(parameterSet As IParameterSet) As IOutboundDataMessage
+  overload: Bodoconsult.NetworkCommunication.Factories.EdcpServerOutboundDataMessageFactory.CreateInstance*
+  implements:
+  - Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessageFactory.CreateInstance(Bodoconsult.NetworkCommunication.Interfaces.IParameterSet)
+- uid: Bodoconsult.NetworkCommunication.Factories.EdcpServerOutboundDataMessageFactory.Reset
+  commentId: M:Bodoconsult.NetworkCommunication.Factories.EdcpServerOutboundDataMessageFactory.Reset
+  id: Reset
+  parent: Bodoconsult.NetworkCommunication.Factories.EdcpServerOutboundDataMessageFactory
+  langs:
+  - csharp
+  - vb
+  name: Reset()
+  nameWithType: EdcpServerOutboundDataMessageFactory.Reset()
+  fullName: Bodoconsult.NetworkCommunication.Factories.EdcpServerOutboundDataMessageFactory.Reset()
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Factories/EdcpServerOutboundDataMessageFactory.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Reset
+    path: src/Bodoconsult.NetworkCommunication/Factories/EdcpServerOutboundDataMessageFactory.cs
+    startLine: 70
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Factories
+  summary: Resets the blockcode to start blockcode of 128
+  example: []
+  syntax:
+    content: public void Reset()
+    content.vb: Public Sub Reset()
+  overload: Bodoconsult.NetworkCommunication.Factories.EdcpServerOutboundDataMessageFactory.Reset*
+  implements:
+  - Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessageFactory.Reset
+references:
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessageFactory
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessageFactory
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessageFactory.html
+  name: IOutboundDataMessageFactory
+  nameWithType: IOutboundDataMessageFactory
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessageFactory
+- uid: Bodoconsult.NetworkCommunication.Factories
+  commentId: N:Bodoconsult.NetworkCommunication.Factories
+  href: Bodoconsult.html
+  name: Bodoconsult.NetworkCommunication.Factories
+  nameWithType: Bodoconsult.NetworkCommunication.Factories
+  fullName: Bodoconsult.NetworkCommunication.Factories
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Factories
+    name: Factories
+    href: Bodoconsult.NetworkCommunication.Factories.html
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Factories
+    name: Factories
+    href: Bodoconsult.NetworkCommunication.Factories.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: Bodoconsult.NetworkCommunication.Interfaces
+  commentId: N:Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.html
+  name: Bodoconsult.NetworkCommunication.Interfaces
+  nameWithType: Bodoconsult.NetworkCommunication.Interfaces
+  fullName: Bodoconsult.NetworkCommunication.Interfaces
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Interfaces
+    name: Interfaces
+    href: Bodoconsult.NetworkCommunication.Interfaces.html
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Interfaces
+    name: Interfaces
+    href: Bodoconsult.NetworkCommunication.Interfaces.html
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Bodoconsult.NetworkCommunication.Factories.EdcpServerOutboundDataMessageFactory.#ctor*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Factories.EdcpServerOutboundDataMessageFactory.#ctor
+  href: Bodoconsult.NetworkCommunication.Factories.EdcpServerOutboundDataMessageFactory.html#Bodoconsult_NetworkCommunication_Factories_EdcpServerOutboundDataMessageFactory__ctor_System_Byte_System_Byte_
+  name: EdcpServerOutboundDataMessageFactory
+  nameWithType: EdcpServerOutboundDataMessageFactory.EdcpServerOutboundDataMessageFactory
+  fullName: Bodoconsult.NetworkCommunication.Factories.EdcpServerOutboundDataMessageFactory.EdcpServerOutboundDataMessageFactory
+  nameWithType.vb: EdcpServerOutboundDataMessageFactory.New
+  fullName.vb: Bodoconsult.NetworkCommunication.Factories.EdcpServerOutboundDataMessageFactory.New
+  name.vb: New
+- uid: System.Byte
+  commentId: T:System.Byte
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.byte
+  name: byte
+  nameWithType: byte
+  fullName: byte
+  nameWithType.vb: Byte
+  fullName.vb: Byte
+  name.vb: Byte
+- uid: Bodoconsult.NetworkCommunication.Factories.EdcpServerOutboundDataMessageFactory.MinimumBlockCode*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Factories.EdcpServerOutboundDataMessageFactory.MinimumBlockCode
+  href: Bodoconsult.NetworkCommunication.Factories.EdcpServerOutboundDataMessageFactory.html#Bodoconsult_NetworkCommunication_Factories_EdcpServerOutboundDataMessageFactory_MinimumBlockCode
+  name: MinimumBlockCode
+  nameWithType: EdcpServerOutboundDataMessageFactory.MinimumBlockCode
+  fullName: Bodoconsult.NetworkCommunication.Factories.EdcpServerOutboundDataMessageFactory.MinimumBlockCode
+- uid: Bodoconsult.NetworkCommunication.Factories.EdcpServerOutboundDataMessageFactory.MaximumBlockCode*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Factories.EdcpServerOutboundDataMessageFactory.MaximumBlockCode
+  href: Bodoconsult.NetworkCommunication.Factories.EdcpServerOutboundDataMessageFactory.html#Bodoconsult_NetworkCommunication_Factories_EdcpServerOutboundDataMessageFactory_MaximumBlockCode
+  name: MaximumBlockCode
+  nameWithType: EdcpServerOutboundDataMessageFactory.MaximumBlockCode
+  fullName: Bodoconsult.NetworkCommunication.Factories.EdcpServerOutboundDataMessageFactory.MaximumBlockCode
+- uid: Bodoconsult.NetworkCommunication.Factories.EdcpServerOutboundDataMessageFactory.CreateInstance*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Factories.EdcpServerOutboundDataMessageFactory.CreateInstance
+  href: Bodoconsult.NetworkCommunication.Factories.EdcpServerOutboundDataMessageFactory.html#Bodoconsult_NetworkCommunication_Factories_EdcpServerOutboundDataMessageFactory_CreateInstance_Bodoconsult_NetworkCommunication_Interfaces_IParameterSet_
+  name: CreateInstance
+  nameWithType: EdcpServerOutboundDataMessageFactory.CreateInstance
+  fullName: Bodoconsult.NetworkCommunication.Factories.EdcpServerOutboundDataMessageFactory.CreateInstance
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessageFactory.CreateInstance(Bodoconsult.NetworkCommunication.Interfaces.IParameterSet)
+  commentId: M:Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessageFactory.CreateInstance(Bodoconsult.NetworkCommunication.Interfaces.IParameterSet)
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessageFactory
+  href: Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessageFactory.html#Bodoconsult_NetworkCommunication_Interfaces_IOutboundDataMessageFactory_CreateInstance_Bodoconsult_NetworkCommunication_Interfaces_IParameterSet_
+  name: CreateInstance(IParameterSet)
+  nameWithType: IOutboundDataMessageFactory.CreateInstance(IParameterSet)
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessageFactory.CreateInstance(Bodoconsult.NetworkCommunication.Interfaces.IParameterSet)
+  spec.csharp:
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessageFactory.CreateInstance(Bodoconsult.NetworkCommunication.Interfaces.IParameterSet)
+    name: CreateInstance
+    href: Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessageFactory.html#Bodoconsult_NetworkCommunication_Interfaces_IOutboundDataMessageFactory_CreateInstance_Bodoconsult_NetworkCommunication_Interfaces_IParameterSet_
+  - name: (
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IParameterSet
+    name: IParameterSet
+    href: Bodoconsult.NetworkCommunication.Interfaces.IParameterSet.html
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessageFactory.CreateInstance(Bodoconsult.NetworkCommunication.Interfaces.IParameterSet)
+    name: CreateInstance
+    href: Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessageFactory.html#Bodoconsult_NetworkCommunication_Interfaces_IOutboundDataMessageFactory_CreateInstance_Bodoconsult_NetworkCommunication_Interfaces_IParameterSet_
+  - name: (
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IParameterSet
+    name: IParameterSet
+    href: Bodoconsult.NetworkCommunication.Interfaces.IParameterSet.html
+  - name: )
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IParameterSet
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.IParameterSet
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.NetworkCommunication.Interfaces.IParameterSet.html
+  name: IParameterSet
+  nameWithType: IParameterSet
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IParameterSet
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessage
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessage
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessage.html
+  name: IOutboundDataMessage
+  nameWithType: IOutboundDataMessage
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessage
+- uid: Bodoconsult.NetworkCommunication.Factories.EdcpServerOutboundDataMessageFactory.Reset*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Factories.EdcpServerOutboundDataMessageFactory.Reset
+  href: Bodoconsult.NetworkCommunication.Factories.EdcpServerOutboundDataMessageFactory.html#Bodoconsult_NetworkCommunication_Factories_EdcpServerOutboundDataMessageFactory_Reset
+  name: Reset
+  nameWithType: EdcpServerOutboundDataMessageFactory.Reset
+  fullName: Bodoconsult.NetworkCommunication.Factories.EdcpServerOutboundDataMessageFactory.Reset
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessageFactory.Reset
+  commentId: M:Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessageFactory.Reset
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessageFactory
+  href: Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessageFactory.html#Bodoconsult_NetworkCommunication_Interfaces_IOutboundDataMessageFactory_Reset
+  name: Reset()
+  nameWithType: IOutboundDataMessageFactory.Reset()
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessageFactory.Reset()
+  spec.csharp:
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessageFactory.Reset
+    name: Reset
+    href: Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessageFactory.html#Bodoconsult_NetworkCommunication_Interfaces_IOutboundDataMessageFactory_Reset
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessageFactory.Reset
+    name: Reset
+    href: Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessageFactory.html#Bodoconsult_NetworkCommunication_Interfaces_IOutboundDataMessageFactory_Reset
+  - name: (
+  - name: )

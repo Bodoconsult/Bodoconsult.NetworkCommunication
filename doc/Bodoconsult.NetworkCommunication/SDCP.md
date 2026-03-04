@@ -11,7 +11,9 @@ Simple data communication protocol (SDCP)
 
 >	[Implement a data message splitter splitting the incoming byte stream into potential messages: IDataMessageSplitter](#define-message-limiting-bytes-devicecommunicationbasics)
 
->	[Implement your data message types: IDataMessage](#implement-your-data-message-types-idatamessage)
+>	[Implement your data message types for inbound messages: IInboundDataMessage](#implement-your-data-message-types-for-inbound-messages-iinbounddatamessage)
+
+>	[Implement your data message types for outbound messages: IInboundDataMessage](#implement-your-data-message-types-for-outbound-messages-ioutbounddatamessage)
 
 >	[Implement a handshake validator for inbound handshakes: IHandshakeDataMessageValidator](#implement-a-handshake-validator-for-inbound-handshakes-ihandshakedatamessagevalidator)
 
@@ -442,7 +444,7 @@ internal class SdcpDataMessageSplitterTests
 }
 ```
 
-# Implement your data message types for inbound messages: IInboundDataMessage
+# Implement your data message types for inbound messages: IInboundDataMessage 
 
 Inbound messages are messages your app receives from another app via network.
 

@@ -1,0 +1,173 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IRequestStepProcessorFactory
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.IRequestStepProcessorFactory
+  id: IRequestStepProcessorFactory
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  children:
+  - Bodoconsult.NetworkCommunication.Interfaces.IRequestStepProcessorFactory.CreateDeviceProcessor(Bodoconsult.NetworkCommunication.Interfaces.IDeviceRequestSpec)
+  - Bodoconsult.NetworkCommunication.Interfaces.IRequestStepProcessorFactory.CreateInternalProcessor(Bodoconsult.NetworkCommunication.Interfaces.IInternalRequestSpec)
+  langs:
+  - csharp
+  - vb
+  name: IRequestStepProcessorFactory
+  nameWithType: IRequestStepProcessorFactory
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IRequestStepProcessorFactory
+  type: Interface
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/IRequestStepProcessorFactory.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: IRequestStepProcessorFactory
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/IRequestStepProcessorFactory.cs
+    startLine: 7
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Interface for factory for device request step processor instances
+  example: []
+  syntax:
+    content: public interface IRequestStepProcessorFactory
+    content.vb: Public Interface IRequestStepProcessorFactory
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IRequestStepProcessorFactory.CreateDeviceProcessor(Bodoconsult.NetworkCommunication.Interfaces.IDeviceRequestSpec)
+  commentId: M:Bodoconsult.NetworkCommunication.Interfaces.IRequestStepProcessorFactory.CreateDeviceProcessor(Bodoconsult.NetworkCommunication.Interfaces.IDeviceRequestSpec)
+  id: CreateDeviceProcessor(Bodoconsult.NetworkCommunication.Interfaces.IDeviceRequestSpec)
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IRequestStepProcessorFactory
+  langs:
+  - csharp
+  - vb
+  name: CreateDeviceProcessor(IDeviceRequestSpec)
+  nameWithType: IRequestStepProcessorFactory.CreateDeviceProcessor(IDeviceRequestSpec)
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IRequestStepProcessorFactory.CreateDeviceProcessor(Bodoconsult.NetworkCommunication.Interfaces.IDeviceRequestSpec)
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/IRequestStepProcessorFactory.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: CreateDeviceProcessor
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/IRequestStepProcessorFactory.cs
+    startLine: 14
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Create a device request step processor
+  example: []
+  syntax:
+    content: IDeviceRequestStepProcessor CreateDeviceProcessor(IDeviceRequestSpec requestSpec)
+    parameters:
+    - id: requestSpec
+      type: Bodoconsult.NetworkCommunication.Interfaces.IDeviceRequestSpec
+      description: Current request
+    return:
+      type: Bodoconsult.NetworkCommunication.Interfaces.IDeviceRequestStepProcessor
+      description: A valid device request step processor instance
+    content.vb: Function CreateDeviceProcessor(requestSpec As IDeviceRequestSpec) As IDeviceRequestStepProcessor
+  overload: Bodoconsult.NetworkCommunication.Interfaces.IRequestStepProcessorFactory.CreateDeviceProcessor*
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IRequestStepProcessorFactory.CreateInternalProcessor(Bodoconsult.NetworkCommunication.Interfaces.IInternalRequestSpec)
+  commentId: M:Bodoconsult.NetworkCommunication.Interfaces.IRequestStepProcessorFactory.CreateInternalProcessor(Bodoconsult.NetworkCommunication.Interfaces.IInternalRequestSpec)
+  id: CreateInternalProcessor(Bodoconsult.NetworkCommunication.Interfaces.IInternalRequestSpec)
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IRequestStepProcessorFactory
+  langs:
+  - csharp
+  - vb
+  name: CreateInternalProcessor(IInternalRequestSpec)
+  nameWithType: IRequestStepProcessorFactory.CreateInternalProcessor(IInternalRequestSpec)
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IRequestStepProcessorFactory.CreateInternalProcessor(Bodoconsult.NetworkCommunication.Interfaces.IInternalRequestSpec)
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/IRequestStepProcessorFactory.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: CreateInternalProcessor
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/IRequestStepProcessorFactory.cs
+    startLine: 21
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Create an internal request step processor
+  example: []
+  syntax:
+    content: IInternalRequestStepProcessor CreateInternalProcessor(IInternalRequestSpec requestSpec)
+    parameters:
+    - id: requestSpec
+      type: Bodoconsult.NetworkCommunication.Interfaces.IInternalRequestSpec
+      description: Current request
+    return:
+      type: Bodoconsult.NetworkCommunication.Interfaces.IInternalRequestStepProcessor
+      description: A valid device request step processor instance
+    content.vb: Function CreateInternalProcessor(requestSpec As IInternalRequestSpec) As IInternalRequestStepProcessor
+  overload: Bodoconsult.NetworkCommunication.Interfaces.IRequestStepProcessorFactory.CreateInternalProcessor*
+references:
+- uid: Bodoconsult.NetworkCommunication.Interfaces
+  commentId: N:Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.html
+  name: Bodoconsult.NetworkCommunication.Interfaces
+  nameWithType: Bodoconsult.NetworkCommunication.Interfaces
+  fullName: Bodoconsult.NetworkCommunication.Interfaces
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Interfaces
+    name: Interfaces
+    href: Bodoconsult.NetworkCommunication.Interfaces.html
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Interfaces
+    name: Interfaces
+    href: Bodoconsult.NetworkCommunication.Interfaces.html
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IRequestStepProcessorFactory.CreateDeviceProcessor*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.IRequestStepProcessorFactory.CreateDeviceProcessor
+  href: Bodoconsult.NetworkCommunication.Interfaces.IRequestStepProcessorFactory.html#Bodoconsult_NetworkCommunication_Interfaces_IRequestStepProcessorFactory_CreateDeviceProcessor_Bodoconsult_NetworkCommunication_Interfaces_IDeviceRequestSpec_
+  name: CreateDeviceProcessor
+  nameWithType: IRequestStepProcessorFactory.CreateDeviceProcessor
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IRequestStepProcessorFactory.CreateDeviceProcessor
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IDeviceRequestSpec
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.IDeviceRequestSpec
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.NetworkCommunication.Interfaces.IDeviceRequestSpec.html
+  name: IDeviceRequestSpec
+  nameWithType: IDeviceRequestSpec
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IDeviceRequestSpec
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IDeviceRequestStepProcessor
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.IDeviceRequestStepProcessor
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.NetworkCommunication.Interfaces.IDeviceRequestStepProcessor.html
+  name: IDeviceRequestStepProcessor
+  nameWithType: IDeviceRequestStepProcessor
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IDeviceRequestStepProcessor
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IRequestStepProcessorFactory.CreateInternalProcessor*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.IRequestStepProcessorFactory.CreateInternalProcessor
+  href: Bodoconsult.NetworkCommunication.Interfaces.IRequestStepProcessorFactory.html#Bodoconsult_NetworkCommunication_Interfaces_IRequestStepProcessorFactory_CreateInternalProcessor_Bodoconsult_NetworkCommunication_Interfaces_IInternalRequestSpec_
+  name: CreateInternalProcessor
+  nameWithType: IRequestStepProcessorFactory.CreateInternalProcessor
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IRequestStepProcessorFactory.CreateInternalProcessor
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IInternalRequestSpec
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.IInternalRequestSpec
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.NetworkCommunication.Interfaces.IInternalRequestSpec.html
+  name: IInternalRequestSpec
+  nameWithType: IInternalRequestSpec
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IInternalRequestSpec
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IInternalRequestStepProcessor
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.IInternalRequestStepProcessor
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.NetworkCommunication.Interfaces.IInternalRequestStepProcessor.html
+  name: IInternalRequestStepProcessor
+  nameWithType: IInternalRequestStepProcessor
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IInternalRequestStepProcessor

@@ -1,0 +1,1123 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bodoconsult.NetworkCommunication.Communication.IpHighPerformanceDuplexIo
+  commentId: T:Bodoconsult.NetworkCommunication.Communication.IpHighPerformanceDuplexIo
+  id: IpHighPerformanceDuplexIo
+  parent: Bodoconsult.NetworkCommunication.Communication
+  children:
+  - Bodoconsult.NetworkCommunication.Communication.IpHighPerformanceDuplexIo.#ctor(Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig,Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcessFactory)
+  - Bodoconsult.NetworkCommunication.Communication.IpHighPerformanceDuplexIo.Dispose(System.Boolean)
+  - Bodoconsult.NetworkCommunication.Communication.IpHighPerformanceDuplexIo.Input
+  - Bodoconsult.NetworkCommunication.Communication.IpHighPerformanceDuplexIo.Output
+  - Bodoconsult.NetworkCommunication.Communication.IpHighPerformanceDuplexIo.PollingTimeout
+  - Bodoconsult.NetworkCommunication.Communication.IpHighPerformanceDuplexIo.StartCommunication
+  - Bodoconsult.NetworkCommunication.Communication.IpHighPerformanceDuplexIo.StopCommunication
+  langs:
+  - csharp
+  - vb
+  name: IpHighPerformanceDuplexIo
+  nameWithType: IpHighPerformanceDuplexIo
+  fullName: Bodoconsult.NetworkCommunication.Communication.IpHighPerformanceDuplexIo
+  type: Class
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Communication/IpHighPerformanceDuplexIo.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: IpHighPerformanceDuplexIo
+    path: src/Bodoconsult.NetworkCommunication/Communication/IpHighPerformanceDuplexIo.cs
+    startLine: 11
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Communication
+  summary: High performance implementation based on MS pipeline System.Io.Pipelines for IP based networks (UDP/TCP)
+  example: []
+  syntax:
+    content: 'public class IpHighPerformanceDuplexIo : BaseDuplexIo, IDuplexIo, IAsyncDisposable, IDisposable, IDuplexPipe'
+    content.vb: Public Class IpHighPerformanceDuplexIo Inherits BaseDuplexIo Implements IDuplexIo, IAsyncDisposable, IDisposable, IDuplexPipe
+  inheritance:
+  - System.Object
+  - Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo
+  implements:
+  - Bodoconsult.NetworkCommunication.Interfaces.IDuplexIo
+  - System.IAsyncDisposable
+  - System.IDisposable
+  - System.IO.Pipelines.IDuplexPipe
+  inheritedMembers:
+  - Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo.DataMessagingConfig
+  - Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo.SocketProxy
+  - Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo.IsCommunicationStarted
+  - Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo.Receiver
+  - Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo.Sender
+  - Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo.IsConnectionAlive
+  - Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo.SendMessage(Bodoconsult.NetworkCommunication.Interfaces.IOutboundMessage)
+  - Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo.SendMessageInternal(Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessage)
+  - Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo.StartMessageSendingProcess(Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessage)
+  - Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo.UpdateDataMessageProcessingPackage
+  - Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo.IsConnected
+  - Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo.CentralErrorHandling(System.Exception)
+  - Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo.DisposeAsync
+  - Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo.Dispose
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: Bodoconsult.NetworkCommunication.Communication.IpHighPerformanceDuplexIo.PollingTimeout
+  commentId: P:Bodoconsult.NetworkCommunication.Communication.IpHighPerformanceDuplexIo.PollingTimeout
+  id: PollingTimeout
+  parent: Bodoconsult.NetworkCommunication.Communication.IpHighPerformanceDuplexIo
+  langs:
+  - csharp
+  - vb
+  name: PollingTimeout
+  nameWithType: IpHighPerformanceDuplexIo.PollingTimeout
+  fullName: Bodoconsult.NetworkCommunication.Communication.IpHighPerformanceDuplexIo.PollingTimeout
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Communication/IpHighPerformanceDuplexIo.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: PollingTimeout
+    path: src/Bodoconsult.NetworkCommunication/Communication/IpHighPerformanceDuplexIo.cs
+    startLine: 20
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Communication
+  summary: Timeout for polling in milliseconds
+  example: []
+  syntax:
+    content: public int PollingTimeout { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property PollingTimeout As Integer
+  overload: Bodoconsult.NetworkCommunication.Communication.IpHighPerformanceDuplexIo.PollingTimeout*
+- uid: Bodoconsult.NetworkCommunication.Communication.IpHighPerformanceDuplexIo.#ctor(Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig,Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcessFactory)
+  commentId: M:Bodoconsult.NetworkCommunication.Communication.IpHighPerformanceDuplexIo.#ctor(Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig,Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcessFactory)
+  id: '#ctor(Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig,Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcessFactory)'
+  parent: Bodoconsult.NetworkCommunication.Communication.IpHighPerformanceDuplexIo
+  langs:
+  - csharp
+  - vb
+  name: IpHighPerformanceDuplexIo(IDataMessagingConfig, ISendPacketProcessFactory)
+  nameWithType: IpHighPerformanceDuplexIo.IpHighPerformanceDuplexIo(IDataMessagingConfig, ISendPacketProcessFactory)
+  fullName: Bodoconsult.NetworkCommunication.Communication.IpHighPerformanceDuplexIo.IpHighPerformanceDuplexIo(Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig, Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcessFactory)
+  type: Constructor
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Communication/IpHighPerformanceDuplexIo.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: .ctor
+    path: src/Bodoconsult.NetworkCommunication/Communication/IpHighPerformanceDuplexIo.cs
+    startLine: 25
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Communication
+  summary: Default ctor
+  example: []
+  syntax:
+    content: public IpHighPerformanceDuplexIo(IDataMessagingConfig config, ISendPacketProcessFactory sendPacketProcessFactory)
+    parameters:
+    - id: config
+      type: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig
+    - id: sendPacketProcessFactory
+      type: Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcessFactory
+    content.vb: Public Sub New(config As IDataMessagingConfig, sendPacketProcessFactory As ISendPacketProcessFactory)
+  overload: Bodoconsult.NetworkCommunication.Communication.IpHighPerformanceDuplexIo.#ctor*
+  nameWithType.vb: IpHighPerformanceDuplexIo.New(IDataMessagingConfig, ISendPacketProcessFactory)
+  fullName.vb: Bodoconsult.NetworkCommunication.Communication.IpHighPerformanceDuplexIo.New(Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig, Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcessFactory)
+  name.vb: New(IDataMessagingConfig, ISendPacketProcessFactory)
+- uid: Bodoconsult.NetworkCommunication.Communication.IpHighPerformanceDuplexIo.StartCommunication
+  commentId: M:Bodoconsult.NetworkCommunication.Communication.IpHighPerformanceDuplexIo.StartCommunication
+  id: StartCommunication
+  parent: Bodoconsult.NetworkCommunication.Communication.IpHighPerformanceDuplexIo
+  langs:
+  - csharp
+  - vb
+  name: StartCommunication()
+  nameWithType: IpHighPerformanceDuplexIo.StartCommunication()
+  fullName: Bodoconsult.NetworkCommunication.Communication.IpHighPerformanceDuplexIo.StartCommunication()
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Communication/IpHighPerformanceDuplexIo.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: StartCommunication
+    path: src/Bodoconsult.NetworkCommunication/Communication/IpHighPerformanceDuplexIo.cs
+    startLine: 36
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Communication
+  summary: Start the duplex communication
+  example: []
+  syntax:
+    content: public override Task StartCommunication()
+    return:
+      type: System.Threading.Tasks.Task
+      description: Task
+    content.vb: Public Overrides Function StartCommunication() As Task
+  overridden: Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo.StartCommunication
+  overload: Bodoconsult.NetworkCommunication.Communication.IpHighPerformanceDuplexIo.StartCommunication*
+- uid: Bodoconsult.NetworkCommunication.Communication.IpHighPerformanceDuplexIo.StopCommunication
+  commentId: M:Bodoconsult.NetworkCommunication.Communication.IpHighPerformanceDuplexIo.StopCommunication
+  id: StopCommunication
+  parent: Bodoconsult.NetworkCommunication.Communication.IpHighPerformanceDuplexIo
+  langs:
+  - csharp
+  - vb
+  name: StopCommunication()
+  nameWithType: IpHighPerformanceDuplexIo.StopCommunication()
+  fullName: Bodoconsult.NetworkCommunication.Communication.IpHighPerformanceDuplexIo.StopCommunication()
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Communication/IpHighPerformanceDuplexIo.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: StopCommunication
+    path: src/Bodoconsult.NetworkCommunication/Communication/IpHighPerformanceDuplexIo.cs
+    startLine: 69
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Communication
+  summary: Stop the duplex communication
+  example: []
+  syntax:
+    content: public override Task StopCommunication()
+    return:
+      type: System.Threading.Tasks.Task
+      description: Task
+    content.vb: Public Overrides Function StopCommunication() As Task
+  overridden: Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo.StopCommunication
+  overload: Bodoconsult.NetworkCommunication.Communication.IpHighPerformanceDuplexIo.StopCommunication*
+- uid: Bodoconsult.NetworkCommunication.Communication.IpHighPerformanceDuplexIo.Dispose(System.Boolean)
+  commentId: M:Bodoconsult.NetworkCommunication.Communication.IpHighPerformanceDuplexIo.Dispose(System.Boolean)
+  id: Dispose(System.Boolean)
+  parent: Bodoconsult.NetworkCommunication.Communication.IpHighPerformanceDuplexIo
+  langs:
+  - csharp
+  - vb
+  name: Dispose(bool)
+  nameWithType: IpHighPerformanceDuplexIo.Dispose(bool)
+  fullName: Bodoconsult.NetworkCommunication.Communication.IpHighPerformanceDuplexIo.Dispose(bool)
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Communication/IpHighPerformanceDuplexIo.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Dispose
+    path: src/Bodoconsult.NetworkCommunication/Communication/IpHighPerformanceDuplexIo.cs
+    startLine: 89
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Communication
+  summary: Current implemenation of Dispose()
+  example: []
+  syntax:
+    content: protected override Task Dispose(bool disposing)
+    parameters:
+    - id: disposing
+      type: System.Boolean
+      description: Dispong required?
+    return:
+      type: System.Threading.Tasks.Task
+    content.vb: Protected Overrides Function Dispose(disposing As Boolean) As Task
+  overridden: Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo.Dispose(System.Boolean)
+  overload: Bodoconsult.NetworkCommunication.Communication.IpHighPerformanceDuplexIo.Dispose*
+  nameWithType.vb: IpHighPerformanceDuplexIo.Dispose(Boolean)
+  fullName.vb: Bodoconsult.NetworkCommunication.Communication.IpHighPerformanceDuplexIo.Dispose(Boolean)
+  name.vb: Dispose(Boolean)
+- uid: Bodoconsult.NetworkCommunication.Communication.IpHighPerformanceDuplexIo.Input
+  commentId: P:Bodoconsult.NetworkCommunication.Communication.IpHighPerformanceDuplexIo.Input
+  id: Input
+  parent: Bodoconsult.NetworkCommunication.Communication.IpHighPerformanceDuplexIo
+  langs:
+  - csharp
+  - vb
+  name: Input
+  nameWithType: IpHighPerformanceDuplexIo.Input
+  fullName: Bodoconsult.NetworkCommunication.Communication.IpHighPerformanceDuplexIo.Input
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Communication/IpHighPerformanceDuplexIo.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Input
+    path: src/Bodoconsult.NetworkCommunication/Communication/IpHighPerformanceDuplexIo.cs
+    startLine: 95
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Communication
+  summary: Gets the <xref href="System.IO.Pipelines.PipeReader" data-throw-if-not-resolved="false"></xref> half of the duplex pipe.
+  example: []
+  syntax:
+    content: public PipeReader Input { get; }
+    parameters: []
+    return:
+      type: System.IO.Pipelines.PipeReader
+    content.vb: Public ReadOnly Property Input As PipeReader
+  overload: Bodoconsult.NetworkCommunication.Communication.IpHighPerformanceDuplexIo.Input*
+  implements:
+  - System.IO.Pipelines.IDuplexPipe.Input
+- uid: Bodoconsult.NetworkCommunication.Communication.IpHighPerformanceDuplexIo.Output
+  commentId: P:Bodoconsult.NetworkCommunication.Communication.IpHighPerformanceDuplexIo.Output
+  id: Output
+  parent: Bodoconsult.NetworkCommunication.Communication.IpHighPerformanceDuplexIo
+  langs:
+  - csharp
+  - vb
+  name: Output
+  nameWithType: IpHighPerformanceDuplexIo.Output
+  fullName: Bodoconsult.NetworkCommunication.Communication.IpHighPerformanceDuplexIo.Output
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Communication/IpHighPerformanceDuplexIo.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Output
+    path: src/Bodoconsult.NetworkCommunication/Communication/IpHighPerformanceDuplexIo.cs
+    startLine: 98
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Communication
+  summary: Gets the <xref href="System.IO.Pipelines.PipeWriter" data-throw-if-not-resolved="false"></xref> half of the duplex pipe.
+  example: []
+  syntax:
+    content: public PipeWriter Output { get; }
+    parameters: []
+    return:
+      type: System.IO.Pipelines.PipeWriter
+    content.vb: Public ReadOnly Property Output As PipeWriter
+  overload: Bodoconsult.NetworkCommunication.Communication.IpHighPerformanceDuplexIo.Output*
+  implements:
+  - System.IO.Pipelines.IDuplexPipe.Output
+references:
+- uid: Bodoconsult.NetworkCommunication.Communication
+  commentId: N:Bodoconsult.NetworkCommunication.Communication
+  href: Bodoconsult.html
+  name: Bodoconsult.NetworkCommunication.Communication
+  nameWithType: Bodoconsult.NetworkCommunication.Communication
+  fullName: Bodoconsult.NetworkCommunication.Communication
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Communication
+    name: Communication
+    href: Bodoconsult.NetworkCommunication.Communication.html
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Communication
+    name: Communication
+    href: Bodoconsult.NetworkCommunication.Communication.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo
+  commentId: T:Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo
+  parent: Bodoconsult.NetworkCommunication.Communication
+  href: Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo.html
+  name: BaseDuplexIo
+  nameWithType: BaseDuplexIo
+  fullName: Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IDuplexIo
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.IDuplexIo
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.NetworkCommunication.Interfaces.IDuplexIo.html
+  name: IDuplexIo
+  nameWithType: IDuplexIo
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IDuplexIo
+- uid: System.IAsyncDisposable
+  commentId: T:System.IAsyncDisposable
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.iasyncdisposable
+  name: IAsyncDisposable
+  nameWithType: IAsyncDisposable
+  fullName: System.IAsyncDisposable
+- uid: System.IDisposable
+  commentId: T:System.IDisposable
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable
+  name: IDisposable
+  nameWithType: IDisposable
+  fullName: System.IDisposable
+- uid: System.IO.Pipelines.IDuplexPipe
+  commentId: T:System.IO.Pipelines.IDuplexPipe
+  parent: System.IO.Pipelines
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.io.pipelines.iduplexpipe
+  name: IDuplexPipe
+  nameWithType: IDuplexPipe
+  fullName: System.IO.Pipelines.IDuplexPipe
+- uid: Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo.DataMessagingConfig
+  commentId: P:Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo.DataMessagingConfig
+  parent: Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo
+  href: Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo.html#Bodoconsult_NetworkCommunication_Communication_BaseDuplexIo_DataMessagingConfig
+  name: DataMessagingConfig
+  nameWithType: BaseDuplexIo.DataMessagingConfig
+  fullName: Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo.DataMessagingConfig
+- uid: Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo.SocketProxy
+  commentId: P:Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo.SocketProxy
+  parent: Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo
+  href: Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo.html#Bodoconsult_NetworkCommunication_Communication_BaseDuplexIo_SocketProxy
+  name: SocketProxy
+  nameWithType: BaseDuplexIo.SocketProxy
+  fullName: Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo.SocketProxy
+- uid: Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo.IsCommunicationStarted
+  commentId: P:Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo.IsCommunicationStarted
+  parent: Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo
+  href: Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo.html#Bodoconsult_NetworkCommunication_Communication_BaseDuplexIo_IsCommunicationStarted
+  name: IsCommunicationStarted
+  nameWithType: BaseDuplexIo.IsCommunicationStarted
+  fullName: Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo.IsCommunicationStarted
+- uid: Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo.Receiver
+  commentId: P:Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo.Receiver
+  parent: Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo
+  href: Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo.html#Bodoconsult_NetworkCommunication_Communication_BaseDuplexIo_Receiver
+  name: Receiver
+  nameWithType: BaseDuplexIo.Receiver
+  fullName: Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo.Receiver
+- uid: Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo.Sender
+  commentId: P:Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo.Sender
+  parent: Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo
+  href: Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo.html#Bodoconsult_NetworkCommunication_Communication_BaseDuplexIo_Sender
+  name: Sender
+  nameWithType: BaseDuplexIo.Sender
+  fullName: Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo.Sender
+- uid: Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo.IsConnectionAlive
+  commentId: P:Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo.IsConnectionAlive
+  parent: Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo
+  href: Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo.html#Bodoconsult_NetworkCommunication_Communication_BaseDuplexIo_IsConnectionAlive
+  name: IsConnectionAlive
+  nameWithType: BaseDuplexIo.IsConnectionAlive
+  fullName: Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo.IsConnectionAlive
+- uid: Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo.SendMessage(Bodoconsult.NetworkCommunication.Interfaces.IOutboundMessage)
+  commentId: M:Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo.SendMessage(Bodoconsult.NetworkCommunication.Interfaces.IOutboundMessage)
+  parent: Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo
+  href: Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo.html#Bodoconsult_NetworkCommunication_Communication_BaseDuplexIo_SendMessage_Bodoconsult_NetworkCommunication_Interfaces_IOutboundMessage_
+  name: SendMessage(IOutboundMessage)
+  nameWithType: BaseDuplexIo.SendMessage(IOutboundMessage)
+  fullName: Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo.SendMessage(Bodoconsult.NetworkCommunication.Interfaces.IOutboundMessage)
+  spec.csharp:
+  - uid: Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo.SendMessage(Bodoconsult.NetworkCommunication.Interfaces.IOutboundMessage)
+    name: SendMessage
+    href: Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo.html#Bodoconsult_NetworkCommunication_Communication_BaseDuplexIo_SendMessage_Bodoconsult_NetworkCommunication_Interfaces_IOutboundMessage_
+  - name: (
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IOutboundMessage
+    name: IOutboundMessage
+    href: Bodoconsult.NetworkCommunication.Interfaces.IOutboundMessage.html
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo.SendMessage(Bodoconsult.NetworkCommunication.Interfaces.IOutboundMessage)
+    name: SendMessage
+    href: Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo.html#Bodoconsult_NetworkCommunication_Communication_BaseDuplexIo_SendMessage_Bodoconsult_NetworkCommunication_Interfaces_IOutboundMessage_
+  - name: (
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IOutboundMessage
+    name: IOutboundMessage
+    href: Bodoconsult.NetworkCommunication.Interfaces.IOutboundMessage.html
+  - name: )
+- uid: Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo.SendMessageInternal(Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessage)
+  commentId: M:Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo.SendMessageInternal(Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessage)
+  parent: Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo
+  href: Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo.html#Bodoconsult_NetworkCommunication_Communication_BaseDuplexIo_SendMessageInternal_Bodoconsult_NetworkCommunication_Interfaces_IOutboundDataMessage_
+  name: SendMessageInternal(IOutboundDataMessage)
+  nameWithType: BaseDuplexIo.SendMessageInternal(IOutboundDataMessage)
+  fullName: Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo.SendMessageInternal(Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessage)
+  spec.csharp:
+  - uid: Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo.SendMessageInternal(Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessage)
+    name: SendMessageInternal
+    href: Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo.html#Bodoconsult_NetworkCommunication_Communication_BaseDuplexIo_SendMessageInternal_Bodoconsult_NetworkCommunication_Interfaces_IOutboundDataMessage_
+  - name: (
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessage
+    name: IOutboundDataMessage
+    href: Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessage.html
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo.SendMessageInternal(Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessage)
+    name: SendMessageInternal
+    href: Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo.html#Bodoconsult_NetworkCommunication_Communication_BaseDuplexIo_SendMessageInternal_Bodoconsult_NetworkCommunication_Interfaces_IOutboundDataMessage_
+  - name: (
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessage
+    name: IOutboundDataMessage
+    href: Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessage.html
+  - name: )
+- uid: Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo.StartMessageSendingProcess(Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessage)
+  commentId: M:Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo.StartMessageSendingProcess(Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessage)
+  parent: Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo
+  href: Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo.html#Bodoconsult_NetworkCommunication_Communication_BaseDuplexIo_StartMessageSendingProcess_Bodoconsult_NetworkCommunication_Interfaces_IOutboundDataMessage_
+  name: StartMessageSendingProcess(IOutboundDataMessage)
+  nameWithType: BaseDuplexIo.StartMessageSendingProcess(IOutboundDataMessage)
+  fullName: Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo.StartMessageSendingProcess(Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessage)
+  spec.csharp:
+  - uid: Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo.StartMessageSendingProcess(Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessage)
+    name: StartMessageSendingProcess
+    href: Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo.html#Bodoconsult_NetworkCommunication_Communication_BaseDuplexIo_StartMessageSendingProcess_Bodoconsult_NetworkCommunication_Interfaces_IOutboundDataMessage_
+  - name: (
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessage
+    name: IOutboundDataMessage
+    href: Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessage.html
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo.StartMessageSendingProcess(Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessage)
+    name: StartMessageSendingProcess
+    href: Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo.html#Bodoconsult_NetworkCommunication_Communication_BaseDuplexIo_StartMessageSendingProcess_Bodoconsult_NetworkCommunication_Interfaces_IOutboundDataMessage_
+  - name: (
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessage
+    name: IOutboundDataMessage
+    href: Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessage.html
+  - name: )
+- uid: Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo.UpdateDataMessageProcessingPackage
+  commentId: M:Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo.UpdateDataMessageProcessingPackage
+  parent: Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo
+  href: Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo.html#Bodoconsult_NetworkCommunication_Communication_BaseDuplexIo_UpdateDataMessageProcessingPackage
+  name: UpdateDataMessageProcessingPackage()
+  nameWithType: BaseDuplexIo.UpdateDataMessageProcessingPackage()
+  fullName: Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo.UpdateDataMessageProcessingPackage()
+  spec.csharp:
+  - uid: Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo.UpdateDataMessageProcessingPackage
+    name: UpdateDataMessageProcessingPackage
+    href: Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo.html#Bodoconsult_NetworkCommunication_Communication_BaseDuplexIo_UpdateDataMessageProcessingPackage
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo.UpdateDataMessageProcessingPackage
+    name: UpdateDataMessageProcessingPackage
+    href: Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo.html#Bodoconsult_NetworkCommunication_Communication_BaseDuplexIo_UpdateDataMessageProcessingPackage
+  - name: (
+  - name: )
+- uid: Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo.IsConnected
+  commentId: M:Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo.IsConnected
+  parent: Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo
+  href: Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo.html#Bodoconsult_NetworkCommunication_Communication_BaseDuplexIo_IsConnected
+  name: IsConnected()
+  nameWithType: BaseDuplexIo.IsConnected()
+  fullName: Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo.IsConnected()
+  spec.csharp:
+  - uid: Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo.IsConnected
+    name: IsConnected
+    href: Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo.html#Bodoconsult_NetworkCommunication_Communication_BaseDuplexIo_IsConnected
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo.IsConnected
+    name: IsConnected
+    href: Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo.html#Bodoconsult_NetworkCommunication_Communication_BaseDuplexIo_IsConnected
+  - name: (
+  - name: )
+- uid: Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo.CentralErrorHandling(System.Exception)
+  commentId: M:Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo.CentralErrorHandling(System.Exception)
+  parent: Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo
+  isExternal: true
+  href: Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo.html#Bodoconsult_NetworkCommunication_Communication_BaseDuplexIo_CentralErrorHandling_System_Exception_
+  name: CentralErrorHandling(Exception)
+  nameWithType: BaseDuplexIo.CentralErrorHandling(Exception)
+  fullName: Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo.CentralErrorHandling(System.Exception)
+  spec.csharp:
+  - uid: Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo.CentralErrorHandling(System.Exception)
+    name: CentralErrorHandling
+    href: Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo.html#Bodoconsult_NetworkCommunication_Communication_BaseDuplexIo_CentralErrorHandling_System_Exception_
+  - name: (
+  - uid: System.Exception
+    name: Exception
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.exception
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo.CentralErrorHandling(System.Exception)
+    name: CentralErrorHandling
+    href: Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo.html#Bodoconsult_NetworkCommunication_Communication_BaseDuplexIo_CentralErrorHandling_System_Exception_
+  - name: (
+  - uid: System.Exception
+    name: Exception
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.exception
+  - name: )
+- uid: Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo.DisposeAsync
+  commentId: M:Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo.DisposeAsync
+  parent: Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo
+  href: Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo.html#Bodoconsult_NetworkCommunication_Communication_BaseDuplexIo_DisposeAsync
+  name: DisposeAsync()
+  nameWithType: BaseDuplexIo.DisposeAsync()
+  fullName: Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo.DisposeAsync()
+  spec.csharp:
+  - uid: Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo.DisposeAsync
+    name: DisposeAsync
+    href: Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo.html#Bodoconsult_NetworkCommunication_Communication_BaseDuplexIo_DisposeAsync
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo.DisposeAsync
+    name: DisposeAsync
+    href: Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo.html#Bodoconsult_NetworkCommunication_Communication_BaseDuplexIo_DisposeAsync
+  - name: (
+  - name: )
+- uid: Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo.Dispose
+  commentId: M:Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo.Dispose
+  parent: Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo
+  href: Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo.html#Bodoconsult_NetworkCommunication_Communication_BaseDuplexIo_Dispose
+  name: Dispose()
+  nameWithType: BaseDuplexIo.Dispose()
+  fullName: Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo.Dispose()
+  spec.csharp:
+  - uid: Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo.Dispose
+    name: Dispose
+    href: Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo.html#Bodoconsult_NetworkCommunication_Communication_BaseDuplexIo_Dispose
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo.Dispose
+    name: Dispose
+    href: Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo.html#Bodoconsult_NetworkCommunication_Communication_BaseDuplexIo_Dispose
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Bodoconsult.NetworkCommunication.Interfaces
+  commentId: N:Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.html
+  name: Bodoconsult.NetworkCommunication.Interfaces
+  nameWithType: Bodoconsult.NetworkCommunication.Interfaces
+  fullName: Bodoconsult.NetworkCommunication.Interfaces
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Interfaces
+    name: Interfaces
+    href: Bodoconsult.NetworkCommunication.Interfaces.html
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Interfaces
+    name: Interfaces
+    href: Bodoconsult.NetworkCommunication.Interfaces.html
+- uid: System.IO.Pipelines
+  commentId: N:System.IO.Pipelines
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.IO.Pipelines
+  nameWithType: System.IO.Pipelines
+  fullName: System.IO.Pipelines
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.IO
+    name: IO
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.io
+  - name: .
+  - uid: System.IO.Pipelines
+    name: Pipelines
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.io.pipelines
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.IO
+    name: IO
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.io
+  - name: .
+  - uid: System.IO.Pipelines
+    name: Pipelines
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.io.pipelines
+- uid: Bodoconsult.NetworkCommunication.Communication.IpHighPerformanceDuplexIo.PollingTimeout*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Communication.IpHighPerformanceDuplexIo.PollingTimeout
+  href: Bodoconsult.NetworkCommunication.Communication.IpHighPerformanceDuplexIo.html#Bodoconsult_NetworkCommunication_Communication_IpHighPerformanceDuplexIo_PollingTimeout
+  name: PollingTimeout
+  nameWithType: IpHighPerformanceDuplexIo.PollingTimeout
+  fullName: Bodoconsult.NetworkCommunication.Communication.IpHighPerformanceDuplexIo.PollingTimeout
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: Bodoconsult.NetworkCommunication.Communication.IpHighPerformanceDuplexIo.#ctor*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Communication.IpHighPerformanceDuplexIo.#ctor
+  href: Bodoconsult.NetworkCommunication.Communication.IpHighPerformanceDuplexIo.html#Bodoconsult_NetworkCommunication_Communication_IpHighPerformanceDuplexIo__ctor_Bodoconsult_NetworkCommunication_Interfaces_IDataMessagingConfig_Bodoconsult_NetworkCommunication_Interfaces_ISendPacketProcessFactory_
+  name: IpHighPerformanceDuplexIo
+  nameWithType: IpHighPerformanceDuplexIo.IpHighPerformanceDuplexIo
+  fullName: Bodoconsult.NetworkCommunication.Communication.IpHighPerformanceDuplexIo.IpHighPerformanceDuplexIo
+  nameWithType.vb: IpHighPerformanceDuplexIo.New
+  fullName.vb: Bodoconsult.NetworkCommunication.Communication.IpHighPerformanceDuplexIo.New
+  name.vb: New
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig.html
+  name: IDataMessagingConfig
+  nameWithType: IDataMessagingConfig
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig
+- uid: Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcessFactory
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcessFactory
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcessFactory.html
+  name: ISendPacketProcessFactory
+  nameWithType: ISendPacketProcessFactory
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcessFactory
+- uid: Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo.StartCommunication
+  commentId: M:Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo.StartCommunication
+  parent: Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo
+  href: Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo.html#Bodoconsult_NetworkCommunication_Communication_BaseDuplexIo_StartCommunication
+  name: StartCommunication()
+  nameWithType: BaseDuplexIo.StartCommunication()
+  fullName: Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo.StartCommunication()
+  spec.csharp:
+  - uid: Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo.StartCommunication
+    name: StartCommunication
+    href: Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo.html#Bodoconsult_NetworkCommunication_Communication_BaseDuplexIo_StartCommunication
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo.StartCommunication
+    name: StartCommunication
+    href: Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo.html#Bodoconsult_NetworkCommunication_Communication_BaseDuplexIo_StartCommunication
+  - name: (
+  - name: )
+- uid: Bodoconsult.NetworkCommunication.Communication.IpHighPerformanceDuplexIo.StartCommunication*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Communication.IpHighPerformanceDuplexIo.StartCommunication
+  href: Bodoconsult.NetworkCommunication.Communication.IpHighPerformanceDuplexIo.html#Bodoconsult_NetworkCommunication_Communication_IpHighPerformanceDuplexIo_StartCommunication
+  name: StartCommunication
+  nameWithType: IpHighPerformanceDuplexIo.StartCommunication
+  fullName: Bodoconsult.NetworkCommunication.Communication.IpHighPerformanceDuplexIo.StartCommunication
+- uid: System.Threading.Tasks.Task
+  commentId: T:System.Threading.Tasks.Task
+  parent: System.Threading.Tasks
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task
+  name: Task
+  nameWithType: Task
+  fullName: System.Threading.Tasks.Task
+- uid: System.Threading.Tasks
+  commentId: N:System.Threading.Tasks
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Threading.Tasks
+  nameWithType: System.Threading.Tasks
+  fullName: System.Threading.Tasks
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+- uid: Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo.StopCommunication
+  commentId: M:Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo.StopCommunication
+  parent: Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo
+  href: Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo.html#Bodoconsult_NetworkCommunication_Communication_BaseDuplexIo_StopCommunication
+  name: StopCommunication()
+  nameWithType: BaseDuplexIo.StopCommunication()
+  fullName: Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo.StopCommunication()
+  spec.csharp:
+  - uid: Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo.StopCommunication
+    name: StopCommunication
+    href: Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo.html#Bodoconsult_NetworkCommunication_Communication_BaseDuplexIo_StopCommunication
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo.StopCommunication
+    name: StopCommunication
+    href: Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo.html#Bodoconsult_NetworkCommunication_Communication_BaseDuplexIo_StopCommunication
+  - name: (
+  - name: )
+- uid: Bodoconsult.NetworkCommunication.Communication.IpHighPerformanceDuplexIo.StopCommunication*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Communication.IpHighPerformanceDuplexIo.StopCommunication
+  href: Bodoconsult.NetworkCommunication.Communication.IpHighPerformanceDuplexIo.html#Bodoconsult_NetworkCommunication_Communication_IpHighPerformanceDuplexIo_StopCommunication
+  name: StopCommunication
+  nameWithType: IpHighPerformanceDuplexIo.StopCommunication
+  fullName: Bodoconsult.NetworkCommunication.Communication.IpHighPerformanceDuplexIo.StopCommunication
+- uid: Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo.Dispose(System.Boolean)
+  commentId: M:Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo.Dispose(System.Boolean)
+  parent: Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo
+  isExternal: true
+  href: Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo.html#Bodoconsult_NetworkCommunication_Communication_BaseDuplexIo_Dispose_System_Boolean_
+  name: Dispose(bool)
+  nameWithType: BaseDuplexIo.Dispose(bool)
+  fullName: Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo.Dispose(bool)
+  nameWithType.vb: BaseDuplexIo.Dispose(Boolean)
+  fullName.vb: Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo.Dispose(Boolean)
+  name.vb: Dispose(Boolean)
+  spec.csharp:
+  - uid: Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo.Dispose(System.Boolean)
+    name: Dispose
+    href: Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo.html#Bodoconsult_NetworkCommunication_Communication_BaseDuplexIo_Dispose_System_Boolean_
+  - name: (
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo.Dispose(System.Boolean)
+    name: Dispose
+    href: Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo.html#Bodoconsult_NetworkCommunication_Communication_BaseDuplexIo_Dispose_System_Boolean_
+  - name: (
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: Bodoconsult.NetworkCommunication.Communication.IpHighPerformanceDuplexIo.Dispose*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Communication.IpHighPerformanceDuplexIo.Dispose
+  href: Bodoconsult.NetworkCommunication.Communication.IpHighPerformanceDuplexIo.html#Bodoconsult_NetworkCommunication_Communication_IpHighPerformanceDuplexIo_Dispose_System_Boolean_
+  name: Dispose
+  nameWithType: IpHighPerformanceDuplexIo.Dispose
+  fullName: Bodoconsult.NetworkCommunication.Communication.IpHighPerformanceDuplexIo.Dispose
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: System.IO.Pipelines.PipeReader
+  commentId: T:System.IO.Pipelines.PipeReader
+  parent: System.IO.Pipelines
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.io.pipelines.pipereader
+  name: PipeReader
+  nameWithType: PipeReader
+  fullName: System.IO.Pipelines.PipeReader
+- uid: Bodoconsult.NetworkCommunication.Communication.IpHighPerformanceDuplexIo.Input*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Communication.IpHighPerformanceDuplexIo.Input
+  href: Bodoconsult.NetworkCommunication.Communication.IpHighPerformanceDuplexIo.html#Bodoconsult_NetworkCommunication_Communication_IpHighPerformanceDuplexIo_Input
+  name: Input
+  nameWithType: IpHighPerformanceDuplexIo.Input
+  fullName: Bodoconsult.NetworkCommunication.Communication.IpHighPerformanceDuplexIo.Input
+- uid: System.IO.Pipelines.IDuplexPipe.Input
+  commentId: P:System.IO.Pipelines.IDuplexPipe.Input
+  parent: System.IO.Pipelines.IDuplexPipe
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.io.pipelines.iduplexpipe.input
+  name: Input
+  nameWithType: IDuplexPipe.Input
+  fullName: System.IO.Pipelines.IDuplexPipe.Input
+- uid: System.IO.Pipelines.PipeWriter
+  commentId: T:System.IO.Pipelines.PipeWriter
+  parent: System.IO.Pipelines
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.io.pipelines.pipewriter
+  name: PipeWriter
+  nameWithType: PipeWriter
+  fullName: System.IO.Pipelines.PipeWriter
+- uid: Bodoconsult.NetworkCommunication.Communication.IpHighPerformanceDuplexIo.Output*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Communication.IpHighPerformanceDuplexIo.Output
+  href: Bodoconsult.NetworkCommunication.Communication.IpHighPerformanceDuplexIo.html#Bodoconsult_NetworkCommunication_Communication_IpHighPerformanceDuplexIo_Output
+  name: Output
+  nameWithType: IpHighPerformanceDuplexIo.Output
+  fullName: Bodoconsult.NetworkCommunication.Communication.IpHighPerformanceDuplexIo.Output
+- uid: System.IO.Pipelines.IDuplexPipe.Output
+  commentId: P:System.IO.Pipelines.IDuplexPipe.Output
+  parent: System.IO.Pipelines.IDuplexPipe
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.io.pipelines.iduplexpipe.output
+  name: Output
+  nameWithType: IDuplexPipe.Output
+  fullName: System.IO.Pipelines.IDuplexPipe.Output

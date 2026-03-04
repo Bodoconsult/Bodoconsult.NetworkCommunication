@@ -1,0 +1,23 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bodoconsult.NetworkCommunication.DataMessaging.DataBlockCodingProcessors
+  commentId: N:Bodoconsult.NetworkCommunication.DataMessaging.DataBlockCodingProcessors
+  id: Bodoconsult.NetworkCommunication.DataMessaging.DataBlockCodingProcessors
+  children:
+  - Bodoconsult.NetworkCommunication.DataMessaging.DataBlockCodingProcessors.DefaultDataBlockCodingProcessor
+  langs:
+  - csharp
+  - vb
+  name: Bodoconsult.NetworkCommunication.DataMessaging.DataBlockCodingProcessors
+  nameWithType: Bodoconsult.NetworkCommunication.DataMessaging.DataBlockCodingProcessors
+  fullName: Bodoconsult.NetworkCommunication.DataMessaging.DataBlockCodingProcessors
+  type: Namespace
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+references:
+- uid: Bodoconsult.NetworkCommunication.DataMessaging.DataBlockCodingProcessors.DefaultDataBlockCodingProcessor
+  commentId: T:Bodoconsult.NetworkCommunication.DataMessaging.DataBlockCodingProcessors.DefaultDataBlockCodingProcessor
+  href: Bodoconsult.NetworkCommunication.DataMessaging.DataBlockCodingProcessors.DefaultDataBlockCodingProcessor.html
+  name: DefaultDataBlockCodingProcessor
+  nameWithType: DefaultDataBlockCodingProcessor
+  fullName: Bodoconsult.NetworkCommunication.DataMessaging.DataBlockCodingProcessors.DefaultDataBlockCodingProcessor

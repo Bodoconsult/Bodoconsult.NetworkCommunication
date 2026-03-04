@@ -1,0 +1,406 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerConfiguration
+  commentId: T:Bodoconsult.Network.Windows.Dhcp.IDhcpServerConfiguration
+  id: IDhcpServerConfiguration
+  parent: Bodoconsult.Network.Windows.Dhcp
+  children:
+  - Bodoconsult.Network.Windows.Dhcp.IDhcpServerConfiguration.ApiProtocolSupport
+  - Bodoconsult.Network.Windows.Dhcp.IDhcpServerConfiguration.BackupInterval
+  - Bodoconsult.Network.Windows.Dhcp.IDhcpServerConfiguration.BackupPath
+  - Bodoconsult.Network.Windows.Dhcp.IDhcpServerConfiguration.DatabaseCleanupInterval
+  - Bodoconsult.Network.Windows.Dhcp.IDhcpServerConfiguration.DatabaseLoggingEnabled
+  - Bodoconsult.Network.Windows.Dhcp.IDhcpServerConfiguration.DatabaseName
+  - Bodoconsult.Network.Windows.Dhcp.IDhcpServerConfiguration.DatabasePath
+  - Bodoconsult.Network.Windows.Dhcp.IDhcpServerConfiguration.Server
+  langs:
+  - csharp
+  - vb
+  name: IDhcpServerConfiguration
+  nameWithType: IDhcpServerConfiguration
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerConfiguration
+  type: Interface
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/IDhcpServerConfiguration.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: IDhcpServerConfiguration
+    path: src/Bodoconsult.Network.Windows/Dhcp/IDhcpServerConfiguration.cs
+    startLine: 5
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: public interface IDhcpServerConfiguration
+    content.vb: Public Interface IDhcpServerConfiguration
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerConfiguration.ApiProtocolSupport
+  commentId: P:Bodoconsult.Network.Windows.Dhcp.IDhcpServerConfiguration.ApiProtocolSupport
+  id: ApiProtocolSupport
+  parent: Bodoconsult.Network.Windows.Dhcp.IDhcpServerConfiguration
+  langs:
+  - csharp
+  - vb
+  name: ApiProtocolSupport
+  nameWithType: IDhcpServerConfiguration.ApiProtocolSupport
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerConfiguration.ApiProtocolSupport
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/IDhcpServerConfiguration.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: ApiProtocolSupport
+    path: src/Bodoconsult.Network.Windows/Dhcp/IDhcpServerConfiguration.cs
+    startLine: 7
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: DhcpServerApiProtocol ApiProtocolSupport { get; }
+    parameters: []
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerApiProtocol
+    content.vb: ReadOnly Property ApiProtocolSupport As DhcpServerApiProtocol
+  overload: Bodoconsult.Network.Windows.Dhcp.IDhcpServerConfiguration.ApiProtocolSupport*
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerConfiguration.BackupInterval
+  commentId: P:Bodoconsult.Network.Windows.Dhcp.IDhcpServerConfiguration.BackupInterval
+  id: BackupInterval
+  parent: Bodoconsult.Network.Windows.Dhcp.IDhcpServerConfiguration
+  langs:
+  - csharp
+  - vb
+  name: BackupInterval
+  nameWithType: IDhcpServerConfiguration.BackupInterval
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerConfiguration.BackupInterval
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/IDhcpServerConfiguration.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: BackupInterval
+    path: src/Bodoconsult.Network.Windows/Dhcp/IDhcpServerConfiguration.cs
+    startLine: 8
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: TimeSpan BackupInterval { get; }
+    parameters: []
+    return:
+      type: System.TimeSpan
+    content.vb: ReadOnly Property BackupInterval As TimeSpan
+  overload: Bodoconsult.Network.Windows.Dhcp.IDhcpServerConfiguration.BackupInterval*
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerConfiguration.BackupPath
+  commentId: P:Bodoconsult.Network.Windows.Dhcp.IDhcpServerConfiguration.BackupPath
+  id: BackupPath
+  parent: Bodoconsult.Network.Windows.Dhcp.IDhcpServerConfiguration
+  langs:
+  - csharp
+  - vb
+  name: BackupPath
+  nameWithType: IDhcpServerConfiguration.BackupPath
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerConfiguration.BackupPath
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/IDhcpServerConfiguration.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: BackupPath
+    path: src/Bodoconsult.Network.Windows/Dhcp/IDhcpServerConfiguration.cs
+    startLine: 9
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: string BackupPath { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: ReadOnly Property BackupPath As String
+  overload: Bodoconsult.Network.Windows.Dhcp.IDhcpServerConfiguration.BackupPath*
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerConfiguration.DatabaseCleanupInterval
+  commentId: P:Bodoconsult.Network.Windows.Dhcp.IDhcpServerConfiguration.DatabaseCleanupInterval
+  id: DatabaseCleanupInterval
+  parent: Bodoconsult.Network.Windows.Dhcp.IDhcpServerConfiguration
+  langs:
+  - csharp
+  - vb
+  name: DatabaseCleanupInterval
+  nameWithType: IDhcpServerConfiguration.DatabaseCleanupInterval
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerConfiguration.DatabaseCleanupInterval
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/IDhcpServerConfiguration.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: DatabaseCleanupInterval
+    path: src/Bodoconsult.Network.Windows/Dhcp/IDhcpServerConfiguration.cs
+    startLine: 10
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: TimeSpan DatabaseCleanupInterval { get; }
+    parameters: []
+    return:
+      type: System.TimeSpan
+    content.vb: ReadOnly Property DatabaseCleanupInterval As TimeSpan
+  overload: Bodoconsult.Network.Windows.Dhcp.IDhcpServerConfiguration.DatabaseCleanupInterval*
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerConfiguration.DatabaseLoggingEnabled
+  commentId: P:Bodoconsult.Network.Windows.Dhcp.IDhcpServerConfiguration.DatabaseLoggingEnabled
+  id: DatabaseLoggingEnabled
+  parent: Bodoconsult.Network.Windows.Dhcp.IDhcpServerConfiguration
+  langs:
+  - csharp
+  - vb
+  name: DatabaseLoggingEnabled
+  nameWithType: IDhcpServerConfiguration.DatabaseLoggingEnabled
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerConfiguration.DatabaseLoggingEnabled
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/IDhcpServerConfiguration.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: DatabaseLoggingEnabled
+    path: src/Bodoconsult.Network.Windows/Dhcp/IDhcpServerConfiguration.cs
+    startLine: 11
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: bool DatabaseLoggingEnabled { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: ReadOnly Property DatabaseLoggingEnabled As Boolean
+  overload: Bodoconsult.Network.Windows.Dhcp.IDhcpServerConfiguration.DatabaseLoggingEnabled*
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerConfiguration.DatabaseName
+  commentId: P:Bodoconsult.Network.Windows.Dhcp.IDhcpServerConfiguration.DatabaseName
+  id: DatabaseName
+  parent: Bodoconsult.Network.Windows.Dhcp.IDhcpServerConfiguration
+  langs:
+  - csharp
+  - vb
+  name: DatabaseName
+  nameWithType: IDhcpServerConfiguration.DatabaseName
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerConfiguration.DatabaseName
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/IDhcpServerConfiguration.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: DatabaseName
+    path: src/Bodoconsult.Network.Windows/Dhcp/IDhcpServerConfiguration.cs
+    startLine: 12
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: string DatabaseName { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: ReadOnly Property DatabaseName As String
+  overload: Bodoconsult.Network.Windows.Dhcp.IDhcpServerConfiguration.DatabaseName*
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerConfiguration.DatabasePath
+  commentId: P:Bodoconsult.Network.Windows.Dhcp.IDhcpServerConfiguration.DatabasePath
+  id: DatabasePath
+  parent: Bodoconsult.Network.Windows.Dhcp.IDhcpServerConfiguration
+  langs:
+  - csharp
+  - vb
+  name: DatabasePath
+  nameWithType: IDhcpServerConfiguration.DatabasePath
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerConfiguration.DatabasePath
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/IDhcpServerConfiguration.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: DatabasePath
+    path: src/Bodoconsult.Network.Windows/Dhcp/IDhcpServerConfiguration.cs
+    startLine: 13
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: string DatabasePath { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: ReadOnly Property DatabasePath As String
+  overload: Bodoconsult.Network.Windows.Dhcp.IDhcpServerConfiguration.DatabasePath*
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerConfiguration.Server
+  commentId: P:Bodoconsult.Network.Windows.Dhcp.IDhcpServerConfiguration.Server
+  id: Server
+  parent: Bodoconsult.Network.Windows.Dhcp.IDhcpServerConfiguration
+  langs:
+  - csharp
+  - vb
+  name: Server
+  nameWithType: IDhcpServerConfiguration.Server
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerConfiguration.Server
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/IDhcpServerConfiguration.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Server
+    path: src/Bodoconsult.Network.Windows/Dhcp/IDhcpServerConfiguration.cs
+    startLine: 14
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: IDhcpServer Server { get; }
+    parameters: []
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.IDhcpServer
+    content.vb: ReadOnly Property Server As IDhcpServer
+  overload: Bodoconsult.Network.Windows.Dhcp.IDhcpServerConfiguration.Server*
+references:
+- uid: Bodoconsult.Network.Windows.Dhcp
+  commentId: N:Bodoconsult.Network.Windows.Dhcp
+  href: Bodoconsult.html
+  name: Bodoconsult.Network.Windows.Dhcp
+  nameWithType: Bodoconsult.Network.Windows.Dhcp
+  fullName: Bodoconsult.Network.Windows.Dhcp
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.Network
+    name: Network
+    href: Bodoconsult.Network.html
+  - name: .
+  - uid: Bodoconsult.Network.Windows
+    name: Windows
+    href: Bodoconsult.Network.Windows.html
+  - name: .
+  - uid: Bodoconsult.Network.Windows.Dhcp
+    name: Dhcp
+    href: Bodoconsult.Network.Windows.Dhcp.html
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.Network
+    name: Network
+    href: Bodoconsult.Network.html
+  - name: .
+  - uid: Bodoconsult.Network.Windows
+    name: Windows
+    href: Bodoconsult.Network.Windows.html
+  - name: .
+  - uid: Bodoconsult.Network.Windows.Dhcp
+    name: Dhcp
+    href: Bodoconsult.Network.Windows.Dhcp.html
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerConfiguration.ApiProtocolSupport*
+  commentId: Overload:Bodoconsult.Network.Windows.Dhcp.IDhcpServerConfiguration.ApiProtocolSupport
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerConfiguration.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerConfiguration_ApiProtocolSupport
+  name: ApiProtocolSupport
+  nameWithType: IDhcpServerConfiguration.ApiProtocolSupport
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerConfiguration.ApiProtocolSupport
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerApiProtocol
+  commentId: T:Bodoconsult.Network.Windows.Dhcp.DhcpServerApiProtocol
+  parent: Bodoconsult.Network.Windows.Dhcp
+  href: Bodoconsult.Network.Windows.Dhcp.DhcpServerApiProtocol.html
+  name: DhcpServerApiProtocol
+  nameWithType: DhcpServerApiProtocol
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerApiProtocol
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerConfiguration.BackupInterval*
+  commentId: Overload:Bodoconsult.Network.Windows.Dhcp.IDhcpServerConfiguration.BackupInterval
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerConfiguration.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerConfiguration_BackupInterval
+  name: BackupInterval
+  nameWithType: IDhcpServerConfiguration.BackupInterval
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerConfiguration.BackupInterval
+- uid: System.TimeSpan
+  commentId: T:System.TimeSpan
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.timespan
+  name: TimeSpan
+  nameWithType: TimeSpan
+  fullName: System.TimeSpan
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerConfiguration.BackupPath*
+  commentId: Overload:Bodoconsult.Network.Windows.Dhcp.IDhcpServerConfiguration.BackupPath
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerConfiguration.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerConfiguration_BackupPath
+  name: BackupPath
+  nameWithType: IDhcpServerConfiguration.BackupPath
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerConfiguration.BackupPath
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerConfiguration.DatabaseCleanupInterval*
+  commentId: Overload:Bodoconsult.Network.Windows.Dhcp.IDhcpServerConfiguration.DatabaseCleanupInterval
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerConfiguration.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerConfiguration_DatabaseCleanupInterval
+  name: DatabaseCleanupInterval
+  nameWithType: IDhcpServerConfiguration.DatabaseCleanupInterval
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerConfiguration.DatabaseCleanupInterval
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerConfiguration.DatabaseLoggingEnabled*
+  commentId: Overload:Bodoconsult.Network.Windows.Dhcp.IDhcpServerConfiguration.DatabaseLoggingEnabled
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerConfiguration.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerConfiguration_DatabaseLoggingEnabled
+  name: DatabaseLoggingEnabled
+  nameWithType: IDhcpServerConfiguration.DatabaseLoggingEnabled
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerConfiguration.DatabaseLoggingEnabled
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerConfiguration.DatabaseName*
+  commentId: Overload:Bodoconsult.Network.Windows.Dhcp.IDhcpServerConfiguration.DatabaseName
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerConfiguration.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerConfiguration_DatabaseName
+  name: DatabaseName
+  nameWithType: IDhcpServerConfiguration.DatabaseName
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerConfiguration.DatabaseName
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerConfiguration.DatabasePath*
+  commentId: Overload:Bodoconsult.Network.Windows.Dhcp.IDhcpServerConfiguration.DatabasePath
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerConfiguration.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerConfiguration_DatabasePath
+  name: DatabasePath
+  nameWithType: IDhcpServerConfiguration.DatabasePath
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerConfiguration.DatabasePath
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerConfiguration.Server*
+  commentId: Overload:Bodoconsult.Network.Windows.Dhcp.IDhcpServerConfiguration.Server
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerConfiguration.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerConfiguration_Server
+  name: Server
+  nameWithType: IDhcpServerConfiguration.Server
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerConfiguration.Server
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServer
+  commentId: T:Bodoconsult.Network.Windows.Dhcp.IDhcpServer
+  parent: Bodoconsult.Network.Windows.Dhcp
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServer.html
+  name: IDhcpServer
+  nameWithType: IDhcpServer
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServer

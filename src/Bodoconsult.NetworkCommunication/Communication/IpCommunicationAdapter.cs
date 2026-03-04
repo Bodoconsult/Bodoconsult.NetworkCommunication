@@ -5,6 +5,7 @@ using Microsoft.Diagnostics.Utilities;
 using System.Net;
 using System.Net.NetworkInformation;
 using System.Net.Sockets;
+using Bodoconsult.NetworkCommunication.Delegates;
 
 namespace Bodoconsult.NetworkCommunication.Communication;
 

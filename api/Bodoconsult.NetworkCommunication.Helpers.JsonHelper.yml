@@ -1,0 +1,799 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bodoconsult.NetworkCommunication.Helpers.JsonHelper
+  commentId: T:Bodoconsult.NetworkCommunication.Helpers.JsonHelper
+  id: JsonHelper
+  parent: Bodoconsult.NetworkCommunication.Helpers
+  children:
+  - Bodoconsult.NetworkCommunication.Helpers.JsonHelper.JsonDeserialize``1(System.String)
+  - Bodoconsult.NetworkCommunication.Helpers.JsonHelper.JsonSerialize(System.Object)
+  - Bodoconsult.NetworkCommunication.Helpers.JsonHelper.JsonSerialize(System.Object,System.Int32)
+  - Bodoconsult.NetworkCommunication.Helpers.JsonHelper.JsonSerializeNice(System.Object)
+  - Bodoconsult.NetworkCommunication.Helpers.JsonHelper.JsonSerializeNice``1(``0,System.String)
+  - Bodoconsult.NetworkCommunication.Helpers.JsonHelper.JsonSerialize``1(``0,System.String)
+  - Bodoconsult.NetworkCommunication.Helpers.JsonHelper.LoadJsonFile``1(System.String)
+  - Bodoconsult.NetworkCommunication.Helpers.JsonHelper.LoadJsonFromResource``1(System.String)
+  - Bodoconsult.NetworkCommunication.Helpers.JsonHelper.LoadJsonFromString``1(System.String)
+  - Bodoconsult.NetworkCommunication.Helpers.JsonHelper.SerializeObject``1(``0)
+  langs:
+  - csharp
+  - vb
+  name: JsonHelper
+  nameWithType: JsonHelper
+  fullName: Bodoconsult.NetworkCommunication.Helpers.JsonHelper
+  type: Class
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Helpers/JsonHelper.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: JsonHelper
+    path: src/Bodoconsult.NetworkCommunication/Helpers/JsonHelper.cs
+    startLine: 12
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Helpers
+  summary: JSON helper class
+  example: []
+  syntax:
+    content: public static class JsonHelper
+    content.vb: Public Module JsonHelper
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: Bodoconsult.NetworkCommunication.Helpers.JsonHelper.JsonSerialize(System.Object)
+  commentId: M:Bodoconsult.NetworkCommunication.Helpers.JsonHelper.JsonSerialize(System.Object)
+  id: JsonSerialize(System.Object)
+  parent: Bodoconsult.NetworkCommunication.Helpers.JsonHelper
+  langs:
+  - csharp
+  - vb
+  name: JsonSerialize(object)
+  nameWithType: JsonHelper.JsonSerialize(object)
+  fullName: Bodoconsult.NetworkCommunication.Helpers.JsonHelper.JsonSerialize(object)
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Helpers/JsonHelper.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: JsonSerialize
+    path: src/Bodoconsult.NetworkCommunication/Helpers/JsonHelper.cs
+    startLine: 66
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Helpers
+  summary: Serialize a object to JSON
+  example: []
+  syntax:
+    content: public static string JsonSerialize(object data)
+    parameters:
+    - id: data
+      type: System.Object
+      description: object to serialize
+    return:
+      type: System.String
+      description: JSON string
+    content.vb: Public Shared Function JsonSerialize(data As Object) As String
+  overload: Bodoconsult.NetworkCommunication.Helpers.JsonHelper.JsonSerialize*
+  nameWithType.vb: JsonHelper.JsonSerialize(Object)
+  fullName.vb: Bodoconsult.NetworkCommunication.Helpers.JsonHelper.JsonSerialize(Object)
+  name.vb: JsonSerialize(Object)
+- uid: Bodoconsult.NetworkCommunication.Helpers.JsonHelper.JsonSerialize(System.Object,System.Int32)
+  commentId: M:Bodoconsult.NetworkCommunication.Helpers.JsonHelper.JsonSerialize(System.Object,System.Int32)
+  id: JsonSerialize(System.Object,System.Int32)
+  parent: Bodoconsult.NetworkCommunication.Helpers.JsonHelper
+  langs:
+  - csharp
+  - vb
+  name: JsonSerialize(object, int)
+  nameWithType: JsonHelper.JsonSerialize(object, int)
+  fullName: Bodoconsult.NetworkCommunication.Helpers.JsonHelper.JsonSerialize(object, int)
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Helpers/JsonHelper.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: JsonSerialize
+    path: src/Bodoconsult.NetworkCommunication/Helpers/JsonHelper.cs
+    startLine: 83
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Helpers
+  summary: Serialize a object to JSON
+  example: []
+  syntax:
+    content: public static string JsonSerialize(object data, int maxDepth)
+    parameters:
+    - id: data
+      type: System.Object
+      description: object to serialize
+    - id: maxDepth
+      type: System.Int32
+      description: Max depth level for the serialization
+    return:
+      type: System.String
+      description: JSON string
+    content.vb: Public Shared Function JsonSerialize(data As Object, maxDepth As Integer) As String
+  overload: Bodoconsult.NetworkCommunication.Helpers.JsonHelper.JsonSerialize*
+  nameWithType.vb: JsonHelper.JsonSerialize(Object, Integer)
+  fullName.vb: Bodoconsult.NetworkCommunication.Helpers.JsonHelper.JsonSerialize(Object, Integer)
+  name.vb: JsonSerialize(Object, Integer)
+- uid: Bodoconsult.NetworkCommunication.Helpers.JsonHelper.JsonSerialize``1(``0,System.String)
+  commentId: M:Bodoconsult.NetworkCommunication.Helpers.JsonHelper.JsonSerialize``1(``0,System.String)
+  id: JsonSerialize``1(``0,System.String)
+  parent: Bodoconsult.NetworkCommunication.Helpers.JsonHelper
+  langs:
+  - csharp
+  - vb
+  name: JsonSerialize<T>(T, string)
+  nameWithType: JsonHelper.JsonSerialize<T>(T, string)
+  fullName: Bodoconsult.NetworkCommunication.Helpers.JsonHelper.JsonSerialize<T>(T, string)
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Helpers/JsonHelper.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: JsonSerialize
+    path: src/Bodoconsult.NetworkCommunication/Helpers/JsonHelper.cs
+    startLine: 114
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Helpers
+  summary: Save an object of type T as JSON to a file
+  example: []
+  syntax:
+    content: public static string JsonSerialize<T>(T data, string fileName)
+    parameters:
+    - id: data
+      type: '{T}'
+      description: object to serialize to JSON
+    - id: fileName
+      type: System.String
+      description: full path for the JSON file
+    typeParameters:
+    - id: T
+      description: type of the object to serialize to JSON
+    return:
+      type: System.String
+      description: JSON string
+    content.vb: Public Shared Function JsonSerialize(Of T)(data As T, fileName As String) As String
+  overload: Bodoconsult.NetworkCommunication.Helpers.JsonHelper.JsonSerialize*
+  nameWithType.vb: JsonHelper.JsonSerialize(Of T)(T, String)
+  fullName.vb: Bodoconsult.NetworkCommunication.Helpers.JsonHelper.JsonSerialize(Of T)(T, String)
+  name.vb: JsonSerialize(Of T)(T, String)
+- uid: Bodoconsult.NetworkCommunication.Helpers.JsonHelper.JsonDeserialize``1(System.String)
+  commentId: M:Bodoconsult.NetworkCommunication.Helpers.JsonHelper.JsonDeserialize``1(System.String)
+  id: JsonDeserialize``1(System.String)
+  parent: Bodoconsult.NetworkCommunication.Helpers.JsonHelper
+  langs:
+  - csharp
+  - vb
+  name: JsonDeserialize<T>(string)
+  nameWithType: JsonHelper.JsonDeserialize<T>(string)
+  fullName: Bodoconsult.NetworkCommunication.Helpers.JsonHelper.JsonDeserialize<T>(string)
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Helpers/JsonHelper.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: JsonDeserialize
+    path: src/Bodoconsult.NetworkCommunication/Helpers/JsonHelper.cs
+    startLine: 134
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Helpers
+  summary: Deserialize a JSON string to a object of type T
+  example: []
+  syntax:
+    content: public static T JsonDeserialize<T>(string json)
+    parameters:
+    - id: json
+      type: System.String
+      description: JSON input string
+    typeParameters:
+    - id: T
+      description: Target type
+    return:
+      type: '{T}'
+      description: Deserialized data object
+    content.vb: Public Shared Function JsonDeserialize(Of T)(json As String) As T
+  overload: Bodoconsult.NetworkCommunication.Helpers.JsonHelper.JsonDeserialize*
+  nameWithType.vb: JsonHelper.JsonDeserialize(Of T)(String)
+  fullName.vb: Bodoconsult.NetworkCommunication.Helpers.JsonHelper.JsonDeserialize(Of T)(String)
+  name.vb: JsonDeserialize(Of T)(String)
+- uid: Bodoconsult.NetworkCommunication.Helpers.JsonHelper.LoadJsonFile``1(System.String)
+  commentId: M:Bodoconsult.NetworkCommunication.Helpers.JsonHelper.LoadJsonFile``1(System.String)
+  id: LoadJsonFile``1(System.String)
+  parent: Bodoconsult.NetworkCommunication.Helpers.JsonHelper
+  langs:
+  - csharp
+  - vb
+  name: LoadJsonFile<T>(string)
+  nameWithType: JsonHelper.LoadJsonFile<T>(string)
+  fullName: Bodoconsult.NetworkCommunication.Helpers.JsonHelper.LoadJsonFile<T>(string)
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Helpers/JsonHelper.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: LoadJsonFile
+    path: src/Bodoconsult.NetworkCommunication/Helpers/JsonHelper.cs
+    startLine: 158
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Helpers
+  summary: Load a object from a JSON file
+  example: []
+  syntax:
+    content: public static T LoadJsonFile<T>(string fileName)
+    parameters:
+    - id: fileName
+      type: System.String
+      description: ''
+    typeParameters:
+    - id: T
+    return:
+      type: '{T}'
+      description: ''
+    content.vb: Public Shared Function LoadJsonFile(Of T)(fileName As String) As T
+  overload: Bodoconsult.NetworkCommunication.Helpers.JsonHelper.LoadJsonFile*
+  nameWithType.vb: JsonHelper.LoadJsonFile(Of T)(String)
+  fullName.vb: Bodoconsult.NetworkCommunication.Helpers.JsonHelper.LoadJsonFile(Of T)(String)
+  name.vb: LoadJsonFile(Of T)(String)
+- uid: Bodoconsult.NetworkCommunication.Helpers.JsonHelper.LoadJsonFromResource``1(System.String)
+  commentId: M:Bodoconsult.NetworkCommunication.Helpers.JsonHelper.LoadJsonFromResource``1(System.String)
+  id: LoadJsonFromResource``1(System.String)
+  parent: Bodoconsult.NetworkCommunication.Helpers.JsonHelper
+  langs:
+  - csharp
+  - vb
+  name: LoadJsonFromResource<T>(string)
+  nameWithType: JsonHelper.LoadJsonFromResource<T>(string)
+  fullName: Bodoconsult.NetworkCommunication.Helpers.JsonHelper.LoadJsonFromResource<T>(string)
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Helpers/JsonHelper.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: LoadJsonFromResource
+    path: src/Bodoconsult.NetworkCommunication/Helpers/JsonHelper.cs
+    startLine: 211
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Helpers
+  summary: Load a object from a JSON resource
+  example: []
+  syntax:
+    content: public static T LoadJsonFromResource<T>(string resourceName)
+    parameters:
+    - id: resourceName
+      type: System.String
+      description: Fully qualified resource name
+    typeParameters:
+    - id: T
+    return:
+      type: '{T}'
+      description: object of type T or null
+    content.vb: Public Shared Function LoadJsonFromResource(Of T)(resourceName As String) As T
+  overload: Bodoconsult.NetworkCommunication.Helpers.JsonHelper.LoadJsonFromResource*
+  nameWithType.vb: JsonHelper.LoadJsonFromResource(Of T)(String)
+  fullName.vb: Bodoconsult.NetworkCommunication.Helpers.JsonHelper.LoadJsonFromResource(Of T)(String)
+  name.vb: LoadJsonFromResource(Of T)(String)
+- uid: Bodoconsult.NetworkCommunication.Helpers.JsonHelper.LoadJsonFromString``1(System.String)
+  commentId: M:Bodoconsult.NetworkCommunication.Helpers.JsonHelper.LoadJsonFromString``1(System.String)
+  id: LoadJsonFromString``1(System.String)
+  parent: Bodoconsult.NetworkCommunication.Helpers.JsonHelper
+  langs:
+  - csharp
+  - vb
+  name: LoadJsonFromString<T>(string)
+  nameWithType: JsonHelper.LoadJsonFromString<T>(string)
+  fullName: Bodoconsult.NetworkCommunication.Helpers.JsonHelper.LoadJsonFromString<T>(string)
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Helpers/JsonHelper.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: LoadJsonFromString
+    path: src/Bodoconsult.NetworkCommunication/Helpers/JsonHelper.cs
+    startLine: 258
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Helpers
+  summary: Load an object from a JSON resource
+  example: []
+  syntax:
+    content: public static T LoadJsonFromString<T>(string json)
+    parameters:
+    - id: json
+      type: System.String
+      description: JSON formatted string
+    typeParameters:
+    - id: T
+    return:
+      type: '{T}'
+      description: object of type T or null
+    content.vb: Public Shared Function LoadJsonFromString(Of T)(json As String) As T
+  overload: Bodoconsult.NetworkCommunication.Helpers.JsonHelper.LoadJsonFromString*
+  nameWithType.vb: JsonHelper.LoadJsonFromString(Of T)(String)
+  fullName.vb: Bodoconsult.NetworkCommunication.Helpers.JsonHelper.LoadJsonFromString(Of T)(String)
+  name.vb: LoadJsonFromString(Of T)(String)
+- uid: Bodoconsult.NetworkCommunication.Helpers.JsonHelper.SerializeObject``1(``0)
+  commentId: M:Bodoconsult.NetworkCommunication.Helpers.JsonHelper.SerializeObject``1(``0)
+  id: SerializeObject``1(``0)
+  parent: Bodoconsult.NetworkCommunication.Helpers.JsonHelper
+  langs:
+  - csharp
+  - vb
+  name: SerializeObject<T>(T)
+  nameWithType: JsonHelper.SerializeObject<T>(T)
+  fullName: Bodoconsult.NetworkCommunication.Helpers.JsonHelper.SerializeObject<T>(T)
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Helpers/JsonHelper.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: SerializeObject
+    path: src/Bodoconsult.NetworkCommunication/Helpers/JsonHelper.cs
+    startLine: 291
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Helpers
+  summary: Serialize a object to JSON
+  example: []
+  syntax:
+    content: public static string SerializeObject<T>(T value)
+    parameters:
+    - id: value
+      type: '{T}'
+      description: object to convert
+    typeParameters:
+    - id: T
+      description: type of object to convert
+    return:
+      type: System.String
+      description: Returns a JSON string or null if the JSON serialization failed
+    content.vb: Public Shared Function SerializeObject(Of T)(value As T) As String
+  overload: Bodoconsult.NetworkCommunication.Helpers.JsonHelper.SerializeObject*
+  nameWithType.vb: JsonHelper.SerializeObject(Of T)(T)
+  fullName.vb: Bodoconsult.NetworkCommunication.Helpers.JsonHelper.SerializeObject(Of T)(T)
+  name.vb: SerializeObject(Of T)(T)
+- uid: Bodoconsult.NetworkCommunication.Helpers.JsonHelper.JsonSerializeNice(System.Object)
+  commentId: M:Bodoconsult.NetworkCommunication.Helpers.JsonHelper.JsonSerializeNice(System.Object)
+  id: JsonSerializeNice(System.Object)
+  parent: Bodoconsult.NetworkCommunication.Helpers.JsonHelper
+  langs:
+  - csharp
+  - vb
+  name: JsonSerializeNice(object)
+  nameWithType: JsonHelper.JsonSerializeNice(object)
+  fullName: Bodoconsult.NetworkCommunication.Helpers.JsonHelper.JsonSerializeNice(object)
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Helpers/JsonHelper.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: JsonSerializeNice
+    path: src/Bodoconsult.NetworkCommunication/Helpers/JsonHelper.cs
+    startLine: 337
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Helpers
+  summary: Serialize a object to a nicely readable JSON string
+  example: []
+  syntax:
+    content: public static string JsonSerializeNice(object data)
+    parameters:
+    - id: data
+      type: System.Object
+      description: object to serialize
+    return:
+      type: System.String
+      description: Returns a JSON string or null if the JSON serialization failed
+    content.vb: Public Shared Function JsonSerializeNice(data As Object) As String
+  overload: Bodoconsult.NetworkCommunication.Helpers.JsonHelper.JsonSerializeNice*
+  nameWithType.vb: JsonHelper.JsonSerializeNice(Object)
+  fullName.vb: Bodoconsult.NetworkCommunication.Helpers.JsonHelper.JsonSerializeNice(Object)
+  name.vb: JsonSerializeNice(Object)
+- uid: Bodoconsult.NetworkCommunication.Helpers.JsonHelper.JsonSerializeNice``1(``0,System.String)
+  commentId: M:Bodoconsult.NetworkCommunication.Helpers.JsonHelper.JsonSerializeNice``1(``0,System.String)
+  id: JsonSerializeNice``1(``0,System.String)
+  parent: Bodoconsult.NetworkCommunication.Helpers.JsonHelper
+  langs:
+  - csharp
+  - vb
+  name: JsonSerializeNice<T>(T, string)
+  nameWithType: JsonHelper.JsonSerializeNice<T>(T, string)
+  fullName: Bodoconsult.NetworkCommunication.Helpers.JsonHelper.JsonSerializeNice<T>(T, string)
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Helpers/JsonHelper.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: JsonSerializeNice
+    path: src/Bodoconsult.NetworkCommunication/Helpers/JsonHelper.cs
+    startLine: 363
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Helpers
+  summary: Save an object of type T as JSON to a file
+  example: []
+  syntax:
+    content: public static string JsonSerializeNice<T>(T data, string fileName)
+    parameters:
+    - id: data
+      type: '{T}'
+      description: object to serialize to JSON
+    - id: fileName
+      type: System.String
+      description: full path for the JSON file
+    typeParameters:
+    - id: T
+      description: type of the object to serialize to JSON
+    return:
+      type: System.String
+      description: Returns a JSON string or null if the JSON serialization failed
+    content.vb: Public Shared Function JsonSerializeNice(Of T)(data As T, fileName As String) As String
+  overload: Bodoconsult.NetworkCommunication.Helpers.JsonHelper.JsonSerializeNice*
+  nameWithType.vb: JsonHelper.JsonSerializeNice(Of T)(T, String)
+  fullName.vb: Bodoconsult.NetworkCommunication.Helpers.JsonHelper.JsonSerializeNice(Of T)(T, String)
+  name.vb: JsonSerializeNice(Of T)(T, String)
+references:
+- uid: Bodoconsult.NetworkCommunication.Helpers
+  commentId: N:Bodoconsult.NetworkCommunication.Helpers
+  href: Bodoconsult.html
+  name: Bodoconsult.NetworkCommunication.Helpers
+  nameWithType: Bodoconsult.NetworkCommunication.Helpers
+  fullName: Bodoconsult.NetworkCommunication.Helpers
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Helpers
+    name: Helpers
+    href: Bodoconsult.NetworkCommunication.Helpers.html
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Helpers
+    name: Helpers
+    href: Bodoconsult.NetworkCommunication.Helpers.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Bodoconsult.NetworkCommunication.Helpers.JsonHelper.JsonSerialize*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Helpers.JsonHelper.JsonSerialize
+  href: Bodoconsult.NetworkCommunication.Helpers.JsonHelper.html#Bodoconsult_NetworkCommunication_Helpers_JsonHelper_JsonSerialize_System_Object_
+  name: JsonSerialize
+  nameWithType: JsonHelper.JsonSerialize
+  fullName: Bodoconsult.NetworkCommunication.Helpers.JsonHelper.JsonSerialize
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: '{T}'
+  commentId: '!:T'
+  definition: T
+  name: T
+  nameWithType: T
+  fullName: T
+- uid: T
+  name: T
+  nameWithType: T
+  fullName: T
+- uid: Bodoconsult.NetworkCommunication.Helpers.JsonHelper.JsonDeserialize*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Helpers.JsonHelper.JsonDeserialize
+  href: Bodoconsult.NetworkCommunication.Helpers.JsonHelper.html#Bodoconsult_NetworkCommunication_Helpers_JsonHelper_JsonDeserialize__1_System_String_
+  name: JsonDeserialize
+  nameWithType: JsonHelper.JsonDeserialize
+  fullName: Bodoconsult.NetworkCommunication.Helpers.JsonHelper.JsonDeserialize
+- uid: Bodoconsult.NetworkCommunication.Helpers.JsonHelper.LoadJsonFile*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Helpers.JsonHelper.LoadJsonFile
+  href: Bodoconsult.NetworkCommunication.Helpers.JsonHelper.html#Bodoconsult_NetworkCommunication_Helpers_JsonHelper_LoadJsonFile__1_System_String_
+  name: LoadJsonFile
+  nameWithType: JsonHelper.LoadJsonFile
+  fullName: Bodoconsult.NetworkCommunication.Helpers.JsonHelper.LoadJsonFile
+- uid: Bodoconsult.NetworkCommunication.Helpers.JsonHelper.LoadJsonFromResource*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Helpers.JsonHelper.LoadJsonFromResource
+  href: Bodoconsult.NetworkCommunication.Helpers.JsonHelper.html#Bodoconsult_NetworkCommunication_Helpers_JsonHelper_LoadJsonFromResource__1_System_String_
+  name: LoadJsonFromResource
+  nameWithType: JsonHelper.LoadJsonFromResource
+  fullName: Bodoconsult.NetworkCommunication.Helpers.JsonHelper.LoadJsonFromResource
+- uid: Bodoconsult.NetworkCommunication.Helpers.JsonHelper.LoadJsonFromString*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Helpers.JsonHelper.LoadJsonFromString
+  href: Bodoconsult.NetworkCommunication.Helpers.JsonHelper.html#Bodoconsult_NetworkCommunication_Helpers_JsonHelper_LoadJsonFromString__1_System_String_
+  name: LoadJsonFromString
+  nameWithType: JsonHelper.LoadJsonFromString
+  fullName: Bodoconsult.NetworkCommunication.Helpers.JsonHelper.LoadJsonFromString
+- uid: Bodoconsult.NetworkCommunication.Helpers.JsonHelper.SerializeObject*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Helpers.JsonHelper.SerializeObject
+  href: Bodoconsult.NetworkCommunication.Helpers.JsonHelper.html#Bodoconsult_NetworkCommunication_Helpers_JsonHelper_SerializeObject__1___0_
+  name: SerializeObject
+  nameWithType: JsonHelper.SerializeObject
+  fullName: Bodoconsult.NetworkCommunication.Helpers.JsonHelper.SerializeObject
+- uid: Bodoconsult.NetworkCommunication.Helpers.JsonHelper.JsonSerializeNice*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Helpers.JsonHelper.JsonSerializeNice
+  href: Bodoconsult.NetworkCommunication.Helpers.JsonHelper.html#Bodoconsult_NetworkCommunication_Helpers_JsonHelper_JsonSerializeNice_System_Object_
+  name: JsonSerializeNice
+  nameWithType: JsonHelper.JsonSerializeNice
+  fullName: Bodoconsult.NetworkCommunication.Helpers.JsonHelper.JsonSerializeNice

@@ -1,0 +1,118 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.OrderBuilders
+  commentId: N:Bodoconsult.NetworkCommunication.OrderManagement.OrderBuilders
+  id: Bodoconsult.NetworkCommunication.OrderManagement.OrderBuilders
+  children:
+  - Bodoconsult.NetworkCommunication.OrderManagement.OrderBuilders.BaseOrderBuilder
+  - Bodoconsult.NetworkCommunication.OrderManagement.OrderBuilders.BtcpOrderBuilder
+  - Bodoconsult.NetworkCommunication.OrderManagement.OrderBuilders.DummyOrderBuilder
+  - Bodoconsult.NetworkCommunication.OrderManagement.OrderBuilders.EdcpClientOrderBuilder
+  - Bodoconsult.NetworkCommunication.OrderManagement.OrderBuilders.EdcpServerOrderBuilder
+  - Bodoconsult.NetworkCommunication.OrderManagement.OrderBuilders.EmptyOrderBuilder
+  - Bodoconsult.NetworkCommunication.OrderManagement.OrderBuilders.SdcpOrderBuilder
+  - Bodoconsult.NetworkCommunication.OrderManagement.OrderBuilders.TestOrderBuilder
+  - Bodoconsult.NetworkCommunication.OrderManagement.OrderBuilders.TncpOrderBuilder
+  langs:
+  - csharp
+  - vb
+  name: Bodoconsult.NetworkCommunication.OrderManagement.OrderBuilders
+  nameWithType: Bodoconsult.NetworkCommunication.OrderManagement.OrderBuilders
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.OrderBuilders
+  type: Namespace
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+references:
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.OrderBuilders.BaseOrderBuilder
+  commentId: T:Bodoconsult.NetworkCommunication.OrderManagement.OrderBuilders.BaseOrderBuilder
+  parent: Bodoconsult.NetworkCommunication.OrderManagement.OrderBuilders
+  href: Bodoconsult.NetworkCommunication.OrderManagement.OrderBuilders.BaseOrderBuilder.html
+  name: BaseOrderBuilder
+  nameWithType: BaseOrderBuilder
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.OrderBuilders.BaseOrderBuilder
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.OrderBuilders.BtcpOrderBuilder
+  commentId: T:Bodoconsult.NetworkCommunication.OrderManagement.OrderBuilders.BtcpOrderBuilder
+  href: Bodoconsult.NetworkCommunication.OrderManagement.OrderBuilders.BtcpOrderBuilder.html
+  name: BtcpOrderBuilder
+  nameWithType: BtcpOrderBuilder
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.OrderBuilders.BtcpOrderBuilder
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.OrderBuilders.DummyOrderBuilder
+  commentId: T:Bodoconsult.NetworkCommunication.OrderManagement.OrderBuilders.DummyOrderBuilder
+  href: Bodoconsult.NetworkCommunication.OrderManagement.OrderBuilders.DummyOrderBuilder.html
+  name: DummyOrderBuilder
+  nameWithType: DummyOrderBuilder
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.OrderBuilders.DummyOrderBuilder
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.OrderBuilders.EdcpClientOrderBuilder
+  commentId: T:Bodoconsult.NetworkCommunication.OrderManagement.OrderBuilders.EdcpClientOrderBuilder
+  href: Bodoconsult.NetworkCommunication.OrderManagement.OrderBuilders.EdcpClientOrderBuilder.html
+  name: EdcpClientOrderBuilder
+  nameWithType: EdcpClientOrderBuilder
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.OrderBuilders.EdcpClientOrderBuilder
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.OrderBuilders.EdcpServerOrderBuilder
+  commentId: T:Bodoconsult.NetworkCommunication.OrderManagement.OrderBuilders.EdcpServerOrderBuilder
+  href: Bodoconsult.NetworkCommunication.OrderManagement.OrderBuilders.EdcpServerOrderBuilder.html
+  name: EdcpServerOrderBuilder
+  nameWithType: EdcpServerOrderBuilder
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.OrderBuilders.EdcpServerOrderBuilder
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.OrderBuilders.EmptyOrderBuilder
+  commentId: T:Bodoconsult.NetworkCommunication.OrderManagement.OrderBuilders.EmptyOrderBuilder
+  href: Bodoconsult.NetworkCommunication.OrderManagement.OrderBuilders.EmptyOrderBuilder.html
+  name: EmptyOrderBuilder
+  nameWithType: EmptyOrderBuilder
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.OrderBuilders.EmptyOrderBuilder
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.OrderBuilders.SdcpOrderBuilder
+  commentId: T:Bodoconsult.NetworkCommunication.OrderManagement.OrderBuilders.SdcpOrderBuilder
+  href: Bodoconsult.NetworkCommunication.OrderManagement.OrderBuilders.SdcpOrderBuilder.html
+  name: SdcpOrderBuilder
+  nameWithType: SdcpOrderBuilder
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.OrderBuilders.SdcpOrderBuilder
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.OrderBuilders.TestOrderBuilder
+  commentId: T:Bodoconsult.NetworkCommunication.OrderManagement.OrderBuilders.TestOrderBuilder
+  href: Bodoconsult.NetworkCommunication.OrderManagement.OrderBuilders.TestOrderBuilder.html
+  name: TestOrderBuilder
+  nameWithType: TestOrderBuilder
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.OrderBuilders.TestOrderBuilder
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.OrderBuilders.TncpOrderBuilder
+  commentId: T:Bodoconsult.NetworkCommunication.OrderManagement.OrderBuilders.TncpOrderBuilder
+  href: Bodoconsult.NetworkCommunication.OrderManagement.OrderBuilders.TncpOrderBuilder.html
+  name: TncpOrderBuilder
+  nameWithType: TncpOrderBuilder
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.OrderBuilders.TncpOrderBuilder
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.OrderBuilders
+  commentId: N:Bodoconsult.NetworkCommunication.OrderManagement.OrderBuilders
+  href: Bodoconsult.html
+  name: Bodoconsult.NetworkCommunication.OrderManagement.OrderBuilders
+  nameWithType: Bodoconsult.NetworkCommunication.OrderManagement.OrderBuilders
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.OrderBuilders
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.OrderManagement
+    name: OrderManagement
+    href: Bodoconsult.NetworkCommunication.OrderManagement.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.OrderManagement.OrderBuilders
+    name: OrderBuilders
+    href: Bodoconsult.NetworkCommunication.OrderManagement.OrderBuilders.html
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.OrderManagement
+    name: OrderManagement
+    href: Bodoconsult.NetworkCommunication.OrderManagement.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.OrderManagement.OrderBuilders
+    name: OrderBuilders
+    href: Bodoconsult.NetworkCommunication.OrderManagement.OrderBuilders.html

@@ -1,0 +1,277 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerClientQuarantineStatuses
+  commentId: T:Bodoconsult.Network.Windows.Dhcp.DhcpServerClientQuarantineStatuses
+  id: DhcpServerClientQuarantineStatuses
+  parent: Bodoconsult.Network.Windows.Dhcp
+  children:
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerClientQuarantineStatuses.DefaultQuarantineState
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerClientQuarantineStatuses.DropPacket
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerClientQuarantineStatuses.Exempt
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerClientQuarantineStatuses.NoQuarantine
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerClientQuarantineStatuses.NoQuarantineInformation
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerClientQuarantineStatuses.Probation
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerClientQuarantineStatuses.RestrictedAccess
+  langs:
+  - csharp
+  - vb
+  name: DhcpServerClientQuarantineStatuses
+  nameWithType: DhcpServerClientQuarantineStatuses
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerClientQuarantineStatuses
+  type: Enum
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerClientQuarantineStatuses.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: DhcpServerClientQuarantineStatuses
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerClientQuarantineStatuses.cs
+    startLine: 5
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: public enum DhcpServerClientQuarantineStatuses
+    content.vb: Public Enum DhcpServerClientQuarantineStatuses
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerClientQuarantineStatuses.NoQuarantine
+  commentId: F:Bodoconsult.Network.Windows.Dhcp.DhcpServerClientQuarantineStatuses.NoQuarantine
+  id: NoQuarantine
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerClientQuarantineStatuses
+  langs:
+  - csharp
+  - vb
+  name: NoQuarantine
+  nameWithType: DhcpServerClientQuarantineStatuses.NoQuarantine
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerClientQuarantineStatuses.NoQuarantine
+  type: Field
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerClientQuarantineStatuses.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: NoQuarantine
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerClientQuarantineStatuses.cs
+    startLine: 10
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  summary: The DHCP client is compliant with the health policies defined by the administrator and has normal access to the network.
+  example: []
+  syntax:
+    content: NoQuarantine = 0
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerClientQuarantineStatuses
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerClientQuarantineStatuses.RestrictedAccess
+  commentId: F:Bodoconsult.Network.Windows.Dhcp.DhcpServerClientQuarantineStatuses.RestrictedAccess
+  id: RestrictedAccess
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerClientQuarantineStatuses
+  langs:
+  - csharp
+  - vb
+  name: RestrictedAccess
+  nameWithType: DhcpServerClientQuarantineStatuses.RestrictedAccess
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerClientQuarantineStatuses.RestrictedAccess
+  type: Field
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerClientQuarantineStatuses.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: RestrictedAccess
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerClientQuarantineStatuses.cs
+    startLine: 14
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  summary: The DHCP client is not compliant with the health policies defined by the administrator and is being quarantined with restricted access to the network.
+  example: []
+  syntax:
+    content: RestrictedAccess = 1
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerClientQuarantineStatuses
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerClientQuarantineStatuses.DropPacket
+  commentId: F:Bodoconsult.Network.Windows.Dhcp.DhcpServerClientQuarantineStatuses.DropPacket
+  id: DropPacket
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerClientQuarantineStatuses
+  langs:
+  - csharp
+  - vb
+  name: DropPacket
+  nameWithType: DhcpServerClientQuarantineStatuses.DropPacket
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerClientQuarantineStatuses.DropPacket
+  type: Field
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerClientQuarantineStatuses.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: DropPacket
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerClientQuarantineStatuses.cs
+    startLine: 18
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  summary: The DHCP client is not compliant with the health policies defined by the administrator and is being denied access to the network. The DHCP server does not grant an IP address lease to this client.
+  example: []
+  syntax:
+    content: DropPacket = 2
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerClientQuarantineStatuses
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerClientQuarantineStatuses.Probation
+  commentId: F:Bodoconsult.Network.Windows.Dhcp.DhcpServerClientQuarantineStatuses.Probation
+  id: Probation
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerClientQuarantineStatuses
+  langs:
+  - csharp
+  - vb
+  name: Probation
+  nameWithType: DhcpServerClientQuarantineStatuses.Probation
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerClientQuarantineStatuses.Probation
+  type: Field
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerClientQuarantineStatuses.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Probation
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerClientQuarantineStatuses.cs
+    startLine: 22
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  summary: The DHCP client is not compliant with the health policies defined by the administrator and is being granted normal access to the network for a limited time.
+  example: []
+  syntax:
+    content: Probation = 3
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerClientQuarantineStatuses
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerClientQuarantineStatuses.Exempt
+  commentId: F:Bodoconsult.Network.Windows.Dhcp.DhcpServerClientQuarantineStatuses.Exempt
+  id: Exempt
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerClientQuarantineStatuses
+  langs:
+  - csharp
+  - vb
+  name: Exempt
+  nameWithType: DhcpServerClientQuarantineStatuses.Exempt
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerClientQuarantineStatuses.Exempt
+  type: Field
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerClientQuarantineStatuses.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Exempt
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerClientQuarantineStatuses.cs
+    startLine: 26
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  summary: The DHCP client is exempt from compliance with the health policies defined by the administrator and is granted normal access to the network.
+  example: []
+  syntax:
+    content: Exempt = 4
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerClientQuarantineStatuses
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerClientQuarantineStatuses.DefaultQuarantineState
+  commentId: F:Bodoconsult.Network.Windows.Dhcp.DhcpServerClientQuarantineStatuses.DefaultQuarantineState
+  id: DefaultQuarantineState
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerClientQuarantineStatuses
+  langs:
+  - csharp
+  - vb
+  name: DefaultQuarantineState
+  nameWithType: DhcpServerClientQuarantineStatuses.DefaultQuarantineState
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerClientQuarantineStatuses.DefaultQuarantineState
+  type: Field
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerClientQuarantineStatuses.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: DefaultQuarantineState
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerClientQuarantineStatuses.cs
+    startLine: 30
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  summary: The DHCP client is put into the default quarantine state configured on the DHCP NAP server. When a network policy server (NPS) is unavailable, the DHCP client can be put in any of the states NOQUARANTINE, RESTRICTEDACCESS, or DROPPACKET, depending on the default setting on the DHCP NAP server.
+  example: []
+  syntax:
+    content: DefaultQuarantineState = 5
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerClientQuarantineStatuses
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerClientQuarantineStatuses.NoQuarantineInformation
+  commentId: F:Bodoconsult.Network.Windows.Dhcp.DhcpServerClientQuarantineStatuses.NoQuarantineInformation
+  id: NoQuarantineInformation
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerClientQuarantineStatuses
+  langs:
+  - csharp
+  - vb
+  name: NoQuarantineInformation
+  nameWithType: DhcpServerClientQuarantineStatuses.NoQuarantineInformation
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerClientQuarantineStatuses.NoQuarantineInformation
+  type: Field
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerClientQuarantineStatuses.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: NoQuarantineInformation
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerClientQuarantineStatuses.cs
+    startLine: 34
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  summary: No quarantine.
+  example: []
+  syntax:
+    content: NoQuarantineInformation = 6
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerClientQuarantineStatuses
+references:
+- uid: Bodoconsult.Network.Windows.Dhcp
+  commentId: N:Bodoconsult.Network.Windows.Dhcp
+  href: Bodoconsult.html
+  name: Bodoconsult.Network.Windows.Dhcp
+  nameWithType: Bodoconsult.Network.Windows.Dhcp
+  fullName: Bodoconsult.Network.Windows.Dhcp
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.Network
+    name: Network
+    href: Bodoconsult.Network.html
+  - name: .
+  - uid: Bodoconsult.Network.Windows
+    name: Windows
+    href: Bodoconsult.Network.Windows.html
+  - name: .
+  - uid: Bodoconsult.Network.Windows.Dhcp
+    name: Dhcp
+    href: Bodoconsult.Network.Windows.Dhcp.html
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.Network
+    name: Network
+    href: Bodoconsult.Network.html
+  - name: .
+  - uid: Bodoconsult.Network.Windows
+    name: Windows
+    href: Bodoconsult.Network.Windows.html
+  - name: .
+  - uid: Bodoconsult.Network.Windows.Dhcp
+    name: Dhcp
+    href: Bodoconsult.Network.Windows.Dhcp.html
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerClientQuarantineStatuses
+  commentId: T:Bodoconsult.Network.Windows.Dhcp.DhcpServerClientQuarantineStatuses
+  parent: Bodoconsult.Network.Windows.Dhcp
+  href: Bodoconsult.Network.Windows.Dhcp.DhcpServerClientQuarantineStatuses.html
+  name: DhcpServerClientQuarantineStatuses
+  nameWithType: DhcpServerClientQuarantineStatuses
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerClientQuarantineStatuses

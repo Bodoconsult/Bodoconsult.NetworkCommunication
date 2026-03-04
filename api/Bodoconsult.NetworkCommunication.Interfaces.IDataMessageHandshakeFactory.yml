@@ -1,0 +1,199 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageHandshakeFactory
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.IDataMessageHandshakeFactory
+  id: IDataMessageHandshakeFactory
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  children:
+  - Bodoconsult.NetworkCommunication.Interfaces.IDataMessageHandshakeFactory.GetAckResponse(Bodoconsult.NetworkCommunication.Interfaces.IInboundDataMessage)
+  - Bodoconsult.NetworkCommunication.Interfaces.IDataMessageHandshakeFactory.GetCanResponse(Bodoconsult.NetworkCommunication.Interfaces.IInboundDataMessage)
+  - Bodoconsult.NetworkCommunication.Interfaces.IDataMessageHandshakeFactory.GetNakResponse(Bodoconsult.NetworkCommunication.Interfaces.IInboundDataMessage)
+  langs:
+  - csharp
+  - vb
+  name: IDataMessageHandshakeFactory
+  nameWithType: IDataMessageHandshakeFactory
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageHandshakeFactory
+  type: Interface
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/IDataMessageHandshakeFactory.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: IDataMessageHandshakeFactory
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/IDataMessageHandshakeFactory.cs
+    startLine: 4
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  syntax:
+    content: public interface IDataMessageHandshakeFactory
+    content.vb: Public Interface IDataMessageHandshakeFactory
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageHandshakeFactory.GetAckResponse(Bodoconsult.NetworkCommunication.Interfaces.IInboundDataMessage)
+  commentId: M:Bodoconsult.NetworkCommunication.Interfaces.IDataMessageHandshakeFactory.GetAckResponse(Bodoconsult.NetworkCommunication.Interfaces.IInboundDataMessage)
+  id: GetAckResponse(Bodoconsult.NetworkCommunication.Interfaces.IInboundDataMessage)
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageHandshakeFactory
+  langs:
+  - csharp
+  - vb
+  name: GetAckResponse(IInboundDataMessage)
+  nameWithType: IDataMessageHandshakeFactory.GetAckResponse(IInboundDataMessage)
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageHandshakeFactory.GetAckResponse(Bodoconsult.NetworkCommunication.Interfaces.IInboundDataMessage)
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/IDataMessageHandshakeFactory.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: GetAckResponse
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/IDataMessageHandshakeFactory.cs
+    startLine: 11
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Get an ACK handshake message
+  example: []
+  syntax:
+    content: IOutboundHandShakeMessage GetAckResponse(IInboundDataMessage message)
+    parameters:
+    - id: message
+      type: Bodoconsult.NetworkCommunication.Interfaces.IInboundDataMessage
+      description: Current message received
+    return:
+      type: Bodoconsult.NetworkCommunication.Interfaces.IOutboundHandShakeMessage
+      description: ACK handshake message to send
+    content.vb: Function GetAckResponse(message As IInboundDataMessage) As IOutboundHandShakeMessage
+  overload: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageHandshakeFactory.GetAckResponse*
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageHandshakeFactory.GetNakResponse(Bodoconsult.NetworkCommunication.Interfaces.IInboundDataMessage)
+  commentId: M:Bodoconsult.NetworkCommunication.Interfaces.IDataMessageHandshakeFactory.GetNakResponse(Bodoconsult.NetworkCommunication.Interfaces.IInboundDataMessage)
+  id: GetNakResponse(Bodoconsult.NetworkCommunication.Interfaces.IInboundDataMessage)
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageHandshakeFactory
+  langs:
+  - csharp
+  - vb
+  name: GetNakResponse(IInboundDataMessage)
+  nameWithType: IDataMessageHandshakeFactory.GetNakResponse(IInboundDataMessage)
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageHandshakeFactory.GetNakResponse(Bodoconsult.NetworkCommunication.Interfaces.IInboundDataMessage)
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/IDataMessageHandshakeFactory.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: GetNakResponse
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/IDataMessageHandshakeFactory.cs
+    startLine: 18
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Get a NAK handshake message
+  example: []
+  syntax:
+    content: IOutboundHandShakeMessage GetNakResponse(IInboundDataMessage message)
+    parameters:
+    - id: message
+      type: Bodoconsult.NetworkCommunication.Interfaces.IInboundDataMessage
+      description: Current message received
+    return:
+      type: Bodoconsult.NetworkCommunication.Interfaces.IOutboundHandShakeMessage
+      description: NAK handshake message to send
+    content.vb: Function GetNakResponse(message As IInboundDataMessage) As IOutboundHandShakeMessage
+  overload: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageHandshakeFactory.GetNakResponse*
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageHandshakeFactory.GetCanResponse(Bodoconsult.NetworkCommunication.Interfaces.IInboundDataMessage)
+  commentId: M:Bodoconsult.NetworkCommunication.Interfaces.IDataMessageHandshakeFactory.GetCanResponse(Bodoconsult.NetworkCommunication.Interfaces.IInboundDataMessage)
+  id: GetCanResponse(Bodoconsult.NetworkCommunication.Interfaces.IInboundDataMessage)
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageHandshakeFactory
+  langs:
+  - csharp
+  - vb
+  name: GetCanResponse(IInboundDataMessage)
+  nameWithType: IDataMessageHandshakeFactory.GetCanResponse(IInboundDataMessage)
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageHandshakeFactory.GetCanResponse(Bodoconsult.NetworkCommunication.Interfaces.IInboundDataMessage)
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/IDataMessageHandshakeFactory.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: GetCanResponse
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/IDataMessageHandshakeFactory.cs
+    startLine: 25
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Get a CAN handshake message
+  example: []
+  syntax:
+    content: IOutboundHandShakeMessage GetCanResponse(IInboundDataMessage message)
+    parameters:
+    - id: message
+      type: Bodoconsult.NetworkCommunication.Interfaces.IInboundDataMessage
+      description: Current message received
+    return:
+      type: Bodoconsult.NetworkCommunication.Interfaces.IOutboundHandShakeMessage
+      description: CAN handshake message to send
+    content.vb: Function GetCanResponse(message As IInboundDataMessage) As IOutboundHandShakeMessage
+  overload: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageHandshakeFactory.GetCanResponse*
+references:
+- uid: Bodoconsult.NetworkCommunication.Interfaces
+  commentId: N:Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.html
+  name: Bodoconsult.NetworkCommunication.Interfaces
+  nameWithType: Bodoconsult.NetworkCommunication.Interfaces
+  fullName: Bodoconsult.NetworkCommunication.Interfaces
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Interfaces
+    name: Interfaces
+    href: Bodoconsult.NetworkCommunication.Interfaces.html
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Interfaces
+    name: Interfaces
+    href: Bodoconsult.NetworkCommunication.Interfaces.html
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageHandshakeFactory.GetAckResponse*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.IDataMessageHandshakeFactory.GetAckResponse
+  href: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageHandshakeFactory.html#Bodoconsult_NetworkCommunication_Interfaces_IDataMessageHandshakeFactory_GetAckResponse_Bodoconsult_NetworkCommunication_Interfaces_IInboundDataMessage_
+  name: GetAckResponse
+  nameWithType: IDataMessageHandshakeFactory.GetAckResponse
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageHandshakeFactory.GetAckResponse
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IInboundDataMessage
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.IInboundDataMessage
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.NetworkCommunication.Interfaces.IInboundDataMessage.html
+  name: IInboundDataMessage
+  nameWithType: IInboundDataMessage
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IInboundDataMessage
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IOutboundHandShakeMessage
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.IOutboundHandShakeMessage
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.NetworkCommunication.Interfaces.IOutboundHandShakeMessage.html
+  name: IOutboundHandShakeMessage
+  nameWithType: IOutboundHandShakeMessage
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IOutboundHandShakeMessage
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageHandshakeFactory.GetNakResponse*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.IDataMessageHandshakeFactory.GetNakResponse
+  href: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageHandshakeFactory.html#Bodoconsult_NetworkCommunication_Interfaces_IDataMessageHandshakeFactory_GetNakResponse_Bodoconsult_NetworkCommunication_Interfaces_IInboundDataMessage_
+  name: GetNakResponse
+  nameWithType: IDataMessageHandshakeFactory.GetNakResponse
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageHandshakeFactory.GetNakResponse
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageHandshakeFactory.GetCanResponse*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.IDataMessageHandshakeFactory.GetCanResponse
+  href: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageHandshakeFactory.html#Bodoconsult_NetworkCommunication_Interfaces_IDataMessageHandshakeFactory_GetCanResponse_Bodoconsult_NetworkCommunication_Interfaces_IInboundDataMessage_
+  name: GetCanResponse
+  nameWithType: IDataMessageHandshakeFactory.GetCanResponse
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageHandshakeFactory.GetCanResponse

@@ -1,0 +1,153 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionNotification
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionNotification
+  id: IOrderExecutionNotification
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  children:
+  - Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionNotification.Order
+  langs:
+  - csharp
+  - vb
+  name: IOrderExecutionNotification
+  nameWithType: IOrderExecutionNotification
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionNotification
+  type: Interface
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/IOrderExecutionNotification.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: IOrderExecutionNotification
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/IOrderExecutionNotification.cs
+    startLine: 10
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Order execution event args.
+  remarks: Interface is required for mocking with MOQ
+  example: []
+  syntax:
+    content: 'public interface IOrderExecutionNotification : IClientNotification'
+    content.vb: Public Interface IOrderExecutionNotification Inherits IClientNotification
+  inheritedMembers:
+  - Bodoconsult.App.Interfaces.IClientNotification.NotificationObjectToSend
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionNotification.Order
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionNotification.Order
+  id: Order
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionNotification
+  langs:
+  - csharp
+  - vb
+  name: Order
+  nameWithType: IOrderExecutionNotification.Order
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionNotification.Order
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/IOrderExecutionNotification.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Order
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/IOrderExecutionNotification.cs
+    startLine: 15
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: The current order
+  example: []
+  syntax:
+    content: IOrder Order { get; set; }
+    parameters: []
+    return:
+      type: Bodoconsult.NetworkCommunication.Interfaces.IOrder
+    content.vb: Property Order As IOrder
+  overload: Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionNotification.Order*
+references:
+- uid: Bodoconsult.NetworkCommunication.Interfaces
+  commentId: N:Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.html
+  name: Bodoconsult.NetworkCommunication.Interfaces
+  nameWithType: Bodoconsult.NetworkCommunication.Interfaces
+  fullName: Bodoconsult.NetworkCommunication.Interfaces
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Interfaces
+    name: Interfaces
+    href: Bodoconsult.NetworkCommunication.Interfaces.html
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Interfaces
+    name: Interfaces
+    href: Bodoconsult.NetworkCommunication.Interfaces.html
+- uid: Bodoconsult.App.Interfaces.IClientNotification.NotificationObjectToSend
+  commentId: P:Bodoconsult.App.Interfaces.IClientNotification.NotificationObjectToSend
+  parent: Bodoconsult.App.Interfaces.IClientNotification
+  isExternal: true
+  name: NotificationObjectToSend
+  nameWithType: IClientNotification.NotificationObjectToSend
+  fullName: Bodoconsult.App.Interfaces.IClientNotification.NotificationObjectToSend
+- uid: Bodoconsult.App.Interfaces.IClientNotification
+  commentId: T:Bodoconsult.App.Interfaces.IClientNotification
+  parent: Bodoconsult.App.Interfaces
+  isExternal: true
+  name: IClientNotification
+  nameWithType: IClientNotification
+  fullName: Bodoconsult.App.Interfaces.IClientNotification
+- uid: Bodoconsult.App.Interfaces
+  commentId: N:Bodoconsult.App.Interfaces
+  isExternal: true
+  name: Bodoconsult.App.Interfaces
+  nameWithType: Bodoconsult.App.Interfaces
+  fullName: Bodoconsult.App.Interfaces
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    isExternal: true
+  - name: .
+  - uid: Bodoconsult.App
+    name: App
+    isExternal: true
+  - name: .
+  - uid: Bodoconsult.App.Interfaces
+    name: Interfaces
+    isExternal: true
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    isExternal: true
+  - name: .
+  - uid: Bodoconsult.App
+    name: App
+    isExternal: true
+  - name: .
+  - uid: Bodoconsult.App.Interfaces
+    name: Interfaces
+    isExternal: true
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionNotification.Order*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionNotification.Order
+  href: Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionNotification.html#Bodoconsult_NetworkCommunication_Interfaces_IOrderExecutionNotification_Order
+  name: Order
+  nameWithType: IOrderExecutionNotification.Order
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionNotification.Order
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IOrder
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.IOrder
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.NetworkCommunication.Interfaces.IOrder.html
+  name: IOrder
+  nameWithType: IOrder
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IOrder

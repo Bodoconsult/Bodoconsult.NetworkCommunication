@@ -1,0 +1,913 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess
+  id: ISendPacketProcess
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  children:
+  - Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess.CurrentSendAttempsCount
+  - Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess.DataMessagingConfig
+  - Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess.Execute
+  - Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess.HasFinishedWithoutTimeout
+  - Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess.IsComOnline
+  - Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess.LoadDependencies(Bodoconsult.NetworkCommunication.Interfaces.IDuplexIo,Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessage,Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig)
+  - Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess.MaxSendAttemptCount
+  - Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess.Message
+  - Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess.ProcessDone
+  - Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess.ProcessExecutionResult
+  - Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess.RegisterWaitState
+  - Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess.SendMessage
+  - Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess.SendTimeout
+  - Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess.Timeout
+  - Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess.TotalTimeout
+  - Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess.TotalTransactionTime
+  - Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess.UnregisterWaitState
+  - Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess.WaitingIntervalBetweenRetries
+  langs:
+  - csharp
+  - vb
+  name: ISendPacketProcess
+  nameWithType: ISendPacketProcess
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess
+  type: Interface
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/ISendPacketProcess.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: ISendPacketProcess
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/ISendPacketProcess.cs
+    startLine: 9
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Interface for implementations of sending a message to the device and waiting for response (ACK, NACK or CAN)
+  example: []
+  syntax:
+    content: 'public interface ISendPacketProcess : IResetable, IDisposable'
+    content.vb: Public Interface ISendPacketProcess Inherits IResetable, IDisposable
+  inheritedMembers:
+  - Bodoconsult.App.Interfaces.IResetable.Reset
+  - System.IDisposable.Dispose
+- uid: Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess.LoadDependencies(Bodoconsult.NetworkCommunication.Interfaces.IDuplexIo,Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessage,Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig)
+  commentId: M:Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess.LoadDependencies(Bodoconsult.NetworkCommunication.Interfaces.IDuplexIo,Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessage,Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig)
+  id: LoadDependencies(Bodoconsult.NetworkCommunication.Interfaces.IDuplexIo,Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessage,Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig)
+  parent: Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess
+  langs:
+  - csharp
+  - vb
+  name: LoadDependencies(IDuplexIo, IOutboundDataMessage, IDataMessagingConfig)
+  nameWithType: ISendPacketProcess.LoadDependencies(IDuplexIo, IOutboundDataMessage, IDataMessagingConfig)
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess.LoadDependencies(Bodoconsult.NetworkCommunication.Interfaces.IDuplexIo, Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessage, Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig)
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/ISendPacketProcess.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: LoadDependencies
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/ISendPacketProcess.cs
+    startLine: 17
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Load dependencies
+  example: []
+  syntax:
+    content: void LoadDependencies(IDuplexIo duplexIo, IOutboundDataMessage message, IDataMessagingConfig dataMessagingConfig)
+    parameters:
+    - id: duplexIo
+      type: Bodoconsult.NetworkCommunication.Interfaces.IDuplexIo
+      description: Current IO messaging system
+    - id: message
+      type: Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessage
+      description: Current data message to send to the device
+    - id: dataMessagingConfig
+      type: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig
+      description: Current device
+    content.vb: Sub LoadDependencies(duplexIo As IDuplexIo, message As IOutboundDataMessage, dataMessagingConfig As IDataMessagingConfig)
+  overload: Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess.LoadDependencies*
+- uid: Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess.DataMessagingConfig
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess.DataMessagingConfig
+  id: DataMessagingConfig
+  parent: Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess
+  langs:
+  - csharp
+  - vb
+  name: DataMessagingConfig
+  nameWithType: ISendPacketProcess.DataMessagingConfig
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess.DataMessagingConfig
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/ISendPacketProcess.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: DataMessagingConfig
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/ISendPacketProcess.cs
+    startLine: 22
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Current SMD device
+  example: []
+  syntax:
+    content: IDataMessagingConfig DataMessagingConfig { get; }
+    parameters: []
+    return:
+      type: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig
+    content.vb: ReadOnly Property DataMessagingConfig As IDataMessagingConfig
+  overload: Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess.DataMessagingConfig*
+- uid: Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess.MaxSendAttemptCount
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess.MaxSendAttemptCount
+  id: MaxSendAttemptCount
+  parent: Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess
+  langs:
+  - csharp
+  - vb
+  name: MaxSendAttemptCount
+  nameWithType: ISendPacketProcess.MaxSendAttemptCount
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess.MaxSendAttemptCount
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/ISendPacketProcess.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: MaxSendAttemptCount
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/ISendPacketProcess.cs
+    startLine: 27
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Maximum number of send attemps
+  example: []
+  syntax:
+    content: int MaxSendAttemptCount { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Property MaxSendAttemptCount As Integer
+  overload: Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess.MaxSendAttemptCount*
+- uid: Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess.Timeout
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess.Timeout
+  id: Timeout
+  parent: Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess
+  langs:
+  - csharp
+  - vb
+  name: Timeout
+  nameWithType: ISendPacketProcess.Timeout
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess.Timeout
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/ISendPacketProcess.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Timeout
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/ISendPacketProcess.cs
+    startLine: 32
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Timeout for waiting for an ackknowledgement
+  example: []
+  syntax:
+    content: int Timeout { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Property Timeout As Integer
+  overload: Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess.Timeout*
+- uid: Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess.WaitingIntervalBetweenRetries
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess.WaitingIntervalBetweenRetries
+  id: WaitingIntervalBetweenRetries
+  parent: Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess
+  langs:
+  - csharp
+  - vb
+  name: WaitingIntervalBetweenRetries
+  nameWithType: ISendPacketProcess.WaitingIntervalBetweenRetries
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess.WaitingIntervalBetweenRetries
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/ISendPacketProcess.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: WaitingIntervalBetweenRetries
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/ISendPacketProcess.cs
+    startLine: 37
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: The time interval in ms between 2 tries to send the message
+  example: []
+  syntax:
+    content: int WaitingIntervalBetweenRetries { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Property WaitingIntervalBetweenRetries As Integer
+  overload: Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess.WaitingIntervalBetweenRetries*
+- uid: Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess.TotalTransactionTime
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess.TotalTransactionTime
+  id: TotalTransactionTime
+  parent: Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess
+  langs:
+  - csharp
+  - vb
+  name: TotalTransactionTime
+  nameWithType: ISendPacketProcess.TotalTransactionTime
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess.TotalTransactionTime
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/ISendPacketProcess.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: TotalTransactionTime
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/ISendPacketProcess.cs
+    startLine: 42
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: The total transaction time for all retries for loading the next try
+  example: []
+  syntax:
+    content: int TotalTransactionTime { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Property TotalTransactionTime As Integer
+  overload: Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess.TotalTransactionTime*
+- uid: Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess.SendTimeout
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess.SendTimeout
+  id: SendTimeout
+  parent: Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess
+  langs:
+  - csharp
+  - vb
+  name: SendTimeout
+  nameWithType: ISendPacketProcess.SendTimeout
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess.SendTimeout
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/ISendPacketProcess.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: SendTimeout
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/ISendPacketProcess.cs
+    startLine: 47
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Timeout in ms for sending messages to the device
+  example: []
+  syntax:
+    content: int SendTimeout { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Property SendTimeout As Integer
+  overload: Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess.SendTimeout*
+- uid: Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess.TotalTimeout
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess.TotalTimeout
+  id: TotalTimeout
+  parent: Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess
+  langs:
+  - csharp
+  - vb
+  name: TotalTimeout
+  nameWithType: ISendPacketProcess.TotalTimeout
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess.TotalTimeout
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/ISendPacketProcess.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: TotalTimeout
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/ISendPacketProcess.cs
+    startLine: 52
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: The total timeout for sending a message and receiving a valid handshake for it (<xref href="Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess.Timeout" data-throw-if-not-resolved="false"></xref> * NumberOfRetries + <xref href="Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess.WaitingIntervalBetweenRetries" data-throw-if-not-resolved="false"></xref> * (NumberOfRetries - 1) + <xref href="Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess.TotalTransactionTime" data-throw-if-not-resolved="false"></xref>
+  example: []
+  syntax:
+    content: int TotalTimeout { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: ReadOnly Property TotalTimeout As Integer
+  overload: Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess.TotalTimeout*
+- uid: Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess.HasFinishedWithoutTimeout
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess.HasFinishedWithoutTimeout
+  id: HasFinishedWithoutTimeout
+  parent: Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess
+  langs:
+  - csharp
+  - vb
+  name: HasFinishedWithoutTimeout
+  nameWithType: ISendPacketProcess.HasFinishedWithoutTimeout
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess.HasFinishedWithoutTimeout
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/ISendPacketProcess.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: HasFinishedWithoutTimeout
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/ISendPacketProcess.cs
+    startLine: 57
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Has the send process finished without timeout
+  example: []
+  syntax:
+    content: bool HasFinishedWithoutTimeout { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: ReadOnly Property HasFinishedWithoutTimeout As Boolean
+  overload: Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess.HasFinishedWithoutTimeout*
+- uid: Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess.Message
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess.Message
+  id: Message
+  parent: Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess
+  langs:
+  - csharp
+  - vb
+  name: Message
+  nameWithType: ISendPacketProcess.Message
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess.Message
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/ISendPacketProcess.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Message
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/ISendPacketProcess.cs
+    startLine: 62
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Current device data message to send
+  example: []
+  syntax:
+    content: IOutboundDataMessage Message { get; }
+    parameters: []
+    return:
+      type: Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessage
+    content.vb: ReadOnly Property Message As IOutboundDataMessage
+  overload: Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess.Message*
+- uid: Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess.IsComOnline
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess.IsComOnline
+  id: IsComOnline
+  parent: Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess
+  langs:
+  - csharp
+  - vb
+  name: IsComOnline
+  nameWithType: ISendPacketProcess.IsComOnline
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess.IsComOnline
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/ISendPacketProcess.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: IsComOnline
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/ISendPacketProcess.cs
+    startLine: 67
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Is the communication online?
+  example: []
+  syntax:
+    content: bool IsComOnline { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: ReadOnly Property IsComOnline As Boolean
+  overload: Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess.IsComOnline*
+- uid: Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess.CurrentSendAttempsCount
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess.CurrentSendAttempsCount
+  id: CurrentSendAttempsCount
+  parent: Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess
+  langs:
+  - csharp
+  - vb
+  name: CurrentSendAttempsCount
+  nameWithType: ISendPacketProcess.CurrentSendAttempsCount
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess.CurrentSendAttempsCount
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/ISendPacketProcess.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: CurrentSendAttempsCount
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/ISendPacketProcess.cs
+    startLine: 72
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Current send attempts counter
+  example: []
+  syntax:
+    content: int CurrentSendAttempsCount { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Property CurrentSendAttempsCount As Integer
+  overload: Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess.CurrentSendAttempsCount*
+- uid: Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess.SendMessage
+  commentId: M:Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess.SendMessage
+  id: SendMessage
+  parent: Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess
+  langs:
+  - csharp
+  - vb
+  name: SendMessage()
+  nameWithType: ISendPacketProcess.SendMessage()
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess.SendMessage()
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/ISendPacketProcess.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: SendMessage
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/ISendPacketProcess.cs
+    startLine: 77
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Send the message
+  example: []
+  syntax:
+    content: bool SendMessage()
+    return:
+      type: System.Boolean
+    content.vb: Function SendMessage() As Boolean
+  overload: Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess.SendMessage*
+- uid: Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess.Execute
+  commentId: M:Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess.Execute
+  id: Execute
+  parent: Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess
+  langs:
+  - csharp
+  - vb
+  name: Execute()
+  nameWithType: ISendPacketProcess.Execute()
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess.Execute()
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/ISendPacketProcess.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Execute
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/ISendPacketProcess.cs
+    startLine: 82
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Excute the process
+  example: []
+  syntax:
+    content: void Execute()
+    content.vb: Sub Execute()
+  overload: Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess.Execute*
+- uid: Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess.ProcessExecutionResult
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess.ProcessExecutionResult
+  id: ProcessExecutionResult
+  parent: Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess
+  langs:
+  - csharp
+  - vb
+  name: ProcessExecutionResult
+  nameWithType: ISendPacketProcess.ProcessExecutionResult
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess.ProcessExecutionResult
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/ISendPacketProcess.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: ProcessExecutionResult
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/ISendPacketProcess.cs
+    startLine: 87
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: The execution result of the send process
+  example: []
+  syntax:
+    content: IOrderExecutionResultState ProcessExecutionResult { get; set; }
+    parameters: []
+    return:
+      type: Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionResultState
+    content.vb: Property ProcessExecutionResult As IOrderExecutionResultState
+  overload: Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess.ProcessExecutionResult*
+- uid: Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess.RegisterWaitState
+  commentId: M:Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess.RegisterWaitState
+  id: RegisterWaitState
+  parent: Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess
+  langs:
+  - csharp
+  - vb
+  name: RegisterWaitState()
+  nameWithType: ISendPacketProcess.RegisterWaitState()
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess.RegisterWaitState()
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/ISendPacketProcess.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: RegisterWaitState
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/ISendPacketProcess.cs
+    startLine: 92
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Register a wait for ACK state to be handled
+  example: []
+  syntax:
+    content: void RegisterWaitState()
+    content.vb: Sub RegisterWaitState()
+  overload: Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess.RegisterWaitState*
+- uid: Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess.UnregisterWaitState
+  commentId: M:Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess.UnregisterWaitState
+  id: UnregisterWaitState
+  parent: Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess
+  langs:
+  - csharp
+  - vb
+  name: UnregisterWaitState()
+  nameWithType: ISendPacketProcess.UnregisterWaitState()
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess.UnregisterWaitState()
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/ISendPacketProcess.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: UnregisterWaitState
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/ISendPacketProcess.cs
+    startLine: 97
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Unregister a wait for ACK state to be handled
+  example: []
+  syntax:
+    content: void UnregisterWaitState()
+    content.vb: Sub UnregisterWaitState()
+  overload: Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess.UnregisterWaitState*
+- uid: Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess.ProcessDone
+  commentId: M:Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess.ProcessDone
+  id: ProcessDone
+  parent: Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess
+  langs:
+  - csharp
+  - vb
+  name: ProcessDone()
+  nameWithType: ISendPacketProcess.ProcessDone()
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess.ProcessDone()
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/ISendPacketProcess.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: ProcessDone
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/ISendPacketProcess.cs
+    startLine: 102
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Terminate the waiting task if all process states are processed
+  example: []
+  syntax:
+    content: void ProcessDone()
+    content.vb: Sub ProcessDone()
+  overload: Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess.ProcessDone*
+references:
+- uid: Bodoconsult.NetworkCommunication.Interfaces
+  commentId: N:Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.html
+  name: Bodoconsult.NetworkCommunication.Interfaces
+  nameWithType: Bodoconsult.NetworkCommunication.Interfaces
+  fullName: Bodoconsult.NetworkCommunication.Interfaces
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Interfaces
+    name: Interfaces
+    href: Bodoconsult.NetworkCommunication.Interfaces.html
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Interfaces
+    name: Interfaces
+    href: Bodoconsult.NetworkCommunication.Interfaces.html
+- uid: Bodoconsult.App.Interfaces.IResetable.Reset
+  commentId: M:Bodoconsult.App.Interfaces.IResetable.Reset
+  parent: Bodoconsult.App.Interfaces.IResetable
+  isExternal: true
+  name: Reset()
+  nameWithType: IResetable.Reset()
+  fullName: Bodoconsult.App.Interfaces.IResetable.Reset()
+  spec.csharp:
+  - uid: Bodoconsult.App.Interfaces.IResetable.Reset
+    name: Reset
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.App.Interfaces.IResetable.Reset
+    name: Reset
+    isExternal: true
+  - name: (
+  - name: )
+- uid: System.IDisposable.Dispose
+  commentId: M:System.IDisposable.Dispose
+  parent: System.IDisposable
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  name: Dispose()
+  nameWithType: IDisposable.Dispose()
+  fullName: System.IDisposable.Dispose()
+  spec.csharp:
+  - uid: System.IDisposable.Dispose
+    name: Dispose
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.IDisposable.Dispose
+    name: Dispose
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  - name: (
+  - name: )
+- uid: Bodoconsult.App.Interfaces.IResetable
+  commentId: T:Bodoconsult.App.Interfaces.IResetable
+  parent: Bodoconsult.App.Interfaces
+  isExternal: true
+  name: IResetable
+  nameWithType: IResetable
+  fullName: Bodoconsult.App.Interfaces.IResetable
+- uid: System.IDisposable
+  commentId: T:System.IDisposable
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable
+  name: IDisposable
+  nameWithType: IDisposable
+  fullName: System.IDisposable
+- uid: Bodoconsult.App.Interfaces
+  commentId: N:Bodoconsult.App.Interfaces
+  isExternal: true
+  name: Bodoconsult.App.Interfaces
+  nameWithType: Bodoconsult.App.Interfaces
+  fullName: Bodoconsult.App.Interfaces
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    isExternal: true
+  - name: .
+  - uid: Bodoconsult.App
+    name: App
+    isExternal: true
+  - name: .
+  - uid: Bodoconsult.App.Interfaces
+    name: Interfaces
+    isExternal: true
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    isExternal: true
+  - name: .
+  - uid: Bodoconsult.App
+    name: App
+    isExternal: true
+  - name: .
+  - uid: Bodoconsult.App.Interfaces
+    name: Interfaces
+    isExternal: true
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess.LoadDependencies*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess.LoadDependencies
+  href: Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess.html#Bodoconsult_NetworkCommunication_Interfaces_ISendPacketProcess_LoadDependencies_Bodoconsult_NetworkCommunication_Interfaces_IDuplexIo_Bodoconsult_NetworkCommunication_Interfaces_IOutboundDataMessage_Bodoconsult_NetworkCommunication_Interfaces_IDataMessagingConfig_
+  name: LoadDependencies
+  nameWithType: ISendPacketProcess.LoadDependencies
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess.LoadDependencies
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IDuplexIo
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.IDuplexIo
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.NetworkCommunication.Interfaces.IDuplexIo.html
+  name: IDuplexIo
+  nameWithType: IDuplexIo
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IDuplexIo
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessage
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessage
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessage.html
+  name: IOutboundDataMessage
+  nameWithType: IOutboundDataMessage
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessage
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig.html
+  name: IDataMessagingConfig
+  nameWithType: IDataMessagingConfig
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig
+- uid: Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess.DataMessagingConfig*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess.DataMessagingConfig
+  href: Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess.html#Bodoconsult_NetworkCommunication_Interfaces_ISendPacketProcess_DataMessagingConfig
+  name: DataMessagingConfig
+  nameWithType: ISendPacketProcess.DataMessagingConfig
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess.DataMessagingConfig
+- uid: Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess.MaxSendAttemptCount*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess.MaxSendAttemptCount
+  href: Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess.html#Bodoconsult_NetworkCommunication_Interfaces_ISendPacketProcess_MaxSendAttemptCount
+  name: MaxSendAttemptCount
+  nameWithType: ISendPacketProcess.MaxSendAttemptCount
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess.MaxSendAttemptCount
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess.Timeout*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess.Timeout
+  href: Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess.html#Bodoconsult_NetworkCommunication_Interfaces_ISendPacketProcess_Timeout
+  name: Timeout
+  nameWithType: ISendPacketProcess.Timeout
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess.Timeout
+- uid: Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess.WaitingIntervalBetweenRetries*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess.WaitingIntervalBetweenRetries
+  href: Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess.html#Bodoconsult_NetworkCommunication_Interfaces_ISendPacketProcess_WaitingIntervalBetweenRetries
+  name: WaitingIntervalBetweenRetries
+  nameWithType: ISendPacketProcess.WaitingIntervalBetweenRetries
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess.WaitingIntervalBetweenRetries
+- uid: Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess.TotalTransactionTime*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess.TotalTransactionTime
+  href: Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess.html#Bodoconsult_NetworkCommunication_Interfaces_ISendPacketProcess_TotalTransactionTime
+  name: TotalTransactionTime
+  nameWithType: ISendPacketProcess.TotalTransactionTime
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess.TotalTransactionTime
+- uid: Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess.SendTimeout*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess.SendTimeout
+  href: Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess.html#Bodoconsult_NetworkCommunication_Interfaces_ISendPacketProcess_SendTimeout
+  name: SendTimeout
+  nameWithType: ISendPacketProcess.SendTimeout
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess.SendTimeout
+- uid: Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess.Timeout
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess.Timeout
+  parent: Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess
+  href: Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess.html#Bodoconsult_NetworkCommunication_Interfaces_ISendPacketProcess_Timeout
+  name: Timeout
+  nameWithType: ISendPacketProcess.Timeout
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess.Timeout
+- uid: Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess.WaitingIntervalBetweenRetries
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess.WaitingIntervalBetweenRetries
+  parent: Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess
+  href: Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess.html#Bodoconsult_NetworkCommunication_Interfaces_ISendPacketProcess_WaitingIntervalBetweenRetries
+  name: WaitingIntervalBetweenRetries
+  nameWithType: ISendPacketProcess.WaitingIntervalBetweenRetries
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess.WaitingIntervalBetweenRetries
+- uid: Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess.TotalTransactionTime
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess.TotalTransactionTime
+  parent: Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess
+  href: Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess.html#Bodoconsult_NetworkCommunication_Interfaces_ISendPacketProcess_TotalTransactionTime
+  name: TotalTransactionTime
+  nameWithType: ISendPacketProcess.TotalTransactionTime
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess.TotalTransactionTime
+- uid: Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess.TotalTimeout*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess.TotalTimeout
+  href: Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess.html#Bodoconsult_NetworkCommunication_Interfaces_ISendPacketProcess_TotalTimeout
+  name: TotalTimeout
+  nameWithType: ISendPacketProcess.TotalTimeout
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess.TotalTimeout
+- uid: Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess.html
+  name: ISendPacketProcess
+  nameWithType: ISendPacketProcess
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess
+- uid: Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess.HasFinishedWithoutTimeout*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess.HasFinishedWithoutTimeout
+  href: Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess.html#Bodoconsult_NetworkCommunication_Interfaces_ISendPacketProcess_HasFinishedWithoutTimeout
+  name: HasFinishedWithoutTimeout
+  nameWithType: ISendPacketProcess.HasFinishedWithoutTimeout
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess.HasFinishedWithoutTimeout
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess.Message*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess.Message
+  href: Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess.html#Bodoconsult_NetworkCommunication_Interfaces_ISendPacketProcess_Message
+  name: Message
+  nameWithType: ISendPacketProcess.Message
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess.Message
+- uid: Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess.IsComOnline*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess.IsComOnline
+  href: Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess.html#Bodoconsult_NetworkCommunication_Interfaces_ISendPacketProcess_IsComOnline
+  name: IsComOnline
+  nameWithType: ISendPacketProcess.IsComOnline
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess.IsComOnline
+- uid: Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess.CurrentSendAttempsCount*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess.CurrentSendAttempsCount
+  href: Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess.html#Bodoconsult_NetworkCommunication_Interfaces_ISendPacketProcess_CurrentSendAttempsCount
+  name: CurrentSendAttempsCount
+  nameWithType: ISendPacketProcess.CurrentSendAttempsCount
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess.CurrentSendAttempsCount
+- uid: Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess.SendMessage*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess.SendMessage
+  href: Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess.html#Bodoconsult_NetworkCommunication_Interfaces_ISendPacketProcess_SendMessage
+  name: SendMessage
+  nameWithType: ISendPacketProcess.SendMessage
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess.SendMessage
+- uid: Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess.Execute*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess.Execute
+  href: Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess.html#Bodoconsult_NetworkCommunication_Interfaces_ISendPacketProcess_Execute
+  name: Execute
+  nameWithType: ISendPacketProcess.Execute
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess.Execute
+- uid: Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess.ProcessExecutionResult*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess.ProcessExecutionResult
+  href: Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess.html#Bodoconsult_NetworkCommunication_Interfaces_ISendPacketProcess_ProcessExecutionResult
+  name: ProcessExecutionResult
+  nameWithType: ISendPacketProcess.ProcessExecutionResult
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess.ProcessExecutionResult
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionResultState
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionResultState
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionResultState.html
+  name: IOrderExecutionResultState
+  nameWithType: IOrderExecutionResultState
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionResultState
+- uid: Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess.RegisterWaitState*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess.RegisterWaitState
+  href: Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess.html#Bodoconsult_NetworkCommunication_Interfaces_ISendPacketProcess_RegisterWaitState
+  name: RegisterWaitState
+  nameWithType: ISendPacketProcess.RegisterWaitState
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess.RegisterWaitState
+- uid: Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess.UnregisterWaitState*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess.UnregisterWaitState
+  href: Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess.html#Bodoconsult_NetworkCommunication_Interfaces_ISendPacketProcess_UnregisterWaitState
+  name: UnregisterWaitState
+  nameWithType: ISendPacketProcess.UnregisterWaitState
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess.UnregisterWaitState
+- uid: Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess.ProcessDone*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess.ProcessDone
+  href: Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess.html#Bodoconsult_NetworkCommunication_Interfaces_ISendPacketProcess_ProcessDone
+  name: ProcessDone
+  nameWithType: ISendPacketProcess.ProcessDone
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess.ProcessDone

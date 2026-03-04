@@ -1,0 +1,372 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IOrderManager
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.IOrderManager
+  id: IOrderManager
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  children:
+  - Bodoconsult.NetworkCommunication.Interfaces.IOrderManager.AddOrder(Bodoconsult.NetworkCommunication.Interfaces.IOrder)
+  - Bodoconsult.NetworkCommunication.Interfaces.IOrderManager.MessagingConfig
+  - Bodoconsult.NetworkCommunication.Interfaces.IOrderManager.OndeviceMessageReceived(Bodoconsult.NetworkCommunication.Interfaces.IInboundDataMessage)
+  - Bodoconsult.NetworkCommunication.Interfaces.IOrderManager.OrderProcessor
+  - Bodoconsult.NetworkCommunication.Interfaces.IOrderManager.OrderReceiver
+  - Bodoconsult.NetworkCommunication.Interfaces.IOrderManager.StartOrderProcessing
+  - Bodoconsult.NetworkCommunication.Interfaces.IOrderManager.StopOrderProcessing
+  langs:
+  - csharp
+  - vb
+  name: IOrderManager
+  nameWithType: IOrderManager
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IOrderManager
+  type: Interface
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/IOrderManager.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: IOrderManager
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/IOrderManager.cs
+    startLine: 7
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Interface for Order Management OM top level instances
+  example: []
+  syntax:
+    content: public interface IOrderManager
+    content.vb: Public Interface IOrderManager
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IOrderManager.MessagingConfig
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IOrderManager.MessagingConfig
+  id: MessagingConfig
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IOrderManager
+  langs:
+  - csharp
+  - vb
+  name: MessagingConfig
+  nameWithType: IOrderManager.MessagingConfig
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IOrderManager.MessagingConfig
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/IOrderManager.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: MessagingConfig
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/IOrderManager.cs
+    startLine: 12
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Current messaging config
+  example: []
+  syntax:
+    content: IDataMessagingConfig MessagingConfig { get; }
+    parameters: []
+    return:
+      type: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig
+    content.vb: ReadOnly Property MessagingConfig As IDataMessagingConfig
+  overload: Bodoconsult.NetworkCommunication.Interfaces.IOrderManager.MessagingConfig*
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IOrderManager.OrderProcessor
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IOrderManager.OrderProcessor
+  id: OrderProcessor
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IOrderManager
+  langs:
+  - csharp
+  - vb
+  name: OrderProcessor
+  nameWithType: IOrderManager.OrderProcessor
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IOrderManager.OrderProcessor
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/IOrderManager.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: OrderProcessor
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/IOrderManager.cs
+    startLine: 17
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Current order processor instance
+  example: []
+  syntax:
+    content: IOrderProcessor OrderProcessor { get; }
+    parameters: []
+    return:
+      type: Bodoconsult.NetworkCommunication.Interfaces.IOrderProcessor
+    content.vb: ReadOnly Property OrderProcessor As IOrderProcessor
+  overload: Bodoconsult.NetworkCommunication.Interfaces.IOrderManager.OrderProcessor*
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IOrderManager.OrderReceiver
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IOrderManager.OrderReceiver
+  id: OrderReceiver
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IOrderManager
+  langs:
+  - csharp
+  - vb
+  name: OrderReceiver
+  nameWithType: IOrderManager.OrderReceiver
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IOrderManager.OrderReceiver
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/IOrderManager.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: OrderReceiver
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/IOrderManager.cs
+    startLine: 22
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Current order processor instance
+  example: []
+  syntax:
+    content: IOrderReceiver OrderReceiver { get; }
+    parameters: []
+    return:
+      type: Bodoconsult.NetworkCommunication.Interfaces.IOrderReceiver
+    content.vb: ReadOnly Property OrderReceiver As IOrderReceiver
+  overload: Bodoconsult.NetworkCommunication.Interfaces.IOrderManager.OrderReceiver*
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IOrderManager.AddOrder(Bodoconsult.NetworkCommunication.Interfaces.IOrder)
+  commentId: M:Bodoconsult.NetworkCommunication.Interfaces.IOrderManager.AddOrder(Bodoconsult.NetworkCommunication.Interfaces.IOrder)
+  id: AddOrder(Bodoconsult.NetworkCommunication.Interfaces.IOrder)
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IOrderManager
+  langs:
+  - csharp
+  - vb
+  name: AddOrder(IOrder)
+  nameWithType: IOrderManager.AddOrder(IOrder)
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IOrderManager.AddOrder(Bodoconsult.NetworkCommunication.Interfaces.IOrder)
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/IOrderManager.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: AddOrder
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/IOrderManager.cs
+    startLine: 53
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Adds a received device message to the receiver queue for further processing
+  example: []
+  syntax:
+    content: void AddOrder(IOrder order)
+    parameters:
+    - id: order
+      type: Bodoconsult.NetworkCommunication.Interfaces.IOrder
+      description: Order to add to the message queue
+    content.vb: Sub AddOrder(order As IOrder)
+  overload: Bodoconsult.NetworkCommunication.Interfaces.IOrderManager.AddOrder*
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IOrderManager.OndeviceMessageReceived(Bodoconsult.NetworkCommunication.Interfaces.IInboundDataMessage)
+  commentId: M:Bodoconsult.NetworkCommunication.Interfaces.IOrderManager.OndeviceMessageReceived(Bodoconsult.NetworkCommunication.Interfaces.IInboundDataMessage)
+  id: OndeviceMessageReceived(Bodoconsult.NetworkCommunication.Interfaces.IInboundDataMessage)
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IOrderManager
+  langs:
+  - csharp
+  - vb
+  name: OndeviceMessageReceived(IInboundDataMessage)
+  nameWithType: IOrderManager.OndeviceMessageReceived(IInboundDataMessage)
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IOrderManager.OndeviceMessageReceived(Bodoconsult.NetworkCommunication.Interfaces.IInboundDataMessage)
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/IOrderManager.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: OndeviceMessageReceived
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/IOrderManager.cs
+    startLine: 65
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Event handling method for binding to <xref href="Bodoconsult.NetworkCommunication.Interfaces.IOrderManager.MessagingConfig" data-throw-if-not-resolved="false"></xref>.NotifydeviceMessageReceived event
+  example: []
+  syntax:
+    content: void OndeviceMessageReceived(IInboundDataMessage dataMessage)
+    parameters:
+    - id: dataMessage
+      type: Bodoconsult.NetworkCommunication.Interfaces.IInboundDataMessage
+      description: Received message
+    content.vb: Sub OndeviceMessageReceived(dataMessage As IInboundDataMessage)
+  overload: Bodoconsult.NetworkCommunication.Interfaces.IOrderManager.OndeviceMessageReceived*
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IOrderManager.StartOrderProcessing
+  commentId: M:Bodoconsult.NetworkCommunication.Interfaces.IOrderManager.StartOrderProcessing
+  id: StartOrderProcessing
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IOrderManager
+  langs:
+  - csharp
+  - vb
+  name: StartOrderProcessing()
+  nameWithType: IOrderManager.StartOrderProcessing()
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IOrderManager.StartOrderProcessing()
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/IOrderManager.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: StartOrderProcessing
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/IOrderManager.cs
+    startLine: 70
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Starts the watchdog for the order processing
+  example: []
+  syntax:
+    content: void StartOrderProcessing()
+    content.vb: Sub StartOrderProcessing()
+  overload: Bodoconsult.NetworkCommunication.Interfaces.IOrderManager.StartOrderProcessing*
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IOrderManager.StopOrderProcessing
+  commentId: M:Bodoconsult.NetworkCommunication.Interfaces.IOrderManager.StopOrderProcessing
+  id: StopOrderProcessing
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IOrderManager
+  langs:
+  - csharp
+  - vb
+  name: StopOrderProcessing()
+  nameWithType: IOrderManager.StopOrderProcessing()
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IOrderManager.StopOrderProcessing()
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/IOrderManager.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: StopOrderProcessing
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/IOrderManager.cs
+    startLine: 75
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Stops the watchdog for the order processing
+  example: []
+  syntax:
+    content: void StopOrderProcessing()
+    content.vb: Sub StopOrderProcessing()
+  overload: Bodoconsult.NetworkCommunication.Interfaces.IOrderManager.StopOrderProcessing*
+references:
+- uid: Bodoconsult.NetworkCommunication.Interfaces
+  commentId: N:Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.html
+  name: Bodoconsult.NetworkCommunication.Interfaces
+  nameWithType: Bodoconsult.NetworkCommunication.Interfaces
+  fullName: Bodoconsult.NetworkCommunication.Interfaces
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Interfaces
+    name: Interfaces
+    href: Bodoconsult.NetworkCommunication.Interfaces.html
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Interfaces
+    name: Interfaces
+    href: Bodoconsult.NetworkCommunication.Interfaces.html
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IOrderManager.MessagingConfig*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.IOrderManager.MessagingConfig
+  href: Bodoconsult.NetworkCommunication.Interfaces.IOrderManager.html#Bodoconsult_NetworkCommunication_Interfaces_IOrderManager_MessagingConfig
+  name: MessagingConfig
+  nameWithType: IOrderManager.MessagingConfig
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IOrderManager.MessagingConfig
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig.html
+  name: IDataMessagingConfig
+  nameWithType: IDataMessagingConfig
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IOrderManager.OrderProcessor*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.IOrderManager.OrderProcessor
+  href: Bodoconsult.NetworkCommunication.Interfaces.IOrderManager.html#Bodoconsult_NetworkCommunication_Interfaces_IOrderManager_OrderProcessor
+  name: OrderProcessor
+  nameWithType: IOrderManager.OrderProcessor
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IOrderManager.OrderProcessor
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IOrderProcessor
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.IOrderProcessor
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.NetworkCommunication.Interfaces.IOrderProcessor.html
+  name: IOrderProcessor
+  nameWithType: IOrderProcessor
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IOrderProcessor
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IOrderManager.OrderReceiver*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.IOrderManager.OrderReceiver
+  href: Bodoconsult.NetworkCommunication.Interfaces.IOrderManager.html#Bodoconsult_NetworkCommunication_Interfaces_IOrderManager_OrderReceiver
+  name: OrderReceiver
+  nameWithType: IOrderManager.OrderReceiver
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IOrderManager.OrderReceiver
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IOrderReceiver
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.IOrderReceiver
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.NetworkCommunication.Interfaces.IOrderReceiver.html
+  name: IOrderReceiver
+  nameWithType: IOrderReceiver
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IOrderReceiver
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IOrderManager.AddOrder*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.IOrderManager.AddOrder
+  href: Bodoconsult.NetworkCommunication.Interfaces.IOrderManager.html#Bodoconsult_NetworkCommunication_Interfaces_IOrderManager_AddOrder_Bodoconsult_NetworkCommunication_Interfaces_IOrder_
+  name: AddOrder
+  nameWithType: IOrderManager.AddOrder
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IOrderManager.AddOrder
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IOrder
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.IOrder
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.NetworkCommunication.Interfaces.IOrder.html
+  name: IOrder
+  nameWithType: IOrder
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IOrder
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IOrderManager.MessagingConfig
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IOrderManager.MessagingConfig
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IOrderManager
+  href: Bodoconsult.NetworkCommunication.Interfaces.IOrderManager.html#Bodoconsult_NetworkCommunication_Interfaces_IOrderManager_MessagingConfig
+  name: MessagingConfig
+  nameWithType: IOrderManager.MessagingConfig
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IOrderManager.MessagingConfig
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IOrderManager.OndeviceMessageReceived*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.IOrderManager.OndeviceMessageReceived
+  href: Bodoconsult.NetworkCommunication.Interfaces.IOrderManager.html#Bodoconsult_NetworkCommunication_Interfaces_IOrderManager_OndeviceMessageReceived_Bodoconsult_NetworkCommunication_Interfaces_IInboundDataMessage_
+  name: OndeviceMessageReceived
+  nameWithType: IOrderManager.OndeviceMessageReceived
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IOrderManager.OndeviceMessageReceived
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IInboundDataMessage
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.IInboundDataMessage
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.NetworkCommunication.Interfaces.IInboundDataMessage.html
+  name: IInboundDataMessage
+  nameWithType: IInboundDataMessage
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IInboundDataMessage
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IOrderManager
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.IOrderManager
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.NetworkCommunication.Interfaces.IOrderManager.html
+  name: IOrderManager
+  nameWithType: IOrderManager
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IOrderManager
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IOrderManager.StartOrderProcessing*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.IOrderManager.StartOrderProcessing
+  href: Bodoconsult.NetworkCommunication.Interfaces.IOrderManager.html#Bodoconsult_NetworkCommunication_Interfaces_IOrderManager_StartOrderProcessing
+  name: StartOrderProcessing
+  nameWithType: IOrderManager.StartOrderProcessing
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IOrderManager.StartOrderProcessing
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IOrderManager.StopOrderProcessing*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.IOrderManager.StopOrderProcessing
+  href: Bodoconsult.NetworkCommunication.Interfaces.IOrderManager.html#Bodoconsult_NetworkCommunication_Interfaces_IOrderManager_StopOrderProcessing
+  name: StopOrderProcessing
+  nameWithType: IOrderManager.StopOrderProcessing
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IOrderManager.StopOrderProcessing

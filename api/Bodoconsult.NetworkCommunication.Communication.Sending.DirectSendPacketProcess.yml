@@ -1,0 +1,940 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bodoconsult.NetworkCommunication.Communication.Sending.DirectSendPacketProcess
+  commentId: T:Bodoconsult.NetworkCommunication.Communication.Sending.DirectSendPacketProcess
+  id: DirectSendPacketProcess
+  parent: Bodoconsult.NetworkCommunication.Communication.Sending
+  children:
+  - Bodoconsult.NetworkCommunication.Communication.Sending.DirectSendPacketProcess.ExecuteSendAndWait
+  langs:
+  - csharp
+  - vb
+  name: DirectSendPacketProcess
+  nameWithType: DirectSendPacketProcess
+  fullName: Bodoconsult.NetworkCommunication.Communication.Sending.DirectSendPacketProcess
+  type: Class
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Communication/Sending/DirectSendPacketProcess.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: DirectSendPacketProcess
+    path: src/Bodoconsult.NetworkCommunication/Communication/Sending/DirectSendPacketProcess.cs
+    startLine: 10
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Communication.Sending
+  summary: Current implementation of <xref href="Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess" data-throw-if-not-resolved="false"></xref> for sending a message to the device directly without waiting for a response
+  example: []
+  syntax:
+    content: 'public class DirectSendPacketProcess : BaseSendPacketProcess, ISendPacketProcess, IResetable, IDisposable, IAsyncDisposable'
+    content.vb: Public Class DirectSendPacketProcess Inherits BaseSendPacketProcess Implements ISendPacketProcess, IResetable, IDisposable, IAsyncDisposable
+  inheritance:
+  - System.Object
+  - Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess
+  implements:
+  - Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess
+  - Bodoconsult.App.Interfaces.IResetable
+  - System.IDisposable
+  - System.IAsyncDisposable
+  inheritedMembers:
+  - Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.DuplexIo
+  - Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.TaskCompletionSource
+  - Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.Timeout
+  - Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.WaitingIntervalBetweenRetries
+  - Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.TotalTransactionTime
+  - Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.SendTimeout
+  - Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.TotalTimeout
+  - Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.LoadDependencies(Bodoconsult.NetworkCommunication.Interfaces.IDuplexIo,Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessage,Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig)
+  - Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.DataMessagingConfig
+  - Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.MaxSendAttemptCount
+  - Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.IsComOnline
+  - Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.IsDeviceReady
+  - Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.HasFinishedWithoutTimeout
+  - Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.ProcessExecutionResult
+  - Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.RegisterWaitState
+  - Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.UnregisterWaitState
+  - Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.ProcessDone
+  - Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.Message
+  - Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.SendMessage
+  - Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.CurrentSendAttempsCount
+  - Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.IsSocketConnected
+  - Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.CreateCancellationToken
+  - Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.CreateWaitingTask``1(System.Threading.Tasks.TaskCompletionSource{{T}}@)
+  - Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.Execute
+  - Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.Reset
+  - Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.Dispose
+  - Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.DisposeAsync
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: Bodoconsult.NetworkCommunication.Communication.Sending.DirectSendPacketProcess.ExecuteSendAndWait
+  commentId: M:Bodoconsult.NetworkCommunication.Communication.Sending.DirectSendPacketProcess.ExecuteSendAndWait
+  id: ExecuteSendAndWait
+  parent: Bodoconsult.NetworkCommunication.Communication.Sending.DirectSendPacketProcess
+  langs:
+  - csharp
+  - vb
+  name: ExecuteSendAndWait()
+  nameWithType: DirectSendPacketProcess.ExecuteSendAndWait()
+  fullName: Bodoconsult.NetworkCommunication.Communication.Sending.DirectSendPacketProcess.ExecuteSendAndWait()
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Communication/Sending/DirectSendPacketProcess.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: ExecuteSendAndWait
+    path: src/Bodoconsult.NetworkCommunication/Communication/Sending/DirectSendPacketProcess.cs
+    startLine: 16
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Communication.Sending
+  summary: Execute the entry state
+  example: []
+  syntax:
+    content: protected override bool ExecuteSendAndWait()
+    return:
+      type: System.Boolean
+      description: True if a handshake was received else false
+    content.vb: Protected Overrides Function ExecuteSendAndWait() As Boolean
+  overridden: Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.ExecuteSendAndWait
+  overload: Bodoconsult.NetworkCommunication.Communication.Sending.DirectSendPacketProcess.ExecuteSendAndWait*
+references:
+- uid: Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess.html
+  name: ISendPacketProcess
+  nameWithType: ISendPacketProcess
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcess
+- uid: Bodoconsult.NetworkCommunication.Communication.Sending
+  commentId: N:Bodoconsult.NetworkCommunication.Communication.Sending
+  href: Bodoconsult.html
+  name: Bodoconsult.NetworkCommunication.Communication.Sending
+  nameWithType: Bodoconsult.NetworkCommunication.Communication.Sending
+  fullName: Bodoconsult.NetworkCommunication.Communication.Sending
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Communication
+    name: Communication
+    href: Bodoconsult.NetworkCommunication.Communication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Communication.Sending
+    name: Sending
+    href: Bodoconsult.NetworkCommunication.Communication.Sending.html
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Communication
+    name: Communication
+    href: Bodoconsult.NetworkCommunication.Communication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Communication.Sending
+    name: Sending
+    href: Bodoconsult.NetworkCommunication.Communication.Sending.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess
+  commentId: T:Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess
+  parent: Bodoconsult.NetworkCommunication.Communication.Sending
+  href: Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.html
+  name: BaseSendPacketProcess
+  nameWithType: BaseSendPacketProcess
+  fullName: Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess
+- uid: Bodoconsult.App.Interfaces.IResetable
+  commentId: T:Bodoconsult.App.Interfaces.IResetable
+  parent: Bodoconsult.App.Interfaces
+  isExternal: true
+  name: IResetable
+  nameWithType: IResetable
+  fullName: Bodoconsult.App.Interfaces.IResetable
+- uid: System.IDisposable
+  commentId: T:System.IDisposable
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable
+  name: IDisposable
+  nameWithType: IDisposable
+  fullName: System.IDisposable
+- uid: System.IAsyncDisposable
+  commentId: T:System.IAsyncDisposable
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.iasyncdisposable
+  name: IAsyncDisposable
+  nameWithType: IAsyncDisposable
+  fullName: System.IAsyncDisposable
+- uid: Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.DuplexIo
+  commentId: F:Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.DuplexIo
+  parent: Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess
+  href: Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.html#Bodoconsult_NetworkCommunication_Communication_Sending_BaseSendPacketProcess_DuplexIo
+  name: DuplexIo
+  nameWithType: BaseSendPacketProcess.DuplexIo
+  fullName: Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.DuplexIo
+- uid: Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.TaskCompletionSource
+  commentId: F:Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.TaskCompletionSource
+  parent: Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess
+  href: Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.html#Bodoconsult_NetworkCommunication_Communication_Sending_BaseSendPacketProcess_TaskCompletionSource
+  name: TaskCompletionSource
+  nameWithType: BaseSendPacketProcess.TaskCompletionSource
+  fullName: Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.TaskCompletionSource
+- uid: Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.Timeout
+  commentId: P:Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.Timeout
+  parent: Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess
+  href: Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.html#Bodoconsult_NetworkCommunication_Communication_Sending_BaseSendPacketProcess_Timeout
+  name: Timeout
+  nameWithType: BaseSendPacketProcess.Timeout
+  fullName: Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.Timeout
+- uid: Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.WaitingIntervalBetweenRetries
+  commentId: P:Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.WaitingIntervalBetweenRetries
+  parent: Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess
+  href: Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.html#Bodoconsult_NetworkCommunication_Communication_Sending_BaseSendPacketProcess_WaitingIntervalBetweenRetries
+  name: WaitingIntervalBetweenRetries
+  nameWithType: BaseSendPacketProcess.WaitingIntervalBetweenRetries
+  fullName: Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.WaitingIntervalBetweenRetries
+- uid: Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.TotalTransactionTime
+  commentId: P:Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.TotalTransactionTime
+  parent: Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess
+  href: Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.html#Bodoconsult_NetworkCommunication_Communication_Sending_BaseSendPacketProcess_TotalTransactionTime
+  name: TotalTransactionTime
+  nameWithType: BaseSendPacketProcess.TotalTransactionTime
+  fullName: Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.TotalTransactionTime
+- uid: Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.SendTimeout
+  commentId: P:Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.SendTimeout
+  parent: Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess
+  href: Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.html#Bodoconsult_NetworkCommunication_Communication_Sending_BaseSendPacketProcess_SendTimeout
+  name: SendTimeout
+  nameWithType: BaseSendPacketProcess.SendTimeout
+  fullName: Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.SendTimeout
+- uid: Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.TotalTimeout
+  commentId: P:Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.TotalTimeout
+  parent: Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess
+  href: Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.html#Bodoconsult_NetworkCommunication_Communication_Sending_BaseSendPacketProcess_TotalTimeout
+  name: TotalTimeout
+  nameWithType: BaseSendPacketProcess.TotalTimeout
+  fullName: Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.TotalTimeout
+- uid: Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.LoadDependencies(Bodoconsult.NetworkCommunication.Interfaces.IDuplexIo,Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessage,Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig)
+  commentId: M:Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.LoadDependencies(Bodoconsult.NetworkCommunication.Interfaces.IDuplexIo,Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessage,Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig)
+  parent: Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess
+  href: Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.html#Bodoconsult_NetworkCommunication_Communication_Sending_BaseSendPacketProcess_LoadDependencies_Bodoconsult_NetworkCommunication_Interfaces_IDuplexIo_Bodoconsult_NetworkCommunication_Interfaces_IOutboundDataMessage_Bodoconsult_NetworkCommunication_Interfaces_IDataMessagingConfig_
+  name: LoadDependencies(IDuplexIo, IOutboundDataMessage, IDataMessagingConfig)
+  nameWithType: BaseSendPacketProcess.LoadDependencies(IDuplexIo, IOutboundDataMessage, IDataMessagingConfig)
+  fullName: Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.LoadDependencies(Bodoconsult.NetworkCommunication.Interfaces.IDuplexIo, Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessage, Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig)
+  spec.csharp:
+  - uid: Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.LoadDependencies(Bodoconsult.NetworkCommunication.Interfaces.IDuplexIo,Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessage,Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig)
+    name: LoadDependencies
+    href: Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.html#Bodoconsult_NetworkCommunication_Communication_Sending_BaseSendPacketProcess_LoadDependencies_Bodoconsult_NetworkCommunication_Interfaces_IDuplexIo_Bodoconsult_NetworkCommunication_Interfaces_IOutboundDataMessage_Bodoconsult_NetworkCommunication_Interfaces_IDataMessagingConfig_
+  - name: (
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IDuplexIo
+    name: IDuplexIo
+    href: Bodoconsult.NetworkCommunication.Interfaces.IDuplexIo.html
+  - name: ','
+  - name: " "
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessage
+    name: IOutboundDataMessage
+    href: Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessage.html
+  - name: ','
+  - name: " "
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig
+    name: IDataMessagingConfig
+    href: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig.html
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.LoadDependencies(Bodoconsult.NetworkCommunication.Interfaces.IDuplexIo,Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessage,Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig)
+    name: LoadDependencies
+    href: Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.html#Bodoconsult_NetworkCommunication_Communication_Sending_BaseSendPacketProcess_LoadDependencies_Bodoconsult_NetworkCommunication_Interfaces_IDuplexIo_Bodoconsult_NetworkCommunication_Interfaces_IOutboundDataMessage_Bodoconsult_NetworkCommunication_Interfaces_IDataMessagingConfig_
+  - name: (
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IDuplexIo
+    name: IDuplexIo
+    href: Bodoconsult.NetworkCommunication.Interfaces.IDuplexIo.html
+  - name: ','
+  - name: " "
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessage
+    name: IOutboundDataMessage
+    href: Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessage.html
+  - name: ','
+  - name: " "
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig
+    name: IDataMessagingConfig
+    href: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig.html
+  - name: )
+- uid: Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.DataMessagingConfig
+  commentId: P:Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.DataMessagingConfig
+  parent: Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess
+  href: Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.html#Bodoconsult_NetworkCommunication_Communication_Sending_BaseSendPacketProcess_DataMessagingConfig
+  name: DataMessagingConfig
+  nameWithType: BaseSendPacketProcess.DataMessagingConfig
+  fullName: Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.DataMessagingConfig
+- uid: Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.MaxSendAttemptCount
+  commentId: P:Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.MaxSendAttemptCount
+  parent: Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess
+  href: Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.html#Bodoconsult_NetworkCommunication_Communication_Sending_BaseSendPacketProcess_MaxSendAttemptCount
+  name: MaxSendAttemptCount
+  nameWithType: BaseSendPacketProcess.MaxSendAttemptCount
+  fullName: Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.MaxSendAttemptCount
+- uid: Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.IsComOnline
+  commentId: P:Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.IsComOnline
+  parent: Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess
+  href: Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.html#Bodoconsult_NetworkCommunication_Communication_Sending_BaseSendPacketProcess_IsComOnline
+  name: IsComOnline
+  nameWithType: BaseSendPacketProcess.IsComOnline
+  fullName: Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.IsComOnline
+- uid: Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.IsDeviceReady
+  commentId: P:Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.IsDeviceReady
+  parent: Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess
+  href: Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.html#Bodoconsult_NetworkCommunication_Communication_Sending_BaseSendPacketProcess_IsDeviceReady
+  name: IsDeviceReady
+  nameWithType: BaseSendPacketProcess.IsDeviceReady
+  fullName: Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.IsDeviceReady
+- uid: Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.HasFinishedWithoutTimeout
+  commentId: P:Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.HasFinishedWithoutTimeout
+  parent: Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess
+  href: Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.html#Bodoconsult_NetworkCommunication_Communication_Sending_BaseSendPacketProcess_HasFinishedWithoutTimeout
+  name: HasFinishedWithoutTimeout
+  nameWithType: BaseSendPacketProcess.HasFinishedWithoutTimeout
+  fullName: Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.HasFinishedWithoutTimeout
+- uid: Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.ProcessExecutionResult
+  commentId: P:Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.ProcessExecutionResult
+  parent: Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess
+  href: Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.html#Bodoconsult_NetworkCommunication_Communication_Sending_BaseSendPacketProcess_ProcessExecutionResult
+  name: ProcessExecutionResult
+  nameWithType: BaseSendPacketProcess.ProcessExecutionResult
+  fullName: Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.ProcessExecutionResult
+- uid: Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.RegisterWaitState
+  commentId: M:Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.RegisterWaitState
+  parent: Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess
+  href: Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.html#Bodoconsult_NetworkCommunication_Communication_Sending_BaseSendPacketProcess_RegisterWaitState
+  name: RegisterWaitState()
+  nameWithType: BaseSendPacketProcess.RegisterWaitState()
+  fullName: Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.RegisterWaitState()
+  spec.csharp:
+  - uid: Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.RegisterWaitState
+    name: RegisterWaitState
+    href: Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.html#Bodoconsult_NetworkCommunication_Communication_Sending_BaseSendPacketProcess_RegisterWaitState
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.RegisterWaitState
+    name: RegisterWaitState
+    href: Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.html#Bodoconsult_NetworkCommunication_Communication_Sending_BaseSendPacketProcess_RegisterWaitState
+  - name: (
+  - name: )
+- uid: Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.UnregisterWaitState
+  commentId: M:Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.UnregisterWaitState
+  parent: Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess
+  href: Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.html#Bodoconsult_NetworkCommunication_Communication_Sending_BaseSendPacketProcess_UnregisterWaitState
+  name: UnregisterWaitState()
+  nameWithType: BaseSendPacketProcess.UnregisterWaitState()
+  fullName: Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.UnregisterWaitState()
+  spec.csharp:
+  - uid: Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.UnregisterWaitState
+    name: UnregisterWaitState
+    href: Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.html#Bodoconsult_NetworkCommunication_Communication_Sending_BaseSendPacketProcess_UnregisterWaitState
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.UnregisterWaitState
+    name: UnregisterWaitState
+    href: Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.html#Bodoconsult_NetworkCommunication_Communication_Sending_BaseSendPacketProcess_UnregisterWaitState
+  - name: (
+  - name: )
+- uid: Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.ProcessDone
+  commentId: M:Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.ProcessDone
+  parent: Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess
+  href: Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.html#Bodoconsult_NetworkCommunication_Communication_Sending_BaseSendPacketProcess_ProcessDone
+  name: ProcessDone()
+  nameWithType: BaseSendPacketProcess.ProcessDone()
+  fullName: Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.ProcessDone()
+  spec.csharp:
+  - uid: Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.ProcessDone
+    name: ProcessDone
+    href: Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.html#Bodoconsult_NetworkCommunication_Communication_Sending_BaseSendPacketProcess_ProcessDone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.ProcessDone
+    name: ProcessDone
+    href: Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.html#Bodoconsult_NetworkCommunication_Communication_Sending_BaseSendPacketProcess_ProcessDone
+  - name: (
+  - name: )
+- uid: Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.Message
+  commentId: P:Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.Message
+  parent: Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess
+  href: Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.html#Bodoconsult_NetworkCommunication_Communication_Sending_BaseSendPacketProcess_Message
+  name: Message
+  nameWithType: BaseSendPacketProcess.Message
+  fullName: Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.Message
+- uid: Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.SendMessage
+  commentId: M:Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.SendMessage
+  parent: Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess
+  href: Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.html#Bodoconsult_NetworkCommunication_Communication_Sending_BaseSendPacketProcess_SendMessage
+  name: SendMessage()
+  nameWithType: BaseSendPacketProcess.SendMessage()
+  fullName: Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.SendMessage()
+  spec.csharp:
+  - uid: Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.SendMessage
+    name: SendMessage
+    href: Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.html#Bodoconsult_NetworkCommunication_Communication_Sending_BaseSendPacketProcess_SendMessage
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.SendMessage
+    name: SendMessage
+    href: Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.html#Bodoconsult_NetworkCommunication_Communication_Sending_BaseSendPacketProcess_SendMessage
+  - name: (
+  - name: )
+- uid: Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.CurrentSendAttempsCount
+  commentId: P:Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.CurrentSendAttempsCount
+  parent: Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess
+  href: Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.html#Bodoconsult_NetworkCommunication_Communication_Sending_BaseSendPacketProcess_CurrentSendAttempsCount
+  name: CurrentSendAttempsCount
+  nameWithType: BaseSendPacketProcess.CurrentSendAttempsCount
+  fullName: Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.CurrentSendAttempsCount
+- uid: Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.IsSocketConnected
+  commentId: P:Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.IsSocketConnected
+  parent: Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess
+  href: Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.html#Bodoconsult_NetworkCommunication_Communication_Sending_BaseSendPacketProcess_IsSocketConnected
+  name: IsSocketConnected
+  nameWithType: BaseSendPacketProcess.IsSocketConnected
+  fullName: Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.IsSocketConnected
+- uid: Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.CreateCancellationToken
+  commentId: M:Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.CreateCancellationToken
+  parent: Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess
+  href: Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.html#Bodoconsult_NetworkCommunication_Communication_Sending_BaseSendPacketProcess_CreateCancellationToken
+  name: CreateCancellationToken()
+  nameWithType: BaseSendPacketProcess.CreateCancellationToken()
+  fullName: Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.CreateCancellationToken()
+  spec.csharp:
+  - uid: Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.CreateCancellationToken
+    name: CreateCancellationToken
+    href: Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.html#Bodoconsult_NetworkCommunication_Communication_Sending_BaseSendPacketProcess_CreateCancellationToken
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.CreateCancellationToken
+    name: CreateCancellationToken
+    href: Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.html#Bodoconsult_NetworkCommunication_Communication_Sending_BaseSendPacketProcess_CreateCancellationToken
+  - name: (
+  - name: )
+- uid: Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.CreateWaitingTask``1(System.Threading.Tasks.TaskCompletionSource{{T}}@)
+  commentId: M:Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.CreateWaitingTask``1(System.Threading.Tasks.TaskCompletionSource{``0}@)
+  parent: Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess
+  definition: Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.CreateWaitingTask``1(System.Threading.Tasks.TaskCompletionSource{``0}@)
+  href: Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.html#Bodoconsult_NetworkCommunication_Communication_Sending_BaseSendPacketProcess_CreateWaitingTask__1_System_Threading_Tasks_TaskCompletionSource___0___
+  name: CreateWaitingTask<T>(out TaskCompletionSource<T>)
+  nameWithType: BaseSendPacketProcess.CreateWaitingTask<T>(out TaskCompletionSource<T>)
+  fullName: Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.CreateWaitingTask<T>(out System.Threading.Tasks.TaskCompletionSource<T>)
+  nameWithType.vb: BaseSendPacketProcess.CreateWaitingTask(Of T)(TaskCompletionSource(Of T))
+  fullName.vb: Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.CreateWaitingTask(Of T)(System.Threading.Tasks.TaskCompletionSource(Of T))
+  name.vb: CreateWaitingTask(Of T)(TaskCompletionSource(Of T))
+  spec.csharp:
+  - uid: Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.CreateWaitingTask``1(System.Threading.Tasks.TaskCompletionSource{``0}@)
+    name: CreateWaitingTask
+    href: Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.html#Bodoconsult_NetworkCommunication_Communication_Sending_BaseSendPacketProcess_CreateWaitingTask__1_System_Threading_Tasks_TaskCompletionSource___0___
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: out
+  - name: " "
+  - uid: System.Threading.Tasks.TaskCompletionSource`1
+    name: TaskCompletionSource
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.taskcompletionsource-1
+  - name: <
+  - name: T
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.CreateWaitingTask``1(System.Threading.Tasks.TaskCompletionSource{``0}@)
+    name: CreateWaitingTask
+    href: Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.html#Bodoconsult_NetworkCommunication_Communication_Sending_BaseSendPacketProcess_CreateWaitingTask__1_System_Threading_Tasks_TaskCompletionSource___0___
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - uid: System.Threading.Tasks.TaskCompletionSource`1
+    name: TaskCompletionSource
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.taskcompletionsource-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: )
+- uid: Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.Execute
+  commentId: M:Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.Execute
+  parent: Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess
+  href: Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.html#Bodoconsult_NetworkCommunication_Communication_Sending_BaseSendPacketProcess_Execute
+  name: Execute()
+  nameWithType: BaseSendPacketProcess.Execute()
+  fullName: Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.Execute()
+  spec.csharp:
+  - uid: Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.Execute
+    name: Execute
+    href: Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.html#Bodoconsult_NetworkCommunication_Communication_Sending_BaseSendPacketProcess_Execute
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.Execute
+    name: Execute
+    href: Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.html#Bodoconsult_NetworkCommunication_Communication_Sending_BaseSendPacketProcess_Execute
+  - name: (
+  - name: )
+- uid: Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.Reset
+  commentId: M:Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.Reset
+  parent: Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess
+  href: Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.html#Bodoconsult_NetworkCommunication_Communication_Sending_BaseSendPacketProcess_Reset
+  name: Reset()
+  nameWithType: BaseSendPacketProcess.Reset()
+  fullName: Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.Reset()
+  spec.csharp:
+  - uid: Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.Reset
+    name: Reset
+    href: Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.html#Bodoconsult_NetworkCommunication_Communication_Sending_BaseSendPacketProcess_Reset
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.Reset
+    name: Reset
+    href: Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.html#Bodoconsult_NetworkCommunication_Communication_Sending_BaseSendPacketProcess_Reset
+  - name: (
+  - name: )
+- uid: Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.Dispose
+  commentId: M:Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.Dispose
+  parent: Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess
+  href: Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.html#Bodoconsult_NetworkCommunication_Communication_Sending_BaseSendPacketProcess_Dispose
+  name: Dispose()
+  nameWithType: BaseSendPacketProcess.Dispose()
+  fullName: Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.Dispose()
+  spec.csharp:
+  - uid: Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.Dispose
+    name: Dispose
+    href: Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.html#Bodoconsult_NetworkCommunication_Communication_Sending_BaseSendPacketProcess_Dispose
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.Dispose
+    name: Dispose
+    href: Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.html#Bodoconsult_NetworkCommunication_Communication_Sending_BaseSendPacketProcess_Dispose
+  - name: (
+  - name: )
+- uid: Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.DisposeAsync
+  commentId: M:Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.DisposeAsync
+  parent: Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess
+  href: Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.html#Bodoconsult_NetworkCommunication_Communication_Sending_BaseSendPacketProcess_DisposeAsync
+  name: DisposeAsync()
+  nameWithType: BaseSendPacketProcess.DisposeAsync()
+  fullName: Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.DisposeAsync()
+  spec.csharp:
+  - uid: Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.DisposeAsync
+    name: DisposeAsync
+    href: Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.html#Bodoconsult_NetworkCommunication_Communication_Sending_BaseSendPacketProcess_DisposeAsync
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.DisposeAsync
+    name: DisposeAsync
+    href: Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.html#Bodoconsult_NetworkCommunication_Communication_Sending_BaseSendPacketProcess_DisposeAsync
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: Bodoconsult.NetworkCommunication.Interfaces
+  commentId: N:Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.html
+  name: Bodoconsult.NetworkCommunication.Interfaces
+  nameWithType: Bodoconsult.NetworkCommunication.Interfaces
+  fullName: Bodoconsult.NetworkCommunication.Interfaces
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Interfaces
+    name: Interfaces
+    href: Bodoconsult.NetworkCommunication.Interfaces.html
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Interfaces
+    name: Interfaces
+    href: Bodoconsult.NetworkCommunication.Interfaces.html
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Bodoconsult.App.Interfaces
+  commentId: N:Bodoconsult.App.Interfaces
+  isExternal: true
+  name: Bodoconsult.App.Interfaces
+  nameWithType: Bodoconsult.App.Interfaces
+  fullName: Bodoconsult.App.Interfaces
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    isExternal: true
+  - name: .
+  - uid: Bodoconsult.App
+    name: App
+    isExternal: true
+  - name: .
+  - uid: Bodoconsult.App.Interfaces
+    name: Interfaces
+    isExternal: true
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    isExternal: true
+  - name: .
+  - uid: Bodoconsult.App
+    name: App
+    isExternal: true
+  - name: .
+  - uid: Bodoconsult.App.Interfaces
+    name: Interfaces
+    isExternal: true
+- uid: Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.CreateWaitingTask``1(System.Threading.Tasks.TaskCompletionSource{``0}@)
+  commentId: M:Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.CreateWaitingTask``1(System.Threading.Tasks.TaskCompletionSource{``0}@)
+  isExternal: true
+  href: Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.html#Bodoconsult_NetworkCommunication_Communication_Sending_BaseSendPacketProcess_CreateWaitingTask__1_System_Threading_Tasks_TaskCompletionSource___0___
+  name: CreateWaitingTask<T>(out TaskCompletionSource<T>)
+  nameWithType: BaseSendPacketProcess.CreateWaitingTask<T>(out TaskCompletionSource<T>)
+  fullName: Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.CreateWaitingTask<T>(out System.Threading.Tasks.TaskCompletionSource<T>)
+  nameWithType.vb: BaseSendPacketProcess.CreateWaitingTask(Of T)(TaskCompletionSource(Of T))
+  fullName.vb: Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.CreateWaitingTask(Of T)(System.Threading.Tasks.TaskCompletionSource(Of T))
+  name.vb: CreateWaitingTask(Of T)(TaskCompletionSource(Of T))
+  spec.csharp:
+  - uid: Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.CreateWaitingTask``1(System.Threading.Tasks.TaskCompletionSource{``0}@)
+    name: CreateWaitingTask
+    href: Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.html#Bodoconsult_NetworkCommunication_Communication_Sending_BaseSendPacketProcess_CreateWaitingTask__1_System_Threading_Tasks_TaskCompletionSource___0___
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: out
+  - name: " "
+  - uid: System.Threading.Tasks.TaskCompletionSource`1
+    name: TaskCompletionSource
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.taskcompletionsource-1
+  - name: <
+  - name: T
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.CreateWaitingTask``1(System.Threading.Tasks.TaskCompletionSource{``0}@)
+    name: CreateWaitingTask
+    href: Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.html#Bodoconsult_NetworkCommunication_Communication_Sending_BaseSendPacketProcess_CreateWaitingTask__1_System_Threading_Tasks_TaskCompletionSource___0___
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - uid: System.Threading.Tasks.TaskCompletionSource`1
+    name: TaskCompletionSource
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.taskcompletionsource-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: )
+- uid: Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.ExecuteSendAndWait
+  commentId: M:Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.ExecuteSendAndWait
+  parent: Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess
+  href: Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.html#Bodoconsult_NetworkCommunication_Communication_Sending_BaseSendPacketProcess_ExecuteSendAndWait
+  name: ExecuteSendAndWait()
+  nameWithType: BaseSendPacketProcess.ExecuteSendAndWait()
+  fullName: Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.ExecuteSendAndWait()
+  spec.csharp:
+  - uid: Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.ExecuteSendAndWait
+    name: ExecuteSendAndWait
+    href: Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.html#Bodoconsult_NetworkCommunication_Communication_Sending_BaseSendPacketProcess_ExecuteSendAndWait
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.ExecuteSendAndWait
+    name: ExecuteSendAndWait
+    href: Bodoconsult.NetworkCommunication.Communication.Sending.BaseSendPacketProcess.html#Bodoconsult_NetworkCommunication_Communication_Sending_BaseSendPacketProcess_ExecuteSendAndWait
+  - name: (
+  - name: )
+- uid: Bodoconsult.NetworkCommunication.Communication.Sending.DirectSendPacketProcess.ExecuteSendAndWait*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Communication.Sending.DirectSendPacketProcess.ExecuteSendAndWait
+  href: Bodoconsult.NetworkCommunication.Communication.Sending.DirectSendPacketProcess.html#Bodoconsult_NetworkCommunication_Communication_Sending_DirectSendPacketProcess_ExecuteSendAndWait
+  name: ExecuteSendAndWait
+  nameWithType: DirectSendPacketProcess.ExecuteSendAndWait
+  fullName: Bodoconsult.NetworkCommunication.Communication.Sending.DirectSendPacketProcess.ExecuteSendAndWait
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean

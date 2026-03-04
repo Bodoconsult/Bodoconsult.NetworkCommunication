@@ -1,0 +1,554 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswer
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswer
+  id: IRequestAnswer
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  children:
+  - Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswer.CheckReceivedMessageDelegate
+  - Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswer.DataBlockType
+  - Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswer.HandleRequestAnswerOnSuccessDelegate
+  - Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswer.HasDatablock
+  - Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswer.Name
+  - Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswer.ReceivedMessage
+  - Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswer.Reset
+  - Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswer.SetWasReceived(Bodoconsult.NetworkCommunication.Interfaces.IInboundDataMessage)
+  - Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswer.WasReceived
+  langs:
+  - csharp
+  - vb
+  name: IRequestAnswer
+  nameWithType: IRequestAnswer
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswer
+  type: Interface
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/IRequestAnswer.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: IRequestAnswer
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/IRequestAnswer.cs
+    startLine: 9
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Interface for request answer definitions
+  example: []
+  syntax:
+    content: 'public interface IRequestAnswer : IDisposable'
+    content.vb: Public Interface IRequestAnswer Inherits IDisposable
+  inheritedMembers:
+  - System.IDisposable.Dispose
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswer.Name
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswer.Name
+  id: Name
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswer
+  langs:
+  - csharp
+  - vb
+  name: Name
+  nameWithType: IRequestAnswer.Name
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswer.Name
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/IRequestAnswer.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Name
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/IRequestAnswer.cs
+    startLine: 14
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Name of the request answer
+  example: []
+  syntax:
+    content: string Name { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: ReadOnly Property Name As String
+  overload: Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswer.Name*
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswer.HasDatablock
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswer.HasDatablock
+  id: HasDatablock
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswer
+  langs:
+  - csharp
+  - vb
+  name: HasDatablock
+  nameWithType: IRequestAnswer.HasDatablock
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswer.HasDatablock
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/IRequestAnswer.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: HasDatablock
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/IRequestAnswer.cs
+    startLine: 19
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Has the answer a datablock?
+  example: []
+  syntax:
+    content: bool HasDatablock { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: ReadOnly Property HasDatablock As Boolean
+  overload: Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswer.HasDatablock*
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswer.DataBlockType
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswer.DataBlockType
+  id: DataBlockType
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswer
+  langs:
+  - csharp
+  - vb
+  name: DataBlockType
+  nameWithType: IRequestAnswer.DataBlockType
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswer.DataBlockType
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/IRequestAnswer.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: DataBlockType
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/IRequestAnswer.cs
+    startLine: 24
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Type of the data block if <xref href="Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswer.HasDatablock" data-throw-if-not-resolved="false"></xref> is true
+  example: []
+  syntax:
+    content: Type DataBlockType { get; }
+    parameters: []
+    return:
+      type: System.Type
+    content.vb: ReadOnly Property DataBlockType As Type
+  overload: Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswer.DataBlockType*
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswer.WasReceived
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswer.WasReceived
+  id: WasReceived
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswer
+  langs:
+  - csharp
+  - vb
+  name: WasReceived
+  nameWithType: IRequestAnswer.WasReceived
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswer.WasReceived
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/IRequestAnswer.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: WasReceived
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/IRequestAnswer.cs
+    startLine: 29
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: The answer was successfully received
+  example: []
+  syntax:
+    content: bool WasReceived { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: ReadOnly Property WasReceived As Boolean
+  overload: Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswer.WasReceived*
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswer.ReceivedMessage
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswer.ReceivedMessage
+  id: ReceivedMessage
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswer
+  langs:
+  - csharp
+  - vb
+  name: ReceivedMessage
+  nameWithType: IRequestAnswer.ReceivedMessage
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswer.ReceivedMessage
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/IRequestAnswer.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: ReceivedMessage
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/IRequestAnswer.cs
+    startLine: 34
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: The succesfully received answer from the device
+  example: []
+  syntax:
+    content: IInboundDataMessage ReceivedMessage { get; }
+    parameters: []
+    return:
+      type: Bodoconsult.NetworkCommunication.Interfaces.IInboundDataMessage
+    content.vb: ReadOnly Property ReceivedMessage As IInboundDataMessage
+  overload: Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswer.ReceivedMessage*
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswer.HandleRequestAnswerOnSuccessDelegate
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswer.HandleRequestAnswerOnSuccessDelegate
+  id: HandleRequestAnswerOnSuccessDelegate
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswer
+  langs:
+  - csharp
+  - vb
+  name: HandleRequestAnswerOnSuccessDelegate
+  nameWithType: IRequestAnswer.HandleRequestAnswerOnSuccessDelegate
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswer.HandleRequestAnswerOnSuccessDelegate
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/IRequestAnswer.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: HandleRequestAnswerOnSuccessDelegate
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/IRequestAnswer.cs
+    startLine: 39
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Delegate for handling request answer messages
+  example: []
+  syntax:
+    content: HandleRequestAnswerDelegate HandleRequestAnswerOnSuccessDelegate { get; set; }
+    parameters: []
+    return:
+      type: Bodoconsult.NetworkCommunication.Delegates.HandleRequestAnswerDelegate
+    content.vb: Property HandleRequestAnswerOnSuccessDelegate As HandleRequestAnswerDelegate
+  overload: Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswer.HandleRequestAnswerOnSuccessDelegate*
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswer.CheckReceivedMessageDelegate
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswer.CheckReceivedMessageDelegate
+  id: CheckReceivedMessageDelegate
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswer
+  langs:
+  - csharp
+  - vb
+  name: CheckReceivedMessageDelegate
+  nameWithType: IRequestAnswer.CheckReceivedMessageDelegate
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswer.CheckReceivedMessageDelegate
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/IRequestAnswer.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: CheckReceivedMessageDelegate
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/IRequestAnswer.cs
+    startLine: 51
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: >-
+    Check if a received message is the expected answer to the request.
+
+    If the message is the requested answer from the device the properties <xref href="Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswer.WasReceived" data-throw-if-not-resolved="false"></xref>
+
+    and <xref href="Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswer.ReceivedMessage" data-throw-if-not-resolved="false"></xref> are set to true and the received message.
+  example: []
+  syntax:
+    content: CheckReceivedMessageDelegate CheckReceivedMessageDelegate { get; set; }
+    parameters: []
+    return:
+      type: Bodoconsult.NetworkCommunication.Delegates.CheckReceivedMessageDelegate
+    content.vb: Property CheckReceivedMessageDelegate As CheckReceivedMessageDelegate
+  overload: Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswer.CheckReceivedMessageDelegate*
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswer.SetWasReceived(Bodoconsult.NetworkCommunication.Interfaces.IInboundDataMessage)
+  commentId: M:Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswer.SetWasReceived(Bodoconsult.NetworkCommunication.Interfaces.IInboundDataMessage)
+  id: SetWasReceived(Bodoconsult.NetworkCommunication.Interfaces.IInboundDataMessage)
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswer
+  langs:
+  - csharp
+  - vb
+  name: SetWasReceived(IInboundDataMessage)
+  nameWithType: IRequestAnswer.SetWasReceived(IInboundDataMessage)
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswer.SetWasReceived(Bodoconsult.NetworkCommunication.Interfaces.IInboundDataMessage)
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/IRequestAnswer.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: SetWasReceived
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/IRequestAnswer.cs
+    startLine: 57
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Set <xref href="Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswer.WasReceived" data-throw-if-not-resolved="false"></xref> to true
+  example: []
+  syntax:
+    content: void SetWasReceived(IInboundDataMessage receivedMessage)
+    parameters:
+    - id: receivedMessage
+      type: Bodoconsult.NetworkCommunication.Interfaces.IInboundDataMessage
+      description: Received message
+    content.vb: Sub SetWasReceived(receivedMessage As IInboundDataMessage)
+  overload: Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswer.SetWasReceived*
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswer.Reset
+  commentId: M:Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswer.Reset
+  id: Reset
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswer
+  langs:
+  - csharp
+  - vb
+  name: Reset()
+  nameWithType: IRequestAnswer.Reset()
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswer.Reset()
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/IRequestAnswer.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Reset
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/IRequestAnswer.cs
+    startLine: 62
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Reset the answers for a step
+  example: []
+  syntax:
+    content: void Reset()
+    content.vb: Sub Reset()
+  overload: Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswer.Reset*
+references:
+- uid: Bodoconsult.NetworkCommunication.Interfaces
+  commentId: N:Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.html
+  name: Bodoconsult.NetworkCommunication.Interfaces
+  nameWithType: Bodoconsult.NetworkCommunication.Interfaces
+  fullName: Bodoconsult.NetworkCommunication.Interfaces
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Interfaces
+    name: Interfaces
+    href: Bodoconsult.NetworkCommunication.Interfaces.html
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Interfaces
+    name: Interfaces
+    href: Bodoconsult.NetworkCommunication.Interfaces.html
+- uid: System.IDisposable.Dispose
+  commentId: M:System.IDisposable.Dispose
+  parent: System.IDisposable
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  name: Dispose()
+  nameWithType: IDisposable.Dispose()
+  fullName: System.IDisposable.Dispose()
+  spec.csharp:
+  - uid: System.IDisposable.Dispose
+    name: Dispose
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.IDisposable.Dispose
+    name: Dispose
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  - name: (
+  - name: )
+- uid: System.IDisposable
+  commentId: T:System.IDisposable
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable
+  name: IDisposable
+  nameWithType: IDisposable
+  fullName: System.IDisposable
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswer.Name*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswer.Name
+  href: Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswer.html#Bodoconsult_NetworkCommunication_Interfaces_IRequestAnswer_Name
+  name: Name
+  nameWithType: IRequestAnswer.Name
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswer.Name
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswer.HasDatablock*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswer.HasDatablock
+  href: Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswer.html#Bodoconsult_NetworkCommunication_Interfaces_IRequestAnswer_HasDatablock
+  name: HasDatablock
+  nameWithType: IRequestAnswer.HasDatablock
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswer.HasDatablock
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswer.HasDatablock
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswer.HasDatablock
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswer
+  href: Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswer.html#Bodoconsult_NetworkCommunication_Interfaces_IRequestAnswer_HasDatablock
+  name: HasDatablock
+  nameWithType: IRequestAnswer.HasDatablock
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswer.HasDatablock
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswer.DataBlockType*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswer.DataBlockType
+  href: Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswer.html#Bodoconsult_NetworkCommunication_Interfaces_IRequestAnswer_DataBlockType
+  name: DataBlockType
+  nameWithType: IRequestAnswer.DataBlockType
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswer.DataBlockType
+- uid: System.Type
+  commentId: T:System.Type
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.type
+  name: Type
+  nameWithType: Type
+  fullName: System.Type
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswer
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswer
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswer.html
+  name: IRequestAnswer
+  nameWithType: IRequestAnswer
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswer
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswer.WasReceived*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswer.WasReceived
+  href: Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswer.html#Bodoconsult_NetworkCommunication_Interfaces_IRequestAnswer_WasReceived
+  name: WasReceived
+  nameWithType: IRequestAnswer.WasReceived
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswer.WasReceived
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswer.ReceivedMessage*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswer.ReceivedMessage
+  href: Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswer.html#Bodoconsult_NetworkCommunication_Interfaces_IRequestAnswer_ReceivedMessage
+  name: ReceivedMessage
+  nameWithType: IRequestAnswer.ReceivedMessage
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswer.ReceivedMessage
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IInboundDataMessage
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.IInboundDataMessage
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.NetworkCommunication.Interfaces.IInboundDataMessage.html
+  name: IInboundDataMessage
+  nameWithType: IInboundDataMessage
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IInboundDataMessage
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswer.HandleRequestAnswerOnSuccessDelegate*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswer.HandleRequestAnswerOnSuccessDelegate
+  href: Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswer.html#Bodoconsult_NetworkCommunication_Interfaces_IRequestAnswer_HandleRequestAnswerOnSuccessDelegate
+  name: HandleRequestAnswerOnSuccessDelegate
+  nameWithType: IRequestAnswer.HandleRequestAnswerOnSuccessDelegate
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswer.HandleRequestAnswerOnSuccessDelegate
+- uid: Bodoconsult.NetworkCommunication.Delegates.HandleRequestAnswerDelegate
+  commentId: T:Bodoconsult.NetworkCommunication.Delegates.HandleRequestAnswerDelegate
+  parent: Bodoconsult.NetworkCommunication.Delegates
+  href: Bodoconsult.NetworkCommunication.Delegates.HandleRequestAnswerDelegate.html
+  name: HandleRequestAnswerDelegate
+  nameWithType: HandleRequestAnswerDelegate
+  fullName: Bodoconsult.NetworkCommunication.Delegates.HandleRequestAnswerDelegate
+- uid: Bodoconsult.NetworkCommunication.Delegates
+  commentId: N:Bodoconsult.NetworkCommunication.Delegates
+  href: Bodoconsult.html
+  name: Bodoconsult.NetworkCommunication.Delegates
+  nameWithType: Bodoconsult.NetworkCommunication.Delegates
+  fullName: Bodoconsult.NetworkCommunication.Delegates
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Delegates
+    name: Delegates
+    href: Bodoconsult.NetworkCommunication.Delegates.html
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Delegates
+    name: Delegates
+    href: Bodoconsult.NetworkCommunication.Delegates.html
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswer.WasReceived
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswer.WasReceived
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswer
+  href: Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswer.html#Bodoconsult_NetworkCommunication_Interfaces_IRequestAnswer_WasReceived
+  name: WasReceived
+  nameWithType: IRequestAnswer.WasReceived
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswer.WasReceived
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswer.ReceivedMessage
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswer.ReceivedMessage
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswer
+  href: Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswer.html#Bodoconsult_NetworkCommunication_Interfaces_IRequestAnswer_ReceivedMessage
+  name: ReceivedMessage
+  nameWithType: IRequestAnswer.ReceivedMessage
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswer.ReceivedMessage
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswer.CheckReceivedMessageDelegate*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswer.CheckReceivedMessageDelegate
+  href: Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswer.html#Bodoconsult_NetworkCommunication_Interfaces_IRequestAnswer_CheckReceivedMessageDelegate
+  name: CheckReceivedMessageDelegate
+  nameWithType: IRequestAnswer.CheckReceivedMessageDelegate
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswer.CheckReceivedMessageDelegate
+- uid: Bodoconsult.NetworkCommunication.Delegates.CheckReceivedMessageDelegate
+  commentId: T:Bodoconsult.NetworkCommunication.Delegates.CheckReceivedMessageDelegate
+  parent: Bodoconsult.NetworkCommunication.Delegates
+  href: Bodoconsult.NetworkCommunication.Delegates.CheckReceivedMessageDelegate.html
+  name: CheckReceivedMessageDelegate
+  nameWithType: CheckReceivedMessageDelegate
+  fullName: Bodoconsult.NetworkCommunication.Delegates.CheckReceivedMessageDelegate
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswer.SetWasReceived*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswer.SetWasReceived
+  href: Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswer.html#Bodoconsult_NetworkCommunication_Interfaces_IRequestAnswer_SetWasReceived_Bodoconsult_NetworkCommunication_Interfaces_IInboundDataMessage_
+  name: SetWasReceived
+  nameWithType: IRequestAnswer.SetWasReceived
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswer.SetWasReceived
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswer.Reset*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswer.Reset
+  href: Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswer.html#Bodoconsult_NetworkCommunication_Interfaces_IRequestAnswer_Reset
+  name: Reset
+  nameWithType: IRequestAnswer.Reset
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswer.Reset

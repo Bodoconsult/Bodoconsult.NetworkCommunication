@@ -77,7 +77,7 @@ public interface IOrderPipeline : IDisposable
     /// <summary>
     /// Is a certain order type running or waiting for execution
     /// </summary>
-    /// <param name="orderTypeCode">Order type code: see <see cref="OrderTypeCodes"/> for valid values</param>
+    /// <param name="orderTypeCode">Order type code</param>
     /// <returns>True if an order is running or waiting in the queue else false</returns>
     bool IsOrderTypeInTheQueue(int orderTypeCode);
 

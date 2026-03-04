@@ -1,0 +1,329 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerOptionElement
+  commentId: T:Bodoconsult.Network.Windows.Dhcp.IDhcpServerOptionElement
+  id: IDhcpServerOptionElement
+  parent: Bodoconsult.Network.Windows.Dhcp
+  children:
+  - Bodoconsult.Network.Windows.Dhcp.IDhcpServerOptionElement.Type
+  - Bodoconsult.Network.Windows.Dhcp.IDhcpServerOptionElement.Value
+  - Bodoconsult.Network.Windows.Dhcp.IDhcpServerOptionElement.ValueFormatted
+  langs:
+  - csharp
+  - vb
+  name: IDhcpServerOptionElement
+  nameWithType: IDhcpServerOptionElement
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerOptionElement
+  type: Interface
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/IDhcpServerOptionElement.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: IDhcpServerOptionElement
+    path: src/Bodoconsult.Network.Windows/Dhcp/IDhcpServerOptionElement.cs
+    startLine: 5
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: 'public interface IDhcpServerOptionElement : IEquatable<IDhcpServerOptionElement>'
+    content.vb: Public Interface IDhcpServerOptionElement Inherits IEquatable(Of IDhcpServerOptionElement)
+  inheritedMembers:
+  - System.IEquatable{Bodoconsult.Network.Windows.Dhcp.IDhcpServerOptionElement}.Equals(Bodoconsult.Network.Windows.Dhcp.IDhcpServerOptionElement)
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerOptionElement.Type
+  commentId: P:Bodoconsult.Network.Windows.Dhcp.IDhcpServerOptionElement.Type
+  id: Type
+  parent: Bodoconsult.Network.Windows.Dhcp.IDhcpServerOptionElement
+  langs:
+  - csharp
+  - vb
+  name: Type
+  nameWithType: IDhcpServerOptionElement.Type
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerOptionElement.Type
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/IDhcpServerOptionElement.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Type
+    path: src/Bodoconsult.Network.Windows/Dhcp/IDhcpServerOptionElement.cs
+    startLine: 7
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: DhcpServerOptionElementType Type { get; }
+    parameters: []
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionElementType
+    content.vb: ReadOnly Property Type As DhcpServerOptionElementType
+  overload: Bodoconsult.Network.Windows.Dhcp.IDhcpServerOptionElement.Type*
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerOptionElement.Value
+  commentId: P:Bodoconsult.Network.Windows.Dhcp.IDhcpServerOptionElement.Value
+  id: Value
+  parent: Bodoconsult.Network.Windows.Dhcp.IDhcpServerOptionElement
+  langs:
+  - csharp
+  - vb
+  name: Value
+  nameWithType: IDhcpServerOptionElement.Value
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerOptionElement.Value
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/IDhcpServerOptionElement.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Value
+    path: src/Bodoconsult.Network.Windows/Dhcp/IDhcpServerOptionElement.cs
+    startLine: 8
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: object Value { get; }
+    parameters: []
+    return:
+      type: System.Object
+    content.vb: ReadOnly Property Value As Object
+  overload: Bodoconsult.Network.Windows.Dhcp.IDhcpServerOptionElement.Value*
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerOptionElement.ValueFormatted
+  commentId: P:Bodoconsult.Network.Windows.Dhcp.IDhcpServerOptionElement.ValueFormatted
+  id: ValueFormatted
+  parent: Bodoconsult.Network.Windows.Dhcp.IDhcpServerOptionElement
+  langs:
+  - csharp
+  - vb
+  name: ValueFormatted
+  nameWithType: IDhcpServerOptionElement.ValueFormatted
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerOptionElement.ValueFormatted
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/IDhcpServerOptionElement.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: ValueFormatted
+    path: src/Bodoconsult.Network.Windows/Dhcp/IDhcpServerOptionElement.cs
+    startLine: 9
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: string ValueFormatted { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: ReadOnly Property ValueFormatted As String
+  overload: Bodoconsult.Network.Windows.Dhcp.IDhcpServerOptionElement.ValueFormatted*
+references:
+- uid: Bodoconsult.Network.Windows.Dhcp
+  commentId: N:Bodoconsult.Network.Windows.Dhcp
+  href: Bodoconsult.html
+  name: Bodoconsult.Network.Windows.Dhcp
+  nameWithType: Bodoconsult.Network.Windows.Dhcp
+  fullName: Bodoconsult.Network.Windows.Dhcp
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.Network
+    name: Network
+    href: Bodoconsult.Network.html
+  - name: .
+  - uid: Bodoconsult.Network.Windows
+    name: Windows
+    href: Bodoconsult.Network.Windows.html
+  - name: .
+  - uid: Bodoconsult.Network.Windows.Dhcp
+    name: Dhcp
+    href: Bodoconsult.Network.Windows.Dhcp.html
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.Network
+    name: Network
+    href: Bodoconsult.Network.html
+  - name: .
+  - uid: Bodoconsult.Network.Windows
+    name: Windows
+    href: Bodoconsult.Network.Windows.html
+  - name: .
+  - uid: Bodoconsult.Network.Windows.Dhcp
+    name: Dhcp
+    href: Bodoconsult.Network.Windows.Dhcp.html
+- uid: System.IEquatable{Bodoconsult.Network.Windows.Dhcp.IDhcpServerOptionElement}.Equals(Bodoconsult.Network.Windows.Dhcp.IDhcpServerOptionElement)
+  commentId: M:System.IEquatable{Bodoconsult.Network.Windows.Dhcp.IDhcpServerOptionElement}.Equals(Bodoconsult.Network.Windows.Dhcp.IDhcpServerOptionElement)
+  parent: System.IEquatable{Bodoconsult.Network.Windows.Dhcp.IDhcpServerOptionElement}
+  definition: System.IEquatable`1.Equals(`0)
+  href: https://learn.microsoft.com/dotnet/api/system.iequatable-1.equals
+  name: Equals(IDhcpServerOptionElement)
+  nameWithType: IEquatable<IDhcpServerOptionElement>.Equals(IDhcpServerOptionElement)
+  fullName: System.IEquatable<Bodoconsult.Network.Windows.Dhcp.IDhcpServerOptionElement>.Equals(Bodoconsult.Network.Windows.Dhcp.IDhcpServerOptionElement)
+  nameWithType.vb: IEquatable(Of IDhcpServerOptionElement).Equals(IDhcpServerOptionElement)
+  fullName.vb: System.IEquatable(Of Bodoconsult.Network.Windows.Dhcp.IDhcpServerOptionElement).Equals(Bodoconsult.Network.Windows.Dhcp.IDhcpServerOptionElement)
+  spec.csharp:
+  - uid: System.IEquatable{Bodoconsult.Network.Windows.Dhcp.IDhcpServerOptionElement}.Equals(Bodoconsult.Network.Windows.Dhcp.IDhcpServerOptionElement)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1.equals
+  - name: (
+  - uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerOptionElement
+    name: IDhcpServerOptionElement
+    href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerOptionElement.html
+  - name: )
+  spec.vb:
+  - uid: System.IEquatable{Bodoconsult.Network.Windows.Dhcp.IDhcpServerOptionElement}.Equals(Bodoconsult.Network.Windows.Dhcp.IDhcpServerOptionElement)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1.equals
+  - name: (
+  - uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerOptionElement
+    name: IDhcpServerOptionElement
+    href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerOptionElement.html
+  - name: )
+- uid: System.IEquatable`1.Equals(`0)
+  commentId: M:System.IEquatable`1.Equals(`0)
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.iequatable-1.equals
+  name: Equals(T)
+  nameWithType: IEquatable<T>.Equals(T)
+  fullName: System.IEquatable<T>.Equals(T)
+  nameWithType.vb: IEquatable(Of T).Equals(T)
+  fullName.vb: System.IEquatable(Of T).Equals(T)
+  spec.csharp:
+  - uid: System.IEquatable`1.Equals(`0)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1.equals
+  - name: (
+  - name: T
+  - name: )
+  spec.vb:
+  - uid: System.IEquatable`1.Equals(`0)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1.equals
+  - name: (
+  - name: T
+  - name: )
+- uid: System.IEquatable{Bodoconsult.Network.Windows.Dhcp.IDhcpServerOptionElement}
+  commentId: T:System.IEquatable{Bodoconsult.Network.Windows.Dhcp.IDhcpServerOptionElement}
+  parent: System
+  definition: System.IEquatable`1
+  href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  name: IEquatable<IDhcpServerOptionElement>
+  nameWithType: IEquatable<IDhcpServerOptionElement>
+  fullName: System.IEquatable<Bodoconsult.Network.Windows.Dhcp.IDhcpServerOptionElement>
+  nameWithType.vb: IEquatable(Of IDhcpServerOptionElement)
+  fullName.vb: System.IEquatable(Of Bodoconsult.Network.Windows.Dhcp.IDhcpServerOptionElement)
+  name.vb: IEquatable(Of IDhcpServerOptionElement)
+  spec.csharp:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: <
+  - uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerOptionElement
+    name: IDhcpServerOptionElement
+    href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerOptionElement.html
+  - name: '>'
+  spec.vb:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerOptionElement
+    name: IDhcpServerOptionElement
+    href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerOptionElement.html
+  - name: )
+- uid: System.IEquatable`1
+  commentId: T:System.IEquatable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  name: IEquatable<T>
+  nameWithType: IEquatable<T>
+  fullName: System.IEquatable<T>
+  nameWithType.vb: IEquatable(Of T)
+  fullName.vb: System.IEquatable(Of T)
+  name.vb: IEquatable(Of T)
+  spec.csharp:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerOptionElement.Type*
+  commentId: Overload:Bodoconsult.Network.Windows.Dhcp.IDhcpServerOptionElement.Type
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerOptionElement.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerOptionElement_Type
+  name: Type
+  nameWithType: IDhcpServerOptionElement.Type
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerOptionElement.Type
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionElementType
+  commentId: T:Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionElementType
+  parent: Bodoconsult.Network.Windows.Dhcp
+  href: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionElementType.html
+  name: DhcpServerOptionElementType
+  nameWithType: DhcpServerOptionElementType
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionElementType
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerOptionElement.Value*
+  commentId: Overload:Bodoconsult.Network.Windows.Dhcp.IDhcpServerOptionElement.Value
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerOptionElement.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerOptionElement_Value
+  name: Value
+  nameWithType: IDhcpServerOptionElement.Value
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerOptionElement.Value
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerOptionElement.ValueFormatted*
+  commentId: Overload:Bodoconsult.Network.Windows.Dhcp.IDhcpServerOptionElement.ValueFormatted
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerOptionElement.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerOptionElement_ValueFormatted
+  name: ValueFormatted
+  nameWithType: IDhcpServerOptionElement.ValueFormatted
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerOptionElement.ValueFormatted
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String

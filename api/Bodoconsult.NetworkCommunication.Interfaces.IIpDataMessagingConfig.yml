@@ -1,0 +1,310 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IIpDataMessagingConfig
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.IIpDataMessagingConfig
+  id: IIpDataMessagingConfig
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  children:
+  - Bodoconsult.NetworkCommunication.Interfaces.IIpDataMessagingConfig.IpAddress
+  - Bodoconsult.NetworkCommunication.Interfaces.IIpDataMessagingConfig.Port
+  langs:
+  - csharp
+  - vb
+  name: IIpDataMessagingConfig
+  nameWithType: IIpDataMessagingConfig
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IIpDataMessagingConfig
+  type: Interface
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/IIpDataMessagingConfig.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: IIpDataMessagingConfig
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/IIpDataMessagingConfig.cs
+    startLine: 7
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Configuration to use for IP based data messaging (UDP / TCP)
+  example: []
+  syntax:
+    content: 'public interface IIpDataMessagingConfig : IDataMessagingConfig'
+    content.vb: Public Interface IIpDataMessagingConfig Inherits IDataMessagingConfig
+  inheritedMembers:
+  - Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig.LoggerId
+  - Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig.IpProtocol
+  - Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig.SocketProxy
+  - Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig.DataMessageProcessingPackage
+  - Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig.UpdateDataMessageProcessingPackageDelegate
+  - Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig.AppLogger
+  - Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig.MonitorLogger
+  - Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig.CheckIfCommunicationIsOnlineDelegate
+  - Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig.CheckIfDeviceIsReadyDelegate
+  - Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig.RaiseComDevCloseRequestDelegate
+  - Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig.DuplexIoErrorHandlerDelegate
+  - Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig.RaiseDataMessageNotSentDelegate
+  - Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig.RaiseDataMessageSentDelegate
+  - Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig.RaiseCommLayerDataMessageReceivedDelegate
+  - Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig.RaiseAppLayerDataMessageReceivedDelegate
+  - Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig.RaiseUnexpectedDataMessageReceivedDelegate
+  - Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig.ResetOutboundDataMessageFactoryDelegate
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IIpDataMessagingConfig.IpAddress
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IIpDataMessagingConfig.IpAddress
+  id: IpAddress
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IIpDataMessagingConfig
+  langs:
+  - csharp
+  - vb
+  name: IpAddress
+  nameWithType: IIpDataMessagingConfig.IpAddress
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IIpDataMessagingConfig.IpAddress
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/IIpDataMessagingConfig.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: IpAddress
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/IIpDataMessagingConfig.cs
+    startLine: 12
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: IP address
+  example: []
+  syntax:
+    content: string IpAddress { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Property IpAddress As String
+  overload: Bodoconsult.NetworkCommunication.Interfaces.IIpDataMessagingConfig.IpAddress*
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IIpDataMessagingConfig.Port
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IIpDataMessagingConfig.Port
+  id: Port
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IIpDataMessagingConfig
+  langs:
+  - csharp
+  - vb
+  name: Port
+  nameWithType: IIpDataMessagingConfig.Port
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IIpDataMessagingConfig.Port
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/IIpDataMessagingConfig.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Port
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/IIpDataMessagingConfig.cs
+    startLine: 17
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Port to use for communication
+  example: []
+  syntax:
+    content: int Port { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Property Port As Integer
+  overload: Bodoconsult.NetworkCommunication.Interfaces.IIpDataMessagingConfig.Port*
+references:
+- uid: Bodoconsult.NetworkCommunication.Interfaces
+  commentId: N:Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.html
+  name: Bodoconsult.NetworkCommunication.Interfaces
+  nameWithType: Bodoconsult.NetworkCommunication.Interfaces
+  fullName: Bodoconsult.NetworkCommunication.Interfaces
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Interfaces
+    name: Interfaces
+    href: Bodoconsult.NetworkCommunication.Interfaces.html
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Interfaces
+    name: Interfaces
+    href: Bodoconsult.NetworkCommunication.Interfaces.html
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig.LoggerId
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig.LoggerId
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig
+  href: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig.html#Bodoconsult_NetworkCommunication_Interfaces_IDataMessagingConfig_LoggerId
+  name: LoggerId
+  nameWithType: IDataMessagingConfig.LoggerId
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig.LoggerId
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig.IpProtocol
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig.IpProtocol
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig
+  href: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig.html#Bodoconsult_NetworkCommunication_Interfaces_IDataMessagingConfig_IpProtocol
+  name: IpProtocol
+  nameWithType: IDataMessagingConfig.IpProtocol
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig.IpProtocol
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig.SocketProxy
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig.SocketProxy
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig
+  href: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig.html#Bodoconsult_NetworkCommunication_Interfaces_IDataMessagingConfig_SocketProxy
+  name: SocketProxy
+  nameWithType: IDataMessagingConfig.SocketProxy
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig.SocketProxy
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig.DataMessageProcessingPackage
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig.DataMessageProcessingPackage
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig
+  href: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig.html#Bodoconsult_NetworkCommunication_Interfaces_IDataMessagingConfig_DataMessageProcessingPackage
+  name: DataMessageProcessingPackage
+  nameWithType: IDataMessagingConfig.DataMessageProcessingPackage
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig.DataMessageProcessingPackage
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig.UpdateDataMessageProcessingPackageDelegate
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig.UpdateDataMessageProcessingPackageDelegate
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig
+  href: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig.html#Bodoconsult_NetworkCommunication_Interfaces_IDataMessagingConfig_UpdateDataMessageProcessingPackageDelegate
+  name: UpdateDataMessageProcessingPackageDelegate
+  nameWithType: IDataMessagingConfig.UpdateDataMessageProcessingPackageDelegate
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig.UpdateDataMessageProcessingPackageDelegate
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig.AppLogger
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig.AppLogger
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig
+  href: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig.html#Bodoconsult_NetworkCommunication_Interfaces_IDataMessagingConfig_AppLogger
+  name: AppLogger
+  nameWithType: IDataMessagingConfig.AppLogger
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig.AppLogger
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig.MonitorLogger
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig.MonitorLogger
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig
+  href: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig.html#Bodoconsult_NetworkCommunication_Interfaces_IDataMessagingConfig_MonitorLogger
+  name: MonitorLogger
+  nameWithType: IDataMessagingConfig.MonitorLogger
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig.MonitorLogger
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig.CheckIfCommunicationIsOnlineDelegate
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig.CheckIfCommunicationIsOnlineDelegate
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig
+  href: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig.html#Bodoconsult_NetworkCommunication_Interfaces_IDataMessagingConfig_CheckIfCommunicationIsOnlineDelegate
+  name: CheckIfCommunicationIsOnlineDelegate
+  nameWithType: IDataMessagingConfig.CheckIfCommunicationIsOnlineDelegate
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig.CheckIfCommunicationIsOnlineDelegate
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig.CheckIfDeviceIsReadyDelegate
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig.CheckIfDeviceIsReadyDelegate
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig
+  href: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig.html#Bodoconsult_NetworkCommunication_Interfaces_IDataMessagingConfig_CheckIfDeviceIsReadyDelegate
+  name: CheckIfDeviceIsReadyDelegate
+  nameWithType: IDataMessagingConfig.CheckIfDeviceIsReadyDelegate
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig.CheckIfDeviceIsReadyDelegate
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig.RaiseComDevCloseRequestDelegate
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig.RaiseComDevCloseRequestDelegate
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig
+  href: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig.html#Bodoconsult_NetworkCommunication_Interfaces_IDataMessagingConfig_RaiseComDevCloseRequestDelegate
+  name: RaiseComDevCloseRequestDelegate
+  nameWithType: IDataMessagingConfig.RaiseComDevCloseRequestDelegate
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig.RaiseComDevCloseRequestDelegate
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig.DuplexIoErrorHandlerDelegate
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig.DuplexIoErrorHandlerDelegate
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig
+  href: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig.html#Bodoconsult_NetworkCommunication_Interfaces_IDataMessagingConfig_DuplexIoErrorHandlerDelegate
+  name: DuplexIoErrorHandlerDelegate
+  nameWithType: IDataMessagingConfig.DuplexIoErrorHandlerDelegate
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig.DuplexIoErrorHandlerDelegate
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig.RaiseDataMessageNotSentDelegate
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig.RaiseDataMessageNotSentDelegate
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig
+  href: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig.html#Bodoconsult_NetworkCommunication_Interfaces_IDataMessagingConfig_RaiseDataMessageNotSentDelegate
+  name: RaiseDataMessageNotSentDelegate
+  nameWithType: IDataMessagingConfig.RaiseDataMessageNotSentDelegate
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig.RaiseDataMessageNotSentDelegate
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig.RaiseDataMessageSentDelegate
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig.RaiseDataMessageSentDelegate
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig
+  href: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig.html#Bodoconsult_NetworkCommunication_Interfaces_IDataMessagingConfig_RaiseDataMessageSentDelegate
+  name: RaiseDataMessageSentDelegate
+  nameWithType: IDataMessagingConfig.RaiseDataMessageSentDelegate
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig.RaiseDataMessageSentDelegate
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig.RaiseCommLayerDataMessageReceivedDelegate
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig.RaiseCommLayerDataMessageReceivedDelegate
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig
+  href: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig.html#Bodoconsult_NetworkCommunication_Interfaces_IDataMessagingConfig_RaiseCommLayerDataMessageReceivedDelegate
+  name: RaiseCommLayerDataMessageReceivedDelegate
+  nameWithType: IDataMessagingConfig.RaiseCommLayerDataMessageReceivedDelegate
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig.RaiseCommLayerDataMessageReceivedDelegate
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig.RaiseAppLayerDataMessageReceivedDelegate
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig.RaiseAppLayerDataMessageReceivedDelegate
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig
+  href: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig.html#Bodoconsult_NetworkCommunication_Interfaces_IDataMessagingConfig_RaiseAppLayerDataMessageReceivedDelegate
+  name: RaiseAppLayerDataMessageReceivedDelegate
+  nameWithType: IDataMessagingConfig.RaiseAppLayerDataMessageReceivedDelegate
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig.RaiseAppLayerDataMessageReceivedDelegate
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig.RaiseUnexpectedDataMessageReceivedDelegate
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig.RaiseUnexpectedDataMessageReceivedDelegate
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig
+  href: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig.html#Bodoconsult_NetworkCommunication_Interfaces_IDataMessagingConfig_RaiseUnexpectedDataMessageReceivedDelegate
+  name: RaiseUnexpectedDataMessageReceivedDelegate
+  nameWithType: IDataMessagingConfig.RaiseUnexpectedDataMessageReceivedDelegate
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig.RaiseUnexpectedDataMessageReceivedDelegate
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig.ResetOutboundDataMessageFactoryDelegate
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig.ResetOutboundDataMessageFactoryDelegate
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig
+  href: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig.html#Bodoconsult_NetworkCommunication_Interfaces_IDataMessagingConfig_ResetOutboundDataMessageFactoryDelegate
+  name: ResetOutboundDataMessageFactoryDelegate
+  nameWithType: IDataMessagingConfig.ResetOutboundDataMessageFactoryDelegate
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig.ResetOutboundDataMessageFactoryDelegate
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig.html
+  name: IDataMessagingConfig
+  nameWithType: IDataMessagingConfig
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IIpDataMessagingConfig.IpAddress*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.IIpDataMessagingConfig.IpAddress
+  href: Bodoconsult.NetworkCommunication.Interfaces.IIpDataMessagingConfig.html#Bodoconsult_NetworkCommunication_Interfaces_IIpDataMessagingConfig_IpAddress
+  name: IpAddress
+  nameWithType: IIpDataMessagingConfig.IpAddress
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IIpDataMessagingConfig.IpAddress
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IIpDataMessagingConfig.Port*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.IIpDataMessagingConfig.Port
+  href: Bodoconsult.NetworkCommunication.Interfaces.IIpDataMessagingConfig.html#Bodoconsult_NetworkCommunication_Interfaces_IIpDataMessagingConfig_Port
+  name: Port
+  nameWithType: IIpDataMessagingConfig.Port
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IIpDataMessagingConfig.Port
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer

@@ -1,0 +1,351 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageDataBlockCodec
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.IDataMessageDataBlockCodec
+  id: IDataMessageDataBlockCodec
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  children:
+  - Bodoconsult.NetworkCommunication.Interfaces.IDataMessageDataBlockCodec.DecodeDataBlock(System.Memory{System.Byte})
+  - Bodoconsult.NetworkCommunication.Interfaces.IDataMessageDataBlockCodec.EncodeDataBlock(System.Collections.Generic.List{System.Byte},Bodoconsult.NetworkCommunication.Interfaces.ITypedInboundDataBlock)
+  langs:
+  - csharp
+  - vb
+  name: IDataMessageDataBlockCodec
+  nameWithType: IDataMessageDataBlockCodec
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageDataBlockCodec
+  type: Interface
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/IDataMessageDataBlockCodec.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: IDataMessageDataBlockCodec
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/IDataMessageDataBlockCodec.cs
+    startLine: 11
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: >-
+    This class is implemented by classes used to encode or decode
+
+    bytes contained in the datablock of a incoming <xref href="Bodoconsult.NetworkCommunication.Interfaces.IInboundDataMessage" data-throw-if-not-resolved="false"></xref>
+  example: []
+  syntax:
+    content: public interface IDataMessageDataBlockCodec
+    content.vb: Public Interface IDataMessageDataBlockCodec
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageDataBlockCodec.DecodeDataBlock(System.Memory{System.Byte})
+  commentId: M:Bodoconsult.NetworkCommunication.Interfaces.IDataMessageDataBlockCodec.DecodeDataBlock(System.Memory{System.Byte})
+  id: DecodeDataBlock(System.Memory{System.Byte})
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageDataBlockCodec
+  langs:
+  - csharp
+  - vb
+  name: DecodeDataBlock(Memory<byte>)
+  nameWithType: IDataMessageDataBlockCodec.DecodeDataBlock(Memory<byte>)
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageDataBlockCodec.DecodeDataBlock(System.Memory<byte>)
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/IDataMessageDataBlockCodec.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: DecodeDataBlock
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/IDataMessageDataBlockCodec.cs
+    startLine: 20
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: >-
+    Method decodes an incoming bytes array to an instance of Datablock object
+
+    Method is used while receiving bytes from device
+  example: []
+  syntax:
+    content: IInboundDataBlock DecodeDataBlock(Memory<byte> datablockBytes)
+    parameters:
+    - id: datablockBytes
+      type: System.Memory{System.Byte}
+      description: Datablock bytes received
+    return:
+      type: Bodoconsult.NetworkCommunication.Interfaces.IInboundDataBlock
+      description: Datablock object
+    content.vb: Function DecodeDataBlock(datablockBytes As Memory(Of Byte)) As IInboundDataBlock
+  overload: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageDataBlockCodec.DecodeDataBlock*
+  nameWithType.vb: IDataMessageDataBlockCodec.DecodeDataBlock(Memory(Of Byte))
+  fullName.vb: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageDataBlockCodec.DecodeDataBlock(System.Memory(Of Byte))
+  name.vb: DecodeDataBlock(Memory(Of Byte))
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageDataBlockCodec.EncodeDataBlock(System.Collections.Generic.List{System.Byte},Bodoconsult.NetworkCommunication.Interfaces.ITypedInboundDataBlock)
+  commentId: M:Bodoconsult.NetworkCommunication.Interfaces.IDataMessageDataBlockCodec.EncodeDataBlock(System.Collections.Generic.List{System.Byte},Bodoconsult.NetworkCommunication.Interfaces.ITypedInboundDataBlock)
+  id: EncodeDataBlock(System.Collections.Generic.List{System.Byte},Bodoconsult.NetworkCommunication.Interfaces.ITypedInboundDataBlock)
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageDataBlockCodec
+  langs:
+  - csharp
+  - vb
+  name: EncodeDataBlock(List<byte>, ITypedInboundDataBlock)
+  nameWithType: IDataMessageDataBlockCodec.EncodeDataBlock(List<byte>, ITypedInboundDataBlock)
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageDataBlockCodec.EncodeDataBlock(System.Collections.Generic.List<byte>, Bodoconsult.NetworkCommunication.Interfaces.ITypedInboundDataBlock)
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/IDataMessageDataBlockCodec.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: EncodeDataBlock
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/IDataMessageDataBlockCodec.cs
+    startLine: 29
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: >-
+    Method encode an instance of Datablock in bytes array.
+
+    Method is called when a message is sent to the device
+  example: []
+  syntax:
+    content: void EncodeDataBlock(List<byte> data, ITypedInboundDataBlock datablock)
+    parameters:
+    - id: data
+      type: System.Collections.Generic.List{System.Byte}
+      description: The array as list to add the datablock to
+    - id: datablock
+      type: Bodoconsult.NetworkCommunication.Interfaces.ITypedInboundDataBlock
+      description: Current datablock object
+    content.vb: Sub EncodeDataBlock(data As List(Of Byte), datablock As ITypedInboundDataBlock)
+  overload: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageDataBlockCodec.EncodeDataBlock*
+  nameWithType.vb: IDataMessageDataBlockCodec.EncodeDataBlock(List(Of Byte), ITypedInboundDataBlock)
+  fullName.vb: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageDataBlockCodec.EncodeDataBlock(System.Collections.Generic.List(Of Byte), Bodoconsult.NetworkCommunication.Interfaces.ITypedInboundDataBlock)
+  name.vb: EncodeDataBlock(List(Of Byte), ITypedInboundDataBlock)
+references:
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IInboundDataMessage
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.IInboundDataMessage
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.NetworkCommunication.Interfaces.IInboundDataMessage.html
+  name: IInboundDataMessage
+  nameWithType: IInboundDataMessage
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IInboundDataMessage
+- uid: Bodoconsult.NetworkCommunication.Interfaces
+  commentId: N:Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.html
+  name: Bodoconsult.NetworkCommunication.Interfaces
+  nameWithType: Bodoconsult.NetworkCommunication.Interfaces
+  fullName: Bodoconsult.NetworkCommunication.Interfaces
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Interfaces
+    name: Interfaces
+    href: Bodoconsult.NetworkCommunication.Interfaces.html
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Interfaces
+    name: Interfaces
+    href: Bodoconsult.NetworkCommunication.Interfaces.html
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageDataBlockCodec.DecodeDataBlock*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.IDataMessageDataBlockCodec.DecodeDataBlock
+  href: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageDataBlockCodec.html#Bodoconsult_NetworkCommunication_Interfaces_IDataMessageDataBlockCodec_DecodeDataBlock_System_Memory_System_Byte__
+  name: DecodeDataBlock
+  nameWithType: IDataMessageDataBlockCodec.DecodeDataBlock
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageDataBlockCodec.DecodeDataBlock
+- uid: System.Memory{System.Byte}
+  commentId: T:System.Memory{System.Byte}
+  parent: System
+  definition: System.Memory`1
+  href: https://learn.microsoft.com/dotnet/api/system.memory-1
+  name: Memory<byte>
+  nameWithType: Memory<byte>
+  fullName: System.Memory<byte>
+  nameWithType.vb: Memory(Of Byte)
+  fullName.vb: System.Memory(Of Byte)
+  name.vb: Memory(Of Byte)
+  spec.csharp:
+  - uid: System.Memory`1
+    name: Memory
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.memory-1
+  - name: <
+  - uid: System.Byte
+    name: byte
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.byte
+  - name: '>'
+  spec.vb:
+  - uid: System.Memory`1
+    name: Memory
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.memory-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Byte
+    name: Byte
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.byte
+  - name: )
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IInboundDataBlock
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.IInboundDataBlock
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.NetworkCommunication.Interfaces.IInboundDataBlock.html
+  name: IInboundDataBlock
+  nameWithType: IInboundDataBlock
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IInboundDataBlock
+- uid: System.Memory`1
+  commentId: T:System.Memory`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.memory-1
+  name: Memory<T>
+  nameWithType: Memory<T>
+  fullName: System.Memory<T>
+  nameWithType.vb: Memory(Of T)
+  fullName.vb: System.Memory(Of T)
+  name.vb: Memory(Of T)
+  spec.csharp:
+  - uid: System.Memory`1
+    name: Memory
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.memory-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Memory`1
+    name: Memory
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.memory-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageDataBlockCodec.EncodeDataBlock*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.IDataMessageDataBlockCodec.EncodeDataBlock
+  href: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageDataBlockCodec.html#Bodoconsult_NetworkCommunication_Interfaces_IDataMessageDataBlockCodec_EncodeDataBlock_System_Collections_Generic_List_System_Byte__Bodoconsult_NetworkCommunication_Interfaces_ITypedInboundDataBlock_
+  name: EncodeDataBlock
+  nameWithType: IDataMessageDataBlockCodec.EncodeDataBlock
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageDataBlockCodec.EncodeDataBlock
+- uid: System.Collections.Generic.List{System.Byte}
+  commentId: T:System.Collections.Generic.List{System.Byte}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.List`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  name: List<byte>
+  nameWithType: List<byte>
+  fullName: System.Collections.Generic.List<byte>
+  nameWithType.vb: List(Of Byte)
+  fullName.vb: System.Collections.Generic.List(Of Byte)
+  name.vb: List(Of Byte)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - uid: System.Byte
+    name: byte
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.byte
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Byte
+    name: Byte
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.byte
+  - name: )
+- uid: Bodoconsult.NetworkCommunication.Interfaces.ITypedInboundDataBlock
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.ITypedInboundDataBlock
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.NetworkCommunication.Interfaces.ITypedInboundDataBlock.html
+  name: ITypedInboundDataBlock
+  nameWithType: ITypedInboundDataBlock
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.ITypedInboundDataBlock
+- uid: System.Collections.Generic.List`1
+  commentId: T:System.Collections.Generic.List`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  name: List<T>
+  nameWithType: List<T>
+  fullName: System.Collections.Generic.List<T>
+  nameWithType.vb: List(Of T)
+  fullName.vb: System.Collections.Generic.List(Of T)
+  name.vb: List(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic

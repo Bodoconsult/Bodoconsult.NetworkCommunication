@@ -1,0 +1,621 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IParameterSet
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.IParameterSet
+  id: IParameterSet
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  children:
+  - Bodoconsult.NetworkCommunication.Interfaces.IParameterSet.CurrentOrder
+  - Bodoconsult.NetworkCommunication.Interfaces.IParameterSet.DoNotNotifyClient
+  - Bodoconsult.NetworkCommunication.Interfaces.IParameterSet.IsValid
+  - Bodoconsult.NetworkCommunication.Interfaces.IParameterSet.LoadOrder(Bodoconsult.NetworkCommunication.Interfaces.IOrder)
+  - Bodoconsult.NetworkCommunication.Interfaces.IParameterSet.OrderResult
+  - Bodoconsult.NetworkCommunication.Interfaces.IParameterSet.SendCancelTodeviceIfUnsuccessful
+  - Bodoconsult.NetworkCommunication.Interfaces.IParameterSet.ToDataBlock
+  - Bodoconsult.NetworkCommunication.Interfaces.IParameterSet.UserId
+  - Bodoconsult.NetworkCommunication.Interfaces.IParameterSet.UserRequestingTheOrderRun
+  langs:
+  - csharp
+  - vb
+  name: IParameterSet
+  nameWithType: IParameterSet
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IParameterSet
+  type: Interface
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/IParameterSet.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: IParameterSet
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/IParameterSet.cs
+    startLine: 9
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Base interface for TOM parameter sets
+  example: []
+  syntax:
+    content: 'public interface IParameterSet : ITypedOutboundDataBlock, IOutboundDataBlock, IDisposable'
+    content.vb: Public Interface IParameterSet Inherits ITypedOutboundDataBlock, IOutboundDataBlock, IDisposable
+  inheritedMembers:
+  - Bodoconsult.NetworkCommunication.Interfaces.ITypedOutboundDataBlock.DataBlockType
+  - Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataBlock.Data
+  - System.IDisposable.Dispose
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IParameterSet.UserId
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IParameterSet.UserId
+  id: UserId
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IParameterSet
+  langs:
+  - csharp
+  - vb
+  name: UserId
+  nameWithType: IParameterSet.UserId
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IParameterSet.UserId
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/IParameterSet.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: UserId
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/IParameterSet.cs
+    startLine: 14
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: User ID
+  example: []
+  syntax:
+    content: int UserId { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Property UserId As Integer
+  overload: Bodoconsult.NetworkCommunication.Interfaces.IParameterSet.UserId*
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IParameterSet.CurrentOrder
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IParameterSet.CurrentOrder
+  id: CurrentOrder
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IParameterSet
+  langs:
+  - csharp
+  - vb
+  name: CurrentOrder
+  nameWithType: IParameterSet.CurrentOrder
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IParameterSet.CurrentOrder
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/IParameterSet.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: CurrentOrder
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/IParameterSet.cs
+    startLine: 19
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: The order the parameter set is bound to
+  example: []
+  syntax:
+    content: IOrder CurrentOrder { get; }
+    parameters: []
+    return:
+      type: Bodoconsult.NetworkCommunication.Interfaces.IOrder
+    content.vb: ReadOnly Property CurrentOrder As IOrder
+  overload: Bodoconsult.NetworkCommunication.Interfaces.IParameterSet.CurrentOrder*
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IParameterSet.LoadOrder(Bodoconsult.NetworkCommunication.Interfaces.IOrder)
+  commentId: M:Bodoconsult.NetworkCommunication.Interfaces.IParameterSet.LoadOrder(Bodoconsult.NetworkCommunication.Interfaces.IOrder)
+  id: LoadOrder(Bodoconsult.NetworkCommunication.Interfaces.IOrder)
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IParameterSet
+  langs:
+  - csharp
+  - vb
+  name: LoadOrder(IOrder)
+  nameWithType: IParameterSet.LoadOrder(IOrder)
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IParameterSet.LoadOrder(Bodoconsult.NetworkCommunication.Interfaces.IOrder)
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/IParameterSet.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: LoadOrder
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/IParameterSet.cs
+    startLine: 25
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Load the order the parameter set is bound to. May only run once!
+  example: []
+  syntax:
+    content: void LoadOrder(IOrder order)
+    parameters:
+    - id: order
+      type: Bodoconsult.NetworkCommunication.Interfaces.IOrder
+      description: Order to inject
+    content.vb: Sub LoadOrder(order As IOrder)
+  overload: Bodoconsult.NetworkCommunication.Interfaces.IParameterSet.LoadOrder*
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IParameterSet.UserRequestingTheOrderRun
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IParameterSet.UserRequestingTheOrderRun
+  id: UserRequestingTheOrderRun
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IParameterSet
+  langs:
+  - csharp
+  - vb
+  name: UserRequestingTheOrderRun
+  nameWithType: IParameterSet.UserRequestingTheOrderRun
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IParameterSet.UserRequestingTheOrderRun
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/IParameterSet.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: UserRequestingTheOrderRun
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/IParameterSet.cs
+    startLine: 30
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: The name of the user requesting the order run
+  example: []
+  syntax:
+    content: string UserRequestingTheOrderRun { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Property UserRequestingTheOrderRun As String
+  overload: Bodoconsult.NetworkCommunication.Interfaces.IParameterSet.UserRequestingTheOrderRun*
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IParameterSet.SendCancelTodeviceIfUnsuccessful
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IParameterSet.SendCancelTodeviceIfUnsuccessful
+  id: SendCancelTodeviceIfUnsuccessful
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IParameterSet
+  langs:
+  - csharp
+  - vb
+  name: SendCancelTodeviceIfUnsuccessful
+  nameWithType: IParameterSet.SendCancelTodeviceIfUnsuccessful
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IParameterSet.SendCancelTodeviceIfUnsuccessful
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/IParameterSet.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: SendCancelTodeviceIfUnsuccessful
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/IParameterSet.cs
+    startLine: 35
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: 'Send a CANCEL command to the device if request step was unsuccessful. Default: false'
+  example: []
+  syntax:
+    content: bool SendCancelTodeviceIfUnsuccessful { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Property SendCancelTodeviceIfUnsuccessful As Boolean
+  overload: Bodoconsult.NetworkCommunication.Interfaces.IParameterSet.SendCancelTodeviceIfUnsuccessful*
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IParameterSet.DoNotNotifyClient
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IParameterSet.DoNotNotifyClient
+  id: DoNotNotifyClient
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IParameterSet
+  langs:
+  - csharp
+  - vb
+  name: DoNotNotifyClient
+  nameWithType: IParameterSet.DoNotNotifyClient
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IParameterSet.DoNotNotifyClient
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/IParameterSet.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: DoNotNotifyClient
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/IParameterSet.cs
+    startLine: 40
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Do not notify the client after order running
+  example: []
+  syntax:
+    content: bool DoNotNotifyClient { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Property DoNotNotifyClient As Boolean
+  overload: Bodoconsult.NetworkCommunication.Interfaces.IParameterSet.DoNotNotifyClient*
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IParameterSet.OrderResult
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IParameterSet.OrderResult
+  id: OrderResult
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IParameterSet
+  langs:
+  - csharp
+  - vb
+  name: OrderResult
+  nameWithType: IParameterSet.OrderResult
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IParameterSet.OrderResult
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/IParameterSet.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: OrderResult
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/IParameterSet.cs
+    startLine: 45
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: A result object filled by the order execution process
+  example: []
+  syntax:
+    content: object OrderResult { get; set; }
+    parameters: []
+    return:
+      type: System.Object
+    content.vb: Property OrderResult As Object
+  overload: Bodoconsult.NetworkCommunication.Interfaces.IParameterSet.OrderResult*
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IParameterSet.IsValid
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IParameterSet.IsValid
+  id: IsValid
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IParameterSet
+  langs:
+  - csharp
+  - vb
+  name: IsValid
+  nameWithType: IParameterSet.IsValid
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IParameterSet.IsValid
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/IParameterSet.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: IsValid
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/IParameterSet.cs
+    startLine: 50
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Is the parameter set valid?
+  example: []
+  syntax:
+    content: ICollection<ValidationResult> IsValid { get; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.ICollection{System.ComponentModel.DataAnnotations.ValidationResult}
+    content.vb: ReadOnly Property IsValid As ICollection(Of ValidationResult)
+  overload: Bodoconsult.NetworkCommunication.Interfaces.IParameterSet.IsValid*
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IParameterSet.ToDataBlock
+  commentId: M:Bodoconsult.NetworkCommunication.Interfaces.IParameterSet.ToDataBlock
+  id: ToDataBlock
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IParameterSet
+  langs:
+  - csharp
+  - vb
+  name: ToDataBlock()
+  nameWithType: IParameterSet.ToDataBlock()
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IParameterSet.ToDataBlock()
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/IParameterSet.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: ToDataBlock
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/IParameterSet.cs
+    startLine: 55
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Convert the properties of the parameterset into the bytes for the datablock
+  example: []
+  syntax:
+    content: void ToDataBlock()
+    content.vb: Sub ToDataBlock()
+  overload: Bodoconsult.NetworkCommunication.Interfaces.IParameterSet.ToDataBlock*
+references:
+- uid: Bodoconsult.NetworkCommunication.Interfaces
+  commentId: N:Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.html
+  name: Bodoconsult.NetworkCommunication.Interfaces
+  nameWithType: Bodoconsult.NetworkCommunication.Interfaces
+  fullName: Bodoconsult.NetworkCommunication.Interfaces
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Interfaces
+    name: Interfaces
+    href: Bodoconsult.NetworkCommunication.Interfaces.html
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Interfaces
+    name: Interfaces
+    href: Bodoconsult.NetworkCommunication.Interfaces.html
+- uid: Bodoconsult.NetworkCommunication.Interfaces.ITypedOutboundDataBlock.DataBlockType
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.ITypedOutboundDataBlock.DataBlockType
+  parent: Bodoconsult.NetworkCommunication.Interfaces.ITypedOutboundDataBlock
+  href: Bodoconsult.NetworkCommunication.Interfaces.ITypedOutboundDataBlock.html#Bodoconsult_NetworkCommunication_Interfaces_ITypedOutboundDataBlock_DataBlockType
+  name: DataBlockType
+  nameWithType: ITypedOutboundDataBlock.DataBlockType
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.ITypedOutboundDataBlock.DataBlockType
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataBlock.Data
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataBlock.Data
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataBlock
+  href: Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataBlock.html#Bodoconsult_NetworkCommunication_Interfaces_IOutboundDataBlock_Data
+  name: Data
+  nameWithType: IOutboundDataBlock.Data
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataBlock.Data
+- uid: System.IDisposable.Dispose
+  commentId: M:System.IDisposable.Dispose
+  parent: System.IDisposable
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  name: Dispose()
+  nameWithType: IDisposable.Dispose()
+  fullName: System.IDisposable.Dispose()
+  spec.csharp:
+  - uid: System.IDisposable.Dispose
+    name: Dispose
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.IDisposable.Dispose
+    name: Dispose
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  - name: (
+  - name: )
+- uid: Bodoconsult.NetworkCommunication.Interfaces.ITypedOutboundDataBlock
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.ITypedOutboundDataBlock
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.NetworkCommunication.Interfaces.ITypedOutboundDataBlock.html
+  name: ITypedOutboundDataBlock
+  nameWithType: ITypedOutboundDataBlock
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.ITypedOutboundDataBlock
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataBlock
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataBlock
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataBlock.html
+  name: IOutboundDataBlock
+  nameWithType: IOutboundDataBlock
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataBlock
+- uid: System.IDisposable
+  commentId: T:System.IDisposable
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable
+  name: IDisposable
+  nameWithType: IDisposable
+  fullName: System.IDisposable
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IParameterSet.UserId*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.IParameterSet.UserId
+  href: Bodoconsult.NetworkCommunication.Interfaces.IParameterSet.html#Bodoconsult_NetworkCommunication_Interfaces_IParameterSet_UserId
+  name: UserId
+  nameWithType: IParameterSet.UserId
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IParameterSet.UserId
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IParameterSet.CurrentOrder*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.IParameterSet.CurrentOrder
+  href: Bodoconsult.NetworkCommunication.Interfaces.IParameterSet.html#Bodoconsult_NetworkCommunication_Interfaces_IParameterSet_CurrentOrder
+  name: CurrentOrder
+  nameWithType: IParameterSet.CurrentOrder
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IParameterSet.CurrentOrder
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IOrder
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.IOrder
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.NetworkCommunication.Interfaces.IOrder.html
+  name: IOrder
+  nameWithType: IOrder
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IOrder
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IParameterSet.LoadOrder*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.IParameterSet.LoadOrder
+  href: Bodoconsult.NetworkCommunication.Interfaces.IParameterSet.html#Bodoconsult_NetworkCommunication_Interfaces_IParameterSet_LoadOrder_Bodoconsult_NetworkCommunication_Interfaces_IOrder_
+  name: LoadOrder
+  nameWithType: IParameterSet.LoadOrder
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IParameterSet.LoadOrder
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IParameterSet.UserRequestingTheOrderRun*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.IParameterSet.UserRequestingTheOrderRun
+  href: Bodoconsult.NetworkCommunication.Interfaces.IParameterSet.html#Bodoconsult_NetworkCommunication_Interfaces_IParameterSet_UserRequestingTheOrderRun
+  name: UserRequestingTheOrderRun
+  nameWithType: IParameterSet.UserRequestingTheOrderRun
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IParameterSet.UserRequestingTheOrderRun
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IParameterSet.SendCancelTodeviceIfUnsuccessful*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.IParameterSet.SendCancelTodeviceIfUnsuccessful
+  href: Bodoconsult.NetworkCommunication.Interfaces.IParameterSet.html#Bodoconsult_NetworkCommunication_Interfaces_IParameterSet_SendCancelTodeviceIfUnsuccessful
+  name: SendCancelTodeviceIfUnsuccessful
+  nameWithType: IParameterSet.SendCancelTodeviceIfUnsuccessful
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IParameterSet.SendCancelTodeviceIfUnsuccessful
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IParameterSet.DoNotNotifyClient*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.IParameterSet.DoNotNotifyClient
+  href: Bodoconsult.NetworkCommunication.Interfaces.IParameterSet.html#Bodoconsult_NetworkCommunication_Interfaces_IParameterSet_DoNotNotifyClient
+  name: DoNotNotifyClient
+  nameWithType: IParameterSet.DoNotNotifyClient
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IParameterSet.DoNotNotifyClient
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IParameterSet.OrderResult*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.IParameterSet.OrderResult
+  href: Bodoconsult.NetworkCommunication.Interfaces.IParameterSet.html#Bodoconsult_NetworkCommunication_Interfaces_IParameterSet_OrderResult
+  name: OrderResult
+  nameWithType: IParameterSet.OrderResult
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IParameterSet.OrderResult
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IParameterSet.IsValid*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.IParameterSet.IsValid
+  href: Bodoconsult.NetworkCommunication.Interfaces.IParameterSet.html#Bodoconsult_NetworkCommunication_Interfaces_IParameterSet_IsValid
+  name: IsValid
+  nameWithType: IParameterSet.IsValid
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IParameterSet.IsValid
+- uid: System.Collections.Generic.ICollection{System.ComponentModel.DataAnnotations.ValidationResult}
+  commentId: T:System.Collections.Generic.ICollection{System.ComponentModel.DataAnnotations.ValidationResult}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.ICollection`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1
+  name: ICollection<ValidationResult>
+  nameWithType: ICollection<ValidationResult>
+  fullName: System.Collections.Generic.ICollection<System.ComponentModel.DataAnnotations.ValidationResult>
+  nameWithType.vb: ICollection(Of ValidationResult)
+  fullName.vb: System.Collections.Generic.ICollection(Of System.ComponentModel.DataAnnotations.ValidationResult)
+  name.vb: ICollection(Of ValidationResult)
+  spec.csharp:
+  - uid: System.Collections.Generic.ICollection`1
+    name: ICollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1
+  - name: <
+  - uid: System.ComponentModel.DataAnnotations.ValidationResult
+    name: ValidationResult
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.componentmodel.dataannotations.validationresult
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.ICollection`1
+    name: ICollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.ComponentModel.DataAnnotations.ValidationResult
+    name: ValidationResult
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.componentmodel.dataannotations.validationresult
+  - name: )
+- uid: System.Collections.Generic.ICollection`1
+  commentId: T:System.Collections.Generic.ICollection`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1
+  name: ICollection<T>
+  nameWithType: ICollection<T>
+  fullName: System.Collections.Generic.ICollection<T>
+  nameWithType.vb: ICollection(Of T)
+  fullName.vb: System.Collections.Generic.ICollection(Of T)
+  name.vb: ICollection(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.ICollection`1
+    name: ICollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.ICollection`1
+    name: ICollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IParameterSet.ToDataBlock*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.IParameterSet.ToDataBlock
+  href: Bodoconsult.NetworkCommunication.Interfaces.IParameterSet.html#Bodoconsult_NetworkCommunication_Interfaces_IParameterSet_ToDataBlock
+  name: ToDataBlock
+  nameWithType: IParameterSet.ToDataBlock
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IParameterSet.ToDataBlock

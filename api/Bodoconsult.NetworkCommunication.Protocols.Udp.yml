@@ -1,0 +1,83 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bodoconsult.NetworkCommunication.Protocols.Udp
+  commentId: N:Bodoconsult.NetworkCommunication.Protocols.Udp
+  id: Bodoconsult.NetworkCommunication.Protocols.Udp
+  children:
+  - Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy
+  - Bodoconsult.NetworkCommunication.Protocols.Udp.UdpClientSocketProxy
+  - Bodoconsult.NetworkCommunication.Protocols.Udp.UdpServerSocketProxy
+  - Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase
+  langs:
+  - csharp
+  - vb
+  name: Bodoconsult.NetworkCommunication.Protocols.Udp
+  nameWithType: Bodoconsult.NetworkCommunication.Protocols.Udp
+  fullName: Bodoconsult.NetworkCommunication.Protocols.Udp
+  type: Namespace
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+references:
+- uid: Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy
+  commentId: T:Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy
+  href: Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.html
+  name: FakeUdpSocketProxy
+  nameWithType: FakeUdpSocketProxy
+  fullName: Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy
+- uid: Bodoconsult.NetworkCommunication.Protocols.Udp.UdpClientSocketProxy
+  commentId: T:Bodoconsult.NetworkCommunication.Protocols.Udp.UdpClientSocketProxy
+  href: Bodoconsult.NetworkCommunication.Protocols.Udp.UdpClientSocketProxy.html
+  name: UdpClientSocketProxy
+  nameWithType: UdpClientSocketProxy
+  fullName: Bodoconsult.NetworkCommunication.Protocols.Udp.UdpClientSocketProxy
+- uid: Bodoconsult.NetworkCommunication.Protocols.Udp.UdpServerSocketProxy
+  commentId: T:Bodoconsult.NetworkCommunication.Protocols.Udp.UdpServerSocketProxy
+  href: Bodoconsult.NetworkCommunication.Protocols.Udp.UdpServerSocketProxy.html
+  name: UdpServerSocketProxy
+  nameWithType: UdpServerSocketProxy
+  fullName: Bodoconsult.NetworkCommunication.Protocols.Udp.UdpServerSocketProxy
+- uid: Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase
+  commentId: T:Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase
+  parent: Bodoconsult.NetworkCommunication.Protocols.Udp
+  href: Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase.html
+  name: UpdSocketProxyBase
+  nameWithType: UpdSocketProxyBase
+  fullName: Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase
+- uid: Bodoconsult.NetworkCommunication.Protocols.Udp
+  commentId: N:Bodoconsult.NetworkCommunication.Protocols.Udp
+  href: Bodoconsult.html
+  name: Bodoconsult.NetworkCommunication.Protocols.Udp
+  nameWithType: Bodoconsult.NetworkCommunication.Protocols.Udp
+  fullName: Bodoconsult.NetworkCommunication.Protocols.Udp
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Protocols
+    name: Protocols
+    href: Bodoconsult.NetworkCommunication.Protocols.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Protocols.Udp
+    name: Udp
+    href: Bodoconsult.NetworkCommunication.Protocols.Udp.html
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Protocols
+    name: Protocols
+    href: Bodoconsult.NetworkCommunication.Protocols.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Protocols.Udp
+    name: Udp
+    href: Bodoconsult.NetworkCommunication.Protocols.Udp.html

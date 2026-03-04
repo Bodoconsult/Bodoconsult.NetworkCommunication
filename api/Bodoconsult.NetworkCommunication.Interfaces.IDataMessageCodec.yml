@@ -1,0 +1,361 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageCodec
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.IDataMessageCodec
+  id: IDataMessageCodec
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  children:
+  - Bodoconsult.NetworkCommunication.Interfaces.IDataMessageCodec.DecodeDataMessage(System.Memory{System.Byte})
+  - Bodoconsult.NetworkCommunication.Interfaces.IDataMessageCodec.EncodeDataMessage(Bodoconsult.NetworkCommunication.Interfaces.IOutboundMessage)
+  - Bodoconsult.NetworkCommunication.Interfaces.IDataMessageCodec.ExpectedMaximumLength
+  - Bodoconsult.NetworkCommunication.Interfaces.IDataMessageCodec.ExpectedMinimumLength
+  langs:
+  - csharp
+  - vb
+  name: IDataMessageCodec
+  nameWithType: IDataMessageCodec
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageCodec
+  type: Interface
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/IDataMessageCodec.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: IDataMessageCodec
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/IDataMessageCodec.cs
+    startLine: 9
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Interface for codec implementation for encoding and decoding messages to and from byte data
+  example: []
+  syntax:
+    content: public interface IDataMessageCodec
+    content.vb: Public Interface IDataMessageCodec
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageCodec.ExpectedMinimumLength
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IDataMessageCodec.ExpectedMinimumLength
+  id: ExpectedMinimumLength
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageCodec
+  langs:
+  - csharp
+  - vb
+  name: ExpectedMinimumLength
+  nameWithType: IDataMessageCodec.ExpectedMinimumLength
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageCodec.ExpectedMinimumLength
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/IDataMessageCodec.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: ExpectedMinimumLength
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/IDataMessageCodec.cs
+    startLine: 14
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Expected minimum length of the message or 0
+  example: []
+  syntax:
+    content: int ExpectedMinimumLength { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: ReadOnly Property ExpectedMinimumLength As Integer
+  overload: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageCodec.ExpectedMinimumLength*
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageCodec.ExpectedMaximumLength
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IDataMessageCodec.ExpectedMaximumLength
+  id: ExpectedMaximumLength
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageCodec
+  langs:
+  - csharp
+  - vb
+  name: ExpectedMaximumLength
+  nameWithType: IDataMessageCodec.ExpectedMaximumLength
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageCodec.ExpectedMaximumLength
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/IDataMessageCodec.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: ExpectedMaximumLength
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/IDataMessageCodec.cs
+    startLine: 19
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Expected maximum length of the message or 0
+  example: []
+  syntax:
+    content: int ExpectedMaximumLength { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: ReadOnly Property ExpectedMaximumLength As Integer
+  overload: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageCodec.ExpectedMaximumLength*
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageCodec.DecodeDataMessage(System.Memory{System.Byte})
+  commentId: M:Bodoconsult.NetworkCommunication.Interfaces.IDataMessageCodec.DecodeDataMessage(System.Memory{System.Byte})
+  id: DecodeDataMessage(System.Memory{System.Byte})
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageCodec
+  langs:
+  - csharp
+  - vb
+  name: DecodeDataMessage(Memory<byte>)
+  nameWithType: IDataMessageCodec.DecodeDataMessage(Memory<byte>)
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageCodec.DecodeDataMessage(System.Memory<byte>)
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/IDataMessageCodec.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: DecodeDataMessage
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/IDataMessageCodec.cs
+    startLine: 26
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Decode a data message to an <xref href="Bodoconsult.NetworkCommunication.Interfaces.IInboundDataMessage" data-throw-if-not-resolved="false"></xref> instance
+  example: []
+  syntax:
+    content: InboundCodecResult DecodeDataMessage(Memory<byte> data)
+    parameters:
+    - id: data
+      type: System.Memory{System.Byte}
+      description: Data message bytes received
+    return:
+      type: Bodoconsult.NetworkCommunication.Interfaces.InboundCodecResult
+      description: Decoding result
+    content.vb: Function DecodeDataMessage(data As Memory(Of Byte)) As InboundCodecResult
+  overload: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageCodec.DecodeDataMessage*
+  nameWithType.vb: IDataMessageCodec.DecodeDataMessage(Memory(Of Byte))
+  fullName.vb: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageCodec.DecodeDataMessage(System.Memory(Of Byte))
+  name.vb: DecodeDataMessage(Memory(Of Byte))
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageCodec.EncodeDataMessage(Bodoconsult.NetworkCommunication.Interfaces.IOutboundMessage)
+  commentId: M:Bodoconsult.NetworkCommunication.Interfaces.IDataMessageCodec.EncodeDataMessage(Bodoconsult.NetworkCommunication.Interfaces.IOutboundMessage)
+  id: EncodeDataMessage(Bodoconsult.NetworkCommunication.Interfaces.IOutboundMessage)
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageCodec
+  langs:
+  - csharp
+  - vb
+  name: EncodeDataMessage(IOutboundMessage)
+  nameWithType: IDataMessageCodec.EncodeDataMessage(IOutboundMessage)
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageCodec.EncodeDataMessage(Bodoconsult.NetworkCommunication.Interfaces.IOutboundMessage)
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/IDataMessageCodec.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: EncodeDataMessage
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/IDataMessageCodec.cs
+    startLine: 33
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Encodes a message to a byte array to send to receiver
+  example: []
+  syntax:
+    content: OutboundCodecResult EncodeDataMessage(IOutboundMessage message)
+    parameters:
+    - id: message
+      type: Bodoconsult.NetworkCommunication.Interfaces.IOutboundMessage
+      description: Data message to send
+    return:
+      type: Bodoconsult.NetworkCommunication.Interfaces.OutboundCodecResult
+      description: Codex result with a byte array as optimized <xref href="System.ReadOnlyMemory%601" data-throw-if-not-resolved="false"></xref> to send
+    content.vb: Function EncodeDataMessage(message As IOutboundMessage) As OutboundCodecResult
+  overload: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageCodec.EncodeDataMessage*
+references:
+- uid: Bodoconsult.NetworkCommunication.Interfaces
+  commentId: N:Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.html
+  name: Bodoconsult.NetworkCommunication.Interfaces
+  nameWithType: Bodoconsult.NetworkCommunication.Interfaces
+  fullName: Bodoconsult.NetworkCommunication.Interfaces
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Interfaces
+    name: Interfaces
+    href: Bodoconsult.NetworkCommunication.Interfaces.html
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Interfaces
+    name: Interfaces
+    href: Bodoconsult.NetworkCommunication.Interfaces.html
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageCodec.ExpectedMinimumLength*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.IDataMessageCodec.ExpectedMinimumLength
+  href: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageCodec.html#Bodoconsult_NetworkCommunication_Interfaces_IDataMessageCodec_ExpectedMinimumLength
+  name: ExpectedMinimumLength
+  nameWithType: IDataMessageCodec.ExpectedMinimumLength
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageCodec.ExpectedMinimumLength
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageCodec.ExpectedMaximumLength*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.IDataMessageCodec.ExpectedMaximumLength
+  href: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageCodec.html#Bodoconsult_NetworkCommunication_Interfaces_IDataMessageCodec_ExpectedMaximumLength
+  name: ExpectedMaximumLength
+  nameWithType: IDataMessageCodec.ExpectedMaximumLength
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageCodec.ExpectedMaximumLength
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IInboundDataMessage
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.IInboundDataMessage
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.NetworkCommunication.Interfaces.IInboundDataMessage.html
+  name: IInboundDataMessage
+  nameWithType: IInboundDataMessage
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IInboundDataMessage
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageCodec.DecodeDataMessage*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.IDataMessageCodec.DecodeDataMessage
+  href: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageCodec.html#Bodoconsult_NetworkCommunication_Interfaces_IDataMessageCodec_DecodeDataMessage_System_Memory_System_Byte__
+  name: DecodeDataMessage
+  nameWithType: IDataMessageCodec.DecodeDataMessage
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageCodec.DecodeDataMessage
+- uid: System.Memory{System.Byte}
+  commentId: T:System.Memory{System.Byte}
+  parent: System
+  definition: System.Memory`1
+  href: https://learn.microsoft.com/dotnet/api/system.memory-1
+  name: Memory<byte>
+  nameWithType: Memory<byte>
+  fullName: System.Memory<byte>
+  nameWithType.vb: Memory(Of Byte)
+  fullName.vb: System.Memory(Of Byte)
+  name.vb: Memory(Of Byte)
+  spec.csharp:
+  - uid: System.Memory`1
+    name: Memory
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.memory-1
+  - name: <
+  - uid: System.Byte
+    name: byte
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.byte
+  - name: '>'
+  spec.vb:
+  - uid: System.Memory`1
+    name: Memory
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.memory-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Byte
+    name: Byte
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.byte
+  - name: )
+- uid: Bodoconsult.NetworkCommunication.Interfaces.InboundCodecResult
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.InboundCodecResult
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.NetworkCommunication.Interfaces.InboundCodecResult.html
+  name: InboundCodecResult
+  nameWithType: InboundCodecResult
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.InboundCodecResult
+- uid: System.Memory`1
+  commentId: T:System.Memory`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.memory-1
+  name: Memory<T>
+  nameWithType: Memory<T>
+  fullName: System.Memory<T>
+  nameWithType.vb: Memory(Of T)
+  fullName.vb: System.Memory(Of T)
+  name.vb: Memory(Of T)
+  spec.csharp:
+  - uid: System.Memory`1
+    name: Memory
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.memory-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Memory`1
+    name: Memory
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.memory-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.ReadOnlyMemory`1
+  commentId: T:System.ReadOnlyMemory`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.readonlymemory-1
+  name: ReadOnlyMemory<T>
+  nameWithType: ReadOnlyMemory<T>
+  fullName: System.ReadOnlyMemory<T>
+  nameWithType.vb: ReadOnlyMemory(Of T)
+  fullName.vb: System.ReadOnlyMemory(Of T)
+  name.vb: ReadOnlyMemory(Of T)
+  spec.csharp:
+  - uid: System.ReadOnlyMemory`1
+    name: ReadOnlyMemory
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.readonlymemory-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.ReadOnlyMemory`1
+    name: ReadOnlyMemory
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.readonlymemory-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageCodec.EncodeDataMessage*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.IDataMessageCodec.EncodeDataMessage
+  href: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageCodec.html#Bodoconsult_NetworkCommunication_Interfaces_IDataMessageCodec_EncodeDataMessage_Bodoconsult_NetworkCommunication_Interfaces_IOutboundMessage_
+  name: EncodeDataMessage
+  nameWithType: IDataMessageCodec.EncodeDataMessage
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageCodec.EncodeDataMessage
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IOutboundMessage
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.IOutboundMessage
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.NetworkCommunication.Interfaces.IOutboundMessage.html
+  name: IOutboundMessage
+  nameWithType: IOutboundMessage
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IOutboundMessage
+- uid: Bodoconsult.NetworkCommunication.Interfaces.OutboundCodecResult
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.OutboundCodecResult
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.NetworkCommunication.Interfaces.OutboundCodecResult.html
+  name: OutboundCodecResult
+  nameWithType: OutboundCodecResult
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.OutboundCodecResult

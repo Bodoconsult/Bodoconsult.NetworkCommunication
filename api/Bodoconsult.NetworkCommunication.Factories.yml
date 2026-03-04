@@ -1,0 +1,187 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bodoconsult.NetworkCommunication.Factories
+  commentId: N:Bodoconsult.NetworkCommunication.Factories
+  id: Bodoconsult.NetworkCommunication.Factories
+  children:
+  - Bodoconsult.NetworkCommunication.Factories.BtcpOutboundDataMessageFactory
+  - Bodoconsult.NetworkCommunication.Factories.ClientSocketProxyFactory
+  - Bodoconsult.NetworkCommunication.Factories.EdcpClientOutboundDataMessageFactory
+  - Bodoconsult.NetworkCommunication.Factories.EdcpServerOutboundDataMessageFactory
+  - Bodoconsult.NetworkCommunication.Factories.FakeSendPacketProcessEnum
+  - Bodoconsult.NetworkCommunication.Factories.FakeSendPacketProcessFactory
+  - Bodoconsult.NetworkCommunication.Factories.IpCommunicationHandlerFactory
+  - Bodoconsult.NetworkCommunication.Factories.IpDuplexIoFactory
+  - Bodoconsult.NetworkCommunication.Factories.IpHighPerformanceDuplexIoFactory
+  - Bodoconsult.NetworkCommunication.Factories.OrderManagementCommunicationAdapterFactory
+  - Bodoconsult.NetworkCommunication.Factories.OrderPipelineFactory
+  - Bodoconsult.NetworkCommunication.Factories.OrderReceiverFactory
+  - Bodoconsult.NetworkCommunication.Factories.RequestProcessorFactory
+  - Bodoconsult.NetworkCommunication.Factories.RequestProcessorFactoryFactory
+  - Bodoconsult.NetworkCommunication.Factories.RequestStepProcessorFactory
+  - Bodoconsult.NetworkCommunication.Factories.RequestStepProcessorFactoryFactory
+  - Bodoconsult.NetworkCommunication.Factories.SdcpOutboundDataMessageFactory
+  - Bodoconsult.NetworkCommunication.Factories.SendPacketProcessFactory
+  - Bodoconsult.NetworkCommunication.Factories.ServerSocketProxyFactory
+  - Bodoconsult.NetworkCommunication.Factories.TncpOutboundDataMessageFactory
+  langs:
+  - csharp
+  - vb
+  name: Bodoconsult.NetworkCommunication.Factories
+  nameWithType: Bodoconsult.NetworkCommunication.Factories
+  fullName: Bodoconsult.NetworkCommunication.Factories
+  type: Namespace
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+references:
+- uid: Bodoconsult.NetworkCommunication.Factories.BtcpOutboundDataMessageFactory
+  commentId: T:Bodoconsult.NetworkCommunication.Factories.BtcpOutboundDataMessageFactory
+  href: Bodoconsult.NetworkCommunication.Factories.BtcpOutboundDataMessageFactory.html
+  name: BtcpOutboundDataMessageFactory
+  nameWithType: BtcpOutboundDataMessageFactory
+  fullName: Bodoconsult.NetworkCommunication.Factories.BtcpOutboundDataMessageFactory
+- uid: Bodoconsult.NetworkCommunication.Factories.ClientSocketProxyFactory
+  commentId: T:Bodoconsult.NetworkCommunication.Factories.ClientSocketProxyFactory
+  href: Bodoconsult.NetworkCommunication.Factories.ClientSocketProxyFactory.html
+  name: ClientSocketProxyFactory
+  nameWithType: ClientSocketProxyFactory
+  fullName: Bodoconsult.NetworkCommunication.Factories.ClientSocketProxyFactory
+- uid: Bodoconsult.NetworkCommunication.Factories.EdcpClientOutboundDataMessageFactory
+  commentId: T:Bodoconsult.NetworkCommunication.Factories.EdcpClientOutboundDataMessageFactory
+  href: Bodoconsult.NetworkCommunication.Factories.EdcpClientOutboundDataMessageFactory.html
+  name: EdcpClientOutboundDataMessageFactory
+  nameWithType: EdcpClientOutboundDataMessageFactory
+  fullName: Bodoconsult.NetworkCommunication.Factories.EdcpClientOutboundDataMessageFactory
+- uid: Bodoconsult.NetworkCommunication.Factories.EdcpServerOutboundDataMessageFactory
+  commentId: T:Bodoconsult.NetworkCommunication.Factories.EdcpServerOutboundDataMessageFactory
+  href: Bodoconsult.NetworkCommunication.Factories.EdcpServerOutboundDataMessageFactory.html
+  name: EdcpServerOutboundDataMessageFactory
+  nameWithType: EdcpServerOutboundDataMessageFactory
+  fullName: Bodoconsult.NetworkCommunication.Factories.EdcpServerOutboundDataMessageFactory
+- uid: Bodoconsult.NetworkCommunication.Factories.FakeSendPacketProcessEnum
+  commentId: T:Bodoconsult.NetworkCommunication.Factories.FakeSendPacketProcessEnum
+  parent: Bodoconsult.NetworkCommunication.Factories
+  href: Bodoconsult.NetworkCommunication.Factories.FakeSendPacketProcessEnum.html
+  name: FakeSendPacketProcessEnum
+  nameWithType: FakeSendPacketProcessEnum
+  fullName: Bodoconsult.NetworkCommunication.Factories.FakeSendPacketProcessEnum
+- uid: Bodoconsult.NetworkCommunication.Factories.FakeSendPacketProcessFactory
+  commentId: T:Bodoconsult.NetworkCommunication.Factories.FakeSendPacketProcessFactory
+  href: Bodoconsult.NetworkCommunication.Factories.FakeSendPacketProcessFactory.html
+  name: FakeSendPacketProcessFactory
+  nameWithType: FakeSendPacketProcessFactory
+  fullName: Bodoconsult.NetworkCommunication.Factories.FakeSendPacketProcessFactory
+- uid: Bodoconsult.NetworkCommunication.Factories.IpCommunicationHandlerFactory
+  commentId: T:Bodoconsult.NetworkCommunication.Factories.IpCommunicationHandlerFactory
+  href: Bodoconsult.NetworkCommunication.Factories.IpCommunicationHandlerFactory.html
+  name: IpCommunicationHandlerFactory
+  nameWithType: IpCommunicationHandlerFactory
+  fullName: Bodoconsult.NetworkCommunication.Factories.IpCommunicationHandlerFactory
+- uid: Bodoconsult.NetworkCommunication.Factories.IpDuplexIoFactory
+  commentId: T:Bodoconsult.NetworkCommunication.Factories.IpDuplexIoFactory
+  href: Bodoconsult.NetworkCommunication.Factories.IpDuplexIoFactory.html
+  name: IpDuplexIoFactory
+  nameWithType: IpDuplexIoFactory
+  fullName: Bodoconsult.NetworkCommunication.Factories.IpDuplexIoFactory
+- uid: Bodoconsult.NetworkCommunication.Factories.IpHighPerformanceDuplexIoFactory
+  commentId: T:Bodoconsult.NetworkCommunication.Factories.IpHighPerformanceDuplexIoFactory
+  href: Bodoconsult.NetworkCommunication.Factories.IpHighPerformanceDuplexIoFactory.html
+  name: IpHighPerformanceDuplexIoFactory
+  nameWithType: IpHighPerformanceDuplexIoFactory
+  fullName: Bodoconsult.NetworkCommunication.Factories.IpHighPerformanceDuplexIoFactory
+- uid: Bodoconsult.NetworkCommunication.Factories.OrderManagementCommunicationAdapterFactory
+  commentId: T:Bodoconsult.NetworkCommunication.Factories.OrderManagementCommunicationAdapterFactory
+  href: Bodoconsult.NetworkCommunication.Factories.OrderManagementCommunicationAdapterFactory.html
+  name: OrderManagementCommunicationAdapterFactory
+  nameWithType: OrderManagementCommunicationAdapterFactory
+  fullName: Bodoconsult.NetworkCommunication.Factories.OrderManagementCommunicationAdapterFactory
+- uid: Bodoconsult.NetworkCommunication.Factories.OrderPipelineFactory
+  commentId: T:Bodoconsult.NetworkCommunication.Factories.OrderPipelineFactory
+  href: Bodoconsult.NetworkCommunication.Factories.OrderPipelineFactory.html
+  name: OrderPipelineFactory
+  nameWithType: OrderPipelineFactory
+  fullName: Bodoconsult.NetworkCommunication.Factories.OrderPipelineFactory
+- uid: Bodoconsult.NetworkCommunication.Factories.OrderReceiverFactory
+  commentId: T:Bodoconsult.NetworkCommunication.Factories.OrderReceiverFactory
+  href: Bodoconsult.NetworkCommunication.Factories.OrderReceiverFactory.html
+  name: OrderReceiverFactory
+  nameWithType: OrderReceiverFactory
+  fullName: Bodoconsult.NetworkCommunication.Factories.OrderReceiverFactory
+- uid: Bodoconsult.NetworkCommunication.Factories.RequestProcessorFactory
+  commentId: T:Bodoconsult.NetworkCommunication.Factories.RequestProcessorFactory
+  href: Bodoconsult.NetworkCommunication.Factories.RequestProcessorFactory.html
+  name: RequestProcessorFactory
+  nameWithType: RequestProcessorFactory
+  fullName: Bodoconsult.NetworkCommunication.Factories.RequestProcessorFactory
+- uid: Bodoconsult.NetworkCommunication.Factories.RequestProcessorFactoryFactory
+  commentId: T:Bodoconsult.NetworkCommunication.Factories.RequestProcessorFactoryFactory
+  href: Bodoconsult.NetworkCommunication.Factories.RequestProcessorFactoryFactory.html
+  name: RequestProcessorFactoryFactory
+  nameWithType: RequestProcessorFactoryFactory
+  fullName: Bodoconsult.NetworkCommunication.Factories.RequestProcessorFactoryFactory
+- uid: Bodoconsult.NetworkCommunication.Factories.RequestStepProcessorFactory
+  commentId: T:Bodoconsult.NetworkCommunication.Factories.RequestStepProcessorFactory
+  href: Bodoconsult.NetworkCommunication.Factories.RequestStepProcessorFactory.html
+  name: RequestStepProcessorFactory
+  nameWithType: RequestStepProcessorFactory
+  fullName: Bodoconsult.NetworkCommunication.Factories.RequestStepProcessorFactory
+- uid: Bodoconsult.NetworkCommunication.Factories.RequestStepProcessorFactoryFactory
+  commentId: T:Bodoconsult.NetworkCommunication.Factories.RequestStepProcessorFactoryFactory
+  href: Bodoconsult.NetworkCommunication.Factories.RequestStepProcessorFactoryFactory.html
+  name: RequestStepProcessorFactoryFactory
+  nameWithType: RequestStepProcessorFactoryFactory
+  fullName: Bodoconsult.NetworkCommunication.Factories.RequestStepProcessorFactoryFactory
+- uid: Bodoconsult.NetworkCommunication.Factories.SdcpOutboundDataMessageFactory
+  commentId: T:Bodoconsult.NetworkCommunication.Factories.SdcpOutboundDataMessageFactory
+  href: Bodoconsult.NetworkCommunication.Factories.SdcpOutboundDataMessageFactory.html
+  name: SdcpOutboundDataMessageFactory
+  nameWithType: SdcpOutboundDataMessageFactory
+  fullName: Bodoconsult.NetworkCommunication.Factories.SdcpOutboundDataMessageFactory
+- uid: Bodoconsult.NetworkCommunication.Factories.SendPacketProcessFactory
+  commentId: T:Bodoconsult.NetworkCommunication.Factories.SendPacketProcessFactory
+  href: Bodoconsult.NetworkCommunication.Factories.SendPacketProcessFactory.html
+  name: SendPacketProcessFactory
+  nameWithType: SendPacketProcessFactory
+  fullName: Bodoconsult.NetworkCommunication.Factories.SendPacketProcessFactory
+- uid: Bodoconsult.NetworkCommunication.Factories.ServerSocketProxyFactory
+  commentId: T:Bodoconsult.NetworkCommunication.Factories.ServerSocketProxyFactory
+  href: Bodoconsult.NetworkCommunication.Factories.ServerSocketProxyFactory.html
+  name: ServerSocketProxyFactory
+  nameWithType: ServerSocketProxyFactory
+  fullName: Bodoconsult.NetworkCommunication.Factories.ServerSocketProxyFactory
+- uid: Bodoconsult.NetworkCommunication.Factories.TncpOutboundDataMessageFactory
+  commentId: T:Bodoconsult.NetworkCommunication.Factories.TncpOutboundDataMessageFactory
+  href: Bodoconsult.NetworkCommunication.Factories.TncpOutboundDataMessageFactory.html
+  name: TncpOutboundDataMessageFactory
+  nameWithType: TncpOutboundDataMessageFactory
+  fullName: Bodoconsult.NetworkCommunication.Factories.TncpOutboundDataMessageFactory
+- uid: Bodoconsult.NetworkCommunication.Factories
+  commentId: N:Bodoconsult.NetworkCommunication.Factories
+  href: Bodoconsult.html
+  name: Bodoconsult.NetworkCommunication.Factories
+  nameWithType: Bodoconsult.NetworkCommunication.Factories
+  fullName: Bodoconsult.NetworkCommunication.Factories
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Factories
+    name: Factories
+    href: Bodoconsult.NetworkCommunication.Factories.html
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Factories
+    name: Factories
+    href: Bodoconsult.NetworkCommunication.Factories.html

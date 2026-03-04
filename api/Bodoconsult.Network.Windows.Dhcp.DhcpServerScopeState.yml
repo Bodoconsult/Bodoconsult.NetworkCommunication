@@ -1,0 +1,219 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeState
+  commentId: T:Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeState
+  id: DhcpServerScopeState
+  parent: Bodoconsult.Network.Windows.Dhcp
+  children:
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeState.Disabled
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeState.DisabledSwitched
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeState.Enabled
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeState.EnabledSwitched
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeState.InvalidState
+  langs:
+  - csharp
+  - vb
+  name: DhcpServerScopeState
+  nameWithType: DhcpServerScopeState
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeState
+  type: Enum
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerScopeState.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: DhcpServerScopeState
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerScopeState.cs
+    startLine: 5
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: 'public enum DhcpServerScopeState : uint'
+    content.vb: Public Enum DhcpServerScopeState As UInteger
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeState.Enabled
+  commentId: F:Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeState.Enabled
+  id: Enabled
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeState
+  langs:
+  - csharp
+  - vb
+  name: Enabled
+  nameWithType: DhcpServerScopeState.Enabled
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeState.Enabled
+  type: Field
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerScopeState.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Enabled
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerScopeState.cs
+    startLine: 10
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  summary: The subnet is enabled; the server will distribute addresses, extend leases, and release addresses within the subnet range to clients.
+  example: []
+  syntax:
+    content: Enabled = 0
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeState
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeState.Disabled
+  commentId: F:Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeState.Disabled
+  id: Disabled
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeState
+  langs:
+  - csharp
+  - vb
+  name: Disabled
+  nameWithType: DhcpServerScopeState.Disabled
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeState.Disabled
+  type: Field
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerScopeState.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Disabled
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerScopeState.cs
+    startLine: 14
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  summary: The subnet is disabled; the server will not distribute addresses or extend leases within the subnet range to clients. However, the server will still release addresses within the subnet range.
+  example: []
+  syntax:
+    content: Disabled = 1
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeState
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeState.EnabledSwitched
+  commentId: F:Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeState.EnabledSwitched
+  id: EnabledSwitched
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeState
+  langs:
+  - csharp
+  - vb
+  name: EnabledSwitched
+  nameWithType: DhcpServerScopeState.EnabledSwitched
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeState.EnabledSwitched
+  type: Field
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerScopeState.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: EnabledSwitched
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerScopeState.cs
+    startLine: 18
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  summary: The subnet is enabled; the server will distribute addresses, extend leases, and release addresses within the subnet range to clients. The default gateway is set to the local machine itself.
+  example: []
+  syntax:
+    content: EnabledSwitched = 2
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeState
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeState.DisabledSwitched
+  commentId: F:Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeState.DisabledSwitched
+  id: DisabledSwitched
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeState
+  langs:
+  - csharp
+  - vb
+  name: DisabledSwitched
+  nameWithType: DhcpServerScopeState.DisabledSwitched
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeState.DisabledSwitched
+  type: Field
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerScopeState.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: DisabledSwitched
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerScopeState.cs
+    startLine: 22
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  summary: The subnet is disabled; the server will not distribute addresses or extend leases within the subnet range to clients. However, the server will still release addresses within the subnet range. The default gateway is set to the local machine itself.
+  example: []
+  syntax:
+    content: DisabledSwitched = 3
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeState
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeState.InvalidState
+  commentId: F:Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeState.InvalidState
+  id: InvalidState
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeState
+  langs:
+  - csharp
+  - vb
+  name: InvalidState
+  nameWithType: DhcpServerScopeState.InvalidState
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeState.InvalidState
+  type: Field
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerScopeState.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: InvalidState
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerScopeState.cs
+    startLine: 26
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  summary: The subnet is in an invalid state.
+  example: []
+  syntax:
+    content: InvalidState = 4
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeState
+references:
+- uid: Bodoconsult.Network.Windows.Dhcp
+  commentId: N:Bodoconsult.Network.Windows.Dhcp
+  href: Bodoconsult.html
+  name: Bodoconsult.Network.Windows.Dhcp
+  nameWithType: Bodoconsult.Network.Windows.Dhcp
+  fullName: Bodoconsult.Network.Windows.Dhcp
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.Network
+    name: Network
+    href: Bodoconsult.Network.html
+  - name: .
+  - uid: Bodoconsult.Network.Windows
+    name: Windows
+    href: Bodoconsult.Network.Windows.html
+  - name: .
+  - uid: Bodoconsult.Network.Windows.Dhcp
+    name: Dhcp
+    href: Bodoconsult.Network.Windows.Dhcp.html
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.Network
+    name: Network
+    href: Bodoconsult.Network.html
+  - name: .
+  - uid: Bodoconsult.Network.Windows
+    name: Windows
+    href: Bodoconsult.Network.Windows.html
+  - name: .
+  - uid: Bodoconsult.Network.Windows.Dhcp
+    name: Dhcp
+    href: Bodoconsult.Network.Windows.Dhcp.html
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeState
+  commentId: T:Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeState
+  parent: Bodoconsult.Network.Windows.Dhcp
+  href: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeState.html
+  name: DhcpServerScopeState
+  nameWithType: DhcpServerScopeState
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeState

@@ -1,0 +1,596 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IOrderBuilder
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.IOrderBuilder
+  id: IOrderBuilder
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  children:
+  - Bodoconsult.NetworkCommunication.Interfaces.IOrderBuilder.ConfigureOrder(Bodoconsult.NetworkCommunication.Interfaces.IOrder)
+  - Bodoconsult.NetworkCommunication.Interfaces.IOrderBuilder.CreateDeviceRequestAnswerStep(Bodoconsult.NetworkCommunication.Interfaces.IDeviceRequestSpec,System.String)
+  - Bodoconsult.NetworkCommunication.Interfaces.IOrderBuilder.CreateDeviceRequestSpec(Bodoconsult.NetworkCommunication.Interfaces.IOrder,System.String)
+  - Bodoconsult.NetworkCommunication.Interfaces.IOrderBuilder.CreateInternalRequestAnswerStep(Bodoconsult.NetworkCommunication.Interfaces.IInternalRequestSpec,System.String)
+  - Bodoconsult.NetworkCommunication.Interfaces.IOrderBuilder.CreateInternalRequestSpec(Bodoconsult.NetworkCommunication.Interfaces.IOrder,System.String)
+  - Bodoconsult.NetworkCommunication.Interfaces.IOrderBuilder.CreateOrder(System.Int64,Bodoconsult.NetworkCommunication.Interfaces.IParameterSet)
+  - Bodoconsult.NetworkCommunication.Interfaces.IOrderBuilder.CreateRequestAnswer(Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswerStep,System.String,System.Boolean,System.Type)
+  - Bodoconsult.NetworkCommunication.Interfaces.IOrderBuilder.OrderTypeName
+  - Bodoconsult.NetworkCommunication.Interfaces.IOrderBuilder.ParameterSetType
+  langs:
+  - csharp
+  - vb
+  name: IOrderBuilder
+  nameWithType: IOrderBuilder
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IOrderBuilder
+  type: Interface
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/IOrderBuilder.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: IOrderBuilder
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/IOrderBuilder.cs
+    startLine: 9
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Interface for order builders
+  example: []
+  syntax:
+    content: public interface IOrderBuilder
+    content.vb: Public Interface IOrderBuilder
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IOrderBuilder.ParameterSetType
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IOrderBuilder.ParameterSetType
+  id: ParameterSetType
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IOrderBuilder
+  langs:
+  - csharp
+  - vb
+  name: ParameterSetType
+  nameWithType: IOrderBuilder.ParameterSetType
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IOrderBuilder.ParameterSetType
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/IOrderBuilder.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: ParameterSetType
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/IOrderBuilder.cs
+    startLine: 14
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: The type of parameter set the order requires
+  example: []
+  syntax:
+    content: Type ParameterSetType { get; }
+    parameters: []
+    return:
+      type: System.Type
+    content.vb: ReadOnly Property ParameterSetType As Type
+  overload: Bodoconsult.NetworkCommunication.Interfaces.IOrderBuilder.ParameterSetType*
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IOrderBuilder.OrderTypeName
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IOrderBuilder.OrderTypeName
+  id: OrderTypeName
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IOrderBuilder
+  langs:
+  - csharp
+  - vb
+  name: OrderTypeName
+  nameWithType: IOrderBuilder.OrderTypeName
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IOrderBuilder.OrderTypeName
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/IOrderBuilder.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: OrderTypeName
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/IOrderBuilder.cs
+    startLine: 19
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Order type name
+  example: []
+  syntax:
+    content: string OrderTypeName { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: ReadOnly Property OrderTypeName As String
+  overload: Bodoconsult.NetworkCommunication.Interfaces.IOrderBuilder.OrderTypeName*
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IOrderBuilder.CreateOrder(System.Int64,Bodoconsult.NetworkCommunication.Interfaces.IParameterSet)
+  commentId: M:Bodoconsult.NetworkCommunication.Interfaces.IOrderBuilder.CreateOrder(System.Int64,Bodoconsult.NetworkCommunication.Interfaces.IParameterSet)
+  id: CreateOrder(System.Int64,Bodoconsult.NetworkCommunication.Interfaces.IParameterSet)
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IOrderBuilder
+  langs:
+  - csharp
+  - vb
+  name: CreateOrder(long, IParameterSet)
+  nameWithType: IOrderBuilder.CreateOrder(long, IParameterSet)
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IOrderBuilder.CreateOrder(long, Bodoconsult.NetworkCommunication.Interfaces.IParameterSet)
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/IOrderBuilder.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: CreateOrder
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/IOrderBuilder.cs
+    startLine: 26
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Create the (raw) order
+  example: []
+  syntax:
+    content: IOrder CreateOrder(long id, IParameterSet parameterSet)
+    parameters:
+    - id: id
+      type: System.Int64
+      description: ID of the order
+    - id: parameterSet
+      type: Bodoconsult.NetworkCommunication.Interfaces.IParameterSet
+      description: ParameterSet to use for the order
+    return:
+      type: Bodoconsult.NetworkCommunication.Interfaces.IOrder
+    content.vb: Function CreateOrder(id As Long, parameterSet As IParameterSet) As IOrder
+  overload: Bodoconsult.NetworkCommunication.Interfaces.IOrderBuilder.CreateOrder*
+  nameWithType.vb: IOrderBuilder.CreateOrder(Long, IParameterSet)
+  fullName.vb: Bodoconsult.NetworkCommunication.Interfaces.IOrderBuilder.CreateOrder(Long, Bodoconsult.NetworkCommunication.Interfaces.IParameterSet)
+  name.vb: CreateOrder(Long, IParameterSet)
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IOrderBuilder.ConfigureOrder(Bodoconsult.NetworkCommunication.Interfaces.IOrder)
+  commentId: M:Bodoconsult.NetworkCommunication.Interfaces.IOrderBuilder.ConfigureOrder(Bodoconsult.NetworkCommunication.Interfaces.IOrder)
+  id: ConfigureOrder(Bodoconsult.NetworkCommunication.Interfaces.IOrder)
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IOrderBuilder
+  langs:
+  - csharp
+  - vb
+  name: ConfigureOrder(IOrder)
+  nameWithType: IOrderBuilder.ConfigureOrder(IOrder)
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IOrderBuilder.ConfigureOrder(Bodoconsult.NetworkCommunication.Interfaces.IOrder)
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/IOrderBuilder.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: ConfigureOrder
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/IOrderBuilder.cs
+    startLine: 31
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Configure the order. Implementation of this method may require to add dependencies to your business logic layer
+  example: []
+  syntax:
+    content: void ConfigureOrder(IOrder order)
+    parameters:
+    - id: order
+      type: Bodoconsult.NetworkCommunication.Interfaces.IOrder
+    content.vb: Sub ConfigureOrder(order As IOrder)
+  overload: Bodoconsult.NetworkCommunication.Interfaces.IOrderBuilder.ConfigureOrder*
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IOrderBuilder.CreateDeviceRequestSpec(Bodoconsult.NetworkCommunication.Interfaces.IOrder,System.String)
+  commentId: M:Bodoconsult.NetworkCommunication.Interfaces.IOrderBuilder.CreateDeviceRequestSpec(Bodoconsult.NetworkCommunication.Interfaces.IOrder,System.String)
+  id: CreateDeviceRequestSpec(Bodoconsult.NetworkCommunication.Interfaces.IOrder,System.String)
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IOrderBuilder
+  langs:
+  - csharp
+  - vb
+  name: CreateDeviceRequestSpec(IOrder, string)
+  nameWithType: IOrderBuilder.CreateDeviceRequestSpec(IOrder, string)
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IOrderBuilder.CreateDeviceRequestSpec(Bodoconsult.NetworkCommunication.Interfaces.IOrder, string)
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/IOrderBuilder.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: CreateDeviceRequestSpec
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/IOrderBuilder.cs
+    startLine: 39
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Create an <xref href="Bodoconsult.NetworkCommunication.OrderManagement.Processors.DeviceRequestSpec" data-throw-if-not-resolved="false"></xref> instance and add it to the order
+  example: []
+  syntax:
+    content: IDeviceRequestSpec CreateDeviceRequestSpec(IOrder order, string name)
+    parameters:
+    - id: order
+      type: Bodoconsult.NetworkCommunication.Interfaces.IOrder
+      description: Current order
+    - id: name
+      type: System.String
+      description: Name of the request spec
+    return:
+      type: Bodoconsult.NetworkCommunication.Interfaces.IDeviceRequestSpec
+      description: <xref href="Bodoconsult.NetworkCommunication.OrderManagement.Processors.DeviceRequestSpec" data-throw-if-not-resolved="false"></xref> instance
+    content.vb: Function CreateDeviceRequestSpec(order As IOrder, name As String) As IDeviceRequestSpec
+  overload: Bodoconsult.NetworkCommunication.Interfaces.IOrderBuilder.CreateDeviceRequestSpec*
+  nameWithType.vb: IOrderBuilder.CreateDeviceRequestSpec(IOrder, String)
+  fullName.vb: Bodoconsult.NetworkCommunication.Interfaces.IOrderBuilder.CreateDeviceRequestSpec(Bodoconsult.NetworkCommunication.Interfaces.IOrder, String)
+  name.vb: CreateDeviceRequestSpec(IOrder, String)
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IOrderBuilder.CreateInternalRequestSpec(Bodoconsult.NetworkCommunication.Interfaces.IOrder,System.String)
+  commentId: M:Bodoconsult.NetworkCommunication.Interfaces.IOrderBuilder.CreateInternalRequestSpec(Bodoconsult.NetworkCommunication.Interfaces.IOrder,System.String)
+  id: CreateInternalRequestSpec(Bodoconsult.NetworkCommunication.Interfaces.IOrder,System.String)
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IOrderBuilder
+  langs:
+  - csharp
+  - vb
+  name: CreateInternalRequestSpec(IOrder, string)
+  nameWithType: IOrderBuilder.CreateInternalRequestSpec(IOrder, string)
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IOrderBuilder.CreateInternalRequestSpec(Bodoconsult.NetworkCommunication.Interfaces.IOrder, string)
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/IOrderBuilder.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: CreateInternalRequestSpec
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/IOrderBuilder.cs
+    startLine: 47
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Create an <xref href="Bodoconsult.NetworkCommunication.OrderManagement.Processors.InternalRequestSpec" data-throw-if-not-resolved="false"></xref> instance and add it to the order
+  example: []
+  syntax:
+    content: IInternalRequestSpec CreateInternalRequestSpec(IOrder order, string name)
+    parameters:
+    - id: order
+      type: Bodoconsult.NetworkCommunication.Interfaces.IOrder
+      description: Current order
+    - id: name
+      type: System.String
+      description: Name of the request spec
+    return:
+      type: Bodoconsult.NetworkCommunication.Interfaces.IInternalRequestSpec
+      description: <xref href="Bodoconsult.NetworkCommunication.OrderManagement.Processors.InternalRequestSpec" data-throw-if-not-resolved="false"></xref> instance
+    content.vb: Function CreateInternalRequestSpec(order As IOrder, name As String) As IInternalRequestSpec
+  overload: Bodoconsult.NetworkCommunication.Interfaces.IOrderBuilder.CreateInternalRequestSpec*
+  nameWithType.vb: IOrderBuilder.CreateInternalRequestSpec(IOrder, String)
+  fullName.vb: Bodoconsult.NetworkCommunication.Interfaces.IOrderBuilder.CreateInternalRequestSpec(Bodoconsult.NetworkCommunication.Interfaces.IOrder, String)
+  name.vb: CreateInternalRequestSpec(IOrder, String)
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IOrderBuilder.CreateDeviceRequestAnswerStep(Bodoconsult.NetworkCommunication.Interfaces.IDeviceRequestSpec,System.String)
+  commentId: M:Bodoconsult.NetworkCommunication.Interfaces.IOrderBuilder.CreateDeviceRequestAnswerStep(Bodoconsult.NetworkCommunication.Interfaces.IDeviceRequestSpec,System.String)
+  id: CreateDeviceRequestAnswerStep(Bodoconsult.NetworkCommunication.Interfaces.IDeviceRequestSpec,System.String)
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IOrderBuilder
+  langs:
+  - csharp
+  - vb
+  name: CreateDeviceRequestAnswerStep(IDeviceRequestSpec, string)
+  nameWithType: IOrderBuilder.CreateDeviceRequestAnswerStep(IDeviceRequestSpec, string)
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IOrderBuilder.CreateDeviceRequestAnswerStep(Bodoconsult.NetworkCommunication.Interfaces.IDeviceRequestSpec, string)
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/IOrderBuilder.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: CreateDeviceRequestAnswerStep
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/IOrderBuilder.cs
+    startLine: 55
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Create an <xref href="Bodoconsult.NetworkCommunication.OrderManagement.Processors.DeviceRequestAnswerStep" data-throw-if-not-resolved="false"></xref> instance and add it to a request spec in the order
+  example: []
+  syntax:
+    content: IDeviceRequestAnswerStep CreateDeviceRequestAnswerStep(IDeviceRequestSpec requestSpec, string name)
+    parameters:
+    - id: requestSpec
+      type: Bodoconsult.NetworkCommunication.Interfaces.IDeviceRequestSpec
+      description: Current request spec
+    - id: name
+      type: System.String
+      description: Name of the request spec
+    return:
+      type: Bodoconsult.NetworkCommunication.Interfaces.IDeviceRequestAnswerStep
+      description: <xref href="Bodoconsult.NetworkCommunication.OrderManagement.Processors.DeviceRequestAnswerStep" data-throw-if-not-resolved="false"></xref> instance
+    content.vb: Function CreateDeviceRequestAnswerStep(requestSpec As IDeviceRequestSpec, name As String) As IDeviceRequestAnswerStep
+  overload: Bodoconsult.NetworkCommunication.Interfaces.IOrderBuilder.CreateDeviceRequestAnswerStep*
+  nameWithType.vb: IOrderBuilder.CreateDeviceRequestAnswerStep(IDeviceRequestSpec, String)
+  fullName.vb: Bodoconsult.NetworkCommunication.Interfaces.IOrderBuilder.CreateDeviceRequestAnswerStep(Bodoconsult.NetworkCommunication.Interfaces.IDeviceRequestSpec, String)
+  name.vb: CreateDeviceRequestAnswerStep(IDeviceRequestSpec, String)
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IOrderBuilder.CreateInternalRequestAnswerStep(Bodoconsult.NetworkCommunication.Interfaces.IInternalRequestSpec,System.String)
+  commentId: M:Bodoconsult.NetworkCommunication.Interfaces.IOrderBuilder.CreateInternalRequestAnswerStep(Bodoconsult.NetworkCommunication.Interfaces.IInternalRequestSpec,System.String)
+  id: CreateInternalRequestAnswerStep(Bodoconsult.NetworkCommunication.Interfaces.IInternalRequestSpec,System.String)
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IOrderBuilder
+  langs:
+  - csharp
+  - vb
+  name: CreateInternalRequestAnswerStep(IInternalRequestSpec, string)
+  nameWithType: IOrderBuilder.CreateInternalRequestAnswerStep(IInternalRequestSpec, string)
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IOrderBuilder.CreateInternalRequestAnswerStep(Bodoconsult.NetworkCommunication.Interfaces.IInternalRequestSpec, string)
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/IOrderBuilder.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: CreateInternalRequestAnswerStep
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/IOrderBuilder.cs
+    startLine: 63
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Create an <xref href="Bodoconsult.NetworkCommunication.OrderManagement.Processors.InternalRequestAnswerStep" data-throw-if-not-resolved="false"></xref> instance and add it to a request spec in the order
+  example: []
+  syntax:
+    content: IInternalRequestAnswerStep CreateInternalRequestAnswerStep(IInternalRequestSpec requestSpec, string name)
+    parameters:
+    - id: requestSpec
+      type: Bodoconsult.NetworkCommunication.Interfaces.IInternalRequestSpec
+      description: Current request spec
+    - id: name
+      type: System.String
+      description: Name of the request spec
+    return:
+      type: Bodoconsult.NetworkCommunication.Interfaces.IInternalRequestAnswerStep
+      description: <xref href="Bodoconsult.NetworkCommunication.OrderManagement.Processors.InternalRequestAnswerStep" data-throw-if-not-resolved="false"></xref> instance
+    content.vb: Function CreateInternalRequestAnswerStep(requestSpec As IInternalRequestSpec, name As String) As IInternalRequestAnswerStep
+  overload: Bodoconsult.NetworkCommunication.Interfaces.IOrderBuilder.CreateInternalRequestAnswerStep*
+  nameWithType.vb: IOrderBuilder.CreateInternalRequestAnswerStep(IInternalRequestSpec, String)
+  fullName.vb: Bodoconsult.NetworkCommunication.Interfaces.IOrderBuilder.CreateInternalRequestAnswerStep(Bodoconsult.NetworkCommunication.Interfaces.IInternalRequestSpec, String)
+  name.vb: CreateInternalRequestAnswerStep(IInternalRequestSpec, String)
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IOrderBuilder.CreateRequestAnswer(Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswerStep,System.String,System.Boolean,System.Type)
+  commentId: M:Bodoconsult.NetworkCommunication.Interfaces.IOrderBuilder.CreateRequestAnswer(Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswerStep,System.String,System.Boolean,System.Type)
+  id: CreateRequestAnswer(Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswerStep,System.String,System.Boolean,System.Type)
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IOrderBuilder
+  langs:
+  - csharp
+  - vb
+  name: CreateRequestAnswer(IRequestAnswerStep, string, bool, Type)
+  nameWithType: IOrderBuilder.CreateRequestAnswer(IRequestAnswerStep, string, bool, Type)
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IOrderBuilder.CreateRequestAnswer(Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswerStep, string, bool, System.Type)
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/IOrderBuilder.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: CreateRequestAnswer
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/IOrderBuilder.cs
+    startLine: 73
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Create an <xref href="Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswer" data-throw-if-not-resolved="false"></xref> instance and it to a request answer step in the order
+  example: []
+  syntax:
+    content: IRequestAnswer CreateRequestAnswer(IRequestAnswerStep requestAnswerStep, string name, bool hasDatablock = false, Type dataBlockType = null)
+    parameters:
+    - id: requestAnswerStep
+      type: Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswerStep
+      description: Current request answer step
+    - id: name
+      type: System.String
+      description: Name of the answer
+    - id: hasDatablock
+      type: System.Boolean
+      description: Has datablock?
+    - id: dataBlockType
+      type: System.Type
+      description: Type of the datablock or null
+    return:
+      type: Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswer
+      description: ''
+    content.vb: Function CreateRequestAnswer(requestAnswerStep As IRequestAnswerStep, name As String, hasDatablock As Boolean = False, dataBlockType As Type = Nothing) As IRequestAnswer
+  overload: Bodoconsult.NetworkCommunication.Interfaces.IOrderBuilder.CreateRequestAnswer*
+  nameWithType.vb: IOrderBuilder.CreateRequestAnswer(IRequestAnswerStep, String, Boolean, Type)
+  fullName.vb: Bodoconsult.NetworkCommunication.Interfaces.IOrderBuilder.CreateRequestAnswer(Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswerStep, String, Boolean, System.Type)
+  name.vb: CreateRequestAnswer(IRequestAnswerStep, String, Boolean, Type)
+references:
+- uid: Bodoconsult.NetworkCommunication.Interfaces
+  commentId: N:Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.html
+  name: Bodoconsult.NetworkCommunication.Interfaces
+  nameWithType: Bodoconsult.NetworkCommunication.Interfaces
+  fullName: Bodoconsult.NetworkCommunication.Interfaces
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Interfaces
+    name: Interfaces
+    href: Bodoconsult.NetworkCommunication.Interfaces.html
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Interfaces
+    name: Interfaces
+    href: Bodoconsult.NetworkCommunication.Interfaces.html
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IOrderBuilder.ParameterSetType*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.IOrderBuilder.ParameterSetType
+  href: Bodoconsult.NetworkCommunication.Interfaces.IOrderBuilder.html#Bodoconsult_NetworkCommunication_Interfaces_IOrderBuilder_ParameterSetType
+  name: ParameterSetType
+  nameWithType: IOrderBuilder.ParameterSetType
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IOrderBuilder.ParameterSetType
+- uid: System.Type
+  commentId: T:System.Type
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.type
+  name: Type
+  nameWithType: Type
+  fullName: System.Type
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IOrderBuilder.OrderTypeName*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.IOrderBuilder.OrderTypeName
+  href: Bodoconsult.NetworkCommunication.Interfaces.IOrderBuilder.html#Bodoconsult_NetworkCommunication_Interfaces_IOrderBuilder_OrderTypeName
+  name: OrderTypeName
+  nameWithType: IOrderBuilder.OrderTypeName
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IOrderBuilder.OrderTypeName
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IOrderBuilder.CreateOrder*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.IOrderBuilder.CreateOrder
+  href: Bodoconsult.NetworkCommunication.Interfaces.IOrderBuilder.html#Bodoconsult_NetworkCommunication_Interfaces_IOrderBuilder_CreateOrder_System_Int64_Bodoconsult_NetworkCommunication_Interfaces_IParameterSet_
+  name: CreateOrder
+  nameWithType: IOrderBuilder.CreateOrder
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IOrderBuilder.CreateOrder
+- uid: System.Int64
+  commentId: T:System.Int64
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int64
+  name: long
+  nameWithType: long
+  fullName: long
+  nameWithType.vb: Long
+  fullName.vb: Long
+  name.vb: Long
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IParameterSet
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.IParameterSet
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.NetworkCommunication.Interfaces.IParameterSet.html
+  name: IParameterSet
+  nameWithType: IParameterSet
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IParameterSet
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IOrder
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.IOrder
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.NetworkCommunication.Interfaces.IOrder.html
+  name: IOrder
+  nameWithType: IOrder
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IOrder
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IOrderBuilder.ConfigureOrder*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.IOrderBuilder.ConfigureOrder
+  href: Bodoconsult.NetworkCommunication.Interfaces.IOrderBuilder.html#Bodoconsult_NetworkCommunication_Interfaces_IOrderBuilder_ConfigureOrder_Bodoconsult_NetworkCommunication_Interfaces_IOrder_
+  name: ConfigureOrder
+  nameWithType: IOrderBuilder.ConfigureOrder
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IOrderBuilder.ConfigureOrder
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Processors.DeviceRequestSpec
+  commentId: T:Bodoconsult.NetworkCommunication.OrderManagement.Processors.DeviceRequestSpec
+  href: Bodoconsult.NetworkCommunication.OrderManagement.Processors.DeviceRequestSpec.html
+  name: DeviceRequestSpec
+  nameWithType: DeviceRequestSpec
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Processors.DeviceRequestSpec
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IOrderBuilder.CreateDeviceRequestSpec*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.IOrderBuilder.CreateDeviceRequestSpec
+  href: Bodoconsult.NetworkCommunication.Interfaces.IOrderBuilder.html#Bodoconsult_NetworkCommunication_Interfaces_IOrderBuilder_CreateDeviceRequestSpec_Bodoconsult_NetworkCommunication_Interfaces_IOrder_System_String_
+  name: CreateDeviceRequestSpec
+  nameWithType: IOrderBuilder.CreateDeviceRequestSpec
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IOrderBuilder.CreateDeviceRequestSpec
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IDeviceRequestSpec
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.IDeviceRequestSpec
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.NetworkCommunication.Interfaces.IDeviceRequestSpec.html
+  name: IDeviceRequestSpec
+  nameWithType: IDeviceRequestSpec
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IDeviceRequestSpec
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Processors.InternalRequestSpec
+  commentId: T:Bodoconsult.NetworkCommunication.OrderManagement.Processors.InternalRequestSpec
+  href: Bodoconsult.NetworkCommunication.OrderManagement.Processors.InternalRequestSpec.html
+  name: InternalRequestSpec
+  nameWithType: InternalRequestSpec
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Processors.InternalRequestSpec
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IOrderBuilder.CreateInternalRequestSpec*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.IOrderBuilder.CreateInternalRequestSpec
+  href: Bodoconsult.NetworkCommunication.Interfaces.IOrderBuilder.html#Bodoconsult_NetworkCommunication_Interfaces_IOrderBuilder_CreateInternalRequestSpec_Bodoconsult_NetworkCommunication_Interfaces_IOrder_System_String_
+  name: CreateInternalRequestSpec
+  nameWithType: IOrderBuilder.CreateInternalRequestSpec
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IOrderBuilder.CreateInternalRequestSpec
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IInternalRequestSpec
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.IInternalRequestSpec
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.NetworkCommunication.Interfaces.IInternalRequestSpec.html
+  name: IInternalRequestSpec
+  nameWithType: IInternalRequestSpec
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IInternalRequestSpec
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Processors.DeviceRequestAnswerStep
+  commentId: T:Bodoconsult.NetworkCommunication.OrderManagement.Processors.DeviceRequestAnswerStep
+  href: Bodoconsult.NetworkCommunication.OrderManagement.Processors.DeviceRequestAnswerStep.html
+  name: DeviceRequestAnswerStep
+  nameWithType: DeviceRequestAnswerStep
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Processors.DeviceRequestAnswerStep
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IOrderBuilder.CreateDeviceRequestAnswerStep*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.IOrderBuilder.CreateDeviceRequestAnswerStep
+  href: Bodoconsult.NetworkCommunication.Interfaces.IOrderBuilder.html#Bodoconsult_NetworkCommunication_Interfaces_IOrderBuilder_CreateDeviceRequestAnswerStep_Bodoconsult_NetworkCommunication_Interfaces_IDeviceRequestSpec_System_String_
+  name: CreateDeviceRequestAnswerStep
+  nameWithType: IOrderBuilder.CreateDeviceRequestAnswerStep
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IOrderBuilder.CreateDeviceRequestAnswerStep
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IDeviceRequestAnswerStep
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.IDeviceRequestAnswerStep
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.NetworkCommunication.Interfaces.IDeviceRequestAnswerStep.html
+  name: IDeviceRequestAnswerStep
+  nameWithType: IDeviceRequestAnswerStep
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IDeviceRequestAnswerStep
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Processors.InternalRequestAnswerStep
+  commentId: T:Bodoconsult.NetworkCommunication.OrderManagement.Processors.InternalRequestAnswerStep
+  href: Bodoconsult.NetworkCommunication.OrderManagement.Processors.InternalRequestAnswerStep.html
+  name: InternalRequestAnswerStep
+  nameWithType: InternalRequestAnswerStep
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Processors.InternalRequestAnswerStep
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IOrderBuilder.CreateInternalRequestAnswerStep*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.IOrderBuilder.CreateInternalRequestAnswerStep
+  href: Bodoconsult.NetworkCommunication.Interfaces.IOrderBuilder.html#Bodoconsult_NetworkCommunication_Interfaces_IOrderBuilder_CreateInternalRequestAnswerStep_Bodoconsult_NetworkCommunication_Interfaces_IInternalRequestSpec_System_String_
+  name: CreateInternalRequestAnswerStep
+  nameWithType: IOrderBuilder.CreateInternalRequestAnswerStep
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IOrderBuilder.CreateInternalRequestAnswerStep
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IInternalRequestAnswerStep
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.IInternalRequestAnswerStep
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.NetworkCommunication.Interfaces.IInternalRequestAnswerStep.html
+  name: IInternalRequestAnswerStep
+  nameWithType: IInternalRequestAnswerStep
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IInternalRequestAnswerStep
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswer
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswer
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswer.html
+  name: IRequestAnswer
+  nameWithType: IRequestAnswer
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswer
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IOrderBuilder.CreateRequestAnswer*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.IOrderBuilder.CreateRequestAnswer
+  href: Bodoconsult.NetworkCommunication.Interfaces.IOrderBuilder.html#Bodoconsult_NetworkCommunication_Interfaces_IOrderBuilder_CreateRequestAnswer_Bodoconsult_NetworkCommunication_Interfaces_IRequestAnswerStep_System_String_System_Boolean_System_Type_
+  name: CreateRequestAnswer
+  nameWithType: IOrderBuilder.CreateRequestAnswer
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IOrderBuilder.CreateRequestAnswer
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswerStep
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswerStep
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswerStep.html
+  name: IRequestAnswerStep
+  nameWithType: IRequestAnswerStep
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IRequestAnswerStep
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean

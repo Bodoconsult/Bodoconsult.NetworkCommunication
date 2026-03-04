@@ -55,13 +55,13 @@ Data messages are all other types of messages transporting all kinds of data as 
 
 The simple version of a network communication layer does not employ order management and state management:
 
-![Network communication overview](DataFlow.png)
+![Network communication overview](../../images/DataFlow.png)
 
 ## Communication layer with order and state management
 
 Normally you will have to employ order management and state management to keep a correct workflow in your app. With state management you can keep track with the current state the device and your app are in. The order management sends requested actions as data messages to the device and waits for an answer (if required).
 
-![Network communication overview](DataFlowWithOrdermanagementAndStateManagement.png)
+![Network communication overview](../../images/DataFlowWithOrdermanagementAndStateManagement.png)
 
 
 To get all this working you have to set up your IDataMessageProcessingPackage implemetation carefully at the end and inject it to IDuplexIo via ctor injection via your IDataMessagingConfig instance. The following documentation shows how to do that step by step.
@@ -100,7 +100,7 @@ Defining a client server network communication protocol may contain for Bodocons
 
 -	**Datablock content**: This the important data delivered mainly to your business logic on both side of the communication. The prupose of your communication protocol defines the data structures of the datablocks needed for your protocol.
 
-![Messages](Messages.png)
+![Messages](../../images/Messages.png)
 
 ## Example 1: Simple Device Communication Protocol (SDCP)
 
@@ -159,7 +159,9 @@ Adding a general data message header may reduce the implementation effort as you
 
 >	[Implement a data message splitter splitting the incoming byte stream into potential messages: IDataMessageSplitter](SDCP.md#define-message-limiting-bytes-devicecommunicationbasics)
 
->	[Implement your data message types: IDataMessage](SDCP.md#implement-your-data-message-types-idatamessage)
+>	[Implement your data message types for inbound messages](SDCP.md#implement-your-data-message-types-for-inbound-messages-iinbounddatamessage)
+
+>	[Implement your data message types for outbound messages](SDCP.md#implement-your-data-message-types-for-outbound-messages-ioutbounddatamessage)
 
 >	[Implement a handshake validator for inbound handshakes: IHandshakeDataMessageValidator](SDCP.md#implement-a-handshake-validator-for-inbound-handshakes-ihandshakedatamessagevalidator)
 

@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Interface ICommunicationAdapter | Bodoconsult.Network </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Interface ICommunicationAdapter | Bodoconsult.Network ">
+      
+      <meta name="description" content="Communication adapter used i.e. for order management">
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/new/main/apiSpec/new?filename=Bodoconsult_NetworkCommunication_Interfaces_ICommunicationAdapter.md&amp;value=---%0Auid%3A%20Bodoconsult.NetworkCommunication.Interfaces.ICommunicationAdapter%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../logo.svg" alt="Bodoconsult.Network">
+            Bodoconsult.Network
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="Bodoconsult.NetworkCommunication.Interfaces.ICommunicationAdapter">
+
+
+
+  <h1 id="Bodoconsult_NetworkCommunication_Interfaces_ICommunicationAdapter" data-uid="Bodoconsult.NetworkCommunication.Interfaces.ICommunicationAdapter" class="text-break">
+Interface ICommunicationAdapter  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/Interfaces/ICommunicationAdapter.cs/#L10"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="Bodoconsult.html">Bodoconsult</a>.<a class="xref" href="Bodoconsult.NetworkCommunication.html">NetworkCommunication</a>.<a class="xref" href="Bodoconsult.NetworkCommunication.Interfaces.html">Interfaces</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>Bodoconsult.NetworkCommunication.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p>Communication adapter used i.e. for order management</p>
+</div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public interface ICommunicationAdapter : IDisposable</code></pre>
+  </div>
+
+
+
+
+
+
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.idisposable.dispose">IDisposable.Dispose()</a>
+    </div>
+  </dd></dl>
+
+
+
+
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
+  <a id="Bodoconsult_NetworkCommunication_Interfaces_ICommunicationAdapter_DataMessagingConfig_" data-uid="Bodoconsult.NetworkCommunication.Interfaces.ICommunicationAdapter.DataMessagingConfig*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_Interfaces_ICommunicationAdapter_DataMessagingConfig" data-uid="Bodoconsult.NetworkCommunication.Interfaces.ICommunicationAdapter.DataMessagingConfig">
+  DataMessagingConfig
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/Interfaces/ICommunicationAdapter.cs/#L15"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Device configuration for data messaging</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IIpDataMessagingConfig DataMessagingConfig { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Bodoconsult.NetworkCommunication.Interfaces.IIpDataMessagingConfig.html">IIpDataMessagingConfig</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_Interfaces_ICommunicationAdapter_IsCommunicationHandlerNotNull_" data-uid="Bodoconsult.NetworkCommunication.Interfaces.ICommunicationAdapter.IsCommunicationHandlerNotNull*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_Interfaces_ICommunicationAdapter_IsCommunicationHandlerNotNull" data-uid="Bodoconsult.NetworkCommunication.Interfaces.ICommunicationAdapter.IsCommunicationHandlerNotNull">
+  IsCommunicationHandlerNotNull
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/Interfaces/ICommunicationAdapter.cs/#L20"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>This property returns whether the communication object is valid and can be used</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool IsCommunicationHandlerNotNull { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_Interfaces_ICommunicationAdapter_IsConnected_" data-uid="Bodoconsult.NetworkCommunication.Interfaces.ICommunicationAdapter.IsConnected*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_Interfaces_ICommunicationAdapter_IsConnected" data-uid="Bodoconsult.NetworkCommunication.Interfaces.ICommunicationAdapter.IsConnected">
+  IsConnected
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/Interfaces/ICommunicationAdapter.cs/#L25"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Is the adapter connected</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool IsConnected { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_Interfaces_ICommunicationAdapter_SetOrderProcessingStateDelegate_" data-uid="Bodoconsult.NetworkCommunication.Interfaces.ICommunicationAdapter.SetOrderProcessingStateDelegate*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_Interfaces_ICommunicationAdapter_SetOrderProcessingStateDelegate" data-uid="Bodoconsult.NetworkCommunication.Interfaces.ICommunicationAdapter.SetOrderProcessingStateDelegate">
+  SetOrderProcessingStateDelegate
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/Interfaces/ICommunicationAdapter.cs/#L30"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Set or get the current order processing state delegate</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">SetOrderProcessingStateDelegate SetOrderProcessingStateDelegate { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Bodoconsult.NetworkCommunication.Delegates.SetOrderProcessingStateDelegate.html">SetOrderProcessingStateDelegate</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="Bodoconsult_NetworkCommunication_Interfaces_ICommunicationAdapter_CancelRunningOperation_" data-uid="Bodoconsult.NetworkCommunication.Interfaces.ICommunicationAdapter.CancelRunningOperation*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_Interfaces_ICommunicationAdapter_CancelRunningOperation" data-uid="Bodoconsult.NetworkCommunication.Interfaces.ICommunicationAdapter.CancelRunningOperation">
+  CancelRunningOperation()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/Interfaces/ICommunicationAdapter.cs/#L70"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Cancel the currently running operation on the device</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">MessageSendingResult CancelRunningOperation()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Bodoconsult.NetworkCommunication.Interfaces.MessageSendingResult.html">MessageSendingResult</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_Interfaces_ICommunicationAdapter_ComDevClose_" data-uid="Bodoconsult.NetworkCommunication.Interfaces.ICommunicationAdapter.ComDevClose*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_Interfaces_ICommunicationAdapter_ComDevClose" data-uid="Bodoconsult.NetworkCommunication.Interfaces.ICommunicationAdapter.ComDevClose">
+  ComDevClose()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/Interfaces/ICommunicationAdapter.cs/#L47"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Close the communication channel with the device</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void ComDevClose()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_Interfaces_ICommunicationAdapter_ComDevInit_" data-uid="Bodoconsult.NetworkCommunication.Interfaces.ICommunicationAdapter.ComDevInit*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_Interfaces_ICommunicationAdapter_ComDevInit" data-uid="Bodoconsult.NetworkCommunication.Interfaces.ICommunicationAdapter.ComDevInit">
+  ComDevInit()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/Interfaces/ICommunicationAdapter.cs/#L42"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Initialize the communication with the device</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool ComDevInit()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>True if the initialiazation was successfull else false</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_Interfaces_ICommunicationAdapter_ComDevReset_" data-uid="Bodoconsult.NetworkCommunication.Interfaces.ICommunicationAdapter.ComDevReset*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_Interfaces_ICommunicationAdapter_ComDevReset" data-uid="Bodoconsult.NetworkCommunication.Interfaces.ICommunicationAdapter.ComDevReset">
+  ComDevReset()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/Interfaces/ICommunicationAdapter.cs/#L52"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Reset the com dev to a defined state as if there were never a communication with the device. No logging for ComDevClose activated</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void ComDevReset()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_Interfaces_ICommunicationAdapter_IsPingableAsync_" data-uid="Bodoconsult.NetworkCommunication.Interfaces.ICommunicationAdapter.IsPingableAsync*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_Interfaces_ICommunicationAdapter_IsPingableAsync" data-uid="Bodoconsult.NetworkCommunication.Interfaces.ICommunicationAdapter.IsPingableAsync">
+  IsPingableAsync()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/Interfaces/ICommunicationAdapter.cs/#L36"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Is the device successfully pinged?</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;bool&gt; IsPingableAsync()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>&gt;</dt>
+    <dd><p>True if the device was pinged successfully else false</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_Interfaces_ICommunicationAdapter_ResetInternalState_" data-uid="Bodoconsult.NetworkCommunication.Interfaces.ICommunicationAdapter.ResetInternalState*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_Interfaces_ICommunicationAdapter_ResetInternalState" data-uid="Bodoconsult.NetworkCommunication.Interfaces.ICommunicationAdapter.ResetInternalState">
+  ResetInternalState()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/Interfaces/ICommunicationAdapter.cs/#L57"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Reset the com dev without breaking the communication</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void ResetInternalState()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_Interfaces_ICommunicationAdapter_SendDataMessage_" data-uid="Bodoconsult.NetworkCommunication.Interfaces.ICommunicationAdapter.SendDataMessage*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_Interfaces_ICommunicationAdapter_SendDataMessage_Bodoconsult_NetworkCommunication_Interfaces_IOutboundDataMessage_" data-uid="Bodoconsult.NetworkCommunication.Interfaces.ICommunicationAdapter.SendDataMessage(Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessage)">
+  SendDataMessage(IOutboundDataMessage)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/Interfaces/ICommunicationAdapter.cs/#L65"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Send a data message to the device</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">MessageSendingResult SendDataMessage(IOutboundDataMessage command)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>command</code> <a class="xref" href="Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessage.html">IOutboundDataMessage</a></dt>
+    <dd><p>Command to send</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Bodoconsult.NetworkCommunication.Interfaces.MessageSendingResult.html">MessageSendingResult</a></dt>
+    <dd><p>Reply of the device</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/Interfaces/ICommunicationAdapter.cs/#L10" class="edit-link">Edit this page</a>
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

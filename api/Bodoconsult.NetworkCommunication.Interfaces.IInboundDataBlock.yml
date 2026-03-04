@@ -1,0 +1,176 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IInboundDataBlock
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.IInboundDataBlock
+  id: IInboundDataBlock
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  children:
+  - Bodoconsult.NetworkCommunication.Interfaces.IInboundDataBlock.Data
+  langs:
+  - csharp
+  - vb
+  name: IInboundDataBlock
+  nameWithType: IInboundDataBlock
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IInboundDataBlock
+  type: Interface
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/IDataMessageDataBlock.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: IInboundDataBlock
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/IDataMessageDataBlock.cs
+    startLine: 8
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Interface for an inbound datablock in a <xref href="Bodoconsult.NetworkCommunication.Interfaces.IInboundDataMessage" data-throw-if-not-resolved="false"></xref>
+  example: []
+  syntax:
+    content: public interface IInboundDataBlock
+    content.vb: Public Interface IInboundDataBlock
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IInboundDataBlock.Data
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IInboundDataBlock.Data
+  id: Data
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IInboundDataBlock
+  langs:
+  - csharp
+  - vb
+  name: Data
+  nameWithType: IInboundDataBlock.Data
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IInboundDataBlock.Data
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/IDataMessageDataBlock.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Data
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/IDataMessageDataBlock.cs
+    startLine: 13
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Data contains the bytes of the DataBlock except the byte representing datablock type
+  example: []
+  syntax:
+    content: Memory<byte> Data { get; set; }
+    parameters: []
+    return:
+      type: System.Memory{System.Byte}
+    content.vb: Property Data As Memory(Of Byte)
+  overload: Bodoconsult.NetworkCommunication.Interfaces.IInboundDataBlock.Data*
+references:
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IInboundDataMessage
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.IInboundDataMessage
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.NetworkCommunication.Interfaces.IInboundDataMessage.html
+  name: IInboundDataMessage
+  nameWithType: IInboundDataMessage
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IInboundDataMessage
+- uid: Bodoconsult.NetworkCommunication.Interfaces
+  commentId: N:Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.html
+  name: Bodoconsult.NetworkCommunication.Interfaces
+  nameWithType: Bodoconsult.NetworkCommunication.Interfaces
+  fullName: Bodoconsult.NetworkCommunication.Interfaces
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Interfaces
+    name: Interfaces
+    href: Bodoconsult.NetworkCommunication.Interfaces.html
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Interfaces
+    name: Interfaces
+    href: Bodoconsult.NetworkCommunication.Interfaces.html
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IInboundDataBlock.Data*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.IInboundDataBlock.Data
+  href: Bodoconsult.NetworkCommunication.Interfaces.IInboundDataBlock.html#Bodoconsult_NetworkCommunication_Interfaces_IInboundDataBlock_Data
+  name: Data
+  nameWithType: IInboundDataBlock.Data
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IInboundDataBlock.Data
+- uid: System.Memory{System.Byte}
+  commentId: T:System.Memory{System.Byte}
+  parent: System
+  definition: System.Memory`1
+  href: https://learn.microsoft.com/dotnet/api/system.memory-1
+  name: Memory<byte>
+  nameWithType: Memory<byte>
+  fullName: System.Memory<byte>
+  nameWithType.vb: Memory(Of Byte)
+  fullName.vb: System.Memory(Of Byte)
+  name.vb: Memory(Of Byte)
+  spec.csharp:
+  - uid: System.Memory`1
+    name: Memory
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.memory-1
+  - name: <
+  - uid: System.Byte
+    name: byte
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.byte
+  - name: '>'
+  spec.vb:
+  - uid: System.Memory`1
+    name: Memory
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.memory-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Byte
+    name: Byte
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.byte
+  - name: )
+- uid: System.Memory`1
+  commentId: T:System.Memory`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.memory-1
+  name: Memory<T>
+  nameWithType: Memory<T>
+  fullName: System.Memory<T>
+  nameWithType.vb: Memory(Of T)
+  fullName.vb: System.Memory(Of T)
+  name.vb: Memory(Of T)
+  spec.csharp:
+  - uid: System.Memory`1
+    name: Memory
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.memory-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Memory`1
+    name: Memory
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.memory-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System

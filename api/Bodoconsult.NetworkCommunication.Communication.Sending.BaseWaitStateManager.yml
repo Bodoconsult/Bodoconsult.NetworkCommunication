@@ -1,0 +1,1235 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bodoconsult.NetworkCommunication.Communication.Sending.BaseWaitStateManager
+  commentId: T:Bodoconsult.NetworkCommunication.Communication.Sending.BaseWaitStateManager
+  id: BaseWaitStateManager
+  parent: Bodoconsult.NetworkCommunication.Communication.Sending
+  children:
+  - Bodoconsult.NetworkCommunication.Communication.Sending.BaseWaitStateManager.#ctor(Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig)
+  - Bodoconsult.NetworkCommunication.Communication.Sending.BaseWaitStateManager.Count
+  - Bodoconsult.NetworkCommunication.Communication.Sending.BaseWaitStateManager.DataMessagingConfig
+  - Bodoconsult.NetworkCommunication.Communication.Sending.BaseWaitStateManager.Dispose
+  - Bodoconsult.NetworkCommunication.Communication.Sending.BaseWaitStateManager.LastHandshakeSendBlockCode
+  - Bodoconsult.NetworkCommunication.Communication.Sending.BaseWaitStateManager.LastMessageTimeStamp
+  - Bodoconsult.NetworkCommunication.Communication.Sending.BaseWaitStateManager.OnHandshakeReceived(Bodoconsult.NetworkCommunication.Interfaces.IInboundHandShakeMessage)
+  - Bodoconsult.NetworkCommunication.Communication.Sending.BaseWaitStateManager.RaiseHandshakeReceivedDelegate
+  - Bodoconsult.NetworkCommunication.Communication.Sending.BaseWaitStateManager.ReceivedHandshakes
+  - Bodoconsult.NetworkCommunication.Communication.Sending.BaseWaitStateManager.RegisterWaitState(Bodoconsult.NetworkCommunication.Communication.Sending.SendPacketProcess)
+  - Bodoconsult.NetworkCommunication.Communication.Sending.BaseWaitStateManager.Timeout
+  - Bodoconsult.NetworkCommunication.Communication.Sending.BaseWaitStateManager.UnregisterWaitState(Bodoconsult.NetworkCommunication.Communication.Sending.SendPacketProcess)
+  - Bodoconsult.NetworkCommunication.Communication.Sending.BaseWaitStateManager.WaitStates
+  langs:
+  - csharp
+  - vb
+  name: BaseWaitStateManager
+  nameWithType: BaseWaitStateManager
+  fullName: Bodoconsult.NetworkCommunication.Communication.Sending.BaseWaitStateManager
+  type: Class
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Communication/Sending/BaseWaitStateManager.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: BaseWaitStateManager
+    path: src/Bodoconsult.NetworkCommunication/Communication/Sending/BaseWaitStateManager.cs
+    startLine: 14
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Communication.Sending
+  summary: Base class for <xref href="Bodoconsult.NetworkCommunication.Interfaces.IWaitStateManager" data-throw-if-not-resolved="false"></xref> impls
+  example: []
+  syntax:
+    content: 'public abstract class BaseWaitStateManager : IWaitStateManager, IDisposable'
+    content.vb: Public MustInherit Class BaseWaitStateManager Implements IWaitStateManager, IDisposable
+  inheritance:
+  - System.Object
+  derivedClasses:
+  - Bodoconsult.NetworkCommunication.Communication.Sending.DefaultWaitStateManager
+  implements:
+  - Bodoconsult.NetworkCommunication.Interfaces.IWaitStateManager
+  - System.IDisposable
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: Bodoconsult.NetworkCommunication.Communication.Sending.BaseWaitStateManager.ReceivedHandshakes
+  commentId: F:Bodoconsult.NetworkCommunication.Communication.Sending.BaseWaitStateManager.ReceivedHandshakes
+  id: ReceivedHandshakes
+  parent: Bodoconsult.NetworkCommunication.Communication.Sending.BaseWaitStateManager
+  langs:
+  - csharp
+  - vb
+  name: ReceivedHandshakes
+  nameWithType: BaseWaitStateManager.ReceivedHandshakes
+  fullName: Bodoconsult.NetworkCommunication.Communication.Sending.BaseWaitStateManager.ReceivedHandshakes
+  type: Field
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Communication/Sending/BaseWaitStateManager.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: ReceivedHandshakes
+    path: src/Bodoconsult.NetworkCommunication/Communication/Sending/BaseWaitStateManager.cs
+    startLine: 16
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Communication.Sending
+  syntax:
+    content: protected readonly IProducerConsumerQueue<InboundHandshakeMessage> ReceivedHandshakes
+    return:
+      type: Bodoconsult.App.Interfaces.IProducerConsumerQueue{Bodoconsult.NetworkCommunication.DataMessaging.DataMessages.InboundHandshakeMessage}
+    content.vb: Protected ReadOnly ReceivedHandshakes As IProducerConsumerQueue(Of InboundHandshakeMessage)
+- uid: Bodoconsult.NetworkCommunication.Communication.Sending.BaseWaitStateManager.WaitStates
+  commentId: F:Bodoconsult.NetworkCommunication.Communication.Sending.BaseWaitStateManager.WaitStates
+  id: WaitStates
+  parent: Bodoconsult.NetworkCommunication.Communication.Sending.BaseWaitStateManager
+  langs:
+  - csharp
+  - vb
+  name: WaitStates
+  nameWithType: BaseWaitStateManager.WaitStates
+  fullName: Bodoconsult.NetworkCommunication.Communication.Sending.BaseWaitStateManager.WaitStates
+  type: Field
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Communication/Sending/BaseWaitStateManager.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: WaitStates
+    path: src/Bodoconsult.NetworkCommunication/Communication/Sending/BaseWaitStateManager.cs
+    startLine: 17
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Communication.Sending
+  syntax:
+    content: protected readonly List<SendPacketProcess> WaitStates
+    return:
+      type: System.Collections.Generic.List{Bodoconsult.NetworkCommunication.Communication.Sending.SendPacketProcess}
+    content.vb: Protected ReadOnly WaitStates As List(Of SendPacketProcess)
+- uid: Bodoconsult.NetworkCommunication.Communication.Sending.BaseWaitStateManager.#ctor(Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig)
+  commentId: M:Bodoconsult.NetworkCommunication.Communication.Sending.BaseWaitStateManager.#ctor(Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig)
+  id: '#ctor(Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig)'
+  parent: Bodoconsult.NetworkCommunication.Communication.Sending.BaseWaitStateManager
+  langs:
+  - csharp
+  - vb
+  name: BaseWaitStateManager(IDataMessagingConfig)
+  nameWithType: BaseWaitStateManager.BaseWaitStateManager(IDataMessagingConfig)
+  fullName: Bodoconsult.NetworkCommunication.Communication.Sending.BaseWaitStateManager.BaseWaitStateManager(Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig)
+  type: Constructor
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Communication/Sending/BaseWaitStateManager.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: .ctor
+    path: src/Bodoconsult.NetworkCommunication/Communication/Sending/BaseWaitStateManager.cs
+    startLine: 24
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Communication.Sending
+  summary: Default ctor
+  example: []
+  syntax:
+    content: protected BaseWaitStateManager(IDataMessagingConfig dataMessagingConfig)
+    parameters:
+    - id: dataMessagingConfig
+      type: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig
+    content.vb: Protected Sub New(dataMessagingConfig As IDataMessagingConfig)
+  overload: Bodoconsult.NetworkCommunication.Communication.Sending.BaseWaitStateManager.#ctor*
+  nameWithType.vb: BaseWaitStateManager.New(IDataMessagingConfig)
+  fullName.vb: Bodoconsult.NetworkCommunication.Communication.Sending.BaseWaitStateManager.New(Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig)
+  name.vb: New(IDataMessagingConfig)
+- uid: Bodoconsult.NetworkCommunication.Communication.Sending.BaseWaitStateManager.DataMessagingConfig
+  commentId: P:Bodoconsult.NetworkCommunication.Communication.Sending.BaseWaitStateManager.DataMessagingConfig
+  id: DataMessagingConfig
+  parent: Bodoconsult.NetworkCommunication.Communication.Sending.BaseWaitStateManager
+  langs:
+  - csharp
+  - vb
+  name: DataMessagingConfig
+  nameWithType: BaseWaitStateManager.DataMessagingConfig
+  fullName: Bodoconsult.NetworkCommunication.Communication.Sending.BaseWaitStateManager.DataMessagingConfig
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Communication/Sending/BaseWaitStateManager.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: DataMessagingConfig
+    path: src/Bodoconsult.NetworkCommunication/Communication/Sending/BaseWaitStateManager.cs
+    startLine: 36
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Communication.Sending
+  summary: Current data messaging config
+  example: []
+  syntax:
+    content: public IDataMessagingConfig DataMessagingConfig { get; }
+    parameters: []
+    return:
+      type: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig
+    content.vb: Public ReadOnly Property DataMessagingConfig As IDataMessagingConfig
+  overload: Bodoconsult.NetworkCommunication.Communication.Sending.BaseWaitStateManager.DataMessagingConfig*
+  implements:
+  - Bodoconsult.NetworkCommunication.Interfaces.IWaitStateManager.DataMessagingConfig
+- uid: Bodoconsult.NetworkCommunication.Communication.Sending.BaseWaitStateManager.Timeout
+  commentId: P:Bodoconsult.NetworkCommunication.Communication.Sending.BaseWaitStateManager.Timeout
+  id: Timeout
+  parent: Bodoconsult.NetworkCommunication.Communication.Sending.BaseWaitStateManager
+  langs:
+  - csharp
+  - vb
+  name: Timeout
+  nameWithType: BaseWaitStateManager.Timeout
+  fullName: Bodoconsult.NetworkCommunication.Communication.Sending.BaseWaitStateManager.Timeout
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Communication/Sending/BaseWaitStateManager.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Timeout
+    path: src/Bodoconsult.NetworkCommunication/Communication/Sending/BaseWaitStateManager.cs
+    startLine: 41
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Communication.Sending
+  summary: Timeout for the state
+  example: []
+  syntax:
+    content: public int Timeout { get; protected set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property Timeout As Integer
+  overload: Bodoconsult.NetworkCommunication.Communication.Sending.BaseWaitStateManager.Timeout*
+- uid: Bodoconsult.NetworkCommunication.Communication.Sending.BaseWaitStateManager.LastHandshakeSendBlockCode
+  commentId: P:Bodoconsult.NetworkCommunication.Communication.Sending.BaseWaitStateManager.LastHandshakeSendBlockCode
+  id: LastHandshakeSendBlockCode
+  parent: Bodoconsult.NetworkCommunication.Communication.Sending.BaseWaitStateManager
+  langs:
+  - csharp
+  - vb
+  name: LastHandshakeSendBlockCode
+  nameWithType: BaseWaitStateManager.LastHandshakeSendBlockCode
+  fullName: Bodoconsult.NetworkCommunication.Communication.Sending.BaseWaitStateManager.LastHandshakeSendBlockCode
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Communication/Sending/BaseWaitStateManager.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: LastHandshakeSendBlockCode
+    path: src/Bodoconsult.NetworkCommunication/Communication/Sending/BaseWaitStateManager.cs
+    startLine: 46
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Communication.Sending
+  summary: 'The last handshake block code sent. Default: 254 meaning nothing sent'
+  example: []
+  syntax:
+    content: public byte LastHandshakeSendBlockCode { get; set; }
+    parameters: []
+    return:
+      type: System.Byte
+    content.vb: Public Property LastHandshakeSendBlockCode As Byte
+  overload: Bodoconsult.NetworkCommunication.Communication.Sending.BaseWaitStateManager.LastHandshakeSendBlockCode*
+- uid: Bodoconsult.NetworkCommunication.Communication.Sending.BaseWaitStateManager.OnHandshakeReceived(Bodoconsult.NetworkCommunication.Interfaces.IInboundHandShakeMessage)
+  commentId: M:Bodoconsult.NetworkCommunication.Communication.Sending.BaseWaitStateManager.OnHandshakeReceived(Bodoconsult.NetworkCommunication.Interfaces.IInboundHandShakeMessage)
+  id: OnHandshakeReceived(Bodoconsult.NetworkCommunication.Interfaces.IInboundHandShakeMessage)
+  parent: Bodoconsult.NetworkCommunication.Communication.Sending.BaseWaitStateManager
+  langs:
+  - csharp
+  - vb
+  name: OnHandshakeReceived(IInboundHandShakeMessage)
+  nameWithType: BaseWaitStateManager.OnHandshakeReceived(IInboundHandShakeMessage)
+  fullName: Bodoconsult.NetworkCommunication.Communication.Sending.BaseWaitStateManager.OnHandshakeReceived(Bodoconsult.NetworkCommunication.Interfaces.IInboundHandShakeMessage)
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Communication/Sending/BaseWaitStateManager.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: OnHandshakeReceived
+    path: src/Bodoconsult.NetworkCommunication/Communication/Sending/BaseWaitStateManager.cs
+    startLine: 52
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Communication.Sending
+  summary: Method used to bind to a delegate for receiving handshakes
+  example: []
+  syntax:
+    content: public virtual void OnHandshakeReceived(IInboundHandShakeMessage msg)
+    parameters:
+    - id: msg
+      type: Bodoconsult.NetworkCommunication.Interfaces.IInboundHandShakeMessage
+      description: Data message
+    content.vb: Public Overridable Sub OnHandshakeReceived(msg As IInboundHandShakeMessage)
+  overload: Bodoconsult.NetworkCommunication.Communication.Sending.BaseWaitStateManager.OnHandshakeReceived*
+  implements:
+  - Bodoconsult.NetworkCommunication.Interfaces.IWaitStateManager.OnHandshakeReceived(Bodoconsult.NetworkCommunication.Interfaces.IInboundHandShakeMessage)
+- uid: Bodoconsult.NetworkCommunication.Communication.Sending.BaseWaitStateManager.LastMessageTimeStamp
+  commentId: P:Bodoconsult.NetworkCommunication.Communication.Sending.BaseWaitStateManager.LastMessageTimeStamp
+  id: LastMessageTimeStamp
+  parent: Bodoconsult.NetworkCommunication.Communication.Sending.BaseWaitStateManager
+  langs:
+  - csharp
+  - vb
+  name: LastMessageTimeStamp
+  nameWithType: BaseWaitStateManager.LastMessageTimeStamp
+  fullName: Bodoconsult.NetworkCommunication.Communication.Sending.BaseWaitStateManager.LastMessageTimeStamp
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Communication/Sending/BaseWaitStateManager.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: LastMessageTimeStamp
+    path: src/Bodoconsult.NetworkCommunication/Communication/Sending/BaseWaitStateManager.cs
+    startLine: 86
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Communication.Sending
+  summary: The timestamp of the last message received
+  example: []
+  syntax:
+    content: public long LastMessageTimeStamp { get; set; }
+    parameters: []
+    return:
+      type: System.Int64
+    content.vb: Public Property LastMessageTimeStamp As Long
+  overload: Bodoconsult.NetworkCommunication.Communication.Sending.BaseWaitStateManager.LastMessageTimeStamp*
+  implements:
+  - Bodoconsult.NetworkCommunication.Interfaces.IWaitStateManager.LastMessageTimeStamp
+- uid: Bodoconsult.NetworkCommunication.Communication.Sending.BaseWaitStateManager.RegisterWaitState(Bodoconsult.NetworkCommunication.Communication.Sending.SendPacketProcess)
+  commentId: M:Bodoconsult.NetworkCommunication.Communication.Sending.BaseWaitStateManager.RegisterWaitState(Bodoconsult.NetworkCommunication.Communication.Sending.SendPacketProcess)
+  id: RegisterWaitState(Bodoconsult.NetworkCommunication.Communication.Sending.SendPacketProcess)
+  parent: Bodoconsult.NetworkCommunication.Communication.Sending.BaseWaitStateManager
+  langs:
+  - csharp
+  - vb
+  name: RegisterWaitState(SendPacketProcess)
+  nameWithType: BaseWaitStateManager.RegisterWaitState(SendPacketProcess)
+  fullName: Bodoconsult.NetworkCommunication.Communication.Sending.BaseWaitStateManager.RegisterWaitState(Bodoconsult.NetworkCommunication.Communication.Sending.SendPacketProcess)
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Communication/Sending/BaseWaitStateManager.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: RegisterWaitState
+    path: src/Bodoconsult.NetworkCommunication/Communication/Sending/BaseWaitStateManager.cs
+    startLine: 92
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Communication.Sending
+  summary: Register a wait for ACK state to be handled
+  example: []
+  syntax:
+    content: public void RegisterWaitState(SendPacketProcess state)
+    parameters:
+    - id: state
+      type: Bodoconsult.NetworkCommunication.Communication.Sending.SendPacketProcess
+      description: State to be registered for ACK handling
+    content.vb: Public Sub RegisterWaitState(state As SendPacketProcess)
+  overload: Bodoconsult.NetworkCommunication.Communication.Sending.BaseWaitStateManager.RegisterWaitState*
+  implements:
+  - Bodoconsult.NetworkCommunication.Interfaces.IWaitStateManager.RegisterWaitState(Bodoconsult.NetworkCommunication.Communication.Sending.SendPacketProcess)
+- uid: Bodoconsult.NetworkCommunication.Communication.Sending.BaseWaitStateManager.UnregisterWaitState(Bodoconsult.NetworkCommunication.Communication.Sending.SendPacketProcess)
+  commentId: M:Bodoconsult.NetworkCommunication.Communication.Sending.BaseWaitStateManager.UnregisterWaitState(Bodoconsult.NetworkCommunication.Communication.Sending.SendPacketProcess)
+  id: UnregisterWaitState(Bodoconsult.NetworkCommunication.Communication.Sending.SendPacketProcess)
+  parent: Bodoconsult.NetworkCommunication.Communication.Sending.BaseWaitStateManager
+  langs:
+  - csharp
+  - vb
+  name: UnregisterWaitState(SendPacketProcess)
+  nameWithType: BaseWaitStateManager.UnregisterWaitState(SendPacketProcess)
+  fullName: Bodoconsult.NetworkCommunication.Communication.Sending.BaseWaitStateManager.UnregisterWaitState(Bodoconsult.NetworkCommunication.Communication.Sending.SendPacketProcess)
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Communication/Sending/BaseWaitStateManager.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: UnregisterWaitState
+    path: src/Bodoconsult.NetworkCommunication/Communication/Sending/BaseWaitStateManager.cs
+    startLine: 109
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Communication.Sending
+  summary: Delegate for unregistering a wait state from a <xref href="Bodoconsult.NetworkCommunication.Interfaces.IWaitStateManager" data-throw-if-not-resolved="false"></xref> implementation
+  example: []
+  syntax:
+    content: public void UnregisterWaitState(SendPacketProcess state)
+    parameters:
+    - id: state
+      type: Bodoconsult.NetworkCommunication.Communication.Sending.SendPacketProcess
+      description: wait state to unregister
+    content.vb: Public Sub UnregisterWaitState(state As SendPacketProcess)
+  overload: Bodoconsult.NetworkCommunication.Communication.Sending.BaseWaitStateManager.UnregisterWaitState*
+- uid: Bodoconsult.NetworkCommunication.Communication.Sending.BaseWaitStateManager.RaiseHandshakeReceivedDelegate
+  commentId: P:Bodoconsult.NetworkCommunication.Communication.Sending.BaseWaitStateManager.RaiseHandshakeReceivedDelegate
+  id: RaiseHandshakeReceivedDelegate
+  parent: Bodoconsult.NetworkCommunication.Communication.Sending.BaseWaitStateManager
+  langs:
+  - csharp
+  - vb
+  name: RaiseHandshakeReceivedDelegate
+  nameWithType: BaseWaitStateManager.RaiseHandshakeReceivedDelegate
+  fullName: Bodoconsult.NetworkCommunication.Communication.Sending.BaseWaitStateManager.RaiseHandshakeReceivedDelegate
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Communication/Sending/BaseWaitStateManager.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: RaiseHandshakeReceivedDelegate
+    path: src/Bodoconsult.NetworkCommunication/Communication/Sending/BaseWaitStateManager.cs
+    startLine: 123
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Communication.Sending
+  summary: Delegate called if <xref href="Bodoconsult.NetworkCommunication.Interfaces.IWaitStateManager.OnHandshakeReceived(Bodoconsult.NetworkCommunication.Interfaces.IInboundHandShakeMessage)" data-throw-if-not-resolved="false"></xref> is starting to process a received handshake message
+  example: []
+  syntax:
+    content: public RaiseDataMessageHandshakeReceivedDelegate RaiseHandshakeReceivedDelegate { get; set; }
+    parameters: []
+    return:
+      type: Bodoconsult.NetworkCommunication.Delegates.RaiseDataMessageHandshakeReceivedDelegate
+    content.vb: Public Property RaiseHandshakeReceivedDelegate As RaiseDataMessageHandshakeReceivedDelegate
+  overload: Bodoconsult.NetworkCommunication.Communication.Sending.BaseWaitStateManager.RaiseHandshakeReceivedDelegate*
+  implements:
+  - Bodoconsult.NetworkCommunication.Interfaces.IWaitStateManager.RaiseHandshakeReceivedDelegate
+- uid: Bodoconsult.NetworkCommunication.Communication.Sending.BaseWaitStateManager.Count
+  commentId: P:Bodoconsult.NetworkCommunication.Communication.Sending.BaseWaitStateManager.Count
+  id: Count
+  parent: Bodoconsult.NetworkCommunication.Communication.Sending.BaseWaitStateManager
+  langs:
+  - csharp
+  - vb
+  name: Count
+  nameWithType: BaseWaitStateManager.Count
+  fullName: Bodoconsult.NetworkCommunication.Communication.Sending.BaseWaitStateManager.Count
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Communication/Sending/BaseWaitStateManager.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Count
+    path: src/Bodoconsult.NetworkCommunication/Communication/Sending/BaseWaitStateManager.cs
+    startLine: 128
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Communication.Sending
+  summary: Current number of wait states registered
+  example: []
+  syntax:
+    content: public int Count { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public ReadOnly Property Count As Integer
+  overload: Bodoconsult.NetworkCommunication.Communication.Sending.BaseWaitStateManager.Count*
+  implements:
+  - Bodoconsult.NetworkCommunication.Interfaces.IWaitStateManager.Count
+- uid: Bodoconsult.NetworkCommunication.Communication.Sending.BaseWaitStateManager.Dispose
+  commentId: M:Bodoconsult.NetworkCommunication.Communication.Sending.BaseWaitStateManager.Dispose
+  id: Dispose
+  parent: Bodoconsult.NetworkCommunication.Communication.Sending.BaseWaitStateManager
+  langs:
+  - csharp
+  - vb
+  name: Dispose()
+  nameWithType: BaseWaitStateManager.Dispose()
+  fullName: Bodoconsult.NetworkCommunication.Communication.Sending.BaseWaitStateManager.Dispose()
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Communication/Sending/BaseWaitStateManager.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Dispose
+    path: src/Bodoconsult.NetworkCommunication/Communication/Sending/BaseWaitStateManager.cs
+    startLine: 161
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Communication.Sending
+  summary: Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+  example: []
+  syntax:
+    content: public void Dispose()
+    content.vb: Public Sub Dispose()
+  overload: Bodoconsult.NetworkCommunication.Communication.Sending.BaseWaitStateManager.Dispose*
+  implements:
+  - System.IDisposable.Dispose
+references:
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IWaitStateManager
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.IWaitStateManager
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.NetworkCommunication.Interfaces.IWaitStateManager.html
+  name: IWaitStateManager
+  nameWithType: IWaitStateManager
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IWaitStateManager
+- uid: Bodoconsult.NetworkCommunication.Communication.Sending
+  commentId: N:Bodoconsult.NetworkCommunication.Communication.Sending
+  href: Bodoconsult.html
+  name: Bodoconsult.NetworkCommunication.Communication.Sending
+  nameWithType: Bodoconsult.NetworkCommunication.Communication.Sending
+  fullName: Bodoconsult.NetworkCommunication.Communication.Sending
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Communication
+    name: Communication
+    href: Bodoconsult.NetworkCommunication.Communication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Communication.Sending
+    name: Sending
+    href: Bodoconsult.NetworkCommunication.Communication.Sending.html
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Communication
+    name: Communication
+    href: Bodoconsult.NetworkCommunication.Communication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Communication.Sending
+    name: Sending
+    href: Bodoconsult.NetworkCommunication.Communication.Sending.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.IDisposable
+  commentId: T:System.IDisposable
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable
+  name: IDisposable
+  nameWithType: IDisposable
+  fullName: System.IDisposable
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: Bodoconsult.NetworkCommunication.Interfaces
+  commentId: N:Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.html
+  name: Bodoconsult.NetworkCommunication.Interfaces
+  nameWithType: Bodoconsult.NetworkCommunication.Interfaces
+  fullName: Bodoconsult.NetworkCommunication.Interfaces
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Interfaces
+    name: Interfaces
+    href: Bodoconsult.NetworkCommunication.Interfaces.html
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Interfaces
+    name: Interfaces
+    href: Bodoconsult.NetworkCommunication.Interfaces.html
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Bodoconsult.App.Interfaces.IProducerConsumerQueue{Bodoconsult.NetworkCommunication.DataMessaging.DataMessages.InboundHandshakeMessage}
+  commentId: T:Bodoconsult.App.Interfaces.IProducerConsumerQueue{Bodoconsult.NetworkCommunication.DataMessaging.DataMessages.InboundHandshakeMessage}
+  parent: Bodoconsult.App.Interfaces
+  definition: Bodoconsult.App.Interfaces.IProducerConsumerQueue`1
+  href: Bodoconsult.NetworkCommunication.DataMessaging.DataMessages.InboundHandshakeMessage.html
+  name: IProducerConsumerQueue<InboundHandshakeMessage>
+  nameWithType: IProducerConsumerQueue<InboundHandshakeMessage>
+  fullName: Bodoconsult.App.Interfaces.IProducerConsumerQueue<Bodoconsult.NetworkCommunication.DataMessaging.DataMessages.InboundHandshakeMessage>
+  nameWithType.vb: IProducerConsumerQueue(Of InboundHandshakeMessage)
+  fullName.vb: Bodoconsult.App.Interfaces.IProducerConsumerQueue(Of Bodoconsult.NetworkCommunication.DataMessaging.DataMessages.InboundHandshakeMessage)
+  name.vb: IProducerConsumerQueue(Of InboundHandshakeMessage)
+  spec.csharp:
+  - uid: Bodoconsult.App.Interfaces.IProducerConsumerQueue`1
+    name: IProducerConsumerQueue
+    isExternal: true
+  - name: <
+  - uid: Bodoconsult.NetworkCommunication.DataMessaging.DataMessages.InboundHandshakeMessage
+    name: InboundHandshakeMessage
+    href: Bodoconsult.NetworkCommunication.DataMessaging.DataMessages.InboundHandshakeMessage.html
+  - name: '>'
+  spec.vb:
+  - uid: Bodoconsult.App.Interfaces.IProducerConsumerQueue`1
+    name: IProducerConsumerQueue
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Bodoconsult.NetworkCommunication.DataMessaging.DataMessages.InboundHandshakeMessage
+    name: InboundHandshakeMessage
+    href: Bodoconsult.NetworkCommunication.DataMessaging.DataMessages.InboundHandshakeMessage.html
+  - name: )
+- uid: Bodoconsult.App.Interfaces.IProducerConsumerQueue`1
+  commentId: T:Bodoconsult.App.Interfaces.IProducerConsumerQueue`1
+  isExternal: true
+  name: IProducerConsumerQueue<T>
+  nameWithType: IProducerConsumerQueue<T>
+  fullName: Bodoconsult.App.Interfaces.IProducerConsumerQueue<T>
+  nameWithType.vb: IProducerConsumerQueue(Of T)
+  fullName.vb: Bodoconsult.App.Interfaces.IProducerConsumerQueue(Of T)
+  name.vb: IProducerConsumerQueue(Of T)
+  spec.csharp:
+  - uid: Bodoconsult.App.Interfaces.IProducerConsumerQueue`1
+    name: IProducerConsumerQueue
+    isExternal: true
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: Bodoconsult.App.Interfaces.IProducerConsumerQueue`1
+    name: IProducerConsumerQueue
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Bodoconsult.App.Interfaces
+  commentId: N:Bodoconsult.App.Interfaces
+  isExternal: true
+  name: Bodoconsult.App.Interfaces
+  nameWithType: Bodoconsult.App.Interfaces
+  fullName: Bodoconsult.App.Interfaces
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    isExternal: true
+  - name: .
+  - uid: Bodoconsult.App
+    name: App
+    isExternal: true
+  - name: .
+  - uid: Bodoconsult.App.Interfaces
+    name: Interfaces
+    isExternal: true
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    isExternal: true
+  - name: .
+  - uid: Bodoconsult.App
+    name: App
+    isExternal: true
+  - name: .
+  - uid: Bodoconsult.App.Interfaces
+    name: Interfaces
+    isExternal: true
+- uid: System.Collections.Generic.List{Bodoconsult.NetworkCommunication.Communication.Sending.SendPacketProcess}
+  commentId: T:System.Collections.Generic.List{Bodoconsult.NetworkCommunication.Communication.Sending.SendPacketProcess}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.List`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  name: List<SendPacketProcess>
+  nameWithType: List<SendPacketProcess>
+  fullName: System.Collections.Generic.List<Bodoconsult.NetworkCommunication.Communication.Sending.SendPacketProcess>
+  nameWithType.vb: List(Of SendPacketProcess)
+  fullName.vb: System.Collections.Generic.List(Of Bodoconsult.NetworkCommunication.Communication.Sending.SendPacketProcess)
+  name.vb: List(Of SendPacketProcess)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - uid: Bodoconsult.NetworkCommunication.Communication.Sending.SendPacketProcess
+    name: SendPacketProcess
+    href: Bodoconsult.NetworkCommunication.Communication.Sending.SendPacketProcess.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Bodoconsult.NetworkCommunication.Communication.Sending.SendPacketProcess
+    name: SendPacketProcess
+    href: Bodoconsult.NetworkCommunication.Communication.Sending.SendPacketProcess.html
+  - name: )
+- uid: System.Collections.Generic.List`1
+  commentId: T:System.Collections.Generic.List`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  name: List<T>
+  nameWithType: List<T>
+  fullName: System.Collections.Generic.List<T>
+  nameWithType.vb: List(Of T)
+  fullName.vb: System.Collections.Generic.List(Of T)
+  name.vb: List(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: Bodoconsult.NetworkCommunication.Communication.Sending.BaseWaitStateManager.#ctor*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Communication.Sending.BaseWaitStateManager.#ctor
+  href: Bodoconsult.NetworkCommunication.Communication.Sending.BaseWaitStateManager.html#Bodoconsult_NetworkCommunication_Communication_Sending_BaseWaitStateManager__ctor_Bodoconsult_NetworkCommunication_Interfaces_IDataMessagingConfig_
+  name: BaseWaitStateManager
+  nameWithType: BaseWaitStateManager.BaseWaitStateManager
+  fullName: Bodoconsult.NetworkCommunication.Communication.Sending.BaseWaitStateManager.BaseWaitStateManager
+  nameWithType.vb: BaseWaitStateManager.New
+  fullName.vb: Bodoconsult.NetworkCommunication.Communication.Sending.BaseWaitStateManager.New
+  name.vb: New
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig.html
+  name: IDataMessagingConfig
+  nameWithType: IDataMessagingConfig
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig
+- uid: Bodoconsult.NetworkCommunication.Communication.Sending.BaseWaitStateManager.DataMessagingConfig*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Communication.Sending.BaseWaitStateManager.DataMessagingConfig
+  href: Bodoconsult.NetworkCommunication.Communication.Sending.BaseWaitStateManager.html#Bodoconsult_NetworkCommunication_Communication_Sending_BaseWaitStateManager_DataMessagingConfig
+  name: DataMessagingConfig
+  nameWithType: BaseWaitStateManager.DataMessagingConfig
+  fullName: Bodoconsult.NetworkCommunication.Communication.Sending.BaseWaitStateManager.DataMessagingConfig
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IWaitStateManager.DataMessagingConfig
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IWaitStateManager.DataMessagingConfig
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IWaitStateManager
+  href: Bodoconsult.NetworkCommunication.Interfaces.IWaitStateManager.html#Bodoconsult_NetworkCommunication_Interfaces_IWaitStateManager_DataMessagingConfig
+  name: DataMessagingConfig
+  nameWithType: IWaitStateManager.DataMessagingConfig
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IWaitStateManager.DataMessagingConfig
+- uid: Bodoconsult.NetworkCommunication.Communication.Sending.BaseWaitStateManager.Timeout*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Communication.Sending.BaseWaitStateManager.Timeout
+  href: Bodoconsult.NetworkCommunication.Communication.Sending.BaseWaitStateManager.html#Bodoconsult_NetworkCommunication_Communication_Sending_BaseWaitStateManager_Timeout
+  name: Timeout
+  nameWithType: BaseWaitStateManager.Timeout
+  fullName: Bodoconsult.NetworkCommunication.Communication.Sending.BaseWaitStateManager.Timeout
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: Bodoconsult.NetworkCommunication.Communication.Sending.BaseWaitStateManager.LastHandshakeSendBlockCode*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Communication.Sending.BaseWaitStateManager.LastHandshakeSendBlockCode
+  href: Bodoconsult.NetworkCommunication.Communication.Sending.BaseWaitStateManager.html#Bodoconsult_NetworkCommunication_Communication_Sending_BaseWaitStateManager_LastHandshakeSendBlockCode
+  name: LastHandshakeSendBlockCode
+  nameWithType: BaseWaitStateManager.LastHandshakeSendBlockCode
+  fullName: Bodoconsult.NetworkCommunication.Communication.Sending.BaseWaitStateManager.LastHandshakeSendBlockCode
+- uid: System.Byte
+  commentId: T:System.Byte
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.byte
+  name: byte
+  nameWithType: byte
+  fullName: byte
+  nameWithType.vb: Byte
+  fullName.vb: Byte
+  name.vb: Byte
+- uid: Bodoconsult.NetworkCommunication.Communication.Sending.BaseWaitStateManager.OnHandshakeReceived*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Communication.Sending.BaseWaitStateManager.OnHandshakeReceived
+  href: Bodoconsult.NetworkCommunication.Communication.Sending.BaseWaitStateManager.html#Bodoconsult_NetworkCommunication_Communication_Sending_BaseWaitStateManager_OnHandshakeReceived_Bodoconsult_NetworkCommunication_Interfaces_IInboundHandShakeMessage_
+  name: OnHandshakeReceived
+  nameWithType: BaseWaitStateManager.OnHandshakeReceived
+  fullName: Bodoconsult.NetworkCommunication.Communication.Sending.BaseWaitStateManager.OnHandshakeReceived
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IWaitStateManager.OnHandshakeReceived(Bodoconsult.NetworkCommunication.Interfaces.IInboundHandShakeMessage)
+  commentId: M:Bodoconsult.NetworkCommunication.Interfaces.IWaitStateManager.OnHandshakeReceived(Bodoconsult.NetworkCommunication.Interfaces.IInboundHandShakeMessage)
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IWaitStateManager
+  href: Bodoconsult.NetworkCommunication.Interfaces.IWaitStateManager.html#Bodoconsult_NetworkCommunication_Interfaces_IWaitStateManager_OnHandshakeReceived_Bodoconsult_NetworkCommunication_Interfaces_IInboundHandShakeMessage_
+  name: OnHandshakeReceived(IInboundHandShakeMessage)
+  nameWithType: IWaitStateManager.OnHandshakeReceived(IInboundHandShakeMessage)
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IWaitStateManager.OnHandshakeReceived(Bodoconsult.NetworkCommunication.Interfaces.IInboundHandShakeMessage)
+  spec.csharp:
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IWaitStateManager.OnHandshakeReceived(Bodoconsult.NetworkCommunication.Interfaces.IInboundHandShakeMessage)
+    name: OnHandshakeReceived
+    href: Bodoconsult.NetworkCommunication.Interfaces.IWaitStateManager.html#Bodoconsult_NetworkCommunication_Interfaces_IWaitStateManager_OnHandshakeReceived_Bodoconsult_NetworkCommunication_Interfaces_IInboundHandShakeMessage_
+  - name: (
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IInboundHandShakeMessage
+    name: IInboundHandShakeMessage
+    href: Bodoconsult.NetworkCommunication.Interfaces.IInboundHandShakeMessage.html
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IWaitStateManager.OnHandshakeReceived(Bodoconsult.NetworkCommunication.Interfaces.IInboundHandShakeMessage)
+    name: OnHandshakeReceived
+    href: Bodoconsult.NetworkCommunication.Interfaces.IWaitStateManager.html#Bodoconsult_NetworkCommunication_Interfaces_IWaitStateManager_OnHandshakeReceived_Bodoconsult_NetworkCommunication_Interfaces_IInboundHandShakeMessage_
+  - name: (
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IInboundHandShakeMessage
+    name: IInboundHandShakeMessage
+    href: Bodoconsult.NetworkCommunication.Interfaces.IInboundHandShakeMessage.html
+  - name: )
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IInboundHandShakeMessage
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.IInboundHandShakeMessage
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.NetworkCommunication.Interfaces.IInboundHandShakeMessage.html
+  name: IInboundHandShakeMessage
+  nameWithType: IInboundHandShakeMessage
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IInboundHandShakeMessage
+- uid: Bodoconsult.NetworkCommunication.Communication.Sending.BaseWaitStateManager.LastMessageTimeStamp*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Communication.Sending.BaseWaitStateManager.LastMessageTimeStamp
+  href: Bodoconsult.NetworkCommunication.Communication.Sending.BaseWaitStateManager.html#Bodoconsult_NetworkCommunication_Communication_Sending_BaseWaitStateManager_LastMessageTimeStamp
+  name: LastMessageTimeStamp
+  nameWithType: BaseWaitStateManager.LastMessageTimeStamp
+  fullName: Bodoconsult.NetworkCommunication.Communication.Sending.BaseWaitStateManager.LastMessageTimeStamp
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IWaitStateManager.LastMessageTimeStamp
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IWaitStateManager.LastMessageTimeStamp
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IWaitStateManager
+  href: Bodoconsult.NetworkCommunication.Interfaces.IWaitStateManager.html#Bodoconsult_NetworkCommunication_Interfaces_IWaitStateManager_LastMessageTimeStamp
+  name: LastMessageTimeStamp
+  nameWithType: IWaitStateManager.LastMessageTimeStamp
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IWaitStateManager.LastMessageTimeStamp
+- uid: System.Int64
+  commentId: T:System.Int64
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int64
+  name: long
+  nameWithType: long
+  fullName: long
+  nameWithType.vb: Long
+  fullName.vb: Long
+  name.vb: Long
+- uid: Bodoconsult.NetworkCommunication.Communication.Sending.BaseWaitStateManager.RegisterWaitState*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Communication.Sending.BaseWaitStateManager.RegisterWaitState
+  href: Bodoconsult.NetworkCommunication.Communication.Sending.BaseWaitStateManager.html#Bodoconsult_NetworkCommunication_Communication_Sending_BaseWaitStateManager_RegisterWaitState_Bodoconsult_NetworkCommunication_Communication_Sending_SendPacketProcess_
+  name: RegisterWaitState
+  nameWithType: BaseWaitStateManager.RegisterWaitState
+  fullName: Bodoconsult.NetworkCommunication.Communication.Sending.BaseWaitStateManager.RegisterWaitState
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IWaitStateManager.RegisterWaitState(Bodoconsult.NetworkCommunication.Communication.Sending.SendPacketProcess)
+  commentId: M:Bodoconsult.NetworkCommunication.Interfaces.IWaitStateManager.RegisterWaitState(Bodoconsult.NetworkCommunication.Communication.Sending.SendPacketProcess)
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IWaitStateManager
+  href: Bodoconsult.NetworkCommunication.Interfaces.IWaitStateManager.html#Bodoconsult_NetworkCommunication_Interfaces_IWaitStateManager_RegisterWaitState_Bodoconsult_NetworkCommunication_Communication_Sending_SendPacketProcess_
+  name: RegisterWaitState(SendPacketProcess)
+  nameWithType: IWaitStateManager.RegisterWaitState(SendPacketProcess)
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IWaitStateManager.RegisterWaitState(Bodoconsult.NetworkCommunication.Communication.Sending.SendPacketProcess)
+  spec.csharp:
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IWaitStateManager.RegisterWaitState(Bodoconsult.NetworkCommunication.Communication.Sending.SendPacketProcess)
+    name: RegisterWaitState
+    href: Bodoconsult.NetworkCommunication.Interfaces.IWaitStateManager.html#Bodoconsult_NetworkCommunication_Interfaces_IWaitStateManager_RegisterWaitState_Bodoconsult_NetworkCommunication_Communication_Sending_SendPacketProcess_
+  - name: (
+  - uid: Bodoconsult.NetworkCommunication.Communication.Sending.SendPacketProcess
+    name: SendPacketProcess
+    href: Bodoconsult.NetworkCommunication.Communication.Sending.SendPacketProcess.html
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IWaitStateManager.RegisterWaitState(Bodoconsult.NetworkCommunication.Communication.Sending.SendPacketProcess)
+    name: RegisterWaitState
+    href: Bodoconsult.NetworkCommunication.Interfaces.IWaitStateManager.html#Bodoconsult_NetworkCommunication_Interfaces_IWaitStateManager_RegisterWaitState_Bodoconsult_NetworkCommunication_Communication_Sending_SendPacketProcess_
+  - name: (
+  - uid: Bodoconsult.NetworkCommunication.Communication.Sending.SendPacketProcess
+    name: SendPacketProcess
+    href: Bodoconsult.NetworkCommunication.Communication.Sending.SendPacketProcess.html
+  - name: )
+- uid: Bodoconsult.NetworkCommunication.Communication.Sending.SendPacketProcess
+  commentId: T:Bodoconsult.NetworkCommunication.Communication.Sending.SendPacketProcess
+  parent: Bodoconsult.NetworkCommunication.Communication.Sending
+  href: Bodoconsult.NetworkCommunication.Communication.Sending.SendPacketProcess.html
+  name: SendPacketProcess
+  nameWithType: SendPacketProcess
+  fullName: Bodoconsult.NetworkCommunication.Communication.Sending.SendPacketProcess
+- uid: Bodoconsult.NetworkCommunication.Communication.Sending.BaseWaitStateManager.UnregisterWaitState*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Communication.Sending.BaseWaitStateManager.UnregisterWaitState
+  href: Bodoconsult.NetworkCommunication.Communication.Sending.BaseWaitStateManager.html#Bodoconsult_NetworkCommunication_Communication_Sending_BaseWaitStateManager_UnregisterWaitState_Bodoconsult_NetworkCommunication_Communication_Sending_SendPacketProcess_
+  name: UnregisterWaitState
+  nameWithType: BaseWaitStateManager.UnregisterWaitState
+  fullName: Bodoconsult.NetworkCommunication.Communication.Sending.BaseWaitStateManager.UnregisterWaitState
+- uid: Bodoconsult.NetworkCommunication.Communication.Sending.BaseWaitStateManager.RaiseHandshakeReceivedDelegate*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Communication.Sending.BaseWaitStateManager.RaiseHandshakeReceivedDelegate
+  href: Bodoconsult.NetworkCommunication.Communication.Sending.BaseWaitStateManager.html#Bodoconsult_NetworkCommunication_Communication_Sending_BaseWaitStateManager_RaiseHandshakeReceivedDelegate
+  name: RaiseHandshakeReceivedDelegate
+  nameWithType: BaseWaitStateManager.RaiseHandshakeReceivedDelegate
+  fullName: Bodoconsult.NetworkCommunication.Communication.Sending.BaseWaitStateManager.RaiseHandshakeReceivedDelegate
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IWaitStateManager.RaiseHandshakeReceivedDelegate
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IWaitStateManager.RaiseHandshakeReceivedDelegate
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IWaitStateManager
+  href: Bodoconsult.NetworkCommunication.Interfaces.IWaitStateManager.html#Bodoconsult_NetworkCommunication_Interfaces_IWaitStateManager_RaiseHandshakeReceivedDelegate
+  name: RaiseHandshakeReceivedDelegate
+  nameWithType: IWaitStateManager.RaiseHandshakeReceivedDelegate
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IWaitStateManager.RaiseHandshakeReceivedDelegate
+- uid: Bodoconsult.NetworkCommunication.Delegates.RaiseDataMessageHandshakeReceivedDelegate
+  commentId: T:Bodoconsult.NetworkCommunication.Delegates.RaiseDataMessageHandshakeReceivedDelegate
+  parent: Bodoconsult.NetworkCommunication.Delegates
+  href: Bodoconsult.NetworkCommunication.Delegates.RaiseDataMessageHandshakeReceivedDelegate.html
+  name: RaiseDataMessageHandshakeReceivedDelegate
+  nameWithType: RaiseDataMessageHandshakeReceivedDelegate
+  fullName: Bodoconsult.NetworkCommunication.Delegates.RaiseDataMessageHandshakeReceivedDelegate
+- uid: Bodoconsult.NetworkCommunication.Delegates
+  commentId: N:Bodoconsult.NetworkCommunication.Delegates
+  href: Bodoconsult.html
+  name: Bodoconsult.NetworkCommunication.Delegates
+  nameWithType: Bodoconsult.NetworkCommunication.Delegates
+  fullName: Bodoconsult.NetworkCommunication.Delegates
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Delegates
+    name: Delegates
+    href: Bodoconsult.NetworkCommunication.Delegates.html
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Delegates
+    name: Delegates
+    href: Bodoconsult.NetworkCommunication.Delegates.html
+- uid: Bodoconsult.NetworkCommunication.Communication.Sending.BaseWaitStateManager.Count*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Communication.Sending.BaseWaitStateManager.Count
+  href: Bodoconsult.NetworkCommunication.Communication.Sending.BaseWaitStateManager.html#Bodoconsult_NetworkCommunication_Communication_Sending_BaseWaitStateManager_Count
+  name: Count
+  nameWithType: BaseWaitStateManager.Count
+  fullName: Bodoconsult.NetworkCommunication.Communication.Sending.BaseWaitStateManager.Count
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IWaitStateManager.Count
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IWaitStateManager.Count
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IWaitStateManager
+  href: Bodoconsult.NetworkCommunication.Interfaces.IWaitStateManager.html#Bodoconsult_NetworkCommunication_Interfaces_IWaitStateManager_Count
+  name: Count
+  nameWithType: IWaitStateManager.Count
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IWaitStateManager.Count
+- uid: Bodoconsult.NetworkCommunication.Communication.Sending.BaseWaitStateManager.Dispose*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Communication.Sending.BaseWaitStateManager.Dispose
+  href: Bodoconsult.NetworkCommunication.Communication.Sending.BaseWaitStateManager.html#Bodoconsult_NetworkCommunication_Communication_Sending_BaseWaitStateManager_Dispose
+  name: Dispose
+  nameWithType: BaseWaitStateManager.Dispose
+  fullName: Bodoconsult.NetworkCommunication.Communication.Sending.BaseWaitStateManager.Dispose
+- uid: System.IDisposable.Dispose
+  commentId: M:System.IDisposable.Dispose
+  parent: System.IDisposable
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  name: Dispose()
+  nameWithType: IDisposable.Dispose()
+  fullName: System.IDisposable.Dispose()
+  spec.csharp:
+  - uid: System.IDisposable.Dispose
+    name: Dispose
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.IDisposable.Dispose
+    name: Dispose
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  - name: (
+  - name: )

@@ -1,0 +1,23 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bodoconsult.NetworkCommunication.EventSources
+  commentId: N:Bodoconsult.NetworkCommunication.EventSources
+  id: Bodoconsult.NetworkCommunication.EventSources
+  children:
+  - Bodoconsult.NetworkCommunication.EventSources.DataMessagingEventSourceProvider
+  langs:
+  - csharp
+  - vb
+  name: Bodoconsult.NetworkCommunication.EventSources
+  nameWithType: Bodoconsult.NetworkCommunication.EventSources
+  fullName: Bodoconsult.NetworkCommunication.EventSources
+  type: Namespace
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+references:
+- uid: Bodoconsult.NetworkCommunication.EventSources.DataMessagingEventSourceProvider
+  commentId: T:Bodoconsult.NetworkCommunication.EventSources.DataMessagingEventSourceProvider
+  href: Bodoconsult.NetworkCommunication.EventSources.DataMessagingEventSourceProvider.html
+  name: DataMessagingEventSourceProvider
+  nameWithType: DataMessagingEventSourceProvider
+  fullName: Bodoconsult.NetworkCommunication.EventSources.DataMessagingEventSourceProvider

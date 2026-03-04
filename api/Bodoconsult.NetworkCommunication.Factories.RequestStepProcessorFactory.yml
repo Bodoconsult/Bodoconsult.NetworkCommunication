@@ -1,0 +1,519 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bodoconsult.NetworkCommunication.Factories.RequestStepProcessorFactory
+  commentId: T:Bodoconsult.NetworkCommunication.Factories.RequestStepProcessorFactory
+  id: RequestStepProcessorFactory
+  parent: Bodoconsult.NetworkCommunication.Factories
+  children:
+  - Bodoconsult.NetworkCommunication.Factories.RequestStepProcessorFactory.CreateDeviceProcessor(Bodoconsult.NetworkCommunication.Interfaces.IDeviceRequestSpec)
+  - Bodoconsult.NetworkCommunication.Factories.RequestStepProcessorFactory.CreateInternalProcessor(Bodoconsult.NetworkCommunication.Interfaces.IInternalRequestSpec)
+  langs:
+  - csharp
+  - vb
+  name: RequestStepProcessorFactory
+  nameWithType: RequestStepProcessorFactory
+  fullName: Bodoconsult.NetworkCommunication.Factories.RequestStepProcessorFactory
+  type: Class
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Factories/RequestStepProcessorFactory.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: RequestStepProcessorFactory
+    path: src/Bodoconsult.NetworkCommunication/Factories/RequestStepProcessorFactory.cs
+    startLine: 10
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Factories
+  summary: Factory for <xref href="Bodoconsult.NetworkCommunication.OrderManagement.Processors.DeviceRequestStepProcessor" data-throw-if-not-resolved="false"></xref> instances
+  example: []
+  syntax:
+    content: 'public class RequestStepProcessorFactory : IRequestStepProcessorFactory'
+    content.vb: Public Class RequestStepProcessorFactory Implements IRequestStepProcessorFactory
+  inheritance:
+  - System.Object
+  implements:
+  - Bodoconsult.NetworkCommunication.Interfaces.IRequestStepProcessorFactory
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: Bodoconsult.NetworkCommunication.Factories.RequestStepProcessorFactory.CreateDeviceProcessor(Bodoconsult.NetworkCommunication.Interfaces.IDeviceRequestSpec)
+  commentId: M:Bodoconsult.NetworkCommunication.Factories.RequestStepProcessorFactory.CreateDeviceProcessor(Bodoconsult.NetworkCommunication.Interfaces.IDeviceRequestSpec)
+  id: CreateDeviceProcessor(Bodoconsult.NetworkCommunication.Interfaces.IDeviceRequestSpec)
+  parent: Bodoconsult.NetworkCommunication.Factories.RequestStepProcessorFactory
+  langs:
+  - csharp
+  - vb
+  name: CreateDeviceProcessor(IDeviceRequestSpec)
+  nameWithType: RequestStepProcessorFactory.CreateDeviceProcessor(IDeviceRequestSpec)
+  fullName: Bodoconsult.NetworkCommunication.Factories.RequestStepProcessorFactory.CreateDeviceProcessor(Bodoconsult.NetworkCommunication.Interfaces.IDeviceRequestSpec)
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Factories/RequestStepProcessorFactory.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: CreateDeviceProcessor
+    path: src/Bodoconsult.NetworkCommunication/Factories/RequestStepProcessorFactory.cs
+    startLine: 17
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Factories
+  summary: Create a tower request step processor
+  example: []
+  syntax:
+    content: public IDeviceRequestStepProcessor CreateDeviceProcessor(IDeviceRequestSpec requestSpec)
+    parameters:
+    - id: requestSpec
+      type: Bodoconsult.NetworkCommunication.Interfaces.IDeviceRequestSpec
+      description: Current request
+    return:
+      type: Bodoconsult.NetworkCommunication.Interfaces.IDeviceRequestStepProcessor
+      description: A valid tower request step processor instance
+    content.vb: Public Function CreateDeviceProcessor(requestSpec As IDeviceRequestSpec) As IDeviceRequestStepProcessor
+  overload: Bodoconsult.NetworkCommunication.Factories.RequestStepProcessorFactory.CreateDeviceProcessor*
+  implements:
+  - Bodoconsult.NetworkCommunication.Interfaces.IRequestStepProcessorFactory.CreateDeviceProcessor(Bodoconsult.NetworkCommunication.Interfaces.IDeviceRequestSpec)
+- uid: Bodoconsult.NetworkCommunication.Factories.RequestStepProcessorFactory.CreateInternalProcessor(Bodoconsult.NetworkCommunication.Interfaces.IInternalRequestSpec)
+  commentId: M:Bodoconsult.NetworkCommunication.Factories.RequestStepProcessorFactory.CreateInternalProcessor(Bodoconsult.NetworkCommunication.Interfaces.IInternalRequestSpec)
+  id: CreateInternalProcessor(Bodoconsult.NetworkCommunication.Interfaces.IInternalRequestSpec)
+  parent: Bodoconsult.NetworkCommunication.Factories.RequestStepProcessorFactory
+  langs:
+  - csharp
+  - vb
+  name: CreateInternalProcessor(IInternalRequestSpec)
+  nameWithType: RequestStepProcessorFactory.CreateInternalProcessor(IInternalRequestSpec)
+  fullName: Bodoconsult.NetworkCommunication.Factories.RequestStepProcessorFactory.CreateInternalProcessor(Bodoconsult.NetworkCommunication.Interfaces.IInternalRequestSpec)
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Factories/RequestStepProcessorFactory.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: CreateInternalProcessor
+    path: src/Bodoconsult.NetworkCommunication/Factories/RequestStepProcessorFactory.cs
+    startLine: 27
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Factories
+  summary: Create a tower request step processor
+  example: []
+  syntax:
+    content: public IInternalRequestStepProcessor CreateInternalProcessor(IInternalRequestSpec requestSpec)
+    parameters:
+    - id: requestSpec
+      type: Bodoconsult.NetworkCommunication.Interfaces.IInternalRequestSpec
+      description: Current request
+    return:
+      type: Bodoconsult.NetworkCommunication.Interfaces.IInternalRequestStepProcessor
+      description: A valid tower request step processor instance
+    content.vb: Public Function CreateInternalProcessor(requestSpec As IInternalRequestSpec) As IInternalRequestStepProcessor
+  overload: Bodoconsult.NetworkCommunication.Factories.RequestStepProcessorFactory.CreateInternalProcessor*
+  implements:
+  - Bodoconsult.NetworkCommunication.Interfaces.IRequestStepProcessorFactory.CreateInternalProcessor(Bodoconsult.NetworkCommunication.Interfaces.IInternalRequestSpec)
+references:
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Processors.DeviceRequestStepProcessor
+  commentId: T:Bodoconsult.NetworkCommunication.OrderManagement.Processors.DeviceRequestStepProcessor
+  href: Bodoconsult.NetworkCommunication.OrderManagement.Processors.DeviceRequestStepProcessor.html
+  name: DeviceRequestStepProcessor
+  nameWithType: DeviceRequestStepProcessor
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Processors.DeviceRequestStepProcessor
+- uid: Bodoconsult.NetworkCommunication.Factories
+  commentId: N:Bodoconsult.NetworkCommunication.Factories
+  href: Bodoconsult.html
+  name: Bodoconsult.NetworkCommunication.Factories
+  nameWithType: Bodoconsult.NetworkCommunication.Factories
+  fullName: Bodoconsult.NetworkCommunication.Factories
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Factories
+    name: Factories
+    href: Bodoconsult.NetworkCommunication.Factories.html
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Factories
+    name: Factories
+    href: Bodoconsult.NetworkCommunication.Factories.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IRequestStepProcessorFactory
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.IRequestStepProcessorFactory
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.NetworkCommunication.Interfaces.IRequestStepProcessorFactory.html
+  name: IRequestStepProcessorFactory
+  nameWithType: IRequestStepProcessorFactory
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IRequestStepProcessorFactory
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Bodoconsult.NetworkCommunication.Interfaces
+  commentId: N:Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.html
+  name: Bodoconsult.NetworkCommunication.Interfaces
+  nameWithType: Bodoconsult.NetworkCommunication.Interfaces
+  fullName: Bodoconsult.NetworkCommunication.Interfaces
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Interfaces
+    name: Interfaces
+    href: Bodoconsult.NetworkCommunication.Interfaces.html
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Interfaces
+    name: Interfaces
+    href: Bodoconsult.NetworkCommunication.Interfaces.html
+- uid: Bodoconsult.NetworkCommunication.Factories.RequestStepProcessorFactory.CreateDeviceProcessor*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Factories.RequestStepProcessorFactory.CreateDeviceProcessor
+  href: Bodoconsult.NetworkCommunication.Factories.RequestStepProcessorFactory.html#Bodoconsult_NetworkCommunication_Factories_RequestStepProcessorFactory_CreateDeviceProcessor_Bodoconsult_NetworkCommunication_Interfaces_IDeviceRequestSpec_
+  name: CreateDeviceProcessor
+  nameWithType: RequestStepProcessorFactory.CreateDeviceProcessor
+  fullName: Bodoconsult.NetworkCommunication.Factories.RequestStepProcessorFactory.CreateDeviceProcessor
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IRequestStepProcessorFactory.CreateDeviceProcessor(Bodoconsult.NetworkCommunication.Interfaces.IDeviceRequestSpec)
+  commentId: M:Bodoconsult.NetworkCommunication.Interfaces.IRequestStepProcessorFactory.CreateDeviceProcessor(Bodoconsult.NetworkCommunication.Interfaces.IDeviceRequestSpec)
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IRequestStepProcessorFactory
+  href: Bodoconsult.NetworkCommunication.Interfaces.IRequestStepProcessorFactory.html#Bodoconsult_NetworkCommunication_Interfaces_IRequestStepProcessorFactory_CreateDeviceProcessor_Bodoconsult_NetworkCommunication_Interfaces_IDeviceRequestSpec_
+  name: CreateDeviceProcessor(IDeviceRequestSpec)
+  nameWithType: IRequestStepProcessorFactory.CreateDeviceProcessor(IDeviceRequestSpec)
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IRequestStepProcessorFactory.CreateDeviceProcessor(Bodoconsult.NetworkCommunication.Interfaces.IDeviceRequestSpec)
+  spec.csharp:
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IRequestStepProcessorFactory.CreateDeviceProcessor(Bodoconsult.NetworkCommunication.Interfaces.IDeviceRequestSpec)
+    name: CreateDeviceProcessor
+    href: Bodoconsult.NetworkCommunication.Interfaces.IRequestStepProcessorFactory.html#Bodoconsult_NetworkCommunication_Interfaces_IRequestStepProcessorFactory_CreateDeviceProcessor_Bodoconsult_NetworkCommunication_Interfaces_IDeviceRequestSpec_
+  - name: (
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IDeviceRequestSpec
+    name: IDeviceRequestSpec
+    href: Bodoconsult.NetworkCommunication.Interfaces.IDeviceRequestSpec.html
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IRequestStepProcessorFactory.CreateDeviceProcessor(Bodoconsult.NetworkCommunication.Interfaces.IDeviceRequestSpec)
+    name: CreateDeviceProcessor
+    href: Bodoconsult.NetworkCommunication.Interfaces.IRequestStepProcessorFactory.html#Bodoconsult_NetworkCommunication_Interfaces_IRequestStepProcessorFactory_CreateDeviceProcessor_Bodoconsult_NetworkCommunication_Interfaces_IDeviceRequestSpec_
+  - name: (
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IDeviceRequestSpec
+    name: IDeviceRequestSpec
+    href: Bodoconsult.NetworkCommunication.Interfaces.IDeviceRequestSpec.html
+  - name: )
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IDeviceRequestSpec
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.IDeviceRequestSpec
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.NetworkCommunication.Interfaces.IDeviceRequestSpec.html
+  name: IDeviceRequestSpec
+  nameWithType: IDeviceRequestSpec
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IDeviceRequestSpec
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IDeviceRequestStepProcessor
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.IDeviceRequestStepProcessor
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.NetworkCommunication.Interfaces.IDeviceRequestStepProcessor.html
+  name: IDeviceRequestStepProcessor
+  nameWithType: IDeviceRequestStepProcessor
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IDeviceRequestStepProcessor
+- uid: Bodoconsult.NetworkCommunication.Factories.RequestStepProcessorFactory.CreateInternalProcessor*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Factories.RequestStepProcessorFactory.CreateInternalProcessor
+  href: Bodoconsult.NetworkCommunication.Factories.RequestStepProcessorFactory.html#Bodoconsult_NetworkCommunication_Factories_RequestStepProcessorFactory_CreateInternalProcessor_Bodoconsult_NetworkCommunication_Interfaces_IInternalRequestSpec_
+  name: CreateInternalProcessor
+  nameWithType: RequestStepProcessorFactory.CreateInternalProcessor
+  fullName: Bodoconsult.NetworkCommunication.Factories.RequestStepProcessorFactory.CreateInternalProcessor
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IRequestStepProcessorFactory.CreateInternalProcessor(Bodoconsult.NetworkCommunication.Interfaces.IInternalRequestSpec)
+  commentId: M:Bodoconsult.NetworkCommunication.Interfaces.IRequestStepProcessorFactory.CreateInternalProcessor(Bodoconsult.NetworkCommunication.Interfaces.IInternalRequestSpec)
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IRequestStepProcessorFactory
+  href: Bodoconsult.NetworkCommunication.Interfaces.IRequestStepProcessorFactory.html#Bodoconsult_NetworkCommunication_Interfaces_IRequestStepProcessorFactory_CreateInternalProcessor_Bodoconsult_NetworkCommunication_Interfaces_IInternalRequestSpec_
+  name: CreateInternalProcessor(IInternalRequestSpec)
+  nameWithType: IRequestStepProcessorFactory.CreateInternalProcessor(IInternalRequestSpec)
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IRequestStepProcessorFactory.CreateInternalProcessor(Bodoconsult.NetworkCommunication.Interfaces.IInternalRequestSpec)
+  spec.csharp:
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IRequestStepProcessorFactory.CreateInternalProcessor(Bodoconsult.NetworkCommunication.Interfaces.IInternalRequestSpec)
+    name: CreateInternalProcessor
+    href: Bodoconsult.NetworkCommunication.Interfaces.IRequestStepProcessorFactory.html#Bodoconsult_NetworkCommunication_Interfaces_IRequestStepProcessorFactory_CreateInternalProcessor_Bodoconsult_NetworkCommunication_Interfaces_IInternalRequestSpec_
+  - name: (
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IInternalRequestSpec
+    name: IInternalRequestSpec
+    href: Bodoconsult.NetworkCommunication.Interfaces.IInternalRequestSpec.html
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IRequestStepProcessorFactory.CreateInternalProcessor(Bodoconsult.NetworkCommunication.Interfaces.IInternalRequestSpec)
+    name: CreateInternalProcessor
+    href: Bodoconsult.NetworkCommunication.Interfaces.IRequestStepProcessorFactory.html#Bodoconsult_NetworkCommunication_Interfaces_IRequestStepProcessorFactory_CreateInternalProcessor_Bodoconsult_NetworkCommunication_Interfaces_IInternalRequestSpec_
+  - name: (
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IInternalRequestSpec
+    name: IInternalRequestSpec
+    href: Bodoconsult.NetworkCommunication.Interfaces.IInternalRequestSpec.html
+  - name: )
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IInternalRequestSpec
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.IInternalRequestSpec
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.NetworkCommunication.Interfaces.IInternalRequestSpec.html
+  name: IInternalRequestSpec
+  nameWithType: IInternalRequestSpec
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IInternalRequestSpec
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IInternalRequestStepProcessor
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.IInternalRequestStepProcessor
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.NetworkCommunication.Interfaces.IInternalRequestStepProcessor.html
+  name: IInternalRequestStepProcessor
+  nameWithType: IInternalRequestStepProcessor
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IInternalRequestStepProcessor

@@ -1,0 +1,161 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Processors
+  commentId: N:Bodoconsult.NetworkCommunication.OrderManagement.Processors
+  id: Bodoconsult.NetworkCommunication.OrderManagement.Processors
+  children:
+  - Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep
+  - Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestSpec
+  - Bodoconsult.NetworkCommunication.OrderManagement.Processors.DeviceRequestAnswerStep
+  - Bodoconsult.NetworkCommunication.OrderManagement.Processors.DeviceRequestSpec
+  - Bodoconsult.NetworkCommunication.OrderManagement.Processors.DeviceRequestStepProcessor
+  - Bodoconsult.NetworkCommunication.OrderManagement.Processors.InternalRequestAnswerStep
+  - Bodoconsult.NetworkCommunication.OrderManagement.Processors.InternalRequestSpec
+  - Bodoconsult.NetworkCommunication.OrderManagement.Processors.InternalRequestStepProcessor
+  - Bodoconsult.NetworkCommunication.OrderManagement.Processors.OrderManager
+  - Bodoconsult.NetworkCommunication.OrderManagement.Processors.OrderPipeline
+  - Bodoconsult.NetworkCommunication.OrderManagement.Processors.OrderProcessor
+  - Bodoconsult.NetworkCommunication.OrderManagement.Processors.OrderReceiver
+  - Bodoconsult.NetworkCommunication.OrderManagement.Processors.RequestAnswer
+  - Bodoconsult.NetworkCommunication.OrderManagement.Processors.RequestProcessor
+  - Bodoconsult.NetworkCommunication.OrderManagement.Processors.SyncOrderManager
+  langs:
+  - csharp
+  - vb
+  name: Bodoconsult.NetworkCommunication.OrderManagement.Processors
+  nameWithType: Bodoconsult.NetworkCommunication.OrderManagement.Processors
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Processors
+  type: Namespace
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+references:
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep
+  commentId: T:Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep
+  parent: Bodoconsult.NetworkCommunication.OrderManagement.Processors
+  href: Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep.html
+  name: BaseRequestAnswerStep
+  nameWithType: BaseRequestAnswerStep
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestAnswerStep
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestSpec
+  commentId: T:Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestSpec
+  parent: Bodoconsult.NetworkCommunication.OrderManagement.Processors
+  href: Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestSpec.html
+  name: BaseRequestSpec
+  nameWithType: BaseRequestSpec
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Processors.BaseRequestSpec
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Processors.DeviceRequestAnswerStep
+  commentId: T:Bodoconsult.NetworkCommunication.OrderManagement.Processors.DeviceRequestAnswerStep
+  href: Bodoconsult.NetworkCommunication.OrderManagement.Processors.DeviceRequestAnswerStep.html
+  name: DeviceRequestAnswerStep
+  nameWithType: DeviceRequestAnswerStep
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Processors.DeviceRequestAnswerStep
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Processors.DeviceRequestSpec
+  commentId: T:Bodoconsult.NetworkCommunication.OrderManagement.Processors.DeviceRequestSpec
+  href: Bodoconsult.NetworkCommunication.OrderManagement.Processors.DeviceRequestSpec.html
+  name: DeviceRequestSpec
+  nameWithType: DeviceRequestSpec
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Processors.DeviceRequestSpec
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Processors.InternalRequestAnswerStep
+  commentId: T:Bodoconsult.NetworkCommunication.OrderManagement.Processors.InternalRequestAnswerStep
+  href: Bodoconsult.NetworkCommunication.OrderManagement.Processors.InternalRequestAnswerStep.html
+  name: InternalRequestAnswerStep
+  nameWithType: InternalRequestAnswerStep
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Processors.InternalRequestAnswerStep
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Processors.InternalRequestSpec
+  commentId: T:Bodoconsult.NetworkCommunication.OrderManagement.Processors.InternalRequestSpec
+  href: Bodoconsult.NetworkCommunication.OrderManagement.Processors.InternalRequestSpec.html
+  name: InternalRequestSpec
+  nameWithType: InternalRequestSpec
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Processors.InternalRequestSpec
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Processors.InternalRequestStepProcessor
+  commentId: T:Bodoconsult.NetworkCommunication.OrderManagement.Processors.InternalRequestStepProcessor
+  href: Bodoconsult.NetworkCommunication.OrderManagement.Processors.InternalRequestStepProcessor.html
+  name: InternalRequestStepProcessor
+  nameWithType: InternalRequestStepProcessor
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Processors.InternalRequestStepProcessor
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Processors.OrderManager
+  commentId: T:Bodoconsult.NetworkCommunication.OrderManagement.Processors.OrderManager
+  href: Bodoconsult.NetworkCommunication.OrderManagement.Processors.OrderManager.html
+  name: OrderManager
+  nameWithType: OrderManager
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Processors.OrderManager
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Processors.OrderPipeline
+  commentId: T:Bodoconsult.NetworkCommunication.OrderManagement.Processors.OrderPipeline
+  href: Bodoconsult.NetworkCommunication.OrderManagement.Processors.OrderPipeline.html
+  name: OrderPipeline
+  nameWithType: OrderPipeline
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Processors.OrderPipeline
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Processors.OrderProcessor
+  commentId: T:Bodoconsult.NetworkCommunication.OrderManagement.Processors.OrderProcessor
+  href: Bodoconsult.NetworkCommunication.OrderManagement.Processors.OrderProcessor.html
+  name: OrderProcessor
+  nameWithType: OrderProcessor
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Processors.OrderProcessor
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Processors.OrderReceiver
+  commentId: T:Bodoconsult.NetworkCommunication.OrderManagement.Processors.OrderReceiver
+  href: Bodoconsult.NetworkCommunication.OrderManagement.Processors.OrderReceiver.html
+  name: OrderReceiver
+  nameWithType: OrderReceiver
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Processors.OrderReceiver
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Processors.RequestAnswer
+  commentId: T:Bodoconsult.NetworkCommunication.OrderManagement.Processors.RequestAnswer
+  href: Bodoconsult.NetworkCommunication.OrderManagement.Processors.RequestAnswer.html
+  name: RequestAnswer
+  nameWithType: RequestAnswer
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Processors.RequestAnswer
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Processors.RequestProcessor
+  commentId: T:Bodoconsult.NetworkCommunication.OrderManagement.Processors.RequestProcessor
+  href: Bodoconsult.NetworkCommunication.OrderManagement.Processors.RequestProcessor.html
+  name: RequestProcessor
+  nameWithType: RequestProcessor
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Processors.RequestProcessor
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Processors.DeviceRequestStepProcessor
+  commentId: T:Bodoconsult.NetworkCommunication.OrderManagement.Processors.DeviceRequestStepProcessor
+  href: Bodoconsult.NetworkCommunication.OrderManagement.Processors.DeviceRequestStepProcessor.html
+  name: DeviceRequestStepProcessor
+  nameWithType: DeviceRequestStepProcessor
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Processors.DeviceRequestStepProcessor
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Processors.SyncOrderManager
+  commentId: T:Bodoconsult.NetworkCommunication.OrderManagement.Processors.SyncOrderManager
+  href: Bodoconsult.NetworkCommunication.OrderManagement.Processors.SyncOrderManager.html
+  name: SyncOrderManager
+  nameWithType: SyncOrderManager
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Processors.SyncOrderManager
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Processors
+  commentId: N:Bodoconsult.NetworkCommunication.OrderManagement.Processors
+  href: Bodoconsult.html
+  name: Bodoconsult.NetworkCommunication.OrderManagement.Processors
+  nameWithType: Bodoconsult.NetworkCommunication.OrderManagement.Processors
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Processors
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.OrderManagement
+    name: OrderManagement
+    href: Bodoconsult.NetworkCommunication.OrderManagement.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.OrderManagement.Processors
+    name: Processors
+    href: Bodoconsult.NetworkCommunication.OrderManagement.Processors.html
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.OrderManagement
+    name: OrderManagement
+    href: Bodoconsult.NetworkCommunication.OrderManagement.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.OrderManagement.Processors
+    name: Processors
+    href: Bodoconsult.NetworkCommunication.OrderManagement.Processors.html

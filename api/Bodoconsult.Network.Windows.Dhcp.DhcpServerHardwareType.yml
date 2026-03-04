@@ -1,0 +1,641 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerHardwareType
+  commentId: T:Bodoconsult.Network.Windows.Dhcp.DhcpServerHardwareType
+  id: DhcpServerHardwareType
+  parent: Bodoconsult.Network.Windows.Dhcp
+  children:
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerHardwareType.AmateurRadioAx25
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerHardwareType.Arcnet
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerHardwareType.AsynchronousTransmissionMode16
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerHardwareType.AsynchronousTransmissionMode19
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerHardwareType.AsynchronousTransmissionMode21
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerHardwareType.AutonetShortAddress
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerHardwareType.Chaos
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerHardwareType.Ethernet
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerHardwareType.ExperimentalEthernet
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerHardwareType.FibreChannel
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerHardwareType.FrameRelay
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerHardwareType.Hdlc
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerHardwareType.Hyperchannel
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerHardwareType.Ieee802Networks
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerHardwareType.Lanstar
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerHardwareType.LocalNet
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerHardwareType.LocalTalk
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerHardwareType.ProteonProNetTokenRing
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerHardwareType.SerialLine
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerHardwareType.Smds
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerHardwareType.UltraLink
+  langs:
+  - csharp
+  - vb
+  name: DhcpServerHardwareType
+  nameWithType: DhcpServerHardwareType
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerHardwareType
+  type: Enum
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerHardwareType.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: DhcpServerHardwareType
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerHardwareType.cs
+    startLine: 5
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: 'public enum DhcpServerHardwareType : byte'
+    content.vb: Public Enum DhcpServerHardwareType As Byte
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerHardwareType.Ethernet
+  commentId: F:Bodoconsult.Network.Windows.Dhcp.DhcpServerHardwareType.Ethernet
+  id: Ethernet
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerHardwareType
+  langs:
+  - csharp
+  - vb
+  name: Ethernet
+  nameWithType: DhcpServerHardwareType.Ethernet
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerHardwareType.Ethernet
+  type: Field
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerHardwareType.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Ethernet
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerHardwareType.cs
+    startLine: 7
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: Ethernet = 1
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerHardwareType
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerHardwareType.ExperimentalEthernet
+  commentId: F:Bodoconsult.Network.Windows.Dhcp.DhcpServerHardwareType.ExperimentalEthernet
+  id: ExperimentalEthernet
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerHardwareType
+  langs:
+  - csharp
+  - vb
+  name: ExperimentalEthernet
+  nameWithType: DhcpServerHardwareType.ExperimentalEthernet
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerHardwareType.ExperimentalEthernet
+  type: Field
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerHardwareType.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: ExperimentalEthernet
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerHardwareType.cs
+    startLine: 8
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: ExperimentalEthernet = 2
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerHardwareType
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerHardwareType.AmateurRadioAx25
+  commentId: F:Bodoconsult.Network.Windows.Dhcp.DhcpServerHardwareType.AmateurRadioAx25
+  id: AmateurRadioAx25
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerHardwareType
+  langs:
+  - csharp
+  - vb
+  name: AmateurRadioAx25
+  nameWithType: DhcpServerHardwareType.AmateurRadioAx25
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerHardwareType.AmateurRadioAx25
+  type: Field
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerHardwareType.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: AmateurRadioAx25
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerHardwareType.cs
+    startLine: 9
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: AmateurRadioAx25 = 3
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerHardwareType
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerHardwareType.ProteonProNetTokenRing
+  commentId: F:Bodoconsult.Network.Windows.Dhcp.DhcpServerHardwareType.ProteonProNetTokenRing
+  id: ProteonProNetTokenRing
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerHardwareType
+  langs:
+  - csharp
+  - vb
+  name: ProteonProNetTokenRing
+  nameWithType: DhcpServerHardwareType.ProteonProNetTokenRing
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerHardwareType.ProteonProNetTokenRing
+  type: Field
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerHardwareType.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: ProteonProNetTokenRing
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerHardwareType.cs
+    startLine: 10
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: ProteonProNetTokenRing = 4
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerHardwareType
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerHardwareType.Chaos
+  commentId: F:Bodoconsult.Network.Windows.Dhcp.DhcpServerHardwareType.Chaos
+  id: Chaos
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerHardwareType
+  langs:
+  - csharp
+  - vb
+  name: Chaos
+  nameWithType: DhcpServerHardwareType.Chaos
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerHardwareType.Chaos
+  type: Field
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerHardwareType.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Chaos
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerHardwareType.cs
+    startLine: 11
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: Chaos = 5
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerHardwareType
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerHardwareType.Ieee802Networks
+  commentId: F:Bodoconsult.Network.Windows.Dhcp.DhcpServerHardwareType.Ieee802Networks
+  id: Ieee802Networks
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerHardwareType
+  langs:
+  - csharp
+  - vb
+  name: Ieee802Networks
+  nameWithType: DhcpServerHardwareType.Ieee802Networks
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerHardwareType.Ieee802Networks
+  type: Field
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerHardwareType.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Ieee802Networks
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerHardwareType.cs
+    startLine: 12
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: Ieee802Networks = 6
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerHardwareType
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerHardwareType.Arcnet
+  commentId: F:Bodoconsult.Network.Windows.Dhcp.DhcpServerHardwareType.Arcnet
+  id: Arcnet
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerHardwareType
+  langs:
+  - csharp
+  - vb
+  name: Arcnet
+  nameWithType: DhcpServerHardwareType.Arcnet
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerHardwareType.Arcnet
+  type: Field
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerHardwareType.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Arcnet
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerHardwareType.cs
+    startLine: 13
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: Arcnet = 7
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerHardwareType
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerHardwareType.Hyperchannel
+  commentId: F:Bodoconsult.Network.Windows.Dhcp.DhcpServerHardwareType.Hyperchannel
+  id: Hyperchannel
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerHardwareType
+  langs:
+  - csharp
+  - vb
+  name: Hyperchannel
+  nameWithType: DhcpServerHardwareType.Hyperchannel
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerHardwareType.Hyperchannel
+  type: Field
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerHardwareType.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Hyperchannel
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerHardwareType.cs
+    startLine: 14
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: Hyperchannel = 8
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerHardwareType
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerHardwareType.Lanstar
+  commentId: F:Bodoconsult.Network.Windows.Dhcp.DhcpServerHardwareType.Lanstar
+  id: Lanstar
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerHardwareType
+  langs:
+  - csharp
+  - vb
+  name: Lanstar
+  nameWithType: DhcpServerHardwareType.Lanstar
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerHardwareType.Lanstar
+  type: Field
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerHardwareType.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Lanstar
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerHardwareType.cs
+    startLine: 15
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: Lanstar = 9
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerHardwareType
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerHardwareType.AutonetShortAddress
+  commentId: F:Bodoconsult.Network.Windows.Dhcp.DhcpServerHardwareType.AutonetShortAddress
+  id: AutonetShortAddress
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerHardwareType
+  langs:
+  - csharp
+  - vb
+  name: AutonetShortAddress
+  nameWithType: DhcpServerHardwareType.AutonetShortAddress
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerHardwareType.AutonetShortAddress
+  type: Field
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerHardwareType.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: AutonetShortAddress
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerHardwareType.cs
+    startLine: 16
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: AutonetShortAddress = 10
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerHardwareType
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerHardwareType.LocalTalk
+  commentId: F:Bodoconsult.Network.Windows.Dhcp.DhcpServerHardwareType.LocalTalk
+  id: LocalTalk
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerHardwareType
+  langs:
+  - csharp
+  - vb
+  name: LocalTalk
+  nameWithType: DhcpServerHardwareType.LocalTalk
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerHardwareType.LocalTalk
+  type: Field
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerHardwareType.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: LocalTalk
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerHardwareType.cs
+    startLine: 17
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: LocalTalk = 11
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerHardwareType
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerHardwareType.LocalNet
+  commentId: F:Bodoconsult.Network.Windows.Dhcp.DhcpServerHardwareType.LocalNet
+  id: LocalNet
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerHardwareType
+  langs:
+  - csharp
+  - vb
+  name: LocalNet
+  nameWithType: DhcpServerHardwareType.LocalNet
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerHardwareType.LocalNet
+  type: Field
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerHardwareType.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: LocalNet
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerHardwareType.cs
+    startLine: 18
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: LocalNet = 12
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerHardwareType
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerHardwareType.UltraLink
+  commentId: F:Bodoconsult.Network.Windows.Dhcp.DhcpServerHardwareType.UltraLink
+  id: UltraLink
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerHardwareType
+  langs:
+  - csharp
+  - vb
+  name: UltraLink
+  nameWithType: DhcpServerHardwareType.UltraLink
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerHardwareType.UltraLink
+  type: Field
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerHardwareType.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: UltraLink
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerHardwareType.cs
+    startLine: 19
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: UltraLink = 13
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerHardwareType
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerHardwareType.Smds
+  commentId: F:Bodoconsult.Network.Windows.Dhcp.DhcpServerHardwareType.Smds
+  id: Smds
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerHardwareType
+  langs:
+  - csharp
+  - vb
+  name: Smds
+  nameWithType: DhcpServerHardwareType.Smds
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerHardwareType.Smds
+  type: Field
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerHardwareType.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Smds
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerHardwareType.cs
+    startLine: 20
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: Smds = 14
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerHardwareType
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerHardwareType.FrameRelay
+  commentId: F:Bodoconsult.Network.Windows.Dhcp.DhcpServerHardwareType.FrameRelay
+  id: FrameRelay
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerHardwareType
+  langs:
+  - csharp
+  - vb
+  name: FrameRelay
+  nameWithType: DhcpServerHardwareType.FrameRelay
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerHardwareType.FrameRelay
+  type: Field
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerHardwareType.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: FrameRelay
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerHardwareType.cs
+    startLine: 21
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: FrameRelay = 15
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerHardwareType
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerHardwareType.AsynchronousTransmissionMode16
+  commentId: F:Bodoconsult.Network.Windows.Dhcp.DhcpServerHardwareType.AsynchronousTransmissionMode16
+  id: AsynchronousTransmissionMode16
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerHardwareType
+  langs:
+  - csharp
+  - vb
+  name: AsynchronousTransmissionMode16
+  nameWithType: DhcpServerHardwareType.AsynchronousTransmissionMode16
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerHardwareType.AsynchronousTransmissionMode16
+  type: Field
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerHardwareType.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: AsynchronousTransmissionMode16
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerHardwareType.cs
+    startLine: 22
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: AsynchronousTransmissionMode16 = 16
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerHardwareType
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerHardwareType.Hdlc
+  commentId: F:Bodoconsult.Network.Windows.Dhcp.DhcpServerHardwareType.Hdlc
+  id: Hdlc
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerHardwareType
+  langs:
+  - csharp
+  - vb
+  name: Hdlc
+  nameWithType: DhcpServerHardwareType.Hdlc
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerHardwareType.Hdlc
+  type: Field
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerHardwareType.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Hdlc
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerHardwareType.cs
+    startLine: 23
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: Hdlc = 17
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerHardwareType
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerHardwareType.FibreChannel
+  commentId: F:Bodoconsult.Network.Windows.Dhcp.DhcpServerHardwareType.FibreChannel
+  id: FibreChannel
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerHardwareType
+  langs:
+  - csharp
+  - vb
+  name: FibreChannel
+  nameWithType: DhcpServerHardwareType.FibreChannel
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerHardwareType.FibreChannel
+  type: Field
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerHardwareType.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: FibreChannel
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerHardwareType.cs
+    startLine: 24
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: FibreChannel = 18
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerHardwareType
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerHardwareType.AsynchronousTransmissionMode19
+  commentId: F:Bodoconsult.Network.Windows.Dhcp.DhcpServerHardwareType.AsynchronousTransmissionMode19
+  id: AsynchronousTransmissionMode19
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerHardwareType
+  langs:
+  - csharp
+  - vb
+  name: AsynchronousTransmissionMode19
+  nameWithType: DhcpServerHardwareType.AsynchronousTransmissionMode19
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerHardwareType.AsynchronousTransmissionMode19
+  type: Field
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerHardwareType.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: AsynchronousTransmissionMode19
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerHardwareType.cs
+    startLine: 25
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: AsynchronousTransmissionMode19 = 19
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerHardwareType
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerHardwareType.SerialLine
+  commentId: F:Bodoconsult.Network.Windows.Dhcp.DhcpServerHardwareType.SerialLine
+  id: SerialLine
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerHardwareType
+  langs:
+  - csharp
+  - vb
+  name: SerialLine
+  nameWithType: DhcpServerHardwareType.SerialLine
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerHardwareType.SerialLine
+  type: Field
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerHardwareType.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: SerialLine
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerHardwareType.cs
+    startLine: 26
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: SerialLine = 20
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerHardwareType
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerHardwareType.AsynchronousTransmissionMode21
+  commentId: F:Bodoconsult.Network.Windows.Dhcp.DhcpServerHardwareType.AsynchronousTransmissionMode21
+  id: AsynchronousTransmissionMode21
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerHardwareType
+  langs:
+  - csharp
+  - vb
+  name: AsynchronousTransmissionMode21
+  nameWithType: DhcpServerHardwareType.AsynchronousTransmissionMode21
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerHardwareType.AsynchronousTransmissionMode21
+  type: Field
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerHardwareType.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: AsynchronousTransmissionMode21
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerHardwareType.cs
+    startLine: 27
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: AsynchronousTransmissionMode21 = 21
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerHardwareType
+references:
+- uid: Bodoconsult.Network.Windows.Dhcp
+  commentId: N:Bodoconsult.Network.Windows.Dhcp
+  href: Bodoconsult.html
+  name: Bodoconsult.Network.Windows.Dhcp
+  nameWithType: Bodoconsult.Network.Windows.Dhcp
+  fullName: Bodoconsult.Network.Windows.Dhcp
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.Network
+    name: Network
+    href: Bodoconsult.Network.html
+  - name: .
+  - uid: Bodoconsult.Network.Windows
+    name: Windows
+    href: Bodoconsult.Network.Windows.html
+  - name: .
+  - uid: Bodoconsult.Network.Windows.Dhcp
+    name: Dhcp
+    href: Bodoconsult.Network.Windows.Dhcp.html
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.Network
+    name: Network
+    href: Bodoconsult.Network.html
+  - name: .
+  - uid: Bodoconsult.Network.Windows
+    name: Windows
+    href: Bodoconsult.Network.Windows.html
+  - name: .
+  - uid: Bodoconsult.Network.Windows.Dhcp
+    name: Dhcp
+    href: Bodoconsult.Network.Windows.Dhcp.html
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerHardwareType
+  commentId: T:Bodoconsult.Network.Windows.Dhcp.DhcpServerHardwareType
+  parent: Bodoconsult.Network.Windows.Dhcp
+  href: Bodoconsult.Network.Windows.Dhcp.DhcpServerHardwareType.html
+  name: DhcpServerHardwareType
+  nameWithType: DhcpServerHardwareType
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerHardwareType

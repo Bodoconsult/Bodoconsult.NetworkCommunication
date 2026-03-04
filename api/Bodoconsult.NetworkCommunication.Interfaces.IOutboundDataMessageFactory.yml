@@ -1,0 +1,152 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessageFactory
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessageFactory
+  id: IOutboundDataMessageFactory
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  children:
+  - Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessageFactory.CreateInstance(Bodoconsult.NetworkCommunication.Interfaces.IParameterSet)
+  - Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessageFactory.Reset
+  langs:
+  - csharp
+  - vb
+  name: IOutboundDataMessageFactory
+  nameWithType: IOutboundDataMessageFactory
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessageFactory
+  type: Interface
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/IOutboundDataMessageFactory.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: IOutboundDataMessageFactory
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/IOutboundDataMessageFactory.cs
+    startLine: 7
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Interface for creating outbound data messages, Implementations should be used per device. Implementations can handle things like block code generation etc.
+  example: []
+  syntax:
+    content: public interface IOutboundDataMessageFactory
+    content.vb: Public Interface IOutboundDataMessageFactory
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessageFactory.CreateInstance(Bodoconsult.NetworkCommunication.Interfaces.IParameterSet)
+  commentId: M:Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessageFactory.CreateInstance(Bodoconsult.NetworkCommunication.Interfaces.IParameterSet)
+  id: CreateInstance(Bodoconsult.NetworkCommunication.Interfaces.IParameterSet)
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessageFactory
+  langs:
+  - csharp
+  - vb
+  name: CreateInstance(IParameterSet)
+  nameWithType: IOutboundDataMessageFactory.CreateInstance(IParameterSet)
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessageFactory.CreateInstance(Bodoconsult.NetworkCommunication.Interfaces.IParameterSet)
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/IOutboundDataMessageFactory.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: CreateInstance
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/IOutboundDataMessageFactory.cs
+    startLine: 14
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Create am outbound data message from an order management parameter set
+  example: []
+  syntax:
+    content: IOutboundDataMessage CreateInstance(IParameterSet parameterSet)
+    parameters:
+    - id: parameterSet
+      type: Bodoconsult.NetworkCommunication.Interfaces.IParameterSet
+      description: Order management parameterset
+    return:
+      type: Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessage
+      description: Outbound data message
+    content.vb: Function CreateInstance(parameterSet As IParameterSet) As IOutboundDataMessage
+  overload: Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessageFactory.CreateInstance*
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessageFactory.Reset
+  commentId: M:Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessageFactory.Reset
+  id: Reset
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessageFactory
+  langs:
+  - csharp
+  - vb
+  name: Reset()
+  nameWithType: IOutboundDataMessageFactory.Reset()
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessageFactory.Reset()
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/IOutboundDataMessageFactory.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Reset
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/IOutboundDataMessageFactory.cs
+    startLine: 19
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Reset the factory. This might be used to reset block code generation in case of a ComDevClose event.
+  example: []
+  syntax:
+    content: void Reset()
+    content.vb: Sub Reset()
+  overload: Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessageFactory.Reset*
+references:
+- uid: Bodoconsult.NetworkCommunication.Interfaces
+  commentId: N:Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.html
+  name: Bodoconsult.NetworkCommunication.Interfaces
+  nameWithType: Bodoconsult.NetworkCommunication.Interfaces
+  fullName: Bodoconsult.NetworkCommunication.Interfaces
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Interfaces
+    name: Interfaces
+    href: Bodoconsult.NetworkCommunication.Interfaces.html
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Interfaces
+    name: Interfaces
+    href: Bodoconsult.NetworkCommunication.Interfaces.html
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessageFactory.CreateInstance*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessageFactory.CreateInstance
+  href: Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessageFactory.html#Bodoconsult_NetworkCommunication_Interfaces_IOutboundDataMessageFactory_CreateInstance_Bodoconsult_NetworkCommunication_Interfaces_IParameterSet_
+  name: CreateInstance
+  nameWithType: IOutboundDataMessageFactory.CreateInstance
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessageFactory.CreateInstance
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IParameterSet
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.IParameterSet
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.NetworkCommunication.Interfaces.IParameterSet.html
+  name: IParameterSet
+  nameWithType: IParameterSet
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IParameterSet
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessage
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessage
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessage.html
+  name: IOutboundDataMessage
+  nameWithType: IOutboundDataMessage
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessage
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessageFactory.Reset*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessageFactory.Reset
+  href: Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessageFactory.html#Bodoconsult_NetworkCommunication_Interfaces_IOutboundDataMessageFactory_Reset
+  name: Reset
+  nameWithType: IOutboundDataMessageFactory.Reset
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessageFactory.Reset

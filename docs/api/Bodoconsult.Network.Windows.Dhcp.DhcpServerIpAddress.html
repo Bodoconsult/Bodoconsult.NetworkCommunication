@@ -1,0 +1,1323 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Struct DhcpServerIpAddress | Bodoconsult.Network </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Struct DhcpServerIpAddress | Bodoconsult.Network ">
+      
+      
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/new/main/apiSpec/new?filename=Bodoconsult_Network_Windows_Dhcp_DhcpServerIpAddress.md&amp;value=---%0Auid%3A%20Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../logo.svg" alt="Bodoconsult.Network">
+            Bodoconsult.Network
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress">
+
+
+
+  <h1 id="Bodoconsult_Network_Windows_Dhcp_DhcpServerIpAddress" data-uid="Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress" class="text-break">
+Struct DhcpServerIpAddress  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.Network.Windows/Dhcp/DhcpServerIpAddress.cs/#L10"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="Bodoconsult.html">Bodoconsult</a>.<a class="xref" href="Bodoconsult.Network.html">Network</a>.<a class="xref" href="Bodoconsult.Network.Windows.html">Windows</a>.<a class="xref" href="Bodoconsult.Network.Windows.Dhcp.html">Dhcp</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>Bodoconsult.Network.Windows.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"></div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Serializable]
+public struct DhcpServerIpAddress : IEquatable&lt;DhcpServerIpAddress&gt;, IEquatable&lt;IPAddress&gt;</code></pre>
+  </div>
+
+
+
+
+
+  <dl class="typelist implements">
+    <dt>Implements</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.iequatable-1">IEquatable</a>&lt;<a class="xref" href="Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.html">DhcpServerIpAddress</a>&gt;</div>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.iequatable-1">IEquatable</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.net.ipaddress">IPAddress</a>&gt;</div>
+    </dd>
+  </dl>
+
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+  </dd></dl>
+
+
+
+
+
+
+  <h2 class="section" id="constructors">Constructors
+</h2>
+
+
+  <a id="Bodoconsult_Network_Windows_Dhcp_DhcpServerIpAddress__ctor_" data-uid="Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.#ctor*"></a>
+
+  <h3 id="Bodoconsult_Network_Windows_Dhcp_DhcpServerIpAddress__ctor_System_Net_IPAddress_" data-uid="Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.#ctor(System.Net.IPAddress)">
+  DhcpServerIpAddress(IPAddress)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.Network.Windows/Dhcp/DhcpServerIpAddress.cs/#L30"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public DhcpServerIpAddress(IPAddress address)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>address</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.net.ipaddress">IPAddress</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_Network_Windows_Dhcp_DhcpServerIpAddress__ctor_" data-uid="Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.#ctor*"></a>
+
+  <h3 id="Bodoconsult_Network_Windows_Dhcp_DhcpServerIpAddress__ctor_System_String_" data-uid="Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.#ctor(System.String)">
+  DhcpServerIpAddress(string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.Network.Windows/Dhcp/DhcpServerIpAddress.cs/#L25"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public DhcpServerIpAddress(string address)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>address</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_Network_Windows_Dhcp_DhcpServerIpAddress__ctor_" data-uid="Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.#ctor*"></a>
+
+  <h3 id="Bodoconsult_Network_Windows_Dhcp_DhcpServerIpAddress__ctor_System_UInt32_" data-uid="Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.#ctor(System.UInt32)">
+  DhcpServerIpAddress(uint)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.Network.Windows/Dhcp/DhcpServerIpAddress.cs/#L20"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public DhcpServerIpAddress(uint nativeAddress)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>nativeAddress</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">uint</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
+  <a id="Bodoconsult_Network_Windows_Dhcp_DhcpServerIpAddress_Empty_" data-uid="Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.Empty*"></a>
+
+  <h3 id="Bodoconsult_Network_Windows_Dhcp_DhcpServerIpAddress_Empty" data-uid="Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.Empty">
+  Empty
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.Network.Windows/Dhcp/DhcpServerIpAddress.cs/#L66"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static DhcpServerIpAddress Empty { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.html">DhcpServerIpAddress</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_Network_Windows_Dhcp_DhcpServerIpAddress_Native_" data-uid="Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.Native*"></a>
+
+  <h3 id="Bodoconsult_Network_Windows_Dhcp_DhcpServerIpAddress_Native" data-uid="Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.Native">
+  Native
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.Network.Windows/Dhcp/DhcpServerIpAddress.cs/#L49"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>IP Address in network order</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public uint Native { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">uint</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="Bodoconsult_Network_Windows_Dhcp_DhcpServerIpAddress_Equals_" data-uid="Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.Equals*"></a>
+
+  <h3 id="Bodoconsult_Network_Windows_Dhcp_DhcpServerIpAddress_Equals_Bodoconsult_Network_Windows_Dhcp_DhcpServerIpAddress_" data-uid="Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.Equals(Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress)">
+  Equals(DhcpServerIpAddress)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.Network.Windows/Dhcp/DhcpServerIpAddress.cs/#L96"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Indicates whether the current object is equal to another object of the same type.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool Equals(DhcpServerIpAddress other)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>other</code> <a class="xref" href="Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.html">DhcpServerIpAddress</a></dt>
+    <dd><p>An object to compare with this object.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p><a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> if the current object is equal to the <code class="paramref">other</code> parameter; otherwise, <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_Network_Windows_Dhcp_DhcpServerIpAddress_Equals_" data-uid="Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.Equals*"></a>
+
+  <h3 id="Bodoconsult_Network_Windows_Dhcp_DhcpServerIpAddress_Equals_System_Net_IPAddress_" data-uid="Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.Equals(System.Net.IPAddress)">
+  Equals(IPAddress)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.Network.Windows/Dhcp/DhcpServerIpAddress.cs/#L98"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Indicates whether the current object is equal to another object of the same type.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool Equals(IPAddress other)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>other</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.net.ipaddress">IPAddress</a></dt>
+    <dd><p>An object to compare with this object.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p><a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> if the current object is equal to the <code class="paramref">other</code> parameter; otherwise, <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_Network_Windows_Dhcp_DhcpServerIpAddress_Equals_" data-uid="Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.Equals*"></a>
+
+  <h3 id="Bodoconsult_Network_Windows_Dhcp_DhcpServerIpAddress_Equals_System_Object_" data-uid="Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.Equals(System.Object)">
+  Equals(object)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.Network.Windows/Dhcp/DhcpServerIpAddress.cs/#L81"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Indicates whether this instance and a specified object are equal.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override bool Equals(object obj)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>obj</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></dt>
+    <dd><p>The object to compare with the current instance.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p><a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> if <code class="paramref">obj</code> and this instance are the same type and represent the same value; otherwise, <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_Network_Windows_Dhcp_DhcpServerIpAddress_FromNative_" data-uid="Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.FromNative*"></a>
+
+  <h3 id="Bodoconsult_Network_Windows_Dhcp_DhcpServerIpAddress_FromNative_System_Int32_" data-uid="Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.FromNative(System.Int32)">
+  FromNative(int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.Network.Windows/Dhcp/DhcpServerIpAddress.cs/#L68"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static DhcpServerIpAddress FromNative(int nativeAddress)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>nativeAddress</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.html">DhcpServerIpAddress</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_Network_Windows_Dhcp_DhcpServerIpAddress_FromNative_" data-uid="Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.FromNative*"></a>
+
+  <h3 id="Bodoconsult_Network_Windows_Dhcp_DhcpServerIpAddress_FromNative_System_UInt32_" data-uid="Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.FromNative(System.UInt32)">
+  FromNative(uint)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.Network.Windows/Dhcp/DhcpServerIpAddress.cs/#L67"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static DhcpServerIpAddress FromNative(uint nativeAddress)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>nativeAddress</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">uint</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.html">DhcpServerIpAddress</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_Network_Windows_Dhcp_DhcpServerIpAddress_FromString_" data-uid="Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.FromString*"></a>
+
+  <h3 id="Bodoconsult_Network_Windows_Dhcp_DhcpServerIpAddress_FromString_System_String_" data-uid="Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.FromString(System.String)">
+  FromString(string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.Network.Windows/Dhcp/DhcpServerIpAddress.cs/#L77"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static DhcpServerIpAddress FromString(string address)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>address</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.html">DhcpServerIpAddress</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_Network_Windows_Dhcp_DhcpServerIpAddress_GetByte_" data-uid="Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.GetByte*"></a>
+
+  <h3 id="Bodoconsult_Network_Windows_Dhcp_DhcpServerIpAddress_GetByte_System_Int32_" data-uid="Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.GetByte(System.Int32)">
+  GetByte(int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.Network.Windows/Dhcp/DhcpServerIpAddress.cs/#L58"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public byte GetByte(int index)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>index</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_Network_Windows_Dhcp_DhcpServerIpAddress_GetBytes_" data-uid="Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.GetBytes*"></a>
+
+  <h3 id="Bodoconsult_Network_Windows_Dhcp_DhcpServerIpAddress_GetBytes" data-uid="Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.GetBytes">
+  GetBytes()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.Network.Windows/Dhcp/DhcpServerIpAddress.cs/#L51"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public byte[] GetBytes()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_Network_Windows_Dhcp_DhcpServerIpAddress_GetHashCode_" data-uid="Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.GetHashCode*"></a>
+
+  <h3 id="Bodoconsult_Network_Windows_Dhcp_DhcpServerIpAddress_GetHashCode" data-uid="Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.GetHashCode">
+  GetHashCode()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.Network.Windows/Dhcp/DhcpServerIpAddress.cs/#L94"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Returns the hash code for this instance.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override int GetHashCode()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>A 32-bit signed integer that is the hash code for this instance.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_Network_Windows_Dhcp_DhcpServerIpAddress_ToString_" data-uid="Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.ToString*"></a>
+
+  <h3 id="Bodoconsult_Network_Windows_Dhcp_DhcpServerIpAddress_ToString" data-uid="Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.ToString">
+  ToString()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.Network.Windows/Dhcp/DhcpServerIpAddress.cs/#L79"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Returns the fully qualified type name of this instance.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override string ToString()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The fully qualified type name.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="operators">Operators
+</h2>
+
+
+  <a id="Bodoconsult_Network_Windows_Dhcp_DhcpServerIpAddress_op_Equality_" data-uid="Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.op_Equality*"></a>
+
+  <h3 id="Bodoconsult_Network_Windows_Dhcp_DhcpServerIpAddress_op_Equality_Bodoconsult_Network_Windows_Dhcp_DhcpServerIpAddress_Bodoconsult_Network_Windows_Dhcp_DhcpServerIpAddress_" data-uid="Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.op_Equality(Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress,Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress)">
+  operator ==(DhcpServerIpAddress, DhcpServerIpAddress)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.Network.Windows/Dhcp/DhcpServerIpAddress.cs/#L110"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool operator ==(DhcpServerIpAddress lhs, DhcpServerIpAddress rhs)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>lhs</code> <a class="xref" href="Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.html">DhcpServerIpAddress</a></dt>
+    <dd></dd>
+    <dt><code>rhs</code> <a class="xref" href="Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.html">DhcpServerIpAddress</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_Network_Windows_Dhcp_DhcpServerIpAddress_op_Equality_" data-uid="Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.op_Equality*"></a>
+
+  <h3 id="Bodoconsult_Network_Windows_Dhcp_DhcpServerIpAddress_op_Equality_Bodoconsult_Network_Windows_Dhcp_DhcpServerIpAddress_System_Net_IPAddress_" data-uid="Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.op_Equality(Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress,System.Net.IPAddress)">
+  operator ==(DhcpServerIpAddress, IPAddress)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.Network.Windows/Dhcp/DhcpServerIpAddress.cs/#L114"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool operator ==(DhcpServerIpAddress lhs, IPAddress rhs)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>lhs</code> <a class="xref" href="Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.html">DhcpServerIpAddress</a></dt>
+    <dd></dd>
+    <dt><code>rhs</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.net.ipaddress">IPAddress</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_Network_Windows_Dhcp_DhcpServerIpAddress_op_Explicit_" data-uid="Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.op_Explicit*"></a>
+
+  <h3 id="Bodoconsult_Network_Windows_Dhcp_DhcpServerIpAddress_op_Explicit_Bodoconsult_Network_Windows_Dhcp_DhcpServerIpAddress__Bodoconsult_Network_Windows_Dhcp_DhcpServerIpMask" data-uid="Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.op_Explicit(Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress)~Bodoconsult.Network.Windows.Dhcp.DhcpServerIpMask">
+  explicit operator DhcpServerIpMask(DhcpServerIpAddress)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.Network.Windows/Dhcp/DhcpServerIpAddress.cs/#L132"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static explicit operator DhcpServerIpMask(DhcpServerIpAddress address)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>address</code> <a class="xref" href="Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.html">DhcpServerIpAddress</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Bodoconsult.Network.Windows.Dhcp.DhcpServerIpMask.html">DhcpServerIpMask</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_Network_Windows_Dhcp_DhcpServerIpAddress_op_Explicit_" data-uid="Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.op_Explicit*"></a>
+
+  <h3 id="Bodoconsult_Network_Windows_Dhcp_DhcpServerIpAddress_op_Explicit_Bodoconsult_Network_Windows_Dhcp_DhcpServerIpAddress__System_Int32" data-uid="Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.op_Explicit(Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress)~System.Int32">
+  explicit operator int(DhcpServerIpAddress)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.Network.Windows/Dhcp/DhcpServerIpAddress.cs/#L124"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static explicit operator int(DhcpServerIpAddress address)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>address</code> <a class="xref" href="Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.html">DhcpServerIpAddress</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_Network_Windows_Dhcp_DhcpServerIpAddress_op_Explicit_" data-uid="Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.op_Explicit*"></a>
+
+  <h3 id="Bodoconsult_Network_Windows_Dhcp_DhcpServerIpAddress_op_Explicit_Bodoconsult_Network_Windows_Dhcp_DhcpServerIpAddress__System_UInt32" data-uid="Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.op_Explicit(Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress)~System.UInt32">
+  explicit operator uint(DhcpServerIpAddress)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.Network.Windows/Dhcp/DhcpServerIpAddress.cs/#L122"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static explicit operator uint(DhcpServerIpAddress address)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>address</code> <a class="xref" href="Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.html">DhcpServerIpAddress</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">uint</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_Network_Windows_Dhcp_DhcpServerIpAddress_op_Explicit_" data-uid="Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.op_Explicit*"></a>
+
+  <h3 id="Bodoconsult_Network_Windows_Dhcp_DhcpServerIpAddress_op_Explicit_System_Int32__Bodoconsult_Network_Windows_Dhcp_DhcpServerIpAddress" data-uid="Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.op_Explicit(System.Int32)~Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress">
+  explicit operator DhcpServerIpAddress(int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.Network.Windows/Dhcp/DhcpServerIpAddress.cs/#L125"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static explicit operator DhcpServerIpAddress(int address)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>address</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.html">DhcpServerIpAddress</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_Network_Windows_Dhcp_DhcpServerIpAddress_op_Explicit_" data-uid="Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.op_Explicit*"></a>
+
+  <h3 id="Bodoconsult_Network_Windows_Dhcp_DhcpServerIpAddress_op_Explicit_System_UInt32__Bodoconsult_Network_Windows_Dhcp_DhcpServerIpAddress" data-uid="Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.op_Explicit(System.UInt32)~Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress">
+  explicit operator DhcpServerIpAddress(uint)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.Network.Windows/Dhcp/DhcpServerIpAddress.cs/#L123"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static explicit operator DhcpServerIpAddress(uint address)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>address</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">uint</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.html">DhcpServerIpAddress</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_Network_Windows_Dhcp_DhcpServerIpAddress_op_GreaterThan_" data-uid="Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.op_GreaterThan*"></a>
+
+  <h3 id="Bodoconsult_Network_Windows_Dhcp_DhcpServerIpAddress_op_GreaterThan_Bodoconsult_Network_Windows_Dhcp_DhcpServerIpAddress_Bodoconsult_Network_Windows_Dhcp_DhcpServerIpAddress_" data-uid="Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.op_GreaterThan(Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress,Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress)">
+  operator &gt;(DhcpServerIpAddress, DhcpServerIpAddress)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.Network.Windows/Dhcp/DhcpServerIpAddress.cs/#L136"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool operator &gt;(DhcpServerIpAddress a, DhcpServerIpAddress b)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>a</code> <a class="xref" href="Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.html">DhcpServerIpAddress</a></dt>
+    <dd></dd>
+    <dt><code>b</code> <a class="xref" href="Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.html">DhcpServerIpAddress</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_Network_Windows_Dhcp_DhcpServerIpAddress_op_GreaterThanOrEqual_" data-uid="Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.op_GreaterThanOrEqual*"></a>
+
+  <h3 id="Bodoconsult_Network_Windows_Dhcp_DhcpServerIpAddress_op_GreaterThanOrEqual_Bodoconsult_Network_Windows_Dhcp_DhcpServerIpAddress_Bodoconsult_Network_Windows_Dhcp_DhcpServerIpAddress_" data-uid="Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.op_GreaterThanOrEqual(Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress,Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress)">
+  operator &gt;=(DhcpServerIpAddress, DhcpServerIpAddress)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.Network.Windows/Dhcp/DhcpServerIpAddress.cs/#L137"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool operator &gt;=(DhcpServerIpAddress a, DhcpServerIpAddress b)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>a</code> <a class="xref" href="Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.html">DhcpServerIpAddress</a></dt>
+    <dd></dd>
+    <dt><code>b</code> <a class="xref" href="Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.html">DhcpServerIpAddress</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_Network_Windows_Dhcp_DhcpServerIpAddress_op_Implicit_" data-uid="Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.op_Implicit*"></a>
+
+  <h3 id="Bodoconsult_Network_Windows_Dhcp_DhcpServerIpAddress_op_Implicit_Bodoconsult_Network_Windows_Dhcp_DhcpServerIpAddress__System_Net_IPAddress" data-uid="Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.op_Implicit(Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress)~System.Net.IPAddress">
+  implicit operator IPAddress(DhcpServerIpAddress)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.Network.Windows/Dhcp/DhcpServerIpAddress.cs/#L128"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static implicit operator IPAddress(DhcpServerIpAddress address)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>address</code> <a class="xref" href="Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.html">DhcpServerIpAddress</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.net.ipaddress">IPAddress</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_Network_Windows_Dhcp_DhcpServerIpAddress_op_Implicit_" data-uid="Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.op_Implicit*"></a>
+
+  <h3 id="Bodoconsult_Network_Windows_Dhcp_DhcpServerIpAddress_op_Implicit_Bodoconsult_Network_Windows_Dhcp_DhcpServerIpAddress__System_String" data-uid="Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.op_Implicit(Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress)~System.String">
+  implicit operator string(DhcpServerIpAddress)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.Network.Windows/Dhcp/DhcpServerIpAddress.cs/#L133"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static implicit operator string(DhcpServerIpAddress address)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>address</code> <a class="xref" href="Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.html">DhcpServerIpAddress</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_Network_Windows_Dhcp_DhcpServerIpAddress_op_Implicit_" data-uid="Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.op_Implicit*"></a>
+
+  <h3 id="Bodoconsult_Network_Windows_Dhcp_DhcpServerIpAddress_op_Implicit_System_Net_IPAddress__Bodoconsult_Network_Windows_Dhcp_DhcpServerIpAddress" data-uid="Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.op_Implicit(System.Net.IPAddress)~Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress">
+  implicit operator DhcpServerIpAddress(IPAddress)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.Network.Windows/Dhcp/DhcpServerIpAddress.cs/#L127"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static implicit operator DhcpServerIpAddress(IPAddress address)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>address</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.net.ipaddress">IPAddress</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.html">DhcpServerIpAddress</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_Network_Windows_Dhcp_DhcpServerIpAddress_op_Implicit_" data-uid="Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.op_Implicit*"></a>
+
+  <h3 id="Bodoconsult_Network_Windows_Dhcp_DhcpServerIpAddress_op_Implicit_System_String__Bodoconsult_Network_Windows_Dhcp_DhcpServerIpAddress" data-uid="Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.op_Implicit(System.String)~Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress">
+  implicit operator DhcpServerIpAddress(string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.Network.Windows/Dhcp/DhcpServerIpAddress.cs/#L134"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static implicit operator DhcpServerIpAddress(string address)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>address</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.html">DhcpServerIpAddress</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_Network_Windows_Dhcp_DhcpServerIpAddress_op_Inequality_" data-uid="Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.op_Inequality*"></a>
+
+  <h3 id="Bodoconsult_Network_Windows_Dhcp_DhcpServerIpAddress_op_Inequality_Bodoconsult_Network_Windows_Dhcp_DhcpServerIpAddress_Bodoconsult_Network_Windows_Dhcp_DhcpServerIpAddress_" data-uid="Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.op_Inequality(Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress,Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress)">
+  operator !=(DhcpServerIpAddress, DhcpServerIpAddress)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.Network.Windows/Dhcp/DhcpServerIpAddress.cs/#L112"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool operator !=(DhcpServerIpAddress lhs, DhcpServerIpAddress rhs)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>lhs</code> <a class="xref" href="Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.html">DhcpServerIpAddress</a></dt>
+    <dd></dd>
+    <dt><code>rhs</code> <a class="xref" href="Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.html">DhcpServerIpAddress</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_Network_Windows_Dhcp_DhcpServerIpAddress_op_Inequality_" data-uid="Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.op_Inequality*"></a>
+
+  <h3 id="Bodoconsult_Network_Windows_Dhcp_DhcpServerIpAddress_op_Inequality_Bodoconsult_Network_Windows_Dhcp_DhcpServerIpAddress_System_Net_IPAddress_" data-uid="Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.op_Inequality(Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress,System.Net.IPAddress)">
+  operator !=(DhcpServerIpAddress, IPAddress)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.Network.Windows/Dhcp/DhcpServerIpAddress.cs/#L116"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool operator !=(DhcpServerIpAddress lhs, IPAddress rhs)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>lhs</code> <a class="xref" href="Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.html">DhcpServerIpAddress</a></dt>
+    <dd></dd>
+    <dt><code>rhs</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.net.ipaddress">IPAddress</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_Network_Windows_Dhcp_DhcpServerIpAddress_op_LessThan_" data-uid="Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.op_LessThan*"></a>
+
+  <h3 id="Bodoconsult_Network_Windows_Dhcp_DhcpServerIpAddress_op_LessThan_Bodoconsult_Network_Windows_Dhcp_DhcpServerIpAddress_Bodoconsult_Network_Windows_Dhcp_DhcpServerIpAddress_" data-uid="Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.op_LessThan(Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress,Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress)">
+  operator &lt;(DhcpServerIpAddress, DhcpServerIpAddress)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.Network.Windows/Dhcp/DhcpServerIpAddress.cs/#L138"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool operator &lt;(DhcpServerIpAddress a, DhcpServerIpAddress b)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>a</code> <a class="xref" href="Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.html">DhcpServerIpAddress</a></dt>
+    <dd></dd>
+    <dt><code>b</code> <a class="xref" href="Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.html">DhcpServerIpAddress</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_Network_Windows_Dhcp_DhcpServerIpAddress_op_LessThanOrEqual_" data-uid="Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.op_LessThanOrEqual*"></a>
+
+  <h3 id="Bodoconsult_Network_Windows_Dhcp_DhcpServerIpAddress_op_LessThanOrEqual_Bodoconsult_Network_Windows_Dhcp_DhcpServerIpAddress_Bodoconsult_Network_Windows_Dhcp_DhcpServerIpAddress_" data-uid="Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.op_LessThanOrEqual(Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress,Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress)">
+  operator &lt;=(DhcpServerIpAddress, DhcpServerIpAddress)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.Network.Windows/Dhcp/DhcpServerIpAddress.cs/#L139"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool operator &lt;=(DhcpServerIpAddress a, DhcpServerIpAddress b)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>a</code> <a class="xref" href="Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.html">DhcpServerIpAddress</a></dt>
+    <dd></dd>
+    <dt><code>b</code> <a class="xref" href="Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.html">DhcpServerIpAddress</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.Network.Windows/Dhcp/DhcpServerIpAddress.cs/#L10" class="edit-link">Edit this page</a>
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

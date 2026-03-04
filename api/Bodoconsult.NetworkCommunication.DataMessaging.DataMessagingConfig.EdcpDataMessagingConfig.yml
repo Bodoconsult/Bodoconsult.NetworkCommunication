@@ -1,0 +1,1655 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig
+  commentId: T:Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig
+  id: EdcpDataMessagingConfig
+  parent: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig
+  children:
+  - Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.AppLogger
+  - Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.CheckIfCommunicationIsOnlineDelegate
+  - Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.CheckIfDeviceIsReadyDelegate
+  - Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.ClientSendMaximumBlockCode
+  - Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.ClientSendMinimumBlockCode
+  - Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.DataMessageProcessingPackage
+  - Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.DuplexIoErrorHandlerDelegate
+  - Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.IpAddress
+  - Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.IpProtocol
+  - Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.LoggerId
+  - Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.MonitorLogger
+  - Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.Port
+  - Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.RaiseAppLayerDataMessageReceivedDelegate
+  - Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.RaiseComDevCloseRequestDelegate
+  - Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.RaiseCommLayerDataMessageReceivedDelegate
+  - Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.RaiseDataMessageNotSentDelegate
+  - Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.RaiseDataMessageSentDelegate
+  - Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.RaiseUnexpectedDataMessageReceivedDelegate
+  - Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.ResetOutboundDataMessageFactoryDelegate
+  - Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.ServerSendMaximumBlockCode
+  - Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.ServerSendMinimumBlockCode
+  - Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.SocketProxy
+  - Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.UpdateDataMessageProcessingPackageDelegate
+  langs:
+  - csharp
+  - vb
+  name: EdcpDataMessagingConfig
+  nameWithType: EdcpDataMessagingConfig
+  fullName: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig
+  type: Class
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/DataMessaging/DataMessagingConfig/EdcpDataMessagingConfig.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: EdcpDataMessagingConfig
+    path: src/Bodoconsult.NetworkCommunication/DataMessaging/DataMessagingConfig/EdcpDataMessagingConfig.cs
+    startLine: 12
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig
+  summary: EDCP protocol config file for one the client-server network communication with one client device
+  example: []
+  syntax:
+    content: 'public class EdcpDataMessagingConfig : IIpDataMessagingConfig, IDataMessagingConfig'
+    content.vb: Public Class EdcpDataMessagingConfig Implements IIpDataMessagingConfig, IDataMessagingConfig
+  inheritance:
+  - System.Object
+  implements:
+  - Bodoconsult.NetworkCommunication.Interfaces.IIpDataMessagingConfig
+  - Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.LoggerId
+  commentId: P:Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.LoggerId
+  id: LoggerId
+  parent: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig
+  langs:
+  - csharp
+  - vb
+  name: LoggerId
+  nameWithType: EdcpDataMessagingConfig.LoggerId
+  fullName: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.LoggerId
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/DataMessaging/DataMessagingConfig/EdcpDataMessagingConfig.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: LoggerId
+    path: src/Bodoconsult.NetworkCommunication/DataMessaging/DataMessagingConfig/EdcpDataMessagingConfig.cs
+    startLine: 18
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig
+  summary: A readable string for identitying the device used for logging
+  example: []
+  syntax:
+    content: public string LoggerId { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public ReadOnly Property LoggerId As String
+  overload: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.LoggerId*
+  implements:
+  - Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig.LoggerId
+- uid: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.IpProtocol
+  commentId: P:Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.IpProtocol
+  id: IpProtocol
+  parent: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig
+  langs:
+  - csharp
+  - vb
+  name: IpProtocol
+  nameWithType: EdcpDataMessagingConfig.IpProtocol
+  fullName: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.IpProtocol
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/DataMessaging/DataMessagingConfig/EdcpDataMessagingConfig.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: IpProtocol
+    path: src/Bodoconsult.NetworkCommunication/DataMessaging/DataMessagingConfig/EdcpDataMessagingConfig.cs
+    startLine: 23
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig
+  summary: IP based protocol used for this config
+  example: []
+  syntax:
+    content: public IpProtocolEnum IpProtocol { get; set; }
+    parameters: []
+    return:
+      type: Bodoconsult.NetworkCommunication.EnumAndStates.IpProtocolEnum
+    content.vb: Public Property IpProtocol As IpProtocolEnum
+  overload: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.IpProtocol*
+  implements:
+  - Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig.IpProtocol
+- uid: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.SocketProxy
+  commentId: P:Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.SocketProxy
+  id: SocketProxy
+  parent: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig
+  langs:
+  - csharp
+  - vb
+  name: SocketProxy
+  nameWithType: EdcpDataMessagingConfig.SocketProxy
+  fullName: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.SocketProxy
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/DataMessaging/DataMessagingConfig/EdcpDataMessagingConfig.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: SocketProxy
+    path: src/Bodoconsult.NetworkCommunication/DataMessaging/DataMessagingConfig/EdcpDataMessagingConfig.cs
+    startLine: 28
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig
+  summary: Current socket to use
+  example: []
+  syntax:
+    content: public ISocketProxy SocketProxy { get; set; }
+    parameters: []
+    return:
+      type: Bodoconsult.NetworkCommunication.Interfaces.ISocketProxy
+    content.vb: Public Property SocketProxy As ISocketProxy
+  overload: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.SocketProxy*
+  implements:
+  - Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig.SocketProxy
+- uid: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.DataMessageProcessingPackage
+  commentId: P:Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.DataMessageProcessingPackage
+  id: DataMessageProcessingPackage
+  parent: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig
+  langs:
+  - csharp
+  - vb
+  name: DataMessageProcessingPackage
+  nameWithType: EdcpDataMessagingConfig.DataMessageProcessingPackage
+  fullName: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.DataMessageProcessingPackage
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/DataMessaging/DataMessagingConfig/EdcpDataMessagingConfig.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: DataMessageProcessingPackage
+    path: src/Bodoconsult.NetworkCommunication/DataMessaging/DataMessagingConfig/EdcpDataMessagingConfig.cs
+    startLine: 33
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig
+  summary: Data message procssing package
+  example: []
+  syntax:
+    content: public IDataMessageProcessingPackage DataMessageProcessingPackage { get; set; }
+    parameters: []
+    return:
+      type: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageProcessingPackage
+    content.vb: Public Property DataMessageProcessingPackage As IDataMessageProcessingPackage
+  overload: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.DataMessageProcessingPackage*
+  implements:
+  - Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig.DataMessageProcessingPackage
+- uid: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.UpdateDataMessageProcessingPackageDelegate
+  commentId: P:Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.UpdateDataMessageProcessingPackageDelegate
+  id: UpdateDataMessageProcessingPackageDelegate
+  parent: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig
+  langs:
+  - csharp
+  - vb
+  name: UpdateDataMessageProcessingPackageDelegate
+  nameWithType: EdcpDataMessagingConfig.UpdateDataMessageProcessingPackageDelegate
+  fullName: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.UpdateDataMessageProcessingPackageDelegate
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/DataMessaging/DataMessagingConfig/EdcpDataMessagingConfig.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: UpdateDataMessageProcessingPackageDelegate
+    path: src/Bodoconsult.NetworkCommunication/DataMessaging/DataMessagingConfig/EdcpDataMessagingConfig.cs
+    startLine: 38
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig
+  summary: Update data message processing package
+  example: []
+  syntax:
+    content: public UpdateDataMessageProcessingPackageDelegate UpdateDataMessageProcessingPackageDelegate { get; set; }
+    parameters: []
+    return:
+      type: Bodoconsult.NetworkCommunication.Delegates.UpdateDataMessageProcessingPackageDelegate
+    content.vb: Public Property UpdateDataMessageProcessingPackageDelegate As UpdateDataMessageProcessingPackageDelegate
+  overload: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.UpdateDataMessageProcessingPackageDelegate*
+  implements:
+  - Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig.UpdateDataMessageProcessingPackageDelegate
+- uid: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.AppLogger
+  commentId: P:Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.AppLogger
+  id: AppLogger
+  parent: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig
+  langs:
+  - csharp
+  - vb
+  name: AppLogger
+  nameWithType: EdcpDataMessagingConfig.AppLogger
+  fullName: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.AppLogger
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/DataMessaging/DataMessagingConfig/EdcpDataMessagingConfig.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: AppLogger
+    path: src/Bodoconsult.NetworkCommunication/DataMessaging/DataMessagingConfig/EdcpDataMessagingConfig.cs
+    startLine: 43
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig
+  summary: Current general logger
+  example: []
+  syntax:
+    content: public IAppLoggerProxy AppLogger { get; set; }
+    parameters: []
+    return:
+      type: Bodoconsult.App.Interfaces.IAppLoggerProxy
+    content.vb: Public Property AppLogger As IAppLoggerProxy
+  overload: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.AppLogger*
+  implements:
+  - Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig.AppLogger
+- uid: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.MonitorLogger
+  commentId: P:Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.MonitorLogger
+  id: MonitorLogger
+  parent: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig
+  langs:
+  - csharp
+  - vb
+  name: MonitorLogger
+  nameWithType: EdcpDataMessagingConfig.MonitorLogger
+  fullName: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.MonitorLogger
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/DataMessaging/DataMessagingConfig/EdcpDataMessagingConfig.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: MonitorLogger
+    path: src/Bodoconsult.NetworkCommunication/DataMessaging/DataMessagingConfig/EdcpDataMessagingConfig.cs
+    startLine: 48
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig
+  summary: Current monitor logger
+  example: []
+  syntax:
+    content: public IAppLoggerProxy MonitorLogger { get; set; }
+    parameters: []
+    return:
+      type: Bodoconsult.App.Interfaces.IAppLoggerProxy
+    content.vb: Public Property MonitorLogger As IAppLoggerProxy
+  overload: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.MonitorLogger*
+  implements:
+  - Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig.MonitorLogger
+- uid: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.CheckIfCommunicationIsOnlineDelegate
+  commentId: P:Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.CheckIfCommunicationIsOnlineDelegate
+  id: CheckIfCommunicationIsOnlineDelegate
+  parent: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig
+  langs:
+  - csharp
+  - vb
+  name: CheckIfCommunicationIsOnlineDelegate
+  nameWithType: EdcpDataMessagingConfig.CheckIfCommunicationIsOnlineDelegate
+  fullName: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.CheckIfCommunicationIsOnlineDelegate
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/DataMessaging/DataMessagingConfig/EdcpDataMessagingConfig.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: CheckIfCommunicationIsOnlineDelegate
+    path: src/Bodoconsult.NetworkCommunication/DataMessaging/DataMessagingConfig/EdcpDataMessagingConfig.cs
+    startLine: 54
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig
+  summary: A delegate for a method returning true if the communications is online or false if offline
+  example: []
+  syntax:
+    content: public CheckIfCommunicationIsOnlineDelegate CheckIfCommunicationIsOnlineDelegate { get; set; }
+    parameters: []
+    return:
+      type: Bodoconsult.NetworkCommunication.Delegates.CheckIfCommunicationIsOnlineDelegate
+      description: A delegate
+    content.vb: Public Property CheckIfCommunicationIsOnlineDelegate As CheckIfCommunicationIsOnlineDelegate
+  overload: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.CheckIfCommunicationIsOnlineDelegate*
+  implements:
+  - Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig.CheckIfCommunicationIsOnlineDelegate
+- uid: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.CheckIfDeviceIsReadyDelegate
+  commentId: P:Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.CheckIfDeviceIsReadyDelegate
+  id: CheckIfDeviceIsReadyDelegate
+  parent: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig
+  langs:
+  - csharp
+  - vb
+  name: CheckIfDeviceIsReadyDelegate
+  nameWithType: EdcpDataMessagingConfig.CheckIfDeviceIsReadyDelegate
+  fullName: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.CheckIfDeviceIsReadyDelegate
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/DataMessaging/DataMessagingConfig/EdcpDataMessagingConfig.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: CheckIfDeviceIsReadyDelegate
+    path: src/Bodoconsult.NetworkCommunication/DataMessaging/DataMessagingConfig/EdcpDataMessagingConfig.cs
+    startLine: 60
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig
+  summary: A delegate for a method returning true if the device is or false if not
+  example: []
+  syntax:
+    content: public CheckIfDeviceIsReadyDelegate CheckIfDeviceIsReadyDelegate { get; set; }
+    parameters: []
+    return:
+      type: Bodoconsult.NetworkCommunication.Delegates.CheckIfDeviceIsReadyDelegate
+      description: true if the device is ready else false
+    content.vb: Public Property CheckIfDeviceIsReadyDelegate As CheckIfDeviceIsReadyDelegate
+  overload: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.CheckIfDeviceIsReadyDelegate*
+  implements:
+  - Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig.CheckIfDeviceIsReadyDelegate
+- uid: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.RaiseComDevCloseRequestDelegate
+  commentId: P:Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.RaiseComDevCloseRequestDelegate
+  id: RaiseComDevCloseRequestDelegate
+  parent: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig
+  langs:
+  - csharp
+  - vb
+  name: RaiseComDevCloseRequestDelegate
+  nameWithType: EdcpDataMessagingConfig.RaiseComDevCloseRequestDelegate
+  fullName: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.RaiseComDevCloseRequestDelegate
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/DataMessaging/DataMessagingConfig/EdcpDataMessagingConfig.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: RaiseComDevCloseRequestDelegate
+    path: src/Bodoconsult.NetworkCommunication/DataMessaging/DataMessagingConfig/EdcpDataMessagingConfig.cs
+    startLine: 65
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig
+  summary: Request a closing of the current communication connection from the business logic delegate
+  example: []
+  syntax:
+    content: public RaiseComDevCloseRequestDelegate RaiseComDevCloseRequestDelegate { get; set; }
+    parameters: []
+    return:
+      type: Bodoconsult.NetworkCommunication.Delegates.RaiseComDevCloseRequestDelegate
+    content.vb: Public Property RaiseComDevCloseRequestDelegate As RaiseComDevCloseRequestDelegate
+  overload: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.RaiseComDevCloseRequestDelegate*
+  implements:
+  - Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig.RaiseComDevCloseRequestDelegate
+- uid: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.DuplexIoErrorHandlerDelegate
+  commentId: P:Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.DuplexIoErrorHandlerDelegate
+  id: DuplexIoErrorHandlerDelegate
+  parent: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig
+  langs:
+  - csharp
+  - vb
+  name: DuplexIoErrorHandlerDelegate
+  nameWithType: EdcpDataMessagingConfig.DuplexIoErrorHandlerDelegate
+  fullName: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.DuplexIoErrorHandlerDelegate
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/DataMessaging/DataMessagingConfig/EdcpDataMessagingConfig.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: DuplexIoErrorHandlerDelegate
+    path: src/Bodoconsult.NetworkCommunication/DataMessaging/DataMessagingConfig/EdcpDataMessagingConfig.cs
+    startLine: 71
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig
+  summary: >-
+    Delegate for handling central exception handling in <xref href="Bodoconsult.NetworkCommunication.Interfaces.IDuplexIo" data-throw-if-not-resolved="false"></xref> implementations.
+
+    Set internally normally. Public implementation intended for testing purposes.
+  example: []
+  syntax:
+    content: public DuplexIoErrorHandlerDelegate DuplexIoErrorHandlerDelegate { get; set; }
+    parameters: []
+    return:
+      type: Bodoconsult.NetworkCommunication.Delegates.DuplexIoErrorHandlerDelegate
+    content.vb: Public Property DuplexIoErrorHandlerDelegate As DuplexIoErrorHandlerDelegate
+  overload: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.DuplexIoErrorHandlerDelegate*
+  implements:
+  - Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig.DuplexIoErrorHandlerDelegate
+- uid: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.RaiseDataMessageNotSentDelegate
+  commentId: P:Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.RaiseDataMessageNotSentDelegate
+  id: RaiseDataMessageNotSentDelegate
+  parent: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig
+  langs:
+  - csharp
+  - vb
+  name: RaiseDataMessageNotSentDelegate
+  nameWithType: EdcpDataMessagingConfig.RaiseDataMessageNotSentDelegate
+  fullName: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.RaiseDataMessageNotSentDelegate
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/DataMessaging/DataMessagingConfig/EdcpDataMessagingConfig.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: RaiseDataMessageNotSentDelegate
+    path: src/Bodoconsult.NetworkCommunication/DataMessaging/DataMessagingConfig/EdcpDataMessagingConfig.cs
+    startLine: 76
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig
+  summary: Message not sent delegate
+  example: []
+  syntax:
+    content: public RaiseDataMessageNotSentDelegate RaiseDataMessageNotSentDelegate { get; set; }
+    parameters: []
+    return:
+      type: Bodoconsult.NetworkCommunication.Delegates.RaiseDataMessageNotSentDelegate
+    content.vb: Public Property RaiseDataMessageNotSentDelegate As RaiseDataMessageNotSentDelegate
+  overload: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.RaiseDataMessageNotSentDelegate*
+  implements:
+  - Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig.RaiseDataMessageNotSentDelegate
+- uid: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.RaiseDataMessageSentDelegate
+  commentId: P:Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.RaiseDataMessageSentDelegate
+  id: RaiseDataMessageSentDelegate
+  parent: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig
+  langs:
+  - csharp
+  - vb
+  name: RaiseDataMessageSentDelegate
+  nameWithType: EdcpDataMessagingConfig.RaiseDataMessageSentDelegate
+  fullName: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.RaiseDataMessageSentDelegate
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/DataMessaging/DataMessagingConfig/EdcpDataMessagingConfig.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: RaiseDataMessageSentDelegate
+    path: src/Bodoconsult.NetworkCommunication/DataMessaging/DataMessagingConfig/EdcpDataMessagingConfig.cs
+    startLine: 81
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig
+  summary: Message sent delegate
+  example: []
+  syntax:
+    content: public RaiseDataMessageSentDelegate RaiseDataMessageSentDelegate { get; set; }
+    parameters: []
+    return:
+      type: Bodoconsult.NetworkCommunication.Delegates.RaiseDataMessageSentDelegate
+    content.vb: Public Property RaiseDataMessageSentDelegate As RaiseDataMessageSentDelegate
+  overload: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.RaiseDataMessageSentDelegate*
+  implements:
+  - Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig.RaiseDataMessageSentDelegate
+- uid: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.RaiseCommLayerDataMessageReceivedDelegate
+  commentId: P:Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.RaiseCommLayerDataMessageReceivedDelegate
+  id: RaiseCommLayerDataMessageReceivedDelegate
+  parent: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig
+  langs:
+  - csharp
+  - vb
+  name: RaiseCommLayerDataMessageReceivedDelegate
+  nameWithType: EdcpDataMessagingConfig.RaiseCommLayerDataMessageReceivedDelegate
+  fullName: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.RaiseCommLayerDataMessageReceivedDelegate
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/DataMessaging/DataMessagingConfig/EdcpDataMessagingConfig.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: RaiseCommLayerDataMessageReceivedDelegate
+    path: src/Bodoconsult.NetworkCommunication/DataMessaging/DataMessagingConfig/EdcpDataMessagingConfig.cs
+    startLine: 86
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig
+  summary: Delegate fired on comm level if a data message has been received. Should be used in <xref href="Bodoconsult.NetworkCommunication.Interfaces.ICommunicationHandler" data-throw-if-not-resolved="false"></xref> impls to implement there handshake responses and then forward to the next layer
+  example: []
+  syntax:
+    content: public RaiseDataMessageReceivedDelegate RaiseCommLayerDataMessageReceivedDelegate { get; set; }
+    parameters: []
+    return:
+      type: Bodoconsult.NetworkCommunication.Delegates.RaiseDataMessageReceivedDelegate
+    content.vb: Public Property RaiseCommLayerDataMessageReceivedDelegate As RaiseDataMessageReceivedDelegate
+  overload: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.RaiseCommLayerDataMessageReceivedDelegate*
+  implements:
+  - Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig.RaiseCommLayerDataMessageReceivedDelegate
+- uid: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.RaiseAppLayerDataMessageReceivedDelegate
+  commentId: P:Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.RaiseAppLayerDataMessageReceivedDelegate
+  id: RaiseAppLayerDataMessageReceivedDelegate
+  parent: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig
+  langs:
+  - csharp
+  - vb
+  name: RaiseAppLayerDataMessageReceivedDelegate
+  nameWithType: EdcpDataMessagingConfig.RaiseAppLayerDataMessageReceivedDelegate
+  fullName: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.RaiseAppLayerDataMessageReceivedDelegate
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/DataMessaging/DataMessagingConfig/EdcpDataMessagingConfig.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: RaiseAppLayerDataMessageReceivedDelegate
+    path: src/Bodoconsult.NetworkCommunication/DataMessaging/DataMessagingConfig/EdcpDataMessagingConfig.cs
+    startLine: 91
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig
+  summary: Delegate raised on app level if data message was received
+  example: []
+  syntax:
+    content: public RaiseDataMessageReceivedDelegate RaiseAppLayerDataMessageReceivedDelegate { get; set; }
+    parameters: []
+    return:
+      type: Bodoconsult.NetworkCommunication.Delegates.RaiseDataMessageReceivedDelegate
+    content.vb: Public Property RaiseAppLayerDataMessageReceivedDelegate As RaiseDataMessageReceivedDelegate
+  overload: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.RaiseAppLayerDataMessageReceivedDelegate*
+  implements:
+  - Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig.RaiseAppLayerDataMessageReceivedDelegate
+- uid: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.RaiseUnexpectedDataMessageReceivedDelegate
+  commentId: P:Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.RaiseUnexpectedDataMessageReceivedDelegate
+  id: RaiseUnexpectedDataMessageReceivedDelegate
+  parent: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig
+  langs:
+  - csharp
+  - vb
+  name: RaiseUnexpectedDataMessageReceivedDelegate
+  nameWithType: EdcpDataMessagingConfig.RaiseUnexpectedDataMessageReceivedDelegate
+  fullName: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.RaiseUnexpectedDataMessageReceivedDelegate
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/DataMessaging/DataMessagingConfig/EdcpDataMessagingConfig.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: RaiseUnexpectedDataMessageReceivedDelegate
+    path: src/Bodoconsult.NetworkCommunication/DataMessaging/DataMessagingConfig/EdcpDataMessagingConfig.cs
+    startLine: 96
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig
+  summary: Delegate raised if a device message does not fit the expectations (length, content, ...)
+  example: []
+  syntax:
+    content: public RaiseUnexpectedDataMessageReceivedDelegate RaiseUnexpectedDataMessageReceivedDelegate { get; set; }
+    parameters: []
+    return:
+      type: Bodoconsult.NetworkCommunication.Delegates.RaiseUnexpectedDataMessageReceivedDelegate
+    content.vb: Public Property RaiseUnexpectedDataMessageReceivedDelegate As RaiseUnexpectedDataMessageReceivedDelegate
+  overload: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.RaiseUnexpectedDataMessageReceivedDelegate*
+  implements:
+  - Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig.RaiseUnexpectedDataMessageReceivedDelegate
+- uid: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.ResetOutboundDataMessageFactoryDelegate
+  commentId: P:Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.ResetOutboundDataMessageFactoryDelegate
+  id: ResetOutboundDataMessageFactoryDelegate
+  parent: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig
+  langs:
+  - csharp
+  - vb
+  name: ResetOutboundDataMessageFactoryDelegate
+  nameWithType: EdcpDataMessagingConfig.ResetOutboundDataMessageFactoryDelegate
+  fullName: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.ResetOutboundDataMessageFactoryDelegate
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/DataMessaging/DataMessagingConfig/EdcpDataMessagingConfig.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: ResetOutboundDataMessageFactoryDelegate
+    path: src/Bodoconsult.NetworkCommunication/DataMessaging/DataMessagingConfig/EdcpDataMessagingConfig.cs
+    startLine: 101
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig
+  summary: Reset the <xref href="Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessageFactory" data-throw-if-not-resolved="false"></xref>
+  example: []
+  syntax:
+    content: public ResetOutboundDataMessageFactoryDelegate ResetOutboundDataMessageFactoryDelegate { get; set; }
+    parameters: []
+    return:
+      type: Bodoconsult.NetworkCommunication.Delegates.ResetOutboundDataMessageFactoryDelegate
+    content.vb: Public Property ResetOutboundDataMessageFactoryDelegate As ResetOutboundDataMessageFactoryDelegate
+  overload: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.ResetOutboundDataMessageFactoryDelegate*
+  implements:
+  - Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig.ResetOutboundDataMessageFactoryDelegate
+- uid: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.IpAddress
+  commentId: P:Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.IpAddress
+  id: IpAddress
+  parent: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig
+  langs:
+  - csharp
+  - vb
+  name: IpAddress
+  nameWithType: EdcpDataMessagingConfig.IpAddress
+  fullName: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.IpAddress
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/DataMessaging/DataMessagingConfig/EdcpDataMessagingConfig.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: IpAddress
+    path: src/Bodoconsult.NetworkCommunication/DataMessaging/DataMessagingConfig/EdcpDataMessagingConfig.cs
+    startLine: 106
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig
+  summary: IP address of the device
+  example: []
+  syntax:
+    content: public string IpAddress { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property IpAddress As String
+  overload: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.IpAddress*
+  implements:
+  - Bodoconsult.NetworkCommunication.Interfaces.IIpDataMessagingConfig.IpAddress
+- uid: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.Port
+  commentId: P:Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.Port
+  id: Port
+  parent: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig
+  langs:
+  - csharp
+  - vb
+  name: Port
+  nameWithType: EdcpDataMessagingConfig.Port
+  fullName: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.Port
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/DataMessaging/DataMessagingConfig/EdcpDataMessagingConfig.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Port
+    path: src/Bodoconsult.NetworkCommunication/DataMessaging/DataMessagingConfig/EdcpDataMessagingConfig.cs
+    startLine: 111
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig
+  summary: Port to use for device communication
+  example: []
+  syntax:
+    content: public int Port { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property Port As Integer
+  overload: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.Port*
+  implements:
+  - Bodoconsult.NetworkCommunication.Interfaces.IIpDataMessagingConfig.Port
+- uid: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.ClientSendMinimumBlockCode
+  commentId: P:Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.ClientSendMinimumBlockCode
+  id: ClientSendMinimumBlockCode
+  parent: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig
+  langs:
+  - csharp
+  - vb
+  name: ClientSendMinimumBlockCode
+  nameWithType: EdcpDataMessagingConfig.ClientSendMinimumBlockCode
+  fullName: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.ClientSendMinimumBlockCode
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/DataMessaging/DataMessagingConfig/EdcpDataMessagingConfig.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: ClientSendMinimumBlockCode
+    path: src/Bodoconsult.NetworkCommunication/DataMessaging/DataMessagingConfig/EdcpDataMessagingConfig.cs
+    startLine: 116
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig
+  summary: The minimum blockcode sent by the client
+  example: []
+  syntax:
+    content: public byte ClientSendMinimumBlockCode { get; set; }
+    parameters: []
+    return:
+      type: System.Byte
+    content.vb: Public Property ClientSendMinimumBlockCode As Byte
+  overload: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.ClientSendMinimumBlockCode*
+- uid: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.ClientSendMaximumBlockCode
+  commentId: P:Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.ClientSendMaximumBlockCode
+  id: ClientSendMaximumBlockCode
+  parent: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig
+  langs:
+  - csharp
+  - vb
+  name: ClientSendMaximumBlockCode
+  nameWithType: EdcpDataMessagingConfig.ClientSendMaximumBlockCode
+  fullName: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.ClientSendMaximumBlockCode
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/DataMessaging/DataMessagingConfig/EdcpDataMessagingConfig.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: ClientSendMaximumBlockCode
+    path: src/Bodoconsult.NetworkCommunication/DataMessaging/DataMessagingConfig/EdcpDataMessagingConfig.cs
+    startLine: 121
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig
+  summary: The maximum blockcode sent by the client
+  example: []
+  syntax:
+    content: public byte ClientSendMaximumBlockCode { get; set; }
+    parameters: []
+    return:
+      type: System.Byte
+    content.vb: Public Property ClientSendMaximumBlockCode As Byte
+  overload: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.ClientSendMaximumBlockCode*
+- uid: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.ServerSendMinimumBlockCode
+  commentId: P:Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.ServerSendMinimumBlockCode
+  id: ServerSendMinimumBlockCode
+  parent: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig
+  langs:
+  - csharp
+  - vb
+  name: ServerSendMinimumBlockCode
+  nameWithType: EdcpDataMessagingConfig.ServerSendMinimumBlockCode
+  fullName: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.ServerSendMinimumBlockCode
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/DataMessaging/DataMessagingConfig/EdcpDataMessagingConfig.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: ServerSendMinimumBlockCode
+    path: src/Bodoconsult.NetworkCommunication/DataMessaging/DataMessagingConfig/EdcpDataMessagingConfig.cs
+    startLine: 126
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig
+  summary: The minimum blockcode sent by the server
+  example: []
+  syntax:
+    content: public int ServerSendMinimumBlockCode { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property ServerSendMinimumBlockCode As Integer
+  overload: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.ServerSendMinimumBlockCode*
+- uid: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.ServerSendMaximumBlockCode
+  commentId: P:Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.ServerSendMaximumBlockCode
+  id: ServerSendMaximumBlockCode
+  parent: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig
+  langs:
+  - csharp
+  - vb
+  name: ServerSendMaximumBlockCode
+  nameWithType: EdcpDataMessagingConfig.ServerSendMaximumBlockCode
+  fullName: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.ServerSendMaximumBlockCode
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/DataMessaging/DataMessagingConfig/EdcpDataMessagingConfig.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: ServerSendMaximumBlockCode
+    path: src/Bodoconsult.NetworkCommunication/DataMessaging/DataMessagingConfig/EdcpDataMessagingConfig.cs
+    startLine: 131
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig
+  summary: The maximum blockcode sent by the server
+  example: []
+  syntax:
+    content: public int ServerSendMaximumBlockCode { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property ServerSendMaximumBlockCode As Integer
+  overload: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.ServerSendMaximumBlockCode*
+references:
+- uid: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig
+  commentId: N:Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig
+  href: Bodoconsult.html
+  name: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig
+  nameWithType: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig
+  fullName: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.DataMessaging
+    name: DataMessaging
+    href: Bodoconsult.NetworkCommunication.DataMessaging.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig
+    name: DataMessagingConfig
+    href: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.html
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.DataMessaging
+    name: DataMessaging
+    href: Bodoconsult.NetworkCommunication.DataMessaging.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig
+    name: DataMessagingConfig
+    href: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IIpDataMessagingConfig
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.IIpDataMessagingConfig
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.NetworkCommunication.Interfaces.IIpDataMessagingConfig.html
+  name: IIpDataMessagingConfig
+  nameWithType: IIpDataMessagingConfig
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IIpDataMessagingConfig
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig.html
+  name: IDataMessagingConfig
+  nameWithType: IDataMessagingConfig
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Bodoconsult.NetworkCommunication.Interfaces
+  commentId: N:Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.html
+  name: Bodoconsult.NetworkCommunication.Interfaces
+  nameWithType: Bodoconsult.NetworkCommunication.Interfaces
+  fullName: Bodoconsult.NetworkCommunication.Interfaces
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Interfaces
+    name: Interfaces
+    href: Bodoconsult.NetworkCommunication.Interfaces.html
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Interfaces
+    name: Interfaces
+    href: Bodoconsult.NetworkCommunication.Interfaces.html
+- uid: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.LoggerId*
+  commentId: Overload:Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.LoggerId
+  href: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.html#Bodoconsult_NetworkCommunication_DataMessaging_DataMessagingConfig_EdcpDataMessagingConfig_LoggerId
+  name: LoggerId
+  nameWithType: EdcpDataMessagingConfig.LoggerId
+  fullName: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.LoggerId
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig.LoggerId
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig.LoggerId
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig
+  href: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig.html#Bodoconsult_NetworkCommunication_Interfaces_IDataMessagingConfig_LoggerId
+  name: LoggerId
+  nameWithType: IDataMessagingConfig.LoggerId
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig.LoggerId
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.IpProtocol*
+  commentId: Overload:Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.IpProtocol
+  href: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.html#Bodoconsult_NetworkCommunication_DataMessaging_DataMessagingConfig_EdcpDataMessagingConfig_IpProtocol
+  name: IpProtocol
+  nameWithType: EdcpDataMessagingConfig.IpProtocol
+  fullName: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.IpProtocol
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig.IpProtocol
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig.IpProtocol
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig
+  href: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig.html#Bodoconsult_NetworkCommunication_Interfaces_IDataMessagingConfig_IpProtocol
+  name: IpProtocol
+  nameWithType: IDataMessagingConfig.IpProtocol
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig.IpProtocol
+- uid: Bodoconsult.NetworkCommunication.EnumAndStates.IpProtocolEnum
+  commentId: T:Bodoconsult.NetworkCommunication.EnumAndStates.IpProtocolEnum
+  parent: Bodoconsult.NetworkCommunication.EnumAndStates
+  href: Bodoconsult.NetworkCommunication.EnumAndStates.IpProtocolEnum.html
+  name: IpProtocolEnum
+  nameWithType: IpProtocolEnum
+  fullName: Bodoconsult.NetworkCommunication.EnumAndStates.IpProtocolEnum
+- uid: Bodoconsult.NetworkCommunication.EnumAndStates
+  commentId: N:Bodoconsult.NetworkCommunication.EnumAndStates
+  href: Bodoconsult.html
+  name: Bodoconsult.NetworkCommunication.EnumAndStates
+  nameWithType: Bodoconsult.NetworkCommunication.EnumAndStates
+  fullName: Bodoconsult.NetworkCommunication.EnumAndStates
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.EnumAndStates
+    name: EnumAndStates
+    href: Bodoconsult.NetworkCommunication.EnumAndStates.html
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.EnumAndStates
+    name: EnumAndStates
+    href: Bodoconsult.NetworkCommunication.EnumAndStates.html
+- uid: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.SocketProxy*
+  commentId: Overload:Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.SocketProxy
+  href: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.html#Bodoconsult_NetworkCommunication_DataMessaging_DataMessagingConfig_EdcpDataMessagingConfig_SocketProxy
+  name: SocketProxy
+  nameWithType: EdcpDataMessagingConfig.SocketProxy
+  fullName: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.SocketProxy
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig.SocketProxy
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig.SocketProxy
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig
+  href: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig.html#Bodoconsult_NetworkCommunication_Interfaces_IDataMessagingConfig_SocketProxy
+  name: SocketProxy
+  nameWithType: IDataMessagingConfig.SocketProxy
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig.SocketProxy
+- uid: Bodoconsult.NetworkCommunication.Interfaces.ISocketProxy
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.ISocketProxy
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.NetworkCommunication.Interfaces.ISocketProxy.html
+  name: ISocketProxy
+  nameWithType: ISocketProxy
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.ISocketProxy
+- uid: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.DataMessageProcessingPackage*
+  commentId: Overload:Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.DataMessageProcessingPackage
+  href: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.html#Bodoconsult_NetworkCommunication_DataMessaging_DataMessagingConfig_EdcpDataMessagingConfig_DataMessageProcessingPackage
+  name: DataMessageProcessingPackage
+  nameWithType: EdcpDataMessagingConfig.DataMessageProcessingPackage
+  fullName: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.DataMessageProcessingPackage
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig.DataMessageProcessingPackage
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig.DataMessageProcessingPackage
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig
+  href: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig.html#Bodoconsult_NetworkCommunication_Interfaces_IDataMessagingConfig_DataMessageProcessingPackage
+  name: DataMessageProcessingPackage
+  nameWithType: IDataMessagingConfig.DataMessageProcessingPackage
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig.DataMessageProcessingPackage
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageProcessingPackage
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.IDataMessageProcessingPackage
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageProcessingPackage.html
+  name: IDataMessageProcessingPackage
+  nameWithType: IDataMessageProcessingPackage
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageProcessingPackage
+- uid: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.UpdateDataMessageProcessingPackageDelegate*
+  commentId: Overload:Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.UpdateDataMessageProcessingPackageDelegate
+  href: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.html#Bodoconsult_NetworkCommunication_DataMessaging_DataMessagingConfig_EdcpDataMessagingConfig_UpdateDataMessageProcessingPackageDelegate
+  name: UpdateDataMessageProcessingPackageDelegate
+  nameWithType: EdcpDataMessagingConfig.UpdateDataMessageProcessingPackageDelegate
+  fullName: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.UpdateDataMessageProcessingPackageDelegate
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig.UpdateDataMessageProcessingPackageDelegate
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig.UpdateDataMessageProcessingPackageDelegate
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig
+  href: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig.html#Bodoconsult_NetworkCommunication_Interfaces_IDataMessagingConfig_UpdateDataMessageProcessingPackageDelegate
+  name: UpdateDataMessageProcessingPackageDelegate
+  nameWithType: IDataMessagingConfig.UpdateDataMessageProcessingPackageDelegate
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig.UpdateDataMessageProcessingPackageDelegate
+- uid: Bodoconsult.NetworkCommunication.Delegates.UpdateDataMessageProcessingPackageDelegate
+  commentId: T:Bodoconsult.NetworkCommunication.Delegates.UpdateDataMessageProcessingPackageDelegate
+  parent: Bodoconsult.NetworkCommunication.Delegates
+  href: Bodoconsult.NetworkCommunication.Delegates.UpdateDataMessageProcessingPackageDelegate.html
+  name: UpdateDataMessageProcessingPackageDelegate
+  nameWithType: UpdateDataMessageProcessingPackageDelegate
+  fullName: Bodoconsult.NetworkCommunication.Delegates.UpdateDataMessageProcessingPackageDelegate
+- uid: Bodoconsult.NetworkCommunication.Delegates
+  commentId: N:Bodoconsult.NetworkCommunication.Delegates
+  href: Bodoconsult.html
+  name: Bodoconsult.NetworkCommunication.Delegates
+  nameWithType: Bodoconsult.NetworkCommunication.Delegates
+  fullName: Bodoconsult.NetworkCommunication.Delegates
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Delegates
+    name: Delegates
+    href: Bodoconsult.NetworkCommunication.Delegates.html
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Delegates
+    name: Delegates
+    href: Bodoconsult.NetworkCommunication.Delegates.html
+- uid: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.AppLogger*
+  commentId: Overload:Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.AppLogger
+  href: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.html#Bodoconsult_NetworkCommunication_DataMessaging_DataMessagingConfig_EdcpDataMessagingConfig_AppLogger
+  name: AppLogger
+  nameWithType: EdcpDataMessagingConfig.AppLogger
+  fullName: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.AppLogger
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig.AppLogger
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig.AppLogger
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig
+  href: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig.html#Bodoconsult_NetworkCommunication_Interfaces_IDataMessagingConfig_AppLogger
+  name: AppLogger
+  nameWithType: IDataMessagingConfig.AppLogger
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig.AppLogger
+- uid: Bodoconsult.App.Interfaces.IAppLoggerProxy
+  commentId: T:Bodoconsult.App.Interfaces.IAppLoggerProxy
+  parent: Bodoconsult.App.Interfaces
+  isExternal: true
+  name: IAppLoggerProxy
+  nameWithType: IAppLoggerProxy
+  fullName: Bodoconsult.App.Interfaces.IAppLoggerProxy
+- uid: Bodoconsult.App.Interfaces
+  commentId: N:Bodoconsult.App.Interfaces
+  isExternal: true
+  name: Bodoconsult.App.Interfaces
+  nameWithType: Bodoconsult.App.Interfaces
+  fullName: Bodoconsult.App.Interfaces
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    isExternal: true
+  - name: .
+  - uid: Bodoconsult.App
+    name: App
+    isExternal: true
+  - name: .
+  - uid: Bodoconsult.App.Interfaces
+    name: Interfaces
+    isExternal: true
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    isExternal: true
+  - name: .
+  - uid: Bodoconsult.App
+    name: App
+    isExternal: true
+  - name: .
+  - uid: Bodoconsult.App.Interfaces
+    name: Interfaces
+    isExternal: true
+- uid: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.MonitorLogger*
+  commentId: Overload:Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.MonitorLogger
+  href: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.html#Bodoconsult_NetworkCommunication_DataMessaging_DataMessagingConfig_EdcpDataMessagingConfig_MonitorLogger
+  name: MonitorLogger
+  nameWithType: EdcpDataMessagingConfig.MonitorLogger
+  fullName: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.MonitorLogger
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig.MonitorLogger
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig.MonitorLogger
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig
+  href: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig.html#Bodoconsult_NetworkCommunication_Interfaces_IDataMessagingConfig_MonitorLogger
+  name: MonitorLogger
+  nameWithType: IDataMessagingConfig.MonitorLogger
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig.MonitorLogger
+- uid: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.CheckIfCommunicationIsOnlineDelegate*
+  commentId: Overload:Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.CheckIfCommunicationIsOnlineDelegate
+  href: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.html#Bodoconsult_NetworkCommunication_DataMessaging_DataMessagingConfig_EdcpDataMessagingConfig_CheckIfCommunicationIsOnlineDelegate
+  name: CheckIfCommunicationIsOnlineDelegate
+  nameWithType: EdcpDataMessagingConfig.CheckIfCommunicationIsOnlineDelegate
+  fullName: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.CheckIfCommunicationIsOnlineDelegate
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig.CheckIfCommunicationIsOnlineDelegate
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig.CheckIfCommunicationIsOnlineDelegate
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig
+  href: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig.html#Bodoconsult_NetworkCommunication_Interfaces_IDataMessagingConfig_CheckIfCommunicationIsOnlineDelegate
+  name: CheckIfCommunicationIsOnlineDelegate
+  nameWithType: IDataMessagingConfig.CheckIfCommunicationIsOnlineDelegate
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig.CheckIfCommunicationIsOnlineDelegate
+- uid: Bodoconsult.NetworkCommunication.Delegates.CheckIfCommunicationIsOnlineDelegate
+  commentId: T:Bodoconsult.NetworkCommunication.Delegates.CheckIfCommunicationIsOnlineDelegate
+  parent: Bodoconsult.NetworkCommunication.Delegates
+  href: Bodoconsult.NetworkCommunication.Delegates.CheckIfCommunicationIsOnlineDelegate.html
+  name: CheckIfCommunicationIsOnlineDelegate
+  nameWithType: CheckIfCommunicationIsOnlineDelegate
+  fullName: Bodoconsult.NetworkCommunication.Delegates.CheckIfCommunicationIsOnlineDelegate
+- uid: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.CheckIfDeviceIsReadyDelegate*
+  commentId: Overload:Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.CheckIfDeviceIsReadyDelegate
+  href: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.html#Bodoconsult_NetworkCommunication_DataMessaging_DataMessagingConfig_EdcpDataMessagingConfig_CheckIfDeviceIsReadyDelegate
+  name: CheckIfDeviceIsReadyDelegate
+  nameWithType: EdcpDataMessagingConfig.CheckIfDeviceIsReadyDelegate
+  fullName: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.CheckIfDeviceIsReadyDelegate
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig.CheckIfDeviceIsReadyDelegate
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig.CheckIfDeviceIsReadyDelegate
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig
+  href: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig.html#Bodoconsult_NetworkCommunication_Interfaces_IDataMessagingConfig_CheckIfDeviceIsReadyDelegate
+  name: CheckIfDeviceIsReadyDelegate
+  nameWithType: IDataMessagingConfig.CheckIfDeviceIsReadyDelegate
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig.CheckIfDeviceIsReadyDelegate
+- uid: Bodoconsult.NetworkCommunication.Delegates.CheckIfDeviceIsReadyDelegate
+  commentId: T:Bodoconsult.NetworkCommunication.Delegates.CheckIfDeviceIsReadyDelegate
+  parent: Bodoconsult.NetworkCommunication.Delegates
+  href: Bodoconsult.NetworkCommunication.Delegates.CheckIfDeviceIsReadyDelegate.html
+  name: CheckIfDeviceIsReadyDelegate
+  nameWithType: CheckIfDeviceIsReadyDelegate
+  fullName: Bodoconsult.NetworkCommunication.Delegates.CheckIfDeviceIsReadyDelegate
+- uid: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.RaiseComDevCloseRequestDelegate*
+  commentId: Overload:Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.RaiseComDevCloseRequestDelegate
+  href: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.html#Bodoconsult_NetworkCommunication_DataMessaging_DataMessagingConfig_EdcpDataMessagingConfig_RaiseComDevCloseRequestDelegate
+  name: RaiseComDevCloseRequestDelegate
+  nameWithType: EdcpDataMessagingConfig.RaiseComDevCloseRequestDelegate
+  fullName: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.RaiseComDevCloseRequestDelegate
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig.RaiseComDevCloseRequestDelegate
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig.RaiseComDevCloseRequestDelegate
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig
+  href: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig.html#Bodoconsult_NetworkCommunication_Interfaces_IDataMessagingConfig_RaiseComDevCloseRequestDelegate
+  name: RaiseComDevCloseRequestDelegate
+  nameWithType: IDataMessagingConfig.RaiseComDevCloseRequestDelegate
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig.RaiseComDevCloseRequestDelegate
+- uid: Bodoconsult.NetworkCommunication.Delegates.RaiseComDevCloseRequestDelegate
+  commentId: T:Bodoconsult.NetworkCommunication.Delegates.RaiseComDevCloseRequestDelegate
+  parent: Bodoconsult.NetworkCommunication.Delegates
+  href: Bodoconsult.NetworkCommunication.Delegates.RaiseComDevCloseRequestDelegate.html
+  name: RaiseComDevCloseRequestDelegate
+  nameWithType: RaiseComDevCloseRequestDelegate
+  fullName: Bodoconsult.NetworkCommunication.Delegates.RaiseComDevCloseRequestDelegate
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IDuplexIo
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.IDuplexIo
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.NetworkCommunication.Interfaces.IDuplexIo.html
+  name: IDuplexIo
+  nameWithType: IDuplexIo
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IDuplexIo
+- uid: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.DuplexIoErrorHandlerDelegate*
+  commentId: Overload:Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.DuplexIoErrorHandlerDelegate
+  href: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.html#Bodoconsult_NetworkCommunication_DataMessaging_DataMessagingConfig_EdcpDataMessagingConfig_DuplexIoErrorHandlerDelegate
+  name: DuplexIoErrorHandlerDelegate
+  nameWithType: EdcpDataMessagingConfig.DuplexIoErrorHandlerDelegate
+  fullName: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.DuplexIoErrorHandlerDelegate
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig.DuplexIoErrorHandlerDelegate
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig.DuplexIoErrorHandlerDelegate
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig
+  href: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig.html#Bodoconsult_NetworkCommunication_Interfaces_IDataMessagingConfig_DuplexIoErrorHandlerDelegate
+  name: DuplexIoErrorHandlerDelegate
+  nameWithType: IDataMessagingConfig.DuplexIoErrorHandlerDelegate
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig.DuplexIoErrorHandlerDelegate
+- uid: Bodoconsult.NetworkCommunication.Delegates.DuplexIoErrorHandlerDelegate
+  commentId: T:Bodoconsult.NetworkCommunication.Delegates.DuplexIoErrorHandlerDelegate
+  parent: Bodoconsult.NetworkCommunication.Delegates
+  href: Bodoconsult.NetworkCommunication.Delegates.DuplexIoErrorHandlerDelegate.html
+  name: DuplexIoErrorHandlerDelegate
+  nameWithType: DuplexIoErrorHandlerDelegate
+  fullName: Bodoconsult.NetworkCommunication.Delegates.DuplexIoErrorHandlerDelegate
+- uid: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.RaiseDataMessageNotSentDelegate*
+  commentId: Overload:Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.RaiseDataMessageNotSentDelegate
+  href: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.html#Bodoconsult_NetworkCommunication_DataMessaging_DataMessagingConfig_EdcpDataMessagingConfig_RaiseDataMessageNotSentDelegate
+  name: RaiseDataMessageNotSentDelegate
+  nameWithType: EdcpDataMessagingConfig.RaiseDataMessageNotSentDelegate
+  fullName: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.RaiseDataMessageNotSentDelegate
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig.RaiseDataMessageNotSentDelegate
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig.RaiseDataMessageNotSentDelegate
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig
+  href: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig.html#Bodoconsult_NetworkCommunication_Interfaces_IDataMessagingConfig_RaiseDataMessageNotSentDelegate
+  name: RaiseDataMessageNotSentDelegate
+  nameWithType: IDataMessagingConfig.RaiseDataMessageNotSentDelegate
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig.RaiseDataMessageNotSentDelegate
+- uid: Bodoconsult.NetworkCommunication.Delegates.RaiseDataMessageNotSentDelegate
+  commentId: T:Bodoconsult.NetworkCommunication.Delegates.RaiseDataMessageNotSentDelegate
+  parent: Bodoconsult.NetworkCommunication.Delegates
+  href: Bodoconsult.NetworkCommunication.Delegates.RaiseDataMessageNotSentDelegate.html
+  name: RaiseDataMessageNotSentDelegate
+  nameWithType: RaiseDataMessageNotSentDelegate
+  fullName: Bodoconsult.NetworkCommunication.Delegates.RaiseDataMessageNotSentDelegate
+- uid: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.RaiseDataMessageSentDelegate*
+  commentId: Overload:Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.RaiseDataMessageSentDelegate
+  href: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.html#Bodoconsult_NetworkCommunication_DataMessaging_DataMessagingConfig_EdcpDataMessagingConfig_RaiseDataMessageSentDelegate
+  name: RaiseDataMessageSentDelegate
+  nameWithType: EdcpDataMessagingConfig.RaiseDataMessageSentDelegate
+  fullName: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.RaiseDataMessageSentDelegate
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig.RaiseDataMessageSentDelegate
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig.RaiseDataMessageSentDelegate
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig
+  href: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig.html#Bodoconsult_NetworkCommunication_Interfaces_IDataMessagingConfig_RaiseDataMessageSentDelegate
+  name: RaiseDataMessageSentDelegate
+  nameWithType: IDataMessagingConfig.RaiseDataMessageSentDelegate
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig.RaiseDataMessageSentDelegate
+- uid: Bodoconsult.NetworkCommunication.Delegates.RaiseDataMessageSentDelegate
+  commentId: T:Bodoconsult.NetworkCommunication.Delegates.RaiseDataMessageSentDelegate
+  parent: Bodoconsult.NetworkCommunication.Delegates
+  href: Bodoconsult.NetworkCommunication.Delegates.RaiseDataMessageSentDelegate.html
+  name: RaiseDataMessageSentDelegate
+  nameWithType: RaiseDataMessageSentDelegate
+  fullName: Bodoconsult.NetworkCommunication.Delegates.RaiseDataMessageSentDelegate
+- uid: Bodoconsult.NetworkCommunication.Interfaces.ICommunicationHandler
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.ICommunicationHandler
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.NetworkCommunication.Interfaces.ICommunicationHandler.html
+  name: ICommunicationHandler
+  nameWithType: ICommunicationHandler
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.ICommunicationHandler
+- uid: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.RaiseCommLayerDataMessageReceivedDelegate*
+  commentId: Overload:Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.RaiseCommLayerDataMessageReceivedDelegate
+  href: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.html#Bodoconsult_NetworkCommunication_DataMessaging_DataMessagingConfig_EdcpDataMessagingConfig_RaiseCommLayerDataMessageReceivedDelegate
+  name: RaiseCommLayerDataMessageReceivedDelegate
+  nameWithType: EdcpDataMessagingConfig.RaiseCommLayerDataMessageReceivedDelegate
+  fullName: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.RaiseCommLayerDataMessageReceivedDelegate
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig.RaiseCommLayerDataMessageReceivedDelegate
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig.RaiseCommLayerDataMessageReceivedDelegate
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig
+  href: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig.html#Bodoconsult_NetworkCommunication_Interfaces_IDataMessagingConfig_RaiseCommLayerDataMessageReceivedDelegate
+  name: RaiseCommLayerDataMessageReceivedDelegate
+  nameWithType: IDataMessagingConfig.RaiseCommLayerDataMessageReceivedDelegate
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig.RaiseCommLayerDataMessageReceivedDelegate
+- uid: Bodoconsult.NetworkCommunication.Delegates.RaiseDataMessageReceivedDelegate
+  commentId: T:Bodoconsult.NetworkCommunication.Delegates.RaiseDataMessageReceivedDelegate
+  parent: Bodoconsult.NetworkCommunication.Delegates
+  href: Bodoconsult.NetworkCommunication.Delegates.RaiseDataMessageReceivedDelegate.html
+  name: RaiseDataMessageReceivedDelegate
+  nameWithType: RaiseDataMessageReceivedDelegate
+  fullName: Bodoconsult.NetworkCommunication.Delegates.RaiseDataMessageReceivedDelegate
+- uid: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.RaiseAppLayerDataMessageReceivedDelegate*
+  commentId: Overload:Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.RaiseAppLayerDataMessageReceivedDelegate
+  href: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.html#Bodoconsult_NetworkCommunication_DataMessaging_DataMessagingConfig_EdcpDataMessagingConfig_RaiseAppLayerDataMessageReceivedDelegate
+  name: RaiseAppLayerDataMessageReceivedDelegate
+  nameWithType: EdcpDataMessagingConfig.RaiseAppLayerDataMessageReceivedDelegate
+  fullName: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.RaiseAppLayerDataMessageReceivedDelegate
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig.RaiseAppLayerDataMessageReceivedDelegate
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig.RaiseAppLayerDataMessageReceivedDelegate
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig
+  href: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig.html#Bodoconsult_NetworkCommunication_Interfaces_IDataMessagingConfig_RaiseAppLayerDataMessageReceivedDelegate
+  name: RaiseAppLayerDataMessageReceivedDelegate
+  nameWithType: IDataMessagingConfig.RaiseAppLayerDataMessageReceivedDelegate
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig.RaiseAppLayerDataMessageReceivedDelegate
+- uid: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.RaiseUnexpectedDataMessageReceivedDelegate*
+  commentId: Overload:Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.RaiseUnexpectedDataMessageReceivedDelegate
+  href: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.html#Bodoconsult_NetworkCommunication_DataMessaging_DataMessagingConfig_EdcpDataMessagingConfig_RaiseUnexpectedDataMessageReceivedDelegate
+  name: RaiseUnexpectedDataMessageReceivedDelegate
+  nameWithType: EdcpDataMessagingConfig.RaiseUnexpectedDataMessageReceivedDelegate
+  fullName: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.RaiseUnexpectedDataMessageReceivedDelegate
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig.RaiseUnexpectedDataMessageReceivedDelegate
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig.RaiseUnexpectedDataMessageReceivedDelegate
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig
+  href: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig.html#Bodoconsult_NetworkCommunication_Interfaces_IDataMessagingConfig_RaiseUnexpectedDataMessageReceivedDelegate
+  name: RaiseUnexpectedDataMessageReceivedDelegate
+  nameWithType: IDataMessagingConfig.RaiseUnexpectedDataMessageReceivedDelegate
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig.RaiseUnexpectedDataMessageReceivedDelegate
+- uid: Bodoconsult.NetworkCommunication.Delegates.RaiseUnexpectedDataMessageReceivedDelegate
+  commentId: T:Bodoconsult.NetworkCommunication.Delegates.RaiseUnexpectedDataMessageReceivedDelegate
+  parent: Bodoconsult.NetworkCommunication.Delegates
+  href: Bodoconsult.NetworkCommunication.Delegates.RaiseUnexpectedDataMessageReceivedDelegate.html
+  name: RaiseUnexpectedDataMessageReceivedDelegate
+  nameWithType: RaiseUnexpectedDataMessageReceivedDelegate
+  fullName: Bodoconsult.NetworkCommunication.Delegates.RaiseUnexpectedDataMessageReceivedDelegate
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessageFactory
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessageFactory
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessageFactory.html
+  name: IOutboundDataMessageFactory
+  nameWithType: IOutboundDataMessageFactory
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessageFactory
+- uid: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.ResetOutboundDataMessageFactoryDelegate*
+  commentId: Overload:Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.ResetOutboundDataMessageFactoryDelegate
+  href: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.html#Bodoconsult_NetworkCommunication_DataMessaging_DataMessagingConfig_EdcpDataMessagingConfig_ResetOutboundDataMessageFactoryDelegate
+  name: ResetOutboundDataMessageFactoryDelegate
+  nameWithType: EdcpDataMessagingConfig.ResetOutboundDataMessageFactoryDelegate
+  fullName: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.ResetOutboundDataMessageFactoryDelegate
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig.ResetOutboundDataMessageFactoryDelegate
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig.ResetOutboundDataMessageFactoryDelegate
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig
+  href: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig.html#Bodoconsult_NetworkCommunication_Interfaces_IDataMessagingConfig_ResetOutboundDataMessageFactoryDelegate
+  name: ResetOutboundDataMessageFactoryDelegate
+  nameWithType: IDataMessagingConfig.ResetOutboundDataMessageFactoryDelegate
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig.ResetOutboundDataMessageFactoryDelegate
+- uid: Bodoconsult.NetworkCommunication.Delegates.ResetOutboundDataMessageFactoryDelegate
+  commentId: T:Bodoconsult.NetworkCommunication.Delegates.ResetOutboundDataMessageFactoryDelegate
+  parent: Bodoconsult.NetworkCommunication.Delegates
+  href: Bodoconsult.NetworkCommunication.Delegates.ResetOutboundDataMessageFactoryDelegate.html
+  name: ResetOutboundDataMessageFactoryDelegate
+  nameWithType: ResetOutboundDataMessageFactoryDelegate
+  fullName: Bodoconsult.NetworkCommunication.Delegates.ResetOutboundDataMessageFactoryDelegate
+- uid: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.IpAddress*
+  commentId: Overload:Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.IpAddress
+  href: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.html#Bodoconsult_NetworkCommunication_DataMessaging_DataMessagingConfig_EdcpDataMessagingConfig_IpAddress
+  name: IpAddress
+  nameWithType: EdcpDataMessagingConfig.IpAddress
+  fullName: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.IpAddress
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IIpDataMessagingConfig.IpAddress
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IIpDataMessagingConfig.IpAddress
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IIpDataMessagingConfig
+  href: Bodoconsult.NetworkCommunication.Interfaces.IIpDataMessagingConfig.html#Bodoconsult_NetworkCommunication_Interfaces_IIpDataMessagingConfig_IpAddress
+  name: IpAddress
+  nameWithType: IIpDataMessagingConfig.IpAddress
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IIpDataMessagingConfig.IpAddress
+- uid: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.Port*
+  commentId: Overload:Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.Port
+  href: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.html#Bodoconsult_NetworkCommunication_DataMessaging_DataMessagingConfig_EdcpDataMessagingConfig_Port
+  name: Port
+  nameWithType: EdcpDataMessagingConfig.Port
+  fullName: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.Port
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IIpDataMessagingConfig.Port
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IIpDataMessagingConfig.Port
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IIpDataMessagingConfig
+  href: Bodoconsult.NetworkCommunication.Interfaces.IIpDataMessagingConfig.html#Bodoconsult_NetworkCommunication_Interfaces_IIpDataMessagingConfig_Port
+  name: Port
+  nameWithType: IIpDataMessagingConfig.Port
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IIpDataMessagingConfig.Port
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.ClientSendMinimumBlockCode*
+  commentId: Overload:Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.ClientSendMinimumBlockCode
+  href: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.html#Bodoconsult_NetworkCommunication_DataMessaging_DataMessagingConfig_EdcpDataMessagingConfig_ClientSendMinimumBlockCode
+  name: ClientSendMinimumBlockCode
+  nameWithType: EdcpDataMessagingConfig.ClientSendMinimumBlockCode
+  fullName: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.ClientSendMinimumBlockCode
+- uid: System.Byte
+  commentId: T:System.Byte
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.byte
+  name: byte
+  nameWithType: byte
+  fullName: byte
+  nameWithType.vb: Byte
+  fullName.vb: Byte
+  name.vb: Byte
+- uid: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.ClientSendMaximumBlockCode*
+  commentId: Overload:Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.ClientSendMaximumBlockCode
+  href: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.html#Bodoconsult_NetworkCommunication_DataMessaging_DataMessagingConfig_EdcpDataMessagingConfig_ClientSendMaximumBlockCode
+  name: ClientSendMaximumBlockCode
+  nameWithType: EdcpDataMessagingConfig.ClientSendMaximumBlockCode
+  fullName: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.ClientSendMaximumBlockCode
+- uid: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.ServerSendMinimumBlockCode*
+  commentId: Overload:Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.ServerSendMinimumBlockCode
+  href: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.html#Bodoconsult_NetworkCommunication_DataMessaging_DataMessagingConfig_EdcpDataMessagingConfig_ServerSendMinimumBlockCode
+  name: ServerSendMinimumBlockCode
+  nameWithType: EdcpDataMessagingConfig.ServerSendMinimumBlockCode
+  fullName: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.ServerSendMinimumBlockCode
+- uid: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.ServerSendMaximumBlockCode*
+  commentId: Overload:Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.ServerSendMaximumBlockCode
+  href: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.html#Bodoconsult_NetworkCommunication_DataMessaging_DataMessagingConfig_EdcpDataMessagingConfig_ServerSendMaximumBlockCode
+  name: ServerSendMaximumBlockCode
+  nameWithType: EdcpDataMessagingConfig.ServerSendMaximumBlockCode
+  fullName: Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig.EdcpDataMessagingConfig.ServerSendMaximumBlockCode

@@ -1,0 +1,146 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IDataBlockCodingProcessorFactory
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.IDataBlockCodingProcessorFactory
+  id: IDataBlockCodingProcessorFactory
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  children:
+  - Bodoconsult.NetworkCommunication.Interfaces.IDataBlockCodingProcessorFactory.CreateInstance(Bodoconsult.App.Interfaces.IAppLoggerProxy)
+  langs:
+  - csharp
+  - vb
+  name: IDataBlockCodingProcessorFactory
+  nameWithType: IDataBlockCodingProcessorFactory
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IDataBlockCodingProcessorFactory
+  type: Interface
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/IDataBlockCodingProcessorFactory.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: IDataBlockCodingProcessorFactory
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/IDataBlockCodingProcessorFactory.cs
+    startLine: 9
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Interface for creating <xref href="Bodoconsult.NetworkCommunication.Interfaces.IDataBlockCodingProcessor" data-throw-if-not-resolved="false"></xref> instances
+  example: []
+  syntax:
+    content: public interface IDataBlockCodingProcessorFactory
+    content.vb: Public Interface IDataBlockCodingProcessorFactory
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IDataBlockCodingProcessorFactory.CreateInstance(Bodoconsult.App.Interfaces.IAppLoggerProxy)
+  commentId: M:Bodoconsult.NetworkCommunication.Interfaces.IDataBlockCodingProcessorFactory.CreateInstance(Bodoconsult.App.Interfaces.IAppLoggerProxy)
+  id: CreateInstance(Bodoconsult.App.Interfaces.IAppLoggerProxy)
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IDataBlockCodingProcessorFactory
+  langs:
+  - csharp
+  - vb
+  name: CreateInstance(IAppLoggerProxy)
+  nameWithType: IDataBlockCodingProcessorFactory.CreateInstance(IAppLoggerProxy)
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IDataBlockCodingProcessorFactory.CreateInstance(Bodoconsult.App.Interfaces.IAppLoggerProxy)
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/IDataBlockCodingProcessorFactory.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: CreateInstance
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/IDataBlockCodingProcessorFactory.cs
+    startLine: 16
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Get a instance implementing <xref href="Bodoconsult.NetworkCommunication.Interfaces.IDataBlockCodingProcessor" data-throw-if-not-resolved="false"></xref>
+  example: []
+  syntax:
+    content: IDataBlockCodingProcessor CreateInstance(IAppLoggerProxy monitorLogger)
+    parameters:
+    - id: monitorLogger
+      type: Bodoconsult.App.Interfaces.IAppLoggerProxy
+      description: Current monitor logger
+    return:
+      type: Bodoconsult.NetworkCommunication.Interfaces.IDataBlockCodingProcessor
+    content.vb: Function CreateInstance(monitorLogger As IAppLoggerProxy) As IDataBlockCodingProcessor
+  overload: Bodoconsult.NetworkCommunication.Interfaces.IDataBlockCodingProcessorFactory.CreateInstance*
+references:
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IDataBlockCodingProcessor
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.IDataBlockCodingProcessor
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.NetworkCommunication.Interfaces.IDataBlockCodingProcessor.html
+  name: IDataBlockCodingProcessor
+  nameWithType: IDataBlockCodingProcessor
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IDataBlockCodingProcessor
+- uid: Bodoconsult.NetworkCommunication.Interfaces
+  commentId: N:Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.html
+  name: Bodoconsult.NetworkCommunication.Interfaces
+  nameWithType: Bodoconsult.NetworkCommunication.Interfaces
+  fullName: Bodoconsult.NetworkCommunication.Interfaces
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Interfaces
+    name: Interfaces
+    href: Bodoconsult.NetworkCommunication.Interfaces.html
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Interfaces
+    name: Interfaces
+    href: Bodoconsult.NetworkCommunication.Interfaces.html
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IDataBlockCodingProcessorFactory.CreateInstance*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.IDataBlockCodingProcessorFactory.CreateInstance
+  href: Bodoconsult.NetworkCommunication.Interfaces.IDataBlockCodingProcessorFactory.html#Bodoconsult_NetworkCommunication_Interfaces_IDataBlockCodingProcessorFactory_CreateInstance_Bodoconsult_App_Interfaces_IAppLoggerProxy_
+  name: CreateInstance
+  nameWithType: IDataBlockCodingProcessorFactory.CreateInstance
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IDataBlockCodingProcessorFactory.CreateInstance
+- uid: Bodoconsult.App.Interfaces.IAppLoggerProxy
+  commentId: T:Bodoconsult.App.Interfaces.IAppLoggerProxy
+  parent: Bodoconsult.App.Interfaces
+  isExternal: true
+  name: IAppLoggerProxy
+  nameWithType: IAppLoggerProxy
+  fullName: Bodoconsult.App.Interfaces.IAppLoggerProxy
+- uid: Bodoconsult.App.Interfaces
+  commentId: N:Bodoconsult.App.Interfaces
+  isExternal: true
+  name: Bodoconsult.App.Interfaces
+  nameWithType: Bodoconsult.App.Interfaces
+  fullName: Bodoconsult.App.Interfaces
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    isExternal: true
+  - name: .
+  - uid: Bodoconsult.App
+    name: App
+    isExternal: true
+  - name: .
+  - uid: Bodoconsult.App.Interfaces
+    name: Interfaces
+    isExternal: true
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    isExternal: true
+  - name: .
+  - uid: Bodoconsult.App
+    name: App
+    isExternal: true
+  - name: .
+  - uid: Bodoconsult.App.Interfaces
+    name: Interfaces
+    isExternal: true

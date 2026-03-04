@@ -1,0 +1,209 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpRangeType
+  commentId: T:Bodoconsult.Network.Windows.Dhcp.DhcpServerIpRangeType
+  id: DhcpServerIpRangeType
+  parent: Bodoconsult.Network.Windows.Dhcp
+  children:
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerIpRangeType.Excluded
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerIpRangeType.Reserved
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerIpRangeType.ScopeBootpOnly
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerIpRangeType.ScopeDhcpAndBootp
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerIpRangeType.ScopeDhcpOnly
+  langs:
+  - csharp
+  - vb
+  name: DhcpServerIpRangeType
+  nameWithType: DhcpServerIpRangeType
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpRangeType
+  type: Enum
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerIpRangeType.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: DhcpServerIpRangeType
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerIpRangeType.cs
+    startLine: 5
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: public enum DhcpServerIpRangeType
+    content.vb: Public Enum DhcpServerIpRangeType
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpRangeType.Reserved
+  commentId: F:Bodoconsult.Network.Windows.Dhcp.DhcpServerIpRangeType.Reserved
+  id: Reserved
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpRangeType
+  langs:
+  - csharp
+  - vb
+  name: Reserved
+  nameWithType: DhcpServerIpRangeType.Reserved
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpRangeType.Reserved
+  type: Field
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerIpRangeType.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Reserved
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerIpRangeType.cs
+    startLine: 7
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: Reserved = 2
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpRangeType
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpRangeType.Excluded
+  commentId: F:Bodoconsult.Network.Windows.Dhcp.DhcpServerIpRangeType.Excluded
+  id: Excluded
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpRangeType
+  langs:
+  - csharp
+  - vb
+  name: Excluded
+  nameWithType: DhcpServerIpRangeType.Excluded
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpRangeType.Excluded
+  type: Field
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerIpRangeType.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Excluded
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerIpRangeType.cs
+    startLine: 8
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: Excluded = 3
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpRangeType
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpRangeType.ScopeDhcpOnly
+  commentId: F:Bodoconsult.Network.Windows.Dhcp.DhcpServerIpRangeType.ScopeDhcpOnly
+  id: ScopeDhcpOnly
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpRangeType
+  langs:
+  - csharp
+  - vb
+  name: ScopeDhcpOnly
+  nameWithType: DhcpServerIpRangeType.ScopeDhcpOnly
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpRangeType.ScopeDhcpOnly
+  type: Field
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerIpRangeType.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: ScopeDhcpOnly
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerIpRangeType.cs
+    startLine: 9
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: ScopeDhcpOnly = 5
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpRangeType
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpRangeType.ScopeDhcpAndBootp
+  commentId: F:Bodoconsult.Network.Windows.Dhcp.DhcpServerIpRangeType.ScopeDhcpAndBootp
+  id: ScopeDhcpAndBootp
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpRangeType
+  langs:
+  - csharp
+  - vb
+  name: ScopeDhcpAndBootp
+  nameWithType: DhcpServerIpRangeType.ScopeDhcpAndBootp
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpRangeType.ScopeDhcpAndBootp
+  type: Field
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerIpRangeType.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: ScopeDhcpAndBootp
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerIpRangeType.cs
+    startLine: 10
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: ScopeDhcpAndBootp = 6
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpRangeType
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpRangeType.ScopeBootpOnly
+  commentId: F:Bodoconsult.Network.Windows.Dhcp.DhcpServerIpRangeType.ScopeBootpOnly
+  id: ScopeBootpOnly
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpRangeType
+  langs:
+  - csharp
+  - vb
+  name: ScopeBootpOnly
+  nameWithType: DhcpServerIpRangeType.ScopeBootpOnly
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpRangeType.ScopeBootpOnly
+  type: Field
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerIpRangeType.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: ScopeBootpOnly
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerIpRangeType.cs
+    startLine: 11
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: ScopeBootpOnly = 7
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpRangeType
+references:
+- uid: Bodoconsult.Network.Windows.Dhcp
+  commentId: N:Bodoconsult.Network.Windows.Dhcp
+  href: Bodoconsult.html
+  name: Bodoconsult.Network.Windows.Dhcp
+  nameWithType: Bodoconsult.Network.Windows.Dhcp
+  fullName: Bodoconsult.Network.Windows.Dhcp
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.Network
+    name: Network
+    href: Bodoconsult.Network.html
+  - name: .
+  - uid: Bodoconsult.Network.Windows
+    name: Windows
+    href: Bodoconsult.Network.Windows.html
+  - name: .
+  - uid: Bodoconsult.Network.Windows.Dhcp
+    name: Dhcp
+    href: Bodoconsult.Network.Windows.Dhcp.html
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.Network
+    name: Network
+    href: Bodoconsult.Network.html
+  - name: .
+  - uid: Bodoconsult.Network.Windows
+    name: Windows
+    href: Bodoconsult.Network.Windows.html
+  - name: .
+  - uid: Bodoconsult.Network.Windows.Dhcp
+    name: Dhcp
+    href: Bodoconsult.Network.Windows.Dhcp.html
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpRangeType
+  commentId: T:Bodoconsult.Network.Windows.Dhcp.DhcpServerIpRangeType
+  parent: Bodoconsult.Network.Windows.Dhcp
+  href: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpRangeType.html
+  name: DhcpServerIpRangeType
+  nameWithType: DhcpServerIpRangeType
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpRangeType

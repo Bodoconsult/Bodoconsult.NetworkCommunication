@@ -1,0 +1,110 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageProcessor
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.IDataMessageProcessor
+  id: IDataMessageProcessor
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  children:
+  - Bodoconsult.NetworkCommunication.Interfaces.IDataMessageProcessor.ProcessMessage(Bodoconsult.NetworkCommunication.Interfaces.IInboundMessage)
+  langs:
+  - csharp
+  - vb
+  name: IDataMessageProcessor
+  nameWithType: IDataMessageProcessor
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageProcessor
+  type: Interface
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/IDataMessageProcessor.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: IDataMessageProcessor
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/IDataMessageProcessor.cs
+    startLine: 8
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: >-
+    Interface for internal forwarding of the received messages of byte based messaging i.e. via TCP/IP
+
+    Implementations should invoke deviceCommSettings.RaiseDataMessageReceivedDelegate for data messages and deviceCommSettings.DataMessageProcessingPackage.WaitStateManager?.OnHandshakeReceived for handshakes
+  example: []
+  syntax:
+    content: public interface IDataMessageProcessor
+    content.vb: Public Interface IDataMessageProcessor
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageProcessor.ProcessMessage(Bodoconsult.NetworkCommunication.Interfaces.IInboundMessage)
+  commentId: M:Bodoconsult.NetworkCommunication.Interfaces.IDataMessageProcessor.ProcessMessage(Bodoconsult.NetworkCommunication.Interfaces.IInboundMessage)
+  id: ProcessMessage(Bodoconsult.NetworkCommunication.Interfaces.IInboundMessage)
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageProcessor
+  langs:
+  - csharp
+  - vb
+  name: ProcessMessage(IInboundMessage)
+  nameWithType: IDataMessageProcessor.ProcessMessage(IInboundMessage)
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageProcessor.ProcessMessage(Bodoconsult.NetworkCommunication.Interfaces.IInboundMessage)
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/IDataMessageProcessor.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: ProcessMessage
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/IDataMessageProcessor.cs
+    startLine: 14
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Process the message
+  example: []
+  syntax:
+    content: void ProcessMessage(IInboundMessage message)
+    parameters:
+    - id: message
+      type: Bodoconsult.NetworkCommunication.Interfaces.IInboundMessage
+      description: Message to process
+    content.vb: Sub ProcessMessage(message As IInboundMessage)
+  overload: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageProcessor.ProcessMessage*
+references:
+- uid: Bodoconsult.NetworkCommunication.Interfaces
+  commentId: N:Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.html
+  name: Bodoconsult.NetworkCommunication.Interfaces
+  nameWithType: Bodoconsult.NetworkCommunication.Interfaces
+  fullName: Bodoconsult.NetworkCommunication.Interfaces
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Interfaces
+    name: Interfaces
+    href: Bodoconsult.NetworkCommunication.Interfaces.html
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Interfaces
+    name: Interfaces
+    href: Bodoconsult.NetworkCommunication.Interfaces.html
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageProcessor.ProcessMessage*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.IDataMessageProcessor.ProcessMessage
+  href: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageProcessor.html#Bodoconsult_NetworkCommunication_Interfaces_IDataMessageProcessor_ProcessMessage_Bodoconsult_NetworkCommunication_Interfaces_IInboundMessage_
+  name: ProcessMessage
+  nameWithType: IDataMessageProcessor.ProcessMessage
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IDataMessageProcessor.ProcessMessage
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IInboundMessage
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.IInboundMessage
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.NetworkCommunication.Interfaces.IInboundMessage.html
+  name: IInboundMessage
+  nameWithType: IInboundMessage
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IInboundMessage

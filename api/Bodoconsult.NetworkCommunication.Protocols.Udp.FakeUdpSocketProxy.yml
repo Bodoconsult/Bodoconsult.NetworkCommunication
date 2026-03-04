@@ -1,0 +1,2312 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy
+  commentId: T:Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy
+  id: FakeUdpSocketProxy
+  parent: Bodoconsult.NetworkCommunication.Protocols.Udp
+  children:
+  - Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.AddReceivedMessage(System.Byte[])
+  - Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.AddReceivedMessage(System.Memory{System.Byte})
+  - Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.BytesAvailable
+  - Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.Close
+  - Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.Connect
+  - Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.Connected
+  - Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.DataLengthSent
+  - Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.IsConnected
+  - Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.IsPoll
+  - Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.LoadNextReceivedMessage
+  - Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.Poll
+  - Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.PrepareAnswer(System.Byte[])
+  - Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.Receive(System.Byte[])
+  - Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.Receive(System.Byte[],System.Int32,System.Int32)
+  - Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.Receive(System.Memory{System.Byte})
+  - Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.ReceivedMessages
+  - Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.ReceiverThrowSocketException
+  - Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.Send(System.Byte[])
+  - Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.Send(System.Byte[],System.Int32,System.Int32)
+  - Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.Send(System.ReadOnlyMemory{System.Byte})
+  - Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.SendFile(System.String)
+  - Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.SenderThrowSocketException
+  langs:
+  - csharp
+  - vb
+  name: FakeUdpSocketProxy
+  nameWithType: FakeUdpSocketProxy
+  fullName: Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy
+  type: Class
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Protocols/Udp/FakeUdpSocketProxy.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: FakeUdpSocketProxy
+    path: src/Bodoconsult.NetworkCommunication/Protocols/Udp/FakeUdpSocketProxy.cs
+    startLine: 10
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Protocols.Udp
+  summary: Fake implementation of <xref href="Bodoconsult.NetworkCommunication.Interfaces.ISocketProxy" data-throw-if-not-resolved="false"></xref>
+  example: []
+  syntax:
+    content: 'public class FakeUdpSocketProxy : UpdSocketProxyBase, ISocketProxy, IDisposable'
+    content.vb: Public Class FakeUdpSocketProxy Inherits UpdSocketProxyBase Implements ISocketProxy, IDisposable
+  inheritance:
+  - System.Object
+  - Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase
+  implements:
+  - Bodoconsult.NetworkCommunication.Interfaces.ISocketProxy
+  - System.IDisposable
+  inheritedMembers:
+  - Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase.MinimumBufferSize
+  - Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase.IpAddress
+  - Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase.Port
+  - Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase.RemotePort
+  - Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase.IsDisposed
+  - Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase.PollingTimeout
+  - Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase.SendTimeout
+  - Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase.ReceiveTimeout
+  - Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase.Bind(System.Net.IPEndPoint)
+  - Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase.Listen(System.Int32)
+  - Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase.Dispose
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.BytesAvailable
+  commentId: P:Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.BytesAvailable
+  id: BytesAvailable
+  parent: Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy
+  langs:
+  - csharp
+  - vb
+  name: BytesAvailable
+  nameWithType: FakeUdpSocketProxy.BytesAvailable
+  fullName: Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.BytesAvailable
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Protocols/Udp/FakeUdpSocketProxy.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: BytesAvailable
+    path: src/Bodoconsult.NetworkCommunication/Protocols/Udp/FakeUdpSocketProxy.cs
+    startLine: 26
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Protocols.Udp
+  summary: Bytes available on the socket
+  example: []
+  syntax:
+    content: public override int BytesAvailable { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Overrides ReadOnly Property BytesAvailable As Integer
+  overridden: Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase.BytesAvailable
+  overload: Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.BytesAvailable*
+- uid: Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.DataLengthSent
+  commentId: P:Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.DataLengthSent
+  id: DataLengthSent
+  parent: Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy
+  langs:
+  - csharp
+  - vb
+  name: DataLengthSent
+  nameWithType: FakeUdpSocketProxy.DataLengthSent
+  fullName: Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.DataLengthSent
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Protocols/Udp/FakeUdpSocketProxy.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: DataLengthSent
+    path: src/Bodoconsult.NetworkCommunication/Protocols/Udp/FakeUdpSocketProxy.cs
+    startLine: 33
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Protocols.Udp
+  summary: >-
+    Length of data sent. If set to default value
+
+    int.MinValue the array length is returned else the provide length
+  example: []
+  syntax:
+    content: public int DataLengthSent { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property DataLengthSent As Integer
+  overload: Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.DataLengthSent*
+- uid: Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.ReceivedMessages
+  commentId: P:Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.ReceivedMessages
+  id: ReceivedMessages
+  parent: Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy
+  langs:
+  - csharp
+  - vb
+  name: ReceivedMessages
+  nameWithType: FakeUdpSocketProxy.ReceivedMessages
+  fullName: Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.ReceivedMessages
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Protocols/Udp/FakeUdpSocketProxy.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: ReceivedMessages
+    path: src/Bodoconsult.NetworkCommunication/Protocols/Udp/FakeUdpSocketProxy.cs
+    startLine: 39
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Protocols.Udp
+  summary: Queue for received messages
+  example: []
+  syntax:
+    content: public Queue<Memory<byte>> ReceivedMessages { get; set; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.Queue{System.Memory{System.Byte}}
+    content.vb: Public Property ReceivedMessages As Queue(Of Memory(Of Byte))
+  overload: Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.ReceivedMessages*
+- uid: Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.AddReceivedMessage(System.Byte[])
+  commentId: M:Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.AddReceivedMessage(System.Byte[])
+  id: AddReceivedMessage(System.Byte[])
+  parent: Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy
+  langs:
+  - csharp
+  - vb
+  name: AddReceivedMessage(byte[])
+  nameWithType: FakeUdpSocketProxy.AddReceivedMessage(byte[])
+  fullName: Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.AddReceivedMessage(byte[])
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Protocols/Udp/FakeUdpSocketProxy.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: AddReceivedMessage
+    path: src/Bodoconsult.NetworkCommunication/Protocols/Udp/FakeUdpSocketProxy.cs
+    startLine: 45
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Protocols.Udp
+  summary: Add a message to the <xref href="Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.ReceivedMessages" data-throw-if-not-resolved="false"></xref> queue
+  example: []
+  syntax:
+    content: public void AddReceivedMessage(byte[] receivedMessage)
+    parameters:
+    - id: receivedMessage
+      type: System.Byte[]
+      description: Received message to store
+    content.vb: Public Sub AddReceivedMessage(receivedMessage As Byte())
+  overload: Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.AddReceivedMessage*
+  nameWithType.vb: FakeUdpSocketProxy.AddReceivedMessage(Byte())
+  fullName.vb: Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.AddReceivedMessage(Byte())
+  name.vb: AddReceivedMessage(Byte())
+- uid: Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.AddReceivedMessage(System.Memory{System.Byte})
+  commentId: M:Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.AddReceivedMessage(System.Memory{System.Byte})
+  id: AddReceivedMessage(System.Memory{System.Byte})
+  parent: Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy
+  langs:
+  - csharp
+  - vb
+  name: AddReceivedMessage(Memory<byte>)
+  nameWithType: FakeUdpSocketProxy.AddReceivedMessage(Memory<byte>)
+  fullName: Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.AddReceivedMessage(System.Memory<byte>)
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Protocols/Udp/FakeUdpSocketProxy.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: AddReceivedMessage
+    path: src/Bodoconsult.NetworkCommunication/Protocols/Udp/FakeUdpSocketProxy.cs
+    startLine: 54
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Protocols.Udp
+  summary: Add a message to the <xref href="Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.ReceivedMessages" data-throw-if-not-resolved="false"></xref> queue
+  example: []
+  syntax:
+    content: public void AddReceivedMessage(Memory<byte> receivedMessage)
+    parameters:
+    - id: receivedMessage
+      type: System.Memory{System.Byte}
+      description: Received message to store
+    content.vb: Public Sub AddReceivedMessage(receivedMessage As Memory(Of Byte))
+  overload: Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.AddReceivedMessage*
+  nameWithType.vb: FakeUdpSocketProxy.AddReceivedMessage(Memory(Of Byte))
+  fullName.vb: Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.AddReceivedMessage(System.Memory(Of Byte))
+  name.vb: AddReceivedMessage(Memory(Of Byte))
+- uid: Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.LoadNextReceivedMessage
+  commentId: M:Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.LoadNextReceivedMessage
+  id: LoadNextReceivedMessage
+  parent: Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy
+  langs:
+  - csharp
+  - vb
+  name: LoadNextReceivedMessage()
+  nameWithType: FakeUdpSocketProxy.LoadNextReceivedMessage()
+  fullName: Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.LoadNextReceivedMessage()
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Protocols/Udp/FakeUdpSocketProxy.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: LoadNextReceivedMessage
+    path: src/Bodoconsult.NetworkCommunication/Protocols/Udp/FakeUdpSocketProxy.cs
+    startLine: 62
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Protocols.Udp
+  summary: Load the next message from <xref href="Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.ReceivedMessages" data-throw-if-not-resolved="false"></xref>
+  example: []
+  syntax:
+    content: public void LoadNextReceivedMessage()
+    content.vb: Public Sub LoadNextReceivedMessage()
+  overload: Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.LoadNextReceivedMessage*
+- uid: Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.IsConnected
+  commentId: P:Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.IsConnected
+  id: IsConnected
+  parent: Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy
+  langs:
+  - csharp
+  - vb
+  name: IsConnected
+  nameWithType: FakeUdpSocketProxy.IsConnected
+  fullName: Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.IsConnected
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Protocols/Udp/FakeUdpSocketProxy.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: IsConnected
+    path: src/Bodoconsult.NetworkCommunication/Protocols/Udp/FakeUdpSocketProxy.cs
+    startLine: 80
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Protocols.Udp
+  summary: Used to set value for <xref href="Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.Connected" data-throw-if-not-resolved="false"></xref> prop
+  example: []
+  syntax:
+    content: public bool IsConnected { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property IsConnected As Boolean
+  overload: Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.IsConnected*
+- uid: Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.IsPoll
+  commentId: P:Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.IsPoll
+  id: IsPoll
+  parent: Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy
+  langs:
+  - csharp
+  - vb
+  name: IsPoll
+  nameWithType: FakeUdpSocketProxy.IsPoll
+  fullName: Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.IsPoll
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Protocols/Udp/FakeUdpSocketProxy.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: IsPoll
+    path: src/Bodoconsult.NetworkCommunication/Protocols/Udp/FakeUdpSocketProxy.cs
+    startLine: 85
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Protocols.Udp
+  summary: Used to set return value for <xref href="Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.Poll" data-throw-if-not-resolved="false"></xref> method
+  example: []
+  syntax:
+    content: public bool IsPoll { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property IsPoll As Boolean
+  overload: Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.IsPoll*
+- uid: Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.Connected
+  commentId: P:Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.Connected
+  id: Connected
+  parent: Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy
+  langs:
+  - csharp
+  - vb
+  name: Connected
+  nameWithType: FakeUdpSocketProxy.Connected
+  fullName: Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.Connected
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Protocols/Udp/FakeUdpSocketProxy.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Connected
+    path: src/Bodoconsult.NetworkCommunication/Protocols/Udp/FakeUdpSocketProxy.cs
+    startLine: 91
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Protocols.Udp
+  summary: Is the socket connected
+  example: []
+  syntax:
+    content: public override bool Connected { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Overrides ReadOnly Property Connected As Boolean
+  overridden: Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase.Connected
+  overload: Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.Connected*
+- uid: Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.ReceiverThrowSocketException
+  commentId: P:Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.ReceiverThrowSocketException
+  id: ReceiverThrowSocketException
+  parent: Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy
+  langs:
+  - csharp
+  - vb
+  name: ReceiverThrowSocketException
+  nameWithType: FakeUdpSocketProxy.ReceiverThrowSocketException
+  fullName: Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.ReceiverThrowSocketException
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Protocols/Udp/FakeUdpSocketProxy.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: ReceiverThrowSocketException
+    path: src/Bodoconsult.NetworkCommunication/Protocols/Udp/FakeUdpSocketProxy.cs
+    startLine: 96
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Protocols.Udp
+  summary: Throw a socket exception during receiving
+  example: []
+  syntax:
+    content: public bool ReceiverThrowSocketException { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property ReceiverThrowSocketException As Boolean
+  overload: Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.ReceiverThrowSocketException*
+- uid: Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.SenderThrowSocketException
+  commentId: P:Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.SenderThrowSocketException
+  id: SenderThrowSocketException
+  parent: Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy
+  langs:
+  - csharp
+  - vb
+  name: SenderThrowSocketException
+  nameWithType: FakeUdpSocketProxy.SenderThrowSocketException
+  fullName: Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.SenderThrowSocketException
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Protocols/Udp/FakeUdpSocketProxy.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: SenderThrowSocketException
+    path: src/Bodoconsult.NetworkCommunication/Protocols/Udp/FakeUdpSocketProxy.cs
+    startLine: 101
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Protocols.Udp
+  summary: Throw a socket exception during sending
+  example: []
+  syntax:
+    content: public bool SenderThrowSocketException { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property SenderThrowSocketException As Boolean
+  overload: Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.SenderThrowSocketException*
+- uid: Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.Send(System.Byte[])
+  commentId: M:Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.Send(System.Byte[])
+  id: Send(System.Byte[])
+  parent: Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy
+  langs:
+  - csharp
+  - vb
+  name: Send(byte[])
+  nameWithType: FakeUdpSocketProxy.Send(byte[])
+  fullName: Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.Send(byte[])
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Protocols/Udp/FakeUdpSocketProxy.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Send
+    path: src/Bodoconsult.NetworkCommunication/Protocols/Udp/FakeUdpSocketProxy.cs
+    startLine: 107
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Protocols.Udp
+  summary: Send bytes
+  example: []
+  syntax:
+    content: public override Task<int> Send(byte[] bytesToSend)
+    parameters:
+    - id: bytesToSend
+      type: System.Byte[]
+      description: Byte array to send
+    return:
+      type: System.Threading.Tasks.Task{System.Int32}
+    content.vb: Public Overrides Function Send(bytesToSend As Byte()) As Task(Of Integer)
+  overridden: Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase.Send(System.Byte[])
+  overload: Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.Send*
+  nameWithType.vb: FakeUdpSocketProxy.Send(Byte())
+  fullName.vb: Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.Send(Byte())
+  name.vb: Send(Byte())
+- uid: Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.Send(System.ReadOnlyMemory{System.Byte})
+  commentId: M:Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.Send(System.ReadOnlyMemory{System.Byte})
+  id: Send(System.ReadOnlyMemory{System.Byte})
+  parent: Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy
+  langs:
+  - csharp
+  - vb
+  name: Send(ReadOnlyMemory<byte>)
+  nameWithType: FakeUdpSocketProxy.Send(ReadOnlyMemory<byte>)
+  fullName: Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.Send(System.ReadOnlyMemory<byte>)
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Protocols/Udp/FakeUdpSocketProxy.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Send
+    path: src/Bodoconsult.NetworkCommunication/Protocols/Udp/FakeUdpSocketProxy.cs
+    startLine: 128
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Protocols.Udp
+  summary: Send bytes
+  example: []
+  syntax:
+    content: public override ValueTask<int> Send(ReadOnlyMemory<byte> bytesToSend)
+    parameters:
+    - id: bytesToSend
+      type: System.ReadOnlyMemory{System.Byte}
+      description: Byte array to send
+    return:
+      type: System.Threading.Tasks.ValueTask{System.Int32}
+    content.vb: Public Overrides Function Send(bytesToSend As ReadOnlyMemory(Of Byte)) As ValueTask(Of Integer)
+  overridden: Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase.Send(System.ReadOnlyMemory{System.Byte})
+  overload: Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.Send*
+  nameWithType.vb: FakeUdpSocketProxy.Send(ReadOnlyMemory(Of Byte))
+  fullName.vb: Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.Send(System.ReadOnlyMemory(Of Byte))
+  name.vb: Send(ReadOnlyMemory(Of Byte))
+- uid: Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.Close
+  commentId: M:Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.Close
+  id: Close
+  parent: Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy
+  langs:
+  - csharp
+  - vb
+  name: Close()
+  nameWithType: FakeUdpSocketProxy.Close()
+  fullName: Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.Close()
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Protocols/Udp/FakeUdpSocketProxy.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Close
+    path: src/Bodoconsult.NetworkCommunication/Protocols/Udp/FakeUdpSocketProxy.cs
+    startLine: 154
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Protocols.Udp
+  summary: Close the socket
+  example: []
+  syntax:
+    content: public override void Close()
+    content.vb: Public Overrides Sub Close()
+  overridden: Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase.Close
+  overload: Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.Close*
+- uid: Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.Connect
+  commentId: M:Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.Connect
+  id: Connect
+  parent: Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy
+  langs:
+  - csharp
+  - vb
+  name: Connect()
+  nameWithType: FakeUdpSocketProxy.Connect()
+  fullName: Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.Connect()
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Protocols/Udp/FakeUdpSocketProxy.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Connect
+    path: src/Bodoconsult.NetworkCommunication/Protocols/Udp/FakeUdpSocketProxy.cs
+    startLine: 162
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Protocols.Udp
+  summary: Connect to an IP endpoint
+  example: []
+  syntax:
+    content: public override Task Connect()
+    return:
+      type: System.Threading.Tasks.Task
+    content.vb: Public Overrides Function Connect() As Task
+  overridden: Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase.Connect
+  overload: Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.Connect*
+- uid: Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.Receive(System.Byte[])
+  commentId: M:Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.Receive(System.Byte[])
+  id: Receive(System.Byte[])
+  parent: Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy
+  langs:
+  - csharp
+  - vb
+  name: Receive(byte[])
+  nameWithType: FakeUdpSocketProxy.Receive(byte[])
+  fullName: Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.Receive(byte[])
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Protocols/Udp/FakeUdpSocketProxy.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Receive
+    path: src/Bodoconsult.NetworkCommunication/Protocols/Udp/FakeUdpSocketProxy.cs
+    startLine: 175
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Protocols.Udp
+  summary: Receive data from the socket (simulate TCP-IP implementation behaviour)
+  example: []
+  syntax:
+    content: public override Task<int> Receive(byte[] buffer)
+    parameters:
+    - id: buffer
+      type: System.Byte[]
+      description: Byte array to store the received byte data in
+    return:
+      type: System.Threading.Tasks.Task{System.Int32}
+      description: Number of bytes received
+    content.vb: Public Overrides Function Receive(buffer As Byte()) As Task(Of Integer)
+  overridden: Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase.Receive(System.Byte[])
+  overload: Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.Receive*
+  nameWithType.vb: FakeUdpSocketProxy.Receive(Byte())
+  fullName.vb: Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.Receive(Byte())
+  name.vb: Receive(Byte())
+- uid: Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.Receive(System.Byte[],System.Int32,System.Int32)
+  commentId: M:Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.Receive(System.Byte[],System.Int32,System.Int32)
+  id: Receive(System.Byte[],System.Int32,System.Int32)
+  parent: Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy
+  langs:
+  - csharp
+  - vb
+  name: Receive(byte[], int, int)
+  nameWithType: FakeUdpSocketProxy.Receive(byte[], int, int)
+  fullName: Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.Receive(byte[], int, int)
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Protocols/Udp/FakeUdpSocketProxy.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Receive
+    path: src/Bodoconsult.NetworkCommunication/Protocols/Udp/FakeUdpSocketProxy.cs
+    startLine: 213
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Protocols.Udp
+  summary: Receive data from the socket
+  example: []
+  syntax:
+    content: public override Task<int> Receive(byte[] buffer, int offset, int expectedBytesLength)
+    parameters:
+    - id: buffer
+      type: System.Byte[]
+      description: Byte array to store the received byte data in
+    - id: offset
+      type: System.Int32
+      description: Offset
+    - id: expectedBytesLength
+      type: System.Int32
+      description: Expected length of the byte data received
+    return:
+      type: System.Threading.Tasks.Task{System.Int32}
+      description: Number of bytes received
+    content.vb: Public Overrides Function Receive(buffer As Byte(), offset As Integer, expectedBytesLength As Integer) As Task(Of Integer)
+  overridden: Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase.Receive(System.Byte[],System.Int32,System.Int32)
+  overload: Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.Receive*
+  nameWithType.vb: FakeUdpSocketProxy.Receive(Byte(), Integer, Integer)
+  fullName.vb: Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.Receive(Byte(), Integer, Integer)
+  name.vb: Receive(Byte(), Integer, Integer)
+- uid: Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.Receive(System.Memory{System.Byte})
+  commentId: M:Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.Receive(System.Memory{System.Byte})
+  id: Receive(System.Memory{System.Byte})
+  parent: Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy
+  langs:
+  - csharp
+  - vb
+  name: Receive(Memory<byte>)
+  nameWithType: FakeUdpSocketProxy.Receive(Memory<byte>)
+  fullName: Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.Receive(System.Memory<byte>)
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Protocols/Udp/FakeUdpSocketProxy.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Receive
+    path: src/Bodoconsult.NetworkCommunication/Protocols/Udp/FakeUdpSocketProxy.cs
+    startLine: 238
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Protocols.Udp
+  summary: Receive first data byte from the socket
+  example: []
+  syntax:
+    content: public override Task<int> Receive(Memory<byte> buffer)
+    parameters:
+    - id: buffer
+      type: System.Memory{System.Byte}
+      description: Byte array to store the received byte data in
+    return:
+      type: System.Threading.Tasks.Task{System.Int32}
+      description: Number of bytes received
+    content.vb: Public Overrides Function Receive(buffer As Memory(Of Byte)) As Task(Of Integer)
+  overridden: Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase.Receive(System.Memory{System.Byte})
+  overload: Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.Receive*
+  nameWithType.vb: FakeUdpSocketProxy.Receive(Memory(Of Byte))
+  fullName.vb: Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.Receive(System.Memory(Of Byte))
+  name.vb: Receive(Memory(Of Byte))
+- uid: Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.Send(System.Byte[],System.Int32,System.Int32)
+  commentId: M:Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.Send(System.Byte[],System.Int32,System.Int32)
+  id: Send(System.Byte[],System.Int32,System.Int32)
+  parent: Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy
+  langs:
+  - csharp
+  - vb
+  name: Send(byte[], int, int)
+  nameWithType: FakeUdpSocketProxy.Send(byte[], int, int)
+  fullName: Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.Send(byte[], int, int)
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Protocols/Udp/FakeUdpSocketProxy.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Send
+    path: src/Bodoconsult.NetworkCommunication/Protocols/Udp/FakeUdpSocketProxy.cs
+    startLine: 261
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Protocols.Udp
+  summary: Send bytes
+  example: []
+  syntax:
+    content: public override Task<int> Send(byte[] bytesToSend, int offset, int messageBytesLength)
+    parameters:
+    - id: bytesToSend
+      type: System.Byte[]
+      description: Byte array to send
+    - id: offset
+      type: System.Int32
+      description: Offset
+    - id: messageBytesLength
+      type: System.Int32
+      description: Number of message bytes length to send
+    return:
+      type: System.Threading.Tasks.Task{System.Int32}
+      description: ''
+    content.vb: Public Overrides Function Send(bytesToSend As Byte(), offset As Integer, messageBytesLength As Integer) As Task(Of Integer)
+  overridden: Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase.Send(System.Byte[],System.Int32,System.Int32)
+  overload: Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.Send*
+  nameWithType.vb: FakeUdpSocketProxy.Send(Byte(), Integer, Integer)
+  fullName.vb: Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.Send(Byte(), Integer, Integer)
+  name.vb: Send(Byte(), Integer, Integer)
+- uid: Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.Poll
+  commentId: M:Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.Poll
+  id: Poll
+  parent: Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy
+  langs:
+  - csharp
+  - vb
+  name: Poll()
+  nameWithType: FakeUdpSocketProxy.Poll()
+  fullName: Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.Poll()
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Protocols/Udp/FakeUdpSocketProxy.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Poll
+    path: src/Bodoconsult.NetworkCommunication/Protocols/Udp/FakeUdpSocketProxy.cs
+    startLine: 278
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Protocols.Udp
+  summary: Poll data
+  example: []
+  syntax:
+    content: public override bool Poll()
+    return:
+      type: System.Boolean
+      description: True, if data can be read, else false
+    content.vb: Public Overrides Function Poll() As Boolean
+  overridden: Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase.Poll
+  overload: Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.Poll*
+- uid: Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.SendFile(System.String)
+  commentId: M:Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.SendFile(System.String)
+  id: SendFile(System.String)
+  parent: Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy
+  langs:
+  - csharp
+  - vb
+  name: SendFile(string)
+  nameWithType: FakeUdpSocketProxy.SendFile(string)
+  fullName: Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.SendFile(string)
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Protocols/Udp/FakeUdpSocketProxy.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: SendFile
+    path: src/Bodoconsult.NetworkCommunication/Protocols/Udp/FakeUdpSocketProxy.cs
+    startLine: 287
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Protocols.Udp
+  summary: Send a file
+  example: []
+  syntax:
+    content: public override void SendFile(string fileName)
+    parameters:
+    - id: fileName
+      type: System.String
+      description: Full file path
+    content.vb: Public Overrides Sub SendFile(fileName As String)
+  overridden: Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase.SendFile(System.String)
+  overload: Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.SendFile*
+  nameWithType.vb: FakeUdpSocketProxy.SendFile(String)
+  fullName.vb: Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.SendFile(String)
+  name.vb: SendFile(String)
+- uid: Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.PrepareAnswer(System.Byte[])
+  commentId: M:Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.PrepareAnswer(System.Byte[])
+  id: PrepareAnswer(System.Byte[])
+  parent: Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy
+  langs:
+  - csharp
+  - vb
+  name: PrepareAnswer(byte[])
+  nameWithType: FakeUdpSocketProxy.PrepareAnswer(byte[])
+  fullName: Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.PrepareAnswer(byte[])
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Protocols/Udp/FakeUdpSocketProxy.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: PrepareAnswer
+    path: src/Bodoconsult.NetworkCommunication/Protocols/Udp/FakeUdpSocketProxy.cs
+    startLine: 297
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Protocols.Udp
+  summary: Prepare the answer of the socket for testing
+  example: []
+  syntax:
+    content: public override void PrepareAnswer(byte[] testData)
+    parameters:
+    - id: testData
+      type: System.Byte[]
+      description: Test data to use
+    content.vb: Public Overrides Sub PrepareAnswer(testData As Byte())
+  overridden: Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase.PrepareAnswer(System.Byte[])
+  overload: Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.PrepareAnswer*
+  nameWithType.vb: FakeUdpSocketProxy.PrepareAnswer(Byte())
+  fullName.vb: Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.PrepareAnswer(Byte())
+  name.vb: PrepareAnswer(Byte())
+references:
+- uid: Bodoconsult.NetworkCommunication.Interfaces.ISocketProxy
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.ISocketProxy
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.NetworkCommunication.Interfaces.ISocketProxy.html
+  name: ISocketProxy
+  nameWithType: ISocketProxy
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.ISocketProxy
+- uid: Bodoconsult.NetworkCommunication.Protocols.Udp
+  commentId: N:Bodoconsult.NetworkCommunication.Protocols.Udp
+  href: Bodoconsult.html
+  name: Bodoconsult.NetworkCommunication.Protocols.Udp
+  nameWithType: Bodoconsult.NetworkCommunication.Protocols.Udp
+  fullName: Bodoconsult.NetworkCommunication.Protocols.Udp
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Protocols
+    name: Protocols
+    href: Bodoconsult.NetworkCommunication.Protocols.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Protocols.Udp
+    name: Udp
+    href: Bodoconsult.NetworkCommunication.Protocols.Udp.html
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Protocols
+    name: Protocols
+    href: Bodoconsult.NetworkCommunication.Protocols.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Protocols.Udp
+    name: Udp
+    href: Bodoconsult.NetworkCommunication.Protocols.Udp.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase
+  commentId: T:Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase
+  parent: Bodoconsult.NetworkCommunication.Protocols.Udp
+  href: Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase.html
+  name: UpdSocketProxyBase
+  nameWithType: UpdSocketProxyBase
+  fullName: Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase
+- uid: System.IDisposable
+  commentId: T:System.IDisposable
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable
+  name: IDisposable
+  nameWithType: IDisposable
+  fullName: System.IDisposable
+- uid: Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase.MinimumBufferSize
+  commentId: P:Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase.MinimumBufferSize
+  parent: Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase
+  href: Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase.html#Bodoconsult_NetworkCommunication_Protocols_Udp_UpdSocketProxyBase_MinimumBufferSize
+  name: MinimumBufferSize
+  nameWithType: UpdSocketProxyBase.MinimumBufferSize
+  fullName: Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase.MinimumBufferSize
+- uid: Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase.IpAddress
+  commentId: P:Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase.IpAddress
+  parent: Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase
+  href: Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase.html#Bodoconsult_NetworkCommunication_Protocols_Udp_UpdSocketProxyBase_IpAddress
+  name: IpAddress
+  nameWithType: UpdSocketProxyBase.IpAddress
+  fullName: Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase.IpAddress
+- uid: Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase.Port
+  commentId: P:Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase.Port
+  parent: Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase
+  href: Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase.html#Bodoconsult_NetworkCommunication_Protocols_Udp_UpdSocketProxyBase_Port
+  name: Port
+  nameWithType: UpdSocketProxyBase.Port
+  fullName: Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase.Port
+- uid: Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase.RemotePort
+  commentId: P:Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase.RemotePort
+  parent: Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase
+  href: Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase.html#Bodoconsult_NetworkCommunication_Protocols_Udp_UpdSocketProxyBase_RemotePort
+  name: RemotePort
+  nameWithType: UpdSocketProxyBase.RemotePort
+  fullName: Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase.RemotePort
+- uid: Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase.IsDisposed
+  commentId: P:Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase.IsDisposed
+  parent: Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase
+  href: Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase.html#Bodoconsult_NetworkCommunication_Protocols_Udp_UpdSocketProxyBase_IsDisposed
+  name: IsDisposed
+  nameWithType: UpdSocketProxyBase.IsDisposed
+  fullName: Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase.IsDisposed
+- uid: Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase.PollingTimeout
+  commentId: P:Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase.PollingTimeout
+  parent: Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase
+  href: Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase.html#Bodoconsult_NetworkCommunication_Protocols_Udp_UpdSocketProxyBase_PollingTimeout
+  name: PollingTimeout
+  nameWithType: UpdSocketProxyBase.PollingTimeout
+  fullName: Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase.PollingTimeout
+- uid: Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase.SendTimeout
+  commentId: P:Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase.SendTimeout
+  parent: Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase
+  href: Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase.html#Bodoconsult_NetworkCommunication_Protocols_Udp_UpdSocketProxyBase_SendTimeout
+  name: SendTimeout
+  nameWithType: UpdSocketProxyBase.SendTimeout
+  fullName: Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase.SendTimeout
+- uid: Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase.ReceiveTimeout
+  commentId: P:Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase.ReceiveTimeout
+  parent: Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase
+  href: Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase.html#Bodoconsult_NetworkCommunication_Protocols_Udp_UpdSocketProxyBase_ReceiveTimeout
+  name: ReceiveTimeout
+  nameWithType: UpdSocketProxyBase.ReceiveTimeout
+  fullName: Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase.ReceiveTimeout
+- uid: Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase.Bind(System.Net.IPEndPoint)
+  commentId: M:Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase.Bind(System.Net.IPEndPoint)
+  parent: Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase
+  isExternal: true
+  href: Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase.html#Bodoconsult_NetworkCommunication_Protocols_Udp_UpdSocketProxyBase_Bind_System_Net_IPEndPoint_
+  name: Bind(IPEndPoint)
+  nameWithType: UpdSocketProxyBase.Bind(IPEndPoint)
+  fullName: Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase.Bind(System.Net.IPEndPoint)
+  spec.csharp:
+  - uid: Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase.Bind(System.Net.IPEndPoint)
+    name: Bind
+    href: Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase.html#Bodoconsult_NetworkCommunication_Protocols_Udp_UpdSocketProxyBase_Bind_System_Net_IPEndPoint_
+  - name: (
+  - uid: System.Net.IPEndPoint
+    name: IPEndPoint
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.net.ipendpoint
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase.Bind(System.Net.IPEndPoint)
+    name: Bind
+    href: Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase.html#Bodoconsult_NetworkCommunication_Protocols_Udp_UpdSocketProxyBase_Bind_System_Net_IPEndPoint_
+  - name: (
+  - uid: System.Net.IPEndPoint
+    name: IPEndPoint
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.net.ipendpoint
+  - name: )
+- uid: Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase.Listen(System.Int32)
+  commentId: M:Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase.Listen(System.Int32)
+  parent: Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase
+  isExternal: true
+  href: Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase.html#Bodoconsult_NetworkCommunication_Protocols_Udp_UpdSocketProxyBase_Listen_System_Int32_
+  name: Listen(int)
+  nameWithType: UpdSocketProxyBase.Listen(int)
+  fullName: Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase.Listen(int)
+  nameWithType.vb: UpdSocketProxyBase.Listen(Integer)
+  fullName.vb: Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase.Listen(Integer)
+  name.vb: Listen(Integer)
+  spec.csharp:
+  - uid: Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase.Listen(System.Int32)
+    name: Listen
+    href: Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase.html#Bodoconsult_NetworkCommunication_Protocols_Udp_UpdSocketProxyBase_Listen_System_Int32_
+  - name: (
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase.Listen(System.Int32)
+    name: Listen
+    href: Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase.html#Bodoconsult_NetworkCommunication_Protocols_Udp_UpdSocketProxyBase_Listen_System_Int32_
+  - name: (
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase.Dispose
+  commentId: M:Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase.Dispose
+  parent: Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase
+  href: Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase.html#Bodoconsult_NetworkCommunication_Protocols_Udp_UpdSocketProxyBase_Dispose
+  name: Dispose()
+  nameWithType: UpdSocketProxyBase.Dispose()
+  fullName: Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase.Dispose()
+  spec.csharp:
+  - uid: Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase.Dispose
+    name: Dispose
+    href: Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase.html#Bodoconsult_NetworkCommunication_Protocols_Udp_UpdSocketProxyBase_Dispose
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase.Dispose
+    name: Dispose
+    href: Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase.html#Bodoconsult_NetworkCommunication_Protocols_Udp_UpdSocketProxyBase_Dispose
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: Bodoconsult.NetworkCommunication.Interfaces
+  commentId: N:Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.html
+  name: Bodoconsult.NetworkCommunication.Interfaces
+  nameWithType: Bodoconsult.NetworkCommunication.Interfaces
+  fullName: Bodoconsult.NetworkCommunication.Interfaces
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Interfaces
+    name: Interfaces
+    href: Bodoconsult.NetworkCommunication.Interfaces.html
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Interfaces
+    name: Interfaces
+    href: Bodoconsult.NetworkCommunication.Interfaces.html
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase.BytesAvailable
+  commentId: P:Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase.BytesAvailable
+  parent: Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase
+  href: Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase.html#Bodoconsult_NetworkCommunication_Protocols_Udp_UpdSocketProxyBase_BytesAvailable
+  name: BytesAvailable
+  nameWithType: UpdSocketProxyBase.BytesAvailable
+  fullName: Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase.BytesAvailable
+- uid: Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.BytesAvailable*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.BytesAvailable
+  href: Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.html#Bodoconsult_NetworkCommunication_Protocols_Udp_FakeUdpSocketProxy_BytesAvailable
+  name: BytesAvailable
+  nameWithType: FakeUdpSocketProxy.BytesAvailable
+  fullName: Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.BytesAvailable
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.DataLengthSent*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.DataLengthSent
+  href: Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.html#Bodoconsult_NetworkCommunication_Protocols_Udp_FakeUdpSocketProxy_DataLengthSent
+  name: DataLengthSent
+  nameWithType: FakeUdpSocketProxy.DataLengthSent
+  fullName: Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.DataLengthSent
+- uid: Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.ReceivedMessages*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.ReceivedMessages
+  href: Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.html#Bodoconsult_NetworkCommunication_Protocols_Udp_FakeUdpSocketProxy_ReceivedMessages
+  name: ReceivedMessages
+  nameWithType: FakeUdpSocketProxy.ReceivedMessages
+  fullName: Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.ReceivedMessages
+- uid: System.Collections.Generic.Queue{System.Memory{System.Byte}}
+  commentId: T:System.Collections.Generic.Queue{System.Memory{System.Byte}}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.Queue`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.queue-1
+  name: Queue<Memory<byte>>
+  nameWithType: Queue<Memory<byte>>
+  fullName: System.Collections.Generic.Queue<System.Memory<byte>>
+  nameWithType.vb: Queue(Of Memory(Of Byte))
+  fullName.vb: System.Collections.Generic.Queue(Of System.Memory(Of Byte))
+  name.vb: Queue(Of Memory(Of Byte))
+  spec.csharp:
+  - uid: System.Collections.Generic.Queue`1
+    name: Queue
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.queue-1
+  - name: <
+  - uid: System.Memory`1
+    name: Memory
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.memory-1
+  - name: <
+  - uid: System.Byte
+    name: byte
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.byte
+  - name: '>'
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.Queue`1
+    name: Queue
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.queue-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Memory`1
+    name: Memory
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.memory-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Byte
+    name: Byte
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.byte
+  - name: )
+  - name: )
+- uid: System.Collections.Generic.Queue`1
+  commentId: T:System.Collections.Generic.Queue`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.queue-1
+  name: Queue<T>
+  nameWithType: Queue<T>
+  fullName: System.Collections.Generic.Queue<T>
+  nameWithType.vb: Queue(Of T)
+  fullName.vb: System.Collections.Generic.Queue(Of T)
+  name.vb: Queue(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.Queue`1
+    name: Queue
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.queue-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.Queue`1
+    name: Queue
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.queue-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.ReceivedMessages
+  commentId: P:Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.ReceivedMessages
+  href: Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.html#Bodoconsult_NetworkCommunication_Protocols_Udp_FakeUdpSocketProxy_ReceivedMessages
+  name: ReceivedMessages
+  nameWithType: FakeUdpSocketProxy.ReceivedMessages
+  fullName: Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.ReceivedMessages
+- uid: Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.AddReceivedMessage*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.AddReceivedMessage
+  href: Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.html#Bodoconsult_NetworkCommunication_Protocols_Udp_FakeUdpSocketProxy_AddReceivedMessage_System_Byte___
+  name: AddReceivedMessage
+  nameWithType: FakeUdpSocketProxy.AddReceivedMessage
+  fullName: Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.AddReceivedMessage
+- uid: System.Byte[]
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.byte
+  name: byte[]
+  nameWithType: byte[]
+  fullName: byte[]
+  nameWithType.vb: Byte()
+  fullName.vb: Byte()
+  name.vb: Byte()
+  spec.csharp:
+  - uid: System.Byte
+    name: byte
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.byte
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: System.Byte
+    name: Byte
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.byte
+  - name: (
+  - name: )
+- uid: System.Memory{System.Byte}
+  commentId: T:System.Memory{System.Byte}
+  parent: System
+  definition: System.Memory`1
+  href: https://learn.microsoft.com/dotnet/api/system.memory-1
+  name: Memory<byte>
+  nameWithType: Memory<byte>
+  fullName: System.Memory<byte>
+  nameWithType.vb: Memory(Of Byte)
+  fullName.vb: System.Memory(Of Byte)
+  name.vb: Memory(Of Byte)
+  spec.csharp:
+  - uid: System.Memory`1
+    name: Memory
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.memory-1
+  - name: <
+  - uid: System.Byte
+    name: byte
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.byte
+  - name: '>'
+  spec.vb:
+  - uid: System.Memory`1
+    name: Memory
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.memory-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Byte
+    name: Byte
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.byte
+  - name: )
+- uid: System.Memory`1
+  commentId: T:System.Memory`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.memory-1
+  name: Memory<T>
+  nameWithType: Memory<T>
+  fullName: System.Memory<T>
+  nameWithType.vb: Memory(Of T)
+  fullName.vb: System.Memory(Of T)
+  name.vb: Memory(Of T)
+  spec.csharp:
+  - uid: System.Memory`1
+    name: Memory
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.memory-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Memory`1
+    name: Memory
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.memory-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.LoadNextReceivedMessage*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.LoadNextReceivedMessage
+  href: Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.html#Bodoconsult_NetworkCommunication_Protocols_Udp_FakeUdpSocketProxy_LoadNextReceivedMessage
+  name: LoadNextReceivedMessage
+  nameWithType: FakeUdpSocketProxy.LoadNextReceivedMessage
+  fullName: Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.LoadNextReceivedMessage
+- uid: Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.Connected
+  commentId: P:Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.Connected
+  href: Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.html#Bodoconsult_NetworkCommunication_Protocols_Udp_FakeUdpSocketProxy_Connected
+  name: Connected
+  nameWithType: FakeUdpSocketProxy.Connected
+  fullName: Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.Connected
+- uid: Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.IsConnected*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.IsConnected
+  href: Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.html#Bodoconsult_NetworkCommunication_Protocols_Udp_FakeUdpSocketProxy_IsConnected
+  name: IsConnected
+  nameWithType: FakeUdpSocketProxy.IsConnected
+  fullName: Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.IsConnected
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.Poll
+  commentId: M:Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.Poll
+  href: Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.html#Bodoconsult_NetworkCommunication_Protocols_Udp_FakeUdpSocketProxy_Poll
+  name: Poll()
+  nameWithType: FakeUdpSocketProxy.Poll()
+  fullName: Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.Poll()
+  spec.csharp:
+  - uid: Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.Poll
+    name: Poll
+    href: Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.html#Bodoconsult_NetworkCommunication_Protocols_Udp_FakeUdpSocketProxy_Poll
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.Poll
+    name: Poll
+    href: Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.html#Bodoconsult_NetworkCommunication_Protocols_Udp_FakeUdpSocketProxy_Poll
+  - name: (
+  - name: )
+- uid: Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.IsPoll*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.IsPoll
+  href: Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.html#Bodoconsult_NetworkCommunication_Protocols_Udp_FakeUdpSocketProxy_IsPoll
+  name: IsPoll
+  nameWithType: FakeUdpSocketProxy.IsPoll
+  fullName: Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.IsPoll
+- uid: Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase.Connected
+  commentId: P:Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase.Connected
+  parent: Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase
+  href: Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase.html#Bodoconsult_NetworkCommunication_Protocols_Udp_UpdSocketProxyBase_Connected
+  name: Connected
+  nameWithType: UpdSocketProxyBase.Connected
+  fullName: Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase.Connected
+- uid: Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.Connected*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.Connected
+  href: Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.html#Bodoconsult_NetworkCommunication_Protocols_Udp_FakeUdpSocketProxy_Connected
+  name: Connected
+  nameWithType: FakeUdpSocketProxy.Connected
+  fullName: Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.Connected
+- uid: Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.ReceiverThrowSocketException*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.ReceiverThrowSocketException
+  href: Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.html#Bodoconsult_NetworkCommunication_Protocols_Udp_FakeUdpSocketProxy_ReceiverThrowSocketException
+  name: ReceiverThrowSocketException
+  nameWithType: FakeUdpSocketProxy.ReceiverThrowSocketException
+  fullName: Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.ReceiverThrowSocketException
+- uid: Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.SenderThrowSocketException*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.SenderThrowSocketException
+  href: Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.html#Bodoconsult_NetworkCommunication_Protocols_Udp_FakeUdpSocketProxy_SenderThrowSocketException
+  name: SenderThrowSocketException
+  nameWithType: FakeUdpSocketProxy.SenderThrowSocketException
+  fullName: Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.SenderThrowSocketException
+- uid: Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase.Send(System.Byte[])
+  commentId: M:Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase.Send(System.Byte[])
+  parent: Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase
+  isExternal: true
+  href: Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase.html#Bodoconsult_NetworkCommunication_Protocols_Udp_UpdSocketProxyBase_Send_System_Byte___
+  name: Send(byte[])
+  nameWithType: UpdSocketProxyBase.Send(byte[])
+  fullName: Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase.Send(byte[])
+  nameWithType.vb: UpdSocketProxyBase.Send(Byte())
+  fullName.vb: Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase.Send(Byte())
+  name.vb: Send(Byte())
+  spec.csharp:
+  - uid: Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase.Send(System.Byte[])
+    name: Send
+    href: Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase.html#Bodoconsult_NetworkCommunication_Protocols_Udp_UpdSocketProxyBase_Send_System_Byte___
+  - name: (
+  - uid: System.Byte
+    name: byte
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.byte
+  - name: '['
+  - name: ']'
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase.Send(System.Byte[])
+    name: Send
+    href: Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase.html#Bodoconsult_NetworkCommunication_Protocols_Udp_UpdSocketProxyBase_Send_System_Byte___
+  - name: (
+  - uid: System.Byte
+    name: Byte
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.byte
+  - name: (
+  - name: )
+  - name: )
+- uid: Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.Send*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.Send
+  href: Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.html#Bodoconsult_NetworkCommunication_Protocols_Udp_FakeUdpSocketProxy_Send_System_Byte___
+  name: Send
+  nameWithType: FakeUdpSocketProxy.Send
+  fullName: Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.Send
+- uid: System.Threading.Tasks.Task{System.Int32}
+  commentId: T:System.Threading.Tasks.Task{System.Int32}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<int>
+  nameWithType: Task<int>
+  fullName: System.Threading.Tasks.Task<int>
+  nameWithType.vb: Task(Of Integer)
+  fullName.vb: System.Threading.Tasks.Task(Of Integer)
+  name.vb: Task(Of Integer)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: System.Threading.Tasks.Task`1
+  commentId: T:System.Threading.Tasks.Task`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<TResult>
+  nameWithType: Task<TResult>
+  fullName: System.Threading.Tasks.Task<TResult>
+  nameWithType.vb: Task(Of TResult)
+  fullName.vb: System.Threading.Tasks.Task(Of TResult)
+  name.vb: Task(Of TResult)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - name: TResult
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TResult
+  - name: )
+- uid: System.Threading.Tasks
+  commentId: N:System.Threading.Tasks
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Threading.Tasks
+  nameWithType: System.Threading.Tasks
+  fullName: System.Threading.Tasks
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+- uid: Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase.Send(System.ReadOnlyMemory{System.Byte})
+  commentId: M:Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase.Send(System.ReadOnlyMemory{System.Byte})
+  parent: Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase
+  isExternal: true
+  href: Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase.html#Bodoconsult_NetworkCommunication_Protocols_Udp_UpdSocketProxyBase_Send_System_ReadOnlyMemory_System_Byte__
+  name: Send(ReadOnlyMemory<byte>)
+  nameWithType: UpdSocketProxyBase.Send(ReadOnlyMemory<byte>)
+  fullName: Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase.Send(System.ReadOnlyMemory<byte>)
+  nameWithType.vb: UpdSocketProxyBase.Send(ReadOnlyMemory(Of Byte))
+  fullName.vb: Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase.Send(System.ReadOnlyMemory(Of Byte))
+  name.vb: Send(ReadOnlyMemory(Of Byte))
+  spec.csharp:
+  - uid: Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase.Send(System.ReadOnlyMemory{System.Byte})
+    name: Send
+    href: Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase.html#Bodoconsult_NetworkCommunication_Protocols_Udp_UpdSocketProxyBase_Send_System_ReadOnlyMemory_System_Byte__
+  - name: (
+  - uid: System.ReadOnlyMemory`1
+    name: ReadOnlyMemory
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.readonlymemory-1
+  - name: <
+  - uid: System.Byte
+    name: byte
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.byte
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase.Send(System.ReadOnlyMemory{System.Byte})
+    name: Send
+    href: Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase.html#Bodoconsult_NetworkCommunication_Protocols_Udp_UpdSocketProxyBase_Send_System_ReadOnlyMemory_System_Byte__
+  - name: (
+  - uid: System.ReadOnlyMemory`1
+    name: ReadOnlyMemory
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.readonlymemory-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Byte
+    name: Byte
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.byte
+  - name: )
+  - name: )
+- uid: System.ReadOnlyMemory{System.Byte}
+  commentId: T:System.ReadOnlyMemory{System.Byte}
+  parent: System
+  definition: System.ReadOnlyMemory`1
+  href: https://learn.microsoft.com/dotnet/api/system.readonlymemory-1
+  name: ReadOnlyMemory<byte>
+  nameWithType: ReadOnlyMemory<byte>
+  fullName: System.ReadOnlyMemory<byte>
+  nameWithType.vb: ReadOnlyMemory(Of Byte)
+  fullName.vb: System.ReadOnlyMemory(Of Byte)
+  name.vb: ReadOnlyMemory(Of Byte)
+  spec.csharp:
+  - uid: System.ReadOnlyMemory`1
+    name: ReadOnlyMemory
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.readonlymemory-1
+  - name: <
+  - uid: System.Byte
+    name: byte
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.byte
+  - name: '>'
+  spec.vb:
+  - uid: System.ReadOnlyMemory`1
+    name: ReadOnlyMemory
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.readonlymemory-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Byte
+    name: Byte
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.byte
+  - name: )
+- uid: System.Threading.Tasks.ValueTask{System.Int32}
+  commentId: T:System.Threading.Tasks.ValueTask{System.Int32}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.ValueTask`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.valuetask-1
+  name: ValueTask<int>
+  nameWithType: ValueTask<int>
+  fullName: System.Threading.Tasks.ValueTask<int>
+  nameWithType.vb: ValueTask(Of Integer)
+  fullName.vb: System.Threading.Tasks.ValueTask(Of Integer)
+  name.vb: ValueTask(Of Integer)
+  spec.csharp:
+  - uid: System.Threading.Tasks.ValueTask`1
+    name: ValueTask
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.valuetask-1
+  - name: <
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.ValueTask`1
+    name: ValueTask
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.valuetask-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: System.ReadOnlyMemory`1
+  commentId: T:System.ReadOnlyMemory`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.readonlymemory-1
+  name: ReadOnlyMemory<T>
+  nameWithType: ReadOnlyMemory<T>
+  fullName: System.ReadOnlyMemory<T>
+  nameWithType.vb: ReadOnlyMemory(Of T)
+  fullName.vb: System.ReadOnlyMemory(Of T)
+  name.vb: ReadOnlyMemory(Of T)
+  spec.csharp:
+  - uid: System.ReadOnlyMemory`1
+    name: ReadOnlyMemory
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.readonlymemory-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.ReadOnlyMemory`1
+    name: ReadOnlyMemory
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.readonlymemory-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Threading.Tasks.ValueTask`1
+  commentId: T:System.Threading.Tasks.ValueTask`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.valuetask-1
+  name: ValueTask<TResult>
+  nameWithType: ValueTask<TResult>
+  fullName: System.Threading.Tasks.ValueTask<TResult>
+  nameWithType.vb: ValueTask(Of TResult)
+  fullName.vb: System.Threading.Tasks.ValueTask(Of TResult)
+  name.vb: ValueTask(Of TResult)
+  spec.csharp:
+  - uid: System.Threading.Tasks.ValueTask`1
+    name: ValueTask
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.valuetask-1
+  - name: <
+  - name: TResult
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.ValueTask`1
+    name: ValueTask
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.valuetask-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TResult
+  - name: )
+- uid: Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase.Close
+  commentId: M:Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase.Close
+  parent: Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase
+  href: Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase.html#Bodoconsult_NetworkCommunication_Protocols_Udp_UpdSocketProxyBase_Close
+  name: Close()
+  nameWithType: UpdSocketProxyBase.Close()
+  fullName: Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase.Close()
+  spec.csharp:
+  - uid: Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase.Close
+    name: Close
+    href: Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase.html#Bodoconsult_NetworkCommunication_Protocols_Udp_UpdSocketProxyBase_Close
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase.Close
+    name: Close
+    href: Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase.html#Bodoconsult_NetworkCommunication_Protocols_Udp_UpdSocketProxyBase_Close
+  - name: (
+  - name: )
+- uid: Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.Close*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.Close
+  href: Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.html#Bodoconsult_NetworkCommunication_Protocols_Udp_FakeUdpSocketProxy_Close
+  name: Close
+  nameWithType: FakeUdpSocketProxy.Close
+  fullName: Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.Close
+- uid: Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase.Connect
+  commentId: M:Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase.Connect
+  parent: Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase
+  href: Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase.html#Bodoconsult_NetworkCommunication_Protocols_Udp_UpdSocketProxyBase_Connect
+  name: Connect()
+  nameWithType: UpdSocketProxyBase.Connect()
+  fullName: Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase.Connect()
+  spec.csharp:
+  - uid: Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase.Connect
+    name: Connect
+    href: Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase.html#Bodoconsult_NetworkCommunication_Protocols_Udp_UpdSocketProxyBase_Connect
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase.Connect
+    name: Connect
+    href: Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase.html#Bodoconsult_NetworkCommunication_Protocols_Udp_UpdSocketProxyBase_Connect
+  - name: (
+  - name: )
+- uid: Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.Connect*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.Connect
+  href: Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.html#Bodoconsult_NetworkCommunication_Protocols_Udp_FakeUdpSocketProxy_Connect
+  name: Connect
+  nameWithType: FakeUdpSocketProxy.Connect
+  fullName: Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.Connect
+- uid: System.Threading.Tasks.Task
+  commentId: T:System.Threading.Tasks.Task
+  parent: System.Threading.Tasks
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task
+  name: Task
+  nameWithType: Task
+  fullName: System.Threading.Tasks.Task
+- uid: Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase.Receive(System.Byte[])
+  commentId: M:Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase.Receive(System.Byte[])
+  parent: Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase
+  isExternal: true
+  href: Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase.html#Bodoconsult_NetworkCommunication_Protocols_Udp_UpdSocketProxyBase_Receive_System_Byte___
+  name: Receive(byte[])
+  nameWithType: UpdSocketProxyBase.Receive(byte[])
+  fullName: Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase.Receive(byte[])
+  nameWithType.vb: UpdSocketProxyBase.Receive(Byte())
+  fullName.vb: Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase.Receive(Byte())
+  name.vb: Receive(Byte())
+  spec.csharp:
+  - uid: Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase.Receive(System.Byte[])
+    name: Receive
+    href: Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase.html#Bodoconsult_NetworkCommunication_Protocols_Udp_UpdSocketProxyBase_Receive_System_Byte___
+  - name: (
+  - uid: System.Byte
+    name: byte
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.byte
+  - name: '['
+  - name: ']'
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase.Receive(System.Byte[])
+    name: Receive
+    href: Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase.html#Bodoconsult_NetworkCommunication_Protocols_Udp_UpdSocketProxyBase_Receive_System_Byte___
+  - name: (
+  - uid: System.Byte
+    name: Byte
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.byte
+  - name: (
+  - name: )
+  - name: )
+- uid: Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.Receive*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.Receive
+  href: Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.html#Bodoconsult_NetworkCommunication_Protocols_Udp_FakeUdpSocketProxy_Receive_System_Byte___
+  name: Receive
+  nameWithType: FakeUdpSocketProxy.Receive
+  fullName: Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.Receive
+- uid: Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase.Receive(System.Byte[],System.Int32,System.Int32)
+  commentId: M:Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase.Receive(System.Byte[],System.Int32,System.Int32)
+  parent: Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase
+  isExternal: true
+  href: Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase.html#Bodoconsult_NetworkCommunication_Protocols_Udp_UpdSocketProxyBase_Receive_System_Byte___System_Int32_System_Int32_
+  name: Receive(byte[], int, int)
+  nameWithType: UpdSocketProxyBase.Receive(byte[], int, int)
+  fullName: Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase.Receive(byte[], int, int)
+  nameWithType.vb: UpdSocketProxyBase.Receive(Byte(), Integer, Integer)
+  fullName.vb: Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase.Receive(Byte(), Integer, Integer)
+  name.vb: Receive(Byte(), Integer, Integer)
+  spec.csharp:
+  - uid: Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase.Receive(System.Byte[],System.Int32,System.Int32)
+    name: Receive
+    href: Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase.html#Bodoconsult_NetworkCommunication_Protocols_Udp_UpdSocketProxyBase_Receive_System_Byte___System_Int32_System_Int32_
+  - name: (
+  - uid: System.Byte
+    name: byte
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.byte
+  - name: '['
+  - name: ']'
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase.Receive(System.Byte[],System.Int32,System.Int32)
+    name: Receive
+    href: Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase.html#Bodoconsult_NetworkCommunication_Protocols_Udp_UpdSocketProxyBase_Receive_System_Byte___System_Int32_System_Int32_
+  - name: (
+  - uid: System.Byte
+    name: Byte
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.byte
+  - name: (
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase.Receive(System.Memory{System.Byte})
+  commentId: M:Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase.Receive(System.Memory{System.Byte})
+  parent: Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase
+  isExternal: true
+  href: Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase.html#Bodoconsult_NetworkCommunication_Protocols_Udp_UpdSocketProxyBase_Receive_System_Memory_System_Byte__
+  name: Receive(Memory<byte>)
+  nameWithType: UpdSocketProxyBase.Receive(Memory<byte>)
+  fullName: Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase.Receive(System.Memory<byte>)
+  nameWithType.vb: UpdSocketProxyBase.Receive(Memory(Of Byte))
+  fullName.vb: Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase.Receive(System.Memory(Of Byte))
+  name.vb: Receive(Memory(Of Byte))
+  spec.csharp:
+  - uid: Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase.Receive(System.Memory{System.Byte})
+    name: Receive
+    href: Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase.html#Bodoconsult_NetworkCommunication_Protocols_Udp_UpdSocketProxyBase_Receive_System_Memory_System_Byte__
+  - name: (
+  - uid: System.Memory`1
+    name: Memory
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.memory-1
+  - name: <
+  - uid: System.Byte
+    name: byte
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.byte
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase.Receive(System.Memory{System.Byte})
+    name: Receive
+    href: Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase.html#Bodoconsult_NetworkCommunication_Protocols_Udp_UpdSocketProxyBase_Receive_System_Memory_System_Byte__
+  - name: (
+  - uid: System.Memory`1
+    name: Memory
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.memory-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Byte
+    name: Byte
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.byte
+  - name: )
+  - name: )
+- uid: Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase.Send(System.Byte[],System.Int32,System.Int32)
+  commentId: M:Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase.Send(System.Byte[],System.Int32,System.Int32)
+  parent: Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase
+  isExternal: true
+  href: Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase.html#Bodoconsult_NetworkCommunication_Protocols_Udp_UpdSocketProxyBase_Send_System_Byte___System_Int32_System_Int32_
+  name: Send(byte[], int, int)
+  nameWithType: UpdSocketProxyBase.Send(byte[], int, int)
+  fullName: Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase.Send(byte[], int, int)
+  nameWithType.vb: UpdSocketProxyBase.Send(Byte(), Integer, Integer)
+  fullName.vb: Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase.Send(Byte(), Integer, Integer)
+  name.vb: Send(Byte(), Integer, Integer)
+  spec.csharp:
+  - uid: Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase.Send(System.Byte[],System.Int32,System.Int32)
+    name: Send
+    href: Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase.html#Bodoconsult_NetworkCommunication_Protocols_Udp_UpdSocketProxyBase_Send_System_Byte___System_Int32_System_Int32_
+  - name: (
+  - uid: System.Byte
+    name: byte
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.byte
+  - name: '['
+  - name: ']'
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase.Send(System.Byte[],System.Int32,System.Int32)
+    name: Send
+    href: Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase.html#Bodoconsult_NetworkCommunication_Protocols_Udp_UpdSocketProxyBase_Send_System_Byte___System_Int32_System_Int32_
+  - name: (
+  - uid: System.Byte
+    name: Byte
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.byte
+  - name: (
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase.Poll
+  commentId: M:Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase.Poll
+  parent: Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase
+  href: Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase.html#Bodoconsult_NetworkCommunication_Protocols_Udp_UpdSocketProxyBase_Poll
+  name: Poll()
+  nameWithType: UpdSocketProxyBase.Poll()
+  fullName: Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase.Poll()
+  spec.csharp:
+  - uid: Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase.Poll
+    name: Poll
+    href: Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase.html#Bodoconsult_NetworkCommunication_Protocols_Udp_UpdSocketProxyBase_Poll
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase.Poll
+    name: Poll
+    href: Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase.html#Bodoconsult_NetworkCommunication_Protocols_Udp_UpdSocketProxyBase_Poll
+  - name: (
+  - name: )
+- uid: Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.Poll*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.Poll
+  href: Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.html#Bodoconsult_NetworkCommunication_Protocols_Udp_FakeUdpSocketProxy_Poll
+  name: Poll
+  nameWithType: FakeUdpSocketProxy.Poll
+  fullName: Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.Poll
+- uid: Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase.SendFile(System.String)
+  commentId: M:Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase.SendFile(System.String)
+  parent: Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase
+  isExternal: true
+  href: Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase.html#Bodoconsult_NetworkCommunication_Protocols_Udp_UpdSocketProxyBase_SendFile_System_String_
+  name: SendFile(string)
+  nameWithType: UpdSocketProxyBase.SendFile(string)
+  fullName: Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase.SendFile(string)
+  nameWithType.vb: UpdSocketProxyBase.SendFile(String)
+  fullName.vb: Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase.SendFile(String)
+  name.vb: SendFile(String)
+  spec.csharp:
+  - uid: Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase.SendFile(System.String)
+    name: SendFile
+    href: Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase.html#Bodoconsult_NetworkCommunication_Protocols_Udp_UpdSocketProxyBase_SendFile_System_String_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase.SendFile(System.String)
+    name: SendFile
+    href: Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase.html#Bodoconsult_NetworkCommunication_Protocols_Udp_UpdSocketProxyBase_SendFile_System_String_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.SendFile*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.SendFile
+  href: Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.html#Bodoconsult_NetworkCommunication_Protocols_Udp_FakeUdpSocketProxy_SendFile_System_String_
+  name: SendFile
+  nameWithType: FakeUdpSocketProxy.SendFile
+  fullName: Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.SendFile
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase.PrepareAnswer(System.Byte[])
+  commentId: M:Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase.PrepareAnswer(System.Byte[])
+  parent: Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase
+  isExternal: true
+  href: Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase.html#Bodoconsult_NetworkCommunication_Protocols_Udp_UpdSocketProxyBase_PrepareAnswer_System_Byte___
+  name: PrepareAnswer(byte[])
+  nameWithType: UpdSocketProxyBase.PrepareAnswer(byte[])
+  fullName: Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase.PrepareAnswer(byte[])
+  nameWithType.vb: UpdSocketProxyBase.PrepareAnswer(Byte())
+  fullName.vb: Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase.PrepareAnswer(Byte())
+  name.vb: PrepareAnswer(Byte())
+  spec.csharp:
+  - uid: Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase.PrepareAnswer(System.Byte[])
+    name: PrepareAnswer
+    href: Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase.html#Bodoconsult_NetworkCommunication_Protocols_Udp_UpdSocketProxyBase_PrepareAnswer_System_Byte___
+  - name: (
+  - uid: System.Byte
+    name: byte
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.byte
+  - name: '['
+  - name: ']'
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase.PrepareAnswer(System.Byte[])
+    name: PrepareAnswer
+    href: Bodoconsult.NetworkCommunication.Protocols.Udp.UpdSocketProxyBase.html#Bodoconsult_NetworkCommunication_Protocols_Udp_UpdSocketProxyBase_PrepareAnswer_System_Byte___
+  - name: (
+  - uid: System.Byte
+    name: Byte
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.byte
+  - name: (
+  - name: )
+  - name: )
+- uid: Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.PrepareAnswer*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.PrepareAnswer
+  href: Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.html#Bodoconsult_NetworkCommunication_Protocols_Udp_FakeUdpSocketProxy_PrepareAnswer_System_Byte___
+  name: PrepareAnswer
+  nameWithType: FakeUdpSocketProxy.PrepareAnswer
+  fullName: Bodoconsult.NetworkCommunication.Protocols.Udp.FakeUdpSocketProxy.PrepareAnswer

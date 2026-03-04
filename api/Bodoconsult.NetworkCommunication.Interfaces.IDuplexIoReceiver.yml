@@ -1,0 +1,488 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IDuplexIoReceiver
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.IDuplexIoReceiver
+  id: IDuplexIoReceiver
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  children:
+  - Bodoconsult.NetworkCommunication.Interfaces.IDuplexIoReceiver.FillMessagePipeline
+  - Bodoconsult.NetworkCommunication.Interfaces.IDuplexIoReceiver.FillPipelineTask
+  - Bodoconsult.NetworkCommunication.Interfaces.IDuplexIoReceiver.SendMessagePipeline
+  - Bodoconsult.NetworkCommunication.Interfaces.IDuplexIoReceiver.SendPipelineTask
+  - Bodoconsult.NetworkCommunication.Interfaces.IDuplexIoReceiver.StartReceiver
+  - Bodoconsult.NetworkCommunication.Interfaces.IDuplexIoReceiver.StopReceiver
+  - Bodoconsult.NetworkCommunication.Interfaces.IDuplexIoReceiver.UpdateDataMessageProcessingPackage
+  langs:
+  - csharp
+  - vb
+  name: IDuplexIoReceiver
+  nameWithType: IDuplexIoReceiver
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IDuplexIoReceiver
+  type: Interface
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/IDuplexIoReceiver.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: IDuplexIoReceiver
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/IDuplexIoReceiver.cs
+    startLine: 7
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Interface for the receiver side of an <xref href="Bodoconsult.NetworkCommunication.Interfaces.IDuplexIo" data-throw-if-not-resolved="false"></xref> based communication interface
+  example: []
+  syntax:
+    content: 'public interface IDuplexIoReceiver : IAsyncDisposable, IDisposable'
+    content.vb: Public Interface IDuplexIoReceiver Inherits IAsyncDisposable, IDisposable
+  inheritedMembers:
+  - System.IAsyncDisposable.DisposeAsync
+  - System.IDisposable.Dispose
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IDuplexIoReceiver.FillPipelineTask
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IDuplexIoReceiver.FillPipelineTask
+  id: FillPipelineTask
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IDuplexIoReceiver
+  langs:
+  - csharp
+  - vb
+  name: FillPipelineTask
+  nameWithType: IDuplexIoReceiver.FillPipelineTask
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IDuplexIoReceiver.FillPipelineTask
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/IDuplexIoReceiver.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: FillPipelineTask
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/IDuplexIoReceiver.cs
+    startLine: 12
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Thread filling receiver pipeline
+  example: []
+  syntax:
+    content: Thread FillPipelineTask { get; }
+    parameters: []
+    return:
+      type: System.Threading.Thread
+    content.vb: ReadOnly Property FillPipelineTask As Thread
+  overload: Bodoconsult.NetworkCommunication.Interfaces.IDuplexIoReceiver.FillPipelineTask*
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IDuplexIoReceiver.SendPipelineTask
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IDuplexIoReceiver.SendPipelineTask
+  id: SendPipelineTask
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IDuplexIoReceiver
+  langs:
+  - csharp
+  - vb
+  name: SendPipelineTask
+  nameWithType: IDuplexIoReceiver.SendPipelineTask
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IDuplexIoReceiver.SendPipelineTask
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/IDuplexIoReceiver.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: SendPipelineTask
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/IDuplexIoReceiver.cs
+    startLine: 17
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Thread sending messages from receiver pipeline to app internal consumers
+  example: []
+  syntax:
+    content: Thread SendPipelineTask { get; }
+    parameters: []
+    return:
+      type: System.Threading.Thread
+    content.vb: ReadOnly Property SendPipelineTask As Thread
+  overload: Bodoconsult.NetworkCommunication.Interfaces.IDuplexIoReceiver.SendPipelineTask*
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IDuplexIoReceiver.StartReceiver
+  commentId: M:Bodoconsult.NetworkCommunication.Interfaces.IDuplexIoReceiver.StartReceiver
+  id: StartReceiver
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IDuplexIoReceiver
+  langs:
+  - csharp
+  - vb
+  name: StartReceiver()
+  nameWithType: IDuplexIoReceiver.StartReceiver()
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IDuplexIoReceiver.StartReceiver()
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/IDuplexIoReceiver.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: StartReceiver
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/IDuplexIoReceiver.cs
+    startLine: 22
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Start the internal receiver
+  example: []
+  syntax:
+    content: Task StartReceiver()
+    return:
+      type: System.Threading.Tasks.Task
+    content.vb: Function StartReceiver() As Task
+  overload: Bodoconsult.NetworkCommunication.Interfaces.IDuplexIoReceiver.StartReceiver*
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IDuplexIoReceiver.StopReceiver
+  commentId: M:Bodoconsult.NetworkCommunication.Interfaces.IDuplexIoReceiver.StopReceiver
+  id: StopReceiver
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IDuplexIoReceiver
+  langs:
+  - csharp
+  - vb
+  name: StopReceiver()
+  nameWithType: IDuplexIoReceiver.StopReceiver()
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IDuplexIoReceiver.StopReceiver()
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/IDuplexIoReceiver.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: StopReceiver
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/IDuplexIoReceiver.cs
+    startLine: 27
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Stop the internal receiver
+  example: []
+  syntax:
+    content: Task StopReceiver()
+    return:
+      type: System.Threading.Tasks.Task
+    content.vb: Function StopReceiver() As Task
+  overload: Bodoconsult.NetworkCommunication.Interfaces.IDuplexIoReceiver.StopReceiver*
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IDuplexIoReceiver.FillMessagePipeline
+  commentId: M:Bodoconsult.NetworkCommunication.Interfaces.IDuplexIoReceiver.FillMessagePipeline
+  id: FillMessagePipeline
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IDuplexIoReceiver
+  langs:
+  - csharp
+  - vb
+  name: FillMessagePipeline()
+  nameWithType: IDuplexIoReceiver.FillMessagePipeline()
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IDuplexIoReceiver.FillMessagePipeline()
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/IDuplexIoReceiver.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: FillMessagePipeline
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/IDuplexIoReceiver.cs
+    startLine: 35
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: >-
+    Receive messages from the device.
+
+    This method is not intended to be called directly from production code.
+
+    It is a unit test method.
+  example: []
+  syntax:
+    content: Task FillMessagePipeline()
+    return:
+      type: System.Threading.Tasks.Task
+      description: Received device message or null in case of any error
+    content.vb: Function FillMessagePipeline() As Task
+  overload: Bodoconsult.NetworkCommunication.Interfaces.IDuplexIoReceiver.FillMessagePipeline*
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IDuplexIoReceiver.SendMessagePipeline
+  commentId: M:Bodoconsult.NetworkCommunication.Interfaces.IDuplexIoReceiver.SendMessagePipeline
+  id: SendMessagePipeline
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IDuplexIoReceiver
+  langs:
+  - csharp
+  - vb
+  name: SendMessagePipeline()
+  nameWithType: IDuplexIoReceiver.SendMessagePipeline()
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IDuplexIoReceiver.SendMessagePipeline()
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/IDuplexIoReceiver.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: SendMessagePipeline
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/IDuplexIoReceiver.cs
+    startLine: 42
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: >-
+    Process the messages received from device internally
+
+    This method is not intended to be called directly from production code.
+
+    It is a unit test method.
+  example: []
+  syntax:
+    content: Task SendMessagePipeline()
+    return:
+      type: System.Threading.Tasks.Task
+    content.vb: Function SendMessagePipeline() As Task
+  overload: Bodoconsult.NetworkCommunication.Interfaces.IDuplexIoReceiver.SendMessagePipeline*
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IDuplexIoReceiver.UpdateDataMessageProcessingPackage
+  commentId: M:Bodoconsult.NetworkCommunication.Interfaces.IDuplexIoReceiver.UpdateDataMessageProcessingPackage
+  id: UpdateDataMessageProcessingPackage
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IDuplexIoReceiver
+  langs:
+  - csharp
+  - vb
+  name: UpdateDataMessageProcessingPackage()
+  nameWithType: IDuplexIoReceiver.UpdateDataMessageProcessingPackage()
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IDuplexIoReceiver.UpdateDataMessageProcessingPackage()
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/IDuplexIoReceiver.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: UpdateDataMessageProcessingPackage
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/IDuplexIoReceiver.cs
+    startLine: 47
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Update the data message processing package
+  example: []
+  syntax:
+    content: void UpdateDataMessageProcessingPackage()
+    content.vb: Sub UpdateDataMessageProcessingPackage()
+  overload: Bodoconsult.NetworkCommunication.Interfaces.IDuplexIoReceiver.UpdateDataMessageProcessingPackage*
+references:
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IDuplexIo
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.IDuplexIo
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.NetworkCommunication.Interfaces.IDuplexIo.html
+  name: IDuplexIo
+  nameWithType: IDuplexIo
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IDuplexIo
+- uid: Bodoconsult.NetworkCommunication.Interfaces
+  commentId: N:Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.html
+  name: Bodoconsult.NetworkCommunication.Interfaces
+  nameWithType: Bodoconsult.NetworkCommunication.Interfaces
+  fullName: Bodoconsult.NetworkCommunication.Interfaces
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Interfaces
+    name: Interfaces
+    href: Bodoconsult.NetworkCommunication.Interfaces.html
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Interfaces
+    name: Interfaces
+    href: Bodoconsult.NetworkCommunication.Interfaces.html
+- uid: System.IAsyncDisposable.DisposeAsync
+  commentId: M:System.IAsyncDisposable.DisposeAsync
+  parent: System.IAsyncDisposable
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.iasyncdisposable.disposeasync
+  name: DisposeAsync()
+  nameWithType: IAsyncDisposable.DisposeAsync()
+  fullName: System.IAsyncDisposable.DisposeAsync()
+  spec.csharp:
+  - uid: System.IAsyncDisposable.DisposeAsync
+    name: DisposeAsync
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iasyncdisposable.disposeasync
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.IAsyncDisposable.DisposeAsync
+    name: DisposeAsync
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iasyncdisposable.disposeasync
+  - name: (
+  - name: )
+- uid: System.IDisposable.Dispose
+  commentId: M:System.IDisposable.Dispose
+  parent: System.IDisposable
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  name: Dispose()
+  nameWithType: IDisposable.Dispose()
+  fullName: System.IDisposable.Dispose()
+  spec.csharp:
+  - uid: System.IDisposable.Dispose
+    name: Dispose
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.IDisposable.Dispose
+    name: Dispose
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  - name: (
+  - name: )
+- uid: System.IAsyncDisposable
+  commentId: T:System.IAsyncDisposable
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.iasyncdisposable
+  name: IAsyncDisposable
+  nameWithType: IAsyncDisposable
+  fullName: System.IAsyncDisposable
+- uid: System.IDisposable
+  commentId: T:System.IDisposable
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable
+  name: IDisposable
+  nameWithType: IDisposable
+  fullName: System.IDisposable
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IDuplexIoReceiver.FillPipelineTask*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.IDuplexIoReceiver.FillPipelineTask
+  href: Bodoconsult.NetworkCommunication.Interfaces.IDuplexIoReceiver.html#Bodoconsult_NetworkCommunication_Interfaces_IDuplexIoReceiver_FillPipelineTask
+  name: FillPipelineTask
+  nameWithType: IDuplexIoReceiver.FillPipelineTask
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IDuplexIoReceiver.FillPipelineTask
+- uid: System.Threading.Thread
+  commentId: T:System.Threading.Thread
+  parent: System.Threading
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.thread
+  name: Thread
+  nameWithType: Thread
+  fullName: System.Threading.Thread
+- uid: System.Threading
+  commentId: N:System.Threading
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Threading
+  nameWithType: System.Threading
+  fullName: System.Threading
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IDuplexIoReceiver.SendPipelineTask*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.IDuplexIoReceiver.SendPipelineTask
+  href: Bodoconsult.NetworkCommunication.Interfaces.IDuplexIoReceiver.html#Bodoconsult_NetworkCommunication_Interfaces_IDuplexIoReceiver_SendPipelineTask
+  name: SendPipelineTask
+  nameWithType: IDuplexIoReceiver.SendPipelineTask
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IDuplexIoReceiver.SendPipelineTask
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IDuplexIoReceiver.StartReceiver*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.IDuplexIoReceiver.StartReceiver
+  href: Bodoconsult.NetworkCommunication.Interfaces.IDuplexIoReceiver.html#Bodoconsult_NetworkCommunication_Interfaces_IDuplexIoReceiver_StartReceiver
+  name: StartReceiver
+  nameWithType: IDuplexIoReceiver.StartReceiver
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IDuplexIoReceiver.StartReceiver
+- uid: System.Threading.Tasks.Task
+  commentId: T:System.Threading.Tasks.Task
+  parent: System.Threading.Tasks
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task
+  name: Task
+  nameWithType: Task
+  fullName: System.Threading.Tasks.Task
+- uid: System.Threading.Tasks
+  commentId: N:System.Threading.Tasks
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Threading.Tasks
+  nameWithType: System.Threading.Tasks
+  fullName: System.Threading.Tasks
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IDuplexIoReceiver.StopReceiver*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.IDuplexIoReceiver.StopReceiver
+  href: Bodoconsult.NetworkCommunication.Interfaces.IDuplexIoReceiver.html#Bodoconsult_NetworkCommunication_Interfaces_IDuplexIoReceiver_StopReceiver
+  name: StopReceiver
+  nameWithType: IDuplexIoReceiver.StopReceiver
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IDuplexIoReceiver.StopReceiver
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IDuplexIoReceiver.FillMessagePipeline*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.IDuplexIoReceiver.FillMessagePipeline
+  href: Bodoconsult.NetworkCommunication.Interfaces.IDuplexIoReceiver.html#Bodoconsult_NetworkCommunication_Interfaces_IDuplexIoReceiver_FillMessagePipeline
+  name: FillMessagePipeline
+  nameWithType: IDuplexIoReceiver.FillMessagePipeline
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IDuplexIoReceiver.FillMessagePipeline
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IDuplexIoReceiver.SendMessagePipeline*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.IDuplexIoReceiver.SendMessagePipeline
+  href: Bodoconsult.NetworkCommunication.Interfaces.IDuplexIoReceiver.html#Bodoconsult_NetworkCommunication_Interfaces_IDuplexIoReceiver_SendMessagePipeline
+  name: SendMessagePipeline
+  nameWithType: IDuplexIoReceiver.SendMessagePipeline
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IDuplexIoReceiver.SendMessagePipeline
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IDuplexIoReceiver.UpdateDataMessageProcessingPackage*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.IDuplexIoReceiver.UpdateDataMessageProcessingPackage
+  href: Bodoconsult.NetworkCommunication.Interfaces.IDuplexIoReceiver.html#Bodoconsult_NetworkCommunication_Interfaces_IDuplexIoReceiver_UpdateDataMessageProcessingPackage
+  name: UpdateDataMessageProcessingPackage
+  nameWithType: IDuplexIoReceiver.UpdateDataMessageProcessingPackage
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IDuplexIoReceiver.UpdateDataMessageProcessingPackage

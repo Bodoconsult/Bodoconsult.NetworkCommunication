@@ -1,0 +1,189 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bodoconsult.Network.Windows.Dns.NewZoneType
+  commentId: T:Bodoconsult.Network.Windows.Dns.NewZoneType
+  id: NewZoneType
+  parent: Bodoconsult.Network.Windows.Dns
+  children:
+  - Bodoconsult.Network.Windows.Dns.NewZoneType.Forwarder
+  - Bodoconsult.Network.Windows.Dns.NewZoneType.Primary
+  - Bodoconsult.Network.Windows.Dns.NewZoneType.Secondary
+  - Bodoconsult.Network.Windows.Dns.NewZoneType.Stub
+  langs:
+  - csharp
+  - vb
+  name: NewZoneType
+  nameWithType: NewZoneType
+  fullName: Bodoconsult.Network.Windows.Dns.NewZoneType
+  type: Enum
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dns/NewZoneType.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: NewZoneType
+    path: src/Bodoconsult.Network.Windows/Dns/NewZoneType.cs
+    startLine: 9
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dns
+  summary: Different types of DNS zone in MS DNS Server
+  remarks: For creation of new zones the list is different
+  example: []
+  syntax:
+    content: public enum NewZoneType
+    content.vb: Public Enum NewZoneType
+- uid: Bodoconsult.Network.Windows.Dns.NewZoneType.Primary
+  commentId: F:Bodoconsult.Network.Windows.Dns.NewZoneType.Primary
+  id: Primary
+  parent: Bodoconsult.Network.Windows.Dns.NewZoneType
+  langs:
+  - csharp
+  - vb
+  name: Primary
+  nameWithType: NewZoneType.Primary
+  fullName: Bodoconsult.Network.Windows.Dns.NewZoneType.Primary
+  type: Field
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dns/NewZoneType.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Primary
+    path: src/Bodoconsult.Network.Windows/Dns/NewZoneType.cs
+    startLine: 11
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dns
+  syntax:
+    content: Primary = 0
+    return:
+      type: Bodoconsult.Network.Windows.Dns.NewZoneType
+- uid: Bodoconsult.Network.Windows.Dns.NewZoneType.Secondary
+  commentId: F:Bodoconsult.Network.Windows.Dns.NewZoneType.Secondary
+  id: Secondary
+  parent: Bodoconsult.Network.Windows.Dns.NewZoneType
+  langs:
+  - csharp
+  - vb
+  name: Secondary
+  nameWithType: NewZoneType.Secondary
+  fullName: Bodoconsult.Network.Windows.Dns.NewZoneType.Secondary
+  type: Field
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dns/NewZoneType.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Secondary
+    path: src/Bodoconsult.Network.Windows/Dns/NewZoneType.cs
+    startLine: 12
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dns
+  syntax:
+    content: Secondary = 1
+    return:
+      type: Bodoconsult.Network.Windows.Dns.NewZoneType
+- uid: Bodoconsult.Network.Windows.Dns.NewZoneType.Stub
+  commentId: F:Bodoconsult.Network.Windows.Dns.NewZoneType.Stub
+  id: Stub
+  parent: Bodoconsult.Network.Windows.Dns.NewZoneType
+  langs:
+  - csharp
+  - vb
+  name: Stub
+  nameWithType: NewZoneType.Stub
+  fullName: Bodoconsult.Network.Windows.Dns.NewZoneType.Stub
+  type: Field
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dns/NewZoneType.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Stub
+    path: src/Bodoconsult.Network.Windows/Dns/NewZoneType.cs
+    startLine: 14
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dns
+  remarks: Server 2003+ only
+  example: []
+  syntax:
+    content: Stub = 2
+    return:
+      type: Bodoconsult.Network.Windows.Dns.NewZoneType
+- uid: Bodoconsult.Network.Windows.Dns.NewZoneType.Forwarder
+  commentId: F:Bodoconsult.Network.Windows.Dns.NewZoneType.Forwarder
+  id: Forwarder
+  parent: Bodoconsult.Network.Windows.Dns.NewZoneType
+  langs:
+  - csharp
+  - vb
+  name: Forwarder
+  nameWithType: NewZoneType.Forwarder
+  fullName: Bodoconsult.Network.Windows.Dns.NewZoneType.Forwarder
+  type: Field
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dns/NewZoneType.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Forwarder
+    path: src/Bodoconsult.Network.Windows/Dns/NewZoneType.cs
+    startLine: 16
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dns
+  remarks: Server 2003+ only
+  example: []
+  syntax:
+    content: Forwarder = 3
+    return:
+      type: Bodoconsult.Network.Windows.Dns.NewZoneType
+references:
+- uid: Bodoconsult.Network.Windows.Dns
+  commentId: N:Bodoconsult.Network.Windows.Dns
+  href: Bodoconsult.html
+  name: Bodoconsult.Network.Windows.Dns
+  nameWithType: Bodoconsult.Network.Windows.Dns
+  fullName: Bodoconsult.Network.Windows.Dns
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.Network
+    name: Network
+    href: Bodoconsult.Network.html
+  - name: .
+  - uid: Bodoconsult.Network.Windows
+    name: Windows
+    href: Bodoconsult.Network.Windows.html
+  - name: .
+  - uid: Bodoconsult.Network.Windows.Dns
+    name: Dns
+    href: Bodoconsult.Network.Windows.Dns.html
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.Network
+    name: Network
+    href: Bodoconsult.Network.html
+  - name: .
+  - uid: Bodoconsult.Network.Windows
+    name: Windows
+    href: Bodoconsult.Network.Windows.html
+  - name: .
+  - uid: Bodoconsult.Network.Windows.Dns
+    name: Dns
+    href: Bodoconsult.Network.Windows.Dns.html
+- uid: Bodoconsult.Network.Windows.Dns.NewZoneType
+  commentId: T:Bodoconsult.Network.Windows.Dns.NewZoneType
+  parent: Bodoconsult.Network.Windows.Dns
+  href: Bodoconsult.Network.Windows.Dns.NewZoneType.html
+  name: NewZoneType
+  nameWithType: NewZoneType
+  fullName: Bodoconsult.Network.Windows.Dns.NewZoneType

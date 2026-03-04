@@ -1,0 +1,752 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bodoconsult.NetworkCommunication.Interfaces.OrderState
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.OrderState
+  id: OrderState
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  children:
+  - Bodoconsult.NetworkCommunication.Interfaces.OrderState.#ctor(System.Int32,System.String)
+  - Bodoconsult.NetworkCommunication.Interfaces.OrderState.Added
+  - Bodoconsult.NetworkCommunication.Interfaces.OrderState.Canceled
+  - Bodoconsult.NetworkCommunication.Interfaces.OrderState.FinishedSuccessfully
+  - Bodoconsult.NetworkCommunication.Interfaces.OrderState.FinishedWithFailure
+  - Bodoconsult.NetworkCommunication.Interfaces.OrderState.Id
+  - Bodoconsult.NetworkCommunication.Interfaces.OrderState.Name
+  - Bodoconsult.NetworkCommunication.Interfaces.OrderState.Started
+  - Bodoconsult.NetworkCommunication.Interfaces.OrderState.ToString
+  - Bodoconsult.NetworkCommunication.Interfaces.OrderState.Unknown
+  langs:
+  - csharp
+  - vb
+  name: OrderState
+  nameWithType: OrderState
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.OrderState
+  type: Class
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/OrderState.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: OrderState
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/OrderState.cs
+    startLine: 7
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Order state enum implemented as class with static default enum values
+  example: []
+  syntax:
+    content: 'public class OrderState : IOrderState'
+    content.vb: Public Class OrderState Implements IOrderState
+  inheritance:
+  - System.Object
+  implements:
+  - Bodoconsult.NetworkCommunication.Interfaces.IOrderState
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+- uid: Bodoconsult.NetworkCommunication.Interfaces.OrderState.#ctor(System.Int32,System.String)
+  commentId: M:Bodoconsult.NetworkCommunication.Interfaces.OrderState.#ctor(System.Int32,System.String)
+  id: '#ctor(System.Int32,System.String)'
+  parent: Bodoconsult.NetworkCommunication.Interfaces.OrderState
+  langs:
+  - csharp
+  - vb
+  name: OrderState(int, string)
+  nameWithType: OrderState.OrderState(int, string)
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.OrderState.OrderState(int, string)
+  type: Constructor
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/OrderState.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: .ctor
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/OrderState.cs
+    startLine: 13
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Default ctor
+  example: []
+  syntax:
+    content: public OrderState(int id, string name)
+    parameters:
+    - id: id
+      type: System.Int32
+    - id: name
+      type: System.String
+    content.vb: Public Sub New(id As Integer, name As String)
+  overload: Bodoconsult.NetworkCommunication.Interfaces.OrderState.#ctor*
+  nameWithType.vb: OrderState.New(Integer, String)
+  fullName.vb: Bodoconsult.NetworkCommunication.Interfaces.OrderState.New(Integer, String)
+  name.vb: New(Integer, String)
+- uid: Bodoconsult.NetworkCommunication.Interfaces.OrderState.Id
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.OrderState.Id
+  id: Id
+  parent: Bodoconsult.NetworkCommunication.Interfaces.OrderState
+  langs:
+  - csharp
+  - vb
+  name: Id
+  nameWithType: OrderState.Id
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.OrderState.Id
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/OrderState.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Id
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/OrderState.cs
+    startLine: 22
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: The ID of the state
+  example: []
+  syntax:
+    content: public int Id { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public ReadOnly Property Id As Integer
+  overload: Bodoconsult.NetworkCommunication.Interfaces.OrderState.Id*
+  implements:
+  - Bodoconsult.NetworkCommunication.Interfaces.IOrderState.Id
+- uid: Bodoconsult.NetworkCommunication.Interfaces.OrderState.Name
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.OrderState.Name
+  id: Name
+  parent: Bodoconsult.NetworkCommunication.Interfaces.OrderState
+  langs:
+  - csharp
+  - vb
+  name: Name
+  nameWithType: OrderState.Name
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.OrderState.Name
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/OrderState.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Name
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/OrderState.cs
+    startLine: 27
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: The cleartext name of the state
+  example: []
+  syntax:
+    content: public string Name { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property Name As String
+  overload: Bodoconsult.NetworkCommunication.Interfaces.OrderState.Name*
+  implements:
+  - Bodoconsult.NetworkCommunication.Interfaces.IOrderState.Name
+- uid: Bodoconsult.NetworkCommunication.Interfaces.OrderState.Unknown
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.OrderState.Unknown
+  id: Unknown
+  parent: Bodoconsult.NetworkCommunication.Interfaces.OrderState
+  langs:
+  - csharp
+  - vb
+  name: Unknown
+  nameWithType: OrderState.Unknown
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.OrderState.Unknown
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/OrderState.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Unknown
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/OrderState.cs
+    startLine: 32
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Unknown means the order was just created
+  example: []
+  syntax:
+    content: public static OrderState Unknown { get; }
+    parameters: []
+    return:
+      type: Bodoconsult.NetworkCommunication.Interfaces.OrderState
+    content.vb: Public Shared ReadOnly Property Unknown As OrderState
+  overload: Bodoconsult.NetworkCommunication.Interfaces.OrderState.Unknown*
+- uid: Bodoconsult.NetworkCommunication.Interfaces.OrderState.Added
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.OrderState.Added
+  id: Added
+  parent: Bodoconsult.NetworkCommunication.Interfaces.OrderState
+  langs:
+  - csharp
+  - vb
+  name: Added
+  nameWithType: OrderState.Added
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.OrderState.Added
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/OrderState.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Added
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/OrderState.cs
+    startLine: 37
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Added to waiting queue
+  example: []
+  syntax:
+    content: public static OrderState Added { get; }
+    parameters: []
+    return:
+      type: Bodoconsult.NetworkCommunication.Interfaces.OrderState
+    content.vb: Public Shared ReadOnly Property Added As OrderState
+  overload: Bodoconsult.NetworkCommunication.Interfaces.OrderState.Added*
+- uid: Bodoconsult.NetworkCommunication.Interfaces.OrderState.Started
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.OrderState.Started
+  id: Started
+  parent: Bodoconsult.NetworkCommunication.Interfaces.OrderState
+  langs:
+  - csharp
+  - vb
+  name: Started
+  nameWithType: OrderState.Started
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.OrderState.Started
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/OrderState.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Started
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/OrderState.cs
+    startLine: 42
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Order execution was started
+  example: []
+  syntax:
+    content: public static OrderState Started { get; }
+    parameters: []
+    return:
+      type: Bodoconsult.NetworkCommunication.Interfaces.OrderState
+    content.vb: Public Shared ReadOnly Property Started As OrderState
+  overload: Bodoconsult.NetworkCommunication.Interfaces.OrderState.Started*
+- uid: Bodoconsult.NetworkCommunication.Interfaces.OrderState.FinishedSuccessfully
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.OrderState.FinishedSuccessfully
+  id: FinishedSuccessfully
+  parent: Bodoconsult.NetworkCommunication.Interfaces.OrderState
+  langs:
+  - csharp
+  - vb
+  name: FinishedSuccessfully
+  nameWithType: OrderState.FinishedSuccessfully
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.OrderState.FinishedSuccessfully
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/OrderState.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: FinishedSuccessfully
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/OrderState.cs
+    startLine: 47
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Order has finished successfully
+  example: []
+  syntax:
+    content: public static OrderState FinishedSuccessfully { get; }
+    parameters: []
+    return:
+      type: Bodoconsult.NetworkCommunication.Interfaces.OrderState
+    content.vb: Public Shared ReadOnly Property FinishedSuccessfully As OrderState
+  overload: Bodoconsult.NetworkCommunication.Interfaces.OrderState.FinishedSuccessfully*
+- uid: Bodoconsult.NetworkCommunication.Interfaces.OrderState.FinishedWithFailure
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.OrderState.FinishedWithFailure
+  id: FinishedWithFailure
+  parent: Bodoconsult.NetworkCommunication.Interfaces.OrderState
+  langs:
+  - csharp
+  - vb
+  name: FinishedWithFailure
+  nameWithType: OrderState.FinishedWithFailure
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.OrderState.FinishedWithFailure
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/OrderState.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: FinishedWithFailure
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/OrderState.cs
+    startLine: 52
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Order has finished with failure
+  example: []
+  syntax:
+    content: public static OrderState FinishedWithFailure { get; }
+    parameters: []
+    return:
+      type: Bodoconsult.NetworkCommunication.Interfaces.OrderState
+    content.vb: Public Shared ReadOnly Property FinishedWithFailure As OrderState
+  overload: Bodoconsult.NetworkCommunication.Interfaces.OrderState.FinishedWithFailure*
+- uid: Bodoconsult.NetworkCommunication.Interfaces.OrderState.Canceled
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.OrderState.Canceled
+  id: Canceled
+  parent: Bodoconsult.NetworkCommunication.Interfaces.OrderState
+  langs:
+  - csharp
+  - vb
+  name: Canceled
+  nameWithType: OrderState.Canceled
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.OrderState.Canceled
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/OrderState.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Canceled
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/OrderState.cs
+    startLine: 57
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: The order has been cancelled
+  example: []
+  syntax:
+    content: public static OrderState Canceled { get; }
+    parameters: []
+    return:
+      type: Bodoconsult.NetworkCommunication.Interfaces.OrderState
+    content.vb: Public Shared ReadOnly Property Canceled As OrderState
+  overload: Bodoconsult.NetworkCommunication.Interfaces.OrderState.Canceled*
+- uid: Bodoconsult.NetworkCommunication.Interfaces.OrderState.ToString
+  commentId: M:Bodoconsult.NetworkCommunication.Interfaces.OrderState.ToString
+  id: ToString
+  parent: Bodoconsult.NetworkCommunication.Interfaces.OrderState
+  langs:
+  - csharp
+  - vb
+  name: ToString()
+  nameWithType: OrderState.ToString()
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.OrderState.ToString()
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/OrderState.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: ToString
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/OrderState.cs
+    startLine: 62
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Returns a string that represents the current object.
+  example: []
+  syntax:
+    content: public override string ToString()
+    return:
+      type: System.String
+      description: A string that represents the current object.
+    content.vb: Public Overrides Function ToString() As String
+  overridden: System.Object.ToString
+  overload: Bodoconsult.NetworkCommunication.Interfaces.OrderState.ToString*
+references:
+- uid: Bodoconsult.NetworkCommunication.Interfaces
+  commentId: N:Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.html
+  name: Bodoconsult.NetworkCommunication.Interfaces
+  nameWithType: Bodoconsult.NetworkCommunication.Interfaces
+  fullName: Bodoconsult.NetworkCommunication.Interfaces
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Interfaces
+    name: Interfaces
+    href: Bodoconsult.NetworkCommunication.Interfaces.html
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Interfaces
+    name: Interfaces
+    href: Bodoconsult.NetworkCommunication.Interfaces.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IOrderState
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.IOrderState
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.NetworkCommunication.Interfaces.IOrderState.html
+  name: IOrderState
+  nameWithType: IOrderState
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IOrderState
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Bodoconsult.NetworkCommunication.Interfaces.OrderState.#ctor*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.OrderState.#ctor
+  href: Bodoconsult.NetworkCommunication.Interfaces.OrderState.html#Bodoconsult_NetworkCommunication_Interfaces_OrderState__ctor_System_Int32_System_String_
+  name: OrderState
+  nameWithType: OrderState.OrderState
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.OrderState.OrderState
+  nameWithType.vb: OrderState.New
+  fullName.vb: Bodoconsult.NetworkCommunication.Interfaces.OrderState.New
+  name.vb: New
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Bodoconsult.NetworkCommunication.Interfaces.OrderState.Id*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.OrderState.Id
+  href: Bodoconsult.NetworkCommunication.Interfaces.OrderState.html#Bodoconsult_NetworkCommunication_Interfaces_OrderState_Id
+  name: Id
+  nameWithType: OrderState.Id
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.OrderState.Id
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IOrderState.Id
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IOrderState.Id
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IOrderState
+  href: Bodoconsult.NetworkCommunication.Interfaces.IOrderState.html#Bodoconsult_NetworkCommunication_Interfaces_IOrderState_Id
+  name: Id
+  nameWithType: IOrderState.Id
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IOrderState.Id
+- uid: Bodoconsult.NetworkCommunication.Interfaces.OrderState.Name*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.OrderState.Name
+  href: Bodoconsult.NetworkCommunication.Interfaces.OrderState.html#Bodoconsult_NetworkCommunication_Interfaces_OrderState_Name
+  name: Name
+  nameWithType: OrderState.Name
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.OrderState.Name
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IOrderState.Name
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IOrderState.Name
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IOrderState
+  href: Bodoconsult.NetworkCommunication.Interfaces.IOrderState.html#Bodoconsult_NetworkCommunication_Interfaces_IOrderState_Name
+  name: Name
+  nameWithType: IOrderState.Name
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IOrderState.Name
+- uid: Bodoconsult.NetworkCommunication.Interfaces.OrderState.Unknown*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.OrderState.Unknown
+  href: Bodoconsult.NetworkCommunication.Interfaces.OrderState.html#Bodoconsult_NetworkCommunication_Interfaces_OrderState_Unknown
+  name: Unknown
+  nameWithType: OrderState.Unknown
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.OrderState.Unknown
+- uid: Bodoconsult.NetworkCommunication.Interfaces.OrderState
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.OrderState
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.NetworkCommunication.Interfaces.OrderState.html
+  name: OrderState
+  nameWithType: OrderState
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.OrderState
+- uid: Bodoconsult.NetworkCommunication.Interfaces.OrderState.Added*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.OrderState.Added
+  href: Bodoconsult.NetworkCommunication.Interfaces.OrderState.html#Bodoconsult_NetworkCommunication_Interfaces_OrderState_Added
+  name: Added
+  nameWithType: OrderState.Added
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.OrderState.Added
+- uid: Bodoconsult.NetworkCommunication.Interfaces.OrderState.Started*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.OrderState.Started
+  href: Bodoconsult.NetworkCommunication.Interfaces.OrderState.html#Bodoconsult_NetworkCommunication_Interfaces_OrderState_Started
+  name: Started
+  nameWithType: OrderState.Started
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.OrderState.Started
+- uid: Bodoconsult.NetworkCommunication.Interfaces.OrderState.FinishedSuccessfully*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.OrderState.FinishedSuccessfully
+  href: Bodoconsult.NetworkCommunication.Interfaces.OrderState.html#Bodoconsult_NetworkCommunication_Interfaces_OrderState_FinishedSuccessfully
+  name: FinishedSuccessfully
+  nameWithType: OrderState.FinishedSuccessfully
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.OrderState.FinishedSuccessfully
+- uid: Bodoconsult.NetworkCommunication.Interfaces.OrderState.FinishedWithFailure*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.OrderState.FinishedWithFailure
+  href: Bodoconsult.NetworkCommunication.Interfaces.OrderState.html#Bodoconsult_NetworkCommunication_Interfaces_OrderState_FinishedWithFailure
+  name: FinishedWithFailure
+  nameWithType: OrderState.FinishedWithFailure
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.OrderState.FinishedWithFailure
+- uid: Bodoconsult.NetworkCommunication.Interfaces.OrderState.Canceled*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.OrderState.Canceled
+  href: Bodoconsult.NetworkCommunication.Interfaces.OrderState.html#Bodoconsult_NetworkCommunication_Interfaces_OrderState_Canceled
+  name: Canceled
+  nameWithType: OrderState.Canceled
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.OrderState.Canceled
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: Bodoconsult.NetworkCommunication.Interfaces.OrderState.ToString*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.OrderState.ToString
+  href: Bodoconsult.NetworkCommunication.Interfaces.OrderState.html#Bodoconsult_NetworkCommunication_Interfaces_OrderState_ToString
+  name: ToString
+  nameWithType: OrderState.ToString
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.OrderState.ToString

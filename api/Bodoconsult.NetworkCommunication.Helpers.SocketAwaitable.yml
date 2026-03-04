@@ -1,0 +1,588 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bodoconsult.NetworkCommunication.Helpers.SocketAwaitable
+  commentId: T:Bodoconsult.NetworkCommunication.Helpers.SocketAwaitable
+  id: SocketAwaitable
+  parent: Bodoconsult.NetworkCommunication.Helpers
+  children:
+  - Bodoconsult.NetworkCommunication.Helpers.SocketAwaitable.#ctor(System.Net.Sockets.SocketAsyncEventArgs)
+  - Bodoconsult.NetworkCommunication.Helpers.SocketAwaitable.EventArgs
+  - Bodoconsult.NetworkCommunication.Helpers.SocketAwaitable.GetAwaiter
+  - Bodoconsult.NetworkCommunication.Helpers.SocketAwaitable.GetResult
+  - Bodoconsult.NetworkCommunication.Helpers.SocketAwaitable.IsCompleted
+  langs:
+  - csharp
+  - vb
+  name: SocketAwaitable
+  nameWithType: SocketAwaitable
+  fullName: Bodoconsult.NetworkCommunication.Helpers.SocketAwaitable
+  type: Class
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Helpers/SocketAwaitable.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: SocketAwaitable
+    path: src/Bodoconsult.NetworkCommunication/Helpers/SocketAwaitable.cs
+    startLine: 15
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Helpers
+  summary: An awaiter for asynchronous socket operations
+  example: []
+  syntax:
+    content: 'public sealed class SocketAwaitable : INotifyCompletion'
+    content.vb: Public NotInheritable Class SocketAwaitable Implements INotifyCompletion
+  inheritance:
+  - System.Object
+  implements:
+  - System.Runtime.CompilerServices.INotifyCompletion
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: Bodoconsult.NetworkCommunication.Helpers.SocketAwaitable.#ctor(System.Net.Sockets.SocketAsyncEventArgs)
+  commentId: M:Bodoconsult.NetworkCommunication.Helpers.SocketAwaitable.#ctor(System.Net.Sockets.SocketAsyncEventArgs)
+  id: '#ctor(System.Net.Sockets.SocketAsyncEventArgs)'
+  parent: Bodoconsult.NetworkCommunication.Helpers.SocketAwaitable
+  langs:
+  - csharp
+  - vb
+  name: SocketAwaitable(SocketAsyncEventArgs)
+  nameWithType: SocketAwaitable.SocketAwaitable(SocketAsyncEventArgs)
+  fullName: Bodoconsult.NetworkCommunication.Helpers.SocketAwaitable.SocketAwaitable(System.Net.Sockets.SocketAsyncEventArgs)
+  type: Constructor
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Helpers/SocketAwaitable.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: .ctor
+    path: src/Bodoconsult.NetworkCommunication/Helpers/SocketAwaitable.cs
+    startLine: 26
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Helpers
+  summary: Creates a new instance of the class for the specified <code class="paramref">eventArgs</code>
+  example: []
+  syntax:
+    content: public SocketAwaitable(SocketAsyncEventArgs eventArgs)
+    parameters:
+    - id: eventArgs
+      type: System.Net.Sockets.SocketAsyncEventArgs
+      description: The socket event args to use
+    content.vb: Public Sub New(eventArgs As SocketAsyncEventArgs)
+  overload: Bodoconsult.NetworkCommunication.Helpers.SocketAwaitable.#ctor*
+  nameWithType.vb: SocketAwaitable.New(SocketAsyncEventArgs)
+  fullName.vb: Bodoconsult.NetworkCommunication.Helpers.SocketAwaitable.New(System.Net.Sockets.SocketAsyncEventArgs)
+  name.vb: New(SocketAsyncEventArgs)
+- uid: Bodoconsult.NetworkCommunication.Helpers.SocketAwaitable.EventArgs
+  commentId: P:Bodoconsult.NetworkCommunication.Helpers.SocketAwaitable.EventArgs
+  id: EventArgs
+  parent: Bodoconsult.NetworkCommunication.Helpers.SocketAwaitable
+  langs:
+  - csharp
+  - vb
+  name: EventArgs
+  nameWithType: SocketAwaitable.EventArgs
+  fullName: Bodoconsult.NetworkCommunication.Helpers.SocketAwaitable.EventArgs
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Helpers/SocketAwaitable.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: EventArgs
+    path: src/Bodoconsult.NetworkCommunication/Helpers/SocketAwaitable.cs
+    startLine: 42
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Helpers
+  summary: Indicates the event args used by the awaiter
+  example: []
+  syntax:
+    content: public SocketAsyncEventArgs EventArgs { get; }
+    parameters: []
+    return:
+      type: System.Net.Sockets.SocketAsyncEventArgs
+    content.vb: Public Property EventArgs As SocketAsyncEventArgs
+  overload: Bodoconsult.NetworkCommunication.Helpers.SocketAwaitable.EventArgs*
+- uid: Bodoconsult.NetworkCommunication.Helpers.SocketAwaitable.IsCompleted
+  commentId: P:Bodoconsult.NetworkCommunication.Helpers.SocketAwaitable.IsCompleted
+  id: IsCompleted
+  parent: Bodoconsult.NetworkCommunication.Helpers.SocketAwaitable
+  langs:
+  - csharp
+  - vb
+  name: IsCompleted
+  nameWithType: SocketAwaitable.IsCompleted
+  fullName: Bodoconsult.NetworkCommunication.Helpers.SocketAwaitable.IsCompleted
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Helpers/SocketAwaitable.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: IsCompleted
+    path: src/Bodoconsult.NetworkCommunication/Helpers/SocketAwaitable.cs
+    startLine: 47
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Helpers
+  summary: Indicates whether or not the operation is completed
+  example: []
+  syntax:
+    content: public bool IsCompleted { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property IsCompleted As Boolean
+  overload: Bodoconsult.NetworkCommunication.Helpers.SocketAwaitable.IsCompleted*
+- uid: Bodoconsult.NetworkCommunication.Helpers.SocketAwaitable.GetAwaiter
+  commentId: M:Bodoconsult.NetworkCommunication.Helpers.SocketAwaitable.GetAwaiter
+  id: GetAwaiter
+  parent: Bodoconsult.NetworkCommunication.Helpers.SocketAwaitable
+  langs:
+  - csharp
+  - vb
+  name: GetAwaiter()
+  nameWithType: SocketAwaitable.GetAwaiter()
+  fullName: Bodoconsult.NetworkCommunication.Helpers.SocketAwaitable.GetAwaiter()
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Helpers/SocketAwaitable.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: GetAwaiter
+    path: src/Bodoconsult.NetworkCommunication/Helpers/SocketAwaitable.cs
+    startLine: 58
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Helpers
+  summary: This method supports the async/await framework
+  example: []
+  syntax:
+    content: public SocketAwaitable GetAwaiter()
+    return:
+      type: Bodoconsult.NetworkCommunication.Helpers.SocketAwaitable
+      description: Itself
+    content.vb: Public Function GetAwaiter() As SocketAwaitable
+  overload: Bodoconsult.NetworkCommunication.Helpers.SocketAwaitable.GetAwaiter*
+- uid: Bodoconsult.NetworkCommunication.Helpers.SocketAwaitable.GetResult
+  commentId: M:Bodoconsult.NetworkCommunication.Helpers.SocketAwaitable.GetResult
+  id: GetResult
+  parent: Bodoconsult.NetworkCommunication.Helpers.SocketAwaitable
+  langs:
+  - csharp
+  - vb
+  name: GetResult()
+  nameWithType: SocketAwaitable.GetResult()
+  fullName: Bodoconsult.NetworkCommunication.Helpers.SocketAwaitable.GetResult()
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Helpers/SocketAwaitable.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: GetResult
+    path: src/Bodoconsult.NetworkCommunication/Helpers/SocketAwaitable.cs
+    startLine: 75
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Helpers
+  summary: Checks the result of the socket operation, throwing if unsuccessful
+  remarks: This is used by the async/await framework
+  example: []
+  syntax:
+    content: public void GetResult()
+    content.vb: Public Sub GetResult()
+  overload: Bodoconsult.NetworkCommunication.Helpers.SocketAwaitable.GetResult*
+references:
+- uid: Bodoconsult.NetworkCommunication.Helpers
+  commentId: N:Bodoconsult.NetworkCommunication.Helpers
+  href: Bodoconsult.html
+  name: Bodoconsult.NetworkCommunication.Helpers
+  nameWithType: Bodoconsult.NetworkCommunication.Helpers
+  fullName: Bodoconsult.NetworkCommunication.Helpers
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Helpers
+    name: Helpers
+    href: Bodoconsult.NetworkCommunication.Helpers.html
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Helpers
+    name: Helpers
+    href: Bodoconsult.NetworkCommunication.Helpers.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Runtime.CompilerServices.INotifyCompletion
+  commentId: T:System.Runtime.CompilerServices.INotifyCompletion
+  parent: System.Runtime.CompilerServices
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.runtime.compilerservices.inotifycompletion
+  name: INotifyCompletion
+  nameWithType: INotifyCompletion
+  fullName: System.Runtime.CompilerServices.INotifyCompletion
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.Runtime.CompilerServices
+  commentId: N:System.Runtime.CompilerServices
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Runtime.CompilerServices
+  nameWithType: System.Runtime.CompilerServices
+  fullName: System.Runtime.CompilerServices
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Runtime
+    name: Runtime
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.runtime
+  - name: .
+  - uid: System.Runtime.CompilerServices
+    name: CompilerServices
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.runtime.compilerservices
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Runtime
+    name: Runtime
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.runtime
+  - name: .
+  - uid: System.Runtime.CompilerServices
+    name: CompilerServices
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.runtime.compilerservices
+- uid: Bodoconsult.NetworkCommunication.Helpers.SocketAwaitable.#ctor*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Helpers.SocketAwaitable.#ctor
+  href: Bodoconsult.NetworkCommunication.Helpers.SocketAwaitable.html#Bodoconsult_NetworkCommunication_Helpers_SocketAwaitable__ctor_System_Net_Sockets_SocketAsyncEventArgs_
+  name: SocketAwaitable
+  nameWithType: SocketAwaitable.SocketAwaitable
+  fullName: Bodoconsult.NetworkCommunication.Helpers.SocketAwaitable.SocketAwaitable
+  nameWithType.vb: SocketAwaitable.New
+  fullName.vb: Bodoconsult.NetworkCommunication.Helpers.SocketAwaitable.New
+  name.vb: New
+- uid: System.Net.Sockets.SocketAsyncEventArgs
+  commentId: T:System.Net.Sockets.SocketAsyncEventArgs
+  parent: System.Net.Sockets
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.net.sockets.socketasynceventargs
+  name: SocketAsyncEventArgs
+  nameWithType: SocketAsyncEventArgs
+  fullName: System.Net.Sockets.SocketAsyncEventArgs
+- uid: System.Net.Sockets
+  commentId: N:System.Net.Sockets
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Net.Sockets
+  nameWithType: System.Net.Sockets
+  fullName: System.Net.Sockets
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Net
+    name: Net
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.net
+  - name: .
+  - uid: System.Net.Sockets
+    name: Sockets
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.net.sockets
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Net
+    name: Net
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.net
+  - name: .
+  - uid: System.Net.Sockets
+    name: Sockets
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.net.sockets
+- uid: Bodoconsult.NetworkCommunication.Helpers.SocketAwaitable.EventArgs*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Helpers.SocketAwaitable.EventArgs
+  href: Bodoconsult.NetworkCommunication.Helpers.SocketAwaitable.html#Bodoconsult_NetworkCommunication_Helpers_SocketAwaitable_EventArgs
+  name: EventArgs
+  nameWithType: SocketAwaitable.EventArgs
+  fullName: Bodoconsult.NetworkCommunication.Helpers.SocketAwaitable.EventArgs
+- uid: Bodoconsult.NetworkCommunication.Helpers.SocketAwaitable.IsCompleted*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Helpers.SocketAwaitable.IsCompleted
+  href: Bodoconsult.NetworkCommunication.Helpers.SocketAwaitable.html#Bodoconsult_NetworkCommunication_Helpers_SocketAwaitable_IsCompleted
+  name: IsCompleted
+  nameWithType: SocketAwaitable.IsCompleted
+  fullName: Bodoconsult.NetworkCommunication.Helpers.SocketAwaitable.IsCompleted
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: Bodoconsult.NetworkCommunication.Helpers.SocketAwaitable.GetAwaiter*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Helpers.SocketAwaitable.GetAwaiter
+  href: Bodoconsult.NetworkCommunication.Helpers.SocketAwaitable.html#Bodoconsult_NetworkCommunication_Helpers_SocketAwaitable_GetAwaiter
+  name: GetAwaiter
+  nameWithType: SocketAwaitable.GetAwaiter
+  fullName: Bodoconsult.NetworkCommunication.Helpers.SocketAwaitable.GetAwaiter
+- uid: Bodoconsult.NetworkCommunication.Helpers.SocketAwaitable
+  commentId: T:Bodoconsult.NetworkCommunication.Helpers.SocketAwaitable
+  parent: Bodoconsult.NetworkCommunication.Helpers
+  href: Bodoconsult.NetworkCommunication.Helpers.SocketAwaitable.html
+  name: SocketAwaitable
+  nameWithType: SocketAwaitable
+  fullName: Bodoconsult.NetworkCommunication.Helpers.SocketAwaitable
+- uid: Bodoconsult.NetworkCommunication.Helpers.SocketAwaitable.GetResult*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Helpers.SocketAwaitable.GetResult
+  href: Bodoconsult.NetworkCommunication.Helpers.SocketAwaitable.html#Bodoconsult_NetworkCommunication_Helpers_SocketAwaitable_GetResult
+  name: GetResult
+  nameWithType: SocketAwaitable.GetResult
+  fullName: Bodoconsult.NetworkCommunication.Helpers.SocketAwaitable.GetResult

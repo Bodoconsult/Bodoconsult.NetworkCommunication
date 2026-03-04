@@ -1,0 +1,23 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Orders
+  commentId: N:Bodoconsult.NetworkCommunication.OrderManagement.Orders
+  id: Bodoconsult.NetworkCommunication.OrderManagement.Orders
+  children:
+  - Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder
+  langs:
+  - csharp
+  - vb
+  name: Bodoconsult.NetworkCommunication.OrderManagement.Orders
+  nameWithType: Bodoconsult.NetworkCommunication.OrderManagement.Orders
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Orders
+  type: Namespace
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+references:
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder
+  commentId: T:Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder
+  href: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.html
+  name: OmOrder
+  nameWithType: OmOrder
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder

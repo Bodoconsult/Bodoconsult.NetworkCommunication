@@ -1,0 +1,1911 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress
+  commentId: T:Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress
+  id: DhcpServerIpAddress
+  parent: Bodoconsult.Network.Windows.Dhcp
+  children:
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.#ctor(System.Net.IPAddress)
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.#ctor(System.String)
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.#ctor(System.UInt32)
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.Empty
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.Equals(Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress)
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.Equals(System.Net.IPAddress)
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.Equals(System.Object)
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.FromNative(System.Int32)
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.FromNative(System.UInt32)
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.FromString(System.String)
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.GetByte(System.Int32)
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.GetBytes
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.GetHashCode
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.Native
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.ToString
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.op_Equality(Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress,Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress)
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.op_Equality(Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress,System.Net.IPAddress)
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.op_Explicit(Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress)~Bodoconsult.Network.Windows.Dhcp.DhcpServerIpMask
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.op_Explicit(Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress)~System.Int32
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.op_Explicit(Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress)~System.UInt32
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.op_Explicit(System.Int32)~Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.op_Explicit(System.UInt32)~Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.op_GreaterThan(Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress,Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress)
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.op_GreaterThanOrEqual(Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress,Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress)
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.op_Implicit(Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress)~System.Net.IPAddress
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.op_Implicit(Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress)~System.String
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.op_Implicit(System.Net.IPAddress)~Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.op_Implicit(System.String)~Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.op_Inequality(Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress,Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress)
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.op_Inequality(Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress,System.Net.IPAddress)
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.op_LessThan(Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress,Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress)
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.op_LessThanOrEqual(Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress,Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress)
+  langs:
+  - csharp
+  - vb
+  name: DhcpServerIpAddress
+  nameWithType: DhcpServerIpAddress
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress
+  type: Struct
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerIpAddress.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: DhcpServerIpAddress
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerIpAddress.cs
+    startLine: 9
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: >-
+      [Serializable]
+
+      public struct DhcpServerIpAddress : IEquatable<DhcpServerIpAddress>, IEquatable<IPAddress>
+    content.vb: >-
+      <Serializable>
+
+      Public Structure DhcpServerIpAddress Implements IEquatable(Of DhcpServerIpAddress), IEquatable(Of IPAddress)
+  implements:
+  - System.IEquatable{Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress}
+  - System.IEquatable{System.Net.IPAddress}
+  inheritedMembers:
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  attributes:
+  - type: System.SerializableAttribute
+    ctor: System.SerializableAttribute.#ctor
+    arguments: []
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.#ctor(System.UInt32)
+  commentId: M:Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.#ctor(System.UInt32)
+  id: '#ctor(System.UInt32)'
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress
+  langs:
+  - csharp
+  - vb
+  name: DhcpServerIpAddress(uint)
+  nameWithType: DhcpServerIpAddress.DhcpServerIpAddress(uint)
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.DhcpServerIpAddress(uint)
+  type: Constructor
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerIpAddress.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: .ctor
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerIpAddress.cs
+    startLine: 19
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: public DhcpServerIpAddress(uint nativeAddress)
+    parameters:
+    - id: nativeAddress
+      type: System.UInt32
+    content.vb: Public Sub New(nativeAddress As UInteger)
+  overload: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.#ctor*
+  nameWithType.vb: DhcpServerIpAddress.New(UInteger)
+  fullName.vb: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.New(UInteger)
+  name.vb: New(UInteger)
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.#ctor(System.String)
+  commentId: M:Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.#ctor(System.String)
+  id: '#ctor(System.String)'
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress
+  langs:
+  - csharp
+  - vb
+  name: DhcpServerIpAddress(string)
+  nameWithType: DhcpServerIpAddress.DhcpServerIpAddress(string)
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.DhcpServerIpAddress(string)
+  type: Constructor
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerIpAddress.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: .ctor
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerIpAddress.cs
+    startLine: 24
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: public DhcpServerIpAddress(string address)
+    parameters:
+    - id: address
+      type: System.String
+    content.vb: Public Sub New(address As String)
+  overload: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.#ctor*
+  nameWithType.vb: DhcpServerIpAddress.New(String)
+  fullName.vb: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.New(String)
+  name.vb: New(String)
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.#ctor(System.Net.IPAddress)
+  commentId: M:Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.#ctor(System.Net.IPAddress)
+  id: '#ctor(System.Net.IPAddress)'
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress
+  langs:
+  - csharp
+  - vb
+  name: DhcpServerIpAddress(IPAddress)
+  nameWithType: DhcpServerIpAddress.DhcpServerIpAddress(IPAddress)
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.DhcpServerIpAddress(System.Net.IPAddress)
+  type: Constructor
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerIpAddress.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: .ctor
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerIpAddress.cs
+    startLine: 29
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: public DhcpServerIpAddress(IPAddress address)
+    parameters:
+    - id: address
+      type: System.Net.IPAddress
+    content.vb: Public Sub New(address As IPAddress)
+  overload: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.#ctor*
+  nameWithType.vb: DhcpServerIpAddress.New(IPAddress)
+  fullName.vb: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.New(System.Net.IPAddress)
+  name.vb: New(IPAddress)
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.Native
+  commentId: P:Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.Native
+  id: Native
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress
+  langs:
+  - csharp
+  - vb
+  name: Native
+  nameWithType: DhcpServerIpAddress.Native
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.Native
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerIpAddress.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Native
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerIpAddress.cs
+    startLine: 48
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  summary: IP Address in network order
+  example: []
+  syntax:
+    content: public uint Native { get; }
+    parameters: []
+    return:
+      type: System.UInt32
+    content.vb: Public ReadOnly Property Native As UInteger
+  overload: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.Native*
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.GetBytes
+  commentId: M:Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.GetBytes
+  id: GetBytes
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress
+  langs:
+  - csharp
+  - vb
+  name: GetBytes()
+  nameWithType: DhcpServerIpAddress.GetBytes()
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.GetBytes()
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerIpAddress.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: GetBytes
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerIpAddress.cs
+    startLine: 50
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: public byte[] GetBytes()
+    return:
+      type: System.Byte[]
+    content.vb: Public Function GetBytes() As Byte()
+  overload: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.GetBytes*
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.GetByte(System.Int32)
+  commentId: M:Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.GetByte(System.Int32)
+  id: GetByte(System.Int32)
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress
+  langs:
+  - csharp
+  - vb
+  name: GetByte(int)
+  nameWithType: DhcpServerIpAddress.GetByte(int)
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.GetByte(int)
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerIpAddress.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: GetByte
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerIpAddress.cs
+    startLine: 57
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: public byte GetByte(int index)
+    parameters:
+    - id: index
+      type: System.Int32
+    return:
+      type: System.Byte
+    content.vb: Public Function GetByte(index As Integer) As Byte
+  overload: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.GetByte*
+  nameWithType.vb: DhcpServerIpAddress.GetByte(Integer)
+  fullName.vb: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.GetByte(Integer)
+  name.vb: GetByte(Integer)
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.Empty
+  commentId: P:Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.Empty
+  id: Empty
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress
+  langs:
+  - csharp
+  - vb
+  name: Empty
+  nameWithType: DhcpServerIpAddress.Empty
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.Empty
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerIpAddress.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Empty
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerIpAddress.cs
+    startLine: 65
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: public static DhcpServerIpAddress Empty { get; }
+    parameters: []
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress
+    content.vb: Public Shared ReadOnly Property Empty As DhcpServerIpAddress
+  overload: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.Empty*
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.FromNative(System.UInt32)
+  commentId: M:Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.FromNative(System.UInt32)
+  id: FromNative(System.UInt32)
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress
+  langs:
+  - csharp
+  - vb
+  name: FromNative(uint)
+  nameWithType: DhcpServerIpAddress.FromNative(uint)
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.FromNative(uint)
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerIpAddress.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: FromNative
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerIpAddress.cs
+    startLine: 66
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: public static DhcpServerIpAddress FromNative(uint nativeAddress)
+    parameters:
+    - id: nativeAddress
+      type: System.UInt32
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress
+    content.vb: Public Shared Function FromNative(nativeAddress As UInteger) As DhcpServerIpAddress
+  overload: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.FromNative*
+  nameWithType.vb: DhcpServerIpAddress.FromNative(UInteger)
+  fullName.vb: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.FromNative(UInteger)
+  name.vb: FromNative(UInteger)
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.FromNative(System.Int32)
+  commentId: M:Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.FromNative(System.Int32)
+  id: FromNative(System.Int32)
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress
+  langs:
+  - csharp
+  - vb
+  name: FromNative(int)
+  nameWithType: DhcpServerIpAddress.FromNative(int)
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.FromNative(int)
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerIpAddress.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: FromNative
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerIpAddress.cs
+    startLine: 67
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: public static DhcpServerIpAddress FromNative(int nativeAddress)
+    parameters:
+    - id: nativeAddress
+      type: System.Int32
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress
+    content.vb: Public Shared Function FromNative(nativeAddress As Integer) As DhcpServerIpAddress
+  overload: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.FromNative*
+  nameWithType.vb: DhcpServerIpAddress.FromNative(Integer)
+  fullName.vb: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.FromNative(Integer)
+  name.vb: FromNative(Integer)
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.FromString(System.String)
+  commentId: M:Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.FromString(System.String)
+  id: FromString(System.String)
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress
+  langs:
+  - csharp
+  - vb
+  name: FromString(string)
+  nameWithType: DhcpServerIpAddress.FromString(string)
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.FromString(string)
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerIpAddress.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: FromString
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerIpAddress.cs
+    startLine: 76
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: public static DhcpServerIpAddress FromString(string address)
+    parameters:
+    - id: address
+      type: System.String
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress
+    content.vb: Public Shared Function FromString(address As String) As DhcpServerIpAddress
+  overload: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.FromString*
+  nameWithType.vb: DhcpServerIpAddress.FromString(String)
+  fullName.vb: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.FromString(String)
+  name.vb: FromString(String)
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.ToString
+  commentId: M:Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.ToString
+  id: ToString
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress
+  langs:
+  - csharp
+  - vb
+  name: ToString()
+  nameWithType: DhcpServerIpAddress.ToString()
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.ToString()
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerIpAddress.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: ToString
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerIpAddress.cs
+    startLine: 78
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  summary: Returns the fully qualified type name of this instance.
+  example: []
+  syntax:
+    content: public override string ToString()
+    return:
+      type: System.String
+      description: The fully qualified type name.
+    content.vb: Public Overrides Function ToString() As String
+  overridden: System.ValueType.ToString
+  overload: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.ToString*
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.Equals(System.Object)
+  commentId: M:Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.Equals(System.Object)
+  id: Equals(System.Object)
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress
+  langs:
+  - csharp
+  - vb
+  name: Equals(object)
+  nameWithType: DhcpServerIpAddress.Equals(object)
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.Equals(object)
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerIpAddress.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Equals
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerIpAddress.cs
+    startLine: 80
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  summary: Indicates whether this instance and a specified object are equal.
+  example: []
+  syntax:
+    content: public override bool Equals(object obj)
+    parameters:
+    - id: obj
+      type: System.Object
+      description: The object to compare with the current instance.
+    return:
+      type: System.Boolean
+      description: <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> if <code class="paramref">obj</code> and this instance are the same type and represent the same value; otherwise, <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>.
+    content.vb: Public Overrides Function Equals(obj As Object) As Boolean
+  overridden: System.ValueType.Equals(System.Object)
+  overload: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.Equals*
+  nameWithType.vb: DhcpServerIpAddress.Equals(Object)
+  fullName.vb: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.Equals(Object)
+  name.vb: Equals(Object)
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.GetHashCode
+  commentId: M:Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.GetHashCode
+  id: GetHashCode
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress
+  langs:
+  - csharp
+  - vb
+  name: GetHashCode()
+  nameWithType: DhcpServerIpAddress.GetHashCode()
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.GetHashCode()
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerIpAddress.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: GetHashCode
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerIpAddress.cs
+    startLine: 93
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  summary: Returns the hash code for this instance.
+  example: []
+  syntax:
+    content: public override int GetHashCode()
+    return:
+      type: System.Int32
+      description: A 32-bit signed integer that is the hash code for this instance.
+    content.vb: Public Overrides Function GetHashCode() As Integer
+  overridden: System.ValueType.GetHashCode
+  overload: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.GetHashCode*
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.Equals(Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress)
+  commentId: M:Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.Equals(Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress)
+  id: Equals(Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress)
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress
+  langs:
+  - csharp
+  - vb
+  name: Equals(DhcpServerIpAddress)
+  nameWithType: DhcpServerIpAddress.Equals(DhcpServerIpAddress)
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.Equals(Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress)
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerIpAddress.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Equals
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerIpAddress.cs
+    startLine: 95
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  summary: Indicates whether the current object is equal to another object of the same type.
+  example: []
+  syntax:
+    content: public bool Equals(DhcpServerIpAddress other)
+    parameters:
+    - id: other
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress
+      description: An object to compare with this object.
+    return:
+      type: System.Boolean
+      description: <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> if the current object is equal to the <code class="paramref">other</code> parameter; otherwise, <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>.
+    content.vb: Public Function Equals(other As DhcpServerIpAddress) As Boolean
+  overload: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.Equals*
+  implements:
+  - System.IEquatable{Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress}.Equals(Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress)
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.Equals(System.Net.IPAddress)
+  commentId: M:Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.Equals(System.Net.IPAddress)
+  id: Equals(System.Net.IPAddress)
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress
+  langs:
+  - csharp
+  - vb
+  name: Equals(IPAddress)
+  nameWithType: DhcpServerIpAddress.Equals(IPAddress)
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.Equals(System.Net.IPAddress)
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerIpAddress.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Equals
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerIpAddress.cs
+    startLine: 97
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  summary: Indicates whether the current object is equal to another object of the same type.
+  example: []
+  syntax:
+    content: public bool Equals(IPAddress other)
+    parameters:
+    - id: other
+      type: System.Net.IPAddress
+      description: An object to compare with this object.
+    return:
+      type: System.Boolean
+      description: <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> if the current object is equal to the <code class="paramref">other</code> parameter; otherwise, <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>.
+    content.vb: Public Function Equals(other As IPAddress) As Boolean
+  overload: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.Equals*
+  implements:
+  - System.IEquatable{System.Net.IPAddress}.Equals(System.Net.IPAddress)
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.op_Equality(Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress,Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress)
+  commentId: M:Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.op_Equality(Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress,Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress)
+  id: op_Equality(Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress,Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress)
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress
+  langs:
+  - csharp
+  - vb
+  name: operator ==(DhcpServerIpAddress, DhcpServerIpAddress)
+  nameWithType: DhcpServerIpAddress.operator ==(DhcpServerIpAddress, DhcpServerIpAddress)
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.operator ==(Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress, Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress)
+  type: Operator
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerIpAddress.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: op_Equality
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerIpAddress.cs
+    startLine: 109
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: public static bool operator ==(DhcpServerIpAddress lhs, DhcpServerIpAddress rhs)
+    parameters:
+    - id: lhs
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress
+    - id: rhs
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress
+    return:
+      type: System.Boolean
+    content.vb: Public Shared Operator =(lhs As DhcpServerIpAddress, rhs As DhcpServerIpAddress) As Boolean
+  overload: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.op_Equality*
+  nameWithType.vb: DhcpServerIpAddress.=(DhcpServerIpAddress, DhcpServerIpAddress)
+  fullName.vb: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.=(Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress, Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress)
+  name.vb: =(DhcpServerIpAddress, DhcpServerIpAddress)
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.op_Inequality(Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress,Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress)
+  commentId: M:Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.op_Inequality(Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress,Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress)
+  id: op_Inequality(Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress,Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress)
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress
+  langs:
+  - csharp
+  - vb
+  name: operator !=(DhcpServerIpAddress, DhcpServerIpAddress)
+  nameWithType: DhcpServerIpAddress.operator !=(DhcpServerIpAddress, DhcpServerIpAddress)
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.operator !=(Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress, Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress)
+  type: Operator
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerIpAddress.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: op_Inequality
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerIpAddress.cs
+    startLine: 111
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: public static bool operator !=(DhcpServerIpAddress lhs, DhcpServerIpAddress rhs)
+    parameters:
+    - id: lhs
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress
+    - id: rhs
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress
+    return:
+      type: System.Boolean
+    content.vb: Public Shared Operator <>(lhs As DhcpServerIpAddress, rhs As DhcpServerIpAddress) As Boolean
+  overload: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.op_Inequality*
+  nameWithType.vb: DhcpServerIpAddress.<>(DhcpServerIpAddress, DhcpServerIpAddress)
+  fullName.vb: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.<>(Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress, Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress)
+  name.vb: <>(DhcpServerIpAddress, DhcpServerIpAddress)
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.op_Equality(Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress,System.Net.IPAddress)
+  commentId: M:Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.op_Equality(Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress,System.Net.IPAddress)
+  id: op_Equality(Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress,System.Net.IPAddress)
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress
+  langs:
+  - csharp
+  - vb
+  name: operator ==(DhcpServerIpAddress, IPAddress)
+  nameWithType: DhcpServerIpAddress.operator ==(DhcpServerIpAddress, IPAddress)
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.operator ==(Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress, System.Net.IPAddress)
+  type: Operator
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerIpAddress.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: op_Equality
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerIpAddress.cs
+    startLine: 113
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: public static bool operator ==(DhcpServerIpAddress lhs, IPAddress rhs)
+    parameters:
+    - id: lhs
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress
+    - id: rhs
+      type: System.Net.IPAddress
+    return:
+      type: System.Boolean
+    content.vb: Public Shared Operator =(lhs As DhcpServerIpAddress, rhs As IPAddress) As Boolean
+  overload: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.op_Equality*
+  nameWithType.vb: DhcpServerIpAddress.=(DhcpServerIpAddress, IPAddress)
+  fullName.vb: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.=(Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress, System.Net.IPAddress)
+  name.vb: =(DhcpServerIpAddress, IPAddress)
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.op_Inequality(Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress,System.Net.IPAddress)
+  commentId: M:Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.op_Inequality(Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress,System.Net.IPAddress)
+  id: op_Inequality(Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress,System.Net.IPAddress)
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress
+  langs:
+  - csharp
+  - vb
+  name: operator !=(DhcpServerIpAddress, IPAddress)
+  nameWithType: DhcpServerIpAddress.operator !=(DhcpServerIpAddress, IPAddress)
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.operator !=(Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress, System.Net.IPAddress)
+  type: Operator
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerIpAddress.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: op_Inequality
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerIpAddress.cs
+    startLine: 115
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: public static bool operator !=(DhcpServerIpAddress lhs, IPAddress rhs)
+    parameters:
+    - id: lhs
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress
+    - id: rhs
+      type: System.Net.IPAddress
+    return:
+      type: System.Boolean
+    content.vb: Public Shared Operator <>(lhs As DhcpServerIpAddress, rhs As IPAddress) As Boolean
+  overload: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.op_Inequality*
+  nameWithType.vb: DhcpServerIpAddress.<>(DhcpServerIpAddress, IPAddress)
+  fullName.vb: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.<>(Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress, System.Net.IPAddress)
+  name.vb: <>(DhcpServerIpAddress, IPAddress)
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.op_Explicit(Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress)~System.UInt32
+  commentId: M:Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.op_Explicit(Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress)~System.UInt32
+  id: op_Explicit(Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress)~System.UInt32
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress
+  langs:
+  - csharp
+  - vb
+  name: explicit operator uint(DhcpServerIpAddress)
+  nameWithType: DhcpServerIpAddress.explicit operator uint(DhcpServerIpAddress)
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.explicit operator uint(Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress)
+  type: Operator
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerIpAddress.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: op_Explicit
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerIpAddress.cs
+    startLine: 121
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: public static explicit operator uint(DhcpServerIpAddress address)
+    parameters:
+    - id: address
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress
+    return:
+      type: System.UInt32
+    content.vb: Public Shared Narrowing Operator CType(address As DhcpServerIpAddress) As UInteger
+  overload: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.op_Explicit*
+  nameWithType.vb: DhcpServerIpAddress.CType(DhcpServerIpAddress)
+  fullName.vb: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.CType(Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress)
+  name.vb: CType(DhcpServerIpAddress)
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.op_Explicit(System.UInt32)~Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress
+  commentId: M:Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.op_Explicit(System.UInt32)~Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress
+  id: op_Explicit(System.UInt32)~Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress
+  langs:
+  - csharp
+  - vb
+  name: explicit operator DhcpServerIpAddress(uint)
+  nameWithType: DhcpServerIpAddress.explicit operator DhcpServerIpAddress(uint)
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.explicit operator Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress(uint)
+  type: Operator
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerIpAddress.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: op_Explicit
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerIpAddress.cs
+    startLine: 122
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: public static explicit operator DhcpServerIpAddress(uint address)
+    parameters:
+    - id: address
+      type: System.UInt32
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress
+    content.vb: Public Shared Narrowing Operator CType(address As UInteger) As DhcpServerIpAddress
+  overload: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.op_Explicit*
+  nameWithType.vb: DhcpServerIpAddress.CType(UInteger)
+  fullName.vb: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.CType(UInteger)
+  name.vb: CType(UInteger)
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.op_Explicit(Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress)~System.Int32
+  commentId: M:Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.op_Explicit(Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress)~System.Int32
+  id: op_Explicit(Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress)~System.Int32
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress
+  langs:
+  - csharp
+  - vb
+  name: explicit operator int(DhcpServerIpAddress)
+  nameWithType: DhcpServerIpAddress.explicit operator int(DhcpServerIpAddress)
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.explicit operator int(Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress)
+  type: Operator
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerIpAddress.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: op_Explicit
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerIpAddress.cs
+    startLine: 123
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: public static explicit operator int(DhcpServerIpAddress address)
+    parameters:
+    - id: address
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress
+    return:
+      type: System.Int32
+    content.vb: Public Shared Narrowing Operator CType(address As DhcpServerIpAddress) As Integer
+  overload: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.op_Explicit*
+  nameWithType.vb: DhcpServerIpAddress.CType(DhcpServerIpAddress)
+  fullName.vb: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.CType(Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress)
+  name.vb: CType(DhcpServerIpAddress)
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.op_Explicit(System.Int32)~Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress
+  commentId: M:Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.op_Explicit(System.Int32)~Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress
+  id: op_Explicit(System.Int32)~Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress
+  langs:
+  - csharp
+  - vb
+  name: explicit operator DhcpServerIpAddress(int)
+  nameWithType: DhcpServerIpAddress.explicit operator DhcpServerIpAddress(int)
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.explicit operator Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress(int)
+  type: Operator
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerIpAddress.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: op_Explicit
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerIpAddress.cs
+    startLine: 124
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: public static explicit operator DhcpServerIpAddress(int address)
+    parameters:
+    - id: address
+      type: System.Int32
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress
+    content.vb: Public Shared Narrowing Operator CType(address As Integer) As DhcpServerIpAddress
+  overload: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.op_Explicit*
+  nameWithType.vb: DhcpServerIpAddress.CType(Integer)
+  fullName.vb: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.CType(Integer)
+  name.vb: CType(Integer)
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.op_Implicit(System.Net.IPAddress)~Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress
+  commentId: M:Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.op_Implicit(System.Net.IPAddress)~Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress
+  id: op_Implicit(System.Net.IPAddress)~Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress
+  langs:
+  - csharp
+  - vb
+  name: implicit operator DhcpServerIpAddress(IPAddress)
+  nameWithType: DhcpServerIpAddress.implicit operator DhcpServerIpAddress(IPAddress)
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.implicit operator Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress(System.Net.IPAddress)
+  type: Operator
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerIpAddress.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: op_Implicit
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerIpAddress.cs
+    startLine: 126
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: public static implicit operator DhcpServerIpAddress(IPAddress address)
+    parameters:
+    - id: address
+      type: System.Net.IPAddress
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress
+    content.vb: Public Shared Widening Operator CType(address As IPAddress) As DhcpServerIpAddress
+  overload: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.op_Implicit*
+  nameWithType.vb: DhcpServerIpAddress.CType(IPAddress)
+  fullName.vb: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.CType(System.Net.IPAddress)
+  name.vb: CType(IPAddress)
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.op_Implicit(Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress)~System.Net.IPAddress
+  commentId: M:Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.op_Implicit(Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress)~System.Net.IPAddress
+  id: op_Implicit(Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress)~System.Net.IPAddress
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress
+  langs:
+  - csharp
+  - vb
+  name: implicit operator IPAddress(DhcpServerIpAddress)
+  nameWithType: DhcpServerIpAddress.implicit operator IPAddress(DhcpServerIpAddress)
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.implicit operator System.Net.IPAddress(Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress)
+  type: Operator
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerIpAddress.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: op_Implicit
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerIpAddress.cs
+    startLine: 127
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: public static implicit operator IPAddress(DhcpServerIpAddress address)
+    parameters:
+    - id: address
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress
+    return:
+      type: System.Net.IPAddress
+    content.vb: Public Shared Widening Operator CType(address As DhcpServerIpAddress) As IPAddress
+  overload: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.op_Implicit*
+  nameWithType.vb: DhcpServerIpAddress.CType(DhcpServerIpAddress)
+  fullName.vb: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.CType(Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress)
+  name.vb: CType(DhcpServerIpAddress)
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.op_Explicit(Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress)~Bodoconsult.Network.Windows.Dhcp.DhcpServerIpMask
+  commentId: M:Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.op_Explicit(Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress)~Bodoconsult.Network.Windows.Dhcp.DhcpServerIpMask
+  id: op_Explicit(Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress)~Bodoconsult.Network.Windows.Dhcp.DhcpServerIpMask
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress
+  langs:
+  - csharp
+  - vb
+  name: explicit operator DhcpServerIpMask(DhcpServerIpAddress)
+  nameWithType: DhcpServerIpAddress.explicit operator DhcpServerIpMask(DhcpServerIpAddress)
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.explicit operator Bodoconsult.Network.Windows.Dhcp.DhcpServerIpMask(Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress)
+  type: Operator
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerIpAddress.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: op_Explicit
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerIpAddress.cs
+    startLine: 131
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: public static explicit operator DhcpServerIpMask(DhcpServerIpAddress address)
+    parameters:
+    - id: address
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpMask
+    content.vb: Public Shared Narrowing Operator CType(address As DhcpServerIpAddress) As DhcpServerIpMask
+  overload: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.op_Explicit*
+  nameWithType.vb: DhcpServerIpAddress.CType(DhcpServerIpAddress)
+  fullName.vb: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.CType(Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress)
+  name.vb: CType(DhcpServerIpAddress)
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.op_Implicit(Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress)~System.String
+  commentId: M:Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.op_Implicit(Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress)~System.String
+  id: op_Implicit(Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress)~System.String
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress
+  langs:
+  - csharp
+  - vb
+  name: implicit operator string(DhcpServerIpAddress)
+  nameWithType: DhcpServerIpAddress.implicit operator string(DhcpServerIpAddress)
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.implicit operator string(Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress)
+  type: Operator
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerIpAddress.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: op_Implicit
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerIpAddress.cs
+    startLine: 132
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: public static implicit operator string(DhcpServerIpAddress address)
+    parameters:
+    - id: address
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress
+    return:
+      type: System.String
+    content.vb: Public Shared Widening Operator CType(address As DhcpServerIpAddress) As String
+  overload: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.op_Implicit*
+  nameWithType.vb: DhcpServerIpAddress.CType(DhcpServerIpAddress)
+  fullName.vb: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.CType(Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress)
+  name.vb: CType(DhcpServerIpAddress)
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.op_Implicit(System.String)~Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress
+  commentId: M:Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.op_Implicit(System.String)~Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress
+  id: op_Implicit(System.String)~Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress
+  langs:
+  - csharp
+  - vb
+  name: implicit operator DhcpServerIpAddress(string)
+  nameWithType: DhcpServerIpAddress.implicit operator DhcpServerIpAddress(string)
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.implicit operator Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress(string)
+  type: Operator
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerIpAddress.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: op_Implicit
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerIpAddress.cs
+    startLine: 133
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: public static implicit operator DhcpServerIpAddress(string address)
+    parameters:
+    - id: address
+      type: System.String
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress
+    content.vb: Public Shared Widening Operator CType(address As String) As DhcpServerIpAddress
+  overload: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.op_Implicit*
+  nameWithType.vb: DhcpServerIpAddress.CType(String)
+  fullName.vb: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.CType(String)
+  name.vb: CType(String)
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.op_GreaterThan(Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress,Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress)
+  commentId: M:Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.op_GreaterThan(Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress,Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress)
+  id: op_GreaterThan(Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress,Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress)
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress
+  langs:
+  - csharp
+  - vb
+  name: operator >(DhcpServerIpAddress, DhcpServerIpAddress)
+  nameWithType: DhcpServerIpAddress.operator >(DhcpServerIpAddress, DhcpServerIpAddress)
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.operator >(Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress, Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress)
+  type: Operator
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerIpAddress.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: op_GreaterThan
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerIpAddress.cs
+    startLine: 135
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: public static bool operator >(DhcpServerIpAddress a, DhcpServerIpAddress b)
+    parameters:
+    - id: a
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress
+    - id: b
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress
+    return:
+      type: System.Boolean
+    content.vb: Public Shared Operator >(a As DhcpServerIpAddress, b As DhcpServerIpAddress) As Boolean
+  overload: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.op_GreaterThan*
+  nameWithType.vb: DhcpServerIpAddress.>(DhcpServerIpAddress, DhcpServerIpAddress)
+  fullName.vb: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.>(Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress, Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress)
+  name.vb: '>(DhcpServerIpAddress, DhcpServerIpAddress)'
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.op_GreaterThanOrEqual(Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress,Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress)
+  commentId: M:Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.op_GreaterThanOrEqual(Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress,Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress)
+  id: op_GreaterThanOrEqual(Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress,Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress)
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress
+  langs:
+  - csharp
+  - vb
+  name: operator >=(DhcpServerIpAddress, DhcpServerIpAddress)
+  nameWithType: DhcpServerIpAddress.operator >=(DhcpServerIpAddress, DhcpServerIpAddress)
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.operator >=(Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress, Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress)
+  type: Operator
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerIpAddress.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: op_GreaterThanOrEqual
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerIpAddress.cs
+    startLine: 136
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: public static bool operator >=(DhcpServerIpAddress a, DhcpServerIpAddress b)
+    parameters:
+    - id: a
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress
+    - id: b
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress
+    return:
+      type: System.Boolean
+    content.vb: Public Shared Operator >=(a As DhcpServerIpAddress, b As DhcpServerIpAddress) As Boolean
+  overload: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.op_GreaterThanOrEqual*
+  nameWithType.vb: DhcpServerIpAddress.>=(DhcpServerIpAddress, DhcpServerIpAddress)
+  fullName.vb: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.>=(Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress, Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress)
+  name.vb: '>=(DhcpServerIpAddress, DhcpServerIpAddress)'
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.op_LessThan(Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress,Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress)
+  commentId: M:Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.op_LessThan(Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress,Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress)
+  id: op_LessThan(Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress,Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress)
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress
+  langs:
+  - csharp
+  - vb
+  name: operator <(DhcpServerIpAddress, DhcpServerIpAddress)
+  nameWithType: DhcpServerIpAddress.operator <(DhcpServerIpAddress, DhcpServerIpAddress)
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.operator <(Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress, Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress)
+  type: Operator
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerIpAddress.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: op_LessThan
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerIpAddress.cs
+    startLine: 137
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: public static bool operator <(DhcpServerIpAddress a, DhcpServerIpAddress b)
+    parameters:
+    - id: a
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress
+    - id: b
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress
+    return:
+      type: System.Boolean
+    content.vb: Public Shared Operator <(a As DhcpServerIpAddress, b As DhcpServerIpAddress) As Boolean
+  overload: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.op_LessThan*
+  nameWithType.vb: DhcpServerIpAddress.<(DhcpServerIpAddress, DhcpServerIpAddress)
+  fullName.vb: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.<(Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress, Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress)
+  name.vb: <(DhcpServerIpAddress, DhcpServerIpAddress)
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.op_LessThanOrEqual(Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress,Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress)
+  commentId: M:Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.op_LessThanOrEqual(Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress,Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress)
+  id: op_LessThanOrEqual(Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress,Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress)
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress
+  langs:
+  - csharp
+  - vb
+  name: operator <=(DhcpServerIpAddress, DhcpServerIpAddress)
+  nameWithType: DhcpServerIpAddress.operator <=(DhcpServerIpAddress, DhcpServerIpAddress)
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.operator <=(Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress, Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress)
+  type: Operator
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerIpAddress.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: op_LessThanOrEqual
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerIpAddress.cs
+    startLine: 138
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: public static bool operator <=(DhcpServerIpAddress a, DhcpServerIpAddress b)
+    parameters:
+    - id: a
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress
+    - id: b
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress
+    return:
+      type: System.Boolean
+    content.vb: Public Shared Operator <=(a As DhcpServerIpAddress, b As DhcpServerIpAddress) As Boolean
+  overload: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.op_LessThanOrEqual*
+  nameWithType.vb: DhcpServerIpAddress.<=(DhcpServerIpAddress, DhcpServerIpAddress)
+  fullName.vb: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.<=(Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress, Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress)
+  name.vb: <=(DhcpServerIpAddress, DhcpServerIpAddress)
+references:
+- uid: Bodoconsult.Network.Windows.Dhcp
+  commentId: N:Bodoconsult.Network.Windows.Dhcp
+  href: Bodoconsult.html
+  name: Bodoconsult.Network.Windows.Dhcp
+  nameWithType: Bodoconsult.Network.Windows.Dhcp
+  fullName: Bodoconsult.Network.Windows.Dhcp
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.Network
+    name: Network
+    href: Bodoconsult.Network.html
+  - name: .
+  - uid: Bodoconsult.Network.Windows
+    name: Windows
+    href: Bodoconsult.Network.Windows.html
+  - name: .
+  - uid: Bodoconsult.Network.Windows.Dhcp
+    name: Dhcp
+    href: Bodoconsult.Network.Windows.Dhcp.html
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.Network
+    name: Network
+    href: Bodoconsult.Network.html
+  - name: .
+  - uid: Bodoconsult.Network.Windows
+    name: Windows
+    href: Bodoconsult.Network.Windows.html
+  - name: .
+  - uid: Bodoconsult.Network.Windows.Dhcp
+    name: Dhcp
+    href: Bodoconsult.Network.Windows.Dhcp.html
+- uid: System.IEquatable{Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress}
+  commentId: T:System.IEquatable{Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress}
+  parent: System
+  definition: System.IEquatable`1
+  href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  name: IEquatable<DhcpServerIpAddress>
+  nameWithType: IEquatable<DhcpServerIpAddress>
+  fullName: System.IEquatable<Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress>
+  nameWithType.vb: IEquatable(Of DhcpServerIpAddress)
+  fullName.vb: System.IEquatable(Of Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress)
+  name.vb: IEquatable(Of DhcpServerIpAddress)
+  spec.csharp:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: <
+  - uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress
+    name: DhcpServerIpAddress
+    href: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.html
+  - name: '>'
+  spec.vb:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress
+    name: DhcpServerIpAddress
+    href: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.html
+  - name: )
+- uid: System.IEquatable{System.Net.IPAddress}
+  commentId: T:System.IEquatable{System.Net.IPAddress}
+  parent: System
+  definition: System.IEquatable`1
+  href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  name: IEquatable<IPAddress>
+  nameWithType: IEquatable<IPAddress>
+  fullName: System.IEquatable<System.Net.IPAddress>
+  nameWithType.vb: IEquatable(Of IPAddress)
+  fullName.vb: System.IEquatable(Of System.Net.IPAddress)
+  name.vb: IEquatable(Of IPAddress)
+  spec.csharp:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: <
+  - uid: System.Net.IPAddress
+    name: IPAddress
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.net.ipaddress
+  - name: '>'
+  spec.vb:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Net.IPAddress
+    name: IPAddress
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.net.ipaddress
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.IEquatable`1
+  commentId: T:System.IEquatable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  name: IEquatable<T>
+  nameWithType: IEquatable<T>
+  fullName: System.IEquatable<T>
+  nameWithType.vb: IEquatable(Of T)
+  fullName.vb: System.IEquatable(Of T)
+  name.vb: IEquatable(Of T)
+  spec.csharp:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.#ctor*
+  commentId: Overload:Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.#ctor
+  href: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.html#Bodoconsult_Network_Windows_Dhcp_DhcpServerIpAddress__ctor_System_UInt32_
+  name: DhcpServerIpAddress
+  nameWithType: DhcpServerIpAddress.DhcpServerIpAddress
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.DhcpServerIpAddress
+  nameWithType.vb: DhcpServerIpAddress.New
+  fullName.vb: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.New
+  name.vb: New
+- uid: System.UInt32
+  commentId: T:System.UInt32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.uint32
+  name: uint
+  nameWithType: uint
+  fullName: uint
+  nameWithType.vb: UInteger
+  fullName.vb: UInteger
+  name.vb: UInteger
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: System.Net.IPAddress
+  commentId: T:System.Net.IPAddress
+  parent: System.Net
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.net.ipaddress
+  name: IPAddress
+  nameWithType: IPAddress
+  fullName: System.Net.IPAddress
+- uid: System.Net
+  commentId: N:System.Net
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Net
+  nameWithType: System.Net
+  fullName: System.Net
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Net
+    name: Net
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.net
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Net
+    name: Net
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.net
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.Native*
+  commentId: Overload:Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.Native
+  href: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.html#Bodoconsult_Network_Windows_Dhcp_DhcpServerIpAddress_Native
+  name: Native
+  nameWithType: DhcpServerIpAddress.Native
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.Native
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.GetBytes*
+  commentId: Overload:Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.GetBytes
+  href: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.html#Bodoconsult_Network_Windows_Dhcp_DhcpServerIpAddress_GetBytes
+  name: GetBytes
+  nameWithType: DhcpServerIpAddress.GetBytes
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.GetBytes
+- uid: System.Byte[]
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.byte
+  name: byte[]
+  nameWithType: byte[]
+  fullName: byte[]
+  nameWithType.vb: Byte()
+  fullName.vb: Byte()
+  name.vb: Byte()
+  spec.csharp:
+  - uid: System.Byte
+    name: byte
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.byte
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: System.Byte
+    name: Byte
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.byte
+  - name: (
+  - name: )
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.GetByte*
+  commentId: Overload:Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.GetByte
+  href: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.html#Bodoconsult_Network_Windows_Dhcp_DhcpServerIpAddress_GetByte_System_Int32_
+  name: GetByte
+  nameWithType: DhcpServerIpAddress.GetByte
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.GetByte
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: System.Byte
+  commentId: T:System.Byte
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.byte
+  name: byte
+  nameWithType: byte
+  fullName: byte
+  nameWithType.vb: Byte
+  fullName.vb: Byte
+  name.vb: Byte
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.Empty*
+  commentId: Overload:Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.Empty
+  href: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.html#Bodoconsult_Network_Windows_Dhcp_DhcpServerIpAddress_Empty
+  name: Empty
+  nameWithType: DhcpServerIpAddress.Empty
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.Empty
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress
+  commentId: T:Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress
+  parent: Bodoconsult.Network.Windows.Dhcp
+  href: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.html
+  name: DhcpServerIpAddress
+  nameWithType: DhcpServerIpAddress
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.FromNative*
+  commentId: Overload:Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.FromNative
+  href: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.html#Bodoconsult_Network_Windows_Dhcp_DhcpServerIpAddress_FromNative_System_UInt32_
+  name: FromNative
+  nameWithType: DhcpServerIpAddress.FromNative
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.FromNative
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.FromString*
+  commentId: Overload:Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.FromString
+  href: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.html#Bodoconsult_Network_Windows_Dhcp_DhcpServerIpAddress_FromString_System_String_
+  name: FromString
+  nameWithType: DhcpServerIpAddress.FromString
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.FromString
+- uid: System.ValueType.ToString
+  commentId: M:System.ValueType.ToString
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  name: ToString()
+  nameWithType: ValueType.ToString()
+  fullName: System.ValueType.ToString()
+  spec.csharp:
+  - uid: System.ValueType.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  - name: (
+  - name: )
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.ToString*
+  commentId: Overload:Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.ToString
+  href: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.html#Bodoconsult_Network_Windows_Dhcp_DhcpServerIpAddress_ToString
+  name: ToString
+  nameWithType: DhcpServerIpAddress.ToString
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.ToString
+- uid: System.ValueType
+  commentId: T:System.ValueType
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype
+  name: ValueType
+  nameWithType: ValueType
+  fullName: System.ValueType
+- uid: System.ValueType.Equals(System.Object)
+  commentId: M:System.ValueType.Equals(System.Object)
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  name: Equals(object)
+  nameWithType: ValueType.Equals(object)
+  fullName: System.ValueType.Equals(object)
+  nameWithType.vb: ValueType.Equals(Object)
+  fullName.vb: System.ValueType.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.ValueType.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.Equals*
+  commentId: Overload:Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.Equals
+  href: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.html#Bodoconsult_Network_Windows_Dhcp_DhcpServerIpAddress_Equals_System_Object_
+  name: Equals
+  nameWithType: DhcpServerIpAddress.Equals
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.Equals
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: System.ValueType.GetHashCode
+  commentId: M:System.ValueType.GetHashCode
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  name: GetHashCode()
+  nameWithType: ValueType.GetHashCode()
+  fullName: System.ValueType.GetHashCode()
+  spec.csharp:
+  - uid: System.ValueType.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  - name: (
+  - name: )
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.GetHashCode*
+  commentId: Overload:Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.GetHashCode
+  href: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.html#Bodoconsult_Network_Windows_Dhcp_DhcpServerIpAddress_GetHashCode
+  name: GetHashCode
+  nameWithType: DhcpServerIpAddress.GetHashCode
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.GetHashCode
+- uid: System.IEquatable{Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress}.Equals(Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress)
+  commentId: M:System.IEquatable{Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress}.Equals(Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress)
+  parent: System.IEquatable{Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress}
+  definition: System.IEquatable`1.Equals(`0)
+  href: https://learn.microsoft.com/dotnet/api/system.iequatable-1.equals
+  name: Equals(DhcpServerIpAddress)
+  nameWithType: IEquatable<DhcpServerIpAddress>.Equals(DhcpServerIpAddress)
+  fullName: System.IEquatable<Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress>.Equals(Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress)
+  nameWithType.vb: IEquatable(Of DhcpServerIpAddress).Equals(DhcpServerIpAddress)
+  fullName.vb: System.IEquatable(Of Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress).Equals(Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress)
+  spec.csharp:
+  - uid: System.IEquatable{Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress}.Equals(Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1.equals
+  - name: (
+  - uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress
+    name: DhcpServerIpAddress
+    href: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.html
+  - name: )
+  spec.vb:
+  - uid: System.IEquatable{Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress}.Equals(Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1.equals
+  - name: (
+  - uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress
+    name: DhcpServerIpAddress
+    href: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.html
+  - name: )
+- uid: System.IEquatable`1.Equals(`0)
+  commentId: M:System.IEquatable`1.Equals(`0)
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.iequatable-1.equals
+  name: Equals(T)
+  nameWithType: IEquatable<T>.Equals(T)
+  fullName: System.IEquatable<T>.Equals(T)
+  nameWithType.vb: IEquatable(Of T).Equals(T)
+  fullName.vb: System.IEquatable(Of T).Equals(T)
+  spec.csharp:
+  - uid: System.IEquatable`1.Equals(`0)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1.equals
+  - name: (
+  - name: T
+  - name: )
+  spec.vb:
+  - uid: System.IEquatable`1.Equals(`0)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1.equals
+  - name: (
+  - name: T
+  - name: )
+- uid: System.IEquatable{System.Net.IPAddress}.Equals(System.Net.IPAddress)
+  commentId: M:System.IEquatable{System.Net.IPAddress}.Equals(System.Net.IPAddress)
+  parent: System.IEquatable{System.Net.IPAddress}
+  definition: System.IEquatable`1.Equals(`0)
+  href: https://learn.microsoft.com/dotnet/api/system.iequatable-1.equals
+  name: Equals(IPAddress)
+  nameWithType: IEquatable<IPAddress>.Equals(IPAddress)
+  fullName: System.IEquatable<System.Net.IPAddress>.Equals(System.Net.IPAddress)
+  nameWithType.vb: IEquatable(Of IPAddress).Equals(IPAddress)
+  fullName.vb: System.IEquatable(Of System.Net.IPAddress).Equals(System.Net.IPAddress)
+  spec.csharp:
+  - uid: System.IEquatable{System.Net.IPAddress}.Equals(System.Net.IPAddress)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1.equals
+  - name: (
+  - uid: System.Net.IPAddress
+    name: IPAddress
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.net.ipaddress
+  - name: )
+  spec.vb:
+  - uid: System.IEquatable{System.Net.IPAddress}.Equals(System.Net.IPAddress)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1.equals
+  - name: (
+  - uid: System.Net.IPAddress
+    name: IPAddress
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.net.ipaddress
+  - name: )
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.op_Equality*
+  commentId: Overload:Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.op_Equality
+  href: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.html#Bodoconsult_Network_Windows_Dhcp_DhcpServerIpAddress_op_Equality_Bodoconsult_Network_Windows_Dhcp_DhcpServerIpAddress_Bodoconsult_Network_Windows_Dhcp_DhcpServerIpAddress_
+  name: operator ==
+  nameWithType: DhcpServerIpAddress.operator ==
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.operator ==
+  nameWithType.vb: DhcpServerIpAddress.=
+  fullName.vb: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.=
+  name.vb: =
+  spec.csharp:
+  - name: operator
+  - name: " "
+  - uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.op_Equality*
+    name: ==
+    href: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.html#Bodoconsult_Network_Windows_Dhcp_DhcpServerIpAddress_op_Equality_Bodoconsult_Network_Windows_Dhcp_DhcpServerIpAddress_Bodoconsult_Network_Windows_Dhcp_DhcpServerIpAddress_
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.op_Inequality*
+  commentId: Overload:Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.op_Inequality
+  href: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.html#Bodoconsult_Network_Windows_Dhcp_DhcpServerIpAddress_op_Inequality_Bodoconsult_Network_Windows_Dhcp_DhcpServerIpAddress_Bodoconsult_Network_Windows_Dhcp_DhcpServerIpAddress_
+  name: operator !=
+  nameWithType: DhcpServerIpAddress.operator !=
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.operator !=
+  nameWithType.vb: DhcpServerIpAddress.<>
+  fullName.vb: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.<>
+  name.vb: <>
+  spec.csharp:
+  - name: operator
+  - name: " "
+  - uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.op_Inequality*
+    name: '!='
+    href: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.html#Bodoconsult_Network_Windows_Dhcp_DhcpServerIpAddress_op_Inequality_Bodoconsult_Network_Windows_Dhcp_DhcpServerIpAddress_Bodoconsult_Network_Windows_Dhcp_DhcpServerIpAddress_
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.op_Explicit*
+  commentId: Overload:Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.op_Explicit
+  name: explicit operator
+  nameWithType: DhcpServerIpAddress.explicit operator
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.explicit operator
+  nameWithType.vb: DhcpServerIpAddress.CType
+  fullName.vb: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.CType
+  name.vb: CType
+  spec.csharp:
+  - name: explicit
+  - name: " "
+  - name: operator
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.op_Implicit*
+  commentId: Overload:Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.op_Implicit
+  name: implicit operator
+  nameWithType: DhcpServerIpAddress.implicit operator
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.implicit operator
+  nameWithType.vb: DhcpServerIpAddress.CType
+  fullName.vb: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.CType
+  name.vb: CType
+  spec.csharp:
+  - name: implicit
+  - name: " "
+  - name: operator
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpMask
+  commentId: T:Bodoconsult.Network.Windows.Dhcp.DhcpServerIpMask
+  parent: Bodoconsult.Network.Windows.Dhcp
+  href: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpMask.html
+  name: DhcpServerIpMask
+  nameWithType: DhcpServerIpMask
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpMask
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.op_GreaterThan*
+  commentId: Overload:Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.op_GreaterThan
+  href: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.html#Bodoconsult_Network_Windows_Dhcp_DhcpServerIpAddress_op_GreaterThan_Bodoconsult_Network_Windows_Dhcp_DhcpServerIpAddress_Bodoconsult_Network_Windows_Dhcp_DhcpServerIpAddress_
+  name: operator >
+  nameWithType: DhcpServerIpAddress.operator >
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.operator >
+  nameWithType.vb: DhcpServerIpAddress.>
+  fullName.vb: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.>
+  name.vb: '>'
+  spec.csharp:
+  - name: operator
+  - name: " "
+  - uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.op_GreaterThan*
+    name: '>'
+    href: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.html#Bodoconsult_Network_Windows_Dhcp_DhcpServerIpAddress_op_GreaterThan_Bodoconsult_Network_Windows_Dhcp_DhcpServerIpAddress_Bodoconsult_Network_Windows_Dhcp_DhcpServerIpAddress_
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.op_GreaterThanOrEqual*
+  commentId: Overload:Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.op_GreaterThanOrEqual
+  href: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.html#Bodoconsult_Network_Windows_Dhcp_DhcpServerIpAddress_op_GreaterThanOrEqual_Bodoconsult_Network_Windows_Dhcp_DhcpServerIpAddress_Bodoconsult_Network_Windows_Dhcp_DhcpServerIpAddress_
+  name: operator >=
+  nameWithType: DhcpServerIpAddress.operator >=
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.operator >=
+  nameWithType.vb: DhcpServerIpAddress.>=
+  fullName.vb: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.>=
+  name.vb: '>='
+  spec.csharp:
+  - name: operator
+  - name: " "
+  - uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.op_GreaterThanOrEqual*
+    name: '>='
+    href: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.html#Bodoconsult_Network_Windows_Dhcp_DhcpServerIpAddress_op_GreaterThanOrEqual_Bodoconsult_Network_Windows_Dhcp_DhcpServerIpAddress_Bodoconsult_Network_Windows_Dhcp_DhcpServerIpAddress_
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.op_LessThan*
+  commentId: Overload:Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.op_LessThan
+  href: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.html#Bodoconsult_Network_Windows_Dhcp_DhcpServerIpAddress_op_LessThan_Bodoconsult_Network_Windows_Dhcp_DhcpServerIpAddress_Bodoconsult_Network_Windows_Dhcp_DhcpServerIpAddress_
+  name: operator <
+  nameWithType: DhcpServerIpAddress.operator <
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.operator <
+  nameWithType.vb: DhcpServerIpAddress.<
+  fullName.vb: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.<
+  name.vb: <
+  spec.csharp:
+  - name: operator
+  - name: " "
+  - uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.op_LessThan*
+    name: <
+    href: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.html#Bodoconsult_Network_Windows_Dhcp_DhcpServerIpAddress_op_LessThan_Bodoconsult_Network_Windows_Dhcp_DhcpServerIpAddress_Bodoconsult_Network_Windows_Dhcp_DhcpServerIpAddress_
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.op_LessThanOrEqual*
+  commentId: Overload:Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.op_LessThanOrEqual
+  href: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.html#Bodoconsult_Network_Windows_Dhcp_DhcpServerIpAddress_op_LessThanOrEqual_Bodoconsult_Network_Windows_Dhcp_DhcpServerIpAddress_Bodoconsult_Network_Windows_Dhcp_DhcpServerIpAddress_
+  name: operator <=
+  nameWithType: DhcpServerIpAddress.operator <=
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.operator <=
+  nameWithType.vb: DhcpServerIpAddress.<=
+  fullName.vb: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.<=
+  name.vb: <=
+  spec.csharp:
+  - name: operator
+  - name: " "
+  - uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.op_LessThanOrEqual*
+    name: <=
+    href: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.html#Bodoconsult_Network_Windows_Dhcp_DhcpServerIpAddress_op_LessThanOrEqual_Bodoconsult_Network_Windows_Dhcp_DhcpServerIpAddress_Bodoconsult_Network_Windows_Dhcp_DhcpServerIpAddress_

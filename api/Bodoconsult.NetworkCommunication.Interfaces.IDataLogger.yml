@@ -1,0 +1,413 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IDataLogger
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.IDataLogger
+  id: IDataLogger
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  children:
+  - Bodoconsult.NetworkCommunication.Interfaces.IDataLogger.Add(System.ReadOnlyMemory{System.Byte})
+  - Bodoconsult.NetworkCommunication.Interfaces.IDataLogger.FileExtension
+  - Bodoconsult.NetworkCommunication.Interfaces.IDataLogger.FileName
+  - Bodoconsult.NetworkCommunication.Interfaces.IDataLogger.FileNamePattern
+  - Bodoconsult.NetworkCommunication.Interfaces.IDataLogger.Start
+  - Bodoconsult.NetworkCommunication.Interfaces.IDataLogger.Stop
+  - Bodoconsult.NetworkCommunication.Interfaces.IDataLogger.TargetPath
+  langs:
+  - csharp
+  - vb
+  name: IDataLogger
+  nameWithType: IDataLogger
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IDataLogger
+  type: Interface
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/IDataLogger.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: IDataLogger
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/IDataLogger.cs
+    startLine: 7
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Interface for data logging for received byte messages
+  example: []
+  syntax:
+    content: public interface IDataLogger
+    content.vb: Public Interface IDataLogger
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IDataLogger.TargetPath
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IDataLogger.TargetPath
+  id: TargetPath
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IDataLogger
+  langs:
+  - csharp
+  - vb
+  name: TargetPath
+  nameWithType: IDataLogger.TargetPath
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IDataLogger.TargetPath
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/IDataLogger.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: TargetPath
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/IDataLogger.cs
+    startLine: 12
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: 'The directory path for the export target. Default: Path.GetTempPath();'
+  example: []
+  syntax:
+    content: string TargetPath { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Property TargetPath As String
+  overload: Bodoconsult.NetworkCommunication.Interfaces.IDataLogger.TargetPath*
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IDataLogger.FileName
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IDataLogger.FileName
+  id: FileName
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IDataLogger
+  langs:
+  - csharp
+  - vb
+  name: FileName
+  nameWithType: IDataLogger.FileName
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IDataLogger.FileName
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/IDataLogger.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: FileName
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/IDataLogger.cs
+    startLine: 17
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: The plain filename for the export file without extension, timestamp etc.
+  example: []
+  syntax:
+    content: string FileName { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Property FileName As String
+  overload: Bodoconsult.NetworkCommunication.Interfaces.IDataLogger.FileName*
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IDataLogger.FileNamePattern
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IDataLogger.FileNamePattern
+  id: FileNamePattern
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IDataLogger
+  langs:
+  - csharp
+  - vb
+  name: FileNamePattern
+  nameWithType: IDataLogger.FileNamePattern
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IDataLogger.FileNamePattern
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/IDataLogger.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: FileNamePattern
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/IDataLogger.cs
+    startLine: 25
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: >-
+    Pattern for the full filename including timestamp etc.
+
+    {0} FileName
+
+    {1} Timestamp
+
+    {2} FileExtension
+  example: []
+  syntax:
+    content: string FileNamePattern { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Property FileNamePattern As String
+  overload: Bodoconsult.NetworkCommunication.Interfaces.IDataLogger.FileNamePattern*
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IDataLogger.FileExtension
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IDataLogger.FileExtension
+  id: FileExtension
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IDataLogger
+  langs:
+  - csharp
+  - vb
+  name: FileExtension
+  nameWithType: IDataLogger.FileExtension
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IDataLogger.FileExtension
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/IDataLogger.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: FileExtension
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/IDataLogger.cs
+    startLine: 30
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: 'File extension to use for the export files without dot. Default: txt'
+  example: []
+  syntax:
+    content: string FileExtension { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Property FileExtension As String
+  overload: Bodoconsult.NetworkCommunication.Interfaces.IDataLogger.FileExtension*
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IDataLogger.Start
+  commentId: M:Bodoconsult.NetworkCommunication.Interfaces.IDataLogger.Start
+  id: Start
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IDataLogger
+  langs:
+  - csharp
+  - vb
+  name: Start()
+  nameWithType: IDataLogger.Start()
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IDataLogger.Start()
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/IDataLogger.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Start
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/IDataLogger.cs
+    startLine: 35
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Start the logging
+  example: []
+  syntax:
+    content: void Start()
+    content.vb: Sub Start()
+  overload: Bodoconsult.NetworkCommunication.Interfaces.IDataLogger.Start*
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IDataLogger.Stop
+  commentId: M:Bodoconsult.NetworkCommunication.Interfaces.IDataLogger.Stop
+  id: Stop
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IDataLogger
+  langs:
+  - csharp
+  - vb
+  name: Stop()
+  nameWithType: IDataLogger.Stop()
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IDataLogger.Stop()
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/IDataLogger.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Stop
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/IDataLogger.cs
+    startLine: 40
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Save all data and then stop the logging
+  example: []
+  syntax:
+    content: void Stop()
+    content.vb: Sub [Stop]()
+  overload: Bodoconsult.NetworkCommunication.Interfaces.IDataLogger.Stop*
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IDataLogger.Add(System.ReadOnlyMemory{System.Byte})
+  commentId: M:Bodoconsult.NetworkCommunication.Interfaces.IDataLogger.Add(System.ReadOnlyMemory{System.Byte})
+  id: Add(System.ReadOnlyMemory{System.Byte})
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IDataLogger
+  langs:
+  - csharp
+  - vb
+  name: Add(ReadOnlyMemory<byte>)
+  nameWithType: IDataLogger.Add(ReadOnlyMemory<byte>)
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IDataLogger.Add(System.ReadOnlyMemory<byte>)
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/IDataLogger.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Add
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/IDataLogger.cs
+    startLine: 46
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Add an item to log
+  example: []
+  syntax:
+    content: void Add(ReadOnlyMemory<byte> data)
+    parameters:
+    - id: data
+      type: System.ReadOnlyMemory{System.Byte}
+      description: Byte data to log
+    content.vb: Sub Add(data As ReadOnlyMemory(Of Byte))
+  overload: Bodoconsult.NetworkCommunication.Interfaces.IDataLogger.Add*
+  nameWithType.vb: IDataLogger.Add(ReadOnlyMemory(Of Byte))
+  fullName.vb: Bodoconsult.NetworkCommunication.Interfaces.IDataLogger.Add(System.ReadOnlyMemory(Of Byte))
+  name.vb: Add(ReadOnlyMemory(Of Byte))
+references:
+- uid: Bodoconsult.NetworkCommunication.Interfaces
+  commentId: N:Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.html
+  name: Bodoconsult.NetworkCommunication.Interfaces
+  nameWithType: Bodoconsult.NetworkCommunication.Interfaces
+  fullName: Bodoconsult.NetworkCommunication.Interfaces
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Interfaces
+    name: Interfaces
+    href: Bodoconsult.NetworkCommunication.Interfaces.html
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Interfaces
+    name: Interfaces
+    href: Bodoconsult.NetworkCommunication.Interfaces.html
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IDataLogger.TargetPath*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.IDataLogger.TargetPath
+  href: Bodoconsult.NetworkCommunication.Interfaces.IDataLogger.html#Bodoconsult_NetworkCommunication_Interfaces_IDataLogger_TargetPath
+  name: TargetPath
+  nameWithType: IDataLogger.TargetPath
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IDataLogger.TargetPath
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IDataLogger.FileName*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.IDataLogger.FileName
+  href: Bodoconsult.NetworkCommunication.Interfaces.IDataLogger.html#Bodoconsult_NetworkCommunication_Interfaces_IDataLogger_FileName
+  name: FileName
+  nameWithType: IDataLogger.FileName
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IDataLogger.FileName
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IDataLogger.FileNamePattern*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.IDataLogger.FileNamePattern
+  href: Bodoconsult.NetworkCommunication.Interfaces.IDataLogger.html#Bodoconsult_NetworkCommunication_Interfaces_IDataLogger_FileNamePattern
+  name: FileNamePattern
+  nameWithType: IDataLogger.FileNamePattern
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IDataLogger.FileNamePattern
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IDataLogger.FileExtension*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.IDataLogger.FileExtension
+  href: Bodoconsult.NetworkCommunication.Interfaces.IDataLogger.html#Bodoconsult_NetworkCommunication_Interfaces_IDataLogger_FileExtension
+  name: FileExtension
+  nameWithType: IDataLogger.FileExtension
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IDataLogger.FileExtension
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IDataLogger.Start*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.IDataLogger.Start
+  href: Bodoconsult.NetworkCommunication.Interfaces.IDataLogger.html#Bodoconsult_NetworkCommunication_Interfaces_IDataLogger_Start
+  name: Start
+  nameWithType: IDataLogger.Start
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IDataLogger.Start
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IDataLogger.Stop*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.IDataLogger.Stop
+  href: Bodoconsult.NetworkCommunication.Interfaces.IDataLogger.html#Bodoconsult_NetworkCommunication_Interfaces_IDataLogger_Stop
+  name: Stop
+  nameWithType: IDataLogger.Stop
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IDataLogger.Stop
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IDataLogger.Add*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.IDataLogger.Add
+  href: Bodoconsult.NetworkCommunication.Interfaces.IDataLogger.html#Bodoconsult_NetworkCommunication_Interfaces_IDataLogger_Add_System_ReadOnlyMemory_System_Byte__
+  name: Add
+  nameWithType: IDataLogger.Add
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IDataLogger.Add
+- uid: System.ReadOnlyMemory{System.Byte}
+  commentId: T:System.ReadOnlyMemory{System.Byte}
+  parent: System
+  definition: System.ReadOnlyMemory`1
+  href: https://learn.microsoft.com/dotnet/api/system.readonlymemory-1
+  name: ReadOnlyMemory<byte>
+  nameWithType: ReadOnlyMemory<byte>
+  fullName: System.ReadOnlyMemory<byte>
+  nameWithType.vb: ReadOnlyMemory(Of Byte)
+  fullName.vb: System.ReadOnlyMemory(Of Byte)
+  name.vb: ReadOnlyMemory(Of Byte)
+  spec.csharp:
+  - uid: System.ReadOnlyMemory`1
+    name: ReadOnlyMemory
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.readonlymemory-1
+  - name: <
+  - uid: System.Byte
+    name: byte
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.byte
+  - name: '>'
+  spec.vb:
+  - uid: System.ReadOnlyMemory`1
+    name: ReadOnlyMemory
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.readonlymemory-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Byte
+    name: Byte
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.byte
+  - name: )
+- uid: System.ReadOnlyMemory`1
+  commentId: T:System.ReadOnlyMemory`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.readonlymemory-1
+  name: ReadOnlyMemory<T>
+  nameWithType: ReadOnlyMemory<T>
+  fullName: System.ReadOnlyMemory<T>
+  nameWithType.vb: ReadOnlyMemory(Of T)
+  fullName.vb: System.ReadOnlyMemory(Of T)
+  name.vb: ReadOnlyMemory(Of T)
+  spec.csharp:
+  - uid: System.ReadOnlyMemory`1
+    name: ReadOnlyMemory
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.readonlymemory-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.ReadOnlyMemory`1
+    name: ReadOnlyMemory
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.readonlymemory-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )

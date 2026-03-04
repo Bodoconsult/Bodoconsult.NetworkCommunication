@@ -1,0 +1,175 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bodoconsult.NetworkCommunication.Communication
+  commentId: N:Bodoconsult.NetworkCommunication.Communication
+  id: Bodoconsult.NetworkCommunication.Communication
+  children:
+  - Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo
+  - Bodoconsult.NetworkCommunication.Communication.BaseDuplexIoReceiver
+  - Bodoconsult.NetworkCommunication.Communication.BaseDuplexIoSender
+  - Bodoconsult.NetworkCommunication.Communication.ChunkedSequence`1
+  - Bodoconsult.NetworkCommunication.Communication.DummyMemory
+  - Bodoconsult.NetworkCommunication.Communication.FakeHandshakeDuplexIo
+  - Bodoconsult.NetworkCommunication.Communication.FakeIpCommunicationAdapter
+  - Bodoconsult.NetworkCommunication.Communication.IpCommunicationAdapter
+  - Bodoconsult.NetworkCommunication.Communication.IpCommunicationHandler
+  - Bodoconsult.NetworkCommunication.Communication.IpDuplexIo
+  - Bodoconsult.NetworkCommunication.Communication.IpDuplexIoReceiver
+  - Bodoconsult.NetworkCommunication.Communication.IpDuplexIoSender
+  - Bodoconsult.NetworkCommunication.Communication.IpHighPerformanceDuplexIo
+  - Bodoconsult.NetworkCommunication.Communication.IpHighPerformanceDuplexIoReceiver
+  - Bodoconsult.NetworkCommunication.Communication.IpHighPerformanceDuplexIoSender
+  langs:
+  - csharp
+  - vb
+  name: Bodoconsult.NetworkCommunication.Communication
+  nameWithType: Bodoconsult.NetworkCommunication.Communication
+  fullName: Bodoconsult.NetworkCommunication.Communication
+  type: Namespace
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+references:
+- uid: Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo
+  commentId: T:Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo
+  parent: Bodoconsult.NetworkCommunication.Communication
+  href: Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo.html
+  name: BaseDuplexIo
+  nameWithType: BaseDuplexIo
+  fullName: Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo
+- uid: Bodoconsult.NetworkCommunication.Communication.BaseDuplexIoReceiver
+  commentId: T:Bodoconsult.NetworkCommunication.Communication.BaseDuplexIoReceiver
+  parent: Bodoconsult.NetworkCommunication.Communication
+  href: Bodoconsult.NetworkCommunication.Communication.BaseDuplexIoReceiver.html
+  name: BaseDuplexIoReceiver
+  nameWithType: BaseDuplexIoReceiver
+  fullName: Bodoconsult.NetworkCommunication.Communication.BaseDuplexIoReceiver
+- uid: Bodoconsult.NetworkCommunication.Communication.BaseDuplexIoSender
+  commentId: T:Bodoconsult.NetworkCommunication.Communication.BaseDuplexIoSender
+  parent: Bodoconsult.NetworkCommunication.Communication
+  href: Bodoconsult.NetworkCommunication.Communication.BaseDuplexIoSender.html
+  name: BaseDuplexIoSender
+  nameWithType: BaseDuplexIoSender
+  fullName: Bodoconsult.NetworkCommunication.Communication.BaseDuplexIoSender
+- uid: Bodoconsult.NetworkCommunication.Communication.ChunkedSequence`1
+  commentId: T:Bodoconsult.NetworkCommunication.Communication.ChunkedSequence`1
+  parent: Bodoconsult.NetworkCommunication.Communication
+  href: Bodoconsult.NetworkCommunication.Communication.ChunkedSequence-1.html
+  name: ChunkedSequence<T>
+  nameWithType: ChunkedSequence<T>
+  fullName: Bodoconsult.NetworkCommunication.Communication.ChunkedSequence<T>
+  nameWithType.vb: ChunkedSequence(Of T)
+  fullName.vb: Bodoconsult.NetworkCommunication.Communication.ChunkedSequence(Of T)
+  name.vb: ChunkedSequence(Of T)
+  spec.csharp:
+  - uid: Bodoconsult.NetworkCommunication.Communication.ChunkedSequence`1
+    name: ChunkedSequence
+    href: Bodoconsult.NetworkCommunication.Communication.ChunkedSequence-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: Bodoconsult.NetworkCommunication.Communication.ChunkedSequence`1
+    name: ChunkedSequence
+    href: Bodoconsult.NetworkCommunication.Communication.ChunkedSequence-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Bodoconsult.NetworkCommunication.Communication.DummyMemory
+  commentId: T:Bodoconsult.NetworkCommunication.Communication.DummyMemory
+  parent: Bodoconsult.NetworkCommunication.Communication
+  href: Bodoconsult.NetworkCommunication.Communication.DummyMemory.html
+  name: DummyMemory
+  nameWithType: DummyMemory
+  fullName: Bodoconsult.NetworkCommunication.Communication.DummyMemory
+- uid: Bodoconsult.NetworkCommunication.Communication.FakeHandshakeDuplexIo
+  commentId: T:Bodoconsult.NetworkCommunication.Communication.FakeHandshakeDuplexIo
+  href: Bodoconsult.NetworkCommunication.Communication.FakeHandshakeDuplexIo.html
+  name: FakeHandshakeDuplexIo
+  nameWithType: FakeHandshakeDuplexIo
+  fullName: Bodoconsult.NetworkCommunication.Communication.FakeHandshakeDuplexIo
+- uid: Bodoconsult.NetworkCommunication.Communication.FakeIpCommunicationAdapter
+  commentId: T:Bodoconsult.NetworkCommunication.Communication.FakeIpCommunicationAdapter
+  href: Bodoconsult.NetworkCommunication.Communication.FakeIpCommunicationAdapter.html
+  name: FakeIpCommunicationAdapter
+  nameWithType: FakeIpCommunicationAdapter
+  fullName: Bodoconsult.NetworkCommunication.Communication.FakeIpCommunicationAdapter
+- uid: Bodoconsult.NetworkCommunication.Communication.IpCommunicationAdapter
+  commentId: T:Bodoconsult.NetworkCommunication.Communication.IpCommunicationAdapter
+  href: Bodoconsult.NetworkCommunication.Communication.IpCommunicationAdapter.html
+  name: IpCommunicationAdapter
+  nameWithType: IpCommunicationAdapter
+  fullName: Bodoconsult.NetworkCommunication.Communication.IpCommunicationAdapter
+- uid: Bodoconsult.NetworkCommunication.Communication.IpCommunicationHandler
+  commentId: T:Bodoconsult.NetworkCommunication.Communication.IpCommunicationHandler
+  href: Bodoconsult.NetworkCommunication.Communication.IpCommunicationHandler.html
+  name: IpCommunicationHandler
+  nameWithType: IpCommunicationHandler
+  fullName: Bodoconsult.NetworkCommunication.Communication.IpCommunicationHandler
+- uid: Bodoconsult.NetworkCommunication.Communication.IpDuplexIo
+  commentId: T:Bodoconsult.NetworkCommunication.Communication.IpDuplexIo
+  href: Bodoconsult.NetworkCommunication.Communication.IpDuplexIo.html
+  name: IpDuplexIo
+  nameWithType: IpDuplexIo
+  fullName: Bodoconsult.NetworkCommunication.Communication.IpDuplexIo
+- uid: Bodoconsult.NetworkCommunication.Communication.IpDuplexIoReceiver
+  commentId: T:Bodoconsult.NetworkCommunication.Communication.IpDuplexIoReceiver
+  href: Bodoconsult.NetworkCommunication.Communication.IpDuplexIoReceiver.html
+  name: IpDuplexIoReceiver
+  nameWithType: IpDuplexIoReceiver
+  fullName: Bodoconsult.NetworkCommunication.Communication.IpDuplexIoReceiver
+- uid: Bodoconsult.NetworkCommunication.Communication.IpDuplexIoSender
+  commentId: T:Bodoconsult.NetworkCommunication.Communication.IpDuplexIoSender
+  href: Bodoconsult.NetworkCommunication.Communication.IpDuplexIoSender.html
+  name: IpDuplexIoSender
+  nameWithType: IpDuplexIoSender
+  fullName: Bodoconsult.NetworkCommunication.Communication.IpDuplexIoSender
+- uid: Bodoconsult.NetworkCommunication.Communication.IpHighPerformanceDuplexIo
+  commentId: T:Bodoconsult.NetworkCommunication.Communication.IpHighPerformanceDuplexIo
+  href: Bodoconsult.NetworkCommunication.Communication.IpHighPerformanceDuplexIo.html
+  name: IpHighPerformanceDuplexIo
+  nameWithType: IpHighPerformanceDuplexIo
+  fullName: Bodoconsult.NetworkCommunication.Communication.IpHighPerformanceDuplexIo
+- uid: Bodoconsult.NetworkCommunication.Communication.IpHighPerformanceDuplexIoReceiver
+  commentId: T:Bodoconsult.NetworkCommunication.Communication.IpHighPerformanceDuplexIoReceiver
+  href: Bodoconsult.NetworkCommunication.Communication.IpHighPerformanceDuplexIoReceiver.html
+  name: IpHighPerformanceDuplexIoReceiver
+  nameWithType: IpHighPerformanceDuplexIoReceiver
+  fullName: Bodoconsult.NetworkCommunication.Communication.IpHighPerformanceDuplexIoReceiver
+- uid: Bodoconsult.NetworkCommunication.Communication.IpHighPerformanceDuplexIoSender
+  commentId: T:Bodoconsult.NetworkCommunication.Communication.IpHighPerformanceDuplexIoSender
+  href: Bodoconsult.NetworkCommunication.Communication.IpHighPerformanceDuplexIoSender.html
+  name: IpHighPerformanceDuplexIoSender
+  nameWithType: IpHighPerformanceDuplexIoSender
+  fullName: Bodoconsult.NetworkCommunication.Communication.IpHighPerformanceDuplexIoSender
+- uid: Bodoconsult.NetworkCommunication.Communication
+  commentId: N:Bodoconsult.NetworkCommunication.Communication
+  href: Bodoconsult.html
+  name: Bodoconsult.NetworkCommunication.Communication
+  nameWithType: Bodoconsult.NetworkCommunication.Communication
+  fullName: Bodoconsult.NetworkCommunication.Communication
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Communication
+    name: Communication
+    href: Bodoconsult.NetworkCommunication.Communication.html
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Communication
+    name: Communication
+    href: Bodoconsult.NetworkCommunication.Communication.html

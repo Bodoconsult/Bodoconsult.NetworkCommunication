@@ -1,0 +1,1003 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket
+  commentId: T:Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket
+  id: IDhcpServerPacket
+  parent: Bodoconsult.Network.Windows.Dhcp
+  children:
+  - Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.ClientHardwareAddress
+  - Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.ClientIpAddress
+  - Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.DhcpMessageType
+  - Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.FileName
+  - Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.Flags
+  - Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.GatewayHops
+  - Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.HardwareAddressLength
+  - Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.HardwareAddressType
+  - Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.MessageType
+  - Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.NextServerIpAddress
+  - Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.Options
+  - Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.OptionsMagicCookie
+  - Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.RelayAgentIpAddress
+  - Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.SecondsElapsed
+  - Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.ServerHostName
+  - Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.TransactionId
+  - Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.TryGetOption(Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIds,Bodoconsult.Network.Windows.Dhcp.DhcpServerPacketOption@)
+  - Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.TryGetOption(System.Byte,Bodoconsult.Network.Windows.Dhcp.DhcpServerPacketOption@)
+  - Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.YourIpAddress
+  langs:
+  - csharp
+  - vb
+  name: IDhcpServerPacket
+  nameWithType: IDhcpServerPacket
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket
+  type: Interface
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/IDhcpServerPacket.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: IDhcpServerPacket
+    path: src/Bodoconsult.Network.Windows/Dhcp/IDhcpServerPacket.cs
+    startLine: 7
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: public interface IDhcpServerPacket
+    content.vb: Public Interface IDhcpServerPacket
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.MessageType
+  commentId: P:Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.MessageType
+  id: MessageType
+  parent: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket
+  langs:
+  - csharp
+  - vb
+  name: MessageType
+  nameWithType: IDhcpServerPacket.MessageType
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.MessageType
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/IDhcpServerPacket.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: MessageType
+    path: src/Bodoconsult.Network.Windows/Dhcp/IDhcpServerPacket.cs
+    startLine: 12
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  summary: Packet OP Code/Message Type (OP)
+  example: []
+  syntax:
+    content: DhcpServerMessageTypes MessageType { get; }
+    parameters: []
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerMessageTypes
+    content.vb: ReadOnly Property MessageType As DhcpServerMessageTypes
+  overload: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.MessageType*
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.HardwareAddressType
+  commentId: P:Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.HardwareAddressType
+  id: HardwareAddressType
+  parent: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket
+  langs:
+  - csharp
+  - vb
+  name: HardwareAddressType
+  nameWithType: IDhcpServerPacket.HardwareAddressType
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.HardwareAddressType
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/IDhcpServerPacket.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: HardwareAddressType
+    path: src/Bodoconsult.Network.Windows/Dhcp/IDhcpServerPacket.cs
+    startLine: 17
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  summary: Type of Hardware Address (HTYPE)
+  example: []
+  syntax:
+    content: DhcpServerHardwareType HardwareAddressType { get; }
+    parameters: []
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerHardwareType
+    content.vb: ReadOnly Property HardwareAddressType As DhcpServerHardwareType
+  overload: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.HardwareAddressType*
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.HardwareAddressLength
+  commentId: P:Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.HardwareAddressLength
+  id: HardwareAddressLength
+  parent: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket
+  langs:
+  - csharp
+  - vb
+  name: HardwareAddressLength
+  nameWithType: IDhcpServerPacket.HardwareAddressLength
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.HardwareAddressLength
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/IDhcpServerPacket.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: HardwareAddressLength
+    path: src/Bodoconsult.Network.Windows/Dhcp/IDhcpServerPacket.cs
+    startLine: 22
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  summary: Length (in bytes) of the Hardware Address (HLEN)
+  example: []
+  syntax:
+    content: byte HardwareAddressLength { get; }
+    parameters: []
+    return:
+      type: System.Byte
+    content.vb: ReadOnly Property HardwareAddressLength As Byte
+  overload: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.HardwareAddressLength*
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.GatewayHops
+  commentId: P:Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.GatewayHops
+  id: GatewayHops
+  parent: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket
+  langs:
+  - csharp
+  - vb
+  name: GatewayHops
+  nameWithType: IDhcpServerPacket.GatewayHops
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.GatewayHops
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/IDhcpServerPacket.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: GatewayHops
+    path: src/Bodoconsult.Network.Windows/Dhcp/IDhcpServerPacket.cs
+    startLine: 27
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  summary: Optionally used by relay agents when booting via a relay agent (HOPS)
+  example: []
+  syntax:
+    content: byte GatewayHops { get; }
+    parameters: []
+    return:
+      type: System.Byte
+    content.vb: ReadOnly Property GatewayHops As Byte
+  overload: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.GatewayHops*
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.TransactionId
+  commentId: P:Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.TransactionId
+  id: TransactionId
+  parent: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket
+  langs:
+  - csharp
+  - vb
+  name: TransactionId
+  nameWithType: IDhcpServerPacket.TransactionId
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.TransactionId
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/IDhcpServerPacket.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: TransactionId
+    path: src/Bodoconsult.Network.Windows/Dhcp/IDhcpServerPacket.cs
+    startLine: 32
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  summary: Transaction Id, a random number, used to match this boot request with the responses it generates (XID)
+  example: []
+  syntax:
+    content: int TransactionId { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: ReadOnly Property TransactionId As Integer
+  overload: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.TransactionId*
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.SecondsElapsed
+  commentId: P:Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.SecondsElapsed
+  id: SecondsElapsed
+  parent: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket
+  langs:
+  - csharp
+  - vb
+  name: SecondsElapsed
+  nameWithType: IDhcpServerPacket.SecondsElapsed
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.SecondsElapsed
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/IDhcpServerPacket.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: SecondsElapsed
+    path: src/Bodoconsult.Network.Windows/Dhcp/IDhcpServerPacket.cs
+    startLine: 37
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  summary: Seconds elapsed since client started trying to boot (SECS)
+  example: []
+  syntax:
+    content: ushort SecondsElapsed { get; }
+    parameters: []
+    return:
+      type: System.UInt16
+    content.vb: ReadOnly Property SecondsElapsed As UShort
+  overload: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.SecondsElapsed*
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.Flags
+  commentId: P:Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.Flags
+  id: Flags
+  parent: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket
+  langs:
+  - csharp
+  - vb
+  name: Flags
+  nameWithType: IDhcpServerPacket.Flags
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.Flags
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/IDhcpServerPacket.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Flags
+    path: src/Bodoconsult.Network.Windows/Dhcp/IDhcpServerPacket.cs
+    startLine: 42
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  summary: Flags (FLAGS)
+  example: []
+  syntax:
+    content: DhcpServerPacketFlags Flags { get; }
+    parameters: []
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerPacketFlags
+    content.vb: ReadOnly Property Flags As DhcpServerPacketFlags
+  overload: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.Flags*
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.ClientIpAddress
+  commentId: P:Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.ClientIpAddress
+  id: ClientIpAddress
+  parent: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket
+  langs:
+  - csharp
+  - vb
+  name: ClientIpAddress
+  nameWithType: IDhcpServerPacket.ClientIpAddress
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.ClientIpAddress
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/IDhcpServerPacket.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: ClientIpAddress
+    path: src/Bodoconsult.Network.Windows/Dhcp/IDhcpServerPacket.cs
+    startLine: 47
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  summary: Client IP Address; only filled in if client is in BOUND, RENEW or REBINDING state and can respond to ARP requests (CIADDR)
+  example: []
+  syntax:
+    content: DhcpServerIpAddress ClientIpAddress { get; }
+    parameters: []
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress
+    content.vb: ReadOnly Property ClientIpAddress As DhcpServerIpAddress
+  overload: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.ClientIpAddress*
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.YourIpAddress
+  commentId: P:Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.YourIpAddress
+  id: YourIpAddress
+  parent: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket
+  langs:
+  - csharp
+  - vb
+  name: YourIpAddress
+  nameWithType: IDhcpServerPacket.YourIpAddress
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.YourIpAddress
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/IDhcpServerPacket.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: YourIpAddress
+    path: src/Bodoconsult.Network.Windows/Dhcp/IDhcpServerPacket.cs
+    startLine: 52
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  summary: "'your' (client) IP address (YIADDR)"
+  example: []
+  syntax:
+    content: DhcpServerIpAddress YourIpAddress { get; }
+    parameters: []
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress
+    content.vb: ReadOnly Property YourIpAddress As DhcpServerIpAddress
+  overload: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.YourIpAddress*
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.NextServerIpAddress
+  commentId: P:Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.NextServerIpAddress
+  id: NextServerIpAddress
+  parent: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket
+  langs:
+  - csharp
+  - vb
+  name: NextServerIpAddress
+  nameWithType: IDhcpServerPacket.NextServerIpAddress
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.NextServerIpAddress
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/IDhcpServerPacket.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: NextServerIpAddress
+    path: src/Bodoconsult.Network.Windows/Dhcp/IDhcpServerPacket.cs
+    startLine: 57
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  summary: IP address of next server to use in bootstrap; returned in DHCPOFFER, DHCPACK by server (SIADDR)
+  example: []
+  syntax:
+    content: DhcpServerIpAddress NextServerIpAddress { get; }
+    parameters: []
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress
+    content.vb: ReadOnly Property NextServerIpAddress As DhcpServerIpAddress
+  overload: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.NextServerIpAddress*
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.RelayAgentIpAddress
+  commentId: P:Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.RelayAgentIpAddress
+  id: RelayAgentIpAddress
+  parent: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket
+  langs:
+  - csharp
+  - vb
+  name: RelayAgentIpAddress
+  nameWithType: IDhcpServerPacket.RelayAgentIpAddress
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.RelayAgentIpAddress
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/IDhcpServerPacket.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: RelayAgentIpAddress
+    path: src/Bodoconsult.Network.Windows/Dhcp/IDhcpServerPacket.cs
+    startLine: 62
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  summary: Relay agent IP address, used in booting via a relay agent (GIADDR)
+  example: []
+  syntax:
+    content: DhcpServerIpAddress RelayAgentIpAddress { get; }
+    parameters: []
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress
+    content.vb: ReadOnly Property RelayAgentIpAddress As DhcpServerIpAddress
+  overload: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.RelayAgentIpAddress*
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.ClientHardwareAddress
+  commentId: P:Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.ClientHardwareAddress
+  id: ClientHardwareAddress
+  parent: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket
+  langs:
+  - csharp
+  - vb
+  name: ClientHardwareAddress
+  nameWithType: IDhcpServerPacket.ClientHardwareAddress
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.ClientHardwareAddress
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/IDhcpServerPacket.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: ClientHardwareAddress
+    path: src/Bodoconsult.Network.Windows/Dhcp/IDhcpServerPacket.cs
+    startLine: 67
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  summary: Client hardware address (CHADDR)
+  example: []
+  syntax:
+    content: DhcpServerHardwareAddress ClientHardwareAddress { get; }
+    parameters: []
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerHardwareAddress
+    content.vb: ReadOnly Property ClientHardwareAddress As DhcpServerHardwareAddress
+  overload: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.ClientHardwareAddress*
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.ServerHostName
+  commentId: P:Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.ServerHostName
+  id: ServerHostName
+  parent: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket
+  langs:
+  - csharp
+  - vb
+  name: ServerHostName
+  nameWithType: IDhcpServerPacket.ServerHostName
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.ServerHostName
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/IDhcpServerPacket.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: ServerHostName
+    path: src/Bodoconsult.Network.Windows/Dhcp/IDhcpServerPacket.cs
+    startLine: 72
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  summary: Optional server host name (SNAME)
+  example: []
+  syntax:
+    content: string ServerHostName { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: ReadOnly Property ServerHostName As String
+  overload: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.ServerHostName*
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.FileName
+  commentId: P:Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.FileName
+  id: FileName
+  parent: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket
+  langs:
+  - csharp
+  - vb
+  name: FileName
+  nameWithType: IDhcpServerPacket.FileName
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.FileName
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/IDhcpServerPacket.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: FileName
+    path: src/Bodoconsult.Network.Windows/Dhcp/IDhcpServerPacket.cs
+    startLine: 77
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  summary: Boot file name; "generic" name or null in DHCPDISCOVER, fully qualified directory-path name in DHCPOFFER (FILE)
+  example: []
+  syntax:
+    content: string FileName { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: ReadOnly Property FileName As String
+  overload: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.FileName*
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.OptionsMagicCookie
+  commentId: P:Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.OptionsMagicCookie
+  id: OptionsMagicCookie
+  parent: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket
+  langs:
+  - csharp
+  - vb
+  name: OptionsMagicCookie
+  nameWithType: IDhcpServerPacket.OptionsMagicCookie
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.OptionsMagicCookie
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/IDhcpServerPacket.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: OptionsMagicCookie
+    path: src/Bodoconsult.Network.Windows/Dhcp/IDhcpServerPacket.cs
+    startLine: 79
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: int OptionsMagicCookie { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: ReadOnly Property OptionsMagicCookie As Integer
+  overload: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.OptionsMagicCookie*
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.DhcpMessageType
+  commentId: P:Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.DhcpMessageType
+  id: DhcpMessageType
+  parent: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket
+  langs:
+  - csharp
+  - vb
+  name: DhcpMessageType
+  nameWithType: IDhcpServerPacket.DhcpMessageType
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.DhcpMessageType
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/IDhcpServerPacket.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: DhcpMessageType
+    path: src/Bodoconsult.Network.Windows/Dhcp/IDhcpServerPacket.cs
+    startLine: 81
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: DhcpServerPacketMessageTypes DhcpMessageType { get; }
+    parameters: []
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerPacketMessageTypes
+    content.vb: ReadOnly Property DhcpMessageType As DhcpServerPacketMessageTypes
+  overload: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.DhcpMessageType*
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.Options
+  commentId: P:Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.Options
+  id: Options
+  parent: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket
+  langs:
+  - csharp
+  - vb
+  name: Options
+  nameWithType: IDhcpServerPacket.Options
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.Options
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/IDhcpServerPacket.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Options
+    path: src/Bodoconsult.Network.Windows/Dhcp/IDhcpServerPacket.cs
+    startLine: 83
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: ReadOnlyCollection<DhcpServerPacketOption> Options { get; }
+    parameters: []
+    return:
+      type: System.Collections.ObjectModel.ReadOnlyCollection{Bodoconsult.Network.Windows.Dhcp.DhcpServerPacketOption}
+    content.vb: ReadOnly Property Options As ReadOnlyCollection(Of DhcpServerPacketOption)
+  overload: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.Options*
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.TryGetOption(Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIds,Bodoconsult.Network.Windows.Dhcp.DhcpServerPacketOption@)
+  commentId: M:Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.TryGetOption(Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIds,Bodoconsult.Network.Windows.Dhcp.DhcpServerPacketOption@)
+  id: TryGetOption(Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIds,Bodoconsult.Network.Windows.Dhcp.DhcpServerPacketOption@)
+  parent: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket
+  langs:
+  - csharp
+  - vb
+  name: TryGetOption(DhcpServerOptionIds, out DhcpServerPacketOption)
+  nameWithType: IDhcpServerPacket.TryGetOption(DhcpServerOptionIds, out DhcpServerPacketOption)
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.TryGetOption(Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIds, out Bodoconsult.Network.Windows.Dhcp.DhcpServerPacketOption)
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/IDhcpServerPacket.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: TryGetOption
+    path: src/Bodoconsult.Network.Windows/Dhcp/IDhcpServerPacket.cs
+    startLine: 84
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: bool TryGetOption(DhcpServerOptionIds optionId, out DhcpServerPacketOption option)
+    parameters:
+    - id: optionId
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIds
+    - id: option
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerPacketOption
+    return:
+      type: System.Boolean
+    content.vb: Function TryGetOption(optionId As DhcpServerOptionIds, [option] As DhcpServerPacketOption) As Boolean
+  overload: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.TryGetOption*
+  nameWithType.vb: IDhcpServerPacket.TryGetOption(DhcpServerOptionIds, DhcpServerPacketOption)
+  fullName.vb: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.TryGetOption(Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIds, Bodoconsult.Network.Windows.Dhcp.DhcpServerPacketOption)
+  name.vb: TryGetOption(DhcpServerOptionIds, DhcpServerPacketOption)
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.TryGetOption(System.Byte,Bodoconsult.Network.Windows.Dhcp.DhcpServerPacketOption@)
+  commentId: M:Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.TryGetOption(System.Byte,Bodoconsult.Network.Windows.Dhcp.DhcpServerPacketOption@)
+  id: TryGetOption(System.Byte,Bodoconsult.Network.Windows.Dhcp.DhcpServerPacketOption@)
+  parent: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket
+  langs:
+  - csharp
+  - vb
+  name: TryGetOption(byte, out DhcpServerPacketOption)
+  nameWithType: IDhcpServerPacket.TryGetOption(byte, out DhcpServerPacketOption)
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.TryGetOption(byte, out Bodoconsult.Network.Windows.Dhcp.DhcpServerPacketOption)
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/IDhcpServerPacket.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: TryGetOption
+    path: src/Bodoconsult.Network.Windows/Dhcp/IDhcpServerPacket.cs
+    startLine: 85
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: bool TryGetOption(byte optionId, out DhcpServerPacketOption option)
+    parameters:
+    - id: optionId
+      type: System.Byte
+    - id: option
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerPacketOption
+    return:
+      type: System.Boolean
+    content.vb: Function TryGetOption(optionId As Byte, [option] As DhcpServerPacketOption) As Boolean
+  overload: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.TryGetOption*
+  nameWithType.vb: IDhcpServerPacket.TryGetOption(Byte, DhcpServerPacketOption)
+  fullName.vb: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.TryGetOption(Byte, Bodoconsult.Network.Windows.Dhcp.DhcpServerPacketOption)
+  name.vb: TryGetOption(Byte, DhcpServerPacketOption)
+references:
+- uid: Bodoconsult.Network.Windows.Dhcp
+  commentId: N:Bodoconsult.Network.Windows.Dhcp
+  href: Bodoconsult.html
+  name: Bodoconsult.Network.Windows.Dhcp
+  nameWithType: Bodoconsult.Network.Windows.Dhcp
+  fullName: Bodoconsult.Network.Windows.Dhcp
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.Network
+    name: Network
+    href: Bodoconsult.Network.html
+  - name: .
+  - uid: Bodoconsult.Network.Windows
+    name: Windows
+    href: Bodoconsult.Network.Windows.html
+  - name: .
+  - uid: Bodoconsult.Network.Windows.Dhcp
+    name: Dhcp
+    href: Bodoconsult.Network.Windows.Dhcp.html
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.Network
+    name: Network
+    href: Bodoconsult.Network.html
+  - name: .
+  - uid: Bodoconsult.Network.Windows
+    name: Windows
+    href: Bodoconsult.Network.Windows.html
+  - name: .
+  - uid: Bodoconsult.Network.Windows.Dhcp
+    name: Dhcp
+    href: Bodoconsult.Network.Windows.Dhcp.html
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.MessageType*
+  commentId: Overload:Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.MessageType
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerPacket_MessageType
+  name: MessageType
+  nameWithType: IDhcpServerPacket.MessageType
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.MessageType
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerMessageTypes
+  commentId: T:Bodoconsult.Network.Windows.Dhcp.DhcpServerMessageTypes
+  parent: Bodoconsult.Network.Windows.Dhcp
+  href: Bodoconsult.Network.Windows.Dhcp.DhcpServerMessageTypes.html
+  name: DhcpServerMessageTypes
+  nameWithType: DhcpServerMessageTypes
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerMessageTypes
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.HardwareAddressType*
+  commentId: Overload:Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.HardwareAddressType
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerPacket_HardwareAddressType
+  name: HardwareAddressType
+  nameWithType: IDhcpServerPacket.HardwareAddressType
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.HardwareAddressType
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerHardwareType
+  commentId: T:Bodoconsult.Network.Windows.Dhcp.DhcpServerHardwareType
+  parent: Bodoconsult.Network.Windows.Dhcp
+  href: Bodoconsult.Network.Windows.Dhcp.DhcpServerHardwareType.html
+  name: DhcpServerHardwareType
+  nameWithType: DhcpServerHardwareType
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerHardwareType
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.HardwareAddressLength*
+  commentId: Overload:Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.HardwareAddressLength
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerPacket_HardwareAddressLength
+  name: HardwareAddressLength
+  nameWithType: IDhcpServerPacket.HardwareAddressLength
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.HardwareAddressLength
+- uid: System.Byte
+  commentId: T:System.Byte
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.byte
+  name: byte
+  nameWithType: byte
+  fullName: byte
+  nameWithType.vb: Byte
+  fullName.vb: Byte
+  name.vb: Byte
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.GatewayHops*
+  commentId: Overload:Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.GatewayHops
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerPacket_GatewayHops
+  name: GatewayHops
+  nameWithType: IDhcpServerPacket.GatewayHops
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.GatewayHops
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.TransactionId*
+  commentId: Overload:Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.TransactionId
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerPacket_TransactionId
+  name: TransactionId
+  nameWithType: IDhcpServerPacket.TransactionId
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.TransactionId
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.SecondsElapsed*
+  commentId: Overload:Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.SecondsElapsed
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerPacket_SecondsElapsed
+  name: SecondsElapsed
+  nameWithType: IDhcpServerPacket.SecondsElapsed
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.SecondsElapsed
+- uid: System.UInt16
+  commentId: T:System.UInt16
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.uint16
+  name: ushort
+  nameWithType: ushort
+  fullName: ushort
+  nameWithType.vb: UShort
+  fullName.vb: UShort
+  name.vb: UShort
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.Flags*
+  commentId: Overload:Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.Flags
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerPacket_Flags
+  name: Flags
+  nameWithType: IDhcpServerPacket.Flags
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.Flags
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerPacketFlags
+  commentId: T:Bodoconsult.Network.Windows.Dhcp.DhcpServerPacketFlags
+  parent: Bodoconsult.Network.Windows.Dhcp
+  href: Bodoconsult.Network.Windows.Dhcp.DhcpServerPacketFlags.html
+  name: DhcpServerPacketFlags
+  nameWithType: DhcpServerPacketFlags
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerPacketFlags
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.ClientIpAddress*
+  commentId: Overload:Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.ClientIpAddress
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerPacket_ClientIpAddress
+  name: ClientIpAddress
+  nameWithType: IDhcpServerPacket.ClientIpAddress
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.ClientIpAddress
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress
+  commentId: T:Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress
+  parent: Bodoconsult.Network.Windows.Dhcp
+  href: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.html
+  name: DhcpServerIpAddress
+  nameWithType: DhcpServerIpAddress
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.YourIpAddress*
+  commentId: Overload:Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.YourIpAddress
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerPacket_YourIpAddress
+  name: YourIpAddress
+  nameWithType: IDhcpServerPacket.YourIpAddress
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.YourIpAddress
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.NextServerIpAddress*
+  commentId: Overload:Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.NextServerIpAddress
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerPacket_NextServerIpAddress
+  name: NextServerIpAddress
+  nameWithType: IDhcpServerPacket.NextServerIpAddress
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.NextServerIpAddress
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.RelayAgentIpAddress*
+  commentId: Overload:Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.RelayAgentIpAddress
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerPacket_RelayAgentIpAddress
+  name: RelayAgentIpAddress
+  nameWithType: IDhcpServerPacket.RelayAgentIpAddress
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.RelayAgentIpAddress
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.ClientHardwareAddress*
+  commentId: Overload:Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.ClientHardwareAddress
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerPacket_ClientHardwareAddress
+  name: ClientHardwareAddress
+  nameWithType: IDhcpServerPacket.ClientHardwareAddress
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.ClientHardwareAddress
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerHardwareAddress
+  commentId: T:Bodoconsult.Network.Windows.Dhcp.DhcpServerHardwareAddress
+  parent: Bodoconsult.Network.Windows.Dhcp
+  href: Bodoconsult.Network.Windows.Dhcp.DhcpServerHardwareAddress.html
+  name: DhcpServerHardwareAddress
+  nameWithType: DhcpServerHardwareAddress
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerHardwareAddress
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.ServerHostName*
+  commentId: Overload:Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.ServerHostName
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerPacket_ServerHostName
+  name: ServerHostName
+  nameWithType: IDhcpServerPacket.ServerHostName
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.ServerHostName
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.FileName*
+  commentId: Overload:Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.FileName
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerPacket_FileName
+  name: FileName
+  nameWithType: IDhcpServerPacket.FileName
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.FileName
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.OptionsMagicCookie*
+  commentId: Overload:Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.OptionsMagicCookie
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerPacket_OptionsMagicCookie
+  name: OptionsMagicCookie
+  nameWithType: IDhcpServerPacket.OptionsMagicCookie
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.OptionsMagicCookie
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.DhcpMessageType*
+  commentId: Overload:Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.DhcpMessageType
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerPacket_DhcpMessageType
+  name: DhcpMessageType
+  nameWithType: IDhcpServerPacket.DhcpMessageType
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.DhcpMessageType
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerPacketMessageTypes
+  commentId: T:Bodoconsult.Network.Windows.Dhcp.DhcpServerPacketMessageTypes
+  parent: Bodoconsult.Network.Windows.Dhcp
+  href: Bodoconsult.Network.Windows.Dhcp.DhcpServerPacketMessageTypes.html
+  name: DhcpServerPacketMessageTypes
+  nameWithType: DhcpServerPacketMessageTypes
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerPacketMessageTypes
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.Options*
+  commentId: Overload:Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.Options
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerPacket_Options
+  name: Options
+  nameWithType: IDhcpServerPacket.Options
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.Options
+- uid: System.Collections.ObjectModel.ReadOnlyCollection{Bodoconsult.Network.Windows.Dhcp.DhcpServerPacketOption}
+  commentId: T:System.Collections.ObjectModel.ReadOnlyCollection{Bodoconsult.Network.Windows.Dhcp.DhcpServerPacketOption}
+  parent: System.Collections.ObjectModel
+  definition: System.Collections.ObjectModel.ReadOnlyCollection`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.objectmodel.readonlycollection-1
+  name: ReadOnlyCollection<DhcpServerPacketOption>
+  nameWithType: ReadOnlyCollection<DhcpServerPacketOption>
+  fullName: System.Collections.ObjectModel.ReadOnlyCollection<Bodoconsult.Network.Windows.Dhcp.DhcpServerPacketOption>
+  nameWithType.vb: ReadOnlyCollection(Of DhcpServerPacketOption)
+  fullName.vb: System.Collections.ObjectModel.ReadOnlyCollection(Of Bodoconsult.Network.Windows.Dhcp.DhcpServerPacketOption)
+  name.vb: ReadOnlyCollection(Of DhcpServerPacketOption)
+  spec.csharp:
+  - uid: System.Collections.ObjectModel.ReadOnlyCollection`1
+    name: ReadOnlyCollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.objectmodel.readonlycollection-1
+  - name: <
+  - uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerPacketOption
+    name: DhcpServerPacketOption
+    href: Bodoconsult.Network.Windows.Dhcp.DhcpServerPacketOption.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.ObjectModel.ReadOnlyCollection`1
+    name: ReadOnlyCollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.objectmodel.readonlycollection-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerPacketOption
+    name: DhcpServerPacketOption
+    href: Bodoconsult.Network.Windows.Dhcp.DhcpServerPacketOption.html
+  - name: )
+- uid: System.Collections.ObjectModel.ReadOnlyCollection`1
+  commentId: T:System.Collections.ObjectModel.ReadOnlyCollection`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.objectmodel.readonlycollection-1
+  name: ReadOnlyCollection<T>
+  nameWithType: ReadOnlyCollection<T>
+  fullName: System.Collections.ObjectModel.ReadOnlyCollection<T>
+  nameWithType.vb: ReadOnlyCollection(Of T)
+  fullName.vb: System.Collections.ObjectModel.ReadOnlyCollection(Of T)
+  name.vb: ReadOnlyCollection(Of T)
+  spec.csharp:
+  - uid: System.Collections.ObjectModel.ReadOnlyCollection`1
+    name: ReadOnlyCollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.objectmodel.readonlycollection-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.ObjectModel.ReadOnlyCollection`1
+    name: ReadOnlyCollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.objectmodel.readonlycollection-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.ObjectModel
+  commentId: N:System.Collections.ObjectModel
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.ObjectModel
+  nameWithType: System.Collections.ObjectModel
+  fullName: System.Collections.ObjectModel
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.ObjectModel
+    name: ObjectModel
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.objectmodel
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.ObjectModel
+    name: ObjectModel
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.objectmodel
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.TryGetOption*
+  commentId: Overload:Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.TryGetOption
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerPacket_TryGetOption_Bodoconsult_Network_Windows_Dhcp_DhcpServerOptionIds_Bodoconsult_Network_Windows_Dhcp_DhcpServerPacketOption__
+  name: TryGetOption
+  nameWithType: IDhcpServerPacket.TryGetOption
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerPacket.TryGetOption
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIds
+  commentId: T:Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIds
+  parent: Bodoconsult.Network.Windows.Dhcp
+  href: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIds.html
+  name: DhcpServerOptionIds
+  nameWithType: DhcpServerOptionIds
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerOptionIds
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerPacketOption
+  commentId: T:Bodoconsult.Network.Windows.Dhcp.DhcpServerPacketOption
+  parent: Bodoconsult.Network.Windows.Dhcp
+  href: Bodoconsult.Network.Windows.Dhcp.DhcpServerPacketOption.html
+  name: DhcpServerPacketOption
+  nameWithType: DhcpServerPacketOption
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerPacketOption
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean

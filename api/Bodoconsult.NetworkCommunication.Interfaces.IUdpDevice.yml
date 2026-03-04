@@ -1,0 +1,661 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IUdpDevice
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.IUdpDevice
+  id: IUdpDevice
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  children:
+  - Bodoconsult.NetworkCommunication.Interfaces.IUdpDevice.CancellationTokenSource
+  - Bodoconsult.NetworkCommunication.Interfaces.IUdpDevice.IpAddress
+  - Bodoconsult.NetworkCommunication.Interfaces.IUdpDevice.Port
+  - Bodoconsult.NetworkCommunication.Interfaces.IUdpDevice.ReceiveTimeout
+  - Bodoconsult.NetworkCommunication.Interfaces.IUdpDevice.ReceivedMessages
+  - Bodoconsult.NetworkCommunication.Interfaces.IUdpDevice.RemotePort
+  - Bodoconsult.NetworkCommunication.Interfaces.IUdpDevice.Send(System.Byte[])
+  - Bodoconsult.NetworkCommunication.Interfaces.IUdpDevice.SendTimeout
+  - Bodoconsult.NetworkCommunication.Interfaces.IUdpDevice.Start
+  langs:
+  - csharp
+  - vb
+  name: IUdpDevice
+  nameWithType: IUdpDevice
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IUdpDevice
+  type: Interface
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/IUdpDevice.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: IUdpDevice
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/IUdpDevice.cs
+    startLine: 9
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Interface for UDP devices
+  example: []
+  syntax:
+    content: 'public interface IUdpDevice : IDisposable'
+    content.vb: Public Interface IUdpDevice Inherits IDisposable
+  inheritedMembers:
+  - System.IDisposable.Dispose
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IUdpDevice.IpAddress
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IUdpDevice.IpAddress
+  id: IpAddress
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IUdpDevice
+  langs:
+  - csharp
+  - vb
+  name: IpAddress
+  nameWithType: IUdpDevice.IpAddress
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IUdpDevice.IpAddress
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/IUdpDevice.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: IpAddress
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/IUdpDevice.cs
+    startLine: 14
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: IP address of the server
+  example: []
+  syntax:
+    content: IPAddress IpAddress { get; }
+    parameters: []
+    return:
+      type: System.Net.IPAddress
+    content.vb: ReadOnly Property IpAddress As IPAddress
+  overload: Bodoconsult.NetworkCommunication.Interfaces.IUdpDevice.IpAddress*
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IUdpDevice.Port
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IUdpDevice.Port
+  id: Port
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IUdpDevice
+  langs:
+  - csharp
+  - vb
+  name: Port
+  nameWithType: IUdpDevice.Port
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IUdpDevice.Port
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/IUdpDevice.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Port
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/IUdpDevice.cs
+    startLine: 19
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Port the current device listens on
+  example: []
+  syntax:
+    content: int Port { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: ReadOnly Property Port As Integer
+  overload: Bodoconsult.NetworkCommunication.Interfaces.IUdpDevice.Port*
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IUdpDevice.RemotePort
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IUdpDevice.RemotePort
+  id: RemotePort
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IUdpDevice
+  langs:
+  - csharp
+  - vb
+  name: RemotePort
+  nameWithType: IUdpDevice.RemotePort
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IUdpDevice.RemotePort
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/IUdpDevice.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: RemotePort
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/IUdpDevice.cs
+    startLine: 24
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Port the remote device listens on or 0 (then the same port as for the current device is used)
+  example: []
+  syntax:
+    content: int RemotePort { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: ReadOnly Property RemotePort As Integer
+  overload: Bodoconsult.NetworkCommunication.Interfaces.IUdpDevice.RemotePort*
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IUdpDevice.SendTimeout
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IUdpDevice.SendTimeout
+  id: SendTimeout
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IUdpDevice
+  langs:
+  - csharp
+  - vb
+  name: SendTimeout
+  nameWithType: IUdpDevice.SendTimeout
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IUdpDevice.SendTimeout
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/IUdpDevice.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: SendTimeout
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/IUdpDevice.cs
+    startLine: 29
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Send timeout in milliseconds. -1 means infinite.
+  example: []
+  syntax:
+    content: int SendTimeout { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Property SendTimeout As Integer
+  overload: Bodoconsult.NetworkCommunication.Interfaces.IUdpDevice.SendTimeout*
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IUdpDevice.ReceiveTimeout
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IUdpDevice.ReceiveTimeout
+  id: ReceiveTimeout
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IUdpDevice
+  langs:
+  - csharp
+  - vb
+  name: ReceiveTimeout
+  nameWithType: IUdpDevice.ReceiveTimeout
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IUdpDevice.ReceiveTimeout
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/IUdpDevice.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: ReceiveTimeout
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/IUdpDevice.cs
+    startLine: 34
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Receive timeout in milliseconds. -1 means infinite.
+  example: []
+  syntax:
+    content: int ReceiveTimeout { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Property ReceiveTimeout As Integer
+  overload: Bodoconsult.NetworkCommunication.Interfaces.IUdpDevice.ReceiveTimeout*
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IUdpDevice.CancellationTokenSource
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IUdpDevice.CancellationTokenSource
+  id: CancellationTokenSource
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IUdpDevice
+  langs:
+  - csharp
+  - vb
+  name: CancellationTokenSource
+  nameWithType: IUdpDevice.CancellationTokenSource
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IUdpDevice.CancellationTokenSource
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/IUdpDevice.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: CancellationTokenSource
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/IUdpDevice.cs
+    startLine: 39
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Current cancellation token
+  example: []
+  syntax:
+    content: CancellationTokenSource CancellationTokenSource { get; set; }
+    parameters: []
+    return:
+      type: System.Threading.CancellationTokenSource
+    content.vb: Property CancellationTokenSource As CancellationTokenSource
+  overload: Bodoconsult.NetworkCommunication.Interfaces.IUdpDevice.CancellationTokenSource*
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IUdpDevice.ReceivedMessages
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IUdpDevice.ReceivedMessages
+  id: ReceivedMessages
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IUdpDevice
+  langs:
+  - csharp
+  - vb
+  name: ReceivedMessages
+  nameWithType: IUdpDevice.ReceivedMessages
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IUdpDevice.ReceivedMessages
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/IUdpDevice.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: ReceivedMessages
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/IUdpDevice.cs
+    startLine: 44
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: All received messages
+  example: []
+  syntax:
+    content: List<ReadOnlyMemory<byte>> ReceivedMessages { get; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.List{System.ReadOnlyMemory{System.Byte}}
+    content.vb: ReadOnly Property ReceivedMessages As List(Of ReadOnlyMemory(Of Byte))
+  overload: Bodoconsult.NetworkCommunication.Interfaces.IUdpDevice.ReceivedMessages*
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IUdpDevice.Start
+  commentId: M:Bodoconsult.NetworkCommunication.Interfaces.IUdpDevice.Start
+  id: Start
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IUdpDevice
+  langs:
+  - csharp
+  - vb
+  name: Start()
+  nameWithType: IUdpDevice.Start()
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IUdpDevice.Start()
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/IUdpDevice.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Start
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/IUdpDevice.cs
+    startLine: 49
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Start the client
+  example: []
+  syntax:
+    content: void Start()
+    content.vb: Sub Start()
+  overload: Bodoconsult.NetworkCommunication.Interfaces.IUdpDevice.Start*
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IUdpDevice.Send(System.Byte[])
+  commentId: M:Bodoconsult.NetworkCommunication.Interfaces.IUdpDevice.Send(System.Byte[])
+  id: Send(System.Byte[])
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IUdpDevice
+  langs:
+  - csharp
+  - vb
+  name: Send(byte[])
+  nameWithType: IUdpDevice.Send(byte[])
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IUdpDevice.Send(byte[])
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/IUdpDevice.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Send
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/IUdpDevice.cs
+    startLine: 55
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Send byte array to the client
+  example: []
+  syntax:
+    content: void Send(byte[] data)
+    parameters:
+    - id: data
+      type: System.Byte[]
+      description: Byte array to send
+    content.vb: Sub Send(data As Byte())
+  overload: Bodoconsult.NetworkCommunication.Interfaces.IUdpDevice.Send*
+  nameWithType.vb: IUdpDevice.Send(Byte())
+  fullName.vb: Bodoconsult.NetworkCommunication.Interfaces.IUdpDevice.Send(Byte())
+  name.vb: Send(Byte())
+references:
+- uid: Bodoconsult.NetworkCommunication.Interfaces
+  commentId: N:Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.html
+  name: Bodoconsult.NetworkCommunication.Interfaces
+  nameWithType: Bodoconsult.NetworkCommunication.Interfaces
+  fullName: Bodoconsult.NetworkCommunication.Interfaces
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Interfaces
+    name: Interfaces
+    href: Bodoconsult.NetworkCommunication.Interfaces.html
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Interfaces
+    name: Interfaces
+    href: Bodoconsult.NetworkCommunication.Interfaces.html
+- uid: System.IDisposable.Dispose
+  commentId: M:System.IDisposable.Dispose
+  parent: System.IDisposable
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  name: Dispose()
+  nameWithType: IDisposable.Dispose()
+  fullName: System.IDisposable.Dispose()
+  spec.csharp:
+  - uid: System.IDisposable.Dispose
+    name: Dispose
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.IDisposable.Dispose
+    name: Dispose
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  - name: (
+  - name: )
+- uid: System.IDisposable
+  commentId: T:System.IDisposable
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable
+  name: IDisposable
+  nameWithType: IDisposable
+  fullName: System.IDisposable
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IUdpDevice.IpAddress*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.IUdpDevice.IpAddress
+  href: Bodoconsult.NetworkCommunication.Interfaces.IUdpDevice.html#Bodoconsult_NetworkCommunication_Interfaces_IUdpDevice_IpAddress
+  name: IpAddress
+  nameWithType: IUdpDevice.IpAddress
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IUdpDevice.IpAddress
+- uid: System.Net.IPAddress
+  commentId: T:System.Net.IPAddress
+  parent: System.Net
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.net.ipaddress
+  name: IPAddress
+  nameWithType: IPAddress
+  fullName: System.Net.IPAddress
+- uid: System.Net
+  commentId: N:System.Net
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Net
+  nameWithType: System.Net
+  fullName: System.Net
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Net
+    name: Net
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.net
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Net
+    name: Net
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.net
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IUdpDevice.Port*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.IUdpDevice.Port
+  href: Bodoconsult.NetworkCommunication.Interfaces.IUdpDevice.html#Bodoconsult_NetworkCommunication_Interfaces_IUdpDevice_Port
+  name: Port
+  nameWithType: IUdpDevice.Port
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IUdpDevice.Port
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IUdpDevice.RemotePort*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.IUdpDevice.RemotePort
+  href: Bodoconsult.NetworkCommunication.Interfaces.IUdpDevice.html#Bodoconsult_NetworkCommunication_Interfaces_IUdpDevice_RemotePort
+  name: RemotePort
+  nameWithType: IUdpDevice.RemotePort
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IUdpDevice.RemotePort
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IUdpDevice.SendTimeout*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.IUdpDevice.SendTimeout
+  href: Bodoconsult.NetworkCommunication.Interfaces.IUdpDevice.html#Bodoconsult_NetworkCommunication_Interfaces_IUdpDevice_SendTimeout
+  name: SendTimeout
+  nameWithType: IUdpDevice.SendTimeout
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IUdpDevice.SendTimeout
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IUdpDevice.ReceiveTimeout*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.IUdpDevice.ReceiveTimeout
+  href: Bodoconsult.NetworkCommunication.Interfaces.IUdpDevice.html#Bodoconsult_NetworkCommunication_Interfaces_IUdpDevice_ReceiveTimeout
+  name: ReceiveTimeout
+  nameWithType: IUdpDevice.ReceiveTimeout
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IUdpDevice.ReceiveTimeout
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IUdpDevice.CancellationTokenSource*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.IUdpDevice.CancellationTokenSource
+  href: Bodoconsult.NetworkCommunication.Interfaces.IUdpDevice.html#Bodoconsult_NetworkCommunication_Interfaces_IUdpDevice_CancellationTokenSource
+  name: CancellationTokenSource
+  nameWithType: IUdpDevice.CancellationTokenSource
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IUdpDevice.CancellationTokenSource
+- uid: System.Threading.CancellationTokenSource
+  commentId: T:System.Threading.CancellationTokenSource
+  parent: System.Threading
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtokensource
+  name: CancellationTokenSource
+  nameWithType: CancellationTokenSource
+  fullName: System.Threading.CancellationTokenSource
+- uid: System.Threading
+  commentId: N:System.Threading
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Threading
+  nameWithType: System.Threading
+  fullName: System.Threading
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IUdpDevice.ReceivedMessages*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.IUdpDevice.ReceivedMessages
+  href: Bodoconsult.NetworkCommunication.Interfaces.IUdpDevice.html#Bodoconsult_NetworkCommunication_Interfaces_IUdpDevice_ReceivedMessages
+  name: ReceivedMessages
+  nameWithType: IUdpDevice.ReceivedMessages
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IUdpDevice.ReceivedMessages
+- uid: System.Collections.Generic.List{System.ReadOnlyMemory{System.Byte}}
+  commentId: T:System.Collections.Generic.List{System.ReadOnlyMemory{System.Byte}}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.List`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  name: List<ReadOnlyMemory<byte>>
+  nameWithType: List<ReadOnlyMemory<byte>>
+  fullName: System.Collections.Generic.List<System.ReadOnlyMemory<byte>>
+  nameWithType.vb: List(Of ReadOnlyMemory(Of Byte))
+  fullName.vb: System.Collections.Generic.List(Of System.ReadOnlyMemory(Of Byte))
+  name.vb: List(Of ReadOnlyMemory(Of Byte))
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - uid: System.ReadOnlyMemory`1
+    name: ReadOnlyMemory
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.readonlymemory-1
+  - name: <
+  - uid: System.Byte
+    name: byte
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.byte
+  - name: '>'
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.ReadOnlyMemory`1
+    name: ReadOnlyMemory
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.readonlymemory-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Byte
+    name: Byte
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.byte
+  - name: )
+  - name: )
+- uid: System.Collections.Generic.List`1
+  commentId: T:System.Collections.Generic.List`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  name: List<T>
+  nameWithType: List<T>
+  fullName: System.Collections.Generic.List<T>
+  nameWithType.vb: List(Of T)
+  fullName.vb: System.Collections.Generic.List(Of T)
+  name.vb: List(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IUdpDevice.Start*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.IUdpDevice.Start
+  href: Bodoconsult.NetworkCommunication.Interfaces.IUdpDevice.html#Bodoconsult_NetworkCommunication_Interfaces_IUdpDevice_Start
+  name: Start
+  nameWithType: IUdpDevice.Start
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IUdpDevice.Start
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IUdpDevice.Send*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.IUdpDevice.Send
+  href: Bodoconsult.NetworkCommunication.Interfaces.IUdpDevice.html#Bodoconsult_NetworkCommunication_Interfaces_IUdpDevice_Send_System_Byte___
+  name: Send
+  nameWithType: IUdpDevice.Send
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IUdpDevice.Send
+- uid: System.Byte[]
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.byte
+  name: byte[]
+  nameWithType: byte[]
+  fullName: byte[]
+  nameWithType.vb: Byte()
+  fullName.vb: Byte()
+  name.vb: Byte()
+  spec.csharp:
+  - uid: System.Byte
+    name: byte
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.byte
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: System.Byte
+    name: Byte
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.byte
+  - name: (
+  - name: )

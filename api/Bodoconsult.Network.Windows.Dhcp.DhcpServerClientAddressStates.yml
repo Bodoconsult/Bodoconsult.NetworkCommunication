@@ -1,0 +1,219 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerClientAddressStates
+  commentId: T:Bodoconsult.Network.Windows.Dhcp.DhcpServerClientAddressStates
+  id: DhcpServerClientAddressStates
+  parent: Bodoconsult.Network.Windows.Dhcp
+  children:
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerClientAddressStates.Active
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerClientAddressStates.Declined
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerClientAddressStates.Doomed
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerClientAddressStates.Offered
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerClientAddressStates.Unknown
+  langs:
+  - csharp
+  - vb
+  name: DhcpServerClientAddressStates
+  nameWithType: DhcpServerClientAddressStates
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerClientAddressStates
+  type: Enum
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerClientAddressStates.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: DhcpServerClientAddressStates
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerClientAddressStates.cs
+    startLine: 5
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: public enum DhcpServerClientAddressStates
+    content.vb: Public Enum DhcpServerClientAddressStates
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerClientAddressStates.Offered
+  commentId: F:Bodoconsult.Network.Windows.Dhcp.DhcpServerClientAddressStates.Offered
+  id: Offered
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerClientAddressStates
+  langs:
+  - csharp
+  - vb
+  name: Offered
+  nameWithType: DhcpServerClientAddressStates.Offered
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerClientAddressStates.Offered
+  type: Field
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerClientAddressStates.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Offered
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerClientAddressStates.cs
+    startLine: 10
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  summary: The DHCPv4 client is offered this IPv4 address.
+  example: []
+  syntax:
+    content: Offered = 0
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerClientAddressStates
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerClientAddressStates.Active
+  commentId: F:Bodoconsult.Network.Windows.Dhcp.DhcpServerClientAddressStates.Active
+  id: Active
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerClientAddressStates
+  langs:
+  - csharp
+  - vb
+  name: Active
+  nameWithType: DhcpServerClientAddressStates.Active
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerClientAddressStates.Active
+  type: Field
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerClientAddressStates.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Active
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerClientAddressStates.cs
+    startLine: 14
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  summary: The IPv4 address is active and has an active DHCPv4 client lease record.
+  example: []
+  syntax:
+    content: Active = 1
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerClientAddressStates
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerClientAddressStates.Declined
+  commentId: F:Bodoconsult.Network.Windows.Dhcp.DhcpServerClientAddressStates.Declined
+  id: Declined
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerClientAddressStates
+  langs:
+  - csharp
+  - vb
+  name: Declined
+  nameWithType: DhcpServerClientAddressStates.Declined
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerClientAddressStates.Declined
+  type: Field
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerClientAddressStates.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Declined
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerClientAddressStates.cs
+    startLine: 18
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  summary: The IPv4 address request is declined by the DHCPv4 client; hence it is a bad IPv4 address.
+  example: []
+  syntax:
+    content: Declined = 2
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerClientAddressStates
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerClientAddressStates.Doomed
+  commentId: F:Bodoconsult.Network.Windows.Dhcp.DhcpServerClientAddressStates.Doomed
+  id: Doomed
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerClientAddressStates
+  langs:
+  - csharp
+  - vb
+  name: Doomed
+  nameWithType: DhcpServerClientAddressStates.Doomed
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerClientAddressStates.Doomed
+  type: Field
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerClientAddressStates.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Doomed
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerClientAddressStates.cs
+    startLine: 22
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  summary: The IPv4 address is in DOOMED state and is due to be deleted.
+  example: []
+  syntax:
+    content: Doomed = 3
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerClientAddressStates
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerClientAddressStates.Unknown
+  commentId: F:Bodoconsult.Network.Windows.Dhcp.DhcpServerClientAddressStates.Unknown
+  id: Unknown
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerClientAddressStates
+  langs:
+  - csharp
+  - vb
+  name: Unknown
+  nameWithType: DhcpServerClientAddressStates.Unknown
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerClientAddressStates.Unknown
+  type: Field
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerClientAddressStates.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Unknown
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerClientAddressStates.cs
+    startLine: 26
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  summary: The Address State is unknown or not supported by the server.
+  example: []
+  syntax:
+    content: Unknown = -1
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerClientAddressStates
+references:
+- uid: Bodoconsult.Network.Windows.Dhcp
+  commentId: N:Bodoconsult.Network.Windows.Dhcp
+  href: Bodoconsult.html
+  name: Bodoconsult.Network.Windows.Dhcp
+  nameWithType: Bodoconsult.Network.Windows.Dhcp
+  fullName: Bodoconsult.Network.Windows.Dhcp
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.Network
+    name: Network
+    href: Bodoconsult.Network.html
+  - name: .
+  - uid: Bodoconsult.Network.Windows
+    name: Windows
+    href: Bodoconsult.Network.Windows.html
+  - name: .
+  - uid: Bodoconsult.Network.Windows.Dhcp
+    name: Dhcp
+    href: Bodoconsult.Network.Windows.Dhcp.html
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.Network
+    name: Network
+    href: Bodoconsult.Network.html
+  - name: .
+  - uid: Bodoconsult.Network.Windows
+    name: Windows
+    href: Bodoconsult.Network.Windows.html
+  - name: .
+  - uid: Bodoconsult.Network.Windows.Dhcp
+    name: Dhcp
+    href: Bodoconsult.Network.Windows.Dhcp.html
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerClientAddressStates
+  commentId: T:Bodoconsult.Network.Windows.Dhcp.DhcpServerClientAddressStates
+  parent: Bodoconsult.Network.Windows.Dhcp
+  href: Bodoconsult.Network.Windows.Dhcp.DhcpServerClientAddressStates.html
+  name: DhcpServerClientAddressStates
+  nameWithType: DhcpServerClientAddressStates
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerClientAddressStates

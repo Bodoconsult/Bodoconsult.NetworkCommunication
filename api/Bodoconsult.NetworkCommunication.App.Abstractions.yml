@@ -1,0 +1,158 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bodoconsult.NetworkCommunication.App.Abstractions
+  commentId: N:Bodoconsult.NetworkCommunication.App.Abstractions
+  id: Bodoconsult.NetworkCommunication.App.Abstractions
+  children:
+  - Bodoconsult.NetworkCommunication.App.Abstractions.AppDateService
+  - Bodoconsult.NetworkCommunication.App.Abstractions.BaseClientNotification
+  - Bodoconsult.NetworkCommunication.App.Abstractions.ExceptionNotification
+  - Bodoconsult.NetworkCommunication.App.Abstractions.IAppDateService
+  - Bodoconsult.NetworkCommunication.App.Abstractions.ICentralClientNotificationManager
+  - Bodoconsult.NetworkCommunication.App.Abstractions.IMonitorLoggerFactoryFactory
+  - Bodoconsult.NetworkCommunication.App.Abstractions.LambdaExpressionHelper
+  - Bodoconsult.NetworkCommunication.App.Abstractions.MemoryExtensions
+  - Bodoconsult.NetworkCommunication.App.Abstractions.MonitorLoggerFactory
+  - Bodoconsult.NetworkCommunication.App.Abstractions.MonitorLoggerFactoryFactory
+  - Bodoconsult.NetworkCommunication.App.Abstractions.ProgressNotification
+  - Bodoconsult.NetworkCommunication.App.Abstractions.ReadOnlySequenceExtensions
+  - Bodoconsult.NetworkCommunication.App.Abstractions.TransferToClientDelegate
+  - Bodoconsult.NetworkCommunication.App.Abstractions.ValidationHelper
+  langs:
+  - csharp
+  - vb
+  name: Bodoconsult.NetworkCommunication.App.Abstractions
+  nameWithType: Bodoconsult.NetworkCommunication.App.Abstractions
+  fullName: Bodoconsult.NetworkCommunication.App.Abstractions
+  type: Namespace
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+references:
+- uid: Bodoconsult.NetworkCommunication.App.Abstractions.AppDateService
+  commentId: T:Bodoconsult.NetworkCommunication.App.Abstractions.AppDateService
+  href: Bodoconsult.NetworkCommunication.App.Abstractions.AppDateService.html
+  name: AppDateService
+  nameWithType: AppDateService
+  fullName: Bodoconsult.NetworkCommunication.App.Abstractions.AppDateService
+- uid: Bodoconsult.NetworkCommunication.App.Abstractions.BaseClientNotification
+  commentId: T:Bodoconsult.NetworkCommunication.App.Abstractions.BaseClientNotification
+  parent: Bodoconsult.NetworkCommunication.App.Abstractions
+  href: Bodoconsult.NetworkCommunication.App.Abstractions.BaseClientNotification.html
+  name: BaseClientNotification
+  nameWithType: BaseClientNotification
+  fullName: Bodoconsult.NetworkCommunication.App.Abstractions.BaseClientNotification
+- uid: Bodoconsult.NetworkCommunication.App.Abstractions.ExceptionNotification
+  commentId: T:Bodoconsult.NetworkCommunication.App.Abstractions.ExceptionNotification
+  href: Bodoconsult.NetworkCommunication.App.Abstractions.ExceptionNotification.html
+  name: ExceptionNotification
+  nameWithType: ExceptionNotification
+  fullName: Bodoconsult.NetworkCommunication.App.Abstractions.ExceptionNotification
+- uid: Bodoconsult.NetworkCommunication.App.Abstractions.IAppDateService
+  commentId: T:Bodoconsult.NetworkCommunication.App.Abstractions.IAppDateService
+  parent: Bodoconsult.NetworkCommunication.App.Abstractions
+  href: Bodoconsult.NetworkCommunication.App.Abstractions.IAppDateService.html
+  name: IAppDateService
+  nameWithType: IAppDateService
+  fullName: Bodoconsult.NetworkCommunication.App.Abstractions.IAppDateService
+- uid: Bodoconsult.NetworkCommunication.App.Abstractions.TransferToClientDelegate
+  commentId: T:Bodoconsult.NetworkCommunication.App.Abstractions.TransferToClientDelegate
+  parent: Bodoconsult.NetworkCommunication.App.Abstractions
+  href: Bodoconsult.NetworkCommunication.App.Abstractions.TransferToClientDelegate.html
+  name: TransferToClientDelegate
+  nameWithType: TransferToClientDelegate
+  fullName: Bodoconsult.NetworkCommunication.App.Abstractions.TransferToClientDelegate
+- uid: Bodoconsult.NetworkCommunication.App.Abstractions.ICentralClientNotificationManager
+  commentId: T:Bodoconsult.NetworkCommunication.App.Abstractions.ICentralClientNotificationManager
+  parent: Bodoconsult.NetworkCommunication.App.Abstractions
+  href: Bodoconsult.NetworkCommunication.App.Abstractions.ICentralClientNotificationManager.html
+  name: ICentralClientNotificationManager
+  nameWithType: ICentralClientNotificationManager
+  fullName: Bodoconsult.NetworkCommunication.App.Abstractions.ICentralClientNotificationManager
+- uid: Bodoconsult.NetworkCommunication.App.Abstractions.IMonitorLoggerFactoryFactory
+  commentId: T:Bodoconsult.NetworkCommunication.App.Abstractions.IMonitorLoggerFactoryFactory
+  parent: Bodoconsult.NetworkCommunication.App.Abstractions
+  href: Bodoconsult.NetworkCommunication.App.Abstractions.IMonitorLoggerFactoryFactory.html
+  name: IMonitorLoggerFactoryFactory
+  nameWithType: IMonitorLoggerFactoryFactory
+  fullName: Bodoconsult.NetworkCommunication.App.Abstractions.IMonitorLoggerFactoryFactory
+- uid: Bodoconsult.NetworkCommunication.App.Abstractions.LambdaExpressionHelper
+  commentId: T:Bodoconsult.NetworkCommunication.App.Abstractions.LambdaExpressionHelper
+  parent: Bodoconsult.NetworkCommunication.App.Abstractions
+  href: Bodoconsult.NetworkCommunication.App.Abstractions.LambdaExpressionHelper.html
+  name: LambdaExpressionHelper
+  nameWithType: LambdaExpressionHelper
+  fullName: Bodoconsult.NetworkCommunication.App.Abstractions.LambdaExpressionHelper
+- uid: Bodoconsult.NetworkCommunication.App.Abstractions.MemoryExtensions
+  commentId: T:Bodoconsult.NetworkCommunication.App.Abstractions.MemoryExtensions
+  href: Bodoconsult.NetworkCommunication.App.Abstractions.MemoryExtensions.html
+  name: MemoryExtensions
+  nameWithType: MemoryExtensions
+  fullName: Bodoconsult.NetworkCommunication.App.Abstractions.MemoryExtensions
+- uid: Bodoconsult.NetworkCommunication.App.Abstractions.MonitorLoggerFactory
+  commentId: T:Bodoconsult.NetworkCommunication.App.Abstractions.MonitorLoggerFactory
+  href: Bodoconsult.NetworkCommunication.App.Abstractions.MonitorLoggerFactory.html
+  name: MonitorLoggerFactory
+  nameWithType: MonitorLoggerFactory
+  fullName: Bodoconsult.NetworkCommunication.App.Abstractions.MonitorLoggerFactory
+- uid: Bodoconsult.NetworkCommunication.App.Abstractions.MonitorLoggerFactoryFactory
+  commentId: T:Bodoconsult.NetworkCommunication.App.Abstractions.MonitorLoggerFactoryFactory
+  href: Bodoconsult.NetworkCommunication.App.Abstractions.MonitorLoggerFactoryFactory.html
+  name: MonitorLoggerFactoryFactory
+  nameWithType: MonitorLoggerFactoryFactory
+  fullName: Bodoconsult.NetworkCommunication.App.Abstractions.MonitorLoggerFactoryFactory
+- uid: Bodoconsult.NetworkCommunication.App.Abstractions.ProgressNotification
+  commentId: T:Bodoconsult.NetworkCommunication.App.Abstractions.ProgressNotification
+  href: Bodoconsult.NetworkCommunication.App.Abstractions.ProgressNotification.html
+  name: ProgressNotification
+  nameWithType: ProgressNotification
+  fullName: Bodoconsult.NetworkCommunication.App.Abstractions.ProgressNotification
+- uid: Bodoconsult.NetworkCommunication.App.Abstractions.ReadOnlySequenceExtensions
+  commentId: T:Bodoconsult.NetworkCommunication.App.Abstractions.ReadOnlySequenceExtensions
+  href: Bodoconsult.NetworkCommunication.App.Abstractions.ReadOnlySequenceExtensions.html
+  name: ReadOnlySequenceExtensions
+  nameWithType: ReadOnlySequenceExtensions
+  fullName: Bodoconsult.NetworkCommunication.App.Abstractions.ReadOnlySequenceExtensions
+- uid: Bodoconsult.NetworkCommunication.App.Abstractions.ValidationHelper
+  commentId: T:Bodoconsult.NetworkCommunication.App.Abstractions.ValidationHelper
+  href: Bodoconsult.NetworkCommunication.App.Abstractions.ValidationHelper.html
+  name: ValidationHelper
+  nameWithType: ValidationHelper
+  fullName: Bodoconsult.NetworkCommunication.App.Abstractions.ValidationHelper
+- uid: Bodoconsult.NetworkCommunication.App.Abstractions
+  commentId: N:Bodoconsult.NetworkCommunication.App.Abstractions
+  href: Bodoconsult.html
+  name: Bodoconsult.NetworkCommunication.App.Abstractions
+  nameWithType: Bodoconsult.NetworkCommunication.App.Abstractions
+  fullName: Bodoconsult.NetworkCommunication.App.Abstractions
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.App
+    name: App
+    href: Bodoconsult.NetworkCommunication.App.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.App.Abstractions
+    name: Abstractions
+    href: Bodoconsult.NetworkCommunication.App.Abstractions.html
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.App
+    name: App
+    href: Bodoconsult.NetworkCommunication.App.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.App.Abstractions
+    name: Abstractions
+    href: Bodoconsult.NetworkCommunication.App.Abstractions.html

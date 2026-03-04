@@ -1,0 +1,1230 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeExcludedIpRangeCollection
+  commentId: T:Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeExcludedIpRangeCollection
+  id: DhcpServerScopeExcludedIpRangeCollection
+  parent: Bodoconsult.Network.Windows.Dhcp
+  children:
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeExcludedIpRangeCollection.AddExcludedIpRange(Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress,Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress)
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeExcludedIpRangeCollection.AddExcludedIpRange(Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress,Bodoconsult.Network.Windows.Dhcp.DhcpServerIpMask)
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeExcludedIpRangeCollection.AddExcludedIpRange(Bodoconsult.Network.Windows.Dhcp.DhcpServerIpRange)
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeExcludedIpRangeCollection.AddExcludedIpRange(System.String)
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeExcludedIpRangeCollection.GetEnumerator
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeExcludedIpRangeCollection.RemoveExcludedIpRange(Bodoconsult.Network.Windows.Dhcp.DhcpServerIpRange)
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeExcludedIpRangeCollection.Scope
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeExcludedIpRangeCollection.Server
+  langs:
+  - csharp
+  - vb
+  name: DhcpServerScopeExcludedIpRangeCollection
+  nameWithType: DhcpServerScopeExcludedIpRangeCollection
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeExcludedIpRangeCollection
+  type: Class
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerScopeExcludedIpRangeCollection.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: DhcpServerScopeExcludedIpRangeCollection
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerScopeExcludedIpRangeCollection.cs
+    startLine: 7
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: 'public class DhcpServerScopeExcludedIpRangeCollection : IDhcpServerScopeExcludedIpRangeCollection, IEnumerable<DhcpServerIpRange>, IEnumerable'
+    content.vb: Public Class DhcpServerScopeExcludedIpRangeCollection Implements IDhcpServerScopeExcludedIpRangeCollection, IEnumerable(Of DhcpServerIpRange), IEnumerable
+  inheritance:
+  - System.Object
+  implements:
+  - Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeExcludedIpRangeCollection
+  - System.Collections.Generic.IEnumerable{Bodoconsult.Network.Windows.Dhcp.DhcpServerIpRange}
+  - System.Collections.IEnumerable
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  extensionMethods:
+  - System.Collections.Generic.IEnumerable{Bodoconsult.Network.Windows.Dhcp.DhcpServerIpRange}.Bodoconsult.NetworkCommunication.App.Abstractions.LambdaExpressionHelper.OrderBy``1(System.String)
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeExcludedIpRangeCollection.Server
+  commentId: P:Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeExcludedIpRangeCollection.Server
+  id: Server
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeExcludedIpRangeCollection
+  langs:
+  - csharp
+  - vb
+  name: Server
+  nameWithType: DhcpServerScopeExcludedIpRangeCollection.Server
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeExcludedIpRangeCollection.Server
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerScopeExcludedIpRangeCollection.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Server
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerScopeExcludedIpRangeCollection.cs
+    startLine: 9
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: public DhcpServer Server { get; }
+    parameters: []
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServer
+    content.vb: Public ReadOnly Property Server As DhcpServer
+  overload: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeExcludedIpRangeCollection.Server*
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeExcludedIpRangeCollection.Scope
+  commentId: P:Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeExcludedIpRangeCollection.Scope
+  id: Scope
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeExcludedIpRangeCollection
+  langs:
+  - csharp
+  - vb
+  name: Scope
+  nameWithType: DhcpServerScopeExcludedIpRangeCollection.Scope
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeExcludedIpRangeCollection.Scope
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerScopeExcludedIpRangeCollection.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Scope
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerScopeExcludedIpRangeCollection.cs
+    startLine: 11
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: public DhcpServerScope Scope { get; }
+    parameters: []
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope
+    content.vb: Public ReadOnly Property Scope As DhcpServerScope
+  overload: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeExcludedIpRangeCollection.Scope*
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeExcludedIpRangeCollection.GetEnumerator
+  commentId: M:Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeExcludedIpRangeCollection.GetEnumerator
+  id: GetEnumerator
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeExcludedIpRangeCollection
+  langs:
+  - csharp
+  - vb
+  name: GetEnumerator()
+  nameWithType: DhcpServerScopeExcludedIpRangeCollection.GetEnumerator()
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeExcludedIpRangeCollection.GetEnumerator()
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerScopeExcludedIpRangeCollection.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: GetEnumerator
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerScopeExcludedIpRangeCollection.cs
+    startLine: 23
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  summary: Enumerates a list of excluded IP ranges associated with the DHCP Scope
+  example: []
+  syntax:
+    content: public IEnumerator<DhcpServerIpRange> GetEnumerator()
+    return:
+      type: System.Collections.Generic.IEnumerator{Bodoconsult.Network.Windows.Dhcp.DhcpServerIpRange}
+    content.vb: Public Function GetEnumerator() As IEnumerator(Of DhcpServerIpRange)
+  overload: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeExcludedIpRangeCollection.GetEnumerator*
+  implements:
+  - System.Collections.Generic.IEnumerable{Bodoconsult.Network.Windows.Dhcp.DhcpServerIpRange}.GetEnumerator
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeExcludedIpRangeCollection.AddExcludedIpRange(Bodoconsult.Network.Windows.Dhcp.DhcpServerIpRange)
+  commentId: M:Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeExcludedIpRangeCollection.AddExcludedIpRange(Bodoconsult.Network.Windows.Dhcp.DhcpServerIpRange)
+  id: AddExcludedIpRange(Bodoconsult.Network.Windows.Dhcp.DhcpServerIpRange)
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeExcludedIpRangeCollection
+  langs:
+  - csharp
+  - vb
+  name: AddExcludedIpRange(DhcpServerIpRange)
+  nameWithType: DhcpServerScopeExcludedIpRangeCollection.AddExcludedIpRange(DhcpServerIpRange)
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeExcludedIpRangeCollection.AddExcludedIpRange(Bodoconsult.Network.Windows.Dhcp.DhcpServerIpRange)
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerScopeExcludedIpRangeCollection.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: AddExcludedIpRange
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerScopeExcludedIpRangeCollection.cs
+    startLine: 32
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  example: []
+  syntax:
+    content: public void AddExcludedIpRange(DhcpServerIpRange range)
+    parameters:
+    - id: range
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpRange
+    content.vb: Public Sub AddExcludedIpRange(range As DhcpServerIpRange)
+  overload: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeExcludedIpRangeCollection.AddExcludedIpRange*
+  implements:
+  - Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeExcludedIpRangeCollection.AddExcludedIpRange(Bodoconsult.Network.Windows.Dhcp.DhcpServerIpRange)
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeExcludedIpRangeCollection.AddExcludedIpRange(Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress,Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress)
+  commentId: M:Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeExcludedIpRangeCollection.AddExcludedIpRange(Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress,Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress)
+  id: AddExcludedIpRange(Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress,Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress)
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeExcludedIpRangeCollection
+  langs:
+  - csharp
+  - vb
+  name: AddExcludedIpRange(DhcpServerIpAddress, DhcpServerIpAddress)
+  nameWithType: DhcpServerScopeExcludedIpRangeCollection.AddExcludedIpRange(DhcpServerIpAddress, DhcpServerIpAddress)
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeExcludedIpRangeCollection.AddExcludedIpRange(Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress, Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress)
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerScopeExcludedIpRangeCollection.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: AddExcludedIpRange
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerScopeExcludedIpRangeCollection.cs
+    startLine: 34
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  example: []
+  syntax:
+    content: public void AddExcludedIpRange(DhcpServerIpAddress startAddress, DhcpServerIpAddress endAddress)
+    parameters:
+    - id: startAddress
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress
+    - id: endAddress
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress
+    content.vb: Public Sub AddExcludedIpRange(startAddress As DhcpServerIpAddress, endAddress As DhcpServerIpAddress)
+  overload: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeExcludedIpRangeCollection.AddExcludedIpRange*
+  implements:
+  - Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeExcludedIpRangeCollection.AddExcludedIpRange(Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress,Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress)
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeExcludedIpRangeCollection.AddExcludedIpRange(Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress,Bodoconsult.Network.Windows.Dhcp.DhcpServerIpMask)
+  commentId: M:Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeExcludedIpRangeCollection.AddExcludedIpRange(Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress,Bodoconsult.Network.Windows.Dhcp.DhcpServerIpMask)
+  id: AddExcludedIpRange(Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress,Bodoconsult.Network.Windows.Dhcp.DhcpServerIpMask)
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeExcludedIpRangeCollection
+  langs:
+  - csharp
+  - vb
+  name: AddExcludedIpRange(DhcpServerIpAddress, DhcpServerIpMask)
+  nameWithType: DhcpServerScopeExcludedIpRangeCollection.AddExcludedIpRange(DhcpServerIpAddress, DhcpServerIpMask)
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeExcludedIpRangeCollection.AddExcludedIpRange(Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress, Bodoconsult.Network.Windows.Dhcp.DhcpServerIpMask)
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerScopeExcludedIpRangeCollection.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: AddExcludedIpRange
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerScopeExcludedIpRangeCollection.cs
+    startLine: 36
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  example: []
+  syntax:
+    content: public void AddExcludedIpRange(DhcpServerIpAddress address, DhcpServerIpMask mask)
+    parameters:
+    - id: address
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress
+    - id: mask
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpMask
+    content.vb: Public Sub AddExcludedIpRange(address As DhcpServerIpAddress, mask As DhcpServerIpMask)
+  overload: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeExcludedIpRangeCollection.AddExcludedIpRange*
+  implements:
+  - Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeExcludedIpRangeCollection.AddExcludedIpRange(Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress,Bodoconsult.Network.Windows.Dhcp.DhcpServerIpMask)
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeExcludedIpRangeCollection.AddExcludedIpRange(System.String)
+  commentId: M:Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeExcludedIpRangeCollection.AddExcludedIpRange(System.String)
+  id: AddExcludedIpRange(System.String)
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeExcludedIpRangeCollection
+  langs:
+  - csharp
+  - vb
+  name: AddExcludedIpRange(string)
+  nameWithType: DhcpServerScopeExcludedIpRangeCollection.AddExcludedIpRange(string)
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeExcludedIpRangeCollection.AddExcludedIpRange(string)
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerScopeExcludedIpRangeCollection.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: AddExcludedIpRange
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerScopeExcludedIpRangeCollection.cs
+    startLine: 38
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  example: []
+  syntax:
+    content: public void AddExcludedIpRange(string cidrRange)
+    parameters:
+    - id: cidrRange
+      type: System.String
+    content.vb: Public Sub AddExcludedIpRange(cidrRange As String)
+  overload: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeExcludedIpRangeCollection.AddExcludedIpRange*
+  implements:
+  - Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeExcludedIpRangeCollection.AddExcludedIpRange(System.String)
+  nameWithType.vb: DhcpServerScopeExcludedIpRangeCollection.AddExcludedIpRange(String)
+  fullName.vb: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeExcludedIpRangeCollection.AddExcludedIpRange(String)
+  name.vb: AddExcludedIpRange(String)
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeExcludedIpRangeCollection.RemoveExcludedIpRange(Bodoconsult.Network.Windows.Dhcp.DhcpServerIpRange)
+  commentId: M:Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeExcludedIpRangeCollection.RemoveExcludedIpRange(Bodoconsult.Network.Windows.Dhcp.DhcpServerIpRange)
+  id: RemoveExcludedIpRange(Bodoconsult.Network.Windows.Dhcp.DhcpServerIpRange)
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeExcludedIpRangeCollection
+  langs:
+  - csharp
+  - vb
+  name: RemoveExcludedIpRange(DhcpServerIpRange)
+  nameWithType: DhcpServerScopeExcludedIpRangeCollection.RemoveExcludedIpRange(DhcpServerIpRange)
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeExcludedIpRangeCollection.RemoveExcludedIpRange(Bodoconsult.Network.Windows.Dhcp.DhcpServerIpRange)
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerScopeExcludedIpRangeCollection.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: RemoveExcludedIpRange
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerScopeExcludedIpRangeCollection.cs
+    startLine: 41
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  example: []
+  syntax:
+    content: public void RemoveExcludedIpRange(DhcpServerIpRange range)
+    parameters:
+    - id: range
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpRange
+    content.vb: Public Sub RemoveExcludedIpRange(range As DhcpServerIpRange)
+  overload: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeExcludedIpRangeCollection.RemoveExcludedIpRange*
+  implements:
+  - Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeExcludedIpRangeCollection.RemoveExcludedIpRange(Bodoconsult.Network.Windows.Dhcp.DhcpServerIpRange)
+references:
+- uid: Bodoconsult.Network.Windows.Dhcp
+  commentId: N:Bodoconsult.Network.Windows.Dhcp
+  href: Bodoconsult.html
+  name: Bodoconsult.Network.Windows.Dhcp
+  nameWithType: Bodoconsult.Network.Windows.Dhcp
+  fullName: Bodoconsult.Network.Windows.Dhcp
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.Network
+    name: Network
+    href: Bodoconsult.Network.html
+  - name: .
+  - uid: Bodoconsult.Network.Windows
+    name: Windows
+    href: Bodoconsult.Network.Windows.html
+  - name: .
+  - uid: Bodoconsult.Network.Windows.Dhcp
+    name: Dhcp
+    href: Bodoconsult.Network.Windows.Dhcp.html
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.Network
+    name: Network
+    href: Bodoconsult.Network.html
+  - name: .
+  - uid: Bodoconsult.Network.Windows
+    name: Windows
+    href: Bodoconsult.Network.Windows.html
+  - name: .
+  - uid: Bodoconsult.Network.Windows.Dhcp
+    name: Dhcp
+    href: Bodoconsult.Network.Windows.Dhcp.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeExcludedIpRangeCollection
+  commentId: T:Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeExcludedIpRangeCollection
+  parent: Bodoconsult.Network.Windows.Dhcp
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeExcludedIpRangeCollection.html
+  name: IDhcpServerScopeExcludedIpRangeCollection
+  nameWithType: IDhcpServerScopeExcludedIpRangeCollection
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeExcludedIpRangeCollection
+- uid: System.Collections.Generic.IEnumerable{Bodoconsult.Network.Windows.Dhcp.DhcpServerIpRange}
+  commentId: T:System.Collections.Generic.IEnumerable{Bodoconsult.Network.Windows.Dhcp.DhcpServerIpRange}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IEnumerable`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<DhcpServerIpRange>
+  nameWithType: IEnumerable<DhcpServerIpRange>
+  fullName: System.Collections.Generic.IEnumerable<Bodoconsult.Network.Windows.Dhcp.DhcpServerIpRange>
+  nameWithType.vb: IEnumerable(Of DhcpServerIpRange)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of Bodoconsult.Network.Windows.Dhcp.DhcpServerIpRange)
+  name.vb: IEnumerable(Of DhcpServerIpRange)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpRange
+    name: DhcpServerIpRange
+    href: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpRange.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpRange
+    name: DhcpServerIpRange
+    href: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpRange.html
+  - name: )
+- uid: System.Collections.IEnumerable
+  commentId: T:System.Collections.IEnumerable
+  parent: System.Collections
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.ienumerable
+  name: IEnumerable
+  nameWithType: IEnumerable
+  fullName: System.Collections.IEnumerable
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System.Collections.Generic.IEnumerable{Bodoconsult.Network.Windows.Dhcp.DhcpServerIpRange}.Bodoconsult.NetworkCommunication.App.Abstractions.LambdaExpressionHelper.OrderBy``1(System.String)
+  commentId: M:Bodoconsult.NetworkCommunication.App.Abstractions.LambdaExpressionHelper.OrderBy``1(System.Collections.Generic.IEnumerable{``0},System.String)
+  parent: Bodoconsult.NetworkCommunication.App.Abstractions.LambdaExpressionHelper
+  definition: Bodoconsult.NetworkCommunication.App.Abstractions.LambdaExpressionHelper.OrderBy``1(System.Collections.Generic.IEnumerable{``0},System.String)
+  href: Bodoconsult.NetworkCommunication.App.Abstractions.LambdaExpressionHelper.html#Bodoconsult_NetworkCommunication_App_Abstractions_LambdaExpressionHelper_OrderBy__1_System_Collections_Generic_IEnumerable___0__System_String_
+  name: OrderBy<DhcpServerIpRange>(IEnumerable<DhcpServerIpRange>, string)
+  nameWithType: LambdaExpressionHelper.OrderBy<DhcpServerIpRange>(IEnumerable<DhcpServerIpRange>, string)
+  fullName: Bodoconsult.NetworkCommunication.App.Abstractions.LambdaExpressionHelper.OrderBy<Bodoconsult.Network.Windows.Dhcp.DhcpServerIpRange>(System.Collections.Generic.IEnumerable<Bodoconsult.Network.Windows.Dhcp.DhcpServerIpRange>, string)
+  nameWithType.vb: LambdaExpressionHelper.OrderBy(Of DhcpServerIpRange)(IEnumerable(Of DhcpServerIpRange), String)
+  fullName.vb: Bodoconsult.NetworkCommunication.App.Abstractions.LambdaExpressionHelper.OrderBy(Of Bodoconsult.Network.Windows.Dhcp.DhcpServerIpRange)(System.Collections.Generic.IEnumerable(Of Bodoconsult.Network.Windows.Dhcp.DhcpServerIpRange), String)
+  name.vb: OrderBy(Of DhcpServerIpRange)(IEnumerable(Of DhcpServerIpRange), String)
+  spec.csharp:
+  - uid: Bodoconsult.NetworkCommunication.App.Abstractions.LambdaExpressionHelper.OrderBy``1(System.Collections.Generic.IEnumerable{Bodoconsult.Network.Windows.Dhcp.DhcpServerIpRange},System.String)
+    name: OrderBy
+    href: Bodoconsult.NetworkCommunication.App.Abstractions.LambdaExpressionHelper.html#Bodoconsult_NetworkCommunication_App_Abstractions_LambdaExpressionHelper_OrderBy__1_System_Collections_Generic_IEnumerable___0__System_String_
+  - name: <
+  - uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpRange
+    name: DhcpServerIpRange
+    href: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpRange.html
+  - name: '>'
+  - name: (
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpRange
+    name: DhcpServerIpRange
+    href: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpRange.html
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.NetworkCommunication.App.Abstractions.LambdaExpressionHelper.OrderBy``1(System.Collections.Generic.IEnumerable{Bodoconsult.Network.Windows.Dhcp.DhcpServerIpRange},System.String)
+    name: OrderBy
+    href: Bodoconsult.NetworkCommunication.App.Abstractions.LambdaExpressionHelper.html#Bodoconsult_NetworkCommunication_App_Abstractions_LambdaExpressionHelper_OrderBy__1_System_Collections_Generic_IEnumerable___0__System_String_
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpRange
+    name: DhcpServerIpRange
+    href: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpRange.html
+  - name: )
+  - name: (
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpRange
+    name: DhcpServerIpRange
+    href: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpRange.html
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.Collections.Generic.IEnumerable`1
+  commentId: T:System.Collections.Generic.IEnumerable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<T>
+  nameWithType: IEnumerable<T>
+  fullName: System.Collections.Generic.IEnumerable<T>
+  nameWithType.vb: IEnumerable(Of T)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of T)
+  name.vb: IEnumerable(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: System.Collections
+  commentId: N:System.Collections
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections
+  nameWithType: System.Collections
+  fullName: System.Collections
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+- uid: Bodoconsult.NetworkCommunication.App.Abstractions.LambdaExpressionHelper.OrderBy``1(System.Collections.Generic.IEnumerable{``0},System.String)
+  commentId: M:Bodoconsult.NetworkCommunication.App.Abstractions.LambdaExpressionHelper.OrderBy``1(System.Collections.Generic.IEnumerable{``0},System.String)
+  isExternal: true
+  href: Bodoconsult.NetworkCommunication.App.Abstractions.LambdaExpressionHelper.html#Bodoconsult_NetworkCommunication_App_Abstractions_LambdaExpressionHelper_OrderBy__1_System_Collections_Generic_IEnumerable___0__System_String_
+  name: OrderBy<TSource>(IEnumerable<TSource>, string)
+  nameWithType: LambdaExpressionHelper.OrderBy<TSource>(IEnumerable<TSource>, string)
+  fullName: Bodoconsult.NetworkCommunication.App.Abstractions.LambdaExpressionHelper.OrderBy<TSource>(System.Collections.Generic.IEnumerable<TSource>, string)
+  nameWithType.vb: LambdaExpressionHelper.OrderBy(Of TSource)(IEnumerable(Of TSource), String)
+  fullName.vb: Bodoconsult.NetworkCommunication.App.Abstractions.LambdaExpressionHelper.OrderBy(Of TSource)(System.Collections.Generic.IEnumerable(Of TSource), String)
+  name.vb: OrderBy(Of TSource)(IEnumerable(Of TSource), String)
+  spec.csharp:
+  - uid: Bodoconsult.NetworkCommunication.App.Abstractions.LambdaExpressionHelper.OrderBy``1(System.Collections.Generic.IEnumerable{``0},System.String)
+    name: OrderBy
+    href: Bodoconsult.NetworkCommunication.App.Abstractions.LambdaExpressionHelper.html#Bodoconsult_NetworkCommunication_App_Abstractions_LambdaExpressionHelper_OrderBy__1_System_Collections_Generic_IEnumerable___0__System_String_
+  - name: <
+  - name: TSource
+  - name: '>'
+  - name: (
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - name: TSource
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.NetworkCommunication.App.Abstractions.LambdaExpressionHelper.OrderBy``1(System.Collections.Generic.IEnumerable{``0},System.String)
+    name: OrderBy
+    href: Bodoconsult.NetworkCommunication.App.Abstractions.LambdaExpressionHelper.html#Bodoconsult_NetworkCommunication_App_Abstractions_LambdaExpressionHelper_OrderBy__1_System_Collections_Generic_IEnumerable___0__System_String_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TSource
+  - name: )
+  - name: (
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TSource
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: Bodoconsult.NetworkCommunication.App.Abstractions.LambdaExpressionHelper
+  commentId: T:Bodoconsult.NetworkCommunication.App.Abstractions.LambdaExpressionHelper
+  parent: Bodoconsult.NetworkCommunication.App.Abstractions
+  href: Bodoconsult.NetworkCommunication.App.Abstractions.LambdaExpressionHelper.html
+  name: LambdaExpressionHelper
+  nameWithType: LambdaExpressionHelper
+  fullName: Bodoconsult.NetworkCommunication.App.Abstractions.LambdaExpressionHelper
+- uid: Bodoconsult.NetworkCommunication.App.Abstractions
+  commentId: N:Bodoconsult.NetworkCommunication.App.Abstractions
+  href: Bodoconsult.html
+  name: Bodoconsult.NetworkCommunication.App.Abstractions
+  nameWithType: Bodoconsult.NetworkCommunication.App.Abstractions
+  fullName: Bodoconsult.NetworkCommunication.App.Abstractions
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.App
+    name: App
+    href: Bodoconsult.NetworkCommunication.App.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.App.Abstractions
+    name: Abstractions
+    href: Bodoconsult.NetworkCommunication.App.Abstractions.html
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.App
+    name: App
+    href: Bodoconsult.NetworkCommunication.App.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.App.Abstractions
+    name: Abstractions
+    href: Bodoconsult.NetworkCommunication.App.Abstractions.html
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeExcludedIpRangeCollection.Server*
+  commentId: Overload:Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeExcludedIpRangeCollection.Server
+  href: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeExcludedIpRangeCollection.html#Bodoconsult_Network_Windows_Dhcp_DhcpServerScopeExcludedIpRangeCollection_Server
+  name: Server
+  nameWithType: DhcpServerScopeExcludedIpRangeCollection.Server
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeExcludedIpRangeCollection.Server
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServer
+  commentId: T:Bodoconsult.Network.Windows.Dhcp.DhcpServer
+  parent: Bodoconsult.Network.Windows.Dhcp
+  href: Bodoconsult.Network.Windows.Dhcp.DhcpServer.html
+  name: DhcpServer
+  nameWithType: DhcpServer
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServer
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeExcludedIpRangeCollection.Scope*
+  commentId: Overload:Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeExcludedIpRangeCollection.Scope
+  href: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeExcludedIpRangeCollection.html#Bodoconsult_Network_Windows_Dhcp_DhcpServerScopeExcludedIpRangeCollection_Scope
+  name: Scope
+  nameWithType: DhcpServerScopeExcludedIpRangeCollection.Scope
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeExcludedIpRangeCollection.Scope
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope
+  commentId: T:Bodoconsult.Network.Windows.Dhcp.DhcpServerScope
+  parent: Bodoconsult.Network.Windows.Dhcp
+  href: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.html
+  name: DhcpServerScope
+  nameWithType: DhcpServerScope
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeExcludedIpRangeCollection.GetEnumerator*
+  commentId: Overload:Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeExcludedIpRangeCollection.GetEnumerator
+  href: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeExcludedIpRangeCollection.html#Bodoconsult_Network_Windows_Dhcp_DhcpServerScopeExcludedIpRangeCollection_GetEnumerator
+  name: GetEnumerator
+  nameWithType: DhcpServerScopeExcludedIpRangeCollection.GetEnumerator
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeExcludedIpRangeCollection.GetEnumerator
+- uid: System.Collections.Generic.IEnumerable{Bodoconsult.Network.Windows.Dhcp.DhcpServerIpRange}.GetEnumerator
+  commentId: M:System.Collections.Generic.IEnumerable{Bodoconsult.Network.Windows.Dhcp.DhcpServerIpRange}.GetEnumerator
+  parent: System.Collections.Generic.IEnumerable{Bodoconsult.Network.Windows.Dhcp.DhcpServerIpRange}
+  definition: System.Collections.Generic.IEnumerable`1.GetEnumerator
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1.getenumerator
+  name: GetEnumerator()
+  nameWithType: IEnumerable<DhcpServerIpRange>.GetEnumerator()
+  fullName: System.Collections.Generic.IEnumerable<Bodoconsult.Network.Windows.Dhcp.DhcpServerIpRange>.GetEnumerator()
+  nameWithType.vb: IEnumerable(Of DhcpServerIpRange).GetEnumerator()
+  fullName.vb: System.Collections.Generic.IEnumerable(Of Bodoconsult.Network.Windows.Dhcp.DhcpServerIpRange).GetEnumerator()
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable{Bodoconsult.Network.Windows.Dhcp.DhcpServerIpRange}.GetEnumerator
+    name: GetEnumerator
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1.getenumerator
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable{Bodoconsult.Network.Windows.Dhcp.DhcpServerIpRange}.GetEnumerator
+    name: GetEnumerator
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1.getenumerator
+  - name: (
+  - name: )
+- uid: System.Collections.Generic.IEnumerator{Bodoconsult.Network.Windows.Dhcp.DhcpServerIpRange}
+  commentId: T:System.Collections.Generic.IEnumerator{Bodoconsult.Network.Windows.Dhcp.DhcpServerIpRange}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IEnumerator`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerator-1
+  name: IEnumerator<DhcpServerIpRange>
+  nameWithType: IEnumerator<DhcpServerIpRange>
+  fullName: System.Collections.Generic.IEnumerator<Bodoconsult.Network.Windows.Dhcp.DhcpServerIpRange>
+  nameWithType.vb: IEnumerator(Of DhcpServerIpRange)
+  fullName.vb: System.Collections.Generic.IEnumerator(Of Bodoconsult.Network.Windows.Dhcp.DhcpServerIpRange)
+  name.vb: IEnumerator(Of DhcpServerIpRange)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerator`1
+    name: IEnumerator
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerator-1
+  - name: <
+  - uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpRange
+    name: DhcpServerIpRange
+    href: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpRange.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerator`1
+    name: IEnumerator
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerator-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpRange
+    name: DhcpServerIpRange
+    href: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpRange.html
+  - name: )
+- uid: System.Collections.Generic.IEnumerable`1.GetEnumerator
+  commentId: M:System.Collections.Generic.IEnumerable`1.GetEnumerator
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1.getenumerator
+  name: GetEnumerator()
+  nameWithType: IEnumerable<T>.GetEnumerator()
+  fullName: System.Collections.Generic.IEnumerable<T>.GetEnumerator()
+  nameWithType.vb: IEnumerable(Of T).GetEnumerator()
+  fullName.vb: System.Collections.Generic.IEnumerable(Of T).GetEnumerator()
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1.GetEnumerator
+    name: GetEnumerator
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1.getenumerator
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1.GetEnumerator
+    name: GetEnumerator
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1.getenumerator
+  - name: (
+  - name: )
+- uid: System.Collections.Generic.IEnumerator`1
+  commentId: T:System.Collections.Generic.IEnumerator`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerator-1
+  name: IEnumerator<T>
+  nameWithType: IEnumerator<T>
+  fullName: System.Collections.Generic.IEnumerator<T>
+  nameWithType.vb: IEnumerator(Of T)
+  fullName.vb: System.Collections.Generic.IEnumerator(Of T)
+  name.vb: IEnumerator(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerator`1
+    name: IEnumerator
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerator-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerator`1
+    name: IEnumerator
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerator-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeExcludedIpRangeCollection.AddExcludedIpRange*
+  commentId: Overload:Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeExcludedIpRangeCollection.AddExcludedIpRange
+  href: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeExcludedIpRangeCollection.html#Bodoconsult_Network_Windows_Dhcp_DhcpServerScopeExcludedIpRangeCollection_AddExcludedIpRange_Bodoconsult_Network_Windows_Dhcp_DhcpServerIpRange_
+  name: AddExcludedIpRange
+  nameWithType: DhcpServerScopeExcludedIpRangeCollection.AddExcludedIpRange
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeExcludedIpRangeCollection.AddExcludedIpRange
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeExcludedIpRangeCollection.AddExcludedIpRange(Bodoconsult.Network.Windows.Dhcp.DhcpServerIpRange)
+  commentId: M:Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeExcludedIpRangeCollection.AddExcludedIpRange(Bodoconsult.Network.Windows.Dhcp.DhcpServerIpRange)
+  parent: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeExcludedIpRangeCollection
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeExcludedIpRangeCollection.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerScopeExcludedIpRangeCollection_AddExcludedIpRange_Bodoconsult_Network_Windows_Dhcp_DhcpServerIpRange_
+  name: AddExcludedIpRange(DhcpServerIpRange)
+  nameWithType: IDhcpServerScopeExcludedIpRangeCollection.AddExcludedIpRange(DhcpServerIpRange)
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeExcludedIpRangeCollection.AddExcludedIpRange(Bodoconsult.Network.Windows.Dhcp.DhcpServerIpRange)
+  spec.csharp:
+  - uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeExcludedIpRangeCollection.AddExcludedIpRange(Bodoconsult.Network.Windows.Dhcp.DhcpServerIpRange)
+    name: AddExcludedIpRange
+    href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeExcludedIpRangeCollection.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerScopeExcludedIpRangeCollection_AddExcludedIpRange_Bodoconsult_Network_Windows_Dhcp_DhcpServerIpRange_
+  - name: (
+  - uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpRange
+    name: DhcpServerIpRange
+    href: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpRange.html
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeExcludedIpRangeCollection.AddExcludedIpRange(Bodoconsult.Network.Windows.Dhcp.DhcpServerIpRange)
+    name: AddExcludedIpRange
+    href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeExcludedIpRangeCollection.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerScopeExcludedIpRangeCollection_AddExcludedIpRange_Bodoconsult_Network_Windows_Dhcp_DhcpServerIpRange_
+  - name: (
+  - uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpRange
+    name: DhcpServerIpRange
+    href: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpRange.html
+  - name: )
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpRange
+  commentId: T:Bodoconsult.Network.Windows.Dhcp.DhcpServerIpRange
+  parent: Bodoconsult.Network.Windows.Dhcp
+  href: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpRange.html
+  name: DhcpServerIpRange
+  nameWithType: DhcpServerIpRange
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpRange
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeExcludedIpRangeCollection.AddExcludedIpRange(Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress,Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress)
+  commentId: M:Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeExcludedIpRangeCollection.AddExcludedIpRange(Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress,Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress)
+  parent: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeExcludedIpRangeCollection
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeExcludedIpRangeCollection.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerScopeExcludedIpRangeCollection_AddExcludedIpRange_Bodoconsult_Network_Windows_Dhcp_DhcpServerIpAddress_Bodoconsult_Network_Windows_Dhcp_DhcpServerIpAddress_
+  name: AddExcludedIpRange(DhcpServerIpAddress, DhcpServerIpAddress)
+  nameWithType: IDhcpServerScopeExcludedIpRangeCollection.AddExcludedIpRange(DhcpServerIpAddress, DhcpServerIpAddress)
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeExcludedIpRangeCollection.AddExcludedIpRange(Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress, Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress)
+  spec.csharp:
+  - uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeExcludedIpRangeCollection.AddExcludedIpRange(Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress,Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress)
+    name: AddExcludedIpRange
+    href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeExcludedIpRangeCollection.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerScopeExcludedIpRangeCollection_AddExcludedIpRange_Bodoconsult_Network_Windows_Dhcp_DhcpServerIpAddress_Bodoconsult_Network_Windows_Dhcp_DhcpServerIpAddress_
+  - name: (
+  - uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress
+    name: DhcpServerIpAddress
+    href: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.html
+  - name: ','
+  - name: " "
+  - uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress
+    name: DhcpServerIpAddress
+    href: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.html
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeExcludedIpRangeCollection.AddExcludedIpRange(Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress,Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress)
+    name: AddExcludedIpRange
+    href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeExcludedIpRangeCollection.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerScopeExcludedIpRangeCollection_AddExcludedIpRange_Bodoconsult_Network_Windows_Dhcp_DhcpServerIpAddress_Bodoconsult_Network_Windows_Dhcp_DhcpServerIpAddress_
+  - name: (
+  - uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress
+    name: DhcpServerIpAddress
+    href: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.html
+  - name: ','
+  - name: " "
+  - uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress
+    name: DhcpServerIpAddress
+    href: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.html
+  - name: )
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress
+  commentId: T:Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress
+  parent: Bodoconsult.Network.Windows.Dhcp
+  href: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.html
+  name: DhcpServerIpAddress
+  nameWithType: DhcpServerIpAddress
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeExcludedIpRangeCollection.AddExcludedIpRange(Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress,Bodoconsult.Network.Windows.Dhcp.DhcpServerIpMask)
+  commentId: M:Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeExcludedIpRangeCollection.AddExcludedIpRange(Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress,Bodoconsult.Network.Windows.Dhcp.DhcpServerIpMask)
+  parent: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeExcludedIpRangeCollection
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeExcludedIpRangeCollection.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerScopeExcludedIpRangeCollection_AddExcludedIpRange_Bodoconsult_Network_Windows_Dhcp_DhcpServerIpAddress_Bodoconsult_Network_Windows_Dhcp_DhcpServerIpMask_
+  name: AddExcludedIpRange(DhcpServerIpAddress, DhcpServerIpMask)
+  nameWithType: IDhcpServerScopeExcludedIpRangeCollection.AddExcludedIpRange(DhcpServerIpAddress, DhcpServerIpMask)
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeExcludedIpRangeCollection.AddExcludedIpRange(Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress, Bodoconsult.Network.Windows.Dhcp.DhcpServerIpMask)
+  spec.csharp:
+  - uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeExcludedIpRangeCollection.AddExcludedIpRange(Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress,Bodoconsult.Network.Windows.Dhcp.DhcpServerIpMask)
+    name: AddExcludedIpRange
+    href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeExcludedIpRangeCollection.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerScopeExcludedIpRangeCollection_AddExcludedIpRange_Bodoconsult_Network_Windows_Dhcp_DhcpServerIpAddress_Bodoconsult_Network_Windows_Dhcp_DhcpServerIpMask_
+  - name: (
+  - uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress
+    name: DhcpServerIpAddress
+    href: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.html
+  - name: ','
+  - name: " "
+  - uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpMask
+    name: DhcpServerIpMask
+    href: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpMask.html
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeExcludedIpRangeCollection.AddExcludedIpRange(Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress,Bodoconsult.Network.Windows.Dhcp.DhcpServerIpMask)
+    name: AddExcludedIpRange
+    href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeExcludedIpRangeCollection.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerScopeExcludedIpRangeCollection_AddExcludedIpRange_Bodoconsult_Network_Windows_Dhcp_DhcpServerIpAddress_Bodoconsult_Network_Windows_Dhcp_DhcpServerIpMask_
+  - name: (
+  - uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress
+    name: DhcpServerIpAddress
+    href: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.html
+  - name: ','
+  - name: " "
+  - uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpMask
+    name: DhcpServerIpMask
+    href: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpMask.html
+  - name: )
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpMask
+  commentId: T:Bodoconsult.Network.Windows.Dhcp.DhcpServerIpMask
+  parent: Bodoconsult.Network.Windows.Dhcp
+  href: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpMask.html
+  name: DhcpServerIpMask
+  nameWithType: DhcpServerIpMask
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpMask
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeExcludedIpRangeCollection.AddExcludedIpRange(System.String)
+  commentId: M:Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeExcludedIpRangeCollection.AddExcludedIpRange(System.String)
+  parent: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeExcludedIpRangeCollection
+  isExternal: true
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeExcludedIpRangeCollection.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerScopeExcludedIpRangeCollection_AddExcludedIpRange_System_String_
+  name: AddExcludedIpRange(string)
+  nameWithType: IDhcpServerScopeExcludedIpRangeCollection.AddExcludedIpRange(string)
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeExcludedIpRangeCollection.AddExcludedIpRange(string)
+  nameWithType.vb: IDhcpServerScopeExcludedIpRangeCollection.AddExcludedIpRange(String)
+  fullName.vb: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeExcludedIpRangeCollection.AddExcludedIpRange(String)
+  name.vb: AddExcludedIpRange(String)
+  spec.csharp:
+  - uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeExcludedIpRangeCollection.AddExcludedIpRange(System.String)
+    name: AddExcludedIpRange
+    href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeExcludedIpRangeCollection.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerScopeExcludedIpRangeCollection_AddExcludedIpRange_System_String_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeExcludedIpRangeCollection.AddExcludedIpRange(System.String)
+    name: AddExcludedIpRange
+    href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeExcludedIpRangeCollection.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerScopeExcludedIpRangeCollection_AddExcludedIpRange_System_String_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeExcludedIpRangeCollection.RemoveExcludedIpRange*
+  commentId: Overload:Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeExcludedIpRangeCollection.RemoveExcludedIpRange
+  href: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeExcludedIpRangeCollection.html#Bodoconsult_Network_Windows_Dhcp_DhcpServerScopeExcludedIpRangeCollection_RemoveExcludedIpRange_Bodoconsult_Network_Windows_Dhcp_DhcpServerIpRange_
+  name: RemoveExcludedIpRange
+  nameWithType: DhcpServerScopeExcludedIpRangeCollection.RemoveExcludedIpRange
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeExcludedIpRangeCollection.RemoveExcludedIpRange
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeExcludedIpRangeCollection.RemoveExcludedIpRange(Bodoconsult.Network.Windows.Dhcp.DhcpServerIpRange)
+  commentId: M:Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeExcludedIpRangeCollection.RemoveExcludedIpRange(Bodoconsult.Network.Windows.Dhcp.DhcpServerIpRange)
+  parent: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeExcludedIpRangeCollection
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeExcludedIpRangeCollection.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerScopeExcludedIpRangeCollection_RemoveExcludedIpRange_Bodoconsult_Network_Windows_Dhcp_DhcpServerIpRange_
+  name: RemoveExcludedIpRange(DhcpServerIpRange)
+  nameWithType: IDhcpServerScopeExcludedIpRangeCollection.RemoveExcludedIpRange(DhcpServerIpRange)
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeExcludedIpRangeCollection.RemoveExcludedIpRange(Bodoconsult.Network.Windows.Dhcp.DhcpServerIpRange)
+  spec.csharp:
+  - uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeExcludedIpRangeCollection.RemoveExcludedIpRange(Bodoconsult.Network.Windows.Dhcp.DhcpServerIpRange)
+    name: RemoveExcludedIpRange
+    href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeExcludedIpRangeCollection.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerScopeExcludedIpRangeCollection_RemoveExcludedIpRange_Bodoconsult_Network_Windows_Dhcp_DhcpServerIpRange_
+  - name: (
+  - uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpRange
+    name: DhcpServerIpRange
+    href: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpRange.html
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeExcludedIpRangeCollection.RemoveExcludedIpRange(Bodoconsult.Network.Windows.Dhcp.DhcpServerIpRange)
+    name: RemoveExcludedIpRange
+    href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeExcludedIpRangeCollection.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerScopeExcludedIpRangeCollection_RemoveExcludedIpRange_Bodoconsult_Network_Windows_Dhcp_DhcpServerIpRange_
+  - name: (
+  - uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpRange
+    name: DhcpServerIpRange
+    href: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpRange.html
+  - name: )

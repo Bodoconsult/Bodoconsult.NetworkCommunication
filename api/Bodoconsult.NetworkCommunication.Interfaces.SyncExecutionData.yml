@@ -1,0 +1,791 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bodoconsult.NetworkCommunication.Interfaces.SyncExecutionData
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.SyncExecutionData
+  id: SyncExecutionData
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  children:
+  - Bodoconsult.NetworkCommunication.Interfaces.SyncExecutionData.#ctor(System.Int64,System.Int32)
+  - Bodoconsult.NetworkCommunication.Interfaces.SyncExecutionData.CancellationTokenSource
+  - Bodoconsult.NetworkCommunication.Interfaces.SyncExecutionData.CreateWaitingTask
+  - Bodoconsult.NetworkCommunication.Interfaces.SyncExecutionData.Dispose
+  - Bodoconsult.NetworkCommunication.Interfaces.SyncExecutionData.OrderId
+  - Bodoconsult.NetworkCommunication.Interfaces.SyncExecutionData.TaskCompletionSource
+  langs:
+  - csharp
+  - vb
+  name: SyncExecutionData
+  nameWithType: SyncExecutionData
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.SyncExecutionData
+  type: Class
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/IOrderProcessor.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: SyncExecutionData
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/IOrderProcessor.cs
+    startLine: 241
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Helper class for running order in a sync manner
+  example: []
+  syntax:
+    content: 'public class SyncExecutionData : IDisposable'
+    content.vb: Public Class SyncExecutionData Implements IDisposable
+  inheritance:
+  - System.Object
+  implements:
+  - System.IDisposable
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: Bodoconsult.NetworkCommunication.Interfaces.SyncExecutionData.#ctor(System.Int64,System.Int32)
+  commentId: M:Bodoconsult.NetworkCommunication.Interfaces.SyncExecutionData.#ctor(System.Int64,System.Int32)
+  id: '#ctor(System.Int64,System.Int32)'
+  parent: Bodoconsult.NetworkCommunication.Interfaces.SyncExecutionData
+  langs:
+  - csharp
+  - vb
+  name: SyncExecutionData(long, int)
+  nameWithType: SyncExecutionData.SyncExecutionData(long, int)
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.SyncExecutionData.SyncExecutionData(long, int)
+  type: Constructor
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/IOrderProcessor.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: .ctor
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/IOrderProcessor.cs
+    startLine: 246
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Default ctor
+  example: []
+  syntax:
+    content: public SyncExecutionData(long orderId, int timeout)
+    parameters:
+    - id: orderId
+      type: System.Int64
+    - id: timeout
+      type: System.Int32
+    content.vb: Public Sub New(orderId As Long, timeout As Integer)
+  overload: Bodoconsult.NetworkCommunication.Interfaces.SyncExecutionData.#ctor*
+  nameWithType.vb: SyncExecutionData.New(Long, Integer)
+  fullName.vb: Bodoconsult.NetworkCommunication.Interfaces.SyncExecutionData.New(Long, Integer)
+  name.vb: New(Long, Integer)
+- uid: Bodoconsult.NetworkCommunication.Interfaces.SyncExecutionData.CreateWaitingTask
+  commentId: M:Bodoconsult.NetworkCommunication.Interfaces.SyncExecutionData.CreateWaitingTask
+  id: CreateWaitingTask
+  parent: Bodoconsult.NetworkCommunication.Interfaces.SyncExecutionData
+  langs:
+  - csharp
+  - vb
+  name: CreateWaitingTask()
+  nameWithType: SyncExecutionData.CreateWaitingTask()
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.SyncExecutionData.CreateWaitingTask()
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/IOrderProcessor.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: CreateWaitingTask
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/IOrderProcessor.cs
+    startLine: 277
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Create a task to wait unitl order finished or timeout
+  example: []
+  syntax:
+    content: public Task<IOrderExecutionResultState> CreateWaitingTask()
+    return:
+      type: System.Threading.Tasks.Task{Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionResultState}
+      description: Task to wait for
+    content.vb: Public Function CreateWaitingTask() As Task(Of IOrderExecutionResultState)
+  overload: Bodoconsult.NetworkCommunication.Interfaces.SyncExecutionData.CreateWaitingTask*
+- uid: Bodoconsult.NetworkCommunication.Interfaces.SyncExecutionData.OrderId
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.SyncExecutionData.OrderId
+  id: OrderId
+  parent: Bodoconsult.NetworkCommunication.Interfaces.SyncExecutionData
+  langs:
+  - csharp
+  - vb
+  name: OrderId
+  nameWithType: SyncExecutionData.OrderId
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.SyncExecutionData.OrderId
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/IOrderProcessor.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: OrderId
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/IOrderProcessor.cs
+    startLine: 287
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Order ID
+  example: []
+  syntax:
+    content: public long OrderId { get; }
+    parameters: []
+    return:
+      type: System.Int64
+    content.vb: Public ReadOnly Property OrderId As Long
+  overload: Bodoconsult.NetworkCommunication.Interfaces.SyncExecutionData.OrderId*
+- uid: Bodoconsult.NetworkCommunication.Interfaces.SyncExecutionData.CancellationTokenSource
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.SyncExecutionData.CancellationTokenSource
+  id: CancellationTokenSource
+  parent: Bodoconsult.NetworkCommunication.Interfaces.SyncExecutionData
+  langs:
+  - csharp
+  - vb
+  name: CancellationTokenSource
+  nameWithType: SyncExecutionData.CancellationTokenSource
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.SyncExecutionData.CancellationTokenSource
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/IOrderProcessor.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: CancellationTokenSource
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/IOrderProcessor.cs
+    startLine: 292
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: CancellationTokenSource used for running an order in an sync manner
+  example: []
+  syntax:
+    content: public CancellationTokenSource CancellationTokenSource { get; }
+    parameters: []
+    return:
+      type: System.Threading.CancellationTokenSource
+    content.vb: Public Property CancellationTokenSource As CancellationTokenSource
+  overload: Bodoconsult.NetworkCommunication.Interfaces.SyncExecutionData.CancellationTokenSource*
+- uid: Bodoconsult.NetworkCommunication.Interfaces.SyncExecutionData.TaskCompletionSource
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.SyncExecutionData.TaskCompletionSource
+  id: TaskCompletionSource
+  parent: Bodoconsult.NetworkCommunication.Interfaces.SyncExecutionData
+  langs:
+  - csharp
+  - vb
+  name: TaskCompletionSource
+  nameWithType: SyncExecutionData.TaskCompletionSource
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.SyncExecutionData.TaskCompletionSource
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/IOrderProcessor.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: TaskCompletionSource
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/IOrderProcessor.cs
+    startLine: 297
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: TaskCompletionSource used for running an order in a sync manner
+  example: []
+  syntax:
+    content: public TaskCompletionSource<IOrderExecutionResultState> TaskCompletionSource { get; }
+    parameters: []
+    return:
+      type: System.Threading.Tasks.TaskCompletionSource{Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionResultState}
+    content.vb: Public Property TaskCompletionSource As TaskCompletionSource(Of IOrderExecutionResultState)
+  overload: Bodoconsult.NetworkCommunication.Interfaces.SyncExecutionData.TaskCompletionSource*
+- uid: Bodoconsult.NetworkCommunication.Interfaces.SyncExecutionData.Dispose
+  commentId: M:Bodoconsult.NetworkCommunication.Interfaces.SyncExecutionData.Dispose
+  id: Dispose
+  parent: Bodoconsult.NetworkCommunication.Interfaces.SyncExecutionData
+  langs:
+  - csharp
+  - vb
+  name: Dispose()
+  nameWithType: SyncExecutionData.Dispose()
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.SyncExecutionData.Dispose()
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/IOrderProcessor.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Dispose
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/IOrderProcessor.cs
+    startLine: 300
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+  example: []
+  syntax:
+    content: public void Dispose()
+    content.vb: Public Sub Dispose()
+  overload: Bodoconsult.NetworkCommunication.Interfaces.SyncExecutionData.Dispose*
+  implements:
+  - System.IDisposable.Dispose
+references:
+- uid: Bodoconsult.NetworkCommunication.Interfaces
+  commentId: N:Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.html
+  name: Bodoconsult.NetworkCommunication.Interfaces
+  nameWithType: Bodoconsult.NetworkCommunication.Interfaces
+  fullName: Bodoconsult.NetworkCommunication.Interfaces
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Interfaces
+    name: Interfaces
+    href: Bodoconsult.NetworkCommunication.Interfaces.html
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Interfaces
+    name: Interfaces
+    href: Bodoconsult.NetworkCommunication.Interfaces.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.IDisposable
+  commentId: T:System.IDisposable
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable
+  name: IDisposable
+  nameWithType: IDisposable
+  fullName: System.IDisposable
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Bodoconsult.NetworkCommunication.Interfaces.SyncExecutionData.#ctor*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.SyncExecutionData.#ctor
+  href: Bodoconsult.NetworkCommunication.Interfaces.SyncExecutionData.html#Bodoconsult_NetworkCommunication_Interfaces_SyncExecutionData__ctor_System_Int64_System_Int32_
+  name: SyncExecutionData
+  nameWithType: SyncExecutionData.SyncExecutionData
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.SyncExecutionData.SyncExecutionData
+  nameWithType.vb: SyncExecutionData.New
+  fullName.vb: Bodoconsult.NetworkCommunication.Interfaces.SyncExecutionData.New
+  name.vb: New
+- uid: System.Int64
+  commentId: T:System.Int64
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int64
+  name: long
+  nameWithType: long
+  fullName: long
+  nameWithType.vb: Long
+  fullName.vb: Long
+  name.vb: Long
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: Bodoconsult.NetworkCommunication.Interfaces.SyncExecutionData.CreateWaitingTask*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.SyncExecutionData.CreateWaitingTask
+  href: Bodoconsult.NetworkCommunication.Interfaces.SyncExecutionData.html#Bodoconsult_NetworkCommunication_Interfaces_SyncExecutionData_CreateWaitingTask
+  name: CreateWaitingTask
+  nameWithType: SyncExecutionData.CreateWaitingTask
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.SyncExecutionData.CreateWaitingTask
+- uid: System.Threading.Tasks.Task{Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionResultState}
+  commentId: T:System.Threading.Tasks.Task{Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionResultState}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<IOrderExecutionResultState>
+  nameWithType: Task<IOrderExecutionResultState>
+  fullName: System.Threading.Tasks.Task<Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionResultState>
+  nameWithType.vb: Task(Of IOrderExecutionResultState)
+  fullName.vb: System.Threading.Tasks.Task(Of Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionResultState)
+  name.vb: Task(Of IOrderExecutionResultState)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionResultState
+    name: IOrderExecutionResultState
+    href: Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionResultState.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionResultState
+    name: IOrderExecutionResultState
+    href: Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionResultState.html
+  - name: )
+- uid: System.Threading.Tasks.Task`1
+  commentId: T:System.Threading.Tasks.Task`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<TResult>
+  nameWithType: Task<TResult>
+  fullName: System.Threading.Tasks.Task<TResult>
+  nameWithType.vb: Task(Of TResult)
+  fullName.vb: System.Threading.Tasks.Task(Of TResult)
+  name.vb: Task(Of TResult)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - name: TResult
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TResult
+  - name: )
+- uid: System.Threading.Tasks
+  commentId: N:System.Threading.Tasks
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Threading.Tasks
+  nameWithType: System.Threading.Tasks
+  fullName: System.Threading.Tasks
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+- uid: Bodoconsult.NetworkCommunication.Interfaces.SyncExecutionData.OrderId*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.SyncExecutionData.OrderId
+  href: Bodoconsult.NetworkCommunication.Interfaces.SyncExecutionData.html#Bodoconsult_NetworkCommunication_Interfaces_SyncExecutionData_OrderId
+  name: OrderId
+  nameWithType: SyncExecutionData.OrderId
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.SyncExecutionData.OrderId
+- uid: Bodoconsult.NetworkCommunication.Interfaces.SyncExecutionData.CancellationTokenSource*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.SyncExecutionData.CancellationTokenSource
+  href: Bodoconsult.NetworkCommunication.Interfaces.SyncExecutionData.html#Bodoconsult_NetworkCommunication_Interfaces_SyncExecutionData_CancellationTokenSource
+  name: CancellationTokenSource
+  nameWithType: SyncExecutionData.CancellationTokenSource
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.SyncExecutionData.CancellationTokenSource
+- uid: System.Threading.CancellationTokenSource
+  commentId: T:System.Threading.CancellationTokenSource
+  parent: System.Threading
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtokensource
+  name: CancellationTokenSource
+  nameWithType: CancellationTokenSource
+  fullName: System.Threading.CancellationTokenSource
+- uid: System.Threading
+  commentId: N:System.Threading
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Threading
+  nameWithType: System.Threading
+  fullName: System.Threading
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+- uid: Bodoconsult.NetworkCommunication.Interfaces.SyncExecutionData.TaskCompletionSource*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.SyncExecutionData.TaskCompletionSource
+  href: Bodoconsult.NetworkCommunication.Interfaces.SyncExecutionData.html#Bodoconsult_NetworkCommunication_Interfaces_SyncExecutionData_TaskCompletionSource
+  name: TaskCompletionSource
+  nameWithType: SyncExecutionData.TaskCompletionSource
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.SyncExecutionData.TaskCompletionSource
+- uid: System.Threading.Tasks.TaskCompletionSource{Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionResultState}
+  commentId: T:System.Threading.Tasks.TaskCompletionSource{Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionResultState}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.TaskCompletionSource`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.taskcompletionsource-1
+  name: TaskCompletionSource<IOrderExecutionResultState>
+  nameWithType: TaskCompletionSource<IOrderExecutionResultState>
+  fullName: System.Threading.Tasks.TaskCompletionSource<Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionResultState>
+  nameWithType.vb: TaskCompletionSource(Of IOrderExecutionResultState)
+  fullName.vb: System.Threading.Tasks.TaskCompletionSource(Of Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionResultState)
+  name.vb: TaskCompletionSource(Of IOrderExecutionResultState)
+  spec.csharp:
+  - uid: System.Threading.Tasks.TaskCompletionSource`1
+    name: TaskCompletionSource
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.taskcompletionsource-1
+  - name: <
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionResultState
+    name: IOrderExecutionResultState
+    href: Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionResultState.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.TaskCompletionSource`1
+    name: TaskCompletionSource
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.taskcompletionsource-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionResultState
+    name: IOrderExecutionResultState
+    href: Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionResultState.html
+  - name: )
+- uid: System.Threading.Tasks.TaskCompletionSource`1
+  commentId: T:System.Threading.Tasks.TaskCompletionSource`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.taskcompletionsource-1
+  name: TaskCompletionSource<TResult>
+  nameWithType: TaskCompletionSource<TResult>
+  fullName: System.Threading.Tasks.TaskCompletionSource<TResult>
+  nameWithType.vb: TaskCompletionSource(Of TResult)
+  fullName.vb: System.Threading.Tasks.TaskCompletionSource(Of TResult)
+  name.vb: TaskCompletionSource(Of TResult)
+  spec.csharp:
+  - uid: System.Threading.Tasks.TaskCompletionSource`1
+    name: TaskCompletionSource
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.taskcompletionsource-1
+  - name: <
+  - name: TResult
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.TaskCompletionSource`1
+    name: TaskCompletionSource
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.taskcompletionsource-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TResult
+  - name: )
+- uid: Bodoconsult.NetworkCommunication.Interfaces.SyncExecutionData.Dispose*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.SyncExecutionData.Dispose
+  href: Bodoconsult.NetworkCommunication.Interfaces.SyncExecutionData.html#Bodoconsult_NetworkCommunication_Interfaces_SyncExecutionData_Dispose
+  name: Dispose
+  nameWithType: SyncExecutionData.Dispose
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.SyncExecutionData.Dispose
+- uid: System.IDisposable.Dispose
+  commentId: M:System.IDisposable.Dispose
+  parent: System.IDisposable
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  name: Dispose()
+  nameWithType: IDisposable.Dispose()
+  fullName: System.IDisposable.Dispose()
+  spec.csharp:
+  - uid: System.IDisposable.Dispose
+    name: Dispose
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.IDisposable.Dispose
+    name: Dispose
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  - name: (
+  - name: )

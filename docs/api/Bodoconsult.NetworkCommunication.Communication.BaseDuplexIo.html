@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Class BaseDuplexIo | Bodoconsult.Network </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class BaseDuplexIo | Bodoconsult.Network ">
+      
+      <meta name="description" content="Base class for TCP/IP or UPP based  implementations">
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/new/main/apiSpec/new?filename=Bodoconsult_NetworkCommunication_Communication_BaseDuplexIo.md&amp;value=---%0Auid%3A%20Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../logo.svg" alt="Bodoconsult.Network">
+            Bodoconsult.Network
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo">
+
+
+
+  <h1 id="Bodoconsult_NetworkCommunication_Communication_BaseDuplexIo" data-uid="Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo" class="text-break">
+Class BaseDuplexIo  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/Communication/BaseDuplexIo.cs/#L13"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="Bodoconsult.html">Bodoconsult</a>.<a class="xref" href="Bodoconsult.NetworkCommunication.html">NetworkCommunication</a>.<a class="xref" href="Bodoconsult.NetworkCommunication.Communication.html">Communication</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>Bodoconsult.NetworkCommunication.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p>Base class for TCP/IP or UPP based <a class="xref" href="Bodoconsult.NetworkCommunication.Interfaces.IDuplexIo.html">IDuplexIo</a> implementations</p>
+</div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public abstract class BaseDuplexIo : IDuplexIo, IAsyncDisposable, IDisposable</code></pre>
+  </div>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><span class="xref">BaseDuplexIo</span></div>
+    </dd>
+  </dl>
+
+  <dl class="typelist implements">
+    <dt>Implements</dt>
+    <dd>
+      <div><a class="xref" href="Bodoconsult.NetworkCommunication.Interfaces.IDuplexIo.html">IDuplexIo</a></div>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.iasyncdisposable">IAsyncDisposable</a></div>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.idisposable">IDisposable</a></div>
+    </dd>
+  </dl>
+
+  <dl class="typelist derived">
+    <dt>Derived</dt>
+    <dd>
+      <div><a class="xref" href="Bodoconsult.NetworkCommunication.Communication.IpDuplexIo.html">IpDuplexIo</a></div>
+      <div><a class="xref" href="Bodoconsult.NetworkCommunication.Communication.IpHighPerformanceDuplexIo.html">IpHighPerformanceDuplexIo</a></div>
+    </dd>
+  </dl>
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone">object.MemberwiseClone()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
+    </div>
+  </dd></dl>
+
+
+
+
+
+
+  <h2 class="section" id="constructors">Constructors
+</h2>
+
+
+  <a id="Bodoconsult_NetworkCommunication_Communication_BaseDuplexIo__ctor_" data-uid="Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo.#ctor*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_Communication_BaseDuplexIo__ctor_Bodoconsult_NetworkCommunication_Interfaces_IDataMessagingConfig_Bodoconsult_NetworkCommunication_Interfaces_ISendPacketProcessFactory_" data-uid="Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo.#ctor(Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig,Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcessFactory)">
+  BaseDuplexIo(IDataMessagingConfig, ISendPacketProcessFactory)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/Communication/BaseDuplexIo.cs/#L20"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Default ctor</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected BaseDuplexIo(IDataMessagingConfig deviceCommSettings, ISendPacketProcessFactory sendPacketProcessFactory)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>deviceCommSettings</code> <a class="xref" href="Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig.html">IDataMessagingConfig</a></dt>
+    <dd></dd>
+    <dt><code>sendPacketProcessFactory</code> <a class="xref" href="Bodoconsult.NetworkCommunication.Interfaces.ISendPacketProcessFactory.html">ISendPacketProcessFactory</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
+  <a id="Bodoconsult_NetworkCommunication_Communication_BaseDuplexIo_DataMessagingConfig_" data-uid="Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo.DataMessagingConfig*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_Communication_BaseDuplexIo_DataMessagingConfig" data-uid="Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo.DataMessagingConfig">
+  DataMessagingConfig
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/Communication/BaseDuplexIo.cs/#L37"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Current data messaging config</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IDataMessagingConfig DataMessagingConfig { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig.html">IDataMessagingConfig</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_Communication_BaseDuplexIo_IsCommunicationStarted_" data-uid="Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo.IsCommunicationStarted*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_Communication_BaseDuplexIo_IsCommunicationStarted" data-uid="Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo.IsCommunicationStarted">
+  IsCommunicationStarted
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/Communication/BaseDuplexIo.cs/#L47"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Is the communication started?</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsCommunicationStarted { get; protected set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_Communication_BaseDuplexIo_IsConnectionAlive_" data-uid="Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo.IsConnectionAlive*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_Communication_BaseDuplexIo_IsConnectionAlive" data-uid="Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo.IsConnectionAlive">
+  IsConnectionAlive
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/Communication/BaseDuplexIo.cs/#L62"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Is the current connection alive? True, if yes else false.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsConnectionAlive { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_Communication_BaseDuplexIo_Receiver_" data-uid="Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo.Receiver*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_Communication_BaseDuplexIo_Receiver" data-uid="Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo.Receiver">
+  Receiver
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/Communication/BaseDuplexIo.cs/#L52"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>The receiver part used of the duplex (bidirectional) comm channels</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IDuplexIoReceiver Receiver { get; protected set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Bodoconsult.NetworkCommunication.Interfaces.IDuplexIoReceiver.html">IDuplexIoReceiver</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_Communication_BaseDuplexIo_Sender_" data-uid="Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo.Sender*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_Communication_BaseDuplexIo_Sender" data-uid="Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo.Sender">
+  Sender
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/Communication/BaseDuplexIo.cs/#L57"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>The sender part used of the duplex (bidirectional) comm channels</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IDuplexIoSender Sender { get; protected set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Bodoconsult.NetworkCommunication.Interfaces.IDuplexIoSender.html">IDuplexIoSender</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_Communication_BaseDuplexIo_SocketProxy_" data-uid="Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo.SocketProxy*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_Communication_BaseDuplexIo_SocketProxy" data-uid="Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo.SocketProxy">
+  SocketProxy
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/Communication/BaseDuplexIo.cs/#L42"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Current socket to use</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ISocketProxy SocketProxy { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Bodoconsult.NetworkCommunication.Interfaces.ISocketProxy.html">ISocketProxy</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="Bodoconsult_NetworkCommunication_Communication_BaseDuplexIo_CentralErrorHandling_" data-uid="Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo.CentralErrorHandling*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_Communication_BaseDuplexIo_CentralErrorHandling_System_Exception_" data-uid="Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo.CentralErrorHandling(System.Exception)">
+  CentralErrorHandling(Exception)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/Communication/BaseDuplexIo.cs/#L175"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Central exception handling for <a class="xref" href="Bodoconsult.NetworkCommunication.Interfaces.IDuplexIo.html">IDuplexIo</a> implementations</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void CentralErrorHandling(Exception exception)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>exception</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.exception">Exception</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_Communication_BaseDuplexIo_Dispose_" data-uid="Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo.Dispose*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_Communication_BaseDuplexIo_Dispose" data-uid="Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo.Dispose">
+  Dispose()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/Communication/BaseDuplexIo.cs/#L225"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Dispose()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_Communication_BaseDuplexIo_Dispose_" data-uid="Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo.Dispose*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_Communication_BaseDuplexIo_Dispose_System_Boolean_" data-uid="Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo.Dispose(System.Boolean)">
+  Dispose(bool)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/Communication/BaseDuplexIo.cs/#L210"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Current implementation of Dispose()</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected virtual Task Dispose(bool disposing)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>disposing</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>Dispong required?</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_Communication_BaseDuplexIo_DisposeAsync_" data-uid="Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo.DisposeAsync*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_Communication_BaseDuplexIo_DisposeAsync" data-uid="Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo.DisposeAsync">
+  DisposeAsync()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/Communication/BaseDuplexIo.cs/#L218"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources asynchronously.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ValueTask DisposeAsync()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.valuetask">ValueTask</a></dt>
+    <dd><p>A task that represents the asynchronous dispose operation.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_Communication_BaseDuplexIo_IsConnected_" data-uid="Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo.IsConnected*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_Communication_BaseDuplexIo_IsConnected" data-uid="Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo.IsConnected">
+  IsConnected()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/Communication/BaseDuplexIo.cs/#L161"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Is the connection open?</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsConnected()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>True if the conenction is open else false</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_Communication_BaseDuplexIo_SendMessage_" data-uid="Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo.SendMessage*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_Communication_BaseDuplexIo_SendMessage_Bodoconsult_NetworkCommunication_Interfaces_IOutboundMessage_" data-uid="Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo.SendMessage(Bodoconsult.NetworkCommunication.Interfaces.IOutboundMessage)">
+  SendMessage(IOutboundMessage)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/Communication/BaseDuplexIo.cs/#L80"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Send a message to the device</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual Task&lt;MessageSendingResult&gt; SendMessage(IOutboundMessage message)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>message</code> <a class="xref" href="Bodoconsult.NetworkCommunication.Interfaces.IOutboundMessage.html">IOutboundMessage</a></dt>
+    <dd><p>Current message to send</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Bodoconsult.NetworkCommunication.Interfaces.MessageSendingResult.html">MessageSendingResult</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_Communication_BaseDuplexIo_SendMessageInternal_" data-uid="Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo.SendMessageInternal*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_Communication_BaseDuplexIo_SendMessageInternal_Bodoconsult_NetworkCommunication_Interfaces_IOutboundDataMessage_" data-uid="Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo.SendMessageInternal(Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessage)">
+  SendMessageInternal(IOutboundDataMessage)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/Communication/BaseDuplexIo.cs/#L102"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Send a message to the device directly. This method is intended for internal purposes only. Do NOT use directly. Use <a class="xref" href="Bodoconsult.NetworkCommunication.Interfaces.IDuplexIo.html#Bodoconsult_NetworkCommunication_Interfaces_IDuplexIo_SendMessage_Bodoconsult_NetworkCommunication_Interfaces_IOutboundMessage_">SendMessage(IOutboundMessage)</a> instead. This method makes faking easier!</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;MessageSendingResult&gt; SendMessageInternal(IOutboundDataMessage message)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>message</code> <a class="xref" href="Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessage.html">IOutboundDataMessage</a></dt>
+    <dd><p>Current message to send</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Bodoconsult.NetworkCommunication.Interfaces.MessageSendingResult.html">MessageSendingResult</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_Communication_BaseDuplexIo_StartCommunication_" data-uid="Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo.StartCommunication*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_Communication_BaseDuplexIo_StartCommunication" data-uid="Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo.StartCommunication">
+  StartCommunication()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/Communication/BaseDuplexIo.cs/#L134"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Start the duplex communication</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual Task StartCommunication()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd><p>Task</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_Communication_BaseDuplexIo_StartMessageSendingProcess_" data-uid="Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo.StartMessageSendingProcess*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_Communication_BaseDuplexIo_StartMessageSendingProcess_Bodoconsult_NetworkCommunication_Interfaces_IOutboundDataMessage_" data-uid="Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo.StartMessageSendingProcess(Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessage)">
+  StartMessageSendingProcess(IOutboundDataMessage)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/Communication/BaseDuplexIo.cs/#L113"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Starts the message sending process either with waiting for a response from device or without it</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public MessageSendingResult StartMessageSendingProcess(IOutboundDataMessage message)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>message</code> <a class="xref" href="Bodoconsult.NetworkCommunication.Interfaces.IOutboundDataMessage.html">IOutboundDataMessage</a></dt>
+    <dd><p>Current message to send</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Bodoconsult.NetworkCommunication.Interfaces.MessageSendingResult.html">MessageSendingResult</a></dt>
+    <dd><p>Result of the message sending process</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_Communication_BaseDuplexIo_StopCommunication_" data-uid="Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo.StopCommunication*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_Communication_BaseDuplexIo_StopCommunication" data-uid="Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo.StopCommunication">
+  StopCommunication()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/Communication/BaseDuplexIo.cs/#L143"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Stop the duplex communication</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual Task StopCommunication()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd><p>Task</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_Communication_BaseDuplexIo_UpdateDataMessageProcessingPackage_" data-uid="Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo.UpdateDataMessageProcessingPackage*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_Communication_BaseDuplexIo_UpdateDataMessageProcessingPackage" data-uid="Bodoconsult.NetworkCommunication.Communication.BaseDuplexIo.UpdateDataMessageProcessingPackage">
+  UpdateDataMessageProcessingPackage()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/Communication/BaseDuplexIo.cs/#L151"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Update the data message processing package</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void UpdateDataMessageProcessingPackage()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/Communication/BaseDuplexIo.cs/#L13" class="edit-link">Edit this page</a>
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,311 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IInternalRequestSpec
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.IInternalRequestSpec
+  id: IInternalRequestSpec
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  children: []
+  langs:
+  - csharp
+  - vb
+  name: IInternalRequestSpec
+  nameWithType: IInternalRequestSpec
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IInternalRequestSpec
+  type: Interface
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/IInternalRequestSpec.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: IInternalRequestSpec
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/IInternalRequestSpec.cs
+    startLine: 7
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Interface for internal request specifications
+  example: []
+  syntax:
+    content: 'public interface IInternalRequestSpec : IRequestSpec, IDisposable'
+    content.vb: Public Interface IInternalRequestSpec Inherits IRequestSpec, IDisposable
+  inheritedMembers:
+  - Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec.RequestStepProcessorSetResultDelegate
+  - Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec.RequestStepProcessorIsCancelledDelegate
+  - Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec.AppLogger
+  - Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec.DoNotifyDelegate
+  - Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec.CancelRunningOperationDelegate
+  - Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec.Name
+  - Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec.ParameterSet
+  - Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec.Timeout
+  - Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec.NumberOfRepeatsInCaseOfNoSuccess
+  - Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec.TransportObject
+  - Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec.ResultTransportObject
+  - Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec.RequiresTransportObject
+  - Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec.DoNotRunRequestSpecIfThereIsSameOrderTypeInQueue
+  - Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec.ExpectedHandshakeForSentMessage
+  - Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec.RequestRequiresOnlyAHandshakeAsAnswer
+  - Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec.RequestAnswerSteps
+  - Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec.WasSuccessful
+  - Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec.SetTransportObject(System.Object)
+  - Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec.CalculateTotalTimeout
+  - Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec.RequestAnswerStepIsStartedDelegate
+  - Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec.OrderLoggerId
+  - System.IDisposable.Dispose
+references:
+- uid: Bodoconsult.NetworkCommunication.Interfaces
+  commentId: N:Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.html
+  name: Bodoconsult.NetworkCommunication.Interfaces
+  nameWithType: Bodoconsult.NetworkCommunication.Interfaces
+  fullName: Bodoconsult.NetworkCommunication.Interfaces
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Interfaces
+    name: Interfaces
+    href: Bodoconsult.NetworkCommunication.Interfaces.html
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Interfaces
+    name: Interfaces
+    href: Bodoconsult.NetworkCommunication.Interfaces.html
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec.RequestStepProcessorSetResultDelegate
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec.RequestStepProcessorSetResultDelegate
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec
+  href: Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec.html#Bodoconsult_NetworkCommunication_Interfaces_IRequestSpec_RequestStepProcessorSetResultDelegate
+  name: RequestStepProcessorSetResultDelegate
+  nameWithType: IRequestSpec.RequestStepProcessorSetResultDelegate
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec.RequestStepProcessorSetResultDelegate
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec.RequestStepProcessorIsCancelledDelegate
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec.RequestStepProcessorIsCancelledDelegate
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec
+  href: Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec.html#Bodoconsult_NetworkCommunication_Interfaces_IRequestSpec_RequestStepProcessorIsCancelledDelegate
+  name: RequestStepProcessorIsCancelledDelegate
+  nameWithType: IRequestSpec.RequestStepProcessorIsCancelledDelegate
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec.RequestStepProcessorIsCancelledDelegate
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec.AppLogger
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec.AppLogger
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec
+  href: Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec.html#Bodoconsult_NetworkCommunication_Interfaces_IRequestSpec_AppLogger
+  name: AppLogger
+  nameWithType: IRequestSpec.AppLogger
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec.AppLogger
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec.DoNotifyDelegate
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec.DoNotifyDelegate
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec
+  href: Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec.html#Bodoconsult_NetworkCommunication_Interfaces_IRequestSpec_DoNotifyDelegate
+  name: DoNotifyDelegate
+  nameWithType: IRequestSpec.DoNotifyDelegate
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec.DoNotifyDelegate
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec.CancelRunningOperationDelegate
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec.CancelRunningOperationDelegate
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec
+  href: Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec.html#Bodoconsult_NetworkCommunication_Interfaces_IRequestSpec_CancelRunningOperationDelegate
+  name: CancelRunningOperationDelegate
+  nameWithType: IRequestSpec.CancelRunningOperationDelegate
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec.CancelRunningOperationDelegate
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec.Name
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec.Name
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec
+  href: Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec.html#Bodoconsult_NetworkCommunication_Interfaces_IRequestSpec_Name
+  name: Name
+  nameWithType: IRequestSpec.Name
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec.Name
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec.ParameterSet
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec.ParameterSet
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec
+  href: Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec.html#Bodoconsult_NetworkCommunication_Interfaces_IRequestSpec_ParameterSet
+  name: ParameterSet
+  nameWithType: IRequestSpec.ParameterSet
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec.ParameterSet
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec.Timeout
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec.Timeout
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec
+  href: Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec.html#Bodoconsult_NetworkCommunication_Interfaces_IRequestSpec_Timeout
+  name: Timeout
+  nameWithType: IRequestSpec.Timeout
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec.Timeout
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec.NumberOfRepeatsInCaseOfNoSuccess
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec.NumberOfRepeatsInCaseOfNoSuccess
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec
+  href: Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec.html#Bodoconsult_NetworkCommunication_Interfaces_IRequestSpec_NumberOfRepeatsInCaseOfNoSuccess
+  name: NumberOfRepeatsInCaseOfNoSuccess
+  nameWithType: IRequestSpec.NumberOfRepeatsInCaseOfNoSuccess
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec.NumberOfRepeatsInCaseOfNoSuccess
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec.TransportObject
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec.TransportObject
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec
+  href: Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec.html#Bodoconsult_NetworkCommunication_Interfaces_IRequestSpec_TransportObject
+  name: TransportObject
+  nameWithType: IRequestSpec.TransportObject
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec.TransportObject
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec.ResultTransportObject
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec.ResultTransportObject
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec
+  href: Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec.html#Bodoconsult_NetworkCommunication_Interfaces_IRequestSpec_ResultTransportObject
+  name: ResultTransportObject
+  nameWithType: IRequestSpec.ResultTransportObject
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec.ResultTransportObject
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec.RequiresTransportObject
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec.RequiresTransportObject
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec
+  href: Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec.html#Bodoconsult_NetworkCommunication_Interfaces_IRequestSpec_RequiresTransportObject
+  name: RequiresTransportObject
+  nameWithType: IRequestSpec.RequiresTransportObject
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec.RequiresTransportObject
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec.DoNotRunRequestSpecIfThereIsSameOrderTypeInQueue
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec.DoNotRunRequestSpecIfThereIsSameOrderTypeInQueue
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec
+  href: Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec.html#Bodoconsult_NetworkCommunication_Interfaces_IRequestSpec_DoNotRunRequestSpecIfThereIsSameOrderTypeInQueue
+  name: DoNotRunRequestSpecIfThereIsSameOrderTypeInQueue
+  nameWithType: IRequestSpec.DoNotRunRequestSpecIfThereIsSameOrderTypeInQueue
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec.DoNotRunRequestSpecIfThereIsSameOrderTypeInQueue
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec.ExpectedHandshakeForSentMessage
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec.ExpectedHandshakeForSentMessage
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec
+  href: Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec.html#Bodoconsult_NetworkCommunication_Interfaces_IRequestSpec_ExpectedHandshakeForSentMessage
+  name: ExpectedHandshakeForSentMessage
+  nameWithType: IRequestSpec.ExpectedHandshakeForSentMessage
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec.ExpectedHandshakeForSentMessage
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec.RequestRequiresOnlyAHandshakeAsAnswer
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec.RequestRequiresOnlyAHandshakeAsAnswer
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec
+  href: Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec.html#Bodoconsult_NetworkCommunication_Interfaces_IRequestSpec_RequestRequiresOnlyAHandshakeAsAnswer
+  name: RequestRequiresOnlyAHandshakeAsAnswer
+  nameWithType: IRequestSpec.RequestRequiresOnlyAHandshakeAsAnswer
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec.RequestRequiresOnlyAHandshakeAsAnswer
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec.RequestAnswerSteps
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec.RequestAnswerSteps
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec
+  href: Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec.html#Bodoconsult_NetworkCommunication_Interfaces_IRequestSpec_RequestAnswerSteps
+  name: RequestAnswerSteps
+  nameWithType: IRequestSpec.RequestAnswerSteps
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec.RequestAnswerSteps
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec.WasSuccessful
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec.WasSuccessful
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec
+  href: Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec.html#Bodoconsult_NetworkCommunication_Interfaces_IRequestSpec_WasSuccessful
+  name: WasSuccessful
+  nameWithType: IRequestSpec.WasSuccessful
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec.WasSuccessful
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec.SetTransportObject(System.Object)
+  commentId: M:Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec.SetTransportObject(System.Object)
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec
+  isExternal: true
+  href: Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec.html#Bodoconsult_NetworkCommunication_Interfaces_IRequestSpec_SetTransportObject_System_Object_
+  name: SetTransportObject(object)
+  nameWithType: IRequestSpec.SetTransportObject(object)
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec.SetTransportObject(object)
+  nameWithType.vb: IRequestSpec.SetTransportObject(Object)
+  fullName.vb: Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec.SetTransportObject(Object)
+  name.vb: SetTransportObject(Object)
+  spec.csharp:
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec.SetTransportObject(System.Object)
+    name: SetTransportObject
+    href: Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec.html#Bodoconsult_NetworkCommunication_Interfaces_IRequestSpec_SetTransportObject_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec.SetTransportObject(System.Object)
+    name: SetTransportObject
+    href: Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec.html#Bodoconsult_NetworkCommunication_Interfaces_IRequestSpec_SetTransportObject_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec.CalculateTotalTimeout
+  commentId: M:Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec.CalculateTotalTimeout
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec
+  href: Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec.html#Bodoconsult_NetworkCommunication_Interfaces_IRequestSpec_CalculateTotalTimeout
+  name: CalculateTotalTimeout()
+  nameWithType: IRequestSpec.CalculateTotalTimeout()
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec.CalculateTotalTimeout()
+  spec.csharp:
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec.CalculateTotalTimeout
+    name: CalculateTotalTimeout
+    href: Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec.html#Bodoconsult_NetworkCommunication_Interfaces_IRequestSpec_CalculateTotalTimeout
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec.CalculateTotalTimeout
+    name: CalculateTotalTimeout
+    href: Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec.html#Bodoconsult_NetworkCommunication_Interfaces_IRequestSpec_CalculateTotalTimeout
+  - name: (
+  - name: )
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec.RequestAnswerStepIsStartedDelegate
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec.RequestAnswerStepIsStartedDelegate
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec
+  href: Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec.html#Bodoconsult_NetworkCommunication_Interfaces_IRequestSpec_RequestAnswerStepIsStartedDelegate
+  name: RequestAnswerStepIsStartedDelegate
+  nameWithType: IRequestSpec.RequestAnswerStepIsStartedDelegate
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec.RequestAnswerStepIsStartedDelegate
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec.OrderLoggerId
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec.OrderLoggerId
+  parent: Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec
+  href: Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec.html#Bodoconsult_NetworkCommunication_Interfaces_IRequestSpec_OrderLoggerId
+  name: OrderLoggerId
+  nameWithType: IRequestSpec.OrderLoggerId
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec.OrderLoggerId
+- uid: System.IDisposable.Dispose
+  commentId: M:System.IDisposable.Dispose
+  parent: System.IDisposable
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  name: Dispose()
+  nameWithType: IDisposable.Dispose()
+  fullName: System.IDisposable.Dispose()
+  spec.csharp:
+  - uid: System.IDisposable.Dispose
+    name: Dispose
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.IDisposable.Dispose
+    name: Dispose
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  - name: (
+  - name: )
+- uid: Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec.html
+  name: IRequestSpec
+  nameWithType: IRequestSpec
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec
+- uid: System.IDisposable
+  commentId: T:System.IDisposable
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable
+  name: IDisposable
+  nameWithType: IDisposable
+  fullName: System.IDisposable
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System

@@ -1,0 +1,69 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bodoconsult.NetworkCommunication.DataMessaging.DataBlocks
+  commentId: N:Bodoconsult.NetworkCommunication.DataMessaging.DataBlocks
+  id: Bodoconsult.NetworkCommunication.DataMessaging.DataBlocks
+  children:
+  - Bodoconsult.NetworkCommunication.DataMessaging.DataBlocks.BasicInboundDatablock
+  - Bodoconsult.NetworkCommunication.DataMessaging.DataBlocks.BasicOutboundDatablock
+  langs:
+  - csharp
+  - vb
+  name: Bodoconsult.NetworkCommunication.DataMessaging.DataBlocks
+  nameWithType: Bodoconsult.NetworkCommunication.DataMessaging.DataBlocks
+  fullName: Bodoconsult.NetworkCommunication.DataMessaging.DataBlocks
+  type: Namespace
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+references:
+- uid: Bodoconsult.NetworkCommunication.DataMessaging.DataBlocks.BasicInboundDatablock
+  commentId: T:Bodoconsult.NetworkCommunication.DataMessaging.DataBlocks.BasicInboundDatablock
+  href: Bodoconsult.NetworkCommunication.DataMessaging.DataBlocks.BasicInboundDatablock.html
+  name: BasicInboundDatablock
+  nameWithType: BasicInboundDatablock
+  fullName: Bodoconsult.NetworkCommunication.DataMessaging.DataBlocks.BasicInboundDatablock
+- uid: Bodoconsult.NetworkCommunication.DataMessaging.DataBlocks.BasicOutboundDatablock
+  commentId: T:Bodoconsult.NetworkCommunication.DataMessaging.DataBlocks.BasicOutboundDatablock
+  parent: Bodoconsult.NetworkCommunication.DataMessaging.DataBlocks
+  href: Bodoconsult.NetworkCommunication.DataMessaging.DataBlocks.BasicOutboundDatablock.html
+  name: BasicOutboundDatablock
+  nameWithType: BasicOutboundDatablock
+  fullName: Bodoconsult.NetworkCommunication.DataMessaging.DataBlocks.BasicOutboundDatablock
+- uid: Bodoconsult.NetworkCommunication.DataMessaging.DataBlocks
+  commentId: N:Bodoconsult.NetworkCommunication.DataMessaging.DataBlocks
+  href: Bodoconsult.html
+  name: Bodoconsult.NetworkCommunication.DataMessaging.DataBlocks
+  nameWithType: Bodoconsult.NetworkCommunication.DataMessaging.DataBlocks
+  fullName: Bodoconsult.NetworkCommunication.DataMessaging.DataBlocks
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.DataMessaging
+    name: DataMessaging
+    href: Bodoconsult.NetworkCommunication.DataMessaging.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.DataMessaging.DataBlocks
+    name: DataBlocks
+    href: Bodoconsult.NetworkCommunication.DataMessaging.DataBlocks.html
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.DataMessaging
+    name: DataMessaging
+    href: Bodoconsult.NetworkCommunication.DataMessaging.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.DataMessaging.DataBlocks
+    name: DataBlocks
+    href: Bodoconsult.NetworkCommunication.DataMessaging.DataBlocks.html

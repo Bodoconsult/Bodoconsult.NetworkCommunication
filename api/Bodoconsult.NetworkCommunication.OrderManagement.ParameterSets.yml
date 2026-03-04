@@ -1,0 +1,51 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.ParameterSets
+  commentId: N:Bodoconsult.NetworkCommunication.OrderManagement.ParameterSets
+  id: Bodoconsult.NetworkCommunication.OrderManagement.ParameterSets
+  children:
+  - Bodoconsult.NetworkCommunication.OrderManagement.ParameterSets.BtcpParameterSet
+  - Bodoconsult.NetworkCommunication.OrderManagement.ParameterSets.EdcpParameterSet
+  - Bodoconsult.NetworkCommunication.OrderManagement.ParameterSets.EmptyParameterSet
+  - Bodoconsult.NetworkCommunication.OrderManagement.ParameterSets.SdcpParameterSet
+  - Bodoconsult.NetworkCommunication.OrderManagement.ParameterSets.TncpParameterSet
+  langs:
+  - csharp
+  - vb
+  name: Bodoconsult.NetworkCommunication.OrderManagement.ParameterSets
+  nameWithType: Bodoconsult.NetworkCommunication.OrderManagement.ParameterSets
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.ParameterSets
+  type: Namespace
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+references:
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.ParameterSets.BtcpParameterSet
+  commentId: T:Bodoconsult.NetworkCommunication.OrderManagement.ParameterSets.BtcpParameterSet
+  href: Bodoconsult.NetworkCommunication.OrderManagement.ParameterSets.BtcpParameterSet.html
+  name: BtcpParameterSet
+  nameWithType: BtcpParameterSet
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.ParameterSets.BtcpParameterSet
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.ParameterSets.EdcpParameterSet
+  commentId: T:Bodoconsult.NetworkCommunication.OrderManagement.ParameterSets.EdcpParameterSet
+  href: Bodoconsult.NetworkCommunication.OrderManagement.ParameterSets.EdcpParameterSet.html
+  name: EdcpParameterSet
+  nameWithType: EdcpParameterSet
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.ParameterSets.EdcpParameterSet
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.ParameterSets.EmptyParameterSet
+  commentId: T:Bodoconsult.NetworkCommunication.OrderManagement.ParameterSets.EmptyParameterSet
+  href: Bodoconsult.NetworkCommunication.OrderManagement.ParameterSets.EmptyParameterSet.html
+  name: EmptyParameterSet
+  nameWithType: EmptyParameterSet
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.ParameterSets.EmptyParameterSet
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.ParameterSets.SdcpParameterSet
+  commentId: T:Bodoconsult.NetworkCommunication.OrderManagement.ParameterSets.SdcpParameterSet
+  href: Bodoconsult.NetworkCommunication.OrderManagement.ParameterSets.SdcpParameterSet.html
+  name: SdcpParameterSet
+  nameWithType: SdcpParameterSet
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.ParameterSets.SdcpParameterSet
+- uid: Bodoconsult.NetworkCommunication.OrderManagement.ParameterSets.TncpParameterSet
+  commentId: T:Bodoconsult.NetworkCommunication.OrderManagement.ParameterSets.TncpParameterSet
+  href: Bodoconsult.NetworkCommunication.OrderManagement.ParameterSets.TncpParameterSet.html
+  name: TncpParameterSet
+  nameWithType: TncpParameterSet
+  fullName: Bodoconsult.NetworkCommunication.OrderManagement.ParameterSets.TncpParameterSet

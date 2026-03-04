@@ -1,0 +1,149 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bodoconsult.NetworkCommunication.Factories.FakeSendPacketProcessEnum
+  commentId: T:Bodoconsult.NetworkCommunication.Factories.FakeSendPacketProcessEnum
+  id: FakeSendPacketProcessEnum
+  parent: Bodoconsult.NetworkCommunication.Factories
+  children:
+  - Bodoconsult.NetworkCommunication.Factories.FakeSendPacketProcessEnum.EncodingError
+  - Bodoconsult.NetworkCommunication.Factories.FakeSendPacketProcessEnum.SocketError
+  - Bodoconsult.NetworkCommunication.Factories.FakeSendPacketProcessEnum.Successful
+  langs:
+  - csharp
+  - vb
+  name: FakeSendPacketProcessEnum
+  nameWithType: FakeSendPacketProcessEnum
+  fullName: Bodoconsult.NetworkCommunication.Factories.FakeSendPacketProcessEnum
+  type: Enum
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Factories/FakeSendPacketProcessEnum.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: FakeSendPacketProcessEnum
+    path: src/Bodoconsult.NetworkCommunication/Factories/FakeSendPacketProcessEnum.cs
+    startLine: 7
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Factories
+  summary: Types of fake send packet process results
+  example: []
+  syntax:
+    content: public enum FakeSendPacketProcessEnum
+    content.vb: Public Enum FakeSendPacketProcessEnum
+- uid: Bodoconsult.NetworkCommunication.Factories.FakeSendPacketProcessEnum.Successful
+  commentId: F:Bodoconsult.NetworkCommunication.Factories.FakeSendPacketProcessEnum.Successful
+  id: Successful
+  parent: Bodoconsult.NetworkCommunication.Factories.FakeSendPacketProcessEnum
+  langs:
+  - csharp
+  - vb
+  name: Successful
+  nameWithType: FakeSendPacketProcessEnum.Successful
+  fullName: Bodoconsult.NetworkCommunication.Factories.FakeSendPacketProcessEnum.Successful
+  type: Field
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Factories/FakeSendPacketProcessEnum.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Successful
+    path: src/Bodoconsult.NetworkCommunication/Factories/FakeSendPacketProcessEnum.cs
+    startLine: 9
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Factories
+  syntax:
+    content: Successful = 0
+    return:
+      type: Bodoconsult.NetworkCommunication.Factories.FakeSendPacketProcessEnum
+- uid: Bodoconsult.NetworkCommunication.Factories.FakeSendPacketProcessEnum.EncodingError
+  commentId: F:Bodoconsult.NetworkCommunication.Factories.FakeSendPacketProcessEnum.EncodingError
+  id: EncodingError
+  parent: Bodoconsult.NetworkCommunication.Factories.FakeSendPacketProcessEnum
+  langs:
+  - csharp
+  - vb
+  name: EncodingError
+  nameWithType: FakeSendPacketProcessEnum.EncodingError
+  fullName: Bodoconsult.NetworkCommunication.Factories.FakeSendPacketProcessEnum.EncodingError
+  type: Field
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Factories/FakeSendPacketProcessEnum.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: EncodingError
+    path: src/Bodoconsult.NetworkCommunication/Factories/FakeSendPacketProcessEnum.cs
+    startLine: 10
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Factories
+  syntax:
+    content: EncodingError = 1
+    return:
+      type: Bodoconsult.NetworkCommunication.Factories.FakeSendPacketProcessEnum
+- uid: Bodoconsult.NetworkCommunication.Factories.FakeSendPacketProcessEnum.SocketError
+  commentId: F:Bodoconsult.NetworkCommunication.Factories.FakeSendPacketProcessEnum.SocketError
+  id: SocketError
+  parent: Bodoconsult.NetworkCommunication.Factories.FakeSendPacketProcessEnum
+  langs:
+  - csharp
+  - vb
+  name: SocketError
+  nameWithType: FakeSendPacketProcessEnum.SocketError
+  fullName: Bodoconsult.NetworkCommunication.Factories.FakeSendPacketProcessEnum.SocketError
+  type: Field
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Factories/FakeSendPacketProcessEnum.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: SocketError
+    path: src/Bodoconsult.NetworkCommunication/Factories/FakeSendPacketProcessEnum.cs
+    startLine: 11
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Factories
+  syntax:
+    content: SocketError = 2
+    return:
+      type: Bodoconsult.NetworkCommunication.Factories.FakeSendPacketProcessEnum
+references:
+- uid: Bodoconsult.NetworkCommunication.Factories
+  commentId: N:Bodoconsult.NetworkCommunication.Factories
+  href: Bodoconsult.html
+  name: Bodoconsult.NetworkCommunication.Factories
+  nameWithType: Bodoconsult.NetworkCommunication.Factories
+  fullName: Bodoconsult.NetworkCommunication.Factories
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Factories
+    name: Factories
+    href: Bodoconsult.NetworkCommunication.Factories.html
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Factories
+    name: Factories
+    href: Bodoconsult.NetworkCommunication.Factories.html
+- uid: Bodoconsult.NetworkCommunication.Factories.FakeSendPacketProcessEnum
+  commentId: T:Bodoconsult.NetworkCommunication.Factories.FakeSendPacketProcessEnum
+  parent: Bodoconsult.NetworkCommunication.Factories
+  href: Bodoconsult.NetworkCommunication.Factories.FakeSendPacketProcessEnum.html
+  name: FakeSendPacketProcessEnum
+  nameWithType: FakeSendPacketProcessEnum
+  fullName: Bodoconsult.NetworkCommunication.Factories.FakeSendPacketProcessEnum

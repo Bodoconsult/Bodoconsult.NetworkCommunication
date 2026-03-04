@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Class IpCommunicationHandler | Bodoconsult.Network </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class IpCommunicationHandler | Bodoconsult.Network ">
+      
+      <meta name="description" content="IP implementation for  via socket">
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/new/main/apiSpec/new?filename=Bodoconsult_NetworkCommunication_Communication_IpCommunicationHandler.md&amp;value=---%0Auid%3A%20Bodoconsult.NetworkCommunication.Communication.IpCommunicationHandler%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../logo.svg" alt="Bodoconsult.Network">
+            Bodoconsult.Network
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="Bodoconsult.NetworkCommunication.Communication.IpCommunicationHandler">
+
+
+
+  <h1 id="Bodoconsult_NetworkCommunication_Communication_IpCommunicationHandler" data-uid="Bodoconsult.NetworkCommunication.Communication.IpCommunicationHandler" class="text-break">
+Class IpCommunicationHandler  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/Communication/IpCommunicationHandler.cs/#L15"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="Bodoconsult.html">Bodoconsult</a>.<a class="xref" href="Bodoconsult.NetworkCommunication.html">NetworkCommunication</a>.<a class="xref" href="Bodoconsult.NetworkCommunication.Communication.html">Communication</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>Bodoconsult.NetworkCommunication.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p>IP implementation for <a class="xref" href="Bodoconsult.NetworkCommunication.Interfaces.ICommunicationHandler.html">ICommunicationHandler</a> via socket</p>
+</div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class IpCommunicationHandler : ICommunicationHandler, IDisposable</code></pre>
+  </div>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><span class="xref">IpCommunicationHandler</span></div>
+    </dd>
+  </dl>
+
+  <dl class="typelist implements">
+    <dt>Implements</dt>
+    <dd>
+      <div><a class="xref" href="Bodoconsult.NetworkCommunication.Interfaces.ICommunicationHandler.html">ICommunicationHandler</a></div>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.idisposable">IDisposable</a></div>
+    </dd>
+  </dl>
+
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone">object.MemberwiseClone()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
+    </div>
+  </dd></dl>
+
+
+
+
+
+
+  <h2 class="section" id="constructors">Constructors
+</h2>
+
+
+  <a id="Bodoconsult_NetworkCommunication_Communication_IpCommunicationHandler__ctor_" data-uid="Bodoconsult.NetworkCommunication.Communication.IpCommunicationHandler.#ctor*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_Communication_IpCommunicationHandler__ctor_Bodoconsult_NetworkCommunication_Interfaces_IDuplexIo_Bodoconsult_NetworkCommunication_Interfaces_IDataMessagingConfig_Bodoconsult_App_Interfaces_IAppEventSourceFactory_" data-uid="Bodoconsult.NetworkCommunication.Communication.IpCommunicationHandler.#ctor(Bodoconsult.NetworkCommunication.Interfaces.IDuplexIo,Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig,Bodoconsult.App.Interfaces.IAppEventSourceFactory)">
+  IpCommunicationHandler(IDuplexIo, IDataMessagingConfig, IAppEventSourceFactory)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/Communication/IpCommunicationHandler.cs/#L27"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Default ctor</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IpCommunicationHandler(IDuplexIo duplexIo, IDataMessagingConfig dataMessagingConfig, IAppEventSourceFactory appEventSourceFactory)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>duplexIo</code> <a class="xref" href="Bodoconsult.NetworkCommunication.Interfaces.IDuplexIo.html">IDuplexIo</a></dt>
+    <dd><p>Duplex IO communication to use</p>
+</dd>
+    <dt><code>dataMessagingConfig</code> <a class="xref" href="Bodoconsult.NetworkCommunication.Interfaces.IDataMessagingConfig.html">IDataMessagingConfig</a></dt>
+    <dd><p>SMD tower master data</p>
+</dd>
+    <dt><code>appEventSourceFactory</code> <span class="xref">IAppEventSourceFactory</span></dt>
+    <dd><p>Current app event source factory used for APM</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
+  <a id="Bodoconsult_NetworkCommunication_Communication_IpCommunicationHandler_DuplexIo_" data-uid="Bodoconsult.NetworkCommunication.Communication.IpCommunicationHandler.DuplexIo*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_Communication_IpCommunicationHandler_DuplexIo" data-uid="Bodoconsult.NetworkCommunication.Communication.IpCommunicationHandler.DuplexIo">
+  DuplexIo
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/Communication/IpCommunicationHandler.cs/#L45"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Current <a class="xref" href="Bodoconsult.NetworkCommunication.Interfaces.IDuplexIo.html">IDuplexIo</a> instance to use</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IDuplexIo DuplexIo { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Bodoconsult.NetworkCommunication.Interfaces.IDuplexIo.html">IDuplexIo</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_Communication_IpCommunicationHandler_IsConnected_" data-uid="Bodoconsult.NetworkCommunication.Communication.IpCommunicationHandler.IsConnected*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_Communication_IpCommunicationHandler_IsConnected" data-uid="Bodoconsult.NetworkCommunication.Communication.IpCommunicationHandler.IsConnected">
+  IsConnected
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/Communication/IpCommunicationHandler.cs/#L171"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Is the tower connected</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsConnected { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_Communication_IpCommunicationHandler_SocketProxy_" data-uid="Bodoconsult.NetworkCommunication.Communication.IpCommunicationHandler.SocketProxy*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_Communication_IpCommunicationHandler_SocketProxy" data-uid="Bodoconsult.NetworkCommunication.Communication.IpCommunicationHandler.SocketProxy">
+  SocketProxy
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/Communication/IpCommunicationHandler.cs/#L173"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ISocketProxy SocketProxy { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Bodoconsult.NetworkCommunication.Interfaces.ISocketProxy.html">ISocketProxy</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="Bodoconsult_NetworkCommunication_Communication_IpCommunicationHandler_Connect_" data-uid="Bodoconsult.NetworkCommunication.Communication.IpCommunicationHandler.Connect*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_Communication_IpCommunicationHandler_Connect" data-uid="Bodoconsult.NetworkCommunication.Communication.IpCommunicationHandler.Connect">
+  Connect()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/Communication/IpCommunicationHandler.cs/#L125"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Connect to the tower</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Connect()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_Communication_IpCommunicationHandler_Disconnect_" data-uid="Bodoconsult.NetworkCommunication.Communication.IpCommunicationHandler.Disconnect*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_Communication_IpCommunicationHandler_Disconnect" data-uid="Bodoconsult.NetworkCommunication.Communication.IpCommunicationHandler.Disconnect">
+  Disconnect()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/Communication/IpCommunicationHandler.cs/#L141"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Disconnect from tower</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Disconnect()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_Communication_IpCommunicationHandler_Dispose_" data-uid="Bodoconsult.NetworkCommunication.Communication.IpCommunicationHandler.Dispose*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_Communication_IpCommunicationHandler_Dispose" data-uid="Bodoconsult.NetworkCommunication.Communication.IpCommunicationHandler.Dispose">
+  Dispose()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/Communication/IpCommunicationHandler.cs/#L222"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Dispose()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_Communication_IpCommunicationHandler_Dispose_" data-uid="Bodoconsult.NetworkCommunication.Communication.IpCommunicationHandler.Dispose*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_Communication_IpCommunicationHandler_Dispose_System_Boolean_" data-uid="Bodoconsult.NetworkCommunication.Communication.IpCommunicationHandler.Dispose(System.Boolean)">
+  Dispose(bool)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/Communication/IpCommunicationHandler.cs/#L201"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected virtual void Dispose(bool disposing)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>disposing</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_Communication_IpCommunicationHandler_OnMessageNotSent_" data-uid="Bodoconsult.NetworkCommunication.Communication.IpCommunicationHandler.OnMessageNotSent*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_Communication_IpCommunicationHandler_OnMessageNotSent_System_ReadOnlyMemory_System_Byte__System_String_" data-uid="Bodoconsult.NetworkCommunication.Communication.IpCommunicationHandler.OnMessageNotSent(System.ReadOnlyMemory{System.Byte},System.String)">
+  OnMessageNotSent(ReadOnlyMemory&lt;byte&gt;, string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/Communication/IpCommunicationHandler.cs/#L61"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>This message should be fired if a message has not been sent</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void OnMessageNotSent(ReadOnlyMemory&lt;byte&gt; message, string reason)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>message</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.readonlymemory-1">ReadOnlyMemory</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a>&gt;</dt>
+    <dd><p>Message not sent</p>
+</dd>
+    <dt><code>reason</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The reason why the message was not sent</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_Communication_IpCommunicationHandler_OnReceivedMessage_" data-uid="Bodoconsult.NetworkCommunication.Communication.IpCommunicationHandler.OnReceivedMessage*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_Communication_IpCommunicationHandler_OnReceivedMessage_Bodoconsult_NetworkCommunication_Interfaces_IInboundDataMessage_" data-uid="Bodoconsult.NetworkCommunication.Communication.IpCommunicationHandler.OnReceivedMessage(Bodoconsult.NetworkCommunication.Interfaces.IInboundDataMessage)">
+  OnReceivedMessage(IInboundDataMessage)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/Communication/IpCommunicationHandler.cs/#L95"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>This method should check if sending a handshake is required and send it if yes</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void OnReceivedMessage(IInboundDataMessage message)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>message</code> <a class="xref" href="Bodoconsult.NetworkCommunication.Interfaces.IInboundDataMessage.html">IInboundDataMessage</a></dt>
+    <dd><p>Data message received</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_Communication_IpCommunicationHandler_SendMessage_" data-uid="Bodoconsult.NetworkCommunication.Communication.IpCommunicationHandler.SendMessage*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_Communication_IpCommunicationHandler_SendMessage_Bodoconsult_NetworkCommunication_Interfaces_IOutboundMessage_" data-uid="Bodoconsult.NetworkCommunication.Communication.IpCommunicationHandler.SendMessage(Bodoconsult.NetworkCommunication.Interfaces.IOutboundMessage)">
+  SendMessage(IOutboundMessage)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/Communication/IpCommunicationHandler.cs/#L75"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Send a message to the device</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public MessageSendingResult SendMessage(IOutboundMessage message)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>message</code> <a class="xref" href="Bodoconsult.NetworkCommunication.Interfaces.IOutboundMessage.html">IOutboundMessage</a></dt>
+    <dd><p>Current message to send</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Bodoconsult.NetworkCommunication.Interfaces.MessageSendingResult.html">MessageSendingResult</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_Communication_IpCommunicationHandler_UpdateDevice_" data-uid="Bodoconsult.NetworkCommunication.Communication.IpCommunicationHandler.UpdateDevice*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_Communication_IpCommunicationHandler_UpdateDevice" data-uid="Bodoconsult.NetworkCommunication.Communication.IpCommunicationHandler.UpdateDevice">
+  UpdateDevice()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/Communication/IpCommunicationHandler.cs/#L47"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void UpdateDevice()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/Communication/IpCommunicationHandler.cs/#L15" class="edit-link">Edit this page</a>
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

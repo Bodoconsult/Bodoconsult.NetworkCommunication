@@ -1,0 +1,132 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverMode
+  commentId: T:Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverMode
+  id: DhcpServerFailoverMode
+  parent: Bodoconsult.Network.Windows.Dhcp
+  children:
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverMode.HotStandby
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverMode.LoadBalance
+  langs:
+  - csharp
+  - vb
+  name: DhcpServerFailoverMode
+  nameWithType: DhcpServerFailoverMode
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverMode
+  type: Enum
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerFailoverMode.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: DhcpServerFailoverMode
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerFailoverMode.cs
+    startLine: 5
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: public enum DhcpServerFailoverMode
+    content.vb: Public Enum DhcpServerFailoverMode
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverMode.LoadBalance
+  commentId: F:Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverMode.LoadBalance
+  id: LoadBalance
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverMode
+  langs:
+  - csharp
+  - vb
+  name: LoadBalance
+  nameWithType: DhcpServerFailoverMode.LoadBalance
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverMode.LoadBalance
+  type: Field
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerFailoverMode.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: LoadBalance
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerFailoverMode.cs
+    startLine: 10
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  summary: The DHCPv4 server failover relationship is in Load Balancing mode.
+  example: []
+  syntax:
+    content: LoadBalance = 0
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverMode
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverMode.HotStandby
+  commentId: F:Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverMode.HotStandby
+  id: HotStandby
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverMode
+  langs:
+  - csharp
+  - vb
+  name: HotStandby
+  nameWithType: DhcpServerFailoverMode.HotStandby
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverMode.HotStandby
+  type: Field
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerFailoverMode.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: HotStandby
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerFailoverMode.cs
+    startLine: 14
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  summary: The DHCPv4 server failover relationship is in Hot Standby mode.
+  example: []
+  syntax:
+    content: HotStandby = 1
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverMode
+references:
+- uid: Bodoconsult.Network.Windows.Dhcp
+  commentId: N:Bodoconsult.Network.Windows.Dhcp
+  href: Bodoconsult.html
+  name: Bodoconsult.Network.Windows.Dhcp
+  nameWithType: Bodoconsult.Network.Windows.Dhcp
+  fullName: Bodoconsult.Network.Windows.Dhcp
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.Network
+    name: Network
+    href: Bodoconsult.Network.html
+  - name: .
+  - uid: Bodoconsult.Network.Windows
+    name: Windows
+    href: Bodoconsult.Network.Windows.html
+  - name: .
+  - uid: Bodoconsult.Network.Windows.Dhcp
+    name: Dhcp
+    href: Bodoconsult.Network.Windows.Dhcp.html
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.Network
+    name: Network
+    href: Bodoconsult.Network.html
+  - name: .
+  - uid: Bodoconsult.Network.Windows
+    name: Windows
+    href: Bodoconsult.Network.Windows.html
+  - name: .
+  - uid: Bodoconsult.Network.Windows.Dhcp
+    name: Dhcp
+    href: Bodoconsult.Network.Windows.Dhcp.html
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverMode
+  commentId: T:Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverMode
+  parent: Bodoconsult.Network.Windows.Dhcp
+  href: Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverMode.html
+  name: DhcpServerFailoverMode
+  nameWithType: DhcpServerFailoverMode
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverMode

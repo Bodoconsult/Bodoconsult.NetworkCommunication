@@ -1,0 +1,2594 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope
+  commentId: T:Bodoconsult.Network.Windows.Dhcp.DhcpServerScope
+  id: DhcpServerScope
+  parent: Bodoconsult.Network.Windows.Dhcp
+  children:
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.Activate
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.Address
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.Clients
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.Comment
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.ConfigureFailover(Bodoconsult.Network.Windows.Dhcp.IDhcpServer,System.String,Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverMode)
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.ConfigureFailover(Bodoconsult.Network.Windows.Dhcp.IDhcpServer,System.String,Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverMode,System.Byte)
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.ConfigureFailover(Bodoconsult.Network.Windows.Dhcp.IDhcpServer,System.String,Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverMode,System.Byte,System.TimeSpan,System.Nullable{System.TimeSpan})
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.ConfigureFailover(Bodoconsult.Network.Windows.Dhcp.IDhcpServer,System.String,System.String,Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverMode)
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.ConfigureFailover(Bodoconsult.Network.Windows.Dhcp.IDhcpServer,System.String,System.String,Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverMode,System.Byte)
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.ConfigureFailover(Bodoconsult.Network.Windows.Dhcp.IDhcpServer,System.String,System.String,Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverMode,System.Byte,System.TimeSpan,System.Nullable{System.TimeSpan})
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.ConfigureFailover(Bodoconsult.Network.Windows.Dhcp.IDhcpServerFailoverRelationship)
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.Deactivate
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.DeconfigureFailover
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.DefaultLeaseDuration
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.DefaultTimeDelayOffer
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.Delete(System.Boolean)
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.DnsSettings
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.ExcludedIpRanges
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.GetFailoverRelationship
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.GetFailoverStatistics
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.IpRange
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.LeaseDuration
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.Mask
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.Name
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.Options
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.PrimaryHost
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.QuarantineOn
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.ReplicateFailoverPartner
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.Reservations
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.Server
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.State
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.TimeDelayOffer
+  - Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.ToString
+  langs:
+  - csharp
+  - vb
+  name: DhcpServerScope
+  nameWithType: DhcpServerScope
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope
+  type: Class
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerScope.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: DhcpServerScope
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerScope.cs
+    startLine: 7
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: 'public class DhcpServerScope : IDhcpServerScope'
+    content.vb: Public Class DhcpServerScope Implements IDhcpServerScope
+  inheritance:
+  - System.Object
+  implements:
+  - Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.DefaultTimeDelayOffer
+  commentId: P:Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.DefaultTimeDelayOffer
+  id: DefaultTimeDelayOffer
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope
+  langs:
+  - csharp
+  - vb
+  name: DefaultTimeDelayOffer
+  nameWithType: DhcpServerScope.DefaultTimeDelayOffer
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.DefaultTimeDelayOffer
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerScope.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: DefaultTimeDelayOffer
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerScope.cs
+    startLine: 12
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  summary: Default time delay offer of 0 milliseconds
+  example: []
+  syntax:
+    content: public static TimeSpan DefaultTimeDelayOffer { get; }
+    parameters: []
+    return:
+      type: System.TimeSpan
+    content.vb: Public Shared ReadOnly Property DefaultTimeDelayOffer As TimeSpan
+  overload: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.DefaultTimeDelayOffer*
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.DefaultLeaseDuration
+  commentId: P:Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.DefaultLeaseDuration
+  id: DefaultLeaseDuration
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope
+  langs:
+  - csharp
+  - vb
+  name: DefaultLeaseDuration
+  nameWithType: DhcpServerScope.DefaultLeaseDuration
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.DefaultLeaseDuration
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerScope.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: DefaultLeaseDuration
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerScope.cs
+    startLine: 16
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  summary: Default lease duration of 8 days
+  example: []
+  syntax:
+    content: public static TimeSpan DefaultLeaseDuration { get; }
+    parameters: []
+    return:
+      type: System.TimeSpan
+    content.vb: Public Shared ReadOnly Property DefaultLeaseDuration As TimeSpan
+  overload: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.DefaultLeaseDuration*
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.Server
+  commentId: P:Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.Server
+  id: Server
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope
+  langs:
+  - csharp
+  - vb
+  name: Server
+  nameWithType: DhcpServerScope.Server
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.Server
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerScope.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Server
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerScope.cs
+    startLine: 19
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  syntax:
+    content: public DhcpServer Server { get; }
+    parameters: []
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServer
+    content.vb: Public ReadOnly Property Server As DhcpServer
+  overload: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.Server*
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.Address
+  commentId: P:Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.Address
+  id: Address
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope
+  langs:
+  - csharp
+  - vb
+  name: Address
+  nameWithType: DhcpServerScope.Address
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.Address
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerScope.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Address
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerScope.cs
+    startLine: 21
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  example: []
+  syntax:
+    content: public DhcpServerIpAddress Address { get; }
+    parameters: []
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress
+    content.vb: Public ReadOnly Property Address As DhcpServerIpAddress
+  overload: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.Address*
+  implements:
+  - Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.Address
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.Mask
+  commentId: P:Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.Mask
+  id: Mask
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope
+  langs:
+  - csharp
+  - vb
+  name: Mask
+  nameWithType: DhcpServerScope.Mask
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.Mask
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerScope.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Mask
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerScope.cs
+    startLine: 25
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  example: []
+  syntax:
+    content: public DhcpServerIpMask Mask { get; }
+    parameters: []
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpMask
+    content.vb: Public ReadOnly Property Mask As DhcpServerIpMask
+  overload: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.Mask*
+  implements:
+  - Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.Mask
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.Name
+  commentId: P:Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.Name
+  id: Name
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope
+  langs:
+  - csharp
+  - vb
+  name: Name
+  nameWithType: DhcpServerScope.Name
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.Name
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerScope.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Name
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerScope.cs
+    startLine: 26
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  example: []
+  syntax:
+    content: public string Name { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property Name As String
+  overload: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.Name*
+  implements:
+  - Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.Name
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.Comment
+  commentId: P:Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.Comment
+  id: Comment
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope
+  langs:
+  - csharp
+  - vb
+  name: Comment
+  nameWithType: DhcpServerScope.Comment
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.Comment
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerScope.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Comment
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerScope.cs
+    startLine: 31
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  example: []
+  syntax:
+    content: public string Comment { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property Comment As String
+  overload: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.Comment*
+  implements:
+  - Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.Comment
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.State
+  commentId: P:Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.State
+  id: State
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope
+  langs:
+  - csharp
+  - vb
+  name: State
+  nameWithType: DhcpServerScope.State
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.State
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerScope.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: State
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerScope.cs
+    startLine: 36
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  example: []
+  syntax:
+    content: public DhcpServerScopeState State { get; }
+    parameters: []
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeState
+    content.vb: Public ReadOnly Property State As DhcpServerScopeState
+  overload: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.State*
+  implements:
+  - Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.State
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.IpRange
+  commentId: P:Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.IpRange
+  id: IpRange
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope
+  langs:
+  - csharp
+  - vb
+  name: IpRange
+  nameWithType: DhcpServerScope.IpRange
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.IpRange
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerScope.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: IpRange
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerScope.cs
+    startLine: 38
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  example: []
+  syntax:
+    content: public DhcpServerIpRange IpRange { get; set; }
+    parameters: []
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpRange
+    content.vb: Public Property IpRange As DhcpServerIpRange
+  overload: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.IpRange*
+  implements:
+  - Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.IpRange
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.LeaseDuration
+  commentId: P:Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.LeaseDuration
+  id: LeaseDuration
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope
+  langs:
+  - csharp
+  - vb
+  name: LeaseDuration
+  nameWithType: DhcpServerScope.LeaseDuration
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.LeaseDuration
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerScope.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: LeaseDuration
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerScope.cs
+    startLine: 44
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  example: []
+  syntax:
+    content: public TimeSpan? LeaseDuration { get; set; }
+    parameters: []
+    return:
+      type: System.Nullable{System.TimeSpan}
+    content.vb: Public Property LeaseDuration As TimeSpan?
+  overload: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.LeaseDuration*
+  implements:
+  - Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.LeaseDuration
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.TimeDelayOffer
+  commentId: P:Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.TimeDelayOffer
+  id: TimeDelayOffer
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope
+  langs:
+  - csharp
+  - vb
+  name: TimeDelayOffer
+  nameWithType: DhcpServerScope.TimeDelayOffer
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.TimeDelayOffer
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerScope.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: TimeDelayOffer
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerScope.cs
+    startLine: 49
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  example: []
+  syntax:
+    content: public TimeSpan TimeDelayOffer { get; set; }
+    parameters: []
+    return:
+      type: System.TimeSpan
+    content.vb: Public Property TimeDelayOffer As TimeSpan
+  overload: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.TimeDelayOffer*
+  implements:
+  - Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.TimeDelayOffer
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.PrimaryHost
+  commentId: P:Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.PrimaryHost
+  id: PrimaryHost
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope
+  langs:
+  - csharp
+  - vb
+  name: PrimaryHost
+  nameWithType: DhcpServerScope.PrimaryHost
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.PrimaryHost
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerScope.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: PrimaryHost
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerScope.cs
+    startLine: 55
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  example: []
+  syntax:
+    content: public IDhcpServerHost PrimaryHost { get; }
+    parameters: []
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.IDhcpServerHost
+    content.vb: Public ReadOnly Property PrimaryHost As IDhcpServerHost
+  overload: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.PrimaryHost*
+  implements:
+  - Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.PrimaryHost
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.DnsSettings
+  commentId: P:Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.DnsSettings
+  id: DnsSettings
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope
+  langs:
+  - csharp
+  - vb
+  name: DnsSettings
+  nameWithType: DhcpServerScope.DnsSettings
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.DnsSettings
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerScope.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: DnsSettings
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerScope.cs
+    startLine: 57
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  example: []
+  syntax:
+    content: public IDhcpServerDnsSettings DnsSettings { get; }
+    parameters: []
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.IDhcpServerDnsSettings
+    content.vb: Public ReadOnly Property DnsSettings As IDhcpServerDnsSettings
+  overload: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.DnsSettings*
+  implements:
+  - Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.DnsSettings
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.QuarantineOn
+  commentId: P:Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.QuarantineOn
+  id: QuarantineOn
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope
+  langs:
+  - csharp
+  - vb
+  name: QuarantineOn
+  nameWithType: DhcpServerScope.QuarantineOn
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.QuarantineOn
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerScope.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: QuarantineOn
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerScope.cs
+    startLine: 58
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  example: []
+  syntax:
+    content: public bool QuarantineOn { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public ReadOnly Property QuarantineOn As Boolean
+  overload: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.QuarantineOn*
+  implements:
+  - Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.QuarantineOn
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.ExcludedIpRanges
+  commentId: P:Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.ExcludedIpRanges
+  id: ExcludedIpRanges
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope
+  langs:
+  - csharp
+  - vb
+  name: ExcludedIpRanges
+  nameWithType: DhcpServerScope.ExcludedIpRanges
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.ExcludedIpRanges
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerScope.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: ExcludedIpRanges
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerScope.cs
+    startLine: 63
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  summary: Scope Excluded IP Ranges
+  example: []
+  syntax:
+    content: public IDhcpServerScopeExcludedIpRangeCollection ExcludedIpRanges { get; }
+    parameters: []
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeExcludedIpRangeCollection
+    content.vb: Public ReadOnly Property ExcludedIpRanges As IDhcpServerScopeExcludedIpRangeCollection
+  overload: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.ExcludedIpRanges*
+  implements:
+  - Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.ExcludedIpRanges
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.Options
+  commentId: P:Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.Options
+  id: Options
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope
+  langs:
+  - csharp
+  - vb
+  name: Options
+  nameWithType: DhcpServerScope.Options
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.Options
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerScope.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Options
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerScope.cs
+    startLine: 68
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  summary: Scope Option Values
+  example: []
+  syntax:
+    content: public IDhcpServerScopeOptionValueCollection Options { get; }
+    parameters: []
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection
+    content.vb: Public ReadOnly Property Options As IDhcpServerScopeOptionValueCollection
+  overload: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.Options*
+  implements:
+  - Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.Options
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.Reservations
+  commentId: P:Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.Reservations
+  id: Reservations
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope
+  langs:
+  - csharp
+  - vb
+  name: Reservations
+  nameWithType: DhcpServerScope.Reservations
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.Reservations
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerScope.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Reservations
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerScope.cs
+    startLine: 73
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  summary: Scope Reservations
+  example: []
+  syntax:
+    content: public IDhcpServerScopeReservationCollection Reservations { get; }
+    parameters: []
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeReservationCollection
+    content.vb: Public ReadOnly Property Reservations As IDhcpServerScopeReservationCollection
+  overload: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.Reservations*
+  implements:
+  - Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.Reservations
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.Clients
+  commentId: P:Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.Clients
+  id: Clients
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope
+  langs:
+  - csharp
+  - vb
+  name: Clients
+  nameWithType: DhcpServerScope.Clients
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.Clients
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerScope.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Clients
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerScope.cs
+    startLine: 78
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  summary: Scope Clients
+  example: []
+  syntax:
+    content: public IDhcpServerScopeClientCollection Clients { get; }
+    parameters: []
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeClientCollection
+    content.vb: Public ReadOnly Property Clients As IDhcpServerScopeClientCollection
+  overload: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.Clients*
+  implements:
+  - Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.Clients
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.Activate
+  commentId: M:Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.Activate
+  id: Activate
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope
+  langs:
+  - csharp
+  - vb
+  name: Activate()
+  nameWithType: DhcpServerScope.Activate()
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.Activate()
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerScope.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Activate
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerScope.cs
+    startLine: 97
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  example: []
+  syntax:
+    content: public void Activate()
+    content.vb: Public Sub Activate()
+  overload: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.Activate*
+  implements:
+  - Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.Activate
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.Deactivate
+  commentId: M:Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.Deactivate
+  id: Deactivate
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope
+  langs:
+  - csharp
+  - vb
+  name: Deactivate()
+  nameWithType: DhcpServerScope.Deactivate()
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.Deactivate()
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerScope.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Deactivate
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerScope.cs
+    startLine: 106
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  example: []
+  syntax:
+    content: public void Deactivate()
+    content.vb: Public Sub Deactivate()
+  overload: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.Deactivate*
+  implements:
+  - Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.Deactivate
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.Delete(System.Boolean)
+  commentId: M:Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.Delete(System.Boolean)
+  id: Delete(System.Boolean)
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope
+  langs:
+  - csharp
+  - vb
+  name: Delete(bool)
+  nameWithType: DhcpServerScope.Delete(bool)
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.Delete(bool)
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerScope.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Delete
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerScope.cs
+    startLine: 119
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  summary: Deletes this scope from the server
+  example: []
+  syntax:
+    content: public void Delete(bool retainClientDnsRecords = false)
+    parameters:
+    - id: retainClientDnsRecords
+      type: System.Boolean
+      description: If true registered client DNS records are not removed. Useful in failover scenarios. Default = false
+    content.vb: Public Sub Delete(retainClientDnsRecords As Boolean = False)
+  overload: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.Delete*
+  implements:
+  - Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.Delete(System.Boolean)
+  nameWithType.vb: DhcpServerScope.Delete(Boolean)
+  fullName.vb: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.Delete(Boolean)
+  name.vb: Delete(Boolean)
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.GetFailoverRelationship
+  commentId: M:Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.GetFailoverRelationship
+  id: GetFailoverRelationship
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope
+  langs:
+  - csharp
+  - vb
+  name: GetFailoverRelationship()
+  nameWithType: DhcpServerScope.GetFailoverRelationship()
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.GetFailoverRelationship()
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerScope.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: GetFailoverRelationship
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerScope.cs
+    startLine: 131
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  example: []
+  syntax:
+    content: public IDhcpServerFailoverRelationship GetFailoverRelationship()
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.IDhcpServerFailoverRelationship
+    content.vb: Public Function GetFailoverRelationship() As IDhcpServerFailoverRelationship
+  overload: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.GetFailoverRelationship*
+  implements:
+  - Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.GetFailoverRelationship
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.GetFailoverStatistics
+  commentId: M:Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.GetFailoverStatistics
+  id: GetFailoverStatistics
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope
+  langs:
+  - csharp
+  - vb
+  name: GetFailoverStatistics()
+  nameWithType: DhcpServerScope.GetFailoverStatistics()
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.GetFailoverStatistics()
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerScope.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: GetFailoverStatistics
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerScope.cs
+    startLine: 134
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  example: []
+  syntax:
+    content: public IDhcpServerScopeFailoverStatistics GetFailoverStatistics()
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeFailoverStatistics
+    content.vb: Public Function GetFailoverStatistics() As IDhcpServerScopeFailoverStatistics
+  overload: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.GetFailoverStatistics*
+  implements:
+  - Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.GetFailoverStatistics
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.ReplicateFailoverPartner
+  commentId: M:Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.ReplicateFailoverPartner
+  id: ReplicateFailoverPartner
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope
+  langs:
+  - csharp
+  - vb
+  name: ReplicateFailoverPartner()
+  nameWithType: DhcpServerScope.ReplicateFailoverPartner()
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.ReplicateFailoverPartner()
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerScope.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: ReplicateFailoverPartner
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerScope.cs
+    startLine: 137
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  example: []
+  syntax:
+    content: public void ReplicateFailoverPartner()
+    content.vb: Public Sub ReplicateFailoverPartner()
+  overload: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.ReplicateFailoverPartner*
+  implements:
+  - Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.ReplicateFailoverPartner
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.ConfigureFailover(Bodoconsult.Network.Windows.Dhcp.IDhcpServer,System.String,Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverMode)
+  commentId: M:Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.ConfigureFailover(Bodoconsult.Network.Windows.Dhcp.IDhcpServer,System.String,Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverMode)
+  id: ConfigureFailover(Bodoconsult.Network.Windows.Dhcp.IDhcpServer,System.String,Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverMode)
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope
+  langs:
+  - csharp
+  - vb
+  name: ConfigureFailover(IDhcpServer, string, DhcpServerFailoverMode)
+  nameWithType: DhcpServerScope.ConfigureFailover(IDhcpServer, string, DhcpServerFailoverMode)
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.ConfigureFailover(Bodoconsult.Network.Windows.Dhcp.IDhcpServer, string, Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverMode)
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerScope.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: ConfigureFailover
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerScope.cs
+    startLine: 147
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  summary: Configures a failover relationship for this scope
+  example: []
+  syntax:
+    content: public IDhcpServerFailoverRelationship ConfigureFailover(IDhcpServer partnerServer, string sharedSecret, DhcpServerFailoverMode mode)
+    parameters:
+    - id: partnerServer
+      type: Bodoconsult.Network.Windows.Dhcp.IDhcpServer
+      description: The failover partner server
+    - id: sharedSecret
+      type: System.String
+      description: Secret used by the relationship
+    - id: mode
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverMode
+      description: Failover mode to configure
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.IDhcpServerFailoverRelationship
+      description: The created failover relationship
+    content.vb: Public Function ConfigureFailover(partnerServer As IDhcpServer, sharedSecret As String, mode As DhcpServerFailoverMode) As IDhcpServerFailoverRelationship
+  overload: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.ConfigureFailover*
+  implements:
+  - Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.ConfigureFailover(Bodoconsult.Network.Windows.Dhcp.IDhcpServer,System.String,Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverMode)
+  nameWithType.vb: DhcpServerScope.ConfigureFailover(IDhcpServer, String, DhcpServerFailoverMode)
+  fullName.vb: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.ConfigureFailover(Bodoconsult.Network.Windows.Dhcp.IDhcpServer, String, Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverMode)
+  name.vb: ConfigureFailover(IDhcpServer, String, DhcpServerFailoverMode)
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.ConfigureFailover(Bodoconsult.Network.Windows.Dhcp.IDhcpServer,System.String,System.String,Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverMode)
+  commentId: M:Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.ConfigureFailover(Bodoconsult.Network.Windows.Dhcp.IDhcpServer,System.String,System.String,Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverMode)
+  id: ConfigureFailover(Bodoconsult.Network.Windows.Dhcp.IDhcpServer,System.String,System.String,Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverMode)
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope
+  langs:
+  - csharp
+  - vb
+  name: ConfigureFailover(IDhcpServer, string, string, DhcpServerFailoverMode)
+  nameWithType: DhcpServerScope.ConfigureFailover(IDhcpServer, string, string, DhcpServerFailoverMode)
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.ConfigureFailover(Bodoconsult.Network.Windows.Dhcp.IDhcpServer, string, string, Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverMode)
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerScope.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: ConfigureFailover
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerScope.cs
+    startLine: 158
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  summary: Configures a failover relationship for this scope
+  example: []
+  syntax:
+    content: public IDhcpServerFailoverRelationship ConfigureFailover(IDhcpServer partnerServer, string name, string sharedSecret, DhcpServerFailoverMode mode)
+    parameters:
+    - id: partnerServer
+      type: Bodoconsult.Network.Windows.Dhcp.IDhcpServer
+      description: The failover partner server
+    - id: name
+      type: System.String
+      description: Name of the failover relationship
+    - id: sharedSecret
+      type: System.String
+      description: Secret used by the relationship
+    - id: mode
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverMode
+      description: Failover mode to configure
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.IDhcpServerFailoverRelationship
+      description: The created failover relationship
+    content.vb: Public Function ConfigureFailover(partnerServer As IDhcpServer, name As String, sharedSecret As String, mode As DhcpServerFailoverMode) As IDhcpServerFailoverRelationship
+  overload: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.ConfigureFailover*
+  implements:
+  - Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.ConfigureFailover(Bodoconsult.Network.Windows.Dhcp.IDhcpServer,System.String,System.String,Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverMode)
+  nameWithType.vb: DhcpServerScope.ConfigureFailover(IDhcpServer, String, String, DhcpServerFailoverMode)
+  fullName.vb: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.ConfigureFailover(Bodoconsult.Network.Windows.Dhcp.IDhcpServer, String, String, Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverMode)
+  name.vb: ConfigureFailover(IDhcpServer, String, String, DhcpServerFailoverMode)
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.ConfigureFailover(Bodoconsult.Network.Windows.Dhcp.IDhcpServer,System.String,Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverMode,System.Byte)
+  commentId: M:Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.ConfigureFailover(Bodoconsult.Network.Windows.Dhcp.IDhcpServer,System.String,Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverMode,System.Byte)
+  id: ConfigureFailover(Bodoconsult.Network.Windows.Dhcp.IDhcpServer,System.String,Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverMode,System.Byte)
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope
+  langs:
+  - csharp
+  - vb
+  name: ConfigureFailover(IDhcpServer, string, DhcpServerFailoverMode, byte)
+  nameWithType: DhcpServerScope.ConfigureFailover(IDhcpServer, string, DhcpServerFailoverMode, byte)
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.ConfigureFailover(Bodoconsult.Network.Windows.Dhcp.IDhcpServer, string, Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverMode, byte)
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerScope.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: ConfigureFailover
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerScope.cs
+    startLine: 169
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  summary: Configures a failover relationship for this scope
+  example: []
+  syntax:
+    content: public IDhcpServerFailoverRelationship ConfigureFailover(IDhcpServer partnerServer, string sharedSecret, DhcpServerFailoverMode mode, byte modePercentage)
+    parameters:
+    - id: partnerServer
+      type: Bodoconsult.Network.Windows.Dhcp.IDhcpServer
+      description: The failover partner server
+    - id: sharedSecret
+      type: System.String
+      description: Secret used by the relationship
+    - id: mode
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverMode
+      description: Failover mode to configure
+    - id: modePercentage
+      type: System.Byte
+      description: Percentage argument for the failover mode
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.IDhcpServerFailoverRelationship
+      description: The created failover relationship
+    content.vb: Public Function ConfigureFailover(partnerServer As IDhcpServer, sharedSecret As String, mode As DhcpServerFailoverMode, modePercentage As Byte) As IDhcpServerFailoverRelationship
+  overload: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.ConfigureFailover*
+  implements:
+  - Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.ConfigureFailover(Bodoconsult.Network.Windows.Dhcp.IDhcpServer,System.String,Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverMode,System.Byte)
+  nameWithType.vb: DhcpServerScope.ConfigureFailover(IDhcpServer, String, DhcpServerFailoverMode, Byte)
+  fullName.vb: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.ConfigureFailover(Bodoconsult.Network.Windows.Dhcp.IDhcpServer, String, Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverMode, Byte)
+  name.vb: ConfigureFailover(IDhcpServer, String, DhcpServerFailoverMode, Byte)
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.ConfigureFailover(Bodoconsult.Network.Windows.Dhcp.IDhcpServer,System.String,System.String,Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverMode,System.Byte)
+  commentId: M:Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.ConfigureFailover(Bodoconsult.Network.Windows.Dhcp.IDhcpServer,System.String,System.String,Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverMode,System.Byte)
+  id: ConfigureFailover(Bodoconsult.Network.Windows.Dhcp.IDhcpServer,System.String,System.String,Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverMode,System.Byte)
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope
+  langs:
+  - csharp
+  - vb
+  name: ConfigureFailover(IDhcpServer, string, string, DhcpServerFailoverMode, byte)
+  nameWithType: DhcpServerScope.ConfigureFailover(IDhcpServer, string, string, DhcpServerFailoverMode, byte)
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.ConfigureFailover(Bodoconsult.Network.Windows.Dhcp.IDhcpServer, string, string, Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverMode, byte)
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerScope.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: ConfigureFailover
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerScope.cs
+    startLine: 181
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  summary: Configures a failover relationship for this scope
+  example: []
+  syntax:
+    content: public IDhcpServerFailoverRelationship ConfigureFailover(IDhcpServer partnerServer, string name, string sharedSecret, DhcpServerFailoverMode mode, byte modePercentage)
+    parameters:
+    - id: partnerServer
+      type: Bodoconsult.Network.Windows.Dhcp.IDhcpServer
+      description: The failover partner server
+    - id: name
+      type: System.String
+      description: Name of the failover relationship
+    - id: sharedSecret
+      type: System.String
+      description: Secret used by the relationship
+    - id: mode
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverMode
+      description: Failover mode to configure
+    - id: modePercentage
+      type: System.Byte
+      description: Percentage argument for the failover mode
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.IDhcpServerFailoverRelationship
+      description: The created failover relationship
+    content.vb: Public Function ConfigureFailover(partnerServer As IDhcpServer, name As String, sharedSecret As String, mode As DhcpServerFailoverMode, modePercentage As Byte) As IDhcpServerFailoverRelationship
+  overload: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.ConfigureFailover*
+  implements:
+  - Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.ConfigureFailover(Bodoconsult.Network.Windows.Dhcp.IDhcpServer,System.String,System.String,Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverMode,System.Byte)
+  nameWithType.vb: DhcpServerScope.ConfigureFailover(IDhcpServer, String, String, DhcpServerFailoverMode, Byte)
+  fullName.vb: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.ConfigureFailover(Bodoconsult.Network.Windows.Dhcp.IDhcpServer, String, String, Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverMode, Byte)
+  name.vb: ConfigureFailover(IDhcpServer, String, String, DhcpServerFailoverMode, Byte)
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.ConfigureFailover(Bodoconsult.Network.Windows.Dhcp.IDhcpServer,System.String,Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverMode,System.Byte,System.TimeSpan,System.Nullable{System.TimeSpan})
+  commentId: M:Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.ConfigureFailover(Bodoconsult.Network.Windows.Dhcp.IDhcpServer,System.String,Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverMode,System.Byte,System.TimeSpan,System.Nullable{System.TimeSpan})
+  id: ConfigureFailover(Bodoconsult.Network.Windows.Dhcp.IDhcpServer,System.String,Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverMode,System.Byte,System.TimeSpan,System.Nullable{System.TimeSpan})
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope
+  langs:
+  - csharp
+  - vb
+  name: ConfigureFailover(IDhcpServer, string, DhcpServerFailoverMode, byte, TimeSpan, TimeSpan?)
+  nameWithType: DhcpServerScope.ConfigureFailover(IDhcpServer, string, DhcpServerFailoverMode, byte, TimeSpan, TimeSpan?)
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.ConfigureFailover(Bodoconsult.Network.Windows.Dhcp.IDhcpServer, string, Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverMode, byte, System.TimeSpan, System.TimeSpan?)
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerScope.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: ConfigureFailover
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerScope.cs
+    startLine: 195
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  summary: Configures a failover relationship for this scope
+  example: []
+  syntax:
+    content: public IDhcpServerFailoverRelationship ConfigureFailover(IDhcpServer partnerServer, string sharedSecret, DhcpServerFailoverMode mode, byte modePercentage, TimeSpan maximumClientLeadTime, TimeSpan? stateSwitchInterval)
+    parameters:
+    - id: partnerServer
+      type: Bodoconsult.Network.Windows.Dhcp.IDhcpServer
+      description: The failover partner server
+    - id: sharedSecret
+      type: System.String
+      description: Secret used by the relationship
+    - id: mode
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverMode
+      description: Failover mode to configure
+    - id: modePercentage
+      type: System.Byte
+      description: Percentage argument for the failover mode
+    - id: maximumClientLeadTime
+      type: System.TimeSpan
+      description: Maximum client lead time
+    - id: stateSwitchInterval
+      type: System.Nullable{System.TimeSpan}
+      description: State switch interval or null to disable
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.IDhcpServerFailoverRelationship
+      description: The created failover relationship
+    content.vb: Public Function ConfigureFailover(partnerServer As IDhcpServer, sharedSecret As String, mode As DhcpServerFailoverMode, modePercentage As Byte, maximumClientLeadTime As TimeSpan, stateSwitchInterval As TimeSpan?) As IDhcpServerFailoverRelationship
+  overload: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.ConfigureFailover*
+  implements:
+  - Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.ConfigureFailover(Bodoconsult.Network.Windows.Dhcp.IDhcpServer,System.String,Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverMode,System.Byte,System.TimeSpan,System.Nullable{System.TimeSpan})
+  nameWithType.vb: DhcpServerScope.ConfigureFailover(IDhcpServer, String, DhcpServerFailoverMode, Byte, TimeSpan, TimeSpan?)
+  fullName.vb: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.ConfigureFailover(Bodoconsult.Network.Windows.Dhcp.IDhcpServer, String, Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverMode, Byte, System.TimeSpan, System.TimeSpan?)
+  name.vb: ConfigureFailover(IDhcpServer, String, DhcpServerFailoverMode, Byte, TimeSpan, TimeSpan?)
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.ConfigureFailover(Bodoconsult.Network.Windows.Dhcp.IDhcpServer,System.String,System.String,Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverMode,System.Byte,System.TimeSpan,System.Nullable{System.TimeSpan})
+  commentId: M:Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.ConfigureFailover(Bodoconsult.Network.Windows.Dhcp.IDhcpServer,System.String,System.String,Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverMode,System.Byte,System.TimeSpan,System.Nullable{System.TimeSpan})
+  id: ConfigureFailover(Bodoconsult.Network.Windows.Dhcp.IDhcpServer,System.String,System.String,Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverMode,System.Byte,System.TimeSpan,System.Nullable{System.TimeSpan})
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope
+  langs:
+  - csharp
+  - vb
+  name: ConfigureFailover(IDhcpServer, string, string, DhcpServerFailoverMode, byte, TimeSpan, TimeSpan?)
+  nameWithType: DhcpServerScope.ConfigureFailover(IDhcpServer, string, string, DhcpServerFailoverMode, byte, TimeSpan, TimeSpan?)
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.ConfigureFailover(Bodoconsult.Network.Windows.Dhcp.IDhcpServer, string, string, Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverMode, byte, System.TimeSpan, System.TimeSpan?)
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerScope.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: ConfigureFailover
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerScope.cs
+    startLine: 209
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  summary: Configures a failover relationship for this scope
+  example: []
+  syntax:
+    content: public IDhcpServerFailoverRelationship ConfigureFailover(IDhcpServer partnerServer, string name, string sharedSecret, DhcpServerFailoverMode mode, byte modePercentage, TimeSpan maximumClientLeadTime, TimeSpan? stateSwitchInterval)
+    parameters:
+    - id: partnerServer
+      type: Bodoconsult.Network.Windows.Dhcp.IDhcpServer
+      description: The failover partner server
+    - id: name
+      type: System.String
+      description: Name of the failover relationship
+    - id: sharedSecret
+      type: System.String
+      description: Secret used by the relationship
+    - id: mode
+      type: Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverMode
+      description: Failover mode to configure
+    - id: modePercentage
+      type: System.Byte
+      description: Percentage argument for the failover mode
+    - id: maximumClientLeadTime
+      type: System.TimeSpan
+      description: Maximum client lead time
+    - id: stateSwitchInterval
+      type: System.Nullable{System.TimeSpan}
+      description: State switch interval or null to disable
+    return:
+      type: Bodoconsult.Network.Windows.Dhcp.IDhcpServerFailoverRelationship
+      description: The created failover relationship
+    content.vb: Public Function ConfigureFailover(partnerServer As IDhcpServer, name As String, sharedSecret As String, mode As DhcpServerFailoverMode, modePercentage As Byte, maximumClientLeadTime As TimeSpan, stateSwitchInterval As TimeSpan?) As IDhcpServerFailoverRelationship
+  overload: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.ConfigureFailover*
+  implements:
+  - Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.ConfigureFailover(Bodoconsult.Network.Windows.Dhcp.IDhcpServer,System.String,System.String,Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverMode,System.Byte,System.TimeSpan,System.Nullable{System.TimeSpan})
+  nameWithType.vb: DhcpServerScope.ConfigureFailover(IDhcpServer, String, String, DhcpServerFailoverMode, Byte, TimeSpan, TimeSpan?)
+  fullName.vb: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.ConfigureFailover(Bodoconsult.Network.Windows.Dhcp.IDhcpServer, String, String, Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverMode, Byte, System.TimeSpan, System.TimeSpan?)
+  name.vb: ConfigureFailover(IDhcpServer, String, String, DhcpServerFailoverMode, Byte, TimeSpan, TimeSpan?)
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.ConfigureFailover(Bodoconsult.Network.Windows.Dhcp.IDhcpServerFailoverRelationship)
+  commentId: M:Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.ConfigureFailover(Bodoconsult.Network.Windows.Dhcp.IDhcpServerFailoverRelationship)
+  id: ConfigureFailover(Bodoconsult.Network.Windows.Dhcp.IDhcpServerFailoverRelationship)
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope
+  langs:
+  - csharp
+  - vb
+  name: ConfigureFailover(IDhcpServerFailoverRelationship)
+  nameWithType: DhcpServerScope.ConfigureFailover(IDhcpServerFailoverRelationship)
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.ConfigureFailover(Bodoconsult.Network.Windows.Dhcp.IDhcpServerFailoverRelationship)
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerScope.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: ConfigureFailover
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerScope.cs
+    startLine: 216
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  summary: Adds this scope to an existing failover relationship
+  example: []
+  syntax:
+    content: public void ConfigureFailover(IDhcpServerFailoverRelationship failoverRelationship)
+    parameters:
+    - id: failoverRelationship
+      type: Bodoconsult.Network.Windows.Dhcp.IDhcpServerFailoverRelationship
+      description: Failover relationship into which this failover relationship is to be added
+    content.vb: Public Sub ConfigureFailover(failoverRelationship As IDhcpServerFailoverRelationship)
+  overload: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.ConfigureFailover*
+  implements:
+  - Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.ConfigureFailover(Bodoconsult.Network.Windows.Dhcp.IDhcpServerFailoverRelationship)
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.DeconfigureFailover
+  commentId: M:Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.DeconfigureFailover
+  id: DeconfigureFailover
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope
+  langs:
+  - csharp
+  - vb
+  name: DeconfigureFailover()
+  nameWithType: DhcpServerScope.DeconfigureFailover()
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.DeconfigureFailover()
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerScope.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: DeconfigureFailover
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerScope.cs
+    startLine: 224
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  summary: Removes the scope from its failover relationship. This will delete the scope from the partner server.
+  example: []
+  syntax:
+    content: public void DeconfigureFailover()
+    content.vb: Public Sub DeconfigureFailover()
+  overload: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.DeconfigureFailover*
+  implements:
+  - Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.DeconfigureFailover
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.ToString
+  commentId: M:Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.ToString
+  id: ToString
+  parent: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope
+  langs:
+  - csharp
+  - vb
+  name: ToString()
+  nameWithType: DhcpServerScope.ToString()
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.ToString()
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerScope.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: ToString
+    path: src/Bodoconsult.Network.Windows/Dhcp/DhcpServerScope.cs
+    startLine: 788
+  assemblies:
+  - Bodoconsult.Network.Windows
+  namespace: Bodoconsult.Network.Windows.Dhcp
+  summary: Returns a string that represents the current object.
+  example: []
+  syntax:
+    content: public override string ToString()
+    return:
+      type: System.String
+      description: A string that represents the current object.
+    content.vb: Public Overrides Function ToString() As String
+  overridden: System.Object.ToString
+  overload: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.ToString*
+references:
+- uid: Bodoconsult.Network.Windows.Dhcp
+  commentId: N:Bodoconsult.Network.Windows.Dhcp
+  href: Bodoconsult.html
+  name: Bodoconsult.Network.Windows.Dhcp
+  nameWithType: Bodoconsult.Network.Windows.Dhcp
+  fullName: Bodoconsult.Network.Windows.Dhcp
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.Network
+    name: Network
+    href: Bodoconsult.Network.html
+  - name: .
+  - uid: Bodoconsult.Network.Windows
+    name: Windows
+    href: Bodoconsult.Network.Windows.html
+  - name: .
+  - uid: Bodoconsult.Network.Windows.Dhcp
+    name: Dhcp
+    href: Bodoconsult.Network.Windows.Dhcp.html
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.Network
+    name: Network
+    href: Bodoconsult.Network.html
+  - name: .
+  - uid: Bodoconsult.Network.Windows
+    name: Windows
+    href: Bodoconsult.Network.Windows.html
+  - name: .
+  - uid: Bodoconsult.Network.Windows.Dhcp
+    name: Dhcp
+    href: Bodoconsult.Network.Windows.Dhcp.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope
+  commentId: T:Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope
+  parent: Bodoconsult.Network.Windows.Dhcp
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.html
+  name: IDhcpServerScope
+  nameWithType: IDhcpServerScope
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.DefaultTimeDelayOffer*
+  commentId: Overload:Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.DefaultTimeDelayOffer
+  href: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.html#Bodoconsult_Network_Windows_Dhcp_DhcpServerScope_DefaultTimeDelayOffer
+  name: DefaultTimeDelayOffer
+  nameWithType: DhcpServerScope.DefaultTimeDelayOffer
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.DefaultTimeDelayOffer
+- uid: System.TimeSpan
+  commentId: T:System.TimeSpan
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.timespan
+  name: TimeSpan
+  nameWithType: TimeSpan
+  fullName: System.TimeSpan
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.DefaultLeaseDuration*
+  commentId: Overload:Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.DefaultLeaseDuration
+  href: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.html#Bodoconsult_Network_Windows_Dhcp_DhcpServerScope_DefaultLeaseDuration
+  name: DefaultLeaseDuration
+  nameWithType: DhcpServerScope.DefaultLeaseDuration
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.DefaultLeaseDuration
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.Server*
+  commentId: Overload:Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.Server
+  href: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.html#Bodoconsult_Network_Windows_Dhcp_DhcpServerScope_Server
+  name: Server
+  nameWithType: DhcpServerScope.Server
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.Server
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServer
+  commentId: T:Bodoconsult.Network.Windows.Dhcp.DhcpServer
+  parent: Bodoconsult.Network.Windows.Dhcp
+  href: Bodoconsult.Network.Windows.Dhcp.DhcpServer.html
+  name: DhcpServer
+  nameWithType: DhcpServer
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServer
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.Address*
+  commentId: Overload:Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.Address
+  href: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.html#Bodoconsult_Network_Windows_Dhcp_DhcpServerScope_Address
+  name: Address
+  nameWithType: DhcpServerScope.Address
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.Address
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.Address
+  commentId: P:Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.Address
+  parent: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerScope_Address
+  name: Address
+  nameWithType: IDhcpServerScope.Address
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.Address
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress
+  commentId: T:Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress
+  parent: Bodoconsult.Network.Windows.Dhcp
+  href: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress.html
+  name: DhcpServerIpAddress
+  nameWithType: DhcpServerIpAddress
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpAddress
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.Mask*
+  commentId: Overload:Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.Mask
+  href: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.html#Bodoconsult_Network_Windows_Dhcp_DhcpServerScope_Mask
+  name: Mask
+  nameWithType: DhcpServerScope.Mask
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.Mask
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.Mask
+  commentId: P:Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.Mask
+  parent: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerScope_Mask
+  name: Mask
+  nameWithType: IDhcpServerScope.Mask
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.Mask
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpMask
+  commentId: T:Bodoconsult.Network.Windows.Dhcp.DhcpServerIpMask
+  parent: Bodoconsult.Network.Windows.Dhcp
+  href: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpMask.html
+  name: DhcpServerIpMask
+  nameWithType: DhcpServerIpMask
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpMask
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.Name*
+  commentId: Overload:Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.Name
+  href: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.html#Bodoconsult_Network_Windows_Dhcp_DhcpServerScope_Name
+  name: Name
+  nameWithType: DhcpServerScope.Name
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.Name
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.Name
+  commentId: P:Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.Name
+  parent: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerScope_Name
+  name: Name
+  nameWithType: IDhcpServerScope.Name
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.Name
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.Comment*
+  commentId: Overload:Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.Comment
+  href: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.html#Bodoconsult_Network_Windows_Dhcp_DhcpServerScope_Comment
+  name: Comment
+  nameWithType: DhcpServerScope.Comment
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.Comment
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.Comment
+  commentId: P:Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.Comment
+  parent: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerScope_Comment
+  name: Comment
+  nameWithType: IDhcpServerScope.Comment
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.Comment
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.State*
+  commentId: Overload:Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.State
+  href: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.html#Bodoconsult_Network_Windows_Dhcp_DhcpServerScope_State
+  name: State
+  nameWithType: DhcpServerScope.State
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.State
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.State
+  commentId: P:Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.State
+  parent: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerScope_State
+  name: State
+  nameWithType: IDhcpServerScope.State
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.State
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeState
+  commentId: T:Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeState
+  parent: Bodoconsult.Network.Windows.Dhcp
+  href: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeState.html
+  name: DhcpServerScopeState
+  nameWithType: DhcpServerScopeState
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerScopeState
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.IpRange*
+  commentId: Overload:Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.IpRange
+  href: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.html#Bodoconsult_Network_Windows_Dhcp_DhcpServerScope_IpRange
+  name: IpRange
+  nameWithType: DhcpServerScope.IpRange
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.IpRange
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.IpRange
+  commentId: P:Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.IpRange
+  parent: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerScope_IpRange
+  name: IpRange
+  nameWithType: IDhcpServerScope.IpRange
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.IpRange
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpRange
+  commentId: T:Bodoconsult.Network.Windows.Dhcp.DhcpServerIpRange
+  parent: Bodoconsult.Network.Windows.Dhcp
+  href: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpRange.html
+  name: DhcpServerIpRange
+  nameWithType: DhcpServerIpRange
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerIpRange
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.LeaseDuration*
+  commentId: Overload:Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.LeaseDuration
+  href: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.html#Bodoconsult_Network_Windows_Dhcp_DhcpServerScope_LeaseDuration
+  name: LeaseDuration
+  nameWithType: DhcpServerScope.LeaseDuration
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.LeaseDuration
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.LeaseDuration
+  commentId: P:Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.LeaseDuration
+  parent: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerScope_LeaseDuration
+  name: LeaseDuration
+  nameWithType: IDhcpServerScope.LeaseDuration
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.LeaseDuration
+- uid: System.Nullable{System.TimeSpan}
+  commentId: T:System.Nullable{System.TimeSpan}
+  parent: System
+  definition: System.Nullable`1
+  href: https://learn.microsoft.com/dotnet/api/system.timespan
+  name: TimeSpan?
+  nameWithType: TimeSpan?
+  fullName: System.TimeSpan?
+  spec.csharp:
+  - uid: System.TimeSpan
+    name: TimeSpan
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.timespan
+  - name: '?'
+  spec.vb:
+  - uid: System.TimeSpan
+    name: TimeSpan
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.timespan
+  - name: '?'
+- uid: System.Nullable`1
+  commentId: T:System.Nullable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  name: Nullable<T>
+  nameWithType: Nullable<T>
+  fullName: System.Nullable<T>
+  nameWithType.vb: Nullable(Of T)
+  fullName.vb: System.Nullable(Of T)
+  name.vb: Nullable(Of T)
+  spec.csharp:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.TimeDelayOffer*
+  commentId: Overload:Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.TimeDelayOffer
+  href: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.html#Bodoconsult_Network_Windows_Dhcp_DhcpServerScope_TimeDelayOffer
+  name: TimeDelayOffer
+  nameWithType: DhcpServerScope.TimeDelayOffer
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.TimeDelayOffer
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.TimeDelayOffer
+  commentId: P:Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.TimeDelayOffer
+  parent: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerScope_TimeDelayOffer
+  name: TimeDelayOffer
+  nameWithType: IDhcpServerScope.TimeDelayOffer
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.TimeDelayOffer
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.PrimaryHost*
+  commentId: Overload:Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.PrimaryHost
+  href: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.html#Bodoconsult_Network_Windows_Dhcp_DhcpServerScope_PrimaryHost
+  name: PrimaryHost
+  nameWithType: DhcpServerScope.PrimaryHost
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.PrimaryHost
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.PrimaryHost
+  commentId: P:Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.PrimaryHost
+  parent: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerScope_PrimaryHost
+  name: PrimaryHost
+  nameWithType: IDhcpServerScope.PrimaryHost
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.PrimaryHost
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerHost
+  commentId: T:Bodoconsult.Network.Windows.Dhcp.IDhcpServerHost
+  parent: Bodoconsult.Network.Windows.Dhcp
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerHost.html
+  name: IDhcpServerHost
+  nameWithType: IDhcpServerHost
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerHost
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.DnsSettings*
+  commentId: Overload:Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.DnsSettings
+  href: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.html#Bodoconsult_Network_Windows_Dhcp_DhcpServerScope_DnsSettings
+  name: DnsSettings
+  nameWithType: DhcpServerScope.DnsSettings
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.DnsSettings
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.DnsSettings
+  commentId: P:Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.DnsSettings
+  parent: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerScope_DnsSettings
+  name: DnsSettings
+  nameWithType: IDhcpServerScope.DnsSettings
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.DnsSettings
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerDnsSettings
+  commentId: T:Bodoconsult.Network.Windows.Dhcp.IDhcpServerDnsSettings
+  parent: Bodoconsult.Network.Windows.Dhcp
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerDnsSettings.html
+  name: IDhcpServerDnsSettings
+  nameWithType: IDhcpServerDnsSettings
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerDnsSettings
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.QuarantineOn*
+  commentId: Overload:Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.QuarantineOn
+  href: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.html#Bodoconsult_Network_Windows_Dhcp_DhcpServerScope_QuarantineOn
+  name: QuarantineOn
+  nameWithType: DhcpServerScope.QuarantineOn
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.QuarantineOn
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.QuarantineOn
+  commentId: P:Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.QuarantineOn
+  parent: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerScope_QuarantineOn
+  name: QuarantineOn
+  nameWithType: IDhcpServerScope.QuarantineOn
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.QuarantineOn
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.ExcludedIpRanges*
+  commentId: Overload:Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.ExcludedIpRanges
+  href: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.html#Bodoconsult_Network_Windows_Dhcp_DhcpServerScope_ExcludedIpRanges
+  name: ExcludedIpRanges
+  nameWithType: DhcpServerScope.ExcludedIpRanges
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.ExcludedIpRanges
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.ExcludedIpRanges
+  commentId: P:Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.ExcludedIpRanges
+  parent: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerScope_ExcludedIpRanges
+  name: ExcludedIpRanges
+  nameWithType: IDhcpServerScope.ExcludedIpRanges
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.ExcludedIpRanges
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeExcludedIpRangeCollection
+  commentId: T:Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeExcludedIpRangeCollection
+  parent: Bodoconsult.Network.Windows.Dhcp
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeExcludedIpRangeCollection.html
+  name: IDhcpServerScopeExcludedIpRangeCollection
+  nameWithType: IDhcpServerScopeExcludedIpRangeCollection
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeExcludedIpRangeCollection
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.Options*
+  commentId: Overload:Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.Options
+  href: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.html#Bodoconsult_Network_Windows_Dhcp_DhcpServerScope_Options
+  name: Options
+  nameWithType: DhcpServerScope.Options
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.Options
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.Options
+  commentId: P:Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.Options
+  parent: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerScope_Options
+  name: Options
+  nameWithType: IDhcpServerScope.Options
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.Options
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection
+  commentId: T:Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection
+  parent: Bodoconsult.Network.Windows.Dhcp
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection.html
+  name: IDhcpServerScopeOptionValueCollection
+  nameWithType: IDhcpServerScopeOptionValueCollection
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeOptionValueCollection
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.Reservations*
+  commentId: Overload:Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.Reservations
+  href: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.html#Bodoconsult_Network_Windows_Dhcp_DhcpServerScope_Reservations
+  name: Reservations
+  nameWithType: DhcpServerScope.Reservations
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.Reservations
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.Reservations
+  commentId: P:Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.Reservations
+  parent: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerScope_Reservations
+  name: Reservations
+  nameWithType: IDhcpServerScope.Reservations
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.Reservations
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeReservationCollection
+  commentId: T:Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeReservationCollection
+  parent: Bodoconsult.Network.Windows.Dhcp
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeReservationCollection.html
+  name: IDhcpServerScopeReservationCollection
+  nameWithType: IDhcpServerScopeReservationCollection
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeReservationCollection
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.Clients*
+  commentId: Overload:Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.Clients
+  href: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.html#Bodoconsult_Network_Windows_Dhcp_DhcpServerScope_Clients
+  name: Clients
+  nameWithType: DhcpServerScope.Clients
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.Clients
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.Clients
+  commentId: P:Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.Clients
+  parent: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerScope_Clients
+  name: Clients
+  nameWithType: IDhcpServerScope.Clients
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.Clients
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeClientCollection
+  commentId: T:Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeClientCollection
+  parent: Bodoconsult.Network.Windows.Dhcp
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeClientCollection.html
+  name: IDhcpServerScopeClientCollection
+  nameWithType: IDhcpServerScopeClientCollection
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeClientCollection
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.Activate*
+  commentId: Overload:Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.Activate
+  href: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.html#Bodoconsult_Network_Windows_Dhcp_DhcpServerScope_Activate
+  name: Activate
+  nameWithType: DhcpServerScope.Activate
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.Activate
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.Activate
+  commentId: M:Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.Activate
+  parent: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerScope_Activate
+  name: Activate()
+  nameWithType: IDhcpServerScope.Activate()
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.Activate()
+  spec.csharp:
+  - uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.Activate
+    name: Activate
+    href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerScope_Activate
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.Activate
+    name: Activate
+    href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerScope_Activate
+  - name: (
+  - name: )
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.Deactivate*
+  commentId: Overload:Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.Deactivate
+  href: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.html#Bodoconsult_Network_Windows_Dhcp_DhcpServerScope_Deactivate
+  name: Deactivate
+  nameWithType: DhcpServerScope.Deactivate
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.Deactivate
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.Deactivate
+  commentId: M:Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.Deactivate
+  parent: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerScope_Deactivate
+  name: Deactivate()
+  nameWithType: IDhcpServerScope.Deactivate()
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.Deactivate()
+  spec.csharp:
+  - uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.Deactivate
+    name: Deactivate
+    href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerScope_Deactivate
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.Deactivate
+    name: Deactivate
+    href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerScope_Deactivate
+  - name: (
+  - name: )
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.Delete*
+  commentId: Overload:Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.Delete
+  href: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.html#Bodoconsult_Network_Windows_Dhcp_DhcpServerScope_Delete_System_Boolean_
+  name: Delete
+  nameWithType: DhcpServerScope.Delete
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.Delete
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.Delete(System.Boolean)
+  commentId: M:Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.Delete(System.Boolean)
+  parent: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope
+  isExternal: true
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerScope_Delete_System_Boolean_
+  name: Delete(bool)
+  nameWithType: IDhcpServerScope.Delete(bool)
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.Delete(bool)
+  nameWithType.vb: IDhcpServerScope.Delete(Boolean)
+  fullName.vb: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.Delete(Boolean)
+  name.vb: Delete(Boolean)
+  spec.csharp:
+  - uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.Delete(System.Boolean)
+    name: Delete
+    href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerScope_Delete_System_Boolean_
+  - name: (
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.Delete(System.Boolean)
+    name: Delete
+    href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerScope_Delete_System_Boolean_
+  - name: (
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.GetFailoverRelationship*
+  commentId: Overload:Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.GetFailoverRelationship
+  href: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.html#Bodoconsult_Network_Windows_Dhcp_DhcpServerScope_GetFailoverRelationship
+  name: GetFailoverRelationship
+  nameWithType: DhcpServerScope.GetFailoverRelationship
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.GetFailoverRelationship
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.GetFailoverRelationship
+  commentId: M:Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.GetFailoverRelationship
+  parent: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerScope_GetFailoverRelationship
+  name: GetFailoverRelationship()
+  nameWithType: IDhcpServerScope.GetFailoverRelationship()
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.GetFailoverRelationship()
+  spec.csharp:
+  - uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.GetFailoverRelationship
+    name: GetFailoverRelationship
+    href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerScope_GetFailoverRelationship
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.GetFailoverRelationship
+    name: GetFailoverRelationship
+    href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerScope_GetFailoverRelationship
+  - name: (
+  - name: )
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerFailoverRelationship
+  commentId: T:Bodoconsult.Network.Windows.Dhcp.IDhcpServerFailoverRelationship
+  parent: Bodoconsult.Network.Windows.Dhcp
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerFailoverRelationship.html
+  name: IDhcpServerFailoverRelationship
+  nameWithType: IDhcpServerFailoverRelationship
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerFailoverRelationship
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.GetFailoverStatistics*
+  commentId: Overload:Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.GetFailoverStatistics
+  href: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.html#Bodoconsult_Network_Windows_Dhcp_DhcpServerScope_GetFailoverStatistics
+  name: GetFailoverStatistics
+  nameWithType: DhcpServerScope.GetFailoverStatistics
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.GetFailoverStatistics
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.GetFailoverStatistics
+  commentId: M:Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.GetFailoverStatistics
+  parent: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerScope_GetFailoverStatistics
+  name: GetFailoverStatistics()
+  nameWithType: IDhcpServerScope.GetFailoverStatistics()
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.GetFailoverStatistics()
+  spec.csharp:
+  - uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.GetFailoverStatistics
+    name: GetFailoverStatistics
+    href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerScope_GetFailoverStatistics
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.GetFailoverStatistics
+    name: GetFailoverStatistics
+    href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerScope_GetFailoverStatistics
+  - name: (
+  - name: )
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeFailoverStatistics
+  commentId: T:Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeFailoverStatistics
+  parent: Bodoconsult.Network.Windows.Dhcp
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeFailoverStatistics.html
+  name: IDhcpServerScopeFailoverStatistics
+  nameWithType: IDhcpServerScopeFailoverStatistics
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScopeFailoverStatistics
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.ReplicateFailoverPartner*
+  commentId: Overload:Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.ReplicateFailoverPartner
+  href: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.html#Bodoconsult_Network_Windows_Dhcp_DhcpServerScope_ReplicateFailoverPartner
+  name: ReplicateFailoverPartner
+  nameWithType: DhcpServerScope.ReplicateFailoverPartner
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.ReplicateFailoverPartner
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.ReplicateFailoverPartner
+  commentId: M:Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.ReplicateFailoverPartner
+  parent: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerScope_ReplicateFailoverPartner
+  name: ReplicateFailoverPartner()
+  nameWithType: IDhcpServerScope.ReplicateFailoverPartner()
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.ReplicateFailoverPartner()
+  spec.csharp:
+  - uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.ReplicateFailoverPartner
+    name: ReplicateFailoverPartner
+    href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerScope_ReplicateFailoverPartner
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.ReplicateFailoverPartner
+    name: ReplicateFailoverPartner
+    href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerScope_ReplicateFailoverPartner
+  - name: (
+  - name: )
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.ConfigureFailover*
+  commentId: Overload:Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.ConfigureFailover
+  href: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.html#Bodoconsult_Network_Windows_Dhcp_DhcpServerScope_ConfigureFailover_Bodoconsult_Network_Windows_Dhcp_IDhcpServer_System_String_Bodoconsult_Network_Windows_Dhcp_DhcpServerFailoverMode_
+  name: ConfigureFailover
+  nameWithType: DhcpServerScope.ConfigureFailover
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.ConfigureFailover
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.ConfigureFailover(Bodoconsult.Network.Windows.Dhcp.IDhcpServer,System.String,Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverMode)
+  commentId: M:Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.ConfigureFailover(Bodoconsult.Network.Windows.Dhcp.IDhcpServer,System.String,Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverMode)
+  parent: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope
+  isExternal: true
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerScope_ConfigureFailover_Bodoconsult_Network_Windows_Dhcp_IDhcpServer_System_String_Bodoconsult_Network_Windows_Dhcp_DhcpServerFailoverMode_
+  name: ConfigureFailover(IDhcpServer, string, DhcpServerFailoverMode)
+  nameWithType: IDhcpServerScope.ConfigureFailover(IDhcpServer, string, DhcpServerFailoverMode)
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.ConfigureFailover(Bodoconsult.Network.Windows.Dhcp.IDhcpServer, string, Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverMode)
+  nameWithType.vb: IDhcpServerScope.ConfigureFailover(IDhcpServer, String, DhcpServerFailoverMode)
+  fullName.vb: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.ConfigureFailover(Bodoconsult.Network.Windows.Dhcp.IDhcpServer, String, Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverMode)
+  name.vb: ConfigureFailover(IDhcpServer, String, DhcpServerFailoverMode)
+  spec.csharp:
+  - uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.ConfigureFailover(Bodoconsult.Network.Windows.Dhcp.IDhcpServer,System.String,Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverMode)
+    name: ConfigureFailover
+    href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerScope_ConfigureFailover_Bodoconsult_Network_Windows_Dhcp_IDhcpServer_System_String_Bodoconsult_Network_Windows_Dhcp_DhcpServerFailoverMode_
+  - name: (
+  - uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServer
+    name: IDhcpServer
+    href: Bodoconsult.Network.Windows.Dhcp.IDhcpServer.html
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverMode
+    name: DhcpServerFailoverMode
+    href: Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverMode.html
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.ConfigureFailover(Bodoconsult.Network.Windows.Dhcp.IDhcpServer,System.String,Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverMode)
+    name: ConfigureFailover
+    href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerScope_ConfigureFailover_Bodoconsult_Network_Windows_Dhcp_IDhcpServer_System_String_Bodoconsult_Network_Windows_Dhcp_DhcpServerFailoverMode_
+  - name: (
+  - uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServer
+    name: IDhcpServer
+    href: Bodoconsult.Network.Windows.Dhcp.IDhcpServer.html
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverMode
+    name: DhcpServerFailoverMode
+    href: Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverMode.html
+  - name: )
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServer
+  commentId: T:Bodoconsult.Network.Windows.Dhcp.IDhcpServer
+  parent: Bodoconsult.Network.Windows.Dhcp
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServer.html
+  name: IDhcpServer
+  nameWithType: IDhcpServer
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServer
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverMode
+  commentId: T:Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverMode
+  parent: Bodoconsult.Network.Windows.Dhcp
+  href: Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverMode.html
+  name: DhcpServerFailoverMode
+  nameWithType: DhcpServerFailoverMode
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverMode
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.ConfigureFailover(Bodoconsult.Network.Windows.Dhcp.IDhcpServer,System.String,System.String,Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverMode)
+  commentId: M:Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.ConfigureFailover(Bodoconsult.Network.Windows.Dhcp.IDhcpServer,System.String,System.String,Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverMode)
+  parent: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope
+  isExternal: true
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerScope_ConfigureFailover_Bodoconsult_Network_Windows_Dhcp_IDhcpServer_System_String_System_String_Bodoconsult_Network_Windows_Dhcp_DhcpServerFailoverMode_
+  name: ConfigureFailover(IDhcpServer, string, string, DhcpServerFailoverMode)
+  nameWithType: IDhcpServerScope.ConfigureFailover(IDhcpServer, string, string, DhcpServerFailoverMode)
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.ConfigureFailover(Bodoconsult.Network.Windows.Dhcp.IDhcpServer, string, string, Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverMode)
+  nameWithType.vb: IDhcpServerScope.ConfigureFailover(IDhcpServer, String, String, DhcpServerFailoverMode)
+  fullName.vb: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.ConfigureFailover(Bodoconsult.Network.Windows.Dhcp.IDhcpServer, String, String, Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverMode)
+  name.vb: ConfigureFailover(IDhcpServer, String, String, DhcpServerFailoverMode)
+  spec.csharp:
+  - uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.ConfigureFailover(Bodoconsult.Network.Windows.Dhcp.IDhcpServer,System.String,System.String,Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverMode)
+    name: ConfigureFailover
+    href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerScope_ConfigureFailover_Bodoconsult_Network_Windows_Dhcp_IDhcpServer_System_String_System_String_Bodoconsult_Network_Windows_Dhcp_DhcpServerFailoverMode_
+  - name: (
+  - uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServer
+    name: IDhcpServer
+    href: Bodoconsult.Network.Windows.Dhcp.IDhcpServer.html
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverMode
+    name: DhcpServerFailoverMode
+    href: Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverMode.html
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.ConfigureFailover(Bodoconsult.Network.Windows.Dhcp.IDhcpServer,System.String,System.String,Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverMode)
+    name: ConfigureFailover
+    href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerScope_ConfigureFailover_Bodoconsult_Network_Windows_Dhcp_IDhcpServer_System_String_System_String_Bodoconsult_Network_Windows_Dhcp_DhcpServerFailoverMode_
+  - name: (
+  - uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServer
+    name: IDhcpServer
+    href: Bodoconsult.Network.Windows.Dhcp.IDhcpServer.html
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverMode
+    name: DhcpServerFailoverMode
+    href: Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverMode.html
+  - name: )
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.ConfigureFailover(Bodoconsult.Network.Windows.Dhcp.IDhcpServer,System.String,Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverMode,System.Byte)
+  commentId: M:Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.ConfigureFailover(Bodoconsult.Network.Windows.Dhcp.IDhcpServer,System.String,Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverMode,System.Byte)
+  parent: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope
+  isExternal: true
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerScope_ConfigureFailover_Bodoconsult_Network_Windows_Dhcp_IDhcpServer_System_String_Bodoconsult_Network_Windows_Dhcp_DhcpServerFailoverMode_System_Byte_
+  name: ConfigureFailover(IDhcpServer, string, DhcpServerFailoverMode, byte)
+  nameWithType: IDhcpServerScope.ConfigureFailover(IDhcpServer, string, DhcpServerFailoverMode, byte)
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.ConfigureFailover(Bodoconsult.Network.Windows.Dhcp.IDhcpServer, string, Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverMode, byte)
+  nameWithType.vb: IDhcpServerScope.ConfigureFailover(IDhcpServer, String, DhcpServerFailoverMode, Byte)
+  fullName.vb: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.ConfigureFailover(Bodoconsult.Network.Windows.Dhcp.IDhcpServer, String, Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverMode, Byte)
+  name.vb: ConfigureFailover(IDhcpServer, String, DhcpServerFailoverMode, Byte)
+  spec.csharp:
+  - uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.ConfigureFailover(Bodoconsult.Network.Windows.Dhcp.IDhcpServer,System.String,Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverMode,System.Byte)
+    name: ConfigureFailover
+    href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerScope_ConfigureFailover_Bodoconsult_Network_Windows_Dhcp_IDhcpServer_System_String_Bodoconsult_Network_Windows_Dhcp_DhcpServerFailoverMode_System_Byte_
+  - name: (
+  - uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServer
+    name: IDhcpServer
+    href: Bodoconsult.Network.Windows.Dhcp.IDhcpServer.html
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverMode
+    name: DhcpServerFailoverMode
+    href: Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverMode.html
+  - name: ','
+  - name: " "
+  - uid: System.Byte
+    name: byte
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.byte
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.ConfigureFailover(Bodoconsult.Network.Windows.Dhcp.IDhcpServer,System.String,Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverMode,System.Byte)
+    name: ConfigureFailover
+    href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerScope_ConfigureFailover_Bodoconsult_Network_Windows_Dhcp_IDhcpServer_System_String_Bodoconsult_Network_Windows_Dhcp_DhcpServerFailoverMode_System_Byte_
+  - name: (
+  - uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServer
+    name: IDhcpServer
+    href: Bodoconsult.Network.Windows.Dhcp.IDhcpServer.html
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverMode
+    name: DhcpServerFailoverMode
+    href: Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverMode.html
+  - name: ','
+  - name: " "
+  - uid: System.Byte
+    name: Byte
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.byte
+  - name: )
+- uid: System.Byte
+  commentId: T:System.Byte
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.byte
+  name: byte
+  nameWithType: byte
+  fullName: byte
+  nameWithType.vb: Byte
+  fullName.vb: Byte
+  name.vb: Byte
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.ConfigureFailover(Bodoconsult.Network.Windows.Dhcp.IDhcpServer,System.String,System.String,Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverMode,System.Byte)
+  commentId: M:Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.ConfigureFailover(Bodoconsult.Network.Windows.Dhcp.IDhcpServer,System.String,System.String,Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverMode,System.Byte)
+  parent: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope
+  isExternal: true
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerScope_ConfigureFailover_Bodoconsult_Network_Windows_Dhcp_IDhcpServer_System_String_System_String_Bodoconsult_Network_Windows_Dhcp_DhcpServerFailoverMode_System_Byte_
+  name: ConfigureFailover(IDhcpServer, string, string, DhcpServerFailoverMode, byte)
+  nameWithType: IDhcpServerScope.ConfigureFailover(IDhcpServer, string, string, DhcpServerFailoverMode, byte)
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.ConfigureFailover(Bodoconsult.Network.Windows.Dhcp.IDhcpServer, string, string, Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverMode, byte)
+  nameWithType.vb: IDhcpServerScope.ConfigureFailover(IDhcpServer, String, String, DhcpServerFailoverMode, Byte)
+  fullName.vb: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.ConfigureFailover(Bodoconsult.Network.Windows.Dhcp.IDhcpServer, String, String, Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverMode, Byte)
+  name.vb: ConfigureFailover(IDhcpServer, String, String, DhcpServerFailoverMode, Byte)
+  spec.csharp:
+  - uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.ConfigureFailover(Bodoconsult.Network.Windows.Dhcp.IDhcpServer,System.String,System.String,Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverMode,System.Byte)
+    name: ConfigureFailover
+    href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerScope_ConfigureFailover_Bodoconsult_Network_Windows_Dhcp_IDhcpServer_System_String_System_String_Bodoconsult_Network_Windows_Dhcp_DhcpServerFailoverMode_System_Byte_
+  - name: (
+  - uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServer
+    name: IDhcpServer
+    href: Bodoconsult.Network.Windows.Dhcp.IDhcpServer.html
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverMode
+    name: DhcpServerFailoverMode
+    href: Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverMode.html
+  - name: ','
+  - name: " "
+  - uid: System.Byte
+    name: byte
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.byte
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.ConfigureFailover(Bodoconsult.Network.Windows.Dhcp.IDhcpServer,System.String,System.String,Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverMode,System.Byte)
+    name: ConfigureFailover
+    href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerScope_ConfigureFailover_Bodoconsult_Network_Windows_Dhcp_IDhcpServer_System_String_System_String_Bodoconsult_Network_Windows_Dhcp_DhcpServerFailoverMode_System_Byte_
+  - name: (
+  - uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServer
+    name: IDhcpServer
+    href: Bodoconsult.Network.Windows.Dhcp.IDhcpServer.html
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverMode
+    name: DhcpServerFailoverMode
+    href: Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverMode.html
+  - name: ','
+  - name: " "
+  - uid: System.Byte
+    name: Byte
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.byte
+  - name: )
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.ConfigureFailover(Bodoconsult.Network.Windows.Dhcp.IDhcpServer,System.String,Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverMode,System.Byte,System.TimeSpan,System.Nullable{System.TimeSpan})
+  commentId: M:Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.ConfigureFailover(Bodoconsult.Network.Windows.Dhcp.IDhcpServer,System.String,Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverMode,System.Byte,System.TimeSpan,System.Nullable{System.TimeSpan})
+  parent: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope
+  isExternal: true
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerScope_ConfigureFailover_Bodoconsult_Network_Windows_Dhcp_IDhcpServer_System_String_Bodoconsult_Network_Windows_Dhcp_DhcpServerFailoverMode_System_Byte_System_TimeSpan_System_Nullable_System_TimeSpan__
+  name: ConfigureFailover(IDhcpServer, string, DhcpServerFailoverMode, byte, TimeSpan, TimeSpan?)
+  nameWithType: IDhcpServerScope.ConfigureFailover(IDhcpServer, string, DhcpServerFailoverMode, byte, TimeSpan, TimeSpan?)
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.ConfigureFailover(Bodoconsult.Network.Windows.Dhcp.IDhcpServer, string, Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverMode, byte, System.TimeSpan, System.TimeSpan?)
+  nameWithType.vb: IDhcpServerScope.ConfigureFailover(IDhcpServer, String, DhcpServerFailoverMode, Byte, TimeSpan, TimeSpan?)
+  fullName.vb: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.ConfigureFailover(Bodoconsult.Network.Windows.Dhcp.IDhcpServer, String, Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverMode, Byte, System.TimeSpan, System.TimeSpan?)
+  name.vb: ConfigureFailover(IDhcpServer, String, DhcpServerFailoverMode, Byte, TimeSpan, TimeSpan?)
+  spec.csharp:
+  - uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.ConfigureFailover(Bodoconsult.Network.Windows.Dhcp.IDhcpServer,System.String,Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverMode,System.Byte,System.TimeSpan,System.Nullable{System.TimeSpan})
+    name: ConfigureFailover
+    href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerScope_ConfigureFailover_Bodoconsult_Network_Windows_Dhcp_IDhcpServer_System_String_Bodoconsult_Network_Windows_Dhcp_DhcpServerFailoverMode_System_Byte_System_TimeSpan_System_Nullable_System_TimeSpan__
+  - name: (
+  - uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServer
+    name: IDhcpServer
+    href: Bodoconsult.Network.Windows.Dhcp.IDhcpServer.html
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverMode
+    name: DhcpServerFailoverMode
+    href: Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverMode.html
+  - name: ','
+  - name: " "
+  - uid: System.Byte
+    name: byte
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.byte
+  - name: ','
+  - name: " "
+  - uid: System.TimeSpan
+    name: TimeSpan
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.timespan
+  - name: ','
+  - name: " "
+  - uid: System.TimeSpan
+    name: TimeSpan
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.timespan
+  - name: '?'
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.ConfigureFailover(Bodoconsult.Network.Windows.Dhcp.IDhcpServer,System.String,Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverMode,System.Byte,System.TimeSpan,System.Nullable{System.TimeSpan})
+    name: ConfigureFailover
+    href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerScope_ConfigureFailover_Bodoconsult_Network_Windows_Dhcp_IDhcpServer_System_String_Bodoconsult_Network_Windows_Dhcp_DhcpServerFailoverMode_System_Byte_System_TimeSpan_System_Nullable_System_TimeSpan__
+  - name: (
+  - uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServer
+    name: IDhcpServer
+    href: Bodoconsult.Network.Windows.Dhcp.IDhcpServer.html
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverMode
+    name: DhcpServerFailoverMode
+    href: Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverMode.html
+  - name: ','
+  - name: " "
+  - uid: System.Byte
+    name: Byte
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.byte
+  - name: ','
+  - name: " "
+  - uid: System.TimeSpan
+    name: TimeSpan
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.timespan
+  - name: ','
+  - name: " "
+  - uid: System.TimeSpan
+    name: TimeSpan
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.timespan
+  - name: '?'
+  - name: )
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.ConfigureFailover(Bodoconsult.Network.Windows.Dhcp.IDhcpServer,System.String,System.String,Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverMode,System.Byte,System.TimeSpan,System.Nullable{System.TimeSpan})
+  commentId: M:Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.ConfigureFailover(Bodoconsult.Network.Windows.Dhcp.IDhcpServer,System.String,System.String,Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverMode,System.Byte,System.TimeSpan,System.Nullable{System.TimeSpan})
+  parent: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope
+  isExternal: true
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerScope_ConfigureFailover_Bodoconsult_Network_Windows_Dhcp_IDhcpServer_System_String_System_String_Bodoconsult_Network_Windows_Dhcp_DhcpServerFailoverMode_System_Byte_System_TimeSpan_System_Nullable_System_TimeSpan__
+  name: ConfigureFailover(IDhcpServer, string, string, DhcpServerFailoverMode, byte, TimeSpan, TimeSpan?)
+  nameWithType: IDhcpServerScope.ConfigureFailover(IDhcpServer, string, string, DhcpServerFailoverMode, byte, TimeSpan, TimeSpan?)
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.ConfigureFailover(Bodoconsult.Network.Windows.Dhcp.IDhcpServer, string, string, Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverMode, byte, System.TimeSpan, System.TimeSpan?)
+  nameWithType.vb: IDhcpServerScope.ConfigureFailover(IDhcpServer, String, String, DhcpServerFailoverMode, Byte, TimeSpan, TimeSpan?)
+  fullName.vb: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.ConfigureFailover(Bodoconsult.Network.Windows.Dhcp.IDhcpServer, String, String, Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverMode, Byte, System.TimeSpan, System.TimeSpan?)
+  name.vb: ConfigureFailover(IDhcpServer, String, String, DhcpServerFailoverMode, Byte, TimeSpan, TimeSpan?)
+  spec.csharp:
+  - uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.ConfigureFailover(Bodoconsult.Network.Windows.Dhcp.IDhcpServer,System.String,System.String,Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverMode,System.Byte,System.TimeSpan,System.Nullable{System.TimeSpan})
+    name: ConfigureFailover
+    href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerScope_ConfigureFailover_Bodoconsult_Network_Windows_Dhcp_IDhcpServer_System_String_System_String_Bodoconsult_Network_Windows_Dhcp_DhcpServerFailoverMode_System_Byte_System_TimeSpan_System_Nullable_System_TimeSpan__
+  - name: (
+  - uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServer
+    name: IDhcpServer
+    href: Bodoconsult.Network.Windows.Dhcp.IDhcpServer.html
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverMode
+    name: DhcpServerFailoverMode
+    href: Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverMode.html
+  - name: ','
+  - name: " "
+  - uid: System.Byte
+    name: byte
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.byte
+  - name: ','
+  - name: " "
+  - uid: System.TimeSpan
+    name: TimeSpan
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.timespan
+  - name: ','
+  - name: " "
+  - uid: System.TimeSpan
+    name: TimeSpan
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.timespan
+  - name: '?'
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.ConfigureFailover(Bodoconsult.Network.Windows.Dhcp.IDhcpServer,System.String,System.String,Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverMode,System.Byte,System.TimeSpan,System.Nullable{System.TimeSpan})
+    name: ConfigureFailover
+    href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerScope_ConfigureFailover_Bodoconsult_Network_Windows_Dhcp_IDhcpServer_System_String_System_String_Bodoconsult_Network_Windows_Dhcp_DhcpServerFailoverMode_System_Byte_System_TimeSpan_System_Nullable_System_TimeSpan__
+  - name: (
+  - uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServer
+    name: IDhcpServer
+    href: Bodoconsult.Network.Windows.Dhcp.IDhcpServer.html
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverMode
+    name: DhcpServerFailoverMode
+    href: Bodoconsult.Network.Windows.Dhcp.DhcpServerFailoverMode.html
+  - name: ','
+  - name: " "
+  - uid: System.Byte
+    name: Byte
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.byte
+  - name: ','
+  - name: " "
+  - uid: System.TimeSpan
+    name: TimeSpan
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.timespan
+  - name: ','
+  - name: " "
+  - uid: System.TimeSpan
+    name: TimeSpan
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.timespan
+  - name: '?'
+  - name: )
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.ConfigureFailover(Bodoconsult.Network.Windows.Dhcp.IDhcpServerFailoverRelationship)
+  commentId: M:Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.ConfigureFailover(Bodoconsult.Network.Windows.Dhcp.IDhcpServerFailoverRelationship)
+  parent: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerScope_ConfigureFailover_Bodoconsult_Network_Windows_Dhcp_IDhcpServerFailoverRelationship_
+  name: ConfigureFailover(IDhcpServerFailoverRelationship)
+  nameWithType: IDhcpServerScope.ConfigureFailover(IDhcpServerFailoverRelationship)
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.ConfigureFailover(Bodoconsult.Network.Windows.Dhcp.IDhcpServerFailoverRelationship)
+  spec.csharp:
+  - uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.ConfigureFailover(Bodoconsult.Network.Windows.Dhcp.IDhcpServerFailoverRelationship)
+    name: ConfigureFailover
+    href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerScope_ConfigureFailover_Bodoconsult_Network_Windows_Dhcp_IDhcpServerFailoverRelationship_
+  - name: (
+  - uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerFailoverRelationship
+    name: IDhcpServerFailoverRelationship
+    href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerFailoverRelationship.html
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.ConfigureFailover(Bodoconsult.Network.Windows.Dhcp.IDhcpServerFailoverRelationship)
+    name: ConfigureFailover
+    href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerScope_ConfigureFailover_Bodoconsult_Network_Windows_Dhcp_IDhcpServerFailoverRelationship_
+  - name: (
+  - uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerFailoverRelationship
+    name: IDhcpServerFailoverRelationship
+    href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerFailoverRelationship.html
+  - name: )
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.DeconfigureFailover*
+  commentId: Overload:Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.DeconfigureFailover
+  href: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.html#Bodoconsult_Network_Windows_Dhcp_DhcpServerScope_DeconfigureFailover
+  name: DeconfigureFailover
+  nameWithType: DhcpServerScope.DeconfigureFailover
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.DeconfigureFailover
+- uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.DeconfigureFailover
+  commentId: M:Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.DeconfigureFailover
+  parent: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope
+  href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerScope_DeconfigureFailover
+  name: DeconfigureFailover()
+  nameWithType: IDhcpServerScope.DeconfigureFailover()
+  fullName: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.DeconfigureFailover()
+  spec.csharp:
+  - uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.DeconfigureFailover
+    name: DeconfigureFailover
+    href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerScope_DeconfigureFailover
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.DeconfigureFailover
+    name: DeconfigureFailover
+    href: Bodoconsult.Network.Windows.Dhcp.IDhcpServerScope.html#Bodoconsult_Network_Windows_Dhcp_IDhcpServerScope_DeconfigureFailover
+  - name: (
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.ToString*
+  commentId: Overload:Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.ToString
+  href: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.html#Bodoconsult_Network_Windows_Dhcp_DhcpServerScope_ToString
+  name: ToString
+  nameWithType: DhcpServerScope.ToString
+  fullName: Bodoconsult.Network.Windows.Dhcp.DhcpServerScope.ToString

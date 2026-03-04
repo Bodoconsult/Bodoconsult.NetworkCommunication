@@ -1,0 +1,1642 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Class OmOrder | Bodoconsult.Network </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class OmOrder | Bodoconsult.Network ">
+      
+      <meta name="description" content="Order management order">
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/new/main/apiSpec/new?filename=Bodoconsult_NetworkCommunication_OrderManagement_Orders_OmOrder.md&amp;value=---%0Auid%3A%20Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../logo.svg" alt="Bodoconsult.Network">
+            Bodoconsult.Network
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder">
+
+
+
+  <h1 id="Bodoconsult_NetworkCommunication_OrderManagement_Orders_OmOrder" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder" class="text-break">
+Class OmOrder  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/OrderManagement/Orders/OmOrder.cs/#L14"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="Bodoconsult.html">Bodoconsult</a>.<a class="xref" href="Bodoconsult.NetworkCommunication.html">NetworkCommunication</a>.<a class="xref" href="Bodoconsult.NetworkCommunication.OrderManagement.html">OrderManagement</a>.<a class="xref" href="Bodoconsult.NetworkCommunication.OrderManagement.Orders.html">Orders</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>Bodoconsult.NetworkCommunication.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p>Order management order</p>
+</div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class OmOrder : IOrder, IDisposable</code></pre>
+  </div>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><span class="xref">OmOrder</span></div>
+    </dd>
+  </dl>
+
+  <dl class="typelist implements">
+    <dt>Implements</dt>
+    <dd>
+      <div><a class="xref" href="Bodoconsult.NetworkCommunication.Interfaces.IOrder.html">IOrder</a></div>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.idisposable">IDisposable</a></div>
+    </dd>
+  </dl>
+
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone">object.MemberwiseClone()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
+    </div>
+  </dd></dl>
+
+
+
+
+
+
+  <h2 class="section" id="constructors">Constructors
+</h2>
+
+
+  <a id="Bodoconsult_NetworkCommunication_OrderManagement_Orders_OmOrder__ctor_" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.#ctor*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_OrderManagement_Orders_OmOrder__ctor_System_Int64_System_String_Bodoconsult_NetworkCommunication_Interfaces_IParameterSet_" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.#ctor(System.Int64,System.String,Bodoconsult.NetworkCommunication.Interfaces.IParameterSet)">
+  OmOrder(long, string, IParameterSet)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/OrderManagement/Orders/OmOrder.cs/#L24"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Base class default ctor</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public OmOrder(long id, string name, IParameterSet parameterSet)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>id</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int64">long</a></dt>
+    <dd></dd>
+    <dt><code>name</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+    <dt><code>parameterSet</code> <a class="xref" href="Bodoconsult.NetworkCommunication.Interfaces.IParameterSet.html">IParameterSet</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
+  <a id="Bodoconsult_NetworkCommunication_OrderManagement_Orders_OmOrder_AllowedParallelOrderTypes_" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.AllowedParallelOrderTypes*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_OrderManagement_Orders_OmOrder_AllowedParallelOrderTypes" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.AllowedParallelOrderTypes">
+  AllowedParallelOrderTypes
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/OrderManagement/Orders/OmOrder.cs/#L106"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>The names of allowed order types for running parallel to the current order</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IList&lt;string&gt; AllowedParallelOrderTypes { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1">IList</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_OrderManagement_Orders_OmOrder_Benchmark_" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.Benchmark*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_OrderManagement_Orders_OmOrder_Benchmark" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.Benchmark">
+  Benchmark
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/OrderManagement/Orders/OmOrder.cs/#L323"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Benchmark object (see output in Benchmark.csv)
+Make sure to create it, addStep, and dispose it</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Bench Benchmark { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">Bench</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_OrderManagement_Orders_OmOrder_DeviceId_" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.DeviceId*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_OrderManagement_Orders_OmOrder_DeviceId" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.DeviceId">
+  DeviceId
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/OrderManagement/Orders/OmOrder.cs/#L264"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Current device ID</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string DeviceId { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_OrderManagement_Orders_OmOrder_EndTime_" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.EndTime*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_OrderManagement_Orders_OmOrder_EndTime" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.EndTime">
+  EndTime
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/OrderManagement/Orders/OmOrder.cs/#L234"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Order processing end time</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public DateTime EndTime { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.datetime">DateTime</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_OrderManagement_Orders_OmOrder_ExecutionResult_" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.ExecutionResult*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_OrderManagement_Orders_OmOrder_ExecutionResult" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.ExecutionResult">
+  ExecutionResult
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/OrderManagement/Orders/OmOrder.cs/#L239"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>The execution result of the order</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IOrderExecutionResultState ExecutionResult { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionResultState.html">IOrderExecutionResultState</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_OrderManagement_Orders_OmOrder_ExecutionState_" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.ExecutionState*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_OrderManagement_Orders_OmOrder_ExecutionState" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.ExecutionState">
+  ExecutionState
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/OrderManagement/Orders/OmOrder.cs/#L244"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Current execution state</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IOrderState ExecutionState { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Bodoconsult.NetworkCommunication.Interfaces.IOrderState.html">IOrderState</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_OrderManagement_Orders_OmOrder_FailingOrderRequiresComDevClose_" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.FailingOrderRequiresComDevClose*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_OrderManagement_Orders_OmOrder_FailingOrderRequiresComDevClose" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.FailingOrderRequiresComDevClose">
+  FailingOrderRequiresComDevClose
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/OrderManagement/Orders/OmOrder.cs/#L156"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>If the orders fail, a ComDevCose is required</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool FailingOrderRequiresComDevClose { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_OrderManagement_Orders_OmOrder_Id_" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.Id*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_OrderManagement_Orders_OmOrder_Id" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.Id">
+  Id
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/OrderManagement/Orders/OmOrder.cs/#L40"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Unique Order-ID</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public long Id { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int64">long</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_OrderManagement_Orders_OmOrder_IsBenchable_" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.IsBenchable*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_OrderManagement_Orders_OmOrder_IsBenchable" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.IsBenchable">
+  IsBenchable
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/OrderManagement/Orders/OmOrder.cs/#L317"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>This order will be benchmarked? True or false</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsBenchable { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_OrderManagement_Orders_OmOrder_IsCancelled_" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.IsCancelled*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_OrderManagement_Orders_OmOrder_IsCancelled" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.IsCancelled">
+  IsCancelled
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/OrderManagement/Orders/OmOrder.cs/#L203"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>The order is cancelled</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsCancelled { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_OrderManagement_Orders_OmOrder_IsCancelledLockObject_" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.IsCancelledLockObject*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_OrderManagement_Orders_OmOrder_IsCancelledLockObject" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.IsCancelledLockObject">
+  IsCancelledLockObject
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/OrderManagement/Orders/OmOrder.cs/#L224"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>An object to lock the property <a class="xref" href="Bodoconsult.NetworkCommunication.Interfaces.IOrder.html#Bodoconsult_NetworkCommunication_Interfaces_IOrder_IsCancelled">IsCancelled</a></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public object IsCancelledLockObject { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_OrderManagement_Orders_OmOrder_IsCancelledOnComDevClose_" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.IsCancelledOnComDevClose*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_OrderManagement_Orders_OmOrder_IsCancelledOnComDevClose" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.IsCancelledOnComDevClose">
+  IsCancelledOnComDevClose
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/OrderManagement/Orders/OmOrder.cs/#L161"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Should the order be cancelled on a ComDevClose. Valid only for normal orders. Priority orders to not pay attention to this field</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsCancelledOnComDevClose { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_OrderManagement_Orders_OmOrder_IsCancelledOndevicePropertyUpdate_" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.IsCancelledOndevicePropertyUpdate*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_OrderManagement_Orders_OmOrder_IsCancelledOndevicePropertyUpdate" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.IsCancelledOndevicePropertyUpdate">
+  IsCancelledOndevicePropertyUpdate
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/OrderManagement/Orders/OmOrder.cs/#L166"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Should the order be cancelled on a device properties update</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsCancelledOndevicePropertyUpdate { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_OrderManagement_Orders_OmOrder_IsCheckedWithPriority_" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.IsCheckedWithPriority*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_OrderManagement_Orders_OmOrder_IsCheckedWithPriority" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.IsCheckedWithPriority">
+  IsCheckedWithPriority
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/OrderManagement/Orders/OmOrder.cs/#L188"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Is this order prioritized when receiving messages</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsCheckedWithPriority { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_OrderManagement_Orders_OmOrder_IsClientNotificationTurnedOff_" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.IsClientNotificationTurnedOff*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_OrderManagement_Orders_OmOrder_IsClientNotificationTurnedOff" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.IsClientNotificationTurnedOff">
+  IsClientNotificationTurnedOff
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/OrderManagement/Orders/OmOrder.cs/#L146"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>If client notification is turned off, the client will not be informed on this order</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsClientNotificationTurnedOff { get; protected set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_OrderManagement_Orders_OmOrder_IsDisposable_" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.IsDisposable*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_OrderManagement_Orders_OmOrder_IsDisposable" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.IsDisposable">
+  IsDisposable
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/OrderManagement/Orders/OmOrder.cs/#L141"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Is the order ready for disposing</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsDisposable { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_OrderManagement_Orders_OmOrder_IsFinished_" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.IsFinished*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_OrderManagement_Orders_OmOrder_IsFinished" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.IsFinished">
+  IsFinished
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/OrderManagement/Orders/OmOrder.cs/#L249"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Is the order already finished</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsFinished { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_OrderManagement_Orders_OmOrder_IsHighPriorityOrder_" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.IsHighPriorityOrder*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_OrderManagement_Orders_OmOrder_IsHighPriorityOrder" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.IsHighPriorityOrder">
+  IsHighPriorityOrder
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/OrderManagement/Orders/OmOrder.cs/#L183"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Is the order a high priority order</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsHighPriorityOrder { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_OrderManagement_Orders_OmOrder_IsNextOrderStartAllowed_" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.IsNextOrderStartAllowed*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_OrderManagement_Orders_OmOrder_IsNextOrderStartAllowed" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.IsNextOrderStartAllowed">
+  IsNextOrderStartAllowed
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/OrderManagement/Orders/OmOrder.cs/#L151"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Start the next order of the same type (used for ExpressUnload i.e.)</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsNextOrderStartAllowed { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_OrderManagement_Orders_OmOrder_IsRunningSync_" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.IsRunningSync*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_OrderManagement_Orders_OmOrder_IsRunningSync" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.IsRunningSync">
+  IsRunningSync
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/OrderManagement/Orders/OmOrder.cs/#L136"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Is the order running in sync mode? Default: false means async</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsRunningSync { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_OrderManagement_Orders_OmOrder_LoggerId_" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.LoggerId*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_OrderManagement_Orders_OmOrder_LoggerId" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.LoggerId">
+  LoggerId
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/OrderManagement/Orders/OmOrder.cs/#L96"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Formatted ID for logging</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual string LoggerId { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_OrderManagement_Orders_OmOrder_Name_" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.Name*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_OrderManagement_Orders_OmOrder_Name" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.Name">
+  Name
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/OrderManagement/Orders/OmOrder.cs/#L50"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Name of the order</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string Name { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_OrderManagement_Orders_OmOrder_NextOrder_" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.NextOrder*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_OrderManagement_Orders_OmOrder_NextOrder" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.NextOrder">
+  NextOrder
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/OrderManagement/Orders/OmOrder.cs/#L45"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>The next order in a chain of orders like trial run</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IOrder NextOrder { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Bodoconsult.NetworkCommunication.Interfaces.IOrder.html">IOrder</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_OrderManagement_Orders_OmOrder_OrderError_" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.OrderError*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_OrderManagement_Orders_OmOrder_OrderError" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.OrderError">
+  OrderError
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/OrderManagement/Orders/OmOrder.cs/#L284"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>ErrorCode to trace</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int OrderError { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_OrderManagement_Orders_OmOrder_OrderFinishedSuccessfulAction_" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.OrderFinishedSuccessfulAction*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_OrderManagement_Orders_OmOrder_OrderFinishedSuccessfulAction" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.OrderFinishedSuccessfulAction">
+  OrderFinishedSuccessfulAction
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/OrderManagement/Orders/OmOrder.cs/#L121"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Action running after successful processing of the order</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ActionRequestStepDelegate OrderFinishedSuccessfulAction { get; protected set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Bodoconsult.NetworkCommunication.Delegates.ActionRequestStepDelegate.html">ActionRequestStepDelegate</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_OrderManagement_Orders_OmOrder_OrderFinishedUnsuccessfulAction_" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.OrderFinishedUnsuccessfulAction*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_OrderManagement_Orders_OmOrder_OrderFinishedUnsuccessfulAction" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.OrderFinishedUnsuccessfulAction">
+  OrderFinishedUnsuccessfulAction
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/OrderManagement/Orders/OmOrder.cs/#L126"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Action running after unsuccessful processing of the order</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ActionRequestStepDelegate OrderFinishedUnsuccessfulAction { get; protected set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Bodoconsult.NetworkCommunication.Delegates.ActionRequestStepDelegate.html">ActionRequestStepDelegate</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_OrderManagement_Orders_OmOrder_OrderSource_" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.OrderSource*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_OrderManagement_Orders_OmOrder_OrderSource" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.OrderSource">
+  OrderSource
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/OrderManagement/Orders/OmOrder.cs/#L81"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Order source</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public OrderSource OrderSource { get; protected set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Bodoconsult.NetworkCommunication.EnumAndStates.OrderSource.html">OrderSource</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_OrderManagement_Orders_OmOrder_OrderTypeCode_" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.OrderTypeCode*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_OrderManagement_Orders_OmOrder_OrderTypeCode" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.OrderTypeCode">
+  OrderTypeCode
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/OrderManagement/Orders/OmOrder.cs/#L91"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Type of order sent to client</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int OrderTypeCode { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_OrderManagement_Orders_OmOrder_ParameterSet_" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.ParameterSet*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_OrderManagement_Orders_OmOrder_ParameterSet" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.ParameterSet">
+  ParameterSet
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/OrderManagement/Orders/OmOrder.cs/#L193"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Current parameter set to use for the order. Must include the parameter sets of all contained requests by interface.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IParameterSet ParameterSet { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Bodoconsult.NetworkCommunication.Interfaces.IParameterSet.html">IParameterSet</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_OrderManagement_Orders_OmOrder_RequestSpecs_" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.RequestSpecs*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_OrderManagement_Orders_OmOrder_RequestSpecs" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.RequestSpecs">
+  RequestSpecs
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/OrderManagement/Orders/OmOrder.cs/#L101"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Current request specs of the order</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IList&lt;IRequestSpec&gt; RequestSpecs { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1">IList</a>&lt;<a class="xref" href="Bodoconsult.NetworkCommunication.Interfaces.IRequestSpec.html">IRequestSpec</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_OrderManagement_Orders_OmOrder_SendCancelTodeviceIfCancelledOrUnsuccessful_" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.SendCancelTodeviceIfCancelledOrUnsuccessful*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_OrderManagement_Orders_OmOrder_SendCancelTodeviceIfCancelledOrUnsuccessful" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.SendCancelTodeviceIfCancelledOrUnsuccessful">
+  SendCancelTodeviceIfCancelledOrUnsuccessful
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/OrderManagement/Orders/OmOrder.cs/#L111"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Send a CAN command to the device if order fails or is cancelled</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool SendCancelTodeviceIfCancelledOrUnsuccessful { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_OrderManagement_Orders_OmOrder_SourceUid_" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.SourceUid*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_OrderManagement_Orders_OmOrder_SourceUid" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.SourceUid">
+  SourceUid
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/OrderManagement/Orders/OmOrder.cs/#L86"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>The UID of a source item like a joblist the order is bound to</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Guid? SourceUid { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.guid">Guid</a>?</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_OrderManagement_Orders_OmOrder_StartTime_" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.StartTime*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_OrderManagement_Orders_OmOrder_StartTime" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.StartTime">
+  StartTime
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/OrderManagement/Orders/OmOrder.cs/#L229"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Order processing start time</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public DateTime StartTime { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.datetime">DateTime</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_OrderManagement_Orders_OmOrder_StateToNotifyOnSuccess_" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.StateToNotifyOnSuccess*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_OrderManagement_Orders_OmOrder_StateToNotifyOnSuccess" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.StateToNotifyOnSuccess">
+  StateToNotifyOnSuccess
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/OrderManagement/Orders/OmOrder.cs/#L131"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>The state to notify the app in case of order was successfully running</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IDeviceState StateToNotifyOnSuccess { get; protected set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Bodoconsult.NetworkCommunication.Interfaces.IDeviceState.html">IDeviceState</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_OrderManagement_Orders_OmOrder_TraceCodeError_" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.TraceCodeError*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_OrderManagement_Orders_OmOrder_TraceCodeError" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.TraceCodeError">
+  TraceCodeError
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/OrderManagement/Orders/OmOrder.cs/#L274"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Trace code to log on error</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int TraceCodeError { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_OrderManagement_Orders_OmOrder_TraceCodeSuccess_" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.TraceCodeSuccess*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_OrderManagement_Orders_OmOrder_TraceCodeSuccess" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.TraceCodeSuccess">
+  TraceCodeSuccess
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/OrderManagement/Orders/OmOrder.cs/#L269"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Trace code to log on success</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int TraceCodeSuccess { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_OrderManagement_Orders_OmOrder_TraceEntry_" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.TraceEntry*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_OrderManagement_Orders_OmOrder_TraceEntry" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.TraceEntry">
+  TraceEntry
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/OrderManagement/Orders/OmOrder.cs/#L289"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Trace entry to create for the order</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ITraceEntry TraceEntry { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Bodoconsult.NetworkCommunication.Interfaces.ITraceEntry.html">ITraceEntry</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_OrderManagement_Orders_OmOrder_TraceMessage_" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.TraceMessage*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_OrderManagement_Orders_OmOrder_TraceMessage" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.TraceMessage">
+  TraceMessage
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/OrderManagement/Orders/OmOrder.cs/#L279"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Trace message to log</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string TraceMessage { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_OrderManagement_Orders_OmOrder_TransactionId_" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.TransactionId*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_OrderManagement_Orders_OmOrder_TransactionId" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.TransactionId">
+  TransactionId
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/OrderManagement/Orders/OmOrder.cs/#L259"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>ID of a not TOM related transaction the order is part of. Used for trialrun</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int TransactionId { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_OrderManagement_Orders_OmOrder_TypeName_" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.TypeName*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_OrderManagement_Orders_OmOrder_TypeName" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.TypeName">
+  TypeName
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/OrderManagement/Orders/OmOrder.cs/#L76"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Type name of the order</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string TypeName { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_OrderManagement_Orders_OmOrder_WasSuccessful_" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.WasSuccessful*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_OrderManagement_Orders_OmOrder_WasSuccessful" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.WasSuccessful">
+  WasSuccessful
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/OrderManagement/Orders/OmOrder.cs/#L198"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>The step was successfully processed in all steps</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool WasSuccessful { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="Bodoconsult_NetworkCommunication_OrderManagement_Orders_OmOrder_CreateTraceEntry_" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.CreateTraceEntry*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_OrderManagement_Orders_OmOrder_CreateTraceEntry_Bodoconsult_NetworkCommunication_Interfaces_IOrderExecutionResultState_System_Int32__System_DateTime_" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.CreateTraceEntry(Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionResultState,System.Int32@,System.DateTime)">
+  CreateTraceEntry(IOrderExecutionResultState, in int, DateTime)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/OrderManagement/Orders/OmOrder.cs/#L297"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Create a trace entry (do not use directly, public only for unit testing)</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void CreateTraceEntry(IOrderExecutionResultState lastStepExecutionResult, in int communicationAdapterError, DateTime timeStamp)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>lastStepExecutionResult</code> <a class="xref" href="Bodoconsult.NetworkCommunication.Interfaces.IOrderExecutionResultState.html">IOrderExecutionResultState</a></dt>
+    <dd><p>Execution result</p>
+</dd>
+    <dt><code>communicationAdapterError</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Error on the communication adapter</p>
+</dd>
+    <dt><code>timeStamp</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.datetime">DateTime</a></dt>
+    <dd><p>App date service</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_OrderManagement_Orders_OmOrder_Dispose_" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.Dispose*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_OrderManagement_Orders_OmOrder_Dispose" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.Dispose">
+  Dispose()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/OrderManagement/Orders/OmOrder.cs/#L329"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void Dispose()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bodoconsult_NetworkCommunication_OrderManagement_Orders_OmOrder_GetFormattedUser_" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.GetFormattedUser*"></a>
+
+  <h3 id="Bodoconsult_NetworkCommunication_OrderManagement_Orders_OmOrder_GetFormattedUser" data-uid="Bodoconsult.NetworkCommunication.OrderManagement.Orders.OmOrder.GetFormattedUser">
+  GetFormattedUser()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/OrderManagement/Orders/OmOrder.cs/#L169"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected string GetFormattedUser()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication/blob/main/src/Bodoconsult.NetworkCommunication/OrderManagement/Orders/OmOrder.cs/#L14" class="edit-link">Edit this page</a>
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

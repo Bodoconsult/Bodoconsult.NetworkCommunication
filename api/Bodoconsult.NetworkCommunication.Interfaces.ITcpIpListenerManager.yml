@@ -1,0 +1,844 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bodoconsult.NetworkCommunication.Interfaces.ITcpIpListenerManager
+  commentId: T:Bodoconsult.NetworkCommunication.Interfaces.ITcpIpListenerManager
+  id: ITcpIpListenerManager
+  parent: Bodoconsult.NetworkCommunication.Interfaces
+  children:
+  - Bodoconsult.NetworkCommunication.Interfaces.ITcpIpListenerManager.Blocking
+  - Bodoconsult.NetworkCommunication.Interfaces.ITcpIpListenerManager.CurrentListeners
+  - Bodoconsult.NetworkCommunication.Interfaces.ITcpIpListenerManager.ExclusiveAddressUse
+  - Bodoconsult.NetworkCommunication.Interfaces.ITcpIpListenerManager.GetListener(System.Int32)
+  - Bodoconsult.NetworkCommunication.Interfaces.ITcpIpListenerManager.KeepAliveInterval
+  - Bodoconsult.NetworkCommunication.Interfaces.ITcpIpListenerManager.KeepAliveTime
+  - Bodoconsult.NetworkCommunication.Interfaces.ITcpIpListenerManager.ListenBacklog
+  - Bodoconsult.NetworkCommunication.Interfaces.ITcpIpListenerManager.NoDelay
+  - Bodoconsult.NetworkCommunication.Interfaces.ITcpIpListenerManager.ReceiveTimeout
+  - Bodoconsult.NetworkCommunication.Interfaces.ITcpIpListenerManager.RegisterListener(System.Int32,Bodoconsult.NetworkCommunication.Delegates.ClientConnectionAcceptedDelegate)
+  - Bodoconsult.NetworkCommunication.Interfaces.ITcpIpListenerManager.SendTimeout
+  - Bodoconsult.NetworkCommunication.Interfaces.ITcpIpListenerManager.UnregisterListener(System.Int32,Bodoconsult.NetworkCommunication.Delegates.ClientConnectionAcceptedDelegate)
+  - Bodoconsult.NetworkCommunication.Interfaces.ITcpIpListenerManager.UnregisterListener(System.Net.Sockets.Socket,Bodoconsult.NetworkCommunication.Delegates.ClientConnectionAcceptedDelegate)
+  langs:
+  - csharp
+  - vb
+  name: ITcpIpListenerManager
+  nameWithType: ITcpIpListenerManager
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.ITcpIpListenerManager
+  type: Interface
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/ITcpIpListenerManager.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: ITcpIpListenerManager
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/ITcpIpListenerManager.cs
+    startLine: 13
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Manages on a TCP/IP server the listener instances to avoid unnecessary thread creation for listeners on the same port
+  example: []
+  syntax:
+    content: 'public interface ITcpIpListenerManager : IDisposable'
+    content.vb: Public Interface ITcpIpListenerManager Inherits IDisposable
+  inheritedMembers:
+  - System.IDisposable.Dispose
+- uid: Bodoconsult.NetworkCommunication.Interfaces.ITcpIpListenerManager.ExclusiveAddressUse
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.ITcpIpListenerManager.ExclusiveAddressUse
+  id: ExclusiveAddressUse
+  parent: Bodoconsult.NetworkCommunication.Interfaces.ITcpIpListenerManager
+  langs:
+  - csharp
+  - vb
+  name: ExclusiveAddressUse
+  nameWithType: ITcpIpListenerManager.ExclusiveAddressUse
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.ITcpIpListenerManager.ExclusiveAddressUse
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/ITcpIpListenerManager.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: ExclusiveAddressUse
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/ITcpIpListenerManager.cs
+    startLine: 18
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Exclusive address use?
+  example: []
+  syntax:
+    content: bool ExclusiveAddressUse { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Property ExclusiveAddressUse As Boolean
+  overload: Bodoconsult.NetworkCommunication.Interfaces.ITcpIpListenerManager.ExclusiveAddressUse*
+- uid: Bodoconsult.NetworkCommunication.Interfaces.ITcpIpListenerManager.Blocking
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.ITcpIpListenerManager.Blocking
+  id: Blocking
+  parent: Bodoconsult.NetworkCommunication.Interfaces.ITcpIpListenerManager
+  langs:
+  - csharp
+  - vb
+  name: Blocking
+  nameWithType: ITcpIpListenerManager.Blocking
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.ITcpIpListenerManager.Blocking
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/ITcpIpListenerManager.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: Blocking
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/ITcpIpListenerManager.cs
+    startLine: 23
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Is the listener blocking? See Socket.Blocking for more details
+  example: []
+  syntax:
+    content: bool Blocking { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Property Blocking As Boolean
+  overload: Bodoconsult.NetworkCommunication.Interfaces.ITcpIpListenerManager.Blocking*
+- uid: Bodoconsult.NetworkCommunication.Interfaces.ITcpIpListenerManager.NoDelay
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.ITcpIpListenerManager.NoDelay
+  id: NoDelay
+  parent: Bodoconsult.NetworkCommunication.Interfaces.ITcpIpListenerManager
+  langs:
+  - csharp
+  - vb
+  name: NoDelay
+  nameWithType: ITcpIpListenerManager.NoDelay
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.ITcpIpListenerManager.NoDelay
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/ITcpIpListenerManager.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: NoDelay
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/ITcpIpListenerManager.cs
+    startLine: 28
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Is the listener working without delay? See Socket.NoDelay for more details
+  example: []
+  syntax:
+    content: bool NoDelay { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Property NoDelay As Boolean
+  overload: Bodoconsult.NetworkCommunication.Interfaces.ITcpIpListenerManager.NoDelay*
+- uid: Bodoconsult.NetworkCommunication.Interfaces.ITcpIpListenerManager.KeepAliveTime
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.ITcpIpListenerManager.KeepAliveTime
+  id: KeepAliveTime
+  parent: Bodoconsult.NetworkCommunication.Interfaces.ITcpIpListenerManager
+  langs:
+  - csharp
+  - vb
+  name: KeepAliveTime
+  nameWithType: ITcpIpListenerManager.KeepAliveTime
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.ITcpIpListenerManager.KeepAliveTime
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/ITcpIpListenerManager.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: KeepAliveTime
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/ITcpIpListenerManager.cs
+    startLine: 33
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Keep alive time in ms. Only on Windows OS
+  example: []
+  syntax:
+    content: int KeepAliveTime { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Property KeepAliveTime As Integer
+  overload: Bodoconsult.NetworkCommunication.Interfaces.ITcpIpListenerManager.KeepAliveTime*
+- uid: Bodoconsult.NetworkCommunication.Interfaces.ITcpIpListenerManager.KeepAliveInterval
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.ITcpIpListenerManager.KeepAliveInterval
+  id: KeepAliveInterval
+  parent: Bodoconsult.NetworkCommunication.Interfaces.ITcpIpListenerManager
+  langs:
+  - csharp
+  - vb
+  name: KeepAliveInterval
+  nameWithType: ITcpIpListenerManager.KeepAliveInterval
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.ITcpIpListenerManager.KeepAliveInterval
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/ITcpIpListenerManager.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: KeepAliveInterval
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/ITcpIpListenerManager.cs
+    startLine: 38
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Keep alive interval ms. Only used on Windows OS
+  example: []
+  syntax:
+    content: int KeepAliveInterval { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Property KeepAliveInterval As Integer
+  overload: Bodoconsult.NetworkCommunication.Interfaces.ITcpIpListenerManager.KeepAliveInterval*
+- uid: Bodoconsult.NetworkCommunication.Interfaces.ITcpIpListenerManager.SendTimeout
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.ITcpIpListenerManager.SendTimeout
+  id: SendTimeout
+  parent: Bodoconsult.NetworkCommunication.Interfaces.ITcpIpListenerManager
+  langs:
+  - csharp
+  - vb
+  name: SendTimeout
+  nameWithType: ITcpIpListenerManager.SendTimeout
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.ITcpIpListenerManager.SendTimeout
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/ITcpIpListenerManager.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: SendTimeout
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/ITcpIpListenerManager.cs
+    startLine: 43
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Send timeout in milliseconds. -1 means infinite
+  example: []
+  syntax:
+    content: int SendTimeout { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Property SendTimeout As Integer
+  overload: Bodoconsult.NetworkCommunication.Interfaces.ITcpIpListenerManager.SendTimeout*
+- uid: Bodoconsult.NetworkCommunication.Interfaces.ITcpIpListenerManager.ReceiveTimeout
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.ITcpIpListenerManager.ReceiveTimeout
+  id: ReceiveTimeout
+  parent: Bodoconsult.NetworkCommunication.Interfaces.ITcpIpListenerManager
+  langs:
+  - csharp
+  - vb
+  name: ReceiveTimeout
+  nameWithType: ITcpIpListenerManager.ReceiveTimeout
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.ITcpIpListenerManager.ReceiveTimeout
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/ITcpIpListenerManager.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: ReceiveTimeout
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/ITcpIpListenerManager.cs
+    startLine: 48
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Receive timeout in milliseconds. -1 means infinite
+  example: []
+  syntax:
+    content: int ReceiveTimeout { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Property ReceiveTimeout As Integer
+  overload: Bodoconsult.NetworkCommunication.Interfaces.ITcpIpListenerManager.ReceiveTimeout*
+- uid: Bodoconsult.NetworkCommunication.Interfaces.ITcpIpListenerManager.ListenBacklog
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.ITcpIpListenerManager.ListenBacklog
+  id: ListenBacklog
+  parent: Bodoconsult.NetworkCommunication.Interfaces.ITcpIpListenerManager
+  langs:
+  - csharp
+  - vb
+  name: ListenBacklog
+  nameWithType: ITcpIpListenerManager.ListenBacklog
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.ITcpIpListenerManager.ListenBacklog
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/ITcpIpListenerManager.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: ListenBacklog
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/ITcpIpListenerManager.cs
+    startLine: 53
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: The maximum length of the pending connections queue
+  example: []
+  syntax:
+    content: int ListenBacklog { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Property ListenBacklog As Integer
+  overload: Bodoconsult.NetworkCommunication.Interfaces.ITcpIpListenerManager.ListenBacklog*
+- uid: Bodoconsult.NetworkCommunication.Interfaces.ITcpIpListenerManager.CurrentListeners
+  commentId: P:Bodoconsult.NetworkCommunication.Interfaces.ITcpIpListenerManager.CurrentListeners
+  id: CurrentListeners
+  parent: Bodoconsult.NetworkCommunication.Interfaces.ITcpIpListenerManager
+  langs:
+  - csharp
+  - vb
+  name: CurrentListeners
+  nameWithType: ITcpIpListenerManager.CurrentListeners
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.ITcpIpListenerManager.CurrentListeners
+  type: Property
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/ITcpIpListenerManager.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: CurrentListeners
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/ITcpIpListenerManager.cs
+    startLine: 58
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Readonly list of all current sockets
+  example: []
+  syntax:
+    content: List<KeyValuePair<Socket, ListenerData>> CurrentListeners { get; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.List{System.Collections.Generic.KeyValuePair{System.Net.Sockets.Socket,Bodoconsult.NetworkCommunication.Protocols.TcpIp.ListenerData}}
+    content.vb: ReadOnly Property CurrentListeners As List(Of KeyValuePair(Of Socket, ListenerData))
+  overload: Bodoconsult.NetworkCommunication.Interfaces.ITcpIpListenerManager.CurrentListeners*
+- uid: Bodoconsult.NetworkCommunication.Interfaces.ITcpIpListenerManager.RegisterListener(System.Int32,Bodoconsult.NetworkCommunication.Delegates.ClientConnectionAcceptedDelegate)
+  commentId: M:Bodoconsult.NetworkCommunication.Interfaces.ITcpIpListenerManager.RegisterListener(System.Int32,Bodoconsult.NetworkCommunication.Delegates.ClientConnectionAcceptedDelegate)
+  id: RegisterListener(System.Int32,Bodoconsult.NetworkCommunication.Delegates.ClientConnectionAcceptedDelegate)
+  parent: Bodoconsult.NetworkCommunication.Interfaces.ITcpIpListenerManager
+  langs:
+  - csharp
+  - vb
+  name: RegisterListener(int, ClientConnectionAcceptedDelegate)
+  nameWithType: ITcpIpListenerManager.RegisterListener(int, ClientConnectionAcceptedDelegate)
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.ITcpIpListenerManager.RegisterListener(int, Bodoconsult.NetworkCommunication.Delegates.ClientConnectionAcceptedDelegate)
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/ITcpIpListenerManager.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: RegisterListener
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/ITcpIpListenerManager.cs
+    startLine: 66
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Register a listener for a certain port on the local machine
+  example: []
+  syntax:
+    content: Socket RegisterListener(int port, ClientConnectionAcceptedDelegate acceptDelegate)
+    parameters:
+    - id: port
+      type: System.Int32
+      description: Local port to listen on
+    - id: acceptDelegate
+      type: Bodoconsult.NetworkCommunication.Delegates.ClientConnectionAcceptedDelegate
+      description: Delegate fired when a TCP/IP conenction was accepted
+    return:
+      type: System.Net.Sockets.Socket
+      description: Listener socket
+    content.vb: Function RegisterListener(port As Integer, acceptDelegate As ClientConnectionAcceptedDelegate) As Socket
+  overload: Bodoconsult.NetworkCommunication.Interfaces.ITcpIpListenerManager.RegisterListener*
+  nameWithType.vb: ITcpIpListenerManager.RegisterListener(Integer, ClientConnectionAcceptedDelegate)
+  fullName.vb: Bodoconsult.NetworkCommunication.Interfaces.ITcpIpListenerManager.RegisterListener(Integer, Bodoconsult.NetworkCommunication.Delegates.ClientConnectionAcceptedDelegate)
+  name.vb: RegisterListener(Integer, ClientConnectionAcceptedDelegate)
+- uid: Bodoconsult.NetworkCommunication.Interfaces.ITcpIpListenerManager.UnregisterListener(System.Int32,Bodoconsult.NetworkCommunication.Delegates.ClientConnectionAcceptedDelegate)
+  commentId: M:Bodoconsult.NetworkCommunication.Interfaces.ITcpIpListenerManager.UnregisterListener(System.Int32,Bodoconsult.NetworkCommunication.Delegates.ClientConnectionAcceptedDelegate)
+  id: UnregisterListener(System.Int32,Bodoconsult.NetworkCommunication.Delegates.ClientConnectionAcceptedDelegate)
+  parent: Bodoconsult.NetworkCommunication.Interfaces.ITcpIpListenerManager
+  langs:
+  - csharp
+  - vb
+  name: UnregisterListener(int, ClientConnectionAcceptedDelegate)
+  nameWithType: ITcpIpListenerManager.UnregisterListener(int, ClientConnectionAcceptedDelegate)
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.ITcpIpListenerManager.UnregisterListener(int, Bodoconsult.NetworkCommunication.Delegates.ClientConnectionAcceptedDelegate)
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/ITcpIpListenerManager.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: UnregisterListener
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/ITcpIpListenerManager.cs
+    startLine: 73
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Unregister a listener on a port
+  example: []
+  syntax:
+    content: void UnregisterListener(int port, ClientConnectionAcceptedDelegate acceptDelegate)
+    parameters:
+    - id: port
+      type: System.Int32
+      description: Port to unregister
+    - id: acceptDelegate
+      type: Bodoconsult.NetworkCommunication.Delegates.ClientConnectionAcceptedDelegate
+      description: Accept delegate to unregister
+    content.vb: Sub UnregisterListener(port As Integer, acceptDelegate As ClientConnectionAcceptedDelegate)
+  overload: Bodoconsult.NetworkCommunication.Interfaces.ITcpIpListenerManager.UnregisterListener*
+  nameWithType.vb: ITcpIpListenerManager.UnregisterListener(Integer, ClientConnectionAcceptedDelegate)
+  fullName.vb: Bodoconsult.NetworkCommunication.Interfaces.ITcpIpListenerManager.UnregisterListener(Integer, Bodoconsult.NetworkCommunication.Delegates.ClientConnectionAcceptedDelegate)
+  name.vb: UnregisterListener(Integer, ClientConnectionAcceptedDelegate)
+- uid: Bodoconsult.NetworkCommunication.Interfaces.ITcpIpListenerManager.UnregisterListener(System.Net.Sockets.Socket,Bodoconsult.NetworkCommunication.Delegates.ClientConnectionAcceptedDelegate)
+  commentId: M:Bodoconsult.NetworkCommunication.Interfaces.ITcpIpListenerManager.UnregisterListener(System.Net.Sockets.Socket,Bodoconsult.NetworkCommunication.Delegates.ClientConnectionAcceptedDelegate)
+  id: UnregisterListener(System.Net.Sockets.Socket,Bodoconsult.NetworkCommunication.Delegates.ClientConnectionAcceptedDelegate)
+  parent: Bodoconsult.NetworkCommunication.Interfaces.ITcpIpListenerManager
+  langs:
+  - csharp
+  - vb
+  name: UnregisterListener(Socket, ClientConnectionAcceptedDelegate)
+  nameWithType: ITcpIpListenerManager.UnregisterListener(Socket, ClientConnectionAcceptedDelegate)
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.ITcpIpListenerManager.UnregisterListener(System.Net.Sockets.Socket, Bodoconsult.NetworkCommunication.Delegates.ClientConnectionAcceptedDelegate)
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/ITcpIpListenerManager.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: UnregisterListener
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/ITcpIpListenerManager.cs
+    startLine: 80
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Unregister a listener on a port
+  example: []
+  syntax:
+    content: void UnregisterListener(Socket listener, ClientConnectionAcceptedDelegate acceptDelegate)
+    parameters:
+    - id: listener
+      type: System.Net.Sockets.Socket
+      description: Listener to unregister
+    - id: acceptDelegate
+      type: Bodoconsult.NetworkCommunication.Delegates.ClientConnectionAcceptedDelegate
+      description: Accept delegate to unregister
+    content.vb: Sub UnregisterListener(listener As Socket, acceptDelegate As ClientConnectionAcceptedDelegate)
+  overload: Bodoconsult.NetworkCommunication.Interfaces.ITcpIpListenerManager.UnregisterListener*
+- uid: Bodoconsult.NetworkCommunication.Interfaces.ITcpIpListenerManager.GetListener(System.Int32)
+  commentId: M:Bodoconsult.NetworkCommunication.Interfaces.ITcpIpListenerManager.GetListener(System.Int32)
+  id: GetListener(System.Int32)
+  parent: Bodoconsult.NetworkCommunication.Interfaces.ITcpIpListenerManager
+  langs:
+  - csharp
+  - vb
+  name: GetListener(int)
+  nameWithType: ITcpIpListenerManager.GetListener(int)
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.ITcpIpListenerManager.GetListener(int)
+  type: Method
+  source:
+    remote:
+      path: src/Bodoconsult.NetworkCommunication/Interfaces/ITcpIpListenerManager.cs
+      branch: main
+      repo: https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication.git
+    id: GetListener
+    path: src/Bodoconsult.NetworkCommunication/Interfaces/ITcpIpListenerManager.cs
+    startLine: 87
+  assemblies:
+  - Bodoconsult.NetworkCommunication
+  namespace: Bodoconsult.NetworkCommunication.Interfaces
+  summary: Find a listener by the port it is listening on
+  example: []
+  syntax:
+    content: Socket GetListener(int port)
+    parameters:
+    - id: port
+      type: System.Int32
+      description: Local port to listen on
+    return:
+      type: System.Net.Sockets.Socket
+      description: Listener socket or null if found none
+    content.vb: Function GetListener(port As Integer) As Socket
+  overload: Bodoconsult.NetworkCommunication.Interfaces.ITcpIpListenerManager.GetListener*
+  nameWithType.vb: ITcpIpListenerManager.GetListener(Integer)
+  fullName.vb: Bodoconsult.NetworkCommunication.Interfaces.ITcpIpListenerManager.GetListener(Integer)
+  name.vb: GetListener(Integer)
+references:
+- uid: Bodoconsult.NetworkCommunication.Interfaces
+  commentId: N:Bodoconsult.NetworkCommunication.Interfaces
+  href: Bodoconsult.html
+  name: Bodoconsult.NetworkCommunication.Interfaces
+  nameWithType: Bodoconsult.NetworkCommunication.Interfaces
+  fullName: Bodoconsult.NetworkCommunication.Interfaces
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Interfaces
+    name: Interfaces
+    href: Bodoconsult.NetworkCommunication.Interfaces.html
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Interfaces
+    name: Interfaces
+    href: Bodoconsult.NetworkCommunication.Interfaces.html
+- uid: System.IDisposable.Dispose
+  commentId: M:System.IDisposable.Dispose
+  parent: System.IDisposable
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  name: Dispose()
+  nameWithType: IDisposable.Dispose()
+  fullName: System.IDisposable.Dispose()
+  spec.csharp:
+  - uid: System.IDisposable.Dispose
+    name: Dispose
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.IDisposable.Dispose
+    name: Dispose
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  - name: (
+  - name: )
+- uid: System.IDisposable
+  commentId: T:System.IDisposable
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable
+  name: IDisposable
+  nameWithType: IDisposable
+  fullName: System.IDisposable
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Bodoconsult.NetworkCommunication.Interfaces.ITcpIpListenerManager.ExclusiveAddressUse*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.ITcpIpListenerManager.ExclusiveAddressUse
+  href: Bodoconsult.NetworkCommunication.Interfaces.ITcpIpListenerManager.html#Bodoconsult_NetworkCommunication_Interfaces_ITcpIpListenerManager_ExclusiveAddressUse
+  name: ExclusiveAddressUse
+  nameWithType: ITcpIpListenerManager.ExclusiveAddressUse
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.ITcpIpListenerManager.ExclusiveAddressUse
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: Bodoconsult.NetworkCommunication.Interfaces.ITcpIpListenerManager.Blocking*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.ITcpIpListenerManager.Blocking
+  href: Bodoconsult.NetworkCommunication.Interfaces.ITcpIpListenerManager.html#Bodoconsult_NetworkCommunication_Interfaces_ITcpIpListenerManager_Blocking
+  name: Blocking
+  nameWithType: ITcpIpListenerManager.Blocking
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.ITcpIpListenerManager.Blocking
+- uid: Bodoconsult.NetworkCommunication.Interfaces.ITcpIpListenerManager.NoDelay*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.ITcpIpListenerManager.NoDelay
+  href: Bodoconsult.NetworkCommunication.Interfaces.ITcpIpListenerManager.html#Bodoconsult_NetworkCommunication_Interfaces_ITcpIpListenerManager_NoDelay
+  name: NoDelay
+  nameWithType: ITcpIpListenerManager.NoDelay
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.ITcpIpListenerManager.NoDelay
+- uid: Bodoconsult.NetworkCommunication.Interfaces.ITcpIpListenerManager.KeepAliveTime*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.ITcpIpListenerManager.KeepAliveTime
+  href: Bodoconsult.NetworkCommunication.Interfaces.ITcpIpListenerManager.html#Bodoconsult_NetworkCommunication_Interfaces_ITcpIpListenerManager_KeepAliveTime
+  name: KeepAliveTime
+  nameWithType: ITcpIpListenerManager.KeepAliveTime
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.ITcpIpListenerManager.KeepAliveTime
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: Bodoconsult.NetworkCommunication.Interfaces.ITcpIpListenerManager.KeepAliveInterval*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.ITcpIpListenerManager.KeepAliveInterval
+  href: Bodoconsult.NetworkCommunication.Interfaces.ITcpIpListenerManager.html#Bodoconsult_NetworkCommunication_Interfaces_ITcpIpListenerManager_KeepAliveInterval
+  name: KeepAliveInterval
+  nameWithType: ITcpIpListenerManager.KeepAliveInterval
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.ITcpIpListenerManager.KeepAliveInterval
+- uid: Bodoconsult.NetworkCommunication.Interfaces.ITcpIpListenerManager.SendTimeout*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.ITcpIpListenerManager.SendTimeout
+  href: Bodoconsult.NetworkCommunication.Interfaces.ITcpIpListenerManager.html#Bodoconsult_NetworkCommunication_Interfaces_ITcpIpListenerManager_SendTimeout
+  name: SendTimeout
+  nameWithType: ITcpIpListenerManager.SendTimeout
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.ITcpIpListenerManager.SendTimeout
+- uid: Bodoconsult.NetworkCommunication.Interfaces.ITcpIpListenerManager.ReceiveTimeout*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.ITcpIpListenerManager.ReceiveTimeout
+  href: Bodoconsult.NetworkCommunication.Interfaces.ITcpIpListenerManager.html#Bodoconsult_NetworkCommunication_Interfaces_ITcpIpListenerManager_ReceiveTimeout
+  name: ReceiveTimeout
+  nameWithType: ITcpIpListenerManager.ReceiveTimeout
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.ITcpIpListenerManager.ReceiveTimeout
+- uid: Bodoconsult.NetworkCommunication.Interfaces.ITcpIpListenerManager.ListenBacklog*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.ITcpIpListenerManager.ListenBacklog
+  href: Bodoconsult.NetworkCommunication.Interfaces.ITcpIpListenerManager.html#Bodoconsult_NetworkCommunication_Interfaces_ITcpIpListenerManager_ListenBacklog
+  name: ListenBacklog
+  nameWithType: ITcpIpListenerManager.ListenBacklog
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.ITcpIpListenerManager.ListenBacklog
+- uid: Bodoconsult.NetworkCommunication.Interfaces.ITcpIpListenerManager.CurrentListeners*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.ITcpIpListenerManager.CurrentListeners
+  href: Bodoconsult.NetworkCommunication.Interfaces.ITcpIpListenerManager.html#Bodoconsult_NetworkCommunication_Interfaces_ITcpIpListenerManager_CurrentListeners
+  name: CurrentListeners
+  nameWithType: ITcpIpListenerManager.CurrentListeners
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.ITcpIpListenerManager.CurrentListeners
+- uid: System.Collections.Generic.List{System.Collections.Generic.KeyValuePair{System.Net.Sockets.Socket,Bodoconsult.NetworkCommunication.Protocols.TcpIp.ListenerData}}
+  commentId: T:System.Collections.Generic.List{System.Collections.Generic.KeyValuePair{System.Net.Sockets.Socket,Bodoconsult.NetworkCommunication.Protocols.TcpIp.ListenerData}}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.List`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  name: List<KeyValuePair<Socket, ListenerData>>
+  nameWithType: List<KeyValuePair<Socket, ListenerData>>
+  fullName: System.Collections.Generic.List<System.Collections.Generic.KeyValuePair<System.Net.Sockets.Socket, Bodoconsult.NetworkCommunication.Protocols.TcpIp.ListenerData>>
+  nameWithType.vb: List(Of KeyValuePair(Of Socket, ListenerData))
+  fullName.vb: System.Collections.Generic.List(Of System.Collections.Generic.KeyValuePair(Of System.Net.Sockets.Socket, Bodoconsult.NetworkCommunication.Protocols.TcpIp.ListenerData))
+  name.vb: List(Of KeyValuePair(Of Socket, ListenerData))
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - uid: System.Collections.Generic.KeyValuePair`2
+    name: KeyValuePair
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2
+  - name: <
+  - uid: System.Net.Sockets.Socket
+    name: Socket
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.net.sockets.socket
+  - name: ','
+  - name: " "
+  - uid: Bodoconsult.NetworkCommunication.Protocols.TcpIp.ListenerData
+    name: ListenerData
+    href: Bodoconsult.NetworkCommunication.Protocols.TcpIp.ListenerData.html
+  - name: '>'
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Collections.Generic.KeyValuePair`2
+    name: KeyValuePair
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Net.Sockets.Socket
+    name: Socket
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.net.sockets.socket
+  - name: ','
+  - name: " "
+  - uid: Bodoconsult.NetworkCommunication.Protocols.TcpIp.ListenerData
+    name: ListenerData
+    href: Bodoconsult.NetworkCommunication.Protocols.TcpIp.ListenerData.html
+  - name: )
+  - name: )
+- uid: System.Collections.Generic.List`1
+  commentId: T:System.Collections.Generic.List`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  name: List<T>
+  nameWithType: List<T>
+  fullName: System.Collections.Generic.List<T>
+  nameWithType.vb: List(Of T)
+  fullName.vb: System.Collections.Generic.List(Of T)
+  name.vb: List(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: Bodoconsult.NetworkCommunication.Interfaces.ITcpIpListenerManager.RegisterListener*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.ITcpIpListenerManager.RegisterListener
+  href: Bodoconsult.NetworkCommunication.Interfaces.ITcpIpListenerManager.html#Bodoconsult_NetworkCommunication_Interfaces_ITcpIpListenerManager_RegisterListener_System_Int32_Bodoconsult_NetworkCommunication_Delegates_ClientConnectionAcceptedDelegate_
+  name: RegisterListener
+  nameWithType: ITcpIpListenerManager.RegisterListener
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.ITcpIpListenerManager.RegisterListener
+- uid: Bodoconsult.NetworkCommunication.Delegates.ClientConnectionAcceptedDelegate
+  commentId: T:Bodoconsult.NetworkCommunication.Delegates.ClientConnectionAcceptedDelegate
+  parent: Bodoconsult.NetworkCommunication.Delegates
+  href: Bodoconsult.NetworkCommunication.Delegates.ClientConnectionAcceptedDelegate.html
+  name: ClientConnectionAcceptedDelegate
+  nameWithType: ClientConnectionAcceptedDelegate
+  fullName: Bodoconsult.NetworkCommunication.Delegates.ClientConnectionAcceptedDelegate
+- uid: System.Net.Sockets.Socket
+  commentId: T:System.Net.Sockets.Socket
+  parent: System.Net.Sockets
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.net.sockets.socket
+  name: Socket
+  nameWithType: Socket
+  fullName: System.Net.Sockets.Socket
+- uid: Bodoconsult.NetworkCommunication.Delegates
+  commentId: N:Bodoconsult.NetworkCommunication.Delegates
+  href: Bodoconsult.html
+  name: Bodoconsult.NetworkCommunication.Delegates
+  nameWithType: Bodoconsult.NetworkCommunication.Delegates
+  fullName: Bodoconsult.NetworkCommunication.Delegates
+  spec.csharp:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Delegates
+    name: Delegates
+    href: Bodoconsult.NetworkCommunication.Delegates.html
+  spec.vb:
+  - uid: Bodoconsult
+    name: Bodoconsult
+    href: Bodoconsult.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication
+    name: NetworkCommunication
+    href: Bodoconsult.NetworkCommunication.html
+  - name: .
+  - uid: Bodoconsult.NetworkCommunication.Delegates
+    name: Delegates
+    href: Bodoconsult.NetworkCommunication.Delegates.html
+- uid: System.Net.Sockets
+  commentId: N:System.Net.Sockets
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Net.Sockets
+  nameWithType: System.Net.Sockets
+  fullName: System.Net.Sockets
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Net
+    name: Net
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.net
+  - name: .
+  - uid: System.Net.Sockets
+    name: Sockets
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.net.sockets
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Net
+    name: Net
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.net
+  - name: .
+  - uid: System.Net.Sockets
+    name: Sockets
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.net.sockets
+- uid: Bodoconsult.NetworkCommunication.Interfaces.ITcpIpListenerManager.UnregisterListener*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.ITcpIpListenerManager.UnregisterListener
+  href: Bodoconsult.NetworkCommunication.Interfaces.ITcpIpListenerManager.html#Bodoconsult_NetworkCommunication_Interfaces_ITcpIpListenerManager_UnregisterListener_System_Int32_Bodoconsult_NetworkCommunication_Delegates_ClientConnectionAcceptedDelegate_
+  name: UnregisterListener
+  nameWithType: ITcpIpListenerManager.UnregisterListener
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.ITcpIpListenerManager.UnregisterListener
+- uid: Bodoconsult.NetworkCommunication.Interfaces.ITcpIpListenerManager.GetListener*
+  commentId: Overload:Bodoconsult.NetworkCommunication.Interfaces.ITcpIpListenerManager.GetListener
+  href: Bodoconsult.NetworkCommunication.Interfaces.ITcpIpListenerManager.html#Bodoconsult_NetworkCommunication_Interfaces_ITcpIpListenerManager_GetListener_System_Int32_
+  name: GetListener
+  nameWithType: ITcpIpListenerManager.GetListener
+  fullName: Bodoconsult.NetworkCommunication.Interfaces.ITcpIpListenerManager.GetListener
