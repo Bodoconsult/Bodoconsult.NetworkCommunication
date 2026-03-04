@@ -5,14 +5,14 @@ using Bodoconsult.NetworkCommunication.Communication;
 namespace Bodoconsult.NetworkCommunication.Interfaces;
 
 /// <summary>
-/// Interface for factories to create an instance of <see cref="OrderManagementCommunicationAdapter"/> implementations
+/// Interface for factories to create an instance of <see cref="IpCommunicationAdapter"/> implementations
 /// </summary>
 public interface IOrderManagementCommunicationAdapterFactory
 {
     /// <summary>
-    /// Create an instance implementing <see cref="OrderManagementCommunicationAdapter"/>
+    /// Create an instance implementing <see cref="IpCommunicationAdapter"/>
     /// </summary>
     /// <param name="dataMessagingConfig">Current data messaging config</param>
-    /// <returns>An instance implementing <see cref="IOrderManagementCommunicationAdapter"/></returns>
-    IOrderManagementCommunicationAdapter CreateInstance(IIpDataMessagingConfig dataMessagingConfig);
+    /// <returns>An instance implementing <see cref="ICommunicationAdapter"/></returns>
+    ICommunicationAdapter CreateInstance(IIpDataMessagingConfig dataMessagingConfig);
 }

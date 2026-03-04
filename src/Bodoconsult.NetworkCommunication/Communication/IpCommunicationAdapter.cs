@@ -9,9 +9,9 @@ using System.Net.Sockets;
 namespace Bodoconsult.NetworkCommunication.Communication;
 
 /// <summary>
-/// Current TCP/IP based implementation of <see cref="IOrderManagementCommunicationAdapter"/>
+/// Current IP based implementation of <see cref="ICommunicationAdapter"/>
 /// </summary>
-public class OrderManagementCommunicationAdapter : IOrderManagementCommunicationAdapter
+public class IpCommunicationAdapter : ICommunicationAdapter
 {
     private ICommunicationHandler _communicationHandler;
     private readonly ICommunicationHandlerFactory _communicationHandlerFactory;
@@ -30,7 +30,7 @@ public class OrderManagementCommunicationAdapter : IOrderManagementCommunication
     /// <summary>
     /// Default ctor
     /// </summary>
-    public OrderManagementCommunicationAdapter(IIpDataMessagingConfig dataMessagingConfig,
+    public IpCommunicationAdapter(IIpDataMessagingConfig dataMessagingConfig,
         ICommunicationHandlerFactory communicationHandlerFactory,
         IOutboundDataMessageFactory outboundDataMessageFactory)
     {

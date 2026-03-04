@@ -26,6 +26,11 @@ public class DeviceRequestStepProcessor : IDeviceRequestStepProcessor
     {
         RequestSpec = requestSpec;
         DeviceRequestSpec = requestSpec;
+
+        if (RequestSpec.AppLogger == null)
+        {
+            throw new ArgumentNullException(nameof(RequestSpec.AppLogger));
+        }
     }
 
     /// <summary>
@@ -465,7 +470,7 @@ public class DeviceRequestStepProcessor : IDeviceRequestStepProcessor
             element.ProcessChainElement();
 
             // An error has happend: leave chain here
-            if (Result.Id != OrderExecutionResultState.Successful.Id)
+            if (!Result.Equals(OrderExecutionResultState.Successful))
             {
                 // Call a delegate for failed steps now if available
                 element.HandleRequestAnswerStepFailedDelegate?.Invoke();
@@ -617,7 +622,7 @@ public class DeviceRequestStepProcessor : IDeviceRequestStepProcessor
             x.Cancel();
         }
 
-        if (!_tcs.IsCancellationRequested)
+        if (_tcs is { IsCancellationRequested: false })
         {
             _tcs?.Cancel(true);
         }

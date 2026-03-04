@@ -162,9 +162,9 @@ public interface IOrderPipeline : IDisposable
     /// </summary>
     /// <param name="order">Order to run</param>
     /// <param name="orderProcessingFinishedDelegate">Delegate called when the order has finished</param>
-    /// <param name="p">Request processor running the order. To be created</param>
+    /// <param name="rp">Request processor running the order. To be created</param>
     /// <returns>True if preparing the order failed else false</returns>
-    bool PrepareOrderStart(IOrder order, OrderProcessingFinishedDelegate orderProcessingFinishedDelegate, out IRequestProcessor p);
+    bool PrepareOrderStart(IOrder order, OrderProcessingFinishedDelegate orderProcessingFinishedDelegate, out IRequestProcessor rp);
 
     /// <summary>
     /// Execute the request processor with its order

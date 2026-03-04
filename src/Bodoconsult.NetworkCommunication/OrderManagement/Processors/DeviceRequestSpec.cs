@@ -3,7 +3,7 @@
 using Bodoconsult.NetworkCommunication.Delegates;
 using Bodoconsult.NetworkCommunication.Interfaces;
 
-namespace Bodoconsult.NetworkCommunication.OrderManagement;
+namespace Bodoconsult.NetworkCommunication.OrderManagement.Processors;
 
 /// <summary>
 /// Request spec doing an action on the device
@@ -45,6 +45,21 @@ public class DeviceRequestSpec : BaseRequestSpec, IDeviceRequestSpec
     /// </summary>
     public CreateMessagesToSentDelegate CreateMessagesToSentDelegate { get; set; }
 
+    /// <summary>
+    /// Create all messages to process in the step. These messages are processed all in the same way
+    /// defined by the request
+    /// </summary>
+    public void CreateMessagesToSend()
+    {
+        if (CreateMessagesToSentDelegate == null)
+        {
+            throw new ArgumentNullException(nameof(CreateMessagesToSentDelegate));
+        }
+
+        var orders = CreateMessagesToSentDelegate.Invoke(ParameterSet);
+        SentMessage.AddRange(orders);
+    }
+
     /// <summary>Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.</summary>
     public override void Dispose()
     {
@@ -60,7 +75,5 @@ public class DeviceRequestSpec : BaseRequestSpec, IDeviceRequestSpec
         //}
 
         //RequestAnswerSteps.Clear();
-
-        
     }
 }

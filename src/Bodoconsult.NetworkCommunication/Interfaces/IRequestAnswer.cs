@@ -37,7 +37,7 @@ public interface IRequestAnswer : IDisposable
     /// <summary>
     /// Delegate for handling request answer messages
     /// </summary>
-    HandleRequestAnswerDelegate HandleRequestAnswerOnSuccessDelegate { get; }
+    HandleRequestAnswerDelegate HandleRequestAnswerOnSuccessDelegate { get; set; }
 
     ///// <summary>
     ///// Delegate for handling request answer messages

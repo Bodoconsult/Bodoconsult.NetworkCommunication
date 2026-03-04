@@ -9,12 +9,13 @@ using Bodoconsult.NetworkCommunication.ClientNotifications;
 using Bodoconsult.NetworkCommunication.Communication;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessageProcessingPackages;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig;
+using Bodoconsult.NetworkCommunication.EnumAndStates;
 using Bodoconsult.NetworkCommunication.Factories;
 using Bodoconsult.NetworkCommunication.Interfaces;
+using Bodoconsult.NetworkCommunication.OrderManagement.Devices;
 using Bodoconsult.NetworkCommunication.OrderManagement.OrderBuilders;
 using Bodoconsult.NetworkCommunication.OrderManagement.Orders;
 using Bodoconsult.NetworkCommunication.OrderManagement.ParameterSets;
-using Bodoconsult.NetworkCommunication.OrderManagement.Processors;
 using IAppDateService = Bodoconsult.NetworkCommunication.App.Abstractions.IAppDateService;
 
 namespace Bodoconsult.NetworkCommunication.Tests.Helpers;
@@ -28,7 +29,7 @@ public static class TestDataHelper
         AppEventSourceFactory = new FakeAppEventSourceFactory();
         // ToDo: change to fake later
         AppDateService = new AppDateService();
-        FakeOrderManagementCommunicationAdapter = new FakeOrderManagementCommunicationAdapter();
+        FakeOrderManagementCommunicationAdapter = new FakeIpCommunicationAdapter();
     }
 
     public static LogDataFactory LogDataFactory { get; }
@@ -84,9 +85,9 @@ public static class TestDataHelper
     {
         var config = new DefaultDataMessagingConfig();
 
-        config.DataMessageProcessingPackage = new BtcpDataMessageProcessingPackage(config);
-        config.AppLogger = _logger;
-        config.MonitorLogger = _logger;
+        config.DataMessageProcessingPackage = new SdcpDataMessageProcessingPackage(config);
+        config.AppLogger = GetFakeAppLoggerProxy();
+        config.MonitorLogger = config.AppLogger;
 
         return config;
     }
@@ -104,7 +105,7 @@ public static class TestDataHelper
     /// <summary>
     /// Get a <see cref="FakeOrderManagementCommunicationAdapter"/> instance
     /// </summary>
-    public static FakeOrderManagementCommunicationAdapter FakeOrderManagementCommunicationAdapter { get; }
+    public static FakeIpCommunicationAdapter FakeOrderManagementCommunicationAdapter { get; }
 
     /// <summary>
     /// Create a SDCP order for testing
@@ -127,10 +128,21 @@ public static class TestDataHelper
     /// <returns></returns>
     public static IOrder CreateSdcpOrder(SdcpParameterSet ps)
     {
-        var builder = new SdcpOrderBuilder();
+        var builder = new SdcpOrderBuilder
+        {
+            HandleRequestAnswerOnSuccessDelegate = HandleRequestAnswerOnSuccessDelegate
+        };
 
         var order = builder.CreateOrder(1, ps);
         return order;
+    }
+
+    private static MessageHandlingResult HandleRequestAnswerOnSuccessDelegate(IInboundDataMessage message, object transportObject, IParameterSet parameterSet)
+    {
+        return new MessageHandlingResult
+        {
+            ExecutionResult = OrderExecutionResultState.Successful
+        };
     }
 
     /// <summary>

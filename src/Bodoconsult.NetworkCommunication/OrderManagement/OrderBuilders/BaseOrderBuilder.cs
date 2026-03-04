@@ -1,7 +1,6 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
 using Bodoconsult.NetworkCommunication.Interfaces;
-using Bodoconsult.NetworkCommunication.OrderManagement;
 using Bodoconsult.NetworkCommunication.OrderManagement.Orders;
 using Bodoconsult.NetworkCommunication.OrderManagement.Processors;
 

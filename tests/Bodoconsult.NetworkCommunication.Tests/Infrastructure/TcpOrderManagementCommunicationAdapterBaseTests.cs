@@ -14,7 +14,7 @@ namespace Bodoconsult.NetworkCommunication.Tests.Infrastructure;
 public abstract class TcpOrderManagementCommunicationAdapterBaseTests : BaseTcpTests
 {
 
-    protected OrderManagementCommunicationAdapter OrderManagementCommunicationAdapter;
+    protected IpCommunicationAdapter OrderManagementCommunicationAdapter;
 
     [TearDown]
     public void TestCleanUp()

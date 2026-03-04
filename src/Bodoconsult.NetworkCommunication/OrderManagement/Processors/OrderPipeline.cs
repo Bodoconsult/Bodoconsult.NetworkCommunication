@@ -7,6 +7,7 @@ using Bodoconsult.NetworkCommunication.Helpers;
 using Bodoconsult.NetworkCommunication.Interfaces;
 using Bodoconsult.NetworkCommunication.OrderManagement.Orders;
 using System.Collections.Concurrent;
+using Bodoconsult.App.Helpers;
 using IAppDateService = Bodoconsult.NetworkCommunication.App.Abstractions.IAppDateService;
 
 namespace Bodoconsult.NetworkCommunication.OrderManagement.Processors;
@@ -578,14 +579,14 @@ public class OrderPipeline : IOrderPipeline
     /// </summary>
     /// <param name="order">Order to run</param>
     /// <param name="orderProcessingFinishedDelegate">Delegate called when the order has finished</param>
-    /// <param name="p">Request processor running the order. To be created</param>
+    /// <param name="rp">Request processor running the order. To be created</param>
     /// <returns>True if preparing the order failed else false</returns>
-    public bool PrepareOrderStart(IOrder order, OrderProcessingFinishedDelegate orderProcessingFinishedDelegate, out IRequestProcessor p)
+    public bool PrepareOrderStart(IOrder order, OrderProcessingFinishedDelegate orderProcessingFinishedDelegate, out IRequestProcessor rp)
     {
-        p = _requestProcessorFactory.CreateRequestProcessor(order);
-        p.OrderProcessingFinishedDelegate = orderProcessingFinishedDelegate;
-
-        if (_executionQueue.TryAdd(order.Id, p))
+        rp = _requestProcessorFactory.CreateRequestProcessor(order);
+        rp.OrderProcessingFinishedDelegate = orderProcessingFinishedDelegate;
+        
+        if (_executionQueue.TryAdd(order.Id, rp))
         {
             return false;
         }
@@ -604,12 +605,10 @@ public class OrderPipeline : IOrderPipeline
         var order = requestProcessor.Order;
         order.StartTime = _dateTimeService.Now;
 
-        var task = Task.Run(() =>
-        {
-            requestProcessor.ExecuteOrder();
-        }, requestProcessor.CancellationTokenSource.Token);
-
+        var task = new Task(() => requestProcessor.ExecuteOrder(), requestProcessor.CancellationTokenSource.Token);
         requestProcessor.CurrentTask = task;
+
+        AsyncHelper.FireAndForget(()=> task.Start());
 
         _appLogger.LogInformation($"{_loggerId}{requestProcessor.Order.LoggerId}execution started: {JsonHelper.JsonSerialize(requestProcessor.Order.ParameterSet)}");
 

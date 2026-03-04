@@ -124,7 +124,6 @@ internal class OrderReceiverTests
 
         // Assert
         Assert.That(_wasFired);
-
     }
 
 

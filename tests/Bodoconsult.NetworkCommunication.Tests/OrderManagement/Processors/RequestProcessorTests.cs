@@ -1,5 +1,7 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
+using Bodoconsult.App.Helpers;
+using Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
 using Bodoconsult.NetworkCommunication.EnumAndStates;
 using Bodoconsult.NetworkCommunication.Factories;
 using Bodoconsult.NetworkCommunication.Interfaces;
@@ -54,6 +56,41 @@ internal class RequestProcessorTests
 
         // Assert
         Assert.That(result, Is.EqualTo(OrderExecutionResultState.Timeout));
+    }
+
+    [Test]
+    public void ExecuteOrder_ValidSetupMessageReceived_Successful()
+    {
+        // Arrange 
+        var device = TestDataHelper.CreateDevice();
+        device.LoadCommAdapter(TestDataHelper.FakeOrderManagementCommunicationAdapter);
+
+        var ps = new SdcpParameterSet();
+
+        var order = TestDataHelper.CreateSdcpOrder(ps);
+
+        IRequestStepProcessorFactory requestStepProcessorFactory = new RequestStepProcessorFactory();
+
+        var rp = new RequestProcessor(order, requestStepProcessorFactory, device);
+
+        IOrderExecutionResultState result = OrderExecutionResultState.NotProcessed;
+
+        var task = Task.Run(() =>
+        {
+            result = rp.ExecuteOrder();
+
+        });
+
+        // Act  
+        Wait.Until(() => rp.CurrentRequestStepProcessor != null);
+
+        IInboundDataMessage message = new SdcpInboundDataMessage();
+        rp.CheckReceivedMessage(message);
+
+        task.Wait(5000);
+
+        // Assert
+        Assert.That(result, Is.EqualTo(OrderExecutionResultState.Successful));
     }
 
 }

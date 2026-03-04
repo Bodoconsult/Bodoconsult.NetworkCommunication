@@ -34,4 +34,10 @@ public interface IDeviceRequestSpec: IRequestSpec
     /// Delegate for creating data messages to sent to the device
     /// </summary>
     CreateMessagesToSentDelegate CreateMessagesToSentDelegate { get; set; }
+
+    /// <summary>
+    /// Create all messages to process in the step. These messages are processed all in the same way
+    /// defined by the request
+    /// </summary>
+    void CreateMessagesToSend();
 }

@@ -46,7 +46,7 @@ internal class TcpOrderManagementCommunicationAdapterTests : TcpOrderManagementC
 
         ICommunicationHandlerFactory communicationHandlerFactory = new IpCommunicationHandlerFactory(socketProxyFactory, duplexIoFactory, monitorLoggerFactoryFactory, logDataFactory, appLoggerFactory, appEventSourceFactory);
         IOutboundDataMessageFactory outboundDataMessageFactory = new SdcpOutboundDataMessageFactory();
-        OrderManagementCommunicationAdapter = new OrderManagementCommunicationAdapter(DataMessagingConfig,
+        OrderManagementCommunicationAdapter = new IpCommunicationAdapter(DataMessagingConfig,
             communicationHandlerFactory, outboundDataMessageFactory);
 
         _isStopped = false;

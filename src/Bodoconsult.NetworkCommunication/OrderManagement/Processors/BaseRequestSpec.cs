@@ -6,7 +6,7 @@ using Bodoconsult.NetworkCommunication.Delegates;
 using Bodoconsult.NetworkCommunication.EnumAndStates;
 using Bodoconsult.NetworkCommunication.Interfaces;
 
-namespace Bodoconsult.NetworkCommunication.OrderManagement;
+namespace Bodoconsult.NetworkCommunication.OrderManagement.Processors;
 
 /// <summary>
 /// Base class for request specs
@@ -160,15 +160,6 @@ public abstract class BaseRequestSpec : IRequestSpec
         }
 
         TransportObject = transportObject;
-    }
-
-    /// <summary>
-    /// Create all messages to process in the step. This message are processed all in the same way
-    /// defined by the request
-    /// </summary>
-    public virtual void CreateMessagesToSend()
-    {
-        throw new NotSupportedException();
     }
 
     /// <summary>

@@ -102,12 +102,6 @@ public interface IRequestSpec: IDisposable
     void SetTransportObject(object transportObject);
 
     /// <summary>
-    /// Create all messages to process in the step. This message are processed all in the same way
-    /// defined by the request
-    /// </summary>
-    void CreateMessagesToSend();
-
-    /// <summary>
     /// Calculate the total timeout and store it in <see cref="Timeout"/>
     /// </summary>
     void CalculateTotalTimeout();

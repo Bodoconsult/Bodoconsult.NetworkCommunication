@@ -3,7 +3,7 @@
 using Bodoconsult.NetworkCommunication.Delegates;
 using Bodoconsult.NetworkCommunication.Interfaces;
 
-namespace Bodoconsult.NetworkCommunication.OrderManagement;
+namespace Bodoconsult.NetworkCommunication.OrderManagement.Processors;
 
 /// <summary>
 /// Request answers
@@ -82,14 +82,14 @@ public class RequestAnswer : IRequestAnswer
     {
         WasReceived = false;
         ReceivedMessage = null;
-        HandleRequestAnswerOnSuccessDelegate = null;
-        //HandleUnexpectedRequestAnswerDelegate = null;
-        CheckReceivedMessageDelegate = null;
     }
 
     /// <summary>Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.</summary>
     public void Dispose()
     {
         Reset();
+        HandleRequestAnswerOnSuccessDelegate = null;
+        //HandleUnexpectedRequestAnswerDelegate = null;
+        CheckReceivedMessageDelegate = null;
     }
 }

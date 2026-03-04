@@ -50,6 +50,9 @@ internal class SdcpOrderBuilderTests
 
             var ras = rs.RequestAnswerSteps.First();
             Assert.That(ras.AllowedRequestAnswers.Count, Is.EqualTo(1));
+
+            var ra = ras.AllowedRequestAnswers.First();
+            Assert.That(ra.CheckReceivedMessageDelegate, Is.Not.Null);
         }
     }
 

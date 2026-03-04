@@ -5,7 +5,7 @@ using Bodoconsult.App.Interfaces;
 using Bodoconsult.NetworkCommunication.Interfaces;
 using Bodoconsult.NetworkCommunication.StateManagement;
 
-namespace Bodoconsult.NetworkCommunication.OrderManagement.Processors;
+namespace Bodoconsult.NetworkCommunication.OrderManagement.Devices;
 
 /// <summary>
 /// Base class for order management devices
@@ -40,7 +40,7 @@ public abstract class BaseOrderManagementDevice : IOrderManagementDevice, IState
     /// Communication adapter to use for order management
     /// </summary>
     
-    public IOrderManagementCommunicationAdapter CommunicationAdapter { get; protected set; }
+    public ICommunicationAdapter CommunicationAdapter { get; protected set; }
 
     /// <summary>
     /// Current instance of the Device order processor
@@ -51,17 +51,17 @@ public abstract class BaseOrderManagementDevice : IOrderManagementDevice, IState
     /// <summary>
     /// Current device state
     /// </summary>
-    public IDeviceState DeviceState => CurrentState?.DeviceState;
+    public IDeviceState DeviceState => CurrentState?.DeviceState ?? DefaultDeviceStates.DeviceStateOffline;
 
     /// <summary>
     /// Current business state
     /// </summary>
-    public IBusinessState BusinessState => CurrentState?.BusinessState;
+    public IBusinessState BusinessState => CurrentState?.BusinessState ?? DefaultBusinessStates.Offline;
 
     /// <summary>
     /// Current business substate
     /// </summary>
-    public IBusinessSubState BusinessSubState => CurrentState?.BusinessSubState;
+    public IBusinessSubState BusinessSubState => CurrentState?.BusinessSubState ?? DefaultBusinessSubStates.NotSet;
 
     /// <summary>
     /// The current <see cref="IStateManagementState"/>
@@ -99,6 +99,11 @@ public abstract class BaseOrderManagementDevice : IOrderManagementDevice, IState
     {
         get
         {
+            if (CommunicationAdapter == null)
+            {
+                return false;
+            }
+
             if (!CommunicationAdapter.IsConnected)
             {
                 // RL: ComDev should be reset to initial state here under all circumstances to avoid any hanging comm parts
@@ -117,7 +122,7 @@ public abstract class BaseOrderManagementDevice : IOrderManagementDevice, IState
     /// <summary>
     /// Is the running of orders allowed currently
     /// </summary>
-    public bool IsRunningOrdersAllowed => CommunicationAdapter.IsConnected;
+    public bool IsRunningOrdersAllowed => CommunicationAdapter?.IsConnected ?? false;
 
     /// <summary>
     /// Is the order processing currently activated
@@ -161,6 +166,11 @@ public abstract class BaseOrderManagementDevice : IOrderManagementDevice, IState
     {
         get
         {
+            if (OrderProcessor == null)
+            {
+                return [];
+            }
+
             var result = new List<IOrder>();
             result.AddRange(OrderProcessor.OrdersInQueue);
             result.AddRange(OrderProcessor.OrdersInQueueWithPriority);
@@ -171,22 +181,22 @@ public abstract class BaseOrderManagementDevice : IOrderManagementDevice, IState
     /// <summary>
     /// Get all orders currently in processing
     /// </summary>
-    public IList<IOrder> OrdersInProcessing => OrderProcessor.OrdersInProcessing;
+    public IList<IOrder> OrdersInProcessing => OrderProcessor?.OrdersInProcessing ?? [];
 
     /// <summary>
     /// No order in processing
     /// </summary>
-    public bool IsNoOrderInProcessing => OrderProcessor.IsNoOrderInProcessing;
+    public bool IsNoOrderInProcessing => OrderProcessor?.IsNoOrderInProcessing ?? false;
 
     /// <summary>
     /// Number of orders in processing
     /// </summary>
-    public int OrdersInProcessingCount => OrderProcessor.OrdersInProcessingCount;
+    public int OrdersInProcessingCount => OrderProcessor?.OrdersInProcessingCount ?? 0;
 
     /// <summary>
     /// Is any order to process?
     /// </summary>
-    public bool IsAnyOrderToProcess => OrderProcessor.IsAnyOrderToProcess;
+    public bool IsAnyOrderToProcess => OrderProcessor?.IsAnyOrderToProcess ?? false;
 
     /// <summary>
     /// Start the communication

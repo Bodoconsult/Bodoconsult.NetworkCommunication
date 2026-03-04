@@ -1,6 +1,7 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
+using Bodoconsult.NetworkCommunication.Delegates;
 using Bodoconsult.NetworkCommunication.EnumAndStates;
 using Bodoconsult.NetworkCommunication.Factories;
 using Bodoconsult.NetworkCommunication.Interfaces;
@@ -21,6 +22,10 @@ public class SdcpOrderBuilder : BaseOrderBuilder
     public SdcpOrderBuilder() : base(typeof(SdcpParameterSet), BuiltinOrders.SdcpOrder)
     { }
 
+    /// <summary>
+    /// Delegate for handling request answer messages
+    /// </summary>
+    public HandleRequestAnswerDelegate HandleRequestAnswerOnSuccessDelegate { get; set; }
 
     /// <summary>
     /// Configure the order. Implementation of this method may require to add dependencies to your business logic layer
@@ -40,6 +45,7 @@ public class SdcpOrderBuilder : BaseOrderBuilder
 
         var requestAnswer = CreateRequestAnswer(requestAnswerStep, "ReceivedMessage");
         requestAnswer.CheckReceivedMessageDelegate = CheckReceivedMessageDelegate;
+        requestAnswer.HandleRequestAnswerOnSuccessDelegate = HandleRequestAnswerOnSuccessDelegate;
     }
 
     private List<IOutboundDataMessage> CreateMessagesToSentDelegate(IParameterSet parameterSet)

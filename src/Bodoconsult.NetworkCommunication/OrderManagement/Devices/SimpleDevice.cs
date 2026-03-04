@@ -1,8 +1,11 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
+
+// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
+
 using Bodoconsult.NetworkCommunication.Interfaces;
 
-namespace Bodoconsult.NetworkCommunication.OrderManagement.Processors;
+namespace Bodoconsult.NetworkCommunication.OrderManagement.Devices;
 
 /// <summary>
 /// A simple device supporting order management

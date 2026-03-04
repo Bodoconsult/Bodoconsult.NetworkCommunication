@@ -3,7 +3,9 @@
 using Bodoconsult.App.Helpers;
 using Bodoconsult.NetworkCommunication.EnumAndStates;
 using Bodoconsult.NetworkCommunication.Interfaces;
+using Bodoconsult.NetworkCommunication.OrderManagement.Orders;
 using System.Diagnostics;
+using System.Security.Cryptography;
 
 namespace Bodoconsult.NetworkCommunication.OrderManagement.Processors;
 
@@ -85,13 +87,43 @@ public class DeviceRequestAnswerStep : BaseRequestAnswerStep, IDeviceRequestAnsw
         var run = 0;
         while (true)
         {
-            // Handle the answer on success delegate
+            if (Order == null)
+            {
+                return new MessageHandlingResult
+                {
+                    ExecutionResult = OrderExecutionResultState.Unsuccessful
+                };
+            }
+
             if (requestSpec.RequestStepProcessorIsCancelledDelegate() || Order.IsFinished || Order.IsCancelled)
             {
                 return new MessageHandlingResult
                 {
                     ExecutionResult = Order.ExecutionResult
                 };
+            }
+
+            MessageHandlingResult result;
+            try
+            {
+                Debug.Print($"{answer.HandleRequestAnswerOnSuccessDelegate.Method.Name}");
+                Debug.Print("Start delegate...");
+                result = answer.HandleRequestAnswerOnSuccessDelegate.Invoke(answer.ReceivedMessage, requestSpec.TransportObject, requestSpec.ParameterSet);
+                Debug.Print("End delegate...");
+            }
+            catch (Exception e)
+            {
+                return new MessageHandlingResult
+                {
+                    ExecutionResult = OrderExecutionResultState.Unsuccessful,
+                    ErrorDescription = e.ToString()
+                };
+            }
+
+            if (result.ExecutionResult.Id == OrderExecutionResultState.Successful.Id)
+            {
+                // Return the result directly to transport the TransportObject to the next step
+                return result;
             }
 
             run++;
@@ -329,7 +361,7 @@ public class DeviceRequestAnswerStep : BaseRequestAnswerStep, IDeviceRequestAnsw
     /// <summary>
     /// Process the current request answer step in a chain
     /// </summary>
-    public virtual void ProcessChainElement()
+    public void ProcessChainElement()
     {
         WasSuccessful = false;
 

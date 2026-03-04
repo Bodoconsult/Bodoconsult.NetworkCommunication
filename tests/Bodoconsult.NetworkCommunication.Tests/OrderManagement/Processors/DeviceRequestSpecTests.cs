@@ -2,6 +2,7 @@
 
 using Bodoconsult.NetworkCommunication.OrderManagement;
 using Bodoconsult.NetworkCommunication.OrderManagement.ParameterSets;
+using Bodoconsult.NetworkCommunication.OrderManagement.Processors;
 using Bodoconsult.NetworkCommunication.Tests.Helpers;
 
 namespace Bodoconsult.NetworkCommunication.Tests.OrderManagement.Processors;

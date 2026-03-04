@@ -2,6 +2,9 @@
 
 namespace Bodoconsult.NetworkCommunication.StateManagement;
 
+/// <summary>
+/// Default business states
+/// </summary>
 public static class DefaultBusinessStates
 {
     /// <summary>

@@ -12,6 +12,6 @@ public interface IRequestStepProcessorFactoryFactory
     /// </summary>
     /// <param name="communicationAdapter">Current communication adapter to use</param>
     /// <returns>A <see cref="IRequestStepProcessorFactory"/> instance</returns>
-    IRequestStepProcessorFactory CreateProcessorStepFactory(IOrderManagementCommunicationAdapter communicationAdapter);
+    IRequestStepProcessorFactory CreateProcessorStepFactory(ICommunicationAdapter communicationAdapter);
 
 }

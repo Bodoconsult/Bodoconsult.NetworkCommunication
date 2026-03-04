@@ -23,17 +23,17 @@ public class OrderManagementCommunicationAdapterFactory : IOrderManagementCommun
     }
 
     /// <summary>
-    /// Create an instance implementing <see cref="OrderManagementCommunicationAdapter"/>
+    /// Create an instance implementing <see cref="IpCommunicationAdapter"/>
     /// </summary>
     /// <param name="dataMessagingConfig">Current data messaging config</param>
-    /// <returns>An instance implementing <see cref="OrderManagementCommunicationAdapter"/></returns>
-    public IOrderManagementCommunicationAdapter CreateInstance(IIpDataMessagingConfig dataMessagingConfig)
+    /// <returns>An instance implementing <see cref="IpCommunicationAdapter"/></returns>
+    public ICommunicationAdapter CreateInstance(IIpDataMessagingConfig dataMessagingConfig)
     {
         if (dataMessagingConfig == null)
         {
             throw new NullReferenceException("dataMessagingConfig may not be NULL");
         }
 
-        return new OrderManagementCommunicationAdapter(dataMessagingConfig, _communicationHandlerFactory, _outboundDataMessageFactory);
+        return new IpCommunicationAdapter(dataMessagingConfig, _communicationHandlerFactory, _outboundDataMessageFactory);
     }
 }

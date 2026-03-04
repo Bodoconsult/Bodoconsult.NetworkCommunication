@@ -1,14 +1,15 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
+using Bodoconsult.NetworkCommunication.Delegates;
 using Bodoconsult.NetworkCommunication.EnumAndStates;
 using Bodoconsult.NetworkCommunication.Interfaces;
 
 namespace Bodoconsult.NetworkCommunication.Communication;
 
 /// <summary>
-/// Fake implementation of <see cref="IOrderManagementCommunicationAdapter"/>
+/// Fake implementation of <see cref="ICommunicationAdapter"/>
 /// </summary>
-public class FakeOrderManagementCommunicationAdapter : IOrderManagementCommunicationAdapter
+public class FakeIpCommunicationAdapter : ICommunicationAdapter
 {
     /// <summary>
     /// The expected PING result
@@ -82,6 +83,7 @@ public class FakeOrderManagementCommunicationAdapter : IOrderManagementCommunica
     /// <returns>Reply of the device</returns>
     public MessageSendingResult SendDataMessage(IOutboundDataMessage command)
     {
+        Task.Delay(500);
         return new MessageSendingResult(command, OrderExecutionResultState.Successful);
     }
 

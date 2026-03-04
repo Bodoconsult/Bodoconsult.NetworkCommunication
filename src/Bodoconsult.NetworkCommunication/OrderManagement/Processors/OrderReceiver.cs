@@ -43,12 +43,10 @@ public class OrderReceiver : IOrderReceiver
         _appLogger?.LogInformation($"Received message was processed {(result ? "successfully" : "unsucessfully")}: {message.ToShortInfoString()}");
     }
 
-
     /// <summary>
     /// Delegate for handling a received device message
     /// </summary>
     public OrderReceiverCheckMessageDelegate OrderReceiverCheckMessageDelegate { get; set; }
-
 
     /// <summary>
     /// Is the received message processing activated?

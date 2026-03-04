@@ -101,6 +101,12 @@ public delegate void RaisedeviceMessageCorruptedDelegate(byte messageBlockAndRc,
 #region Order management related delegates
 
 /// <summary>
+/// Set the order processing state delegate
+/// </summary>
+/// <param name="isActivated">Is the order processing activated: true or false?</param>
+public delegate void SetOrderProcessingStateDelegate(bool isActivated);
+
+/// <summary>
 /// Delegate for handling a received device message
 /// </summary>
 /// <param name="message">Message received from device as expected</param>

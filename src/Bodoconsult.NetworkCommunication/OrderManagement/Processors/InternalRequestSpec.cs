@@ -2,7 +2,7 @@
 
 using Bodoconsult.NetworkCommunication.Interfaces;
 
-namespace Bodoconsult.NetworkCommunication.OrderManagement;
+namespace Bodoconsult.NetworkCommunication.OrderManagement.Processors;
 
 /// <summary>
 /// Request spec doing an internal action

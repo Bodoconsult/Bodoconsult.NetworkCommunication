@@ -2,6 +2,9 @@
 
 namespace Bodoconsult.NetworkCommunication.StateManagement;
 
+/// <summary>
+/// Default business substates
+/// </summary>
 public static class DefaultBusinessSubStates
 {
     /// <summary>

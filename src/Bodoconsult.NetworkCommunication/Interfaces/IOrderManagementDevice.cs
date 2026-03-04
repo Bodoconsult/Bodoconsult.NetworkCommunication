@@ -17,7 +17,7 @@ public interface IOrderManagementDevice: IStateManagementContext
     /// <summary>
     /// Communication adapter to use for order management
     /// </summary>
-    IOrderManagementCommunicationAdapter CommunicationAdapter { get; }
+    ICommunicationAdapter CommunicationAdapter { get; }
 
     /// <summary>
     /// Current order manager
