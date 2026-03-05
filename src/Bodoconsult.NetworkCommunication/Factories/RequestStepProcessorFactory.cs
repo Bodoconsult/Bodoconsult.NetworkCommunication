@@ -21,6 +21,26 @@ public class RequestStepProcessorFactory : IRequestStepProcessorFactory
     }
 
     /// <summary>
+    /// Create a device request step processor not waiting for an answer
+    /// </summary>
+    /// <param name="requestSpec">Current request</param>
+    /// <returns>A valid device request step processor instance</returns>
+    public INoAnswerDeviceRequestStepProcessor CreateNoAnswerDeviceProcessor(INoAnswerDeviceRequestSpec requestSpec)
+    {
+        return new NoAnswerDeviceRequestStepProcessor(requestSpec);
+    }
+
+    /// <summary>
+    /// Create a device request step processor not waiting for a handshake nor an answer
+    /// </summary>
+    /// <param name="requestSpec">Current request</param>
+    /// <returns>A valid device request step processor instance</returns>
+    public INoHandshakeNoAnswerDeviceRequestStepProcessor CreateNoHandshakeNoAnswerDeviceProcessor(INoHandshakeNoAnswerDeviceRequestSpec requestSpec)
+    {
+        return new NoHandshakeNoAnswerDeviceRequestStepProcessor(requestSpec);
+    }
+
+    /// <summary>
     /// Create a tower request step processor
     /// </summary>
     /// <param name="requestSpec">Current request</param>

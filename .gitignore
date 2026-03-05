@@ -21,6 +21,7 @@ Thumbs.db
 *.mdf
 *.ldf
 *.dbtcache
+*.bkp
 [Bb]in
 [Dd]ebug*/
 *.lib

@@ -13,8 +13,6 @@ using Bodoconsult.NetworkCommunication.Tests.App;
 using Bodoconsult.NetworkCommunication.Tests.Helpers;
 using Bodoconsult.NetworkCommunication.Tests.Infrastructure;
 using System.Diagnostics;
-using Bodoconsult.NetworkCommunication.OrderManagement.Orders;
-using Bodoconsult.NetworkCommunication.OrderManagement.ParameterSets;
 
 namespace Bodoconsult.NetworkCommunication.Tests.Tcp.Clients;
 

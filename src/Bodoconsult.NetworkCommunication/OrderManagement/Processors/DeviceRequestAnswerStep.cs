@@ -3,9 +3,7 @@
 using Bodoconsult.App.Helpers;
 using Bodoconsult.NetworkCommunication.EnumAndStates;
 using Bodoconsult.NetworkCommunication.Interfaces;
-using Bodoconsult.NetworkCommunication.OrderManagement.Orders;
 using System.Diagnostics;
-using System.Security.Cryptography;
 
 namespace Bodoconsult.NetworkCommunication.OrderManagement.Processors;
 
@@ -285,15 +283,15 @@ public class DeviceRequestAnswerStep : BaseRequestAnswerStep, IDeviceRequestAnsw
                 _wasSuccessful = value;
             }
 
-            if (RequestSpec == null)
+            if (DeviceRequestSpec == null)
             {
                 return;
             }
 
             if (!value)
             {
-                RequestSpec.WasSuccessful = false;
-                RequestSpec.RequestStepProcessorSetResultDelegate.Invoke(OrderExecutionResultState.Unsuccessful);
+                DeviceRequestSpec.WasSuccessful = false;
+                DeviceRequestSpec.RequestStepProcessorSetResultDelegate.Invoke(OrderExecutionResultState.Unsuccessful);
 
                 Order.WasSuccessful = false;
                 return;
@@ -302,7 +300,7 @@ public class DeviceRequestAnswerStep : BaseRequestAnswerStep, IDeviceRequestAnsw
             RequestSpec.RequestStepProcessorSetResultDelegate.Invoke(OrderExecutionResultState.Successful);
 
             // Check if all steps are done. If yes the step was done successfully
-            if (!RequestSpec.RequestAnswerSteps.All(x => x.WasSuccessful))
+            if (!DeviceRequestSpec.RequestAnswerSteps.All(x => x.WasSuccessful))
             {
                 return;
             }

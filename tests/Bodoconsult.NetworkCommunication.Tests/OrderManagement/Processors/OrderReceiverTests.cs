@@ -3,7 +3,6 @@
 using System.Diagnostics;
 using Bodoconsult.App.Helpers;
 using Bodoconsult.App.Interfaces;
-using Bodoconsult.NetworkCommunication.DataMessaging.DataBlockCodecs;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
 using Bodoconsult.NetworkCommunication.Interfaces;
 using Bodoconsult.NetworkCommunication.OrderManagement.Processors;
@@ -39,10 +38,13 @@ internal class OrderReceiverTests
 
         foreach (var spec in order.RequestSpecs)
         {
+            if (spec is not IDeviceRequestSpec drs)
+            {
+                continue;
+            }
+            drs.RequestAnswerStepIsStartedDelegate = SendReceivedMessage;
 
-            spec.RequestAnswerStepIsStartedDelegate = SendReceivedMessage;
-
-            foreach (var step in spec.RequestAnswerSteps)
+            foreach (var step in drs.RequestAnswerSteps)
             {
                 if (step.Timeout < timeOut)
                 {
@@ -54,7 +56,6 @@ internal class OrderReceiverTests
                     step.Timeout = timeOut * 2;
                 }
             }
-
         }
     }
 

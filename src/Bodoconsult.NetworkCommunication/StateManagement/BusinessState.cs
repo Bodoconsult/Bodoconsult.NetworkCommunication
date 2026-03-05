@@ -1,7 +1,5 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
-using Bodoconsult.NetworkCommunication.EnumAndStates;
-
 namespace Bodoconsult.NetworkCommunication.StateManagement;
 
 /// <summary>

@@ -10,11 +10,9 @@ using Bodoconsult.NetworkCommunication.Communication;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessageProcessingPackages;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig;
 using Bodoconsult.NetworkCommunication.EnumAndStates;
-using Bodoconsult.NetworkCommunication.Factories;
 using Bodoconsult.NetworkCommunication.Interfaces;
 using Bodoconsult.NetworkCommunication.OrderManagement.Devices;
 using Bodoconsult.NetworkCommunication.OrderManagement.OrderBuilders;
-using Bodoconsult.NetworkCommunication.OrderManagement.Orders;
 using Bodoconsult.NetworkCommunication.OrderManagement.ParameterSets;
 using IAppDateService = Bodoconsult.NetworkCommunication.App.Abstractions.IAppDateService;
 

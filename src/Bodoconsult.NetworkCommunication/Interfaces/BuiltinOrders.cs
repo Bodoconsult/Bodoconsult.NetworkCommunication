@@ -13,6 +13,19 @@ public static class BuiltinOrders
     public const string EdcpServerOrder = "EdcpServerOrder";
     public const string BtcpOrder = "BtcpOrder";
     public const string TncpOrder = "TncpOrder";
+    
+    public const string NoAnswerSdcpOrder = "NoAnswerSdcpOrder";
+    public const string NoAnswerEdcpClientOrder = "NoAnswerEdcpClientOrder";
+    public const string NoAnswerEdcpServerOrder = "NoAnswerEdcpServerOrder";
+    public const string NoAnswerBtcpOrder = "NoAnswerBtcpOrder";
+    public const string NoAnswerTncpOrder = "NoAnswerTncpOrder";
+
+    public const string NoHandshakeNoAnswerSdcpOrder = " NoHandshakeNoAnswerSdcpOrder";
+    public const string NoHandshakeNoAnswerEdcpClientOrder = "NoHandshakeNoAnswerEdcpClientOrder";
+    public const string NoHandshakeNoAnswerEdcpServerOrder = "NoHandshakeNoAnswerEdcpServerOrder";
+    public const string NoHandshakeNoAnswerBtcpOrder = "NoHandshakeNoAnswerBtcpOrder";
+    public const string NoHandshakeNoAnswerTncpOrder = "NoHandshakeNoAnswerTncpOrder";
+
     public const string TestOrder = "TestOrder";
     public const string DummyOrder = "DummyOrder";
 }

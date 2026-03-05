@@ -7,4 +7,9 @@ namespace Bodoconsult.NetworkCommunication.Interfaces;
 /// </summary>
 public interface IInternalRequestSpec: IRequestSpec
 {
+
+    /// <summary>
+    /// Represents a timeline of request answers
+    /// </summary>
+    List<IRequestAnswerStep> RequestAnswerSteps { get; }
 }

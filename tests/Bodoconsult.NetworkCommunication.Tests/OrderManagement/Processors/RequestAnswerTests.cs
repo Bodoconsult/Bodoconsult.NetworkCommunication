@@ -4,7 +4,6 @@ using Bodoconsult.NetworkCommunication.DataMessaging.DataBlocks;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
 using Bodoconsult.NetworkCommunication.EnumAndStates;
 using Bodoconsult.NetworkCommunication.Interfaces;
-using Bodoconsult.NetworkCommunication.OrderManagement;
 using Bodoconsult.NetworkCommunication.OrderManagement.Processors;
 
 namespace Bodoconsult.NetworkCommunication.Tests.OrderManagement.Processors;
@@ -20,7 +19,7 @@ internal class RequestAnswerTests
         const string name = "Test";
 
         // Act  
-        var ra = new RequestAnswer(true, type, name);
+        var ra = new RequestAnswer(true, type, name, CheckReceivedMessageDelegate);
 
         // Assert
         Assert.That(ra.HasDatablock, Is.True);
@@ -40,7 +39,7 @@ internal class RequestAnswerTests
         var type = typeof(BasicInboundDatablock);
         const string name = "Test";
 
-        var ra = new RequestAnswer(true, type, name);
+        var ra = new RequestAnswer(true, type, name, CheckReceivedMessageDelegate);
 
         var msg = new SdcpInboundDataMessage();
 
@@ -60,8 +59,7 @@ internal class RequestAnswerTests
         var type = typeof(BasicInboundDatablock);
         const string name = "Test";
 
-        var ra = new RequestAnswer(true, type, name);
-        ra.CheckReceivedMessageDelegate = CheckReceivedMessageDelegate;
+        var ra = new RequestAnswer(true, type, name, CheckReceivedMessageDelegate);
 
         var outboundMsg = new SdcpOutboundDataMessage();
         var msg = new SdcpInboundDataMessage();
@@ -83,8 +81,7 @@ internal class RequestAnswerTests
         var type = typeof(BasicInboundDatablock);
         const string name = "Test";
 
-        var ra = new RequestAnswer(true, type, name);
-        ra.CheckReceivedMessageDelegate = CheckReceivedMessageDelegate;
+        var ra = new RequestAnswer(true, type, name, CheckReceivedMessageDelegate);
         ra.HandleRequestAnswerOnSuccessDelegate = HandleRequestAnswerOnSuccessDelegate;
 
         // Act  
@@ -104,8 +101,7 @@ internal class RequestAnswerTests
         var type = typeof(BasicInboundDatablock);
         const string name = "Test";
 
-        var ra = new RequestAnswer(true, type, name);
-        ra.CheckReceivedMessageDelegate = CheckReceivedMessageDelegate;
+        var ra = new RequestAnswer(true, type, name, CheckReceivedMessageDelegate);
         ra.HandleRequestAnswerOnSuccessDelegate = HandleRequestAnswerOnSuccessDelegate;
 
         // Act  

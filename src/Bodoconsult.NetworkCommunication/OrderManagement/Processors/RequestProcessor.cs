@@ -132,6 +132,8 @@ public class RequestProcessor : IRequestProcessor
             {
                 IInternalRequestSpec irs => ExecuteRequest(irs),
                 IDeviceRequestSpec drs => ExecuteRequest(drs),
+                INoAnswerDeviceRequestSpec ndrs => ExecuteRequest(ndrs),
+                INoHandshakeNoAnswerDeviceRequestSpec hdrs => ExecuteRequest(hdrs),
                 _ => OrderExecutionResultState.NotProcessed
             };
 
@@ -150,7 +152,6 @@ public class RequestProcessor : IRequestProcessor
 
             _appLogger?.LogInformation($"{_orderLoggerId}exit {requestSpec.Name} with code {result}");
             return ExitAction(order, result);
-
         }
 
         _appLogger?.LogInformation($"{_orderLoggerId} finished successful");
@@ -218,6 +219,127 @@ public class RequestProcessor : IRequestProcessor
         Order = null;
         OrderProcessingFinishedDelegate = null;
         return currentState;
+    }
+
+    /// <summary>
+    /// Execute a single device bound step
+    /// </summary>
+    /// <param name="requestSpec">Current request spec</param>
+    /// <returns>Execution result</returns>
+    public IOrderExecutionResultState ExecuteRequest(INoHandshakeNoAnswerDeviceRequestSpec requestSpec)
+    {
+        // Fetch the order here to avoid multithread issues
+        var order = Order;
+
+        if (order == null || IsCancelled || order.IsCancelled)
+        {
+            return SetUnsuccessful(order);
+        }
+
+        requestSpec.DoNotifyDelegate = _device.DoNotify;
+        requestSpec.SendDataMessageDelegate = _device.CommunicationAdapter.SendDataMessage;
+        requestSpec.CancelRunningOperationDelegate = _device.CommunicationAdapter.CancelRunningOperation;
+        requestSpec.AppLogger = _appLogger;
+        requestSpec.OrderLoggerId = $"{_orderLoggerId}RSP: {requestSpec.Name} ";
+
+        var processor = _requestStepProcessorFactory.CreateNoHandshakeNoAnswerDeviceProcessor(requestSpec);
+        requestSpec.RequestStepProcessorSetResultDelegate = processor.SetResult;
+        requestSpec.RequestStepProcessorIsCancelledDelegate = processor.CheckIsCancelled;
+        //processor.PrepareTheChain();
+
+        processor.RequestSpec.SetTransportObject(_transportObject);
+
+        CurrentRequestStepProcessor = processor;
+
+        if (IsCancelled || order.IsCancelled)
+        {
+            processor.Cancel();
+            return SetUnsuccessful(order);
+        }
+
+        var result = processor.ExecuteRequest();
+
+        if (result.Id == OrderExecutionResultState.Successful.Id)
+        {
+            _transportObject = processor.RequestSpec.ResultTransportObject;
+            processor.Dispose();
+            Debug.Print("ExecuteRequest successful");
+            return OrderExecutionResultState.Successful;
+        }
+
+        // ToDo: add logging
+
+        Debug.Print("ExecuteRequest failed");
+
+        // If the order has been finished already or is disposable: do not change order state again
+        if (order.IsFinished || order.IsDisposable)
+        {
+            return order.ExecutionResult;
+        }
+
+        order.ExecutionResult = result;
+        return result;
+    }
+
+
+    /// <summary>
+    /// Execute a single device bound step
+    /// </summary>
+    /// <param name="requestSpec">Current request spec</param>
+    /// <returns>Execution result</returns>
+    public IOrderExecutionResultState ExecuteRequest(INoAnswerDeviceRequestSpec requestSpec)
+    {
+        // Fetch the order here to avoid multithread issues
+        var order = Order;
+
+        if (order == null || IsCancelled || order.IsCancelled)
+        {
+            return SetUnsuccessful(order);
+        }
+
+        requestSpec.DoNotifyDelegate = _device.DoNotify;
+        requestSpec.SendDataMessageDelegate = _device.CommunicationAdapter.SendDataMessage;
+        requestSpec.CancelRunningOperationDelegate = _device.CommunicationAdapter.CancelRunningOperation;
+        requestSpec.AppLogger = _appLogger;
+        requestSpec.OrderLoggerId = $"{_orderLoggerId}RSP: {requestSpec.Name} ";
+
+        var processor = _requestStepProcessorFactory.CreateNoAnswerDeviceProcessor(requestSpec);
+        requestSpec.RequestStepProcessorSetResultDelegate = processor.SetResult;
+        requestSpec.RequestStepProcessorIsCancelledDelegate = processor.CheckIsCancelled;
+        //processor.PrepareTheChain();
+
+        processor.RequestSpec.SetTransportObject(_transportObject);
+
+        CurrentRequestStepProcessor = processor;
+
+        if (IsCancelled || order.IsCancelled)
+        {
+            processor.Cancel();
+            return SetUnsuccessful(order);
+        }
+
+        var result = processor.ExecuteRequest();
+
+        if (result.Id == OrderExecutionResultState.Successful.Id)
+        {
+            _transportObject = processor.RequestSpec.ResultTransportObject;
+            processor.Dispose();
+            Debug.Print("ExecuteRequest successful");
+            return OrderExecutionResultState.Successful;
+        }
+
+        // ToDo: add logging
+
+        Debug.Print("ExecuteRequest failed");
+
+        // If the order has been finished already or is disposable: do not change order state again
+        if (order.IsFinished || order.IsDisposable)
+        {
+            return order.ExecutionResult;
+        }
+
+        order.ExecutionResult = result;
+        return result;
     }
 
     /// <summary>
@@ -303,7 +425,7 @@ public class RequestProcessor : IRequestProcessor
         var processor = _requestStepProcessorFactory.CreateInternalProcessor(requestSpec);
         requestSpec.RequestStepProcessorSetResultDelegate = processor.SetResult;
         requestSpec.RequestStepProcessorIsCancelledDelegate = processor.CheckIsCancelled;
-        processor.PrepareTheChain();
+        //processor.PrepareTheChain();
 
         processor.RequestSpec.SetTransportObject(_transportObject);
 
@@ -396,7 +518,12 @@ public class RequestProcessor : IRequestProcessor
             return false;
         }
 
-        var result = stepProcessor.CheckReceivedMessage(receivedMessage);
+        if (stepProcessor is not IDeviceRequestStepProcessor drsp)
+        {
+            return false;
+        }
+
+        var result = drsp.CheckReceivedMessage(receivedMessage);
 
 
         // If the order has been finished already or is disposable: do not change order state again
@@ -512,7 +639,12 @@ public class RequestProcessor : IRequestProcessor
         // Reset values in the steps
         foreach (var requestSpec in Order.RequestSpecs)
         {
-            foreach (var step in requestSpec.RequestAnswerSteps)
+            if (requestSpec is not IDeviceRequestSpec drs)
+            {
+                continue;
+            }
+
+            foreach (var step in drs.RequestAnswerSteps)
             {
                 step.Dispose();
             }

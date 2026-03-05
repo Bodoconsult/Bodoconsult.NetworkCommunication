@@ -2,7 +2,6 @@
 
 using Bodoconsult.NetworkCommunication.EnumAndStates;
 using Bodoconsult.NetworkCommunication.Interfaces;
-using Bodoconsult.NetworkCommunication.OrderManagement;
 using Bodoconsult.NetworkCommunication.OrderManagement.ParameterSets;
 using Bodoconsult.NetworkCommunication.OrderManagement.Processors;
 
@@ -41,7 +40,7 @@ internal class InternalRequestAnswerStepTests
         var ps = new EmptyParameterSet();
         var ir = new InternalRequestSpec("Test", ps);
 
-        var answer = new RequestAnswer(false, null, "TestAnswer");
+        var answer = new RequestAnswer(false, null, "TestAnswer", CheckReceivedMessageDelegate);
         answer.HandleRequestAnswerOnSuccessDelegate = HandleRequestAnswerOnSuccessDelegate;
 
         var irs = new InternalRequestAnswerStep(ir);
@@ -54,6 +53,11 @@ internal class InternalRequestAnswerStepTests
         Assert.That(result.Error, Is.EqualTo(0));
         Assert.That(result.ExecutionResult, Is.EqualTo(OrderExecutionResultState.Successful));
         Assert.That(_isHandleResultFired, Is.True);
+    }
+
+    private bool CheckReceivedMessageDelegate(IRequestAnswer requestAnswer, IOutboundDataMessage sentMessage, IInboundDataMessage receivedMessage, IList<string> errors)
+    {
+        return true;
     }
 
     [Test]

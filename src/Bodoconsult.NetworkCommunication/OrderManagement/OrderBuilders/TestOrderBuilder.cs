@@ -2,7 +2,6 @@
 
 using Bodoconsult.NetworkCommunication.EnumAndStates;
 using Bodoconsult.NetworkCommunication.Interfaces;
-using Bodoconsult.NetworkCommunication.OrderManagement.ParameterSets;
 
 namespace Bodoconsult.NetworkCommunication.OrderManagement.OrderBuilders;
 
@@ -25,6 +24,6 @@ public class TestOrderBuilder : BaseOrderBuilder
         // Tracing
         order.TraceCodeSuccess = TraceCodes.IdsMsgTestOrderOk;
         order.TraceCodeError = TraceCodes.IdsMsgTestOrderFails;
-        order.TraceMessage = "Test order";
+        order.TraceMessage = OrderTypeName;
     }
 }

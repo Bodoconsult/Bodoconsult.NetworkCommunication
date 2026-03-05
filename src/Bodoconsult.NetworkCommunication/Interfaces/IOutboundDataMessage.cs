@@ -10,7 +10,7 @@ public interface IOutboundDataMessage: IOutboundMessage
     /// <summary>
     /// Is waiting for acknowledgement by the device required for the message
     /// </summary>
-    bool WaitForAcknowledgement { get; }
+    bool WaitForAcknowledgement { get; set; }
 
     /// <summary>
     /// Data block stored in the message

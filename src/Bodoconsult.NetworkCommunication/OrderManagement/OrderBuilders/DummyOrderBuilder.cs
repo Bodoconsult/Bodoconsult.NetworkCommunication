@@ -14,7 +14,7 @@ public class DummyOrderBuilder : BaseOrderBuilder
     /// <summary>
     /// Default ctor
     /// </summary>
-    public DummyOrderBuilder() : base(typeof(EmptyParameterSet), BuiltinOrders.TestOrder)
+    public DummyOrderBuilder() : base(typeof(EmptyParameterSet), BuiltinOrders.DummyOrder)
     { }
 
     /// <summary>
@@ -25,6 +25,6 @@ public class DummyOrderBuilder : BaseOrderBuilder
         // Tracing
         order.TraceCodeSuccess = TraceCodes.IdsMsgDummyOrderOk;
         order.TraceCodeError = TraceCodes.IdsMsgDummyOrderFails;
-        order.TraceMessage = "Dummy order";
+        order.TraceMessage = OrderTypeName;
     }
 }

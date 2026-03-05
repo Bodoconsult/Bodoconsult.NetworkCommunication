@@ -1,6 +1,7 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
+using Bodoconsult.NetworkCommunication.Delegates;
 using Bodoconsult.NetworkCommunication.EnumAndStates;
 using Bodoconsult.NetworkCommunication.Factories;
 using Bodoconsult.NetworkCommunication.Interfaces;
@@ -22,6 +23,11 @@ public class EdcpServerOrderBuilder : BaseOrderBuilder
     { }
 
     /// <summary>
+    /// Delegate for handling request answer messages
+    /// </summary>
+    public HandleRequestAnswerDelegate HandleRequestAnswerOnSuccessDelegate { get; set; }
+
+    /// <summary>
     /// Configure the order
     /// </summary>
     public override void ConfigureOrder(IOrder order)
@@ -29,7 +35,7 @@ public class EdcpServerOrderBuilder : BaseOrderBuilder
         // Tracing
         order.TraceCodeSuccess = TraceCodes.IdsMsgEdcpOrderOk;
         order.TraceCodeError = TraceCodes.IdsMsgEdcpOrderFails;
-        order.TraceMessage = "EDCP server order";
+        order.TraceMessage = OrderTypeName;
 
         // RequestSpec 1
         var requestSpec = CreateDeviceRequestSpec(order, "SendAndWaitDeviceRequestSpec");
@@ -37,13 +43,14 @@ public class EdcpServerOrderBuilder : BaseOrderBuilder
 
         var requestAnswerStep = CreateDeviceRequestAnswerStep(requestSpec, "SendAndWaitAnswerStep");
 
-        var requestAnswer = CreateRequestAnswer(requestAnswerStep, "ReceivedMessage");
-        requestAnswer.CheckReceivedMessageDelegate = CheckReceivedMessageDelegate;
+        var requestAnswer = CreateRequestAnswer(requestAnswerStep, "ReceivedMessage", CheckReceivedMessageDelegate, HandleRequestAnswerOnSuccessDelegate);
+
     }
 
     private List<IOutboundDataMessage> CreateMessagesToSentDelegate(IParameterSet parameterSet)
     {
         var msg = _outboundDataMessageFactory.CreateInstance(parameterSet);
+        msg.WaitForAcknowledgement = true;
         return [msg];
     }
 

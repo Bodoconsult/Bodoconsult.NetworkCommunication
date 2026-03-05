@@ -15,6 +15,20 @@ public interface IRequestStepProcessorFactory
     IDeviceRequestStepProcessor CreateDeviceProcessor(IDeviceRequestSpec requestSpec);
 
     /// <summary>
+    /// Create a device request step processor not waiting for an answer
+    /// </summary>
+    /// <param name="requestSpec">Current request</param>
+    /// <returns>A valid device request step processor instance</returns>
+    INoAnswerDeviceRequestStepProcessor CreateNoAnswerDeviceProcessor(INoAnswerDeviceRequestSpec requestSpec);
+
+    /// <summary>
+    /// Create a device request step processor not waiting for a handshake nor an answer
+    /// </summary>
+    /// <param name="requestSpec">Current request</param>
+    /// <returns>A valid device request step processor instance</returns>
+    INoHandshakeNoAnswerDeviceRequestStepProcessor CreateNoHandshakeNoAnswerDeviceProcessor(INoHandshakeNoAnswerDeviceRequestSpec requestSpec);
+
+    /// <summary>
     /// Create an internal request step processor
     /// </summary>
     /// <param name="requestSpec">Current request</param>

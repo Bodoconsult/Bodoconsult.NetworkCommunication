@@ -240,7 +240,7 @@ public class InternalRequestStepProcessor : IInternalRequestStepProcessor
             IsCancelled = true;
         }
 
-        foreach (var x in RequestSpec.RequestAnswerSteps.Where(x => x.WasSuccessful))
+        foreach (var x in InternalRequestSpec.RequestAnswerSteps.Where(x => x.WasSuccessful))
         {
             x.WasSuccessful = false;
         }

@@ -16,11 +16,13 @@ public class RequestAnswer : IRequestAnswer
     /// <param name="hasDatablock">Has the answer a datablock?</param>
     /// <param name="dataBlockType">Type of the data block if <see cref="IRequestAnswer.HasDatablock"/> is true</param>
     /// <param name="name">A cleartext name of the request answer for logging</param>
-    public RequestAnswer(bool hasDatablock, Type dataBlockType, string name)
+    /// <param name="checkReceivedMessageDelegate">Current delegate for message checking</param>
+    public RequestAnswer(bool hasDatablock, Type dataBlockType, string name, CheckReceivedMessageDelegate checkReceivedMessageDelegate)
     {
         HasDatablock = hasDatablock;
         DataBlockType = dataBlockType;
         Name = name;
+        CheckReceivedMessageDelegate = checkReceivedMessageDelegate;
     }
 
     /// <summary>
@@ -63,7 +65,7 @@ public class RequestAnswer : IRequestAnswer
     /// If the message is the requested answer from the device the properties <see cref="IRequestAnswer.WasReceived"/>
     /// and <see cref="IRequestAnswer.ReceivedMessage"/> are set to true and the received message.
     /// </summary>
-    public CheckReceivedMessageDelegate CheckReceivedMessageDelegate { get; set; }
+    public CheckReceivedMessageDelegate CheckReceivedMessageDelegate { get; }
 
     /// <summary>
     /// Set <see cref="IRequestAnswer.WasReceived"/> to true
@@ -90,6 +92,5 @@ public class RequestAnswer : IRequestAnswer
         Reset();
         HandleRequestAnswerOnSuccessDelegate = null;
         //HandleUnexpectedRequestAnswerDelegate = null;
-        CheckReceivedMessageDelegate = null;
     }
 }

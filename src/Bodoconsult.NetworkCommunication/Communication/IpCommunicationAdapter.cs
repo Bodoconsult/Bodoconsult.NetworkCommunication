@@ -1,7 +1,6 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
 using Bodoconsult.NetworkCommunication.Interfaces;
-using Microsoft.Diagnostics.Utilities;
 using System.Net;
 using System.Net.NetworkInformation;
 using System.Net.Sockets;

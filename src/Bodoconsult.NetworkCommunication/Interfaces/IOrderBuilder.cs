@@ -1,5 +1,6 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
+using Bodoconsult.NetworkCommunication.Delegates;
 using Bodoconsult.NetworkCommunication.OrderManagement.Processors;
 
 namespace Bodoconsult.NetworkCommunication.Interfaces;
@@ -40,6 +41,24 @@ public interface IOrderBuilder
     IDeviceRequestSpec CreateDeviceRequestSpec(IOrder order, string name);
 
     /// <summary>
+    /// Create an <see cref="NoAnswerDeviceRequestSpec"/> instance and add it to the order
+    /// </summary>
+    /// <param name="order">Current order</param>
+    /// <param name="name">Name of the request spec</param>
+    /// <param name="handleRequestAnswerOnSuccessDelegate">Delegate fired if the order was eceuted successfully</param>
+    /// <returns><see cref="DeviceRequestSpec"/> instance </returns>
+    INoAnswerDeviceRequestSpec CreateNoAnswerDeviceRequestSpec(IOrder order, string name, HandleRequestAnswerDelegate handleRequestAnswerOnSuccessDelegate);
+
+    /// <summary>
+    /// Create an <see cref="NoHandshakeNoAnswerDeviceRequestSpec"/> instance and add it to the order
+    /// </summary>
+    /// <param name="order">Current order</param>
+    /// <param name="name">Name of the request spec</param>
+    /// <param name="handleRequestAnswerOnSuccessDelegate">Delegate fired if the order was eceuted successfully</param>
+    /// <returns><see cref="DeviceRequestSpec"/> instance </returns>
+    INoHandshakeNoAnswerDeviceRequestSpec CreateNoHandshakeNoAnswerDeviceRequestSpec(IOrder order, string name, HandleRequestAnswerDelegate handleRequestAnswerOnSuccessDelegate);
+
+    /// <summary>
     /// Create an <see cref="InternalRequestSpec"/> instance and add it to the order
     /// </summary>
     /// <param name="order">Current order</param>
@@ -68,8 +87,13 @@ public interface IOrderBuilder
     /// </summary>
     /// <param name="requestAnswerStep">Current request answer step</param>
     /// <param name="name">Name of the answer</param>
+    /// <param name="checkReceivedMessageDelegate"></param>
+    /// <param name="handleRequestAnswerOnSuccessDelegate">Delegate fired if the order was eceuted successfully</param>
     /// <param name="hasDatablock">Has datablock?</param>
     /// <param name="dataBlockType">Type of the datablock or null</param>
-    /// <returns></returns>
-    IRequestAnswer CreateRequestAnswer(IRequestAnswerStep requestAnswerStep, string name, bool hasDatablock = false, Type dataBlockType = null);
+    /// <returns>Request answer</returns>
+    IRequestAnswer CreateRequestAnswer(IRequestAnswerStep requestAnswerStep, string name,
+        CheckReceivedMessageDelegate checkReceivedMessageDelegate,
+        HandleRequestAnswerDelegate handleRequestAnswerOnSuccessDelegate, bool hasDatablock = false,
+        Type dataBlockType = null);
 }

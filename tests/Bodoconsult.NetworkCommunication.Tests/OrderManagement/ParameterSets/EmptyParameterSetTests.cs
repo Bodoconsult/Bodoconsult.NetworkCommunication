@@ -3,7 +3,6 @@
 using Bodoconsult.NetworkCommunication.Interfaces;
 using Bodoconsult.NetworkCommunication.OrderManagement.ParameterSets;
 using Bodoconsult.NetworkCommunication.Tests.Helpers;
-using Bodoconsult.NetworkCommunication.OrderManagement.Orders;
 
 namespace Bodoconsult.NetworkCommunication.Tests.OrderManagement.ParameterSets;
 

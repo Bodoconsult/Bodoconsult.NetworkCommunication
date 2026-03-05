@@ -20,7 +20,7 @@ public class RawOutboundDataMessage : IOutboundDataMessage
     /// <summary>
     /// Is waiting for acknowledgement by the device required for the message
     /// </summary>
-    public bool WaitForAcknowledgement => false;
+    public bool WaitForAcknowledgement { get; set; }
 
     /// <summary>
     /// Data block stored in the message

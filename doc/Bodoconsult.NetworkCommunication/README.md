@@ -153,32 +153,32 @@ Adding a general data message header may reduce the implementation effort as you
 
 # Steps required to setup your network communication protocol
 
->	[Setting up messaging configuration: IDataMessagingConfig](SDCP.md#setting-up-messaging-configuration-idatamessagingconfig)
+>	[&#8618; Setting up messaging configuration: IDataMessagingConfig](SDCP.md#setting-up-messaging-configuration-idatamessagingconfig)
 
->	[Define message limiting bytes: DeviceCommunicationBasics](SDCP.md#define-message-limiting-bytes-devicecommunicationbasics)
+>	[&#8618; Define message limiting bytes: DeviceCommunicationBasics](SDCP.md#define-message-limiting-bytes-devicecommunicationbasics)
 
->	[Implement a data message splitter splitting the incoming byte stream into potential messages: IDataMessageSplitter](SDCP.md#define-message-limiting-bytes-devicecommunicationbasics)
+>	[&#8618; Implement a data message splitter splitting the incoming byte stream into potential messages: IDataMessageSplitter](SDCP.md#define-message-limiting-bytes-devicecommunicationbasics)
 
->	[Implement your data message types for inbound messages](SDCP.md#implement-your-data-message-types-for-inbound-messages-iinbounddatamessage)
+>	[&#8618; Implement your data message types for inbound messages](SDCP.md#implement-your-data-message-types-for-inbound-messages-iinbounddatamessage)
 
->	[Implement your data message types for outbound messages](SDCP.md#implement-your-data-message-types-for-outbound-messages-ioutbounddatamessage)
+>	[&#8618; Implement your data message types for outbound messages](SDCP.md#implement-your-data-message-types-for-outbound-messages-ioutbounddatamessage)
 
->	[Implement a handshake validator for inbound handshakes: IHandshakeDataMessageValidator](SDCP.md#implement-a-handshake-validator-for-inbound-handshakes-ihandshakedatamessagevalidator)
+>	[&#8618; Implement a handshake validator for inbound handshakes: IHandshakeDataMessageValidator](SDCP.md#implement-a-handshake-validator-for-inbound-handshakes-ihandshakedatamessagevalidator)
 
->	[Implement a data message validator for inbound data messages: IDataMessageValidator](SDCP.md#implement-a-data-message-validator-for-inbound-data-messages-idatamessagevalidator)
+>	[&#8618; Implement a data message validator for inbound data messages: IDataMessageValidator](SDCP.md#implement-a-data-message-validator-for-inbound-data-messages-idatamessagevalidator)
 
->	[Implement a message forwarder for received messages: IDataMessageProcessor](SDCP.md#implement-a-message-forwarder-for-received-messages-idatamessageprocessor)
+>	[&#8618; Implement a message forwarder for received messages: IDataMessageProcessor](SDCP.md#implement-a-message-forwarder-for-received-messages-idatamessageprocessor)
 
->	[Implement the message codecs to decode and encode to byte array: BaseDataMessageCodec](SDCP.md#implement-the-message-codecs-to-decode-and-encode-to-byte-array-basedatamessagecodec)
+>	[&#8618; Implement the message codecs to decode and encode to byte array: BaseDataMessageCodec](SDCP.md#implement-the-message-codecs-to-decode-and-encode-to-byte-array-basedatamessagecodec)
 
->	[Datablock coding processor: IDataBlockCodingProcessor](SDCP.md#datablock-coding-processor-idatablockcodingprocessor)
+>	[&#8618; Datablock coding processor: IDataBlockCodingProcessor](SDCP.md#datablock-coding-processor-idatablockcodingprocessor)
 
->	[Implement your messaging package: IDataMessageProcessingPackage](SDCP.md#implement-your-messaging-package-idatamessageprocessingpackage)
+>	[&#8618; Implement your messaging package: IDataMessageProcessingPackage](SDCP.md#implement-your-messaging-package-idatamessageprocessingpackage)
 
 
 # More information
 
-https://csharp-networking.com/chapter01/
+[&#8618; https://csharp-networking.com/chapter01/](https://csharp-networking.com/chapter01/)
 
 
 # About us

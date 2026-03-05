@@ -5,10 +5,25 @@ using Bodoconsult.NetworkCommunication.Delegates;
 namespace Bodoconsult.NetworkCommunication.Interfaces;
 
 /// <summary>
-/// Interface for device request specifications
+/// Interface for device request specifications waiting for handshake and answer(s)
 /// </summary>
 public interface IDeviceRequestSpec: IRequestSpec
 {
+    /// <summary>
+    /// The expected handshake if the message was sent
+    /// </summary>
+    List<IOrderExecutionResultState> ExpectedHandshakeForSentMessage { get; }
+
+    /// <summary>
+    /// Does the request require only a (valid) handshake as answer to be successful
+    /// </summary>
+    bool RequestRequiresOnlyAHandshakeAsAnswer { get; set; }
+
+    /// <summary>
+    /// Represents a timeline of request answers
+    /// </summary>
+    List<IRequestAnswerStep> RequestAnswerSteps { get; }
+
     /// <summary>
     /// Current sent message
     /// </summary>

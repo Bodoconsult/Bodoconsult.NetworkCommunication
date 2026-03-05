@@ -8,7 +8,7 @@ using Bodoconsult.NetworkCommunication.OrderManagement.ParameterSets;
 namespace Bodoconsult.NetworkCommunication.Tests.OrderManagement.OrderBuilders;
 
 [TestFixture]
-internal class TncpOrderBuilderTests
+internal class TncpOrderBuilderTests : OrderBuilderTestsBase
 {
     [Test]
     public void Ctor_ValidSetup_PropsSetCorrectly()
@@ -40,7 +40,7 @@ internal class TncpOrderBuilderTests
 
         Assert.That(order.RequestSpecs.Count, Is.EqualTo(1));
 
-        var rs = order.RequestSpecs.First();
+        var rs = (IDeviceRequestSpec)order.RequestSpecs.First();
         Assert.That(rs.RequestAnswerSteps.Count, Is.EqualTo(1));
 
         var ras = rs.RequestAnswerSteps.First();
@@ -66,6 +66,54 @@ internal class TncpOrderBuilderTests
         Assert.That(requestSpec, Is.Not.Null);
         Assert.That(requestSpec.ParameterSet, Is.EqualTo(ps));
         Assert.That(order.RequestSpecs.Count, Is.EqualTo(1));
+    }
+
+    [Test]
+    public void CreateNoAnswerDeviceRequestSpec_ValidSetup_RequestSpecCreated()
+    {
+        // Arrange 
+        var ps = new TncpParameterSet();
+        var builder = new TncpOrderBuilder();
+
+        var order = new OmOrder(1, "Test", ps);
+
+        Assert.That(order.RequestSpecs.Count, Is.EqualTo(0));
+
+        // Act  
+        using (Assert.EnterMultipleScope())
+        {
+            const string name = "RequestSpec";
+            var requestSpec = builder.CreateNoAnswerDeviceRequestSpec(order, name, HandleRequestAnswerOnSuccessDelegate);
+
+            // Assert
+            Assert.That(requestSpec, Is.Not.Null);
+            Assert.That(requestSpec.ParameterSet, Is.EqualTo(ps));
+            Assert.That(order.RequestSpecs.Count, Is.EqualTo(1));
+        }
+    }
+
+    [Test]
+    public void CreateNoHandshakeNoAnswerDeviceRequestSpec_ValidSetup_RequestSpecCreated()
+    {
+        // Arrange 
+        var ps = new TncpParameterSet();
+        var builder = new TncpOrderBuilder();
+
+        var order = new OmOrder(1, "Test", ps);
+
+        Assert.That(order.RequestSpecs.Count, Is.EqualTo(0));
+
+        // Act  
+        using (Assert.EnterMultipleScope())
+        {
+            const string name = "RequestSpec";
+            var requestSpec = builder.CreateNoHandshakeNoAnswerDeviceRequestSpec(order, name, HandleRequestAnswerOnSuccessDelegate);
+
+            // Assert
+            Assert.That(requestSpec, Is.Not.Null);
+            Assert.That(requestSpec.ParameterSet, Is.EqualTo(ps));
+            Assert.That(order.RequestSpecs.Count, Is.EqualTo(1));
+        }
     }
 
     [Test]
@@ -113,11 +161,11 @@ internal class TncpOrderBuilderTests
 
         // Act  
         var raName = "Test";
-        var ra = builder.CreateRequestAnswer(ras, raName);
+        var ra = builder.CreateRequestAnswer(ras, raName, CheckReceivedMessageDelegate, HandleRequestAnswerOnSuccessDelegate);
 
         // Assert
         Assert.That(ra.Name, Is.EqualTo(raName));
-        Assert.That(ra.CheckReceivedMessageDelegate, Is.Null);
+        Assert.That(ra.CheckReceivedMessageDelegate, Is.Not.Null);
         Assert.That(ras.AllowedRequestAnswers.Count, Is.EqualTo(1));
     }
 }

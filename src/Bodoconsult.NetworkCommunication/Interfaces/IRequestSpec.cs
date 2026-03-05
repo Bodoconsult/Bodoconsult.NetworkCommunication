@@ -75,20 +75,6 @@ public interface IRequestSpec: IDisposable
     /// </summary>
     bool DoNotRunRequestSpecIfThereIsSameOrderTypeInQueue { get; }
 
-    /// <summary>
-    /// The expected handshake if the message was sent
-    /// </summary>
-    List<IOrderExecutionResultState> ExpectedHandshakeForSentMessage { get; }
-
-    /// <summary>
-    /// Does the request require only a (valid) handshake as answer to be successful
-    /// </summary>
-    bool RequestRequiresOnlyAHandshakeAsAnswer { get; set; }
-
-    /// <summary>
-    /// Represents a timeline of request answers
-    /// </summary>
-    List<IRequestAnswerStep> RequestAnswerSteps { get; }
 
     /// <summary>
     /// The step was successfully processed in all steps

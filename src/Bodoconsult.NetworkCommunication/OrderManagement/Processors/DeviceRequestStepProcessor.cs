@@ -406,7 +406,7 @@ public class DeviceRequestStepProcessor : IDeviceRequestStepProcessor
     //    }
     //}
 
-    private static IOrderExecutionResultState HandleNack(IRequestSpec requestSpec, IOutboundDataMessage message, IOrderExecutionResultState execResult)
+    private static IOrderExecutionResultState HandleNack(IDeviceRequestSpec requestSpec, IOutboundDataMessage message, IOrderExecutionResultState execResult)
     {
         string s;
         if (execResult.Id != OrderExecutionResultState.Successful.Id)
@@ -456,7 +456,7 @@ public class DeviceRequestStepProcessor : IDeviceRequestStepProcessor
     {
         var requestSpec = RequestSpec;
 
-        CurrentChainElement = (IDeviceRequestAnswerStep)RequestSpec.RequestAnswerSteps[0];
+        CurrentChainElement = (IDeviceRequestAnswerStep)DeviceRequestSpec.RequestAnswerSteps[0];
 
         Debug.Print($"RSP {requestSpec.GetType().Name}: chain started");
         while (true)
@@ -610,7 +610,7 @@ public class DeviceRequestStepProcessor : IDeviceRequestStepProcessor
 
         CurrentChainElement?.Cancel();
 
-        var steps = RequestSpec?.RequestAnswerSteps;
+        var steps = DeviceRequestSpec?.RequestAnswerSteps;
 
         if (steps == null)
         {

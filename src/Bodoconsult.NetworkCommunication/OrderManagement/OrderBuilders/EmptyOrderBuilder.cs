@@ -24,6 +24,6 @@ public class EmptyOrderBuilder : BaseOrderBuilder
     {
         order.TraceCodeSuccess = TraceCodes.IdsMsgEmptyOrderOk;
         order.TraceCodeError = TraceCodes.IdsMsgEmptyOrderFails;
-        order.TraceMessage = "Empty order";
+        order.TraceMessage = OrderTypeName;
     }
 }

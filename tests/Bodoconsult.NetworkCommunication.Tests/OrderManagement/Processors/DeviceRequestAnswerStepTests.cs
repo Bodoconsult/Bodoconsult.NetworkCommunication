@@ -1,10 +1,8 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
-using Bodoconsult.App.Interfaces;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
 using Bodoconsult.NetworkCommunication.EnumAndStates;
 using Bodoconsult.NetworkCommunication.Interfaces;
-using Bodoconsult.NetworkCommunication.OrderManagement;
 using Bodoconsult.NetworkCommunication.OrderManagement.ParameterSets;
 using Bodoconsult.NetworkCommunication.OrderManagement.Processors;
 using Bodoconsult.NetworkCommunication.Tests.Helpers;
@@ -57,7 +55,7 @@ internal class DeviceRequestAnswerStepTests
         ps.LoadOrder(order);
         var dr = new DeviceRequestSpec("Test", ps);
 
-        var answer = new RequestAnswer(false, null, "TestAnswer");
+        var answer = new RequestAnswer(false, null, "TestAnswer", CheckReceivedMessageDelegate);
         answer.HandleRequestAnswerOnSuccessDelegate = HandleRequestAnswerOnSuccessDelegate;
 
         var irs = new DeviceRequestAnswerStep(dr);
@@ -106,9 +104,9 @@ internal class DeviceRequestAnswerStepTests
 
         dr.RequestStepProcessorSetResultDelegate = RequestStepProcessorSetResultDelegate;
 
-        var answer = new RequestAnswer(false, null, "TestAnswer");
+        var answer = new RequestAnswer(false, null, "TestAnswer", CheckReceivedMessageDelegate);
         answer.HandleRequestAnswerOnSuccessDelegate = HandleRequestAnswerOnSuccessDelegate;
-        answer.CheckReceivedMessageDelegate = CheckReceivedMessageDelegate;
+
 
         var irs = new DeviceRequestAnswerStep(dr);
         irs.AllowedRequestAnswers.Add(answer);
@@ -141,9 +139,8 @@ internal class DeviceRequestAnswerStepTests
 
         dr.RequestStepProcessorSetResultDelegate = RequestStepProcessorSetResultDelegate;
 
-        var answer = new RequestAnswer(false, null, "TestAnswer");
+        var answer = new RequestAnswer(false, null, "TestAnswer", CheckReceivedMessageDelegate);
         answer.HandleRequestAnswerOnSuccessDelegate = HandleRequestAnswerOnSuccessDelegate;
-        answer.CheckReceivedMessageDelegate = CheckReceivedMessageDelegate;
 
         var irs = new DeviceRequestAnswerStep(dr);
         irs.AllowedRequestAnswers.Add(answer);

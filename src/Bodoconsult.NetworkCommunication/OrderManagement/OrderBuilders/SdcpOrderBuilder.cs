@@ -35,7 +35,7 @@ public class SdcpOrderBuilder : BaseOrderBuilder
         // Tracing
         order.TraceCodeSuccess = TraceCodes.IdsMsgSdcpOrderOk;
         order.TraceCodeError = TraceCodes.IdsMsgSdcpOrderFails;
-        order.TraceMessage = "SDCP order";
+        order.TraceMessage = OrderTypeName;
 
         // RequestSpec 1
         var requestSpec = CreateDeviceRequestSpec(order, "SendAndWaitDeviceRequestSpec");
@@ -43,14 +43,14 @@ public class SdcpOrderBuilder : BaseOrderBuilder
 
         var requestAnswerStep = CreateDeviceRequestAnswerStep(requestSpec, "SendAndWaitAnswerStep");
 
-        var requestAnswer = CreateRequestAnswer(requestAnswerStep, "ReceivedMessage");
-        requestAnswer.CheckReceivedMessageDelegate = CheckReceivedMessageDelegate;
-        requestAnswer.HandleRequestAnswerOnSuccessDelegate = HandleRequestAnswerOnSuccessDelegate;
+        var requestAnswer = CreateRequestAnswer(requestAnswerStep, "ReceivedMessage", CheckReceivedMessageDelegate, HandleRequestAnswerOnSuccessDelegate);
+
     }
 
     private List<IOutboundDataMessage> CreateMessagesToSentDelegate(IParameterSet parameterSet)
     {
         var msg = _outboundDataMessageFactory.CreateInstance(parameterSet);
+        msg.WaitForAcknowledgement = true;
         return [msg];
     }
 

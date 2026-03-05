@@ -1,5 +1,6 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
+using Bodoconsult.NetworkCommunication.Delegates;
 using Bodoconsult.NetworkCommunication.Interfaces;
 using Bodoconsult.NetworkCommunication.OrderManagement.Orders;
 using Bodoconsult.NetworkCommunication.OrderManagement.Processors;
@@ -76,6 +77,37 @@ public abstract class BaseOrderBuilder : IOrderBuilder
     }
 
     /// <summary>
+    /// Create an <see cref="NoAnswerDeviceRequestSpec"/> instance and add it to the order
+    /// </summary>
+    /// <param name="order">Current order</param>
+    /// <param name="name">Name of the request spec</param>
+    /// <param name="handleRequestAnswerOnSuccessDelegate">Delegate fired if the order was eceuted successfully</param>
+    /// <returns><see cref="DeviceRequestSpec"/> instance </returns>
+    public INoAnswerDeviceRequestSpec CreateNoAnswerDeviceRequestSpec(IOrder order, string name, HandleRequestAnswerDelegate handleRequestAnswerOnSuccessDelegate)
+    {
+        var rs = new NoAnswerDeviceRequestSpec(name, order.ParameterSet);
+        rs.HandleRequestAnswerOnSuccessDelegate = handleRequestAnswerOnSuccessDelegate;
+        order.RequestSpecs.Add(rs);
+        return rs;
+    }
+
+
+    /// <summary>
+    /// Create an <see cref="NoHandshakeNoAnswerDeviceRequestSpec"/> instance and add it to the order
+    /// </summary>
+    /// <param name="order">Current order</param>
+    /// <param name="name">Name of the request spec</param>
+    /// <param name="handleRequestAnswerOnSuccessDelegate">Delegate fired if the order was eceuted successfully</param>
+    /// <returns><see cref="DeviceRequestSpec"/> instance </returns>
+    public INoHandshakeNoAnswerDeviceRequestSpec CreateNoHandshakeNoAnswerDeviceRequestSpec(IOrder order, string name, HandleRequestAnswerDelegate handleRequestAnswerOnSuccessDelegate)
+    {
+        var rs = new NoHandshakeNoAnswerDeviceRequestSpec(name, order.ParameterSet);
+        rs.HandleRequestAnswerOnSuccessDelegate = handleRequestAnswerOnSuccessDelegate;
+        order.RequestSpecs.Add(rs);
+        return rs;
+    }
+
+    /// <summary>
     /// Create an <see cref="InternalRequestSpec"/> instance and add it to the order
     /// </summary>
     /// <param name="order">Current order</param>
@@ -114,17 +146,21 @@ public abstract class BaseOrderBuilder : IOrderBuilder
         return ras;
     }
 
+
     /// <summary>
     /// Create an <see cref="IRequestAnswer"/> instance and it to a request answer step in the order
     /// </summary>
     /// <param name="requestAnswerStep">Current request answer step</param>
     /// <param name="name">Name of the answer</param>
+    /// <param name="checkReceivedMessageDelegate">Current delegate for message checking</param>
+    /// <param name="handleRequestAnswerOnSuccessDelegate">Delegate fired if the order was eceuted successfully</param>
     /// <param name="hasDatablock">Has datablock?</param>
     /// <param name="dataBlockType">Type of the datablock or null</param>
-    /// <returns></returns>
-    public IRequestAnswer CreateRequestAnswer(IRequestAnswerStep requestAnswerStep, string name, bool hasDatablock = false, Type dataBlockType = null)
+    /// <returns>Request answer</returns>
+    public IRequestAnswer CreateRequestAnswer(IRequestAnswerStep requestAnswerStep, string name, CheckReceivedMessageDelegate checkReceivedMessageDelegate, HandleRequestAnswerDelegate handleRequestAnswerOnSuccessDelegate, bool hasDatablock = false, Type dataBlockType = null)
     {
-        var ra = new RequestAnswer(hasDatablock, dataBlockType, name);
+        var ra = new RequestAnswer(hasDatablock, dataBlockType, name, checkReceivedMessageDelegate);
+        ra.HandleRequestAnswerOnSuccessDelegate = handleRequestAnswerOnSuccessDelegate;
         requestAnswerStep.AllowedRequestAnswers.Add(ra);
         return ra;
     }
