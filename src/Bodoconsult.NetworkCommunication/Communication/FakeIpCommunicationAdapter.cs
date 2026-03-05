@@ -77,6 +77,11 @@ public class FakeIpCommunicationAdapter : ICommunicationAdapter
     public IIpDataMessagingConfig DataMessagingConfig { get; set; }
 
     /// <summary>
+    /// Expected order execution result
+    /// </summary>
+    public List<OrderExecutionResultState> ExpectedExecutionResult { get; } = new();
+
+    /// <summary>
     /// Send a data message to the device 
     /// </summary>
     /// <param name="command">Command to send</param>

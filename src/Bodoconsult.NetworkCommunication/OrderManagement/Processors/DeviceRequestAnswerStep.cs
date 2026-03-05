@@ -218,7 +218,6 @@ public class DeviceRequestAnswerStep : BaseRequestAnswerStep, IDeviceRequestAnsw
 
         AsyncHelper.FireAndForget(() =>
         {
-
             RequestSpec.RequestAnswerStepIsStartedDelegate.Invoke();
         });
 

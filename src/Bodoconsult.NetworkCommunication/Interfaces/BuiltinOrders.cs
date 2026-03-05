@@ -27,5 +27,7 @@ public static class BuiltinOrders
     public const string NoHandshakeNoAnswerTncpOrder = "NoHandshakeNoAnswerTncpOrder";
 
     public const string TestOrder = "TestOrder";
+    public const string LongRunningTestOrder = "LongRunningTestOrder";
+    public const string ExtraLongRunningTestOrder = "ExtraLongRunningTestOrder";
     public const string DummyOrder = "DummyOrder";
 }

@@ -30,18 +30,21 @@ internal class RequestProcessorTests
         var rp = new RequestProcessor(order, requestStepProcessorFactory, device);
 
         // Assert
-        Assert.That(rp.Order, Is.EqualTo(order));
-        Assert.That(rp.CurrentRequestStepProcessor, Is.Null);
-        Assert.That(rp.CurrentTask, Is.Null);
-        Assert.That(rp.IsCancelled, Is.False);
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(rp.Order, Is.EqualTo(order));
+            Assert.That(rp.CurrentRequestStepProcessor, Is.Null);
+            Assert.That(rp.CurrentTask, Is.Null);
+            Assert.That(rp.IsCancelled, Is.False);
+        }
     }
 
     [Test]
-    public void ExecuteOrder_ValidSetupNoMessageReceived_Timeout()
+    public void ExecuteOrder_NoMessageReceived_Timeout()
     {
         // Arrange 
         var device = TestDataHelper.CreateDevice();
-        device.LoadCommAdapter(TestDataHelper.FakeOrderManagementCommunicationAdapter);
+        device.LoadCommAdapter(TestDataHelper.FakeIpCommunicationAdapter);
 
         var ps = new SdcpParameterSet();
 
@@ -59,11 +62,11 @@ internal class RequestProcessorTests
     }
 
     [Test]
-    public void ExecuteOrder_ValidSetupMessageReceived_Successful()
+    public void ExecuteOrder_NormalOrderMessageReceived_Successful()
     {
         // Arrange 
         var device = TestDataHelper.CreateDevice();
-        device.LoadCommAdapter(TestDataHelper.FakeOrderManagementCommunicationAdapter);
+        device.LoadCommAdapter(TestDataHelper.FakeIpCommunicationAdapter);
 
         var ps = new SdcpParameterSet();
 
@@ -93,4 +96,47 @@ internal class RequestProcessorTests
         Assert.That(result, Is.EqualTo(OrderExecutionResultState.Successful));
     }
 
+    [Test]
+    public void ExecuteOrder_NoAnswerOrder_Successful()
+    {
+        // Arrange 
+        var device = TestDataHelper.CreateDevice();
+        device.LoadCommAdapter(TestDataHelper.FakeIpCommunicationAdapter);
+
+        var ps = new SdcpParameterSet();
+
+        var order = TestDataHelper.CreateNoAnswerSdcpOrder(ps);
+
+        IRequestStepProcessorFactory requestStepProcessorFactory = new RequestStepProcessorFactory();
+
+        var rp = new RequestProcessor(order, requestStepProcessorFactory, device);
+
+        // Act  
+        var result = rp.ExecuteOrder();
+
+        // Assert
+        Assert.That(result, Is.EqualTo(OrderExecutionResultState.Successful));
+    }
+
+    [Test]
+    public void ExecuteOrder_NoHandshakeNoAnswerOrder_Successful()
+    {
+        // Arrange 
+        var device = TestDataHelper.CreateDevice();
+        device.LoadCommAdapter(TestDataHelper.FakeIpCommunicationAdapter);
+
+        var ps = new SdcpParameterSet();
+
+        var order = TestDataHelper.CreateNoHandshakeNoAnswerSdcpOrder(ps);
+
+        IRequestStepProcessorFactory requestStepProcessorFactory = new RequestStepProcessorFactory();
+
+        var rp = new RequestProcessor(order, requestStepProcessorFactory, device);
+
+        // Act  
+        var result = rp.ExecuteOrder();
+
+        // Assert
+        Assert.That(result, Is.EqualTo(OrderExecutionResultState.Successful));
+    }
 }

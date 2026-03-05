@@ -11,7 +11,9 @@ Bodoconsult.NetworkCommunication is a library with basic functionality for setti
 
 >	[Defining your device communication protocol](#defining-your-device-communication-protocol)
 
->	[]()
+>	[&#8618; Order management](OrderManagement.md)
+
+>	[&#8618; State management](StateManagement.md)
 
 >   [More information](#more-information)
 

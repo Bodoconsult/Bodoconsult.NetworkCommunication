@@ -7,6 +7,7 @@ using Bodoconsult.App.Interfaces;
 using Bodoconsult.NetworkCommunication.EnumAndStates;
 using Bodoconsult.NetworkCommunication.Helpers;
 using Bodoconsult.NetworkCommunication.Interfaces;
+using IAppDateService = Bodoconsult.NetworkCommunication.App.Abstractions.IAppDateService;
 
 namespace Bodoconsult.NetworkCommunication.OrderManagement.Processors;
 
@@ -67,7 +68,7 @@ public class OrderProcessor : IOrderProcessor
     /// </summary>
     public OrderProcessor(
         IOrderManagementDevice deviceServer,
-        IAppDateService dateTimeService,
+        App.Abstractions.IAppDateService dateTimeService,
         IOrderPipeline orderPipeline,
         ISyncOrderManager syncOrderManager,
         IOrderManagementClientNotificationManager clientNotificationManager,
@@ -854,15 +855,22 @@ public class OrderProcessor : IOrderProcessor
             order.IsHighPriorityOrder = false;
         }
 
+        var json = JsonHelper.JsonSerialize(order.ParameterSet);
+
         if (CheckOrder(order))
         {
-            _appLogger.LogInformation($"{_loggerId}{order.LoggerId}NOT added to queue: {JsonHelper.JsonSerialize(order.ParameterSet)}");
+            _appLogger.LogInformation($"{_loggerId}{order.LoggerId}NOT added to queue: {json}");
+            return;
+        }
+
+        if (OrderPipeline.AllWaitingOrders.Contains(order))
+        {
+            _appLogger.LogInformation($"{_loggerId}{order.LoggerId}NOT added to queue: order is already existing");
             return;
         }
 
         OrderPipeline.AddOrder(order);
-
-        _appLogger.LogInformation($"{_loggerId}{order.LoggerId} added to queue. {OrderPipeline.CurrentOrderState}. {JsonHelper.JsonSerialize(order.ParameterSet)}");
+        _appLogger.LogInformation($"{_loggerId}{order.LoggerId} added to queue. {OrderPipeline.CurrentOrderState}. {json}");
         if (order.IsClientNotificationTurnedOff)
         {
             return;
@@ -885,15 +893,17 @@ public class OrderProcessor : IOrderProcessor
             order.IsHighPriorityOrder = true;
         }
 
+        var json = JsonHelper.JsonSerialize(order.ParameterSet);
+
         if (CheckOrder(order))
         {
-            _appLogger.LogInformation($"{_loggerId}{order.LoggerId} NOT added to priority queue. {JsonHelper.JsonSerialize(order.ParameterSet)}");
+            _appLogger.LogInformation($"{_loggerId}{order.LoggerId} NOT added to priority queue. {json}");
         }
         else
         {
             OrderPipeline.AddPriorityOrder(order);
             ClientNotificationManager?.DoNotifyOrderStateChanged(this, order);
-            _appLogger.LogInformation($"{_loggerId}{order.LoggerId} added to priority queue. {OrderPipeline.CurrentOrderState}. {JsonHelper.JsonSerialize(order.ParameterSet)}");
+            _appLogger.LogInformation($"{_loggerId}{order.LoggerId} added to priority queue. {OrderPipeline.CurrentOrderState}. {json}");
         }
     }
 
@@ -922,10 +932,9 @@ public class OrderProcessor : IOrderProcessor
             return false;
         }
 
-        // Check if there is already an order for the same carrier
         var ps = order.ParameterSet;
 
-        return ps.IsValid.Count == 0;
+        return ps.IsValid.Count != 0;
     }
 
     /// <summary>
@@ -988,7 +997,7 @@ public class OrderProcessor : IOrderProcessor
         // TOP 2 Deliver message to order pipeline with all running orders with higher priority to check
         //*********************
         var requestProcessors = OrderPipeline.RunningRequestProcessors;
-        if (CheckOrders(requestProcessors.Where(x => x.Order != null && x.Order.IsCheckedWithPriority && !x.Order.WasSuccessful && !x.Order.IsFinished), receivedMessage))
+        if (CheckOrders(requestProcessors.Where(x => x.Order is { IsCheckedWithPriority: true, WasSuccessful: false, IsFinished: false }), receivedMessage))
         {
             return true;
         }
@@ -996,7 +1005,7 @@ public class OrderProcessor : IOrderProcessor
         //*********************
         // TOP 3 Deliver message to order pipeline with all running orders with normal priority to check
         //*********************
-        if (CheckOrders(requestProcessors.Where(x => x.Order != null && !x.Order.IsCheckedWithPriority && !x.Order.WasSuccessful && !x.Order.IsFinished), receivedMessage))
+        if (CheckOrders(requestProcessors.Where(x => x.Order is { IsCheckedWithPriority: false, WasSuccessful: false, IsFinished: false }), receivedMessage))
         {
             return true;
         }

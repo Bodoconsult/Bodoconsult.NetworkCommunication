@@ -7,9 +7,9 @@ using Bodoconsult.NetworkCommunication.Interfaces;
 namespace Bodoconsult.NetworkCommunication.OrderManagement.Processors;
 
 /// <summary>
-/// Current implementation of <see cref="IOrderManager"/>
-/// </summary>
-public class OrderManager: IOrderManager
+    /// Current implementation of <see cref="IOrderManager"/>
+    /// </summary>
+    public class OrderManager: IOrderManager
 {
     private readonly IAppLoggerProxy _appLogger;
     private readonly string _loggerId;

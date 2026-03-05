@@ -2,6 +2,10 @@
   href: README.md
 - name: Release notes
   href: ReleaseNotes.md
+- name: Order management
+  href: OrderManagement.md
+- name: State management
+  href: StateManagement.md
 - name: Simple data communication protocol SDCP
   href: SDCP.md
 - name: Enhanced data communication protocol EDCP

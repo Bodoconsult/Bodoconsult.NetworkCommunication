@@ -27,7 +27,7 @@ public static class TestDataHelper
         AppEventSourceFactory = new FakeAppEventSourceFactory();
         // ToDo: change to fake later
         AppDateService = new AppDateService();
-        FakeOrderManagementCommunicationAdapter = new FakeIpCommunicationAdapter();
+        FakeIpCommunicationAdapter = new FakeIpCommunicationAdapter();
     }
 
     public static LogDataFactory LogDataFactory { get; }
@@ -101,9 +101,9 @@ public static class TestDataHelper
     public static IAppEventSourceFactory AppEventSourceFactory { get; }
 
     /// <summary>
-    /// Get a <see cref="FakeOrderManagementCommunicationAdapter"/> instance
+    /// Get a <see cref="FakeIpCommunicationAdapter"/> instance
     /// </summary>
-    public static FakeIpCommunicationAdapter FakeOrderManagementCommunicationAdapter { get; }
+    public static FakeIpCommunicationAdapter FakeIpCommunicationAdapter { get; }
 
     /// <summary>
     /// Create a SDCP order for testing
@@ -114,7 +114,10 @@ public static class TestDataHelper
         var ps = new SdcpParameterSet();
         ps.Payload = new byte[] { 0x42, 0x6c, 0x75, 0x62, 0x62 };
 
-        var builder = new SdcpOrderBuilder();
+        var builder = new SdcpOrderBuilder
+        {
+            HandleRequestAnswerOnSuccessDelegate = HandleRequestAnswerOnSuccessDelegate
+        };
 
         var order = builder.CreateOrder(1, ps);
         return order;
@@ -127,6 +130,36 @@ public static class TestDataHelper
     public static IOrder CreateSdcpOrder(SdcpParameterSet ps)
     {
         var builder = new SdcpOrderBuilder
+        {
+            HandleRequestAnswerOnSuccessDelegate = HandleRequestAnswerOnSuccessDelegate
+        };
+
+        var order = builder.CreateOrder(1, ps);
+        return order;
+    }
+
+    /// <summary>
+    /// Create a no answer SDCP order for testing
+    /// </summary>
+    /// <returns></returns>
+    public static IOrder CreateNoAnswerSdcpOrder(SdcpParameterSet ps)
+    {
+        var builder = new NoAnswerSdcpOrderBuilder
+        {
+            HandleRequestAnswerOnSuccessDelegate = HandleRequestAnswerOnSuccessDelegate
+        };
+
+        var order = builder.CreateOrder(1, ps);
+        return order;
+    }
+
+    /// <summary>
+    /// Create a no handshake no answer SDCP order for testing
+    /// </summary>
+    /// <returns></returns>
+    public static IOrder CreateNoHandshakeNoAnswerSdcpOrder(SdcpParameterSet ps)
+    {
+        var builder = new NoHandshakeNoAnswerSdcpOrderBuilder
         {
             HandleRequestAnswerOnSuccessDelegate = HandleRequestAnswerOnSuccessDelegate
         };

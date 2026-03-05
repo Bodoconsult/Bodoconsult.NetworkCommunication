@@ -121,6 +121,13 @@ public interface IOrderManagementDevice: IStateManagementContext
     List<IOrder> PrepareDeviceInit();
 
     /// <summary>
+    /// Load the Device order manager to use for this device
+    /// </summary>
+    /// <param name="orderManager">Device order manager</param>
+    /// <remarks>Injecting via ctor not possible due to circular references otherwise</remarks>
+    void LoadDeviceOrderManager(IOrderManager orderManager);
+
+    /// <summary>
     /// Get next order to run
     /// </summary>
     IOrder GetNextOrderToRun();

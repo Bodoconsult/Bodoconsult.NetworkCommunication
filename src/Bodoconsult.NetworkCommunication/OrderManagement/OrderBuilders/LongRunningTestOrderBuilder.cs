@@ -1,6 +1,5 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
-using Bodoconsult.NetworkCommunication.Delegates;
 using Bodoconsult.NetworkCommunication.EnumAndStates;
 using Bodoconsult.NetworkCommunication.Factories;
 using Bodoconsult.NetworkCommunication.Interfaces;
@@ -8,16 +7,16 @@ using Bodoconsult.NetworkCommunication.Interfaces;
 namespace Bodoconsult.NetworkCommunication.OrderManagement.OrderBuilders;
 
 /// <summary>
-/// Order builder to create a test order waiting for an answer. Accepts any datablock type
+/// Order builder to create a longrunning test order waiting for an answer. Accepts any datablock type
 /// </summary>
-public class TestOrderBuilder : BaseOrderBuilder
+public class LongRunningTestOrderBuilder : BaseOrderBuilder
 {
     private readonly IOutboundDataMessageFactory _outboundDataMessageFactory = new SdcpOutboundDataMessageFactory();
 
     /// <summary>
     /// Default ctor
     /// </summary>
-    public TestOrderBuilder() : base(null, BuiltinOrders.TestOrder)
+    public LongRunningTestOrderBuilder() : base(null, BuiltinOrders.LongRunningTestOrder)
     { }
 
     /// <summary>
@@ -31,8 +30,7 @@ public class TestOrderBuilder : BaseOrderBuilder
         order.TraceMessage = OrderTypeName;
 
         // Parallel orders
-        order.AllowedParallelOrderTypes.Add(BuiltinOrders.LongRunningTestOrder);
-        order.AllowedParallelOrderTypes.Add(BuiltinOrders.ExtraLongRunningTestOrder);
+        order.AllowedParallelOrderTypes.Add(BuiltinOrders.TestOrder);
 
         // RequestSpec 1
         var requestSpec = CreateNoAnswerDeviceRequestSpec(order, "SendAndWaitDeviceRequestSpec", HandleRequestAnswerOnSuccessDelegate);
@@ -41,7 +39,7 @@ public class TestOrderBuilder : BaseOrderBuilder
 
     private MessageHandlingResult HandleRequestAnswerOnSuccessDelegate(IInboundDataMessage message, object transportObject, IParameterSet parameterSet)
     {
-        Task.Delay(300);
+        Task.Delay(400);
         return new MessageHandlingResult
         {
             ExecutionResult = OrderExecutionResultState.Successful

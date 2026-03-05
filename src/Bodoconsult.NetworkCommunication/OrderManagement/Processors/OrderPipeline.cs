@@ -607,9 +607,12 @@ public class OrderPipeline : IOrderPipeline
         var task = new Task(() => requestProcessor.ExecuteOrder(), requestProcessor.CancellationTokenSource.Token);
         requestProcessor.CurrentTask = task;
 
+        // Serialize before starting order. Otherwise it will fail due to changes in the parameterSet
+        var json = JsonHelper.JsonSerialize(requestProcessor.Order.ParameterSet);
+
         AsyncHelper.FireAndForget(()=> task.Start());
 
-        _appLogger.LogInformation($"{_loggerId}{requestProcessor.Order.LoggerId}execution started: {JsonHelper.JsonSerialize(requestProcessor.Order.ParameterSet)}");
+        _appLogger.LogInformation($"{_loggerId}{requestProcessor.Order.LoggerId}execution started: {json}");
 
         order.ExecutionState = OrderState.Started;
     }

@@ -10,7 +10,7 @@ namespace Bodoconsult.NetworkCommunication.OrderManagement.Devices;
 /// <summary>
 /// Base class for order management devices
 /// </summary>
-public abstract class BaseOrderManagementDevice : IOrderManagementDevice, IStateManagementContext
+public abstract class BaseOrderManagementDevice : IOrderManagementDevice
 {
     protected bool _isOrderProcessingActivated;
 
@@ -361,7 +361,7 @@ public abstract class BaseOrderManagementDevice : IOrderManagementDevice, IState
     /// <param name="order">Current order</param>
     public virtual void Check4ConcurrentOrders(IOrder order)
     {
-        throw new NotSupportedException("Override in derived classes if needed");
+        // do nothing
     }
 
     /// <summary>
@@ -395,7 +395,54 @@ public abstract class BaseOrderManagementDevice : IOrderManagementDevice, IState
     /// <param name="order">Current order</param>
     public virtual void OrderFinishedUnsuccessful(IOrder order)
     {
-        throw new NotImplementedException();
+        var pso = order.ParameterSet;
+
+        try
+        {
+            var requestSpecs = order.RequestSpecs;
+
+            // Now run a order specific not succesfully finished action
+            if (order.OrderFinishedUnsuccessfulAction != null)
+            {
+                // Get the transport object from the last request. May be null
+                if (requestSpecs.Any())
+                {
+                    var tro = order.RequestSpecs[^1].TransportObject;
+                    order.OrderFinishedUnsuccessfulAction(tro, pso);
+                    _appLogger.LogDebug("OrderFinishedUnsuccessfulAction TRO was successful");
+                }
+                else
+                {
+                    order.OrderFinishedUnsuccessfulAction(null, pso);
+                    _appLogger.LogDebug("OrderFinishedUnsuccessfulAction NULL was successful");
+                }
+            }
+        }
+        catch (Exception e1)
+        {
+            try
+            {
+                if (order.OrderFinishedUnsuccessfulAction != null)
+                {
+                    order.OrderFinishedUnsuccessfulAction(null, pso);
+                    LogError($"failed on level 1: {e1}");
+                }
+            }
+            catch (Exception e2)
+            {
+                LogError($"failed on level 2: {e2}");
+            }
+        }
+
+
+        // Fire a ComDevClose if required for this order
+        if (order.FailingOrderRequiresComDevClose)
+        {
+            CommunicationAdapter.ComDevClose();
+        }
+
+        // Logging
+        LogInformation($"{order.LoggerId}has finished unsuccessful");
     }
 
     /// <summary>
@@ -436,16 +483,17 @@ public abstract class BaseOrderManagementDevice : IOrderManagementDevice, IState
     /// </summary>
     /// <param name="receivedMessage">Received message</param>
     /// <returns>True if the message was an expected answer of the current request or should not be handled at all else false</returns>
-    public bool DoBasicCheckForReceivedMessage(IInboundDataMessage receivedMessage)
+    public virtual bool DoBasicCheckForReceivedMessage(IInboundDataMessage receivedMessage)
     {
-        throw new NotImplementedException();
+        // Do nothing
+        return false;
     }
 
     /// <summary>
     /// Check if the message is an error message
     /// </summary>
     /// <param name="receivedMessage">Received message</param>
-    /// <returns>True if the message was an handled as error message else false</returns>
+    /// <returns>True if the message was a handled as error message else false</returns>
     public bool DoCheckForErrorMessage(IInboundDataMessage receivedMessage)
     {
         throw new NotImplementedException();
