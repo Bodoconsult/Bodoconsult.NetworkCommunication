@@ -41,6 +41,28 @@ XXX     Minimum 0 bytes of payload. No maximum length defined by BTCP. First byt
 ETX     End of message (0x3)
 
 
+# BTCP data messages
+
+There are the following predefined data messages:
+
+-   *BtcpInboundDataMessage*
+
+-   *InboundHandshakeMessage*
+
+-   *BtcpOutboundDataMessage*
+
+-   *OutboundHandshakeMessage* 
+
+# BTCP and order managment
+
+For the BTCP protocol there are the following order builder. Each order builder represents a order type:
+
+-   *BtcpOrderBuilder*: expecting handshake and answer
+
+-   *NoAnswerBtcpOrderBuilder*: expecting handshake
+
+-   *NoHandshakeNoAnswerBtcpOrderBuilder*: expecting neither handshake nor answer
+
 
 ``` csharp
 

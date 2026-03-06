@@ -36,7 +36,27 @@ Requests and replies are structured the same way. The only difference is: a repl
 
 [ETX]     End of message (0x3)
 
+# EDCP data messages
 
+There are the following predefined data messages:
+
+-   *EdcpInboundDataMessage*
+
+-   *EdbcInboundHandshakeMessage*
+
+-   *EdcpOutboundDataMessage*
+
+-   *EdbcOutboundHandshakeMessage* 
+
+# EDCP and order managment
+
+For the EDCP protocol there are the following order builder. Each order builder represents a order type:
+
+-   *EdcpOrderBuilder*: expecting handshake and answer
+
+-   *NoAnswerEdcpOrderBuilder*: expecting handshake
+
+-   *NoHandshakeNoAnswerEdcpOrderBuilder*: expecting neither handshake nor answer
 
 ``` csharp
 

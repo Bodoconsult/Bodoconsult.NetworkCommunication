@@ -37,6 +37,28 @@ Sample:
 log,chstat[CR]
 ```
 
+# TNCP data messages
+
+There are the following predefined data messages:
+
+-   *TncpInboundDataMessage*
+
+-   *InboundHandshakeMessage*
+
+-   *TncpOutboundDataMessage*
+
+-   *OutboundHandshakeMessage* 
+
+# TNCP and order managment
+
+For the TNCP protocol there are the following order builder. Each order builder represents a order type:
+
+-   *TncpOrderBuilder*: expecting handshake and answer
+
+-   *NoAnswerTncpOrderBuilder*: expecting handshake
+
+-   *NoHandshakeNoAnswerTncpOrderBuilder*: expecting neither handshake nor answer
+
 
 ``` csharp
 

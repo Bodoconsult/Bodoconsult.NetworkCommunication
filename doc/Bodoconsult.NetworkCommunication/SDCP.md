@@ -77,6 +77,30 @@ There is no difference between a request and a reply. This may limit the potenti
 
 ```
 
+# SDCP data messages
+
+There are the following predefined data messages:
+
+-   *SdcpInboundDataMessage*
+
+-   *InboundHandshakeMessage*
+
+-   *SdcpOutboundDataMessage*
+
+-   *OutboundHandshakeMessage* 
+
+# SDCP and order managment
+
+For the SDCP protocol there are the following order builder. Each order builder represents a order type:
+
+-   *SdcpOrderBuilder*: expecting handshake and answer
+
+-   *NoAnswerSdcpOrderBuilder*: expecting handshake
+
+-   *NoHandshakeNoAnswerSdcpOrderBuilder*: expecting neither handshake nor answer
+
+
+
 # Setting up messaging configuration: IDataMessagingConfig
 
 ``` csharp
