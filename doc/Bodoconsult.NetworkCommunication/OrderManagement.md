@@ -27,3 +27,6 @@ Basically there are 3 main types of orders the current implementation can handle
 
 - Order running in a sync blocking mode
 
+# Order management process
+
+![Order management process](../../images/OrderManagement.png)
