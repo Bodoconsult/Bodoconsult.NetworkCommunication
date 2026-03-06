@@ -30,8 +30,6 @@ For more information regarding the protcolos like BTCP or TNCP see:
 
 
 
-
-
 >	[]()
 
 
@@ -46,6 +44,8 @@ The source code contains NUnit test classes the following source code is extract
 # Network communication overview
 
 The basic idea of this library is sending message to the device as byte array (outbound message) and receiving messages from the device as byte array (inbound message).
+
+![Network communication](../../images/NetworkCommunication.png)
 
 Internally all messages sent or received are a implementation of IDataMessage. There are two basic classes of messages: handshake messages and data messages. 
 
