@@ -7,7 +7,7 @@ The communication layer is responsible for sending typesafe message classes as b
 
 ![Communication layer overview](../../images/CommunicationLayer.png)
 
-# Main classes
+# Main interfaces
 
 ## ISocketProxy
 
@@ -28,6 +28,19 @@ ISocketProxy is intended to abstract away the difficulties of socket management.
 ISocketProxy is consumed on the next level from IDuplexIoReceiver for receiving inbound messages and IDuplexIoSender for sending outbound messages.
 
 ![IDuplexIoReceiver](../../images/IDuplexIoReceiver.png)
+
+## IDuplexIoSender
+
+The job of this interface is to send outbound messages to the device via ISocketProxy low level interface.
+
+## IDuplexIo
+
+IDuplexIo is a container handling IDuplexIoReceiver and IDuplexIoSender.
+
+## ICommunicationHandler
+
+This interfaces is intended to bind the communication layer with the first layer of the business logic (ICommunicationAdapter). It abstracts the details of message communicatio  and network protocols away for business logic.
+
 
 # Use cases for communication layer
 

@@ -63,11 +63,15 @@ For details see [&#8618; Communication layer](CommunicationLayer.md).
 
 ## Order management overview
 
+The order management is responsible for sending messages to the device and (if necessary) to wait for a handshake and/ or an answer from the device. An order sends one or more messages to the device and handles the reaction of the device. Orders can be configured highly flexible and so you can implement complex workflows with your device.
+
 For details see [&#8618; Order management](OrderManagement.md).
 
 ## State management overview
 
 The state management is responsible for always knowing the state the device and your app are in. It handles requests to change state coming from business logic / UI. It has to check if a state change request is appropriate for the current state.
+
+![A typical state management workflow](../../images/CommonStates.png)
 
 For details see [&#8618; State management](StateManagement.md).
 

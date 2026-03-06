@@ -3,7 +3,7 @@ Order management
 
 # Overview
 
-
+The order management is responsible for sending messages to the device and (if necessary) to wait for a handshake and/ or an answer from the device. An order sends one or more messages to the device and handles the reaction of the device. Orders can be configured highly flexible and so you can implement complex workflows with your device.
 
 # Requirements
 
@@ -27,6 +27,7 @@ Basically there are 3 main types of orders the current implementation can handle
 
 - Order running in a sync blocking mode
 
-# Order management process
 
-![Order management process](../../images/OrderManagement.png)
+# Order management workflow
+
+![Order management workflow](../../images/OrderManagement.png)
