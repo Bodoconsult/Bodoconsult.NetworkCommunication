@@ -2,6 +2,8 @@
   href: README.md
 - name: Release notes
   href: ReleaseNotes.md
+- name: Communication layer
+  href: CommunicationLayer.md
 - name: Order management
   href: OrderManagement.md
 - name: State management

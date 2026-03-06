@@ -7,17 +7,23 @@ Bodoconsult.NetworkCommunication is a library with basic functionality for setti
 
 >	[Network communication overview](#network-communication-overview)
 
+>   [Communication layer overview](#communication-layer-overview)
+
+>	[Order management overview](#order-management-overview)
+
+>	[State management overview](#state-management-overview)
+
 >	[Some remarks to the implementation](#some-remarks-to-the-implementation)  
 
 >	[Defining your device communication protocol](#defining-your-device-communication-protocol)
 
->	[&#8618; Order management](OrderManagement.md)
+>   [Steps required to setup your network communication protocol](#steps-required-to-setup-your-network-communication-protocol)
 
->	[&#8618; State management](StateManagement.md)
+
 
 >   [More information](#more-information)
 
-For more information regarding the protcolos like BTCP or TNCP see:
+For more information regarding the protocols like BTCP or TNCP see:
 
 >	[&#8618; Simple data communication protocol SDCP](SDCP.md)
 
@@ -26,12 +32,6 @@ For more information regarding the protcolos like BTCP or TNCP see:
 >	[&#8618; Business transaction communication protocol BTCP](BTCP.md)
 
 >	[&#8618; Telnet communication protocol TNCP](TNCP.md)
-
-
-
-
->	[]()
-
 
 >	[]()
 
@@ -53,42 +53,23 @@ Handshake messages are used to sent acknowledgements to the client or wait for a
 
 Data messages are all other types of messages transporting all kinds of data as your protocol defines it.
 
-## Simple commmunication layer
+## Communication layer overview
 
-The simple version of a network communication layer does not employ order management and state management:
+The communication layer is responsible for sending typesafe message classes as byte data to a device via TCP/IP or UPD and for receiving byte data from device via TCP/IP or UPD and deliver them to higher app levels as typesafe classes.
 
-![Network communication overview](../../images/DataFlow.png)
+![Communication layer overview](../../images/CommunicationLayer.png)
 
-## Communication layer with order and state management
+For details see [&#8618; Communication layer](CommunicationLayer.md).
 
-Normally you will have to employ order management and state management to keep a correct workflow in your app. With state management you can keep track with the current state the device and your app are in. The order management sends requested actions as data messages to the device and waits for an answer (if required).
+## Order management overview
 
-![Network communication overview](../../images/DataFlowWithOrdermanagementAndStateManagement.png)
+For details see [&#8618; Order management](OrderManagement.md).
 
+## State management overview
 
-To get all this working you have to set up your IDataMessageProcessingPackage implemetation carefully at the end and inject it to IDuplexIo via ctor injection via your IDataMessagingConfig instance. The following documentation shows how to do that step by step.
+The state management is responsible for always knowing the state the device and your app are in. It handles requests to change state coming from business logic / UI. It has to check if a state change request is appropriate for the current state.
 
-# Some remarks to the implementation
-
-Don't be surprised you will find rarely byte arrays in the code. MS says byte arrays are too slow for network communication and invented an underlying low level data model which much more efficient regarding memory consumption and garbage collection. One of the new classes is Memory<byte> which is the underlying base of byte[].
-
-Design targets for this library are 
-
--	staying highly flexible
-
--	providing performant and efficient implementations
-
--	being unit testable
-
-# Principles of data communication used in Bodoconsult.Network
-
--   Resource efficient implementation
-
--   RAM usage cares
-
--   Garbage collector usage cares
-
--   Inbound communication separated from outbound communication on message and datablock level at least
+For details see [&#8618; State management](StateManagement.md).
 
 # Defining your device communication protocol 
 
@@ -103,6 +84,16 @@ Defining a client server network communication protocol may contain for Bodocons
 -	**Datablock content**: This the important data delivered mainly to your business logic on both side of the communication. The prupose of your communication protocol defines the data structures of the datablocks needed for your protocol.
 
 ![Messages](../../images/Messages.png)
+
+For more information regarding the protocols like BTCP or TNCP in detail see:
+
+>	[&#8618; Simple data communication protocol SDCP](SDCP.md)
+
+>	[&#8618; Enhanced data communication protocol EDCP](EDCP.md)
+
+>	[&#8618; Business transaction communication protocol BTCP](BTCP.md)
+
+>	[&#8618; Telnet communication protocol TNCP](TNCP.md)
 
 ## Example 1: Simple Device Communication Protocol (SDCP)
 
@@ -134,10 +125,15 @@ See [&#8618; Enhanced data communication protocol EDCP](EDCP.md) for details!
 
 ## Example 3: Business Transaction Communication Protocol (BTCP) 
 
+Business transaction communication protocol (BTCP) is intended as a protocol to simplify the communication of a client and a backend.
+
+A business transaction is a piece of business logic in the backend you can access remotely via business transaction (BT) number and pass parameters you want to deliver to this BT.
+
 See [&#8618; Business transaction communication protocol BTCP](BTCP.md) for details!
 
-
 ## Example 4: Telent Communication Protocol (TNCP) 
+
+Telnet communication protocol is a IP based protocol sending commands nearly the same way as from a telnet console. This should help to simplify accessing telent enabled devices via TCP/ID by using the same command parser on the device side.
 
 See [&#8618; Telnet communication protocol TNCP](TNCP.md) for details!
 

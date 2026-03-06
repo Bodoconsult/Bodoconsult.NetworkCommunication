@@ -17,7 +17,7 @@ public abstract class BaseWaitStateManager : IWaitStateManager
     protected readonly IProducerConsumerQueue<InboundHandshakeMessage> ReceivedHandshakes = new ProducerConsumerQueue<InboundHandshakeMessage>();
     protected readonly List<SendPacketProcess> WaitStates = new();
 
-    private readonly object _waitStateLock = new();
+    private readonly Lock _waitStateLock = new();
 
     /// <summary>
     /// Default ctor
