@@ -1,0 +1,82 @@
+<mxfile host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/27.0.5 Chrome/134.0.6998.205 Electron/35.3.0 Safari/537.36" version="27.0.5">
+  <diagram name="Seite-1" id="EkO63DNbse7fjA1LwJqp">
+    <mxGraphModel dx="1213" dy="828" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="avosl7OiQbgHgJdwaUYm-1" value="Device / Server" style="rounded=0;whiteSpace=wrap;html=1;fontStyle=1;fontSize=18;" vertex="1" parent="1">
+          <mxGeometry x="120" y="160" width="120" height="440" as="geometry" />
+        </mxCell>
+        <mxCell id="avosl7OiQbgHgJdwaUYm-2" value="Client" style="rounded=0;whiteSpace=wrap;html=1;fontSize=18;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="640" y="160" width="120" height="440" as="geometry" />
+        </mxCell>
+        <mxCell id="avosl7OiQbgHgJdwaUYm-3" value="" style="endArrow=classic;html=1;rounded=0;entryX=1.025;entryY=0.113;entryDx=0;entryDy=0;entryPerimeter=0;exitX=0.003;exitY=0.111;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="avosl7OiQbgHgJdwaUYm-2" target="avosl7OiQbgHgJdwaUYm-1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="390" y="450" as="sourcePoint" />
+            <mxPoint x="440" y="400" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="avosl7OiQbgHgJdwaUYm-4" value="A" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontStyle=1;fontSize=17;" vertex="1" parent="1">
+          <mxGeometry x="260" y="160" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="avosl7OiQbgHgJdwaUYm-5" value="SdcpOutboundDataMessage" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="400" y="180" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="avosl7OiQbgHgJdwaUYm-6" value="" style="endArrow=classic;html=1;rounded=0;exitX=1.003;exitY=0.19;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.008;entryY=0.188;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="avosl7OiQbgHgJdwaUYm-1" target="avosl7OiQbgHgJdwaUYm-2">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="390" y="450" as="sourcePoint" />
+            <mxPoint x="440" y="400" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="avosl7OiQbgHgJdwaUYm-7" value="SdcpInboundDataMessage" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="400" y="280" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="avosl7OiQbgHgJdwaUYm-8" value="" style="endArrow=classic;html=1;rounded=0;exitX=1.003;exitY=0.19;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.008;entryY=0.188;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="239" y="311" as="sourcePoint" />
+            <mxPoint x="640" y="310" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="avosl7OiQbgHgJdwaUYm-9" value="InboundHandshakeMessage" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="400" y="250" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="avosl7OiQbgHgJdwaUYm-10" value="" style="endArrow=classic;html=1;rounded=0;entryX=1.025;entryY=0.113;entryDx=0;entryDy=0;entryPerimeter=0;exitX=0.003;exitY=0.111;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="639" y="402" as="sourcePoint" />
+            <mxPoint x="242" y="403" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="avosl7OiQbgHgJdwaUYm-11" value="B" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontStyle=1;fontSize=17;" vertex="1" parent="1">
+          <mxGeometry x="259" y="340" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="avosl7OiQbgHgJdwaUYm-12" value="SdcpOutboundDataMessage" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="399" y="370" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="avosl7OiQbgHgJdwaUYm-13" value="" style="endArrow=classic;html=1;rounded=0;exitX=1.003;exitY=0.19;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.008;entryY=0.188;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="239" y="446" as="sourcePoint" />
+            <mxPoint x="640" y="445" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="avosl7OiQbgHgJdwaUYm-14" value="InboundHandshakeMessage" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="399" y="410" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="avosl7OiQbgHgJdwaUYm-16" value="" style="endArrow=classic;html=1;rounded=0;entryX=1.025;entryY=0.113;entryDx=0;entryDy=0;entryPerimeter=0;exitX=0.003;exitY=0.111;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="640" y="552" as="sourcePoint" />
+            <mxPoint x="243" y="553" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="avosl7OiQbgHgJdwaUYm-17" value="C" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontStyle=1;fontSize=17;" vertex="1" parent="1">
+          <mxGeometry x="260" y="490" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="avosl7OiQbgHgJdwaUYm-18" value="SdcpOutboundDataMessage" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="400" y="520" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="avosl7OiQbgHgJdwaUYm-21" value="SDCP communication flow seen from client" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=18;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="120" y="90" width="640" height="30" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

@@ -7,22 +7,34 @@ Basically the EDCP protocol is same as SDCP protocol but the second byte of each
 
 Another enhancement of EDCP protocl is byte 3 may contain a block code of a requesting data message. This enhancement makes it possible to implemenent data message requests answer by the other side by one or more data messages. If there is no block code for byte 3 delivered it means a data message sent without a request from the other side.
 
+
+# Communication scheme
+
+![EDCP communication scheme](../../images/EDCP_Communication.png)
+
+EDCP can basically be used fully duplexed. Means client and device/server can initially start communication.
+
 # Message format
 
-A EDCP request message is structured as follows
+A EDCP request message is structured as follows:
 
-STX[BlockCode]XXXETX
+![EDCP data message structure](../../images/EDCP.png)
+
+[STX][BlockCode][BlockType]XXX[ETX]
+
+The content of a data message is a datablock with the first byte indicating the type of datablock. The rest of the datablock is the payload.
 
 Requests and replies are structured the same way. The only difference is: a reply gets the block code of the request.
 
+*[STX]*:     Message start (0x2)
 
-STX     Message start (0x2)
+*[BlockCode]*: blockcode
 
-[BlockCode] 1 byte set by the side starting a request. Client and server use separate number ranges. Defaults: server 0 - 127 client 128 - 255. Is the message a reply to a request, the reply gets the blockcode of the request.
+*[BlockType]*: One byte as datablock type identifier
 
-XXX     Minimum 0 bytes of payload. No maximum length defined by EDCP. First byte of payload as char is used to indentity the type of payload
+*XXX*: A minimum 0 bytes of additional payload. No maximum length defined by EDCP.
 
-ETX     End of message (0x3)
+[ETX]     End of message (0x3)
 
 
 

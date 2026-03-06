@@ -7,11 +7,19 @@ Business transaction communication protocol (BTCP) is intended as a protocol to 
 
 A business transaction is a piece of business logic in the backend you can access remotely via business transaction (BT) number and pass parameters you want to deliver to this BT.
 
+# Communication scheme
+
+![BTCP communication scheme](../../images/BTCP_Communication.png)
+
+BTCP can basically be used fully duplexed. Means client and device/server can initially communication.
+
 # Message format
 
 A BTCP request message is structured as follows
 
-STX0NNNEOTXXXETX
+![BTCP data message structure](../../images/BTCP.png)
+
+[STX][0/1]NNN[EOT]XXX[ETX]
 
 A BTCP reply message is structured as follows
 

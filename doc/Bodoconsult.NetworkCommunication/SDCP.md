@@ -37,28 +37,39 @@ The SDCP knows two basic types of messages:
 
 - **Handshakes**: a 1-byte-message with either ACK (message received successfully), NACK (message NOT received successfully) or CAN (device not ready) sent when a data message was received.
 
-The content of a data message is a datablock with the first byte indicating the type of datablock.
+The content of a data message is a datablock with the first byte indicating the type of datablock. The rest of the datablock is the payload.
 
 Each data message received will be answered by a handshake. 
 
 The SDCP protocol is very simple but of limited usage in reality. The main drawback of SDCP are the missing identification of data message and its coresponding handshake
 
 
+# Communication scheme
+
+![SDCP communication scheme](../../images/SDCP_Communication.png)
+
+SDCP can basically be used fully duplexed. Means client and device/server can initially start communication.
 
 # Message format
 
 A SDCP messages are structured as follows:
 
-STX[BlockCode]XXXETX
+![SDCP data message structure](../../images/SDCP.png)
+
+[STX][BlockType]XXX[ETX]
 
 There is no difference between a request and a reply. This may limit the potential use cases.
 
 
-STX     Message start (0x2)
+*[STX]*: Message start (0x2)
 
-XXX     Minimum 0 bytes of payload. No maximum length defined by EDCP. First byte of payload as char is used to indentity the type of payload
+*[BlockCode]*: blockcode
 
-ETX     End of message (0x3)
+*[BlockType]*: One byte as datablock type identifier
+
+*XXX*: A minimum 0 bytes of additional payload. No maximum length defined by SDCP.
+
+*[ETX]*:     End of message (0x3)
 
 
 
