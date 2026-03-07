@@ -2,10 +2,11 @@
 
 using System.Diagnostics;
 using Bodoconsult.App.Interfaces;
+using Bodoconsult.NetworkCommunication.Delegates;
 using Bodoconsult.NetworkCommunication.Interfaces;
-using Bodoconsult.NetworkCommunication.StateManagement;
 
 namespace Bodoconsult.NetworkCommunication.OrderManagement.Devices;
+
 
 /// <summary>
 /// Base class for order management devices
@@ -26,7 +27,7 @@ public abstract class BaseOrderManagementDevice : IOrderManagementDevice
     protected BaseOrderManagementDevice(IDataMessagingConfig dataMessagingConfig, IOrderManagementClientNotificationManager clientNotificationManager)
     {
         DataMessagingConfig = dataMessagingConfig ?? throw new ArgumentNullException(nameof(dataMessagingConfig));
-        _appLogger = dataMessagingConfig.AppLogger; 
+        _appLogger = dataMessagingConfig.AppLogger;
         _monitorLogger = dataMessagingConfig.MonitorLogger;
         ClientNotificationManager = clientNotificationManager;
     }
@@ -39,43 +40,14 @@ public abstract class BaseOrderManagementDevice : IOrderManagementDevice
     /// <summary>
     /// Communication adapter to use for order management
     /// </summary>
-    
+
     public ICommunicationAdapter CommunicationAdapter { get; protected set; }
 
     /// <summary>
     /// Current instance of the Device order processor
     /// </summary>
-    
+
     public IOrderProcessor OrderProcessor { get; protected set; }
-
-    /// <summary>
-    /// Current device state
-    /// </summary>
-    public IDeviceState DeviceState => CurrentState?.DeviceState ?? DefaultDeviceStates.DeviceStateOffline;
-
-    /// <summary>
-    /// Current business state
-    /// </summary>
-    public IBusinessState BusinessState => CurrentState?.BusinessState ?? DefaultBusinessStates.Offline;
-
-    /// <summary>
-    /// Current business substate
-    /// </summary>
-    public IBusinessSubState BusinessSubState => CurrentState?.BusinessSubState ?? DefaultBusinessSubStates.NotSet;
-
-    /// <summary>
-    /// The current <see cref="IStateManagementState"/>
-    /// </summary>
-    public IStateManagementState CurrentState { get; private set; }
-    public void SetInitialStates(IDeviceState deviceState, IBusinessState businessState, IBusinessState businessSubState)
-    {
-        throw new NotImplementedException();
-    }
-
-    public void LoadState(IStateManagementState state)
-    {
-        CurrentState = state;
-    }
 
     /// <summary>
     /// Current order manager
@@ -108,7 +80,6 @@ public abstract class BaseOrderManagementDevice : IOrderManagementDevice
             {
                 // RL: ComDev should be reset to initial state here under all circumstances to avoid any hanging comm parts
                 CommunicationAdapter.ComDevReset();
-                DoNotify(CurrentState);
                 //_monitorLogger?.LogError($"Ping NOT successful for IP {SmdDevice.IpAddress}");
                 SetOrderProcessingStateDelegate(false);
                 return false;
@@ -156,7 +127,7 @@ public abstract class BaseOrderManagementDevice : IOrderManagementDevice
     /// <summary>
     /// Current master order factory. This prop is intended for testing purposes. Do not use directly
     /// </summary>
-    
+
     public IMasterOrderFactory MasterOrderFactory { get; protected set; }
 
     /// <summary>
@@ -213,7 +184,6 @@ public abstract class BaseOrderManagementDevice : IOrderManagementDevice
     {
         CommunicationAdapter.ComDevReset();
     }
-
 
     /// <summary>
     /// Is running the order allowed at the current timepoint
@@ -515,6 +485,19 @@ public abstract class BaseOrderManagementDevice : IOrderManagementDevice
     }
 
     /// <summary>
+    /// Delegate for creating data messages to sent to the device
+    /// </summary>
+    public PrepareRegularStateRequestDelegate PrepareRegularStateRequestDelegate { get; set; } = NoOrderPrepareRegularStateRequestDelegate;
+
+    /// <summary>
+    /// Prepare the no orders for the regular state request
+    /// </summary>
+    public static IEnumerable<IOrder> NoOrderPrepareRegularStateRequestDelegate()
+    {
+        return [];
+    }
+
+    /// <summary>
     /// Log in DEBUG mode
     /// </summary>
     /// <param name="message">Message to log</param>
@@ -634,55 +617,55 @@ public abstract class BaseOrderManagementDevice : IOrderManagementDevice
         CommunicationAdapter.ComDevClose();
     }
 
-    /// <summary>
-    /// Send an app notfication
-    /// </summary>
-    /// <param name="state">State management state</param>
-    public void DoNotify(IStateManagementState state)
-    {
-        if (OrderProcessor == null)
-        {
-            return;
-        }
+    ///// <summary>
+    ///// Send an app notfication
+    ///// </summary>
+    ///// <param name="state">State management state</param>
+    //public void DoNotify(IStateManagementState state)
+    //{
+    //    if (OrderProcessor == null)
+    //    {
+    //        return;
+    //    }
 
-        ClientNotificationManager.DoNotifyStateManagementStateEvent(this, state);
+    //    ClientNotificationManager.DoNotifyStateManagementStateEvent(this, state);
 
 
-        //IOrder currentOrder = null;
-        //try
-        //{
-        //    currentOrder = OrderProcessor.GetCurrentProcessingOrder();
-        //}
-        //catch (Exception e)
-        //{
-        //    _appLogger.LogError($"{DataMessagingConfig.LoggerId}: exception {e.Message} happened", e);
-        //}
+    //    //IOrder currentOrder = null;
+    //    //try
+    //    //{
+    //    //    currentOrder = OrderProcessor.GetCurrentProcessingOrder();
+    //    //}
+    //    //catch (Exception e)
+    //    //{
+    //    //    _appLogger.LogError($"{DataMessagingConfig.LoggerId}: exception {e.Message} happened", e);
+    //    //}
 
-        //var terminal = 1;
-        //try
-        //{
-        //    if (currentOrder?.ParameterSet is ITerminalParameterSet ps)
-        //    {
-        //        terminal = ps.Terminal;
-        //        if (terminal == 0)
-        //        {
-        //            terminal = 1;
+    //    //var terminal = 1;
+    //    //try
+    //    //{
+    //    //    if (currentOrder?.ParameterSet is ITerminalParameterSet ps)
+    //    //    {
+    //    //        terminal = ps.Terminal;
+    //    //        if (terminal == 0)
+    //    //        {
+    //    //            terminal = 1;
 
-        //        }
-        //    }
-        //}
-        //catch
-        //{
-        //    // Do nothing
-        //}
+    //    //        }
+    //    //    }
+    //    //}
+    //    //catch
+    //    //{
+    //    //    // Do nothing
+    //    //}
 
-        //MessagingBusinessDelegate.DoNotifyApplicationBusinessEvent(this, state.Name,
-        //    SmdDevice.DeviceSn, state,
-        //    ApplicationMessageEnum.Device,
-        //    currentOrder?.Id ?? 0,
-        //    PreviousDeviceState, terminal);
+    //    //MessagingBusinessDelegate.DoNotifyApplicationBusinessEvent(this, state.Name,
+    //    //    SmdDevice.DeviceSn, state,
+    //    //    ApplicationMessageEnum.Device,
+    //    //    currentOrder?.Id ?? 0,
+    //    //    PreviousDeviceState, terminal);
 
-    }
+    //}
 
     /// <summary>
     /// Cancel the execution of orders by its sourceUid

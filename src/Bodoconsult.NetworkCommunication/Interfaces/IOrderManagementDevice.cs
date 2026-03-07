@@ -1,5 +1,6 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
+using Bodoconsult.NetworkCommunication.Delegates;
 using Bodoconsult.NetworkCommunication.StateManagement;
 
 namespace Bodoconsult.NetworkCommunication.Interfaces;
@@ -7,7 +8,7 @@ namespace Bodoconsult.NetworkCommunication.Interfaces;
 /// <summary>
 /// Interface for implementing a device with order management
 /// </summary>
-public interface IOrderManagementDevice: IStateManagementContext
+public interface IOrderManagementDevice
 {
     /// <summary>
     /// Device configuration for data messaging
@@ -194,4 +195,38 @@ public interface IOrderManagementDevice: IStateManagementContext
     /// Check if there are any orders to be created 
     /// </summary>
     void CheckIfThereAreOrdersToBeCreated();
+
+    /// <summary>
+    /// Prepare the orders for the regular state request
+    /// </summary>
+    /// <returns></returns>
+    PrepareRegularStateRequestDelegate PrepareRegularStateRequestDelegate { get; set; }
+
+    #region Logging
+
+    /// <summary>
+    /// Log in DEBUG mode
+    /// </summary>
+    /// <param name="message">Message to log</param>
+    public void LogDebug(string message);
+
+    /// <summary>
+    /// Log in INFORMATION mode
+    /// </summary>
+    /// <param name="message">Message to log</param>
+    public void LogInformation(string message);
+
+    /// <summary>
+    /// Log in WARNING mode
+    /// </summary>
+    /// <param name="message">Message to log</param>
+    public void LogWarning(string message);
+
+    /// <summary>
+    /// Log in ERROR mode
+    /// </summary>
+    /// <param name="message">Message to log</param>
+    public void LogError(string message);
+
+    #endregion
 }

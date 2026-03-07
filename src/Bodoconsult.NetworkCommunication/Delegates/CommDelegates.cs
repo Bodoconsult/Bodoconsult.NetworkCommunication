@@ -171,8 +171,8 @@ public delegate bool RequestStepProcessorIsCancelledDelegate();
 /// <summary>
 /// Send an app notfication
 /// </summary>
-/// <param name="stateManagementState">Business or device state to send the notification for</param>
-public delegate void DoNotifyDelegate(IStateManagementState stateManagementState);
+/// <param name="stateMachineState">Business or device state to send the notification for</param>
+public delegate void DoNotifyDelegate(IStateMachineState stateMachineState);
 
 /// <summary>
 /// Delegate to cancel running operation on comm adapter level
@@ -208,5 +208,11 @@ public delegate bool CheckReceivedMessageDelegate(IRequestAnswer requestAnswer, 
 /// <param name="parameterSet">Current parameter set</param>
 /// <returns>List with orders to send to the device</returns>
 public delegate List<IOutboundDataMessage> CreateMessagesToSentDelegate(IParameterSet parameterSet);
+
+/// <summary>
+/// Delegate to create one or more orders needed as regular state request to the device
+/// </summary>
+/// <returns></returns>
+public delegate IEnumerable<IOrder> PrepareRegularStateRequestDelegate();
 
 #endregion

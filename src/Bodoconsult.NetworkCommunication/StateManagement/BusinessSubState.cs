@@ -1,17 +1,17 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
+using Bodoconsult.NetworkCommunication.Interfaces;
+
 namespace Bodoconsult.NetworkCommunication.StateManagement;
 
 /// <summary>
-/// Current implementation of <see cref="IBusinessSubState"/>
+/// Business substate
 /// </summary>
 public class BusinessSubState : IBusinessSubState
 {
     /// <summary>
     /// Default ctor
     /// </summary>
-    /// <param name="id">ID of the substate</param>
-    /// <param name="name">Cleartext name of the substate</param>
     public BusinessSubState(int id, string name)
     {
         Id = id;
@@ -19,26 +19,16 @@ public class BusinessSubState : IBusinessSubState
     }
 
     /// <summary>
-    /// ID of the substate
+    /// The ID of the state
     /// </summary>
     public int Id { get; }
 
     /// <summary>
-    /// Cleartext name of the substate
+    /// The cleartext name of the state
     /// </summary>
-    public string Name { get; }
+    public string Name { get; set; }
 
-    /// <summary>Indicates whether the current object is equal to another object of the same type.</summary>
-    /// <param name="other">An object to compare with this object.</param>
-    /// <returns>
-    /// <see langword="true" /> if the current object is equal to the <paramref name="other" /> parameter; otherwise, <see langword="false" />.</returns>
-    public bool Equals(IBusinessSubState other)
-    {
-        if (other == null)
-        {
-            return false;
-        }
-
-        return Id == other.Id;
-    }
+    /// <summary>Returns a string that represents the current object.</summary>
+    /// <returns>A string that represents the current object.</returns>
+    public override string ToString() => $"{Id} {Name}";
 }

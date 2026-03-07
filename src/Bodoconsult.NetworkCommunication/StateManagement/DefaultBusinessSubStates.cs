@@ -3,12 +3,25 @@
 namespace Bodoconsult.NetworkCommunication.StateManagement;
 
 /// <summary>
-/// Default business substates
+/// StSys SMD tower business sub states
 /// </summary>
 public static class DefaultBusinessSubStates
 {
     /// <summary>
-    ///  Not set substate
+    /// Not set
     /// </summary>
-    public static IBusinessSubState NotSet { get; } = new BusinessSubState(0, "NotSet");
+    public static BusinessSubState NotSet =
+        new BusinessSubState(0, "Not set");
+
+    /// <summary>
+    /// Pinging the tower
+    /// </summary>
+    public static BusinessSubState PingingTower =
+        new BusinessSubState(1, "Pinging the tower");
+
+    /// <summary>
+    /// Pinging the tower
+    /// </summary>
+    public static BusinessSubState WaitingForNextPingingTower =
+        new BusinessSubState(2, "Waiting for the next pinging the tower");
 }
