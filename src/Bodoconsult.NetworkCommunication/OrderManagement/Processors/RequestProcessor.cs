@@ -236,7 +236,7 @@ public class RequestProcessor : IRequestProcessor
             return SetUnsuccessful(order);
         }
 
-        requestSpec.DoNotifyDelegate = _device.DoNotify;
+        //requestSpec.DoNotifyDelegate = _device.DoNotify;
         requestSpec.SendDataMessageDelegate = _device.CommunicationAdapter.SendDataMessage;
         requestSpec.CancelRunningOperationDelegate = _device.CommunicationAdapter.CancelRunningOperation;
         requestSpec.AppLogger = _appLogger;
@@ -297,7 +297,7 @@ public class RequestProcessor : IRequestProcessor
             return SetUnsuccessful(order);
         }
 
-        requestSpec.DoNotifyDelegate = _device.DoNotify;
+        //requestSpec.DoNotifyDelegate = _device.DoNotify;
         requestSpec.SendDataMessageDelegate = _device.CommunicationAdapter.SendDataMessage;
         requestSpec.CancelRunningOperationDelegate = _device.CommunicationAdapter.CancelRunningOperation;
         requestSpec.AppLogger = _appLogger;
@@ -357,7 +357,7 @@ public class RequestProcessor : IRequestProcessor
             return SetUnsuccessful(order);
         }
 
-        requestSpec.DoNotifyDelegate = _device.DoNotify;
+        //requestSpec.DoNotifyDelegate = _device.DoNotify;
         requestSpec.SendDataMessageDelegate = _device.CommunicationAdapter.SendDataMessage;
         requestSpec.CancelRunningOperationDelegate = _device.CommunicationAdapter.CancelRunningOperation;
         requestSpec.AppLogger = _appLogger;
@@ -417,7 +417,7 @@ public class RequestProcessor : IRequestProcessor
             return SetUnsuccessful(order);
         }
 
-        requestSpec.DoNotifyDelegate = _device.DoNotify;
+        //requestSpec.DoNotifyDelegate = _device.DoNotify;
         requestSpec.CancelRunningOperationDelegate = _device.CommunicationAdapter.CancelRunningOperation;
         requestSpec.AppLogger = _appLogger;
         requestSpec.OrderLoggerId = $"{_orderLoggerId}RSP: {requestSpec.Name} ";

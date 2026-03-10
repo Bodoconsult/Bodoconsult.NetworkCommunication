@@ -1,11 +1,11 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
-namespace Bodoconsult.NetworkCommunication.StateManagement;
+namespace Bodoconsult.NetworkCommunication.StateManagement.Interfaces;
 
 /// <summary>
-/// Interface for states resulting from jobs
+/// Configuration for a <see cref="IJobStateMachineState"/>. State machine state configurations have to set per device
 /// </summary>
-public interface IJobStateMachineState: IStateMachineState
+public interface IJobStateConfiguration : IOrderBasedActionStateConfiguration
 {
     /// <summary>
     /// The UID of a source item like a joblist or a trial run the order is bound to

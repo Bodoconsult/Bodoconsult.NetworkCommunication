@@ -18,7 +18,7 @@ internal class RequestProcessorTests
     public void Ctor_ValidSetup_PropsSetCorrectly()
     {
         // Arrange 
-        var device = TestDataHelper.CreateDevice();
+        var device = TestDataHelper.CreateNoStateMachineDevice();
 
         var ps = new SdcpParameterSet();
 
@@ -43,7 +43,7 @@ internal class RequestProcessorTests
     public void ExecuteOrder_NoMessageReceived_Timeout()
     {
         // Arrange 
-        var device = TestDataHelper.CreateDevice();
+        var device = TestDataHelper.CreateNoStateMachineDevice();
         device.LoadCommAdapter(TestDataHelper.FakeIpCommunicationAdapter);
 
         var ps = new SdcpParameterSet();
@@ -65,7 +65,7 @@ internal class RequestProcessorTests
     public void ExecuteOrder_NormalOrderMessageReceived_Successful()
     {
         // Arrange 
-        var device = TestDataHelper.CreateDevice();
+        var device = TestDataHelper.CreateNoStateMachineDevice();
         device.LoadCommAdapter(TestDataHelper.FakeIpCommunicationAdapter);
 
         var ps = new SdcpParameterSet();
@@ -100,7 +100,7 @@ internal class RequestProcessorTests
     public void ExecuteOrder_NoAnswerOrder_Successful()
     {
         // Arrange 
-        var device = TestDataHelper.CreateDevice();
+        var device = TestDataHelper.CreateNoStateMachineDevice();
         device.LoadCommAdapter(TestDataHelper.FakeIpCommunicationAdapter);
 
         var ps = new SdcpParameterSet();
@@ -122,7 +122,7 @@ internal class RequestProcessorTests
     public void ExecuteOrder_NoHandshakeNoAnswerOrder_Successful()
     {
         // Arrange 
-        var device = TestDataHelper.CreateDevice();
+        var device = TestDataHelper.CreateNoStateMachineDevice();
         device.LoadCommAdapter(TestDataHelper.FakeIpCommunicationAdapter);
 
         var ps = new SdcpParameterSet();

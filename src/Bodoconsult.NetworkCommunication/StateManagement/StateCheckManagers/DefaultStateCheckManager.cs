@@ -4,13 +4,14 @@ using Bodoconsult.App.Helpers;
 using Bodoconsult.App.Interfaces;
 using Bodoconsult.NetworkCommunication.EnumAndStates;
 using Bodoconsult.NetworkCommunication.Interfaces;
+using Bodoconsult.NetworkCommunication.StateManagement.Interfaces;
 
-namespace Bodoconsult.NetworkCommunication.StateManagement;
+namespace Bodoconsult.NetworkCommunication.StateManagement.StateCheckManagers;
 
 /// <summary>
-/// Current implementation of <see cref="IDeviceStateCheckManager"/> for SMD towers
+/// Current implementation of <see cref="IDeviceStateCheckManager"/> for IP devices
 /// </summary>
-public class StSysStateCheckManager : IDeviceStateCheckManager, IDisposable
+public class DefaultStateCheckManager : IDeviceStateCheckManager
 {
     /// <summary>
     /// Current status (and humidity) request watchdog
@@ -20,18 +21,18 @@ public class StSysStateCheckManager : IDeviceStateCheckManager, IDisposable
     private bool _isActivated;
     private readonly Lock _isActivatedLock = new();
 
-    private readonly IOrderManagementDevice _towerServer;
+    private readonly IStateManagementDevice _device;
 
     /// <summary>
     /// Default ctor
     /// </summary>
-    /// <param name="towerServer">Current tower server</param>
-    public StSysStateCheckManager(IOrderManagementDevice towerServer)
+    /// <param name="device">Current tower server</param>
+    public DefaultStateCheckManager(IStateManagementDevice device)
     {
-        _towerServer = towerServer;
-        _statusWatchdog = new WatchDog(WatchDogRunnerDelegate, DeviceCommunicationBasics.TowerStatusWatchdogInterval);
+        _device = device;
+        _statusWatchdog = new WatchDog(WatchDogRunnerDelegate, DeviceCommunicationBasics.DeviceStatusWatchdogInterval);
         _statusWatchdog.StartWatchDog();
-        _towerServer.LogInformation($"{_towerServer.LoggerId}state check init done");
+        _device.LogInformation($"{_device.DataMessagingConfig.LoggerId}state check init done");
     }
 
     private void WatchDogRunnerDelegate()
@@ -43,20 +44,20 @@ public class StSysStateCheckManager : IDeviceStateCheckManager, IDisposable
         }
 
         // Check connection
-        if (!_towerServer.IsConnected)
+        if (!_device.IsConnected)
         {
             return;
         }
 
         // Check if there are any priority orders
-        _towerServer.CheckIfThereAreOrdersToBeCreated();
+        _device.CheckIfThereAreOrdersToBeCreated();
 
         // If connected, do the state request now
-        var orders = _towerServer.CurrentState.PerpareRegularStateRequest();
+        var orders = _device.CurrentState.PerpareRegularStateRequest();
         foreach (var order in orders)
         {
-            var result = _towerServer.OrderProcessor.TryToExecuteOrderSync(order, false, true);
-            if (result.LastStepExecutionResult != OrderExecutionResultState.Successful)
+            var result = _device.OrderManager.OrderProcessor.TryToExecuteOrderSync(order, false, true);
+            if (result != OrderExecutionResultState.Successful)
             {
                 break;
             }

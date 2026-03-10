@@ -1,11 +1,11 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
-namespace Bodoconsult.NetworkCommunication.StateManagement;
+namespace Bodoconsult.NetworkCommunication.StateManagement.Interfaces;
 
 /// <summary>
 /// Interface for checking device state manager implementations
 /// </summary>
-public interface IDeviceStateCheckManager
+public interface IDeviceStateCheckManager : IDisposable
 {
     /// <summary>
     /// Is the state check activated currently

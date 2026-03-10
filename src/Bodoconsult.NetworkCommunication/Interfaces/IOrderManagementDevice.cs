@@ -1,8 +1,5 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
-using Bodoconsult.NetworkCommunication.Delegates;
-using Bodoconsult.NetworkCommunication.StateManagement;
-
 namespace Bodoconsult.NetworkCommunication.Interfaces;
 
 /// <summary>
@@ -140,18 +137,6 @@ public interface IOrderManagementDevice
     void Check4ConcurrentOrders(IOrder order);
 
     /// <summary>
-    /// The order was finished successfully and now do the last work on the order
-    /// </summary>
-    /// <param name="order">Current order</param>
-    public void OrderFinishedSuccessful(IOrder order);
-
-    /// <summary>
-    /// The order was NOT finished succesfully and now do the last work on the order
-    /// </summary>
-    /// <param name="order">Current order</param>
-    void OrderFinishedUnsuccessful(IOrder order);
-
-    /// <summary>
     /// Cancel orders with special handling
     /// </summary>
     void CancelOrdersWithSpecialHandling();
@@ -183,7 +168,7 @@ public interface IOrderManagementDevice
     /// Check if the message is an error message
     /// </summary>
     /// <param name="receivedMessage">Received message</param>
-    /// <returns>True if the message was an handled as error message else false</returns>
+    /// <returns>True if the message was a handled as error message else false</returns>
     bool DoCheckForErrorMessage(IInboundDataMessage receivedMessage);
 
     /// <summary>
@@ -195,12 +180,6 @@ public interface IOrderManagementDevice
     /// Check if there are any orders to be created 
     /// </summary>
     void CheckIfThereAreOrdersToBeCreated();
-
-    /// <summary>
-    /// Prepare the orders for the regular state request
-    /// </summary>
-    /// <returns></returns>
-    PrepareRegularStateRequestDelegate PrepareRegularStateRequestDelegate { get; set; }
 
     #region Logging
 
@@ -229,4 +208,5 @@ public interface IOrderManagementDevice
     public void LogError(string message);
 
     #endregion
+
 }

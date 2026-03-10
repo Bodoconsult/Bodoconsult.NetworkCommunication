@@ -47,10 +47,10 @@ public abstract class BaseRequestSpec : IRequestSpec
     /// </summary>
     public IAppLoggerProxy AppLogger { get; set; }
 
-    /// <summary>
-    /// Send an app notfication
-    /// </summary>
-    public DoNotifyDelegate DoNotifyDelegate { get; set; }
+    ///// <summary>
+    ///// Send an app notfication
+    ///// </summary>
+    //public DoNotifyDelegate DoNotifyDelegate { get; set; }
 
     /// <summary>
     /// Delegate to cancel running operation on comm adapter level

@@ -2,8 +2,8 @@
 
 using Bodoconsult.NetworkCommunication.Interfaces;
 using Bodoconsult.NetworkCommunication.OrderManagement.Devices;
+using Bodoconsult.NetworkCommunication.StateManagement.Interfaces;
 using System.Collections.Concurrent;
-using System.Diagnostics;
 
 namespace Bodoconsult.NetworkCommunication.StateManagement;
 
@@ -163,7 +163,24 @@ public abstract class BaseStateMachineContext : BaseOrderManagementDevice, IStat
         CurrentState.InitiateState();
 
         // Run the first order now
-        CurrentState.RunNextOrder();
+        if (CurrentState is INoActionStateMachineState)
+        {
+            return;
+        }
+
+        if (CurrentState is IOrderBasedActionStateMachineState obas)
+        {
+            obas.RunNextOrder();
+            return;
+        }
+
+        if (CurrentState is not IOrderlessActionStateMachineState olas)
+        {
+            return;
+        }
+
+        olas.Execute();
+        return;
     }
 
     /// <summary>

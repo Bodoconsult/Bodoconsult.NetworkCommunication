@@ -36,7 +36,7 @@ internal class OrderProcessorTests
 
     private readonly IAppDateService _dateTimeService = TestDataHelper.AppDateService;
 
-    private FakeDevice _device;
+    private FakeNoStateMachineDevice _device;
 
     private readonly IAppBenchProxy _benchLogger = TestDataHelper.GetFakeAppBenchProxy();
 
@@ -191,7 +191,7 @@ internal class OrderProcessorTests
         // Test init
         _stepFactory = new RequestStepProcessorFactory();
 
-        _device = TestDataHelper.CreateDevice();
+        _device = TestDataHelper.CreateNoStateMachineDevice();
         _device.LoadCommAdapter(_commAdapter);
 
         var logger = Globals.Instance.Logger;

@@ -1,7 +1,7 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
 using Bodoconsult.NetworkCommunication.App.Abstractions;
-using Bodoconsult.NetworkCommunication.StateManagement;
+using Bodoconsult.NetworkCommunication.StateManagement.Interfaces;
 
 namespace Bodoconsult.NetworkCommunication.Interfaces;
 
@@ -15,7 +15,7 @@ public interface IOrderManagementClientNotificationManager : ICentralClientNotif
     /// </summary>
     /// <param name="sender">Sender</param>
     /// <param name="state">State to send to client</param>
-    void DoNotifyStateManagementStateEvent(object sender, IStateManagementState state);
+    void DoNotifyStateManagementStateEvent(object sender, IStateMachineState state);
 
     /// <summary>
     /// Do notify order state changed

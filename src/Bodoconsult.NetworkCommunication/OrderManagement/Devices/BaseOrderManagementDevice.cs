@@ -1,17 +1,15 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
-using System.Diagnostics;
 using Bodoconsult.App.Interfaces;
-using Bodoconsult.NetworkCommunication.Delegates;
 using Bodoconsult.NetworkCommunication.Interfaces;
+using System.Diagnostics;
 
 namespace Bodoconsult.NetworkCommunication.OrderManagement.Devices;
 
-
 /// <summary>
-/// Base class for order management devices
-/// </summary>
-public abstract class BaseOrderManagementDevice : IOrderManagementDevice
+    /// Base class for order management devices
+    /// </summary>
+    public abstract class BaseOrderManagementDevice : IOrderManagementDevice
 {
     protected bool _isOrderProcessingActivated;
 
@@ -371,7 +369,7 @@ public abstract class BaseOrderManagementDevice : IOrderManagementDevice
         {
             var requestSpecs = order.RequestSpecs;
 
-            // Now run a order specific not succesfully finished action
+            // Now run an order specific not succesfully finished action
             if (order.OrderFinishedUnsuccessfulAction != null)
             {
                 // Get the transport object from the last request. May be null
@@ -482,19 +480,6 @@ public abstract class BaseOrderManagementDevice : IOrderManagementDevice
         // ToDo: new delegate
         //SlotCheckBusinessDelegate?.CheckCurrentAbortedUnloadOrLoadOrder();
         _appLogger.LogDebug($"{DataMessagingConfig.LoggerId}Run SlotCheck.CheckCurrentAbortedUnloadOrLoadOrder");
-    }
-
-    /// <summary>
-    /// Delegate for creating data messages to sent to the device
-    /// </summary>
-    public PrepareRegularStateRequestDelegate PrepareRegularStateRequestDelegate { get; set; } = NoOrderPrepareRegularStateRequestDelegate;
-
-    /// <summary>
-    /// Prepare the no orders for the regular state request
-    /// </summary>
-    public static IEnumerable<IOrder> NoOrderPrepareRegularStateRequestDelegate()
-    {
-        return [];
     }
 
     /// <summary>

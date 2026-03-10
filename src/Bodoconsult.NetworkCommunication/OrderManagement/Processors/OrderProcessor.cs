@@ -37,7 +37,7 @@ public class OrderProcessor : IOrderProcessor
     /// </summary>
     private readonly IWatchDog _messageProcessingWatchdog;
 
-    private readonly IOrderManagementDevice _smddevice;
+    private readonly INoStateMachineOrderManagementDevice _smddevice;
     private readonly IAppDateService _dateTimeService;
     private readonly IAppLoggerProxy _appLogger;
     private readonly string _loggerId;
@@ -67,8 +67,8 @@ public class OrderProcessor : IOrderProcessor
     /// Default ctor
     /// </summary>
     public OrderProcessor(
-        IOrderManagementDevice deviceServer,
-        App.Abstractions.IAppDateService dateTimeService,
+        INoStateMachineOrderManagementDevice deviceServer,
+        IAppDateService dateTimeService,
         IOrderPipeline orderPipeline,
         ISyncOrderManager syncOrderManager,
         IOrderManagementClientNotificationManager clientNotificationManager,
@@ -226,7 +226,7 @@ public class OrderProcessor : IOrderProcessor
 
         CheckAndRunOrder(order);
 
-        CurrentDevice.DoNotifyHardwareInitRequested();
+        _smddevice.DoNotifyHardwareInitRequested();
         _appLogger.LogInformation($"{_loggerId}{order.LoggerId}order execution started");
 
         return order;
@@ -439,19 +439,19 @@ public class OrderProcessor : IOrderProcessor
         {
             if (isNoOrderWaiting && !IsInitInProcessing)
             {
-                CurrentDevice.CheckIfThereAreOrdersToBeCreated();
+                _smddevice.CheckIfThereAreOrdersToBeCreated();
             }
             return;
         }
 
         // Check if the device is ready for order running
-        if (!CurrentDevice.IsRunningOrdersAllowed)
+        if (!_smddevice.IsRunningOrdersAllowed)
         {
             return;
         }
 
         // Get the next order to run from business logic
-        var order = CurrentDevice.GetNextOrderToRun();
+        var order = _smddevice.GetNextOrderToRun();
 
         if (order == null)
         {
@@ -472,7 +472,7 @@ public class OrderProcessor : IOrderProcessor
         var runningOrders = OrderPipeline.RunningOrders.ToList();
 
         // Check if it is allowed to run the order now
-        if (!CurrentDevice.IsRunningTheOrderAllowed(order, runningOrders))
+        if (!_smddevice.IsRunningTheOrderAllowed(order, runningOrders))
         {
             return;
         }
@@ -484,7 +484,7 @@ public class OrderProcessor : IOrderProcessor
         }
 
         // last check to prevent from deadlock
-        CurrentDevice.Check4ConcurrentOrders(order);
+        _smddevice.Check4ConcurrentOrders(order);
 
         // Now finally execute the order
         RunOrder(order);
@@ -614,12 +614,12 @@ public class OrderProcessor : IOrderProcessor
         // Process successful orders
         if (order.ExecutionResult.Id == OrderExecutionResultState.Successful.Id)
         {
-            CurrentDevice.OrderFinishedSuccessful(order);
+            _smddevice.OrderFinishedSuccessful(order);
             order.Benchmark?.AddStep("Order finished Successful");
         }
         else // Process unsuccessful orders
         {
-            CurrentDevice.OrderFinishedUnsuccessful(order);
+            _smddevice.OrderFinishedUnsuccessful(order);
             order.Benchmark?.AddStep("Order finished Unsuccessful");
         }
 
@@ -1021,7 +1021,7 @@ public class OrderProcessor : IOrderProcessor
         //*********************
         // TOP 5 Last chance for message handling: async message handling
         //*********************
-        var result = CurrentDevice.CurrentState.HandleAsyncMessage(receivedMessage);
+        var result = _smddevice.NoStateMachineHandleAsyncMessageDelegate.Invoke(receivedMessage);
 
         //IsRunnerStopped = false;
 
@@ -1136,7 +1136,7 @@ public class OrderProcessor : IOrderProcessor
             return;
         }
 
-        CurrentDevice.CurrentState.HandleErrorMessage(msg);
+        _smddevice .NoStateMachineHandleErrorMessageDelegate.Invoke(msg);
     }
 
     /// <summary>
@@ -1194,5 +1194,3 @@ public class OrderProcessor : IOrderProcessor
         OrderPipeline.Dispose();
     }
 }
-
-

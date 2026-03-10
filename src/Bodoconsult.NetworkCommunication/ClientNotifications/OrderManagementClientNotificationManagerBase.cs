@@ -2,7 +2,7 @@
 
 using Bodoconsult.NetworkCommunication.App.Abstractions;
 using Bodoconsult.NetworkCommunication.Interfaces;
-using Bodoconsult.NetworkCommunication.StateManagement;
+using Bodoconsult.NetworkCommunication.StateManagement.Interfaces;
 
 namespace Bodoconsult.NetworkCommunication.ClientNotifications;
 
@@ -20,9 +20,9 @@ public abstract class OrderManagementClientNotificationManagerBase : IOrderManag
 
     #endregion
 
-    public void DoNotifyStateManagementStateEvent(object sender, IStateManagementState state)
+    public void DoNotifyStateManagementStateEvent(object sender, IStateMachineState state)
     {
-        var notification = new StateManagementStateNotification()
+        var notification = new StateMachineStateNotification
         {
             State = state
         };

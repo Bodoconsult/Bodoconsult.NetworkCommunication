@@ -2,7 +2,7 @@
 
 using Bodoconsult.NetworkCommunication.App.Abstractions;
 using Bodoconsult.NetworkCommunication.Interfaces;
-using Bodoconsult.NetworkCommunication.StateManagement;
+using Bodoconsult.NetworkCommunication.StateManagement.Interfaces;
 
 namespace Bodoconsult.NetworkCommunication.ClientNotifications;
 
@@ -43,7 +43,7 @@ public class FakeOrderManagementClientNotificationManager : IOrderManagementClie
     /// </summary>
     /// <param name="sender">Sender</param>
     /// <param name="state">State to send to client</param>
-    public void DoNotifyStateManagementStateEvent(object sender, IStateManagementState state)
+    public void DoNotifyStateManagementStateEvent(object sender, IStateMachineState state)
     {
         // Do nothing
     }

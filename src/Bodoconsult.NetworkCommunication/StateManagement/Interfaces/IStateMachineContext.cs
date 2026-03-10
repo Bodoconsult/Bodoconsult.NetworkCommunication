@@ -2,7 +2,7 @@
 
 using Bodoconsult.NetworkCommunication.Interfaces;
 
-namespace Bodoconsult.NetworkCommunication.StateManagement;
+namespace Bodoconsult.NetworkCommunication.StateManagement.Interfaces;
 
 /// <summary>
 /// The context for a state machine implementation
@@ -18,7 +18,6 @@ public interface IStateMachineContext
     /// The last job state not processed completely
     /// </summary>
     IJobStateMachineState SavedJobState { get; }
-
 
     ///// <summary>
     /////  The current device

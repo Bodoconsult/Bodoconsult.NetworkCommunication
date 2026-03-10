@@ -1,0 +1,44 @@
+﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
+
+using Bodoconsult.NetworkCommunication.Interfaces;
+using Bodoconsult.NetworkCommunication.StateManagement.Interfaces;
+
+namespace Bodoconsult.NetworkCommunication.StateManagement.Builders;
+
+/// <summary>
+/// Builder for the default state DeviceStartSnapshotState
+/// </summary>
+public class DeviceStartSnapshotStateBuilder : BaseOrderBasedStateMachineStateBuilder
+{
+    /// <summary>
+    /// Allowed next states internal
+    /// </summary>
+    public static readonly List<string> AllowedNextStatesInternal = [DefaultStateNames.DeviceSnapshotState, DefaultStateNames.DeviceOfflineState];
+
+    /// <summary>
+    /// Default ctor
+    /// </summary>
+    public DeviceStartSnapshotStateBuilder() : base(DefaultStateIds.DeviceStartSnapshotState, DefaultStateNames.DeviceStartSnapshotState)
+    { }
+
+    public override void ConfigureOrderBasedActionState(IOrderBasedActionStateMachineState state, IOrderBasedActionStateConfiguration config)
+    {
+        state.InitialDeviceState = DefaultDeviceStates.DeviceStateOnline;
+        state.InitialBusinessSubState = DefaultBusinessSubStates.TryToConnect;
+        state.PrepareOrdersForStateMachineStateDelegate = config.PrepareOrdersForStateMachineStateDelegate;
+        state.OrderFinishedSucessfullyDelegate = config.OrderFinishedSucessfullyDelegate;
+        state.OrderFinishedUnsucessfullyDelegate = config.OrderFinishedUnsucessfullyDelegate;
+
+        state.IsRunningOrdersCancellationRequired = true;
+        state.IsTurningOffStateRequestsRequired = true;
+        state.CancellationTokenSource = new CancellationTokenSource();
+        state.CancelStateDelegate = CancelStateDelegate;
+
+        state.AllowedNextStates.AddRange(AllowedNextStatesInternal);
+    }
+
+    private static void CancelStateDelegate(IStateMachineState state)
+    {
+        state.CancellationTokenSource?.Cancel();
+    }
+}

@@ -4,7 +4,6 @@ using Bodoconsult.NetworkCommunication.Interfaces;
 using Bodoconsult.NetworkCommunication.OrderManagement.OrderBuilders;
 using Bodoconsult.NetworkCommunication.OrderManagement.Orders;
 using Bodoconsult.NetworkCommunication.OrderManagement.ParameterSets;
-using Bodoconsult.NetworkCommunication.OrderManagement.Processors;
 
 namespace Bodoconsult.NetworkCommunication.Tests.OrderManagement.OrderBuilders;
 

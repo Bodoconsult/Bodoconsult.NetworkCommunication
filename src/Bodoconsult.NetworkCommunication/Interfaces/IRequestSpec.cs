@@ -25,10 +25,10 @@ public interface IRequestSpec: IDisposable
     /// </summary>
     IAppLoggerProxy AppLogger { get; set; }
 
-    /// <summary>
-    /// Send an app notfication
-    /// </summary>
-    DoNotifyDelegate DoNotifyDelegate { get; set; }
+    ///// <summary>
+    ///// Send an app notfication
+    ///// </summary>
+    //DoNotifyDelegate DoNotifyDelegate { get; set; }
 
     /// <summary>
     /// Delegate to cancel running operation on comm adapter level

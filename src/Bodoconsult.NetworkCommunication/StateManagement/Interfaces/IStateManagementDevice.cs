@@ -2,7 +2,7 @@
 
 using Bodoconsult.NetworkCommunication.Interfaces;
 
-namespace Bodoconsult.NetworkCommunication.StateManagement;
+namespace Bodoconsult.NetworkCommunication.StateManagement.Interfaces;
 
 /// <summary>
 /// Interface for state management devices 

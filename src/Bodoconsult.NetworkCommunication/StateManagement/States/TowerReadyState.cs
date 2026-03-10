@@ -1,95 +1,97 @@
-﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
+﻿//// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
-namespace Bodoconsult.NetworkCommunication.StateManagement.States;
+//using Bodoconsult.NetworkCommunication.StateManagement.Interfaces;
 
-/// <summary>
-/// The tower is ready for order processing
-/// </summary>
-public class DeviceReadyState : BaseStateMachineState
-{
+//namespace Bodoconsult.NetworkCommunication.StateManagement.States;
 
-    private readonly CancellationTokenSource _cancellationTokenSource = new();
+///// <summary>
+///// The tower is ready for order processing
+///// </summary>
+//public class DeviceReadyState : BaseStateMachineState
+//{
 
-    private static readonly List<string> AllowedNextStatesInternal = new()
-    {
-        nameof(TowerOfflineState),
-        nameof(TowerErrorState),
-        StateConstants.UnloadProcessingStateString,
-        StateConstants.LoadProcessingStateString,
-        StateConstants.JoblistUnloadProcessingStateString,
-        nameof(PerformEmptySlotsStateV55),
-        nameof(TowerBusyState),
-        StateConstants.TowerCalibrationArmStateString,
-        StateConstants.TowerCalibrationMagazineStateString,
-        StateConstants.TowerCalibrationLiftStateString,
-        StateConstants.TowerCalibrationRotorStateString,
-        StateConstants.TowerCalibrationSensorStateString,
-        nameof(TowerRunProcessingStateV55),
-        nameof(TrialRunProcessingStateV55),
-        nameof(TowerUpdateState),
-        StateConstants.TowerSlotHeightCheckStateString,
-        StateConstants.PerformGripHeightCheckStateString,
-        nameof(TowerHardwareInitState)
-    };
+//    private readonly CancellationTokenSource _cancellationTokenSource = new();
 
-    /// <summary>
-    /// Default ctor
-    /// </summary>
-    public TowerReadyState(IStateMachineContext currentContext) : base(currentContext)
-    {
-        Id = (int)StSysTowerBusinessStateEnum.TowerReadyState;
-        Name = string.Intern(nameof(TowerReadyState));
-        CurrentTowerServer = (ITowerServer)currentContext;
+//    private static readonly List<string> AllowedNextStatesInternal = new()
+//    {
+//        nameof(TowerOfflineState),
+//        nameof(TowerErrorState),
+//        StateConstants.UnloadProcessingStateString,
+//        StateConstants.LoadProcessingStateString,
+//        StateConstants.JoblistUnloadProcessingStateString,
+//        nameof(PerformEmptySlotsStateV55),
+//        nameof(TowerBusyState),
+//        StateConstants.TowerCalibrationArmStateString,
+//        StateConstants.TowerCalibrationMagazineStateString,
+//        StateConstants.TowerCalibrationLiftStateString,
+//        StateConstants.TowerCalibrationRotorStateString,
+//        StateConstants.TowerCalibrationSensorStateString,
+//        nameof(TowerRunProcessingStateV55),
+//        nameof(TrialRunProcessingStateV55),
+//        nameof(TowerUpdateState),
+//        StateConstants.TowerSlotHeightCheckStateString,
+//        StateConstants.PerformGripHeightCheckStateString,
+//        nameof(TowerHardwareInitState)
+//    };
 
-        AllowedNextStates = AllowedNextStatesInternal;
-    }
+//    /// <summary>
+//    /// Default ctor
+//    /// </summary>
+//    public TowerReadyState(IStateMachineContext currentContext) : base(currentContext)
+//    {
+//        Id = (int)StSysTowerBusinessStateEnum.TowerReadyState;
+//        Name = string.Intern(nameof(TowerReadyState));
+//        CurrentTowerServer = (ITowerServer)currentContext;
 
-    /// <summary>
-    /// Set the inital states for this business state
-    /// </summary>
-    public override void SetInitalStates()
-    {
-        CurrentContext.SetStates(StSysTowerHardwareState.TowerStateReady, StSysTowerBusinessSubState.Idle);
-    }
+//        AllowedNextStates = AllowedNextStatesInternal;
+//    }
 
-    /// <summary>
-    /// Run the next order for this state
-    /// </summary>
-    public override void RunNextOrder()
-    {
-        while (!_cancellationTokenSource.IsCancellationRequested)
-        {
-            // Check if there is a job state to restore after break
-            if (CurrentContext.SavedJobState != null)
-            {
-                CurrentContext.RestoreSavedState();
-                return;
-            }
+//    /// <summary>
+//    /// Set the inital states for this business state
+//    /// </summary>
+//    public override void SetInitalStates()
+//    {
+//        CurrentContext.SetStates(StSysTowerHardwareState.TowerStateReady, StSysTowerBusinessSubState.Idle);
+//    }
 
-            // Check if a job state is waiting. If yes, process it now
-            if (EnumerableExtensions.Any(CurrentContext.JobStates))
-            {
-                // Get the first job state and process it
-                var state = CurrentContext.JobStates.First();
+//    /// <summary>
+//    /// Run the next order for this state
+//    /// </summary>
+//    public override void RunNextOrder()
+//    {
+//        while (!_cancellationTokenSource.IsCancellationRequested)
+//        {
+//            // Check if there is a job state to restore after break
+//            if (CurrentContext.SavedJobState != null)
+//            {
+//                CurrentContext.RestoreSavedState();
+//                return;
+//            }
 
-                CurrentContext.JobStates.Remove(state);
+//            // Check if a job state is waiting. If yes, process it now
+//            if (EnumerableExtensions.Any(CurrentContext.JobStates))
+//            {
+//                // Get the first job state and process it
+//                var state = CurrentContext.JobStates.First();
 
-                CurrentContext.RequestState(state);
+//                CurrentContext.JobStates.Remove(state);
 
-                _cancellationTokenSource.Dispose();
-                return;
-            }
+//                CurrentContext.RequestState(state);
 
-            // Wait a bit then check again
-            Thread.Sleep(TowerCommunicationBasics.ReadyStateCheckTimeout);
-        }
-    }
+//                _cancellationTokenSource.Dispose();
+//                return;
+//            }
 
-    /// <summary>
-    /// Cancel this state
-    /// </summary>
-    public override void CancelState()
-    {
-        _cancellationTokenSource.Cancel(true);
-    }
-}
+//            // Wait a bit then check again
+//            Thread.Sleep(TowerCommunicationBasics.ReadyStateCheckTimeout);
+//        }
+//    }
+
+//    /// <summary>
+//    /// Cancel this state
+//    /// </summary>
+//    public override void CancelState()
+//    {
+//        _cancellationTokenSource.Cancel(true);
+//    }
+//}

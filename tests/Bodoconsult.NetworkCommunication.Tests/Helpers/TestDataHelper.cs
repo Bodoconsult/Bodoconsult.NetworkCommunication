@@ -14,6 +14,8 @@ using Bodoconsult.NetworkCommunication.Interfaces;
 using Bodoconsult.NetworkCommunication.OrderManagement.Devices;
 using Bodoconsult.NetworkCommunication.OrderManagement.OrderBuilders;
 using Bodoconsult.NetworkCommunication.OrderManagement.ParameterSets;
+using Bodoconsult.NetworkCommunication.StateManagement.Factories;
+using Bodoconsult.NetworkCommunication.StateManagement.StateCheckManagers;
 using IAppDateService = Bodoconsult.NetworkCommunication.App.Abstractions.IAppDateService;
 
 namespace Bodoconsult.NetworkCommunication.Tests.Helpers;
@@ -240,12 +242,22 @@ public static class TestDataHelper
     }
 
     /// <summary>
-    /// Create a simple order management device
+    /// Create a simple order management device without state machine
     /// </summary>
     /// <returns></returns>
-    public static FakeDevice CreateDevice()
+    public static FakeNoStateMachineDevice CreateNoStateMachineDevice()
     {
-        var device = new FakeDevice(GetDataMessagingConfig(), new FakeOrderManagementClientNotificationManager());
+        var device = new FakeNoStateMachineDevice(GetDataMessagingConfig(), new FakeOrderManagementClientNotificationManager());
+        return device;
+    }
+
+    /// <summary>
+    /// Create a simple order management device with state machine
+    /// </summary>
+    /// <returns></returns>
+    public static FakeStateMachineDevice CreateStateMachineDevice()
+    {
+        var device = new FakeStateMachineDevice(GetDataMessagingConfig(), new FakeOrderManagementClientNotificationManager(), new FakeStateMachineStateFactory(), new DoNothingStateCheckManager());
         return device;
     }
 }

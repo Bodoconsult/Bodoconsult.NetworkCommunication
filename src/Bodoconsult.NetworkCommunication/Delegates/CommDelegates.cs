@@ -3,7 +3,7 @@
 using Bodoconsult.NetworkCommunication.Communication.Sending;
 using Bodoconsult.NetworkCommunication.Interfaces;
 using System.Net.Sockets;
-using Bodoconsult.NetworkCommunication.StateManagement;
+using Bodoconsult.NetworkCommunication.StateManagement.Interfaces;
 
 namespace Bodoconsult.NetworkCommunication.Delegates;
 
@@ -209,10 +209,101 @@ public delegate bool CheckReceivedMessageDelegate(IRequestAnswer requestAnswer, 
 /// <returns>List with orders to send to the device</returns>
 public delegate List<IOutboundDataMessage> CreateMessagesToSentDelegate(IParameterSet parameterSet);
 
+
+
+
+#endregion
+
+#region State management
+
+
+
 /// <summary>
 /// Delegate to create one or more orders needed as regular state request to the device
 /// </summary>
 /// <returns></returns>
-public delegate IEnumerable<IOrder> PrepareRegularStateRequestDelegate();
+public delegate List<IOrder> PrepareRegularStateRequestDelegate();
+
+/// <summary>
+/// Delegate to create one or more orders sent to device needed for an order based state machine state
+/// </summary>
+/// <returns></returns>
+public delegate List<IOrder> PrepareOrdersForStateMachineStateDelegate();
+
+/// <summary>
+/// Delegate to be executed from an orderless state machine state
+/// </summary>
+/// <param name="state">Current orderless state machine state</param>
+public delegate void ExecuteActionForStateDelegate(IOrderlessActionStateMachineState state);
+
+/// <summary>
+/// Delegate to be executed from a no action state machine state to check if job states are required to be executed
+/// </summary>
+/// <param name="state">Current no action state machine state</param>
+public delegate void CheckJobstatesActionForStateDelegate(INoActionStateMachineState state);
+
+/// <summary>
+/// Delegate to cancel a state
+/// </summary>
+public delegate void CancelStateDelegate(IOrderlessActionStateMachineState state);
+
+/// <summary>
+/// Delegate to handle a ComDevClose event
+/// </summary>
+/// <param name="state">Current state machine state</param>
+public delegate void HandleComDevCloseDelegate(IStateMachineState state);
+
+/// <summary>
+/// Handle an async received message
+/// </summary>
+/// <param name="state">Current state machine state</param>
+/// <param name="message">Current received message</param>
+/// <returns>Message handling result</returns>
+public delegate MessageHandlingResult HandleAsyncMessageDelegate(IStateMachineState state, IInboundDataMessage  message);
+
+/// <summary>
+/// Handle an async received message without state machine
+/// </summary>
+/// <param name="message">Current received message</param>
+/// <returns>Message handling result</returns>
+public delegate MessageHandlingResult NoStateMachineHandleAsyncMessageDelegate(IInboundDataMessage message);
+
+/// <summary>
+/// Handle an error message received from the device
+/// </summary>
+/// <param name="state">Current state machine state</param>
+/// <param name="message">Current received message</param>
+/// <returns>Message handling result</returns>
+public delegate void HandleErrorMessageDelegate(IStateMachineState state, IInboundDataMessage message);
+
+/// <summary>
+/// Handle an error message received from the device without state machine
+/// </summary>
+/// <param name="message">Current received message</param>
+/// <returns>Message handling result</returns>
+public delegate void NoStateMachineHandleErrorMessageDelegate(IInboundDataMessage message);
+
+/// <summary>
+/// Delegate for handling device state check request answers in business logic
+/// </summary>
+/// <param name="state">Current state machine state</param>
+/// <param name="message">Current received message</param>
+/// <param name="doNotNotifyClient">Do not notify client? True or false.</param>
+/// <returns>Message handling result</returns>
+public delegate MessageHandlingResult HandleRegularStateRequestAnswerDelegate(IStateMachineState state, IInboundDataMessage message, bool doNotNotifyClient);
+
+/// <summary>
+/// Delegate fired when an order was finished successfully to implement buisness logic for that event. This delegate method should set a new state to request (but not request it)
+/// </summary>
+/// <param name="state">Current state machine state</param>
+/// <param name="order">Current successful finished order</param>
+public delegate void OrderFinishedSucessfullyDelegate(IStateMachineState state, IOrder order);
+
+/// <summary>
+/// Delegate fired when an order was finished unsuccessfully to implement buisness logic for that event. This delegate method should set a new state to request (but not request it)
+/// </summary>
+/// <param name="state">Current state machine state</param>
+/// <param name="order">Current unsuccessfully finished order</param>
+public delegate void OrderFinishedUnsucessfullyDelegate(IStateMachineState state, IOrder order);
 
 #endregion

@@ -39,12 +39,27 @@ public static class DeviceCommunicationBasics
     /// <summary>
     /// Timeout for a PING sent to the device
     /// </summary>
-    public static int PingTimeout { get; set; } = 500;
+    public static int PingTimeout { get; set; } = 1000;
+
+    /// <summary>
+    /// If a ping failed the ping is repeated in this interval in ms
+    /// </summary>
+    public static int PingRepeatInterval { get; set; } = 10000;
 
     /// <summary>
     /// Timeout for waiting for a handshake like ACK, NACK or CAN
     /// </summary>
     public static int WaitForAckTimeout { get; set; } = 12000;
+
+    /// <summary>
+    /// Timeout for checking if there is are new jobs during to execute
+    /// </summary>
+    public static int JobStateCheckTimeout => 5000;
+
+    /// <summary>
+    /// Watchdog interval in ms for device status checks
+    /// </summary>
+    public static int DeviceStatusWatchdogInterval { get; set; } = 5009;
 
     #endregion
 
