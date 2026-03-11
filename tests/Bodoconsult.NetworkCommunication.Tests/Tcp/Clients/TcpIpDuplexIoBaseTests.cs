@@ -179,8 +179,11 @@ public abstract class TcpIpDuplexIoBaseTests : BaseTcpTests
         DuplexIo.StartCommunication().Wait();
 
         // Assert
-        Assert.That(DuplexIo.Receiver, Is.Not.Null);
-        Assert.That(DuplexIo.Sender, Is.Not.Null);
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(DuplexIo.Receiver, Is.Not.Null);
+            Assert.That(DuplexIo.Sender, Is.Not.Null);
+        }
     }
 
     [Test]
@@ -194,10 +197,13 @@ public abstract class TcpIpDuplexIoBaseTests : BaseTcpTests
         DuplexIo.StopCommunication().Wait();
 
         // Assert
-        Assert.That(DuplexIo.Receiver, Is.Not.Null);
-        Assert.That(DuplexIo.Sender, Is.Not.Null);
-        Assert.That(DuplexIo.Receiver.FillPipelineTask, Is.Null);
-        Assert.That(DuplexIo.Receiver.SendPipelineTask, Is.Null);
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(DuplexIo.Receiver, Is.Not.Null);
+            Assert.That(DuplexIo.Sender, Is.Not.Null);
+            Assert.That(DuplexIo.Receiver.FillPipelineTask, Is.Null);
+            Assert.That(DuplexIo.Receiver.SendPipelineTask, Is.Null);
+        }
     }
 
     [Test]
@@ -214,9 +220,12 @@ public abstract class TcpIpDuplexIoBaseTests : BaseTcpTests
         Wait.Until(() => IsDataMessageSentFired);
 
         // Assert
-        Assert.That(!IsDataMessageSentFired);
-        Assert.That(IsDataMessageNotSentFired);
-        Assert.That(!IsComDevCloseFired);
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(!IsDataMessageSentFired);
+            Assert.That(IsDataMessageNotSentFired);
+            Assert.That(!IsComDevCloseFired);
+        }
     }
 
     [Test]
@@ -239,9 +248,12 @@ public abstract class TcpIpDuplexIoBaseTests : BaseTcpTests
         Wait.Until(() => IsDataMessageSentFired);
 
         // Assert
-        Assert.That(IsDataMessageSentFired);
-        Assert.That(!IsDataMessageNotSentFired);
-        Assert.That(!IsComDevCloseFired);
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(IsDataMessageSentFired);
+            Assert.That(!IsDataMessageNotSentFired);
+            Assert.That(!IsComDevCloseFired);
+        }
     }
 
     [Test]
@@ -263,9 +275,12 @@ public abstract class TcpIpDuplexIoBaseTests : BaseTcpTests
 
         // Assert
         Wait.Until(() => IsDataMessageNotSentFired, 2000);
-        Assert.That(!IsDataMessageSentFired);
-        Assert.That(IsDataMessageNotSentFired);
-        Assert.That(!IsComDevCloseFired);
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(!IsDataMessageSentFired);
+            Assert.That(IsDataMessageNotSentFired);
+            Assert.That(!IsComDevCloseFired);
+        }
     }
 
     [Test]
@@ -291,10 +306,13 @@ public abstract class TcpIpDuplexIoBaseTests : BaseTcpTests
         Send(message);
 
         // Assert
-        Wait.Until(() => IsDataMessageNotSentFired);
-        Assert.That(IsDataMessageSentFired, Is.False);
-        Assert.That(IsDataMessageNotSentFired, Is.True);
-        Assert.That(IsComDevCloseFired, Is.True);
+        using (Assert.EnterMultipleScope())
+        {
+            Wait.Until(() => IsDataMessageNotSentFired);
+            Assert.That(IsDataMessageSentFired, Is.False);
+            Assert.That(IsDataMessageNotSentFired, Is.True);
+            Assert.That(IsComDevCloseFired, Is.True);
+        }
     }
 
     [Test]
@@ -315,10 +333,13 @@ public abstract class TcpIpDuplexIoBaseTests : BaseTcpTests
 
         // Assert
         Wait.Until(() => IsMessageReceivedFired, 2000);
-        Assert.That(IsMessageReceivedFired);
-        Assert.That(!IsMessageNotReceivedFired);
-        Assert.That(!IsComDevCloseFired);
-        Assert.That(!IsCorruptedMessageFired);
-        Assert.That(!IsOnNotExpectedMessageReceivedFired);
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(IsMessageReceivedFired);
+            Assert.That(!IsMessageNotReceivedFired);
+            Assert.That(!IsComDevCloseFired);
+            Assert.That(!IsCorruptedMessageFired);
+            Assert.That(!IsOnNotExpectedMessageReceivedFired);
+        }
     }
 }

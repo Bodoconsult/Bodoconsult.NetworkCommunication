@@ -61,6 +61,11 @@ public class StateMachineStateFactory : IStateMachineStateFactory
             throw new ArgumentNullException(nameof(CurrentContext), "Call LoadContext() before calling RegisterConfiguration()!");
         }
 
+        if (config.StateBuilderBuilder == null)
+        {
+            throw new ArgumentNullException(nameof(config.StateBuilderBuilder), "State builder must be loaded!");
+        }
+
         config.CurrentContext = CurrentContext;
 
         _stateConfigurations.Add(config.StateName, config);

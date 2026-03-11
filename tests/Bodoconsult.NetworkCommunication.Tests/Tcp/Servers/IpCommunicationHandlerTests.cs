@@ -80,8 +80,11 @@ internal class IpCommunicationHandlerTests : TcpIpCommunicationHandlerBaseTests
         var ch = new IpCommunicationHandler(DuplexIo, DataMessagingConfig, appEventSourceFactory);
 
         // Assert
-        Assert.That(ch.DuplexIo, Is.SameAs(DuplexIo));
-        Assert.That(ch.SocketProxy, Is.SameAs(Socket));
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(ch.DuplexIo, Is.SameAs(DuplexIo));
+            Assert.That(ch.SocketProxy, Is.SameAs(Socket));
+        }
     }
 
     [Test]
@@ -202,7 +205,4 @@ internal class IpCommunicationHandlerTests : TcpIpCommunicationHandlerBaseTests
         // Assert
         Assert.That(IsDataMessageSentFired, Is.True);
     }
-
-
-
 }

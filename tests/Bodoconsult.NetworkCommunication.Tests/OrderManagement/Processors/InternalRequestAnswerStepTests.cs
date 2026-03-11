@@ -50,7 +50,7 @@ internal class InternalRequestAnswerStepTests
         var result = irs.HandleResult();
 
         // Assert
-        Assert.That(result.Error, Is.EqualTo(0));
+        Assert.That(result.Error, Is.Zero);
         Assert.That(result.ExecutionResult, Is.EqualTo(OrderExecutionResultState.Successful));
         Assert.That(_isHandleResultFired, Is.True);
     }

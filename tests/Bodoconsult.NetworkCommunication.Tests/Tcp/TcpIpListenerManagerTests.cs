@@ -22,7 +22,7 @@ internal class TcpIpListenerManagerTests
         var lm = new TcpIpListenerManager();
 
         // Assert
-        Assert.That(lm.CurrentListeners.Count, Is.EqualTo(0));
+        Assert.That(lm.CurrentListeners.Count, Is.Zero);
 
         lm.Dispose();
     }
@@ -124,7 +124,7 @@ internal class TcpIpListenerManagerTests
         lm.UnregisterListener(Port, acceptDelegate);
 
         // Assert
-        Assert.That(lm.CurrentListeners.Count, Is.EqualTo(0));
+        Assert.That(lm.CurrentListeners.Count, Is.Zero);
 
         lm.Dispose();
     }
@@ -143,7 +143,7 @@ internal class TcpIpListenerManagerTests
         lm.UnregisterListener(listener, acceptDelegate);
 
         // Assert
-        Assert.That(lm.CurrentListeners.Count, Is.EqualTo(0));
+        Assert.That(lm.CurrentListeners.Count, Is.Zero);
 
         lm.Dispose();
     }

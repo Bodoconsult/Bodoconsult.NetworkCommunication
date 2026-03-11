@@ -26,8 +26,11 @@ internal class ClientSocketProxyFactoryTests
         var result = factory.CreateInstance(protocol, _ipAddress, _port);
 
         // Assert
-        Assert.That(result, Is.Not.Null);
-        Assert.That(result.GetType().Name, Is.EqualTo(nameof(TcpIpClientSocketProxy)));
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(result, Is.Not.Null);
+            Assert.That(result.GetType().Name, Is.EqualTo(nameof(TcpIpClientSocketProxy)));
+        }
     }
 
     [Test]
@@ -42,7 +45,10 @@ internal class ClientSocketProxyFactoryTests
         var result = factory.CreateInstance(protocol, _ipAddress, _port);
 
         // Assert
-        Assert.That(result, Is.Not.Null);
-        Assert.That(result.GetType().Name, Is.EqualTo(nameof(UdpClientSocketProxy)));
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(result, Is.Not.Null);
+            Assert.That(result.GetType().Name, Is.EqualTo(nameof(UdpClientSocketProxy)));
+        }
     }
 }

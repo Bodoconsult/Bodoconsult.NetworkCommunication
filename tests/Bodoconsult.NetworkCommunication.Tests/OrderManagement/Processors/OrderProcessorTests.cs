@@ -80,7 +80,7 @@ internal class OrderProcessorTests
     {
         var codecResult = _device.DataMessagingConfig.DataMessageProcessingPackage.DataMessageCodingProcessor.DecodeDataMessage(message);
         Assert.That(codecResult, Is.Not.Null);
-        Assert.That(codecResult.ErrorCode, Is.EqualTo(0));
+        Assert.That(codecResult.ErrorCode, Is.Zero);
 
         return (IInboundDataMessage)codecResult.DataMessage;
     }
@@ -271,8 +271,8 @@ internal class OrderProcessorTests
         // Assert
         using (Assert.EnterMultipleScope())
         {
-            Assert.That(_processor.OrdersInProcessing.Count, Is.EqualTo(0));
-            Assert.That(_processor.OrdersInQueue.Count, Is.EqualTo(0));
+            Assert.That(_processor.OrdersInProcessing.Count, Is.Zero);
+            Assert.That(_processor.OrdersInQueue.Count, Is.Zero);
         }
 
         TestTearDown();
@@ -301,7 +301,7 @@ internal class OrderProcessorTests
             Assert.That(_processor.IsAnyOrderToProcess, Is.True);
             Assert.That(_processor.InitInTheQueue, Is.False);
             Assert.That(_processor.IsNoOrderInProcessing, Is.True);
-            Assert.That(_processor.OrdersInProcessingCount, Is.EqualTo(0));
+            Assert.That(_processor.OrdersInProcessingCount, Is.Zero);
         }
 
         TestTearDown();
@@ -333,7 +333,7 @@ internal class OrderProcessorTests
             Assert.That(_processor.IsAnyOrderToProcess, Is.True);
             Assert.That(_processor.InitInTheQueue, Is.False);
             Assert.That(_processor.IsNoOrderInProcessing, Is.True);
-            Assert.That(_processor.OrdersInProcessingCount, Is.EqualTo(0));
+            Assert.That(_processor.OrdersInProcessingCount, Is.Zero);
         }
 
         TestTearDown();

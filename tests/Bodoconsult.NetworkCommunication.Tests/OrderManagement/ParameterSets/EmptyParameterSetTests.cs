@@ -62,6 +62,6 @@ internal class EmptyParameterSetTests
         ps.ToDataBlock();
 
         // Assert
-        Assert.That(ps.Data.Length, Is.EqualTo(0));
+        Assert.That(ps.Data.Length, Is.Zero);
     }
 }

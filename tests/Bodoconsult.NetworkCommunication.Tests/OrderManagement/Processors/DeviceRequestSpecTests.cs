@@ -23,7 +23,7 @@ internal class DeviceRequestSpecTests
 
         // Assert
         Assert.That(rs.ParameterSet, Is.EqualTo(ps));
-        Assert.That(rs.SentMessage.Count, Is.EqualTo(0));
+        Assert.That(rs.SentMessage.Count, Is.Zero);
         Assert.That(string.IsNullOrEmpty(rs.Name), Is.False);
 
     }

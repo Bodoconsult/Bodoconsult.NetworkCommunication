@@ -120,7 +120,7 @@ internal class DeviceRequestAnswerStepTests
         var result = irs.CheckReceivedMessage(msg).ToList();
 
         // Assert
-        Assert.That(result.Count, Is.EqualTo(0));
+        Assert.That(result.Count, Is.Zero);
         Assert.That(_isCheckReceivedFired, Is.True);
         Assert.That(_isStateSetFired, Is.True);
     }

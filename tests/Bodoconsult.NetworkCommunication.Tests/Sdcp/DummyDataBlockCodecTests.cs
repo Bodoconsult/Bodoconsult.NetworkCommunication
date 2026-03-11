@@ -39,7 +39,7 @@ internal class DummyDataBlockCodecTests
         };
 
         var list = new List<byte>();
-        Assert.That(list.Count, Is.EqualTo(0));
+        Assert.That(list.Count, Is.Zero);
 
         // Act  
         codec.EncodeDataBlock(list, dataBlock);

@@ -19,6 +19,8 @@ public class RequestAnswer : IRequestAnswer
     /// <param name="checkReceivedMessageDelegate">Current delegate for message checking</param>
     public RequestAnswer(bool hasDatablock, Type dataBlockType, string name, CheckReceivedMessageDelegate checkReceivedMessageDelegate)
     {
+        ArgumentNullException.ThrowIfNull(checkReceivedMessageDelegate);
+
         HasDatablock = hasDatablock;
         DataBlockType = dataBlockType;
         Name = name;
@@ -65,7 +67,7 @@ public class RequestAnswer : IRequestAnswer
     /// If the message is the requested answer from the device the properties <see cref="IRequestAnswer.WasReceived"/>
     /// and <see cref="IRequestAnswer.ReceivedMessage"/> are set to true and the received message.
     /// </summary>
-    public CheckReceivedMessageDelegate CheckReceivedMessageDelegate { get; }
+    public CheckReceivedMessageDelegate CheckReceivedMessageDelegate { get; private set; }
 
     /// <summary>
     /// Set <see cref="IRequestAnswer.WasReceived"/> to true
@@ -90,7 +92,7 @@ public class RequestAnswer : IRequestAnswer
     public void Dispose()
     {
         Reset();
+        CheckReceivedMessageDelegate = null;
         HandleRequestAnswerOnSuccessDelegate = null;
-        //HandleUnexpectedRequestAnswerDelegate = null;
     }
 }

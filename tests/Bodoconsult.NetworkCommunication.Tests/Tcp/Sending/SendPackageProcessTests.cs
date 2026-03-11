@@ -141,7 +141,7 @@ public class SendPackageProcessDuplexIoTests
 
         // Assert
         Assert.That(p.ProcessExecutionResult, Is.SameAs(OrderExecutionResultState.Timeout));
-        Assert.That(dataMessagingConfig.DataMessageProcessingPackage.WaitStateManager.Count, Is.EqualTo(0));
+        Assert.That(dataMessagingConfig.DataMessageProcessingPackage.WaitStateManager.Count, Is.Zero);
     }
 
 

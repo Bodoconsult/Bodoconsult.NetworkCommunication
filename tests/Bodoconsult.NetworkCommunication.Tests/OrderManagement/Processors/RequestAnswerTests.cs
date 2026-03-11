@@ -29,7 +29,7 @@ internal class RequestAnswerTests
         Assert.That(ra.WasReceived, Is.False);
         Assert.That(ra.ReceivedMessage, Is.Null);
         Assert.That(ra.HandleRequestAnswerOnSuccessDelegate, Is.Null);
-        Assert.That(ra.CheckReceivedMessageDelegate, Is.Null);
+        Assert.That(ra.CheckReceivedMessageDelegate, Is.Not.Null);
     }
 
     [Test]
@@ -110,8 +110,8 @@ internal class RequestAnswerTests
         // Assert
         Assert.That(ra.WasReceived, Is.False);
         Assert.That(ra.ReceivedMessage, Is.Null);
-        Assert.That(ra.CheckReceivedMessageDelegate, Is.Null);
-        Assert.That(ra.HandleRequestAnswerOnSuccessDelegate, Is.Null);
+        Assert.That(ra.CheckReceivedMessageDelegate, Is.Not.Null);
+        Assert.That(ra.HandleRequestAnswerOnSuccessDelegate, Is.Not.Null);
     }
 
     private MessageHandlingResult HandleRequestAnswerOnSuccessDelegate(IInboundDataMessage message, object transportObject, IParameterSet parameterSet)

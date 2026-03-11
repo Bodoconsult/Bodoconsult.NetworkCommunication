@@ -168,17 +168,6 @@ public class DeviceRequestStepProcessor : IDeviceRequestStepProcessor
                 return OrderExecutionResultState.Unsuccessful;
             }
 
-            // Reset values in the steps
-            foreach (var step in requestSpec.RequestAnswerSteps)
-            {
-                step.Reset();
-            }
-
-            if (IsCancelled)
-            {
-                return OrderExecutionResultState.Unsuccessful;
-            }
-
             var send = requestSpec.SentMessage.ToList();
             NumberOfMessagesToBeSent = send.Count;
 
@@ -203,6 +192,17 @@ public class DeviceRequestStepProcessor : IDeviceRequestStepProcessor
                         repeatCount >= requestSpec.NumberOfRepeatsInCaseOfNoSuccess)
                     {
                         break;
+                    }
+
+                    // Reset values in the steps
+                    foreach (var step in requestSpec.RequestAnswerSteps)
+                    {
+                        step.Reset();
+                    }
+
+                    if (IsCancelled)
+                    {
+                        return OrderExecutionResultState.Unsuccessful;
                     }
                 }
 

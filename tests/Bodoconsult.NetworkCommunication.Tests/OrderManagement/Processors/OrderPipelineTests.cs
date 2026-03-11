@@ -84,8 +84,8 @@ public class OrderPipelineTests
             Assert.That(op.AllWaitingOrders.Count, Is.EqualTo(1));
             Assert.That(op.WaitingOrders.Count, Is.EqualTo(1));
             Assert.That(op.IsWaitingOrdersEmpty, Is.False);
-            Assert.That(op.AllWaitingPriorityOrders.Count, Is.EqualTo(0));
-            Assert.That(op.WaitingPriorityOrders.Count, Is.EqualTo(0));
+            Assert.That(op.AllWaitingPriorityOrders.Count, Is.Zero);
+            Assert.That(op.WaitingPriorityOrders.Count, Is.Zero);
             Assert.That(op.IsWaitingPriorityOrdersEmpty, Is.True);
             Assert.That(order.ExecutionState, Is.EqualTo(OrderState.Added));
         };
@@ -131,10 +131,10 @@ public class OrderPipelineTests
         using(Assert.EnterMultipleScope())
         {
             Assert.That(op.AllWaitingOrders.Count, Is.EqualTo(1));
-            Assert.That(op.WaitingOrders.Count, Is.EqualTo(0));
+            Assert.That(op.WaitingOrders.Count, Is.Zero);
             Assert.That(op.IsWaitingOrdersEmpty, Is.True);
-            Assert.That(op.AllWaitingPriorityOrders.Count, Is.EqualTo(0));
-            Assert.That(op.WaitingPriorityOrders.Count, Is.EqualTo(0));
+            Assert.That(op.AllWaitingPriorityOrders.Count, Is.Zero);
+            Assert.That(op.WaitingPriorityOrders.Count, Is.Zero);
             Assert.That(op.IsWaitingPriorityOrdersEmpty, Is.True);
             Assert.That(order.ExecutionState, Is.EqualTo(OrderState.Added));
         }
@@ -159,8 +159,8 @@ public class OrderPipelineTests
         // Assert
         using(Assert.EnterMultipleScope())
         {
-            Assert.That(op.AllWaitingOrders.Count, Is.EqualTo(0));
-            Assert.That(op.WaitingOrders.Count, Is.EqualTo(0));
+            Assert.That(op.AllWaitingOrders.Count, Is.Zero);
+            Assert.That(op.WaitingOrders.Count, Is.Zero);
             Assert.That(op.IsWaitingOrdersEmpty, Is.True);
             Assert.That(op.AllWaitingPriorityOrders.Count, Is.EqualTo(1));
             Assert.That(op.WaitingPriorityOrders.Count, Is.EqualTo(1));
@@ -209,11 +209,11 @@ public class OrderPipelineTests
         // Assert
         using(Assert.EnterMultipleScope())
         {
-            Assert.That(op.AllWaitingOrders.Count, Is.EqualTo(0));
-            Assert.That(op.WaitingOrders.Count, Is.EqualTo(0));
+            Assert.That(op.AllWaitingOrders.Count, Is.Zero);
+            Assert.That(op.WaitingOrders.Count, Is.Zero);
             Assert.That(op.IsWaitingOrdersEmpty, Is.True);
             Assert.That(op.AllWaitingPriorityOrders.Count, Is.EqualTo(1));
-            Assert.That(op.WaitingPriorityOrders.Count, Is.EqualTo(0));
+            Assert.That(op.WaitingPriorityOrders.Count, Is.Zero);
             Assert.That(op.IsWaitingPriorityOrdersEmpty, Is.True);
             Assert.That(order.ExecutionState, Is.EqualTo(OrderState.Added));
         }
@@ -240,11 +240,11 @@ public class OrderPipelineTests
         // Assert
         using(Assert.EnterMultipleScope())
         {
-            Assert.That(op.AllWaitingOrders.Count, Is.EqualTo(0));
-            Assert.That(op.WaitingOrders.Count, Is.EqualTo(0));
+            Assert.That(op.AllWaitingOrders.Count, Is.Zero);
+            Assert.That(op.WaitingOrders.Count, Is.Zero);
             Assert.That(op.IsWaitingOrdersEmpty, Is.True);
-            Assert.That(op.AllWaitingPriorityOrders.Count, Is.EqualTo(0));
-            Assert.That(op.WaitingPriorityOrders.Count, Is.EqualTo(0));
+            Assert.That(op.AllWaitingPriorityOrders.Count, Is.Zero);
+            Assert.That(op.WaitingPriorityOrders.Count, Is.Zero);
             Assert.That(op.IsWaitingPriorityOrdersEmpty, Is.True);
         }
 
@@ -270,11 +270,11 @@ public class OrderPipelineTests
         // Assert
         using(Assert.EnterMultipleScope())
         {
-            Assert.That(op.AllWaitingOrders.Count, Is.EqualTo(0));
-            Assert.That(op.WaitingOrders.Count, Is.EqualTo(0));
+            Assert.That(op.AllWaitingOrders.Count, Is.Zero);
+            Assert.That(op.WaitingOrders.Count, Is.Zero);
             Assert.That(op.IsWaitingOrdersEmpty, Is.True);
-            Assert.That(op.AllWaitingPriorityOrders.Count, Is.EqualTo(0));
-            Assert.That(op.WaitingPriorityOrders.Count, Is.EqualTo(0));
+            Assert.That(op.AllWaitingPriorityOrders.Count, Is.Zero);
+            Assert.That(op.WaitingPriorityOrders.Count, Is.Zero);
             Assert.That(op.IsWaitingPriorityOrdersEmpty, Is.True);
         }
     }
@@ -300,10 +300,10 @@ public class OrderPipelineTests
         using(Assert.EnterMultipleScope())
         {
             Assert.That(op.AllWaitingOrders.Count, Is.EqualTo(1));
-            Assert.That(op.WaitingOrders.Count, Is.EqualTo(0));
+            Assert.That(op.WaitingOrders.Count, Is.Zero);
             Assert.That(op.IsWaitingOrdersEmpty, Is.True);
-            Assert.That(op.AllWaitingPriorityOrders.Count, Is.EqualTo(0));
-            Assert.That(op.WaitingPriorityOrders.Count, Is.EqualTo(0));
+            Assert.That(op.AllWaitingPriorityOrders.Count, Is.Zero);
+            Assert.That(op.WaitingPriorityOrders.Count, Is.Zero);
             Assert.That(op.IsWaitingPriorityOrdersEmpty, Is.True);
         }
     }
@@ -328,11 +328,11 @@ public class OrderPipelineTests
         // Assert
         using(Assert.EnterMultipleScope())
         {
-            Assert.That(op.AllWaitingOrders.Count, Is.EqualTo(0));
-            Assert.That(op.WaitingOrders.Count, Is.EqualTo(0));
+            Assert.That(op.AllWaitingOrders.Count, Is.Zero);
+            Assert.That(op.WaitingOrders.Count, Is.Zero);
             Assert.That(op.IsWaitingOrdersEmpty, Is.True);
             Assert.That(op.AllWaitingPriorityOrders.Count, Is.EqualTo(1));
-            Assert.That(op.WaitingPriorityOrders.Count, Is.EqualTo(0));
+            Assert.That(op.WaitingPriorityOrders.Count, Is.Zero);
             Assert.That(op.IsWaitingPriorityOrdersEmpty, Is.True);
         }
     }
@@ -360,11 +360,11 @@ public class OrderPipelineTests
         using(Assert.EnterMultipleScope())
         {
             Assert.That(nextOrder, Is.Null);
-            Assert.That(op.AllWaitingOrders.Count, Is.EqualTo(0));
-            Assert.That(op.WaitingOrders.Count, Is.EqualTo(0));
+            Assert.That(op.AllWaitingOrders.Count, Is.Zero);
+            Assert.That(op.WaitingOrders.Count, Is.Zero);
             Assert.That(op.IsWaitingOrdersEmpty, Is.True);
-            Assert.That(op.AllWaitingPriorityOrders.Count, Is.EqualTo(0));
-            Assert.That(op.WaitingPriorityOrders.Count, Is.EqualTo(0));
+            Assert.That(op.AllWaitingPriorityOrders.Count, Is.Zero);
+            Assert.That(op.WaitingPriorityOrders.Count, Is.Zero);
             Assert.That(op.IsWaitingPriorityOrdersEmpty, Is.True);
         }
     }
@@ -392,11 +392,11 @@ public class OrderPipelineTests
         using(Assert.EnterMultipleScope())
         {
             Assert.That(nextOrder, Is.Null);
-            Assert.That(op.AllWaitingOrders.Count, Is.EqualTo(0));
-            Assert.That(op.WaitingOrders.Count, Is.EqualTo(0));
+            Assert.That(op.AllWaitingOrders.Count, Is.Zero);
+            Assert.That(op.WaitingOrders.Count, Is.Zero);
             Assert.That(op.IsWaitingOrdersEmpty, Is.True);
-            Assert.That(op.AllWaitingPriorityOrders.Count, Is.EqualTo(0));
-            Assert.That(op.WaitingPriorityOrders.Count, Is.EqualTo(0));
+            Assert.That(op.AllWaitingPriorityOrders.Count, Is.Zero);
+            Assert.That(op.WaitingPriorityOrders.Count, Is.Zero);
             Assert.That(op.IsWaitingPriorityOrdersEmpty, Is.True);
         }
     }

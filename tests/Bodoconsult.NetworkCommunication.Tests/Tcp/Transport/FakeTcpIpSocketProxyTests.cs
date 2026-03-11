@@ -93,11 +93,14 @@ public class FakeTcpIpSocketProxyTests : BaseTestsTcpIpSocket
         task.Wait();
 
         // Assert
-        Assert.That(task.Result, Is.EqualTo(receivedMessage.Length));
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(task.Result, Is.EqualTo(receivedMessage.Length));
 
-        Assert.That(buffer.Slice(0, 1).Span[0], Is.EqualTo(0));
-        Assert.That(buffer.Slice(1, 1).Span[0], Is.EqualTo(0));
-        Assert.That(buffer.Slice(2, 1).Span[0], Is.EqualTo(1));
+            Assert.That(buffer.Slice(0, 1).Span[0], Is.Zero);
+            Assert.That(buffer.Slice(1, 1).Span[0], Is.Zero);
+            Assert.That(buffer.Slice(2, 1).Span[0], Is.EqualTo(1));
+        }
     }
 
     [Test]
@@ -129,18 +132,19 @@ public class FakeTcpIpSocketProxyTests : BaseTestsTcpIpSocket
         task = socket.Receive(buffer2);
         task.Wait();
 
-        Assert.That(task.Result, Is.EqualTo(receivedMessage2.Length));
-
-
         // Assert
-        Assert.That(buffer.Slice(0, 1).Span[0], Is.EqualTo(0));
-        Assert.That(buffer.Slice(1, 1).Span[0], Is.EqualTo(0));
-        Assert.That(buffer.Slice(2, 1).Span[0], Is.EqualTo(1));
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(task.Result, Is.EqualTo(receivedMessage2.Length));
+            Assert.That(buffer.Slice(0, 1).Span[0], Is.Zero);
+            Assert.That(buffer.Slice(1, 1).Span[0], Is.Zero);
+            Assert.That(buffer.Slice(2, 1).Span[0], Is.EqualTo(1));
 
-        Assert.That(buffer2.Slice(0, 1).Span[0], Is.EqualTo(0));
-        Assert.That(buffer2.Slice(1, 1).Span[0], Is.EqualTo(0));
-        Assert.That(buffer2.Slice(2, 1).Span[0], Is.EqualTo(0));
-        Assert.That(buffer2.Slice(3, 1).Span[0], Is.EqualTo(2));
+            Assert.That(buffer2.Slice(0, 1).Span[0], Is.Zero);
+            Assert.That(buffer2.Slice(1, 1).Span[0], Is.Zero);
+            Assert.That(buffer2.Slice(2, 1).Span[0], Is.Zero);
+            Assert.That(buffer2.Slice(3, 1).Span[0], Is.EqualTo(2));
+        }
     }
 
     [Test]
@@ -161,10 +165,13 @@ public class FakeTcpIpSocketProxyTests : BaseTestsTcpIpSocket
         task.Wait();
 
         // Assert
-        Assert.That(task.Result, Is.EqualTo(receivedMessage.Length));
-        Assert.That(buffer[0], Is.EqualTo(0));
-        Assert.That(buffer[1], Is.EqualTo(0));
-        Assert.That(buffer[2], Is.EqualTo(1));
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(task.Result, Is.EqualTo(receivedMessage.Length));
+            Assert.That(buffer[0], Is.Zero);
+            Assert.That(buffer[1], Is.Zero);
+            Assert.That(buffer[2], Is.EqualTo(1));
+        }
     }
 
     [Test]
@@ -194,16 +201,19 @@ public class FakeTcpIpSocketProxyTests : BaseTestsTcpIpSocket
         task = socket.Receive(buffer2);
         task.Wait();
 
-        Assert.That(task.Result, Is.EqualTo(receivedMessage2.Length));
-
         // Assert
-        Assert.That(buffer[0], Is.EqualTo(0));
-        Assert.That(buffer[1], Is.EqualTo(0));
-        Assert.That(buffer[2], Is.EqualTo(1));
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(task.Result, Is.EqualTo(receivedMessage2.Length));
 
-        Assert.That(buffer2[0], Is.EqualTo(0));
-        Assert.That(buffer2[1], Is.EqualTo(0));
-        Assert.That(buffer2[2], Is.EqualTo(0));
-        Assert.That(buffer2[3], Is.EqualTo(2));
+            Assert.That(buffer[0], Is.Zero);
+            Assert.That(buffer[1], Is.Zero);
+            Assert.That(buffer[2], Is.EqualTo(1));
+
+            Assert.That(buffer2[0], Is.Zero);
+            Assert.That(buffer2[1], Is.Zero);
+            Assert.That(buffer2[2], Is.Zero);
+            Assert.That(buffer2[3], Is.EqualTo(2));
+        }
     }
 }

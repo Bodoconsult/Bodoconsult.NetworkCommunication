@@ -177,8 +177,11 @@ public abstract class UdpIpDuplexIoBaseTests : BaseUdpTests
         DuplexIo.StartCommunication().Wait();
 
         // Assert
-        Assert.That(DuplexIo.Receiver, Is.Not.Null);
-        Assert.That(DuplexIo.Sender, Is.Not.Null);
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(DuplexIo.Receiver, Is.Not.Null);
+            Assert.That(DuplexIo.Sender, Is.Not.Null);
+        }
 
         DuplexIo.StopCommunication();
     }
@@ -193,14 +196,17 @@ public abstract class UdpIpDuplexIoBaseTests : BaseUdpTests
         DuplexIo.StopCommunication().Wait();
 
         // Assert
-        Assert.That(DuplexIo.Receiver, Is.Not.Null);
-        Assert.That(DuplexIo.Sender, Is.Not.Null);
-        Assert.That(DuplexIo.Receiver.FillPipelineTask, Is.Null);
-        Assert.That(DuplexIo.Receiver.SendPipelineTask, Is.Null);
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(DuplexIo.Receiver, Is.Not.Null);
+            Assert.That(DuplexIo.Sender, Is.Not.Null);
+            Assert.That(DuplexIo.Receiver.FillPipelineTask, Is.Null);
+            Assert.That(DuplexIo.Receiver.SendPipelineTask, Is.Null);
+        }
     }
 
     [Test]
-    public void SendMessage_MessageSWithoutDatablock_NotSent()
+    public void SendMessage_SdcpMessageWithoutDatablock_NotSent()
     {
         // Arrange
         var message = new SdcpOutboundDataMessage();
@@ -211,13 +217,16 @@ public abstract class UdpIpDuplexIoBaseTests : BaseUdpTests
         Wait.Until(() => IsDataMessageSentFired);
 
         // Assert
-        Assert.That(!IsDataMessageSentFired);
-        Assert.That(IsDataMessageNotSentFired);
-        Assert.That(!IsComDevCloseFired);
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(!IsDataMessageSentFired);
+            Assert.That(IsDataMessageNotSentFired);
+            Assert.That(!IsComDevCloseFired);
+        }
     }
 
     [Test]
-    public void SendMessage_MessageS_Sent()
+    public void SendMessage_SdcpMessage_Sent()
     {
         // Arrange
         var message = new SdcpOutboundDataMessage
@@ -235,9 +244,12 @@ public abstract class UdpIpDuplexIoBaseTests : BaseUdpTests
         Wait.Until(() => IsDataMessageSentFired);
 
         // Assert
-        Assert.That(IsDataMessageSentFired);
-        Assert.That(!IsDataMessageNotSentFired);
-        Assert.That(!IsComDevCloseFired);
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(IsDataMessageSentFired);
+            Assert.That(!IsDataMessageNotSentFired);
+            Assert.That(!IsComDevCloseFired);
+        }
     }
 
     [Test]
@@ -257,10 +269,13 @@ public abstract class UdpIpDuplexIoBaseTests : BaseUdpTests
         //});
 
         // Assert
-        Wait.Until(() => IsDataMessageNotSentFired, 2000);
-        Assert.That(!IsDataMessageSentFired);
-        Assert.That(IsDataMessageNotSentFired);
-        Assert.That(!IsComDevCloseFired);
+        using (Assert.EnterMultipleScope())
+        {
+            Wait.Until(() => IsDataMessageNotSentFired, 2000);
+            Assert.That(!IsDataMessageSentFired);
+            Assert.That(IsDataMessageNotSentFired);
+            Assert.That(!IsComDevCloseFired);
+        }
     }
 
     [Test]
@@ -286,15 +301,17 @@ public abstract class UdpIpDuplexIoBaseTests : BaseUdpTests
 
         // Assert
         Wait.Until(() => IsDataMessageNotSentFired);
-        Assert.That(IsDataMessageSentFired, Is.False);
-        Assert.That(IsDataMessageNotSentFired, Is.True);
-        Assert.That(IsComDevCloseFired, Is.True);
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(IsDataMessageSentFired, Is.False);
+            Assert.That(IsDataMessageNotSentFired, Is.True);
+            Assert.That(IsComDevCloseFired, Is.True);
+        }
     }
 
     [Test]
-    public void ReceiveMessageFromdevice_MessageS()
+    public void ReceiveMessage_SdcpMessage_MessageReceived()
     {
-
         // Arrange
         var message = new SdcpOutboundDataMessage
         {
@@ -309,10 +326,13 @@ public abstract class UdpIpDuplexIoBaseTests : BaseUdpTests
 
         // Assert
         Wait.Until(() => IsMessageReceivedFired, 2000);
-        Assert.That(IsMessageReceivedFired);
-        Assert.That(!IsMessageNotReceivedFired);
-        Assert.That(!IsComDevCloseFired);
-        Assert.That(!IsCorruptedMessageFired);
-        Assert.That(!IsOnNotExpectedMessageReceivedFired);
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(IsMessageReceivedFired);
+            Assert.That(!IsMessageNotReceivedFired);
+            Assert.That(!IsComDevCloseFired);
+            Assert.That(!IsCorruptedMessageFired);
+            Assert.That(!IsOnNotExpectedMessageReceivedFired);
+        }
     }
 }

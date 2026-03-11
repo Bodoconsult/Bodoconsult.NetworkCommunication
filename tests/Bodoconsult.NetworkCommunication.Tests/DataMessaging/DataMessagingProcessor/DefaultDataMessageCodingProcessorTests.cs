@@ -30,9 +30,12 @@ internal class DefaultDataMessageCodingProcessorTests
         var result = processor.DecodeDataMessage(msg);
 
         // Assert
-        Assert.That(result, Is.Not.Null);
-        Assert.That(result.DataMessage, Is.Not.Null);
-        Assert.That(result.DataMessage.GetType(), Is.EqualTo(typeof(InboundHandshakeMessage)));
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(result, Is.Not.Null);
+            Assert.That(result.DataMessage, Is.Not.Null);
+            Assert.That(result.DataMessage.GetType(), Is.EqualTo(typeof(InboundHandshakeMessage)));
+        }
     }
 
     [Test]
@@ -52,9 +55,12 @@ internal class DefaultDataMessageCodingProcessorTests
         var result = processor.DecodeDataMessage(msg);
 
         // Assert
-        Assert.That(result, Is.Not.Null);
-        Assert.That(result.DataMessage, Is.Not.Null);
-        Assert.That(result.DataMessage.GetType(), Is.EqualTo(typeof(BtcpInboundDataMessage)));
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(result, Is.Not.Null);
+            Assert.That(result.DataMessage, Is.Not.Null);
+            Assert.That(result.DataMessage.GetType(), Is.EqualTo(typeof(BtcpInboundDataMessage)));
+        }
     }
 
     [Test]
@@ -84,9 +90,12 @@ internal class DefaultDataMessageCodingProcessorTests
         var result = processor.EncodeDataMessage(message);
 
         // Assert
-        Assert.That(result, Is.Not.Null);
-        Assert.That(result.ErrorCode, Is.EqualTo(0));
-        Assert.That(message.RawMessageData.Length, Is.Not.EqualTo(0));
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(result, Is.Not.Null);
+            Assert.That(result.ErrorCode, Is.Zero);
+            Assert.That(message.RawMessageData.Length, Is.Not.EqualTo(0));
+        }
     }
 
     [Test]
@@ -106,9 +115,12 @@ internal class DefaultDataMessageCodingProcessorTests
         var result = processor.DecodeDataMessage(msg);
 
         // Assert
-        Assert.That(result, Is.Not.Null);
-        Assert.That(result.DataMessage, Is.Not.Null);
-        Assert.That(result.DataMessage.GetType(), Is.EqualTo(typeof(InboundHandshakeMessage)));
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(result, Is.Not.Null);
+            Assert.That(result.DataMessage, Is.Not.Null);
+            Assert.That(result.DataMessage.GetType(), Is.EqualTo(typeof(InboundHandshakeMessage)));
+        }
     }
 
     [Test]
@@ -128,9 +140,12 @@ internal class DefaultDataMessageCodingProcessorTests
         var result = processor.DecodeDataMessage(msg);
 
         // Assert
-        Assert.That(result, Is.Not.Null);
-        Assert.That(result.DataMessage, Is.Not.Null);
-        Assert.That(result.DataMessage.GetType(), Is.EqualTo(typeof(SdcpInboundDataMessage)));
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(result, Is.Not.Null);
+            Assert.That(result.DataMessage, Is.Not.Null);
+            Assert.That(result.DataMessage.GetType(), Is.EqualTo(typeof(SdcpInboundDataMessage)));
+        }
     }
 
     [Test]
@@ -160,9 +175,12 @@ internal class DefaultDataMessageCodingProcessorTests
         var result = processor.EncodeDataMessage(message);
 
         // Assert
-        Assert.That(result, Is.Not.Null);
-        Assert.That(result.ErrorCode, Is.EqualTo(0));
-        Assert.That(message.RawMessageData.Length, Is.Not.EqualTo(0));
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(result, Is.Not.Null);
+            Assert.That(result.ErrorCode, Is.Zero);
+            Assert.That(message.RawMessageData.Length, Is.Not.EqualTo(0));
+        }
     }
 
     [Test]
@@ -182,9 +200,12 @@ internal class DefaultDataMessageCodingProcessorTests
         var result = processor.DecodeDataMessage(msg);
 
         // Assert
-        Assert.That(result, Is.Not.Null);
-        Assert.That(result.DataMessage, Is.Not.Null);
-        Assert.That(result.DataMessage.GetType(), Is.EqualTo(typeof(EdcpInboundHandshakeMessage)));
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(result, Is.Not.Null);
+            Assert.That(result.DataMessage, Is.Not.Null);
+            Assert.That(result.DataMessage.GetType(), Is.EqualTo(typeof(EdcpInboundHandshakeMessage)));
+        }
     }
 
     [Test]
@@ -204,9 +225,12 @@ internal class DefaultDataMessageCodingProcessorTests
         var result = processor.DecodeDataMessage(msg);
 
         // Assert
-        Assert.That(result, Is.Not.Null);
-        Assert.That(result.DataMessage, Is.Not.Null);
-        Assert.That(result.DataMessage.GetType(), Is.EqualTo(typeof(EdcpInboundDataMessage)));
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(result, Is.Not.Null);
+            Assert.That(result.DataMessage, Is.Not.Null);
+            Assert.That(result.DataMessage.GetType(), Is.EqualTo(typeof(EdcpInboundDataMessage)));
+        }
     }
 
     [Test]
@@ -237,8 +261,11 @@ internal class DefaultDataMessageCodingProcessorTests
         var result = processor.EncodeDataMessage(message);
 
         // Assert
-        Assert.That(result, Is.Not.Null);
-        Assert.That(result.ErrorCode, Is.EqualTo(0));
-        Assert.That(message.RawMessageData.Length, Is.Not.EqualTo(0));
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(result, Is.Not.Null);
+            Assert.That(result.ErrorCode, Is.Zero);
+            Assert.That(message.RawMessageData.Length, Is.Not.EqualTo(0));
+        }
     }
 }

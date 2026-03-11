@@ -41,7 +41,7 @@ internal class EdcpDataMessageCodecTests
 
         // Assert
         Assert.That(result, Is.Not.Null);
-        Assert.That(result.ErrorCode, Is.EqualTo(0));
+        Assert.That(result.ErrorCode, Is.Zero);
 
         var edcpMsg = (EdcpInboundDataMessage)result.DataMessage;
 
@@ -87,7 +87,7 @@ internal class EdcpDataMessageCodecTests
             DataBlock = dataBlock
         };
 
-        Assert.That(msg.RawMessageData.Length, Is.EqualTo(0));
+        Assert.That(msg.RawMessageData.Length, Is.Zero);
 
         var dataBlockCodingProcessor = new DefaultDataBlockCodingProcessor();
         dataBlockCodingProcessor.LoadDataBlockCodecs('x', new BasicDataBlockCodec());
@@ -98,7 +98,7 @@ internal class EdcpDataMessageCodecTests
 
         // Assert
         Assert.That(result, Is.Not.Null);
-        Assert.That(result.ErrorCode, Is.EqualTo(0));
+        Assert.That(result.ErrorCode, Is.Zero);
         Assert.That(msg.RawMessageData.Length, Is.Not.EqualTo(0));
 
         Assert.That(msg.RawMessageData.Span[0], Is.EqualTo(DeviceCommunicationBasics.Stx));
@@ -117,7 +117,7 @@ internal class EdcpDataMessageCodecTests
             BlockCode = blockId
         };
 
-        Assert.That(msg.RawMessageData.Length, Is.EqualTo(0));
+        Assert.That(msg.RawMessageData.Length, Is.Zero);
 
         var dataBlockCodingProcessor = new DefaultDataBlockCodingProcessor();
         dataBlockCodingProcessor.LoadDataBlockCodecs('x', new BasicDataBlockCodec());
@@ -129,6 +129,6 @@ internal class EdcpDataMessageCodecTests
         // Assert
         Assert.That(result, Is.Not.Null);
         Assert.That(result.ErrorCode, Is.Not.EqualTo(0));
-        Assert.That(msg.RawMessageData.Length, Is.EqualTo(0));
+        Assert.That(msg.RawMessageData.Length, Is.Zero);
     }
 }

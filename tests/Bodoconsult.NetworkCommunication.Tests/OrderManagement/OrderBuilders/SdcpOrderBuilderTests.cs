@@ -65,7 +65,7 @@ internal class SdcpOrderBuilderTests : OrderBuilderTestsBase
 
         var order = new OmOrder(1, "Test", ps);
 
-        Assert.That(order.RequestSpecs.Count, Is.EqualTo(0));
+        Assert.That(order.RequestSpecs.Count, Is.Zero);
 
         // Act  
         using (Assert.EnterMultipleScope())
@@ -89,7 +89,7 @@ internal class SdcpOrderBuilderTests : OrderBuilderTestsBase
 
         var order = new OmOrder(1, "Test", ps);
 
-        Assert.That(order.RequestSpecs.Count, Is.EqualTo(0));
+        Assert.That(order.RequestSpecs.Count, Is.Zero);
 
         // Act  
         using (Assert.EnterMultipleScope())
@@ -113,7 +113,7 @@ internal class SdcpOrderBuilderTests : OrderBuilderTestsBase
 
         var order = new OmOrder(1, "Test", ps);
 
-        Assert.That(order.RequestSpecs.Count, Is.EqualTo(0));
+        Assert.That(order.RequestSpecs.Count, Is.Zero);
 
         // Act  
         using (Assert.EnterMultipleScope())
@@ -137,7 +137,7 @@ internal class SdcpOrderBuilderTests : OrderBuilderTestsBase
 
         var order = new OmOrder(1, "Test", ps);
 
-        Assert.That(order.RequestSpecs.Count, Is.EqualTo(0));
+        Assert.That(order.RequestSpecs.Count, Is.Zero);
 
         var name = "RequestSpec";
         var requestSpec = builder.CreateDeviceRequestSpec(order, name);
@@ -164,7 +164,7 @@ internal class SdcpOrderBuilderTests : OrderBuilderTestsBase
 
         var order = new OmOrder(1, "Test", ps);
 
-        Assert.That(order.RequestSpecs.Count, Is.EqualTo(0));
+        Assert.That(order.RequestSpecs.Count, Is.Zero);
 
         var name = "RequestSpec";
         var requestSpec = builder.CreateDeviceRequestSpec(order, name);
@@ -172,7 +172,7 @@ internal class SdcpOrderBuilderTests : OrderBuilderTestsBase
         var rasName = "AnswerStep1";
         var ras = builder.CreateDeviceRequestAnswerStep(requestSpec, rasName);
 
-        Assert.That(ras.AllowedRequestAnswers.Count, Is.EqualTo(0));
+        Assert.That(ras.AllowedRequestAnswers.Count, Is.Zero);
 
         // Act  
         var raName = "Test";

@@ -72,7 +72,7 @@ internal class DefaultDataBlockCodingProcessorTests
         };
 
         var list = new List<byte>();
-        Assert.That(list.Count, Is.EqualTo(0));
+        Assert.That(list.Count, Is.Zero);
 
         // Act  
         dbcp.FromDataBlockToBytes(list, dataBlock);
