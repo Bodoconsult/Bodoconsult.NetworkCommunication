@@ -43,7 +43,7 @@ public class NoActionStateMachineState : BaseStateMachineState, INoActionStateMa
             // Check if there is a job state to restore after break
             if (CurrentContext.SavedJobState != null)
             {
-                CurrentContext.RestoreSavedState();
+                CurrentContext.RestoreSavedJobState();
                 return;
             }
 

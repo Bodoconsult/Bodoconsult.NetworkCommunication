@@ -116,7 +116,7 @@ public static class DelegateHelper
             // Check if there is a job state to restore after break
             if (state.CurrentContext.SavedJobState != null)
             {
-                state.CurrentContext.RestoreSavedState();
+                state.CurrentContext.RestoreSavedJobState();
                 return;
             }
 

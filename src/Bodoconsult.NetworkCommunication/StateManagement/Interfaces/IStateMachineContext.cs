@@ -27,15 +27,13 @@ public interface IStateMachineContext
     /// <summary>
     /// Current device state check manager instances
     /// </summary>
-
     IDeviceStateCheckManager DeviceStateCheckManager { get; }
 
     /// <summary>
     /// Current implementation of <see cref="IStateMachineStateFactory"/>
     /// </summary>
     IStateMachineStateFactory StateMachineStateFactory { get; }
-
-
+    
     /// <summary>
     /// Current job states waiting to be processed
     /// </summary>
@@ -76,7 +74,6 @@ public interface IStateMachineContext
     /// </summary>
     /// <param name="jobState">Job state to execute</param>
     void RegisterJobState(IJobStateMachineState jobState);
-
 
     /// <summary>
     /// Request a new state
@@ -123,12 +120,11 @@ public interface IStateMachineContext
     /// <summary>
     /// Restore the saved job state
     /// </summary>
-    void RestoreSavedState();
+    void RestoreSavedJobState();
 
     /// <summary>
     /// Save the state if it implements <see cref="IJobStateMachineState"/>
     /// </summary>
     /// <param name="stateMachineState">Current state</param>
     void SaveJobState(IStateMachineState stateMachineState);
-
 }

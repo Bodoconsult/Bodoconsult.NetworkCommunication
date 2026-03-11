@@ -264,7 +264,7 @@ public abstract class BaseStateManagementDevice : BaseOrderManagementDevice, ISt
     /// <summary>
     /// Restore the saved job state
     /// </summary>
-    public void RestoreSavedState()
+    public void RestoreSavedJobState()
     {
         // Is there a saved job state to be restarted?
         if (SavedJobState == null)

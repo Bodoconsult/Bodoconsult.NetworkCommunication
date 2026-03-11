@@ -135,7 +135,7 @@ internal class BaseStateManagementDeviceTests
 
         var builder = new DeviceStartStreamingStateBuilder();
 
-        var config = new OrderBasedActionStateConfiguration(DefaultStateNames.DeviceStartStreamingState)
+        var config = new JobStateConfiguration(DefaultStateNames.DeviceStartStreamingState)
         {
             CurrentContext = device,
             HandleAsyncMessageDelegate = DelegateHelper.HandleAsyncMessageDelegate,
@@ -193,6 +193,127 @@ internal class BaseStateManagementDeviceTests
             Assert.That(device.CurrentState.Name, Is.EqualTo(newState.Name));
             Assert.That(device.DeviceState, Is.EqualTo(DefaultDeviceStates.DeviceStateReady));
             Assert.That(device.BusinessSubState, Is.EqualTo(DefaultBusinessSubStates.NotSet));
+        }
+    }
+
+    [Test]
+    public void RegisterJobState_OrderBasedActionStateConfiguration_StateAddedToJobstates()
+    {
+        // Arrange 
+        var device = TestDataHelper.CreateStateMachineDevice();
+
+        var builder = new DeviceStartStreamingStateBuilder();
+
+        var config = new JobStateConfiguration(DefaultStateNames.DeviceStartStreamingState)
+        {
+            CurrentContext = device,
+            HandleAsyncMessageDelegate = DelegateHelper.HandleAsyncMessageDelegate,
+            HandleComDevCloseDelegate = DelegateHelper.HandleComDevCloseDelegate,
+            HandleErrorMessageDelegate = DelegateHelper.HandleErrorMessageDelegate,
+            HandleRegularStateRequestAnswerDelegate = DelegateHelper.HandleRegularStateRequestAnswerDelegate,
+            PrepareRegularStateRequestDelegate = DelegateHelper.PrepareRegularStateRequestDelegate,
+            OrderFinishedSucessfullyDelegate = DelegateHelper.OrderFinishedSucessfullyDelegate,
+            OrderFinishedUnsucessfullyDelegate = DelegateHelper.OrderFinishedUnsucessfullyDelegate,
+            PrepareOrdersForStateMachineStateDelegate = DelegateHelper.PrepareOrdersForStateMachineStateDelegate
+        };
+
+        var newState = (IJobStateMachineState)builder.BuildState(config);
+
+        // Act  
+        device.RegisterJobState(newState);
+
+        // Assert
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(device.JobStates.Count, Is.EqualTo(1));
+        }
+    }
+
+    [Test]
+    public void RequestNewDeviceState_ValidSetup_DeviceStateSetCorrectly()
+    {
+        // Arrange 
+        var device = TestDataHelper.CreateStateMachineDevice();
+
+        var deviceState = DefaultDeviceStates.DeviceStateReady;
+
+        // Act  
+        device.RequestNewDeviceState(deviceState);
+
+        // Assert
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(device.DeviceState, Is.EqualTo(deviceState));
+        }
+    }
+
+    [Test]
+    public void SaveJobState_OrderBasedActionStateConfiguration_StateSaved()
+    {
+        // Arrange 
+        var device = TestDataHelper.CreateStateMachineDevice();
+
+        var builder = new DeviceStartStreamingStateBuilder();
+
+        var config = new JobStateConfiguration(DefaultStateNames.DeviceStartStreamingState)
+        {
+            CurrentContext = device,
+            HandleAsyncMessageDelegate = DelegateHelper.HandleAsyncMessageDelegate,
+            HandleComDevCloseDelegate = DelegateHelper.HandleComDevCloseDelegate,
+            HandleErrorMessageDelegate = DelegateHelper.HandleErrorMessageDelegate,
+            HandleRegularStateRequestAnswerDelegate = DelegateHelper.HandleRegularStateRequestAnswerDelegate,
+            PrepareRegularStateRequestDelegate = DelegateHelper.PrepareRegularStateRequestDelegate,
+            OrderFinishedSucessfullyDelegate = DelegateHelper.OrderFinishedSucessfullyDelegate,
+            OrderFinishedUnsucessfullyDelegate = DelegateHelper.OrderFinishedUnsucessfullyDelegate,
+            PrepareOrdersForStateMachineStateDelegate = DelegateHelper.PrepareOrdersForStateMachineStateDelegate
+        };
+
+        var newState = (IJobStateMachineState)builder.BuildState(config);
+
+        // Act  
+        device.SaveJobState(newState);
+
+        // Assert
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(device.SavedJobState, Is.EqualTo(newState));
+        }
+    }
+
+    [Test]
+    public void RestoreSavedJobState_OrderBasedActionStateConfiguration_StateSaved()
+    {
+        // Arrange 
+        var device = TestDataHelper.CreateStateMachineDevice();
+
+        var builder = new DeviceStartStreamingStateBuilder();
+
+        var config = new JobStateConfiguration(DefaultStateNames.DeviceStartStreamingState)
+        {
+            CurrentContext = device,
+            HandleAsyncMessageDelegate = DelegateHelper.HandleAsyncMessageDelegate,
+            HandleComDevCloseDelegate = DelegateHelper.HandleComDevCloseDelegate,
+            HandleErrorMessageDelegate = DelegateHelper.HandleErrorMessageDelegate,
+            HandleRegularStateRequestAnswerDelegate = DelegateHelper.HandleRegularStateRequestAnswerDelegate,
+            PrepareRegularStateRequestDelegate = DelegateHelper.PrepareRegularStateRequestDelegate,
+            OrderFinishedSucessfullyDelegate = DelegateHelper.OrderFinishedSucessfullyDelegate,
+            OrderFinishedUnsucessfullyDelegate = DelegateHelper.OrderFinishedUnsucessfullyDelegate,
+            PrepareOrdersForStateMachineStateDelegate = DelegateHelper.PrepareOrdersForStateMachineStateDelegate
+        };
+
+        var newState = (IJobStateMachineState)builder.BuildState(config);
+
+        device.SaveJobState(newState);
+
+        Assert.That(device.CurrentState, Is.Null);
+
+        // Act  
+        device.RestoreSavedJobState();
+
+        // Assert
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(device.CurrentState, Is.EqualTo(newState));
         }
     }
 
