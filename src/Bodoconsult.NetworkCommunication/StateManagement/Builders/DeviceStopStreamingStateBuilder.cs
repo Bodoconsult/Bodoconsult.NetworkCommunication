@@ -1,5 +1,6 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
+using Bodoconsult.NetworkCommunication.Helpers;
 using Bodoconsult.NetworkCommunication.Interfaces;
 using Bodoconsult.NetworkCommunication.StateManagement.Interfaces;
 
@@ -21,7 +22,6 @@ public class DeviceStopStreamingStateBuilder : BaseOrderBasedStateMachineStateBu
     public DeviceStopStreamingStateBuilder() : base(DefaultStateIds.DeviceStopStreamingState, DefaultStateNames.DeviceStopStreamingState)
     { }
 
-
     public override void ConfigureOrderBasedActionState(IOrderBasedActionStateMachineState state, IOrderBasedActionStateConfiguration config)
     {
         state.InitialDeviceState = DefaultDeviceStates.DeviceStateOnline;
@@ -33,13 +33,8 @@ public class DeviceStopStreamingStateBuilder : BaseOrderBasedStateMachineStateBu
         state.IsRunningOrdersCancellationRequired = true;
         state.IsTurningOffStateRequestsRequired = true;
         state.CancellationTokenSource = new CancellationTokenSource();
-        state.CancelStateDelegate = CancelStateDelegate;
+        state.CancelStateDelegate = DelegateHelper.CancelStateDelegate;
 
         state.AllowedNextStates.AddRange(AllowedNextStatesInternal);
-    }
-
-    private static void CancelStateDelegate(IStateMachineState state)
-    {
-        state.CancellationTokenSource?.Cancel();
     }
 }

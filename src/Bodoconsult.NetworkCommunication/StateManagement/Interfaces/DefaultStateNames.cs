@@ -2,6 +2,9 @@
 
 namespace Bodoconsult.NetworkCommunication.StateManagement.Interfaces;
 
+/// <summary>
+/// Default state names
+/// </summary>
 public static class DefaultStateNames
 {
     public const string DeviceOfflineState = "DeviceOfflineState";
@@ -15,6 +18,9 @@ public static class DefaultStateNames
     public const string DeviceStopSnapshotState = "DeviceStopSnapshotState";
 }
 
+/// <summary>
+/// Default state IDs
+/// </summary>
 public static class DefaultStateIds
 {
     public const int DeviceOfflineState =1;

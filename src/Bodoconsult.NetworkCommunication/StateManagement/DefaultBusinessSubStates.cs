@@ -25,10 +25,10 @@ public static class DefaultBusinessSubStates
     /// <summary>
     /// Try to connect
     /// </summary>
-    public static BusinessSubState TryToConnect = new(0, "Try to connect");
+    public static BusinessSubState TryToConnect = new(3, "Try to connect");
 
     /// <summary>
     /// Device connected
     /// </summary>
-    public static BusinessSubState Connected = new(0, "Connected");
+    public static BusinessSubState Connected = new(4, "Connected");
 }

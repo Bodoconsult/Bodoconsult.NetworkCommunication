@@ -92,6 +92,11 @@ public abstract class BaseStateMachineStateBuilder : IStateMachineStateBuilder
     {
         IStateMachineState state;
 
+        if (config.StateName != StateName)
+        {
+            throw new ArgumentException($"State name: mismatch between {config.StateName} and {StateName}");
+        }
+
         switch (StateType)
         {
             case StateMachineStateTypes.OrderBasedActionState:

@@ -60,12 +60,12 @@ public abstract class BaseStateMachineState : IStateMachineState
     /// <summary>
     /// The states allowed to follow the current state
     /// </summary>
-    public List<string> AllowedNextStates { get; protected set; }
+    public List<string> AllowedNextStates { get; } = new();
 
     /// <summary>
     /// Current context
     /// </summary>
-    public IStateManagementDevice CurrentContext { get; protected set; }
+    public IStateManagementDevice CurrentContext { get; }
 
     /// <summary>
     /// Initial device state. Default DeviceStateOffline
@@ -97,9 +97,6 @@ public abstract class BaseStateMachineState : IStateMachineState
     /// </summary>
     public CancelStateDelegate CancelStateDelegate { get; set; }
 
-
-
-
     /// <summary>
     /// The next state to be requested when this state has to be left or null if the state does not change
     /// </summary>
@@ -110,7 +107,7 @@ public abstract class BaseStateMachineState : IStateMachineState
     /// </summary>
     public virtual void SetInitalStates()
     {
-        CurrentContext.SetStates(DefaultDeviceStates.DeviceStateOffline, DefaultBusinessSubStates.NotSet);
+        CurrentContext.SetStates(InitialDeviceState, InitialBusinessSubState);
     }
 
     /// <summary>
@@ -120,8 +117,6 @@ public abstract class BaseStateMachineState : IStateMachineState
     {
         // Do nothing
     }
-
-
 
     /// <summary>
     /// Cancel this state

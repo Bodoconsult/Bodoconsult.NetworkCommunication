@@ -1,5 +1,6 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
+using Bodoconsult.NetworkCommunication.StateManagement.Configurations;
 using Bodoconsult.NetworkCommunication.StateManagement.Interfaces;
 
 namespace Bodoconsult.NetworkCommunication.StateManagement.Factories;
@@ -64,6 +65,20 @@ public class StateMachineStateFactory : IStateMachineStateFactory
         if (config.StateBuilderBuilder == null)
         {
             throw new ArgumentNullException(nameof(config.StateBuilderBuilder), "State builder must be loaded!");
+        }
+
+        var checkResult = config switch
+        {
+            IOrderBasedActionStateConfiguration obas => OrderBasedActionStateConfiguration.IsValid(obas),
+            IOrderlessActionStateConfiguration olas => OrderlessActionStateConfiguration.IsValid(olas),
+            INoActionStateConfiguration nas => NoActionStateConfiguration.IsValid(nas),
+            _ => null
+        };
+
+        if (checkResult is { Count: > 0 })
+        {
+            var s = checkResult.Aggregate("", (current, item) => current + item);
+            throw new ArgumentNullException(nameof(config.StateBuilderBuilder), s);
         }
 
         config.CurrentContext = CurrentContext;

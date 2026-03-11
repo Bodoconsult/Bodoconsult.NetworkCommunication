@@ -5,7 +5,7 @@ namespace Bodoconsult.NetworkCommunication.Interfaces;
 /// <summary>
 /// Interface for business substates
 /// </summary>
-public interface IBusinessSubState
+public interface IBusinessSubState: IEquatable<IBusinessSubState>
 {
     /// <summary>
     /// The ID of the state
@@ -15,5 +15,5 @@ public interface IBusinessSubState
     /// <summary>
     /// The cleartext name of the state
     /// </summary>
-    string Name { get; set; }
+    string Name { get; }
 }

@@ -1,5 +1,6 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
+using Bodoconsult.NetworkCommunication.Helpers;
 using Bodoconsult.NetworkCommunication.Interfaces;
 using Bodoconsult.NetworkCommunication.StateManagement.Interfaces;
 
@@ -32,44 +33,11 @@ public class DeviceStreamingStateBuilder : BaseNoActionStateMachineStateBuilder
         state.InitialBusinessSubState = DefaultBusinessSubStates.NotSet;
 
         state.CheckJobstatesActionForStateDelegate =
-            config.CheckJobstatesActionForStateDelegate ?? CheckJobstatesActionForStateDelegate;
+            config.CheckJobstatesActionForStateDelegate ?? DelegateHelper.DefaultCheckJobstatesActionForStateDelegate;
 
-        state.CancelStateDelegate = CancelStateDelegate;
+        state.CancelStateDelegate = DelegateHelper.CancelStateDelegate;
         state.AllowedNextStates.AddRange(AllowedNextStatesInternal);
     }
 
-    private static void CheckJobstatesActionForStateDelegate(INoActionStateMachineState currentState)
-    {
-        while (!currentState.CancellationTokenSource.IsCancellationRequested)
-        {
-            // Check if there is a job state to restore after break
-            if (currentState.CurrentContext.SavedJobState != null)
-            {
-                currentState.CurrentContext.RestoreSavedState();
-                return;
-            }
-
-            // Check if a job state is waiting. If yes, process it now
-            if (currentState.CurrentContext.JobStates.Count > 0)
-            {
-                // Get the first job state and process it
-                var state = currentState.CurrentContext.JobStates.First();
-
-                currentState.CurrentContext.JobStates.Remove(state);
-
-                currentState.CurrentContext.RequestState(state);
-
-                currentState.CancellationTokenSource.Dispose();
-                return;
-            }
-
-            // Wait a bit then check again
-            Thread.Sleep(DeviceCommunicationBasics.JobStateCheckTimeout);
-        }
-    }
-
-    private static void CancelStateDelegate(IStateMachineState state)
-    {
-        state.CancellationTokenSource?.Cancel();
-    }
+    
 }

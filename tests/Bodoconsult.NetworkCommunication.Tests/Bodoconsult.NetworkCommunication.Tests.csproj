@@ -10,6 +10,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="StateManagement\BusinessState.cs" />
+    <Compile Remove="StateManagement\BusinessSubState.cs" />
+    <Compile Remove="StateManagement\DefaultBusinessStates.cs" />
+    <Compile Remove="StateManagement\DefaultBusinessSubStates.cs" />
+    <Compile Remove="StateManagement\IBusinessState.cs" />
+    <Compile Remove="StateManagement\IBusinessSubState.cs" />
+    <Compile Remove="StateManagement\IStateManagementContext.cs" />
+    <Compile Remove="StateManagement\IStateManagementState.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="appsettings.json" />
     <None Remove="log4net.config" />
   </ItemGroup>

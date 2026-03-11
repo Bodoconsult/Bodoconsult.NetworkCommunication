@@ -1,10 +1,14 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
+using Bodoconsult.NetworkCommunication.Helpers;
 using Bodoconsult.NetworkCommunication.Interfaces;
 using Bodoconsult.NetworkCommunication.StateManagement.Interfaces;
 
 namespace Bodoconsult.NetworkCommunication.StateManagement.Builders;
 
+/// <summary>
+/// Builder for the default state DeviceOfflineState
+/// </summary>
 public class DeviceOfflineStateBuilder : BaseOrderlessStateMachineStateBuilder
 {
     /// <summary>
@@ -33,14 +37,11 @@ public class DeviceOfflineStateBuilder : BaseOrderlessStateMachineStateBuilder
         state.IsRunningOrdersCancellationRequired = true;
         state.IsTurningOffStateRequestsRequired = true;
         state.CancellationTokenSource = new CancellationTokenSource();
-        state.CancelStateDelegate = CancelStateDelegate;
+        state.CancelStateDelegate = DelegateHelper.CancelStateDelegate;
 
         state.AllowedNextStates.AddRange(AllowedNextStatesInternal);
     }
-    private static void CancelStateDelegate(IStateMachineState state)
-    {
-        state.CancellationTokenSource?.Cancel();
-    }
+
 
     private static void ExecuteActionForStateDelegate(IOrderlessActionStateMachineState state)
     {
