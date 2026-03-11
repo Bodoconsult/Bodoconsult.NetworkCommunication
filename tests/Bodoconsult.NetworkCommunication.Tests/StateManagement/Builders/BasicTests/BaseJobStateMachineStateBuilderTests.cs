@@ -8,7 +8,7 @@ using Bodoconsult.NetworkCommunication.StateManagement.Interfaces;
 namespace Bodoconsult.NetworkCommunication.Tests.StateManagement.Builders.BasicTests;
 
 [TestFixture]
-internal class BaseNoActionStateMachineStateBuilderTests
+internal class BaseJobStateMachineStateBuilderTests
 {
     [Test]
     public void Ctor_ValidSetup_PropsSetCorrectly()
@@ -16,7 +16,7 @@ internal class BaseNoActionStateMachineStateBuilderTests
         // Arrange 
 
         // Act  
-        var builder = new DeviceReadyStateBuilder();
+        var builder = new DeviceStartStreamingStateBuilder();
 
         // Assert
         using (Assert.EnterMultipleScope())
@@ -30,9 +30,9 @@ internal class BaseNoActionStateMachineStateBuilderTests
     public void BuildState_WrongStatenameInConfig_ThrowsException()
     {
         // Arrange 
-        var builder = new DeviceReadyStateBuilder();
+        var builder = new DeviceStartStreamingStateBuilder();
 
-        var config = new NoActionStateConfiguration(DefaultStateNames.DeviceOnlineState);
+        var config = new JobStateConfiguration(DefaultStateNames.DeviceOnlineState);
 
         // Act and assert
         Assert.Throws<ArgumentException>(() =>
@@ -45,24 +45,23 @@ internal class BaseNoActionStateMachineStateBuilderTests
     public void BuildState_ValidSetup_StateBuilded()
     {
         // Arrange 
-        var builder = new DeviceReadyStateBuilder();
+        var builder = new DeviceStartStreamingStateBuilder();
 
-        var config = new NoActionStateConfiguration(DefaultStateNames.DeviceReadyState)
-            {
-                CheckJobstatesActionForStateDelegate = DelegateHelper.CheckJobstatesActionForStateDelegate
-            };
+        var config = new JobStateConfiguration(DefaultStateNames.DeviceStartStreamingState)
+        {
+            OrderFinishedSucessfullyDelegate = DelegateHelper.OrderFinishedSucessfullyDelegate,
+            OrderFinishedUnsucessfullyDelegate = DelegateHelper.OrderFinishedUnsucessfullyDelegate,
+            PrepareOrdersForStateMachineStateDelegate = DelegateHelper.PrepareOrdersForStateMachineStateDelegate
+        };
 
         // Act  
-        var state = (INoActionStateMachineState)builder.BuildState(config);
+        var state = builder.BuildState(config);
 
         // Assert
         using (Assert.EnterMultipleScope())
         {
             Assert.That(state, Is.Not.Null);
             Assert.That(state.Id, Is.EqualTo(builder.StateId));
-            Assert.That(state.CheckJobstatesActionForStateDelegate, Is.Not.Null);
         }
     }
-
-
 }

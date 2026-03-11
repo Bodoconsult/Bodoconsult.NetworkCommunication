@@ -5,12 +5,11 @@ using Bodoconsult.NetworkCommunication.StateManagement.Builders;
 using Bodoconsult.NetworkCommunication.StateManagement.Configurations;
 using Bodoconsult.NetworkCommunication.StateManagement.Interfaces;
 using Bodoconsult.NetworkCommunication.Tests.Helpers;
-using static Microsoft.ApplicationInsights.MetricDimensionNames.TelemetryContext;
 
 namespace Bodoconsult.NetworkCommunication.Tests.StateManagement.Builders;
 
 [TestFixture]
-internal class DeviceSnapshotStateBuilderTests
+internal class DeviceInitStateBuilderTests
 {
     [Test]
     public void Ctor_ValidSetup_PropsSetCorrectly()
@@ -18,14 +17,14 @@ internal class DeviceSnapshotStateBuilderTests
         // Arrange 
 
         // Act  
-        var builder = new DeviceSnapshotStateBuilder();
+        var builder = new DeviceInitStateBuilder();
 
         // Assert
         using (Assert.EnterMultipleScope())
         {
             Assert.That(string.IsNullOrEmpty(builder.StateName), Is.False);
-            Assert.That(builder.StateId, Is.EqualTo(DefaultStateIds.DeviceSnapshotState));
-            Assert.That(builder.StateName, Is.EqualTo(DefaultStateNames.DeviceSnapshotState));
+            Assert.That(builder.StateName, Is.EqualTo(DefaultStateNames.DeviceInitState));
+            Assert.That(builder.StateId, Is.EqualTo(DefaultStateIds.DeviceInitState));
         }
     }
 
@@ -33,16 +32,9 @@ internal class DeviceSnapshotStateBuilderTests
     public void BuildState_WrongStatenameInConfig_ThrowsException()
     {
         // Arrange 
-        var builder = new DeviceSnapshotStateBuilder();
+        var builder = new DeviceInitStateBuilder();
 
-        var config = new NoActionStateConfiguration(DefaultStateNames.DeviceOnlineState)
-        {
-            HandleAsyncMessageDelegate = DelegateHelper.HandleAsyncMessageDelegate,
-            HandleComDevCloseDelegate = DelegateHelper.HandleComDevCloseDelegate,
-            HandleErrorMessageDelegate = DelegateHelper.HandleErrorMessageDelegate,
-            HandleRegularStateRequestAnswerDelegate = DelegateHelper.HandleRegularStateRequestAnswerDelegate,
-            PrepareRegularStateRequestDelegate = DelegateHelper.PrepareRegularStateRequestDelegate
-        };
+        var config = new OrderBasedActionStateConfiguration(DefaultStateNames.DeviceOnlineState);
 
         // Act and assert
         Assert.Throws<ArgumentException>(() =>
@@ -57,27 +49,30 @@ internal class DeviceSnapshotStateBuilderTests
         // Arrange 
         var device = TestDataHelper.CreateStateMachineDevice();
 
-        var builder = new DeviceSnapshotStateBuilder();
+        var builder = new DeviceInitStateBuilder();
 
-        var config = new NoActionStateConfiguration(DefaultStateNames.DeviceSnapshotState)
+        var config = new OrderBasedActionStateConfiguration(DefaultStateNames.DeviceInitState)
         {
             CurrentContext = device,
             HandleAsyncMessageDelegate = DelegateHelper.HandleAsyncMessageDelegate,
             HandleComDevCloseDelegate = DelegateHelper.HandleComDevCloseDelegate,
             HandleErrorMessageDelegate = DelegateHelper.HandleErrorMessageDelegate,
             HandleRegularStateRequestAnswerDelegate = DelegateHelper.HandleRegularStateRequestAnswerDelegate,
-            PrepareRegularStateRequestDelegate = DelegateHelper.PrepareRegularStateRequestDelegate
+            PrepareRegularStateRequestDelegate = DelegateHelper.PrepareRegularStateRequestDelegate,
+            OrderFinishedSucessfullyDelegate = DelegateHelper.OrderFinishedSucessfullyDelegate,
+            OrderFinishedUnsucessfullyDelegate = DelegateHelper.OrderFinishedUnsucessfullyDelegate,
+            PrepareOrdersForStateMachineStateDelegate = DelegateHelper.PrepareOrdersForStateMachineStateDelegate
         };
 
         // Act  
-        var state = (INoActionStateMachineState)builder.BuildState(config);
+        var state = (IOrderBasedActionStateMachineState)builder.BuildState(config);
 
         // Assert
         using (Assert.EnterMultipleScope())
         {
             Assert.That(state.CurrentContext, Is.EqualTo(device));
             Assert.That(state, Is.Not.Null);
-            Assert.That(state.Id, Is.EqualTo(DefaultStateIds.DeviceSnapshotState));
+            Assert.That(state.Id, Is.EqualTo(DefaultStateIds.DeviceInitState));
 
             Assert.That(state.HandleAsyncMessageDelegate, Is.Not.Null);
             Assert.That(state.HandleComDevCloseDelegate, Is.Not.Null);
@@ -85,9 +80,12 @@ internal class DeviceSnapshotStateBuilderTests
             Assert.That(state.HandleRegularStateRequestAnswerDelegate, Is.Not.Null);
             Assert.That(state.PrepareRegularStateRequestDelegate, Is.Not.Null);
 
-            Assert.That(state.AllowedNextStates, Does.Contain(DefaultStateNames.DeviceOfflineState));
-            Assert.That(state.AllowedNextStates, Does.Contain(DefaultStateNames.DeviceStopSnapshotState));
+            Assert.That(state.PrepareOrdersForStateMachineStateDelegate, Is.Not.Null);
+            Assert.That(state.OrderFinishedSucessfullyDelegate, Is.Not.Null);
+            Assert.That(state.OrderFinishedUnsucessfullyDelegate, Is.Not.Null);
 
+            Assert.That(state.AllowedNextStates, Does.Contain(DefaultStateNames.DeviceOfflineState));
+            Assert.That(state.AllowedNextStates, Does.Contain(DefaultStateNames.DeviceReadyState));
         }
     }
 }

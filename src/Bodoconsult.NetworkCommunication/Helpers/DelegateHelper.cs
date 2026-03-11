@@ -105,33 +105,46 @@ public static class DelegateHelper
         state.CancellationTokenSource?.Cancel();
     }
 
-    public static void DefaultCheckJobstatesActionForStateDelegate(INoActionStateMachineState currentState)
+    /// <summary>
+    /// Default implementation of <see cref="CancelStateDelegate"/>: check JobStates
+    /// </summary>
+    /// <param name="state">Current state</param>
+    public static void DefaultCheckJobstatesActionForStateDelegate(INoActionStateMachineState state)
     {
-        while (!currentState.CancellationTokenSource.IsCancellationRequested)
+        while (!state.CancellationTokenSource.IsCancellationRequested)
         {
             // Check if there is a job state to restore after break
-            if (currentState.CurrentContext.SavedJobState != null)
+            if (state.CurrentContext.SavedJobState != null)
             {
-                currentState.CurrentContext.RestoreSavedState();
+                state.CurrentContext.RestoreSavedState();
                 return;
             }
 
             // Check if a job state is waiting. If yes, process it now
-            if (currentState.CurrentContext.JobStates.Count > 0)
+            if (state.CurrentContext.JobStates.Count > 0)
             {
                 // Get the first job state and process it
-                var state = currentState.CurrentContext.JobStates.First();
+                var newState = state.CurrentContext.JobStates.First();
 
-                currentState.CurrentContext.JobStates.Remove(state);
+                state.CurrentContext.JobStates.Remove(newState);
 
-                currentState.CurrentContext.RequestState(state);
+                state.CurrentContext.RequestState(newState);
 
-                currentState.CancellationTokenSource.Dispose();
+                state.CancellationTokenSource.Dispose();
                 return;
             }
 
             // Wait a bit then check again
             Thread.Sleep(DeviceCommunicationBasics.JobStateCheckTimeout);
         }
+    }
+
+    /// <summary>
+    /// Default implementation of <see cref="CancelStateDelegate"/>: doing nothing
+    /// </summary>
+    /// <param name="state">Current state</param>
+    public static void CheckJobstatesActionForStateDelegate(INoActionStateMachineState state)
+    {
+        // Do nothing
     }
 }

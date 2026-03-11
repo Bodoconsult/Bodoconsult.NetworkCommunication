@@ -7,9 +7,9 @@ using Bodoconsult.NetworkCommunication.StateManagement.Interfaces;
 namespace Bodoconsult.NetworkCommunication.StateManagement.Builders;
 
 /// <summary>
-/// Builder for the default state DeviceOnlineState
+/// Builder for the default state DeviceStartSnapshotState
 /// </summary>
-public class DeviceOnlineStateBuilder : BaseOrderlessStateMachineStateBuilder
+public class DeviceInitStateBuilder : BaseOrderBasedStateMachineStateBuilder
 {
     /// <summary>
     /// Allowed next states internal
@@ -19,15 +19,15 @@ public class DeviceOnlineStateBuilder : BaseOrderlessStateMachineStateBuilder
     /// <summary>
     /// Default ctor
     /// </summary>
-    public DeviceOnlineStateBuilder() : base(DefaultStateIds.DeviceOnlineState, DefaultStateNames.DeviceOnlineState)
+    public DeviceInitStateBuilder() : base(DefaultStateIds.DeviceInitState, DefaultStateNames.DeviceInitState)
     { }
 
     /// <summary>
     /// Configure a no action state
     /// </summary>
-    /// <param name="state">Current <see cref="IOrderlessActionStateMachineState"/> instance</param>
+    /// <param name="state">Current <see cref="IOrderBasedActionStateMachineState"/> instance</param>
     /// <param name="config">Current state configuration</param>
-    public override void ConfigureOrderlessActionState(IOrderlessActionStateMachineState state, IOrderlessActionStateConfiguration config)
+    public override void ConfigureOrderBasedActionState(IOrderBasedActionStateMachineState state, IOrderBasedActionStateConfiguration config)
     {
         state.InitialDeviceState = DefaultDeviceStates.DeviceStateOnline;
         state.InitialBusinessSubState = DefaultBusinessSubStates.TryToConnect;
@@ -37,8 +37,9 @@ public class DeviceOnlineStateBuilder : BaseOrderlessStateMachineStateBuilder
         state.HandleErrorMessageDelegate = config.HandleErrorMessageDelegate;
         state.HandleRegularStateRequestAnswerDelegate = config.HandleRegularStateRequestAnswerDelegate;
         state.PrepareRegularStateRequestDelegate = config.PrepareRegularStateRequestDelegate;
-
-        state.ExecuteActionForStateDelegate = config.ExecuteActionForStateDelegate ?? ExecuteActionForStateDelegate;
+        state.PrepareOrdersForStateMachineStateDelegate = config.PrepareOrdersForStateMachineStateDelegate;
+        state.OrderFinishedSucessfullyDelegate = config.OrderFinishedSucessfullyDelegate;
+        state.OrderFinishedUnsucessfullyDelegate = config.OrderFinishedUnsucessfullyDelegate;
 
         state.IsRunningOrdersCancellationRequired = true;
         state.IsTurningOffStateRequestsRequired = true;
@@ -46,33 +47,5 @@ public class DeviceOnlineStateBuilder : BaseOrderlessStateMachineStateBuilder
         state.CancelStateDelegate = DelegateHelper.CancelStateDelegate;
 
         state.AllowedNextStates.AddRange(AllowedNextStatesInternal);
-    }
-
-    private static void ExecuteActionForStateDelegate(IOrderlessActionStateMachineState state)
-    {
-        if (state.CancellationTokenSource == null)
-        {
-            throw new ArgumentNullException(nameof(state.CancellationTokenSource));
-        }
-
-        var context = state.CurrentContext;
-        var commAdapter = context.CommunicationAdapter;
-
-        // Try to connect to device
-        var nextState = DefaultStateNames.DeviceReadyState;
-
-        if (!commAdapter.ComDevInit())
-        {
-            nextState = DefaultStateNames.DeviceOfflineState;
-        }
-        else
-        {
-            context.SetBusinessSubState(DefaultBusinessSubStates.Connected);
-        }
-
-        // New state now
-        var stateNew = context.CreateStateInstance(nextState);
-        state.NextState = stateNew;
-        state.RequestNextState();
     }
 }

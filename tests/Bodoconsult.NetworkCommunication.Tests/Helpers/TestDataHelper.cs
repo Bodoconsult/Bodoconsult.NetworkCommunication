@@ -14,6 +14,7 @@ using Bodoconsult.NetworkCommunication.Interfaces;
 using Bodoconsult.NetworkCommunication.OrderManagement.Devices;
 using Bodoconsult.NetworkCommunication.OrderManagement.OrderBuilders;
 using Bodoconsult.NetworkCommunication.OrderManagement.ParameterSets;
+using Bodoconsult.NetworkCommunication.OrderManagement.Processors;
 using Bodoconsult.NetworkCommunication.StateManagement.Factories;
 using Bodoconsult.NetworkCommunication.StateManagement.StateCheckManagers;
 using IAppDateService = Bodoconsult.NetworkCommunication.App.Abstractions.IAppDateService;
@@ -257,7 +258,16 @@ public static class TestDataHelper
     /// <returns></returns>
     public static FakeStateMachineDevice CreateStateMachineDevice()
     {
+        var commAdapter = FakeIpCommunicationAdapter;
+
+        var om = new FakeOrderManager
+        {
+            OrderProcessor = new FakeOrderProcessor()
+        };
+
         var device = new FakeStateMachineDevice(GetDataMessagingConfig(), new FakeOrderManagementClientNotificationManager(), new FakeStateMachineStateFactory(), new DoNothingStateCheckManager());
+        device.LoadCommAdapter(commAdapter);
+        device.LoadDeviceOrderManager(om);
         return device;
     }
 }

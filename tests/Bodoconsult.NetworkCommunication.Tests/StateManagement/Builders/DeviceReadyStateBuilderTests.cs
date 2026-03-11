@@ -1,8 +1,10 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
+using Bodoconsult.NetworkCommunication.Helpers;
 using Bodoconsult.NetworkCommunication.StateManagement.Builders;
 using Bodoconsult.NetworkCommunication.StateManagement.Configurations;
 using Bodoconsult.NetworkCommunication.StateManagement.Interfaces;
+using Bodoconsult.NetworkCommunication.Tests.Helpers;
 
 namespace Bodoconsult.NetworkCommunication.Tests.StateManagement.Builders;
 
@@ -45,9 +47,19 @@ internal class DeviceReadyStateBuilderTests
     public void BuildState_ValidSetup_StateBuilded()
     {
         // Arrange 
+        var device = TestDataHelper.CreateStateMachineDevice(); 
+        
         var builder = new DeviceReadyStateBuilder();
 
-        var config = new NoActionStateConfiguration(DefaultStateNames.DeviceReadyState);
+        var config = new NoActionStateConfiguration(DefaultStateNames.DeviceReadyState)
+        {
+            CurrentContext = device,
+            HandleAsyncMessageDelegate = DelegateHelper.HandleAsyncMessageDelegate,
+            HandleComDevCloseDelegate = DelegateHelper.HandleComDevCloseDelegate,
+            HandleErrorMessageDelegate = DelegateHelper.HandleErrorMessageDelegate,
+            HandleRegularStateRequestAnswerDelegate = DelegateHelper.HandleRegularStateRequestAnswerDelegate,
+            PrepareRegularStateRequestDelegate = DelegateHelper.PrepareRegularStateRequestDelegate
+        };
 
         // Act  
         var state = builder.BuildState(config);
@@ -55,8 +67,19 @@ internal class DeviceReadyStateBuilderTests
         // Assert
         using (Assert.EnterMultipleScope())
         {
+            Assert.That(state.CurrentContext, Is.EqualTo(device));
             Assert.That(state, Is.Not.Null);
             Assert.That(state.Id, Is.EqualTo(builder.StateId));
+
+            Assert.That(state.HandleAsyncMessageDelegate, Is.Not.Null);
+            Assert.That(state.HandleComDevCloseDelegate, Is.Not.Null);
+            Assert.That(state.HandleErrorMessageDelegate, Is.Not.Null);
+            Assert.That(state.HandleRegularStateRequestAnswerDelegate, Is.Not.Null);
+            Assert.That(state.PrepareRegularStateRequestDelegate, Is.Not.Null);
+
+            Assert.That(state.AllowedNextStates, Does.Contain(DefaultStateNames.DeviceOfflineState));
+            Assert.That(state.AllowedNextStates, Does.Contain(DefaultStateNames.DeviceStartStreamingState));
+            Assert.That(state.AllowedNextStates, Does.Contain(DefaultStateNames.DeviceStartSnapshotState));
         }
     }
 }

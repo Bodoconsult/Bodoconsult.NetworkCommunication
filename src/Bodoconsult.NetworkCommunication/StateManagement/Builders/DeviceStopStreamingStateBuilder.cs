@@ -9,7 +9,7 @@ namespace Bodoconsult.NetworkCommunication.StateManagement.Builders;
 /// <summary>
 /// Builder for the default state DeviceStopStreamingState
 /// </summary>
-public class DeviceStopStreamingStateBuilder : BaseOrderBasedStateMachineStateBuilder
+public class DeviceStopStreamingStateBuilder : BaseJobStateMachineStateBuilder
 {
     /// <summary>
     /// Allowed next states internal
@@ -22,10 +22,21 @@ public class DeviceStopStreamingStateBuilder : BaseOrderBasedStateMachineStateBu
     public DeviceStopStreamingStateBuilder() : base(DefaultStateIds.DeviceStopStreamingState, DefaultStateNames.DeviceStopStreamingState)
     { }
 
-    public override void ConfigureOrderBasedActionState(IOrderBasedActionStateMachineState state, IOrderBasedActionStateConfiguration config)
+    /// <summary>
+    /// Configure a no action state
+    /// </summary>
+    /// <param name="state">Current <see cref="IJobStateMachineState"/> instance</param>
+    /// <param name="config">Current state configuration</param>
+    public override void ConfigureOrderBasedActionState(IJobStateMachineState state, IJobStateConfiguration config)
     {
         state.InitialDeviceState = DefaultDeviceStates.DeviceStateOnline;
         state.InitialBusinessSubState = DefaultBusinessSubStates.TryToConnect;
+
+        state.HandleAsyncMessageDelegate = config.HandleAsyncMessageDelegate;
+        state.HandleComDevCloseDelegate = config.HandleComDevCloseDelegate;
+        state.HandleErrorMessageDelegate = config.HandleErrorMessageDelegate;
+        state.HandleRegularStateRequestAnswerDelegate = config.HandleRegularStateRequestAnswerDelegate;
+        state.PrepareRegularStateRequestDelegate = config.PrepareRegularStateRequestDelegate;
         state.PrepareOrdersForStateMachineStateDelegate = config.PrepareOrdersForStateMachineStateDelegate;
         state.OrderFinishedSucessfullyDelegate = config.OrderFinishedSucessfullyDelegate;
         state.OrderFinishedUnsucessfullyDelegate = config.OrderFinishedUnsucessfullyDelegate;

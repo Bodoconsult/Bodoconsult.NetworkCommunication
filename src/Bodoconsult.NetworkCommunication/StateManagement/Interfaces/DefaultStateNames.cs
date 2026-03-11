@@ -9,6 +9,7 @@ public static class DefaultStateNames
 {
     public const string DeviceOfflineState = "DeviceOfflineState";
     public const string DeviceOnlineState = "DeviceOnlineState";
+    public const string DeviceInitState = "DeviceInitState";
     public const string DeviceReadyState = "DeviceReadyState";
     public const string DeviceStartStreamingState = "DeviceStartStreamingState";
     public const string DeviceStreamingState = "DeviceStreamingState";
@@ -23,13 +24,14 @@ public static class DefaultStateNames
 /// </summary>
 public static class DefaultStateIds
 {
-    public const int DeviceOfflineState =1;
-    public const int  DeviceOnlineState = 2;
-    public const int DeviceReadyState = 3;
-    public const int DeviceStartStreamingState = 4;
-    public const int DeviceStreamingState = 5;
-    public const int DeviceStopStreamingState = 6;    
-    public const int DeviceStartSnapshotState = 7;
-    public const int DeviceSnapshotState = 8;
-    public const int DeviceStopSnapshotState = 9;
+    public const int DeviceOfflineState = 1;
+    public const int DeviceOnlineState = 2;
+    public const int DeviceInitState = 3;
+    public const int DeviceReadyState = 4;
+    public const int DeviceStartStreamingState = 5;
+    public const int DeviceStreamingState = 6;
+    public const int DeviceStopStreamingState = 7;
+    public const int DeviceStartSnapshotState = 8;
+    public const int DeviceSnapshotState = 9;
+    public const int DeviceStopSnapshotState = 10;
 }

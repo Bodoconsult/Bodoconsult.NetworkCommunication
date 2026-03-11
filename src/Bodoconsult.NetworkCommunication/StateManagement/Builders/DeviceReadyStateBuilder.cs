@@ -14,7 +14,7 @@ public class DeviceReadyStateBuilder : BaseNoActionStateMachineStateBuilder
     /// <summary>
     /// Allowed next states internal
     /// </summary>
-    public static readonly List<string> AllowedNextStatesInternal = [DefaultStateNames.DeviceStartStreamingState, DefaultStateNames.DeviceOfflineState];
+    public static readonly List<string> AllowedNextStatesInternal = [DefaultStateNames.DeviceStartStreamingState, DefaultStateNames.DeviceStartSnapshotState, DefaultStateNames.DeviceOfflineState];
 
     /// <summary>
     /// Default ctor
@@ -25,18 +25,24 @@ public class DeviceReadyStateBuilder : BaseNoActionStateMachineStateBuilder
     /// <summary>
     /// Configure a no action state
     /// </summary>
-    /// <param name="noActionState">Current <see cref="INoActionStateMachineState"/> instance</param>
+    /// <param name="state">Current <see cref="INoActionStateMachineState"/> instance</param>
     /// <param name="config">Current state configuration</param>
-    public override void ConfigureNoActionState(INoActionStateMachineState noActionState, INoActionStateConfiguration config)
+    public override void ConfigureNoActionState(INoActionStateMachineState state, INoActionStateConfiguration config)
     {
-        noActionState.InitialDeviceState = DefaultDeviceStates.DeviceStateReady;
-        noActionState.InitialBusinessSubState = DefaultBusinessSubStates.NotSet;
+        state.InitialDeviceState = DefaultDeviceStates.DeviceStateReady;
+        state.InitialBusinessSubState = DefaultBusinessSubStates.NotSet;
 
-        noActionState.CheckJobstatesActionForStateDelegate = config.CheckJobstatesActionForStateDelegate ??
+        state.HandleAsyncMessageDelegate = config.HandleAsyncMessageDelegate;
+        state.HandleComDevCloseDelegate = config.HandleComDevCloseDelegate;
+        state.HandleErrorMessageDelegate = config.HandleErrorMessageDelegate;
+        state.HandleRegularStateRequestAnswerDelegate = config.HandleRegularStateRequestAnswerDelegate;
+        state.PrepareRegularStateRequestDelegate = config.PrepareRegularStateRequestDelegate;
+
+        state.CheckJobstatesActionForStateDelegate = config.CheckJobstatesActionForStateDelegate ??
                                                              DelegateHelper.DefaultCheckJobstatesActionForStateDelegate;
 
-        noActionState.CancelStateDelegate = DelegateHelper.CancelStateDelegate;
+        state.CancelStateDelegate = DelegateHelper.CancelStateDelegate;
 
-        noActionState.AllowedNextStates.AddRange(AllowedNextStatesInternal);
+        state.AllowedNextStates.AddRange(AllowedNextStatesInternal);
     }
 }

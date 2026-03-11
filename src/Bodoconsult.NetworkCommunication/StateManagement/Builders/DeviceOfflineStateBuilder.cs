@@ -32,6 +32,12 @@ public class DeviceOfflineStateBuilder : BaseOrderlessStateMachineStateBuilder
         state.InitialDeviceState = DefaultDeviceStates.DeviceStateOffline;
         state.InitialBusinessSubState = DefaultBusinessSubStates.NotSet;
 
+        state.HandleAsyncMessageDelegate = config.HandleAsyncMessageDelegate;
+        state.HandleComDevCloseDelegate = config.HandleComDevCloseDelegate;
+        state.HandleErrorMessageDelegate = config.HandleErrorMessageDelegate;
+        state.HandleRegularStateRequestAnswerDelegate = config.HandleRegularStateRequestAnswerDelegate;
+        state.PrepareRegularStateRequestDelegate = config.PrepareRegularStateRequestDelegate;
+
         state.ExecuteActionForStateDelegate = config.ExecuteActionForStateDelegate ?? ExecuteActionForStateDelegate;
 
         state.IsRunningOrdersCancellationRequired = true;

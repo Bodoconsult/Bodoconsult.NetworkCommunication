@@ -1,6 +1,7 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
 using System.Collections.Concurrent;
+using Bodoconsult.App.Helpers;
 using Bodoconsult.NetworkCommunication.Interfaces;
 using Bodoconsult.NetworkCommunication.StateManagement;
 using Bodoconsult.NetworkCommunication.StateManagement.Interfaces;
@@ -162,17 +163,31 @@ public abstract class BaseStateManagementDevice : BaseOrderManagementDevice, ISt
         // Initiate the state with orders etc.
         CurrentState.InitiateState();
 
-        // Run the first order now
+        // Do the request action for the state now
         if (CurrentState is IOrderBasedActionStateMachineState obas)
         {
-            obas.RunNextOrder();
+            AsyncHelper.FireAndForget(() =>
+            {
+                obas.RunNextOrder();
+            });
+
         }
         if (CurrentState is IOrderlessActionStateMachineState olas)
         {
-            olas.Execute();
+            AsyncHelper.FireAndForget(() =>
+            {
+                olas.Execute();
+            });
+
         }
 
-        // ToDo: No action states
+        if (CurrentState is INoActionStateMachineState nas)
+        {
+            AsyncHelper.FireAndForget(() =>
+            {
+                nas.CheckJobstates();
+            });
+        }
     }
 
     /// <summary>
@@ -235,7 +250,7 @@ public abstract class BaseStateManagementDevice : BaseOrderManagementDevice, ISt
     /// </summary>
     public virtual void LogStates()
     {
-        //LogInformation($"State changed from {PreviousDeviceState}/{PreviousBusinessState}/{PreviousBusinessSubState} to {DeviceState}/{BusinessState}/{BusinessSubState}");
+        LogInformation($"State changed from {PreviousDeviceState}/{PreviousBusinessStateId}/{PreviousBusinessSubState} to {DeviceState}/{CurrentState}/{BusinessSubState}");
     }
 
     /// <summary>

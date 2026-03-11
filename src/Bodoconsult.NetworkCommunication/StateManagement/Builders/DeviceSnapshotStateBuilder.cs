@@ -14,7 +14,7 @@ public class DeviceSnapshotStateBuilder : BaseNoActionStateMachineStateBuilder
     /// <summary>
     /// Allowed next states internal
     /// </summary>
-    public static readonly List<string> AllowedNextStatesInternal = [DefaultStateNames.DeviceOfflineState];
+    public static readonly List<string> AllowedNextStatesInternal = [DefaultStateNames.DeviceStopSnapshotState, DefaultStateNames.DeviceOfflineState];
 
     /// <summary>
     /// Default ctor
@@ -32,6 +32,12 @@ public class DeviceSnapshotStateBuilder : BaseNoActionStateMachineStateBuilder
         state.InitialDeviceState = DefaultDeviceStates.DeviceStateReady;
         state.InitialBusinessSubState = DefaultBusinessSubStates.NotSet;
 
+        state.HandleAsyncMessageDelegate = config.HandleAsyncMessageDelegate;
+        state.HandleComDevCloseDelegate = config.HandleComDevCloseDelegate;
+        state.HandleErrorMessageDelegate = config.HandleErrorMessageDelegate;
+        state.HandleRegularStateRequestAnswerDelegate = config.HandleRegularStateRequestAnswerDelegate;
+        state.PrepareRegularStateRequestDelegate = config.PrepareRegularStateRequestDelegate;
+
         state.CheckJobstatesActionForStateDelegate =
             config.CheckJobstatesActionForStateDelegate ?? DelegateHelper.DefaultCheckJobstatesActionForStateDelegate;
 
@@ -39,3 +45,4 @@ public class DeviceSnapshotStateBuilder : BaseNoActionStateMachineStateBuilder
         state.AllowedNextStates.AddRange(AllowedNextStatesInternal);
     }
 }
+

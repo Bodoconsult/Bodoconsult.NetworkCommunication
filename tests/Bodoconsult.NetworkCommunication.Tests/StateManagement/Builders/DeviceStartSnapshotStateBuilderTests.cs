@@ -1,10 +1,12 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
 using Bodoconsult.NetworkCommunication.Delegates;
+using Bodoconsult.NetworkCommunication.Helpers;
 using Bodoconsult.NetworkCommunication.Interfaces;
 using Bodoconsult.NetworkCommunication.StateManagement.Builders;
 using Bodoconsult.NetworkCommunication.StateManagement.Configurations;
 using Bodoconsult.NetworkCommunication.StateManagement.Interfaces;
+using Bodoconsult.NetworkCommunication.Tests.Helpers;
 
 namespace Bodoconsult.NetworkCommunication.Tests.StateManagement.Builders;
 
@@ -32,7 +34,7 @@ internal class DeviceStartSnapshotStateBuilderTests
     public void BuildState_WrongStatenameInConfig_ThrowsException()
     {
         // Arrange 
-        var builder = new DeviceStartStreamingStateBuilder();
+        var builder = new DeviceStartSnapshotStateBuilder();
 
         var config = new OrderlessActionStateConfiguration(DefaultStateNames.DeviceOnlineState);
 
@@ -46,15 +48,23 @@ internal class DeviceStartSnapshotStateBuilderTests
     [Test]
     public void BuildState_ValidSetup_StateBuilded()
     {
-        // Arrange 
-        var builder = new DeviceStartStreamingStateBuilder();
+        // Arrange
+        var device = TestDataHelper.CreateStateMachineDevice();
 
-        var config = new OrderBasedActionStateConfiguration(DefaultStateNames.DeviceStartStreamingState)
-            {
-                OrderFinishedSucessfullyDelegate = OrderFinishedSucessfullyDelegate,
-                OrderFinishedUnsucessfullyDelegate = OrderFinishedUnsucessfullyDelegate,
-                PrepareOrdersForStateMachineStateDelegate = PrepareOrdersForStateMachineStateDelegate
-            };
+        var builder = new DeviceStartSnapshotStateBuilder();
+
+        var config = new JobStateConfiguration(DefaultStateNames.DeviceStartSnapshotState)
+        {
+            CurrentContext = device,
+            HandleAsyncMessageDelegate = DelegateHelper.HandleAsyncMessageDelegate,
+            HandleComDevCloseDelegate = DelegateHelper.HandleComDevCloseDelegate,
+            HandleErrorMessageDelegate = DelegateHelper.HandleErrorMessageDelegate,
+            HandleRegularStateRequestAnswerDelegate = DelegateHelper.HandleRegularStateRequestAnswerDelegate,
+            PrepareRegularStateRequestDelegate = DelegateHelper.PrepareRegularStateRequestDelegate,
+            OrderFinishedSucessfullyDelegate = DelegateHelper.OrderFinishedSucessfullyDelegate,
+            OrderFinishedUnsucessfullyDelegate = DelegateHelper.OrderFinishedUnsucessfullyDelegate,
+            PrepareOrdersForStateMachineStateDelegate = DelegateHelper.PrepareOrdersForStateMachineStateDelegate
+        };
 
         // Act  
         var state = (IOrderBasedActionStateMachineState)builder.BuildState(config);
@@ -62,26 +72,22 @@ internal class DeviceStartSnapshotStateBuilderTests
         // Assert
         using (Assert.EnterMultipleScope())
         {
+            Assert.That(state.CurrentContext, Is.EqualTo(device));
             Assert.That(state, Is.Not.Null);
-            Assert.That(state.Id, Is.EqualTo(builder.StateId));
+            Assert.That(state.Id, Is.EqualTo(DefaultStateIds.DeviceStartSnapshotState));
+
             Assert.That(state.PrepareOrdersForStateMachineStateDelegate, Is.Not.Null);
             Assert.That(state.OrderFinishedSucessfullyDelegate, Is.Not.Null);
             Assert.That(state.OrderFinishedUnsucessfullyDelegate, Is.Not.Null);
+
+            Assert.That(state.HandleAsyncMessageDelegate, Is.Not.Null);
+            Assert.That(state.HandleComDevCloseDelegate, Is.Not.Null);
+            Assert.That(state.HandleErrorMessageDelegate, Is.Not.Null);
+            Assert.That(state.HandleRegularStateRequestAnswerDelegate, Is.Not.Null);
+            Assert.That(state.PrepareRegularStateRequestDelegate, Is.Not.Null);
+
+            Assert.That(state.AllowedNextStates, Does.Contain(DefaultStateNames.DeviceOfflineState));
+            Assert.That(state.AllowedNextStates, Does.Contain(DefaultStateNames.DeviceSnapshotState));
         }
-    }
-
-    private List<IOrder> PrepareOrdersForStateMachineStateDelegate()
-    {
-        return [];
-    }
-
-    private void OrderFinishedUnsucessfullyDelegate(IStateMachineState state, IOrder order)
-    {
-        // Do nothing
-    }
-
-    private void OrderFinishedSucessfullyDelegate(IStateMachineState state, IOrder order)
-    {
-        // Do nothing
     }
 }

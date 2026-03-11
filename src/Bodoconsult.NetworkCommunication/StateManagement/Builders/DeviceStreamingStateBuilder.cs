@@ -14,7 +14,7 @@ public class DeviceStreamingStateBuilder : BaseNoActionStateMachineStateBuilder
     /// <summary>
     /// Allowed next states internal
     /// </summary>
-    public static readonly List<string> AllowedNextStatesInternal = [DefaultStateNames.DeviceOfflineState];
+    public static readonly List<string> AllowedNextStatesInternal = [DefaultStateNames.DeviceStopStreamingState, DefaultStateNames.DeviceOfflineState];
 
     /// <summary>
     /// Default ctor
@@ -32,6 +32,11 @@ public class DeviceStreamingStateBuilder : BaseNoActionStateMachineStateBuilder
         state.InitialDeviceState = DefaultDeviceStates.DeviceStateReady;
         state.InitialBusinessSubState = DefaultBusinessSubStates.NotSet;
 
+        state.HandleAsyncMessageDelegate = config.HandleAsyncMessageDelegate;
+        state.HandleComDevCloseDelegate = config.HandleComDevCloseDelegate;
+        state.HandleErrorMessageDelegate = config.HandleErrorMessageDelegate;
+        state.HandleRegularStateRequestAnswerDelegate = config.HandleRegularStateRequestAnswerDelegate;
+        state.PrepareRegularStateRequestDelegate = config.PrepareRegularStateRequestDelegate;
         state.CheckJobstatesActionForStateDelegate =
             config.CheckJobstatesActionForStateDelegate ?? DelegateHelper.DefaultCheckJobstatesActionForStateDelegate;
 

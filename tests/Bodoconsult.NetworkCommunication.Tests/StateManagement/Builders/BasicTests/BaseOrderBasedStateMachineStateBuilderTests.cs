@@ -1,6 +1,7 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
 using Bodoconsult.NetworkCommunication.Delegates;
+using Bodoconsult.NetworkCommunication.Helpers;
 using Bodoconsult.NetworkCommunication.Interfaces;
 using Bodoconsult.NetworkCommunication.StateManagement.Builders;
 using Bodoconsult.NetworkCommunication.StateManagement.Configurations;
@@ -17,7 +18,7 @@ internal class BaseOrderBasedStateMachineStateBuilderTests
         // Arrange 
 
         // Act  
-        var builder = new DeviceStartStreamingStateBuilder();
+        var builder = new DeviceInitStateBuilder();
 
         // Assert
         using (Assert.EnterMultipleScope())
@@ -31,7 +32,7 @@ internal class BaseOrderBasedStateMachineStateBuilderTests
     public void BuildState_WrongStatenameInConfig_ThrowsException()
     {
         // Arrange 
-        var builder = new DeviceStartStreamingStateBuilder();
+        var builder = new DeviceInitStateBuilder();
 
         var config = new OrderlessActionStateConfiguration(DefaultStateNames.DeviceOnlineState);
 
@@ -46,13 +47,13 @@ internal class BaseOrderBasedStateMachineStateBuilderTests
     public void BuildState_ValidSetup_StateBuilded()
     {
         // Arrange 
-        var builder = new DeviceStartStreamingStateBuilder();
+        var builder = new DeviceInitStateBuilder();
 
-        var config = new OrderBasedActionStateConfiguration(DefaultStateNames.DeviceStartStreamingState)
+        var config = new OrderBasedActionStateConfiguration(DefaultStateNames.DeviceInitState)
         {
-            OrderFinishedSucessfullyDelegate = OrderFinishedSucessfullyDelegate,
-            OrderFinishedUnsucessfullyDelegate = OrderFinishedUnsucessfullyDelegate,
-            PrepareOrdersForStateMachineStateDelegate = PrepareOrdersForStateMachineStateDelegate
+            OrderFinishedSucessfullyDelegate = DelegateHelper.OrderFinishedSucessfullyDelegate,
+            OrderFinishedUnsucessfullyDelegate = DelegateHelper.OrderFinishedUnsucessfullyDelegate,
+            PrepareOrdersForStateMachineStateDelegate = DelegateHelper.PrepareOrdersForStateMachineStateDelegate
         };
 
         // Act  
@@ -64,20 +65,5 @@ internal class BaseOrderBasedStateMachineStateBuilderTests
             Assert.That(state, Is.Not.Null);
             Assert.That(state.Id, Is.EqualTo(builder.StateId));
         }
-    }
-
-    private List<IOrder> PrepareOrdersForStateMachineStateDelegate()
-    {
-        return [];
-    }
-
-    private void OrderFinishedUnsucessfullyDelegate(IStateMachineState state, IOrder order)
-    {
-        // Do nothing
-    }
-
-    private void OrderFinishedSucessfullyDelegate(IStateMachineState state, IOrder order)
-    {
-        // Do nothing
     }
 }

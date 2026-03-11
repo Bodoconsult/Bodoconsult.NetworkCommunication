@@ -1,5 +1,6 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
+using Bodoconsult.NetworkCommunication.Helpers;
 using Bodoconsult.NetworkCommunication.Interfaces;
 using Bodoconsult.NetworkCommunication.StateManagement;
 using Bodoconsult.NetworkCommunication.StateManagement.Builders;
@@ -47,9 +48,19 @@ internal class DeviceOnlineStateBuilderTests
     public void BuildState_ValidSetup_StateBuilded()
     {
         // Arrange 
+        var device = TestDataHelper.CreateStateMachineDevice();
+
         var builder = new DeviceOnlineStateBuilder();
 
-        var config = new OrderlessActionStateConfiguration(DefaultStateNames.DeviceOnlineState);
+        var config = new OrderlessActionStateConfiguration(DefaultStateNames.DeviceOnlineState)
+        {
+            CurrentContext = device,
+            HandleAsyncMessageDelegate = DelegateHelper.HandleAsyncMessageDelegate,
+            HandleComDevCloseDelegate = DelegateHelper.HandleComDevCloseDelegate,
+            HandleErrorMessageDelegate = DelegateHelper.HandleErrorMessageDelegate,
+            HandleRegularStateRequestAnswerDelegate = DelegateHelper.HandleRegularStateRequestAnswerDelegate,
+            PrepareRegularStateRequestDelegate = DelegateHelper.PrepareRegularStateRequestDelegate
+        };
 
         // Act  
         var state = builder.BuildState(config);
@@ -57,11 +68,23 @@ internal class DeviceOnlineStateBuilderTests
         // Assert
         using (Assert.EnterMultipleScope())
         {
+            Assert.That(state.CurrentContext, Is.EqualTo(device));
             Assert.That(state, Is.Not.Null);
             Assert.That(state.Id, Is.EqualTo(builder.StateId));
             Assert.That(state.Id, Is.EqualTo(DefaultStateIds.DeviceOnlineState));
+
+            Assert.That(state.HandleAsyncMessageDelegate, Is.Not.Null);
+            Assert.That(state.HandleComDevCloseDelegate, Is.Not.Null);
+            Assert.That(state.HandleErrorMessageDelegate, Is.Not.Null);
+            Assert.That(state.HandleRegularStateRequestAnswerDelegate, Is.Not.Null);
+            Assert.That(state.PrepareRegularStateRequestDelegate, Is.Not.Null);
+
             Assert.That(state.InitialBusinessSubState, Is.EqualTo(DefaultBusinessSubStates.TryToConnect));
             Assert.That(state.InitialDeviceState, Is.EqualTo(DefaultDeviceStates.DeviceStateOnline));
+            Assert.That(state.AllowedNextStates, Does.Contain(DefaultStateNames.DeviceReadyState));
+            Assert.That(state.AllowedNextStates, Does.Contain(DefaultStateNames.DeviceOfflineState));
+
+            
         }
     }
 
