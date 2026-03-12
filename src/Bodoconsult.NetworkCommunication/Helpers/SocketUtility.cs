@@ -1,6 +1,4 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
-
-// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 // Licence MIT
 
 using System.Net;
@@ -18,7 +16,7 @@ public static class SocketUtility
     // for TaskCompletionSource<_Void> so we can use it with no result
     public sealed class Void
     {
-        public Void() { }
+        //public Void() { }
     }
     /// <summary>
     /// Receive data using the specified awaitable class
@@ -74,8 +72,22 @@ public static class SocketUtility
         var tcs = new TaskCompletionSource<int>(socket);
         socket.BeginReceive(buffer, offset, length, socketFlags, iar =>
         {
-            var t = (TaskCompletionSource<int>)iar.AsyncState;
-            var s = (Socket)t.Task.AsyncState;
+            var t = (TaskCompletionSource<int>?)iar.AsyncState;
+
+            if (t == null)
+            {
+                tcs.TrySetException(new ArgumentException("Variable t was a null value"));
+                return;
+            }
+
+            var s = (Socket?)t.Task.AsyncState;
+
+            if (s == null)
+            {
+                tcs.TrySetException(new ArgumentException("Variable s was a null value"));
+                return;
+            }
+
             try
             {
                 t.TrySetResult(s.EndReceive(iar));
@@ -102,8 +114,22 @@ public static class SocketUtility
         var tcs = new TaskCompletionSource<int>(socket);
         socket.BeginSend(buffers, socketFlags, iar =>
         {
-            var t = (TaskCompletionSource<int>)iar.AsyncState;
-            var s = (Socket)t.Task.AsyncState;
+            var t = (TaskCompletionSource<int>?)iar.AsyncState;
+
+            if (t == null)
+            {
+                tcs.TrySetException(new ArgumentException("Variable t was a null value"));
+                return;
+            }
+
+            var s = (Socket?)t.Task.AsyncState;
+
+            if (s == null)
+            {
+                tcs.TrySetException(new ArgumentException("Variable s was a null value"));
+                return;
+            }
+
             try
             {
                 t.TrySetResult(s.EndSend(iar));
@@ -124,7 +150,7 @@ public static class SocketUtility
     /// <returns>A <see cref="Task{Int32}"/> containing the number of bytes sent</returns>
     public static Task<int> SendAsync(this Socket socket, byte[] buffer)
     {
-        return socket.SendAsync(buffer, 0, buffer.Length, SocketFlags.None);
+        return socket.SendAsync(buffer, 0, buffer.Length);
     }
 
     /// <summary>
@@ -141,13 +167,22 @@ public static class SocketUtility
         var tcs = new TaskCompletionSource<int>(socket);
         socket.BeginSend(buffer, offset, length, socketFlags, iar =>
         {
-            var t = (TaskCompletionSource<int>)iar.AsyncState;
-            var s = (Socket)t?.Task.AsyncState;
-            if (s == null)
+            var t = (TaskCompletionSource<int>?)iar.AsyncState;
+
+            if (t == null)
             {
-                tcs.TrySetException(new ArgumentException("Variable t or s was a null value"));
+                tcs.TrySetException(new ArgumentException("Variable t was a null value"));
                 return;
             }
+
+            var s = (Socket?)t.Task.AsyncState;
+
+            if (s == null)
+            {
+                tcs.TrySetException(new ArgumentException("Variable s was a null value"));
+                return;
+            }
+
             try
             {
                 t.TrySetResult(s.EndSend(iar));
@@ -175,13 +210,22 @@ public static class SocketUtility
         var tcs = new TaskCompletionSource<int>(socket);
         socket.BeginSendTo(buffer, offset, length, socketFlags, remoteEp, iar =>
         {
-            var t = (TaskCompletionSource<int>)iar.AsyncState;
-            var s = (Socket)t?.Task.AsyncState;
-            if (s == null)
+            var t = (TaskCompletionSource<int>?)iar.AsyncState;
+
+            if (t == null)
             {
-                tcs.TrySetException(new ArgumentException("Variable t or s was a null value"));
+                tcs.TrySetException(new ArgumentException("Variable t was a null value"));
                 return;
             }
+
+            var s = (Socket?)t.Task.AsyncState;
+
+            if (s == null)
+            {
+                tcs.TrySetException(new ArgumentException("Variable s was a null value"));
+                return;
+            }
+
             try
             {
                 t.TrySetResult(s.EndSendTo(iar));
@@ -208,13 +252,22 @@ public static class SocketUtility
         var tcs = new TaskCompletionSource<int>(socket);
         socket.BeginSendFile(fileName, preBuffer, postBuffer, flags, iar =>
         {
-            var t = (TaskCompletionSource<int>)iar.AsyncState;
-            var s = (Socket)t?.Task.AsyncState;
-            if (s == null)
+            var t = (TaskCompletionSource<int>?)iar.AsyncState;
+
+            if (t == null)
             {
-                tcs.TrySetException(new ArgumentException("Variable t or s was a null value"));
+                tcs.TrySetException(new ArgumentException("Variable t was a null value"));
                 return;
             }
+
+            var s = (Socket?)t.Task.AsyncState;
+
+            if (s == null)
+            {
+                tcs.TrySetException(new ArgumentException("Variable s was a null value"));
+                return;
+            }
+
             try
             {
                 t.TrySetResult(s.EndSend(iar));
@@ -238,18 +291,26 @@ public static class SocketUtility
         var tcs = new TaskCompletionSource<Void>(socket);
         socket.BeginSendFile(fileName, iar =>
         {
-            var t = (TaskCompletionSource<Void>)iar.AsyncState;
-            var s = (Socket)t?.Task.AsyncState;
+            var t = (TaskCompletionSource<int>?)iar.AsyncState;
+
+            if (t == null)
+            {
+                tcs.TrySetException(new ArgumentException("Variable t was a null value"));
+                return;
+            }
+
+            var s = (Socket?)t.Task.AsyncState;
+
             if (s == null)
             {
-                tcs.TrySetException(new ArgumentException("Variable t or s was a null value"));
+                tcs.TrySetException(new ArgumentException("Variable s was a null value"));
                 return;
             }
 
             try
             {
                 s.EndSendFile(iar);
-                t.TrySetResult(null);
+                t.TrySetResult(1);
             }
             catch (Exception exc)
             {
@@ -267,12 +328,9 @@ public static class SocketUtility
     /// <param name="encoding">The encoding to use</param>
     /// <param name="socketFlags">The socket flags</param>
     /// <returns>A <see cref="Task{Int32}"/> containing the number of bytes sent</returns>
-    public static Task<int> SendAsync(this Socket socket, string text, Encoding encoding = null, SocketFlags socketFlags = 0)
+    public static Task<int> SendAsync(this Socket socket, string text, Encoding? encoding = null, SocketFlags socketFlags = 0)
     {
-        if (null == encoding)
-        {
-            encoding = Encoding.UTF8;
-        }
+        encoding ??= Encoding.UTF8;
         var ba = encoding.GetBytes(text);
         return socket.SendAsync(ba, 0, ba.Length, socketFlags);
     }
@@ -283,17 +341,31 @@ public static class SocketUtility
     /// <param name="socket">The socket</param>
     /// <param name="remoteEp">The remote endpoint</param>
     /// <returns>A <see cref="Task"/> for performing the operation</returns>
-    public static Task ConnectAsync(this Socket socket, EndPoint remoteEp)
+    public static Task<bool> ConnectAsync(this Socket socket, EndPoint remoteEp)
     {
-        var tcs = new TaskCompletionSource<Void>(socket);
+        var tcs = new TaskCompletionSource<bool>(socket);
         socket.BeginConnect(remoteEp, iar =>
         {
-            var t = (TaskCompletionSource<Void>)iar.AsyncState;
-            var s = (Socket)t.Task.AsyncState;
+            var t = (TaskCompletionSource<Void>?)iar.AsyncState;
+
+            if (t == null)
+            {
+                tcs.TrySetException(new ArgumentException("Variable t was a null value"));
+                return;
+            }
+
+            var s = (Socket?)t.Task.AsyncState;
+
+            if (s == null)
+            {
+                tcs.TrySetException(new ArgumentException("Variable s was a null value"));
+                return;
+            }
+
             try
             {
                 s.EndConnect(iar);
-                tcs.TrySetResult(null);
+                tcs.TrySetResult(true);
             }
             catch (Exception exc)
             {
@@ -312,15 +384,29 @@ public static class SocketUtility
     /// <returns>A <see cref="Task"/> for performing the operation</returns>
     public static Task ConnectAsync(this Socket socket, IPAddress address, int port)
     {
-        var tcs = new TaskCompletionSource<Void>(socket);
+        var tcs = new TaskCompletionSource<bool>(socket);
         socket.BeginConnect(address, port, iar =>
         {
-            var t = (TaskCompletionSource<Void>)iar.AsyncState;
-            var s = (Socket)t.Task.AsyncState;
+            var t = (TaskCompletionSource<Void>?)iar.AsyncState;
+
+            if (t == null)
+            {
+                tcs.TrySetException(new ArgumentException("Variable t was a null value"));
+                return;
+            }
+
+            var s = (Socket?)t.Task.AsyncState;
+
+            if (s == null)
+            {
+                tcs.TrySetException(new ArgumentException("Variable s was a null value"));
+                return;
+            }
+
             try
             {
                 s.EndConnect(iar);
-                tcs.TrySetResult(null);
+                tcs.TrySetResult(true);
             }
             catch (Exception exc)
             {
@@ -336,17 +422,30 @@ public static class SocketUtility
     /// <param name="addresses">The remote endpoint IP addresses to connect to</param>
     /// <param name="port">The remote port</param>
     /// <returns>A <see cref="Task"/> for performing the operation</returns>
-    public static Task ConnectAsync(this Socket socket, IPAddress[] addresses, int port)
+    public static Task<bool> ConnectAsync(this Socket socket, IPAddress[] addresses, int port)
     {
-        var tcs = new TaskCompletionSource<Void>(socket);
+        var tcs = new TaskCompletionSource<bool>(socket);
         socket.BeginConnect(addresses, port, iar =>
         {
-            var t = (TaskCompletionSource<Void>)iar.AsyncState;
-            var s = (Socket)t.Task.AsyncState;
+            var t = (TaskCompletionSource<Void>?)iar.AsyncState;
+
+            if (t == null)
+            {
+                tcs.TrySetException(new ArgumentException("Variable t was a null value"));
+                return;
+            }
+
+            var s = (Socket?)t.Task.AsyncState;
+
+            if (s == null)
+            {
+                tcs.TrySetException(new ArgumentException("Variable s was a null value"));
+                return;
+            }
             try
             {
                 s.EndConnect(iar);
-                tcs.TrySetResult(null);
+                tcs.TrySetResult(true);
             }
             catch (Exception exc)
             {
@@ -363,17 +462,30 @@ public static class SocketUtility
     /// <param name="host">The remote host</param>
     /// <param name="port">The remote port</param>
     /// <returns>A <see cref="Task"/> for performing the operation</returns>
-    public static Task ConnectAsync(this Socket socket, string host, int port)
+    public static Task<bool> ConnectAsync(this Socket socket, string host, int port)
     {
-        var tcs = new TaskCompletionSource<Void>(socket);
+        var tcs = new TaskCompletionSource<bool>(socket);
         socket.BeginConnect(host, port, iar =>
         {
-            var t = (TaskCompletionSource<Void>)iar.AsyncState;
-            var s = (Socket)t.Task.AsyncState;
+            var t = (TaskCompletionSource<Void>?)iar.AsyncState;
+
+            if (t == null)
+            {
+                tcs.TrySetException(new ArgumentException("Variable t was a null value"));
+                return;
+            }
+
+            var s = (Socket?)t.Task.AsyncState;
+
+            if (s == null)
+            {
+                tcs.TrySetException(new ArgumentException("Variable s was a null value"));
+                return;
+            }
             try
             {
                 s.EndConnect(iar);
-                tcs.TrySetResult(null);
+                tcs.TrySetResult(true);
             }
             catch (Exception exc)
             {
@@ -389,17 +501,31 @@ public static class SocketUtility
     /// <param name="socket">The socket</param>
     /// <param name="reuseSocket">True if the socket is to be reused, otherwise false</param>
     /// <returns>A <see cref="Task"/> representing the operation</returns>
-    public static Task DisconnectAsync(this Socket socket, bool reuseSocket)
+    public static Task<bool> DisconnectAsync(this Socket socket, bool reuseSocket)
     {
-        var tcs = new TaskCompletionSource<Void>(socket);
+        var tcs = new TaskCompletionSource<bool>(socket);
         socket.BeginDisconnect(reuseSocket, iar =>
         {
-            var t = (TaskCompletionSource<Void>)iar.AsyncState;
-            var s = (Socket)t.Task.AsyncState;
+            var t = (TaskCompletionSource<Void>?)iar.AsyncState;
+
+            if (t == null)
+            {
+                tcs.TrySetException(new ArgumentException("Variable t was a null value"));
+                return;
+            }
+
+            var s = (Socket?)t.Task.AsyncState;
+
+            if (s == null)
+            {
+                tcs.TrySetException(new ArgumentException("Variable s was a null value"));
+                return;
+            }
+
             try
             {
                 s.EndDisconnect(iar);
-                tcs.TrySetResult(null);
+                tcs.TrySetResult(true);
             }
             catch (Exception exc)
             {
@@ -419,8 +545,21 @@ public static class SocketUtility
         var tcs = new TaskCompletionSource<Socket>(socket);
         socket.BeginAccept(iar =>
         {
-            var t = (TaskCompletionSource<Socket>)iar.AsyncState;
-            var s = (Socket)t.Task.AsyncState;
+            var t = (TaskCompletionSource<Socket>?)iar.AsyncState;
+
+            if (t == null)
+            {
+                tcs.TrySetException(new ArgumentException("Variable t was a null value"));
+                return;
+            }
+
+            var s = (Socket?)t.Task.AsyncState;
+
+            if (s == null)
+            {
+                tcs.TrySetException(new ArgumentException("Variable s was a null value"));
+                return;
+            }
             try
             {
                 tcs.TrySetResult(s.EndAccept(iar));
@@ -444,8 +583,22 @@ public static class SocketUtility
         var tcs = new TaskCompletionSource<Socket>(socket);
         socket.BeginAccept(receiveSize, iar =>
         {
-            var t = (TaskCompletionSource<Socket>)iar.AsyncState;
-            var s = (Socket)t.Task.AsyncState;
+            var t = (TaskCompletionSource<Socket>?)iar.AsyncState;
+
+            if (t == null)
+            {
+                tcs.TrySetException(new ArgumentException("Variable t was a null value"));
+                return;
+            }
+
+            var s = (Socket?)t.Task.AsyncState;
+
+            if (s == null)
+            {
+                tcs.TrySetException(new ArgumentException("Variable s was a null value"));
+                return;
+            }
+
             try
             {
                 tcs.TrySetResult(s.EndAccept(iar));
@@ -470,8 +623,22 @@ public static class SocketUtility
         var tcs = new TaskCompletionSource<Socket>(socket);
         socket.BeginAccept(acceptSocket, receiveSize, iar =>
         {
-            var t = (TaskCompletionSource<Socket>)iar.AsyncState;
-            var s = (Socket)t.Task.AsyncState;
+            var t = (TaskCompletionSource<Socket>?)iar.AsyncState;
+
+            if (t == null)
+            {
+                tcs.TrySetException(new ArgumentException("Variable t was a null value"));
+                return;
+            }
+
+            var s = (Socket?)t.Task.AsyncState;
+
+            if (s == null)
+            {
+                tcs.TrySetException(new ArgumentException("Variable s was a null value"));
+                return;
+            }
+
             try
             {
                 tcs.TrySetResult(s.EndAccept(iar));

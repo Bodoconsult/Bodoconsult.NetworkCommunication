@@ -1,12 +1,12 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
-using Bodoconsult.App.Helpers;
-using Bodoconsult.NetworkCommunication.Helpers;
-using Bodoconsult.NetworkCommunication.Interfaces;
 using System.Buffers;
 using System.IO.Pipelines;
 using System.Net.Sockets;
 using System.Runtime.InteropServices;
+using Bodoconsult.App.Helpers;
+using Bodoconsult.NetworkCommunication.Helpers;
+using Bodoconsult.NetworkCommunication.Interfaces;
 
 namespace Bodoconsult.NetworkCommunication.Communication;
 
@@ -18,11 +18,13 @@ public class IpHighPerformanceDuplexIoSender : BaseDuplexIoSender
 
     private readonly Pipe _pipe;
 
-    private Task _sendLoop;
+    private Task? _sendLoop;
 
-    private CancellationTokenSource _cancellationSource;
+    private CancellationTokenSource? _cancellationSource;
 
     private readonly int _pollingTimeOut;
+
+    private ISocketProxy _socketProxy;
 
     /// <summary>
     /// Default ctor
@@ -34,6 +36,8 @@ public class IpHighPerformanceDuplexIoSender : BaseDuplexIoSender
     {
         _pipe = pipe;
         _pollingTimeOut = pollingTimeOut;
+
+        _socketProxy = DataMessagingConfig.SocketProxy ?? throw new ArgumentNullException(nameof(DataMessagingConfig.SocketProxy));
     }
 
     /// <summary>
@@ -56,7 +60,7 @@ public class IpHighPerformanceDuplexIoSender : BaseDuplexIoSender
     {
         await Task.Run(() =>
         {
-            _cancellationSource.Cancel();
+            _cancellationSource?.Cancel();
 
             if (_sendLoop == null)
             {
@@ -73,7 +77,7 @@ public class IpHighPerformanceDuplexIoSender : BaseDuplexIoSender
     /// <param name="message">Current message to send</param>
     public override async Task<int> SendMessage(IOutboundMessage message)
     {
-        OutboundCodecResult result = null;
+        OutboundCodecResult? result = null;
 
         try
         {
@@ -116,10 +120,10 @@ public class IpHighPerformanceDuplexIoSender : BaseDuplexIoSender
 
         try
         {
-            while (!_cancellationSource.Token.IsCancellationRequested)
+            while (!_cancellationSource?.Token.IsCancellationRequested ?? false)
             {
 
-                if (!DataMessagingConfig.SocketProxy.Connected)
+                if (!_socketProxy.Connected)
                 {
                     AsyncHelper.Delay(5);
                     continue;
@@ -210,7 +214,7 @@ public class IpHighPerformanceDuplexIoSender : BaseDuplexIoSender
         {
             try
             {
-                sent = await DataMessagingConfig.SocketProxy.Send(readOnlyMemory);
+                sent = await _socketProxy.Send(readOnlyMemory);
             }
             catch (SocketException socketException)
             {
@@ -230,13 +234,11 @@ public class IpHighPerformanceDuplexIoSender : BaseDuplexIoSender
         if (sent <= 0)
         {
             AsyncHelper.FireAndForget(() => DataMessagingConfig.RaiseDataMessageNotSentDelegate?.Invoke(command.ToArray(), "Reason unknown"));
-            DataMessagingConfig?.MonitorLogger.LogError($"{DataMessagingConfig.LoggerId}message could not be sent via TCP socket. Only {0} bytes of {command.Length} bytes are sent.");
+            DataMessagingConfig.MonitorLogger.LogError($"{DataMessagingConfig.LoggerId}message could not be sent via TCP socket. Only {0} bytes of {command.Length} bytes are sent.");
             return;
         }
 
-        DataMessagingConfig?.MonitorLogger.LogInformation($"{DataMessagingConfig.LoggerId}sent to device: {DataMessageHelper.GetStringFromArrayCsharpStyle(command.ToArray())}");
-        return;
-
+        DataMessagingConfig.MonitorLogger.LogInformation($"{DataMessagingConfig.LoggerId}sent to device: {DataMessageHelper.GetStringFromArrayCsharpStyle(command.ToArray())}");
     }
 
     /// <summary>

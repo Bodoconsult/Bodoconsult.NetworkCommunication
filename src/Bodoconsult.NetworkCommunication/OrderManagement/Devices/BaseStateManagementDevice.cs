@@ -15,10 +15,10 @@ public abstract class BaseStateManagementDevice : BaseOrderManagementDevice, ISt
 {
     private readonly ConcurrentQueue<IJobStateMachineState> _concurrentQueue = new();
 
-    private IStateMachineState _currentState;
+    private IStateMachineState? _currentState;
     private readonly Lock _currentStateLockObj = new();
 
-    private IJobStateMachineState _savedJobState;
+    private IJobStateMachineState? _savedJobState;
     private readonly Lock _savedJobStateLockObj = new();
 
     /// <summary>
@@ -41,7 +41,7 @@ public abstract class BaseStateManagementDevice : BaseOrderManagementDevice, ISt
     /// <summary>
     /// The current state
     /// </summary>
-    public virtual IStateMachineState CurrentState
+    public virtual IStateMachineState? CurrentState
     {
         get
         {
@@ -62,7 +62,7 @@ public abstract class BaseStateManagementDevice : BaseOrderManagementDevice, ISt
     /// <summary>
     /// The last job state not processed completely
     /// </summary>
-    public virtual IJobStateMachineState SavedJobState
+    public virtual IJobStateMachineState? SavedJobState
     {
         get
         {
@@ -258,7 +258,7 @@ public abstract class BaseStateManagementDevice : BaseOrderManagementDevice, ISt
     /// </summary>
     public void HandleComDevClose()
     {
-        CurrentState.HandleComDevClose();
+        CurrentState?.HandleComDevClose();
     }
 
     /// <summary>

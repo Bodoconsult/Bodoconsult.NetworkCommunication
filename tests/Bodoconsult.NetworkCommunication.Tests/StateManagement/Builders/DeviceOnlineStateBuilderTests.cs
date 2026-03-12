@@ -35,7 +35,7 @@ internal class DeviceOnlineStateBuilderTests
         // Arrange 
         var builder = new DeviceOnlineStateBuilder();
 
-        var config = new OrderlessActionStateConfiguration(DefaultStateNames.DeviceOfflineState);
+        var config = new OrderlessActionStateConfiguration(DefaultStateNames.DeviceOfflineState, builder);
 
         // Act and assert
         Assert.Throws<ArgumentException>(() =>
@@ -52,7 +52,7 @@ internal class DeviceOnlineStateBuilderTests
 
         var builder = new DeviceOnlineStateBuilder();
 
-        var config = new OrderlessActionStateConfiguration(DefaultStateNames.DeviceOnlineState)
+        var config = new OrderlessActionStateConfiguration(DefaultStateNames.DeviceOnlineState, builder)
         {
             CurrentContext = device,
             HandleAsyncMessageDelegate = DelegateHelper.HandleAsyncMessageDelegate,
@@ -96,7 +96,7 @@ internal class DeviceOnlineStateBuilderTests
 
         var device = TestDataHelper.CreateStateMachineDevice();
 
-        var config = new OrderlessActionStateConfiguration(DefaultStateNames.DeviceOnlineState)
+        var config = new OrderlessActionStateConfiguration(DefaultStateNames.DeviceOnlineState, builder)
         {
             CurrentContext = device
         };
@@ -126,7 +126,7 @@ internal class DeviceOnlineStateBuilderTests
 
         var device = TestDataHelper.CreateStateMachineDevice();
 
-        var config = new OrderlessActionStateConfiguration(DefaultStateNames.DeviceOnlineState)
+        var config = new OrderlessActionStateConfiguration(DefaultStateNames.DeviceOnlineState, builder)
         {
             CurrentContext = device
         };

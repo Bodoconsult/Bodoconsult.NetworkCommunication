@@ -35,7 +35,7 @@ internal class DeviceStopSnapshotStateBuilderTests
         // Arrange 
         var builder = new DeviceStopStreamingStateBuilder();
 
-        var config = new OrderlessActionStateConfiguration(DefaultStateNames.DeviceOnlineState);
+        var config = new OrderlessActionStateConfiguration(DefaultStateNames.DeviceOnlineState, builder);
 
         // Act and assert
         Assert.Throws<ArgumentException>(() =>
@@ -52,7 +52,7 @@ internal class DeviceStopSnapshotStateBuilderTests
         
         var builder = new DeviceStopStreamingStateBuilder();
 
-        var config = new JobStateConfiguration(DefaultStateNames.DeviceStopStreamingState)
+        var config = new JobStateConfiguration(DefaultStateNames.DeviceStopStreamingState, builder)
         {
             CurrentContext = device,
             HandleAsyncMessageDelegate = DelegateHelper.HandleAsyncMessageDelegate,

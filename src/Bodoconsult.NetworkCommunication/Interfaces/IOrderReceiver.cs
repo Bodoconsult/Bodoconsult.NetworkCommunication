@@ -12,7 +12,7 @@ public interface IOrderReceiver: IDisposable
     /// <summary>
     /// Delegate for handling a received device message
     /// </summary>
-    OrderReceiverCheckMessageDelegate OrderReceiverCheckMessageDelegate { get; set; }
+    OrderReceiverCheckMessageDelegate? OrderReceiverCheckMessageDelegate { get; set; }
 
     /// <summary>
     /// Is the received message processing activated?

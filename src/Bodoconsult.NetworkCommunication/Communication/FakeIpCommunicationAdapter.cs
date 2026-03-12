@@ -44,7 +44,7 @@ public class FakeIpCommunicationAdapter : ICommunicationAdapter
     /// <summary>
     /// Set or get the current order processing state delegate
     /// </summary>
-    public SetOrderProcessingStateDelegate SetOrderProcessingStateDelegate { get; set; }
+    public SetOrderProcessingStateDelegate? SetOrderProcessingStateDelegate { get; set; }
 
     /// <summary>
     /// Initialize the communication with the device
@@ -74,7 +74,7 @@ public class FakeIpCommunicationAdapter : ICommunicationAdapter
     /// <summary>
     /// Device configuration for data messaging
     /// </summary>
-    public IIpDataMessagingConfig DataMessagingConfig { get; set; }
+    public IIpDataMessagingConfig? DataMessagingConfig { get; set; }
 
     /// <summary>
     /// Expected order execution result

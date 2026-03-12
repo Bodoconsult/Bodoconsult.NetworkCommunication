@@ -83,14 +83,14 @@ public interface IOrderProcessor : IDisposable
     /// Get the current order processing
     /// </summary>
     /// <returns>Currently processed order</returns>
-    IOrder GetCurrentProcessingOrder();
+    IOrder? GetCurrentProcessingOrder();
 
     /// <summary>
     /// Get the request processor
     /// </summary>
     /// <param name="orderId">Current order ID</param>
     /// <returns>Request processor</returns>
-    IRequestProcessor GetRequestProcessorForOrder(long orderId);
+    IRequestProcessor? GetRequestProcessorForOrder(long orderId);
 
     long CurrentOrderExecutionDuration { get; }
 
@@ -137,14 +137,14 @@ public interface IOrderProcessor : IDisposable
     /// <summary>
     /// Initiate a hardware init and run the order directly
     /// </summary>
-    IOrder InitiateHardwareInit();
+    IOrder? InitiateHardwareInit();
 
     /// <summary>
     /// Initiate a hardware init
     /// </summary>
     /// <param name="runTheOrder">Run the order directly: yes or no</param>
     /// <returns>device hardware init order</returns>
-    IOrder InitiateHardwareInit(bool runTheOrder);
+    IOrder? InitiateHardwareInit(bool runTheOrder);
 
 
     /// <summary>
@@ -211,7 +211,7 @@ public interface IOrderProcessor : IDisposable
     /// </summary>
     /// <param name="receivedMessage">A message received from the device</param>
     /// <returns>True if the message was an expected answer of the current request</returns>
-    bool CheckReceivedMessage(IInboundDataMessage receivedMessage);
+    bool CheckReceivedMessage(IInboundDataMessage? receivedMessage);
 
 
     /// <summary>

@@ -200,15 +200,15 @@ internal class OrderProcessorTests
         var orderPipeline = new OrderPipeline(_dateTimeService, _orderProcessorFactory, logger, "Tower 000123: ");
         var syncManager = new SyncOrderManager();
 
-        var om = new FakeOrderManager();
-
         var processor = new OrderProcessor(_device, _dateTimeService, orderPipeline, syncManager, _notificationManager, _benchLogger)
         {
             IsNoHardWareInitRequired = true
         };
 
-        om.OrderProcessor = processor;
-        om.MessagingConfig = _device.DataMessagingConfig;
+        var om = new FakeOrderManager(_device.DataMessagingConfig, new FakeOrderProcessor(_device, new FakeIOrderPipeline(), new SyncOrderManager(), new FakeOrderManagementClientNotificationManager()), new FakeOrderReceiver())
+        {
+            OrderProcessor = processor
+        };
 
         _device.LoadDeviceOrderManager(om);
 

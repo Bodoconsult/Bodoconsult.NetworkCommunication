@@ -63,7 +63,7 @@ public interface IOrderManager
     /// Event handling method for binding to <see cref="MessagingConfig"/>.NotifydeviceMessageReceived event
     /// </summary>
     /// <param name="dataMessage">Received message</param>
-    void OndeviceMessageReceived(IInboundDataMessage dataMessage);
+    void OnDeviceMessageReceived(IInboundDataMessage dataMessage);
 
     /// <summary>
     /// Starts the watchdog for the order processing

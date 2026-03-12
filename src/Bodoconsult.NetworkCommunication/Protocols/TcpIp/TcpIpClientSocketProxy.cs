@@ -1,10 +1,10 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 // Licence MIT
 
-using Bodoconsult.NetworkCommunication.Helpers;
-using Bodoconsult.NetworkCommunication.Interfaces;
 using System.Net;
 using System.Net.Sockets;
+using Bodoconsult.NetworkCommunication.Helpers;
+using Bodoconsult.NetworkCommunication.Interfaces;
 
 namespace Bodoconsult.NetworkCommunication.Protocols.TcpIp;
 
@@ -90,6 +90,11 @@ public class TcpIpClientSocketProxy : TcpIpSocketProxyBase
     /// <param name="bytesToSend">Byte array to send</param>
     public override Task<int> Send(byte[] bytesToSend)
     {
+        if (Socket == null)
+        {
+            return Task.FromResult(0);
+        }
+
         return !Socket.Connected ? Task.FromResult(0) : Socket.SendAsync(bytesToSend);
     }
 
@@ -99,6 +104,11 @@ public class TcpIpClientSocketProxy : TcpIpSocketProxyBase
     /// <param name="bytesToSend">Data to send</param>
     public override ValueTask<int> Send(ReadOnlyMemory<byte> bytesToSend)
     {
+        if (Socket == null)
+        {
+            return ValueTask.FromResult(0);
+        }
+
         return !Socket.Connected ? new ValueTask<int>(0) : Socket.SendAsync(bytesToSend, SocketFlags.None);
     }
 
@@ -107,6 +117,11 @@ public class TcpIpClientSocketProxy : TcpIpSocketProxyBase
     /// </summary>
     public override void Close()
     {
+        if (Socket == null)
+        {
+            return;
+        }
+
         Socket.Shutdown(SocketShutdown.Both);
         Socket.Close();
     }
@@ -116,6 +131,8 @@ public class TcpIpClientSocketProxy : TcpIpSocketProxyBase
     /// </summary>
     public override async Task Connect()
     {
+        ArgumentNullException.ThrowIfNull(IpAddress);
+
         try
         {
             if (Socket != null)
@@ -154,7 +171,12 @@ public class TcpIpClientSocketProxy : TcpIpSocketProxyBase
     /// <returns>Number of bytes received</returns>
     public override Task<int> Receive(byte[] buffer)
     {
-        return !Socket.Connected ? Task.FromResult(0) : Socket?.ReceiveAsync(buffer);
+        if (Socket == null)
+        {
+            return Task.FromResult(0);
+        }
+
+        return !Socket.Connected ? Task.FromResult(0) : Socket.ReceiveAsync(buffer);
     }
 
     /// <summary>
@@ -164,6 +186,11 @@ public class TcpIpClientSocketProxy : TcpIpSocketProxyBase
     /// <returns>Number of bytes received</returns>
     public override async Task<int> Receive(Memory<byte> buffer)
     {
+        if (Socket == null)
+        {
+            return Task.FromResult(0).GetAwaiter().GetResult();
+        }
+
         return !Socket.Connected ? await Task.FromResult(0) : await Socket.ReceiveAsync(buffer, SocketFlags.None);
     }
 
@@ -176,6 +203,11 @@ public class TcpIpClientSocketProxy : TcpIpSocketProxyBase
     /// <returns>Number of bytes received</returns>
     public override Task<int> Receive(byte[] buffer, int offset, int expectedBytesLength)
     {
+        if (Socket == null)
+        {
+            return Task.FromResult(0);
+        }
+
         return !Socket.Connected ? Task.FromResult(0) : Socket.ReceiveAsync(buffer, offset, expectedBytesLength, SocketFlags.None);
     }
 
@@ -188,6 +220,11 @@ public class TcpIpClientSocketProxy : TcpIpSocketProxyBase
     /// <returns></returns>
     public override Task<int> Send(byte[] bytesToSend, int offset, int messageBytesLength)
     {
+        if (Socket == null)
+        {
+            return Task.FromResult(0);
+        }
+
         return !Socket.Connected ? Task.FromResult(0) : Socket.SendAsync(bytesToSend, offset, messageBytesLength);
     }
 
@@ -197,7 +234,7 @@ public class TcpIpClientSocketProxy : TcpIpSocketProxyBase
     /// <returns>True, if data can be read, else false</returns>
     public override bool Poll()
     {
-        return Socket.Poll(PollingTimeout, SelectMode.SelectRead);
+        return Socket?.Poll(PollingTimeout, SelectMode.SelectRead) ?? false;
     }
 
     /// <summary>
@@ -206,14 +243,13 @@ public class TcpIpClientSocketProxy : TcpIpSocketProxyBase
     /// <param name="fileName">Full file path</param>
     public override void SendFile(string fileName)
     {
-        Socket.SendFile(fileName);
+        Socket?.SendFile(fileName);
     }
 
     /// <summary>
     /// Current socket (only for testing purposes, do not access directly in production code)
     /// </summary>
-    public Socket Socket { get; protected set; }
-
+    public Socket? Socket { get; protected set; }
 
     /// <summary>
     /// Prepare the answer of the socket for testing

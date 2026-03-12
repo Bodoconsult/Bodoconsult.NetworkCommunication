@@ -12,7 +12,7 @@ public interface INoActionStateMachineState : IStateMachineState
     /// <summary>
     /// Delegate to be executed from a no action state machine state to check if job states are required to be executed
     /// </summary>
-    CheckJobstatesActionForStateDelegate CheckJobstatesActionForStateDelegate { get; set; }
+    CheckJobstatesActionForStateDelegate? CheckJobstatesActionForStateDelegate { get; set; }
 
     /// <summary>
     /// Execute the action defined with <see cref="CheckJobstatesActionForStateDelegate"/> for this state to check if job states are required to be executed

@@ -42,7 +42,7 @@ namespace Bodoconsult.NetworkCommunication.OrderManagement.Processors;
             throw new NullReferenceException("Data messaging config may not be null");
         }
 
-        MessagingConfig.RaiseAppLayerDataMessageReceivedDelegate = OndeviceMessageReceived;
+        MessagingConfig.RaiseAppLayerDataMessageReceivedDelegate = OnDeviceMessageReceived;
         _appLogger.LogDebug($"{_loggerId}Order processing bound to receiver");
     }
 
@@ -75,7 +75,7 @@ namespace Bodoconsult.NetworkCommunication.OrderManagement.Processors;
     /// Event handling method for binding to <see cref="IOrderManager.MessagingConfig"/>.NotifydeviceMessageReceivedDelegate
     /// </summary>
     /// <param name="dataMessage">Received message</param>
-    public void OndeviceMessageReceived(IInboundDataMessage dataMessage)
+    public void OnDeviceMessageReceived(IInboundDataMessage dataMessage)
     {
         Debug.Print($"{_loggerId}message received: {dataMessage.ToInfoString()}");
         _appLogger.LogDebug($"{_loggerId}message received: {dataMessage.ToInfoString()}");

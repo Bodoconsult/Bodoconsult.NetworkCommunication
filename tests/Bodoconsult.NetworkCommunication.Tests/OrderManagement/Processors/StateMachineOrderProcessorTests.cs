@@ -200,7 +200,7 @@ internal class StateMachineOrderProcessorTests
         var orderPipeline = new OrderPipeline(_dateTimeService, _orderProcessorFactory, logger, "Tower 000123: ");
         var syncManager = new SyncOrderManager();
 
-        var om = new FakeOrderManager();
+        var om = new FakeOrderManager(TestDataHelper.GetDataMessagingConfig(), new FakeOrderProcessor(_device, orderPipeline, syncManager, _notificationManager), new FakeOrderReceiver());
 
         var processor = new StateMachineOrderProcessor(_device, _dateTimeService, orderPipeline, syncManager, _notificationManager, _benchLogger)
         {

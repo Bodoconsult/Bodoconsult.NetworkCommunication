@@ -25,7 +25,7 @@ public class FakeSendPacketProcess : ISendPacketProcess
     /// <summary>
     /// Current monitor logger
     /// </summary>
-    public IAppLoggerProxy MonitorLogger { get; set; }
+    public IAppLoggerProxy? MonitorLogger { get; set; }
 
     /// <summary>
     /// Load dependencies
@@ -41,7 +41,7 @@ public class FakeSendPacketProcess : ISendPacketProcess
     /// <summary>
     /// Current SMD device
     /// </summary>
-    public IDataMessagingConfig DataMessagingConfig { get; set; }
+    public IDataMessagingConfig? DataMessagingConfig { get; set; }
 
     /// <summary>
     /// Maximum number of send attemps
@@ -83,7 +83,7 @@ public class FakeSendPacketProcess : ISendPacketProcess
     /// <summary>
     /// Current device data message to send
     /// </summary>
-    public IOutboundDataMessage Message { get; set; }
+    public IOutboundDataMessage? Message { get; set; }
 
     /// <summary>
     /// Is the device communication online?
@@ -100,6 +100,9 @@ public class FakeSendPacketProcess : ISendPacketProcess
     /// </summary>
     public virtual bool SendMessage()
     {
+        ArgumentNullException.ThrowIfNull(DataMessagingConfig);
+        ArgumentNullException.ThrowIfNull(Message);
+
         // Do nothing
         DataMessagingConfig.RaiseDataMessageSentDelegate?.Invoke(Message.RawMessageData);
         return true;
@@ -114,7 +117,7 @@ public class FakeSendPacketProcess : ISendPacketProcess
     /// <summary>
     /// The execution result of the send process
     /// </summary>
-    public IOrderExecutionResultState ProcessExecutionResult { get; set; }
+    public IOrderExecutionResultState ProcessExecutionResult { get; set; } = OrderExecutionResultState.Unsuccessful;
 
     /// <summary>
     /// Register a wait for ACK state to be handled

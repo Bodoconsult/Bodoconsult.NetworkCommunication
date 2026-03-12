@@ -39,7 +39,7 @@ public abstract class BaseDuplexIo : IDuplexIo
     /// <summary>
     /// Current socket to use
     /// </summary>
-    public ISocketProxy SocketProxy { get; }
+    public ISocketProxy? SocketProxy { get; }
 
     /// <summary>
     /// Is the communication started?
@@ -49,12 +49,12 @@ public abstract class BaseDuplexIo : IDuplexIo
     /// <summary>
     /// The receiver part used of the duplex (bidirectional) comm channels
     /// </summary>
-    public IDuplexIoReceiver Receiver { get; protected set; }
+    public IDuplexIoReceiver? Receiver { get; protected set; }
 
     /// <summary>
     /// The sender part used of the duplex (bidirectional) comm channels
     /// </summary>
-    public IDuplexIoSender Sender { get; protected set; }
+    public IDuplexIoSender? Sender { get; protected set; }
 
     /// <summary>
     /// Is the current connection alive? True, if yes else false.
@@ -79,6 +79,11 @@ public abstract class BaseDuplexIo : IDuplexIo
     /// <param name="message">Current message to send</param>
     public virtual async Task<MessageSendingResult> SendMessage(IOutboundMessage message)
     {
+        if (Sender == null)
+        {
+            throw new ArgumentNullException(nameof(Sender));
+        }
+
         if (message is IOutboundDataMessage { WaitForAcknowledgement: true } msg)
         {
             // Send and wait for handshake
@@ -101,6 +106,11 @@ public abstract class BaseDuplexIo : IDuplexIo
     /// <param name="message">Current message to send</param>
     public async Task<MessageSendingResult> SendMessageInternal(IOutboundDataMessage message)
     {
+        if (Sender == null)
+        {
+            throw new ArgumentNullException(nameof(Sender));
+        }
+
         var count = await Sender.SendMessage(message);
         return count == 0 ? new MessageSendingResult(message, OrderExecutionResultState.Unsuccessful) : new MessageSendingResult(message, OrderExecutionResultState.Successful);
     }
@@ -197,8 +207,8 @@ public abstract class BaseDuplexIo : IDuplexIo
         }
 
         //Debug.Print(msg);
-        DataMessagingConfig.AppLogger?.LogError(msg);
-        DataMessagingConfig.MonitorLogger?.LogError(msg);
+        DataMessagingConfig.AppLogger.LogError(msg);
+        DataMessagingConfig.MonitorLogger.LogError(msg);
     }
 
 

@@ -2,7 +2,6 @@
 
 using Bodoconsult.NetworkCommunication.Communication.Sending;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataBlockCodecs;
-using Bodoconsult.NetworkCommunication.DataMessaging.DataBlockCodingProcessors;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessageCodecs;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessageCodingProcessors;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessageProcessors;
@@ -21,7 +20,9 @@ public class BtcpDataMessageProcessingPackage : IDataMessageProcessingPackage
     /// <summary>
     /// Default ctor
     /// </summary>
+#pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring as nullable.
     public BtcpDataMessageProcessingPackage(IDataMessagingConfig dataMessagingConfig)
+#pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring as nullable.
     {
         DataMessagingConfig = dataMessagingConfig;
 
@@ -55,8 +56,6 @@ public class BtcpDataMessageProcessingPackage : IDataMessageProcessingPackage
     {
         var handShakeCodec = new BtcpHandshakeMessageCodec();
         DataMessageCodingProcessor.MessageCodecs.Add(handShakeCodec);
-
-        DataBlockCodingProcessor = new DefaultDataBlockCodingProcessor();
 
         LoadCustomDataBlockCodecs();
 

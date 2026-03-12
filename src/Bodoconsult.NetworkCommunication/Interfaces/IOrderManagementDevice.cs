@@ -15,12 +15,12 @@ public interface IOrderManagementDevice
     /// <summary>
     /// Communication adapter to use for order management
     /// </summary>
-    ICommunicationAdapter CommunicationAdapter { get; }
+    ICommunicationAdapter? CommunicationAdapter { get; }
 
     /// <summary>
     /// Current order manager
     /// </summary>
-    IOrderManager OrderManager { get; }
+    IOrderManager? OrderManager { get; }
 
     /// <summary>
     /// Client notification manager
@@ -128,7 +128,7 @@ public interface IOrderManagementDevice
     /// <summary>
     /// Get next order to run
     /// </summary>
-    IOrder GetNextOrderToRun();
+    IOrder? GetNextOrderToRun();
 
     /// <summary>
     /// Check if other orders following the current order have to be removed from the queue by cancelling them
@@ -162,14 +162,14 @@ public interface IOrderManagementDevice
     /// </summary>
     /// <param name="receivedMessage">Received message</param>
     /// <returns>True if the message was an expected answer of the current request or should not be handled at all else false</returns>
-    bool DoBasicCheckForReceivedMessage(IInboundDataMessage receivedMessage);
+    bool DoBasicCheckForReceivedMessage(IInboundDataMessage? receivedMessage);
 
     /// <summary>
     /// Check if the message is an error message
     /// </summary>
     /// <param name="receivedMessage">Received message</param>
     /// <returns>True if the message was a handled as error message else false</returns>
-    bool DoCheckForErrorMessage(IInboundDataMessage receivedMessage);
+    bool DoCheckForErrorMessage(IInboundDataMessage? receivedMessage);
 
     /// <summary>
     /// Cancel the currently running operation

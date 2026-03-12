@@ -27,7 +27,7 @@ public interface IOrder : IDisposable
     /// <summary>
     /// The next order in a chain of orders
     /// </summary>
-    IOrder NextOrder { get; set; }
+    IOrder? NextOrder { get; set; }
 
     /// <summary>
     /// Name of the order
@@ -47,7 +47,7 @@ public interface IOrder : IDisposable
     /// <summary>
     /// Order source
     /// </summary>
-    OrderSource OrderSource { get; }
+    OrderSource? OrderSource { get; }
 
     /// <summary>
     /// The UID of a source item like a joblist or a trial run the order is bound to
@@ -79,17 +79,17 @@ public interface IOrder : IDisposable
     /// <summary>
     /// Action running after successful processing of the order
     /// </summary>
-    ActionRequestStepDelegate OrderFinishedSuccessfulAction { get; }
+    ActionRequestStepDelegate? OrderFinishedSuccessfulAction { get; }
 
     /// <summary>
     /// Action running after unsuccessful processing of the order
     /// </summary>
-    ActionRequestStepDelegate OrderFinishedUnsuccessfulAction { get; }
+    ActionRequestStepDelegate? OrderFinishedUnsuccessfulAction { get; }
 
     /// <summary>
     /// The state to notify the app in case of order was successfully running
     /// </summary>
-    IDeviceState StateToNotifyOnSuccess { get; }
+    IDeviceState? StateToNotifyOnSuccess { get; set; }
 
     /// <summary>
     /// Is the order running in sync mode? Default: false means async
@@ -148,7 +148,7 @@ public interface IOrder : IDisposable
     /// <summary>
     /// Current runtime parameter set to use for the order. Must include the parameter sets of all contained requests by interface.
     /// </summary>
-    IParameterSet ParameterSet { get; }
+    IParameterSet? ParameterSet { get; }
 
     /// <summary>
     /// The step was successfully processed in all steps
@@ -163,9 +163,8 @@ public interface IOrder : IDisposable
     /// <summary>
     /// An object to lock the property <see cref="IsCancelled"/>
     /// </summary>
-    object IsCancelledLockObject { get; }
-
-
+    object? IsCancelledLockObject { get; }
+    
     /// <summary>
     /// Order processing start time
     /// </summary>
@@ -218,12 +217,12 @@ public interface IOrder : IDisposable
     /// <summary>
     /// Trace message to log
     /// </summary>
-    string TraceMessage { get; set; }
+    string? TraceMessage { get; set; }
 
     /// <summary>
     /// Trace entry to create for the order
     /// </summary>
-    ITraceEntry TraceEntry { get; set; }
+    ITraceEntry? TraceEntry { get; set; }
 
 
     /// <summary>
@@ -243,7 +242,7 @@ public interface IOrder : IDisposable
     /// Benchmark object (see output in StSys_Benchmark.csv)
     /// Make sure to create it, addStep, and dispose it 
     /// </summary>
-    Bench Benchmark { get; set; }
+    Bench? Benchmark { get; set; }
 
     #endregion
 

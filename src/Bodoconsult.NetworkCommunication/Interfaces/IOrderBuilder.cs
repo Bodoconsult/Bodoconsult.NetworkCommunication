@@ -13,7 +13,7 @@ public interface IOrderBuilder
     /// <summary>
     /// The type of parameter set the order requires
     /// </summary>
-    Type ParameterSetType { get; }
+    Type? ParameterSetType { get; }
 
     /// <summary>
     /// Order type name
@@ -47,7 +47,7 @@ public interface IOrderBuilder
     /// <param name="name">Name of the request spec</param>
     /// <param name="handleRequestAnswerOnSuccessDelegate">Delegate fired if the order was eceuted successfully</param>
     /// <returns><see cref="DeviceRequestSpec"/> instance </returns>
-    INoAnswerDeviceRequestSpec CreateNoAnswerDeviceRequestSpec(IOrder order, string name, HandleRequestAnswerDelegate handleRequestAnswerOnSuccessDelegate);
+    INoAnswerDeviceRequestSpec CreateNoAnswerDeviceRequestSpec(IOrder order, string name, HandleRequestAnswerDelegate? handleRequestAnswerOnSuccessDelegate);
 
     /// <summary>
     /// Create an <see cref="NoHandshakeNoAnswerDeviceRequestSpec"/> instance and add it to the order
@@ -56,7 +56,7 @@ public interface IOrderBuilder
     /// <param name="name">Name of the request spec</param>
     /// <param name="handleRequestAnswerOnSuccessDelegate">Delegate fired if the order was eceuted successfully</param>
     /// <returns><see cref="DeviceRequestSpec"/> instance </returns>
-    INoHandshakeNoAnswerDeviceRequestSpec CreateNoHandshakeNoAnswerDeviceRequestSpec(IOrder order, string name, HandleRequestAnswerDelegate handleRequestAnswerOnSuccessDelegate);
+    INoHandshakeNoAnswerDeviceRequestSpec CreateNoHandshakeNoAnswerDeviceRequestSpec(IOrder order, string name, HandleRequestAnswerDelegate? handleRequestAnswerOnSuccessDelegate);
 
     /// <summary>
     /// Create an <see cref="InternalRequestSpec"/> instance and add it to the order
@@ -95,5 +95,5 @@ public interface IOrderBuilder
     IRequestAnswer CreateRequestAnswer(IRequestAnswerStep requestAnswerStep, string name,
         CheckReceivedMessageDelegate checkReceivedMessageDelegate,
         HandleRequestAnswerDelegate handleRequestAnswerOnSuccessDelegate, bool hasDatablock = false,
-        Type dataBlockType = null);
+        Type? dataBlockType = null);
 }

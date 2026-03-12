@@ -15,10 +15,15 @@ namespace Bodoconsult.NetworkCommunication.Helpers;
 // https://blogs.msdn.microsoft.com/pfxteam/2011/12/15/awaiting-socket-operations/
 public sealed class SocketAwaitable : INotifyCompletion
 {
-    // placeholder for when we don't have an actual continuation. does nothing
-    static readonly Action _sentinel = () => { };
-    // the continuation to use
-    Action _continuation;
+    /// <summary>
+    /// placeholder for when we don't have an actual continuation. does nothing
+    /// </summary>
+    private static readonly Action Sentinel = () => { };
+    
+    /// <summary>
+    /// the continuation to use
+    /// </summary>
+    private Action? _continuation;
 
     /// <summary>
     /// Creates a new instance of the class for the specified <paramref name="eventArgs"/>
@@ -30,13 +35,14 @@ public sealed class SocketAwaitable : INotifyCompletion
         eventArgs.Completed += delegate
         {
             var prev = _continuation ?? Interlocked.CompareExchange(
-                ref _continuation, _sentinel, null);
+                ref _continuation, Sentinel, null);
             if (prev != null)
             {
                 prev();
             }
         };
     }
+
     /// <summary>
     /// Indicates the event args used by the awaiter
     /// </summary>
@@ -57,13 +63,15 @@ public sealed class SocketAwaitable : INotifyCompletion
     /// </summary>
     /// <returns>Itself</returns>
     public SocketAwaitable GetAwaiter() { return this; }
-		
-    // for INotifyCompletion
+
+    /// <summary>Schedules the continuation action that's invoked when the instance completes.</summary>
+    /// <param name="continuation">The action to invoke when the operation completes.</param>
+    /// <exception cref="T:System.ArgumentNullException">The <paramref name="continuation" /> argument is null (Nothing in Visual Basic).</exception>
     void INotifyCompletion.OnCompleted(Action continuation)
     {
-        if (_continuation == _sentinel ||
+        if (_continuation == Sentinel ||
             Interlocked.CompareExchange(
-                ref _continuation, continuation, null) == _sentinel)
+                ref _continuation, continuation, null) == Sentinel)
         {
             Task.Run(continuation);
         }
@@ -76,6 +84,8 @@ public sealed class SocketAwaitable : INotifyCompletion
     public void GetResult()
     {
         if (EventArgs.SocketError != SocketError.Success)
+        {
             throw new SocketException((int)EventArgs.SocketError);
+        }
     }
 }

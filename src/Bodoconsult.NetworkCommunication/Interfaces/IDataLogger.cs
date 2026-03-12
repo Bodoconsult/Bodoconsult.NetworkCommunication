@@ -10,12 +10,12 @@ public interface IDataLogger
     /// <summary>
     /// The directory path for the export target. Default: Path.GetTempPath();
     /// </summary>
-    string TargetPath { get; set; }
+    string? TargetPath { get; set; }
 
     /// <summary>
     /// The plain filename for the export file without extension, timestamp etc.
     /// </summary>
-    string FileName { get; set; }
+    string? FileName { get; set; }
 
     /// <summary>
     /// Pattern for the full filename including timestamp etc.

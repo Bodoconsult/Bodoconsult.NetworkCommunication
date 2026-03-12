@@ -1,8 +1,6 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
-using Bodoconsult.NetworkCommunication.Delegates;
 using Bodoconsult.NetworkCommunication.Helpers;
-using Bodoconsult.NetworkCommunication.Interfaces;
 using Bodoconsult.NetworkCommunication.StateManagement.Builders;
 using Bodoconsult.NetworkCommunication.StateManagement.Configurations;
 using Bodoconsult.NetworkCommunication.StateManagement.Interfaces;
@@ -36,7 +34,7 @@ internal class DeviceStartSnapshotStateBuilderTests
         // Arrange 
         var builder = new DeviceStartSnapshotStateBuilder();
 
-        var config = new OrderlessActionStateConfiguration(DefaultStateNames.DeviceOnlineState);
+        var config = new OrderlessActionStateConfiguration(DefaultStateNames.DeviceOnlineState, builder);
 
         // Act and assert
         Assert.Throws<ArgumentException>(() =>
@@ -53,7 +51,7 @@ internal class DeviceStartSnapshotStateBuilderTests
 
         var builder = new DeviceStartSnapshotStateBuilder();
 
-        var config = new JobStateConfiguration(DefaultStateNames.DeviceStartSnapshotState)
+        var config = new JobStateConfiguration(DefaultStateNames.DeviceStartSnapshotState, builder)
         {
             CurrentContext = device,
             HandleAsyncMessageDelegate = DelegateHelper.HandleAsyncMessageDelegate,

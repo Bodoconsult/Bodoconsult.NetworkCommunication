@@ -17,7 +17,7 @@ public class OutboundCodecResult
     /// If message delivers a length 0 value this
     /// message is set with the reason why messaging decoding failed
     /// </summary>
-    public string ErrorMessage { get; set; }
+    public string? ErrorMessage { get; set; }
 
     ///// <summary>
     ///// Message encoded by the codec

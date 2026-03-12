@@ -5,17 +5,6 @@ namespace Bodoconsult.NetworkCommunication.Interfaces;
 /// <summary>
 /// Interface for executing request steps of a device request
 /// </summary>
-public interface IInternalRequestStepProcessor : IRequestStepProcessor
-{
-    /// <summary>
-    /// Currentinternal request spec
-    /// </summary>
-    IInternalRequestSpec InternalRequestSpec { get; }
-}
-
-/// <summary>
-/// Interface for executing request steps of a device request
-/// </summary>
 public interface IRequestStepProcessor : IDisposable
 {
     /// <summary>
@@ -32,8 +21,6 @@ public interface IRequestStepProcessor : IDisposable
     /// Is the request processor cancelled
     /// </summary>
     bool IsCancelled { get; }
-
-
 
     /// <summary>
     /// Execute the request

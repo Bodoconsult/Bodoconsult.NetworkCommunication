@@ -16,7 +16,7 @@ public class IpCommunicationHandler : ICommunicationHandler
 {
     private readonly IAppEventSource _appEventSource;
     private IDataMessagingConfig DataMessagingConfig { get; }
-    private IWaitStateManager _waitStateManager;
+    private IWaitStateManager? _waitStateManager;
 
     /// <summary>
     /// Default ctor
@@ -58,13 +58,14 @@ public class IpCommunicationHandler : ICommunicationHandler
     /// </summary>
     /// <param name="message">Message not sent</param>
     /// <param name="reason">The reason why the message was not sent</param>
-    public void OnMessageNotSent(ReadOnlyMemory<byte> message, string reason)
+    public void OnMessageNotSent(ReadOnlyMemory<byte> message, string? reason)
     {
         DataMessagingConfig.MonitorLogger.LogWarning($"message not sent: '{DataMessageHelper.GetStringFromArrayCsharpStyle(message)}' \n Reason: '{reason}'");
     }
 
     private void OnNotExpectedMessageReceivedEvent(IInboundDataMessage e)
     {
+        ArgumentNullException.ThrowIfNull(_waitStateManager);
         _waitStateManager.LastMessageTimeStamp = new DateTimeOffset(DateTime.UtcNow).ToUnixTimeMilliseconds();
     }
 
@@ -94,6 +95,9 @@ public class IpCommunicationHandler : ICommunicationHandler
     /// <param name="message">Data message received</param>
     public void OnReceivedMessage(IInboundDataMessage message)
     {
+        ArgumentNullException.ThrowIfNull(DataMessagingConfig.DataMessageProcessingPackage);
+        ArgumentNullException.ThrowIfNull(_waitStateManager);
+
         try
         {
             _waitStateManager.LastMessageTimeStamp = new DateTimeOffset(DateTime.UtcNow).ToUnixTimeMilliseconds();
@@ -130,7 +134,7 @@ public class IpCommunicationHandler : ICommunicationHandler
         }
 
         // Connect the socket
-        AsyncHelper.RunSync(() => SocketProxy.Connect());
+        AsyncHelper.RunSync(() => SocketProxy?.Connect());
 
         AsyncHelper.RunSync(() => DuplexIo.StartCommunication());
     }
@@ -141,7 +145,7 @@ public class IpCommunicationHandler : ICommunicationHandler
     public void Disconnect()
     {
         DuplexIo.StopCommunication().Wait(2000);
-        SocketProxy.Close();
+        SocketProxy?.Close();
         DataMessagingConfig.MonitorLogger.LogDebug($"{DataMessagingConfig.LoggerId}disconnect - Socket has been closed.");
     }
 
@@ -170,7 +174,7 @@ public class IpCommunicationHandler : ICommunicationHandler
     /// </summary>
     public bool IsConnected => SocketProxy is { Connected: true };
 
-    public ISocketProxy SocketProxy => DuplexIo.DataMessagingConfig.SocketProxy;
+    public ISocketProxy? SocketProxy => DuplexIo.DataMessagingConfig.SocketProxy;
 
 
     ///// <summary>
@@ -207,7 +211,7 @@ public class IpCommunicationHandler : ICommunicationHandler
 
         try
         {
-            DuplexIo?.DisposeAsync();
+            DuplexIo.DisposeAsync();
         }
         catch
         {
@@ -221,7 +225,6 @@ public class IpCommunicationHandler : ICommunicationHandler
     /// <summary>Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.</summary>
     public void Dispose()
     {
-
         Dispose(true);
         GC.SuppressFinalize(this);
     }

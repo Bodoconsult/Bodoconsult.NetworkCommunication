@@ -7,11 +7,6 @@ using Bodoconsult.NetworkCommunication.StateManagement.Builders;
 using Bodoconsult.NetworkCommunication.StateManagement.Configurations;
 using Bodoconsult.NetworkCommunication.StateManagement.Interfaces;
 using Bodoconsult.NetworkCommunication.Tests.Helpers;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Bodoconsult.NetworkCommunication.Tests.StateManagement;
 
@@ -65,20 +60,7 @@ internal class BaseStateManagementDeviceTests
         // Arrange 
         var device = TestDataHelper.CreateStateMachineDevice();
 
-        var builder = new DeviceOfflineStateBuilder();
-
-        var config = new OrderlessActionStateConfiguration(DefaultStateNames.DeviceOfflineState)
-        {
-            CurrentContext = device,
-            HandleAsyncMessageDelegate = DelegateHelper.HandleAsyncMessageDelegate,
-            HandleComDevCloseDelegate = DelegateHelper.HandleComDevCloseDelegate,
-            HandleErrorMessageDelegate = DelegateHelper.HandleErrorMessageDelegate,
-            HandleRegularStateRequestAnswerDelegate = DelegateHelper.HandleRegularStateRequestAnswerDelegate,
-            PrepareRegularStateRequestDelegate = DelegateHelper.PrepareRegularStateRequestDelegate
-        };
-
         // Act  
-        var state = builder.BuildState(config);
 
         // Act  
         device.SetStates(DefaultDeviceStates.DeviceStateOnline, DefaultBusinessSubStates.Connected);
@@ -100,7 +82,7 @@ internal class BaseStateManagementDeviceTests
 
         var builder = new DeviceOfflineStateBuilder();
 
-        var config = new OrderlessActionStateConfiguration(DefaultStateNames.DeviceOfflineState)
+        var config = new OrderlessActionStateConfiguration(DefaultStateNames.DeviceOfflineState, builder)
         {
             CurrentContext = device,
             HandleAsyncMessageDelegate = DelegateHelper.HandleAsyncMessageDelegate,
@@ -135,7 +117,7 @@ internal class BaseStateManagementDeviceTests
 
         var builder = new DeviceStartStreamingStateBuilder();
 
-        var config = new JobStateConfiguration(DefaultStateNames.DeviceStartStreamingState)
+        var config = new JobStateConfiguration(DefaultStateNames.DeviceStartStreamingState, builder)
         {
             CurrentContext = device,
             HandleAsyncMessageDelegate = DelegateHelper.HandleAsyncMessageDelegate,
@@ -171,7 +153,7 @@ internal class BaseStateManagementDeviceTests
 
         var builder = new DeviceReadyStateBuilder();
 
-        var config = new NoActionStateConfiguration(DefaultStateNames.DeviceReadyState)
+        var config = new NoActionStateConfiguration(DefaultStateNames.DeviceReadyState, builder)
         {
             CurrentContext = device,
             HandleAsyncMessageDelegate = DelegateHelper.HandleAsyncMessageDelegate,
@@ -204,7 +186,7 @@ internal class BaseStateManagementDeviceTests
 
         var builder = new DeviceStartStreamingStateBuilder();
 
-        var config = new JobStateConfiguration(DefaultStateNames.DeviceStartStreamingState)
+        var config = new JobStateConfiguration(DefaultStateNames.DeviceStartStreamingState, builder)
         {
             CurrentContext = device,
             HandleAsyncMessageDelegate = DelegateHelper.HandleAsyncMessageDelegate,
@@ -255,7 +237,7 @@ internal class BaseStateManagementDeviceTests
 
         var builder = new DeviceStartStreamingStateBuilder();
 
-        var config = new JobStateConfiguration(DefaultStateNames.DeviceStartStreamingState)
+        var config = new JobStateConfiguration(DefaultStateNames.DeviceStartStreamingState, builder)
         {
             CurrentContext = device,
             HandleAsyncMessageDelegate = DelegateHelper.HandleAsyncMessageDelegate,
@@ -288,7 +270,7 @@ internal class BaseStateManagementDeviceTests
 
         var builder = new DeviceStartStreamingStateBuilder();
 
-        var config = new JobStateConfiguration(DefaultStateNames.DeviceStartStreamingState)
+        var config = new JobStateConfiguration(DefaultStateNames.DeviceStartStreamingState, builder)
         {
             CurrentContext = device,
             HandleAsyncMessageDelegate = DelegateHelper.HandleAsyncMessageDelegate,

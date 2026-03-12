@@ -12,7 +12,7 @@ namespace Bodoconsult.NetworkCommunication.App.Abstractions;
 public class MonitorLoggerFactory : IMonitorLoggerFactory
 {
 
-    private ILogger _logger;
+    private ILogger? _logger;
 
     private readonly Type type = typeof(Log4NetLogger);
 

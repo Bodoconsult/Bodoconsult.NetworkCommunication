@@ -54,6 +54,8 @@ public class DefaultDataMessageProcessor : IDataMessageProcessor
     // ReSharper disable once SuggestBaseTypeForParameter
     private void ProcessHandshakes(IInboundHandShakeMessage handShake)
     {
+        ArgumentNullException.ThrowIfNull(Config.DataMessageProcessingPackage);
+
         // fire and forget but let CallBack() be run at the end
         AsyncHelper.FireAndForget2(() =>
                 Config.DataMessageProcessingPackage.WaitStateManager?.OnHandshakeReceived(handShake))

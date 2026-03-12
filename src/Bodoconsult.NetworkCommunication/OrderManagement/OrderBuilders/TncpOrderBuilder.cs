@@ -25,7 +25,7 @@ public class TncpOrderBuilder : BaseOrderBuilder
     /// <summary>
     /// Delegate for handling request answer messages
     /// </summary>
-    public HandleRequestAnswerDelegate HandleRequestAnswerOnSuccessDelegate { get; set; }
+    public HandleRequestAnswerDelegate? HandleRequestAnswerOnSuccessDelegate { get; set; }
 
     /// <summary>
     /// Configure the order
@@ -46,8 +46,12 @@ public class TncpOrderBuilder : BaseOrderBuilder
         var requestAnswer = CreateRequestAnswer(requestAnswerStep, "ReceivedMessage", CheckReceivedMessageDelegate, HandleRequestAnswerOnSuccessDelegate);
     }
 
-    private List<IOutboundDataMessage> CreateMessagesToSentDelegate(IParameterSet parameterSet)
+    private List<IOutboundDataMessage> CreateMessagesToSentDelegate(IParameterSet? parameterSet)
     {
+        if (parameterSet == null)
+        {
+            throw new ArgumentNullException(nameof(parameterSet));
+        }
         var msg = _outboundDataMessageFactory.CreateInstance(parameterSet);
         msg.WaitForAcknowledgement = true;
         return [msg];
@@ -63,7 +67,7 @@ public class TncpOrderBuilder : BaseOrderBuilder
     /// <param name="receivedMessage">A received message from the device</param>
     /// <param name="errors">List with error messages to fill</param>
     /// <returns>True if the message was as expected as answer of the sent message else false</returns>
-    private static bool CheckReceivedMessageDelegate(IRequestAnswer requestAnswer, IOutboundDataMessage sentMessage, IInboundDataMessage receivedMessage, IList<string> errors)
+    private static bool CheckReceivedMessageDelegate(IRequestAnswer requestAnswer, IOutboundDataMessage sentMessage, IInboundDataMessage? receivedMessage, IList<string> errors)
     {
         if (receivedMessage is not SdcpInboundDataMessage rm)
         {

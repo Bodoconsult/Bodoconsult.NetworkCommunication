@@ -17,7 +17,7 @@ public interface IRequestProcessor: IDisposable
     /// <summary>
     /// The currently processed request step of the order
     /// </summary>
-    IRequestStepProcessor CurrentRequestStepProcessor { get; }
+    IRequestStepProcessor? CurrentRequestStepProcessor { get; }
 
     ///// <summary>
     ///// Prepare the chain by creating the required elements
@@ -57,15 +57,15 @@ public interface IRequestProcessor: IDisposable
     /// <summary>
     /// A delegate to implement a call back to say the <see cref="IOrderProcessor"/> that order is processed
     /// </summary>
-    OrderProcessingFinishedDelegate OrderProcessingFinishedDelegate { get; set; }
+    OrderProcessingFinishedDelegate? OrderProcessingFinishedDelegate { get; set; }
 
     /// <summary>
     /// The task the <see cref="ExecuteOrder"/> command is running in
     /// </summary>
-    Task CurrentTask { get; set; }
+    Task? CurrentTask { get; set; }
 
     /// <summary>
     /// Used to cancel <see cref="CurrentTask"/> if required
     /// </summary>
-    CancellationTokenSource CancellationTokenSource { get; } 
+    CancellationTokenSource? CancellationTokenSource { get; } 
 }

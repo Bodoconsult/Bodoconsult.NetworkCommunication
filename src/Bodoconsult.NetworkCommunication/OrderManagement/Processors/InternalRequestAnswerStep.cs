@@ -33,15 +33,15 @@ public class InternalRequestAnswerStep : BaseRequestAnswerStep, IInternalRequest
     {
         var requestSpec = InternalRequestSpec;
 
-        if (requestSpec == null)
-        {
-            return new MessageHandlingResult
-            {
-                Error = 1,
-                ExecutionResult = OrderExecutionResultState.Unsuccessful,
-                ErrorDescription = "No RequestSpec instance"
-            };
-        }
+        //if (requestSpec == null)
+        //{
+        //    return new MessageHandlingResult
+        //    {
+        //        Error = 1,
+        //        ExecutionResult = OrderExecutionResultState.Unsuccessful,
+        //        ErrorDescription = "No RequestSpec instance"
+        //    };
+        //}
 
         //var rsp = requestSpec.CurrentRequestStepProcessor;
         //if (rsp == null)
@@ -80,6 +80,15 @@ public class InternalRequestAnswerStep : BaseRequestAnswerStep, IInternalRequest
             MessageHandlingResult result;
             try
             {
+                if (answer.ReceivedMessage == null)
+                {
+                    return new MessageHandlingResult
+                    {
+                        Error = 5,
+                        ExecutionResult = OrderExecutionResultState.Unsuccessful,
+                        ErrorDescription = "Received message is null"
+                    };
+                }
                 Debug.Print($"{answer.HandleRequestAnswerOnSuccessDelegate.Method.Name}");
                 Debug.Print("Start delegate...");
                 result = answer.HandleRequestAnswerOnSuccessDelegate.Invoke(answer.ReceivedMessage, requestSpec.TransportObject, requestSpec.ParameterSet);

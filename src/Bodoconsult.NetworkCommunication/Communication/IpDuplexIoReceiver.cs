@@ -21,6 +21,11 @@ public class IpDuplexIoReceiver : BaseDuplexIoReceiver
     private static readonly ArrayPool<byte> ArrayPool = ArrayPool<byte>.Shared;
     private readonly ProducerConsumerQueue<DummyMemory> _currentPipeline = new();
 
+    /// <summary>
+    /// Current validator impl for data messages
+    /// </summary>
+    private IDataMessageValidator _dataMessageValidator;
+
 
     //public static int SendTimeout = 5;
 
@@ -42,6 +47,13 @@ public class IpDuplexIoReceiver : BaseDuplexIoReceiver
         _currentPipeline.ConsumerTaskDelegate = TryToSendReceivedData;
         _bufferPool.LoadFactoryMethod(() => new DummyMemory());
         _bufferPool.Allocate(3);
+
+        if (deviceCommSettings.DataMessageProcessingPackage == null)
+        {
+            throw new ArgumentNullException(nameof(deviceCommSettings.DataMessageProcessingPackage));
+        }
+
+        _dataMessageValidator = deviceCommSettings.DataMessageProcessingPackage.DataMessageValidator;
     }
 
     public void TryToSendReceivedData(DummyMemory data)
@@ -55,7 +67,7 @@ public class IpDuplexIoReceiver : BaseDuplexIoReceiver
 
         var s = $"Data in buffer: {DataMessageHelper.GetStringFromArrayCsharpStyle(ref _buffer)}";
         Debug.Print(s);
-        Logger?.LogDebug(s);
+        Logger.LogDebug(s);
 
         while (DataMessageSplitter.TryReadCommand(ref _buffer, out var command))
         {
@@ -77,7 +89,7 @@ public class IpDuplexIoReceiver : BaseDuplexIoReceiver
 
             var codecResult = DataMessageCodingProcessor.DecodeDataMessage(mem);
 
-            if (codecResult.ErrorCode != 0)
+            if (codecResult.ErrorCode != 0 || codecResult.DataMessage==null)
             {
                 msg = $"Parsing command failed with error code {codecResult.ErrorCode}: {codecResult.ErrorMessage}: {DataMessageHelper.GetStringFromArrayCsharpStyle(ref command)}";
                 Debug.Print(msg);
@@ -85,7 +97,7 @@ public class IpDuplexIoReceiver : BaseDuplexIoReceiver
             }
             else
             {
-                var validationResult = DataMessagingConfig.DataMessageProcessingPackage.DataMessageValidator.IsMessageValid(codecResult.DataMessage);
+                var validationResult = _dataMessageValidator.IsMessageValid(codecResult.DataMessage);
                 if (!validationResult.IsMessageValid)
                 {
                     msg = $"Parsed command {DataMessageHelper.GetStringFromArrayCsharpStyle(ref command)} NOT valid: {validationResult.ValidationResult}";
@@ -118,7 +130,10 @@ public class IpDuplexIoReceiver : BaseDuplexIoReceiver
 
         try
         {
-            CancellationSource?.Cancel();
+            if (CancellationSource != null)
+            {
+                await CancellationSource.CancelAsync();
+            }
         }
         catch
         {
@@ -154,6 +169,9 @@ public class IpDuplexIoReceiver : BaseDuplexIoReceiver
     /// <returns>Received device message or null in case of any error</returns>
     public override async Task FillMessagePipeline()
     {
+        ArgumentNullException.ThrowIfNull(DuplexIoIsWorkInProgressDelegate);
+        ArgumentNullException.ThrowIfNull(DuplexIoNoDataDelegate);
+
         //try
         //{
 
@@ -163,7 +181,7 @@ public class IpDuplexIoReceiver : BaseDuplexIoReceiver
             //Debug.Print("FillMessagePipeline in progress");
             try
             {
-                if (CancellationSource.Token.IsCancellationRequested)
+                if (CancellationSource?.Token.IsCancellationRequested ?? true)
                 {
                     return;
                 }
@@ -175,14 +193,14 @@ public class IpDuplexIoReceiver : BaseDuplexIoReceiver
 
             var socketProxy = DataMessagingConfig.SocketProxy;
 
-            if (!socketProxy.Connected || socketProxy.IsDisposed)
+            if (socketProxy is not { Connected: true } || socketProxy.IsDisposed)
             {
                 // Debug.Print("Not connected");
                 await RaiseException(new SocketException());
                 return;
             }
 
-            if (DuplexIoIsWorkInProgressDelegate())
+            if (DuplexIoIsWorkInProgressDelegate.Invoke())
             {
                 //Debug.Print("Other operation in progress");
                 AsyncHelper.Delay(FillPipelineTimeout);
@@ -192,7 +210,7 @@ public class IpDuplexIoReceiver : BaseDuplexIoReceiver
             var availableData = socketProxy.BytesAvailable;
             if (availableData == 0)
             {
-                DuplexIoNoDataDelegate();
+                DuplexIoNoDataDelegate.Invoke();
                 //Debug.Print("No data");
                 AsyncHelper.Delay(FillPipelineTimeout);
                 continue;
@@ -230,11 +248,11 @@ public class IpDuplexIoReceiver : BaseDuplexIoReceiver
     {
         //await StopReceiver();
 
-        CancellationSource.Cancel();
+        CancellationSource?.Cancel();
 
         try
         {
-            DuplexIoNoDataDelegate();
+            DuplexIoNoDataDelegate?.Invoke();
         }
         catch (Exception e)
         {

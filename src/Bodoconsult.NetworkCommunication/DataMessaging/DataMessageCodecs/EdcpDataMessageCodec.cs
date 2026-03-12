@@ -65,7 +65,7 @@ public class EdcpDataMessageCodec : BaseDataMessageCodec
 
         try
         {
-            ITypedInboundDataBlock dataBlock;
+            ITypedInboundDataBlock? dataBlock;
 
             var blockCode = data.Slice(1, 1).Span[0];
 
@@ -117,17 +117,27 @@ public class EdcpDataMessageCodec : BaseDataMessageCodec
             return result;
         }
 
-        var data = new List<byte> { DeviceCommunicationBasics.Stx, tMessage.BlockCode};
+        var data = new List<byte> { DeviceCommunicationBasics.Stx, tMessage.BlockCode };
 
-        // Add the datablock now if required
-        try
+        if (tMessage.DataBlock != null)
         {
-            DataBlockCodingProcessor.FromDataBlockToBytes(data, tMessage.DataBlock);
+
+            // Add the datablock now if required
+            try
+            {
+                DataBlockCodingProcessor.FromDataBlockToBytes(data, tMessage.DataBlock);
+            }
+            catch (Exception exception)
+            {
+                result.ErrorMessage = $"EdcpDataMessageCodec: exception raised during encoding: {exception}";
+                result.ErrorCode = 4;
+                return result;
+            }
         }
-        catch (Exception exception)
+        else
         {
-            result.ErrorMessage = $"EdcpDataMessageCodec: exception raised during encoding: {exception}";
-            result.ErrorCode = 4;
+            result.ErrorMessage = "EdcpDataMessageCodec: no datablock provided";
+            result.ErrorCode = 5;
             return result;
         }
 

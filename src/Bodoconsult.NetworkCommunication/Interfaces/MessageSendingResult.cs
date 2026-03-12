@@ -12,7 +12,7 @@ public class MessageSendingResult
     /// </summary>
     /// <param name="message">Message sent</param>
     /// <param name="processExecutionResult">Process execution result</param>
-    public MessageSendingResult(IOutboundMessage message, IOrderExecutionResultState processExecutionResult)
+    public MessageSendingResult(IOutboundMessage? message, IOrderExecutionResultState processExecutionResult)
     {
         Message = message;
         ProcessExecutionResult = processExecutionResult;
@@ -21,10 +21,15 @@ public class MessageSendingResult
     /// <summary>
     /// Message sent
     /// </summary>
-    public IOutboundMessage Message { get; }
+    public IOutboundMessage? Message { get; }
 
     /// <summary>
     /// Process execution result
     /// </summary>
     public IOrderExecutionResultState ProcessExecutionResult { get; }
+
+    /// <summary>
+    /// Additonal information
+    /// </summary>
+    public string? Information { get; set; }
 }

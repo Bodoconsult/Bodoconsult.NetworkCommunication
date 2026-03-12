@@ -34,7 +34,7 @@ internal class DeviceStreamingStateBuilderTests
         // Arrange 
         var builder = new DeviceStreamingStateBuilder();
 
-        var config = new NoActionStateConfiguration(DefaultStateNames.DeviceOnlineState);
+        var config = new NoActionStateConfiguration(DefaultStateNames.DeviceOnlineState, builder);
 
         // Act and assert
         Assert.Throws<ArgumentException>(() =>
@@ -51,7 +51,7 @@ internal class DeviceStreamingStateBuilderTests
         
         var builder = new DeviceStreamingStateBuilder();
 
-        var config = new NoActionStateConfiguration(DefaultStateNames.DeviceStreamingState)
+        var config = new NoActionStateConfiguration(DefaultStateNames.DeviceStreamingState, builder)
         {
             CurrentContext = device,
             HandleAsyncMessageDelegate = DelegateHelper.HandleAsyncMessageDelegate,

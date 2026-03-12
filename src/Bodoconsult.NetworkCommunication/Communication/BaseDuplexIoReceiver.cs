@@ -1,10 +1,10 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
+using System.Diagnostics;
 using Bodoconsult.App.Helpers;
 using Bodoconsult.App.Interfaces;
 using Bodoconsult.NetworkCommunication.Delegates;
 using Bodoconsult.NetworkCommunication.Interfaces;
-using System.Diagnostics;
 
 namespace Bodoconsult.NetworkCommunication.Communication;
 
@@ -22,17 +22,17 @@ public class BaseDuplexIoReceiver : IDuplexIoReceiver
     /// <summary>
     /// Work is in progress delegate for DuplexIO
     /// </summary>
-    protected DuplexIoIsWorkInProgressDelegate DuplexIoIsWorkInProgressDelegate;
+    protected DuplexIoIsWorkInProgressDelegate? DuplexIoIsWorkInProgressDelegate;
 
     /// <summary>
     /// No data available delegate for DuplexIO
     /// </summary>
-    protected DuplexIoNoDataDelegate DuplexIoNoDataDelegate;
+    protected DuplexIoNoDataDelegate? DuplexIoNoDataDelegate;
 
     /// <summary>
     /// Current cancellation token source
     /// </summary>
-    protected CancellationTokenSource CancellationSource;
+    protected CancellationTokenSource? CancellationSource;
 
     /// <summary>
     /// Current logger
@@ -45,8 +45,12 @@ public class BaseDuplexIoReceiver : IDuplexIoReceiver
     /// <param name="dataMessagingConfig">Current data messaging config</param>
     public BaseDuplexIoReceiver(IDataMessagingConfig dataMessagingConfig)
     {
+        ArgumentNullException.ThrowIfNull(dataMessagingConfig.DataMessageProcessingPackage);
+
         DataMessagingConfig = dataMessagingConfig;
-        UpdateDataMessageProcessingPackage();
+        DataMessageCodingProcessor = DataMessagingConfig.DataMessageProcessingPackage.DataMessageCodingProcessor;
+        DataMessageProcessor = DataMessagingConfig.DataMessageProcessingPackage.DataMessageProcessor;
+        DataMessageSplitter = DataMessagingConfig.DataMessageProcessingPackage.DataMessageSplitter;
         Logger = DataMessagingConfig.MonitorLogger;
     }
 
@@ -73,12 +77,12 @@ public class BaseDuplexIoReceiver : IDuplexIoReceiver
     /// <summary>
     /// Thread filling receiver pipeline
     /// </summary>
-    public Thread FillPipelineTask { get; protected set; }
+    public Thread? FillPipelineTask { get; protected set; }
 
     /// <summary>
     /// Thread sending messages from receiver pipeline to app internal consumers
     /// </summary>
-    public Thread SendPipelineTask { get; protected set; }
+    public Thread? SendPipelineTask { get; protected set; }
 
     /// <summary>
     /// Start the internal receiver
@@ -89,12 +93,12 @@ public class BaseDuplexIoReceiver : IDuplexIoReceiver
         {
             try
             {
-                CancellationSource.Cancel();
+                await CancellationSource.CancelAsync();
                 CancellationSource?.Dispose();
             }
             catch (Exception e)
             {
-                Logger?.LogError("CancellationToken cancelling failed", e);
+                Logger.LogError("CancellationToken cancelling failed", e);
             }
         }
 
@@ -217,10 +221,7 @@ public class BaseDuplexIoReceiver : IDuplexIoReceiver
     /// </summary>
     public void UpdateDataMessageProcessingPackage()
     {
-        if (DataMessagingConfig.DataMessageProcessingPackage == null)
-        {
-            throw new ArgumentNullException(nameof(DataMessagingConfig.DataMessageProcessingPackage));
-        }
+        ArgumentNullException.ThrowIfNull(DataMessagingConfig.DataMessageProcessingPackage);
         DataMessageCodingProcessor = DataMessagingConfig.DataMessageProcessingPackage.DataMessageCodingProcessor;
         DataMessageProcessor = DataMessagingConfig.DataMessageProcessingPackage.DataMessageProcessor;
         DataMessageSplitter = DataMessagingConfig.DataMessageProcessingPackage.DataMessageSplitter;

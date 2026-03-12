@@ -13,7 +13,7 @@ namespace Bodoconsult.NetworkCommunication.OrderManagement.Processors;
 public class InternalRequestStepProcessor : IInternalRequestStepProcessor
 {
     private readonly Lock _cancelLockObject = new();
-    private IRequestAnswerStep _currentChainElement;
+    private IRequestAnswerStep? _currentChainElement;
     private readonly Lock _currentChainElementObject = new();
 
     /// <summary>
@@ -24,7 +24,8 @@ public class InternalRequestStepProcessor : IInternalRequestStepProcessor
     {
         RequestSpec = requestSpec;
         InternalRequestSpec = requestSpec;
-        AppLogger = requestSpec.AppLogger;
+
+        AppLogger = requestSpec.AppLogger ?? throw new ArgumentNullException(nameof(requestSpec.AppLogger));
         OrderLoggerId = $"{requestSpec.OrderLoggerId}";
     }
 
@@ -46,7 +47,7 @@ public class InternalRequestStepProcessor : IInternalRequestStepProcessor
     /// <summary>
     /// The current processed chain element
     /// </summary>
-    public IRequestAnswerStep CurrentChainElement
+    public IRequestAnswerStep? CurrentChainElement
     {
         get
         {
@@ -83,23 +84,6 @@ public class InternalRequestStepProcessor : IInternalRequestStepProcessor
     }
 
     /// <summary>
-    /// Message to send to tower
-    /// </summary>
-    public IOutboundDataMessage SentMessage { get; set; }
-
-    /// <summary>
-    /// The number of messages to be sent
-    /// </summary>
-    public int NumberOfMessagesToBeSent { get; set; }
-
-    /// <summary>
-    /// The current number of messages already sent
-    /// </summary>
-    public int CurrentNumberOfMessagesSent { get; set; }
-
-    public bool IsMessageSendingErrorOrNack { get; set; }
-
-    /// <summary>
     /// Current request spec to use for the processor
     /// </summary>
     public IRequestSpec RequestSpec { get; set; }
@@ -133,7 +117,7 @@ public class InternalRequestStepProcessor : IInternalRequestStepProcessor
             // Fetch the request spec here to avoid multithread issues
             var requestSpec = InternalRequestSpec;
 
-            if (requestSpec == null || IsCancelled)
+            if (IsCancelled)
             {
                 return OrderExecutionResultState.Unsuccessful;
             }
@@ -216,7 +200,7 @@ public class InternalRequestStepProcessor : IInternalRequestStepProcessor
 
         // Now execute the internal request
         var result = step.HandleResult();
-        return result?.ExecutionResult ?? OrderExecutionResultState.Successful;
+        return result.ExecutionResult;
     }
 
 
@@ -252,8 +236,5 @@ public class InternalRequestStepProcessor : IInternalRequestStepProcessor
     public void Dispose()
     {
         CurrentChainElement = null;
-        RequestSpec = null;
     }
-
-
 }

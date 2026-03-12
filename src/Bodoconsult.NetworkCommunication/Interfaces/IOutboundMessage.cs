@@ -20,7 +20,7 @@ public interface IOutboundMessage
     /// <summary>
     /// Current raw message data as clear text
     /// </summary>
-    string RawMessageDataClearText { get; }
+    string? RawMessageDataClearText { get; }
 
     /// <summary>
     /// Create an info string for logging

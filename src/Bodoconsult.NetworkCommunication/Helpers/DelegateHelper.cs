@@ -111,7 +111,7 @@ public static class DelegateHelper
     /// <param name="state">Current state</param>
     public static void DefaultCheckJobstatesActionForStateDelegate(INoActionStateMachineState state)
     {
-        while (!state.CancellationTokenSource.IsCancellationRequested)
+        while (!state.CancellationTokenSource?.IsCancellationRequested ?? false)
         {
             // Check if there is a job state to restore after break
             if (state.CurrentContext.SavedJobState != null)
@@ -130,7 +130,7 @@ public static class DelegateHelper
 
                 state.CurrentContext.RequestState(newState);
 
-                state.CancellationTokenSource.Dispose();
+                state.CancellationTokenSource?.Dispose();
                 return;
             }
 
@@ -146,5 +146,37 @@ public static class DelegateHelper
     public static void CheckJobstatesActionForStateDelegate(INoActionStateMachineState state)
     {
         // Do nothing
+    }
+
+    /// <summary>
+    /// Default implementation of <see cref="CancelStateDelegate"/>: ping the device
+    /// </summary>
+    /// <param name="state">Current state</param>
+    public static void DefaultExecuteActionForStateDelegate(IOrderlessActionStateMachineState state)
+    {
+        if (state.CancellationTokenSource == null)
+        {
+            throw new ArgumentNullException(nameof(state.CancellationTokenSource));
+        }
+
+        var context = state.CurrentContext;
+
+        // Wait until the device is pingable
+        while (!state.CancellationTokenSource.IsCancellationRequested)
+        {
+            context.SetBusinessSubState(DefaultBusinessSubStates.PingingTower);
+            if (context.IsPingable)
+            {
+                break;
+            }
+
+            context.SetBusinessSubState(DefaultBusinessSubStates.WaitingForNextPingingTower);
+            Thread.Sleep(DeviceCommunicationBasics.PingRepeatInterval);
+        }
+
+        // New state now
+        var stateNew = context.CreateStateInstance(DefaultStateNames.DeviceOnlineState);
+        state.NextState = stateNew;
+        state.RequestNextState();
     }
 }

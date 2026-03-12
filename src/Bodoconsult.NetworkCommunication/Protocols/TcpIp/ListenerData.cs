@@ -18,7 +18,7 @@ public class ListenerData
     /// <summary>
     ///  Current listener instance
     /// </summary>
-    public Socket Listener { get; set; }
+    public Socket? Listener { get; set; }
 
     /// <summary>
     /// Current consumers
@@ -28,11 +28,11 @@ public class ListenerData
     /// <summary>
     /// <see cref="CancellationTokenSource"/> instance used to end the connection accept task
     /// </summary>
-    public CancellationTokenSource AcceptCts { get; set; }
+    public CancellationTokenSource? AcceptCts { get; set; }
 
     /// <summary>
     /// Task waiting for connection accepts
     /// </summary>
-    public Task AcceptTask { get; set; }
+    public Task? AcceptTask { get; set; }
 
 }

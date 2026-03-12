@@ -23,12 +23,12 @@ public class UdpClientSocketProxy : UpdSocketProxyBase
     /// <summary>
     /// Endpoint for listening
     /// </summary>
-    protected IPEndPoint EndPoint;
+    protected IPEndPoint? EndPoint;
 
     /// <summary>
     /// Endpoint for listening
     /// </summary>
-    protected IPEndPoint SendEndPoint;
+    protected IPEndPoint? SendEndPoint;
 
     ///// <summary>
     ///// Default ctor
@@ -39,7 +39,7 @@ public class UdpClientSocketProxy : UpdSocketProxyBase
     /// <summary>
     /// Current socket (only for testing purposes, do not access directly in production code)
     /// </summary>
-    public UdpClient UdpClient { get; protected set; }
+    public UdpClient? UdpClient { get; protected set; }
 
     ///// <summary>
     ///// Is the socket connected
@@ -95,7 +95,7 @@ public class UdpClientSocketProxy : UpdSocketProxyBase
         {
             try
             {
-                return UdpClient.Available;
+                return UdpClient?.Available ?? 0;
             }
             catch
             {
@@ -110,7 +110,7 @@ public class UdpClientSocketProxy : UpdSocketProxyBase
     /// <param name="bytesToSend">Byte array to send</param>
     public override Task<int> Send(byte[] bytesToSend)
     {
-        return UdpClient.SendAsync(bytesToSend, bytesToSend.Length);
+        return UdpClient == null ? Task.FromResult(0) : UdpClient.SendAsync(bytesToSend, bytesToSend.Length);
     }
 
     /// <summary>
@@ -119,7 +119,7 @@ public class UdpClientSocketProxy : UpdSocketProxyBase
     /// <param name="bytesToSend">Data to send</param>
     public override ValueTask<int> Send(ReadOnlyMemory<byte> bytesToSend)
     {
-        return UdpClient.SendAsync(bytesToSend, SendEndPoint);
+        return UdpClient?.SendAsync(bytesToSend, SendEndPoint) ?? ValueTask.FromResult(0);
     }
 
     ///// <summary>
@@ -135,6 +135,10 @@ public class UdpClientSocketProxy : UpdSocketProxyBase
     /// </summary>
     public override void Close()
     {
+        if (UdpClient == null)
+        {
+            return;
+        }
         UdpClient.Client.Shutdown(SocketShutdown.Both);
         UdpClient.Close();
     }
@@ -144,6 +148,8 @@ public class UdpClientSocketProxy : UpdSocketProxyBase
     /// </summary>
     public override async Task Connect()
     {
+        ArgumentNullException.ThrowIfNull(IpAddress);
+
         await Task.Run(() =>
         {
 
@@ -191,8 +197,6 @@ public class UdpClientSocketProxy : UpdSocketProxyBase
                 Console.WriteLine(e);
                 throw;
             }
-
-
         });
     }
 
@@ -221,7 +225,7 @@ public class UdpClientSocketProxy : UpdSocketProxyBase
     /// <returns>Number of bytes received</returns>
     public override Task<int> Receive(byte[] buffer)
     {
-        if (UdpClient.Available <= 0)
+        if (UdpClient is not { Available: > 0 })
         {
             return Task.FromResult(0);
         }
@@ -243,6 +247,10 @@ public class UdpClientSocketProxy : UpdSocketProxyBase
     /// <returns>Number of bytes received</returns>
     public override async Task<int> Receive(Memory<byte> buffer)
     {
+        if (UdpClient == null)
+        {
+            return 0;
+        }
         if (UdpClient.Available <= 0)
         {
             return 0;
@@ -267,7 +275,7 @@ public class UdpClientSocketProxy : UpdSocketProxyBase
     /// <returns>Number of bytes received</returns>
     public override Task<int> Receive(byte[] buffer, int offset, int expectedBytesLength)
     {
-        if (UdpClient.Available <= 0)
+        if (UdpClient is not { Available: > 0 })
         {
             return Task.FromResult(0);
         }
@@ -291,7 +299,7 @@ public class UdpClientSocketProxy : UpdSocketProxyBase
     /// <returns></returns>
     public override Task<int> Send(byte[] bytesToSend, int offset, int messageBytesLength)
     {
-        return UdpClient.Client.SendAsync(bytesToSend, offset, messageBytesLength);
+        return UdpClient == null ? Task.FromResult(0) : UdpClient.Client.SendAsync(bytesToSend, offset, messageBytesLength);
     }
 
     ///// <summary>

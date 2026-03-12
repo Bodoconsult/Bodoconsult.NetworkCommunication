@@ -19,7 +19,7 @@ public abstract class BaseClientNotification : IClientNotification
     /// The notification object to send via transport layer to the client
     /// </summary>
     [JsonIgnore]
-    public object NotificationObjectToSend { get; set; }
+    public object? NotificationObjectToSend { get; set; }
 
     /// <summary>
     /// Add to queue if the conenction to the client has currently failed

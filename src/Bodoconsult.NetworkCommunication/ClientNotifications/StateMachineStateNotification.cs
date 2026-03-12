@@ -13,5 +13,5 @@ public class StateMachineStateNotification : BaseClientNotification
     /// <summary>
     /// The current state to report
     /// </summary>
-    public IStateMachineState State { get; set; }
+    public IStateMachineState? State { get; set; }
 }

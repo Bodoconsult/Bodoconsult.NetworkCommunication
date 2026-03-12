@@ -21,7 +21,7 @@ public class MessageHandlingResult
     /// <summary>
     /// A object to transferred from one request spec to the next
     /// </summary>
-    public object TransportObject { get; set; }
+    public object? TransportObject { get; set; }
 
     /// <summary>
     /// In case of an error the clear text description of the error

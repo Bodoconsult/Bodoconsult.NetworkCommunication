@@ -15,19 +15,17 @@ public interface IDuplexIo: IAsyncDisposable, IDisposable
     /// <summary>
     /// The receiver part used of the duplex (bidirectional) comm channels
     /// </summary>
-    IDuplexIoReceiver Receiver { get;  }
+    IDuplexIoReceiver? Receiver { get;  }
 
     /// <summary>
     /// The sender part used of the duplex (bidirectional) comm channels
     /// </summary>
-    IDuplexIoSender Sender { get; }
-
+    IDuplexIoSender? Sender { get; }
        
     /// <summary>
     /// Current data messaging config
     /// </summary>
     IDataMessagingConfig DataMessagingConfig { get; }
-
 
     /// <summary>
     /// Is the current connection alive? True, if yes else false.

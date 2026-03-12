@@ -12,7 +12,7 @@ public interface IOrderlessActionStateMachineState : IStateMachineState
     /// <summary>
     /// Delegate to be executed from an orderless state machine state
     /// </summary>
-    ExecuteActionForStateDelegate ExecuteActionForStateDelegate { get; set; }
+    ExecuteActionForStateDelegate? ExecuteActionForStateDelegate { get; set; }
 
     /// <summary>
     /// Execute the action defined with <see cref="ExecuteActionForStateDelegate"/> for this state

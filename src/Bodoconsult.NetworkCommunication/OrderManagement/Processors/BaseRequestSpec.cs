@@ -21,10 +21,11 @@ public abstract class BaseRequestSpec : IRequestSpec
     /// </summary>
     /// <param name="name">Request name</param>
     /// <param name="parameterSet">Current parameter set</param>
-    protected BaseRequestSpec(string name, IParameterSet parameterSet)
+    protected BaseRequestSpec(string name, IParameterSet? parameterSet)
     {
         ParameterSet = parameterSet;
         Name = name;
+        OrderLoggerId = "Order";
     }
 
     ///// <summary>
@@ -35,17 +36,17 @@ public abstract class BaseRequestSpec : IRequestSpec
     /// <summary>
     /// Delegate to set the state for a <see cref="IRequestStepProcessor"/> instance
     /// </summary>
-    public RequestStepProcessorSetResultDelegate RequestStepProcessorSetResultDelegate { get; set; }
+    public RequestStepProcessorSetResultDelegate? RequestStepProcessorSetResultDelegate { get; set; }
 
     /// <summary>
     /// Is the <see cref="IRequestStepProcessor"/> instance cancelled?
     /// </summary>
-    public RequestStepProcessorIsCancelledDelegate RequestStepProcessorIsCancelledDelegate { get; set; }
+    public RequestStepProcessorIsCancelledDelegate? RequestStepProcessorIsCancelledDelegate { get; set; }
 
     /// <summary>
     /// Current app logger
     /// </summary>
-    public IAppLoggerProxy AppLogger { get; set; }
+    public IAppLoggerProxy? AppLogger { get; set; }
 
     ///// <summary>
     ///// Send an app notfication
@@ -55,7 +56,7 @@ public abstract class BaseRequestSpec : IRequestSpec
     /// <summary>
     /// Delegate to cancel running operation on comm adapter level
     /// </summary>
-    public CancelRunningOperationDelegate CancelRunningOperationDelegate { get; set; }
+    public CancelRunningOperationDelegate? CancelRunningOperationDelegate { get; set; }
 
     /// <summary>
     /// Clear text name of the request
@@ -65,7 +66,7 @@ public abstract class BaseRequestSpec : IRequestSpec
     /// <summary>
     /// Current parameter set to use for the request
     /// </summary>
-    public IParameterSet ParameterSet { get; private set; }
+    public IParameterSet? ParameterSet { get; private set; }
 
     /// <summary>
     /// Order logger ID
@@ -90,12 +91,12 @@ public abstract class BaseRequestSpec : IRequestSpec
     /// <summary>
     /// An object to transferred from a predecessing request spec to the current one
     /// </summary>
-    public object TransportObject { get; set; }
+    public object? TransportObject { get; set; }
 
     /// <summary>
     /// A resulting object to transferred from this request spec to the next
     /// </summary>
-    public object ResultTransportObject { get; set; }
+    public object? ResultTransportObject { get; set; }
 
     /// <summary>
     /// Requires transport object from predecessing request injected via <see cref="IRequestSpec.SetTransportObject"/>
@@ -120,7 +121,7 @@ public abstract class BaseRequestSpec : IRequestSpec
     /// <summary>
     /// A delegate for testing order executing. Not intended for production use
     /// </summary>
-    public RequestAnswerStepIsStartedDelegate RequestAnswerStepIsStartedDelegate { get; set; }
+    public RequestAnswerStepIsStartedDelegate? RequestAnswerStepIsStartedDelegate { get; set; }
 
     /// <summary>
     /// Represents a timeline of request answers
@@ -152,7 +153,7 @@ public abstract class BaseRequestSpec : IRequestSpec
     /// Set  the <see cref="IRequestSpec.TransportObject"/> with an object from predecessing request
     /// </summary>
     /// <param name="transportObject">Object from predecessing request</param>
-    public void SetTransportObject(object transportObject)
+    public void SetTransportObject(object? transportObject)
     {
         if (!RequiresTransportObject)
         {

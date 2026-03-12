@@ -12,7 +12,7 @@ public interface IStateConfiguration
     /// <summary>
     /// Current context
     /// </summary>
-    IStateManagementDevice CurrentContext { get; set; }
+    IStateManagementDevice? CurrentContext { get; set; }
 
     /// <summary>
     /// Name of the state to configure
@@ -22,30 +22,30 @@ public interface IStateConfiguration
     /// <summary>
     /// State builder to use
     /// </summary>
-    IStateMachineStateBuilder StateBuilderBuilder { get; set; }
+    IStateMachineStateBuilder StateBuilderBuilder { get; }
 
     /// <summary>
     /// Delegate to handle a ComDevClose event in business logic
     /// </summary>
-    HandleComDevCloseDelegate HandleComDevCloseDelegate { get; set; }
+    HandleComDevCloseDelegate? HandleComDevCloseDelegate { get; set; }
 
     /// <summary>
     /// Handle an error message received from the device
     /// </summary>
-    HandleErrorMessageDelegate HandleErrorMessageDelegate { get; set; }
+    HandleErrorMessageDelegate? HandleErrorMessageDelegate { get; set; }
 
     /// <summary>
     /// Handle an async received message
     /// </summary>
-    HandleAsyncMessageDelegate HandleAsyncMessageDelegate { get; set; }
+    HandleAsyncMessageDelegate? HandleAsyncMessageDelegate { get; set; }
 
     /// <summary>
     /// Delegate for preparing orders for the regular state reqeust
     /// </summary>
-    PrepareRegularStateRequestDelegate PrepareRegularStateRequestDelegate { get; set; }
+    PrepareRegularStateRequestDelegate? PrepareRegularStateRequestDelegate { get; set; }
 
     /// <summary>
     /// Delegate for handling device state check request answers in business logic
     /// </summary>
-    HandleRegularStateRequestAnswerDelegate HandleRegularStateRequestAnswerDelegate { get; set; }
+    HandleRegularStateRequestAnswerDelegate? HandleRegularStateRequestAnswerDelegate { get; set; }
 }

@@ -5,7 +5,6 @@ using Bodoconsult.App.Helpers;
 using Bodoconsult.NetworkCommunication.Delegates;
 using Bodoconsult.NetworkCommunication.Interfaces;
 
-
 namespace Bodoconsult.NetworkCommunication.Communication;
 
 /// <summary>

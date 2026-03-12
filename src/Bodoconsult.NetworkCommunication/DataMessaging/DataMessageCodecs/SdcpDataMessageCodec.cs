@@ -65,7 +65,7 @@ public class SdcpDataMessageCodec : BaseDataMessageCodec
 
         try
         {
-            ITypedInboundDataBlock dataBlock;
+            ITypedInboundDataBlock? dataBlock;
 
             // Extract header data from the byte array and store it to message properties if provided
 

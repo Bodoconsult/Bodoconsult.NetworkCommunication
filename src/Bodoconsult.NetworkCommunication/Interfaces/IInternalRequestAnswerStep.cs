@@ -10,5 +10,5 @@ public interface IInternalRequestAnswerStep : IRequestAnswerStep
     /// <summary>
     /// The internal request spec instance
     /// </summary>
-    IInternalRequestSpec InternalRequestSpec { get; }
+    IInternalRequestSpec? InternalRequestSpec { get; }
 }

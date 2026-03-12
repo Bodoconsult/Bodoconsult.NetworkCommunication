@@ -1,7 +1,7 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
-using Bodoconsult.NetworkCommunication.Delegates;
 using System.Net.Sockets;
+using Bodoconsult.NetworkCommunication.Delegates;
 using Bodoconsult.NetworkCommunication.Protocols.TcpIp;
 
 namespace Bodoconsult.NetworkCommunication.Interfaces;

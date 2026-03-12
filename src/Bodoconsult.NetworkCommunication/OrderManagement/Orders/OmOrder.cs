@@ -12,8 +12,8 @@ namespace Bodoconsult.NetworkCommunication.OrderManagement.Orders;
 /// </summary>
 public class OmOrder : IOrder
 {
-    private string _name;
-    private string _loggerId;
+    private string? _name;
+    private string? _loggerId;
     private bool _isCancelled;
     private readonly Lock _isCancelledObject = new();
 
@@ -27,6 +27,7 @@ public class OmOrder : IOrder
         Name = name;
         TypeName = Name;
         ParameterSet.LoadOrder(this);
+        DeviceId = "Device";
     }
 
     #region New TOM
@@ -41,14 +42,14 @@ public class OmOrder : IOrder
     /// <summary>
     /// The next order in a chain of orders like trial run
     /// </summary>
-    public IOrder NextOrder { get; set; }
+    public IOrder? NextOrder { get; set; }
 
     /// <summary>
     /// Name of the order
     /// </summary>
     public string Name
     {
-        get => _name;
+        get => _name ?? "Order";
         set
         {
             if (string.IsNullOrEmpty(value))
@@ -77,7 +78,7 @@ public class OmOrder : IOrder
     /// <summary>
     /// Order source
     /// </summary>
-    public OrderSource OrderSource { get; protected set; }
+    public OrderSource? OrderSource { get; protected set; }
 
     /// <summary>
     /// The UID of a source item like a joblist the order is bound to
@@ -92,7 +93,7 @@ public class OmOrder : IOrder
     /// <summary>
     /// Formatted ID for logging
     /// </summary>
-    public virtual string LoggerId => _loggerId;
+    public virtual string LoggerId => _loggerId ?? "Order";
 
     /// <summary>
     /// Current request specs of the order
@@ -117,17 +118,17 @@ public class OmOrder : IOrder
     /// <summary>
     /// Action running after successful processing of the order
     /// </summary>
-    public ActionRequestStepDelegate OrderFinishedSuccessfulAction { get; protected set; }
+    public ActionRequestStepDelegate? OrderFinishedSuccessfulAction { get; protected set; }
 
     /// <summary>
     /// Action running after unsuccessful processing of the order
     /// </summary>
-    public ActionRequestStepDelegate OrderFinishedUnsuccessfulAction { get; protected set; }
+    public ActionRequestStepDelegate? OrderFinishedUnsuccessfulAction { get; protected set; }
 
     /// <summary>
     /// The state to notify the app in case of order was successfully running
     /// </summary>
-    public IDeviceState StateToNotifyOnSuccess { get; protected set; }
+    public IDeviceState? StateToNotifyOnSuccess { get; set; }
 
     /// <summary>
     /// Is the order running in sync mode? Default: false means async
@@ -165,8 +166,13 @@ public class OmOrder : IOrder
     public bool IsCancelledOndevicePropertyUpdate { get; set; }
 
 
-    protected string GetFormattedUser()
+    protected string? GetFormattedUser()
     {
+        if (ParameterSet == null)
+        {
+            return "No user info";
+        }
+
         return string.IsNullOrEmpty(ParameterSet.UserRequestingTheOrderRun) ?
             "" :
             ParameterSet.UserRequestingTheOrderRun;
@@ -189,7 +195,7 @@ public class OmOrder : IOrder
     /// <summary>
     /// Current parameter set to use for the order. Must include the parameter sets of all contained requests by interface.
     /// </summary>
-    public IParameterSet ParameterSet { get; set; }
+    public IParameterSet? ParameterSet { get; set; }
 
     /// <summary>
     /// The step was successfully processed in all steps
@@ -220,7 +226,7 @@ public class OmOrder : IOrder
     /// <summary>
     /// An object to lock the property <see cref="IOrder.IsCancelled"/>
     /// </summary>
-    public object IsCancelledLockObject { get; set; }
+    public object? IsCancelledLockObject { get; set; }
 
     /// <summary>
     /// Order processing start time
@@ -275,7 +281,7 @@ public class OmOrder : IOrder
     /// <summary>
     /// Trace message to log
     /// </summary>
-    public string TraceMessage { get; set; }
+    public string? TraceMessage { get; set; }
 
     /// <summary>
     /// ErrorCode to trace
@@ -285,7 +291,7 @@ public class OmOrder : IOrder
     /// <summary>
     /// Trace entry to create for the order
     /// </summary>
-    public ITraceEntry TraceEntry { get; set; }
+    public ITraceEntry? TraceEntry { get; set; }
 
     /// <summary>
     /// Create a trace entry (do not use directly, public only for unit testing)
@@ -295,10 +301,15 @@ public class OmOrder : IOrder
     /// <param name="timeStamp">App date service</param>
     public virtual void CreateTraceEntry(IOrderExecutionResultState lastStepExecutionResult, in int communicationAdapterError, DateTime timeStamp)
     {
+        if (TraceEntry == null)
+        {
+            throw new ArgumentNullException(nameof(TraceEntry));
+        }
+
         if (lastStepExecutionResult.Id == OrderExecutionResultState.Successful.Id)
         {
             TraceEntry.MessageCode = TraceCodeSuccess;
-            TraceEntry.Message = TraceMessage;
+            TraceEntry.Message = TraceMessage ?? string.Empty;
         }
         else
         {
@@ -319,7 +330,7 @@ public class OmOrder : IOrder
     /// Benchmark object (see output in Benchmark.csv)
     /// Make sure to create it, addStep, and dispose it 
     /// </summary>
-    public Bench Benchmark { get; set; }
+    public Bench? Benchmark { get; set; }
 
 
     #endregion
@@ -338,7 +349,7 @@ public class OmOrder : IOrder
 
         RequestSpecs.Clear();
 
-        ParameterSet.Dispose();
+        ParameterSet?.Dispose();
         ParameterSet = null;
 
         OrderFinishedUnsuccessfulAction = null;

@@ -36,7 +36,7 @@ public class ShouldCrashInboundDataMessage : IInboundDataMessage
     /// <summary>
     /// Data block stored in the message
     /// </summary>
-    public ITypedInboundDataBlock DataBlock { get; set; }
+    public ITypedInboundDataBlock? DataBlock { get; set; }
 
     /// <summary>
     /// Current raw message data as byte array
@@ -54,7 +54,7 @@ public class ShouldCrashInboundDataMessage : IInboundDataMessage
     /// <summary>
     /// Current raw message data as clear text
     /// </summary>
-    public string RawMessageDataClearText { get; private set; }
+    public string? RawMessageDataClearText { get; private set; }
 
     /// <summary>
     /// Create an info string for logging
@@ -66,7 +66,7 @@ public class ShouldCrashInboundDataMessage : IInboundDataMessage
     }
 
     /// <summary>
-    /// Create an short info string for logging
+    /// Create a short info string for logging
     /// </summary>
     /// <returns>Info string</returns>
     public string ToShortInfoString()

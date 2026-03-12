@@ -38,7 +38,7 @@ public class TestOrderBuilder : BaseOrderBuilder
         requestSpec.CreateMessagesToSentDelegate = CreateMessagesToSentDelegate;
     }
 
-    private MessageHandlingResult HandleRequestAnswerOnSuccessDelegate(IInboundDataMessage message, object transportObject, IParameterSet parameterSet)
+    private MessageHandlingResult HandleRequestAnswerOnSuccessDelegate(IInboundDataMessage? message, object? transportObject, IParameterSet? parameterSet)
     {
         Task.Delay(300);
         return new MessageHandlingResult
@@ -47,8 +47,13 @@ public class TestOrderBuilder : BaseOrderBuilder
         };
     }
 
-    private List<IOutboundDataMessage> CreateMessagesToSentDelegate(IParameterSet parameterSet)
+    private List<IOutboundDataMessage> CreateMessagesToSentDelegate(IParameterSet? parameterSet)
     {
+        if (parameterSet == null)
+        {
+            throw new ArgumentNullException(nameof(parameterSet));
+        }
+
         var msg = _outboundDataMessageFactory.CreateInstance(parameterSet);
         msg.WaitForAcknowledgement = true;
         return [msg];

@@ -18,18 +18,7 @@ public class SendPacketProcessFactory : ISendPacketProcessFactory
 
     public SendPacketProcessFactory()
     {
-        _bufferPool = new BufferPool<ISendPacketProcess>(() =>
-        {
-            try
-            {
-                return new SendPacketProcess();
-            }
-            catch
-            {
-                // Do nothing
-                return null;
-            }
-        });
+        _bufferPool = new BufferPool<ISendPacketProcess>(() => new SendPacketProcess());
 
         _bufferPool.Allocate(20);
     }
@@ -56,10 +45,10 @@ public class SendPacketProcessFactory : ISendPacketProcessFactory
     /// <param name="sendPacketProcess">Instance to return</param>
     public void EnqueueInstance(ISendPacketProcess sendPacketProcess)
     {
-        if (sendPacketProcess == null)
-        {
-            return;
-        }
+        //if (sendPacketProcess == null)
+        //{
+        //    return;
+        //}
 
         try
         {

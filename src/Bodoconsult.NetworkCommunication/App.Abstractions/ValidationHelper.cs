@@ -53,7 +53,7 @@ public static class ValidationHelper
     /// </summary>
     /// <param name="validationResult"></param>
     /// <returns>Message string</returns>
-    public static string FormatValidationErrors(ICollection<ValidationResult> validationResult)
+    public static string? FormatValidationErrors(ICollection<ValidationResult>? validationResult)
     {
         if (validationResult == null)
         {

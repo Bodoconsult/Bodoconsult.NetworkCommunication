@@ -49,7 +49,7 @@ public class SyncOrderManager: ISyncOrderManager
     /// </summary>
     /// <param name="orderId">ID of the order</param>
     /// <returns>Sync running execution data or null</returns>
-    public SyncExecutionData GetSyncExecutionDataForOrder(long orderId)
+    public SyncExecutionData? GetSyncExecutionDataForOrder(long orderId)
     {
         var success = _syncExecutionQueue.TryRemove(orderId, out var syncData);
         return !success ? null : syncData;

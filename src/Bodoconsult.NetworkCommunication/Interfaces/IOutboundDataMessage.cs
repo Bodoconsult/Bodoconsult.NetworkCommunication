@@ -15,5 +15,5 @@ public interface IOutboundDataMessage: IOutboundMessage
     /// <summary>
     /// Data block stored in the message
     /// </summary>
-    public ITypedOutboundDataBlock DataBlock { get; set; }
+    public ITypedOutboundDataBlock? DataBlock { get; set; }
 }

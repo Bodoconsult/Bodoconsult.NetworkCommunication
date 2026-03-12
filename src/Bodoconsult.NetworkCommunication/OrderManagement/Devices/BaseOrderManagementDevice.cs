@@ -1,15 +1,15 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
+using System.Diagnostics;
 using Bodoconsult.App.Interfaces;
 using Bodoconsult.NetworkCommunication.Interfaces;
-using System.Diagnostics;
 
 namespace Bodoconsult.NetworkCommunication.OrderManagement.Devices;
 
 /// <summary>
-    /// Base class for order management devices
-    /// </summary>
-    public abstract class BaseOrderManagementDevice : IOrderManagementDevice
+/// Base class for order management devices
+/// </summary>
+public abstract class BaseOrderManagementDevice : IOrderManagementDevice
 {
     protected bool _isOrderProcessingActivated;
 
@@ -39,18 +39,18 @@ namespace Bodoconsult.NetworkCommunication.OrderManagement.Devices;
     /// Communication adapter to use for order management
     /// </summary>
 
-    public ICommunicationAdapter CommunicationAdapter { get; protected set; }
+    public ICommunicationAdapter? CommunicationAdapter { get; protected set; }
 
     /// <summary>
     /// Current instance of the Device order processor
     /// </summary>
 
-    public IOrderProcessor OrderProcessor { get; protected set; }
+    public IOrderProcessor? OrderProcessor { get; protected set; }
 
     /// <summary>
     /// Current order manager
     /// </summary>
-    public IOrderManager OrderManager { get; protected set; }
+    public IOrderManager? OrderManager { get; protected set; }
 
     /// <summary>
     /// Client notification manager
@@ -103,7 +103,7 @@ namespace Bodoconsult.NetworkCommunication.OrderManagement.Devices;
         {
             if (_isOrderProcessingActivated != value)
             {
-                _appLogger?.LogInformation(value
+                _appLogger.LogInformation(value
                     ? $"{DataMessagingConfig.LoggerId}order processing is activated now"
                     : $"{DataMessagingConfig.LoggerId}order processing is deactivated now");
 
@@ -122,11 +122,11 @@ namespace Bodoconsult.NetworkCommunication.OrderManagement.Devices;
         }
     }
 
-    /// <summary>
-    /// Current master order factory. This prop is intended for testing purposes. Do not use directly
-    /// </summary>
+    ///// <summary>
+    ///// Current master order factory. This prop is intended for testing purposes. Do not use directly
+    ///// </summary>
 
-    public IMasterOrderFactory MasterOrderFactory { get; protected set; }
+    //public IMasterOrderFactory MasterOrderFactory { get; protected set; }
 
     /// <summary>
     /// Get all orders in the queue
@@ -172,7 +172,7 @@ namespace Bodoconsult.NetworkCommunication.OrderManagement.Devices;
     /// </summary>
     public virtual void StartComm()
     {
-        CommunicationAdapter.ComDevInit();
+        CommunicationAdapter?.ComDevInit();
     }
 
     /// <summary>
@@ -180,7 +180,7 @@ namespace Bodoconsult.NetworkCommunication.OrderManagement.Devices;
     /// </summary>
     public virtual void ResetComm()
     {
-        CommunicationAdapter.ComDevReset();
+        CommunicationAdapter?.ComDevReset();
     }
 
     /// <summary>
@@ -200,11 +200,6 @@ namespace Bodoconsult.NetworkCommunication.OrderManagement.Devices;
         // Check if the type of order is allowed to run parallel to the current orders
         foreach (var rOrder in runningOrders)
         {
-            if (rOrder == null)
-            {
-                continue;
-            }
-
             var pOrders = rOrder.AllowedParallelOrderTypes;
 
             // If the new order is allowed to run at the moment leave here
@@ -224,17 +219,20 @@ namespace Bodoconsult.NetworkCommunication.OrderManagement.Devices;
     /// Is the device pingable
     /// </summary>
     /// <returns>True if the device is pingable else false</returns>
-    public virtual bool IsPingable => CommunicationAdapter.IsPingableAsync().GetAwaiter().GetResult();
+    public virtual bool IsPingable => CommunicationAdapter?.IsPingableAsync().GetAwaiter().GetResult() ?? false;
 
     /// <summary>
     /// Clear the internal state without breaking comm
     /// </summary>
     public virtual void ResetInternalState()
     {
-        CommunicationAdapter.ResetInternalState();
+        CommunicationAdapter?.ResetInternalState();
         //_isRunning = false;
-        OrderProcessor.IsInitInProcessing = false;
-        OrderProcessor.IsRunnerStopped = false;
+        if (OrderProcessor != null)
+        {
+            OrderProcessor.IsInitInProcessing = false;
+            OrderProcessor.IsRunnerStopped = false;
+        }
         _appLogger.LogInformation("Internal state was reset");
     }
 
@@ -266,9 +264,11 @@ namespace Bodoconsult.NetworkCommunication.OrderManagement.Devices;
     /// <summary>
     /// Get next order to run
     /// </summary>
-    public virtual IOrder GetNextOrderToRun()
+    public virtual IOrder? GetNextOrderToRun()
     {
-        IOrder order;
+        ArgumentNullException.ThrowIfNull(OrderProcessor);
+
+        IOrder? order;
         //var isState = DeviceStatesInitProcess.Contains(DeviceState);
         var isInit = OrderProcessor.IsInitInProcessing;
 
@@ -406,7 +406,7 @@ namespace Bodoconsult.NetworkCommunication.OrderManagement.Devices;
         // Fire a ComDevClose if required for this order
         if (order.FailingOrderRequiresComDevClose)
         {
-            CommunicationAdapter.ComDevClose();
+            CommunicationAdapter?.ComDevClose();
         }
 
         // Logging
@@ -451,7 +451,7 @@ namespace Bodoconsult.NetworkCommunication.OrderManagement.Devices;
     /// </summary>
     /// <param name="receivedMessage">Received message</param>
     /// <returns>True if the message was an expected answer of the current request or should not be handled at all else false</returns>
-    public virtual bool DoBasicCheckForReceivedMessage(IInboundDataMessage receivedMessage)
+    public virtual bool DoBasicCheckForReceivedMessage(IInboundDataMessage? receivedMessage)
     {
         // Do nothing
         return false;
@@ -462,7 +462,7 @@ namespace Bodoconsult.NetworkCommunication.OrderManagement.Devices;
     /// </summary>
     /// <param name="receivedMessage">Received message</param>
     /// <returns>True if the message was a handled as error message else false</returns>
-    public bool DoCheckForErrorMessage(IInboundDataMessage receivedMessage)
+    public bool DoCheckForErrorMessage(IInboundDataMessage? receivedMessage)
     {
         throw new NotImplementedException();
     }
@@ -533,20 +533,20 @@ namespace Bodoconsult.NetworkCommunication.OrderManagement.Devices;
         //Stop();
         //_statusWatchdog?.StopWatchDog();
         OrderManager?.StopOrderProcessing();
-        OrderProcessor.Dispose();
+        OrderProcessor?.Dispose();
         CommunicationAdapter?.Dispose();
-        _monitorLogger?.Dispose();
-        DataMessagingConfig.DataMessageProcessingPackage?.WaitStateManager?.Dispose();
+        _monitorLogger.Dispose();
+        DataMessagingConfig.DataMessageProcessingPackage?.WaitStateManager.Dispose();
     }
 
-    /// <summary>
-    /// Load Device master order factory instance as current <see cref="MasterOrderFactory"/> instance
-    /// </summary>
-    /// <param name="masterOrderFactory">Current master order factory to load</param>
-    public void LoadMasterOrderFactory(IMasterOrderFactory masterOrderFactory)
-    {
-        MasterOrderFactory = masterOrderFactory;
-    }
+    ///// <summary>
+    ///// Load Device master order factory instance as current <see cref="MasterOrderFactory"/> instance
+    ///// </summary>
+    ///// <param name="masterOrderFactory">Current master order factory to load</param>
+    //public void LoadMasterOrderFactory(IMasterOrderFactory masterOrderFactory)
+    //{
+    //    MasterOrderFactory = masterOrderFactory;
+    //}
 
     /// <summary>
     /// Load the Device order manager to use for this device
@@ -561,16 +561,16 @@ namespace Bodoconsult.NetworkCommunication.OrderManagement.Devices;
         IsOrderProcessingActivated = true;
     }
 
-    /// <summary>
-    /// Create a new order of a requested type
-    /// </summary>
-    /// <param name="orderType">Order type</param>
-    /// <param name="parameterSet">Current parameter set to use for the newly created order</param>
-    /// <returns>An order to let it execute by TOM</returns>
-    public IOrder CreateOrder(Type orderType, IParameterSet parameterSet)
-    {
-        return MasterOrderFactory.GetOrder(orderType.Name, parameterSet);
-    }
+    ///// <summary>
+    ///// Create a new order of a requested type
+    ///// </summary>
+    ///// <param name="orderType">Order type</param>
+    ///// <param name="parameterSet">Current parameter set to use for the newly created order</param>
+    ///// <returns>An order to let it execute by TOM</returns>
+    //public IOrder CreateOrder(Type orderType, IParameterSet parameterSet)
+    //{
+    //    return MasterOrderFactory.GetOrder(orderType.Name, parameterSet);
+    //}
 
     /// <summary>
     /// Cancel ongoing Device order task
@@ -578,7 +578,7 @@ namespace Bodoconsult.NetworkCommunication.OrderManagement.Devices;
     /// <param name="order"></param>
     public void CancelDeviceOrder(long order)
     {
-        OrderProcessor.CancelOrder(order);
+        OrderProcessor?.CancelOrder(order);
     }
 
     /// <summary>
@@ -587,7 +587,7 @@ namespace Bodoconsult.NetworkCommunication.OrderManagement.Devices;
     public void Start()
     {
         // Start order processing now
-        OrderManager.StartOrderProcessing();
+        OrderManager?.StartOrderProcessing();
     }
 
 
@@ -598,8 +598,8 @@ namespace Bodoconsult.NetworkCommunication.OrderManagement.Devices;
     {
         //_statusWatchdog?.StopWatchDog();
         OrderManager?.StopOrderProcessing();
-        _monitorLogger?.LogError($"{DataMessagingConfig.LoggerId}DeviceServer stopped - Com Dev Close called");
-        CommunicationAdapter.ComDevClose();
+        _monitorLogger.LogError($"{DataMessagingConfig.LoggerId}DeviceServer stopped - Com Dev Close called");
+        CommunicationAdapter?.ComDevClose();
     }
 
     ///// <summary>
@@ -658,7 +658,7 @@ namespace Bodoconsult.NetworkCommunication.OrderManagement.Devices;
     /// <param name="uid">Uid of the object the orders are bound to</param>
     public void CancelDeviceOrdersBySourceUid(Guid uid)
     {
-        OrderProcessor.CancelOrderBySourceUid(uid);
+        OrderProcessor?.CancelOrderBySourceUid(uid);
     }
 
     /// <summary>
@@ -669,7 +669,7 @@ namespace Bodoconsult.NetworkCommunication.OrderManagement.Devices;
     {
         IsOrderProcessingActivated = isActivated;
 
-        if (IsOrderProcessingActivated)
+        if (IsOrderProcessingActivated || OrderProcessor==null)
         {
             return;
         }

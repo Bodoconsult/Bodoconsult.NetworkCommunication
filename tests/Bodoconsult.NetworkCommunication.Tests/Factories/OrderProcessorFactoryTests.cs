@@ -37,8 +37,8 @@ internal class OrderProcessorFactoryTests
         _orderPipeline = new OrderPipeline(_dateTimeService, orderProcessorFactory, logger, "Tower 000123: ");
         _syncManager = new SyncOrderManager();
 
-        var om = new FakeOrderManager();
-        device.LoadDeviceOrderManager(om);
+        //var om = new FakeOrderManager();
+        //device.LoadDeviceOrderManager(om);
     }
 
     [OneTimeTearDown]

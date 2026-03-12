@@ -17,11 +17,11 @@ public class DataBlockCodecResult
     /// If <see cref="DataBlock"/> delivers a NULL value this
     /// message is set with the reason why messaging decoding failed
     /// </summary>
-    public string ErrorMessage { get; set; }
+    public string? ErrorMessage { get; set; }
 
     /// <summary>
     /// Data message decoded by the codec
     /// </summary>
-    public IInboundDataBlock DataBlock { get; set; }
+    public IInboundDataBlock? DataBlock { get; set; }
 
 }

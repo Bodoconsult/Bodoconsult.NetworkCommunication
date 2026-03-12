@@ -121,7 +121,7 @@ public abstract class BaseWaitStateManager : IWaitStateManager
     /// <summary>
     /// Delegate called if <see cref="IWaitStateManager.OnHandshakeReceived"/> is starting to process a received handshake message
     /// </summary>
-    public RaiseDataMessageHandshakeReceivedDelegate RaiseHandshakeReceivedDelegate { get; set; }
+    public RaiseDataMessageHandshakeReceivedDelegate? RaiseHandshakeReceivedDelegate { get; set; }
 
     /// <summary>
     /// Current number of wait states registered

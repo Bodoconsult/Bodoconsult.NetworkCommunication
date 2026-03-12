@@ -3,7 +3,6 @@
 using Bodoconsult.NetworkCommunication.Communication;
 using Bodoconsult.NetworkCommunication.Interfaces;
 
-
 namespace Bodoconsult.NetworkCommunication.Factories;
 
 /// <summary>

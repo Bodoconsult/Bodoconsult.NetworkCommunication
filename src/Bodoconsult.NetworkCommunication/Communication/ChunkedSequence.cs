@@ -12,8 +12,8 @@ namespace Bodoconsult.NetworkCommunication.Communication;
 /// <typeparam name="T">T can be of type <see cref="byte"/> or other types usable with <see cref="ReadOnlySequence{T}"></see></typeparam>
 public sealed class ChunkedSequence<T>
 {
-    private ReadOnlyChunk<T> _first;
-    private ReadOnlyChunk<T> _current;
+    private ReadOnlyChunk<T>? _first;
+    private ReadOnlyChunk<T>? _current;
 
     private bool _changed;
 
@@ -43,7 +43,7 @@ public sealed class ChunkedSequence<T>
     public void Append(ReadOnlySequence<T> sequence)
     {
         var pos = sequence.Start;
-        while (sequence.TryGet(ref pos, out var mem, true))
+        while (sequence.TryGet(ref pos, out var mem))
         {
             Append(mem);
         }
@@ -92,6 +92,16 @@ public sealed class ChunkedSequence<T>
     /// <returns></returns>
     internal ReadOnlySequence<T> GetSequence()
     {
+        if (_first == null)
+        {
+            throw new ArgumentNullException(nameof(_first));
+        }
+
+        if (_current == null)
+        {
+            throw new ArgumentNullException(nameof(_current));
+        }
+
         var sequence = _changed ? new ReadOnlySequence<T>(_first, 0, _current, _current.Memory.Length) : new ReadOnlySequence<T>();
 
         return sequence;

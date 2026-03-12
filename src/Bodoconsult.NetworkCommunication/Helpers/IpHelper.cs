@@ -1,6 +1,7 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
 using System.Net;
+using System.Net.Sockets;
 
 namespace Bodoconsult.NetworkCommunication.Helpers;
 
@@ -33,8 +34,8 @@ public static class IpHelper
         var ipa = IPAddress.Parse(ipAddress);
         try
         {
-            var sock = new System.Net.Sockets.Socket(System.Net.Sockets.AddressFamily.InterNetwork,
-                System.Net.Sockets.SocketType.Stream, System.Net.Sockets.ProtocolType.Tcp);
+            var sock = new Socket(AddressFamily.InterNetwork,
+                SocketType.Stream, ProtocolType.Tcp);
             sock.Connect(ipa, portNumber);
             if (sock.Connected)
             {
@@ -65,8 +66,8 @@ public static class IpHelper
         var ipa = Dns.GetHostAddresses(hostname)[0];
         try
         {
-            var sock = new System.Net.Sockets.Socket(System.Net.Sockets.AddressFamily.InterNetwork,
-                System.Net.Sockets.SocketType.Stream, System.Net.Sockets.ProtocolType.Tcp);
+            var sock = new Socket(AddressFamily.InterNetwork,
+                SocketType.Stream, ProtocolType.Tcp);
             sock.Connect(ipa, portNumber);
             if (sock.Connected)
             {

@@ -51,7 +51,7 @@ public class SdcpOutboundDataMessage: IOutboundDataMessage
     /// <summary>
     /// Current raw message data as clear text
     /// </summary>
-    public string RawMessageDataClearText { get; set; }
+    public string? RawMessageDataClearText { get; set; }
 
     /// <summary>
     /// Create an info string for logging
@@ -70,5 +70,5 @@ public class SdcpOutboundDataMessage: IOutboundDataMessage
     /// <summary>
     /// Data block stored in the message
     /// </summary>
-    public ITypedOutboundDataBlock DataBlock { get; set; }
+    public ITypedOutboundDataBlock? DataBlock { get; set; }
 }

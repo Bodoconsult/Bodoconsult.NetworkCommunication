@@ -12,12 +12,12 @@ public interface IStateMachineContext
     /// <summary>
     /// The current state
     /// </summary>
-    IStateMachineState CurrentState { get; }
+    IStateMachineState? CurrentState { get; }
 
     /// <summary>
     /// The last job state not processed completely
     /// </summary>
-    IJobStateMachineState SavedJobState { get; }
+    IJobStateMachineState? SavedJobState { get; }
 
     ///// <summary>
     /////  The current device

@@ -56,6 +56,7 @@ public class IpDuplexIoSender : BaseDuplexIoSender
     /// <param name="message">Current message to send</param>
     public override async Task<int> SendMessage(IOutboundMessage message)
     {
+        ArgumentNullException.ThrowIfNull(DataMessagingConfig.SocketProxy);
 
         var sent = 0;
 
@@ -99,7 +100,7 @@ public class IpDuplexIoSender : BaseDuplexIoSender
                             
                         var s = $"{message.RawMessageDataClearText}  {message.ToShortInfoString()}";
                         Debug.Print(s);
-                        DataMessagingConfig.MonitorLogger?.LogInformation($"Message sent: {s}");
+                        DataMessagingConfig.MonitorLogger.LogInformation($"Message sent: {s}");
 
                         AsyncHelper.FireAndForget(() => DataMessagingConfig.RaiseDataMessageSentDelegate?.Invoke(message.RawMessageData));
                     }
@@ -125,7 +126,7 @@ public class IpDuplexIoSender : BaseDuplexIoSender
 
             if (!isSent)
             {
-                DataMessagingConfig.MonitorLogger?.LogError($"send process blocked by another socket operation");
+                DataMessagingConfig.MonitorLogger.LogError("send process blocked by another socket operation");
                 return 0;
             }
 
@@ -135,8 +136,8 @@ public class IpDuplexIoSender : BaseDuplexIoSender
             }
             var msg = $"{DataMessagingConfig.LoggerId}message could not be sent via TCP socket. Only {0} bytes of {message.RawMessageData.Length} bytes are sent.";
             AsyncHelper.FireAndForget(() => DataMessagingConfig.RaiseDataMessageNotSentDelegate?.Invoke(message.RawMessageData, msg));
-            DataMessagingConfig.MonitorLogger?.LogError(msg);
-            DataMessagingConfig.AppLogger?.LogError($"{DataMessagingConfig.LoggerId}{msg}");
+            DataMessagingConfig.MonitorLogger.LogError(msg);
+            DataMessagingConfig.AppLogger.LogError($"{DataMessagingConfig.LoggerId}{msg}");
             return sent;
         }
         catch (Exception exception)

@@ -25,7 +25,7 @@ public class RawOutboundDataMessage : IOutboundDataMessage
     /// <summary>
     /// Data block stored in the message
     /// </summary>
-    public ITypedOutboundDataBlock DataBlock { get; set; }
+    public ITypedOutboundDataBlock? DataBlock { get; set; }
 
     /// <summary>
     /// Current raw message data as byte array
@@ -43,7 +43,7 @@ public class RawOutboundDataMessage : IOutboundDataMessage
     /// <summary>
     /// Current raw message data as clear text
     /// </summary>
-    public string RawMessageDataClearText { get; private set; }
+    public string? RawMessageDataClearText { get; private set; }
 
     /// <summary>
     /// Create an info string for logging

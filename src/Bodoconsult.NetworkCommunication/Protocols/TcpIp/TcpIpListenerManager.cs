@@ -1,12 +1,12 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
-using Bodoconsult.NetworkCommunication.Delegates;
-using Bodoconsult.NetworkCommunication.Helpers;
-using Bodoconsult.NetworkCommunication.Interfaces;
 using System.Collections.Concurrent;
 using System.Net;
 using System.Net.Sockets;
 using Bodoconsult.App.Helpers;
+using Bodoconsult.NetworkCommunication.Delegates;
+using Bodoconsult.NetworkCommunication.Helpers;
+using Bodoconsult.NetworkCommunication.Interfaces;
 
 namespace Bodoconsult.NetworkCommunication.Protocols.TcpIp;
 
@@ -120,6 +120,8 @@ public class TcpIpListenerManager : ITcpIpListenerManager
         if (kvp.Key != null)
         {
             data = kvp.Value;
+
+            ArgumentNullException.ThrowIfNull(data.Listener);
 
             // Now register a new consumer for the listener
             RegisterConsumer(data, acceptDelegate);
@@ -305,6 +307,8 @@ public class TcpIpListenerManager : ITcpIpListenerManager
         {
             return;
         }
+
+        ArgumentNullException.ThrowIfNull(kvp.Value.Listener);
 
         UnregisterListener(kvp.Value.Listener, acceptDelegate);
     }

@@ -23,25 +23,23 @@ public abstract class BaseOrderProcessor : IOrderProcessor
     /// <summary>
     /// Is the runner stopped. DO NOT use this field internally. Use IsRunnerStopped property instead
     /// </summary>
-    protected bool _isRunnerStopped;
-
-    protected readonly Lock _isRunnerStoppedLock = new();
+    protected bool IsRunnerStoppedInternal;
+    protected readonly Lock IsRunnerStoppedLock = new();
 
     /// <summary>
     /// true while the orders of StSys init are handled. Important to NOT start real order processing in <see cref="Runner "/> before checkslot was handled
     /// </summary>
-    protected bool _initIsProcessing;
-
-    protected readonly Lock _initIsProcessingLock = new();
+    protected bool InitIsProcessing;
+    protected readonly Lock InitIsProcessingLock = new();
 
     // Check if cancellation of running orders is already running to avoid endless loop with stack exception
-    protected bool _isCancellationRunningOrders;
-    protected readonly Lock _isCancellationRunningOrdersLockObject = new();
-    protected readonly IAppDateService _dateTimeService;
-    protected readonly IAppLoggerProxy _appLogger;
-    protected readonly string _loggerId;
-    protected readonly IAppLoggerProxy _monitorLogger;
-    protected readonly IAppBenchProxy _appBenchProxy;
+    protected bool IsCancellationRunningOrdersInternal;
+    protected readonly Lock IsCancellationRunningOrdersLockObject = new();
+    protected readonly IAppDateService DateTimeService;
+    protected readonly IAppLoggerProxy AppLogger;
+    protected readonly string LoggerId;
+    protected readonly IAppLoggerProxy MonitorLogger;
+    protected readonly IAppBenchProxy AppBenchProxy;
 
     /// <summary>
     /// Start the request processor to execute the order
@@ -51,10 +49,10 @@ public abstract class BaseOrderProcessor : IOrderProcessor
     private void ExecuteOrder(IRequestProcessor requestProcessor)
     {
         var order = requestProcessor.Order;
-        if (order == null)
-        {
-            return;
-        }
+        //if (order == null)
+        //{
+        //    return;
+        //}
 
         // Now execute
         OrderPipeline.ExecuteOrder(requestProcessor);
@@ -70,15 +68,20 @@ public abstract class BaseOrderProcessor : IOrderProcessor
         ClientNotificationManager.DoNotifyOrderStateChanged(this, order);
     }
 
-    protected bool CheckOrders(IEnumerable<IRequestProcessor> requestProcessors, IInboundDataMessage rm)
+    protected bool CheckOrders(IEnumerable<IRequestProcessor> requestProcessors, IInboundDataMessage? rm)
     {
+        if (rm == null)
+        {
+            return false;
+        }
+
         foreach (var proc in requestProcessors)
         {
             // Keep request processor local due to asnyc access
             var procLocal = proc;
             var order = procLocal.Order;
 
-            if (order == null || procLocal.IsCancelled || order.IsDisposable)
+            if (procLocal.IsCancelled || order.IsDisposable)
             {
                 LogDebug($"message received: order {order?.Id} skipped due to disposed or cancelled");
                 continue;
@@ -92,7 +95,6 @@ public abstract class BaseOrderProcessor : IOrderProcessor
                 Debug.Print($"{rm.ToShortInfoString()} processed unsuccessfully with order {order.Id}.");
                 continue;
             }
-
 
             // Wait until the order is finished
             Wait.Until(() => order.IsFinished);
@@ -132,23 +134,22 @@ public abstract class BaseOrderProcessor : IOrderProcessor
         }
 
         var ps = order.ParameterSet;
-
-        return ps.IsValid.Count != 0;
+        return ps?.IsValid.Count != 0;
     }
 
 
 
     protected void LogDebug(string message)
     {
-        _monitorLogger.LogInformation(message);
-        _appLogger.LogDebug($"{_loggerId}{message}");
+        MonitorLogger.LogInformation(message);
+        AppLogger.LogDebug($"{LoggerId}{message}");
         Debug.Print($"OP: {message}");
     }
 
     protected void LogInformation(string message)
     {
-        _monitorLogger.LogInformation(message);
-        _appLogger.LogInformation($"{_loggerId}{message}");
+        MonitorLogger.LogInformation(message);
+        AppLogger.LogInformation($"{LoggerId}{message}");
         Debug.Print($"OP: {message}");
     }
 
@@ -171,24 +172,30 @@ public abstract class BaseOrderProcessor : IOrderProcessor
     protected void StopExecutionOfSyncOrder(long orderId, IOrderExecutionResultState erg)
     {
         var syncData = SyncOrderManager.GetSyncExecutionDataForOrder(orderId);
-        syncData?.TaskCompletionSource.SetResult(erg);
+
+        if (syncData == null)
+        {
+            return;
+        }
+
+        syncData.TaskCompletionSource?.SetResult(erg);
     }
 
     protected bool IsCancellationRunningOrders
     {
         get
         {
-            lock (_isCancellationRunningOrdersLockObject)
+            lock (IsCancellationRunningOrdersLockObject)
             {
-                return _isCancellationRunningOrders;
+                return IsCancellationRunningOrdersInternal;
             }
         }
         set
         {
-            lock (_isCancellationRunningOrdersLockObject)
+            lock (IsCancellationRunningOrdersLockObject)
             {
 
-                _isCancellationRunningOrders = value;
+                IsCancellationRunningOrdersInternal = value;
             }
         }
     }
@@ -211,11 +218,11 @@ public abstract class BaseOrderProcessor : IOrderProcessor
         WatchDogRunnerDelegate runner = Runner;
         _messageProcessingWatchdog = new WatchDog(runner, 300);
         ClientNotificationManager = clientNotificationManager;
-        _dateTimeService = dateTimeService;
-        _appLogger = deviceServer.DataMessagingConfig.AppLogger;
-        _loggerId = deviceServer.DataMessagingConfig.LoggerId;
-        _monitorLogger = deviceServer.DataMessagingConfig.MonitorLogger;
-        _appBenchProxy = appBenchProxy;
+        DateTimeService = dateTimeService;
+        AppLogger = deviceServer.DataMessagingConfig.AppLogger;
+        LoggerId = deviceServer.DataMessagingConfig.LoggerId;
+        MonitorLogger = deviceServer.DataMessagingConfig.MonitorLogger;
+        AppBenchProxy = appBenchProxy;
     }
 
     /// <summary>
@@ -259,23 +266,23 @@ public abstract class BaseOrderProcessor : IOrderProcessor
     {
         get
         {
-            lock (_isRunnerStoppedLock)
+            lock (IsRunnerStoppedLock)
             {
-                return _isRunnerStopped;
+                return IsRunnerStoppedInternal;
             }
         }
         set
         {
             bool stopped;
-            lock (_isRunnerStoppedLock)
+            lock (IsRunnerStoppedLock)
             {
-                stopped = _isRunnerStopped;
-                _isRunnerStopped = value;
+                stopped = IsRunnerStoppedInternal;
+                IsRunnerStoppedInternal = value;
             }
 
             if (!stopped && value)
             {
-                _appLogger.LogInformation($"{_loggerId}runner is deactivated now");
+                AppLogger.LogInformation($"{LoggerId}runner is deactivated now");
             }
             //else
             //{
@@ -416,19 +423,19 @@ public abstract class BaseOrderProcessor : IOrderProcessor
     {
         get
         {
-            lock (_initIsProcessingLock)
+            lock (InitIsProcessingLock)
             {
-                return _initIsProcessing;
+                return InitIsProcessing;
             }
         }
         set
         {
-            lock (_initIsProcessingLock)
+            lock (InitIsProcessingLock)
             {
-                _initIsProcessing = value;
+                InitIsProcessing = value;
             }
 
-            _appLogger.LogDebug($"{_loggerId}: IsInitInProcessing: {_initIsProcessing}");
+            AppLogger.LogDebug($"{LoggerId}: IsInitInProcessing: {InitIsProcessing}");
         }
     }
 
@@ -454,7 +461,7 @@ public abstract class BaseOrderProcessor : IOrderProcessor
     /// <summary>
     /// Initiate a hardware init and run the order directly
     /// </summary>
-    public IOrder InitiateHardwareInit()
+    public IOrder? InitiateHardwareInit()
     {
         return InitiateHardwareInit(true);
     }
@@ -464,7 +471,7 @@ public abstract class BaseOrderProcessor : IOrderProcessor
     /// </summary>
     /// <param name="runTheOrder">Run the order directly: yes or no</param>
     /// <returns>device hardware init order</returns>
-    public virtual IOrder InitiateHardwareInit(bool runTheOrder)
+    public virtual IOrder? InitiateHardwareInit(bool runTheOrder)
     {
         throw new NotSupportedException("Override method in derived classes!");
     }
@@ -481,11 +488,10 @@ public abstract class BaseOrderProcessor : IOrderProcessor
             OrderPipeline.CancelWaitingOrders();
 
             CancelRunningOrders(174);
-
         }
         catch (Exception e)
         {
-            _appLogger.LogError("cancelling order failed", e);
+            AppLogger.LogError("cancelling order failed", e);
         }
     }
 
@@ -558,11 +564,11 @@ public abstract class BaseOrderProcessor : IOrderProcessor
         if (OrderPipeline.CheckIfOrderIsRunning(orderId))
         {
             OrderPipeline.CancelOrder(orderId);
-            _appLogger.LogInformation($"{_loggerId}{order.LoggerId}order has been cancelled");
+            AppLogger.LogInformation($"{LoggerId}{order.LoggerId}order has been cancelled");
         }
         else
         {
-            _appLogger.LogDebug($"{_loggerId}{order.LoggerId}order has been finished {erg}");
+            AppLogger.LogDebug($"{LoggerId}{order.LoggerId}order has been finished {erg}");
         }
 
         // Dispose the order now if needed
@@ -629,12 +635,12 @@ public abstract class BaseOrderProcessor : IOrderProcessor
 
         if (IsInitInProcessing)
         {
-            _appLogger.LogInformation($"{_loggerId}{order.LoggerId}: init is processing, order is cancelled");
+            AppLogger.LogInformation($"{LoggerId}{order.LoggerId}: init is processing, order is cancelled");
             order.IsCancelled = true;
             return;
         }
 
-        _appLogger.LogInformation($"{_loggerId}{order.LoggerId}: check parallel running orders");
+        AppLogger.LogInformation($"{LoggerId}{order.LoggerId}: check parallel running orders");
 
         var runningOrders = OrderPipeline.RunningOrders.ToList();
 
@@ -654,7 +660,7 @@ public abstract class BaseOrderProcessor : IOrderProcessor
                 continue;
             }
 
-            _appLogger.LogInformation($"{_loggerId}{order.LoggerId} NOT allowed to run parallel with order {rOrder.LoggerId}");
+            AppLogger.LogInformation($"{LoggerId}{order.LoggerId} NOT allowed to run parallel with order {rOrder.LoggerId}");
             order.IsCancelled = true;
             return;
         }
@@ -678,7 +684,7 @@ public abstract class BaseOrderProcessor : IOrderProcessor
         // Start benchmarking if necessary
         if (order.IsBenchable)
         {
-            order.Benchmark = new Bench(_appBenchProxy, $"{order.DeviceId}_{order.LoggerId}");
+            order.Benchmark = new Bench(AppBenchProxy, $"{order.DeviceId}_{order.LoggerId}");
         }
 
         // Execute the order
@@ -691,7 +697,7 @@ public abstract class BaseOrderProcessor : IOrderProcessor
     /// Get the current order processing
     /// </summary>
     /// <returns>Currently processed order</returns>
-    public IOrder GetCurrentProcessingOrder()
+    public IOrder? GetCurrentProcessingOrder()
     {
         // The former implementation using => produced a null exception sometimes
 
@@ -710,7 +716,7 @@ public abstract class BaseOrderProcessor : IOrderProcessor
     /// </summary>
     /// <param name="orderId">Current order ID</param>
     /// <returns>Request processor</returns>
-    public IRequestProcessor GetRequestProcessorForOrder(long orderId)
+    public IRequestProcessor? GetRequestProcessorForOrder(long orderId)
     {
         foreach (var rp in OrderPipeline.RunningRequestProcessors)
         {
@@ -738,18 +744,18 @@ public abstract class BaseOrderProcessor : IOrderProcessor
 
         if (CheckOrder(order))
         {
-            _appLogger.LogInformation($"{_loggerId}{order.LoggerId}NOT added to queue: {json}");
+            AppLogger.LogInformation($"{LoggerId}{order.LoggerId}NOT added to queue: {json}");
             return;
         }
 
         if (OrderPipeline.AllWaitingOrders.Contains(order))
         {
-            _appLogger.LogInformation($"{_loggerId}{order.LoggerId}NOT added to queue: order is already existing");
+            AppLogger.LogInformation($"{LoggerId}{order.LoggerId}NOT added to queue: order is already existing");
             return;
         }
 
         OrderPipeline.AddOrder(order);
-        _appLogger.LogInformation($"{_loggerId}{order.LoggerId} added to queue. {OrderPipeline.CurrentOrderState}. {json}");
+        AppLogger.LogInformation($"{LoggerId}{order.LoggerId} added to queue. {OrderPipeline.CurrentOrderState}. {json}");
         if (order.IsClientNotificationTurnedOff)
         {
             return;
@@ -776,13 +782,13 @@ public abstract class BaseOrderProcessor : IOrderProcessor
 
         if (CheckOrder(order))
         {
-            _appLogger.LogInformation($"{_loggerId}{order.LoggerId} NOT added to priority queue. {json}");
+            AppLogger.LogInformation($"{LoggerId}{order.LoggerId} NOT added to priority queue. {json}");
         }
         else
         {
             OrderPipeline.AddPriorityOrder(order);
             ClientNotificationManager?.DoNotifyOrderStateChanged(this, order);
-            _appLogger.LogInformation($"{_loggerId}{order.LoggerId} added to priority queue. {OrderPipeline.CurrentOrderState}. {json}");
+            AppLogger.LogInformation($"{LoggerId}{order.LoggerId} added to priority queue. {OrderPipeline.CurrentOrderState}. {json}");
         }
     }
 
@@ -791,7 +797,7 @@ public abstract class BaseOrderProcessor : IOrderProcessor
     /// </summary>
     /// <param name="receivedMessage">A message received from the device</param>
     /// <returns>True if the message was an expected answer of the current request</returns>
-    public virtual bool CheckReceivedMessage(IInboundDataMessage receivedMessage)
+    public virtual bool CheckReceivedMessage(IInboundDataMessage? receivedMessage)
     {
         throw new NotSupportedException("Override method in derived classes!");
     }
@@ -818,7 +824,7 @@ public abstract class BaseOrderProcessor : IOrderProcessor
         {
             if (requestProcessor.IsCancelled)
             {
-                requestProcessor.CancellationTokenSource.Cancel();
+                requestProcessor.CancellationTokenSource?.Cancel();
                 continue;
             }
             requestProcessor.CurrentTask?.Wait(5000);
@@ -848,9 +854,9 @@ public abstract class BaseOrderProcessor : IOrderProcessor
         //// Cancel all running orders first
         CurrentDevice.CancelRunningOrders(errorCode);
 
-        var s = $"{_loggerId}running orders cancelled. {OrderPipeline.CurrentOrderState} error code {errorCode}";
+        var s = $"{LoggerId}running orders cancelled. {OrderPipeline.CurrentOrderState} error code {errorCode}";
         Debug.Print(s);
-        _appLogger.LogDebug(s);
+        AppLogger.LogDebug(s);
 
         IsCancellationRunningOrders = false;
         IsRunnerStopped = isRunnerStopped;

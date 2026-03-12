@@ -26,12 +26,12 @@ public interface IDataBlockCodingProcessor
     /// </summary>
     /// <param name="datablockType">Type of the datablock</param>
     /// <returns>Codec or null if no fitting codec was found</returns>
-    IDataBlockCodec GetDatablockCodecCanBeNull(char datablockType);
+    IDataBlockCodec? GetDatablockCodecCanBeNull(char datablockType);
 
     /// <summary>
     /// Decode a given datablock as byte array to the related internal datablock object
     /// </summary>
     /// <param name="dataBlockBytes">Received datablock as byte array</param>
     /// <returns>Datablock object or null if no fitting codec was found</returns>
-    ITypedInboundDataBlock FromBytesToDataBlock(Memory<byte> dataBlockBytes);
+    ITypedInboundDataBlock? FromBytesToDataBlock(Memory<byte> dataBlockBytes);
 }

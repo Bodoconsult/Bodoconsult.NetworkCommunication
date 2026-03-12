@@ -36,7 +36,7 @@ public interface IWaitStateManager: IDisposable
     /// <summary>
     /// Delegate called if <see cref="OnHandshakeReceived"/> is starting to process a received handshake message
     /// </summary>
-    RaiseDataMessageHandshakeReceivedDelegate RaiseHandshakeReceivedDelegate { get; set; }
+    RaiseDataMessageHandshakeReceivedDelegate? RaiseHandshakeReceivedDelegate { get; set; }
 
     /// <summary>
     /// Current number of wait states registered

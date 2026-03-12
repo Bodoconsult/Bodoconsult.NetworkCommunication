@@ -37,6 +37,8 @@ public class DefaultStateCheckManager : IDeviceStateCheckManager
 
     private void WatchDogRunnerDelegate()
     {
+        ArgumentNullException.ThrowIfNull(_device.OrderManager);
+
         // State check is not activate
         if (!IsActivated)
         {
@@ -51,6 +53,11 @@ public class DefaultStateCheckManager : IDeviceStateCheckManager
 
         // Check if there are any priority orders
         _device.CheckIfThereAreOrdersToBeCreated();
+
+        if (_device.CurrentState == null)
+        {
+            return;
+        }
 
         // If connected, do the state request now
         var orders = _device.CurrentState.PerpareRegularStateRequest();

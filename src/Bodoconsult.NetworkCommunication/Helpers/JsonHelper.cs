@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Globalization;
 using System.Text;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 
 namespace Bodoconsult.NetworkCommunication.Helpers;
 
@@ -12,25 +13,27 @@ namespace Bodoconsult.NetworkCommunication.Helpers;
 /// </summary>
 public static class JsonHelper
 {
-    private static JsonSerializer _jsonSerializer;
+    private static JsonSerializer? _jsonSerializer;
 
     private static JsonSerializer JsonSerializer
     {
         get
         {
-            if (_jsonSerializer == null)
+            if (_jsonSerializer != null)
             {
-                _jsonSerializer = new JsonSerializer
-                {
-                    Formatting = Formatting.Indented,
-                    TypeNameHandling = TypeNameHandling.Auto,
-                    //TypeNameAssemblyFormatHandling = TypeNameAssemblyFormatHandling.Simple,
-                    ReferenceLoopHandling = ReferenceLoopHandling.Ignore,
-                    MaxDepth = 10
-                };
-
-                _jsonSerializer.Converters.Add(new Newtonsoft.Json.Converters.StringEnumConverter());
+                return _jsonSerializer;
             }
+
+            _jsonSerializer = new JsonSerializer
+            {
+                Formatting = Formatting.Indented,
+                TypeNameHandling = TypeNameHandling.Auto,
+                //TypeNameAssemblyFormatHandling = TypeNameAssemblyFormatHandling.Simple,
+                ReferenceLoopHandling = ReferenceLoopHandling.Ignore,
+                MaxDepth = 10
+            };
+
+            _jsonSerializer.Converters.Add(new StringEnumConverter());
 
             return _jsonSerializer;
         }
@@ -64,7 +67,7 @@ public static class JsonHelper
     /// </summary>
     /// <param name="data">object to serialize</param>
     /// <returns>JSON string</returns>
-    public static string JsonSerialize(object data)
+    public static string? JsonSerialize(object? data)
     {
         if (data == null)
         {
@@ -76,12 +79,12 @@ public static class JsonHelper
     }
 
     /// <summary>
-    /// Serialize a object to JSON
+    /// Serialize an object to JSON
     /// </summary>
     /// <param name="data">object to serialize</param>
     /// <param name="maxDepth">Max depth level for the serialization</param>
     /// <returns>JSON string</returns>
-    public static string JsonSerialize(object data, int maxDepth)
+    public static string? JsonSerialize(object? data, int maxDepth)
     {
         if (data == null)
         {
@@ -112,7 +115,7 @@ public static class JsonHelper
     /// <param name="data">object to serialize to JSON</param>
     /// <typeparam name="T">type of the object to serialize to JSON</typeparam>
     /// <returns>JSON string</returns>
-    public static string JsonSerialize<T>(T data, string fileName)
+    public static string? JsonSerialize<T>(T data, string fileName)
     {
         if (data == null)
         {
@@ -132,7 +135,7 @@ public static class JsonHelper
     /// <typeparam name="T">Target type</typeparam>
     /// <param name="json">JSON input string</param>
     /// <returns>Deserialized data object</returns>
-    public static T JsonDeserialize<T>(string json)
+    public static T? JsonDeserialize<T>(string json)
     {
         if (string.IsNullOrEmpty(json))
         {
@@ -141,7 +144,7 @@ public static class JsonHelper
 
         try
         {
-            var x = (T)JsonConvert.DeserializeObject(json, typeof(T), DefaultSettings);
+            var x = JsonConvert.DeserializeObject<T?>(json, DefaultSettings);
             return x;
         }
         catch (Exception e)
@@ -152,11 +155,11 @@ public static class JsonHelper
     }
 
     /// <summary>
-    /// Load a object from a JSON file
+    /// Load an object from a JSON file
     /// </summary>
     /// <param name="fileName"></param>
     /// <returns></returns>
-    public static T LoadJsonFile<T>(string fileName)
+    public static T? LoadJsonFile<T>(string fileName)
     {
         if (string.IsNullOrEmpty(fileName))
         {
@@ -187,12 +190,8 @@ public static class JsonHelper
 
         try
         {
-            T job;
-
-            using (var file = File.OpenText(fileName))
-            {
-                job = (T)JsonSerializer.Deserialize(file, typeof(T));
-            }
+            using var file = File.OpenText(fileName);
+            var job = (T?)JsonSerializer.Deserialize(file, typeof(T));
 
             return job;
         }
@@ -205,11 +204,11 @@ public static class JsonHelper
 
 
     /// <summary>
-    /// Load a object from a JSON resource
+    /// Load an object from a JSON resource
     /// </summary>
     /// <param name="resourceName">Fully qualified resource name</param>
     /// <returns>object of type T or null</returns>
-    public static T LoadJsonFromResource<T>(string resourceName)
+    public static T? LoadJsonFromResource<T>(string resourceName)
     {
         if (string.IsNullOrEmpty(resourceName))
         {
@@ -218,8 +217,6 @@ public static class JsonHelper
 
         try
         {
-            T job;
-
             var ass = typeof(JsonHelper).Assembly;
             var str = ass.GetManifestResourceStream(resourceName);
 
@@ -228,18 +225,15 @@ public static class JsonHelper
                 return default;
             }
 
-            using (var file = new StreamReader(str))
+            using var file = new StreamReader(str);
+            var serializer = new JsonSerializer
             {
-                var serializer = new JsonSerializer
-                {
-                    TypeNameHandling = TypeNameHandling.Auto,
-                    ReferenceLoopHandling = ReferenceLoopHandling.Ignore
-                    // MaxDepth = 10
-                };
+                TypeNameHandling = TypeNameHandling.Auto,
+                ReferenceLoopHandling = ReferenceLoopHandling.Ignore
+                // MaxDepth = 10
+            };
 
-                job = (T)serializer.Deserialize(file, typeof(T));
-
-            }
+            var job = (T?)serializer.Deserialize(file, typeof(T));
 
             return job;
         }
@@ -256,7 +250,7 @@ public static class JsonHelper
     /// </summary>
     /// <param name="json">JSON formatted string</param>
     /// <returns>object of type T or null</returns>
-    public static T LoadJsonFromString<T>(string json)
+    public static T? LoadJsonFromString<T>(string json)
     {
         if (string.IsNullOrEmpty(json))
         {
@@ -271,9 +265,9 @@ public static class JsonHelper
             //    TypeNameHandling = TypeNameHandling.All
             //};
 
-            var job = JsonConvert.DeserializeObject(json, typeof(T), DefaultSettings);
+            var job = JsonConvert.DeserializeObject<T?>(json, DefaultSettings);
 
-            return (T)job;
+            return (T?)job;
         }
         catch (Exception e)
         {
@@ -284,12 +278,12 @@ public static class JsonHelper
 
 
     /// <summary>
-    /// Serialize a object to JSON
+    /// Serialize an object to JSON
     /// </summary>
     /// <param name="value">object to convert</param>
     /// <typeparam name="T">type of object to convert</typeparam>
     /// <returns>Returns a JSON string or null if the JSON serialization failed</returns>
-    public static string SerializeObject<T>(T value)
+    public static string? SerializeObject<T>(T value)
     {
         if (value == null)
         {
@@ -331,11 +325,11 @@ public static class JsonHelper
 
     }
     /// <summary>
-    /// Serialize a object to a nicely readable JSON string
+    /// Serialize an object to a nicely readable JSON string
     /// </summary>
     /// <param name="data">object to serialize</param>
     /// <returns>Returns a JSON string or null if the JSON serialization failed</returns>
-    public static string JsonSerializeNice(object data)
+    public static string? JsonSerializeNice(object? data)
     {
         if (data == null)
         {
@@ -361,7 +355,7 @@ public static class JsonHelper
     /// <param name="data">object to serialize to JSON</param>
     /// <typeparam name="T">type of the object to serialize to JSON</typeparam>
     /// <returns>Returns a JSON string or null if the JSON serialization failed</returns>
-    public static string JsonSerializeNice<T>(T data, string fileName)
+    public static string? JsonSerializeNice<T>(T data, string fileName)
     {
         if (data == null)
         {

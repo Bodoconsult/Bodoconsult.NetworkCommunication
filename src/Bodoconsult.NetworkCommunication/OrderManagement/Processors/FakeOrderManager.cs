@@ -10,6 +10,21 @@ namespace Bodoconsult.NetworkCommunication.OrderManagement.Processors;
 public class FakeOrderManager : IOrderManager
 {
     /// <summary>
+    /// Default ctor
+    /// </summary>
+    /// <param name="messagingConfig">Current device communication adapter</param>
+    /// <param name="deviceOrderProcessor">Current device order processor</param>
+    /// <param name="deviceOrderReceiver">Current device order receiver</param>
+    public FakeOrderManager(IDataMessagingConfig messagingConfig,
+        IOrderProcessor deviceOrderProcessor,
+        IOrderReceiver deviceOrderReceiver)
+    {
+        MessagingConfig = messagingConfig;
+        OrderProcessor = deviceOrderProcessor;
+        OrderReceiver = deviceOrderReceiver;
+    }
+
+    /// <summary>
     /// Current messaging config
     /// </summary>
     public IDataMessagingConfig MessagingConfig { get; set; }
@@ -37,7 +52,7 @@ public class FakeOrderManager : IOrderManager
     /// Event handling method for binding to <see cref="dataMessage"/>.NotifydeviceMessageReceived event
     /// </summary>
     /// <param name="dataMessage">Received message</param>
-    public void OndeviceMessageReceived(IInboundDataMessage dataMessage)
+    public void OnDeviceMessageReceived(IInboundDataMessage dataMessage)
     {
         // Do nothing
     }

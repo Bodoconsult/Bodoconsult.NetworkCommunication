@@ -41,7 +41,7 @@ public class BusinessSubState : IBusinessSubState
     /// <param name="other">An object to compare with this object.</param>
     /// <returns>
     /// <see langword="true" /> if the current object is equal to the <paramref name="other" /> parameter; otherwise, <see langword="false" />.</returns>
-    public bool Equals(IBusinessSubState other)
+    public bool Equals(IBusinessSubState? other)
     {
         if (other is null)
         {
@@ -59,9 +59,9 @@ public class BusinessSubState : IBusinessSubState
     /// <param name="obj">The object to compare with the current object.</param>
     /// <returns>
     /// <see langword="true" /> if the specified object  is equal to the current object; otherwise, <see langword="false" />.</returns>
-    public override bool Equals(object obj)
+    public override bool Equals(object? obj)
     {
-        return Equals((IBusinessSubState)obj);
+        return Equals((IBusinessSubState?)obj);
     }
 
     /// <summary>Serves as the default hash function.</summary>

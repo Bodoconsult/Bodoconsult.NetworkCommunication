@@ -17,18 +17,18 @@ public interface IParameterSet: ITypedOutboundDataBlock, IDisposable
     /// <summary>
     /// The order the parameter set is bound to
     /// </summary>
-    IOrder CurrentOrder { get; }
+    IOrder? CurrentOrder { get; }
 
     /// <summary>
     /// Load the order the parameter set is bound to. May only run once!
     /// </summary>
     /// <param name="order">Order to inject</param>
-    void LoadOrder(IOrder order);
+    void LoadOrder(IOrder? order);
 
     /// <summary>
     /// The name of the user requesting the order run
     /// </summary>
-    string UserRequestingTheOrderRun { get; set; }
+    string? UserRequestingTheOrderRun { get; set; }
 
     /// <summary>
     /// Send a CANCEL command to the device if request step was unsuccessful. Default: false
@@ -43,7 +43,7 @@ public interface IParameterSet: ITypedOutboundDataBlock, IDisposable
     /// <summary>
     /// A result object filled by the order execution process
     /// </summary>
-    object OrderResult { get; set; }
+    object? OrderResult { get; set; }
 
     /// <summary>
     /// Is the parameter set valid?

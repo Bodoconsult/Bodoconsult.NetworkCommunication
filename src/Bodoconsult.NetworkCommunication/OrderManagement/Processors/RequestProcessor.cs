@@ -20,11 +20,11 @@ public class RequestProcessor : IRequestProcessor
     private readonly Lock _cancelLockObject = new();
     private readonly Lock _stepProcessorObject = new();
     private readonly string _orderLoggerId;
-    private object _transportObject;
+    private object? _transportObject;
     private bool _isDisposing;
     private bool _isExitActionFired;
     private readonly Lock _isExitActionFiredLock = new();
-    private IRequestStepProcessor _currentRequestStepProcessor;
+    private IRequestStepProcessor? _currentRequestStepProcessor;
     private readonly IAppLoggerProxy _appLogger;
 
     /// <summary>
@@ -61,10 +61,10 @@ public class RequestProcessor : IRequestProcessor
         _requestStepProcessorFactory = requestStepProcessorFactory;
         _device = device ?? throw new ArgumentNullException(nameof(device));
 
-        if (_device.DataMessagingConfig == null)
-        {
-            return;
-        }
+        //if (_device.DataMessagingConfig == null)
+        //{
+        //    return;
+        //}
         _orderLoggerId = $"{_device.DataMessagingConfig.LoggerId}{Order.LoggerId}";
         _appLogger = _device.DataMessagingConfig.AppLogger;
     }
@@ -77,7 +77,7 @@ public class RequestProcessor : IRequestProcessor
     /// <summary>
     /// The currently processed request step of the order
     /// </summary>
-    public IRequestStepProcessor CurrentRequestStepProcessor
+    public IRequestStepProcessor? CurrentRequestStepProcessor
     {
         get
         {
@@ -106,7 +106,7 @@ public class RequestProcessor : IRequestProcessor
 
         //try
         //{
-        if (order == null || order.IsCancelled || _isDisposing)
+        if (order.IsCancelled || _isDisposing)
         {
             return ExitAction(order, OrderExecutionResultState.Unsuccessful);
         }
@@ -122,7 +122,7 @@ public class RequestProcessor : IRequestProcessor
 
             if (IsCancelled || order.IsCancelled)
             {
-                _appLogger?.LogInformation($"{_orderLoggerId}{requestSpec.Name} was cancelled");
+                _appLogger.LogInformation($"{_orderLoggerId}{requestSpec.Name} was cancelled");
                 return ExitAction(order, OrderExecutionResultState.Unsuccessful);
             }
 
@@ -146,15 +146,15 @@ public class RequestProcessor : IRequestProcessor
 
             if (IsCancelled || order.IsCancelled)
             {
-                _appLogger?.LogInformation($"{_orderLoggerId} was cancelled");
+                _appLogger.LogInformation($"{_orderLoggerId} was cancelled");
                 return ExitAction(order, OrderExecutionResultState.Unsuccessful);
             }
 
-            _appLogger?.LogInformation($"{_orderLoggerId}exit {requestSpec.Name} with code {result}");
+            _appLogger.LogInformation($"{_orderLoggerId}exit {requestSpec.Name} with code {result}");
             return ExitAction(order, result);
         }
 
-        _appLogger?.LogInformation($"{_orderLoggerId} finished successful");
+        _appLogger.LogInformation($"{_orderLoggerId} finished successful");
 
         // If all requests were successful, the complete order was successful
         if (order.RequestSpecs.All(x => x.WasSuccessful))
@@ -179,32 +179,28 @@ public class RequestProcessor : IRequestProcessor
     /// <returns>Current state of the order</returns>
     private IOrderExecutionResultState ExitAction(IOrder order, IOrderExecutionResultState currentState)
     {
-        if (order != null)
+        // Safety check
+        if (!order.WasSuccessful && currentState.Id == OrderExecutionResultState.Successful.Id)
         {
-            // Safety check
-            if (!order.WasSuccessful && currentState.Id == OrderExecutionResultState.Successful.Id)
-            {
-                order.WasSuccessful = true;
-            }
+            order.WasSuccessful = true;
+        }
 
-            lock (_isExitActionFiredLock)
+        lock (_isExitActionFiredLock)
+        {
+            if (_isExitActionFired)
             {
-                if (_isExitActionFired)
-                {
-                    return order.ExecutionResult;
-                }
-                _isExitActionFired = true;
+                return order.ExecutionResult;
             }
+            _isExitActionFired = true;
         }
 
         CurrentRequestStepProcessor?.Cancel();
 
         // If the order has been finished already or is disposable: do not change order state again
-        if (order == null ||
-            order.IsFinished ||
+        if (order.IsFinished ||
             order.IsDisposable)
         {
-            currentState = order?.ExecutionResult ?? currentState;
+            currentState = order.ExecutionResult;
         }
         else
         {
@@ -215,9 +211,9 @@ public class RequestProcessor : IRequestProcessor
         }
 
         // Deactivate informing device order processor for safety reasons. OrderProcessingFinished should not be called more than one times
-        CurrentRequestStepProcessor = null;
-        Order = null;
-        OrderProcessingFinishedDelegate = null;
+        //CurrentRequestStepProcessor = null;
+        //Order = null;
+        //OrderProcessingFinishedDelegate = null;
         return currentState;
     }
 
@@ -228,10 +224,12 @@ public class RequestProcessor : IRequestProcessor
     /// <returns>Execution result</returns>
     public IOrderExecutionResultState ExecuteRequest(INoHandshakeNoAnswerDeviceRequestSpec requestSpec)
     {
+        ArgumentNullException.ThrowIfNull(_device.CommunicationAdapter);
+
         // Fetch the order here to avoid multithread issues
         var order = Order;
 
-        if (order == null || IsCancelled || order.IsCancelled)
+        if (IsCancelled || order.IsCancelled)
         {
             return SetUnsuccessful(order);
         }
@@ -289,10 +287,12 @@ public class RequestProcessor : IRequestProcessor
     /// <returns>Execution result</returns>
     public IOrderExecutionResultState ExecuteRequest(INoAnswerDeviceRequestSpec requestSpec)
     {
+        ArgumentNullException.ThrowIfNull(_device.CommunicationAdapter);
+
         // Fetch the order here to avoid multithread issues
         var order = Order;
 
-        if (order == null || IsCancelled || order.IsCancelled)
+        if (IsCancelled || order.IsCancelled)
         {
             return SetUnsuccessful(order);
         }
@@ -349,10 +349,12 @@ public class RequestProcessor : IRequestProcessor
     /// <returns>Execution result</returns>
     public IOrderExecutionResultState ExecuteRequest(IDeviceRequestSpec requestSpec)
     {
+        ArgumentNullException.ThrowIfNull(_device.CommunicationAdapter);
+
         // Fetch the order here to avoid multithread issues
         var order = Order;
 
-        if (order == null || IsCancelled || order.IsCancelled)
+        if (IsCancelled || order.IsCancelled)
         {
             return SetUnsuccessful(order);
         }
@@ -362,7 +364,7 @@ public class RequestProcessor : IRequestProcessor
         requestSpec.CancelRunningOperationDelegate = _device.CommunicationAdapter.CancelRunningOperation;
         requestSpec.AppLogger = _appLogger;
         requestSpec.OrderLoggerId = $"{_orderLoggerId}RSP: {requestSpec.Name} ";
-        
+
         var processor = _requestStepProcessorFactory.CreateDeviceProcessor(requestSpec);
         requestSpec.RequestStepProcessorSetResultDelegate = processor.SetResult;
         requestSpec.RequestStepProcessorIsCancelledDelegate = processor.CheckIsCancelled;
@@ -409,10 +411,12 @@ public class RequestProcessor : IRequestProcessor
     /// <returns>Execution result</returns>
     public IOrderExecutionResultState ExecuteRequest(IInternalRequestSpec requestSpec)
     {
+        ArgumentNullException.ThrowIfNull(_device.CommunicationAdapter);
+
         // Fetch the order here to avoid multithread issues
         var order = Order;
 
-        if (order == null || IsCancelled || order.IsCancelled)
+        if (IsCancelled || order.IsCancelled)
         {
             return SetUnsuccessful(order);
         }
@@ -489,9 +493,9 @@ public class RequestProcessor : IRequestProcessor
         // Fetch the order here to avoid multithread issues
         var order = Order;
 
-        _device.DataMessagingConfig.AppLogger.LogDebug($"{_orderLoggerId}receiving message {receivedMessage.ToShortInfoString()} with order ID {order?.Id ?? 0}!");
+        _device.DataMessagingConfig.AppLogger.LogDebug($"{_orderLoggerId}receiving message {receivedMessage.ToShortInfoString()} with order ID {order.Id}!");
 
-        if (order == null || _isDisposing || IsCancelled)
+        if (_isDisposing || IsCancelled)
         {
             //Order.ExecutionResult = OrderExecutionResultState.Unsuccessful;
             return false;
@@ -587,10 +591,10 @@ public class RequestProcessor : IRequestProcessor
         // Keep order instance for the runtime of this method
         var order = Order;
 
-        if (order == null)
-        {
-            return;
-        }
+        //if (order == null)
+        //{
+        //    return;
+        //}
 
         IsCancelled = true;
         order.IsCancelled = true;
@@ -614,12 +618,12 @@ public class RequestProcessor : IRequestProcessor
     /// <summary>
     /// A delegate to implement a call back to say the <see cref="IOrderProcessor"/> that order is processed
     /// </summary>
-    public OrderProcessingFinishedDelegate OrderProcessingFinishedDelegate { get; set; }
+    public OrderProcessingFinishedDelegate? OrderProcessingFinishedDelegate { get; set; }
 
     /// <summary>
     /// The task the <see cref="IRequestProcessor.ExecuteOrder"/> command is running in
     /// </summary>
-    public Task CurrentTask { get; set; }
+    public Task? CurrentTask { get; set; }
 
     /// <summary>
     /// Used to cancel <see cref="IRequestProcessor.CurrentTask"/> if required
@@ -651,7 +655,6 @@ public class RequestProcessor : IRequestProcessor
 
             requestSpec.Dispose();
         }
-        Order = null;
         OrderProcessingFinishedDelegate = null;
     }
 }

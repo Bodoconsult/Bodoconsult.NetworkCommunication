@@ -17,7 +17,7 @@ public abstract class BaseOrderBuilder : IOrderBuilder
     /// </summary>
     /// <param name="parameterSetType">The type of parameter set the order requires</param>
     /// <param name="orderTypeName">Order type name</param>
-    protected BaseOrderBuilder(Type parameterSetType, string orderTypeName)
+    protected BaseOrderBuilder(Type? parameterSetType, string orderTypeName)
     {
         ParameterSetType = parameterSetType;
         OrderTypeName = orderTypeName;
@@ -26,7 +26,7 @@ public abstract class BaseOrderBuilder : IOrderBuilder
     /// <summary>
     /// The type of parameter set the order requires
     /// </summary>
-    public Type ParameterSetType { get; }
+    public Type? ParameterSetType { get; }
 
     /// <summary>
     /// Order type name
@@ -71,6 +71,11 @@ public abstract class BaseOrderBuilder : IOrderBuilder
     /// <returns><see cref="DeviceRequestSpec"/> instance </returns>
     public IDeviceRequestSpec CreateDeviceRequestSpec(IOrder order, string name)
     {
+        if (order.ParameterSet == null)
+        {
+            throw new ArgumentNullException(nameof(order.ParameterSet));
+        }
+
         var rs = new DeviceRequestSpec(name, order.ParameterSet);
         order.RequestSpecs.Add(rs);
         return rs;
@@ -83,8 +88,13 @@ public abstract class BaseOrderBuilder : IOrderBuilder
     /// <param name="name">Name of the request spec</param>
     /// <param name="handleRequestAnswerOnSuccessDelegate">Delegate fired if the order was eceuted successfully</param>
     /// <returns><see cref="DeviceRequestSpec"/> instance </returns>
-    public INoAnswerDeviceRequestSpec CreateNoAnswerDeviceRequestSpec(IOrder order, string name, HandleRequestAnswerDelegate handleRequestAnswerOnSuccessDelegate)
+    public INoAnswerDeviceRequestSpec CreateNoAnswerDeviceRequestSpec(IOrder order, string name, HandleRequestAnswerDelegate? handleRequestAnswerOnSuccessDelegate)
     {
+        if (order.ParameterSet == null)
+        {
+            throw new ArgumentNullException(nameof(order.ParameterSet));
+        }
+
         var rs = new NoAnswerDeviceRequestSpec(name, order.ParameterSet);
         rs.HandleRequestAnswerOnSuccessDelegate = handleRequestAnswerOnSuccessDelegate;
         order.RequestSpecs.Add(rs);
@@ -99,8 +109,13 @@ public abstract class BaseOrderBuilder : IOrderBuilder
     /// <param name="name">Name of the request spec</param>
     /// <param name="handleRequestAnswerOnSuccessDelegate">Delegate fired if the order was eceuted successfully</param>
     /// <returns><see cref="DeviceRequestSpec"/> instance </returns>
-    public INoHandshakeNoAnswerDeviceRequestSpec CreateNoHandshakeNoAnswerDeviceRequestSpec(IOrder order, string name, HandleRequestAnswerDelegate handleRequestAnswerOnSuccessDelegate)
+    public INoHandshakeNoAnswerDeviceRequestSpec CreateNoHandshakeNoAnswerDeviceRequestSpec(IOrder order, string name, HandleRequestAnswerDelegate? handleRequestAnswerOnSuccessDelegate)
     {
+        if (order.ParameterSet == null)
+        {
+            throw new ArgumentNullException(nameof(order.ParameterSet));
+        }
+
         var rs = new NoHandshakeNoAnswerDeviceRequestSpec(name, order.ParameterSet);
         rs.HandleRequestAnswerOnSuccessDelegate = handleRequestAnswerOnSuccessDelegate;
         order.RequestSpecs.Add(rs);
@@ -115,6 +130,11 @@ public abstract class BaseOrderBuilder : IOrderBuilder
     /// <returns><see cref="InternalRequestSpec"/> instance </returns>
     public IInternalRequestSpec CreateInternalRequestSpec(IOrder order, string name)
     {
+        if (order.ParameterSet == null)
+        {
+            throw new ArgumentNullException(nameof(order.ParameterSet));
+        }
+
         var rs = new InternalRequestSpec(name, order.ParameterSet);
         order.RequestSpecs.Add(rs);
         return rs;
@@ -157,7 +177,7 @@ public abstract class BaseOrderBuilder : IOrderBuilder
     /// <param name="hasDatablock">Has datablock?</param>
     /// <param name="dataBlockType">Type of the datablock or null</param>
     /// <returns>Request answer</returns>
-    public IRequestAnswer CreateRequestAnswer(IRequestAnswerStep requestAnswerStep, string name, CheckReceivedMessageDelegate checkReceivedMessageDelegate, HandleRequestAnswerDelegate handleRequestAnswerOnSuccessDelegate, bool hasDatablock = false, Type dataBlockType = null)
+    public IRequestAnswer CreateRequestAnswer(IRequestAnswerStep requestAnswerStep, string name, CheckReceivedMessageDelegate checkReceivedMessageDelegate, HandleRequestAnswerDelegate? handleRequestAnswerOnSuccessDelegate, bool hasDatablock = false, Type? dataBlockType = null)
     {
         var ra = new RequestAnswer(hasDatablock, dataBlockType, name, checkReceivedMessageDelegate);
         ra.HandleRequestAnswerOnSuccessDelegate = handleRequestAnswerOnSuccessDelegate;

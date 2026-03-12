@@ -15,7 +15,7 @@ public class NoAnswerDeviceRequestStepProcessor : INoAnswerDeviceRequestStepProc
 
     private bool _isCancelled;
     private readonly Lock _isCancelledLockObject = new();
-    private CancellationTokenSource _tcs;
+    private CancellationTokenSource? _tcs;
 
     /// <summary>
     /// Default ctor
@@ -106,8 +106,7 @@ public class NoAnswerDeviceRequestStepProcessor : INoAnswerDeviceRequestStepProc
             // Fetch the request spec here to avoid multithread issues
             var requestSpec = NoAnswerDeviceRequestSpec;
 
-
-            if (requestSpec == null || IsCancelled)
+            if (IsCancelled)
             {
                 return OrderExecutionResultState.Unsuccessful;
             }
@@ -143,7 +142,7 @@ public class NoAnswerDeviceRequestStepProcessor : INoAnswerDeviceRequestStepProc
                     repeatCount++;
                     result = ExecuteRequest(message, requestSpec);
 
-                    RequestSpec.AppLogger.LogDebug($"{RequestSpec.OrderLoggerId}ExecuteRequest: {result} at {repeatCount} try");
+                    RequestSpec.AppLogger?.LogDebug($"{RequestSpec.OrderLoggerId}ExecuteRequest: {result} at {repeatCount} try");
 
                     if (result.Id == OrderExecutionResultState.Successful.Id ||
                         repeatCount >= requestSpec.NumberOfRepeatsInCaseOfNoSuccess)
@@ -165,7 +164,7 @@ public class NoAnswerDeviceRequestStepProcessor : INoAnswerDeviceRequestStepProc
 
                 if (sendCancel)
                 {
-                    RequestSpec.CancelRunningOperationDelegate.Invoke();
+                    RequestSpec.CancelRunningOperationDelegate?.Invoke();
                 }
 
                 return result;
@@ -182,7 +181,7 @@ public class NoAnswerDeviceRequestStepProcessor : INoAnswerDeviceRequestStepProc
         }
         catch (Exception e)
         {
-            RequestSpec.AppLogger.LogError($"{RequestSpec.OrderLoggerId}execution of requeststep failed", e);
+            RequestSpec.AppLogger?.LogError($"{RequestSpec.OrderLoggerId}execution of requeststep failed", e);
             return OrderExecutionResultState.Unsuccessful;
         }
     }
@@ -200,7 +199,7 @@ public class NoAnswerDeviceRequestStepProcessor : INoAnswerDeviceRequestStepProc
 
         var s = $"{requestSpec.OrderLoggerId}ExecuteRequest: prepare start";
         Debug.Print($"{s}");
-        requestSpec.AppLogger.LogDebug(s);
+        requestSpec.AppLogger?.LogDebug(s);
 
         // ******************
         // Start step 2: start the message receiver process on order execution side and wait for incoming messages
@@ -228,12 +227,11 @@ public class NoAnswerDeviceRequestStepProcessor : INoAnswerDeviceRequestStepProc
         // ******************
     }
 
-    private static IOrderExecutionResultState RunStep1(IOutboundDataMessage message, INoAnswerDeviceRequestSpec requestSpec,
-        CancellationTokenSource tcs)
+    private static IOrderExecutionResultState RunStep1(IOutboundDataMessage message, INoAnswerDeviceRequestSpec requestSpec, CancellationTokenSource tcs)
     {
         string s;
-        var result = requestSpec.SendDataMessageDelegate.Invoke(message);
-        requestSpec.AppLogger.LogInformation($"{requestSpec.OrderLoggerId}message sent {requestSpec.CurrentSentMessage.ToShortInfoString()} with result {result.ProcessExecutionResult}");
+        var result = requestSpec.SendDataMessageDelegate?.Invoke(message) ?? MessageSendingResultHelper.Error();
+        requestSpec.AppLogger?.LogInformation($"{requestSpec.OrderLoggerId}message sent {requestSpec.CurrentSentMessage?.ToShortInfoString()} with result {result.ProcessExecutionResult}");
 
         // Handle result from sending
         var execResult = result.ProcessExecutionResult;
@@ -244,7 +242,7 @@ public class NoAnswerDeviceRequestStepProcessor : INoAnswerDeviceRequestStepProc
             s = $"{requestSpec.OrderLoggerId}sending message ended with unexpected handshake {execResult} {result.Message}"
                 .TrimEnd();
             Debug.Print(s);
-            requestSpec.AppLogger.LogDebug(s);
+            requestSpec.AppLogger?.LogDebug(s);
 
             //CancelTask(task);
             tcs.Dispose();
@@ -254,7 +252,7 @@ public class NoAnswerDeviceRequestStepProcessor : INoAnswerDeviceRequestStepProc
         // The requested handshake was received
         s = $"{requestSpec.OrderLoggerId}sent message {message.ToInfoString()} and received correct handshake";
         Debug.Print(s);
-        requestSpec.AppLogger.LogDebug(s);
+        requestSpec.AppLogger?.LogDebug(s);
 
         return result.ProcessExecutionResult;
     }
@@ -273,72 +271,6 @@ public class NoAnswerDeviceRequestStepProcessor : INoAnswerDeviceRequestStepProc
         return timeout;
     }
 
-    private static IOrderExecutionResultState HandleNack(INoAnswerDeviceRequestSpec requestSpec, IOutboundDataMessage message, IOrderExecutionResultState execResult)
-    {
-        string s;
-        if (execResult.Id != OrderExecutionResultState.Successful.Id)
-        {
-            s = $"{requestSpec.OrderLoggerId}sending: NACK / CAN handled as success for command {message.ToInfoString()}";
-            Debug.Print(s);
-            requestSpec.AppLogger.LogDebug(s);
-        }
-
-        // Check if the first answer has a delegate to run on success
-        var order = requestSpec.ParameterSet.CurrentOrder;
-
-        if (order == null)
-        {
-            return OrderExecutionResultState.Unsuccessful;
-        }
-
-        if (order.IsCancelled)
-        {
-            return order.ExecutionResult;
-        }
-
-        var run = requestSpec.HandleRequestAnswerOnSuccessDelegate;
-
-        if (run == null)
-        {
-            execResult = OrderExecutionResultState.Successful;
-        }
-        else
-        {
-            var r = run.Invoke(null, null, requestSpec.ParameterSet);
-
-            execResult = r.ExecutionResult;
-        }
-
-        s = $"{requestSpec.OrderLoggerId}sending: NACK / CAN handled as success for command {message.ToInfoString()}";
-        Debug.Print(s);
-
-        return execResult;
-    }
-
-    public void ProcessChain()
-    {
-        // Do nothing
-    }
-
-    private static void StepHasChanged(IRequestAnswerStep step, IRequestSpec requestSpec)
-    {
-        //// Call action before executing if necessary
-        //step.BeforeExecuteActionDelegate?.Invoke(requestSpec.TransportObject,
-        //    requestSpec.ParameterSet);
-
-        //// If no state notication has to be sent before running the step leave here
-        //if (step.StateToNotifyBeforeRunning == DefaultDeviceStates.DeviceStateOffline)
-        //{
-        //    return;
-        //}
-
-        //// If an app notification is required before running the current step
-        //var s = $"{requestSpec.OrderLoggerId}RequestAnswerStep {step}: send state {step.StateToNotifyBeforeRunning} to app before sending message";
-        //requestSpec.AppLogger.LogDebug(s);
-        //// ToDo: needed??
-        ////requestSpec.DoNotifyDelegate?.Invoke(step.StateToNotifyBeforeRunning);
-    }
-
     /// <summary>
     /// Cancel the current request step processor
     /// </summary>
@@ -351,7 +283,6 @@ public class NoAnswerDeviceRequestStepProcessor : INoAnswerDeviceRequestStepProc
         {
             _tcs?.Cancel(true);
         }
-
     }
 
     /// <summary>
@@ -359,7 +290,6 @@ public class NoAnswerDeviceRequestStepProcessor : INoAnswerDeviceRequestStepProc
     /// </summary>
     public void Dispose()
     {
-        RequestSpec = null;
-        NoAnswerDeviceRequestSpec = null;
+        // Do nothing
     }
 }

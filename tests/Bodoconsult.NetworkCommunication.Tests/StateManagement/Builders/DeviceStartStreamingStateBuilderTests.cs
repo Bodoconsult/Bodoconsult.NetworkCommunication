@@ -1,6 +1,5 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
-using Bodoconsult.NetworkCommunication.Delegates;
 using Bodoconsult.NetworkCommunication.Helpers;
 using Bodoconsult.NetworkCommunication.StateManagement.Builders;
 using Bodoconsult.NetworkCommunication.StateManagement.Configurations;
@@ -35,7 +34,7 @@ internal class DeviceStartStreamingStateBuilderTests
         // Arrange 
         var builder = new DeviceStartStreamingStateBuilder();
 
-        var config = new OrderlessActionStateConfiguration(DefaultStateNames.DeviceOnlineState);
+        var config = new OrderlessActionStateConfiguration(DefaultStateNames.DeviceOnlineState, builder);
 
         // Act and assert
         Assert.Throws<ArgumentException>(() =>
@@ -52,7 +51,7 @@ internal class DeviceStartStreamingStateBuilderTests
 
         var builder = new DeviceStartStreamingStateBuilder();
 
-        var config = new JobStateConfiguration(DefaultStateNames.DeviceStartStreamingState)
+        var config = new JobStateConfiguration(DefaultStateNames.DeviceStartStreamingState, builder)    
         {
             CurrentContext = device,
             HandleAsyncMessageDelegate = DelegateHelper.HandleAsyncMessageDelegate,

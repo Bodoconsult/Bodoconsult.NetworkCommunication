@@ -10,5 +10,5 @@ public class ExceptionNotification : BaseClientNotification
     /// <summary>
     /// Exception to report
     /// </summary>
-    public Exception Exception { get; set; }
+    public Exception? Exception { get; set; }
 }

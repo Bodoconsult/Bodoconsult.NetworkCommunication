@@ -12,7 +12,7 @@ public interface ICommunicationAdapter: IDisposable
     /// <summary>
     /// Device configuration for data messaging
     /// </summary>
-    IIpDataMessagingConfig DataMessagingConfig { get; }
+    IIpDataMessagingConfig? DataMessagingConfig { get; }
 
     /// <summary>
     /// This property returns whether the communication object is valid and can be used
@@ -27,7 +27,7 @@ public interface ICommunicationAdapter: IDisposable
     /// <summary>
     /// Set or get the current order processing state delegate
     /// </summary>
-    SetOrderProcessingStateDelegate SetOrderProcessingStateDelegate { get; set; }
+    SetOrderProcessingStateDelegate? SetOrderProcessingStateDelegate { get; set; }
 
     /// <summary>
     /// Is the device successfully pinged?

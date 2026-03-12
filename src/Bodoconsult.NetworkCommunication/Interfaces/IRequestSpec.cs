@@ -13,17 +13,17 @@ public interface IRequestSpec: IDisposable
     /// <summary>
     /// Delegate to set the state for a <see cref="IRequestStepProcessor"/> instance
     /// </summary>
-    RequestStepProcessorSetResultDelegate RequestStepProcessorSetResultDelegate { get; set; }
+    RequestStepProcessorSetResultDelegate? RequestStepProcessorSetResultDelegate { get; set; }
 
     /// <summary>
     /// Is the <see cref="IRequestStepProcessor"/> instance cancelled?
     /// </summary>
-    RequestStepProcessorIsCancelledDelegate RequestStepProcessorIsCancelledDelegate { get; set; }
+    RequestStepProcessorIsCancelledDelegate? RequestStepProcessorIsCancelledDelegate { get; set; }
 
     /// <summary>
     /// Current app logger
     /// </summary>
-    IAppLoggerProxy AppLogger { get; set; }
+    IAppLoggerProxy? AppLogger { get; set; }
 
     ///// <summary>
     ///// Send an app notfication
@@ -33,7 +33,7 @@ public interface IRequestSpec: IDisposable
     /// <summary>
     /// Delegate to cancel running operation on comm adapter level
     /// </summary>
-    CancelRunningOperationDelegate CancelRunningOperationDelegate { get; set; }
+    CancelRunningOperationDelegate? CancelRunningOperationDelegate { get; set; }
 
     /// <summary>
     /// Clear text name of the request
@@ -43,7 +43,7 @@ public interface IRequestSpec: IDisposable
     /// <summary>
     /// Current parameter set to use for the request
     /// </summary>
-    IParameterSet ParameterSet { get; }
+    IParameterSet? ParameterSet { get; }
 
     /// <summary>
     /// Total calculated timeout for the answer(s) of a request in milliseconds
@@ -58,12 +58,12 @@ public interface IRequestSpec: IDisposable
     /// <summary>
     /// An object to transferred from a predecessing request spec to the current one
     /// </summary>
-    object TransportObject { get; set; }
+    object? TransportObject { get; set; }
 
     /// <summary>
     /// A resulting object to transferred from this request spec to the next
     /// </summary>
-    object ResultTransportObject { get; set; }
+    object? ResultTransportObject { get; set; }
 
     /// <summary>
     /// Requires transport object from predecessing request injected via <see cref="SetTransportObject"/>
@@ -85,7 +85,7 @@ public interface IRequestSpec: IDisposable
     /// Set  the <see cref="TransportObject"/> with an object from predecessing request
     /// </summary>
     /// <param name="transportObject">Object from predecessing request</param>
-    void SetTransportObject(object transportObject);
+    void SetTransportObject(object? transportObject);
 
     /// <summary>
     /// Calculate the total timeout and store it in <see cref="Timeout"/>
@@ -97,7 +97,7 @@ public interface IRequestSpec: IDisposable
     /// <summary>
     /// A delegate for testing order executing. Not intended for production use
     /// </summary>
-    public RequestAnswerStepIsStartedDelegate RequestAnswerStepIsStartedDelegate { get; set; }
+    public RequestAnswerStepIsStartedDelegate? RequestAnswerStepIsStartedDelegate { get; set; }
 
     /// <summary>
     /// Order logger ID

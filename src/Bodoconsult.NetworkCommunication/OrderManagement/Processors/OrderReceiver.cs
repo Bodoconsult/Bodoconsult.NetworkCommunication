@@ -39,14 +39,14 @@ public class OrderReceiver : IOrderReceiver
             return;
         }
 
-        var result = OrderReceiverCheckMessageDelegate.Invoke(message);
+        var result = OrderReceiverCheckMessageDelegate?.Invoke(message) ?? false;
         _appLogger?.LogInformation($"Received message was processed {(result ? "successfully" : "unsucessfully")}: {message.ToShortInfoString()}");
     }
 
     /// <summary>
     /// Delegate for handling a received device message
     /// </summary>
-    public OrderReceiverCheckMessageDelegate OrderReceiverCheckMessageDelegate { get; set; }
+    public OrderReceiverCheckMessageDelegate? OrderReceiverCheckMessageDelegate { get; set; }
 
     /// <summary>
     /// Is the received message processing activated?

@@ -12,12 +12,12 @@ namespace Bodoconsult.NetworkCommunication.Communication.Sending;
 /// </summary>
 public abstract class BaseSendPacketProcess : ISendPacketProcess, IAsyncDisposable
 {
-    public IDuplexIo DuplexIo;
-    protected TaskCompletionSource<bool> TaskCompletionSource;
-    private CancellationTokenSource _ctsMain;
+    public IDuplexIo? DuplexIo;
+    protected TaskCompletionSource<bool>? TaskCompletionSource;
+    private CancellationTokenSource? _ctsMain;
 
-    private readonly object _resultLock = new();
-    private IOrderExecutionResultState _processExecutionResult;
+    private readonly Lock _resultLock = new();
+    private IOrderExecutionResultState _processExecutionResult = OrderExecutionResultState.Unsuccessful;
 
     /// <summary>
     /// Timeout for waiting for an ackknowledgement
@@ -63,7 +63,7 @@ public abstract class BaseSendPacketProcess : ISendPacketProcess, IAsyncDisposab
     /// <summary>
     /// Current SMD device
     /// </summary>
-    public IDataMessagingConfig DataMessagingConfig { get; set; }
+    public IDataMessagingConfig? DataMessagingConfig { get; set; }
 
     /// <summary>
     /// Maximum number of send attemps
@@ -78,7 +78,7 @@ public abstract class BaseSendPacketProcess : ISendPacketProcess, IAsyncDisposab
         get
         {
             var result = false;
-            if (DataMessagingConfig.CheckIfCommunicationIsOnlineDelegate != null)
+            if (DataMessagingConfig?.CheckIfCommunicationIsOnlineDelegate != null)
             {
                 result = DataMessagingConfig.CheckIfCommunicationIsOnlineDelegate.Invoke();
             }
@@ -186,13 +186,18 @@ public abstract class BaseSendPacketProcess : ISendPacketProcess, IAsyncDisposab
     /// <summary>
     /// Current device data message to send
     /// </summary>
-    public IOutboundDataMessage Message { get; set; }
+    public IOutboundDataMessage? Message { get; set; }
 
     /// <summary>
     /// Send the message
     /// </summary>
     public bool SendMessage()
     {
+        if (Message == null || DuplexIo==null)
+        {
+            return false;
+        }
+
         if (IsSocketConnected)
         {
             var task = DuplexIo.SendMessageInternal(Message);
@@ -200,10 +205,10 @@ public abstract class BaseSendPacketProcess : ISendPacketProcess, IAsyncDisposab
 
             var result = task.Result;
 
-            if (result == null)
-            {
-                return false;
-            }
+            //if (result == null)
+            //{
+            //    return false;
+            //}
 
             Debug.Print($"BSPP:   send result {result.ProcessExecutionResult} {DateTime.Now:O}");
 
@@ -214,7 +219,11 @@ public abstract class BaseSendPacketProcess : ISendPacketProcess, IAsyncDisposab
         }
         else
         {
-            DataMessagingConfig.MonitorLogger?.LogError($"{DataMessagingConfig.LoggerId}socket is not open");
+            if (DataMessagingConfig == null)
+            {
+                return false;
+            }
+            DataMessagingConfig.MonitorLogger.LogError($"{DataMessagingConfig.LoggerId}socket is not open");
             DataMessagingConfig.RaiseComDevCloseRequestDelegate?.Invoke("SendPacketProcess - Send message - socket closed");
         }
 
@@ -230,7 +239,7 @@ public abstract class BaseSendPacketProcess : ISendPacketProcess, IAsyncDisposab
     /// Is the socket connected?
     /// </summary>
     /// <returns>True if the socket is connected else false</returns>
-    public bool IsSocketConnected => DuplexIo.IsConnectionAlive;
+    public bool IsSocketConnected => DuplexIo?.IsConnectionAlive ?? false;
 
 
     /// <summary>
@@ -267,7 +276,7 @@ public abstract class BaseSendPacketProcess : ISendPacketProcess, IAsyncDisposab
     /// <typeparam name="T"></typeparam>
     /// <param name="taskCompletionSource"><see cref="TaskCompletionSource"/> to be handled by the consumer of the waiting task</param>
     /// <returns>Result of the waiting task</returns>
-    public static T CreateWaitingTask<T>(out TaskCompletionSource<T> taskCompletionSource)
+    public static T CreateWaitingTask<T>(out TaskCompletionSource<T>? taskCompletionSource)
     {
         // Now wait
         var result = new TaskCompletionSource<T>(TaskCreationOptions.RunContinuationsAsynchronously);
@@ -304,7 +313,7 @@ public abstract class BaseSendPacketProcess : ISendPacketProcess, IAsyncDisposab
             }
             catch (Exception e)
             {
-                DataMessagingConfig.AppLogger.LogError($"{DataMessagingConfig.LoggerId}execution failed", e);
+                DataMessagingConfig?.AppLogger.LogError($"{DataMessagingConfig.LoggerId}execution failed", e);
                 throw;
             }
         });
@@ -403,6 +412,9 @@ public abstract class BaseSendPacketProcess : ISendPacketProcess, IAsyncDisposab
 
     public async ValueTask DisposeAsync()
     {
-        if (DuplexIo != null) await DuplexIo.DisposeAsync();
+        if (DuplexIo != null)
+        {
+            await DuplexIo.DisposeAsync();
+        }
     }
 }

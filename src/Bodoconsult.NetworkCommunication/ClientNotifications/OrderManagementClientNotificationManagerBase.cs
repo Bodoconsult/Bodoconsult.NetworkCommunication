@@ -16,7 +16,7 @@ public abstract class OrderManagementClientNotificationManagerBase : IOrderManag
     /// <summary>
     /// Delegate for sending a notification to the client
     /// </summary>
-    public TransferToClientDelegate NotifyClient { get; set; }
+    public TransferToClientDelegate? NotifyClient { get; set; }
 
     #endregion
 

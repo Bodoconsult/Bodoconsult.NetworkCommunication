@@ -52,12 +52,12 @@ public class FakeHandshakeDuplexIo : IDuplexIo
     /// <summary>
     /// The receiver part used of the duplex (bidirectional) comm channels
     /// </summary>
-    public IDuplexIoReceiver Receiver { get; set; }
+    public IDuplexIoReceiver? Receiver { get; set; }
 
     /// <summary>
     /// The sender part used of the duplex (bidirectional) comm channels
     /// </summary>
-    public IDuplexIoSender Sender { get; set; }
+    public IDuplexIoSender? Sender { get; set; }
 
     /// <summary>
     /// Current data messaging config
@@ -89,7 +89,7 @@ public class FakeHandshakeDuplexIo : IDuplexIo
                 {
                     Task.Delay(ReceiverDelay).Wait();
                 }
-                DataMessagingConfig.DataMessageProcessingPackage.WaitStateManager?.OnHandshakeReceived(HandShakeDataMessage);
+                DataMessagingConfig.DataMessageProcessingPackage?.WaitStateManager.OnHandshakeReceived(HandShakeDataMessage);
             });
         }
         var result = new MessageSendingResult(message, OrderExecutionResultState.Successful);
@@ -111,7 +111,7 @@ public class FakeHandshakeDuplexIo : IDuplexIo
                 {
                     Task.Delay(ReceiverDelay).Wait();
                 }
-                DataMessagingConfig.DataMessageProcessingPackage.WaitStateManager?.OnHandshakeReceived(HandShakeDataMessage);
+                DataMessagingConfig.DataMessageProcessingPackage?.WaitStateManager.OnHandshakeReceived(HandShakeDataMessage);
             });
         }
         var result = new MessageSendingResult(message, OrderExecutionResultState.Successful);

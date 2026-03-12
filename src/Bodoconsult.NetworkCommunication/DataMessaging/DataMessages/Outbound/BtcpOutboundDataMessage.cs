@@ -52,7 +52,7 @@ public class BtcpOutboundDataMessage: IOutboundBusinessTransactionDataMessage
     /// <summary>
     /// Current raw message data as clear text
     /// </summary>
-    public string RawMessageDataClearText { get; set; }
+    public string? RawMessageDataClearText { get; set; }
 
     /// <summary>
     /// Create an info string for logging
@@ -71,7 +71,7 @@ public class BtcpOutboundDataMessage: IOutboundBusinessTransactionDataMessage
     /// <summary>
     /// Data block stored in the message
     /// </summary>
-    public ITypedOutboundDataBlock DataBlock { get; set; }
+    public ITypedOutboundDataBlock? DataBlock { get; set; }
 
     /// <summary>
     /// ID of the business transaction

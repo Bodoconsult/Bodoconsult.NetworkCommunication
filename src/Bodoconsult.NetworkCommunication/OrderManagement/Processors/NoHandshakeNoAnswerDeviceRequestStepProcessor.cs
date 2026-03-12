@@ -106,7 +106,7 @@ public class NoHandshakeNoAnswerDeviceRequestStepProcessor : INoHandshakeNoAnswe
             var requestSpec = NoHandshakeNoAnswerDeviceRequestSpec;
 
 
-            if (requestSpec == null || IsCancelled)
+            if ( IsCancelled)
             {
                 return OrderExecutionResultState.Unsuccessful;
             }
@@ -142,7 +142,7 @@ public class NoHandshakeNoAnswerDeviceRequestStepProcessor : INoHandshakeNoAnswe
                     repeatCount++;
                     result = ExecuteRequest(message, requestSpec);
 
-                    RequestSpec.AppLogger.LogDebug($"{RequestSpec.OrderLoggerId}ExecuteRequest: {result} at {repeatCount} try");
+                    RequestSpec.AppLogger?.LogDebug($"{RequestSpec.OrderLoggerId}ExecuteRequest: {result} at {repeatCount} try");
 
                     if (result.Id == OrderExecutionResultState.Successful.Id ||
                         repeatCount >= requestSpec.NumberOfRepeatsInCaseOfNoSuccess)
@@ -164,7 +164,7 @@ public class NoHandshakeNoAnswerDeviceRequestStepProcessor : INoHandshakeNoAnswe
 
                 if (sendCancel)
                 {
-                    RequestSpec.CancelRunningOperationDelegate.Invoke();
+                    RequestSpec.CancelRunningOperationDelegate?.Invoke();
                 }
 
                 return result;
@@ -181,7 +181,7 @@ public class NoHandshakeNoAnswerDeviceRequestStepProcessor : INoHandshakeNoAnswe
         }
         catch (Exception e)
         {
-            RequestSpec.AppLogger.LogError($"{RequestSpec.OrderLoggerId}execution of requeststep failed", e);
+            RequestSpec.AppLogger?.LogError($"{RequestSpec.OrderLoggerId}execution of requeststep failed", e);
             return OrderExecutionResultState.Unsuccessful;
         }
     }
@@ -199,7 +199,7 @@ public class NoHandshakeNoAnswerDeviceRequestStepProcessor : INoHandshakeNoAnswe
 
         var s = $"{requestSpec.OrderLoggerId}ExecuteRequest: prepare start";
         Debug.Print($"{s}");
-        requestSpec.AppLogger.LogDebug(s);
+        requestSpec.AppLogger?.LogDebug(s);
 
         return !IsCancelled ? RunStep1(message, requestSpec) : OrderExecutionResultState.Unsuccessful;
     }
@@ -208,8 +208,8 @@ public class NoHandshakeNoAnswerDeviceRequestStepProcessor : INoHandshakeNoAnswe
     {
         message.WaitForAcknowledgement = false;
 
-        var result = requestSpec.SendDataMessageDelegate.Invoke(message);
-        requestSpec.AppLogger.LogInformation($"{requestSpec.OrderLoggerId}message sent {requestSpec.CurrentSentMessage.ToShortInfoString()} with result {result.ProcessExecutionResult}");
+        var result = requestSpec.SendDataMessageDelegate?.Invoke(message) ?? MessageSendingResultHelper.Error("SendDataMessageDelegate is null");
+        requestSpec.AppLogger?.LogInformation($"{requestSpec.OrderLoggerId}message sent {requestSpec.CurrentSentMessage?.ToShortInfoString()} with result {result.ProcessExecutionResult}");
 
         var execResult = result.ProcessExecutionResult;
 
@@ -231,7 +231,7 @@ public class NoHandshakeNoAnswerDeviceRequestStepProcessor : INoHandshakeNoAnswe
         // The requested handshake was received
         var s = $"{requestSpec.OrderLoggerId}sent message {message.ToInfoString()} and received result {execResult}";
         Debug.Print(s);
-        requestSpec.AppLogger.LogDebug(s);
+        requestSpec.AppLogger?.LogDebug(s);
 
         return execResult;
     }
@@ -250,7 +250,7 @@ public class NoHandshakeNoAnswerDeviceRequestStepProcessor : INoHandshakeNoAnswe
     /// </summary>
     public void Dispose()
     {
-        RequestSpec = null;
-        NoHandshakeNoAnswerDeviceRequestSpec = null;
+        //RequestSpec = null;
+        //NoHandshakeNoAnswerDeviceRequestSpec = null;
     }
 }

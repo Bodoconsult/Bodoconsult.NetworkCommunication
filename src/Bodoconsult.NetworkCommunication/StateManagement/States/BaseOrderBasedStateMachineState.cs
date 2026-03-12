@@ -37,7 +37,7 @@ public abstract class BaseOrderBasedStateMachineState : BaseStateMachineState, I
     /// <summary>
     /// Delegate to create one or more orders sent to device needed for an order based state machine state
     /// </summary>
-    public PrepareOrdersForStateMachineStateDelegate PrepareOrdersForStateMachineStateDelegate { get; set; }
+    public PrepareOrdersForStateMachineStateDelegate? PrepareOrdersForStateMachineStateDelegate { get; set; }
 
     /// <summary>
     /// Orders to be handled by the current state
@@ -54,12 +54,14 @@ public abstract class BaseOrderBasedStateMachineState : BaseStateMachineState, I
             throw new ArgumentException("No orders loaded. Call InitiateState() before RunNextOrder()");
         }
 
+        ArgumentNullException.ThrowIfNull(CurrentContext.OrderManager);
+
         var order = Orders[CurrentOrderIndex];
 
-        if (order == null)
-        {
-            return;
-        }
+        //if (order == null)
+        //{
+        //    return;
+        //}
 
         // Update index before adding the order. Otherwise unit tests fail (due to faking out async behavior)
         CurrentOrderIndex++;
@@ -77,12 +79,12 @@ public abstract class BaseOrderBasedStateMachineState : BaseStateMachineState, I
     /// <summary>
     /// Delegate fired when an order was finished successfully to implement buisness logic for that event. This delegate method should set a new state to request (but not request it)
     /// </summary>
-    public OrderFinishedSucessfullyDelegate OrderFinishedSucessfullyDelegate { get; set; }
+    public OrderFinishedSucessfullyDelegate? OrderFinishedSucessfullyDelegate { get; set; }
 
     /// <summary>
     /// Delegate fired when an order was finished unsuccessfully to implement buisness logic for that event. This delegate method should set a new state to request (but not request it)
     /// </summary>
-    public OrderFinishedUnsucessfullyDelegate OrderFinishedUnsucessfullyDelegate { get; set; }
+    public OrderFinishedUnsucessfullyDelegate? OrderFinishedUnsucessfullyDelegate { get; set; }
 
     /// <summary>
     /// The order has been finished successfully
@@ -92,6 +94,11 @@ public abstract class BaseOrderBasedStateMachineState : BaseStateMachineState, I
     {
         // Find order
         var order = Orders.FirstOrDefault(x => x.Id == orderId);
+
+        if (order == null)
+        {
+            return;
+        }
 
         // Now call business logic
         OrderFinishedSucessfullyDelegate?.Invoke(this, order);
@@ -111,6 +118,11 @@ public abstract class BaseOrderBasedStateMachineState : BaseStateMachineState, I
 
         // Find order
         var order = Orders.FirstOrDefault(x => x.Id == orderId);
+
+        if (order == null)
+        {
+            return;
+        }
 
         // Now call business logic
         OrderFinishedUnsucessfullyDelegate?.Invoke(this, order);

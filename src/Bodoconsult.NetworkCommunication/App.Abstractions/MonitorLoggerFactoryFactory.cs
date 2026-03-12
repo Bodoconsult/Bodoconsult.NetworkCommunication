@@ -71,7 +71,7 @@ public class MonitorLoggerFactoryFactory : IMonitorLoggerFactoryFactory
         if (_loggerFactories.ContainsKey(fileName))
         {
             var success = _loggerFactories.TryGetValue(fileName, out var factory);
-            if (success)
+            if (success && factory != null)
             {
                 return factory;
             }

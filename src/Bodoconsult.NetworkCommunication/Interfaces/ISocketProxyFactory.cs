@@ -1,8 +1,8 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 // Licence MIT
 
-using Bodoconsult.NetworkCommunication.EnumAndStates;
 using System.Net;
+using Bodoconsult.NetworkCommunication.EnumAndStates;
 
 namespace Bodoconsult.NetworkCommunication.Interfaces;
 

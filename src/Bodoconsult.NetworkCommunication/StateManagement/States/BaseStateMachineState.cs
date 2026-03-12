@@ -1,8 +1,8 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
+using Bodoconsult.NetworkCommunication.Delegates;
 using Bodoconsult.NetworkCommunication.Interfaces;
 using Bodoconsult.NetworkCommunication.StateManagement.Interfaces;
-using Bodoconsult.NetworkCommunication.Delegates;
 
 namespace Bodoconsult.NetworkCommunication.StateManagement.States;
 
@@ -90,17 +90,17 @@ public abstract class BaseStateMachineState : IStateMachineState
     /// <summary>
     /// <see cref="IStateMachineState.CancellationTokenSource"/> instance to use for the current state or null if none is used
     /// </summary>
-    public CancellationTokenSource CancellationTokenSource { get; set; }
+    public CancellationTokenSource? CancellationTokenSource { get; set; }
 
     /// <summary>
     /// Delegate to cancel the state
     /// </summary>
-    public CancelStateDelegate CancelStateDelegate { get; set; }
+    public CancelStateDelegate? CancelStateDelegate { get; set; }
 
     /// <summary>
     /// The next state to be requested when this state has to be left or null if the state does not change
     /// </summary>
-    public IStateMachineState NextState { get; set; }
+    public IStateMachineState? NextState { get; set; }
 
     /// <summary>
     /// Set the inital states for this business state
@@ -147,7 +147,7 @@ public abstract class BaseStateMachineState : IStateMachineState
     /// <summary>
     /// Delegate to handle a ComDevClose event
     /// </summary>
-    public HandleComDevCloseDelegate HandleComDevCloseDelegate { get; set; }
+    public HandleComDevCloseDelegate? HandleComDevCloseDelegate { get; set; }
 
 
     /// <summary>
@@ -177,7 +177,7 @@ public abstract class BaseStateMachineState : IStateMachineState
     /// <summary>
     /// Handle an error message received from the device
     /// </summary>
-    public HandleErrorMessageDelegate HandleErrorMessageDelegate { get; set; }
+    public HandleErrorMessageDelegate? HandleErrorMessageDelegate { get; set; }
 
     /// <summary>
     /// Handle a received error message from the device. Default implementation calls <see cref="HandleErrorMessageDelegate "/> and then goes to state DefaultStateNames.DeviceOfflineState. Overwrite this method if other behaviour is required
@@ -218,14 +218,14 @@ public abstract class BaseStateMachineState : IStateMachineState
     /// <summary>
     /// Handle an async received message
     /// </summary>
-    public HandleAsyncMessageDelegate HandleAsyncMessageDelegate { get; set; }
+    public HandleAsyncMessageDelegate? HandleAsyncMessageDelegate { get; set; }
 
     /// <summary>
     /// Handle async sent message from device
     /// </summary>
     /// <param name="message">Received message</param>
     /// <returns>The result of the message handling</returns>
-    public virtual MessageHandlingResult HandleAsyncMessage(IInboundDataMessage message)
+    public virtual MessageHandlingResult HandleAsyncMessage(IInboundDataMessage? message)
     {
         return HandleAsyncMessageDelegate == null ? 
             MessageHandlingResultHelper.Success() : 
@@ -260,12 +260,12 @@ public abstract class BaseStateMachineState : IStateMachineState
     /// <summary>
     /// Delegate for preparing orders for the regular state reqeust
     /// </summary>
-    public PrepareRegularStateRequestDelegate PrepareRegularStateRequestDelegate { get; set; }
+    public PrepareRegularStateRequestDelegate? PrepareRegularStateRequestDelegate { get; set; }
 
     /// <summary>
     /// Delegate for handling device state check request answers in business logic
     /// </summary>
-    public HandleRegularStateRequestAnswerDelegate HandleRegularStateRequestAnswerDelegate { get; set; }
+    public HandleRegularStateRequestAnswerDelegate? HandleRegularStateRequestAnswerDelegate { get; set; }
 
     /// <summary>
     /// Check a received state message from device and handle it

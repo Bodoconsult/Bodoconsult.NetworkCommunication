@@ -4,6 +4,7 @@ using Bodoconsult.NetworkCommunication.Helpers;
 using Bodoconsult.NetworkCommunication.StateManagement.Builders;
 using Bodoconsult.NetworkCommunication.StateManagement.Configurations;
 using Bodoconsult.NetworkCommunication.StateManagement.Interfaces;
+using Bodoconsult.NetworkCommunication.Tests.Helpers;
 
 namespace Bodoconsult.NetworkCommunication.Tests.StateManagement.Builders.BasicTests;
 
@@ -32,7 +33,7 @@ internal class BaseNoActionStateMachineStateBuilderTests
         // Arrange 
         var builder = new DeviceReadyStateBuilder();
 
-        var config = new NoActionStateConfiguration(DefaultStateNames.DeviceOnlineState);
+        var config = new NoActionStateConfiguration(DefaultStateNames.DeviceOnlineState, builder);
 
         // Act and assert
         Assert.Throws<ArgumentException>(() =>
@@ -47,10 +48,11 @@ internal class BaseNoActionStateMachineStateBuilderTests
         // Arrange 
         var builder = new DeviceReadyStateBuilder();
 
-        var config = new NoActionStateConfiguration(DefaultStateNames.DeviceReadyState)
-            {
-                CheckJobstatesActionForStateDelegate = DelegateHelper.CheckJobstatesActionForStateDelegate
-            };
+        var config = new NoActionStateConfiguration(DefaultStateNames.DeviceReadyState, builder)
+        {
+            CurrentContext = TestDataHelper.CreateStateMachineDevice(),
+            CheckJobstatesActionForStateDelegate = DelegateHelper.CheckJobstatesActionForStateDelegate
+        };
 
         // Act  
         var state = (INoActionStateMachineState)builder.BuildState(config);

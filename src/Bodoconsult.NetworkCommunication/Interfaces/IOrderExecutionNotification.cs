@@ -13,7 +13,7 @@ public interface IOrderExecutionNotification : IClientNotification
     /// <summary>
     /// The current order
     /// </summary>
-    IOrder Order { get; set; }
+    IOrder? Order { get; set; }
 
 
     ///// <summary>

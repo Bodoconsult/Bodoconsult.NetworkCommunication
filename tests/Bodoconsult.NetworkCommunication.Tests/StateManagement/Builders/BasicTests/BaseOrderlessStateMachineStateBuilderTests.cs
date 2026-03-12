@@ -1,13 +1,9 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
 using Bodoconsult.NetworkCommunication.StateManagement.Builders;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Bodoconsult.NetworkCommunication.StateManagement.Configurations;
 using Bodoconsult.NetworkCommunication.StateManagement.Interfaces;
+using Bodoconsult.NetworkCommunication.Tests.Helpers;
 
 namespace Bodoconsult.NetworkCommunication.Tests.StateManagement.Builders.BasicTests;
 
@@ -36,7 +32,7 @@ internal class BaseOrderlessStateMachineStateBuilderTests
         // Arrange 
         var builder = new DeviceOfflineStateBuilder();
 
-        var config = new OrderlessActionStateConfiguration(DefaultStateNames.DeviceOnlineState);
+        var config = new OrderlessActionStateConfiguration(DefaultStateNames.DeviceOnlineState, builder);
 
         // Act and assert
         Assert.Throws<ArgumentException>(() =>
@@ -51,7 +47,10 @@ internal class BaseOrderlessStateMachineStateBuilderTests
         // Arrange 
         var builder = new DeviceOfflineStateBuilder();
 
-        var config = new OrderlessActionStateConfiguration(DefaultStateNames.DeviceOfflineState);
+        var config = new OrderlessActionStateConfiguration(DefaultStateNames.DeviceOfflineState, builder)
+        {
+            CurrentContext = TestDataHelper.CreateStateMachineDevice(),
+        };
 
         // Act  
         var state = builder.BuildState(config);

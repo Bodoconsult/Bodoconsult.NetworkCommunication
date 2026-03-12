@@ -25,6 +25,9 @@ public class FakeSendPacketProcessSocketError : FakeSendPacketProcess
     /// </summary>
     public override bool SendMessage()
     {
+        ArgumentNullException.ThrowIfNull(DataMessagingConfig);
+        ArgumentNullException.ThrowIfNull(Message);
+
         DataMessagingConfig.RaiseDataMessageNotSentDelegate?.Invoke(new ReadOnlyMemory<byte>(Message.RawMessageData.ToArray()), "Blubb");
         DataMessagingConfig.RaiseComDevCloseRequestDelegate?.Invoke("Blubb");
         return true;

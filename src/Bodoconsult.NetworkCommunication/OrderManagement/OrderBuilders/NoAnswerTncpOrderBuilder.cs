@@ -24,7 +24,7 @@ public class NoAnswerTncpOrderBuilder : BaseOrderBuilder
     /// <summary>
     /// Delegate for handling request answer messages
     /// </summary>
-    public HandleRequestAnswerDelegate HandleRequestAnswerOnSuccessDelegate { get; set; }
+    public HandleRequestAnswerDelegate? HandleRequestAnswerOnSuccessDelegate { get; set; }
 
     /// <summary>
     /// Configure the order
@@ -42,8 +42,13 @@ public class NoAnswerTncpOrderBuilder : BaseOrderBuilder
 
     }
 
-    private List<IOutboundDataMessage> CreateMessagesToSentDelegate(IParameterSet parameterSet)
+    private List<IOutboundDataMessage> CreateMessagesToSentDelegate(IParameterSet? parameterSet)
     {
+        if (parameterSet == null)
+        {
+            throw new ArgumentNullException(nameof(parameterSet));
+        }
+
         var msg = _outboundDataMessageFactory.CreateInstance(parameterSet);
         msg.WaitForAcknowledgement = true;
         return [msg];

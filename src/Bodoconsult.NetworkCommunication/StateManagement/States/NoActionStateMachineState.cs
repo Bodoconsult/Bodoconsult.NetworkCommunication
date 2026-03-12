@@ -1,8 +1,8 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
 using Bodoconsult.NetworkCommunication.Delegates;
-using Bodoconsult.NetworkCommunication.StateManagement.Interfaces;
 using Bodoconsult.NetworkCommunication.Interfaces;
+using Bodoconsult.NetworkCommunication.StateManagement.Interfaces;
 
 namespace Bodoconsult.NetworkCommunication.StateManagement.States;
 
@@ -26,7 +26,7 @@ public class NoActionStateMachineState : BaseStateMachineState, INoActionStateMa
     /// <summary>
     /// Delegate to be executed from a no action state machine state to check if job states are required to be executed
     /// </summary>
-    public CheckJobstatesActionForStateDelegate CheckJobstatesActionForStateDelegate { get; set; }
+    public CheckJobstatesActionForStateDelegate? CheckJobstatesActionForStateDelegate { get; set; }
 
     /// <summary>
     /// Execute the action defined with <see cref="INoActionStateMachineState.CheckJobstatesActionForStateDelegate"/> for this state to check if job states are required to be executed
@@ -38,7 +38,7 @@ public class NoActionStateMachineState : BaseStateMachineState, INoActionStateMa
 
     public void DefaultCheckJobstatesActionForState(INoActionStateMachineState currentState)
     {
-        while (!CancellationTokenSource.IsCancellationRequested)
+        while (!CancellationTokenSource?.IsCancellationRequested ?? false)
         {
             // Check if there is a job state to restore after break
             if (CurrentContext.SavedJobState != null)
@@ -57,7 +57,7 @@ public class NoActionStateMachineState : BaseStateMachineState, INoActionStateMa
 
                 CurrentContext.RequestState(state);
 
-                CancellationTokenSource.Dispose();
+                CancellationTokenSource?.Dispose();
                 return;
             }
 

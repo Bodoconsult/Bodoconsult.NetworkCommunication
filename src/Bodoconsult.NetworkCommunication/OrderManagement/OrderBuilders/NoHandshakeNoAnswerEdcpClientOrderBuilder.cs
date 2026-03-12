@@ -24,7 +24,7 @@ public class NoHandshakeNoAnswerEdcpClientOrderBuilder : BaseOrderBuilder
     /// <summary>
     /// Delegate for handling request answer messages
     /// </summary>
-    public HandleRequestAnswerDelegate HandleRequestAnswerOnSuccessDelegate { get; set; }
+    public HandleRequestAnswerDelegate? HandleRequestAnswerOnSuccessDelegate { get; set; }
 
     /// <summary>
     /// Configure the order
@@ -41,8 +41,13 @@ public class NoHandshakeNoAnswerEdcpClientOrderBuilder : BaseOrderBuilder
         requestSpec.CreateMessagesToSentDelegate = CreateMessagesToSentDelegate;
     }
 
-    private List<IOutboundDataMessage> CreateMessagesToSentDelegate(IParameterSet parameterSet)
+    private List<IOutboundDataMessage> CreateMessagesToSentDelegate(IParameterSet? parameterSet)
     {
+        if (parameterSet == null)
+        {
+            throw new ArgumentNullException(nameof(parameterSet));
+        }
+
         var msg = _outboundDataMessageFactory.CreateInstance(parameterSet);
         msg.WaitForAcknowledgement = false;
         return [msg];

@@ -15,19 +15,18 @@ public class NoAnswerDeviceRequestSpec : BaseRequestSpec, INoAnswerDeviceRequest
     /// </summary>
     /// <param name="name">Request name</param>
     /// <param name="parameterSet">Current parameter set</param>
-    public NoAnswerDeviceRequestSpec(string name, IParameterSet parameterSet) : base(name, parameterSet)
-    {
-    }
+    public NoAnswerDeviceRequestSpec(string name, IParameterSet? parameterSet) : base(name, parameterSet)
+    { }
 
     /// <summary>
     /// Delegate for handling request answer messages
     /// </summary>
-    public HandleRequestAnswerDelegate HandleRequestAnswerOnSuccessDelegate { get; set; }
+    public HandleRequestAnswerDelegate? HandleRequestAnswerOnSuccessDelegate { get; set; }
 
     /// <summary>
     /// Current sent message
     /// </summary>
-    public IOutboundDataMessage CurrentSentMessage { get; set; }
+    public IOutboundDataMessage? CurrentSentMessage { get; set; }
 
     /// <summary>
     /// The messages to send. These messages are processed all in the same way
@@ -38,17 +37,17 @@ public class NoAnswerDeviceRequestSpec : BaseRequestSpec, INoAnswerDeviceRequest
     /// <summary>
     /// Send a data message to the device
     /// </summary>
-    public SendDataMessageDelegate SendDataMessageDelegate { get; set; }
+    public SendDataMessageDelegate? SendDataMessageDelegate { get; set; }
 
     /// <summary>
     /// The next step in the chain
     /// </summary>
-    public IRequestAnswerStep NextChainElement { get; set; }
+    public IRequestAnswerStep? NextChainElement { get; set; }
 
     /// <summary>
     /// Delegate for creating data messages to sent to the device
     /// </summary>
-    public CreateMessagesToSentDelegate CreateMessagesToSentDelegate { get; set; }
+    public CreateMessagesToSentDelegate? CreateMessagesToSentDelegate { get; set; }
 
     /// <summary>
     /// Create all messages to process in the step. These messages are processed all in the same way

@@ -2,7 +2,6 @@
 
 using Bodoconsult.NetworkCommunication.Communication.Sending;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataBlockCodecs;
-using Bodoconsult.NetworkCommunication.DataMessaging.DataBlockCodingProcessors;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessageCodecs;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessageCodingProcessors;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessageProcessors;
@@ -22,7 +21,9 @@ public class EdcpDataMessageProcessingPackage : IDataMessageProcessingPackage
     /// <summary>
     /// Default ctor
     /// </summary>
+#pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring as nullable.
     public EdcpDataMessageProcessingPackage(IDataMessagingConfig dataMessagingConfig)
+#pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring as nullable.
     {
         if (dataMessagingConfig is not EdcpDataMessagingConfig)
         {
@@ -62,8 +63,6 @@ public class EdcpDataMessageProcessingPackage : IDataMessageProcessingPackage
         var handShakeCodec = new EdcpHandshakeMessageCodec();
         DataMessageCodingProcessor.MessageCodecs.Add(handShakeCodec);
 
-        DataBlockCodingProcessor = new DefaultDataBlockCodingProcessor();
-        
         LoadCustomDataBlockCodecs();
 
         var deviceMessageCodec = new EdcpDataMessageCodec(DataBlockCodingProcessor);

@@ -17,6 +17,12 @@ public class IpHighPerformanceDuplexIoReceiver : BaseDuplexIoReceiver
 {
     private readonly Pipe _pipe;
     private bool _isDone;
+    private readonly ISocketProxy _socketProxy;
+
+    /// <summary>
+    /// Current validator impl for data messages
+    /// </summary>
+    private IDataMessageValidator _dataMessageValidator;
 
     /// <summary>
     /// Default ctor
@@ -28,6 +34,15 @@ public class IpHighPerformanceDuplexIoReceiver : BaseDuplexIoReceiver
     {
         _pipe = pipe;
         PollingTimeOut = pollingTimeOut;
+
+        _socketProxy = config.SocketProxy ?? throw new ArgumentNullException(nameof(config.SocketProxy));
+
+        if (config.DataMessageProcessingPackage == null)
+        {
+            throw new ArgumentNullException(nameof(config.DataMessageProcessingPackage));
+        }
+
+        _dataMessageValidator = config.DataMessageProcessingPackage.DataMessageValidator;
     }
 
     private bool IsCompleted()
@@ -72,14 +87,14 @@ public class IpHighPerformanceDuplexIoReceiver : BaseDuplexIoReceiver
     {
         //Debug.Print("Start fill message pipeline");
         var writer = _pipe.Writer;
-        var memSize = DataMessagingConfig.SocketProxy.MinimumBufferSize;
+        var memSize = DataMessagingConfig.SocketProxy?.MinimumBufferSize ?? 512;
 
         while (!_isDone)
         {
             // Allocate at least 512 bytes from the PipeWriter.
             try
             {
-                if (!DataMessagingConfig.SocketProxy.Connected)
+                if (!_socketProxy.Connected)
                 {
                     AsyncHelper.Delay(5);
                     continue;
@@ -94,7 +109,7 @@ public class IpHighPerformanceDuplexIoReceiver : BaseDuplexIoReceiver
                 var memory = writer.GetMemory(memSize);
 
 
-                var bytesRead = await DataMessagingConfig.SocketProxy.Receive(memory);
+                var bytesRead = await _socketProxy.Receive(memory);
                 //Debug.Print($"Socket bytes read: {bytesRead}");
 
                 if (bytesRead > 0)
@@ -186,7 +201,7 @@ public class IpHighPerformanceDuplexIoReceiver : BaseDuplexIoReceiver
 
                 var codecResult = DataMessageCodingProcessor.DecodeDataMessage(mem);
 
-                if (codecResult.ErrorCode != 0)
+                if (codecResult.ErrorCode != 0 || codecResult.DataMessage == null)
                 {
                     msg = $"Parsing command failed with error code {codecResult.ErrorCode}: {codecResult.ErrorMessage}: {DataMessageHelper.GetStringFromArrayCsharpStyle(ref command)}";
                     Debug.Print(msg);
@@ -194,7 +209,7 @@ public class IpHighPerformanceDuplexIoReceiver : BaseDuplexIoReceiver
                 }
                 else
                 {
-                    var validationResult = DataMessagingConfig.DataMessageProcessingPackage.DataMessageValidator.IsMessageValid(codecResult.DataMessage);
+                    var validationResult = _dataMessageValidator.IsMessageValid(codecResult.DataMessage);
                     if (!validationResult.IsMessageValid)
                     {
                         msg = $"Parsed command {DataMessageHelper.GetStringFromArrayCsharpStyle(ref command)} NOT valid: {validationResult.ValidationResult}. Message was NOT processed.";

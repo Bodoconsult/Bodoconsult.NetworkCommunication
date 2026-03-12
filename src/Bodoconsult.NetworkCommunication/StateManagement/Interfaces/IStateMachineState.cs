@@ -56,17 +56,17 @@ public interface IStateMachineState
     /// <summary>
     /// <see cref="CancellationTokenSource"/> instance to use for the current state or null if none is used
     /// </summary>
-    CancellationTokenSource CancellationTokenSource { get; set; }
+    CancellationTokenSource? CancellationTokenSource { get; set; }
 
     /// <summary>
     /// Delegate to cancel the state
     /// </summary>
-    CancelStateDelegate CancelStateDelegate { get; set; }
+    CancelStateDelegate? CancelStateDelegate { get; set; }
 
    /// <summary>
    /// The next state to be requested when this state has to be left or null if the state does not change
    /// </summary>
-   IStateMachineState NextState { get; set; }
+   IStateMachineState? NextState { get; set; }
 
     /// <summary>
     /// Set the inital states for this business state
@@ -96,7 +96,7 @@ public interface IStateMachineState
     /// <summary>
     /// Delegate to handle a ComDevClose event in business logic
     /// </summary>
-    HandleComDevCloseDelegate HandleComDevCloseDelegate { get; set; }
+    HandleComDevCloseDelegate? HandleComDevCloseDelegate { get; set; }
 
     /// <summary>
     /// The communication to the device was broken. Handles this event by calling <see cref="HandleComDevCloseDelegate"/>
@@ -111,7 +111,7 @@ public interface IStateMachineState
     /// <summary>
     /// Handle an error message received from the device
     /// </summary>
-    HandleErrorMessageDelegate HandleErrorMessageDelegate { get; set; }
+    HandleErrorMessageDelegate? HandleErrorMessageDelegate { get; set; }
 
     /// <summary>
     /// Handle a received error message from the device
@@ -122,14 +122,14 @@ public interface IStateMachineState
     /// <summary>
     /// Handle an async received message
     /// </summary>
-    HandleAsyncMessageDelegate HandleAsyncMessageDelegate { get; set; }
+    HandleAsyncMessageDelegate? HandleAsyncMessageDelegate { get; set; }
 
     /// <summary>
     /// Handle async sent message from device by calling <see cref="HandleAsyncMessageDelegate"/>
     /// </summary>
     /// <param name="message">Received message</param>
     /// <returns>The result of the message handling</returns>
-    MessageHandlingResult HandleAsyncMessage(IInboundDataMessage message);
+    MessageHandlingResult HandleAsyncMessage(IInboundDataMessage? message);
 
     /// <summary>
     /// Request a new device state
@@ -142,12 +142,12 @@ public interface IStateMachineState
     /// <summary>
     /// Delegate for preparing orders for the regular state reqeust
     /// </summary>
-    PrepareRegularStateRequestDelegate PrepareRegularStateRequestDelegate { get; set; }
+    PrepareRegularStateRequestDelegate? PrepareRegularStateRequestDelegate { get; set; }
 
     /// <summary>
     /// Delegate for handling device state check request answers in business logic
     /// </summary>
-    HandleRegularStateRequestAnswerDelegate HandleRegularStateRequestAnswerDelegate { get; set; }
+    HandleRegularStateRequestAnswerDelegate? HandleRegularStateRequestAnswerDelegate { get; set; }
 
     /// <summary>
     /// Check a received state message from device and handle it

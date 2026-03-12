@@ -5,6 +5,7 @@ using Bodoconsult.App.Interfaces;
 using Bodoconsult.NetworkCommunication.EnumAndStates;
 using Bodoconsult.NetworkCommunication.Interfaces;
 using Bodoconsult.NetworkCommunication.StateManagement.Interfaces;
+using IAppDateService = Bodoconsult.NetworkCommunication.App.Abstractions.IAppDateService;
 
 namespace Bodoconsult.NetworkCommunication.OrderManagement.Processors;
 
@@ -13,20 +14,20 @@ namespace Bodoconsult.NetworkCommunication.OrderManagement.Processors;
 /// </summary>
 public class StateMachineOrderProcessor : BaseOrderProcessor
 {
-    private readonly IStateManagementDevice _smddevice;
+    private readonly IStateManagementDevice _device;
 
     /// <summary>
     /// Default ctor
     /// </summary>
     public StateMachineOrderProcessor(
-        IStateManagementDevice deviceServer,
-        App.Abstractions.IAppDateService dateTimeService,
+        IStateManagementDevice device,
+        IAppDateService dateTimeService,
         IOrderPipeline orderPipeline,
         ISyncOrderManager syncOrderManager,
         IOrderManagementClientNotificationManager clientNotificationManager,
-        IAppBenchProxy appBenchProxy) : base(deviceServer, dateTimeService, orderPipeline, syncOrderManager, clientNotificationManager, appBenchProxy)
+        IAppBenchProxy appBenchProxy) : base(device, dateTimeService, orderPipeline, syncOrderManager, clientNotificationManager, appBenchProxy)
     {
-        _smddevice = deviceServer;
+        _device = device;
     }
 
     /// <summary>
@@ -34,7 +35,7 @@ public class StateMachineOrderProcessor : BaseOrderProcessor
     /// </summary>
     /// <param name="runTheOrder">Run the order directly: yes or no</param>
     /// <returns>device hardware init order</returns>
-    public override IOrder InitiateHardwareInit(bool runTheOrder)
+    public override IOrder? InitiateHardwareInit(bool runTheOrder)
     {
         // Wait until all running orders are ready for disposing finally
         var orders = OrdersInProcessing;
@@ -53,12 +54,12 @@ public class StateMachineOrderProcessor : BaseOrderProcessor
             }
         }
 
-        _appLogger.LogInformation($"{_loggerId}execution queue cleared for device hardware init");
+        AppLogger.LogInformation($"{LoggerId}execution queue cleared for device hardware init");
 
         // Is no hardware init required set externally for unit testing
         if (IsNoHardWareInitRequired)
         {
-            _appLogger.LogDebug($"{_loggerId}runner restarted");
+            AppLogger.LogDebug($"{LoggerId}runner restarted");
             IsRunnerStopped = false;
             return null;
         }
@@ -73,7 +74,7 @@ public class StateMachineOrderProcessor : BaseOrderProcessor
         //}
 
         // Create the device hardware init 
-        var order = _smddevice.CreateHardwareInitOrder();
+        var order = _device.CreateHardwareInitOrder();
 
         IsInitInProcessing = true;
         IsRunnerStopped = true;
@@ -81,7 +82,7 @@ public class StateMachineOrderProcessor : BaseOrderProcessor
         CheckAndRunOrder(order);
 
         CurrentDevice.DoNotifyHardwareInitRequested();
-        _appLogger.LogInformation($"{_loggerId}{order.LoggerId}order execution started");
+        AppLogger.LogInformation($"{LoggerId}{order.LoggerId}order execution started");
 
         return order;
     }
@@ -103,19 +104,19 @@ public class StateMachineOrderProcessor : BaseOrderProcessor
         {
             if (isNoOrderWaiting && !IsInitInProcessing)
             {
-                _smddevice.CheckIfThereAreOrdersToBeCreated();
+                _device.CheckIfThereAreOrdersToBeCreated();
             }
             return;
         }
 
         // Check if the device is ready for order running
-        if (!_smddevice.IsRunningOrdersAllowed)
+        if (!_device.IsRunningOrdersAllowed)
         {
             return;
         }
 
         // Get the next order to run from business logic
-        var order = _smddevice.GetNextOrderToRun();
+        var order = _device.GetNextOrderToRun();
 
         if (order == null)
         {
@@ -135,7 +136,7 @@ public class StateMachineOrderProcessor : BaseOrderProcessor
         var runningOrders = OrderPipeline.RunningOrders.ToList();
 
         // Check if it is allowed to run the order now
-        if (!_smddevice.IsRunningTheOrderAllowed(order, runningOrders))
+        if (!_device.IsRunningTheOrderAllowed(order, runningOrders))
         {
             return;
         }
@@ -147,7 +148,7 @@ public class StateMachineOrderProcessor : BaseOrderProcessor
         }
 
         // last check to prevent from deadlock
-        _smddevice.Check4ConcurrentOrders(order);
+        _device.Check4ConcurrentOrders(order);
 
         // Now finally execute the order
         RunOrder(order);
@@ -167,7 +168,7 @@ public class StateMachineOrderProcessor : BaseOrderProcessor
 
             StopExecutionOfSyncOrder(orderId, erg);
 
-            _appLogger.LogDebug($"{_loggerId}order {orderId} has finished but request processor wasn't found");
+            AppLogger.LogDebug($"{LoggerId}order {orderId} has finished but request processor wasn't found");
             return;
         }
 
@@ -178,9 +179,9 @@ public class StateMachineOrderProcessor : BaseOrderProcessor
         order.ExecutionResult ??= OrderExecutionResultState.Unsuccessful;
         order.Benchmark?.AddStep("Order processing finished");
 
-        _appLogger.LogDebug($"{_loggerId}{order.LoggerId}has finished. {OrderPipeline.CurrentOrderState}");
+        AppLogger.LogDebug($"{LoggerId}{order.LoggerId}has finished. {OrderPipeline.CurrentOrderState}");
 
-        if (_smddevice.CurrentState is IOrderBasedActionStateMachineState state)
+        if (_device.CurrentState is IOrderBasedActionStateMachineState state)
         {
             // Process successful orders
             if (order.ExecutionResult.Id == OrderExecutionResultState.Successful.Id)
@@ -200,7 +201,7 @@ public class StateMachineOrderProcessor : BaseOrderProcessor
         requestProcessor.Dispose();
 
         // Set the order running endtime
-        order.EndTime = _dateTimeService.Now;
+        order.EndTime = DateTimeService.Now;
         order.IsFinished = true;
         order.Benchmark?.AddStep("Disposing now");
 
@@ -220,7 +221,7 @@ public class StateMachineOrderProcessor : BaseOrderProcessor
         }
 
         Debug.Print($"TOP: {OrderPipeline.CurrentOrderState}");
-        _smddevice.CurrentState?.RequestNextState();
+        _device.CurrentState?.RequestNextState();
     }
 
     /// <summary>
@@ -228,7 +229,7 @@ public class StateMachineOrderProcessor : BaseOrderProcessor
     /// </summary>
     /// <param name="receivedMessage">A message received from the device</param>
     /// <returns>True if the message was an expected answer of the current request</returns>
-    public override bool CheckReceivedMessage(IInboundDataMessage receivedMessage)
+    public override bool CheckReceivedMessage(IInboundDataMessage? receivedMessage)
     {
         if (receivedMessage == null)
         {
@@ -286,16 +287,22 @@ public class StateMachineOrderProcessor : BaseOrderProcessor
         //*********************
         // TOP 5 Last chance for message handling: async message handling
         //*********************
-        var result = _smddevice.CurrentState.HandleAsyncMessage(receivedMessage);
+
+        if (_device.CurrentState == null)
+        {
+            return false;
+        }
+
+        var result = _device.CurrentState.HandleAsyncMessage(receivedMessage);
 
         //IsRunnerStopped = false;
 
-        if (result == null)
-        {
-            msg = $"{receivedMessage.ToShortInfoString()}: async processed unsuccessful. Message is disposed now";
-            LogInformation(msg);
-            return false;
-        }
+        //if (result == null)
+        //{
+        //    msg = $"{receivedMessage.ToShortInfoString()}: async processed unsuccessful. Message is disposed now";
+        //    LogInformation(msg);
+        //    return false;
+        //}
 
         msg = $"{receivedMessage.ToShortInfoString()}: async processed {result.ExecutionResult}{(result.ExecutionResult.Id == OrderExecutionResultState.Successful.Id ? "" : ". Message is disposed now")}";
         LogInformation(msg);
@@ -310,11 +317,11 @@ public class StateMachineOrderProcessor : BaseOrderProcessor
     /// <param name="receivedMessage">Received message</param>
     public override void HandleError(IInboundMessage receivedMessage)
     {
-        if (receivedMessage is not IInboundDataMessage msg)
+        if (receivedMessage is not IInboundDataMessage msg || _device.CurrentState == null)
         {
             return;
         }
 
-        _smddevice.CurrentState.HandleErrorMessage(msg);
+        _device.CurrentState.HandleErrorMessage(msg);
     }
 }

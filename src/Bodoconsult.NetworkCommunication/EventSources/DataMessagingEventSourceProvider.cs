@@ -1,8 +1,8 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
+using System.Diagnostics.Tracing;
 using Bodoconsult.App.EventCounters;
 using Bodoconsult.App.Interfaces;
-using System.Diagnostics.Tracing;
 
 namespace Bodoconsult.NetworkCommunication.EventSources;
 

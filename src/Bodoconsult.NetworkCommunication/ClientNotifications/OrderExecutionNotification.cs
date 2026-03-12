@@ -14,5 +14,5 @@ public class OrderExecutionNotification : BaseClientNotification, IOrderExecutio
     /// <summary>
     /// The current order
     /// </summary>
-    public IOrder Order { get; set; }
+    public IOrder? Order { get; set; }
 }

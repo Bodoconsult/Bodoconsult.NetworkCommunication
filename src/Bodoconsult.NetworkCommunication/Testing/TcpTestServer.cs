@@ -1,10 +1,10 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
 
-using Bodoconsult.NetworkCommunication.Interfaces;
 using System.Diagnostics;
 using System.Net;
 using System.Net.Sockets;
+using Bodoconsult.NetworkCommunication.Interfaces;
 
 namespace Bodoconsult.NetworkCommunication.Testing;
 
@@ -14,7 +14,7 @@ namespace Bodoconsult.NetworkCommunication.Testing;
 public class TcpTestServer : ITcpIpDevice
 {
     private readonly Socket _listener;
-    private Socket _clientSocket;
+    private Socket? _clientSocket;
     private readonly IPEndPoint _endPoint;
 
     /// <summary>
@@ -118,6 +118,11 @@ public class TcpTestServer : ITcpIpDevice
     /// <param name="data">Byte array to send</param>
     public void Send(byte[] data)
     {
+        if (_clientSocket == null)
+        {
+            return;
+        }
+
         var task = _clientSocket.SendAsync(data);
         task.Wait(CancellationTokenSource.Token);
 
@@ -135,9 +140,11 @@ public class TcpTestServer : ITcpIpDevice
 
         try
         {
-
-            _clientSocket?.Close();
-            _clientSocket?.Dispose();
+            if (_clientSocket != null)
+            {
+                _clientSocket.Close();
+                _clientSocket.Dispose();
+            }
         }
         catch
         {
@@ -146,8 +153,8 @@ public class TcpTestServer : ITcpIpDevice
 
         try
         {
-            _listener?.Close();
-            _listener?.Dispose();
+            _listener.Close();
+            _listener.Dispose();
         }
         catch
         {

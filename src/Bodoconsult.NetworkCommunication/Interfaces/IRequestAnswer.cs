@@ -22,7 +22,7 @@ public interface IRequestAnswer : IDisposable
     /// <summary>
     /// Type of the data block if <see cref="HasDatablock"/> is true
     /// </summary>
-    Type DataBlockType { get; }
+    Type? DataBlockType { get; }
 
     /// <summary>
     /// The answer was successfully received
@@ -32,12 +32,12 @@ public interface IRequestAnswer : IDisposable
     /// <summary>
     /// The succesfully received answer from the device
     /// </summary>
-    IInboundDataMessage ReceivedMessage { get; }
+    IInboundDataMessage? ReceivedMessage { get; }
 
     /// <summary>
     /// Delegate for handling request answer messages
     /// </summary>
-    HandleRequestAnswerDelegate HandleRequestAnswerOnSuccessDelegate { get; set; }
+    HandleRequestAnswerDelegate? HandleRequestAnswerOnSuccessDelegate { get; set; }
 
     ///// <summary>
     ///// Delegate for handling request answer messages
@@ -49,7 +49,7 @@ public interface IRequestAnswer : IDisposable
     /// If the message is the requested answer from the device the properties <see cref="IRequestAnswer.WasReceived"/>
     /// and <see cref="IRequestAnswer.ReceivedMessage"/> are set to true and the received message.
     /// </summary>
-    CheckReceivedMessageDelegate CheckReceivedMessageDelegate { get; }
+    CheckReceivedMessageDelegate? CheckReceivedMessageDelegate { get; }
 
     /// <summary>
     /// Set <see cref="WasReceived"/> to true

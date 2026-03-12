@@ -12,5 +12,5 @@ public interface INoActionStateConfiguration : IStateConfiguration
     /// <summary>
     /// Delegate to be executed from a no action state machine state to check if job states are required to be executed
     /// </summary>
-    CheckJobstatesActionForStateDelegate CheckJobstatesActionForStateDelegate { get; set; }
+    CheckJobstatesActionForStateDelegate? CheckJobstatesActionForStateDelegate { get; set; }
 }

@@ -34,7 +34,7 @@ internal class DeviceReadyStateBuilderTests
         // Arrange 
         var builder = new DeviceReadyStateBuilder();
 
-        var config = new NoActionStateConfiguration(DefaultStateNames.DeviceOnlineState);
+        var config = new NoActionStateConfiguration(DefaultStateNames.DeviceOnlineState, builder);
 
         // Act and assert
         Assert.Throws<ArgumentException>(() =>
@@ -51,7 +51,7 @@ internal class DeviceReadyStateBuilderTests
         
         var builder = new DeviceReadyStateBuilder();
 
-        var config = new NoActionStateConfiguration(DefaultStateNames.DeviceReadyState)
+        var config = new NoActionStateConfiguration(DefaultStateNames.DeviceReadyState, builder)
         {
             CurrentContext = device,
             HandleAsyncMessageDelegate = DelegateHelper.HandleAsyncMessageDelegate,

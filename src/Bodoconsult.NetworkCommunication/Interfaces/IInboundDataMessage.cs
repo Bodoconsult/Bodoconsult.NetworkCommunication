@@ -24,5 +24,5 @@ public interface IInboundDataMessage : IInboundMessage
     /// <summary>
     /// Data block stored in the message
     /// </summary>
-    ITypedInboundDataBlock DataBlock { get; set; }
+    ITypedInboundDataBlock? DataBlock { get; set; }
 }

@@ -22,8 +22,6 @@ public abstract class BaseOutboundHandShakeMessage: IOutboundHandShakeMessage
     /// </summary>
     public long MessageId { get;  }
 
-    public ITypedOutboundDataBlock DataBlock { get; set; }
-
     /// <summary>
     /// Current raw message data as byte array
     /// </summary>
@@ -32,7 +30,7 @@ public abstract class BaseOutboundHandShakeMessage: IOutboundHandShakeMessage
     /// <summary>
     /// Current raw message data as clear text
     /// </summary>
-    public string RawMessageDataClearText { get; set; }
+    public string? RawMessageDataClearText { get; set; }
 
     /// <summary>
     /// Create an info string for logging

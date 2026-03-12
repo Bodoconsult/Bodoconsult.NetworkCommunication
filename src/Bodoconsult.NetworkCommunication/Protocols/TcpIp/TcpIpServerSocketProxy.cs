@@ -1,10 +1,10 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 // Licence MIT
 
-using Bodoconsult.NetworkCommunication.Helpers;
-using Bodoconsult.NetworkCommunication.Interfaces;
 using System.Diagnostics;
 using System.Net.Sockets;
+using Bodoconsult.NetworkCommunication.Helpers;
+using Bodoconsult.NetworkCommunication.Interfaces;
 
 namespace Bodoconsult.NetworkCommunication.Protocols.TcpIp;
 
@@ -15,7 +15,7 @@ public class TcpIpServerSocketProxy : TcpIpSocketProxyBase
 {
     private readonly byte[] _tmp = new byte[1];
     public readonly ITcpIpListenerManager TcpIpListenerManager;
-    private Socket _listener;
+    private Socket? _listener;
 
     /// <summary>
     /// Default ctor
@@ -101,6 +101,10 @@ public class TcpIpServerSocketProxy : TcpIpSocketProxyBase
     /// <param name="bytesToSend">Byte array to send</param>
     public override Task<int> Send(byte[] bytesToSend)
     {
+        if (Socket == null)
+        {
+            return Task.FromResult(0);
+        }
         return !Socket.Connected ? Task.FromResult(0) : Socket.SendAsync(bytesToSend);
     }
 
@@ -110,6 +114,10 @@ public class TcpIpServerSocketProxy : TcpIpSocketProxyBase
     /// <param name="bytesToSend">Data to send</param>
     public override ValueTask<int> Send(ReadOnlyMemory<byte> bytesToSend)
     {
+        if (Socket == null)
+        {
+            return ValueTask.FromResult(0);
+        }
         return !Socket.Connected ? new ValueTask<int>(0) : Socket.SendAsync(bytesToSend, SocketFlags.None);
     }
 
@@ -121,6 +129,10 @@ public class TcpIpServerSocketProxy : TcpIpSocketProxyBase
         if (_listener != null)
         {
             TcpIpListenerManager.UnregisterListener(_listener, AcceptDelegate);
+        }
+        if (Socket == null)
+        {
+            return;
         }
         Socket.Shutdown(SocketShutdown.Both);
         Socket.Close();
@@ -170,7 +182,11 @@ public class TcpIpServerSocketProxy : TcpIpSocketProxyBase
     /// <returns>Number of bytes received</returns>
     public override Task<int> Receive(byte[] buffer)
     {
-        return !Socket.Connected ? Task.FromResult(0) : Socket?.ReceiveAsync(buffer);
+        if (Socket == null)
+        {
+            return Task.FromResult(0);
+        }
+        return !Socket.Connected ? Task.FromResult(0) : Socket.ReceiveAsync(buffer);
     }
 
     /// <summary>
@@ -180,6 +196,10 @@ public class TcpIpServerSocketProxy : TcpIpSocketProxyBase
     /// <returns>Number of bytes received</returns>
     public override async Task<int> Receive(Memory<byte> buffer)
     {
+        if (Socket == null)
+        {
+            return Task.FromResult(0).GetAwaiter().GetResult();
+        }
         return !Socket.Connected ? await Task.FromResult(0) : await Socket.ReceiveAsync(buffer, SocketFlags.None);
     }
 
@@ -192,6 +212,10 @@ public class TcpIpServerSocketProxy : TcpIpSocketProxyBase
     /// <returns>Number of bytes received</returns>
     public override Task<int> Receive(byte[] buffer, int offset, int expectedBytesLength)
     {
+        if (Socket == null)
+        {
+            return Task.FromResult(0);
+        }
         return !Socket.Connected ? Task.FromResult(0) : Socket.ReceiveAsync(buffer, offset, expectedBytesLength, SocketFlags.None);
     }
 
@@ -204,6 +228,10 @@ public class TcpIpServerSocketProxy : TcpIpSocketProxyBase
     /// <returns></returns>
     public override Task<int> Send(byte[] bytesToSend, int offset, int messageBytesLength)
     {
+        if (Socket == null)
+        {
+            return Task.FromResult(0);
+        }
         return !Socket.Connected ? Task.FromResult(0) : Socket.SendAsync(bytesToSend, offset, messageBytesLength);
     }
 
@@ -213,6 +241,10 @@ public class TcpIpServerSocketProxy : TcpIpSocketProxyBase
     /// <returns>True, if data can be read, else false</returns>
     public override bool Poll()
     {
+        if (Socket == null)
+        {
+            return false;
+        }
         return Socket.Poll(PollingTimeout, SelectMode.SelectRead);
     }
 
@@ -222,13 +254,13 @@ public class TcpIpServerSocketProxy : TcpIpSocketProxyBase
     /// <param name="fileName">Full file path</param>
     public override void SendFile(string fileName)
     {
-        Socket.SendFile(fileName);
+        Socket?.SendFile(fileName);
     }
 
     /// <summary>
     /// Current socket (only for testing purposes, do not access directly in production code)
     /// </summary>
-    public Socket Socket { get; protected set; }
+    public Socket? Socket { get; protected set; }
 
     /// <summary>
     /// Prepare the answer of the socket for testing
@@ -244,7 +276,10 @@ public class TcpIpServerSocketProxy : TcpIpSocketProxyBase
     /// </summary>
     public override void Dispose()
     {
-        TcpIpListenerManager.UnregisterListener(_listener, AcceptDelegate);
+        if (_listener != null)
+        {
+            TcpIpListenerManager.UnregisterListener(_listener, AcceptDelegate);
+        }
 
         IsDisposed = true;
         Socket?.Close();

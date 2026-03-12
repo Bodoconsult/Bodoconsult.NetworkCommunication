@@ -9,6 +9,21 @@ namespace Bodoconsult.NetworkCommunication.OrderManagement.Processors;
 /// </summary>
 public class FakeOrderProcessor : IOrderProcessor
 {
+    /// <summary>
+    /// Default ctor
+    /// </summary>
+    public FakeOrderProcessor(
+        IOrderManagementDevice device,
+        IOrderPipeline orderPipeline,
+        ISyncOrderManager syncOrderManager,
+        IOrderManagementClientNotificationManager clientNotificationManager) 
+    {
+        CurrentDevice = device;
+        OrderPipeline = orderPipeline;
+        SyncOrderManager = syncOrderManager;
+        ClientNotificationManager = clientNotificationManager;
+    }
+
     /// <summary>Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.</summary>
     public void Dispose()
     {
@@ -53,22 +68,22 @@ public class FakeOrderProcessor : IOrderProcessor
     /// <summary>
     /// Get all orders in the waiting non-priority queue
     /// </summary>
-    public IList<IOrder> OrdersInQueue { get; set; }
+    public IList<IOrder> OrdersInQueue { get; } = new List<IOrder>();
 
     /// <summary>
     /// Get all waiting but not cancelled orders in the priority queue
     /// </summary>
-    public IList<IOrder> OrdersInQueueWithPriority { get; set; }
+    public IList<IOrder> OrdersInQueueWithPriority { get; } = new List<IOrder>();
 
     /// <summary>
     /// Get all waiting but not cancelled orders currently in processing
     /// </summary>
-    public IList<IOrder> OrdersInProcessing { get; set; }
+    public IList<IOrder> OrdersInProcessing { get; } = new List<IOrder>();
 
     /// <summary>
     /// Get all orders currently in processing, in the queue and in priority line
     /// </summary>
-    public IList<IOrder> AllOrders { get; set; }
+    public IList<IOrder> AllOrders { get; } = new List<IOrder>();
 
     /// <summary>
     /// No order in processing
@@ -271,7 +286,7 @@ public class FakeOrderProcessor : IOrderProcessor
     /// </summary>
     /// <param name="receivedMessage">A message received from the device</param>
     /// <returns>True if the message was an expected answer of the current request</returns>
-    public bool CheckReceivedMessage(IInboundDataMessage receivedMessage)
+    public bool CheckReceivedMessage(IInboundDataMessage? receivedMessage)
     {
         throw new NotImplementedException();
     }

@@ -34,7 +34,7 @@ internal class DeviceInitStateBuilderTests
         // Arrange 
         var builder = new DeviceInitStateBuilder();
 
-        var config = new OrderBasedActionStateConfiguration(DefaultStateNames.DeviceOnlineState);
+        var config = new OrderBasedActionStateConfiguration(DefaultStateNames.DeviceOnlineState, builder);
 
         // Act and assert
         Assert.Throws<ArgumentException>(() =>
@@ -51,7 +51,7 @@ internal class DeviceInitStateBuilderTests
 
         var builder = new DeviceInitStateBuilder();
 
-        var config = new OrderBasedActionStateConfiguration(DefaultStateNames.DeviceInitState)
+        var config = new OrderBasedActionStateConfiguration(DefaultStateNames.DeviceInitState, builder)
         {
             CurrentContext = device,
             HandleAsyncMessageDelegate = DelegateHelper.HandleAsyncMessageDelegate,

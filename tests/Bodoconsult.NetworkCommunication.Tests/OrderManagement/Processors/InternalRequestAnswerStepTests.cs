@@ -28,9 +28,12 @@ internal class InternalRequestAnswerStepTests
         // Act  
         var irs = new InternalRequestAnswerStep(ir);
 
-        // Assert
-        Assert.That(irs.RequestSpec, Is.EqualTo(ir));
-        Assert.That(irs.InternalRequestSpec, Is.EqualTo(ir));
+		// Assert
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(irs.RequestSpec, Is.EqualTo(ir));
+            Assert.That(irs.InternalRequestSpec, Is.EqualTo(ir));
+        }
     }
 
     [Test]
@@ -49,10 +52,13 @@ internal class InternalRequestAnswerStepTests
         // Act  
         var result = irs.HandleResult();
 
-        // Assert
-        Assert.That(result.Error, Is.Zero);
-        Assert.That(result.ExecutionResult, Is.EqualTo(OrderExecutionResultState.Successful));
-        Assert.That(_isHandleResultFired, Is.True);
+		// Assert
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(result.Error, Is.Zero);
+            Assert.That(result.ExecutionResult, Is.EqualTo(OrderExecutionResultState.Successful));
+            Assert.That(_isHandleResultFired, Is.True);
+        }
     }
 
     private bool CheckReceivedMessageDelegate(IRequestAnswer requestAnswer, IOutboundDataMessage sentMessage, IInboundDataMessage receivedMessage, IList<string> errors)
@@ -72,9 +78,12 @@ internal class InternalRequestAnswerStepTests
         // Act  
         var result = irs.HandleResult();
 
-        // Assert
-        Assert.That(result.Error, Is.Not.EqualTo(0));
-        Assert.That(result.ExecutionResult, Is.EqualTo(OrderExecutionResultState.Unsuccessful));
+		// Assert
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(result.Error, Is.Not.EqualTo(0));
+            Assert.That(result.ExecutionResult, Is.EqualTo(OrderExecutionResultState.Unsuccessful));
+        }
     }
 
     private MessageHandlingResult HandleRequestAnswerOnSuccessDelegate(IInboundDataMessage message, object transportObject, IParameterSet parameterSet)

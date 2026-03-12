@@ -30,5 +30,5 @@ public interface ISyncOrderManager : IDisposable
     /// </summary>
     /// <param name="orderId">ID of the order</param>
     /// <returns>Sync running execution data or null</returns>
-    SyncExecutionData GetSyncExecutionDataForOrder(long orderId);
+    SyncExecutionData? GetSyncExecutionDataForOrder(long orderId);
 }

@@ -1,6 +1,6 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
-using Bodoconsult.NetworkCommunication.Interfaces;
+using Bodoconsult.NetworkCommunication.Helpers;
 using Bodoconsult.NetworkCommunication.StateManagement.Builders;
 using Bodoconsult.NetworkCommunication.StateManagement.Configurations;
 using Bodoconsult.NetworkCommunication.StateManagement.Factories;
@@ -23,7 +23,6 @@ internal class StateMachineStateFactoryTests
         // Assert
         using (Assert.EnterMultipleScope())
         {
-            Assert.That(factory.CurrentContext, Is.Null);
             Assert.That(factory.StateConfigurations, Is.Not.Null);
             Assert.That(factory.StateConfigurations.Count, Is.Zero);
         }
@@ -59,10 +58,9 @@ internal class StateMachineStateFactoryTests
         var factory = new StateMachineStateFactory();
         factory.LoadContext(device);
 
-        var config = new NoActionStateConfiguration(DefaultStateNames.DeviceReadyState)
+        var config = new NoActionStateConfiguration(DefaultStateNames.DeviceReadyState, new DeviceReadyStateBuilder())
         {
-            StateBuilderBuilder = new DeviceReadyStateBuilder(),
-            CheckJobstatesActionForStateDelegate = CheckJobstatesActionForStateDelegate
+            CheckJobstatesActionForStateDelegate = DelegateHelper.DefaultCheckJobstatesActionForStateDelegate
         };
 
         // Act  
@@ -88,12 +86,11 @@ internal class StateMachineStateFactoryTests
         var factory = new StateMachineStateFactory();
         factory.LoadContext(device);
 
-        var config = new OrderBasedActionStateConfiguration(DefaultStateNames.DeviceStartStreamingState)
+        var config = new OrderBasedActionStateConfiguration(DefaultStateNames.DeviceStartStreamingState, new DeviceStartStreamingStateBuilder())
         {
-            StateBuilderBuilder = new DeviceStartStreamingStateBuilder(),
-            PrepareOrdersForStateMachineStateDelegate = PrepareOrdersForStateMachineStateDelegate,
-            OrderFinishedUnsucessfullyDelegate = OrderFinishedUnsucessfullyDelegate,
-            OrderFinishedSucessfullyDelegate = OrderFinishedSucessfullyDelegate
+            PrepareOrdersForStateMachineStateDelegate = DelegateHelper.PrepareOrdersForStateMachineStateDelegate,
+            OrderFinishedUnsucessfullyDelegate = DelegateHelper.OrderFinishedUnsucessfullyDelegate,
+            OrderFinishedSucessfullyDelegate = DelegateHelper.OrderFinishedSucessfullyDelegate
         };
 
         // Act  
@@ -119,12 +116,11 @@ internal class StateMachineStateFactoryTests
         var factory = new StateMachineStateFactory();
         factory.LoadContext(device);
 
-        var config = new JobStateConfiguration(DefaultStateNames.DeviceStartStreamingState)
+        var config = new JobStateConfiguration(DefaultStateNames.DeviceStartStreamingState, new DeviceStartStreamingStateBuilder())
         {
-            StateBuilderBuilder = new DeviceStartStreamingStateBuilder(),
-            PrepareOrdersForStateMachineStateDelegate = PrepareOrdersForStateMachineStateDelegate,
-            OrderFinishedUnsucessfullyDelegate = OrderFinishedUnsucessfullyDelegate,
-            OrderFinishedSucessfullyDelegate = OrderFinishedSucessfullyDelegate
+            PrepareOrdersForStateMachineStateDelegate = DelegateHelper .PrepareOrdersForStateMachineStateDelegate,
+            OrderFinishedUnsucessfullyDelegate = DelegateHelper.OrderFinishedUnsucessfullyDelegate,
+            OrderFinishedSucessfullyDelegate = DelegateHelper.OrderFinishedSucessfullyDelegate
         };
 
         // Act  
@@ -150,10 +146,9 @@ internal class StateMachineStateFactoryTests
         var factory = new StateMachineStateFactory();
         factory.LoadContext(device);
 
-        var config = new OrderlessActionStateConfiguration(DefaultStateNames.DeviceOfflineState)
+        var config = new OrderlessActionStateConfiguration(DefaultStateNames.DeviceOfflineState, new DeviceOfflineStateBuilder())
         {
-            StateBuilderBuilder = new DeviceOfflineStateBuilder(),
-            ExecuteActionForStateDelegate = ExecuteActionForStateDelegate
+            ExecuteActionForStateDelegate = DelegateHelper.ExecuteActionForStateDelegate
         };
 
         // Act  
@@ -168,48 +163,5 @@ internal class StateMachineStateFactoryTests
             Assert.That(factory.StateConfigurations.Count, Is.EqualTo(1));
             Assert.That(config.CurrentContext, Is.EqualTo(device));
         }
-    }
-
-    private void ExecuteActionForStateDelegate(IOrderlessActionStateMachineState state)
-    {
-        // Do nothing
-    }
-
-    private void OrderFinishedSucessfullyDelegate(IStateMachineState state, IOrder order)
-    {
-        // Do nothing
-    }
-
-    private void OrderFinishedUnsucessfullyDelegate(IStateMachineState state, IOrder order)
-    {
-        // Do nothing
-    }
-
-    private List<IOrder> PrepareOrdersForStateMachineStateDelegate()
-    {
-        return [];
-    }
-
-    private void CheckJobstatesActionForStateDelegate(INoActionStateMachineState state)
-    {
-        // Do nothing
-    }
-
-    [Test]
-    public void RegisterConfiguration_NoStateBuilder_ThrowsException()
-    {
-        // Arrange 
-        var device = TestDataHelper.CreateStateMachineDevice();
-
-        var factory = new StateMachineStateFactory();
-        factory.LoadContext(device);
-
-        var config = new NoActionStateConfiguration(DefaultStateNames.DeviceReadyState);
-
-        // Act and assert 
-        Assert.Throws<ArgumentNullException>(() =>
-        {
-            factory.RegisterConfiguration(config);
-        });
     }
 }

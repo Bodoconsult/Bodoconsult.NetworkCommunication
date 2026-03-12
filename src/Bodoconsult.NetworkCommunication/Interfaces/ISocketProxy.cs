@@ -18,7 +18,7 @@ public interface ISocketProxy: IDisposable
     /// <summary>
     /// IP address of the remote device
     /// </summary>
-    IPAddress IpAddress { get; set; }
+    IPAddress? IpAddress { get; set; }
 
     /// <summary>
     /// Port the current device listens on

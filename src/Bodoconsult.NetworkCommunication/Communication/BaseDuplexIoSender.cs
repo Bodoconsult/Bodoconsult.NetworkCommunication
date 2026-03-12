@@ -12,7 +12,7 @@ public abstract class BaseDuplexIoSender : IDuplexIoSender
     /// <summary>
     /// Current device comm settings
     /// </summary>
-    public IDataMessagingConfig DataMessagingConfig { get;  }
+    public IDataMessagingConfig DataMessagingConfig { get; }
 
     /// <summary>
     /// Current data messaging coding processor impl
@@ -24,10 +24,12 @@ public abstract class BaseDuplexIoSender : IDuplexIoSender
     /// </summary>
     public IDataMessageSplitter DataMessageSplitter { get; private set; }
 
-    public BaseDuplexIoSender(IDataMessagingConfig dataMessagingConfig)
+    protected BaseDuplexIoSender(IDataMessagingConfig dataMessagingConfig)
     {
-        DataMessagingConfig =dataMessagingConfig;
-        UpdateDataMessageProcessingPackage();
+        DataMessagingConfig = dataMessagingConfig;
+        ArgumentNullException.ThrowIfNull(DataMessagingConfig.DataMessageProcessingPackage);
+        DataMessageCodingProcessor = DataMessagingConfig.DataMessageProcessingPackage.DataMessageCodingProcessor;
+        DataMessageSplitter = DataMessagingConfig.DataMessageProcessingPackage.DataMessageSplitter;
     }
 
     /// <summary>
@@ -60,10 +62,7 @@ public abstract class BaseDuplexIoSender : IDuplexIoSender
     /// </summary>
     public void UpdateDataMessageProcessingPackage()
     {
-        if (DataMessagingConfig.DataMessageProcessingPackage == null)
-        {
-            throw new ArgumentNullException(nameof(DataMessagingConfig.DataMessageProcessingPackage));
-        }
+        ArgumentNullException.ThrowIfNull(DataMessagingConfig.DataMessageProcessingPackage);
         DataMessageCodingProcessor = DataMessagingConfig.DataMessageProcessingPackage.DataMessageCodingProcessor;
         DataMessageSplitter = DataMessagingConfig.DataMessageProcessingPackage.DataMessageSplitter;
     }

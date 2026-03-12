@@ -1,10 +1,10 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
-using Bodoconsult.NetworkCommunication.Interfaces;
 using System.Net;
 using System.Net.NetworkInformation;
 using System.Net.Sockets;
 using Bodoconsult.NetworkCommunication.Delegates;
+using Bodoconsult.NetworkCommunication.Interfaces;
 
 namespace Bodoconsult.NetworkCommunication.Communication;
 
@@ -13,9 +13,8 @@ namespace Bodoconsult.NetworkCommunication.Communication;
 /// </summary>
 public class IpCommunicationAdapter : ICommunicationAdapter
 {
-    private ICommunicationHandler _communicationHandler;
+    private ICommunicationHandler? _communicationHandler;
     private readonly ICommunicationHandlerFactory _communicationHandlerFactory;
-    private readonly IOutboundDataMessageFactory _outboundDataMessageFactory;
     private IDeviceState _deviceState = DefaultDeviceStates.DeviceStateOffline;
     private readonly Lock _comDevActionLockObject = new();
 
@@ -36,14 +35,13 @@ public class IpCommunicationAdapter : ICommunicationAdapter
     {
         DataMessagingConfig = dataMessagingConfig;
         _communicationHandlerFactory = communicationHandlerFactory;
-        _outboundDataMessageFactory = outboundDataMessageFactory;
 
         ////DataMessagingConfig.GetTowerStateDelegate = GetTowerState;
         DataMessagingConfig.CheckIfCommunicationIsOnlineDelegate = CheckIfCommunicationIsOnline;
         //DataMessagingConfig.CheckIfDeviceIsReadyDelegate = CheckIfDeviceIsReady;
 
         DataMessagingConfig.RaiseComDevCloseRequestDelegate = OnRequestComDevClose;
-        DataMessagingConfig.ResetOutboundDataMessageFactoryDelegate = _outboundDataMessageFactory.Reset;
+        DataMessagingConfig.ResetOutboundDataMessageFactoryDelegate = outboundDataMessageFactory.Reset;
     }
 
     /// <summary>
@@ -81,7 +79,7 @@ public class IpCommunicationAdapter : ICommunicationAdapter
     /// <summary>
     /// Set the order processing state delegate
     /// </summary>
-    public SetOrderProcessingStateDelegate SetOrderProcessingStateDelegate { get; set; }
+    public SetOrderProcessingStateDelegate? SetOrderProcessingStateDelegate { get; set; }
 
     /// <summary>
     ///     This property returns the value of the Error-Byte in
@@ -100,11 +98,6 @@ public class IpCommunicationAdapter : ICommunicationAdapter
     public bool IsConnected => IsFakeSendingActivated || (_communicationHandler?.IsConnected ?? false);
 
     /// <summary>
-    /// This is the last state received from tower
-    /// </summary>
-    public string StatusRequestReceivedState { get; set; }
-
-    /// <summary>
     /// This property has to be set to false for production. Is only for testing
     /// </summary>
     public bool IsFakeSendingActivated { get; set; }
@@ -121,6 +114,11 @@ public class IpCommunicationAdapter : ICommunicationAdapter
     /// <returns>Reply of the device</returns>
     public MessageSendingResult SendDataMessage(IOutboundDataMessage command)
     {
+        if (_communicationHandler == null)
+        {
+            throw new ArgumentNullException(nameof(_communicationHandler));
+        }
+
         return _communicationHandler.SendMessage(command);
     }
 
@@ -378,7 +376,7 @@ public class IpCommunicationAdapter : ICommunicationAdapter
         {
             var success = _pingInstances.TryGetValue(ipAddress, out var ping);
 
-            if (!success)
+            if (!success || ping == null)
             {
                 ping = new Ping();
                 _pingInstances.Add(ipAddress, ping);

@@ -48,17 +48,17 @@ public interface IRequestAnswerStep : IDisposable
     /// <summary>
     /// Delegate for action after cancelling the request step
     /// </summary>
-    ActionRequestStepDelegate CancelActionDelegate { get; set; }
+    ActionRequestStepDelegate? CancelActionDelegate { get; set; }
 
     /// <summary>
     /// Delegate for action before the step is executed
     /// </summary>
-    ActionRequestStepDelegate BeforeExecuteActionDelegate { get; set; }
+    ActionRequestStepDelegate? BeforeExecuteActionDelegate { get; set; }
 
     /// <summary>
     /// Delegate for doing something if a RequestAnswerStep failed
     /// </summary>
-    HandleRequestAnswerStepFailedDelegate HandleRequestAnswerStepFailedDelegate { get; set; }
+    HandleRequestAnswerStepFailedDelegate? HandleRequestAnswerStepFailedDelegate { get; set; }
 
     /// <summary>
     /// The state to notify the app before the step is running

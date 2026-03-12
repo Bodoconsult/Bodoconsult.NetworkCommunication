@@ -12,7 +12,7 @@ public interface IOrderPipeline : IDisposable
     /// <summary>
     /// Delegate for sending a notification if the order state has changed
     /// </summary>
-    DoNotifyOrderStateChangedDelegate DoNotifyOrderStateChangedDelegate { get; set; }
+    DoNotifyOrderStateChangedDelegate? DoNotifyOrderStateChangedDelegate { get; set; }
 
     /// <summary>
     /// All currently running request processors at the current timepoint
@@ -149,13 +149,13 @@ public interface IOrderPipeline : IDisposable
     /// Get the next priority order
     /// </summary>
     /// <returns>Priority order or null</returns>
-    IOrder GetNextPriorityOrder();
+    IOrder? GetNextPriorityOrder();
 
     /// <summary>
     /// Get the next non-priority order
     /// </summary>
     /// <returns>Non-priority order or null</returns>
-    IOrder GetNextNonPriorityOrder();
+    IOrder? GetNextNonPriorityOrder();
 
     /// <summary>
     /// Prepare the order start (but do NOT start it). Public only for testing
@@ -177,7 +177,7 @@ public interface IOrderPipeline : IDisposable
     /// </summary>
     /// <param name="orderId">ID of the order</param>
     /// <returns>Removed request processor</returns>
-    IRequestProcessor GetFromExecutionQueue(long orderId);
+    IRequestProcessor? GetFromExecutionQueue(long orderId);
 
 
     /// <summary>

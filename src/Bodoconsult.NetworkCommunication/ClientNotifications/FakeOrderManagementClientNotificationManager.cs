@@ -14,7 +14,7 @@ public class FakeOrderManagementClientNotificationManager : IOrderManagementClie
     /// <summary>
     /// Delegate for sending a notification to the client
     /// </summary>
-    public TransferToClientDelegate NotifyClient { get; set; }
+    public TransferToClientDelegate? NotifyClient { get; set; }
 
     /// <summary>
     /// Send a progress notification

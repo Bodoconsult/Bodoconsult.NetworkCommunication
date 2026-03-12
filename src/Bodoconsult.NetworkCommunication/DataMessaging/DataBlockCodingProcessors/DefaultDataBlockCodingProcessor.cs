@@ -47,7 +47,7 @@ public class DefaultDataBlockCodingProcessor : IDataBlockCodingProcessor
     /// </summary>
     /// <param name="datablockType">Type of the datablock</param>
     /// <returns>Codec or null if no fitting codec was found</returns>
-    public IDataBlockCodec GetDatablockCodecCanBeNull(char datablockType)
+    public IDataBlockCodec? GetDatablockCodecCanBeNull(char datablockType)
     {
         DatablockCodecs.TryGetValue(datablockType, out var dataBlockCodec);
         return dataBlockCodec;
@@ -58,7 +58,7 @@ public class DefaultDataBlockCodingProcessor : IDataBlockCodingProcessor
     /// </summary>
     /// <param name="dataBlockBytes">Received datablock as byte array</param>
     /// <returns>Datablock object or null if no fitting codec was found</returns>
-    public ITypedInboundDataBlock FromBytesToDataBlock(Memory<byte> dataBlockBytes)
+    public ITypedInboundDataBlock? FromBytesToDataBlock(Memory<byte> dataBlockBytes)
     {
         if (dataBlockBytes.Length == 0)
         {
@@ -67,11 +67,12 @@ public class DefaultDataBlockCodingProcessor : IDataBlockCodingProcessor
 
         var dataBlockType = Convert.ToChar(dataBlockBytes[..1].Span[0]);
         var dataBlockCodec = GetDatablockCodecCanBeNull(dataBlockType);
-        if (dataBlockCodec != null)
+        if (dataBlockCodec == null)
         {
-            var dataBlock = dataBlockCodec.DecodeDataBlock(dataBlockBytes);
-            return dataBlock;
+            return null;
         }
-        return null;
+
+        var dataBlock = dataBlockCodec.DecodeDataBlock(dataBlockBytes);
+        return dataBlock;
     }
 }

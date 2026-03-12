@@ -19,7 +19,7 @@ public class FakeStateMachineStateFactory : IStateMachineStateFactory
     /// <summary>
     /// Current context
     /// </summary>
-    public IStateManagementDevice CurrentContext { get; private set; }
+    public IStateManagementDevice? CurrentContext { get; private set; }
 
     /// <summary>
     /// Create a state instance of the requested type
@@ -28,7 +28,7 @@ public class FakeStateMachineStateFactory : IStateMachineStateFactory
     /// <returns>State instance of the requested type</returns>
     public IStateMachineState CreateInstance(string stateName)
     {
-        return null;
+        throw new NotSupportedException();
     }
 
     /// <summary>

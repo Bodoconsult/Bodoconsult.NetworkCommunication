@@ -18,7 +18,7 @@ public abstract class TcpIpSocketProxyBase : ISocketProxy
     /// <summary>
     /// IP address of the server
     /// </summary>
-    public IPAddress IpAddress { get; set; }
+    public IPAddress? IpAddress { get; set; }
     
     /// <summary>
     /// Port the current device listens on

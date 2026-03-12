@@ -1,8 +1,8 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
+using System.Net.Sockets;
 using Bodoconsult.NetworkCommunication.Communication.Sending;
 using Bodoconsult.NetworkCommunication.Interfaces;
-using System.Net.Sockets;
 using Bodoconsult.NetworkCommunication.StateManagement.Interfaces;
 
 namespace Bodoconsult.NetworkCommunication.Delegates;
@@ -52,7 +52,7 @@ public delegate bool CheckIfDeviceIsReadyDelegate();
 /// <summary>
 /// Data message not sent delegate
 /// </summary>
-public delegate void RaiseDataMessageNotSentDelegate(ReadOnlyMemory<byte> message, string reason);
+public delegate void RaiseDataMessageNotSentDelegate(ReadOnlyMemory<byte> message, string? reason);
 
 /// <summary>
 /// Message sent delegate
@@ -119,7 +119,7 @@ public delegate bool OrderReceiverCheckMessageDelegate(IInboundDataMessage messa
 /// <param name="transportObject">Transport object to deliver a state to the method</param>
 /// <param name="parameterSet">Current parameter set</param>
 /// <returns>Result of the message handling</returns>
-public delegate MessageHandlingResult ActionRequestStepDelegate(object transportObject, IParameterSet parameterSet);
+public delegate MessageHandlingResult ActionRequestStepDelegate(object? transportObject, IParameterSet? parameterSet);
 
 /// <summary>
 /// Delegate for sending a notification if the order state has changed
@@ -140,7 +140,7 @@ public delegate void OrderProcessingFinishedDelegate(long orderId);
 /// <param name="transportObject">Transport object to deliver a state to the method</param>
 /// <param name="parameterSet">Current parameter set</param>
 /// <returns>Result of the message handling</returns>
-public delegate MessageHandlingResult HandleRequestAnswerDelegate(IInboundDataMessage message, object transportObject, IParameterSet parameterSet);
+public delegate MessageHandlingResult HandleRequestAnswerDelegate(IInboundDataMessage? message, object? transportObject, IParameterSet? parameterSet);
 
 /// <summary>
 /// Delegate for handling request answer messages
@@ -200,14 +200,14 @@ public delegate void ResetOutboundDataMessageFactoryDelegate();
 /// <param name="receivedMessage">A received message from the device</param>
 /// <param name="errors">List with error messages to fill</param>
 /// <returns>True if the message was as expected as answer of the sent message else false</returns>
-public delegate bool CheckReceivedMessageDelegate(IRequestAnswer requestAnswer, IOutboundDataMessage sentMessage, IInboundDataMessage receivedMessage, IList<string> errors);
+public delegate bool CheckReceivedMessageDelegate(IRequestAnswer requestAnswer, IOutboundDataMessage sentMessage, IInboundDataMessage? receivedMessage, IList<string> errors);
 
 /// <summary>
 /// Delegate for creating data messages to sent to the device
 /// </summary>
 /// <param name="parameterSet">Current parameter set</param>
 /// <returns>List with orders to send to the device</returns>
-public delegate List<IOutboundDataMessage> CreateMessagesToSentDelegate(IParameterSet parameterSet);
+public delegate List<IOutboundDataMessage> CreateMessagesToSentDelegate(IParameterSet? parameterSet);
 
 
 
@@ -259,14 +259,14 @@ public delegate void HandleComDevCloseDelegate(IStateMachineState state);
 /// <param name="state">Current state machine state</param>
 /// <param name="message">Current received message</param>
 /// <returns>Message handling result</returns>
-public delegate MessageHandlingResult HandleAsyncMessageDelegate(IStateMachineState state, IInboundDataMessage  message);
+public delegate MessageHandlingResult HandleAsyncMessageDelegate(IStateMachineState state, IInboundDataMessage?  message);
 
 /// <summary>
 /// Handle an async received message without state machine
 /// </summary>
 /// <param name="message">Current received message</param>
 /// <returns>Message handling result</returns>
-public delegate MessageHandlingResult NoStateMachineHandleAsyncMessageDelegate(IInboundDataMessage message);
+public delegate MessageHandlingResult NoStateMachineHandleAsyncMessageDelegate(IInboundDataMessage? message);
 
 /// <summary>
 /// Handle an error message received from the device

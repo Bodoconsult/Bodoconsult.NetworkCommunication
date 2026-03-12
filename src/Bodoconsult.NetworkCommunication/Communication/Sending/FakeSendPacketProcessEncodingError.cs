@@ -24,6 +24,9 @@ public class FakeSendPacketProcessEncodingError : FakeSendPacketProcess
     /// </summary>
     public override bool SendMessage()
     {
+        ArgumentNullException.ThrowIfNull(DataMessagingConfig);
+        ArgumentNullException.ThrowIfNull(Message);
+
         DataMessagingConfig.RaiseDataMessageSentDelegate?.Invoke(new ReadOnlyMemory<byte>(Message.RawMessageData.ToArray()));
         return true;
     }

@@ -71,7 +71,7 @@ public class BtcpDataMessageCodec : BaseDataMessageCodec
 
         var isRequest = data.Slice(1, 1).Span[0] == 1;
 
-        ITypedInboundDataBlock dataBlock = null;
+        ITypedInboundDataBlock? dataBlock = null;
 
         var posEot = 0;
 

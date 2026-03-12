@@ -15,7 +15,7 @@ public interface IStateMachineStateFactory
     /// <summary>
     /// Current context
     /// </summary>
-    IStateManagementDevice CurrentContext { get; }
+    IStateManagementDevice? CurrentContext { get; }
 
     /// <summary>
     /// Create a state instance of the requested type

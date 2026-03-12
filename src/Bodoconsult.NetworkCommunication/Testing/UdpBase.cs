@@ -1,10 +1,10 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
-using Bodoconsult.NetworkCommunication.Interfaces;
 using System.Diagnostics;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
+using Bodoconsult.NetworkCommunication.Interfaces;
 
 namespace Bodoconsult.NetworkCommunication.Testing;
 
@@ -15,7 +15,7 @@ namespace Bodoconsult.NetworkCommunication.Testing;
 /// </summary>
 public abstract class UdpDeviceBase :  IUdpDevice
 {
-    private Thread _thread;
+    private Thread? _thread;
     private bool _isDisposed;
 
     protected bool IsServer;
@@ -30,12 +30,12 @@ public abstract class UdpDeviceBase :  IUdpDevice
     /// <summary>
     /// Endpoint for listening
     /// </summary>
-    protected IPEndPoint EndPoint;
+    protected IPEndPoint? EndPoint;
 
     /// <summary>
     /// Endpoint for listening
     /// </summary>
-    protected IPEndPoint SendEndPoint;
+    protected IPEndPoint? SendEndPoint;
 
     /// <summary>
     /// Default ctor
@@ -174,8 +174,8 @@ public abstract class UdpDeviceBase :  IUdpDevice
 
         try
         {
-            Listener?.Close();
-            Listener?.Dispose();
+            Listener.Close();
+            Listener.Dispose();
         }
         catch
         {

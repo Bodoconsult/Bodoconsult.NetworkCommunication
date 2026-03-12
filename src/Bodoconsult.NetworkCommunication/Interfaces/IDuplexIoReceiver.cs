@@ -10,12 +10,12 @@ public interface IDuplexIoReceiver : IAsyncDisposable, IDisposable
     /// <summary>
     /// Thread filling receiver pipeline
     /// </summary>
-    Thread FillPipelineTask { get; }
+    Thread? FillPipelineTask { get; }
 
     /// <summary>
     /// Thread sending messages from receiver pipeline to app internal consumers
     /// </summary>
-    Thread SendPipelineTask { get; }
+    Thread? SendPipelineTask { get; }
 
     /// <summary>
     /// Start the internal receiver

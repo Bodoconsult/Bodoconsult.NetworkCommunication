@@ -36,7 +36,7 @@ public class RawInboundDataMessage : IInboundDataMessage
     /// <summary>
     /// Data block stored in the message
     /// </summary>
-    public ITypedInboundDataBlock DataBlock { get; set; }
+    public ITypedInboundDataBlock? DataBlock { get; set; }
 
     /// <summary>
     /// Current raw message data as byte array
@@ -54,7 +54,7 @@ public class RawInboundDataMessage : IInboundDataMessage
     /// <summary>
     /// Current raw message data as clear text
     /// </summary>
-    public string RawMessageDataClearText { get; private set; }
+    public string? RawMessageDataClearText { get; private set; }
 
     /// <summary>
     /// Create an info string for logging

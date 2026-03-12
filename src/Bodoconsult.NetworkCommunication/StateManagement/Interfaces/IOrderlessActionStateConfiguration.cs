@@ -12,5 +12,5 @@ public interface IOrderlessActionStateConfiguration : IStateConfiguration
     /// <summary>
     /// Delegate to be executed from an orderless state machine state
     /// </summary>
-    ExecuteActionForStateDelegate ExecuteActionForStateDelegate { get; set; }
+    ExecuteActionForStateDelegate? ExecuteActionForStateDelegate { get; set; }
 }

@@ -14,13 +14,15 @@ public class OrderlessActionStateMachineState : BaseStateMachineState, IOrderles
     /// Default ctor
     /// </summary>
     /// <param name="currentContext">Current context</param>
+    /// <param name="id">ID of the current state</param>
+    /// <param name="name">Name of the current state</param>
     public OrderlessActionStateMachineState(IStateManagementDevice currentContext, int id, string name) : base(currentContext, id, name)
     { }
 
     /// <summary>
     /// Delegate to be executed from an orderless state machine state
     /// </summary>
-    public ExecuteActionForStateDelegate ExecuteActionForStateDelegate { get; set; }
+    public ExecuteActionForStateDelegate? ExecuteActionForStateDelegate { get; set; }
 
     /// <summary>
     /// Execute the action defined with <see cref="IOrderlessActionStateMachineState.ExecuteActionForStateDelegate"/> for this state

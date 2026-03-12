@@ -50,13 +50,12 @@ public class DeviceOnlineStateBuilder : BaseOrderlessStateMachineStateBuilder
 
     private static void ExecuteActionForStateDelegate(IOrderlessActionStateMachineState state)
     {
-        if (state.CancellationTokenSource == null)
-        {
-            throw new ArgumentNullException(nameof(state.CancellationTokenSource));
-        }
+        ArgumentNullException.ThrowIfNull(state.CancellationTokenSource);
 
         var context = state.CurrentContext;
         var commAdapter = context.CommunicationAdapter;
+
+        ArgumentNullException.ThrowIfNull(commAdapter);
 
         // Try to connect to device
         var nextState = DefaultStateNames.DeviceReadyState;

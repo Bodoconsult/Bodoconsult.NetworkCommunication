@@ -1,7 +1,6 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
 using Bodoconsult.NetworkCommunication.Delegates;
-using Bodoconsult.NetworkCommunication.Helpers;
 using Bodoconsult.NetworkCommunication.StateManagement.Interfaces;
 
 namespace Bodoconsult.NetworkCommunication.StateManagement.Configurations;
@@ -15,15 +14,17 @@ public class NoActionStateConfiguration : INoActionStateConfiguration
     /// Default ctor
     /// </summary>
     /// <param name="stateName">Name of the state to configure</param>
-    public NoActionStateConfiguration(string stateName)
+    /// <param name="stateBuilderBuilder">State builder to use</param>
+    public NoActionStateConfiguration(string stateName, IStateMachineStateBuilder stateBuilderBuilder)
     {
         StateName = stateName;
+        StateBuilderBuilder = stateBuilderBuilder;
     }
 
     /// <summary>
     /// Current context
     /// </summary>
-    public IStateManagementDevice CurrentContext { get; set; }
+    public IStateManagementDevice? CurrentContext { get; set; }
 
     /// <summary>
     /// Name of the state to configure
@@ -39,32 +40,32 @@ public class NoActionStateConfiguration : INoActionStateConfiguration
     /// <summary>
     /// Delegate to handle a ComDevClose event in business logic
     /// </summary>
-    public HandleComDevCloseDelegate HandleComDevCloseDelegate { get; set; } 
+    public HandleComDevCloseDelegate? HandleComDevCloseDelegate { get; set; } 
 
     /// <summary>
     /// Handle an error message received from the device
     /// </summary>
-    public HandleErrorMessageDelegate HandleErrorMessageDelegate { get; set; } 
+    public HandleErrorMessageDelegate? HandleErrorMessageDelegate { get; set; } 
 
     /// <summary>
     /// Handle an async received message
     /// </summary>
-    public HandleAsyncMessageDelegate HandleAsyncMessageDelegate { get; set; }
+    public HandleAsyncMessageDelegate? HandleAsyncMessageDelegate { get; set; }
 
     /// <summary>
     /// Delegate for preparing orders for the regular state reqeust
     /// </summary>
-    public PrepareRegularStateRequestDelegate PrepareRegularStateRequestDelegate { get; set; } 
+    public PrepareRegularStateRequestDelegate? PrepareRegularStateRequestDelegate { get; set; } 
 
     /// <summary>
     /// Delegate for handling device state check request answers in business logic
     /// </summary>
-    public HandleRegularStateRequestAnswerDelegate HandleRegularStateRequestAnswerDelegate { get; set; }
+    public HandleRegularStateRequestAnswerDelegate? HandleRegularStateRequestAnswerDelegate { get; set; }
 
     /// <summary>
     /// Delegate to be executed from a no action state machine state to check if job states are required to be executed
     /// </summary>
-    public CheckJobstatesActionForStateDelegate CheckJobstatesActionForStateDelegate { get; set; } 
+    public CheckJobstatesActionForStateDelegate? CheckJobstatesActionForStateDelegate { get; set; } 
 
     /// <summary>
     /// Is  a config valid

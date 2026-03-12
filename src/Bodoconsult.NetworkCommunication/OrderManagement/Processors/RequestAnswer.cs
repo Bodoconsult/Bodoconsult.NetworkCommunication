@@ -17,7 +17,7 @@ public class RequestAnswer : IRequestAnswer
     /// <param name="dataBlockType">Type of the data block if <see cref="IRequestAnswer.HasDatablock"/> is true</param>
     /// <param name="name">A cleartext name of the request answer for logging</param>
     /// <param name="checkReceivedMessageDelegate">Current delegate for message checking</param>
-    public RequestAnswer(bool hasDatablock, Type dataBlockType, string name, CheckReceivedMessageDelegate checkReceivedMessageDelegate)
+    public RequestAnswer(bool hasDatablock, Type? dataBlockType, string name, CheckReceivedMessageDelegate checkReceivedMessageDelegate)
     {
         ArgumentNullException.ThrowIfNull(checkReceivedMessageDelegate);
 
@@ -40,7 +40,7 @@ public class RequestAnswer : IRequestAnswer
     /// <summary>
     /// Type of the data block if <see cref="IRequestAnswer.HasDatablock"/> is true
     /// </summary>
-    public Type DataBlockType { get; }
+    public Type? DataBlockType { get; }
 
     /// <summary>
     /// The answer was successfully received
@@ -50,12 +50,12 @@ public class RequestAnswer : IRequestAnswer
     /// <summary>
     /// The succesfully received answer from the device
     /// </summary>
-    public IInboundDataMessage ReceivedMessage { get; private set; }
+    public IInboundDataMessage? ReceivedMessage { get; private set; }
 
     /// <summary>
     /// Delegate for handling request answer messages
     /// </summary>
-    public HandleRequestAnswerDelegate HandleRequestAnswerOnSuccessDelegate { get; set; }
+    public HandleRequestAnswerDelegate? HandleRequestAnswerOnSuccessDelegate { get; set; }
 
     ///// <summary>
     ///// Delegate for handling request answer messages
@@ -67,7 +67,7 @@ public class RequestAnswer : IRequestAnswer
     /// If the message is the requested answer from the device the properties <see cref="IRequestAnswer.WasReceived"/>
     /// and <see cref="IRequestAnswer.ReceivedMessage"/> are set to true and the received message.
     /// </summary>
-    public CheckReceivedMessageDelegate CheckReceivedMessageDelegate { get; private set; }
+    public CheckReceivedMessageDelegate? CheckReceivedMessageDelegate { get; private set; }
 
     /// <summary>
     /// Set <see cref="IRequestAnswer.WasReceived"/> to true

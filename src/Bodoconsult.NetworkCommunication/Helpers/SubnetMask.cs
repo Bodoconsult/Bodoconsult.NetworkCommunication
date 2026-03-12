@@ -27,11 +27,11 @@ public static class SubnetMask
         {
             if (i * 8 + 8 <= netPartLength)
             {
-                binaryMask[i] = (byte)255;
+                binaryMask[i] = 255;
             }
             else if (i * 8 > netPartLength)
             {
-                binaryMask[i] = (byte)0;
+                binaryMask[i] = 0;
             }
             else
             {

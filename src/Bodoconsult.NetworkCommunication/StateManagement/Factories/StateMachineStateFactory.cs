@@ -20,7 +20,7 @@ public class StateMachineStateFactory : IStateMachineStateFactory
     /// <summary>
     /// Current context
     /// </summary>
-    public IStateManagementDevice CurrentContext { get; private set; }
+    public IStateManagementDevice? CurrentContext { get; private set; }
 
     /// <summary>
     /// Create a state instance of the requested type
@@ -37,6 +37,11 @@ public class StateMachineStateFactory : IStateMachineStateFactory
         if (!_stateConfigurations.TryGetValue(stateName, out var config))
         {
             throw new ArgumentException($"Builder for state {stateName} is not registered");
+        }
+
+        if (config.StateBuilderBuilder == null)
+        {
+            throw new ArgumentNullException(nameof(config.StateBuilderBuilder));
         }
 
         return config.StateBuilderBuilder.BuildState(config);
@@ -57,15 +62,8 @@ public class StateMachineStateFactory : IStateMachineStateFactory
     /// <param name="config">Config to register</param>
     public void RegisterConfiguration(IStateConfiguration config)
     {
-        if (CurrentContext == null)
-        {
-            throw new ArgumentNullException(nameof(CurrentContext), "Call LoadContext() before calling RegisterConfiguration()!");
-        }
-
-        if (config.StateBuilderBuilder == null)
-        {
-            throw new ArgumentNullException(nameof(config.StateBuilderBuilder), "State builder must be loaded!");
-        }
+        ArgumentNullException.ThrowIfNull(CurrentContext, "Call LoadContext() before calling RegisterConfiguration()!");
+        ArgumentNullException.ThrowIfNull(config.StateBuilderBuilder, "State builder must be loaded!");
 
         var checkResult = config switch
         {

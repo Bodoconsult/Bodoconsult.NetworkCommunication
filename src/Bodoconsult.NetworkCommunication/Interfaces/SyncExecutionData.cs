@@ -58,23 +58,28 @@ public class SyncExecutionData : IDisposable
     /// <summary>
     /// CancellationTokenSource used for running an order in an sync manner
     /// </summary>
-    public CancellationTokenSource CancellationTokenSource { get; private set; }
+    public CancellationTokenSource? CancellationTokenSource { get; private set; }
 
     /// <summary>
     /// TaskCompletionSource used for running an order in a sync manner
     /// </summary>
-    public TaskCompletionSource<IOrderExecutionResultState> TaskCompletionSource { get; private set; }
+    public TaskCompletionSource<IOrderExecutionResultState>? TaskCompletionSource { get; private set; }
 
     /// <summary>Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.</summary>
     public void Dispose()
     {
         try
         {
-            if (!CancellationTokenSource.IsCancellationRequested)
+            if (CancellationTokenSource != null)
             {
-                CancellationTokenSource.Cancel();
+                if (!CancellationTokenSource.IsCancellationRequested)
+                {
+                    CancellationTokenSource.Cancel();
+                }
+
+                CancellationTokenSource.Dispose();
             }
-            CancellationTokenSource?.Dispose();
+
             CancellationTokenSource = null;
             TaskCompletionSource = null;
         }

@@ -38,7 +38,7 @@ public class DeviceOfflineStateBuilder : BaseOrderlessStateMachineStateBuilder
         state.HandleRegularStateRequestAnswerDelegate = config.HandleRegularStateRequestAnswerDelegate;
         state.PrepareRegularStateRequestDelegate = config.PrepareRegularStateRequestDelegate;
 
-        state.ExecuteActionForStateDelegate = config.ExecuteActionForStateDelegate ?? ExecuteActionForStateDelegate;
+        state.ExecuteActionForStateDelegate = config.ExecuteActionForStateDelegate ?? DelegateHelper.DefaultExecuteActionForStateDelegate;
 
         state.IsRunningOrdersCancellationRequired = true;
         state.IsTurningOffStateRequestsRequired = true;
@@ -49,31 +49,5 @@ public class DeviceOfflineStateBuilder : BaseOrderlessStateMachineStateBuilder
     }
 
 
-    private static void ExecuteActionForStateDelegate(IOrderlessActionStateMachineState state)
-    {
-        if (state.CancellationTokenSource == null)
-        {
-            throw new ArgumentNullException(nameof(state.CancellationTokenSource));
-        }
-
-        var context = state.CurrentContext;
-
-        // Wait until the device is pingable
-        while (!state.CancellationTokenSource.IsCancellationRequested)
-        {
-            context.SetBusinessSubState(DefaultBusinessSubStates.PingingTower);
-            if (context.IsPingable)
-            {
-                break;
-            }
-
-            context.SetBusinessSubState(DefaultBusinessSubStates.WaitingForNextPingingTower);
-            Thread.Sleep(DeviceCommunicationBasics.PingRepeatInterval);
-        }
-
-        // New state now
-        var stateNew = context.CreateStateInstance(DefaultStateNames.DeviceOnlineState);
-        state.NextState = stateNew;
-        state.RequestNextState();
-    }
+   
 }

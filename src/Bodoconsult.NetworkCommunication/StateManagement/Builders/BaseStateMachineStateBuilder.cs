@@ -14,7 +14,7 @@ public abstract class BaseNoActionStateMachineStateBuilder : BaseStateMachineSta
     /// <summary>
     /// Default ctor
     /// </summary>
-    protected BaseNoActionStateMachineStateBuilder(int stateId, string stateName) : base(stateId , stateName, StateMachineStateTypes.NoActionState)
+    protected BaseNoActionStateMachineStateBuilder(int stateId, string stateName) : base(stateId, stateName, StateMachineStateTypes.NoActionState)
     { }
 
     /// <summary>
@@ -34,7 +34,7 @@ public abstract class BaseNoActionStateMachineStateBuilder : BaseStateMachineSta
             throw new ArgumentException($"Wrong config type {config.GetType().Name}");
         }
 
-        ConfigureNoActionState(state1,config1 );
+        ConfigureNoActionState(state1, config1);
     }
 
     /// <summary>
@@ -96,6 +96,8 @@ public abstract class BaseStateMachineStateBuilder : IStateMachineStateBuilder
         {
             throw new ArgumentException($"State name: mismatch between {config.StateName} and {StateName}");
         }
+
+        ArgumentNullException.ThrowIfNull(config.CurrentContext);
 
         switch (StateType)
         {

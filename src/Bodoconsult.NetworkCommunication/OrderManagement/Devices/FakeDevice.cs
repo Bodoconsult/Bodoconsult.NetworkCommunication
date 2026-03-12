@@ -33,10 +33,10 @@ public class FakeNoStateMachineDevice : BaseOrderManagementDevice, INoStateMachi
     /// <summary>
     /// Handle an async received message without state machine
     /// </summary>
-    public NoStateMachineHandleAsyncMessageDelegate NoStateMachineHandleAsyncMessageDelegate { get; set; }
+    public NoStateMachineHandleAsyncMessageDelegate? NoStateMachineHandleAsyncMessageDelegate { get; set; }
 
     /// <summary>
     /// Handle an error message received from the device without state machine
     /// </summary>
-    public NoStateMachineHandleErrorMessageDelegate NoStateMachineHandleErrorMessageDelegate { get; set; }
+    public NoStateMachineHandleErrorMessageDelegate? NoStateMachineHandleErrorMessageDelegate { get; set; }
 }

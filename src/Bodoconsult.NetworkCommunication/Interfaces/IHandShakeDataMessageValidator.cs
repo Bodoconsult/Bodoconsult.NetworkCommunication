@@ -15,13 +15,13 @@ public interface IHandshakeDataMessageValidator
     /// <param name="handshakeMessage">Received handshake message</param>
     /// <returns>True if the message was the handshake for the sent message</returns>
     DataMessageValidatorResult IsHandshakeForSentMessage(IOutboundDataMessage sentMessage,
-        IInboundHandShakeMessage handshakeMessage);
+        IInboundHandShakeMessage? handshakeMessage);
 
     /// <summary>
     /// Handle the received handshake and sets the ProcessExecutionResult for the responsible send process <see cref="ISendPacketProcess"/>
     /// </summary>
     /// <param name="context">Current send message process</param>
     /// <param name="handshake">Received handshake</param>
-    void HandleHandshake(ISendPacketProcess context, IInboundHandShakeMessage handshake);
+    void HandleHandshake(ISendPacketProcess context, IInboundHandShakeMessage? handshake);
 
 }

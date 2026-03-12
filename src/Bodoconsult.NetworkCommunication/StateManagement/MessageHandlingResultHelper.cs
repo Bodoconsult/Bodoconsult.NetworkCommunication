@@ -14,7 +14,7 @@ public static class MessageHandlingResultHelper
     /// <summary>
     /// Current app logger
     /// </summary>
-    public static IAppLoggerProxy AppLogger { get; set; }
+    public static IAppLoggerProxy? AppLogger { get; set; }
 
     #region Result handling
 
@@ -23,7 +23,7 @@ public static class MessageHandlingResultHelper
     /// </summary>
     /// <param name="message">Message or null</param>
     /// <returns><see cref="MessageHandlingResult"/> instance</returns>
-    public static MessageHandlingResult Error(string message = null)
+    public static MessageHandlingResult Error(string? message = null)
     {
         if (!string.IsNullOrEmpty(message))
         {
@@ -34,7 +34,7 @@ public static class MessageHandlingResultHelper
         {
             Error = 1,
             ExecutionResult = OrderExecutionResultState.Error,
-            ErrorDescription = message
+            ErrorDescription = message ?? string.Empty
         };
     }
 
@@ -43,7 +43,7 @@ public static class MessageHandlingResultHelper
     /// </summary>
     /// <param name="message">Message or null</param>
     /// <returns><see cref="MessageHandlingResult"/> instance</returns>
-    public static MessageHandlingResult NotProcessed(string message = null)
+    public static MessageHandlingResult NotProcessed(string? message = null)
     {
         if (!string.IsNullOrEmpty(message))
         {
@@ -54,7 +54,7 @@ public static class MessageHandlingResultHelper
         {
             Error = 1,
             ExecutionResult = OrderExecutionResultState.NotProcessed,
-            ErrorDescription = message
+            ErrorDescription = message ?? string.Empty
         };
     }
 
@@ -63,7 +63,7 @@ public static class MessageHandlingResultHelper
     /// </summary>
     /// <param name="message">Message or null</param>
     /// <returns><see cref="MessageHandlingResult"/> instance</returns>
-    public static MessageHandlingResult Unsuccessful(string message = null)
+    public static MessageHandlingResult Unsuccessful(string? message = null)
     {
         if (!string.IsNullOrEmpty(message))
         {
@@ -74,7 +74,7 @@ public static class MessageHandlingResultHelper
         {
             Error = 1,
             ExecutionResult = OrderExecutionResultState.Unsuccessful,
-            ErrorDescription = message
+            ErrorDescription = message ?? string.Empty
         };
     }
 
@@ -83,13 +83,13 @@ public static class MessageHandlingResultHelper
     /// </summary>
     /// <param name="message">Message or null</param>
     /// <returns><see cref="MessageHandlingResult"/> instance</returns>
-    public static MessageHandlingResult Success(string message = null)
+    public static MessageHandlingResult Success(string? message = null)
     {
         return new MessageHandlingResult
         {
             Error = 0,
             ExecutionResult = OrderExecutionResultState.Successful,
-            ErrorDescription = message ?? ""
+            ErrorDescription = message ?? string.Empty
         };
     }
 

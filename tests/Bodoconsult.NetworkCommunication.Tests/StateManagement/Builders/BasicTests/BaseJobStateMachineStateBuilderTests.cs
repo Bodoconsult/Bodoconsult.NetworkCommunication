@@ -4,6 +4,7 @@ using Bodoconsult.NetworkCommunication.Helpers;
 using Bodoconsult.NetworkCommunication.StateManagement.Builders;
 using Bodoconsult.NetworkCommunication.StateManagement.Configurations;
 using Bodoconsult.NetworkCommunication.StateManagement.Interfaces;
+using Bodoconsult.NetworkCommunication.Tests.Helpers;
 
 namespace Bodoconsult.NetworkCommunication.Tests.StateManagement.Builders.BasicTests;
 
@@ -32,7 +33,7 @@ internal class BaseJobStateMachineStateBuilderTests
         // Arrange 
         var builder = new DeviceStartStreamingStateBuilder();
 
-        var config = new JobStateConfiguration(DefaultStateNames.DeviceOnlineState);
+        var config = new JobStateConfiguration(DefaultStateNames.DeviceOnlineState, builder);
 
         // Act and assert
         Assert.Throws<ArgumentException>(() =>
@@ -47,8 +48,9 @@ internal class BaseJobStateMachineStateBuilderTests
         // Arrange 
         var builder = new DeviceStartStreamingStateBuilder();
 
-        var config = new JobStateConfiguration(DefaultStateNames.DeviceStartStreamingState)
+        var config = new JobStateConfiguration(DefaultStateNames.DeviceStartStreamingState, builder)
         {
+            CurrentContext = TestDataHelper.CreateStateMachineDevice(),
             OrderFinishedSucessfullyDelegate = DelegateHelper.OrderFinishedSucessfullyDelegate,
             OrderFinishedUnsucessfullyDelegate = DelegateHelper.OrderFinishedUnsucessfullyDelegate,
             PrepareOrdersForStateMachineStateDelegate = DelegateHelper.PrepareOrdersForStateMachineStateDelegate

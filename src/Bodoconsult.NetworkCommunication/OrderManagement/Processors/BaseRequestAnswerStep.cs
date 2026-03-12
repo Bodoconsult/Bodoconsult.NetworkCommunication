@@ -57,17 +57,17 @@ public class BaseRequestAnswerStep : IRequestAnswerStep
     /// <summary>
     /// Delegate for action after cancelling the request step
     /// </summary>
-    public ActionRequestStepDelegate CancelActionDelegate { get; set; }
+    public ActionRequestStepDelegate? CancelActionDelegate { get; set; }
 
     /// <summary>
     /// Delegate for action before the step is executed
     /// </summary>
-    public ActionRequestStepDelegate BeforeExecuteActionDelegate { get; set; }
+    public ActionRequestStepDelegate? BeforeExecuteActionDelegate { get; set; }
 
     /// <summary>
     /// Delegate for doing something if a RequestAnswerStep failed
     /// </summary>
-    public HandleRequestAnswerStepFailedDelegate HandleRequestAnswerStepFailedDelegate { get; set; }
+    public HandleRequestAnswerStepFailedDelegate? HandleRequestAnswerStepFailedDelegate { get; set; }
 
     /// <summary>
     /// The state to notify the app before the step is running
@@ -94,7 +94,7 @@ public class BaseRequestAnswerStep : IRequestAnswerStep
     public virtual void Reset()
     {
         WasSuccessful = false;
-        RequestSpec.RequestStepProcessorSetResultDelegate.Invoke(OrderExecutionResultState.Unsuccessful);
+        RequestSpec.RequestStepProcessorSetResultDelegate?.Invoke(OrderExecutionResultState.Unsuccessful);
 
         foreach (var answer in AllowedRequestAnswers)
         {

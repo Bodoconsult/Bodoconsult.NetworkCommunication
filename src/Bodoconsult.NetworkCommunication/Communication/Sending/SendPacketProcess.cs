@@ -1,11 +1,11 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
-using Bodoconsult.NetworkCommunication.Delegates;
-using Bodoconsult.NetworkCommunication.Interfaces;
-using Bodoconsult.App.Helpers;
 using System.Diagnostics;
+using Bodoconsult.App.Helpers;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
+using Bodoconsult.NetworkCommunication.Delegates;
 using Bodoconsult.NetworkCommunication.EnumAndStates;
+using Bodoconsult.NetworkCommunication.Interfaces;
 
 namespace Bodoconsult.NetworkCommunication.Communication.Sending;
 
@@ -15,15 +15,15 @@ namespace Bodoconsult.NetworkCommunication.Communication.Sending;
 public class SendPacketProcess : BaseSendPacketProcess
 {
 
-    private CancellationTokenSource _ctsWait;
+    private CancellationTokenSource? _ctsWait;
 
-    private TaskCompletionSource<IInboundHandShakeMessage> _taskCompletionSourceWait;
-    private TaskCompletionSource<bool> _taskCompletionSourceSend;
+    private TaskCompletionSource<IInboundHandShakeMessage?>? _taskCompletionSourceWait;
+    private TaskCompletionSource<bool>? _taskCompletionSourceSend;
 
     /// <summary>
     /// Delegate for unregistering a wait state from a <see cref="IWaitStateManager"/> implementation
     /// </summary>
-    public UnregisterWaitStateDelegate UnregisterWaitStateDelegate { get; set; }
+    public UnregisterWaitStateDelegate? UnregisterWaitStateDelegate { get; set; }
 
     /// <summary>
     /// Additional timeout for the time between starting timeout and sending message
@@ -69,8 +69,8 @@ public class SendPacketProcess : BaseSendPacketProcess
 
         });
 
-        _taskCompletionSourceWait = new TaskCompletionSource<IInboundHandShakeMessage>(TaskCreationOptions.RunContinuationsAsynchronously);
-        _taskCompletionSourceSend.SetResult(true);
+        _taskCompletionSourceWait = new TaskCompletionSource<IInboundHandShakeMessage?>(TaskCreationOptions.RunContinuationsAsynchronously);
+        _taskCompletionSourceSend?.SetResult(true);
 
         Debug.Print($"SSP:    start SEND waiting {DateTime.Now:O}");
         var taskResult = AsyncHelper.RunSync(() => _taskCompletionSourceWait.Task);
@@ -83,7 +83,7 @@ public class SendPacketProcess : BaseSendPacketProcess
             return;
         }
 
-        DataMessagingConfig.DataMessageProcessingPackage.HandshakeDataMessageValidator.HandleHandshake(this, taskResult);
+        DataMessagingConfig?.DataMessageProcessingPackage?.HandshakeDataMessageValidator.HandleHandshake(this, taskResult);
         ProcessDone();
     }
 
@@ -142,16 +142,33 @@ public class SendPacketProcess : BaseSendPacketProcess
     /// <param name="handshakeMessage">Current handshake message</param>
     public void HandshakeReceived(InboundHandshakeMessage handshakeMessage)
     {
-        Debug.Print($"SPP: Handshake received {DateTime.Now:O}");
-        //DataMessagingConfig.MonitorLogger?.LogDebug($"Message {Message.MessageId}: received handshake [{handshakeMessage.HandshakeMessageType:X2} {handshakeMessage.BlockAndRc:X2}]");
-        DataMessagingConfig.MonitorLogger?.LogDebug($"Message {Message.MessageId}: received handshake [{handshakeMessage.HandshakeMessageType:X2}]");
+        if (DataMessagingConfig == null)
+        {
+            throw new ArgumentNullException(nameof(DataMessagingConfig));
+        }
 
-        if (handshakeMessage == null || _taskCompletionSourceWait == null)
+        var package = DataMessagingConfig.DataMessageProcessingPackage;
+
+        if (package == null)
+        {
+            throw new ArgumentNullException(nameof(package));
+        }
+
+        if (Message == null)
         {
             return;
         }
 
-        var valResult = DataMessagingConfig.DataMessageProcessingPackage.HandshakeDataMessageValidator
+        Debug.Print($"SPP: Handshake received {DateTime.Now:O}");
+        //DataMessagingConfig.MonitorLogger?.LogDebug($"Message {Message.MessageId}: received handshake [{handshakeMessage.HandshakeMessageType:X2} {handshakeMessage.BlockAndRc:X2}]");
+        DataMessagingConfig.MonitorLogger.LogDebug($"Message {Message.MessageId}: received handshake [{handshakeMessage.HandshakeMessageType:X2}]");
+
+        if (_taskCompletionSourceWait == null)
+        {
+            return;
+        }
+
+        var valResult = package.HandshakeDataMessageValidator
             .IsHandshakeForSentMessage(Message, handshakeMessage);
 
         if (!valResult.IsMessageValid)
@@ -171,7 +188,17 @@ public class SendPacketProcess : BaseSendPacketProcess
     /// </summary>
     public override void RegisterWaitState()
     {
-        DataMessagingConfig.DataMessageProcessingPackage.WaitStateManager?.RegisterWaitState(this);
+        if (DataMessagingConfig == null)
+        {
+            throw new ArgumentNullException(nameof(DataMessagingConfig));
+        }
+
+        if (DataMessagingConfig.DataMessageProcessingPackage == null)
+        {
+            throw new ArgumentNullException(nameof(DataMessagingConfig.DataMessageProcessingPackage));
+        }
+
+        DataMessagingConfig.DataMessageProcessingPackage.WaitStateManager.RegisterWaitState(this);
     }
 
     /// <summary>

@@ -20,7 +20,7 @@ public interface ISendPacketProcess : IResetable, IDisposable
     /// <summary>
     /// Current SMD device
     /// </summary>
-    IDataMessagingConfig DataMessagingConfig { get; }
+    IDataMessagingConfig? DataMessagingConfig { get; }
 
     /// <summary>
     /// Maximum number of send attemps
@@ -60,7 +60,7 @@ public interface ISendPacketProcess : IResetable, IDisposable
     /// <summary>
     /// Current device data message to send
     /// </summary>
-    IOutboundDataMessage Message { get; }
+    IOutboundDataMessage? Message { get; }
         
     /// <summary>
     /// Is the communication online?

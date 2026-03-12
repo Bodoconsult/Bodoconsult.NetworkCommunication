@@ -18,7 +18,7 @@ public static class DataMessageHelper
     /// <param name="ba">Byte array</param>
     /// <param name="prefix">Prefix to add to the string</param>
     /// <returns>String with prefix and attached byte array</returns>
-    public static string ByteArrayToString(Memory<byte> ba, string prefix = null)
+    public static string ByteArrayToString(Memory<byte> ba, string? prefix = null)
     {
         var value = new StringBuilder();
         value.Append(prefix);

@@ -18,7 +18,7 @@ public abstract class UpdSocketProxyBase : ISocketProxy
     /// <summary>
     /// IP address of the server
     /// </summary>
-    public IPAddress IpAddress { get; set; }
+    public IPAddress? IpAddress { get; set; }
 
     /// <summary>
     /// Port the current device listens on
@@ -43,7 +43,7 @@ public abstract class UpdSocketProxyBase : ISocketProxy
     /// <summary>
     /// The number of bytes available to read
     /// </summary>
-    public virtual int BytesAvailable { get; } = 0;
+    public virtual int BytesAvailable => 0;
 
 
     /// <summary>

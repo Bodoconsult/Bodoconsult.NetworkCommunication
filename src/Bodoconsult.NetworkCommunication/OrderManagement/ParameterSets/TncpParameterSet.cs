@@ -17,13 +17,13 @@ public class TncpParameterSet : BasicOutboundDatablock, IParameterSet
     /// The order the parameter set is bound to
     /// </summary>
     [JsonIgnore]
-    public IOrder CurrentOrder { get; private set; }
+    public IOrder? CurrentOrder { get; private set; }
 
     /// <summary>
     /// Load the order the parameter set is bound to. May only run once!
     /// </summary>
     /// <param name="order">Order to inject</param>
-    public void LoadOrder(IOrder order)
+    public void LoadOrder(IOrder? order)
     {
         if (CurrentOrder != null)
         {
@@ -35,7 +35,7 @@ public class TncpParameterSet : BasicOutboundDatablock, IParameterSet
     /// <summary>
     /// Telnet command to send
     /// </summary>
-    public string TelnetCommand { get; set; }
+    public string? TelnetCommand { get; set; }
 
     /// <summary>
     /// User ID
@@ -45,7 +45,7 @@ public class TncpParameterSet : BasicOutboundDatablock, IParameterSet
     /// <summary>
     /// The name of the user requesting the order run
     /// </summary>
-    public string UserRequestingTheOrderRun { get; set; }
+    public string? UserRequestingTheOrderRun { get; set; }
 
     /// <summary>
     /// Send a CANCEL command to the device if request step was unsuccessful. Default: false
@@ -60,7 +60,7 @@ public class TncpParameterSet : BasicOutboundDatablock, IParameterSet
     /// <summary>
     /// A result object filled by the order execution process
     /// </summary>
-    public object OrderResult { get; set; }
+    public object? OrderResult { get; set; }
 
     /// <summary>
     /// Is the parameter set valid?

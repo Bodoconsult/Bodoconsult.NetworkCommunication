@@ -5,7 +5,6 @@ using Bodoconsult.NetworkCommunication.StateManagement.Builders;
 using Bodoconsult.NetworkCommunication.StateManagement.Configurations;
 using Bodoconsult.NetworkCommunication.StateManagement.Interfaces;
 using Bodoconsult.NetworkCommunication.Tests.Helpers;
-using static Microsoft.ApplicationInsights.MetricDimensionNames.TelemetryContext;
 
 namespace Bodoconsult.NetworkCommunication.Tests.StateManagement.Builders;
 
@@ -35,7 +34,7 @@ internal class DeviceSnapshotStateBuilderTests
         // Arrange 
         var builder = new DeviceSnapshotStateBuilder();
 
-        var config = new NoActionStateConfiguration(DefaultStateNames.DeviceOnlineState)
+        var config = new NoActionStateConfiguration(DefaultStateNames.DeviceOnlineState, builder)
         {
             HandleAsyncMessageDelegate = DelegateHelper.HandleAsyncMessageDelegate,
             HandleComDevCloseDelegate = DelegateHelper.HandleComDevCloseDelegate,
@@ -59,7 +58,7 @@ internal class DeviceSnapshotStateBuilderTests
 
         var builder = new DeviceSnapshotStateBuilder();
 
-        var config = new NoActionStateConfiguration(DefaultStateNames.DeviceSnapshotState)
+        var config = new NoActionStateConfiguration(DefaultStateNames.DeviceSnapshotState, builder)
         {
             CurrentContext = device,
             HandleAsyncMessageDelegate = DelegateHelper.HandleAsyncMessageDelegate,

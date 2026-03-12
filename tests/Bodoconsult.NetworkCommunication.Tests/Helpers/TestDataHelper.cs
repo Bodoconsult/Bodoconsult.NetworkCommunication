@@ -259,13 +259,12 @@ public static class TestDataHelper
     public static FakeStateMachineDevice CreateStateMachineDevice()
     {
         var commAdapter = FakeIpCommunicationAdapter;
-
-        var om = new FakeOrderManager
+        var device = new FakeStateMachineDevice(GetDataMessagingConfig(), new FakeOrderManagementClientNotificationManager(), new FakeStateMachineStateFactory(), new DoNothingStateCheckManager());
+        var om = new FakeOrderManager(GetDataMessagingConfig(), new FakeOrderProcessor(device, new FakeIOrderPipeline(), new SyncOrderManager(), new FakeOrderManagementClientNotificationManager() ), new FakeOrderReceiver())
         {
-            OrderProcessor = new FakeOrderProcessor()
+            OrderProcessor = new FakeOrderProcessor(device, new FakeIOrderPipeline(), new SyncOrderManager(), new FakeOrderManagementClientNotificationManager())
         };
 
-        var device = new FakeStateMachineDevice(GetDataMessagingConfig(), new FakeOrderManagementClientNotificationManager(), new FakeStateMachineStateFactory(), new DoNothingStateCheckManager());
         device.LoadCommAdapter(commAdapter);
         device.LoadDeviceOrderManager(om);
         return device;

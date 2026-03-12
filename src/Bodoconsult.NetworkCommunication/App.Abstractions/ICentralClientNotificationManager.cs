@@ -21,7 +21,7 @@ public interface ICentralClientNotificationManager
     /// <summary>
     /// Delegate for sending a notification to the client
     /// </summary>
-    TransferToClientDelegate NotifyClient { get; set; }
+    TransferToClientDelegate? NotifyClient { get; set; }
 
     #endregion
 

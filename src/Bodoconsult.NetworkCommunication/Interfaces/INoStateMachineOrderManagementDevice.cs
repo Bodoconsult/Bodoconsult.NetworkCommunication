@@ -12,12 +12,12 @@ public interface INoStateMachineOrderManagementDevice: IOrderManagementDevice
     /// <summary>
     /// Handle an async received message without state machine
     /// </summary>
-    NoStateMachineHandleAsyncMessageDelegate NoStateMachineHandleAsyncMessageDelegate { get; set; }
+    NoStateMachineHandleAsyncMessageDelegate? NoStateMachineHandleAsyncMessageDelegate { get; set; }
 
     /// <summary>
     /// Handle an error message received from the device without state machine
     /// </summary>
-    NoStateMachineHandleErrorMessageDelegate NoStateMachineHandleErrorMessageDelegate { get; set; }
+    NoStateMachineHandleErrorMessageDelegate? NoStateMachineHandleErrorMessageDelegate { get; set; }
 
     /// <summary>
     /// The order was finished successfully and now do the last work on the order

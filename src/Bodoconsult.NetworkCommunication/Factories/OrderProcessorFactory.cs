@@ -32,7 +32,7 @@ public class OrderProcessorFactory : IOrderProcessorFactory
     /// <summary>
     /// Current datetime service for the app
     /// </summary>
-    public App.Abstractions.IAppDateService AppDateService { get; }
+    public IAppDateService AppDateService { get; }
 
     /// <summary>
     /// Current client notification manager

@@ -27,7 +27,7 @@ public class BaseInboundHandShakeMessage: IInboundHandShakeMessage
     /// <summary>
     /// Current raw message data as clear text
     /// </summary>
-    public string RawMessageDataClearText { get; set; }
+    public string? RawMessageDataClearText { get; set; }
 
     /// <summary>
     /// Create an info string for logging
