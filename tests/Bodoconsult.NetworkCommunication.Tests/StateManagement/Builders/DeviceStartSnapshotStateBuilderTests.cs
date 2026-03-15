@@ -61,7 +61,7 @@ internal class DeviceStartSnapshotStateBuilderTests
             PrepareRegularStateRequestDelegate = DelegateHelper.PrepareRegularStateRequestDelegate,
             OrderFinishedSucessfullyDelegate = DelegateHelper.OrderFinishedSucessfullyDelegate,
             OrderFinishedUnsucessfullyDelegate = DelegateHelper.OrderFinishedUnsucessfullyDelegate,
-            PrepareOrdersForStateMachineStateDelegate = DelegateHelper.PrepareOrdersForStateMachineStateDelegate
+            
         };
 
         // Act  
@@ -74,7 +74,6 @@ internal class DeviceStartSnapshotStateBuilderTests
             Assert.That(state, Is.Not.Null);
             Assert.That(state.Id, Is.EqualTo(DefaultStateIds.DeviceStartSnapshotState));
 
-            Assert.That(state.PrepareOrdersForStateMachineStateDelegate, Is.Not.Null);
             Assert.That(state.OrderFinishedSucessfullyDelegate, Is.Not.Null);
             Assert.That(state.OrderFinishedUnsucessfullyDelegate, Is.Not.Null);
 

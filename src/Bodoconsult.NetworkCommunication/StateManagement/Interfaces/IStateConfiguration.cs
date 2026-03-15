@@ -7,7 +7,7 @@ namespace Bodoconsult.NetworkCommunication.StateManagement.Interfaces;
 /// <summary>
 /// Base interface for state machine state builder configurations. State machine state configurations have to set per device
 /// </summary>
-public interface IStateConfiguration
+public interface IStateConfiguration : ICloneable
 {
     /// <summary>
     /// Current context

@@ -15,19 +15,27 @@ public class FakeOrderManager : IOrderManager
     /// <param name="messagingConfig">Current device communication adapter</param>
     /// <param name="deviceOrderProcessor">Current device order processor</param>
     /// <param name="deviceOrderReceiver">Current device order receiver</param>
+    /// <param name="orderFactory">Current order factory</param>
     public FakeOrderManager(IDataMessagingConfig messagingConfig,
         IOrderProcessor deviceOrderProcessor,
-        IOrderReceiver deviceOrderReceiver)
+        IOrderReceiver deviceOrderReceiver,
+        IOrderFactory orderFactory)
     {
         MessagingConfig = messagingConfig;
         OrderProcessor = deviceOrderProcessor;
         OrderReceiver = deviceOrderReceiver;
+        OrderFactory = orderFactory;
     }
 
     /// <summary>
     /// Current messaging config
     /// </summary>
     public IDataMessagingConfig MessagingConfig { get; set; }
+
+    /// <summary>
+    /// Current order factory
+    /// </summary>
+    public IOrderFactory OrderFactory { get; set;  }
 
     /// <summary>
     /// Current order processor instance

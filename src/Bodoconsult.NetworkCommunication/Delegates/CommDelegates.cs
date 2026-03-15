@@ -225,12 +225,6 @@ public delegate List<IOutboundDataMessage> CreateMessagesToSentDelegate(IParamet
 public delegate List<IOrder> PrepareRegularStateRequestDelegate();
 
 /// <summary>
-/// Delegate to create one or more orders sent to device needed for an order based state machine state
-/// </summary>
-/// <returns></returns>
-public delegate List<IOrder> PrepareOrdersForStateMachineStateDelegate();
-
-/// <summary>
 /// Delegate to be executed from an orderless state machine state
 /// </summary>
 /// <param name="state">Current orderless state machine state</param>
@@ -305,5 +299,12 @@ public delegate void OrderFinishedSucessfullyDelegate(IStateMachineState state, 
 /// <param name="state">Current state machine state</param>
 /// <param name="order">Current unsuccessfully finished order</param>
 public delegate void OrderFinishedUnsucessfullyDelegate(IStateMachineState state, IOrder order);
+
+/// <summary>
+/// Delegate for creating preconfigured parametersets
+/// </summary>
+/// <returns>Preconfigured parameterset</returns>
+public delegate IParameterSet CreateParameterSetDelegate();
+
 
 #endregion

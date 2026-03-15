@@ -1,6 +1,7 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
 using Bodoconsult.NetworkCommunication.Delegates;
+using Bodoconsult.NetworkCommunication.Interfaces;
 using Bodoconsult.NetworkCommunication.StateManagement.Interfaces;
 
 namespace Bodoconsult.NetworkCommunication.StateManagement.Configurations;
@@ -34,7 +35,7 @@ public class OrderBasedActionStateConfiguration : IOrderBasedActionStateConfigur
     /// <summary>
     /// State builder to use
     /// </summary>
-    public IStateMachineStateBuilder StateBuilderBuilder { get; set; }
+    public IStateMachineStateBuilder StateBuilderBuilder { get; }
 
     /// <summary>
     /// Delegate to handle a ComDevClose event in business logic
@@ -73,9 +74,32 @@ public class OrderBasedActionStateConfiguration : IOrderBasedActionStateConfigur
     public OrderFinishedUnsucessfullyDelegate? OrderFinishedUnsucessfullyDelegate { get; set; }
 
     /// <summary>
-    /// Delegate to create one or more orders sent to device needed for an order based state machine state
+    /// Parameter set for the orders to be created for the state
     /// </summary>
-    public PrepareOrdersForStateMachineStateDelegate? PrepareOrdersForStateMachineStateDelegate { get; set; } 
+    public IParameterSet? ParameterSet { get; set; }
+
+    /// <summary>
+    /// All configurations for orders to be executed for the state to be configured. Sort order is important! The first configuration added is executed as first order etc.
+    /// </summary>
+    public List<string> OrderConfigurations { get; } = new();
+
+    /// <summary>Creates a new object that is a copy of the current instance.</summary>
+    /// <returns>A new object that is a copy of this instance.</returns>
+    public object Clone()
+    {
+        var config = new OrderBasedActionStateConfiguration(StateName, StateBuilderBuilder)
+        {
+            HandleRegularStateRequestAnswerDelegate = HandleRegularStateRequestAnswerDelegate,
+            HandleAsyncMessageDelegate = HandleAsyncMessageDelegate,
+            HandleComDevCloseDelegate = HandleComDevCloseDelegate,
+            HandleErrorMessageDelegate = HandleErrorMessageDelegate,
+            PrepareRegularStateRequestDelegate = PrepareRegularStateRequestDelegate,
+            OrderFinishedUnsucessfullyDelegate = OrderFinishedUnsucessfullyDelegate,
+            OrderFinishedSucessfullyDelegate = OrderFinishedSucessfullyDelegate
+        };
+        config.OrderConfigurations.AddRange(OrderConfigurations);
+        return config;
+    }
 
     /// <summary>
     /// Is  a config valid
@@ -86,10 +110,10 @@ public class OrderBasedActionStateConfiguration : IOrderBasedActionStateConfigur
     {
         var result = new List<string>();
 
-        if (config.PrepareOrdersForStateMachineStateDelegate== null)
-        {
-            result.Add("PrepareOrdersForStateMachineStateDelegate not configured");
-        }
+        //if (config.PrepareOrdersForStateMachineStateDelegate== null)
+        //{
+        //    result.Add("PrepareOrdersForStateMachineStateDelegate not configured");
+        //}
 
         //if (config.OrderFinishedSucessfullyDelegate == null)
         //{

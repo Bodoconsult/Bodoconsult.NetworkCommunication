@@ -8,6 +8,7 @@ using Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
 using Bodoconsult.NetworkCommunication.EnumAndStates;
 using Bodoconsult.NetworkCommunication.Factories;
 using Bodoconsult.NetworkCommunication.Interfaces;
+using Bodoconsult.NetworkCommunication.OrderManagement.Configurations;
 using Bodoconsult.NetworkCommunication.OrderManagement.Devices;
 using Bodoconsult.NetworkCommunication.OrderManagement.OrderBuilders;
 using Bodoconsult.NetworkCommunication.OrderManagement.ParameterSets;
@@ -50,11 +51,7 @@ internal class OrderProcessorTests
 
     public OrderProcessorTests()
     {
-        _builder = new SdcpOrderBuilder
-        {
-            HandleRequestAnswerOnSuccessDelegate = HandleRequestAnswerOnSuccessDelegate
-        };
-
+        _builder = new SdcpOrderBuilder();
         _testBuilder = new TestOrderBuilder();
         _longRunningTestBuilder = new LongRunningTestOrderBuilder();
         _extraLongRunningTestBuilder = new ExtraLongRunningTestOrderBuilder();
@@ -78,6 +75,9 @@ internal class OrderProcessorTests
 
     private IInboundDataMessage DecodeDataMessage(Memory<byte> message)
     {
+        ArgumentNullException.ThrowIfNull(_device.DataMessagingConfig);
+        ArgumentNullException.ThrowIfNull(_device.DataMessagingConfig.DataMessageProcessingPackage);
+
         var codecResult = _device.DataMessagingConfig.DataMessageProcessingPackage.DataMessageCodingProcessor.DecodeDataMessage(message);
         Assert.That(codecResult, Is.Not.Null);
         Assert.That(codecResult.ErrorCode, Is.Zero);
@@ -130,7 +130,15 @@ internal class OrderProcessorTests
         var ps = new SdcpParameterSet();
         ps.Payload = new byte[] { 0x42, 0x6c, 0x75, 0x62, 0x62 };
 
-        var order = _builder.CreateOrder(1, ps);
+        var config = new OneRequestSpecNoOrOneStepOneAnswerConfiguration("TestConfig", BuiltinOrders.SdcpOrder, _builder)
+        {
+            OrderId = 1,
+            //Device = TestDataHelper.CreateStateMachineDevice(),
+            HandleRequestAnswerOnSuccessDelegate = HandleRequestAnswerOnSuccessDelegate,
+            ParameterSet = ps
+        };
+
+        var order = _builder.CreateOrder(config);
         return order;
     }
 
@@ -143,7 +151,15 @@ internal class OrderProcessorTests
         var ps = new SdcpParameterSet();
         ps.Payload = new byte[] { 0x42, 0x6c, 0x75, 0x62, 0x62 };
 
-        var order = _testBuilder.CreateOrder(2, ps);
+        var config = new OneRequestSpecNoOrOneStepOneAnswerConfiguration("TestConfig", BuiltinOrders.SdcpOrder, _testBuilder)
+        {
+            OrderId = 1,
+            //Device = TestDataHelper.CreateStateMachineDevice(),
+            HandleRequestAnswerOnSuccessDelegate = HandleRequestAnswerOnSuccessDelegate,
+            ParameterSet = ps
+        };
+
+        var order = _testBuilder.CreateOrder(config);
         return order;
     }
 
@@ -156,7 +172,15 @@ internal class OrderProcessorTests
         var ps = new SdcpParameterSet();
         ps.Payload = new byte[] { 0x42, 0x6c, 0x75, 0x62, 0x62 };
 
-        var order = _longRunningTestBuilder.CreateOrder(3, ps);
+        var config = new OneRequestSpecNoOrOneStepOneAnswerConfiguration("TestConfig", BuiltinOrders.SdcpOrder, _longRunningTestBuilder)
+        {
+            OrderId = 1,
+            //Device = TestDataHelper.CreateStateMachineDevice(),
+            HandleRequestAnswerOnSuccessDelegate = HandleRequestAnswerOnSuccessDelegate,
+            ParameterSet = ps
+        };
+
+        var order = _longRunningTestBuilder.CreateOrder(config);
         return order;
     }
 
@@ -169,7 +193,15 @@ internal class OrderProcessorTests
         var ps = new SdcpParameterSet();
         ps.Payload = new byte[] { 0x42, 0x6c, 0x75, 0x62, 0x62 };
 
-        var order = _extraLongRunningTestBuilder.CreateOrder(4, ps);
+        var config = new OneRequestSpecNoOrOneStepOneAnswerConfiguration("TestConfig", BuiltinOrders.SdcpOrder, _extraLongRunningTestBuilder)
+        {
+            OrderId = 1,
+            //Device = TestDataHelper.CreateStateMachineDevice(),
+            HandleRequestAnswerOnSuccessDelegate = HandleRequestAnswerOnSuccessDelegate,
+            ParameterSet = ps
+        };
+
+        var order = _extraLongRunningTestBuilder.CreateOrder(config);
         return order;
     }
 
@@ -205,7 +237,7 @@ internal class OrderProcessorTests
             IsNoHardWareInitRequired = true
         };
 
-        var om = new FakeOrderManager(_device.DataMessagingConfig, new FakeOrderProcessor(_device, new FakeIOrderPipeline(), new SyncOrderManager(), new FakeOrderManagementClientNotificationManager()), new FakeOrderReceiver())
+        var om = new FakeOrderManager(_device.DataMessagingConfig, new FakeOrderProcessor(_device, new FakeIOrderPipeline(), new SyncOrderManager(), new FakeOrderManagementClientNotificationManager()), new FakeOrderReceiver(), new OrderFactory())
         {
             OrderProcessor = processor
         };

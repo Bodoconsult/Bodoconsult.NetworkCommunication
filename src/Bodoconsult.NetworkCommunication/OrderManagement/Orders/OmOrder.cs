@@ -30,7 +30,6 @@ public class OmOrder : IOrder
         DeviceId = "Device";
     }
 
-    #region New TOM
 
     #region Order meta data
 
@@ -359,7 +358,4 @@ public class OmOrder : IOrder
 
         Benchmark?.Dispose();
     }
-
-    #endregion
-
 }

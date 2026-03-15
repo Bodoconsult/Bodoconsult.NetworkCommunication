@@ -1,9 +1,9 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
-using Bodoconsult.NetworkCommunication.Delegates;
 using Bodoconsult.NetworkCommunication.EnumAndStates;
 using Bodoconsult.NetworkCommunication.Factories;
 using Bodoconsult.NetworkCommunication.Interfaces;
+using Bodoconsult.NetworkCommunication.OrderManagement.Configurations;
 using Bodoconsult.NetworkCommunication.OrderManagement.ParameterSets;
 
 namespace Bodoconsult.NetworkCommunication.OrderManagement.OrderBuilders;
@@ -21,23 +21,27 @@ public class NoAnswerTncpOrderBuilder : BaseOrderBuilder
     public NoAnswerTncpOrderBuilder() : base(typeof(TncpParameterSet), BuiltinOrders.NoAnswerTncpOrder)
     { }
 
-    /// <summary>
-    /// Delegate for handling request answer messages
-    /// </summary>
-    public HandleRequestAnswerDelegate? HandleRequestAnswerOnSuccessDelegate { get; set; }
 
     /// <summary>
-    /// Configure the order
+    /// Configure the order. Implementation of this method may require to add dependencies to your business logic layer
     /// </summary>
-    public override void ConfigureOrder(IOrder order)
+    /// <param name="order">Current order to configure</param>
+    /// <param name="config">Current configuration</param>
+    public override void ConfigureOrder(IOrder order, IOrderConfiguration config)
     {
+        if (config is not OneRequestSpecNoOrOneStepOneAnswerConfiguration oc)
+        {
+            throw new ArgumentException(
+                $"Config must be {nameof(OneRequestSpecNoOrOneStepOneAnswerConfiguration)} but was {{config.GetType().Name}}");
+        }
+
         // Tracing
         order.TraceCodeSuccess = TraceCodes.IdsMsgTncpOrderOk;
         order.TraceCodeError = TraceCodes.IdsMsgTncpOrderFails;
         order.TraceMessage = OrderTypeName;
 
         // RequestSpec 1
-        var requestSpec = CreateNoAnswerDeviceRequestSpec(order, "SendAndWaitDeviceRequestSpec", HandleRequestAnswerOnSuccessDelegate);
+        var requestSpec = CreateNoAnswerDeviceRequestSpec(order, "SendAndWaitDeviceRequestSpec", oc.HandleRequestAnswerOnSuccessDelegate);
         requestSpec.CreateMessagesToSentDelegate = CreateMessagesToSentDelegate;
 
     }

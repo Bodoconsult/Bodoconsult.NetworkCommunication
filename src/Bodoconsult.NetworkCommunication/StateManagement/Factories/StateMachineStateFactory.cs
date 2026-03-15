@@ -1,5 +1,6 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
+using Bodoconsult.NetworkCommunication.Interfaces;
 using Bodoconsult.NetworkCommunication.StateManagement.Configurations;
 using Bodoconsult.NetworkCommunication.StateManagement.Interfaces;
 
@@ -17,27 +18,29 @@ public class StateMachineStateFactory : IStateMachineStateFactory
     /// </summary>
     public List<KeyValuePair<string, IStateConfiguration>> StateConfigurations => _stateConfigurations.ToList();
 
-    /// <summary>
-    /// Current context
-    /// </summary>
-    public IStateManagementDevice? CurrentContext { get; private set; }
 
     /// <summary>
-    /// Create a state instance of the requested type
+    /// Create a non order based state instance of the requested type
     /// </summary>
+    /// <param name="currentContext">Current context</param>
     /// <param name="stateName">Name of the request state</param>
     /// <returns>State instance of the requested type</returns>
-    public IStateMachineState CreateInstance(string stateName)
+    public IStateMachineState CreateInstance(IStateManagementDevice currentContext, string stateName)
     {
-        if (CurrentContext == null)
-        {
-            throw new ArgumentNullException(nameof(CurrentContext), "Call LoadContext() before calling CreateInstance()!");
-        }
+        ArgumentNullException.ThrowIfNull(currentContext);
 
         if (!_stateConfigurations.TryGetValue(stateName, out var config))
         {
             throw new ArgumentException($"Builder for state {stateName} is not registered");
         }
+
+        if (config is IOrderBasedActionStateConfiguration)
+        {
+            throw new ArgumentException("Use other overload of the method providing an IParameterSet instance for an order");
+        }
+
+        config = (IStateConfiguration)config.Clone();
+        config.CurrentContext = currentContext;
 
         if (config.StateBuilderBuilder == null)
         {
@@ -48,12 +51,37 @@ public class StateMachineStateFactory : IStateMachineStateFactory
     }
 
     /// <summary>
-    /// Load the context
+    /// Create an order based state instance of the requested type
     /// </summary>
-    /// <param name="context">Current context</param>
-    public void LoadContext(IStateManagementDevice context)
+    /// <param name="currentContext">Current context</param>
+    /// <param name="stateName">Name of the request state</param>
+    /// <param name="parameterSet">Current parameter set</param>
+    /// <returns>State instance of the requested type</returns>
+    public IStateMachineState CreateInstance(IStateManagementDevice currentContext, string stateName, IParameterSet parameterSet)
     {
-        CurrentContext = context;
+        ArgumentNullException.ThrowIfNull(currentContext);
+
+        if (!_stateConfigurations.TryGetValue(stateName, out var config))
+        {
+            throw new ArgumentException($"Builder for state {stateName} is not registered");
+        }
+
+        if (config is not IOrderBasedActionStateConfiguration)
+        {
+            throw new ArgumentException("Use other overload of the method NOT providing an IParameterSet instance for an order");
+        }
+
+        var obas = (IOrderBasedActionStateConfiguration)config.Clone();
+
+        if (obas.StateBuilderBuilder == null)
+        {
+            throw new ArgumentNullException(nameof(obas.StateBuilderBuilder));
+        }
+
+        obas.CurrentContext = currentContext;
+        obas.ParameterSet = parameterSet;
+
+        return obas.StateBuilderBuilder.BuildState(obas);
     }
 
     /// <summary>
@@ -62,8 +90,13 @@ public class StateMachineStateFactory : IStateMachineStateFactory
     /// <param name="config">Config to register</param>
     public void RegisterConfiguration(IStateConfiguration config)
     {
-        ArgumentNullException.ThrowIfNull(CurrentContext, "Call LoadContext() before calling RegisterConfiguration()!");
         ArgumentNullException.ThrowIfNull(config.StateBuilderBuilder, "State builder must be loaded!");
+
+        if (config.CurrentContext != null)
+        {
+            config.CurrentContext = null;
+
+        }
 
         var checkResult = config switch
         {
@@ -76,10 +109,8 @@ public class StateMachineStateFactory : IStateMachineStateFactory
         if (checkResult is { Count: > 0 })
         {
             var s = checkResult.Aggregate("", (current, item) => current + item);
-            throw new ArgumentNullException(nameof(config.StateBuilderBuilder), s);
+            throw new ArgumentException(s);
         }
-
-        config.CurrentContext = CurrentContext;
 
         _stateConfigurations.Add(config.StateName, config);
     }

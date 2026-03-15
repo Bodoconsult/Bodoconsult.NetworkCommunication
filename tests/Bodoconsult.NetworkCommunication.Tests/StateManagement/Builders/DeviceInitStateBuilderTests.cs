@@ -61,7 +61,6 @@ internal class DeviceInitStateBuilderTests
             PrepareRegularStateRequestDelegate = DelegateHelper.PrepareRegularStateRequestDelegate,
             OrderFinishedSucessfullyDelegate = DelegateHelper.OrderFinishedSucessfullyDelegate,
             OrderFinishedUnsucessfullyDelegate = DelegateHelper.OrderFinishedUnsucessfullyDelegate,
-            PrepareOrdersForStateMachineStateDelegate = DelegateHelper.PrepareOrdersForStateMachineStateDelegate
         };
 
         // Act  
@@ -80,7 +79,6 @@ internal class DeviceInitStateBuilderTests
             Assert.That(state.HandleRegularStateRequestAnswerDelegate, Is.Not.Null);
             Assert.That(state.PrepareRegularStateRequestDelegate, Is.Not.Null);
 
-            Assert.That(state.PrepareOrdersForStateMachineStateDelegate, Is.Not.Null);
             Assert.That(state.OrderFinishedSucessfullyDelegate, Is.Not.Null);
             Assert.That(state.OrderFinishedUnsucessfullyDelegate, Is.Not.Null);
 

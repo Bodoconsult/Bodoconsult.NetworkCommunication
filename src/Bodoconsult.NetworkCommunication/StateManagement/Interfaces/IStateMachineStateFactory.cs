@@ -1,5 +1,7 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
+using Bodoconsult.NetworkCommunication.Interfaces;
+
 namespace Bodoconsult.NetworkCommunication.StateManagement.Interfaces;
 
 /// <summary>
@@ -13,25 +15,24 @@ public interface IStateMachineStateFactory
     List<KeyValuePair<string, IStateConfiguration>> StateConfigurations { get; }
 
     /// <summary>
-    /// Current context
+    /// Create a non order based state instance of the requested type
     /// </summary>
-    IStateManagementDevice? CurrentContext { get; }
-
-    /// <summary>
-    /// Create a state instance of the requested type
-    /// </summary>
+    /// <param name="currentContext">Current context</param>
     /// <param name="stateName">Name of the request state</param>
     /// <returns>State instance of the requested type</returns>
-    IStateMachineState CreateInstance(string stateName);
+    IStateMachineState CreateInstance(IStateManagementDevice currentContext, string stateName);
 
     /// <summary>
-    /// Load the context
+    /// Create an order based state instance of the requested type
     /// </summary>
-    /// <param name="context">Current context</param>
-    void LoadContext(IStateManagementDevice context);
+    /// <param name="currentContext">Current context</param>
+    /// <param name="stateName">Name of the request state</param>
+    /// <param name="parameterSet">Current parameter set</param>
+    /// <returns>State instance of the requested type</returns>
+    IStateMachineState CreateInstance(IStateManagementDevice currentContext, string stateName, IParameterSet parameterSet);
 
     /// <summary>
-    /// Register a state configuration (and add it to <see cref="StateConfigurations"/>). <see cref="IStateConfiguration.CurrentContext"/> is always overriden with <see cref="CurrentContext"/>. So you do not have to set a value for <see cref="IStateConfiguration.CurrentContext"/> before calling <see cref="RegisterConfiguration"/>
+    /// Register a state configuration (and add it to <see cref="StateConfigurations"/>)
     /// </summary>
     /// <param name="config">Config to register</param>
     void RegisterConfiguration(IStateConfiguration config);

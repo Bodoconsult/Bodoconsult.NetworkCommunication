@@ -37,7 +37,6 @@ public class DeviceStopStreamingStateBuilder : BaseJobStateMachineStateBuilder
         state.HandleErrorMessageDelegate = config.HandleErrorMessageDelegate;
         state.HandleRegularStateRequestAnswerDelegate = config.HandleRegularStateRequestAnswerDelegate;
         state.PrepareRegularStateRequestDelegate = config.PrepareRegularStateRequestDelegate;
-        state.PrepareOrdersForStateMachineStateDelegate = config.PrepareOrdersForStateMachineStateDelegate;
         state.OrderFinishedSucessfullyDelegate = config.OrderFinishedSucessfullyDelegate;
         state.OrderFinishedUnsucessfullyDelegate = config.OrderFinishedUnsucessfullyDelegate;
 

@@ -25,19 +25,27 @@ public abstract class BaseOrderBasedStateMachineState : BaseStateMachineState, I
     /// </summary>
     public override void InitiateState()
     {
-        if (PrepareOrdersForStateMachineStateDelegate == null)
-        {
-            return;
-        }
+        ArgumentNullException.ThrowIfNull(ParameterSet);
+        ArgumentNullException.ThrowIfNull(CurrentContext.OrderManager);
 
-        var orders = PrepareOrdersForStateMachineStateDelegate.Invoke();
-        Orders.AddRange(orders);
+        var orderFactory = CurrentContext.OrderManager.OrderFactory;
+
+        foreach (var orderConfigName in OrderConfigurations)
+        {
+            var order = orderFactory.CreateOrder(orderConfigName, ParameterSet);
+            Orders.AddRange(order);
+        }
     }
 
     /// <summary>
-    /// Delegate to create one or more orders sent to device needed for an order based state machine state
+    /// ParameterSet for the orders to be created for the state
     /// </summary>
-    public PrepareOrdersForStateMachineStateDelegate? PrepareOrdersForStateMachineStateDelegate { get; set; }
+    public IParameterSet? ParameterSet { get; set; }
+
+    /// <summary>
+    /// All configurations for orders to be executed for the state to be configured. Sort order is important! The first configuration added is executed as first order etc.
+    /// </summary>
+    public List<string> OrderConfigurations { get; } = new();
 
     /// <summary>
     /// Orders to be handled by the current state

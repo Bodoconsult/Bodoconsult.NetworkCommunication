@@ -10,7 +10,9 @@ using Bodoconsult.NetworkCommunication.Communication;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessageProcessingPackages;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig;
 using Bodoconsult.NetworkCommunication.EnumAndStates;
+using Bodoconsult.NetworkCommunication.Factories;
 using Bodoconsult.NetworkCommunication.Interfaces;
+using Bodoconsult.NetworkCommunication.OrderManagement.Configurations;
 using Bodoconsult.NetworkCommunication.OrderManagement.Devices;
 using Bodoconsult.NetworkCommunication.OrderManagement.OrderBuilders;
 using Bodoconsult.NetworkCommunication.OrderManagement.ParameterSets;
@@ -117,12 +119,17 @@ public static class TestDataHelper
         var ps = new SdcpParameterSet();
         ps.Payload = new byte[] { 0x42, 0x6c, 0x75, 0x62, 0x62 };
 
-        var builder = new SdcpOrderBuilder
-        {
-            HandleRequestAnswerOnSuccessDelegate = HandleRequestAnswerOnSuccessDelegate
-        };
+        var builder = new SdcpOrderBuilder();
 
-        var order = builder.CreateOrder(1, ps);
+        var config = new OneRequestSpecNoOrOneStepOneAnswerConfiguration("TestConfig", BuiltinOrders.SdcpOrder, builder)
+        {
+            OrderId = 1,
+            //Device = TestDataHelper.CreateStateMachineDevice(),
+            HandleRequestAnswerOnSuccessDelegate = HandleRequestAnswerOnSuccessDelegate,
+            ParameterSet = ps
+        };
+  
+        var order = builder.CreateOrder(config);
         return order;
     }
 
@@ -132,12 +139,17 @@ public static class TestDataHelper
     /// <returns></returns>
     public static IOrder CreateSdcpOrder(SdcpParameterSet ps)
     {
-        var builder = new SdcpOrderBuilder
+        var builder = new SdcpOrderBuilder();
+
+        var config = new OneRequestSpecNoOrOneStepOneAnswerConfiguration("TestConfig", BuiltinOrders.SdcpOrder, builder)
         {
-            HandleRequestAnswerOnSuccessDelegate = HandleRequestAnswerOnSuccessDelegate
+            OrderId = 1,
+            //Device = TestDataHelper.CreateStateMachineDevice(),
+            HandleRequestAnswerOnSuccessDelegate = HandleRequestAnswerOnSuccessDelegate,
+            ParameterSet = ps
         };
 
-        var order = builder.CreateOrder(1, ps);
+        var order = builder.CreateOrder(config);
         return order;
     }
 
@@ -147,12 +159,17 @@ public static class TestDataHelper
     /// <returns></returns>
     public static IOrder CreateNoAnswerSdcpOrder(SdcpParameterSet ps)
     {
-        var builder = new NoAnswerSdcpOrderBuilder
+        var builder = new NoAnswerSdcpOrderBuilder();
+
+        var config = new OneRequestSpecNoOrOneStepOneAnswerConfiguration("TestConfig", BuiltinOrders.SdcpOrder, builder)
         {
-            HandleRequestAnswerOnSuccessDelegate = HandleRequestAnswerOnSuccessDelegate
+            OrderId = 1,
+            //Device = TestDataHelper.CreateStateMachineDevice(),
+            HandleRequestAnswerOnSuccessDelegate = HandleRequestAnswerOnSuccessDelegate,
+            ParameterSet = ps
         };
 
-        var order = builder.CreateOrder(1, ps);
+        var order = builder.CreateOrder(config);
         return order;
     }
 
@@ -162,12 +179,17 @@ public static class TestDataHelper
     /// <returns></returns>
     public static IOrder CreateNoHandshakeNoAnswerSdcpOrder(SdcpParameterSet ps)
     {
-        var builder = new NoHandshakeNoAnswerSdcpOrderBuilder
+        var builder = new NoHandshakeNoAnswerSdcpOrderBuilder();
+
+        var config = new OneRequestSpecNoOrOneStepOneAnswerConfiguration("TestConfig", BuiltinOrders.SdcpOrder, builder)
         {
-            HandleRequestAnswerOnSuccessDelegate = HandleRequestAnswerOnSuccessDelegate
+            OrderId = 1,
+            //Device = TestDataHelper.CreateStateMachineDevice(),
+            HandleRequestAnswerOnSuccessDelegate = HandleRequestAnswerOnSuccessDelegate,
+            ParameterSet = ps
         };
 
-        var order = builder.CreateOrder(1, ps);
+        var order = builder.CreateOrder(config);
         return order;
     }
 
@@ -185,12 +207,16 @@ public static class TestDataHelper
     /// <returns></returns>
     public static IOrder CreateTestOrder()
     {
-        var ps = new SdcpParameterSet();
-        ps.Payload = new byte[] { 0x42, 0x6c, 0x75, 0x62, 0x62 };
-
         var builder = new TestOrderBuilder();
 
-        var order = builder.CreateOrder(1, ps);
+        var config = new OneRequestSpecNoOrOneStepOneAnswerConfiguration("TestConfig", BuiltinOrders.SdcpOrder, builder)
+        {
+            OrderId = 1,
+            //Device = TestDataHelper.CreateStateMachineDevice(),
+            HandleRequestAnswerOnSuccessDelegate = HandleRequestAnswerOnSuccessDelegate
+        };
+
+        var order = builder.CreateOrder(config);
         return order;
     }
 
@@ -202,7 +228,15 @@ public static class TestDataHelper
     {
         var builder = new TestOrderBuilder();
 
-        var order = builder.CreateOrder(1, ps);
+        var config = new OneRequestSpecNoOrOneStepOneAnswerConfiguration("TestConfig", BuiltinOrders.SdcpOrder, builder)
+        {
+            OrderId = 1,
+            //Device = TestDataHelper.CreateStateMachineDevice(),
+            HandleRequestAnswerOnSuccessDelegate = HandleRequestAnswerOnSuccessDelegate,
+            ParameterSet = ps
+        };
+
+        var order = builder.CreateOrder(config);
         return order;
     }
 
@@ -214,7 +248,15 @@ public static class TestDataHelper
     {
         var builder = new EdcpClientOrderBuilder();
 
-        var order = builder.CreateOrder(1, ps);
+        var config = new OneRequestSpecNoOrOneStepOneAnswerConfiguration("TestConfig", BuiltinOrders.EdcpClientOrder, builder)
+        {
+            OrderId = 1,
+            //Device = TestDataHelper.CreateStateMachineDevice(),
+            HandleRequestAnswerOnSuccessDelegate = HandleRequestAnswerOnSuccessDelegate,
+            ParameterSet = ps
+        };
+
+        var order = builder.CreateOrder(config);
         return order;
     }
 
@@ -226,7 +268,15 @@ public static class TestDataHelper
     {
         var builder = new EdcpServerOrderBuilder();
 
-        var order = builder.CreateOrder(1, ps);
+        var config = new OneRequestSpecNoOrOneStepOneAnswerConfiguration("TestConfig", BuiltinOrders.EdcpServerOrder, builder)
+        {
+            OrderId = 1,
+            //Device = TestDataHelper.CreateStateMachineDevice(),
+            HandleRequestAnswerOnSuccessDelegate = HandleRequestAnswerOnSuccessDelegate,
+            ParameterSet = ps
+        };
+
+        var order = builder.CreateOrder(config);
         return order;
     }
 
@@ -238,7 +288,16 @@ public static class TestDataHelper
     {
         var builder = new BtcpOrderBuilder();
 
-        var order = builder.CreateOrder(1, ps);
+
+        var config = new OneRequestSpecNoOrOneStepOneAnswerConfiguration("TestConfig", BuiltinOrders.EdcpServerOrder, builder)
+        {
+            OrderId = 1,
+            //Device = TestDataHelper.CreateStateMachineDevice(),
+            HandleRequestAnswerOnSuccessDelegate = HandleRequestAnswerOnSuccessDelegate,
+            ParameterSet = ps
+        };
+
+        var order = builder.CreateOrder(config);
         return order;
     }
 
@@ -260,7 +319,7 @@ public static class TestDataHelper
     {
         var commAdapter = FakeIpCommunicationAdapter;
         var device = new FakeStateMachineDevice(GetDataMessagingConfig(), new FakeOrderManagementClientNotificationManager(), new FakeStateMachineStateFactory(), new DoNothingStateCheckManager());
-        var om = new FakeOrderManager(GetDataMessagingConfig(), new FakeOrderProcessor(device, new FakeIOrderPipeline(), new SyncOrderManager(), new FakeOrderManagementClientNotificationManager() ), new FakeOrderReceiver())
+        var om = new FakeOrderManager(GetDataMessagingConfig(), new FakeOrderProcessor(device, new FakeIOrderPipeline(), new SyncOrderManager(), new FakeOrderManagementClientNotificationManager() ), new FakeOrderReceiver(), new OrderFactory())
         {
             OrderProcessor = new FakeOrderProcessor(device, new FakeIOrderPipeline(), new SyncOrderManager(), new FakeOrderManagementClientNotificationManager())
         };

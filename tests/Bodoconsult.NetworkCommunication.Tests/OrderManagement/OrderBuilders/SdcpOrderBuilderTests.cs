@@ -1,6 +1,7 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
 using Bodoconsult.NetworkCommunication.Interfaces;
+using Bodoconsult.NetworkCommunication.OrderManagement.Configurations;
 using Bodoconsult.NetworkCommunication.OrderManagement.OrderBuilders;
 using Bodoconsult.NetworkCommunication.OrderManagement.Orders;
 using Bodoconsult.NetworkCommunication.OrderManagement.ParameterSets;
@@ -33,15 +34,23 @@ internal class SdcpOrderBuilderTests : OrderBuilderTestsBase
         var ps = new SdcpParameterSet();
         var builder = new SdcpOrderBuilder();
 
-        // Act  
-        var order = builder.CreateOrder(1, ps);
+        var config = new OneRequestSpecNoOrOneStepOneAnswerConfiguration("TestConfig", BuiltinOrders.SdcpOrder, builder)
+        {
+            OrderId = 1,
+            //Device = TestDataHelper.CreateStateMachineDevice(),
+            HandleRequestAnswerOnSuccessDelegate = HandleRequestAnswerOnSuccessDelegate,
+            ParameterSet = ps
+		};
 
-        // Assert
-        using (Assert.EnterMultipleScope())
+        // Act  
+        var order = builder.CreateOrder(config);
+
+		// Assert
+		using (Assert.EnterMultipleScope())
         {
             Assert.That(order, Is.Not.Null);
             Assert.That(order.ParameterSet, Is.EqualTo(ps));
-            Assert.That(order.ParameterSet.CurrentOrder, Is.EqualTo(order));
+            Assert.That(order.ParameterSet?.CurrentOrder, Is.EqualTo(order));
 
             Assert.That(order.RequestSpecs.Count, Is.EqualTo(1));
 

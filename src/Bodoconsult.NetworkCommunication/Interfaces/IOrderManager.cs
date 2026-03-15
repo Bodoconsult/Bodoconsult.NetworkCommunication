@@ -11,7 +11,12 @@ public interface IOrderManager
     /// Current messaging config
     /// </summary>
     IDataMessagingConfig MessagingConfig { get; }
-        
+
+    /// <summary>
+    /// Current order factory
+    /// </summary>
+    IOrderFactory OrderFactory { get; }
+
     /// <summary>
     /// Current order processor instance
     /// </summary>

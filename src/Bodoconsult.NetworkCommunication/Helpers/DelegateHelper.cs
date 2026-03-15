@@ -69,14 +69,6 @@ public static class DelegateHelper
     }
 
     /// <summary>
-    /// Default implementation of <see cref="PrepareOrdersForStateMachineStateDelegate"/>: returns empty list of orders
-    /// </summary>
-    public static List<IOrder> PrepareOrdersForStateMachineStateDelegate()
-    {
-        return [];
-    }
-
-    /// <summary>
     /// Default implementation of <see cref="HandleRegularStateRequestAnswerDelegate"/>: doing nothing, returns success
     /// </summary>
     /// <param name="state">Current state</param>
@@ -178,5 +170,13 @@ public static class DelegateHelper
         var stateNew = context.CreateStateInstance(DefaultStateNames.DeviceOnlineState);
         state.NextState = stateNew;
         state.RequestNextState();
+    }
+
+    /// <summary>
+    /// Default implementation of <see cref="HandleRequestAnswerOnSuccessDelegate"/>: doing nothing
+    /// </summary>
+    public static MessageHandlingResult HandleRequestAnswerOnSuccessDelegate(IInboundDataMessage? message, object? transportObject, IParameterSet? parameterSet)
+    {
+        return MessageHandlingResultHelper.Success();
     }
 }

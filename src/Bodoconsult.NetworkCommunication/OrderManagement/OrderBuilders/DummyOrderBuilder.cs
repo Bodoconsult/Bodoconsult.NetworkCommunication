@@ -20,7 +20,7 @@ public class DummyOrderBuilder : BaseOrderBuilder
     /// <summary>
     /// Configure the order
     /// </summary>
-    public override void ConfigureOrder(IOrder order)
+    public override void ConfigureOrder(IOrder order, IOrderConfiguration config)
     {
         // Tracing
         order.TraceCodeSuccess = TraceCodes.IdsMsgDummyOrderOk;

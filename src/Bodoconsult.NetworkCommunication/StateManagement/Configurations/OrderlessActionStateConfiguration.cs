@@ -14,6 +14,7 @@ public class OrderlessActionStateConfiguration : IOrderlessActionStateConfigurat
     /// Default ctor
     /// </summary>
     /// <param name="stateName">Name of the state to configure</param>
+    /// <param name="stateBuilderBuilder">State builder to use</param>
     public OrderlessActionStateConfiguration(string stateName, IStateMachineStateBuilder stateBuilderBuilder)
     {
         StateName = stateName;
@@ -33,7 +34,7 @@ public class OrderlessActionStateConfiguration : IOrderlessActionStateConfigurat
     /// <summary>
     /// State builder to use
     /// </summary>
-    public IStateMachineStateBuilder StateBuilderBuilder { get; set; }
+    public IStateMachineStateBuilder StateBuilderBuilder { get; }
 
     /// <summary>
     /// Delegate to handle a ComDevClose event in business logic
@@ -63,7 +64,22 @@ public class OrderlessActionStateConfiguration : IOrderlessActionStateConfigurat
     /// <summary>
     /// Delegate to be executed from an orderless state machine state
     /// </summary>
-    public ExecuteActionForStateDelegate? ExecuteActionForStateDelegate { get; set; } 
+    public ExecuteActionForStateDelegate? ExecuteActionForStateDelegate { get; set; }
+
+    /// <summary>Creates a new object that is a copy of the current instance.</summary>
+    /// <returns>A new object that is a copy of this instance.</returns>
+    public object Clone()
+    {
+        return new OrderlessActionStateConfiguration(StateName, StateBuilderBuilder)
+        {
+            ExecuteActionForStateDelegate = ExecuteActionForStateDelegate,
+            HandleRegularStateRequestAnswerDelegate = HandleRegularStateRequestAnswerDelegate,
+            HandleAsyncMessageDelegate = HandleAsyncMessageDelegate,
+            HandleComDevCloseDelegate = HandleComDevCloseDelegate,
+            HandleErrorMessageDelegate = HandleErrorMessageDelegate,
+            PrepareRegularStateRequestDelegate = PrepareRegularStateRequestDelegate
+        };
+    }
 
     /// <summary>
     /// Is  a config valid

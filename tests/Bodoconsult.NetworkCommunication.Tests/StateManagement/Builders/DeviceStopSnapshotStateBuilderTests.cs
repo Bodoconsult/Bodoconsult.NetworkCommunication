@@ -61,8 +61,7 @@ internal class DeviceStopSnapshotStateBuilderTests
             HandleRegularStateRequestAnswerDelegate = DelegateHelper.HandleRegularStateRequestAnswerDelegate,
             PrepareRegularStateRequestDelegate = DelegateHelper.PrepareRegularStateRequestDelegate,
             OrderFinishedSucessfullyDelegate = OrderFinishedSucessfullyDelegate,
-            OrderFinishedUnsucessfullyDelegate = OrderFinishedUnsucessfullyDelegate,
-            PrepareOrdersForStateMachineStateDelegate = PrepareOrdersForStateMachineStateDelegate
+            OrderFinishedUnsucessfullyDelegate = OrderFinishedUnsucessfullyDelegate
         };
 
         // Act  
@@ -81,7 +80,6 @@ internal class DeviceStopSnapshotStateBuilderTests
             Assert.That(state.HandleRegularStateRequestAnswerDelegate, Is.Not.Null);
             Assert.That(state.PrepareRegularStateRequestDelegate, Is.Not.Null);
 
-            Assert.That(state.PrepareOrdersForStateMachineStateDelegate, Is.Not.Null);
             Assert.That(state.OrderFinishedSucessfullyDelegate, Is.Not.Null);
             Assert.That(state.OrderFinishedUnsucessfullyDelegate, Is.Not.Null);
         }

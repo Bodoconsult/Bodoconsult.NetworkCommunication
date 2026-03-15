@@ -7,9 +7,9 @@ using Bodoconsult.NetworkCommunication.Interfaces;
 namespace Bodoconsult.NetworkCommunication.OrderManagement.Processors;
 
 /// <summary>
-    /// Current implementation of <see cref="IOrderManager"/>
-    /// </summary>
-    public class OrderManager: IOrderManager
+/// Current implementation of <see cref="IOrderManager"/>
+/// </summary>
+public class OrderManager : IOrderManager
 {
     private readonly IAppLoggerProxy _appLogger;
     private readonly string _loggerId;
@@ -20,17 +20,18 @@ namespace Bodoconsult.NetworkCommunication.OrderManagement.Processors;
     /// <param name="messagingConfig">Current device communication adapter</param>
     /// <param name="deviceOrderProcessor">Current device order processor</param>
     /// <param name="deviceOrderReceiver">Current device order receiver</param>
-    /// <param name="appLogger">Current app logger</param>
+    /// <param name="orderFactory">Current order factory</param>
     public OrderManager(IDataMessagingConfig messagingConfig,
         IOrderProcessor deviceOrderProcessor,
         IOrderReceiver deviceOrderReceiver,
-        IAppLoggerProxy appLogger)
+        IOrderFactory orderFactory)
     {
         MessagingConfig = messagingConfig;
         _loggerId = MessagingConfig.LoggerId;
         OrderProcessor = deviceOrderProcessor;
         OrderReceiver = deviceOrderReceiver;
-        _appLogger = appLogger;
+        OrderFactory = orderFactory;
+        _appLogger = MessagingConfig.AppLogger;
 
         // Connect order processor and receiver
         OrderReceiver.OrderReceiverCheckMessageDelegate = receivedMessage => OrderProcessor.CheckReceivedMessage(receivedMessage);
@@ -50,6 +51,11 @@ namespace Bodoconsult.NetworkCommunication.OrderManagement.Processors;
     /// Current device communication adapter instance
     /// </summary>
     public IDataMessagingConfig MessagingConfig { get; }
+
+    /// <summary>
+    /// Current order factory
+    /// </summary>
+    public IOrderFactory OrderFactory { get; }
 
     /// <summary>
     /// Current device order processor instance

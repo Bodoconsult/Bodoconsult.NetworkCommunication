@@ -34,18 +34,18 @@ public class NoActionStateConfiguration : INoActionStateConfiguration
     /// <summary>
     /// State builder to use
     /// </summary>
-    public IStateMachineStateBuilder StateBuilderBuilder { get; set; }
+    public IStateMachineStateBuilder StateBuilderBuilder { get; }
 
 
     /// <summary>
     /// Delegate to handle a ComDevClose event in business logic
     /// </summary>
-    public HandleComDevCloseDelegate? HandleComDevCloseDelegate { get; set; } 
+    public HandleComDevCloseDelegate? HandleComDevCloseDelegate { get; set; }
 
     /// <summary>
     /// Handle an error message received from the device
     /// </summary>
-    public HandleErrorMessageDelegate? HandleErrorMessageDelegate { get; set; } 
+    public HandleErrorMessageDelegate? HandleErrorMessageDelegate { get; set; }
 
     /// <summary>
     /// Handle an async received message
@@ -55,7 +55,7 @@ public class NoActionStateConfiguration : INoActionStateConfiguration
     /// <summary>
     /// Delegate for preparing orders for the regular state reqeust
     /// </summary>
-    public PrepareRegularStateRequestDelegate? PrepareRegularStateRequestDelegate { get; set; } 
+    public PrepareRegularStateRequestDelegate? PrepareRegularStateRequestDelegate { get; set; }
 
     /// <summary>
     /// Delegate for handling device state check request answers in business logic
@@ -65,7 +65,22 @@ public class NoActionStateConfiguration : INoActionStateConfiguration
     /// <summary>
     /// Delegate to be executed from a no action state machine state to check if job states are required to be executed
     /// </summary>
-    public CheckJobstatesActionForStateDelegate? CheckJobstatesActionForStateDelegate { get; set; } 
+    public CheckJobstatesActionForStateDelegate? CheckJobstatesActionForStateDelegate { get; set; }
+
+    /// <summary>Creates a new object that is a copy of the current instance.</summary>
+    /// <returns>A new object that is a copy of this instance.</returns>
+    public object Clone()
+    {
+        return new NoActionStateConfiguration(StateName, StateBuilderBuilder)
+        {
+            CheckJobstatesActionForStateDelegate = CheckJobstatesActionForStateDelegate,
+            HandleRegularStateRequestAnswerDelegate = HandleRegularStateRequestAnswerDelegate,
+            HandleAsyncMessageDelegate = HandleAsyncMessageDelegate,
+            HandleComDevCloseDelegate = HandleComDevCloseDelegate,
+            HandleErrorMessageDelegate = HandleErrorMessageDelegate,
+            PrepareRegularStateRequestDelegate = PrepareRegularStateRequestDelegate
+        };
+    }
 
     /// <summary>
     /// Is  a config valid

@@ -1,6 +1,8 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
+using System.Configuration;
 using Bodoconsult.NetworkCommunication.Delegates;
+using Bodoconsult.NetworkCommunication.Interfaces;
 using Bodoconsult.NetworkCommunication.StateManagement.Interfaces;
 
 namespace Bodoconsult.NetworkCommunication.StateManagement.Configurations;
@@ -72,12 +74,35 @@ public class JobStateConfiguration : IJobStateConfiguration
     public OrderFinishedUnsucessfullyDelegate? OrderFinishedUnsucessfullyDelegate { get; set; }
 
     /// <summary>
-    /// Delegate to create one or more orders sent to device needed for an order based state machine state
+    /// Parameter set for the orders to be created for the state
     /// </summary>
-    public PrepareOrdersForStateMachineStateDelegate? PrepareOrdersForStateMachineStateDelegate { get; set; } 
+    public IParameterSet? ParameterSet { get; set; }
+
+    /// <summary>
+    /// All configurations for orders to be executed for the state to be configured. Sort order is important! The first configuration added is executed as first order etc.
+    /// </summary>
+    public List<string> OrderConfigurations { get; } = new();
 
     /// <summary>
     /// The UID of a source item like a joblist or a trial run the order is bound to
     /// </summary>
     public Guid? SourceUid { get; set; }
+
+    /// <summary>Creates a new object that is a copy of the current instance.</summary>
+    /// <returns>A new object that is a copy of this instance.</returns>
+    public object Clone()
+    {
+        var config = new JobStateConfiguration(StateName, StateBuilderBuilder)
+        {
+            HandleRegularStateRequestAnswerDelegate = HandleRegularStateRequestAnswerDelegate,
+            HandleAsyncMessageDelegate = HandleAsyncMessageDelegate,
+            HandleComDevCloseDelegate = HandleComDevCloseDelegate,
+            HandleErrorMessageDelegate = HandleErrorMessageDelegate,
+            PrepareRegularStateRequestDelegate = PrepareRegularStateRequestDelegate,
+            OrderFinishedUnsucessfullyDelegate = OrderFinishedUnsucessfullyDelegate,
+            OrderFinishedSucessfullyDelegate = OrderFinishedSucessfullyDelegate
+        };
+        config.OrderConfigurations.AddRange(OrderConfigurations);
+        return config;
+    }
 }

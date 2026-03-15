@@ -53,7 +53,6 @@ internal class BaseJobStateMachineStateBuilderTests
             CurrentContext = TestDataHelper.CreateStateMachineDevice(),
             OrderFinishedSucessfullyDelegate = DelegateHelper.OrderFinishedSucessfullyDelegate,
             OrderFinishedUnsucessfullyDelegate = DelegateHelper.OrderFinishedUnsucessfullyDelegate,
-            PrepareOrdersForStateMachineStateDelegate = DelegateHelper.PrepareOrdersForStateMachineStateDelegate
         };
 
         // Act  

@@ -11,6 +11,15 @@ namespace Bodoconsult.NetworkCommunication.StateManagement.Interfaces;
 /// <summary>
 /// Interface for state machine implemenations
 /// </summary>
+public interface IStateMachineConfigurator
+{
+
+
+}
+
+/// <summary>
+/// Interface for state machine implemenations
+/// </summary>
 public interface IStateMachineState
 {
     /// <summary>

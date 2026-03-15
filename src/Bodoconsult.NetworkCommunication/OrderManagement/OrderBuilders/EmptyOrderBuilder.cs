@@ -20,7 +20,7 @@ public class EmptyOrderBuilder : BaseOrderBuilder
     /// <summary>
     /// Configure the order
     /// </summary>
-    public override void ConfigureOrder(IOrder order)
+    public override void ConfigureOrder(IOrder order, IOrderConfiguration config)
     {
         order.TraceCodeSuccess = TraceCodes.IdsMsgEmptyOrderOk;
         order.TraceCodeError = TraceCodes.IdsMsgEmptyOrderFails;

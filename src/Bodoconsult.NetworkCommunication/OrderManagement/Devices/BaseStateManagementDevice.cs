@@ -35,7 +35,6 @@ public abstract class BaseStateManagementDevice : BaseOrderManagementDevice, ISt
     {
         DeviceStateCheckManager = deviceStateCheckManager;
         StateMachineStateFactory = stateMachineStateFactory;
-        StateMachineStateFactory.LoadContext(this);
     }
 
     /// <summary>
@@ -206,7 +205,7 @@ public abstract class BaseStateManagementDevice : BaseOrderManagementDevice, ISt
     /// <returns>Fresh instance of the requested state</returns>
     public IStateMachineState CreateStateInstance(string stateName)
     {
-        return StateMachineStateFactory.CreateInstance(stateName);
+        return StateMachineStateFactory.CreateInstance(this, stateName);
     }
 
     /// <summary>

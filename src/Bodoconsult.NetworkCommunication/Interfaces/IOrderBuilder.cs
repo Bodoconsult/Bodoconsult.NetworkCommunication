@@ -23,14 +23,15 @@ public interface IOrderBuilder
     /// <summary>
     /// Create the (raw) order
     /// </summary>
-    /// <param name="id">ID of the order</param>
-    /// <param name="parameterSet">ParameterSet to use for the order</param>
-    IOrder CreateOrder(long id, IParameterSet parameterSet);
+    /// <param name="config">Configuration to use for the order</param>
+    IOrder CreateOrder(IOrderConfiguration config);
 
     /// <summary>
     /// Configure the order. Implementation of this method may require to add dependencies to your business logic layer
     /// </summary>
-    void ConfigureOrder(IOrder order);
+    /// <param name="order">Current order to configure</param>
+    /// <param name="config">Current configuration</param>
+    void ConfigureOrder(IOrder order, IOrderConfiguration config);
 
     /// <summary>
     /// Create an <see cref="DeviceRequestSpec"/> instance and add it to the order

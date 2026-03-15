@@ -11,9 +11,14 @@ namespace Bodoconsult.NetworkCommunication.StateManagement.Interfaces;
 public interface IOrderBasedActionStateMachineState : IStateMachineState
 {
     /// <summary>
-    /// Delegate to create one or more orders sent to device needed for an order based state machine state
+    /// ParameterSet for the orders to be created for the state
     /// </summary>
-    PrepareOrdersForStateMachineStateDelegate? PrepareOrdersForStateMachineStateDelegate { get; set; }
+    IParameterSet? ParameterSet { get; set; }
+
+    /// <summary>
+    /// All configurations for orders to be executed for the state to be configured. Sort order is important! The first configuration added is executed as first order etc.
+    /// </summary>
+    List<string> OrderConfigurations { get; }
 
     /// <summary>
     /// Orders to be handled by the current state

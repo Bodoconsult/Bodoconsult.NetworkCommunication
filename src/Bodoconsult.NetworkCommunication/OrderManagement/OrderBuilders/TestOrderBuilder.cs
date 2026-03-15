@@ -20,10 +20,17 @@ public class TestOrderBuilder : BaseOrderBuilder
     { }
 
     /// <summary>
-    /// Configure the order
+    /// Configure the order. Implementation of this method may require to add dependencies to your business logic layer
     /// </summary>
-    public override void ConfigureOrder(IOrder order)
+    /// <param name="order">Current order to configure</param>
+    /// <param name="config">Current configuration</param>
+    public override void ConfigureOrder(IOrder order, IOrderConfiguration config)
     {
+        //if (config is not " + nameof(OneRequestSpecNoOrOneStepOneAnswerConfiguration) + " oc)
+        //{
+        //    throw new ArgumentException($"Config must be " + nameof(OneRequestSpecNoOrOneStepOneAnswerConfiguration) + " but was {config.GetType().Name}");
+        //}
+
         // Tracing
         order.TraceCodeSuccess = TraceCodes.IdsMsgTestOrderOk;
         order.TraceCodeError = TraceCodes.IdsMsgTestOrderFails;

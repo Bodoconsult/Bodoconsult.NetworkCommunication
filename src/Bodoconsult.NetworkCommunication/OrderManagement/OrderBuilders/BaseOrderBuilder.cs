@@ -33,32 +33,35 @@ public abstract class BaseOrderBuilder : IOrderBuilder
     /// </summary>
     public string OrderTypeName { get; }
 
+
     /// <summary>
     /// Create the (raw) order
     /// </summary>
-    /// <param name="id">ID of the order</param>
-    /// <param name="parameterSet">ParameterSet to use for the order</param>
-    public IOrder CreateOrder(long id, IParameterSet parameterSet)
+    /// <param name="config">Configuration to use for the order</param>
+    public IOrder CreateOrder(IOrderConfiguration config)
     {
+        ArgumentNullException.ThrowIfNull(config.ParameterSet);
+
         if (ParameterSetType != null)
         {
-            var type = parameterSet.GetType();
+            var type = config.ParameterSet.GetType();
             if (type != ParameterSetType)
             {
                 throw new ArgumentException($"ParameterSet should be {ParameterSetType.Name} but was {type.Name}");
             }
         }
 
-        var order = new OmOrder(id, OrderTypeName, parameterSet);
-        ConfigureOrder(order);
+        var order = new OmOrder(config.OrderId, OrderTypeName, config.ParameterSet);
+        ConfigureOrder(order, config);
         return order;
     }
-
 
     /// <summary>
     /// Configure the order. Implementation of this method may require to add dependencies to your business logic layer
     /// </summary>
-    public virtual void ConfigureOrder(IOrder order)
+    /// <param name="order">Current order to configure</param>
+    /// <param name="config">Current configuration</param>
+    public virtual void ConfigureOrder(IOrder order, IOrderConfiguration config)
     {
         throw new NotSupportedException("Override in derived classes");
     }
