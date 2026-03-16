@@ -7,7 +7,6 @@ namespace Bodoconsult.NetworkCommunication.Tests.Edcp;
 [TestFixture]
 internal class EdcpOutboundDataMessageTests
 {
-
     [Test]
     public void Ctor_ValidSetup_PropsSetCorrectly()
     {

@@ -10,7 +10,7 @@ using Bodoconsult.NetworkCommunication.OrderManagement.ParameterSets;
 namespace Bodoconsult.NetworkCommunication.OrderManagement.OrderBuilders;
 
 /// <summary>
-/// Order builder to create a EDCP server order waiting for an answer
+/// Order builder to create a Tncp server order waiting for an answer
 /// </summary>
 public class EdcpServerOrderBuilder : BaseOrderBuilder
 {
@@ -19,7 +19,7 @@ public class EdcpServerOrderBuilder : BaseOrderBuilder
     /// <summary>
     /// Default ctor
     /// </summary>
-    public EdcpServerOrderBuilder() : base(typeof(EdcpParameterSet), BuiltinOrders.EdcpServerOrder)
+    public EdcpServerOrderBuilder() : base(typeof(TncpParameterSet), BuiltinOrders.EdcpServerOrder)
     { }
 
     /// <summary>
@@ -35,8 +35,8 @@ public class EdcpServerOrderBuilder : BaseOrderBuilder
         }
 
         // Tracing
-        order.TraceCodeSuccess = TraceCodes.IdsMsgEdcpOrderOk;
-        order.TraceCodeError = TraceCodes.IdsMsgEdcpOrderFails;
+        order.TraceCodeSuccess = TraceCodes.IdsMsgTncpOrderOk;
+        order.TraceCodeError = TraceCodes.IdsMsgTncpOrderFails;
         order.TraceMessage = OrderTypeName;
 
         // RequestSpec 1
@@ -72,12 +72,12 @@ public class EdcpServerOrderBuilder : BaseOrderBuilder
     /// <returns>True if the message was as expected as answer of the sent message else false</returns>
     private static bool CheckReceivedMessageDelegate(IRequestAnswer requestAnswer, IOutboundDataMessage sentMessage, IInboundDataMessage? receivedMessage, IList<string> errors)
     {
-        if (receivedMessage is not EdcpInboundDataMessage rm)
+        if (receivedMessage is not TncpInboundDataMessage rm)
         {
             return false;
         }
 
-        if (sentMessage is not EdcpOutboundDataMessage sm)
+        if (sentMessage is not TncpOutboundDataMessage sm)
         {
             return false;
         }

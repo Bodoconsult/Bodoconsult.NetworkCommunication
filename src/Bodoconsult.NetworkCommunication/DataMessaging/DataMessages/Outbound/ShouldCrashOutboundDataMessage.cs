@@ -6,7 +6,7 @@ using Bodoconsult.NetworkCommunication.Interfaces;
 namespace Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
 
 /// <summary>
-/// Dummy message for tests letting the converter fail for SDCP and EDCP
+/// Dummy message for tests letting the converter fail for SDCP and Tncp
 /// </summary>
 public class ShouldCrashOutboundDataMessage : IOutboundDataMessage
 {

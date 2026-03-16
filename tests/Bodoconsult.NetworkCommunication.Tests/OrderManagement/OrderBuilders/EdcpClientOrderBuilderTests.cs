@@ -23,7 +23,7 @@ internal class EdcpClientOrderBuilderTests : OrderBuilderTestsBase
         using (Assert.EnterMultipleScope())
         {
             Assert.That(builder.OrderTypeName, Is.EqualTo(BuiltinOrders.EdcpClientOrder));
-            Assert.That(builder.ParameterSetType, Is.EqualTo(typeof(EdcpParameterSet)));
+            Assert.That(builder.ParameterSetType, Is.EqualTo(typeof(TncpParameterSet)));
         }
     }
 
@@ -31,7 +31,7 @@ internal class EdcpClientOrderBuilderTests : OrderBuilderTestsBase
     public void CreateOrder_ValidSetup_OrderCreated()
     {
         // Arrange 
-        var ps = new EdcpParameterSet();
+        var ps = new TncpParameterSet();
         var builder = new EdcpClientOrderBuilder();
 
         var config = new OneRequestSpecNoOrOneStepOneAnswerConfiguration("TestConfig", BuiltinOrders.EdcpClientOrder, builder)
@@ -66,7 +66,7 @@ internal class EdcpClientOrderBuilderTests : OrderBuilderTestsBase
     public void CreateDeviceRequestSpec_ValidSetup_RequestSpecCreated()
     {
         // Arrange 
-        var ps = new EdcpParameterSet();
+        var ps = new TncpParameterSet();
         var builder = new EdcpClientOrderBuilder();
 
         var order = new OmOrder(1, "Test", ps);
@@ -90,7 +90,7 @@ internal class EdcpClientOrderBuilderTests : OrderBuilderTestsBase
     public void CreateNoAnswerDeviceRequestSpec_ValidSetup_RequestSpecCreated()
     {
         // Arrange 
-        var ps = new EdcpParameterSet();
+        var ps = new TncpParameterSet();
         var builder = new EdcpClientOrderBuilder();
 
         var order = new OmOrder(1, "Test", ps);
@@ -114,7 +114,7 @@ internal class EdcpClientOrderBuilderTests : OrderBuilderTestsBase
     public void CreateNoHandshakeNoAnswerDeviceRequestSpec_ValidSetup_RequestSpecCreated()
     {
         // Arrange 
-        var ps = new EdcpParameterSet();
+        var ps = new TncpParameterSet();
         var builder = new EdcpClientOrderBuilder();
 
         var order = new OmOrder(1, "Test", ps);
@@ -138,7 +138,7 @@ internal class EdcpClientOrderBuilderTests : OrderBuilderTestsBase
     public void CreateDeviceRequestAnswerStep_ValidSetup_RequestAnswerStepCreated()
     {
         // Arrange 
-        var ps = new EdcpParameterSet();
+        var ps = new TncpParameterSet();
         var builder = new EdcpClientOrderBuilder();
 
         var order = new OmOrder(1, "Test", ps);
@@ -165,7 +165,7 @@ internal class EdcpClientOrderBuilderTests : OrderBuilderTestsBase
     public void CreateRequestAnswerStep_ValidSetup_RequestAnswerStepCreated()
     {
         // Arrange 
-        var ps = new EdcpParameterSet();
+        var ps = new TncpParameterSet();
         var builder = new EdcpClientOrderBuilder();
 
         var order = new OmOrder(1, "Test", ps);

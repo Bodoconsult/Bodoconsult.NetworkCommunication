@@ -6,7 +6,7 @@ using Bodoconsult.NetworkCommunication.Interfaces;
 namespace Bodoconsult.NetworkCommunication.DataMessaging.DataBlockCodecs;
 
 /// <summary>
-/// Basic datablock codec for SDCP, EDCP and BTCP protocol
+/// Basic datablock codec for SDCP, Tncp and BTCP protocol
 /// </summary>
 public class BasicDataBlockCodec : IDataBlockCodec
 {

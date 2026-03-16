@@ -9,7 +9,7 @@ using Bodoconsult.NetworkCommunication.OrderManagement.ParameterSets;
 namespace Bodoconsult.NetworkCommunication.OrderManagement.OrderBuilders;
 
 /// <summary>
-/// Order builder to create a EDCP client order not waiting for an answer
+/// Order builder to create a Tncp client order not waiting for an answer
 /// </summary>
 public class NoAnswerEdcpClientOrderBuilder : BaseOrderBuilder
 {
@@ -35,8 +35,8 @@ public class NoAnswerEdcpClientOrderBuilder : BaseOrderBuilder
         }
 
         // Tracing
-        order.TraceCodeSuccess = TraceCodes.IdsMsgEdcpOrderOk;
-        order.TraceCodeError = TraceCodes.IdsMsgEdcpOrderFails;
+        order.TraceCodeSuccess = TraceCodes.IdsMsgTncpOrderOk;
+        order.TraceCodeError = TraceCodes.IdsMsgTncpOrderFails;
         order.TraceMessage = OrderTypeName;
 
         // RequestSpec 1

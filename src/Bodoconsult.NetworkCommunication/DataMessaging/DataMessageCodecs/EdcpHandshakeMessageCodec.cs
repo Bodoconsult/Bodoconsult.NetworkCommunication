@@ -6,12 +6,12 @@ using Bodoconsult.NetworkCommunication.Interfaces;
 namespace Bodoconsult.NetworkCommunication.DataMessaging.DataMessageCodecs;
 
 /// <summary>
-/// Codec to encode and decode handshake messages for EDCP protocol
+/// Codec to encode and decode handshake messages for Tncp protocol
 /// </summary>
-public class EdcpHandshakeMessageCodec : BaseDataMessageCodec
+public class TncpHandshakeMessageCodec : BaseDataMessageCodec
 {
 
-    public EdcpHandshakeMessageCodec()
+    public TncpHandshakeMessageCodec()
     {
         ExpectedMinimumLength = 2;
         ExpectedMaximumLength = 2;

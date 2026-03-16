@@ -6,7 +6,7 @@ using Bodoconsult.NetworkCommunication.Interfaces;
 namespace Bodoconsult.NetworkCommunication.DataMessaging.DataMessageProcessingPackages;
 
 /// <summary>
-/// Factory for creating handshakes for EDCP protocol to sent to the client
+/// Factory for creating handshakes for Tncp protocol to sent to the client
 /// </summary>
 public class EdcpHandshakeFactory : IDataMessageHandshakeFactory
 {
@@ -17,7 +17,7 @@ public class EdcpHandshakeFactory : IDataMessageHandshakeFactory
     /// <returns>ACK handshake message to send</returns>
     public IOutboundHandShakeMessage GetAckResponse(IInboundDataMessage message)
     {
-        if (message is not EdcpInboundDataMessage em)
+        if (message is not TncpInboundDataMessage em)
         {
             var can = new EdcpOutboundHandshakeMessage
             {
@@ -42,7 +42,7 @@ public class EdcpHandshakeFactory : IDataMessageHandshakeFactory
     /// <returns>NAK handshake message to send</returns>
     public IOutboundHandShakeMessage GetNakResponse(IInboundDataMessage message)
     {
-        if (message is not EdcpInboundDataMessage em)
+        if (message is not TncpInboundDataMessage em)
         {
             var can = new EdcpOutboundHandshakeMessage
             {
@@ -66,7 +66,7 @@ public class EdcpHandshakeFactory : IDataMessageHandshakeFactory
     /// <returns>CAN handshake message to send</returns>
     public IOutboundHandShakeMessage GetCanResponse(IInboundDataMessage message)
     {
-        if (message is not EdcpInboundDataMessage em)
+        if (message is not TncpInboundDataMessage em)
         {
             var can1 = new EdcpOutboundHandshakeMessage
             {

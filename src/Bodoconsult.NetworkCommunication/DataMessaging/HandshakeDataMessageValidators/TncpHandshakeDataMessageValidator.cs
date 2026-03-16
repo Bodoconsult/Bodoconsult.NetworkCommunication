@@ -1,4 +1,4 @@
-﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH.  All rights reserved.
+﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
 using Bodoconsult.NetworkCommunication.EnumAndStates;
@@ -7,10 +7,9 @@ using Bodoconsult.NetworkCommunication.Interfaces;
 namespace Bodoconsult.NetworkCommunication.DataMessaging.HandshakeDataMessageValidators;
 
 /// <summary>
-/// Implementation of <see cref="IHandshakeDataMessageValidator"/> for EDCP protocol
+/// Implementation of <see cref="IHandshakeDataMessageValidator"/> for TNCP protocol
 /// </summary>
-public class EdcpHandshakeDataMessageValidator : IHandshakeDataMessageValidator
-
+public class TncpHandshakeDataMessageValidator : IHandshakeDataMessageValidator
 {
     /// <summary>
     /// Is a received message a handshake for a sent message
@@ -21,19 +20,18 @@ public class EdcpHandshakeDataMessageValidator : IHandshakeDataMessageValidator
     public DataMessageValidatorResult IsHandshakeForSentMessage(IOutboundDataMessage sentMessage,
         IInboundHandShakeMessage? handshakeMessage)
     {
-        if (sentMessage is not EdcpOutboundDataMessage sm)
+
+        if (sentMessage is not TncpOutboundDataMessage)
         {
-            return new DataMessageValidatorResult(false, "No EDCP data message sent");
+            return new DataMessageValidatorResult(false, "No TNCP data message sent");
         }
 
-        if (handshakeMessage is not EdcpInboundHandshakeMessage hm)
+        if (handshakeMessage is not InboundHandshakeMessage)
         {
             return new DataMessageValidatorResult(false, "Received message is NOT a valid handshake message");
         }
 
-        return sm.BlockCode != hm.BlockCode ? 
-            new DataMessageValidatorResult(false, $"Wrong blockcode: sent {sm.BlockCode} handshake {hm.BlockCode}") : 
-            new DataMessageValidatorResult(true, string.Empty);
+        return new DataMessageValidatorResult(true, string.Empty);
     }
 
 
@@ -56,7 +54,7 @@ public class EdcpHandshakeDataMessageValidator : IHandshakeDataMessageValidator
         {
             //todo result wrong message?
             context.ProcessExecutionResult = OrderExecutionResultState.NoResponseFromDevice;
-            logger?.LogWarning($"Message {context.Message?.MessageId}: No handshake received. Current Sent Attempt Count > MaxRepeatCount. No ResponseFromDevice! ");
+            logger?.LogWarning($"Message {context.Message?.MessageId}: No handshake received. Current Sent Attempt Count > MaxRepeatCount. No ResponseFromdevice! ");
             return;
         }
 

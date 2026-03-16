@@ -7,9 +7,9 @@ using Bodoconsult.NetworkCommunication.Interfaces;
 namespace Bodoconsult.NetworkCommunication.DataMessaging.DataMessageSplitters;
 
 /// <summary>
-/// Implementation for <see cref="IDataMessageSplitter"/> for EDCP protocol
+/// Implementation for <see cref="IDataMessageSplitter"/> for Tncp protocol
 /// </summary>
-public class EdcpDataMessageSplitter : IDataMessageSplitter
+public class TncpDataMessageSplitter : IDataMessageSplitter
 {
 
     // Array pool is okay as shared instance here

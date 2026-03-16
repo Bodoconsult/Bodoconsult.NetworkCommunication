@@ -39,7 +39,7 @@ internal class BtcpDataMessageValidatorTests
     }
 
     [Test]
-    public void IsMessageValid_EdcpDataMessage_ReturnsFalse()
+    public void IsMessageValid_TncpDataMessage_ReturnsFalse()
     {
         // Arrange 
         var validator = new BtcpDataMessageValidator();

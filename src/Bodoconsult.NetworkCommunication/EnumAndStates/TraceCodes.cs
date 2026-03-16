@@ -12,7 +12,7 @@ public static class TraceCodes
     public static int IdsMsgSdcpOrderOk => 1000;
     public static int IdsMsgSdcpOrderFails => 1001;
 
-    // Range 2000: EDCP comm
+    // Range 2000: Tncp comm
 
     public static int IdsMsgEdcpOrderOk => 2000;
     public static int IdsMsgEdcpOrderFails => 2001;

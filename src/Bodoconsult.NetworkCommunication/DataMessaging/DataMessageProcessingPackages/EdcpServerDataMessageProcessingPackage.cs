@@ -1,4 +1,4 @@
-﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH.  All rights reserved.
+﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
 using Bodoconsult.NetworkCommunication.Communication.Sending;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataBlockCodecs;
@@ -9,25 +9,26 @@ using Bodoconsult.NetworkCommunication.DataMessaging.DataMessageSplitters;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessageValidators;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig;
 using Bodoconsult.NetworkCommunication.DataMessaging.HandshakeDataMessageValidators;
+using Bodoconsult.NetworkCommunication.Factories;
 using Bodoconsult.NetworkCommunication.Interfaces;
 
 namespace Bodoconsult.NetworkCommunication.DataMessaging.DataMessageProcessingPackages;
 
 /// <summary>
-/// Current implementation of <see cref="IDataMessageProcessingPackage"/> for EDCP protocol
+/// Current implementation of <see cref="IDataMessageProcessingPackage"/> for Tncp protocol for a server
 /// </summary>
-public class EdcpDataMessageProcessingPackage : IDataMessageProcessingPackage
+public class EdcpServerDataMessageProcessingPackage : IDataMessageProcessingPackage
 {
     /// <summary>
     /// Default ctor
     /// </summary>
 #pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring as nullable.
-    public EdcpDataMessageProcessingPackage(IDataMessagingConfig dataMessagingConfig)
+    public EdcpServerDataMessageProcessingPackage(IDataMessagingConfig dataMessagingConfig)
 #pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring as nullable.
     {
-        if (dataMessagingConfig is not EdcpDataMessagingConfig)
+        if (dataMessagingConfig is not TncpDataMessagingConfig)
         {
-            throw new ArgumentException("dataMessagingConfig must be or inherit from EdcpDataMessagingConfig");
+            throw new ArgumentException("dataMessagingConfig must be or inherit from TncpDataMessagingConfig");
         }
 
         DataMessagingConfig = dataMessagingConfig;
@@ -36,7 +37,7 @@ public class EdcpDataMessageProcessingPackage : IDataMessageProcessingPackage
         // Now setup the dependent objects
 
         // 1. Message splitter
-        DataMessageSplitter = new EdcpDataMessageSplitter();
+        DataMessageSplitter = new TncpDataMessageSplitter();
 
         // 2. Codecs
         DataMessageCodingProcessor = new DefaultDataMessageCodingProcessor();
@@ -49,23 +50,26 @@ public class EdcpDataMessageProcessingPackage : IDataMessageProcessingPackage
         WaitStateManager = new DefaultWaitStateManager(dataMessagingConfig);
 
         // 5. Handshake validator
-        HandshakeDataMessageValidator = new EdcpHandshakeDataMessageValidator();
+        HandshakeDataMessageValidator = new TncpHandshakeDataMessageValidator();
 
         // 6. Data message validator
-        DataMessageValidator = new EdcpDataMessageValidator();
+        DataMessageValidator = new TncpDataMessageValidator();
 
         // 7. Handshake creation factory
-        DataMessageHandshakeFactory = new EdcpHandshakeFactory();
+        DataMessageHandshakeFactory = new TncpHandshakeFactory();
+
+        // 8. Outbound data message factory
+        OutboundDataMessageFactory = new EdcpServerOutboundDataMessageFactory();
     }
 
     private void LoadCodecs()
     {
-        var handShakeCodec = new EdcpHandshakeMessageCodec();
+        var handShakeCodec = new TncpHandshakeMessageCodec();
         DataMessageCodingProcessor.MessageCodecs.Add(handShakeCodec);
 
         LoadCustomDataBlockCodecs();
 
-        var deviceMessageCodec = new EdcpDataMessageCodec(DataBlockCodingProcessor);
+        var deviceMessageCodec = new TncpDataMessageCodec(DataBlockCodingProcessor);
         DataMessageCodingProcessor.MessageCodecs.Add(deviceMessageCodec);
 
         var rawCodec = new RawDataMessageCodec();
@@ -116,6 +120,11 @@ public class EdcpDataMessageProcessingPackage : IDataMessageProcessingPackage
     /// Factory for creation of handshakes to be sent for received messages
     /// </summary>
     public IDataMessageHandshakeFactory DataMessageHandshakeFactory { get; }
+
+    /// <summary>
+    /// Factory for outbound data messages
+    /// </summary>
+    public IOutboundDataMessageFactory OutboundDataMessageFactory { get; }
 
     /// <summary>
     /// Load custom data block codecs. This method should be overwritten to load your app specific codecs

@@ -66,6 +66,11 @@ public class DummyDataMessageProcessingPackage: IDataMessageProcessingPackage
     /// </summary>
     public IDataMessageHandshakeFactory DataMessageHandshakeFactory { get; set; }
 
+    /// <summary>
+    /// Factory for outbound data messages
+    /// </summary>
+    public IOutboundDataMessageFactory OutboundDataMessageFactory { get; set; }
+
     public void LoadCustomDataBlockCodecs()
     {
         throw new NotImplementedException();

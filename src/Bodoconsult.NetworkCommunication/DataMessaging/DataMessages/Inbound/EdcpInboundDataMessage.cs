@@ -6,16 +6,16 @@ using Bodoconsult.NetworkCommunication.Interfaces;
 namespace Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
 
 /// <summary>
-/// Basic implementation of <see cref="IInboundDataMessage"/> for EDCP protocol
+/// Basic implementation of <see cref="IInboundDataMessage"/> for Tncp protocol
 /// </summary>
-public class EdcpInboundDataMessage : IInboundDataMessage
+public class TncpInboundDataMessage : IInboundDataMessage
 {
     private Memory<byte> _rawMessageData;
 
     /// <summary>
     /// Default ctor
     /// </summary>
-    public EdcpInboundDataMessage()
+    public TncpInboundDataMessage()
     {
         MessageId = DateTime.Now.ToFileTimeUtc();
     }
@@ -38,7 +38,7 @@ public class EdcpInboundDataMessage : IInboundDataMessage
     /// <returns>True if the message was as expected as answer of the sent message else false</returns>
     public bool CheckReceivedMessage(IOutboundDataMessage sentMessage, IList<string> errors)
     {
-        return sentMessage is EdcpOutboundDataMessage;
+        return sentMessage is TncpOutboundDataMessage;
     }
 
     /// <summary>
@@ -76,7 +76,7 @@ public class EdcpInboundDataMessage : IInboundDataMessage
     /// <returns>Info string</returns>
     public string ToInfoString()
     {
-        return $"EdcpInboundDataMessage ID {MessageId} Block {BlockCode}: {RawMessageDataClearText}";
+        return $"TncpInboundDataMessage ID {MessageId} Block {BlockCode}: {RawMessageDataClearText}";
     }
 
     /// <summary>
@@ -85,7 +85,7 @@ public class EdcpInboundDataMessage : IInboundDataMessage
     /// <returns>Info string</returns>
     public string ToShortInfoString()
     {
-        return $"EdcpInboundDataMessage ID {MessageId} Block {BlockCode}";
+        return $"TncpInboundDataMessage ID {MessageId} Block {BlockCode}";
     }
 
     /// <summary>

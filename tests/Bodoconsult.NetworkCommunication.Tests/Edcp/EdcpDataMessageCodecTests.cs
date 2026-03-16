@@ -10,7 +10,7 @@ using Bodoconsult.NetworkCommunication.Interfaces;
 namespace Bodoconsult.NetworkCommunication.Tests.Edcp;
 
 [TestFixture]
-internal class EdcpDataMessageCodecTests
+internal class TncpDataMessageCodecTests
 {
     [Test]
     public void Ctor_ValidSetup_PropsSetCorrectly()
@@ -20,7 +20,7 @@ internal class EdcpDataMessageCodecTests
         dataBlockCodingProcessor.LoadDataBlockCodecs('x', new BasicDataBlockCodec());
 
         // Act  
-        var codec = new EdcpDataMessageCodec(dataBlockCodingProcessor);
+        var codec = new TncpDataMessageCodec(dataBlockCodingProcessor);
 
         // Assert
         Assert.That(codec.DataBlockCodingProcessor, Is.Not.Null);
@@ -34,7 +34,7 @@ internal class EdcpDataMessageCodecTests
 
         var dataBlockCodingProcessor = new DefaultDataBlockCodingProcessor();
         dataBlockCodingProcessor.LoadDataBlockCodecs('x', new BasicDataBlockCodec());
-        var codec = new EdcpDataMessageCodec(dataBlockCodingProcessor);
+        var codec = new TncpDataMessageCodec(dataBlockCodingProcessor);
 
         // Act  
         var result = codec.DecodeDataMessage(msg);
@@ -43,9 +43,9 @@ internal class EdcpDataMessageCodecTests
         Assert.That(result, Is.Not.Null);
         Assert.That(result.ErrorCode, Is.Zero);
 
-        var edcpMsg = (EdcpInboundDataMessage)result.DataMessage;
+        var TncpMsg = (TncpInboundDataMessage)result.DataMessage;
 
-        Assert.That(edcpMsg.BlockCode, Is.Not.EqualTo(0));
+        Assert.That(TncpMsg.BlockCode, Is.Not.EqualTo(0));
     }
 
     [Test]
@@ -56,7 +56,7 @@ internal class EdcpDataMessageCodecTests
 
         var dataBlockCodingProcessor = new DefaultDataBlockCodingProcessor();
         dataBlockCodingProcessor.LoadDataBlockCodecs('x', new BasicDataBlockCodec());
-        var codec = new EdcpDataMessageCodec(dataBlockCodingProcessor);
+        var codec = new TncpDataMessageCodec(dataBlockCodingProcessor);
 
         // Act  
         var result = codec.DecodeDataMessage(msg);
@@ -81,7 +81,7 @@ internal class EdcpDataMessageCodecTests
             DataBlockType = 'x'
         };
 
-        var msg = new EdcpOutboundDataMessage
+        var msg = new TncpOutboundDataMessage
         {
             BlockCode = blockId,
             DataBlock = dataBlock
@@ -91,7 +91,7 @@ internal class EdcpDataMessageCodecTests
 
         var dataBlockCodingProcessor = new DefaultDataBlockCodingProcessor();
         dataBlockCodingProcessor.LoadDataBlockCodecs('x', new BasicDataBlockCodec());
-        var codec = new EdcpDataMessageCodec(dataBlockCodingProcessor);
+        var codec = new TncpDataMessageCodec(dataBlockCodingProcessor);
 
         // Act  
         var result = codec.EncodeDataMessage(msg);
@@ -112,7 +112,7 @@ internal class EdcpDataMessageCodecTests
         // Arrange 
         byte blockId = 0x31;
 
-        var msg = new EdcpOutboundDataMessage
+        var msg = new TncpOutboundDataMessage
         {
             BlockCode = blockId
         };
@@ -121,7 +121,7 @@ internal class EdcpDataMessageCodecTests
 
         var dataBlockCodingProcessor = new DefaultDataBlockCodingProcessor();
         dataBlockCodingProcessor.LoadDataBlockCodecs('x', new BasicDataBlockCodec());
-        var codec = new  EdcpDataMessageCodec(dataBlockCodingProcessor);
+        var codec = new  TncpDataMessageCodec(dataBlockCodingProcessor);
 
         // Act  
         var result = codec.EncodeDataMessage(msg);

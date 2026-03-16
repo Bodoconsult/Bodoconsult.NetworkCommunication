@@ -54,6 +54,11 @@ public interface IDataMessageProcessingPackage
     IDataMessageHandshakeFactory DataMessageHandshakeFactory { get; }
 
     /// <summary>
+    /// Factory for outbound data messages
+    /// </summary>
+    IOutboundDataMessageFactory OutboundDataMessageFactory { get; }
+
+    /// <summary>
     /// Load custom data block codecs. This method should be overwritten to load your app specific codecs
     /// </summary>
     void LoadCustomDataBlockCodecs();

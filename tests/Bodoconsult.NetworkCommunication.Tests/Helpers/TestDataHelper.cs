@@ -241,7 +241,7 @@ public static class TestDataHelper
     }
 
     /// <summary>
-    /// Create a EDCP client order for testing
+    /// Create a Tncp client order for testing
     /// </summary>
     /// <returns></returns>
     public static IOrder CreateEdcpClientOrder(IParameterSet ps)
@@ -261,7 +261,7 @@ public static class TestDataHelper
     }
 
     /// <summary>
-    /// Create a EDCP server order for testing
+    /// Create a Tncp server order for testing
     /// </summary>
     /// <returns></returns>
     public static IOrder CreateEdcpServerOrder(IParameterSet ps)

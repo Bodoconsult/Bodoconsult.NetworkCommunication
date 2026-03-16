@@ -35,8 +35,8 @@ public class NoHandshakeNoAnswerEdcpClientOrderBuilder : BaseOrderBuilder
         }
 
         // Tracing
-        order.TraceCodeSuccess = TraceCodes.IdsMsgEdcpOrderOk;
-        order.TraceCodeError = TraceCodes.IdsMsgEdcpOrderFails;
+        order.TraceCodeSuccess = TraceCodes.IdsMsgTncpOrderOk;
+        order.TraceCodeError = TraceCodes.IdsMsgTncpOrderFails;
         order.TraceMessage = OrderTypeName;
 
         // RequestSpec 1

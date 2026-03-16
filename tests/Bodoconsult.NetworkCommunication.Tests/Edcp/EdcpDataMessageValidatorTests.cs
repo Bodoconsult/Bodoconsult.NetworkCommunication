@@ -6,13 +6,13 @@ using Bodoconsult.NetworkCommunication.DataMessaging.DataMessageValidators;
 namespace Bodoconsult.NetworkCommunication.Tests.Edcp;
 
 [TestFixture]
-internal class EdcpDataMessageValidatorTests
+internal class TncpDataMessageValidatorTests
 {
     [Test]
     public void IsMessageValid_RawDataMessage_ReturnsTrue()
     {
         // Arrange 
-        var validator = new EdcpDataMessageValidator();
+        var validator = new TncpDataMessageValidator();
 
         var msg = new RawInboundDataMessage();
 
@@ -27,7 +27,7 @@ internal class EdcpDataMessageValidatorTests
     public void IsMessageValid_ScdpDataMessage_ReturnsFalse()
     {
         // Arrange 
-        var validator = new EdcpDataMessageValidator();
+        var validator = new TncpDataMessageValidator();
 
         var msg = new SdcpInboundDataMessage();
 
@@ -42,9 +42,9 @@ internal class EdcpDataMessageValidatorTests
     public void IsMessageValid_EcdpDataMessage_ReturnsTrue()
     {
         // Arrange 
-        var validator = new EdcpDataMessageValidator();
+        var validator = new TncpDataMessageValidator();
 
-        var msg = new EdcpInboundDataMessage();
+        var msg = new TncpInboundDataMessage();
 
         // Act  
         var result = validator.IsMessageValid(msg);

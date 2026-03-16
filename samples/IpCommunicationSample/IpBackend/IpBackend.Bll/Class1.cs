@@ -1,6 +1,6 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
-namespace IpBackend.Bll;
+namespace IpCommunicationSample.Backend.Bll;
 
 public class Class1
 {

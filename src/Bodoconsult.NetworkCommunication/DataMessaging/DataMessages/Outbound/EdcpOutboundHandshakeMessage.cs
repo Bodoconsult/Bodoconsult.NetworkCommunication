@@ -3,7 +3,7 @@
 namespace Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
 
 /// <summary>
-/// Represents an EDCP protocol handshake message
+/// Represents an Edcp protocol handshake message
 /// </summary>
 public sealed class EdcpOutboundHandshakeMessage : BaseOutboundHandShakeMessage
 {
@@ -18,10 +18,10 @@ public sealed class EdcpOutboundHandshakeMessage : BaseOutboundHandShakeMessage
     {
         return $"{HandshakeMessageType switch
         {
-            6 => "EdcpOutboundHandshake ACK",
-            21 => "EdcpOutboundHandshake NAK",
-            24 => "EdcpOutboundHandshake CAN",
-            _ => "EdcpOutboundHandshake Unknown"
+            6 => "TncpOutboundHandshake ACK",
+            21 => "TncpOutboundHandshake NAK",
+            24 => "TncpOutboundHandshake CAN",
+            _ => "TncpOutboundHandshake Unknown"
         }} BlockCode {BlockCode}";
     }
 
@@ -34,10 +34,10 @@ public sealed class EdcpOutboundHandshakeMessage : BaseOutboundHandShakeMessage
     {
         return $"{HandshakeMessageType switch
         {
-            6 => "EdcpOutboundHandshake ACK",
-            21 => "EdcpOutboundHandshake NAK",
-            24 => "EdcpOutboundHandshake CAN",
-            _ => "EdcpOutboundHandshake Unknown"
+            6 => "TncpOutboundHandshake ACK",
+            21 => "TncpOutboundHandshake NAK",
+            24 => "TncpOutboundHandshake CAN",
+            _ => "TncpOutboundHandshake Unknown"
         }} BlockCode {BlockCode}";
     }
 
@@ -49,10 +49,10 @@ public sealed class EdcpOutboundHandshakeMessage : BaseOutboundHandShakeMessage
     {
         return $"{HandshakeMessageType switch
         {
-            6 => "EdcpOutboundHandshake ACK",
-            21 => "EdcpOutboundHandshake NAK",
-            24 => "EdcpOutboundHandshake CAN",
-            _ => "EdcpOutboundHandshake Unknown"
+            6 => "TncpOutboundHandshake ACK",
+            21 => "TncpOutboundHandshake NAK",
+            24 => "TncpOutboundHandshake CAN",
+            _ => "TncpOutboundHandshake Unknown"
         }} BlockCode {BlockCode}";
     }
 }

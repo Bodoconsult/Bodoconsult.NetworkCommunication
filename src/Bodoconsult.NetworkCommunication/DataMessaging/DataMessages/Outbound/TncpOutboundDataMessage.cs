@@ -1,4 +1,4 @@
-﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH.  All rights reserved.
+﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
 using Bodoconsult.NetworkCommunication.Helpers;
 using Bodoconsult.NetworkCommunication.Interfaces;
@@ -6,16 +6,16 @@ using Bodoconsult.NetworkCommunication.Interfaces;
 namespace Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
 
 /// <summary>
-/// Basic implementation of <see cref="IOutboundDataMessage"/> for Edcp protocol
+/// Basic implementation of <see cref="IOutboundDataMessage"/> for TNCP protocol
 /// </summary>
-public class EdcpOutboundDataMessage : IOutboundDataMessage
+public class TncpOutboundDataMessage : IOutboundDataMessage
 {
     private Memory<byte> _rawMessageData;
 
     /// <summary>
     /// Default ctor
     /// </summary>
-    public EdcpOutboundDataMessage()
+    public TncpOutboundDataMessage()
     {
         MessageId = DateTime.Now.ToFileTimeUtc();
     }
@@ -60,16 +60,21 @@ public class EdcpOutboundDataMessage : IOutboundDataMessage
     /// <returns>Info string</returns>
     public string ToInfoString()
     {
-        return $"EdcpOutboundDataMessage ID {MessageId} Block {BlockCode}: {RawMessageDataClearText}";
+        return $"TncpOutboundDataMessage ID {MessageId} Block {BlockCode}: {RawMessageDataClearText}";
     }
 
     public string ToShortInfoString()
     {
-        return $"EdcpOutboundDataMessage ID {MessageId} Block {BlockCode}";
+        return $"TncpOutboundDataMessage ID {MessageId} Block {BlockCode}";
     }
 
     /// <summary>
     /// Data block stored in the message
     /// </summary>
     public ITypedOutboundDataBlock? DataBlock { get; set; }
+
+    /// <summary>
+    /// Telnet style command
+    /// </summary>
+    public string? Command { get; set; }
 }

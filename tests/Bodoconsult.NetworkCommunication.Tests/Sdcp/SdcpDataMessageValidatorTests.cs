@@ -44,7 +44,7 @@ internal class SdcpDataMessageValidatorTests
         // Arrange 
         var validator = new SdcpDataMessageValidator();
 
-        var msg = new EdcpInboundDataMessage();
+        var msg = new TncpInboundDataMessage();
 
         // Act  
         var result = validator.IsMessageValid(msg);

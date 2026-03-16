@@ -25,7 +25,6 @@ public class IpCommunicationAdapter : ICommunicationAdapter
 
     private int _errorCounter;
 
-
     /// <summary>
     /// Default ctor
     /// </summary>
@@ -56,7 +55,6 @@ public class IpCommunicationAdapter : ICommunicationAdapter
     /// <summary>
     /// Is a COM DEV operation running currently
     /// </summary>
-
     public bool IsComDevActionInProgress
     {
         get

@@ -10,9 +10,9 @@ using Bodoconsult.NetworkCommunication.StateManagement.Interfaces;
 namespace Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig;
 
 /// <summary>
-/// EDCP protocol config file for one the client-server network communication with one client device
+/// Tncp protocol config file for one the client-server network communication with one client device
 /// </summary>
-public class EdcpDataMessagingConfig : IIpDataMessagingConfig
+public class TncpDataMessagingConfig : IIpDataMessagingConfig
 {
 
     /// <summary>

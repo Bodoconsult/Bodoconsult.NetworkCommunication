@@ -5,7 +5,7 @@
 
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
 
-namespace Bodoconsult.NetworkCommunication.Tests.Edcp;
+namespace Bodoconsult.NetworkCommunication.Tests.Tncp;
 
 [TestFixture]
 internal class TncpInboundDataMessageTests

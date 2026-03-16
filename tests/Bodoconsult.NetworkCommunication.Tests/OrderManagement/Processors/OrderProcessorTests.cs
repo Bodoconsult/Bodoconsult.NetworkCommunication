@@ -763,7 +763,7 @@ internal class OrderProcessorTests
         SetTimeoutsAndDelegate(order);
 
         // Arrange: create received messages
-        var receivedMessage = new EdcpInboundDataMessage();
+        var receivedMessage = new TncpInboundDataMessage();
         ReceiveMessage(receivedMessage);
 
         // Act

@@ -1,14 +1,13 @@
-﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
-
+﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH.  All rights reserved.
 
 using Bodoconsult.NetworkCommunication.Communication.Sending;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataBlockCodecs;
-using Bodoconsult.NetworkCommunication.DataMessaging.DataBlockCodingProcessors;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessageCodecs;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessageCodingProcessors;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessageProcessors;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessageSplitters;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessageValidators;
+using Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig;
 using Bodoconsult.NetworkCommunication.DataMessaging.HandshakeDataMessageValidators;
 using Bodoconsult.NetworkCommunication.Factories;
 using Bodoconsult.NetworkCommunication.Interfaces;
@@ -16,24 +15,29 @@ using Bodoconsult.NetworkCommunication.Interfaces;
 namespace Bodoconsult.NetworkCommunication.DataMessaging.DataMessageProcessingPackages;
 
 /// <summary>
-/// Current implementation of <see cref="IDataMessageProcessingPackage"/> for SDCP protocol
+/// Current implementation of <see cref="IDataMessageProcessingPackage"/> for Tncp protocol for a client
 /// </summary>
-public class SdcpDataMessageProcessingPackage : IDataMessageProcessingPackage
+public class EdcpClientDataMessageProcessingPackage : IDataMessageProcessingPackage
 {
     /// <summary>
     /// Default ctor
     /// </summary>
 #pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring as nullable.
-    public SdcpDataMessageProcessingPackage(IDataMessagingConfig dataMessagingConfig)
+    public EdcpClientDataMessageProcessingPackage(IDataMessagingConfig dataMessagingConfig)
 #pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring as nullable.
     {
+        if (dataMessagingConfig is not TncpDataMessagingConfig)
+        {
+            throw new ArgumentException("dataMessagingConfig must be or inherit from TncpDataMessagingConfig");
+        }
+
         DataMessagingConfig = dataMessagingConfig;
 
         // *******************************
         // Now setup the dependent objects
 
         // 1. Message splitter
-        DataMessageSplitter = new SdcpDataMessageSplitter();
+        DataMessageSplitter = new TncpDataMessageSplitter();
 
         // 2. Codecs
         DataMessageCodingProcessor = new DefaultDataMessageCodingProcessor();
@@ -46,28 +50,26 @@ public class SdcpDataMessageProcessingPackage : IDataMessageProcessingPackage
         WaitStateManager = new DefaultWaitStateManager(dataMessagingConfig);
 
         // 5. Handshake validator
-        HandshakeDataMessageValidator = new SdcpHandshakeDataMessageValidator();
+        HandshakeDataMessageValidator = new TncpHandshakeDataMessageValidator();
 
         // 6. Data message validator
-        DataMessageValidator = new SdcpDataMessageValidator();
+        DataMessageValidator = new TncpDataMessageValidator();
 
         // 7. Handshake creation factory
-        DataMessageHandshakeFactory = new SdcpHandshakeFactory();
+        DataMessageHandshakeFactory = new TncpHandshakeFactory();
 
         // 8. Outbound data message factory
-        OutboundDataMessageFactory = new SdcpOutboundDataMessageFactory();
+        OutboundDataMessageFactory = new EdcpClientOutboundDataMessageFactory();
     }
 
     private void LoadCodecs()
     {
-        var handShakeCodec = new SdcpHandshakeMessageCodec();
+        var handShakeCodec = new TncpHandshakeMessageCodec();
         DataMessageCodingProcessor.MessageCodecs.Add(handShakeCodec);
-
-        DataBlockCodingProcessor = new DefaultDataBlockCodingProcessor();
 
         LoadCustomDataBlockCodecs();
 
-        var deviceMessageCodec = new SdcpDataMessageCodec(DataBlockCodingProcessor);
+        var deviceMessageCodec = new TncpDataMessageCodec(DataBlockCodingProcessor);
         DataMessageCodingProcessor.MessageCodecs.Add(deviceMessageCodec);
 
         var rawCodec = new RawDataMessageCodec();

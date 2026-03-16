@@ -7,7 +7,7 @@ using Bodoconsult.NetworkCommunication.OrderManagement.ParameterSets;
 namespace Bodoconsult.NetworkCommunication.Factories;
 
 /// <summary>
-/// EDCP cliemt side implementation of an <see cref="IOutboundDataMessageFactory"/>. Creates a block code from 128 to 255
+/// EDCP client side implementation of an <see cref="IOutboundDataMessageFactory"/>. Creates a block code from 128 to 255
 /// </summary>
 public class EdcpClientOutboundDataMessageFactory : IOutboundDataMessageFactory
 {

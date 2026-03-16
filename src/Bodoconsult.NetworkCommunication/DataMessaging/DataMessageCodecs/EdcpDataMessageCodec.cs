@@ -7,9 +7,9 @@ using Bodoconsult.NetworkCommunication.Interfaces;
 namespace Bodoconsult.NetworkCommunication.DataMessaging.DataMessageCodecs;
 
 /// <summary>
-/// Codec to encode and decode device data messages for EDCP protocol
+/// Codec to encode and decode device data messages for Tncp protocol
 /// </summary>
-public class EdcpDataMessageCodec : BaseDataMessageCodec
+public class TncpDataMessageCodec : BaseDataMessageCodec
 {
     /// <summary>
     /// Current <see cref="IDataBlockCodingProcessor"/> instance
@@ -20,7 +20,7 @@ public class EdcpDataMessageCodec : BaseDataMessageCodec
     /// Default ctor
     /// </summary>
     /// <param name="dataBlockCodingProcessor">Current <see cref="IDataBlockCodingProcessor"/> instance</param>
-    public EdcpDataMessageCodec(IDataBlockCodingProcessor dataBlockCodingProcessor)
+    public TncpDataMessageCodec(IDataBlockCodingProcessor dataBlockCodingProcessor)
     {
         DataBlockCodingProcessor = dataBlockCodingProcessor;
 
@@ -83,7 +83,7 @@ public class EdcpDataMessageCodec : BaseDataMessageCodec
             }
 
 
-            var dataMessage = new EdcpInboundDataMessage
+            var dataMessage = new TncpInboundDataMessage
             {
                 DataBlock = dataBlock,
                 BlockCode = blockCode
@@ -110,9 +110,9 @@ public class EdcpDataMessageCodec : BaseDataMessageCodec
     public override OutboundCodecResult EncodeDataMessage(IOutboundMessage message)
     {
         var result = new OutboundCodecResult();
-        if (message is not EdcpOutboundDataMessage tMessage)
+        if (message is not TncpOutboundDataMessage tMessage)
         {
-            result.ErrorMessage = "EdcpDataMessage required for EdcpDataMessageCodec";
+            result.ErrorMessage = "TncpDataMessage required for TncpDataMessageCodec";
             result.ErrorCode = 1;
             return result;
         }
@@ -129,14 +129,14 @@ public class EdcpDataMessageCodec : BaseDataMessageCodec
             }
             catch (Exception exception)
             {
-                result.ErrorMessage = $"EdcpDataMessageCodec: exception raised during encoding: {exception}";
+                result.ErrorMessage = $"TncpDataMessageCodec: exception raised during encoding: {exception}";
                 result.ErrorCode = 4;
                 return result;
             }
         }
         else
         {
-            result.ErrorMessage = "EdcpDataMessageCodec: no datablock provided";
+            result.ErrorMessage = "TncpDataMessageCodec: no datablock provided";
             result.ErrorCode = 5;
             return result;
         }
