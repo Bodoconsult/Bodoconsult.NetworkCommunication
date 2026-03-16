@@ -1,10 +1,11 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH.  All rights reserved.
 
-using Bodoconsult.App.Interfaces;
+using Bodoconsult.App.Abstractions.Interfaces;
 using Bodoconsult.NetworkCommunication.App.Abstractions;
 using Bodoconsult.NetworkCommunication.Delegates;
 using Bodoconsult.NetworkCommunication.EnumAndStates;
 using Bodoconsult.NetworkCommunication.Interfaces;
+using Bodoconsult.NetworkCommunication.StateManagement.Interfaces;
 
 namespace Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig;
 
@@ -35,9 +36,19 @@ public class EdcpDataMessagingConfig : IIpDataMessagingConfig
     public IDataMessageProcessingPackage? DataMessageProcessingPackage { get; set; }
 
     /// <summary>
+    /// Data message procssing package
+    /// </summary>
+    public IStateMachineProcessingPackage? StateMachineProcessingPackage { get; set; }
+
+    /// <summary>
     /// Update data message processing package
     /// </summary>
     public UpdateDataMessageProcessingPackageDelegate? UpdateDataMessageProcessingPackageDelegate { get; set; }
+
+    /// <summary>
+    /// Current implementation of a device state checker
+    /// </summary>
+    public IDeviceStateCheckManager? StateCheckManager { get; set; }
 
     /// <summary>
     /// Current general logger

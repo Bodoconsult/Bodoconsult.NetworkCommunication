@@ -87,6 +87,12 @@ public interface IOrderManagementDevice
     bool IsPingable { get; }
 
     /// <summary>
+    /// Load a communication adapter
+    /// </summary>
+    /// <param name="commAdapter">Current communication adapter</param>
+    void LoadCommAdapter(ICommunicationAdapter commAdapter);
+
+    /// <summary>
     /// Start the communication
     /// </summary>
     void StartComm();

@@ -22,15 +22,6 @@ public class FakeNoStateMachineDevice : BaseOrderManagementDevice, INoStateMachi
     { }
 
     /// <summary>
-    /// Load a comm adapter
-    /// </summary>
-    /// <param name="commAdapter">Current comm adapter</param>
-    public void LoadCommAdapter(ICommunicationAdapter commAdapter)
-    {
-        CommunicationAdapter = commAdapter;
-    }
-
-    /// <summary>
     /// Handle an async received message without state machine
     /// </summary>
     public NoStateMachineHandleAsyncMessageDelegate? NoStateMachineHandleAsyncMessageDelegate { get; set; }

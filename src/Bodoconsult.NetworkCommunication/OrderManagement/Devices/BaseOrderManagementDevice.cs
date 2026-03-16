@@ -1,7 +1,7 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
 using System.Diagnostics;
-using Bodoconsult.App.Interfaces;
+using Bodoconsult.App.Abstractions.Interfaces;
 using Bodoconsult.NetworkCommunication.Interfaces;
 
 namespace Bodoconsult.NetworkCommunication.OrderManagement.Devices;
@@ -11,10 +11,10 @@ namespace Bodoconsult.NetworkCommunication.OrderManagement.Devices;
 /// </summary>
 public abstract class BaseOrderManagementDevice : IOrderManagementDevice
 {
-    protected bool _isOrderProcessingActivated;
+    protected bool IsOrderProcessingActivatedInternal;
 
-    protected readonly IAppLoggerProxy _appLogger;
-    protected readonly IAppLoggerProxy _monitorLogger;
+    protected readonly IAppLoggerProxy AppLogger;
+    protected readonly IAppLoggerProxy MonitorLogger;
 
 
     /// <summary>
@@ -25,8 +25,8 @@ public abstract class BaseOrderManagementDevice : IOrderManagementDevice
     protected BaseOrderManagementDevice(IDataMessagingConfig dataMessagingConfig, IOrderManagementClientNotificationManager clientNotificationManager)
     {
         DataMessagingConfig = dataMessagingConfig ?? throw new ArgumentNullException(nameof(dataMessagingConfig));
-        _appLogger = dataMessagingConfig.AppLogger;
-        _monitorLogger = dataMessagingConfig.MonitorLogger;
+        AppLogger = dataMessagingConfig.AppLogger;
+        MonitorLogger = dataMessagingConfig.MonitorLogger;
         ClientNotificationManager = clientNotificationManager;
     }
 
@@ -98,26 +98,26 @@ public abstract class BaseOrderManagementDevice : IOrderManagementDevice
     /// </summary>
     public bool IsOrderProcessingActivated
     {
-        get => _isOrderProcessingActivated;
+        get => IsOrderProcessingActivatedInternal;
         set
         {
-            if (_isOrderProcessingActivated != value)
+            if (IsOrderProcessingActivatedInternal != value)
             {
-                _appLogger.LogInformation(value
+                AppLogger.LogInformation(value
                     ? $"{DataMessagingConfig.LoggerId}order processing is activated now"
                     : $"{DataMessagingConfig.LoggerId}order processing is deactivated now");
 
-                _isOrderProcessingActivated = value;
+                IsOrderProcessingActivatedInternal = value;
             }
 
             if (OrderProcessor != null)
             {
-                OrderProcessor.IsRunnerStopped = !_isOrderProcessingActivated;
+                OrderProcessor.IsRunnerStopped = !IsOrderProcessingActivatedInternal;
             }
 
             if (OrderManager?.OrderReceiver != null)
             {
-                OrderManager.OrderReceiver.IsReceivedMessageProcessingActivated = _isOrderProcessingActivated;
+                OrderManager.OrderReceiver.IsReceivedMessageProcessingActivated = IsOrderProcessingActivatedInternal;
             }
         }
     }
@@ -222,6 +222,15 @@ public abstract class BaseOrderManagementDevice : IOrderManagementDevice
     public virtual bool IsPingable => CommunicationAdapter?.IsPingableAsync().GetAwaiter().GetResult() ?? false;
 
     /// <summary>
+    /// Load a communication adapter
+    /// </summary>
+    /// <param name="commAdapter">Current communication adapter</param>
+    public void LoadCommAdapter(ICommunicationAdapter commAdapter)
+    {
+        CommunicationAdapter = commAdapter;
+    }
+
+    /// <summary>
     /// Clear the internal state without breaking comm
     /// </summary>
     public virtual void ResetInternalState()
@@ -233,7 +242,7 @@ public abstract class BaseOrderManagementDevice : IOrderManagementDevice
             OrderProcessor.IsInitInProcessing = false;
             OrderProcessor.IsRunnerStopped = false;
         }
-        _appLogger.LogInformation("Internal state was reset");
+        AppLogger.LogInformation("Internal state was reset");
     }
 
     /// <summary>
@@ -274,7 +283,7 @@ public abstract class BaseOrderManagementDevice : IOrderManagementDevice
 
         var s = $"{DataMessagingConfig.LoggerId}{OrderProcessor.OrderPipeline.CurrentOrderState} Init {isInit}";
         Debug.Print(s);
-        _appLogger.LogDebug(s);
+        AppLogger.LogDebug(s);
 
         // ****************************
         // StSys tower init is running: run only priority orders stsys init and tower hardware init
@@ -353,7 +362,7 @@ public abstract class BaseOrderManagementDevice : IOrderManagementDevice
         //}
 
         order.ExecutionState = OrderState.FinishedSuccessfully;
-        _appLogger.LogDebug($"{DataMessagingConfig.LoggerId}{order.LoggerId}has finished successful");
+        AppLogger.LogDebug($"{DataMessagingConfig.LoggerId}{order.LoggerId}has finished successful");
         //MessagingBusinessDelegate?.DoNotifyOrderStateChanged(this, order);
     }
 
@@ -377,12 +386,12 @@ public abstract class BaseOrderManagementDevice : IOrderManagementDevice
                 {
                     var tro = order.RequestSpecs[^1].TransportObject;
                     order.OrderFinishedUnsuccessfulAction(tro, pso);
-                    _appLogger.LogDebug("OrderFinishedUnsuccessfulAction TRO was successful");
+                    AppLogger.LogDebug("OrderFinishedUnsuccessfulAction TRO was successful");
                 }
                 else
                 {
                     order.OrderFinishedUnsuccessfulAction(null, pso);
-                    _appLogger.LogDebug("OrderFinishedUnsuccessfulAction NULL was successful");
+                    AppLogger.LogDebug("OrderFinishedUnsuccessfulAction NULL was successful");
                 }
             }
         }
@@ -479,7 +488,7 @@ public abstract class BaseOrderManagementDevice : IOrderManagementDevice
     {
         // ToDo: new delegate
         //SlotCheckBusinessDelegate?.CheckCurrentAbortedUnloadOrLoadOrder();
-        _appLogger.LogDebug($"{DataMessagingConfig.LoggerId}Run SlotCheck.CheckCurrentAbortedUnloadOrLoadOrder");
+        AppLogger.LogDebug($"{DataMessagingConfig.LoggerId}Run SlotCheck.CheckCurrentAbortedUnloadOrLoadOrder");
     }
 
     /// <summary>
@@ -488,8 +497,8 @@ public abstract class BaseOrderManagementDevice : IOrderManagementDevice
     /// <param name="message">Message to log</param>
     public virtual void LogDebug(string message)
     {
-        _monitorLogger.LogDebug(message);
-        _appLogger.LogDebug($"{DataMessagingConfig.LoggerId}{message}");
+        MonitorLogger.LogDebug(message);
+        AppLogger.LogDebug($"{DataMessagingConfig.LoggerId}{message}");
         Debug.Print($"STS: {message}");
     }
 
@@ -499,8 +508,8 @@ public abstract class BaseOrderManagementDevice : IOrderManagementDevice
     /// <param name="message">Message to log</param>
     public virtual void LogInformation(string message)
     {
-        _monitorLogger.LogInformation(message);
-        _appLogger.LogInformation($"{DataMessagingConfig.LoggerId}{message}");
+        MonitorLogger.LogInformation(message);
+        AppLogger.LogInformation($"{DataMessagingConfig.LoggerId}{message}");
         Debug.Print($"STS: {message}");
     }
 
@@ -510,8 +519,8 @@ public abstract class BaseOrderManagementDevice : IOrderManagementDevice
     /// <param name="message">Message to log</param>
     public virtual void LogWarning(string message)
     {
-        _monitorLogger.LogWarning(message);
-        _appLogger.LogWarning($"{DataMessagingConfig.LoggerId}{message}");
+        MonitorLogger.LogWarning(message);
+        AppLogger.LogWarning($"{DataMessagingConfig.LoggerId}{message}");
         Debug.Print($"STS: {message}");
     }
 
@@ -521,8 +530,8 @@ public abstract class BaseOrderManagementDevice : IOrderManagementDevice
     /// <param name="message">Message to log</param>
     public virtual void LogError(string message)
     {
-        _monitorLogger.LogError(message);
-        _appLogger.LogError($"{DataMessagingConfig.LoggerId}{message}");
+        MonitorLogger.LogError(message);
+        AppLogger.LogError($"{DataMessagingConfig.LoggerId}{message}");
         Debug.Print($"STS: {message}");
     }
 
@@ -535,7 +544,7 @@ public abstract class BaseOrderManagementDevice : IOrderManagementDevice
         OrderManager?.StopOrderProcessing();
         OrderProcessor?.Dispose();
         CommunicationAdapter?.Dispose();
-        _monitorLogger.Dispose();
+        MonitorLogger.Dispose();
         DataMessagingConfig.DataMessageProcessingPackage?.WaitStateManager.Dispose();
     }
 
@@ -598,7 +607,7 @@ public abstract class BaseOrderManagementDevice : IOrderManagementDevice
     {
         //_statusWatchdog?.StopWatchDog();
         OrderManager?.StopOrderProcessing();
-        _monitorLogger.LogError($"{DataMessagingConfig.LoggerId}DeviceServer stopped - Com Dev Close called");
+        MonitorLogger.LogError($"{DataMessagingConfig.LoggerId}DeviceServer stopped - Com Dev Close called");
         CommunicationAdapter?.ComDevClose();
     }
 

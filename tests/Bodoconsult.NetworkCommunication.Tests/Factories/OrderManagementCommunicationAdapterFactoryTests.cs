@@ -1,7 +1,7 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
+using Bodoconsult.App.Abstractions.Interfaces;
 using Bodoconsult.App.Factories;
-using Bodoconsult.App.Interfaces;
 using Bodoconsult.NetworkCommunication.App.Abstractions;
 using Bodoconsult.NetworkCommunication.Factories;
 using Bodoconsult.NetworkCommunication.Interfaces;
@@ -32,7 +32,7 @@ internal class OrderManagementCommunicationAdapterFactoryTests
 
         IOutboundDataMessageFactory outboundDataMessageFactory = new BtcpOutboundDataMessageFactory();
 
-        var factory = new OrderManagementCommunicationAdapterFactory(commHandlerfactory, outboundDataMessageFactory);
+        var factory = new IpCommunicationAdapterFactory(commHandlerfactory, outboundDataMessageFactory);
 
         // Act  
         var instance = factory.CreateInstance(config);

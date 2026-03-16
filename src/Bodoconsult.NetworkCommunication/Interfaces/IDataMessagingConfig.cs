@@ -1,10 +1,10 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 // Licence MIT
 
-using System.Text.Json.Serialization;
-using Bodoconsult.App.Interfaces;
+using Bodoconsult.App.Abstractions.Interfaces;
 using Bodoconsult.NetworkCommunication.Delegates;
 using Bodoconsult.NetworkCommunication.EnumAndStates;
+using System.Text.Json.Serialization;
 
 namespace Bodoconsult.NetworkCommunication.Interfaces;
 
@@ -32,6 +32,11 @@ public interface IDataMessagingConfig
     /// Data message procssing package
     /// </summary>
     IDataMessageProcessingPackage? DataMessageProcessingPackage { get; set; }
+
+    /// <summary>
+    /// Data message procssing package
+    /// </summary>
+    IStateMachineProcessingPackage? StateMachineProcessingPackage { get; set; }
 
     /// <summary>
     /// Update data message processing package

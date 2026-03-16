@@ -1,5 +1,6 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
+using Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
 using Bodoconsult.NetworkCommunication.EnumAndStates;
 using Bodoconsult.NetworkCommunication.Interfaces;
 using Bodoconsult.NetworkCommunication.OrderManagement.ParameterSets;
@@ -46,8 +47,15 @@ internal class InternalRequestAnswerStepTests
         var answer = new RequestAnswer(false, null, "TestAnswer", CheckReceivedMessageDelegate);
         answer.HandleRequestAnswerOnSuccessDelegate = HandleRequestAnswerOnSuccessDelegate;
 
+        var sentMessage = new SdcpOutboundDataMessage();
+        var receicedMessage = new SdcpInboundDataMessage();
+
         var irs = new InternalRequestAnswerStep(ir);
         irs.AllowedRequestAnswers.Add(answer);
+        IList<string> errors = new List<string>();
+
+        ArgumentNullException.ThrowIfNull(answer.CheckReceivedMessageDelegate);
+        answer.CheckReceivedMessageDelegate.Invoke(answer, sentMessage, receicedMessage, errors);
 
         // Act  
         var result = irs.HandleResult();
@@ -63,6 +71,7 @@ internal class InternalRequestAnswerStepTests
 
     private bool CheckReceivedMessageDelegate(IRequestAnswer requestAnswer, IOutboundDataMessage sentMessage, IInboundDataMessage receivedMessage, IList<string> errors)
     {
+        requestAnswer.SetWasReceived(receivedMessage);
         return true;
     }
 
@@ -89,6 +98,7 @@ internal class InternalRequestAnswerStepTests
     private MessageHandlingResult HandleRequestAnswerOnSuccessDelegate(IInboundDataMessage message, object transportObject, IParameterSet parameterSet)
     {
         _isHandleResultFired = true;
+
         return new MessageHandlingResult
             {
                 Error = 0,

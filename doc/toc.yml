@@ -8,3 +8,6 @@
 - name: Bodoconsult.NetworkCommunication
   href: Bodoconsult.NetworkCommunication/toc.yml
   topicHref: Bodoconsult.NetworkCommunication/README.md
+- name: IpCommunicationSample
+  href: IpCommunicationSample/toc.yml
+  topicHref: IpCommunicationSample/README.md

@@ -1,8 +1,8 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
+using Bodoconsult.App.Abstractions.Interfaces;
 using Bodoconsult.App.Benchmarking;
 using Bodoconsult.App.Factories;
-using Bodoconsult.App.Interfaces;
 using Bodoconsult.App.Logging;
 using Bodoconsult.NetworkCommunication.App.Abstractions;
 using Bodoconsult.NetworkCommunication.ClientNotifications;
@@ -319,9 +319,9 @@ public static class TestDataHelper
     {
         var commAdapter = FakeIpCommunicationAdapter;
         var device = new FakeStateMachineDevice(GetDataMessagingConfig(), new FakeOrderManagementClientNotificationManager(), new FakeStateMachineStateFactory(), new DoNothingStateCheckManager());
-        var om = new FakeOrderManager(GetDataMessagingConfig(), new FakeOrderProcessor(device, new FakeIOrderPipeline(), new SyncOrderManager(), new FakeOrderManagementClientNotificationManager() ), new FakeOrderReceiver(), new OrderFactory())
+        var om = new FakeOrderManager(GetDataMessagingConfig(), new FakeOrderProcessor(device, new FakeOrderPipeline(), new SyncOrderManager(), new FakeOrderManagementClientNotificationManager() ), new FakeOrderReceiver(), new OrderFactory())
         {
-            OrderProcessor = new FakeOrderProcessor(device, new FakeIOrderPipeline(), new SyncOrderManager(), new FakeOrderManagementClientNotificationManager())
+            OrderProcessor = new FakeOrderProcessor(device, new FakeOrderPipeline(), new SyncOrderManager(), new FakeOrderManagementClientNotificationManager())
         };
 
         device.LoadCommAdapter(commAdapter);

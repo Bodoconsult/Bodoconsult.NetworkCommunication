@@ -8,7 +8,7 @@ namespace Bodoconsult.NetworkCommunication.Factories;
 /// <summary>
 /// Current implementation of <see cref="IOrderManagementCommunicationAdapterFactory"/>
 /// </summary>
-public class OrderManagementCommunicationAdapterFactory : IOrderManagementCommunicationAdapterFactory
+public class IpCommunicationAdapterFactory : IOrderManagementCommunicationAdapterFactory
 {
     private readonly ICommunicationHandlerFactory _communicationHandlerFactory;
     private readonly IOutboundDataMessageFactory _outboundDataMessageFactory;
@@ -16,9 +16,9 @@ public class OrderManagementCommunicationAdapterFactory : IOrderManagementCommun
     /// <summary>
     /// Default ctor
     /// </summary>
-    public OrderManagementCommunicationAdapterFactory(ICommunicationHandlerFactory smdTowerCommunicationHandlerFactory, IOutboundDataMessageFactory outboundDataMessageFactory)
+    public IpCommunicationAdapterFactory(ICommunicationHandlerFactory communicationHandlerFactory, IOutboundDataMessageFactory outboundDataMessageFactory)
     {
-        _communicationHandlerFactory = smdTowerCommunicationHandlerFactory;
+        _communicationHandlerFactory = communicationHandlerFactory;
         _outboundDataMessageFactory = outboundDataMessageFactory;
     }
 

@@ -26,6 +26,29 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bodoconsult.Network.Invento
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "samples", "samples", "{B60CD42C-141A-437D-8043-A159935EE4DC}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "IpCommunicationSample", "IpCommunicationSample", "{C08C8F9B-255B-43B2-9A8B-952F93854263}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "IpClient", "IpClient", "{D49DD780-B38D-4C41-B593-21E391D69CCE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "IpBackend", "IpBackend", "{4A0C4F67-EF21-4169-ADEC-0B1A30CA36EA}"
+	ProjectSection(SolutionItems) = preProject
+		samples\IpCommunicationSample\IpClient\IpCommunicationSample.Client.Bll\BtRequestDataToOutboundBtcpMessageConverter.cs = samples\IpCommunicationSample\IpClient\IpCommunicationSample.Client.Bll\BtRequestDataToOutboundBtcpMessageConverter.cs
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "IpDevice", "IpDevice", "{41663B8D-CA4E-48E3-99DC-D95E855AC87E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IpCommunicationSample.Backend.Bll", "samples\IpCommunicationSample\IpBackend\IpBackend.Bll\IpCommunicationSample.Backend.Bll.csproj", "{D7293D08-3788-4A24-871A-313CFD9D096F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{FBD18559-8588-45AE-B7FA-DC237A55736A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IpCommunicationSample.Common", "samples\IpCommunicationSample\Common\IpCommunicationSample.Common\IpCommunicationSample.Common.csproj", "{6F097E37-0218-4763-9A53-1509B04C068E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IpCommunicationSample.Client.Bll", "samples\IpCommunicationSample\IpClient\IpCommunicationSample.Client.Bll\IpCommunicationSample.Client.Bll.csproj", "{50547ED7-9F0C-4581-9780-AF7059BC1F49}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IpCommunicationSample.Device.Bll", "samples\IpCommunicationSample\IpDevice\IpCommunicationSample.Device.Bll\IpCommunicationSample.Device.Bll.csproj", "{C92DEC59-E6D6-4CE3-B798-00714047166B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IpCommunicationSampleTests", "tests\IpCommunicationSampleTests\IpCommunicationSampleTests.csproj", "{AAA87A06-7D69-43A3-804E-E1CF48F07204}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -52,6 +75,26 @@ Global
 		{80162CCF-DD2D-42FF-A138-A01797BED121}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{80162CCF-DD2D-42FF-A138-A01797BED121}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{80162CCF-DD2D-42FF-A138-A01797BED121}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D7293D08-3788-4A24-871A-313CFD9D096F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D7293D08-3788-4A24-871A-313CFD9D096F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D7293D08-3788-4A24-871A-313CFD9D096F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D7293D08-3788-4A24-871A-313CFD9D096F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6F097E37-0218-4763-9A53-1509B04C068E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6F097E37-0218-4763-9A53-1509B04C068E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6F097E37-0218-4763-9A53-1509B04C068E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6F097E37-0218-4763-9A53-1509B04C068E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{50547ED7-9F0C-4581-9780-AF7059BC1F49}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{50547ED7-9F0C-4581-9780-AF7059BC1F49}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{50547ED7-9F0C-4581-9780-AF7059BC1F49}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{50547ED7-9F0C-4581-9780-AF7059BC1F49}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C92DEC59-E6D6-4CE3-B798-00714047166B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C92DEC59-E6D6-4CE3-B798-00714047166B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C92DEC59-E6D6-4CE3-B798-00714047166B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C92DEC59-E6D6-4CE3-B798-00714047166B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AAA87A06-7D69-43A3-804E-E1CF48F07204}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AAA87A06-7D69-43A3-804E-E1CF48F07204}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AAA87A06-7D69-43A3-804E-E1CF48F07204}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AAA87A06-7D69-43A3-804E-E1CF48F07204}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -62,6 +105,16 @@ Global
 		{14F2041D-DFBB-375D-283B-786A02DD4CCF} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 		{C54A3DB2-DA14-3C88-8423-33A43996602C} = {0E8A1175-F9D0-49AD-8FC2-5F73C7DD2137}
 		{80162CCF-DD2D-42FF-A138-A01797BED121} = {0E8A1175-F9D0-49AD-8FC2-5F73C7DD2137}
+		{C08C8F9B-255B-43B2-9A8B-952F93854263} = {B60CD42C-141A-437D-8043-A159935EE4DC}
+		{D49DD780-B38D-4C41-B593-21E391D69CCE} = {C08C8F9B-255B-43B2-9A8B-952F93854263}
+		{4A0C4F67-EF21-4169-ADEC-0B1A30CA36EA} = {C08C8F9B-255B-43B2-9A8B-952F93854263}
+		{41663B8D-CA4E-48E3-99DC-D95E855AC87E} = {C08C8F9B-255B-43B2-9A8B-952F93854263}
+		{D7293D08-3788-4A24-871A-313CFD9D096F} = {4A0C4F67-EF21-4169-ADEC-0B1A30CA36EA}
+		{FBD18559-8588-45AE-B7FA-DC237A55736A} = {C08C8F9B-255B-43B2-9A8B-952F93854263}
+		{6F097E37-0218-4763-9A53-1509B04C068E} = {FBD18559-8588-45AE-B7FA-DC237A55736A}
+		{50547ED7-9F0C-4581-9780-AF7059BC1F49} = {D49DD780-B38D-4C41-B593-21E391D69CCE}
+		{C92DEC59-E6D6-4CE3-B798-00714047166B} = {41663B8D-CA4E-48E3-99DC-D95E855AC87E}
+		{AAA87A06-7D69-43A3-804E-E1CF48F07204} = {0E8A1175-F9D0-49AD-8FC2-5F73C7DD2137}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {7FDC65A1-0BE7-4D6D-BF31-0BC0C0289539}

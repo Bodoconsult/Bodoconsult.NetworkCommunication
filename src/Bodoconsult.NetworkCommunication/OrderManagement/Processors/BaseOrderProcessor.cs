@@ -1,9 +1,9 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
 using System.Diagnostics;
-using Bodoconsult.App.Benchmarking;
+using Bodoconsult.App.Abstractions.Benchmarking;
+using Bodoconsult.App.Abstractions.Interfaces;
 using Bodoconsult.App.Helpers;
-using Bodoconsult.App.Interfaces;
 using Bodoconsult.NetworkCommunication.Helpers;
 using Bodoconsult.NetworkCommunication.Interfaces;
 using IAppDateService = Bodoconsult.NetworkCommunication.App.Abstractions.IAppDateService;

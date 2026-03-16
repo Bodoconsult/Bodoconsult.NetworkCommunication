@@ -7,7 +7,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Bodoconsult.App" Version="1.0.2" />
+    <PackageReference Include="Bodoconsult.App" Version="1.0.8" />
+    <PackageReference Include="Bodoconsult.App.Abstractions" Version="1.0.8" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
   </ItemGroup>
 

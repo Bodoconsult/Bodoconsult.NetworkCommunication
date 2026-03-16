@@ -1,9 +1,9 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
 using Bodoconsult.App;
-using Bodoconsult.App.Delegates;
-using Bodoconsult.App.DependencyInjection;
-using Bodoconsult.App.Interfaces;
+using Bodoconsult.App.Abstractions.Delegates;
+using Bodoconsult.App.Abstractions.DependencyInjection;
+using Bodoconsult.App.Abstractions.Interfaces;
 using Bodoconsult.App.Logging;
 
 namespace Bodoconsult.NetworkCommunication.Tests.App;
@@ -134,6 +134,14 @@ public class Globals : IAppGlobals
     /// Current license management delegate
     /// </summary>
     public LicenseMissingDelegate LicenseMissingDelegate { get; set; }
+
+    /// <summary>Delegate to handle I18N translations</summary>
+    public TranslateDelegate TranslateDelegate { get; set; }
+
+    /// <summary>
+    /// Delegate to handle I18N translations with parameters to fill in translated text
+    /// </summary>
+    public TranslateWithParamsDelegate TranslateWithParamsDelegate { get; set; }
 
     ///// <summary>
     ///// Delegate to handle I18N translations
