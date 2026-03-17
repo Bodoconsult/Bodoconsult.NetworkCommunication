@@ -35,7 +35,7 @@ internal class EdcpHandshakeMessageCodecTests
     public void EncodeDataMessage_ValidHandshakeMessage_CreatesHandshake()
     {
         // Arrange 
-        var message = new EdcpOutboundHandshakeMessage()
+        var message = new EdcpOutboundHandshakeMessage
         {
             HandshakeMessageType = 0x6,
             BlockCode = 0x1

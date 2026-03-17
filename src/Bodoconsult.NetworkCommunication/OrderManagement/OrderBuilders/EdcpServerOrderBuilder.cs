@@ -72,12 +72,12 @@ public class EdcpServerOrderBuilder : BaseOrderBuilder
     /// <returns>True if the message was as expected as answer of the sent message else false</returns>
     private static bool CheckReceivedMessageDelegate(IRequestAnswer requestAnswer, IOutboundDataMessage sentMessage, IInboundDataMessage? receivedMessage, IList<string> errors)
     {
-        if (receivedMessage is not TncpInboundDataMessage rm)
+        if (receivedMessage is not EdcpInboundDataMessage rm)
         {
             return false;
         }
 
-        if (sentMessage is not TncpOutboundDataMessage sm)
+        if (sentMessage is not EdcpOutboundDataMessage sm)
         {
             return false;
         }

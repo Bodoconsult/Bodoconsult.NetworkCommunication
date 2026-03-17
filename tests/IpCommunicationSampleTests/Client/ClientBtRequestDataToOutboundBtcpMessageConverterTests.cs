@@ -41,7 +41,7 @@ internal class ClientBtRequestDataToOutboundBtcpMessageConverterTests
 
         var transactionId = ClientSideBusinessTransactionIds.GetConfig;
 
-        var request = new EmptyBusinessTransactionRequestData()
+        var request = new EmptyBusinessTransactionRequestData
         {
             TransactionId = transactionId,
         };
@@ -93,7 +93,7 @@ internal class ClientBtRequestDataToOutboundBtcpMessageConverterTests
 
         var transactionId = ClientSideBusinessTransactionIds.StopStreaming;
 
-        var request = new EmptyBusinessTransactionRequestData()
+        var request = new EmptyBusinessTransactionRequestData
         {
             TransactionId = transactionId,
         };
@@ -119,7 +119,7 @@ internal class ClientBtRequestDataToOutboundBtcpMessageConverterTests
 
         var transactionId = ClientSideBusinessTransactionIds.StartSnapshot;
 
-        var request = new EmptyBusinessTransactionRequestData()
+        var request = new EmptyBusinessTransactionRequestData
         {
             TransactionId = transactionId,
         };
@@ -145,7 +145,7 @@ internal class ClientBtRequestDataToOutboundBtcpMessageConverterTests
 
         var transactionId = ClientSideBusinessTransactionIds.StopSnapshot;
 
-        var request = new EmptyBusinessTransactionRequestData()
+        var request = new EmptyBusinessTransactionRequestData
         {
             TransactionId = transactionId,
         };

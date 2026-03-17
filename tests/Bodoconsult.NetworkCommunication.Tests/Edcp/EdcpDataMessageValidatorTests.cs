@@ -44,7 +44,7 @@ internal class TncpDataMessageValidatorTests
         // Arrange 
         var validator = new TncpDataMessageValidator();
 
-        var msg = new TncpInboundDataMessage();
+        var msg = new EdcpInboundDataMessage();
 
         // Act  
         var result = validator.IsMessageValid(msg);

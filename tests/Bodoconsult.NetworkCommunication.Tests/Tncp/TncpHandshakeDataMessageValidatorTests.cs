@@ -4,7 +4,7 @@ using Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
 using Bodoconsult.NetworkCommunication.DataMessaging.HandshakeDataMessageValidators;
 using Bodoconsult.NetworkCommunication.Interfaces;
 
-namespace Bodoconsult.NetworkCommunication.Tests.Edcp;
+namespace Bodoconsult.NetworkCommunication.Tests.Tncp;
 
 [TestFixture]
 internal class TncpHandshakeDataMessageValidatorTests
@@ -75,7 +75,7 @@ internal class TncpHandshakeDataMessageValidatorTests
         // Arrange 
         var msg = new TncpOutboundDataMessage();
 
-        var handshake = new EdcpInboundHandshakeMessage()
+        var handshake = new InboundHandshakeMessage
         {
             HandshakeMessageType = DeviceCommunicationBasics.Nack
         };

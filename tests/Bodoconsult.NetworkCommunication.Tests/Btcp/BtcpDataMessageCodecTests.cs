@@ -45,6 +45,7 @@ internal class BtcpDataMessageCodecTests
 
         var btcpMsg = (BtcpInboundDataMessage)result.DataMessage;
 
+        Assert.That(btcpMsg, Is.Not.Null);
         Assert.That(btcpMsg.BusinessTransactionId, Is.EqualTo(1));
         Assert.That(btcpMsg.DataBlock, Is.Not.Null);
         Assert.That(btcpMsg.DataBlock.Data.Length, Is.EqualTo(11));
@@ -70,6 +71,7 @@ internal class BtcpDataMessageCodecTests
 
         var btcpMsg = (BtcpInboundDataMessage)result.DataMessage;
 
+        Assert.That(btcpMsg, Is.Not.Null);
         Assert.That(btcpMsg.BusinessTransactionId, Is.EqualTo(1));
         Assert.That(btcpMsg.DataBlock, Is.Not.Null);
         Assert.That(btcpMsg.DataBlock.Data.Length, Is.EqualTo(11));
@@ -95,6 +97,7 @@ internal class BtcpDataMessageCodecTests
 
         var btcpMsg = (BtcpInboundDataMessage)result.DataMessage;
 
+        Assert.That(btcpMsg, Is.Not.Null);
         Assert.That(btcpMsg.BusinessTransactionId, Is.EqualTo(1));
         Assert.That(btcpMsg.DataBlock, Is.Null);
         Assert.That(btcpMsg.IsRequest, Is.False);
@@ -119,6 +122,7 @@ internal class BtcpDataMessageCodecTests
 
         var btcpMsg = (BtcpInboundDataMessage)result.DataMessage;
 
+        Assert.That(btcpMsg, Is.Not.Null);
         Assert.That(btcpMsg.BusinessTransactionId, Is.EqualTo(1));
         Assert.That(btcpMsg.DataBlock, Is.Null);
         Assert.That(btcpMsg.IsRequest, Is.True);
@@ -143,6 +147,7 @@ internal class BtcpDataMessageCodecTests
 
         var btcpMsg = (BtcpInboundDataMessage)result.DataMessage;
 
+        Assert.That(btcpMsg, Is.Not.Null);
         Assert.That(btcpMsg.BusinessTransactionId, Is.EqualTo(1));
         Assert.That(btcpMsg.DataBlock, Is.Null);
         Assert.That(btcpMsg.IsRequest, Is.False);
@@ -167,6 +172,7 @@ internal class BtcpDataMessageCodecTests
 
         var btcpMsg = (BtcpInboundDataMessage)result.DataMessage;
 
+        Assert.That(btcpMsg, Is.Not.Null);
         Assert.That(btcpMsg.BusinessTransactionId, Is.EqualTo(1));
         Assert.That(btcpMsg.DataBlock, Is.Null);
         Assert.That(btcpMsg.IsRequest, Is.True);

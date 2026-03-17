@@ -34,7 +34,7 @@ internal class SdcpHandshakeMessageCodecTests
     public void EncodeDataMessage_ValidHandshakeMessage_CreatesHandshake()
     {
         // Arrange 
-        var message = new OutboundHandshakeMessage()
+        var message = new OutboundHandshakeMessage
         {
             HandshakeMessageType = 0x6 
         };

@@ -229,7 +229,7 @@ internal class DefaultDataMessageCodingProcessorTests
         {
             Assert.That(result, Is.Not.Null);
             Assert.That(result.DataMessage, Is.Not.Null);
-            Assert.That(result.DataMessage.GetType(), Is.EqualTo(typeof(TncpInboundDataMessage)));
+            Assert.That(result.DataMessage.GetType(), Is.EqualTo(typeof(EdcpInboundDataMessage)));
         }
     }
 

@@ -38,7 +38,6 @@ internal class TncpDataMessageSplitterTests
         // Assert
         Assert.That(result, Is.True);
         Assert.That(command.Length, Is.EqualTo(4));
-
     }
 
     [Test]

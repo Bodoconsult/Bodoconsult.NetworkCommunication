@@ -62,15 +62,13 @@ internal class OrderProcessorTests
     {
         _benchLogger.Dispose();
     }
-
-
+    
     public void TestTearDown()
     {
         _processor?.Dispose();
         _receivedMessage.Clear();
     }
-
-
+    
     #region Helper methods for faking receiver
 
     private IInboundDataMessage DecodeDataMessage(Memory<byte> message)
@@ -763,7 +761,7 @@ internal class OrderProcessorTests
         SetTimeoutsAndDelegate(order);
 
         // Arrange: create received messages
-        var receivedMessage = new TncpInboundDataMessage();
+        var receivedMessage = new EdcpInboundDataMessage();
         ReceiveMessage(receivedMessage);
 
         // Act

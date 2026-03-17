@@ -1,5 +1,6 @@
-﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH.  All rights reserved.
+﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
+using System.Text;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
 using Bodoconsult.NetworkCommunication.Helpers;
 using Bodoconsult.NetworkCommunication.Interfaces;
@@ -7,9 +8,9 @@ using Bodoconsult.NetworkCommunication.Interfaces;
 namespace Bodoconsult.NetworkCommunication.DataMessaging.DataMessageCodecs;
 
 /// <summary>
-/// Codec to encode and decode device data messages for EDCP protocol
+/// Codec to encode and decode device data messages for TNCP protocol
 /// </summary>
-public class EdcpDataMessageCodec : BaseDataMessageCodec
+public class TncpDataMessageCodec : BaseDataMessageCodec
 {
     /// <summary>
     /// Current <see cref="IDataBlockCodingProcessor"/> instance
@@ -20,11 +21,11 @@ public class EdcpDataMessageCodec : BaseDataMessageCodec
     /// Default ctor
     /// </summary>
     /// <param name="dataBlockCodingProcessor">Current <see cref="IDataBlockCodingProcessor"/> instance</param>
-    public EdcpDataMessageCodec(IDataBlockCodingProcessor dataBlockCodingProcessor)
+    public TncpDataMessageCodec(IDataBlockCodingProcessor dataBlockCodingProcessor)
     {
         DataBlockCodingProcessor = dataBlockCodingProcessor;
 
-        ExpectedMinimumLength = DeviceCommunicationBasics.DataMessageMinPacketSize;
+        ExpectedMinimumLength = 1;
         ExpectedMaximumLength = DeviceCommunicationBasics.DataMessageMaxPacketSize;
     }
 
@@ -35,26 +36,6 @@ public class EdcpDataMessageCodec : BaseDataMessageCodec
     /// <returns>Decoding result</returns>
     public override InboundCodecResult DecodeDataMessage(Memory<byte> data)
     {
-        // Check STX
-        if (data[..1].Span[0] != DeviceCommunicationBasics.Stx)
-        {
-            return new InboundCodecResult
-            {
-                ErrorCode = 98,
-                ErrorMessage = "STX is missing"
-            };
-        }
-
-        // Check ETX
-        if (data.Slice(data.Length - 1, 1).Span[0] != DeviceCommunicationBasics.Etx)
-        {
-            return new InboundCodecResult
-            {
-                ErrorCode = 99,
-                ErrorMessage = "ETX is missing"
-            };
-        }
-
         // Check length
         var result = CheckExpectedLengths(data.Length);
 
@@ -67,9 +48,22 @@ public class EdcpDataMessageCodec : BaseDataMessageCodec
         {
             ITypedInboundDataBlock? dataBlock;
 
-            var blockCode = data.Slice(1, 1).Span[0];
+            if (data.Length == 1)
+            {
+                result.ErrorMessage = "DataBlock decoding failed: no data";
+                result.ErrorCode = 3;
+                return result;
+            }
 
-            var dataBlockBytes = data.Slice(2, data.Length - 2);
+            // Now get the delivered datablock
+            var dataBlockBytes = new byte[data.Length];
+
+            dataBlockBytes[0] = 0x78;
+
+            for (var i = 0; i < data.Length - 1; i++)
+            {
+                dataBlockBytes[i + 1] = data.Slice(i, 1).Span[0];
+            }
 
             try
             {
@@ -82,14 +76,20 @@ public class EdcpDataMessageCodec : BaseDataMessageCodec
                 return result;
             }
 
-
-            var dataMessage = new EdcpInboundDataMessage
+            var dataMessage = new TncpInboundDataMessage
             {
-                DataBlock = dataBlock,
-                BlockCode = blockCode
+                DataBlock = dataBlock
             };
 
+            if (dataBlock != null)
+            {
+                dataMessage.TelnetCommand = Encoding.UTF8.GetString(dataBlock.Data.Span);
+            }
+
             result.DataMessage = dataMessage;
+
+
+
             return result;
 
         }
@@ -99,7 +99,6 @@ public class EdcpDataMessageCodec : BaseDataMessageCodec
             result.ErrorCode = 5;
             return result;
         }
-
     }
 
     /// <summary>
@@ -112,37 +111,42 @@ public class EdcpDataMessageCodec : BaseDataMessageCodec
         var result = new OutboundCodecResult();
         if (message is not TncpOutboundDataMessage tMessage)
         {
-            result.ErrorMessage = "TncpDataMessage required for TncpDataMessageCodec";
+            result.ErrorMessage = "SdcpDataMessage required for TncpDataMessageCodec";
             result.ErrorCode = 1;
             return result;
         }
 
-        var data = new List<byte> { DeviceCommunicationBasics.Stx, tMessage.BlockCode };
+        var data = new List<byte>();
 
-        if (tMessage.DataBlock != null)
+        // Add the TelnetCommand or the datablock
+        try
         {
-
-            // Add the datablock now if required
-            try
+            if (string.IsNullOrEmpty(tMessage.TelnetCommand))
             {
+                if (tMessage.DataBlock == null || tMessage.DataBlock.Data.Length == 0)
+                {
+                    result.ErrorMessage = "TncpDataMessageCodec: datablock or TelentCommand must not be empty";
+                    result.ErrorCode = 5;
+                    return result;
+                }
+
                 DataBlockCodingProcessor.FromDataBlockToBytes(data, tMessage.DataBlock);
             }
-            catch (Exception exception)
+            else
             {
-                result.ErrorMessage = $"TncpDataMessageCodec: exception raised during encoding: {exception}";
-                result.ErrorCode = 4;
-                return result;
+                var bytes = Encoding.UTF8.GetBytes(tMessage.TelnetCommand).ToList();
+                data.AddRange(bytes);
             }
         }
-        else
+        catch (Exception exception)
         {
-            result.ErrorMessage = "TncpDataMessageCodec: no datablock provided";
-            result.ErrorCode = 5;
+            result.ErrorMessage = $"SdcpDataMessageCodec: exception raised during encoding: {exception}";
+            result.ErrorCode = 4;
             return result;
         }
 
-        // Add the final ETX now
-        data.Add(DeviceCommunicationBasics.Etx);
+        // Add the final CR now
+        data.Add(DeviceCommunicationBasics.Cr);
 
         tMessage.RawMessageData = data.ToArray().AsMemory();
 

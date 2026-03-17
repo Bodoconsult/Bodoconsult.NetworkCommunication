@@ -19,7 +19,7 @@ public class EdcpDataMessageValidator : IDataMessageValidator
         }
 
         // No SDCP data message: always valid
-        if (dataMessage is not TncpInboundDataMessage)
+        if (dataMessage is not EdcpInboundDataMessage)
         {
             return new DataMessageValidatorResult(false, "Message is NOT a valid Tncp message");
         }

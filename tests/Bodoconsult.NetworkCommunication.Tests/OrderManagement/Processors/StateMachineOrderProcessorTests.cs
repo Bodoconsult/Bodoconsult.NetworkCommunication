@@ -759,7 +759,7 @@ internal class StateMachineOrderProcessorTests
         SetTimeoutsAndDelegate(order);
 
         // Arrange: create received messages
-        var receivedMessage = new TncpInboundDataMessage();
+        var receivedMessage = new EdcpInboundDataMessage();
         ReceiveMessage(receivedMessage);
 
         // Act

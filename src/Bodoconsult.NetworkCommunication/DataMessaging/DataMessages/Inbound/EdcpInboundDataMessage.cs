@@ -6,16 +6,16 @@ using Bodoconsult.NetworkCommunication.Interfaces;
 namespace Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
 
 /// <summary>
-/// Basic implementation of <see cref="IInboundDataMessage"/> for Tncp protocol
+/// Basic implementation of <see cref="IInboundDataMessage"/> for EDCP protocol
 /// </summary>
-public class TncpInboundDataMessage : IInboundDataMessage
+public class EdcpInboundDataMessage : IInboundDataMessage
 {
     private Memory<byte> _rawMessageData;
 
     /// <summary>
     /// Default ctor
     /// </summary>
-    public TncpInboundDataMessage()
+    public EdcpInboundDataMessage()
     {
         MessageId = DateTime.Now.ToFileTimeUtc();
     }

@@ -51,7 +51,7 @@ internal class BackendBtRequestDataToOutboundBtcpMessageConverterTests
         const string businessSubstateName = "Blebb";
 
 
-        var request = new StateChangedEventFiredBusinessTransactionRequestData()
+        var request = new StateChangedEventFiredBusinessTransactionRequestData
         {
             TransactionId = transactionId,
             DeviceStateId = deviceStateId,

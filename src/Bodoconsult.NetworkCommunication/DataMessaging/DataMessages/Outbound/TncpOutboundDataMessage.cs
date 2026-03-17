@@ -76,5 +76,5 @@ public class TncpOutboundDataMessage : IOutboundDataMessage
     /// <summary>
     /// Telnet style command
     /// </summary>
-    public string? Command { get; set; }
+    public string? TelnetCommand { get; set; }
 }
