@@ -7,15 +7,15 @@ using Bodoconsult.NetworkCommunication.Interfaces;
 namespace Bodoconsult.NetworkCommunication.Tests.DataMessaging.DataMessageSplitter;
 
 [TestFixture]
-internal class SdcpDataMessageSplitterTests
+internal class TncpDataMessageSplitterTests
 {
-    private readonly SdcpDataMessageSplitter _splitter = new();
+    private readonly TncpDataMessageSplitter _splitter = new();
 
     [Test]
     public void TryReadCommand_NoValidMessage_NullReturned()
     {
         // Arrange 
-        var data = new byte[] { 0x99,  0x99 };
+        var data = new byte[] { 0x99, 0x1, 0x99 };
         var ros = new ReadOnlySequence<byte>(data);
 
         // Act  
@@ -29,7 +29,7 @@ internal class SdcpDataMessageSplitterTests
     public void TryReadCommand_ValidDataMessage_CommandReturned()
     {
         // Arrange 
-        var data = new byte[] { DeviceCommunicationBasics.Stx, 0x99, 0x99, DeviceCommunicationBasics.Etx, 0x99 };
+        var data = new byte[] { 0x1, 0x99, 0x99, DeviceCommunicationBasics.Cr, 0x99 };
         var ros = new ReadOnlySequence<byte>(data);
 
         // Act  

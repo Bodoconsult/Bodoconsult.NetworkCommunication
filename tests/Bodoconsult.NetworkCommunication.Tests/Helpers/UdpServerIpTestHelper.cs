@@ -28,7 +28,7 @@ internal static class UdpServerIpTestHelper
         testSetup.IpAddress = IPAddress.Parse(testSetup.DataMessagingConfig.IpAddress);
 
         testSetup.RemoteUdpDevice?.Dispose();
-        testSetup.RemoteUdpDevice = new UdpTestUniCastClient(testSetup.IpAddress, testSetup.DataMessagingConfig.Port + 1, testSetup.DataMessagingConfig.Port);
+        testSetup.RemoteUdpDevice = new UdpTestUniCastClient(testSetup.IpAddress, testSetup.DataMessagingConfig.Port, testSetup.DataMessagingConfig.Port + 1);
         testSetup.RemoteUdpDevice.Start();
     }
 

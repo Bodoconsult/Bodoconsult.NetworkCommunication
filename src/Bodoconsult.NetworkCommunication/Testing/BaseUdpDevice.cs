@@ -13,14 +13,12 @@ namespace Bodoconsult.NetworkCommunication.Testing;
 /// <summary>
 /// Base class for UDP client or server implementations
 /// </summary>
-public abstract class UdpDeviceBase :  IUdpDevice
+public abstract class BaseUdpDevice :  IUdpDevice
 {
     private Thread? _thread;
     private bool _isDisposed;
 
     protected bool IsServer;
-
-
 
     /// <summary>
     /// Current local device listener
@@ -28,12 +26,12 @@ public abstract class UdpDeviceBase :  IUdpDevice
     protected UdpClient Listener;
 
     /// <summary>
-    /// Endpoint for listening
+    /// Endpoint for listening (receiving)
     /// </summary>
-    protected IPEndPoint? EndPoint;
+    protected IPEndPoint? ReceiceEndPoint;
 
     /// <summary>
-    /// Endpoint for listening
+    /// Endpoint for sending
     /// </summary>
     protected IPEndPoint? SendEndPoint;
 
@@ -43,7 +41,7 @@ public abstract class UdpDeviceBase :  IUdpDevice
     /// <param name="ipAddress">IP address of the server</param>
     /// <param name="port">Port the server listens on</param>
     /// <param name="clientPort">Port the client listens on or 0 (then the same port as for the server is used). Setting clientPort is required normally only if UDP server and client are installed on the same machine!</param>
-    protected UdpDeviceBase(IPAddress ipAddress, int port, int clientPort = 0)
+    protected BaseUdpDevice(IPAddress ipAddress, int port, int clientPort = 0)
     {
         Listener = new UdpClient();
         Listener.ExclusiveAddressUse = false;
@@ -61,10 +59,14 @@ public abstract class UdpDeviceBase :  IUdpDevice
     /// </summary>
     public IPAddress IpAddress { get; }
 
-
+    /// <summary>
+    /// Port the current device listens on
+    /// </summary>
     public int Port { get; }
 
-
+    /// <summary>
+    /// Port the remote device listens on or 0 (then the same port as for the current device is used)
+    /// </summary>
     public int RemotePort { get; }
 
     /// <summary>
@@ -96,7 +98,6 @@ public abstract class UdpDeviceBase :  IUdpDevice
         _thread.Start();
     }
 
-
     private void WaitForMessages()
     {
         while (!CancellationTokenSource.Token.IsCancellationRequested)
@@ -111,17 +112,25 @@ public abstract class UdpDeviceBase :  IUdpDevice
                 //Thread.Sleep(50);
                 continue;
             }
-            var bytes = Listener.Receive(ref EndPoint);
 
-            Debug.Print($"{GetType().Name}: received multicast from {EndPoint}:");
-            Debug.Print($" {Encoding.ASCII.GetString(bytes, 0, bytes.Length)}");
+            //try
+            //{
+                var bytes = Listener.Receive(ref ReceiceEndPoint);
 
-            ReceivedMessages.Add(bytes.AsMemory());
+                Debug.Print($"{GetType().Name}: received from {ReceiceEndPoint}:");
+                Debug.Print($" {Encoding.ASCII.GetString(bytes, 0, bytes.Length)}");
 
-            if (!IsServer)
-            {
-                Send(bytes);
-            }
+                ReceivedMessages.Add(bytes.AsMemory());
+
+                if (!IsServer)
+                {
+                    Send(bytes);
+                }
+            //}
+            //catch (Exception e)
+            //{
+            //    Debug.Print(e.ToString());
+            //}
         }
     }
 

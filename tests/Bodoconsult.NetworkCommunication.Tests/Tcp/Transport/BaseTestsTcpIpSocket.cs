@@ -1,8 +1,10 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
 
-using System.Net;
 using Bodoconsult.NetworkCommunication.Interfaces;
+using Bodoconsult.NetworkCommunication.Tests.Helpers;
+using System.Net;
+using System.Net.Sockets;
 
 namespace Bodoconsult.NetworkCommunication.Tests.Tcp.Transport;
 
@@ -21,9 +23,9 @@ public abstract class BaseTestsTcpIpSocket
     protected const string IpAddress = "127.0.0.1";
 
     /// <summary>
-    /// Default port for SMD device (9001 simulator)
+    /// Default port for IP device
     /// </summary>
-    protected const int Port = 9000;
+    protected int Port = TestDataHelper.GetRandomPort();
 
     [TearDown]
     public void Dispose()

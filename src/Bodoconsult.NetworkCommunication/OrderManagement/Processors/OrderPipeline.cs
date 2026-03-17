@@ -128,7 +128,7 @@ public class OrderPipeline : IOrderPipeline
     /// <summary>
     /// Is the queue with running and NOT cancelled orders queue empty
     /// </summary>
-    public bool IsRunningOrdersEmpty => _executionQueue.IsEmpty || !UncancelledCurrentlyExecutedOrders.Any();
+    public bool IsRunningOrdersEmpty => _executionQueue.IsEmpty && !UncancelledCurrentlyExecutedOrders.Any();
 
     /// <summary>
     /// Is queue with the waiting non-priority and NOT cancelled orders empty

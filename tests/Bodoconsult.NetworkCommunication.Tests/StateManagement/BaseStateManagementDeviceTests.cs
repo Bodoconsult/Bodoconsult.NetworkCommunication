@@ -2,6 +2,7 @@
 
 using Bodoconsult.NetworkCommunication.Helpers;
 using Bodoconsult.NetworkCommunication.Interfaces;
+using Bodoconsult.NetworkCommunication.OrderManagement.ParameterSets;
 using Bodoconsult.NetworkCommunication.StateManagement;
 using Bodoconsult.NetworkCommunication.StateManagement.Builders;
 using Bodoconsult.NetworkCommunication.StateManagement.Configurations;
@@ -115,10 +116,13 @@ internal class BaseStateManagementDeviceTests
         // Arrange 
         var device = TestDataHelper.CreateStateMachineDevice();
 
+        var ps = new SdcpParameterSet();
+
         var builder = new DeviceStartStreamingStateBuilder();
 
         var config = new JobStateConfiguration(DefaultStateNames.DeviceStartStreamingState, builder)
         {
+            ParameterSet = ps,
             CurrentContext = device,
             HandleAsyncMessageDelegate = DelegateHelper.HandleAsyncMessageDelegate,
             HandleComDevCloseDelegate = DelegateHelper.HandleComDevCloseDelegate,

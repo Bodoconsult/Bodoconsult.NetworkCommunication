@@ -6,6 +6,7 @@
 // https://learn.microsoft.com/de-de/dotnet/framework/network-programming/using-udp-services
 // https://enclave.io/high-performance-udp-sockets-net6/
 
+using System.Diagnostics;
 using System.Net;
 using System.Net.Sockets;
 using Bodoconsult.NetworkCommunication.Helpers;
@@ -95,7 +96,8 @@ public class UdpServerSocketProxy : UpdSocketProxyBase
         {
             try
             {
-                return UdpClient?.Available ?? 0;
+                Debug.Print($"Bytes available: {UdpClient?.Client.Available ?? 0}");
+                return UdpClient?.Client.Available ?? 0;
             }
             catch
             {

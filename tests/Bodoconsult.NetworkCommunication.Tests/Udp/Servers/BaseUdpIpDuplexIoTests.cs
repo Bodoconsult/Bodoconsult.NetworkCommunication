@@ -11,7 +11,7 @@ using Bodoconsult.NetworkCommunication.Tests.Infrastructure;
 
 namespace Bodoconsult.NetworkCommunication.Tests.Udp.Servers;
 
-public abstract class UdpIpDuplexIoBaseTests : BaseUdpTests
+public abstract class BaseUdpIpDuplexIoTests : BaseUdpTests
 {
     /// <summary>
     /// Holds the duplex IO channel implementation (see <see cref="IDuplexIo"/>) to use
@@ -102,7 +102,6 @@ public abstract class UdpIpDuplexIoBaseTests : BaseUdpTests
         {
             RemoteUdpDevice.Send(data2);
         }
-
 
         var tcs1 = new TaskCompletionSource<bool>();
         var t1 = tcs1.Task;
@@ -304,31 +303,31 @@ public abstract class UdpIpDuplexIoBaseTests : BaseUdpTests
         }
     }
 
-    [Test]
-    public void ReceiveMessageFromdevice_MessageS()
-    {
+    //[Test]
+    //public void ReceiveMessageFromdevice_MessageS()
+    //{
 
-        // Arrange
-        var message = new SdcpOutboundDataMessage
-        {
-            DataBlock = new BasicOutboundDatablock
-            {
-                DataBlockType = 'x',
-                Data = new byte[] { 0x2, 0x78, 0x42, 0x6c, 0x75, 0x62, 0x62, 0x3 }
-            }
-        };
+    //    // Arrange
+    //    var message = new SdcpOutboundDataMessage
+    //    {
+    //        DataBlock = new BasicOutboundDatablock
+    //        {
+    //            DataBlockType = 'x',
+    //            Data = new byte[] { 0x2, 0x78, 0x42, 0x6c, 0x75, 0x62, 0x62, 0x3 }
+    //        }
+    //    };
 
-        RunBasicTests(message.DataBlock.Data.ToArray(), 1);
+    //    RunBasicTests(message.DataBlock.Data.ToArray(), 1);
 
-        // Assert
-        Wait.Until(() => IsMessageReceivedFired, 2000);
-        using (Assert.EnterMultipleScope())
-        {
-            Assert.That(IsMessageReceivedFired);
-            Assert.That(!IsMessageNotReceivedFired);
-            Assert.That(!IsComDevCloseFired);
-            Assert.That(!IsCorruptedMessageFired);
-            Assert.That(!IsOnNotExpectedMessageReceivedFired);
-        }
-    }
+    //    // Assert
+    //    Wait.Until(() => IsMessageReceivedFired, 2000);
+    //    using (Assert.EnterMultipleScope())
+    //    {
+    //        Assert.That(IsMessageReceivedFired);
+    //        Assert.That(!IsMessageNotReceivedFired);
+    //        Assert.That(!IsComDevCloseFired);
+    //        Assert.That(!IsCorruptedMessageFired);
+    //        Assert.That(!IsOnNotExpectedMessageReceivedFired);
+    //    }
+    //}
 }

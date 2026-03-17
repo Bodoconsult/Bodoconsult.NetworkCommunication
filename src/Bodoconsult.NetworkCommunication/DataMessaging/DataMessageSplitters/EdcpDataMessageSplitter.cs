@@ -9,7 +9,7 @@ namespace Bodoconsult.NetworkCommunication.DataMessaging.DataMessageSplitters;
 /// <summary>
 /// Implementation for <see cref="IDataMessageSplitter"/> for Tncp protocol
 /// </summary>
-public class TncpDataMessageSplitter : IDataMessageSplitter
+public class EdcpDataMessageSplitter : IDataMessageSplitter
 {
 
     // Array pool is okay as shared instance here
@@ -105,10 +105,8 @@ public class TncpDataMessageSplitter : IDataMessageSplitter
                     continue;
                 }
                 command = buffer.Slice(0, i);
-                buffer = buffer.Slice(i);
                 return true;
             }
-
 
             command = default;
             return false;
@@ -123,12 +121,10 @@ public class TncpDataMessageSplitter : IDataMessageSplitter
             if (!DeviceCommunicationBasics.MessageStartTokens.Contains(blockCode))
             {
                 command = buffer.Slice(0, HandshakeLength);
-                buffer = buffer.Slice(HandshakeLength);
                 return true;
             }
 
             command = buffer.Slice(0, 1);
-            buffer = buffer.Slice(1);
             return true;
         }
 
@@ -136,7 +132,6 @@ public class TncpDataMessageSplitter : IDataMessageSplitter
         if (firstByte != DeviceCommunicationBasics.Stx)
         {
             command = default;
-            buffer = buffer.Slice(1);
             return false;
         }
 

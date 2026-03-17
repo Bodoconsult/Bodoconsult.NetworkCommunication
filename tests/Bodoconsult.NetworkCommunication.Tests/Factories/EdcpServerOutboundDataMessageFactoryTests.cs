@@ -13,12 +13,12 @@ internal class EdcpServerOutboundDataMessageFactoryTests
     public void CreateInstance_ValidOrder_MessageCreated()
     {
         // Arrange 
-        var ps = new TncpParameterSet();
+        var ps = new EdcpParameterSet();
 
         var factory = new EdcpServerOutboundDataMessageFactory();
 
         // Act  
-        var message = (TncpOutboundDataMessage)factory.CreateInstance(ps);
+        var message = (EdcpOutboundDataMessage)factory.CreateInstance(ps);
 
         // Assert
         Assert.That(message, Is.Not.Null);
@@ -28,7 +28,7 @@ internal class EdcpServerOutboundDataMessageFactoryTests
     public void CreateInstance_MultipleValidOrders_BlockCodeCorrect()
     {
         // Arrange 
-        var ps = new TncpParameterSet();
+        var ps = new EdcpParameterSet();
 
         var factory = new EdcpServerOutboundDataMessageFactory();
 
@@ -37,7 +37,7 @@ internal class EdcpServerOutboundDataMessageFactoryTests
         for (var i = 0; i < 129; i++)
         {
             // Act
-            var message = (TncpOutboundDataMessage)factory.CreateInstance(ps);
+            var message = (EdcpOutboundDataMessage)factory.CreateInstance(ps);
 
             // Assert
             Assert.That(message, Is.Not.Null);

@@ -50,7 +50,8 @@ internal class OrderlessActionStateConfigurationTests
             HandleRegularStateRequestAnswerDelegate = DelegateHelper.HandleRegularStateRequestAnswerDelegate,
             HandleAsyncMessageDelegate = DelegateHelper.HandleAsyncMessageDelegate,
             HandleComDevCloseDelegate = DelegateHelper.HandleComDevCloseDelegate,
-            HandleErrorMessageDelegate = DelegateHelper.HandleErrorMessageDelegate
+            HandleErrorMessageDelegate = DelegateHelper.HandleErrorMessageDelegate,
+            PrepareRegularStateRequestDelegate = DelegateHelper.PrepareRegularStateRequestDelegate
         };
         // Act  
         var config = (OrderlessActionStateConfiguration)configOriginal.Clone();

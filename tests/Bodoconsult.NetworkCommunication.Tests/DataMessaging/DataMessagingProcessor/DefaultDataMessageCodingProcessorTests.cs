@@ -184,15 +184,15 @@ internal class DefaultDataMessageCodingProcessorTests
     }
 
     [Test]
-    public void DecodeDataMessage_TncpHandshake_HandshakeMessageCreated()
+    public void DecodeDataMessage_EdcpHandshake_HandshakeMessageCreated()
     {
         // Arrange 
         IDataBlockCodingProcessor dataBlockCodingProcessor = new DefaultDataBlockCodingProcessor();
         dataBlockCodingProcessor.LoadDataBlockCodecs('x', new BasicDataBlockCodec());
 
         var processor = new DefaultDataMessageCodingProcessor();
-        processor.MessageCodecs.Add(new TncpHandshakeMessageCodec());
-        processor.MessageCodecs.Add(new TncpDataMessageCodec(dataBlockCodingProcessor));
+        processor.MessageCodecs.Add(new EdcpHandshakeMessageCodec());
+        processor.MessageCodecs.Add(new EdcpDataMessageCodec(dataBlockCodingProcessor));
 
         var msg = new byte[] { 0x6, 0x5 };
 
@@ -204,20 +204,20 @@ internal class DefaultDataMessageCodingProcessorTests
         {
             Assert.That(result, Is.Not.Null);
             Assert.That(result.DataMessage, Is.Not.Null);
-            Assert.That(result.DataMessage.GetType(), Is.EqualTo(typeof(InboundHandshakeMessage)));
+            Assert.That(result.DataMessage.GetType(), Is.EqualTo(typeof(EdcpInboundHandshakeMessage)));
         }
     }
 
     [Test]
-    public void DecodeDataMessage_TncpDataMessage_DataMessageCreated()
+    public void DecodeDataMessage_EdcpDataMessage_DataMessageCreated()
     {
         // Arrange 
         IDataBlockCodingProcessor dataBlockCodingProcessor = new DefaultDataBlockCodingProcessor();
         dataBlockCodingProcessor.LoadDataBlockCodecs('x', new BasicDataBlockCodec());
 
         var processor = new DefaultDataMessageCodingProcessor();
-        processor.MessageCodecs.Add(new TncpHandshakeMessageCodec());
-        processor.MessageCodecs.Add(new TncpDataMessageCodec(dataBlockCodingProcessor));
+        processor.MessageCodecs.Add(new EdcpHandshakeMessageCodec());
+        processor.MessageCodecs.Add(new EdcpDataMessageCodec(dataBlockCodingProcessor));
 
         var msg = new byte[] { 0x2, 0x5, 0x78, 0x75, 0x62, 0x62, 0x3, 0x2, 0x2, 0x4, 0x6b, 0x75, 0x62, 0x62, 0x3 };
 
@@ -234,15 +234,15 @@ internal class DefaultDataMessageCodingProcessorTests
     }
 
     [Test]
-    public void EncodeDataMessag_TncpDataMessage_RawBytesCreated()
+    public void EncodeDataMessag_EdcpDataMessage_RawBytesCreated()
     {
         // Arrange 
         IDataBlockCodingProcessor dataBlockCodingProcessor = new DefaultDataBlockCodingProcessor();
         dataBlockCodingProcessor.LoadDataBlockCodecs('x', new BasicDataBlockCodec());
 
         var processor = new DefaultDataMessageCodingProcessor();
-        processor.MessageCodecs.Add(new TncpHandshakeMessageCodec());
-        processor.MessageCodecs.Add(new TncpDataMessageCodec(dataBlockCodingProcessor));
+        processor.MessageCodecs.Add(new EdcpHandshakeMessageCodec());
+        processor.MessageCodecs.Add(new EdcpDataMessageCodec(dataBlockCodingProcessor));
 
         var msg = new byte[] { 0x78, 0x75, 0x62, 0x62, 0x3, 0x2, 0x2, 0x4, 0x6b, 0x75, 0x62, 0x62 };
 

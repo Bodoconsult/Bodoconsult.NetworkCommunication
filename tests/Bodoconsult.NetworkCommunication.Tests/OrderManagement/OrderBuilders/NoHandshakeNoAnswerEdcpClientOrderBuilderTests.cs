@@ -23,7 +23,7 @@ internal class NoHandshakeNoAnswerEdcpClientOrderBuilderTests : OrderBuilderTest
         using (Assert.EnterMultipleScope())
         {
             Assert.That(builder.OrderTypeName, Is.EqualTo(BuiltinOrders.NoHandshakeNoAnswerEdcpClientOrder));
-            Assert.That(builder.ParameterSetType, Is.EqualTo(typeof(TncpParameterSet)));
+            Assert.That(builder.ParameterSetType, Is.EqualTo(typeof(EdcpParameterSet)));
         }
     }
 
@@ -31,7 +31,7 @@ internal class NoHandshakeNoAnswerEdcpClientOrderBuilderTests : OrderBuilderTest
     public void CreateOrder_ValidSetup_OrderCreated()
     {
         // Arrange 
-        var ps = new TncpParameterSet();
+        var ps = new EdcpParameterSet();
         var builder = new NoHandshakeNoAnswerEdcpClientOrderBuilder();
 
         var config = new OneRequestSpecNoOrOneStepOneAnswerConfiguration("TestConfig", BuiltinOrders.NoHandshakeNoAnswerEdcpClientOrder, builder)
@@ -64,7 +64,7 @@ internal class NoHandshakeNoAnswerEdcpClientOrderBuilderTests : OrderBuilderTest
     public void CreateDeviceRequestSpec_ValidSetup_RequestSpecCreated()
     {
         // Arrange 
-        var ps = new TncpParameterSet();
+        var ps = new EdcpParameterSet();
         var builder = new NoHandshakeNoAnswerEdcpClientOrderBuilder();
 
         var order = new OmOrder(1, "Test", ps);
@@ -88,7 +88,7 @@ internal class NoHandshakeNoAnswerEdcpClientOrderBuilderTests : OrderBuilderTest
     public void CreateNoAnswerDeviceRequestSpec_ValidSetup_RequestSpecCreated()
     {
         // Arrange 
-        var ps = new TncpParameterSet();
+        var ps = new EdcpParameterSet();
         var builder = new NoHandshakeNoAnswerEdcpClientOrderBuilder();
 
         var order = new OmOrder(1, "Test", ps);
@@ -136,7 +136,7 @@ internal class NoHandshakeNoAnswerEdcpClientOrderBuilderTests : OrderBuilderTest
     public void CreateDeviceRequestAnswerStep_ValidSetup_RequestAnswerStepCreated()
     {
         // Arrange 
-        var ps = new TncpParameterSet();
+        var ps = new EdcpParameterSet();
         var builder = new NoHandshakeNoAnswerEdcpClientOrderBuilder();
 
         var order = new OmOrder(1, "Test", ps);
@@ -163,7 +163,7 @@ internal class NoHandshakeNoAnswerEdcpClientOrderBuilderTests : OrderBuilderTest
     public void CreateRequestAnswerStep_ValidSetup_RequestAnswerStepCreated()
     {
         // Arrange 
-        var ps = new TncpParameterSet();
+        var ps = new EdcpParameterSet();
         var builder = new NoHandshakeNoAnswerEdcpClientOrderBuilder();
 
         var order = new OmOrder(1, "Test", ps);

@@ -1,6 +1,7 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
 using Bodoconsult.NetworkCommunication.Helpers;
+using Bodoconsult.NetworkCommunication.OrderManagement.ParameterSets;
 using Bodoconsult.NetworkCommunication.StateManagement.Builders;
 using Bodoconsult.NetworkCommunication.StateManagement.Configurations;
 using Bodoconsult.NetworkCommunication.StateManagement.Interfaces;
@@ -48,8 +49,11 @@ internal class BaseOrderBasedStateMachineStateBuilderTests
         // Arrange 
         var builder = new DeviceInitStateBuilder();
 
+        var ps = new SdcpParameterSet();
+
         var config = new OrderBasedActionStateConfiguration(DefaultStateNames.DeviceInitState, builder)
         {
+            ParameterSet = ps,
             CurrentContext = TestDataHelper.CreateStateMachineDevice(),
             OrderFinishedSucessfullyDelegate = DelegateHelper.OrderFinishedSucessfullyDelegate,
             OrderFinishedUnsucessfullyDelegate = DelegateHelper.OrderFinishedUnsucessfullyDelegate,

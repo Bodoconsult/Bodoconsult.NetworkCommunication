@@ -64,12 +64,12 @@ public class EdcpServerDataMessageProcessingPackage : IDataMessageProcessingPack
 
     private void LoadCodecs()
     {
-        var handShakeCodec = new TncpHandshakeMessageCodec();
+        var handShakeCodec = new EdcpHandshakeMessageCodec();
         DataMessageCodingProcessor.MessageCodecs.Add(handShakeCodec);
 
         LoadCustomDataBlockCodecs();
 
-        var deviceMessageCodec = new TncpDataMessageCodec(DataBlockCodingProcessor);
+        var deviceMessageCodec = new EdcpDataMessageCodec(DataBlockCodingProcessor);
         DataMessageCodingProcessor.MessageCodecs.Add(deviceMessageCodec);
 
         var rawCodec = new RawDataMessageCodec();

@@ -99,7 +99,7 @@ public class StateMachineOrderProcessor : BaseOrderProcessor
         }
 
         // Check conditions in order processor if running an order is allowed
-        var isNoOrderWaiting = (OrderPipeline.IsWaitingOrdersEmpty && OrderPipeline.IsWaitingPriorityOrdersEmpty);
+        var isNoOrderWaiting = OrderPipeline is { IsWaitingOrdersEmpty: true, IsWaitingPriorityOrdersEmpty: true };
         if (IsRunnerStopped || isNoOrderWaiting)
         {
             if (isNoOrderWaiting && !IsInitInProcessing)

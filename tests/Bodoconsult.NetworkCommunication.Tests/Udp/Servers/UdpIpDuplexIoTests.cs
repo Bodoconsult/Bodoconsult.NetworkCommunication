@@ -11,7 +11,7 @@ namespace Bodoconsult.NetworkCommunication.Tests.Udp.Servers;
 [TestFixture]
 [NonParallelizable]
 [SingleThreaded]
-public class UdpIpDuplexIoTests : UdpIpDuplexIoBaseTests
+public class UdpIpDuplexIoTests : BaseUdpIpDuplexIoTests
 {
     [SetUp]
     public void TestSetup()
@@ -41,7 +41,6 @@ public class UdpIpDuplexIoTests : UdpIpDuplexIoBaseTests
 
         ISendPacketProcessFactory sendPacketProcessFactory = new FakeSendPacketProcessFactory();
         return new IpDuplexIo(DataMessagingConfig, sendPacketProcessFactory);
-
     }
 
     /// <summary>

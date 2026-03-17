@@ -11,7 +11,7 @@ namespace Bodoconsult.NetworkCommunication.Tests.Udp.Servers;
 [TestFixture]
 [NonParallelizable]
 [SingleThreaded]
-public class UdpIpHighPerformanceDuplexIoTests : UdpIpDuplexIoBaseTests
+public class UdpIpHighPerformanceDuplexIoTests : BaseUdpIpDuplexIoTests
 {
     [SetUp]
     public void TestSetup()

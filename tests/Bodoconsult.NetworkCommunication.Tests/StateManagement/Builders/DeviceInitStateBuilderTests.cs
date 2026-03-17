@@ -1,6 +1,7 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
 using Bodoconsult.NetworkCommunication.Helpers;
+using Bodoconsult.NetworkCommunication.OrderManagement.ParameterSets;
 using Bodoconsult.NetworkCommunication.StateManagement.Builders;
 using Bodoconsult.NetworkCommunication.StateManagement.Configurations;
 using Bodoconsult.NetworkCommunication.StateManagement.Interfaces;
@@ -49,10 +50,13 @@ internal class DeviceInitStateBuilderTests
         // Arrange 
         var device = TestDataHelper.CreateStateMachineDevice();
 
+        var ps = new SdcpParameterSet();
+
         var builder = new DeviceInitStateBuilder();
 
         var config = new OrderBasedActionStateConfiguration(DefaultStateNames.DeviceInitState, builder)
         {
+            ParameterSet = ps,
             CurrentContext = device,
             HandleAsyncMessageDelegate = DelegateHelper.HandleAsyncMessageDelegate,
             HandleComDevCloseDelegate = DelegateHelper.HandleComDevCloseDelegate,

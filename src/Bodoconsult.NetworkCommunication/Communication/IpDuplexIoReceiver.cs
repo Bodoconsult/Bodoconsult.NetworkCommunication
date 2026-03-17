@@ -24,7 +24,7 @@ public class IpDuplexIoReceiver : BaseDuplexIoReceiver
     /// <summary>
     /// Current validator impl for data messages
     /// </summary>
-    private IDataMessageValidator _dataMessageValidator;
+    private readonly IDataMessageValidator _dataMessageValidator;
 
 
     //public static int SendTimeout = 5;
@@ -178,16 +178,18 @@ public class IpDuplexIoReceiver : BaseDuplexIoReceiver
         while (true)
         {
 
-            //Debug.Print("FillMessagePipeline in progress");
+            Debug.Print("FillMessagePipeline in progress");
             try
             {
                 if (CancellationSource?.Token.IsCancellationRequested ?? true)
                 {
+                    Debug.Print("FillMessagePipeline cancelled");
                     return;
                 }
             }
-            catch
+            catch (Exception e)
             {
+                Debug.Print($"FillMessagePipeline exception: {e}");
                 return;
             }
 
@@ -196,6 +198,7 @@ public class IpDuplexIoReceiver : BaseDuplexIoReceiver
             if (socketProxy is not { Connected: true } || socketProxy.IsDisposed)
             {
                 // Debug.Print("Not connected");
+                DuplexIoNoDataDelegate.Invoke();
                 await RaiseException(new SocketException());
                 return;
             }
@@ -211,7 +214,7 @@ public class IpDuplexIoReceiver : BaseDuplexIoReceiver
             if (availableData == 0)
             {
                 DuplexIoNoDataDelegate.Invoke();
-                //Debug.Print("No data");
+                Debug.Print("No data");
                 AsyncHelper.Delay(FillPipelineTimeout);
                 continue;
             }
@@ -221,7 +224,7 @@ public class IpDuplexIoReceiver : BaseDuplexIoReceiver
             var messageLength = await socketProxy.Receive(data);
 
             // Give the socket free
-            DuplexIoNoDataDelegate();
+            DuplexIoNoDataDelegate.Invoke();
 
             if (messageLength <= 0)
             {
@@ -229,7 +232,7 @@ public class IpDuplexIoReceiver : BaseDuplexIoReceiver
                 continue;
             }
 
-            //Debug.Print("Got data");
+            Debug.Print("Got data");
 
             var dummy = _bufferPool.Dequeue();
             dummy.Memory = data;

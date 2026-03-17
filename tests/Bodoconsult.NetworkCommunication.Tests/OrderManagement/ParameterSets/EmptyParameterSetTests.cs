@@ -41,8 +41,7 @@ internal class EmptyParameterSetTests
         // Arrange 
         var ps = new EmptyParameterSet();
 
-        var dateTimeService = TestDataHelper.AppDateService;
-        var benchLogger = TestDataHelper.GetFakeAppBenchProxy();
+        TestDataHelper.GetFakeAppBenchProxy();
 
         // Act  
         var order = TestDataHelper.CreateTestOrder(ps);

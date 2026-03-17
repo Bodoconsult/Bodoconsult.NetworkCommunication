@@ -1,4 +1,4 @@
-﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH.  All rights reserved.
+﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
 using Bodoconsult.NetworkCommunication.Interfaces;
@@ -6,15 +6,15 @@ using Bodoconsult.NetworkCommunication.Interfaces;
 namespace Bodoconsult.NetworkCommunication.DataMessaging.DataMessageCodecs;
 
 /// <summary>
-/// Codec to encode and decode handshake messages for EDCP protocol
+/// Codec to encode and decode handshake messages for TNCP protocol
 /// </summary>
-public class EdcpHandshakeMessageCodec : BaseDataMessageCodec
+public class TncpHandshakeMessageCodec : BaseDataMessageCodec
 {
 
-    public EdcpHandshakeMessageCodec()
+    public TncpHandshakeMessageCodec()
     {
-        ExpectedMinimumLength = 2;
-        ExpectedMaximumLength = 2;
+        ExpectedMinimumLength = 1;
+        ExpectedMaximumLength = 1;
     }
 
     /// <summary>
@@ -38,11 +38,10 @@ public class EdcpHandshakeMessageCodec : BaseDataMessageCodec
             return result;
         }
 
-        result.DataMessage = new EdcpInboundHandshakeMessage
+        result.DataMessage = new InboundHandshakeMessage
         {
             HandshakeMessageType = data.Span[0],
-            RawMessageData = data.ToArray(),
-            BlockCode = data.Span[1]
+            RawMessageData = data.ToArray()
         };
         return result;
     }
@@ -56,14 +55,14 @@ public class EdcpHandshakeMessageCodec : BaseDataMessageCodec
     {
         var result = new OutboundCodecResult();
 
-        if (message is not EdcpOutboundHandshakeMessage hMessage)
+        if (message is not OutboundHandshakeMessage hMessage)
         {
             result.ErrorMessage = "HandshakeMessage required for HandshakeMessageCodec";
             result.ErrorCode = 1;
             return result;
         }
 
-        message.RawMessageData = new[] { hMessage.HandshakeMessageType, hMessage.BlockCode };
+        message.RawMessageData = new[] { hMessage.HandshakeMessageType};
         return result;
     }
 }

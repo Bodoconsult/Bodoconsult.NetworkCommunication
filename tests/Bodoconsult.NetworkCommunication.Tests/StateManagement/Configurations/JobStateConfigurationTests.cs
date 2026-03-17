@@ -49,7 +49,8 @@ internal class JobStateConfigurationTests
             HandleRegularStateRequestAnswerDelegate = DelegateHelper.HandleRegularStateRequestAnswerDelegate,
             HandleAsyncMessageDelegate = DelegateHelper.HandleAsyncMessageDelegate,
             HandleComDevCloseDelegate = DelegateHelper.HandleComDevCloseDelegate,
-            HandleErrorMessageDelegate = DelegateHelper.HandleErrorMessageDelegate
+            HandleErrorMessageDelegate = DelegateHelper.HandleErrorMessageDelegate,
+            PrepareRegularStateRequestDelegate = DelegateHelper.PrepareRegularStateRequestDelegate
         };
 
         // Act  

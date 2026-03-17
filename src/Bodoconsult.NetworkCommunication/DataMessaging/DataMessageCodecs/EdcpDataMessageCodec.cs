@@ -7,9 +7,9 @@ using Bodoconsult.NetworkCommunication.Interfaces;
 namespace Bodoconsult.NetworkCommunication.DataMessaging.DataMessageCodecs;
 
 /// <summary>
-/// Codec to encode and decode device data messages for Tncp protocol
+/// Codec to encode and decode device data messages for EDCP protocol
 /// </summary>
-public class TncpDataMessageCodec : BaseDataMessageCodec
+public class EdcpDataMessageCodec : BaseDataMessageCodec
 {
     /// <summary>
     /// Current <see cref="IDataBlockCodingProcessor"/> instance
@@ -20,7 +20,7 @@ public class TncpDataMessageCodec : BaseDataMessageCodec
     /// Default ctor
     /// </summary>
     /// <param name="dataBlockCodingProcessor">Current <see cref="IDataBlockCodingProcessor"/> instance</param>
-    public TncpDataMessageCodec(IDataBlockCodingProcessor dataBlockCodingProcessor)
+    public EdcpDataMessageCodec(IDataBlockCodingProcessor dataBlockCodingProcessor)
     {
         DataBlockCodingProcessor = dataBlockCodingProcessor;
 

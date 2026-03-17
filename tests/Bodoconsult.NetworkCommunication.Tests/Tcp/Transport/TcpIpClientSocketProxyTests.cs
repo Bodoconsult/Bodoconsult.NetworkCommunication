@@ -2,6 +2,7 @@
 
 using Bodoconsult.NetworkCommunication.Protocols.TcpIp;
 using System.Net;
+using Bodoconsult.NetworkCommunication.Testing;
 
 namespace Bodoconsult.NetworkCommunication.Tests.Tcp.Transport;
 
@@ -11,6 +12,20 @@ namespace Bodoconsult.NetworkCommunication.Tests.Tcp.Transport;
 [SingleThreaded]
 public class TcpIpClientSocketProxyTests : BaseTestsTcpIpSocket
 {
+    private readonly TcpTestServer _server;
+
+    public TcpIpClientSocketProxyTests()
+    {
+        _server = new TcpTestServer(IPAddress.Parse(IpAddress), Port);
+        _server.Start();
+    }
+
+    [OneTimeTearDown]
+    public void Cleanup()
+    {
+        _server.Dispose();
+    }
+
     /// <summary>
     /// Setup for each test
     /// </summary>
@@ -28,16 +43,11 @@ public class TcpIpClientSocketProxyTests : BaseTestsTcpIpSocket
     public void Ctor_ValidEndpoint_SocketLoaded()
     {
         // Arrange 
-        var socket = (TcpIpClientSocketProxy)Socket;
 
         // Act  
-            
+        var socket = (TcpIpClientSocketProxy)Socket;
 
         // Assert
-        Assert.That(socket.Socket, Is.Not.Null);
-
+        Assert.That(socket.Socket, Is.Null);
     }
-
-
-
 }

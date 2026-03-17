@@ -171,7 +171,7 @@ internal class StateMachineOrderProcessorTests
 
         var config = new OneRequestSpecNoOrOneStepOneAnswerConfiguration("TestConfig", BuiltinOrders.SdcpOrder, _longRunningTestBuilder)
         {
-            OrderId = 1,
+            OrderId = 2,
             //Device = TestDataHelper.CreateStateMachineDevice(),
             HandleRequestAnswerOnSuccessDelegate = HandleRequestAnswerOnSuccessDelegate,
             ParameterSet = ps
@@ -192,7 +192,7 @@ internal class StateMachineOrderProcessorTests
 
         var config = new OneRequestSpecNoOrOneStepOneAnswerConfiguration("TestConfig", BuiltinOrders.SdcpOrder, _extraLongRunningTestBuilder)
         {
-            OrderId = 1,
+            OrderId = 3,
             //Device = TestDataHelper.CreateStateMachineDevice(),
             HandleRequestAnswerOnSuccessDelegate = HandleRequestAnswerOnSuccessDelegate,
             ParameterSet = ps
@@ -749,7 +749,6 @@ internal class StateMachineOrderProcessorTests
     [Test]
     public void Runner_NewOrderWithReceivedMessageWrongMessage_OrderUnsuccessful()
     {
-
         // Arrange 
         _commAdapter = TestDataHelper.FakeIpCommunicationAdapter;
 
@@ -836,15 +835,14 @@ internal class StateMachineOrderProcessorTests
         SetTimeoutsAndDelegate(order2);
 
         // Act
-        _processor.AddOrder(order2);
         _processor.AddOrder(order1);
-
+        _processor.AddOrder(order2);
+        
         _processor.Runner();
         _processor.Runner();
 
         Wait.Until(() => order1.ExecutionResult.Equals(OrderExecutionResultState.Successful));
         Wait.Until(() => order2.ExecutionResult.Equals(OrderExecutionResultState.Successful));
-
 
         // Assert
         using (Assert.EnterMultipleScope())

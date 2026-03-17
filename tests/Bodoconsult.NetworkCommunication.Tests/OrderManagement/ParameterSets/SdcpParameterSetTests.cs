@@ -56,8 +56,7 @@ internal class SdcpParameterSetTests
         // Arrange 
         var ps = new SdcpParameterSet();
 
-        var dateTimeService = TestDataHelper.AppDateService;
-        var benchLogger = TestDataHelper.GetFakeAppBenchProxy();
+        TestDataHelper.GetFakeAppBenchProxy();
 
         // Act  
         var order = TestDataHelper.CreateTestOrder(ps);

@@ -2,13 +2,14 @@
 
 using System.Diagnostics;
 using System.Net;
+using System.Net.Sockets;
 
 namespace Bodoconsult.NetworkCommunication.Testing;
 
 /// <summary>
 /// Simple multicast UDP server for testing purposes
 /// </summary>
-public class UdpTestMultiCastServer : UdpDeviceBase
+public class UdpTestMultiCastServer : BaseUdpDevice
 {
     /// <summary>
     /// Default ctor
@@ -22,11 +23,11 @@ public class UdpTestMultiCastServer : UdpDeviceBase
 
         var endPoint1 = new IPEndPoint(0, Port);
         Listener.JoinMulticastGroup(ipAddress, 50);
-        //Listener.ExclusiveAddressUse = false;
-        //Listener.Client.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.ReuseAddress, true);
+        Listener.ExclusiveAddressUse = false;
+        Listener.Client.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.ReuseAddress, true);
         Listener.Client.Bind(endPoint1);
 
-        EndPoint = new IPEndPoint(ipAddress, Port);
+        ReceiceEndPoint = new IPEndPoint(ipAddress, Port);
         SendEndPoint = new IPEndPoint(ipAddress, RemotePort);
     }
 
@@ -36,7 +37,7 @@ public class UdpTestMultiCastServer : UdpDeviceBase
     /// <param name="data">Byte array to send</param>
     public override void Send(byte[] data)
     {
-        var result = Listener.Send(data, EndPoint);
+        var result = Listener.Send(data, ReceiceEndPoint);
         Debug.Print($"{GetType().Name}: sent {result} byte(s)!");
     }
 }
