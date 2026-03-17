@@ -14,15 +14,15 @@ using Bodoconsult.NetworkCommunication.Interfaces;
 namespace Bodoconsult.NetworkCommunication.DataMessaging.DataMessageProcessingPackages;
 
 /// <summary>
-/// Current implementation of <see cref="IDataMessageProcessingPackage"/> for BTCP protocol
+/// Current implementation of <see cref="IDataMessageProcessingPackage"/> for TNCP protocol
 /// </summary>
-public class BtcpDataMessageProcessingPackage : IDataMessageProcessingPackage
+public class TncpDataMessageProcessingPackage : IDataMessageProcessingPackage
 {
     /// <summary>
     /// Default ctor
     /// </summary>
 #pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring as nullable.
-    public BtcpDataMessageProcessingPackage(IDataMessagingConfig dataMessagingConfig)
+    public TncpDataMessageProcessingPackage(IDataMessagingConfig dataMessagingConfig)
 #pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring as nullable.
     {
         DataMessagingConfig = dataMessagingConfig;
@@ -31,7 +31,7 @@ public class BtcpDataMessageProcessingPackage : IDataMessageProcessingPackage
         // Now setup the dependent objects
 
         // 1. Message splitter
-        DataMessageSplitter = new BtcpDataMessageSplitter();
+        DataMessageSplitter = new TncpDataMessageSplitter();
 
         // 2. Codecs
         DataMessageCodingProcessor = new DefaultDataMessageCodingProcessor();
@@ -44,26 +44,26 @@ public class BtcpDataMessageProcessingPackage : IDataMessageProcessingPackage
         WaitStateManager = new DefaultWaitStateManager(dataMessagingConfig);
 
         // 5. Handshake validator
-        HandshakeDataMessageValidator = new BtcpHandshakeDataMessageValidator();
+        HandshakeDataMessageValidator = new TncpHandshakeDataMessageValidator();
 
         // 6. Data message validator
-        DataMessageValidator = new BtcpDataMessageValidator();
+        DataMessageValidator = new TncpDataMessageValidator();
 
         // 7. Handshake creation factory
-        DataMessageHandshakeFactory = new BtcpHandshakeFactory();
+        DataMessageHandshakeFactory = new TncpHandshakeFactory();
 
         // 8. Outbound data message factory
-        OutboundDataMessageFactory = new BtcpOutboundDataMessageFactory();
+        OutboundDataMessageFactory = new TncpOutboundDataMessageFactory();
     }
 
     private void LoadCodecs()
     {
-        var handShakeCodec = new BtcpHandshakeMessageCodec();
+        var handShakeCodec = new TncpHandshakeMessageCodec();
         DataMessageCodingProcessor.MessageCodecs.Add(handShakeCodec);
 
         LoadCustomDataBlockCodecs();
 
-        var deviceMessageCodec = new BtcpDataMessageCodec(DataBlockCodingProcessor);
+        var deviceMessageCodec = new TncpDataMessageCodec(DataBlockCodingProcessor);
         DataMessageCodingProcessor.MessageCodecs.Add(deviceMessageCodec);
 
         var rawCodec = new RawDataMessageCodec();

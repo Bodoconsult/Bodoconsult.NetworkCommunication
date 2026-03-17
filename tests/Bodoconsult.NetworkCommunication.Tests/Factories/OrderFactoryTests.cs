@@ -17,7 +17,6 @@ internal class OrderFactoryTests
     {
         // Arrange 
 
-
         // Act  
         var factory = new OrderFactory();
 

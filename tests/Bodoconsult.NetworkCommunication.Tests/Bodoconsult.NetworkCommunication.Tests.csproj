@@ -60,6 +60,7 @@
 
   <ItemGroup>
     <Folder Include="DataMessaging\NewFolder\" />
+    <Folder Include="StateManagement\NewFolder\" />
   </ItemGroup>
 
 </Project>
