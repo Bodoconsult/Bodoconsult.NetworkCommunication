@@ -189,8 +189,11 @@ internal class BaseStateManagementDeviceTests
 
         var builder = new DeviceStartStreamingStateBuilder();
 
+        var ps = new SdcpParameterSet();
+
         var config = new JobStateConfiguration(DefaultStateNames.DeviceStartStreamingState, builder)
         {
+            ParameterSet = ps,
             CurrentContext = device,
             HandleAsyncMessageDelegate = DelegateHelper.HandleAsyncMessageDelegate,
             HandleComDevCloseDelegate = DelegateHelper.HandleComDevCloseDelegate,
@@ -240,8 +243,11 @@ internal class BaseStateManagementDeviceTests
 
         var builder = new DeviceStartStreamingStateBuilder();
 
+        var ps = new SdcpParameterSet();
+
         var config = new JobStateConfiguration(DefaultStateNames.DeviceStartStreamingState, builder)
         {
+            ParameterSet = ps,
             CurrentContext = device,
             HandleAsyncMessageDelegate = DelegateHelper.HandleAsyncMessageDelegate,
             HandleComDevCloseDelegate = DelegateHelper.HandleComDevCloseDelegate,
@@ -273,8 +279,11 @@ internal class BaseStateManagementDeviceTests
 
         var builder = new DeviceStartStreamingStateBuilder();
 
+        var ps = new SdcpParameterSet();
+
         var config = new JobStateConfiguration(DefaultStateNames.DeviceStartStreamingState, builder)
         {
+            ParameterSet = ps,
             CurrentContext = device,
             HandleAsyncMessageDelegate = DelegateHelper.HandleAsyncMessageDelegate,
             HandleComDevCloseDelegate = DelegateHelper.HandleComDevCloseDelegate,

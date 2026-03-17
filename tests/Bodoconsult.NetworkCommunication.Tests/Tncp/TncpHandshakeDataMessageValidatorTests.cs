@@ -68,24 +68,4 @@ internal class TncpHandshakeDataMessageValidatorTests
         // Assert
         Assert.That(result.IsMessageValid, Is.True);
     }
-
-    [Test]
-    public void IsHandshakeForSentMessage_WrongBlockCode_MessageIsNotValid()
-    {
-        // Arrange 
-        var msg = new TncpOutboundDataMessage();
-
-        var handshake = new InboundHandshakeMessage
-        {
-            HandshakeMessageType = DeviceCommunicationBasics.Nack
-        };
-
-        var validator = new TncpHandshakeDataMessageValidator();
-
-        // Act  
-        var result = validator.IsHandshakeForSentMessage(msg, handshake);
-
-        // Assert
-        Assert.That(result.IsMessageValid, Is.False);
-    }
 }

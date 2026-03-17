@@ -1,6 +1,7 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
 using Bodoconsult.NetworkCommunication.Helpers;
+using Bodoconsult.NetworkCommunication.OrderManagement.ParameterSets;
 using Bodoconsult.NetworkCommunication.StateManagement.Builders;
 using Bodoconsult.NetworkCommunication.StateManagement.Configurations;
 using Bodoconsult.NetworkCommunication.StateManagement.Interfaces;
@@ -51,8 +52,11 @@ internal class DeviceStopStreamingStateBuilderTests
         
         var builder = new DeviceStopStreamingStateBuilder();
 
+        var ps = new SdcpParameterSet();
+
         var config = new JobStateConfiguration(DefaultStateNames.DeviceStopStreamingState, builder)
         {
+            ParameterSet = ps,
             CurrentContext = device,
             HandleAsyncMessageDelegate = DelegateHelper.HandleAsyncMessageDelegate,
             HandleComDevCloseDelegate = DelegateHelper.HandleComDevCloseDelegate,

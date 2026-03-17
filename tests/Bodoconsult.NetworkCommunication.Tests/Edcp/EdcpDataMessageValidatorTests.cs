@@ -42,7 +42,7 @@ internal class TncpDataMessageValidatorTests
     public void IsMessageValid_EcdpDataMessage_ReturnsTrue()
     {
         // Arrange 
-        var validator = new TncpDataMessageValidator();
+        var validator = new EdcpDataMessageValidator();
 
         var msg = new EdcpInboundDataMessage();
 

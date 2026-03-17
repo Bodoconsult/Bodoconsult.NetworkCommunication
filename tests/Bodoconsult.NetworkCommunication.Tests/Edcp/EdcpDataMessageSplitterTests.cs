@@ -7,13 +7,13 @@ using Bodoconsult.NetworkCommunication.DataMessaging.DataMessageSplitters;
 namespace Bodoconsult.NetworkCommunication.Tests.Edcp;
 
 [TestFixture]
-internal class TncpDataMessageSplitterTests
+internal class EdcpDataMessageSplitterTests
 {
     [Test]
     public void TryReadCommand_2ValidCommands_ReturnsCommand()
     {
         // Arrange 
-        var splitter = new TncpDataMessageSplitter();
+        var splitter = new EdcpDataMessageSplitter();
         var msg = new byte[] { 0x2, 0x42, 0x6c, 0x75, 0x62, 0x62, 0x3, 0x2, 0x42, 0x6b, 0x75, 0x62, 0x62, 0x3 };
 
         var expectedResult = new ReadOnlySequence<byte>([0x2, 0x42, 0x6c, 0x75, 0x62, 0x62, 0x3]);
@@ -41,7 +41,7 @@ internal class TncpDataMessageSplitterTests
     public void TryReadCommand_1validCommand_ReturnsCommand()
     {
         // Arrange 
-        var splitter = new TncpDataMessageSplitter();
+        var splitter = new EdcpDataMessageSplitter();
         var msg = new byte[] { 0x2, 0x42, 0x6c, 0x75, 0x62, 0x62, 0x2, 0x42, 0x6b, 0x75, 0x62, 0x62, 0x3 };
 
         var expectedResult = new ReadOnlySequence<byte>([0x2, 0x42, 0x6c, 0x75, 0x62, 0x62, 0x2, 0x42, 0x6b, 0x75, 0x62, 0x62, 0x3]);

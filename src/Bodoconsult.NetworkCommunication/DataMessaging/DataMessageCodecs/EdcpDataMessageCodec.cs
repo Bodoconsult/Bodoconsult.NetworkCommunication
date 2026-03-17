@@ -110,9 +110,9 @@ public class EdcpDataMessageCodec : BaseDataMessageCodec
     public override OutboundCodecResult EncodeDataMessage(IOutboundMessage message)
     {
         var result = new OutboundCodecResult();
-        if (message is not TncpOutboundDataMessage tMessage)
+        if (message is not EdcpOutboundDataMessage tMessage)
         {
-            result.ErrorMessage = "TncpDataMessage required for TncpDataMessageCodec";
+            result.ErrorMessage = "EdcpDataMessage required for EdcpDataMessageCodec";
             result.ErrorCode = 1;
             return result;
         }
@@ -129,7 +129,7 @@ public class EdcpDataMessageCodec : BaseDataMessageCodec
             }
             catch (Exception exception)
             {
-                result.ErrorMessage = $"TncpDataMessageCodec: exception raised during encoding: {exception}";
+                result.ErrorMessage = $"EdcpDataMessageCodec: exception raised during encoding: {exception}";
                 result.ErrorCode = 4;
                 return result;
             }
