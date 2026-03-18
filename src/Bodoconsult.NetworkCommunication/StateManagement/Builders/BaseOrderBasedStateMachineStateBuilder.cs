@@ -32,9 +32,13 @@ public abstract class BaseOrderBasedStateMachineStateBuilder : BaseStateMachineS
             throw new ArgumentException($"Wrong config type {config.GetType().Name}");
         }
 
-        // Set the parameterset for the orders to be created
-        ArgumentNullException.ThrowIfNull(config1.ParameterSet);
-        state1.ParameterSet = config1.ParameterSet;
+        // Set the parametersets for the orders to be created
+        if (config1.ParameterSets.Count != config1.OrderConfigurations.Count)
+        {
+            throw new ArgumentException($"The number of parametersets {config1.ParameterSets.Count} must equal the number of order configurations {config1.OrderConfigurations.Count}!");
+        }
+
+        state1.ParameterSets.AddRange(config1.ParameterSets);
         state1.OrderConfigurations.AddRange(config1.OrderConfigurations);
 
         // Now configure state

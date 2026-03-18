@@ -14,7 +14,7 @@ public class DeviceOnlineStateBuilder : BaseOrderlessStateMachineStateBuilder
     /// <summary>
     /// Allowed next states internal
     /// </summary>
-    public static readonly List<string> AllowedNextStatesInternal = [DefaultStateNames.DeviceReadyState, DefaultStateNames.DeviceOfflineState];
+    public static readonly List<string> AllowedNextStatesInternal = [DefaultStateNames.DeviceInitState, DefaultStateNames.DeviceOfflineState];
 
     /// <summary>
     /// Default ctor

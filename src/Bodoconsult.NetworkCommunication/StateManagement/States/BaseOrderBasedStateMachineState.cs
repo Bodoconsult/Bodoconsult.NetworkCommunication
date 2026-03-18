@@ -25,22 +25,26 @@ public abstract class BaseOrderBasedStateMachineState : BaseStateMachineState, I
     /// </summary>
     public override void InitiateState()
     {
-        ArgumentNullException.ThrowIfNull(ParameterSet);
+        if (ParameterSets.Count != OrderConfigurations.Count)
+        {
+            throw new ArgumentException($"The number of parametersets {ParameterSets.Count} must equal the number of order configurations {OrderConfigurations.Count}!");
+        }
         ArgumentNullException.ThrowIfNull(CurrentContext.OrderManager);
 
         var orderFactory = CurrentContext.OrderManager.OrderFactory;
 
-        foreach (var orderConfigName in OrderConfigurations)
+        for (var index = 0; index < OrderConfigurations.Count; index++)
         {
-            var order = orderFactory.CreateOrder(orderConfigName, ParameterSet);
+            var orderConfigName = OrderConfigurations[index];
+            var order = orderFactory.CreateOrder(orderConfigName, ParameterSets[index]);
             Orders.AddRange(order);
         }
     }
 
     /// <summary>
-    /// ParameterSet for the orders to be created for the state
+    /// Parametersets for the orders to be created for the state. The number of parametersets must equal the number of <see cref="IOrderBasedActionStateMachineState.OrderConfigurations"/>
     /// </summary>
-    public IParameterSet? ParameterSet { get; set; }
+    public List<IParameterSet> ParameterSets { get; } = new();
 
     /// <summary>
     /// All configurations for orders to be executed for the state to be configured. Sort order is important! The first configuration added is executed as first order etc.

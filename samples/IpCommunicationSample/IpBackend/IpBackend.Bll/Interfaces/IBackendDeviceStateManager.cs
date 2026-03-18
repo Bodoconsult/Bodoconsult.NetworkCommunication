@@ -1,11 +1,6 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
 using Bodoconsult.NetworkCommunication.StateManagement.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Bodoconsult.NetworkCommunication.Interfaces;
 
 namespace IpCommunicationSample.Backend.Bll.Interfaces
@@ -85,5 +80,19 @@ namespace IpCommunicationSample.Backend.Bll.Interfaces
         /// <param name="state">Current state</param>
         /// <param name="order">Current order</param>
         void StopStreamingUnsuccessfully(IStateMachineState state, IOrder order);
+
+        /// <summary>
+        /// Init device was successful
+        /// </summary>
+        /// <param name="state">Current state</param>
+        /// <param name="order">Current order</param>
+        void DeviceInitSuccessfully(IStateMachineState state, IOrder order);
+
+        /// <summary>
+        /// Init device was unsuccessful
+        /// </summary>
+        /// <param name="state">Current state</param>
+        /// <param name="order">Current order</param>
+        void DeviceInitUnsuccessfully(IStateMachineState state, IOrder order);
     }
 }

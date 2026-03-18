@@ -11,9 +11,9 @@ namespace Bodoconsult.NetworkCommunication.StateManagement.Interfaces;
 public interface IOrderBasedActionStateMachineState : IStateMachineState
 {
     /// <summary>
-    /// ParameterSet for the orders to be created for the state
+    /// Parametersets for the orders to be created for the state. The number of parameter sets must equal the number of <see cref="OrderConfigurations"/>
     /// </summary>
-    IParameterSet? ParameterSet { get; set; }
+    List<IParameterSet> ParameterSets { get; }
 
     /// <summary>
     /// All configurations for orders to be executed for the state to be configured. Sort order is important! The first configuration added is executed as first order etc.

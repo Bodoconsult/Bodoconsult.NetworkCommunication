@@ -27,9 +27,9 @@ public interface IStateMachineStateFactory
     /// </summary>
     /// <param name="currentContext">Current context</param>
     /// <param name="stateName">Name of the request state</param>
-    /// <param name="parameterSet">Current parameter set</param>
+    /// <param name="parameterSets">Current parametersets to load in the orders to execute (if needed)</param>
     /// <returns>State instance of the requested type</returns>
-    IStateMachineState CreateInstance(IStateManagementDevice currentContext, string stateName, IParameterSet parameterSet);
+    IStateMachineState CreateInstance(IStateManagementDevice currentContext, string stateName, List<IParameterSet> parameterSets);
 
     /// <summary>
     /// Register a state configuration (and add it to <see cref="StateConfigurations"/>)

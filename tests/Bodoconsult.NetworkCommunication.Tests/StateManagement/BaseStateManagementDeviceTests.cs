@@ -122,7 +122,6 @@ internal class BaseStateManagementDeviceTests
 
         var config = new JobStateConfiguration(DefaultStateNames.DeviceStartStreamingState, builder)
         {
-            ParameterSet = ps,
             CurrentContext = device,
             HandleAsyncMessageDelegate = DelegateHelper.HandleAsyncMessageDelegate,
             HandleComDevCloseDelegate = DelegateHelper.HandleComDevCloseDelegate,
@@ -132,6 +131,8 @@ internal class BaseStateManagementDeviceTests
             OrderFinishedSucessfullyDelegate = DelegateHelper.OrderFinishedSucessfullyDelegate,
             OrderFinishedUnsucessfullyDelegate = DelegateHelper.OrderFinishedUnsucessfullyDelegate,
         };
+
+        config.ParameterSets.Add(ps);
 
         var newState = builder.BuildState(config);
 
@@ -193,7 +194,6 @@ internal class BaseStateManagementDeviceTests
 
         var config = new JobStateConfiguration(DefaultStateNames.DeviceStartStreamingState, builder)
         {
-            ParameterSet = ps,
             CurrentContext = device,
             HandleAsyncMessageDelegate = DelegateHelper.HandleAsyncMessageDelegate,
             HandleComDevCloseDelegate = DelegateHelper.HandleComDevCloseDelegate,
@@ -204,6 +204,8 @@ internal class BaseStateManagementDeviceTests
             OrderFinishedUnsucessfullyDelegate = DelegateHelper.OrderFinishedUnsucessfullyDelegate,
             
         };
+
+        config.ParameterSets.Add(ps);
 
         var newState = (IJobStateMachineState)builder.BuildState(config);
 
@@ -247,7 +249,6 @@ internal class BaseStateManagementDeviceTests
 
         var config = new JobStateConfiguration(DefaultStateNames.DeviceStartStreamingState, builder)
         {
-            ParameterSet = ps,
             CurrentContext = device,
             HandleAsyncMessageDelegate = DelegateHelper.HandleAsyncMessageDelegate,
             HandleComDevCloseDelegate = DelegateHelper.HandleComDevCloseDelegate,
@@ -256,8 +257,9 @@ internal class BaseStateManagementDeviceTests
             PrepareRegularStateRequestDelegate = DelegateHelper.PrepareRegularStateRequestDelegate,
             OrderFinishedSucessfullyDelegate = DelegateHelper.OrderFinishedSucessfullyDelegate,
             OrderFinishedUnsucessfullyDelegate = DelegateHelper.OrderFinishedUnsucessfullyDelegate,
-            
         };
+
+        config.ParameterSets.Add(ps);
 
         var newState = (IJobStateMachineState)builder.BuildState(config);
 
@@ -283,7 +285,6 @@ internal class BaseStateManagementDeviceTests
 
         var config = new JobStateConfiguration(DefaultStateNames.DeviceStartStreamingState, builder)
         {
-            ParameterSet = ps,
             CurrentContext = device,
             HandleAsyncMessageDelegate = DelegateHelper.HandleAsyncMessageDelegate,
             HandleComDevCloseDelegate = DelegateHelper.HandleComDevCloseDelegate,
@@ -292,8 +293,9 @@ internal class BaseStateManagementDeviceTests
             PrepareRegularStateRequestDelegate = DelegateHelper.PrepareRegularStateRequestDelegate,
             OrderFinishedSucessfullyDelegate = DelegateHelper.OrderFinishedSucessfullyDelegate,
             OrderFinishedUnsucessfullyDelegate = DelegateHelper.OrderFinishedUnsucessfullyDelegate,
-            
         };
+
+        config.ParameterSets.Add(ps);
 
         var newState = (IJobStateMachineState)builder.BuildState(config);
 

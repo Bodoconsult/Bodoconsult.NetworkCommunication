@@ -53,11 +53,12 @@ internal class BaseJobStateMachineStateBuilderTests
 
         var config = new JobStateConfiguration(DefaultStateNames.DeviceStartStreamingState, builder)
         {
-            ParameterSet = ps,
             CurrentContext = TestDataHelper.CreateStateMachineDevice(),
             OrderFinishedSucessfullyDelegate = DelegateHelper.OrderFinishedSucessfullyDelegate,
             OrderFinishedUnsucessfullyDelegate = DelegateHelper.OrderFinishedUnsucessfullyDelegate,
         };
+
+        config.ParameterSets.Add(ps);
 
         // Act  
         var state = builder.BuildState(config);

@@ -11,4 +11,15 @@ public interface IDeviceStateManager
     /// Current device
     /// </summary>
     IStateManagementDevice Device { get; }
+
+    /// <summary>
+    /// Current state factory
+    /// </summary>
+    IStateMachineStateFactory? StateFactory { get; }
+
+    /// <summary>
+    /// Load the state factory
+    /// </summary>
+    /// <param name="stateFactory">Current state factory</param>
+    void LoadStateFactory(IStateMachineStateFactory stateFactory);
 }

@@ -56,7 +56,6 @@ internal class DeviceStartSnapshotStateBuilderTests
 
         var config = new JobStateConfiguration(DefaultStateNames.DeviceStartSnapshotState, builder)
         {
-            ParameterSet = ps,
             CurrentContext = device,
             HandleAsyncMessageDelegate = DelegateHelper.HandleAsyncMessageDelegate,
             HandleComDevCloseDelegate = DelegateHelper.HandleComDevCloseDelegate,
@@ -65,8 +64,9 @@ internal class DeviceStartSnapshotStateBuilderTests
             PrepareRegularStateRequestDelegate = DelegateHelper.PrepareRegularStateRequestDelegate,
             OrderFinishedSucessfullyDelegate = DelegateHelper.OrderFinishedSucessfullyDelegate,
             OrderFinishedUnsucessfullyDelegate = DelegateHelper.OrderFinishedUnsucessfullyDelegate,
-            
         };
+
+        config.ParameterSets.Add(ps);
 
         // Act  
         var state = (IOrderBasedActionStateMachineState)builder.BuildState(config);

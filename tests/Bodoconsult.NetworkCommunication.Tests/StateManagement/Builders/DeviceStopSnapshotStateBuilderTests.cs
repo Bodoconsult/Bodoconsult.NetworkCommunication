@@ -57,7 +57,6 @@ internal class DeviceStopSnapshotStateBuilderTests
 
         var config = new JobStateConfiguration(DefaultStateNames.DeviceStopStreamingState, builder)
         {
-            ParameterSet = ps,
             CurrentContext = device,
             HandleAsyncMessageDelegate = DelegateHelper.HandleAsyncMessageDelegate,
             HandleComDevCloseDelegate = DelegateHelper.HandleComDevCloseDelegate,
@@ -67,6 +66,8 @@ internal class DeviceStopSnapshotStateBuilderTests
             OrderFinishedSucessfullyDelegate = OrderFinishedSucessfullyDelegate,
             OrderFinishedUnsucessfullyDelegate = OrderFinishedUnsucessfullyDelegate
         };
+
+        config.ParameterSets.Add(ps);
 
         // Act  
         var state = (IOrderBasedActionStateMachineState)builder.BuildState(config);

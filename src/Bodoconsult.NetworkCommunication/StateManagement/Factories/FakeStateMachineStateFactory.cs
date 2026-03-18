@@ -29,7 +29,14 @@ public class FakeStateMachineStateFactory : IStateMachineStateFactory
         throw new NotSupportedException();
     }
 
-    public IStateMachineState CreateInstance(IStateManagementDevice currentContext, string stateName, IParameterSet parameterSet)
+    /// <summary>
+    /// Create an order based state instance of the requested type
+    /// </summary>
+    /// <param name="currentContext">Current context</param>
+    /// <param name="stateName">Name of the request state</param>
+    /// <param name="parameterSets">Current parametersets to load in the orders to execute (if needed)</param>
+    /// <returns>State instance of the requested type</returns>
+    public IStateMachineState CreateInstance(IStateManagementDevice currentContext, string stateName, List<IParameterSet> parameterSets)
     {
         throw new NotImplementedException();
     }

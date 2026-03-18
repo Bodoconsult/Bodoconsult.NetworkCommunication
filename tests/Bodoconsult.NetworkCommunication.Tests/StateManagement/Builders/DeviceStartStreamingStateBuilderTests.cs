@@ -56,7 +56,6 @@ internal class DeviceStartStreamingStateBuilderTests
 
         var config = new JobStateConfiguration(DefaultStateNames.DeviceStartStreamingState, builder)    
         {
-            ParameterSet = ps,
             CurrentContext = device,
             HandleAsyncMessageDelegate = DelegateHelper.HandleAsyncMessageDelegate,
             HandleComDevCloseDelegate = DelegateHelper.HandleComDevCloseDelegate,
@@ -66,6 +65,8 @@ internal class DeviceStartStreamingStateBuilderTests
             OrderFinishedSucessfullyDelegate = DelegateHelper.OrderFinishedSucessfullyDelegate,
             OrderFinishedUnsucessfullyDelegate = DelegateHelper.OrderFinishedUnsucessfullyDelegate,
         };
+
+        config.ParameterSets.Add(ps);
 
         // Act  
         var state = (IOrderBasedActionStateMachineState)builder.BuildState(config);

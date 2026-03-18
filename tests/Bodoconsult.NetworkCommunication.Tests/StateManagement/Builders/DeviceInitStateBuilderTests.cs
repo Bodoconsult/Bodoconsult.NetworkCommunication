@@ -56,7 +56,6 @@ internal class DeviceInitStateBuilderTests
 
         var config = new OrderBasedActionStateConfiguration(DefaultStateNames.DeviceInitState, builder)
         {
-            ParameterSet = ps,
             CurrentContext = device,
             HandleAsyncMessageDelegate = DelegateHelper.HandleAsyncMessageDelegate,
             HandleComDevCloseDelegate = DelegateHelper.HandleComDevCloseDelegate,
@@ -66,6 +65,8 @@ internal class DeviceInitStateBuilderTests
             OrderFinishedSucessfullyDelegate = DelegateHelper.OrderFinishedSucessfullyDelegate,
             OrderFinishedUnsucessfullyDelegate = DelegateHelper.OrderFinishedUnsucessfullyDelegate,
         };
+
+        config.ParameterSets.Add(ps);
 
         // Act  
         var state = (IOrderBasedActionStateMachineState)builder.BuildState(config);

@@ -55,9 +55,9 @@ public class StateMachineStateFactory : IStateMachineStateFactory
     /// </summary>
     /// <param name="currentContext">Current context</param>
     /// <param name="stateName">Name of the request state</param>
-    /// <param name="parameterSet">Current parameter set</param>
+    /// <param name="parameterSets">Current parametersets to load in the orders to execute (if needed)</param>
     /// <returns>State instance of the requested type</returns>
-    public IStateMachineState CreateInstance(IStateManagementDevice currentContext, string stateName, IParameterSet parameterSet)
+    public IStateMachineState CreateInstance(IStateManagementDevice currentContext, string stateName, List<IParameterSet> parameterSets)
     {
         ArgumentNullException.ThrowIfNull(currentContext);
 
@@ -79,7 +79,7 @@ public class StateMachineStateFactory : IStateMachineStateFactory
         }
 
         obas.CurrentContext = currentContext;
-        obas.ParameterSet = parameterSet;
+        obas.ParameterSets.AddRange( parameterSets);
 
         return obas.StateBuilderBuilder.BuildState(obas);
     }
@@ -95,7 +95,6 @@ public class StateMachineStateFactory : IStateMachineStateFactory
         if (config.CurrentContext != null)
         {
             config.CurrentContext = null;
-
         }
 
         var checkResult = config switch

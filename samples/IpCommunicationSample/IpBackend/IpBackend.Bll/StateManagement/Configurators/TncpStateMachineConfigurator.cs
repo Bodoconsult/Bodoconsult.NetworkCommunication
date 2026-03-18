@@ -37,6 +37,7 @@ namespace IpCommunicationSample.Backend.Bll.StateManagement.Configurators
         {
             AddDeviceOfflineStateBuilder();
             AddDeviceOnlineStateBuilder();
+            AddDeviceInitStateBuilder();
             AddDeviceReadyStateBuilder();
             AddDeviceStartStreamingStateBuilder();
             AddDeviceStreamingStateBuilder();
@@ -44,6 +45,25 @@ namespace IpCommunicationSample.Backend.Bll.StateManagement.Configurators
             AddDeviceStartSnapshotStateBuilder();
             AddDeviceSnapshotStateBuilder();
             AddDeviceStopSnapshotStateBuilder();
+        }
+
+        private void AddDeviceInitStateBuilder()
+        {
+            var config = new JobStateConfiguration(DefaultStateNames.DeviceInitState, new DeviceInitStateBuilder())
+            {
+                CurrentContext = DeviceStateManager.Device,
+                HandleAsyncMessageDelegate = _deviceStateManager.HandleAsyncMessageDelegate,
+                HandleComDevCloseDelegate = _deviceStateManager.HandleComDevCloseDelegate,
+                HandleErrorMessageDelegate = _deviceStateManager.HandleErrorMessageDelegate,
+                HandleRegularStateRequestAnswerDelegate = DelegateHelper.HandleRegularStateRequestAnswerDelegate,
+                PrepareRegularStateRequestDelegate = DelegateHelper.PrepareRegularStateRequestDelegate,
+                OrderFinishedSucessfullyDelegate = _deviceStateManager.DeviceInitSuccessfully,
+                OrderFinishedUnsucessfullyDelegate = _deviceStateManager.DeviceInitUnsuccessfully,
+            };
+
+            config.OrderConfigurations.Add("NoAnswerTncpOrderConfiguration");
+
+            StateFactory.RegisterConfiguration(config);
         }
 
         private void AddDeviceStopSnapshotStateBuilder()
@@ -139,6 +159,8 @@ namespace IpCommunicationSample.Backend.Bll.StateManagement.Configurators
                 OrderFinishedUnsucessfullyDelegate = _deviceStateManager.StartStreamingUnsuccessfully,
             };
 
+            // Two orders required because of two telent commands to send
+            config.OrderConfigurations.Add("NoAnswerTncpOrderConfiguration");
             config.OrderConfigurations.Add("NoAnswerTncpOrderConfiguration");
 
             StateFactory.RegisterConfiguration(config);

@@ -4,7 +4,6 @@
 using Bodoconsult.NetworkCommunication.Interfaces;
 using Bodoconsult.NetworkCommunication.Tests.Helpers;
 using System.Net;
-using System.Net.Sockets;
 
 namespace Bodoconsult.NetworkCommunication.Tests.Tcp.Transport;
 
