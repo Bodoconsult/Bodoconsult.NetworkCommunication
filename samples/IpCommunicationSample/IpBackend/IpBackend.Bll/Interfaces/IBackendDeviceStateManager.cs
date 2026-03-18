@@ -10,6 +10,8 @@ namespace IpCommunicationSample.Backend.Bll.Interfaces
     /// </summary>
     public interface IBackendDeviceStateManager : IDeviceStateManager
     {
+        #region Device order handling
+
         /// <summary>
         /// Delegate to handle a ComDevClose event in business logic
         /// </summary>
@@ -94,5 +96,49 @@ namespace IpCommunicationSample.Backend.Bll.Interfaces
         /// <param name="state">Current state</param>
         /// <param name="order">Current order</param>
         void DeviceInitUnsuccessfully(IStateMachineState state, IOrder order);
+
+        #endregion
+
+        #region State management
+
+        /// <summary>
+        /// Request a start streaming state
+        /// </summary>
+        void RequestDeviceStartStreamingState();
+
+        /// <summary>
+        /// Request a start snapshot state
+        /// </summary>
+        void RequestDeviceStartSnapshotState();
+
+        /// <summary>
+        /// Request a stop streaming state
+        /// </summary>
+        void RequestDeviceStopStreamingState();
+
+        /// <summary>
+        /// Request a stop snapshot state
+        /// </summary>
+        void RequestDeviceStopSnapshotState();
+
+        #endregion
+    }
+
+    public interface IBackendManager
+    {
+        /// <summary>
+        /// Represents the TCP/IP communication with the client
+        /// </summary>
+        IOrderManagementDevice Client { get; }
+
+        /// <summary>
+        /// Represents the TCP/IP communication with the IP device
+        /// </summary>
+        IStateManagementDevice IpDeviceTcpIp { get; }
+
+        /// <summary>
+        /// Represents the UDP communication with the IP device
+        /// </summary>
+        IOrderManagementDevice IpDeviceUdp { get; }
     }
 }

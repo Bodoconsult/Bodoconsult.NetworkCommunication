@@ -7,10 +7,10 @@ using Bodoconsult.App.Interfaces;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
 using Bodoconsult.NetworkCommunication.Interfaces;
 
-namespace Bodoconsult.NetworkCommunication.BusinessTransactions;
+namespace Bodoconsult.NetworkCommunication.BusinessTransactions.Converters;
 
 /// <summary>
-/// Base class for converters from <see cref="IBusinessTransactionRequestData"/> instances to <see cref="BtcpInboundDataMessage"/> instances
+/// Base class for converters from <see cref="IBusinessTransactionRequestData"/> instances to <see cref="BtcpOutboundDataMessage"/> instances
 /// </summary>
 public abstract class BaseBtRequestDataToOutboundBtcpMessageConverter : IBtRequestDataToOutboundDataMessageConverter
 {
@@ -85,6 +85,6 @@ public abstract class BaseBtRequestDataToOutboundBtcpMessageConverter : IBtReque
         }
 
         throw new ArgumentException(
-            "No outbound emssage created as BT " + request.TransactionId + " is not registered!");
+            $"No outbound message created as BT {request.TransactionId} is not registered!");
     }
 }

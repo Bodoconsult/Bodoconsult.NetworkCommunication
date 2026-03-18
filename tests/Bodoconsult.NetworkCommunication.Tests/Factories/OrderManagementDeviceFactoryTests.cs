@@ -1,0 +1,48 @@
+﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
+
+using Bodoconsult.App.Factories;
+using Bodoconsult.NetworkCommunication.App.Abstractions;
+using Bodoconsult.NetworkCommunication.ClientNotifications;
+using Bodoconsult.NetworkCommunication.Factories;
+using Bodoconsult.NetworkCommunication.Tests.App;
+using Bodoconsult.NetworkCommunication.Tests.Helpers;
+
+namespace Bodoconsult.NetworkCommunication.Tests.Factories;
+
+[TestFixture]
+internal class OrderManagementDeviceFactoryTests
+{
+    [Test]
+    public void CreateInstance_ValidSetup_ReturnsDevice()
+    {
+        // Arrange 
+        var clientNotificationManager = new FakeOrderManagementClientNotificationManager();
+
+        var socketProxyFactory = new ClientSocketProxyFactory();
+        var sendPacketProcessFactory = new FakeSendPacketProcessFactory();
+        var duplexIoFactory = new IpDuplexIoFactory(sendPacketProcessFactory);
+        var monitorLoggerFactoryFactory = new MonitorLoggerFactoryFactory(Globals.Instance);
+        var logDataFactory = TestDataHelper.LogDataFactory;
+        var appLoggerFactory = new AppLoggerProxyFactory();
+        var appEventSourceFactory = new FakeAppEventSourceFactory();
+
+
+
+        var communicationHandlerFactory = new IpCommunicationHandlerFactory(socketProxyFactory, duplexIoFactory, monitorLoggerFactoryFactory, 
+            logDataFactory, appLoggerFactory, appEventSourceFactory, clientNotificationManager);
+        var outboundDataMessageFactory = new BtcpOutboundDataMessageFactory();
+        var commAdapterFactory = new IpCommunicationAdapterFactory(communicationHandlerFactory, outboundDataMessageFactory);
+
+        var factory = new OrderManagementDeviceFactory(clientNotificationManager, commAdapterFactory);
+
+        var dataMessagingConfig = TestDataHelper.GetDataMessagingConfig();
+
+        // Act 
+        var result = factory.CreateInstance(dataMessagingConfig);
+
+        // Assert
+        Assert.That(result.ClientNotificationManager, Is.EqualTo(clientNotificationManager));
+        Assert.That(result.CommunicationAdapter, Is.Not.Null);
+        Assert.That(result.DataMessagingConfig, Is.EqualTo(dataMessagingConfig));
+    }
+}

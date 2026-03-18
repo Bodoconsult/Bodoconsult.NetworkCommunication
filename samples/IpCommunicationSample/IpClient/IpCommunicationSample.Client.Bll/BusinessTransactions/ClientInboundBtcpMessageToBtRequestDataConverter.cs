@@ -3,7 +3,7 @@
 using System.Text;
 using Bodoconsult.App.Abstractions.Interfaces;
 using Bodoconsult.App.Interfaces;
-using Bodoconsult.NetworkCommunication.BusinessTransactions;
+using Bodoconsult.NetworkCommunication.BusinessTransactions.Converters;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
 using IpCommunicationSample.Common;
 using IpCommunicationSample.Common.BusinessTransactions;

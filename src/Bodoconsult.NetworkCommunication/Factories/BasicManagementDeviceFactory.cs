@@ -12,14 +12,14 @@ namespace Bodoconsult.NetworkCommunication.Factories;
 public class BasicManagementDeviceFactory : IOrderManagementDeviceFactory
 {
     private readonly IOrderManagementClientNotificationManager _clientNotificationManager;
-    private readonly IOrderManagementCommunicationAdapterFactory _commAdapterFactory;
+    private readonly ICommunicationAdapterFactory _commAdapterFactory;
 
     /// <summary>
     /// Default ctor
     /// </summary>
     /// <param name="clientNotificationManager">Current client notification manager</param>
     /// <param name="commAdapterFactory">Current communication adapter factory</param>
-    public BasicManagementDeviceFactory(IOrderManagementClientNotificationManager clientNotificationManager, IOrderManagementCommunicationAdapterFactory commAdapterFactory)
+    public BasicManagementDeviceFactory(IOrderManagementClientNotificationManager clientNotificationManager, ICommunicationAdapterFactory commAdapterFactory)
     {
         _clientNotificationManager = clientNotificationManager;
         _commAdapterFactory = commAdapterFactory;

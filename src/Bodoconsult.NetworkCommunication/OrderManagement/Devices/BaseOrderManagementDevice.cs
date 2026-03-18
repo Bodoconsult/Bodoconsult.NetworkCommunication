@@ -2,6 +2,7 @@
 
 using System.Diagnostics;
 using Bodoconsult.App.Abstractions.Interfaces;
+using Bodoconsult.NetworkCommunication.App.Abstractions;
 using Bodoconsult.NetworkCommunication.Interfaces;
 
 namespace Bodoconsult.NetworkCommunication.OrderManagement.Devices;
@@ -22,7 +23,7 @@ public abstract class BaseOrderManagementDevice : IOrderManagementDevice
     /// </summary>
     /// <param name="dataMessagingConfig">Current messaging config</param>
     /// <param name="clientNotificationManager">Current client notification manager</param>
-    protected BaseOrderManagementDevice(IDataMessagingConfig dataMessagingConfig, IOrderManagementClientNotificationManager clientNotificationManager)
+    protected BaseOrderManagementDevice(IDataMessagingConfig dataMessagingConfig, ICentralClientNotificationManager clientNotificationManager)
     {
         DataMessagingConfig = dataMessagingConfig ?? throw new ArgumentNullException(nameof(dataMessagingConfig));
         AppLogger = dataMessagingConfig.AppLogger;
@@ -55,7 +56,7 @@ public abstract class BaseOrderManagementDevice : IOrderManagementDevice
     /// <summary>
     /// Client notification manager
     /// </summary>
-    public IOrderManagementClientNotificationManager ClientNotificationManager { get; }
+    public ICentralClientNotificationManager ClientNotificationManager { get; }
 
     /// <summary>
     /// Device states used for init process
@@ -181,6 +182,14 @@ public abstract class BaseOrderManagementDevice : IOrderManagementDevice
     public virtual void ResetComm()
     {
         CommunicationAdapter?.ComDevReset();
+    }
+
+    /// <summary>
+    /// Stop the communication
+    /// </summary>
+    public void StopComm()
+    {
+        CommunicationAdapter?.ComDevClose();
     }
 
     /// <summary>
@@ -607,8 +616,8 @@ public abstract class BaseOrderManagementDevice : IOrderManagementDevice
     {
         //_statusWatchdog?.StopWatchDog();
         OrderManager?.StopOrderProcessing();
-        MonitorLogger.LogError($"{DataMessagingConfig.LoggerId}DeviceServer stopped - Com Dev Close called");
-        CommunicationAdapter?.ComDevClose();
+        MonitorLogger.LogError($"{DataMessagingConfig.LoggerId}DeviceServer stopped - ComDevClose called");
+        StopComm();
     }
 
     ///// <summary>

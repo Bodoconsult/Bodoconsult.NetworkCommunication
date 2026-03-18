@@ -6,9 +6,9 @@ using Bodoconsult.NetworkCommunication.Interfaces;
 namespace Bodoconsult.NetworkCommunication.Factories;
 
 /// <summary>
-/// Current implementation of <see cref="IOrderManagementCommunicationAdapterFactory"/>
+/// Current implementation of <see cref="ICommunicationAdapterFactory"/>
 /// </summary>
-public class IpCommunicationAdapterFactory : IOrderManagementCommunicationAdapterFactory
+public class IpCommunicationAdapterFactory : ICommunicationAdapterFactory
 {
     private readonly ICommunicationHandlerFactory _communicationHandlerFactory;
     private readonly IOutboundDataMessageFactory _outboundDataMessageFactory;

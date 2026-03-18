@@ -55,4 +55,14 @@ public class FakeStateMachineStateFactory : IStateMachineStateFactory
 
         _stateConfigurations.Add(config.StateName, config);
     }
+
+    /// <summary>
+    /// Get the configuration for a certain state
+    /// </summary>
+    /// <param name="stateName">Name of the requested state</param>
+    /// <returns>State configuration</returns>
+    public IStateConfiguration? GetConfiguration(string stateName)
+    {
+        throw new NotImplementedException();
+    }
 }

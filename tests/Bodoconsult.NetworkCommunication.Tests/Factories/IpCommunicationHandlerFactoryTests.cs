@@ -3,6 +3,7 @@
 using Bodoconsult.App.Abstractions.Interfaces;
 using Bodoconsult.App.Factories;
 using Bodoconsult.NetworkCommunication.App.Abstractions;
+using Bodoconsult.NetworkCommunication.ClientNotifications;
 using Bodoconsult.NetworkCommunication.Factories;
 using Bodoconsult.NetworkCommunication.Interfaces;
 using Bodoconsult.NetworkCommunication.Tests.App;
@@ -19,6 +20,7 @@ internal class IpCommunicationHandlerFactoryTests
         // Arrange 
         var config = TestDataHelper.GetDataMessagingConfig();
 
+
         ISocketProxyFactory socketProxyFactory = new ClientSocketProxyFactory();
         ISendPacketProcessFactory sendPacketProcessFactory = new FakeSendPacketProcessFactory();
         IDuplexIoFactory duplexIoFactory = new IpDuplexIoFactory(sendPacketProcessFactory);
@@ -27,8 +29,10 @@ internal class IpCommunicationHandlerFactoryTests
         IAppLoggerProxyFactory appLoggerFactory = new AppLoggerProxyFactory();
         IAppEventSourceFactory appEventSourceFactory = new FakeAppEventSourceFactory();
 
+        ICentralClientNotificationManager clientNotificationManager = new FakeOrderManagementClientNotificationManager();
+
         var factory = new IpCommunicationHandlerFactory(socketProxyFactory, duplexIoFactory,
-            monitorLoggerFactoryFactory, logDataFactory, appLoggerFactory, appEventSourceFactory);
+            monitorLoggerFactoryFactory, logDataFactory, appLoggerFactory, appEventSourceFactory, clientNotificationManager);
 
         // Act  
         var instance = factory.CreateInstance(config);

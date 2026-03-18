@@ -256,6 +256,13 @@ public delegate void HandleComDevCloseDelegate(IStateMachineState state);
 public delegate MessageHandlingResult HandleAsyncMessageDelegate(IStateMachineState state, IInboundDataMessage?  message);
 
 /// <summary>
+/// Handle an async received BTCP message
+/// </summary>
+/// <param name="message">Current received message</param>
+/// <returns>Message handling result</returns>
+public delegate void HandleAsyncBtcpMessageDelegate(IInboundBusinessTransactionDataMessage message);
+
+/// <summary>
 /// Handle an async received message without state machine
 /// </summary>
 /// <param name="message">Current received message</param>

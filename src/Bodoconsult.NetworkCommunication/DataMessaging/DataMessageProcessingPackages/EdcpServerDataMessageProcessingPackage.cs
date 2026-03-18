@@ -26,9 +26,9 @@ public class EdcpServerDataMessageProcessingPackage : IDataMessageProcessingPack
     public EdcpServerDataMessageProcessingPackage(IDataMessagingConfig dataMessagingConfig)
 #pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring as nullable.
     {
-        if (dataMessagingConfig is not TncpDataMessagingConfig)
+        if (dataMessagingConfig is not EdcpDataMessagingConfig)
         {
-            throw new ArgumentException("dataMessagingConfig must be or inherit from TncpDataMessagingConfig");
+            throw new ArgumentException("dataMessagingConfig must be or inherit from EdcpDataMessagingConfig");
         }
 
         DataMessagingConfig = dataMessagingConfig;

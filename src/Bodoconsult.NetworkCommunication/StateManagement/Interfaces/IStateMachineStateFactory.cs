@@ -36,4 +36,11 @@ public interface IStateMachineStateFactory
     /// </summary>
     /// <param name="config">Config to register</param>
     void RegisterConfiguration(IStateConfiguration config);
+
+    /// <summary>
+    /// Get the configuration for a certain state
+    /// </summary>
+    /// <param name="stateName">Name of the requested state</param>
+    /// <returns>State configuration</returns>
+    IStateConfiguration? GetConfiguration(string stateName);
 }

@@ -85,7 +85,7 @@ public class StateMachineStateFactory : IStateMachineStateFactory
     }
 
     /// <summary>
-    /// Register a state configuration (and add it to <see cref="IStateMachineStateFactory.StateConfigurations"/>). <see cref="IStateConfiguration.CurrentContext"/> is always overriden with <see cref="IStateMachineStateFactory.CurrentContext"/>. So you do not have to set a value for <see cref="IStateConfiguration.CurrentContext"/> before calling <see cref="IStateMachineStateFactory.RegisterConfiguration"/>
+    /// Register a state configuration (and add it to <see cref="IStateMachineStateFactory.StateConfigurations"/>)
     /// </summary>
     /// <param name="config">Config to register</param>
     public void RegisterConfiguration(IStateConfiguration config)
@@ -112,5 +112,15 @@ public class StateMachineStateFactory : IStateMachineStateFactory
         }
 
         _stateConfigurations.Add(config.StateName, config);
+    }
+
+    /// <summary>
+    /// Get the configuration for a certain state
+    /// </summary>
+    /// <param name="stateName">Name of the requested state</param>
+    /// <returns>State configuration</returns>
+    public IStateConfiguration? GetConfiguration(string stateName)
+    {
+        return _stateConfigurations.GetValueOrDefault(stateName);
     }
 }

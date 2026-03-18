@@ -37,7 +37,7 @@ public class BtcpParameterSet : BasicOutboundDatablock, IParameterSet
     public int BusinessTransactionId { get; set; }
 
     /// <summary>
-    /// Payload to send with the emssage
+    /// Payload to send with the message
     /// </summary>
     public Memory<byte> Payload { get; set; }
 

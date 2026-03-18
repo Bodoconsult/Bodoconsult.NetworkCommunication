@@ -7,7 +7,7 @@ namespace Bodoconsult.NetworkCommunication.Interfaces;
 /// <summary>
 /// Interface for factories to create an instance of <see cref="IpCommunicationAdapter"/> implementations
 /// </summary>
-public interface IOrderManagementCommunicationAdapterFactory
+public interface ICommunicationAdapterFactory
 {
     /// <summary>
     /// Create an instance implementing <see cref="IpCommunicationAdapter"/>

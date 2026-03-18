@@ -7,19 +7,19 @@ using Bodoconsult.App.Interfaces;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
 using Bodoconsult.NetworkCommunication.Interfaces;
 
-namespace Bodoconsult.NetworkCommunication.BusinessTransactions;
+namespace Bodoconsult.NetworkCommunication.BusinessTransactions.Converters;
 
 /// <summary>
 /// Base class for converters from <see cref="BtcpInboundDataMessage"/> instances to <see cref="IBusinessTransactionRequestData"/> instances
 /// </summary>
-public abstract class BaseInboundBtcpMessageToBtRequestDataConverter : IInboundDataMessageToBtRequestDataConverter
+public abstract class BaseInboundBtcpMessageToBtReplyConverter : IInboundDataMessageToBtReplyConverter
 {
     /// <summary>
     /// Delegate for creating <see cref="IBusinessTransactionRequestData"/> instances
     /// </summary>
     /// <param name="request">Current request</param>
     /// <returns></returns>
-    protected delegate IBusinessTransactionRequestData? CreateBusinessTransactionRequestDataDelegate(BtcpInboundDataMessage request);
+    protected delegate IBusinessTransactionReply? CreateBusinessTransactionRequestDataDelegate(BtcpInboundDataMessage request);
 
     /// <summary>
     /// Collection of all registered business transactions and the <see cref="CreateBusinessTransactionRequestDataDelegate"/> to use for the single business transaction
@@ -35,7 +35,7 @@ public abstract class BaseInboundBtcpMessageToBtRequestDataConverter : IInboundD
     /// Default ctor
     /// </summary>
     /// <param name="appLogger">Current app logger</param>
-    protected BaseInboundBtcpMessageToBtRequestDataConverter(IAppLoggerProxy appLogger)
+    protected BaseInboundBtcpMessageToBtReplyConverter(IAppLoggerProxy appLogger)
     {
         AppLogger = appLogger;
     }
@@ -45,7 +45,7 @@ public abstract class BaseInboundBtcpMessageToBtRequestDataConverter : IInboundD
     /// </summary>
     /// <param name="request">Current request</param>
     /// <returns>Internal business transaction request</returns>
-    public IBusinessTransactionRequestData? MapToBusinessTransactionRequestData(IInboundDataMessage request)
+    public IBusinessTransactionReply? MapToBusinessTransactionRequestData(IInboundDataMessage request)
     {
         // Request data is required always!
         if (request is not BtcpInboundDataMessage btm)
@@ -53,8 +53,8 @@ public abstract class BaseInboundBtcpMessageToBtRequestDataConverter : IInboundD
             return null;
         }
 
-        // No request
-        if (!btm.IsRequest)
+        // Request?
+        if (btm.IsRequest)
         {
             return null;
         }
@@ -64,27 +64,27 @@ public abstract class BaseInboundBtcpMessageToBtRequestDataConverter : IInboundD
         //{
         foreach (var kvp in AllBusinessTransactionRequestDataDelegates)
         {
-            if (btm.BusinessTransactionId==kvp.Key)
+            if (btm.BusinessTransactionId == kvp.Key)
             {
                 continue;
             }
 
             var s = new StringBuilder();
-            s.Append($"BT {btm.BusinessTransactionId}");
+            s.Append($"Reply for BT {btm.BusinessTransactionId}");
 
             // Create the internal request
             var internalRequest = kvp.Value.Invoke(btm);
 
             if (internalRequest == null)
             {
-                s.Append($" mapping for request data {kvp.Key} returns null");
+                s.Append($" mapping for reply data {kvp.Key} returns null");
                 return null;
             }
 
             // Store transaction iD to request
-            internalRequest.TransactionId = btm.BusinessTransactionId;
+            internalRequest.RequestData.TransactionId = btm.BusinessTransactionId;
 
-            s.Append($" ({internalRequest.TransactionGuid})");
+            s.Append($" ({internalRequest.RequestData.TransactionGuid})");
 
             try
             {

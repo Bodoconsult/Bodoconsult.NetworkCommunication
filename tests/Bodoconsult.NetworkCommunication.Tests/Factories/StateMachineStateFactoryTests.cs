@@ -1,5 +1,6 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
+using Bodoconsult.App.Abstractions.Interfaces;
 using Bodoconsult.NetworkCommunication.Helpers;
 using Bodoconsult.NetworkCommunication.StateManagement.Builders;
 using Bodoconsult.NetworkCommunication.StateManagement.Configurations;
@@ -156,6 +157,34 @@ internal class StateMachineStateFactoryTests
         using (Assert.EnterMultipleScope())
         {
             Assert.That(state, Is.Not.Null);
+        }
+    }
+
+    [Test]
+    public void GetConfiguration_ValidOrderBasedActionStateConfiguration_ReturnsConfiguration()
+    {
+        // Arrange 
+        var device = TestDataHelper.CreateStateMachineDevice();
+
+        var factory = new StateMachineStateFactory();
+
+        var config = new OrderBasedActionStateConfiguration(DefaultStateNames.DeviceStartStreamingState, new DeviceStartStreamingStateBuilder())
+        {
+            OrderFinishedUnsucessfullyDelegate = DelegateHelper.OrderFinishedUnsucessfullyDelegate,
+            OrderFinishedSucessfullyDelegate = DelegateHelper.OrderFinishedSucessfullyDelegate,
+            CurrentContext = device
+        };
+
+        factory.RegisterConfiguration(config);
+
+        // Act  
+        var result = factory.GetConfiguration(config.StateName);
+
+        // Assert
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(result, Is.Not.Null);
+            Assert.That(result, Is.EqualTo(config));
         }
     }
 }

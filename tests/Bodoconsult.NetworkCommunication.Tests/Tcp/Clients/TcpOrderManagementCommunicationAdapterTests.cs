@@ -1,8 +1,10 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
+using Bodoconsult.App.Abstractions.Interfaces;
 using Bodoconsult.App.Factories;
 using Bodoconsult.App.Helpers;
 using Bodoconsult.NetworkCommunication.App.Abstractions;
+using Bodoconsult.NetworkCommunication.ClientNotifications;
 using Bodoconsult.NetworkCommunication.Communication;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataBlocks;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
@@ -12,7 +14,6 @@ using Bodoconsult.NetworkCommunication.Tests.App;
 using Bodoconsult.NetworkCommunication.Tests.Helpers;
 using Bodoconsult.NetworkCommunication.Tests.Infrastructure;
 using System.Diagnostics;
-using Bodoconsult.App.Abstractions.Interfaces;
 
 namespace Bodoconsult.NetworkCommunication.Tests.Tcp.Clients;
 
@@ -42,7 +43,10 @@ internal class TcpOrderManagementCommunicationAdapterTests : TcpOrderManagementC
         IAppLoggerProxyFactory appLoggerFactory = new AppLoggerProxyFactory();
         IAppEventSourceFactory appEventSourceFactory = new FakeAppEventSourceFactory();
 
-        ICommunicationHandlerFactory communicationHandlerFactory = new IpCommunicationHandlerFactory(socketProxyFactory, duplexIoFactory, monitorLoggerFactoryFactory, logDataFactory, appLoggerFactory, appEventSourceFactory);
+        ICentralClientNotificationManager clientNotificationManager = new FakeOrderManagementClientNotificationManager();
+
+        ICommunicationHandlerFactory communicationHandlerFactory = new IpCommunicationHandlerFactory(socketProxyFactory, duplexIoFactory, monitorLoggerFactoryFactory, 
+            logDataFactory, appLoggerFactory, appEventSourceFactory, clientNotificationManager);
         IOutboundDataMessageFactory outboundDataMessageFactory = new SdcpOutboundDataMessageFactory();
         OrderManagementCommunicationAdapter = new IpCommunicationAdapter(DataMessagingConfig,
             communicationHandlerFactory, outboundDataMessageFactory);

@@ -19,6 +19,7 @@ public class IpCommunicationHandlerFactory : ICommunicationHandlerFactory
     private readonly ILogDataFactory _logDataFactory;
     private readonly IAppLoggerProxyFactory _appLoggerFactory;
     private readonly IAppEventSourceFactory _appEventSourceFactory;
+    private ICentralClientNotificationManager _clientNotificationManager;
 
     /// <summary>
     /// Default ctor for DI
@@ -28,7 +29,8 @@ public class IpCommunicationHandlerFactory : ICommunicationHandlerFactory
         IMonitorLoggerFactoryFactory monitorLoggerFactoryFactory,
         ILogDataFactory logDataFactory,
         IAppLoggerProxyFactory appLoggerFactory,
-        IAppEventSourceFactory appEventSourceFactory)
+        IAppEventSourceFactory appEventSourceFactory,
+        ICentralClientNotificationManager clientNotificationManager)
     {
         _socketProxyFactory = socketProxyFactory;
         _duplexIoFactory = duplexIoFactory;
@@ -36,6 +38,7 @@ public class IpCommunicationHandlerFactory : ICommunicationHandlerFactory
         _appLoggerFactory = appLoggerFactory;
         _appEventSourceFactory = appEventSourceFactory;
         _logDataFactory = logDataFactory;
+        _clientNotificationManager = clientNotificationManager;
     }
 
     /// <summary>
@@ -47,11 +50,11 @@ public class IpCommunicationHandlerFactory : ICommunicationHandlerFactory
     {
         var socketProxy = _socketProxyFactory.CreateInstance(dataMessagingConfig.IpProtocol, IPAddress.Parse(dataMessagingConfig.IpAddress), dataMessagingConfig.Port);
 
-        if (dataMessagingConfig.MonitorLogger == null)
-        {
-            var monitorLoggerFactory = _monitorLoggerFactoryFactory.CreateInstance($"{dataMessagingConfig.IpAddress}_{dataMessagingConfig.Port}");
-            dataMessagingConfig.MonitorLogger = _appLoggerFactory.CreateInstance(monitorLoggerFactory, _logDataFactory);
-        }
+        //if (dataMessagingConfig.MonitorLogger == null)
+        //{
+        //    var monitorLoggerFactory = _monitorLoggerFactoryFactory.CreateInstance($"{dataMessagingConfig.IpAddress}_{dataMessagingConfig.Port}");
+        //    dataMessagingConfig.MonitorLogger = _appLoggerFactory.CreateInstance(monitorLoggerFactory, _logDataFactory);
+        //}
 
         dataMessagingConfig.SocketProxy = socketProxy;
 

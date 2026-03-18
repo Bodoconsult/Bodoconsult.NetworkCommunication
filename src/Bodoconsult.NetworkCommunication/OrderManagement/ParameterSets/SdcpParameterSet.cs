@@ -32,7 +32,7 @@ public class SdcpParameterSet : BasicOutboundDatablock, IParameterSet
     }
 
     /// <summary>
-    /// Payload to send with the emssage
+    /// Payload to send with the message
     /// </summary>
     public Memory<byte> Payload { get; set; }
 

@@ -3,6 +3,7 @@
 using Bodoconsult.App.Abstractions.Interfaces;
 using Bodoconsult.App.Factories;
 using Bodoconsult.NetworkCommunication.App.Abstractions;
+using Bodoconsult.NetworkCommunication.ClientNotifications;
 using Bodoconsult.NetworkCommunication.Factories;
 using Bodoconsult.NetworkCommunication.Interfaces;
 using Bodoconsult.NetworkCommunication.Tests.App;
@@ -27,8 +28,10 @@ internal class OrderManagementCommunicationAdapterFactoryTests
         IAppLoggerProxyFactory appLoggerFactory = new AppLoggerProxyFactory();
         IAppEventSourceFactory appEventSourceFactory = new FakeAppEventSourceFactory();
 
+        ICentralClientNotificationManager clientNotificationManager = new FakeOrderManagementClientNotificationManager();
+
         var commHandlerfactory = new IpCommunicationHandlerFactory(socketProxyFactory, duplexIoFactory,
-            monitorLoggerFactoryFactory, logDataFactory, appLoggerFactory, appEventSourceFactory);
+            monitorLoggerFactoryFactory, logDataFactory, appLoggerFactory, appEventSourceFactory, clientNotificationManager);
 
         IOutboundDataMessageFactory outboundDataMessageFactory = new BtcpOutboundDataMessageFactory();
 
