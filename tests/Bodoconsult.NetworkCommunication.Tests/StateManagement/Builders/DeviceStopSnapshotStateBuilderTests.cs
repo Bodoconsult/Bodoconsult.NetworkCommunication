@@ -67,6 +67,10 @@ internal class DeviceStopSnapshotStateBuilderTests
             OrderFinishedUnsucessfullyDelegate = OrderFinishedUnsucessfullyDelegate
         };
 
+        config.OrderConfigurations.Add($"{BuiltinOrders.TncpOrder}Configuration");
+        config.OrderConfigurations.Add($"{BuiltinOrders.TncpOrder}Configuration");
+
+        config.ParameterSets.Add(ps);
         config.ParameterSets.Add(ps);
 
         // Act  

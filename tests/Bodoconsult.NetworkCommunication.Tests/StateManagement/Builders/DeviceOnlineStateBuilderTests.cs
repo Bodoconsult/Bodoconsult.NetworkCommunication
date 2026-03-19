@@ -81,7 +81,7 @@ internal class DeviceOnlineStateBuilderTests
 
             Assert.That(state.InitialBusinessSubState, Is.EqualTo(DefaultBusinessSubStates.TryToConnect));
             Assert.That(state.InitialDeviceState, Is.EqualTo(DefaultDeviceStates.DeviceStateOnline));
-            Assert.That(state.AllowedNextStates, Does.Contain(DefaultStateNames.DeviceReadyState));
+            Assert.That(state.AllowedNextStates, Does.Contain(DefaultStateNames.DeviceInitState));
             Assert.That(state.AllowedNextStates, Does.Contain(DefaultStateNames.DeviceOfflineState));
 
             

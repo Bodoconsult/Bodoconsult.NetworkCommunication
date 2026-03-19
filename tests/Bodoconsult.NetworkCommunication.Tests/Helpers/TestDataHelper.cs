@@ -127,7 +127,7 @@ public static class TestDataHelper
             HandleRequestAnswerOnSuccessDelegate = HandleRequestAnswerOnSuccessDelegate,
             ParameterSet = ps
         };
-  
+
         var order = builder.CreateOrder(config);
         return order;
     }
@@ -316,11 +316,26 @@ public static class TestDataHelper
     /// <returns></returns>
     public static FakeStateMachineDevice CreateStateMachineDevice()
     {
-        var commAdapter = FakeIpCommunicationAdapter;
-        var device = new FakeStateMachineDevice(GetDataMessagingConfig(), new DoNothingOrderManagementClientNotificationManager(), new DoNothingStateCheckManager());
-        var om = new FakeOrderManager(GetDataMessagingConfig(), new FakeOrderProcessor(device, new FakeOrderPipeline(), new SyncOrderManager(), new DoNothingOrderManagementClientNotificationManager() ), new FakeOrderReceiver(), new OrderFactory())
+        var orderFactory = new OrderFactory();
+
+        var config = new TncpOrderConfiguration
         {
-            OrderProcessor = new FakeOrderProcessor(device, new FakeOrderPipeline(), new SyncOrderManager(), new DoNothingOrderManagementClientNotificationManager())
+            CreateParameterSetDelegate = () => new TncpParameterSet()
+        };
+
+        orderFactory.RegisterConfiguration(config);
+
+        var fakeOrderPipeline = new FakeOrderPipeline();
+        var syncOrderManager = new SyncOrderManager();
+        var clientNotificationManager = new DoNothingOrderManagementClientNotificationManager();
+        var fakeOrderReiever = new FakeOrderReceiver();
+        var stateCheckManager = new DoNothingStateCheckManager();
+
+        var commAdapter = FakeIpCommunicationAdapter;
+        var device = new FakeStateMachineDevice(GetDataMessagingConfig(), clientNotificationManager, stateCheckManager);
+        var om = new FakeOrderManager(GetDataMessagingConfig(), new FakeOrderProcessor(device, fakeOrderPipeline, syncOrderManager, clientNotificationManager), fakeOrderReiever, orderFactory)
+        {
+            OrderProcessor = new FakeOrderProcessor(device, fakeOrderPipeline, syncOrderManager, clientNotificationManager)
         };
 
         device.LoadCommAdapter(commAdapter);

@@ -251,7 +251,7 @@ internal class DefaultDataMessageCodingProcessorTests
             Data = msg
         };
 
-        var message = new TncpOutboundDataMessage
+        var message = new EdcpOutboundDataMessage
         {
             DataBlock = datablock,
             BlockCode = 55

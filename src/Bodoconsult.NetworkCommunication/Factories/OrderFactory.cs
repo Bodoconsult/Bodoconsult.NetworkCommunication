@@ -26,11 +26,13 @@ public class OrderFactory : IOrderFactory
     public IOrder CreateOrder(string configName, IParameterSet parameterSet)
     {
         var config = GetConfiguration(configName);
-
+        
         if (config == null)
         {
             throw new ArgumentNullException(nameof(config), $"No config {configName} registered");
         }
+
+        config.ParameterSet = parameterSet;
 
         ArgumentNullException.ThrowIfNull(config.ParameterSet);
         //ArgumentNullException.ThrowIfNull(config.Device);

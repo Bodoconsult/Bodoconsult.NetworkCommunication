@@ -33,7 +33,7 @@ internal class BaseStateManagementDeviceTests
             Assert.That(device.OrderManager, Is.Not.Null);
             Assert.That(device.OrderProcessor, Is.Not.Null);
             Assert.That(device.DataMessagingConfig, Is.Not.Null);
-            Assert.That(device.StateMachineStateFactory, Is.Not.Null);
+            Assert.That(device.StateMachineStateFactory, Is.Null);
         }
     }
 
@@ -116,7 +116,8 @@ internal class BaseStateManagementDeviceTests
         // Arrange 
         var device = TestDataHelper.CreateStateMachineDevice();
 
-        var ps = new SdcpParameterSet();
+        var ps = new TncpParameterSet();
+        var ps2 = new TncpParameterSet();
 
         var builder = new DeviceStartStreamingStateBuilder();
 
@@ -132,7 +133,11 @@ internal class BaseStateManagementDeviceTests
             OrderFinishedUnsucessfullyDelegate = DelegateHelper.OrderFinishedUnsucessfullyDelegate,
         };
 
+        config.OrderConfigurations.Add($"{BuiltinOrders.TncpOrder}Configuration");
+        config.OrderConfigurations.Add($"{BuiltinOrders.TncpOrder}Configuration");
+
         config.ParameterSets.Add(ps);
+        config.ParameterSets.Add(ps2);
 
         var newState = builder.BuildState(config);
 
@@ -205,6 +210,10 @@ internal class BaseStateManagementDeviceTests
             
         };
 
+        config.OrderConfigurations.Add($"{BuiltinOrders.TncpOrder}Configuration");
+        config.OrderConfigurations.Add($"{BuiltinOrders.TncpOrder}Configuration");
+
+        config.ParameterSets.Add(ps);
         config.ParameterSets.Add(ps);
 
         var newState = (IJobStateMachineState)builder.BuildState(config);
@@ -259,6 +268,10 @@ internal class BaseStateManagementDeviceTests
             OrderFinishedUnsucessfullyDelegate = DelegateHelper.OrderFinishedUnsucessfullyDelegate,
         };
 
+        config.OrderConfigurations.Add($"{BuiltinOrders.TncpOrder}Configuration");
+        config.OrderConfigurations.Add($"{BuiltinOrders.TncpOrder}Configuration");
+
+        config.ParameterSets.Add(ps);
         config.ParameterSets.Add(ps);
 
         var newState = (IJobStateMachineState)builder.BuildState(config);
@@ -295,6 +308,10 @@ internal class BaseStateManagementDeviceTests
             OrderFinishedUnsucessfullyDelegate = DelegateHelper.OrderFinishedUnsucessfullyDelegate,
         };
 
+        config.OrderConfigurations.Add($"{BuiltinOrders.TncpOrder}Configuration");
+        config.OrderConfigurations.Add($"{BuiltinOrders.TncpOrder}Configuration");
+
+        config.ParameterSets.Add(ps);
         config.ParameterSets.Add(ps);
 
         var newState = (IJobStateMachineState)builder.BuildState(config);
