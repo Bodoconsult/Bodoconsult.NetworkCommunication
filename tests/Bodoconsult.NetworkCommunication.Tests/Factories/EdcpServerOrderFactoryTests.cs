@@ -2,6 +2,7 @@
 
 using Bodoconsult.NetworkCommunication.Factories;
 using Bodoconsult.NetworkCommunication.Interfaces;
+using Bodoconsult.NetworkCommunication.Tests.Helpers;
 
 namespace Bodoconsult.NetworkCommunication.Tests.Factories;
 
@@ -14,7 +15,7 @@ internal class EdcpServerOrderFactoryTests
         // Arrange 
 
         // Act  
-        var factory = new EdcpServerOrderFactory();
+        var factory = new EdcpServerOrderFactory(TestDataHelper.DefaultOrderIdGenerator);
 
         // Assert
         var data = factory.CurrentConfigurations;

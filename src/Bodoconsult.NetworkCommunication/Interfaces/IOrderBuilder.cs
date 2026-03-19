@@ -24,7 +24,8 @@ public interface IOrderBuilder
     /// Create the (raw) order
     /// </summary>
     /// <param name="config">Configuration to use for the order</param>
-    IOrder CreateOrder(IOrderConfiguration config);
+    /// <param name="id"></param>
+    IOrder CreateOrder(IOrderConfiguration config, long id);
 
     /// <summary>
     /// Configure the order. Implementation of this method may require to add dependencies to your business logic layer

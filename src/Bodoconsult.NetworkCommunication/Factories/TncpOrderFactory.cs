@@ -14,7 +14,7 @@ public class TncpOrderFactory: OrderFactory
     /// <summary>
     /// Default ctor
     /// </summary>
-    public TncpOrderFactory()
+    public TncpOrderFactory(IOrderIdGenerator orderIdGenerator) : base(orderIdGenerator)
     {
         var config1 = new TncpOrderConfiguration
         {

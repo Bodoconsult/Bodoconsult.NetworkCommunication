@@ -1,6 +1,8 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
+using Bodoconsult.App.Helpers;
 using Bodoconsult.NetworkCommunication.Interfaces;
+using Bodoconsult.NetworkCommunication.StateManagement.Interfaces;
 
 namespace Bodoconsult.NetworkCommunication.OrderManagement.Processors;
 
@@ -147,7 +149,13 @@ public class FakeOrderProcessor : IOrderProcessor
     /// <param name="order">Order to add to the order queue</param>
     public void AddOrder(IOrder order)
     {
-        throw new NotImplementedException();
+        AsyncHelper.FireAndForget(() =>
+        {
+            if (CurrentDevice is IStateManagementDevice { CurrentState: IOrderBasedActionStateMachineState obas })
+            {
+                obas.OrderFinishedSucessfully(order.Id);
+            }
+        });
     }
 
     /// <summary>
@@ -157,7 +165,13 @@ public class FakeOrderProcessor : IOrderProcessor
     /// <param name="order">Order to add to the order queue</param>
     public void AddOrderWithPriority(IOrder order)
     {
-        throw new NotImplementedException();
+        AsyncHelper.FireAndForget(() =>
+        {
+            if (CurrentDevice is IStateManagementDevice { CurrentState: IOrderBasedActionStateMachineState obas })
+            {
+                obas.OrderFinishedSucessfully(order.Id);
+            }
+        });
     }
 
     /// <summary>

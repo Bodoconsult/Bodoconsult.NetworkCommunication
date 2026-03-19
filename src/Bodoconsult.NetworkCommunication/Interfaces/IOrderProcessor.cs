@@ -219,7 +219,6 @@ public interface IOrderProcessor : IDisposable
     /// </summary>
     void StartOrderProcessing();
 
-
     /// <summary>
     /// Stops the watchdog for the order processing
     /// </summary>

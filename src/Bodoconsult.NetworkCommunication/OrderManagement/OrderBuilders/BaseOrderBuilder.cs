@@ -38,7 +38,8 @@ public abstract class BaseOrderBuilder : IOrderBuilder
     /// Create the (raw) order
     /// </summary>
     /// <param name="config">Configuration to use for the order</param>
-    public IOrder CreateOrder(IOrderConfiguration config)
+    /// <param name="id"></param>
+    public IOrder CreateOrder(IOrderConfiguration config, long id)
     {
         ArgumentNullException.ThrowIfNull(config.ParameterSet);
 
@@ -51,7 +52,7 @@ public abstract class BaseOrderBuilder : IOrderBuilder
             }
         }
 
-        var order = new OmOrder(config.OrderId, OrderTypeName, config.ParameterSet);
+        var order = new OmOrder(id, OrderTypeName, config.ParameterSet);
         ConfigureOrder(order, config);
         return order;
     }

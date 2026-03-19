@@ -35,11 +35,6 @@ public interface IOrderConfiguration : ICloneable
     IParameterSet? ParameterSet { get; set; }
 
     /// <summary>
-    /// Current order ID
-    /// </summary>
-    long OrderId  { get; set; }
-
-    /// <summary>
     /// Delegate for creating preconfigured parametersets
     /// </summary>
     CreateParameterSetDelegate? CreateParameterSetDelegate { get; set; }

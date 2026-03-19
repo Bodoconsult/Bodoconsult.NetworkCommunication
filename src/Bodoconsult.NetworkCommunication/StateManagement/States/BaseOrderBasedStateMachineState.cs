@@ -1,5 +1,6 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
+using System.Diagnostics;
 using Bodoconsult.NetworkCommunication.Delegates;
 using Bodoconsult.NetworkCommunication.Interfaces;
 using Bodoconsult.NetworkCommunication.StateManagement.Interfaces;
@@ -17,8 +18,16 @@ public abstract class BaseOrderBasedStateMachineState : BaseStateMachineState, I
     /// <param name="currentContext">Current context</param>
     /// <param name="id">ID of the current state</param>
     /// <param name="name">Name of the current state</param>
-    protected BaseOrderBasedStateMachineState(IStateManagementDevice currentContext, int id, string name) : base(currentContext, id, name)
-    { }
+    protected BaseOrderBasedStateMachineState(IStateManagementDevice currentContext, int id, string name) : base(
+        currentContext, id, name)
+    {
+        CurrentOrderIndex = 0;
+    }
+
+    /// <summary>
+    /// Current order index. See <see cref="RunNextOrder"/>
+    /// </summary>
+    public int CurrentOrderIndex { get; protected set; }
 
     /// <summary>
     /// Initiate this state
@@ -68,6 +77,11 @@ public abstract class BaseOrderBasedStateMachineState : BaseStateMachineState, I
 
         ArgumentNullException.ThrowIfNull(CurrentContext.OrderManager);
 
+        if (CurrentOrderIndex >= Orders.Count)
+        {
+            return;
+        }
+
         var order = Orders[CurrentOrderIndex];
 
         //if (order == null)
@@ -104,16 +118,49 @@ public abstract class BaseOrderBasedStateMachineState : BaseStateMachineState, I
     /// <param name="orderId">Current order ID</param>
     public virtual void OrderFinishedSucessfully(long orderId)
     {
-        // Find order
-        var order = Orders.FirstOrDefault(x => x.Id == orderId);
-
-        if (order == null)
+        try
         {
-            return;
-        }
+            // Find order
+            var order = Orders.FirstOrDefault(x => x.Id == orderId);
 
-        // Now call business logic
-        OrderFinishedSucessfullyDelegate?.Invoke(this, order);
+            if (order == null)
+            {
+                return;
+            }
+
+            // Now call business logic
+            OrderFinishedSucessfullyDelegate?.Invoke(this, order);
+
+            if (CurrentOrderIndex < Orders.Count)
+            {
+                RunNextOrder();
+                return;
+            }
+
+            if (NextState == null)
+            {
+                if (string.IsNullOrEmpty(StateNameOnSuccess))
+                {
+                    ArgumentNullException.ThrowIfNull(NextState);
+                }
+
+                if (CurrentContext.StateMachineStateFactory == null)
+                {
+                    return;
+                }
+
+                ArgumentNullException.ThrowIfNull(StateNameOnSuccess);
+
+                var newState = CurrentContext.StateMachineStateFactory.CreateInstance(CurrentContext, StateNameOnSuccess);
+                NextState = newState;
+            }
+
+            RequestNextState();
+        }
+        catch (Exception e)
+        {
+            Debug.Print(e.ToString());
+        }
     }
 
     /// <summary>
@@ -139,4 +186,9 @@ public abstract class BaseOrderBasedStateMachineState : BaseStateMachineState, I
         // Now call business logic
         OrderFinishedUnsucessfullyDelegate?.Invoke(this, order);
     }
+
+    /// <summary>
+    /// Name of the next state for the default
+    /// </summary>
+    public string? StateNameOnSuccess { get; set; }
 }

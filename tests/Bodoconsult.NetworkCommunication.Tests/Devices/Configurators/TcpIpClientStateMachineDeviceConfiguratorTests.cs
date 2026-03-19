@@ -24,6 +24,7 @@ internal class TcpIpClientStateMachineDeviceConfiguratorTests
     private readonly TcpIpListenerManager _tcpIpListenerManager = new();
     private readonly LogDataFactory  _logDataFactory = TestDataHelper.LogDataFactory;
     private readonly AppLoggerProxyFactory _appLoggerProxyFactory = new();
+    private readonly DoNothingOrderManagementClientNotificationManager _clientNotificationManager = new();
 
     [OneTimeTearDown]
     public void Cleanup()
@@ -35,13 +36,11 @@ internal class TcpIpClientStateMachineDeviceConfiguratorTests
     public void Ctor_ValidSetup_PropsSetCorrectly()
     {
         // Arrange 
-        var clientNotificationManager = new DoNothingOrderManagementClientNotificationManager();
         var duplexIoFactory = new IpDuplexIoFactory(_sendPacketProcessFactory);
-
 
         // Act  
 
-        var conf = new TcpIpClientStateMachineDeviceConfigurator(duplexIoFactory, _monitorLoggerFactoryFactory, _logDataFactory, _appLoggerProxyFactory, _appEventSourceFactory, clientNotificationManager, _tcpIpListenerManager, _appLoggerProxy);
+        var conf = new TcpIpClientStateMachineDeviceConfigurator(duplexIoFactory, _monitorLoggerFactoryFactory, _logDataFactory, _appLoggerProxyFactory, _appEventSourceFactory, _clientNotificationManager, _tcpIpListenerManager, _appLoggerProxy);
 
         // Assert
         Assert.That(conf.DataMessagingConfig, Is.Null);
@@ -52,11 +51,9 @@ internal class TcpIpClientStateMachineDeviceConfiguratorTests
     public void CreateMessagingConfig_ValidSetup_MessagingConfigIsCreated()
     {
         // Arrange 
-        var clientNotificationManager = new DoNothingOrderManagementClientNotificationManager();
-
         var duplexIoFactory = new IpDuplexIoFactory(_sendPacketProcessFactory);
 
-        var conf = new TcpIpClientStateMachineDeviceConfigurator(duplexIoFactory, _monitorLoggerFactoryFactory, _logDataFactory, _appLoggerProxyFactory, _appEventSourceFactory, clientNotificationManager, _tcpIpListenerManager, _appLoggerProxy);
+        var conf = new TcpIpClientStateMachineDeviceConfigurator(duplexIoFactory, _monitorLoggerFactoryFactory, _logDataFactory, _appLoggerProxyFactory, _appEventSourceFactory, _clientNotificationManager, _tcpIpListenerManager, _appLoggerProxy);
 
 
         const string ip = "127.0.0.1";
@@ -80,11 +77,9 @@ internal class TcpIpClientStateMachineDeviceConfiguratorTests
     public void CreateDevice_ValidSetup_DeviceCreated()
     {
         // Arrange 
-        var clientNotificationManager = new DoNothingOrderManagementClientNotificationManager();
-
         var duplexIoFactory = new IpDuplexIoFactory(_sendPacketProcessFactory);
 
-        var conf = new TcpIpClientStateMachineDeviceConfigurator(duplexIoFactory, _monitorLoggerFactoryFactory, _logDataFactory, _appLoggerProxyFactory, _appEventSourceFactory, clientNotificationManager, _tcpIpListenerManager, _appLoggerProxy);
+        var conf = new TcpIpClientStateMachineDeviceConfigurator(duplexIoFactory, _monitorLoggerFactoryFactory, _logDataFactory, _appLoggerProxyFactory, _appEventSourceFactory, _clientNotificationManager, _tcpIpListenerManager, _appLoggerProxy);
         conf.CreateMessagingConfig("TestDevice", "127.0.0.1", 9000);
 
         // Act  

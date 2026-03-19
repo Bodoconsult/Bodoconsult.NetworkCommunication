@@ -33,14 +33,13 @@ internal class TncpOrderBuilderTests : OrderBuilderTestsBase
 
         var config = new OneRequestSpecNoOrOneStepOneAnswerConfiguration("TestConfig", BuiltinOrders.TncpOrder, builder)
         {
-            OrderId = 1,
             //Device = TestDataHelper.CreateStateMachineDevice(),
             HandleRequestAnswerOnSuccessDelegate = HandleRequestAnswerOnSuccessDelegate,
             ParameterSet = ps
 		};
 
         // Act  
-        var order = builder.CreateOrder(config);
+        var order = builder.CreateOrder(config, 1);
 
 		// Assert
 		Assert.That(order, Is.Not.Null);

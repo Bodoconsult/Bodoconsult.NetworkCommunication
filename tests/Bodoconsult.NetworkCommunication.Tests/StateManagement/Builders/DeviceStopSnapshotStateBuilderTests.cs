@@ -63,8 +63,8 @@ internal class DeviceStopSnapshotStateBuilderTests
             HandleErrorMessageDelegate = DelegateHelper.HandleErrorMessageDelegate,
             HandleRegularStateRequestAnswerDelegate = DelegateHelper.HandleRegularStateRequestAnswerDelegate,
             PrepareRegularStateRequestDelegate = DelegateHelper.PrepareRegularStateRequestDelegate,
-            OrderFinishedSucessfullyDelegate = OrderFinishedSucessfullyDelegate,
-            OrderFinishedUnsucessfullyDelegate = OrderFinishedUnsucessfullyDelegate
+            OrderFinishedSucessfullyDelegate = DelegateHelper.OrderFinishedSucessfullyDelegate,
+            OrderFinishedUnsucessfullyDelegate = DelegateHelper.OrderFinishedUnsucessfullyDelegate
         };
 
         config.OrderConfigurations.Add($"{BuiltinOrders.TncpOrder}Configuration");
@@ -94,18 +94,44 @@ internal class DeviceStopSnapshotStateBuilderTests
         }
     }
 
-    private List<IOrder> PrepareOrdersForStateMachineStateDelegate()
+    [Test]
+    public void InitiateState_ValidSetup_StateBuilded()
     {
-        return [];
-    }
+        // Arrange 
+        var device = TestDataHelper.CreateStateMachineDevice();
 
-    private void OrderFinishedUnsucessfullyDelegate(IStateMachineState state, IOrder order)
-    {
-        // Do nothing
-    }
+        var ps = new TncpParameterSet();
+        var ps2 = new TncpParameterSet();
 
-    private void OrderFinishedSucessfullyDelegate(IStateMachineState state, IOrder order)
-    {
-        // Do nothing
+        var builder = new DeviceStopSnapshotStateBuilder();
+
+        var config = new JobStateConfiguration(DefaultStateNames.DeviceStopSnapshotState, builder)
+        {
+            CurrentContext = device,
+            HandleAsyncMessageDelegate = DelegateHelper.HandleAsyncMessageDelegate,
+            HandleComDevCloseDelegate = DelegateHelper.HandleComDevCloseDelegate,
+            HandleErrorMessageDelegate = DelegateHelper.HandleErrorMessageDelegate,
+            HandleRegularStateRequestAnswerDelegate = DelegateHelper.HandleRegularStateRequestAnswerDelegate,
+            PrepareRegularStateRequestDelegate = DelegateHelper.PrepareRegularStateRequestDelegate,
+            OrderFinishedSucessfullyDelegate = DelegateHelper.OrderFinishedSucessfullyDelegate,
+            OrderFinishedUnsucessfullyDelegate = DelegateHelper.OrderFinishedUnsucessfullyDelegate,
+        };
+
+        config.OrderConfigurations.Add($"{BuiltinOrders.TncpOrder}Configuration");
+        config.OrderConfigurations.Add($"{BuiltinOrders.TncpOrder}Configuration");
+
+        config.ParameterSets.Add(ps);
+        config.ParameterSets.Add(ps2);
+
+        var state = (IOrderBasedActionStateMachineState)builder.BuildState(config);
+
+        // Act  
+        state.InitiateState();
+
+        // Assert
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(state.Orders.Count, Is.EqualTo(state.OrderConfigurations.Count));
+        }
     }
 }

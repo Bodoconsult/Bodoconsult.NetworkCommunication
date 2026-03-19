@@ -46,5 +46,6 @@ public class DeviceStartSnapshotStateBuilder : BaseJobStateMachineStateBuilder
         state.CancelStateDelegate = DelegateHelper.CancelStateDelegate;
 
         state.AllowedNextStates.AddRange(AllowedNextStatesInternal);
+        state.StateNameOnSuccess = DefaultStateNames.DeviceSnapshotState;
     }
 }

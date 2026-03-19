@@ -14,7 +14,7 @@ public class EdcpServerOrderFactory : OrderFactory
     /// <summary>
     /// Default ctor
     /// </summary>
-    public EdcpServerOrderFactory()
+    public EdcpServerOrderFactory(IOrderIdGenerator orderIdGenerator) : base(orderIdGenerator)
     {
         var config1 = new EdcpServerOrderConfiguration
         {

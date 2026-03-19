@@ -22,7 +22,6 @@ public static class AssemblySetup
     [OneTimeSetUp]
     public static void AssemblyStartUp()
     {
-
         var globals = Globals.Instance;
         globals.LoggingConfig.AddDefaultLoggerProviderConfiguratorsForUiApp();
 
@@ -32,8 +31,7 @@ public static class AssemblySetup
         param.SoftwareTeam = "Robert Leisner";
         //param.LogoRessourcePath = "WinFormsConsoleApp1.Resources.logo.jpg";
         param.AppFolderName = "IpCommunicationSampleTests";
-
-
+        
         // Now start the app building process
         var builder = new MyDebugAppBuilder(globals);
 #if !DEBUG
@@ -50,7 +48,7 @@ public static class AssemblySetup
         // Now load the globally needed settings
         builder.LoadGlobalSettings();
 
+        ArgumentNullException.ThrowIfNull(Globals.Instance.Logger);
         Globals.Instance.Logger.LogInformation("Starting tests...");
-
     }
 }

@@ -144,6 +144,8 @@ internal class BaseStateManagementDeviceTests
         // Act  
         device.RequestState(newState);
 
+        var os = (IOrderBasedActionStateMachineState)newState;
+
         // Assert
         using (Assert.EnterMultipleScope())
         {
@@ -151,6 +153,8 @@ internal class BaseStateManagementDeviceTests
             Assert.That(device.CurrentState.Name, Is.EqualTo(newState.Name));
             Assert.That(device.DeviceState, Is.EqualTo(DefaultDeviceStates.DeviceStateOnline));
             Assert.That(device.BusinessSubState, Is.EqualTo(DefaultBusinessSubStates.TryToConnect));
+
+            Assert.That(os.Orders.Count, Is.EqualTo(os.OrderConfigurations.Count));
         }
     }
 

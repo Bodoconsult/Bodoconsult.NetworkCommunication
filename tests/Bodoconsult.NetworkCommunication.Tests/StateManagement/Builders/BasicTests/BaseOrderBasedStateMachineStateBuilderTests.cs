@@ -50,7 +50,8 @@ internal class BaseOrderBasedStateMachineStateBuilderTests
         // Arrange 
         var builder = new DeviceInitStateBuilder();
 
-        var ps = new SdcpParameterSet();
+        var ps = new TncpParameterSet();
+        var ps2 = new TncpParameterSet();
 
         var config = new OrderBasedActionStateConfiguration(DefaultStateNames.DeviceInitState, builder)
         {
@@ -63,16 +64,59 @@ internal class BaseOrderBasedStateMachineStateBuilderTests
         config.OrderConfigurations.Add($"{BuiltinOrders.TncpOrder}Configuration");
 
         config.ParameterSets.Add(ps);
-        config.ParameterSets.Add(ps);
+        config.ParameterSets.Add(ps2);
 
         // Act  
         var state = builder.BuildState(config);
+
+        var os = (IOrderBasedActionStateMachineState)state;
 
         // Assert
         using (Assert.EnterMultipleScope())
         {
             Assert.That(state, Is.Not.Null);
             Assert.That(state.Id, Is.EqualTo(builder.StateId));
+
+            Assert.That(os.Orders.Count, Is.Zero);
+        }
+    }
+
+    [Test]
+    public void InitiateState_ValidSetup_StateBuilded()
+    {
+        // Arrange 
+        var builder = new DeviceInitStateBuilder();
+
+        var ps = new TncpParameterSet();
+        var ps2 = new TncpParameterSet();
+
+        var config = new OrderBasedActionStateConfiguration(DefaultStateNames.DeviceInitState, builder)
+        {
+            CurrentContext = TestDataHelper.CreateStateMachineDevice(),
+            OrderFinishedSucessfullyDelegate = DelegateHelper.OrderFinishedSucessfullyDelegate,
+            OrderFinishedUnsucessfullyDelegate = DelegateHelper.OrderFinishedUnsucessfullyDelegate,
+        };
+
+        config.OrderConfigurations.Add($"{BuiltinOrders.TncpOrder}Configuration");
+        config.OrderConfigurations.Add($"{BuiltinOrders.TncpOrder}Configuration");
+
+        config.ParameterSets.Add(ps);
+        config.ParameterSets.Add(ps2);
+
+        var state = builder.BuildState(config);
+
+        var os = (IOrderBasedActionStateMachineState)state;
+
+        // Act  
+        state.InitiateState();
+
+        // Assert
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(state, Is.Not.Null);
+            Assert.That(state.Id, Is.EqualTo(builder.StateId));
+
+            Assert.That(os.Orders.Count, Is.EqualTo(os.OrderConfigurations.Count));
         }
     }
 }

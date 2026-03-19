@@ -14,7 +14,7 @@ public class BtcpOrderFactory : OrderFactory
     /// <summary>
     /// Default ctor
     /// </summary>
-    public BtcpOrderFactory()
+    public BtcpOrderFactory(IOrderIdGenerator orderIdGenerator) : base(orderIdGenerator)
     {
         var config1 = new BtcpOrderConfiguration
         {

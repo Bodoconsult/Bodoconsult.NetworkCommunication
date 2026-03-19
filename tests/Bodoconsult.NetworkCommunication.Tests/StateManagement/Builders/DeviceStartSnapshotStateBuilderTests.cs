@@ -96,4 +96,130 @@ internal class DeviceStartSnapshotStateBuilderTests
             Assert.That(state.AllowedNextStates, Does.Contain(DefaultStateNames.DeviceSnapshotState));
         }
     }
+
+    [Test]
+    public void InitiateState_ValidSetup_StateBuilded()
+    {
+        // Arrange 
+        var device = TestDataHelper.CreateStateMachineDevice();
+
+        var ps = new TncpParameterSet();
+        var ps2 = new TncpParameterSet();
+
+        var builder = new DeviceStartSnapshotStateBuilder();
+
+        var config = new JobStateConfiguration(DefaultStateNames.DeviceStartSnapshotState, builder)
+        {
+            CurrentContext = device,
+            HandleAsyncMessageDelegate = DelegateHelper.HandleAsyncMessageDelegate,
+            HandleComDevCloseDelegate = DelegateHelper.HandleComDevCloseDelegate,
+            HandleErrorMessageDelegate = DelegateHelper.HandleErrorMessageDelegate,
+            HandleRegularStateRequestAnswerDelegate = DelegateHelper.HandleRegularStateRequestAnswerDelegate,
+            PrepareRegularStateRequestDelegate = DelegateHelper.PrepareRegularStateRequestDelegate,
+            OrderFinishedSucessfullyDelegate = DelegateHelper.OrderFinishedSucessfullyDelegate,
+            OrderFinishedUnsucessfullyDelegate = DelegateHelper.OrderFinishedUnsucessfullyDelegate,
+        };
+
+        config.OrderConfigurations.Add($"{BuiltinOrders.TncpOrder}Configuration");
+        config.OrderConfigurations.Add($"{BuiltinOrders.TncpOrder}Configuration");
+
+        config.ParameterSets.Add(ps);
+        config.ParameterSets.Add(ps2);
+
+        var state = (IOrderBasedActionStateMachineState)builder.BuildState(config);
+
+        // Act  
+        state.InitiateState();
+
+        // Assert
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(state.Orders.Count, Is.EqualTo(state.OrderConfigurations.Count));
+        }
+    }
+
+    [Test]
+    public void RunNextOrder_OneOrder_Successful()
+    {
+        // Arrange 
+        var device = TestDataHelper.CreateStateMachineDevice();
+
+        var ps = new TncpParameterSet();
+
+        var builder = new DeviceStartSnapshotStateBuilder();
+
+        var config = new JobStateConfiguration(DefaultStateNames.DeviceStartSnapshotState, builder)
+        {
+            CurrentContext = device,
+            HandleAsyncMessageDelegate = DelegateHelper.HandleAsyncMessageDelegate,
+            HandleComDevCloseDelegate = DelegateHelper.HandleComDevCloseDelegate,
+            HandleErrorMessageDelegate = DelegateHelper.HandleErrorMessageDelegate,
+            HandleRegularStateRequestAnswerDelegate = DelegateHelper.HandleRegularStateRequestAnswerDelegate,
+            PrepareRegularStateRequestDelegate = DelegateHelper.PrepareRegularStateRequestDelegate,
+            OrderFinishedSucessfullyDelegate = DelegateHelper.OrderFinishedSucessfullyDelegate,
+            OrderFinishedUnsucessfullyDelegate = DelegateHelper.OrderFinishedUnsucessfullyDelegate,
+        };
+
+        config.OrderConfigurations.Add($"{BuiltinOrders.TncpOrder}Configuration");
+
+        config.ParameterSets.Add(ps);
+
+        var state = (IOrderBasedActionStateMachineState)builder.BuildState(config);
+        state.InitiateState();
+        device.SetFakeState(state);
+
+        // Act  
+        state.RunNextOrder();
+
+        // Assert
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(state.Orders.Count, Is.EqualTo(state.OrderConfigurations.Count));
+            Assert.That(state.CurrentOrderIndex, Is.EqualTo(state.OrderConfigurations.Count));
+        }
+    }
+
+    [Test]
+    public void RunNextOrder_TwoOrders_Successful()
+    {
+        // Arrange 
+        var device = TestDataHelper.CreateStateMachineDevice();
+
+        var ps = new TncpParameterSet();
+        var ps2 = new TncpParameterSet();
+        
+        var builder = new DeviceStartSnapshotStateBuilder();
+
+        var config = new JobStateConfiguration(DefaultStateNames.DeviceStartSnapshotState, builder)
+        {
+            CurrentContext = device,
+            HandleAsyncMessageDelegate = DelegateHelper.HandleAsyncMessageDelegate,
+            HandleComDevCloseDelegate = DelegateHelper.HandleComDevCloseDelegate,
+            HandleErrorMessageDelegate = DelegateHelper.HandleErrorMessageDelegate,
+            HandleRegularStateRequestAnswerDelegate = DelegateHelper.HandleRegularStateRequestAnswerDelegate,
+            PrepareRegularStateRequestDelegate = DelegateHelper.PrepareRegularStateRequestDelegate,
+            OrderFinishedSucessfullyDelegate = DelegateHelper.OrderFinishedSucessfullyDelegate,
+            OrderFinishedUnsucessfullyDelegate = DelegateHelper.OrderFinishedUnsucessfullyDelegate,
+        };
+
+        config.OrderConfigurations.Add($"{BuiltinOrders.TncpOrder}Configuration");
+        config.OrderConfigurations.Add($"{BuiltinOrders.TncpOrder}Configuration");
+
+        config.ParameterSets.Add(ps);
+        config.ParameterSets.Add(ps2);
+
+        var state = (IOrderBasedActionStateMachineState)builder.BuildState(config);
+        state.InitiateState();
+        device.SetFakeState(state);
+
+        // Act  
+        state.RunNextOrder();
+
+        // Assert
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(state.Orders.Count, Is.EqualTo(state.OrderConfigurations.Count));
+            Assert.That(state.CurrentOrderIndex, Is.EqualTo(state.OrderConfigurations.Count));
+        }
+    }
 }

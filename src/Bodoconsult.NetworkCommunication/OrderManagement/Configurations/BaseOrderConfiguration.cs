@@ -49,11 +49,6 @@ public abstract class BaseOrderConfiguration: IOrderConfiguration
     public IParameterSet? ParameterSet { get; set; }
 
     /// <summary>
-    /// Current order ID
-    /// </summary>
-    public long OrderId { get; set; }
-
-    /// <summary>
     /// Delegate for creating preconfigured parametersets
     /// </summary>
     public CreateParameterSetDelegate? CreateParameterSetDelegate { get; set; }

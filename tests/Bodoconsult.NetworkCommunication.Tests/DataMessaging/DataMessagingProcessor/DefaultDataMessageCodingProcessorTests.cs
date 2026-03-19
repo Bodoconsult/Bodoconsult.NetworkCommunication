@@ -237,7 +237,7 @@ internal class DefaultDataMessageCodingProcessorTests
     public void EncodeDataMessag_EdcpDataMessage_RawBytesCreated()
     {
         // Arrange 
-        IDataBlockCodingProcessor dataBlockCodingProcessor = new DefaultDataBlockCodingProcessor();
+        var dataBlockCodingProcessor = new DefaultDataBlockCodingProcessor();
         dataBlockCodingProcessor.LoadDataBlockCodecs('x', new BasicDataBlockCodec());
 
         var processor = new DefaultDataMessageCodingProcessor();

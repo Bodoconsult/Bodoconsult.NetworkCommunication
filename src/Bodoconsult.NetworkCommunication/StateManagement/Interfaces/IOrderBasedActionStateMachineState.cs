@@ -11,9 +11,14 @@ namespace Bodoconsult.NetworkCommunication.StateManagement.Interfaces;
 public interface IOrderBasedActionStateMachineState : IStateMachineState
 {
     /// <summary>
-    /// Parametersets for the orders to be created for the state. The number of parameter sets must equal the number of <see cref="OrderConfigurations"/>
+    /// Current order index. See <see cref="RunNextOrder"/>
     /// </summary>
-    List<IParameterSet> ParameterSets { get; }
+    int CurrentOrderIndex { get; }
+
+    /// <summary>
+        /// Parametersets for the orders to be created for the state. The number of parameter sets must equal the number of <see cref="OrderConfigurations"/>
+        /// </summary>
+        List<IParameterSet> ParameterSets { get; }
 
     /// <summary>
     /// All configurations for orders to be executed for the state to be configured. Sort order is important! The first configuration added is executed as first order etc.
@@ -51,4 +56,9 @@ public interface IOrderBasedActionStateMachineState : IStateMachineState
     /// </summary>
     /// <param name="orderId">Current order ID</param>
     void OrderFinishedUnsucessfully(long orderId);
+
+    /// <summary>
+    /// Name of the next state for the default
+    /// </summary>
+    string? StateNameOnSuccess { get; set; }
 }

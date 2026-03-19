@@ -11,7 +11,7 @@ namespace Bodoconsult.NetworkCommunication.StateManagement.States;
 /// </summary>
 public abstract class BaseStateMachineState : IStateMachineState
 {
-    protected int CurrentOrderIndex;
+    
     private bool _isErrorHandlingRunning;
     private readonly Lock _isErrorHandlingRunningLock = new();
 
@@ -24,7 +24,6 @@ public abstract class BaseStateMachineState : IStateMachineState
     protected BaseStateMachineState(IStateManagementDevice currentContext, int id, string name)
     {
         CurrentContext = currentContext;
-        CurrentOrderIndex = 0;
         Id = id;
         Name = name;
     }
@@ -148,7 +147,6 @@ public abstract class BaseStateMachineState : IStateMachineState
     /// Delegate to handle a ComDevClose event
     /// </summary>
     public HandleComDevCloseDelegate? HandleComDevCloseDelegate { get; set; }
-
 
     /// <summary>
     /// The communication to the device was broken. Handles this event

@@ -13,6 +13,17 @@ public class OrderFactory : IOrderFactory
     private readonly Dictionary<string, IOrderConfiguration> _configurations = new();
 
     /// <summary>
+    /// Default ctor
+    /// </summary>
+    /// <param name="orderIdGenerator">Current ID generator</param>
+    public OrderFactory(IOrderIdGenerator orderIdGenerator)
+    {
+        OrderIdGenerator = orderIdGenerator;
+    }
+
+    public IOrderIdGenerator OrderIdGenerator { get; }
+
+    /// <summary>
     /// Readonly list with all registered order configurations
     /// </summary>
     public List<KeyValuePair<string, IOrderConfiguration>> CurrentConfigurations => _configurations.ToList();
@@ -37,7 +48,10 @@ public class OrderFactory : IOrderFactory
         ArgumentNullException.ThrowIfNull(config.ParameterSet);
         //ArgumentNullException.ThrowIfNull(config.Device);
 
-        var order = config.OrderBuilder.CreateOrder(config);
+        var id = OrderIdGenerator.NextId();
+
+        var order = config.OrderBuilder.CreateOrder(config, id);
+
         return order;
     }
 

@@ -179,7 +179,6 @@ public interface IOrderPipeline : IDisposable
     /// <returns>Removed request processor</returns>
     IRequestProcessor? GetFromExecutionQueue(long orderId);
 
-
     /// <summary>
     /// Remove an order request processor from the execution queue by order ID
     /// </summary>

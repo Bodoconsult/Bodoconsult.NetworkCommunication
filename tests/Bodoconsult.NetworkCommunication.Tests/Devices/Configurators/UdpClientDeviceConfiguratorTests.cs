@@ -13,18 +13,18 @@ namespace Bodoconsult.NetworkCommunication.Tests.Devices.Configurators;
 [TestFixture]
 internal class UdpClientDeviceConfiguratorTests
 {
+    private readonly DoNothingOrderManagementClientNotificationManager _clientNotificationManager = new();
+    private readonly FakeAppEventSourceFactory _appEventSourceFactory = new();
+    private readonly FakeSendPacketProcessFactory _sendPacketProcessFactory = new();
+
     [Test]
     public void Ctor_ValidSetup_PropsSetCorrectly()
     {
         // Arrange 
-        var clientNotificationManager = new DoNothingOrderManagementClientNotificationManager();
-
-        var sendPacketProcessFactory = new FakeSendPacketProcessFactory();
-        var duplexIoFactory = new IpDuplexIoFactory(sendPacketProcessFactory);
-        var appEventSourceFactory = new FakeAppEventSourceFactory();
+        var duplexIoFactory = new IpDuplexIoFactory(_sendPacketProcessFactory);
 
         // Act  
-        var conf = new UdpClientDeviceConfigurator(duplexIoFactory, appEventSourceFactory, clientNotificationManager);
+        var conf = new UdpClientDeviceConfigurator(duplexIoFactory, _appEventSourceFactory, _clientNotificationManager);
 
         // Assert
         Assert.That(conf.DataMessagingConfig, Is.Null);
@@ -35,13 +35,9 @@ internal class UdpClientDeviceConfiguratorTests
     public void CreateMessagingConfig_ValidSetup_MessagingConfigIsCreated()
     {
         // Arrange 
-        var clientNotificationManager = new DoNothingOrderManagementClientNotificationManager();
+        var duplexIoFactory = new IpDuplexIoFactory(_sendPacketProcessFactory);
 
-        var sendPacketProcessFactory = new FakeSendPacketProcessFactory();
-        var duplexIoFactory = new IpDuplexIoFactory(sendPacketProcessFactory);
-        var appEventSourceFactory = new FakeAppEventSourceFactory();
-
-        var conf = new UdpClientDeviceConfigurator(duplexIoFactory, appEventSourceFactory, clientNotificationManager);
+        var conf = new UdpClientDeviceConfigurator(duplexIoFactory, _appEventSourceFactory, _clientNotificationManager);
 
         const string ip = "127.0.0.1";
         const int port = 9000;
@@ -62,16 +58,9 @@ internal class UdpClientDeviceConfiguratorTests
     public void CreateDevice_ValidSetup_DeviceCreated()
     {
         // Arrange 
-        var clientNotificationManager = new DoNothingOrderManagementClientNotificationManager();
+        var duplexIoFactory = new IpDuplexIoFactory(_sendPacketProcessFactory);
 
-        var sendPacketProcessFactory = new FakeSendPacketProcessFactory();
-        var duplexIoFactory = new IpDuplexIoFactory(sendPacketProcessFactory);
-        var monitorLoggerFactoryFactory = new MonitorLoggerFactoryFactory(Globals.Instance);
-        var logDataFactory = TestDataHelper.LogDataFactory;
-        var appLoggerFactory = new AppLoggerProxyFactory();
-        var appEventSourceFactory = new FakeAppEventSourceFactory();
-
-        var conf = new UdpClientDeviceConfigurator(duplexIoFactory, appEventSourceFactory, clientNotificationManager);
+        var conf = new UdpClientDeviceConfigurator(duplexIoFactory, _appEventSourceFactory, _clientNotificationManager);
         conf.CreateMessagingConfig("TestDevice", "127.0.0.1", 9000);
 
         // Act  

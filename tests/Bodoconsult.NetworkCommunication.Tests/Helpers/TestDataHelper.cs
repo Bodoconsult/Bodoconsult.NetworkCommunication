@@ -32,7 +32,10 @@ public static class TestDataHelper
         // ToDo: change to fake later
         AppDateService = new AppDateService();
         FakeIpCommunicationAdapter = new FakeIpCommunicationAdapter();
+        DefaultOrderIdGenerator = new DefaultOrderIdGenerator(AppDateService);
     }
+
+    public static DefaultOrderIdGenerator DefaultOrderIdGenerator { get; }
 
     public static LogDataFactory LogDataFactory { get; }
 
@@ -122,13 +125,12 @@ public static class TestDataHelper
 
         var config = new OneRequestSpecNoOrOneStepOneAnswerConfiguration("TestConfig", BuiltinOrders.SdcpOrder, builder)
         {
-            OrderId = 1,
             //Device = TestDataHelper.CreateStateMachineDevice(),
             HandleRequestAnswerOnSuccessDelegate = HandleRequestAnswerOnSuccessDelegate,
             ParameterSet = ps
         };
 
-        var order = builder.CreateOrder(config);
+        var order = builder.CreateOrder(config, 1);
         return order;
     }
 
@@ -142,13 +144,12 @@ public static class TestDataHelper
 
         var config = new OneRequestSpecNoOrOneStepOneAnswerConfiguration("TestConfig", BuiltinOrders.SdcpOrder, builder)
         {
-            OrderId = 1,
             //Device = TestDataHelper.CreateStateMachineDevice(),
             HandleRequestAnswerOnSuccessDelegate = HandleRequestAnswerOnSuccessDelegate,
             ParameterSet = ps
         };
 
-        var order = builder.CreateOrder(config);
+        var order = builder.CreateOrder(config, 1);
         return order;
     }
 
@@ -162,13 +163,12 @@ public static class TestDataHelper
 
         var config = new OneRequestSpecNoOrOneStepOneAnswerConfiguration("TestConfig", BuiltinOrders.SdcpOrder, builder)
         {
-            OrderId = 1,
             //Device = TestDataHelper.CreateStateMachineDevice(),
             HandleRequestAnswerOnSuccessDelegate = HandleRequestAnswerOnSuccessDelegate,
             ParameterSet = ps
         };
 
-        var order = builder.CreateOrder(config);
+        var order = builder.CreateOrder(config, 1);
         return order;
     }
 
@@ -182,13 +182,12 @@ public static class TestDataHelper
 
         var config = new OneRequestSpecNoOrOneStepOneAnswerConfiguration("TestConfig", BuiltinOrders.SdcpOrder, builder)
         {
-            OrderId = 1,
             //Device = TestDataHelper.CreateStateMachineDevice(),
             HandleRequestAnswerOnSuccessDelegate = HandleRequestAnswerOnSuccessDelegate,
             ParameterSet = ps
         };
 
-        var order = builder.CreateOrder(config);
+        var order = builder.CreateOrder(config, 1);
         return order;
     }
 
@@ -210,12 +209,11 @@ public static class TestDataHelper
 
         var config = new OneRequestSpecNoOrOneStepOneAnswerConfiguration("TestConfig", BuiltinOrders.SdcpOrder, builder)
         {
-            OrderId = 1,
             //Device = TestDataHelper.CreateStateMachineDevice(),
             HandleRequestAnswerOnSuccessDelegate = HandleRequestAnswerOnSuccessDelegate
         };
 
-        var order = builder.CreateOrder(config);
+        var order = builder.CreateOrder(config, 1);
         return order;
     }
 
@@ -229,13 +227,12 @@ public static class TestDataHelper
 
         var config = new OneRequestSpecNoOrOneStepOneAnswerConfiguration("TestConfig", BuiltinOrders.SdcpOrder, builder)
         {
-            OrderId = 1,
             //Device = TestDataHelper.CreateStateMachineDevice(),
             HandleRequestAnswerOnSuccessDelegate = HandleRequestAnswerOnSuccessDelegate,
             ParameterSet = ps
         };
 
-        var order = builder.CreateOrder(config);
+        var order = builder.CreateOrder(config, 1);
         return order;
     }
 
@@ -249,13 +246,12 @@ public static class TestDataHelper
 
         var config = new OneRequestSpecNoOrOneStepOneAnswerConfiguration("TestConfig", BuiltinOrders.EdcpClientOrder, builder)
         {
-            OrderId = 1,
             //Device = TestDataHelper.CreateStateMachineDevice(),
             HandleRequestAnswerOnSuccessDelegate = HandleRequestAnswerOnSuccessDelegate,
             ParameterSet = ps
         };
 
-        var order = builder.CreateOrder(config);
+        var order = builder.CreateOrder(config, 1);
         return order;
     }
 
@@ -269,13 +265,12 @@ public static class TestDataHelper
 
         var config = new OneRequestSpecNoOrOneStepOneAnswerConfiguration("TestConfig", BuiltinOrders.EdcpServerOrder, builder)
         {
-            OrderId = 1,
             //Device = TestDataHelper.CreateStateMachineDevice(),
             HandleRequestAnswerOnSuccessDelegate = HandleRequestAnswerOnSuccessDelegate,
             ParameterSet = ps
         };
 
-        var order = builder.CreateOrder(config);
+        var order = builder.CreateOrder(config, 1);
         return order;
     }
 
@@ -290,13 +285,12 @@ public static class TestDataHelper
 
         var config = new OneRequestSpecNoOrOneStepOneAnswerConfiguration("TestConfig", BuiltinOrders.EdcpServerOrder, builder)
         {
-            OrderId = 1,
             //Device = TestDataHelper.CreateStateMachineDevice(),
             HandleRequestAnswerOnSuccessDelegate = HandleRequestAnswerOnSuccessDelegate,
             ParameterSet = ps
         };
 
-        var order = builder.CreateOrder(config);
+        var order = builder.CreateOrder(config, 1);
         return order;
     }
 
@@ -316,7 +310,7 @@ public static class TestDataHelper
     /// <returns></returns>
     public static FakeStateMachineDevice CreateStateMachineDevice()
     {
-        var orderFactory = new OrderFactory();
+        var orderFactory = new OrderFactory(DefaultOrderIdGenerator);
 
         var config = new TncpOrderConfiguration
         {

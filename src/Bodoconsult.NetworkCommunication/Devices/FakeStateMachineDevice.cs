@@ -21,4 +21,13 @@ public class FakeStateMachineDevice : BaseStateManagementDevice
         IDeviceStateCheckManager deviceStateCheckManager) :
         base(dataMessagingConfig, clientNotificationManager, deviceStateCheckManager)
     { }
+
+    /// <summary>
+    /// Load a state as fake
+    /// </summary>
+    /// <param name="state">State to load as fake</param>
+    public void SetFakeState(IOrderBasedActionStateMachineState state)
+    {
+        CurrentState = state;
+    }
 }

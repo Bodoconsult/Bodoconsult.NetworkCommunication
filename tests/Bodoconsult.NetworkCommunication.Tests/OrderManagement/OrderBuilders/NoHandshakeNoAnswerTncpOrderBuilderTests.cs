@@ -36,14 +36,13 @@ internal class NoHandshakeNoAnswerTncpOrderBuilderTests : OrderBuilderTestsBase
 
         var config = new OneRequestSpecNoOrOneStepOneAnswerConfiguration("TestConfig", BuiltinOrders.NoAnswerTncpOrder, builder)
         {
-            OrderId = 1,
             //Device = TestDataHelper.CreateStateMachineDevice(),
             HandleRequestAnswerOnSuccessDelegate = HandleRequestAnswerOnSuccessDelegate,
             ParameterSet = ps
         };
 
         // Act  
-        var order = builder.CreateOrder(config);
+        var order = builder.CreateOrder(config, 1);
 
         // Assert
         using (Assert.EnterMultipleScope())

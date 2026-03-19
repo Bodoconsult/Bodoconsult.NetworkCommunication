@@ -130,13 +130,12 @@ internal class OrderProcessorTests
 
         var config = new OneRequestSpecNoOrOneStepOneAnswerConfiguration("TestConfig", BuiltinOrders.SdcpOrder, _builder)
         {
-            OrderId = 1,
             //Device = TestDataHelper.CreateStateMachineDevice(),
             HandleRequestAnswerOnSuccessDelegate = HandleRequestAnswerOnSuccessDelegate,
             ParameterSet = ps
         };
 
-        var order = _builder.CreateOrder(config);
+        var order = _builder.CreateOrder(config, 1);
         return order;
     }
 
@@ -151,13 +150,12 @@ internal class OrderProcessorTests
 
         var config = new OneRequestSpecNoOrOneStepOneAnswerConfiguration("TestConfig", BuiltinOrders.SdcpOrder, _testBuilder)
         {
-            OrderId = 1,
             //Device = TestDataHelper.CreateStateMachineDevice(),
             HandleRequestAnswerOnSuccessDelegate = HandleRequestAnswerOnSuccessDelegate,
             ParameterSet = ps
         };
 
-        var order = _testBuilder.CreateOrder(config);
+        var order = _testBuilder.CreateOrder(config, 1);
         return order;
     }
 
@@ -172,13 +170,12 @@ internal class OrderProcessorTests
 
         var config = new OneRequestSpecNoOrOneStepOneAnswerConfiguration("TestConfig", BuiltinOrders.SdcpOrder, _longRunningTestBuilder)
         {
-            OrderId = 2,
             //Device = TestDataHelper.CreateStateMachineDevice(),
             HandleRequestAnswerOnSuccessDelegate = HandleRequestAnswerOnSuccessDelegate,
             ParameterSet = ps
         };
 
-        var order = _longRunningTestBuilder.CreateOrder(config);
+        var order = _longRunningTestBuilder.CreateOrder(config, 2);
         return order;
     }
 
@@ -193,13 +190,12 @@ internal class OrderProcessorTests
 
         var config = new OneRequestSpecNoOrOneStepOneAnswerConfiguration("TestConfig", BuiltinOrders.SdcpOrder, _extraLongRunningTestBuilder)
         {
-            OrderId = 3,
             //Device = TestDataHelper.CreateStateMachineDevice(),
             HandleRequestAnswerOnSuccessDelegate = HandleRequestAnswerOnSuccessDelegate,
             ParameterSet = ps
         };
 
-        var order = _extraLongRunningTestBuilder.CreateOrder(config);
+        var order = _extraLongRunningTestBuilder.CreateOrder(config, 3);
         return order;
     }
 
@@ -235,7 +231,7 @@ internal class OrderProcessorTests
             IsNoHardWareInitRequired = true
         };
 
-        var om = new FakeOrderManager(_device.DataMessagingConfig, new FakeOrderProcessor(_device, new FakeOrderPipeline(), new SyncOrderManager(), new DoNothingOrderManagementClientNotificationManager()), new FakeOrderReceiver(), new OrderFactory())
+        var om = new FakeOrderManager(_device.DataMessagingConfig, new FakeOrderProcessor(_device, new FakeOrderPipeline(), new SyncOrderManager(), new DoNothingOrderManagementClientNotificationManager()), new FakeOrderReceiver(), new OrderFactory(TestDataHelper.DefaultOrderIdGenerator))
         {
             OrderProcessor = processor
         };

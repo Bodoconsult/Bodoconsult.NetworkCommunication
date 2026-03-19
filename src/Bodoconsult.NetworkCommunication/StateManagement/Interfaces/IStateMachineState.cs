@@ -63,10 +63,10 @@ public interface IStateMachineState
     /// </summary>
     CancelStateDelegate? CancelStateDelegate { get; set; }
 
-   /// <summary>
-   /// The next state to be requested when this state has to be left or null if the state does not change
-   /// </summary>
-   IStateMachineState? NextState { get; set; }
+    /// <summary>
+    /// The next state to be requested when this state has to be left or null if the state does not change
+    /// </summary>
+    IStateMachineState? NextState { get; set; }
 
     /// <summary>
     /// Set the inital states for this business state

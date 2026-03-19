@@ -36,14 +36,13 @@ internal class NoHandshakeNoAnswerEdcpServerOrderBuilderTests : OrderBuilderTest
 
         var config = new OneRequestSpecNoOrOneStepOneAnswerConfiguration("TestConfig", BuiltinOrders.NoHandshakeNoAnswerEdcpServerOrder, builder)
         {
-            OrderId = 1,
             //Device = TestDataHelper.CreateStateMachineDevice(),
             HandleRequestAnswerOnSuccessDelegate = HandleRequestAnswerOnSuccessDelegate,
             ParameterSet = ps
         };
 
         // Act  
-        var order = builder.CreateOrder(config);
+        var order = builder.CreateOrder(config, 1);
 
         // Assert
         using (Assert.EnterMultipleScope())

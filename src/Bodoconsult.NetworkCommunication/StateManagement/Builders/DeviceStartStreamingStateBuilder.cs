@@ -46,5 +46,7 @@ public class DeviceStartStreamingStateBuilder : BaseJobStateMachineStateBuilder
         state.CancelStateDelegate = DelegateHelper.CancelStateDelegate;
 
         state.AllowedNextStates.AddRange(AllowedNextStatesInternal);
+
+        state.StateNameOnSuccess = DefaultStateNames.DeviceStreamingState;
     }
 }

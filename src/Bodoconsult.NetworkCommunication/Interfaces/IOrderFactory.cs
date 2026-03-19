@@ -10,6 +10,11 @@ namespace Bodoconsult.NetworkCommunication.Interfaces;
 public interface IOrderFactory
 {
     /// <summary>
+    /// Current order ID generator
+    /// </summary>
+    IOrderIdGenerator OrderIdGenerator { get; }
+
+    /// <summary>
     /// Readonly list with all registered order configurations
     /// </summary>
     List<KeyValuePair<string, IOrderConfiguration>> CurrentConfigurations { get; }

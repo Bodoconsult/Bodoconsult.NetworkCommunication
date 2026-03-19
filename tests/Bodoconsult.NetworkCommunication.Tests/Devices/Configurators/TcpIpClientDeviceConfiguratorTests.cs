@@ -15,7 +15,7 @@ using Bodoconsult.NetworkCommunication.Tests.Helpers;
 namespace Bodoconsult.NetworkCommunication.Tests.Devices.Configurators;
 
 [TestFixture]
-internal class TcpIpServerDeviceConfiguratorTests
+internal class TcpIpClientDeviceConfiguratorTests
 {
     private readonly IMonitorLoggerFactoryFactory _monitorLoggerFactoryFactory = new MonitorLoggerFactoryFactory(Globals.Instance);
     private readonly IAppLoggerProxy _appLoggerProxy = TestDataHelper.GetFakeAppLoggerProxy();
@@ -36,11 +36,10 @@ internal class TcpIpServerDeviceConfiguratorTests
     public void Ctor_ValidSetup_PropsSetCorrectly()
     {
         // Arrange 
-       var duplexIoFactory = new IpDuplexIoFactory(_sendPacketProcessFactory);
-
+        var duplexIoFactory = new IpDuplexIoFactory(_sendPacketProcessFactory);
 
         // Act  
-        var conf = new TcpIpServerDeviceConfigurator(duplexIoFactory, _monitorLoggerFactoryFactory, _logDataFactory, _appLoggerFactory, 
+        var conf = new TcpIpClientDeviceConfigurator(duplexIoFactory, _monitorLoggerFactoryFactory, _logDataFactory, _appLoggerFactory,
             _appEventSourceFactory, _clientNotificationManager, _tcpIpListenerManager, _appLoggerProxy);
 
         // Assert
@@ -54,14 +53,14 @@ internal class TcpIpServerDeviceConfiguratorTests
         // Arrange 
         var duplexIoFactory = new IpDuplexIoFactory(_sendPacketProcessFactory);
 
-        var conf = new TcpIpServerDeviceConfigurator(duplexIoFactory, _monitorLoggerFactoryFactory, _logDataFactory, _appLoggerFactory,
+        var conf = new TcpIpClientDeviceConfigurator(duplexIoFactory, _monitorLoggerFactoryFactory, _logDataFactory, _appLoggerFactory,
             _appEventSourceFactory, _clientNotificationManager, _tcpIpListenerManager, _appLoggerProxy);
 
         const string ip = "127.0.0.1";
         const int port = 9000;
 
         // Act  
-        conf.CreateMessagingConfig("TestDevice",ip, port);
+        conf.CreateMessagingConfig("TestDevice", ip, port);
 
         // Assert
         Assert.That(conf.DataMessagingConfig, Is.Not.Null);
@@ -78,9 +77,9 @@ internal class TcpIpServerDeviceConfiguratorTests
         // Arrange 
         var duplexIoFactory = new IpDuplexIoFactory(_sendPacketProcessFactory);
 
-        var conf = new TcpIpServerDeviceConfigurator(duplexIoFactory, _monitorLoggerFactoryFactory, _logDataFactory, _appLoggerFactory,
+        var conf = new TcpIpClientDeviceConfigurator(duplexIoFactory, _monitorLoggerFactoryFactory, _logDataFactory, _appLoggerFactory,
             _appEventSourceFactory, _clientNotificationManager, _tcpIpListenerManager, _appLoggerProxy);
-        conf.CreateMessagingConfig("TestDevice","127.0.0.1", 9000);
+        conf.CreateMessagingConfig("TestDevice", "127.0.0.1", 9000);
 
         // Act  
         conf.CreateDevice();

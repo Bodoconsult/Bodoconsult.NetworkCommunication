@@ -28,7 +28,7 @@ internal class IpDeviceTcpIpManagerTests
     private readonly IOrderReceiverFactory _orderReceiverFactory = new OrderReceiverFactory();
     private readonly IRequestProcessorFactoryFactory _requestProcessorFactoryFactory = new RequestProcessorFactoryFactory();
     private readonly IRequestStepProcessorFactoryFactory _requestStepProcessorFactoryFactory = new RequestStepProcessorFactoryFactory();
-    private readonly IOrderFactory _orderFactory = new OrderFactory();
+    private readonly IOrderFactory _orderFactory = new OrderFactory(TestDataHelper.DefaultOrderIdGenerator);
     private readonly FakeSendPacketProcessFactory _sendPacketProcessFactory = new();
     private readonly MonitorLoggerFactoryFactory _monitorLoggerFactoryFactory = new(Globals.Instance);
     private readonly LogDataFactory _logDataFactory = TestDataHelper.LogDataFactory;

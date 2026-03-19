@@ -6,6 +6,7 @@ using Bodoconsult.NetworkCommunication.Interfaces;
 using Bodoconsult.NetworkCommunication.OrderManagement.Configurations;
 using Bodoconsult.NetworkCommunication.OrderManagement.OrderBuilders;
 using Bodoconsult.NetworkCommunication.OrderManagement.ParameterSets;
+using Bodoconsult.NetworkCommunication.Tests.Helpers;
 
 namespace Bodoconsult.NetworkCommunication.Tests.Factories;
 
@@ -18,7 +19,7 @@ internal class OrderFactoryTests
         // Arrange 
 
         // Act  
-        var factory = new OrderFactory();
+        var factory = new OrderFactory(TestDataHelper.DefaultOrderIdGenerator);
 
         // Assert
         var data = factory.CurrentConfigurations;
@@ -31,13 +32,12 @@ internal class OrderFactoryTests
     {
         // Arrange 
         const string configName = "TestConfig";
-        var factory = new OrderFactory();
+        var factory = new OrderFactory(TestDataHelper.DefaultOrderIdGenerator);
 
         var builder = new SdcpOrderBuilder();
 
         var config = new OneRequestSpecNoOrOneStepOneAnswerConfiguration(configName, BuiltinOrders.SdcpOrder, builder)
         {
-            OrderId = 1,
             //Device = TestDataHelper.CreateStateMachineDevice(),
             HandleRequestAnswerOnSuccessDelegate = DelegateHelper.HandleRequestAnswerOnSuccessDelegate,
             CreateParameterSetDelegate = () => new SdcpParameterSet()
@@ -58,13 +58,12 @@ internal class OrderFactoryTests
     {
         // Arrange 
         const string configName = "TestConfig";
-        var factory = new OrderFactory();
+        var factory = new OrderFactory(TestDataHelper.DefaultOrderIdGenerator);
 
         var builder = new SdcpOrderBuilder();
 
         var config = new OneRequestSpecNoOrOneStepOneAnswerConfiguration(configName, BuiltinOrders.SdcpOrder, builder)
         {
-            OrderId = 1,
           //  Device = TestDataHelper.CreateStateMachineDevice(),
             HandleRequestAnswerOnSuccessDelegate = DelegateHelper.HandleRequestAnswerOnSuccessDelegate
         };
@@ -81,13 +80,12 @@ internal class OrderFactoryTests
     {
         // Arrange 
         const string configName = "TestConfig";
-        var factory = new OrderFactory();
+        var factory = new OrderFactory(TestDataHelper.DefaultOrderIdGenerator);
 
         var builder = new SdcpOrderBuilder();
 
         var config = new OneRequestSpecNoOrOneStepOneAnswerConfiguration(configName, BuiltinOrders.SdcpOrder, builder)
         {
-            OrderId = 1,
         //    Device = TestDataHelper.CreateStateMachineDevice(),
             HandleRequestAnswerOnSuccessDelegate = DelegateHelper.HandleRequestAnswerOnSuccessDelegate,
             CreateParameterSetDelegate = () => new SdcpParameterSet()
@@ -107,13 +105,12 @@ internal class OrderFactoryTests
     {
         // Arrange 
         const string configName = "TestConfig";
-        var factory = new OrderFactory();
+        var factory = new OrderFactory(TestDataHelper.DefaultOrderIdGenerator);
 
         var builder = new SdcpOrderBuilder();
 
         var config = new OneRequestSpecNoOrOneStepOneAnswerConfiguration(configName, BuiltinOrders.SdcpOrder, builder)
         {
-            OrderId = 1,
             //Device = TestDataHelper.CreateStateMachineDevice(),
             HandleRequestAnswerOnSuccessDelegate = DelegateHelper.HandleRequestAnswerOnSuccessDelegate,
             CreateParameterSetDelegate = () => new SdcpParameterSet()

@@ -38,7 +38,7 @@ internal class OrderManagerFactoryTests
         IRequestProcessorFactoryFactory requestProcessorFactoryFactory = new RequestProcessorFactoryFactory();
         IRequestStepProcessorFactoryFactory requestStepProcessorFactoryFactory = new RequestStepProcessorFactoryFactory();
         IOrderPipelineFactory orderPipelineFactory = new OrderPipelineFactory(_dateService, _appLogger);
-        IOrderFactory orderFactory = new OrderFactory();
+        IOrderFactory orderFactory = new OrderFactory(TestDataHelper.DefaultOrderIdGenerator);
 
         // Act and assert
         Assert.DoesNotThrow(() =>
@@ -61,7 +61,7 @@ internal class OrderManagerFactoryTests
         IRequestProcessorFactoryFactory requestProcessorFactoryFactory = new RequestProcessorFactoryFactory();
         IRequestStepProcessorFactoryFactory requestStepProcessorFactoryFactory = new RequestStepProcessorFactoryFactory();
         IOrderPipelineFactory orderPipelineFactory = new OrderPipelineFactory(_dateService, _appLogger);
-        IOrderFactory orderFactory = new OrderFactory();
+        IOrderFactory orderFactory = new OrderFactory(TestDataHelper.DefaultOrderIdGenerator);
 
         var factory = new OrderManagerFactory(orderProcessorFactory, orderReceiverFactory,
             requestStepProcessorFactoryFactory, requestProcessorFactoryFactory, orderPipelineFactory, orderFactory);
@@ -89,7 +89,7 @@ internal class OrderManagerFactoryTests
         IRequestProcessorFactoryFactory requestProcessorFactoryFactory = new RequestProcessorFactoryFactory();
         IRequestStepProcessorFactoryFactory requestStepProcessorFactoryFactory = new RequestStepProcessorFactoryFactory();
         IOrderPipelineFactory orderPipelineFactory = new OrderPipelineFactory(_dateService, _appLogger);
-        IOrderFactory orderFactory = new OrderFactory();
+        IOrderFactory orderFactory = new OrderFactory(TestDataHelper.DefaultOrderIdGenerator);
 
         var factory = new OrderManagerFactory(orderProcessorFactory, orderReceiverFactory,
             requestStepProcessorFactoryFactory, requestProcessorFactoryFactory, orderPipelineFactory, orderFactory);
