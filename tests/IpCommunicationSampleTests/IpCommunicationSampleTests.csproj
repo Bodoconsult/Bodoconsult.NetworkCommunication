@@ -27,6 +27,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Backend\Configurators\" />
     <Folder Include="Device\" />
   </ItemGroup>
 

@@ -8,7 +8,6 @@ using Bodoconsult.NetworkCommunication.EnumAndStates;
 using Bodoconsult.NetworkCommunication.Factories;
 using Bodoconsult.NetworkCommunication.Interfaces;
 using Bodoconsult.NetworkCommunication.OrderManagement.Configurations;
-using Bodoconsult.NetworkCommunication.OrderManagement.Devices;
 using Bodoconsult.NetworkCommunication.OrderManagement.OrderBuilders;
 using Bodoconsult.NetworkCommunication.OrderManagement.ParameterSets;
 using Bodoconsult.NetworkCommunication.OrderManagement.Processors;
@@ -17,6 +16,7 @@ using Bodoconsult.NetworkCommunication.Tests.Helpers;
 using System.Diagnostics;
 using Bodoconsult.App.Abstractions.Interfaces;
 using IAppDateService = Bodoconsult.NetworkCommunication.App.Abstractions.IAppDateService;
+using Bodoconsult.NetworkCommunication.Devices;
 
 namespace Bodoconsult.NetworkCommunication.Tests.OrderManagement.Processors;
 
@@ -41,7 +41,7 @@ internal class OrderProcessorTests
 
     private readonly IAppBenchProxy _benchLogger = TestDataHelper.GetFakeAppBenchProxy();
 
-    private readonly IOrderManagementClientNotificationManager _notificationManager = new FakeOrderManagementClientNotificationManager();
+    private readonly IOrderManagementClientNotificationManager _notificationManager = new DoNothingOrderManagementClientNotificationManager();
     private bool _isBusinesDelegateFired;
 
     private readonly SdcpOrderBuilder _builder;
@@ -235,7 +235,7 @@ internal class OrderProcessorTests
             IsNoHardWareInitRequired = true
         };
 
-        var om = new FakeOrderManager(_device.DataMessagingConfig, new FakeOrderProcessor(_device, new FakeOrderPipeline(), new SyncOrderManager(), new FakeOrderManagementClientNotificationManager()), new FakeOrderReceiver(), new OrderFactory())
+        var om = new FakeOrderManager(_device.DataMessagingConfig, new FakeOrderProcessor(_device, new FakeOrderPipeline(), new SyncOrderManager(), new DoNothingOrderManagementClientNotificationManager()), new FakeOrderReceiver(), new OrderFactory())
         {
             OrderProcessor = processor
         };

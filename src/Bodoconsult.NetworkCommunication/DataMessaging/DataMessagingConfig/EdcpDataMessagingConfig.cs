@@ -14,11 +14,10 @@ namespace Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig;
 /// </summary>
 public class EdcpDataMessagingConfig : IIpDataMessagingConfig
 {
-
     /// <summary>
     /// A readable string for identitying the device used for logging
     /// </summary>
-    public string LoggerId => "TestDevice";
+    public string LoggerId { get; set; } = "TestDevice";
 
     /// <summary>
     /// IP based protocol used for this config
@@ -122,6 +121,11 @@ public class EdcpDataMessagingConfig : IIpDataMessagingConfig
     /// Port to use for device communication
     /// </summary>
     public int Port { get; set; } = 9000;
+
+    /// <summary>
+    /// Is the device configured as IP server. True = server, false = client. Default: false
+    /// </summary>
+    public bool IsServer { get; set; }
 
     /// <summary>
     /// The minimum blockcode sent by the client

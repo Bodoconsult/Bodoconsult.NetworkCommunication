@@ -18,7 +18,7 @@ internal class OrderManagerFactoryTests
     private readonly IAppLoggerProxy _appLogger = TestDataHelper.GetFakeAppLoggerProxy();
     private readonly IAppDateService _dateService = TestDataHelper.AppDateService;
     private readonly SyncOrderManager _syncOrderManager = new();
-    private readonly IOrderManagementClientNotificationManager _centralClientNotificationManager = new FakeOrderManagementClientNotificationManager();
+    private readonly IOrderManagementClientNotificationManager _centralClientNotificationManager = new DoNothingOrderManagementClientNotificationManager();
     private readonly AppBenchProxy _appBenchProxy = TestDataHelper.GetFakeAppBenchProxy();
 
     [OneTimeTearDown]

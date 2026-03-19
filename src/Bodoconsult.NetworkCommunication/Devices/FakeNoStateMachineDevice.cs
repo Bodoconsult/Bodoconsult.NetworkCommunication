@@ -6,7 +6,7 @@
 using Bodoconsult.NetworkCommunication.Delegates;
 using Bodoconsult.NetworkCommunication.Interfaces;
 
-namespace Bodoconsult.NetworkCommunication.OrderManagement.Devices;
+namespace Bodoconsult.NetworkCommunication.Devices;
 
 /// <summary>
 /// A fake device supporting order management

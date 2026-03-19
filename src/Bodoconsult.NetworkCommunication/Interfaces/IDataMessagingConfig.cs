@@ -16,7 +16,7 @@ public interface IDataMessagingConfig
     /// <summary>
     /// A readable string for identitying the device used for logging
     /// </summary>
-    string LoggerId { get; }
+    string LoggerId { get; set; }
 
     /// <summary>
     /// IP based protocol used for this config

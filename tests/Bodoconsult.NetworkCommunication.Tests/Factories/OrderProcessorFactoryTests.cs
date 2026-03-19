@@ -20,7 +20,7 @@ internal class OrderProcessorFactoryTests
 
     private readonly IAppBenchProxy _benchLogger = TestDataHelper.GetFakeAppBenchProxy();
 
-    private readonly IOrderManagementClientNotificationManager _notificationManager = new FakeOrderManagementClientNotificationManager();
+    private readonly IOrderManagementClientNotificationManager _notificationManager = new DoNothingOrderManagementClientNotificationManager();
     private readonly SyncOrderManager _syncManager;
 
     public OrderProcessorFactoryTests()

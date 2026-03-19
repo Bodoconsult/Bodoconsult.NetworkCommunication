@@ -9,5 +9,14 @@ namespace Bodoconsult.NetworkCommunication.StateManagement.Interfaces;
 /// </summary>
 public interface IStateManagementDevice : IStateMachineContext, IOrderManagementDevice
 {
-    
+    /// <summary>
+    /// Current <see cref="IDeviceStateManager"/> instance
+    /// </summary>
+    IDeviceStateManager? DeviceStateManager { get; }
+
+    /// <summary>
+    /// Load the current <see cref="IDeviceStateManager"/> instance
+    /// </summary>
+    /// <param name="deviceStateManager">Current <see cref="IDeviceStateManager"/> instance</param>
+    void LoadDeviceStateManager(IDeviceStateManager deviceStateManager);
 }

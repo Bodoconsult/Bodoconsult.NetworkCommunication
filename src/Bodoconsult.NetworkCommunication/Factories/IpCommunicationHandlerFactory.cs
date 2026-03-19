@@ -15,9 +15,9 @@ public class IpCommunicationHandlerFactory : ICommunicationHandlerFactory
 {
     private readonly ISocketProxyFactory _socketProxyFactory;
     private readonly IDuplexIoFactory _duplexIoFactory;
-    private readonly IMonitorLoggerFactoryFactory _monitorLoggerFactoryFactory;
-    private readonly ILogDataFactory _logDataFactory;
-    private readonly IAppLoggerProxyFactory _appLoggerFactory;
+    //private readonly IMonitorLoggerFactoryFactory _monitorLoggerFactoryFactory;
+    //private readonly ILogDataFactory _logDataFactory;
+    //private readonly IAppLoggerProxyFactory _appLoggerFactory;
     private readonly IAppEventSourceFactory _appEventSourceFactory;
     private ICentralClientNotificationManager _clientNotificationManager;
 
@@ -26,18 +26,12 @@ public class IpCommunicationHandlerFactory : ICommunicationHandlerFactory
     /// </summary>
     public IpCommunicationHandlerFactory(ISocketProxyFactory socketProxyFactory,
         IDuplexIoFactory duplexIoFactory,
-        IMonitorLoggerFactoryFactory monitorLoggerFactoryFactory,
-        ILogDataFactory logDataFactory,
-        IAppLoggerProxyFactory appLoggerFactory,
         IAppEventSourceFactory appEventSourceFactory,
         ICentralClientNotificationManager clientNotificationManager)
     {
         _socketProxyFactory = socketProxyFactory;
         _duplexIoFactory = duplexIoFactory;
-        _monitorLoggerFactoryFactory = monitorLoggerFactoryFactory;
-        _appLoggerFactory = appLoggerFactory;
         _appEventSourceFactory = appEventSourceFactory;
-        _logDataFactory = logDataFactory;
         _clientNotificationManager = clientNotificationManager;
     }
 
@@ -48,7 +42,7 @@ public class IpCommunicationHandlerFactory : ICommunicationHandlerFactory
     /// <returns>An instance implementing <see cref="ICommunicationHandler"/></returns>
     public ICommunicationHandler CreateInstance(IIpDataMessagingConfig dataMessagingConfig)
     {
-        var socketProxy = _socketProxyFactory.CreateInstance(dataMessagingConfig.IpProtocol, IPAddress.Parse(dataMessagingConfig.IpAddress), dataMessagingConfig.Port);
+        var socketProxy = _socketProxyFactory.CreateInstance(dataMessagingConfig.IsServer, dataMessagingConfig.IpProtocol, IPAddress.Parse(dataMessagingConfig.IpAddress), dataMessagingConfig.Port);
 
         //if (dataMessagingConfig.MonitorLogger == null)
         //{

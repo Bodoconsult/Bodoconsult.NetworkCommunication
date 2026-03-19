@@ -21,18 +21,15 @@ internal class IpCommunicationHandlerFactoryTests
         var config = TestDataHelper.GetDataMessagingConfig();
 
 
-        ISocketProxyFactory socketProxyFactory = new ClientSocketProxyFactory();
+        ISocketProxyFactory socketProxyFactory = new SocketProxyFactory(null);
         ISendPacketProcessFactory sendPacketProcessFactory = new FakeSendPacketProcessFactory();
         IDuplexIoFactory duplexIoFactory = new IpDuplexIoFactory(sendPacketProcessFactory);
-        IMonitorLoggerFactoryFactory monitorLoggerFactoryFactory = new MonitorLoggerFactoryFactory(Globals.Instance);
-        ILogDataFactory logDataFactory = TestDataHelper.LogDataFactory;
-        IAppLoggerProxyFactory appLoggerFactory = new AppLoggerProxyFactory();
         IAppEventSourceFactory appEventSourceFactory = new FakeAppEventSourceFactory();
 
-        ICentralClientNotificationManager clientNotificationManager = new FakeOrderManagementClientNotificationManager();
+        ICentralClientNotificationManager clientNotificationManager = new DoNothingOrderManagementClientNotificationManager();
 
         var factory = new IpCommunicationHandlerFactory(socketProxyFactory, duplexIoFactory,
-            monitorLoggerFactoryFactory, logDataFactory, appLoggerFactory, appEventSourceFactory, clientNotificationManager);
+             appEventSourceFactory, clientNotificationManager);
 
         // Act  
         var instance = factory.CreateInstance(config);

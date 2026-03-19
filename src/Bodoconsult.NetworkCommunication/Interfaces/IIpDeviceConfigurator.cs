@@ -1,5 +1,7 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
+using Bodoconsult.NetworkCommunication.StateManagement.Interfaces;
+
 namespace Bodoconsult.NetworkCommunication.Interfaces;
 
 /// <summary>
@@ -20,9 +22,10 @@ public interface IIpDeviceConfigurator
     /// <summary>
     /// Create the basic data messaging config
     /// </summary>
+    /// <param name="loggerId">Logger ID</param>
     /// <param name="ipAddress">IP address</param>
     /// <param name="port">Port</param>
-    void CreateMessagingConfig(string ipAddress, int port);
+    void CreateMessagingConfig(string loggerId, string ipAddress, int port);
 
     /// <summary>
     /// Create the device with basic settings
@@ -30,9 +33,18 @@ public interface IIpDeviceConfigurator
     void CreateDevice();
 
     /// <summary>
-    /// Configure the order management and if necessary the state management
+    /// Configure the order management
     /// </summary>
-    void ConfigureOrderManagementAndStateManagement();
+    /// <param name="orderManagerFactory">Current factory for <see cref="IOrderManager"/> instances</param>
+    void ConfigureOrderManagement(IOrderManagerFactory orderManagerFactory);
+
+    /// <summary>
+    /// Configure the state management. Important: store state factory instance to device and config
+    /// </summary>
+    /// <param name="deviceStateManagerFactory">Current factory for <see cref="IDeviceStateManager"/> instances</param>
+    /// <param name="stateMachineConfiguratorFactory">Current state machine configurator factory</param>
+    void ConfigureStateManagement(IDeviceStateManagerFactory deviceStateManagerFactory, 
+        IStateMachineConfiguratorFactory stateMachineConfiguratorFactory);
 
     /// <summary>
     /// Get the read configured device

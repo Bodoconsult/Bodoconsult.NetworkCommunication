@@ -16,8 +16,15 @@ public abstract class BaseDeviceStateManager: IDeviceStateManager
     /// <param name="device">Current device</param>
     protected BaseDeviceStateManager(IStateManagementDevice device)
     {
+        ArgumentNullException.ThrowIfNull(device.OrderManager);
         Device = device;
+        OrderFactory = device.OrderManager.OrderFactory;
     }
+
+    /// <summary>
+    /// Current order factory
+    /// </summary>
+    protected IOrderFactory? OrderFactory;
 
     /// <summary>
     /// Current device
@@ -36,6 +43,16 @@ public abstract class BaseDeviceStateManager: IDeviceStateManager
     public void LoadStateFactory(IStateMachineStateFactory stateFactory)
     {
         StateFactory = stateFactory;
+    }
+
+    /// <summary>
+    /// Load the state factory
+    /// </summary>
+    /// <param name="device">Current device</param>
+    public void LoadDevice(IStateManagementDevice device)
+    {
+        
+
     }
 
     #region Static helper methods
@@ -82,5 +99,4 @@ public abstract class BaseDeviceStateManager: IDeviceStateManager
     }
 
     #endregion
-
 }

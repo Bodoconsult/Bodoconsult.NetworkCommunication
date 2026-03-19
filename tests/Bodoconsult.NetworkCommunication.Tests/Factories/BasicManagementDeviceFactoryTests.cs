@@ -19,17 +19,14 @@ internal class BasicManagementDeviceFactoryTests
     public void CreateInstance_ValidSetup_ReturnsDevice()
     {
         // Arrange 
-        var clientNotificationManager = new FakeOrderManagementClientNotificationManager();
+        var clientNotificationManager = new DoNothingOrderManagementClientNotificationManager();
 
-        var socketProxyFactory = new ClientSocketProxyFactory();
+        var socketProxyFactory = new SocketProxyFactory(null);
         var sendPacketProcessFactory = new FakeSendPacketProcessFactory();
         var duplexIoFactory = new IpDuplexIoFactory(sendPacketProcessFactory);
-        var monitorLoggerFactoryFactory = new MonitorLoggerFactoryFactory(Globals.Instance);
-        var logDataFactory = TestDataHelper.LogDataFactory;
-        var appLoggerFactory = new AppLoggerProxyFactory();
         var appEventSourceFactory = new FakeAppEventSourceFactory();
 
-        var communicationHandlerFactory = new IpCommunicationHandlerFactory(socketProxyFactory, duplexIoFactory, monitorLoggerFactoryFactory, logDataFactory, appLoggerFactory, appEventSourceFactory, clientNotificationManager);
+        var communicationHandlerFactory = new IpCommunicationHandlerFactory(socketProxyFactory, duplexIoFactory, appEventSourceFactory, clientNotificationManager);
         var outboundDataMessageFactory = new BtcpOutboundDataMessageFactory();
         var commAdapterFactory = new IpCommunicationAdapterFactory(communicationHandlerFactory, outboundDataMessageFactory);
 

@@ -6,7 +6,7 @@ using Bodoconsult.NetworkCommunication.Interfaces;
 using Bodoconsult.NetworkCommunication.StateManagement;
 using Bodoconsult.NetworkCommunication.StateManagement.Interfaces;
 
-namespace Bodoconsult.NetworkCommunication.OrderManagement.Devices;
+namespace Bodoconsult.NetworkCommunication.Devices;
 
 /// <summary>
 /// Base class for order management devices
@@ -26,15 +26,12 @@ public abstract class BaseStateManagementDevice : BaseOrderManagementDevice, ISt
     /// </summary>
     /// <param name="dataMessagingConfig">Current messaging config</param>
     /// <param name="clientNotificationManager">Current client notification manager</param>
-    /// <param name="stateMachineStateFactory">Current implementation of <see cref="IStateMachineStateFactory"/></param>
     /// <param name="deviceStateCheckManager">Current device state check manager instances</param>
     protected BaseStateManagementDevice(IDataMessagingConfig dataMessagingConfig,
         IOrderManagementClientNotificationManager clientNotificationManager,
-        IStateMachineStateFactory stateMachineStateFactory,
         IDeviceStateCheckManager deviceStateCheckManager) : base(dataMessagingConfig, clientNotificationManager)
     {
         DeviceStateCheckManager = deviceStateCheckManager;
-        StateMachineStateFactory = stateMachineStateFactory;
     }
 
     /// <summary>
@@ -87,7 +84,7 @@ public abstract class BaseStateManagementDevice : BaseOrderManagementDevice, ISt
     /// <summary>
     /// Current implementation of <see cref="IStateMachineStateFactory"/>
     /// </summary>
-    public IStateMachineStateFactory StateMachineStateFactory { get; }
+    public IStateMachineStateFactory? StateMachineStateFactory { get; set; }
 
     /// <summary>
     /// Current job states waiting to be processed
@@ -205,6 +202,7 @@ public abstract class BaseStateManagementDevice : BaseOrderManagementDevice, ISt
     /// <returns>Fresh instance of the requested state</returns>
     public IStateMachineState CreateStateInstance(string stateName)
     {
+        ArgumentNullException.ThrowIfNull(StateMachineStateFactory);
         return StateMachineStateFactory.CreateInstance(this, stateName);
     }
 
@@ -301,5 +299,19 @@ public abstract class BaseStateManagementDevice : BaseOrderManagementDevice, ISt
         }
 
         SavedJobState = js;
+    }
+
+    /// <summary>
+    /// Current <see cref="IDeviceStateManager"/> instance
+    /// </summary>
+    public IDeviceStateManager? DeviceStateManager { get; private set; }
+
+    /// <summary>
+    /// Load the current <see cref="IDeviceStateManager"/> instance
+    /// </summary>
+    /// <param name="deviceStateManager">Current <see cref="IDeviceStateManager"/> instance</param>
+    public void LoadDeviceStateManager(IDeviceStateManager deviceStateManager)
+    {
+        DeviceStateManager = deviceStateManager;
     }
 }

@@ -5,7 +5,7 @@
 
 using Bodoconsult.NetworkCommunication.Interfaces;
 
-namespace Bodoconsult.NetworkCommunication.OrderManagement.Devices;
+namespace Bodoconsult.NetworkCommunication.Devices;
 
 /// <summary>
 /// A simple device supporting order management

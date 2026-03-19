@@ -5,7 +5,7 @@ using Bodoconsult.App.Abstractions.Interfaces;
 using Bodoconsult.NetworkCommunication.App.Abstractions;
 using Bodoconsult.NetworkCommunication.Interfaces;
 
-namespace Bodoconsult.NetworkCommunication.OrderManagement.Devices;
+namespace Bodoconsult.NetworkCommunication.Devices;
 
 /// <summary>
 /// Base class for order management devices

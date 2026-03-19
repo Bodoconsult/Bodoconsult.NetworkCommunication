@@ -3,7 +3,7 @@
 using Bodoconsult.NetworkCommunication.App.Abstractions;
 using Bodoconsult.NetworkCommunication.Interfaces;
 
-namespace Bodoconsult.NetworkCommunication.OrderManagement.Devices;
+namespace Bodoconsult.NetworkCommunication.Devices;
 
 /// <summary>
 /// A simple device supporting only basic comm features like sending and receiving messages but no order management and no state management

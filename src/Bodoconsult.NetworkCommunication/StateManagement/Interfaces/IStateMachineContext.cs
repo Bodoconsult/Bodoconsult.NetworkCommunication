@@ -32,7 +32,7 @@ public interface IStateMachineContext
     /// <summary>
     /// Current implementation of <see cref="IStateMachineStateFactory"/>
     /// </summary>
-    IStateMachineStateFactory StateMachineStateFactory { get; }
+    IStateMachineStateFactory? StateMachineStateFactory { get; set; }
     
     /// <summary>
     /// Current job states waiting to be processed

@@ -1,0 +1,93 @@
+﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
+
+namespace Bodoconsult.NetworkCommunication.Tests.Devices;
+
+[TestFixture]
+internal class BaseIpDeviceConfiguratorTests
+{
+    [Test]
+    public void Ctor_ValidSetup_PropsSetCorrectly()
+    {
+        // Arrange 
+
+        // Act  
+        var config = new TestIpDeviceConfigurator();
+
+        // Assert
+        Assert.That(config.DataMessagingConfig, Is.Null);
+        Assert.That(config.Device, Is.Null);
+    }
+
+    [Test]
+    public void CreateMessagingConfig_ValidSetup_ThrowsException()
+    {
+        // Arrange 
+        var config = new TestIpDeviceConfigurator();
+
+        // Act  
+        Assert.Throws<NotSupportedException>(() =>
+        {
+            config.CreateMessagingConfig("TestDevice", "127.0.0.1", 9000);
+        });
+
+        // Assert
+        Assert.That(config.DataMessagingConfig, Is.Null);
+        Assert.That(config.Device, Is.Null);
+    }
+
+    [Test]
+    public void CreateDevice_ValidSetup_ThrowsException()
+    {
+        // Arrange 
+        var config = new TestIpDeviceConfigurator();
+
+        // Act  
+        Assert.Throws<NotSupportedException>(() =>
+        {
+            config.CreateDevice();
+        });
+
+        // Assert
+        Assert.That(config.DataMessagingConfig, Is.Null);
+        Assert.That(config.Device, Is.Null);
+    }
+
+    // ToDo MOQ this test
+    //[Test]
+    //public void CreateMessagingConfig_ValidSetup_ThrowsException()
+    //{
+    //    // Arrange 
+    //    var config = new TestIpDeviceConfigurator();
+
+    //    IDeviceStateManagerFactory deviceStateManagerFactory = new T;
+    //    IOrderManagerFactory orderManagerFactory;
+
+    //    // Act  
+    //    Assert.Throws<NotSupportedException>(() =>
+    //    {
+
+    //        config.ConfigureOrderManagementAndStateManagement(deviceStateManagerFactory, orderManagerFactory);
+    //    });
+
+    //    // Assert
+    //    Assert.That(config.DataMessagingConfig, Is.Null);
+    //    Assert.That(config.Device, Is.Null);
+    //}
+
+    [Test]
+    public void GetDevice_ValidSetup_ThrowsException()
+    {
+        // Arrange 
+        var config = new TestIpDeviceConfigurator();
+
+        // Act  
+        Assert.Throws<ArgumentNullException>(() =>
+        {
+            config.GetDevice();
+        });
+
+        // Assert
+        Assert.That(config.DataMessagingConfig, Is.Null);
+        Assert.That(config.Device, Is.Null);
+    }
+}

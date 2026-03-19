@@ -2,6 +2,7 @@
 
 using Bodoconsult.NetworkCommunication.Communication.Sending;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataBlockCodecs;
+using Bodoconsult.NetworkCommunication.DataMessaging.DataBlockCodingProcessors;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessageCodecs;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessageCodingProcessors;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessageProcessors;
@@ -35,6 +36,7 @@ public class BtcpDataMessageProcessingPackage : IDataMessageProcessingPackage
 
         // 2. Codecs
         DataMessageCodingProcessor = new DefaultDataMessageCodingProcessor();
+        DataBlockCodingProcessor = new DefaultDataBlockCodingProcessor();
         LoadCodecs();
 
         // 3. Internal forwarding

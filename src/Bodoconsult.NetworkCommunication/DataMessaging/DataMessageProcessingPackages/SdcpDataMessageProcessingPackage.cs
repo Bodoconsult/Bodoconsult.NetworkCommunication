@@ -37,6 +37,7 @@ public class SdcpDataMessageProcessingPackage : IDataMessageProcessingPackage
 
         // 2. Codecs
         DataMessageCodingProcessor = new DefaultDataMessageCodingProcessor();
+        DataBlockCodingProcessor = new DefaultDataBlockCodingProcessor();
         LoadCodecs();
 
         // 3. Internal forwarding

@@ -1,7 +1,7 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
+using Bodoconsult.NetworkCommunication.Devices;
 using Bodoconsult.NetworkCommunication.Interfaces;
-using Bodoconsult.NetworkCommunication.OrderManagement.Devices;
 using Bodoconsult.NetworkCommunication.StateManagement.StateCheckManagers;
 
 namespace Bodoconsult.NetworkCommunication.Factories;
@@ -32,7 +32,6 @@ public class BasicManagementDeviceFactory : IOrderManagementDeviceFactory
     public IOrderManagementDevice CreateInstance(IIpDataMessagingConfig dataMessagingConfig)
     {
         ArgumentNullException.ThrowIfNull(dataMessagingConfig.StateMachineProcessingPackage);
-        ArgumentNullException.ThrowIfNull(dataMessagingConfig.StateMachineProcessingPackage.StateMachineStateFactory);
 
         var commAdapter = _commAdapterFactory.CreateInstance(dataMessagingConfig);
 
@@ -41,7 +40,7 @@ public class BasicManagementDeviceFactory : IOrderManagementDeviceFactory
         
         var device = new BasicStateMachineDevice(dataMessagingConfig,
             _clientNotificationManager,
-            dataMessagingConfig.StateMachineProcessingPackage.StateMachineStateFactory, deviceStateCheckManager);
+             deviceStateCheckManager);
         device.LoadCommAdapter(commAdapter);
 
         return device;

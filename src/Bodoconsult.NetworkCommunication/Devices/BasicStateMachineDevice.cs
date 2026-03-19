@@ -3,7 +3,7 @@
 using Bodoconsult.NetworkCommunication.Interfaces;
 using Bodoconsult.NetworkCommunication.StateManagement.Interfaces;
 
-namespace Bodoconsult.NetworkCommunication.OrderManagement.Devices;
+namespace Bodoconsult.NetworkCommunication.Devices;
 
 /// <summary>
 /// A basic device supporting state management and order management
@@ -15,13 +15,10 @@ public class BasicStateMachineDevice : BaseStateManagementDevice
     /// </summary>
     /// <param name="dataMessagingConfig">Current messaging config</param>
     /// <param name="clientNotificationManager">Current client notification manager</param>
-    /// <param name="stateMachineStateFactory">Current implementation of <see cref="IStateMachineStateFactory"/></param>
     /// <param name="deviceStateCheckManager">Current device state check manager instances</param>
     public BasicStateMachineDevice(IDataMessagingConfig dataMessagingConfig,
         IOrderManagementClientNotificationManager clientNotificationManager,
-        IStateMachineStateFactory stateMachineStateFactory, IDeviceStateCheckManager deviceStateCheckManager) :
-        base(dataMessagingConfig, clientNotificationManager, stateMachineStateFactory, deviceStateCheckManager)
+        IDeviceStateCheckManager deviceStateCheckManager) :
+        base(dataMessagingConfig, clientNotificationManager, deviceStateCheckManager)
     { }
-
-
 }

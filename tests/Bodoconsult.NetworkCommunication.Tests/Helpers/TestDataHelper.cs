@@ -9,15 +9,14 @@ using Bodoconsult.NetworkCommunication.ClientNotifications;
 using Bodoconsult.NetworkCommunication.Communication;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessageProcessingPackages;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig;
+using Bodoconsult.NetworkCommunication.Devices;
 using Bodoconsult.NetworkCommunication.EnumAndStates;
 using Bodoconsult.NetworkCommunication.Factories;
 using Bodoconsult.NetworkCommunication.Interfaces;
 using Bodoconsult.NetworkCommunication.OrderManagement.Configurations;
-using Bodoconsult.NetworkCommunication.OrderManagement.Devices;
 using Bodoconsult.NetworkCommunication.OrderManagement.OrderBuilders;
 using Bodoconsult.NetworkCommunication.OrderManagement.ParameterSets;
 using Bodoconsult.NetworkCommunication.OrderManagement.Processors;
-using Bodoconsult.NetworkCommunication.StateManagement.Factories;
 using Bodoconsult.NetworkCommunication.StateManagement.StateCheckManagers;
 using IAppDateService = Bodoconsult.NetworkCommunication.App.Abstractions.IAppDateService;
 
@@ -307,7 +306,7 @@ public static class TestDataHelper
     /// <returns></returns>
     public static FakeNoStateMachineDevice CreateNoStateMachineDevice()
     {
-        var device = new FakeNoStateMachineDevice(GetDataMessagingConfig(), new FakeOrderManagementClientNotificationManager());
+        var device = new FakeNoStateMachineDevice(GetDataMessagingConfig(), new DoNothingOrderManagementClientNotificationManager());
         return device;
     }
 
@@ -318,10 +317,10 @@ public static class TestDataHelper
     public static FakeStateMachineDevice CreateStateMachineDevice()
     {
         var commAdapter = FakeIpCommunicationAdapter;
-        var device = new FakeStateMachineDevice(GetDataMessagingConfig(), new FakeOrderManagementClientNotificationManager(), new FakeStateMachineStateFactory(), new DoNothingStateCheckManager());
-        var om = new FakeOrderManager(GetDataMessagingConfig(), new FakeOrderProcessor(device, new FakeOrderPipeline(), new SyncOrderManager(), new FakeOrderManagementClientNotificationManager() ), new FakeOrderReceiver(), new OrderFactory())
+        var device = new FakeStateMachineDevice(GetDataMessagingConfig(), new DoNothingOrderManagementClientNotificationManager(), new DoNothingStateCheckManager());
+        var om = new FakeOrderManager(GetDataMessagingConfig(), new FakeOrderProcessor(device, new FakeOrderPipeline(), new SyncOrderManager(), new DoNothingOrderManagementClientNotificationManager() ), new FakeOrderReceiver(), new OrderFactory())
         {
-            OrderProcessor = new FakeOrderProcessor(device, new FakeOrderPipeline(), new SyncOrderManager(), new FakeOrderManagementClientNotificationManager())
+            OrderProcessor = new FakeOrderProcessor(device, new FakeOrderPipeline(), new SyncOrderManager(), new DoNothingOrderManagementClientNotificationManager())
         };
 
         device.LoadCommAdapter(commAdapter);

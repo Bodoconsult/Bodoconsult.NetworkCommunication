@@ -9,7 +9,7 @@ namespace Bodoconsult.NetworkCommunication.ClientNotifications;
 /// <summary>
 /// Fake implementation of <see cref="IOrderManagementClientNotificationManager"/> doing nothing
 /// </summary>
-public class FakeOrderManagementClientNotificationManager : IOrderManagementClientNotificationManager
+public class DoNothingOrderManagementClientNotificationManager : IOrderManagementClientNotificationManager
 {
     /// <summary>
     /// Delegate for sending a notification to the client

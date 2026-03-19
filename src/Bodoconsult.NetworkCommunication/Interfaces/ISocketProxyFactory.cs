@@ -14,9 +14,10 @@ public interface ISocketProxyFactory
     /// <summary>
     /// Creates an instance of <see cref="ISocketProxy"/>
     /// </summary>
+    /// <param name="isServer">Is the device configured as IP server. True = server, false = client. Default: false</param>
     /// <param name="protocol">IP base protocol to be used</param>
     /// <param name="ipAddress">IP address</param>
     /// <param name="port">Port</param>
     /// <returns>Instance of <see cref="ISocketProxy"/></returns>
-    ISocketProxy CreateInstance(IpProtocolEnum protocol, IPAddress ipAddress, int port);
+    ISocketProxy CreateInstance(bool isServer, IpProtocolEnum protocol, IPAddress ipAddress, int port);
 }

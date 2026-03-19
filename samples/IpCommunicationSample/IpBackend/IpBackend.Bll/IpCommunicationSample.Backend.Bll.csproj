@@ -17,6 +17,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Communication\ClientTcpIp\" />
+    <Folder Include="Communication\IpDeviceUdp\" />
     <Folder Include="OrderManagement\Configurations\" />
   </ItemGroup>
 

@@ -35,18 +35,14 @@ internal class TcpOrderManagementCommunicationAdapterTests : TcpOrderManagementC
 
         BaseReset();
 
-        ISocketProxyFactory socketProxyFactory = new ClientSocketProxyFactory();
+        ISocketProxyFactory socketProxyFactory = new SocketProxyFactory(null);
         ISendPacketProcessFactory sendPacketProcessFactory = new FakeSendPacketProcessFactory();
         IDuplexIoFactory duplexIoFactory = new IpDuplexIoFactory(sendPacketProcessFactory);
-        IMonitorLoggerFactoryFactory monitorLoggerFactoryFactory = new MonitorLoggerFactoryFactory(Globals.Instance);
-        ILogDataFactory logDataFactory = TestDataHelper.LogDataFactory;
-        IAppLoggerProxyFactory appLoggerFactory = new AppLoggerProxyFactory();
         IAppEventSourceFactory appEventSourceFactory = new FakeAppEventSourceFactory();
 
-        ICentralClientNotificationManager clientNotificationManager = new FakeOrderManagementClientNotificationManager();
+        ICentralClientNotificationManager clientNotificationManager = new DoNothingOrderManagementClientNotificationManager();
 
-        ICommunicationHandlerFactory communicationHandlerFactory = new IpCommunicationHandlerFactory(socketProxyFactory, duplexIoFactory, monitorLoggerFactoryFactory, 
-            logDataFactory, appLoggerFactory, appEventSourceFactory, clientNotificationManager);
+        ICommunicationHandlerFactory communicationHandlerFactory = new IpCommunicationHandlerFactory(socketProxyFactory, duplexIoFactory,  appEventSourceFactory, clientNotificationManager);
         IOutboundDataMessageFactory outboundDataMessageFactory = new SdcpOutboundDataMessageFactory();
         OrderManagementCommunicationAdapter = new IpCommunicationAdapter(DataMessagingConfig,
             communicationHandlerFactory, outboundDataMessageFactory);

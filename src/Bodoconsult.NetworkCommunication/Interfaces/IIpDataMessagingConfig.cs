@@ -10,10 +10,15 @@ public interface IIpDataMessagingConfig: IDataMessagingConfig
     /// <summary>
     /// IP address
     /// </summary>
-    public string IpAddress { get; set; }
+    string IpAddress { get; set; }
 
     /// <summary>
     /// Port to use for communication
     /// </summary>
-    public int Port { get; set; }
+    int Port { get; set; }
+
+    /// <summary>
+    /// Is the device configured as IP server. True = server, false = client
+    /// </summary>
+    bool IsServer { get; set; }
 }

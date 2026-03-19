@@ -16,10 +16,4 @@ public interface IDeviceStateManager
     /// Current state factory
     /// </summary>
     IStateMachineStateFactory? StateFactory { get; }
-
-    /// <summary>
-    /// Load the state factory
-    /// </summary>
-    /// <param name="stateFactory">Current state factory</param>
-    void LoadStateFactory(IStateMachineStateFactory stateFactory);
 }

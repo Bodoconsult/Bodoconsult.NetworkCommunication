@@ -8,6 +8,9 @@ using Bodoconsult.NetworkCommunication.StateManagement.Interfaces;
 
 namespace IpCommunicationSample.Backend.Bll.BusinessLogic;
 
+/// <summary>
+/// Current implementation of <see cref="IDeviceStateManager"/> for the backend
+/// </summary>
 public class TncpBackendDeviceStateManager : BaseDeviceStateManager, IBackendDeviceStateManager
 {
     /// <summary>
@@ -16,7 +19,6 @@ public class TncpBackendDeviceStateManager : BaseDeviceStateManager, IBackendDev
     /// <param name="device">Current device</param>
     public TncpBackendDeviceStateManager(IStateManagementDevice device) : base(device)
     { }
-
 
     #region Device order handling
 
@@ -144,8 +146,6 @@ public class TncpBackendDeviceStateManager : BaseDeviceStateManager, IBackendDev
         throw new NotImplementedException();
     }
 
-
-
     #endregion
 
     #region State management
@@ -155,8 +155,9 @@ public class TncpBackendDeviceStateManager : BaseDeviceStateManager, IBackendDev
     /// </summary>
     public void RequestDeviceStartStreamingState()
     {
+        ArgumentNullException.ThrowIfNull(Device);
         ArgumentNullException.ThrowIfNull(StateFactory, "StateFactory is null. Call LoadStateFactory() before!");
-        ArgumentNullException.ThrowIfNull(Device.OrderManager);
+        ArgumentNullException.ThrowIfNull(OrderFactory);
 
         const string stateName = DefaultStateNames.DeviceStartStreamingState;
 
@@ -169,7 +170,7 @@ public class TncpBackendDeviceStateManager : BaseDeviceStateManager, IBackendDev
         for (var index = 0; index < jobConfig.OrderConfigurations.Count; index++)
         {
             var orderConfigName = jobConfig.OrderConfigurations[index];
-            var orderConfig = Device.OrderManager.OrderFactory.GetConfiguration(orderConfigName);
+            var orderConfig = OrderFactory.GetConfiguration(orderConfigName);
 
             ArgumentNullException.ThrowIfNull(orderConfig, $"Order config for {orderConfigName} is null");
             ArgumentNullException.ThrowIfNull(orderConfig.CreateParameterSetDelegate);
@@ -190,8 +191,9 @@ public class TncpBackendDeviceStateManager : BaseDeviceStateManager, IBackendDev
     /// </summary>
     public void RequestDeviceStartSnapshotState()
     {
+        ArgumentNullException.ThrowIfNull(Device);
         ArgumentNullException.ThrowIfNull(StateFactory, "StateFactory is null. Call LoadStateFactory() before!");
-        ArgumentNullException.ThrowIfNull(Device.OrderManager);
+        ArgumentNullException.ThrowIfNull(OrderFactory);
 
         const string stateName = DefaultStateNames.DeviceStartSnapshotState;
 
@@ -204,7 +206,7 @@ public class TncpBackendDeviceStateManager : BaseDeviceStateManager, IBackendDev
         for (var index = 0; index < jobConfig.OrderConfigurations.Count; index++)
         {
             var orderConfigName = jobConfig.OrderConfigurations[index];
-            var orderConfig = Device.OrderManager.OrderFactory.GetConfiguration(orderConfigName);
+            var orderConfig = OrderFactory.GetConfiguration(orderConfigName);
 
             ArgumentNullException.ThrowIfNull(orderConfig, $"Order config for {orderConfigName} is null");
             ArgumentNullException.ThrowIfNull(orderConfig.CreateParameterSetDelegate);
@@ -225,8 +227,9 @@ public class TncpBackendDeviceStateManager : BaseDeviceStateManager, IBackendDev
     /// </summary>
     public void RequestDeviceStopStreamingState()
     {
+        ArgumentNullException.ThrowIfNull(Device);
         ArgumentNullException.ThrowIfNull(StateFactory, "StateFactory is null. Call LoadStateFactory() before!");
-        ArgumentNullException.ThrowIfNull(Device.OrderManager);
+        ArgumentNullException.ThrowIfNull(OrderFactory);
 
         const string stateName = DefaultStateNames.DeviceStopStreamingState;
 
@@ -238,7 +241,7 @@ public class TncpBackendDeviceStateManager : BaseDeviceStateManager, IBackendDev
 
         foreach (var orderConfigName in jobConfig.OrderConfigurations)
         {
-            var orderConfig = Device.OrderManager.OrderFactory.GetConfiguration(orderConfigName);
+            var orderConfig = OrderFactory.GetConfiguration(orderConfigName);
 
             ArgumentNullException.ThrowIfNull(orderConfig, $"Order config for {orderConfigName} is null");
             ArgumentNullException.ThrowIfNull(orderConfig.CreateParameterSetDelegate);
@@ -259,8 +262,9 @@ public class TncpBackendDeviceStateManager : BaseDeviceStateManager, IBackendDev
     /// </summary>
     public void RequestDeviceStopSnapshotState()
     {
+        ArgumentNullException.ThrowIfNull(Device);
         ArgumentNullException.ThrowIfNull(StateFactory, "StateFactory is null. Call LoadStateFactory() before!");
-        ArgumentNullException.ThrowIfNull(Device.OrderManager);
+        ArgumentNullException.ThrowIfNull(OrderFactory);
 
         const string stateName = DefaultStateNames.DeviceStopSnapshotState;
 
@@ -272,7 +276,7 @@ public class TncpBackendDeviceStateManager : BaseDeviceStateManager, IBackendDev
 
         foreach (var orderConfigName in jobConfig.OrderConfigurations)
         {
-            var orderConfig = Device.OrderManager.OrderFactory.GetConfiguration(orderConfigName);
+            var orderConfig = OrderFactory.GetConfiguration(orderConfigName);
 
             ArgumentNullException.ThrowIfNull(orderConfig, $"Order config for {orderConfigName} is null");
             ArgumentNullException.ThrowIfNull(orderConfig.CreateParameterSetDelegate);
