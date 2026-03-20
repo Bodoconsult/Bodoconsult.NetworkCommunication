@@ -4,6 +4,7 @@ using System.Diagnostics;
 using Bodoconsult.App.Abstractions.Interfaces;
 using Bodoconsult.NetworkCommunication.App.Abstractions;
 using Bodoconsult.NetworkCommunication.Interfaces;
+using Bodoconsult.NetworkCommunication.StateManagement.Interfaces;
 
 namespace Bodoconsult.NetworkCommunication.Devices;
 
@@ -57,6 +58,11 @@ public abstract class BaseOrderManagementDevice : IOrderManagementDevice
     /// Client notification manager
     /// </summary>
     public ICentralClientNotificationManager ClientNotificationManager { get; }
+
+    /// <summary>
+    /// Current <see cref="IDeviceBusinessLogicAdapter"/> instance
+    /// </summary>
+    public IDeviceBusinessLogicAdapter? DeviceBusinessLogicAdapter { get; protected set; }
 
     /// <summary>
     /// Device states used for init process
@@ -167,6 +173,20 @@ public abstract class BaseOrderManagementDevice : IOrderManagementDevice
     /// Is any order to process?
     /// </summary>
     public bool IsAnyOrderToProcess => OrderProcessor?.IsAnyOrderToProcess ?? false;
+
+    /// <summary>
+    /// Load the current <see cref="IDeviceBusinessLogicAdapter"/> instance
+    /// </summary>
+    /// <param name="businessLogicAdapter">Current <see cref="IDeviceBusinessLogicAdapter"/> instance</param>
+    public void LoadDeviceBusinessLogicAdapter(IDeviceBusinessLogicAdapter businessLogicAdapter)
+    {
+        if (businessLogicAdapter is not IOrderManagementDeviceBusinessLogicAdapter o)
+        {
+            throw new ArgumentException($"businessLogicAdapter is not {nameof(IOrderManagementDeviceBusinessLogicAdapter)}");
+        }
+
+        DeviceBusinessLogicAdapter = businessLogicAdapter;
+    }
 
     /// <summary>
     /// Start the communication

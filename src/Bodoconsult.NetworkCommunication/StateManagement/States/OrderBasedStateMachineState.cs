@@ -15,7 +15,7 @@ public class OrderBasedStateMachineState : BaseOrderBasedStateMachineState
     /// <param name="currentContext">Current context</param>
     /// <param name="id">ID of the current state</param>
     /// <param name="name">Name of the current state</param>
-    public OrderBasedStateMachineState(IStateManagementDevice currentContext, int id, string name) : base(currentContext, id, name)
+    public OrderBasedStateMachineState(IStateMachineDevice currentContext, int id, string name) : base(currentContext, id, name)
     {
     }
 }

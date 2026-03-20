@@ -4,6 +4,7 @@ using System.Diagnostics;
 using Bodoconsult.App.Abstractions.Interfaces;
 using Bodoconsult.NetworkCommunication.App.Abstractions;
 using Bodoconsult.NetworkCommunication.Interfaces;
+using Bodoconsult.NetworkCommunication.StateManagement.Interfaces;
 
 namespace Bodoconsult.NetworkCommunication.Devices;
 
@@ -44,6 +45,11 @@ public abstract class BaseIpDevice : IIpDevice
     public ICentralClientNotificationManager ClientNotificationManager { get; }
 
     /// <summary>
+    /// Current <see cref="IStateMachineDeviceBusinessLogicAdapter"/> instance
+    /// </summary>
+    public IDeviceBusinessLogicAdapter? DeviceBusinessLogicAdapter { get; protected set; }
+
+    /// <summary>
     /// Is the device connected?
     /// </summary>
     public bool IsConnected
@@ -65,6 +71,15 @@ public abstract class BaseIpDevice : IIpDevice
             //_monitorLogger?.LogError($"Ping NOT successful for IP {SmdDevice.IpAddress}");
             return false;
         }
+    }
+
+    /// <summary>
+    /// Load the current <see cref="IDeviceBusinessLogicAdapter"/> instance
+    /// </summary>
+    /// <param name="deviceStateManager">Current <see cref="IDeviceBusinessLogicAdapter"/> instance</param>
+    public void LoadDeviceBusinessLogicAdapter(IDeviceBusinessLogicAdapter deviceStateManager)
+    {
+        DeviceBusinessLogicAdapter = deviceStateManager;
     }
 
     /// <summary>

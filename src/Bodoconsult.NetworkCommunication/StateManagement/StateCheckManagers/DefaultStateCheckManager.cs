@@ -21,13 +21,13 @@ public class DefaultStateCheckManager : IDeviceStateCheckManager
     private bool _isActivated;
     private readonly Lock _isActivatedLock = new();
 
-    private readonly IStateManagementDevice _device;
+    private readonly IStateMachineDevice _device;
 
     /// <summary>
     /// Default ctor
     /// </summary>
     /// <param name="device">Current tower server</param>
-    public DefaultStateCheckManager(IStateManagementDevice device)
+    public DefaultStateCheckManager(IStateMachineDevice device)
     {
         _device = device;
         _statusWatchdog = new WatchDog(WatchDogRunnerDelegate, DeviceCommunicationBasics.DeviceStatusWatchdogInterval);

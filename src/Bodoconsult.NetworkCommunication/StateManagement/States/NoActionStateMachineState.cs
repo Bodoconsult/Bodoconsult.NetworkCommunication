@@ -17,7 +17,7 @@ public class NoActionStateMachineState : BaseStateMachineState, INoActionStateMa
     /// <param name="currentContext">Current context</param>
     /// <param name="id">ID of the current state</param>
     /// <param name="name">Name of the current state</param>
-    public NoActionStateMachineState(IStateManagementDevice currentContext, int id, string name) : base(currentContext, id, name)
+    public NoActionStateMachineState(IStateMachineDevice currentContext, int id, string name) : base(currentContext, id, name)
     {
         CheckJobstatesActionForStateDelegate = DefaultCheckJobstatesActionForState;
         CancellationTokenSource = new CancellationTokenSource();

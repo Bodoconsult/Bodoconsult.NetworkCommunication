@@ -7,12 +7,12 @@ using Bodoconsult.NetworkCommunication.Devices.Configurators;
 using Bodoconsult.NetworkCommunication.Interfaces;
 using Bodoconsult.NetworkCommunication.StateManagement.Interfaces;
 
-namespace IpCommunicationSample.Backend.Bll.Communication;
+namespace IpCommunicationSample.Device.Bll.Communication;
 
 /// <summary>
-/// Handles the TCP/IP channel between backend and IP device (client side) with state machine
+/// Handles the UDP channel between IP device and backend (server side)
 /// </summary>
-public class IpDeviceTcpIpClientStateMachineManager: IStateMachineDeviceManager
+public class BackendUdpServerManager : ISimpleDeviceManager
 {
     private readonly IDuplexIoFactory _duplexIoFactory;
     private readonly IAppEventSourceFactory _appEventSourceFactory;
@@ -21,7 +21,7 @@ public class IpDeviceTcpIpClientStateMachineManager: IStateMachineDeviceManager
     private readonly ILogDataFactory _logDataFactory;
     private readonly IAppLoggerProxyFactory _appLoggerFactory;
     private readonly IAppLoggerProxy _appLoggerProxy;
-
+    
     /// <summary>
     /// Default ctor
     /// </summary>
@@ -30,10 +30,9 @@ public class IpDeviceTcpIpClientStateMachineManager: IStateMachineDeviceManager
     /// <param name="appLoggerFactory">Current logger proxy factory</param>
     /// <param name="appEventSourceFactory">Current factory for <see cref="IAppEventSource"/> instances</param>
     /// <param name="clientNotificationManager">Current client notification manager instance</param>
-    /// <param name="tcpIpListenerManager">Current TCP/IP listener manager</param>
     /// <param name="monitorLoggerFactoryFactory">Current factory for monitor logger factories</param>
     /// <param name="appLoggerProxy">Current app logger</param>
-    public IpDeviceTcpIpClientStateMachineManager(IDuplexIoFactory duplexIoFactory,
+    public BackendUdpServerManager(IDuplexIoFactory duplexIoFactory,
         IMonitorLoggerFactoryFactory monitorLoggerFactoryFactory,
         ILogDataFactory logDataFactory,
         IAppLoggerProxyFactory appLoggerFactory,
@@ -52,19 +51,14 @@ public class IpDeviceTcpIpClientStateMachineManager: IStateMachineDeviceManager
     }
 
     /// <summary>
+    /// Current <see cref="IStateMachineDeviceBusinessLogicAdapter"/> instance
+    /// </summary>
+    public ISimpleDeviceBusinessLogicAdapter? DeviceBusinessLogicAdapter{ get; private set; }
+
+    /// <summary>
     /// Current device
     /// </summary>
     public IIpDevice? IpDevice { get; private set; }
-
-    /// <summary>
-    /// Current device
-    /// </summary>
-    public IStateMachineDevice? Device { get; private set; }
-
-    /// <summary>
-    /// Current <see cref="IStateMachineDeviceBusinessLogicAdapter"/> instance
-    /// </summary>
-    public IStateMachineDeviceBusinessLogicAdapter? DeviceBusinessLogicAdapter{ get; private set; }
 
     /// <summary>
     /// Configure the device
@@ -75,25 +69,19 @@ public class IpDeviceTcpIpClientStateMachineManager: IStateMachineDeviceManager
     {
         IDataMessageProcessingPackageFactory messageProcessingPackageFactory = new TncpDataMessageProcessingPackageFactory();
 
-        var configurator = new TcpIpClientStateMachineDeviceConfigurator(_duplexIoFactory, _monitorLoggerFactoryFactory, _logDataFactory, _appLoggerFactory, _appEventSourceFactory, _clientNotificationManager, _appLoggerProxy);
+        var configurator = new UdpServerDeviceConfigurator(_duplexIoFactory, _monitorLoggerFactoryFactory, _logDataFactory, _appLoggerFactory, _appEventSourceFactory, _clientNotificationManager, _appLoggerProxy);
 
-        configurator.CreateMessagingConfig("IPDevice_TCPIP", ipAddress, port, messageProcessingPackageFactory);
+        configurator.CreateMessagingConfig("IPDevice_UDP", ipAddress, port, messageProcessingPackageFactory);
         configurator.CreateDevice();
 
         var device = configurator.GetDevice();
 
-        if (device is not IStateMachineDevice od)
+        if (device.DeviceBusinessLogicAdapter is not ISimpleDeviceBusinessLogicAdapter dbla)
         {
-            throw new ArgumentNullException($"device does not implement {nameof(IStateMachineDevice)}");
-        }
-
-        if (device.DeviceBusinessLogicAdapter is not IStateMachineDeviceBusinessLogicAdapter dbla)
-        {
-            throw new ArgumentNullException($"device.DeviceBusinessLogicAdapter does not implement {nameof(IStateMachineDeviceBusinessLogicAdapter)}");
+            throw new ArgumentNullException($"device.DeviceBusinessLogicAdapter does not implement {nameof(ISimpleDeviceBusinessLogicAdapter)}");
         }
 
         IpDevice = device;
-        Device = od;
         DeviceBusinessLogicAdapter = dbla;
     }
 }

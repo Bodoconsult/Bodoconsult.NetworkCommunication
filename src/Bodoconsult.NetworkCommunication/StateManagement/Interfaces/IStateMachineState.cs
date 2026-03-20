@@ -31,7 +31,7 @@ public interface IStateMachineState
     /// <summary>
     /// Current context
     /// </summary>
-    IStateManagementDevice CurrentContext { get; }
+    IStateMachineDevice CurrentContext { get; }
 
     /// <summary>
     /// Initial device state

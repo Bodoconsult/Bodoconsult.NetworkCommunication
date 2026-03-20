@@ -21,7 +21,7 @@ public abstract class BaseStateMachineState : IStateMachineState
     /// <param name="currentContext">Current context</param>
     /// <param name="id">ID of the current state</param>
     /// <param name="name">Name of the current state</param>
-    protected BaseStateMachineState(IStateManagementDevice currentContext, int id, string name)
+    protected BaseStateMachineState(IStateMachineDevice currentContext, int id, string name)
     {
         CurrentContext = currentContext;
         Id = id;
@@ -64,7 +64,7 @@ public abstract class BaseStateMachineState : IStateMachineState
     /// <summary>
     /// Current context
     /// </summary>
-    public IStateManagementDevice CurrentContext { get; }
+    public IStateMachineDevice CurrentContext { get; }
 
     /// <summary>
     /// Initial device state. Default DeviceStateOffline

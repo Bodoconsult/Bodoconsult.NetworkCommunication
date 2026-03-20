@@ -5,19 +5,6 @@ using Bodoconsult.NetworkCommunication.Interfaces;
 namespace Bodoconsult.NetworkCommunication.StateManagement.Interfaces;
 
 /// <summary>
-/// Interface for connecting device order management with a device specific business logic
-/// </summary>
-public interface IOrderManagementDeviceBusinessLogicAdapter : IDeviceBusinessLogicAdapter
-{
-    /// <summary>
-    /// Current device
-    /// </summary>
-    IOrderManagementDevice? Device { get; }
-
-}
-
-
-/// <summary>
     /// Interface for connecting device state management with a device specific business logic
     /// </summary>
     public interface IStateMachineDeviceBusinessLogicAdapter : IDeviceBusinessLogicAdapter
@@ -25,7 +12,7 @@ public interface IOrderManagementDeviceBusinessLogicAdapter : IDeviceBusinessLog
     /// <summary>
     /// Current device
     /// </summary>
-    IStateManagementDevice? Device { get; }
+    IStateMachineDevice? Device { get; }
 
     /// <summary>
     /// Current state factory
@@ -42,19 +29,19 @@ public interface IOrderManagementDeviceBusinessLogicAdapter : IDeviceBusinessLog
     /// Default method to handle a ComDevClose event in business logic
     /// </summary>
     /// <param name="state">Current state</param>
-    void DefaultHandleComDevCloseDelegate(IStateMachineState state);
+    void DefaultHandleComDevClose(IStateMachineState state);
 
     /// <summary>
     /// Default method to handle an error message received from the device in business logic
     /// </summary>
     /// <param name="state">Current state</param>
     /// <param name="message">Received message</param>
-    void DefaultHandleErrorMessageDelegate(IStateMachineState state, IInboundDataMessage message);
+    void DefaultHandleErrorMessage(IStateMachineState state, IInboundDataMessage message);
 
     /// <summary>
     /// Default method to handle an async received message
     /// </summary>
     /// <param name="state">Current state</param>
     /// <param name="message">Received message</param>
-    MessageHandlingResult DefaultHandleAsyncMessageDelegate(IStateMachineState state, IInboundDataMessage? message);
+    MessageHandlingResult DefaultHandleAsyncMessage(IStateMachineState state, IInboundDataMessage? message);
 }

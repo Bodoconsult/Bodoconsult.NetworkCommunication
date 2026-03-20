@@ -63,14 +63,14 @@ internal class BaseIpDeviceConfiguratorTests
     //    // Arrange 
     //    var config = new TestIpDeviceConfigurator();
 
-    //    IDeviceBusinessLogicAdapterFactory deviceStateManagerFactory = new T;
+    //    IDeviceBusinessLogicAdapterFactory businessLogicAdapterFactory = new T;
     //    IOrderManagerFactory orderManagerFactory;
 
     //    // Act  
     //    Assert.Throws<NotSupportedException>(() =>
     //    {
 
-    //        config.ConfigureOrderManagementAndStateManagement(deviceStateManagerFactory, orderManagerFactory);
+    //        config.ConfigureOrderManagementAndStateManagement(businessLogicAdapterFactory, orderManagerFactory);
     //    });
 
     //    // Assert

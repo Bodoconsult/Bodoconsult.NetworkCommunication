@@ -24,7 +24,7 @@ public class OrderlessActionStateConfiguration : IOrderlessActionStateConfigurat
     /// <summary>
     /// Current context
     /// </summary>
-    public IStateManagementDevice? CurrentContext { get; set; }
+    public IStateMachineDevice? CurrentContext { get; set; }
 
     /// <summary>
     /// Name of the state to configure

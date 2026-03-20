@@ -322,9 +322,9 @@ public static class TestDataHelper
     /// Create a simple order management device without state machine
     /// </summary>
     /// <returns></returns>
-    public static FakeNoStateMachineDevice CreateNoStateMachineDevice()
+    public static FakeOrderManagementDevice CreateNoStateMachineDevice()
     {
-        var device = new FakeNoStateMachineDevice(GetDataMessagingConfig(), new DoNothingOrderManagementClientNotificationManager());
+        var device = new FakeOrderManagementDevice(GetDataMessagingConfig(), new DoNothingOrderManagementClientNotificationManager());
         return device;
     }
 

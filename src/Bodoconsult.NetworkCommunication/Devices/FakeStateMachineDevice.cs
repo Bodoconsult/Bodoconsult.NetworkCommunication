@@ -8,7 +8,7 @@ namespace Bodoconsult.NetworkCommunication.Devices;
 /// <summary>
 /// A fake device supporting state management and order management
 /// </summary>
-public class FakeStateMachineDevice : BaseStateManagementDevice
+public class FakeStateMachineDevice : BaseStateMachineDevice
 {
     /// <summary>
     /// Default ctor

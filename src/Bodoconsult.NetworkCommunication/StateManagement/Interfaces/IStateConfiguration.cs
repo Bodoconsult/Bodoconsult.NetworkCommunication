@@ -12,7 +12,7 @@ public interface IStateConfiguration : ICloneable
     /// <summary>
     /// Current context
     /// </summary>
-    IStateManagementDevice? CurrentContext { get; set; }
+    IStateMachineDevice? CurrentContext { get; set; }
 
     /// <summary>
     /// Name of the state to configure

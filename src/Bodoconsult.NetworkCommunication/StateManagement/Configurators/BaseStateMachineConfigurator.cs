@@ -20,10 +20,10 @@ public abstract class BaseStateMachineConfigurator: IStateMachineConfigurator
     /// <summary>
     /// Default ctor
     /// </summary>
-    /// <param name="deviceStateManager">Current device state manager</param>
-    protected BaseStateMachineConfigurator(IStateMachineDeviceBusinessLogicAdapter deviceStateManager)
+    /// <param name="businessLogicAdapter">Current device state manager</param>
+    protected BaseStateMachineConfigurator(IStateMachineDeviceBusinessLogicAdapter businessLogicAdapter)
     {
-        DeviceBusinessLogicAdapter= deviceStateManager;
+        DeviceBusinessLogicAdapter= businessLogicAdapter;
     }
 
     /// <summary>

@@ -5,10 +5,15 @@ using Bodoconsult.NetworkCommunication.Interfaces;
 namespace Bodoconsult.NetworkCommunication.StateManagement.Interfaces;
 
 /// <summary>
-/// Interface for connecting a simple device comm layer without order and state management with a device specific business logic
+/// Interface for connecting device order management with a device specific business logic
 /// </summary>
-public interface ISimpleDeviceBusinessLogicAdapter : IDeviceBusinessLogicAdapter
+public interface IOrderManagementDeviceBusinessLogicAdapter : IDeviceBusinessLogicAdapter
 {
+    /// <summary>
+    /// Current device
+    /// </summary>
+    IOrderManagementDevice Device { get; }
+
     /// <summary>
     /// Default method to handle a ComDevClose event in business logic
     /// </summary>
@@ -25,10 +30,4 @@ public interface ISimpleDeviceBusinessLogicAdapter : IDeviceBusinessLogicAdapter
     /// </summary>
     /// <param name="message">Received message</param>
     MessageHandlingResult DefaultHandleAsyncMessage(IInboundDataMessage? message);
-
-    /// <summary>
-    /// Default method to handle a received message from the device in business logic
-    /// </summary>
-    /// <param name="message">Received message</param>
-    void DefaultReceiveMessage(IInboundDataMessage message);
 }

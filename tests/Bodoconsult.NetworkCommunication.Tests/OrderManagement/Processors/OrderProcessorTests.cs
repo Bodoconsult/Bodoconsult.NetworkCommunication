@@ -37,7 +37,7 @@ internal class OrderProcessorTests
 
     private readonly IAppDateService _dateTimeService = TestDataHelper.AppDateService;
 
-    private FakeNoStateMachineDevice _device;
+    private FakeOrderManagementDevice _device;
 
     private readonly IAppBenchProxy _benchLogger = TestDataHelper.GetFakeAppBenchProxy();
 

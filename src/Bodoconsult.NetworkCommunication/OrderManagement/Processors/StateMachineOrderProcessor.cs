@@ -14,13 +14,13 @@ namespace Bodoconsult.NetworkCommunication.OrderManagement.Processors;
 /// </summary>
 public class StateMachineOrderProcessor : BaseOrderProcessor
 {
-    private readonly IStateManagementDevice _device;
+    private readonly IStateMachineDevice _device;
 
     /// <summary>
     /// Default ctor
     /// </summary>
     public StateMachineOrderProcessor(
-        IStateManagementDevice device,
+        IStateMachineDevice device,
         IAppDateService dateTimeService,
         IOrderPipeline orderPipeline,
         ISyncOrderManager syncOrderManager,

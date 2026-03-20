@@ -11,32 +11,16 @@ namespace IpCommunicationSample.Backend.Bll.BusinessLogic;
 /// <summary>
 /// Current implementation of <see cref="IStateMachineDeviceBusinessLogicAdapter"/> for the backend
 /// </summary>
-public class TncpBackendBusinessLogicAdapter : BaseStateMachineDeviceBusinessLogicAdapter, IBackendDeviceBusinessLogicAdapter
+public class TncpBackendTcpIpBusinessLogicAdapter : BaseStateMachineDeviceBusinessLogicAdapter, IBackendTcpIpDeviceBusinessLogicAdapter
 {
     /// <summary>
     /// Default ctor
     /// </summary>
     /// <param name="device">Current device</param>
-    public TncpBackendBusinessLogicAdapter(IStateManagementDevice device) : base(device)
+    public TncpBackendTcpIpBusinessLogicAdapter(IStateMachineDevice device) : base(device)
     { }
 
     #region Device order handling
-
-
-    public override void DefaultHandleComDevCloseDelegate(IStateMachineState state)
-    {
-        throw new NotImplementedException();
-    }
-    
-    public override void DefaultHandleErrorMessageDelegate(IStateMachineState state, IInboundDataMessage message)
-    {
-        throw new NotImplementedException();
-    }
-    
-    public override MessageHandlingResult DefaultHandleAsyncMessageDelegate(IStateMachineState state, IInboundDataMessage? message)
-    {
-        throw new NotImplementedException();
-    }
 
     /// <summary>
     /// Stopping snapshot was successful

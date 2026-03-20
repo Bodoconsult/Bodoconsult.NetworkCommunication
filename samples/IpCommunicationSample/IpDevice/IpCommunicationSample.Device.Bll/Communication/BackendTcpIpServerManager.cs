@@ -12,7 +12,7 @@ namespace IpCommunicationSample.Device.Bll.Communication;
 /// <summary>
 /// Handles the TCP/IP channel between IP device and backend (server side)
 /// </summary>
-public class BackendTcpIpServerManager : IDeviceManager
+public class BackendTcpIpServerManager : ISimpleDeviceManager
 {
     private readonly IDuplexIoFactory _duplexIoFactory;
     private readonly IAppEventSourceFactory _appEventSourceFactory;
@@ -61,7 +61,7 @@ public class BackendTcpIpServerManager : IDeviceManager
     /// <summary>
     /// Current <see cref="IStateMachineDeviceBusinessLogicAdapter"/> instance
     /// </summary>
-    public IStateMachineDeviceBusinessLogicAdapter? DeviceBusinessLogicAdapter{ get; private set; }
+    public ISimpleDeviceBusinessLogicAdapter? DeviceBusinessLogicAdapter{ get; private set; }
 
     /// <summary>
     /// Current device
@@ -85,6 +85,12 @@ public class BackendTcpIpServerManager : IDeviceManager
 
         var device = configurator.GetDevice();
 
+        if (device.DeviceBusinessLogicAdapter is not ISimpleDeviceBusinessLogicAdapter dbla)
+        {
+            throw new ArgumentNullException($"device.DeviceBusinessLogicAdapter does not implement {nameof(ISimpleDeviceBusinessLogicAdapter)}");
+        }
+
         IpDevice = device;
+        DeviceBusinessLogicAdapter = dbla;
     }
 }

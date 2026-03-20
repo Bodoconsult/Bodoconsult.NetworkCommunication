@@ -50,7 +50,7 @@ internal class IpDeviceTcpIpClientStateMachineManagerTests
         //IOrderPipelineFactory orderPipelineFactory = new OrderPipelineFactory(_dateService, _appLogger);
         // Act
         var m = new IpDeviceTcpIpClientStateMachineManager(duplexIoFactory, _monitorLoggerFactoryFactory, _logDataFactory, _appLoggerFactory, 
-            _appEventSourceFactory, _clientNotificationManager, _tcpIpListenerManager, _appLogger);
+            _appEventSourceFactory, _clientNotificationManager, _appLogger);
 
         // Assert
         Assert.That(m.Device, Is.Null);
@@ -66,7 +66,7 @@ internal class IpDeviceTcpIpClientStateMachineManagerTests
         //IOrderPipelineFactory orderPipelineFactory = new OrderPipelineFactory(_dateService, _appLogger);
 
         var m = new IpDeviceTcpIpClientStateMachineManager(duplexIoFactory, _monitorLoggerFactoryFactory, _logDataFactory, _appLoggerFactory,
-            _appEventSourceFactory, _clientNotificationManager, _tcpIpListenerManager, _appLogger);
+            _appEventSourceFactory, _clientNotificationManager, _appLogger);
 
         const string ip = "127.0.0.1";
         const int port = 9000;

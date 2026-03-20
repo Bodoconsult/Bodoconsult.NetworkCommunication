@@ -14,7 +14,7 @@ public abstract class BaseStateMachineDeviceBusinessLogicAdapter : IStateMachine
     /// Default ctor
     /// </summary>
     /// <param name="device">Current device</param>
-    protected BaseStateMachineDeviceBusinessLogicAdapter(IStateManagementDevice device)
+    protected BaseStateMachineDeviceBusinessLogicAdapter(IStateMachineDevice device)
     {
         ArgumentNullException.ThrowIfNull(device.OrderManager);
         IpDevice = IpDevice = device;
@@ -35,7 +35,7 @@ public abstract class BaseStateMachineDeviceBusinessLogicAdapter : IStateMachine
     /// <summary>
     /// Current device
     /// </summary>
-    public IStateManagementDevice Device { get; }
+    public IStateMachineDevice Device { get; }
 
     /// <summary>
     /// Current state factory
@@ -54,7 +54,7 @@ public abstract class BaseStateMachineDeviceBusinessLogicAdapter : IStateMachine
     /// <summary>
     /// Default method to handle a ComDevClose event in business logic
     /// </summary>
-    public virtual void DefaultHandleComDevCloseDelegate(IStateMachineState state)
+    public virtual void DefaultHandleComDevClose(IStateMachineState state)
     {
         // Do nothing
     }
@@ -62,7 +62,7 @@ public abstract class BaseStateMachineDeviceBusinessLogicAdapter : IStateMachine
     /// <summary>
     /// Default method to handle an error message received from the device in business logic
     /// </summary>
-    public virtual void DefaultHandleErrorMessageDelegate(IStateMachineState state, IInboundDataMessage message)
+    public virtual void DefaultHandleErrorMessage(IStateMachineState state, IInboundDataMessage message)
     {
         // Do nothing
     }
@@ -70,7 +70,7 @@ public abstract class BaseStateMachineDeviceBusinessLogicAdapter : IStateMachine
     /// <summary>
     /// Default method to handle an async received message
     /// </summary>
-    public virtual MessageHandlingResult DefaultHandleAsyncMessageDelegate(IStateMachineState state, IInboundDataMessage? message)
+    public virtual MessageHandlingResult DefaultHandleAsyncMessage(IStateMachineState state, IInboundDataMessage? message)
     {
         // Do nothing
         return MessageHandlingResultHelper.Success();
@@ -87,7 +87,7 @@ public abstract class BaseStateMachineDeviceBusinessLogicAdapter : IStateMachine
     /// <param name="stateName">Requested state name</param>
     /// <returns>State configuration</returns>
     /// <exception cref="ArgumentException">Thrown if configuration does not implement IJobStateConfiguration</exception>
-    protected static void CreateAndRegisterState(IStateManagementDevice device, IStateMachineStateFactory stateFactory, List<IParameterSet> parameterSets, string stateName)
+    protected static void CreateAndRegisterState(IStateMachineDevice device, IStateMachineStateFactory stateFactory, List<IParameterSet> parameterSets, string stateName)
     {
         var state = stateFactory.CreateInstance(device, stateName, parameterSets);
 

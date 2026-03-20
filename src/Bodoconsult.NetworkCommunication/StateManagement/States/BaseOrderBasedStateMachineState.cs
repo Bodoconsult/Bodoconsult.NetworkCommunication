@@ -18,7 +18,7 @@ public abstract class BaseOrderBasedStateMachineState : BaseStateMachineState, I
     /// <param name="currentContext">Current context</param>
     /// <param name="id">ID of the current state</param>
     /// <param name="name">Name of the current state</param>
-    protected BaseOrderBasedStateMachineState(IStateManagementDevice currentContext, int id, string name) : base(
+    protected BaseOrderBasedStateMachineState(IStateMachineDevice currentContext, int id, string name) : base(
         currentContext, id, name)
     {
         CurrentOrderIndex = 0;

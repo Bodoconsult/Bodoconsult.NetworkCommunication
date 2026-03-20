@@ -8,7 +8,7 @@ namespace Bodoconsult.NetworkCommunication.Devices;
 /// <summary>
 /// A basic device supporting state management and order management
 /// </summary>
-public class BasicStateMachineDevice : BaseStateManagementDevice
+public class BasicStateMachineDevice : BaseStateMachineDevice
 {
     /// <summary>
     /// Default ctor

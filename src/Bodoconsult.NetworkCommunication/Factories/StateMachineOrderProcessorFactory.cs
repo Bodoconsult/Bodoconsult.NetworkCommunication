@@ -58,7 +58,7 @@ public class StateMachineOrderProcessorFactory : IOrderProcessorFactory
     /// <returns>New instance of <see cref="IOrderProcessor"/></returns>
     public IOrderProcessor CreateInstance(IOrderManagementDevice device, IOrderPipeline orderPipeline)
     {
-        if (device is not IStateManagementDevice stateMachineDevice)
+        if (device is not IStateMachineDevice stateMachineDevice)
         {
             throw new ArgumentException("Device must be implement IStateMachineDevice");
         }

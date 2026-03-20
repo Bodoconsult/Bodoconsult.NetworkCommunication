@@ -1,6 +1,7 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
 using Bodoconsult.NetworkCommunication.App.Abstractions;
+using Bodoconsult.NetworkCommunication.StateManagement.Interfaces;
 
 namespace Bodoconsult.NetworkCommunication.Interfaces;
 
@@ -25,6 +26,11 @@ public interface IIpDevice
     ICentralClientNotificationManager ClientNotificationManager { get; }
 
     /// <summary>
+    /// Current <see cref="IDeviceBusinessLogicAdapter"/> instance
+    /// </summary>
+    IDeviceBusinessLogicAdapter? DeviceBusinessLogicAdapter { get; }
+
+    /// <summary>
     /// Is the device connected?
     /// </summary>
     bool IsConnected { get; }
@@ -40,6 +46,12 @@ public interface IIpDevice
     /// </summary>
     /// <param name="commAdapter">Current communication adapter</param>
     void LoadCommAdapter(ICommunicationAdapter commAdapter);
+
+    /// <summary>
+    /// Load the current <see cref="IDeviceBusinessLogicAdapter"/> instance
+    /// </summary>
+    /// <param name="businessLogicAdapter">Current <see cref="IDeviceBusinessLogicAdapter"/> instance</param>
+    void LoadDeviceBusinessLogicAdapter(IDeviceBusinessLogicAdapter businessLogicAdapter);
 
     /// <summary>
     /// Start the communication

@@ -42,9 +42,9 @@ public interface IIpDeviceConfigurator
     /// <summary>
     /// Configure the state management. Important: store state factory instance to device and config
     /// </summary>
-    /// <param name="deviceStateManagerFactory">Current factory for <see cref="IStateMachineDeviceBusinessLogicAdapter"/> instances</param>
+    /// <param name="businessLogicAdapterFactory">Current factory for <see cref="IStateMachineDeviceBusinessLogicAdapter"/> instances</param>
     /// <param name="stateMachineConfiguratorFactory">Current state machine configurator factory</param>
-    void ConfigureStateManagement(IDeviceBusinessLogicAdapterFactory deviceStateManagerFactory, 
+    void ConfigureStateManagement(IDeviceBusinessLogicAdapterFactory businessLogicAdapterFactory, 
         IStateMachineConfiguratorFactory stateMachineConfiguratorFactory);
 
     /// <summary>

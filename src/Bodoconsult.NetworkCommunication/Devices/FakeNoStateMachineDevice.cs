@@ -9,16 +9,16 @@ using Bodoconsult.NetworkCommunication.Interfaces;
 namespace Bodoconsult.NetworkCommunication.Devices;
 
 /// <summary>
-/// A fake device supporting order management
+/// A fake device supporting only order management and no state management
 /// </summary>
-public class FakeNoStateMachineDevice : BaseOrderManagementDevice, INoStateMachineOrderManagementDevice
+public class FakeOrderManagementDevice : BaseOrderManagementDevice, INoStateMachineOrderManagementDevice
 {
     /// <summary>
     /// Default ctor
     /// </summary>
     /// <param name="dataMessagingConfig">Current messaging config</param>
     /// <param name="clientNotificationManager">Current client notification manager</param>
-    public FakeNoStateMachineDevice(IDataMessagingConfig dataMessagingConfig, IOrderManagementClientNotificationManager clientNotificationManager) : base(dataMessagingConfig, clientNotificationManager)
+    public FakeOrderManagementDevice(IDataMessagingConfig dataMessagingConfig, IOrderManagementClientNotificationManager clientNotificationManager) : base(dataMessagingConfig, clientNotificationManager)
     { }
 
     /// <summary>

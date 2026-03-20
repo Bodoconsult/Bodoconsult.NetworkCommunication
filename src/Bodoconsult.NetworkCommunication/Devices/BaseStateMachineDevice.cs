@@ -11,7 +11,7 @@ namespace Bodoconsult.NetworkCommunication.Devices;
 /// <summary>
 /// Base class for order management devices
 /// </summary>
-public abstract class BaseStateManagementDevice : BaseOrderManagementDevice, IStateManagementDevice
+public abstract class BaseStateMachineDevice : BaseOrderManagementDevice, IStateMachineDevice
 {
     private readonly ConcurrentQueue<IJobStateMachineState> _concurrentQueue = new();
 
@@ -27,12 +27,17 @@ public abstract class BaseStateManagementDevice : BaseOrderManagementDevice, ISt
     /// <param name="dataMessagingConfig">Current messaging config</param>
     /// <param name="clientNotificationManager">Current client notification manager</param>
     /// <param name="deviceStateCheckManager">Current device state check manager instances</param>
-    protected BaseStateManagementDevice(IDataMessagingConfig dataMessagingConfig,
+    protected BaseStateMachineDevice(IDataMessagingConfig dataMessagingConfig,
         IOrderManagementClientNotificationManager clientNotificationManager,
         IDeviceStateCheckManager deviceStateCheckManager) : base(dataMessagingConfig, clientNotificationManager)
     {
         DeviceStateCheckManager = deviceStateCheckManager;
     }
+
+    /// <summary>
+    /// Current <see cref="IOrderManagementDeviceBusinessLogicAdapter"/> instance
+    /// </summary>
+    public IStateMachineDeviceBusinessLogicAdapter? StateMachineDeviceBusinessLogicAdapter;
 
     /// <summary>
     /// The current state
@@ -299,19 +304,5 @@ public abstract class BaseStateManagementDevice : BaseOrderManagementDevice, ISt
         }
 
         SavedJobState = js;
-    }
-
-    /// <summary>
-    /// Current <see cref="IStateMachineDeviceBusinessLogicAdapter"/> instance
-    /// </summary>
-    public IStateMachineDeviceBusinessLogicAdapter? DeviceBusinessLogicAdapter { get; private set; }
-
-    /// <summary>
-    /// Load the current <see cref="IStateMachineDeviceBusinessLogicAdapter"/> instance
-    /// </summary>
-    /// <param name="deviceBusinessLogicAdapter">Current <see cref="IStateMachineDeviceBusinessLogicAdapter"/> instance</param>
-    public void LoadDeviceBusinessLogicAdapter(IStateMachineDeviceBusinessLogicAdapter deviceBusinessLogicAdapter)
-    {
-        DeviceBusinessLogicAdapter = deviceBusinessLogicAdapter;
     }
 }

@@ -16,7 +16,7 @@ public class OrderlessActionStateMachineState : BaseStateMachineState, IOrderles
     /// <param name="currentContext">Current context</param>
     /// <param name="id">ID of the current state</param>
     /// <param name="name">Name of the current state</param>
-    public OrderlessActionStateMachineState(IStateManagementDevice currentContext, int id, string name) : base(currentContext, id, name)
+    public OrderlessActionStateMachineState(IStateMachineDevice currentContext, int id, string name) : base(currentContext, id, name)
     { }
 
     /// <summary>

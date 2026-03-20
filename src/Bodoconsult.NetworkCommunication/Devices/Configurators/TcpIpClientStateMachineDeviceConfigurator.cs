@@ -25,7 +25,7 @@ public class TcpIpClientStateMachineDeviceConfigurator : BaseIpDeviceConfigurato
     private readonly IAppLoggerProxyFactory _appLoggerFactory;
     private readonly IAppLoggerProxy _appLoggerProxy;
 
-    private IStateManagementDevice? _stateManagementDevice;
+    private IStateMachineDevice? _stateManagementDevice;
 
     /// <summary>
     /// Default ctor
@@ -103,9 +103,9 @@ public class TcpIpClientStateMachineDeviceConfigurator : BaseIpDeviceConfigurato
         var factory = new BasicManagementDeviceFactory(_clientNotificationManager, commAdapterFactory);
         Device = factory.CreateInstance(DataMessagingConfig);
 
-        if (Device is not IStateManagementDevice smd)
+        if (Device is not IStateMachineDevice smd)
         {
-            throw new ArgumentException($"Device must implement {nameof(IStateManagementDevice)}");
+            throw new ArgumentException($"Device must implement {nameof(IStateMachineDevice)}");
         }
 
         _stateManagementDevice = smd;
@@ -137,9 +137,15 @@ public class TcpIpClientStateMachineDeviceConfigurator : BaseIpDeviceConfigurato
         ArgumentNullException.ThrowIfNull(DataMessagingConfig?.StateMachineProcessingPackage, "DataMessagingConfig or StateMachineProcessingPackage is null");
 
         var dsm = deviceBusinessLogicAdapterFactory.CreateInstance(_stateManagementDevice);
-        _stateManagementDevice.LoadDeviceBusinessLogicAdapter(dsm);
 
-        var configurator = stateMachineConfiguratorFactory.CreateInstance(dsm);
+        if (dsm is not IStateMachineDeviceBusinessLogicAdapter adapter)
+        {
+            throw new ArgumentException("dsm is not implementing " + nameof(IStateMachineDeviceBusinessLogicAdapter));
+        }
+
+        _stateManagementDevice.LoadDeviceBusinessLogicAdapter(adapter);
+
+        var configurator = stateMachineConfiguratorFactory.CreateInstance(adapter);
         configurator.ConfigureFactory();
         var stateFactory = configurator.BuildFactory();
 

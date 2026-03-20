@@ -15,7 +15,7 @@ public class JobStateMachineState : BaseOrderBasedStateMachineState, IJobStateMa
     /// <param name="currentContext">Current context</param>
     /// <param name="id">ID of the current state</param>
     /// <param name="name">Name of the current state</param>
-    public JobStateMachineState(IStateManagementDevice currentContext, int id, string name) : base(currentContext, id, name)
+    public JobStateMachineState(IStateMachineDevice currentContext, int id, string name) : base(currentContext, id, name)
     { }
 
     /// <summary>

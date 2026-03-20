@@ -14,7 +14,7 @@ namespace IpCommunicationSample.Backend.Bll.StateManagement.Configurators;
 /// </summary>
 public class TncpStateMachineConfigurator : BaseStateMachineConfigurator
 {
-    private readonly IBackendDeviceBusinessLogicAdapter _deviceBusinessLogicAdapter;
+    private readonly IBackendTcpIpDeviceBusinessLogicAdapter _deviceBusinessLogicAdapter;
 
     /// <summary>
     /// Default ctor
@@ -22,9 +22,9 @@ public class TncpStateMachineConfigurator : BaseStateMachineConfigurator
     /// <param name="deviceBusinessLogicAdapter">Current device state manager</param>
     public TncpStateMachineConfigurator(IStateMachineDeviceBusinessLogicAdapter deviceBusinessLogicAdapter) : base(deviceBusinessLogicAdapter)
     {
-        if (deviceBusinessLogicAdapter is not IBackendDeviceBusinessLogicAdapter dsm)
+        if (deviceBusinessLogicAdapter is not IBackendTcpIpDeviceBusinessLogicAdapter dsm)
         {
-            throw new ArgumentException($"deviceBusinessLogicAdapter must have type {nameof(IBackendDeviceBusinessLogicAdapter)}");
+            throw new ArgumentException($"deviceBusinessLogicAdapter must have type {nameof(IBackendTcpIpDeviceBusinessLogicAdapter)}");
         }
 
         _deviceBusinessLogicAdapter = dsm;
@@ -52,9 +52,9 @@ public class TncpStateMachineConfigurator : BaseStateMachineConfigurator
         var config = new JobStateConfiguration(DefaultStateNames.DeviceInitState, new DeviceInitStateBuilder())
         {
             CurrentContext = DeviceBusinessLogicAdapter.Device,
-            HandleAsyncMessageDelegate = _deviceBusinessLogicAdapter.DefaultHandleAsyncMessageDelegate,
-            HandleComDevCloseDelegate = _deviceBusinessLogicAdapter.DefaultHandleComDevCloseDelegate,
-            HandleErrorMessageDelegate = _deviceBusinessLogicAdapter.DefaultHandleErrorMessageDelegate,
+            HandleAsyncMessageDelegate = _deviceBusinessLogicAdapter.DefaultHandleAsyncMessage,
+            HandleComDevCloseDelegate = _deviceBusinessLogicAdapter.DefaultHandleComDevClose,
+            HandleErrorMessageDelegate = _deviceBusinessLogicAdapter.DefaultHandleErrorMessage,
             HandleRegularStateRequestAnswerDelegate = DelegateHelper.HandleRegularStateRequestAnswerDelegate,
             PrepareRegularStateRequestDelegate = DelegateHelper.PrepareRegularStateRequestDelegate,
             OrderFinishedSucessfullyDelegate = _deviceBusinessLogicAdapter.DeviceInitSuccessfully,
@@ -71,9 +71,9 @@ public class TncpStateMachineConfigurator : BaseStateMachineConfigurator
         var config = new JobStateConfiguration(DefaultStateNames.DeviceStopSnapshotState, new DeviceStopSnapshotStateBuilder())
         {
             CurrentContext = DeviceBusinessLogicAdapter.Device,
-            HandleAsyncMessageDelegate = _deviceBusinessLogicAdapter.DefaultHandleAsyncMessageDelegate,
-            HandleComDevCloseDelegate = _deviceBusinessLogicAdapter.DefaultHandleComDevCloseDelegate,
-            HandleErrorMessageDelegate = _deviceBusinessLogicAdapter.DefaultHandleErrorMessageDelegate,
+            HandleAsyncMessageDelegate = _deviceBusinessLogicAdapter.DefaultHandleAsyncMessage,
+            HandleComDevCloseDelegate = _deviceBusinessLogicAdapter.DefaultHandleComDevClose,
+            HandleErrorMessageDelegate = _deviceBusinessLogicAdapter.DefaultHandleErrorMessage,
             HandleRegularStateRequestAnswerDelegate = DelegateHelper.HandleRegularStateRequestAnswerDelegate,
             PrepareRegularStateRequestDelegate = DelegateHelper.PrepareRegularStateRequestDelegate,
             OrderFinishedSucessfullyDelegate = _deviceBusinessLogicAdapter.StopSnapshotSuccessfully,
@@ -101,9 +101,9 @@ public class TncpStateMachineConfigurator : BaseStateMachineConfigurator
         var config = new JobStateConfiguration(DefaultStateNames.DeviceStartSnapshotState, new DeviceStartSnapshotStateBuilder())
         {
             CurrentContext = DeviceBusinessLogicAdapter.Device,
-            HandleAsyncMessageDelegate = _deviceBusinessLogicAdapter.DefaultHandleAsyncMessageDelegate,
-            HandleComDevCloseDelegate = _deviceBusinessLogicAdapter.DefaultHandleComDevCloseDelegate,
-            HandleErrorMessageDelegate = _deviceBusinessLogicAdapter.DefaultHandleErrorMessageDelegate,
+            HandleAsyncMessageDelegate = _deviceBusinessLogicAdapter.DefaultHandleAsyncMessage,
+            HandleComDevCloseDelegate = _deviceBusinessLogicAdapter.DefaultHandleComDevClose,
+            HandleErrorMessageDelegate = _deviceBusinessLogicAdapter.DefaultHandleErrorMessage,
             HandleRegularStateRequestAnswerDelegate = DelegateHelper.HandleRegularStateRequestAnswerDelegate,
             PrepareRegularStateRequestDelegate = DelegateHelper.PrepareRegularStateRequestDelegate,
             OrderFinishedSucessfullyDelegate = _deviceBusinessLogicAdapter.StartSnapshotSuccessfully,
@@ -120,9 +120,9 @@ public class TncpStateMachineConfigurator : BaseStateMachineConfigurator
         var config = new JobStateConfiguration(DefaultStateNames.DeviceStopStreamingState, new DeviceStopStreamingStateBuilder())
         {
             CurrentContext = DeviceBusinessLogicAdapter.Device,
-            HandleAsyncMessageDelegate = _deviceBusinessLogicAdapter.DefaultHandleAsyncMessageDelegate,
-            HandleComDevCloseDelegate = _deviceBusinessLogicAdapter.DefaultHandleComDevCloseDelegate,
-            HandleErrorMessageDelegate = _deviceBusinessLogicAdapter.DefaultHandleErrorMessageDelegate,
+            HandleAsyncMessageDelegate = _deviceBusinessLogicAdapter.DefaultHandleAsyncMessage,
+            HandleComDevCloseDelegate = _deviceBusinessLogicAdapter.DefaultHandleComDevClose,
+            HandleErrorMessageDelegate = _deviceBusinessLogicAdapter.DefaultHandleErrorMessage,
             HandleRegularStateRequestAnswerDelegate = DelegateHelper.HandleRegularStateRequestAnswerDelegate,
             PrepareRegularStateRequestDelegate = DelegateHelper.PrepareRegularStateRequestDelegate,
             OrderFinishedSucessfullyDelegate = _deviceBusinessLogicAdapter.StopStreamingSuccessfully,
@@ -150,9 +150,9 @@ public class TncpStateMachineConfigurator : BaseStateMachineConfigurator
         var config = new JobStateConfiguration(DefaultStateNames.DeviceStartStreamingState, new DeviceStartStreamingStateBuilder())
         {
             CurrentContext = DeviceBusinessLogicAdapter.Device,
-            HandleAsyncMessageDelegate = _deviceBusinessLogicAdapter.DefaultHandleAsyncMessageDelegate,
-            HandleComDevCloseDelegate = _deviceBusinessLogicAdapter.DefaultHandleComDevCloseDelegate,
-            HandleErrorMessageDelegate = _deviceBusinessLogicAdapter.DefaultHandleErrorMessageDelegate,
+            HandleAsyncMessageDelegate = _deviceBusinessLogicAdapter.DefaultHandleAsyncMessage,
+            HandleComDevCloseDelegate = _deviceBusinessLogicAdapter.DefaultHandleComDevClose,
+            HandleErrorMessageDelegate = _deviceBusinessLogicAdapter.DefaultHandleErrorMessage,
             HandleRegularStateRequestAnswerDelegate = DelegateHelper.HandleRegularStateRequestAnswerDelegate,
             PrepareRegularStateRequestDelegate = DelegateHelper.PrepareRegularStateRequestDelegate,
             OrderFinishedSucessfullyDelegate = _deviceBusinessLogicAdapter.StartStreamingSuccessfully,

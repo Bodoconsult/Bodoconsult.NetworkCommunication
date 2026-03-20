@@ -151,7 +151,7 @@ public class FakeOrderProcessor : IOrderProcessor
     {
         AsyncHelper.FireAndForget(() =>
         {
-            if (CurrentDevice is IStateManagementDevice { CurrentState: IOrderBasedActionStateMachineState obas })
+            if (CurrentDevice is IStateMachineDevice { CurrentState: IOrderBasedActionStateMachineState obas })
             {
                 obas.OrderFinishedSucessfully(order.Id);
             }
@@ -167,7 +167,7 @@ public class FakeOrderProcessor : IOrderProcessor
     {
         AsyncHelper.FireAndForget(() =>
         {
-            if (CurrentDevice is IStateManagementDevice { CurrentState: IOrderBasedActionStateMachineState obas })
+            if (CurrentDevice is IStateMachineDevice { CurrentState: IOrderBasedActionStateMachineState obas })
             {
                 obas.OrderFinishedSucessfully(order.Id);
             }

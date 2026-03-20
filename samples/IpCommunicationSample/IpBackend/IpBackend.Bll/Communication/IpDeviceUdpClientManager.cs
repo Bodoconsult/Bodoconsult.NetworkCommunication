@@ -51,9 +51,9 @@ public class IpDeviceUdpClientManager : IDeviceManager
     }
 
     /// <summary>
-    /// Current <see cref="IStateMachineDeviceBusinessLogicAdapter"/> instance
+    /// Current <see cref="ISimpleDeviceBusinessLogicAdapter"/> instance
     /// </summary>
-    public IStateMachineDeviceBusinessLogicAdapter? DeviceBusinessLogicAdapter{ get; private set; }
+    public ISimpleDeviceBusinessLogicAdapter? DeviceBusinessLogicAdapter{ get; private set; }
 
     /// <summary>
     /// Current device
@@ -74,9 +74,14 @@ public class IpDeviceUdpClientManager : IDeviceManager
         configurator.CreateMessagingConfig("IPDevice_UDP", ipAddress, port, messageProcessingPackageFactory);
         configurator.CreateDevice();
 
-        var device = (IStateManagementDevice)configurator.GetDevice();
+        var device = configurator.GetDevice();
+
+        if (device.DeviceBusinessLogicAdapter is not ISimpleDeviceBusinessLogicAdapter dbla)
+        {
+            throw new ArgumentNullException($"device.DeviceBusinessLogicAdapter does not implement {nameof(ISimpleDeviceBusinessLogicAdapter)}");
+        }
 
         IpDevice = device;
-        DeviceBusinessLogicAdapter= device.DeviceBusinessLogicAdapter;
+        DeviceBusinessLogicAdapter= dbla;
     }
 }

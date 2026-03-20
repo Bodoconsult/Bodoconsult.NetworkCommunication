@@ -12,7 +12,7 @@ namespace IpCommunicationSample.Backend.Bll.Communication;
 /// <summary>
 /// Handles the TCP/IP channel between backend and client (server side)
 /// </summary>
-public class ClientTcpIpServerManager : IDeviceManager
+public class ClientTcpIpServerManager : ISimpleDeviceManager
 {
     private readonly IDuplexIoFactory _duplexIoFactory;
     private readonly IAppEventSourceFactory _appEventSourceFactory;
@@ -23,7 +23,6 @@ public class ClientTcpIpServerManager : IDeviceManager
     private readonly IAppLoggerProxyFactory _appLoggerFactory;
     private readonly IAppLoggerProxy _appLoggerProxy;
     private readonly IOrderManagerFactory _orderManagerFactory;
-
 
     /// <summary>
     /// Default ctor
@@ -62,12 +61,12 @@ public class ClientTcpIpServerManager : IDeviceManager
     /// <summary>
     /// Current device
     /// </summary>
-    public IStateManagementDevice? Device { get; private set; }
+    public IStateMachineDevice? Device { get; private set; }
 
     /// <summary>
     /// Current <see cref="IStateMachineDeviceBusinessLogicAdapter"/> instance
     /// </summary>
-    public IStateMachineDeviceBusinessLogicAdapter? DeviceBusinessLogicAdapter{ get; private set; }
+    public ISimpleDeviceBusinessLogicAdapter? DeviceBusinessLogicAdapter { get; private set; }
 
     /// <summary>
     /// Current device
@@ -89,9 +88,14 @@ public class ClientTcpIpServerManager : IDeviceManager
         configurator.CreateDevice();
         configurator.ConfigureOrderManagement(_orderManagerFactory);
 
-        var device = (IStateManagementDevice)configurator.GetDevice();
+        var device = configurator.GetDevice();
 
-        Device = device;
-        DeviceBusinessLogicAdapter= device.DeviceBusinessLogicAdapter;
+        if (device.DeviceBusinessLogicAdapter is not ISimpleDeviceBusinessLogicAdapter dbla)
+        {
+            throw new ArgumentNullException($"device.DeviceBusinessLogicAdapter does not implement {nameof(ISimpleDeviceBusinessLogicAdapter)}");
+        }
+
+        IpDevice = device;
+        DeviceBusinessLogicAdapter = dbla;
     }
 }

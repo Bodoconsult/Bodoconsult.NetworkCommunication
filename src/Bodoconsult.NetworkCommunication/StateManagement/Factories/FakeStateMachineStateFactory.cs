@@ -24,7 +24,7 @@ public class FakeStateMachineStateFactory : IStateMachineStateFactory
     /// <param name="currentContext">Current context</param>
     /// <param name="stateName">Name of the request state</param>
     /// <returns>State instance of the requested type</returns>
-    public IStateMachineState CreateInstance(IStateManagementDevice currentContext, string stateName)
+    public IStateMachineState CreateInstance(IStateMachineDevice currentContext, string stateName)
     {
         throw new NotSupportedException();
     }
@@ -36,7 +36,7 @@ public class FakeStateMachineStateFactory : IStateMachineStateFactory
     /// <param name="stateName">Name of the request state</param>
     /// <param name="parameterSets">Current parametersets to load in the orders to execute (if needed)</param>
     /// <returns>State instance of the requested type</returns>
-    public IStateMachineState CreateInstance(IStateManagementDevice currentContext, string stateName, List<IParameterSet> parameterSets)
+    public IStateMachineState CreateInstance(IStateMachineDevice currentContext, string stateName, List<IParameterSet> parameterSets)
     {
         throw new NotImplementedException();
     }
