@@ -12,5 +12,5 @@ public interface IStateMachineConfiguratorFactory
     /// </summary>
     /// <param name="deviceManagerState">Current device manager state</param>
     /// <returns></returns>
-    IStateMachineConfigurator CreateInstance(IDeviceStateManager deviceManagerState);
+    IStateMachineConfigurator CreateInstance(IStateMachineDeviceBusinessLogicAdapter deviceManagerState);
 }

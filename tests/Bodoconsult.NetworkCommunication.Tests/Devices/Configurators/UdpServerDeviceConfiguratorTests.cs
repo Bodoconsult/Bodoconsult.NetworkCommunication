@@ -1,10 +1,14 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
+using Bodoconsult.App.Abstractions.Interfaces;
 using Bodoconsult.App.Factories;
+using Bodoconsult.App.Logging;
 using Bodoconsult.NetworkCommunication.App.Abstractions;
 using Bodoconsult.NetworkCommunication.ClientNotifications;
+using Bodoconsult.NetworkCommunication.DataMessaging.DataMessageProcessingPackages;
 using Bodoconsult.NetworkCommunication.Devices.Configurators;
 using Bodoconsult.NetworkCommunication.Factories;
+using Bodoconsult.NetworkCommunication.Interfaces;
 using Bodoconsult.NetworkCommunication.Tests.App;
 using Bodoconsult.NetworkCommunication.Tests.Helpers;
 
@@ -13,9 +17,20 @@ namespace Bodoconsult.NetworkCommunication.Tests.Devices.Configurators;
 [TestFixture]
 internal class UdpServerDeviceConfiguratorTests
 {
-    private readonly DoNothingOrderManagementClientNotificationManager _clientNotificationManager = new();
+    private readonly IMonitorLoggerFactoryFactory _monitorLoggerFactoryFactory = new MonitorLoggerFactoryFactory(Globals.Instance);
+    private readonly IAppLoggerProxy _appLoggerProxy = TestDataHelper.GetFakeAppLoggerProxy();
+    private readonly ISendPacketProcessFactory _sendPacketProcessFactory = new FakeSendPacketProcessFactory();
     private readonly FakeAppEventSourceFactory _appEventSourceFactory = new();
-    private readonly FakeSendPacketProcessFactory _sendPacketProcessFactory = new();
+    private readonly LogDataFactory _logDataFactory = TestDataHelper.LogDataFactory;
+    private readonly AppLoggerProxyFactory _appLoggerFactory = new();
+    private readonly DoNothingOrderManagementClientNotificationManager _clientNotificationManager = new();
+    private readonly IDataMessageProcessingPackageFactory _messageProcessingPackageFactory = new TncpDataMessageProcessingPackageFactory();
+
+    [OneTimeTearDown]
+    public void Cleanup()
+    {
+        _appLoggerProxy.Dispose();
+    }
 
     [Test]
     public void Ctor_ValidSetup_PropsSetCorrectly()
@@ -24,7 +39,8 @@ internal class UdpServerDeviceConfiguratorTests
         var duplexIoFactory = new IpDuplexIoFactory(_sendPacketProcessFactory);
 
         // Act  
-        var conf = new UdpServerDeviceConfigurator(duplexIoFactory, _appEventSourceFactory, _clientNotificationManager);
+        var conf = new UdpServerDeviceConfigurator(duplexIoFactory, _monitorLoggerFactoryFactory, _logDataFactory, 
+            _appLoggerFactory, _appEventSourceFactory, _clientNotificationManager, _appLoggerProxy);
 
         // Assert
         Assert.That(conf.DataMessagingConfig, Is.Null);
@@ -36,14 +52,15 @@ internal class UdpServerDeviceConfiguratorTests
     {
         // Arrange 
         var duplexIoFactory = new IpDuplexIoFactory(_sendPacketProcessFactory);
-        
-        var conf = new UdpServerDeviceConfigurator(duplexIoFactory, _appEventSourceFactory, _clientNotificationManager);
+
+        var conf = new UdpServerDeviceConfigurator(duplexIoFactory, _monitorLoggerFactoryFactory, _logDataFactory,
+            _appLoggerFactory, _appEventSourceFactory, _clientNotificationManager, _appLoggerProxy);
 
         const string ip = "127.0.0.1";
         const int port = 9000;
 
         // Act  
-        conf.CreateMessagingConfig("TestDevice", ip, port);
+        conf.CreateMessagingConfig("TestDevice", ip, port, _messageProcessingPackageFactory);
 
         // Assert
         Assert.That(conf.DataMessagingConfig, Is.Not.Null);
@@ -60,8 +77,9 @@ internal class UdpServerDeviceConfiguratorTests
         // Arrange 
         var duplexIoFactory = new IpDuplexIoFactory(_sendPacketProcessFactory);
 
-        var conf = new UdpServerDeviceConfigurator(duplexIoFactory, _appEventSourceFactory, _clientNotificationManager);
-        conf.CreateMessagingConfig("TestDevice", "127.0.0.1", 9000);
+        var conf = new UdpServerDeviceConfigurator(duplexIoFactory, _monitorLoggerFactoryFactory, _logDataFactory,
+            _appLoggerFactory, _appEventSourceFactory, _clientNotificationManager, _appLoggerProxy);
+        conf.CreateMessagingConfig("TestDevice", "127.0.0.1", 9000, _messageProcessingPackageFactory);
 
         // Act  
         conf.CreateDevice();

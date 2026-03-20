@@ -10,7 +10,7 @@ public interface IStateMachineConfigurator
     /// <summary>
     /// Current manager for state management devices
     /// </summary>
-    IDeviceStateManager DeviceStateManager { get; }
+    IStateMachineDeviceBusinessLogicAdapter DeviceBusinessLogicAdapter{ get; }
 
     /// <summary>
     /// Configure the factory as required

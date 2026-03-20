@@ -25,7 +25,8 @@ public interface IIpDeviceConfigurator
     /// <param name="loggerId">Logger ID</param>
     /// <param name="ipAddress">IP address</param>
     /// <param name="port">Port</param>
-    void CreateMessagingConfig(string loggerId, string ipAddress, int port);
+    /// <param name="messageProcessingPackageFactory">Current data messaging package factory</param>
+    void CreateMessagingConfig(string loggerId, string ipAddress, int port, IDataMessageProcessingPackageFactory messageProcessingPackageFactory);
 
     /// <summary>
     /// Create the device with basic settings
@@ -41,9 +42,9 @@ public interface IIpDeviceConfigurator
     /// <summary>
     /// Configure the state management. Important: store state factory instance to device and config
     /// </summary>
-    /// <param name="deviceStateManagerFactory">Current factory for <see cref="IDeviceStateManager"/> instances</param>
+    /// <param name="deviceStateManagerFactory">Current factory for <see cref="IStateMachineDeviceBusinessLogicAdapter"/> instances</param>
     /// <param name="stateMachineConfiguratorFactory">Current state machine configurator factory</param>
-    void ConfigureStateManagement(IDeviceStateManagerFactory deviceStateManagerFactory, 
+    void ConfigureStateManagement(IDeviceBusinessLogicAdapterFactory deviceStateManagerFactory, 
         IStateMachineConfiguratorFactory stateMachineConfiguratorFactory);
 
     /// <summary>

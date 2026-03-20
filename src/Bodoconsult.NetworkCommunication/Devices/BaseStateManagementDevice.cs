@@ -302,16 +302,16 @@ public abstract class BaseStateManagementDevice : BaseOrderManagementDevice, ISt
     }
 
     /// <summary>
-    /// Current <see cref="IDeviceStateManager"/> instance
+    /// Current <see cref="IStateMachineDeviceBusinessLogicAdapter"/> instance
     /// </summary>
-    public IDeviceStateManager? DeviceStateManager { get; private set; }
+    public IStateMachineDeviceBusinessLogicAdapter? DeviceBusinessLogicAdapter { get; private set; }
 
     /// <summary>
-    /// Load the current <see cref="IDeviceStateManager"/> instance
+    /// Load the current <see cref="IStateMachineDeviceBusinessLogicAdapter"/> instance
     /// </summary>
-    /// <param name="deviceStateManager">Current <see cref="IDeviceStateManager"/> instance</param>
-    public void LoadDeviceStateManager(IDeviceStateManager deviceStateManager)
+    /// <param name="deviceBusinessLogicAdapter">Current <see cref="IStateMachineDeviceBusinessLogicAdapter"/> instance</param>
+    public void LoadDeviceBusinessLogicAdapter(IStateMachineDeviceBusinessLogicAdapter deviceBusinessLogicAdapter)
     {
-        DeviceStateManager = deviceStateManager;
+        DeviceBusinessLogicAdapter = deviceBusinessLogicAdapter;
     }
 }

@@ -6,17 +6,18 @@ using Bodoconsult.NetworkCommunication.StateManagement.Interfaces;
 namespace Bodoconsult.NetworkCommunication.StateManagement;
 
 /// <summary>
-/// Base class for <see cref="IDeviceStateManager"/> implementations
+/// Base class for <see cref="IStateMachineDeviceBusinessLogicAdapter"/> implementations
 /// </summary>
-public abstract class BaseDeviceStateManager: IDeviceStateManager
+public abstract class BaseStateMachineDeviceBusinessLogicAdapter : IStateMachineDeviceBusinessLogicAdapter
 {
     /// <summary>
     /// Default ctor
     /// </summary>
     /// <param name="device">Current device</param>
-    protected BaseDeviceStateManager(IStateManagementDevice device)
+    protected BaseStateMachineDeviceBusinessLogicAdapter(IStateManagementDevice device)
     {
         ArgumentNullException.ThrowIfNull(device.OrderManager);
+        IpDevice = IpDevice = device;
         Device = device;
         OrderFactory = device.OrderManager.OrderFactory;
     }
@@ -25,6 +26,11 @@ public abstract class BaseDeviceStateManager: IDeviceStateManager
     /// Current order factory
     /// </summary>
     protected IOrderFactory? OrderFactory;
+
+    /// <summary>
+    /// Current device
+    /// </summary>
+    public IIpDevice IpDevice { get; }
 
     /// <summary>
     /// Current device
@@ -46,13 +52,28 @@ public abstract class BaseDeviceStateManager: IDeviceStateManager
     }
 
     /// <summary>
-    /// Load the state factory
+    /// Default method to handle a ComDevClose event in business logic
     /// </summary>
-    /// <param name="device">Current device</param>
-    public void LoadDevice(IStateManagementDevice device)
+    public virtual void DefaultHandleComDevCloseDelegate(IStateMachineState state)
     {
-        
+        // Do nothing
+    }
 
+    /// <summary>
+    /// Default method to handle an error message received from the device in business logic
+    /// </summary>
+    public virtual void DefaultHandleErrorMessageDelegate(IStateMachineState state, IInboundDataMessage message)
+    {
+        // Do nothing
+    }
+
+    /// <summary>
+    /// Default method to handle an async received message
+    /// </summary>
+    public virtual MessageHandlingResult DefaultHandleAsyncMessageDelegate(IStateMachineState state, IInboundDataMessage? message)
+    {
+        // Do nothing
+        return MessageHandlingResultHelper.Success();
     }
 
     #region Static helper methods

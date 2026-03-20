@@ -18,20 +18,37 @@ public class UdpServerDeviceConfigurator : BaseIpDeviceConfigurator
     private readonly IDuplexIoFactory _duplexIoFactory;
     private readonly IAppEventSourceFactory _appEventSourceFactory;
     private readonly ICentralClientNotificationManager _clientNotificationManager;
-    
+    private readonly IMonitorLoggerFactoryFactory _monitorLoggerFactoryFactory;
+    private readonly ILogDataFactory _logDataFactory;
+    private readonly IAppLoggerProxyFactory _appLoggerFactory;
+    private readonly IAppLoggerProxy _appLoggerProxy;
+
     /// <summary>
     /// Default ctor
     /// </summary>
     /// <param name="duplexIoFactory">Current factory for <see cref="IDuplexIo"/> instances</param>
+    /// <param name="logDataFactory">Current log data factory</param>
+    /// <param name="appLoggerFactory">Current logger proxy factory</param>
     /// <param name="appEventSourceFactory">Current factory for <see cref="IAppEventSource"/> instances</param>
     /// <param name="clientNotificationManager">Current client notification manager instance</param>
+    /// <param name="monitorLoggerFactoryFactory">Current factory for monitor logger factories</param>
+    /// <param name="appLoggerProxy">Current app logger</param>
     public UdpServerDeviceConfigurator(IDuplexIoFactory duplexIoFactory,
+        IMonitorLoggerFactoryFactory monitorLoggerFactoryFactory,
+        ILogDataFactory logDataFactory,
+        IAppLoggerProxyFactory appLoggerFactory,
         IAppEventSourceFactory appEventSourceFactory,
-        ICentralClientNotificationManager clientNotificationManager)
+        IOrderManagementClientNotificationManager clientNotificationManager,
+        IAppLoggerProxy appLoggerProxy)
     {
         _duplexIoFactory = duplexIoFactory;
         _appEventSourceFactory = appEventSourceFactory;
         _clientNotificationManager = clientNotificationManager;
+        _monitorLoggerFactoryFactory = monitorLoggerFactoryFactory;
+        _appLoggerFactory = appLoggerFactory;
+        _appEventSourceFactory = appEventSourceFactory;
+        _logDataFactory = logDataFactory;
+        _appLoggerProxy = appLoggerProxy;
     }
 
     /// <summary>
@@ -40,10 +57,19 @@ public class UdpServerDeviceConfigurator : BaseIpDeviceConfigurator
     /// <param name="loggerId">Logger ID</param>
     /// <param name="ipAddress">IP address</param>
     /// <param name="port">Port</param>
-    public override void CreateMessagingConfig(string loggerId, string ipAddress, int port)
+    /// <param name="messageProcessingPackageFactory"></param>
+    public override void CreateMessagingConfig(string loggerId, string ipAddress, int port,
+        IDataMessageProcessingPackageFactory messageProcessingPackageFactory)
     {
+        if (loggerId.Length == 0)
+        {
+            loggerId = $"{loggerId}_{port}";
+        }
+
         DataMessagingConfig = new DefaultDataMessagingConfig();
-        DataMessagingConfig.LoggerId = loggerId;
+        DataMessagingConfig.LoggerId = loggerId.Replace(" ", "");
+        DataMessagingConfig.AppLogger = _appLoggerProxy;
+        DataMessagingConfig.MonitorLogger = CreateMonitorLogger(_monitorLoggerFactoryFactory, _appLoggerFactory, _logDataFactory, DataMessagingConfig.LoggerId);
         DataMessagingConfig.IpAddress = ipAddress;
         DataMessagingConfig.Port = port;
         DataMessagingConfig.IpProtocol = IpProtocolEnum.Udp;

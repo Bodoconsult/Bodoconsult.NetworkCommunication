@@ -2,7 +2,6 @@
 
 using Bodoconsult.App.Abstractions.Interfaces;
 using Bodoconsult.NetworkCommunication.App.Abstractions;
-using Bodoconsult.NetworkCommunication.DataMessaging.DataMessageProcessingPackages;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig;
 using Bodoconsult.NetworkCommunication.EnumAndStates;
 using Bodoconsult.NetworkCommunication.Factories;
@@ -21,7 +20,6 @@ public class TcpIpClientStateMachineDeviceConfigurator : BaseIpDeviceConfigurato
     private readonly IDuplexIoFactory _duplexIoFactory;
     private readonly IAppEventSourceFactory _appEventSourceFactory;
     private readonly IOrderManagementClientNotificationManager _clientNotificationManager;
-    private readonly ITcpIpListenerManager _tcpIpListenerManager;
     private readonly IMonitorLoggerFactoryFactory _monitorLoggerFactoryFactory;
     private readonly ILogDataFactory _logDataFactory;
     private readonly IAppLoggerProxyFactory _appLoggerFactory;
@@ -37,7 +35,6 @@ public class TcpIpClientStateMachineDeviceConfigurator : BaseIpDeviceConfigurato
     /// <param name="appLoggerFactory">Current logger proxy factory</param>
     /// <param name="appEventSourceFactory">Current factory for <see cref="IAppEventSource"/> instances</param>
     /// <param name="clientNotificationManager">Current client notification manager instance</param>
-    /// <param name="tcpIpListenerManager">Current TCP/IP listener manager</param>
     /// <param name="monitorLoggerFactoryFactory">Current factory for monitor logger factories</param>
     /// <param name="appLoggerProxy">Current app logger</param>
     public TcpIpClientStateMachineDeviceConfigurator(IDuplexIoFactory duplexIoFactory,
@@ -46,13 +43,11 @@ public class TcpIpClientStateMachineDeviceConfigurator : BaseIpDeviceConfigurato
         IAppLoggerProxyFactory appLoggerFactory,
         IAppEventSourceFactory appEventSourceFactory,
         IOrderManagementClientNotificationManager clientNotificationManager,
-        ITcpIpListenerManager tcpIpListenerManager,
         IAppLoggerProxy appLoggerProxy)
     {
         _duplexIoFactory = duplexIoFactory;
         _appEventSourceFactory = appEventSourceFactory;
         _clientNotificationManager = clientNotificationManager;
-        _tcpIpListenerManager = tcpIpListenerManager;
         _monitorLoggerFactoryFactory = monitorLoggerFactoryFactory;
         _appLoggerFactory = appLoggerFactory;
         _appEventSourceFactory = appEventSourceFactory;
@@ -67,7 +62,9 @@ public class TcpIpClientStateMachineDeviceConfigurator : BaseIpDeviceConfigurato
     /// <param name="loggerId">Logger ID</param>
     /// <param name="ipAddress">IP address</param>
     /// <param name="port">Port</param>
-    public override void CreateMessagingConfig(string loggerId, string ipAddress, int port)
+    /// <param name="messageProcessingPackageFactory">Current data messaging package factory</param>
+    public override void CreateMessagingConfig(string loggerId, string ipAddress, int port,
+        IDataMessageProcessingPackageFactory messageProcessingPackageFactory)
     {
         if (loggerId.Length == 0)
         {
@@ -82,7 +79,7 @@ public class TcpIpClientStateMachineDeviceConfigurator : BaseIpDeviceConfigurato
         DataMessagingConfig.Port = port;
         DataMessagingConfig.IpProtocol = IpProtocolEnum.Tcp;
         DataMessagingConfig.IsServer = false;
-        DataMessagingConfig.DataMessageProcessingPackage = new TncpDataMessageProcessingPackage(DataMessagingConfig);
+        DataMessagingConfig.DataMessageProcessingPackage = messageProcessingPackageFactory.CreateInstance(DataMessagingConfig);
         DataMessagingConfig.StateMachineProcessingPackage = new StateMachineProcessingPackage()
         {
             StateCheckManager = new DoNothingStateCheckManager()
@@ -97,7 +94,7 @@ public class TcpIpClientStateMachineDeviceConfigurator : BaseIpDeviceConfigurato
         ArgumentNullException.ThrowIfNull(DataMessagingConfig);
 
         // Server
-        var socketProxyFactory = new SocketProxyFactory(_tcpIpListenerManager);
+        var socketProxyFactory = new SocketProxyFactory(null);
 
         var communicationHandlerFactory = new IpCommunicationHandlerFactory(socketProxyFactory, _duplexIoFactory, _appEventSourceFactory, _clientNotificationManager);
         var outboundDataMessageFactory = new BtcpOutboundDataMessageFactory();
@@ -131,16 +128,16 @@ public class TcpIpClientStateMachineDeviceConfigurator : BaseIpDeviceConfigurato
     /// <summary>
     /// Configure the order management and if necessary the state management. Important: store state factory instance to device and config
     /// </summary>
-    /// <param name="deviceStateManagerFactory">Current factory for <see cref="IDeviceStateManager"/> instances</param>
+    /// <param name="deviceBusinessLogicAdapterFactory">Current factory for <see cref="IStateMachineDeviceBusinessLogicAdapter"/> instances</param>
     /// <param name="stateMachineConfiguratorFactory">Current state machine configurator factory</param>
-    public override void ConfigureStateManagement(IDeviceStateManagerFactory deviceStateManagerFactory, 
+    public override void ConfigureStateManagement(IDeviceBusinessLogicAdapterFactory deviceBusinessLogicAdapterFactory,
         IStateMachineConfiguratorFactory stateMachineConfiguratorFactory)
     {
         ArgumentNullException.ThrowIfNull(_stateManagementDevice);
         ArgumentNullException.ThrowIfNull(DataMessagingConfig?.StateMachineProcessingPackage, "DataMessagingConfig or StateMachineProcessingPackage is null");
 
-        var dsm = deviceStateManagerFactory.CreateInstance(_stateManagementDevice);
-        _stateManagementDevice.LoadDeviceStateManager(dsm);
+        var dsm = deviceBusinessLogicAdapterFactory.CreateInstance(_stateManagementDevice);
+        _stateManagementDevice.LoadDeviceBusinessLogicAdapter(dsm);
 
         var configurator = stateMachineConfiguratorFactory.CreateInstance(dsm);
         configurator.ConfigureFactory();

@@ -5,6 +5,7 @@ using Bodoconsult.App.Factories;
 using Bodoconsult.App.Logging;
 using Bodoconsult.NetworkCommunication.App.Abstractions;
 using Bodoconsult.NetworkCommunication.ClientNotifications;
+using Bodoconsult.NetworkCommunication.DataMessaging.DataMessageProcessingPackages;
 using Bodoconsult.NetworkCommunication.Devices.Configurators;
 using Bodoconsult.NetworkCommunication.Factories;
 using Bodoconsult.NetworkCommunication.Interfaces;
@@ -25,6 +26,7 @@ internal class TcpIpServerDeviceConfiguratorTests
     private readonly LogDataFactory _logDataFactory = TestDataHelper.LogDataFactory;
     private readonly AppLoggerProxyFactory _appLoggerFactory = new();
     private readonly DoNothingOrderManagementClientNotificationManager _clientNotificationManager = new();
+    private readonly IDataMessageProcessingPackageFactory _messageProcessingPackageFactory = new TncpDataMessageProcessingPackageFactory();
 
     [OneTimeTearDown]
     public void Cleanup()
@@ -61,7 +63,7 @@ internal class TcpIpServerDeviceConfiguratorTests
         const int port = 9000;
 
         // Act  
-        conf.CreateMessagingConfig("TestDevice",ip, port);
+        conf.CreateMessagingConfig("TestDevice",ip, port, _messageProcessingPackageFactory);
 
         // Assert
         Assert.That(conf.DataMessagingConfig, Is.Not.Null);
@@ -80,7 +82,7 @@ internal class TcpIpServerDeviceConfiguratorTests
 
         var conf = new TcpIpServerDeviceConfigurator(duplexIoFactory, _monitorLoggerFactoryFactory, _logDataFactory, _appLoggerFactory,
             _appEventSourceFactory, _clientNotificationManager, _tcpIpListenerManager, _appLoggerProxy);
-        conf.CreateMessagingConfig("TestDevice","127.0.0.1", 9000);
+        conf.CreateMessagingConfig("TestDevice","127.0.0.1", 9000, _messageProcessingPackageFactory);
 
         // Act  
         conf.CreateDevice();

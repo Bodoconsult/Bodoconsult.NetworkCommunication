@@ -55,7 +55,8 @@ public class TcpIpServerDeviceConfigurator: BaseIpDeviceConfigurator
         _appLoggerProxy = appLoggerProxy;
     }
 
-    public override void CreateMessagingConfig(string loggerId, string ipAddress, int port)
+    public override void CreateMessagingConfig(string loggerId, string ipAddress, int port,
+        IDataMessageProcessingPackageFactory messageProcessingPackageFactory)
     {
         if (loggerId.Length==0)
         {

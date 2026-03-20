@@ -15,15 +15,15 @@ public abstract class BaseStateMachineConfigurator: IStateMachineConfigurator
     /// </summary>
     protected IStateMachineStateFactory StateFactory = new StateMachineStateFactory();
 
-    public IDeviceStateManager DeviceStateManager { get; }
+    public IStateMachineDeviceBusinessLogicAdapter DeviceBusinessLogicAdapter{ get; }
 
     /// <summary>
     /// Default ctor
     /// </summary>
     /// <param name="deviceStateManager">Current device state manager</param>
-    protected BaseStateMachineConfigurator(IDeviceStateManager deviceStateManager)
+    protected BaseStateMachineConfigurator(IStateMachineDeviceBusinessLogicAdapter deviceStateManager)
     {
-        DeviceStateManager = deviceStateManager;
+        DeviceBusinessLogicAdapter= deviceStateManager;
     }
 
     /// <summary>

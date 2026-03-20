@@ -3,13 +3,13 @@
 namespace Bodoconsult.NetworkCommunication.StateManagement.Interfaces;
 
 /// <summary>
-/// Factory for creating <see cref="IDeviceStateManager"/> instances
+/// Factory for creating <see cref="IStateMachineDeviceBusinessLogicAdapter"/> instances
 /// </summary>
-public interface IDeviceStateManagerFactory
+public interface IDeviceBusinessLogicAdapterFactory
 {
     /// <summary>
-    /// Create an instance of <see cref="IDeviceStateManager"/> for a certain device
+    /// Create an instance of <see cref="IStateMachineDeviceBusinessLogicAdapter"/> for a certain device
     /// </summary>
     /// <param name="device">Current device</param>
-    IDeviceStateManager CreateInstance(IStateManagementDevice device);
+    IStateMachineDeviceBusinessLogicAdapter CreateInstance(IStateManagementDevice device);
 }

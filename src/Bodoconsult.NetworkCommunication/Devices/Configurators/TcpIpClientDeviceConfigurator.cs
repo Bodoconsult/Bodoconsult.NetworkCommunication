@@ -60,7 +60,9 @@ public class TcpIpClientDeviceConfigurator : BaseIpDeviceConfigurator
     /// <param name="loggerId">Logger ID</param>
     /// <param name="ipAddress">IP address</param>
     /// <param name="port">Port</param>
-    public override void CreateMessagingConfig(string loggerId, string ipAddress, int port)
+    /// <param name="messageProcessingPackageFactory"></param>
+    public override void CreateMessagingConfig(string loggerId, string ipAddress, int port,
+        IDataMessageProcessingPackageFactory messageProcessingPackageFactory)
     {
         if (loggerId.Length == 0)
         {

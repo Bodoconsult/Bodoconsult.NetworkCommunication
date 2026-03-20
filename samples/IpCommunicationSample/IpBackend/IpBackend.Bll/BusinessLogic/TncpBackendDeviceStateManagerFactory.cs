@@ -5,16 +5,16 @@ using Bodoconsult.NetworkCommunication.StateManagement.Interfaces;
 namespace IpCommunicationSample.Backend.Bll.BusinessLogic;
 
 /// <summary>
-/// Current implementation of <see cref="IDeviceStateManagerFactory"/> delivering <see cref="TncpBackendDeviceStateManager"/> instances
+/// Current implementation of <see cref="IDeviceBusinessLogicAdapterFactory"/> delivering <see cref="TncpBackendBusinessLogicAdapter"/> instances
 /// </summary>
-public class TncpBackendDeviceStateManagerFactory: IDeviceStateManagerFactory
+public class TncpBackendDeviceBusinessLogicAdapterFactory: IDeviceBusinessLogicAdapterFactory
 {
     /// <summary>
-    /// Create an instance of <see cref="IDeviceStateManager"/> for a certain device
+    /// Create an instance of <see cref="IStateMachineDeviceBusinessLogicAdapter"/> for a certain device
     /// </summary>
     /// <param name="device">Current device</param>
-    public IDeviceStateManager CreateInstance(IStateManagementDevice device)
+    public IStateMachineDeviceBusinessLogicAdapter CreateInstance(IStateManagementDevice device)
     {
-        return new TncpBackendDeviceStateManager(device);
+        return new TncpBackendBusinessLogicAdapter(device);
     }
 }

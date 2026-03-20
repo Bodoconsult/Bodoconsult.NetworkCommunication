@@ -8,24 +8,9 @@ namespace IpCommunicationSample.Backend.Bll.Interfaces;
 /// <summary>
 /// Interface for state handling in the backend
 /// </summary>
-public interface IBackendDeviceStateManager : IDeviceStateManager
+public interface IBackendDeviceBusinessLogicAdapter: IStateMachineDeviceBusinessLogicAdapter
 {
     #region Device order handling
-
-    /// <summary>
-    /// Delegate to handle a ComDevClose event in business logic
-    /// </summary>
-    void HandleComDevCloseDelegate(IStateMachineState state);
-
-    /// <summary>
-    /// Handle an error message received from the device
-    /// </summary>
-    void HandleErrorMessageDelegate(IStateMachineState state, IInboundDataMessage message);
-
-    /// <summary>
-    /// Handle an async received message
-    /// </summary>
-    MessageHandlingResult HandleAsyncMessageDelegate(IStateMachineState state, IInboundDataMessage? message);
 
     /// <summary>
     /// Stopping snapshot was successful

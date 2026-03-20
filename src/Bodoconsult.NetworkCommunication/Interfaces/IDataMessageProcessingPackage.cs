@@ -3,6 +3,7 @@
 
 namespace Bodoconsult.NetworkCommunication.Interfaces;
 
+
 /// <summary>
 /// Interface for processing of byte based messages i.e. via TCP/IP. This is the top level class for technology and firmware specific protocol implementations
 /// </summary>

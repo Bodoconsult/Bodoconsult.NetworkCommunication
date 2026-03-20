@@ -1,5 +1,8 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
+using Bodoconsult.NetworkCommunication.DataMessaging.DataMessageProcessingPackages;
+using Bodoconsult.NetworkCommunication.Interfaces;
+
 namespace Bodoconsult.NetworkCommunication.Tests.Devices;
 
 [TestFixture]
@@ -23,11 +26,12 @@ internal class BaseIpDeviceConfiguratorTests
     {
         // Arrange 
         var config = new TestIpDeviceConfigurator();
+        IDataMessageProcessingPackageFactory messageProcessingPackageFactory = new TncpDataMessageProcessingPackageFactory();
 
         // Act  
         Assert.Throws<NotSupportedException>(() =>
         {
-            config.CreateMessagingConfig("TestDevice", "127.0.0.1", 9000);
+            config.CreateMessagingConfig("TestDevice", "127.0.0.1", 9000, messageProcessingPackageFactory);
         });
 
         // Assert
@@ -59,7 +63,7 @@ internal class BaseIpDeviceConfiguratorTests
     //    // Arrange 
     //    var config = new TestIpDeviceConfigurator();
 
-    //    IDeviceStateManagerFactory deviceStateManagerFactory = new T;
+    //    IDeviceBusinessLogicAdapterFactory deviceStateManagerFactory = new T;
     //    IOrderManagerFactory orderManagerFactory;
 
     //    // Act  

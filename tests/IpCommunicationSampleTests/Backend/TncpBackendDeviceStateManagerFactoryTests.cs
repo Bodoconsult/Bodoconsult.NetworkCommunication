@@ -6,14 +6,14 @@ using IpCommunicationSample.Backend.Bll.BusinessLogic;
 namespace IpCommunicationSampleTests.Backend;
 
 [TestFixture]
-internal class TncpBackendDeviceStateManagerFactoryTests
+internal class TncpBackendDeviceBusinessLogicAdapterFactoryTests
 {
     [Test]
     public void Ctor_ValidSetup_PropsSetCorrectly()
     {
         // Arrange 
         var device = TestDataHelper.CreateStateMachineDevice();
-        var dsm = new TncpBackendDeviceStateManagerFactory();
+        var dsm = new TncpBackendDeviceBusinessLogicAdapterFactory();
 
         // Act  
         var result = dsm.CreateInstance(device);

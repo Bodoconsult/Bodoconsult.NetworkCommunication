@@ -10,41 +10,24 @@ using IpCommunicationSample.Backend.Bll.Interfaces;
 namespace IpCommunicationSample.Backend.Bll.StateManagement.Configurators;
 
 /// <summary>
-/// Factory for creating a <see cref="TncpStateMachineConfigurator "/> instance
-/// </summary>
-public class TncpStateMachineConfiguratorFactory : IStateMachineConfiguratorFactory
-{
-    /// <summary>
-    /// Create a configurator for a certain device
-    /// </summary>
-    /// <param name="deviceManagerState">Current device manager state</param>
-    /// <returns></returns>
-    public IStateMachineConfigurator CreateInstance(IDeviceStateManager deviceManagerState)
-    {
-        return new TncpStateMachineConfigurator(deviceManagerState);
-    }
-}
-
-
-/// <summary>
 /// Configure a state management based on TNCP
 /// </summary>
 public class TncpStateMachineConfigurator : BaseStateMachineConfigurator
 {
-    private readonly IBackendDeviceStateManager _deviceStateManager;
+    private readonly IBackendDeviceBusinessLogicAdapter _deviceBusinessLogicAdapter;
 
     /// <summary>
     /// Default ctor
     /// </summary>
-    /// <param name="deviceStateManager">Current device state manager</param>
-    public TncpStateMachineConfigurator(IDeviceStateManager deviceStateManager) : base(deviceStateManager)
+    /// <param name="deviceBusinessLogicAdapter">Current device state manager</param>
+    public TncpStateMachineConfigurator(IStateMachineDeviceBusinessLogicAdapter deviceBusinessLogicAdapter) : base(deviceBusinessLogicAdapter)
     {
-        if (deviceStateManager is not IBackendDeviceStateManager dsm)
+        if (deviceBusinessLogicAdapter is not IBackendDeviceBusinessLogicAdapter dsm)
         {
-            throw new ArgumentException($"deviceStateManager must have type {nameof(IBackendDeviceStateManager)}");
+            throw new ArgumentException($"deviceBusinessLogicAdapter must have type {nameof(IBackendDeviceBusinessLogicAdapter)}");
         }
 
-        _deviceStateManager = dsm;
+        _deviceBusinessLogicAdapter = dsm;
     }
 
     /// <summary>
@@ -68,14 +51,14 @@ public class TncpStateMachineConfigurator : BaseStateMachineConfigurator
     {
         var config = new JobStateConfiguration(DefaultStateNames.DeviceInitState, new DeviceInitStateBuilder())
         {
-            CurrentContext = DeviceStateManager.Device,
-            HandleAsyncMessageDelegate = _deviceStateManager.HandleAsyncMessageDelegate,
-            HandleComDevCloseDelegate = _deviceStateManager.HandleComDevCloseDelegate,
-            HandleErrorMessageDelegate = _deviceStateManager.HandleErrorMessageDelegate,
+            CurrentContext = DeviceBusinessLogicAdapter.Device,
+            HandleAsyncMessageDelegate = _deviceBusinessLogicAdapter.DefaultHandleAsyncMessageDelegate,
+            HandleComDevCloseDelegate = _deviceBusinessLogicAdapter.DefaultHandleComDevCloseDelegate,
+            HandleErrorMessageDelegate = _deviceBusinessLogicAdapter.DefaultHandleErrorMessageDelegate,
             HandleRegularStateRequestAnswerDelegate = DelegateHelper.HandleRegularStateRequestAnswerDelegate,
             PrepareRegularStateRequestDelegate = DelegateHelper.PrepareRegularStateRequestDelegate,
-            OrderFinishedSucessfullyDelegate = _deviceStateManager.DeviceInitSuccessfully,
-            OrderFinishedUnsucessfullyDelegate = _deviceStateManager.DeviceInitUnsuccessfully,
+            OrderFinishedSucessfullyDelegate = _deviceBusinessLogicAdapter.DeviceInitSuccessfully,
+            OrderFinishedUnsucessfullyDelegate = _deviceBusinessLogicAdapter.DeviceInitUnsuccessfully,
         };
 
         config.OrderConfigurations.Add("NoAnswerTncpOrderConfiguration");
@@ -87,14 +70,14 @@ public class TncpStateMachineConfigurator : BaseStateMachineConfigurator
     {
         var config = new JobStateConfiguration(DefaultStateNames.DeviceStopSnapshotState, new DeviceStopSnapshotStateBuilder())
         {
-            CurrentContext = DeviceStateManager.Device,
-            HandleAsyncMessageDelegate = _deviceStateManager.HandleAsyncMessageDelegate,
-            HandleComDevCloseDelegate = _deviceStateManager.HandleComDevCloseDelegate,
-            HandleErrorMessageDelegate = _deviceStateManager.HandleErrorMessageDelegate,
+            CurrentContext = DeviceBusinessLogicAdapter.Device,
+            HandleAsyncMessageDelegate = _deviceBusinessLogicAdapter.DefaultHandleAsyncMessageDelegate,
+            HandleComDevCloseDelegate = _deviceBusinessLogicAdapter.DefaultHandleComDevCloseDelegate,
+            HandleErrorMessageDelegate = _deviceBusinessLogicAdapter.DefaultHandleErrorMessageDelegate,
             HandleRegularStateRequestAnswerDelegate = DelegateHelper.HandleRegularStateRequestAnswerDelegate,
             PrepareRegularStateRequestDelegate = DelegateHelper.PrepareRegularStateRequestDelegate,
-            OrderFinishedSucessfullyDelegate = _deviceStateManager.StopSnapshotSuccessfully,
-            OrderFinishedUnsucessfullyDelegate = _deviceStateManager.StopSnapshotUnsuccessfully,
+            OrderFinishedSucessfullyDelegate = _deviceBusinessLogicAdapter.StopSnapshotSuccessfully,
+            OrderFinishedUnsucessfullyDelegate = _deviceBusinessLogicAdapter.StopSnapshotUnsuccessfully,
         };
 
         config.OrderConfigurations.Add("NoAnswerTncpOrderConfiguration");
@@ -106,7 +89,7 @@ public class TncpStateMachineConfigurator : BaseStateMachineConfigurator
     {
         var config = new NoActionStateConfiguration(DefaultStateNames.DeviceSnapshotState, new DeviceSnapshotStateBuilder())
         {
-            CurrentContext = DeviceStateManager.Device,
+            CurrentContext = DeviceBusinessLogicAdapter.Device,
             CheckJobstatesActionForStateDelegate = DelegateHelper.DefaultCheckJobstatesActionForStateDelegate,
         };
 
@@ -117,14 +100,14 @@ public class TncpStateMachineConfigurator : BaseStateMachineConfigurator
     {
         var config = new JobStateConfiguration(DefaultStateNames.DeviceStartSnapshotState, new DeviceStartSnapshotStateBuilder())
         {
-            CurrentContext = DeviceStateManager.Device,
-            HandleAsyncMessageDelegate = _deviceStateManager.HandleAsyncMessageDelegate,
-            HandleComDevCloseDelegate = _deviceStateManager.HandleComDevCloseDelegate,
-            HandleErrorMessageDelegate = _deviceStateManager.HandleErrorMessageDelegate,
+            CurrentContext = DeviceBusinessLogicAdapter.Device,
+            HandleAsyncMessageDelegate = _deviceBusinessLogicAdapter.DefaultHandleAsyncMessageDelegate,
+            HandleComDevCloseDelegate = _deviceBusinessLogicAdapter.DefaultHandleComDevCloseDelegate,
+            HandleErrorMessageDelegate = _deviceBusinessLogicAdapter.DefaultHandleErrorMessageDelegate,
             HandleRegularStateRequestAnswerDelegate = DelegateHelper.HandleRegularStateRequestAnswerDelegate,
             PrepareRegularStateRequestDelegate = DelegateHelper.PrepareRegularStateRequestDelegate,
-            OrderFinishedSucessfullyDelegate = _deviceStateManager.StartSnapshotSuccessfully,
-            OrderFinishedUnsucessfullyDelegate = _deviceStateManager.StartSnapshotUnsuccessfully,
+            OrderFinishedSucessfullyDelegate = _deviceBusinessLogicAdapter.StartSnapshotSuccessfully,
+            OrderFinishedUnsucessfullyDelegate = _deviceBusinessLogicAdapter.StartSnapshotUnsuccessfully,
         };
 
         config.OrderConfigurations.Add("NoAnswerTncpOrderConfiguration");
@@ -136,14 +119,14 @@ public class TncpStateMachineConfigurator : BaseStateMachineConfigurator
     {
         var config = new JobStateConfiguration(DefaultStateNames.DeviceStopStreamingState, new DeviceStopStreamingStateBuilder())
         {
-            CurrentContext = DeviceStateManager.Device,
-            HandleAsyncMessageDelegate = _deviceStateManager.HandleAsyncMessageDelegate,
-            HandleComDevCloseDelegate = _deviceStateManager.HandleComDevCloseDelegate,
-            HandleErrorMessageDelegate = _deviceStateManager.HandleErrorMessageDelegate,
+            CurrentContext = DeviceBusinessLogicAdapter.Device,
+            HandleAsyncMessageDelegate = _deviceBusinessLogicAdapter.DefaultHandleAsyncMessageDelegate,
+            HandleComDevCloseDelegate = _deviceBusinessLogicAdapter.DefaultHandleComDevCloseDelegate,
+            HandleErrorMessageDelegate = _deviceBusinessLogicAdapter.DefaultHandleErrorMessageDelegate,
             HandleRegularStateRequestAnswerDelegate = DelegateHelper.HandleRegularStateRequestAnswerDelegate,
             PrepareRegularStateRequestDelegate = DelegateHelper.PrepareRegularStateRequestDelegate,
-            OrderFinishedSucessfullyDelegate = _deviceStateManager.StopStreamingSuccessfully,
-            OrderFinishedUnsucessfullyDelegate = _deviceStateManager.StopStreamingUnsuccessfully,
+            OrderFinishedSucessfullyDelegate = _deviceBusinessLogicAdapter.StopStreamingSuccessfully,
+            OrderFinishedUnsucessfullyDelegate = _deviceBusinessLogicAdapter.StopStreamingUnsuccessfully,
         };
 
         config.OrderConfigurations.Add("NoAnswerTncpOrderConfiguration");
@@ -155,7 +138,7 @@ public class TncpStateMachineConfigurator : BaseStateMachineConfigurator
     {
         var config = new NoActionStateConfiguration(DefaultStateNames.DeviceStreamingState, new DeviceStreamingStateBuilder())
         {
-            CurrentContext = DeviceStateManager.Device,
+            CurrentContext = DeviceBusinessLogicAdapter.Device,
             CheckJobstatesActionForStateDelegate = DelegateHelper.DefaultCheckJobstatesActionForStateDelegate,
         };
 
@@ -166,14 +149,14 @@ public class TncpStateMachineConfigurator : BaseStateMachineConfigurator
     {
         var config = new JobStateConfiguration(DefaultStateNames.DeviceStartStreamingState, new DeviceStartStreamingStateBuilder())
         {
-            CurrentContext = DeviceStateManager.Device,
-            HandleAsyncMessageDelegate = _deviceStateManager.HandleAsyncMessageDelegate,
-            HandleComDevCloseDelegate = _deviceStateManager.HandleComDevCloseDelegate,
-            HandleErrorMessageDelegate = _deviceStateManager.HandleErrorMessageDelegate,
+            CurrentContext = DeviceBusinessLogicAdapter.Device,
+            HandleAsyncMessageDelegate = _deviceBusinessLogicAdapter.DefaultHandleAsyncMessageDelegate,
+            HandleComDevCloseDelegate = _deviceBusinessLogicAdapter.DefaultHandleComDevCloseDelegate,
+            HandleErrorMessageDelegate = _deviceBusinessLogicAdapter.DefaultHandleErrorMessageDelegate,
             HandleRegularStateRequestAnswerDelegate = DelegateHelper.HandleRegularStateRequestAnswerDelegate,
             PrepareRegularStateRequestDelegate = DelegateHelper.PrepareRegularStateRequestDelegate,
-            OrderFinishedSucessfullyDelegate = _deviceStateManager.StartStreamingSuccessfully,
-            OrderFinishedUnsucessfullyDelegate = _deviceStateManager.StartStreamingUnsuccessfully,
+            OrderFinishedSucessfullyDelegate = _deviceBusinessLogicAdapter.StartStreamingSuccessfully,
+            OrderFinishedUnsucessfullyDelegate = _deviceBusinessLogicAdapter.StartStreamingUnsuccessfully,
         };
 
         // Two orders required because of two telent commands to send
@@ -187,7 +170,7 @@ public class TncpStateMachineConfigurator : BaseStateMachineConfigurator
     {
         var config = new NoActionStateConfiguration(DefaultStateNames.DeviceReadyState, new DeviceReadyStateBuilder())
         {
-            CurrentContext = DeviceStateManager.Device,
+            CurrentContext = DeviceBusinessLogicAdapter.Device,
             CheckJobstatesActionForStateDelegate = DelegateHelper.DefaultCheckJobstatesActionForStateDelegate,
         };
 
@@ -198,7 +181,7 @@ public class TncpStateMachineConfigurator : BaseStateMachineConfigurator
     {
         var config = new OrderlessActionStateConfiguration(DefaultStateNames.DeviceOfflineState, new DeviceOfflineStateBuilder())
         {
-            CurrentContext = DeviceStateManager.Device,
+            CurrentContext = DeviceBusinessLogicAdapter.Device,
             ExecuteActionForStateDelegate = DelegateHelper.ExecuteActionForStateDelegate,
             PrepareRegularStateRequestDelegate = DelegateHelper.PrepareRegularStateRequestDelegate
         };
@@ -210,7 +193,7 @@ public class TncpStateMachineConfigurator : BaseStateMachineConfigurator
     {
         var config = new OrderlessActionStateConfiguration(DefaultStateNames.DeviceOnlineState, new DeviceOnlineStateBuilder())
         {
-            CurrentContext = DeviceStateManager.Device,
+            CurrentContext = DeviceBusinessLogicAdapter.Device,
             ExecuteActionForStateDelegate = DelegateHelper.ExecuteActionForStateDelegate,
             PrepareRegularStateRequestDelegate = DelegateHelper.PrepareRegularStateRequestDelegate
         };

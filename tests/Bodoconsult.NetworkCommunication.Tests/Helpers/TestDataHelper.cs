@@ -98,6 +98,30 @@ public static class TestDataHelper
     }
 
     /// <summary>
+    /// Get a EDCP messaging config
+    /// </summary>
+    /// <returns>Data messaging config</returns>
+    /// <param name="isServer">Server config. Default: false</param>
+    public static IIpDataMessagingConfig GetEdcpDataMessagingConfig(bool isServer=false)
+    {
+        var config = new EdcpDataMessagingConfig();
+
+        if (isServer)
+        {
+            config.DataMessageProcessingPackage = new EdcpServerDataMessageProcessingPackage(config);
+        }
+        else
+        {
+            config.DataMessageProcessingPackage = new EdcpClientDataMessageProcessingPackage(config);
+        }
+            
+        config.AppLogger = GetFakeAppLoggerProxy();
+        config.MonitorLogger = config.AppLogger;
+
+        return config;
+    }
+
+    /// <summary>
     /// Get a fake <see cref="NetworkCommunication.App.Abstractions.IAppDateService"/> instance
     /// </summary>
     public static IAppDateService AppDateService { get; }

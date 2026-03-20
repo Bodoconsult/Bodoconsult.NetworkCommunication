@@ -2,15 +2,16 @@
 
 using Bodoconsult.App.Abstractions.Interfaces;
 using Bodoconsult.NetworkCommunication.App.Abstractions;
+using Bodoconsult.NetworkCommunication.DataMessaging.DataMessageProcessingPackages;
 using Bodoconsult.NetworkCommunication.Devices.Configurators;
-using Bodoconsult.NetworkCommunication.Interfaces;
 using Bodoconsult.NetworkCommunication.StateManagement.Interfaces;
-using IpCommunicationSample.Backend.Bll.BusinessLogic;
-using IpCommunicationSample.Backend.Bll.StateManagement.Configurators;
 
-namespace IpCommunicationSample.Backend.Bll.Communication.IpDeviceTcpIp;
+namespace Bodoconsult.NetworkCommunication.Interfaces;
 
-public class IpDeviceTcpIpManager
+/// <summary>
+/// Handles the TCP/IP channel between backend and IP device
+/// </summary>
+public class IpDeviceTcpIpManager : IDeviceManager
 {
     private readonly IDuplexIoFactory _duplexIoFactory;
     private readonly IAppEventSourceFactory _appEventSourceFactory;
@@ -56,7 +57,22 @@ public class IpDeviceTcpIpManager
         _appLoggerProxy = appLoggerProxy;
         _orderManagerFactory = orderManagerFactory;
     }
-    
+
+    /// <summary>
+    /// Current device
+    /// </summary>
+    public IStateManagementDevice? Device { get; private set; }
+
+    /// <summary>
+    /// Current <see cref="IStateMachineDeviceBusinessLogicAdapter"/> instance
+    /// </summary>
+    public IStateMachineDeviceBusinessLogicAdapter? DeviceBusinessLogicAdapter{ get; private set; }
+
+    /// <summary>
+    /// Current device
+    /// </summary>
+    public IIpDevice? IpDevice { get; private set; }
+
 
     /// <summary>
     /// Configure the device
@@ -65,30 +81,17 @@ public class IpDeviceTcpIpManager
     /// <param name="port">Port</param>
     public void ConfigureDevice(string ipAddress, int port)
     {
-        IDeviceStateManagerFactory deviceStateManagerFactory = new TncpBackendDeviceStateManagerFactory();
+        IDataMessageProcessingPackageFactory messageProcessingPackageFactory = new TncpDataMessageProcessingPackageFactory();
 
-        var configurator = new TcpIpClientStateMachineDeviceConfigurator(_duplexIoFactory, _monitorLoggerFactoryFactory, _logDataFactory, _appLoggerFactory, _appEventSourceFactory, _clientNotificationManager, _tcpIpListenerManager, _appLoggerProxy);
+        var configurator = new TcpIpServerDeviceConfigurator(_duplexIoFactory, _monitorLoggerFactoryFactory, _logDataFactory, _appLoggerFactory, _appEventSourceFactory, _clientNotificationManager, _tcpIpListenerManager, _appLoggerProxy);
 
-        configurator.CreateMessagingConfig("IPDevice_TCPIP", ipAddress, port);
+        configurator.CreateMessagingConfig("IPDevice_TCPIP", ipAddress, port, messageProcessingPackageFactory);
         configurator.CreateDevice();
         configurator.ConfigureOrderManagement(_orderManagerFactory);
-
-        IStateMachineConfiguratorFactory stateMachineConfiguratorFactory = new TncpStateMachineConfiguratorFactory();
-        configurator.ConfigureStateManagement(deviceStateManagerFactory,  stateMachineConfiguratorFactory);
 
         var device = (IStateManagementDevice)configurator.GetDevice();
 
         Device = device;
-        DeviceStateManager = device.DeviceStateManager;
+        DeviceBusinessLogicAdapter= device.DeviceBusinessLogicAdapter;
     }
-
-    /// <summary>
-    /// Current device
-    /// </summary>
-    public IStateManagementDevice? Device { get; private set; }
-
-    /// <summary>
-    /// Current <see cref="IDeviceStateManager"/> instance
-    /// </summary>
-    public IDeviceStateManager? DeviceStateManager { get; private set; }
 }

@@ -9,39 +9,31 @@ using Bodoconsult.NetworkCommunication.StateManagement.Interfaces;
 namespace IpCommunicationSample.Backend.Bll.BusinessLogic;
 
 /// <summary>
-/// Current implementation of <see cref="IDeviceStateManager"/> for the backend
+/// Current implementation of <see cref="IStateMachineDeviceBusinessLogicAdapter"/> for the backend
 /// </summary>
-public class TncpBackendDeviceStateManager : BaseDeviceStateManager, IBackendDeviceStateManager
+public class TncpBackendBusinessLogicAdapter : BaseStateMachineDeviceBusinessLogicAdapter, IBackendDeviceBusinessLogicAdapter
 {
     /// <summary>
     /// Default ctor
     /// </summary>
     /// <param name="device">Current device</param>
-    public TncpBackendDeviceStateManager(IStateManagementDevice device) : base(device)
+    public TncpBackendBusinessLogicAdapter(IStateManagementDevice device) : base(device)
     { }
 
     #region Device order handling
 
-    /// <summary>
-    /// Delegate to handle a ComDevClose event in business logic
-    /// </summary>
-    public void HandleComDevCloseDelegate(IStateMachineState state)
+
+    public override void DefaultHandleComDevCloseDelegate(IStateMachineState state)
     {
         throw new NotImplementedException();
     }
-
-    /// <summary>
-    /// Handle an error message received from the device
-    /// </summary>
-    public void HandleErrorMessageDelegate(IStateMachineState state, IInboundDataMessage message)
+    
+    public override void DefaultHandleErrorMessageDelegate(IStateMachineState state, IInboundDataMessage message)
     {
         throw new NotImplementedException();
     }
-
-    /// <summary>
-    /// Handle an async received message
-    /// </summary>
-    public MessageHandlingResult HandleAsyncMessageDelegate(IStateMachineState state, IInboundDataMessage? message)
+    
+    public override MessageHandlingResult DefaultHandleAsyncMessageDelegate(IStateMachineState state, IInboundDataMessage? message)
     {
         throw new NotImplementedException();
     }

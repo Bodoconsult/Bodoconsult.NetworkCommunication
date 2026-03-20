@@ -41,13 +41,16 @@ public abstract class BaseIpDeviceConfigurator : IIpDeviceConfigurator
     /// </summary>
     public IIpDevice? Device { get; protected set; }
 
+
     /// <summary>
     /// Create the basic data messaging config
     /// </summary>
     /// <param name="loggerId">Logger ID</param>
     /// <param name="ipAddress">IP address</param>
     /// <param name="port">Port</param>
-    public virtual void CreateMessagingConfig(string loggerId, string ipAddress, int port)
+    /// <param name="messageProcessingPackageFactory">Current data messaging package factory</param>
+    public virtual void CreateMessagingConfig(string loggerId, string ipAddress, int port,
+        IDataMessageProcessingPackageFactory messageProcessingPackageFactory)
     {
         throw new NotSupportedException("Override in derived classes!");
     }
@@ -72,9 +75,9 @@ public abstract class BaseIpDeviceConfigurator : IIpDeviceConfigurator
     /// <summary>
     /// Configure the order management and if necessary the state management. Important: store state factory instance to device and config
     /// </summary>
-    /// <param name="deviceStateManagerFactory">Current factory for <see cref="IDeviceStateManager"/> instances</param>
+    /// <param name="deviceBusinessLogicAdapterFactory">Current factory for <see cref="IStateMachineDeviceBusinessLogicAdapter"/> instances</param>
     /// <param name="stateMachineConfiguratorFactory">Current state machine configurator factory</param>
-    public virtual void ConfigureStateManagement(IDeviceStateManagerFactory deviceStateManagerFactory, 
+    public virtual void ConfigureStateManagement(IDeviceBusinessLogicAdapterFactory deviceBusinessLogicAdapterFactory, 
         IStateMachineConfiguratorFactory stateMachineConfiguratorFactory)
     {
         // Do nothing
