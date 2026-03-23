@@ -217,7 +217,7 @@ internal class OrderProcessorTests
         // Test init
         _stepFactory = new RequestStepProcessorFactory();
 
-        _device = TestDataHelper.CreateNoStateMachineDevice();
+        _device = TestDataHelper.CreateOrderManagementDevice();
         _device.LoadCommAdapter(_commAdapter);
 
         var logger = Globals.Instance.Logger;

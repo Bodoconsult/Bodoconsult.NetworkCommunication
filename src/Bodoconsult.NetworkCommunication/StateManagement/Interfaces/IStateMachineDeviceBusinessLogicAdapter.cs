@@ -20,6 +20,11 @@ namespace Bodoconsult.NetworkCommunication.StateManagement.Interfaces;
     IStateMachineStateFactory? StateFactory { get; }
 
     /// <summary>
+    /// Load the order factory
+    /// </summary>
+    void LoadOrderFactory();
+
+    /// <summary>
     /// Load the state factory
     /// </summary>
     /// <param name="stateFactory">Current state factory</param>

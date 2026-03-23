@@ -1,18 +1,18 @@
-﻿//// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
+﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
-//using Bodoconsult.NetworkCommunication.StateManagement.Interfaces;
+using Bodoconsult.NetworkCommunication.StateManagement.Interfaces;
 
-//namespace Bodoconsult.NetworkCommunication.Interfaces;
+namespace Bodoconsult.NetworkCommunication.Interfaces;
 
-///// <summary>
-///// Interface for implementing a device with state management and order management
-///// </summary>
-//public interface IStateMachineDeviceFactory
-//{
-//    /// <summary>
-//    /// Create a device for order management only (no state management)
-//    /// </summary>
-//    /// <param name="dataMessagingConfig">Device configuration for data messaging</param>
-//    /// <param name="deviceStateCheckManager">Curent state checker implementation</param>
-//    IStateManagementDevice CreateInstance(IDataMessagingConfig dataMessagingConfig, IDeviceStateCheckManager deviceStateCheckManager);
-//}
+/// <summary>
+/// Interface for implementing a device with state management and order management
+/// </summary>
+public interface IStateMachineDeviceFactory
+{
+    /// <summary>
+    /// Create a device for order management and state management
+    /// </summary>
+    /// <param name="dataMessagingConfig">Device configuration for data messaging</param>
+    /// <param name="deviceStateCheckManager">Curent state checker implementation</param>
+    IStateMachineDevice CreateInstance(IIpDataMessagingConfig dataMessagingConfig, IDeviceStateCheckManager deviceStateCheckManager);
+}

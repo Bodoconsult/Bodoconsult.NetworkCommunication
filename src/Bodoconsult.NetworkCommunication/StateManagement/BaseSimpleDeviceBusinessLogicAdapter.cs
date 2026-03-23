@@ -14,10 +14,9 @@ public abstract class BaseSimpleDeviceBusinessLogicAdapter : ISimpleDeviceBusine
     /// Default ctor
     /// </summary>
     /// <param name="device">Current device</param>
-    protected BaseSimpleDeviceBusinessLogicAdapter(IOrderManagementDevice device)
+    protected BaseSimpleDeviceBusinessLogicAdapter(IIpDevice device)
     {
-        ArgumentNullException.ThrowIfNull(device.OrderManager);
-        IpDevice = IpDevice = device;
+        IpDevice = device;
     }
 
     /// <summary>

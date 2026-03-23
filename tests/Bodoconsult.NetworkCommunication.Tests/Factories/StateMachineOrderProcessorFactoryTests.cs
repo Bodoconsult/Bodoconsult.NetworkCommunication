@@ -28,7 +28,7 @@ internal class StateMachineOrderProcessorFactoryTests
         var commAdapter = TestDataHelper.FakeIpCommunicationAdapter;
         var stepFactory = new RequestStepProcessorFactory();
 
-        var device = TestDataHelper.CreateNoStateMachineDevice();
+        var device = TestDataHelper.CreateOrderManagementDevice();
         device.LoadCommAdapter(commAdapter);
 
         var logger = Globals.Instance.Logger;

@@ -6,7 +6,7 @@ using Bodoconsult.NetworkCommunication.Interfaces;
 namespace Bodoconsult.NetworkCommunication.Factories;
 
 /// <summary>
-/// Factory for creating <see cref="OrderManagementDevice"/> instances supporting only order management and no state management
+/// Factory for creating <see cref="BasicOrderManagementDevice"/> instances supporting only order management and no state management
 /// </summary>
 public class OrderManagementDeviceFactory : IOrderManagementDeviceFactory
 {
@@ -32,7 +32,7 @@ public class OrderManagementDeviceFactory : IOrderManagementDeviceFactory
     {
         var commAdapter = _commAdapterFactory.CreateInstance(dataMessagingConfig);
 
-        var device =  new OrderManagementDevice(dataMessagingConfig, _clientNotificationManager);
+        var device =  new BasicOrderManagementDevice(dataMessagingConfig, _clientNotificationManager);
         device.LoadCommAdapter(commAdapter);
 
         return device;

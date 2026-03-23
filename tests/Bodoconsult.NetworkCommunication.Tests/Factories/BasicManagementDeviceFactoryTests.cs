@@ -5,13 +5,14 @@ using Bodoconsult.NetworkCommunication.ClientNotifications;
 using Bodoconsult.NetworkCommunication.Factories;
 using Bodoconsult.NetworkCommunication.StateManagement;
 using Bodoconsult.NetworkCommunication.StateManagement.Factories;
+using Bodoconsult.NetworkCommunication.StateManagement.Interfaces;
 using Bodoconsult.NetworkCommunication.StateManagement.StateCheckManagers;
 using Bodoconsult.NetworkCommunication.Tests.Helpers;
 
 namespace Bodoconsult.NetworkCommunication.Tests.Factories;
 
 [TestFixture]
-internal class BasicManagementDeviceFactoryTests
+internal class BasicStateMachineDeviceFactoryTests
 {
     [Test]
     public void CreateInstance_ValidSetup_ReturnsDevice()
@@ -28,15 +29,14 @@ internal class BasicManagementDeviceFactoryTests
         var outboundDataMessageFactory = new BtcpOutboundDataMessageFactory();
         var commAdapterFactory = new IpCommunicationAdapterFactory(communicationHandlerFactory, outboundDataMessageFactory);
 
-        var factory = new BasicManagementDeviceFactory(clientNotificationManager, commAdapterFactory);
+        var factory = new BasicStateMachineDeviceFactory(clientNotificationManager, commAdapterFactory);
 
         var dataMessagingConfig = TestDataHelper.GetDataMessagingConfig();
-        dataMessagingConfig.StateMachineProcessingPackage = new StateMachineProcessingPackage();
-        dataMessagingConfig.StateMachineProcessingPackage.StateMachineStateFactory = new StateMachineStateFactory();
-        dataMessagingConfig.StateMachineProcessingPackage.StateCheckManager = new DoNothingStateCheckManager();
+
+        IDeviceStateCheckManager deviceStateCheckManager = new DoNothingStateCheckManager();
 
         // Act 
-        var result = factory.CreateInstance(dataMessagingConfig);
+        var result = factory.CreateInstance(dataMessagingConfig, deviceStateCheckManager);
 
         // Assert
         Assert.That(result.ClientNotificationManager, Is.EqualTo(clientNotificationManager));

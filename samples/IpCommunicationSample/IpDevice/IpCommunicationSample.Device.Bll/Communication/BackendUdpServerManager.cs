@@ -6,6 +6,7 @@ using Bodoconsult.NetworkCommunication.DataMessaging.DataMessageProcessingPackag
 using Bodoconsult.NetworkCommunication.Devices.Configurators;
 using Bodoconsult.NetworkCommunication.Interfaces;
 using Bodoconsult.NetworkCommunication.StateManagement.Interfaces;
+using IpCommunicationSample.Device.Bll.BusinessLogic.AdapterFactories;
 
 namespace IpCommunicationSample.Device.Bll.Communication;
 
@@ -72,7 +73,9 @@ public class BackendUdpServerManager : ISimpleDeviceManager
         var configurator = new UdpServerDeviceConfigurator(_duplexIoFactory, _monitorLoggerFactoryFactory, _logDataFactory, _appLoggerFactory, _appEventSourceFactory, _clientNotificationManager, _appLoggerProxy);
 
         configurator.CreateMessagingConfig("IPDevice_UDP", ipAddress, port, messageProcessingPackageFactory);
-        configurator.CreateDevice();
+
+        IDeviceBusinessLogicAdapterFactory businessLogicAdapterFactory = new SdcpBackendUdpBusinessLogicAdapterFactory();
+        configurator.CreateDevice(businessLogicAdapterFactory);
 
         var device = configurator.GetDevice();
 

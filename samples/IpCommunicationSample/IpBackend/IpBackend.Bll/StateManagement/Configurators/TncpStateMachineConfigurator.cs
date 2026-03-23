@@ -14,7 +14,7 @@ namespace IpCommunicationSample.Backend.Bll.StateManagement.Configurators;
 /// </summary>
 public class TncpStateMachineConfigurator : BaseStateMachineConfigurator
 {
-    private readonly IBackendTcpIpDeviceBusinessLogicAdapter _deviceBusinessLogicAdapter;
+    private readonly IIpDeviceTcpIpDeviceBusinessLogicAdapter _deviceBusinessLogicAdapter;
 
     /// <summary>
     /// Default ctor
@@ -22,9 +22,9 @@ public class TncpStateMachineConfigurator : BaseStateMachineConfigurator
     /// <param name="deviceBusinessLogicAdapter">Current device state manager</param>
     public TncpStateMachineConfigurator(IStateMachineDeviceBusinessLogicAdapter deviceBusinessLogicAdapter) : base(deviceBusinessLogicAdapter)
     {
-        if (deviceBusinessLogicAdapter is not IBackendTcpIpDeviceBusinessLogicAdapter dsm)
+        if (deviceBusinessLogicAdapter is not IIpDeviceTcpIpDeviceBusinessLogicAdapter dsm)
         {
-            throw new ArgumentException($"deviceBusinessLogicAdapter must have type {nameof(IBackendTcpIpDeviceBusinessLogicAdapter)}");
+            throw new ArgumentException($"deviceBusinessLogicAdapter must have type {nameof(IIpDeviceTcpIpDeviceBusinessLogicAdapter)}");
         }
 
         _deviceBusinessLogicAdapter = dsm;

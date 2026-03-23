@@ -9,7 +9,7 @@ using IpCommunicationSample.Common.BusinessTransactions.Requests;
 using System.Text;
 using Bodoconsult.NetworkCommunication.App.Abstractions;
 
-namespace IpCommunicationSampleTests.Backend;
+namespace IpCommunicationSampleTests.Backend.Converters;
 
 [TestFixture]
 internal class BackendBtRequestDataToOutboundBtcpMessageConverterTests

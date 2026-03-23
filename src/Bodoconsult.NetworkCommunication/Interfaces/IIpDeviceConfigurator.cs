@@ -31,7 +31,8 @@ public interface IIpDeviceConfigurator
     /// <summary>
     /// Create the device with basic settings
     /// </summary>
-    void CreateDevice();
+    /// <param name="businessLogicAdapterFactory">Current factory for <see cref="IStateMachineDeviceBusinessLogicAdapter"/> instances</param>
+    void CreateDevice(IDeviceBusinessLogicAdapterFactory businessLogicAdapterFactory);
 
     /// <summary>
     /// Configure the order management
@@ -42,10 +43,8 @@ public interface IIpDeviceConfigurator
     /// <summary>
     /// Configure the state management. Important: store state factory instance to device and config
     /// </summary>
-    /// <param name="businessLogicAdapterFactory">Current factory for <see cref="IStateMachineDeviceBusinessLogicAdapter"/> instances</param>
     /// <param name="stateMachineConfiguratorFactory">Current state machine configurator factory</param>
-    void ConfigureStateManagement(IDeviceBusinessLogicAdapterFactory businessLogicAdapterFactory, 
-        IStateMachineConfiguratorFactory stateMachineConfiguratorFactory);
+    void ConfigureStateManagement(IStateMachineConfiguratorFactory stateMachineConfiguratorFactory);
 
     /// <summary>
     /// Get the read configured device

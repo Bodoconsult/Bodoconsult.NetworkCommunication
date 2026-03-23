@@ -7,7 +7,7 @@ using Bodoconsult.NetworkCommunication.Interfaces;
 namespace Bodoconsult.NetworkCommunication.Factories;
 
 /// <summary>
-/// Factory for creating <see cref="SimpleDevice"/> instances supporting only order management and no state management
+/// Factory for creating <see cref="BasicSimpleDevice"/> instances supporting only order management and no state management
 /// </summary>
 public class SimpleDeviceFactory : IIpDeviceFactory
 {
@@ -33,7 +33,7 @@ public class SimpleDeviceFactory : IIpDeviceFactory
     {
         var commAdapter = _commAdapterFactory.CreateInstance(dataMessagingConfig);
 
-        var device = new SimpleDevice(dataMessagingConfig, _clientNotificationManager);
+        var device = new BasicSimpleDevice(dataMessagingConfig, _clientNotificationManager);
         device.LoadCommAdapter(commAdapter);
 
         return device;

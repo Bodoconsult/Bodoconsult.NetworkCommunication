@@ -11,7 +11,7 @@ namespace Bodoconsult.NetworkCommunication.Devices;
 /// <summary>
 /// Base class for simple IP devices
 /// </summary>
-public abstract class BaseIpDevice : IIpDevice
+public abstract class BaseSimpleDevice : IIpDevice
 {
     protected readonly IAppLoggerProxy AppLogger;
     protected readonly IAppLoggerProxy MonitorLogger;
@@ -21,7 +21,7 @@ public abstract class BaseIpDevice : IIpDevice
     /// </summary>
     /// <param name="dataMessagingConfig">Current messaging config</param>
     /// <param name="clientNotificationManager">Current client notification manager</param>
-    protected BaseIpDevice(IDataMessagingConfig dataMessagingConfig, ICentralClientNotificationManager clientNotificationManager)
+    protected BaseSimpleDevice(IDataMessagingConfig dataMessagingConfig, ICentralClientNotificationManager clientNotificationManager)
     {
         DataMessagingConfig = dataMessagingConfig ?? throw new ArgumentNullException(nameof(dataMessagingConfig));
         AppLogger = dataMessagingConfig.AppLogger;
@@ -76,10 +76,10 @@ public abstract class BaseIpDevice : IIpDevice
     /// <summary>
     /// Load the current <see cref="IDeviceBusinessLogicAdapter"/> instance
     /// </summary>
-    /// <param name="deviceStateManager">Current <see cref="IDeviceBusinessLogicAdapter"/> instance</param>
-    public void LoadDeviceBusinessLogicAdapter(IDeviceBusinessLogicAdapter deviceStateManager)
+    /// <param name="businessLogicAdapter">Current <see cref="IDeviceBusinessLogicAdapter"/> instance</param>
+    public void LoadDeviceBusinessLogicAdapter(IDeviceBusinessLogicAdapter businessLogicAdapter)
     {
-        DeviceBusinessLogicAdapter = deviceStateManager;
+        DeviceBusinessLogicAdapter = businessLogicAdapter;
     }
 
     /// <summary>

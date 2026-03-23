@@ -3,15 +3,15 @@
 using Bodoconsult.NetworkCommunication.Interfaces;
 using Bodoconsult.NetworkCommunication.StateManagement.Interfaces;
 
-namespace IpCommunicationSample.Backend.Bll.BusinessLogic;
+namespace Bodoconsult.NetworkCommunication.Tests.Devices;
 
 /// <summary>
-/// Current implementation of <see cref="IDeviceBusinessLogicAdapterFactory"/> delivering <see cref="TncpBackendTcpIpBusinessLogicAdapter"/> instances
+/// Current implementation of <see cref="IDeviceBusinessLogicAdapterFactory"/> delivering <see cref="TestIpDeviceConfigurator"/> instances
 /// </summary>
-public class TncpBackendTcpIpDeviceBusinessLogicAdapterFactory : IDeviceBusinessLogicAdapterFactory
+public class TestStateMachineDeviceAdapterFactory : IDeviceBusinessLogicAdapterFactory
 {
     /// <summary>
-    /// Create an instance of <see cref="IStateMachineDeviceBusinessLogicAdapter"/> for a certain device
+    /// Create an instance of <see cref="TestStateMachineDeviceBusinessLogicAdapter"/> for a certain device
     /// </summary>
     /// <param name="device">Current device</param>
     public IDeviceBusinessLogicAdapter CreateInstance(IIpDevice device)
@@ -21,6 +21,6 @@ public class TncpBackendTcpIpDeviceBusinessLogicAdapterFactory : IDeviceBusiness
             throw new ArgumentException($"device is not implementing {nameof(IStateMachineDevice)}");
         }
 
-        return new TncpBackendTcpIpBusinessLogicAdapter(statemachineDevice);
+        return new TestStateMachineDeviceBusinessLogicAdapter(statemachineDevice);
     }
 }

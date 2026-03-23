@@ -8,16 +8,16 @@ using Bodoconsult.NetworkCommunication.Interfaces;
 namespace Bodoconsult.NetworkCommunication.Devices;
 
 /// <summary>
-/// A simple device supporting order management
-/// </summary>
-public class OrderManagementDevice: BaseOrderManagementDevice
+    /// A basic device supporting order management but no state management
+    /// </summary>
+    public class BasicOrderManagementDevice: BaseOrderManagementDevice
 {
     /// <summary>
     /// Default ctor
     /// </summary>
     /// <param name="dataMessagingConfig">Current messaging config</param>
     /// <param name="clientNotificationManager">Current client notification manager</param>
-    public OrderManagementDevice(IDataMessagingConfig dataMessagingConfig, IOrderManagementClientNotificationManager clientNotificationManager) : base(dataMessagingConfig, clientNotificationManager)
+    public BasicOrderManagementDevice(IDataMessagingConfig dataMessagingConfig, IOrderManagementClientNotificationManager clientNotificationManager) : base(dataMessagingConfig, clientNotificationManager)
     {
     }
 }

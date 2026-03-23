@@ -5,7 +5,7 @@ using Bodoconsult.NetworkCommunication.App.Abstractions;
 using Bodoconsult.NetworkCommunication.Interfaces;
 using Bodoconsult.NetworkCommunication.StateManagement.Interfaces;
 
-namespace Bodoconsult.NetworkCommunication.Devices;
+namespace Bodoconsult.NetworkCommunication.Devices.Configurators;
 
 /// <summary>
 /// Base class for device configurators
@@ -41,7 +41,6 @@ public abstract class BaseIpDeviceConfigurator : IIpDeviceConfigurator
     /// </summary>
     public IIpDevice? Device { get; protected set; }
 
-
     /// <summary>
     /// Create the basic data messaging config
     /// </summary>
@@ -58,7 +57,8 @@ public abstract class BaseIpDeviceConfigurator : IIpDeviceConfigurator
     /// <summary>
     /// Create the device with basic settings
     /// </summary>
-    public virtual void CreateDevice()
+    /// <param name="businessLogicAdapterFactory">Current factory for <see cref="IStateMachineDeviceBusinessLogicAdapter"/> instances</param>
+    public virtual void CreateDevice(IDeviceBusinessLogicAdapterFactory businessLogicAdapterFactory)
     {
         throw new NotSupportedException("Override in derived classes!");
     }
@@ -75,10 +75,8 @@ public abstract class BaseIpDeviceConfigurator : IIpDeviceConfigurator
     /// <summary>
     /// Configure the order management and if necessary the state management. Important: store state factory instance to device and config
     /// </summary>
-    /// <param name="deviceBusinessLogicAdapterFactory">Current factory for <see cref="IStateMachineDeviceBusinessLogicAdapter"/> instances</param>
     /// <param name="stateMachineConfiguratorFactory">Current state machine configurator factory</param>
-    public virtual void ConfigureStateManagement(IDeviceBusinessLogicAdapterFactory deviceBusinessLogicAdapterFactory, 
-        IStateMachineConfiguratorFactory stateMachineConfiguratorFactory)
+    public virtual void ConfigureStateManagement(IStateMachineConfiguratorFactory stateMachineConfiguratorFactory)
     {
         // Do nothing
     }

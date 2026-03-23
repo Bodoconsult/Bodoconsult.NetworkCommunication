@@ -7,6 +7,7 @@ using Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig;
 using Bodoconsult.NetworkCommunication.EnumAndStates;
 using Bodoconsult.NetworkCommunication.Factories;
 using Bodoconsult.NetworkCommunication.Interfaces;
+using Bodoconsult.NetworkCommunication.StateManagement.Interfaces;
 
 namespace Bodoconsult.NetworkCommunication.Devices.Configurators;
 
@@ -80,10 +81,12 @@ public class TcpIpClientDeviceConfigurator : BaseIpDeviceConfigurator
         DataMessagingConfig.DataMessageProcessingPackage = new BtcpDataMessageProcessingPackage(DataMessagingConfig);
     }
 
+
     /// <summary>
     /// Create the device with basic settings
     /// </summary>
-    public override void CreateDevice()
+    /// <param name="businessLogicAdapterFactory">Current factory for <see cref="IStateMachineDeviceBusinessLogicAdapter"/> instances</param>
+    public override void CreateDevice(IDeviceBusinessLogicAdapterFactory businessLogicAdapterFactory)
     {
         ArgumentNullException.ThrowIfNull(DataMessagingConfig);
 
@@ -93,8 +96,10 @@ public class TcpIpClientDeviceConfigurator : BaseIpDeviceConfigurator
         var communicationHandlerFactory = new IpCommunicationHandlerFactory(socketProxyFactory, _duplexIoFactory, _appEventSourceFactory, _clientNotificationManager);
         var outboundDataMessageFactory = new BtcpOutboundDataMessageFactory();
         var commAdapterFactory = new IpCommunicationAdapterFactory(communicationHandlerFactory, outboundDataMessageFactory);
-
+        
         var factory = new SimpleDeviceFactory(_clientNotificationManager, commAdapterFactory);
         Device = factory.CreateInstance(DataMessagingConfig);
+        var adapter = businessLogicAdapterFactory.CreateInstance(Device);
+        Device.LoadDeviceBusinessLogicAdapter(adapter);
     }
 }

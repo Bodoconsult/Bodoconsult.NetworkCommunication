@@ -7,6 +7,7 @@ using Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig;
 using Bodoconsult.NetworkCommunication.EnumAndStates;
 using Bodoconsult.NetworkCommunication.Factories;
 using Bodoconsult.NetworkCommunication.Interfaces;
+using Bodoconsult.NetworkCommunication.StateManagement.Interfaces;
 
 namespace Bodoconsult.NetworkCommunication.Devices.Configurators;
 
@@ -77,7 +78,7 @@ public class TcpIpServerDeviceConfigurator: BaseIpDeviceConfigurator
     /// <summary>
     /// Create the device with basic settings
     /// </summary>
-    public override void CreateDevice()
+    public override void CreateDevice(IDeviceBusinessLogicAdapterFactory businessLogicAdapterFactory)
     {
         ArgumentNullException.ThrowIfNull(DataMessagingConfig);
 
@@ -90,5 +91,8 @@ public class TcpIpServerDeviceConfigurator: BaseIpDeviceConfigurator
 
         var factory = new SimpleDeviceFactory(_clientNotificationManager, commAdapterFactory);
         Device = factory.CreateInstance(DataMessagingConfig);
+
+        var adapter = businessLogicAdapterFactory.CreateInstance(Device);
+        Device.LoadDeviceBusinessLogicAdapter(adapter);
     }
 }

@@ -6,16 +6,17 @@ using Bodoconsult.NetworkCommunication.Interfaces;
 namespace Bodoconsult.NetworkCommunication.Devices;
 
 /// <summary>
-/// A simple device supporting only basic comm features like sending and receiving messages but no order management and no state management
+/// A fake device supporting state management and order management
 /// </summary>
-public class SimpleDevice : BaseIpDevice
+public class FakeSimpleDevice : BaseSimpleDevice
 {
     /// <summary>
     /// Default ctor
     /// </summary>
     /// <param name="dataMessagingConfig">Current messaging config</param>
     /// <param name="clientNotificationManager">Current client notification manager</param>
-    public SimpleDevice(IDataMessagingConfig dataMessagingConfig, ICentralClientNotificationManager clientNotificationManager) : 
+    public FakeSimpleDevice(IDataMessagingConfig dataMessagingConfig, ICentralClientNotificationManager clientNotificationManager) : 
         base(dataMessagingConfig, clientNotificationManager)
-    { }
+    {
+    }
 }

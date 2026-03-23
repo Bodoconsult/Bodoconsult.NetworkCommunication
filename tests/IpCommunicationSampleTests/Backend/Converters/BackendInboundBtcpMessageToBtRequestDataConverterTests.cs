@@ -7,7 +7,7 @@ using Bodoconsult.NetworkCommunication.Tests.Helpers;
 using IpCommunicationSample.Backend.Bll.BusinessTransactions;
 using IpCommunicationSample.Common.BusinessTransactions;
 
-namespace IpCommunicationSampleTests.Backend;
+namespace IpCommunicationSampleTests.Backend.Converters;
 
 [TestFixture]
 internal class BackendInboundBtcpMessageToBtRequestDataConverterTests

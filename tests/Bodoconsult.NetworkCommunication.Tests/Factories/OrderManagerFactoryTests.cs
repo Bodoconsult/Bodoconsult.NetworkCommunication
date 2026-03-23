@@ -52,7 +52,7 @@ internal class OrderManagerFactoryTests
     public void CreateInstance_ValidSetup_ReturnsInstance()
     {
         // Arrange 
-        var device = TestDataHelper.CreateNoStateMachineDevice();
+        var device = TestDataHelper.CreateOrderManagementDevice();
         device.LoadCommAdapter(new FakeIpCommunicationAdapter());
 
         IOrderReceiverFactory orderReceiverFactory = new OrderReceiverFactory();
@@ -81,7 +81,7 @@ internal class OrderManagerFactoryTests
     public void CreateInstance_NoCommAdapter_ReturnsInstance()
     {
         // Arrange 
-        var device = TestDataHelper.CreateNoStateMachineDevice();
+        var device = TestDataHelper.CreateOrderManagementDevice();
 
         IOrderReceiverFactory orderReceiverFactory = new OrderReceiverFactory();
 

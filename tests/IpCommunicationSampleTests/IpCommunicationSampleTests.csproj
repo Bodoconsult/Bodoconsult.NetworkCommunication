@@ -28,7 +28,12 @@
 
   <ItemGroup>
     <Folder Include="Backend\Configurators\" />
-    <Folder Include="Device\" />
+    <Folder Include="Backend\Adapter\" />
+    <Folder Include="Client\AdapterFactories\" />
+    <Folder Include="Client\Adapter\" />
+    <Folder Include="Client\Configurators\" />
+    <Folder Include="Device\Adapter\" />
+    <Folder Include="Device\AdapterFactories\" />
   </ItemGroup>
 
   <ItemGroup>

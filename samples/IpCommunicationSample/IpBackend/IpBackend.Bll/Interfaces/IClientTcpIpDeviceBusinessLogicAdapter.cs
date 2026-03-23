@@ -5,7 +5,9 @@ using Bodoconsult.NetworkCommunication.StateManagement.Interfaces;
 namespace IpCommunicationSample.Backend.Bll.Interfaces;
 
 /// <summary>
-/// Interface for state handling in the UDP channel from backend to IP device
+/// Interface for the channel from client to backend via TCP/IP
 /// </summary>
-public interface IBackendUdpDeviceBusinessLogicAdapter : ISimpleDeviceBusinessLogicAdapter
-{ }
+public interface IClientTcpIpDeviceBusinessLogicAdapter : ISimpleDeviceBusinessLogicAdapter
+{
+
+}

@@ -305,4 +305,18 @@ public abstract class BaseStateMachineDevice : BaseOrderManagementDevice, IState
 
         SavedJobState = js;
     }
+
+    /// <summary>
+    /// Load the current <see cref="IDeviceBusinessLogicAdapter"/> instance
+    /// </summary>
+    /// <param name="businessLogicAdapter">Current <see cref="IDeviceBusinessLogicAdapter"/> instance</param>
+    public override void LoadDeviceBusinessLogicAdapter(IDeviceBusinessLogicAdapter businessLogicAdapter)
+    {
+        if (businessLogicAdapter is not IStateMachineDeviceBusinessLogicAdapter o)
+        {
+            throw new ArgumentException($"businessLogicAdapter is not {nameof(IStateMachineDeviceBusinessLogicAdapter)}");
+        }
+
+        DeviceBusinessLogicAdapter = businessLogicAdapter;
+    }
 }

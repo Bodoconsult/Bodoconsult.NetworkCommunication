@@ -6,6 +6,7 @@ using Bodoconsult.NetworkCommunication.DataMessaging.DataMessageProcessingPackag
 using Bodoconsult.NetworkCommunication.Devices.Configurators;
 using Bodoconsult.NetworkCommunication.Interfaces;
 using Bodoconsult.NetworkCommunication.StateManagement.Interfaces;
+using IpCommunicationSample.Client.Bll.BusinessTransactions.AdapterFactories;
 
 namespace IpCommunicationSample.Client.Bll.Communication;
 
@@ -80,7 +81,10 @@ public class BackendTcpIpClientManager : IOrderManagementDeviceManager
         var configurator = new TcpIpServerDeviceConfigurator(_duplexIoFactory, _monitorLoggerFactoryFactory, _logDataFactory, _appLoggerFactory, _appEventSourceFactory, _clientNotificationManager, _tcpIpListenerManager, _appLoggerProxy);
 
         configurator.CreateMessagingConfig("Client_TCPIP", ipAddress, port, messageProcessingPackageFactory);
-        configurator.CreateDevice();
+
+        IDeviceBusinessLogicAdapterFactory businessLogicAdapterFactory = new BtcpBackendTcpIpBusinessLogicAdapterFactory();
+        configurator.CreateDevice(businessLogicAdapterFactory);
+
         configurator.ConfigureOrderManagement(_orderManagerFactory);
 
         var device = configurator.GetDevice();

@@ -4,10 +4,10 @@ using Bodoconsult.App.Abstractions.Interfaces;
 using Bodoconsult.App.BusinessTransactions.RequestData;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
 using Bodoconsult.NetworkCommunication.Tests.Helpers;
-using IpCommunicationSample.Client.Bll.BusinessTransactions;
+using IpCommunicationSample.Client.Bll.BusinessTransactions.Converters;
 using IpCommunicationSample.Common.BusinessTransactions;
 
-namespace IpCommunicationSampleTests.Client;
+namespace IpCommunicationSampleTests.Client.Converters;
 
 [TestFixture]
 internal class ClientBtRequestDataToOutboundBtcpMessageConverterTests

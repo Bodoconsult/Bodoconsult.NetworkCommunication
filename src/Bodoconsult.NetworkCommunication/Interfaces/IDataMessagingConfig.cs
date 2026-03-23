@@ -33,10 +33,10 @@ public interface IDataMessagingConfig
     /// </summary>
     IDataMessageProcessingPackage? DataMessageProcessingPackage { get; set; }
 
-    /// <summary>
-    /// Data message procssing package
-    /// </summary>
-    IStateMachineProcessingPackage? StateMachineProcessingPackage { get; set; }
+    ///// <summary>
+    ///// Data message procssing package
+    ///// </summary>
+    //IStateMachineProcessingPackage? StateMachineProcessingPackage { get; set; }
 
     /// <summary>
     /// Update data message processing package

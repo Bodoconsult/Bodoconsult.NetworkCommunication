@@ -1,23 +1,24 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
-using IpCommunicationSample.Backend.Bll.Interfaces;
+using Bodoconsult.App.Interfaces;
 using Bodoconsult.NetworkCommunication.Interfaces;
 using Bodoconsult.NetworkCommunication.OrderManagement.ParameterSets;
 using Bodoconsult.NetworkCommunication.StateManagement;
 using Bodoconsult.NetworkCommunication.StateManagement.Interfaces;
+using IpCommunicationSample.Backend.Bll.Interfaces;
 
-namespace IpCommunicationSample.Backend.Bll.BusinessLogic;
+namespace IpCommunicationSample.Backend.Bll.BusinessLogic.Adapters;
 
 /// <summary>
 /// Current implementation of <see cref="IStateMachineDeviceBusinessLogicAdapter"/> for the backend
 /// </summary>
-public class TncpBackendTcpIpBusinessLogicAdapter : BaseStateMachineDeviceBusinessLogicAdapter, IBackendTcpIpDeviceBusinessLogicAdapter
+public class TncpIpDeviceTcpIpBusinessLogicAdapter : BaseStateMachineDeviceBusinessLogicAdapter, IIpDeviceTcpIpDeviceBusinessLogicAdapter
 {
     /// <summary>
     /// Default ctor
     /// </summary>
     /// <param name="device">Current device</param>
-    public TncpBackendTcpIpBusinessLogicAdapter(IStateMachineDevice device) : base(device)
+    public TncpIpDeviceTcpIpBusinessLogicAdapter(IStateMachineDevice device) : base(device)
     { }
 
     #region Device order handling
@@ -127,9 +128,10 @@ public class TncpBackendTcpIpBusinessLogicAdapter : BaseStateMachineDeviceBusine
     #region State management
 
     /// <summary>
-    /// Request a start streamin state
+    /// Request a start streaming state
     /// </summary>
-    public void RequestDeviceStartStreamingState()
+    /// <param name="request">Current request</param>
+    public void RequestDeviceStartStreamingState(IBusinessTransactionRequestData request)
     {
         ArgumentNullException.ThrowIfNull(Device);
         ArgumentNullException.ThrowIfNull(StateFactory, "StateFactory is null. Call LoadStateFactory() before!");
@@ -165,7 +167,8 @@ public class TncpBackendTcpIpBusinessLogicAdapter : BaseStateMachineDeviceBusine
     /// <summary>
     /// Request a start streamin state
     /// </summary>
-    public void RequestDeviceStartSnapshotState()
+    /// <param name="request">Current request</param>
+    public void RequestDeviceStartSnapshotState(IBusinessTransactionRequestData request)
     {
         ArgumentNullException.ThrowIfNull(Device);
         ArgumentNullException.ThrowIfNull(StateFactory, "StateFactory is null. Call LoadStateFactory() before!");
@@ -201,7 +204,8 @@ public class TncpBackendTcpIpBusinessLogicAdapter : BaseStateMachineDeviceBusine
     /// <summary>
     /// Request a stop streamin state
     /// </summary>
-    public void RequestDeviceStopStreamingState()
+    /// <param name="request">Current request</param>
+    public void RequestDeviceStopStreamingState(IBusinessTransactionRequestData request)
     {
         ArgumentNullException.ThrowIfNull(Device);
         ArgumentNullException.ThrowIfNull(StateFactory, "StateFactory is null. Call LoadStateFactory() before!");
@@ -236,7 +240,8 @@ public class TncpBackendTcpIpBusinessLogicAdapter : BaseStateMachineDeviceBusine
     /// <summary>
     /// Request a start streamin state
     /// </summary>
-    public void RequestDeviceStopSnapshotState()
+    /// <param name="request">Current request</param>
+    public void RequestDeviceStopSnapshotState(IBusinessTransactionRequestData request)
     {
         ArgumentNullException.ThrowIfNull(Device);
         ArgumentNullException.ThrowIfNull(StateFactory, "StateFactory is null. Call LoadStateFactory() before!");

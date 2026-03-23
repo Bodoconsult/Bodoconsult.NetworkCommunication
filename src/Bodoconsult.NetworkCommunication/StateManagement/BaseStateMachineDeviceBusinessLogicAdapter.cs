@@ -16,10 +16,8 @@ public abstract class BaseStateMachineDeviceBusinessLogicAdapter : IStateMachine
     /// <param name="device">Current device</param>
     protected BaseStateMachineDeviceBusinessLogicAdapter(IStateMachineDevice device)
     {
-        ArgumentNullException.ThrowIfNull(device.OrderManager);
         IpDevice = IpDevice = device;
         Device = device;
-        OrderFactory = device.OrderManager.OrderFactory;
     }
 
     /// <summary>
@@ -41,6 +39,15 @@ public abstract class BaseStateMachineDeviceBusinessLogicAdapter : IStateMachine
     /// Current state factory
     /// </summary>
     public IStateMachineStateFactory? StateFactory { get; private set; }
+
+    /// <summary>
+    /// Load the order factory
+    /// </summary>
+    public void LoadOrderFactory()
+    {
+        ArgumentNullException.ThrowIfNull(Device.OrderManager);
+        OrderFactory = Device.OrderManager.OrderFactory;
+    }
 
     /// <summary>
     /// Load the state factory

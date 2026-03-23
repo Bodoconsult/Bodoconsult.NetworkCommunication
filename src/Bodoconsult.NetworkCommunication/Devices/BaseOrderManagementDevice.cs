@@ -178,7 +178,7 @@ public abstract class BaseOrderManagementDevice : IOrderManagementDevice
     /// Load the current <see cref="IDeviceBusinessLogicAdapter"/> instance
     /// </summary>
     /// <param name="businessLogicAdapter">Current <see cref="IDeviceBusinessLogicAdapter"/> instance</param>
-    public void LoadDeviceBusinessLogicAdapter(IDeviceBusinessLogicAdapter businessLogicAdapter)
+    public virtual void LoadDeviceBusinessLogicAdapter(IDeviceBusinessLogicAdapter businessLogicAdapter)
     {
         if (businessLogicAdapter is not IOrderManagementDeviceBusinessLogicAdapter o)
         {

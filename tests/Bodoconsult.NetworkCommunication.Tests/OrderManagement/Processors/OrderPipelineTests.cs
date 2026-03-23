@@ -27,7 +27,7 @@ public class OrderPipelineTests
     {
         IRequestStepProcessorFactory requestStepProcessorFactory = new RequestStepProcessorFactory();
         
-        var device = TestDataHelper.CreateNoStateMachineDevice();
+        var device = TestDataHelper.CreateOrderManagementDevice();
         device.LoadCommAdapter(TestDataHelper.FakeIpCommunicationAdapter);
 
         _requestProcessorFactory = new RequestProcessorFactory(requestStepProcessorFactory, device);

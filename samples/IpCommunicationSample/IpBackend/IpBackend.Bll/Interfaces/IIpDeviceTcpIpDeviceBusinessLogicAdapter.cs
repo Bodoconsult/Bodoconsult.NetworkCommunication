@@ -1,5 +1,6 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
+using Bodoconsult.App.Interfaces;
 using Bodoconsult.NetworkCommunication.Interfaces;
 using Bodoconsult.NetworkCommunication.StateManagement.Interfaces;
 
@@ -8,7 +9,7 @@ namespace IpCommunicationSample.Backend.Bll.Interfaces;
 /// <summary>
 /// Interface for state handling in the TCP/IP channel from backend to IP device
 /// </summary>
-public interface IBackendTcpIpDeviceBusinessLogicAdapter: IStateMachineDeviceBusinessLogicAdapter
+public interface IIpDeviceTcpIpDeviceBusinessLogicAdapter: IStateMachineDeviceBusinessLogicAdapter
 {
     #region Device order handling
 
@@ -89,22 +90,27 @@ public interface IBackendTcpIpDeviceBusinessLogicAdapter: IStateMachineDeviceBus
     /// <summary>
     /// Request a start streaming state
     /// </summary>
-    void RequestDeviceStartStreamingState();
+    /// <param name="request">Current request</param>
+    void RequestDeviceStartStreamingState(IBusinessTransactionRequestData request);
 
     /// <summary>
     /// Request a start snapshot state
     /// </summary>
-    void RequestDeviceStartSnapshotState();
+    /// <param name="request">Current request</param>
+    void RequestDeviceStartSnapshotState(IBusinessTransactionRequestData request);
 
     /// <summary>
     /// Request a stop streaming state
     /// </summary>
-    void RequestDeviceStopStreamingState();
+    /// <param name="request">Current request</param>
+    void RequestDeviceStopStreamingState(IBusinessTransactionRequestData request);
 
     /// <summary>
     /// Request a stop snapshot state
     /// </summary>
-    void RequestDeviceStopSnapshotState();
+    /// <param name="request">Current request</param>
+    void RequestDeviceStopSnapshotState(IBusinessTransactionRequestData request);
+
 
     #endregion
 }

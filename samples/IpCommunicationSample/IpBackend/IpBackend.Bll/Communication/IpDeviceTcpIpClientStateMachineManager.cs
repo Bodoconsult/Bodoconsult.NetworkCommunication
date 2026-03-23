@@ -6,6 +6,7 @@ using Bodoconsult.NetworkCommunication.DataMessaging.DataMessageProcessingPackag
 using Bodoconsult.NetworkCommunication.Devices.Configurators;
 using Bodoconsult.NetworkCommunication.Interfaces;
 using Bodoconsult.NetworkCommunication.StateManagement.Interfaces;
+using IpCommunicationSample.Backend.Bll.BusinessLogic.AdapterFactories;
 
 namespace IpCommunicationSample.Backend.Bll.Communication;
 
@@ -30,7 +31,6 @@ public class IpDeviceTcpIpClientStateMachineManager: IStateMachineDeviceManager
     /// <param name="appLoggerFactory">Current logger proxy factory</param>
     /// <param name="appEventSourceFactory">Current factory for <see cref="IAppEventSource"/> instances</param>
     /// <param name="clientNotificationManager">Current client notification manager instance</param>
-    /// <param name="tcpIpListenerManager">Current TCP/IP listener manager</param>
     /// <param name="monitorLoggerFactoryFactory">Current factory for monitor logger factories</param>
     /// <param name="appLoggerProxy">Current app logger</param>
     public IpDeviceTcpIpClientStateMachineManager(IDuplexIoFactory duplexIoFactory,
@@ -78,7 +78,9 @@ public class IpDeviceTcpIpClientStateMachineManager: IStateMachineDeviceManager
         var configurator = new TcpIpClientStateMachineDeviceConfigurator(_duplexIoFactory, _monitorLoggerFactoryFactory, _logDataFactory, _appLoggerFactory, _appEventSourceFactory, _clientNotificationManager, _appLoggerProxy);
 
         configurator.CreateMessagingConfig("IPDevice_TCPIP", ipAddress, port, messageProcessingPackageFactory);
-        configurator.CreateDevice();
+
+        IDeviceBusinessLogicAdapterFactory businessLogicAdapterFactory = new SdcpIpDeviceUdpBusinessLogicAdapterFactory();
+        configurator.CreateDevice(businessLogicAdapterFactory);
 
         var device = configurator.GetDevice();
 

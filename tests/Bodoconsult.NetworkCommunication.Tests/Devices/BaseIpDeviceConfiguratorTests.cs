@@ -2,6 +2,7 @@
 
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessageProcessingPackages;
 using Bodoconsult.NetworkCommunication.Interfaces;
+using Bodoconsult.NetworkCommunication.StateManagement.Interfaces;
 
 namespace Bodoconsult.NetworkCommunication.Tests.Devices;
 
@@ -45,10 +46,12 @@ internal class BaseIpDeviceConfiguratorTests
         // Arrange 
         var config = new TestIpDeviceConfigurator();
 
+        IDeviceBusinessLogicAdapterFactory businessLogicAdapterFactory = new TestIpDeviceAdapterFactory();
+
         // Act  
         Assert.Throws<NotSupportedException>(() =>
         {
-            config.CreateDevice();
+            config.CreateDevice(businessLogicAdapterFactory);
         });
 
         // Assert

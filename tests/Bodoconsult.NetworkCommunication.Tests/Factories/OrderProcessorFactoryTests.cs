@@ -28,7 +28,7 @@ internal class OrderProcessorFactoryTests
         var commAdapter = TestDataHelper.FakeIpCommunicationAdapter;
         var stepFactory = new RequestStepProcessorFactory();
 
-        var device = TestDataHelper.CreateNoStateMachineDevice();
+        var device = TestDataHelper.CreateOrderManagementDevice();
         device.LoadCommAdapter(commAdapter);
 
         var logger = Globals.Instance.Logger;
@@ -73,7 +73,7 @@ internal class OrderProcessorFactoryTests
         // Arrange 
         var factory = new OrderProcessorFactory(_dateTimeService, _syncManager, _notificationManager, _benchLogger);
 
-        var device = TestDataHelper.CreateNoStateMachineDevice();
+        var device = TestDataHelper.CreateOrderManagementDevice();
 
         // Act  
         var instance = factory.CreateInstance(device, _orderPipeline);

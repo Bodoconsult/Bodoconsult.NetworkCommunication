@@ -9,6 +9,7 @@ using Bodoconsult.NetworkCommunication.Interfaces;
 using Bodoconsult.NetworkCommunication.StateManagement;
 using Bodoconsult.NetworkCommunication.StateManagement.Interfaces;
 using Bodoconsult.NetworkCommunication.StateManagement.StateCheckManagers;
+using System.Security.Cryptography;
 
 namespace Bodoconsult.NetworkCommunication.Devices.Configurators;
 
@@ -80,16 +81,12 @@ public class TcpIpClientStateMachineDeviceConfigurator : BaseIpDeviceConfigurato
         DataMessagingConfig.IpProtocol = IpProtocolEnum.Tcp;
         DataMessagingConfig.IsServer = false;
         DataMessagingConfig.DataMessageProcessingPackage = messageProcessingPackageFactory.CreateInstance(DataMessagingConfig);
-        DataMessagingConfig.StateMachineProcessingPackage = new StateMachineProcessingPackage()
-        {
-            StateCheckManager = new DoNothingStateCheckManager()
-        };
     }
 
     /// <summary>
     /// Create the device with basic settings
     /// </summary>
-    public override void CreateDevice()
+    public override void CreateDevice(IDeviceBusinessLogicAdapterFactory businessLogicAdapterFactory)
     {
         ArgumentNullException.ThrowIfNull(DataMessagingConfig);
 
@@ -100,13 +97,23 @@ public class TcpIpClientStateMachineDeviceConfigurator : BaseIpDeviceConfigurato
         var outboundDataMessageFactory = new BtcpOutboundDataMessageFactory();
         var commAdapterFactory = new IpCommunicationAdapterFactory(communicationHandlerFactory, outboundDataMessageFactory);
 
-        var factory = new BasicManagementDeviceFactory(_clientNotificationManager, commAdapterFactory);
-        Device = factory.CreateInstance(DataMessagingConfig);
+        var factory = new BasicStateMachineDeviceFactory(_clientNotificationManager, commAdapterFactory);
+        IDeviceStateCheckManager deviceStateCheckManager = new DoNothingStateCheckManager();
+        Device = factory.CreateInstance(DataMessagingConfig, deviceStateCheckManager);
 
         if (Device is not IStateMachineDevice smd)
         {
             throw new ArgumentException($"Device must implement {nameof(IStateMachineDevice)}");
         }
+
+        var dsm = businessLogicAdapterFactory.CreateInstance(Device);
+
+        if (dsm is not IStateMachineDeviceBusinessLogicAdapter adapter)
+        {
+            throw new ArgumentException($"dsm is not implementing {nameof(IStateMachineDeviceBusinessLogicAdapter)}");
+        }
+
+        Device.LoadDeviceBusinessLogicAdapter(adapter);
 
         _stateManagementDevice = smd;
     }
@@ -128,22 +135,16 @@ public class TcpIpClientStateMachineDeviceConfigurator : BaseIpDeviceConfigurato
     /// <summary>
     /// Configure the order management and if necessary the state management. Important: store state factory instance to device and config
     /// </summary>
-    /// <param name="deviceBusinessLogicAdapterFactory">Current factory for <see cref="IStateMachineDeviceBusinessLogicAdapter"/> instances</param>
     /// <param name="stateMachineConfiguratorFactory">Current state machine configurator factory</param>
-    public override void ConfigureStateManagement(IDeviceBusinessLogicAdapterFactory deviceBusinessLogicAdapterFactory,
-        IStateMachineConfiguratorFactory stateMachineConfiguratorFactory)
+    public override void ConfigureStateManagement(IStateMachineConfiguratorFactory stateMachineConfiguratorFactory)
     {
+        ArgumentNullException.ThrowIfNull(Device);
         ArgumentNullException.ThrowIfNull(_stateManagementDevice);
-        ArgumentNullException.ThrowIfNull(DataMessagingConfig?.StateMachineProcessingPackage, "DataMessagingConfig or StateMachineProcessingPackage is null");
 
-        var dsm = deviceBusinessLogicAdapterFactory.CreateInstance(_stateManagementDevice);
-
-        if (dsm is not IStateMachineDeviceBusinessLogicAdapter adapter)
+        if (Device.DeviceBusinessLogicAdapter is not IStateMachineDeviceBusinessLogicAdapter adapter)
         {
-            throw new ArgumentException("dsm is not implementing " + nameof(IStateMachineDeviceBusinessLogicAdapter));
+            throw new ArgumentException($"Device.DeviceBusinessLogicAdapter is not implementing {nameof(IStateMachineDeviceBusinessLogicAdapter)}");
         }
-
-        _stateManagementDevice.LoadDeviceBusinessLogicAdapter(adapter);
 
         var configurator = stateMachineConfiguratorFactory.CreateInstance(adapter);
         configurator.ConfigureFactory();
@@ -151,6 +152,5 @@ public class TcpIpClientStateMachineDeviceConfigurator : BaseIpDeviceConfigurato
 
         // Important: store state factory instance to device and config
         _stateManagementDevice.StateMachineStateFactory = stateFactory;
-        DataMessagingConfig.StateMachineProcessingPackage.StateMachineStateFactory = stateFactory;
     }
 }

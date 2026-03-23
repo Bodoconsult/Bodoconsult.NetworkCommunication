@@ -9,7 +9,7 @@ using IpCommunicationSample.Common;
 using IpCommunicationSample.Common.BusinessTransactions;
 using IpCommunicationSample.Common.BusinessTransactions.Requests;
 
-namespace IpCommunicationSample.Client.Bll.BusinessTransactions;
+namespace IpCommunicationSample.Client.Bll.BusinessTransactions.Converters;
 
 public class ClientInboundBtcpMessageToBtRequestDataConverter : BaseInboundBtcpMessageToBtRequestDataConverter
 {

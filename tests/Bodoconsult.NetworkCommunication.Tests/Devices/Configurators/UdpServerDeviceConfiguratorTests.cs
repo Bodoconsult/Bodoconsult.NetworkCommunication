@@ -9,6 +9,7 @@ using Bodoconsult.NetworkCommunication.DataMessaging.DataMessageProcessingPackag
 using Bodoconsult.NetworkCommunication.Devices.Configurators;
 using Bodoconsult.NetworkCommunication.Factories;
 using Bodoconsult.NetworkCommunication.Interfaces;
+using Bodoconsult.NetworkCommunication.StateManagement.Interfaces;
 using Bodoconsult.NetworkCommunication.Tests.App;
 using Bodoconsult.NetworkCommunication.Tests.Helpers;
 
@@ -68,7 +69,6 @@ internal class UdpServerDeviceConfiguratorTests
         Assert.That(conf.DataMessagingConfig.IpAddress, Is.EqualTo(ip));
         Assert.That(conf.DataMessagingConfig.Port, Is.EqualTo(port));
         Assert.That(conf.DataMessagingConfig.DataMessageProcessingPackage, Is.Not.Null);
-        Assert.That(conf.DataMessagingConfig.StateMachineProcessingPackage, Is.Null);
     }
 
     [Test]
@@ -81,8 +81,10 @@ internal class UdpServerDeviceConfiguratorTests
             _appLoggerFactory, _appEventSourceFactory, _clientNotificationManager, _appLoggerProxy);
         conf.CreateMessagingConfig("TestDevice", "127.0.0.1", 9000, _messageProcessingPackageFactory);
 
+        IDeviceBusinessLogicAdapterFactory businessLogicAdapterFactory = new TestIpDeviceAdapterFactory();
+
         // Act  
-        conf.CreateDevice();
+        conf.CreateDevice(businessLogicAdapterFactory);
 
         // Assert
         Assert.That(conf.DataMessagingConfig, Is.Not.Null);

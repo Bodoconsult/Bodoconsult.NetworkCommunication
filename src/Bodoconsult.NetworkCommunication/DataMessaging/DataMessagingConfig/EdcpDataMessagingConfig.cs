@@ -34,10 +34,10 @@ public class EdcpDataMessagingConfig : IIpDataMessagingConfig
     /// </summary>
     public IDataMessageProcessingPackage? DataMessageProcessingPackage { get; set; }
 
-    /// <summary>
-    /// Data message procssing package
-    /// </summary>
-    public IStateMachineProcessingPackage? StateMachineProcessingPackage { get; set; }
+    ///// <summary>
+    ///// Data message procssing package
+    ///// </summary>
+    //public IStateMachineProcessingPackage? StateMachineProcessingPackage { get; set; }
 
     /// <summary>
     /// Update data message processing package
