@@ -9,13 +9,13 @@ using Bodoconsult.NetworkCommunication.ClientNotifications;
 using Bodoconsult.NetworkCommunication.Factories;
 using Bodoconsult.NetworkCommunication.Interfaces;
 using Bodoconsult.NetworkCommunication.Tests.Helpers;
-using IpCommunicationSample.Backend.Bll.Communication;
+using IpCommunicationSample.Device.Bll.Communication;
 using IpCommunicationSampleTests.App;
 
-namespace IpCommunicationSampleTests.Backend;
+namespace IpCommunicationSampleTests.Device;
 
 [TestFixture]
-internal class IpDeviceTcpIpClientStateMachineManagerTests
+internal class BackendUdpServerManagerTests
 {
     private readonly IAppLoggerProxy _appLogger = TestDataHelper.GetFakeAppLoggerProxy();
     //private readonly IAppDateService _dateService = TestDataHelper.AppDateService;
@@ -48,13 +48,13 @@ internal class IpDeviceTcpIpClientStateMachineManagerTests
         //var orderProcessorFactory = new StateMachineOrderProcessorFactory(_dateService, _syncOrderManager, _clientNotificationManager, _appBenchProxy);
         //IOrderPipelineFactory orderPipelineFactory = new OrderPipelineFactory(_dateService, _appLogger);
         // Act
-        var m = new IpDeviceTcpIpClientStateMachineManager(duplexIoFactory, _monitorLoggerFactoryFactory, _logDataFactory, _appLoggerFactory,
+        var m = new BackendUdpServerManager(duplexIoFactory, _monitorLoggerFactoryFactory, _logDataFactory, _appLoggerFactory,
             _appEventSourceFactory, _clientNotificationManager, _appLogger);
 
         // Assert
         using (Assert.EnterMultipleScope())
         {
-            Assert.That(m.Device, Is.Null);
+            Assert.That(m.IpDevice, Is.Null);
             Assert.That(m.DeviceBusinessLogicAdapter, Is.Null);
         }
     }
@@ -67,7 +67,7 @@ internal class IpDeviceTcpIpClientStateMachineManagerTests
         //var orderProcessorFactory = new StateMachineOrderProcessorFactory(_dateService, _syncOrderManager, _clientNotificationManager, _appBenchProxy);
         //IOrderPipelineFactory orderPipelineFactory = new OrderPipelineFactory(_dateService, _appLogger);
 
-        var m = new IpDeviceTcpIpClientStateMachineManager(duplexIoFactory, _monitorLoggerFactoryFactory, _logDataFactory, _appLoggerFactory,
+        var m = new BackendUdpServerManager(duplexIoFactory, _monitorLoggerFactoryFactory, _logDataFactory, _appLoggerFactory,
             _appEventSourceFactory, _clientNotificationManager, _appLogger);
 
         const string ip = "127.0.0.1";
@@ -79,7 +79,7 @@ internal class IpDeviceTcpIpClientStateMachineManagerTests
         // Assert
         using (Assert.EnterMultipleScope())
         {
-            Assert.That(m.Device, Is.Not.Null);
+            Assert.That(m.IpDevice, Is.Not.Null);
             Assert.That(m.DeviceBusinessLogicAdapter, Is.Not.Null);
         }
     }

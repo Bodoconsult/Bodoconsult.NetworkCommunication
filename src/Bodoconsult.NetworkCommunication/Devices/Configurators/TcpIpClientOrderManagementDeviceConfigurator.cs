@@ -7,14 +7,13 @@ using Bodoconsult.NetworkCommunication.EnumAndStates;
 using Bodoconsult.NetworkCommunication.Factories;
 using Bodoconsult.NetworkCommunication.Interfaces;
 using Bodoconsult.NetworkCommunication.StateManagement.Interfaces;
-using Bodoconsult.NetworkCommunication.StateManagement.StateCheckManagers;
 
 namespace Bodoconsult.NetworkCommunication.Devices.Configurators;
 
 /// <summary>
-/// Configurator for the communication to the IP device via TCP/IP (client side) with state management
+/// Configurator for the communication to the IP device via TCP/IP (client side) with order management but no state management
 /// </summary>
-public class TcpIpClientStateMachineDeviceConfigurator : BaseIpDeviceConfigurator
+public class TcpIpClientOrderManagementDeviceConfigurator : BaseIpDeviceConfigurator
 {
     private readonly IDuplexIoFactory _duplexIoFactory;
     private readonly IAppEventSourceFactory _appEventSourceFactory;
@@ -24,7 +23,7 @@ public class TcpIpClientStateMachineDeviceConfigurator : BaseIpDeviceConfigurato
     private readonly IAppLoggerProxyFactory _appLoggerFactory;
     private readonly IAppLoggerProxy _appLoggerProxy;
 
-    private IStateMachineDevice? _stateManagementDevice;
+    private IOrderManagementDevice? _orderManagementDevice;
 
     /// <summary>
     /// Default ctor
@@ -36,7 +35,7 @@ public class TcpIpClientStateMachineDeviceConfigurator : BaseIpDeviceConfigurato
     /// <param name="clientNotificationManager">Current client notification manager instance</param>
     /// <param name="monitorLoggerFactoryFactory">Current factory for monitor logger factories</param>
     /// <param name="appLoggerProxy">Current app logger</param>
-    public TcpIpClientStateMachineDeviceConfigurator(IDuplexIoFactory duplexIoFactory,
+    public TcpIpClientOrderManagementDeviceConfigurator(IDuplexIoFactory duplexIoFactory,
         IMonitorLoggerFactoryFactory monitorLoggerFactoryFactory,
         ILogDataFactory logDataFactory,
         IAppLoggerProxyFactory appLoggerFactory,
@@ -95,25 +94,24 @@ public class TcpIpClientStateMachineDeviceConfigurator : BaseIpDeviceConfigurato
         var outboundDataMessageFactory = new BtcpOutboundDataMessageFactory();
         var commAdapterFactory = new IpCommunicationAdapterFactory(communicationHandlerFactory, outboundDataMessageFactory);
 
-        var factory = new BasicStateMachineDeviceFactory(_clientNotificationManager, commAdapterFactory);
-        IDeviceStateCheckManager deviceStateCheckManager = new DoNothingStateCheckManager();
-        Device = factory.CreateInstance(DataMessagingConfig, deviceStateCheckManager);
+        var factory = new BasicOrderManagementDeviceFactory(_clientNotificationManager, commAdapterFactory);
+        Device = factory.CreateInstance(DataMessagingConfig);
 
-        if (Device is not IStateMachineDevice smd)
+        if (Device is not IOrderManagementDevice smd)
         {
-            throw new ArgumentException($"Device must implement {nameof(IStateMachineDevice)}");
+            throw new ArgumentException($"Device must implement {nameof(IOrderManagementDevice)}");
         }
 
         var dsm = businessLogicAdapterFactory.CreateInstance(Device);
 
-        if (dsm is not IStateMachineDeviceBusinessLogicAdapter adapter)
+        if (dsm is not IOrderManagementDeviceBusinessLogicAdapter adapter)
         {
-            throw new ArgumentException($"dsm is not implementing {nameof(IStateMachineDeviceBusinessLogicAdapter)}");
+            throw new ArgumentException($"dsm is not implementing {nameof(IOrderManagementDeviceBusinessLogicAdapter)}");
         }
 
         Device.LoadDeviceBusinessLogicAdapter(adapter);
 
-        _stateManagementDevice = smd;
+        _orderManagementDevice = smd;
     }
 
     /// <summary>
@@ -122,11 +120,14 @@ public class TcpIpClientStateMachineDeviceConfigurator : BaseIpDeviceConfigurato
     /// <param name="orderManagerFactory">Current factory for <see cref="IOrderManager"/> instances</param>
     public override void ConfigureOrderManagement(IOrderManagerFactory orderManagerFactory)
     {
-        ArgumentNullException.ThrowIfNull(_stateManagementDevice);
+        ArgumentNullException.ThrowIfNull(_orderManagementDevice);
+        ArgumentNullException.ThrowIfNull(_orderManagementDevice.OrderManagementDeviceBusinessLogicAdapter);
 
         // Order management
-        var om = orderManagerFactory.CreateInstance(_stateManagementDevice);
-        _stateManagementDevice.LoadDeviceOrderManager(om);
+        var om = orderManagerFactory.CreateInstance(_orderManagementDevice);
+        _orderManagementDevice.LoadDeviceOrderManager(om);
+
+        _orderManagementDevice.OrderManagementDeviceBusinessLogicAdapter.LoadOrderFactory(om.OrderFactory);
     }
 
 
@@ -137,7 +138,7 @@ public class TcpIpClientStateMachineDeviceConfigurator : BaseIpDeviceConfigurato
     public override void ConfigureStateManagement(IStateMachineConfiguratorFactory stateMachineConfiguratorFactory)
     {
         ArgumentNullException.ThrowIfNull(Device);
-        ArgumentNullException.ThrowIfNull(_stateManagementDevice);
+        ArgumentNullException.ThrowIfNull(_orderManagementDevice);
 
         if (Device.DeviceBusinessLogicAdapter is not IStateMachineDeviceBusinessLogicAdapter adapter)
         {
@@ -148,7 +149,7 @@ public class TcpIpClientStateMachineDeviceConfigurator : BaseIpDeviceConfigurato
         configurator.ConfigureFactory();
         var stateFactory = configurator.BuildFactory();
 
-        // Important: store state factory instance to device and config
-        _stateManagementDevice.StateMachineStateFactory = stateFactory;
+        //// Important: store state factory instance to device and config
+        //_orderManagementDevice.O = stateFactory;
     }
 }

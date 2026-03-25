@@ -70,6 +70,11 @@ public abstract class BaseOrderManagementDevice : IOrderManagementDevice
     public IList<IDeviceState> DeviceStatesInitProcess { get; } = new List<IDeviceState>();
 
     /// <summary>
+    /// Current <see cref="IOrderManagementDeviceBusinessLogicAdapter"/> instance
+    /// </summary>
+    public IOrderManagementDeviceBusinessLogicAdapter? OrderManagementDeviceBusinessLogicAdapter { get; protected set; }
+
+    /// <summary>
     /// Is the device connected?
     /// </summary>
     public bool IsConnected

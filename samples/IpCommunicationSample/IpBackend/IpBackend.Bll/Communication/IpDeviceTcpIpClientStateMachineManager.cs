@@ -79,7 +79,7 @@ public class IpDeviceTcpIpClientStateMachineManager: IStateMachineDeviceManager
 
         configurator.CreateMessagingConfig("IPDevice_TCPIP", ipAddress, port, messageProcessingPackageFactory);
 
-        IDeviceBusinessLogicAdapterFactory businessLogicAdapterFactory = new SdcpIpDeviceUdpBusinessLogicAdapterFactory();
+        IDeviceBusinessLogicAdapterFactory businessLogicAdapterFactory = new TncpIpDeviceTcpIpBusinessLogicAdapterFactory();
         configurator.CreateDevice(businessLogicAdapterFactory);
 
         var device = configurator.GetDevice();

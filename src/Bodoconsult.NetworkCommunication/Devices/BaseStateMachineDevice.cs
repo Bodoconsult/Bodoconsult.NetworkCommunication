@@ -37,7 +37,7 @@ public abstract class BaseStateMachineDevice : BaseOrderManagementDevice, IState
     /// <summary>
     /// Current <see cref="IOrderManagementDeviceBusinessLogicAdapter"/> instance
     /// </summary>
-    public IStateMachineDeviceBusinessLogicAdapter? StateMachineDeviceBusinessLogicAdapter;
+    public IStateMachineDeviceBusinessLogicAdapter? StateMachineDeviceBusinessLogicAdapter { get; protected set; }
 
     /// <summary>
     /// The current state
@@ -317,6 +317,7 @@ public abstract class BaseStateMachineDevice : BaseOrderManagementDevice, IState
             throw new ArgumentException($"businessLogicAdapter is not {nameof(IStateMachineDeviceBusinessLogicAdapter)}");
         }
 
-        DeviceBusinessLogicAdapter = businessLogicAdapter;
+        DeviceBusinessLogicAdapter = o;
+        StateMachineDeviceBusinessLogicAdapter = o;
     }
 }

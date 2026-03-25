@@ -97,7 +97,7 @@ public class TcpIpClientDeviceConfigurator : BaseIpDeviceConfigurator
         var outboundDataMessageFactory = new BtcpOutboundDataMessageFactory();
         var commAdapterFactory = new IpCommunicationAdapterFactory(communicationHandlerFactory, outboundDataMessageFactory);
         
-        var factory = new SimpleDeviceFactory(_clientNotificationManager, commAdapterFactory);
+        var factory = new BasicOrderManagementDeviceFactory(_clientNotificationManager, commAdapterFactory);
         Device = factory.CreateInstance(DataMessagingConfig);
         var adapter = businessLogicAdapterFactory.CreateInstance(Device);
         Device.LoadDeviceBusinessLogicAdapter(adapter);

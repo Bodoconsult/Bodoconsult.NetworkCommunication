@@ -16,10 +16,8 @@ public abstract class BaseOrderManagementDeviceBusinessLogicAdapter : IOrderMana
     /// <param name="device">Current device</param>
     protected BaseOrderManagementDeviceBusinessLogicAdapter(IOrderManagementDevice device)
     {
-        ArgumentNullException.ThrowIfNull(device.OrderManager);
         IpDevice = IpDevice = device;
         Device = device;
-        OrderFactory = device.OrderManager.OrderFactory;
     }
 
     /// <summary>
@@ -35,7 +33,16 @@ public abstract class BaseOrderManagementDeviceBusinessLogicAdapter : IOrderMana
     /// <summary>
     /// Current order factory
     /// </summary>
-    protected IOrderFactory? OrderFactory;
+    public IOrderFactory? OrderFactory { get; private set; }
+
+    /// <summary>
+    /// Load the order factory
+    /// </summary>
+    /// <param name="orderFactory">Current order factory</param>
+    public void LoadOrderFactory(IOrderFactory orderFactory)
+    {
+        OrderFactory = orderFactory;
+    }
 
     /// <summary>
     /// Default method to handle a ComDevClose event in business logic

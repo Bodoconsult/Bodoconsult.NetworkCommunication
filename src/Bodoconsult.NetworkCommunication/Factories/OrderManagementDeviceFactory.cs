@@ -8,7 +8,7 @@ namespace Bodoconsult.NetworkCommunication.Factories;
 /// <summary>
 /// Factory for creating <see cref="BasicOrderManagementDevice"/> instances supporting only order management and no state management
 /// </summary>
-public class OrderManagementDeviceFactory : IOrderManagementDeviceFactory
+public class BasicOrderManagementDeviceFactory : IOrderManagementDeviceFactory
 {
     private readonly IOrderManagementClientNotificationManager _clientNotificationManager;
     private readonly ICommunicationAdapterFactory _commAdapterFactory;
@@ -18,7 +18,7 @@ public class OrderManagementDeviceFactory : IOrderManagementDeviceFactory
     /// </summary>
     /// <param name="clientNotificationManager">Current client notification manager</param>
     /// <param name="commAdapterFactory">Current communication adapter factory</param>
-    public OrderManagementDeviceFactory(IOrderManagementClientNotificationManager clientNotificationManager, ICommunicationAdapterFactory commAdapterFactory)
+    public BasicOrderManagementDeviceFactory(IOrderManagementClientNotificationManager clientNotificationManager, ICommunicationAdapterFactory commAdapterFactory)
     {
         _clientNotificationManager= clientNotificationManager;
         _commAdapterFactory= commAdapterFactory;

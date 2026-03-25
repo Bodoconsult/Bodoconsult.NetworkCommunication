@@ -8,4 +8,9 @@ namespace Bodoconsult.NetworkCommunication.StateManagement.Interfaces;
 /// Interface for state management devices 
 /// </summary>
 public interface IStateMachineDevice : IStateMachineContext, IOrderManagementDevice
-{ }
+{
+    /// <summary>
+    /// Current <see cref="IOrderManagementDeviceBusinessLogicAdapter"/> instance
+    /// </summary>
+    public IStateMachineDeviceBusinessLogicAdapter? StateMachineDeviceBusinessLogicAdapter { get; }
+}

@@ -27,7 +27,7 @@ internal class OrderManagementDeviceFactoryTests
         var outboundDataMessageFactory = new BtcpOutboundDataMessageFactory();
         var commAdapterFactory = new IpCommunicationAdapterFactory(communicationHandlerFactory, outboundDataMessageFactory);
 
-        var factory = new OrderManagementDeviceFactory(clientNotificationManager, commAdapterFactory);
+        var factory = new BasicOrderManagementDeviceFactory(clientNotificationManager, commAdapterFactory);
 
         var dataMessagingConfig = TestDataHelper.GetDataMessagingConfig();
 

@@ -1,5 +1,7 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
+using Bodoconsult.NetworkCommunication.StateManagement.Interfaces;
+
 namespace Bodoconsult.NetworkCommunication.Interfaces;
 
 /// <summary>
@@ -17,6 +19,11 @@ public interface IOrderManagementDevice: IIpDevice
     /// Device states used for init process
     /// </summary>
     IList<IDeviceState> DeviceStatesInitProcess { get; }
+
+    /// <summary>
+    /// Current <see cref="IOrderManagementDeviceBusinessLogicAdapter"/> instance
+    /// </summary>
+    IOrderManagementDeviceBusinessLogicAdapter? OrderManagementDeviceBusinessLogicAdapter { get; }
 
 
     /// <summary>

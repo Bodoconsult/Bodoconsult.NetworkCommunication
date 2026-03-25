@@ -15,6 +15,17 @@ public interface IOrderManagementDeviceBusinessLogicAdapter : IDeviceBusinessLog
     IOrderManagementDevice Device { get; }
 
     /// <summary>
+    /// Current order factory
+    /// </summary>
+    IOrderFactory? OrderFactory { get; }
+
+    /// <summary>
+    /// Load the order factory
+    /// </summary>
+    /// <param name="orderFactory">Current order factory</param>
+    void LoadOrderFactory(IOrderFactory orderFactory);
+
+    /// <summary>
     /// Default method to handle a ComDevClose event in business logic
     /// </summary>
     void DefaultHandleComDevClose();
