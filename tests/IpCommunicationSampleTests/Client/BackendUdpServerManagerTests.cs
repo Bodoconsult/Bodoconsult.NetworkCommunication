@@ -34,7 +34,6 @@ internal class BackendTcpIpClientManagerTests
     private readonly AppLoggerProxyFactory _appLoggerFactory = new();
     private readonly FakeAppEventSourceFactory _appEventSourceFactory = new();
 
-
     [OneTimeTearDown]
     public void Cleanup()
     {

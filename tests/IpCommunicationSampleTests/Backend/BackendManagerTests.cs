@@ -11,6 +11,7 @@ using Bodoconsult.NetworkCommunication.Interfaces;
 using Bodoconsult.NetworkCommunication.OrderManagement.Processors;
 using Bodoconsult.NetworkCommunication.Protocols.TcpIp;
 using Bodoconsult.NetworkCommunication.Tests.Helpers;
+using IpCommunicationSample.Backend.Bll.BusinessLogic.AdapterFactories;
 using IpCommunicationSample.Backend.Bll.Communication;
 using IpCommunicationSampleTests.App;
 using IAppDateService = Bodoconsult.NetworkCommunication.App.Abstractions.IAppDateService;
@@ -18,7 +19,7 @@ using IAppDateService = Bodoconsult.NetworkCommunication.App.Abstractions.IAppDa
 namespace IpCommunicationSampleTests.Backend;
 
 [TestFixture]
-internal class ClientTcpIpServerManagerTests
+internal class BackendManagerTests
 {
     private readonly IAppLoggerProxy _appLogger = TestDataHelper.GetFakeAppLoggerProxy();
     private readonly IAppDateService _dateService = TestDataHelper.AppDateService;
@@ -28,13 +29,13 @@ internal class ClientTcpIpServerManagerTests
     private readonly IOrderReceiverFactory _orderReceiverFactory = new OrderReceiverFactory();
     private readonly IRequestProcessorFactoryFactory _requestProcessorFactoryFactory = new RequestProcessorFactoryFactory();
     private readonly IRequestStepProcessorFactoryFactory _requestStepProcessorFactoryFactory = new RequestStepProcessorFactoryFactory();
-    private readonly IOrderFactory _orderFactory = new OrderFactory(TestDataHelper.DefaultOrderIdGenerator);
     private readonly FakeSendPacketProcessFactory _sendPacketProcessFactory = new();
     private readonly MonitorLoggerFactoryFactory _monitorLoggerFactoryFactory = new(Globals.Instance);
     private readonly LogDataFactory _logDataFactory = TestDataHelper.LogDataFactory;
     private readonly AppLoggerProxyFactory _appLoggerFactory = new();
     private readonly FakeAppEventSourceFactory _appEventSourceFactory = new();
     private readonly TcpIpListenerManager _tcpIpListenerManager = new();
+    private readonly IOrderIdGenerator _orderIdGenerator = TestDataHelper.DefaultOrderIdGenerator;
 
 
     [OneTimeTearDown]
@@ -48,40 +49,24 @@ internal class ClientTcpIpServerManagerTests
     public void Ctor_ValidSetup_PropsSetCorrectly()
     {
         // Arrange 
-        var duplexIoFactory = new IpDuplexIoFactory(_sendPacketProcessFactory);
+        var orderPipelineFactory = new OrderPipelineFactory(_dateService, _appLogger);
 
         // Act
-        var m = new ClientTcpIpServerManager(duplexIoFactory, _monitorLoggerFactoryFactory, _logDataFactory, _appLoggerFactory,
-            _appEventSourceFactory, _clientNotificationManager, _tcpIpListenerManager, _appLogger);
+        var m = new BackendManager(_monitorLoggerFactoryFactory, _logDataFactory, _appLoggerFactory,
+            _appEventSourceFactory, _clientNotificationManager, _appLogger, _sendPacketProcessFactory, _tcpIpListenerManager, _dateService, _syncOrderManager, _appBenchProxy, _orderReceiverFactory,
+            _requestProcessorFactoryFactory, _requestStepProcessorFactoryFactory, orderPipelineFactory, _orderIdGenerator);
 
         // Assert
         using (Assert.EnterMultipleScope())
         {
-            Assert.That(m.IpDevice, Is.Null);
-            Assert.That(m.DeviceBusinessLogicAdapter, Is.Null);
+            Assert.That(m.IpDeviceTcpIp, Is.Null);
+            Assert.That(m.IpDeviceUdp, Is.Null);
+            Assert.That(m.Client, Is.Null);
+            Assert.That(m.IpDeviceTcpIpConfig, Is.Null);
+            Assert.That(m.IpDeviceUdpConfig, Is.Null);
+            Assert.That(m.ClientTcpIpConfig, Is.Null);
         }
     }
 
-    [Test]
-    public void ConfigureDevice_ValidSetup_DeviceConfigured()
-    {
-        // Arrange 
-        var duplexIoFactory = new IpDuplexIoFactory(_sendPacketProcessFactory);
-        var orderProcessorFactory = new StateMachineOrderProcessorFactory(_dateService, _syncOrderManager, _clientNotificationManager, _appBenchProxy);
-        IOrderPipelineFactory orderPipelineFactory = new OrderPipelineFactory(_dateService, _appLogger);
 
-        IOrderManagerFactory orderManagerFactory = new OrderManagerFactory(orderProcessorFactory, _orderReceiverFactory, _requestStepProcessorFactoryFactory, _requestProcessorFactoryFactory, orderPipelineFactory, _orderFactory);
-        var m = new ClientTcpIpServerManager(duplexIoFactory, _monitorLoggerFactoryFactory, _logDataFactory, _appLoggerFactory,
-            _appEventSourceFactory, _clientNotificationManager, _tcpIpListenerManager, _appLogger);
-
-        const string ip = "127.0.0.1";
-        const int port = 9000;
-
-        // Act  
-        m.ConfigureDevice(ip, port);
-
-        // Assert
-        Assert.That(m.IpDevice, Is.Not.Null);
-        Assert.That(m.DeviceBusinessLogicAdapter, Is.Not.Null);
-    }
 }

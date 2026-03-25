@@ -53,7 +53,6 @@ public class TcpIpClientOrderManagementDeviceConfigurator : BaseIpDeviceConfigur
         _appLoggerProxy = appLoggerProxy;
     }
 
-
     /// <summary>
     /// Create the basic data messaging config
     /// </summary>

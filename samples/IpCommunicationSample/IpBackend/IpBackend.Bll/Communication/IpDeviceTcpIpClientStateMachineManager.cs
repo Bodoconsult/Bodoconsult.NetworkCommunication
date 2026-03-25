@@ -7,6 +7,7 @@ using Bodoconsult.NetworkCommunication.Devices.Configurators;
 using Bodoconsult.NetworkCommunication.Interfaces;
 using Bodoconsult.NetworkCommunication.StateManagement.Interfaces;
 using IpCommunicationSample.Backend.Bll.BusinessLogic.AdapterFactories;
+using IpCommunicationSample.Backend.Bll.StateManagement.Configurators;
 
 namespace IpCommunicationSample.Backend.Bll.Communication;
 
@@ -22,24 +23,26 @@ public class IpDeviceTcpIpClientStateMachineManager: IStateMachineDeviceManager
     private readonly ILogDataFactory _logDataFactory;
     private readonly IAppLoggerProxyFactory _appLoggerFactory;
     private readonly IAppLoggerProxy _appLoggerProxy;
+    private readonly IOrderManagerFactory _orderManagerFactory;
 
     /// <summary>
     /// Default ctor
     /// </summary>
     /// <param name="duplexIoFactory">Current factory for <see cref="IDuplexIo"/> instances</param>
+    /// <param name="monitorLoggerFactoryFactory">Current factory for monitor logger factories</param>
     /// <param name="logDataFactory">Current log data factory</param>
     /// <param name="appLoggerFactory">Current logger proxy factory</param>
     /// <param name="appEventSourceFactory">Current factory for <see cref="IAppEventSource"/> instances</param>
     /// <param name="clientNotificationManager">Current client notification manager instance</param>
-    /// <param name="monitorLoggerFactoryFactory">Current factory for monitor logger factories</param>
     /// <param name="appLoggerProxy">Current app logger</param>
+    /// <param name="orderManagerFactory"></param>
     public IpDeviceTcpIpClientStateMachineManager(IDuplexIoFactory duplexIoFactory,
         IMonitorLoggerFactoryFactory monitorLoggerFactoryFactory,
         ILogDataFactory logDataFactory,
         IAppLoggerProxyFactory appLoggerFactory,
         IAppEventSourceFactory appEventSourceFactory,
         IOrderManagementClientNotificationManager clientNotificationManager,
-        IAppLoggerProxy appLoggerProxy)
+        IAppLoggerProxy appLoggerProxy, IOrderManagerFactory orderManagerFactory)
     {
         _duplexIoFactory = duplexIoFactory;
         _appEventSourceFactory = appEventSourceFactory;
@@ -49,6 +52,7 @@ public class IpDeviceTcpIpClientStateMachineManager: IStateMachineDeviceManager
         _appEventSourceFactory = appEventSourceFactory;
         _logDataFactory = logDataFactory;
         _appLoggerProxy = appLoggerProxy;
+        _orderManagerFactory = orderManagerFactory;
     }
 
     /// <summary>
@@ -81,6 +85,14 @@ public class IpDeviceTcpIpClientStateMachineManager: IStateMachineDeviceManager
 
         IDeviceBusinessLogicAdapterFactory businessLogicAdapterFactory = new TncpIpDeviceTcpIpBusinessLogicAdapterFactory();
         configurator.CreateDevice(businessLogicAdapterFactory);
+
+        // Order management
+        configurator.ConfigureOrderManagement(_orderManagerFactory);
+
+        // State management
+        IStateMachineConfiguratorFactory stateMachineConfiguratorFactory = new TncpStateMachineConfiguratorFactory();
+        configurator.ConfigureStateManagement(stateMachineConfiguratorFactory);
+
 
         var device = configurator.GetDevice();
 
