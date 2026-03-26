@@ -2,9 +2,9 @@
 
 using Bodoconsult.App.Interfaces;
 using Bodoconsult.NetworkCommunication.Interfaces;
-using Bodoconsult.NetworkCommunication.StateManagement.Interfaces;
 using IpCommunicationSample.Backend.Bll.BusinessLogic.Adapters;
-using IpCommunicationSample.Backend.Bll.BusinessTransactions;
+using IpCommunicationSample.Backend.Bll.BusinessLogic.Converters;
+
 
 namespace IpCommunicationSample.Backend.Bll.BusinessLogic.AdapterFactories;
 

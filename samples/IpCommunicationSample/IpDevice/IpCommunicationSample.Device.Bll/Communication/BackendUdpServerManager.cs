@@ -5,7 +5,6 @@ using Bodoconsult.NetworkCommunication.App.Abstractions;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessageProcessingPackages;
 using Bodoconsult.NetworkCommunication.Devices.Configurators;
 using Bodoconsult.NetworkCommunication.Interfaces;
-using Bodoconsult.NetworkCommunication.StateManagement.Interfaces;
 using IpCommunicationSample.Device.Bll.BusinessLogic.AdapterFactories;
 
 namespace IpCommunicationSample.Device.Bll.Communication;

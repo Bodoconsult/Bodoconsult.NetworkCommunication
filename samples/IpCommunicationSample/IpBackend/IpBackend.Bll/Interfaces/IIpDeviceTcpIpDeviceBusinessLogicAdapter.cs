@@ -2,7 +2,6 @@
 
 using Bodoconsult.App.Interfaces;
 using Bodoconsult.NetworkCommunication.Interfaces;
-using Bodoconsult.NetworkCommunication.StateManagement.Interfaces;
 
 namespace IpCommunicationSample.Backend.Bll.Interfaces;
 

@@ -1,7 +1,5 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
-using Bodoconsult.NetworkCommunication.StateManagement.Interfaces;
-
 namespace Bodoconsult.NetworkCommunication.Interfaces;
 
 public interface IStateMachineDeviceManager : IDeviceManager

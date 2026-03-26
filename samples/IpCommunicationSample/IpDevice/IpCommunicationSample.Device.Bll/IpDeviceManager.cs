@@ -1,6 +1,7 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
 using Bodoconsult.App.Abstractions.Interfaces;
+using Bodoconsult.App.Interfaces;
 using Bodoconsult.NetworkCommunication.App.Abstractions;
 using Bodoconsult.NetworkCommunication.Factories;
 using Bodoconsult.NetworkCommunication.Interfaces;
@@ -22,6 +23,7 @@ public class IpDeviceManager : IIpDeviceManager
     private readonly IAppLoggerProxy _appLogger;
     private readonly ISendPacketProcessFactory _sendPacketProcessFactory;
     private readonly ITcpIpListenerManager _tcpIpListenerManager;
+    private IBusinessTransactionManager _businessTransactionManager;
 
     /// <summary>
     /// Default ctor
@@ -34,6 +36,7 @@ public class IpDeviceManager : IIpDeviceManager
     /// <param name="appLogger">Current app logger</param>
     /// <param name="sendPacketProcessFactory">Current send packet process factory</param>
     /// <param name="tcpIpListenerManager">Current TCP/IP listener manager</param>
+    /// <param name="businessTransactionManager">Current business transaction manager</param>
     public IpDeviceManager(IMonitorLoggerFactoryFactory monitorLoggerFactoryFactory,
         ILogDataFactory logDataFactory,
         IAppLoggerProxyFactory appLoggerFactory,
@@ -41,7 +44,8 @@ public class IpDeviceManager : IIpDeviceManager
         IOrderManagementClientNotificationManager clientNotificationManager,
         IAppLoggerProxy appLogger,
         ISendPacketProcessFactory sendPacketProcessFactory,
-        ITcpIpListenerManager tcpIpListenerManager
+        ITcpIpListenerManager tcpIpListenerManager,
+        IBusinessTransactionManager businessTransactionManager
         )
     {
         _appEventSourceFactory = appEventSourceFactory;
@@ -53,6 +57,7 @@ public class IpDeviceManager : IIpDeviceManager
         _appLogger = appLogger;
         _sendPacketProcessFactory = sendPacketProcessFactory;
         _tcpIpListenerManager = tcpIpListenerManager;
+        _businessTransactionManager = businessTransactionManager;
     }
 
     /// <summary>
@@ -85,7 +90,7 @@ public class IpDeviceManager : IIpDeviceManager
         var duplexIoFactory = new IpDuplexIoFactory(_sendPacketProcessFactory);
 
         var m = new BackendTcpIpServerManager(duplexIoFactory, _monitorLoggerFactoryFactory, _logDataFactory, _appLoggerFactory,
-            _appEventSourceFactory, _clientNotificationManager, _tcpIpListenerManager, _appLogger);
+            _appEventSourceFactory, _clientNotificationManager, _tcpIpListenerManager, _appLogger, _businessTransactionManager);
 
         // Act  
         m.ConfigureDevice(BackendTcpIpConfig.Value.IpAddress, BackendTcpIpConfig.Value.Port);

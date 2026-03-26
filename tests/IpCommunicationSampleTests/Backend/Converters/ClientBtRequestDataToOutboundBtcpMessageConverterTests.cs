@@ -3,11 +3,11 @@
 using Bodoconsult.App.Abstractions.Interfaces;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
 using Bodoconsult.NetworkCommunication.Tests.Helpers;
-using IpCommunicationSample.Backend.Bll.BusinessTransactions;
 using IpCommunicationSample.Common;
 using IpCommunicationSample.Common.BusinessTransactions.Requests;
 using System.Text;
 using Bodoconsult.NetworkCommunication.App.Abstractions;
+using IpCommunicationSample.Backend.Bll.BusinessLogic.Converters;
 
 namespace IpCommunicationSampleTests.Backend.Converters;
 

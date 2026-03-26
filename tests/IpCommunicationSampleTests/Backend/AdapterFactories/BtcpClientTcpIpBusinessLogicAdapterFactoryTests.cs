@@ -5,7 +5,7 @@ using Bodoconsult.App.Benchmarking;
 using Bodoconsult.App.BusinessTransactions;
 using Bodoconsult.App.Factories;
 using Bodoconsult.App.Interfaces;
-using Bodoconsult.NetworkCommunication.StateManagement.Interfaces;
+using Bodoconsult.NetworkCommunication.Interfaces;
 using Bodoconsult.NetworkCommunication.Tests.Helpers;
 using IpCommunicationSample.Backend.Bll.BusinessLogic.AdapterFactories;
 

@@ -2,6 +2,7 @@
 
 using Bodoconsult.App.Abstractions.Interfaces;
 using Bodoconsult.App.Benchmarking;
+using Bodoconsult.App.BusinessTransactions;
 using Bodoconsult.App.Factories;
 using Bodoconsult.App.Logging;
 using Bodoconsult.NetworkCommunication.App.Abstractions;
@@ -40,10 +41,11 @@ internal class BackendTcpIpServerManagerTests
     {
         // Arrange 
         var duplexIoFactory = new IpDuplexIoFactory(_sendPacketProcessFactory);
+        var btm = new BusinessTransactionManager(_appLogger, _appEventSourceFactory);
  
         // Act
         var m = new BackendTcpIpServerManager(duplexIoFactory, _monitorLoggerFactoryFactory, _logDataFactory, _appLoggerFactory,
-            _appEventSourceFactory, _clientNotificationManager, _tcpIpListenerManager, _appLogger);
+            _appEventSourceFactory, _clientNotificationManager, _tcpIpListenerManager, _appLogger, btm);
 
         // Assert
         using (Assert.EnterMultipleScope())
@@ -58,9 +60,10 @@ internal class BackendTcpIpServerManagerTests
     {
         // Arrange 
         var duplexIoFactory = new IpDuplexIoFactory(_sendPacketProcessFactory);
+        var btm = new BusinessTransactionManager(_appLogger, _appEventSourceFactory);
 
         var m = new BackendTcpIpServerManager(duplexIoFactory, _monitorLoggerFactoryFactory, _logDataFactory, _appLoggerFactory,
-            _appEventSourceFactory, _clientNotificationManager, _tcpIpListenerManager, _appLogger);
+            _appEventSourceFactory, _clientNotificationManager, _tcpIpListenerManager, _appLogger, btm);
 
         const string ip = "127.0.0.1";
         const int port = 9000;

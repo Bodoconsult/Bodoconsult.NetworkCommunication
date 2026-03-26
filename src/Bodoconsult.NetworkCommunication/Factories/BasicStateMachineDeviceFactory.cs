@@ -2,7 +2,6 @@
 
 using Bodoconsult.NetworkCommunication.Devices;
 using Bodoconsult.NetworkCommunication.Interfaces;
-using Bodoconsult.NetworkCommunication.StateManagement.Interfaces;
 
 namespace Bodoconsult.NetworkCommunication.Factories;
 

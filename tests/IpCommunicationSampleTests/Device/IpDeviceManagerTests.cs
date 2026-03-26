@@ -2,6 +2,7 @@
 
 using Bodoconsult.App.Abstractions.Interfaces;
 using Bodoconsult.App.Benchmarking;
+using Bodoconsult.App.BusinessTransactions;
 using Bodoconsult.App.Factories;
 using Bodoconsult.App.Logging;
 using Bodoconsult.NetworkCommunication.App.Abstractions;
@@ -41,10 +42,11 @@ internal class IpDeviceManagerTests
     public void Ctor_ValidSetup_PropsSetCorrectly()
     {
         // Arrange 
+        var btm = new BusinessTransactionManager(_appLogger, _appEventSourceFactory);
 
         // Act
         var m = new IpDeviceManager(_monitorLoggerFactoryFactory, _logDataFactory, _appLoggerFactory,
-            _appEventSourceFactory, _clientNotificationManager, _appLogger, _sendPacketProcessFactory, _tcpIpListenerManager);
+            _appEventSourceFactory, _clientNotificationManager, _appLogger, _sendPacketProcessFactory, _tcpIpListenerManager, btm);
 
         // Assert
         using (Assert.EnterMultipleScope())
@@ -63,8 +65,10 @@ internal class IpDeviceManagerTests
         var deviceTcpIpConfig = new IpConfig { IpAddress = "127.0.0.1", Port = 33001 };
         var deviceUdpConfig = new IpConfig { IpAddress = "127.0.0.1", Port = 33002 };
 
+        var btm = new BusinessTransactionManager(_appLogger, _appEventSourceFactory);
+
         var m = new IpDeviceManager(_monitorLoggerFactoryFactory, _logDataFactory, _appLoggerFactory,
-            _appEventSourceFactory, _clientNotificationManager, _appLogger, _sendPacketProcessFactory, _tcpIpListenerManager)
+            _appEventSourceFactory, _clientNotificationManager, _appLogger, _sendPacketProcessFactory, _tcpIpListenerManager, btm)
         {
             BackendTcpIpConfig = deviceTcpIpConfig,
             BackendUdpConfig = deviceUdpConfig
@@ -102,8 +106,10 @@ internal class IpDeviceManagerTests
         var deviceTcpIpConfig = new IpConfig { IpAddress = "127.0.0.1", Port = 33001 };
         var deviceUdpConfig = new IpConfig { IpAddress = "127.0.0.1", Port = 33002 };
 
+        var btm = new BusinessTransactionManager(_appLogger, _appEventSourceFactory);
+
         var m = new IpDeviceManager(_monitorLoggerFactoryFactory, _logDataFactory, _appLoggerFactory,
-            _appEventSourceFactory, _clientNotificationManager, _appLogger, _sendPacketProcessFactory, _tcpIpListenerManager)
+            _appEventSourceFactory, _clientNotificationManager, _appLogger, _sendPacketProcessFactory, _tcpIpListenerManager, btm)
         {
             BackendTcpIpConfig = deviceTcpIpConfig,
             BackendUdpConfig = deviceUdpConfig

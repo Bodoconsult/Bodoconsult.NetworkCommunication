@@ -3,7 +3,7 @@
 using Bodoconsult.App.Factories;
 using Bodoconsult.NetworkCommunication.ClientNotifications;
 using Bodoconsult.NetworkCommunication.Factories;
-using Bodoconsult.NetworkCommunication.StateManagement.Interfaces;
+using Bodoconsult.NetworkCommunication.Interfaces;
 using Bodoconsult.NetworkCommunication.StateManagement.StateCheckManagers;
 using Bodoconsult.NetworkCommunication.Tests.Helpers;
 
