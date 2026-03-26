@@ -1,5 +1,6 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
+using Bodoconsult.NetworkCommunication.Delegates;
 using Bodoconsult.NetworkCommunication.Interfaces;
 using Bodoconsult.NetworkCommunication.StateManagement.Interfaces;
 
@@ -8,16 +9,16 @@ namespace Bodoconsult.NetworkCommunication.Devices;
 /// <summary>
 /// A basic device supporting order management but no state management
 /// </summary>
-public class BasicOrderManagementDevice : BaseOrderManagementDevice
+public class BasicOrderManagementDevice : BaseOrderManagementDevice, IOnlyOrderManagementDevice
 {
     /// <summary>
     /// Default ctor
     /// </summary>
     /// <param name="dataMessagingConfig">Current messaging config</param>
     /// <param name="clientNotificationManager">Current client notification manager</param>
-    public BasicOrderManagementDevice(IDataMessagingConfig dataMessagingConfig, IOrderManagementClientNotificationManager clientNotificationManager) : base(dataMessagingConfig, clientNotificationManager)
-    {
-    }
+    public BasicOrderManagementDevice(IDataMessagingConfig dataMessagingConfig, IOrderManagementClientNotificationManager clientNotificationManager) : 
+        base(dataMessagingConfig, clientNotificationManager)
+    { }
 
     /// <summary>
     /// Load the current <see cref="IDeviceBusinessLogicAdapter"/> instance
@@ -33,4 +34,14 @@ public class BasicOrderManagementDevice : BaseOrderManagementDevice
         DeviceBusinessLogicAdapter = o;
         OrderManagementDeviceBusinessLogicAdapter = o;
     }
+
+    /// <summary>
+    /// Handle an async received message without state machine
+    /// </summary>
+    public NoStateMachineHandleAsyncMessageDelegate? NoStateMachineHandleAsyncMessageDelegate { get; set; }
+
+    /// <summary>
+    /// Handle an error message received from the device without state machine
+    /// </summary>
+    public NoStateMachineHandleErrorMessageDelegate? NoStateMachineHandleErrorMessageDelegate { get; set; }
 }

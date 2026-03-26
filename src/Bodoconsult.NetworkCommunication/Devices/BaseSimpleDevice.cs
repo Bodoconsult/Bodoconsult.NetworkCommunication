@@ -8,9 +8,6 @@ using Bodoconsult.NetworkCommunication.StateManagement.Interfaces;
 
 namespace Bodoconsult.NetworkCommunication.Devices;
 
-/// <summary>
-/// Base class for simple IP devices
-/// </summary>
 public abstract class BaseSimpleDevice : IIpDevice
 {
     protected readonly IAppLoggerProxy AppLogger;

@@ -20,5 +20,5 @@ public interface IBtReplyToOutboundDataMessageConverter
     /// </summary>
     /// <param name="request">Current request</param>
     /// <returns>Internal business transaction request</returns>
-    IOutboundDataMessage MapToOutboundDataMessage(IBusinessTransactionReply request);
+    IOutboundDataMessage? MapToOutboundDataMessage(IBusinessTransactionReply request);
 }

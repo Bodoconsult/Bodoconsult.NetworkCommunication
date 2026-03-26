@@ -23,7 +23,6 @@ public class BackendTcpIpServerManager : ISimpleDeviceManager
     private readonly ILogDataFactory _logDataFactory;
     private readonly IAppLoggerProxyFactory _appLoggerFactory;
     private readonly IAppLoggerProxy _appLoggerProxy;
-    private readonly IOrderManagerFactory _orderManagerFactory;
 
     /// <summary>
     /// Default ctor
@@ -36,7 +35,6 @@ public class BackendTcpIpServerManager : ISimpleDeviceManager
     /// <param name="tcpIpListenerManager">Current TCP/IP listener manager</param>
     /// <param name="monitorLoggerFactoryFactory">Current factory for monitor logger factories</param>
     /// <param name="appLoggerProxy">Current app logger</param>
-    /// <param name="orderManagerFactory">Current order manager factory</param>
     public BackendTcpIpServerManager(IDuplexIoFactory duplexIoFactory,
         IMonitorLoggerFactoryFactory monitorLoggerFactoryFactory,
         ILogDataFactory logDataFactory,
@@ -44,8 +42,7 @@ public class BackendTcpIpServerManager : ISimpleDeviceManager
         IAppEventSourceFactory appEventSourceFactory,
         IOrderManagementClientNotificationManager clientNotificationManager,
         ITcpIpListenerManager tcpIpListenerManager,
-        IAppLoggerProxy appLoggerProxy,
-        IOrderManagerFactory orderManagerFactory)
+        IAppLoggerProxy appLoggerProxy)
     {
         _duplexIoFactory = duplexIoFactory;
         _appEventSourceFactory = appEventSourceFactory;
@@ -56,7 +53,6 @@ public class BackendTcpIpServerManager : ISimpleDeviceManager
         _appEventSourceFactory = appEventSourceFactory;
         _logDataFactory = logDataFactory;
         _appLoggerProxy = appLoggerProxy;
-        _orderManagerFactory = orderManagerFactory;
     }
 
     /// <summary>
@@ -84,8 +80,6 @@ public class BackendTcpIpServerManager : ISimpleDeviceManager
 
         IDeviceBusinessLogicAdapterFactory businessLogicAdapterFactory = new TncpBackendTcpIpBusinessLogicAdapterFactory();
         configurator.CreateDevice(businessLogicAdapterFactory);
-        
-        configurator.ConfigureOrderManagement(_orderManagerFactory);
 
         var device = configurator.GetDevice();
 

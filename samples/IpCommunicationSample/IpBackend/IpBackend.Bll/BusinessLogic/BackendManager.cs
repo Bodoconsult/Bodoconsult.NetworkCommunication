@@ -1,28 +1,18 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
 using Bodoconsult.App.Abstractions.Interfaces;
-using Bodoconsult.App.Benchmarking;
-using Bodoconsult.App.Logging;
+using Bodoconsult.App.Interfaces;
 using Bodoconsult.NetworkCommunication.App.Abstractions;
 using Bodoconsult.NetworkCommunication.Factories;
 using Bodoconsult.NetworkCommunication.Interfaces;
-using Bodoconsult.NetworkCommunication.OrderManagement.Processors;
-using Bodoconsult.NetworkCommunication.Protocols.TcpIp;
-using Bodoconsult.NetworkCommunication.StateManagement.Interfaces;
 using IpCommunicationSample.Backend.Bll.Communication;
 using IpCommunicationSample.Backend.Bll.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 using IAppDateService = Bodoconsult.NetworkCommunication.App.Abstractions.IAppDateService;
 
-namespace IpCommunicationSample.Backend.Bll.BusinessLogic.AdapterFactories
+namespace IpCommunicationSample.Backend.Bll.BusinessLogic
 {
     /// <summary>
-    /// Current implementation of <see cref="IBackendManager"/>
+    /// Current implementation of <see cref="IBackendManager"/> handling the full back comm to IP device and client
     /// </summary>
     public class BackendManager : IBackendManager
     {
@@ -42,6 +32,7 @@ namespace IpCommunicationSample.Backend.Bll.BusinessLogic.AdapterFactories
         private readonly IRequestStepProcessorFactoryFactory _requestStepProcessorFactoryFactory;
         private readonly IOrderPipelineFactory _orderPipelineFactory;
         private readonly IOrderIdGenerator _orderIdGenerator;
+        private readonly IBusinessTransactionManager _businessTransactionManager;
 
         /// <summary>
         /// Default ctor
@@ -62,6 +53,7 @@ namespace IpCommunicationSample.Backend.Bll.BusinessLogic.AdapterFactories
         /// <param name="requestStepProcessorFactoryFactory">Current factory for request step processor factories</param>
         /// <param name="orderPipelineFactory">Current factory for order pipelines</param>
         /// <param name="orderIdGenerator">Current order ID generator</param>
+        /// <param name="businessTransactionManager">Current business transaction manager</param>
         public BackendManager(IMonitorLoggerFactoryFactory monitorLoggerFactoryFactory,
             ILogDataFactory logDataFactory,
             IAppLoggerProxyFactory appLoggerFactory,
@@ -77,7 +69,8 @@ namespace IpCommunicationSample.Backend.Bll.BusinessLogic.AdapterFactories
             IRequestProcessorFactoryFactory requestProcessorFactoryFactory,
             IRequestStepProcessorFactoryFactory requestStepProcessorFactoryFactory,
             IOrderPipelineFactory orderPipelineFactory,
-            IOrderIdGenerator orderIdGenerator
+            IOrderIdGenerator orderIdGenerator,
+            IBusinessTransactionManager businessTransactionManager
             )
         {
             _appEventSourceFactory = appEventSourceFactory;
@@ -97,6 +90,7 @@ namespace IpCommunicationSample.Backend.Bll.BusinessLogic.AdapterFactories
             _requestStepProcessorFactoryFactory = requestStepProcessorFactoryFactory;
             _orderPipelineFactory = orderPipelineFactory;
             _orderIdGenerator = orderIdGenerator;
+            _businessTransactionManager = businessTransactionManager;
         }
 
         /// <summary>
@@ -117,17 +111,17 @@ namespace IpCommunicationSample.Backend.Bll.BusinessLogic.AdapterFactories
         /// <summary>
         /// Represents the TCP/IP communication with the client
         /// </summary>
-        public IIpDevice? Client { get; private set; }
+        public ISimpleDeviceManager? Client { get; private set; }
 
         /// <summary>
         /// Represents the TCP/IP communication with the IP device
         /// </summary>
-        public IStateMachineDevice? IpDeviceTcpIp { get; private set; }
+        public IStateMachineDeviceManager? IpDeviceTcpIp { get; private set; }
 
         /// <summary>
         /// Represents the UDP communication with the IP device
         /// </summary>
-        public IOrderManagementDevice? IpDeviceUdp { get; private set; }
+        public ISimpleDeviceManager? IpDeviceUdp { get; private set; }
 
         /// <summary>
         /// Load the comm via TCP/IP to the device
@@ -147,7 +141,7 @@ namespace IpCommunicationSample.Backend.Bll.BusinessLogic.AdapterFactories
 
             m.ConfigureDevice(IpDeviceTcpIpConfig.Value.IpAddress, IpDeviceTcpIpConfig.Value.Port);
 
-            IpDeviceTcpIp = m.Device;
+            IpDeviceTcpIp = m;
         }
 
         /// <summary>
@@ -157,7 +151,14 @@ namespace IpCommunicationSample.Backend.Bll.BusinessLogic.AdapterFactories
         {
             ArgumentNullException.ThrowIfNull(IpDeviceUdpConfig);
 
-            throw new NotImplementedException();
+            var duplexIoFactory = new IpDuplexIoFactory(_sendPacketProcessFactory);
+
+            var m = new IpDeviceUdpClientManager(duplexIoFactory, _monitorLoggerFactoryFactory, _logDataFactory, _appLoggerFactory,
+                _appEventSourceFactory, _clientNotificationManager, _appLogger);
+
+            m.ConfigureDevice(IpDeviceUdpConfig.Value.IpAddress, IpDeviceUdpConfig.Value.Port);
+
+            IpDeviceUdp= m;
         }
 
         /// <summary>
@@ -170,11 +171,11 @@ namespace IpCommunicationSample.Backend.Bll.BusinessLogic.AdapterFactories
             var duplexIoFactory = new IpDuplexIoFactory(_sendPacketProcessFactory);
 
             var m = new ClientTcpIpServerManager(duplexIoFactory, _monitorLoggerFactoryFactory, _logDataFactory, _appLoggerFactory,
-                _appEventSourceFactory, _clientNotificationManager, _tcpIpListenerManager, _appLogger);
+                _appEventSourceFactory, _clientNotificationManager, _tcpIpListenerManager, _appLogger, _businessTransactionManager);
 
             m.ConfigureDevice(ClientTcpIpConfig.Value.IpAddress, ClientTcpIpConfig.Value.Port);
 
-            Client = m.IpDevice;
+            Client = m;
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
 using Bodoconsult.App.Abstractions.Interfaces;
+using Bodoconsult.App.Interfaces;
 using Bodoconsult.NetworkCommunication.App.Abstractions;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessageProcessingPackages;
 using Bodoconsult.NetworkCommunication.Devices.Configurators;
@@ -23,6 +24,7 @@ public class ClientTcpIpServerManager : ISimpleDeviceManager
     private readonly ILogDataFactory _logDataFactory;
     private readonly IAppLoggerProxyFactory _appLoggerFactory;
     private readonly IAppLoggerProxy _appLoggerProxy;
+    private readonly IBusinessTransactionManager _bridgeTransactionManager;
 
     /// <summary>
     /// Default ctor
@@ -35,6 +37,7 @@ public class ClientTcpIpServerManager : ISimpleDeviceManager
     /// <param name="tcpIpListenerManager">Current TCP/IP listener manager</param>
     /// <param name="monitorLoggerFactoryFactory">Current factory for monitor logger factories</param>
     /// <param name="appLoggerProxy">Current app logger</param>
+    /// <param name="businessTransactionManager">Current business transaction manager</param>
     public ClientTcpIpServerManager(IDuplexIoFactory duplexIoFactory,
         IMonitorLoggerFactoryFactory monitorLoggerFactoryFactory,
         ILogDataFactory logDataFactory,
@@ -42,7 +45,8 @@ public class ClientTcpIpServerManager : ISimpleDeviceManager
         IAppEventSourceFactory appEventSourceFactory,
         IOrderManagementClientNotificationManager clientNotificationManager,
         ITcpIpListenerManager tcpIpListenerManager,
-        IAppLoggerProxy appLoggerProxy)
+        IAppLoggerProxy appLoggerProxy,
+        IBusinessTransactionManager businessTransactionManager)
     {
         _duplexIoFactory = duplexIoFactory;
         _appEventSourceFactory = appEventSourceFactory;
@@ -53,6 +57,7 @@ public class ClientTcpIpServerManager : ISimpleDeviceManager
         _appEventSourceFactory = appEventSourceFactory;
         _logDataFactory = logDataFactory;
         _appLoggerProxy = appLoggerProxy;
+        _bridgeTransactionManager = businessTransactionManager;
     }
 
     /// <summary>
@@ -83,7 +88,7 @@ public class ClientTcpIpServerManager : ISimpleDeviceManager
 
         configurator.CreateMessagingConfig("Client_TCPIP", ipAddress, port, messageProcessingPackageFactory);
 
-        IDeviceBusinessLogicAdapterFactory businessLogicAdapterFactory = new BtcpClientTcpIpBusinessLogicAdapterFactory();
+        IDeviceBusinessLogicAdapterFactory businessLogicAdapterFactory = new BtcpClientTcpIpBusinessLogicAdapterFactory(_bridgeTransactionManager);
         configurator.CreateDevice(businessLogicAdapterFactory);
 
         var device = configurator.GetDevice();

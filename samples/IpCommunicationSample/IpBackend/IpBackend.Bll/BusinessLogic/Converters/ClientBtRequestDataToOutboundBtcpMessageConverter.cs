@@ -10,11 +10,11 @@ using Bodoconsult.NetworkCommunication.Interfaces;
 using IpCommunicationSample.Common.BusinessTransactions;
 using IpCommunicationSample.Common.BusinessTransactions.Requests;
 
-namespace IpCommunicationSample.Backend.Bll.BusinessTransactions;
+namespace IpCommunicationSample.Backend.Bll.BusinessLogic.Converters;
 
-public class BackendBtRequestDataToOutboundBtcpMessageConverter : BaseBtRequestDataToOutboundBtcpMessageConverter
+public class ClientBtRequestDataToOutboundBtcpMessageConverter : BaseBtRequestDataToOutboundBtcpMessageConverter
 {
-    public BackendBtRequestDataToOutboundBtcpMessageConverter(IAppLoggerProxy loggerProxy) : base(loggerProxy)
+    public ClientBtRequestDataToOutboundBtcpMessageConverter(IAppLoggerProxy loggerProxy) : base(loggerProxy)
     {
         AllBusinessTransactionRequestDataDelegates.Add(ServerSideBusinessTransactionIds.StateChangedEventFired, CreateStateChangedEventFiredBusinessTransaction);
     }

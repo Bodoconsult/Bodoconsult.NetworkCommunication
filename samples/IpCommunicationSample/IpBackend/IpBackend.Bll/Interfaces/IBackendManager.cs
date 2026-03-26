@@ -1,8 +1,7 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
-using Bodoconsult.NetworkCommunication.StateManagement.Interfaces;
 using Bodoconsult.NetworkCommunication.Interfaces;
-using IpCommunicationSample.Backend.Bll.BusinessLogic.AdapterFactories;
+using IpCommunicationSample.Backend.Bll.BusinessLogic;
 
 namespace IpCommunicationSample.Backend.Bll.Interfaces;
 
@@ -22,21 +21,21 @@ public interface IBackendManager
     /// Current IP config of the client for TCP/IP
     /// </summary>
     public IpConfig? ClientTcpIpConfig { get; set; }
-    
+
     /// <summary>
     /// Represents the TCP/IP communication with the client
     /// </summary>
-    IIpDevice? Client { get; }
+    ISimpleDeviceManager? Client { get; }
 
     /// <summary>
     /// Represents the TCP/IP communication with the IP device
     /// </summary>
-    IStateMachineDevice? IpDeviceTcpIp { get; }
+    IStateMachineDeviceManager? IpDeviceTcpIp { get; }
 
     /// <summary>
     /// Represents the UDP communication with the IP device
     /// </summary>
-    IOrderManagementDevice? IpDeviceUdp { get; }
+    ISimpleDeviceManager? IpDeviceUdp { get; }
 
     /// <summary>
     /// Load the comm via TCP/IP to the device

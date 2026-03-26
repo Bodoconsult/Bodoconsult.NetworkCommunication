@@ -45,7 +45,7 @@ public abstract class BaseBtReplyToOutboundDataMessageConverter : IBtReplyToOutb
     /// </summary>
     /// <param name="reply">Current request</param>
     /// <returns>Internal business transaction request</returns>
-    public IOutboundDataMessage MapToOutboundDataMessage(IBusinessTransactionReply reply)
+    public IOutboundDataMessage? MapToOutboundDataMessage(IBusinessTransactionReply reply)
     {
         // Now search the correct mapper and run it
         try

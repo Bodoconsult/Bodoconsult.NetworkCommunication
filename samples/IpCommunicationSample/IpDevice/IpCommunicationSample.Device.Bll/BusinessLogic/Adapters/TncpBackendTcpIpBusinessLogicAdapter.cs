@@ -18,4 +18,14 @@ public class TncpBackendTcpIpBusinessLogicAdapter : BaseSimpleDeviceBusinessLogi
     public TncpBackendTcpIpBusinessLogicAdapter(IIpDevice device) : base(device)
     {
     }
+
+    /// <summary>
+    /// Default method to handle a received message from the device in business logic
+    /// </summary>
+    /// <param name="message">Received message</param>
+    public override void DefaultReceiveMessage(IInboundDataMessage message)
+    {
+        throw new NotSupportedException("Override in derived classes");
+    }
+
 }

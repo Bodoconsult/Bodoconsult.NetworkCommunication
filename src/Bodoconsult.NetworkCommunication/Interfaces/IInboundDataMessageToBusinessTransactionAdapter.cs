@@ -13,7 +13,7 @@ public interface IInboundDataMessageToBusinessTransactionAdapter
     /// <summary>
     /// Current device
     /// </summary>
-    IOrderManagementDevice Device { get; }
+    IIpDevice Device { get; }
 
     /// <summary>
     /// Current logger instance
@@ -28,7 +28,7 @@ public interface IInboundDataMessageToBusinessTransactionAdapter
     /// <summary>
     /// Current instance of <see cref="IInboundBtcpMessageToBtRequestDataConverter"/> to convert an inbound data message to a business transaction request
     /// </summary>
-    IInboundBtcpMessageToBtRequestDataConverter InboundDataMessageConverter { get; }
+    IInboundDataMessageToBtReplyConverter InboundDataMessageConverter { get; }
 
     /// <summary>
     /// Current instance of <see cref="IBtReplyToOutboundDataMessageConverter"/> to convert a business transaction reply to an outbound data message

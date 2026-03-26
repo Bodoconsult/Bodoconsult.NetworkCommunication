@@ -14,7 +14,7 @@ namespace Bodoconsult.NetworkCommunication.OrderManagement.Processors;
 /// </summary>
 public class OrderProcessor : BaseOrderProcessor
 {
-    private readonly INoStateMachineOrderManagementDevice _device;
+    private readonly IOnlyOrderManagementDevice _device;
 
     /// <summary>
     /// Call back method fired from request processor
@@ -86,7 +86,7 @@ public class OrderProcessor : BaseOrderProcessor
     /// Default ctor
     /// </summary>
     public OrderProcessor(
-        INoStateMachineOrderManagementDevice device,
+        IOnlyOrderManagementDevice device,
         IAppDateService dateTimeService,
         IOrderPipeline orderPipeline,
         ISyncOrderManager syncOrderManager,

@@ -2,7 +2,9 @@
 
 using Bodoconsult.App.Abstractions.Interfaces;
 using Bodoconsult.App.Benchmarking;
+using Bodoconsult.App.BusinessTransactions;
 using Bodoconsult.App.Factories;
+using Bodoconsult.App.Interfaces;
 using Bodoconsult.App.Logging;
 using Bodoconsult.NetworkCommunication.App.Abstractions;
 using Bodoconsult.NetworkCommunication.ClientNotifications;
@@ -11,8 +13,7 @@ using Bodoconsult.NetworkCommunication.Interfaces;
 using Bodoconsult.NetworkCommunication.OrderManagement.Processors;
 using Bodoconsult.NetworkCommunication.Protocols.TcpIp;
 using Bodoconsult.NetworkCommunication.Tests.Helpers;
-using IpCommunicationSample.Backend.Bll.BusinessLogic.AdapterFactories;
-using IpCommunicationSample.Backend.Bll.Communication;
+using IpCommunicationSample.Backend.Bll.BusinessLogic;
 using IpCommunicationSampleTests.App;
 using IAppDateService = Bodoconsult.NetworkCommunication.App.Abstractions.IAppDateService;
 
@@ -50,11 +51,12 @@ internal class BackendManagerTests
     {
         // Arrange 
         var orderPipelineFactory = new OrderPipelineFactory(_dateService, _appLogger);
+        IBusinessTransactionManager businessTransactionManager = new BusinessTransactionManager(_appLogger, _appEventSourceFactory);
 
         // Act
         var m = new BackendManager(_monitorLoggerFactoryFactory, _logDataFactory, _appLoggerFactory,
             _appEventSourceFactory, _clientNotificationManager, _appLogger, _sendPacketProcessFactory, _tcpIpListenerManager, _dateService, _syncOrderManager, _appBenchProxy, _orderReceiverFactory,
-            _requestProcessorFactoryFactory, _requestStepProcessorFactoryFactory, orderPipelineFactory, _orderIdGenerator);
+            _requestProcessorFactoryFactory, _requestStepProcessorFactoryFactory, orderPipelineFactory, _orderIdGenerator, businessTransactionManager);
 
         // Assert
         using (Assert.EnterMultipleScope())
@@ -68,5 +70,144 @@ internal class BackendManagerTests
         }
     }
 
+    [Test]
+    public void LoadClient_ValidSetup_ClientLoaded()
+    {
+        // Arrange 
+        var clientConfig = new IpConfig { IpAddress = "127.0.0.1", Port = 33000 };
+        var deviceTcpIpConfig = new IpConfig { IpAddress = "127.0.0.1", Port = 33001 };
+        var deviceUdpConfig = new IpConfig { IpAddress = "127.0.0.1", Port = 33002 };
 
+        var orderPipelineFactory = new OrderPipelineFactory(_dateService, _appLogger);
+        IBusinessTransactionManager businessTransactionManager = new BusinessTransactionManager(_appLogger, _appEventSourceFactory);
+
+        var m = new BackendManager(_monitorLoggerFactoryFactory, _logDataFactory, _appLoggerFactory,
+            _appEventSourceFactory, _clientNotificationManager, _appLogger, _sendPacketProcessFactory, _tcpIpListenerManager, _dateService, _syncOrderManager, _appBenchProxy, _orderReceiverFactory,
+            _requestProcessorFactoryFactory, _requestStepProcessorFactoryFactory, orderPipelineFactory, _orderIdGenerator, businessTransactionManager)
+            {
+                ClientTcpIpConfig = clientConfig,
+                IpDeviceTcpIpConfig = deviceTcpIpConfig,
+                IpDeviceUdpConfig = deviceUdpConfig
+            };
+
+        // Act
+        m.LoadClient();
+
+        // Assert
+        using (Assert.EnterMultipleScope())
+        {
+
+            Assert.That(m.IpDeviceTcpIp, Is.Null);
+            Assert.That(m.IpDeviceUdp, Is.Null);
+            Assert.That(m.Client, Is.Not.Null);
+            Assert.That(m.IpDeviceTcpIpConfig, Is.Not.Null);
+            Assert.That(m.IpDeviceUdpConfig, Is.Not.Null);
+            Assert.That(m.ClientTcpIpConfig, Is.Not.Null);
+
+            ArgumentNullException.ThrowIfNull(m.Client);
+            ArgumentNullException.ThrowIfNull(m.Client.IpDevice);
+            Assert.That(m.Client.IpDevice, Is.Not.Null);
+
+            Assert.That(m.Client.IpDevice, Is.Not.Null);
+            Assert.That(m.Client.IpDevice.DataMessagingConfig, Is.Not.Null);
+
+            var config = (IIpDataMessagingConfig)m.Client.IpDevice.DataMessagingConfig;
+
+            Assert.That(config.IpAddress, Is.EqualTo(clientConfig.IpAddress));
+            Assert.That(config.Port, Is.EqualTo(clientConfig.Port));
+        }
+    }
+
+
+    [Test]
+    public void LoadIpDeviceTcpIp_ValidSetup_IpDeviceTcpIpLoaded()
+    {
+        // Arrange 
+        var clientConfig = new IpConfig { IpAddress = "127.0.0.1", Port = 33000 };
+        var deviceTcpIpConfig = new IpConfig { IpAddress = "127.0.0.1", Port = 33001 };
+        var deviceUdpConfig = new IpConfig { IpAddress = "127.0.0.1", Port = 33002 };
+
+        var orderPipelineFactory = new OrderPipelineFactory(_dateService, _appLogger);
+        IBusinessTransactionManager businessTransactionManager = new BusinessTransactionManager(_appLogger, _appEventSourceFactory);
+
+        var m = new BackendManager(_monitorLoggerFactoryFactory, _logDataFactory, _appLoggerFactory,
+            _appEventSourceFactory, _clientNotificationManager, _appLogger, _sendPacketProcessFactory, _tcpIpListenerManager, _dateService, _syncOrderManager, _appBenchProxy, _orderReceiverFactory,
+            _requestProcessorFactoryFactory, _requestStepProcessorFactoryFactory, orderPipelineFactory, _orderIdGenerator, businessTransactionManager)
+        {
+            ClientTcpIpConfig = clientConfig,
+            IpDeviceTcpIpConfig = deviceTcpIpConfig,
+            IpDeviceUdpConfig = deviceUdpConfig
+        };
+
+        // Act
+        m.LoadIpDeviceTcpIp();
+
+        // Assert
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(m.IpDeviceTcpIp, Is.Not.Null);
+            Assert.That(m.IpDeviceUdp, Is.Null);
+            Assert.That(m.Client, Is.Null);
+            Assert.That(m.IpDeviceTcpIpConfig, Is.Not.Null);
+            Assert.That(m.IpDeviceUdpConfig, Is.Not.Null);
+            Assert.That(m.ClientTcpIpConfig, Is.Not.Null);
+
+            ArgumentNullException.ThrowIfNull(m.IpDeviceTcpIp);
+            ArgumentNullException.ThrowIfNull(m.IpDeviceTcpIp.IpDevice);
+            Assert.That(m.IpDeviceTcpIp.IpDevice, Is.Not.Null);
+
+            Assert.That(m.IpDeviceTcpIp.IpDevice, Is.Not.Null);
+            Assert.That(m.IpDeviceTcpIp.IpDevice.DataMessagingConfig, Is.Not.Null);
+
+            var config = (IIpDataMessagingConfig)m.IpDeviceTcpIp.IpDevice.DataMessagingConfig;
+
+            Assert.That(config.IpAddress, Is.EqualTo(deviceTcpIpConfig.IpAddress));
+            Assert.That(config.Port, Is.EqualTo(deviceTcpIpConfig.Port));
+        }
+    }
+
+    [Test]
+    public void LoadIpDeviceUdp_ValidSetup_IpDeviceUdpLoaded()
+    {
+        // Arrange 
+        var clientConfig = new IpConfig { IpAddress = "127.0.0.1", Port = 33000 };
+        var deviceTcpIpConfig = new IpConfig { IpAddress = "127.0.0.1", Port = 33001 };
+        var deviceUdpConfig = new IpConfig { IpAddress = "127.0.0.1", Port = 33002 };
+
+        var orderPipelineFactory = new OrderPipelineFactory(_dateService, _appLogger);
+        IBusinessTransactionManager businessTransactionManager = new BusinessTransactionManager(_appLogger, _appEventSourceFactory);
+
+        var m = new BackendManager(_monitorLoggerFactoryFactory, _logDataFactory, _appLoggerFactory,
+            _appEventSourceFactory, _clientNotificationManager, _appLogger, _sendPacketProcessFactory, _tcpIpListenerManager, _dateService, _syncOrderManager, _appBenchProxy, _orderReceiverFactory,
+            _requestProcessorFactoryFactory, _requestStepProcessorFactoryFactory, orderPipelineFactory, _orderIdGenerator, businessTransactionManager)
+        {
+            ClientTcpIpConfig = clientConfig,
+            IpDeviceTcpIpConfig = deviceTcpIpConfig,
+            IpDeviceUdpConfig = deviceUdpConfig
+        };
+
+        // Act
+        m.LoadIpDeviceUdp();
+
+        // Assert
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(m.IpDeviceTcpIp, Is.Null);
+            Assert.That(m.IpDeviceUdp, Is.Not.Null);
+            Assert.That(m.Client, Is.Null);
+            Assert.That(m.IpDeviceTcpIpConfig, Is.Not.Null);
+            Assert.That(m.IpDeviceUdpConfig, Is.Not.Null);
+            Assert.That(m.ClientTcpIpConfig, Is.Not.Null);
+
+            ArgumentNullException.ThrowIfNull(m.IpDeviceUdp);
+            ArgumentNullException.ThrowIfNull(m.IpDeviceUdp.IpDevice);
+            Assert.That(m.IpDeviceUdp.IpDevice, Is.Not.Null);
+            Assert.That(m.IpDeviceUdp.IpDevice.DataMessagingConfig, Is.Not.Null);
+
+            var config = (IIpDataMessagingConfig)m.IpDeviceUdp.IpDevice.DataMessagingConfig;
+
+            Assert.That(config.IpAddress, Is.EqualTo(deviceUdpConfig.IpAddress));
+            Assert.That(config.Port, Is.EqualTo(deviceUdpConfig.Port));
+        }
+    }
 }

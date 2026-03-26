@@ -12,7 +12,7 @@ namespace Bodoconsult.NetworkCommunication.BusinessTransactions.Converters;
 /// <summary>
 /// Base class for converters from <see cref="BtcpInboundDataMessage"/> instances to <see cref="IBusinessTransactionRequestData"/> instances
 /// </summary>
-public abstract class BaseInboundBtcpMessageToBtRequestDataConverter : IInboundBtcpMessageToBtRequestDataConverter
+public abstract class BaseInboundBtcpMessageToBtRequestDataConverter : IInboundMessageToBtRequestDataConverter
 {
     /// <summary>
     /// Delegate for creating <see cref="IBusinessTransactionRequestData"/> instances
@@ -45,8 +45,7 @@ public abstract class BaseInboundBtcpMessageToBtRequestDataConverter : IInboundB
     /// </summary>
     /// <param name="request">Current request</param>
     /// <returns>Internal business transaction request</returns>
-    public IBusinessTransactionRequestData? MapToBusinessTransactionRequestData(
-        IInboundBusinessTransactionDataMessage request)
+    public IBusinessTransactionRequestData? MapToBusinessTransactionRequestData(IInboundDataMessage request)
     {
         // Request data is required always!
         if (request is not BtcpInboundDataMessage btm)

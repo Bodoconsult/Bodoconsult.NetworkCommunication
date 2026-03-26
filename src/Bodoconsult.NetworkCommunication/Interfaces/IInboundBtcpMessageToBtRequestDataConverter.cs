@@ -8,7 +8,7 @@ namespace Bodoconsult.NetworkCommunication.Interfaces;
 /// <summary>
 /// Interface for converters from <see cref="IInboundDataMessage"/> instances to <see cref="IBusinessTransactionRequestData"/> instances
 /// </summary>
-public interface IInboundBtcpMessageToBtRequestDataConverter
+public interface IInboundMessageToBtRequestDataConverter
 {
     /// <summary>
     /// Current app logger
@@ -20,5 +20,5 @@ public interface IInboundBtcpMessageToBtRequestDataConverter
     /// </summary>
     /// <param name="request">Current request</param>
     /// <returns>Internal business transaction request</returns>
-    IBusinessTransactionRequestData? MapToBusinessTransactionRequestData(IInboundBusinessTransactionDataMessage request);
+    IBusinessTransactionRequestData? MapToBusinessTransactionRequestData(IInboundDataMessage request);
 }

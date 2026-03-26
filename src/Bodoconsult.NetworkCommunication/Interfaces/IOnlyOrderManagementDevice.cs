@@ -5,9 +5,9 @@ using Bodoconsult.NetworkCommunication.Delegates;
 namespace Bodoconsult.NetworkCommunication.Interfaces;
 
 /// <summary>
-/// Interface for implementing a device with order management but without state machine
+/// Interface for implementing a device with only order management but no state machine
 /// </summary>
-public interface INoStateMachineOrderManagementDevice: IOrderManagementDevice
+public interface IOnlyOrderManagementDevice: IOrderManagementDevice
 {
     /// <summary>
     /// Handle an async received message without state machine

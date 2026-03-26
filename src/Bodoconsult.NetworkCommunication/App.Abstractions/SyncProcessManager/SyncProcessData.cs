@@ -1,20 +1,18 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
-using Bodoconsult.NetworkCommunication.EnumAndStates;
-
-namespace Bodoconsult.NetworkCommunication.Interfaces;
+namespace Bodoconsult.NetworkCommunication.App.Abstractions.SyncProcessManager;
 
 /// <summary>
-/// Helper class for running order in a sync manner
+/// Helper class for running process identified by a GUID in a sync manner
 /// </summary>
-public class SyncExecutionData : IDisposable
+public class SyncProcessData<T> : IDisposable where T: class
 {
     /// <summary>
     /// Default ctor
     /// </summary>
-    public SyncExecutionData(long orderId, int timeout)
+    public SyncProcessData(Guid processId, int timeout)
     {
-        OrderId = orderId;
+        ProcessId = processId;
 
         // Create the CancellationTokenSource to implement timeout for sync running
         var cts = new CancellationTokenSource(timeout + 100);
@@ -32,7 +30,7 @@ public class SyncExecutionData : IDisposable
                 return;
             }
 
-            TaskCompletionSource?.SetResult(OrderExecutionResultState.Timeout);
+            TaskCompletionSource?.SetResult(null);
 
         });
 
@@ -43,17 +41,17 @@ public class SyncExecutionData : IDisposable
     /// Create a task to wait unitl order finished or timeout
     /// </summary>
     /// <returns>Task to wait for</returns>
-    public Task<IOrderExecutionResultState> CreateWaitingTask()
+    public Task<T?> CreateWaitingTask()
     {
         // Now wait
-        TaskCompletionSource = new TaskCompletionSource<IOrderExecutionResultState>(TaskCreationOptions.RunContinuationsAsynchronously);
+        TaskCompletionSource = new TaskCompletionSource<T?>(TaskCreationOptions.RunContinuationsAsynchronously);
         return TaskCompletionSource.Task;
     }
 
     /// <summary>
-    /// Order ID
+    /// Process ID
     /// </summary>
-    public long OrderId { get; }
+    public Guid ProcessId { get; }
 
     /// <summary>
     /// CancellationTokenSource used for running an order in a sync manner
@@ -63,7 +61,7 @@ public class SyncExecutionData : IDisposable
     /// <summary>
     /// TaskCompletionSource used for running an order in a sync manner
     /// </summary>
-    public TaskCompletionSource<IOrderExecutionResultState>? TaskCompletionSource { get; private set; }
+    public TaskCompletionSource<T?>? TaskCompletionSource { get; private set; }
 
     /// <summary>Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.</summary>
     public void Dispose()
@@ -87,6 +85,5 @@ public class SyncExecutionData : IDisposable
         {
             // Do nothing
         }
-
     }
 }

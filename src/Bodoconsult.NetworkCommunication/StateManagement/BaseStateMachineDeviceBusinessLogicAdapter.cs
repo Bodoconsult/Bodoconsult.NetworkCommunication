@@ -31,6 +31,17 @@ public abstract class BaseStateMachineDeviceBusinessLogicAdapter : IStateMachine
     public IIpDevice IpDevice { get; }
 
     /// <summary>
+    /// Send an outbound datamessage (overrideable)
+    /// </summary>
+    /// <param name="message">Outbound datamessage</param>
+    /// <returns>Message sending result</returns>
+    public virtual MessageSendingResult SendMessage(IOutboundDataMessage message)
+    {
+        ArgumentNullException.ThrowIfNull(IpDevice.CommunicationAdapter);
+        return IpDevice.CommunicationAdapter.SendDataMessage(message);
+    }
+
+    /// <summary>
     /// Current device
     /// </summary>
     public IStateMachineDevice Device { get; }

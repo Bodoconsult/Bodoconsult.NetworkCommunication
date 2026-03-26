@@ -11,7 +11,7 @@ namespace Bodoconsult.NetworkCommunication.Devices;
 /// <summary>
 /// A fake device supporting only order management and no state management
 /// </summary>
-public class FakeOrderManagementDevice : BaseOrderManagementDevice, INoStateMachineOrderManagementDevice
+public class FakeOrderManagementDevice : BaseOrderManagementDevice, IOnlyOrderManagementDevice
 {
     /// <summary>
     /// Default ctor

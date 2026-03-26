@@ -12,5 +12,12 @@ public interface IDeviceBusinessLogicAdapter
     /// <summary>
     /// Current device
     /// </summary>
-    IIpDevice IpDevice { get; }
+    public IIpDevice IpDevice { get; }
+
+    /// <summary>
+    /// Send an outbound datamessage
+    /// </summary>
+    /// <param name="message">Outbound datamessage</param>
+    /// <returns>Message sending result</returns>
+    public MessageSendingResult SendMessage(IOutboundDataMessage message);
 }

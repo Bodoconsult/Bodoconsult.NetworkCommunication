@@ -1,6 +1,7 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
 using Bodoconsult.App.Abstractions.Interfaces;
+using Bodoconsult.App.BusinessTransactions.RequestData;
 using Bodoconsult.App.Interfaces;
 using Bodoconsult.NetworkCommunication.BusinessTransactions.Converters;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
@@ -10,38 +11,61 @@ namespace IpCommunicationSample.Backend.Bll.BusinessLogic.Converters;
 
 public class ClientInboundBtcpMessageToBtRequestDataConverter : BaseInboundBtcpMessageToBtRequestDataConverter
 {
-    public ClientInboundBtcpMessageToBtRequestDataConverter(IAppLoggerProxy loggerProxy) : base(loggerProxy)
+    /// <summary>
+    /// Default ctor
+    /// </summary>
+    /// <param name="appLogger">Current app logger</param>
+    public ClientInboundBtcpMessageToBtRequestDataConverter(IAppLoggerProxy appLogger) : base(appLogger)
     {
-        AllBusinessTransactionRequestDataDelegates.Add(ClientSideBusinessTransactionIds.GetConfig, CreateGetConfigDataMessage);
-        AllBusinessTransactionRequestDataDelegates.Add(ClientSideBusinessTransactionIds.StartStreaming, CreateStartStreamingDataMessage);
-        AllBusinessTransactionRequestDataDelegates.Add(ClientSideBusinessTransactionIds.StopStreaming, CreateStopStreamingDataMessage);
-        AllBusinessTransactionRequestDataDelegates.Add(ClientSideBusinessTransactionIds.StartSnapshot, CreateStartSnapshotDataMessage);
-        AllBusinessTransactionRequestDataDelegates.Add(ClientSideBusinessTransactionIds.StopSnapshot, CreateStopSnapshotDataMessage);
+        AllBusinessTransactionRequestDataDelegates.Add(ClientSideBusinessTransactionIds.GetConfig, CreateGetConfigBusinessTransaction);
+        AllBusinessTransactionRequestDataDelegates.Add(ClientSideBusinessTransactionIds.StartStreaming, CreateStartStreamingBusinessTransaction);
+        AllBusinessTransactionRequestDataDelegates.Add(ClientSideBusinessTransactionIds.StopStreaming, CreateStopStreamingBusinessTransaction);
+        AllBusinessTransactionRequestDataDelegates.Add(ClientSideBusinessTransactionIds.StartSnapshot, CreateStartSnapshotBusinessTransaction);
+        AllBusinessTransactionRequestDataDelegates.Add(ClientSideBusinessTransactionIds.StopSnapshot, CreateStopSnapshotBusinessTransaction);
     }
 
-    private IBusinessTransactionRequestData? CreateStopSnapshotDataMessage(BtcpInboundDataMessage request)
+    private IBusinessTransactionRequestData? CreateStopSnapshotBusinessTransaction(BtcpInboundDataMessage request)
     {
-        throw new NotImplementedException();
+        var rd = new EmptyBusinessTransactionRequestData
+        {
+            TransactionId = request.BusinessTransactionId
+        };
+        return rd;
     }
 
-    private IBusinessTransactionRequestData? CreateStartSnapshotDataMessage(BtcpInboundDataMessage request)
+    private IBusinessTransactionRequestData? CreateStartSnapshotBusinessTransaction(BtcpInboundDataMessage request)
     {
-        throw new NotImplementedException();
+        var rd = new EmptyBusinessTransactionRequestData
+        {
+            TransactionId = request.BusinessTransactionId
+        };
+        return rd;
     }
 
-    private IBusinessTransactionRequestData? CreateStopStreamingDataMessage(BtcpInboundDataMessage request)
+    private IBusinessTransactionRequestData? CreateStopStreamingBusinessTransaction(BtcpInboundDataMessage request)
     {
-        throw new NotImplementedException();
+        var rd = new EmptyBusinessTransactionRequestData
+        {
+            TransactionId = request.BusinessTransactionId
+        };
+        return rd;
     }
 
-    private IBusinessTransactionRequestData? CreateStartStreamingDataMessage(BtcpInboundDataMessage request)
+    private IBusinessTransactionRequestData? CreateStartStreamingBusinessTransaction(BtcpInboundDataMessage request)
     {
-        throw new NotImplementedException();
+        var rd = new EmptyBusinessTransactionRequestData
+        {
+            TransactionId = request.BusinessTransactionId
+        };
+        return rd;
     }
 
-    private IBusinessTransactionRequestData? CreateGetConfigDataMessage(BtcpInboundDataMessage request)
+    private IBusinessTransactionRequestData? CreateGetConfigBusinessTransaction(BtcpInboundDataMessage request)
     {
-        throw new NotImplementedException();
+        var rd = new EmptyBusinessTransactionRequestData
+        {
+            TransactionId = request.BusinessTransactionId
+        };
+        return rd;
     }
-
 }

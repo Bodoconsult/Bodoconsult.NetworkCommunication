@@ -12,7 +12,7 @@ using Bodoconsult.NetworkCommunication.App.Abstractions;
 namespace IpCommunicationSampleTests.Backend.Converters;
 
 [TestFixture]
-internal class BackendBtRequestDataToOutboundBtcpMessageConverterTests
+internal class ClientBtRequestDataToOutboundBtcpMessageConverterTests
 {
     private readonly IAppLoggerProxy _appLogger = TestDataHelper.GetFakeAppLoggerProxy();
 
@@ -29,7 +29,7 @@ internal class BackendBtRequestDataToOutboundBtcpMessageConverterTests
         // Arrange 
 
         // Act  
-        var conv = new BackendBtRequestDataToOutboundBtcpMessageConverter(_appLogger);
+        var conv = new ClientBtRequestDataToOutboundBtcpMessageConverter(_appLogger);
 
         // Assert
         Assert.That(conv.AppLogger, Is.EqualTo(_appLogger));
@@ -39,7 +39,7 @@ internal class BackendBtRequestDataToOutboundBtcpMessageConverterTests
     public void MapToBusinessTransactionRequestData_StateChangedEventFired_ReturnsRequestData()
     {
         // Arrange 
-        var conv = new BackendBtRequestDataToOutboundBtcpMessageConverter(_appLogger);
+        var conv = new ClientBtRequestDataToOutboundBtcpMessageConverter(_appLogger);
 
         const int transactionId = 1;
 

@@ -10,7 +10,7 @@ using IpCommunicationSample.Common.BusinessTransactions;
 namespace IpCommunicationSampleTests.Backend.Converters;
 
 [TestFixture]
-internal class BackendInboundBtcpMessageToBtRequestDataConverterTests
+internal class ClientInboundBtcpMessageToBtRequestDataConverterTests
 {
     //[SetUp]
     //public void Setup()
@@ -31,7 +31,7 @@ internal class BackendInboundBtcpMessageToBtRequestDataConverterTests
         // Arrange 
 
         // Act  
-        var conv = new BackendInboundBtcpMessageToBtRequestDataConverter(_appLogger);
+        var conv = new ClientInboundBtcpMessageToBtRequestDataConverter(_appLogger);
 
         // Assert
         Assert.That(conv.AppLogger, Is.EqualTo(_appLogger));
@@ -41,7 +41,7 @@ internal class BackendInboundBtcpMessageToBtRequestDataConverterTests
     public void MapToBusinessTransactionRequestData_GetConfig_ReturnsRequestData()
     {
         // Arrange 
-        var conv = new BackendInboundBtcpMessageToBtRequestDataConverter(_appLogger);
+        var conv = new ClientInboundBtcpMessageToBtRequestDataConverter(_appLogger);
 
         var transactionId = ClientSideBusinessTransactionIds.GetConfig;
 
@@ -66,7 +66,7 @@ internal class BackendInboundBtcpMessageToBtRequestDataConverterTests
     public void MapToBusinessTransactionRequestData_StartStreaming_ReturnsRequestData()
     {
         // Arrange 
-        var conv = new BackendInboundBtcpMessageToBtRequestDataConverter(_appLogger);
+        var conv = new ClientInboundBtcpMessageToBtRequestDataConverter(_appLogger);
 
         var transactionId = ClientSideBusinessTransactionIds.StartStreaming;
 
@@ -91,7 +91,7 @@ internal class BackendInboundBtcpMessageToBtRequestDataConverterTests
     public void MapToBusinessTransactionRequestData_StopStreaming_ReturnsRequestData()
     {
         // Arrange 
-        var conv = new BackendInboundBtcpMessageToBtRequestDataConverter(_appLogger);
+        var conv = new ClientInboundBtcpMessageToBtRequestDataConverter(_appLogger);
 
         var transactionId = ClientSideBusinessTransactionIds.StopStreaming;
 
@@ -116,7 +116,7 @@ internal class BackendInboundBtcpMessageToBtRequestDataConverterTests
     public void MapToBusinessTransactionRequestData_StartSnapshot_ReturnsRequestData()
     {
         // Arrange 
-        var conv = new BackendInboundBtcpMessageToBtRequestDataConverter(_appLogger);
+        var conv = new ClientInboundBtcpMessageToBtRequestDataConverter(_appLogger);
 
         var transactionId = ClientSideBusinessTransactionIds.StopSnapshot;
 
@@ -141,7 +141,7 @@ internal class BackendInboundBtcpMessageToBtRequestDataConverterTests
     public void MapToBusinessTransactionRequestData_StopSnapshot_ReturnsRequestData()
     {
         // Arrange 
-        var conv = new BackendInboundBtcpMessageToBtRequestDataConverter(_appLogger);
+        var conv = new ClientInboundBtcpMessageToBtRequestDataConverter(_appLogger);
 
         var transactionId = ClientSideBusinessTransactionIds.StopSnapshot;
 

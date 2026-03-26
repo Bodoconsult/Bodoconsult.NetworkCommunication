@@ -13,7 +13,7 @@ namespace IpCommunicationSample.Backend.Bll.Communication;
 /// <summary>
 /// Handles the TCP/IP channel between backend and IP device
 /// </summary>
-public class IpDeviceUdpClientManager : IDeviceManager
+public class IpDeviceUdpClientManager : ISimpleDeviceManager
 {
     private readonly IDuplexIoFactory _duplexIoFactory;
     private readonly IAppEventSourceFactory _appEventSourceFactory;

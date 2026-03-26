@@ -45,7 +45,7 @@ public abstract class BaseInboundBtcpMessageToBtReplyConverter : IInboundDataMes
     /// </summary>
     /// <param name="request">Current request</param>
     /// <returns>Internal business transaction request</returns>
-    public IBusinessTransactionReply? MapToBusinessTransactionRequestData(IInboundDataMessage request)
+    public IBusinessTransactionReply? MapToBusinessTransactionReply(IInboundDataMessage request)
     {
         // Request data is required always!
         if (request is not BtcpInboundDataMessage btm)
