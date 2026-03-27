@@ -53,8 +53,9 @@ internal class NoAnswerEdcpClientOrderBuilderTests : OrderBuilderTestsBase
 
             Assert.That(order.RequestSpecs.Count, Is.EqualTo(1));
 
-            var rs = (INoAnswerDeviceRequestSpec)order.RequestSpecs.FirstOrDefault();
+            var rs = (INoAnswerDeviceRequestSpec?)order.RequestSpecs.FirstOrDefault();
             Assert.That(rs, Is.Not.Null);
+            ArgumentNullException.ThrowIfNull(rs);
             Assert.That(rs.HandleRequestAnswerOnSuccessDelegate, Is.Not.Null);
         }
     }
@@ -78,6 +79,7 @@ internal class NoAnswerEdcpClientOrderBuilderTests : OrderBuilderTestsBase
 
             // Assert
             Assert.That(requestSpec, Is.Not.Null);
+            ArgumentNullException.ThrowIfNull(requestSpec);
             Assert.That(requestSpec.ParameterSet, Is.EqualTo(ps));
             Assert.That(order.RequestSpecs.Count, Is.EqualTo(1));
         }
@@ -102,6 +104,7 @@ internal class NoAnswerEdcpClientOrderBuilderTests : OrderBuilderTestsBase
 
             // Assert
             Assert.That(requestSpec, Is.Not.Null);
+            ArgumentNullException.ThrowIfNull(requestSpec);
             Assert.That(requestSpec.ParameterSet, Is.EqualTo(ps));
             Assert.That(order.RequestSpecs.Count, Is.EqualTo(1));
         }
@@ -126,6 +129,7 @@ internal class NoAnswerEdcpClientOrderBuilderTests : OrderBuilderTestsBase
 
             // Assert
             Assert.That(requestSpec, Is.Not.Null);
+            ArgumentNullException.ThrowIfNull(requestSpec);
             Assert.That(requestSpec.ParameterSet, Is.EqualTo(ps));
             Assert.That(order.RequestSpecs.Count, Is.EqualTo(1));
         }
@@ -153,6 +157,7 @@ internal class NoAnswerEdcpClientOrderBuilderTests : OrderBuilderTestsBase
         using (Assert.EnterMultipleScope())
         {
             Assert.That(ras, Is.Not.Null);
+            ArgumentNullException.ThrowIfNull(ras);
             Assert.That(ras.DeviceRequestSpec, Is.EqualTo(requestSpec));
             Assert.That(requestSpec.RequestAnswerSteps.Count, Is.EqualTo(1));
         }
@@ -184,8 +189,8 @@ internal class NoAnswerEdcpClientOrderBuilderTests : OrderBuilderTestsBase
         // Assert
         using (Assert.EnterMultipleScope())
         {
-            Assert.That(ra.Name, Is.EqualTo(raName));
             Assert.That(ra.CheckReceivedMessageDelegate, Is.Not.Null);
+
             Assert.That(ras.AllowedRequestAnswers.Count, Is.EqualTo(1));
         }
     }

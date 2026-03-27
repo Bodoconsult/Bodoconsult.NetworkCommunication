@@ -90,26 +90,29 @@ public interface IIpDeviceTcpIpDeviceBusinessLogicAdapter: IStateMachineDeviceBu
     /// Request a start streaming state
     /// </summary>
     /// <param name="request">Current request</param>
-    void RequestDeviceStartStreamingState(IBusinessTransactionRequestData request);
+    /// <returns>Empty reply</returns>
+    IBusinessTransactionReply RequestDeviceStartStreamingState(IBusinessTransactionRequestData request);
 
     /// <summary>
     /// Request a start snapshot state
     /// </summary>
     /// <param name="request">Current request</param>
-    void RequestDeviceStartSnapshotState(IBusinessTransactionRequestData request);
+    /// <returns>Empty reply</returns>
+    IBusinessTransactionReply RequestDeviceStartSnapshotState(IBusinessTransactionRequestData request);
 
     /// <summary>
     /// Request a stop streaming state
     /// </summary>
     /// <param name="request">Current request</param>
-    void RequestDeviceStopStreamingState(IBusinessTransactionRequestData request);
+    /// <returns>Empty reply</returns>
+    IBusinessTransactionReply RequestDeviceStopStreamingState(IBusinessTransactionRequestData request);
 
     /// <summary>
     /// Request a stop snapshot state
     /// </summary>
     /// <param name="request">Current request</param>
-    void RequestDeviceStopSnapshotState(IBusinessTransactionRequestData request);
-
+    /// <returns>Empty reply</returns>
+    IBusinessTransactionReply RequestDeviceStopSnapshotState(IBusinessTransactionRequestData request);
 
     #endregion
 }

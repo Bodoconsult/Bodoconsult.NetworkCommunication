@@ -1,15 +1,11 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
-using System.Text;
-using Bodoconsult.App;
 using Bodoconsult.App.BusinessTransactions.RequestData;
-using Bodoconsult.App.Helpers;
 using Bodoconsult.App.Interfaces;
 using Bodoconsult.NetworkCommunication.App.Abstractions.NetworkCommands;
-using Bodoconsult.NetworkCommunication.DataMessaging.DataBlocks;
+using Bodoconsult.NetworkCommunication.BusinessLogicAdapters;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
 using Bodoconsult.NetworkCommunication.Interfaces;
-using Bodoconsult.NetworkCommunication.StateManagement;
 using IpCommunicationSample.Common;
 using IpCommunicationSample.Device.Bll.BusinessTransactions;
 using IpCommunicationSample.Device.Bll.Interfaces;
@@ -74,7 +70,7 @@ public class TncpBackendTcpIpBusinessLogicAdapter : BaseSimpleDeviceBusinessLogi
     {
         var request = new EmptyBusinessTransactionRequestData
         {
-            TransactionId = BusinessTransactionCodes.StopSnapshot
+            TransactionId = IpDeviceBusinessTransactionCodes.StopSnapshot
         };
 
         _businessTransactionManager.RunBusinessTransaction(request.TransactionId, request);
@@ -84,7 +80,7 @@ public class TncpBackendTcpIpBusinessLogicAdapter : BaseSimpleDeviceBusinessLogi
     {
         var request = new EmptyBusinessTransactionRequestData
         {
-            TransactionId = BusinessTransactionCodes.StartSnapshot
+            TransactionId = IpDeviceBusinessTransactionCodes.StartSnapshot
         };
 
         _businessTransactionManager.RunBusinessTransaction(request.TransactionId, request);
@@ -94,7 +90,7 @@ public class TncpBackendTcpIpBusinessLogicAdapter : BaseSimpleDeviceBusinessLogi
     {
         var request = new EmptyBusinessTransactionRequestData
         {
-            TransactionId = BusinessTransactionCodes.StopStreaming
+            TransactionId = IpDeviceBusinessTransactionCodes.StopStreaming
         };
 
         _businessTransactionManager.RunBusinessTransaction(request.TransactionId, request);
@@ -104,7 +100,7 @@ public class TncpBackendTcpIpBusinessLogicAdapter : BaseSimpleDeviceBusinessLogi
     {
         var request = new EmptyBusinessTransactionRequestData
         {
-            TransactionId = BusinessTransactionCodes.StartStreaming
+            TransactionId = IpDeviceBusinessTransactionCodes.StartStreaming
         };
 
         _businessTransactionManager.RunBusinessTransaction(request.TransactionId, request);

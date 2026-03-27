@@ -2,10 +2,10 @@
 
 using Bodoconsult.App.BusinessTransactions.Replies;
 using Bodoconsult.App.Interfaces;
+using Bodoconsult.NetworkCommunication.BusinessLogicAdapters;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataBlocks;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
 using Bodoconsult.NetworkCommunication.Interfaces;
-using Bodoconsult.NetworkCommunication.StateManagement;
 using IpCommunicationSample.Device.Bll.Interfaces;
 using System.Text;
 
@@ -58,6 +58,12 @@ public class SdcpBackendUdpBusinessLogicAdapter : BaseSimpleDeviceBusinessLogicA
     /// <param name="request">Empty request</param>
     /// <returns>Empty reply</returns>
     public IBusinessTransactionReply StartStreaming(IBusinessTransactionRequestData request)
+    {
+        // Do nothing
+        return new DefaultBusinessTransactionReply();
+    }
+
+    public IBusinessTransactionReply StartStreaming2(IBusinessTransactionRequestData request)
     {
         _cts = new CancellationTokenSource();
 

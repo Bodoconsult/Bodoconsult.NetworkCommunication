@@ -64,7 +64,7 @@ public abstract class BaseInboundBtcpMessageToBtRequestDataConverter : IInboundM
         //{
         foreach (var kvp in AllBusinessTransactionRequestDataDelegates)
         {
-            if (btm.BusinessTransactionId==kvp.Key)
+            if (btm.BusinessTransactionId != kvp.Key)
             {
                 continue;
             }

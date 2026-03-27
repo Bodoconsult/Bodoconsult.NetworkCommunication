@@ -14,7 +14,7 @@ public class DummyHandshakeValidator : IHandshakeDataMessageValidator
     /// <param name="handshakeMessage">Received handshake message</param>
     /// <returns>True if the message was the handshake for the sent message</returns>
     public DataMessageValidatorResult IsHandshakeForSentMessage(IOutboundDataMessage sentMessage,
-        IInboundHandShakeMessage handshakeMessage)
+        IInboundHandShakeMessage? handshakeMessage)
     {
         return new DataMessageValidatorResult(true, null);
     }
@@ -25,17 +25,20 @@ public class DummyHandshakeValidator : IHandshakeDataMessageValidator
     /// </summary>
     /// <param name="context">Current context</param>
     /// <param name="handshake">Received handshake</param>
-    public void HandleHandshake(ISendPacketProcess context, IInboundHandShakeMessage handshake)
+    public void HandleHandshake(ISendPacketProcess context, IInboundHandShakeMessage? handshake)
     {
 
-        if (handshake is not IInboundHandShakeMessage hs)
+        if (handshake is not { } hs)
         {
             context.ProcessExecutionResult = OrderExecutionResultState.Unsuccessful;
             return;
         }
 
+        ArgumentNullException.ThrowIfNull(context.DataMessagingConfig);
+        ArgumentNullException.ThrowIfNull(context.Message);
+
         context.ProcessExecutionResult = OrderExecutionResultState.Successful;
         context.CurrentSendAttempsCount = 0;
-        context.DataMessagingConfig.MonitorLogger?.LogDebug($"Message {context.Message.MessageId}: handshake received [{hs.HandshakeMessageType:X2}]");
+        context.DataMessagingConfig.MonitorLogger.LogDebug($"Message {context.Message.MessageId}: handshake received [{hs.HandshakeMessageType:X2}]");
     }
 }

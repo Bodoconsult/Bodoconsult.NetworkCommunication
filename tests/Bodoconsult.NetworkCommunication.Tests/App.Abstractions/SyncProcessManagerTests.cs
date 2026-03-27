@@ -32,6 +32,7 @@ public class SyncProcessManagerTests
         using (Assert.EnterMultipleScope())
         {
             Assert.That(result, Is.Not.Null);
+            ArgumentNullException.ThrowIfNull(result);
             Assert.That(result.CancellationTokenSource, Is.Not.Null);
             Assert.That(result.TaskCompletionSource, Is.Null);
             Assert.That(result.ProcessId, Is.EqualTo(processId));
@@ -56,6 +57,7 @@ public class SyncProcessManagerTests
         using (Assert.EnterMultipleScope())
         {
             Assert.That(result, Is.Not.Null);
+            ArgumentNullException.ThrowIfNull(result);
             Assert.That(result.CancellationTokenSource, Is.Not.Null);
             Assert.That(result.TaskCompletionSource, Is.Null);
             Assert.That(result.ProcessId, Is.EqualTo(processId));
@@ -78,6 +80,7 @@ public class SyncProcessManagerTests
         using (Assert.EnterMultipleScope())
         {
             Assert.That(result, Is.Not.Null);
+            ArgumentNullException.ThrowIfNull(result);
             Assert.That(result.CancellationTokenSource, Is.Not.Null);
             Assert.That(result.TaskCompletionSource, Is.Null);
             Assert.That(result.ProcessId, Is.EqualTo(processId));

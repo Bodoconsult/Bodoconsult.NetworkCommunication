@@ -25,19 +25,19 @@ namespace Bodoconsult.NetworkCommunication.Tests.OrderManagement.Processors;
 [SingleThreaded]
 internal class OrderProcessorTests
 {
-    private OrderProcessor _processor;
+    private OrderProcessor? _processor;
 
     private readonly IList<IInboundDataMessage> _receivedMessage = new List<IInboundDataMessage>();
 
-    private FakeIpCommunicationAdapter _commAdapter;
+    private FakeIpCommunicationAdapter? _commAdapter;
 
-    private RequestStepProcessorFactory _stepFactory;
+    private RequestStepProcessorFactory? _stepFactory;
 
-    private RequestProcessorFactory _orderProcessorFactory;
+    private RequestProcessorFactory? _orderProcessorFactory;
 
     private readonly IAppDateService _dateTimeService = TestDataHelper.AppDateService;
 
-    private FakeOrderManagementDevice _device;
+    private FakeOrderManagementDevice? _device;
 
     private readonly IAppBenchProxy _benchLogger = TestDataHelper.GetFakeAppBenchProxy();
 
@@ -73,6 +73,7 @@ internal class OrderProcessorTests
 
     private IInboundDataMessage DecodeDataMessage(Memory<byte> message)
     {
+        ArgumentNullException.ThrowIfNull(_device);
         ArgumentNullException.ThrowIfNull(_device.DataMessagingConfig);
         ArgumentNullException.ThrowIfNull(_device.DataMessagingConfig.DataMessageProcessingPackage);
 
@@ -80,6 +81,7 @@ internal class OrderProcessorTests
         Assert.That(codecResult, Is.Not.Null);
         Assert.That(codecResult.ErrorCode, Is.Zero);
 
+        Assert.That(codecResult.DataMessage, Is.Not.Null);
         return (IInboundDataMessage)codecResult.DataMessage;
     }
 
@@ -91,13 +93,15 @@ internal class OrderProcessorTests
             return true;
         }
 
+        ArgumentNullException.ThrowIfNull(_processor);
+
         var msg = _receivedMessage[0];
 
 
-        if (msg == null)
-        {
-            return true;
-        }
+        //if (msg == null)
+        //{
+        //    return true;
+        //}
 
         _receivedMessage.Remove(msg);
 
@@ -116,7 +120,7 @@ internal class OrderProcessorTests
     private void ReceiveMessage(IInboundDataMessage receivedMessage)
     {
         // Debug.Print($"UTTOP: Received message with command {receivedMessage.Command}. Current message: {(_receivedMessage == null ? "null" : "not null")}");
-        _receivedMessage?.Add(receivedMessage);
+        _receivedMessage.Add(receivedMessage);
     }
 
     /// <summary>
@@ -199,7 +203,7 @@ internal class OrderProcessorTests
         return order;
     }
 
-    private MessageHandlingResult HandleRequestAnswerOnSuccessDelegate(IInboundDataMessage message, object transportObject, IParameterSet parameterSet)
+    private MessageHandlingResult HandleRequestAnswerOnSuccessDelegate(IInboundDataMessage? message, object? transportObject, IParameterSet? parameterSet)
     {
         _isBusinesDelegateFired = true;
         return new MessageHandlingResult
@@ -211,6 +215,8 @@ internal class OrderProcessorTests
 
     private void PrepareTest(bool startOrderProcessing = true)
     {
+        ArgumentNullException.ThrowIfNull(_commAdapter);
+
         _isBusinesDelegateFired = false;
         _receivedMessage.Clear();
 
@@ -289,6 +295,7 @@ internal class OrderProcessorTests
     public void Ctor_ValidSetup_PropertiesSetupCorrectly()
     {
         // Arrange 
+        ArgumentNullException.ThrowIfNull(_processor);
         _commAdapter = TestDataHelper.FakeIpCommunicationAdapter;
 
         // Act  
@@ -308,7 +315,8 @@ internal class OrderProcessorTests
     [Test]
     public void AddOrder_NewOrder_OrderAddedToQueue()
     {
-        // Arrange 
+        // Arrange
+        ArgumentNullException.ThrowIfNull(_processor);
         _commAdapter = TestDataHelper.FakeIpCommunicationAdapter;
         PrepareTest(false);
 
@@ -338,6 +346,7 @@ internal class OrderProcessorTests
     public void AddOrder_DuplicatedOrder_OrderNotAddedToQueue()
     {
         // Arrange 
+        ArgumentNullException.ThrowIfNull(_processor); 
         _commAdapter = TestDataHelper.FakeIpCommunicationAdapter;
         PrepareTest(false);
 
@@ -369,6 +378,7 @@ internal class OrderProcessorTests
     public void Runner_NewOrderNoMessageReceived_OrderTimeout()
     {
         // Arrange 
+        ArgumentNullException.ThrowIfNull(_processor);
         _commAdapter = TestDataHelper.FakeIpCommunicationAdapter;
         _commAdapter.ExpectedExecutionResult.Add(OrderExecutionResultState.Successful);
 
@@ -400,6 +410,7 @@ internal class OrderProcessorTests
     public void Runner_NewOrder_OrderSuccessful()
     {
         // Arrange 
+        ArgumentNullException.ThrowIfNull(_processor); 
         _commAdapter = TestDataHelper.FakeIpCommunicationAdapter;
         _commAdapter.ExpectedExecutionResult.Add(OrderExecutionResultState.Successful);
 
@@ -435,6 +446,7 @@ internal class OrderProcessorTests
     public void Cancel_NewOrderWith_OrderCancelled()
     {
         // Arrange 
+        ArgumentNullException.ThrowIfNull(_processor);
         _commAdapter = TestDataHelper.FakeIpCommunicationAdapter;
 
         PrepareTest(false);
@@ -465,6 +477,7 @@ internal class OrderProcessorTests
     //public void Runner_NewOrderWithCancelRunningOrders_OrderCancelled()
     //{
     //    // Arrange 
+    //  ArgumentNullException.ThrowIfNull(_processor);
     //    var errorCode = (byte)0x5;
 
     //    _commAdapter = TestDataHelper.FakeIpCommunicationAdapter;
@@ -500,6 +513,7 @@ internal class OrderProcessorTests
     public void CancelAllOrders_SingleNewOrder_OrdersAreCancelled()
     {
         // Arrange 
+        ArgumentNullException.ThrowIfNull(_processor); 
         _commAdapter = TestDataHelper.FakeIpCommunicationAdapter;
 
         PrepareTest(false);
@@ -570,6 +584,7 @@ internal class OrderProcessorTests
     public void Runner_NoOrder_DoesNotThrow()
     {
         // Arrange 
+        ArgumentNullException.ThrowIfNull(_processor); 
         _commAdapter = TestDataHelper.FakeIpCommunicationAdapter;
 
         PrepareTest();
@@ -628,6 +643,8 @@ internal class OrderProcessorTests
     public void CancelAllOrders_3NewOrders_OrdersAreCancelled()
     {
         // Arrange 
+        ArgumentNullException.ThrowIfNull(_processor);
+
         _commAdapter = TestDataHelper.FakeIpCommunicationAdapter;
 
         PrepareTest(false);
@@ -678,6 +695,7 @@ internal class OrderProcessorTests
     public void CancelAllOrders_MultipleNewOrders_OrdersAreCancelled()
     {
         // Arrange 
+        ArgumentNullException.ThrowIfNull(_processor);
         _commAdapter = TestDataHelper.FakeIpCommunicationAdapter;
 
         PrepareTest(false);
@@ -712,6 +730,7 @@ internal class OrderProcessorTests
     public void Runner_NewOrderWithCancelOrderBySourceUid_OrderCancelled()
     {
         // Arrange 
+        ArgumentNullException.ThrowIfNull(_processor);
         var sourceUid = Guid.NewGuid();
 
         _commAdapter = TestDataHelper.FakeIpCommunicationAdapter;
@@ -748,6 +767,7 @@ internal class OrderProcessorTests
     {
 
         // Arrange 
+        ArgumentNullException.ThrowIfNull(_processor); 
         _commAdapter = TestDataHelper.FakeIpCommunicationAdapter;
 
         PrepareTest();
@@ -819,6 +839,7 @@ internal class OrderProcessorTests
     public void Runner_NewOrderWithOneParallelOrder_Successful()
     {
         // Arrange 
+        ArgumentNullException.ThrowIfNull(_processor); 
         _commAdapter = TestDataHelper.FakeIpCommunicationAdapter;
         _commAdapter.ExpectedExecutionResult.Add(OrderExecutionResultState.Successful);
 
@@ -902,6 +923,7 @@ internal class OrderProcessorTests
     public void Runner_NewOrderWithTwoParallelOrders_Successful()
     {
         // Arrange 
+        ArgumentNullException.ThrowIfNull(_processor); 
         _commAdapter = TestDataHelper.FakeIpCommunicationAdapter;
         _commAdapter.ExpectedExecutionResult.Add(OrderExecutionResultState.Successful);
         _commAdapter.ExpectedExecutionResult.Add(OrderExecutionResultState.Successful);
@@ -949,6 +971,7 @@ internal class OrderProcessorTests
     public void TryToExecuteOrderSync_OrderSyncWithNoReceivedMessage_OrderTimeout()
     {
         // Arrange 
+        ArgumentNullException.ThrowIfNull(_processor); 
         _commAdapter = TestDataHelper.FakeIpCommunicationAdapter;
 
         PrepareTest();
@@ -976,6 +999,7 @@ internal class OrderProcessorTests
     public void TryToExecuteOrderSync_NewOrderWithReceivedMessage_OrderSuccessful()
     {
         // Arrange 
+        ArgumentNullException.ThrowIfNull(_processor); 
         _commAdapter = TestDataHelper.FakeIpCommunicationAdapter;
 
         PrepareTest();

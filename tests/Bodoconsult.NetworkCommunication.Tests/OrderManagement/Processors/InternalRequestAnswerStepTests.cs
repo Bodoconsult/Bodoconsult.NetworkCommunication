@@ -90,7 +90,7 @@ internal class InternalRequestAnswerStepTests
 		// Assert
         using (Assert.EnterMultipleScope())
         {
-            Assert.That(result.Error, Is.Not.EqualTo(0));
+            Assert.That(result.Error, Is.Not.Zero);
             Assert.That(result.ExecutionResult, Is.EqualTo(OrderExecutionResultState.Unsuccessful));
         }
     }

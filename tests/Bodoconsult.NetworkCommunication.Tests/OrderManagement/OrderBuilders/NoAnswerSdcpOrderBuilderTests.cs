@@ -53,8 +53,9 @@ internal class NoAnswerSdcpOrderBuilderTests : OrderBuilderTestsBase
 
             Assert.That(order.RequestSpecs.Count, Is.EqualTo(1));
 
-            var rs = (INoAnswerDeviceRequestSpec)order.RequestSpecs.FirstOrDefault();
+            var rs = (INoAnswerDeviceRequestSpec?)order.RequestSpecs.FirstOrDefault();
             Assert.That(rs, Is.Not.Null);
+            ArgumentNullException.ThrowIfNull(rs);
             Assert.That(rs.HandleRequestAnswerOnSuccessDelegate, Is.Not.Null);
         }
     }

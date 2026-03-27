@@ -32,6 +32,13 @@ public interface IBackendUdpBusinessLogicAdapter : IDeviceBusinessLogicAdapter
     IBusinessTransactionReply StartStreaming(IBusinessTransactionRequestData request);
 
     /// <summary>
+    /// Start streaming 2
+    /// </summary>
+    /// <param name="request">Empty request</param>
+    /// <returns>Empty reply</returns>
+    IBusinessTransactionReply StartStreaming2(IBusinessTransactionRequestData request);
+
+    /// <summary>
     /// Stop streaming
     /// </summary>
     /// <param name="request">Empty request</param>

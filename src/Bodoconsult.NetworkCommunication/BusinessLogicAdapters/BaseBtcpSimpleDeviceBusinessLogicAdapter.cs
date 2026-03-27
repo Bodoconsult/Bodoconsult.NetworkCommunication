@@ -7,7 +7,7 @@ using Bodoconsult.NetworkCommunication.App.Abstractions.SyncProcessManager;
 using Bodoconsult.NetworkCommunication.Interfaces;
 using Bodoconsult.NetworkCommunication.OrderManagement.Processors;
 
-namespace Bodoconsult.NetworkCommunication.StateManagement;
+namespace Bodoconsult.NetworkCommunication.BusinessLogicAdapters;
 
 /// <summary>
 /// Base class for BTCP based <see cref="ISimpleDeviceBusinessLogicAdapter"/> implementations

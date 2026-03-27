@@ -51,4 +51,9 @@ public interface IBackendManager
     /// Load the client
     /// </summary>
     void LoadClient();
+
+    /// <summary>
+    /// Load the business transactions required for the app
+    /// </summary>
+    void LoadBusinessTransactions();
 }

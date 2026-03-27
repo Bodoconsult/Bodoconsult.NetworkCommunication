@@ -34,6 +34,7 @@ internal class DefaultDataMessageCodingProcessorTests
         {
             Assert.That(result, Is.Not.Null);
             Assert.That(result.DataMessage, Is.Not.Null);
+            ArgumentNullException.ThrowIfNull(result.DataMessage);
             Assert.That(result.DataMessage.GetType(), Is.EqualTo(typeof(InboundHandshakeMessage)));
         }
     }
@@ -59,6 +60,7 @@ internal class DefaultDataMessageCodingProcessorTests
         {
             Assert.That(result, Is.Not.Null);
             Assert.That(result.DataMessage, Is.Not.Null);
+            ArgumentNullException.ThrowIfNull(result.DataMessage);
             Assert.That(result.DataMessage.GetType(), Is.EqualTo(typeof(BtcpInboundDataMessage)));
         }
     }
@@ -94,7 +96,7 @@ internal class DefaultDataMessageCodingProcessorTests
         {
             Assert.That(result, Is.Not.Null);
             Assert.That(result.ErrorCode, Is.Zero);
-            Assert.That(message.RawMessageData.Length, Is.Not.EqualTo(0));
+            Assert.That(message.RawMessageData.Length, Is.Not.Zero);
         }
     }
 
@@ -119,6 +121,7 @@ internal class DefaultDataMessageCodingProcessorTests
         {
             Assert.That(result, Is.Not.Null);
             Assert.That(result.DataMessage, Is.Not.Null);
+            ArgumentNullException.ThrowIfNull(result.DataMessage);
             Assert.That(result.DataMessage.GetType(), Is.EqualTo(typeof(InboundHandshakeMessage)));
         }
     }
@@ -144,6 +147,7 @@ internal class DefaultDataMessageCodingProcessorTests
         {
             Assert.That(result, Is.Not.Null);
             Assert.That(result.DataMessage, Is.Not.Null);
+            ArgumentNullException.ThrowIfNull(result.DataMessage);
             Assert.That(result.DataMessage.GetType(), Is.EqualTo(typeof(SdcpInboundDataMessage)));
         }
     }
@@ -179,7 +183,7 @@ internal class DefaultDataMessageCodingProcessorTests
         {
             Assert.That(result, Is.Not.Null);
             Assert.That(result.ErrorCode, Is.Zero);
-            Assert.That(message.RawMessageData.Length, Is.Not.EqualTo(0));
+            Assert.That(message.RawMessageData.Length, Is.Not.Zero);
         }
     }
 
@@ -204,6 +208,7 @@ internal class DefaultDataMessageCodingProcessorTests
         {
             Assert.That(result, Is.Not.Null);
             Assert.That(result.DataMessage, Is.Not.Null);
+            ArgumentNullException.ThrowIfNull(result.DataMessage);
             Assert.That(result.DataMessage.GetType(), Is.EqualTo(typeof(EdcpInboundHandshakeMessage)));
         }
     }
@@ -229,6 +234,7 @@ internal class DefaultDataMessageCodingProcessorTests
         {
             Assert.That(result, Is.Not.Null);
             Assert.That(result.DataMessage, Is.Not.Null);
+            ArgumentNullException.ThrowIfNull(result.DataMessage);
             Assert.That(result.DataMessage.GetType(), Is.EqualTo(typeof(EdcpInboundDataMessage)));
         }
     }
@@ -265,7 +271,7 @@ internal class DefaultDataMessageCodingProcessorTests
         {
             Assert.That(result, Is.Not.Null);
             Assert.That(result.ErrorCode, Is.Zero);
-            Assert.That(message.RawMessageData.Length, Is.Not.EqualTo(0));
+            Assert.That(message.RawMessageData.Length, Is.Not.Zero);
         }
     }
 }

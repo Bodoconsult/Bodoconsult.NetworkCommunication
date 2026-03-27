@@ -81,7 +81,7 @@ public class SendPackageProcessDuplexIoTests
         Assert.That(p.DataMessagingConfig, Is.Not.Null);
         Assert.That(p.Message, Is.Not.Null);
         Assert.That(p.DuplexIo, Is.Not.Null);
-        Assert.That(dataMessagingConfig.DataMessageProcessingPackage.WaitStateManager.Count, Is.Not.EqualTo(0));
+        Assert.That(dataMessagingConfig.DataMessageProcessingPackage.WaitStateManager.Count, Is.Not.Zero);
 
     }
 

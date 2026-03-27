@@ -88,7 +88,7 @@ internal class DeviceRequestAnswerStepTests
         var result = irs.HandleResult();
 
         // Assert
-        Assert.That(result.Error, Is.Not.EqualTo(0));
+        Assert.That(result.Error, Is.Not.Zero);
         Assert.That(result.ExecutionResult, Is.EqualTo(OrderExecutionResultState.Unsuccessful));
     }
 
@@ -154,7 +154,7 @@ internal class DeviceRequestAnswerStepTests
         var result = irs.CheckReceivedMessage(msg).ToList();
 
         // Assert
-        Assert.That(result.Count, Is.Not.EqualTo(0));
+        Assert.That(result.Count, Is.Not.Zero);
         Assert.That(_isCheckReceivedFired, Is.True);
         Assert.That(_isStateSetFired, Is.False);
     }

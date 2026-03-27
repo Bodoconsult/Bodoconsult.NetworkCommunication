@@ -53,8 +53,9 @@ internal class NoHandshakeNoAnswerBtcpOrderBuilderTests : OrderBuilderTestsBase
 
             Assert.That(order.RequestSpecs.Count, Is.EqualTo(1));
 
-            var rs = (INoHandshakeNoAnswerDeviceRequestSpec)order.RequestSpecs.FirstOrDefault();
+            var rs = (INoHandshakeNoAnswerDeviceRequestSpec?)order.RequestSpecs.FirstOrDefault();
             Assert.That(rs, Is.Not.Null);
+            ArgumentNullException.ThrowIfNull(rs);
             Assert.That(rs.HandleRequestAnswerOnSuccessDelegate, Is.Not.Null);
         }
     }
@@ -78,6 +79,7 @@ internal class NoHandshakeNoAnswerBtcpOrderBuilderTests : OrderBuilderTestsBase
 
             // Assert
             Assert.That(requestSpec, Is.Not.Null);
+            ArgumentNullException.ThrowIfNull(requestSpec);
             Assert.That(requestSpec.ParameterSet, Is.EqualTo(ps));
             Assert.That(order.RequestSpecs.Count, Is.EqualTo(1));
         }
@@ -102,6 +104,7 @@ internal class NoHandshakeNoAnswerBtcpOrderBuilderTests : OrderBuilderTestsBase
 
             // Assert
             Assert.That(requestSpec, Is.Not.Null);
+            ArgumentNullException.ThrowIfNull(requestSpec);
             Assert.That(requestSpec.ParameterSet, Is.EqualTo(ps));
             Assert.That(order.RequestSpecs.Count, Is.EqualTo(1));
         }
@@ -126,6 +129,7 @@ internal class NoHandshakeNoAnswerBtcpOrderBuilderTests : OrderBuilderTestsBase
 
             // Assert
             Assert.That(requestSpec, Is.Not.Null);
+            ArgumentNullException.ThrowIfNull(requestSpec);
             Assert.That(requestSpec.ParameterSet, Is.EqualTo(ps));
             Assert.That(order.RequestSpecs.Count, Is.EqualTo(1));
         }

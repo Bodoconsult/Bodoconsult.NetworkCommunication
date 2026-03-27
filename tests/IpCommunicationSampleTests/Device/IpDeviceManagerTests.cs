@@ -139,4 +139,42 @@ internal class IpDeviceManagerTests
             Assert.That(config.Port, Is.EqualTo(deviceUdpConfig.Port));
         }
     }
+
+    [Test]
+    public void LoadBusinessTransactions_ValidSetup_TransactionsLoaded()
+    {
+        // Arrange 
+        var deviceTcpIpConfig = new IpConfig { IpAddress = "127.0.0.1", Port = 33001 };
+        var deviceUdpConfig = new IpConfig { IpAddress = "127.0.0.1", Port = 33002 };
+
+        var btm = new BusinessTransactionManager(_appLogger, _appEventSourceFactory);
+
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(btm.TransactionCache, Is.Not.Null);
+            Assert.That(btm.TransactionCache.Count, Is.Zero);
+            Assert.That(btm.CreateBusinessTransactionDelegates.Count, Is.Zero);
+        }
+
+        var m = new IpDeviceManager(_monitorLoggerFactoryFactory, _logDataFactory, _appLoggerFactory,
+            _appEventSourceFactory, _clientNotificationManager, _appLogger, _sendPacketProcessFactory, _tcpIpListenerManager, btm)
+        {
+            BackendTcpIpConfig = deviceTcpIpConfig,
+            BackendUdpConfig = deviceUdpConfig
+        };
+
+        m.LoadBackendUdp();
+        m.LoadBackendUdp();
+
+        // Act
+        m.LoadBusinessTransactions();
+
+        // Assert
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(btm.TransactionCache, Is.Not.Null);
+            Assert.That(btm.TransactionCache.Count, Is.Zero);
+            Assert.That(btm.CreateBusinessTransactionDelegates.Count, Is.Not.Zero);
+        }
+    }
 }

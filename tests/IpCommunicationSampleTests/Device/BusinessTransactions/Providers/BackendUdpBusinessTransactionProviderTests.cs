@@ -42,7 +42,7 @@ namespace IpCommunicationSampleTests.Device.BusinessTransactions.Providers
 
             Assert.Multiple(() =>
             {
-                Assert.That(transaction.Id, Is.EqualTo(BusinessTransactionCodes.StartCommunication));
+                Assert.That(transaction.Id, Is.EqualTo(IpDeviceBusinessTransactionCodes.StartCommunication));
                 Assert.That(transaction.RunBusinessTransactionDelegate, Is.Not.Null);
                 Assert.That(transaction.AllowedRequestDataTypes, Has.Count.EqualTo(1));
             });
@@ -62,7 +62,7 @@ namespace IpCommunicationSampleTests.Device.BusinessTransactions.Providers
 
             Assert.Multiple(() =>
             {
-                Assert.That(transaction.Id, Is.EqualTo(BusinessTransactionCodes.StopCommunication));
+                Assert.That(transaction.Id, Is.EqualTo(IpDeviceBusinessTransactionCodes.StopCommunication));
                 Assert.That(transaction.RunBusinessTransactionDelegate, Is.Not.Null);
                 Assert.That(transaction.AllowedRequestDataTypes, Has.Count.EqualTo(1));
             });
@@ -82,7 +82,7 @@ namespace IpCommunicationSampleTests.Device.BusinessTransactions.Providers
 
             Assert.Multiple(() =>
             {
-                Assert.That(transaction.Id, Is.EqualTo(BusinessTransactionCodes.StartStreaming));
+                Assert.That(transaction.Id, Is.EqualTo(IpDeviceBusinessTransactionCodes.StartStreaming));
                 Assert.That(transaction.RunBusinessTransactionDelegate, Is.Not.Null);
                 Assert.That(transaction.AllowedRequestDataTypes, Has.Count.EqualTo(1));
             });
@@ -102,7 +102,7 @@ namespace IpCommunicationSampleTests.Device.BusinessTransactions.Providers
 
             Assert.Multiple(() =>
             {
-                Assert.That(transaction.Id, Is.EqualTo(BusinessTransactionCodes.StopStreaming));
+                Assert.That(transaction.Id, Is.EqualTo(IpDeviceBusinessTransactionCodes.StopStreaming));
                 Assert.That(transaction.RunBusinessTransactionDelegate, Is.Not.Null);
                 Assert.That(transaction.AllowedRequestDataTypes, Has.Count.EqualTo(1));
             });
@@ -122,7 +122,7 @@ namespace IpCommunicationSampleTests.Device.BusinessTransactions.Providers
 
             Assert.Multiple(() =>
             {
-                Assert.That(transaction.Id, Is.EqualTo(BusinessTransactionCodes.StartSnapshot));
+                Assert.That(transaction.Id, Is.EqualTo(IpDeviceBusinessTransactionCodes.StartSnapshot));
                 Assert.That(transaction.RunBusinessTransactionDelegate, Is.Not.Null);
                 Assert.That(transaction.AllowedRequestDataTypes, Has.Count.EqualTo(1));
             });
@@ -142,7 +142,7 @@ namespace IpCommunicationSampleTests.Device.BusinessTransactions.Providers
 
             Assert.Multiple(() =>
             {
-                Assert.That(transaction.Id, Is.EqualTo(BusinessTransactionCodes.StopSnapshot));
+                Assert.That(transaction.Id, Is.EqualTo(IpDeviceBusinessTransactionCodes.StopSnapshot));
                 Assert.That(transaction.RunBusinessTransactionDelegate, Is.Not.Null);
                 Assert.That(transaction.AllowedRequestDataTypes, Has.Count.EqualTo(1));
             });

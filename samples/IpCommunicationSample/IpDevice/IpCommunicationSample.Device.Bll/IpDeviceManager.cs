@@ -5,6 +5,7 @@ using Bodoconsult.App.Interfaces;
 using Bodoconsult.NetworkCommunication.App.Abstractions;
 using Bodoconsult.NetworkCommunication.Factories;
 using Bodoconsult.NetworkCommunication.Interfaces;
+using IpCommunicationSample.Device.Bll.BusinessTransactions.Providers;
 using IpCommunicationSample.Device.Bll.Communication;
 using IpCommunicationSample.Device.Bll.Interfaces;
 
@@ -23,7 +24,7 @@ public class IpDeviceManager : IIpDeviceManager
     private readonly IAppLoggerProxy _appLogger;
     private readonly ISendPacketProcessFactory _sendPacketProcessFactory;
     private readonly ITcpIpListenerManager _tcpIpListenerManager;
-    private IBusinessTransactionManager _businessTransactionManager;
+    private readonly IBusinessTransactionManager _businessTransactionManager;
 
     /// <summary>
     /// Default ctor
@@ -114,5 +115,19 @@ public class IpDeviceManager : IIpDeviceManager
         m.ConfigureDevice(BackendUdpConfig.Value.IpAddress, BackendUdpConfig.Value.Port);
 
         BackendUdp = m;
+    }
+
+    /// <summary>
+    /// Load the business transactions required for the app
+    /// </summary>
+    public void LoadBusinessTransactions()
+    {
+        ArgumentNullException.ThrowIfNull(BackendUdp);
+        var adapter = (IBackendUdpBusinessLogicAdapter?)BackendUdp.DeviceBusinessLogicAdapter;
+
+        ArgumentNullException.ThrowIfNull(adapter);
+
+        var provider = new BackendUdpBusinessTransactionProvider(adapter);
+        _businessTransactionManager.AddProvider(provider);
     }
 }

@@ -31,7 +31,7 @@ internal class EdcpDataMessageSplitterTests
 
         // Assert
         Assert.That(result, Is.True);
-        Assert.That(command.Length, Is.Not.EqualTo(0));
+        Assert.That(command.Length, Is.Not.Zero);
 
         Assert.That(command.IsEqualTo(expectedResult));
         Assert.That(buffer.Length, Is.EqualTo(msg.Length - command.Length));
@@ -53,7 +53,7 @@ internal class EdcpDataMessageSplitterTests
 
         // Assert
         Assert.That(result, Is.True);
-        Assert.That(command.Length, Is.Not.EqualTo(0));
+        Assert.That(command.Length, Is.Not.Zero);
 
         Assert.That(command.IsEqualTo(expectedResult));
         Assert.That(buffer.Length, Is.EqualTo(msg.Length - command.Length));

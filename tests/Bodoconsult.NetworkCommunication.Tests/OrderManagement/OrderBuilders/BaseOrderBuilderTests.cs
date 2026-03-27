@@ -7,7 +7,7 @@ namespace Bodoconsult.NetworkCommunication.Tests.OrderManagement.OrderBuilders;
 
 internal class OrderBuilderTestsBase
 {
-    protected MessageHandlingResult HandleRequestAnswerOnSuccessDelegate(IInboundDataMessage message, object transportObject, IParameterSet parameterSet)
+    protected MessageHandlingResult HandleRequestAnswerOnSuccessDelegate(IInboundDataMessage? message, object? transportObject, IParameterSet? parameterSet)
     {
         // Do nothing
         return new MessageHandlingResult
@@ -17,8 +17,12 @@ internal class OrderBuilderTestsBase
         };
     }
 
-    protected bool CheckReceivedMessageDelegate(IRequestAnswer requestAnswer, IOutboundDataMessage sentMessage, IInboundDataMessage receivedMessage, IList<string> errors)
+    protected bool CheckReceivedMessageDelegate(IRequestAnswer requestAnswer, IOutboundDataMessage? sentMessage, IInboundDataMessage? receivedMessage, IList<string> errors)
     {
+        if (receivedMessage == null)
+        {
+            return false;
+        }
         requestAnswer.SetWasReceived(receivedMessage);
         return true;
     }

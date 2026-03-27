@@ -17,14 +17,14 @@ public abstract class BaseBtReplyToOutboundDataMessageConverter : IBtReplyToOutb
     /// <summary>
     /// Delegate for creating <see cref="IBusinessTransactionRequestData"/> instances
     /// </summary>
-    /// <param name="request">Current request</param>
-    /// <returns></returns>
-    protected delegate IOutboundBusinessTransactionDataMessage CreateBusinessTransactionReplyDelegate(IBusinessTransactionReply request);
+    /// <param name="reply">Current reply</param>
+    /// <returns>Outbound data message</returns>
+    protected delegate IOutboundBusinessTransactionDataMessage CreateBusinessTransactionReplyDelegate(IBusinessTransactionReply reply);
 
     /// <summary>
     /// Collection of all registered business transactions and the <see cref="CreateBusinessTransactionReplyDelegate"/> to use for the single business transaction
     /// </summary>
-    protected readonly Dictionary<string, CreateBusinessTransactionReplyDelegate> AllBusinessTransactionRequestDataDelegates = new();
+    protected readonly Dictionary<string, CreateBusinessTransactionReplyDelegate> AllBusinessTransactionReplyDelegates = new();
 
     /// <summary>
     /// Current app logger
@@ -45,14 +45,14 @@ public abstract class BaseBtReplyToOutboundDataMessageConverter : IBtReplyToOutb
     /// </summary>
     /// <param name="reply">Current request</param>
     /// <returns>Internal business transaction request</returns>
-    public IOutboundDataMessage? MapToOutboundDataMessage(IBusinessTransactionReply reply)
+    public IOutboundDataMessage MapToOutboundDataMessage(IBusinessTransactionReply reply)
     {
         // Now search the correct mapper and run it
         try
         {
-            foreach (var kvp in AllBusinessTransactionRequestDataDelegates)
+            foreach (var kvp in AllBusinessTransactionReplyDelegates)
             {
-                if (reply.GetType().Name == kvp.Key)
+                if (reply.GetType().Name != kvp.Key)
                 {
                     continue;
                 }
@@ -76,13 +76,12 @@ public abstract class BaseBtReplyToOutboundDataMessageConverter : IBtReplyToOutb
 
                 return internalRequest;
             }
+
+            throw new ArgumentException($"No outbound message created as BT {reply.RequestData.TransactionId} is not registered!");
         }
         catch (Exception e)
         {
-            Console.WriteLine(e);
-            throw;
+            throw new ArgumentException("No outbound message created", e);
         }
-
-        throw new ArgumentException($"No outbound message created as BT {reply.RequestData.TransactionId} is not registered!");
     }
 }

@@ -40,13 +40,18 @@ internal class EdcpDataMessageCodecTests
         var result = codec.DecodeDataMessage(msg);
 
         // Assert
-        Assert.That(result, Is.Not.Null);
-        Assert.That(result.ErrorCode, Is.Zero);
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(result, Is.Not.Null);
+            Assert.That(result.ErrorCode, Is.Zero);
 
-        var edcpMsg = (EdcpInboundDataMessage)result.DataMessage;
+            Assert.That(result.DataMessage, Is.Not.Null);
+            var edcpMsg = (EdcpInboundDataMessage?)result.DataMessage;
 
-        Assert.That(edcpMsg, Is.Not.Null);
-        Assert.That(edcpMsg.BlockCode, Is.Not.EqualTo(0));
+            Assert.That(edcpMsg, Is.Not.Null);
+            ArgumentNullException.ThrowIfNull(edcpMsg);
+            Assert.That(edcpMsg.BlockCode, Is.Not.Zero);
+        }
     }
 
     [Test]
@@ -63,9 +68,12 @@ internal class EdcpDataMessageCodecTests
         var result = codec.DecodeDataMessage(msg);
 
         // Assert
-        Assert.That(result, Is.Not.Null);
-        Assert.That(result.ErrorCode, Is.Not.EqualTo(0));
-        Assert.That(result.DataMessage, Is.Null);
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(result, Is.Not.Null);
+            Assert.That(result.ErrorCode, Is.Not.Zero);
+            Assert.That(result.DataMessage, Is.Null);
+        }
     }
 
     [Test]
@@ -98,13 +106,17 @@ internal class EdcpDataMessageCodecTests
         var result = codec.EncodeDataMessage(msg);
 
         // Assert
-        Assert.That(result, Is.Not.Null);
-        Assert.That(result.ErrorCode, Is.Zero);
-        Assert.That(msg.RawMessageData.Length, Is.Not.EqualTo(0));
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(result, Is.Not.Null);
+            Assert.That(result.ErrorCode, Is.Zero);
+            Assert.That(msg.RawMessageData.Length, Is.Not.Zero);
 
-        Assert.That(msg.RawMessageData.Span[0], Is.EqualTo(DeviceCommunicationBasics.Stx));
-        Assert.That(msg.RawMessageData.Span[1], Is.EqualTo(0x31));
-        Assert.That(msg.RawMessageData.Span[msg.RawMessageData.Length - 1], Is.EqualTo(DeviceCommunicationBasics.Etx));
+            Assert.That(msg.RawMessageData.Span[0], Is.EqualTo(DeviceCommunicationBasics.Stx));
+            Assert.That(msg.RawMessageData.Span[1], Is.EqualTo(0x31));
+            Assert.That(msg.RawMessageData.Span[msg.RawMessageData.Length - 1],
+                Is.EqualTo(DeviceCommunicationBasics.Etx));
+        }
     }
 
     [Test]
@@ -128,8 +140,11 @@ internal class EdcpDataMessageCodecTests
         var result = codec.EncodeDataMessage(msg);
 
         // Assert
-        Assert.That(result, Is.Not.Null);
-        Assert.That(result.ErrorCode, Is.Not.EqualTo(0));
-        Assert.That(msg.RawMessageData.Length, Is.Zero);
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(result, Is.Not.Null);
+            Assert.That(result.ErrorCode, Is.Not.Zero);
+            Assert.That(msg.RawMessageData.Length, Is.Zero);
+        }
     }
 }

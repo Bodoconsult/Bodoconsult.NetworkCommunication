@@ -35,4 +35,9 @@ public interface IIpDeviceManager
     /// Load the comm via UDP to the dbackend
     /// </summary>
     void LoadBackendUdp();
+
+    /// <summary>
+    /// Load the business transactions required for the app
+    /// </summary>
+    void LoadBusinessTransactions();
 }

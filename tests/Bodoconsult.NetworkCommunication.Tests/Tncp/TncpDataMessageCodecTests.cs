@@ -72,7 +72,7 @@ internal class TncpDataMessageCodecTests
 
         // Assert
         Assert.That(result, Is.Not.Null);
-        Assert.That(result.ErrorCode, Is.Not.EqualTo(0));
+        Assert.That(result.ErrorCode, Is.Not.Zero);
         Assert.That(result.DataMessage, Is.Null);
     }
 
@@ -106,7 +106,7 @@ internal class TncpDataMessageCodecTests
         // Assert
         Assert.That(result, Is.Not.Null);
         Assert.That(result.ErrorCode, Is.Zero);
-        Assert.That(msg.RawMessageData.Length, Is.Not.EqualTo(0));
+        Assert.That(msg.RawMessageData.Length, Is.Not.Zero);
         Assert.That(msg.RawMessageData.Length, Is.EqualTo(cmd.Length + 1));
 
         Assert.That(msg.RawMessageData.Span[0], Is.EqualTo(cmd[0]));
@@ -131,7 +131,7 @@ internal class TncpDataMessageCodecTests
 
         // Assert
         Assert.That(result, Is.Not.Null);
-        Assert.That(result.ErrorCode, Is.Not.EqualTo(0));
+        Assert.That(result.ErrorCode, Is.Not.Zero);
         Assert.That(msg.RawMessageData.Length, Is.Zero);
     }
 

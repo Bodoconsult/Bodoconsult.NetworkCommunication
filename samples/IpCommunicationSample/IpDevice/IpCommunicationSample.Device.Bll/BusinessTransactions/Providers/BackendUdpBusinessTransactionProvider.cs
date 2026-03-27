@@ -5,11 +5,6 @@ using Bodoconsult.App.BusinessTransactions.RequestData;
 using Bodoconsult.App.Delegates;
 using Bodoconsult.App.Interfaces;
 using IpCommunicationSample.Device.Bll.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace IpCommunicationSample.Device.Bll.BusinessTransactions.Providers
 {
@@ -28,9 +23,14 @@ namespace IpCommunicationSample.Device.Bll.BusinessTransactions.Providers
             BusinessLogicAdapter = businessLogicAdapter;
 
             // Load transaction delegates now
-            CreateBusinessTransactionDelegates.Add(BusinessTransactionCodes.StartCommunication, Transaction1_StartCommunication);
-            CreateBusinessTransactionDelegates.Add(BusinessTransactionCodes.StopCommunication, Transaction2_StopCommunication);
+            CreateBusinessTransactionDelegates.Add(IpDeviceBusinessTransactionCodes.StartCommunication, Transaction1_StartCommunication);
+            CreateBusinessTransactionDelegates.Add(IpDeviceBusinessTransactionCodes.StopCommunication, Transaction2_StopCommunication);
+            CreateBusinessTransactionDelegates.Add(IpDeviceBusinessTransactionCodes.StartStreaming, Transaction3_StartStreaming);
+            CreateBusinessTransactionDelegates.Add(IpDeviceBusinessTransactionCodes.StopStreaming, Transaction4_StopStreaming);
+            CreateBusinessTransactionDelegates.Add(IpDeviceBusinessTransactionCodes.StartSnapshot, Transaction5_StartSnapshot);
+            CreateBusinessTransactionDelegates.Add(IpDeviceBusinessTransactionCodes.StopSnapshot, Transaction6_StopSnapshot);
         }
+
 
         /// <summary>
         /// A dictionary containing delegates for creating business transactions.
@@ -46,7 +46,7 @@ namespace IpCommunicationSample.Device.Bll.BusinessTransactions.Providers
         {
             var transaction = new BusinessTransaction
             {
-                Id = BusinessTransactionCodes.StartCommunication,
+                Id = IpDeviceBusinessTransactionCodes.StartCommunication,
                 Name = "Start the UDP communication",
                 RunBusinessTransactionDelegate = BusinessLogicAdapter.StartCommunication
             };
@@ -64,7 +64,7 @@ namespace IpCommunicationSample.Device.Bll.BusinessTransactions.Providers
         {
             var transaction = new BusinessTransaction
             {
-                Id = BusinessTransactionCodes.StopCommunication,
+                Id = IpDeviceBusinessTransactionCodes.StopCommunication,
                 Name = "Stop the UDP communication",
                 RunBusinessTransactionDelegate = BusinessLogicAdapter.StopCommunication
             };
@@ -82,7 +82,7 @@ namespace IpCommunicationSample.Device.Bll.BusinessTransactions.Providers
         {
             var transaction = new BusinessTransaction
             {
-                Id = BusinessTransactionCodes.StartStreaming,
+                Id = IpDeviceBusinessTransactionCodes.StartStreaming,
                 Name = "Start streaming",
                 RunBusinessTransactionDelegate = BusinessLogicAdapter.StartStreaming
             };
@@ -99,7 +99,7 @@ namespace IpCommunicationSample.Device.Bll.BusinessTransactions.Providers
         {
             var transaction = new BusinessTransaction
             {
-                Id = BusinessTransactionCodes.StopStreaming,
+                Id = IpDeviceBusinessTransactionCodes.StopStreaming,
                 Name = "Stop streaming",
                 RunBusinessTransactionDelegate = BusinessLogicAdapter.StopStreaming
             };
@@ -117,7 +117,7 @@ namespace IpCommunicationSample.Device.Bll.BusinessTransactions.Providers
         {
             var transaction = new BusinessTransaction
             {
-                Id = BusinessTransactionCodes.StartSnapshot,
+                Id = IpDeviceBusinessTransactionCodes.StartSnapshot,
                 Name = "Start snapshot",
                 RunBusinessTransactionDelegate = BusinessLogicAdapter.StartSnapshot
             };
@@ -135,7 +135,7 @@ namespace IpCommunicationSample.Device.Bll.BusinessTransactions.Providers
         {
             var transaction = new BusinessTransaction
             {
-                Id = BusinessTransactionCodes.StopSnapshot,
+                Id = IpDeviceBusinessTransactionCodes.StopSnapshot,
                 Name = "Stop snapshot",
                 RunBusinessTransactionDelegate = BusinessLogicAdapter.StopSnapshot
             };

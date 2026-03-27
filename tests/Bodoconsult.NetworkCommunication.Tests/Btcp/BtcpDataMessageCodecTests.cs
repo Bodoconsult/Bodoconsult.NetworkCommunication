@@ -40,16 +40,23 @@ internal class BtcpDataMessageCodecTests
         var result = codec.DecodeDataMessage(msg);
 
         // Assert
-        Assert.That(result, Is.Not.Null);
-        Assert.That(result.ErrorCode, Is.Zero);
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(result, Is.Not.Null);
+            Assert.That(result.ErrorCode, Is.Zero);
+            Assert.That(result.DataMessage, Is.Not.Null);
 
-        var btcpMsg = (BtcpInboundDataMessage)result.DataMessage;
+            Assert.That(result.DataMessage, Is.Not.Null);
+            var btcpMsg = (BtcpInboundDataMessage?)result.DataMessage;
 
-        Assert.That(btcpMsg, Is.Not.Null);
-        Assert.That(btcpMsg.BusinessTransactionId, Is.EqualTo(1));
-        Assert.That(btcpMsg.DataBlock, Is.Not.Null);
-        Assert.That(btcpMsg.DataBlock.Data.Length, Is.EqualTo(11));
-        Assert.That(btcpMsg.IsRequest, Is.False);
+            Assert.That(btcpMsg, Is.Not.Null);
+            ArgumentNullException.ThrowIfNull(btcpMsg);
+            Assert.That(btcpMsg.BusinessTransactionId, Is.EqualTo(1));
+            Assert.That(btcpMsg.DataBlock, Is.Not.Null);
+            ArgumentNullException.ThrowIfNull(btcpMsg.DataBlock);
+            Assert.That(btcpMsg.DataBlock.Data.Length, Is.EqualTo(11));
+            Assert.That(btcpMsg.IsRequest, Is.False);
+        }
     }
 
     [Test]
@@ -66,16 +73,22 @@ internal class BtcpDataMessageCodecTests
         var result = codec.DecodeDataMessage(msg);
 
         // Assert
-        Assert.That(result, Is.Not.Null);
-        Assert.That(result.ErrorCode, Is.Zero);
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(result, Is.Not.Null);
+            Assert.That(result.ErrorCode, Is.Zero);
+            Assert.That(result.DataMessage, Is.Not.Null);
 
-        var btcpMsg = (BtcpInboundDataMessage)result.DataMessage;
+            var btcpMsg = (BtcpInboundDataMessage?)result.DataMessage;
 
-        Assert.That(btcpMsg, Is.Not.Null);
-        Assert.That(btcpMsg.BusinessTransactionId, Is.EqualTo(1));
-        Assert.That(btcpMsg.DataBlock, Is.Not.Null);
-        Assert.That(btcpMsg.DataBlock.Data.Length, Is.EqualTo(11));
-        Assert.That(btcpMsg.IsRequest, Is.True);
+            Assert.That(btcpMsg, Is.Not.Null);
+            ArgumentNullException.ThrowIfNull(btcpMsg);
+            Assert.That(btcpMsg.BusinessTransactionId, Is.EqualTo(1));
+            Assert.That(btcpMsg.DataBlock, Is.Not.Null);
+            ArgumentNullException.ThrowIfNull(btcpMsg.DataBlock);
+            Assert.That(btcpMsg.DataBlock.Data.Length, Is.EqualTo(11));
+            Assert.That(btcpMsg.IsRequest, Is.True);
+        }
     }
 
     [Test]
@@ -92,15 +105,20 @@ internal class BtcpDataMessageCodecTests
         var result = codec.DecodeDataMessage(msg);
 
         // Assert
-        Assert.That(result, Is.Not.Null);
-        Assert.That(result.ErrorCode, Is.Zero);
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(result, Is.Not.Null);
+            Assert.That(result.ErrorCode, Is.Zero);
+            Assert.That(result.DataMessage, Is.Not.Null);
 
-        var btcpMsg = (BtcpInboundDataMessage)result.DataMessage;
+            var btcpMsg = (BtcpInboundDataMessage?)result.DataMessage;
 
-        Assert.That(btcpMsg, Is.Not.Null);
-        Assert.That(btcpMsg.BusinessTransactionId, Is.EqualTo(1));
-        Assert.That(btcpMsg.DataBlock, Is.Null);
-        Assert.That(btcpMsg.IsRequest, Is.False);
+            Assert.That(btcpMsg, Is.Not.Null);
+            ArgumentNullException.ThrowIfNull(btcpMsg);
+            Assert.That(btcpMsg.BusinessTransactionId, Is.EqualTo(1));
+            Assert.That(btcpMsg.DataBlock, Is.Null);
+            Assert.That(btcpMsg.IsRequest, Is.False);
+        }
     }
 
     [Test]
@@ -117,15 +135,20 @@ internal class BtcpDataMessageCodecTests
         var result = codec.DecodeDataMessage(msg);
 
         // Assert
-        Assert.That(result, Is.Not.Null);
-        Assert.That(result.ErrorCode, Is.Zero);
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(result, Is.Not.Null);
+            Assert.That(result.ErrorCode, Is.Zero);
+            Assert.That(result.DataMessage, Is.Not.Null);
 
-        var btcpMsg = (BtcpInboundDataMessage)result.DataMessage;
+            var btcpMsg = (BtcpInboundDataMessage?)result.DataMessage;
 
-        Assert.That(btcpMsg, Is.Not.Null);
-        Assert.That(btcpMsg.BusinessTransactionId, Is.EqualTo(1));
-        Assert.That(btcpMsg.DataBlock, Is.Null);
-        Assert.That(btcpMsg.IsRequest, Is.True);
+            Assert.That(btcpMsg, Is.Not.Null);
+            ArgumentNullException.ThrowIfNull(btcpMsg);
+            Assert.That(btcpMsg.BusinessTransactionId, Is.EqualTo(1));
+            Assert.That(btcpMsg.DataBlock, Is.Null);
+            Assert.That(btcpMsg.IsRequest, Is.True);
+        }
     }
 
     [Test]
@@ -142,15 +165,20 @@ internal class BtcpDataMessageCodecTests
         var result = codec.DecodeDataMessage(msg);
 
         // Assert
-        Assert.That(result, Is.Not.Null);
-        Assert.That(result.ErrorCode, Is.Zero);
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(result, Is.Not.Null);
+            Assert.That(result.ErrorCode, Is.Zero);
+            Assert.That(result.DataMessage, Is.Not.Null);
 
-        var btcpMsg = (BtcpInboundDataMessage)result.DataMessage;
+            var btcpMsg = (BtcpInboundDataMessage?)result.DataMessage;
 
-        Assert.That(btcpMsg, Is.Not.Null);
-        Assert.That(btcpMsg.BusinessTransactionId, Is.EqualTo(1));
-        Assert.That(btcpMsg.DataBlock, Is.Null);
-        Assert.That(btcpMsg.IsRequest, Is.False);
+            Assert.That(btcpMsg, Is.Not.Null);
+            ArgumentNullException.ThrowIfNull(btcpMsg);
+            Assert.That(btcpMsg.BusinessTransactionId, Is.EqualTo(1));
+            Assert.That(btcpMsg.DataBlock, Is.Null);
+            Assert.That(btcpMsg.IsRequest, Is.False);
+        }
     }
 
     [Test]
@@ -167,15 +195,20 @@ internal class BtcpDataMessageCodecTests
         var result = codec.DecodeDataMessage(msg);
 
         // Assert
-        Assert.That(result, Is.Not.Null);
-        Assert.That(result.ErrorCode, Is.Zero);
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(result, Is.Not.Null);
+            Assert.That(result.ErrorCode, Is.Zero);
+            Assert.That(result.DataMessage, Is.Not.Null);
 
-        var btcpMsg = (BtcpInboundDataMessage)result.DataMessage;
+            var btcpMsg = (BtcpInboundDataMessage?)result.DataMessage;
 
-        Assert.That(btcpMsg, Is.Not.Null);
-        Assert.That(btcpMsg.BusinessTransactionId, Is.EqualTo(1));
-        Assert.That(btcpMsg.DataBlock, Is.Null);
-        Assert.That(btcpMsg.IsRequest, Is.True);
+            Assert.That(btcpMsg, Is.Not.Null);
+            ArgumentNullException.ThrowIfNull(btcpMsg);
+            Assert.That(btcpMsg.BusinessTransactionId, Is.EqualTo(1));
+            Assert.That(btcpMsg.DataBlock, Is.Null);
+            Assert.That(btcpMsg.IsRequest, Is.True);
+        }
     }
 
     [Test]
@@ -192,9 +225,13 @@ internal class BtcpDataMessageCodecTests
         var result = codec.DecodeDataMessage(msg);
 
         // Assert
-        Assert.That(result, Is.Not.Null);
-        Assert.That(result.ErrorCode, Is.Not.EqualTo(0));
-        Assert.That(result.DataMessage, Is.Null);
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(result, Is.Not.Null);
+            ArgumentNullException.ThrowIfNull(result);
+            Assert.That(result.ErrorCode, Is.Not.Zero);
+            Assert.That(result.DataMessage, Is.Null);
+        }
     }
 
     //[Test]
@@ -228,7 +265,7 @@ internal class BtcpDataMessageCodecTests
     //    // Assert
     //    Assert.That(result, Is.Not.Null);
     //    Assert.That(result.ErrorCode, Is.Zero);
-    //    Assert.That(msg.RawMessageData.Length, Is.Not.EqualTo(0));
+    //    Assert.That(msg.RawMessageData.Length, Is.Not.Zero);
 
     //    Assert.That(msg.RawMessageData.Span[0], Is.EqualTo(DeviceCommunicationBasics.Stx));
     //    Assert.That(msg.RawMessageData.Span[1], Is.EqualTo(0x31));
@@ -266,16 +303,20 @@ internal class BtcpDataMessageCodecTests
         var result = codec.EncodeDataMessage(msg);
 
         // Assert
-        Assert.That(result, Is.Not.Null);
-        Assert.That(result.ErrorCode, Is.Zero);
-        Assert.That(msg.RawMessageData.Length, Is.Not.EqualTo(0));
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(result, Is.Not.Null);
+            Assert.That(result.ErrorCode, Is.Zero);
+            Assert.That(msg.RawMessageData.Length, Is.Not.Zero);
 
-        Assert.That(msg.RawMessageData.Span[0], Is.EqualTo(DeviceCommunicationBasics.Stx));
-        Assert.That(msg.RawMessageData.Span[1], Is.EqualTo(0x0));
-        Assert.That(msg.RawMessageData.Span[2], Is.EqualTo(0x31));
-        Assert.That(msg.RawMessageData.Span[3], Is.EqualTo(DeviceCommunicationBasics.Eot));
+            Assert.That(msg.RawMessageData.Span[0], Is.EqualTo(DeviceCommunicationBasics.Stx));
+            Assert.That(msg.RawMessageData.Span[1], Is.EqualTo(0x0));
+            Assert.That(msg.RawMessageData.Span[2], Is.EqualTo(0x31));
+            Assert.That(msg.RawMessageData.Span[3], Is.EqualTo(DeviceCommunicationBasics.Eot));
 
-        Assert.That(msg.RawMessageData.Span[msg.RawMessageData.Length - 1], Is.EqualTo(DeviceCommunicationBasics.Etx));
+            Assert.That(msg.RawMessageData.Span[msg.RawMessageData.Length - 1],
+                Is.EqualTo(DeviceCommunicationBasics.Etx));
+        }
     }
 
     [Test]
@@ -308,17 +349,21 @@ internal class BtcpDataMessageCodecTests
         var result = codec.EncodeDataMessage(msg);
 
         // Assert
-        Assert.That(result, Is.Not.Null);
-        Assert.That(result.ErrorCode, Is.Zero);
-        Assert.That(msg.RawMessageData.Length, Is.Not.EqualTo(0));
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(result, Is.Not.Null);
+            Assert.That(result.ErrorCode, Is.Zero);
+            Assert.That(msg.RawMessageData.Length, Is.Not.Zero);
 
-        Assert.That(msg.RawMessageData.Span[0], Is.EqualTo(DeviceCommunicationBasics.Stx));
-        Assert.That(msg.RawMessageData.Span[1], Is.EqualTo(0x1));
-        Assert.That(msg.RawMessageData.Span[2], Is.EqualTo(0x31));
-        Assert.That(msg.RawMessageData.Span[3], Is.EqualTo(DeviceCommunicationBasics.Eot));
+            Assert.That(msg.RawMessageData.Span[0], Is.EqualTo(DeviceCommunicationBasics.Stx));
+            Assert.That(msg.RawMessageData.Span[1], Is.EqualTo(0x1));
+            Assert.That(msg.RawMessageData.Span[2], Is.EqualTo(0x31));
+            Assert.That(msg.RawMessageData.Span[3], Is.EqualTo(DeviceCommunicationBasics.Eot));
 
 
-        Assert.That(msg.RawMessageData.Span[msg.RawMessageData.Length - 1], Is.EqualTo(DeviceCommunicationBasics.Etx));
+            Assert.That(msg.RawMessageData.Span[msg.RawMessageData.Length - 1],
+                Is.EqualTo(DeviceCommunicationBasics.Etx));
+        }
     }
 
     [Test]
@@ -339,14 +384,17 @@ internal class BtcpDataMessageCodecTests
         var result = codec.EncodeDataMessage(msg);
 
         // Assert
-        Assert.That(result, Is.Not.Null);
-        Assert.That(result.ErrorCode, Is.Zero);
-        Assert.That(msg.RawMessageData.Length, Is.Not.EqualTo(0));
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(result, Is.Not.Null);
+            Assert.That(result.ErrorCode, Is.Zero);
+            Assert.That(msg.RawMessageData.Length, Is.Not.Zero);
 
-        Assert.That(msg.RawMessageData.Span[0], Is.EqualTo(DeviceCommunicationBasics.Stx));
-        Assert.That(msg.RawMessageData.Span[1], Is.EqualTo(0x0));
-        Assert.That(msg.RawMessageData.Span[2], Is.EqualTo(0x31));
-        Assert.That(msg.RawMessageData.Span[3], Is.EqualTo(DeviceCommunicationBasics.Etx));
+            Assert.That(msg.RawMessageData.Span[0], Is.EqualTo(DeviceCommunicationBasics.Stx));
+            Assert.That(msg.RawMessageData.Span[1], Is.EqualTo(0x0));
+            Assert.That(msg.RawMessageData.Span[2], Is.EqualTo(0x31));
+            Assert.That(msg.RawMessageData.Span[3], Is.EqualTo(DeviceCommunicationBasics.Etx));
+        }
     }
 
     [Test]
@@ -370,13 +418,16 @@ internal class BtcpDataMessageCodecTests
         var result = codec.EncodeDataMessage(msg);
 
         // Assert
-        Assert.That(result, Is.Not.Null);
-        Assert.That(result.ErrorCode, Is.Zero);
-        Assert.That(msg.RawMessageData.Length, Is.Not.EqualTo(0));
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(result, Is.Not.Null);
+            Assert.That(result.ErrorCode, Is.Zero);
+            Assert.That(msg.RawMessageData.Length, Is.Not.Zero);
 
-        Assert.That(msg.RawMessageData.Span[0], Is.EqualTo(DeviceCommunicationBasics.Stx));
-        Assert.That(msg.RawMessageData.Span[1], Is.EqualTo(0x1));
-        Assert.That(msg.RawMessageData.Span[2], Is.EqualTo(0x31));
-        Assert.That(msg.RawMessageData.Span[3], Is.EqualTo(DeviceCommunicationBasics.Etx));
+            Assert.That(msg.RawMessageData.Span[0], Is.EqualTo(DeviceCommunicationBasics.Stx));
+            Assert.That(msg.RawMessageData.Span[1], Is.EqualTo(0x1));
+            Assert.That(msg.RawMessageData.Span[2], Is.EqualTo(0x31));
+            Assert.That(msg.RawMessageData.Span[3], Is.EqualTo(DeviceCommunicationBasics.Etx));
+        }
     }
 }

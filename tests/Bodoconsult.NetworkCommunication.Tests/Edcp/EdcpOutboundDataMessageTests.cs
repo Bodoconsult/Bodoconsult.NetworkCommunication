@@ -16,7 +16,7 @@ internal class EdcpOutboundDataMessageTests
         var msg = new EdcpOutboundDataMessage();
 
         // Assert
-        Assert.That(msg.MessageId, Is.Not.EqualTo(0));
+        Assert.That(msg.MessageId, Is.Not.Zero);
         Assert.That(string.IsNullOrEmpty(msg.ToInfoString()), Is.False);
         Assert.That(string.IsNullOrEmpty(msg.ToShortInfoString()), Is.False);
     }

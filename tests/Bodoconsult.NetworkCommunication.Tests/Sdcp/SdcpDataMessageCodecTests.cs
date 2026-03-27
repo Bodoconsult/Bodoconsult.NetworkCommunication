@@ -56,7 +56,7 @@ internal class SdcpDataMessageCodecTests
 
         // Assert
         Assert.That(result, Is.Not.Null);
-        Assert.That(result.ErrorCode, Is.Not.EqualTo(0));
+        Assert.That(result.ErrorCode, Is.Not.Zero);
         Assert.That(result.DataMessage, Is.Null);
     }
 
@@ -89,7 +89,7 @@ internal class SdcpDataMessageCodecTests
         // Assert
         Assert.That(result, Is.Not.Null);
         Assert.That(result.ErrorCode, Is.Zero);
-        Assert.That(msg.RawMessageData.Length, Is.Not.EqualTo(0));
+        Assert.That(msg.RawMessageData.Length, Is.Not.Zero);
         Assert.That(msg.RawMessageData.Length, Is.EqualTo(data.Length + 3));
 
         Assert.That(msg.RawMessageData.Span[0], Is.EqualTo(DeviceCommunicationBasics.Stx));
@@ -113,7 +113,7 @@ internal class SdcpDataMessageCodecTests
 
         // Assert
         Assert.That(result, Is.Not.Null);
-        Assert.That(result.ErrorCode, Is.Not.EqualTo(0));
+        Assert.That(result.ErrorCode, Is.Not.Zero);
         Assert.That(msg.RawMessageData.Length, Is.Zero);
     }
 

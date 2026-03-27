@@ -1,8 +1,12 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
-using Bodoconsult.NetworkCommunication.Interfaces;
 
-namespace Bodoconsult.NetworkCommunication.StateManagement;
+// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
+
+using Bodoconsult.NetworkCommunication.Interfaces;
+using Bodoconsult.NetworkCommunication.StateManagement;
+
+namespace Bodoconsult.NetworkCommunication.BusinessLogicAdapters;
 
 /// <summary>
 /// Base class for <see cref="IOrderManagementDeviceBusinessLogicAdapter"/> implementations

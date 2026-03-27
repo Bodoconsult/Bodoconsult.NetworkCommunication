@@ -52,7 +52,7 @@ public abstract class BaseBtRequestDataToOutboundBtcpMessageConverter : IBtReque
         {
             foreach (var kvp in AllBusinessTransactionRequestDataDelegates)
             {
-                if (request.TransactionId == kvp.Key)
+                if (request.TransactionId != kvp.Key)
                 {
                     continue;
                 }

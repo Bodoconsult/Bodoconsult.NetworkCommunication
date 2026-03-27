@@ -1,7 +1,7 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
+using Bodoconsult.NetworkCommunication.BusinessLogicAdapters;
 using Bodoconsult.NetworkCommunication.Interfaces;
-using Bodoconsult.NetworkCommunication.StateManagement;
 using IpCommunicationSample.Backend.Bll.Interfaces;
 
 namespace IpCommunicationSample.Backend.Bll.BusinessLogic.Adapters;

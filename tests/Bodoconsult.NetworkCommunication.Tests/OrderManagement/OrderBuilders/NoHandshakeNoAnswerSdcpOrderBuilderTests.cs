@@ -53,9 +53,10 @@ internal class NoHandshakeNoAnswerSdcpOrderBuilderTests : OrderBuilderTestsBase
 
 			Assert.That(order.RequestSpecs.Count, Is.EqualTo(1));
 
-			var rs = (INoHandshakeNoAnswerDeviceRequestSpec)order.RequestSpecs.FirstOrDefault();
+			var rs = (INoHandshakeNoAnswerDeviceRequestSpec?)order.RequestSpecs.FirstOrDefault();
 			Assert.That(rs, Is.Not.Null);
-			Assert.That(rs.HandleRequestAnswerOnSuccessDelegate, Is.Not.Null);
+            ArgumentNullException.ThrowIfNull(rs);
+            Assert.That(rs.HandleRequestAnswerOnSuccessDelegate, Is.Not.Null);
 		}
 	}
 
@@ -78,7 +79,8 @@ internal class NoHandshakeNoAnswerSdcpOrderBuilderTests : OrderBuilderTestsBase
 
 			// Assert
 			Assert.That(requestSpec, Is.Not.Null);
-			Assert.That(requestSpec.ParameterSet, Is.EqualTo(ps));
+            ArgumentNullException.ThrowIfNull(requestSpec);
+            Assert.That(requestSpec.ParameterSet, Is.EqualTo(ps));
 			Assert.That(order.RequestSpecs.Count, Is.EqualTo(1));
 		}
 	}
@@ -102,7 +104,8 @@ internal class NoHandshakeNoAnswerSdcpOrderBuilderTests : OrderBuilderTestsBase
 
 			// Assert
 			Assert.That(requestSpec, Is.Not.Null);
-			Assert.That(requestSpec.ParameterSet, Is.EqualTo(ps));
+            ArgumentNullException.ThrowIfNull(requestSpec);
+            Assert.That(requestSpec.ParameterSet, Is.EqualTo(ps));
 			Assert.That(order.RequestSpecs.Count, Is.EqualTo(1));
 		}
 	}
@@ -126,7 +129,8 @@ internal class NoHandshakeNoAnswerSdcpOrderBuilderTests : OrderBuilderTestsBase
 
 			// Assert
 			Assert.That(requestSpec, Is.Not.Null);
-			Assert.That(requestSpec.ParameterSet, Is.EqualTo(ps));
+            ArgumentNullException.ThrowIfNull(requestSpec);
+            Assert.That(requestSpec.ParameterSet, Is.EqualTo(ps));
 			Assert.That(order.RequestSpecs.Count, Is.EqualTo(1));
 		}
 	}
@@ -153,7 +157,8 @@ internal class NoHandshakeNoAnswerSdcpOrderBuilderTests : OrderBuilderTestsBase
 		using (Assert.EnterMultipleScope())
 		{
 			Assert.That(ras, Is.Not.Null);
-			Assert.That(ras.DeviceRequestSpec, Is.EqualTo(requestSpec));
+            ArgumentNullException.ThrowIfNull(ras);
+            Assert.That(ras.DeviceRequestSpec, Is.EqualTo(requestSpec));
 			Assert.That(requestSpec.RequestAnswerSteps.Count, Is.EqualTo(1));
 		}
 	}
