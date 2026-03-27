@@ -11,17 +11,17 @@ public interface IUdpTests
     /// <summary>
     /// Current UDP remote device to send data to the socket
     /// </summary>
-    IUdpDevice RemoteUdpDevice { get; set; }
+    IUdpDevice? RemoteUdpDevice { get; set; }
 
     /// <summary>
     /// Current IP address to use
     /// </summary>
-    IPAddress IpAddress { get; set; }
+    IPAddress? IpAddress { get; set; }
 
     /// <summary>
     /// Device communication data
     /// </summary>
-    IIpDataMessagingConfig DataMessagingConfig { get; set; }
+    IIpDataMessagingConfig? DataMessagingConfig { get; set; }
 
     /// <summary>
     /// General log file
@@ -31,6 +31,6 @@ public interface IUdpTests
     /// <summary>
     /// Current <see cref="ISocketProxy"/> implementation to use
     /// </summary>
-    ISocketProxy Socket { get; set; }
+    ISocketProxy? Socket { get; set; }
 
 }

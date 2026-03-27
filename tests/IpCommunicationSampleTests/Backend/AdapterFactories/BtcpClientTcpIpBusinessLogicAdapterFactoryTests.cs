@@ -27,6 +27,8 @@ internal class BtcpClientTcpIpBusinessLogicAdapterFactoryTests
     {
         // Arrange 
         var device = TestDataHelper.CreateSimpleDevice();
+        device.LoadCommAdapter(TestDataHelper.FakeIpCommunicationAdapter);
+
         IBusinessTransactionManager businessTransactionManager = new BusinessTransactionManager(_appLogger, _appEventSourceFactory);
         var dsm = new BtcpClientTcpIpBusinessLogicAdapterFactory(businessTransactionManager);
 

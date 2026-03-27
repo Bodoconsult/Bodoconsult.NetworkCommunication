@@ -4,10 +4,11 @@ using Bodoconsult.App.Abstractions.Interfaces;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataBlocks;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
 using Bodoconsult.NetworkCommunication.Tests.Helpers;
+using IpCommunicationSample.Client.Bll.BusinessTransactions.Converters;
 using IpCommunicationSample.Common;
+using IpCommunicationSample.Common.BusinessTransactions;
 using IpCommunicationSample.Common.BusinessTransactions.Requests;
 using System.Text;
-using IpCommunicationSample.Client.Bll.BusinessTransactions.Converters;
 
 namespace IpCommunicationSampleTests.Client.Converters;
 
@@ -45,7 +46,9 @@ internal class ClientInboundBtcpMessageToBtRequestDataConverterTests
         // Arrange 
         var conv = new ClientInboundBtcpMessageToBtRequestDataConverter(_appLogger);
 
-        const int transactionId = 1;
+        var transactionId = ServerSideBusinessTransactionIds.StateChangedEventFired;
+        var transactionUid = Guid.NewGuid();
+
 
         const int deviceStateId = 2;
         const int businessStateId = 3;
@@ -61,9 +64,8 @@ internal class ClientInboundBtcpMessageToBtRequestDataConverterTests
                 $"{deviceStateId}\u0005{deviceStateName}\u0005{businessStateId}\u0005{businessStateName}\u0005{businessSubstateId}\u0005{businessSubstateName}")
         };
 
-        var message = new BtcpInboundDataMessage(transactionId)
+        var message = new BtcpInboundDataMessage(transactionId, transactionUid)
         {
-            BusinessTransactionId = transactionId,
             DataBlock = datablock,
             IsRequest = true
         };

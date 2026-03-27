@@ -165,7 +165,7 @@ internal class DeviceRequestAnswerStepTests
         // Do nothing
     }
 
-    private bool CheckReceivedMessageDelegate(IRequestAnswer requestAnswer, IOutboundDataMessage sentMessage, IInboundDataMessage receivedMessage, IList<string> errors)
+    private bool CheckReceivedMessageDelegate(IRequestAnswer requestAnswer, IOutboundDataMessage? sentMessage, IInboundDataMessage? receivedMessage, IList<string> errors)
     {
         _isCheckReceivedFired = true;
         if (_checkResult)
@@ -176,7 +176,7 @@ internal class DeviceRequestAnswerStepTests
         return false;
     }
 
-    private MessageHandlingResult HandleRequestAnswerOnSuccessDelegate(IInboundDataMessage message, object transportObject, IParameterSet parameterSet)
+    private MessageHandlingResult HandleRequestAnswerOnSuccessDelegate(IInboundDataMessage? message, object? transportObject, IParameterSet? parameterSet)
     {
         _isHandleResultFired = true;
         return new MessageHandlingResult

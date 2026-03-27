@@ -4,6 +4,7 @@ using Bodoconsult.App.Abstractions.Interfaces;
 using Bodoconsult.App.Logging;
 using Bodoconsult.NetworkCommunication.Communication;
 using Bodoconsult.NetworkCommunication.Communication.Sending;
+using Bodoconsult.NetworkCommunication.DataMessaging.DataMessageProcessingPackages;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig;
 using Bodoconsult.NetworkCommunication.EnumAndStates;
@@ -32,11 +33,14 @@ public class SendPackageProcessDuplexIoTests
         var p = new SendPacketProcess();
 
         // Assert
-        Assert.That(p.DataMessagingConfig, Is.Null);
-        Assert.That(p.Message ,Is.Null);
-        Assert.That(p.DuplexIo, Is.Null);
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(p.DataMessagingConfig, Is.Null);
+            Assert.That(p.Message, Is.Null);
+            Assert.That(p.DuplexIo, Is.Null);
 
-        Assert.That(p.TotalTimeout, Is.GreaterThan(p.Timeout));
+            Assert.That(p.TotalTimeout, Is.GreaterThan(p.Timeout));
+        }
     }
 
     [Test]
@@ -53,9 +57,12 @@ public class SendPackageProcessDuplexIoTests
         p.LoadDependencies(duplexIo, message, dataMessagingConfig);
 
         // Assert
-        Assert.That(p.DataMessagingConfig, Is.Not.Null);
-        Assert.That(p.Message, Is.Not.Null);
-        Assert.That(p.DuplexIo, Is.Not.Null);
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(p.DataMessagingConfig, Is.Not.Null);
+            Assert.That(p.Message, Is.Not.Null);
+            Assert.That(p.DuplexIo, Is.Not.Null);
+        }
     }
 
 
@@ -78,10 +85,13 @@ public class SendPackageProcessDuplexIoTests
         p.RegisterWaitState();
 
         // Assert
-        Assert.That(p.DataMessagingConfig, Is.Not.Null);
-        Assert.That(p.Message, Is.Not.Null);
-        Assert.That(p.DuplexIo, Is.Not.Null);
-        Assert.That(dataMessagingConfig.DataMessageProcessingPackage.WaitStateManager.Count, Is.Not.Zero);
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(p.DataMessagingConfig, Is.Not.Null);
+            Assert.That(p.Message, Is.Not.Null);
+            Assert.That(p.DuplexIo, Is.Not.Null);
+            Assert.That(dataMessagingConfig.DataMessageProcessingPackage.WaitStateManager.Count, Is.Not.Zero);
+        }
 
     }
 
@@ -140,8 +150,11 @@ public class SendPackageProcessDuplexIoTests
         p.Execute();
 
         // Assert
-        Assert.That(p.ProcessExecutionResult, Is.SameAs(OrderExecutionResultState.Timeout));
-        Assert.That(dataMessagingConfig.DataMessageProcessingPackage.WaitStateManager.Count, Is.Zero);
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(p.ProcessExecutionResult, Is.SameAs(OrderExecutionResultState.Timeout));
+            Assert.That(dataMessagingConfig.DataMessageProcessingPackage.WaitStateManager.Count, Is.Zero);
+        }
     }
 
 
@@ -173,7 +186,6 @@ public class SendPackageProcessDuplexIoTests
 
         // Assert
         Assert.That(p.ProcessExecutionResult, Is.SameAs(OrderExecutionResultState.Successful));
-
     }
 
     [Test]
@@ -204,5 +216,4 @@ public class SendPackageProcessDuplexIoTests
         Assert.That(p.ProcessExecutionResult, Is.SameAs(OrderExecutionResultState.Successful));
 
     }
-
 }

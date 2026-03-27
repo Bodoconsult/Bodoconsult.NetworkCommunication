@@ -15,10 +15,13 @@ public class BtcpInboundDataMessage : IInboundBusinessTransactionDataMessage
     /// <summary>
     /// Default ctor
     /// </summary>
-    public BtcpInboundDataMessage(int businessTransactionId)
+    /// <param name="businessTransactionId">ID of the business transaction</param>
+    /// <param name="businessTransactionUid">UID of the business transaction instance</param>
+    public BtcpInboundDataMessage(int businessTransactionId, Guid businessTransactionUid)
     {
         MessageId = DateTime.Now.ToFileTimeUtc();
         BusinessTransactionId = businessTransactionId;
+        BusinessTransactionUid = businessTransactionUid;
     }
 
     /// <summary>
@@ -30,6 +33,8 @@ public class BtcpInboundDataMessage : IInboundBusinessTransactionDataMessage
     /// Should an acknowledgement be sent if the message is received
     /// </summary>
     public bool AnswerWithAcknowledgement { get; set; }
+
+    
 
     /// <summary>
     /// Is the message a request for running a business transaction? True = request for running a business transaction, false reply on a request to run a business transaction
@@ -92,5 +97,10 @@ public class BtcpInboundDataMessage : IInboundBusinessTransactionDataMessage
     /// <summary>
     /// ID of the business transaction
     /// </summary>
-    public int BusinessTransactionId { get; set; }
+    public int BusinessTransactionId { get;  }
+
+    /// <summary>
+    /// UID of the business transaction instance
+    /// </summary>
+    public Guid BusinessTransactionUid { get; }
 }

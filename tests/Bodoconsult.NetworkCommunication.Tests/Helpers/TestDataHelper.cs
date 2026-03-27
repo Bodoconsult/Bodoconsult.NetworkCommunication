@@ -55,7 +55,7 @@ public static class TestDataHelper
         return _logger;
     }
 
-    private static AppLoggerProxy _logger;
+    private static AppLoggerProxy? _logger;
 
     /// <summary>
     /// Get a full set up fake bench logger
@@ -71,7 +71,7 @@ public static class TestDataHelper
         return _bench;
     }
 
-    private static AppBenchProxy _bench;
+    private static AppBenchProxy? _bench;
 
     /// <summary>
     ///  Get a random port (range should be configured in Wiondws Firewall for TCP and UDP). Remember: for UDP is a second port number calculated as port number 2 = port number 1 plus 1 required
@@ -215,7 +215,7 @@ public static class TestDataHelper
         return order;
     }
 
-    private static MessageHandlingResult HandleRequestAnswerOnSuccessDelegate(IInboundDataMessage message, object transportObject, IParameterSet parameterSet)
+    private static MessageHandlingResult HandleRequestAnswerOnSuccessDelegate(IInboundDataMessage? message, object? transportObject, IParameterSet? parameterSet)
     {
         return new MessageHandlingResult
         {

@@ -63,7 +63,8 @@ namespace IpCommunicationSampleTests.Backend.Adapter
         public void DefaultReceiveMessage_ValidMessage_CorrectBusinessTransactionCalled()
         {
             // Arrange 
-            const int transactionId = 99;
+            const int transactionId = 202;
+            var transactionUid = Guid.NewGuid();
 
             _businessTransactionManager.RequestedTransactionId = 0;
             Assert.That(_businessTransactionManager.RequestedTransactionId, Is.Zero);
@@ -77,7 +78,7 @@ namespace IpCommunicationSampleTests.Backend.Adapter
                 inboundDataMessageToBtRequestConverter, inboundDataMessageToBtReplyConverter,
                 outboundBtRequestToOutboundDataMessageConverter, outboundBtReplyDataMessageConverter);
 
-            var msg = new BtcpInboundDataMessage(transactionId)
+            var msg = new BtcpInboundDataMessage(transactionId, transactionUid)
             {
                 IsRequest = true
             };

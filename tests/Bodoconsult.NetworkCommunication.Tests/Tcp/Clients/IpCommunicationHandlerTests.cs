@@ -29,6 +29,7 @@ internal class IpCommunicationHandlerTests : TcpIpCommunicationHandlerBaseTests
         BaseReset();
 
         TcpIpClientTestHelper.InitSocket(this);
+        ArgumentNullException.ThrowIfNull(Socket);
 
         DuplexIo = GetDuplexIo(Socket);
 
@@ -44,6 +45,7 @@ internal class IpCommunicationHandlerTests : TcpIpCommunicationHandlerBaseTests
     /// <returns><see cref="IDuplexIo"/> instance to test</returns>
     public override IDuplexIo GetDuplexIo(ISocketProxy socketProxy)
     {
+        ArgumentNullException.ThrowIfNull(DataMessagingConfig);
         Socket = socketProxy;
         BindDelegates();
 
@@ -59,6 +61,7 @@ internal class IpCommunicationHandlerTests : TcpIpCommunicationHandlerBaseTests
     /// <returns></returns>
     public override IDuplexIo GetDuplexIoWithFakeEncodeDecoder(ISocketProxy socketProxy, FakeSendPacketProcessEnum expectedResult)
     {
+        ArgumentNullException.ThrowIfNull(DataMessagingConfig);
         Socket = socketProxy;
         BindDelegates();
 
@@ -75,6 +78,9 @@ internal class IpCommunicationHandlerTests : TcpIpCommunicationHandlerBaseTests
         // Arrange 
         var appEventSourceFactory = TestDataHelper.AppEventSourceFactory;
 
+        ArgumentNullException.ThrowIfNull(DuplexIo);
+        ArgumentNullException.ThrowIfNull(DataMessagingConfig);
+
         // Act  
 
         var ch = new IpCommunicationHandler(DuplexIo, DataMessagingConfig, appEventSourceFactory);
@@ -89,6 +95,9 @@ internal class IpCommunicationHandlerTests : TcpIpCommunicationHandlerBaseTests
     {
         // Arrange 
         var appEventSourceFactory = TestDataHelper.AppEventSourceFactory;
+
+        ArgumentNullException.ThrowIfNull(DuplexIo);
+        ArgumentNullException.ThrowIfNull(DataMessagingConfig);
 
         var ch = new IpCommunicationHandler(DuplexIo, DataMessagingConfig, appEventSourceFactory);
 
@@ -113,6 +122,9 @@ internal class IpCommunicationHandlerTests : TcpIpCommunicationHandlerBaseTests
         // Arrange 
         var appEventSourceFactory = TestDataHelper.AppEventSourceFactory;
 
+        ArgumentNullException.ThrowIfNull(DuplexIo);
+        ArgumentNullException.ThrowIfNull(DataMessagingConfig);
+
         var ch = new IpCommunicationHandler(DuplexIo, DataMessagingConfig, appEventSourceFactory);
 
         Assert.That(ch.IsConnected, Is.True);
@@ -133,6 +145,9 @@ internal class IpCommunicationHandlerTests : TcpIpCommunicationHandlerBaseTests
         // Arrange 
         var appEventSourceFactory = TestDataHelper.AppEventSourceFactory;
 
+        ArgumentNullException.ThrowIfNull(DuplexIo);
+        ArgumentNullException.ThrowIfNull(DataMessagingConfig);
+
         var ch = new IpCommunicationHandler(DuplexIo, DataMessagingConfig, appEventSourceFactory);
         DataMessagingConfig.RaiseAppLayerDataMessageReceivedDelegate = RaiseAppLayerDataMessageReceivedDelegate;
         DataMessagingConfig.RaiseCommLayerDataMessageReceivedDelegate = ch.OnReceivedMessage;
@@ -152,6 +167,9 @@ internal class IpCommunicationHandlerTests : TcpIpCommunicationHandlerBaseTests
         // Arrange 
         var appEventSourceFactory = TestDataHelper.AppEventSourceFactory;
 
+        ArgumentNullException.ThrowIfNull(DuplexIo);
+        ArgumentNullException.ThrowIfNull(DataMessagingConfig);
+
         var ch = new IpCommunicationHandler(DuplexIo, DataMessagingConfig, appEventSourceFactory);
         DataMessagingConfig.RaiseAppLayerDataMessageReceivedDelegate = RaiseAppLayerDataMessageReceivedDelegate;
         DataMessagingConfig.RaiseCommLayerDataMessageReceivedDelegate = ch.OnReceivedMessage;
@@ -162,7 +180,7 @@ internal class IpCommunicationHandlerTests : TcpIpCommunicationHandlerBaseTests
 
         // Act
         SendDataAndReceive(message, 1);
-        Wait.Until(() => _isReceived, 5000);
+        Wait.Until(() => _isReceived);
 
         // Assert
         Assert.That(_isReceived, Is.True);
@@ -173,6 +191,9 @@ internal class IpCommunicationHandlerTests : TcpIpCommunicationHandlerBaseTests
     {
         // Arrange 
         var appEventSourceFactory = TestDataHelper.AppEventSourceFactory;
+
+        ArgumentNullException.ThrowIfNull(DuplexIo);
+        ArgumentNullException.ThrowIfNull(DataMessagingConfig);
 
         var ch = new IpCommunicationHandler(DuplexIo, DataMessagingConfig, appEventSourceFactory);
         DataMessagingConfig.RaiseAppLayerDataMessageReceivedDelegate = RaiseAppLayerDataMessageReceivedDelegate;

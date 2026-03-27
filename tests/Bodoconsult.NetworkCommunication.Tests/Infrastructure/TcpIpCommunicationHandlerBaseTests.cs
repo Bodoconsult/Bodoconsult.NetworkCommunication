@@ -15,7 +15,7 @@ public abstract class TcpIpCommunicationHandlerBaseTests : BaseTcpTests
     /// <summary>
     /// Holds the duplex IO channel implementation (see <see cref="IDuplexIo"/>) to use
     /// </summary>
-    protected IDuplexIo DuplexIo;
+    protected IDuplexIo? DuplexIo;
 
     [TearDown]
     public void TestCleanUp()
@@ -70,6 +70,7 @@ public abstract class TcpIpCommunicationHandlerBaseTests : BaseTcpTests
     /// <param name="message">Current message to send</param>
     public virtual void Send(IOutboundDataMessage message)
     {
+        ArgumentNullException.ThrowIfNull(DuplexIo);
         DuplexIo.StartCommunication().Wait();
 
         DuplexIo.SendMessage(message).Wait();
@@ -89,9 +90,12 @@ public abstract class TcpIpCommunicationHandlerBaseTests : BaseTcpTests
         DuplexIo.StopCommunication().Wait();
     }
 
-    public virtual void SendDataAndReceive(byte[] data, int expectedCount, byte[] data2 = null)
+    public virtual void SendDataAndReceive(byte[] data, int expectedCount, byte[]? data2 = null)
     {
         // Arrange
+        ArgumentNullException.ThrowIfNull(DuplexIo);
+        ArgumentNullException.ThrowIfNull(RemoteTcpIpDevice);
+
         DuplexIo.StartCommunication().Wait();
 
         RemoteTcpIpDevice.Send(data);
@@ -134,7 +138,7 @@ public abstract class TcpIpCommunicationHandlerBaseTests : BaseTcpTests
         Debug.Print("Process done");
     }
 
-    private void RunBasicTests(byte[] data, int expectedCount, byte[] data2 = null)
+    private void RunBasicTests(byte[] data, int expectedCount, byte[]? data2 = null)
     {
         // Arrange and act
         SendDataAndReceive(data, expectedCount, data2);

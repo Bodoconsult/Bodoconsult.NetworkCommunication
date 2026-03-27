@@ -87,6 +87,7 @@ public abstract class BaseBtcpSimpleDeviceBusinessLogicAdapter : BaseSimpleDevic
 
         // ToDo: replace timeout with request.Timeout
         var syncData = _syncProcessManager.AddSyncProcess(request.TransactionGuid, 5000);
+        syncData.BusinessTransactionRequestData = request;
 
         // Now wait for order execution (doing it in a non-blocking mannor)
         var erg = AsyncHelper.RunSync(syncData.CreateWaitingTask);
@@ -159,6 +160,7 @@ public abstract class BaseBtcpSimpleDeviceBusinessLogicAdapter : BaseSimpleDevic
             return;
         }
 
+        reply.RequestData = syncData.BusinessTransactionRequestData;
         syncData.TaskCompletionSource?.SetResult(reply); 
     }
 

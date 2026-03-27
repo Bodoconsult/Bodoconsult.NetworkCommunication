@@ -6,7 +6,6 @@ using Bodoconsult.NetworkCommunication.Factories;
 using Bodoconsult.NetworkCommunication.Interfaces;
 using Bodoconsult.NetworkCommunication.OrderManagement.ParameterSets;
 using Bodoconsult.NetworkCommunication.OrderManagement.Processors;
-using Bodoconsult.NetworkCommunication.Tests.App;
 using Bodoconsult.NetworkCommunication.Tests.Helpers;
 using IAppDateService = Bodoconsult.NetworkCommunication.App.Abstractions.IAppDateService;
 
@@ -17,11 +16,12 @@ public class OrderPipelineTests
 {
     private readonly IAppDateService _dateTimeService = TestDataHelper.AppDateService;
     private readonly IRequestProcessorFactory _requestProcessorFactory;
-    private readonly IAppLoggerProxy _appLogger = Globals.Instance.Logger;
+    private readonly IAppLoggerProxy _appLogger = TestDataHelper.GetFakeAppLoggerProxy();
     private const string LoggerId = "001234";
     private readonly AppBenchProxy _benchLogger = TestDataHelper.GetFakeAppBenchProxy();
 
     private bool _isOrderProcessingFinishedDelegateFired;
+
 
     public OrderPipelineTests()
     {
@@ -37,6 +37,7 @@ public class OrderPipelineTests
     public void Cleanup()
     {
         _benchLogger.Dispose();
+        _appLogger.Dispose();
     }
 
     private void OrderProcessingFinishedDelegate(long orderid)
@@ -88,8 +89,7 @@ public class OrderPipelineTests
             Assert.That(op.WaitingPriorityOrders.Count, Is.Zero);
             Assert.That(op.IsWaitingPriorityOrdersEmpty, Is.True);
             Assert.That(order.ExecutionState, Is.EqualTo(OrderState.Added));
-        };
-
+        }
     }
 
     [Test]

@@ -101,6 +101,7 @@ internal class BaseStateManagementDeviceTests
         using (Assert.EnterMultipleScope())
         {
             Assert.That(device.CurrentState, Is.Not.Null);
+            ArgumentNullException.ThrowIfNull(device.CurrentState);
             Assert.That(device.CurrentState.Name, Is.EqualTo(newState.Name));
             Assert.That(device.DeviceState, Is.EqualTo(DefaultDeviceStates.DeviceStateOffline));
 
@@ -149,6 +150,7 @@ internal class BaseStateManagementDeviceTests
         using (Assert.EnterMultipleScope())
         {
             Assert.That(device.CurrentState, Is.Not.Null);
+            ArgumentNullException.ThrowIfNull(device.CurrentState);
             Assert.That(device.CurrentState.Name, Is.EqualTo(newState.Name));
             Assert.That(device.DeviceState, Is.EqualTo(DefaultDeviceStates.DeviceStateOnline));
             Assert.That(device.BusinessSubState, Is.EqualTo(DefaultBusinessSubStates.TryToConnect));
@@ -184,6 +186,7 @@ internal class BaseStateManagementDeviceTests
         using (Assert.EnterMultipleScope())
         {
             Assert.That(device.CurrentState, Is.Not.Null);
+            ArgumentNullException.ThrowIfNull(device.CurrentState);
             Assert.That(device.CurrentState.Name, Is.EqualTo(newState.Name));
             Assert.That(device.DeviceState, Is.EqualTo(DefaultDeviceStates.DeviceStateReady));
             Assert.That(device.BusinessSubState, Is.EqualTo(DefaultBusinessSubStates.NotSet));

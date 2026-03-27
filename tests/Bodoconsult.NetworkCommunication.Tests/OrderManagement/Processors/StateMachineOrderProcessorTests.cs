@@ -26,7 +26,7 @@ namespace Bodoconsult.NetworkCommunication.Tests.OrderManagement.Processors;
 internal class StateMachineOrderProcessorTests
 {
     private StateMachineOrderProcessor? _processor;
-
+    private readonly IAppLoggerProxy _appLogger = TestDataHelper.GetFakeAppLoggerProxy();
     private readonly IList<IInboundDataMessage> _receivedMessage = new List<IInboundDataMessage>();
 
     private FakeIpCommunicationAdapter? _commAdapter;
@@ -61,6 +61,7 @@ internal class StateMachineOrderProcessorTests
     public void Cleanup()
     {
         _benchLogger.Dispose();
+        _appLogger.Dispose();
     }
 
 
@@ -229,7 +230,7 @@ internal class StateMachineOrderProcessorTests
         var logger = Globals.Instance.Logger;
         _orderProcessorFactory = new RequestProcessorFactory(_stepFactory, _device);
 
-        var orderPipeline = new OrderPipeline(_dateTimeService, _orderProcessorFactory, logger, "Tower 000123: ");
+        var orderPipeline = new OrderPipeline(_dateTimeService, _orderProcessorFactory, _appLogger, "Tower 000123: ");
         var syncManager = new SyncOrderManager();
 
         var om = new FakeOrderManager(TestDataHelper.GetDataMessagingConfig(), new FakeOrderProcessor(_device, orderPipeline, syncManager, _notificationManager), new FakeOrderReceiver(), new OrderFactory(TestDataHelper.DefaultOrderIdGenerator));
@@ -295,11 +296,11 @@ internal class StateMachineOrderProcessorTests
     public void Ctor_ValidSetup_PropertiesSetupCorrectly()
     {
         // Arrange 
-        ArgumentNullException.ThrowIfNull(_processor); 
         _commAdapter = TestDataHelper.FakeIpCommunicationAdapter;
 
         // Act  
         PrepareTest(false);
+        ArgumentNullException.ThrowIfNull(_processor);
 
         // Assert
         using (Assert.EnterMultipleScope())
@@ -316,9 +317,9 @@ internal class StateMachineOrderProcessorTests
     public void AddOrder_NewOrder_OrderAddedToQueue()
     {
         // Arrange 
-        ArgumentNullException.ThrowIfNull(_processor); 
         _commAdapter = TestDataHelper.FakeIpCommunicationAdapter;
         PrepareTest(false);
+        ArgumentNullException.ThrowIfNull(_processor);
 
         // Create parameter set and then the order
 
@@ -346,9 +347,9 @@ internal class StateMachineOrderProcessorTests
     public void AddOrder_DuplicatedOrder_OrderNotAddedToQueue()
     {
         // Arrange 
-        ArgumentNullException.ThrowIfNull(_processor); 
         _commAdapter = TestDataHelper.FakeIpCommunicationAdapter;
         PrepareTest(false);
+        ArgumentNullException.ThrowIfNull(_processor);
 
         // Create parameter set and then the order
         var order = CreateSdcpOrder();
@@ -378,11 +379,10 @@ internal class StateMachineOrderProcessorTests
     public void Runner_NewOrderNoMessageReceived_OrderTimeout()
     {
         // Arrange 
-        ArgumentNullException.ThrowIfNull(_processor); 
         _commAdapter = TestDataHelper.FakeIpCommunicationAdapter;
         _commAdapter.ExpectedExecutionResult.Add(OrderExecutionResultState.Successful);
-
         PrepareTest(false);
+        ArgumentNullException.ThrowIfNull(_processor);
 
         // Create parameter set and then the order
         var order = CreateSdcpOrder();
@@ -410,11 +410,11 @@ internal class StateMachineOrderProcessorTests
     public void Runner_NewOrder_OrderSuccessful()
     {
         // Arrange 
-        ArgumentNullException.ThrowIfNull(_processor); 
         _commAdapter = TestDataHelper.FakeIpCommunicationAdapter;
         _commAdapter.ExpectedExecutionResult.Add(OrderExecutionResultState.Successful);
 
         PrepareTest(false);
+        ArgumentNullException.ThrowIfNull(_processor);
 
         // Create parameter set and then the order
         var order = CreateSdcpOrder();
@@ -446,10 +446,9 @@ internal class StateMachineOrderProcessorTests
     public void Cancel_NewOrderWith_OrderCancelled()
     {
         // Arrange 
-        ArgumentNullException.ThrowIfNull(_processor); 
         _commAdapter = TestDataHelper.FakeIpCommunicationAdapter;
-
         PrepareTest(false);
+        ArgumentNullException.ThrowIfNull(_processor);
 
         // Create parameter set and then the order
         var order = CreateSdcpOrder();
@@ -512,10 +511,9 @@ internal class StateMachineOrderProcessorTests
     public void CancelAllOrders_SingleNewOrder_OrdersAreCancelled()
     {
         // Arrange 
-        ArgumentNullException.ThrowIfNull(_processor); 
         _commAdapter = TestDataHelper.FakeIpCommunicationAdapter;
-
         PrepareTest(false);
+        ArgumentNullException.ThrowIfNull(_processor);
 
         // Create parameter set and then the order
         var order = CreateSdcpOrder();
@@ -582,11 +580,10 @@ internal class StateMachineOrderProcessorTests
     [Test]
     public void Runner_NoOrder_DoesNotThrow()
     {
-        // Arrange 
-        ArgumentNullException.ThrowIfNull(_processor); 
+        // Arrange
         _commAdapter = TestDataHelper.FakeIpCommunicationAdapter;
-
         PrepareTest();
+        ArgumentNullException.ThrowIfNull(_processor);
 
         // Act
         Assert.DoesNotThrow(() =>
@@ -642,10 +639,9 @@ internal class StateMachineOrderProcessorTests
     public void CancelAllOrders_3NewOrders_OrdersAreCancelled()
     {
         // Arrange 
-        ArgumentNullException.ThrowIfNull(_processor); 
         _commAdapter = TestDataHelper.FakeIpCommunicationAdapter;
-
         PrepareTest(false);
+        ArgumentNullException.ThrowIfNull(_processor);
 
         // Create parameter set and then the order
         var order = CreateSdcpOrder();
@@ -693,10 +689,9 @@ internal class StateMachineOrderProcessorTests
     public void CancelAllOrders_MultipleNewOrders_OrdersAreCancelled()
     {
         // Arrange 
-        ArgumentNullException.ThrowIfNull(_processor); 
         _commAdapter = TestDataHelper.FakeIpCommunicationAdapter;
-
         PrepareTest(false);
+        ArgumentNullException.ThrowIfNull(_processor);
 
         // Create parameter set and then the order
         for (var i = 0; i < 20; i++)
@@ -728,12 +723,11 @@ internal class StateMachineOrderProcessorTests
     public void Runner_NewOrderWithCancelOrderBySourceUid_OrderCancelled()
     {
         // Arrange 
-        ArgumentNullException.ThrowIfNull(_processor);
         var sourceUid = Guid.NewGuid();
 
         _commAdapter = TestDataHelper.FakeIpCommunicationAdapter;
-
         PrepareTest(false);
+        ArgumentNullException.ThrowIfNull(_processor);
 
         // Create parameter set and then the order
         var order = CreateSdcpOrder();
@@ -764,10 +758,9 @@ internal class StateMachineOrderProcessorTests
     public void Runner_NewOrderWithReceivedMessageWrongMessage_OrderUnsuccessful()
     {
         // Arrange 
-        ArgumentNullException.ThrowIfNull(_processor); 
         _commAdapter = TestDataHelper.FakeIpCommunicationAdapter;
-
         PrepareTest();
+        ArgumentNullException.ThrowIfNull(_processor);
 
         // Create parameter set and then the order
         var order = CreateSdcpOrder();
@@ -835,12 +828,11 @@ internal class StateMachineOrderProcessorTests
     [Test]
     public void Runner_NewOrderWithOneParallelOrder_Successful()
     {
-        // Arrange 
-        ArgumentNullException.ThrowIfNull(_processor); 
+        // Arrange
         _commAdapter = TestDataHelper.FakeIpCommunicationAdapter;
         _commAdapter.ExpectedExecutionResult.Add(OrderExecutionResultState.Successful);
-
         PrepareTest(false);
+        ArgumentNullException.ThrowIfNull(_processor);
 
         // Create parameter set and then the order
         var order1 = CreateLongRunningTestOrder();
@@ -919,12 +911,11 @@ internal class StateMachineOrderProcessorTests
     public void Runner_NewOrderWithTwoParallelOrders_Successful()
     {
         // Arrange 
-        ArgumentNullException.ThrowIfNull(_processor); 
         _commAdapter = TestDataHelper.FakeIpCommunicationAdapter;
         _commAdapter.ExpectedExecutionResult.Add(OrderExecutionResultState.Successful);
         _commAdapter.ExpectedExecutionResult.Add(OrderExecutionResultState.Successful);
-
         PrepareTest(false);
+        ArgumentNullException.ThrowIfNull(_processor);
 
         // Create parameter set and then the order
         var order1 = CreateExtraLongRunningTestOrder();
@@ -967,10 +958,9 @@ internal class StateMachineOrderProcessorTests
     public void TryToExecuteOrderSync_OrderSyncWithNoReceivedMessage_OrderTimeout()
     {
         // Arrange 
-        ArgumentNullException.ThrowIfNull(_processor); 
         _commAdapter = TestDataHelper.FakeIpCommunicationAdapter;
-
         PrepareTest();
+        ArgumentNullException.ThrowIfNull(_processor);
 
         // Create parameter set and then the order
         var order = CreateSdcpOrder();
@@ -995,10 +985,9 @@ internal class StateMachineOrderProcessorTests
     public void TryToExecuteOrderSync_NewOrderWithReceivedMessage_OrderSuccessful()
     {
         // Arrange 
-        ArgumentNullException.ThrowIfNull(_processor); 
         _commAdapter = TestDataHelper.FakeIpCommunicationAdapter;
-
         PrepareTest();
+        ArgumentNullException.ThrowIfNull(_processor);
 
         // Create parameter set and then the order
         var order = CreateSdcpOrder();

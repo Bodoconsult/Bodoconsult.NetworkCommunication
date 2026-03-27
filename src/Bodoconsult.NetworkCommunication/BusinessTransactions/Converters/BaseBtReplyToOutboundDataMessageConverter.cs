@@ -1,11 +1,13 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
-using System.Text;
 using Bodoconsult.App.Abstractions.Interfaces;
+using Bodoconsult.App.BusinessTransactions.Replies;
 using Bodoconsult.App.Helpers;
 using Bodoconsult.App.Interfaces;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
 using Bodoconsult.NetworkCommunication.Interfaces;
+using System.Text;
+using Bodoconsult.NetworkCommunication.DataMessaging.DataBlocks;
 
 namespace Bodoconsult.NetworkCommunication.BusinessTransactions.Converters;
 
@@ -38,6 +40,8 @@ public abstract class BaseBtReplyToOutboundDataMessageConverter : IBtReplyToOutb
     protected BaseBtReplyToOutboundDataMessageConverter(IAppLoggerProxy appLogger)
     {
         AppLogger = appLogger;
+
+        AllBusinessTransactionReplyDelegates.Add(nameof(DefaultBusinessTransactionReply), CreateFromDefaultBusinessTransactionReply);
     }
 
     /// <summary>
@@ -83,5 +87,28 @@ public abstract class BaseBtReplyToOutboundDataMessageConverter : IBtReplyToOutb
         {
             throw new ArgumentException("No outbound message created", e);
         }
+    }
+
+    private IOutboundBusinessTransactionDataMessage CreateFromDefaultBusinessTransactionReply(IBusinessTransactionReply reply)
+    {
+        if (reply is not DefaultBusinessTransactionReply ir)
+        {
+            throw new ArgumentException($"request is not {nameof(DefaultBusinessTransactionReply)}");
+        }
+
+        var payload = $"{ir.ErrorCode}|{ir.Message?.Replace("|", "")}|{ir.ExceptionMessage?.Replace("|", "")}";
+
+        var dataBlock = new BasicOutboundDatablock
+        {
+            Data = Encoding.UTF8.GetBytes(payload)
+        };
+
+        var msg = new BtcpOutboundDataMessage(ir.RequestData.TransactionId)
+        {
+            IsRequest = false,
+            DataBlock = dataBlock
+        };
+
+        return msg;
     }
 }

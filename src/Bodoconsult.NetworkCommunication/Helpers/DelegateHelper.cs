@@ -34,7 +34,7 @@ public static class DelegateHelper
     /// </summary>
     /// <param name="state">Current state</param>
     /// <param name="message">Received message</param>
-    public static MessageHandlingResult HandleAsyncMessageDelegate(IStateMachineState state, IInboundDataMessage message)
+    public static MessageHandlingResult HandleAsyncMessageDelegate(IStateMachineState state, IInboundDataMessage? message)
     {
         return MessageHandlingResultHelper.Success();
     }

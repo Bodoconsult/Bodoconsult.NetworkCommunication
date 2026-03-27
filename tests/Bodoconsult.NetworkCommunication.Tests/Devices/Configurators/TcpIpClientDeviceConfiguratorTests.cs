@@ -83,7 +83,7 @@ internal class TcpIpClientDeviceConfiguratorTests
         conf.CreateMessagingConfig("TestDevice", "127.0.0.1", 9000, _messageProcessingPackageFactory);
 
         // Act  
-        IDeviceBusinessLogicAdapterFactory businessLogicAdapterFactory = new TestIpDeviceAdapterFactory();
+        IDeviceBusinessLogicAdapterFactory businessLogicAdapterFactory = new TestOrderManagementDeviceAdapterFactory();
         conf.CreateDevice(businessLogicAdapterFactory);
 
         // Assert

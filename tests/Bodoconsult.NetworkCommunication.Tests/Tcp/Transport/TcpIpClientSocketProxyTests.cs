@@ -43,6 +43,7 @@ public class TcpIpClientSocketProxyTests : BaseTestsTcpIpSocket
     public void Ctor_ValidEndpoint_SocketLoaded()
     {
         // Arrange 
+        ArgumentNullException.ThrowIfNull(Socket);
 
         // Act  
         var socket = (TcpIpClientSocketProxy)Socket;

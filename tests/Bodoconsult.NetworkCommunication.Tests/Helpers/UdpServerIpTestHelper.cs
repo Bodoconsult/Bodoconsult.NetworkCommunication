@@ -54,6 +54,7 @@ internal static class UdpServerIpTestHelper
         // Load socket
         var socket = new UdpServerSocketProxy();
         socket.IpAddress = testSetup.IpAddress;
+        ArgumentNullException.ThrowIfNull(testSetup.DataMessagingConfig);
         socket.Port = testSetup.DataMessagingConfig.Port;
         socket.RemotePort = testSetup.DataMessagingConfig.Port + 1;
         testSetup.Socket = socket;

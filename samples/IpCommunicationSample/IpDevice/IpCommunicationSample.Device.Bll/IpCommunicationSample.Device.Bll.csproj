@@ -16,4 +16,8 @@
     <ProjectReference Include="..\..\Common\IpCommunicationSample.Common\IpCommunicationSample.Common.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="BusinessLogic\Converters\" />
+  </ItemGroup>
+
 </Project>

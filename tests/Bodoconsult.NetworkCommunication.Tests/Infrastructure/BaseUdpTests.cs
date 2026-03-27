@@ -1,13 +1,13 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
-using System.Diagnostics;
-using System.Net;
-using System.Net.Sockets;
-using System.Security;
 using Bodoconsult.App.Abstractions.Interfaces;
 using Bodoconsult.NetworkCommunication.Interfaces;
 using Bodoconsult.NetworkCommunication.Tests.Helpers;
 using Bodoconsult.NetworkCommunication.Tests.Interfaces;
+using System.Diagnostics;
+using System.Net;
+using System.Net.Sockets;
+using System.Security;
 
 namespace Bodoconsult.NetworkCommunication.Tests.Infrastructure;
 
@@ -38,24 +38,24 @@ public class BaseUdpTests : IUdpTests
     /// <summary>
     /// Current TCP/IP server to send data to the socket
     /// </summary>
-    public IUdpDevice RemoteUdpDevice { get; set; }
+    public IUdpDevice? RemoteUdpDevice { get; set; }
 
     /// <summary>
     /// Current IP address to use
     /// </summary>
-    public IPAddress IpAddress { get; set; }
+    public IPAddress? IpAddress { get; set; }
 
 
     /// <summary>
     /// Current socket proxy to use
     /// </summary>
-    public ISocketProxy Socket { get; set; }
+    public ISocketProxy? Socket { get; set; }
 
 
     /// <summary>
     /// Device communication data
     /// </summary>
-    public IIpDataMessagingConfig DataMessagingConfig { get; set; }
+    public IIpDataMessagingConfig? DataMessagingConfig { get; set; }
 
 
     /// <summary>
@@ -68,6 +68,7 @@ public class BaseUdpTests : IUdpTests
     /// </summary>
     protected void BindDelegates()
     {
+        ArgumentNullException.ThrowIfNull(DataMessagingConfig);
         DataMessagingConfig.SocketProxy = Socket;
         //DataMessagingConfig.DataMessageProcessingPackage.WaitStateManager.RaiseHandshakeReceivedDelegate = OnHandshakeReceivedDelegate;
         DataMessagingConfig.RaiseCommLayerDataMessageReceivedDelegate = OnRaiseDataMessageReceivedEvent;
@@ -113,7 +114,7 @@ public class BaseUdpTests : IUdpTests
         IsMessageReceivedFired = true;
     }
 
-    protected void OnRaiseDataMessageNotSentEvent(ReadOnlyMemory<byte> message, string reason)
+    protected void OnRaiseDataMessageNotSentEvent(ReadOnlyMemory<byte> message, string? reason)
     {
         IsDataMessageNotSentFired = true;
     }
@@ -160,6 +161,8 @@ public class BaseUdpTests : IUdpTests
     /// </summary>
     public virtual void CentralErrorHandling(Exception exception)
     {
+        ArgumentNullException.ThrowIfNull(DataMessagingConfig);
+
         string msg;
         var loggerId = $"{DataMessagingConfig.LoggerId}:";
 

@@ -14,3 +14,4 @@ internal class TestIpDeviceBusinessLogicAdapter : BaseSimpleDeviceBusinessLogicA
     public TestIpDeviceBusinessLogicAdapter(IIpDevice device) : base(device)
     { }
 }
+

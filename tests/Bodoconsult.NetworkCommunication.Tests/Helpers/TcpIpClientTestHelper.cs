@@ -54,6 +54,8 @@ public static class TcpIpClientTestHelper
             // Do nothing
         }
 
+        ArgumentNullException.ThrowIfNull(testSetup.DataMessagingConfig);
+
         // Load socket
         var socket = new TcpIpClientSocketProxy();
         socket.IpAddress = testSetup.IpAddress;

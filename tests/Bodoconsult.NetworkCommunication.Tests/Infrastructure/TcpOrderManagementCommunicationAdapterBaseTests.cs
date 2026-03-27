@@ -14,7 +14,7 @@ namespace Bodoconsult.NetworkCommunication.Tests.Infrastructure;
 public abstract class TcpOrderManagementCommunicationAdapterBaseTests : BaseTcpTests
 {
 
-    protected IpCommunicationAdapter OrderManagementCommunicationAdapter;
+    protected IpCommunicationAdapter? OrderManagementCommunicationAdapter;
 
     [TearDown]
     public void TestCleanUp()
@@ -66,6 +66,7 @@ public abstract class TcpOrderManagementCommunicationAdapterBaseTests : BaseTcpT
     /// <param name="message">Current message to send</param>
     public virtual void Send(IOutboundDataMessage message)
     {
+        ArgumentNullException.ThrowIfNull(OrderManagementCommunicationAdapter);
         OrderManagementCommunicationAdapter.SendDataMessage(message);
 
         var task = Task.Run(() =>
@@ -81,8 +82,9 @@ public abstract class TcpOrderManagementCommunicationAdapterBaseTests : BaseTcpT
         task.Wait();
     }
 
-    public virtual void SendDataAndReceive(byte[] data, int expectedCount, byte[] data2 = null)
+    public virtual void SendDataAndReceive(byte[] data, int expectedCount, byte[]? data2 = null)
     {
+        ArgumentNullException.ThrowIfNull(RemoteTcpIpDevice);
         RemoteTcpIpDevice.Send(data);
 
         if (data2 != null)
@@ -118,7 +120,7 @@ public abstract class TcpOrderManagementCommunicationAdapterBaseTests : BaseTcpT
         Debug.Print("Process done");
     }
 
-    private void RunBasicTests(byte[] data, int expectedCount, byte[] data2 = null)
+    private void RunBasicTests(byte[] data, int expectedCount, byte[]? data2 = null)
     {
         // Arrange and act
         SendDataAndReceive(data, expectedCount, data2);

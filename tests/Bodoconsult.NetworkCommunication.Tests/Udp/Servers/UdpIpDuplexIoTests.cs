@@ -23,6 +23,7 @@ public class UdpIpDuplexIoTests : BaseUdpIpDuplexIoTests
         BaseReset();
 
         UdpServerIpTestHelper.InitSocket(this);
+        ArgumentNullException.ThrowIfNull(Socket);
 
         DuplexIo = GetDuplexIo(Socket);
 
@@ -36,6 +37,7 @@ public class UdpIpDuplexIoTests : BaseUdpIpDuplexIoTests
     /// <returns><see cref="IDuplexIo"/> instance to test</returns>
     public override IDuplexIo GetDuplexIo(ISocketProxy socketProxy)
     {
+        ArgumentNullException.ThrowIfNull(DataMessagingConfig);
         Socket = socketProxy;
         BindDelegates();
 
@@ -51,7 +53,7 @@ public class UdpIpDuplexIoTests : BaseUdpIpDuplexIoTests
     /// <returns></returns>
     public override IDuplexIo GetDuplexIoWithFakeEncodeDecoder(ISocketProxy socketProxy, FakeSendPacketProcessEnum expectedResult)
     {
-
+        ArgumentNullException.ThrowIfNull(DataMessagingConfig);
         Socket = socketProxy;
         BindDelegates();
 

@@ -19,7 +19,7 @@ public abstract class TcpIpDuplexIoBaseTests : BaseTcpTests
     /// <summary>
     /// Holds the duplex IO channel implementation (see <see cref="IDuplexIo"/>) to use
     /// </summary>
-    protected IDuplexIo DuplexIo;
+    protected IDuplexIo? DuplexIo;
 
     [TearDown]
     public void TestCleanUp()
@@ -74,6 +74,7 @@ public abstract class TcpIpDuplexIoBaseTests : BaseTcpTests
     /// <param name="message">Current message to send</param>
     public virtual void Send(IOutboundDataMessage message)
     {
+        ArgumentNullException.ThrowIfNull(DuplexIo);
         DuplexIo.StartCommunication().Wait();
 
         DuplexIo.SendMessage(message).Wait();
@@ -93,8 +94,11 @@ public abstract class TcpIpDuplexIoBaseTests : BaseTcpTests
         DuplexIo.StopCommunication().Wait();
     }
 
-    public virtual void SendDataAndReceive(byte[] data, int expectedCount, byte[] data2 = null)
+    public virtual void SendDataAndReceive(byte[] data, int expectedCount, byte[]? data2 = null)
     {
+        ArgumentNullException.ThrowIfNull(DuplexIo);
+        ArgumentNullException.ThrowIfNull(RemoteTcpIpDevice);
+
         // Arrange
         DuplexIo.StartCommunication().Wait();
 
@@ -139,7 +143,7 @@ public abstract class TcpIpDuplexIoBaseTests : BaseTcpTests
         Debug.Print("Process done");
     }
 
-    private void RunBasicTests(byte[] data, int expectedCount, byte[] data2 = null)
+    private void RunBasicTests(byte[] data, int expectedCount, byte[]? data2 = null)
     {
         // Arrange and act
         SendDataAndReceive(data, expectedCount, data2);
@@ -162,6 +166,7 @@ public abstract class TcpIpDuplexIoBaseTests : BaseTcpTests
     public void Ctor_ValidSetup_PropsSetCorrectly()
     {
         // Arrange 
+        ArgumentNullException.ThrowIfNull(DuplexIo);
 
         // Act  
 
@@ -174,6 +179,7 @@ public abstract class TcpIpDuplexIoBaseTests : BaseTcpTests
     public void StartCommunication_ValidSetup_Started()
     {
         // Arrange 
+        ArgumentNullException.ThrowIfNull(DuplexIo);
 
         // Act  
         DuplexIo.StartCommunication().Wait();
@@ -191,6 +197,7 @@ public abstract class TcpIpDuplexIoBaseTests : BaseTcpTests
     public void StopCommunication_ValidSetup_CommStopped()
     {
         // Arrange 
+        ArgumentNullException.ThrowIfNull(DuplexIo);
 
         // Act  
         DuplexIo.StartCommunication().Wait();
@@ -201,6 +208,7 @@ public abstract class TcpIpDuplexIoBaseTests : BaseTcpTests
         {
             Assert.That(DuplexIo.Receiver, Is.Not.Null);
             Assert.That(DuplexIo.Sender, Is.Not.Null);
+            ArgumentNullException.ThrowIfNull(DuplexIo.Receiver);
             Assert.That(DuplexIo.Receiver.FillPipelineTask, Is.Null);
             Assert.That(DuplexIo.Receiver.SendPipelineTask, Is.Null);
         }
@@ -260,6 +268,8 @@ public abstract class TcpIpDuplexIoBaseTests : BaseTcpTests
     [NonParallelizable]
     public void SendMessage_EncodingError_Fails()
     {
+        ArgumentNullException.ThrowIfNull(Socket);
+
         // Arrange
         DuplexIo = GetDuplexIoWithFakeEncodeDecoder(Socket, FakeSendPacketProcessEnum.EncodingError);
 

@@ -68,6 +68,9 @@ public static class TcpIpServerTestHelper
         TcpIpListenerManager.ClearAll();
 
         // Load socket
+        ArgumentNullException.ThrowIfNull(testSetup.DataMessagingConfig);
+        ArgumentNullException.ThrowIfNull(testSetup.RemoteTcpIpDevice);
+
         var socket = new TcpIpServerSocketProxy(TcpIpListenerManager);
         socket.IpAddress = testSetup.IpAddress;
         socket.Port = testSetup.DataMessagingConfig.Port;

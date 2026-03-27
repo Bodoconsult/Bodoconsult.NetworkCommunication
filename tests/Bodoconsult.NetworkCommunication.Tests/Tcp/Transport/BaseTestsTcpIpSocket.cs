@@ -12,9 +12,9 @@ namespace Bodoconsult.NetworkCommunication.Tests.Tcp.Transport;
 /// </summary>
 public abstract class BaseTestsTcpIpSocket
 {
-    protected ISocketProxy Socket;
+    protected ISocketProxy? Socket;
 
-    protected IPEndPoint CurrentIpEndPoint;
+    protected IPEndPoint? CurrentIpEndPoint;
 
     /// <summary>
     /// IP address (use the one from test device development)
@@ -36,6 +36,7 @@ public abstract class BaseTestsTcpIpSocket
     public void Connect_ValidEndpoint_Connected()
     {
         // Arrange 
+        ArgumentNullException.ThrowIfNull(Socket);
 
         // Act  
         Assert.DoesNotThrow(() =>

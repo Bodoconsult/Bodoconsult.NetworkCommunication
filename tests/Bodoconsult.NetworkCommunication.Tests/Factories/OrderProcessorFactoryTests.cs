@@ -5,7 +5,6 @@ using Bodoconsult.NetworkCommunication.ClientNotifications;
 using Bodoconsult.NetworkCommunication.Factories;
 using Bodoconsult.NetworkCommunication.Interfaces;
 using Bodoconsult.NetworkCommunication.OrderManagement.Processors;
-using Bodoconsult.NetworkCommunication.Tests.App;
 using Bodoconsult.NetworkCommunication.Tests.Helpers;
 using IAppDateService = Bodoconsult.NetworkCommunication.App.Abstractions.IAppDateService;
 
@@ -15,7 +14,7 @@ namespace Bodoconsult.NetworkCommunication.Tests.Factories;
 internal class OrderProcessorFactoryTests
 {
     private readonly IAppDateService _dateTimeService = TestDataHelper.AppDateService;
-
+    private readonly IAppLoggerProxy _appLogger = TestDataHelper.GetFakeAppLoggerProxy();
     private readonly IOrderPipeline _orderPipeline;
 
     private readonly IAppBenchProxy _benchLogger = TestDataHelper.GetFakeAppBenchProxy();
@@ -31,10 +30,9 @@ internal class OrderProcessorFactoryTests
         var device = TestDataHelper.CreateOrderManagementDevice();
         device.LoadCommAdapter(commAdapter);
 
-        var logger = Globals.Instance.Logger;
         var orderProcessorFactory = new RequestProcessorFactory(stepFactory, device);
 
-        _orderPipeline = new OrderPipeline(_dateTimeService, orderProcessorFactory, logger, "Tower 000123: ");
+        _orderPipeline = new OrderPipeline(_dateTimeService, orderProcessorFactory, _appLogger, "Tower 000123: ");
         _syncManager = new SyncOrderManager();
 
         //var om = new FakeOrderManager();
@@ -47,6 +45,7 @@ internal class OrderProcessorFactoryTests
         _benchLogger.Dispose();
         _syncManager.Dispose();
         _orderPipeline.Dispose();
+        _appLogger.Dispose();
     }
 
     [Test]

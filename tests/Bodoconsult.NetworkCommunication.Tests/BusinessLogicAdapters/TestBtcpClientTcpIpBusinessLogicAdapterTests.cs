@@ -63,6 +63,7 @@ internal class TestBtcpClientTcpIpBusinessLogicAdapterTests
     {
         // Arrange 
         const int transactionId = 99;
+        var transactionUid = Guid.NewGuid();
 
         _businessTransactionManager.RequestedTransactionId = 0;
         Assert.That(_businessTransactionManager.RequestedTransactionId, Is.Zero);
@@ -76,7 +77,7 @@ internal class TestBtcpClientTcpIpBusinessLogicAdapterTests
             inboundDataMessageToBtRequestConverter, inboundDataMessageToBtReplyConverter,
             outboundBtRequestToOutboundDataMessageConverter, outboundBtReplyDataMessageConverter);
 
-        var msg = new BtcpInboundDataMessage(transactionId)
+        var msg = new BtcpInboundDataMessage(transactionId, transactionUid)
         {
             IsRequest = true
         };

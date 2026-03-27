@@ -19,9 +19,19 @@ public class BtcpDataMessageValidator : IDataMessageValidator
         }
 
         // No SDCP data message: always valid
-        if (dataMessage is not BtcpInboundDataMessage)
+        if (dataMessage is not BtcpInboundDataMessage bt)
         {
             return new DataMessageValidatorResult(false, "Message is NOT a valid BTCP message");
+        }
+
+        if (bt.BusinessTransactionId == 0)
+        {
+            return new DataMessageValidatorResult(false, "Message is NOT a valid BTCP message (ID=0)");
+        }
+
+        if (bt.BusinessTransactionUid == Guid.Empty)
+        {
+            return new DataMessageValidatorResult(false, "Message is NOT a valid BTCP message (UID=Guid.Empty)");
         }
 
         return new DataMessageValidatorResult(true, "Message is a valid BTCP message");

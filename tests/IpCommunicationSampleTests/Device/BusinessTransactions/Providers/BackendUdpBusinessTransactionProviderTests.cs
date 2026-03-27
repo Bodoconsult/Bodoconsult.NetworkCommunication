@@ -19,7 +19,7 @@ namespace IpCommunicationSampleTests.Device.BusinessTransactions.Providers
             // Assert.
             var delegates = provider.CreateBusinessTransactionDelegates;
             Assert.That(delegates, Is.Not.Null);
-            Assert.That(delegates, Has.Count.EqualTo(2));
+            Assert.That(delegates, Has.Count.EqualTo(6));
 
             foreach (var item in delegates)
             {

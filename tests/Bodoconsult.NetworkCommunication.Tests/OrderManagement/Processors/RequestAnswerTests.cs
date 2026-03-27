@@ -66,6 +66,8 @@ internal class RequestAnswerTests
 
         var errors = new List<string>();
 
+        Assert.That(ra.CheckReceivedMessageDelegate, Is.Not.Null);
+
         // Act  
         ra.CheckReceivedMessageDelegate.Invoke(ra, outboundMsg, msg, errors);
 
@@ -114,18 +116,22 @@ internal class RequestAnswerTests
         Assert.That(ra.HandleRequestAnswerOnSuccessDelegate, Is.Not.Null);
     }
 
-    private MessageHandlingResult HandleRequestAnswerOnSuccessDelegate(IInboundDataMessage message, object transportObject, IParameterSet parameterSet)
+    private MessageHandlingResult HandleRequestAnswerOnSuccessDelegate(IInboundDataMessage? message, object? transportObject, IParameterSet? parameterSet)
     {
         // Do nothing
         return new MessageHandlingResult
-            {
-                Error = 0,
-                ExecutionResult = OrderExecutionResultState.Successful
-            };
+        {
+            Error = 0,
+            ExecutionResult = OrderExecutionResultState.Successful
+        };
     }
 
-    private bool CheckReceivedMessageDelegate(IRequestAnswer requestAnswer, IOutboundDataMessage sentMessage, IInboundDataMessage receivedMessage, IList<string> errors)
+    private bool CheckReceivedMessageDelegate(IRequestAnswer requestAnswer, IOutboundDataMessage? sentMessage, IInboundDataMessage? receivedMessage, IList<string> errors)
     {
+        if (receivedMessage == null)
+        {
+            return false;
+        }
         requestAnswer.SetWasReceived(receivedMessage);
         return true;
     }

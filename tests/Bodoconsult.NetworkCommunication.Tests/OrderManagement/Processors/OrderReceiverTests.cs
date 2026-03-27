@@ -13,51 +13,51 @@ namespace Bodoconsult.NetworkCommunication.Tests.OrderManagement.Processors;
 [TestFixture]
 internal class OrderReceiverTests
 {
-    private readonly IList<IInboundDataMessage> _receivedMessage = new List<IInboundDataMessage>();
+    private readonly List<IInboundDataMessage> _receivedMessage = new();
     private readonly IAppLoggerProxy _logger = TestDataHelper.GetFakeAppLoggerProxy();
 
     private bool _wasFired;
 
-    private IRequestProcessor _processor;
+    private IRequestProcessor? _processor;
 
     [OneTimeTearDown]
     public void Cleanup()
     {
         _logger.Dispose();
-        _processor.Dispose();
+        _processor?.Dispose();
     }
 
-    /// <summary>
-    /// Set shorter timeouts for all process steps to avoid hanging test runs
-    /// </summary>
-    /// <param name="order"></param>
-    /// <param name="timeOut"></param>
-    private void SetTimeoutsAndDelegate(IOrder order, int timeOut = 1123)
-    {
-        order.IsRunningSync = true;
+    ///// <summary>
+    ///// Set shorter timeouts for all process steps to avoid hanging test runs
+    ///// </summary>
+    ///// <param name="order"></param>
+    ///// <param name="timeOut"></param>
+    //private void SetTimeoutsAndDelegate(IOrder order, int timeOut = 1123)
+    //{
+    //    order.IsRunningSync = true;
 
-        foreach (var spec in order.RequestSpecs)
-        {
-            if (spec is not IDeviceRequestSpec drs)
-            {
-                continue;
-            }
-            drs.RequestAnswerStepIsStartedDelegate = SendReceivedMessage;
+    //    foreach (var spec in order.RequestSpecs)
+    //    {
+    //        if (spec is not IDeviceRequestSpec drs)
+    //        {
+    //            continue;
+    //        }
+    //        drs.RequestAnswerStepIsStartedDelegate = SendReceivedMessage;
 
-            foreach (var step in drs.RequestAnswerSteps)
-            {
-                if (step.Timeout < timeOut)
-                {
-                    step.Timeout = timeOut;
-                }
+    //        foreach (var step in drs.RequestAnswerSteps)
+    //        {
+    //            if (step.Timeout < timeOut)
+    //            {
+    //                step.Timeout = timeOut;
+    //            }
 
-                if (step.Timeout > timeOut * 2)
-                {
-                    step.Timeout = timeOut * 2;
-                }
-            }
-        }
-    }
+    //            if (step.Timeout > timeOut * 2)
+    //            {
+    //                step.Timeout = timeOut * 2;
+    //            }
+    //        }
+    //    }
+    //}
 
     private bool SendReceivedMessage()
     {
@@ -68,11 +68,12 @@ internal class OrderReceiverTests
 
         var msg = _receivedMessage[0];
 
+        ArgumentNullException.ThrowIfNull(_processor);
 
-        if (msg == null)
-        {
-            return true;
-        }
+        //if (msg == null)
+        //{
+        //    return true;
+        //}
 
         _receivedMessage.Remove(msg);
 
@@ -84,15 +85,15 @@ internal class OrderReceiverTests
         return false;
     }
 
-    /// <summary>
-    /// Inject a fake received message in the receiver thread
-    /// </summary>
-    /// <param name="receivedMessage"></param>
-    private void ReceiveMessage(IInboundDataMessage receivedMessage)
-    {
-        // Debug.Print($"UTTOP: Received message with command {receivedMessage.Command}. Current message: {(_receivedMessage == null ? "null" : "not null")}");
-        _receivedMessage?.Add(receivedMessage);
-    }
+    ///// <summary>
+    ///// Inject a fake received message in the receiver thread
+    ///// </summary>
+    ///// <param name="receivedMessage"></param>
+    //private void ReceiveMessage(IInboundDataMessage receivedMessage)
+    //{
+    //    // Debug.Print($"UTTOP: Received message with command {receivedMessage.Command}. Current message: {(_receivedMessage == null ? "null" : "not null")}");
+    //    _receivedMessage?.Add(receivedMessage);
+    //}
 
 
     /// <summary>
@@ -121,7 +122,7 @@ internal class OrderReceiverTests
         // Act  
         r.AddReceivedMessage(receivedMessage);
 
-        Wait.Until(() => _wasFired, 5000);
+        Wait.Until(() => _wasFired);
 
         // Assert
         Assert.That(_wasFired);

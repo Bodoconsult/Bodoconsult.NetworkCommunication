@@ -44,10 +44,10 @@ internal class ClientInboundBtcpMessageToBtRequestDataConverterTests
         var conv = new ClientInboundBtcpMessageToBtRequestDataConverter(_appLogger);
 
         var transactionId = ClientSideBusinessTransactionIds.GetConfig;
+        var transactionUid = Guid.NewGuid();
 
-        var message = new BtcpInboundDataMessage(transactionId)
+        var message = new BtcpInboundDataMessage(transactionId, transactionUid)
         {
-            BusinessTransactionId = transactionId,
             IsRequest = true
         };
 
@@ -69,10 +69,10 @@ internal class ClientInboundBtcpMessageToBtRequestDataConverterTests
         var conv = new ClientInboundBtcpMessageToBtRequestDataConverter(_appLogger);
 
         var transactionId = ClientSideBusinessTransactionIds.StartStreaming;
+        var transactionUid = Guid.NewGuid();
 
-        var message = new BtcpInboundDataMessage(transactionId)
+        var message = new BtcpInboundDataMessage(transactionId, transactionUid)
         {
-            BusinessTransactionId = transactionId,
             IsRequest = true
         };
 
@@ -94,10 +94,10 @@ internal class ClientInboundBtcpMessageToBtRequestDataConverterTests
         var conv = new ClientInboundBtcpMessageToBtRequestDataConverter(_appLogger);
 
         var transactionId = ClientSideBusinessTransactionIds.StopStreaming;
+        var transactionUid = Guid.NewGuid();
 
-        var message = new BtcpInboundDataMessage(transactionId)
+        var message = new BtcpInboundDataMessage(transactionId, transactionUid)
         {
-            BusinessTransactionId = transactionId,
             IsRequest = true
         };
 
@@ -119,10 +119,10 @@ internal class ClientInboundBtcpMessageToBtRequestDataConverterTests
         var conv = new ClientInboundBtcpMessageToBtRequestDataConverter(_appLogger);
 
         var transactionId = ClientSideBusinessTransactionIds.StopSnapshot;
+        var transactionUid = Guid.NewGuid();
 
-        var message = new BtcpInboundDataMessage(transactionId)
+        var message = new BtcpInboundDataMessage(transactionId, transactionUid)
         {
-            BusinessTransactionId = transactionId,
             IsRequest = true
         };
 
@@ -144,10 +144,10 @@ internal class ClientInboundBtcpMessageToBtRequestDataConverterTests
         var conv = new ClientInboundBtcpMessageToBtRequestDataConverter(_appLogger);
 
         var transactionId = ClientSideBusinessTransactionIds.StopSnapshot;
+        var transactionUid = Guid.NewGuid();
 
-        var message = new BtcpInboundDataMessage(transactionId)
+        var message = new BtcpInboundDataMessage(transactionId, transactionUid)
         {
-            BusinessTransactionId = transactionId,
             IsRequest = true
         };
 

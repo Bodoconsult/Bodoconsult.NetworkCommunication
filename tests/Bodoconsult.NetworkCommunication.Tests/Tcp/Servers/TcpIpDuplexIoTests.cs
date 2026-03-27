@@ -24,6 +24,7 @@ public class TcpIpDuplexIoTests : TcpIpDuplexIoBaseTests
 
         TcpIpServerTestHelper.InitSocket(this);
 
+        ArgumentNullException.ThrowIfNull(Socket);
         DuplexIo = GetDuplexIo(Socket);
 
         Debug.Print("End TestSetup");
@@ -36,6 +37,7 @@ public class TcpIpDuplexIoTests : TcpIpDuplexIoBaseTests
     /// <returns><see cref="IDuplexIo"/> instance to test</returns>
     public override IDuplexIo GetDuplexIo(ISocketProxy socketProxy)
     {
+        ArgumentNullException.ThrowIfNull(DataMessagingConfig);
         Socket = socketProxy;
         BindDelegates();
 
@@ -51,6 +53,7 @@ public class TcpIpDuplexIoTests : TcpIpDuplexIoBaseTests
     /// <returns></returns>
     public override IDuplexIo GetDuplexIoWithFakeEncodeDecoder(ISocketProxy socketProxy, FakeSendPacketProcessEnum expectedResult)
     {
+        ArgumentNullException.ThrowIfNull(DataMessagingConfig);
         Socket = socketProxy;
         BindDelegates();
 

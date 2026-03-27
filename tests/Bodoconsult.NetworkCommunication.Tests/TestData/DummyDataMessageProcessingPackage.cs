@@ -1,14 +1,16 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
+using System.Buffers;
 using Bodoconsult.NetworkCommunication.Communication.Sending;
 using Bodoconsult.NetworkCommunication.Interfaces;
+using Moq;
 
 namespace Bodoconsult.NetworkCommunication.Tests.TestData;
 
 /// <summary>
 /// Dummy implementatioon of <see cref="IDataMessageProcessingPackage"/>
 /// </summary>
-public class DummyDataMessageProcessingPackage: IDataMessageProcessingPackage
+public class DummyDataMessageProcessingPackage : IDataMessageProcessingPackage
 {
     /// <summary>
     /// Default ctor
@@ -19,6 +21,13 @@ public class DummyDataMessageProcessingPackage: IDataMessageProcessingPackage
         DataMessagingConfig = dataMessagingConfig;
         WaitStateManager = new DefaultWaitStateManager(dataMessagingConfig);
         HandshakeDataMessageValidator = new DummyHandshakeValidator();
+        DataMessageSplitter = new Mock<IDataMessageSplitter>().Object;
+        DataMessageCodingProcessor = new Mock<IDataMessageCodingProcessor>().Object;
+        DataMessageProcessor = new Mock<IDataMessageProcessor>().Object;
+        DataBlockCodingProcessor = new Mock<IDataBlockCodingProcessor>().Object;
+        DataMessageValidator = new Mock<IDataMessageValidator>().Object;
+        DataMessageHandshakeFactory = new Mock<IDataMessageHandshakeFactory>().Object;
+        OutboundDataMessageFactory = new Mock<IOutboundDataMessageFactory>().Object;
     }
 
     /// <summary>

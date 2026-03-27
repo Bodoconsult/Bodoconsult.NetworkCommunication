@@ -13,6 +13,11 @@ public interface IInboundBusinessTransactionDataMessage : IInboundDataMessage
     public int BusinessTransactionId { get; }
 
     /// <summary>
+    /// UID of the business transaction instance
+    /// </summary>
+    public Guid BusinessTransactionUid { get; }
+
+    /// <summary>
     /// Is the message a request for running a business transaction? True = request for running a business transaction, false reply on a request to run a business transaction
     /// </summary>
     public bool IsRequest { get; set; }

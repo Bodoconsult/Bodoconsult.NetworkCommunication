@@ -19,12 +19,12 @@ public abstract class BaseInboundBtcpMessageToBtReplyConverter : IInboundDataMes
     /// </summary>
     /// <param name="request">Current request</param>
     /// <returns></returns>
-    protected delegate IBusinessTransactionReply? CreateBusinessTransactionRequestDataDelegate(BtcpInboundDataMessage request);
+    protected delegate IBusinessTransactionReply? CreateBusinessTransactionReplyDelegate(BtcpInboundDataMessage request);
 
     /// <summary>
-    /// Collection of all registered business transactions and the <see cref="CreateBusinessTransactionRequestDataDelegate"/> to use for the single business transaction
+    /// Collection of all registered business transactions and the <see cref="CreateBusinessTransactionReplyDelegate"/> to use for the single business transaction
     /// </summary>
-    protected readonly Dictionary<int, CreateBusinessTransactionRequestDataDelegate> AllBusinessTransactionRequestDataDelegates = new();
+    protected readonly Dictionary<int, CreateBusinessTransactionReplyDelegate> AllBusinessTransactionReplyDelegates = new();
 
     /// <summary>
     /// Current app logger
@@ -62,7 +62,7 @@ public abstract class BaseInboundBtcpMessageToBtReplyConverter : IInboundDataMes
         // Now search the correct mapper and run it
         //try
         //{
-        foreach (var kvp in AllBusinessTransactionRequestDataDelegates)
+        foreach (var kvp in AllBusinessTransactionReplyDelegates)
         {
             if (btm.BusinessTransactionId != kvp.Key)
             {

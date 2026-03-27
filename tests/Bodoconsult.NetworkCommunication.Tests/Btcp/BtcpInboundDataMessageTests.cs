@@ -16,15 +16,20 @@ internal class BtcpInboundDataMessageTests
     {
         // Arrange 
         const int transactionId = 101;
+        var transactionUid = Guid.NewGuid();
 
         // Act  
-        var msg = new BtcpInboundDataMessage(transactionId);
+        var msg = new BtcpInboundDataMessage(transactionId, transactionUid);
 
         // Assert
-        Assert.That(msg.MessageId, Is.Not.Zero);
-        Assert.That(string.IsNullOrEmpty(msg.ToInfoString()), Is.False);
-        Assert.That(string.IsNullOrEmpty(msg.ToShortInfoString()), Is.False);
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(msg.MessageId, Is.Not.Zero);
+            Assert.That(string.IsNullOrEmpty(msg.ToInfoString()), Is.False);
+            Assert.That(string.IsNullOrEmpty(msg.ToShortInfoString()), Is.False);
 
-        Assert.That(msg.BusinessTransactionId, Is.EqualTo(transactionId));
+            Assert.That(msg.BusinessTransactionId, Is.EqualTo(transactionId));
+            Assert.That(msg.BusinessTransactionUid, Is.EqualTo(transactionUid));
+        }
     }
 }

@@ -11,17 +11,17 @@ public interface ITcpTests
     /// <summary>
     /// Current remote TCP/IP device to send data to the socket
     /// </summary>
-    ITcpIpDevice RemoteTcpIpDevice { get; set; }
+    ITcpIpDevice? RemoteTcpIpDevice { get; set; }
 
     /// <summary>
     /// Current IP address to use
     /// </summary>
-    IPAddress IpAddress { get; set; }
+    IPAddress? IpAddress { get; set; }
 
     /// <summary>
     /// Device communication data
     /// </summary>
-    IIpDataMessagingConfig DataMessagingConfig { get; set; }
+    IIpDataMessagingConfig? DataMessagingConfig { get; set; }
 
     /// <summary>
     /// General log file
@@ -31,5 +31,5 @@ public interface ITcpTests
     /// <summary>
     /// Current <see cref="ISocketProxy"/> implementation to use
     /// </summary>
-    ISocketProxy Socket { get; set; }
+    ISocketProxy? Socket { get; set; }
 }

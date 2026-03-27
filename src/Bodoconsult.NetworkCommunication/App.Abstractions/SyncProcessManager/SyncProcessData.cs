@@ -1,5 +1,7 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
+using Bodoconsult.App.Interfaces;
+
 namespace Bodoconsult.NetworkCommunication.App.Abstractions.SyncProcessManager;
 
 /// <summary>
@@ -63,6 +65,11 @@ public class SyncProcessData<T> : IDisposable where T: class
     /// </summary>
     public TaskCompletionSource<T?>? TaskCompletionSource { get; private set; }
 
+    /// <summary>
+    /// Current BT request data connect to this process
+    /// </summary>
+    public IBusinessTransactionRequestData? BusinessTransactionRequestData { get; set; }
+    
     /// <summary>Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.</summary>
     public void Dispose()
     {

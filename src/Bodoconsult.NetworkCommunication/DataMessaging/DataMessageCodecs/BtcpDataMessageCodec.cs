@@ -86,12 +86,29 @@ public class BtcpDataMessageCodec : BaseDataMessageCodec
         }
 
         // Find business transaction ID
-
         var nArray = data.Slice(2, posEot - 2).ToArray();
 
         var s = _encoding.GetString(nArray);
 
         var bt = Convert.ToInt32(s);
+
+        // Find UID of the BT
+        var altPosEot = posEot;
+        for (var i = posEot + 1; i < data.Length; i++)
+        {
+            var b = data.Slice(i, 1).Span[0];
+            if (b == DeviceCommunicationBasics.Eot || b == DeviceCommunicationBasics.Etx)
+            {
+                posEot = i;
+                break;
+            }
+        }
+
+        nArray = data.Slice(2, posEot - 2).ToArray();
+
+        s = _encoding.GetString(nArray);
+
+        var uid = new Guid(s);
 
         // Datablock delivered?
         if (posEot != data.Length - 1)
@@ -111,7 +128,9 @@ public class BtcpDataMessageCodec : BaseDataMessageCodec
             }
         }
 
-        var dataMessage = new BtcpInboundDataMessage(bt)
+
+
+        var dataMessage = new BtcpInboundDataMessage(bt, uid)
         {
             DataBlock = dataBlock,
             IsRequest = isRequest

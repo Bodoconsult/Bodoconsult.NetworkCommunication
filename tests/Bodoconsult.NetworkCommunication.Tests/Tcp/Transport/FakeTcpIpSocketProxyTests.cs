@@ -27,6 +27,7 @@ public class FakeTcpIpSocketProxyTests : BaseTestsTcpIpSocket
     public void Receive_MemoryLoadNextReceivedMessage_DataReceived()
     {
         // Arrange 
+        ArgumentNullException.ThrowIfNull(Socket);
         var socket = (FakeTcpIpSocketProxy)Socket;
 
         var receivedMessage = new byte[] { 0, 0, 1 };
@@ -53,6 +54,7 @@ public class FakeTcpIpSocketProxyTests : BaseTestsTcpIpSocket
     public void Receive_ArrayLoadNextReceivedMessage_DataReceived()
     {
         // Arrange 
+        ArgumentNullException.ThrowIfNull(Socket);
         var socket = (FakeTcpIpSocketProxy)Socket;
 
         var receivedMessage = new byte[] { 0, 0, 1 };
@@ -78,6 +80,7 @@ public class FakeTcpIpSocketProxyTests : BaseTestsTcpIpSocket
     public void Receive_MemorySend_DataReceived()
     {
         // Arrange 
+        ArgumentNullException.ThrowIfNull(Socket);
         var socket = (FakeTcpIpSocketProxy)Socket;
 
         var receivedMessage = new byte[] { 0, 0, 1 };
@@ -107,6 +110,7 @@ public class FakeTcpIpSocketProxyTests : BaseTestsTcpIpSocket
     public void Receive_MemorySend2Messages_DataReceived()
     {
         // Arrange 
+        ArgumentNullException.ThrowIfNull(Socket);
         var socket = (FakeTcpIpSocketProxy)Socket;
 
         var receivedMessage = new byte[] { 0, 0, 1 };
@@ -151,6 +155,7 @@ public class FakeTcpIpSocketProxyTests : BaseTestsTcpIpSocket
     public void Receive_ArraySends_DataReceived()
     {
         // Arrange 
+        ArgumentNullException.ThrowIfNull(Socket);
         var socket = (FakeTcpIpSocketProxy)Socket;
 
         var receivedMessage = new byte[] { 0, 0, 1 };
@@ -178,6 +183,7 @@ public class FakeTcpIpSocketProxyTests : BaseTestsTcpIpSocket
     public void Receive_ArraySend2Messages_DataReceived()
     {
         // Arrange 
+        ArgumentNullException.ThrowIfNull(Socket);
         var socket = (FakeTcpIpSocketProxy)Socket;
 
         var receivedMessage = new byte[] { 0, 0, 1 };

@@ -24,6 +24,8 @@ public class TcpIpHighPerformanceDuplexIoTests : TcpIpDuplexIoBaseTests
 
         TcpIpServerTestHelper.InitSocket(this);
 
+        ArgumentNullException.ThrowIfNull(Socket);
+
         DuplexIo = GetDuplexIo(Socket);
 
         Debug.Print("End FTestSetup");
@@ -36,6 +38,7 @@ public class TcpIpHighPerformanceDuplexIoTests : TcpIpDuplexIoBaseTests
     /// <returns><see cref="IDuplexIo"/> instance to test</returns>
     public override IDuplexIo GetDuplexIo(ISocketProxy socketProxy)
     {
+        ArgumentNullException.ThrowIfNull(DataMessagingConfig);
         Socket = socketProxy;
         BindDelegates();
 
@@ -55,6 +58,7 @@ public class TcpIpHighPerformanceDuplexIoTests : TcpIpDuplexIoBaseTests
 
         //MessageEncodingDecodingHandler = new FakeErrorDecodingEncodingHandler();
 
+        ArgumentNullException.ThrowIfNull(DataMessagingConfig);
         DataMessagingConfig.SocketProxy = socketProxy;
         DataMessagingConfig.RaiseAppLayerDataMessageReceivedDelegate = OnRaiseDataMessageReceivedEvent;
         //DataMessagingConfig.RaiseDataMessagingConfigMessageNotReceivedDelegate = OnRaiseDataMessagingConfigMessageNotReceivedEvent;

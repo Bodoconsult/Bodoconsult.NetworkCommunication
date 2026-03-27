@@ -38,23 +38,23 @@ public class BaseTcpTests : ITcpTests
     /// <summary>
     /// Current TCP/IP server to send data to the socket
     /// </summary>
-    public ITcpIpDevice RemoteTcpIpDevice { get; set; }
+    public ITcpIpDevice? RemoteTcpIpDevice { get; set; }
 
     /// <summary>
     /// Current IP address to use
     /// </summary>
-    public IPAddress IpAddress { get; set; }
+    public IPAddress? IpAddress { get; set; }
 
 
     /// <summary>
     /// Current socket proxy to use
     /// </summary>
-    public ISocketProxy Socket { get; set; }
+    public ISocketProxy? Socket { get; set; }
 
     /// <summary>
     /// Device communication data
     /// </summary>
-    public IIpDataMessagingConfig DataMessagingConfig { get; set; }
+    public IIpDataMessagingConfig? DataMessagingConfig { get; set; }
 
     /// <summary>
     /// General log file
@@ -66,6 +66,7 @@ public class BaseTcpTests : ITcpTests
     /// </summary>
     protected void BindDelegates()
     {
+        ArgumentNullException.ThrowIfNull(DataMessagingConfig);
         DataMessagingConfig.SocketProxy = Socket;
         //DataMessagingConfig.DataMessageProcessingPackage.WaitStateManager.RaiseHandshakeReceivedDelegate = OnHandshakeReceivedDelegate;
         DataMessagingConfig.RaiseCommLayerDataMessageReceivedDelegate = OnRaiseDataMessageReceivedEvent;
@@ -104,7 +105,7 @@ public class BaseTcpTests : ITcpTests
         MessageCounter++;
         IsMessageReceivedFired = true;
     }
-    protected void OnRaiseDataMessageNotSentEvent(ReadOnlyMemory<byte> message, string reason)
+    protected void OnRaiseDataMessageNotSentEvent(ReadOnlyMemory<byte> message, string? reason)
     {
         IsDataMessageNotSentFired = true;
     }
@@ -143,6 +144,8 @@ public class BaseTcpTests : ITcpTests
     /// </summary>
     public virtual void CentralErrorHandling(Exception exception)
     {
+        ArgumentNullException.ThrowIfNull(DataMessagingConfig);
+
         string msg;
         var loggerId = $"{DataMessagingConfig.LoggerId}:";
 
