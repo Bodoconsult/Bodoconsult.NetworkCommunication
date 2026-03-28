@@ -78,10 +78,7 @@ namespace IpCommunicationSampleTests.Backend.Adapter
                 inboundDataMessageToBtRequestConverter, inboundDataMessageToBtReplyConverter,
                 outboundBtRequestToOutboundDataMessageConverter, outboundBtReplyDataMessageConverter);
 
-            var msg = new BtcpInboundDataMessage(transactionId, transactionUid)
-            {
-                IsRequest = true
-            };
+            var msg = new BtcpRequestInboundDataMessage(transactionId, transactionUid);
 
             // Act  
             adapter.DefaultReceiveMessage(msg);

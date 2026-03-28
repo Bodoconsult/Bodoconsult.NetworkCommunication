@@ -31,11 +31,10 @@ public class ClientBtRequestDataToOutboundBtcpMessageConverter : BaseBtRequestDa
             Data = Encoding.UTF8.GetBytes($"{rd.DeviceStateId}\u0005{rd.DeviceStateName}\u0005{rd.BusinessStateId}\u0005{rd.BusinessStateName}\u0005{rd.BusinessSubstateId}\u0005{rd.BusinessSubstateName}")
         };
 
-        var message = new BtcpOutboundDataMessage(rd.TransactionId)
+        var message = new BtcpRequestOutboundDataMessage(rd.TransactionId, rd.TransactionGuid)
         {
             DataBlock = db
         };
-
 
         return message;
     }

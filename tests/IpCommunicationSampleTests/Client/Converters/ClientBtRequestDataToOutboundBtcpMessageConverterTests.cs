@@ -47,7 +47,7 @@ internal class ClientBtRequestDataToOutboundBtcpMessageConverterTests
         };
 
         // Act  
-        var result = (BtcpOutboundDataMessage)conv.MapToOutboundDataMessage(request);
+        var result = (BtcpRequestOutboundDataMessage)conv.MapToOutboundDataMessage(request);
 
         // Assert
         using (Assert.EnterMultipleScope())
@@ -73,7 +73,7 @@ internal class ClientBtRequestDataToOutboundBtcpMessageConverterTests
         };
 
         // Act  
-        var result = (BtcpOutboundDataMessage)conv.MapToOutboundDataMessage(request);
+        var result = (BtcpRequestOutboundDataMessage)conv.MapToOutboundDataMessage(request);
 
         // Assert
         using (Assert.EnterMultipleScope())
@@ -99,7 +99,7 @@ internal class ClientBtRequestDataToOutboundBtcpMessageConverterTests
         };
 
         // Act  
-        var result = (BtcpOutboundDataMessage)conv.MapToOutboundDataMessage(request);
+        var result = (BtcpRequestOutboundDataMessage)conv.MapToOutboundDataMessage(request);
 
         // Assert
         using (Assert.EnterMultipleScope())
@@ -125,7 +125,7 @@ internal class ClientBtRequestDataToOutboundBtcpMessageConverterTests
         };
 
         // Act  
-        var result = (BtcpOutboundDataMessage)conv.MapToOutboundDataMessage(request);
+        var result = (BtcpRequestOutboundDataMessage)conv.MapToOutboundDataMessage(request);
 
         // Assert
         using (Assert.EnterMultipleScope())
@@ -151,7 +151,7 @@ internal class ClientBtRequestDataToOutboundBtcpMessageConverterTests
         };
 
         // Act  
-        var result = (BtcpOutboundDataMessage)conv.MapToOutboundDataMessage(request);
+        var result = (BtcpRequestOutboundDataMessage)conv.MapToOutboundDataMessage(request);
 
         // Assert
         using (Assert.EnterMultipleScope())

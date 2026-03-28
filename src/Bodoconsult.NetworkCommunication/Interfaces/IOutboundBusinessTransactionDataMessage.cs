@@ -10,5 +10,10 @@ public interface IOutboundBusinessTransactionDataMessage : IOutboundDataMessage
     /// <summary>
     /// ID of the business transaction
     /// </summary>
-    public int BusinessTransactionId { get; }
+    int BusinessTransactionId { get; }
+
+    /// <summary>
+    /// UID of the business transaction instance
+    /// </summary>
+    Guid BusinessTransactionUid { get; }
 }

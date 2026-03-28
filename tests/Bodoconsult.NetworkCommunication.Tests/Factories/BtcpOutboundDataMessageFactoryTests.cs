@@ -19,7 +19,7 @@ internal class BtcpOutboundDataMessageFactoryTests
         var factory = new BtcpOutboundDataMessageFactory();
 
         // Act  
-        var message = (BtcpOutboundDataMessage)factory.CreateInstance(ps);
+        var message = (BtcpRequestOutboundDataMessage)factory.CreateInstance(ps);
 
         // Assert
         Assert.That(message, Is.Not.Null);

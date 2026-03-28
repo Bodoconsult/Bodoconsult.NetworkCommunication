@@ -59,7 +59,7 @@ internal class BtcpDataMessageValidatorTests
         // Arrange 
         var validator = new BtcpDataMessageValidator();
 
-        var msg = new BtcpInboundDataMessage(1, Guid.NewGuid());
+        var msg = new BtcpRequestInboundDataMessage(1, Guid.NewGuid());
 
         // Act  
         var result = validator.IsMessageValid(msg);

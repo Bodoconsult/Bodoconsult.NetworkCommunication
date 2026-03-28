@@ -10,7 +10,7 @@ using Bodoconsult.NetworkCommunication.Interfaces;
 namespace Bodoconsult.NetworkCommunication.BusinessTransactions.Converters;
 
 /// <summary>
-/// Base class for converters from <see cref="IBusinessTransactionRequestData"/> instances to <see cref="BtcpOutboundDataMessage"/> instances
+/// Base class for converters from <see cref="IBusinessTransactionRequestData"/> instances to <see cref="BtcpRequestOutboundDataMessage"/> instances
 /// </summary>
 public abstract class BaseBtRequestDataToOutboundBtcpMessageConverter : IBtRequestDataToOutboundDataMessageConverter
 {

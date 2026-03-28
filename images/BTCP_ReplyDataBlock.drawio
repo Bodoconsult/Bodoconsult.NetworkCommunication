@@ -1,0 +1,34 @@
+<mxfile host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/27.0.5 Chrome/134.0.6998.205 Electron/35.3.0 Safari/537.36" version="27.0.5">
+  <diagram name="Seite-1" id="H0ggHBI83sExS-HZn2yW">
+    <mxGraphModel dx="3346" dy="841" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="ay68n4W80iG7V_7q9e0b-1" value="Error code" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="90" y="250" width="60" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="ay68n4W80iG7V_7q9e0b-4" value="BTCP reply datablock" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;fontStyle=1" parent="1" vertex="1">
+          <mxGeometry x="90" y="190" width="580" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="r6MU2zeVXUlBac57J-2h-1" value="Pipe (|)" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="150" y="250" width="50" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="uP6gd5bUhaCcG64Mrqtf-1" value="Info message" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="200" y="250" width="80" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="uP6gd5bUhaCcG64Mrqtf-2" value="Pipe (|)" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="280" y="250" width="50" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="uP6gd5bUhaCcG64Mrqtf-3" value="Error message" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="330" y="250" width="80" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="uP6gd5bUhaCcG64Mrqtf-4" value="Pipe (|)" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="410" y="250" width="50" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="uP6gd5bUhaCcG64Mrqtf-5" value="Data bytes as requested by your buisness transaction" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="460" y="250" width="210" height="60" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

@@ -6,19 +6,22 @@ using Bodoconsult.NetworkCommunication.Interfaces;
 namespace Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
 
 /// <summary>
-/// Basic implementation of <see cref="IOutboundBusinessTransactionDataMessage"/> for BTCP protocol
+/// Basic implementation of <see cref="IOutboundBusinessTransactionDataMessage"/> for BTCP protocol reply
 /// </summary>
-public class BtcpOutboundDataMessage: IOutboundBusinessTransactionDataMessage 
+public class BtcpReplyOutboundDataMessage : IOutboundBusinessTransactionDataMessage
 {
     private Memory<byte> _rawMessageData;
 
     /// <summary>
     /// Default ctor
     /// </summary>
-    public BtcpOutboundDataMessage(int businessTransactionId)
+    /// <param name="businessTransactionId">ID of the business transaction</param>
+    /// <param name="businessTransactionUid">UID of the business transaction instance</param>
+    public BtcpReplyOutboundDataMessage(int businessTransactionId, Guid businessTransactionUid)
     {
         MessageId = DateTime.Now.ToFileTimeUtc();
         BusinessTransactionId = businessTransactionId;
+        BusinessTransactionUid = businessTransactionUid;
     }
 
     /// <summary>
@@ -35,6 +38,36 @@ public class BtcpOutboundDataMessage: IOutboundBusinessTransactionDataMessage
     /// Is the message a request for running a business transaction? True = request for running a business transaction, false reply on a request to run a business transaction
     /// </summary>
     public bool IsRequest { get; set; }
+
+    /// <summary>
+    /// Data block stored in the message
+    /// </summary>
+    public ITypedOutboundDataBlock? DataBlock { get; set; }
+
+    /// <summary>
+    /// ID of the business transaction
+    /// </summary>
+    public int BusinessTransactionId { get; }
+
+    /// <summary>
+    /// UID of the business transaction instance
+    /// </summary>
+    public Guid BusinessTransactionUid { get; }
+
+    /// <summary>
+    /// Provided error code
+    /// </summary>
+    public int ErrorCode { get; set; }
+
+    /// <summary>
+    /// Provided info message or null
+    /// </summary>
+    public string? InfoMessage { get; set; }
+
+    /// <summary>
+    /// Provided error message or null
+    /// </summary>
+    public string? ErrorMessage { get; set; }
 
     /// <summary>
     /// Current raw message data as byte array
@@ -60,21 +93,15 @@ public class BtcpOutboundDataMessage: IOutboundBusinessTransactionDataMessage
     /// <returns>Info string</returns>
     public string ToInfoString()
     {
-        return $"BtcpOutboundDataMessage ID {MessageId} BT {BusinessTransactionId } {RawMessageDataClearText}";
+        return $"BtcpReplyOutboundDataMessage ID {MessageId} BT {BusinessTransactionId} / {BusinessTransactionUid} Error {ErrorCode}: {RawMessageDataClearText}";
     }
 
+    /// <summary>
+    /// Create a short info string for logging
+    /// </summary>
+    /// <returns>Info string</returns>
     public string ToShortInfoString()
     {
-        return $"BtcpOutboundDataMessage ID {MessageId} BT {BusinessTransactionId }";
+        return $"BtcpReplyOutboundDataMessage ID {MessageId} BT {BusinessTransactionId} / {BusinessTransactionUid} Error {ErrorCode}";
     }
-
-    /// <summary>
-    /// Data block stored in the message
-    /// </summary>
-    public ITypedOutboundDataBlock? DataBlock { get; set; }
-
-    /// <summary>
-    /// ID of the business transaction
-    /// </summary>
-    public int BusinessTransactionId { get;  }
 }

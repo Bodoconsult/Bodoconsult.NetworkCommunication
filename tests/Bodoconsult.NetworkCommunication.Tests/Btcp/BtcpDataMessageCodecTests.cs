@@ -1,5 +1,8 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
+using System.Diagnostics;
+using System.Text;
+using Bodoconsult.App.Helpers;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataBlockCodecs;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataBlockCodingProcessors;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataBlocks;
@@ -30,7 +33,16 @@ internal class BtcpDataMessageCodecTests
     public void DecodeDataMessage_ValidInputWithDataBlockReply_MessageDecoded()
     {
         // Arrange 
-        var msg = new byte[] { 0x2, 0x0, 0x31, 0x4, 0x78, 0x75, 0x62, 0x62, 0x3, 0x2, 0x2, 0x4, 0x6b, 0x75, 0x62, 0x62, 0x3 };
+        var msg = new byte[] { 0x2, 0x0, 0x31, 0x4, 0x30, 0x66, 0x38, 0x66, 0x61, 0x64, 0x35, 0x62, 0x2d, 0x64,
+            0x39, 0x63, 0x62, 0x2d, 0x34, 0x36, 0x39, 0x66, 0x2d, 0x61, 0x31, 0x36, 0x35,
+            0x2d, 0x37, 0x30, 0x38, 0x36, 0x37, 0x37, 0x32, 0x38, 0x39, 0x35, 0x30, 0x65, 0x4,
+            // Identifier byte
+            0x78,
+            // Default reply
+            0x32, 0x7c, 0x42, 0x6c, 0x75, 0x62, 0x62, 0x7c, 0x42, 0x6c, 0x61, 0x62, 0x62, 0x7c,
+            // Payload
+            0x42, 0x6c, 0x69, 0x70, 0x70,
+            0x3 };
 
         var dataBlockCodingProcessor = new DefaultDataBlockCodingProcessor();
         dataBlockCodingProcessor.LoadDataBlockCodecs('x', new BasicDataBlockCodec());
@@ -47,15 +59,19 @@ internal class BtcpDataMessageCodecTests
             Assert.That(result.DataMessage, Is.Not.Null);
 
             Assert.That(result.DataMessage, Is.Not.Null);
-            var btcpMsg = (BtcpInboundDataMessage?)result.DataMessage;
+            var btcpMsg = (BtcpReplyInboundDataMessage?)result.DataMessage;
 
             Assert.That(btcpMsg, Is.Not.Null);
             ArgumentNullException.ThrowIfNull(btcpMsg);
             Assert.That(btcpMsg.BusinessTransactionId, Is.EqualTo(1));
             Assert.That(btcpMsg.DataBlock, Is.Not.Null);
             ArgumentNullException.ThrowIfNull(btcpMsg.DataBlock);
-            Assert.That(btcpMsg.DataBlock.Data.Length, Is.EqualTo(11));
-            Assert.That(btcpMsg.IsRequest, Is.False);
+            Assert.That(btcpMsg.DataBlock.Data.Length, Is.EqualTo(19));
+
+            Assert.That(btcpMsg.ErrorCode, Is.Not.Zero);
+            Assert.That(btcpMsg.InfoMessage, Is.EqualTo("Blubb"));
+            Assert.That(btcpMsg.ErrorMessage, Is.EqualTo("Blabb"));
+            Assert.That(btcpMsg.Payload.Length, Is.Not.Zero);
         }
     }
 
@@ -63,7 +79,7 @@ internal class BtcpDataMessageCodecTests
     public void DecodeDataMessage_ValidInputWithDataBlockRequest_MessageDecoded()
     {
         // Arrange 
-        var msg = new byte[] { 0x2, 0x1, 0x31, 0x4, 0x78, 0x75, 0x62, 0x62, 0x3, 0x2, 0x2, 0x4, 0x6b, 0x75, 0x62, 0x62, 0x3 };
+        var msg = new byte[] { 0x2, 0x1, 0x31, 0x4, 0x30, 0x66, 0x38, 0x66, 0x61, 0x64, 0x35, 0x62, 0x2d, 0x64, 0x39, 0x63, 0x62, 0x2d, 0x34, 0x36, 0x39, 0x66, 0x2d, 0x61, 0x31, 0x36, 0x35, 0x2d, 0x37, 0x30, 0x38, 0x36, 0x37, 0x37, 0x32, 0x38, 0x39, 0x35, 0x30, 0x65, 0x4, 0x78, 0x75, 0x62, 0x62, 0x3, 0x2, 0x2, 0x4, 0x6b, 0x75, 0x62, 0x62, 0x3 };
 
         var dataBlockCodingProcessor = new DefaultDataBlockCodingProcessor();
         dataBlockCodingProcessor.LoadDataBlockCodecs('x', new BasicDataBlockCodec());
@@ -79,7 +95,7 @@ internal class BtcpDataMessageCodecTests
             Assert.That(result.ErrorCode, Is.Zero);
             Assert.That(result.DataMessage, Is.Not.Null);
 
-            var btcpMsg = (BtcpInboundDataMessage?)result.DataMessage;
+            var btcpMsg = (BtcpRequestInboundDataMessage?)result.DataMessage;
 
             Assert.That(btcpMsg, Is.Not.Null);
             ArgumentNullException.ThrowIfNull(btcpMsg);
@@ -87,7 +103,6 @@ internal class BtcpDataMessageCodecTests
             Assert.That(btcpMsg.DataBlock, Is.Not.Null);
             ArgumentNullException.ThrowIfNull(btcpMsg.DataBlock);
             Assert.That(btcpMsg.DataBlock.Data.Length, Is.EqualTo(11));
-            Assert.That(btcpMsg.IsRequest, Is.True);
         }
     }
 
@@ -95,7 +110,7 @@ internal class BtcpDataMessageCodecTests
     public void DecodeDataMessage_ValidInputNoDataBlockWithEotReply_MessageDecoded()
     {
         // Arrange 
-        var msg = new byte[] { 0x2, 0x0, 0x31, 0x4, 0x3 };
+        var msg = new byte[] { 0x2, 0x0, 0x31, 0x4, 0x30, 0x66, 0x38, 0x66, 0x61, 0x64, 0x35, 0x62, 0x2d, 0x64, 0x39, 0x63, 0x62, 0x2d, 0x34, 0x36, 0x39, 0x66, 0x2d, 0x61, 0x31, 0x36, 0x35, 0x2d, 0x37, 0x30, 0x38, 0x36, 0x37, 0x37, 0x32, 0x38, 0x39, 0x35, 0x30, 0x65, 0x4, 0x3 };
 
         var dataBlockCodingProcessor = new DefaultDataBlockCodingProcessor();
         dataBlockCodingProcessor.LoadDataBlockCodecs('x', new BasicDataBlockCodec());
@@ -111,13 +126,12 @@ internal class BtcpDataMessageCodecTests
             Assert.That(result.ErrorCode, Is.Zero);
             Assert.That(result.DataMessage, Is.Not.Null);
 
-            var btcpMsg = (BtcpInboundDataMessage?)result.DataMessage;
+            var btcpMsg = (BtcpReplyInboundDataMessage?)result.DataMessage;
 
             Assert.That(btcpMsg, Is.Not.Null);
             ArgumentNullException.ThrowIfNull(btcpMsg);
             Assert.That(btcpMsg.BusinessTransactionId, Is.EqualTo(1));
             Assert.That(btcpMsg.DataBlock, Is.Null);
-            Assert.That(btcpMsg.IsRequest, Is.False);
         }
     }
 
@@ -125,7 +139,7 @@ internal class BtcpDataMessageCodecTests
     public void DecodeDataMessage_ValidInputNoDataBlockWithEotRequest_MessageDecoded()
     {
         // Arrange 
-        var msg = new byte[] { 0x2, 0x1, 0x31, 0x4, 0x3 };
+        var msg = new byte[] { 0x2, 0x1, 0x31, 0x4, 0x30, 0x66, 0x38, 0x66, 0x61, 0x64, 0x35, 0x62, 0x2d, 0x64, 0x39, 0x63, 0x62, 0x2d, 0x34, 0x36, 0x39, 0x66, 0x2d, 0x61, 0x31, 0x36, 0x35, 0x2d, 0x37, 0x30, 0x38, 0x36, 0x37, 0x37, 0x32, 0x38, 0x39, 0x35, 0x30, 0x65, 0x4, 0x3 };
 
         var dataBlockCodingProcessor = new DefaultDataBlockCodingProcessor();
         dataBlockCodingProcessor.LoadDataBlockCodecs('x', new BasicDataBlockCodec());
@@ -141,21 +155,35 @@ internal class BtcpDataMessageCodecTests
             Assert.That(result.ErrorCode, Is.Zero);
             Assert.That(result.DataMessage, Is.Not.Null);
 
-            var btcpMsg = (BtcpInboundDataMessage?)result.DataMessage;
+            var btcpMsg = (BtcpRequestInboundDataMessage?)result.DataMessage;
 
             Assert.That(btcpMsg, Is.Not.Null);
             ArgumentNullException.ThrowIfNull(btcpMsg);
             Assert.That(btcpMsg.BusinessTransactionId, Is.EqualTo(1));
             Assert.That(btcpMsg.DataBlock, Is.Null);
-            Assert.That(btcpMsg.IsRequest, Is.True);
         }
     }
+
+    [Explicit]
+    [Test]
+    public void DummyTest()
+    {
+        //var uid = new Guid("0f8fad5b-d9cb-469f-a165-70867728950e");
+
+        //var bytes = Encoding.UTF8.GetBytes(uid.ToString());
+        var bytes = Encoding.UTF8.GetBytes("Blipp");
+
+        Debug.Print(ArrayHelper.GetStringFromArrayCsharpStyle(bytes));
+
+        Assert.Pass();
+    }
+
 
     [Test]
     public void DecodeDataMessage_ValidInputNoDataBlockNoEotReply_MessageDecoded()
     {
         // Arrange 
-        var msg = new byte[] { 0x2, 0x0, 0x31, 0x4, 0x3 };
+        var msg = new byte[] { 0x2, 0x0, 0x31, 0x4, 0x30, 0x66, 0x38, 0x66, 0x61, 0x64, 0x35, 0x62, 0x2d, 0x64, 0x39, 0x63, 0x62, 0x2d, 0x34, 0x36, 0x39, 0x66, 0x2d, 0x61, 0x31, 0x36, 0x35, 0x2d, 0x37, 0x30, 0x38, 0x36, 0x37, 0x37, 0x32, 0x38, 0x39, 0x35, 0x30, 0x65, 0x4, 0x3 };
 
         var dataBlockCodingProcessor = new DefaultDataBlockCodingProcessor();
         dataBlockCodingProcessor.LoadDataBlockCodecs('x', new BasicDataBlockCodec());
@@ -171,13 +199,12 @@ internal class BtcpDataMessageCodecTests
             Assert.That(result.ErrorCode, Is.Zero);
             Assert.That(result.DataMessage, Is.Not.Null);
 
-            var btcpMsg = (BtcpInboundDataMessage?)result.DataMessage;
+            var btcpMsg = (BtcpReplyInboundDataMessage?)result.DataMessage;
 
             Assert.That(btcpMsg, Is.Not.Null);
             ArgumentNullException.ThrowIfNull(btcpMsg);
             Assert.That(btcpMsg.BusinessTransactionId, Is.EqualTo(1));
             Assert.That(btcpMsg.DataBlock, Is.Null);
-            Assert.That(btcpMsg.IsRequest, Is.False);
         }
     }
 
@@ -185,7 +212,7 @@ internal class BtcpDataMessageCodecTests
     public void DecodeDataMessage_ValidInputNoDataBlockNoEotRequest_MessageDecoded()
     {
         // Arrange 
-        var msg = new byte[] { 0x2, 0x1, 0x31, 0x4, 0x3 };
+        var msg = new byte[] { 0x2, 0x1, 0x31, 0x4, 0x30, 0x66, 0x38, 0x66, 0x61, 0x64, 0x35, 0x62, 0x2d, 0x64, 0x39, 0x63, 0x62, 0x2d, 0x34, 0x36, 0x39, 0x66, 0x2d, 0x61, 0x31, 0x36, 0x35, 0x2d, 0x37, 0x30, 0x38, 0x36, 0x37, 0x37, 0x32, 0x38, 0x39, 0x35, 0x30, 0x65, 0x3 };
 
         var dataBlockCodingProcessor = new DefaultDataBlockCodingProcessor();
         dataBlockCodingProcessor.LoadDataBlockCodecs('x', new BasicDataBlockCodec());
@@ -201,13 +228,12 @@ internal class BtcpDataMessageCodecTests
             Assert.That(result.ErrorCode, Is.Zero);
             Assert.That(result.DataMessage, Is.Not.Null);
 
-            var btcpMsg = (BtcpInboundDataMessage?)result.DataMessage;
+            var btcpMsg = (BtcpRequestInboundDataMessage?)result.DataMessage;
 
             Assert.That(btcpMsg, Is.Not.Null);
             ArgumentNullException.ThrowIfNull(btcpMsg);
             Assert.That(btcpMsg.BusinessTransactionId, Is.EqualTo(1));
             Assert.That(btcpMsg.DataBlock, Is.Null);
-            Assert.That(btcpMsg.IsRequest, Is.True);
         }
     }
 
@@ -279,6 +305,7 @@ internal class BtcpDataMessageCodecTests
     {
         // Arrange 
         var transactionId = 1;
+        var transactionUid = Guid.NewGuid();
 
         var data = new byte[] { 0x75, 0x62, 0x62, 0x6b, 0x75, 0x62, 0x62 };
 
@@ -288,7 +315,7 @@ internal class BtcpDataMessageCodecTests
             DataBlockType = 'x'
         };
 
-        var msg = new BtcpOutboundDataMessage(transactionId)
+        var msg = new BtcpReplyOutboundDataMessage(transactionId, transactionUid)
         {
             DataBlock = dataBlock
         };
@@ -314,8 +341,8 @@ internal class BtcpDataMessageCodecTests
             Assert.That(msg.RawMessageData.Span[2], Is.EqualTo(0x31));
             Assert.That(msg.RawMessageData.Span[3], Is.EqualTo(DeviceCommunicationBasics.Eot));
 
-            Assert.That(msg.RawMessageData.Span[msg.RawMessageData.Length - 1],
-                Is.EqualTo(DeviceCommunicationBasics.Etx));
+            Assert.That(msg.RawMessageData.Span[40], Is.EqualTo(DeviceCommunicationBasics.Eot));
+            Assert.That(msg.RawMessageData.Span[msg.RawMessageData.Length - 1], Is.EqualTo(DeviceCommunicationBasics.Etx));
         }
     }
 
@@ -324,6 +351,7 @@ internal class BtcpDataMessageCodecTests
     {
         // Arrange 
         var transactionId = 1;
+        var transactionUid = Guid.NewGuid();
 
         var data = new byte[] { 0x75, 0x62, 0x62, 0x6b, 0x75, 0x62, 0x62 };
 
@@ -333,7 +361,7 @@ internal class BtcpDataMessageCodecTests
             DataBlockType = 'x'
         };
 
-        var msg = new BtcpOutboundDataMessage(transactionId)
+        var msg = new BtcpRequestOutboundDataMessage(transactionId, transactionUid)
         {
             DataBlock = dataBlock,
             IsRequest = true
@@ -360,9 +388,8 @@ internal class BtcpDataMessageCodecTests
             Assert.That(msg.RawMessageData.Span[2], Is.EqualTo(0x31));
             Assert.That(msg.RawMessageData.Span[3], Is.EqualTo(DeviceCommunicationBasics.Eot));
 
-
-            Assert.That(msg.RawMessageData.Span[msg.RawMessageData.Length - 1],
-                Is.EqualTo(DeviceCommunicationBasics.Etx));
+            Assert.That(msg.RawMessageData.Span[40], Is.EqualTo(DeviceCommunicationBasics.Eot));
+            Assert.That(msg.RawMessageData.Span[msg.RawMessageData.Length - 1], Is.EqualTo(DeviceCommunicationBasics.Etx));
         }
     }
 
@@ -371,8 +398,9 @@ internal class BtcpDataMessageCodecTests
     {
         // Arrange 
         var transactionId = 1;
+        var transactionUid = Guid.NewGuid();
 
-        var msg = new BtcpOutboundDataMessage(transactionId);
+        var msg = new BtcpReplyOutboundDataMessage(transactionId, transactionUid);
 
         Assert.That(msg.RawMessageData.Length, Is.Zero);
 
@@ -393,7 +421,10 @@ internal class BtcpDataMessageCodecTests
             Assert.That(msg.RawMessageData.Span[0], Is.EqualTo(DeviceCommunicationBasics.Stx));
             Assert.That(msg.RawMessageData.Span[1], Is.EqualTo(0x0));
             Assert.That(msg.RawMessageData.Span[2], Is.EqualTo(0x31));
-            Assert.That(msg.RawMessageData.Span[3], Is.EqualTo(DeviceCommunicationBasics.Etx));
+            Assert.That(msg.RawMessageData.Span[3], Is.EqualTo(DeviceCommunicationBasics.Eot));
+
+            Assert.That(msg.RawMessageData.Span[40], Is.EqualTo(DeviceCommunicationBasics.Eot));
+            Assert.That(msg.RawMessageData.Span[msg.RawMessageData.Length - 1], Is.EqualTo(DeviceCommunicationBasics.Etx));
         }
     }
 
@@ -402,8 +433,9 @@ internal class BtcpDataMessageCodecTests
     {
         // Arrange 
         var transactionId = 1;
+        var transactionUid = Guid.NewGuid();
 
-        var msg = new BtcpOutboundDataMessage(transactionId)
+        var msg = new BtcpRequestOutboundDataMessage(transactionId, transactionUid)
         {
             IsRequest = true
         };
@@ -427,7 +459,9 @@ internal class BtcpDataMessageCodecTests
             Assert.That(msg.RawMessageData.Span[0], Is.EqualTo(DeviceCommunicationBasics.Stx));
             Assert.That(msg.RawMessageData.Span[1], Is.EqualTo(0x1));
             Assert.That(msg.RawMessageData.Span[2], Is.EqualTo(0x31));
-            Assert.That(msg.RawMessageData.Span[3], Is.EqualTo(DeviceCommunicationBasics.Etx));
+            Assert.That(msg.RawMessageData.Span[3], Is.EqualTo(DeviceCommunicationBasics.Eot));
+
+            Assert.That(msg.RawMessageData.Span[msg.RawMessageData.Length - 1], Is.EqualTo(DeviceCommunicationBasics.Etx));
         }
     }
 }

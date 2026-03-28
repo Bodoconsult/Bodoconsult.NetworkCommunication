@@ -6,9 +6,9 @@ using Bodoconsult.NetworkCommunication.Interfaces;
 namespace Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
 
 /// <summary>
-/// Basic implementation of <see cref="IInboundBusinessTransactionDataMessage"/> for BTCP protocol
+/// Basic implementation of <see cref="IInboundBusinessTransactionDataMessage"/> for BTCP protocol request
 /// </summary>
-public class BtcpInboundDataMessage : IInboundBusinessTransactionDataMessage
+public class BtcpRequestInboundDataMessage : IInboundBusinessTransactionDataMessage
 {
     private Memory<byte> _rawMessageData;
 
@@ -17,7 +17,7 @@ public class BtcpInboundDataMessage : IInboundBusinessTransactionDataMessage
     /// </summary>
     /// <param name="businessTransactionId">ID of the business transaction</param>
     /// <param name="businessTransactionUid">UID of the business transaction instance</param>
-    public BtcpInboundDataMessage(int businessTransactionId, Guid businessTransactionUid)
+    public BtcpRequestInboundDataMessage(int businessTransactionId, Guid businessTransactionUid)
     {
         MessageId = DateTime.Now.ToFileTimeUtc();
         BusinessTransactionId = businessTransactionId;
@@ -34,12 +34,20 @@ public class BtcpInboundDataMessage : IInboundBusinessTransactionDataMessage
     /// </summary>
     public bool AnswerWithAcknowledgement { get; set; }
 
-    
+    /// <summary>
+    /// Data block stored in the message
+    /// </summary>
+    public ITypedInboundDataBlock? DataBlock { get; set; }
 
     /// <summary>
-    /// Is the message a request for running a business transaction? True = request for running a business transaction, false reply on a request to run a business transaction
+    /// ID of the business transaction
     /// </summary>
-    public bool IsRequest { get; set; }
+    public int BusinessTransactionId { get; }
+
+    /// <summary>
+    /// UID of the business transaction instance
+    /// </summary>
+    public Guid BusinessTransactionUid { get; }
 
     /// <summary>
     /// First plausibilty check if a received message can be the expected answer to the request. 
@@ -49,12 +57,15 @@ public class BtcpInboundDataMessage : IInboundBusinessTransactionDataMessage
     /// <returns>True if the message was as expected as answer of the sent message else false</returns>
     public bool CheckReceivedMessage(IOutboundDataMessage sentMessage, IList<string> errors)
     {
-        if (sentMessage is not IOutboundBusinessTransactionDataMessage btm)
-        {
-            return false;
-        }
+        // No one is waiting for a request
+        return false;
 
-        return btm.BusinessTransactionId == BusinessTransactionId;
+        //if (sentMessage is not IOutboundBusinessTransactionDataMessage btm)
+        //{
+        //    return false;
+        //}
+
+        //return btm.BusinessTransactionId == BusinessTransactionId;
     }
 
     /// <summary>
@@ -81,26 +92,15 @@ public class BtcpInboundDataMessage : IInboundBusinessTransactionDataMessage
     /// <returns>Info string</returns>
     public string ToInfoString()
     {
-        return $"BtcpInboundDataMessage ID {MessageId} BT {BusinessTransactionId} {RawMessageDataClearText}";
+        return $"BtcpRequestInboundDataMessage ID {MessageId} BT {BusinessTransactionId} / {BusinessTransactionUid}: {RawMessageDataClearText}";
     }
 
+    /// <summary>
+    /// Create a short info string for logging
+    /// </summary>
+    /// <returns>Info string</returns>
     public string ToShortInfoString()
     {
-        return $"BtcpInboundDataMessage ID {MessageId} BT {BusinessTransactionId}";
+        return $"BtcpRequestInboundDataMessage ID {MessageId} BT {BusinessTransactionId} / {BusinessTransactionUid}";
     }
-
-    /// <summary>
-    /// Data block stored in the message
-    /// </summary>
-    public ITypedInboundDataBlock? DataBlock { get; set; }
-
-    /// <summary>
-    /// ID of the business transaction
-    /// </summary>
-    public int BusinessTransactionId { get;  }
-
-    /// <summary>
-    /// UID of the business transaction instance
-    /// </summary>
-    public Guid BusinessTransactionUid { get; }
 }

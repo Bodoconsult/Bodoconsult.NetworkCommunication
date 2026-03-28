@@ -17,13 +17,14 @@ public class TcpIpHighPerformanceDuplexIoTests : TcpIpDuplexIoBaseTests
     protected void TestSetup()
     {
         TcpIpClientTestHelper.InitServer(this);
-        ArgumentNullException.ThrowIfNull(Socket);
+        
 
         Debug.Print("Start TestSetup");
 
         BaseReset();
 
         TcpIpClientTestHelper.InitSocket(this);
+        ArgumentNullException.ThrowIfNull(Socket);
 
         DuplexIo = GetDuplexIo(Socket);
 

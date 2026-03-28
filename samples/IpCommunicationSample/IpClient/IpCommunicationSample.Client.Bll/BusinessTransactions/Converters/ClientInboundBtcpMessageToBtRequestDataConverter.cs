@@ -19,7 +19,7 @@ public class ClientInboundBtcpMessageToBtRequestDataConverter : BaseInboundBtcpM
     }
 
     private IBusinessTransactionRequestData? CreateStateChangedEventFiredBusinessTransaction(
-        BtcpInboundDataMessage request)
+        BtcpRequestInboundDataMessage request)
     {
         ArgumentNullException.ThrowIfNull(request.DataBlock);
 

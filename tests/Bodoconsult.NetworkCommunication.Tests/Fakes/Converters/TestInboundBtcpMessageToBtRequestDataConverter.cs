@@ -19,7 +19,7 @@ public class TestInboundBtcpMessageToBtRequestDataConverter : BaseInboundBtcpMes
         AllBusinessTransactionRequestDataDelegates.Add(99, CreateGetConfigBusinessTransaction);
     }
 
-    private IBusinessTransactionRequestData? CreateGetConfigBusinessTransaction(BtcpInboundDataMessage request)
+    private IBusinessTransactionRequestData? CreateGetConfigBusinessTransaction(BtcpRequestInboundDataMessage request)
     {
         var rd = new EmptyBusinessTransactionRequestData
         {

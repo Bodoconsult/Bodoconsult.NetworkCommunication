@@ -73,17 +73,12 @@ public class BtcpOrderBuilder : BaseOrderBuilder
     /// <returns>True if the message was as expected as answer of the sent message else false</returns>
     private static bool CheckReceivedMessageDelegate(IRequestAnswer requestAnswer, IOutboundDataMessage sentMessage, IInboundDataMessage? receivedMessage, IList<string> errors)
     {
-        if (receivedMessage is not BtcpInboundDataMessage rm)
+        if (receivedMessage is not BtcpRequestInboundDataMessage rm)
         {
             return false;
         }
 
-        if (sentMessage is not BtcpOutboundDataMessage sm)
-        {
-            return false;
-        }
-
-        if (rm.IsRequest)
+        if (sentMessage is not BtcpRequestOutboundDataMessage sm)
         {
             return false;
         }

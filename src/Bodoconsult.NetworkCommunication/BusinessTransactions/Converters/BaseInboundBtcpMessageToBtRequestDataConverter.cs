@@ -10,7 +10,7 @@ using Bodoconsult.NetworkCommunication.Interfaces;
 namespace Bodoconsult.NetworkCommunication.BusinessTransactions.Converters;
 
 /// <summary>
-/// Base class for converters from <see cref="BtcpInboundDataMessage"/> instances to <see cref="IBusinessTransactionRequestData"/> instances
+/// Base class for converters from <see cref="BtcpRequestInboundDataMessage"/> instances to <see cref="IBusinessTransactionRequestData"/> instances
 /// </summary>
 public abstract class BaseInboundBtcpMessageToBtRequestDataConverter : IInboundMessageToBtRequestDataConverter
 {
@@ -19,7 +19,7 @@ public abstract class BaseInboundBtcpMessageToBtRequestDataConverter : IInboundM
     /// </summary>
     /// <param name="request">Current request</param>
     /// <returns></returns>
-    protected delegate IBusinessTransactionRequestData? CreateBusinessTransactionRequestDataDelegate(BtcpInboundDataMessage request);
+    protected delegate IBusinessTransactionRequestData? CreateBusinessTransactionRequestDataDelegate(BtcpRequestInboundDataMessage request);
 
     /// <summary>
     /// Collection of all registered business transactions and the <see cref="CreateBusinessTransactionRequestDataDelegate"/> to use for the single business transaction
@@ -48,13 +48,7 @@ public abstract class BaseInboundBtcpMessageToBtRequestDataConverter : IInboundM
     public IBusinessTransactionRequestData? MapToBusinessTransactionRequestData(IInboundDataMessage request)
     {
         // Request data is required always!
-        if (request is not BtcpInboundDataMessage btm)
-        {
-            return null;
-        }
-
-        // No request
-        if (!btm.IsRequest)
+        if (request is not BtcpRequestInboundDataMessage btm)
         {
             return null;
         }

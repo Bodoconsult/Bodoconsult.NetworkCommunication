@@ -50,7 +50,16 @@ internal class DefaultDataMessageCodingProcessorTests
         processor.MessageCodecs.Add(new BtcpHandshakeMessageCodec());
         processor.MessageCodecs.Add(new BtcpDataMessageCodec(dataBlockCodingProcessor));
 
-        var msg = new byte[] { 0x2, 0x1, 0x31, 0x4, 0x78, 0x75, 0x62, 0x62, 0x3, 0x2, 0x2, 0x4, 0x6b, 0x75, 0x62, 0x62, 0x3 };
+        var msg = new byte[] { 0x2, 0x0, 0x31, 0x4, 0x30, 0x66, 0x38, 0x66, 0x61, 0x64, 0x35, 0x62, 0x2d, 0x64,
+            0x39, 0x63, 0x62, 0x2d, 0x34, 0x36, 0x39, 0x66, 0x2d, 0x61, 0x31, 0x36, 0x35,
+            0x2d, 0x37, 0x30, 0x38, 0x36, 0x37, 0x37, 0x32, 0x38, 0x39, 0x35, 0x30, 0x65, 0x4,
+            // Identifier byte
+            0x78,
+            // Default reply
+            0x32, 0x7c, 0x42, 0x6c, 0x75, 0x62, 0x62, 0x7c, 0x42, 0x6c, 0x61, 0x62, 0x62, 0x7c,
+            // Payload
+            0x42, 0x6c, 0x69, 0x70, 0x70,
+            0x3 };
 
         // Act  
         var result = processor.DecodeDataMessage(msg);
@@ -61,7 +70,7 @@ internal class DefaultDataMessageCodingProcessorTests
             Assert.That(result, Is.Not.Null);
             Assert.That(result.DataMessage, Is.Not.Null);
             ArgumentNullException.ThrowIfNull(result.DataMessage);
-            Assert.That(result.DataMessage.GetType(), Is.EqualTo(typeof(BtcpInboundDataMessage)));
+            Assert.That(result.DataMessage.GetType(), Is.EqualTo(typeof(BtcpReplyInboundDataMessage)));
         }
     }
 
@@ -83,7 +92,9 @@ internal class DefaultDataMessageCodingProcessorTests
             Data = msg
         };
 
-        var message = new BtcpOutboundDataMessage(99)
+        var transactionUid = Guid.NewGuid();
+
+        var message = new BtcpRequestOutboundDataMessage(99, transactionUid)
         {
             DataBlock = datablock
         };

@@ -12,7 +12,7 @@ using Bodoconsult.NetworkCommunication.DataMessaging.DataBlocks;
 namespace Bodoconsult.NetworkCommunication.BusinessTransactions.Converters;
 
 /// <summary>
-/// Base class for converters from <see cref="IBusinessTransactionReply"/> instances to <see cref="BtcpOutboundDataMessage"/> instances
+/// Base class for converters from <see cref="IBusinessTransactionReply"/> instances to <see cref="BtcpRequestOutboundDataMessage"/> instances
 /// </summary>
 public abstract class BaseBtReplyToOutboundDataMessageConverter : IBtReplyToOutboundDataMessageConverter
 {
@@ -103,7 +103,7 @@ public abstract class BaseBtReplyToOutboundDataMessageConverter : IBtReplyToOutb
             Data = Encoding.UTF8.GetBytes(payload)
         };
 
-        var msg = new BtcpOutboundDataMessage(ir.RequestData.TransactionId)
+        var msg = new BtcpRequestOutboundDataMessage(ir.RequestData.TransactionId, ir.RequestData.TransactionGuid)
         {
             IsRequest = false,
             DataBlock = dataBlock

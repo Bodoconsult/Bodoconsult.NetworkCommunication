@@ -14,8 +14,9 @@ internal class BtcpHandshakeDataMessageValidatorTests
     {
         // Arrange 
         const int transactionId = 101;
-        
-        var msg = new BtcpOutboundDataMessage(transactionId);
+        var transactionUid = Guid.NewGuid();
+
+        var msg = new BtcpRequestOutboundDataMessage(transactionId, transactionUid);
 
         var handshake = new InboundHandshakeMessage
         {
@@ -36,8 +37,9 @@ internal class BtcpHandshakeDataMessageValidatorTests
     {
         // Arrange 
         const int transactionId = 101;
+        var transactionUid = Guid.NewGuid();
 
-        var msg = new BtcpOutboundDataMessage(transactionId);
+        var msg = new BtcpRequestOutboundDataMessage(transactionId, transactionUid);
 
         var handshake = new InboundHandshakeMessage
         {
@@ -58,8 +60,9 @@ internal class BtcpHandshakeDataMessageValidatorTests
     {
         // Arrange 
         const int transactionId = 101;
+        var transactionUid = Guid.NewGuid();
 
-        var msg = new BtcpOutboundDataMessage(transactionId);
+        var msg = new BtcpRequestOutboundDataMessage(transactionId, transactionUid);
 
         var handshake = new InboundHandshakeMessage
         {
@@ -74,6 +77,4 @@ internal class BtcpHandshakeDataMessageValidatorTests
         // Assert
         Assert.That(result.IsMessageValid, Is.True);
     }
-
-
 }

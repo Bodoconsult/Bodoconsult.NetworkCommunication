@@ -8,7 +8,7 @@ using Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
 namespace IpCommunicationSample.Backend.Bll.BusinessLogic.Converters;
 
 /// <summary>
-/// Client BTCP comm converter for <see cref="IBusinessTransactionReply"/> instances to <see cref="BtcpOutboundDataMessage"/> instances
+/// Client BTCP comm converter for <see cref="IBusinessTransactionReply"/> instances to <see cref="BtcpRequestOutboundDataMessage"/> instances
 /// </summary>
 public class ClientBtReplyToOutboundDataMessageConverter : BaseBtReplyToOutboundDataMessageConverter
 {

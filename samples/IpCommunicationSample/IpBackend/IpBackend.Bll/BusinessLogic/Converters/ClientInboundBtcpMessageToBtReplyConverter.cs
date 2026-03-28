@@ -21,33 +21,10 @@ public class ClientInboundBtcpMessageToBtReplyConverter : BaseInboundBtcpMessage
         AllBusinessTransactionReplyDelegates.Add(ServerSideBusinessTransactionIds.StateChangedEventFired, CreateStateChangedEventFiredReply);
     }
 
-    private IBusinessTransactionReply? CreateStateChangedEventFiredReply(BtcpInboundDataMessage request)
+    private IBusinessTransactionReply? CreateStateChangedEventFiredReply(BtcpReplyInboundDataMessage request)
     {
-
-
         return CreateDefaultReply(request);
     }
 
-    protected IBusinessTransactionReply? CreateDefaultReply(BtcpInboundDataMessage request)
-    {
-        if (request.IsRequest)
-        {
-            return null;
-        }
 
-        var ir = new DefaultBusinessTransactionReply();
-        
-
-        if (request.DataBlock == null)
-        {
-            return ir;
-        }
-
-        var payload = request.DataBlock.Data;
-        var payloadString = Encoding.UTF8.GetString(payload.Span);
-
-
-
-        return ir;
-    }
 }

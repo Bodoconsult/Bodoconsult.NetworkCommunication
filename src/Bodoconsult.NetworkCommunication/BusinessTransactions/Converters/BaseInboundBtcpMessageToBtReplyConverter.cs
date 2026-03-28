@@ -1,16 +1,17 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
-using System.Text;
 using Bodoconsult.App.Abstractions.Interfaces;
+using Bodoconsult.App.BusinessTransactions.Replies;
 using Bodoconsult.App.Helpers;
 using Bodoconsult.App.Interfaces;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
 using Bodoconsult.NetworkCommunication.Interfaces;
+using System.Text;
 
 namespace Bodoconsult.NetworkCommunication.BusinessTransactions.Converters;
 
 /// <summary>
-/// Base class for converters from <see cref="BtcpInboundDataMessage"/> instances to <see cref="IBusinessTransactionRequestData"/> instances
+/// Base class for converters from <see cref="BtcpRequestInboundDataMessage"/> instances to <see cref="IBusinessTransactionRequestData"/> instances
 /// </summary>
 public abstract class BaseInboundBtcpMessageToBtReplyConverter : IInboundDataMessageToBtReplyConverter
 {
@@ -19,7 +20,7 @@ public abstract class BaseInboundBtcpMessageToBtReplyConverter : IInboundDataMes
     /// </summary>
     /// <param name="request">Current request</param>
     /// <returns></returns>
-    protected delegate IBusinessTransactionReply? CreateBusinessTransactionReplyDelegate(BtcpInboundDataMessage request);
+    protected delegate IBusinessTransactionReply? CreateBusinessTransactionReplyDelegate(BtcpReplyInboundDataMessage request);
 
     /// <summary>
     /// Collection of all registered business transactions and the <see cref="CreateBusinessTransactionReplyDelegate"/> to use for the single business transaction
@@ -48,13 +49,7 @@ public abstract class BaseInboundBtcpMessageToBtReplyConverter : IInboundDataMes
     public IBusinessTransactionReply? MapToBusinessTransactionReply(IInboundDataMessage request)
     {
         // Request data is required always!
-        if (request is not BtcpInboundDataMessage btm)
-        {
-            return null;
-        }
-
-        // Request?
-        if (btm.IsRequest)
+        if (request is not BtcpReplyInboundDataMessage btm)
         {
             return null;
         }
@@ -111,4 +106,20 @@ public abstract class BaseInboundBtcpMessageToBtReplyConverter : IInboundDataMes
         return null;
     }
 
+    protected static IBusinessTransactionReply CreateDefaultReply(BtcpReplyInboundDataMessage request)
+    {
+
+        var ir = new DefaultBusinessTransactionReply();
+
+        if (request.DataBlock == null)
+        {
+            return ir;
+        }
+
+        ir.ErrorCode = request.ErrorCode;
+        ir.Message = request.InfoMessage;
+        ir.ExceptionMessage = request.ErrorMessage;
+
+        return ir;
+    }
 }

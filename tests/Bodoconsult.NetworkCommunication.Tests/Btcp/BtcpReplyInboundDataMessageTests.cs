@@ -5,7 +5,7 @@ using Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
 namespace Bodoconsult.NetworkCommunication.Tests.Btcp;
 
 [TestFixture]
-internal class BtcpRequestInboundDataMessageTests
+internal class BtcpReplyInboundDataMessageTests
 {
     [Test]
     public void Ctor_ValidSetup_PropsSetCorrectly()
@@ -15,7 +15,7 @@ internal class BtcpRequestInboundDataMessageTests
         var transactionUid = Guid.NewGuid();
 
         // Act  
-        var msg = new BtcpRequestInboundDataMessage(transactionId, transactionUid);
+        var msg = new BtcpReplyInboundDataMessage(transactionId, transactionUid);
 
         // Assert
         using (Assert.EnterMultipleScope())
@@ -30,13 +30,13 @@ internal class BtcpRequestInboundDataMessageTests
     }
 
     [Test]
-    public void CheckReceivedMessage_ValidSetup_ReturnsFalse()
+    public void CheckReceivedMessage_ValidSetup_ReturnsTrue()
     {
         // Arrange 
         const int transactionId = 101;
         var transactionUid = Guid.NewGuid();
 
-        var msg = new BtcpRequestInboundDataMessage(transactionId, transactionUid);
+        var msg = new BtcpReplyInboundDataMessage(transactionId, transactionUid);
 
         var sentMsg = new BtcpRequestOutboundDataMessage(transactionId, transactionUid);
 
@@ -48,7 +48,7 @@ internal class BtcpRequestInboundDataMessageTests
         // Assert
         using (Assert.EnterMultipleScope())
         {
-            Assert.That(result, Is.False);
+            Assert.That(result, Is.True);
         }
     }
 
@@ -59,7 +59,7 @@ internal class BtcpRequestInboundDataMessageTests
         const int transactionId = 101;
         var transactionUid = Guid.NewGuid();
 
-        var msg = new BtcpRequestInboundDataMessage(transactionId, transactionUid);
+        var msg = new BtcpReplyInboundDataMessage(transactionId, transactionUid);
 
         var sentMsg = new BtcpRequestOutboundDataMessage(transactionId + 1, transactionUid);
 

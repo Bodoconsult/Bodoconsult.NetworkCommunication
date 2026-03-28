@@ -4,6 +4,7 @@ using Bodoconsult.App.Abstractions.Interfaces;
 using Bodoconsult.App.Helpers;
 using Bodoconsult.App.Interfaces;
 using Bodoconsult.NetworkCommunication.App.Abstractions.SyncProcessManager;
+using Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
 using Bodoconsult.NetworkCommunication.Interfaces;
 using Bodoconsult.NetworkCommunication.OrderManagement.Processors;
 
@@ -79,7 +80,7 @@ public abstract class BaseBtcpSimpleDeviceBusinessLogicAdapter : BaseSimpleDevic
     public MessageSendingResult SendBtRequest(IBusinessTransactionRequestData request)
     {
         var message = OutboundBtRequestToOutboundDataMessageConverter.MapToOutboundDataMessage(request);
-        
+
         if (message == null)
         {
             return MessageSendingResultHelper.Error("No outbound message was created");
@@ -124,24 +125,14 @@ public abstract class BaseBtcpSimpleDeviceBusinessLogicAdapter : BaseSimpleDevic
         ArgumentNullException.ThrowIfNull(IpDevice.CommunicationAdapter);
 
         // Request data is required always!
-        if (message is not IInboundBusinessTransactionDataMessage btm)
+        if (message is BtcpRequestInboundDataMessage request)
         {
-            // Message is thrown away
-            return;
+            HandleRequestMessage(request);
         }
-
-        // BT request?
-        if (btm.IsRequest)
+        else if (message is BtcpReplyInboundDataMessage reply)
         {
-            HandleRequestMessage(btm);
+            HandleReplyMessage(reply);
         }
-        else // BT reply
-        {
-            HandleReplyMessage(btm);
-        }
-
-        //// BT reply
-        //    HandleAsyncBtcpMessageDelegate?.Invoke(btm);
     }
 
     private void HandleReplyMessage(IInboundBusinessTransactionDataMessage btm)
@@ -161,10 +152,10 @@ public abstract class BaseBtcpSimpleDeviceBusinessLogicAdapter : BaseSimpleDevic
         }
 
         reply.RequestData = syncData.BusinessTransactionRequestData;
-        syncData.TaskCompletionSource?.SetResult(reply); 
+        syncData.TaskCompletionSource?.SetResult(reply);
     }
 
-    private void HandleRequestMessage(IInboundBusinessTransactionDataMessage btm)
+    private void HandleRequestMessage(BtcpRequestInboundDataMessage btm)
     {
         var internalRequest = InboundDataMessageToBtRequestConverter.MapToBusinessTransactionRequestData(btm);
 

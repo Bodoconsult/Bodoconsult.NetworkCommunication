@@ -24,7 +24,7 @@ public class ClientInboundBtcpMessageToBtRequestDataConverter : BaseInboundBtcpM
         AllBusinessTransactionRequestDataDelegates.Add(ClientSideBusinessTransactionIds.StopSnapshot, CreateStopSnapshotBusinessTransaction);
     }
 
-    private IBusinessTransactionRequestData? CreateStopSnapshotBusinessTransaction(BtcpInboundDataMessage request)
+    private IBusinessTransactionRequestData? CreateStopSnapshotBusinessTransaction(BtcpRequestInboundDataMessage request)
     {
         var rd = new EmptyBusinessTransactionRequestData
         {
@@ -33,7 +33,7 @@ public class ClientInboundBtcpMessageToBtRequestDataConverter : BaseInboundBtcpM
         return rd;
     }
 
-    private IBusinessTransactionRequestData? CreateStartSnapshotBusinessTransaction(BtcpInboundDataMessage request)
+    private IBusinessTransactionRequestData? CreateStartSnapshotBusinessTransaction(BtcpRequestInboundDataMessage request)
     {
         var rd = new EmptyBusinessTransactionRequestData
         {
@@ -42,7 +42,7 @@ public class ClientInboundBtcpMessageToBtRequestDataConverter : BaseInboundBtcpM
         return rd;
     }
 
-    private IBusinessTransactionRequestData? CreateStopStreamingBusinessTransaction(BtcpInboundDataMessage request)
+    private IBusinessTransactionRequestData? CreateStopStreamingBusinessTransaction(BtcpRequestInboundDataMessage request)
     {
         var rd = new EmptyBusinessTransactionRequestData
         {
@@ -51,7 +51,7 @@ public class ClientInboundBtcpMessageToBtRequestDataConverter : BaseInboundBtcpM
         return rd;
     }
 
-    private IBusinessTransactionRequestData? CreateStartStreamingBusinessTransaction(BtcpInboundDataMessage request)
+    private IBusinessTransactionRequestData? CreateStartStreamingBusinessTransaction(BtcpRequestInboundDataMessage request)
     {
         var rd = new EmptyBusinessTransactionRequestData
         {
@@ -60,7 +60,7 @@ public class ClientInboundBtcpMessageToBtRequestDataConverter : BaseInboundBtcpM
         return rd;
     }
 
-    private IBusinessTransactionRequestData? CreateGetConfigBusinessTransaction(BtcpInboundDataMessage request)
+    private IBusinessTransactionRequestData? CreateGetConfigBusinessTransaction(BtcpRequestInboundDataMessage request)
     {
         var rd = new EmptyBusinessTransactionRequestData
         {

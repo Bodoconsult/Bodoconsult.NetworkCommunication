@@ -10,7 +10,7 @@ using Bodoconsult.NetworkCommunication.Interfaces;
 namespace Bodoconsult.NetworkCommunication.Tests.Fakes.Converters;
 
 /// <summary>
-/// Test BTCP comm converter for <see cref="IBusinessTransactionReply"/> instances to <see cref="BtcpOutboundDataMessage"/> instances
+/// Test BTCP comm converter for <see cref="IBusinessTransactionReply"/> instances to <see cref="BtcpRequestOutboundDataMessage"/> instances
 /// </summary>
 public class TestBtReplyToOutboundDataMessageConverter : BaseBtReplyToOutboundDataMessageConverter
 {
@@ -19,9 +19,7 @@ public class TestBtReplyToOutboundDataMessageConverter : BaseBtReplyToOutboundDa
     /// </summary>
     /// <param name="appLogger">Current app logger</param>
     public TestBtReplyToOutboundDataMessageConverter(IAppLoggerProxy appLogger) : base(appLogger)
-    {
-        AllBusinessTransactionReplyDelegates.Add(nameof(DefaultBusinessTransactionReply), CreateFromDefaultBusinessTransactionReply);
-    }
+    { }
 
     private IOutboundBusinessTransactionDataMessage CreateFromDefaultBusinessTransactionReply(IBusinessTransactionReply reply)
     {
@@ -30,7 +28,7 @@ public class TestBtReplyToOutboundDataMessageConverter : BaseBtReplyToOutboundDa
             throw new ArgumentException($"request is not {nameof(DefaultBusinessTransactionReply)}");
         }
 
-        var msg = new BtcpOutboundDataMessage(ir.RequestData.TransactionId)
+        var msg = new BtcpRequestOutboundDataMessage(ir.RequestData.TransactionId, ir.RequestData.TransactionGuid)
         {
             IsRequest = false
         };

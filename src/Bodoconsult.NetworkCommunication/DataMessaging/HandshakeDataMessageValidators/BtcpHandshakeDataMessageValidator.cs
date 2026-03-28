@@ -21,7 +21,7 @@ public class BtcpHandshakeDataMessageValidator : IHandshakeDataMessageValidator
         IInboundHandShakeMessage? handshakeMessage)
     {
 
-        if (sentMessage is not BtcpOutboundDataMessage)
+        if (sentMessage is not BtcpRequestOutboundDataMessage)
         {
             return new DataMessageValidatorResult(false, "No BTCP data message sent");
         }

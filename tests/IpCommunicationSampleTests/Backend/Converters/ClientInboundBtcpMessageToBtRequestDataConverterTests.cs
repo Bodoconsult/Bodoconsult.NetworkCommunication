@@ -46,10 +46,7 @@ internal class ClientInboundBtcpMessageToBtRequestDataConverterTests
         var transactionId = ClientSideBusinessTransactionIds.GetConfig;
         var transactionUid = Guid.NewGuid();
 
-        var message = new BtcpInboundDataMessage(transactionId, transactionUid)
-        {
-            IsRequest = true
-        };
+        var message = new BtcpRequestInboundDataMessage(transactionId, transactionUid);
 
         // Act  
         var result = (EmptyBusinessTransactionRequestData?)conv.MapToBusinessTransactionRequestData(message);
@@ -71,10 +68,7 @@ internal class ClientInboundBtcpMessageToBtRequestDataConverterTests
         var transactionId = ClientSideBusinessTransactionIds.StartStreaming;
         var transactionUid = Guid.NewGuid();
 
-        var message = new BtcpInboundDataMessage(transactionId, transactionUid)
-        {
-            IsRequest = true
-        };
+        var message = new BtcpRequestInboundDataMessage(transactionId, transactionUid);
 
         // Act  
         var result = (EmptyBusinessTransactionRequestData?)conv.MapToBusinessTransactionRequestData(message);
@@ -96,10 +90,7 @@ internal class ClientInboundBtcpMessageToBtRequestDataConverterTests
         var transactionId = ClientSideBusinessTransactionIds.StopStreaming;
         var transactionUid = Guid.NewGuid();
 
-        var message = new BtcpInboundDataMessage(transactionId, transactionUid)
-        {
-            IsRequest = true
-        };
+        var message = new BtcpRequestInboundDataMessage(transactionId, transactionUid);
 
         // Act  
         var result = (EmptyBusinessTransactionRequestData?)conv.MapToBusinessTransactionRequestData(message);
@@ -121,10 +112,7 @@ internal class ClientInboundBtcpMessageToBtRequestDataConverterTests
         var transactionId = ClientSideBusinessTransactionIds.StopSnapshot;
         var transactionUid = Guid.NewGuid();
 
-        var message = new BtcpInboundDataMessage(transactionId, transactionUid)
-        {
-            IsRequest = true
-        };
+        var message = new BtcpRequestInboundDataMessage(transactionId, transactionUid);
 
         // Act  
         var result = (EmptyBusinessTransactionRequestData?)conv.MapToBusinessTransactionRequestData(message);
@@ -146,10 +134,7 @@ internal class ClientInboundBtcpMessageToBtRequestDataConverterTests
         var transactionId = ClientSideBusinessTransactionIds.StopSnapshot;
         var transactionUid = Guid.NewGuid();
 
-        var message = new BtcpInboundDataMessage(transactionId, transactionUid)
-        {
-            IsRequest = true
-        };
+        var message = new BtcpRequestInboundDataMessage(transactionId, transactionUid);
 
         // Act  
         var result = (EmptyBusinessTransactionRequestData?)conv.MapToBusinessTransactionRequestData(message);

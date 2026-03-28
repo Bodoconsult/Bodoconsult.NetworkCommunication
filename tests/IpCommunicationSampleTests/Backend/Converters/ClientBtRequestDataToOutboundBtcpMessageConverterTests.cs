@@ -66,7 +66,7 @@ internal class ClientBtRequestDataToOutboundBtcpMessageConverterTests
         var expectedPayload = Encoding.UTF8.GetBytes($"{deviceStateId}\u0005{deviceStateName}\u0005{businessStateId}\u0005{businessStateName}\u0005{businessSubstateId}\u0005{businessSubstateName}");
 
         // Act  
-        var result = (BtcpOutboundDataMessage)conv.MapToOutboundDataMessage(request);
+        var result = (BtcpRequestOutboundDataMessage)conv.MapToOutboundDataMessage(request);
 
         // Assert
         using (Assert.EnterMultipleScope())

@@ -35,7 +35,7 @@ public class ClientBtRequestDataToOutboundBtcpMessageConverter : BaseBtRequestDa
             Data = Memory<byte>.Empty
         };
 
-        var message = new BtcpOutboundDataMessage(rd.TransactionId)
+        var message = new BtcpRequestOutboundDataMessage(rd.TransactionId, rd.TransactionGuid)
         {
             DataBlock = db,
             IsRequest = true,
@@ -56,7 +56,7 @@ public class ClientBtRequestDataToOutboundBtcpMessageConverter : BaseBtRequestDa
             Data = Memory<byte>.Empty
         };
 
-        var message = new BtcpOutboundDataMessage(rd.TransactionId)
+        var message = new BtcpRequestOutboundDataMessage(rd.TransactionId, rd.TransactionGuid)
         {
             DataBlock = db,
             IsRequest = true,
@@ -77,7 +77,7 @@ public class ClientBtRequestDataToOutboundBtcpMessageConverter : BaseBtRequestDa
             Data = Memory<byte>.Empty
         };
 
-        var message = new BtcpOutboundDataMessage(rd.TransactionId)
+        var message = new BtcpRequestOutboundDataMessage(rd.TransactionId, rd.TransactionGuid)
         {
             DataBlock = db,
             IsRequest = true,
@@ -98,7 +98,7 @@ public class ClientBtRequestDataToOutboundBtcpMessageConverter : BaseBtRequestDa
             Data = Memory<byte>.Empty
         };
 
-        var message = new BtcpOutboundDataMessage(rd.TransactionId)
+        var message = new BtcpRequestOutboundDataMessage(rd.TransactionId, rd.TransactionGuid)
         {
             DataBlock = db,
             IsRequest = true,
@@ -119,7 +119,7 @@ public class ClientBtRequestDataToOutboundBtcpMessageConverter : BaseBtRequestDa
             Data = Memory<byte>.Empty
         };
 
-        var message = new BtcpOutboundDataMessage(rd.TransactionId)
+        var message = new BtcpRequestOutboundDataMessage(rd.TransactionId, rd.TransactionGuid)
         {
             DataBlock = db,
             IsRequest = true,

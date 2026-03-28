@@ -64,10 +64,9 @@ internal class ClientInboundBtcpMessageToBtRequestDataConverterTests
                 $"{deviceStateId}\u0005{deviceStateName}\u0005{businessStateId}\u0005{businessStateName}\u0005{businessSubstateId}\u0005{businessSubstateName}")
         };
 
-        var message = new BtcpInboundDataMessage(transactionId, transactionUid)
+        var message = new BtcpRequestInboundDataMessage(transactionId, transactionUid)
         {
-            DataBlock = datablock,
-            IsRequest = true
+            DataBlock = datablock
         };
 
         // Act  
