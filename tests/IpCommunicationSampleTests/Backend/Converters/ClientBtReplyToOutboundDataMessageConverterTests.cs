@@ -4,6 +4,7 @@ using System.Text;
 using Bodoconsult.App.Abstractions.Interfaces;
 using Bodoconsult.App.BusinessTransactions.Replies;
 using Bodoconsult.App.BusinessTransactions.RequestData;
+using Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
 using Bodoconsult.NetworkCommunication.Tests.Helpers;
 using IpCommunicationSample.Backend.Bll.BusinessLogic.Converters;
 
@@ -40,30 +41,40 @@ namespace IpCommunicationSampleTests.Backend.Converters
             // Arrange 
             var converter = new ClientBtReplyToOutboundDataMessageConverter(_appLogger);
 
+            var request = new EmptyBusinessTransactionRequestData()
+            {
+                TransactionId = 100,
+                TransactionGuid = Guid.NewGuid()
+            };
+
             var reply = new DefaultBusinessTransactionReply
             {
-                RequestData = new EmptyBusinessTransactionRequestData()
-                {
-                    TransactionId = 100
-                }
+                RequestData = request
             };
 
             // Act  
             var msg = converter.MapToOutboundDataMessage(reply);
 
             // Assert
-            Assert.That(msg, Is.Not.Null);
-            Assert.That(msg.DataBlock, Is.Not.Null);
+            using (Assert.EnterMultipleScope())
+            {
+                Assert.That(msg, Is.Not.Null);
+                Assert.That(msg.DataBlock, Is.Not.Null);
 
-            ArgumentNullException.ThrowIfNull(msg.DataBlock);
+                ArgumentNullException.ThrowIfNull(msg.DataBlock);
 
-            var payload = msg.DataBlock.Data;
+                var payload = msg.DataBlock.Data;
 
-            Assert.That(payload.Length, Is.Not.Zero);
+                Assert.That(payload.Length, Is.Not.Zero);
 
-            var dataString = Encoding.UTF8.GetString(payload.Span);
+                var dataString = Encoding.UTF8.GetString(payload.Span);
 
-            Assert.That(dataString, Is.EqualTo("0||"));
+                Assert.That(dataString, Is.EqualTo("0||"));
+
+                var replyMsg = (BtcpReplyOutboundDataMessage)msg;
+                Assert.That(replyMsg.BusinessTransactionId, Is.EqualTo(request.TransactionId));
+                Assert.That(replyMsg.BusinessTransactionUid, Is.EqualTo(request.TransactionGuid));
+            }
         }
 
     }

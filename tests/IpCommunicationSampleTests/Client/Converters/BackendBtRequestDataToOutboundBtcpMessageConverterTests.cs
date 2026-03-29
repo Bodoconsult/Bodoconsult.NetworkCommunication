@@ -4,13 +4,13 @@ using Bodoconsult.App.Abstractions.Interfaces;
 using Bodoconsult.App.BusinessTransactions.RequestData;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
 using Bodoconsult.NetworkCommunication.Tests.Helpers;
-using IpCommunicationSample.Client.Bll.BusinessTransactions.Converters;
+using IpCommunicationSample.Client.Bll.BusinessLogic.Converters;
 using IpCommunicationSample.Common.BusinessTransactions;
 
 namespace IpCommunicationSampleTests.Client.Converters;
 
 [TestFixture]
-internal class ClientBtRequestDataToOutboundBtcpMessageConverterTests
+internal class BackendBtRequestDataToOutboundBtcpMessageConverterTests
 {
     private readonly IAppLoggerProxy _appLogger = TestDataHelper.GetFakeAppLoggerProxy();
 
@@ -27,7 +27,7 @@ internal class ClientBtRequestDataToOutboundBtcpMessageConverterTests
         // Arrange 
 
         // Act  
-        var conv = new ClientBtRequestDataToOutboundBtcpMessageConverter(_appLogger);
+        var conv = new BackendBtRequestDataToOutboundBtcpMessageConverter(_appLogger);
 
         // Assert
         Assert.That(conv.AppLogger, Is.EqualTo(_appLogger));
@@ -37,7 +37,7 @@ internal class ClientBtRequestDataToOutboundBtcpMessageConverterTests
     public void MapToBusinessTransactionRequestData_GetConfig_ReturnsRequestData()
     {
         // Arrange 
-        var conv = new ClientBtRequestDataToOutboundBtcpMessageConverter(_appLogger);
+        var conv = new BackendBtRequestDataToOutboundBtcpMessageConverter(_appLogger);
 
         var transactionId = ClientSideBusinessTransactionIds.GetConfig;
 
@@ -63,7 +63,7 @@ internal class ClientBtRequestDataToOutboundBtcpMessageConverterTests
     public void MapToBusinessTransactionRequestData_StartStreaming_ReturnsRequestData()
     {
         // Arrange 
-        var conv = new ClientBtRequestDataToOutboundBtcpMessageConverter(_appLogger);
+        var conv = new BackendBtRequestDataToOutboundBtcpMessageConverter(_appLogger);
 
         var transactionId = ClientSideBusinessTransactionIds.StartStreaming;
 
@@ -89,7 +89,7 @@ internal class ClientBtRequestDataToOutboundBtcpMessageConverterTests
     public void MapToBusinessTransactionRequestData_StopStreaming_ReturnsRequestData()
     {
         // Arrange 
-        var conv = new ClientBtRequestDataToOutboundBtcpMessageConverter(_appLogger);
+        var conv = new BackendBtRequestDataToOutboundBtcpMessageConverter(_appLogger);
 
         var transactionId = ClientSideBusinessTransactionIds.StopStreaming;
 
@@ -115,7 +115,7 @@ internal class ClientBtRequestDataToOutboundBtcpMessageConverterTests
     public void MapToBusinessTransactionRequestData_StartSnapshot_ReturnsRequestData()
     {
         // Arrange 
-        var conv = new ClientBtRequestDataToOutboundBtcpMessageConverter(_appLogger);
+        var conv = new BackendBtRequestDataToOutboundBtcpMessageConverter(_appLogger);
 
         var transactionId = ClientSideBusinessTransactionIds.StartSnapshot;
 
@@ -141,7 +141,7 @@ internal class ClientBtRequestDataToOutboundBtcpMessageConverterTests
     public void MapToBusinessTransactionRequestData_StopSnapshot_ReturnsRequestData()
     {
         // Arrange 
-        var conv = new ClientBtRequestDataToOutboundBtcpMessageConverter(_appLogger);
+        var conv = new BackendBtRequestDataToOutboundBtcpMessageConverter(_appLogger);
 
         var transactionId = ClientSideBusinessTransactionIds.StopSnapshot;
 

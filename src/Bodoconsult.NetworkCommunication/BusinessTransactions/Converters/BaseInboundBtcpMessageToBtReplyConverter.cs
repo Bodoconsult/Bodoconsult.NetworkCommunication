@@ -25,7 +25,7 @@ public abstract class BaseInboundBtcpMessageToBtReplyConverter : IInboundDataMes
     /// <summary>
     /// Collection of all registered business transactions and the <see cref="CreateBusinessTransactionReplyDelegate"/> to use for the single business transaction
     /// </summary>
-    protected readonly Dictionary<int, CreateBusinessTransactionReplyDelegate> AllBusinessTransactionReplyDelegates = new();
+    protected readonly Dictionary<string, CreateBusinessTransactionReplyDelegate> AllBusinessTransactionReplyDelegates = new();
 
     /// <summary>
     /// Current app logger
@@ -39,17 +39,18 @@ public abstract class BaseInboundBtcpMessageToBtReplyConverter : IInboundDataMes
     protected BaseInboundBtcpMessageToBtReplyConverter(IAppLoggerProxy appLogger)
     {
         AppLogger = appLogger;
+        AllBusinessTransactionReplyDelegates.Add(nameof(DefaultBusinessTransactionReply), CreateDefaultReply);
     }
 
     /// <summary>
     /// Map a data messaging request to an internal business transaction request
     /// </summary>
-    /// <param name="request">Current request</param>
+    /// <param name="reply">Current request</param>
     /// <returns>Internal business transaction request</returns>
-    public IBusinessTransactionReply? MapToBusinessTransactionReply(IInboundDataMessage request)
+    public IBusinessTransactionReply? MapToBusinessTransactionReply(IInboundDataMessage reply)
     {
         // Request data is required always!
-        if (request is not BtcpReplyInboundDataMessage btm)
+        if (reply is not BtcpReplyInboundDataMessage btm)
         {
             return null;
         }
@@ -59,7 +60,7 @@ public abstract class BaseInboundBtcpMessageToBtReplyConverter : IInboundDataMes
         //{
         foreach (var kvp in AllBusinessTransactionReplyDelegates)
         {
-            if (btm.BusinessTransactionId != kvp.Key)
+            if (btm.GetType().Name != kvp.Key)
             {
                 continue;
             }

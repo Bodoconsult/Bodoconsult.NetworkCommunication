@@ -7,8 +7,10 @@ namespace Bodoconsult.NetworkCommunication.Tests.Fakes.Converters;
 
 public class TestBtRequestDataToOutboundBtcpMessageConverter : BaseBtRequestDataToOutboundBtcpMessageConverter
 {
-    public TestBtRequestDataToOutboundBtcpMessageConverter(IAppLoggerProxy loggerProxy) : base(loggerProxy)
-    {
-        
-    }
+    /// <summary>
+    /// Default ctor
+    /// </summary>
+    /// <param name="appLogger">Current app logger</param>
+    public TestBtRequestDataToOutboundBtcpMessageConverter(IAppLoggerProxy appLogger) : base(appLogger)
+    { }
 }

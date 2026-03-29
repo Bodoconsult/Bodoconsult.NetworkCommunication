@@ -3,15 +3,14 @@
 using Bodoconsult.App.Abstractions.Interfaces;
 using Bodoconsult.NetworkCommunication.BusinessTransactions.Converters;
 
-namespace IpCommunicationSample.Backend.Bll.BusinessLogic.Converters;
+namespace IpCommunicationSample.Client.Bll.BusinessLogic.Converters;
 
-public class ClientInboundBtcpMessageToBtReplyConverter : BaseInboundBtcpMessageToBtReplyConverter
+public class BackendBtRequestDataToOutboundBtcpMessageConverter : BaseBtRequestDataToOutboundBtcpMessageConverter
 {
     /// <summary>
     /// Default ctor
     /// </summary>
     /// <param name="appLogger">Current app logger</param>
-    public ClientInboundBtcpMessageToBtReplyConverter(IAppLoggerProxy appLogger) : base(appLogger)
-    {
-    }
+    public BackendBtRequestDataToOutboundBtcpMessageConverter(IAppLoggerProxy appLogger) : base(appLogger)
+    { }
 }

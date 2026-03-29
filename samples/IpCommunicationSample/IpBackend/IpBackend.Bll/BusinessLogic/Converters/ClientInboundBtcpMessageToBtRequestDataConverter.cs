@@ -24,47 +24,52 @@ public class ClientInboundBtcpMessageToBtRequestDataConverter : BaseInboundBtcpM
         AllBusinessTransactionRequestDataDelegates.Add(ClientSideBusinessTransactionIds.StopSnapshot, CreateStopSnapshotBusinessTransaction);
     }
 
-    private IBusinessTransactionRequestData? CreateStopSnapshotBusinessTransaction(BtcpRequestInboundDataMessage request)
+    private IBusinessTransactionRequestData CreateStopSnapshotBusinessTransaction(BtcpRequestInboundDataMessage request)
     {
         var rd = new EmptyBusinessTransactionRequestData
         {
-            TransactionId = request.BusinessTransactionId
+            TransactionId = request.BusinessTransactionId,
+            TransactionGuid = request.BusinessTransactionUid
         };
         return rd;
     }
 
-    private IBusinessTransactionRequestData? CreateStartSnapshotBusinessTransaction(BtcpRequestInboundDataMessage request)
+    private IBusinessTransactionRequestData CreateStartSnapshotBusinessTransaction(BtcpRequestInboundDataMessage request)
     {
         var rd = new EmptyBusinessTransactionRequestData
         {
-            TransactionId = request.BusinessTransactionId
+            TransactionId = request.BusinessTransactionId,
+            TransactionGuid = request.BusinessTransactionUid
         };
         return rd;
     }
 
-    private IBusinessTransactionRequestData? CreateStopStreamingBusinessTransaction(BtcpRequestInboundDataMessage request)
+    private IBusinessTransactionRequestData CreateStopStreamingBusinessTransaction(BtcpRequestInboundDataMessage request)
     {
         var rd = new EmptyBusinessTransactionRequestData
         {
-            TransactionId = request.BusinessTransactionId
+            TransactionId = request.BusinessTransactionId,
+            TransactionGuid = request.BusinessTransactionUid
         };
         return rd;
     }
 
-    private IBusinessTransactionRequestData? CreateStartStreamingBusinessTransaction(BtcpRequestInboundDataMessage request)
+    private IBusinessTransactionRequestData CreateStartStreamingBusinessTransaction(BtcpRequestInboundDataMessage request)
     {
         var rd = new EmptyBusinessTransactionRequestData
         {
-            TransactionId = request.BusinessTransactionId
+            TransactionId = request.BusinessTransactionId,
+            TransactionGuid = request.BusinessTransactionUid
         };
         return rd;
     }
 
-    private IBusinessTransactionRequestData? CreateGetConfigBusinessTransaction(BtcpRequestInboundDataMessage request)
+    private IBusinessTransactionRequestData CreateGetConfigBusinessTransaction(BtcpRequestInboundDataMessage request)
     {
         var rd = new EmptyBusinessTransactionRequestData
         {
-            TransactionId = request.BusinessTransactionId
+            TransactionId = request.BusinessTransactionId,
+            TransactionGuid = request.BusinessTransactionUid
         };
         return rd;
     }

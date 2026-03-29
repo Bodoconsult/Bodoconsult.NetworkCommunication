@@ -4,7 +4,8 @@ using Bodoconsult.App.Abstractions.Interfaces;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataBlocks;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
 using Bodoconsult.NetworkCommunication.Tests.Helpers;
-using IpCommunicationSample.Client.Bll.BusinessTransactions.Converters;
+using IpCommunicationSample.Backend.Bll.BusinessLogic.Converters;
+using IpCommunicationSample.Client.Bll.BusinessLogic.Converters;
 using IpCommunicationSample.Common;
 using IpCommunicationSample.Common.BusinessTransactions;
 using IpCommunicationSample.Common.BusinessTransactions.Requests;
@@ -13,7 +14,7 @@ using System.Text;
 namespace IpCommunicationSampleTests.Client.Converters;
 
 [TestFixture]
-internal class ClientInboundBtcpMessageToBtRequestDataConverterTests
+internal class BackendInboundBtcpMessageToBtRequestDataConverterTests
 {
     //[SetUp]
     //public void Setup()
@@ -34,7 +35,7 @@ internal class ClientInboundBtcpMessageToBtRequestDataConverterTests
         // Arrange 
 
         // Act  
-        var conv = new ClientInboundBtcpMessageToBtRequestDataConverter(_appLogger);
+        var conv = new BackendInboundBtcpMessageToBtRequestDataConverter(_appLogger);
 
         // Assert
         Assert.That(conv.AppLogger, Is.EqualTo(_appLogger));
@@ -44,7 +45,7 @@ internal class ClientInboundBtcpMessageToBtRequestDataConverterTests
     public void MapToBusinessTransactionRequestData_ValidMessage_ReturnsRequestData()
     {
         // Arrange 
-        var conv = new ClientInboundBtcpMessageToBtRequestDataConverter(_appLogger);
+        var conv = new BackendInboundBtcpMessageToBtRequestDataConverter(_appLogger);
 
         var transactionId = ServerSideBusinessTransactionIds.StateChangedEventFired;
         var transactionUid = Guid.NewGuid();

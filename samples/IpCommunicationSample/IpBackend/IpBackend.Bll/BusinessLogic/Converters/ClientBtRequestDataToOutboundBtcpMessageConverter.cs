@@ -7,7 +7,6 @@ using Bodoconsult.NetworkCommunication.BusinessTransactions.Converters;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataBlocks;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
 using Bodoconsult.NetworkCommunication.Interfaces;
-using IpCommunicationSample.Common.BusinessTransactions;
 using IpCommunicationSample.Common.BusinessTransactions.Requests;
 
 namespace IpCommunicationSample.Backend.Bll.BusinessLogic.Converters;
@@ -16,7 +15,7 @@ public class ClientBtRequestDataToOutboundBtcpMessageConverter : BaseBtRequestDa
 {
     public ClientBtRequestDataToOutboundBtcpMessageConverter(IAppLoggerProxy loggerProxy) : base(loggerProxy)
     {
-        AllBusinessTransactionRequestDataDelegates.Add(ServerSideBusinessTransactionIds.StateChangedEventFired, CreateStateChangedEventFiredBusinessTransaction);
+        AllBusinessTransactionRequestDataDelegates.Add(nameof(StateChangedEventFiredBusinessTransactionRequestData), CreateStateChangedEventFiredBusinessTransaction);
     }
 
     private IOutboundBusinessTransactionDataMessage CreateStateChangedEventFiredBusinessTransaction(IBusinessTransactionRequestData request)

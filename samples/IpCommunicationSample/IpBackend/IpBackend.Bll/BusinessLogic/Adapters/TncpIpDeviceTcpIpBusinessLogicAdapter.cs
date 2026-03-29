@@ -133,37 +133,53 @@ public class TncpIpDeviceTcpIpBusinessLogicAdapter : BaseStateMachineDeviceBusin
     /// <param name="request">Current request</param>
     public IBusinessTransactionReply RequestDeviceStartStreamingState(IBusinessTransactionRequestData request)
     {
-        ArgumentNullException.ThrowIfNull(Device);
-        ArgumentNullException.ThrowIfNull(StateFactory, "StateFactory is null. Call LoadStateFactory() before!");
-        ArgumentNullException.ThrowIfNull(OrderFactory);
-
-        const string stateName = DefaultStateNames.DeviceStartStreamingState;
-
-        // Get the state config
-        var jobConfig = GetConfiguration(StateFactory, stateName);
-
-        // Get the required parametersets now
-        var parameterSets = new List<IParameterSet>();
-
-        for (var index = 0; index < jobConfig.OrderConfigurations.Count; index++)
+        try
         {
-            var orderConfigName = jobConfig.OrderConfigurations[index];
-            var orderConfig = OrderFactory.GetConfiguration(orderConfigName);
+            ArgumentNullException.ThrowIfNull(Device);
+            ArgumentNullException.ThrowIfNull(StateFactory, "StateFactory is null. Call LoadStateFactory() before!");
+            ArgumentNullException.ThrowIfNull(OrderFactory);
 
-            ArgumentNullException.ThrowIfNull(orderConfig, $"Order config for {orderConfigName} is null");
-            ArgumentNullException.ThrowIfNull(orderConfig.CreateParameterSetDelegate);
+            const string stateName = DefaultStateNames.DeviceStartStreamingState;
 
-            var ps = (TncpParameterSet)orderConfig.CreateParameterSetDelegate.Invoke();
+            // Get the state config
+            var jobConfig = GetConfiguration(StateFactory, stateName);
 
-            ps.TelnetCommand = index == 0 ? "StartStreaming1" : "StartStreaming2";
+            // Get the required parametersets now
+            var parameterSets = new List<IParameterSet>();
 
-            parameterSets.Add(ps);
+            for (var index = 0; index < jobConfig.OrderConfigurations.Count; index++)
+            {
+                var orderConfigName = jobConfig.OrderConfigurations[index];
+                var orderConfig = OrderFactory.GetConfiguration(orderConfigName);
+
+                ArgumentNullException.ThrowIfNull(orderConfig, $"Order config for {orderConfigName} is null");
+                ArgumentNullException.ThrowIfNull(orderConfig.CreateParameterSetDelegate);
+
+                var ps = (TncpParameterSet)orderConfig.CreateParameterSetDelegate.Invoke();
+
+                ps.TelnetCommand = index == 0 ? "StartStreaming1" : "StartStreaming2";
+
+                parameterSets.Add(ps);
+            }
+
+            // Now create the state
+            CreateAndRegisterState(Device, StateFactory, parameterSets, stateName);
+
+            return new DefaultBusinessTransactionReply
+            {
+                RequestData = request
+            };
         }
-
-        // Now create the state
-        CreateAndRegisterState(Device, StateFactory, parameterSets, stateName);
-
-        return new DefaultBusinessTransactionReply();
+        catch (Exception e)
+        {
+            return new DefaultBusinessTransactionReply
+            {
+                RequestData = request,
+                ErrorCode = 1000,
+                Message = "Starting streaming failed",
+                ExceptionMessage = e.ToString()
+            };
+        }
     }
 
     /// <summary>
@@ -172,37 +188,54 @@ public class TncpIpDeviceTcpIpBusinessLogicAdapter : BaseStateMachineDeviceBusin
     /// <param name="request">Current request</param>
     public IBusinessTransactionReply RequestDeviceStartSnapshotState(IBusinessTransactionRequestData request)
     {
-        ArgumentNullException.ThrowIfNull(Device);
-        ArgumentNullException.ThrowIfNull(StateFactory, "StateFactory is null. Call LoadStateFactory() before!");
-        ArgumentNullException.ThrowIfNull(OrderFactory);
-
-        const string stateName = DefaultStateNames.DeviceStartSnapshotState;
-
-        // Get the state config
-        var jobConfig = GetConfiguration(StateFactory, stateName);
-
-        // Get the required parametersets now
-        var parameterSets = new List<IParameterSet>();
-
-        for (var index = 0; index < jobConfig.OrderConfigurations.Count; index++)
+        try
         {
-            var orderConfigName = jobConfig.OrderConfigurations[index];
-            var orderConfig = OrderFactory.GetConfiguration(orderConfigName);
+            ArgumentNullException.ThrowIfNull(Device);
+            ArgumentNullException.ThrowIfNull(StateFactory, "StateFactory is null. Call LoadStateFactory() before!");
+            ArgumentNullException.ThrowIfNull(OrderFactory);
 
-            ArgumentNullException.ThrowIfNull(orderConfig, $"Order config for {orderConfigName} is null");
-            ArgumentNullException.ThrowIfNull(orderConfig.CreateParameterSetDelegate);
+            const string stateName = DefaultStateNames.DeviceStartSnapshotState;
 
-            var ps = (TncpParameterSet)orderConfig.CreateParameterSetDelegate.Invoke();
+            // Get the state config
+            var jobConfig = GetConfiguration(StateFactory, stateName);
 
-            ps.TelnetCommand = index == 0 ? "StartSnapshot1" : "StartSnapshot2";
+            // Get the required parametersets now
+            var parameterSets = new List<IParameterSet>();
 
-            parameterSets.Add(ps);
+            for (var index = 0; index < jobConfig.OrderConfigurations.Count; index++)
+            {
+                var orderConfigName = jobConfig.OrderConfigurations[index];
+                var orderConfig = OrderFactory.GetConfiguration(orderConfigName);
+
+                ArgumentNullException.ThrowIfNull(orderConfig, $"Order config for {orderConfigName} is null");
+                ArgumentNullException.ThrowIfNull(orderConfig.CreateParameterSetDelegate);
+
+                var ps = (TncpParameterSet)orderConfig.CreateParameterSetDelegate.Invoke();
+
+                ps.TelnetCommand = index == 0 ? "StartSnapshot1" : "StartSnapshot2";
+
+                parameterSets.Add(ps);
+            }
+
+            // Now create the state
+            CreateAndRegisterState(Device, StateFactory, parameterSets, stateName);
+
+            return new DefaultBusinessTransactionReply
+            {
+                RequestData = request
+            };
+        }
+        catch (Exception e)
+        {
+            return new DefaultBusinessTransactionReply
+            {
+                RequestData = request,
+                ErrorCode = 1002,
+                Message = "Starting snapshot failed",
+                ExceptionMessage = e.ToString()
+            };
         }
 
-        // Now create the state
-        CreateAndRegisterState(Device, StateFactory, parameterSets, stateName);
-
-        return new DefaultBusinessTransactionReply();
     }
 
     /// <summary>
@@ -211,36 +244,53 @@ public class TncpIpDeviceTcpIpBusinessLogicAdapter : BaseStateMachineDeviceBusin
     /// <param name="request">Current request</param>
     public IBusinessTransactionReply RequestDeviceStopStreamingState(IBusinessTransactionRequestData request)
     {
-        ArgumentNullException.ThrowIfNull(Device);
-        ArgumentNullException.ThrowIfNull(StateFactory, "StateFactory is null. Call LoadStateFactory() before!");
-        ArgumentNullException.ThrowIfNull(OrderFactory);
-
-        const string stateName = DefaultStateNames.DeviceStopStreamingState;
-
-        // Get the state config
-        var jobConfig = GetConfiguration(StateFactory, stateName);
-
-        // Get the required parametersets now
-        var parameterSets = new List<IParameterSet>();
-
-        foreach (var orderConfigName in jobConfig.OrderConfigurations)
+        try
         {
-            var orderConfig = OrderFactory.GetConfiguration(orderConfigName);
+            ArgumentNullException.ThrowIfNull(Device);
+            ArgumentNullException.ThrowIfNull(StateFactory, "StateFactory is null. Call LoadStateFactory() before!");
+            ArgumentNullException.ThrowIfNull(OrderFactory);
 
-            ArgumentNullException.ThrowIfNull(orderConfig, $"Order config for {orderConfigName} is null");
-            ArgumentNullException.ThrowIfNull(orderConfig.CreateParameterSetDelegate);
+            const string stateName = DefaultStateNames.DeviceStopStreamingState;
 
-            var ps = (TncpParameterSet)orderConfig.CreateParameterSetDelegate.Invoke();
+            // Get the state config
+            var jobConfig = GetConfiguration(StateFactory, stateName);
 
-            ps.TelnetCommand = "StopStreaming";
+            // Get the required parametersets now
+            var parameterSets = new List<IParameterSet>();
 
-            parameterSets.Add(ps);
+            foreach (var orderConfigName in jobConfig.OrderConfigurations)
+            {
+                var orderConfig = OrderFactory.GetConfiguration(orderConfigName);
+
+                ArgumentNullException.ThrowIfNull(orderConfig, $"Order config for {orderConfigName} is null");
+                ArgumentNullException.ThrowIfNull(orderConfig.CreateParameterSetDelegate);
+
+                var ps = (TncpParameterSet)orderConfig.CreateParameterSetDelegate.Invoke();
+
+                ps.TelnetCommand = "StopStreaming";
+
+                parameterSets.Add(ps);
+            }
+
+            // Now create the state
+            CreateAndRegisterState(Device, StateFactory, parameterSets, stateName);
+
+            return new DefaultBusinessTransactionReply
+            {
+                RequestData = request
+            };
+        }
+        catch (Exception e)
+        {
+            return new DefaultBusinessTransactionReply
+            {
+                RequestData = request,
+                ErrorCode = 1001,
+                Message = "Stopping streaming failed",
+                ExceptionMessage = e.ToString()
+            };
         }
 
-        // Now create the state
-        CreateAndRegisterState(Device, StateFactory, parameterSets, stateName);
-
-        return new DefaultBusinessTransactionReply();
     }
 
     /// <summary>
@@ -249,36 +299,53 @@ public class TncpIpDeviceTcpIpBusinessLogicAdapter : BaseStateMachineDeviceBusin
     /// <param name="request">Current request</param>
     public IBusinessTransactionReply RequestDeviceStopSnapshotState(IBusinessTransactionRequestData request)
     {
-        ArgumentNullException.ThrowIfNull(Device);
-        ArgumentNullException.ThrowIfNull(StateFactory, "StateFactory is null. Call LoadStateFactory() before!");
-        ArgumentNullException.ThrowIfNull(OrderFactory);
-
-        const string stateName = DefaultStateNames.DeviceStopSnapshotState;
-
-        // Get the state config
-        var jobConfig = GetConfiguration(StateFactory, stateName);
-
-        // Get the required parametersets now
-        var parameterSets = new List<IParameterSet>();
-
-        foreach (var orderConfigName in jobConfig.OrderConfigurations)
+        try
         {
-            var orderConfig = OrderFactory.GetConfiguration(orderConfigName);
+            ArgumentNullException.ThrowIfNull(Device);
+            ArgumentNullException.ThrowIfNull(StateFactory, "StateFactory is null. Call LoadStateFactory() before!");
+            ArgumentNullException.ThrowIfNull(OrderFactory);
 
-            ArgumentNullException.ThrowIfNull(orderConfig, $"Order config for {orderConfigName} is null");
-            ArgumentNullException.ThrowIfNull(orderConfig.CreateParameterSetDelegate);
+            const string stateName = DefaultStateNames.DeviceStopSnapshotState;
 
-            var ps = (TncpParameterSet)orderConfig.CreateParameterSetDelegate.Invoke();
+            // Get the state config
+            var jobConfig = GetConfiguration(StateFactory, stateName);
 
-            ps.TelnetCommand = "StopSnapshot";
+            // Get the required parametersets now
+            var parameterSets = new List<IParameterSet>();
 
-            parameterSets.Add(ps);
+            foreach (var orderConfigName in jobConfig.OrderConfigurations)
+            {
+                var orderConfig = OrderFactory.GetConfiguration(orderConfigName);
+
+                ArgumentNullException.ThrowIfNull(orderConfig, $"Order config for {orderConfigName} is null");
+                ArgumentNullException.ThrowIfNull(orderConfig.CreateParameterSetDelegate);
+
+                var ps = (TncpParameterSet)orderConfig.CreateParameterSetDelegate.Invoke();
+
+                ps.TelnetCommand = "StopSnapshot";
+
+                parameterSets.Add(ps);
+            }
+
+            // Now create the state
+            CreateAndRegisterState(Device, StateFactory, parameterSets, stateName);
+
+            return new DefaultBusinessTransactionReply
+            {
+                RequestData = request
+            };
+        }
+        catch (Exception e)
+        {
+            return new DefaultBusinessTransactionReply
+            {
+                RequestData = request,
+                ErrorCode = 1003,
+                Message = "Stopping snapshot failed",
+                ExceptionMessage = e.ToString()
+            };
         }
 
-        // Now create the state
-        CreateAndRegisterState(Device, StateFactory, parameterSets, stateName);
-
-        return new DefaultBusinessTransactionReply();
     }
 
     #endregion

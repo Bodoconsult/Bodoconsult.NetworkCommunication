@@ -18,7 +18,7 @@ public interface IInboundDataMessageToBtReplyConverter
     /// <summary>
     /// Map a data messaging reply to an internal business transaction reply
     /// </summary>
-    /// <param name="request">Current request</param>
+    /// <param name="reply">Current request</param>
     /// <returns>Internal business transaction request</returns>
-    IBusinessTransactionReply? MapToBusinessTransactionReply(IInboundDataMessage request);
+    IBusinessTransactionReply? MapToBusinessTransactionReply(IInboundDataMessage reply);
 }

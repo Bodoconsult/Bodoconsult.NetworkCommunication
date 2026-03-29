@@ -1,11 +1,13 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
-using System.Text;
 using Bodoconsult.App.Abstractions.Interfaces;
+using Bodoconsult.App.BusinessTransactions.RequestData;
 using Bodoconsult.App.Helpers;
 using Bodoconsult.App.Interfaces;
+using Bodoconsult.NetworkCommunication.DataMessaging.DataBlocks;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
 using Bodoconsult.NetworkCommunication.Interfaces;
+using System.Text;
 
 namespace Bodoconsult.NetworkCommunication.BusinessTransactions.Converters;
 
@@ -24,7 +26,7 @@ public abstract class BaseBtRequestDataToOutboundBtcpMessageConverter : IBtReque
     /// <summary>
     /// Collection of all registered business transactions and the <see cref="CreateBusinessTransactionRequestDataDelegate"/> to use for the single business transaction
     /// </summary>
-    protected readonly Dictionary<int, CreateBusinessTransactionRequestDataDelegate> AllBusinessTransactionRequestDataDelegates = new();
+    protected readonly Dictionary<string, CreateBusinessTransactionRequestDataDelegate> AllBusinessTransactionRequestDataDelegates = new();
 
     /// <summary>
     /// Current app logger
@@ -38,6 +40,28 @@ public abstract class BaseBtRequestDataToOutboundBtcpMessageConverter : IBtReque
     protected BaseBtRequestDataToOutboundBtcpMessageConverter(IAppLoggerProxy appLogger)
     {
         AppLogger = appLogger;
+        AllBusinessTransactionRequestDataDelegates.Add(nameof(EmptyBusinessTransactionRequestData), CreateEmptyBtcpRequestMessage);
+    }
+
+    private IOutboundBusinessTransactionDataMessage CreateEmptyBtcpRequestMessage(IBusinessTransactionRequestData request)
+    {
+        if (request is not EmptyBusinessTransactionRequestData rd)
+        {
+            throw new ArgumentException($"Request must be {nameof(EmptyBusinessTransactionRequestData)}");
+        }
+
+        var db = new BasicOutboundDatablock
+        {
+            Data = Memory<byte>.Empty
+        };
+
+        var message = new BtcpRequestOutboundDataMessage(rd.TransactionId, rd.TransactionGuid)
+        {
+            DataBlock = db,
+            IsRequest = true,
+        };
+
+        return message;
     }
 
     /// <summary>
@@ -52,7 +76,7 @@ public abstract class BaseBtRequestDataToOutboundBtcpMessageConverter : IBtReque
         {
             foreach (var kvp in AllBusinessTransactionRequestDataDelegates)
             {
-                if (request.TransactionId != kvp.Key)
+                if (request.GetType().Name != kvp.Key)
                 {
                     continue;
                 }
