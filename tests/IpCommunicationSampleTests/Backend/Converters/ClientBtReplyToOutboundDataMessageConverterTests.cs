@@ -76,6 +76,5 @@ namespace IpCommunicationSampleTests.Backend.Converters
                 Assert.That(replyMsg.BusinessTransactionUid, Is.EqualTo(request.TransactionGuid));
             }
         }
-
     }
 }

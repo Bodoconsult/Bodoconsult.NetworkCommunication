@@ -21,9 +21,16 @@ public abstract class OrderManagementClientNotificationManagerBase : IOrderManag
 
     public void DoNotifyStateManagementStateEvent(object sender, IStateMachineState state)
     {
+        var context = state.CurrentContext;
+
         var notification = new StateMachineStateNotification
         {
-            State = state
+            DeviceStateId = context.DeviceState.Id,
+            DeviceStateName = context.DeviceState.Name,
+            BusinessStateName = state.Name,
+            BusinessStateId = state.Id,
+            BusinessSubstateId = context.BusinessSubState.Id,
+            BusinessSubstateName = context.BusinessSubState.Name
         };
 
         NotifyClient?.Invoke(sender, notification);

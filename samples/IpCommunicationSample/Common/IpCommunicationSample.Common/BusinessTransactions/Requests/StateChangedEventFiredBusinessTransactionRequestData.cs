@@ -38,5 +38,4 @@ public class StateChangedEventFiredBusinessTransactionRequestData : BaseBusiness
     /// Current business substate name or null
     /// </summary>
     public string? BusinessSubstateName { get; set; }
-
 }
