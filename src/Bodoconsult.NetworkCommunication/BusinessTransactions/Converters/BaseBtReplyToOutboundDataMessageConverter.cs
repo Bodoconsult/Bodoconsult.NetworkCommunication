@@ -103,10 +103,12 @@ public abstract class BaseBtReplyToOutboundDataMessageConverter : IBtReplyToOutb
             Data = Encoding.UTF8.GetBytes(payload)
         };
 
-        var msg = new BtcpRequestOutboundDataMessage(ir.RequestData.TransactionId, ir.RequestData.TransactionGuid)
+        var msg = new BtcpReplyOutboundDataMessage(ir.RequestData.TransactionId, ir.RequestData.TransactionGuid)
         {
-            IsRequest = false,
-            DataBlock = dataBlock
+            DataBlock = dataBlock,
+            ErrorCode = ir.ErrorCode,
+            InfoMessage = ir.Message?.Replace("|", ""),
+            ErrorMessage = ir.ExceptionMessage?.Replace("|", "")
         };
 
         return msg;

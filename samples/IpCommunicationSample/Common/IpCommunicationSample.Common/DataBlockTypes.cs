@@ -7,5 +7,5 @@ namespace IpCommunicationSample.Common;
 /// </summary>
 public static class DataBlockTypes
 {
-    public static char StateChangedEventFiredBusiness => 'x';  // Default value for datablocks
+    public static char NotificationFiredBusiness => 'x';  // Default value for datablocks
 }

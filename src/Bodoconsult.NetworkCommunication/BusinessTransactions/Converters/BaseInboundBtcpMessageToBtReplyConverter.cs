@@ -39,7 +39,7 @@ public abstract class BaseInboundBtcpMessageToBtReplyConverter : IInboundDataMes
     protected BaseInboundBtcpMessageToBtReplyConverter(IAppLoggerProxy appLogger)
     {
         AppLogger = appLogger;
-        AllBusinessTransactionReplyDelegates.Add(nameof(DefaultBusinessTransactionReply), CreateDefaultReply);
+        AllBusinessTransactionReplyDelegates.Add(nameof(BtcpReplyInboundDataMessage), CreateDefaultReply);
     }
 
     /// <summary>
@@ -77,10 +77,14 @@ public abstract class BaseInboundBtcpMessageToBtReplyConverter : IInboundDataMes
                 return null;
             }
 
-            // Store transaction iD to request
-            internalRequest.RequestData.TransactionId = btm.BusinessTransactionId;
+            internalRequest.ErrorCode = btm.ErrorCode;
+            internalRequest.Message = btm.InfoMessage;
+            internalRequest.ExceptionMessage = btm.ErrorMessage;
 
-            s.Append($" ({internalRequest.RequestData.TransactionGuid})");
+            //// Store transaction iD to request
+            //internalRequest.RequestData.TransactionId = btm.BusinessTransactionId;
+
+            s.Append($" ({btm.BusinessTransactionId} \\ {btm.BusinessTransactionUid})");
 
             try
             {

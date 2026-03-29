@@ -3,6 +3,7 @@
 using System.Text;
 using Bodoconsult.App.Abstractions.Interfaces;
 using Bodoconsult.NetworkCommunication.App.Abstractions;
+using Bodoconsult.NetworkCommunication.ClientNotifications.Notifications;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataBlocks;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
 
@@ -24,6 +25,29 @@ public abstract class BaseBtcpNetworkingClientMessagingService: BaseClientMessag
     protected BaseBtcpNetworkingClientMessagingService()
     {
         ConversionRules.Add(nameof(StateMachineStateNotification), CreateMessageForStateMachineStateNotification);
+        ConversionRules.Add(nameof(OrderExecutionNotification), CreateMessageForOrderExecutionNotification);
+    }
+
+    private object CreateMessageForOrderExecutionNotification(IClientNotification notification)
+    {
+        if (notification is not OrderExecutionNotification rd)
+        {
+            throw new ArgumentException($"Request must be {nameof(OrderExecutionNotification)}");
+        }
+
+        ArgumentNullException.ThrowIfNull(rd.Order);
+
+        var db = new BasicOutboundDatablock
+        {
+            Data = Encoding.UTF8.GetBytes($"{rd.Order.Id}\u0005{rd.Order.ExecutionState.Id}\u0005{rd.Order.ExecutionState.Name}\u0005{rd.Order.ExecutionResult.Id}\u0005{rd.Order.ExecutionResult.Name}")
+        };
+
+        var message = new BtcpRequestOutboundDataMessage(TransactionId, Guid.NewGuid())
+        {
+            DataBlock = db
+        };
+
+        return message;
     }
 
     private object CreateMessageForStateMachineStateNotification(IClientNotification notification)

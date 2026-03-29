@@ -3,7 +3,7 @@
 using Bodoconsult.App.Abstractions.Benchmarking;
 using Bodoconsult.NetworkCommunication.App.Abstractions;
 
-namespace Bodoconsult.NetworkCommunication.ClientNotifications;
+namespace Bodoconsult.NetworkCommunication.ClientNotifications.Notifications;
 
 /// <summary>
 /// Notification data for a [state machine state changed] event 

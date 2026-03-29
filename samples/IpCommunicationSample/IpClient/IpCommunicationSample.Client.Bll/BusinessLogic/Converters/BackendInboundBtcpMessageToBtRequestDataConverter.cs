@@ -23,16 +23,16 @@ public class BackendInboundBtcpMessageToBtRequestDataConverter : BaseInboundBtcp
     /// <param name="appLogger">Current app logger</param>
     public BackendInboundBtcpMessageToBtRequestDataConverter(IAppLoggerProxy appLogger) : base(appLogger)
     {
-        AllBusinessTransactionRequestDataDelegates.Add(ServerSideBusinessTransactionIds.StateChangedEventFired, CreateStateChangedEventFired);
+        AllBusinessTransactionRequestDataDelegates.Add(ServerSideBusinessTransactionIds.NotificationFired, CreateNotificationFired);
     }
 
-    private IBusinessTransactionRequestData? CreateStateChangedEventFired(BtcpRequestInboundDataMessage request)
+    private IBusinessTransactionRequestData? CreateNotificationFired(BtcpRequestInboundDataMessage request)
     {
         ArgumentNullException.ThrowIfNull(request.DataBlock);
 
-        if (request.DataBlock.DataBlockType != DataBlockTypes.StateChangedEventFiredBusiness)
+        if (request.DataBlock.DataBlockType != DataBlockTypes.NotificationFiredBusiness)
         {
-            throw new ArgumentException($"Datablock type expected is '{DataBlockTypes.StateChangedEventFiredBusiness}' but was '{request.DataBlock.DataBlockType}'!");
+            throw new ArgumentException($"Datablock type expected is '{DataBlockTypes.NotificationFiredBusiness}' but was '{request.DataBlock.DataBlockType}'!");
         }
 
         var payloadData = request.DataBlock.Data;
@@ -42,6 +42,21 @@ public class BackendInboundBtcpMessageToBtRequestDataConverter : BaseInboundBtcp
             throw new ArgumentException("No state data provided");
         }
 
+        var payloadType = payloadData[..1].Span[0];
+
+        IBusinessTransactionRequestData? rd = null;
+
+        if (payloadType == 0x73) // s for StateMachineStateNotification
+        {
+            rd = CreateStateChangedEventFiredBusinessTransactionRequestData(payloadData.Slice(1), request);
+        }
+
+        return rd;
+    }
+
+    private IBusinessTransactionRequestData CreateStateChangedEventFiredBusinessTransactionRequestData(
+        Memory<byte> payloadData, BtcpRequestInboundDataMessage request)
+    {
         var payload = Encoding.UTF8.GetString(payloadData.Span);
 
         var tokens = payload.Split('\u0005');
@@ -62,6 +77,7 @@ public class BackendInboundBtcpMessageToBtRequestDataConverter : BaseInboundBtcp
             BusinessSubstateId = Convert.ToInt32(tokens[4]),
             BusinessSubstateName = tokens[5],
         };
+
         return rd;
     }
 }

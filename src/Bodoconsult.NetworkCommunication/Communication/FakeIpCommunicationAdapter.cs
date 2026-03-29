@@ -16,6 +16,11 @@ public class FakeIpCommunicationAdapter : ICommunicationAdapter
     /// </summary>
     public bool PingResult { get; set; } = true;
 
+    /// <summary>
+    /// Was the message sent
+    /// </summary>
+    public bool WasSent { get; set; }
+
     /// <summary>Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.</summary>
     public void Dispose()
     {
@@ -88,6 +93,7 @@ public class FakeIpCommunicationAdapter : ICommunicationAdapter
     /// <returns>Reply of the device</returns>
     public MessageSendingResult SendDataMessage(IOutboundDataMessage command)
     {
+        WasSent = true;
         Task.Delay(500);
         return new MessageSendingResult(command, OrderExecutionResultState.Successful);
     }

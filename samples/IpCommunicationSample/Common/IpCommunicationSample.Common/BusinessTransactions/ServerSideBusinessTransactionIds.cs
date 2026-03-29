@@ -7,5 +7,5 @@ namespace IpCommunicationSample.Common.BusinessTransactions;
 /// </summary>
 public static class ServerSideBusinessTransactionIds
 {
-    public static int StateChangedEventFired => 100;
+    public static int NotificationFired => 100;
 }

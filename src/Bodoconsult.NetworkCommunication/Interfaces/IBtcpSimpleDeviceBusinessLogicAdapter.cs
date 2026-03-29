@@ -2,6 +2,7 @@
 
 using Bodoconsult.App.Abstractions.Interfaces;
 using Bodoconsult.App.Interfaces;
+using Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
 
 namespace Bodoconsult.NetworkCommunication.Interfaces;
 
@@ -46,6 +47,13 @@ public interface IBtcpSimpleDeviceBusinessLogicAdapter: ISimpleDeviceBusinessLog
     /// <param name="request">Current BT request</param>
     /// <returns>Message sending result</returns>
     MessageSendingResult SendBtRequest(IBusinessTransactionRequestData request);
+
+    /// <summary>
+    /// Send a business transaction request as message to the device without waiting for answer
+    /// </summary>
+    /// <param name="message">Current BT request message</param>
+    /// <returns>Message sending result</returns>
+    MessageSendingResult SendBtRequestNotWaitingForAnswer(BtcpRequestOutboundDataMessage message);
 
     /// <summary>
     /// Send a business transaction request to the device

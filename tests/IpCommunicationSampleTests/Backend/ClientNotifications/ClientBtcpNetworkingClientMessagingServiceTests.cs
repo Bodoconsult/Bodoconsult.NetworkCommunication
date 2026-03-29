@@ -13,6 +13,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Bodoconsult.NetworkCommunication.App.Abstractions;
+using Bodoconsult.NetworkCommunication.ClientNotifications.Notifications;
 using IpCommunicationSample.Backend.Bll.ClientNotifications;
 
 namespace IpCommunicationSampleTests.Backend.ClientNotifications
@@ -64,7 +65,9 @@ namespace IpCommunicationSampleTests.Backend.ClientNotifications
                 BusinessSubstateName = businessSubstateName
             };
 
-            var expectedPayload = Encoding.UTF8.GetBytes($"{deviceStateId}\u0005{deviceStateName}\u0005{businessStateId}\u0005{businessStateName}\u0005{businessSubstateId}\u0005{businessSubstateName}");
+            var expectedPayload =
+                Encoding.UTF8.GetBytes(
+                    $"{deviceStateId}\u0005{deviceStateName}\u0005{businessStateId}\u0005{businessStateName}\u0005{businessSubstateId}\u0005{businessSubstateName}");
 
             // Act  
             var result = conv.Convert(request);
@@ -82,7 +85,7 @@ namespace IpCommunicationSampleTests.Backend.ClientNotifications
                 Assert.That(msg.DataBlock, Is.Not.Null);
                 ArgumentNullException.ThrowIfNull(msg.DataBlock);
 
-                Assert.That(msg.DataBlock.Data.Length, Is.EqualTo(expectedPayload.Length + 1));
+                Assert.That(msg.DataBlock.Data.Length, Is.EqualTo(expectedPayload.Length));
             }
         }
     }

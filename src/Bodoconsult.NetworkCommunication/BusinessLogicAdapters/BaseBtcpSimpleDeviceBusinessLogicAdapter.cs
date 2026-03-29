@@ -91,11 +91,21 @@ public abstract class BaseBtcpSimpleDeviceBusinessLogicAdapter : BaseSimpleDevic
         syncData.BusinessTransactionRequestData = request;
 
         // Now wait for order execution (doing it in a non-blocking mannor)
-        var erg = AsyncHelper.RunSync(syncData.CreateWaitingTask);
+        var unused = AsyncHelper.RunSync(syncData.CreateWaitingTask);
 
         // Remove the order from waiting queue
         _syncProcessManager.RemoveSyncProcess(request.TransactionGuid);
 
+        return SendMessage(message);
+    }
+
+    /// <summary>
+    /// Send a business transaction request as message to the device without waiting for answer
+    /// </summary>
+    /// <param name="message">Current BT request message</param>
+    /// <returns>Message sending result</returns>
+    public MessageSendingResult SendBtRequestNotWaitingForAnswer(BtcpRequestOutboundDataMessage message)
+    {
         return SendMessage(message);
     }
 

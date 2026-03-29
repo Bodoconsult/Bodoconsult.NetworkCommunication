@@ -3,7 +3,7 @@
 using Bodoconsult.NetworkCommunication.App.Abstractions;
 using Bodoconsult.NetworkCommunication.Interfaces;
 
-namespace Bodoconsult.NetworkCommunication.ClientNotifications;
+namespace Bodoconsult.NetworkCommunication.ClientNotifications.Notifications;
 
 /// <summary>
 /// Notification data for an [order execution state has changed] event 

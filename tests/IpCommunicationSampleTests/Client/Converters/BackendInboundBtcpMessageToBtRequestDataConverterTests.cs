@@ -48,7 +48,7 @@ internal class BackendInboundBtcpMessageToBtRequestDataConverterTests
         // Arrange 
         var conv = new BackendInboundBtcpMessageToBtRequestDataConverter(_appLogger);
 
-        var transactionId = ServerSideBusinessTransactionIds.StateChangedEventFired;
+        var transactionId = ServerSideBusinessTransactionIds.NotificationFired;
         var transactionUid = Guid.NewGuid();
 
 
@@ -61,9 +61,9 @@ internal class BackendInboundBtcpMessageToBtRequestDataConverterTests
 
         var datablock = new BasicInboundDatablock
         {
-            DataBlockType = DataBlockTypes.StateChangedEventFiredBusiness,
+            DataBlockType = DataBlockTypes.NotificationFiredBusiness,
             Data = Encoding.UTF8.GetBytes(
-                $"{deviceStateId}\u0005{deviceStateName}\u0005{businessStateId}\u0005{businessStateName}\u0005{businessSubstateId}\u0005{businessSubstateName}")
+                $"s{deviceStateId}\u0005{deviceStateName}\u0005{businessStateId}\u0005{businessStateName}\u0005{businessSubstateId}\u0005{businessSubstateName}")
         };
 
         var message = new BtcpRequestInboundDataMessage(transactionId, transactionUid)
