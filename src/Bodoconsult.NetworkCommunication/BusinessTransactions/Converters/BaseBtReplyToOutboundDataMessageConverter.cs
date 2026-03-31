@@ -7,6 +7,7 @@ using Bodoconsult.App.Interfaces;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
 using Bodoconsult.NetworkCommunication.Interfaces;
 using System.Text;
+using Bodoconsult.NetworkCommunication.App.Abstractions.BusinessTransactions;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataBlocks;
 
 namespace Bodoconsult.NetworkCommunication.BusinessTransactions.Converters;
@@ -21,7 +22,7 @@ public abstract class BaseBtReplyToOutboundDataMessageConverter : IBtReplyToOutb
     /// </summary>
     /// <param name="reply">Current reply</param>
     /// <returns>Outbound data message</returns>
-    protected delegate IOutboundBusinessTransactionDataMessage CreateBusinessTransactionReplyDelegate(IBusinessTransactionReply reply);
+    protected delegate IOutboundBusinessTransactionDataMessage? CreateBusinessTransactionReplyDelegate(IBusinessTransactionReply reply);
 
     /// <summary>
     /// Collection of all registered business transactions and the <see cref="CreateBusinessTransactionReplyDelegate"/> to use for the single business transaction
@@ -42,6 +43,7 @@ public abstract class BaseBtReplyToOutboundDataMessageConverter : IBtReplyToOutb
         AppLogger = appLogger;
 
         AllBusinessTransactionReplyDelegates.Add(nameof(DefaultBusinessTransactionReply), CreateFromDefaultBusinessTransactionReply);
+        AllBusinessTransactionReplyDelegates.Add(nameof(DoNotSendBusinessTransactionReply), CreateFromDoNotSendBusinessTransactionReply);
     }
 
     /// <summary>
@@ -49,7 +51,7 @@ public abstract class BaseBtReplyToOutboundDataMessageConverter : IBtReplyToOutb
     /// </summary>
     /// <param name="reply">Current request</param>
     /// <returns>Internal business transaction request</returns>
-    public IOutboundDataMessage MapToOutboundDataMessage(IBusinessTransactionReply reply)
+    public IOutboundDataMessage? MapToOutboundDataMessage(IBusinessTransactionReply reply)
     {
         // Now search the correct mapper and run it
         try
@@ -66,6 +68,11 @@ public abstract class BaseBtReplyToOutboundDataMessageConverter : IBtReplyToOutb
 
                 // Create the internal request
                 var internalRequest = kvp.Value.Invoke(reply);
+
+                if (internalRequest == null)
+                {
+                    return null;
+                }
 
                 try
                 {
@@ -89,7 +96,28 @@ public abstract class BaseBtReplyToOutboundDataMessageConverter : IBtReplyToOutb
         }
     }
 
-    private IOutboundBusinessTransactionDataMessage CreateFromDefaultBusinessTransactionReply(IBusinessTransactionReply reply)
+    /// <summary>
+    /// Create NO outvound message for <see cref="DoNotSendBusinessTransactionReply"/>
+    /// </summary>
+    /// <param name="reply"><see cref="DoNotSendBusinessTransactionReply"/> instance</param>
+    /// <returns>DoNotSendBusinessTransactionReply</returns>
+    /// <exception cref="ArgumentException">Not a <see cref="DoNotSendBusinessTransactionReply"/> was provided</exception>
+    private static IOutboundBusinessTransactionDataMessage? CreateFromDoNotSendBusinessTransactionReply(IBusinessTransactionReply reply)
+    {
+        if (reply is not DoNotSendBusinessTransactionReply)
+        {
+            throw new ArgumentException($"request is not {nameof(DoNotSendBusinessTransactionReply)}");
+        }
+        return null;
+    }
+
+    /// <summary>
+    /// Create outbound message for <see cref="DefaultBusinessTransactionReply"/>
+    /// </summary>
+    /// <param name="reply"><see cref="DefaultBusinessTransactionReply"/> instance</param>
+    /// <returns></returns>
+    /// <exception cref="ArgumentException">Not a <see cref="DefaultBusinessTransactionReply"/> was provided</exception>
+    private static IOutboundBusinessTransactionDataMessage CreateFromDefaultBusinessTransactionReply(IBusinessTransactionReply reply)
     {
         if (reply is not DefaultBusinessTransactionReply ir)
         {

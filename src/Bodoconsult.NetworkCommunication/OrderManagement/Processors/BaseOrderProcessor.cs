@@ -586,10 +586,10 @@ public abstract class BaseOrderProcessor : IOrderProcessor
     /// <param name="order">Order to cancel</param>
     public void CancelOrder(IOrder order)
     {
-        if (order == null)
-        {
-            return;
-        }
+        //if (order == null)
+        //{
+        //    return;
+        //}
 
         OrderPipeline.CancelOrder(order);
     }

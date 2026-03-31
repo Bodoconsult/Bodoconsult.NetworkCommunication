@@ -7,6 +7,8 @@ using Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
 using Bodoconsult.NetworkCommunication.Tests.Helpers;
 using IpCommunicationSample.Client.Bll.BusinessLogic.Converters;
 using System.Text;
+using Bodoconsult.NetworkCommunication.App.Abstractions.BusinessTransactions;
+using Bodoconsult.NetworkCommunication.BusinessTransactions.Requests;
 
 namespace IpCommunicationSampleTests.Client.Converters;
 
@@ -24,7 +26,6 @@ internal class BackendBtReplyToOutboundDataMessageConverterTests
     [Test]
     public void Ctor_ValidSetup_PropsSetCorrectly()
     {
-
         // Arrange 
 
         // Act  
@@ -35,13 +36,13 @@ internal class BackendBtReplyToOutboundDataMessageConverterTests
     }
 
     [Test]
-    public void MapToOutboundDataMessage_ValidReplyErrorCode0_PropsSetCorrectly()
+    public void MapToOutboundDataMessage_ValidEmptyBusinessTransactionRequestData_PropsSetCorrectly()
     {
 
         // Arrange 
         var converter = new BackendBtReplyToOutboundDataMessageConverter(_appLogger);
 
-        var request = new EmptyBusinessTransactionRequestData()
+        var request = new EmptyBusinessTransactionRequestData
         {
             TransactionId = 100,
             TransactionGuid = Guid.NewGuid()
@@ -59,6 +60,7 @@ internal class BackendBtReplyToOutboundDataMessageConverterTests
         using (Assert.EnterMultipleScope())
         {
             Assert.That(msg, Is.Not.Null);
+            ArgumentNullException.ThrowIfNull(msg);
             Assert.That(msg.DataBlock, Is.Not.Null);
 
             ArgumentNullException.ThrowIfNull(msg.DataBlock);
@@ -74,6 +76,34 @@ internal class BackendBtReplyToOutboundDataMessageConverterTests
             var replyMsg = (BtcpReplyOutboundDataMessage)msg;
             Assert.That(replyMsg.BusinessTransactionId, Is.EqualTo(request.TransactionId));
             Assert.That(replyMsg.BusinessTransactionUid, Is.EqualTo(request.TransactionGuid));
+        }
+    }
+
+    [Test]
+    public void MapToOutboundDataMessage_ValidDoNotSendBusinessTransactionRequestData_PropsSetCorrectly()
+    {
+
+        // Arrange 
+        var converter = new BackendBtReplyToOutboundDataMessageConverter(_appLogger);
+
+        var request = new EmptyBusinessTransactionRequestData
+        {
+            TransactionId = 100,
+            TransactionGuid = Guid.NewGuid()
+        };
+
+        var reply = new DoNotSendBusinessTransactionReply
+        {
+            RequestData = request
+        };
+
+        // Act  
+        var msg = converter.MapToOutboundDataMessage(reply);
+
+        // Assert
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(msg, Is.Null);
         }
     }
 }

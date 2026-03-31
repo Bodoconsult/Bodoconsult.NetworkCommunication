@@ -4,6 +4,8 @@ using Bodoconsult.App.BusinessTransactions.Replies;
 using Bodoconsult.App.Interfaces;
 using Bodoconsult.NetworkCommunication.App.Abstractions.BusinessTransactions;
 using Bodoconsult.NetworkCommunication.BusinessLogicAdapters;
+using Bodoconsult.NetworkCommunication.BusinessTransactions.Requests;
+using Bodoconsult.NetworkCommunication.Delegates;
 using Bodoconsult.NetworkCommunication.EnumAndStates;
 using Bodoconsult.NetworkCommunication.Interfaces;
 using Bodoconsult.NetworkCommunication.OrderManagement.Configurations;
@@ -13,7 +15,6 @@ using IpCommunicationSample.Client.Bll.Delegates;
 using IpCommunicationSample.Client.Bll.Interfaces;
 using IpCommunicationSample.Common.BusinessTransactions;
 using IpCommunicationSample.Common.BusinessTransactions.Requests;
-using Microsoft.Extensions.Options;
 
 namespace IpCommunicationSample.Client.Bll.BusinessTransactions.Adapters;
 
@@ -105,8 +106,34 @@ public class BtcpBackendTcpIpBusinessLogicAdapter : BaseOrderManagementDeviceBus
             RequestData = requestData
         };
     }
-    
-    private IBusinessTransactionReply CreateAndExecuteOrder(int transactionId, string orderName)
+
+    /// <summary>
+    /// Create an FFT analysis report
+    /// </summary>
+    /// <param name="requestData"></param>
+    /// <returns></returns>
+    public IBusinessTransactionReply CreateFftAnalysisReport(IBusinessTransactionRequestData requestData)
+    {
+        if (requestData is not FftReportBusinessTransactionRequestData fft)
+        {
+            throw new ArgumentException($"requestData is not not {nameof(FftReportBusinessTransactionRequestData)}");
+        }
+
+        ArgumentNullException.ThrowIfNull(Device.OrderManager);
+
+        var transactionId = ClientSideBusinessTransactionIds.StopSnapshot;
+        var orderName = "CreateFftAnalysisReport";
+
+        return CreateAndExecuteOrder(transactionId, orderName, HandleRequestAnswerDelegate);
+    }
+
+    private MessageHandlingResult HandleRequestAnswerDelegate(IInboundDataMessage? message, object? transportObject, IParameterSet? parameterSet)
+    {
+        // ToDo. RL: Use the FFT data
+        throw new NotImplementedException();
+    }
+
+    private IBusinessTransactionReply CreateAndExecuteOrder(int transactionId, string orderName, HandleRequestAnswerDelegate? handleRequestAnswerDelegate = null)
     {
         ArgumentNullException.ThrowIfNull(Device.OrderManager);
 
@@ -117,8 +144,7 @@ public class BtcpBackendTcpIpBusinessLogicAdapter : BaseOrderManagementDeviceBus
 
         var config = new OneRequestSpecNoOrOneStepOneAnswerConfiguration(orderName, BuiltinOrders.BtcpOrder, builder)
         {
-            //Device = TestDataHelper.CreateStateMachineDevice(),
-            //HandleRequestAnswerOnSuccessDelegate = HandleRequestAnswerOnSuccessDelegate,
+            HandleRequestAnswerOnSuccessDelegate = handleRequestAnswerDelegate,
             ParameterSet = ps
         };
 

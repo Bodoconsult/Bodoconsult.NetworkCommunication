@@ -14,4 +14,8 @@ public class ClientBtRequestDataToOutboundBtcpMessageConverter : BaseBtRequestDa
     public ClientBtRequestDataToOutboundBtcpMessageConverter(IAppLoggerProxy appLogger) : base(appLogger)
     {
     }
+
+    // No requests to handle here
+
+    // Notfications are not handled here. See
 }

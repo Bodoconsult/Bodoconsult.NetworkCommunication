@@ -1,5 +1,6 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
+using Bodoconsult.App.Interfaces;
 using Bodoconsult.NetworkCommunication.Interfaces;
 
 namespace IpCommunicationSample.Backend.Bll.Interfaces;
@@ -8,4 +9,15 @@ namespace IpCommunicationSample.Backend.Bll.Interfaces;
 /// Interface for state handling in the UDP channel from backend to IP device
 /// </summary>
 public interface IIpDeviceUdpDeviceBusinessLogicAdapter : ISimpleDeviceBusinessLogicAdapter
-{ }
+{
+    #region Reporting
+
+    /// <summary>
+    /// Create an FFT analysis report
+    /// </summary>
+    /// <param name="requestData"></param>
+    /// <returns></returns>
+    IBusinessTransactionReply CreateFftAnalysisReport(IBusinessTransactionRequestData requestData);
+
+    #endregion
+}

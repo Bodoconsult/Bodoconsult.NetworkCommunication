@@ -1,8 +1,10 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
+using Bodoconsult.App.Interfaces;
 using Bodoconsult.NetworkCommunication.BusinessLogicAdapters;
 using Bodoconsult.NetworkCommunication.Interfaces;
 using IpCommunicationSample.Backend.Bll.Interfaces;
+using IpCommunicationSample.Common.BusinessTransactions.Requests;
 
 namespace IpCommunicationSample.Backend.Bll.BusinessLogic.Adapters;
 
@@ -28,4 +30,16 @@ public class SdcpIpDeviceUdpBusinessLogicAdapter : BaseSimpleDeviceBusinessLogic
 
         // ToDo: add your business logic
     }
-}
+
+    public IBusinessTransactionReply CreateFftAnalysisReport(IBusinessTransactionRequestData requestData)
+    {
+        if (requestData is not FftReportBusinessTransactionRequestData fft)
+        {
+            throw new ArgumentException($"requestData is not {nameof(FftReportBusinessTransactionRequestData)}");
+        }
+
+        // ToDo: collect data here
+
+        return new FftReportBusinessTransactionReply();
+    }
+}0

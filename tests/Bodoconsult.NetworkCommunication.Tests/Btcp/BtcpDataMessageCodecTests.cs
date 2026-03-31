@@ -372,8 +372,7 @@ internal class BtcpDataMessageCodecTests
 
         var msg = new BtcpRequestOutboundDataMessage(transactionId, transactionUid)
         {
-            DataBlock = dataBlock,
-            IsRequest = true
+            DataBlock = dataBlock
         };
 
         Assert.That(msg.RawMessageData.Length, Is.Zero);
@@ -444,10 +443,7 @@ internal class BtcpDataMessageCodecTests
         var transactionId = 1;
         var transactionUid = Guid.NewGuid();
 
-        var msg = new BtcpRequestOutboundDataMessage(transactionId, transactionUid)
-        {
-            IsRequest = true
-        };
+        var msg = new BtcpRequestOutboundDataMessage(transactionId, transactionUid);
 
         Assert.That(msg.RawMessageData.Length, Is.Zero);
 

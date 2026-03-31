@@ -2,7 +2,7 @@
 
 using Bodoconsult.App.BusinessTransactions.RequestData;
 
-namespace IpCommunicationSample.Common.BusinessTransactions.Requests;
+namespace Bodoconsult.NetworkCommunication.BusinessTransactions.Requests;
 
 /// <summary>
 /// State change event fire request data

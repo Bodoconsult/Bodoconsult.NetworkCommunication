@@ -35,11 +35,6 @@ public class BtcpRequestOutboundDataMessage : IOutboundBusinessTransactionDataMe
     public bool WaitForAcknowledgement { get; set; }
 
     /// <summary>
-    /// Is the message a request for running a business transaction? True = request for running a business transaction, false reply on a request to run a business transaction
-    /// </summary>
-    public bool IsRequest { get; set; }
-
-    /// <summary>
     /// Data block stored in the message
     /// </summary>
     public ITypedOutboundDataBlock? DataBlock { get; set; }

@@ -7,6 +7,7 @@ using Bodoconsult.App.Interfaces;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
 using Bodoconsult.NetworkCommunication.Interfaces;
 using System.Text;
+using Bodoconsult.NetworkCommunication.App.Abstractions.BusinessTransactions;
 
 namespace Bodoconsult.NetworkCommunication.BusinessTransactions.Converters;
 
@@ -25,7 +26,7 @@ public abstract class BaseInboundBtcpMessageToBtReplyConverter : IInboundDataMes
     /// <summary>
     /// Collection of all registered business transactions and the <see cref="CreateBusinessTransactionReplyDelegate"/> to use for the single business transaction
     /// </summary>
-    protected readonly Dictionary<string, CreateBusinessTransactionReplyDelegate> AllBusinessTransactionReplyDelegates = new();
+    protected readonly Dictionary<int, CreateBusinessTransactionReplyDelegate> AllBusinessTransactionReplyDelegates = new();
 
     /// <summary>
     /// Current app logger
@@ -39,7 +40,6 @@ public abstract class BaseInboundBtcpMessageToBtReplyConverter : IInboundDataMes
     protected BaseInboundBtcpMessageToBtReplyConverter(IAppLoggerProxy appLogger)
     {
         AppLogger = appLogger;
-        AllBusinessTransactionReplyDelegates.Add(nameof(BtcpReplyInboundDataMessage), CreateDefaultReply);
     }
 
     /// <summary>
@@ -60,7 +60,7 @@ public abstract class BaseInboundBtcpMessageToBtReplyConverter : IInboundDataMes
         //{
         foreach (var kvp in AllBusinessTransactionReplyDelegates)
         {
-            if (btm.GetType().Name != kvp.Key)
+            if (btm.BusinessTransactionId != kvp.Key)
             {
                 continue;
             }
@@ -111,19 +111,46 @@ public abstract class BaseInboundBtcpMessageToBtReplyConverter : IInboundDataMes
         return null;
     }
 
-    protected static IBusinessTransactionReply CreateDefaultReply(BtcpReplyInboundDataMessage request)
+    /// <summary>
+    /// Create a default reply from inbound message
+    /// </summary>
+    /// <param name="message"></param>
+    /// <returns></returns>
+    protected static IBusinessTransactionReply CreateDefaultReply(BtcpReplyInboundDataMessage message)
     {
 
         var ir = new DefaultBusinessTransactionReply();
 
-        if (request.DataBlock == null)
+        if (message.DataBlock == null)
         {
             return ir;
         }
 
-        ir.ErrorCode = request.ErrorCode;
-        ir.Message = request.InfoMessage;
-        ir.ExceptionMessage = request.ErrorMessage;
+        ir.ErrorCode = message.ErrorCode;
+        ir.Message = message.InfoMessage;
+        ir.ExceptionMessage = message.ErrorMessage;
+
+        return ir;
+    }
+
+    /// <summary>
+    /// Create a <see cref="DoNotSendBusinessTransactionReply"/>
+    /// </summary>
+    /// <param name="message">Current inbound message</param>
+    /// <returns></returns>
+    protected static IBusinessTransactionReply CreateDoNotSendReply(BtcpReplyInboundDataMessage message)
+    {
+
+        var ir = new DoNotSendBusinessTransactionReply();
+
+        if (message.DataBlock == null)
+        {
+            return ir;
+        }
+
+        ir.ErrorCode = message.ErrorCode;
+        ir.Message = message.InfoMessage;
+        ir.ExceptionMessage = message.ErrorMessage;
 
         return ir;
     }

@@ -1,5 +1,6 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
+using Bodoconsult.App.Interfaces;
 using Bodoconsult.NetworkCommunication.Interfaces;
 
 namespace IpCommunicationSample.Backend.Bll.Interfaces;
@@ -8,6 +9,4 @@ namespace IpCommunicationSample.Backend.Bll.Interfaces;
 /// Interface for the channel from client to backend via TCP/IP
 /// </summary>
 public interface IClientTcpIpDeviceBusinessLogicAdapter : ISimpleDeviceBusinessLogicAdapter
-{
-
-}
+{ }

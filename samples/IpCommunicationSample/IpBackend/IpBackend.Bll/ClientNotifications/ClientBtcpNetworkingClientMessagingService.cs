@@ -2,9 +2,8 @@
 
 using Bodoconsult.NetworkCommunication.ClientNotifications;
 
-namespace IpCommunicationSample.Backend.Bll.ClientNotifications
+namespace IpCommunicationSample.Backend.Bll.ClientNotifications;
+
+public class ClientBtcpNetworkingClientMessagingService : BaseBtcpNetworkingClientMessagingService
 {
-    public class ClientBtcpNetworkingClientMessagingService : BaseBtcpNetworkingClientMessagingService
-    {
-    }
 }

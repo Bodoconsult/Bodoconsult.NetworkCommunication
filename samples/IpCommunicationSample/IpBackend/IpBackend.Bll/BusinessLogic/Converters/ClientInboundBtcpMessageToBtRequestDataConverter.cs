@@ -6,6 +6,7 @@ using Bodoconsult.App.Interfaces;
 using Bodoconsult.NetworkCommunication.BusinessTransactions.Converters;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
 using IpCommunicationSample.Common.BusinessTransactions;
+using IpCommunicationSample.Common.BusinessTransactions.Requests;
 
 namespace IpCommunicationSample.Backend.Bll.BusinessLogic.Converters;
 
@@ -22,6 +23,17 @@ public class ClientInboundBtcpMessageToBtRequestDataConverter : BaseInboundBtcpM
         AllBusinessTransactionRequestDataDelegates.Add(ClientSideBusinessTransactionIds.StopStreaming, CreateStopStreamingBusinessTransaction);
         AllBusinessTransactionRequestDataDelegates.Add(ClientSideBusinessTransactionIds.StartSnapshot, CreateStartSnapshotBusinessTransaction);
         AllBusinessTransactionRequestDataDelegates.Add(ClientSideBusinessTransactionIds.StopSnapshot, CreateStopSnapshotBusinessTransaction);
+        AllBusinessTransactionRequestDataDelegates.Add(ClientSideBusinessTransactionIds.CreateFftAnalysisReport, CreateFftAnalysisReport);
+    }
+
+    private IBusinessTransactionRequestData? CreateFftAnalysisReport(BtcpRequestInboundDataMessage request)
+    {
+        var rd = new FftReportBusinessTransactionRequestData
+        {
+            TransactionId = request.BusinessTransactionId,
+            TransactionGuid = request.BusinessTransactionUid
+        };
+        return rd;
     }
 
     private IBusinessTransactionRequestData CreateStopSnapshotBusinessTransaction(BtcpRequestInboundDataMessage request)

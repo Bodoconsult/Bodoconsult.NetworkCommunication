@@ -7,74 +7,119 @@ using Bodoconsult.App.BusinessTransactions.RequestData;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
 using Bodoconsult.NetworkCommunication.Tests.Helpers;
 using IpCommunicationSample.Backend.Bll.BusinessLogic.Converters;
+using IpCommunicationSample.Common.BusinessTransactions.Requests;
 
-namespace IpCommunicationSampleTests.Backend.Converters
+namespace IpCommunicationSampleTests.Backend.Converters;
+
+[TestFixture]
+internal class ClientBtReplyToOutboundDataMessageConverterTests
 {
-    [TestFixture]
-    internal class ClientBtReplyToOutboundDataMessageConverterTests
+    private readonly IAppLoggerProxy _appLogger = TestDataHelper.GetFakeAppLoggerProxy();
+
+    [OneTimeTearDown]
+    public void Cleanup()
     {
-        private readonly IAppLoggerProxy _appLogger = TestDataHelper.GetFakeAppLoggerProxy();
+        _appLogger.Dispose();
+    }
 
-        [OneTimeTearDown]
-        public void Cleanup()
-        {
-            _appLogger.Dispose();
-        }
-
-        [Test]
-        public void Ctor_ValidSetup_PropsSetCorrectly()
-        {
+    [Test]
+    public void Ctor_ValidSetup_PropsSetCorrectly()
+    {
             
-            // Arrange 
+        // Arrange 
 
-            // Act  
-            var converter = new ClientBtReplyToOutboundDataMessageConverter(_appLogger);
+        // Act  
+        var converter = new ClientBtReplyToOutboundDataMessageConverter(_appLogger);
 
-            // Assert
-            Assert.That(converter.AppLogger, Is.EqualTo(_appLogger));
-        }
+        // Assert
+        Assert.That(converter.AppLogger, Is.EqualTo(_appLogger));
+    }
 
-        [Test]
-        public void MapToOutboundDataMessage_ValidReplyErrorCode0_PropsSetCorrectly()
+    [Test]
+    public void MapToOutboundDataMessage_ValidDefaultBusinessTransactionReplyErrorCode0_PropsSetCorrectly()
+    {
+
+        // Arrange 
+        var converter = new ClientBtReplyToOutboundDataMessageConverter(_appLogger);
+
+        var request = new EmptyBusinessTransactionRequestData
         {
+            TransactionId = 100,
+            TransactionGuid = Guid.NewGuid()
+        };
 
-            // Arrange 
-            var converter = new ClientBtReplyToOutboundDataMessageConverter(_appLogger);
+        var reply = new DefaultBusinessTransactionReply
+        {
+            RequestData = request
+        };
 
-            var request = new EmptyBusinessTransactionRequestData()
-            {
-                TransactionId = 100,
-                TransactionGuid = Guid.NewGuid()
-            };
+        // Act  
+        var msg = converter.MapToOutboundDataMessage(reply);
 
-            var reply = new DefaultBusinessTransactionReply
-            {
-                RequestData = request
-            };
+        // Assert
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(msg, Is.Not.Null);
+            Assert.That(msg.DataBlock, Is.Not.Null);
 
-            // Act  
-            var msg = converter.MapToOutboundDataMessage(reply);
+            ArgumentNullException.ThrowIfNull(msg.DataBlock);
 
-            // Assert
-            using (Assert.EnterMultipleScope())
-            {
-                Assert.That(msg, Is.Not.Null);
-                Assert.That(msg.DataBlock, Is.Not.Null);
+            var payload = msg.DataBlock.Data;
 
-                ArgumentNullException.ThrowIfNull(msg.DataBlock);
+            Assert.That(payload.Length, Is.Not.Zero);
 
-                var payload = msg.DataBlock.Data;
+            var dataString = Encoding.UTF8.GetString(payload.Span);
 
-                Assert.That(payload.Length, Is.Not.Zero);
+            Assert.That(dataString, Is.EqualTo("0||"));
 
-                var dataString = Encoding.UTF8.GetString(payload.Span);
+            var replyMsg = (BtcpReplyOutboundDataMessage)msg;
+            Assert.That(replyMsg.BusinessTransactionId, Is.EqualTo(request.TransactionId));
+            Assert.That(replyMsg.BusinessTransactionUid, Is.EqualTo(request.TransactionGuid));
+        }
+    }
 
-                Assert.That(dataString, Is.EqualTo("0||"));
+    [Test]
+    public void MapToOutboundDataMessage_ValidFftReportBusinessTransactionReplyErrorCode0_PropsSetCorrectly()
+    {
 
-                var replyMsg = (BtcpReplyOutboundDataMessage)msg;
-                Assert.That(replyMsg.BusinessTransactionId, Is.EqualTo(request.TransactionId));
-                Assert.That(replyMsg.BusinessTransactionUid, Is.EqualTo(request.TransactionGuid));
-            }
+        // Arrange 
+        const int _errorCode = 0;
+        var converter = new ClientBtReplyToOutboundDataMessageConverter(_appLogger);
+
+        var request = new EmptyBusinessTransactionRequestData
+        {
+            TransactionId = 100,
+            TransactionGuid = Guid.NewGuid()
+        };
+
+        var reply = new FftReportBusinessTransactionReply
+        {
+            RequestData = request,
+            ErrorCode = _errorCode
+        };
+
+        // Act  
+        var msg = converter.MapToOutboundDataMessage(reply);
+
+        // Assert
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(msg, Is.Not.Null);
+            Assert.That(msg.DataBlock, Is.Not.Null);
+
+            ArgumentNullException.ThrowIfNull(msg.DataBlock);
+
+            var payload = msg.DataBlock.Data;
+
+            Assert.That(payload.Length, Is.Not.Zero);
+
+            var dataString = Encoding.UTF8.GetString(payload.Span);
+
+            Assert.That(dataString, Is.EqualTo("0||"));
+
+            var replyMsg = (BtcpReplyOutboundDataMessage)msg;
+            Assert.That(replyMsg.BusinessTransactionId, Is.EqualTo(request.TransactionId));
+            Assert.That(replyMsg.BusinessTransactionUid, Is.EqualTo(request.TransactionGuid));
         }
     }
 }

@@ -189,7 +189,7 @@ public class BackendManager : IBackendManager
 
         ArgumentNullException.ThrowIfNull(adapter);
 
-        var provider = new IpDeviceUdpBusinessTransactionProvider(adapter);
+        var provider = new IpDeviceTcpIpBusinessTransactionProvider(adapter);
         _businessTransactionManager.AddProvider(provider);
     }
 }

@@ -46,10 +46,29 @@ public interface IBackendTcpIpBusinessLogicAdapter : IOrderManagementDeviceBusin
 
     #endregion
 
+
+    #region Notifications
+
+
     /// <summary>
     /// Notification fired
     /// </summary>
     /// <param name="requestData">Current request data</param>
     /// <returns>Returns <see cref="DoNotSendBusinessTransactionReply"/></returns>
     IBusinessTransactionReply NotificationFired(IBusinessTransactionRequestData requestData);
+
+    #endregion
+
+    #region Reporting
+
+    /// <summary>
+    /// Create an FFT analysis report
+    /// </summary>
+    /// <param name="requestData"></param>
+    /// <returns></returns>
+    IBusinessTransactionReply CreateFftAnalysisReport(IBusinessTransactionRequestData requestData);
+
+    #endregion
+
+
 }

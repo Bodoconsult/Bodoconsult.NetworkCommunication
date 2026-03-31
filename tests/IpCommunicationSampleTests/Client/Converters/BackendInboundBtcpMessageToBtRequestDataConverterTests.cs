@@ -9,6 +9,7 @@ using IpCommunicationSample.Common;
 using IpCommunicationSample.Common.BusinessTransactions;
 using IpCommunicationSample.Common.BusinessTransactions.Requests;
 using System.Text;
+using Bodoconsult.NetworkCommunication.BusinessTransactions.Requests;
 
 namespace IpCommunicationSampleTests.Client.Converters;
 
