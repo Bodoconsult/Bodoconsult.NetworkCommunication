@@ -1,9 +1,19 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
+using Bodoconsult.App.BusinessTransactions.Replies;
 using Bodoconsult.App.Interfaces;
+using Bodoconsult.NetworkCommunication.App.Abstractions.BusinessTransactions;
 using Bodoconsult.NetworkCommunication.BusinessLogicAdapters;
+using Bodoconsult.NetworkCommunication.EnumAndStates;
 using Bodoconsult.NetworkCommunication.Interfaces;
+using Bodoconsult.NetworkCommunication.OrderManagement.Configurations;
+using Bodoconsult.NetworkCommunication.OrderManagement.OrderBuilders;
+using Bodoconsult.NetworkCommunication.OrderManagement.ParameterSets;
+using IpCommunicationSample.Client.Bll.Delegates;
 using IpCommunicationSample.Client.Bll.Interfaces;
+using IpCommunicationSample.Common.BusinessTransactions;
+using IpCommunicationSample.Common.BusinessTransactions.Requests;
+using Microsoft.Extensions.Options;
 
 namespace IpCommunicationSample.Client.Bll.BusinessTransactions.Adapters;
 
@@ -12,46 +22,120 @@ namespace IpCommunicationSample.Client.Bll.BusinessTransactions.Adapters;
 /// </summary>
 public class BtcpBackendTcpIpBusinessLogicAdapter : BaseOrderManagementDeviceBusinessLogicAdapter, IBackendTcpIpBusinessLogicAdapter
 {
+    private readonly IOrderIdGenerator _orderIdGenerator;
+
     /// <summary>
     /// Default ctor
     /// </summary>
     /// <param name="device">Current device supporting order management</param>
-    public BtcpBackendTcpIpBusinessLogicAdapter(IOrderManagementDevice device) : base(device)
-    { }
+    /// <param name="orderIdGenerator">Current order ID generator</param>
+    public BtcpBackendTcpIpBusinessLogicAdapter(IOrderManagementDevice device, IOrderIdGenerator orderIdGenerator) :
+        base(device)
+    {
+        _orderIdGenerator = orderIdGenerator;
+    }
+
+    /// <summary>
+    /// Delegate fired when then state of the backend has changed
+    /// </summary>
+    public StateChangedNotificationDelegate? StateChangedNotificationDelegate { get; set; }
 
     /// <summary>
     /// Request a start streaming state
     /// </summary>
     /// <param name="request">Current request</param>
-    public void RequestDeviceStartStreamingState(IBusinessTransactionRequestData request)
+    public IBusinessTransactionReply RequestDeviceStartStreamingState(IBusinessTransactionRequestData request)
     {
-        throw new NotImplementedException();
+        var transactionId = ClientSideBusinessTransactionIds.StartStreaming;
+        var orderName = "RequestDeviceStartStreamingState";
+
+        return CreateAndExecuteOrder(transactionId, orderName);
     }
 
     /// <summary>
     /// Request a start snapshot state
     /// </summary>
     /// <param name="request">Current request</param>
-    public void RequestDeviceStartSnapshotState(IBusinessTransactionRequestData request)
+    public IBusinessTransactionReply RequestDeviceStartSnapshotState(IBusinessTransactionRequestData request)
     {
-        throw new NotImplementedException();
+        var transactionId = ClientSideBusinessTransactionIds.StartSnapshot;
+        var orderName = "RequestDeviceStartSnapshotState";
+
+        return CreateAndExecuteOrder(transactionId, orderName);
     }
 
     /// <summary>
     /// Request a stop streaming state
     /// </summary>
     /// <param name="request">Current request</param>
-    public void RequestDeviceStopStreamingState(IBusinessTransactionRequestData request)
+    public IBusinessTransactionReply RequestDeviceStopStreamingState(IBusinessTransactionRequestData request)
     {
-        throw new NotImplementedException();
+        var transactionId = ClientSideBusinessTransactionIds.StopStreaming;
+        var orderName = "RequestDeviceStopStreamingState";
+
+        return CreateAndExecuteOrder(transactionId, orderName);
     }
 
     /// <summary>
     /// Request a stop snapshot state
     /// </summary>
     /// <param name="request">Current request</param>
-    public void RequestDeviceStopSnapshotState(IBusinessTransactionRequestData request)
+    public IBusinessTransactionReply RequestDeviceStopSnapshotState(IBusinessTransactionRequestData request)
     {
-        throw new NotImplementedException();
+        var transactionId = ClientSideBusinessTransactionIds.StopSnapshot;
+        var orderName = "RequestDeviceStopSnapshotState";
+
+        return CreateAndExecuteOrder(transactionId, orderName);
+    }
+
+    /// <summary>
+    /// Notification fired
+    /// </summary>
+    /// <param name="requestData">Current request data</param>
+    /// <returns>Returns <see cref="DoNotSendBusinessTransactionReply"/></returns>
+    public IBusinessTransactionReply NotificationFired(IBusinessTransactionRequestData requestData)
+    {
+        if (requestData is StateChangedEventFiredBusinessTransactionRequestData srd)
+        {
+            StateChangedNotificationDelegate?.Invoke(srd);
+        }
+
+        return new DoNotSendBusinessTransactionReply
+        {
+            RequestData = requestData
+        };
+    }
+    
+    private IBusinessTransactionReply CreateAndExecuteOrder(int transactionId, string orderName)
+    {
+        ArgumentNullException.ThrowIfNull(Device.OrderManager);
+
+        var ps = new BtcpParameterSet();
+        ps.BusinessTransactionId = transactionId;
+
+        var builder = new BtcpOrderBuilder();
+
+        var config = new OneRequestSpecNoOrOneStepOneAnswerConfiguration(orderName, BuiltinOrders.BtcpOrder, builder)
+        {
+            //Device = TestDataHelper.CreateStateMachineDevice(),
+            //HandleRequestAnswerOnSuccessDelegate = HandleRequestAnswerOnSuccessDelegate,
+            ParameterSet = ps
+        };
+
+        var order = builder.CreateOrder(config, _orderIdGenerator.NextId());
+
+        var result = Device.OrderManager.OrderProcessor.TryToExecuteOrderSync(order);
+
+        if (result == OrderExecutionResultState.Successful)
+        {
+            return new DefaultBusinessTransactionReply();
+        }
+
+        return new DefaultBusinessTransactionReply
+        {
+            ErrorCode = 2000,
+            Message = $"{orderName} was not successful",
+            ExceptionMessage = $"Order exec result: {result.Id} {result.Name}"
+        };
     }
 }

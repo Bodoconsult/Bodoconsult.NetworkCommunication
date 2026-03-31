@@ -14,6 +14,7 @@ namespace IpCommunicationSample.Client.Bll.Communication;
 /// </summary>
 public class BackendTcpIpClientManager : IOrderManagementDeviceManager
 {
+    private readonly IOrderIdGenerator _orderIdGenerator;
     private readonly IDuplexIoFactory _duplexIoFactory;
     private readonly IAppEventSourceFactory _appEventSourceFactory;
     private readonly IOrderManagementClientNotificationManager _clientNotificationManager;
@@ -34,6 +35,7 @@ public class BackendTcpIpClientManager : IOrderManagementDeviceManager
     /// <param name="monitorLoggerFactoryFactory">Current factory for monitor logger factories</param>
     /// <param name="appLoggerProxy">Current app logger</param>
     /// <param name="orderManagerFactory">Current order manager factory</param>
+    /// <param name="orderIdGenerator">Current order ID generator</param>
     public BackendTcpIpClientManager(IDuplexIoFactory duplexIoFactory,
         IMonitorLoggerFactoryFactory monitorLoggerFactoryFactory,
         ILogDataFactory logDataFactory,
@@ -41,7 +43,8 @@ public class BackendTcpIpClientManager : IOrderManagementDeviceManager
         IAppEventSourceFactory appEventSourceFactory,
         IOrderManagementClientNotificationManager clientNotificationManager,
         IAppLoggerProxy appLoggerProxy,
-        IOrderManagerFactory orderManagerFactory)
+        IOrderManagerFactory orderManagerFactory,
+        IOrderIdGenerator orderIdGenerator)
     {
         _duplexIoFactory = duplexIoFactory;
         _appEventSourceFactory = appEventSourceFactory;
@@ -52,6 +55,7 @@ public class BackendTcpIpClientManager : IOrderManagementDeviceManager
         _logDataFactory = logDataFactory;
         _appLoggerProxy = appLoggerProxy;
         _orderManagerFactory = orderManagerFactory;
+        _orderIdGenerator = orderIdGenerator;
     }
 
     /// <summary>
@@ -77,7 +81,7 @@ public class BackendTcpIpClientManager : IOrderManagementDeviceManager
 
         configurator.CreateMessagingConfig("Client_TCPIP", ipAddress, port, messageProcessingPackageFactory);
 
-        IDeviceBusinessLogicAdapterFactory businessLogicAdapterFactory = new BtcpBackendTcpIpBusinessLogicAdapterFactory();
+        IDeviceBusinessLogicAdapterFactory businessLogicAdapterFactory = new BtcpBackendTcpIpBusinessLogicAdapterFactory(_orderIdGenerator);
         configurator.CreateDevice(businessLogicAdapterFactory);
 
         configurator.ConfigureOrderManagement(_orderManagerFactory);

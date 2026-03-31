@@ -1,0 +1,119 @@
+﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
+
+using IpCommunicationSample.Client.Bll.BusinessTransactions.Adapters;
+using IpCommunicationSample.Client.Bll.BusinessTransactions.Providers;
+using IpCommunicationSample.Common.BusinessTransactions;
+using Moq;
+
+namespace IpCommunicationSampleTests.Client.BusinessTransactions.Providers
+{
+    [TestFixture]
+    internal class BackendTcpIpBusinessTransactionProviderTests
+    {
+        [Test]
+        public void Constructor_Always_RegistersCorrectCreateDelegates()
+        {
+            // Act.
+            var provider = CreateProvider();
+
+            // Assert.
+            var delegates = provider.CreateBusinessTransactionDelegates;
+            Assert.That(delegates, Is.Not.Null);
+            Assert.That(delegates, Has.Count.EqualTo(6));
+
+            foreach (var item in delegates)
+            {
+                var transaction = item.Value.Invoke();
+                Assert.That(item.Key, Is.EqualTo(transaction.Id));
+            }
+        }
+
+        [Test]
+        public void Transaction3_StartStreaming_Always_ReturnsCorrectTransaction()
+        {
+            // Arrange
+            var provider = CreateProvider();
+
+            // Act
+            var transaction = provider.Transaction201_StartStreaming();
+
+            // Assert
+            Assert.That(transaction, Is.Not.Null);
+
+            Assert.Multiple(() =>
+            {
+                Assert.That(transaction.Id, Is.EqualTo(ClientSideBusinessTransactionIds.StartStreaming));
+                Assert.That(transaction.RunBusinessTransactionDelegate, Is.Not.Null);
+                Assert.That(transaction.AllowedRequestDataTypes, Has.Count.EqualTo(1));
+            });
+        }
+
+        [Test]
+        public void Transaction4_StopStreaming_Always_ReturnsCorrectTransaction()
+        {
+            // Arrange
+            var provider = CreateProvider();
+
+            // Act
+            var transaction = provider.Transaction202_StopStreaming();
+
+            // Assert
+            Assert.That(transaction, Is.Not.Null);
+
+            Assert.Multiple(() =>
+            {
+                Assert.That(transaction.Id, Is.EqualTo(ClientSideBusinessTransactionIds.StopStreaming));
+                Assert.That(transaction.RunBusinessTransactionDelegate, Is.Not.Null);
+                Assert.That(transaction.AllowedRequestDataTypes, Has.Count.EqualTo(1));
+            });
+        }
+
+        [Test]
+        public void Transaction5_StartSnapshot_Always_ReturnsCorrectTransaction()
+        {
+            // Arrange
+            var provider = CreateProvider();
+
+            // Act
+            var transaction = provider.Transaction204_StopSnapshot();
+
+            // Assert
+            Assert.That(transaction, Is.Not.Null);
+
+            Assert.Multiple(() =>
+            {
+                Assert.That(transaction.Id, Is.EqualTo(ClientSideBusinessTransactionIds.StartSnapshot));
+                Assert.That(transaction.RunBusinessTransactionDelegate, Is.Not.Null);
+                Assert.That(transaction.AllowedRequestDataTypes, Has.Count.EqualTo(1));
+            });
+        }
+
+        [Test]
+        public void Transaction6_StopSnapshot_Always_ReturnsCorrectTransaction()
+        {
+            // Arrange
+            var provider = CreateProvider();
+
+            // Act
+            var transaction = provider.Transaction203_StartSnapshot();
+
+            // Assert
+            Assert.That(transaction, Is.Not.Null);
+
+            Assert.Multiple(() =>
+            {
+                Assert.That(transaction.Id, Is.EqualTo(ClientSideBusinessTransactionIds.StopSnapshot));
+                Assert.That(transaction.RunBusinessTransactionDelegate, Is.Not.Null);
+                Assert.That(transaction.AllowedRequestDataTypes, Has.Count.EqualTo(1));
+            });
+        }
+
+        private static BackendTcpIpBusinessTransactionProvider CreateProvider()
+        {
+            var articleGroupDelegate = new Mock<BtcpBackendTcpIpBusinessLogicAdapter>();
+            var provider = new BackendTcpIpBusinessTransactionProvider(articleGroupDelegate.Object);
+
+            return provider;
+        }
+    }
+}

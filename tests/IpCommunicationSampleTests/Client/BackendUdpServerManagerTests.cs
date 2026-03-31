@@ -33,6 +33,7 @@ internal class BackendTcpIpClientManagerTests
     private readonly LogDataFactory _logDataFactory = TestDataHelper.LogDataFactory;
     private readonly AppLoggerProxyFactory _appLoggerFactory = new();
     private readonly FakeAppEventSourceFactory _appEventSourceFactory = new();
+    private readonly IOrderIdGenerator _orderIdGenerator = TestDataHelper.DefaultOrderIdGenerator;
 
     [OneTimeTearDown]
     public void Cleanup()
@@ -52,7 +53,7 @@ internal class BackendTcpIpClientManagerTests
 
         // Act
         var m = new BackendTcpIpClientManager(duplexIoFactory, _monitorLoggerFactoryFactory, _logDataFactory, _appLoggerFactory,
-            _appEventSourceFactory, _clientNotificationManager, _appLogger, orderManagerFactory);
+            _appEventSourceFactory, _clientNotificationManager, _appLogger, orderManagerFactory, _orderIdGenerator);
 
         // Assert
         using (Assert.EnterMultipleScope())
@@ -72,7 +73,7 @@ internal class BackendTcpIpClientManagerTests
         IOrderManagerFactory orderManagerFactory = new OrderManagerFactory(orderProcessorFactory, _orderReceiverFactory, _requestStepProcessorFactoryFactory, _requestProcessorFactoryFactory, orderPipelineFactory, _orderFactory);
 
         var m = new BackendTcpIpClientManager(duplexIoFactory, _monitorLoggerFactoryFactory, _logDataFactory, _appLoggerFactory,
-            _appEventSourceFactory, _clientNotificationManager,  _appLogger, orderManagerFactory);
+            _appEventSourceFactory, _clientNotificationManager,  _appLogger, orderManagerFactory, _orderIdGenerator);
 
         const string ip = "127.0.0.1";
         const int port = 9000;
