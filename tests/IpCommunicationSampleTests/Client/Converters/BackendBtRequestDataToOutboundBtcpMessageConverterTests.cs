@@ -5,7 +5,6 @@ using Bodoconsult.App.Abstractions.Interfaces;
 using Bodoconsult.App.BusinessTransactions.RequestData;
 using Bodoconsult.NetworkCommunication.BusinessTransactions.Requests;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
-using Bodoconsult.NetworkCommunication.Tests.Fakes.Converters;
 using Bodoconsult.NetworkCommunication.Tests.Helpers;
 using IpCommunicationSample.Client.Bll.BusinessLogic.Converters;
 using IpCommunicationSample.Common.BusinessTransactions;

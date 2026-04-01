@@ -1,6 +1,5 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
-using Bodoconsult.App.Interfaces;
 using Bodoconsult.NetworkCommunication.Interfaces;
 
 namespace IpCommunicationSample.Backend.Bll.Interfaces;

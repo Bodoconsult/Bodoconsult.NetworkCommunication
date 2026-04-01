@@ -7,7 +7,6 @@ using Bodoconsult.NetworkCommunication.Tests.Helpers;
 using IpCommunicationSample.Client.Bll.BusinessLogic.Converters;
 using IpCommunicationSample.Common;
 using IpCommunicationSample.Common.BusinessTransactions;
-using IpCommunicationSample.Common.BusinessTransactions.Requests;
 using System.Text;
 using Bodoconsult.NetworkCommunication.BusinessTransactions.Requests;
 

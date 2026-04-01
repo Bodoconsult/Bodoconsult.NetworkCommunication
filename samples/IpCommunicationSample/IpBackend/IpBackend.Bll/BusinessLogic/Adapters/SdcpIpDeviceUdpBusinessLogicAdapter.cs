@@ -42,4 +42,4 @@ public class SdcpIpDeviceUdpBusinessLogicAdapter : BaseSimpleDeviceBusinessLogic
 
         return new FftReportBusinessTransactionReply();
     }
-}0
+}

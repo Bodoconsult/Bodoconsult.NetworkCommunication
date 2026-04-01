@@ -79,6 +79,16 @@ public class DummyDataMessageProcessingPackage : IDataMessageProcessingPackage
     /// </summary>
     public IOutboundDataMessageFactory OutboundDataMessageFactory { get; set; }
 
+    /// <summary>
+    /// Current data loggers. May contain zero or more loggers. Each message can be logged only by one logger (or none)
+    /// </summary>
+    public List<IInboundDataLogger> DataLoggers { get; } = new();
+
+    /// <summary>
+    /// Current data message sorter instance to use or null
+    /// </summary>
+    public IInboundDataMessageSorter? DataMessageSorter { get; set; }
+
     public void LoadCustomDataBlockCodecs()
     {
         throw new NotImplementedException();

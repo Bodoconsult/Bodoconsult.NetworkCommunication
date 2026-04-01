@@ -2,7 +2,6 @@
 
 using Bodoconsult.App.Abstractions.Interfaces;
 using Bodoconsult.NetworkCommunication.BusinessTransactions.Converters;
-using Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
 using IpCommunicationSample.Common.BusinessTransactions;
 
 namespace IpCommunicationSample.Client.Bll.BusinessLogic.Converters;

@@ -6,7 +6,6 @@ using Bodoconsult.NetworkCommunication.BusinessTransactions.Converters;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
 using IpCommunicationSample.Common;
 using IpCommunicationSample.Common.BusinessTransactions;
-using IpCommunicationSample.Common.BusinessTransactions.Requests;
 using System.Text;
 using Bodoconsult.NetworkCommunication.BusinessTransactions.Requests;
 

@@ -123,6 +123,16 @@ public class BtcpDataMessageProcessingPackage : IDataMessageProcessingPackage
     public IOutboundDataMessageFactory OutboundDataMessageFactory { get; }
 
     /// <summary>
+    /// Current data loggers. May contain zero or more loggers. Each message can be logged only by one logger (or none)
+    /// </summary>
+    public List<IInboundDataLogger> DataLoggers { get; } = new();
+
+    /// <summary>
+    /// Current data message sorter instance to use or null
+    /// </summary>
+    public IInboundDataMessageSorter? DataMessageSorter { get; set; }
+
+    /// <summary>
     /// Load custom data block codecs. This method should be overwritten to load your app specific codecs
     /// </summary>
     public virtual void LoadCustomDataBlockCodecs()

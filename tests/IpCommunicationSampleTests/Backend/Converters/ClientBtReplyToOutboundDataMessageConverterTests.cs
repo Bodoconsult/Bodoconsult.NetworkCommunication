@@ -60,8 +60,9 @@ internal class ClientBtReplyToOutboundDataMessageConverterTests
         using (Assert.EnterMultipleScope())
         {
             Assert.That(msg, Is.Not.Null);
-            Assert.That(msg.DataBlock, Is.Not.Null);
+            ArgumentNullException.ThrowIfNull(msg);
 
+            Assert.That(msg.DataBlock, Is.Not.Null);
             ArgumentNullException.ThrowIfNull(msg.DataBlock);
 
             var payload = msg.DataBlock.Data;
@@ -105,8 +106,9 @@ internal class ClientBtReplyToOutboundDataMessageConverterTests
         using (Assert.EnterMultipleScope())
         {
             Assert.That(msg, Is.Not.Null);
-            Assert.That(msg.DataBlock, Is.Not.Null);
+            ArgumentNullException.ThrowIfNull(msg);
 
+            Assert.That(msg.DataBlock, Is.Not.Null);
             ArgumentNullException.ThrowIfNull(msg.DataBlock);
 
             var payload = msg.DataBlock.Data;
