@@ -1,0 +1,97 @@
+﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
+
+using Bodoconsult.App.Helpers;
+using Bodoconsult.NetworkCommunication.DataMessaging.DataLoggers;
+using Bodoconsult.NetworkCommunication.DataMessaging.DataMessageProcessingPackages;
+using Bodoconsult.NetworkCommunication.DataMessaging.DataMessageProcessors;
+using Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
+using Bodoconsult.NetworkCommunication.Interfaces;
+using Bodoconsult.NetworkCommunication.Tests.Helpers;
+
+namespace Bodoconsult.NetworkCommunication.Tests.DataMessaging.DataMessagingProcessors;
+
+[TestFixture]
+internal class LoggedDefaultDataMessageProcessorTests
+{
+    private bool _wasDataMessageFired;
+
+    [SetUp]
+    public void Setup()
+    {
+        _wasDataMessageFired = false;
+    }
+
+    [Test]
+    public void Ctor_ValidSetup_PropsSetCorrectly()
+    {
+        // Arrange 
+        var config = TestDataHelper.GetDataMessagingConfig();
+        config.DataMessageProcessingPackage = new SdcpDataMessageProcessingPackage(config);
+
+        // Act  
+        var proc = new LoggedDataMessageProcessor(config);
+
+        // Assert
+        Assert.That(proc.Config, Is.EqualTo(config));
+    }
+
+    [Test]
+    public void ProcessMessage_ValidHandshake_Processed()
+    {
+        // Arrange 
+
+        var logger = new FakeInboundDataLogger();
+        var config = TestDataHelper.GetDataMessagingConfig();
+        config.DataMessageProcessingPackage = new SdcpDataMessageProcessingPackage(config);
+        config.RaiseCommLayerDataMessageReceivedDelegate = RaiseCommLayerDataMessageReceivedDelegate;
+        config.DataMessageProcessingPackage.DataLoggers.Add(logger);
+
+        var proc = new LoggedDataMessageProcessor(config);
+
+        var msg = new InboundHandshakeMessage();
+
+        // Act  
+        Assert.DoesNotThrow(() =>
+        {
+            proc.ProcessMessage(msg);
+        });
+
+        // Assert
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(proc.Config, Is.EqualTo(config));
+            Assert.That(logger.WasLogged, Is.False);
+        }
+    }
+
+    [Test]
+    public void ProcessMessage_ValidDataMessage_DelegateFired()
+    {
+        // Arrange 
+        var logger = new FakeInboundDataLogger();
+        var config = TestDataHelper.GetDataMessagingConfig();
+        config.DataMessageProcessingPackage = new SdcpDataMessageProcessingPackage(config);
+        config.RaiseCommLayerDataMessageReceivedDelegate = RaiseCommLayerDataMessageReceivedDelegate;
+        config.DataMessageProcessingPackage.DataLoggers.Add(logger);
+
+        var proc = new LoggedDataMessageProcessor(config);
+
+        var msg = new SdcpInboundDataMessage();
+
+        // Act  
+        proc.ProcessMessage(msg);
+
+        // Assert
+        Wait.Until(() => _wasDataMessageFired);
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(_wasDataMessageFired, Is.True);
+            Assert.That(logger.WasLogged, Is.True);
+        }
+    }
+
+    private void RaiseCommLayerDataMessageReceivedDelegate(IInboundDataMessage message)
+    {
+        _wasDataMessageFired = true;
+    }
+}

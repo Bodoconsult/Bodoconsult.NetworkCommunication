@@ -8,6 +8,11 @@ namespace Bodoconsult.NetworkCommunication.Interfaces;
 public interface IInboundDataMessageSorter
 {
     /// <summary>
+    /// The maximum number of messages in the queue before the queue is sent and then cleared
+    /// </summary>
+    int MaxNumberOfMessagesInQueue { get; set; }
+    
+    /// <summary>
     /// The last incoming message ID returned correctly
     /// </summary>
     long LastMessageId { get; set; }

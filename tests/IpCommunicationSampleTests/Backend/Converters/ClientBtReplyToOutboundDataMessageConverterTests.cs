@@ -25,7 +25,6 @@ internal class ClientBtReplyToOutboundDataMessageConverterTests
     [Test]
     public void Ctor_ValidSetup_PropsSetCorrectly()
     {
-            
         // Arrange 
 
         // Act  
@@ -38,7 +37,6 @@ internal class ClientBtReplyToOutboundDataMessageConverterTests
     [Test]
     public void MapToOutboundDataMessage_ValidDefaultBusinessTransactionReplyErrorCode0_PropsSetCorrectly()
     {
-
         // Arrange 
         var converter = new ClientBtReplyToOutboundDataMessageConverter(_appLogger);
 
@@ -82,9 +80,8 @@ internal class ClientBtReplyToOutboundDataMessageConverterTests
     [Test]
     public void MapToOutboundDataMessage_ValidFftReportBusinessTransactionReplyErrorCode0_PropsSetCorrectly()
     {
-
         // Arrange 
-        const int _errorCode = 0;
+        const int errorCode = 0;
         var converter = new ClientBtReplyToOutboundDataMessageConverter(_appLogger);
 
         var request = new EmptyBusinessTransactionRequestData
@@ -96,7 +93,7 @@ internal class ClientBtReplyToOutboundDataMessageConverterTests
         var reply = new FftReportBusinessTransactionReply
         {
             RequestData = request,
-            ErrorCode = _errorCode
+            ErrorCode = errorCode
         };
 
         // Act  

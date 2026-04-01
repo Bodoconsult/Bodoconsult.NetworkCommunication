@@ -10,6 +10,11 @@ namespace Bodoconsult.NetworkCommunication.App.Abstractions.DataExportServices;
 public class FakeDataExportService : IDataExportService<byte[]>
 {
     /// <summary>
+    /// Data were logged
+    /// </summary>
+    public bool WasLogged { get; set; }
+
+    /// <summary>
     /// Encoding to use for string based exports like XML, JSON etc.
     /// </summary>
     public Encoding Encoding => Encoding.UTF8;
@@ -103,7 +108,7 @@ public class FakeDataExportService : IDataExportService<byte[]>
     /// <param name="data"></param>
     public void Add(byte[] data)
     {
-        throw new NotImplementedException();
+        WasLogged = true;
     }
 
     /// <summary>

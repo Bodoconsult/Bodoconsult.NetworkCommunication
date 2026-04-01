@@ -1,14 +1,14 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
-using Bodoconsult.NetworkCommunication.DataMessaging.DataMessageCodingProcessors;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataBlockCodecs;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataBlockCodingProcessors;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataBlocks;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessageCodecs;
+using Bodoconsult.NetworkCommunication.DataMessaging.DataMessageCodingProcessors;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
 using Bodoconsult.NetworkCommunication.Interfaces;
 
-namespace Bodoconsult.NetworkCommunication.Tests.DataMessaging.DataMessagingProcessor;
+namespace Bodoconsult.NetworkCommunication.Tests.DataMessaging.DataMessagingCodingProcessor;
 
 [TestFixture]
 internal class DefaultDataMessageCodingProcessorTests

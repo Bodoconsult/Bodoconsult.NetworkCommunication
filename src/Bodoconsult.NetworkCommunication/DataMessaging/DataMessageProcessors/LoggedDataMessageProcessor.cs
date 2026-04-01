@@ -6,16 +6,22 @@ using Bodoconsult.NetworkCommunication.Interfaces;
 namespace Bodoconsult.NetworkCommunication.DataMessaging.DataMessageProcessors;
 
 /// <summary>
-/// Current implementation of <see cref="IDataMessageProcessor"/> for plain data messages. Delivers messages in the order of reaching it via <see cref="ProcessMessage"/>
+/// Current implementation of <see cref="IDataMessageProcessor"/> for sortable data messages with data logging. Delivers messages in the order of reaching it via <see cref="ProcessMessage"/>
 /// Should invoke IDataMessagingConfig.RaiseDataMessageReceivedDelegate for data messages and IDataMessagingConfig.DataMessageProcessingPackage.WaitStateManager?.OnHandshakeReceived for handshakes
 /// </summary>
-public class DefaultDataMessageProcessor : BaseDataMessageProcessor
+public class LoggedDataMessageProcessor : BaseDataMessageProcessor
 {
+    private readonly List<IInboundDataLogger> _dataLoggers;
+
     /// <summary>
     /// Default ctor
     /// </summary>
-    public DefaultDataMessageProcessor(IDataMessagingConfig config): base(config)
-    { }
+    public LoggedDataMessageProcessor(IDataMessagingConfig config) : base(config)
+    {
+        ArgumentNullException.ThrowIfNull(Config.DataMessageProcessingPackage);
+
+        _dataLoggers = Config.DataMessageProcessingPackage.DataLoggers;
+    }
 
     /// <summary>
     /// Process the message
@@ -41,7 +47,26 @@ public class DefaultDataMessageProcessor : BaseDataMessageProcessor
 
     private void ProcessDataMessage(IInboundDataMessage dataMessage)
     {
-        // Now process the message
+        // Sort messages
+
+        // Log messages
+        LogMessage(dataMessage);
+
+        // Now process the messages
         AsyncHelper.FireAndForget2(() => Config.RaiseCommLayerDataMessageReceivedDelegate?.Invoke(dataMessage)).ContinueWith(Callback);
+    }
+
+    private void LogMessage(IInboundDataMessage msg)
+    {
+        foreach (var logger in _dataLoggers)
+        {
+            if (!logger.CheckIfMessageIsToLog(msg))
+            {
+                continue;
+            }
+
+            logger.LogTheMessage(msg);
+            break;
+        }
     }
 }
