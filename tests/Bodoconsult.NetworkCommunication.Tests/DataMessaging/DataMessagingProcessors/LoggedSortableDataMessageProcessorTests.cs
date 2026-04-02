@@ -5,13 +5,14 @@ using Bodoconsult.NetworkCommunication.DataMessaging.DataLoggers;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessageProcessingPackages;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessageProcessors;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
+using Bodoconsult.NetworkCommunication.DataMessaging.DataSorter;
 using Bodoconsult.NetworkCommunication.Interfaces;
 using Bodoconsult.NetworkCommunication.Tests.Helpers;
 
 namespace Bodoconsult.NetworkCommunication.Tests.DataMessaging.DataMessagingProcessors;
 
 [TestFixture]
-internal class LoggedDefaultDataMessageProcessorTests
+internal class LoggedSortableDataMessageProcessorTests
 {
     private bool _wasDataMessageFired;
 
@@ -25,14 +26,21 @@ internal class LoggedDefaultDataMessageProcessorTests
     public void Ctor_ValidSetup_PropsSetCorrectly()
     {
         // Arrange 
+        var logger = new FakeInboundDataLogger();
         var config = TestDataHelper.GetDataMessagingConfig();
         config.DataMessageProcessingPackage = new SdcpDataMessageProcessingPackage(config);
+        config.DataMessageProcessingPackage.DataMessageSorter = new DefaultInboundDataMessageSorter();
+        config.DataMessageProcessingPackage.DataLoggers.Add(logger);
 
         // Act  
-        var proc = new LoggedDataMessageProcessor(config);
+        var proc = new LoggedSortableDataMessageProcessor(config);
 
-        // Assert
-        Assert.That(proc.Config, Is.EqualTo(config));
+        // Assert#
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(proc.Config, Is.EqualTo(config));
+            Assert.That(logger.WasLogged, Is.False);
+        }
     }
 
     [Test]
@@ -42,10 +50,11 @@ internal class LoggedDefaultDataMessageProcessorTests
         var logger = new FakeInboundDataLogger();
         var config = TestDataHelper.GetDataMessagingConfig();
         config.DataMessageProcessingPackage = new SdcpDataMessageProcessingPackage(config);
+        config.DataMessageProcessingPackage.DataMessageSorter = new DefaultInboundDataMessageSorter();
         config.RaiseCommLayerDataMessageReceivedDelegate = RaiseCommLayerDataMessageReceivedDelegate;
         config.DataMessageProcessingPackage.DataLoggers.Add(logger);
 
-        var proc = new LoggedDataMessageProcessor(config);
+        var proc = new LoggedSortableDataMessageProcessor(config);
 
         var msg = new InboundHandshakeMessage();
 
@@ -70,12 +79,13 @@ internal class LoggedDefaultDataMessageProcessorTests
         var logger = new FakeInboundDataLogger();
         var config = TestDataHelper.GetDataMessagingConfig();
         config.DataMessageProcessingPackage = new SdcpDataMessageProcessingPackage(config);
+        config.DataMessageProcessingPackage.DataMessageSorter = new DefaultInboundDataMessageSorter();
         config.RaiseCommLayerDataMessageReceivedDelegate = RaiseCommLayerDataMessageReceivedDelegate;
         config.DataMessageProcessingPackage.DataLoggers.Add(logger);
 
-        var proc = new LoggedDataMessageProcessor(config);
+        var proc = new LoggedSortableDataMessageProcessor(config);
 
-        var msg = new SdcpInboundDataMessage();
+        var msg = new SdcpSortableInboundDataMessage();
 
         // Act  
         proc.ProcessMessage(msg);

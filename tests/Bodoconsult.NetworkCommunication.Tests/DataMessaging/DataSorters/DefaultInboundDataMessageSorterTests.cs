@@ -81,9 +81,11 @@ internal class DefaultInboundDataMessageSorterTests
         };
 
         var result1 = sorter.AddMessage(msg1);
-
-        Assert.That(sorter.LastMessageId, Is.EqualTo(msg1.OriginalMessageId));
-        Assert.That(result1.Contains(msg1));
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(sorter.LastMessageId, Is.EqualTo(msg1.OriginalMessageId));
+            Assert.That(result1.Contains(msg1));
+        }
 
         var msg2 = new SdcpSortableInboundDataMessage
         {
@@ -114,8 +116,11 @@ internal class DefaultInboundDataMessageSorterTests
         };
 
         var result0 = sorter.AddMessage(msg0);
-        Assert.That(sorter.LastMessageId, Is.EqualTo(msg0.OriginalMessageId));
-        Assert.That(result0.Contains(msg0), Is.True);
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(sorter.LastMessageId, Is.EqualTo(msg0.OriginalMessageId));
+            Assert.That(result0.Contains(msg0), Is.True);
+        }
 
         var msg1 = new SdcpSortableInboundDataMessage
         {
@@ -123,9 +128,11 @@ internal class DefaultInboundDataMessageSorterTests
         };
 
         var result1 = sorter.AddMessage(msg1);
-
-        Assert.That(sorter.LastMessageId, Is.EqualTo(msg1.OriginalMessageId));
-        Assert.That(result1.Contains(msg1), Is.False);
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(sorter.LastMessageId, Is.Zero);
+            Assert.That(result1.Contains(msg1), Is.False);
+        }
 
         var msg2 = new SdcpSortableInboundDataMessage
         {
@@ -138,9 +145,71 @@ internal class DefaultInboundDataMessageSorterTests
         // Assert
         using (Assert.EnterMultipleScope())
         {
-            Assert.That(sorter.LastMessageId, Is.EqualTo(msg2.OriginalMessageId));
+            Assert.That(sorter.LastMessageId, Is.EqualTo(msg1.OriginalMessageId));
             Assert.That(result2.Contains(msg1));
             Assert.That(result2.Contains(msg2));
+        }
+    }
+
+    [Test]
+    public void AddMessage_Message1Id3Message2Id2Message3Id1_ReturnsCorrectMessages()
+    {
+        // Arrange 
+        var sorter = new DefaultInboundDataMessageSorter();
+
+        var msg0 = new SdcpSortableInboundDataMessage
+        {
+            OriginalMessageId = 0
+        };
+
+        var result0 = sorter.AddMessage(msg0);
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(sorter.LastMessageId, Is.EqualTo(msg0.OriginalMessageId));
+            Assert.That(result0.Contains(msg0), Is.True);
+        }
+
+        var msg1 = new SdcpSortableInboundDataMessage
+        {
+            OriginalMessageId = 3
+        };
+
+        var result1 = sorter.AddMessage(msg1);
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(sorter.LastMessageId, Is.Zero);
+            Assert.That(result1.Contains(msg1), Is.False);
+        }
+
+        var msg2 = new SdcpSortableInboundDataMessage
+        {
+            OriginalMessageId = 2
+        };
+
+        // Act  
+        var result2 = sorter.AddMessage(msg2);
+
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(sorter.LastMessageId, Is.Zero);
+            Assert.That(result2.Contains(msg2), Is.False);
+        }
+
+        var msg3 = new SdcpSortableInboundDataMessage
+        {
+            OriginalMessageId = 1
+        };
+
+        // Act  
+        var result3 = sorter.AddMessage(msg3);
+
+        // Assert
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(sorter.LastMessageId, Is.EqualTo(msg1.OriginalMessageId));
+            Assert.That(result3.Contains(msg1));
+            Assert.That(result3.Contains(msg2));
+            Assert.That(result3.Contains(msg3));
         }
     }
 }

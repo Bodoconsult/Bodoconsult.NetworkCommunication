@@ -47,11 +47,14 @@ public class DefaultInboundDataMessageSorter : IInboundDataMessageSorter
         // Message is the expected one
         if (LastMessageId + 1 == message.OriginalMessageId)
         {
-            //if (_inboundDataMessages.Count > 0)
-            //{
+            if (_inboundDataMessages.Count > 0)
+            {
+                // Check if order fits
+                _inboundDataMessages.Add(message.OriginalMessageId, message);
 
-
-            //}
+                CheckMessagesinQueue(result);
+                return result;
+            }
             LastMessageId = message.OriginalMessageId;
             result.Add(message);
             return result;
@@ -64,41 +67,59 @@ public class DefaultInboundDataMessageSorter : IInboundDataMessageSorter
             if (_inboundDataMessages.Count == 0)
             {
                 _inboundDataMessages.Add(message.OriginalMessageId, message);
-                LastMessageId = message.OriginalMessageId;
+                //LastMessageId = message.OriginalMessageId;
             }
             else
             {
                 // Check if order fits
                 _inboundDataMessages.Add(message.OriginalMessageId, message);
-                LastMessageId = message.OriginalMessageId;
 
-                var sorted = _inboundDataMessages.Values.OrderBy(x => x.OriginalMessageId).ToList();
-
-                ISortableInboundDataMessage oldMsg = sorted.First();
-                var messageId = oldMsg.OriginalMessageId;
-
-                var fit = true;
-
-                for (var index = 1; index < sorted.Count; index++)
-                {
-                    var msg = sorted[index];
-                    if (msg.OriginalMessageId != messageId + 1)
-                    {
-                        fit = false;
-                    }
-                }
-
-                if (!fit && sorted.Count < MaxNumberOfMessagesInQueue)
-                {
-                        return result;
-                }
-
-                result.AddRange(sorted);
-                _inboundDataMessages.Clear();
+                CheckMessagesinQueue(result);
+               
             }
         }
 
         return result;
+    }
+
+    private void CheckMessagesinQueue(List<ISortableInboundDataMessage> result)
+    {
+        var sorted = _inboundDataMessages.Values.OrderBy(x => x.OriginalMessageId).ToList();
+
+        var oldMsg = sorted.First();
+        var messageId = oldMsg.OriginalMessageId;
+
+        var fit = true;
+
+        if (messageId == LastMessageId + 1)
+        {
+            for (var index = 1; index < sorted.Count; index++)
+            {
+                messageId++;
+
+                var msg = sorted[index];
+                if (msg.OriginalMessageId != messageId)
+                {
+                    fit = false;
+                }
+
+                
+            }
+        }
+        else
+        {
+            fit = false;
+        }
+
+        if (!fit && sorted.Count < MaxNumberOfMessagesInQueue)
+        {
+            return;
+        }
+
+        result.AddRange(sorted);
+        _inboundDataMessages.Clear();
+        LastMessageId = sorted.Last().OriginalMessageId;
+        return;
     }
 
     /// <summary>
