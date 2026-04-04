@@ -1,9 +1,9 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
 using Bodoconsult.App.Abstractions.Interfaces;
+using Bodoconsult.App.Abstractions.SyncExecution;
 using Bodoconsult.App.Helpers;
 using Bodoconsult.App.Interfaces;
-using Bodoconsult.NetworkCommunication.App.Abstractions.SyncProcessManager;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
 using Bodoconsult.NetworkCommunication.Interfaces;
 using Bodoconsult.NetworkCommunication.OrderManagement.Processors;

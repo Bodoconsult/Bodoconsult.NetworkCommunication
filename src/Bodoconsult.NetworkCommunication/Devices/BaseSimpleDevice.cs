@@ -2,7 +2,7 @@
 
 using System.Diagnostics;
 using Bodoconsult.App.Abstractions.Interfaces;
-using Bodoconsult.NetworkCommunication.App.Abstractions;
+using Bodoconsult.App.Interfaces;
 using Bodoconsult.NetworkCommunication.Interfaces;
 
 namespace Bodoconsult.NetworkCommunication.Devices;

@@ -2,7 +2,7 @@
 
 using System.Net;
 using Bodoconsult.App.Abstractions.Interfaces;
-using Bodoconsult.NetworkCommunication.App.Abstractions;
+using Bodoconsult.App.Interfaces;
 using Bodoconsult.NetworkCommunication.Communication;
 using Bodoconsult.NetworkCommunication.Interfaces;
 

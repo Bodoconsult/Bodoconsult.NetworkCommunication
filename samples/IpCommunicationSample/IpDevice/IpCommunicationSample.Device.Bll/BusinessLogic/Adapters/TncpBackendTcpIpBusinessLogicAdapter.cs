@@ -1,11 +1,12 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
+using Bodoconsult.App.Abstractions.Interfaces;
 using Bodoconsult.App.BusinessTransactions.RequestData;
 using Bodoconsult.App.Interfaces;
-using Bodoconsult.NetworkCommunication.App.Abstractions.NetworkCommands;
 using Bodoconsult.NetworkCommunication.BusinessLogicAdapters;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
 using Bodoconsult.NetworkCommunication.Interfaces;
+using Bodoconsult.NetworkCommunication.NetworkCommands;
 using IpCommunicationSample.Common;
 using IpCommunicationSample.Device.Bll.BusinessTransactions;
 using IpCommunicationSample.Device.Bll.Interfaces;

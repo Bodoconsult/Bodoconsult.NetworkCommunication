@@ -7,8 +7,14 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Bodoconsult.App" Version="1.0.8" />
-    <PackageReference Include="Bodoconsult.App.Abstractions" Version="1.0.8" />
+    <Compile Remove="App.Abstractions\**" />
+    <EmbeddedResource Remove="App.Abstractions\**" />
+    <None Remove="App.Abstractions\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Bodoconsult.App" Version="1.0.9" />
+    <PackageReference Include="Bodoconsult.App.Abstractions" Version="1.0.9" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
   </ItemGroup>
 

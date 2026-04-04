@@ -14,7 +14,7 @@ using Bodoconsult.NetworkCommunication.OrderManagement.Processors;
 using Bodoconsult.NetworkCommunication.Tests.Helpers;
 using System.Diagnostics;
 using Bodoconsult.App.Abstractions.Interfaces;
-using IAppDateService = Bodoconsult.NetworkCommunication.App.Abstractions.IAppDateService;
+
 using Bodoconsult.NetworkCommunication.Devices;
 
 namespace Bodoconsult.NetworkCommunication.Tests.OrderManagement.Processors;

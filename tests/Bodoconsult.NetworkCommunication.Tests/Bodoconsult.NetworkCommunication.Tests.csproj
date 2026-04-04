@@ -35,8 +35,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Bodoconsult.App" Version="1.0.8" />
-    <PackageReference Include="Bodoconsult.App.Abstractions" Version="1.0.8" />
+    <PackageReference Include="Bodoconsult.App" Version="1.0.9" />
+    <PackageReference Include="Bodoconsult.App.Abstractions" Version="1.0.9" />
     <PackageReference Include="coverlet.collector" Version="8.0.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>

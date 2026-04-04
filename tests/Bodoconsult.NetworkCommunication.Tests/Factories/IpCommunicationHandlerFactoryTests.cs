@@ -2,7 +2,7 @@
 
 using Bodoconsult.App.Abstractions.Interfaces;
 using Bodoconsult.App.Factories;
-using Bodoconsult.NetworkCommunication.App.Abstractions;
+using Bodoconsult.App.Interfaces;
 using Bodoconsult.NetworkCommunication.ClientNotifications;
 using Bodoconsult.NetworkCommunication.Factories;
 using Bodoconsult.NetworkCommunication.Interfaces;

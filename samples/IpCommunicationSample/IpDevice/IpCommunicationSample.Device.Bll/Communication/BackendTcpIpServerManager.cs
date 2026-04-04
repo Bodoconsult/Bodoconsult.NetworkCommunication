@@ -2,7 +2,6 @@
 
 using Bodoconsult.App.Abstractions.Interfaces;
 using Bodoconsult.App.Interfaces;
-using Bodoconsult.NetworkCommunication.App.Abstractions;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessageProcessingPackages;
 using Bodoconsult.NetworkCommunication.Devices.Configurators;
 using Bodoconsult.NetworkCommunication.Interfaces;

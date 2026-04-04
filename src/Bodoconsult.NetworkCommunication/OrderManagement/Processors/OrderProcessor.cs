@@ -5,7 +5,6 @@ using Bodoconsult.App.Abstractions.Interfaces;
 using Bodoconsult.NetworkCommunication.EnumAndStates;
 using Bodoconsult.NetworkCommunication.Interfaces;
 using Bodoconsult.NetworkCommunication.StateManagement;
-using IAppDateService = Bodoconsult.NetworkCommunication.App.Abstractions.IAppDateService;
 
 namespace Bodoconsult.NetworkCommunication.OrderManagement.Processors;
 

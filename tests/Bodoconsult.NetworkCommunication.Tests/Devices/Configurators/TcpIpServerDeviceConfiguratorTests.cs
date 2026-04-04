@@ -3,7 +3,6 @@
 using Bodoconsult.App.Abstractions.Interfaces;
 using Bodoconsult.App.Factories;
 using Bodoconsult.App.Logging;
-using Bodoconsult.NetworkCommunication.App.Abstractions;
 using Bodoconsult.NetworkCommunication.ClientNotifications;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessageProcessingPackages;
 using Bodoconsult.NetworkCommunication.Devices.Configurators;

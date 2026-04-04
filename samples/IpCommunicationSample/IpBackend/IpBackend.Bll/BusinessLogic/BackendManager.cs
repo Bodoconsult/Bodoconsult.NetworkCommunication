@@ -2,13 +2,12 @@
 
 using Bodoconsult.App.Abstractions.Interfaces;
 using Bodoconsult.App.Interfaces;
-using Bodoconsult.NetworkCommunication.App.Abstractions;
 using Bodoconsult.NetworkCommunication.Factories;
 using Bodoconsult.NetworkCommunication.Interfaces;
 using IpCommunicationSample.Backend.Bll.BusinessTransactions.Providers;
 using IpCommunicationSample.Backend.Bll.Communication;
 using IpCommunicationSample.Backend.Bll.Interfaces;
-using IAppDateService = Bodoconsult.NetworkCommunication.App.Abstractions.IAppDateService;
+
 
 namespace IpCommunicationSample.Backend.Bll.BusinessLogic;
 

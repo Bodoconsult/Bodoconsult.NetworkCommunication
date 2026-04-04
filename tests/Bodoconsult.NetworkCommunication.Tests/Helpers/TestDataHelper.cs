@@ -2,9 +2,9 @@
 
 using Bodoconsult.App.Abstractions.Interfaces;
 using Bodoconsult.App.Benchmarking;
+using Bodoconsult.App.CentralServices;
 using Bodoconsult.App.Factories;
 using Bodoconsult.App.Logging;
-using Bodoconsult.NetworkCommunication.App.Abstractions;
 using Bodoconsult.NetworkCommunication.ClientNotifications;
 using Bodoconsult.NetworkCommunication.Communication;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessageProcessingPackages;
@@ -18,7 +18,7 @@ using Bodoconsult.NetworkCommunication.OrderManagement.OrderBuilders;
 using Bodoconsult.NetworkCommunication.OrderManagement.ParameterSets;
 using Bodoconsult.NetworkCommunication.OrderManagement.Processors;
 using Bodoconsult.NetworkCommunication.StateManagement.StateCheckManagers;
-using IAppDateService = Bodoconsult.NetworkCommunication.App.Abstractions.IAppDateService;
+
 
 namespace Bodoconsult.NetworkCommunication.Tests.Helpers;
 
@@ -122,7 +122,7 @@ public static class TestDataHelper
     }
 
     /// <summary>
-    /// Get a fake <see cref="NetworkCommunication.App.Abstractions.IAppDateService"/> instance
+    /// Get a fake <see cref="IAppDateService"/> instance
     /// </summary>
     public static IAppDateService AppDateService { get; }
 

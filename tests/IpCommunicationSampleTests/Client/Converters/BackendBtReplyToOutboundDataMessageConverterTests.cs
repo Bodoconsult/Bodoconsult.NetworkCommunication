@@ -7,7 +7,6 @@ using Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
 using Bodoconsult.NetworkCommunication.Tests.Helpers;
 using IpCommunicationSample.Client.Bll.BusinessLogic.Converters;
 using System.Text;
-using Bodoconsult.NetworkCommunication.App.Abstractions.BusinessTransactions;
 
 namespace IpCommunicationSampleTests.Client.Converters;
 

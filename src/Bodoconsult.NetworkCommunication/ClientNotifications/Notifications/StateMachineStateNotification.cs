@@ -1,6 +1,6 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
-using Bodoconsult.NetworkCommunication.App.Abstractions;
+using Bodoconsult.App.ClientNotifications;
 
 namespace Bodoconsult.NetworkCommunication.ClientNotifications.Notifications;
 

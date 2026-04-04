@@ -1,7 +1,7 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
 using System.Buffers;
-using Bodoconsult.NetworkCommunication.App.Abstractions;
+using Bodoconsult.App.Abstractions.Extensions;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessageSplitters;
 
 namespace Bodoconsult.NetworkCommunication.Tests.Sdcp;

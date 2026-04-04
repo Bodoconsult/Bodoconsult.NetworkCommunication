@@ -4,7 +4,6 @@ using Bodoconsult.App.Abstractions.Interfaces;
 using Bodoconsult.App.Benchmarking;
 using Bodoconsult.App.Factories;
 using Bodoconsult.App.Logging;
-using Bodoconsult.NetworkCommunication.App.Abstractions;
 using Bodoconsult.NetworkCommunication.ClientNotifications;
 using Bodoconsult.NetworkCommunication.Factories;
 using Bodoconsult.NetworkCommunication.Interfaces;
@@ -12,7 +11,7 @@ using Bodoconsult.NetworkCommunication.OrderManagement.Processors;
 using Bodoconsult.NetworkCommunication.Tests.Helpers;
 using IpCommunicationSample.Backend.Bll.Communication;
 using IpCommunicationSampleTests.App;
-using IAppDateService = Bodoconsult.NetworkCommunication.App.Abstractions.IAppDateService;
+
 
 namespace IpCommunicationSampleTests.Backend;
 

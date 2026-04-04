@@ -1,6 +1,6 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
-using Bodoconsult.NetworkCommunication.App.Abstractions.NetworkCommands;
+using Bodoconsult.NetworkCommunication.NetworkCommands;
 
 namespace Bodoconsult.NetworkCommunication.Tests.App.Abstractions.NetworkCommands;
 

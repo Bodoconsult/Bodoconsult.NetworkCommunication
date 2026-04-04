@@ -1,7 +1,7 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
+using Bodoconsult.App.Abstractions.SyncExecution;
 using Bodoconsult.App.Benchmarking;
-using Bodoconsult.NetworkCommunication.App.Abstractions.SyncProcessManager;
 using Bodoconsult.NetworkCommunication.Tests.Helpers;
 
 namespace Bodoconsult.NetworkCommunication.Tests.App.Abstractions;

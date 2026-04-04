@@ -4,7 +4,6 @@ using Bodoconsult.App.Abstractions.Interfaces;
 using Bodoconsult.App.Benchmarking;
 using Bodoconsult.App.Factories;
 using Bodoconsult.App.Logging;
-using Bodoconsult.NetworkCommunication.App.Abstractions;
 using Bodoconsult.NetworkCommunication.ClientNotifications;
 using Bodoconsult.NetworkCommunication.Factories;
 using Bodoconsult.NetworkCommunication.Interfaces;

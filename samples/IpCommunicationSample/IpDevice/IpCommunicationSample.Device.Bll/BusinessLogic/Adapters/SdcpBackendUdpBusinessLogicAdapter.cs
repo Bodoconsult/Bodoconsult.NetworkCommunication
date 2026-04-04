@@ -8,6 +8,7 @@ using Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
 using Bodoconsult.NetworkCommunication.Interfaces;
 using IpCommunicationSample.Device.Bll.Interfaces;
 using System.Text;
+using Bodoconsult.App.Abstractions.Interfaces;
 
 namespace IpCommunicationSample.Device.Bll.BusinessLogic.Adapters;
 

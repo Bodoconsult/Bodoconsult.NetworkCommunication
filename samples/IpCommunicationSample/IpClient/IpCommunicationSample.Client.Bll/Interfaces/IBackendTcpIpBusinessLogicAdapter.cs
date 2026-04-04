@@ -1,7 +1,8 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
+using Bodoconsult.App.Abstractions.Interfaces;
+using Bodoconsult.App.BusinessTransactions.Replies;
 using Bodoconsult.App.Interfaces;
-using Bodoconsult.NetworkCommunication.App.Abstractions.BusinessTransactions;
 using Bodoconsult.NetworkCommunication.Interfaces;
 using IpCommunicationSample.Client.Bll.Delegates;
 

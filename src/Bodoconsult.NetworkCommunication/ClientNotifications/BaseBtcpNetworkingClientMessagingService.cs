@@ -2,7 +2,7 @@
 
 using System.Text;
 using Bodoconsult.App.Abstractions.Interfaces;
-using Bodoconsult.NetworkCommunication.App.Abstractions;
+using Bodoconsult.App.ClientNotifications;
 using Bodoconsult.NetworkCommunication.ClientNotifications.Notifications;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataBlocks;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;

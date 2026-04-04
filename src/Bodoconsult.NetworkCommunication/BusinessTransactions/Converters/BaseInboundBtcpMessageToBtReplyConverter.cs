@@ -7,7 +7,6 @@ using Bodoconsult.App.Interfaces;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
 using Bodoconsult.NetworkCommunication.Interfaces;
 using System.Text;
-using Bodoconsult.NetworkCommunication.App.Abstractions.BusinessTransactions;
 
 namespace Bodoconsult.NetworkCommunication.BusinessTransactions.Converters;
 

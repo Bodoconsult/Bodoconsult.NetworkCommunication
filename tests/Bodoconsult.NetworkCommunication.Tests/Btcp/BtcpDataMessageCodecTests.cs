@@ -17,7 +17,7 @@ using Bodoconsult.NetworkCommunication.Tests.Fakes.Converters;
 using Bodoconsult.NetworkCommunication.Tests.Helpers;
 using System.Diagnostics;
 using System.Text;
-using Bodoconsult.NetworkCommunication.App.Abstractions.BusinessTransactions;
+using Bodoconsult.App.BusinessTransactions;
 
 namespace Bodoconsult.NetworkCommunication.Tests.Btcp;
 
