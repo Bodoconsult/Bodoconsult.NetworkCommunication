@@ -67,7 +67,7 @@ public interface IDataMessageProcessingPackage
     /// <summary>
     /// Current data message sorter instance to use or null
     /// </summary>
-    IInboundDataMessageSorter? DataMessageSorter { get; set; } 
+    IInboundDataMessageSorter? DataMessageSorter { get; set; }
 
     /// <summary>
     /// Load custom data block codecs. This method should be overwritten to load your app specific codecs

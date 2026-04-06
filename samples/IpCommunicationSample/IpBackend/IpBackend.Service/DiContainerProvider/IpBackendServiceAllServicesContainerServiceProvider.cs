@@ -2,6 +2,8 @@
 
 using Bodoconsult.App.Abstractions.DependencyInjection;
 using Bodoconsult.App.Abstractions.Interfaces;
+using IpBackend.Bll.BusinessLogic;
+using IpBackend.Bll.Interfaces;
 using IpBackendService.App;
 
 namespace IpBackendService.DiContainerProvider;
@@ -18,9 +20,8 @@ public class IpBackendServiceAllServicesContainerServiceProvider : IDiContainerS
     public void AddServices(DiContainer diContainer)
     {
         // Load all other services required for the app now
-        //var factory = (IDiContainerServiceProviderPackageFactory)new IpBackendServiceProductionDiContainerServiceProviderPackageFactory(Globals.Instance);
-
-        //diContainer.AddSingleton(factory);
+        diContainer.AddSingleton<IBackendManager, BackendManager>();
+        
         diContainer.AddSingleton<IApplicationService, IpBackendServiceService>();
 
         // ...

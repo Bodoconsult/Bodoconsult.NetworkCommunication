@@ -8,6 +8,9 @@ using Bodoconsult.App.BusinessTransactions.Replies;
 using Bodoconsult.App.BusinessTransactions.RequestData;
 using Bodoconsult.App.Helpers;
 using Bodoconsult.App.Interfaces;
+using IpBackend.Bll.App;
+using IpBackend.Bll.BusinessLogic;
+using IpBackend.Bll.Interfaces;
 
 namespace IpBackendService.App;
 
@@ -20,6 +23,7 @@ public class IpBackendServiceService : IApplicationService
     private bool _isStarting;
 
     private readonly IAppLoggerProxy _appLogger;
+    private IBackendManager _backendManager;
 
     /// <summary>
     /// Default ctor
@@ -67,27 +71,25 @@ public class IpBackendServiceService : IApplicationService
             return;
         }
 
+        _backendManager = AppGlobals.DiContainer.Get<IBackendManager>();
+
+        var startParams = (I3NetworkDevicesAppStartParameter)AppGlobals.AppStartParameter;
+
+        var clientConfig = new IpConfig { IpAddress = startParams.IpAddress3, Port = startParams.Port3 };
+        var deviceTcpIpConfig = new IpConfig { IpAddress = startParams.IpAddress2, Port = startParams.Port2 };
+        var deviceUdpConfig = new IpConfig { IpAddress = startParams.IpAddress, Port = startParams.Port };
+
+        _backendManager.ClientTcpIpConfig = clientConfig;
+        _backendManager.IpDeviceTcpIpConfig = deviceTcpIpConfig;
+        _backendManager.IpDeviceUdpConfig = deviceUdpConfig;
+
+        _backendManager.LoadIpDeviceUdp();
+        _backendManager.LoadIpDeviceTcpIp();
+        _backendManager.LoadClient();
+
+        _backendManager.LoadBusinessTransactions();
+
         _isStarting = false;
-
-        // Do start your workload here
-        var i = 0;
-
-        Debug.Print("");
-        while (i < 15)
-        {
-            Debug.Print("Processing workload...");
-            Console.WriteLine("Processing workload...");
-            AsyncHelper.Delay(1000);
-            i++;
-        }
-
-        if (RequestApplicationStopDelegate == null)
-        {
-            return;
-        }
-
-        // Fire app stop now if workload is done
-        AsyncHelper.FireAndForget(RequestApplicationStopDelegate.Invoke);
     }
 
     /// <summary>

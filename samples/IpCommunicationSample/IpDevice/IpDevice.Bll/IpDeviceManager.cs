@@ -7,6 +7,7 @@ using Bodoconsult.NetworkCommunication.Interfaces;
 using IpDevice.Bll.BusinessTransactions.Providers;
 using IpDevice.Bll.Communication;
 using IpDevice.Bll.Interfaces;
+using Newtonsoft.Json.Linq;
 
 namespace IpDevice.Bll;
 
@@ -85,7 +86,10 @@ public class IpDeviceManager : IIpDeviceManager
     /// </summary>
     public void LoadBackendTcpIp()
     {
-        ArgumentNullException.ThrowIfNull(BackendTcpIpConfig);
+        if (!BackendTcpIpConfig.HasValue)
+        {
+            throw new ArgumentNullException(nameof(BackendTcpIpConfig));
+        }
 
         var duplexIoFactory = new IpDuplexIoFactory(_sendPacketProcessFactory);
 
@@ -103,7 +107,10 @@ public class IpDeviceManager : IIpDeviceManager
     /// </summary>
     public void LoadBackendUdp()
     {
-        ArgumentNullException.ThrowIfNull(BackendUdpConfig);
+        if (!BackendUdpConfig.HasValue)
+        {
+            throw new ArgumentNullException(nameof(BackendUdpConfig));
+        }
 
         var duplexIoFactory = new IpDuplexIoFactory(_sendPacketProcessFactory);
 

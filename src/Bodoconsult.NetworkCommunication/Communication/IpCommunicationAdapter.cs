@@ -29,8 +29,7 @@ public class IpCommunicationAdapter : ICommunicationAdapter
     /// Default ctor
     /// </summary>
     public IpCommunicationAdapter(IIpDataMessagingConfig dataMessagingConfig,
-        ICommunicationHandlerFactory communicationHandlerFactory,
-        IOutboundDataMessageFactory outboundDataMessageFactory)
+        ICommunicationHandlerFactory communicationHandlerFactory)
     {
         DataMessagingConfig = dataMessagingConfig;
         _communicationHandlerFactory = communicationHandlerFactory;
@@ -40,7 +39,11 @@ public class IpCommunicationAdapter : ICommunicationAdapter
         //DataMessagingConfig.CheckIfDeviceIsReadyDelegate = CheckIfDeviceIsReady;
 
         DataMessagingConfig.RaiseComDevCloseRequestDelegate = OnRequestComDevClose;
-        DataMessagingConfig.ResetOutboundDataMessageFactoryDelegate = outboundDataMessageFactory.Reset;
+
+        if (dataMessagingConfig.DataMessageProcessingPackage?.OutboundDataMessageFactory != null)
+        {
+            DataMessagingConfig.ResetOutboundDataMessageFactoryDelegate = dataMessagingConfig.DataMessageProcessingPackage.OutboundDataMessageFactory.Reset;
+        }
     }
 
     /// <summary>

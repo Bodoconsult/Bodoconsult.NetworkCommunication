@@ -84,8 +84,7 @@ public class TcpIpServerDeviceConfigurator: BaseIpDeviceConfigurator
         var socketProxyFactory = new SocketProxyFactory(_tcpIpListenerManager);
 
         var communicationHandlerFactory = new IpCommunicationHandlerFactory(socketProxyFactory, _duplexIoFactory, _appEventSourceFactory, _clientNotificationManager);
-        var outboundDataMessageFactory = new BtcpOutboundDataMessageFactory();
-        var commAdapterFactory = new IpCommunicationAdapterFactory(communicationHandlerFactory, outboundDataMessageFactory);
+        var commAdapterFactory = new IpCommunicationAdapterFactory(communicationHandlerFactory);
 
         var factory = new SimpleDeviceFactory(_clientNotificationManager, commAdapterFactory);
         Device = factory.CreateInstance(DataMessagingConfig);

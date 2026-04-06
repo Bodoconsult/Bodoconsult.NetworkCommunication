@@ -4,6 +4,7 @@ using System.Diagnostics;
 using Bodoconsult.App.Abstractions.Interfaces;
 using Bodoconsult.App.Extensions;
 using Bodoconsult.App.Helpers;
+using IpBackend.Bll.App;
 using IpBackendService.App;
 
 namespace IpBackendService;

@@ -1,13 +1,18 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH.  All rights reserved.
 
-using System.Diagnostics;
 using Bodoconsult.App;
 using Bodoconsult.App.Abstractions.Delegates;
 using Bodoconsult.App.Abstractions.Interfaces;
+using Bodoconsult.App.BusinessTransactions;
 using Bodoconsult.App.BusinessTransactions.Replies;
 using Bodoconsult.App.BusinessTransactions.RequestData;
 using Bodoconsult.App.Helpers;
 using Bodoconsult.App.Interfaces;
+using Bodoconsult.App.Logging;
+using System.Diagnostics;
+using IpDevice.Bll;
+using IpDevice.Bll.App;
+using IpDevice.Bll.Interfaces;
 
 namespace IpDeviceService.App;
 
@@ -20,6 +25,9 @@ public class IpDeviceServiceService : IApplicationService
     private bool _isStarting;
 
     private readonly IAppLoggerProxy _appLogger;
+    private IIpDeviceManager _deviceManager;
+
+    private readonly CancellationTokenSource _cancellationTokenSource = new();
 
     /// <summary>
     /// Default ctor
@@ -67,27 +75,34 @@ public class IpDeviceServiceService : IApplicationService
             return;
         }
 
+        // Do start your workload here
+        var startParams = (I2NetworkDevicesAppStartParameter)AppGlobals.AppStartParameter;
+
+        var deviceTcpIpConfig = new IpConfig { IpAddress = startParams.IpAddress2, Port = startParams.Port2};
+        var deviceUdpConfig = new IpConfig { IpAddress = startParams.IpAddress, Port =startParams.Port };
+
+        _deviceManager = AppGlobals.DiContainer.Get<IIpDeviceManager>();
+        _deviceManager.BackendTcpIpConfig = deviceTcpIpConfig;
+        _deviceManager.BackendUdpConfig = deviceUdpConfig;
+
+        _deviceManager.LoadBackendUdp();
+        _deviceManager.LoadBackendTcpIp();
+        _deviceManager.LoadBusinessTransactions();
+
+        ArgumentNullException.ThrowIfNull(_deviceManager.BackendUdp);
+        ArgumentNullException.ThrowIfNull(_deviceManager.BackendTcpIp);
+        ArgumentNullException.ThrowIfNull(_deviceManager.BackendUdp.IpDevice);
+        ArgumentNullException.ThrowIfNull(_deviceManager.BackendTcpIp.IpDevice);
+
+        _deviceManager.BackendUdp.IpDevice.StartComm();
+        _deviceManager.BackendTcpIp.IpDevice.StartComm();
+
         _isStarting = false;
 
-        // Do start your workload here
-        var i = 0;
-
-        Debug.Print("");
-        while (i < 15)
+        while (!_cancellationTokenSource.IsCancellationRequested)
         {
-            Debug.Print("Processing workload...");
-            Console.WriteLine("Processing workload...");
-            AsyncHelper.Delay(1000);
-            i++;
+            Task.Delay(500);
         }
-
-        if (RequestApplicationStopDelegate == null)
-        {
-            return;
-        }
-
-        // Fire app stop now if workload is done
-        AsyncHelper.FireAndForget(RequestApplicationStopDelegate.Invoke);
     }
 
     /// <summary>
@@ -95,7 +110,6 @@ public class IpDeviceServiceService : IApplicationService
     /// </summary>
     public void SuspendApplication()
     {
-
         if (_isStopped)
         {
             return;
@@ -146,6 +160,10 @@ public class IpDeviceServiceService : IApplicationService
             return;
         }
 
+        // Stop the communicatiion
+        _deviceManager.BackendUdp?.IpDevice?.StartComm();
+        _deviceManager.BackendTcpIp?.IpDevice?.StartComm();
+
         // Do not stop more than one time
         if (_isStopped)
         {
@@ -153,9 +171,7 @@ public class IpDeviceServiceService : IApplicationService
         }
 
         _isStopped = true;
-
-
-
+        
         // Do all needed to stop youe app correctly
         var di = Globals.Instance.DiContainer;
 
@@ -175,14 +191,11 @@ public class IpDeviceServiceService : IApplicationService
         var gms = di.Get<IGeneralAppManagementManager>();
         var request = new EmptyBusinessTransactionRequestData();
 
-        DefaultBusinessTransactionReply result;
-
         // Create log dump on app stop
         try
         {
-
             // ToDo: fill request with useful information for logging
-            result = gms.CreateLogDump(request);
+            var result = gms.CreateLogDump(request);
 
             if (result != null)
             {
@@ -209,6 +222,7 @@ public class IpDeviceServiceService : IApplicationService
             // Do nothing
         }
 
+        _cancellationTokenSource.Cancel();
     }
 
     /// <summary>

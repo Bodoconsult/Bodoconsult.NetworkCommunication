@@ -11,15 +11,13 @@ namespace Bodoconsult.NetworkCommunication.Factories;
 public class IpCommunicationAdapterFactory : ICommunicationAdapterFactory
 {
     private readonly ICommunicationHandlerFactory _communicationHandlerFactory;
-    private readonly IOutboundDataMessageFactory _outboundDataMessageFactory;
 
     /// <summary>
     /// Default ctor
     /// </summary>
-    public IpCommunicationAdapterFactory(ICommunicationHandlerFactory communicationHandlerFactory, IOutboundDataMessageFactory outboundDataMessageFactory)
+    public IpCommunicationAdapterFactory(ICommunicationHandlerFactory communicationHandlerFactory)
     {
         _communicationHandlerFactory = communicationHandlerFactory;
-        _outboundDataMessageFactory = outboundDataMessageFactory;
     }
 
     /// <summary>
@@ -34,6 +32,11 @@ public class IpCommunicationAdapterFactory : ICommunicationAdapterFactory
             throw new NullReferenceException("dataMessagingConfig may not be NULL");
         }
 
-        return new IpCommunicationAdapter(dataMessagingConfig, _communicationHandlerFactory, _outboundDataMessageFactory);
+        if (dataMessagingConfig.DataMessageProcessingPackage?.OutboundDataMessageFactory == null)
+        {
+            throw new NullReferenceException("dataMessagingConfig.DataMessageProcessingPackage?.OutboundDataMessageFactory may not be NULL");
+        }
+
+        return new IpCommunicationAdapter(dataMessagingConfig, _communicationHandlerFactory);
     }
 }

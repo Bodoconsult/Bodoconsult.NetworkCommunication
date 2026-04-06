@@ -12,7 +12,6 @@ using Bodoconsult.NetworkCommunication.Tests.Helpers;
 using IpClient.Bll.Communication;
 using IpCommunicationSampleTests.App;
 
-
 namespace IpCommunicationSampleTests.Client;
 
 [TestFixture]

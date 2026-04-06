@@ -2,12 +2,14 @@
 
 using Bodoconsult.App.Abstractions.DependencyInjection;
 using Bodoconsult.App.Abstractions.Interfaces;
+using Bodoconsult.App.BusinessTransactions;
 using Bodoconsult.App.Interfaces;
 using Bodoconsult.App.Logging;
 using Bodoconsult.NetworkCommunication.ClientNotifications;
 using Bodoconsult.NetworkCommunication.Factories;
 using Bodoconsult.NetworkCommunication.Interfaces;
 using Bodoconsult.NetworkCommunication.OrderManagement.Processors;
+using Bodoconsult.NetworkCommunication.Protocols.TcpIp;
 
 namespace Bodoconsult.NetworkCommunication.DependencyInjection;
 
@@ -22,8 +24,11 @@ public class StateManagementDataMessagingDiContainerServiceProvider : IDiContain
     /// <param name="diContainer">Current DI container</param>
     public void AddServices(DiContainer diContainer)
     {
+        diContainer.AddSingleton<IBusinessTransactionManager, BusinessTransactionManager>();
         diContainer.AddSingleton<ISyncOrderManager, SyncOrderManager>();
+        diContainer.AddSingleton<ISocketProxyFactory, SocketProxyFactory>();
         diContainer.AddSingleton<IMonitorLoggerFactoryFactory, MonitorLoggerFactoryFactory>();
+        diContainer.AddSingleton<ITcpIpListenerManager, TcpIpListenerManager>();
         diContainer.AddSingleton<ISendPacketProcessFactory, SendPacketProcessFactory>();
         diContainer.AddSingleton<ICommunicationHandlerFactory, IpCommunicationHandlerFactory>();
         diContainer.AddSingleton<ICommunicationAdapterFactory, IpCommunicationAdapterFactory>();
@@ -32,7 +37,7 @@ public class StateManagementDataMessagingDiContainerServiceProvider : IDiContain
         var cnm = new DoNothingOrderManagementClientNotificationManager();
         diContainer.AddSingleton<ICentralClientNotificationManager>(cnm);
         diContainer.AddSingleton<IOrderManagementClientNotificationManager>(cnm);
-        diContainer.AddSingleton<ITcpIpListenerManager, ITcpIpListenerManager>();
+        
 
         diContainer.AddSingleton<IOrderFactory, OrderFactory>();
         diContainer.AddSingleton<IOrderReceiverFactory, OrderReceiverFactory>();

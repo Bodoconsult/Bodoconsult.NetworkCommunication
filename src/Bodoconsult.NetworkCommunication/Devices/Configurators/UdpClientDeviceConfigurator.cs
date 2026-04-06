@@ -88,8 +88,7 @@ public class UdpClientDeviceConfigurator : BaseIpDeviceConfigurator
         var socketProxyFactory = new SocketProxyFactory(null);
 
         var communicationHandlerFactory = new IpCommunicationHandlerFactory(socketProxyFactory, _duplexIoFactory, _appEventSourceFactory, _clientNotificationManager);
-        var outboundDataMessageFactory = new BtcpOutboundDataMessageFactory();
-        var commAdapterFactory = new IpCommunicationAdapterFactory(communicationHandlerFactory, outboundDataMessageFactory);
+        var commAdapterFactory = new IpCommunicationAdapterFactory(communicationHandlerFactory);
 
         var factory = new SimpleDeviceFactory(_clientNotificationManager, commAdapterFactory);
         Device = factory.CreateInstance(DataMessagingConfig);

@@ -2,6 +2,8 @@
 
 using Bodoconsult.App.Abstractions.DependencyInjection;
 using Bodoconsult.App.Abstractions.Interfaces;
+using IpDevice.Bll;
+using IpDevice.Bll.Interfaces;
 using IpDeviceService.App;
 
 namespace IpDeviceService.DiContainerProvider;
@@ -21,6 +23,8 @@ public class IpDeviceServiceAllServicesContainerServiceProvider : IDiContainerSe
         //var factory = (IDiContainerServiceProviderPackageFactory)new IpDeviceServiceProductionDiContainerServiceProviderPackageFactory(Globals.Instance);
 
         //diContainer.AddSingleton(factory);
+        diContainer.AddSingleton<IIpDeviceManager, IpDeviceManager>();
+
         diContainer.AddSingleton<IApplicationService, IpDeviceServiceService>();
 
         // ...

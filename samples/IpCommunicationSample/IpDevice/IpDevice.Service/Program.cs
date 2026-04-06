@@ -4,6 +4,7 @@ using System.Diagnostics;
 using Bodoconsult.App.Abstractions.Interfaces;
 using Bodoconsult.App.Extensions;
 using Bodoconsult.App.Helpers;
+using IpDevice.Bll.App;
 using IpDeviceService.App;
 
 namespace IpDeviceService;
@@ -11,6 +12,8 @@ namespace IpDeviceService;
 
 internal static class Program
 {
+
+    // https://learn.microsoft.com/en-us/dotnet/core/extensions/windows-service
 
     private static void Main(string[] args)
     {

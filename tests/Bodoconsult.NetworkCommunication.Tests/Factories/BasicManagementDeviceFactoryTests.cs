@@ -24,8 +24,7 @@ internal class BasicStateMachineDeviceFactoryTests
         var appEventSourceFactory = new FakeAppEventSourceFactory();
 
         var communicationHandlerFactory = new IpCommunicationHandlerFactory(socketProxyFactory, duplexIoFactory, appEventSourceFactory, clientNotificationManager);
-        var outboundDataMessageFactory = new BtcpOutboundDataMessageFactory();
-        var commAdapterFactory = new IpCommunicationAdapterFactory(communicationHandlerFactory, outboundDataMessageFactory);
+        var commAdapterFactory = new IpCommunicationAdapterFactory(communicationHandlerFactory);
 
         var factory = new BasicStateMachineDeviceFactory(clientNotificationManager, commAdapterFactory);
 

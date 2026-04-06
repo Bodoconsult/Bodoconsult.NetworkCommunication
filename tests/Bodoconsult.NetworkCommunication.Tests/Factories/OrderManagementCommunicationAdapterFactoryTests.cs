@@ -29,9 +29,7 @@ internal class OrderManagementCommunicationAdapterFactoryTests
         var commHandlerfactory = new IpCommunicationHandlerFactory(socketProxyFactory, duplexIoFactory,
              appEventSourceFactory, clientNotificationManager);
 
-        IOutboundDataMessageFactory outboundDataMessageFactory = new BtcpOutboundDataMessageFactory();
-
-        var factory = new IpCommunicationAdapterFactory(commHandlerfactory, outboundDataMessageFactory);
+        var factory = new IpCommunicationAdapterFactory(commHandlerfactory);
 
         // Act  
         var instance = factory.CreateInstance(config);

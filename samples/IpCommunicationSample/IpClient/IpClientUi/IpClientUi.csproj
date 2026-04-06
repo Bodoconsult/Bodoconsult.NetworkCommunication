@@ -47,6 +47,10 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <ProjectReference Include="..\IpClient.Bll\IpClient.Bll.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
 		<Compile Update="Window2.axaml.cs">
 			<DependentUpon>Window2.axaml</DependentUpon>
 		</Compile>

@@ -7,6 +7,7 @@ using Bodoconsult.App.Abstractions.Interfaces;
 using Bodoconsult.App.BusinessTransactions.Replies;
 using Bodoconsult.App.BusinessTransactions.RequestData;
 using Bodoconsult.App.Interfaces;
+using IpClient.Bll.App;
 
 namespace IpClientUi.AppData;
 

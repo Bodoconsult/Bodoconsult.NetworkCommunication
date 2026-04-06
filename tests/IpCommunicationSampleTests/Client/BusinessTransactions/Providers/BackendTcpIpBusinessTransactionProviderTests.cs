@@ -18,14 +18,17 @@ internal class BackendTcpIpBusinessTransactionProviderTests
 
         // Assert.
         var delegates = provider.CreateBusinessTransactionDelegates;
-        Assert.That(delegates, Is.Not.Null);
-        Assert.That(delegates, Has.Count.EqualTo(6));
-
-        foreach (var item in delegates)
+        Assert.Multiple(() =>
         {
-            var transaction = item.Value.Invoke();
-            Assert.That(item.Key, Is.EqualTo(transaction.Id));
-        }
+            Assert.That(delegates, Is.Not.Null);
+            Assert.That(delegates, Has.Count.EqualTo(6));
+
+            foreach (var item in delegates)
+            {
+                var transaction = item.Value.Invoke();
+                Assert.That(item.Key, Is.EqualTo(transaction.Id));
+            }
+        });
     }
 
     [Test]
@@ -38,10 +41,9 @@ internal class BackendTcpIpBusinessTransactionProviderTests
         var transaction = provider.Transaction201_StartStreaming();
 
         // Assert
-        Assert.That(transaction, Is.Not.Null);
-
         Assert.Multiple(() =>
         {
+            Assert.That(transaction, Is.Not.Null);
             Assert.That(transaction.Id, Is.EqualTo(ClientSideBusinessTransactionIds.StartStreaming));
             Assert.That(transaction.RunBusinessTransactionDelegate, Is.Not.Null);
             Assert.That(transaction.AllowedRequestDataTypes, Has.Count.EqualTo(1));

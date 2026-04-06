@@ -13,7 +13,6 @@ namespace IpDevice.Bll.App;
 /// </summary>
 public class Globals : IAppGlobals
 {
-
     #region Singleton factory
 
     // Thread-safe implementation of singleton pattern
