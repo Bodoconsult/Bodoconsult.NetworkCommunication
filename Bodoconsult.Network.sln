@@ -37,17 +37,23 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "IpBackend", "IpBackend", "{
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "IpDevice", "IpDevice", "{41663B8D-CA4E-48E3-99DC-D95E855AC87E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IpCommunicationSample.Backend.Bll", "samples\IpCommunicationSample\IpBackend\IpBackend.Bll\IpCommunicationSample.Backend.Bll.csproj", "{D7293D08-3788-4A24-871A-313CFD9D096F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IpBackend.Bll", "samples\IpCommunicationSample\IpBackend\IpBackend.Bll\IpBackend.Bll.csproj", "{D7293D08-3788-4A24-871A-313CFD9D096F}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{FBD18559-8588-45AE-B7FA-DC237A55736A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IpCommunicationSample.Common", "samples\IpCommunicationSample\Common\IpCommunicationSample.Common\IpCommunicationSample.Common.csproj", "{6F097E37-0218-4763-9A53-1509B04C068E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IpCommunicationSample.Client.Bll", "samples\IpCommunicationSample\IpClient\IpCommunicationSample.Client.Bll\IpCommunicationSample.Client.Bll.csproj", "{50547ED7-9F0C-4581-9780-AF7059BC1F49}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IpClient.Bll", "samples\IpCommunicationSample\IpClient\IpClient.Bll\IpClient.Bll.csproj", "{50547ED7-9F0C-4581-9780-AF7059BC1F49}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IpCommunicationSample.Device.Bll", "samples\IpCommunicationSample\IpDevice\IpCommunicationSample.Device.Bll\IpCommunicationSample.Device.Bll.csproj", "{C92DEC59-E6D6-4CE3-B798-00714047166B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IpDevice.Bll", "samples\IpCommunicationSample\IpDevice\IpDevice.Bll\IpDevice.Bll.csproj", "{C92DEC59-E6D6-4CE3-B798-00714047166B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IpCommunicationSampleTests", "tests\IpCommunicationSampleTests\IpCommunicationSampleTests.csproj", "{AAA87A06-7D69-43A3-804E-E1CF48F07204}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IpBackendService", "samples\IpCommunicationSample\IpBackend\IpBackend.Service\IpBackendService.csproj", "{E35A590A-BF00-E2AE-F3EB-2B34F76FE275}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IpDeviceService", "samples\IpCommunicationSample\IpDevice\IpDevice.Service\IpDeviceService.csproj", "{FFCA471F-EFC2-2993-978D-E9FCEE852B8C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IpClientUi", "samples\IpCommunicationSample\IpClient\IpClientUi\IpClientUi.csproj", "{8ECAC9C7-362C-26B4-1F9F-8418F33EE406}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -95,6 +101,18 @@ Global
 		{AAA87A06-7D69-43A3-804E-E1CF48F07204}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AAA87A06-7D69-43A3-804E-E1CF48F07204}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AAA87A06-7D69-43A3-804E-E1CF48F07204}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E35A590A-BF00-E2AE-F3EB-2B34F76FE275}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E35A590A-BF00-E2AE-F3EB-2B34F76FE275}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E35A590A-BF00-E2AE-F3EB-2B34F76FE275}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E35A590A-BF00-E2AE-F3EB-2B34F76FE275}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FFCA471F-EFC2-2993-978D-E9FCEE852B8C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FFCA471F-EFC2-2993-978D-E9FCEE852B8C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FFCA471F-EFC2-2993-978D-E9FCEE852B8C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FFCA471F-EFC2-2993-978D-E9FCEE852B8C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8ECAC9C7-362C-26B4-1F9F-8418F33EE406}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8ECAC9C7-362C-26B4-1F9F-8418F33EE406}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8ECAC9C7-362C-26B4-1F9F-8418F33EE406}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8ECAC9C7-362C-26B4-1F9F-8418F33EE406}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -115,6 +133,9 @@ Global
 		{50547ED7-9F0C-4581-9780-AF7059BC1F49} = {D49DD780-B38D-4C41-B593-21E391D69CCE}
 		{C92DEC59-E6D6-4CE3-B798-00714047166B} = {41663B8D-CA4E-48E3-99DC-D95E855AC87E}
 		{AAA87A06-7D69-43A3-804E-E1CF48F07204} = {0E8A1175-F9D0-49AD-8FC2-5F73C7DD2137}
+		{E35A590A-BF00-E2AE-F3EB-2B34F76FE275} = {4A0C4F67-EF21-4169-ADEC-0B1A30CA36EA}
+		{FFCA471F-EFC2-2993-978D-E9FCEE852B8C} = {41663B8D-CA4E-48E3-99DC-D95E855AC87E}
+		{8ECAC9C7-362C-26B4-1F9F-8418F33EE406} = {D49DD780-B38D-4C41-B593-21E391D69CCE}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {7FDC65A1-0BE7-4D6D-BF31-0BC0C0289539}

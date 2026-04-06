@@ -1,7 +1,7 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
-using IpCommunicationSample.Client.Bll.BusinessTransactions.Providers;
-using IpCommunicationSample.Client.Bll.Interfaces;
+using IpClient.Bll.BusinessTransactions.Providers;
+using IpClient.Bll.Interfaces;
 using IpCommunicationSample.Common.BusinessTransactions;
 using Moq;
 

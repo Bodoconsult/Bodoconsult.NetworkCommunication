@@ -2,9 +2,9 @@
 
 using Bodoconsult.App.Delegates;
 using Bodoconsult.App.Interfaces;
-using IpCommunicationSample.Backend.Bll.Interfaces;
+using IpBackend.Bll.Interfaces;
 
-namespace IpCommunicationSample.Backend.Bll.BusinessTransactions.Providers;
+namespace IpBackend.Bll.BusinessTransactions.Providers;
 
 /// <summary>
 /// Impl of <see cref="IBusinessTransactionProvider"/> for client TCP/IP messaging

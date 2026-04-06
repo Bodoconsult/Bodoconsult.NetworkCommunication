@@ -1,9 +1,9 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
 using Bodoconsult.NetworkCommunication.Interfaces;
-using IpCommunicationSample.Backend.Bll.BusinessLogic.Adapters;
+using IpBackend.Bll.BusinessLogic.Adapters;
 
-namespace IpCommunicationSample.Backend.Bll.BusinessLogic.AdapterFactories;
+namespace IpBackend.Bll.BusinessLogic.AdapterFactories;
 
 /// <summary>
 /// Current implementation of <see cref="IDeviceBusinessLogicAdapterFactory"/> delivering <see cref="SdcpIpDeviceUdpBusinessLogicAdapter"/> instances

@@ -2,7 +2,7 @@
 
 using Bodoconsult.NetworkCommunication.Interfaces;
 using Bodoconsult.NetworkCommunication.Tests.Helpers;
-using IpCommunicationSample.Backend.Bll.BusinessLogic.AdapterFactories;
+using IpBackend.Bll.BusinessLogic.AdapterFactories;
 
 namespace IpCommunicationSampleTests.Backend.AdapterFactories;
 

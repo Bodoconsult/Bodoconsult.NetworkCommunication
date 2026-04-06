@@ -2,11 +2,10 @@
 
 using Bodoconsult.App.Interfaces;
 using Bodoconsult.NetworkCommunication.Interfaces;
-using IpCommunicationSample.Backend.Bll.BusinessLogic.Adapters;
-using IpCommunicationSample.Backend.Bll.BusinessLogic.Converters;
+using IpBackend.Bll.BusinessLogic.Adapters;
+using IpBackend.Bll.BusinessLogic.Converters;
 
-
-namespace IpCommunicationSample.Backend.Bll.BusinessLogic.AdapterFactories;
+namespace IpBackend.Bll.BusinessLogic.AdapterFactories;
 
 /// <summary>
 /// Current implementation of <see cref="IDeviceBusinessLogicAdapterFactory"/> delivering <see cref="BtcpClientTcpIpBusinessLogicAdapter"/> instances

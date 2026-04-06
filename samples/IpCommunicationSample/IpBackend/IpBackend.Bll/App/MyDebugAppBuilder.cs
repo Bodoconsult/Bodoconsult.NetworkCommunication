@@ -3,7 +3,7 @@
 using Bodoconsult.App;
 using Bodoconsult.App.Abstractions.Interfaces;
 
-namespace IpCommunicationSample.Backend.Bll.App;
+namespace IpBackend.Bll.App;
 
 public class MyDebugAppBuilder : BaseDebugAppBuilder
 {

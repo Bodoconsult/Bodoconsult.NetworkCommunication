@@ -2,13 +2,12 @@
 
 using Bodoconsult.App.Abstractions.Interfaces;
 using Bodoconsult.App.BusinessTransactions.Replies;
-using Bodoconsult.App.Interfaces;
 using Bodoconsult.NetworkCommunication.BusinessLogicAdapters;
 using Bodoconsult.NetworkCommunication.Interfaces;
 using Bodoconsult.NetworkCommunication.OrderManagement.ParameterSets;
-using IpCommunicationSample.Backend.Bll.Interfaces;
+using IpBackend.Bll.Interfaces;
 
-namespace IpCommunicationSample.Backend.Bll.BusinessLogic.Adapters;
+namespace IpBackend.Bll.BusinessLogic.Adapters;
 
 /// <summary>
 /// Current implementation of <see cref="IStateMachineDeviceBusinessLogicAdapter"/> for the backend

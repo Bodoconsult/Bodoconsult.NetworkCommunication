@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Worker">
+	<PropertyGroup>
+		<TargetFramework>net9.0-windows</TargetFramework>
+		<Nullable>disable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<UserSecretsId>dotnet-IpDeviceService-4ffa3f79-42d2-472c-8520-f215369b8e12</UserSecretsId>
+	</PropertyGroup>
+	<ItemGroup>
+		<PackageReference Include="Bodoconsult.App" Version="1.0.9" />
+		<PackageReference Include="Bodoconsult.App.Abstractions" Version="1.0.9" />
+		<PackageReference Include="Bodoconsult.App.BackgroundService" Version="1.0.9" />
+		<PackageReference Include="Microsoft.Extensions.Hosting" Version="9.0.11" />
+	</ItemGroup>
+	<ItemGroup>
+	  <ProjectReference Include="..\..\..\..\src\Bodoconsult.NetworkCommunication\Bodoconsult.NetworkCommunication.csproj" />
+	</ItemGroup>
+</Project>

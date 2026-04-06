@@ -3,9 +3,9 @@
 using Bodoconsult.App.Interfaces;
 using Bodoconsult.NetworkCommunication.BusinessLogicAdapters;
 using Bodoconsult.NetworkCommunication.Interfaces;
-using IpCommunicationSample.Backend.Bll.Interfaces;
+using IpBackend.Bll.Interfaces;
 
-namespace IpCommunicationSample.Backend.Bll.BusinessLogic.Adapters;
+namespace IpBackend.Bll.BusinessLogic.Adapters;
 
 /// <summary>
 /// Current adapter for TCP/IP channel from backend to client

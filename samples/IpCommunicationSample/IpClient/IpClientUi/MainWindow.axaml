@@ -1,0 +1,34 @@
+﻿<rxui:ReactiveWindow  x:TypeArguments="viewModels1:IpClientMainWindowViewModel "
+                      xmlns:rxui="http://reactiveui.net" 
+                      x:Class="IpClientUi.MainWindow"
+                      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                      xmlns:viewModels="clr-namespace:IpClient.ViewModels"
+                      xmlns:controls="clr-namespace:Bodoconsult.App.Avalonia.ReactiveUI.Controls;assembly=Bodoconsult.App.Avalonia.ReactiveUI"
+                      xmlns:controls1="https://github.com/avaloniaui"
+                      xmlns:ipClient="clr-namespace:IpClient"
+                      xmlns:viewModels1="clr-namespace:IpClientUi.ViewModels"
+                      Title="ReactiveUI.Routing" Height="360" Width="620">
+
+    <controls1:DockPanel>
+        <controls:MenuControl x:Name="MainMenu" controls1:DockPanel.Dock="Top" />
+
+        <controls1:StackPanel Orientation="Horizontal" Margin="15" controls1:DockPanel.Dock="Bottom" Height="50">
+        <!-- Show state-->
+
+
+        </controls1:StackPanel>
+
+        <controls1:Grid ColumnDefinitions="30*,70*">
+            <rxui:RoutedViewHost controls1:Grid.Column="0" x:Name="MenuRegion"
+                                 HorizontalContentAlignment="Stretch"
+                                 VerticalContentAlignment="Stretch" />
+            <rxui:RoutedViewHost controls1:Grid.Column="1" x:Name="DocumentRegion"
+                                 HorizontalContentAlignment="Stretch"
+                                 VerticalContentAlignment="Stretch" />
+        </controls1:Grid>
+
+    </controls1:DockPanel>
+
+</rxui:ReactiveWindow>
+

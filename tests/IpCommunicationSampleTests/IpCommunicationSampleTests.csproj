@@ -39,9 +39,9 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\samples\IpCommunicationSample\Common\IpCommunicationSample.Common\IpCommunicationSample.Common.csproj" />
-    <ProjectReference Include="..\..\samples\IpCommunicationSample\IpBackend\IpBackend.Bll\IpCommunicationSample.Backend.Bll.csproj" />
-    <ProjectReference Include="..\..\samples\IpCommunicationSample\IpClient\IpCommunicationSample.Client.Bll\IpCommunicationSample.Client.Bll.csproj" />
-    <ProjectReference Include="..\..\samples\IpCommunicationSample\IpDevice\IpCommunicationSample.Device.Bll\IpCommunicationSample.Device.Bll.csproj" />
+    <ProjectReference Include="..\..\samples\IpCommunicationSample\IpBackend\IpBackend.Bll\IpBackend.Bll.csproj" />
+    <ProjectReference Include="..\..\samples\IpCommunicationSample\IpClient\IpClient.Bll\IpClient.Bll.csproj" />
+    <ProjectReference Include="..\..\samples\IpCommunicationSample\IpDevice\IpDevice.Bll\IpDevice.Bll.csproj" />
     <ProjectReference Include="..\..\src\Bodoconsult.NetworkCommunication\Bodoconsult.NetworkCommunication.csproj" />
     <ProjectReference Include="..\Bodoconsult.NetworkCommunication.Tests\Bodoconsult.NetworkCommunication.Tests.csproj" />
   </ItemGroup>

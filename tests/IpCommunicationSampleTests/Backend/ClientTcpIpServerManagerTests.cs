@@ -11,7 +11,7 @@ using Bodoconsult.NetworkCommunication.Factories;
 using Bodoconsult.NetworkCommunication.Interfaces;
 using Bodoconsult.NetworkCommunication.Protocols.TcpIp;
 using Bodoconsult.NetworkCommunication.Tests.Helpers;
-using IpCommunicationSample.Backend.Bll.Communication;
+using IpBackend.Bll.Communication;
 using IpCommunicationSampleTests.App;
 
 namespace IpCommunicationSampleTests.Backend;

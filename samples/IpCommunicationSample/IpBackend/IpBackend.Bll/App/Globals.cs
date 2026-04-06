@@ -6,7 +6,7 @@ using Bodoconsult.App.Abstractions.DependencyInjection;
 using Bodoconsult.App.Abstractions.Interfaces;
 using Bodoconsult.App.Logging;
 
-namespace IpCommunicationSample.Backend.Bll.App;
+namespace IpBackend.Bll.App;
 
 /// <summary>
 /// App global values
@@ -71,7 +71,7 @@ public class Globals : IAppGlobals
     /// <summary>
     /// App start parameter
     /// </summary>
-    public IAppStartParameter AppStartParameter { get; set; } = new AppStartParameter();
+    public IAppStartParameter AppStartParameter { get; set; } = new ThreeNetworkDevicesAppStartParameter();
 
     /// <summary>
     /// Current log data entry factory

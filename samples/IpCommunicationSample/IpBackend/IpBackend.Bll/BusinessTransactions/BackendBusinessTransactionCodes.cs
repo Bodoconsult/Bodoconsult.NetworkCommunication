@@ -1,6 +1,6 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
-namespace IpCommunicationSample.Backend.Bll.BusinessTransactions;
+namespace IpBackend.Bll.BusinessTransactions;
 
 public class BackendBusinessTransactionCodes
 {

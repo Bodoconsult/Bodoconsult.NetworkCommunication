@@ -1,6 +1,6 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
-namespace IpCommunicationSample.Backend.Bll.BusinessLogic;
+namespace IpBackend.Bll.BusinessLogic;
 
 /// <summary>
 /// IP config of a device

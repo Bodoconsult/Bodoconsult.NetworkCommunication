@@ -12,7 +12,7 @@ using Bodoconsult.NetworkCommunication.Interfaces;
 using Bodoconsult.NetworkCommunication.OrderManagement.Processors;
 using Bodoconsult.NetworkCommunication.Protocols.TcpIp;
 using Bodoconsult.NetworkCommunication.Tests.Helpers;
-using IpCommunicationSample.Backend.Bll.BusinessLogic;
+using IpBackend.Bll.BusinessLogic;
 using IpCommunicationSampleTests.App;
 
 

@@ -4,12 +4,11 @@ using Bodoconsult.App.Abstractions.Interfaces;
 using Bodoconsult.App.Interfaces;
 using Bodoconsult.NetworkCommunication.Factories;
 using Bodoconsult.NetworkCommunication.Interfaces;
-using IpCommunicationSample.Backend.Bll.BusinessTransactions.Providers;
-using IpCommunicationSample.Backend.Bll.Communication;
-using IpCommunicationSample.Backend.Bll.Interfaces;
+using IpBackend.Bll.BusinessTransactions.Providers;
+using IpBackend.Bll.Communication;
+using IpBackend.Bll.Interfaces;
 
-
-namespace IpCommunicationSample.Backend.Bll.BusinessLogic;
+namespace IpBackend.Bll.BusinessLogic;
 
 /// <summary>
 /// Current implementation of <see cref="IBackendManager"/> handling the full back comm to IP device and client

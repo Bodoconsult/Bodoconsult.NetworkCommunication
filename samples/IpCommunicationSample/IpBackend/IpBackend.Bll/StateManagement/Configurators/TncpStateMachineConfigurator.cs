@@ -5,9 +5,9 @@ using Bodoconsult.NetworkCommunication.Interfaces;
 using Bodoconsult.NetworkCommunication.StateManagement.Builders;
 using Bodoconsult.NetworkCommunication.StateManagement.Configurations;
 using Bodoconsult.NetworkCommunication.StateManagement.Configurators;
-using IpCommunicationSample.Backend.Bll.Interfaces;
+using IpBackend.Bll.Interfaces;
 
-namespace IpCommunicationSample.Backend.Bll.StateManagement.Configurators;
+namespace IpBackend.Bll.StateManagement.Configurators;
 
 /// <summary>
 /// Configure a state management based on TNCP

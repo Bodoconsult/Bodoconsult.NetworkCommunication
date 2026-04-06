@@ -1,9 +1,9 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
-using IpCommunicationSample.Backend.Bll.BusinessTransactions.Providers;
-using IpCommunicationSample.Backend.Bll.Interfaces;
+using IpBackend.Bll.BusinessTransactions;
+using IpBackend.Bll.BusinessTransactions.Providers;
+using IpBackend.Bll.Interfaces;
 using Moq;
-using IpCommunicationSample.Backend.Bll.BusinessTransactions;
 
 namespace IpCommunicationSampleTests.Backend.BusinessTransactions.Providers;
 

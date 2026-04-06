@@ -2,7 +2,7 @@
 
 using Bodoconsult.NetworkCommunication.Interfaces;
 
-namespace IpCommunicationSample.Backend.Bll.Interfaces;
+namespace IpBackend.Bll.Interfaces;
 
 /// <summary>
 /// Interface for the channel from client to backend via TCP/IP

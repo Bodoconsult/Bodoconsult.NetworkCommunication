@@ -2,7 +2,7 @@
 
 using Bodoconsult.NetworkCommunication.Interfaces;
 
-namespace IpCommunicationSample.Backend.Bll.StateManagement.Configurators;
+namespace IpBackend.Bll.StateManagement.Configurators;
 
 /// <summary>
 /// Factory for creating a <see cref="TncpStateMachineConfigurator "/> instance

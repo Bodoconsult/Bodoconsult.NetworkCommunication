@@ -1,0 +1,30 @@
+﻿<reactiveUi:ReactiveWindow x:TypeArguments="viewModels2:Window1ViewModel" x:Class="IpClientUi.Views.Window1"
+                           xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                           xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                           xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                           xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                           xmlns:reactiveUi="http://reactiveui.net"
+                           xmlns:viewModels="clr-namespace:IpClient.ViewModels"
+                           xmlns:controls="https://github.com/avaloniaui"
+                           xmlns:viewModels1="clr-namespace:Bodoconsult.App.ReactiveUI.ViewModels;assembly=Bodoconsult.App.ReactiveUI"
+                           xmlns:viewModels2="clr-namespace:IpClientUi.ViewModels"
+                           mc:Ignorable="d"
+                           Title="Window1" Height="450" Width="800">
+
+    <controls:Grid RowDefinitions="*,Auto">
+        <controls:Grid controls:Grid.Row="0" ColumnDefinitions="50*,50*">
+            <reactiveUi:RoutedViewHost controls:Grid.Column="0" x:Name="MenuRegion"
+                                       HorizontalContentAlignment="Stretch"
+                                       VerticalContentAlignment="Stretch" />
+            <reactiveUi:RoutedViewHost controls:Grid.Column="1" x:Name="DocumentRegion"
+                                       HorizontalContentAlignment="Stretch"
+                                       VerticalContentAlignment="Stretch" />
+        </controls:Grid>
+
+        <controls:StackPanel controls:Grid.Row="1" Orientation="Horizontal" Margin="15">
+            <controls:Button x:Name="GoNextButton" Content="Go to first" />
+            <controls:Button x:Name="GoBackButton" Content="Go back" Margin="5 0 0 0" />
+        </controls:StackPanel>
+
+    </controls:Grid>
+</reactiveUi:ReactiveWindow>

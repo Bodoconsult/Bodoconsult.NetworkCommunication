@@ -4,9 +4,9 @@ using Bodoconsult.App.Abstractions.Interfaces;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessageProcessingPackages;
 using Bodoconsult.NetworkCommunication.Devices.Configurators;
 using Bodoconsult.NetworkCommunication.Interfaces;
-using IpCommunicationSample.Backend.Bll.BusinessLogic.AdapterFactories;
+using IpBackend.Bll.BusinessLogic.AdapterFactories;
 
-namespace IpCommunicationSample.Backend.Bll.Communication;
+namespace IpBackend.Bll.Communication;
 
 /// <summary>
 /// Handles the TCP/IP channel between backend and IP device

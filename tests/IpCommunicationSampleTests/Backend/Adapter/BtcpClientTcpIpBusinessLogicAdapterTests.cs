@@ -7,8 +7,8 @@ using Bodoconsult.NetworkCommunication.Communication;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
 using Bodoconsult.NetworkCommunication.Interfaces;
 using Bodoconsult.NetworkCommunication.Tests.Helpers;
-using IpCommunicationSample.Backend.Bll.BusinessLogic.Adapters;
-using IpCommunicationSample.Backend.Bll.BusinessLogic.Converters;
+using IpBackend.Bll.BusinessLogic.Adapters;
+using IpBackend.Bll.BusinessLogic.Converters;
 
 namespace IpCommunicationSampleTests.Backend.Adapter;
 

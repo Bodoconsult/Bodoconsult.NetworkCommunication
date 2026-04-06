@@ -5,8 +5,8 @@ using Bodoconsult.App.BusinessTransactions.Replies;
 using Bodoconsult.App.BusinessTransactions.RequestData;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
 using Bodoconsult.NetworkCommunication.Tests.Helpers;
-using IpCommunicationSample.Client.Bll.BusinessLogic.Converters;
 using System.Text;
+using IpClient.Bll.BusinessLogic.Converters;
 
 namespace IpCommunicationSampleTests.Client.Converters;
 

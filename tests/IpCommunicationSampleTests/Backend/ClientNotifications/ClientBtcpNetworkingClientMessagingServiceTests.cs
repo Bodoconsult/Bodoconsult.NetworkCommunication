@@ -3,7 +3,7 @@
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
 using System.Text;
 using Bodoconsult.NetworkCommunication.ClientNotifications.Notifications;
-using IpCommunicationSample.Backend.Bll.ClientNotifications;
+using IpBackend.Bll.ClientNotifications;
 
 namespace IpCommunicationSampleTests.Backend.ClientNotifications;
 

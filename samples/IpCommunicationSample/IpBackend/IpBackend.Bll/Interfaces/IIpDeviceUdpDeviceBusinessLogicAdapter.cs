@@ -1,10 +1,9 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
 using Bodoconsult.App.Abstractions.Interfaces;
-using Bodoconsult.App.Interfaces;
 using Bodoconsult.NetworkCommunication.Interfaces;
 
-namespace IpCommunicationSample.Backend.Bll.Interfaces;
+namespace IpBackend.Bll.Interfaces;
 
 /// <summary>
 /// Interface for state handling in the UDP channel from backend to IP device

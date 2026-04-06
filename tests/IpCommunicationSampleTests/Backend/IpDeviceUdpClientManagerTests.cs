@@ -8,7 +8,7 @@ using Bodoconsult.NetworkCommunication.ClientNotifications;
 using Bodoconsult.NetworkCommunication.Factories;
 using Bodoconsult.NetworkCommunication.Interfaces;
 using Bodoconsult.NetworkCommunication.Tests.Helpers;
-using IpCommunicationSample.Backend.Bll.Communication;
+using IpBackend.Bll.Communication;
 using IpCommunicationSampleTests.App;
 
 namespace IpCommunicationSampleTests.Backend;

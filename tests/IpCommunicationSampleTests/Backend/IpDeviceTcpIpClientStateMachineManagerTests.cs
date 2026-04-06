@@ -9,7 +9,7 @@ using Bodoconsult.NetworkCommunication.Factories;
 using Bodoconsult.NetworkCommunication.Interfaces;
 using Bodoconsult.NetworkCommunication.OrderManagement.Processors;
 using Bodoconsult.NetworkCommunication.Tests.Helpers;
-using IpCommunicationSample.Backend.Bll.Communication;
+using IpBackend.Bll.Communication;
 using IpCommunicationSampleTests.App;
 
 

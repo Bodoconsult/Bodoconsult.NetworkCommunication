@@ -10,9 +10,9 @@ using Bodoconsult.NetworkCommunication.Factories;
 using Bodoconsult.NetworkCommunication.Interfaces;
 using Bodoconsult.NetworkCommunication.Protocols.TcpIp;
 using Bodoconsult.NetworkCommunication.Tests.Helpers;
-using IpCommunicationSample.Device.Bll;
-using IpCommunicationSample.Device.Bll.Interfaces;
 using IpCommunicationSampleTests.App;
+using IpDevice.Bll;
+using IpDevice.Bll.Interfaces;
 
 
 namespace IpCommunicationSampleTests.Device;

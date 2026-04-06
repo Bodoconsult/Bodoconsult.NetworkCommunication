@@ -3,7 +3,7 @@
 using Bodoconsult.App.Abstractions.Interfaces;
 using Bodoconsult.NetworkCommunication.BusinessTransactions.Converters;
 
-namespace IpCommunicationSample.Backend.Bll.BusinessLogic.Converters;
+namespace IpBackend.Bll.BusinessLogic.Converters;
 
 public class ClientBtRequestDataToOutboundBtcpMessageConverter : BaseBtRequestDataToOutboundBtcpMessageConverter
 {

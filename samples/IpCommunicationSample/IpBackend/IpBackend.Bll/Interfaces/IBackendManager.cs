@@ -1,9 +1,9 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
 using Bodoconsult.NetworkCommunication.Interfaces;
-using IpCommunicationSample.Backend.Bll.BusinessLogic;
+using IpBackend.Bll.BusinessLogic;
 
-namespace IpCommunicationSample.Backend.Bll.Interfaces;
+namespace IpBackend.Bll.Interfaces;
 
 public interface IBackendManager
 {
