@@ -127,7 +127,10 @@ public class BackendManager : IBackendManager
     /// </summary>
     public void LoadIpDeviceTcpIp()
     {
-        ArgumentNullException.ThrowIfNull(IpDeviceTcpIpConfig);
+        if (IpDeviceTcpIpConfig == null)
+        {
+            throw new ArgumentNullException(nameof(IpDeviceTcpIpConfig));
+        }
 
         var duplexIoFactory = new IpDuplexIoFactory(_sendPacketProcessFactory);
 
@@ -148,9 +151,12 @@ public class BackendManager : IBackendManager
     /// </summary>
     public void LoadIpDeviceUdp()
     {
-        ArgumentNullException.ThrowIfNull(IpDeviceUdpConfig);
+        if (IpDeviceUdpConfig == null)
+        {
+            throw new ArgumentNullException(nameof(IpDeviceUdpConfig));
+        }
 
-        var duplexIoFactory = new IpDuplexIoFactory(_sendPacketProcessFactory);
+        var duplexIoFactory = new UdpDatagramIpDuplexIoFactory(_sendPacketProcessFactory);
 
         var m = new IpDeviceUdpClientManager(duplexIoFactory, _monitorLoggerFactoryFactory, _logDataFactory, _appLoggerFactory,
             _appEventSourceFactory, _clientNotificationManager, _appLogger);
@@ -165,7 +171,10 @@ public class BackendManager : IBackendManager
     /// </summary>
     public void LoadClient()
     {
-        ArgumentNullException.ThrowIfNull(ClientTcpIpConfig);
+        if (ClientTcpIpConfig == null)
+        {
+            throw new ArgumentNullException(nameof(ClientTcpIpConfig));
+        }
 
         var duplexIoFactory = new IpDuplexIoFactory(_sendPacketProcessFactory);
 
@@ -183,6 +192,7 @@ public class BackendManager : IBackendManager
     public void LoadBusinessTransactions()
     {
         ArgumentNullException.ThrowIfNull(IpDeviceTcpIp);
+        
         var adapter = (IIpDeviceTcpIpDeviceBusinessLogicAdapter?)IpDeviceTcpIp.DeviceBusinessLogicAdapter;
 
         ArgumentNullException.ThrowIfNull(adapter);

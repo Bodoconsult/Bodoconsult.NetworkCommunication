@@ -91,6 +91,11 @@ public static class DeviceCommunicationBasics
     #region Constants
 
     /// <summary>
+    /// Ox0 char
+    /// </summary>
+    public const byte Null = 0;      // 0x00
+
+    /// <summary>
     /// Data message start
     /// </summary>
     public const byte Stx = 2;      // 0x02

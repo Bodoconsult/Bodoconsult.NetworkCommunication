@@ -27,8 +27,6 @@ public class IpDeviceServiceService : IApplicationService
     private readonly IAppLoggerProxy _appLogger;
     private IIpDeviceManager _deviceManager;
 
-    private readonly CancellationTokenSource _cancellationTokenSource = new();
-
     /// <summary>
     /// Default ctor
     /// </summary>
@@ -66,8 +64,16 @@ public class IpDeviceServiceService : IApplicationService
     /// <summary>
     /// Start the application
     /// </summary>
-    public void StartApplication()
+    public void StartApplication(CancellationToken? token)
     {
+        if (!token.HasValue)
+        {
+            throw new ArgumentNullException(nameof(token));
+        }
+
+        var t = token.Value;
+
+
         _isStarting = true;
 
         if (_isStopped)
@@ -99,9 +105,9 @@ public class IpDeviceServiceService : IApplicationService
 
         _isStarting = false;
 
-        while (!_cancellationTokenSource.IsCancellationRequested)
+        while (!t.IsCancellationRequested)
         {
-            Task.Delay(500);
+            Task.Delay(500, t);
         }
     }
 
@@ -221,8 +227,6 @@ public class IpDeviceServiceService : IApplicationService
         {
             // Do nothing
         }
-
-        _cancellationTokenSource.Cancel();
     }
 
     /// <summary>

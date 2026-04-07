@@ -327,7 +327,7 @@ public abstract class TcpIpDuplexIoBaseTests : BaseTcpTests
 
     [Test]
     [NonParallelizable]
-    public void ReceiveMessageFromdevice_MessageS()
+    public void ReceiveMessageFromDevice_OneMessage_ReceiveMessage()
     {
         // Arrange
         var message = new SdcpOutboundDataMessage
@@ -340,6 +340,43 @@ public abstract class TcpIpDuplexIoBaseTests : BaseTcpTests
         };
 
         RunBasicTests(message.DataBlock.Data.ToArray(), 1);
+
+        // Assert
+        Wait.Until(() => IsMessageReceivedFired, 2000);
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(IsMessageReceivedFired);
+            Assert.That(!IsMessageNotReceivedFired);
+            Assert.That(!IsComDevCloseFired);
+            Assert.That(!IsCorruptedMessageFired);
+            Assert.That(!IsOnNotExpectedMessageReceivedFired);
+        }
+    }
+
+    [Test]
+    [NonParallelizable]
+    public void ReceiveMessageFromDevice_TwoMessages_ReceiveMessages()
+    {
+        // Arrange
+        var message = new SdcpOutboundDataMessage
+        {
+            DataBlock = new BasicOutboundDatablock
+            {
+                DataBlockType = 'x',
+                Data = new byte[] { 0x2, 0x78, 0x42, 0x6c, 0x75, 0x62, 0x62, 0x3 }
+            }
+        };
+
+        var message2 = new SdcpOutboundDataMessage
+        {
+            DataBlock = new BasicOutboundDatablock
+            {
+                DataBlockType = 'x',
+                Data = new byte[] { 0x2, 0x79, 0x41, 0x6c, 0x75, 0x62, 0x62, 0x3 }
+            }
+        };
+
+        RunBasicTests(message.DataBlock.Data.ToArray(), 2, message2.DataBlock.Data.ToArray());
 
         // Assert
         Wait.Until(() => IsMessageReceivedFired, 2000);

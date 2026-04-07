@@ -48,10 +48,7 @@ public class IpDuplexIoReceiver : BaseDuplexIoReceiver
         _bufferPool.LoadFactoryMethod(() => new DummyMemory());
         _bufferPool.Allocate(3);
 
-        if (deviceCommSettings.DataMessageProcessingPackage == null)
-        {
-            throw new ArgumentNullException(nameof(deviceCommSettings.DataMessageProcessingPackage));
-        }
+        ArgumentNullException.ThrowIfNull(deviceCommSettings.DataMessageProcessingPackage);
 
         _dataMessageValidator = deviceCommSettings.DataMessageProcessingPackage.DataMessageValidator;
     }
@@ -65,9 +62,9 @@ public class IpDuplexIoReceiver : BaseDuplexIoReceiver
 
         _buffer = chunk;
 
-        var s = $"Data in buffer: {DataMessageHelper.GetStringFromArrayCsharpStyle(ref _buffer)}";
-        Debug.Print(s);
-        Logger.LogDebug(s);
+        var msg = $"Data in buffer: {DataMessageHelper.GetStringFromArrayCsharpStyle(ref _buffer)}";
+        Debug.Print(msg);
+        Logger.LogDebug(msg);
 
         while (DataMessageSplitter.TryReadCommand(ref _buffer, out var command))
         {
@@ -85,8 +82,6 @@ public class IpDuplexIoReceiver : BaseDuplexIoReceiver
 
             var mem = ((Memory<byte>)array)[..length];
 
-            string msg;
-
             var codecResult = DataMessageCodingProcessor.DecodeDataMessage(mem);
 
             if (codecResult.ErrorCode != 0 || codecResult.DataMessage==null)
@@ -94,24 +89,24 @@ public class IpDuplexIoReceiver : BaseDuplexIoReceiver
                 msg = $"Parsing command failed with error code {codecResult.ErrorCode}: {codecResult.ErrorMessage}: {DataMessageHelper.GetStringFromArrayCsharpStyle(ref command)}";
                 Debug.Print(msg);
                 Logger?.LogDebug(msg);
+                ArrayPool.Return(array);
+                return;
+            }
+
+            var validationResult = _dataMessageValidator.IsMessageValid(codecResult.DataMessage);
+            if (!validationResult.IsMessageValid)
+            {
+                msg = $"Parsed command {DataMessageHelper.GetStringFromArrayCsharpStyle(ref command)} NOT valid: {validationResult.ValidationResult}";
+                Debug.Print(msg);
+                Logger?.LogDebug(msg);
             }
             else
             {
-                var validationResult = _dataMessageValidator.IsMessageValid(codecResult.DataMessage);
-                if (!validationResult.IsMessageValid)
-                {
-                    msg = $"Parsed command {DataMessageHelper.GetStringFromArrayCsharpStyle(ref command)} NOT valid: {validationResult.ValidationResult}";
-                    Debug.Print(msg);
-                    Logger?.LogDebug(msg);
-                }
-                else
-                {
-                    msg = $"Parsed command {DataMessageHelper.GetStringFromArrayCsharpStyle(ref command)}";
-                    Debug.Print(msg);
-                    DataMessagingConfig.MonitorLogger?.LogDebug(msg);
+                msg = $"Parsed command {DataMessageHelper.GetStringFromArrayCsharpStyle(ref command)}";
+                Debug.Print(msg);
+                DataMessagingConfig.MonitorLogger?.LogDebug(msg);
 
-                    DataMessageProcessor.ProcessMessage(codecResult.DataMessage);
-                }
+                DataMessageProcessor.ProcessMessage(codecResult.DataMessage);
             }
 
             ArrayPool.Return(array);

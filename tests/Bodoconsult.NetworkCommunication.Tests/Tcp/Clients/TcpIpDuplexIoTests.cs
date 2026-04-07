@@ -64,8 +64,6 @@ public class TcpIpDuplexIoTests : TcpIpDuplexIoBaseTests
         return new IpDuplexIo(DataMessagingConfig, sendPacketProcessFactory);
     }
 
-
-
     //public override void SendDataAndReceive(byte[] data, byte[] data2 = null)
     //{
     //    // Arrange
@@ -97,5 +95,4 @@ public class TcpIpDuplexIoTests : TcpIpDuplexIoBaseTests
     //    Debug.Print("Process done");
 
     //}
-
 }

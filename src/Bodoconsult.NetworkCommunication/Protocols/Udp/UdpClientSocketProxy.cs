@@ -30,61 +30,10 @@ public class UdpClientSocketProxy : UpdSocketProxyBase
     /// </summary>
     protected IPEndPoint? SendEndPoint;
 
-    ///// <summary>
-    ///// Default ctor
-    ///// </summary>
-    //public AsyncUdpSocketProxy()
-    //{ }
-
     /// <summary>
     /// Current socket (only for testing purposes, do not access directly in production code)
     /// </summary>
     public UdpClient? UdpClient { get; protected set; }
-
-    ///// <summary>
-    ///// Is the socket connected
-    ///// </summary>
-    //public override bool Connected
-    //{
-    //    get
-    //    {
-    //        // Replacement for Socket.Connected. See sample at the end of https://learn.microsoft.com/en-us/dotnet/api/system.net.sockets.socket.connected?redirectedfrom=MSDN&view=net-7.0#System_Net_Sockets_Socket_Connected
-    //        try
-    //        {
-    //            // This is how you can determine whether a socket is still connected.
-    //            var blockingState = UdpClient.Client.Blocking;
-    //            try
-    //            {
-    //                UdpClient.Client.Blocking = false;
-    //                UdpClient.Client.Send(_tmp, 0, 0);
-    //                //Console.WriteLine("Connected!");
-    //            }
-    //            catch (SocketException e)
-    //            {
-    //                // 10035 == WSAEWOULDBLOCK
-    //                if (e.NativeErrorCode.Equals(10035))
-    //                {
-    //                    // Still connected, but the send would block;
-    //                }
-    //                else
-    //                {
-    //                    // Disconnected
-    //                    return false;
-    //                }
-    //            }
-    //            finally
-    //            {
-    //                UdpClient.Client.Blocking = blockingState;
-    //            }
-
-    //            return true;
-    //        }
-    //        catch //(Exception e)
-    //        {
-    //            return false;
-    //        }
-    //    }
-    //}
 
     /// <summary>
     /// The number of bytes available to read

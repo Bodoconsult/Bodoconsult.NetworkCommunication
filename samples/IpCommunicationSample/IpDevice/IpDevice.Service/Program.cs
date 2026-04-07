@@ -55,6 +55,7 @@ internal static class Program
         builder.LoadGlobalSettings();
 
         // Write first log entry with default logger
+        ArgumentNullException.ThrowIfNull(Globals.Instance.Logger);
         Globals.Instance.Logger.LogInformation($"{param.AppName} {param.AppVersion} starts...");
         Console.WriteLine("Logging started...");
 

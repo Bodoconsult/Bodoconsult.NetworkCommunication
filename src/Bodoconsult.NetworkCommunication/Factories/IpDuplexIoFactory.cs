@@ -6,7 +6,7 @@ using Bodoconsult.NetworkCommunication.Interfaces;
 namespace Bodoconsult.NetworkCommunication.Factories;
 
 /// <summary>
-/// Own pipeline implementation of <see cref="IDuplexIo"/>
+/// Factory for <see cref="IDuplexIo"/> instances
 /// </summary>
 public class IpDuplexIoFactory : IDuplexIoFactory
 {

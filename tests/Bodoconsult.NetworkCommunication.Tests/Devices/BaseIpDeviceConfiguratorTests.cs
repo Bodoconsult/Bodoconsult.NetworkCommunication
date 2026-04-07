@@ -17,8 +17,11 @@ internal class BaseIpDeviceConfiguratorTests
         var config = new TestIpDeviceConfigurator();
 
         // Assert
-        Assert.That(config.DataMessagingConfig, Is.Null);
-        Assert.That(config.Device, Is.Null);
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(config.DataMessagingConfig, Is.Null);
+            Assert.That(config.Device, Is.Null);
+        }
     }
 
     [Test]
@@ -29,14 +32,17 @@ internal class BaseIpDeviceConfiguratorTests
         IDataMessageProcessingPackageFactory messageProcessingPackageFactory = new TncpDataMessageProcessingPackageFactory();
 
         // Act  
-        Assert.Throws<NotSupportedException>(() =>
+        using (Assert.EnterMultipleScope())
         {
-            config.CreateMessagingConfig("TestDevice", "127.0.0.1", 9000, messageProcessingPackageFactory);
-        });
+            Assert.Throws<NotSupportedException>(() =>
+            {
+                config.CreateMessagingConfig("TestDevice", "127.0.0.1", 9000, messageProcessingPackageFactory);
+            });
 
-        // Assert
-        Assert.That(config.DataMessagingConfig, Is.Null);
-        Assert.That(config.Device, Is.Null);
+            // Assert
+            Assert.That(config.DataMessagingConfig, Is.Null);
+            Assert.That(config.Device, Is.Null);
+        }
     }
 
     [Test]
@@ -48,14 +54,14 @@ internal class BaseIpDeviceConfiguratorTests
         IDeviceBusinessLogicAdapterFactory businessLogicAdapterFactory = new TestIpDeviceAdapterFactory();
 
         // Act  
-        Assert.Throws<NotSupportedException>(() =>
+        using (Assert.EnterMultipleScope())
         {
-            config.CreateDevice(businessLogicAdapterFactory);
-        });
+            Assert.Throws<NotSupportedException>(() => { config.CreateDevice(businessLogicAdapterFactory); });
 
-        // Assert
-        Assert.That(config.DataMessagingConfig, Is.Null);
-        Assert.That(config.Device, Is.Null);
+            // Assert
+            Assert.That(config.DataMessagingConfig, Is.Null);
+            Assert.That(config.Device, Is.Null);
+        }
     }
 
     // ToDo MOQ this test
@@ -87,13 +93,13 @@ internal class BaseIpDeviceConfiguratorTests
         var config = new TestIpDeviceConfigurator();
 
         // Act  
-        Assert.Throws<ArgumentNullException>(() =>
+        using (Assert.EnterMultipleScope())
         {
-            config.GetDevice();
-        });
+            Assert.Throws<ArgumentNullException>(() => { config.GetDevice(); });
 
-        // Assert
-        Assert.That(config.DataMessagingConfig, Is.Null);
-        Assert.That(config.Device, Is.Null);
+            // Assert
+            Assert.That(config.DataMessagingConfig, Is.Null);
+            Assert.That(config.Device, Is.Null);
+        }
     }
 }

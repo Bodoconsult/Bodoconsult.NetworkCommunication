@@ -112,7 +112,7 @@ public class IpDeviceManager : IIpDeviceManager
             throw new ArgumentNullException(nameof(BackendUdpConfig));
         }
 
-        var duplexIoFactory = new IpDuplexIoFactory(_sendPacketProcessFactory);
+        var duplexIoFactory = new UdpDatagramIpDuplexIoFactory(_sendPacketProcessFactory);
 
         var m = new BackendUdpServerManager(duplexIoFactory, _monitorLoggerFactoryFactory, _logDataFactory, _appLoggerFactory,
             _appEventSourceFactory, _clientNotificationManager, _appLogger);

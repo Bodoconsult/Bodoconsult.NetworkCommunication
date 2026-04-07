@@ -10,7 +10,6 @@ namespace Bodoconsult.NetworkCommunication.Tests.Factories;
 [TestFixture]
 internal class IpDuplexIoFactoryTests
 {
-
     [Test]
     public void TcpIpDuplexIoFactory_CreateInstance_Success()
     {
@@ -31,5 +30,4 @@ internal class IpDuplexIoFactoryTests
         // Assert
         Assert.That(instance, Is.Not.Null);
     }
-
 }

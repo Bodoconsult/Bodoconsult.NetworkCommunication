@@ -30,11 +30,14 @@ internal class EdcpDataMessageSplitterTests
         var result = splitter.TryReadCommand(ref buffer, out var command);
 
         // Assert
-        Assert.That(result, Is.True);
-        Assert.That(command.Length, Is.Not.Zero);
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(result, Is.True);
+            Assert.That(command.Length, Is.Not.Zero);
 
-        Assert.That(command.IsEqualTo(expectedResult));
-        Assert.That(buffer.Length, Is.EqualTo(msg.Length - command.Length));
+            Assert.That(command.IsEqualTo(expectedResult));
+            Assert.That(buffer.Length, Is.EqualTo(msg.Length - command.Length));
+        }
     }
 
     [Test]
@@ -52,10 +55,13 @@ internal class EdcpDataMessageSplitterTests
         var result = splitter.TryReadCommand(ref buffer, out var command);
 
         // Assert
-        Assert.That(result, Is.True);
-        Assert.That(command.Length, Is.Not.Zero);
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(result, Is.True);
+            Assert.That(command.Length, Is.Not.Zero);
 
-        Assert.That(command.IsEqualTo(expectedResult));
-        Assert.That(buffer.Length, Is.EqualTo(msg.Length - command.Length));
+            Assert.That(command.IsEqualTo(expectedResult));
+            Assert.That(buffer.Length, Is.EqualTo(msg.Length - command.Length));
+        }
     }
 }

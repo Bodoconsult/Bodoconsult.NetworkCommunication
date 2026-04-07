@@ -62,8 +62,14 @@ public class IpBackendServiceService : IApplicationService
     /// <summary>
     /// Start the application
     /// </summary>
-    public void StartApplication()
+    public void StartApplication(CancellationToken? token)
     {
+        if (!token.HasValue)
+        {
+            throw new ArgumentNullException(nameof(token));
+        }
+
+        var t = token.Value;
         _isStarting = true;
 
         if (_isStopped)
@@ -90,6 +96,11 @@ public class IpBackendServiceService : IApplicationService
         _backendManager.LoadBusinessTransactions();
 
         _isStarting = false;
+
+        while (!t.IsCancellationRequested)
+        {
+            Task.Delay(500, t);
+        }
     }
 
     /// <summary>

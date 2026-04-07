@@ -126,7 +126,7 @@ public class BtcpDataMessageCodec : BaseDataMessageCodec
 
     private void ExtractReplyData(Memory<byte> data, BtcpReplyInboundDataMessage dataMessage)
     {
-        int pos = 0;
+        var pos = 0;
         for (var i = data.Length - 1; i >= 0; i--)
         {
             if (data.Slice(i, 1).Span[0] == 0x7c)

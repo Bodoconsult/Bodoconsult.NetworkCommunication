@@ -32,8 +32,11 @@ internal class SimpleDeviceFactoryTests
         var result = factory.CreateInstance(dataMessagingConfig);
 
         // Assert
-        Assert.That(result.ClientNotificationManager, Is.EqualTo(clientNotificationManager));
-        Assert.That(result.CommunicationAdapter, Is.Not.Null);
-        Assert.That(result.DataMessagingConfig, Is.EqualTo(dataMessagingConfig));
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(result.ClientNotificationManager, Is.EqualTo(clientNotificationManager));
+            Assert.That(result.CommunicationAdapter, Is.Not.Null);
+            Assert.That(result.DataMessagingConfig, Is.EqualTo(dataMessagingConfig));
+        }
     }
 }

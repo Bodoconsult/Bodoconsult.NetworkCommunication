@@ -23,6 +23,7 @@
   <ItemGroup>
     <None Remove="appsettings.json" />
     <None Remove="log4net.config" />
+    <None Remove="Resources\msg.bin" />
   </ItemGroup>
 
   <ItemGroup>
@@ -62,6 +63,10 @@
   <ItemGroup>
     <Folder Include="DataMessaging\NewFolder1\" />
     <Folder Include="StateManagement\NewFolder\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\msg.bin" />
   </ItemGroup>
 
 </Project>

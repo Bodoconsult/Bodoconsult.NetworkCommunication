@@ -55,10 +55,9 @@ public class IpClientService : IApplicationService
         // Do nothing in this demo
     }
 
-    /// <summary>
-    /// Start the application
-    /// </summary>
-    public void StartApplication()
+    /// <summary>Start the application</summary>
+    /// <param name="cancellationToken">Current cancellation token or null</param>
+    public void StartApplication(CancellationToken? cancellationToken)
     {
         //_isStarting = true;
 
@@ -173,14 +172,11 @@ public class IpClientService : IApplicationService
         var gms = di.Get<IGeneralAppManagementManager>();
         var request = new EmptyBusinessTransactionRequestData();
 
-        DefaultBusinessTransactionReply result;
-
         // Create log dump on app stop
         try
         {
-
             // ToDo: fill request with useful information for logging
-            result = gms.CreateLogDump(request);
+            var result = gms.CreateLogDump(request);
 
             if (result != null)
             {
@@ -200,18 +196,15 @@ public class IpClientService : IApplicationService
                 _appLogger.StopLogging();
                 _appLogger.Dispose();
             }
-
         }
         catch
         {
             // Do nothing
         }
-
     }
 
     /// <summary>
     /// Current <see cref="IApplicationService.LicenseMissingDelegate"/>
     /// </summary>
     public LicenseMissingDelegate? LicenseMissingDelegate { get; set; }
-
 }

@@ -8,8 +8,9 @@ using Bodoconsult.NetworkCommunication.Interfaces;
 namespace Bodoconsult.NetworkCommunication.Communication;
 
 /// <summary>
-/// Duplex implementation for IP based networks (UDP/TCP) based on own pipeline implementation
-/// </summary>
+/// Duplex implementation for IP based networks (TCP or UDP) based on own pipeline implementation receiving data from TCP or UDP stream.
+/// Receiving data with this implementation requires a recognizable end (STX, ETX, ...) of a message / datagram
+/// </summary> 
 public class IpDuplexIo : BaseDuplexIo
 {
     private readonly DuplexIoIsWorkInProgressDelegate _duplexIoIsWorkInProgressDelegate;
@@ -17,7 +18,7 @@ public class IpDuplexIo : BaseDuplexIo
     private const int NumberOfRetriesSetWorkinProgress = 100;
 
     /// <summary>
-    /// Is currently a send or receive process in progress
+    /// Is currently a send process or a receive process in progress
     /// </summary>
     public bool IsWorkInProgress { get; private set; }
 
