@@ -2,7 +2,6 @@
 
 using Bodoconsult.App.Abstractions.Interfaces;
 using Bodoconsult.App.Interfaces;
-using Bodoconsult.NetworkCommunication.DataMessaging.DataMessageProcessingPackages;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig;
 using Bodoconsult.NetworkCommunication.EnumAndStates;
 using Bodoconsult.NetworkCommunication.Factories;
@@ -74,7 +73,7 @@ public class UdpClientDeviceConfigurator : BaseIpDeviceConfigurator
         DataMessagingConfig.Port = port;
         DataMessagingConfig.IpProtocol = IpProtocolEnum.Udp;
         DataMessagingConfig.IsServer = false;
-        DataMessagingConfig.DataMessageProcessingPackage = new SdcpDataMessageProcessingPackage(DataMessagingConfig);
+        DataMessagingConfig.DataMessageProcessingPackage = messageProcessingPackageFactory.CreateInstance(DataMessagingConfig);
     }
 
     /// <summary>

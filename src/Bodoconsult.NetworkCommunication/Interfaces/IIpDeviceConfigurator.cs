@@ -10,12 +10,12 @@ public interface IIpDeviceConfigurator
     /// <summary>
     /// Current data messaging config
     /// </summary>
-    public IIpDataMessagingConfig? DataMessagingConfig { get; }
+    IIpDataMessagingConfig? DataMessagingConfig { get; }
 
     /// <summary>
     /// Current device
     /// </summary>
-    public IIpDevice? Device { get; }
+    IIpDevice? Device { get; }
 
     /// <summary>
     /// Create the basic data messaging config

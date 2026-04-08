@@ -74,7 +74,7 @@ public class BackendTcpIpClientManager : IOrderManagementDeviceManager
     /// <param name="port">Port</param>
     public void ConfigureDevice(string ipAddress, int port)
     {
-        IDataMessageProcessingPackageFactory messageProcessingPackageFactory = new TncpDataMessageProcessingPackageFactory();
+        IDataMessageProcessingPackageFactory messageProcessingPackageFactory = new BtcpDataMessageProcessingPackageFactory();
 
         var configurator = new TcpIpClientOrderManagementDeviceConfigurator(_duplexIoFactory, _monitorLoggerFactoryFactory, _logDataFactory, _appLoggerFactory, _appEventSourceFactory, _clientNotificationManager, _appLoggerProxy);
 

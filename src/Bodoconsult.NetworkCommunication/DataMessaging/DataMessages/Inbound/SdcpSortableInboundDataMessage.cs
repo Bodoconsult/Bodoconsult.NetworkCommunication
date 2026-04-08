@@ -26,16 +26,10 @@ public class SdcpSortableInboundDataMessage : ISortableInboundDataMessage
     public long MessageId { get; }
 
     /// <summary>
-    /// Is waiting for acknowledgement by the device required for the message
-    /// </summary>
-    public bool WaitForAcknowledgement { get; set; }
-
-    /// <summary>
     /// Should an acknowledgement be sent if the message is received
     /// </summary>
     public bool AnswerWithAcknowledgement { get; set; }
-
-
+    
     /// <summary>
     /// First plausibilty check if a received message can be the expected answer to the request. 
     /// </summary>

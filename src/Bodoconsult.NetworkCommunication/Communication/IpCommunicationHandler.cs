@@ -3,6 +3,7 @@
 using System.Diagnostics;
 using Bodoconsult.App.Abstractions.Interfaces;
 using Bodoconsult.App.Helpers;
+using Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
 using Bodoconsult.NetworkCommunication.EventSources;
 using Bodoconsult.NetworkCommunication.Helpers;
 using Bodoconsult.NetworkCommunication.Interfaces;
@@ -107,8 +108,11 @@ public class IpCommunicationHandler : ICommunicationHandler
             {
                 var response = DataMessagingConfig.DataMessageProcessingPackage.DataMessageHandshakeFactory.GetAckResponse(message);
 
-                // Fire and forget
-                SendMessage(response);
+                if (response is not DoNotSendOutboundHandshakeMessage)
+                {
+                    // Fire and forget
+                    SendMessage(response);
+                }
             }
             
             AsyncHelper.FireAndForget(() => DataMessagingConfig.RaiseAppLayerDataMessageReceivedDelegate?.Invoke(message));

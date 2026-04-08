@@ -6,9 +6,9 @@ using Bodoconsult.NetworkCommunication.Interfaces;
 namespace Bodoconsult.NetworkCommunication.DataMessaging.DataMessageSplitters;
 
 /// <summary>
-/// (Dummy) implementation for <see cref="IDataMessageSplitter"/> for packetwise receiving. One packet is resulting in one message
+/// (Dummy) implementation for <see cref="IDataMessageSplitter"/> for UDP protocol for receiving datagram by datagram. One datagram is resulting in one message
 /// </summary>
-public class PacketwiseDataMessageSplitter : IDataMessageSplitter
+public class UdpDatagramDataMessageSplitter : IDataMessageSplitter
 {
     // Array pool is okay as shared instance here
     private static readonly ArrayPool<byte> ArrayPool = ArrayPool<byte>.Shared;

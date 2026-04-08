@@ -24,7 +24,7 @@ public class IpHighPerformanceDuplexIoSender : BaseDuplexIoSender
 
     private readonly int _pollingTimeOut;
 
-    private ISocketProxy _socketProxy;
+    private readonly ISocketProxy _socketProxy;
 
     /// <summary>
     /// Default ctor

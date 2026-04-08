@@ -7,7 +7,7 @@ using Bodoconsult.NetworkCommunication.DataMessaging.DataMessageSplitters;
 namespace Bodoconsult.NetworkCommunication.Tests.Sfxp
 {
     [TestFixture]
-    internal class PacketwiseDataMessageSplitterTests
+    internal class UdpDatagramDataMessageSplitterTests
     {
         [Test]
         public void TryReadCommand_OneCommand_ReturnsCommand()
@@ -19,7 +19,7 @@ namespace Bodoconsult.NetworkCommunication.Tests.Sfxp
 
             var buffer = new ReadOnlySequence<byte>(msg);
 
-            var splitter = new PacketwiseDataMessageSplitter();
+            var splitter = new UdpDatagramDataMessageSplitter();
 
             // Act  
             var result = splitter.TryReadCommand(ref buffer, out var command);

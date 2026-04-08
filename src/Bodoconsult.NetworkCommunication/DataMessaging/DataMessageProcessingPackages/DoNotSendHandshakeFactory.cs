@@ -6,9 +6,9 @@ using Bodoconsult.NetworkCommunication.Interfaces;
 namespace Bodoconsult.NetworkCommunication.DataMessaging.DataMessageProcessingPackages;
 
 /// <summary>
-/// Factory for creating handshakes for TNCP protocol to sent to the client
+/// Factory for creating handshakes for SDCP protocol to sent to the client
 /// </summary>
-public class TncpHandshakeFactory : IDataMessageHandshakeFactory
+public class DoNotSendHandshakeFactory : IDataMessageHandshakeFactory
 {
     /// <summary>
     /// Get an ACK handshake message
@@ -17,21 +17,22 @@ public class TncpHandshakeFactory : IDataMessageHandshakeFactory
     /// <returns>ACK handshake message to send</returns>
     public IOutboundHandShakeMessage GetAckResponse(IInboundDataMessage message)
     {
-        var ack = new OutboundHandshakeMessage
+        var ack = new DoNotSendOutboundHandshakeMessage
         {
             HandshakeMessageType = HandShakeMessageType.Ack
         };
+
         return ack;
     }
 
     /// <summary>
-    /// Get a NAK handshake message
+    /// Get a NACK handshake message
     /// </summary>
     /// <param name="message">Current message received</param>
     /// <returns>NAK handshake message to send</returns>
     public IOutboundHandShakeMessage GetNackResponse(IInboundDataMessage message)
     {
-        var nak = new OutboundHandshakeMessage
+        var nak = new DoNotSendOutboundHandshakeMessage
         {
             HandshakeMessageType = HandShakeMessageType.Nack
         };
@@ -45,7 +46,7 @@ public class TncpHandshakeFactory : IDataMessageHandshakeFactory
     /// <returns>CAN handshake message to send</returns>
     public IOutboundHandShakeMessage GetCanResponse(IInboundDataMessage message)
     {
-        var can = new OutboundHandshakeMessage
+        var can = new DoNotSendOutboundHandshakeMessage
         {
             HandshakeMessageType = HandShakeMessageType.Can
         };

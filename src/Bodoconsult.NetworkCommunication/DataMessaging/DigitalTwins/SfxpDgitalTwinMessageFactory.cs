@@ -1,7 +1,6 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
 using Bodoconsult.NetworkCommunication.Interfaces;
-using System.Buffers;
 using System.Diagnostics;
 
 namespace Bodoconsult.NetworkCommunication.DataMessaging.DigitalTwins
@@ -109,15 +108,18 @@ namespace Bodoconsult.NetworkCommunication.DataMessaging.DigitalTwins
                     break;
                 }
 
-                CreateChunks(data);
+                if (CreateChunks(data))
+                {
+                    break;
+                }
             }
 
             SetNextMessageId();
 
-            return new Memory<byte>(data.ToArray());
+            return data.ToArray().AsMemory();
         }
 
-        private void CreateChunks(List<byte> data)
+        private bool CreateChunks(List<byte> data)
         {
             // Create chunks
             for (var j = _lastChunkId; j < NumberOfChunksBeforeSyncByteIsSent; j++)
@@ -129,13 +131,14 @@ namespace Bodoconsult.NetworkCommunication.DataMessaging.DigitalTwins
                 if (data.Count + chunk.Count >= MaximumMessageLength)
                 {
                     _lastChunkId = j;
-                    break;
+                    return true;
                 }
 
                 data.AddRange(chunk);
             }
 
             _lastChunkId = 0;
+            return false;
         }
 
         /// <summary>

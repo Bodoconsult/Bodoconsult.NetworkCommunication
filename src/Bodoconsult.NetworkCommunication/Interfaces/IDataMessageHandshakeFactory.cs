@@ -16,7 +16,7 @@ public interface IDataMessageHandshakeFactory
     /// </summary>
     /// <param name="message">Current message received</param>
     /// <returns>NAK handshake message to send</returns>
-    IOutboundHandShakeMessage GetNakResponse(IInboundDataMessage message);
+    IOutboundHandShakeMessage GetNackResponse(IInboundDataMessage message);
 
     /// <summary>
     /// Get a CAN handshake message

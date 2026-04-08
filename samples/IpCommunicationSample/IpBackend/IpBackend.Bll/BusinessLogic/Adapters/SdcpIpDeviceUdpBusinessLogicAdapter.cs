@@ -11,13 +11,13 @@ namespace IpBackend.Bll.BusinessLogic.Adapters;
 /// <summary>
 /// Current adapter for UPD channel from backend to IP device
 /// </summary>
-public class SdcpIpDeviceUdpBusinessLogicAdapter : BaseSimpleDeviceBusinessLogicAdapter, IIpDeviceUdpDeviceBusinessLogicAdapter
+public class SfxpIpDeviceUdpBusinessLogicAdapter : BaseSimpleDeviceBusinessLogicAdapter, IIpDeviceUdpDeviceBusinessLogicAdapter
 {
     /// <summary>
     /// Default ctor
     /// </summary>
     /// <param name="device">Current device</param>
-    public SdcpIpDeviceUdpBusinessLogicAdapter(IIpDevice device) : base(device)
+    public SfxpIpDeviceUdpBusinessLogicAdapter(IIpDevice device) : base(device)
     { }
 
     /// <summary>

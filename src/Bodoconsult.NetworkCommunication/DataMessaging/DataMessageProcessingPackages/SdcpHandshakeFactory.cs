@@ -30,7 +30,7 @@ public class SdcpHandshakeFactory : IDataMessageHandshakeFactory
     /// </summary>
     /// <param name="message">Current message received</param>
     /// <returns>NAK handshake message to send</returns>
-    public IOutboundHandShakeMessage GetNakResponse(IInboundDataMessage message)
+    public IOutboundHandShakeMessage GetNackResponse(IInboundDataMessage message)
     {
         var nak = new OutboundHandshakeMessage
         {

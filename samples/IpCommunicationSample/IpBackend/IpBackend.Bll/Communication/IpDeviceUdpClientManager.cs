@@ -66,13 +66,13 @@ public class IpDeviceUdpClientManager : ISimpleDeviceManager
     /// <param name="port">Port</param>
     public void ConfigureDevice(string ipAddress, int port)
     {
-        IDataMessageProcessingPackageFactory messageProcessingPackageFactory = new TncpDataMessageProcessingPackageFactory();
+        IDataMessageProcessingPackageFactory messageProcessingPackageFactory = new SfxpDataMessageProcessingPackageFactory();
 
         var configurator = new UdpClientDeviceConfigurator(_duplexIoFactory, _monitorLoggerFactoryFactory, _logDataFactory, _appLoggerFactory, _appEventSourceFactory, _clientNotificationManager, _appLoggerProxy);
 
         configurator.CreateMessagingConfig("IPDevice_UDP", ipAddress, port, messageProcessingPackageFactory);
 
-        IDeviceBusinessLogicAdapterFactory businessLogicAdapterFactory = new SdcpIpDeviceUdpBusinessLogicAdapterFactory();
+        IDeviceBusinessLogicAdapterFactory businessLogicAdapterFactory = new SfxpIpDeviceUdpBusinessLogicAdapterFactory();
         configurator.CreateDevice(businessLogicAdapterFactory);
 
         var device = configurator.GetDevice();

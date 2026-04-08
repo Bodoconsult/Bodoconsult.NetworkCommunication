@@ -22,7 +22,7 @@ public class BackendTcpIpServerManager : ISimpleDeviceManager
     private readonly ILogDataFactory _logDataFactory;
     private readonly IAppLoggerProxyFactory _appLoggerFactory;
     private readonly IAppLoggerProxy _appLoggerProxy;
-    private IBusinessTransactionManager _businessTransactionManager;
+    private readonly IBusinessTransactionManager _businessTransactionManager;
 
     /// <summary>
     /// Default ctor

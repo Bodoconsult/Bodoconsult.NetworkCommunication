@@ -6,9 +6,9 @@ using IpBackend.Bll.BusinessLogic.Adapters;
 namespace IpBackend.Bll.BusinessLogic.AdapterFactories;
 
 /// <summary>
-/// Current implementation of <see cref="IDeviceBusinessLogicAdapterFactory"/> delivering <see cref="SdcpIpDeviceUdpBusinessLogicAdapter"/> instances
+/// Current implementation of <see cref="IDeviceBusinessLogicAdapterFactory"/> delivering <see cref="SfxpIpDeviceUdpBusinessLogicAdapter"/> instances
 /// </summary>
-public class SdcpIpDeviceUdpBusinessLogicAdapterFactory : IDeviceBusinessLogicAdapterFactory
+public class SfxpIpDeviceUdpBusinessLogicAdapterFactory : IDeviceBusinessLogicAdapterFactory
 {
     /// <summary>
     /// Create an instance of <see cref="IStateMachineDeviceBusinessLogicAdapter"/> for a certain device
@@ -16,6 +16,6 @@ public class SdcpIpDeviceUdpBusinessLogicAdapterFactory : IDeviceBusinessLogicAd
     /// <param name="device">Current device</param>
     public IDeviceBusinessLogicAdapter CreateInstance(IIpDevice device)
     {
-        return new SdcpIpDeviceUdpBusinessLogicAdapter(device);
+        return new SfxpIpDeviceUdpBusinessLogicAdapter(device);
     }
 }

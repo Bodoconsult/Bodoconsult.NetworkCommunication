@@ -7,14 +7,14 @@ using IpBackend.Bll.BusinessLogic.AdapterFactories;
 namespace IpCommunicationSampleTests.Backend.AdapterFactories;
 
 [TestFixture]
-internal class SdcpIpDeviceUdpBusinessLogicAdapterFactoryTests
+internal class SfxpIpDeviceUdpBusinessLogicAdapterFactoryTests
 {
     [Test]
     public void Ctor_ValidSetup_PropsSetCorrectly()
     {
         // Arrange 
         var device = TestDataHelper.CreateSimpleDevice();
-        var dsm = new SdcpIpDeviceUdpBusinessLogicAdapterFactory();
+        var dsm = new SfxpIpDeviceUdpBusinessLogicAdapterFactory();
 
         // Act  
         var result = dsm.CreateInstance(device);

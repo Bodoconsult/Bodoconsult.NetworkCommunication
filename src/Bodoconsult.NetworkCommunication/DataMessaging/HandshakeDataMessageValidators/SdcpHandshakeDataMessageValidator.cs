@@ -11,7 +11,6 @@ namespace Bodoconsult.NetworkCommunication.DataMessaging.HandshakeDataMessageVal
 /// Implementation of <see cref="IHandshakeDataMessageValidator"/> for SDCP protocol
 /// </summary>
 public class SdcpHandshakeDataMessageValidator : IHandshakeDataMessageValidator
-
 {
     /// <summary>
     /// Is a received message a handshake for a sent message

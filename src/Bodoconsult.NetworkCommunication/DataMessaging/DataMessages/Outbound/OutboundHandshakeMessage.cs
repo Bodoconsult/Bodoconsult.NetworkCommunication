@@ -3,9 +3,9 @@
 namespace Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
 
 /// <summary>
-/// Represents a handshake message
-/// </summary>
-public class OutboundHandshakeMessage : BaseOutboundHandShakeMessage
+    /// Represents a handshake message
+    /// </summary>
+    public class OutboundHandshakeMessage : BaseOutboundHandShakeMessage
 {
     /// <summary>Returns a string that represents the current object.</summary>
     /// <returns>A string that represents the current object.</returns>

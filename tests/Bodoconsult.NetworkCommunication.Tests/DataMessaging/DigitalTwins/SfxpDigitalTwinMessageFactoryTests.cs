@@ -1,7 +1,6 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
 using Bodoconsult.NetworkCommunication.DataMessaging.DigitalTwins;
-using System.Buffers;
 using System.Diagnostics;
 using Bodoconsult.App.Abstractions.Helpers;
 using Bodoconsult.App.Helpers;

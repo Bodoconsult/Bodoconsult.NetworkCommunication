@@ -144,8 +144,6 @@ public class SfxpBackendUdpBusinessLogicAdapter : BaseSimpleDeviceBusinessLogicA
             };
 
             IpDevice.CommunicationAdapter.SendDataMessage(msg);
-
-            Task.Delay(200);
         }
     }
 
@@ -169,8 +167,6 @@ public class SfxpBackendUdpBusinessLogicAdapter : BaseSimpleDeviceBusinessLogicA
             };
 
             IpDevice.CommunicationAdapter.SendDataMessage(msg);
-
-            Task.Delay(200);
         }
     }
 }

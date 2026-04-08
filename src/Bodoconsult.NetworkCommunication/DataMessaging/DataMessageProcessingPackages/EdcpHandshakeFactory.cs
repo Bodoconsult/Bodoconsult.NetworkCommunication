@@ -40,7 +40,7 @@ public class EdcpHandshakeFactory : IDataMessageHandshakeFactory
     /// </summary>
     /// <param name="message">Current message received</param>
     /// <returns>NAK handshake message to send</returns>
-    public IOutboundHandShakeMessage GetNakResponse(IInboundDataMessage message)
+    public IOutboundHandShakeMessage GetNackResponse(IInboundDataMessage message)
     {
         if (message is not EdcpInboundDataMessage em)
         {

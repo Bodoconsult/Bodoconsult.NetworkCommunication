@@ -47,7 +47,7 @@ public class SfxpDataMessageCodec : BaseDataMessageCodec
         {
             ITypedInboundDataBlock? dataBlock;
 
-            var rawBytes = data[..^1].ToArray();
+            var rawBytes = data.Slice(0, 8).ToArray();
 
             if (BitConverter.IsLittleEndian)
             {

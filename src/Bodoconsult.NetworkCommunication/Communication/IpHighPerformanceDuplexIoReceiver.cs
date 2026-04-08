@@ -22,7 +22,7 @@ public class IpHighPerformanceDuplexIoReceiver : BaseDuplexIoReceiver
     /// <summary>
     /// Current validator impl for data messages
     /// </summary>
-    private IDataMessageValidator _dataMessageValidator;
+    private readonly IDataMessageValidator _dataMessageValidator;
 
     /// <summary>
     /// Default ctor
