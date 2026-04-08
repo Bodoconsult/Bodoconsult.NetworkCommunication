@@ -12,7 +12,6 @@ using Bodoconsult.NetworkCommunication.Protocols.TcpIp;
 using Bodoconsult.NetworkCommunication.Tests.Helpers;
 using IpCommunicationSampleTests.App;
 using IpDevice.Bll;
-using IpDevice.Bll.Interfaces;
 
 
 namespace IpCommunicationSampleTests.Device;

@@ -23,7 +23,7 @@ public class DeviceRequestSpec : BaseRequestSpec, IDeviceRequestSpec
     /// The messages to send. These messages are processed all in the same way
     /// defined by the request
     /// </summary>
-    public List<IOutboundDataMessage> SentMessage { get; } = new();
+    public List<IOutboundDataMessage> SentMessage { get; } = [];
 
     /// <summary>
     /// Send a data message to the device

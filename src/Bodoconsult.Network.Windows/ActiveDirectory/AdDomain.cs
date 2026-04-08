@@ -21,8 +21,8 @@ public class AdDomain
     public AdDomain(string path)
     {
         Path = path;
-        DhcpServers = new List<AdComputer>();
-        Computers = new List<AdComputer>();
+        DhcpServers = [];
+        Computers = [];
         GeneralInfos = new Dictionary<string, string>();
         Users = new List<AdUser>();
         Groups = new List<AdGroup>();

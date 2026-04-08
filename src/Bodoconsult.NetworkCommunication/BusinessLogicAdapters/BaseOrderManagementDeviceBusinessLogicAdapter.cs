@@ -3,6 +3,7 @@
 
 // Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
+using Bodoconsult.App.Abstractions.Interfaces;
 using Bodoconsult.NetworkCommunication.Interfaces;
 using Bodoconsult.NetworkCommunication.StateManagement;
 
@@ -21,7 +22,13 @@ public abstract class BaseOrderManagementDeviceBusinessLogicAdapter : IOrderMana
     {
         IpDevice = IpDevice = device;
         Device = device;
+        AppLogger = device.DataMessagingConfig.AppLogger;
     }
+
+    /// <summary>
+    /// Current app logger
+    /// </summary>
+    public IAppLoggerProxy AppLogger { get; }
 
     /// <summary>
     /// Current device

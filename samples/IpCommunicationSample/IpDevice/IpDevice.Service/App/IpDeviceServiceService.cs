@@ -6,6 +6,7 @@ using Bodoconsult.App.Abstractions.Interfaces;
 using Bodoconsult.App.BusinessTransactions.RequestData;
 using Bodoconsult.App.Interfaces;
 using System.Diagnostics;
+using Bodoconsult.NetworkCommunication.Interfaces;
 using IpDevice.Bll.App;
 using IpDevice.Bll.Interfaces;
 

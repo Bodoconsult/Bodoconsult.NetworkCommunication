@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net9.0</TargetFramework>
+    <TargetFramework>net9.0-windows7.0</TargetFramework>
     <LangVersion>latest</LangVersion>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
@@ -9,7 +9,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="coverlet.collector" Version="8.0.0">
+	  <PackageReference Include="Bodoconsult.App" Version="1.0.9" />
+	  <PackageReference Include="Bodoconsult.App.Abstractions" Version="1.0.9" />
+	  <PackageReference Include="coverlet.collector" Version="8.0.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
@@ -26,7 +28,7 @@
   <ItemGroup>
     <Using Include="NUnit.Framework" />
   </ItemGroup>
-
+	
   <ItemGroup>
     <Folder Include="Backend\BusinessLogic\Adap\" />
     <Folder Include="Backend\Configurators\" />
@@ -42,6 +44,7 @@
     <ProjectReference Include="..\..\samples\IpCommunicationSample\IpBackend\IpBackend.Bll\IpBackend.Bll.csproj" />
     <ProjectReference Include="..\..\samples\IpCommunicationSample\IpClient\IpClient.Bll\IpClient.Bll.csproj" />
     <ProjectReference Include="..\..\samples\IpCommunicationSample\IpDevice\IpDevice.Bll\IpDevice.Bll.csproj" />
+    <ProjectReference Include="..\..\samples\IpCommunicationSample\IpDevice\IpDevice.Service\IpDeviceService.csproj" />
     <ProjectReference Include="..\..\src\Bodoconsult.NetworkCommunication\Bodoconsult.NetworkCommunication.csproj" />
     <ProjectReference Include="..\Bodoconsult.NetworkCommunication.Tests\Bodoconsult.NetworkCommunication.Tests.csproj" />
   </ItemGroup>

@@ -28,7 +28,7 @@ public class AdTree
     /// <summary>
     /// All child OUs in the OU
     /// </summary>
-    public List<AdTree> ChildOUs { get; set; } = new();
+    public List<AdTree> ChildOUs { get; set; } = [];
 
     /// <summary>
     /// All users in the OU
@@ -67,9 +67,9 @@ public class AdTree
             FqdnName = domainName
         };
 
-        Users = new List<AdUser>();
-        Groups = new List<AdGroup>();
-        Computers = new List<AdComputer>();
+        Users = [];
+        Groups = [];
+        Computers = [];
 
         RootOu = new DirectoryEntry(dn);
         RootDn = dn;
@@ -96,9 +96,9 @@ public class AdTree
     public AdTree(DirectoryEntry root, AdDomain domain)
     {
         Domain = domain;
-        Users = new List<AdUser>();
-        Groups = new List<AdGroup>();
-        Computers = new List<AdComputer>();
+        Users = [];
+        Groups = [];
+        Computers = [];
 
 
         RootOu = root;

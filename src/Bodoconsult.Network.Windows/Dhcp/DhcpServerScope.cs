@@ -702,7 +702,7 @@ public class DhcpServerScope : IDhcpServerScope
 
         var optionValue = new DhcpServerOptionElementDWord(leaseDurationSeconds);
 
-        DhcpServerOptionValue.SetScopeDefaultOptionValue(server, address, 51, new DhcpServerOptionElement[] { optionValue });
+        DhcpServerOptionValue.SetScopeDefaultOptionValue(server, address, 51, [optionValue]);
     }
 
     private static SubnetInfo GetInfo(DhcpServer server, DhcpServerIpAddress address)

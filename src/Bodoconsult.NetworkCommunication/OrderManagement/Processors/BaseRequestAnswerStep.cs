@@ -34,7 +34,7 @@ public class BaseRequestAnswerStep : IRequestAnswerStep
     /// <summary>
     /// Allowed request answers: one of the items has to be received as answer from tower
     /// </summary>
-    public List<IRequestAnswer> AllowedRequestAnswers { get; } = new();
+    public List<IRequestAnswer> AllowedRequestAnswers { get; } = [];
 
     /// <summary>
     /// The step was successfully processed in all steps

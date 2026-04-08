@@ -15,7 +15,7 @@ namespace Bodoconsult.NetworkCommunication.Communication.Sending;
 public abstract class BaseWaitStateManager : IWaitStateManager
 {
     protected readonly IProducerConsumerQueue<InboundHandshakeMessage> ReceivedHandshakes = new ProducerConsumerQueue<InboundHandshakeMessage>();
-    protected readonly List<SendPacketProcess> WaitStates = new();
+    protected readonly List<SendPacketProcess> WaitStates = [];
 
     private readonly Lock _waitStateLock = new();
 

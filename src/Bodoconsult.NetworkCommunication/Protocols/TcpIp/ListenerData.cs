@@ -23,7 +23,7 @@ public class ListenerData
     /// <summary>
     /// Current consumers
     /// </summary>
-    public List<ClientConnectionAcceptedDelegate> CurrentConsumers { get; } = new();
+    public List<ClientConnectionAcceptedDelegate> CurrentConsumers { get; } = [];
 
     /// <summary>
     /// <see cref="CancellationTokenSource"/> instance used to end the connection accept task

@@ -84,7 +84,7 @@ public class FakeIpCommunicationAdapter : ICommunicationAdapter
     /// <summary>
     /// Expected order execution result
     /// </summary>
-    public List<OrderExecutionResultState> ExpectedExecutionResult { get; } = new();
+    public List<OrderExecutionResultState> ExpectedExecutionResult { get; } = [];
 
     /// <summary>
     /// Send a data message to the device 

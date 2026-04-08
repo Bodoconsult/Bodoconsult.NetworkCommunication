@@ -1,6 +1,6 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
-namespace IpDevice.Bll.Interfaces;
+namespace Bodoconsult.NetworkCommunication.Interfaces;
 
 /// <summary>
 /// IP config of a device

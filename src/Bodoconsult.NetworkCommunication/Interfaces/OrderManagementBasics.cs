@@ -36,10 +36,10 @@ public static class OrderManagementBasics
     /// <summary>
     /// All default order execution result states
     /// </summary>
-    public static List<IOrderState> DefaultOrderStates { get; set; } = new();
+    public static List<IOrderState> DefaultOrderStates { get; set; } = [];
 
     /// <summary>
     /// All default order execution result states
     /// </summary>
-    public static List<IOrderExecutionResultState> DefaultOrderExecutionResultStates { get; set; } = new();
+    public static List<IOrderExecutionResultState> DefaultOrderExecutionResultStates { get; set; } = [];
 }

@@ -126,7 +126,7 @@ public abstract class BaseRequestSpec : IRequestSpec
     /// <summary>
     /// Represents a timeline of request answers
     /// </summary>
-    public List<IRequestAnswerStep> RequestAnswerSteps { get; } = new();
+    public List<IRequestAnswerStep> RequestAnswerSteps { get; } = [];
 
     /// <summary>
     /// The step was successfully processed in all steps

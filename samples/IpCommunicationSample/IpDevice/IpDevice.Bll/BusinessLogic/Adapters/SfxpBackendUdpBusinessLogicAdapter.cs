@@ -2,6 +2,7 @@
 
 using Bodoconsult.App.Abstractions.Interfaces;
 using Bodoconsult.App.BusinessTransactions.Replies;
+using Bodoconsult.App.Helpers;
 using Bodoconsult.NetworkCommunication.BusinessLogicAdapters;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataBlocks;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
@@ -18,6 +19,7 @@ public class SfxpBackendUdpBusinessLogicAdapter : BaseSimpleDeviceBusinessLogicA
 {
     private CancellationTokenSource? _cts;
     private Thread? _workerTask;
+
 
     /// <summary>
     /// Default ctor
@@ -131,7 +133,7 @@ public class SfxpBackendUdpBusinessLogicAdapter : BaseSimpleDeviceBusinessLogicA
 
         var digitalTwin = new SfxpDigitalTwinMessageFactory();
 
-        while (_cts.IsCancellationRequested)
+        while (!_cts.IsCancellationRequested)
         {
             var dataBlock = new BasicOutboundDatablock
             {
@@ -143,8 +145,24 @@ public class SfxpBackendUdpBusinessLogicAdapter : BaseSimpleDeviceBusinessLogicA
                 DataBlock = dataBlock
             };
 
-            IpDevice.CommunicationAdapter.SendDataMessage(msg);
+            SendMessage(msg);
         }
+    }
+
+    private void SendMessage(SfxpOutboundDataMessage msg)
+    {
+        ArgumentNullException.ThrowIfNull(IpDevice.CommunicationAdapter);
+        AsyncHelper.FireAndForget(() =>
+        {
+            try
+            {
+                IpDevice.CommunicationAdapter.SendDataMessage(msg);
+            }
+            catch (Exception e)
+            {
+                AppLogger.LogError($"Send message failed: {msg.ToShortInfoString()}", e);
+            }
+        });
     }
 
     private void RunStreaming()
@@ -154,7 +172,7 @@ public class SfxpBackendUdpBusinessLogicAdapter : BaseSimpleDeviceBusinessLogicA
 
         var digitalTwin = new SfxpDigitalTwinMessageFactory();
 
-        while (_cts.IsCancellationRequested)
+        while (!_cts.IsCancellationRequested)
         {
             var dataBlock = new BasicOutboundDatablock
             {
@@ -166,7 +184,7 @@ public class SfxpBackendUdpBusinessLogicAdapter : BaseSimpleDeviceBusinessLogicA
                 DataBlock = dataBlock
             };
 
-            IpDevice.CommunicationAdapter.SendDataMessage(msg);
+            SendMessage(msg);
         }
     }
 }

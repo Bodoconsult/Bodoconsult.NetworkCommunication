@@ -75,13 +75,13 @@ public class OrderBasedActionStateConfiguration : IOrderBasedActionStateConfigur
     /// <summary>
     /// Parameter sets for the orders to be created for the state. The number of parameter sets must equal the number of <see cref="OrderConfigurations"/>
     /// </summary>
-    public List<IParameterSet> ParameterSets { get; } = new();
+    public List<IParameterSet> ParameterSets { get; } = [];
 
     /// <summary>
     /// All configurations for orders to be executed for the state to be configured. Sort order is important! The first configuration added is executed as first order etc.
     /// The number of <see cref="IOrderBasedActionStateConfiguration.ParameterSets"/> must equal the number of <see cref="IOrderBasedActionStateConfiguration.OrderConfigurations"/>
     /// </summary>
-    public List<string> OrderConfigurations { get; } = new();
+    public List<string> OrderConfigurations { get; } = [];
 
     /// <summary>Creates a new object that is a copy of the current instance.</summary>
     /// <returns>A new object that is a copy of this instance.</returns>

@@ -63,7 +63,7 @@ public abstract class BaseDuplexIo : IDuplexIo
     {
         get
         {
-            if (SocketProxy == null || !SocketProxy.Connected)
+            if (SocketProxy is not { Connected: true })
             {
                 return false;
             }
@@ -79,11 +79,8 @@ public abstract class BaseDuplexIo : IDuplexIo
     /// <param name="message">Current message to send</param>
     public virtual async Task<MessageSendingResult> SendMessage(IOutboundMessage message)
     {
-        if (Sender == null)
-        {
-            throw new ArgumentNullException(nameof(Sender));
-        }
-
+        ArgumentNullException.ThrowIfNull(Sender);
+        
         if (message is IOutboundDataMessage { WaitForAcknowledgement: true } msg)
         {
             // Send and wait for handshake
@@ -106,10 +103,7 @@ public abstract class BaseDuplexIo : IDuplexIo
     /// <param name="message">Current message to send</param>
     public async Task<MessageSendingResult> SendMessageInternal(IOutboundDataMessage message)
     {
-        if (Sender == null)
-        {
-            throw new ArgumentNullException(nameof(Sender));
-        }
+        ArgumentNullException.ThrowIfNull(Sender);
 
         var count = await Sender.SendMessage(message);
         return count == 0 ? new MessageSendingResult(message, OrderExecutionResultState.Unsuccessful) : new MessageSendingResult(message, OrderExecutionResultState.Successful);
@@ -126,7 +120,6 @@ public abstract class BaseDuplexIo : IDuplexIo
         var currentSendPacketProcess = _sendPacketProcessFactory.CreateInstance(this,
             message,
             DataMessagingConfig);
-
 
         // Send the message and wait for ACK
         currentSendPacketProcess.Execute();

@@ -19,6 +19,7 @@ public abstract class BaseUdpDevice :  IUdpDevice
     private bool _isDisposed;
 
     protected bool IsServer;
+    protected string TypeName;
 
     /// <summary>
     /// Current local device listener
@@ -34,6 +35,7 @@ public abstract class BaseUdpDevice :  IUdpDevice
     /// Endpoint for sending
     /// </summary>
     protected IPEndPoint? SendEndPoint;
+
 
     /// <summary>
     /// Default ctor
@@ -52,7 +54,13 @@ public abstract class BaseUdpDevice :  IUdpDevice
         IpAddress = ipAddress;
         Port = port;
         RemotePort = clientPort == 0 ? port : clientPort;
+        TypeName = GetType().Name;
     }
+
+    /// <summary>
+    /// Reply to a received message. Default: false
+    /// </summary>
+    public bool ReplytoReceivedMessage { get; set; }
 
     /// <summary>
     /// IP address of the server
@@ -87,7 +95,7 @@ public abstract class BaseUdpDevice :  IUdpDevice
     /// <summary>
     /// All received messages
     /// </summary>
-    public List<ReadOnlyMemory<byte>> ReceivedMessages { get; } = new();
+    public List<ReadOnlyMemory<byte>> ReceivedMessages { get; } = [];
 
     /// <summary>
     /// Start the client
@@ -117,15 +125,15 @@ public abstract class BaseUdpDevice :  IUdpDevice
             //{
                 var bytes = Listener.Receive(ref ReceiceEndPoint);
 
-                Debug.Print($"{GetType().Name}: received from {ReceiceEndPoint}:");
+                Debug.Print($"{TypeName}: received from {ReceiceEndPoint}:");
                 Debug.Print($" {Encoding.ASCII.GetString(bytes, 0, bytes.Length)}");
 
                 ReceivedMessages.Add(bytes.AsMemory());
 
-                if (!IsServer)
-                {
-                    Send(bytes);
-                }
+            if (!IsServer && ReplytoReceivedMessage)
+            {
+                Send(bytes);
+            }
             //}
             //catch (Exception e)
             //{
@@ -155,11 +163,8 @@ public abstract class BaseUdpDevice :  IUdpDevice
             return;
         }
 
-        Debug.Print(GetType().Name);
-
-
         var result = Listener.Send(data, SendEndPoint);
-        Debug.Print($"{GetType().Name}: sent {result} byte(s)!");
+        Debug.Print($"{TypeName}: sent {result} byte(s)!");
 
     }
 

@@ -58,7 +58,7 @@ public abstract class BaseStateMachineState : IStateMachineState
     /// <summary>
     /// The states allowed to follow the current state
     /// </summary>
-    public List<string> AllowedNextStates { get; } = new();
+    public List<string> AllowedNextStates { get; } = [];
 
     /// <summary>
     /// Current context

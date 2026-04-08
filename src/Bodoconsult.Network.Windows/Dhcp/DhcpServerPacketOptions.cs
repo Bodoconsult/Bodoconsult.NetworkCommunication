@@ -54,7 +54,7 @@ public class DhcpServerPacketOptions : MarshalByRefObject
         get
         {
             if (_options.ParameterRequestListLength == 0 || _options.ParameterRequestList == IntPtr.Zero)
-                return new DhcpServerOptionIds[0];
+                return [];
 
             var list = new DhcpServerOptionIds[(int)_options.ParameterRequestListLength];
 

@@ -3,6 +3,8 @@
 
 // Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
+using Bodoconsult.App.Abstractions.Interfaces;
+
 namespace Bodoconsult.NetworkCommunication.Interfaces;
 
 /// <summary>
@@ -10,6 +12,11 @@ namespace Bodoconsult.NetworkCommunication.Interfaces;
 /// </summary>
 public interface IDeviceBusinessLogicAdapter
 {
+    /// <summary>
+    /// Current app logger
+    /// </summary>
+    public IAppLoggerProxy AppLogger { get; }
+
     /// <summary>
     /// Current device
     /// </summary>

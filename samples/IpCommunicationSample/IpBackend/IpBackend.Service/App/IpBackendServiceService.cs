@@ -7,8 +7,8 @@ using Bodoconsult.App.Abstractions.Interfaces;
 using Bodoconsult.App.BusinessTransactions.Replies;
 using Bodoconsult.App.BusinessTransactions.RequestData;
 using Bodoconsult.App.Interfaces;
+using Bodoconsult.NetworkCommunication.Interfaces;
 using IpBackend.Bll.App;
-using IpBackend.Bll.BusinessLogic;
 using IpBackend.Bll.Interfaces;
 
 namespace IpBackendService.App;

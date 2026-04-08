@@ -18,6 +18,7 @@ public class IpCommunicationHandler : ICommunicationHandler
     private readonly IAppEventSource _appEventSource;
     private IDataMessagingConfig DataMessagingConfig { get; }
     private IWaitStateManager? _waitStateManager;
+    private bool _isInitialized;
 
     /// <summary>
     /// Default ctor
@@ -132,15 +133,21 @@ public class IpCommunicationHandler : ICommunicationHandler
     /// </summary>
     public void Connect()
     {
-        if (IsConnected)
+        if (_isInitialized)
         {
             return;
         }
 
-        // Connect the socket
+        
+        ArgumentNullException.ThrowIfNull(SocketProxy);
+
+        // Connect the socket in sync manner
         AsyncHelper.RunSync(() => SocketProxy?.Connect());
 
+        // Start the communication in sync manner
         AsyncHelper.RunSync(() => DuplexIo.StartCommunication());
+
+        _isInitialized = true;
     }
 
     /// <summary>
@@ -151,6 +158,7 @@ public class IpCommunicationHandler : ICommunicationHandler
         DuplexIo.StopCommunication().Wait(2000);
         SocketProxy?.Close();
         DataMessagingConfig.MonitorLogger.LogDebug($"{DataMessagingConfig.LoggerId}disconnect - Socket has been closed.");
+        _isInitialized = false;
     }
 
     ///// <summary>
@@ -174,12 +182,14 @@ public class IpCommunicationHandler : ICommunicationHandler
     //}
 
     /// <summary>
-    /// Is the tower connected
+    /// Is the device connected
     /// </summary>
     public bool IsConnected => SocketProxy is { Connected: true };
 
+    /// <summary>
+    /// Current socket proxy
+    /// </summary>
     public ISocketProxy? SocketProxy => DuplexIo.DataMessagingConfig.SocketProxy;
-
 
     ///// <summary>
     ///// Read some bytes

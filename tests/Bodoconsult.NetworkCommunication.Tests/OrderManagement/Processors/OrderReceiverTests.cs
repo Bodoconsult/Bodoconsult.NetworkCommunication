@@ -13,7 +13,7 @@ namespace Bodoconsult.NetworkCommunication.Tests.OrderManagement.Processors;
 [TestFixture]
 internal class OrderReceiverTests
 {
-    private readonly List<IInboundDataMessage> _receivedMessage = new();
+    private readonly List<IInboundDataMessage> _receivedMessage = [];
     private readonly IAppLoggerProxy _logger = TestDataHelper.GetFakeAppLoggerProxy();
 
     private bool _wasFired;

@@ -74,13 +74,13 @@ public class JobStateConfiguration : IJobStateConfiguration
     /// <summary>
     /// Parameter sets for the orders to be created for the state. The number of parameter sets must equal the number of <see cref="IOrderBasedActionStateConfiguration.OrderConfigurations"/>
     /// </summary>
-    public List<IParameterSet> ParameterSets { get; } = new();
+    public List<IParameterSet> ParameterSets { get; } = [];
 
     /// <summary>
     /// All configurations for orders to be executed for the state to be configured. Sort order is important! The first configuration added is executed as first order etc.
     /// The number of <see cref="IOrderBasedActionStateConfiguration.ParameterSets"/> must equal the number of <see cref="IOrderBasedActionStateConfiguration.OrderConfigurations"/>
     /// </summary>
-    public List<string> OrderConfigurations { get; } = new();
+    public List<string> OrderConfigurations { get; } = [];
 
     /// <summary>
     /// The UID of a source item like a joblist or a trial run the order is bound to

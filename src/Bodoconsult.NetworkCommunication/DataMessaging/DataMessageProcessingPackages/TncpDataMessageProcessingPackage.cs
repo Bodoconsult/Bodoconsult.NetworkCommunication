@@ -125,7 +125,7 @@ public class TncpDataMessageProcessingPackage : IDataMessageProcessingPackage
     /// <summary>
     /// Current data loggers. May contain zero or more loggers. Each message can be logged only by one logger (or none)
     /// </summary>
-    public List<IInboundDataLogger> DataLoggers { get; } = new();
+    public List<IInboundDataLogger> DataLoggers { get; } = [];
 
     /// <summary>
     /// Current data message sorter instance to use or null

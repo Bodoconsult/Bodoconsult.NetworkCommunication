@@ -20,13 +20,18 @@ internal class SfxpIpDeviceUdpBusinessLogicAdapterFactoryTests
         var result = dsm.CreateInstance(device);
 
         // Assert
-        Assert.That(result.IpDevice, Is.EqualTo(device));
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(result.IpDevice, Is.EqualTo(device));
 
-        Assert.That(result is ISimpleDeviceBusinessLogicAdapter, Is.True);
+            Assert.That(result, Is.InstanceOf<ISimpleDeviceBusinessLogicAdapter>());
 
-        var adapter = result as ISimpleDeviceBusinessLogicAdapter;
+            var adapter = result as ISimpleDeviceBusinessLogicAdapter;
 
-        Assert.That(adapter, Is.Not.Null);
-        Assert.That(adapter.IpDevice, Is.EqualTo(device));
+            Assert.That(adapter, Is.Not.Null);
+
+            ArgumentNullException.ThrowIfNull(adapter);
+            Assert.That(adapter.IpDevice, Is.EqualTo(device));
+        }
     }
 }

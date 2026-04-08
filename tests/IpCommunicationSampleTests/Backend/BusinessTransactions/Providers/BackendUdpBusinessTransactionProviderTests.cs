@@ -18,13 +18,18 @@ internal class BackendUdpBusinessTransactionProviderTests
 
         // Assert.
         var delegates = provider.CreateBusinessTransactionDelegates;
-        Assert.That(delegates, Is.Not.Null);
-        Assert.That(delegates, Has.Count.EqualTo(4));
 
-        foreach (var item in delegates)
+        using (Assert.EnterMultipleScope())
         {
-            var transaction = item.Value.Invoke();
-            Assert.That(item.Key, Is.EqualTo(transaction.Id));
+
+            Assert.That(delegates, Is.Not.Null);
+            Assert.That(delegates, Has.Count.EqualTo(4));
+
+            foreach (var item in delegates)
+            {
+                var transaction = item.Value.Invoke();
+                Assert.That(item.Key, Is.EqualTo(transaction.Id));
+            }
         }
     }
 
@@ -38,14 +43,13 @@ internal class BackendUdpBusinessTransactionProviderTests
         var transaction = provider.Transaction1_StartStreaming();
 
         // Assert
-        Assert.That(transaction, Is.Not.Null);
-
-        Assert.Multiple(() =>
+        using (Assert.EnterMultipleScope())
         {
+            Assert.That(transaction, Is.Not.Null);
             Assert.That(transaction.Id, Is.EqualTo(BackendBusinessTransactionCodes.StartStreaming));
             Assert.That(transaction.RunBusinessTransactionDelegate, Is.Not.Null);
             Assert.That(transaction.AllowedRequestDataTypes, Has.Count.EqualTo(1));
-        });
+        }
     }
 
     [Test]
@@ -58,14 +62,13 @@ internal class BackendUdpBusinessTransactionProviderTests
         var transaction = provider.Transaction2_StopStreaming();
 
         // Assert
-        Assert.That(transaction, Is.Not.Null);
-
-        Assert.Multiple(() =>
+        using (Assert.EnterMultipleScope())
         {
+            Assert.That(transaction, Is.Not.Null);
             Assert.That(transaction.Id, Is.EqualTo(BackendBusinessTransactionCodes.StopStreaming));
             Assert.That(transaction.RunBusinessTransactionDelegate, Is.Not.Null);
             Assert.That(transaction.AllowedRequestDataTypes, Has.Count.EqualTo(1));
-        });
+        }
     }
 
     [Test]
@@ -78,14 +81,13 @@ internal class BackendUdpBusinessTransactionProviderTests
         var transaction = provider.Transaction3_StartSnapshot();
 
         // Assert
-        Assert.That(transaction, Is.Not.Null);
-
-        Assert.Multiple(() =>
+        using (Assert.EnterMultipleScope())
         {
+            Assert.That(transaction, Is.Not.Null);
             Assert.That(transaction.Id, Is.EqualTo(BackendBusinessTransactionCodes.StartSnapshot));
             Assert.That(transaction.RunBusinessTransactionDelegate, Is.Not.Null);
             Assert.That(transaction.AllowedRequestDataTypes, Has.Count.EqualTo(1));
-        });
+        }
     }
 
     [Test]
@@ -98,14 +100,13 @@ internal class BackendUdpBusinessTransactionProviderTests
         var transaction = provider.Transaction4_StopSnapshot();
 
         // Assert
-        Assert.That(transaction, Is.Not.Null);
-
-        Assert.Multiple(() =>
+        using (Assert.EnterMultipleScope())
         {
-            Assert.That(transaction.Id, Is.EqualTo(BackendBusinessTransactionCodes.StopSnapshot));
+            Assert.That(transaction, Is.Not.Null);
+          Assert.That(transaction.Id, Is.EqualTo(BackendBusinessTransactionCodes.StopSnapshot));
             Assert.That(transaction.RunBusinessTransactionDelegate, Is.Not.Null);
             Assert.That(transaction.AllowedRequestDataTypes, Has.Count.EqualTo(1));
-        });
+        }
     }
 
     private static IpDeviceTcpIpBusinessTransactionProvider CreateProvider()
