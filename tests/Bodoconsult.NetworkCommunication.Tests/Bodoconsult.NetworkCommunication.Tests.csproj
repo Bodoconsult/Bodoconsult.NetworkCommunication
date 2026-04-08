@@ -23,7 +23,16 @@
   <ItemGroup>
     <None Remove="appsettings.json" />
     <None Remove="log4net.config" />
-    <None Remove="Resources\msg.bin" />
+    <None Remove="Resources\sfx0.bin" />
+    <None Remove="Resources\sfx1.bin" />
+    <None Remove="Resources\sfx2.bin" />
+    <None Remove="Resources\sfx3.bin" />
+    <None Remove="Resources\sfx4.bin" />
+    <None Remove="Resources\sfx5.bin" />
+    <None Remove="Resources\sfx6.bin" />
+    <None Remove="Resources\sfx7.bin" />
+    <None Remove="Resources\sfx8.bin" />
+    <None Remove="Resources\sfx9.bin" />
   </ItemGroup>
 
   <ItemGroup>
@@ -33,6 +42,19 @@
     <Content Include="log4net.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\sfx0.bin" />
+    <EmbeddedResource Include="Resources\sfx1.bin" />
+    <EmbeddedResource Include="Resources\sfx2.bin" />
+    <EmbeddedResource Include="Resources\sfx3.bin" />
+    <EmbeddedResource Include="Resources\sfx4.bin" />
+    <EmbeddedResource Include="Resources\sfx5.bin" />
+    <EmbeddedResource Include="Resources\sfx6.bin" />
+    <EmbeddedResource Include="Resources\sfx7.bin" />
+    <EmbeddedResource Include="Resources\sfx8.bin" />
+    <EmbeddedResource Include="Resources\sfx9.bin" />
   </ItemGroup>
 
   <ItemGroup>
@@ -63,10 +85,6 @@
   <ItemGroup>
     <Folder Include="DataMessaging\NewFolder1\" />
     <Folder Include="StateManagement\NewFolder\" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <EmbeddedResource Include="Resources\msg.bin" />
   </ItemGroup>
 
 </Project>

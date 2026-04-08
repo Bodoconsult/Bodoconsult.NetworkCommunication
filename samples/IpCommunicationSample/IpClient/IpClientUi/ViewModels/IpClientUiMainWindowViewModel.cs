@@ -4,7 +4,6 @@ using System.Reactive;
 using System.Reactive.Linq;
 using Avalonia.Controls;
 using Bodoconsult.App.Abstractions.Interfaces;
-using Bodoconsult.App.ReactiveUI.Extensions;
 using Bodoconsult.App.ReactiveUI.Interfaces;
 using Bodoconsult.App.ReactiveUI.Menus;
 using Bodoconsult.App.ReactiveUI.Ui;

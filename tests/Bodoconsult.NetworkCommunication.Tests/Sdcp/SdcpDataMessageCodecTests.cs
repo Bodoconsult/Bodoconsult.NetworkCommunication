@@ -29,7 +29,8 @@ internal class SdcpDataMessageCodecTests
     public void DecodeDataMessage_ValidInput_MessageDecoded()
     {
         // Arrange 
-        var msg = new byte[] { 0x2, 0x31, 0x4, 0x6c, 0x75, 0x62, 0x62, 0x3, 0x2, 0x2, 0x4, 0x6b, 0x75, 0x62, 0x62, 0x3 };
+        var msg = new byte[]
+            { 0x2, 0x31, 0x4, 0x6c, 0x75, 0x62, 0x62, 0x3, 0x2, 0x2, 0x4, 0x6b, 0x75, 0x62, 0x62, 0x3 };
 
         IDataBlockCodingProcessor dataBlockCodingProcessor = new DefaultDataBlockCodingProcessor();
         var codec = new SdcpDataMessageCodec(dataBlockCodingProcessor);
@@ -38,8 +39,11 @@ internal class SdcpDataMessageCodecTests
         var result = codec.DecodeDataMessage(msg);
 
         // Assert
-        Assert.That(result, Is.Not.Null);
-        Assert.That(result.ErrorCode, Is.Zero);
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(result, Is.Not.Null);
+            Assert.That(result.ErrorCode, Is.Zero);
+        }
     }
 
     [Test]
@@ -55,9 +59,12 @@ internal class SdcpDataMessageCodecTests
         var result = codec.DecodeDataMessage(msg);
 
         // Assert
-        Assert.That(result, Is.Not.Null);
-        Assert.That(result.ErrorCode, Is.Not.Zero);
-        Assert.That(result.DataMessage, Is.Null);
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(result, Is.Not.Null);
+            Assert.That(result.ErrorCode, Is.Not.Zero);
+            Assert.That(result.DataMessage, Is.Null);
+        }
     }
 
     [Test]
@@ -87,13 +94,17 @@ internal class SdcpDataMessageCodecTests
         var result = codec.EncodeDataMessage(msg);
 
         // Assert
-        Assert.That(result, Is.Not.Null);
-        Assert.That(result.ErrorCode, Is.Zero);
-        Assert.That(msg.RawMessageData.Length, Is.Not.Zero);
-        Assert.That(msg.RawMessageData.Length, Is.EqualTo(data.Length + 3));
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(result, Is.Not.Null);
+            Assert.That(result.ErrorCode, Is.Zero);
+            Assert.That(msg.RawMessageData.Length, Is.Not.Zero);
+            Assert.That(msg.RawMessageData.Length, Is.EqualTo(data.Length + 3));
 
-        Assert.That(msg.RawMessageData.Span[0], Is.EqualTo(DeviceCommunicationBasics.Stx));
-        Assert.That(msg.RawMessageData.Span[msg.RawMessageData.Length - 1], Is.EqualTo(DeviceCommunicationBasics.Etx));
+            Assert.That(msg.RawMessageData.Span[0], Is.EqualTo(DeviceCommunicationBasics.Stx));
+            Assert.That(msg.RawMessageData.Span[msg.RawMessageData.Length - 1],
+                Is.EqualTo(DeviceCommunicationBasics.Etx));
+        }
     }
 
     [Test]
@@ -112,9 +123,11 @@ internal class SdcpDataMessageCodecTests
         var result = codec.EncodeDataMessage(msg);
 
         // Assert
-        Assert.That(result, Is.Not.Null);
-        Assert.That(result.ErrorCode, Is.Not.Zero);
-        Assert.That(msg.RawMessageData.Length, Is.Zero);
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(result, Is.Not.Null);
+            Assert.That(result.ErrorCode, Is.Not.Zero);
+            Assert.That(msg.RawMessageData.Length, Is.Zero);
+        }
     }
-
 }

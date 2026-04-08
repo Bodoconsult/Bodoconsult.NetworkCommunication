@@ -3,7 +3,6 @@
 using Bodoconsult.App.Abstractions.Interfaces;
 using Bodoconsult.App.BusinessTransactions.Replies;
 using Bodoconsult.App.Helpers;
-using Bodoconsult.App.Interfaces;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
 using Bodoconsult.NetworkCommunication.Interfaces;
 using System.Text;
@@ -96,7 +95,7 @@ public abstract class BaseBtReplyToOutboundDataMessageConverter : IBtReplyToOutb
     }
 
     /// <summary>
-    /// Create NO outvound message for <see cref="DoNotSendBusinessTransactionReply"/>
+    /// Create NO outbound message for <see cref="DoNotSendBusinessTransactionReply"/>
     /// </summary>
     /// <param name="reply"><see cref="DoNotSendBusinessTransactionReply"/> instance</param>
     /// <returns>DoNotSendBusinessTransactionReply</returns>

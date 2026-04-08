@@ -1,12 +1,6 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
-using Bodoconsult.App.Abstractions.Helpers;
-using System;
 using System.Buffers;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Bodoconsult.App.Abstractions.Extensions;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessageSplitters;
 

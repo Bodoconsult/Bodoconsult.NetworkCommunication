@@ -72,7 +72,7 @@ public class BackendUdpServerManager : ISimpleDeviceManager
 
         configurator.CreateMessagingConfig("IPDevice_UDP", ipAddress, port, messageProcessingPackageFactory);
 
-        IDeviceBusinessLogicAdapterFactory businessLogicAdapterFactory = new SdcpBackendUdpBusinessLogicAdapterFactory();
+        IDeviceBusinessLogicAdapterFactory businessLogicAdapterFactory = new SfxpBackendUdpBusinessLogicAdapterFactory();
         configurator.CreateDevice(businessLogicAdapterFactory);
 
         var device = configurator.GetDevice();

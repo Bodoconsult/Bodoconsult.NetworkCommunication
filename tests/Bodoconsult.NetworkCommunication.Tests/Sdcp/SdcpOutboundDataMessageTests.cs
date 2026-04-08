@@ -7,7 +7,6 @@ namespace Bodoconsult.NetworkCommunication.Tests.Sdcp;
 [TestFixture]
 internal class SdcpOutboundDataMessageTests
 {
-
     [Test]
     public void Ctor_ValidSetup_PropsSetCorrectly()
     {
@@ -17,8 +16,11 @@ internal class SdcpOutboundDataMessageTests
         var msg = new SdcpOutboundDataMessage();
 
         // Assert
-        Assert.That(msg.MessageId, Is.Not.Zero);
-        Assert.That(string.IsNullOrEmpty(msg.ToInfoString()), Is.False);
-        Assert.That(string.IsNullOrEmpty(msg.ToShortInfoString()), Is.False);
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(msg.MessageId, Is.Not.Zero);
+            Assert.That(string.IsNullOrEmpty(msg.ToInfoString()), Is.False);
+            Assert.That(string.IsNullOrEmpty(msg.ToShortInfoString()), Is.False);
+        }
     }
 }

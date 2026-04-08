@@ -7,7 +7,6 @@ using Bodoconsult.NetworkCommunication.Interfaces;
 using IpDevice.Bll.BusinessTransactions.Providers;
 using IpDevice.Bll.Communication;
 using IpDevice.Bll.Interfaces;
-using Newtonsoft.Json.Linq;
 
 namespace IpDevice.Bll;
 

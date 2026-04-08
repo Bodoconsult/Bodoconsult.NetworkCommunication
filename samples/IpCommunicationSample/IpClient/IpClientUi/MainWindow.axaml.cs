@@ -1,10 +1,8 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH.  All rights reserved.
 
-using System.Reactive;
 using System.Reactive.Disposables;
 using System.Reactive.Disposables.Fluent;
 using System.Reactive.Linq;
-using Avalonia.Controls;
 using Bodoconsult.App.Avalonia.ReactiveUI.Converters;
 using Bodoconsult.App.Avalonia.ReactiveUI.Menus;
 using Bodoconsult.App.Avalonia.ReactiveUI.Regions;

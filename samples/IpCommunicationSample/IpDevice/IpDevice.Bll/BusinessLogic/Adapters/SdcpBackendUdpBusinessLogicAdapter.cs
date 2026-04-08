@@ -1,11 +1,11 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
-using System.Text;
 using Bodoconsult.App.Abstractions.Interfaces;
 using Bodoconsult.App.BusinessTransactions.Replies;
 using Bodoconsult.NetworkCommunication.BusinessLogicAdapters;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataBlocks;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
+using Bodoconsult.NetworkCommunication.DataMessaging.DigitalTwins;
 using Bodoconsult.NetworkCommunication.Interfaces;
 using IpDevice.Bll.Interfaces;
 
@@ -14,19 +14,17 @@ namespace IpDevice.Bll.BusinessLogic.Adapters;
 /// <summary>
 /// Current adapter for UPD data channel from backend to IP device
 /// </summary>
-public class SdcpBackendUdpBusinessLogicAdapter : BaseSimpleDeviceBusinessLogicAdapter, IBackendUdpBusinessLogicAdapter
+public class SfxpBackendUdpBusinessLogicAdapter : BaseSimpleDeviceBusinessLogicAdapter, IBackendUdpBusinessLogicAdapter
 {
     private CancellationTokenSource? _cts;
-
     private Thread? _workerTask;
 
     /// <summary>
     /// Default ctor
     /// </summary>
     /// <param name="device">Current device</param>
-    public SdcpBackendUdpBusinessLogicAdapter(IIpDevice device) : base(device)
-    {
-    }
+    public SfxpBackendUdpBusinessLogicAdapter(IIpDevice device) : base(device)
+    { }
 
     /// <summary>
     /// Start the UDP channel
@@ -130,14 +128,17 @@ public class SdcpBackendUdpBusinessLogicAdapter : BaseSimpleDeviceBusinessLogicA
         ArgumentNullException.ThrowIfNull(IpDevice.CommunicationAdapter);
         ArgumentNullException.ThrowIfNull(_cts);
 
+
+        var digitalTwin = new SfxpDigitalTwinMessageFactory();
+
         while (_cts.IsCancellationRequested)
         {
             var dataBlock = new BasicOutboundDatablock
             {
-                Data = Encoding.UTF8.GetBytes($"SampleUdpData Snapshot {DateTime.Now.Ticks}")
+                Data = digitalTwin.GenerateNextMessage()
             };
 
-            var msg = new SdcpOutboundDataMessage
+            var msg = new SfxpOutboundDataMessage
             {
                 DataBlock = dataBlock
             };
@@ -153,14 +154,16 @@ public class SdcpBackendUdpBusinessLogicAdapter : BaseSimpleDeviceBusinessLogicA
         ArgumentNullException.ThrowIfNull(IpDevice.CommunicationAdapter);
         ArgumentNullException.ThrowIfNull(_cts);
 
+        var digitalTwin = new SfxpDigitalTwinMessageFactory();
+
         while (_cts.IsCancellationRequested)
         {
             var dataBlock = new BasicOutboundDatablock
             {
-                Data = Encoding.UTF8.GetBytes($"SampleUdpData Streaming {DateTime.Now.Ticks}")
+                Data = digitalTwin.GenerateNextMessage()
             };
 
-            var msg = new SdcpOutboundDataMessage
+            var msg = new SfxpOutboundDataMessage
             {
                 DataBlock = dataBlock
             };

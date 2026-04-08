@@ -3,14 +3,9 @@
 using Bodoconsult.App;
 using Bodoconsult.App.Abstractions.Delegates;
 using Bodoconsult.App.Abstractions.Interfaces;
-using Bodoconsult.App.BusinessTransactions;
-using Bodoconsult.App.BusinessTransactions.Replies;
 using Bodoconsult.App.BusinessTransactions.RequestData;
-using Bodoconsult.App.Helpers;
 using Bodoconsult.App.Interfaces;
-using Bodoconsult.App.Logging;
 using System.Diagnostics;
-using IpDevice.Bll;
 using IpDevice.Bll.App;
 using IpDevice.Bll.Interfaces;
 

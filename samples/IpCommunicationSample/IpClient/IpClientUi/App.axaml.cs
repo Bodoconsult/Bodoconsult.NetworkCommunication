@@ -8,7 +8,6 @@ using Bodoconsult.App.Extensions;
 using Bodoconsult.App.Helpers;
 using Bodoconsult.App.ReactiveUI.Interfaces;
 using IpClient.Bll.App;
-using IpClientUi.AppData;
 
 namespace IpClientUi;
 

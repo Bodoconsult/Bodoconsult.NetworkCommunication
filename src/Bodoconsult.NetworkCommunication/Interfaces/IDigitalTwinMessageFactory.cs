@@ -10,8 +10,20 @@ namespace Bodoconsult.NetworkCommunication.Interfaces;
 public interface IDigitalTwinMessageFactory
 {
     /// <summary>
-    /// Generate messages
+    /// The number of messages created
+    /// </summary>
+    int NumberOfMessagesCreated { get; set; }
+
+    /// <summary>
+    /// Generate a set of messages as defined with <see cref="NumberOfMessagesCreated"/>
     /// </summary>
     /// <returns>List with messages to send</returns>
-    List<ReadOnlySequence<byte>> GenerateMessages();
+    List<Memory<byte>> GenerateMessages();
+
+    /// <summary>
+    /// Generate the next message in endless mode
+    /// </summary>
+    /// <returns>Message to send</returns>
+    Memory<byte> GenerateNextMessage();
+
 }

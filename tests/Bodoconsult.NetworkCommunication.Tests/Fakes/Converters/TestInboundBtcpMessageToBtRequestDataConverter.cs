@@ -2,7 +2,6 @@
 
 using Bodoconsult.App.Abstractions.Interfaces;
 using Bodoconsult.App.BusinessTransactions.RequestData;
-using Bodoconsult.App.Interfaces;
 using Bodoconsult.NetworkCommunication.BusinessTransactions.Converters;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
 

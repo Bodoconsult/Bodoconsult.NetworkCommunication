@@ -1,13 +1,8 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
 using Bodoconsult.NetworkCommunication.DataMessaging.DigitalTwins;
-using System;
 using System.Buffers;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Bodoconsult.App.Abstractions.Helpers;
 using Bodoconsult.App.Helpers;
 
@@ -42,7 +37,7 @@ namespace Bodoconsult.NetworkCommunication.Tests.DataMessaging.DigitalTwins
         public void Test()
         {
             // Arrange 
-            var data = ResourceHelper.GetByteResource("Bodoconsult.NetworkCommunication.Tests.Resources.msg.bin");
+            var data = ResourceHelper.GetByteResource("Bodoconsult.NetworkCommunication.Tests.Resources.sfx0.bin");
 
             // Act  
             for (var i = 0; i < data.Length; i++)

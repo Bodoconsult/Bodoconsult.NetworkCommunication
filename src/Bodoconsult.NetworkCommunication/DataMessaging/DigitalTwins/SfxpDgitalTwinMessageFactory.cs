@@ -1,42 +1,19 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
-using Bodoconsult.NetworkCommunication.Delegates;
 using Bodoconsult.NetworkCommunication.Interfaces;
-using System;
 using System.Buffers;
-using System.Collections;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Bodoconsult.NetworkCommunication.DataMessaging.DigitalTwins
 {
-    /// <summary>
-    /// Definition for sync bytes and sync byte blocks
-    /// </summary>
-    public struct SyncByteDefinition
-    {
-        /// <summary>
-        /// First byte of the sync byte
-        /// </summary>
-        public byte SyncByte { get; set; }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public int Length { get; set; }
-    }
-
     public class SfxpDigitalTwinMessageFactory : IDigitalTwinMessageFactory
     {
-        private long _messageId = 0;
+        private long _messageId;
         private int _lastChunkId;
         private int _syncByteCounter;
         private int _lastSampleCounter;
+
+        private readonly bool _islittleEndian = BitConverter.IsLittleEndian;
 
         /// <summary>
         ///  The regular sync byte definition
@@ -48,7 +25,7 @@ namespace Bodoconsult.NetworkCommunication.DataMessaging.DigitalTwins
         };
 
         /// <summary>
-        /// The rsync byte block definition for the samplecounters
+        /// The sync byte block definition for the samplecounters
         /// </summary>
         public SyncByteDefinition SampleCounterSyncByteBlock { get; set; } = new()
         {
@@ -77,34 +54,42 @@ namespace Bodoconsult.NetworkCommunication.DataMessaging.DigitalTwins
         public int NumberOfChunksBeforeSyncByteIsSent { get; set; } = 253;
 
         /// <summary>
-        /// The numebr of messages created
+        /// The number of messages created
         /// </summary>
         public int NumberOfMessagesCreated { get; set; } = 10;
 
 
-        public List<ReadOnlySequence<byte>> GenerateMessages()
+        /// <summary>
+        /// Generate a set of messages as defined with <see cref="NumberOfMessagesCreated"/>
+        /// </summary>
+        /// <returns>List with messages to send</returns>
+        public List<Memory<byte>> GenerateMessages()
         {
-            var result = new List<ReadOnlySequence<byte>>();
+            var result = new List<Memory<byte>>();
 
             for (var i = 0; i < NumberOfMessagesCreated; i++)
             {
-                CreateMessage(i, result);
+                result.Add(CreateMessage());
             }
 
             return result;
         }
 
-        private void CreateMessage(int i, List<ReadOnlySequence<byte>> result)
+        /// <summary>
+        /// Generate the next message in endless mode
+        /// </summary>
+        /// <returns>Message to send</returns>
+        public Memory<byte> GenerateNextMessage()
+        {
+            return CreateMessage();
+        }
+
+        private Memory<byte> CreateMessage()
         {
             var data = new List<byte>();
 
             // MessageId (as big endian)
-            var islittleEndian = BitConverter.IsLittleEndian;
-            var intBytes = BitConverter.GetBytes(_messageId);
-            if (!islittleEndian)
-            {
-                Array.Reverse(intBytes);
-            }
+            var intBytes = GetMessageIdAsBytes();
 
             data.AddRange(intBytes);
 
@@ -113,45 +98,10 @@ namespace Bodoconsult.NetworkCommunication.DataMessaging.DigitalTwins
                 // Add sync byte
                 if (_lastChunkId == 0)
                 {
-                    SyncByteDefinition sd;
-                    byte[] syncBytes;
-
-                    var test = _lastSampleCounter % SendSampleCounterInterval;
-                    if (_syncByteCounter >= SendSampleCounterInterval && (_syncByteCounter % SendSampleCounterInterval < 0.0001))
-                    {
-                        Debug.Print($"1dS: {_syncByteCounter} // {_lastSampleCounter}");
-                        // Send sample counter
-                        sd = RegularSyncByte;
-                        syncBytes = [sd.SyncByte, 0x1, 0x1, sd.SyncByte, 0x1, 0x1, sd.SyncByte, 0x1, 0x1, sd.SyncByte, 0x1, 0x1];
-                        _lastSampleCounter = _syncByteCounter;
-                    }
-                    else
-                    {
-                        // repeat the sample counter
-                        if (_syncByteCounter > SendSampleCounterInterval && _lastSampleCounter + 1 == _syncByteCounter)
-                        {
-                            Debug.Print($"2dS: {_syncByteCounter} // {_lastSampleCounter}");
-                            sd = RegularSyncByte;
-                            syncBytes = [sd.SyncByte, 0x1, 0x1, sd.SyncByte, 0x1, 0x1, sd.SyncByte, 0x1, 0x1, sd.SyncByte, 0x1, 0x1];
-                        }
-                        else
-                        {
-                            Debug.Print($"N: {_syncByteCounter} // {_lastSampleCounter}");
-                            // Normal sync byte
-                            sd = SampleCounterSyncByteBlock;
-                            syncBytes = [sd.SyncByte];
-                        }
-
-                    }
-
-                    if (data.Count > MaximumMessageLength - sd.Length)
+                    if (AddSyncByte(data))
                     {
                         break;
                     }
-
-                    data.AddRange(syncBytes);
-
-                    _syncByteCounter++;
                 }
 
                 if (data.Count == MaximumMessageLength - 1)
@@ -159,38 +109,124 @@ namespace Bodoconsult.NetworkCommunication.DataMessaging.DigitalTwins
                     break;
                 }
 
-                // Create chunks
-                for (var j = _lastChunkId; j < NumberOfChunksBeforeSyncByteIsSent; j++)
-                {
-                    // Add chunk if possible
-                    var chunk = GenerateChunk(j);
-
-                    // Resulting message is too long: leave here but remember chunk ID
-                    if (data.Count + chunk.Count >= MaximumMessageLength)
-                    {
-                        _lastChunkId = j;
-                        break;
-                    }
-
-                    data.AddRange(chunk);
-                }
-
-                _lastChunkId = 0;
+                CreateChunks(data);
             }
 
-            _messageId++;
+            SetNextMessageId();
 
-            result.Add(new ReadOnlySequence<byte>(data.ToArray()));
+            return new Memory<byte>(data.ToArray());
         }
 
-        private List<byte> GenerateChunk(int j)
+        private void CreateChunks(List<byte> data)
         {
-            var result = new List<byte>();
-            j += 10;
+            // Create chunks
+            for (var j = _lastChunkId; j < NumberOfChunksBeforeSyncByteIsSent; j++)
+            {
+                // Add chunk if possible
+                var chunk = GenerateChunk(j);
+
+                // Resulting message is too long: leave here but remember chunk ID
+                if (data.Count + chunk.Count >= MaximumMessageLength)
+                {
+                    _lastChunkId = j;
+                    break;
+                }
+
+                data.AddRange(chunk);
+            }
+
+            _lastChunkId = 0;
+        }
+
+        /// <summary>
+        /// Add the sync bytes
+        /// </summary>
+        /// <param name="data">Message</param>
+        /// <returns>True if no sync byte could be added because of the length of the message else false</returns>
+        private bool AddSyncByte(List<byte> data)
+        {
+            SyncByteDefinition sd;
+            byte[] syncBytes;
+
+            //var test = _lastSampleCounter % SendSampleCounterInterval;
+            if (_syncByteCounter >= SendSampleCounterInterval && _syncByteCounter % SendSampleCounterInterval < 0.0001)
+            {
+                Debug.Print($"1dS: {_syncByteCounter} // {_lastSampleCounter}");
+                // Send sample counter
+                sd = RegularSyncByte;
+                syncBytes = [sd.SyncByte, 0x1, 0x1, sd.SyncByte, 0x1, 0x1, sd.SyncByte, 0x1, 0x1, sd.SyncByte, 0x1, 0x1];
+                _lastSampleCounter = _syncByteCounter;
+            }
+            else
+            {
+                // repeat the sample counter
+                if (_syncByteCounter > SendSampleCounterInterval && _lastSampleCounter + 1 == _syncByteCounter)
+                {
+                    Debug.Print($"2dS: {_syncByteCounter} // {_lastSampleCounter}");
+                    sd = RegularSyncByte;
+                    syncBytes = [sd.SyncByte, 0x1, 0x1, sd.SyncByte, 0x1, 0x1, sd.SyncByte, 0x1, 0x1, sd.SyncByte, 0x1, 0x1];
+                }
+                else
+                {
+                    Debug.Print($"N: {_syncByteCounter} // {_lastSampleCounter}");
+                    // Normal sync byte
+                    sd = SampleCounterSyncByteBlock;
+                    syncBytes = [sd.SyncByte];
+                }
+            }
+
+            if (data.Count > MaximumMessageLength - sd.Length)
+            {
+                return true;
+            }
+
+            data.AddRange(syncBytes);
+
+            _syncByteCounter++;
+            return false;
+        }
+
+        /// <summary>
+        /// Set the next message ID. If long.MaxValue is reached restart with 0
+        /// </summary>
+        private void SetNextMessageId()
+        {
+            if (_messageId == long.MaxValue)
+            {
+                _messageId = 0;
+            }
+            else
+            {
+                _messageId++;
+            }
+        }
+
+        /// <summary>
+        /// MessageId (as big endian)
+        /// </summary>
+        /// <returns></returns>
+        private byte[] GetMessageIdAsBytes()
+        {
+            var intBytes = BitConverter.GetBytes(_messageId);
+            if (!_islittleEndian)
+            {
+                Array.Reverse(intBytes);
+            }
+            return intBytes;
+        }
+
+        /// <summary>
+        /// Generate a data chunk
+        /// </summary>
+        /// <param name="index">Index of the data chunk</param>
+        /// <returns></returns>
+        private List<byte> GenerateChunk(int index)
+        {
+            var result = new List<byte>(); index += 10;    // Add 10 to avoid issue with 0x9 sync byte
 
             for (var i = 0; i < DataChunkLength; i++)
             {
-                result.Add((byte)j);
+                result.Add((byte)index);
             }
 
             return result;

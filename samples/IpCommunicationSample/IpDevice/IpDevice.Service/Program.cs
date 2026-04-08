@@ -5,7 +5,6 @@ using Bodoconsult.App.Abstractions.Interfaces;
 using Bodoconsult.App.Extensions;
 using Bodoconsult.App.Helpers;
 using IpDevice.Bll.App;
-using IpDeviceService.App;
 
 namespace IpDeviceService;
 
