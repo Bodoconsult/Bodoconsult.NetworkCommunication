@@ -26,11 +26,6 @@ public interface ISocketProxy: IDisposable
     int Port { get; set; }
 
     /// <summary>
-    /// Port the remote device listens on or 0 (then the same port as for the current device is used)
-    /// </summary>
-    int RemotePort { get; set; }
-
-    /// <summary>
     /// Is the instance already dispossed
     /// </summary>
     bool IsDisposed  { get;  }

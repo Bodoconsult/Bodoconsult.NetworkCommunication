@@ -235,8 +235,6 @@ public class StateMachineOrderProcessor : BaseOrderProcessor
             return false;
         }
 
-        string msg;
-
         //if (receivedMessage is not IInboundDataMessage rm)
         //{
         //    msg = $"received {receivedMessage.ToInfoString()} {OrderPipeline.CurrentOrderState}";
@@ -255,7 +253,7 @@ public class StateMachineOrderProcessor : BaseOrderProcessor
             return true;
         }
 
-        msg = $"received {receivedMessage.ToInfoString()} {OrderPipeline.CurrentOrderState}";
+        var msg = $"received {receivedMessage.ToInfoString()} {OrderPipeline.CurrentOrderState}";
         LogInformation(msg);
 
         //*********************

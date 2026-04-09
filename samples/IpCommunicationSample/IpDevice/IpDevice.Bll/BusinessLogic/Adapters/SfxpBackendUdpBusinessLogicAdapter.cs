@@ -152,17 +152,18 @@ public class SfxpBackendUdpBusinessLogicAdapter : BaseSimpleDeviceBusinessLogicA
     private void SendMessage(SfxpOutboundDataMessage msg)
     {
         ArgumentNullException.ThrowIfNull(IpDevice.CommunicationAdapter);
-        AsyncHelper.FireAndForget(() =>
-        {
-            try
-            {
-                IpDevice.CommunicationAdapter.SendDataMessage(msg);
-            }
-            catch (Exception e)
-            {
-                AppLogger.LogError($"Send message failed: {msg.ToShortInfoString()}", e);
-            }
-        });
+        IpDevice.CommunicationAdapter.SendDataMessage(msg);
+        //AsyncHelper.FireAndForget(() =>
+        //{
+        //    try
+        //    {
+        //        IpDevice.CommunicationAdapter.SendDataMessage(msg);
+        //    }
+        //    catch (Exception e)
+        //    {
+        //        AppLogger.LogError($"Send message failed: {msg.ToShortInfoString()}", e);
+        //    }
+        //});
     }
 
     private void RunStreaming()
@@ -171,6 +172,8 @@ public class SfxpBackendUdpBusinessLogicAdapter : BaseSimpleDeviceBusinessLogicA
         ArgumentNullException.ThrowIfNull(_cts);
 
         var digitalTwin = new SfxpDigitalTwinMessageFactory();
+
+        long id = 0;
 
         while (!_cts.IsCancellationRequested)
         {
@@ -181,10 +184,20 @@ public class SfxpBackendUdpBusinessLogicAdapter : BaseSimpleDeviceBusinessLogicA
 
             var msg = new SfxpOutboundDataMessage
             {
-                DataBlock = dataBlock
+                DataBlock = dataBlock,
+                OriginalMessageId = id
             };
 
             SendMessage(msg);
+
+            if (id == long.MaxValue)
+            {
+                id = 0;
+            }
+            else
+            {
+                id++;
+            }
         }
     }
 }

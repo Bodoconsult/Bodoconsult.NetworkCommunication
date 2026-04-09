@@ -41,7 +41,7 @@ namespace IpCommunicationSampleTests.Backend.RealWorld
 
         //private void StartUdpClient()
         //{
-        //    RemoteUdpDevice = new UdpTestUniCastClient(IPAddress.Parse(_startParams.IpAddress), _startParams.Port, _startParams.Port + 1);
+        //    RemoteUdpDevice = new UdpTestUniCastClient(IPAddress.Parse(_startParams.IpAddress), _startParams.Port);
         //    RemoteUdpDevice.Start();
 
         //    //_cts = new CancellationTokenSource();

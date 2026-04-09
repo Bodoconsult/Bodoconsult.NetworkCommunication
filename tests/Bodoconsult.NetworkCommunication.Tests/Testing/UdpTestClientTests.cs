@@ -9,7 +9,6 @@ namespace Bodoconsult.NetworkCommunication.Tests.Testing;
 [TestFixture]
 internal class UdpTestUniCastServerTests
 {
-
     [Test]
     public void SendReceive_ValidSetup_MessageReceived()
     {
@@ -17,13 +16,12 @@ internal class UdpTestUniCastServerTests
         var data = new byte[] { 0x0, 0x1, 0x2 };
 
         var ip = IPAddress.Parse("127.0.0.1");
-        const int port = 65000;
-        const int clientPort = 65001;
+        const int port = 33000;
 
-        var client = new UdpTestUniCastClient(ip, port, clientPort);
+        var client = new UdpTestUniCastClient(ip, port);
         client.Start();
 
-        var server = new UdpTestUniCastServer(ip, port, clientPort);
+        var server = new UdpTestUniCastServer(ip, port);
         server.Start();
 
         // Act  
@@ -36,13 +34,16 @@ internal class UdpTestUniCastServerTests
 
         var msg = client.ReceivedMessages[0];
 
-        Assert.That(msg.Length, Is.EqualTo(data.Length));
-        Assert.That(msg.Span[0], Is.EqualTo(data[0]));
-        Assert.That(msg.Span[1], Is.EqualTo(data[1]));
-        Assert.That(msg.Span[2], Is.EqualTo(data[2]));
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(msg.Length, Is.EqualTo(data.Length));
+            Assert.That(msg.Span[0], Is.EqualTo(data[0]));
+            Assert.That(msg.Span[1], Is.EqualTo(data[1]));
+            Assert.That(msg.Span[2], Is.EqualTo(data[2]));
 
-        server.Dispose();
-        client.Dispose();
+            server.Dispose();
+            client.Dispose();
+        }
     }
 
 }

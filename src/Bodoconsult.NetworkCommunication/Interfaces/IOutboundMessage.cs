@@ -1,5 +1,7 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
+using Bodoconsult.NetworkCommunication.Delegates;
+
 namespace Bodoconsult.NetworkCommunication.Interfaces;
 
 /// <summary>
@@ -21,6 +23,11 @@ public interface IOutboundMessage
     /// Current raw message data as clear text
     /// </summary>
     string? RawMessageDataClearText { get; }
+
+    /// <summary>
+    /// Delegate fired if a message was sent to an IP device
+    /// </summary>
+    RaiseStopSyncExecutionDelegate? RaiseStopSyncExecutionDelegate { get; set; }
 
     /// <summary>
     /// Create an info string for logging

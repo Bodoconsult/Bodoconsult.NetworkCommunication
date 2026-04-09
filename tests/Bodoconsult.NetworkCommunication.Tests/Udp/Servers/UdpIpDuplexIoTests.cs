@@ -16,13 +16,13 @@ public class UdpIpDuplexIoTests : BaseUdpIpDuplexIoTests
     [SetUp]
     public void TestSetup()
     {
-        UdpServerIpTestHelper.InitServer(this);
+        UdpServerIpTestHelper.InitRemoteDevice(this);
 
         Debug.Print("Start TestSetup");
 
         BaseReset();
 
-        UdpServerIpTestHelper.InitSocket(this);
+        UdpServerIpTestHelper.InitLocalSocket(this);
         ArgumentNullException.ThrowIfNull(Socket);
 
         DuplexIo = GetDuplexIo(Socket);
@@ -63,37 +63,4 @@ public class UdpIpDuplexIoTests : BaseUdpIpDuplexIoTests
         };
         return new IpDuplexIo(DataMessagingConfig, sendPacketProcessFactory);
     }
-
-    //public override void SendDataAndReceive(byte[] data, byte[] data2 = null)
-    //{
-    //    // Arrange
-    //    DuplexIo.StartCommunication().Wait();
-
-
-    //    Server.Send(data);
-
-    //    if (data2 != null)
-    //    {
-    //        Server.Send(data2);
-    //    }
-
-    //    var task = Task.Run(() =>
-    //    {
-    //        var i = 0;
-    //        while (i < 200)
-    //        {
-    //            AsyncHelper.Delay(5).Wait();
-    //            i++;
-    //        }
-
-    //    });
-    //    task.Wait();
-
-    //    // Act
-    //    DuplexIo.StopCommunication().Wait();
-
-    //    Debug.Print("Process done");
-
-    //}
-
 }

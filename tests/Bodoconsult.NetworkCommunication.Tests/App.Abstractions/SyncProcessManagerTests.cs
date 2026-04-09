@@ -21,7 +21,7 @@ public class SyncProcessManagerTests
     public void AddSyncProcess_ValidOrder_ProcessIsAddedToSyncQueue()
     {
         // Arrange 
-        var op = new SyncProcessManager<DummyClass>();
+        var op = new SyncProcessManager<Guid,DummyClass>();
 
         var processId = Guid.NewGuid();
 
@@ -44,7 +44,7 @@ public class SyncProcessManagerTests
     public void GetSyncProcessDataForProcess_ValidOrder_ReturnsData()
     {
         // Arrange 
-        var op = new SyncProcessManager<DummyClass>();
+        var op = new SyncProcessManager<Guid,DummyClass>();
 
         var processId = Guid.NewGuid();
 
@@ -71,7 +71,7 @@ public class SyncProcessManagerTests
     public void RemoveSyncProces_ValidOrder_ProcessIsRemovedFromSyncQueue()
     {
         // Arrange 
-        var op = new SyncProcessManager<DummyClass>();
+        var op = new SyncProcessManager<Guid,DummyClass>();
 
         var processId = Guid.NewGuid();
 

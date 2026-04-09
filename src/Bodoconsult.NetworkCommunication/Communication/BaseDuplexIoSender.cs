@@ -1,5 +1,6 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
+using Bodoconsult.App.Helpers;
 using Bodoconsult.NetworkCommunication.Interfaces;
 
 namespace Bodoconsult.NetworkCommunication.Communication;
@@ -9,6 +10,44 @@ namespace Bodoconsult.NetworkCommunication.Communication;
 /// </summary>
 public abstract class BaseDuplexIoSender : IDuplexIoSender
 {
+    /// <summary>
+    /// Encode the data message
+    /// </summary>
+    /// <param name="message">Message to send</param>
+    /// <returns>True if the message was NOT encodeable else false</returns>
+    protected bool EncodeMessage(IOutboundMessage message)
+    {
+        // Encode message
+        try
+        {
+            var result = DataMessageCodingProcessor.EncodeDataMessage(message);
+
+            if (result.ErrorCode != 0)
+            {
+                AsyncHelper.FireAndForget(() =>
+                {
+                    var s = result.ErrorMessage ?? "SendMessage";
+                    DataMessagingConfig.RaiseDataMessageNotSentDelegate?.Invoke(message.RawMessageData, s);
+                    DataMessagingConfig.DuplexIoErrorHandlerDelegate?.Invoke(new Exception(s));
+                });
+                return true;
+            }
+        }
+        catch (Exception encodeException)
+        {
+            AsyncHelper.FireAndForget(() =>
+            {
+                var e = encodeException;
+                DataMessagingConfig.MonitorLogger.LogError("Encoding message to send failed", e);
+                DataMessagingConfig.RaiseDataMessageNotSentDelegate?.Invoke(null, e.Message);
+                DataMessagingConfig.DuplexIoErrorHandlerDelegate?.Invoke(e);
+            });
+            return true;
+        }
+
+        return false;
+    }
+
     /// <summary>
     /// Current device comm settings
     /// </summary>

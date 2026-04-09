@@ -26,11 +26,6 @@ public abstract class UpdSocketProxyBase : ISocketProxy
     public int Port { get; set; }
 
     /// <summary>
-    /// Port the remote device listens on or 0 (then the same port as for the current device is used)
-    /// </summary>
-    public int RemotePort { get; set; }
-
-    /// <summary>
     /// Is the instance already dispossed
     /// </summary>
     public bool IsDisposed { get; protected set; }

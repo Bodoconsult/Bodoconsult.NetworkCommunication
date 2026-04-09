@@ -1,5 +1,6 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
+using System.Diagnostics;
 using Bodoconsult.App;
 using Bodoconsult.NetworkCommunication.Interfaces;
 using Bodoconsult.NetworkCommunication.Testing;
@@ -40,7 +41,7 @@ namespace IpCommunicationSampleTests.Device.RealWorld
 
         private void StartUdpClient()
         {
-            RemoteUdpDevice = new UdpTestUniCastClient(IPAddress.Parse(_startParams.IpAddress), _startParams.Port, 0);
+            RemoteUdpDevice = new UdpTestUniCastClient(IPAddress.Parse(_startParams.IpAddress), _startParams.Port);
             RemoteUdpDevice.Start();
 
             //_cts = new CancellationTokenSource();
@@ -104,6 +105,8 @@ namespace IpCommunicationSampleTests.Device.RealWorld
 
             // Assert
             Assert.That(CheckMessages(), Is.True);
+
+            Debug.Print($"Messages received: {RemoteUdpDevice?.ReceivedMessages.Count}");
         }
 
         private bool CheckMessages()

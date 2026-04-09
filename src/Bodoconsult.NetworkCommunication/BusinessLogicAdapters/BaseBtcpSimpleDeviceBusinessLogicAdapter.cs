@@ -15,7 +15,7 @@ namespace Bodoconsult.NetworkCommunication.BusinessLogicAdapters;
 /// </summary>
 public abstract class BaseBtcpSimpleDeviceBusinessLogicAdapter : BaseSimpleDeviceBusinessLogicAdapter, IBtcpSimpleDeviceBusinessLogicAdapter
 {
-    private readonly ISyncProcessManager<IBusinessTransactionReply> _syncProcessManager = new SyncProcessManager<IBusinessTransactionReply>();
+    private readonly ISyncProcessManager<Guid, IBusinessTransactionReply> _syncProcessManager = new SyncProcessManager<Guid, IBusinessTransactionReply>();
 
     /// <summary>
     /// Default ctor

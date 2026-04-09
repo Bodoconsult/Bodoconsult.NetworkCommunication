@@ -1,11 +1,12 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
+using System.Diagnostics;
 using System.Net;
 
 namespace Bodoconsult.NetworkCommunication.Testing;
 
 /// <summary>
-/// A simple UPD unicast client for testing
+/// A simple UDP unicast client for testing
 /// </summary>
 public class UdpTestUniCastClient: BaseUdpDevice
 {
@@ -14,13 +15,20 @@ public class UdpTestUniCastClient: BaseUdpDevice
     /// </summary>
     /// <param name="ipAddress">Server IP address</param>
     /// <param name="port">Port the server is listening on</param>
-    /// <param name="remotePort">Port the remote device listens on or 0 (then the same port as for the current device is used). Setting remotePort is required normally only if UDP server and client are installed on the same machine!</param>
-    public UdpTestUniCastClient(IPAddress ipAddress, int port, int remotePort=0) : base(ipAddress, port, remotePort)
+    public UdpTestUniCastClient(IPAddress ipAddress, int port) : base(ipAddress, port, false)
     {
-        var ep1 = new IPEndPoint(IPAddress.Any, RemotePort);
-        Listener.Client.Bind(ep1);
-
         ReceiceEndPoint = new IPEndPoint(ipAddress, Port);
-        SendEndPoint = new IPEndPoint(ipAddress, RemotePort);
+        Listener.Connect(ReceiceEndPoint);
+    }
+
+    public override void Send(byte[] data)
+    {
+        if (IsDisposed)
+        {
+            return;
+        }
+
+        var result = Listener.Send(data, data.Length);
+        Debug.Print($"{TypeName}: sent {result} byte(s)!");
     }
 }

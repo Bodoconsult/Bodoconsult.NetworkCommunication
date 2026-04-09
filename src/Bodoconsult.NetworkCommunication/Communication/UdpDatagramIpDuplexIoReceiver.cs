@@ -28,7 +28,7 @@ public class UdpDatagramIpDuplexIoReceiver : BaseDuplexIoReceiver
 
     //public static int SendTimeout = 5;
 
-    public static int FillPipelineTimeout = 5;
+    public static int FillPipelineTimeout { get; set; } = 5;
 
     /// <summary>
     /// Default ctor
@@ -59,7 +59,7 @@ public class UdpDatagramIpDuplexIoReceiver : BaseDuplexIoReceiver
         _buffer = chunk;
 
         var msg = $"Data in buffer: {DataMessageHelper.GetStringFromArrayCsharpStyle(ref _buffer)}";
-        Debug.Print(msg);
+        //Debug.Print(msg);
         Logger.LogDebug(msg);
 
         if (!DataMessageSplitter.TryReadCommand(ref _buffer, out var command))
@@ -84,7 +84,7 @@ public class UdpDatagramIpDuplexIoReceiver : BaseDuplexIoReceiver
         if (codecResult.ErrorCode != 0 || codecResult.DataMessage == null)
         {
             msg = $"Parsing command failed with error code {codecResult.ErrorCode}: {codecResult.ErrorMessage}: {DataMessageHelper.GetStringFromArrayCsharpStyle(ref command)}";
-            Debug.Print(msg);
+            //Debug.Print(msg);
             Logger.LogDebug(msg);
             ArrayPool.Return(array);
             return;
@@ -94,13 +94,13 @@ public class UdpDatagramIpDuplexIoReceiver : BaseDuplexIoReceiver
         if (!validationResult.IsMessageValid)
         {
             msg = $"Parsed command {DataMessageHelper.GetStringFromArrayCsharpStyle(ref command)} NOT valid: {validationResult.ValidationResult}";
-            Debug.Print(msg);
+            //Debug.Print(msg);
             Logger.LogDebug(msg);
         }
         else
         {
             msg = $"Parsed command {DataMessageHelper.GetStringFromArrayCsharpStyle(ref command)}";
-            Debug.Print(msg);
+            //Debug.Print(msg);
             DataMessagingConfig.MonitorLogger.LogDebug(msg);
 
             DataMessageProcessor.ProcessMessage(codecResult.DataMessage);
@@ -169,7 +169,7 @@ public class UdpDatagramIpDuplexIoReceiver : BaseDuplexIoReceiver
         while (true)
         {
 
-            Debug.Print("FillMessagePipeline in progress");
+            //Debug.Print("FillMessagePipeline in progress");
             try
             {
                 if (CancellationSource?.Token.IsCancellationRequested ?? true)
@@ -205,7 +205,7 @@ public class UdpDatagramIpDuplexIoReceiver : BaseDuplexIoReceiver
             if (availableData == 0)
             {
                 DuplexIoNoDataDelegate.Invoke();
-                Debug.Print("No data");
+                //Debug.Print("No data");
                 AsyncHelper.Delay(FillPipelineTimeout);
                 continue;
             }
@@ -223,7 +223,7 @@ public class UdpDatagramIpDuplexIoReceiver : BaseDuplexIoReceiver
                 continue;
             }
 
-            Debug.Print("Got data");
+            //Debug.Print("Got data");
 
             var dummy = _bufferPool.Dequeue();
             dummy.Memory = data;

@@ -100,7 +100,7 @@ public class FakeHandshakeDuplexIo : IDuplexIo
     /// Send a message to the device directly. This method is intended for internal purposes only. Do NOT use directly. Use <see cref="IDuplexIo.SendMessage"/> instead. This method makes faking easier!
     /// </summary>
     /// <param name="message">Current message to send</param>
-    public Task<MessageSendingResult> SendMessageInternal(IOutboundDataMessage message)
+    public Task<MessageSendingResult> SendMessageDirect(IOutboundMessage message)
     {
         _counter++;
         if (_counter >= NumberOfTriesTheHandshakeIsReceived)

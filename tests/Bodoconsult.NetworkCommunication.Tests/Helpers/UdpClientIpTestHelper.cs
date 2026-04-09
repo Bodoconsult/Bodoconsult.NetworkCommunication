@@ -17,7 +17,7 @@ internal static class UdpClientIpTestHelper
     /// <summary>
     /// Initialize the IP communication
     /// </summary>
-    public static void InitServer(IUdpTests testSetup)
+    public static void InitRemoteServer(IUdpTests testSetup)
     {
         testSetup.DataMessagingConfig = new DefaultDataMessagingConfig();
         testSetup.DataMessagingConfig.Port = TestDataHelper.GetRandomPort();
@@ -29,11 +29,11 @@ internal static class UdpClientIpTestHelper
 
         testSetup.RemoteUdpDevice?.Dispose();
 
-        testSetup.RemoteUdpDevice = new UdpTestUniCastServer(testSetup.IpAddress, testSetup.DataMessagingConfig.Port, testSetup.DataMessagingConfig.Port + 1);
+        testSetup.RemoteUdpDevice = new UdpTestUniCastServer(testSetup.IpAddress, testSetup.DataMessagingConfig.Port);
         testSetup.RemoteUdpDevice.Start();
     }
 
-    public static void InitSocket(IUdpTests testSetup)
+    public static void InitLocalSocket(IUdpTests testSetup)
     {
         //// Soft reset server
         //testSetup.Server.ResetClientSocket();
@@ -56,8 +56,7 @@ internal static class UdpClientIpTestHelper
         var socket = new UdpServerSocketProxy();
         socket.IpAddress = testSetup.IpAddress;
         ArgumentNullException.ThrowIfNull(testSetup.DataMessagingConfig);
-        socket.Port = testSetup.DataMessagingConfig.Port + 1;
-        socket.RemotePort = testSetup.DataMessagingConfig.Port;
+        socket.Port = testSetup.DataMessagingConfig.Port;
         testSetup.Socket = socket;
 
         testSetup.Socket.Connect().Wait();

@@ -31,7 +31,7 @@ public interface ICommunicationHandler:  IDisposable
     /// Send a message to the device
     /// </summary>
     /// <param name="message">Current message to send</param>
-    MessageSendingResult SendMessage(IOutboundMessage message);
+    MessageSendingResult SendMessage(IOutboundDataMessage message);
 
     /// <summary>
     /// This method should check if sending a handshake is required and send it if yes. This method is public mainly for testing.

@@ -11,18 +11,18 @@ namespace Bodoconsult.NetworkCommunication.Tests.Udp.Clients;
 [TestFixture]
 [NonParallelizable]
 [SingleThreaded]
-public class UdpDatagramIpDuplexIoTests : UdpIpDuplexIoBaseTests
+public class UdpDatagramIpDuplexIoTests : BaseUdpIpDuplexIoTests
 {
     [SetUp]
     public void TestSetup()
     {
-        UdpClientIpTestHelper.InitServer(this);
+        UdpClientIpTestHelper.InitRemoteServer(this);
 
         Debug.Print("Start TestSetup");
 
         BaseReset();
 
-        UdpClientIpTestHelper.InitSocket(this);
+        UdpClientIpTestHelper.InitLocalSocket(this);
         ArgumentNullException.ThrowIfNull(Socket);
 
         DuplexIo = GetDuplexIo(Socket);

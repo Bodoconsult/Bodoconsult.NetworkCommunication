@@ -3,22 +3,23 @@
 using System.Diagnostics;
 using System.Net;
 using System.Net.Sockets;
-using System.Text;
 using Bodoconsult.NetworkCommunication.Interfaces;
 
 namespace Bodoconsult.NetworkCommunication.Testing;
 
-
-
 /// <summary>
 /// Base class for UDP client or server implementations
 /// </summary>
-public abstract class BaseUdpDevice :  IUdpDevice
+public abstract class BaseUdpDevice : IUdpDevice
 {
     private Thread? _thread;
-    private bool _isDisposed;
 
-    protected bool IsServer;
+    /// <summary>
+    /// Is the socket already disposed?
+    /// </summary>
+    protected bool IsDisposed;
+
+    private readonly bool _isServer;
     protected string TypeName;
 
     /// <summary>
@@ -32,28 +33,32 @@ public abstract class BaseUdpDevice :  IUdpDevice
     protected IPEndPoint? ReceiceEndPoint;
 
     /// <summary>
-    /// Endpoint for sending
-    /// </summary>
-    protected IPEndPoint? SendEndPoint;
-
-
-    /// <summary>
     /// Default ctor
     /// </summary>
     /// <param name="ipAddress">IP address of the server</param>
     /// <param name="port">Port the server listens on</param>
-    /// <param name="clientPort">Port the client listens on or 0 (then the same port as for the server is used). Setting clientPort is required normally only if UDP server and client are installed on the same machine!</param>
-    protected BaseUdpDevice(IPAddress ipAddress, int port, int clientPort = 0)
+    /// <param name="isServer">Is this a server instance?</param>
+    protected BaseUdpDevice(IPAddress ipAddress, int port, bool isServer)
     {
-        Listener = new UdpClient();
-        Listener.ExclusiveAddressUse = false;
-        Listener.Client.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.ReuseAddress, true);
-        Listener.Client.ReceiveTimeout = ReceiveTimeout;
-        Listener.Client.SendTimeout = SendTimeout;
+        _isServer = isServer;
+
+        if (_isServer)
+        {
+            Listener = new UdpClient(port);
+        }
+        else
+        {
+            Listener = new UdpClient();
+        }
+
+        //Listener.ExclusiveAddressUse = false;
+        //Listener.Client.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.ReuseAddress, true);
+        //Listener.Client.ReceiveTimeout = ReceiveTimeout;
+        //Listener.Client.SendTimeout = SendTimeout;
+        //Listener.Client.Blocking = false;
 
         IpAddress = ipAddress;
         Port = port;
-        RemotePort = clientPort == 0 ? port : clientPort;
         TypeName = GetType().Name;
     }
 
@@ -71,11 +76,6 @@ public abstract class BaseUdpDevice :  IUdpDevice
     /// Port the current device listens on
     /// </summary>
     public int Port { get; }
-
-    /// <summary>
-    /// Port the remote device listens on or 0 (then the same port as for the current device is used)
-    /// </summary>
-    public int RemotePort { get; }
 
     /// <summary>
     /// Send timeout in milliseconds. -1 means infinite.
@@ -117,20 +117,22 @@ public abstract class BaseUdpDevice :  IUdpDevice
 
             if (Listener.Available <= 0)
             {
+                //Debug.Print("UPD: no data");
                 //Thread.Sleep(50);
+                Task.Delay(50, CancellationTokenSource.Token);
                 continue;
             }
 
             //try
             //{
-                var bytes = Listener.Receive(ref ReceiceEndPoint);
+            var bytes = Listener.Receive(ref ReceiceEndPoint);
 
-                Debug.Print($"{TypeName}: received from {ReceiceEndPoint}:");
-                Debug.Print($" {Encoding.ASCII.GetString(bytes, 0, bytes.Length)}");
+            //Debug.Print($"{TypeName}: received {bytes.Length} bytes from {ReceiceEndPoint}");
+            //Debug.Print($" {Encoding.ASCII.GetString(bytes, 0, bytes.Length)}");
 
-                ReceivedMessages.Add(bytes.AsMemory());
+            ReceivedMessages.Add(bytes.AsMemory());
 
-            if (!IsServer && ReplytoReceivedMessage)
+            if (!_isServer && ReplytoReceivedMessage)
             {
                 Send(bytes);
             }
@@ -158,20 +160,13 @@ public abstract class BaseUdpDevice :  IUdpDevice
     /// <param name="data">Byte array to send</param>
     public virtual void Send(byte[] data)
     {
-        if (_isDisposed)
-        {
-            return;
-        }
-
-        var result = Listener.Send(data, SendEndPoint);
-        Debug.Print($"{TypeName}: sent {result} byte(s)!");
-
+        throw new NotSupportedException("Override in derived classes");
     }
 
     /// <summary>Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.</summary>
     public void Dispose()
     {
-        _isDisposed = true;
+        IsDisposed = true;
         Dispose(true);
         GC.SuppressFinalize(this);
     }

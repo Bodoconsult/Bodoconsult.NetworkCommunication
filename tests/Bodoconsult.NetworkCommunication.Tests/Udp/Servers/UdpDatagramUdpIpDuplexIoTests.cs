@@ -6,28 +6,28 @@ using Bodoconsult.NetworkCommunication.Factories;
 using Bodoconsult.NetworkCommunication.Interfaces;
 using Bodoconsult.NetworkCommunication.Tests.Helpers;
 
-namespace Bodoconsult.NetworkCommunication.Tests.Udp.Clients;
+namespace Bodoconsult.NetworkCommunication.Tests.Udp.Servers;
 
 [TestFixture]
 [NonParallelizable]
 [SingleThreaded]
-public class UdpIpHighPerformanceDuplexIoTests : BaseUdpIpDuplexIoTests
+public class UdpDatagramUdpIpDuplexIoTests : BaseUdpIpDuplexIoTests
 {
     [SetUp]
     public void TestSetup()
     {
-        UdpClientIpTestHelper.InitRemoteServer(this);
+        UdpServerIpTestHelper.InitRemoteDevice(this);
 
         Debug.Print("Start TestSetup");
 
         BaseReset();
 
-        UdpClientIpTestHelper.InitLocalSocket(this);
+        UdpServerIpTestHelper.InitLocalSocket(this);
         ArgumentNullException.ThrowIfNull(Socket);
 
         DuplexIo = GetDuplexIo(Socket);
 
-        Debug.Print("End FTestSetup");
+        Debug.Print("End TestSetup");
     }
 
     /// <summary>
@@ -42,7 +42,7 @@ public class UdpIpHighPerformanceDuplexIoTests : BaseUdpIpDuplexIoTests
         BindDelegates();
 
         ISendPacketProcessFactory sendPacketProcessFactory = new FakeSendPacketProcessFactory();
-        return new IpHighPerformanceDuplexIo(DataMessagingConfig, sendPacketProcessFactory);
+        return new UdpDatagramIpDuplexIo(DataMessagingConfig, sendPacketProcessFactory);
     }
 
     /// <summary>
@@ -61,16 +61,6 @@ public class UdpIpHighPerformanceDuplexIoTests : BaseUdpIpDuplexIoTests
         {
             TypeOfFakeSendPacketProcessEnum = expectedResult
         };
-        return new IpHighPerformanceDuplexIo(DataMessagingConfig, sendPacketProcessFactory);
-
-    }
-
-    [Test]
-    public override void SendMessage_SocketError_Fails()
-    {
-        // Arrange
-
-        // Act and assert
-        Assert.Pass("Not fakeable at the moment");
+        return new IpDuplexIo(DataMessagingConfig, sendPacketProcessFactory);
     }
 }

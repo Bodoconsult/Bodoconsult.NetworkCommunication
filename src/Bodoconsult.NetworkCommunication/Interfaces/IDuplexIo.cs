@@ -39,10 +39,10 @@ public interface IDuplexIo: IAsyncDisposable, IDisposable
     Task<MessageSendingResult> SendMessage(IOutboundMessage message);
 
     /// <summary>
-    /// Send a message to the device directly. This method is intended for internal purposes only. Do NOT use directly. Use <see cref="SendMessage"/> instead. This method makes faking easier!
+    /// Send a message to the device directly
     /// </summary>
     /// <param name="message">Current message to send</param>
-    Task<MessageSendingResult> SendMessageInternal(IOutboundDataMessage message);
+    Task<MessageSendingResult> SendMessageDirect(IOutboundMessage message);
 
     ///// <summary>
     ///// Starts the message sending process either with waiting for a response from devive or without it

@@ -1,7 +1,9 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
+using System.Diagnostics;
 using System.Net.Sockets;
 using System.Security;
+using Bodoconsult.App.Helpers;
 using Bodoconsult.NetworkCommunication.EnumAndStates;
 using Bodoconsult.NetworkCommunication.Interfaces;
 
@@ -79,34 +81,51 @@ public abstract class BaseDuplexIo : IDuplexIo
     /// <param name="message">Current message to send</param>
     public virtual async Task<MessageSendingResult> SendMessage(IOutboundMessage message)
     {
-        ArgumentNullException.ThrowIfNull(Sender);
-        
-        if (message is IOutboundDataMessage { WaitForAcknowledgement: true } msg)
+        try
         {
-            // Send and wait for handshake
-            return await Task.Run(() => StartMessageSendingProcess(msg));
+            ArgumentNullException.ThrowIfNull(Sender);
+
+            MessageSendingResult result;
+
+            if (message is not IOutboundDataMessage { WaitForAcknowledgement: true } msg)
+            {
+                // Send without handshake
+                result = await Task.Run(() => SendMessageDirect(message));
+            }
+            else
+            {
+                // Send and wait for handshake
+                result = await Task.Run(() => StartMessageSendingProcess(msg));
+            }
+            
+            return result;
+        }
+        catch (Exception e)
+        {
+            Debug.Print(e.ToString());
+            throw;
         }
 
-        // Send and do NOT wait for handshake or direct sent messages
-        return await Task.Run(async () =>
-        {
-            var result = await Sender.SendMessage(message);
-            return result == 0 ?
-                new MessageSendingResult(message, OrderExecutionResultState.Unsuccessful) :
-                new MessageSendingResult(message, OrderExecutionResultState.Successful);
-        });
     }
 
     /// <summary>
     /// Send a message to the device directly. This method is intended for internal purposes only. Do NOT use directly. Use <see cref="IDuplexIo.SendMessage"/> instead. This method makes faking easier!
     /// </summary>
     /// <param name="message">Current message to send</param>
-    public async Task<MessageSendingResult> SendMessageInternal(IOutboundDataMessage message)
+    public async Task<MessageSendingResult> SendMessageDirect(IOutboundMessage message)
     {
         ArgumentNullException.ThrowIfNull(Sender);
 
         var count = await Sender.SendMessage(message);
-        return count == 0 ? new MessageSendingResult(message, OrderExecutionResultState.Unsuccessful) : new MessageSendingResult(message, OrderExecutionResultState.Successful);
+
+        var msr = count == 0 ? new MessageSendingResult(message, OrderExecutionResultState.Unsuccessful) : new MessageSendingResult(message, OrderExecutionResultState.Successful);
+
+        AsyncHelper.FireAndForget(() =>
+        {
+            message.RaiseStopSyncExecutionDelegate?.Invoke(msr);
+        });
+
+        return msr;
     }
 
     /// <summary>
@@ -127,6 +146,12 @@ public abstract class BaseDuplexIo : IDuplexIo
         // Result
         var result = new MessageSendingResult(message, currentSendPacketProcess.ProcessExecutionResult);
         currentSendPacketProcess.Dispose();
+
+        AsyncHelper.FireAndForget(() =>
+        {
+            message.RaiseStopSyncExecutionDelegate?.Invoke(result);
+        });
+
         return result;
     }
 

@@ -110,7 +110,7 @@ public class UdpDatagramIpDuplexIo: BaseDuplexIo
 
                 await Receiver.StartReceiver();
 
-                Sender ??= new IpDuplexIoSender(DataMessagingConfig,
+                Sender ??= new UdpDatagramIpDuplexIoSender(DataMessagingConfig,
                     _duplexIoIsWorkInProgressDelegate,
                     _duplexIoNoDataDelegate);
             }

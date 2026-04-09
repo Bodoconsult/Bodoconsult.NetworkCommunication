@@ -11,13 +11,8 @@ using Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
 
 namespace Bodoconsult.NetworkCommunication.Tests.Udp.Clients;
 
-public abstract class UdpIpDuplexIoBaseTests : BaseUdpTests
+public abstract class BaseUdpIpDuplexIoTests : BaseUdpTests
 {
-    /// <summary>
-    /// Holds the duplex IO channel implementation (see <see cref="IDuplexIo"/>) to use
-    /// </summary>
-    protected IDuplexIo? DuplexIo;
-
     [TearDown]
     public void TestCleanUp()
     {
@@ -64,103 +59,6 @@ public abstract class UdpIpDuplexIoBaseTests : BaseUdpTests
     {
         throw new NotSupportedException();
     }
-
-    /// <summary>
-    /// Send a message with the <see cref="IDuplexIo"/> instance to test
-    /// </summary>
-    /// <param name="message">Current message to send</param>
-    public virtual void Send(IOutboundDataMessage message)
-    {
-        ArgumentNullException.ThrowIfNull(DuplexIo);
-
-        DuplexIo.StartCommunication().Wait();
-
-        DuplexIo.SendMessage(message).Wait();
-
-        var task = Task.Run(() =>
-        {
-            var i = 0;
-            while (i < 200)
-            {
-                AsyncHelper.Delay(5);
-                i++;
-            }
-
-        });
-        task.Wait();
-
-        DuplexIo.StopCommunication().Wait();
-    }
-
-
-    public virtual void SendDataAndReceive(byte[] data, int expectedCount, byte[]? data2 = null)
-    {
-        // Arrange
-        ArgumentNullException.ThrowIfNull(DuplexIo);
-        ArgumentNullException.ThrowIfNull(RemoteUdpDevice);
-
-        DuplexIo.StartCommunication().Wait();
-
-        RemoteUdpDevice.Send(data);
-
-        if (data2 != null)
-        {
-            RemoteUdpDevice.Send(data2);
-        }
-
-
-        var tcs1 = new TaskCompletionSource<bool>();
-        var t1 = tcs1.Task;
-
-        // Start a background task that will complete tcs1.Task
-        Task.Factory.StartNew(() =>
-        {
-            var cts = new CancellationTokenSource(5000);
-            while (!cts.IsCancellationRequested)
-            {
-                if (MessageCounter >= expectedCount)
-                {
-                    tcs1.SetResult(true);
-                    return;
-                }
-                Task.Delay(50, cts.Token);
-            }
-
-            tcs1.SetResult(false);
-        });
-
-
-        var result = t1.GetAwaiter().GetResult();
-
-        // Start a background task that will complete tcs1.Task
-
-        // Act
-        DuplexIo.StopCommunication().Wait(1000);
-
-        Assert.That(result);
-
-        Debug.Print("Process done");
-    }
-
-
-    private void RunBasicTests(byte[] data, int expectedCount, byte[]? data2 = null)
-    {
-        // Arrange and act
-        SendDataAndReceive(data, expectedCount, data2);
-
-        // Assert
-        if (expectedCount == 0)
-        {
-            Assert.That(MessageCounter, Is.EqualTo(expectedCount));
-        }
-        else
-        {
-            Assert.That(MessageCounter > 0);
-        }
-
-        Assert.That(MessageCounter, Is.EqualTo(expectedCount));
-    }
-
 
     [Test]
     public void Ctor_ValidSetup_PropsSetCorrectly()
@@ -266,7 +164,7 @@ public abstract class UdpIpDuplexIoBaseTests : BaseUdpTests
     {
         // Arrange
         ArgumentNullException.ThrowIfNull(Socket);
-        
+
         DuplexIo = GetDuplexIoWithFakeEncodeDecoder(Socket, FakeSendPacketProcessEnum.EncodingError);
 
         var message = new ShouldCrashOutboundDataMessage();
@@ -333,7 +231,7 @@ public abstract class UdpIpDuplexIoBaseTests : BaseUdpTests
             }
         };
 
-        RunBasicTests(message.DataBlock.Data.ToArray(), 1);
+        RunBasicReceiveTests([message.DataBlock.Data.ToArray()], 1);
 
         // Assert
         Wait.Until(() => IsMessageReceivedFired, 2000);
@@ -369,10 +267,44 @@ public abstract class UdpIpDuplexIoBaseTests : BaseUdpTests
             }
         };
 
-        RunBasicTests(message.DataBlock.Data.ToArray(), 2, message2.DataBlock.Data.ToArray());
+        RunBasicReceiveTests([message.DataBlock.Data.ToArray(), message2.DataBlock.Data.ToArray()], 2);
 
         // Assert
         Wait.Until(() => IsMessageReceivedFired, 2000);
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(IsMessageReceivedFired);
+            Assert.That(!IsMessageNotReceivedFired);
+            Assert.That(!IsComDevCloseFired);
+            Assert.That(!IsCorruptedMessageFired);
+            Assert.That(!IsOnNotExpectedMessageReceivedFired);
+        }
+    }
+
+    [Test]
+    public void ReceiveMessage_MultipleSdcpMessages_MessagesReceived()
+    {
+        // Arrange
+        var messages = new List<byte[]>();
+
+        for (var i = 0; i < 100; i++)
+        {
+            var message = new SdcpOutboundDataMessage
+            {
+                DataBlock = new BasicOutboundDatablock
+                {
+                    DataBlockType = 'x',
+                    Data = new byte[] { 0x2, 0x78, 0x42, 0x6c, 0x75, 0x62, 0x62, 0x3 }
+                }
+            };
+
+            messages.Add(message.DataBlock.Data.ToArray());
+        }
+        
+        RunBasicReceiveTests(messages, messages.Count);
+
+        // Assert
+        Wait.Until(() => IsMessageReceivedFired, 5000);
         using (Assert.EnterMultipleScope())
         {
             Assert.That(IsMessageReceivedFired);

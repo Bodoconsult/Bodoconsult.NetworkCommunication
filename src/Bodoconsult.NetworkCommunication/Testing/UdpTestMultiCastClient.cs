@@ -15,8 +15,7 @@ public class UdpTestMultiCastClient : BaseUdpDevice
     /// </summary>
     /// <param name="ipAddress">IP address of the server</param>
     /// <param name="port">Port the server is listening on</param>
-    /// <param name="clientPort">Port the client listens on or 0 (then the same port as for the server is used)</param>
-    public UdpTestMultiCastClient(IPAddress ipAddress, int port, int clientPort = 0) : base(ipAddress, port, clientPort)
+    public UdpTestMultiCastClient(IPAddress ipAddress, int port) : base(ipAddress, port, false)
     {
         var endPoint1 = new IPEndPoint(0, Port);
         Listener.Client.Bind(endPoint1);
@@ -24,8 +23,7 @@ public class UdpTestMultiCastClient : BaseUdpDevice
         Listener.JoinMulticastGroup(ipAddress);
         Listener.MulticastLoopback = true;
 
-        ReceiceEndPoint = new IPEndPoint(ipAddress, RemotePort);
-        SendEndPoint = new IPEndPoint(ipAddress, Port);
+        ReceiceEndPoint = new IPEndPoint(ipAddress, Port);
     }
 
     /// <summary>

@@ -20,11 +20,6 @@ public interface IUdpDevice: IDisposable
     int Port { get; }
 
     /// <summary>
-    /// Port the remote device listens on or 0 (then the same port as for the current device is used)
-    /// </summary>
-    int RemotePort { get; }
-
-    /// <summary>
     /// Send timeout in milliseconds. -1 means infinite.
     /// </summary>
     int SendTimeout { get; set; }

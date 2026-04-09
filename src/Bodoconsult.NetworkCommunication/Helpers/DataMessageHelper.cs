@@ -61,11 +61,10 @@ public static class DataMessageHelper
     public static string GetStringFromArray(ReadOnlyMemory<byte> data)
     {
         var value = new StringBuilder();
-        byte b;
 
         for (var i = 0; i < data.Length; i++)
         {
-            b = data.Slice(i, 1).Span[0];
+            var b = data.Slice(i, 1).Span[0];
             if (b <= 33 || b >= 127)
             {
                 value.Append($"[{b:X2}]");
@@ -111,11 +110,10 @@ public static class DataMessageHelper
     public static string GetStringFromArray(Memory<byte> data)
     {
         var value = new StringBuilder();
-        byte b;
 
         for (var i = 0; i < data.Length; i++)
         {
-            b = data.Slice(i, 1).Span[0];
+            var b = data.Slice(i, 1).Span[0];
             if (b <= 33 || b >= 127)
             {
                 value.Append($"[{b:X2}]");

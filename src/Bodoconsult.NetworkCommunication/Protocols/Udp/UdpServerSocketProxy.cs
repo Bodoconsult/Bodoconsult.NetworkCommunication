@@ -96,7 +96,7 @@ public class UdpServerSocketProxy : UpdSocketProxyBase
         {
             try
             {
-                Debug.Print($"Bytes available: {UdpClient?.Client.Available ?? 0}");
+                //Debug.Print($"Bytes available: {UdpClient?.Client.Available ?? 0}");
                 return UdpClient?.Client.Available ?? 0;
             }
             catch
@@ -129,7 +129,7 @@ public class UdpServerSocketProxy : UpdSocketProxyBase
     ///// </summary>
     //public override void Shutdown()
     //{
-        
+
     //}
 
     /// <summary>
@@ -174,24 +174,19 @@ public class UdpServerSocketProxy : UpdSocketProxyBase
                 UdpClient = null;
             }
 
-            if (RemotePort == 0)
-            {
-                RemotePort = Port;
-            }
-
             try
             {
-                UdpClient = new UdpClient();
-                UdpClient.ExclusiveAddressUse = false;
-                UdpClient.Client.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.ReuseAddress, true);
+                UdpClient = new UdpClient(Port);
+                //UdpClient.ExclusiveAddressUse = false;
+                //UdpClient.Client.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.ReuseAddress, true);
                 UdpClient.Client.ReceiveTimeout = ReceiveTimeout;
                 UdpClient.Client.SendTimeout = SendTimeout;
+                //UdpClient.Client.Blocking = false;
 
-                var endPoint1 = new IPEndPoint(IPAddress.Any, Port);
-                UdpClient.Client.Bind(endPoint1);
+                //var endPoint1 = new IPEndPoint(IPAddress.Any, Port);
+                //UdpClient.Client.Bind(endPoint1);
 
-                EndPoint = new IPEndPoint(IpAddress, Port);
-                SendEndPoint = new IPEndPoint(IpAddress, RemotePort);
+                EndPoint = new IPEndPoint(IPAddress.Any, Port);
             }
             catch (Exception e)
             {
@@ -299,7 +294,7 @@ public class UdpServerSocketProxy : UpdSocketProxyBase
     /// <returns></returns>
     public override Task<int> Send(byte[] bytesToSend, int offset, int messageBytesLength)
     {
-        return UdpClient == null ? Task.FromResult(0) : UdpClient.Client.SendAsync(bytesToSend, offset, messageBytesLength);
+        return UdpClient == null || EndPoint == null ? Task.FromResult(0) : UdpClient.Client.SendToAsync(bytesToSend, offset, messageBytesLength, SocketFlags.None, EndPoint);
     }
 
     ///// <summary>

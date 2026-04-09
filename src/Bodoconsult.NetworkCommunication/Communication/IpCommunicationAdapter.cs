@@ -115,10 +115,7 @@ public class IpCommunicationAdapter : ICommunicationAdapter
     /// <returns>Reply of the device</returns>
     public MessageSendingResult SendDataMessage(IOutboundDataMessage command)
     {
-        if (_communicationHandler == null)
-        {
-            throw new ArgumentNullException(nameof(_communicationHandler));
-        }
+        ArgumentNullException.ThrowIfNull(_communicationHandler);
 
         return _communicationHandler.SendMessage(command);
     }
@@ -393,7 +390,7 @@ public class IpCommunicationAdapter : ICommunicationAdapter
     /// <summary>
     /// The timestamp of the last message received
     /// </summary>
-    public long LastMessageTimeStamp => DataMessagingConfig.DataMessageProcessingPackage?.WaitStateManager?.LastMessageTimeStamp ?? 0;
+    public long LastMessageTimeStamp => DataMessagingConfig.DataMessageProcessingPackage?.WaitStateManager.LastMessageTimeStamp ?? 0;
 
     /// <summary>
     /// Reset the com dev to a defined state as if there were never a communication with the tower. No logging for ComDevClose activated

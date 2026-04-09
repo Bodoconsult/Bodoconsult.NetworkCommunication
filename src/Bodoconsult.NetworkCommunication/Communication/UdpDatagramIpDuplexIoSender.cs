@@ -1,5 +1,6 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
+using System.Diagnostics;
 using System.Net.Sockets;
 using Bodoconsult.App.Helpers;
 using Bodoconsult.NetworkCommunication.Delegates;
@@ -8,13 +9,13 @@ using Bodoconsult.NetworkCommunication.Interfaces;
 namespace Bodoconsult.NetworkCommunication.Communication;
 
 /// <summary>
-/// Comm adapter subsystem for message sending version 1 for IP based networks (UDP/TCP)
+/// Comm adapter subsystem for message sending version 1 for IP based networks for UDP only
 /// </summary>
-public class IpDuplexIoSender : BaseDuplexIoSender
+public class UdpDatagramIpDuplexIoSender : BaseDuplexIoSender
 {
-
-    private readonly DuplexIoIsWorkInProgressDelegate _duplexIoIsWorkInProgressDelegate;
     private readonly DuplexIoNoDataDelegate _duplexIoNoDataDelegate;
+    private bool _isSending;
+    private readonly Lock _isSendingLock = new();
 
     /// <summary>
     /// Default ctor
@@ -22,11 +23,10 @@ public class IpDuplexIoSender : BaseDuplexIoSender
     /// <param name="dataMessagingConfig">Current device comm settings</param>
     /// <param name="duplexIoIsWorkInProgressDelegate">Delegate for checking if the socket is wokring currently</param>
     /// <param name="duplexIoNoDataDelegate">Delegate to set socket state to no work in progress</param>
-    public IpDuplexIoSender(IDataMessagingConfig dataMessagingConfig,
+    public UdpDatagramIpDuplexIoSender(IDataMessagingConfig dataMessagingConfig,
         DuplexIoIsWorkInProgressDelegate duplexIoIsWorkInProgressDelegate,
         DuplexIoNoDataDelegate duplexIoNoDataDelegate) : base(dataMessagingConfig)
     {
-        _duplexIoIsWorkInProgressDelegate = duplexIoIsWorkInProgressDelegate;
         _duplexIoNoDataDelegate = duplexIoNoDataDelegate;
     }
 
@@ -57,93 +57,104 @@ public class IpDuplexIoSender : BaseDuplexIoSender
     {
         ArgumentNullException.ThrowIfNull(DataMessagingConfig.SocketProxy);
 
-        var sent = 0;
-
-        var i = 0;
-        var isSent = false;
-
-        if (EncodeMessage(message))
-        {
-            return 0;
-        }
-
-        // Send message
         try
         {
-            //Create a byte array from message according to current protocol
-            while (i < 3)
+            lock (_isSendingLock)
             {
-                if (!_duplexIoIsWorkInProgressDelegate())
+                for (var i = 0; i < 4; i++)
                 {
-                    (sent, isSent) = await SendMessageInternal(DataMessagingConfig, _duplexIoNoDataDelegate,  message);
-
-                    if (isSent)
+                    if (_isSending)
+                    {
+                        Task.Delay(15);
+                    }
+                    else
                     {
                         break;
                     }
                 }
 
-                AsyncHelper.Delay(10);
-                i++;
+                if (_isSending)
+                {
+                    return 0;
+                }
+
+                _isSending = true;
             }
 
-            if (!isSent)
+            //Debug.Print("Send really");
+
+            if (EncodeMessage(message))
             {
-                DataMessagingConfig.MonitorLogger.LogError("send process blocked by another socket operation");
+                lock (_isSendingLock)
+                {
+                    _isSending = false;
+                }
                 return 0;
+            }
+
+            // Send message
+            var sent = await SendMessageInternal(DataMessagingConfig, _duplexIoNoDataDelegate, message);
+
+            lock (_isSendingLock)
+            {
+                _isSending = false;
             }
 
             if (sent > 0)
             {
                 return sent;
             }
-            var msg = $"{DataMessagingConfig.LoggerId}message could not be sent via TCP socket. Only {0} bytes of {message.RawMessageData.Length} bytes are sent.";
+
+            var msg = $"{DataMessagingConfig.LoggerId}message could not be sent via UDP socket. Only {0} bytes of {message.RawMessageData.Length} bytes are sent.";
             AsyncHelper.FireAndForget(() => DataMessagingConfig.RaiseDataMessageNotSentDelegate?.Invoke(message.RawMessageData, msg));
             DataMessagingConfig.MonitorLogger.LogError(msg);
             DataMessagingConfig.AppLogger.LogError($"{DataMessagingConfig.LoggerId}{msg}");
-            return sent;
         }
-        catch (Exception exception)
+        catch
         {
-            _duplexIoNoDataDelegate();
-            AsyncHelper.FireAndForget(() => DataMessagingConfig.DuplexIoErrorHandlerDelegate?.Invoke(exception));
-            return 0;
+            lock (_isSendingLock)
+            {
+                _isSending = false;
+            }
         }
+
+        return 0;
     }
 
-    private static async Task<(int sent, bool isSent)> SendMessageInternal(IDataMessagingConfig dataMessagingConfig, DuplexIoNoDataDelegate duplexIoNoDataDelegate, IOutboundMessage message)
+
+
+    private static async Task<int> SendMessageInternal(IDataMessagingConfig dataMessagingConfig, DuplexIoNoDataDelegate duplexIoNoDataDelegate, IOutboundMessage message)
     {
-        var sent =0;
-        bool isSent;
+        int sent;
         try
         {
-            sent = await dataMessagingConfig.SocketProxy!.Send(message.RawMessageData);  
+            sent = await dataMessagingConfig.SocketProxy!.Send(message.RawMessageData);
             duplexIoNoDataDelegate();
-                            
+
             var s = $"{message.RawMessageDataClearText}  {message.ToShortInfoString()}";
             //Debug.Print(s);
             dataMessagingConfig.MonitorLogger.LogInformation($"Message sent: {s}");
 
-            AsyncHelper.FireAndForget(() => dataMessagingConfig.RaiseDataMessageSentDelegate?.Invoke(message.RawMessageData));
-
-            isSent = true;
+            AsyncHelper.FireAndForget(() =>
+            {
+                dataMessagingConfig.RaiseDataMessageSentDelegate?.Invoke(message.RawMessageData);
+            });
         }
         catch (SocketException socketException)
         {
-            AsyncHelper.FireAndForget(() =>
-            {
-                dataMessagingConfig.RaiseComDevCloseRequestDelegate?.Invoke("IpDuplexIoSender");
-                dataMessagingConfig.RaiseDataMessageNotSentDelegate?.Invoke(message.RawMessageData, socketException.Message);
-            });
+            dataMessagingConfig.MonitorLogger.LogError("Send process failed", socketException);
+            AsyncHelper.FireAndForget(() => dataMessagingConfig.RaiseComDevCloseRequestDelegate?.Invoke("UdpDatagramIpDuplexIoSender"));
+            AsyncHelper.FireAndForget(() => dataMessagingConfig.RaiseDataMessageNotSentDelegate?.Invoke(message.RawMessageData, socketException.Message));
             throw;
         }
         catch (Exception sendException)
         {
+            dataMessagingConfig.MonitorLogger.LogError("Send process failed", sendException);
             AsyncHelper.FireAndForget(() => dataMessagingConfig.RaiseDataMessageNotSentDelegate?.Invoke(message.RawMessageData, sendException.Message));
-            isSent = false;
+            throw;
         }
 
-        return (sent, isSent);
+        return sent;
     }
 
     /// <summary>

@@ -86,6 +86,13 @@ public delegate void RaiseUnexpectedDataMessageReceivedDelegate(IInboundDataMess
 /// <param name="requestSource">Source location of the request</param>
 public delegate void RaiseComDevCloseRequestDelegate(string requestSource);
 
+/// <summary>
+/// Delegate fired if a message was sent to an IP device
+/// </summary>
+/// <param name="result">Message sending result</param>
+
+public delegate void RaiseStopSyncExecutionDelegate(MessageSendingResult result);
+
 #endregion
 
 // ****** Delegates for sender and reciever ****** 

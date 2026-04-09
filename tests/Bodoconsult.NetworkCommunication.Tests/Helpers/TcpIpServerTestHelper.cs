@@ -74,7 +74,6 @@ public static class TcpIpServerTestHelper
         var socket = new TcpIpServerSocketProxy(TcpIpListenerManager);
         socket.IpAddress = testSetup.IpAddress;
         socket.Port = testSetup.DataMessagingConfig.Port;
-        socket.RemotePort = testSetup.DataMessagingConfig.Port + 1;
         socket.Connect().Wait(1000);
         testSetup.Socket = socket;
         

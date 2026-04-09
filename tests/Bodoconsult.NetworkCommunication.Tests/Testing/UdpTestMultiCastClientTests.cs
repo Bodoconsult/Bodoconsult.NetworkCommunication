@@ -18,12 +18,11 @@ internal class UdpTestMultiCastServerTests
 
         var ip = IPAddress.Parse("224.0.0.42");
         const int port = 65000;
-        const int clientPort = 65001;
 
-        var server = new UdpTestMultiCastServer(ip, port, clientPort);
+        var server = new UdpTestMultiCastServer(ip, port);
         server.Start();
 
-        var client = new UdpTestMultiCastClient(ip, port, clientPort);
+        var client = new UdpTestMultiCastClient(ip, port);
         client.Start();
 
         // Act  

@@ -200,7 +200,7 @@ public abstract class BaseSendPacketProcess : ISendPacketProcess, IAsyncDisposab
 
         if (IsSocketConnected)
         {
-            var task = DuplexIo.SendMessageInternal(Message);
+            var task = DuplexIo.SendMessageDirect(Message);
             task.Wait(SendTimeout);
 
             var result = task.Result;

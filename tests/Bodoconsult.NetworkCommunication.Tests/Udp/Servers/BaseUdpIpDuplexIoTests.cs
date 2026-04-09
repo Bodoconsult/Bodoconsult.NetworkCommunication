@@ -1,6 +1,6 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
-using System.Diagnostics;
+using Bodoconsult.App;
 using Bodoconsult.App.Helpers;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataBlocks;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
@@ -8,15 +8,17 @@ using Bodoconsult.NetworkCommunication.Factories;
 using Bodoconsult.NetworkCommunication.Interfaces;
 using Bodoconsult.NetworkCommunication.Protocols.Udp;
 using Bodoconsult.NetworkCommunication.Tests.Infrastructure;
+using Microsoft.VisualStudio.TestPlatform.CommunicationUtilities;
+using System.Diagnostics;
 
 namespace Bodoconsult.NetworkCommunication.Tests.Udp.Servers;
 
 public abstract class BaseUdpIpDuplexIoTests : BaseUdpTests
 {
-    /// <summary>
-    /// Holds the duplex IO channel implementation (see <see cref="IDuplexIo"/>) to use
-    /// </summary>
-    protected IDuplexIo? DuplexIo;
+    ///// <summary>
+    ///// Holds the duplex IO channel implementation (see <see cref="IDuplexIo"/>) to use
+    ///// </summary>
+    //protected IDuplexIo? DuplexIo;
 
     [TearDown]
     public void TestCleanUp()
@@ -65,32 +67,32 @@ public abstract class BaseUdpIpDuplexIoTests : BaseUdpTests
         throw new NotSupportedException();
     }
 
-    /// <summary>
-    /// Send a message with the <see cref="IDuplexIo"/> instance to test
-    /// </summary>
-    /// <param name="message">Current message to send</param>
-    public virtual void Send(IOutboundDataMessage message)
-    {
-        ArgumentNullException.ThrowIfNull(DuplexIo);
+    ///// <summary>
+    ///// Send a message with the <see cref="IDuplexIo"/> instance to test
+    ///// </summary>
+    ///// <param name="message">Current message to send</param>
+    //public override void Send(IOutboundDataMessage message)
+    //{
+    //    ArgumentNullException.ThrowIfNull(DuplexIo);
 
-        DuplexIo.StartCommunication().Wait();
+    //    DuplexIo.StartCommunication().Wait();
 
-        DuplexIo.SendMessage(message).Wait();
+    //    DuplexIo.SendMessage(message).Wait();
 
-        var task = Task.Run(() =>
-        {
-            var i = 0;
-            while (i < 200)
-            {
-                AsyncHelper.Delay(5);
-                i++;
-            }
+    //    var task = Task.Run(() =>
+    //    {
+    //        var i = 0;
+    //        while (i < 200)
+    //        {
+    //            AsyncHelper.Delay(5);
+    //            i++;
+    //        }
 
-        });
-        task.Wait();
+    //    });
+    //    task.Wait();
 
-        DuplexIo.StopCommunication().Wait();
-    }
+    //    DuplexIo.StopCommunication().Wait();
+    //}
 
 
     public virtual void SendDataAndReceive(byte[] data, int expectedCount, byte[]? data2 = null)
@@ -234,11 +236,12 @@ public abstract class BaseUdpIpDuplexIoTests : BaseUdpTests
     }
 
     [Test]
-    public void SendMessage_MessageS_Sent()
+    public void SendMessage_SdcpMessage_Sent()
     {
         // Arrange
         var message = new SdcpOutboundDataMessage
         {
+            WaitForAcknowledgement = false,
             DataBlock = new BasicOutboundDatablock
             {
                 DataBlockType = 'x',
@@ -247,7 +250,42 @@ public abstract class BaseUdpIpDuplexIoTests : BaseUdpTests
         };
 
         // Act
-        Send(message);
+        SendDataFromLocalToRemote([message], 1);
+
+        Wait.Until(() => IsDataMessageSentFired);
+
+        // Assert
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(IsDataMessageSentFired);
+            Assert.That(!IsDataMessageNotSentFired);
+            Assert.That(!IsComDevCloseFired);
+        }
+    }
+
+    [Test]
+    public void SendMessage_MultipleSdcpMessages_Sent()
+    {
+        // Arrange
+        var messages = new List<IOutboundDataMessage>();
+
+        // Act
+        for (var i = 0; i < 100; i++)
+        {
+            var message = new SdcpOutboundDataMessage
+            {
+                WaitForAcknowledgement = false,
+                DataBlock = new BasicOutboundDatablock
+                {
+                    DataBlockType = 'x',
+                    Data = new byte[] { 0x42, 0x6c, 0x75, 0x62, 0x62 }
+                }
+            };
+
+            messages.Add(message);
+        }
+
+        SendDataFromLocalToRemote(messages, messages.Count);
 
         Wait.Until(() => IsDataMessageSentFired);
 
@@ -265,7 +303,6 @@ public abstract class BaseUdpIpDuplexIoTests : BaseUdpTests
     {
         // Arrange
         ArgumentNullException.ThrowIfNull(Socket);
-
 
         DuplexIo = GetDuplexIoWithFakeEncodeDecoder(Socket, FakeSendPacketProcessEnum.EncodingError);
 

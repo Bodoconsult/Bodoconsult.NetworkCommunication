@@ -1,7 +1,6 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
 using Bodoconsult.NetworkCommunication.Interfaces;
-using System.Diagnostics;
 
 namespace Bodoconsult.NetworkCommunication.DataMessaging.DigitalTwins
 {
@@ -154,7 +153,7 @@ namespace Bodoconsult.NetworkCommunication.DataMessaging.DigitalTwins
             //var test = _lastSampleCounter % SendSampleCounterInterval;
             if (_syncByteCounter >= SendSampleCounterInterval && _syncByteCounter % SendSampleCounterInterval < 0.0001)
             {
-                Debug.Print($"1dS: {_syncByteCounter} // {_lastSampleCounter}");
+                //Debug.Print($"1dS: {_syncByteCounter} // {_lastSampleCounter}");
                 // Send sample counter
                 sd = RegularSyncByte;
                 syncBytes = [sd.SyncByte, 0x1, 0x1, sd.SyncByte, 0x1, 0x1, sd.SyncByte, 0x1, 0x1, sd.SyncByte, 0x1, 0x1];
@@ -165,13 +164,13 @@ namespace Bodoconsult.NetworkCommunication.DataMessaging.DigitalTwins
                 // repeat the sample counter
                 if (_syncByteCounter > SendSampleCounterInterval && _lastSampleCounter + 1 == _syncByteCounter)
                 {
-                    Debug.Print($"2dS: {_syncByteCounter} // {_lastSampleCounter}");
+                    //Debug.Print($"2dS: {_syncByteCounter} // {_lastSampleCounter}");
                     sd = RegularSyncByte;
                     syncBytes = [sd.SyncByte, 0x1, 0x1, sd.SyncByte, 0x1, 0x1, sd.SyncByte, 0x1, 0x1, sd.SyncByte, 0x1, 0x1];
                 }
                 else
                 {
-                    Debug.Print($"N: {_syncByteCounter} // {_lastSampleCounter}");
+                    //Debug.Print($"N: {_syncByteCounter} // {_lastSampleCounter}");
                     // Normal sync byte
                     sd = SampleCounterSyncByteBlock;
                     syncBytes = [sd.SyncByte];

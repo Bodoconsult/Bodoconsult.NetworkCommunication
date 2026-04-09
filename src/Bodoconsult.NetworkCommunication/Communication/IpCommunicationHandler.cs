@@ -1,12 +1,14 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
-using System.Diagnostics;
 using Bodoconsult.App.Abstractions.Interfaces;
+using Bodoconsult.App.Abstractions.SyncExecution;
 using Bodoconsult.App.Helpers;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
+using Bodoconsult.NetworkCommunication.EnumAndStates;
 using Bodoconsult.NetworkCommunication.EventSources;
 using Bodoconsult.NetworkCommunication.Helpers;
 using Bodoconsult.NetworkCommunication.Interfaces;
+using System.Diagnostics;
 
 namespace Bodoconsult.NetworkCommunication.Communication;
 
@@ -20,6 +22,9 @@ public class IpCommunicationHandler : ICommunicationHandler
     private IWaitStateManager? _waitStateManager;
     private bool _isInitialized;
 
+    private readonly SyncProcessManager<long, MessageSendingResult> _syncProcessManager = new();
+    private readonly ProducerConsumerQueue<IOutboundMessage> _queue = new();
+    
     /// <summary>
     /// Default ctor
     /// </summary>
@@ -75,20 +80,57 @@ public class IpCommunicationHandler : ICommunicationHandler
     /// Send a message to the device
     /// </summary>
     /// <param name="message">Current message to send</param>
-    public MessageSendingResult SendMessage(IOutboundMessage message)
+    public MessageSendingResult SendMessage(IOutboundDataMessage message)
     {
-        // Todo: check if blocking
-        var s = $"Send message {message.ToShortInfoString()}";
-        Debug.Print(s);
-        DataMessagingConfig.MonitorLogger.LogDebug(s);
+        try
+        {
+            // Todo: check if blocking
+            var s = $"Enqueue message {message.ToShortInfoString()}";
+            Debug.Print(s);
+            DataMessagingConfig.MonitorLogger.LogDebug(s);
 
-        var x = DuplexIo.SendMessage(message).GetAwaiter().GetResult();
+            message.RaiseStopSyncExecutionDelegate = StopExecutionOfSyncOrder;
 
-        // Now log app performance measures (must be located after sending!)
-        _appEventSource.ReportMetric(DataMessagingEventSourceProvider.DclSentDataMessageBytes, message.RawMessageData.Length);
-        _appEventSource.ReportIncrement(DataMessagingEventSourceProvider.DclSentDataMessageCount);
+            _queue.Enqueue(message);
+            
+            //var x = new MessageSendingResult(message, OrderExecutionResultState.Successful);
 
-        return x;
+            //var x = AsyncHelper.RunSync(() => DuplexIo.SendMessage(message));
+
+            //var x = DuplexIo.SendMessage(message).ConfigureAwait(false).GetAwaiter().GetResult();
+
+            var syncData = _syncProcessManager.AddSyncProcess(message.MessageId, 5000);
+
+            // Now wait for order execution (doing it in a non-blocking mannor)
+            var erg = AsyncHelper.RunSync(syncData.CreateWaitingTask);
+
+            // Remove the order from waiting queue
+            _syncProcessManager.RemoveSyncProcess(message.MessageId);
+
+            //// Now log app performance measures (must be located after sending!)
+            //_appEventSource.ReportMetric(DataMessagingEventSourceProvider.DclSentDataMessageBytes, message.RawMessageData.Length);
+            //_appEventSource.ReportIncrement(DataMessagingEventSourceProvider.DclSentDataMessageCount);
+
+            return erg ?? new MessageSendingResult(message, OrderExecutionResultState.Error);
+            //return x;
+        }
+        catch (Exception e)
+        {
+            Debug.Print(e.Message);
+            throw;
+        }
+    }
+
+    private void StopExecutionOfSyncOrder(MessageSendingResult result)
+    {
+        var syncData = _syncProcessManager.GetSyncProcessDataForProcess(result.Message?.MessageId ?? 0);
+
+        if (syncData == null)
+        {
+            return;
+        }
+
+        syncData.TaskCompletionSource?.SetResult(result);
     }
 
     /// <summary>
@@ -112,10 +154,10 @@ public class IpCommunicationHandler : ICommunicationHandler
                 if (response is not DoNotSendOutboundHandshakeMessage)
                 {
                     // Fire and forget
-                    SendMessage(response);
+                    _queue.Enqueue(response);
                 }
             }
-            
+
             AsyncHelper.FireAndForget(() => DataMessagingConfig.RaiseAppLayerDataMessageReceivedDelegate?.Invoke(message));
 
             // Now log app performance measures (must be located after sending!)
@@ -138,7 +180,6 @@ public class IpCommunicationHandler : ICommunicationHandler
             return;
         }
 
-        
         ArgumentNullException.ThrowIfNull(SocketProxy);
 
         // Connect the socket in sync manner
@@ -147,7 +188,39 @@ public class IpCommunicationHandler : ICommunicationHandler
         // Start the communication in sync manner
         AsyncHelper.RunSync(() => DuplexIo.StartCommunication());
 
+        _queue.ConsumerTaskDelegate = ConsumerTaskDelegate;
+        _queue.StartConsumer();
+
         _isInitialized = true;
+    }
+
+    private async void ConsumerTaskDelegate(IOutboundMessage message)
+    {
+        try
+        {
+            // Todo: check if blocking
+            var s = $"Send message {message.ToShortInfoString()}";
+            Debug.Print(s);
+            DataMessagingConfig.MonitorLogger.LogDebug(s);
+
+            var erg = await DuplexIo.SendMessage(message);
+
+            //// Now log app performance measures (must be located after sending!)
+            //_appEventSource.ReportMetric(DataMessagingEventSourceProvider.DclSentDataMessageBytes, message.RawMessageData.Length);
+            //_appEventSource.ReportIncrement(DataMessagingEventSourceProvider.DclSentDataMessageCount);
+
+            message.RaiseStopSyncExecutionDelegate?.Invoke(erg);
+
+            //return x;
+        }
+        catch (Exception e)
+        {
+            message.RaiseStopSyncExecutionDelegate?.Invoke(
+                new MessageSendingResult(message, OrderExecutionResultState.Error)
+                {
+                    Information = e.ToString()
+                });
+        }
     }
 
     /// <summary>
@@ -155,6 +228,8 @@ public class IpCommunicationHandler : ICommunicationHandler
     /// </summary>
     public void Disconnect()
     {
+        _queue.StopConsumer();
+
         DuplexIo.StopCommunication().Wait(2000);
         SocketProxy?.Close();
         DataMessagingConfig.MonitorLogger.LogDebug($"{DataMessagingConfig.LoggerId}disconnect - Socket has been closed.");

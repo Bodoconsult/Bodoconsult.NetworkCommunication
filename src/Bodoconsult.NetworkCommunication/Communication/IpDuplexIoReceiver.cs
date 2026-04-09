@@ -29,7 +29,7 @@ public class IpDuplexIoReceiver : BaseDuplexIoReceiver
 
     //public static int SendTimeout = 5;
 
-    public static int FillPipelineTimeout = 5;
+    public static int FillPipelineTimeout {get; set; } = 5;
 
     /// <summary>
     /// Default ctor
@@ -63,7 +63,7 @@ public class IpDuplexIoReceiver : BaseDuplexIoReceiver
         _buffer = chunk;
 
         var msg = $"Data in buffer: {DataMessageHelper.GetStringFromArrayCsharpStyle(ref _buffer)}";
-        Debug.Print(msg);
+        //Debug.Print(msg);
         Logger.LogDebug(msg);
 
         while (DataMessageSplitter.TryReadCommand(ref _buffer, out var command))
@@ -87,7 +87,7 @@ public class IpDuplexIoReceiver : BaseDuplexIoReceiver
             if (codecResult.ErrorCode != 0 || codecResult.DataMessage==null)
             {
                 msg = $"Parsing command failed with error code {codecResult.ErrorCode}: {codecResult.ErrorMessage}: {DataMessageHelper.GetStringFromArrayCsharpStyle(ref command)}";
-                Debug.Print(msg);
+                //Debug.Print(msg);
                 Logger?.LogDebug(msg);
                 ArrayPool.Return(array);
                 return;
@@ -97,13 +97,13 @@ public class IpDuplexIoReceiver : BaseDuplexIoReceiver
             if (!validationResult.IsMessageValid)
             {
                 msg = $"Parsed command {DataMessageHelper.GetStringFromArrayCsharpStyle(ref command)} NOT valid: {validationResult.ValidationResult}";
-                Debug.Print(msg);
+                //Debug.Print(msg);
                 Logger?.LogDebug(msg);
             }
             else
             {
                 msg = $"Parsed command {DataMessageHelper.GetStringFromArrayCsharpStyle(ref command)}";
-                Debug.Print(msg);
+                //Debug.Print(msg);
                 DataMessagingConfig.MonitorLogger?.LogDebug(msg);
 
                 DataMessageProcessor.ProcessMessage(codecResult.DataMessage);
@@ -173,12 +173,12 @@ public class IpDuplexIoReceiver : BaseDuplexIoReceiver
         while (true)
         {
 
-            Debug.Print("FillMessagePipeline in progress");
+            //Debug.Print("FillMessagePipeline in progress");
             try
             {
                 if (CancellationSource?.Token.IsCancellationRequested ?? true)
                 {
-                    Debug.Print("FillMessagePipeline cancelled");
+                    //Debug.Print("FillMessagePipeline cancelled");
                     return;
                 }
             }
@@ -209,7 +209,7 @@ public class IpDuplexIoReceiver : BaseDuplexIoReceiver
             if (availableData == 0)
             {
                 DuplexIoNoDataDelegate.Invoke();
-                Debug.Print("No data");
+                //Debug.Print("No data");
                 AsyncHelper.Delay(FillPipelineTimeout);
                 continue;
             }
@@ -227,7 +227,7 @@ public class IpDuplexIoReceiver : BaseDuplexIoReceiver
                 continue;
             }
 
-            Debug.Print("Got data");
+            //Debug.Print("Got data");
 
             var dummy = _bufferPool.Dequeue();
             dummy.Memory = data;

@@ -120,25 +120,19 @@ public class UdpClientSocketProxy : UpdSocketProxyBase
                 UdpClient = null;
             }
 
-            if (RemotePort == 0)
-            {
-                RemotePort = Port;
-            }
-
             try
             {
                 UdpClient = new UdpClient();
-                UdpClient.ExclusiveAddressUse = false;
-                UdpClient.Client.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.ReuseAddress, true);
+                //UdpClient.ExclusiveAddressUse = false;
+                //UdpClient.Client.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.ReuseAddress, true);
                 UdpClient.Client.ReceiveTimeout = ReceiveTimeout;
                 UdpClient.Client.SendTimeout = SendTimeout;
 
-                var ep1 = new IPEndPoint(IPAddress.Any, RemotePort);
-                UdpClient.Client.Bind(ep1);
+                //var ep1 = new IPEndPoint(IPAddress.Any, RemotePort);
+                //UdpClient.Client.Bind(ep1);
 
-                EndPoint = new IPEndPoint(IpAddress, RemotePort);
-                SendEndPoint = new IPEndPoint(IpAddress, Port);
-
+                EndPoint = new IPEndPoint(IpAddress, Port);
+                UdpClient.Connect(EndPoint);
             }
             catch (Exception e)
             {

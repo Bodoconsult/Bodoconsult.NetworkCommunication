@@ -16,11 +16,8 @@ public class UdpTestMultiCastServer : BaseUdpDevice
     /// </summary>
     /// <param name="ipAddress">IP address of the server</param>
     /// <param name="port">Port the server is listening on</param>
-    /// <param name="clientPort">Port the client listens on or 0 (then the same port as for the server is used). Setting clientPort is required normally only if UDP server and client are installed on the same machine!</param>
-    public UdpTestMultiCastServer(IPAddress ipAddress, int port, int clientPort = 0) : base(ipAddress, port, clientPort)
+    public UdpTestMultiCastServer(IPAddress ipAddress, int port) : base(ipAddress, port, true)
     {
-        IsServer = true;
-
         var endPoint1 = new IPEndPoint(0, Port);
         Listener.JoinMulticastGroup(ipAddress, 50);
         Listener.ExclusiveAddressUse = false;
@@ -28,7 +25,6 @@ public class UdpTestMultiCastServer : BaseUdpDevice
         Listener.Client.Bind(endPoint1);
 
         ReceiceEndPoint = new IPEndPoint(ipAddress, Port);
-        SendEndPoint = new IPEndPoint(ipAddress, RemotePort);
     }
 
     /// <summary>
