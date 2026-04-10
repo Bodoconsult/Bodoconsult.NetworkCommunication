@@ -27,7 +27,7 @@ public class UdpTestMultiCastServer : BaseUdpDevice
         // The following three lines allow multiple clients on the same PC
         Listener.ExclusiveAddressUse = false;
         Listener.Client.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.ReuseAddress, true);
-        Listener.ExclusiveAddressUse = false;
+
         // Bind, Join
         Listener.Client.Bind(localEndPoint);
         Listener.JoinMulticastGroup(ipAddress, localIPaddress1!);

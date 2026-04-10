@@ -2,6 +2,7 @@
 
 using System.Diagnostics;
 using System.Net;
+using System.Net.Sockets;
 
 namespace Bodoconsult.NetworkCommunication.Testing;
 
@@ -17,6 +18,10 @@ public class UdpTestUniCastClient: BaseUdpDevice
     /// <param name="port">Port the server is listening on</param>
     public UdpTestUniCastClient(IPAddress ipAddress, int port) : base(ipAddress, port, false, false)
     {
+        // The following three lines allow multiple clients on the same PC
+        //Listener.ExclusiveAddressUse = false;
+        Listener.Client.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.ReuseAddress, true);
+
         EndPoint = new IPEndPoint(ipAddress, Port);
         Listener.Connect(EndPoint);
     }

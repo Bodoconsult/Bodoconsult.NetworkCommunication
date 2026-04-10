@@ -26,11 +26,6 @@ public class UdpClientSocketProxy : UpdSocketProxyBase
     protected IPEndPoint? EndPoint;
 
     /// <summary>
-    /// Endpoint for listening
-    /// </summary>
-    protected IPEndPoint? SendEndPoint;
-
-    /// <summary>
     /// Current socket (only for testing purposes, do not access directly in production code)
     /// </summary>
     public UdpClient? UdpClient { get; protected set; }
@@ -68,7 +63,7 @@ public class UdpClientSocketProxy : UpdSocketProxyBase
     /// <param name="bytesToSend">Data to send</param>
     public override ValueTask<int> Send(ReadOnlyMemory<byte> bytesToSend)
     {
-        return UdpClient?.SendAsync(bytesToSend, SendEndPoint) ?? ValueTask.FromResult(0);
+        return UdpClient?.SendAsync(bytesToSend) ?? ValueTask.FromResult(0);
     }
 
     ///// <summary>
@@ -123,16 +118,11 @@ public class UdpClientSocketProxy : UpdSocketProxyBase
             try
             {
                 UdpClient = new UdpClient();
-                //UdpClient.ExclusiveAddressUse = false;
-                //UdpClient.Client.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.ReuseAddress, true);
-                UdpClient.Client.ReceiveTimeout = ReceiveTimeout;
-                UdpClient.Client.SendTimeout = SendTimeout;
-
-                //var ep1 = new IPEndPoint(IPAddress.Any, RemotePort);
-                //UdpClient.Client.Bind(ep1);
+                UdpClient.Client.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.ReuseAddress, true);
 
                 EndPoint = new IPEndPoint(IpAddress, Port);
                 UdpClient.Connect(EndPoint);
+
             }
             catch (Exception e)
             {
@@ -168,7 +158,7 @@ public class UdpClientSocketProxy : UpdSocketProxyBase
     /// <returns>Number of bytes received</returns>
     public override Task<int> Receive(byte[] buffer)
     {
-        if (UdpClient is not { Available: > 0 })
+        if (UdpClient == null)
         {
             return Task.FromResult(0);
         }
@@ -194,10 +184,6 @@ public class UdpClientSocketProxy : UpdSocketProxyBase
         {
             return 0;
         }
-        if (UdpClient.Available <= 0)
-        {
-            return 0;
-        }
 
         var received = await Task.Run(() =>
         {
@@ -218,7 +204,7 @@ public class UdpClientSocketProxy : UpdSocketProxyBase
     /// <returns>Number of bytes received</returns>
     public override Task<int> Receive(byte[] buffer, int offset, int expectedBytesLength)
     {
-        if (UdpClient is not { Available: > 0 })
+        if (UdpClient == null)
         {
             return Task.FromResult(0);
         }
@@ -242,7 +228,15 @@ public class UdpClientSocketProxy : UpdSocketProxyBase
     /// <returns></returns>
     public override Task<int> Send(byte[] bytesToSend, int offset, int messageBytesLength)
     {
-        return UdpClient == null ? Task.FromResult(0) : UdpClient.Client.SendAsync(bytesToSend, offset, messageBytesLength);
+        if (UdpClient == null)
+        {
+            return Task.FromResult(0);
+        }
+
+        var datagram = bytesToSend.AsMemory().Slice(offset, messageBytesLength);
+        
+
+        return UdpClient.Client.SendAsync(datagram.ToArray());
     }
 
     ///// <summary>

@@ -112,7 +112,7 @@ public class UdpServerSocketProxy : UpdSocketProxyBase
     /// <param name="bytesToSend">Byte array to send</param>
     public override Task<int> Send(byte[] bytesToSend)
     {
-        return UdpClient == null ? Task.FromResult(0) : UdpClient.SendAsync(bytesToSend, bytesToSend.Length);
+        return UdpClient == null ? Task.FromResult(0) : UdpClient.SendAsync(bytesToSend, bytesToSend.Length, EndPoint);
     }
 
     /// <summary>
@@ -177,25 +177,20 @@ public class UdpServerSocketProxy : UpdSocketProxyBase
             try
             {
                 UdpClient = new UdpClient(Port);
+                
+                // The following three lines allow multiple clients on the same PC
                 //UdpClient.ExclusiveAddressUse = false;
-                //UdpClient.Client.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.ReuseAddress, true);
-                UdpClient.Client.ReceiveTimeout = ReceiveTimeout;
-                UdpClient.Client.SendTimeout = SendTimeout;
-                //UdpClient.Client.Blocking = false;
-
-                //var endPoint1 = new IPEndPoint(IPAddress.Any, Port);
-                //UdpClient.Client.Bind(endPoint1);
+                UdpClient.Client.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.ReuseAddress, true);
 
                 EndPoint = new IPEndPoint(IPAddress.Any, Port);
+
             }
             catch (Exception e)
             {
                 // ToDo: add logging
-                Console.WriteLine(e);
+                Debug.Print(e.ToString());
                 throw;
             }
-
-
         });
     }
 
@@ -224,7 +219,7 @@ public class UdpServerSocketProxy : UpdSocketProxyBase
     /// <returns>Number of bytes received</returns>
     public override Task<int> Receive(byte[] buffer)
     {
-        if (UdpClient is not { Available: > 0 })
+        if (UdpClient == null)
         {
             return Task.FromResult(0);
         }
@@ -232,7 +227,7 @@ public class UdpServerSocketProxy : UpdSocketProxyBase
         var received = Task.Run(() =>
         {
             var result = UdpClient.Receive(ref EndPoint);
-            Buffer.BlockCopy(result, 0, buffer, 0, buffer.Length);
+            Buffer.BlockCopy(result, 0, buffer, 0, result.Length);
             return Task.FromResult(result.Length);
         });
 
@@ -246,7 +241,7 @@ public class UdpServerSocketProxy : UpdSocketProxyBase
     /// <returns>Number of bytes received</returns>
     public override async Task<int> Receive(Memory<byte> buffer)
     {
-        if (UdpClient is not { Available: > 0 })
+        if (UdpClient == null)
         {
             return 0;
         }
@@ -270,7 +265,7 @@ public class UdpServerSocketProxy : UpdSocketProxyBase
     /// <returns>Number of bytes received</returns>
     public override Task<int> Receive(byte[] buffer, int offset, int expectedBytesLength)
     {
-        if (UdpClient is not { Available: > 0 })
+        if (UdpClient == null)
         {
             return Task.FromResult(0);
         }
@@ -278,7 +273,7 @@ public class UdpServerSocketProxy : UpdSocketProxyBase
         var received = Task.Run(() =>
         {
             var result = UdpClient.Receive(ref EndPoint);
-            Buffer.BlockCopy(result, offset, buffer, 0, buffer.Length - offset);
+            Buffer.BlockCopy(result, offset, buffer, 0, result.Length - offset);
             return Task.FromResult(result.Length);
         });
 

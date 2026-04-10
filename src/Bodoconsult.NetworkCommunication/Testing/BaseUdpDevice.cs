@@ -154,13 +154,25 @@ public abstract class BaseUdpDevice : IUdpDevice
             return [];
         }
 
-        var bytes = Listener.Receive(ref EndPoint);
+        byte[] bytes;
 
-        // No data received?
-        if (bytes.Length == 0)
+        try
         {
-            return bytes;
+            bytes = Listener.Receive(ref EndPoint);
+
+            // No data received?
+            if (bytes.Length == 0)
+            {
+                return bytes;
+            }
         }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            throw;
+        }
+
+
 
         Debug.Print($"{TypeName}: received {bytes.Length} bytes from {EndPoint}");
         //Debug.Print($" {Encoding.ASCII.GetString(bytes, 0, bytes.Length)}");

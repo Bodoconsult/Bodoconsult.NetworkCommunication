@@ -1,5 +1,7 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
+// Taken from https://sashadu.wordpress.com/2016/06/10/c-udp-multicast/
+
 using System.Diagnostics;
 using System.Net;
 using System.Net.Sockets;
