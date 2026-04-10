@@ -1,5 +1,6 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
+using System.Collections.Concurrent;
 using System.Diagnostics;
 using System.Net;
 using System.Net.Sockets;
@@ -30,7 +31,7 @@ public abstract class BaseUdpDevice : IUdpDevice
     /// <summary>
     /// Endpoint for listening (receiving)
     /// </summary>
-    protected IPEndPoint? ReceiceEndPoint;
+    protected IPEndPoint? EndPoint;
 
     /// <summary>
     /// Default ctor
@@ -38,18 +39,28 @@ public abstract class BaseUdpDevice : IUdpDevice
     /// <param name="ipAddress">IP address of the server</param>
     /// <param name="port">Port the server listens on</param>
     /// <param name="isServer">Is this a server instance?</param>
-    protected BaseUdpDevice(IPAddress ipAddress, int port, bool isServer)
+    /// <param name="isMulticast">Is it a multicast instance?</param>
+    protected BaseUdpDevice(IPAddress ipAddress, int port, bool isServer, bool isMulticast)
     {
         _isServer = isServer;
 
-        if (_isServer)
-        {
-            Listener = new UdpClient(port);
-        }
-        else
+        if (isMulticast)
         {
             Listener = new UdpClient();
         }
+        else
+        {
+            if (_isServer)
+            {
+
+                Listener = new UdpClient(port);
+            }
+            else
+            {
+                Listener = new UdpClient();
+            }
+        }
+
 
         //Listener.ExclusiveAddressUse = false;
         //Listener.Client.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.ReuseAddress, true);
@@ -95,7 +106,7 @@ public abstract class BaseUdpDevice : IUdpDevice
     /// <summary>
     /// All received messages
     /// </summary>
-    public List<ReadOnlyMemory<byte>> ReceivedMessages { get; } = [];
+    public ConcurrentBag<ReadOnlyMemory<byte>> ReceivedMessages { get; } = [];
 
     /// <summary>
     /// Start the client
@@ -115,22 +126,9 @@ public abstract class BaseUdpDevice : IUdpDevice
                 return;
             }
 
-            if (Listener.Available <= 0)
-            {
-                //Debug.Print("UPD: no data");
-                //Thread.Sleep(50);
-                Task.Delay(50, CancellationTokenSource.Token);
-                continue;
-            }
-
             //try
             //{
-            var bytes = Listener.Receive(ref ReceiceEndPoint);
-
-            //Debug.Print($"{TypeName}: received {bytes.Length} bytes from {ReceiceEndPoint}");
-            //Debug.Print($" {Encoding.ASCII.GetString(bytes, 0, bytes.Length)}");
-
-            ReceivedMessages.Add(bytes.AsMemory());
+            var bytes = Receive();
 
             if (!_isServer && ReplytoReceivedMessage)
             {
@@ -142,6 +140,33 @@ public abstract class BaseUdpDevice : IUdpDevice
             //    Debug.Print(e.ToString());
             //}
         }
+    }
+
+    /// <summary>
+    /// Receive data
+    /// </summary>
+    /// <returns>Received data</returns>
+    public virtual byte[] Receive()
+    {
+        if (IsDisposed)
+        {
+            Debug.Print($"{TypeName}: nothing to receive");
+            return [];
+        }
+
+        var bytes = Listener.Receive(ref EndPoint);
+
+        // No data received?
+        if (bytes.Length == 0)
+        {
+            return bytes;
+        }
+
+        Debug.Print($"{TypeName}: received {bytes.Length} bytes from {EndPoint}");
+        //Debug.Print($" {Encoding.ASCII.GetString(bytes, 0, bytes.Length)}");
+
+        ReceivedMessages.Add(bytes.AsMemory());
+        return bytes;
     }
 
     //public async Task<Received> Receive()

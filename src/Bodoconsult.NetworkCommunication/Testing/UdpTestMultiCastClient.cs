@@ -2,6 +2,7 @@
 
 using System.Diagnostics;
 using System.Net;
+using System.Net.Sockets;
 
 namespace Bodoconsult.NetworkCommunication.Testing;
 
@@ -15,15 +16,21 @@ public class UdpTestMultiCastClient : BaseUdpDevice
     /// </summary>
     /// <param name="ipAddress">IP address of the server</param>
     /// <param name="port">Port the server is listening on</param>
-    public UdpTestMultiCastClient(IPAddress ipAddress, int port) : base(ipAddress, port, false)
+    public UdpTestMultiCastClient(IPAddress ipAddress, int port) : base(ipAddress, port, false, true)
     {
-        var endPoint1 = new IPEndPoint(0, Port);
-        Listener.Client.Bind(endPoint1);
+        var localIPaddress1 = IPAddress.Any;
 
-        Listener.JoinMulticastGroup(ipAddress);
-        Listener.MulticastLoopback = true;
+        // Create endpoints
+        EndPoint = new IPEndPoint(ipAddress, port);
+        var localEndPoint = new IPEndPoint(localIPaddress1!, port);
 
-        ReceiceEndPoint = new IPEndPoint(ipAddress, Port);
+        // The following three lines allow multiple clients on the same PC
+        Listener.ExclusiveAddressUse = false;
+        Listener.Client.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.ReuseAddress, true);
+        Listener.ExclusiveAddressUse = false;
+        // Bind, Join
+        Listener.Client.Bind(localEndPoint);
+        Listener.JoinMulticastGroup(ipAddress, localIPaddress1!);
     }
 
     /// <summary>
@@ -32,7 +39,35 @@ public class UdpTestMultiCastClient : BaseUdpDevice
     /// <param name="data">Byte array to send</param>
     public override void Send(byte[] data)
     {
-        var result = Listener.Send(data, ReceiceEndPoint);
-        Debug.Print($"{GetType().Name}: sent {result} byte(s)!");
+        var result = Listener.Send(data, data.Length, EndPoint);
+        Debug.Print($"{TypeName}: sent {result} byte(s)!");
+    }
+
+    /// <summary>
+    /// Receive data
+    /// </summary>
+    /// <returns>Received data</returns>
+    public override byte[] Receive()
+    {
+        if (IsDisposed)
+        {
+            Debug.Print($"{TypeName}: nothing to receive");
+            return [];
+        }
+
+        var sender = new IPEndPoint(0, 0);
+        var bytes = Listener.Receive(ref sender);
+
+        // No data received?
+        if (bytes.Length == 0)
+        {
+            return bytes;
+        }
+
+        Debug.Print($"{TypeName}: received {bytes.Length} bytes from {sender}");
+        //Debug.Print($" {Encoding.ASCII.GetString(bytes, 0, bytes.Length)}");
+
+        ReceivedMessages.Add(bytes.AsMemory());
+        return bytes;
     }
 }

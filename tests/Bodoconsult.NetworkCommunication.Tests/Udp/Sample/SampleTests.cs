@@ -3,6 +3,7 @@
 using System.Diagnostics;
 using System.Net;
 using System.Net.Sockets;
+using Bodoconsult.NetworkCommunication.Tests.Helpers;
 
 namespace Bodoconsult.NetworkCommunication.Tests.Udp.Sample;
 
@@ -14,7 +15,7 @@ internal class SampleTests
         // Arrange 
         var cts = new CancellationTokenSource(2000);
 
-        var port = 11001;
+        var port = TestDataHelper.GetRandomPort();
 
         Task.Run(() =>
         {
@@ -58,7 +59,7 @@ internal class SampleTests
 
         var cts = new CancellationTokenSource(2000);
 
-        var port = 11001;
+        const int port = 11001;
 
         Task.Run(() =>
         {
@@ -68,7 +69,6 @@ internal class SampleTests
 
             while (!cts.IsCancellationRequested)
             {
-                    
                 var data = udpServer.Receive(ref remoteEp); // listen on port 11000
                 Debug.Print($"Server: receive data from {remoteEp}: {data.Length} bytes");
                 udpServer.Send([1], 1, remoteEp); // reply back

@@ -15,10 +15,10 @@ public class UdpTestUniCastClient: BaseUdpDevice
     /// </summary>
     /// <param name="ipAddress">Server IP address</param>
     /// <param name="port">Port the server is listening on</param>
-    public UdpTestUniCastClient(IPAddress ipAddress, int port) : base(ipAddress, port, false)
+    public UdpTestUniCastClient(IPAddress ipAddress, int port) : base(ipAddress, port, false, false)
     {
-        ReceiceEndPoint = new IPEndPoint(ipAddress, Port);
-        Listener.Connect(ReceiceEndPoint);
+        EndPoint = new IPEndPoint(ipAddress, Port);
+        Listener.Connect(EndPoint);
     }
 
     public override void Send(byte[] data)

@@ -15,14 +15,14 @@ public class UdpTestUniCastServer : BaseUdpDevice
     /// </summary>
     /// <param name="ipAddress">Server IP address</param>
     /// <param name="port">Port the server is listening on</param>
-    public UdpTestUniCastServer(IPAddress ipAddress, int port) : base(ipAddress, port, true)
+    public UdpTestUniCastServer(IPAddress ipAddress, int port) : base(ipAddress, port, true, false)
     {
         //var endPoint1 = new IPEndPoint(IPAddress.Any, Port);
         //Listener.ExclusiveAddressUse = false;
         //Listener.Client.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.ReuseAddress, true);
         //Listener.Client.Bind(endPoint1);
 
-        ReceiceEndPoint = new IPEndPoint(IPAddress.Any, Port);
+        EndPoint = new IPEndPoint(IPAddress.Any, Port);
 
         //// Remove
         //SendEndPoint = new IPEndPoint(ipAddress, RemotePort);
@@ -35,7 +35,7 @@ public class UdpTestUniCastServer : BaseUdpDevice
             return;
         }
 
-        var result = Listener.Send(data, data.Length, ReceiceEndPoint);
+        var result = Listener.Send(data, data.Length, EndPoint);
         Debug.Print($"{TypeName}: sent {result} byte(s)!");
     }
 }

@@ -1,5 +1,6 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
+using System.Collections.Concurrent;
 using System.Net;
 
 namespace Bodoconsult.NetworkCommunication.Interfaces;
@@ -37,7 +38,7 @@ public interface IUdpDevice: IDisposable
     /// <summary>
     /// All received messages
     /// </summary>
-    List<ReadOnlyMemory<byte>> ReceivedMessages { get; }
+    ConcurrentBag<ReadOnlyMemory<byte>> ReceivedMessages { get; }
 
     /// <summary>
     /// Start the client
@@ -49,4 +50,10 @@ public interface IUdpDevice: IDisposable
     /// </summary>
     /// <param name="data">Byte array to send</param>
     void Send(byte[] data);
+
+    /// <summary>
+    /// Receive data
+    /// </summary>
+    /// <returns>Received data</returns>
+    byte[] Receive();
 }
