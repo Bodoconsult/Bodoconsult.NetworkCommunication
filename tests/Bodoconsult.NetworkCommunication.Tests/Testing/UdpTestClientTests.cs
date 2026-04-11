@@ -3,7 +3,6 @@
 using Bodoconsult.App.Helpers;
 using Bodoconsult.NetworkCommunication.Testing;
 using Bodoconsult.NetworkCommunication.Tests.Helpers;
-using Bodoconsult.NetworkCommunication.Tests.Udp.Sample;
 using System.Diagnostics;
 using System.Net;
 
@@ -13,7 +12,7 @@ namespace Bodoconsult.NetworkCommunication.Tests.Testing;
 internal class UdpTestUniCastServerTests
 {
     [Test]
-    public void SendReceive_PermanentMode_MessageReceived()
+    public async Task SendReceive_PermanentMode_MessageReceived()
     {
         // Arrange 
         var serverData = new byte[] { 0x0, 0x1, 0x2 };
@@ -25,7 +24,9 @@ internal class UdpTestUniCastServerTests
 
         var cts = new CancellationTokenSource(5000);
 
-        Task.Run(() =>
+#pragma warning disable CS4014 // Because this call is not awaited, execution of the current method continues before the call is completed
+        var task = Task.Run(async () =>
+#pragma warning restore CS4014 // Because this call is not awaited, execution of the current method continues before the call is completed
         {
 
             var udpServer = new UdpTestUniCastServer(ip, port);
@@ -34,7 +35,7 @@ internal class UdpTestUniCastServerTests
             {
                 while (!cts.IsCancellationRequested)
                 {
-                    udpServer.Receive(); // listen on port 11000
+                    await udpServer.Receive(); // listen on port 11000
                     udpServer.Send(serverData); // reply back
                 }
 
@@ -51,7 +52,7 @@ internal class UdpTestUniCastServerTests
             }
         });
 
-        Task.Delay(100);
+        await Task.Delay(100);
 
         // Act  
         var client = new UdpTestUniCastClient(ip, port);
@@ -63,14 +64,19 @@ internal class UdpTestUniCastServerTests
             client.Send(clientData);
 
             // then receive data
-            client.Receive();
+            await client.Receive();
         }
 
         client.Dispose();
 
+        task.Wait();
+
         // Assert
-        Assert.That(client.ReceivedMessages.Count, Is.GreaterThan(3));
-        Assert.That(serverCount, Is.GreaterThan(3));
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(client.ReceivedMessages.Count, Is.GreaterThan(3));
+            Assert.That(serverCount, Is.GreaterThan(3));
+        }
     }
 
     [Test]
@@ -89,6 +95,8 @@ internal class UdpTestUniCastServerTests
         client.Start();
         client.Send(data);
 
+        Wait.Until(()=>!server.ReceivedMessages.IsEmpty);
+
         // Act  
         server.Send(data);
 
@@ -97,7 +105,7 @@ internal class UdpTestUniCastServerTests
         // Assert
         Assert.That(client.ReceivedMessages.Count, Is.GreaterThan(0));
 
-        server.Dispose();
+
         client.Dispose();
 
         var success = client.ReceivedMessages.TryTake(out var msg);

@@ -21,6 +21,7 @@ public class UdpTestUniCastClient: BaseUdpDevice
         // The following three lines allow multiple clients on the same PC
         //Listener.ExclusiveAddressUse = false;
         Listener.Client.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.ReuseAddress, true);
+        Listener.Client.Blocking = false;
 
         EndPoint = new IPEndPoint(ipAddress, Port);
         Listener.Connect(EndPoint);

@@ -55,5 +55,5 @@ public interface IUdpDevice: IDisposable
     /// Receive data
     /// </summary>
     /// <returns>Received data</returns>
-    byte[] Receive();
+    Task<byte[]> Receive();
 }

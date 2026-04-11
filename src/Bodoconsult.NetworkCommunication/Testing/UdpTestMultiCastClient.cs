@@ -47,7 +47,7 @@ public class UdpTestMultiCastClient : BaseUdpDevice
     /// Receive data
     /// </summary>
     /// <returns>Received data</returns>
-    public override byte[] Receive()
+    public override async Task<byte[]> Receive()
     {
         if (IsDisposed)
         {
@@ -55,19 +55,18 @@ public class UdpTestMultiCastClient : BaseUdpDevice
             return [];
         }
 
-        var sender = new IPEndPoint(0, 0);
-        var bytes = Listener.Receive(ref sender);
+        var bytes = await Listener.ReceiveAsync();
 
         // No data received?
-        if (bytes.Length == 0)
+        if (bytes.Buffer.Length == 0)
         {
-            return bytes;
+            return [];
         }
 
-        Debug.Print($"{TypeName}: received {bytes.Length} bytes from {sender}");
+        Debug.Print($"{TypeName}: received {bytes.Buffer.Length} bytes from {bytes.RemoteEndPoint}");
         //Debug.Print($" {Encoding.ASCII.GetString(bytes, 0, bytes.Length)}");
 
-        ReceivedMessages.Add(bytes.AsMemory());
-        return bytes;
+        ReceivedMessages.Add(bytes.Buffer.AsMemory());
+        return bytes.Buffer;
     }
 }

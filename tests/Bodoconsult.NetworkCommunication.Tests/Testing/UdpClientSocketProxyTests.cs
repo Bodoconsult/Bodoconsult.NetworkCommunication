@@ -66,7 +66,7 @@ internal class UdpClientSocketProxyTests
             while (!cts.IsCancellationRequested)
             {
                 // then receive data
-                udpServer.Receive();
+                await udpServer.Receive();
 
                 // send data
                 udpServer.Send(clientData);

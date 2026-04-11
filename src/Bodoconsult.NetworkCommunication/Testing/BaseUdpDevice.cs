@@ -13,7 +13,7 @@ namespace Bodoconsult.NetworkCommunication.Testing;
 /// </summary>
 public abstract class BaseUdpDevice : IUdpDevice
 {
-    private Thread? _thread;
+    private Task? _thread;
 
     /// <summary>
     /// Is the socket already disposed?
@@ -32,6 +32,12 @@ public abstract class BaseUdpDevice : IUdpDevice
     /// Endpoint for listening (receiving)
     /// </summary>
     protected IPEndPoint? EndPoint;
+
+    /// <summary>
+    /// Endpoint for sending messages (only unicasts)
+    /// Holds the IP and port of the sender. It will be updated when a message is received in case of unicast messaging.
+    /// </summary>
+    protected IPEndPoint? SenderEndPoint = new(IPAddress.Any, 0);
 
     /// <summary>
     /// Default ctor
@@ -113,22 +119,22 @@ public abstract class BaseUdpDevice : IUdpDevice
     /// </summary>
     public void Start()
     {
-        _thread = new Thread(WaitForMessages);
-        _thread.Start();
+        _thread = Task.Run(WaitForMessages);
+        Task.Delay(100);
     }
 
-    private void WaitForMessages()
+    private async Task WaitForMessages()
     {
         while (!CancellationTokenSource.Token.IsCancellationRequested)
         {
-            if (CancellationTokenSource.Token.IsCancellationRequested)
-            {
-                return;
-            }
+            //if (CancellationTokenSource.Token.IsCancellationRequested)
+            //{
+            //    return;
+            //}
 
             //try
             //{
-            var bytes = Receive();
+            var bytes = await Receive();
 
             if (!_isServer && ReplytoReceivedMessage)
             {
@@ -146,39 +152,36 @@ public abstract class BaseUdpDevice : IUdpDevice
     /// Receive data
     /// </summary>
     /// <returns>Received data</returns>
-    public virtual byte[] Receive()
+    public virtual async Task<byte[]> Receive()
     {
         if (IsDisposed)
         {
             Debug.Print($"{TypeName}: nothing to receive");
-            return [];
+            return await Task.FromResult(Array.Empty<byte>());
         }
-
-        byte[] bytes;
 
         try
         {
-            bytes = Listener.Receive(ref EndPoint);
+            var result = await Listener.ReceiveAsync(CancellationTokenSource.Token);
+            SenderEndPoint = result.RemoteEndPoint;
 
             // No data received?
-            if (bytes.Length == 0)
+            if (result.Buffer.Length == 0)
             {
-                return bytes;
+                return result.Buffer;
             }
+
+            Debug.Print($"{TypeName}: received {result.Buffer.Length} bytes from {SenderEndPoint}");
+            //Debug.Print($" {Encoding.ASCII.GetString(bytes, 0, bytes.Length)}");
+
+            ReceivedMessages.Add(result.Buffer.AsMemory());
+            return result.Buffer;
         }
         catch (Exception e)
         {
             Console.WriteLine(e);
             throw;
         }
-
-
-
-        Debug.Print($"{TypeName}: received {bytes.Length} bytes from {EndPoint}");
-        //Debug.Print($" {Encoding.ASCII.GetString(bytes, 0, bytes.Length)}");
-
-        ReceivedMessages.Add(bytes.AsMemory());
-        return bytes;
     }
 
     //public async Task<Received> Receive()
@@ -203,6 +206,15 @@ public abstract class BaseUdpDevice : IUdpDevice
     /// <summary>Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.</summary>
     public void Dispose()
     {
+        try
+        {
+            _thread?.Dispose();
+        }
+        catch
+        {
+            // Do nothing
+        }
+
         IsDisposed = true;
         Dispose(true);
         GC.SuppressFinalize(this);
@@ -220,6 +232,7 @@ public abstract class BaseUdpDevice : IUdpDevice
 
         try
         {
+
             Listener.Close();
             Listener.Dispose();
         }
