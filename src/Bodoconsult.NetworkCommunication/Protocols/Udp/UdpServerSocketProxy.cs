@@ -226,7 +226,7 @@ public class UdpServerSocketProxy : UpdSocketProxyBase
 
         var received = Task.Run(() =>
         {
-            var result = UdpClient.Receive(ref EndPoint);
+            var result = UdpClient.Receive(ref SendEndPoint);
             Buffer.BlockCopy(result, 0, buffer, 0, result.Length);
             return Task.FromResult(result.Length);
         });
@@ -248,7 +248,7 @@ public class UdpServerSocketProxy : UpdSocketProxyBase
 
         var received = await Task.Run(() =>
         {
-            var result = UdpClient.Receive(ref EndPoint);
+            var result = UdpClient.Receive(ref SendEndPoint);
             result.CopyTo(buffer);
             return Task.FromResult(result.Length);
         });
@@ -272,7 +272,7 @@ public class UdpServerSocketProxy : UpdSocketProxyBase
 
         var received = Task.Run(() =>
         {
-            var result = UdpClient.Receive(ref EndPoint);
+            var result = UdpClient.Receive(ref SendEndPoint);
             Buffer.BlockCopy(result, offset, buffer, 0, result.Length - offset);
             return Task.FromResult(result.Length);
         });
@@ -289,36 +289,8 @@ public class UdpServerSocketProxy : UpdSocketProxyBase
     /// <returns></returns>
     public override Task<int> Send(byte[] bytesToSend, int offset, int messageBytesLength)
     {
-        return UdpClient == null || EndPoint == null ? Task.FromResult(0) : UdpClient.Client.SendToAsync(bytesToSend, offset, messageBytesLength, SocketFlags.None, EndPoint);
+        return UdpClient == null || SendEndPoint == null ? Task.FromResult(0) : UdpClient.Client.SendToAsync(bytesToSend, offset, messageBytesLength, SocketFlags.None, SendEndPoint);
     }
-
-    ///// <summary>
-    ///// Poll data
-    ///// </summary>
-    ///// <returns>True, if data can be read, else false</returns>
-    //public override bool Poll()
-    //{
-    //    return Socket.Poll(PollingTimeout, SelectMode.SelectRead);
-    //}
-
-    ///// <summary>
-    ///// Send a file
-    ///// </summary>
-    ///// <param name="fileName">Full file path</param>
-    //public override void SendFile(string fileName)
-    //{
-    //    Socket.SendFile(fileName);
-    //}
-
-    ///// <summary>
-    ///// Prepare the answer of the socket for testing
-    ///// </summary>
-    ///// <param name="testData">Test data to use</param>
-    //public override void PrepareAnswer(byte[] testData)
-    //{
-    //    // Do nothing
-    //}
-
 
     /// <summary>
     /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.

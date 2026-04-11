@@ -82,20 +82,6 @@ public interface ISocketProxy: IDisposable
     /// </summary>
     Task Connect();
 
-    ///// <summary>
-    ///// Bind to an IP endpoint
-    ///// </summary>
-    ///// <param name="endpoint">IP endpoint</param>
-    //void Bind(IPEndPoint endpoint);
-
-
-    ///// <summary>
-    ///// Listen
-    ///// </summary>
-    ///// <param name="backlog">The maximum length of pending messages queue</param>
-    //void Listen(int backlog);
-
-
     /// <summary>
     /// Receive first data byte from the socket
     /// </summary>

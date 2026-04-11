@@ -3,6 +3,8 @@
 using Bodoconsult.App.Abstractions.Interfaces;
 using Bodoconsult.App.Helpers;
 using Bodoconsult.NetworkCommunication.Communication;
+using Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
+using Bodoconsult.NetworkCommunication.EnumAndStates;
 using Bodoconsult.NetworkCommunication.Interfaces;
 using Bodoconsult.NetworkCommunication.Tests.Helpers;
 using Bodoconsult.NetworkCommunication.Tests.Interfaces;
@@ -10,6 +12,8 @@ using System.Diagnostics;
 using System.Net;
 using System.Net.Sockets;
 using System.Security;
+using Bodoconsult.NetworkCommunication.DataMessaging.DataBlocks;
+using Bodoconsult.NetworkCommunication.OrderManagement.ParameterSets;
 
 namespace Bodoconsult.NetworkCommunication.Tests.Infrastructure;
 
@@ -125,6 +129,16 @@ public class BaseUdpTests : IUdpTests
 
         DuplexIo.StartCommunication().Wait();
 
+        // Send a recognition message to the server
+        var msg = new RawOutboundDataMessage
+        {
+            RawMessageData = new Memory<byte>([0x1])
+        };
+
+        var result2 = DuplexIo.SendMessageDirect(msg).GetAwaiter().GetResult();
+        Assert.That(result2.ProcessExecutionResult, Is.EqualTo(OrderExecutionResultState.Successful));
+
+        // Now send messages
         foreach (var message in data)
         {
             RemoteUdpDevice.Send(message);
@@ -144,7 +158,7 @@ public class BaseUdpTests : IUdpTests
                     tcs1.SetResult(true);
                     return;
                 }
-                Task.Delay(50, cts.Token);
+                Task.Delay(10, cts.Token);
             }
 
             tcs1.SetResult(false);
@@ -171,6 +185,21 @@ public class BaseUdpTests : IUdpTests
 
         DuplexIo.StartCommunication().Wait();
 
+        // Send a recognition message to the server
+        var msg = new SdcpOutboundDataMessage()
+        {
+            WaitForAcknowledgement = false,
+            DataBlock = new BasicOutboundDatablock
+            {
+                Data = new Memory<byte>([0x0, 0x1, 0x2, 0x3, 0x4]),
+                DataBlockType = 'x'
+            },
+            RawMessageData = new Memory<byte>([0x78, 0x0, 0x1, 0x2, 0x3, 0x4])
+        };
+
+        RemoteUdpDevice.Send(msg.RawMessageData.ToArray());
+
+        // Now send messages
         var tcs1 = new TaskCompletionSource<bool>();
         var t1 = tcs1.Task;
 

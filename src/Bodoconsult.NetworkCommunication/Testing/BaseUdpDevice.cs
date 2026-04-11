@@ -82,7 +82,7 @@ public abstract class BaseUdpDevice : IUdpDevice
     /// <summary>
     /// Reply to a received message. Default: false
     /// </summary>
-    public bool ReplytoReceivedMessage { get; set; }
+    public bool ReplyToReceivedMessage { get; set; }
 
     /// <summary>
     /// IP address of the server
@@ -136,7 +136,7 @@ public abstract class BaseUdpDevice : IUdpDevice
             //{
             var bytes = await Receive();
 
-            if (!_isServer && ReplytoReceivedMessage)
+            if (!_isServer && ReplyToReceivedMessage)
             {
                 Send(bytes);
             }

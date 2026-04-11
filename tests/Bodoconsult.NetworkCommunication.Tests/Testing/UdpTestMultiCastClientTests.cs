@@ -72,6 +72,7 @@ internal class UdpTestMultiCastServerTests
 
         client.Dispose();
 
+        // ReSharper disable once MethodHasAsyncOverloadWithCancellation
         task.Wait();
 
         // Assert

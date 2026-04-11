@@ -98,26 +98,6 @@ public abstract class UpdSocketProxyBase : ISocketProxy
         throw new NotSupportedException();
     }
 
-
-    /// <summary>
-    /// Bind to an IP endpoint
-    /// </summary>
-    /// <param name="ipEndPoint">IP endpoint</param>
-    public virtual void Bind(IPEndPoint ipEndPoint)
-    {
-        throw new NotSupportedException();
-    }
-
-    /// <summary>
-    /// Listen
-    /// </summary>
-    /// <param name="backlog">The maximum length of pending messages queue</param>
-    public virtual void Listen(int backlog)
-    {
-        throw new NotSupportedException();
-    }
-
-
     /// <summary>
     /// Receive data from the socket
     /// </summary>

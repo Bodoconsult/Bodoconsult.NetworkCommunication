@@ -8,7 +8,6 @@
 
 using System.Net;
 using System.Net.Sockets;
-using Bodoconsult.NetworkCommunication.Helpers;
 using Bodoconsult.NetworkCommunication.Interfaces;
 
 namespace Bodoconsult.NetworkCommunication.Protocols.Udp;
@@ -166,7 +165,7 @@ public class UdpClientSocketProxy : UpdSocketProxyBase
         var received = Task.Run(() =>
         {
             var result = UdpClient.Receive(ref EndPoint);
-            Buffer.BlockCopy(result, 0, buffer, 0, buffer.Length);
+            Buffer.BlockCopy(result, 0, buffer, 0, result.Length);
             return Task.FromResult(result.Length);
         });
 
@@ -212,7 +211,7 @@ public class UdpClientSocketProxy : UpdSocketProxyBase
         var received = Task.Run(() =>
         {
             var result = UdpClient.Receive(ref EndPoint);
-            Buffer.BlockCopy(result, offset, buffer, 0, buffer.Length - offset);
+            Buffer.BlockCopy(result, offset, buffer, 0, result.Length - offset);
             return Task.FromResult(result.Length);
         });
 

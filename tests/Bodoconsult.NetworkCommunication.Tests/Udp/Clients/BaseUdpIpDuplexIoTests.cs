@@ -35,7 +35,7 @@ public abstract class BaseUdpIpDuplexIoTests : BaseUdpTests
         {
             return;
         }
-        RemoteUdpDevice?.Dispose();
+        RemoteUdpDevice.Dispose();
         RemoteUdpDevice = null;
     }
 
