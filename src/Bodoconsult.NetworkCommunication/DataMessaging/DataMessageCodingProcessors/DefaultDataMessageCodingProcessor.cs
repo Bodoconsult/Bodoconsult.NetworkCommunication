@@ -1,6 +1,7 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
 
+using Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
 using Bodoconsult.NetworkCommunication.Interfaces;
 
 namespace Bodoconsult.NetworkCommunication.DataMessaging.DataMessageCodingProcessors;
@@ -55,6 +56,24 @@ public class DefaultDataMessageCodingProcessor : IDataMessageCodingProcessor
     /// <returns>A result set with the message as byte array </returns>
     public OutboundCodecResult EncodeDataMessage(IOutboundMessage dataMessage)
     {
+        if (dataMessage is RawOutboundDataMessage raw)
+        {
+            if (raw.RawMessageData.Length == 0)
+            {
+                return new OutboundCodecResult
+                {
+                    ErrorCode = 2,
+                    ErrorMessage = "raw.RawMessageData.Length is zero"
+                };
+            }
+
+            return new OutboundCodecResult
+            {
+                ErrorCode = 0
+            };
+        }
+
+
         if (MessageCodecs.Count == 0)
         {
             return new OutboundCodecResult

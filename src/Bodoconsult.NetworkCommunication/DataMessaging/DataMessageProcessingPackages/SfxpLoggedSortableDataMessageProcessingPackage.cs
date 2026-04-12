@@ -8,6 +8,7 @@ using Bodoconsult.NetworkCommunication.DataMessaging.DataMessageCodingProcessors
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessageProcessors;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessageSplitters;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessageValidators;
+using Bodoconsult.NetworkCommunication.DataMessaging.DataSorter;
 using Bodoconsult.NetworkCommunication.DataMessaging.HandshakeDataMessageValidators;
 using Bodoconsult.NetworkCommunication.Factories;
 using Bodoconsult.NetworkCommunication.Interfaces;
@@ -15,21 +16,25 @@ using Bodoconsult.NetworkCommunication.Interfaces;
 namespace Bodoconsult.NetworkCommunication.DataMessaging.DataMessageProcessingPackages;
 
 /// <summary>
-/// Current implementation of <see cref="IDataMessageProcessingPackage"/> for SFXP protocol
+/// Current implementation of <see cref="IDataMessageProcessingPackage"/> for SFXP protocol on client side with message sorting and logging
 /// </summary>
-public class SfxpDataMessageProcessingPackage : IDataMessageProcessingPackage
+public class SfxpLoggedSortableDataMessageProcessingPackage : IDataMessageProcessingPackage
 {
     /// <summary>
     /// Default ctor
     /// </summary>
 #pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring as nullable.
-    public SfxpDataMessageProcessingPackage(IDataMessagingConfig dataMessagingConfig)
+    public SfxpLoggedSortableDataMessageProcessingPackage(IDataMessagingConfig dataMessagingConfig)
 #pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring as nullable.
     {
         DataMessagingConfig = dataMessagingConfig;
+        DataMessagingConfig.DataMessageProcessingPackage = this;
 
         // *******************************
         // Now setup the dependent objects
+
+        // 0. Data sorter
+        DataMessageSorter = new DefaultInboundDataMessageSorter();
 
         // 1. Message splitter
         DataMessageSplitter = new UdpDatagramDataMessageSplitter();
@@ -40,7 +45,7 @@ public class SfxpDataMessageProcessingPackage : IDataMessageProcessingPackage
         LoadCodecs();
 
         // 3. Internal forwarding
-        DataMessageProcessor = new DefaultDataMessageProcessor(dataMessagingConfig);
+        DataMessageProcessor = new LoggedSortableDataMessageProcessor(dataMessagingConfig);
 
         // 4. Wait state handler
         WaitStateManager = new DefaultWaitStateManager(dataMessagingConfig);

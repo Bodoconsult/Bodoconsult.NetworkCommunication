@@ -2,6 +2,7 @@
 
 using Bodoconsult.App.Abstractions.DependencyInjection;
 using Bodoconsult.App.Abstractions.Interfaces;
+using Bodoconsult.App.CentralServices;
 using IpDevice.Bll;
 using IpDevice.Bll.Interfaces;
 using IpDeviceService.App;
@@ -23,6 +24,10 @@ public class IpDeviceServiceAllServicesContainerServiceProvider : IDiContainerSe
         //var factory = (IDiContainerServiceProviderPackageFactory)new IpDeviceServiceProductionDiContainerServiceProviderPackageFactory(Globals.Instance);
 
         //diContainer.AddSingleton(factory);
+
+        // ToDo: move to base package
+        diContainer.AddSingleton<IAppDateService, AppDateService>();
+
         diContainer.AddSingleton<IIpDeviceManager, IpDeviceManager>();
 
         diContainer.AddSingleton<IApplicationService, IpDeviceServiceService>();

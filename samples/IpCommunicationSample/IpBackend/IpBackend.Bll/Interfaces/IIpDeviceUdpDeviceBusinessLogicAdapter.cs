@@ -10,13 +10,25 @@ namespace IpBackend.Bll.Interfaces;
 /// </summary>
 public interface IIpDeviceUdpDeviceBusinessLogicAdapter : ISimpleDeviceBusinessLogicAdapter
 {
+    #region Basics
+
+    /// <summary>
+    /// Send the required client hello to the server
+    /// </summary>
+    /// <param name="requestData">Current request parameter</param>
+    /// <returns>Reply</returns>
+    IBusinessTransactionReply SendClientHello(IBusinessTransactionRequestData requestData);
+
+    #endregion
+
+
     #region Reporting
 
     /// <summary>
     /// Create an FFT analysis report
     /// </summary>
-    /// <param name="requestData"></param>
-    /// <returns></returns>
+    /// <param name="requestData">Current request parameter</param>
+    /// <returns>Reply</returns>
     IBusinessTransactionReply CreateFftAnalysisReport(IBusinessTransactionRequestData requestData);
 
     #endregion

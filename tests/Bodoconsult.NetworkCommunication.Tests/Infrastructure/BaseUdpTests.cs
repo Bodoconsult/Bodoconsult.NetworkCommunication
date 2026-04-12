@@ -186,7 +186,7 @@ public class BaseUdpTests : IUdpTests
         DuplexIo.StartCommunication().Wait();
 
         // Send a recognition message to the server
-        var msg = new SdcpOutboundDataMessage()
+        var msg = new SdcpOutboundDataMessage
         {
             WaitForAcknowledgement = false,
             DataBlock = new BasicOutboundDatablock

@@ -8,7 +8,7 @@ using Moq;
 namespace IpCommunicationSampleTests.Backend.BusinessTransactions.Providers;
 
 [TestFixture]
-internal class BackendUdpBusinessTransactionProviderTests
+internal class IpDeviceTcpIpBusinessTransactionProviderTests
 {
     [Test]
     public void Constructor_Always_RegistersCorrectCreateDelegates()

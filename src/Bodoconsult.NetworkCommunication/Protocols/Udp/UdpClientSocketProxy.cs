@@ -64,14 +64,24 @@ public class UdpClientSocketProxy : UpdSocketProxyBase
     {
         return UdpClient?.SendAsync(bytesToSend) ?? ValueTask.FromResult(0);
     }
+    
+    /// <summary>
+    /// Send bytes 
+    /// </summary>
+    /// <param name="bytesToSend">Byte array to send</param>
+    /// <param name="offset">Offset</param>
+    /// <param name="messageBytesLength">Number of message bytes length to send</param>
+    /// <returns></returns>
+    public override Task<int> Send(byte[] bytesToSend, int offset, int messageBytesLength)
+    {
+        if (UdpClient == null)
+        {
+            return Task.FromResult(0);
+        }
 
-    ///// <summary>
-    ///// Shut the socket down
-    ///// </summary>
-    //public override void Shutdown()
-    //{
-    //    UdpClient.Client.Shutdown(SocketShutdown.Both);
-    //}
+        var datagram = bytesToSend.AsMemory().Slice(offset, messageBytesLength);
+        return UdpClient.Client.SendAsync(datagram.ToArray());
+    }
 
     /// <summary>
     /// Close the socket
@@ -95,7 +105,6 @@ public class UdpClientSocketProxy : UpdSocketProxyBase
 
         await Task.Run(() =>
         {
-
             try
             {
                 if (UdpClient != null)
@@ -131,24 +140,6 @@ public class UdpClientSocketProxy : UpdSocketProxyBase
             }
         });
     }
-
-    ///// <summary>
-    ///// Bind to an IP endpoint
-    ///// </summary>
-    ///// <param name="endpoint">IP endpoint</param>
-    //public override void Bind(IPEndPoint endpoint)
-    //{
-    //    Socket?.Bind(endpoint);
-    //}
-
-    ///// <summary>
-    ///// Listen
-    ///// </summary>
-    ///// <param name="backlog">The maximum length of pending messages queue</param>
-    //public override void Listen(int backlog)
-    //{
-    //    Socket?.Listen(backlog);
-    //}
 
     /// <summary>
     /// Receive data from the socket
@@ -217,54 +208,6 @@ public class UdpClientSocketProxy : UpdSocketProxyBase
 
         return received;
     }
-
-    /// <summary>
-    /// Send bytes 
-    /// </summary>
-    /// <param name="bytesToSend">Byte array to send</param>
-    /// <param name="offset">Offset</param>
-    /// <param name="messageBytesLength">Number of message bytes length to send</param>
-    /// <returns></returns>
-    public override Task<int> Send(byte[] bytesToSend, int offset, int messageBytesLength)
-    {
-        if (UdpClient == null)
-        {
-            return Task.FromResult(0);
-        }
-
-        var datagram = bytesToSend.AsMemory().Slice(offset, messageBytesLength);
-        
-
-        return UdpClient.Client.SendAsync(datagram.ToArray());
-    }
-
-    ///// <summary>
-    ///// Poll data
-    ///// </summary>
-    ///// <returns>True, if data can be read, else false</returns>
-    //public override bool Poll()
-    //{
-    //    return Socket.Poll(PollingTimeout, SelectMode.SelectRead);
-    //}
-
-    ///// <summary>
-    ///// Send a file
-    ///// </summary>
-    ///// <param name="fileName">Full file path</param>
-    //public override void SendFile(string fileName)
-    //{
-    //    Socket.SendFile(fileName);
-    //}
-
-    ///// <summary>
-    ///// Prepare the answer of the socket for testing
-    ///// </summary>
-    ///// <param name="testData">Test data to use</param>
-    //public override void PrepareAnswer(byte[] testData)
-    //{
-    //    // Do nothing
-    //}
-
 
     /// <summary>
     /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.

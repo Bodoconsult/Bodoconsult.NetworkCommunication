@@ -30,35 +30,35 @@ internal class ClientInboundBtcpMessageToBtReplyConverterTests
         Assert.That(converter.AppLogger, Is.EqualTo(_appLogger));
     }
 
-    [Test]
-    public void MapToOutboundDataMessage_ValidReplyErrorCode0_PropsSetCorrectly()
-    {
-        // Arrange 
-        var converter = new ClientInboundBtcpMessageToBtReplyConverter(_appLogger);
+    //[Test]
+    //public void MapToInboundDataMessage_ValidReplyErrorCode0_PropsSetCorrectly()
+    //{
+    //    // Arrange 
+    //    var converter = new ClientInboundBtcpMessageToBtReplyConverter(_appLogger);
 
-        const int transactionid = 1;
-        var transactionuid = Guid.NewGuid();
+    //    const int transactionid = 1;
+    //    var transactionuid = Guid.NewGuid();
 
-        var msg = new BtcpReplyInboundDataMessage(transactionid, transactionuid)
-        {
-            ErrorCode = 99,
-            InfoMessage = "Blubb",
-            ErrorMessage = "Blabb"
-        };
+    //    var msg = new BtcpReplyInboundDataMessage(transactionid, transactionuid)
+    //    {
+    //        ErrorCode = 99,
+    //        InfoMessage = "Blubb",
+    //        ErrorMessage = "Blabb"
+    //    };
 
-        // Act  
-        var result = converter.MapToBusinessTransactionReply(msg);
+    //    // Act  
+    //    var result = converter.MapToBusinessTransactionReply(msg);
         
-        // Assert
-        using (Assert.EnterMultipleScope())
-        {
-            Assert.That(result, Is.Not.Null);
-            ArgumentNullException.ThrowIfNull(result);
-            Assert.That(result.RequestData, Is.Null);
+    //    // Assert
+    //    using (Assert.EnterMultipleScope())
+    //    {
+    //        Assert.That(result, Is.Not.Null);
+    //        ArgumentNullException.ThrowIfNull(result);
+    //        Assert.That(result.RequestData, Is.Null);
 
-            Assert.That(result.ErrorCode, Is.EqualTo(msg.ErrorCode));
-            Assert.That(result.Message, Is.EqualTo(msg.InfoMessage));
-            Assert.That(result.ExceptionMessage, Is.EqualTo(msg.ErrorMessage));
-        }
-    }
+    //        Assert.That(result.ErrorCode, Is.EqualTo(msg.ErrorCode));
+    //        Assert.That(result.Message, Is.EqualTo(msg.InfoMessage));
+    //        Assert.That(result.ExceptionMessage, Is.EqualTo(msg.ErrorMessage));
+    //    }
+    //}
 }

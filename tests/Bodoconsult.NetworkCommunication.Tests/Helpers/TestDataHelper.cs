@@ -98,6 +98,21 @@ public static class TestDataHelper
     }
 
     /// <summary>
+    /// Get a messaging config
+    /// </summary>
+    /// <returns>Data messaging config</returns>
+    public static IIpDataMessagingConfig GetSfxpSortableLoggerDataMessagingConfig()
+    {
+        var config = new DefaultDataMessagingConfig();
+
+        config.DataMessageProcessingPackage = new SfxpLoggedSortableDataMessageProcessingPackage(config);
+        config.AppLogger = GetFakeAppLoggerProxy();
+        config.MonitorLogger = config.AppLogger;
+
+        return config;
+    }
+
+    /// <summary>
     /// Get a EDCP messaging config
     /// </summary>
     /// <returns>Data messaging config</returns>

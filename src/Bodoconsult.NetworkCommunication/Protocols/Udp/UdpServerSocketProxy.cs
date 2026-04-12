@@ -106,23 +106,7 @@ public class UdpServerSocketProxy : UpdSocketProxyBase
         }
     }
 
-    /// <summary>
-    /// Send bytes
-    /// </summary>
-    /// <param name="bytesToSend">Byte array to send</param>
-    public override Task<int> Send(byte[] bytesToSend)
-    {
-        return UdpClient == null ? Task.FromResult(0) : UdpClient.SendAsync(bytesToSend, bytesToSend.Length, EndPoint);
-    }
 
-    /// <summary>
-    /// Send bytes
-    /// </summary>
-    /// <param name="bytesToSend">Data to send</param>
-    public override ValueTask<int> Send(ReadOnlyMemory<byte> bytesToSend)
-    {
-        return UdpClient?.SendAsync(bytesToSend, SendEndPoint) ?? ValueTask.FromResult(0);
-    }
 
     ///// <summary>
     ///// Shut the socket down
@@ -281,6 +265,24 @@ public class UdpServerSocketProxy : UpdSocketProxyBase
     }
 
     /// <summary>
+    /// Send bytes
+    /// </summary>
+    /// <param name="bytesToSend">Byte array to send</param>
+    public override Task<int> Send(byte[] bytesToSend)
+    {
+        return UdpClient == null || SendEndPoint == null || Equals(SendEndPoint.Address, IPAddress.Any) ? Task.FromResult(0) : UdpClient.SendAsync(bytesToSend, bytesToSend.Length, EndPoint);
+    }
+
+    /// <summary>
+    /// Send bytes
+    /// </summary>
+    /// <param name="bytesToSend">Data to send</param>
+    public override ValueTask<int> Send(ReadOnlyMemory<byte> bytesToSend)
+    {
+        return UdpClient == null || SendEndPoint == null || Equals(SendEndPoint.Address, IPAddress.Any) ? ValueTask.FromResult(0) :  UdpClient.SendAsync(bytesToSend, SendEndPoint);
+    }
+
+    /// <summary>
     /// Send bytes 
     /// </summary>
     /// <param name="bytesToSend">Byte array to send</param>
@@ -289,7 +291,7 @@ public class UdpServerSocketProxy : UpdSocketProxyBase
     /// <returns></returns>
     public override Task<int> Send(byte[] bytesToSend, int offset, int messageBytesLength)
     {
-        return UdpClient == null || SendEndPoint == null ? Task.FromResult(0) : UdpClient.Client.SendToAsync(bytesToSend, offset, messageBytesLength, SocketFlags.None, SendEndPoint);
+        return UdpClient == null || SendEndPoint == null || Equals(SendEndPoint.Address, IPAddress.Any) ? Task.FromResult(0) : UdpClient.Client.SendToAsync(bytesToSend, offset, messageBytesLength, SocketFlags.None, SendEndPoint);
     }
 
     /// <summary>

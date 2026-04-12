@@ -37,12 +37,13 @@ public class StateManagementDataMessagingDiContainerServiceProvider : IDiContain
         var cnm = new DoNothingOrderManagementClientNotificationManager();
         diContainer.AddSingleton<ICentralClientNotificationManager>(cnm);
         diContainer.AddSingleton<IOrderManagementClientNotificationManager>(cnm);
-        
 
+        diContainer.AddSingleton<IOrderIdGenerator, DefaultOrderIdGenerator>();
         diContainer.AddSingleton<IOrderFactory, OrderFactory>();
         diContainer.AddSingleton<IOrderReceiverFactory, OrderReceiverFactory>();
         diContainer.AddSingleton<IRequestProcessorFactoryFactory, RequestProcessorFactoryFactory>();
         diContainer.AddSingleton<IRequestStepProcessorFactoryFactory, RequestStepProcessorFactoryFactory>();
+        diContainer.AddSingleton<IOrderPipelineFactory, OrderPipelineFactory>();
         diContainer.AddSingleton<IOrderProcessorFactory, StateMachineOrderProcessorFactory>();
     }
 

@@ -8,6 +8,7 @@ using IpBackend.Bll.App;
 
 namespace IpBackendService;
 
+// https://learn.microsoft.com/en-us/dotnet/core/extensions/windows-service
 
 internal static class Program
 {

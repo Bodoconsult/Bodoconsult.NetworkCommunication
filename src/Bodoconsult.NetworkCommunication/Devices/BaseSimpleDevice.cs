@@ -175,6 +175,19 @@ public abstract class BaseSimpleDevice : IIpDevice
     {
         CommunicationAdapter?.Dispose();
         MonitorLogger.Dispose();
-        DataMessagingConfig.DataMessageProcessingPackage?.WaitStateManager.Dispose();
+
+        var package = DataMessagingConfig.DataMessageProcessingPackage;
+
+        if (package == null)
+        {
+            return;
+        }
+
+        package.WaitStateManager.Dispose();
+
+        foreach (var logger in package.DataLoggers)
+        {
+            logger.Stop();
+        }
     }
 }

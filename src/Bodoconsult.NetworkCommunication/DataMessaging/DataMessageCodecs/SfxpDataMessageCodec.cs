@@ -24,7 +24,7 @@ public class SfxpDataMessageCodec : BaseDataMessageCodec
     {
         DataBlockCodingProcessor = dataBlockCodingProcessor;
 
-        ExpectedMinimumLength = 8;
+        ExpectedMinimumLength = 100;
         ExpectedMaximumLength = 16384;
     }
 
@@ -72,6 +72,7 @@ public class SfxpDataMessageCodec : BaseDataMessageCodec
 
             var dataMessage = new SfxpInboundDataMessage
             {
+                RawMessageData = data,
                 OriginalMessageId = messageId,
                 DataBlock = dataBlock
             };

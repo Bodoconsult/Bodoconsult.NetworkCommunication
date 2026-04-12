@@ -1,9 +1,11 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
 using Bodoconsult.App.Abstractions.Interfaces;
+using Bodoconsult.App.BusinessTransactions.RequestData;
 using Bodoconsult.App.Interfaces;
 using Bodoconsult.NetworkCommunication.Factories;
 using Bodoconsult.NetworkCommunication.Interfaces;
+using IpBackend.Bll.BusinessTransactions;
 using IpBackend.Bll.BusinessTransactions.Providers;
 using IpBackend.Bll.Communication;
 using IpBackend.Bll.Interfaces;
@@ -192,12 +194,51 @@ public class BackendManager : IBackendManager
     public void LoadBusinessTransactions()
     {
         ArgumentNullException.ThrowIfNull(IpDeviceTcpIp);
-        
+        ArgumentNullException.ThrowIfNull(IpDeviceUdp);
+
         var adapter = (IIpDeviceTcpIpDeviceBusinessLogicAdapter?)IpDeviceTcpIp.DeviceBusinessLogicAdapter;
+        var adapter2 = (IIpDeviceUdpDeviceBusinessLogicAdapter?)IpDeviceUdp.DeviceBusinessLogicAdapter;
 
         ArgumentNullException.ThrowIfNull(adapter);
+        ArgumentNullException.ThrowIfNull(adapter2);
 
-        var provider = new IpDeviceTcpIpBusinessTransactionProvider(adapter);
+        IBusinessTransactionProvider provider = new IpDeviceTcpIpBusinessTransactionProvider(adapter);
         _businessTransactionManager.AddProvider(provider);
+
+        provider = new IpDeviceUdpBusinessTransactionProvider(adapter2);
+        _businessTransactionManager.AddProvider(provider);
+    }
+
+    public void StartIpDeviceUdpCommunication()
+    {
+        ArgumentNullException.ThrowIfNull(IpDeviceUdp?.IpDevice);
+        IpDeviceUdp.IpDevice.StartComm();
+
+        // Send hello
+        var request = new EmptyBusinessTransactionRequestData
+        {
+            TransactionId = BackendBusinessTransactionCodes.SendClientHello
+        };
+
+        var reply = _businessTransactionManager.RunBusinessTransaction(request.TransactionId, request);
+
+        if (reply.ErrorCode == 0)
+        {
+            return;
+        }
+
+        throw new Exception($"StartIpDeviceUdpCommunication failed:{reply.Message} {reply.ExceptionMessage}");
+    }
+
+    public void StartIpDeviceTcpIpCommunication()
+    {
+        ArgumentNullException.ThrowIfNull(IpDeviceTcpIp?.IpDevice);
+        IpDeviceTcpIp.IpDevice.StartComm();
+    }
+
+    public void StartClientCommunication()
+    {
+        ArgumentNullException.ThrowIfNull(Client?.IpDevice);
+        Client.IpDevice.StartComm();
     }
 }

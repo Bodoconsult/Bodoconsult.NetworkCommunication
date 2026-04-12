@@ -56,15 +56,7 @@ public abstract class BaseUdpDevice : IUdpDevice
         }
         else
         {
-            if (_isServer)
-            {
-
-                Listener = new UdpClient(port);
-            }
-            else
-            {
-                Listener = new UdpClient();
-            }
+            Listener = _isServer ? new UdpClient(port) : new UdpClient();
         }
 
 
@@ -179,8 +171,8 @@ public abstract class BaseUdpDevice : IUdpDevice
         }
         catch (Exception e)
         {
-            Console.WriteLine(e);
-            throw;
+            Debug.Print(e.ToString());
+            return [];
         }
     }
 

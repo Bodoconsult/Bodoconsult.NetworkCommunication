@@ -4,6 +4,7 @@ using Bodoconsult.App.Abstractions.Interfaces;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessageProcessingPackages;
 using Bodoconsult.NetworkCommunication.Devices.Configurators;
 using Bodoconsult.NetworkCommunication.Interfaces;
+using IpBackend.Bll.App;
 using IpBackend.Bll.BusinessLogic.AdapterFactories;
 
 namespace IpBackend.Bll.Communication;
@@ -66,8 +67,8 @@ public class IpDeviceUdpClientManager : ISimpleDeviceManager
     /// <param name="port">Port</param>
     public void ConfigureDevice(string ipAddress, int port)
     {
-        IDataMessageProcessingPackageFactory messageProcessingPackageFactory = new SfxpDataMessageProcessingPackageFactory();
-
+        IDataMessageProcessingPackageFactory messageProcessingPackageFactory = new SfxpLoggedSortableDataMessageProcessingPackageFactory();
+        
         var configurator = new UdpClientDeviceConfigurator(_duplexIoFactory, _monitorLoggerFactoryFactory, _logDataFactory, _appLoggerFactory, _appEventSourceFactory, _clientNotificationManager, _appLoggerProxy);
 
         configurator.CreateMessagingConfig("IPDevice_UDP", ipAddress, port, messageProcessingPackageFactory);
@@ -77,9 +78,12 @@ public class IpDeviceUdpClientManager : ISimpleDeviceManager
 
         var device = configurator.GetDevice();
 
+        device.DataMessagingConfig.DataLoggingFileName = $"IPDevice_{ipAddress.Replace(".", "_", StringComparison.InvariantCultureIgnoreCase)}";
+        device.DataMessagingConfig.DataLoggingPath = Globals.Instance.DataPath;
+
         if (device.DeviceBusinessLogicAdapter is not ISimpleDeviceBusinessLogicAdapter dbla)
         {
-            throw new ArgumentNullException($"device.DeviceBusinessLogicAdapter does not implement {nameof(ISimpleDeviceBusinessLogicAdapter)}");
+            throw new ArgumentException($"device.DeviceBusinessLogicAdapter does not implement {nameof(ISimpleDeviceBusinessLogicAdapter)}");
         }
 
         IpDevice = device;

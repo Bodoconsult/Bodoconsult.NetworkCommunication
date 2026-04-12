@@ -112,6 +112,16 @@ public class EdcpDataMessagingConfig : IIpDataMessagingConfig
     public ResetOutboundDataMessageFactoryDelegate? ResetOutboundDataMessageFactoryDelegate { get; set; }
 
     /// <summary>
+    /// The directory path for the export target. Default: Path.GetTempPath();
+    /// </summary>
+    public string? DataLoggingPath { get; set; }
+
+    /// <summary>
+    /// The plain filename for the export file without extension, timestamp etc.
+    /// </summary>
+    public string? DataLoggingFileName { get; set; }
+
+    /// <summary>
     /// IP address of the device
     /// </summary>
     public string IpAddress { get; set; } = "127.0.0.1";

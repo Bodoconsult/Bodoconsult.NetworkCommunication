@@ -1,11 +1,21 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
 using Bodoconsult.App;
+using Bodoconsult.App.Abstractions.DependencyInjection;
+using Bodoconsult.App.Abstractions.Interfaces;
+using Bodoconsult.App.BusinessTransactions;
 using Bodoconsult.App.BusinessTransactions.RequestData;
 using Bodoconsult.App.Helpers;
+using Bodoconsult.App.Interfaces;
+using Bodoconsult.App.Logging;
+using Bodoconsult.NetworkCommunication.ClientNotifications;
+using Bodoconsult.NetworkCommunication.Factories;
 using Bodoconsult.NetworkCommunication.Interfaces;
+using Bodoconsult.NetworkCommunication.OrderManagement.Processors;
+using Bodoconsult.NetworkCommunication.Protocols.TcpIp;
 using IpBackend.Bll.BusinessLogic;
 using IpBackend.Bll.Interfaces;
+using IpBackendService.DiContainerProvider;
 using IpCommunicationSampleTests.App;
 using IpDevice.Bll.Interfaces;
 using IpDeviceService.DiContainerProvider;
@@ -18,6 +28,10 @@ namespace IpCommunicationSampleTests.Backend.RealWorld
         private IIpDeviceManager? _deviceManager;
 
         private IBackendManager? _backendManager;
+
+        private DiContainer _deviceDiContainer = new();
+        private DiContainer _backendDiContainer = new();
+
 
         private long _messageCounter;
 
@@ -52,14 +66,46 @@ namespace IpCommunicationSampleTests.Backend.RealWorld
         {
             var globals = Globals.Instance;
 
+            // Device
+
             var factory = new IpDeviceServiceProductionDiContainerServiceProviderPackageFactory(globals);
             var package = factory.CreateInstance();
 
-            package.AddServices(globals.DiContainer);
+            package.AddServices(_deviceDiContainer);
 
-            globals.DiContainer.AddSingleton<IBackendManager, BackendManager>();
+            _deviceDiContainer.BuildServiceProvider();
 
-            globals.DiContainer.BuildServiceProvider();
+            // Backend
+            var factory2 = new IpBackendServiceProductionDiContainerServiceProviderPackageFactory(globals);
+            var package2 = factory2.CreateInstance();
+
+            package2.AddServices(_backendDiContainer);
+
+            _backendDiContainer.BuildServiceProvider();
+
+            //globals.DiContainer.AddSingleton<IBusinessTransactionManager, BusinessTransactionManager>();
+            //globals.DiContainer.AddSingleton<ISyncOrderManager, SyncOrderManager>();
+            //globals.DiContainer.AddSingleton<ISocketProxyFactory, SocketProxyFactory>();
+            //globals.DiContainer.AddSingleton<IMonitorLoggerFactoryFactory, MonitorLoggerFactoryFactory>();
+            //globals.DiContainer.AddSingleton<ITcpIpListenerManager, TcpIpListenerManager>();
+            //globals.DiContainer.AddSingleton<ISendPacketProcessFactory, SendPacketProcessFactory>();
+            //globals.DiContainer.AddSingleton<ICommunicationAdapterFactory, IpCommunicationAdapterFactory>();
+            //globals.DiContainer.AddSingleton<IDuplexIoFactory, IpDuplexIoFactory>();
+
+            //var cnm = new DoNothingOrderManagementClientNotificationManager();
+            //globals.DiContainer.AddSingleton<ICentralClientNotificationManager>(cnm);
+            //globals.DiContainer.AddSingleton<IOrderManagementClientNotificationManager>(cnm);
+
+            //globals.DiContainer.AddSingleton<IOrderIdGenerator, DefaultOrderIdGenerator>();
+            //globals.DiContainer.AddSingleton<IOrderFactory, OrderFactory>();
+            //globals.DiContainer.AddSingleton<IOrderReceiverFactory, OrderReceiverFactory>();
+            //globals.DiContainer.AddSingleton<IRequestProcessorFactoryFactory, RequestProcessorFactoryFactory>();
+            //globals.DiContainer.AddSingleton<IRequestStepProcessorFactoryFactory, RequestStepProcessorFactoryFactory>();
+            //globals.DiContainer.AddSingleton<IOrderPipelineFactory, OrderPipelineFactory>();
+            //globals.DiContainer.AddSingleton<IOrderProcessorFactory, StateMachineOrderProcessorFactory>();
+            //globals.DiContainer.AddSingleton<IBackendManager, BackendManager>();
+
+            //globals.DiContainer.BuildServiceProvider();
         }
 
 
@@ -69,7 +115,7 @@ namespace IpCommunicationSampleTests.Backend.RealWorld
             var deviceTcpIpConfig = new IpConfig { IpAddress = _startParams.IpAddress2, Port = _startParams.Port2 };
             var deviceUdpConfig = new IpConfig { IpAddress = _startParams.IpAddress, Port = _startParams.Port };
 
-            _backendManager = Globals.Instance.DiContainer.Get<IBackendManager>();
+            _backendManager = _backendDiContainer.Get<IBackendManager>();
             _backendManager.ClientTcpIpConfig = clientConfig;
             _backendManager.IpDeviceTcpIpConfig = deviceTcpIpConfig;
             _backendManager.IpDeviceUdpConfig = deviceUdpConfig;
@@ -79,6 +125,8 @@ namespace IpCommunicationSampleTests.Backend.RealWorld
             _backendManager.LoadClient();
 
             _backendManager.LoadBusinessTransactions();
+
+            _backendManager.StartIpDeviceUdpCommunication();
 
             ArgumentNullException.ThrowIfNull(_backendManager.IpDeviceUdp?.IpDevice);
             _backendManager.IpDeviceUdp.IpDevice.DataMessagingConfig.RaiseAppLayerDataMessageReceivedDelegate = RaiseAppLayerDataMessageReceivedDelegate;
@@ -94,7 +142,7 @@ namespace IpCommunicationSampleTests.Backend.RealWorld
             var deviceTcpIpConfig = new IpConfig { IpAddress = _startParams.IpAddress2, Port = _startParams.Port2 };
             var deviceUdpConfig = new IpConfig { IpAddress = _startParams.IpAddress, Port = _startParams.Port };
 
-            _deviceManager = Globals.Instance.DiContainer.Get<IIpDeviceManager>();
+            _deviceManager = _deviceDiContainer.Get<IIpDeviceManager>();
             _deviceManager.BackendTcpIpConfig = deviceTcpIpConfig;
             _deviceManager.BackendUdpConfig = deviceUdpConfig;
 

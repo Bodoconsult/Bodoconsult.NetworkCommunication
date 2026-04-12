@@ -285,4 +285,59 @@ internal class DefaultDataMessageCodingProcessorTests
             Assert.That(message.RawMessageData.Length, Is.Not.Zero);
         }
     }
+
+    [Test]
+    public void EncodeDataMessag_RawDataMessage_RawBytesCreated()
+    {
+        // Arrange 
+        IDataBlockCodingProcessor dataBlockCodingProcessor = new DefaultDataBlockCodingProcessor();
+        dataBlockCodingProcessor.LoadDataBlockCodecs('x', new BasicDataBlockCodec());
+
+        var processor = new DefaultDataMessageCodingProcessor();
+        processor.MessageCodecs.Add(new BtcpHandshakeMessageCodec());
+        processor.MessageCodecs.Add(new BtcpDataMessageCodec(dataBlockCodingProcessor));
+
+        var message = new RawOutboundDataMessage
+        {
+            RawMessageData = new Memory<byte>([0x48, 0x65, 0x6c, 0x6c, 0x6f, 0x20, 0x66, 0x72, 0x6f, 0x6d, 0x20, 0x63, 0x6c, 0x69, 0x65, 0x6e, 0x74])
+        };
+
+        // Act  
+        var result = processor.EncodeDataMessage(message);
+
+        // Assert
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(result, Is.Not.Null);
+            Assert.That(result.ErrorCode, Is.Zero);
+            Assert.That(message.RawMessageData.Length, Is.Not.Zero);
+        }
+    }
+
+    [Test]
+    public void EncodeDataMessag_EmptyRawDataMessage_RawBytesCreated()
+    {
+        // Arrange 
+        IDataBlockCodingProcessor dataBlockCodingProcessor = new DefaultDataBlockCodingProcessor();
+        dataBlockCodingProcessor.LoadDataBlockCodecs('x', new BasicDataBlockCodec());
+
+        var processor = new DefaultDataMessageCodingProcessor();
+        processor.MessageCodecs.Add(new BtcpHandshakeMessageCodec());
+        processor.MessageCodecs.Add(new BtcpDataMessageCodec(dataBlockCodingProcessor));
+
+        var message = new RawOutboundDataMessage
+        {
+            RawMessageData = Memory<byte>.Empty
+        };
+
+        // Act  
+        var result = processor.EncodeDataMessage(message);
+
+        // Assert
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(result, Is.Not.Null);
+            Assert.That(result.ErrorCode, Is.Not.Zero);
+        }
+    }
 }

@@ -55,4 +55,19 @@ public interface IBackendManager
     /// Load the business transactions required for the app
     /// </summary>
     void LoadBusinessTransactions();
+
+    /// <summary>
+    /// Start the communication with the UDP device
+    /// </summary>
+    void StartIpDeviceUdpCommunication();
+
+    /// <summary>
+    /// Start the communication with the IP device via UDP
+    /// </summary>
+    void StartIpDeviceTcpIpCommunication();
+
+    /// <summary>
+    /// Start the communication with the client
+    /// </summary>
+    void StartClientCommunication();
 }

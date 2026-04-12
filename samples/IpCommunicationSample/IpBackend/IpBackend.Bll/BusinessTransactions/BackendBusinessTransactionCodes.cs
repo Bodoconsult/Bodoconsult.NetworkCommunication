@@ -8,4 +8,5 @@ public class BackendBusinessTransactionCodes
     public const int StopStreaming = 2;
     public const int StartSnapshot = 3;
     public const int StopSnapshot = 4;
+    public const int SendClientHello = 5;
 }

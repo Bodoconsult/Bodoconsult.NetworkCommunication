@@ -210,7 +210,7 @@ namespace Bodoconsult.NetworkCommunication.DataMessaging.DigitalTwins
         private byte[] GetMessageIdAsBytes()
         {
             var intBytes = BitConverter.GetBytes(_messageId);
-            if (!_islittleEndian)
+            if (_islittleEndian)
             {
                 Array.Reverse(intBytes);
             }

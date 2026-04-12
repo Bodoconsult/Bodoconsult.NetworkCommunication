@@ -2,6 +2,8 @@
 
 using Bodoconsult.App.Abstractions.DependencyInjection;
 using Bodoconsult.App.Abstractions.Interfaces;
+using Bodoconsult.App.CentralServices;
+using Bodoconsult.App.Factories;
 using IpBackend.Bll.BusinessLogic;
 using IpBackend.Bll.Interfaces;
 using IpBackendService.App;
@@ -20,6 +22,8 @@ public class IpBackendServiceAllServicesContainerServiceProvider : IDiContainerS
     public void AddServices(DiContainer diContainer)
     {
         // Load all other services required for the app now
+        diContainer.AddSingleton<IAppDateService, AppDateService>();
+        diContainer.AddSingleton<IAppEventSourceFactory, FakeAppEventSourceFactory>();
         diContainer.AddSingleton<IBackendManager, BackendManager>();
         
         diContainer.AddSingleton<IApplicationService, IpBackendServiceService>();

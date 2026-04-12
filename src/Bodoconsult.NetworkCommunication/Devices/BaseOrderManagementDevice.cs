@@ -578,7 +578,20 @@ public abstract class BaseOrderManagementDevice : IOrderManagementDevice
         OrderProcessor?.Dispose();
         CommunicationAdapter?.Dispose();
         MonitorLogger.Dispose();
-        DataMessagingConfig.DataMessageProcessingPackage?.WaitStateManager.Dispose();
+
+        var package = DataMessagingConfig.DataMessageProcessingPackage;
+
+        if (package == null)
+        {
+            return;
+        }
+
+        package.WaitStateManager.Dispose();
+
+        foreach (var logger in package.DataLoggers)
+        {
+            logger.Stop();
+        }
     }
 
     ///// <summary>

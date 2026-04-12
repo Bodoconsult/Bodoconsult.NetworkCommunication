@@ -96,12 +96,12 @@ public class IpDeviceTcpIpClientStateMachineManager: IStateMachineDeviceManager
 
         if (device is not IStateMachineDevice od)
         {
-            throw new ArgumentNullException($"device does not implement {nameof(IStateMachineDevice)}");
+            throw new ArgumentException($"device does not implement {nameof(IStateMachineDevice)}");
         }
 
         if (device.DeviceBusinessLogicAdapter is not IStateMachineDeviceBusinessLogicAdapter dbla)
         {
-            throw new ArgumentNullException($"device.DeviceBusinessLogicAdapter does not implement {nameof(IStateMachineDeviceBusinessLogicAdapter)}");
+            throw new ArgumentException($"device.DeviceBusinessLogicAdapter does not implement {nameof(IStateMachineDeviceBusinessLogicAdapter)}");
         }
 
         IpDevice = device;

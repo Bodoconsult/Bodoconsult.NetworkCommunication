@@ -7,6 +7,7 @@ using Bodoconsult.NetworkCommunication.Testing;
 using IpDevice.Bll.Interfaces;
 using IpDeviceService.DiContainerProvider;
 using System.Net;
+using System.Text;
 using Bodoconsult.App.BusinessTransactions.RequestData;
 using Bodoconsult.App.Helpers;
 using IpCommunicationSampleTests.App;
@@ -43,6 +44,8 @@ namespace IpCommunicationSampleTests.Device.RealWorld
         {
             RemoteUdpDevice = new UdpTestUniCastClient(IPAddress.Parse(_startParams.IpAddress), _startParams.Port);
             RemoteUdpDevice.Start();
+            // Send cleint hello
+            RemoteUdpDevice.Send([0x48, 0x65, 0x6c, 0x6c, 0x6f, 0x20, 0x66, 0x72, 0x6f, 0x6d, 0x20, 0x63, 0x6c, 0x69, 0x65, 0x6e, 0x74]);
 
             //_cts = new CancellationTokenSource();
             //Task.Run(UdpReceiving, _cts.Token);
@@ -82,13 +85,16 @@ namespace IpCommunicationSampleTests.Device.RealWorld
         [Test]
         public void StartStreaming2_ValidSetup_MessagesSent()
         {
+            //const string hello = "Hello from client";
+            //var bytes = Encoding.ASCII.GetBytes(hello);
+            //Debug.Print($"{ArrayHelper.GetStringFromArrayCsharpStyle(bytes)}");
+
             // Arrange 
+            CreateAndStartDevice();
+            ArgumentNullException.ThrowIfNull(_deviceManager?.BackendUdp?.DeviceBusinessLogicAdapter);
+
             StartUdpClient();
             ArgumentNullException.ThrowIfNull(RemoteUdpDevice);
-
-            CreateAndStartDevice();
-
-            ArgumentNullException.ThrowIfNull(_deviceManager?.BackendUdp?.DeviceBusinessLogicAdapter);
 
             var adapter = (IBackendUdpBusinessLogicAdapter)_deviceManager.BackendUdp.DeviceBusinessLogicAdapter;
 
@@ -101,7 +107,6 @@ namespace IpCommunicationSampleTests.Device.RealWorld
             Wait.Until(CheckMessages);
 
             adapter.StopStreaming(request2);
-            Thread.Sleep(5000);
 
             // Assert
             Assert.That(CheckMessages(), Is.True);
@@ -111,7 +116,7 @@ namespace IpCommunicationSampleTests.Device.RealWorld
 
         private bool CheckMessages()
         {
-            return RemoteUdpDevice?.ReceivedMessages.Count != 0;
+            return RemoteUdpDevice?.ReceivedMessages.Count > 5;
         }
 
         //private void UdpReceiving()

@@ -42,6 +42,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\samples\IpCommunicationSample\Common\IpCommunicationSample.Common\IpCommunicationSample.Common.csproj" />
     <ProjectReference Include="..\..\samples\IpCommunicationSample\IpBackend\IpBackend.Bll\IpBackend.Bll.csproj" />
+    <ProjectReference Include="..\..\samples\IpCommunicationSample\IpBackend\IpBackend.Service\IpBackendService.csproj" />
     <ProjectReference Include="..\..\samples\IpCommunicationSample\IpClient\IpClient.Bll\IpClient.Bll.csproj" />
     <ProjectReference Include="..\..\samples\IpCommunicationSample\IpDevice\IpDevice.Bll\IpDevice.Bll.csproj" />
     <ProjectReference Include="..\..\samples\IpCommunicationSample\IpDevice\IpDevice.Service\IpDeviceService.csproj" />

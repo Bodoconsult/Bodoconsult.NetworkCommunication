@@ -76,6 +76,7 @@ internal class SfxpDataMessageCodecTests
 
             Assert.That(result.DataMessage, Is.Not.Null);
             ArgumentNullException.ThrowIfNull(result.DataMessage);
+            Assert.That(result.DataMessage.RawMessageData.Length, Is.Not.Zero);
 
             var msg2 = (SfxpInboundDataMessage)result.DataMessage;
 

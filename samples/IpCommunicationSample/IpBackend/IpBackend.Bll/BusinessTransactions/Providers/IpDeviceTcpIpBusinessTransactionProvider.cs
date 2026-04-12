@@ -9,9 +9,9 @@ using IpBackend.Bll.Interfaces;
 namespace IpBackend.Bll.BusinessTransactions.Providers;
 
 /// <summary>
-    /// Impl of <see cref="IBusinessTransactionProvider"/> for IP device TCP/IP messaging
-    /// </summary>
-    public class IpDeviceTcpIpBusinessTransactionProvider : IBusinessTransactionProvider
+/// Impl of <see cref="IBusinessTransactionProvider"/> for IP device TCP/IP messaging
+/// </summary>
+public class IpDeviceTcpIpBusinessTransactionProvider : IBusinessTransactionProvider
 {
     public readonly IIpDeviceTcpIpDeviceBusinessLogicAdapter BusinessLogicAdapter;
 
@@ -52,6 +52,7 @@ namespace IpBackend.Bll.BusinessTransactions.Providers;
 
         return transaction;
     }
+
     /// <summary>
     /// Create transaction 2: stop streaming
     /// </summary>

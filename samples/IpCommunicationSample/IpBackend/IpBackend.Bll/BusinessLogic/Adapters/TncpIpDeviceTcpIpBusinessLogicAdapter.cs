@@ -235,7 +235,6 @@ public class TncpIpDeviceTcpIpBusinessLogicAdapter : BaseStateMachineDeviceBusin
                 ExceptionMessage = e.ToString()
             };
         }
-
     }
 
     /// <summary>

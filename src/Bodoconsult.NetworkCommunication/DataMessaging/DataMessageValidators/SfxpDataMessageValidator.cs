@@ -12,6 +12,12 @@ public class SfxpDataMessageValidator : IDataMessageValidator
 {
     public DataMessageValidatorResult IsMessageValid(IInboundMessage dataMessage)
     {
+        // Raw message is ok i.e. for client hello
+        if (dataMessage is RawInboundDataMessage)
+        {
+            return new DataMessageValidatorResult(true, "Message is a valid SFXP message");
+        }
+
         // No SFXP data message: always valid
         if (dataMessage is not SfxpInboundDataMessage bt)
         {

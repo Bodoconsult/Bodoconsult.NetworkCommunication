@@ -22,15 +22,12 @@ public class IpDeviceServiceProductionDiContainerServiceProviderPackageFactory :
     /// </summary>
     public IAppGlobals AppGlobals { get; }
 
-
-
     /// <summary>
     /// Create an instance of <see cref="IDiContainerServiceProviderPackage"/>. Should be a singleton instance
     /// </summary>
     /// <returns>Singleton instance of <see cref="IDiContainerServiceProviderPackage"/></returns>
     public IDiContainerServiceProviderPackage CreateInstance()
     {
-            
         return new IpDeviceServiceAllServicesDiContainerServiceProviderPackage(AppGlobals);
     }
 }
