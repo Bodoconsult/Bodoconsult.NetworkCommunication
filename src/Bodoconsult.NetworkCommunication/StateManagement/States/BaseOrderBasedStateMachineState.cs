@@ -150,7 +150,7 @@ public abstract class BaseOrderBasedStateMachineState : BaseStateMachineState, I
 
                 ArgumentNullException.ThrowIfNull(StateNameOnSuccess);
 
-                var newState = CurrentContext.StateMachineStateFactory.CreateInstance(CurrentContext, StateNameOnSuccess);
+                var newState = CurrentContext.CreateStateInstance(StateNameOnSuccess);
                 NextState = newState;
             }
 

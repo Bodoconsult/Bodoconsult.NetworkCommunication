@@ -232,8 +232,15 @@ public class BackendManager : IBackendManager
 
     public void StartIpDeviceTcpIpCommunication()
     {
-        ArgumentNullException.ThrowIfNull(IpDeviceTcpIp?.IpDevice);
-        IpDeviceTcpIp.IpDevice.StartComm();
+        ArgumentNullException.ThrowIfNull(IpDeviceTcpIp?.Device?.StateMachineStateFactory);
+
+        IpDeviceTcpIp.Device.Start();
+
+        var newState = IpDeviceTcpIp.Device.CreateStateInstance( DefaultStateNames.DeviceOfflineState);
+        IpDeviceTcpIp.Device.RequestState(newState);
+
+        //ArgumentNullException.ThrowIfNull(IpDeviceTcpIp?.IpDevice);
+        //IpDeviceTcpIp.IpDevice.StartComm();
     }
 
     public void StartClientCommunication()

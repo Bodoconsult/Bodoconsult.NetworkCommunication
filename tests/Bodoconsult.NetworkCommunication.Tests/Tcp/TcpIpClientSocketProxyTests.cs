@@ -2,14 +2,14 @@
 
 using System.Diagnostics;
 using System.Net;
-using Bodoconsult.NetworkCommunication.Protocols.Udp;
+using Bodoconsult.NetworkCommunication.Protocols.TcpIp;
 using Bodoconsult.NetworkCommunication.Testing;
 using Bodoconsult.NetworkCommunication.Tests.Helpers;
 
-namespace Bodoconsult.NetworkCommunication.Tests.Testing;
+namespace Bodoconsult.NetworkCommunication.Tests.Tcp;
 
 [TestFixture]
-internal class UdpClientSocketProxyTests
+internal class TcpIpClientSocketProxyTests
 {
     [Test]
     public async Task SendReceive_PermanentMode_MessageReceived()
@@ -26,11 +26,13 @@ internal class UdpClientSocketProxyTests
 
             var cts = new CancellationTokenSource(5000);
 
+            var tcpIpServer = new TcpTestServer(ip, port);
+
 #pragma warning disable CS4014 // Because this call is not awaited, execution of the current method continues before the call is completed
             Task.Run(async () =>
 #pragma warning restore CS4014 // Because this call is not awaited, execution of the current method continues before the call is completed
             {
-                var client = new UdpClientSocketProxy();
+                var client = new TcpIpClientSocketProxy();
                 client.IpAddress = ip;
                 client.Port = port;
                 client.Connect().GetAwaiter().GetResult();
@@ -39,13 +41,13 @@ internal class UdpClientSocketProxyTests
                 {
                     while (!cts.IsCancellationRequested)
                     {
-                        var data = new byte[10];
-                        await client.Receive(data); ; // listen on port 11000
-
-                        Debug.Print($"Client: received {data.Length} bytes");
-
                         var sent = await client.Send(serverData); // reply back
                         Debug.Print($"Client: sent {sent} bytes");
+
+                        var data = new byte[10];
+                        var received = await client.Receive(data); ; // listen on port 11000
+
+                        Debug.Print($"Client: received {received} bytes");
                     }
                 }
                 catch (Exception e)
@@ -60,22 +62,18 @@ internal class UdpClientSocketProxyTests
 
             await Task.Delay(100);
 
-            // Act  
-            var udpServer = new UdpTestUniCastServer(ip, port);
-
+            // Act
             while (!cts.IsCancellationRequested)
             {
                 // then receive data
-                await udpServer.Receive();
+                await tcpIpServer.Receive();
 
                 // send data
-                udpServer.Send(clientData);
-
-
+                tcpIpServer.Send(clientData);
             }
 
-            serverCount = udpServer.ReceivedMessages.Count;
-            udpServer.Dispose();
+            serverCount = tcpIpServer.ReceivedMessages.Count;
+            tcpIpServer.Dispose();
 
             // Assert
             Assert.That(serverCount, Is.GreaterThan(3));
@@ -97,12 +95,12 @@ internal class UdpClientSocketProxyTests
     //    var ip = IPAddress.Parse("127.0.0.1");
     //    var port = TestDataHelper.GetRandomPort();
 
-    //    var server = new UdpServerSocketProxy();
+    //    var server = new TcpIpServerSocketProxy();
     //    server.IpAddress = ip;
     //    server.Port = port;
     //    server.Connect().GetAwaiter().GetResult();
 
-    //    var client = new UdpTestUniCastClient(ip, port);
+    //    var client = new TcpIpTestUniCastClient(ip, port);
     //    client.Start();
     //    client.Send(data);
 

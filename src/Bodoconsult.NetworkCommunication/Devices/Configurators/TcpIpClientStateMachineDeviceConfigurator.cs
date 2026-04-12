@@ -147,5 +147,7 @@ public class TcpIpClientStateMachineDeviceConfigurator : BaseIpDeviceConfigurato
 
         // Important: store state factory instance to device and config
         _stateManagementDevice.StateMachineStateFactory = stateFactory;
+        adapter.LoadStateFactory(stateFactory);
+        adapter.LoadOrderFactory();
     }
 }

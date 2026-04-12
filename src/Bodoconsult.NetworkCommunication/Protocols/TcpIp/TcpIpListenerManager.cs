@@ -84,7 +84,6 @@ public class TcpIpListenerManager : ITcpIpListenerManager
                     listener.Listener.Shutdown(SocketShutdown.Both);
                     listener.Listener.Close(5000);
                 }
-
             }
             catch //(Exception e)
             {
@@ -141,6 +140,8 @@ public class TcpIpListenerManager : ITcpIpListenerManager
             NoDelay = NoDelay,
             Blocking = Blocking
         };
+
+        listener.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.ReuseAddress, true);
 
         data.Listener = listener;
         if (!_listeners.TryAdd(listener, data))

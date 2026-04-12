@@ -146,4 +146,14 @@ public interface IOrderManagementDevice: IIpDevice
     /// Check if there are any orders to be created 
     /// </summary>
     void CheckIfThereAreOrdersToBeCreated();
+
+    /// <summary>
+    /// Starts the order processing
+    /// </summary>
+    void Start();
+
+    /// <summary>
+    /// Stop the order processing
+    /// </summary>
+    void Stop();
 }

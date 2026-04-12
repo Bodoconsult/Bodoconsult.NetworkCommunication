@@ -111,7 +111,7 @@ public class NoAnswerDeviceRequestStepProcessor : INoAnswerDeviceRequestStepProc
                 return OrderExecutionResultState.Unsuccessful;
             }
 
-            var sendCancel = requestSpec.ParameterSet?.SendCancelTodeviceIfUnsuccessful ?? false;
+            var sendCancel = requestSpec.ParameterSet?.SendCancelToDeviceIfUnsuccessful ?? false;
 
             var repeatCount = 0;
 

@@ -1,53 +1,55 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>net9.0-windows7.0</TargetFramework>
-    <LangVersion>latest</LangVersion>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
-    <IsPackable>false</IsPackable>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>net9.0-windows7.0</TargetFramework>
+		<LangVersion>latest</LangVersion>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+		<IsPackable>false</IsPackable>
+		<RuntimeIdentifier>win-x64</RuntimeIdentifier>
+		<PlatformTarget>x64</PlatformTarget>
+	</PropertyGroup>
 
-  <ItemGroup>
-	  <PackageReference Include="Bodoconsult.App" Version="1.0.9" />
-	  <PackageReference Include="Bodoconsult.App.Abstractions" Version="1.0.9" />
-	  <PackageReference Include="coverlet.collector" Version="8.0.0">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="18.3.0" />
-    <PackageReference Include="Moq" Version="4.20.72" />
-    <PackageReference Include="NUnit" Version="4.5.1" />
-    <PackageReference Include="NUnit.Analyzers" Version="4.12.0">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
-    <PackageReference Include="NUnit3TestAdapter" Version="6.1.0" />
-  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Bodoconsult.App" Version="1.0.9" />
+		<PackageReference Include="Bodoconsult.App.Abstractions" Version="1.0.9" />
+		<PackageReference Include="coverlet.collector" Version="8.0.0">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="18.3.0" />
+		<PackageReference Include="Moq" Version="4.20.72" />
+		<PackageReference Include="NUnit" Version="4.5.1" />
+		<PackageReference Include="NUnit.Analyzers" Version="4.12.0">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="NUnit3TestAdapter" Version="6.1.0" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <Using Include="NUnit.Framework" />
-  </ItemGroup>
-	
-  <ItemGroup>
-    <Folder Include="Backend\BusinessLogic\Adap\" />
-    <Folder Include="Backend\Configurators\" />
-    <Folder Include="Client\AdapterFactories\" />
-    <Folder Include="Client\Adapter\" />
-    <Folder Include="Client\Configurators\" />
-    <Folder Include="Device\Adapter\" />
-    <Folder Include="Device\AdapterFactories\" />
-  </ItemGroup>
+	<ItemGroup>
+		<Using Include="NUnit.Framework" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\..\samples\IpCommunicationSample\Common\IpCommunicationSample.Common\IpCommunicationSample.Common.csproj" />
-    <ProjectReference Include="..\..\samples\IpCommunicationSample\IpBackend\IpBackend.Bll\IpBackend.Bll.csproj" />
-    <ProjectReference Include="..\..\samples\IpCommunicationSample\IpBackend\IpBackend.Service\IpBackendService.csproj" />
-    <ProjectReference Include="..\..\samples\IpCommunicationSample\IpClient\IpClient.Bll\IpClient.Bll.csproj" />
-    <ProjectReference Include="..\..\samples\IpCommunicationSample\IpDevice\IpDevice.Bll\IpDevice.Bll.csproj" />
-    <ProjectReference Include="..\..\samples\IpCommunicationSample\IpDevice\IpDevice.Service\IpDeviceService.csproj" />
-    <ProjectReference Include="..\..\src\Bodoconsult.NetworkCommunication\Bodoconsult.NetworkCommunication.csproj" />
-    <ProjectReference Include="..\Bodoconsult.NetworkCommunication.Tests\Bodoconsult.NetworkCommunication.Tests.csproj" />
-  </ItemGroup>
+	<ItemGroup>
+		<Folder Include="Backend\BusinessLogic\Adap\" />
+		<Folder Include="Backend\Configurators\" />
+		<Folder Include="Client\AdapterFactories\" />
+		<Folder Include="Client\Adapter\" />
+		<Folder Include="Client\Configurators\" />
+		<Folder Include="Device\Adapter\" />
+		<Folder Include="Device\AdapterFactories\" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\..\samples\IpCommunicationSample\Common\IpCommunicationSample.Common\IpCommunicationSample.Common.csproj" />
+		<ProjectReference Include="..\..\samples\IpCommunicationSample\IpBackend\IpBackend.Bll\IpBackend.Bll.csproj" />
+		<ProjectReference Include="..\..\samples\IpCommunicationSample\IpBackend\IpBackend.Service\IpBackendService.csproj" />
+		<ProjectReference Include="..\..\samples\IpCommunicationSample\IpClient\IpClient.Bll\IpClient.Bll.csproj" />
+		<ProjectReference Include="..\..\samples\IpCommunicationSample\IpDevice\IpDevice.Bll\IpDevice.Bll.csproj" />
+		<ProjectReference Include="..\..\samples\IpCommunicationSample\IpDevice\IpDevice.Service\IpDeviceService.csproj" />
+		<ProjectReference Include="..\..\src\Bodoconsult.NetworkCommunication\Bodoconsult.NetworkCommunication.csproj" />
+		<ProjectReference Include="..\Bodoconsult.NetworkCommunication.Tests\Bodoconsult.NetworkCommunication.Tests.csproj" />
+	</ItemGroup>
 
 </Project>

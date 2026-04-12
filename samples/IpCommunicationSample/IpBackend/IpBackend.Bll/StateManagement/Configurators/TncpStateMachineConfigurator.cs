@@ -1,5 +1,6 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
+using System.Diagnostics;
 using Bodoconsult.NetworkCommunication.Helpers;
 using Bodoconsult.NetworkCommunication.Interfaces;
 using Bodoconsult.NetworkCommunication.StateManagement.Builders;
@@ -182,22 +183,50 @@ public class TncpStateMachineConfigurator : BaseStateMachineConfigurator
         var config = new OrderlessActionStateConfiguration(DefaultStateNames.DeviceOfflineState, new DeviceOfflineStateBuilder())
         {
             CurrentContext = DeviceBusinessLogicAdapter.Device,
-            ExecuteActionForStateDelegate = DelegateHelper.ExecuteActionForStateDelegate,
+            ExecuteActionForStateDelegate = DelegateHelper.DefaultExecuteActionForStateDelegate,
             PrepareRegularStateRequestDelegate = DelegateHelper.PrepareRegularStateRequestDelegate
         };
 
         StateFactory.RegisterConfiguration(config);
     }
 
+
     private void AddDeviceOnlineStateBuilder()
     {
         var config = new OrderlessActionStateConfiguration(DefaultStateNames.DeviceOnlineState, new DeviceOnlineStateBuilder())
         {
             CurrentContext = DeviceBusinessLogicAdapter.Device,
-            ExecuteActionForStateDelegate = DelegateHelper.ExecuteActionForStateDelegate,
+            ExecuteActionForStateDelegate = StartCommunication,
             PrepareRegularStateRequestDelegate = DelegateHelper.PrepareRegularStateRequestDelegate
         };
 
         StateFactory.RegisterConfiguration(config);
+    }
+
+
+    private void StartCommunication(IOrderlessActionStateMachineState state)
+    {
+        ArgumentNullException.ThrowIfNull(state.CurrentContext.CommunicationAdapter);
+        ArgumentNullException.ThrowIfNull(state.CurrentContext.StateMachineStateFactory);
+
+        try
+        {
+            state.CurrentContext.StartComm();
+
+            //// Later call init to get config
+            //var ps = new TncpParameterSet();
+
+            //var newState = state.CurrentContext.StateMachineStateFactory.CreateInstance(state.CurrentContext, DefaultStateNames.DeviceInitState, [ps]);
+            //state.CurrentContext.RequestState(newState);
+
+            var newState = state.CurrentContext.CreateStateInstance(DefaultStateNames.DeviceReadyState);
+            state.CurrentContext.RequestState(newState);
+        }
+        catch (Exception e)
+        {
+            Debug.Print(e.ToString());
+            var newState = state.CurrentContext.CreateStateInstance(DefaultStateNames.DeviceOfflineState);
+            state.CurrentContext.RequestState(newState);
+        }
     }
 }

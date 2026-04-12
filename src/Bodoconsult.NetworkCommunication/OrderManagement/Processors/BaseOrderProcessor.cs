@@ -216,7 +216,7 @@ public abstract class BaseOrderProcessor : IOrderProcessor
         SyncOrderManager = syncOrderManager;
 
         WatchDogRunnerDelegate runner = Runner;
-        _messageProcessingWatchdog = new WatchDog(runner, 300);
+        _messageProcessingWatchdog = new WatchDog(runner, 10);
         ClientNotificationManager = clientNotificationManager;
         DateTimeService = dateTimeService;
         AppLogger = deviceServer.DataMessagingConfig.AppLogger;

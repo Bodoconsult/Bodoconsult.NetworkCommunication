@@ -13,7 +13,7 @@ public class DeviceOnlineStateBuilder : BaseOrderlessStateMachineStateBuilder
     /// <summary>
     /// Allowed next states internal
     /// </summary>
-    public static readonly List<string> AllowedNextStatesInternal = [DefaultStateNames.DeviceInitState, DefaultStateNames.DeviceOfflineState];
+    public static readonly List<string> AllowedNextStatesInternal = [DefaultStateNames.DeviceInitState, DefaultStateNames.DeviceOfflineState, DefaultStateNames.DeviceReadyState];
 
     /// <summary>
     /// Default ctor
@@ -50,6 +50,9 @@ public class DeviceOnlineStateBuilder : BaseOrderlessStateMachineStateBuilder
     private static void ExecuteActionForStateDelegate(IOrderlessActionStateMachineState state)
     {
         ArgumentNullException.ThrowIfNull(state.CancellationTokenSource);
+
+        //ArgumentNullException.ThrowIfNull(IpDeviceTcpIp?.IpDevice);
+        //IpDeviceTcpIp.IpDevice.StartComm();
 
         var context = state.CurrentContext;
         var commAdapter = context.CommunicationAdapter;

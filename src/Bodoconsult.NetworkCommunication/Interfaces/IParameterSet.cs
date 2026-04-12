@@ -33,7 +33,7 @@ public interface IParameterSet: ITypedOutboundDataBlock, IDisposable
     /// <summary>
     /// Send a CANCEL command to the device if request step was unsuccessful. Default: false
     /// </summary>
-    bool SendCancelTodeviceIfUnsuccessful { get; set; }
+    bool SendCancelToDeviceIfUnsuccessful { get; set; }
 
     /// <summary>
     /// Do not notify the client after order running

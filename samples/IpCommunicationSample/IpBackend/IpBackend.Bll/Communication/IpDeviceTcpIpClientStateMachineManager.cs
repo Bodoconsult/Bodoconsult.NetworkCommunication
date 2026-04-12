@@ -91,7 +91,6 @@ public class IpDeviceTcpIpClientStateMachineManager: IStateMachineDeviceManager
         IStateMachineConfiguratorFactory stateMachineConfiguratorFactory = new TncpStateMachineConfiguratorFactory();
         configurator.ConfigureStateManagement(stateMachineConfiguratorFactory);
 
-
         var device = configurator.GetDevice();
 
         if (device is not IStateMachineDevice od)

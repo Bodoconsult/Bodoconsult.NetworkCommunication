@@ -7,7 +7,7 @@ using Bodoconsult.NetworkCommunication.Protocols.Udp;
 using Bodoconsult.NetworkCommunication.Testing;
 using Bodoconsult.NetworkCommunication.Tests.Helpers;
 
-namespace Bodoconsult.NetworkCommunication.Tests.Testing;
+namespace Bodoconsult.NetworkCommunication.Tests.Udp;
 
 [TestFixture]
 internal class UdpServerSocketProxyTests

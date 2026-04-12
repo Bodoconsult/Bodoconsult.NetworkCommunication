@@ -86,18 +86,12 @@ public class IpCommunicationHandler : ICommunicationHandler
         {
             // Todo: check if blocking
             var s = $"Enqueue message {message.ToShortInfoString()}";
-            Debug.Print(s);
+            //Debug.Print(s);
             DataMessagingConfig.MonitorLogger.LogDebug(s);
 
             message.RaiseStopSyncExecutionDelegate = StopExecutionOfSyncOrder;
 
             _queue.Enqueue(message);
-            
-            //var x = new MessageSendingResult(message, OrderExecutionResultState.Successful);
-
-            //var x = AsyncHelper.RunSync(() => DuplexIo.SendMessage(message));
-
-            //var x = DuplexIo.SendMessage(message).ConfigureAwait(false).GetAwaiter().GetResult();
 
             var syncData = _syncProcessManager.AddSyncProcess(message.MessageId, 5000);
 

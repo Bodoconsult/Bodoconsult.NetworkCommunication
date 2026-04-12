@@ -8,6 +8,11 @@ namespace Bodoconsult.NetworkCommunication.Interfaces;
 public interface ITcpIpDevice: IDisposable
 {
     /// <summary>
+    /// Current cancellation token
+    /// </summary>
+    CancellationTokenSource CancellationTokenSource { get; set; }
+
+    /// <summary>
     /// Send timeout in milliseconds. -1 means infinite.
     /// </summary>
     int SendTimeout { get; set; }
@@ -32,6 +37,12 @@ public interface ITcpIpDevice: IDisposable
     /// </summary>
     /// <param name="data">Byte array to send</param>
     void Send(byte[] data);
+
+    /// <summary>
+    /// Receive data
+    /// </summary>
+    /// <returns>Received data</returns>
+    Task<byte[]> Receive();
 
     void Dispose(bool disposing);
 }

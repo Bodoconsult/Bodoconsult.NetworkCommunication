@@ -1,6 +1,8 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
 using System.Collections.Concurrent;
+using System.Diagnostics;
+using System.Runtime.CompilerServices;
 using Bodoconsult.App.Helpers;
 using Bodoconsult.NetworkCommunication.Interfaces;
 using Bodoconsult.NetworkCommunication.StateManagement;
@@ -154,38 +156,68 @@ public abstract class BaseStateMachineDevice : BaseOrderManagementDevice, IState
         // Save previous business state ID
         PreviousBusinessStateId = CurrentState?.Id ?? 0;
 
+        // Now set the initial states
+        newState.SetInitalStates();
+
+        // Initiate the state with orders etc.
+        newState.InitiateState();
+
         // Now set the new state and run it
         CurrentState = newState;
 
-        // Now set the initial states
-        CurrentState.SetInitalStates();
+        var isNoAction = CurrentState is INoActionStateMachineState;
+        Debug.Print($"{CurrentState}: NoAction: {isNoAction}");
 
-        // Initiate the state with orders etc.
-        CurrentState.InitiateState();
-
-        // Do the request action for the state now
-        if (CurrentState is IOrderBasedActionStateMachineState obas)
+        if (newState is
+            // Do the request action for the state now
+            IOrderBasedActionStateMachineState obas)
         {
             AsyncHelper.FireAndForget(() =>
             {
-                obas.RunNextOrder();
+                try
+                {
+                    obas.RunNextOrder();
+                }
+                catch (Exception e)
+                {
+                    Debug.Print(e.ToString());
+                    newState.CurrentContext.DataMessagingConfig.AppLogger.LogError(
+                        "IOrderBasedActionStateMachineState execute failed", e);
+                }
             });
-
         }
-        if (CurrentState is IOrderlessActionStateMachineState olas)
+        else if (newState is IOrderlessActionStateMachineState olas)
         {
             AsyncHelper.FireAndForget(() =>
             {
-                olas.Execute();
+                try
+                {
+                    olas.Execute();
+                }
+                catch (Exception e)
+                {
+                    Debug.Print(e.ToString());
+                    newState.CurrentContext.DataMessagingConfig.AppLogger.LogError(
+                        "IOrderlessActionStateMachineState execute failed", e);
+                }
             });
-
         }
-
-        if (CurrentState is INoActionStateMachineState nas)
+        else if (newState is INoActionStateMachineState nas)
         {
+            Debug.Print($"{nas}: NoAction: {isNoAction}");
+
             AsyncHelper.FireAndForget(() =>
             {
-                nas.CheckJobstates();
+                try
+                {
+                    nas.CheckJobstates();
+                }
+                catch (Exception e)
+                {
+                    Debug.Print(e.ToString());
+                    newState.CurrentContext.DataMessagingConfig.AppLogger.LogError(
+                        "INoActionStateMachineState execute failed", e);
+                }
             });
         }
     }

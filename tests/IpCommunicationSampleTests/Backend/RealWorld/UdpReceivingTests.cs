@@ -14,6 +14,7 @@ using Bodoconsult.NetworkCommunication.Interfaces;
 using Bodoconsult.NetworkCommunication.OrderManagement.Processors;
 using Bodoconsult.NetworkCommunication.Protocols.TcpIp;
 using IpBackend.Bll.BusinessLogic;
+using IpBackend.Bll.BusinessLogic.Adapters;
 using IpBackend.Bll.Interfaces;
 using IpBackendService.DiContainerProvider;
 using IpCommunicationSampleTests.App;
@@ -126,7 +127,9 @@ namespace IpCommunicationSampleTests.Backend.RealWorld
 
             _backendManager.LoadBusinessTransactions();
 
+            _backendManager.StartIpDeviceTcpIpCommunication();
             _backendManager.StartIpDeviceUdpCommunication();
+
 
             ArgumentNullException.ThrowIfNull(_backendManager.IpDeviceUdp?.IpDevice);
             _backendManager.IpDeviceUdp.IpDevice.DataMessagingConfig.RaiseAppLayerDataMessageReceivedDelegate = RaiseAppLayerDataMessageReceivedDelegate;
@@ -160,7 +163,7 @@ namespace IpCommunicationSampleTests.Backend.RealWorld
         }
 
         [Test]
-        public void StartStreaming2_ValidSetup_MessagesSent()
+        public void DeviceStartStreaming2_ValidSetup_MessagesSent()
         {
             // Arrange 
             CreateDiContainer();
@@ -184,6 +187,54 @@ namespace IpCommunicationSampleTests.Backend.RealWorld
             Wait.Until(CheckMessages);
 
             adapter.StopStreaming(request2);
+
+            // Assert
+            Assert.That(CheckMessages(), Is.True);
+        }
+
+        [Test]
+        public void BackendRequestDeviceStartStreamingState_ValidSetup_MessagesSent()
+        {
+            // Arrange 
+            CreateDiContainer();
+
+            CreateAndStartDevice();
+
+            CreateAndStartBackend();
+
+            ArgumentNullException.ThrowIfNull(_backendManager?.IpDeviceTcpIp?.DeviceBusinessLogicAdapter);
+            ArgumentNullException.ThrowIfNull(_backendManager.IpDeviceTcpIp?.Device?.CurrentState);
+
+            Wait.Until(() => _backendManager.IpDeviceTcpIp.Device.CurrentState.Id == DefaultStateIds.DeviceReadyState);
+
+            var adapter = (TncpIpDeviceTcpIpBusinessLogicAdapter)_backendManager.IpDeviceTcpIp.DeviceBusinessLogicAdapter;
+
+            var request = new EmptyBusinessTransactionRequestData();
+            var request2 = new EmptyBusinessTransactionRequestData();
+
+            // Act  
+            AsyncHelper.FireAndForget(() =>
+            {
+                adapter.RequestDeviceStartStreamingState(request);
+            });
+
+            Task.Delay(1000);
+
+            Wait.Until(() => _backendManager.IpDeviceTcpIp.Device.CurrentState.Id == DefaultStateIds.DeviceStartStreamingState, 10000);
+
+
+            Wait.Until(() => _backendManager.IpDeviceTcpIp.Device.CurrentState.Id == DefaultStateIds.DeviceReadyState, 10000);
+
+            //Thread.Sleep(5000);
+
+            Wait.Until(CheckMessages);
+
+            AsyncHelper.FireAndForget(() =>
+            {
+                adapter.RequestDeviceStopStreamingState(request2);
+            });
+            
+            Wait.Until(() => _backendManager.IpDeviceTcpIp.Device.CurrentState.Id == DefaultStateIds.DeviceReadyState, 10000);
 
             // Assert
             Assert.That(CheckMessages(), Is.True);

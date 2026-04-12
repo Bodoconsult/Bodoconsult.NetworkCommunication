@@ -49,7 +49,7 @@ public class EdcpParameterSet : BasicOutboundDatablock, IParameterSet
     /// <summary>
     /// Send a CANCEL command to the device if request step was unsuccessful. Default: false
     /// </summary>
-    public bool SendCancelTodeviceIfUnsuccessful { get; set; }
+    public bool SendCancelToDeviceIfUnsuccessful { get; set; }
 
     /// <summary>
     /// Do not notify the client after order running

@@ -1,6 +1,7 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 // Licence MIT
 
+using System.Diagnostics;
 using System.Net;
 using System.Net.Sockets;
 using Bodoconsult.NetworkCommunication.Helpers;
@@ -159,9 +160,17 @@ public class TcpIpClientSocketProxy : TcpIpSocketProxyBase
             Blocking = false
         };
         Socket.SetSocketKeepAliveValues(7200000, 1000);
+        Socket.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.ReuseAddress, true);
 
         EndPoint ep = new IPEndPoint(IpAddress, Port);
-        await Socket.ConnectAsync(ep);
+        try
+        {
+            await Socket.ConnectAsync(ep);
+        }
+        catch (Exception e)
+        {
+           Debug.Print(e.ToString());
+        }
     }
 
     /// <summary>

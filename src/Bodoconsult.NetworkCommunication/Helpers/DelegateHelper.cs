@@ -145,10 +145,11 @@ public static class DelegateHelper
     /// <param name="state">Current state</param>
     public static void DefaultExecuteActionForStateDelegate(IOrderlessActionStateMachineState state)
     {
-        if (state.CancellationTokenSource == null)
-        {
-            throw new ArgumentNullException(nameof(state.CancellationTokenSource));
-        }
+        ArgumentNullException.ThrowIfNull(state.CancellationTokenSource);
+        //if (state.CancellationTokenSource == null)
+        //{
+        //    throw new ArgumentNullException(nameof(state.CancellationTokenSource));
+        //}
 
         var context = state.CurrentContext;
 
