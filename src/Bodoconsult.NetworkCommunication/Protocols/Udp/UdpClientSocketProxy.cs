@@ -25,10 +25,17 @@ public class UdpClientSocketProxy : UpdSocketProxyBase
     /// </summary>
     protected IPEndPoint? EndPoint;
 
+    private bool _isBound;
+
     /// <summary>
     /// Current socket (only for testing purposes, do not access directly in production code)
     /// </summary>
     public UdpClient? UdpClient { get; protected set; }
+
+    /// <summary>
+    /// Is the socket connected
+    /// </summary>
+    public override bool Connected => _isBound;
 
     /// <summary>
     /// The number of bytes available to read
@@ -89,10 +96,13 @@ public class UdpClientSocketProxy : UpdSocketProxyBase
     /// </summary>
     public override void Close()
     {
+        _isBound = false;
+
         if (UdpClient == null)
         {
             return;
         }
+
         UdpClient.Client.Shutdown(SocketShutdown.Both);
         UdpClient.Close();
     }
@@ -132,12 +142,14 @@ public class UdpClientSocketProxy : UpdSocketProxyBase
                 EndPoint = new IPEndPoint(IpAddress, Port);
                 UdpClient.Connect(EndPoint);
                 Debug.Print($"UDPClient: connect to {IpAddress}:{Port}");
+                _isBound = true;
 
             }
             catch (Exception e)
             {
                 // ToDo: add logging
                 Console.WriteLine(e);
+                _isBound = false;
                 throw;
             }
         });
@@ -222,5 +234,6 @@ public class UdpClientSocketProxy : UpdSocketProxyBase
         UdpClient?.Close();
         UdpClient?.Dispose();
         UdpClient = null;
+        _isBound = false;
     }
 }

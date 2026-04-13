@@ -40,6 +40,43 @@ public class BaseDuplexIoReceiver : IDuplexIoReceiver
     protected IAppLoggerProxy Logger;
 
     /// <summary>
+    /// Check and wait until the socket is connected
+    /// </summary>
+    /// <returns>False if the socket is not connected else true</returns>
+    protected async Task<bool> WaitForSocketIsConnected()
+    {
+        var socketProxy = DataMessagingConfig.SocketProxy;
+
+        // Check if the socket is available and connected
+        while (true)
+        {
+            if (CancellationSource?.Token.IsCancellationRequested ?? true)
+            {
+                //Debug.Print("FillMessagePipeline cancelled");
+                return false;
+            }
+
+            if (socketProxy?.Connected ?? false)
+            {
+                break;
+            }
+
+            socketProxy = DataMessagingConfig.SocketProxy;
+
+            if (CancellationSource != null)
+            {
+                await Task.Delay(50, CancellationSource.Token);
+            }
+            else
+            {
+                await Task.Delay(50);
+            }
+        }
+
+        return true;
+    }
+
+    /// <summary>
     /// Default ctor
     /// </summary>
     /// <param name="dataMessagingConfig">Current data messaging config</param>

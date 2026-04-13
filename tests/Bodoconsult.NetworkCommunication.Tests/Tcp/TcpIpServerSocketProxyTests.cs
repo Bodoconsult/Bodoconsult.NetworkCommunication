@@ -120,6 +120,8 @@ internal class TcpIpServerSocketProxyTests
             tcpServer.Port = port;
             tcpServer.Connect().GetAwaiter().GetResult();
 
+            var connected = tcpServer.Connected;
+
             try
             {
                 while (!cts.IsCancellationRequested)

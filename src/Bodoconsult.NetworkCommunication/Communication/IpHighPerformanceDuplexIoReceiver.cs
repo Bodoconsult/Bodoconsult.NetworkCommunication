@@ -85,6 +85,12 @@ public class IpHighPerformanceDuplexIoReceiver : BaseDuplexIoReceiver
 
     public override async Task FillMessagePipeline()
     {
+        // Wait until the socket is connected
+        if (!await WaitForSocketIsConnected())
+        {
+            return;
+        }
+
         //Debug.Print("Start fill message pipeline");
         var writer = _pipe.Writer;
         var memSize = DataMessagingConfig.SocketProxy?.MinimumBufferSize ?? 512;

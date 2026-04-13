@@ -39,13 +39,13 @@ internal class UdpClientSocketProxyTests
                 {
                     while (!cts.IsCancellationRequested)
                     {
+                        var sent = await client.Send(serverData); // reply back
+                        Debug.Print($"Client: sent {sent} bytes");
+
                         var data = new byte[10];
                         await client.Receive(data); ; // listen on port 11000
 
                         Debug.Print($"Client: received {data.Length} bytes");
-
-                        var sent = await client.Send(serverData); // reply back
-                        Debug.Print($"Client: sent {sent} bytes");
                     }
                 }
                 catch (Exception e)
@@ -70,8 +70,6 @@ internal class UdpClientSocketProxyTests
 
                 // send data
                 udpServer.Send(clientData);
-
-
             }
 
             serverCount = udpServer.ReceivedMessages.Count;

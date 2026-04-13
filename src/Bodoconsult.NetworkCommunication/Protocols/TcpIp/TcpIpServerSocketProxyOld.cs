@@ -1,5 +1,4 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
-// Licence MIT
 
 using System.Diagnostics;
 using System.Net.Sockets;
@@ -11,17 +10,16 @@ namespace Bodoconsult.NetworkCommunication.Protocols.TcpIp;
 /// <summary>
 /// Current asynchronous implementation of <see cref="ISocketProxy"/> for TCP
 /// </summary>
-public class TcpIpServerSocketProxy : TcpIpSocketProxyBase
+public class TcpIpServerSocketProxyOld : TcpIpSocketProxyBase
 {
     private readonly byte[] _tmp = new byte[1];
     public readonly ITcpIpListenerManager TcpIpListenerManager;
     private Socket? _listener;
-    private bool _isBound;
 
     /// <summary>
     /// Default ctor
     /// </summary>
-    public TcpIpServerSocketProxy(ITcpIpListenerManager tcpIpListenerManager)
+    public TcpIpServerSocketProxyOld(ITcpIpListenerManager tcpIpListenerManager)
     {
         TcpIpListenerManager = tcpIpListenerManager;
     }
@@ -29,53 +27,53 @@ public class TcpIpServerSocketProxy : TcpIpSocketProxyBase
     /// <summary>
     /// Is the socket connected
     /// </summary>
-    public override bool Connected => _isBound;
-    //{
-    //    get
-    //    {
-    //        // Replacement for Socket.Connected. See sample at the end of https://learn.microsoft.com/en-us/dotnet/api/system.net.sockets.socket.connected?redirectedfrom=MSDN&view=net-7.0#System_Net_Sockets_Socket_Connected
+    public override bool Connected
+    {
+        get
+        {
+            // Replacement for Socket.Connected. See sample at the end of https://learn.microsoft.com/en-us/dotnet/api/system.net.sockets.socket.connected?redirectedfrom=MSDN&view=net-7.0#System_Net_Sockets_Socket_Connected
 
-    //        try
-    //        {
-    //            if (_listener == null)
-    //            {
-    //                return false;
-    //            }
+            try
+            {
+                if (Socket is not { Connected: true })
+                {
+                    return false;
+                }
 
-    //            // This is how you can determine whether a socket is still connected.
-    //            var blockingState = _listener.Blocking;
-    //            try
-    //            {
-    //                _listener.Blocking = false;
-    //                _listener.Send(_tmp, 0, 0);
-    //                //Console.WriteLine("Connected!");
-    //            }
-    //            catch (SocketException e)
-    //            {
-    //                // 10035 == WSAEWOULDBLOCK
-    //                if (e.NativeErrorCode.Equals(10035))
-    //                {
-    //                    // Still connected, but the send would block;
-    //                }
-    //                else
-    //                {
-    //                    // Disconnected
-    //                    return false;
-    //                }
-    //            }
-    //            finally
-    //            {
-    //                _listener.Blocking = blockingState;
-    //            }
+                // This is how you can determine whether a socket is still connected.
+                var blockingState = Socket.Blocking;
+                try
+                {
+                    Socket.Blocking = false;
+                    Socket.Send(_tmp, 0, 0);
+                    //Console.WriteLine("Connected!");
+                }
+                catch (SocketException e)
+                {
+                    // 10035 == WSAEWOULDBLOCK
+                    if (e.NativeErrorCode.Equals(10035))
+                    {
+                        // Still connected, but the send would block;
+                    }
+                    else
+                    {
+                        // Disconnected
+                        return false;
+                    }
+                }
+                finally
+                {
+                    Socket.Blocking = blockingState;
+                }
 
-    //            return true;
-    //        }
-    //        catch //(Exception e)
-    //        {
-    //            return false;
-    //        }
-    //    }
-    //}
+                return true;
+            }
+            catch //(Exception e)
+            {
+                return false;
+            }
+        }
+    }
 
     /// <summary>
     /// The number of bytes available to read
@@ -137,8 +135,6 @@ public class TcpIpServerSocketProxy : TcpIpSocketProxyBase
         }
         Socket.Shutdown(SocketShutdown.Both);
         Socket.Close();
-
-        _isBound = false;
     }
 
     /// <summary>
@@ -168,14 +164,6 @@ public class TcpIpServerSocketProxy : TcpIpSocketProxyBase
 
             Debug.Print($"Server: port {Port}");
             _listener = TcpIpListenerManager.RegisterListener(Port, AcceptDelegate);
-            if (_listener == null)
-            {
-                _isBound = false;
-            }
-            else
-            {
-                _isBound = true;
-            }
         });
     }
 

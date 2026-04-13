@@ -1,12 +1,15 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
-using System.Collections.Concurrent;
-using System.Net;
-using System.Net.Sockets;
 using Bodoconsult.App.Helpers;
 using Bodoconsult.NetworkCommunication.Delegates;
 using Bodoconsult.NetworkCommunication.Helpers;
 using Bodoconsult.NetworkCommunication.Interfaces;
+using Newtonsoft.Json.Linq;
+using System.Collections.Concurrent;
+using System.Diagnostics;
+using System.Net;
+using System.Net.Sockets;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Bodoconsult.NetworkCommunication.Protocols.TcpIp;
 
@@ -162,12 +165,25 @@ public class TcpIpListenerManager : ITcpIpListenerManager
 
         // Now begin
         data.AcceptCts = new CancellationTokenSource();
-        data.AcceptTask = WaitForAccept(data.Listener, data.AcceptCts.Token);
+        data.AcceptTask = WaitForAccept(listener, data.AcceptCts.Token);
 
-        AsyncHelper.FireAndForget(() =>
+
+        AsyncHelper.FireAndForget(async void () =>
         {
-            data.AcceptTask.GetAwaiter().GetResult();
+            try
+            {
+                await data.AcceptTask;
+            }
+            catch (Exception e)
+            {
+                Debug.Print(e.ToString());
+            }
         });
+
+        //AsyncHelper.FireAndForget(() =>
+        //{
+        //    data.AcceptTask.GetAwaiter().GetResult();
+        //});
 
 
         //// Keep the listener instance

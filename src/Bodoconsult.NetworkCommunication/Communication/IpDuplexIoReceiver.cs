@@ -167,6 +167,12 @@ public class IpDuplexIoReceiver : BaseDuplexIoReceiver
         ArgumentNullException.ThrowIfNull(DuplexIoIsWorkInProgressDelegate);
         ArgumentNullException.ThrowIfNull(DuplexIoNoDataDelegate);
 
+        // Wait until the socket is connected
+        if (!await WaitForSocketIsConnected())
+        {
+            return;
+        }
+
         //try
         //{
 
@@ -241,6 +247,7 @@ public class IpDuplexIoReceiver : BaseDuplexIoReceiver
         //    throw;
         //}
     }
+
 
     private Task RaiseException(Exception ex)
     {
