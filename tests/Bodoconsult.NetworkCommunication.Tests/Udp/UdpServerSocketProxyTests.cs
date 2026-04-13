@@ -146,22 +146,22 @@ internal class UdpServerSocketProxyTests
         await Task.Delay(100);
 
         // Act  
-        var client = new UdpClientSocketProxy();
-        client.IpAddress = ip;
-        client.Port = port;
-        client.Connect().GetAwaiter().GetResult();
+        var udpClient = new UdpClientSocketProxy();
+        udpClient.IpAddress = ip;
+        udpClient.Port = port;
+        udpClient.Connect().GetAwaiter().GetResult();
 
         //client.Start();
 
         while (!cts.IsCancellationRequested)
         {
             // send data
-            var sent = await client.Send(clientData);
+            var sent = await udpClient.Send(clientData);
             Debug.Print($"Client: sent {sent} bytes");
 
             // then receive data
             var data = new byte[10];
-            var count = await client.Receive(data);
+            var count = await udpClient.Receive(data);
 
             if (count > 0)
             {
@@ -171,7 +171,7 @@ internal class UdpServerSocketProxyTests
             Debug.Print($"Client: received {data.Length} bytes");
         }
 
-        client.Dispose();
+        udpClient.Dispose();
 
         // Assert
         using (Assert.EnterMultipleScope())

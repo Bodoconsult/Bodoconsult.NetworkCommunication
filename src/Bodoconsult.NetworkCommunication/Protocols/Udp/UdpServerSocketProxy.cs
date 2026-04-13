@@ -270,7 +270,7 @@ public class UdpServerSocketProxy : UpdSocketProxyBase
     /// <param name="bytesToSend">Byte array to send</param>
     public override Task<int> Send(byte[] bytesToSend)
     {
-        return UdpClient == null || SendEndPoint == null || Equals(SendEndPoint.Address, IPAddress.Any) ? Task.FromResult(0) : UdpClient.SendAsync(bytesToSend, bytesToSend.Length, EndPoint);
+        return UdpClient == null || SendEndPoint == null || Equals(SendEndPoint.Address, IPAddress.Any) ? Task.FromResult(0) : UdpClient.SendAsync(bytesToSend, bytesToSend.Length, SendEndPoint);
     }
 
     /// <summary>

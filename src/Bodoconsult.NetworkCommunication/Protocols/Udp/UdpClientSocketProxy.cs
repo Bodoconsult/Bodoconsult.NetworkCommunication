@@ -6,6 +6,7 @@
 // https://learn.microsoft.com/de-de/dotnet/framework/network-programming/using-udp-services
 // https://enclave.io/high-performance-udp-sockets-net6/
 
+using System.Diagnostics;
 using System.Net;
 using System.Net.Sockets;
 using Bodoconsult.NetworkCommunication.Interfaces;
@@ -130,6 +131,7 @@ public class UdpClientSocketProxy : UpdSocketProxyBase
 
                 EndPoint = new IPEndPoint(IpAddress, Port);
                 UdpClient.Connect(EndPoint);
+                Debug.Print($"UDPClient: connect to {IpAddress}:{Port}");
 
             }
             catch (Exception e)
@@ -156,6 +158,8 @@ public class UdpClientSocketProxy : UpdSocketProxyBase
         var received = Task.Run(() =>
         {
             var result = UdpClient.Receive(ref EndPoint);
+            //Debug.Print($"UDPClient: received {result.Length} bytes from {EndPoint}");
+
             Buffer.BlockCopy(result, 0, buffer, 0, result.Length);
             return Task.FromResult(result.Length);
         });
