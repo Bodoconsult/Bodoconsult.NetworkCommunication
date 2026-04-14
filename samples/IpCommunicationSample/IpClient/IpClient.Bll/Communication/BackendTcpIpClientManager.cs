@@ -22,6 +22,7 @@ public class BackendTcpIpClientManager : IOrderManagementDeviceManager
     private readonly IAppLoggerProxyFactory _appLoggerFactory;
     private readonly IAppLoggerProxy _appLoggerProxy;
     private readonly IOrderManagerFactory _orderManagerFactory;
+    private ISocketProxyFactory _socketProxyFactory;
 
     /// <summary>
     /// Default ctor
@@ -35,6 +36,7 @@ public class BackendTcpIpClientManager : IOrderManagementDeviceManager
     /// <param name="appLoggerProxy">Current app logger</param>
     /// <param name="orderManagerFactory">Current order manager factory</param>
     /// <param name="orderIdGenerator">Current order ID generator</param>
+    /// <param name="socketProxyFactory">Current socket factory</param>
     public BackendTcpIpClientManager(IDuplexIoFactory duplexIoFactory,
         IMonitorLoggerFactoryFactory monitorLoggerFactoryFactory,
         ILogDataFactory logDataFactory,
@@ -43,7 +45,8 @@ public class BackendTcpIpClientManager : IOrderManagementDeviceManager
         IOrderManagementClientNotificationManager clientNotificationManager,
         IAppLoggerProxy appLoggerProxy,
         IOrderManagerFactory orderManagerFactory,
-        IOrderIdGenerator orderIdGenerator)
+        IOrderIdGenerator orderIdGenerator,
+        ISocketProxyFactory socketProxyFactory)
     {
         _duplexIoFactory = duplexIoFactory;
         _appEventSourceFactory = appEventSourceFactory;
@@ -55,6 +58,7 @@ public class BackendTcpIpClientManager : IOrderManagementDeviceManager
         _appLoggerProxy = appLoggerProxy;
         _orderManagerFactory = orderManagerFactory;
         _orderIdGenerator = orderIdGenerator;
+        _socketProxyFactory = socketProxyFactory;
     }
 
     /// <summary>
@@ -76,7 +80,8 @@ public class BackendTcpIpClientManager : IOrderManagementDeviceManager
     {
         IDataMessageProcessingPackageFactory messageProcessingPackageFactory = new BtcpDataMessageProcessingPackageFactory();
 
-        var configurator = new TcpIpClientOrderManagementDeviceConfigurator(_duplexIoFactory, _monitorLoggerFactoryFactory, _logDataFactory, _appLoggerFactory, _appEventSourceFactory, _clientNotificationManager, _appLoggerProxy);
+        var configurator = new TcpIpClientOrderManagementDeviceConfigurator(_duplexIoFactory, _monitorLoggerFactoryFactory, _logDataFactory, _appLoggerFactory, _appEventSourceFactory, 
+            _clientNotificationManager, _appLoggerProxy, _socketProxyFactory);
 
         configurator.CreateMessagingConfig("Client_TCPIP", ipAddress, port, messageProcessingPackageFactory);
 

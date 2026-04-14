@@ -2,6 +2,7 @@
 // Licence MIT
 
 using System.Net;
+using Bodoconsult.App.Abstractions.Interfaces;
 
 namespace Bodoconsult.NetworkCommunication.Interfaces;
 
@@ -59,6 +60,11 @@ public interface ISocketProxy: IDisposable
     /// Current cancellation token
     /// </summary>
     CancellationTokenSource CancellationTokenSource { get; set; }
+
+    /// <summary>
+    /// Current logger to use or null. This logger logs only exceptions but NO data due to potential performance issues
+    /// </summary>
+    IAppLoggerProxy? Logger { get; set; }
 
     /// <summary>
     /// Send bytes

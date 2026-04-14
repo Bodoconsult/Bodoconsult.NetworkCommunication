@@ -38,10 +38,11 @@ internal class TcpIpClientDeviceConfiguratorTests
     {
         // Arrange 
         var duplexIoFactory = new IpDuplexIoFactory(_sendPacketProcessFactory);
+        var socketFactory = new SocketProxyFactory(_tcpIpListenerManager);
 
         // Act  
         var conf = new TcpIpClientDeviceConfigurator(duplexIoFactory, _monitorLoggerFactoryFactory, _logDataFactory, _appLoggerFactory,
-            _appEventSourceFactory, _clientNotificationManager, _tcpIpListenerManager, _appLoggerProxy);
+            _appEventSourceFactory, _clientNotificationManager, _appLoggerProxy, socketFactory);
 
         // Assert
         Assert.That(conf.DataMessagingConfig, Is.Null);
@@ -53,9 +54,10 @@ internal class TcpIpClientDeviceConfiguratorTests
     {
         // Arrange 
         var duplexIoFactory = new IpDuplexIoFactory(_sendPacketProcessFactory);
+        var socketFactory = new SocketProxyFactory(_tcpIpListenerManager);
 
         var conf = new TcpIpClientDeviceConfigurator(duplexIoFactory, _monitorLoggerFactoryFactory, _logDataFactory, _appLoggerFactory,
-            _appEventSourceFactory, _clientNotificationManager, _tcpIpListenerManager, _appLoggerProxy);
+            _appEventSourceFactory, _clientNotificationManager,  _appLoggerProxy, socketFactory);
 
         const string ip = "127.0.0.1";
         const int port = 9000;
@@ -64,11 +66,15 @@ internal class TcpIpClientDeviceConfiguratorTests
         conf.CreateMessagingConfig("TestDevice", ip, port, _messageProcessingPackageFactory);
 
         // Assert
-        Assert.That(conf.DataMessagingConfig, Is.Not.Null);
-        Assert.That(conf.Device, Is.Null);
-        Assert.That(conf.DataMessagingConfig.IpAddress, Is.EqualTo(ip));
-        Assert.That(conf.DataMessagingConfig.Port, Is.EqualTo(port));
-        Assert.That(conf.DataMessagingConfig.DataMessageProcessingPackage, Is.Not.Null);
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(conf.DataMessagingConfig, Is.Not.Null);
+            ArgumentNullException.ThrowIfNull(conf.DataMessagingConfig);
+            Assert.That(conf.Device, Is.Null);
+            Assert.That(conf.DataMessagingConfig.IpAddress, Is.EqualTo(ip));
+            Assert.That(conf.DataMessagingConfig.Port, Is.EqualTo(port));
+            Assert.That(conf.DataMessagingConfig.DataMessageProcessingPackage, Is.Not.Null);
+        }
     }
 
     [Test]
@@ -76,9 +82,10 @@ internal class TcpIpClientDeviceConfiguratorTests
     {
         // Arrange 
         var duplexIoFactory = new IpDuplexIoFactory(_sendPacketProcessFactory);
+        var socketFactory = new SocketProxyFactory(_tcpIpListenerManager);
 
         var conf = new TcpIpClientDeviceConfigurator(duplexIoFactory, _monitorLoggerFactoryFactory, _logDataFactory, _appLoggerFactory,
-            _appEventSourceFactory, _clientNotificationManager, _tcpIpListenerManager, _appLoggerProxy);
+            _appEventSourceFactory, _clientNotificationManager, _appLoggerProxy, socketFactory);
         conf.CreateMessagingConfig("TestDevice", "127.0.0.1", 9000, _messageProcessingPackageFactory);
 
         // Act  
@@ -86,7 +93,10 @@ internal class TcpIpClientDeviceConfiguratorTests
         conf.CreateDevice(businessLogicAdapterFactory);
 
         // Assert
-        Assert.That(conf.DataMessagingConfig, Is.Not.Null);
-        Assert.That(conf.Device, Is.Not.Null);
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(conf.DataMessagingConfig, Is.Not.Null);
+            Assert.That(conf.Device, Is.Not.Null);
+        }
     }
 }

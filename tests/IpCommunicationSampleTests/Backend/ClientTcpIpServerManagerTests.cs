@@ -48,10 +48,11 @@ internal class ClientTcpIpServerManagerTests
         // Arrange 
         var duplexIoFactory = new IpDuplexIoFactory(_sendPacketProcessFactory);
         IBusinessTransactionManager businessTransactionManager = new BusinessTransactionManager(_appLogger, _appEventSourceFactory);
+        var socketFactory = new SocketProxyFactory(_tcpIpListenerManager);
 
         // Act
         var m = new ClientTcpIpServerManager(duplexIoFactory, _monitorLoggerFactoryFactory, _logDataFactory, _appLoggerFactory,
-            _appEventSourceFactory, _clientNotificationManager, _tcpIpListenerManager, _appLogger, businessTransactionManager);
+            _appEventSourceFactory, _clientNotificationManager, _appLogger, businessTransactionManager, socketFactory);
 
         // Assert
         using (Assert.EnterMultipleScope())
@@ -67,9 +68,10 @@ internal class ClientTcpIpServerManagerTests
         // Arrange 
         var duplexIoFactory = new IpDuplexIoFactory(_sendPacketProcessFactory);
         IBusinessTransactionManager businessTransactionManager = new BusinessTransactionManager(_appLogger, _appEventSourceFactory);
-        
+        var socketFactory = new SocketProxyFactory(_tcpIpListenerManager);
+
         var m = new ClientTcpIpServerManager(duplexIoFactory, _monitorLoggerFactoryFactory, _logDataFactory, _appLoggerFactory,
-            _appEventSourceFactory, _clientNotificationManager, _tcpIpListenerManager, _appLogger, businessTransactionManager);
+            _appEventSourceFactory, _clientNotificationManager, _appLogger, businessTransactionManager, socketFactory);
 
         const string ip = "127.0.0.1";
         const int port = 9000;
@@ -78,7 +80,10 @@ internal class ClientTcpIpServerManagerTests
         m.ConfigureDevice(ip, port);
 
         // Assert
-        Assert.That(m.IpDevice, Is.Not.Null);
-        Assert.That(m.DeviceBusinessLogicAdapter, Is.Not.Null);
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(m.IpDevice, Is.Not.Null);
+            Assert.That(m.DeviceBusinessLogicAdapter, Is.Not.Null);
+        }
     }
 }

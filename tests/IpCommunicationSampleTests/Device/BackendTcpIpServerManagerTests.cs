@@ -41,10 +41,11 @@ internal class BackendTcpIpServerManagerTests
         // Arrange 
         var duplexIoFactory = new IpDuplexIoFactory(_sendPacketProcessFactory);
         var btm = new BusinessTransactionManager(_appLogger, _appEventSourceFactory);
- 
+        var socketFactory = new SocketProxyFactory(_tcpIpListenerManager);
+
         // Act
         var m = new BackendTcpIpServerManager(duplexIoFactory, _monitorLoggerFactoryFactory, _logDataFactory, _appLoggerFactory,
-            _appEventSourceFactory, _clientNotificationManager, _tcpIpListenerManager, _appLogger, btm);
+            _appEventSourceFactory, _clientNotificationManager,  _appLogger, btm, socketFactory);
 
         // Assert
         using (Assert.EnterMultipleScope())
@@ -60,9 +61,10 @@ internal class BackendTcpIpServerManagerTests
         // Arrange 
         var duplexIoFactory = new IpDuplexIoFactory(_sendPacketProcessFactory);
         var btm = new BusinessTransactionManager(_appLogger, _appEventSourceFactory);
+        var socketFactory = new SocketProxyFactory(_tcpIpListenerManager);
 
         var m = new BackendTcpIpServerManager(duplexIoFactory, _monitorLoggerFactoryFactory, _logDataFactory, _appLoggerFactory,
-            _appEventSourceFactory, _clientNotificationManager, _tcpIpListenerManager, _appLogger, btm);
+            _appEventSourceFactory, _clientNotificationManager, _appLogger, btm, socketFactory);
 
         const string ip = "127.0.0.1";
         const int port = 9000;

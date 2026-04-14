@@ -1,6 +1,8 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
 using System.Net;
+using System.Security.Cryptography.Pkcs;
+using Bodoconsult.App.Abstractions.Interfaces;
 using Bodoconsult.NetworkCommunication.Interfaces;
 
 namespace Bodoconsult.NetworkCommunication.Protocols.Udp;
@@ -60,6 +62,11 @@ public abstract class UpdSocketProxyBase : ISocketProxy
     /// Current cancellation token
     /// </summary>
     public CancellationTokenSource CancellationTokenSource { get; set; } = new();
+
+    /// <summary>
+    /// Current logger to use or null. This logger logs only exceptions but NO data due to potential performance issues
+    /// </summary>
+    public IAppLoggerProxy? Logger { get; set; }
 
     /// <summary>
     /// Send bytes
@@ -123,6 +130,15 @@ public abstract class UpdSocketProxyBase : ISocketProxy
         throw new NotSupportedException();
     }
 
+    /// <summary>
+    /// Poll data
+    /// </summary>
+    /// <returns>True, if data can be read, else false</returns>
+    public virtual bool Poll()
+    {
+        throw new NotSupportedException();
+    }
+
     ///// <summary>
     ///// Receive data from the socket
     ///// </summary>
@@ -147,32 +163,32 @@ public abstract class UpdSocketProxyBase : ISocketProxy
     //    throw new NotSupportedException();
     //}
 
-    /// <summary>
-    /// Poll data
-    /// </summary>
-    /// <returns>True, if data can be read, else false</returns>
-    public virtual bool Poll()
-    {
-        throw new NotSupportedException();
-    }
+    ///// <summary>
+    ///// Poll data
+    ///// </summary>
+    ///// <returns>True, if data can be read, else false</returns>
+    //public virtual bool Poll()
+    //{
+    //    throw new NotSupportedException();
+    //}
 
-    /// <summary>
-    /// Send a file
-    /// </summary>
-    /// <param name="fileName">Full file path</param>
-    public virtual void SendFile(string fileName)
-    {
-        throw new NotSupportedException();
-    }
+    ///// <summary>
+    ///// Send a file
+    ///// </summary>
+    ///// <param name="fileName">Full file path</param>
+    //public virtual void SendFile(string fileName)
+    //{
+    //    throw new NotSupportedException();
+    //}
 
-    /// <summary>
-    /// Prepare the answer of the socket for testing
-    /// </summary>
-    /// <param name="testData">Test data to use</param>
-    public virtual void PrepareAnswer(byte[] testData)
-    {
-        throw new NotSupportedException();
-    }
+    ///// <summary>
+    ///// Prepare the answer of the socket for testing
+    ///// </summary>
+    ///// <param name="testData">Test data to use</param>
+    //public virtual void PrepareAnswer(byte[] testData)
+    //{
+    //    throw new NotSupportedException();
+    //}
 
     /// <summary>Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.</summary>
     public virtual void Dispose()

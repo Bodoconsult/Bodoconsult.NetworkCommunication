@@ -43,6 +43,7 @@ public class IpCommunicationHandlerFactory : ICommunicationHandlerFactory
     public ICommunicationHandler CreateInstance(IIpDataMessagingConfig dataMessagingConfig)
     {
         var socketProxy = _socketProxyFactory.CreateInstance(dataMessagingConfig.IsServer, dataMessagingConfig.IpProtocol, IPAddress.Parse(dataMessagingConfig.IpAddress), dataMessagingConfig.Port);
+        socketProxy.Logger = dataMessagingConfig.MonitorLogger;
 
         //if (dataMessagingConfig.MonitorLogger == null)
         //{

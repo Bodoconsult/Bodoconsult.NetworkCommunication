@@ -21,6 +21,7 @@ public class UdpServerDeviceConfigurator : BaseIpDeviceConfigurator
     private readonly ILogDataFactory _logDataFactory;
     private readonly IAppLoggerProxyFactory _appLoggerFactory;
     private readonly IAppLoggerProxy _appLoggerProxy;
+    private ISocketProxyFactory _socketProxyFactory;
 
     /// <summary>
     /// Default ctor
@@ -32,13 +33,15 @@ public class UdpServerDeviceConfigurator : BaseIpDeviceConfigurator
     /// <param name="clientNotificationManager">Current client notification manager instance</param>
     /// <param name="monitorLoggerFactoryFactory">Current factory for monitor logger factories</param>
     /// <param name="appLoggerProxy">Current app logger</param>
+    /// <param name="socketProxyFactory">Current socket factory</param>
     public UdpServerDeviceConfigurator(IDuplexIoFactory duplexIoFactory,
         IMonitorLoggerFactoryFactory monitorLoggerFactoryFactory,
         ILogDataFactory logDataFactory,
         IAppLoggerProxyFactory appLoggerFactory,
         IAppEventSourceFactory appEventSourceFactory,
         IOrderManagementClientNotificationManager clientNotificationManager,
-        IAppLoggerProxy appLoggerProxy)
+        IAppLoggerProxy appLoggerProxy,
+        ISocketProxyFactory socketProxyFactory)
     {
         _duplexIoFactory = duplexIoFactory;
         _appEventSourceFactory = appEventSourceFactory;
@@ -48,6 +51,7 @@ public class UdpServerDeviceConfigurator : BaseIpDeviceConfigurator
         _appEventSourceFactory = appEventSourceFactory;
         _logDataFactory = logDataFactory;
         _appLoggerProxy = appLoggerProxy;
+        _socketProxyFactory = socketProxyFactory;
     }
 
     /// <summary>
@@ -84,9 +88,7 @@ public class UdpServerDeviceConfigurator : BaseIpDeviceConfigurator
         ArgumentNullException.ThrowIfNull(DataMessagingConfig);
 
         // Client
-        var socketProxyFactory = new SocketProxyFactory(null);
-
-        var communicationHandlerFactory = new IpCommunicationHandlerFactory(socketProxyFactory, _duplexIoFactory, _appEventSourceFactory, _clientNotificationManager);
+        var communicationHandlerFactory = new IpCommunicationHandlerFactory(_socketProxyFactory, _duplexIoFactory, _appEventSourceFactory, _clientNotificationManager);
         var commAdapterFactory = new IpCommunicationAdapterFactory(communicationHandlerFactory);
 
         var factory = new SimpleDeviceFactory(_clientNotificationManager, commAdapterFactory);

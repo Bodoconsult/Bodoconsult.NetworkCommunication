@@ -20,6 +20,7 @@ public class TcpIpClientOrderManagementDeviceConfigurator : BaseIpDeviceConfigur
     private readonly ILogDataFactory _logDataFactory;
     private readonly IAppLoggerProxyFactory _appLoggerFactory;
     private readonly IAppLoggerProxy _appLoggerProxy;
+    private ISocketProxyFactory _socketProxyFactory;
 
     private IOrderManagementDevice? _orderManagementDevice;
 
@@ -33,13 +34,15 @@ public class TcpIpClientOrderManagementDeviceConfigurator : BaseIpDeviceConfigur
     /// <param name="clientNotificationManager">Current client notification manager instance</param>
     /// <param name="monitorLoggerFactoryFactory">Current factory for monitor logger factories</param>
     /// <param name="appLoggerProxy">Current app logger</param>
+    /// <param name="socketProxyFactory">Current socket factory</param>
     public TcpIpClientOrderManagementDeviceConfigurator(IDuplexIoFactory duplexIoFactory,
         IMonitorLoggerFactoryFactory monitorLoggerFactoryFactory,
         ILogDataFactory logDataFactory,
         IAppLoggerProxyFactory appLoggerFactory,
         IAppEventSourceFactory appEventSourceFactory,
         IOrderManagementClientNotificationManager clientNotificationManager,
-        IAppLoggerProxy appLoggerProxy)
+        IAppLoggerProxy appLoggerProxy,
+        ISocketProxyFactory socketProxyFactory)
     {
         _duplexIoFactory = duplexIoFactory;
         _appEventSourceFactory = appEventSourceFactory;
@@ -49,6 +52,7 @@ public class TcpIpClientOrderManagementDeviceConfigurator : BaseIpDeviceConfigur
         _appEventSourceFactory = appEventSourceFactory;
         _logDataFactory = logDataFactory;
         _appLoggerProxy = appLoggerProxy;
+        _socketProxyFactory = socketProxyFactory;
     }
 
     /// <summary>
@@ -85,9 +89,7 @@ public class TcpIpClientOrderManagementDeviceConfigurator : BaseIpDeviceConfigur
         ArgumentNullException.ThrowIfNull(DataMessagingConfig);
 
         // Server
-        var socketProxyFactory = new SocketProxyFactory(null);
-
-        var communicationHandlerFactory = new IpCommunicationHandlerFactory(socketProxyFactory, _duplexIoFactory, _appEventSourceFactory, _clientNotificationManager);
+        var communicationHandlerFactory = new IpCommunicationHandlerFactory(_socketProxyFactory, _duplexIoFactory, _appEventSourceFactory, _clientNotificationManager);
         var commAdapterFactory = new IpCommunicationAdapterFactory(communicationHandlerFactory);
 
         var factory = new BasicOrderManagementDeviceFactory(_clientNotificationManager, commAdapterFactory);
@@ -143,7 +145,7 @@ public class TcpIpClientOrderManagementDeviceConfigurator : BaseIpDeviceConfigur
 
         var configurator = stateMachineConfiguratorFactory.CreateInstance(adapter);
         configurator.ConfigureFactory();
-        var stateFactory = configurator.BuildFactory();
+        configurator.BuildFactory();
 
         //// Important: store state factory instance to device and config
         //_orderManagementDevice.O = stateFactory;

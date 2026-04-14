@@ -8,6 +8,7 @@ using Bodoconsult.NetworkCommunication.DataMessaging.DataMessageProcessingPackag
 using Bodoconsult.NetworkCommunication.Devices.Configurators;
 using Bodoconsult.NetworkCommunication.Factories;
 using Bodoconsult.NetworkCommunication.Interfaces;
+using Bodoconsult.NetworkCommunication.Protocols.TcpIp;
 using Bodoconsult.NetworkCommunication.Tests.App;
 using Bodoconsult.NetworkCommunication.Tests.Helpers;
 
@@ -24,11 +25,13 @@ internal class UdpServerDeviceConfiguratorTests
     private readonly AppLoggerProxyFactory _appLoggerFactory = new();
     private readonly DoNothingOrderManagementClientNotificationManager _clientNotificationManager = new();
     private readonly IDataMessageProcessingPackageFactory _messageProcessingPackageFactory = new TncpDataMessageProcessingPackageFactory();
+    private readonly ITcpIpListenerManager _tcpIpListenerManager = new TcpIpListenerManager();
 
     [OneTimeTearDown]
     public void Cleanup()
     {
         _appLoggerProxy.Dispose();
+        _tcpIpListenerManager.Dispose();
     }
 
     [Test]
@@ -36,14 +39,18 @@ internal class UdpServerDeviceConfiguratorTests
     {
         // Arrange 
         var duplexIoFactory = new IpDuplexIoFactory(_sendPacketProcessFactory);
+        var socketFactory = new SocketProxyFactory(_tcpIpListenerManager);
 
         // Act  
         var conf = new UdpServerDeviceConfigurator(duplexIoFactory, _monitorLoggerFactoryFactory, _logDataFactory, 
-            _appLoggerFactory, _appEventSourceFactory, _clientNotificationManager, _appLoggerProxy);
+            _appLoggerFactory, _appEventSourceFactory, _clientNotificationManager, _appLoggerProxy, socketFactory);
 
         // Assert
-        Assert.That(conf.DataMessagingConfig, Is.Null);
-        Assert.That(conf.Device, Is.Null);
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(conf.DataMessagingConfig, Is.Null);
+            Assert.That(conf.Device, Is.Null);
+        }
     }
 
     [Test]
@@ -51,9 +58,10 @@ internal class UdpServerDeviceConfiguratorTests
     {
         // Arrange 
         var duplexIoFactory = new IpDuplexIoFactory(_sendPacketProcessFactory);
+        var socketFactory = new SocketProxyFactory(_tcpIpListenerManager);
 
         var conf = new UdpServerDeviceConfigurator(duplexIoFactory, _monitorLoggerFactoryFactory, _logDataFactory,
-            _appLoggerFactory, _appEventSourceFactory, _clientNotificationManager, _appLoggerProxy);
+            _appLoggerFactory, _appEventSourceFactory, _clientNotificationManager, _appLoggerProxy, socketFactory);
 
         const string ip = "127.0.0.1";
         const int port = 9000;
@@ -62,11 +70,15 @@ internal class UdpServerDeviceConfiguratorTests
         conf.CreateMessagingConfig("TestDevice", ip, port, _messageProcessingPackageFactory);
 
         // Assert
-        Assert.That(conf.DataMessagingConfig, Is.Not.Null);
-        Assert.That(conf.Device, Is.Null);
-        Assert.That(conf.DataMessagingConfig.IpAddress, Is.EqualTo(ip));
-        Assert.That(conf.DataMessagingConfig.Port, Is.EqualTo(port));
-        Assert.That(conf.DataMessagingConfig.DataMessageProcessingPackage, Is.Not.Null);
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(conf.DataMessagingConfig, Is.Not.Null);
+            ArgumentNullException.ThrowIfNull(conf.DataMessagingConfig);
+            Assert.That(conf.Device, Is.Null);
+            Assert.That(conf.DataMessagingConfig.IpAddress, Is.EqualTo(ip));
+            Assert.That(conf.DataMessagingConfig.Port, Is.EqualTo(port));
+            Assert.That(conf.DataMessagingConfig.DataMessageProcessingPackage, Is.Not.Null);
+        }
     }
 
     [Test]
@@ -74,9 +86,10 @@ internal class UdpServerDeviceConfiguratorTests
     {
         // Arrange 
         var duplexIoFactory = new IpDuplexIoFactory(_sendPacketProcessFactory);
+        var socketFactory = new SocketProxyFactory(_tcpIpListenerManager);
 
         var conf = new UdpServerDeviceConfigurator(duplexIoFactory, _monitorLoggerFactoryFactory, _logDataFactory,
-            _appLoggerFactory, _appEventSourceFactory, _clientNotificationManager, _appLoggerProxy);
+            _appLoggerFactory, _appEventSourceFactory, _clientNotificationManager, _appLoggerProxy, socketFactory);
         conf.CreateMessagingConfig("TestDevice", "127.0.0.1", 9000, _messageProcessingPackageFactory);
 
         IDeviceBusinessLogicAdapterFactory businessLogicAdapterFactory = new TestIpDeviceAdapterFactory();
@@ -85,7 +98,10 @@ internal class UdpServerDeviceConfiguratorTests
         conf.CreateDevice(businessLogicAdapterFactory);
 
         // Assert
-        Assert.That(conf.DataMessagingConfig, Is.Not.Null);
-        Assert.That(conf.Device, Is.Not.Null);
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(conf.DataMessagingConfig, Is.Not.Null);
+            Assert.That(conf.Device, Is.Not.Null);
+        }
     }
 }

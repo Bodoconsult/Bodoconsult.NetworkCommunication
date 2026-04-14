@@ -1,6 +1,7 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
 using System.Net;
+using Bodoconsult.App.Abstractions.Interfaces;
 using Bodoconsult.NetworkCommunication.Interfaces;
 
 namespace Bodoconsult.NetworkCommunication.Protocols.TcpIp;
@@ -61,6 +62,11 @@ public abstract class TcpIpSocketProxyBase : ISocketProxy
     public CancellationTokenSource CancellationTokenSource { get; set; } = new();
 
     /// <summary>
+    /// Current logger to use or null. This logger logs only exceptions but NO data due to potential performance issues
+    /// </summary>
+    public IAppLoggerProxy? Logger { get; set; }
+
+    /// <summary>
     /// Send bytes
     /// </summary>
     /// <param name="bytesToSend">Byte array to send</param>
@@ -78,14 +84,6 @@ public abstract class TcpIpSocketProxyBase : ISocketProxy
         throw new NotSupportedException();
     }
 
-    ///// <summary>
-    ///// Shut the socket down
-    ///// </summary>
-    //public virtual void Shutdown()
-    //{
-    //    throw new NotSupportedException();
-    //}
-
     /// <summary>
     /// Close the socket
     /// </summary>
@@ -101,26 +99,6 @@ public abstract class TcpIpSocketProxyBase : ISocketProxy
     {
         throw new NotSupportedException();
     }
-
-
-    ///// <summary>
-    ///// Bind to an IP endpoint
-    ///// </summary>
-    ///// <param name="ipEndPoint">IP endpoint</param>
-    //public virtual void Bind(IPEndPoint ipEndPoint)
-    //{
-    //    throw new NotSupportedException();
-    //}
-
-    ///// <summary>
-    ///// Listen
-    ///// </summary>
-    ///// <param name="backlog">The maximum length of pending messages queue</param>
-    //public virtual void Listen(int backlog)
-    //{
-    //    throw new NotSupportedException();
-    //}
-
 
     /// <summary>
     /// Receive data from the socket

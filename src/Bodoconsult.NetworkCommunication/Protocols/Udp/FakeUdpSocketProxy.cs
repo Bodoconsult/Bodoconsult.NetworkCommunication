@@ -117,7 +117,7 @@ public class FakeUdpSocketProxy : UpdSocketProxyBase
             LoadNextReceivedMessage();
             return DataLengthSent == int.MinValue ? bytesToSend.Length : DataLengthSent;
         });
-            
+
         return i;
     }
 
@@ -252,6 +252,11 @@ public class FakeUdpSocketProxy : UpdSocketProxyBase
         return i;
     }
 
+    public override bool Poll()
+    {
+        return base.Poll();
+    }
+
     ///// <summary>
     ///// Send bytes 
     ///// </summary>
@@ -271,33 +276,4 @@ public class FakeUdpSocketProxy : UpdSocketProxyBase
     //    _data = Array.Empty<byte>();
     //    return i;
     //}
-
-    /// <summary>
-    /// Poll data
-    /// </summary>
-    /// <returns>True, if data can be read, else false</returns>
-    public override bool Poll()
-    {
-        return IsPoll;
-    }
-
-    /// <summary>
-    /// Send a file
-    /// </summary>
-    /// <param name="fileName">Full file path</param>
-    public override void SendFile(string fileName)
-    {
-        throw new NotSupportedException();
-    }
-
-
-    /// <summary>
-    /// Prepare the answer of the socket for testing
-    /// </summary>
-    /// <param name="testData">Test data to use</param>
-    public override void PrepareAnswer(byte[] testData)
-    {
-        _data = new byte[testData.Length];
-        testData.CopyTo(_data.ToArray(), 0);
-    }
 }

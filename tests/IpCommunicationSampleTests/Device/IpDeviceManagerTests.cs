@@ -41,10 +41,11 @@ internal class IpDeviceManagerTests
     {
         // Arrange 
         var btm = new BusinessTransactionManager(_appLogger, _appEventSourceFactory);
+        var socketFactory = new SocketProxyFactory(_tcpIpListenerManager);
 
         // Act
         var m = new IpDeviceManager(_monitorLoggerFactoryFactory, _logDataFactory, _appLoggerFactory,
-            _appEventSourceFactory, _clientNotificationManager, _appLogger, _sendPacketProcessFactory, _tcpIpListenerManager, btm);
+            _appEventSourceFactory, _clientNotificationManager, _appLogger, _sendPacketProcessFactory,  btm, socketFactory);
 
         // Assert
         using (Assert.EnterMultipleScope())
@@ -64,9 +65,10 @@ internal class IpDeviceManagerTests
         var deviceUdpConfig = new IpConfig { IpAddress = "127.0.0.1", Port = 33002 };
 
         var btm = new BusinessTransactionManager(_appLogger, _appEventSourceFactory);
+        var socketFactory = new SocketProxyFactory(_tcpIpListenerManager);
 
         var m = new IpDeviceManager(_monitorLoggerFactoryFactory, _logDataFactory, _appLoggerFactory,
-            _appEventSourceFactory, _clientNotificationManager, _appLogger, _sendPacketProcessFactory, _tcpIpListenerManager, btm)
+            _appEventSourceFactory, _clientNotificationManager, _appLogger, _sendPacketProcessFactory, btm, socketFactory)
         {
             BackendTcpIpConfig = deviceTcpIpConfig,
             BackendUdpConfig = deviceUdpConfig
@@ -105,9 +107,10 @@ internal class IpDeviceManagerTests
         var deviceUdpConfig = new IpConfig { IpAddress = "127.0.0.1", Port = 33002 };
 
         var btm = new BusinessTransactionManager(_appLogger, _appEventSourceFactory);
+        var socketFactory = new SocketProxyFactory(_tcpIpListenerManager);
 
         var m = new IpDeviceManager(_monitorLoggerFactoryFactory, _logDataFactory, _appLoggerFactory,
-            _appEventSourceFactory, _clientNotificationManager, _appLogger, _sendPacketProcessFactory, _tcpIpListenerManager, btm)
+            _appEventSourceFactory, _clientNotificationManager, _appLogger, _sendPacketProcessFactory, btm, socketFactory)
         {
             BackendTcpIpConfig = deviceTcpIpConfig,
             BackendUdpConfig = deviceUdpConfig
@@ -146,6 +149,7 @@ internal class IpDeviceManagerTests
         var deviceUdpConfig = new IpConfig { IpAddress = "127.0.0.1", Port = 33002 };
 
         var btm = new BusinessTransactionManager(_appLogger, _appEventSourceFactory);
+        var socketFactory = new SocketProxyFactory(_tcpIpListenerManager);
 
         using (Assert.EnterMultipleScope())
         {
@@ -155,7 +159,7 @@ internal class IpDeviceManagerTests
         }
 
         var m = new IpDeviceManager(_monitorLoggerFactoryFactory, _logDataFactory, _appLoggerFactory,
-            _appEventSourceFactory, _clientNotificationManager, _appLogger, _sendPacketProcessFactory, _tcpIpListenerManager, btm)
+            _appEventSourceFactory, _clientNotificationManager, _appLogger, _sendPacketProcessFactory, btm, socketFactory)
         {
             BackendTcpIpConfig = deviceTcpIpConfig,
             BackendUdpConfig = deviceUdpConfig

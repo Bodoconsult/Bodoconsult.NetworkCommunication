@@ -26,7 +26,6 @@ public class BackendManager : IBackendManager
     private readonly IAppLoggerProxyFactory _appLoggerFactory;
     private readonly IAppLoggerProxy _appLogger;
     private readonly ISendPacketProcessFactory _sendPacketProcessFactory;
-    private readonly ITcpIpListenerManager _tcpIpListenerManager;
     private readonly IAppBenchProxy _appBenchProxy;
     private readonly IOrderReceiverFactory _orderReceiverFactory;
     private readonly IRequestProcessorFactoryFactory _requestProcessorFactoryFactory;
@@ -34,6 +33,7 @@ public class BackendManager : IBackendManager
     private readonly IOrderPipelineFactory _orderPipelineFactory;
     private readonly IOrderIdGenerator _orderIdGenerator;
     private readonly IBusinessTransactionManager _businessTransactionManager;
+    private ISocketProxyFactory _socketProxyFactory;
 
     /// <summary>
     /// Default ctor
@@ -45,7 +45,6 @@ public class BackendManager : IBackendManager
     /// <param name="monitorLoggerFactoryFactory">Current factory for monitor logger factories</param>
     /// <param name="appLogger">Current app logger</param>
     /// <param name="sendPacketProcessFactory">Current send packet process factory</param>
-    /// <param name="tcpIpListenerManager">Current TCP/IP listener manager</param>
     /// <param name="dateService">Current app date service</param>
     /// <param name="syncOrderManager">Current sync execution manager</param>
     /// <param name="appBenchProxy">Current bench logger</param>
@@ -55,6 +54,7 @@ public class BackendManager : IBackendManager
     /// <param name="orderPipelineFactory">Current factory for order pipelines</param>
     /// <param name="orderIdGenerator">Current order ID generator</param>
     /// <param name="businessTransactionManager">Current business transaction manager</param>
+    /// <param name="socketProxyFactory">Current socket factory</param>
     public BackendManager(IMonitorLoggerFactoryFactory monitorLoggerFactoryFactory,
         ILogDataFactory logDataFactory,
         IAppLoggerProxyFactory appLoggerFactory,
@@ -62,7 +62,6 @@ public class BackendManager : IBackendManager
         IOrderManagementClientNotificationManager clientNotificationManager,
         IAppLoggerProxy appLogger,
         ISendPacketProcessFactory sendPacketProcessFactory,
-        ITcpIpListenerManager tcpIpListenerManager,
         IAppDateService dateService,
         ISyncOrderManager syncOrderManager,
         IAppBenchProxy appBenchProxy,
@@ -71,7 +70,8 @@ public class BackendManager : IBackendManager
         IRequestStepProcessorFactoryFactory requestStepProcessorFactoryFactory,
         IOrderPipelineFactory orderPipelineFactory,
         IOrderIdGenerator orderIdGenerator,
-        IBusinessTransactionManager businessTransactionManager
+        IBusinessTransactionManager businessTransactionManager,
+        ISocketProxyFactory socketProxyFactory
     )
     {
         _appEventSourceFactory = appEventSourceFactory;
@@ -82,7 +82,6 @@ public class BackendManager : IBackendManager
         _logDataFactory = logDataFactory;
         _appLogger = appLogger;
         _sendPacketProcessFactory = sendPacketProcessFactory;
-        _tcpIpListenerManager = tcpIpListenerManager;
         _dateService = dateService;
         _syncOrderManager = syncOrderManager;
         _appBenchProxy = appBenchProxy;
@@ -92,6 +91,7 @@ public class BackendManager : IBackendManager
         _orderPipelineFactory = orderPipelineFactory;
         _orderIdGenerator = orderIdGenerator;
         _businessTransactionManager = businessTransactionManager;
+        _socketProxyFactory = socketProxyFactory;
     }
 
     /// <summary>
@@ -141,7 +141,7 @@ public class BackendManager : IBackendManager
         IOrderManagerFactory orderManagerFactory = new OrderManagerFactory(orderProcessorFactory, _orderReceiverFactory, _requestStepProcessorFactoryFactory, 
             _requestProcessorFactoryFactory, _orderPipelineFactory, orderFactory);
         var m = new IpDeviceTcpIpClientStateMachineManager(duplexIoFactory, _monitorLoggerFactoryFactory, _logDataFactory, _appLoggerFactory,
-            _appEventSourceFactory, _clientNotificationManager, _appLogger, orderManagerFactory);
+            _appEventSourceFactory, _clientNotificationManager, _appLogger, orderManagerFactory, _socketProxyFactory);
 
         m.ConfigureDevice(IpDeviceTcpIpConfig.Value.IpAddress, IpDeviceTcpIpConfig.Value.Port);
 
@@ -161,7 +161,7 @@ public class BackendManager : IBackendManager
         var duplexIoFactory = new UdpDatagramIpDuplexIoFactory(_sendPacketProcessFactory);
 
         var m = new IpDeviceUdpClientManager(duplexIoFactory, _monitorLoggerFactoryFactory, _logDataFactory, _appLoggerFactory,
-            _appEventSourceFactory, _clientNotificationManager, _appLogger);
+            _appEventSourceFactory, _clientNotificationManager, _appLogger, _socketProxyFactory);
 
         m.ConfigureDevice(IpDeviceUdpConfig.Value.IpAddress, IpDeviceUdpConfig.Value.Port);
 
@@ -181,7 +181,7 @@ public class BackendManager : IBackendManager
         var duplexIoFactory = new IpDuplexIoFactory(_sendPacketProcessFactory);
 
         var m = new ClientTcpIpServerManager(duplexIoFactory, _monitorLoggerFactoryFactory, _logDataFactory, _appLoggerFactory,
-            _appEventSourceFactory, _clientNotificationManager, _tcpIpListenerManager, _appLogger, _businessTransactionManager);
+            _appEventSourceFactory, _clientNotificationManager,  _appLogger, _businessTransactionManager, _socketProxyFactory);
 
         m.ConfigureDevice(ClientTcpIpConfig.Value.IpAddress, ClientTcpIpConfig.Value.Port);
 

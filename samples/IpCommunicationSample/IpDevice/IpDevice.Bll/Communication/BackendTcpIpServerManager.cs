@@ -17,12 +17,12 @@ public class BackendTcpIpServerManager : ISimpleDeviceManager
     private readonly IDuplexIoFactory _duplexIoFactory;
     private readonly IAppEventSourceFactory _appEventSourceFactory;
     private readonly IOrderManagementClientNotificationManager _clientNotificationManager;
-    private readonly ITcpIpListenerManager _tcpIpListenerManager;
     private readonly IMonitorLoggerFactoryFactory _monitorLoggerFactoryFactory;
     private readonly ILogDataFactory _logDataFactory;
     private readonly IAppLoggerProxyFactory _appLoggerFactory;
     private readonly IAppLoggerProxy _appLoggerProxy;
     private readonly IBusinessTransactionManager _businessTransactionManager;
+    private ISocketProxyFactory _socketProxyFactory;
 
     /// <summary>
     /// Default ctor
@@ -32,30 +32,30 @@ public class BackendTcpIpServerManager : ISimpleDeviceManager
     /// <param name="appLoggerFactory">Current logger proxy factory</param>
     /// <param name="appEventSourceFactory">Current factory for <see cref="IAppEventSource"/> instances</param>
     /// <param name="clientNotificationManager">Current client notification manager instance</param>
-    /// <param name="tcpIpListenerManager">Current TCP/IP listener manager</param>
     /// <param name="monitorLoggerFactoryFactory">Current factory for monitor logger factories</param>
     /// <param name="appLoggerProxy">Current app logger</param>
     /// <param name="businessTransactionManager">Current business transaction manager</param>
+    /// <param name="socketProxyFactory">Current socket factory</param>
     public BackendTcpIpServerManager(IDuplexIoFactory duplexIoFactory,
         IMonitorLoggerFactoryFactory monitorLoggerFactoryFactory,
         ILogDataFactory logDataFactory,
         IAppLoggerProxyFactory appLoggerFactory,
         IAppEventSourceFactory appEventSourceFactory,
         IOrderManagementClientNotificationManager clientNotificationManager,
-        ITcpIpListenerManager tcpIpListenerManager,
         IAppLoggerProxy appLoggerProxy,
-        IBusinessTransactionManager businessTransactionManager)
+        IBusinessTransactionManager businessTransactionManager,
+        ISocketProxyFactory socketProxyFactory)
     {
         _duplexIoFactory = duplexIoFactory;
         _appEventSourceFactory = appEventSourceFactory;
         _clientNotificationManager = clientNotificationManager;
-        _tcpIpListenerManager = tcpIpListenerManager;
         _monitorLoggerFactoryFactory = monitorLoggerFactoryFactory;
         _appLoggerFactory = appLoggerFactory;
         _appEventSourceFactory = appEventSourceFactory;
         _logDataFactory = logDataFactory;
         _appLoggerProxy = appLoggerProxy;
         _businessTransactionManager = businessTransactionManager;
+        _socketProxyFactory = socketProxyFactory;
     }
 
     /// <summary>
@@ -77,7 +77,8 @@ public class BackendTcpIpServerManager : ISimpleDeviceManager
     {
         IDataMessageProcessingPackageFactory messageProcessingPackageFactory = new TncpDataMessageProcessingPackageFactory();
 
-        var configurator = new TcpIpServerDeviceConfigurator(_duplexIoFactory, _monitorLoggerFactoryFactory, _logDataFactory, _appLoggerFactory, _appEventSourceFactory, _clientNotificationManager, _tcpIpListenerManager, _appLoggerProxy);
+        var configurator = new TcpIpServerDeviceConfigurator(_duplexIoFactory, _monitorLoggerFactoryFactory, _logDataFactory, _appLoggerFactory, 
+            _appEventSourceFactory, _clientNotificationManager, _appLoggerProxy, _socketProxyFactory);
 
         configurator.CreateMessagingConfig("Client_TCPIP", ipAddress, port, messageProcessingPackageFactory);
 

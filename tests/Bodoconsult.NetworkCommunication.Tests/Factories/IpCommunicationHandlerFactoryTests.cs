@@ -34,7 +34,13 @@ internal class IpCommunicationHandlerFactoryTests
         var instance = factory.CreateInstance(config);
 
         // Assert
-        Assert.That(instance, Is.Not.Null);
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(instance, Is.Not.Null);
+            Assert.That(config.SocketProxy, Is.Not.Null);
+            ArgumentNullException.ThrowIfNull(config.SocketProxy);
+            Assert.That(config.SocketProxy.Logger, Is.Not.Null);
+        }
     }
 
 }

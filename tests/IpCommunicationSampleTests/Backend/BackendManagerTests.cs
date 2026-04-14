@@ -51,11 +51,12 @@ internal class BackendManagerTests
         // Arrange 
         var orderPipelineFactory = new OrderPipelineFactory(_dateService, _appLogger);
         IBusinessTransactionManager businessTransactionManager = new BusinessTransactionManager(_appLogger, _appEventSourceFactory);
+        var socketFactory = new SocketProxyFactory(_tcpIpListenerManager);
 
         // Act
         var m = new BackendManager(_monitorLoggerFactoryFactory, _logDataFactory, _appLoggerFactory,
-            _appEventSourceFactory, _clientNotificationManager, _appLogger, _sendPacketProcessFactory, _tcpIpListenerManager, _dateService, _syncOrderManager, _appBenchProxy, _orderReceiverFactory,
-            _requestProcessorFactoryFactory, _requestStepProcessorFactoryFactory, orderPipelineFactory, _orderIdGenerator, businessTransactionManager);
+            _appEventSourceFactory, _clientNotificationManager, _appLogger, _sendPacketProcessFactory, _dateService, _syncOrderManager, _appBenchProxy, _orderReceiverFactory,
+            _requestProcessorFactoryFactory, _requestStepProcessorFactoryFactory, orderPipelineFactory, _orderIdGenerator, businessTransactionManager, socketFactory);
 
         // Assert
         using (Assert.EnterMultipleScope())
@@ -79,10 +80,11 @@ internal class BackendManagerTests
 
         var orderPipelineFactory = new OrderPipelineFactory(_dateService, _appLogger);
         IBusinessTransactionManager businessTransactionManager = new BusinessTransactionManager(_appLogger, _appEventSourceFactory);
+        var socketFactory = new SocketProxyFactory(_tcpIpListenerManager);
 
         var m = new BackendManager(_monitorLoggerFactoryFactory, _logDataFactory, _appLoggerFactory,
-            _appEventSourceFactory, _clientNotificationManager, _appLogger, _sendPacketProcessFactory, _tcpIpListenerManager, _dateService, _syncOrderManager, _appBenchProxy, _orderReceiverFactory,
-            _requestProcessorFactoryFactory, _requestStepProcessorFactoryFactory, orderPipelineFactory, _orderIdGenerator, businessTransactionManager)
+            _appEventSourceFactory, _clientNotificationManager, _appLogger, _sendPacketProcessFactory, _dateService, _syncOrderManager, _appBenchProxy, _orderReceiverFactory,
+            _requestProcessorFactoryFactory, _requestStepProcessorFactoryFactory, orderPipelineFactory, _orderIdGenerator, businessTransactionManager, socketFactory)
             {
                 ClientTcpIpConfig = clientConfig,
                 IpDeviceTcpIpConfig = deviceTcpIpConfig,
@@ -128,10 +130,11 @@ internal class BackendManagerTests
 
         var orderPipelineFactory = new OrderPipelineFactory(_dateService, _appLogger);
         IBusinessTransactionManager businessTransactionManager = new BusinessTransactionManager(_appLogger, _appEventSourceFactory);
+        var socketFactory = new SocketProxyFactory(_tcpIpListenerManager);
 
         var m = new BackendManager(_monitorLoggerFactoryFactory, _logDataFactory, _appLoggerFactory,
-            _appEventSourceFactory, _clientNotificationManager, _appLogger, _sendPacketProcessFactory, _tcpIpListenerManager, _dateService, _syncOrderManager, _appBenchProxy, _orderReceiverFactory,
-            _requestProcessorFactoryFactory, _requestStepProcessorFactoryFactory, orderPipelineFactory, _orderIdGenerator, businessTransactionManager)
+            _appEventSourceFactory, _clientNotificationManager, _appLogger, _sendPacketProcessFactory, _dateService, _syncOrderManager, _appBenchProxy, _orderReceiverFactory,
+            _requestProcessorFactoryFactory, _requestStepProcessorFactoryFactory, orderPipelineFactory, _orderIdGenerator, businessTransactionManager, socketFactory)
         {
             ClientTcpIpConfig = clientConfig,
             IpDeviceTcpIpConfig = deviceTcpIpConfig,
@@ -175,10 +178,11 @@ internal class BackendManagerTests
 
         var orderPipelineFactory = new OrderPipelineFactory(_dateService, _appLogger);
         IBusinessTransactionManager businessTransactionManager = new BusinessTransactionManager(_appLogger, _appEventSourceFactory);
+        var socketFactory = new SocketProxyFactory(_tcpIpListenerManager);
 
         var m = new BackendManager(_monitorLoggerFactoryFactory, _logDataFactory, _appLoggerFactory,
-            _appEventSourceFactory, _clientNotificationManager, _appLogger, _sendPacketProcessFactory, _tcpIpListenerManager, _dateService, _syncOrderManager, _appBenchProxy, _orderReceiverFactory,
-            _requestProcessorFactoryFactory, _requestStepProcessorFactoryFactory, orderPipelineFactory, _orderIdGenerator, businessTransactionManager)
+            _appEventSourceFactory, _clientNotificationManager, _appLogger, _sendPacketProcessFactory, _dateService, _syncOrderManager, _appBenchProxy, _orderReceiverFactory,
+            _requestProcessorFactoryFactory, _requestStepProcessorFactoryFactory, orderPipelineFactory, _orderIdGenerator, businessTransactionManager, socketFactory)
         {
             ClientTcpIpConfig = clientConfig,
             IpDeviceTcpIpConfig = deviceTcpIpConfig,

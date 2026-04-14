@@ -22,6 +22,7 @@ public class IpDeviceTcpIpClientStateMachineManager: IStateMachineDeviceManager
     private readonly IAppLoggerProxyFactory _appLoggerFactory;
     private readonly IAppLoggerProxy _appLoggerProxy;
     private readonly IOrderManagerFactory _orderManagerFactory;
+    private ISocketProxyFactory _socketProxyFactory;
 
     /// <summary>
     /// Default ctor
@@ -34,13 +35,16 @@ public class IpDeviceTcpIpClientStateMachineManager: IStateMachineDeviceManager
     /// <param name="clientNotificationManager">Current client notification manager instance</param>
     /// <param name="appLoggerProxy">Current app logger</param>
     /// <param name="orderManagerFactory"></param>
+    /// <param name="socketProxyFactory">Current socket factory</param>
     public IpDeviceTcpIpClientStateMachineManager(IDuplexIoFactory duplexIoFactory,
         IMonitorLoggerFactoryFactory monitorLoggerFactoryFactory,
         ILogDataFactory logDataFactory,
         IAppLoggerProxyFactory appLoggerFactory,
         IAppEventSourceFactory appEventSourceFactory,
         IOrderManagementClientNotificationManager clientNotificationManager,
-        IAppLoggerProxy appLoggerProxy, IOrderManagerFactory orderManagerFactory)
+        IAppLoggerProxy appLoggerProxy, 
+        IOrderManagerFactory orderManagerFactory,
+        ISocketProxyFactory socketProxyFactory)
     {
         _duplexIoFactory = duplexIoFactory;
         _appEventSourceFactory = appEventSourceFactory;
@@ -51,6 +55,7 @@ public class IpDeviceTcpIpClientStateMachineManager: IStateMachineDeviceManager
         _logDataFactory = logDataFactory;
         _appLoggerProxy = appLoggerProxy;
         _orderManagerFactory = orderManagerFactory;
+        _socketProxyFactory = socketProxyFactory;
     }
 
     /// <summary>
@@ -77,7 +82,8 @@ public class IpDeviceTcpIpClientStateMachineManager: IStateMachineDeviceManager
     {
         IDataMessageProcessingPackageFactory messageProcessingPackageFactory = new TncpDataMessageProcessingPackageFactory();
 
-        var configurator = new TcpIpClientStateMachineDeviceConfigurator(_duplexIoFactory, _monitorLoggerFactoryFactory, _logDataFactory, _appLoggerFactory, _appEventSourceFactory, _clientNotificationManager, _appLoggerProxy);
+        var configurator = new TcpIpClientStateMachineDeviceConfigurator(_duplexIoFactory, _monitorLoggerFactoryFactory, _logDataFactory, _appLoggerFactory, 
+            _appEventSourceFactory, _clientNotificationManager, _appLoggerProxy, _socketProxyFactory);
 
         configurator.CreateMessagingConfig("IPDevice_TCPIP", ipAddress, port, messageProcessingPackageFactory);
 

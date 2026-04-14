@@ -34,7 +34,7 @@ public class BasicOrderManagementDeviceFactory : IOrderManagementDeviceFactory
 
         var device =  new BasicOrderManagementDevice(dataMessagingConfig, _clientNotificationManager);
         device.LoadCommAdapter(commAdapter);
-
+        
         return device;
     }
 }

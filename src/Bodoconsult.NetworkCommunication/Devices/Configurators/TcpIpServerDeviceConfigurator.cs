@@ -20,8 +20,8 @@ public class TcpIpServerDeviceConfigurator: BaseIpDeviceConfigurator
     private readonly IAppLoggerProxyFactory _appLoggerFactory;
     private readonly IAppEventSourceFactory _appEventSourceFactory;
     private readonly IOrderManagementClientNotificationManager _clientNotificationManager;
-    private readonly ITcpIpListenerManager _tcpIpListenerManager;
     private readonly IAppLoggerProxy _appLoggerProxy;
+    private ISocketProxyFactory _socketProxyFactory;
 
     /// <summary>
     /// Default ctor
@@ -31,17 +31,17 @@ public class TcpIpServerDeviceConfigurator: BaseIpDeviceConfigurator
     /// <param name="appLoggerFactory">Current logger proxy factory</param>
     /// <param name="appEventSourceFactory">Current factory for <see cref="IAppEventSource"/> instances</param>
     /// <param name="clientNotificationManager">Current client notification manager instance</param>
-    /// <param name="tcpIpListenerManager">Current TCP/IP listener manager</param>
     /// <param name="monitorLoggerFactoryFactory">Current factory for monitor logger factories</param>
     /// <param name="appLoggerProxy">Current app logger</param>
+    /// <param name="socketProxyFactory">Current socket factory</param>
     public TcpIpServerDeviceConfigurator(IDuplexIoFactory duplexIoFactory,
         IMonitorLoggerFactoryFactory monitorLoggerFactoryFactory,
         ILogDataFactory logDataFactory,
         IAppLoggerProxyFactory appLoggerFactory,
         IAppEventSourceFactory appEventSourceFactory,
         IOrderManagementClientNotificationManager clientNotificationManager,
-        ITcpIpListenerManager tcpIpListenerManager,
-        IAppLoggerProxy appLoggerProxy)
+        IAppLoggerProxy appLoggerProxy,
+        ISocketProxyFactory socketProxyFactory)
     {
         _duplexIoFactory = duplexIoFactory;
         _monitorLoggerFactoryFactory = monitorLoggerFactoryFactory;
@@ -49,8 +49,8 @@ public class TcpIpServerDeviceConfigurator: BaseIpDeviceConfigurator
         _appEventSourceFactory = appEventSourceFactory;
         _logDataFactory = logDataFactory;
         _clientNotificationManager = clientNotificationManager;
-        _tcpIpListenerManager = tcpIpListenerManager;
         _appLoggerProxy = appLoggerProxy;
+        _socketProxyFactory = socketProxyFactory;
     }
 
     public override void CreateMessagingConfig(string loggerId, string ipAddress, int port,
@@ -80,9 +80,7 @@ public class TcpIpServerDeviceConfigurator: BaseIpDeviceConfigurator
         ArgumentNullException.ThrowIfNull(DataMessagingConfig);
 
         // Server
-        var socketProxyFactory = new SocketProxyFactory(_tcpIpListenerManager);
-
-        var communicationHandlerFactory = new IpCommunicationHandlerFactory(socketProxyFactory, _duplexIoFactory, _appEventSourceFactory, _clientNotificationManager);
+        var communicationHandlerFactory = new IpCommunicationHandlerFactory(_socketProxyFactory, _duplexIoFactory, _appEventSourceFactory, _clientNotificationManager);
         var commAdapterFactory = new IpCommunicationAdapterFactory(communicationHandlerFactory);
 
         var factory = new SimpleDeviceFactory(_clientNotificationManager, commAdapterFactory);

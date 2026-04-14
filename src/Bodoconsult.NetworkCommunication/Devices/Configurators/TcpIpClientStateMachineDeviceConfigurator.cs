@@ -21,6 +21,7 @@ public class TcpIpClientStateMachineDeviceConfigurator : BaseIpDeviceConfigurato
     private readonly ILogDataFactory _logDataFactory;
     private readonly IAppLoggerProxyFactory _appLoggerFactory;
     private readonly IAppLoggerProxy _appLoggerProxy;
+    private ISocketProxyFactory _socketProxyFactory;
 
     private IStateMachineDevice? _stateManagementDevice;
 
@@ -34,13 +35,15 @@ public class TcpIpClientStateMachineDeviceConfigurator : BaseIpDeviceConfigurato
     /// <param name="clientNotificationManager">Current client notification manager instance</param>
     /// <param name="monitorLoggerFactoryFactory">Current factory for monitor logger factories</param>
     /// <param name="appLoggerProxy">Current app logger</param>
+    /// <param name="socketProxyFactory">Current socket factory</param>
     public TcpIpClientStateMachineDeviceConfigurator(IDuplexIoFactory duplexIoFactory,
         IMonitorLoggerFactoryFactory monitorLoggerFactoryFactory,
         ILogDataFactory logDataFactory,
         IAppLoggerProxyFactory appLoggerFactory,
         IAppEventSourceFactory appEventSourceFactory,
         IOrderManagementClientNotificationManager clientNotificationManager,
-        IAppLoggerProxy appLoggerProxy)
+        IAppLoggerProxy appLoggerProxy,
+        ISocketProxyFactory socketProxyFactory)
     {
         _duplexIoFactory = duplexIoFactory;
         _appEventSourceFactory = appEventSourceFactory;
@@ -50,8 +53,8 @@ public class TcpIpClientStateMachineDeviceConfigurator : BaseIpDeviceConfigurato
         _appEventSourceFactory = appEventSourceFactory;
         _logDataFactory = logDataFactory;
         _appLoggerProxy = appLoggerProxy;
+        _socketProxyFactory = socketProxyFactory;
     }
-
 
     /// <summary>
     /// Create the basic data messaging config
@@ -87,9 +90,7 @@ public class TcpIpClientStateMachineDeviceConfigurator : BaseIpDeviceConfigurato
         ArgumentNullException.ThrowIfNull(DataMessagingConfig);
 
         // Server
-        var socketProxyFactory = new SocketProxyFactory(null);
-
-        var communicationHandlerFactory = new IpCommunicationHandlerFactory(socketProxyFactory, _duplexIoFactory, _appEventSourceFactory, _clientNotificationManager);
+        var communicationHandlerFactory = new IpCommunicationHandlerFactory(_socketProxyFactory, _duplexIoFactory, _appEventSourceFactory, _clientNotificationManager);
         var commAdapterFactory = new IpCommunicationAdapterFactory(communicationHandlerFactory);
 
         var factory = new BasicStateMachineDeviceFactory(_clientNotificationManager, commAdapterFactory);

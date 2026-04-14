@@ -7,6 +7,7 @@ using Bodoconsult.App.Logging;
 using Bodoconsult.NetworkCommunication.ClientNotifications;
 using Bodoconsult.NetworkCommunication.Factories;
 using Bodoconsult.NetworkCommunication.Interfaces;
+using Bodoconsult.NetworkCommunication.Protocols.TcpIp;
 using Bodoconsult.NetworkCommunication.Tests.Helpers;
 using IpCommunicationSampleTests.App;
 using IpDevice.Bll.Communication;
@@ -30,7 +31,7 @@ internal class BackendUdpServerManagerTests
     private readonly LogDataFactory _logDataFactory = TestDataHelper.LogDataFactory;
     private readonly AppLoggerProxyFactory _appLoggerFactory = new();
     private readonly FakeAppEventSourceFactory _appEventSourceFactory = new();
-
+    private readonly TcpIpListenerManager _tcpIpListenerManager = new();
 
     [OneTimeTearDown]
     public void Cleanup()
@@ -44,11 +45,12 @@ internal class BackendUdpServerManagerTests
     {
         // Arrange 
         var duplexIoFactory = new IpDuplexIoFactory(_sendPacketProcessFactory);
+        var socketFactory = new SocketProxyFactory(_tcpIpListenerManager);
         //var orderProcessorFactory = new StateMachineOrderProcessorFactory(_dateService, _syncOrderManager, _clientNotificationManager, _appBenchProxy);
         //IOrderPipelineFactory orderPipelineFactory = new OrderPipelineFactory(_dateService, _appLogger);
         // Act
         var m = new BackendUdpServerManager(duplexIoFactory, _monitorLoggerFactoryFactory, _logDataFactory, _appLoggerFactory,
-            _appEventSourceFactory, _clientNotificationManager, _appLogger);
+            _appEventSourceFactory, _clientNotificationManager, _appLogger, socketFactory);
 
         // Assert
         using (Assert.EnterMultipleScope())
@@ -63,11 +65,12 @@ internal class BackendUdpServerManagerTests
     {
         // Arrange 
         var duplexIoFactory = new IpDuplexIoFactory(_sendPacketProcessFactory);
+        var socketFactory = new SocketProxyFactory(_tcpIpListenerManager);
         //var orderProcessorFactory = new StateMachineOrderProcessorFactory(_dateService, _syncOrderManager, _clientNotificationManager, _appBenchProxy);
         //IOrderPipelineFactory orderPipelineFactory = new OrderPipelineFactory(_dateService, _appLogger);
 
         var m = new BackendUdpServerManager(duplexIoFactory, _monitorLoggerFactoryFactory, _logDataFactory, _appLoggerFactory,
-            _appEventSourceFactory, _clientNotificationManager, _appLogger);
+            _appEventSourceFactory, _clientNotificationManager, _appLogger, socketFactory);
 
         const string ip = "127.0.0.1";
         const int port = 9000;

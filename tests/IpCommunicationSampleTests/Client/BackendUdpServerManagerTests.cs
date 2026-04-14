@@ -8,6 +8,7 @@ using Bodoconsult.NetworkCommunication.ClientNotifications;
 using Bodoconsult.NetworkCommunication.Factories;
 using Bodoconsult.NetworkCommunication.Interfaces;
 using Bodoconsult.NetworkCommunication.OrderManagement.Processors;
+using Bodoconsult.NetworkCommunication.Protocols.TcpIp;
 using Bodoconsult.NetworkCommunication.Tests.Helpers;
 using IpClient.Bll.Communication;
 using IpCommunicationSampleTests.App;
@@ -32,6 +33,7 @@ internal class BackendTcpIpClientManagerTests
     private readonly AppLoggerProxyFactory _appLoggerFactory = new();
     private readonly FakeAppEventSourceFactory _appEventSourceFactory = new();
     private readonly IOrderIdGenerator _orderIdGenerator = TestDataHelper.DefaultOrderIdGenerator;
+    private readonly TcpIpListenerManager _tcpIpListenerManager = new();
 
     [OneTimeTearDown]
     public void Cleanup()
@@ -48,10 +50,11 @@ internal class BackendTcpIpClientManagerTests
         var orderProcessorFactory = new OrderProcessorFactory(_dateService, _syncOrderManager, _clientNotificationManager, _appBenchProxy);
         IOrderPipelineFactory orderPipelineFactory = new OrderPipelineFactory(_dateService, _appLogger);
         IOrderManagerFactory orderManagerFactory = new OrderManagerFactory(orderProcessorFactory, _orderReceiverFactory, _requestStepProcessorFactoryFactory, _requestProcessorFactoryFactory, orderPipelineFactory, _orderFactory);
+        var socketFactory = new SocketProxyFactory(_tcpIpListenerManager);
 
         // Act
         var m = new BackendTcpIpClientManager(duplexIoFactory, _monitorLoggerFactoryFactory, _logDataFactory, _appLoggerFactory,
-            _appEventSourceFactory, _clientNotificationManager, _appLogger, orderManagerFactory, _orderIdGenerator);
+            _appEventSourceFactory, _clientNotificationManager, _appLogger, orderManagerFactory, _orderIdGenerator, socketFactory);
 
         // Assert
         using (Assert.EnterMultipleScope())
@@ -69,9 +72,10 @@ internal class BackendTcpIpClientManagerTests
         var orderProcessorFactory = new OrderProcessorFactory(_dateService, _syncOrderManager, _clientNotificationManager, _appBenchProxy);
         IOrderPipelineFactory orderPipelineFactory = new OrderPipelineFactory(_dateService, _appLogger);
         IOrderManagerFactory orderManagerFactory = new OrderManagerFactory(orderProcessorFactory, _orderReceiverFactory, _requestStepProcessorFactoryFactory, _requestProcessorFactoryFactory, orderPipelineFactory, _orderFactory);
+        var socketFactory = new SocketProxyFactory(_tcpIpListenerManager);
 
         var m = new BackendTcpIpClientManager(duplexIoFactory, _monitorLoggerFactoryFactory, _logDataFactory, _appLoggerFactory,
-            _appEventSourceFactory, _clientNotificationManager,  _appLogger, orderManagerFactory, _orderIdGenerator);
+            _appEventSourceFactory, _clientNotificationManager,  _appLogger, orderManagerFactory, _orderIdGenerator, socketFactory);
 
         const string ip = "127.0.0.1";
         const int port = 9000;

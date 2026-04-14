@@ -37,10 +37,12 @@ internal class TcpIpClientStateMachineDeviceConfiguratorTests
     {
         // Arrange 
         var duplexIoFactory = new IpDuplexIoFactory(_sendPacketProcessFactory);
+        var socketFactory = new SocketProxyFactory(_tcpIpListenerManager);
 
         // Act  
 
-        var conf = new TcpIpClientStateMachineDeviceConfigurator(duplexIoFactory, _monitorLoggerFactoryFactory, _logDataFactory, _appLoggerProxyFactory, _appEventSourceFactory, _clientNotificationManager,  _appLoggerProxy);
+        var conf = new TcpIpClientStateMachineDeviceConfigurator(duplexIoFactory, _monitorLoggerFactoryFactory, _logDataFactory, _appLoggerProxyFactory, 
+            _appEventSourceFactory, _clientNotificationManager,  _appLoggerProxy, socketFactory);
 
         // Assert
         Assert.That(conf.DataMessagingConfig, Is.Null);
@@ -52,8 +54,10 @@ internal class TcpIpClientStateMachineDeviceConfiguratorTests
     {
         // Arrange 
         var duplexIoFactory = new IpDuplexIoFactory(_sendPacketProcessFactory);
+        var socketFactory = new SocketProxyFactory(_tcpIpListenerManager);
 
-        var conf = new TcpIpClientStateMachineDeviceConfigurator(duplexIoFactory, _monitorLoggerFactoryFactory, _logDataFactory, _appLoggerProxyFactory, _appEventSourceFactory, _clientNotificationManager, _appLoggerProxy);
+        var conf = new TcpIpClientStateMachineDeviceConfigurator(duplexIoFactory, _monitorLoggerFactoryFactory, _logDataFactory, _appLoggerProxyFactory, _appEventSourceFactory, 
+            _clientNotificationManager, _appLoggerProxy, socketFactory);
 
 
         const string ip = "127.0.0.1";
@@ -64,11 +68,15 @@ internal class TcpIpClientStateMachineDeviceConfiguratorTests
         conf.CreateMessagingConfig("TestDevice", ip, port, messageProcessingPackageFactory);
 
         // Assert
-        Assert.That(conf.DataMessagingConfig, Is.Not.Null);
-        Assert.That(conf.Device, Is.Null);
-        Assert.That(conf.DataMessagingConfig.IpAddress, Is.EqualTo(ip));
-        Assert.That(conf.DataMessagingConfig.Port, Is.EqualTo(port) );
-        Assert.That(conf.DataMessagingConfig.DataMessageProcessingPackage, Is.Not.Null);
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(conf.DataMessagingConfig, Is.Not.Null);
+            ArgumentNullException.ThrowIfNull(conf.DataMessagingConfig);
+            Assert.That(conf.Device, Is.Null);
+            Assert.That(conf.DataMessagingConfig.IpAddress, Is.EqualTo(ip));
+            Assert.That(conf.DataMessagingConfig.Port, Is.EqualTo(port));
+            Assert.That(conf.DataMessagingConfig.DataMessageProcessingPackage, Is.Not.Null);
+        }
     }
 
     [Test]
@@ -76,10 +84,11 @@ internal class TcpIpClientStateMachineDeviceConfiguratorTests
     {
         // Arrange 
         var duplexIoFactory = new IpDuplexIoFactory(_sendPacketProcessFactory);
+        var socketFactory = new SocketProxyFactory(_tcpIpListenerManager);
 
         IDataMessageProcessingPackageFactory messageProcessingPackageFactory = new TncpDataMessageProcessingPackageFactory();
 
-        var conf = new TcpIpClientStateMachineDeviceConfigurator(duplexIoFactory, _monitorLoggerFactoryFactory, _logDataFactory, _appLoggerProxyFactory, _appEventSourceFactory, _clientNotificationManager, _appLoggerProxy);
+        var conf = new TcpIpClientStateMachineDeviceConfigurator(duplexIoFactory, _monitorLoggerFactoryFactory, _logDataFactory, _appLoggerProxyFactory, _appEventSourceFactory, _clientNotificationManager, _appLoggerProxy, socketFactory);
         conf.CreateMessagingConfig("TestDevice", "127.0.0.1", 9000, messageProcessingPackageFactory);
 
         IDeviceBusinessLogicAdapterFactory businessLogicAdapterFactory = new TestStateMachineDeviceAdapterFactory();
@@ -88,7 +97,10 @@ internal class TcpIpClientStateMachineDeviceConfiguratorTests
         conf.CreateDevice(businessLogicAdapterFactory);
 
         // Assert
-        Assert.That(conf.DataMessagingConfig, Is.Not.Null);
-        Assert.That(conf.Device, Is.Not.Null);
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(conf.DataMessagingConfig, Is.Not.Null);
+            Assert.That(conf.Device, Is.Not.Null);
+        }
     }
 }

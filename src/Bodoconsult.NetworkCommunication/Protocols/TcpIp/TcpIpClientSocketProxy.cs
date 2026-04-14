@@ -105,13 +105,20 @@ public class TcpIpClientSocketProxy : TcpIpSocketProxyBase
         {
             if (socketException.ErrorCode != 10054)
             {
+                Logger?.LogError("Sending failed", socketException);
                 Debug.Print(socketException.ToString());
+
+            }
+            else
+            {
+                Logger?.LogDebug("No connection");
             }
 
             return 0;
         }
         catch (Exception e)
         {
+            Logger?.LogError("Sending failed", e);
             Debug.Print(e.ToString());
             return 0;
         }
@@ -137,15 +144,39 @@ public class TcpIpClientSocketProxy : TcpIpSocketProxyBase
         {
             if (socketException.ErrorCode != 10054)
             {
+                Logger?.LogError("Sending failed", socketException);
                 Debug.Print(socketException.ToString());
+
+            }
+            else
+            {
+                Logger?.LogDebug("No connection");
             }
 
             return 0;
         }
         catch (Exception e)
         {
+            Logger?.LogError("Sending failed", e);
             Debug.Print(e.ToString());
             return 0;
+        }
+    }
+
+    /// <summary>
+    /// Poll data
+    /// </summary>
+    /// <returns>True, if data can be read, else false</returns>
+    public override bool Poll()
+    {
+        try
+        {
+            return Socket != null && Socket.Poll(1, SelectMode.SelectRead);
+        }
+        catch (Exception e)
+        {
+            Logger?.LogError("Polling failed", e);
+            return false;
         }
     }
 
@@ -234,13 +265,20 @@ public class TcpIpClientSocketProxy : TcpIpSocketProxyBase
         {
             if (socketException.ErrorCode != 10054)
             {
+                Logger?.LogError("Receiving failed", socketException);
                 Debug.Print(socketException.ToString());
+
+            }
+            else
+            {
+                Logger?.LogDebug("No connection");
             }
 
             return 0;
         }
         catch (Exception e)
         {
+            Logger?.LogError("Receiving failed", e);
             Debug.Print(e.ToString());
             return 0;
         }
