@@ -68,6 +68,7 @@ public class UdpServerSocketProxy : UpdSocketProxyBase
     public override void Close()
     {
         _isBound = false;
+        CancellationTokenSource.Cancel();
 
         if (UdpClient == null)
         {
@@ -87,7 +88,6 @@ public class UdpServerSocketProxy : UpdSocketProxyBase
 
         await Task.Run(() =>
         {
-
             try
             {
                 if (UdpClient != null)
@@ -95,6 +95,8 @@ public class UdpServerSocketProxy : UpdSocketProxyBase
                     UdpClient.Client.Shutdown(SocketShutdown.Both);
                     UdpClient.Close();
                     UdpClient.Dispose();
+
+                    CancellationTokenSource = new CancellationTokenSource();
                 }
             }
             catch // (Exception ex)
@@ -109,14 +111,13 @@ public class UdpServerSocketProxy : UpdSocketProxyBase
             try
             {
                 UdpClient = new UdpClient(Port);
-                
+
                 // The following three lines allow multiple clients on the same PC
-                //UdpClient.ExclusiveAddressUse = false;
                 UdpClient.Client.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.ReuseAddress, true);
+                UdpClient.Client.Blocking = false;
 
                 EndPoint = new IPEndPoint(IPAddress.Any, Port);
-                _isBound = true;
-
+                _isBound = UdpClient.Client.Connected;
             }
             catch (Exception e)
             {
@@ -133,21 +134,37 @@ public class UdpServerSocketProxy : UpdSocketProxyBase
     /// </summary>
     /// <param name="buffer">Byte array to store the received byte data in</param>
     /// <returns>Number of bytes received</returns>
-    public override Task<int> Receive(byte[] buffer)
+    public override async Task<int> Receive(byte[] buffer)
     {
         if (UdpClient == null)
         {
-            return Task.FromResult(0);
+            return await Task.FromResult(0);
         }
 
-        var received = Task.Run(() =>
+        try
         {
-            var result = UdpClient.Receive(ref SendEndPoint);
-            Buffer.BlockCopy(result, 0, buffer, 0, result.Length);
-            return Task.FromResult(result.Length);
-        });
+            var result = await UdpClient.ReceiveAsync(CancellationTokenSource.Token);
+            SendEndPoint = result.RemoteEndPoint;
 
-        return received;
+            //Debug.Print($"UDPClient: received {result.Length} bytes from {SendEndPoint}");
+
+            Buffer.BlockCopy(result.Buffer, 0, buffer, 0, result.Buffer.Length);
+            return result.Buffer.Length;
+        }
+        catch (SocketException socketException)
+        {
+            if (socketException.ErrorCode != 10054)
+            {
+                Debug.Print(socketException.ToString());
+            }
+
+            return 0;
+        }
+        catch (Exception e)
+        {
+            Debug.Print(e.ToString());
+            return 0;
+        }
     }
 
     /// <summary>
@@ -162,75 +179,155 @@ public class UdpServerSocketProxy : UpdSocketProxyBase
             return 0;
         }
 
-        var received = await Task.Run(() =>
+        try
         {
-            var result = UdpClient.Receive(ref SendEndPoint);
-            result.CopyTo(buffer);
-            return Task.FromResult(result.Length);
-        });
+            var result = await UdpClient.ReceiveAsync(CancellationTokenSource.Token);
+            SendEndPoint = result.RemoteEndPoint;
 
-        return received;
-    }
+            //Debug.Print($"UDPClient: received {result.Length} bytes from {SendEndPoint}");
 
-    /// <summary>
-    /// Receive data from the socket
-    /// </summary>
-    /// <param name="buffer">Byte array to store the received byte data in</param>
-    /// <param name="offset">Offset</param>
-    /// <param name="expectedBytesLength">Expected length of the byte data received</param>
-    /// <returns>Number of bytes received</returns>
-    public override Task<int> Receive(byte[] buffer, int offset, int expectedBytesLength)
-    {
-        if (UdpClient == null)
-        {
-            return Task.FromResult(0);
+            result.Buffer.CopyTo(buffer);
+            return result.Buffer.Length;
         }
-
-        var received = Task.Run(() =>
+        catch (SocketException socketException)
         {
-            var result = UdpClient.Receive(ref SendEndPoint);
-            Buffer.BlockCopy(result, offset, buffer, 0, result.Length - offset);
-            return Task.FromResult(result.Length);
-        });
+            if (socketException.ErrorCode != 10054)
+            {
+                Debug.Print(socketException.ToString());
+            }
 
-        return received;
+            return 0;
+        }
+        catch (Exception e)
+        {
+            Debug.Print(e.ToString());
+            return 0;
+        }
     }
+
+    ///// <summary>
+    ///// Receive data from the socket
+    ///// </summary>
+    ///// <param name="buffer">Byte array to store the received byte data in</param>
+    ///// <param name="offset">Offset</param>
+    ///// <param name="expectedBytesLength">Expected length of the byte data received</param>
+    ///// <returns>Number of bytes received</returns>
+    //public override async Task<int> Receive(byte[] buffer, int offset, int expectedBytesLength)
+    //{
+    //    if (UdpClient == null)
+    //    {
+    //        return 0;
+    //    }
+
+    //    try
+    //    {
+    //        var result = await UdpClient.ReceiveAsync(CancellationTokenSource.Token);
+    //        SendEndPoint = result.RemoteEndPoint;
+
+    //        //Debug.Print($"UDPClient: received {result.Length} bytes from {SendEndPoint}");
+
+    //        result.Buffer.AsSpan().Slice(offset, expectedBytesLength).CopyTo(buffer);
+    //        return expectedBytesLength;
+
+    //    }
+    //    catch (SocketException socketException)
+    //    {
+    //        if (socketException.ErrorCode != 10054)
+    //        {
+    //            Debug.Print(socketException.ToString());
+    //        }
+
+    //        return 0;
+    //    }
+    //    catch (Exception e)
+    //    {
+    //        Debug.Print(e.ToString());
+    //        return 0;
+    //    }
+    //}
 
     /// <summary>
     /// Send bytes
     /// </summary>
     /// <param name="bytesToSend">Byte array to send</param>
-    public override Task<int> Send(byte[] bytesToSend)
+    public override async Task<int> Send(byte[] bytesToSend)
     {
-        return UdpClient == null || SendEndPoint == null || Equals(SendEndPoint.Address, IPAddress.Any) ? Task.FromResult(0) : UdpClient.SendAsync(bytesToSend, bytesToSend.Length, SendEndPoint);
+        if (UdpClient == null || SendEndPoint == null || Equals(SendEndPoint.Address, IPAddress.Any))
+        {
+            return 0;
+        }
+
+        try
+        {
+            var result = await UdpClient.SendAsync(bytesToSend, SendEndPoint, CancellationTokenSource.Token);
+            return result;
+        }
+        catch (SocketException socketException)
+        {
+            if (socketException.ErrorCode != 10054)
+            {
+                Debug.Print(socketException.ToString());
+            }
+
+            return 0;
+        }
+        catch (Exception e)
+        {
+            Debug.Print(e.ToString());
+            return 0;
+        }
     }
 
     /// <summary>
     /// Send bytes
     /// </summary>
     /// <param name="bytesToSend">Data to send</param>
-    public override ValueTask<int> Send(ReadOnlyMemory<byte> bytesToSend)
+    public override async ValueTask<int> Send(ReadOnlyMemory<byte> bytesToSend)
     {
-        return UdpClient == null || SendEndPoint == null || Equals(SendEndPoint.Address, IPAddress.Any) ? ValueTask.FromResult(0) :  UdpClient.SendAsync(bytesToSend, SendEndPoint);
+        if (UdpClient == null || SendEndPoint == null || Equals(SendEndPoint.Address, IPAddress.Any))
+        {
+            return 0;
+        }
+
+        try
+        {
+            var result = await UdpClient.SendAsync(bytesToSend, SendEndPoint, CancellationTokenSource.Token);
+            return result;
+        }
+        catch (SocketException socketException)
+        {
+            if (socketException.ErrorCode != 10054)
+            {
+                Debug.Print(socketException.ToString());
+            }
+
+            return 0;
+        }
+        catch (Exception e)
+        {
+            Debug.Print(e.ToString());
+            return 0;
+        }
     }
 
-    /// <summary>
-    /// Send bytes 
-    /// </summary>
-    /// <param name="bytesToSend">Byte array to send</param>
-    /// <param name="offset">Offset</param>
-    /// <param name="messageBytesLength">Number of message bytes length to send</param>
-    /// <returns></returns>
-    public override Task<int> Send(byte[] bytesToSend, int offset, int messageBytesLength)
-    {
-        return UdpClient == null || SendEndPoint == null || Equals(SendEndPoint.Address, IPAddress.Any) ? Task.FromResult(0) : UdpClient.Client.SendToAsync(bytesToSend, offset, messageBytesLength, SocketFlags.None, SendEndPoint);
-    }
+    ///// <summary>
+    ///// Send bytes 
+    ///// </summary>
+    ///// <param name="bytesToSend">Byte array to send</param>
+    ///// <param name="offset">Offset</param>
+    ///// <param name="messageBytesLength">Number of message bytes length to send</param>
+    ///// <returns></returns>
+    //public override Task<int> Send(byte[] bytesToSend, int offset, int messageBytesLength)
+    //{
+    //    return UdpClient == null || SendEndPoint == null || Equals(SendEndPoint.Address, IPAddress.Any) ? Task.FromResult(0) : UdpClient.Client.SendToAsync(bytesToSend, offset, messageBytesLength, SocketFlags.None, SendEndPoint);
+    //}
 
     /// <summary>
     /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
     /// </summary>
     public override void Dispose()
     {
+        CancellationTokenSource.Cancel();
         IsDisposed = true;
         UdpClient?.Close();
         UdpClient?.Dispose();

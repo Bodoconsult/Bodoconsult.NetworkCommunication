@@ -43,9 +43,9 @@ internal class UdpClientSocketProxyTests
                         Debug.Print($"Client: sent {sent} bytes");
 
                         var data = new byte[10];
-                        await client.Receive(data); ; // listen on port 11000
+                        var received = await client.Receive(data); ; // listen on port 11000
 
-                        Debug.Print($"Client: received {data.Length} bytes");
+                        Debug.Print($"Client: received {received} bytes");
                     }
                 }
                 catch (Exception e)

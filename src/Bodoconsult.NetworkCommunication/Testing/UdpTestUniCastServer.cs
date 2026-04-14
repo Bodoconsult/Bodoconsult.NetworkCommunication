@@ -36,7 +36,7 @@ public class UdpTestUniCastServer : BaseUdpDevice
 
     public override void Send(byte[] data)
     {
-        if (IsDisposed)
+        if (IsDisposed || SenderEndPoint == null)
         {
             return;
         }

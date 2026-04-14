@@ -92,7 +92,6 @@ public class TcpIpServerSocketProxy : TcpIpSocketProxyBase
             {
                 return 0;
             }
-
         }
     }
 
@@ -100,26 +99,64 @@ public class TcpIpServerSocketProxy : TcpIpSocketProxyBase
     /// Send bytes
     /// </summary>
     /// <param name="bytesToSend">Byte array to send</param>
-    public override Task<int> Send(byte[] bytesToSend)
+    public override async Task<int> Send(byte[] bytesToSend)
     {
-        if (Socket == null)
+        if (Socket is not { Connected: true })
         {
-            return Task.FromResult(0);
+            return 0;
         }
-        return !Socket.Connected ? Task.FromResult(0) : Socket.SendAsync(bytesToSend);
+
+        try
+        {
+            var result = await Socket.SendAsync(bytesToSend, CancellationTokenSource.Token);
+            return result;
+        }
+        catch (SocketException socketException)
+        {
+            if (socketException.ErrorCode != 10054)
+            {
+                Debug.Print(socketException.ToString());
+            }
+
+            return 0;
+        }
+        catch (Exception e)
+        {
+            Debug.Print(e.ToString());
+            return 0;
+        }
     }
 
     /// <summary>
     /// Send bytes
     /// </summary>
     /// <param name="bytesToSend">Data to send</param>
-    public override ValueTask<int> Send(ReadOnlyMemory<byte> bytesToSend)
+    public override async ValueTask<int> Send(ReadOnlyMemory<byte> bytesToSend)
     {
-        if (Socket == null)
+        if (Socket is not { Connected: true })
         {
-            return ValueTask.FromResult(0);
+            return 0;
         }
-        return !Socket.Connected ? new ValueTask<int>(0) : Socket.SendAsync(bytesToSend, SocketFlags.None);
+
+        try
+        {
+            var result = await Socket.SendAsync(bytesToSend, CancellationTokenSource.Token);
+            return result;
+        }
+        catch (SocketException socketException)
+        {
+            if (socketException.ErrorCode != 10054)
+            {
+                Debug.Print(socketException.ToString());
+            }
+
+            return 0;
+        }
+        catch (Exception e)
+        {
+            Debug.Print(e.ToString());
+            return 0;
+        }
     }
 
     /// <summary>
@@ -127,6 +164,9 @@ public class TcpIpServerSocketProxy : TcpIpSocketProxyBase
     /// </summary>
     public override void Close()
     {
+        _isBound = false;
+        CancellationTokenSource = new CancellationTokenSource();
+
         if (_listener != null)
         {
             TcpIpListenerManager.UnregisterListener(_listener, AcceptDelegate);
@@ -137,8 +177,6 @@ public class TcpIpServerSocketProxy : TcpIpSocketProxyBase
         }
         Socket.Shutdown(SocketShutdown.Both);
         Socket.Close();
-
-        _isBound = false;
     }
 
     /// <summary>
@@ -155,6 +193,8 @@ public class TcpIpServerSocketProxy : TcpIpSocketProxyBase
                     Socket.Shutdown(SocketShutdown.Both);
                     Socket.Close();
                     Socket?.Dispose();
+
+                    CancellationTokenSource = new CancellationTokenSource();
                 }
             }
             catch // (Exception ex)
@@ -168,14 +208,7 @@ public class TcpIpServerSocketProxy : TcpIpSocketProxyBase
 
             Debug.Print($"Server: port {Port}");
             _listener = TcpIpListenerManager.RegisterListener(Port, AcceptDelegate);
-            if (_listener == null)
-            {
-                _isBound = false;
-            }
-            else
-            {
-                _isBound = true;
-            }
+            _isBound = _listener != null;
         });
     }
 
@@ -191,13 +224,32 @@ public class TcpIpServerSocketProxy : TcpIpSocketProxyBase
     /// </summary>
     /// <param name="buffer">Byte array to store the received byte data in</param>
     /// <returns>Number of bytes received</returns>
-    public override Task<int> Receive(byte[] buffer)
+    public override async Task<int> Receive(byte[] buffer)
     {
-        if (Socket == null)
+        if (Socket is not { Connected: true })
         {
-            return Task.FromResult(0);
+            return 0;
         }
-        return !Socket.Connected ? Task.FromResult(0) : Socket.ReceiveAsync(buffer);
+
+        try
+        {
+            var result = await Socket.ReceiveAsync(buffer, CancellationTokenSource.Token);
+            return result;
+        }
+        catch (SocketException socketException)
+        {
+            if (socketException.ErrorCode != 10054)
+            {
+                Debug.Print(socketException.ToString());
+            }
+
+            return 0;
+        }
+        catch (Exception e)
+        {
+            Debug.Print(e.ToString());
+            return 0;
+        }
     }
 
     /// <summary>
@@ -207,66 +259,87 @@ public class TcpIpServerSocketProxy : TcpIpSocketProxyBase
     /// <returns>Number of bytes received</returns>
     public override async Task<int> Receive(Memory<byte> buffer)
     {
-        if (Socket == null)
+        if (Socket is not { Connected: true })
         {
-            return Task.FromResult(0).GetAwaiter().GetResult();
+            return 0;
         }
-        return !Socket.Connected ? await Task.FromResult(0) : await Socket.ReceiveAsync(buffer, SocketFlags.None);
+
+        try
+        {
+            var result = await Socket.ReceiveAsync(buffer, SocketFlags.None, CancellationTokenSource.Token);
+            return result;
+        }
+        catch (SocketException socketException)
+        {
+            if (socketException.ErrorCode != 10054)
+            {
+                Debug.Print(socketException.ToString());
+            }
+
+            return 0;
+        }
+        catch (Exception e)
+        {
+            Debug.Print(e.ToString());
+            return 0;
+        }
     }
 
-    /// <summary>
-    /// Receive data from the socket
-    /// </summary>
-    /// <param name="buffer">Byte array to store the received byte data in</param>
-    /// <param name="offset">Offset</param>
-    /// <param name="expectedBytesLength">Expected length of the byte data received</param>
-    /// <returns>Number of bytes received</returns>
-    public override Task<int> Receive(byte[] buffer, int offset, int expectedBytesLength)
-    {
-        if (Socket == null)
-        {
-            return Task.FromResult(0);
-        }
-        return !Socket.Connected ? Task.FromResult(0) : Socket.ReceiveAsync(buffer, offset, expectedBytesLength, SocketFlags.None);
-    }
+    ///// <summary>
+    ///// Receive data from the socket
+    ///// </summary>
+    ///// <param name="buffer">Byte array to store the received byte data in</param>
+    ///// <param name="offset">Offset</param>
+    ///// <param name="expectedBytesLength">Expected length of the byte data received</param>
+    ///// <returns>Number of bytes received</returns>
+    //public override async Task<int> Receive(byte[] buffer, int offset, int expectedBytesLength)
+    //{
+    //    if (Socket is not { Connected: true })
+    //    {
+    //        return 0;
+    //    }
 
-    /// <summary>
-    /// Send bytes 
-    /// </summary>
-    /// <param name="bytesToSend">Byte array to send</param>
-    /// <param name="offset">Offset</param>
-    /// <param name="messageBytesLength">Number of message bytes length to send</param>
-    /// <returns></returns>
-    public override Task<int> Send(byte[] bytesToSend, int offset, int messageBytesLength)
-    {
-        if (Socket == null)
-        {
-            return Task.FromResult(0);
-        }
-        return !Socket.Connected ? Task.FromResult(0) : Socket.SendAsync(bytesToSend, offset, messageBytesLength);
-    }
+    //    try
+    //    {
+    //        var result = await Socket.ReceiveAsync(buffer, CancellationTokenSource.Token);
+    //        //SendEndPoint = result.RemoteEndPoint;
 
-    /// <summary>
-    /// Poll data
-    /// </summary>
-    /// <returns>True, if data can be read, else false</returns>
-    public override bool Poll()
-    {
-        if (Socket == null)
-        {
-            return false;
-        }
-        return Socket.Poll(PollingTimeout, SelectMode.SelectRead);
-    }
+    //        //Debug.Print($"UDPClient: received {result.Length} bytes from {SendEndPoint}");
 
-    /// <summary>
-    /// Send a file
-    /// </summary>
-    /// <param name="fileName">Full file path</param>
-    public override void SendFile(string fileName)
-    {
-        Socket?.SendFile(fileName);
-    }
+    //        result.Buffer.AsSpan().Slice(offset, expectedBytesLength).CopyTo(buffer);
+    //        return expectedBytesLength;
+    //    }
+    //    catch (SocketException socketException)
+    //    {
+    //        if (socketException.ErrorCode != 10054)
+    //        {
+    //            Debug.Print(socketException.ToString());
+    //        }
+
+    //        return 0;
+    //    }
+    //    catch (Exception e)
+    //    {
+    //        Debug.Print(e.ToString());
+    //        return 0;
+    //    }
+    //}
+
+    ///// <summary>
+    ///// Send bytes 
+    ///// </summary>
+    ///// <param name="bytesToSend">Byte array to send</param>
+    ///// <param name="offset">Offset</param>
+    ///// <param name="messageBytesLength">Number of message bytes length to send</param>
+    ///// <returns></returns>
+    //public override Task<int> Send(byte[] bytesToSend, int offset, int messageBytesLength)
+    //{
+    //    if (Socket == null)
+    //    {
+    //        return Task.FromResult(0);
+    //    }
+    //    return !Socket.Connected ? Task.FromResult(0) : Socket.SendAsync(bytesToSend, offset, messageBytesLength);
+    //}
 
     /// <summary>
     /// Current socket (only for testing purposes, do not access directly in production code)
@@ -274,19 +347,12 @@ public class TcpIpServerSocketProxy : TcpIpSocketProxyBase
     public Socket? Socket { get; protected set; }
 
     /// <summary>
-    /// Prepare the answer of the socket for testing
-    /// </summary>
-    /// <param name="testData">Test data to use</param>
-    public override void PrepareAnswer(byte[] testData)
-    {
-        // Do nothing
-    }
-
-    /// <summary>
     /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
     /// </summary>
     public override void Dispose()
     {
+        CancellationTokenSource.Cancel();
+
         if (_listener != null)
         {
             TcpIpListenerManager.UnregisterListener(_listener, AcceptDelegate);

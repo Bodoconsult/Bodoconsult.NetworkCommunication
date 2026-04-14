@@ -56,6 +56,11 @@ public interface ISocketProxy: IDisposable
     bool Connected { get;  }
 
     /// <summary>
+    /// Current cancellation token
+    /// </summary>
+    CancellationTokenSource CancellationTokenSource { get; set; }
+
+    /// <summary>
     /// Send bytes
     /// </summary>
     /// <param name="bytesToSend">Byte array to send</param>
@@ -96,23 +101,23 @@ public interface ISocketProxy: IDisposable
     /// <returns>Number of bytes received</returns>
     Task<int> Receive(Memory<byte> buffer);
 
-    /// <summary>
-    /// Receive data from the socket
-    /// </summary>
-    /// <param name="buffer">Byte array to store the received byte data in</param>
-    /// <param name="offset">Offset</param>
-    /// <param name="expectedBytesLength">Expected length of the byte data received</param>
-    /// <returns>Number of bytes received</returns>
-    Task<int> Receive(byte[] buffer, int offset, int expectedBytesLength);
+    ///// <summary>
+    ///// Receive data from the socket
+    ///// </summary>
+    ///// <param name="buffer">Byte array to store the received byte data in</param>
+    ///// <param name="offset">Offset</param>
+    ///// <param name="expectedBytesLength">Expected length of the byte data received</param>
+    ///// <returns>Number of bytes received</returns>
+    //Task<int> Receive(byte[] buffer, int offset, int expectedBytesLength);
 
-    /// <summary>
-    /// Send bytes 
-    /// </summary>
-    /// <param name="bytesToSend">Byte array to send</param>
-    /// <param name="offset">Offset</param>
-    /// <param name="messageBytesLength">Number of message bytes length to send</param>
-    /// <returns></returns>
-    Task<int> Send(byte[] bytesToSend, int offset, int messageBytesLength);
+    ///// <summary>
+    ///// Send bytes 
+    ///// </summary>
+    ///// <param name="bytesToSend">Byte array to send</param>
+    ///// <param name="offset">Offset</param>
+    ///// <param name="messageBytesLength">Number of message bytes length to send</param>
+    ///// <returns></returns>
+    //Task<int> Send(byte[] bytesToSend, int offset, int messageBytesLength);
 
     /// <summary>
     /// Poll data

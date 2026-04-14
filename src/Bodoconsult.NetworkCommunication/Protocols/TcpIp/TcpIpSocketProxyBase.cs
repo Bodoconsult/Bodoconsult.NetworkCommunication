@@ -56,6 +56,11 @@ public abstract class TcpIpSocketProxyBase : ISocketProxy
     public virtual bool Connected => false;
 
     /// <summary>
+    /// Current cancellation token
+    /// </summary>
+    public CancellationTokenSource CancellationTokenSource { get; set; } = new();
+
+    /// <summary>
     /// Send bytes
     /// </summary>
     /// <param name="bytesToSend">Byte array to send</param>
@@ -137,29 +142,29 @@ public abstract class TcpIpSocketProxyBase : ISocketProxy
         throw new NotSupportedException();
     }
 
-    /// <summary>
-    /// Receive data from the socket
-    /// </summary>
-    /// <param name="buffer">Byte array to store the received byte data in</param>
-    /// <param name="offset">Offset</param>
-    /// <param name="expectedBytesLength">Expected length of the byte data received</param>
-    /// <returns>Number of bytes received</returns>
-    public virtual Task<int> Receive(byte[] buffer, int offset, int expectedBytesLength)
-    {
-        throw new NotSupportedException();
-    }
+    ///// <summary>
+    ///// Receive data from the socket
+    ///// </summary>
+    ///// <param name="buffer">Byte array to store the received byte data in</param>
+    ///// <param name="offset">Offset</param>
+    ///// <param name="expectedBytesLength">Expected length of the byte data received</param>
+    ///// <returns>Number of bytes received</returns>
+    //public virtual Task<int> Receive(byte[] buffer, int offset, int expectedBytesLength)
+    //{
+    //    throw new NotSupportedException();
+    //}
 
-    /// <summary>
-    /// Send bytes 
-    /// </summary>
-    /// <param name="bytesToSend">Byte array to send</param>
-    /// <param name="offset">Offset</param>
-    /// <param name="messageBytesLength">Number of message bytes length to send</param>
-    /// <returns></returns>
-    public virtual Task<int> Send(byte[] bytesToSend, int offset, int messageBytesLength)
-    {
-        throw new NotSupportedException();
-    }
+    ///// <summary>
+    ///// Send bytes 
+    ///// </summary>
+    ///// <param name="bytesToSend">Byte array to send</param>
+    ///// <param name="offset">Offset</param>
+    ///// <param name="messageBytesLength">Number of message bytes length to send</param>
+    ///// <returns></returns>
+    //public virtual Task<int> Send(byte[] bytesToSend, int offset, int messageBytesLength)
+    //{
+    //    throw new NotSupportedException();
+    //}
 
     /// <summary>
     /// Poll data
@@ -170,23 +175,23 @@ public abstract class TcpIpSocketProxyBase : ISocketProxy
         throw new NotSupportedException();
     }
 
-    /// <summary>
-    /// Send a file
-    /// </summary>
-    /// <param name="fileName">Full file path</param>
-    public virtual void SendFile(string fileName)
-    {
-        throw new NotSupportedException();
-    }
+    ///// <summary>
+    ///// Send a file
+    ///// </summary>
+    ///// <param name="fileName">Full file path</param>
+    //public virtual void SendFile(string fileName)
+    //{
+    //    throw new NotSupportedException();
+    //}
 
-    /// <summary>
-    /// Prepare the answer of the socket for testing
-    /// </summary>
-    /// <param name="testData">Test data to use</param>
-    public virtual void PrepareAnswer(byte[] testData)
-    {
-        throw new NotSupportedException();
-    }
+    ///// <summary>
+    ///// Prepare the answer of the socket for testing
+    ///// </summary>
+    ///// <param name="testData">Test data to use</param>
+    //public virtual void PrepareAnswer(byte[] testData)
+    //{
+    //    throw new NotSupportedException();
+    //}
 
     /// <summary>Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.</summary>
     public virtual void Dispose()

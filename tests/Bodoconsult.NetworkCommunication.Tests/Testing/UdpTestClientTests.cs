@@ -69,7 +69,7 @@ internal class UdpTestUniCastServerTests
 
         client.Dispose();
 
-        task.Wait();
+        task.Wait(5000);
 
         // Assert
         using (Assert.EnterMultipleScope())

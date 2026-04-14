@@ -204,32 +204,32 @@ public class FakeUdpSocketProxy : UpdSocketProxyBase
 
     }
 
-    /// <summary>
-    /// Receive data from the socket
-    /// </summary>
-    /// <param name="buffer">Byte array to store the received byte data in</param>
-    /// <param name="offset">Offset</param>
-    /// <param name="expectedBytesLength">Expected length of the byte data received</param>
-    /// <returns>Number of bytes received</returns>
-    public override async Task<int> Receive(byte[] buffer, int offset, int expectedBytesLength)
-    {
-        if (ReceiverThrowSocketException)
-        {
-            throw new SocketException(999);
-        }
+    ///// <summary>
+    ///// Receive data from the socket
+    ///// </summary>
+    ///// <param name="buffer">Byte array to store the received byte data in</param>
+    ///// <param name="offset">Offset</param>
+    ///// <param name="expectedBytesLength">Expected length of the byte data received</param>
+    ///// <returns>Number of bytes received</returns>
+    //public override async Task<int> Receive(byte[] buffer, int offset, int expectedBytesLength)
+    //{
+    //    if (ReceiverThrowSocketException)
+    //    {
+    //        throw new SocketException(999);
+    //    }
 
-        var i = await Task.Run(() =>
-        {
-            Buffer.BlockCopy(_data.ToArray(), 0, buffer, offset, expectedBytesLength);
-            return expectedBytesLength;
-        });
+    //    var i = await Task.Run(() =>
+    //    {
+    //        Buffer.BlockCopy(_data.ToArray(), 0, buffer, offset, expectedBytesLength);
+    //        return expectedBytesLength;
+    //    });
 
-        _data = Array.Empty<byte>();
-        LoadNextReceivedMessage();
-        return i;
+    //    _data = Array.Empty<byte>();
+    //    LoadNextReceivedMessage();
+    //    return i;
 
 
-    }
+    //}
 
     /// <summary>
     /// Receive first data byte from the socket
@@ -252,25 +252,25 @@ public class FakeUdpSocketProxy : UpdSocketProxyBase
         return i;
     }
 
-    /// <summary>
-    /// Send bytes 
-    /// </summary>
-    /// <param name="bytesToSend">Byte array to send</param>
-    /// <param name="offset">Offset</param>
-    /// <param name="messageBytesLength">Number of message bytes length to send</param>
-    /// <returns></returns>
-    public override async Task<int> Send(byte[] bytesToSend, int offset, int messageBytesLength)
-    {
-        if (SenderThrowSocketException)
-        {
-            throw new SocketException(999);
-        }
+    ///// <summary>
+    ///// Send bytes 
+    ///// </summary>
+    ///// <param name="bytesToSend">Byte array to send</param>
+    ///// <param name="offset">Offset</param>
+    ///// <param name="messageBytesLength">Number of message bytes length to send</param>
+    ///// <returns></returns>
+    //public override async Task<int> Send(byte[] bytesToSend, int offset, int messageBytesLength)
+    //{
+    //    if (SenderThrowSocketException)
+    //    {
+    //        throw new SocketException(999);
+    //    }
 
-        // Do nothing
-        var i = await Task.Run(() => DataLengthSent == int.MinValue ? bytesToSend.Length : DataLengthSent);
-        _data = Array.Empty<byte>();
-        return i;
-    }
+    //    // Do nothing
+    //    var i = await Task.Run(() => DataLengthSent == int.MinValue ? bytesToSend.Length : DataLengthSent);
+    //    _data = Array.Empty<byte>();
+    //    return i;
+    //}
 
     /// <summary>
     /// Poll data
