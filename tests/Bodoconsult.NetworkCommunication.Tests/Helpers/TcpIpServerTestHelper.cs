@@ -28,21 +28,32 @@ public static class TcpIpServerTestHelper
     public static TcpIpListenerManager TcpIpListenerManager { get; }
 
     /// <summary>
-    /// Initialize the IP communication
+    /// Create the messaging config
     /// </summary>
-    public static void InitClient(ITcpTests testSetup)
+    /// <param name="testSetup"></param>
+    public static void CreateMessagingConfig(ITcpTests testSetup)
     {
         testSetup.DataMessagingConfig = new DefaultDataMessagingConfig();
         testSetup.DataMessagingConfig.Port = TestDataHelper.GetRandomPort();
         testSetup.DataMessagingConfig.DataMessageProcessingPackage = new SdcpDataMessageProcessingPackage(testSetup.DataMessagingConfig);
         testSetup.DataMessagingConfig.AppLogger = Logger;
         testSetup.DataMessagingConfig.MonitorLogger = Logger;
+    }
+
+
+    /// <summary>
+    /// Initialize the IP communication
+    /// </summary>
+    public static void InitClient(ITcpTests testSetup)
+    {
+
 
         testSetup.IpAddress = IPAddress.Parse(testSetup.DataMessagingConfig.IpAddress);
 
         testSetup.RemoteTcpIpDevice?.Dispose();
         testSetup.RemoteTcpIpDevice = new TcpTestClient(testSetup.IpAddress, testSetup.DataMessagingConfig.Port);
-        
+        testSetup.Logger = Logger;
+        testSetup.RemoteTcpIpDevice.Start();
     }
 
     public static void InitSocket(ITcpTests testSetup)
@@ -69,17 +80,13 @@ public static class TcpIpServerTestHelper
 
         // Load socket
         ArgumentNullException.ThrowIfNull(testSetup.DataMessagingConfig);
-        ArgumentNullException.ThrowIfNull(testSetup.RemoteTcpIpDevice);
+        
 
         var socket = new TcpIpServerSocketProxy(TcpIpListenerManager);
         socket.IpAddress = testSetup.IpAddress;
         socket.Port = testSetup.DataMessagingConfig.Port;
         socket.Connect().Wait(1000);
         testSetup.Socket = socket;
-        
-
-        testSetup.Logger = Logger;
-        testSetup.RemoteTcpIpDevice.Start();
     }
 
     /// <summary>

@@ -22,7 +22,7 @@ internal class IpCommunicationHandlerTests : TcpIpCommunicationHandlerBaseTests
     [SetUp]
     protected void TestSetup()
     {
-        TcpIpServerTestHelper.InitClient(this);
+        TcpIpServerTestHelper.CreateMessagingConfig(this);
 
         Debug.Print("Start TestSetup");
 
@@ -32,6 +32,8 @@ internal class IpCommunicationHandlerTests : TcpIpCommunicationHandlerBaseTests
 
         ArgumentNullException.ThrowIfNull(Socket);
         DuplexIo = GetDuplexIo(Socket);
+
+        TcpIpServerTestHelper.InitClient(this);
 
         Debug.Print("End TestSetup");
 

@@ -14,10 +14,12 @@ internal static class UdpServerIpTestHelper
 {
     private static readonly IAppLoggerProxy Logger = TestDataHelper.GetFakeAppLoggerProxy();
 
+
     /// <summary>
-    /// Initialize the IP communication
+    /// Create the messaging config
     /// </summary>
-    public static void InitRemoteDevice(IUdpTests testSetup)
+    /// <param name="testSetup"></param>
+    public static void CreateMessagingConfig(IUdpTests testSetup)
     {
         testSetup.DataMessagingConfig = new DefaultDataMessagingConfig();
         testSetup.DataMessagingConfig.Port = TestDataHelper.GetRandomPort();
@@ -26,6 +28,16 @@ internal static class UdpServerIpTestHelper
         testSetup.DataMessagingConfig.MonitorLogger = Logger;
 
         testSetup.IpAddress = IPAddress.Parse(testSetup.DataMessagingConfig.IpAddress);
+    }
+
+
+    /// <summary>
+    /// Initialize the IP communication
+    /// </summary>
+    public static void InitRemoteDevice(IUdpTests testSetup)
+    {
+        ArgumentNullException.ThrowIfNull(testSetup.DataMessagingConfig);
+        ArgumentNullException.ThrowIfNull(testSetup.IpAddress);
 
         testSetup.RemoteUdpDevice?.Dispose();
         testSetup.RemoteUdpDevice = new UdpTestUniCastClient(testSetup.IpAddress, testSetup.DataMessagingConfig.Port);

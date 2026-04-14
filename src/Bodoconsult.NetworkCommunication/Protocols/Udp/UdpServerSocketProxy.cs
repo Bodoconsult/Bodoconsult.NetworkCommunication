@@ -77,6 +77,7 @@ public class UdpServerSocketProxy : UpdSocketProxyBase
 
         UdpClient.Client.Shutdown(SocketShutdown.Both);
         UdpClient.Close();
+        UdpClient = null;
     }
 
     /// <summary>
@@ -117,7 +118,7 @@ public class UdpServerSocketProxy : UpdSocketProxyBase
                 UdpClient.Client.Blocking = false;
 
                 EndPoint = new IPEndPoint(IPAddress.Any, Port);
-                _isBound = UdpClient.Client.Connected;
+                _isBound = true;
             }
             catch (Exception e)
             {
@@ -374,8 +375,15 @@ public class UdpServerSocketProxy : UpdSocketProxyBase
     {
         CancellationTokenSource.Cancel();
         IsDisposed = true;
-        UdpClient?.Close();
-        UdpClient?.Dispose();
+
+        if (UdpClient == null)
+        {
+            return;
+        }
+
+        UdpClient.Client.Shutdown(SocketShutdown.Both);
+        UdpClient.Close();
+        UdpClient.Dispose();
         UdpClient = null;
     }
 }

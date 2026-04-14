@@ -131,11 +131,16 @@ public class IpDuplexIo : BaseDuplexIo
     /// <returns>Task</returns>
     public override async Task StopCommunication()
     {
-        await Task.Run(() =>
+        if (Sender != null)
         {
-            Receiver?.StopReceiver();
-        });
+            await Sender.StopSender();
+        }
 
+        if (Receiver != null)
+        {
+            await Receiver.StopReceiver();
+        }
+        
         IsCommunicationStarted = false;
     }
 

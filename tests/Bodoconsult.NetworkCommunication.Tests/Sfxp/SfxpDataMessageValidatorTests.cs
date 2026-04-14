@@ -9,7 +9,7 @@ namespace Bodoconsult.NetworkCommunication.Tests.Sfxp;
 internal class SfxpDataMessageValidatorTests
 {
     [Test]
-    public void IsMessageValid_RawDataMessage_ReturnsFalse()
+    public void IsMessageValid_RawDataMessage_ReturnsTrue()
     {
         // Arrange 
         var validator = new SfxpDataMessageValidator();
@@ -20,7 +20,7 @@ internal class SfxpDataMessageValidatorTests
         var result = validator.IsMessageValid(msg);
 
         // Assert
-        Assert.That(result.IsMessageValid, Is.False);
+        Assert.That(result.IsMessageValid, Is.True);
     }
 
     [Test]

@@ -1,6 +1,7 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
 using System.Net;
+using System.Net.NetworkInformation;
 using System.Net.Sockets;
 
 namespace Bodoconsult.NetworkCommunication.Helpers;
@@ -126,5 +127,35 @@ public static class IpHelper
         var network2 = address2.GetNetworkAddress(subnetMask);
 
         return network1.Equals(network2);
+    }
+
+    /// <summary>
+    /// Check if a port is available
+    /// </summary>
+    /// <param name="port">Port to check</param>
+    /// <returns>True if port is free else false</returns>
+    public static bool IsPortAvailable(int port)
+    {
+        var ipGlobalProperties = IPGlobalProperties.GetIPGlobalProperties();
+        var tcpConnInfoArray = ipGlobalProperties.GetActiveTcpConnections();
+
+        foreach (var tcpi in tcpConnInfoArray)
+        {
+            if (tcpi.LocalEndPoint.Port == port)
+            {
+                return false;
+            }
+        }
+
+        var tcpListeners = ipGlobalProperties.GetActiveTcpListeners();
+        foreach (var endpoint in tcpListeners)
+        {
+            if (endpoint.Port == port)
+            {
+                return false;
+            }
+        }
+
+        return true;
     }
 }

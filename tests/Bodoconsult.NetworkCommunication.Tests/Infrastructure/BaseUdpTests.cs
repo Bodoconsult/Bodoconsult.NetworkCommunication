@@ -199,14 +199,15 @@ public class BaseUdpTests : IUdpTests
 
         RemoteUdpDevice.Send(msg.RawMessageData.ToArray());
 
+        var cts = new CancellationTokenSource(5000);
+
         // Now send messages
         var tcs1 = new TaskCompletionSource<bool>();
         var t1 = tcs1.Task;
 
         // Start a background task that will complete tcs1.Task
-        Task.Factory.StartNew(() =>
+        Task.Run(() =>
         {
-            var cts = new CancellationTokenSource(50000);
             while (!cts.IsCancellationRequested)
             {
                 if (RemoteUdpDevice.ReceivedMessages.Count >= expectedCount)
@@ -214,20 +215,20 @@ public class BaseUdpTests : IUdpTests
                     tcs1.SetResult(true);
                     return;
                 }
-                Task.Delay(15, cts.Token);
+                Task.Delay(5, cts.Token).Wait(10);
             }
 
             tcs1.SetResult(false);
         });
 
         // Send now
-        AsyncHelper.FireAndForget(() =>
+        Task.Run(async () =>
         {
             try
             {
                 foreach (var message in data)
                 {
-                    DuplexIo.SendMessage(message);
+                    await DuplexIo.SendMessage(message);
                 }
             }
             catch (Exception e)
@@ -235,7 +236,7 @@ public class BaseUdpTests : IUdpTests
                 Debug.Print(e.ToString());
                 throw;
             }
-        });
+        }, cts.Token);
 
         var result = t1.GetAwaiter().GetResult();
 

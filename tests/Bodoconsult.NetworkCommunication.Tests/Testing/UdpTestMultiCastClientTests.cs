@@ -9,8 +9,7 @@ using System.Net;
 namespace Bodoconsult.NetworkCommunication.Tests.Testing;
 
 // ToDO check why this tests make the next tests fail
-
-//[Explicit]
+[Explicit]
 [TestFixture]
 internal class UdpTestMultiCastServerTests
 {

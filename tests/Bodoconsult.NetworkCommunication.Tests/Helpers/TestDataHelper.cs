@@ -12,6 +12,7 @@ using Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig;
 using Bodoconsult.NetworkCommunication.Devices;
 using Bodoconsult.NetworkCommunication.EnumAndStates;
 using Bodoconsult.NetworkCommunication.Factories;
+using Bodoconsult.NetworkCommunication.Helpers;
 using Bodoconsult.NetworkCommunication.Interfaces;
 using Bodoconsult.NetworkCommunication.OrderManagement.Configurations;
 using Bodoconsult.NetworkCommunication.OrderManagement.OrderBuilders;
@@ -24,6 +25,8 @@ namespace Bodoconsult.NetworkCommunication.Tests.Helpers;
 
 public static class TestDataHelper
 {
+    private static readonly Random PortGenerator = new();
+
     static TestDataHelper()
     {
         LogDataFactory = new LogDataFactory();
@@ -79,7 +82,18 @@ public static class TestDataHelper
     /// <returns></returns>
     public static int GetRandomPort()
     {
-        return new Random(33025).Next(33000, 33049);
+        var i = 0;
+
+        while (true)
+        {
+            var port = PortGenerator.Next(33000, 33049);
+            if (IpHelper.IsPortAvailable(port) || i >= 5)
+            {
+                return port;
+            }
+
+            i++;
+        }
     }
 
     /// <summary>
@@ -117,7 +131,7 @@ public static class TestDataHelper
     /// </summary>
     /// <returns>Data messaging config</returns>
     /// <param name="isServer">Server config. Default: false</param>
-    public static IIpDataMessagingConfig GetEdcpDataMessagingConfig(bool isServer=false)
+    public static IIpDataMessagingConfig GetEdcpDataMessagingConfig(bool isServer = false)
     {
         var config = new EdcpDataMessagingConfig();
 
@@ -129,7 +143,7 @@ public static class TestDataHelper
         {
             config.DataMessageProcessingPackage = new EdcpClientDataMessageProcessingPackage(config);
         }
-            
+
         config.AppLogger = GetFakeAppLoggerProxy();
         config.MonitorLogger = config.AppLogger;
 

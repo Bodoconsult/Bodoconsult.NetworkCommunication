@@ -186,9 +186,21 @@ public class BaseDuplexIoReceiver : IDuplexIoReceiver
             //        break;
             //    }
 
-            var task = Task.Run(FillMessagePipeline);
-            task.Wait();
-            task.Dispose();
+            AsyncHelper.FireAndForget(async void ()=>
+            {
+                try
+                {
+                    await FillMessagePipeline();
+                }
+                catch (Exception e)
+                {
+                    Debug.Print(e.ToString());
+                }
+            });
+
+            //var task = Task.Run(FillMessagePipeline);
+            //task.Wait();
+            //task.Dispose();
 
             //AsyncHelper.Delay(FillPipelineTimeout);
 

@@ -16,7 +16,7 @@ public class TcpIpDuplexIoTests : TcpIpDuplexIoBaseTests
     [SetUp]
     protected void TestSetup()
     {
-        TcpIpServerTestHelper.InitClient(this);
+        TcpIpServerTestHelper.CreateMessagingConfig(this);
 
         Debug.Print("Start TestSetup");
         
@@ -27,6 +27,8 @@ public class TcpIpDuplexIoTests : TcpIpDuplexIoBaseTests
         ArgumentNullException.ThrowIfNull(Socket);
         DuplexIo = GetDuplexIo(Socket);
 
+        TcpIpServerTestHelper.InitClient(this);
+        
         Debug.Print("End TestSetup");
     }
 

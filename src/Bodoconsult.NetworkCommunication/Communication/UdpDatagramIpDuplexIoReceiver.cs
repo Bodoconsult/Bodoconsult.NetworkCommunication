@@ -163,11 +163,11 @@ public class UdpDatagramIpDuplexIoReceiver : BaseDuplexIoReceiver
         ArgumentNullException.ThrowIfNull(DuplexIoIsWorkInProgressDelegate);
         ArgumentNullException.ThrowIfNull(DuplexIoNoDataDelegate);
 
-        // Wait until the socket is connected
-        if (!await WaitForSocketIsConnected())
-        {
-            return;
-        }
+        //// Wait until the socket is connected
+        //if (!await WaitForSocketIsConnected())
+        //{
+        //    return;
+        //}
 
         //try
         //{

@@ -16,9 +16,9 @@ public class UdpIpHighPerformanceDuplexIoTests : BaseUdpIpDuplexIoTests
     [SetUp]
     public void TestSetup()
     {
-        UdpServerIpTestHelper.InitRemoteDevice(this);
-
         Debug.Print("Start TestSetup");
+
+        UdpServerIpTestHelper.CreateMessagingConfig(this);
 
         BaseReset();
 
@@ -26,6 +26,8 @@ public class UdpIpHighPerformanceDuplexIoTests : BaseUdpIpDuplexIoTests
         ArgumentNullException.ThrowIfNull(Socket);
 
         DuplexIo = GetDuplexIo(Socket);
+
+        UdpServerIpTestHelper.InitRemoteDevice(this);
 
         Debug.Print("End FTestSetup");
     }

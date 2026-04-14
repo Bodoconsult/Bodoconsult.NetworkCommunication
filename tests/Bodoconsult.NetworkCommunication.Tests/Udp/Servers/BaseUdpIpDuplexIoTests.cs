@@ -161,8 +161,7 @@ public abstract class BaseUdpIpDuplexIoTests : BaseUdpTests
 
         Assert.That(MessageCounter, Is.EqualTo(expectedCount));
     }
-
-
+    
     [Test]
     public void Ctor_ValidSetup_PropsSetCorrectly()
     {
@@ -246,7 +245,8 @@ public abstract class BaseUdpIpDuplexIoTests : BaseUdpTests
             {
                 DataBlockType = 'x',
                 Data = new byte[] { 0x42, 0x6c, 0x75, 0x62, 0x62 }
-            }
+            }, 
+            RawMessageData = new byte[] { DeviceCommunicationBasics.Stx, 0x78, 0x42, 0x6c, 0x75, 0x62, 0x62, DeviceCommunicationBasics.Etx }
         };
 
         // Act
@@ -279,7 +279,8 @@ public abstract class BaseUdpIpDuplexIoTests : BaseUdpTests
                 {
                     DataBlockType = 'x',
                     Data = new byte[] { 0x42, 0x6c, 0x75, 0x62, 0x62 }
-                }
+                },
+                RawMessageData = new byte[] { DeviceCommunicationBasics.Stx, 0x78, 0x42, 0x6c, 0x75, 0x62, 0x62, DeviceCommunicationBasics.Etx }
             };
 
             messages.Add(message);

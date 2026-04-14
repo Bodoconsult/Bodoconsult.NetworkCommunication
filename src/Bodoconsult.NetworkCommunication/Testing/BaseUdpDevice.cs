@@ -4,6 +4,7 @@ using System.Collections.Concurrent;
 using System.Diagnostics;
 using System.Net;
 using System.Net.Sockets;
+using Bodoconsult.App.Helpers;
 using Bodoconsult.NetworkCommunication.Interfaces;
 
 namespace Bodoconsult.NetworkCommunication.Testing;
@@ -198,14 +199,7 @@ public abstract class BaseUdpDevice : IUdpDevice
     /// <summary>Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.</summary>
     public void Dispose()
     {
-        try
-        {
-            _thread?.Dispose();
-        }
-        catch
-        {
-            // Do nothing
-        }
+
 
         IsDisposed = true;
         Dispose(true);
@@ -220,11 +214,20 @@ public abstract class BaseUdpDevice : IUdpDevice
             return;
         }
 
-        CancellationTokenSource.Cancel();
+        try
+        {
+            CancellationTokenSource.Cancel();
+
+            Wait.Until(() => _thread?.IsCompleted ?? true);
+        }
+        catch
+        {
+            // Do nothing
+        }
 
         try
         {
-
+            Listener.Client.Shutdown(SocketShutdown.Both);
             Listener.Close();
             Listener.Dispose();
         }
