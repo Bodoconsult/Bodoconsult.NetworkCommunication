@@ -152,7 +152,8 @@ public class OrderPipeline : IOrderPipeline
         }
         _orderQueue.Enqueue(order);
         order.ExecutionState = OrderState.Added;
-        _appLogger.LogInformation($"{_loggerId}{order.LoggerId}added to queue: {JsonHelper.JsonSerialize(order.ParameterSet)}");
+        _appLogger.LogInformation($"{_loggerId}{order.LoggerId}added to queue");
+        //_appLogger.LogInformation($"{_loggerId}{order.LoggerId}added to queue: {JsonHelper.JsonSerialize(order.ParameterSet)}");
     }
 
     /// <summary>
@@ -168,7 +169,8 @@ public class OrderPipeline : IOrderPipeline
 
         _ordersWithPriorityQueue.Enqueue(order);
         order.ExecutionState = OrderState.Added;
-        _appLogger.LogInformation($"{_loggerId}{order.LoggerId}added to queue: {JsonHelper.JsonSerialize(order.ParameterSet)}");
+        _appLogger.LogInformation($"{_loggerId}{order.LoggerId}added to queue");
+        //_appLogger.LogInformation($"{_loggerId}{order.LoggerId}added to queue: {JsonHelper.JsonSerialize(order.ParameterSet)}");
     }
 
     /// <summary>

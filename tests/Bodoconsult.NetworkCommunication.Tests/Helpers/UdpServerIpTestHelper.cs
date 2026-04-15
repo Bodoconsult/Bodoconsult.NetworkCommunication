@@ -1,5 +1,6 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
+using System.Diagnostics;
 using System.Net;
 using Bodoconsult.App.Abstractions.Interfaces;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessageProcessingPackages;
@@ -21,6 +22,8 @@ internal static class UdpServerIpTestHelper
     /// <param name="testSetup"></param>
     public static void CreateMessagingConfig(IUdpTests testSetup)
     {
+        Debug.Assert(testSetup.DataMessagingConfig==null);
+
         testSetup.DataMessagingConfig = new DefaultDataMessagingConfig();
         testSetup.DataMessagingConfig.Port = TestDataHelper.GetRandomPort();
         testSetup.DataMessagingConfig.DataMessageProcessingPackage = new SdcpDataMessageProcessingPackage(testSetup.DataMessagingConfig);

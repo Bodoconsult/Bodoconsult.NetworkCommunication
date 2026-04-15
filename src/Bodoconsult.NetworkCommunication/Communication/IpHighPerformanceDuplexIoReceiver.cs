@@ -91,6 +91,8 @@ public class IpHighPerformanceDuplexIoReceiver : BaseDuplexIoReceiver
             return;
         }
 
+        Trace.TraceInformation("FillMessagePipeline started");
+
         //Debug.Print("Start fill message pipeline");
         var writer = _pipe.Writer;
         var memSize = DataMessagingConfig.SocketProxy?.MinimumBufferSize ?? 512;
@@ -135,12 +137,14 @@ public class IpHighPerformanceDuplexIoReceiver : BaseDuplexIoReceiver
             }
             catch (SocketException socketException)
             {
+                Trace.TraceError($"FillMessagePipeline failed: {socketException}");
                 Logger?.LogError("filling pipe failed", socketException);
                 _isDone = true;
                 break;
             }
             catch (Exception otherException)
             {
+                Trace.TraceError($"FillMessagePipeline failed: {otherException}");
                 Logger?.LogError("filling pipe failed", otherException);
             }
         }

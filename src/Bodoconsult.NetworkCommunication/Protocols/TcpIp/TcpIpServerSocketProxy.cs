@@ -3,7 +3,6 @@
 
 using System.Diagnostics;
 using System.Net.Sockets;
-using Bodoconsult.NetworkCommunication.Helpers;
 using Bodoconsult.NetworkCommunication.Interfaces;
 
 namespace Bodoconsult.NetworkCommunication.Protocols.TcpIp;
@@ -228,8 +227,10 @@ public class TcpIpServerSocketProxy : TcpIpSocketProxyBase
                     CancellationTokenSource = new CancellationTokenSource();
                 }
             }
-            catch // (Exception ex)
+            catch (Exception e)
             {
+                var s = e.ToString();
+                Trace.TraceError(s);
                 // Do nothing
             }
             finally
@@ -272,8 +273,8 @@ public class TcpIpServerSocketProxy : TcpIpSocketProxyBase
             if (socketException.ErrorCode != 10054)
             {
                 Logger?.LogError("Receiving failed", socketException);
-                Debug.Print(socketException.ToString());
-
+                var s = socketException.ToString();
+                Trace.TraceError(s);
             }
             else
             {
@@ -285,7 +286,8 @@ public class TcpIpServerSocketProxy : TcpIpSocketProxyBase
         catch (Exception e)
         {
             Logger?.LogError("Receiving failed", e);
-            Debug.Print(e.ToString());
+            var s = e.ToString();
+            Trace.TraceError(s);
             return 0;
         }
     }
@@ -312,7 +314,8 @@ public class TcpIpServerSocketProxy : TcpIpSocketProxyBase
             if (socketException.ErrorCode != 10054)
             {
                 Logger?.LogError("Receiving failed", socketException);
-                Debug.Print(socketException.ToString());
+                var s = socketException.ToString();
+                Trace.TraceError(s);
 
             }
             else
@@ -325,7 +328,8 @@ public class TcpIpServerSocketProxy : TcpIpSocketProxyBase
         catch (Exception e)
         {
             Logger?.LogError("Receiving failed", e);
-            Debug.Print(e.ToString());
+            var s = e.ToString();
+            Trace.TraceError(s);
             return 0;
         }
     }

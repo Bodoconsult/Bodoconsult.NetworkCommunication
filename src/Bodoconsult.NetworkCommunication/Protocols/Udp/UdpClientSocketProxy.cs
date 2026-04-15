@@ -18,6 +18,7 @@ namespace Bodoconsult.NetworkCommunication.Protocols.Udp;
 /// </summary>
 public class UdpClientSocketProxy : UpdSocketProxyBase
 {
+
     //private readonly byte[] _tmp = new byte[1];
 
     /// <summary>
@@ -76,8 +77,8 @@ public class UdpClientSocketProxy : UpdSocketProxyBase
             if (socketException.ErrorCode != 10054)
             {
                 Logger?.LogError("Sending failed", socketException);
-                Debug.Print(socketException.ToString());
-
+                var s = socketException.ToString();
+                Trace.TraceError(s);
             }
             else
             {
@@ -89,7 +90,8 @@ public class UdpClientSocketProxy : UpdSocketProxyBase
         catch (Exception e)
         {
             Logger?.LogError("Sending failed", e);
-            Debug.Print(e.ToString());
+            var s = e.ToString();
+            Trace.TraceError(s);
             return 0;
         }
     }
@@ -115,8 +117,8 @@ public class UdpClientSocketProxy : UpdSocketProxyBase
             if (socketException.ErrorCode != 10054)
             {
                 Logger?.LogError("Sending failed", socketException);
-                Debug.Print(socketException.ToString());
-
+                var s = socketException.ToString();
+                Trace.TraceError(s);
             }
             else
             {
@@ -128,7 +130,8 @@ public class UdpClientSocketProxy : UpdSocketProxyBase
         catch (Exception e)
         {
             Logger?.LogError("Sending failed", e);
-            Debug.Print(e.ToString());
+            var s = e.ToString();
+            Trace.TraceError(s);
             return 0;
         }
     }
@@ -212,7 +215,8 @@ public class UdpClientSocketProxy : UpdSocketProxyBase
             catch (Exception e)
             {
                 // ToDo: add logging
-                Debug.Print(e.ToString());
+                var s = e.ToString();
+                Trace.TraceError(s);
                 _isBound = false;
                 throw;
             }
@@ -246,8 +250,8 @@ public class UdpClientSocketProxy : UpdSocketProxyBase
             if (socketException.ErrorCode != 10054)
             {
                 Logger?.LogError("Receiving failed", socketException);
-                Debug.Print(socketException.ToString());
-
+                var s = socketException.ToString();
+                Trace.TraceError(s);
             }
             else
             {
@@ -259,7 +263,8 @@ public class UdpClientSocketProxy : UpdSocketProxyBase
         catch (Exception e)
         {
             Logger?.LogError("Receiving failed", e);
-            Debug.Print(e.ToString());
+            var s = e.ToString();
+            Trace.TraceError(s);
             return 0;
         }
     }
@@ -291,8 +296,8 @@ public class UdpClientSocketProxy : UpdSocketProxyBase
             if (socketException.ErrorCode != 10054)
             {
                 Logger?.LogError("Receiving failed", socketException);
-                Debug.Print(socketException.ToString());
-
+                var s = socketException.ToString();
+                Trace.TraceError(s);
             }
             else
             {
@@ -304,7 +309,8 @@ public class UdpClientSocketProxy : UpdSocketProxyBase
         catch (Exception e)
         {
             Logger?.LogError("Receiving failed", e);
-            Debug.Print(e.ToString());
+            var s = e.ToString();
+            Trace.TraceError(s);
             return 0;
         }
     }
@@ -322,6 +328,8 @@ public class UdpClientSocketProxy : UpdSocketProxyBase
         catch (Exception e)
         {
             Logger?.LogError("Polling failed", e);
+            var s = e.ToString();
+            Trace.TraceError(s);
             return false;
         }
     }

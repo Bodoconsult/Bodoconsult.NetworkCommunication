@@ -2,6 +2,7 @@
 
 using Bodoconsult.App.Extensions;
 using Bodoconsult.NetworkCommunication.Tests.App;
+using System.Diagnostics;
 
 namespace Bodoconsult.NetworkCommunication.Tests;
 
@@ -17,7 +18,6 @@ public static class AssemblySetup
     [OneTimeSetUp]
     public static void AssemblyStartUp()
     {
-
         var globals = Globals.Instance;
         globals.LoggingConfig.AddDefaultLoggerProviderConfiguratorsForUiApp();
 
@@ -47,5 +47,20 @@ public static class AssemblySetup
 
         Globals.Instance.Logger?.LogInformation("Starting tests...");
 
+        var traceFile = Path.Combine(param.LogfilePath,"TraceLog.txt");
+
+        if (File.Exists(traceFile))
+        {
+            try
+            {
+                File.Delete(traceFile);
+            }
+            catch (Exception e)
+            {
+                Debug.Print(e.ToString());
+            }
+        }
+
+        Trace.Listeners.Add(new TextWriterTraceListener(traceFile));
     }
 }

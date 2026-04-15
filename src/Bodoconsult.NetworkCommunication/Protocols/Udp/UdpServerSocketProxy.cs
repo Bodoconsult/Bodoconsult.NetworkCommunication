@@ -9,7 +9,6 @@
 using System.Diagnostics;
 using System.Net;
 using System.Net.Sockets;
-using Bodoconsult.NetworkCommunication.Helpers;
 using Bodoconsult.NetworkCommunication.Interfaces;
 
 namespace Bodoconsult.NetworkCommunication.Protocols.Udp;
@@ -123,7 +122,8 @@ public class UdpServerSocketProxy : UpdSocketProxyBase
             catch (Exception e)
             {
                 // ToDo: add logging
-                Debug.Print(e.ToString());
+                var s = e.ToString();
+                Trace.TraceError(s);
                 _isBound = false;
                 throw;
             }
@@ -157,8 +157,8 @@ public class UdpServerSocketProxy : UpdSocketProxyBase
             if (socketException.ErrorCode != 10054)
             {
                 Logger?.LogError("Receiving failed", socketException);
-                Debug.Print(socketException.ToString());
-
+                var s = socketException.ToString();
+                Trace.TraceError(s);
             }
             else
             {
@@ -170,7 +170,8 @@ public class UdpServerSocketProxy : UpdSocketProxyBase
         catch (Exception e)
         {
             Logger?.LogError("Receiving failed", e);
-            Debug.Print(e.ToString());
+            var s = e.ToString();
+            Trace.TraceError(s);
             return 0;
         }
     }
@@ -202,8 +203,8 @@ public class UdpServerSocketProxy : UpdSocketProxyBase
             if (socketException.ErrorCode != 10054)
             {
                 Logger?.LogError("Receiving failed", socketException);
-                Debug.Print(socketException.ToString());
-
+                var s = socketException.ToString();
+                Trace.TraceError(s);
             }
             else
             {
@@ -215,7 +216,8 @@ public class UdpServerSocketProxy : UpdSocketProxyBase
         catch (Exception e)
         {
             Logger?.LogError("Receiving failed", e);
-            Debug.Print(e.ToString());
+            var s = e.ToString();
+            Trace.TraceError(s);
             return 0;
         }
     }
@@ -233,6 +235,8 @@ public class UdpServerSocketProxy : UpdSocketProxyBase
         catch (Exception e)
         {
             Logger?.LogError("Polling failed", e);
+            var s = e.ToString();
+            Trace.TraceError(s);
             return false;
         }
     }
@@ -299,8 +303,8 @@ public class UdpServerSocketProxy : UpdSocketProxyBase
             if (socketException.ErrorCode != 10054)
             {
                 Logger?.LogError("Sending failed", socketException);
-                Debug.Print(socketException.ToString());
-
+                var s = socketException.ToString();
+                Trace.TraceError(s);
             }
             else
             {
@@ -312,7 +316,8 @@ public class UdpServerSocketProxy : UpdSocketProxyBase
         catch (Exception e)
         {
             Logger?.LogError("Sending failed", e);
-            Debug.Print(e.ToString());
+            var s = e.ToString();
+            Trace.TraceError(s);
             return 0;
         }
     }
@@ -325,6 +330,7 @@ public class UdpServerSocketProxy : UpdSocketProxyBase
     {
         if (UdpClient == null || SendEndPoint == null || Equals(SendEndPoint.Address, IPAddress.Any))
         {
+            Trace.TraceWarning("UdpClient is null or SendEndPoint is null or address IPAddress.Any. No client request before?");
             return 0;
         }
 
@@ -338,11 +344,12 @@ public class UdpServerSocketProxy : UpdSocketProxyBase
             if (socketException.ErrorCode != 10054)
             {
                 Logger?.LogError("Sending failed", socketException);
-                Debug.Print(socketException.ToString());
-
+                var s = socketException.ToString();
+                Trace.TraceError(s);
             }
             else
             {
+                Trace.TraceInformation("No connection");
                 Logger?.LogDebug("No connection");
             }
 
@@ -351,22 +358,11 @@ public class UdpServerSocketProxy : UpdSocketProxyBase
         catch (Exception e)
         {
             Logger?.LogError("Sending failed", e);
-            Debug.Print(e.ToString());
+            var s = e.ToString();
+            Trace.TraceError(s);
             return 0;
         }
     }
-
-    ///// <summary>
-    ///// Send bytes 
-    ///// </summary>
-    ///// <param name="bytesToSend">Byte array to send</param>
-    ///// <param name="offset">Offset</param>
-    ///// <param name="messageBytesLength">Number of message bytes length to send</param>
-    ///// <returns></returns>
-    //public override Task<int> Send(byte[] bytesToSend, int offset, int messageBytesLength)
-    //{
-    //    return UdpClient == null || SendEndPoint == null || Equals(SendEndPoint.Address, IPAddress.Any) ? Task.FromResult(0) : UdpClient.Client.SendToAsync(bytesToSend, offset, messageBytesLength, SocketFlags.None, SendEndPoint);
-    //}
 
     /// <summary>
     /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.

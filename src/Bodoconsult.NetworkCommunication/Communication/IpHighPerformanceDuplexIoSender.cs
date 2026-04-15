@@ -1,6 +1,7 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
 using System.Buffers;
+using System.Diagnostics;
 using System.IO.Pipelines;
 using System.Net.Sockets;
 using System.Runtime.InteropServices;
@@ -215,9 +216,11 @@ public class IpHighPerformanceDuplexIoSender : BaseDuplexIoSender
             try
             {
                 sent = await _socketProxy.Send(readOnlyMemory);
+                Debug.Print($"command: {command.Length} bytes: {sent} bytes sent");
             }
             catch (SocketException socketException)
             {
+                Trace.TraceError(socketException.ToString());
                 AsyncHelper.FireAndForget(() => DataMessagingConfig.RaiseComDevCloseRequestDelegate?.Invoke("TcpIpDuplexIoSender"));
                 AsyncHelper.FireAndForget(() => DataMessagingConfig.RaiseDataMessageNotSentDelegate?.Invoke(command.ToArray(), socketException.Message));
                 AsyncHelper.FireAndForget(() => DataMessagingConfig.DuplexIoErrorHandlerDelegate?.Invoke(socketException));
@@ -225,6 +228,7 @@ public class IpHighPerformanceDuplexIoSender : BaseDuplexIoSender
             }
             catch (Exception e)
             {
+                Trace.TraceError(e.ToString());
                 AsyncHelper.FireAndForget(() => DataMessagingConfig.RaiseDataMessageNotSentDelegate?.Invoke(command.ToArray(), e.Message));
                 AsyncHelper.FireAndForget(() => DataMessagingConfig.DuplexIoErrorHandlerDelegate?.Invoke(e));
                 return;
@@ -234,11 +238,14 @@ public class IpHighPerformanceDuplexIoSender : BaseDuplexIoSender
         if (sent <= 0)
         {
             AsyncHelper.FireAndForget(() => DataMessagingConfig.RaiseDataMessageNotSentDelegate?.Invoke(command.ToArray(), "Reason unknown"));
-            DataMessagingConfig.MonitorLogger.LogError($"{DataMessagingConfig.LoggerId}message could not be sent via TCP socket. Only {0} bytes of {command.Length} bytes are sent.");
+
+            const string s = "message could not be sent via TCP socket.";
+            Trace.TraceError(s);
+            DataMessagingConfig.MonitorLogger.LogError(s);
             return;
         }
 
-        DataMessagingConfig.MonitorLogger.LogInformation($"{DataMessagingConfig.LoggerId}sent to device: {DataMessageHelper.GetStringFromArrayCsharpStyle(command.ToArray())}");
+        DataMessagingConfig.MonitorLogger.LogInformation($"sent to device: {DataMessageHelper.GetStringFromArrayCsharpStyle(command.ToArray())}");
     }
 
     /// <summary>

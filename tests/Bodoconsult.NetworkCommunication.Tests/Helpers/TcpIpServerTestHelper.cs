@@ -46,7 +46,7 @@ public static class TcpIpServerTestHelper
     /// </summary>
     public static void InitClient(ITcpTests testSetup)
     {
-
+        ArgumentNullException.ThrowIfNull(testSetup.DataMessagingConfig);
 
         testSetup.IpAddress = IPAddress.Parse(testSetup.DataMessagingConfig.IpAddress);
 

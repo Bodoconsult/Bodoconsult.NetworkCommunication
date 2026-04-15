@@ -57,6 +57,8 @@ public class UdpDatagramIpDuplexIoSender : BaseDuplexIoSender
     {
         ArgumentNullException.ThrowIfNull(DataMessagingConfig.SocketProxy);
 
+
+        string msg;
         try
         {
             lock (_isSendingLock)
@@ -89,6 +91,7 @@ public class UdpDatagramIpDuplexIoSender : BaseDuplexIoSender
                 {
                     _isSending = false;
                 }
+                Trace.TraceError($"Encoding for message failed: {message.MessageId}");
                 return 0;
             }
 
@@ -105,23 +108,28 @@ public class UdpDatagramIpDuplexIoSender : BaseDuplexIoSender
                 return sent;
             }
 
-            var msg = $"{DataMessagingConfig.LoggerId}message could not be sent via UDP socket. Only {0} bytes of {message.RawMessageData.Length} bytes are sent.";
+            msg = "message could not be sent via UDP socket";
             AsyncHelper.FireAndForget(() => DataMessagingConfig.RaiseDataMessageNotSentDelegate?.Invoke(message.RawMessageData, msg));
             DataMessagingConfig.MonitorLogger.LogError(msg);
             DataMessagingConfig.AppLogger.LogError($"{DataMessagingConfig.LoggerId}{msg}");
+            Trace.TraceError(msg);
         }
-        catch
+        catch (Exception e)
         {
             lock (_isSendingLock)
             {
                 _isSending = false;
             }
+
+            msg = $"message could not be sent via UDP socket: {e}";
+            AsyncHelper.FireAndForget(() => DataMessagingConfig.RaiseDataMessageNotSentDelegate?.Invoke(message.RawMessageData, msg));
+            DataMessagingConfig.MonitorLogger.LogError(msg);
+            DataMessagingConfig.AppLogger.LogError($"{DataMessagingConfig.LoggerId}{msg}");
+            Trace.TraceError(msg);
         }
 
         return 0;
     }
-
-
 
     private static async Task<int> SendMessageInternal(IDataMessagingConfig dataMessagingConfig, DuplexIoNoDataDelegate duplexIoNoDataDelegate, IOutboundMessage message)
     {
@@ -130,6 +138,11 @@ public class UdpDatagramIpDuplexIoSender : BaseDuplexIoSender
         {
             sent = await dataMessagingConfig.SocketProxy!.Send(message.RawMessageData);
             duplexIoNoDataDelegate();
+
+            if (sent == 0)
+            {
+                return sent;
+            }
 
             var s = $"{message.RawMessageDataClearText}  {message.ToShortInfoString()}";
             //Debug.Print(s);
@@ -142,13 +155,18 @@ public class UdpDatagramIpDuplexIoSender : BaseDuplexIoSender
         }
         catch (SocketException socketException)
         {
+            Trace.TraceError($"SendMessageInternal: {socketException}");
             dataMessagingConfig.MonitorLogger.LogError("Send process failed", socketException);
-            AsyncHelper.FireAndForget(() => dataMessagingConfig.RaiseComDevCloseRequestDelegate?.Invoke("UdpDatagramIpDuplexIoSender"));
-            AsyncHelper.FireAndForget(() => dataMessagingConfig.RaiseDataMessageNotSentDelegate?.Invoke(message.RawMessageData, socketException.Message));
+            AsyncHelper.FireAndForget(() =>
+            {
+                dataMessagingConfig.RaiseComDevCloseRequestDelegate?.Invoke("UdpDatagramIpDuplexIoSender");
+                dataMessagingConfig.RaiseDataMessageNotSentDelegate?.Invoke(message.RawMessageData, socketException.Message);
+            });
             throw;
         }
         catch (Exception sendException)
         {
+            Trace.TraceError($"SendMessageInternal: {sendException}");
             dataMessagingConfig.MonitorLogger.LogError("Send process failed", sendException);
             AsyncHelper.FireAndForget(() => dataMessagingConfig.RaiseDataMessageNotSentDelegate?.Invoke(message.RawMessageData, sendException.Message));
             throw;

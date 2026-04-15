@@ -11,18 +11,18 @@ namespace Bodoconsult.NetworkCommunication.Tests.Infrastructure;
 [TestFixture]
 [NonParallelizable]
 [SingleThreaded]
-public abstract class TcpOrderManagementCommunicationAdapterBaseTests : BaseTcpTests
+public abstract class BaseIpCommunicationAdapterTests : BaseTcpTests
 {
 
-    protected IpCommunicationAdapter? OrderManagementCommunicationAdapter;
+    protected IpCommunicationAdapter? IpCommunicationAdapter;
 
     [TearDown]
     public void TestCleanUp()
     {
-        if (OrderManagementCommunicationAdapter != null)
+        if (IpCommunicationAdapter != null)
         {
-            OrderManagementCommunicationAdapter.Dispose();
-            OrderManagementCommunicationAdapter = null;
+            IpCommunicationAdapter.Dispose();
+            IpCommunicationAdapter = null;
         }
 
         if (Socket != null)
@@ -66,8 +66,8 @@ public abstract class TcpOrderManagementCommunicationAdapterBaseTests : BaseTcpT
     /// <param name="message">Current message to send</param>
     public virtual void Send(IOutboundDataMessage message)
     {
-        ArgumentNullException.ThrowIfNull(OrderManagementCommunicationAdapter);
-        OrderManagementCommunicationAdapter.SendDataMessage(message);
+        ArgumentNullException.ThrowIfNull(IpCommunicationAdapter);
+        IpCommunicationAdapter.SendDataMessage(message);
 
         var task = Task.Run(() =>
         {

@@ -29,7 +29,7 @@ public class IpDuplexIoReceiver : BaseDuplexIoReceiver
 
     //public static int SendTimeout = 5;
 
-    public static int FillPipelineTimeout {get; set; } = 5;
+    public static int FillPipelineTimeout { get; set; } = 5;
 
     /// <summary>
     /// Default ctor
@@ -84,7 +84,7 @@ public class IpDuplexIoReceiver : BaseDuplexIoReceiver
 
             var codecResult = DataMessageCodingProcessor.DecodeDataMessage(mem);
 
-            if (codecResult.ErrorCode != 0 || codecResult.DataMessage==null)
+            if (codecResult.ErrorCode != 0 || codecResult.DataMessage == null)
             {
                 msg = $"Parsing command failed with error code {codecResult.ErrorCode}: {codecResult.ErrorMessage}: {DataMessageHelper.GetStringFromArrayCsharpStyle(ref command)}";
                 //Debug.Print(msg);
@@ -151,6 +151,10 @@ public class IpDuplexIoReceiver : BaseDuplexIoReceiver
         {
             Logger.LogError("CancellationToken cancelling failed", e);
         }
+        finally
+        {
+            CancellationSource = null;
+        }
 
         FillPipelineTask = null;
         SendPipelineTask = null;
@@ -173,28 +177,33 @@ public class IpDuplexIoReceiver : BaseDuplexIoReceiver
             return;
         }
 
+        Trace.TraceInformation("FillMessagePipeline started");
+
         //try
         //{
 
         while (true)
         {
+            var socketProxy = DataMessagingConfig.SocketProxy;
 
             //Debug.Print("FillMessagePipeline in progress");
             try
             {
                 if (CancellationSource?.Token.IsCancellationRequested ?? true)
                 {
+                    if (socketProxy?.CancellationTokenSource != null)
+                    {
+                        await socketProxy.CancellationTokenSource.CancelAsync();
+                    }
                     //Debug.Print("FillMessagePipeline cancelled");
                     return;
                 }
             }
             catch (Exception e)
             {
-                Debug.Print($"FillMessagePipeline exception: {e}");
+                Trace.TraceError($"FillMessagePipeline exception: {e}");
                 return;
             }
-
-            var socketProxy = DataMessagingConfig.SocketProxy;
 
             if (socketProxy is not { Connected: true } || socketProxy.IsDisposed)
             {
@@ -206,7 +215,7 @@ public class IpDuplexIoReceiver : BaseDuplexIoReceiver
 
             if (DuplexIoIsWorkInProgressDelegate.Invoke())
             {
-                //Debug.Print("Other operation in progress");
+                Trace.TraceWarning("Other operation in progress");
                 AsyncHelper.Delay(FillPipelineTimeout);
                 continue;
             }
@@ -254,6 +263,7 @@ public class IpDuplexIoReceiver : BaseDuplexIoReceiver
         //await StopReceiver();
 
         CancellationSource?.Cancel();
+        Trace.TraceError(ex.ToString());
 
         try
         {

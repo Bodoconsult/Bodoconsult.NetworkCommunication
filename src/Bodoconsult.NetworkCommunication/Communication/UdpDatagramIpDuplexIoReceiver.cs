@@ -52,6 +52,11 @@ public class UdpDatagramIpDuplexIoReceiver : BaseDuplexIoReceiver
         _dataMessageValidator = deviceCommSettings.DataMessageProcessingPackage.DataMessageValidator;
     }
 
+    /// <summary>
+    /// Maximum buffer size for UDP datagram. Set this value lower if your datagrams do not reach the maximum length of 65536 byte for UDP diagrams defined by protocol specs
+    /// </summary>
+    public int MaxDatagramSize { get; set; } = 65536;
+
     public void TryToSendReceivedData(DummyMemory data)
     {
         var chunk = new ChunkedSequence<byte>(_buffer);
@@ -147,7 +152,11 @@ public class UdpDatagramIpDuplexIoReceiver : BaseDuplexIoReceiver
         {
             Logger.LogError("CancellationToken cancelling failed", e);
         }
-
+        finally
+        {
+            CancellationSource = null;
+        }
+    
         FillPipelineTask = null;
         SendPipelineTask = null;
     }
@@ -163,38 +172,45 @@ public class UdpDatagramIpDuplexIoReceiver : BaseDuplexIoReceiver
         ArgumentNullException.ThrowIfNull(DuplexIoIsWorkInProgressDelegate);
         ArgumentNullException.ThrowIfNull(DuplexIoNoDataDelegate);
 
-        //// Wait until the socket is connected
-        //if (!await WaitForSocketIsConnected())
-        //{
-        //    return;
-        //}
+        // Wait until the socket is connected
+        if (!await WaitForSocketIsConnected())
+        {
+            return;
+        }
+
+        Trace.TraceInformation("FillMessagePipeline started");
 
         //try
         //{
 
+        ISocketProxy? socketProxy;
+
         while (true)
         {
+            socketProxy = DataMessagingConfig.SocketProxy;
 
             //Debug.Print("FillMessagePipeline in progress");
             try
             {
                 if (CancellationSource?.Token.IsCancellationRequested ?? true)
                 {
-                    Debug.Print("FillMessagePipeline cancelled");
+                    if (socketProxy?.CancellationTokenSource != null)
+                    {
+                        await socketProxy.CancellationTokenSource.CancelAsync();
+                    }
+                    Trace.TraceInformation("FillMessagePipeline cancelled");
                     return;
                 }
             }
             catch (Exception e)
             {
-                Debug.Print($"FillMessagePipeline exception: {e}");
+                Trace.TraceError($"FillMessagePipeline exception: {e}");
                 return;
             }
 
-            var socketProxy = DataMessagingConfig.SocketProxy;
-
             if (socketProxy is not { Connected: true } || socketProxy.IsDisposed)
             {
-                // Debug.Print("Not connected");
+                Trace.TraceInformation("Not connected");
                 DuplexIoNoDataDelegate.Invoke();
                 await RaiseException(new SocketException());
                 return;
@@ -202,21 +218,24 @@ public class UdpDatagramIpDuplexIoReceiver : BaseDuplexIoReceiver
 
             if (DuplexIoIsWorkInProgressDelegate.Invoke())
             {
-                //Debug.Print("Other operation in progress");
+                Trace.TraceInformation("Other operation in progress");
                 AsyncHelper.Delay(FillPipelineTimeout);
                 continue;
             }
 
-            var availableData = socketProxy.BytesAvailable;
-            if (availableData == 0)
-            {
-                DuplexIoNoDataDelegate.Invoke();
-                //Debug.Print("No data");
-                AsyncHelper.Delay(FillPipelineTimeout);
-                continue;
-            }
+            //var availableData = socketProxy.BytesAvailable;
+            //if (availableData == 0)
+            //{
+            //    //Trace.TraceInformation($"No {availableData} bytes");
+            //    DuplexIoNoDataDelegate.Invoke();
+            //    //Debug.Print("No data");
+            //    AsyncHelper.Delay(FillPipelineTimeout);
+            //    continue;
+            //}
 
-            var data = new byte[availableData].AsMemory();
+            //Trace.TraceInformation($"Received {availableData} bytes");
+
+            var data = ArrayPool.Rent(MaxDatagramSize);
 
             var messageLength = await socketProxy.Receive(data);
 
@@ -232,9 +251,11 @@ public class UdpDatagramIpDuplexIoReceiver : BaseDuplexIoReceiver
             //Debug.Print("Got data");
 
             var dummy = _bufferPool.Dequeue();
-            dummy.Memory = data;
+            dummy.Memory = data.ToArray().AsMemory();
 
             _currentPipeline.Enqueue(dummy);
+
+            ArrayPool.Return(data);
         }
         //}
         //catch (Exception e)
@@ -294,7 +315,17 @@ public class UdpDatagramIpDuplexIoReceiver : BaseDuplexIoReceiver
             FillPipelineTask = null;
         });
 
-        CancellationSource?.Dispose();
-        CancellationSource = null;
+        try
+        {
+            CancellationSource?.Dispose();
+        }
+        catch (Exception e)
+        {
+            Logger.LogError("CancellationToken cancelling failed", e);
+        }
+        finally
+        {
+            CancellationSource = null;
+        }
     }
 }

@@ -1,5 +1,6 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
+using System.Diagnostics;
 using System.Net.Sockets;
 using Bodoconsult.App.Helpers;
 using Bodoconsult.NetworkCommunication.Delegates;
@@ -75,7 +76,9 @@ public class IpDuplexIoSender : BaseDuplexIoSender
             {
                 if (!_duplexIoIsWorkInProgressDelegate())
                 {
-                    (sent, isSent) = await SendMessageInternal(DataMessagingConfig, _duplexIoNoDataDelegate,  message);
+                    (sent, isSent) = await SendMessageInternal(DataMessagingConfig, _duplexIoNoDataDelegate, message);
+
+                    Trace.TraceInformation($"Sent: {sent} // {isSent}");
 
                     if (isSent)
                     {
@@ -97,14 +100,16 @@ public class IpDuplexIoSender : BaseDuplexIoSender
             {
                 return sent;
             }
-            var msg = $"{DataMessagingConfig.LoggerId}message could not be sent via TCP socket. Only {0} bytes of {message.RawMessageData.Length} bytes are sent.";
+            var msg = $"message could not be sent via TCP socket. Only {0} bytes of {message.RawMessageData.Length} bytes are sent.";
             AsyncHelper.FireAndForget(() => DataMessagingConfig.RaiseDataMessageNotSentDelegate?.Invoke(message.RawMessageData, msg));
             DataMessagingConfig.MonitorLogger.LogError(msg);
             DataMessagingConfig.AppLogger.LogError($"{DataMessagingConfig.LoggerId}{msg}");
+            Trace.TraceError(msg);
             return sent;
         }
         catch (Exception exception)
         {
+            Trace.TraceError(exception.ToString());
             _duplexIoNoDataDelegate();
             AsyncHelper.FireAndForget(() => DataMessagingConfig.DuplexIoErrorHandlerDelegate?.Invoke(exception));
             return 0;
@@ -113,13 +118,20 @@ public class IpDuplexIoSender : BaseDuplexIoSender
 
     private static async Task<(int sent, bool isSent)> SendMessageInternal(IDataMessagingConfig dataMessagingConfig, DuplexIoNoDataDelegate duplexIoNoDataDelegate, IOutboundMessage message)
     {
-        var sent =0;
+        int sent;
         bool isSent;
         try
         {
-            sent = await dataMessagingConfig.SocketProxy!.Send(message.RawMessageData);  
+            sent = await dataMessagingConfig.SocketProxy!.Send(message.RawMessageData);
             duplexIoNoDataDelegate();
-                            
+
+            if (sent == 0)
+            {
+                //Trace.TraceInformation(
+                //    $"Y:Sent: {sent} // {isSent}  // {message.RawMessageData.Length} bytes // {ArrayHelper.GetStringFromArrayCsharpStyle(message.RawMessageData)}");
+                return (sent, false);
+            }
+
             var s = $"{message.RawMessageDataClearText}  {message.ToShortInfoString()}";
             //Debug.Print(s);
             dataMessagingConfig.MonitorLogger.LogInformation($"Message sent: {s}");
@@ -127,9 +139,11 @@ public class IpDuplexIoSender : BaseDuplexIoSender
             AsyncHelper.FireAndForget(() => dataMessagingConfig.RaiseDataMessageSentDelegate?.Invoke(message.RawMessageData));
 
             isSent = true;
+            //Trace.TraceInformation($"Z:Sent: {sent} // {isSent}");
         }
         catch (SocketException socketException)
         {
+            Trace.TraceError(socketException.ToString());
             AsyncHelper.FireAndForget(() =>
             {
                 dataMessagingConfig.RaiseComDevCloseRequestDelegate?.Invoke("IpDuplexIoSender");
@@ -139,8 +153,11 @@ public class IpDuplexIoSender : BaseDuplexIoSender
         }
         catch (Exception sendException)
         {
+            Trace.TraceError(sendException.ToString());
             AsyncHelper.FireAndForget(() => dataMessagingConfig.RaiseDataMessageNotSentDelegate?.Invoke(message.RawMessageData, sendException.Message));
             isSent = false;
+            sent = 0;
+            //Trace.TraceInformation($"X: Sent: {sent} // {isSent}");
         }
 
         return (sent, isSent);

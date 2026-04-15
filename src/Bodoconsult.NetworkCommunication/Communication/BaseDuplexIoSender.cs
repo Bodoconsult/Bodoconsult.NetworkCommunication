@@ -1,6 +1,6 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
-using Bodoconsult.App.Helpers;
+using System.Diagnostics;
 using Bodoconsult.NetworkCommunication.Interfaces;
 
 namespace Bodoconsult.NetworkCommunication.Communication;
@@ -24,24 +24,19 @@ public abstract class BaseDuplexIoSender : IDuplexIoSender
 
             if (result.ErrorCode != 0)
             {
-                AsyncHelper.FireAndForget(() =>
-                {
-                    var s = result.ErrorMessage ?? "SendMessage";
-                    DataMessagingConfig.RaiseDataMessageNotSentDelegate?.Invoke(message.RawMessageData, s);
-                    DataMessagingConfig.DuplexIoErrorHandlerDelegate?.Invoke(new Exception(s));
-                });
+                var s = result.ErrorMessage ?? "Unknown";
+                Trace.TraceError($"Encoding for message failed: {message.MessageId}: {s}");
+                DataMessagingConfig.RaiseDataMessageNotSentDelegate?.Invoke(message.RawMessageData, s);
+                DataMessagingConfig.DuplexIoErrorHandlerDelegate?.Invoke(new Exception(s));
                 return true;
             }
         }
         catch (Exception encodeException)
         {
-            AsyncHelper.FireAndForget(() =>
-            {
-                var e = encodeException;
-                DataMessagingConfig.MonitorLogger.LogError("Encoding message to send failed", e);
-                DataMessagingConfig.RaiseDataMessageNotSentDelegate?.Invoke(null, e.Message);
-                DataMessagingConfig.DuplexIoErrorHandlerDelegate?.Invoke(e);
-            });
+            Trace.TraceError($"Encoding for message failed: {message.MessageId}: {encodeException}");
+            DataMessagingConfig.MonitorLogger.LogError("Encoding message to send failed", encodeException);
+            DataMessagingConfig.RaiseDataMessageNotSentDelegate?.Invoke(null, encodeException.Message);
+            DataMessagingConfig.DuplexIoErrorHandlerDelegate?.Invoke(encodeException);
             return true;
         }
 

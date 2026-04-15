@@ -1,5 +1,6 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
+using Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
 using Bodoconsult.NetworkCommunication.Interfaces;
 using Bodoconsult.NetworkCommunication.OrderManagement.ParameterSets;
 
@@ -22,14 +23,18 @@ public class TncpOutboundDataMessageFactory : IOutboundDataMessageFactory
             throw new ArgumentException($"ParameterSet is not of type {nameof(SdcpParameterSet)}");
         }
 
-        throw new NotImplementedException();
+        //throw new NotImplementedException();
+        if (string.IsNullOrEmpty(ps.TelnetCommand))
+        {
+            throw new ArgumentException("TelnetCommand may not be empty");
+        }
 
-        //var msg = new TncpOutboundDataMessage
-        //{
-        //    DataBlock = ps
-        //};
+        var msg = new TncpOutboundDataMessage
+        {
+            DataBlock = ps
+        };
 
-        //return msg;
+        return msg;
     }
 
     /// <summary>

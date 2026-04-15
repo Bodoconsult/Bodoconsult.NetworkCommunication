@@ -6,7 +6,6 @@ using Bodoconsult.NetworkCommunication.Factories;
 using Bodoconsult.NetworkCommunication.Interfaces;
 using Bodoconsult.NetworkCommunication.Protocols.Udp;
 using Bodoconsult.NetworkCommunication.Tests.Infrastructure;
-using System.Diagnostics;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
 
 namespace Bodoconsult.NetworkCommunication.Tests.Udp.Clients;
@@ -228,7 +227,8 @@ public abstract class BaseUdpIpDuplexIoTests : BaseUdpTests
             {
                 DataBlockType = 'x',
                 Data = new byte[] { 0x2, 0x78, 0x42, 0x6c, 0x75, 0x62, 0x62, 0x3 }
-            }
+            },
+            RawMessageData = new byte[] { 0x2, 0x78, 0x42, 0x6c, 0x75, 0x62, 0x62, 0x3 }
         };
 
         RunBasicReceiveTests([message.DataBlock.Data.ToArray()], 1);
@@ -255,7 +255,8 @@ public abstract class BaseUdpIpDuplexIoTests : BaseUdpTests
             {
                 DataBlockType = 'x',
                 Data = new byte[] { 0x2, 0x78, 0x42, 0x6c, 0x75, 0x62, 0x62, 0x3 }
-            }
+            },
+            RawMessageData = new byte[] { 0x2, 0x78, 0x42, 0x6c, 0x75, 0x62, 0x62, 0x3 }
         };
 
         var message2 = new SdcpOutboundDataMessage
@@ -264,7 +265,8 @@ public abstract class BaseUdpIpDuplexIoTests : BaseUdpTests
             {
                 DataBlockType = 'x',
                 Data = new byte[] { 0x2, 0x79, 0x41, 0x6c, 0x75, 0x62, 0x62, 0x3 }
-            }
+            },
+            RawMessageData = new byte[] { 0x2, 0x78, 0x42, 0x6c, 0x75, 0x62, 0x62, 0x3 }
         };
 
         RunBasicReceiveTests([message.DataBlock.Data.ToArray(), message2.DataBlock.Data.ToArray()], 2);
@@ -295,12 +297,13 @@ public abstract class BaseUdpIpDuplexIoTests : BaseUdpTests
                 {
                     DataBlockType = 'x',
                     Data = new byte[] { 0x2, 0x78, 0x42, 0x6c, 0x75, 0x62, 0x62, 0x3 }
-                }
+                },
+                RawMessageData = new byte[] { 0x2, 0x78, 0x42, 0x6c, 0x75, 0x62, 0x62, 0x3 }
             };
 
             messages.Add(message.DataBlock.Data.ToArray());
         }
-        
+
         RunBasicReceiveTests(messages, messages.Count);
 
         // Assert

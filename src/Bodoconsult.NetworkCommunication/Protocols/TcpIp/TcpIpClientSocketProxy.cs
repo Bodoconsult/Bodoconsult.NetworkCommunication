@@ -106,8 +106,8 @@ public class TcpIpClientSocketProxy : TcpIpSocketProxyBase
             if (socketException.ErrorCode != 10054)
             {
                 Logger?.LogError("Sending failed", socketException);
-                Debug.Print(socketException.ToString());
-
+                var s = socketException.ToString();
+                Trace.TraceError(s);
             }
             else
             {
@@ -119,7 +119,8 @@ public class TcpIpClientSocketProxy : TcpIpSocketProxyBase
         catch (Exception e)
         {
             Logger?.LogError("Sending failed", e);
-            Debug.Print(e.ToString());
+            var s = e.ToString();
+            Trace.TraceError(s);
             return 0;
         }
     }
@@ -145,8 +146,8 @@ public class TcpIpClientSocketProxy : TcpIpSocketProxyBase
             if (socketException.ErrorCode != 10054)
             {
                 Logger?.LogError("Sending failed", socketException);
-                Debug.Print(socketException.ToString());
-
+                var s = socketException.ToString();
+                Trace.TraceError(s);
             }
             else
             {
@@ -158,7 +159,8 @@ public class TcpIpClientSocketProxy : TcpIpSocketProxyBase
         catch (Exception e)
         {
             Logger?.LogError("Sending failed", e);
-            Debug.Print(e.ToString());
+            var s = e.ToString();
+            Trace.TraceError(s);
             return 0;
         }
     }
@@ -176,6 +178,8 @@ public class TcpIpClientSocketProxy : TcpIpSocketProxyBase
         catch (Exception e)
         {
             Logger?.LogError("Polling failed", e);
+            var s = e.ToString();
+            Trace.TraceError(s);
             return false;
         }
     }
@@ -240,7 +244,8 @@ public class TcpIpClientSocketProxy : TcpIpSocketProxyBase
         }
         catch (Exception e)
         {
-            Debug.Print(e.ToString());
+            var s = e.ToString();
+            Trace.TraceError(s);
         }
     }
 
@@ -266,8 +271,8 @@ public class TcpIpClientSocketProxy : TcpIpSocketProxyBase
             if (socketException.ErrorCode != 10054)
             {
                 Logger?.LogError("Receiving failed", socketException);
-                Debug.Print(socketException.ToString());
-
+                var s = socketException.ToString();
+                Trace.TraceError(s);
             }
             else
             {
@@ -279,7 +284,8 @@ public class TcpIpClientSocketProxy : TcpIpSocketProxyBase
         catch (Exception e)
         {
             Logger?.LogError("Receiving failed", e);
-            Debug.Print(e.ToString());
+            var s = e.ToString();
+            Trace.TraceError(s);
             return 0;
         }
     }
@@ -304,14 +310,16 @@ public class TcpIpClientSocketProxy : TcpIpSocketProxyBase
         {
             if (socketException.ErrorCode != 10054)
             {
-                Debug.Print(socketException.ToString());
+                var s = socketException.ToString();
+                Trace.TraceError(s);
             }
 
             return 0;
         }
         catch (Exception e)
         {
-            Debug.Print(e.ToString());
+            var s = e.ToString();
+            Trace.TraceError(s);
             return 0;
         }
     }

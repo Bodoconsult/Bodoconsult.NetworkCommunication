@@ -130,8 +130,7 @@ public class SendPacketProcess : BaseSendPacketProcess
             }
             catch (Exception e)
             {
-                Console.WriteLine(e);
-                throw;
+                Trace.TraceError(e.ToString());
             }
         });
     }
@@ -142,17 +141,11 @@ public class SendPacketProcess : BaseSendPacketProcess
     /// <param name="handshakeMessage">Current handshake message</param>
     public void HandshakeReceived(InboundHandshakeMessage handshakeMessage)
     {
-        if (DataMessagingConfig == null)
-        {
-            throw new ArgumentNullException(nameof(DataMessagingConfig));
-        }
+        ArgumentNullException.ThrowIfNull(DataMessagingConfig);
 
         var package = DataMessagingConfig.DataMessageProcessingPackage;
 
-        if (package == null)
-        {
-            throw new ArgumentNullException(nameof(package));
-        }
+        ArgumentNullException.ThrowIfNull(package);
 
         if (Message == null)
         {

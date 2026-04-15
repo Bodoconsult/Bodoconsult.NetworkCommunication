@@ -25,10 +25,7 @@ public class NoAnswerDeviceRequestStepProcessor : INoAnswerDeviceRequestStepProc
         RequestSpec = requestSpec;
         NoAnswerDeviceRequestSpec = requestSpec;
 
-        if (RequestSpec.AppLogger == null)
-        {
-            throw new ArgumentNullException(nameof(RequestSpec.AppLogger));
-        }
+        ArgumentNullException.ThrowIfNull(RequestSpec.AppLogger);
     }
 
     /// <summary>
@@ -117,7 +114,6 @@ public class NoAnswerDeviceRequestStepProcessor : INoAnswerDeviceRequestStepProc
 
             // Only request sending to device proceed here
             requestSpec.CreateMessagesToSend();
-
 
             if (IsCancelled)
             {

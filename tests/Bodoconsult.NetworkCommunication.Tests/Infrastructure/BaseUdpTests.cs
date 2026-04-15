@@ -2,7 +2,6 @@
 
 using Bodoconsult.App.Abstractions.Interfaces;
 using Bodoconsult.App.Helpers;
-using Bodoconsult.NetworkCommunication.Communication;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
 using Bodoconsult.NetworkCommunication.EnumAndStates;
 using Bodoconsult.NetworkCommunication.Interfaces;
@@ -13,7 +12,6 @@ using System.Net;
 using System.Net.Sockets;
 using System.Security;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataBlocks;
-using Bodoconsult.NetworkCommunication.OrderManagement.ParameterSets;
 
 namespace Bodoconsult.NetworkCommunication.Tests.Infrastructure;
 
@@ -56,18 +54,15 @@ public class BaseUdpTests : IUdpTests
     /// </summary>
     public IPAddress? IpAddress { get; set; }
 
-
     /// <summary>
     /// Current socket proxy to use
     /// </summary>
     public ISocketProxy? Socket { get; set; }
 
-
     /// <summary>
     /// Device communication data
     /// </summary>
     public IIpDataMessagingConfig? DataMessagingConfig { get; set; }
-
 
     /// <summary>
     /// General log file
@@ -139,26 +134,49 @@ public class BaseUdpTests : IUdpTests
         Assert.That(result2.ProcessExecutionResult, Is.EqualTo(OrderExecutionResultState.Successful));
 
         // Now send messages
-        foreach (var message in data)
+        var cts = new CancellationTokenSource(5000);
+        Task.Run(() =>
         {
-            RemoteUdpDevice.Send(message);
-        }
+            foreach (var message in data)
+            {
+                RemoteUdpDevice.Send(message);
+
+                if (cts.Token.IsCancellationRequested)
+                {
+                    break;
+                }
+            }
+
+            Wait.Until(() => MessageCounter >= expectedCount);
+
+            Trace.TraceInformation($"Waited for {MessageCounter} messages!");
+
+            cts.Cancel();
+        });
+
 
         var tcs1 = new TaskCompletionSource<bool>();
         var t1 = tcs1.Task;
 
         // Start a background task that will complete tcs1.Task
-        Task.Factory.StartNew(() =>
+        Task.Run(() =>
         {
-            var cts = new CancellationTokenSource(5000);
-            while (!cts.IsCancellationRequested)
+            while (true)
             {
                 if (MessageCounter >= expectedCount)
                 {
                     tcs1.SetResult(true);
+                    Trace.TraceInformation($"Exit waiting with {MessageCounter} messages!");
                     return;
                 }
-                Task.Delay(10, cts.Token);
+
+                if (!cts.Token.IsCancellationRequested)
+                {
+                    continue;
+                }
+
+                Trace.TraceInformation($"Exit: {RemoteUdpDevice.ReceivedMessages.Count}");
+                break;
             }
 
             tcs1.SetResult(false);
@@ -177,7 +195,8 @@ public class BaseUdpTests : IUdpTests
         Debug.Print("Process done");
     }
 
-    public virtual void SendDataFromLocalToRemote(List<IOutboundDataMessage> data, int expectedCount)
+    public virtual void SendDataFromLocalToRemote(List<IOutboundDataMessage> data, int expectedCount,
+        CancellationToken? cancellationToken = null)
     {
         // Arrange
         ArgumentNullException.ThrowIfNull(DuplexIo);
@@ -199,26 +218,43 @@ public class BaseUdpTests : IUdpTests
 
         RemoteUdpDevice.Send(msg.RawMessageData.ToArray());
 
-        var cts = new CancellationTokenSource(5000);
+        var cts = new CancellationTokenSource();
 
         // Now send messages
         var tcs1 = new TaskCompletionSource<bool>();
         var t1 = tcs1.Task;
 
         // Start a background task that will complete tcs1.Task
-        Task.Run(() =>
+        var t2 = Task.Run(() =>
         {
-            while (!cts.IsCancellationRequested)
+            try
             {
-                if (RemoteUdpDevice.ReceivedMessages.Count >= expectedCount)
+                while (true)
                 {
-                    tcs1.SetResult(true);
-                    return;
-                }
-                Task.Delay(5, cts.Token).Wait(10);
-            }
+                    if (RemoteUdpDevice.ReceivedMessages.Count >= expectedCount)
+                    {
+                        Trace.TraceInformation("Successful received  messages");
+                        tcs1.SetResult(true);
+                        return;
+                    }
 
-            tcs1.SetResult(false);
+                    if (!cts.Token.IsCancellationRequested &&
+                        !(cancellationToken?.IsCancellationRequested ?? false))
+                    {
+                        continue;
+                    }
+
+                    Trace.TraceInformation($"Exit: {RemoteUdpDevice.ReceivedMessages.Count}");
+                    break;
+                }
+
+                tcs1.SetResult(false);
+            }
+            catch (Exception e)
+            {
+                Trace.TraceInformation($"Exit2: {RemoteUdpDevice.ReceivedMessages.Count}: {e}");
+                tcs1.SetResult(false);
+            }
         });
 
         // Send now
@@ -226,18 +262,45 @@ public class BaseUdpTests : IUdpTests
         {
             try
             {
-                foreach (var message in data)
+                string s;
+                for (var index = 0; index < data.Count; index++)
                 {
+                    var message = data[index];
+
                     await DuplexIo.SendMessage(message);
+                    s = $"UdpServer: send message {index}";
+                    Trace.TraceInformation(s);
+
+                    if (cancellationToken?.IsCancellationRequested ?? false)
+                    {
+                        await cts.CancelAsync();
+                        return;
+                    }
                 }
+
+                s = $"Left send loop: CancelRequest: {cts.Token.IsCancellationRequested}";
+                Trace.TraceInformation(s);
+
+                //Trace.Assert(!cts.Token.IsCancellationRequested);
+
+                Wait.Until(() => RemoteUdpDevice.ReceivedMessages.Count >= expectedCount, 10000);
+
+                s = $"Waited for messages received: {RemoteUdpDevice.ReceivedMessages.Count} / {expectedCount}";
+                Trace.TraceInformation(s);
+
+                //Trace.Assert(RemoteUdpDevice.ReceivedMessages.Count >= expectedCount);
+
+                await RemoteUdpDevice.CancellationTokenSource.CancelAsync();
+
+                await cts.CancelAsync();
             }
             catch (Exception e)
             {
                 Debug.Print(e.ToString());
-                throw;
             }
-        }, cts.Token);
+        });
 
+        t2.Wait(10000);
         var result = t1.GetAwaiter().GetResult();
 
         // Start a background task that will complete tcs1.Task
@@ -249,7 +312,6 @@ public class BaseUdpTests : IUdpTests
 
         Debug.Print("Process done");
     }
-
 
     protected void RunBasicReceiveTests(List<byte[]> data, int expectedCount)
     {
@@ -272,7 +334,7 @@ public class BaseUdpTests : IUdpTests
     protected void RunBasicSendTests(List<IOutboundDataMessage> data, int expectedCount)
     {
         // Arrange and act
-        SendDataFromLocalToRemote(data, expectedCount);
+        SendDataFromLocalToRemote(data, expectedCount, null);
 
         // Assert
         if (expectedCount == 0)
@@ -376,7 +438,7 @@ public class BaseUdpTests : IUdpTests
 
         if (exception is SocketException)
         {
-            msg = $"{DataMessagingConfig.LoggerId}:SocketException: Requesting for communication closing.";
+            msg = $"{loggerId}:SocketException: Requesting for communication closing.";
             IsComDevCloseFired = true;
         }
         else if (exception is ObjectDisposedException)

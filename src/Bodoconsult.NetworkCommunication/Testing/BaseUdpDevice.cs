@@ -139,6 +139,8 @@ public abstract class BaseUdpDevice : IUdpDevice
             //    Debug.Print(e.ToString());
             //}
         }
+
+        Debug.Print("Exit waiting");
     }
 
     /// <summary>
@@ -164,7 +166,9 @@ public abstract class BaseUdpDevice : IUdpDevice
                 return result.Buffer;
             }
 
-            Debug.Print($"{TypeName}: received {result.Buffer.Length} bytes from {SenderEndPoint}");
+            Debug.Print($"{TypeName}: received {result.Buffer.Length} bytes");
+
+            //Debug.Print($"{TypeName}: received {result.Buffer.Length} bytes from {SenderEndPoint}");
             //Debug.Print($" {Encoding.ASCII.GetString(bytes, 0, bytes.Length)}");
 
             ReceivedMessages.Add(result.Buffer.AsMemory());

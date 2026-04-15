@@ -16,7 +16,7 @@ public class DefaultDataMessagingConfig: IIpDataMessagingConfig
     /// <summary>
     /// A readable string for identitying the device used for logging
     /// </summary>
-    public string LoggerId {get; set; } = "TestDevice";
+    public string LoggerId {get; set; } = "TestDevice: ";
 
     /// <summary>
     /// IP based protocol used for this config

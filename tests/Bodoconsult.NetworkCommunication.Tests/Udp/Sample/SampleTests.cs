@@ -7,8 +7,11 @@ using Bodoconsult.NetworkCommunication.Tests.Helpers;
 
 namespace Bodoconsult.NetworkCommunication.Tests.Udp.Sample;
 
+[Explicit]
+[TestFixture]
 internal class SampleTests
 {
+    
     [Test]
     public void Test()
     {

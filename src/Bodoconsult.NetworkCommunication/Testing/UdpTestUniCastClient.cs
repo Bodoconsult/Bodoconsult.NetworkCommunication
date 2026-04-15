@@ -35,6 +35,6 @@ public class UdpTestUniCastClient: BaseUdpDevice
         }
 
         var result = Listener.Send(data, data.Length);
-        Debug.Print($"{TypeName}: sent {result} byte(s)!");
+        Trace.TraceInformation($"{TypeName}: sent {result} byte(s)!");
     }
 }

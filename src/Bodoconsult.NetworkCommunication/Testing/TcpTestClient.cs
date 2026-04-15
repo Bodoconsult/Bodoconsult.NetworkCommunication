@@ -4,7 +4,6 @@
 using System.Diagnostics;
 using System.Net;
 using System.Net.Sockets;
-using Bodoconsult.NetworkCommunication.Interfaces;
 
 namespace Bodoconsult.NetworkCommunication.Testing;
 

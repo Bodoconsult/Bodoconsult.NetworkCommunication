@@ -14,11 +14,6 @@ public interface ITcpTests
     ITcpIpDevice? RemoteTcpIpDevice { get; set; }
 
     /// <summary>
-    /// Current IP address to use
-    /// </summary>
-    IPAddress? IpAddress { get; set; }
-
-    /// <summary>
     /// Device communication data
     /// </summary>
     IIpDataMessagingConfig? DataMessagingConfig { get; set; }
@@ -32,4 +27,9 @@ public interface ITcpTests
     /// Current <see cref="ISocketProxy"/> implementation to use
     /// </summary>
     ISocketProxy? Socket { get; set; }
+
+    /// <summary>
+    /// Current IP address
+    /// </summary>
+    IPAddress? IpAddress { get; set; }
 }

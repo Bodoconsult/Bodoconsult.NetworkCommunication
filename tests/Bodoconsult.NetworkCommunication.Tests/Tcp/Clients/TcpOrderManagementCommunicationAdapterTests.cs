@@ -19,7 +19,7 @@ namespace Bodoconsult.NetworkCommunication.Tests.Tcp.Clients;
 [TestFixture]
 [NonParallelizable]
 [SingleThreaded]
-internal class TcpOrderManagementCommunicationAdapterTests : TcpOrderManagementCommunicationAdapterBaseTests
+internal class IpCommunicationAdapterTests : BaseIpCommunicationAdapterTests
 {
     private bool _isStopped;
     private bool _isActivated;
@@ -45,7 +45,7 @@ internal class TcpOrderManagementCommunicationAdapterTests : TcpOrderManagementC
 
         ICommunicationHandlerFactory communicationHandlerFactory = new IpCommunicationHandlerFactory(socketProxyFactory, duplexIoFactory, appEventSourceFactory, clientNotificationManager);
 
-        OrderManagementCommunicationAdapter = new IpCommunicationAdapter(DataMessagingConfig, communicationHandlerFactory);
+        IpCommunicationAdapter = new IpCommunicationAdapter(DataMessagingConfig, communicationHandlerFactory);
 
         _isStopped = false;
         _isReset = false;
@@ -61,17 +61,15 @@ internal class TcpOrderManagementCommunicationAdapterTests : TcpOrderManagementC
         // Act  
 
         // Assert
-        ArgumentNullException.ThrowIfNull(OrderManagementCommunicationAdapter);
+        ArgumentNullException.ThrowIfNull(IpCommunicationAdapter);
         using (Assert.EnterMultipleScope())
         {
-            Assert.That(OrderManagementCommunicationAdapter.DataMessagingConfig, Is.EqualTo(DataMessagingConfig));
-            Assert.That(OrderManagementCommunicationAdapter.IsConnected, Is.EqualTo(false));
-            Assert.That(OrderManagementCommunicationAdapter.DataMessagingConfig.CheckIfCommunicationIsOnlineDelegate,
-                Is.Not.Null);
-            Assert.That(OrderManagementCommunicationAdapter.DataMessagingConfig.RaiseComDevCloseRequestDelegate,
-                Is.Not.Null);
-            Assert.That(OrderManagementCommunicationAdapter.DataMessagingConfig.ResetOutboundDataMessageFactoryDelegate,
-                Is.Not.Null);
+            Assert.That(IpCommunicationAdapter.DataMessagingConfig, Is.EqualTo(DataMessagingConfig));
+            Assert.That(IpCommunicationAdapter.IsConnected, Is.EqualTo(false));
+            Assert.That(IpCommunicationAdapter.DataMessagingConfig.CheckIfCommunicationIsOnlineDelegate, Is.Not.Null);
+            Assert.That(IpCommunicationAdapter.DataMessagingConfig.RaiseComDevCloseRequestDelegate, Is.Not.Null);
+            Assert.That(IpCommunicationAdapter.DataMessagingConfig.ResetOutboundDataMessageFactoryDelegate, Is.Not.Null);
+            Assert.That(IpCommunicationAdapter.DataMessagingConfig.CheckIfDeviceIsReadyDelegate, Is.Not.Null);
         }
     }
 
@@ -79,7 +77,7 @@ internal class TcpOrderManagementCommunicationAdapterTests : TcpOrderManagementC
     public void SendMessage_ValidMessage_MessageSent()
     {
         // Arrange 
-        ArgumentNullException.ThrowIfNull(OrderManagementCommunicationAdapter);
+        ArgumentNullException.ThrowIfNull(IpCommunicationAdapter);
         ArgumentNullException.ThrowIfNull(DataMessagingConfig);
 
         var message = new SdcpOutboundDataMessage
@@ -93,9 +91,9 @@ internal class TcpOrderManagementCommunicationAdapterTests : TcpOrderManagementC
 
         DataMessagingConfig.RaiseDataMessageSentDelegate = OnRaiseDataMessageSentEvent;
 
-        OrderManagementCommunicationAdapter.ComDevInit();
+        IpCommunicationAdapter.ComDevInit();
 
-        Assert.That(OrderManagementCommunicationAdapter.IsConnected);
+        Assert.That(IpCommunicationAdapter.IsConnected);
 
         // Act
         Send(message);
@@ -105,28 +103,28 @@ internal class TcpOrderManagementCommunicationAdapterTests : TcpOrderManagementC
         // Assert
         Assert.That(IsDataMessageSentFired, Is.True);
 
-        OrderManagementCommunicationAdapter.ComDevClose();
+        IpCommunicationAdapter.ComDevClose();
     }
 
     [Test]
     public void ComDevInit_ValidSetup_InitSuccessful()
     {
         // Arrange 
-        ArgumentNullException.ThrowIfNull(OrderManagementCommunicationAdapter);
+        ArgumentNullException.ThrowIfNull(IpCommunicationAdapter);
         ArgumentNullException.ThrowIfNull(DataMessagingConfig);
 
         DataMessagingConfig.RaiseDataMessageSentDelegate = OnRaiseDataMessageSentEvent;
 
-        OrderManagementCommunicationAdapter.SetOrderProcessingStateDelegate = SetOrderProcessingStateDelegate;
+        IpCommunicationAdapter.SetOrderProcessingStateDelegate = SetOrderProcessingStateDelegate;
 
         // Act
-        OrderManagementCommunicationAdapter.ComDevInit();
+        IpCommunicationAdapter.ComDevInit();
 
         // Assert
         using (Assert.EnterMultipleScope())
         {
-            Assert.That(OrderManagementCommunicationAdapter.IsConnected);
-            Assert.That(OrderManagementCommunicationAdapter.IsCommunicationHandlerNotNull);
+            Assert.That(IpCommunicationAdapter.IsConnected);
+            Assert.That(IpCommunicationAdapter.IsCommunicationHandlerNotNull);
 
             Wait.Until(() => _isStopped);
 
@@ -134,38 +132,38 @@ internal class TcpOrderManagementCommunicationAdapterTests : TcpOrderManagementC
             Assert.That(_isActivated, Is.True);
         }
 
-        OrderManagementCommunicationAdapter.ComDevClose();
+        IpCommunicationAdapter.ComDevClose();
     }
 
     [Test]
     public void ComDevClose_ValidSetup_CloseSuccessful()
     {
         // Arrange 
-        ArgumentNullException.ThrowIfNull(OrderManagementCommunicationAdapter);
+        ArgumentNullException.ThrowIfNull(IpCommunicationAdapter);
         ArgumentNullException.ThrowIfNull(DataMessagingConfig);
 
         DataMessagingConfig.RaiseDataMessageSentDelegate = OnRaiseDataMessageSentEvent;
 
         DataMessagingConfig.ResetOutboundDataMessageFactoryDelegate = ResetOutboundDataMessageFactoryDelegate;
 
-        OrderManagementCommunicationAdapter.SetOrderProcessingStateDelegate = SetOrderProcessingStateDelegate;
+        IpCommunicationAdapter.SetOrderProcessingStateDelegate = SetOrderProcessingStateDelegate;
 
         // Act
-        OrderManagementCommunicationAdapter.ComDevInit();
+        IpCommunicationAdapter.ComDevInit();
 
         // Assert
         using (Assert.EnterMultipleScope())
         {
-            Assert.That(OrderManagementCommunicationAdapter.IsConnected, Is.True);
+            Assert.That(IpCommunicationAdapter.IsConnected, Is.True);
 
             Wait.Until(() => _isStopped);
 
             Assert.That(_isStopped);
             Assert.That(_isActivated, Is.True);
 
-            OrderManagementCommunicationAdapter.ComDevClose();
+            IpCommunicationAdapter.ComDevClose();
 
-            Assert.That(OrderManagementCommunicationAdapter.IsConnected, Is.False);
+            Assert.That(IpCommunicationAdapter.IsConnected, Is.False);
 
             Wait.Until(() => _isStopped);
 
@@ -179,15 +177,15 @@ internal class TcpOrderManagementCommunicationAdapterTests : TcpOrderManagementC
     public void IsPingableAsync_Localhost_Pingable()
     {
         // Arrange 
-        ArgumentNullException.ThrowIfNull(OrderManagementCommunicationAdapter);
+        ArgumentNullException.ThrowIfNull(IpCommunicationAdapter);
         ArgumentNullException.ThrowIfNull(DataMessagingConfig);
 
         DataMessagingConfig.RaiseDataMessageSentDelegate = OnRaiseDataMessageSentEvent;
 
-        OrderManagementCommunicationAdapter.SetOrderProcessingStateDelegate = SetOrderProcessingStateDelegate;
+        IpCommunicationAdapter.SetOrderProcessingStateDelegate = SetOrderProcessingStateDelegate;
 
         // Act
-        var result = OrderManagementCommunicationAdapter.IsPingableAsync().GetAwaiter().GetResult();
+        var result = IpCommunicationAdapter.IsPingableAsync().GetAwaiter().GetResult();
 
         // Assert
         Assert.That(result);

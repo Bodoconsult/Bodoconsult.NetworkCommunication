@@ -36,7 +36,7 @@ public class IpCommunicationAdapter : ICommunicationAdapter
 
         ////DataMessagingConfig.GetTowerStateDelegate = GetTowerState;
         DataMessagingConfig.CheckIfCommunicationIsOnlineDelegate = CheckIfCommunicationIsOnline;
-        //DataMessagingConfig.CheckIfDeviceIsReadyDelegate = CheckIfDeviceIsReady;
+        DataMessagingConfig.CheckIfDeviceIsReadyDelegate = CheckIfDeviceIsReady;
 
         DataMessagingConfig.RaiseComDevCloseRequestDelegate = OnRequestComDevClose;
 
@@ -44,6 +44,11 @@ public class IpCommunicationAdapter : ICommunicationAdapter
         {
             DataMessagingConfig.ResetOutboundDataMessageFactoryDelegate = dataMessagingConfig.DataMessageProcessingPackage.OutboundDataMessageFactory.Reset;
         }
+    }
+
+    private bool CheckIfDeviceIsReady()
+    {
+        return _deviceState == DefaultDeviceStates.DeviceStateOnline;
     }
 
     /// <summary>

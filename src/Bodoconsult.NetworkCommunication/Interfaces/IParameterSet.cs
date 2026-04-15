@@ -1,6 +1,7 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
 using System.ComponentModel.DataAnnotations;
+using Newtonsoft.Json;
 
 namespace Bodoconsult.NetworkCommunication.Interfaces;
 
@@ -17,6 +18,7 @@ public interface IParameterSet: ITypedOutboundDataBlock, IDisposable
     /// <summary>
     /// The order the parameter set is bound to
     /// </summary>
+    [JsonIgnore]
     IOrder? CurrentOrder { get; }
 
     /// <summary>
@@ -43,6 +45,7 @@ public interface IParameterSet: ITypedOutboundDataBlock, IDisposable
     /// <summary>
     /// A result object filled by the order execution process
     /// </summary>
+    [JsonIgnore]
     object? OrderResult { get; set; }
 
     /// <summary>

@@ -72,10 +72,7 @@ public class StateMachineStateFactory : IStateMachineStateFactory
 
         var obas = (IOrderBasedActionStateConfiguration)config.Clone();
 
-        if (obas.StateBuilderBuilder == null)
-        {
-            throw new ArgumentNullException(nameof(obas.StateBuilderBuilder));
-        }
+        ArgumentNullException.ThrowIfNull(obas.StateBuilderBuilder);
 
         obas.CurrentContext = currentContext;
         obas.ParameterSets.AddRange( parameterSets);

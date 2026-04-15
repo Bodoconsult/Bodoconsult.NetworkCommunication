@@ -8,8 +8,6 @@ using Bodoconsult.NetworkCommunication.Tests.Helpers;
 using System.Collections.Concurrent;
 using System.Diagnostics;
 using System.Net;
-using System.Net.Sockets;
-using System.Threading;
 
 namespace Bodoconsult.NetworkCommunication.Tests.Tcp;
 
