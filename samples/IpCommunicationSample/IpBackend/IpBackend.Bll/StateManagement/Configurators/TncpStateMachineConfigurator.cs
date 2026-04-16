@@ -112,6 +112,11 @@ public class TncpStateMachineConfigurator : BaseStateMachineConfigurator
         };
 
         config.OrderConfigurations.Add("NoAnswerTncpOrderConfiguration");
+        config.OrderConfigurations.Add("NoAnswerTncpOrderConfiguration");
+        config.OrderConfigurations.Add("NoAnswerTncpOrderConfiguration");
+        config.OrderConfigurations.Add("NoAnswerTncpOrderConfiguration");
+        config.OrderConfigurations.Add("NoAnswerTncpOrderConfiguration");
+        // config.OrderConfigurations.Add("NoAnswerTncpOrderConfiguration"); // if order-command is coming
 
         StateFactory.RegisterConfiguration(config);
     }
@@ -163,6 +168,10 @@ public class TncpStateMachineConfigurator : BaseStateMachineConfigurator
         // Two orders required because of two telent commands to send
         config.OrderConfigurations.Add("NoAnswerTncpOrderConfiguration");
         config.OrderConfigurations.Add("NoAnswerTncpOrderConfiguration");
+        config.OrderConfigurations.Add("NoAnswerTncpOrderConfiguration");
+        config.OrderConfigurations.Add("NoAnswerTncpOrderConfiguration");
+        config.OrderConfigurations.Add("NoAnswerTncpOrderConfiguration");
+        // config.OrderConfigurations.Add("NoAnswerTncpOrderConfiguration"); // if order-command is coming
 
         StateFactory.RegisterConfiguration(config);
     }

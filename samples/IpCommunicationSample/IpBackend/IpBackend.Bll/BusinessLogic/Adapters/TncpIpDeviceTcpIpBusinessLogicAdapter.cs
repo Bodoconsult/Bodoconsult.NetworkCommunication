@@ -1,10 +1,13 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
+using Bodoconsult.App;
 using Bodoconsult.App.Abstractions.Interfaces;
 using Bodoconsult.App.BusinessTransactions.Replies;
 using Bodoconsult.NetworkCommunication.BusinessLogicAdapters;
+using Bodoconsult.NetworkCommunication.Helpers;
 using Bodoconsult.NetworkCommunication.Interfaces;
 using Bodoconsult.NetworkCommunication.OrderManagement.ParameterSets;
+using IpBackend.Bll.App;
 using IpBackend.Bll.Interfaces;
 
 namespace IpBackend.Bll.BusinessLogic.Adapters;
@@ -149,17 +152,7 @@ public class TncpIpDeviceTcpIpBusinessLogicAdapter : BaseStateMachineDeviceBusin
 
             for (var index = 0; index < jobConfig.OrderConfigurations.Count; index++)
             {
-                var orderConfigName = jobConfig.OrderConfigurations[index];
-                var orderConfig = OrderFactory.GetConfiguration(orderConfigName);
-
-                ArgumentNullException.ThrowIfNull(orderConfig, $"Order config for {orderConfigName} is null");
-                ArgumentNullException.ThrowIfNull(orderConfig.CreateParameterSetDelegate);
-
-                var ps = (TncpParameterSet)orderConfig.CreateParameterSetDelegate.Invoke();
-
-                ps.TelnetCommand = index == 0 ? "StartStreaming1" : "StartStreaming2";
-
-                parameterSets.Add(ps);
+                CreateStartOrders(jobConfig, index, parameterSets, OrderFactory, "continious");
             }
 
             // Now create the state
@@ -204,17 +197,7 @@ public class TncpIpDeviceTcpIpBusinessLogicAdapter : BaseStateMachineDeviceBusin
 
             for (var index = 0; index < jobConfig.OrderConfigurations.Count; index++)
             {
-                var orderConfigName = jobConfig.OrderConfigurations[index];
-                var orderConfig = OrderFactory.GetConfiguration(orderConfigName);
-
-                ArgumentNullException.ThrowIfNull(orderConfig, $"Order config for {orderConfigName} is null");
-                ArgumentNullException.ThrowIfNull(orderConfig.CreateParameterSetDelegate);
-
-                var ps = (TncpParameterSet)orderConfig.CreateParameterSetDelegate.Invoke();
-
-                ps.TelnetCommand = index == 0 ? "StartSnapshot1" : "StartSnapshot2";
-
-                parameterSets.Add(ps);
+                CreateStartOrders(jobConfig, index, parameterSets, OrderFactory, "snapshot");
             }
 
             // Now create the state
@@ -235,6 +218,46 @@ public class TncpIpDeviceTcpIpBusinessLogicAdapter : BaseStateMachineDeviceBusin
                 ExceptionMessage = e.ToString()
             };
         }
+    }
+
+    private void CreateStartOrders(IJobStateConfiguration jobConfig, int index, List<IParameterSet> parameterSets,
+        IOrderFactory orderFactory, string mode)
+    {
+        var orderConfigName = jobConfig.OrderConfigurations[index];
+        var orderConfig = orderFactory.GetConfiguration(orderConfigName);
+
+        
+
+        ArgumentNullException.ThrowIfNull(orderConfig, $"Order config for {orderConfigName} is null");
+        ArgumentNullException.ThrowIfNull(orderConfig.CreateParameterSetDelegate);
+
+        var ps = (TncpParameterSet)orderConfig.CreateParameterSetDelegate.Invoke();
+
+        switch (index)
+        {
+            //case 6:
+            //    ps.TelnetCommand = "set,snapshot,4,4";   // 
+            //    break;
+            case 5:
+                ps.TelnetCommand = "set,status,start";   // 
+                break;
+            case 4:
+                ps.TelnetCommand = $"set,stream,mode,{mode}";   // 
+                break;
+            case 3:
+                var appParams = (ThreeNetworkDevicesAppStartParameter)Globals.Instance.AppStartParameter;
+                ps.TelnetCommand = $"set,connection,{IpHelper.GetLocalIpAddress()},{appParams.Port}";   // 
+                break;
+            case 2:
+                ps.TelnetCommand = "set,snapshot,4,4";   // 
+                break;
+            //case 1:
+            default:
+                ps.TelnetCommand = "set,stream,number,1";   // One channel
+                break;
+        }
+
+        parameterSets.Add(ps);
     }
 
     /// <summary>
@@ -266,7 +289,9 @@ public class TncpIpDeviceTcpIpBusinessLogicAdapter : BaseStateMachineDeviceBusin
 
                 var ps = (TncpParameterSet)orderConfig.CreateParameterSetDelegate.Invoke();
 
-                ps.TelnetCommand = "StopStreaming";
+                ps.TelnetCommand = ps.TelnetCommand = "set,status,stop"; ;
+
+                // ps.TelnetCommand = "StopStreaming";
 
                 parameterSets.Add(ps);
             }
@@ -321,7 +346,7 @@ public class TncpIpDeviceTcpIpBusinessLogicAdapter : BaseStateMachineDeviceBusin
 
                 var ps = (TncpParameterSet)orderConfig.CreateParameterSetDelegate.Invoke();
 
-                ps.TelnetCommand = "StopSnapshot";
+                ps.TelnetCommand = "set,status,stop";
 
                 parameterSets.Add(ps);
             }
