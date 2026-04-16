@@ -18,7 +18,7 @@ namespace Bodoconsult.NetworkCommunication.Communication;
 public class IpCommunicationHandler : ICommunicationHandler
 {
     private readonly IAppEventSource _appEventSource;
-    private IDataMessagingConfig DataMessagingConfig { get; }
+    
     private IWaitStateManager? _waitStateManager;
     private bool _isInitialized;
 
@@ -50,6 +50,11 @@ public class IpCommunicationHandler : ICommunicationHandler
     /// Current <see cref="IDuplexIo"/> instance to use
     /// </summary>
     public IDuplexIo DuplexIo { get; }
+
+    /// <summary>
+    /// Current data messaging config
+    /// </summary>
+    public IDataMessagingConfig DataMessagingConfig { get; }
 
     public void UpdateDevice()
     {

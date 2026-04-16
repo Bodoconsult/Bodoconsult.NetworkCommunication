@@ -118,6 +118,8 @@ public abstract class BaseDuplexIo : IDuplexIo
 
         var count = await Sender.SendMessage(message);
 
+        Trace.TraceInformation($"Message {message.MessageId} with {count} bytes sent");
+
         var msr = count == 0 ? new MessageSendingResult(message, OrderExecutionResultState.Unsuccessful) : new MessageSendingResult(message, OrderExecutionResultState.Successful);
 
         AsyncHelper.FireAndForget(() =>

@@ -226,7 +226,6 @@ public abstract class BaseSendPacketProcess : ISendPacketProcess, IAsyncDisposab
             DataMessagingConfig.MonitorLogger.LogError($"{DataMessagingConfig.LoggerId}socket is not open");
             DataMessagingConfig.RaiseComDevCloseRequestDelegate?.Invoke("SendPacketProcess - Send message - socket closed");
         }
-
         return false;
     }
 

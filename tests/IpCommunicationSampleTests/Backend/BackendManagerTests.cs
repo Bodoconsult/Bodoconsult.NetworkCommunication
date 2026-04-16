@@ -7,6 +7,7 @@ using Bodoconsult.App.Factories;
 using Bodoconsult.App.Interfaces;
 using Bodoconsult.App.Logging;
 using Bodoconsult.NetworkCommunication.ClientNotifications;
+using Bodoconsult.NetworkCommunication.DataMessaging.DataMessageProcessingPackages;
 using Bodoconsult.NetworkCommunication.Factories;
 using Bodoconsult.NetworkCommunication.Interfaces;
 using Bodoconsult.NetworkCommunication.OrderManagement.Processors;
@@ -116,6 +117,8 @@ internal class BackendManagerTests
 
             Assert.That(config.IpAddress, Is.EqualTo(clientConfig.IpAddress));
             Assert.That(config.Port, Is.EqualTo(clientConfig.Port));
+            Assert.That(config.DataMessageProcessingPackage, Is.TypeOf<BtcpDataMessageProcessingPackage>());
+
         }
     }
 
@@ -159,12 +162,29 @@ internal class BackendManagerTests
             Assert.That(m.IpDeviceTcpIp.IpDevice, Is.Not.Null);
 
             Assert.That(m.IpDeviceTcpIp.IpDevice, Is.Not.Null);
+            Assert.That(m.IpDeviceTcpIp.Device, Is.Not.Null);
+            Assert.That(m.IpDeviceTcpIp.Device.OrderManager, Is.Not.Null);
+            Assert.That(m.IpDeviceTcpIp.IpDevice, Is.Not.Null);
+            Assert.That(m.IpDeviceTcpIp.IpDevice.CommunicationAdapter, Is.Not.Null);
+            //Assert.That(m.IpDeviceTcpIp.IpDevice.CommunicationAdapter.CommunicationHandler, Is.Not.Null);
+
+            var package = m.IpDeviceTcpIp.Device.DataMessagingConfig.DataMessageProcessingPackage;
+
+            Assert.That(package, Is.TypeOf<TncpDataMessageProcessingPackage>());
+            //Assert.That(m.IpDeviceTcpIp.Device.OrderManager.OrderProcessor.CurrentDevice.DataMessagingConfig.DataMessageProcessingPackage, Is.TypeOf<TncpDataMessageProcessingPackage>());
+
+
+
             Assert.That(m.IpDeviceTcpIp.IpDevice.DataMessagingConfig, Is.Not.Null);
 
             var config = (IIpDataMessagingConfig)m.IpDeviceTcpIp.IpDevice.DataMessagingConfig;
 
+            Assert.That(m.IpDeviceTcpIp.IpDevice.CommunicationAdapter, Is.Not.Null);
+            Assert.That(m.IpDeviceTcpIp.IpDevice.CommunicationAdapter.DataMessagingConfig, Is.EqualTo(config));
+
             Assert.That(config.IpAddress, Is.EqualTo(deviceTcpIpConfig.IpAddress));
             Assert.That(config.Port, Is.EqualTo(deviceTcpIpConfig.Port));
+            Assert.That(config.DataMessageProcessingPackage, Is.TypeOf<TncpDataMessageProcessingPackage>());
         }
     }
 
@@ -209,8 +229,12 @@ internal class BackendManagerTests
 
             var config = (IIpDataMessagingConfig)m.IpDeviceUdp.IpDevice.DataMessagingConfig;
 
+            Assert.That(m.IpDeviceUdp.IpDevice.CommunicationAdapter, Is.Not.Null);
+            Assert.That(m.IpDeviceUdp.IpDevice.CommunicationAdapter.DataMessagingConfig, Is.EqualTo(config));
+
             Assert.That(config.IpAddress, Is.EqualTo(deviceUdpConfig.IpAddress));
             Assert.That(config.Port, Is.EqualTo(deviceUdpConfig.Port));
+            Assert.That(config.DataMessageProcessingPackage, Is.TypeOf<SfxpLoggedSortableDataMessageProcessingPackage>());
         }
     }
 }

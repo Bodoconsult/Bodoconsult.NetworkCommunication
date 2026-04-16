@@ -7,12 +7,17 @@ namespace Bodoconsult.NetworkCommunication.Interfaces;
 /// <summary>
 /// Communication adapter used i.e. for order management
 /// </summary>
-public interface ICommunicationAdapter: IDisposable
+public interface ICommunicationAdapter : IDisposable
 {
     /// <summary>
     /// Device configuration for data messaging
     /// </summary>
     IIpDataMessagingConfig? DataMessagingConfig { get; }
+
+    /// <summary>
+    /// Current communication handler
+    /// </summary>
+    public ICommunicationHandler? CommunicationHandler { get; }
 
     /// <summary>
     /// This property returns whether the communication object is valid and can be used

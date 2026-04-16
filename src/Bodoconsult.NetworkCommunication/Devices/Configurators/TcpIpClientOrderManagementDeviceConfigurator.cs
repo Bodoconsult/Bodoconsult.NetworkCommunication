@@ -20,7 +20,7 @@ public class TcpIpClientOrderManagementDeviceConfigurator : BaseIpDeviceConfigur
     private readonly ILogDataFactory _logDataFactory;
     private readonly IAppLoggerProxyFactory _appLoggerFactory;
     private readonly IAppLoggerProxy _appLoggerProxy;
-    private ISocketProxyFactory _socketProxyFactory;
+    private readonly ISocketProxyFactory _socketProxyFactory;
 
     private IOrderManagementDevice? _orderManagementDevice;
 

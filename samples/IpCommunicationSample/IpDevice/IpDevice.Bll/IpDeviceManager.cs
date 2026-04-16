@@ -23,7 +23,7 @@ public class IpDeviceManager : IIpDeviceManager
     private readonly IAppLoggerProxy _appLogger;
     private readonly ISendPacketProcessFactory _sendPacketProcessFactory;
     private readonly IBusinessTransactionManager _businessTransactionManager;
-    private ISocketProxyFactory _socketProxyFactory;
+    private readonly ISocketProxyFactory _socketProxyFactory;
 
     /// <summary>
     /// Default ctor

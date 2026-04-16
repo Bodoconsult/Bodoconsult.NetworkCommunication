@@ -8,9 +8,9 @@ using IpClient.Bll.Delegates;
 namespace IpClient.Bll.Interfaces;
 
 /// <summary>
-/// Interface for the buisness logic adapter for the TCP/IP channel to the client
-/// </summary>
-public interface IBackendTcpIpBusinessLogicAdapter : IOrderManagementDeviceBusinessLogicAdapter
+    /// Interface for the buisness logic adapter for the TCP/IP channel to the client
+    /// </summary>
+    public interface IBackendTcpIpBusinessLogicAdapter : IOrderManagementDeviceBusinessLogicAdapter
 {
     /// <summary>
     /// Delegate fired when then state of the backend has changed

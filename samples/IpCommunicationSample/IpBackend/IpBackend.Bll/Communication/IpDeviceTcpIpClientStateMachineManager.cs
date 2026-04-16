@@ -22,7 +22,7 @@ public class IpDeviceTcpIpClientStateMachineManager: IStateMachineDeviceManager
     private readonly IAppLoggerProxyFactory _appLoggerFactory;
     private readonly IAppLoggerProxy _appLoggerProxy;
     private readonly IOrderManagerFactory _orderManagerFactory;
-    private ISocketProxyFactory _socketProxyFactory;
+    private readonly ISocketProxyFactory _socketProxyFactory;
 
     /// <summary>
     /// Default ctor

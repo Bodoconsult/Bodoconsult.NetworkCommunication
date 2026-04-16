@@ -30,7 +30,7 @@ public class TncpIpDeviceTcpIpBusinessLogicAdapter : BaseStateMachineDeviceBusin
     /// <param name="order">Current order</param>
     public void StopSnapshotSuccessfully(IStateMachineState state, IOrder order)
     {
-        throw new NotImplementedException();
+        // Do nothing
     }
 
     /// <summary>
@@ -40,7 +40,7 @@ public class TncpIpDeviceTcpIpBusinessLogicAdapter : BaseStateMachineDeviceBusin
     /// <param name="order">Current order</param>
     public void StopSnapshotUnsuccessfully(IStateMachineState state, IOrder order)
     {
-        throw new NotImplementedException();
+        // Do nothing
     }
 
     /// <summary>
@@ -50,7 +50,7 @@ public class TncpIpDeviceTcpIpBusinessLogicAdapter : BaseStateMachineDeviceBusin
     /// <param name="order">Current order</param>
     public void StartSnapshotSuccessfully(IStateMachineState state, IOrder order)
     {
-        throw new NotImplementedException();
+        // Do nothing
     }
 
     /// <summary>
@@ -60,7 +60,7 @@ public class TncpIpDeviceTcpIpBusinessLogicAdapter : BaseStateMachineDeviceBusin
     /// <param name="order">Current order</param>
     public void StartSnapshotUnsuccessfully(IStateMachineState state, IOrder order)
     {
-        throw new NotImplementedException();
+        // Do nothing
     }
 
     /// <summary>
@@ -70,7 +70,7 @@ public class TncpIpDeviceTcpIpBusinessLogicAdapter : BaseStateMachineDeviceBusin
     /// <param name="order">Current order</param>
     public void StartStreamingSuccessfully(IStateMachineState state, IOrder order)
     {
-        throw new NotImplementedException();
+        // Do nothing
     }
 
     /// <summary>
@@ -80,7 +80,7 @@ public class TncpIpDeviceTcpIpBusinessLogicAdapter : BaseStateMachineDeviceBusin
     /// <param name="order">Current order</param>
     public void StartStreamingUnsuccessfully(IStateMachineState state, IOrder order)
     {
-        throw new NotImplementedException();
+        // Do nothing
     }
 
     /// <summary>
@@ -90,7 +90,7 @@ public class TncpIpDeviceTcpIpBusinessLogicAdapter : BaseStateMachineDeviceBusin
     /// <param name="order">Current order</param>
     public void StopStreamingSuccessfully(IStateMachineState state, IOrder order)
     {
-        throw new NotImplementedException();
+        // Do nothing
     }
 
     /// <summary>
@@ -100,7 +100,7 @@ public class TncpIpDeviceTcpIpBusinessLogicAdapter : BaseStateMachineDeviceBusin
     /// <param name="order">Current order</param>
     public void StopStreamingUnsuccessfully(IStateMachineState state, IOrder order)
     {
-        throw new NotImplementedException();
+        // Do nothing
     }
 
     /// <summary>
@@ -110,7 +110,7 @@ public class TncpIpDeviceTcpIpBusinessLogicAdapter : BaseStateMachineDeviceBusin
     /// <param name="order">Current order</param>
     public void DeviceInitSuccessfully(IStateMachineState state, IOrder order)
     {
-        throw new NotImplementedException();
+        // Do nothing
     }
 
     /// <summary>
@@ -120,7 +120,7 @@ public class TncpIpDeviceTcpIpBusinessLogicAdapter : BaseStateMachineDeviceBusin
     /// <param name="order">Current order</param>
     public void DeviceInitUnsuccessfully(IStateMachineState state, IOrder order)
     {
-        throw new NotImplementedException();
+        // Do nothing
     }
 
     #endregion

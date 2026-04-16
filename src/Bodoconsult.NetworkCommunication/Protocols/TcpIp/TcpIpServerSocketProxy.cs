@@ -108,6 +108,7 @@ public class TcpIpServerSocketProxy : TcpIpSocketProxyBase
         try
         {
             var result = await Socket.SendAsync(bytesToSend, CancellationTokenSource.Token);
+            Trace.TraceInformation($"TcpServerSocket: sent {result} bytes");
             return result;
         }
         catch (SocketException socketException)
@@ -147,6 +148,7 @@ public class TcpIpServerSocketProxy : TcpIpSocketProxyBase
         try
         {
             var result = await Socket.SendAsync(bytesToSend, CancellationTokenSource.Token);
+            Trace.TraceInformation($"TcpServerSocket: sent {result} bytes");
             return result;
         }
         catch (SocketException socketException)
@@ -266,6 +268,7 @@ public class TcpIpServerSocketProxy : TcpIpSocketProxyBase
         try
         {
             var result = await Socket.ReceiveAsync(buffer, CancellationTokenSource.Token);
+            Trace.TraceInformation($"TcpServerSocket: received {buffer.Length} bytes");
             return result;
         }
         catch (SocketException socketException)
@@ -307,6 +310,7 @@ public class TcpIpServerSocketProxy : TcpIpSocketProxyBase
         try
         {
             var result = await Socket.ReceiveAsync(buffer, SocketFlags.None, CancellationTokenSource.Token);
+            Trace.TraceInformation($"TcpServerSocket received {buffer.Length} bytes");
             return result;
         }
         catch (SocketException socketException)

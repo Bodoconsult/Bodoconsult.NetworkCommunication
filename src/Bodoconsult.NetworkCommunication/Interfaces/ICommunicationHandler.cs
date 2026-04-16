@@ -10,7 +10,12 @@ public interface ICommunicationHandler:  IDisposable
     /// <summary>
     /// Current <see cref="IDuplexIo"/> instance to use
     /// </summary>
-    public IDuplexIo DuplexIo { get; }
+    IDuplexIo DuplexIo { get; }
+
+    /// <summary>
+    /// Current data messaging config
+    /// </summary>
+    IDataMessagingConfig DataMessagingConfig { get; }
 
     /// <summary>
     /// Is the device connected

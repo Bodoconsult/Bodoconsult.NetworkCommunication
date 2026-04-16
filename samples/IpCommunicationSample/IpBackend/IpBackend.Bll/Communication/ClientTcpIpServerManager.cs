@@ -22,7 +22,7 @@ public class ClientTcpIpServerManager : ISimpleDeviceManager
     private readonly IAppLoggerProxyFactory _appLoggerFactory;
     private readonly IAppLoggerProxy _appLoggerProxy;
     private readonly IBusinessTransactionManager _bridgeTransactionManager;
-    private ISocketProxyFactory _socketProxyFactory;
+    private readonly ISocketProxyFactory _socketProxyFactory;
 
     /// <summary>
     /// Default ctor

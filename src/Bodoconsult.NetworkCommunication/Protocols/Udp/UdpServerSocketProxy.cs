@@ -147,9 +147,13 @@ public class UdpServerSocketProxy : UpdSocketProxyBase
             var result = await UdpClient.ReceiveAsync(CancellationTokenSource.Token);
             SendEndPoint = result.RemoteEndPoint;
 
+            
+
             //Debug.Print($"UDPClient: received {result.Length} bytes from {SendEndPoint}");
 
             Buffer.BlockCopy(result.Buffer, 0, buffer, 0, result.Buffer.Length);
+            Trace.TraceInformation($"UdpServerSocket: received {result.Buffer.Length} bytes");
+
             return result.Buffer.Length;
         }
         catch (SocketException socketException)
@@ -196,6 +200,7 @@ public class UdpServerSocketProxy : UpdSocketProxyBase
             //Debug.Print($"UDPClient: received {result.Length} bytes from {SendEndPoint}");
 
             result.Buffer.CopyTo(buffer);
+            Trace.TraceInformation($"UdpServerSocket: received {result.Buffer.Length} bytes");
             return result.Buffer.Length;
         }
         catch (SocketException socketException)
@@ -296,6 +301,7 @@ public class UdpServerSocketProxy : UpdSocketProxyBase
         try
         {
             var result = await UdpClient.SendAsync(bytesToSend, SendEndPoint, CancellationTokenSource.Token);
+            Trace.TraceInformation($"UdpServerSocket: sent {result} bytes");
             return result;
         }
         catch (SocketException socketException)
@@ -337,6 +343,7 @@ public class UdpServerSocketProxy : UpdSocketProxyBase
         try
         {
             var result = await UdpClient.SendAsync(bytesToSend, SendEndPoint, CancellationTokenSource.Token);
+            Trace.TraceInformation($"UdpServerSocket: sent {result} bytes");
             return result;
         }
         catch (SocketException socketException)

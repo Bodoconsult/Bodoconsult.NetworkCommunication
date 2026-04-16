@@ -1,6 +1,7 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
 
+using System.Diagnostics;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
 using Bodoconsult.NetworkCommunication.Interfaces;
 
@@ -85,18 +86,31 @@ public class DefaultDataMessageCodingProcessor : IDataMessageCodingProcessor
 
         foreach (var codec in MessageCodecs)
         {
-            var result = codec.EncodeDataMessage(dataMessage);
-
-            if (result.ErrorCode == 0)
+            try
             {
-                return result;
+                var result = codec.EncodeDataMessage(dataMessage);
+
+                if (result.ErrorCode == 0)
+                {
+                    return result;
+                }
+            }
+            catch (Exception e)
+            {
+                var s = e.ToString();
+                Trace.TraceError(s);
+                return new OutboundCodecResult
+                {
+                    ErrorCode = 1,
+                    ErrorMessage = $"Exception{s}"
+                };
             }
         }
 
         return new OutboundCodecResult
-        {
-            ErrorCode = 1,
-            ErrorMessage = "No codecs found for the message"
-        };
+            {
+                ErrorCode = 1,
+                ErrorMessage = "No codecs found for the message"
+            };
+        }
     }
-}

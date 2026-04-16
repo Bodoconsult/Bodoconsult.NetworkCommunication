@@ -21,7 +21,7 @@ public class TcpIpServerDeviceConfigurator: BaseIpDeviceConfigurator
     private readonly IAppEventSourceFactory _appEventSourceFactory;
     private readonly IOrderManagementClientNotificationManager _clientNotificationManager;
     private readonly IAppLoggerProxy _appLoggerProxy;
-    private ISocketProxyFactory _socketProxyFactory;
+    private readonly ISocketProxyFactory _socketProxyFactory;
 
     /// <summary>
     /// Default ctor

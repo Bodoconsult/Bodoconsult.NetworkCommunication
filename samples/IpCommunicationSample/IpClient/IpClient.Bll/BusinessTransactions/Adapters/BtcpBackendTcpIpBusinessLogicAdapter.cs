@@ -47,7 +47,7 @@ public class BtcpBackendTcpIpBusinessLogicAdapter : BaseOrderManagementDeviceBus
     public IBusinessTransactionReply RequestDeviceStartStreamingState(IBusinessTransactionRequestData request)
     {
         var transactionId = ClientSideBusinessTransactionIds.StartStreaming;
-        var orderName = "RequestDeviceStartStreamingState";
+        const string orderName = "RequestDeviceStartStreamingState";
 
         return CreateAndExecuteOrder(transactionId, orderName);
     }
@@ -59,7 +59,7 @@ public class BtcpBackendTcpIpBusinessLogicAdapter : BaseOrderManagementDeviceBus
     public IBusinessTransactionReply RequestDeviceStartSnapshotState(IBusinessTransactionRequestData request)
     {
         var transactionId = ClientSideBusinessTransactionIds.StartSnapshot;
-        var orderName = "RequestDeviceStartSnapshotState";
+        const string orderName = "RequestDeviceStartSnapshotState";
 
         return CreateAndExecuteOrder(transactionId, orderName);
     }
@@ -71,7 +71,7 @@ public class BtcpBackendTcpIpBusinessLogicAdapter : BaseOrderManagementDeviceBus
     public IBusinessTransactionReply RequestDeviceStopStreamingState(IBusinessTransactionRequestData request)
     {
         var transactionId = ClientSideBusinessTransactionIds.StopStreaming;
-        var orderName = "RequestDeviceStopStreamingState";
+        const string orderName = "RequestDeviceStopStreamingState";
 
         return CreateAndExecuteOrder(transactionId, orderName);
     }
@@ -83,7 +83,7 @@ public class BtcpBackendTcpIpBusinessLogicAdapter : BaseOrderManagementDeviceBus
     public IBusinessTransactionReply RequestDeviceStopSnapshotState(IBusinessTransactionRequestData request)
     {
         var transactionId = ClientSideBusinessTransactionIds.StopSnapshot;
-        var orderName = "RequestDeviceStopSnapshotState";
+        const string orderName = "RequestDeviceStopSnapshotState";
 
         return CreateAndExecuteOrder(transactionId, orderName);
     }

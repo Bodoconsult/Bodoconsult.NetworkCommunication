@@ -14,7 +14,6 @@ namespace Bodoconsult.NetworkCommunication.Communication.Sending;
 /// </summary>
 public class SendPacketProcess : BaseSendPacketProcess
 {
-
     private CancellationTokenSource? _ctsWait;
 
     private TaskCompletionSource<IInboundHandShakeMessage?>? _taskCompletionSourceWait;
@@ -90,7 +89,7 @@ public class SendPacketProcess : BaseSendPacketProcess
     private void StartSendingMessage()
     {
         // Create cancellation token
-        _ctsWait = new CancellationTokenSource(AdditionalTimeout);
+        _ctsWait = new CancellationTokenSource(Timeout + AdditionalTimeout);
         _ctsWait.Token.Register(() =>
         {
             if (_taskCompletionSourceSend is not

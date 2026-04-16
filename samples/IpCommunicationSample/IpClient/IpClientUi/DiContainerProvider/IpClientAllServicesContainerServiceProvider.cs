@@ -3,8 +3,12 @@
 using Bodoconsult.App.Abstractions.DependencyInjection;
 using Bodoconsult.App.Abstractions.Interfaces;
 using Bodoconsult.App.Avalonia.ReactiveUI.Regions;
+using Bodoconsult.App.CentralServices;
+using Bodoconsult.App.Factories;
 using Bodoconsult.App.Logging;
 using Bodoconsult.App.ReactiveUI.Interfaces;
+using IpClient.Bll.BusinessLogic;
+using IpClient.Bll.Interfaces;
 using IpClientUi.AppData;
 using IpClientUi.ViewModels;
 using IpClientUi.Views;
@@ -23,10 +27,13 @@ public class IpClientAllServicesContainerServiceProvider : IDiContainerServicePr
     public void AddServices(DiContainer diContainer)
     {
         // AppEventListener 
+        diContainer.AddSingleton<IAppDateService, AppDateService>();
         diContainer.AddSingleton<IAppEventListener, AppEventListener>();
+        diContainer.AddSingleton<IAppEventSourceFactory, FakeAppEventSourceFactory>();
+        diContainer.AddSingleton<IClientUiManager, ClientUiManager>();
 
         // Load all other services required for the app now
-        
+
         // Regions manager with all window types loaded with regions
         var rm = new AvaloniaRegionManager();
         rm.RegisterWindow<MainWindow, IpClientMainWindowViewModel>(["DocumentRegion", "MenuRegion"], null);
@@ -43,6 +50,7 @@ public class IpClientAllServicesContainerServiceProvider : IDiContainerServicePr
 
         //diContainer.AddSingleton<IViewLocator, SimpleViewLocator>(); 
         diContainer.AddSingleton<IApplicationService, IpClientService>();
+        
 
         // ...
     }

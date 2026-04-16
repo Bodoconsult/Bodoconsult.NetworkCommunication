@@ -13,7 +13,7 @@ namespace Bodoconsult.NetworkCommunication.Communication;
 /// </summary>
 public class IpCommunicationAdapter : ICommunicationAdapter
 {
-    private ICommunicationHandler? _communicationHandler;
+    
     private readonly ICommunicationHandlerFactory _communicationHandlerFactory;
     private IDeviceState _deviceState = DefaultDeviceStates.DeviceStateOffline;
     private readonly Lock _comDevActionLockObject = new();
@@ -50,6 +50,11 @@ public class IpCommunicationAdapter : ICommunicationAdapter
     {
         return _deviceState == DefaultDeviceStates.DeviceStateOnline;
     }
+
+    /// <summary>
+    /// Current communication handler
+    /// </summary>
+    public ICommunicationHandler? CommunicationHandler { get; private set; }
 
     /// <summary>
     /// Check if the tower comm is online
@@ -96,12 +101,12 @@ public class IpCommunicationAdapter : ICommunicationAdapter
     /// <summary>
     /// This property returns whether the communication object is valid and can be used
     /// </summary>
-    public bool IsCommunicationHandlerNotNull => _communicationHandler != null;
+    public bool IsCommunicationHandlerNotNull => CommunicationHandler != null;
 
     /// <summary>
     /// Is the adapter connected
     /// </summary>
-    public bool IsConnected => IsFakeSendingActivated || (_communicationHandler?.IsConnected ?? false);
+    public bool IsConnected => IsFakeSendingActivated || (CommunicationHandler?.IsConnected ?? false);
 
     /// <summary>
     /// This property has to be set to false for production. Is only for testing
@@ -120,9 +125,9 @@ public class IpCommunicationAdapter : ICommunicationAdapter
     /// <returns>Reply of the device</returns>
     public MessageSendingResult SendDataMessage(IOutboundDataMessage command)
     {
-        ArgumentNullException.ThrowIfNull(_communicationHandler);
+        ArgumentNullException.ThrowIfNull(CommunicationHandler);
 
-        return _communicationHandler.SendMessage(command);
+        return CommunicationHandler.SendMessage(command);
     }
 
     /// <summary>
@@ -246,7 +251,7 @@ public class IpCommunicationAdapter : ICommunicationAdapter
             DataMessagingConfig.MonitorLogger.LogError(msg, e);
             DataMessagingConfig.AppLogger.LogError($"{DataMessagingConfig.LoggerId}{msg}", e);
 
-            _communicationHandler = null;
+            CommunicationHandler = null;
             IsComDevActionInProgress = false;
             SetOrderProcessingStateDelegate?.Invoke(true);
         }
@@ -277,7 +282,7 @@ public class IpCommunicationAdapter : ICommunicationAdapter
 
         SetOrderProcessingStateDelegate?.Invoke(false);
 
-        if (_communicationHandler == null)
+        if (CommunicationHandler == null)
         {
             SetOrderProcessingStateDelegate?.Invoke(true);
             IsComDevActionInProgress = false;
@@ -288,13 +293,13 @@ public class IpCommunicationAdapter : ICommunicationAdapter
         {
             IsComDevActionInProgress = true;
 
-            if (_communicationHandler.IsConnected)
+            if (CommunicationHandler.IsConnected)
             {
-                _communicationHandler.Disconnect();
+                CommunicationHandler.Disconnect();
                 DataMessagingConfig.ResetOutboundDataMessageFactoryDelegate?.Invoke();
             }
 
-            _communicationHandler.Dispose();
+            CommunicationHandler.Dispose();
         }
         catch (Exception e)
         {
@@ -304,7 +309,7 @@ public class IpCommunicationAdapter : ICommunicationAdapter
         finally
         {
             // RL: Comm handler has to be reset in every case!!!!!!!
-            _communicationHandler = null;
+            CommunicationHandler = null;
 
             SetOrderProcessingStateDelegate?.Invoke(true);
 
@@ -328,17 +333,17 @@ public class IpCommunicationAdapter : ICommunicationAdapter
 
     private void InitCommunicationObjects()
     {
-        if (_communicationHandler != null)
+        if (CommunicationHandler != null)
         {
-            _communicationHandler.Disconnect();
-            _communicationHandler.Dispose();
-            _communicationHandler = null;
+            CommunicationHandler.Disconnect();
+            CommunicationHandler.Dispose();
+            CommunicationHandler = null;
         }
 
-        _communicationHandler = _communicationHandlerFactory.CreateInstance(DataMessagingConfig);
-        _communicationHandler.Connect();
+        CommunicationHandler = _communicationHandlerFactory.CreateInstance(DataMessagingConfig);
+        CommunicationHandler.Connect();
 
-        var connectionEstablishedMessage = $"{DataMessagingConfig.LoggerId}connection to {DataMessagingConfig.IpAddress}:{DataMessagingConfig.Port} established: {_communicationHandler?.IsConnected}.";
+        var connectionEstablishedMessage = $"{DataMessagingConfig.LoggerId}connection to {DataMessagingConfig.IpAddress}:{DataMessagingConfig.Port} established: {CommunicationHandler?.IsConnected}.";
         DataMessagingConfig.AppLogger.LogInformation(connectionEstablishedMessage);
     }
 
@@ -408,6 +413,6 @@ public class IpCommunicationAdapter : ICommunicationAdapter
     /// <summary>Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.</summary>
     public void Dispose()
     {
-        _communicationHandler?.Dispose();
+        CommunicationHandler?.Dispose();
     }
 }

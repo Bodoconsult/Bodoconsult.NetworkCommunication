@@ -12,9 +12,9 @@ using Bodoconsult.NetworkCommunication.Tests.TestData;
 
 namespace Bodoconsult.NetworkCommunication.Tests.Tcp.Sending;
 
+[TestFixture]
 public class SendPackageProcessDuplexIoTests
 {
-
     private readonly IAppLoggerProxy _logger = new AppLoggerProxy(new FakeLoggerFactory(), new LogDataFactory());
 
     [OneTimeTearDown]

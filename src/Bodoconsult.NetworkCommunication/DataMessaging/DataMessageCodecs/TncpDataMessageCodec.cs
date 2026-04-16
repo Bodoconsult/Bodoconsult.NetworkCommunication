@@ -4,6 +4,7 @@ using System.Text;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
 using Bodoconsult.NetworkCommunication.Helpers;
 using Bodoconsult.NetworkCommunication.Interfaces;
+using Bodoconsult.NetworkCommunication.OrderManagement.ParameterSets;
 
 namespace Bodoconsult.NetworkCommunication.DataMessaging.DataMessageCodecs;
 
@@ -111,7 +112,7 @@ public class TncpDataMessageCodec : BaseDataMessageCodec
         var result = new OutboundCodecResult();
         if (message is not TncpOutboundDataMessage tMessage)
         {
-            result.ErrorMessage = "SdcpDataMessage required for TncpDataMessageCodec";
+            result.ErrorMessage = "TncpOutboundDataMessage required for TncpDataMessageCodec";
             result.ErrorCode = 1;
             return result;
         }
@@ -123,14 +124,28 @@ public class TncpDataMessageCodec : BaseDataMessageCodec
         {
             if (string.IsNullOrEmpty(tMessage.TelnetCommand))
             {
-                if (tMessage.DataBlock == null || tMessage.DataBlock.Data.Length == 0)
+                if (tMessage.DataBlock is TncpParameterSet ps)
                 {
-                    result.ErrorMessage = "TncpDataMessageCodec: datablock or TelentCommand must not be empty";
-                    result.ErrorCode = 5;
-                    return result;
+                    if (string.IsNullOrEmpty(ps.TelnetCommand))
+                    {
+                        result.ErrorMessage = "TncpDataMessageCodec: TncpParameterSet.TelnetCommand must not be empty";
+                        result.ErrorCode = 6;
+                        return result;
+                    }
+                    var bytes = Encoding.UTF8.GetBytes(ps.TelnetCommand!).ToList();
+                    data.AddRange(bytes);
                 }
+                else
+                {
+                    if (tMessage.DataBlock == null || tMessage.DataBlock.Data.Length == 0)
+                    {
+                        result.ErrorMessage = "TncpDataMessageCodec: datablock or TelnetCommand must not be empty";
+                        result.ErrorCode = 5;
+                        return result;
+                    }
 
-                DataBlockCodingProcessor.FromDataBlockToBytes(data, tMessage.DataBlock);
+                    DataBlockCodingProcessor.FromDataBlockToBytes(data, tMessage.DataBlock);
+                }
             }
             else
             {

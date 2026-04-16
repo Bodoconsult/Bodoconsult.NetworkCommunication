@@ -33,7 +33,7 @@ public class BackendManager : IBackendManager
     private readonly IOrderPipelineFactory _orderPipelineFactory;
     private readonly IOrderIdGenerator _orderIdGenerator;
     private readonly IBusinessTransactionManager _businessTransactionManager;
-    private ISocketProxyFactory _socketProxyFactory;
+    private readonly ISocketProxyFactory _socketProxyFactory;
 
     /// <summary>
     /// Default ctor

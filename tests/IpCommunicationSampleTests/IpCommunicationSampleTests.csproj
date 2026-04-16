@@ -46,6 +46,7 @@
 		<ProjectReference Include="..\..\samples\IpCommunicationSample\IpBackend\IpBackend.Bll\IpBackend.Bll.csproj" />
 		<ProjectReference Include="..\..\samples\IpCommunicationSample\IpBackend\IpBackend.Service\IpBackendService.csproj" />
 		<ProjectReference Include="..\..\samples\IpCommunicationSample\IpClient\IpClient.Bll\IpClient.Bll.csproj" />
+		<ProjectReference Include="..\..\samples\IpCommunicationSample\IpClient\IpClientUi\IpClientUi.csproj" />
 		<ProjectReference Include="..\..\samples\IpCommunicationSample\IpDevice\IpDevice.Bll\IpDevice.Bll.csproj" />
 		<ProjectReference Include="..\..\samples\IpCommunicationSample\IpDevice\IpDevice.Service\IpDeviceService.csproj" />
 		<ProjectReference Include="..\..\src\Bodoconsult.NetworkCommunication\Bodoconsult.NetworkCommunication.csproj" />

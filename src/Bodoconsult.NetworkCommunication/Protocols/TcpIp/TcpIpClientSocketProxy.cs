@@ -1,11 +1,12 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 // Licence MIT
 
+using Bodoconsult.NetworkCommunication.Helpers;
+using Bodoconsult.NetworkCommunication.Interfaces;
+using System;
 using System.Diagnostics;
 using System.Net;
 using System.Net.Sockets;
-using Bodoconsult.NetworkCommunication.Helpers;
-using Bodoconsult.NetworkCommunication.Interfaces;
 
 namespace Bodoconsult.NetworkCommunication.Protocols.TcpIp;
 
@@ -99,6 +100,7 @@ public class TcpIpClientSocketProxy : TcpIpSocketProxyBase
         try
         {
             var result = await Socket.SendAsync(bytesToSend, CancellationTokenSource.Token);
+            Trace.TraceInformation($"TcpClientSocket: Sent {bytesToSend.Length} bytes");
             return result;
         }
         catch (SocketException socketException)
@@ -139,6 +141,7 @@ public class TcpIpClientSocketProxy : TcpIpSocketProxyBase
         try
         {
             var result = await Socket.SendAsync(bytesToSend, CancellationTokenSource.Token);
+            Trace.TraceInformation($"TcpClientSocket: Sent {bytesToSend.Length} bytes");
             return result;
         }
         catch (SocketException socketException)
@@ -264,6 +267,7 @@ public class TcpIpClientSocketProxy : TcpIpSocketProxyBase
         try
         {
             var result = await Socket.ReceiveAsync(buffer, CancellationTokenSource.Token);
+            Trace.TraceInformation($"TcpClientSocket: received {result} bytes");
             return result;
         }
         catch (SocketException socketException)
@@ -304,6 +308,7 @@ public class TcpIpClientSocketProxy : TcpIpSocketProxyBase
         try
         {
             var result = await Socket.ReceiveAsync(buffer, SocketFlags.None, CancellationTokenSource.Token);
+            Trace.TraceInformation($"TcpClientSocket: received {result} bytes");
             return result;
         }
         catch (SocketException socketException)

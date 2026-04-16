@@ -2,27 +2,39 @@
 
 using Bodoconsult.App;
 using Bodoconsult.App.Abstractions.DependencyInjection;
+using Bodoconsult.App.Abstractions.Interfaces;
+using Bodoconsult.App.BusinessTransactions;
 using Bodoconsult.App.BusinessTransactions.RequestData;
 using Bodoconsult.App.Helpers;
+using Bodoconsult.App.Interfaces;
+using Bodoconsult.NetworkCommunication.Factories;
 using Bodoconsult.NetworkCommunication.Interfaces;
+using Bodoconsult.NetworkCommunication.OrderManagement.Processors;
+using Bodoconsult.NetworkCommunication.Protocols.TcpIp;
 using IpBackend.Bll.BusinessLogic.Adapters;
 using IpBackend.Bll.Interfaces;
 using IpBackendService.DiContainerProvider;
+using IpClient.Bll.BusinessLogic;
+using IpClient.Bll.Interfaces;
+using IpClientUi.DiContainerProvider;
 using IpCommunicationSampleTests.App;
 using IpDevice.Bll.Interfaces;
 using IpDeviceService.DiContainerProvider;
+using IBackendTcpIpBusinessLogicAdapter = IpClient.Bll.Interfaces.IBackendTcpIpBusinessLogicAdapter;
 
-namespace IpCommunicationSampleTests.Backend.RealWorld;
+namespace IpCommunicationSampleTests.Client.RealWorld;
 
 [TestFixture]
-internal class UdpReceivingTests
+internal class TcpIpReceivingTests
 {
     private IIpDeviceManager? _deviceManager;
 
     private IBackendManager? _backendManager;
+    private IClientUiManager? _clientManager;
 
     private readonly DiContainer _deviceDiContainer = new();
     private readonly DiContainer _backendDiContainer = new();
+    private readonly DiContainer _clientDiContainer = new();
 
 
     private long _messageCounter;
@@ -75,6 +87,15 @@ internal class UdpReceivingTests
 
         _backendDiContainer.BuildServiceProvider();
 
+        // Client
+        var factory3 = new IpClientProductionDiContainerServiceProviderPackageFactory(globals);
+        var package3 = factory3.CreateInstance();
+
+        package3.AddServices(_clientDiContainer);
+
+        _clientDiContainer.BuildServiceProvider();
+
+
         //globals.DiContainer.AddSingleton<IBusinessTransactionManager, BusinessTransactionManager>();
         //globals.DiContainer.AddSingleton<ISyncOrderManager, SyncOrderManager>();
         //globals.DiContainer.AddSingleton<ISocketProxyFactory, SocketProxyFactory>();
@@ -120,7 +141,7 @@ internal class UdpReceivingTests
 
         _backendManager.StartIpDeviceTcpIpCommunication();
         _backendManager.StartIpDeviceUdpCommunication();
-
+        _backendManager.StartClientCommunication();
 
         ArgumentNullException.ThrowIfNull(_backendManager.IpDeviceUdp?.IpDevice);
         _backendManager.IpDeviceUdp.IpDevice.DataMessagingConfig.RaiseAppLayerDataMessageReceivedDelegate = RaiseAppLayerDataMessageReceivedDelegate;
@@ -153,8 +174,23 @@ internal class UdpReceivingTests
         _deviceManager.BackendTcpIp.IpDevice.StartComm();
     }
 
+    private void CreateAndStartClient()
+    {
+        var clientConfig = new IpConfig { IpAddress = _startParams.IpAddress3, Port = _startParams.Port3 };
+
+        _clientManager = _clientDiContainer.Get<IClientUiManager>();
+
+        ArgumentNullException.ThrowIfNull(_clientManager);
+
+        _clientManager.BackendTcpIpConfig = clientConfig;
+
+        _clientManager.LoadBackendTcpIp();
+        _clientManager.LoadBusinessTransactions();
+        _clientManager.StartBackendTcpIpCommunication();
+    }
+
     [Test]
-    public void DeviceStartStreaming2_ValidSetup_MessagesSent()
+    public void ClientStartStreaming2_ValidSetup_MessagesSent()
     {
         // Arrange 
         CreateDiContainer();
@@ -163,28 +199,30 @@ internal class UdpReceivingTests
 
         CreateAndStartBackend();
 
-        ArgumentNullException.ThrowIfNull(_deviceManager?.BackendUdp?.DeviceBusinessLogicAdapter);
+        CreateAndStartClient();
 
-        var adapter = (IBackendUdpBusinessLogicAdapter)_deviceManager.BackendUdp.DeviceBusinessLogicAdapter;
+        ArgumentNullException.ThrowIfNull(_clientManager?.BackendTcpIp?.DeviceBusinessLogicAdapter);
+
+        var adapter = (IBackendTcpIpBusinessLogicAdapter)_clientManager.BackendTcpIp.DeviceBusinessLogicAdapter;
 
         var request = new EmptyBusinessTransactionRequestData();
         var request2 = new EmptyBusinessTransactionRequestData();
 
         // Act  
-        adapter.StartStreaming2(request);
+        adapter.RequestDeviceStartStreamingState(request);
 
         //Thread.Sleep(5000);
 
         Wait.Until(CheckMessages);
 
-        adapter.StopStreaming(request2);
+        adapter.RequestDeviceStopStreamingState(request2);
 
         // Assert
         Assert.That(CheckMessages(), Is.True);
     }
 
     [Test]
-    public void BackendRequestDeviceStartStreamingState_ValidSetup_MessagesSent()
+    public void ClientRequestDeviceStartStreamingState_ValidSetup_MessagesSent()
     {
         // Arrange 
         CreateDiContainer();
@@ -193,12 +231,14 @@ internal class UdpReceivingTests
 
         CreateAndStartBackend();
 
-        ArgumentNullException.ThrowIfNull(_backendManager?.IpDeviceTcpIp?.DeviceBusinessLogicAdapter);
-        ArgumentNullException.ThrowIfNull(_backendManager.IpDeviceTcpIp?.Device?.CurrentState);
+        CreateAndStartClient();
+
+        ArgumentNullException.ThrowIfNull(_clientManager?.BackendTcpIp?.DeviceBusinessLogicAdapter);
+        ArgumentNullException.ThrowIfNull(_backendManager?.IpDeviceTcpIp?.Device?.CurrentState);
 
         Wait.Until(() => _backendManager.IpDeviceTcpIp.Device.CurrentState.Id == DefaultStateIds.DeviceReadyState);
 
-        var adapter = (TncpIpDeviceTcpIpBusinessLogicAdapter)_backendManager.IpDeviceTcpIp.DeviceBusinessLogicAdapter;
+        var adapter = (IBackendTcpIpBusinessLogicAdapter)_clientManager.BackendTcpIp.DeviceBusinessLogicAdapter;
 
         var request = new EmptyBusinessTransactionRequestData();
         var request2 = new EmptyBusinessTransactionRequestData();
@@ -224,7 +264,7 @@ internal class UdpReceivingTests
         {
             adapter.RequestDeviceStopStreamingState(request2);
         });
-            
+
         Wait.Until(() => _backendManager.IpDeviceTcpIp.Device.CurrentState.Id == DefaultStateIds.DeviceReadyState, 10000);
 
         // Assert
@@ -233,7 +273,7 @@ internal class UdpReceivingTests
 
     private bool CheckMessages()
     {
-        // ToDo: better criteria
+        // ToDo : improve criteria
         return true;
         //return _messageCounter != 0;
     }

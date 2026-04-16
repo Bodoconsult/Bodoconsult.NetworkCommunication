@@ -42,6 +42,11 @@ public class FakeIpCommunicationAdapter : ICommunicationAdapter
     public bool IsConnected => PingResult;
 
     /// <summary>
+    /// Current communication handler
+    /// </summary>
+    public ICommunicationHandler? CommunicationHandler { get; set; }
+
+    /// <summary>
     /// This property returns whether the communication object is valid and can be used
     /// </summary>
     public bool IsCommunicationHandlerNotNull => PingResult;

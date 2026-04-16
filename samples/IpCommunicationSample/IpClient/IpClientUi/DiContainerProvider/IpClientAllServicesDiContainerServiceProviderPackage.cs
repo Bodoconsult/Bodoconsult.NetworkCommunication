@@ -3,6 +3,7 @@
 using Bodoconsult.App.Abstractions.Interfaces;
 using Bodoconsult.App.DependencyInjection;
 using Bodoconsult.I18N.DependencyInjection;
+using Bodoconsult.NetworkCommunication.DependencyInjection;
 using IpClientUi.I18N;
 
 namespace IpClientUi.DiContainerProvider;
@@ -37,6 +38,10 @@ public class IpClientAllServicesDiContainerServiceProviderPackage : BaseDiContai
         provider = new I18NDiContainerServiceProvider(factory);
 
         //provider = new DummyI18NDiContainerServiceProvider();
+        ServiceProviders.Add(provider);
+
+        // Add networking features
+        provider = new OrderManagementDataMessagingDiContainerServiceProvider();
         ServiceProviders.Add(provider);
 
         // App specific services

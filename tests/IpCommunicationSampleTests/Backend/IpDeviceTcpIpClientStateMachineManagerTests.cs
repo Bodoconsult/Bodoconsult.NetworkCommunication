@@ -5,6 +5,7 @@ using Bodoconsult.App.Benchmarking;
 using Bodoconsult.App.Factories;
 using Bodoconsult.App.Logging;
 using Bodoconsult.NetworkCommunication.ClientNotifications;
+using Bodoconsult.NetworkCommunication.DataMessaging.DataMessageProcessingPackages;
 using Bodoconsult.NetworkCommunication.Factories;
 using Bodoconsult.NetworkCommunication.Interfaces;
 using Bodoconsult.NetworkCommunication.OrderManagement.Processors;
@@ -89,6 +90,7 @@ internal class IpDeviceTcpIpClientStateMachineManagerTests
         {
             Assert.That(m.Device, Is.Not.Null);
             Assert.That(m.DeviceBusinessLogicAdapter, Is.Not.Null);
+            Assert.That(m.Device.DataMessagingConfig.DataMessageProcessingPackage, Is.TypeOf<TncpDataMessageProcessingPackage>());
         }
     }
 }
