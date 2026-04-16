@@ -93,6 +93,7 @@ public class TcpIpClientDeviceConfigurator : BaseIpDeviceConfigurator
         
         var factory = new BasicOrderManagementDeviceFactory(_clientNotificationManager, commAdapterFactory);
         Device = factory.CreateInstance(DataMessagingConfig);
+
         var adapter = businessLogicAdapterFactory.CreateInstance(Device);
         Device.LoadDeviceBusinessLogicAdapter(adapter);
     }

@@ -1,0 +1,29 @@
+﻿<reactiveUi:ReactiveUserControl     x:TypeArguments="viewModels:StartMessagingViewModel"
+                                    x:Class="IpClientUi.Views.StartMessagingView"
+                                    xmlns:reactiveUi="http://reactiveui.net"
+                                    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                                    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                                    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                                    xmlns:controls="https://github.com/avaloniaui"
+                                    xmlns:viewModels="clr-namespace:IpClientUi.ViewModels"
+                                    mc:Ignorable="d"
+                                    d:DesignHeight="450" d:DesignWidth="800">
+    <controls:Design.DataContext>
+		<viewModels:StartMessagingViewModel/>
+    </controls:Design.DataContext>
+
+    <controls:Grid>
+		<controls:StackPanel>
+			<controls:TextBox>Start messaging</controls:TextBox>
+            <controls:CheckBox IsChecked="{controls:Binding Snapshot}">Snapshot?</controls:CheckBox>
+			<controls:CheckBox IsChecked="{controls:Binding Channel1}">Show channel 1?</controls:CheckBox>
+			<controls:CheckBox IsChecked="{controls:Binding Channel2}">Show channel 2?</controls:CheckBox>
+			<controls:CheckBox IsChecked="{controls:Binding Channel3}">Show channel 3?</controls:CheckBox>
+			<controls:CheckBox IsChecked="{controls:Binding Channel4}">Show channel 4?</controls:CheckBox>
+			<controls:Button Command="{controls:Binding StartMessagingCommand}">Start messaging</controls:Button>
+		</controls:StackPanel>
+
+		<!--<controls:TextBlock x:Name="PathTextBlock" Foreground="Black" Margin="10" />-->
+	</controls:Grid>
+</reactiveUi:ReactiveUserControl>

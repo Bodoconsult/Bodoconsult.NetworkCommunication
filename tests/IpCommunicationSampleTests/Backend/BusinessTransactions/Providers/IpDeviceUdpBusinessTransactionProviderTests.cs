@@ -1,8 +1,8 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
-using IpBackend.Bll.BusinessTransactions;
 using IpBackend.Bll.BusinessTransactions.Providers;
 using IpBackend.Bll.Interfaces;
+using IpCommunicationSample.Common.BusinessTransactions;
 using Moq;
 
 namespace IpCommunicationSampleTests.Backend.BusinessTransactions.Providers;
@@ -40,13 +40,13 @@ internal class IpDeviceUdpBusinessTransactionProviderTests
         var provider = CreateProvider();
 
         // Act
-        var transaction = provider.Transaction5_SendClientHello();
+        var transaction = provider.Transaction205_SendClientHello();
 
         // Assert
         using (Assert.EnterMultipleScope())
         {
             Assert.That(transaction, Is.Not.Null);
-            Assert.That(transaction.Id, Is.EqualTo(BackendBusinessTransactionCodes.SendClientHello));
+            Assert.That(transaction.Id, Is.EqualTo(ServerSideBusinessTransactionIds.SendClientHello));
             Assert.That(transaction.RunBusinessTransactionDelegate, Is.Not.Null);
             Assert.That(transaction.AllowedRequestDataTypes, Has.Count.EqualTo(1));
         }

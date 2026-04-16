@@ -388,14 +388,14 @@ public class OrderPipeline : IOrderPipeline
         {
             var order = proc.Order;
 
-            if (order == null )
-            {
-                if (!proc.IsCancelled)
-                {
-                    proc.Cancel(true, false);
-                }
-                continue;
-            }
+            //if (order == null )
+            //{
+            //    if (!proc.IsCancelled)
+            //    {
+            //        proc.Cancel(true, false);
+            //    }
+            //    continue;
+            //}
 
             if (order.Id != orderId)
             {
@@ -453,10 +453,10 @@ public class OrderPipeline : IOrderPipeline
     /// <param name="errorCode">Error code to set for the order</param>
     public void CancelOrder(IOrder order, int errorCode)
     {
-        if (order == null)
-        {
-            return;
-        }
+        //if (order == null)
+        //{
+        //    return;
+        //}
 
         var proc = _executionQueue.Values.ToList().FirstOrDefault(x => x.Order!= null && x.Order.Id == order.Id && !x.Order.IsCancelled);
 

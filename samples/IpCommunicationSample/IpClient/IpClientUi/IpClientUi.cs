@@ -34,6 +34,8 @@ public class IpClientAppBuilder : BaseAvaloniaReactiveUiAppBuilder
     /// <param name="locator">The locator to use for the app instance</param>
     public override void LoadViewLocation(DefaultViewLocator locator)
     {
+        locator.Map<StartMessagingViewModel, StartMessagingView>(() => new StartMessagingView());
+        locator.Map<StopMessagingViewModel, StopMessagingView>(() => new StopMessagingView());
         locator.Map<FirstViewModel, FirstView>(() => new FirstView());
         locator.Map<SecondViewModel, SecondView>(() => new SecondView());
     }

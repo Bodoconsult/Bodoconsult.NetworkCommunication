@@ -22,7 +22,7 @@ public abstract class BaseSendPacketProcess : ISendPacketProcess, IAsyncDisposab
     /// <summary>
     /// Timeout for waiting for an ackknowledgement
     /// </summary>
-    public int Timeout { get; set; } = 12000;  // 4 * wait state timeout for old devices (12s) plus 4 * 5s waiting interval plus transaction time 5s
+    public int Timeout { get; set; } = DeviceCommunicationBasics.WaitForAckTimeout;
 
     /// <summary>
     /// The time interval in ms between 2 tries to send the message
@@ -159,8 +159,6 @@ public abstract class BaseSendPacketProcess : ISendPacketProcess, IAsyncDisposab
     /// </summary>
     public void ProcessDone()
     {
-
-
         // Call Context.ProcessDone() only if result was not TimeOut. Otherwise the repeated sending loop is broken
         if (ProcessExecutionResult == OrderExecutionResultState.Timeout)
         {
@@ -324,10 +322,11 @@ public abstract class BaseSendPacketProcess : ISendPacketProcess, IAsyncDisposab
 
         _ctsMain?.Dispose();
         _ctsMain = null;
-        //Watch = null;
         TaskCompletionSource = null;
+        //Watch = null;
 
-        Debug.Print($"BSSP: left MAIN waiting {DateTime.Now:O}");
+
+        Debug.Print($"BSSP: left MAIN waiting {DateTime.Now:O}. Result {result}");
 
         if (!result)
         {
@@ -338,6 +337,7 @@ public abstract class BaseSendPacketProcess : ISendPacketProcess, IAsyncDisposab
         UnregisterWaitState();
 
         Debug.Print($"BSSP: execution finished {DateTime.Now:O}");
+        
     }
 
     /// <summary>

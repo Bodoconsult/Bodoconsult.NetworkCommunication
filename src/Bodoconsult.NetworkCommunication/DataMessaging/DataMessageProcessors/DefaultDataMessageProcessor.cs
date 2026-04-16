@@ -1,5 +1,6 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
+using System.Diagnostics;
 using Bodoconsult.App.Helpers;
 using Bodoconsult.NetworkCommunication.Interfaces;
 
@@ -23,6 +24,8 @@ public class DefaultDataMessageProcessor : BaseDataMessageProcessor
     /// <param name="message">Message to process</param>
     public override void ProcessMessage(IInboundMessage message)
     {
+        Trace.TraceInformation($"DefaultDataMessageProcessor: received message {message.MessageId}");
+
         // Handshake received
         if (message is IInboundHandShakeMessage handShake)
         {
@@ -41,7 +44,9 @@ public class DefaultDataMessageProcessor : BaseDataMessageProcessor
 
     private void ProcessDataMessage(IInboundDataMessage dataMessage)
     {
+        ArgumentNullException.ThrowIfNull(Config.RaiseCommLayerDataMessageReceivedDelegate);
+
         // Now process the message
-        AsyncHelper.FireAndForget2(() => Config.RaiseCommLayerDataMessageReceivedDelegate?.Invoke(dataMessage)).ContinueWith(Callback);
+        AsyncHelper.FireAndForget2(() => Config.RaiseCommLayerDataMessageReceivedDelegate.Invoke(dataMessage)).ContinueWith(Callback);
     }
 }

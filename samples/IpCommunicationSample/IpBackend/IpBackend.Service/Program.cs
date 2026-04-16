@@ -15,20 +15,15 @@ internal static class Program
 
     private static void Main(string[] args)
     {
-
-        Debug.Print("Hello, World!");
-
-        Debug.Print("IpBackendService initiation starts...");
-
         var globals = Globals.Instance;
         globals.LoggingConfig.AddDefaultLoggerProviderConfiguratorsForBackgroundServiceApp();
 
         // Set additional app start parameters as required
         var param = globals.AppStartParameter;
-        param.AppName = "IpBackendService: Demo app";
+        param.AppName = "SfxBackgroundService";
         param.SoftwareTeam = "Robert Leisner";
-        param.LogoRessourcePath = "IpBackendService.Resources.logo.jpg";
-        param.AppFolderName = "IpBackendService";
+        param.LogoRessourcePath = "SfxBackgroundService.Resources.logo.jpg";
+        param.AppFolderName = "SfxBackgroundService";
 
         const string performanceToken = "--PERF";
 
@@ -53,7 +48,7 @@ internal static class Program
         builder.LoadGlobalSettings();
 
         // Write first log entry with default logger
-        Globals.Instance.Logger.LogInformation($"{param.AppName} {param.AppVersion} starts...");
+        Globals.Instance.Logger?.LogInformation($"{param.AppName} {param.AppVersion} starts...");
         Console.WriteLine("Logging started...");
 
         // App is ready now for doing something

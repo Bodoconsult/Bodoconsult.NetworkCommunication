@@ -34,7 +34,7 @@ public static class DeviceCommunicationBasics
     /// <summary>
     /// The default timeout in milliseconds
     /// </summary>
-    public static int DefaultTimeout { get; set; } = 2000;
+    public static int DefaultTimeout { get; set; } = 5000;
 
     /// <summary>
     /// Timeout for a PING sent to the device

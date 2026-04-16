@@ -4,10 +4,12 @@ using System.Reactive;
 using System.Reactive.Linq;
 using Avalonia.Controls;
 using Bodoconsult.App.Abstractions.Interfaces;
+using Bodoconsult.App.ReactiveUI.Extensions;
 using Bodoconsult.App.ReactiveUI.Interfaces;
 using Bodoconsult.App.ReactiveUI.Menus;
 using Bodoconsult.App.ReactiveUI.Ui;
 using Bodoconsult.App.ReactiveUI.ViewModels;
+using IpClient.Bll.App;
 using ReactiveUI.SourceGenerators;
 
 namespace IpClientUi.ViewModels;
@@ -65,21 +67,21 @@ public partial class IpClientMainWindowViewModel : MainWindowViewModel
 
         groupItem.AddChild(command2);
 
-        /*
-var command3 = new CommandUiMenuItem("Start snapshot")
-{
-    CommandDefinition = new UiCommandDefinition(GoToStartSnapshot, null)
-};
 
-groupItem.AddChild(command3);
+        var command3 = new CommandUiMenuItem("Start snapshot")
+        {
+            CommandDefinition = new UiCommandDefinition(GoToStartSnapshot, null)
+        };
 
-var command4 = new CommandUiMenuItem("Stop snapshot")
-{
-    CommandDefinition = new UiCommandDefinition(GoToStopSnapshot, null)
-};
+        groupItem.AddChild(command3);
 
-groupItem.AddChild(command4);
-*/
+        var command4 = new CommandUiMenuItem("Stop snapshot")
+        {
+            CommandDefinition = new UiCommandDefinition(GoToStopSnapshot, null)
+        };
+
+        groupItem.AddChild(command4);
+
     }
 
     // Async commands 
@@ -91,52 +93,79 @@ groupItem.AddChild(command4);
     [ReactiveCommand]
     public IObservable<Unit> GoToStartStreaming()
     {
-        //try
-        //{
-        //    Region1?.Navigate(new FirstViewModel(Region1));
-        //    return Observable.Return(Unit.Default);
-        //}
-        //catch (Exception e)
-        //{
-        //    Console.WriteLine(e);
-        //    throw;
-        //}
+        ArgumentNullException.ThrowIfNull(Region1);
 
-        return Observable.Return(Unit.Default);
+        try
+        {
+            var vm = new StartMessagingViewModel(Region1)
+            {
+                Snapshot = false
+            };
+            Region1?.Navigate(vm);
+            return Observable.Return(Unit.Default);
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            throw;
+        }
     }
 
     [ReactiveCommand]
     public IObservable<Unit> GoToStopStreaming()
     {
-        ////try
-        ////{
-        //    //Region1?.Navigate(new FirstViewModel(Region1));
+        ArgumentNullException.ThrowIfNull(Region1);
 
-        //    var windowViewModel = new Window1ViewModel(RegionManager);
-
-        //    var vm = new FirstViewModel();
-
-        //    RegionManager.Navigate(windowViewModel, vm, "DocumentRegion");
-        //    return Observable.Return(Unit.Default);
-        ////}
-        ////catch (Exception e)
-        ////{
-        ////    Console.WriteLine(e);
-        ////    throw;
-        ////}
-        ////
-         return Observable.Return(Unit.Default);
+        try
+        {
+            var vm = new StopMessagingViewModel(Region1);
+            vm.InjectScreen(Region1);
+            Region1?.Navigate(vm);
+            return Observable.Return(Unit.Default);
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            throw;
+        }
     }
 
     [ReactiveCommand]
     public IObservable<Unit> GoToStartSnapshot()
     {
-        return Observable.Return(Unit.Default);
+        ArgumentNullException.ThrowIfNull(Region1);
+
+        try
+        {
+            var vm = new StartMessagingViewModel(Region1)
+            {
+                Snapshot = true
+            };
+            Region1?.Navigate(vm);
+            return Observable.Return(Unit.Default);
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            throw;
+        }
     }
 
     [ReactiveCommand]
     public IObservable<Unit> GoToStopSnapshot()
     {
-        return Observable.Return(Unit.Default);
+        ArgumentNullException.ThrowIfNull(Region1);
+
+        try
+        {
+            var vm = new StopMessagingViewModel(Region1);
+            Region1?.Navigate(vm);
+            return Observable.Return(Unit.Default);
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            throw;
+        }
     }
 }

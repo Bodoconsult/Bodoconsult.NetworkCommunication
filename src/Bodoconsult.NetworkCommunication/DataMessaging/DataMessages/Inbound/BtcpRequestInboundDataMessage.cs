@@ -32,7 +32,7 @@ public class BtcpRequestInboundDataMessage : IInboundBusinessTransactionDataMess
     /// <summary>
     /// Should an acknowledgement be sent if the message is received
     /// </summary>
-    public bool AnswerWithAcknowledgement { get; set; }
+    public bool AnswerWithAcknowledgement { get; set; } = true;
 
     /// <summary>
     /// Data block stored in the message

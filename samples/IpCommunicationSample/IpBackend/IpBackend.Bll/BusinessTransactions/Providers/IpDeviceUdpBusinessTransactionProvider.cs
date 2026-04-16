@@ -5,6 +5,7 @@ using Bodoconsult.App.BusinessTransactions.RequestData;
 using Bodoconsult.App.Delegates;
 using Bodoconsult.App.Interfaces;
 using IpBackend.Bll.Interfaces;
+using IpCommunicationSample.Common.BusinessTransactions;
 
 namespace IpBackend.Bll.BusinessTransactions.Providers;
 
@@ -23,7 +24,7 @@ public class IpDeviceUdpBusinessTransactionProvider : IBusinessTransactionProvid
         BusinessLogicAdapter = businessLogicAdapter;
 
         // Load transaction delegates now
-        CreateBusinessTransactionDelegates.Add(BackendBusinessTransactionCodes.SendClientHello, Transaction5_SendClientHello);
+        CreateBusinessTransactionDelegates.Add(ServerSideBusinessTransactionIds.SendClientHello, Transaction205_SendClientHello);
     }
 
     /// <summary>
@@ -33,14 +34,14 @@ public class IpDeviceUdpBusinessTransactionProvider : IBusinessTransactionProvid
     public Dictionary<int, CreateBusinessTransactionDelegate> CreateBusinessTransactionDelegates { get; } = new();
 
     /// <summary>
-    /// Create transaction 5: send cleint hello
+    /// Create transaction 205: send client hello
     /// </summary>
     /// <returns>Business transaction</returns>
-    public BusinessTransaction Transaction5_SendClientHello()
+    public BusinessTransaction Transaction205_SendClientHello()
     {
         var transaction = new BusinessTransaction
         {
-            Id = BackendBusinessTransactionCodes.SendClientHello,
+            Id = ServerSideBusinessTransactionIds.SendClientHello,
             Name = "Send client hello",
             RunBusinessTransactionDelegate = BusinessLogicAdapter.SendClientHello
         };

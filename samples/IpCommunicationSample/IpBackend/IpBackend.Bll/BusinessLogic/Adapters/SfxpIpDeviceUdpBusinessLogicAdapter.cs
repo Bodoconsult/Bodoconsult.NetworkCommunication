@@ -6,6 +6,7 @@ using Bodoconsult.NetworkCommunication.BusinessLogicAdapters;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
 using Bodoconsult.NetworkCommunication.Interfaces;
 using IpBackend.Bll.Interfaces;
+using IpCommunicationSample.Common.BusinessTransactions.Replies;
 using IpCommunicationSample.Common.BusinessTransactions.Requests;
 
 namespace IpBackend.Bll.BusinessLogic.Adapters;
@@ -28,7 +29,7 @@ public class SfxpIpDeviceUdpBusinessLogicAdapter : BaseSimpleDeviceBusinessLogic
     /// <param name="message">Received message</param>
     public override void DefaultReceiveMessage(IInboundDataMessage message)
     {
-        IpDevice.DataMessagingConfig.AppLogger.LogInformation("Message received: "+message.ToInfoString());
+        IpDevice.DataMessagingConfig.AppLogger.LogInformation($"Message received: {message.ToInfoString()}");
 
         // ToDo: add your business logic
     }
@@ -63,8 +64,4 @@ public class SfxpIpDeviceUdpBusinessLogicAdapter : BaseSimpleDeviceBusinessLogic
 
         return new FftReportBusinessTransactionReply();
     }
-
-
-
-
 }

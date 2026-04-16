@@ -1,12 +1,12 @@
-﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
+﻿//// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
-namespace IpBackend.Bll.BusinessTransactions;
+//namespace IpBackend.Bll.BusinessTransactions;
 
-public class BackendBusinessTransactionCodes
-{
-    public const int StartStreaming = 1;
-    public const int StopStreaming = 2;
-    public const int StartSnapshot = 3;
-    public const int StopSnapshot = 4;
-    public const int SendClientHello = 5;
-}
+//public class BackendBusinessTransactionCodes
+//{
+//    public const int StartStreaming = 201;
+//    public const int StopStreaming = 202;
+//    public const int StartSnapshot = 203;
+//    public const int StopSnapshot = 204;
+//    public const int SendClientHello = 205;
+//}

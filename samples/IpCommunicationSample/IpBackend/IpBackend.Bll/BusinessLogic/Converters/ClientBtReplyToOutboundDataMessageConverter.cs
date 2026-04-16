@@ -7,7 +7,7 @@ using Bodoconsult.NetworkCommunication.BusinessTransactions.Converters;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataBlocks;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
 using Bodoconsult.NetworkCommunication.Interfaces;
-using IpCommunicationSample.Common.BusinessTransactions.Requests;
+using IpCommunicationSample.Common.BusinessTransactions.Replies;
 
 namespace IpBackend.Bll.BusinessLogic.Converters;
 

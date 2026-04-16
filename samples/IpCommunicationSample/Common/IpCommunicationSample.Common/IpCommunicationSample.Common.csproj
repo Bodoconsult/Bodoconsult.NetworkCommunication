@@ -15,8 +15,4 @@
     <ProjectReference Include="..\..\..\..\src\Bodoconsult.NetworkCommunication\Bodoconsult.NetworkCommunication.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="BusinessTransactions\Replies\" />
-  </ItemGroup>
-
 </Project>

@@ -5,6 +5,7 @@ using Bodoconsult.App.BusinessTransactions.RequestData;
 using Bodoconsult.App.Delegates;
 using Bodoconsult.App.Interfaces;
 using IpBackend.Bll.Interfaces;
+using IpCommunicationSample.Common.BusinessTransactions;
 
 namespace IpBackend.Bll.BusinessTransactions.Providers;
 
@@ -23,10 +24,10 @@ public class IpDeviceTcpIpBusinessTransactionProvider : IBusinessTransactionProv
         BusinessLogicAdapter = businessLogicAdapter;
 
         // Load transaction delegates now
-        CreateBusinessTransactionDelegates.Add(BackendBusinessTransactionCodes.StartStreaming, Transaction1_StartStreaming);
-        CreateBusinessTransactionDelegates.Add(BackendBusinessTransactionCodes.StopStreaming, Transaction2_StopStreaming);
-        CreateBusinessTransactionDelegates.Add(BackendBusinessTransactionCodes.StartSnapshot, Transaction3_StartSnapshot);
-        CreateBusinessTransactionDelegates.Add(BackendBusinessTransactionCodes.StopSnapshot, Transaction4_StopSnapshot);
+        CreateBusinessTransactionDelegates.Add(ClientSideBusinessTransactionIds.StartStreaming, Transaction201_StartStreaming);
+        CreateBusinessTransactionDelegates.Add(ClientSideBusinessTransactionIds.StopStreaming, Transaction202_StopStreaming);
+        CreateBusinessTransactionDelegates.Add(ClientSideBusinessTransactionIds.StartSnapshot, Transaction203_StartSnapshot);
+        CreateBusinessTransactionDelegates.Add(ClientSideBusinessTransactionIds.StopSnapshot, Transaction204_StopSnapshot);
     }
 
     /// <summary>
@@ -36,14 +37,14 @@ public class IpDeviceTcpIpBusinessTransactionProvider : IBusinessTransactionProv
     public Dictionary<int, CreateBusinessTransactionDelegate> CreateBusinessTransactionDelegates { get; } = new();
 
     /// <summary>
-    /// Create transaction 1: start streaming
+    /// Create transaction 201: start streaming
     /// </summary>
     /// <returns>Business transaction</returns>
-    public BusinessTransaction Transaction1_StartStreaming()
+    public BusinessTransaction Transaction201_StartStreaming()
     {
         var transaction = new BusinessTransaction
         {
-            Id = BackendBusinessTransactionCodes.StartStreaming,
+            Id = ClientSideBusinessTransactionIds.StartStreaming,
             Name = "Start streaming",
             RunBusinessTransactionDelegate = BusinessLogicAdapter.RequestDeviceStartStreamingState
         };
@@ -54,14 +55,14 @@ public class IpDeviceTcpIpBusinessTransactionProvider : IBusinessTransactionProv
     }
 
     /// <summary>
-    /// Create transaction 2: stop streaming
+    /// Create transaction 202: stop streaming
     /// </summary>
     /// <returns>Business transaction</returns>
-    public BusinessTransaction Transaction2_StopStreaming()
+    public BusinessTransaction Transaction202_StopStreaming()
     {
         var transaction = new BusinessTransaction
         {
-            Id = BackendBusinessTransactionCodes.StopStreaming,
+            Id = ClientSideBusinessTransactionIds.StopStreaming,
             Name = "Stop streaming",
             RunBusinessTransactionDelegate = BusinessLogicAdapter.RequestDeviceStopStreamingState
         };
@@ -72,14 +73,14 @@ public class IpDeviceTcpIpBusinessTransactionProvider : IBusinessTransactionProv
     }
 
     /// <summary>
-    /// Create transaction 3: start snapshot
+    /// Create transaction 203: start snapshot
     /// </summary>
     /// <returns>Business transaction</returns>
-    public BusinessTransaction Transaction3_StartSnapshot()
+    public BusinessTransaction Transaction203_StartSnapshot()
     {
         var transaction = new BusinessTransaction
         {
-            Id = BackendBusinessTransactionCodes.StartSnapshot,
+            Id = ClientSideBusinessTransactionIds.StartSnapshot,
             Name = "Start snapshot",
             RunBusinessTransactionDelegate = BusinessLogicAdapter.RequestDeviceStartSnapshotState
         };
@@ -90,14 +91,14 @@ public class IpDeviceTcpIpBusinessTransactionProvider : IBusinessTransactionProv
     }
 
     /// <summary>
-    /// Create transaction 4: stop snapshot
+    /// Create transaction 204: stop snapshot
     /// </summary>
     /// <returns>Business transaction</returns>
-    public BusinessTransaction Transaction4_StopSnapshot()
+    public BusinessTransaction Transaction204_StopSnapshot()
     {
         var transaction = new BusinessTransaction
         {
-            Id = BackendBusinessTransactionCodes.StopSnapshot,
+            Id = ClientSideBusinessTransactionIds.StopSnapshot,
             Name = "Stop snapshot",
             RunBusinessTransactionDelegate = BusinessLogicAdapter.RequestDeviceStopSnapshotState
         };

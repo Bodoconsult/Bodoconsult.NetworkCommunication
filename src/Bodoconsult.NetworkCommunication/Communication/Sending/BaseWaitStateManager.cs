@@ -77,7 +77,9 @@ public abstract class BaseWaitStateManager : IWaitStateManager
         }
         catch (Exception e)
         {
-            DataMessagingConfig.MonitorLogger.LogError($"Handshake {handshake.HandshakeMessageType} received but handling error", e);
+            var msg1 = $"Handshake {handshake.HandshakeMessageType} received but handling error: {e}";
+            Trace.TraceError(msg1);
+            DataMessagingConfig.MonitorLogger.LogError(msg1);
         }
     }
 
@@ -142,7 +144,8 @@ public abstract class BaseWaitStateManager : IWaitStateManager
         // Get the counters at method start to avoid later change resulting from new input
         var waitStateCount = Count;
 
-        Debug.Print($"Handshake {handshake.HandshakeMessageType} reached wait state manager 2: ({waitStateCount} states waiting)");
+        var msg = $"Handshake {handshake.HandshakeMessageType} reached wait state manager 2: ({waitStateCount} states waiting)";
+        Trace.TraceInformation(msg);
 
         List<SendPacketProcess> waitStates;
 

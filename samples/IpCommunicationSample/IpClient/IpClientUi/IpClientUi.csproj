@@ -7,7 +7,7 @@
 		<ImplicitUsings>enable</ImplicitUsings>
 		<BuiltInComInteropSupport>true</BuiltInComInteropSupport>
 		<ApplicationManifest>app.manifest</ApplicationManifest>
-		<AvaloniaUseCompiledBindingsByDefault>true</AvaloniaUseCompiledBindingsByDefault>
+		<AvaloniaUseCompiledBindingsByDefault>false</AvaloniaUseCompiledBindingsByDefault>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -51,6 +51,12 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<Compile Update="Views\StopMessagingView.axaml.cs">
+		  <DependentUpon>StopMessagingView.axaml</DependentUpon>
+		</Compile>
+		<Compile Update="Views\StartMessagingView.axaml.cs">
+		  <DependentUpon>StartMessagingView.axaml</DependentUpon>
+		</Compile>
 		<Compile Update="Window2.axaml.cs">
 			<DependentUpon>Window2.axaml</DependentUpon>
 		</Compile>

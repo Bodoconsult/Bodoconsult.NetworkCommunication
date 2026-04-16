@@ -123,6 +123,11 @@ public class BtcpDataMessageSplitter : IDataMessageSplitter
         // Handshake
         if (DeviceCommunicationBasics.HandshakeMessageStartTokens.Contains(firstByte))
         {
+            if (buffer.Length == 1)
+            {
+                command = buffer.Slice(0, 1);
+                return true;
+            }
 
             var nextByte = buffer.Slice(1, 1).FirstSpan[0];
 

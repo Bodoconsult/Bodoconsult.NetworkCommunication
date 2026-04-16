@@ -13,6 +13,12 @@ public class SdcpDataMessageValidator : IDataMessageValidator
 {
     public DataMessageValidatorResult IsMessageValid(IInboundMessage dataMessage)
     {
+        // Handshake message: always valid
+        if (dataMessage is IInboundHandShakeMessage)
+        {
+            return new DataMessageValidatorResult(true, "Message is valid");
+        }
+
         // Raw message: always valid
         if (dataMessage is RawInboundDataMessage)
         {

@@ -98,7 +98,6 @@ internal class BackendManagerTests
         // Assert
         using (Assert.EnterMultipleScope())
         {
-
             Assert.That(m.IpDeviceTcpIp, Is.Null);
             Assert.That(m.IpDeviceUdp, Is.Null);
             Assert.That(m.Client, Is.Not.Null);
@@ -118,7 +117,7 @@ internal class BackendManagerTests
             Assert.That(config.IpAddress, Is.EqualTo(clientConfig.IpAddress));
             Assert.That(config.Port, Is.EqualTo(clientConfig.Port));
             Assert.That(config.DataMessageProcessingPackage, Is.TypeOf<BtcpDataMessageProcessingPackage>());
-
+            Assert.That(config.RaiseAppLayerDataMessageReceivedDelegate, Is.Not.Null);
         }
     }
 
@@ -163,17 +162,18 @@ internal class BackendManagerTests
 
             Assert.That(m.IpDeviceTcpIp.IpDevice, Is.Not.Null);
             Assert.That(m.IpDeviceTcpIp.Device, Is.Not.Null);
+            ArgumentNullException.ThrowIfNull(m.IpDeviceTcpIp.Device);
             Assert.That(m.IpDeviceTcpIp.Device.OrderManager, Is.Not.Null);
             Assert.That(m.IpDeviceTcpIp.IpDevice, Is.Not.Null);
             Assert.That(m.IpDeviceTcpIp.IpDevice.CommunicationAdapter, Is.Not.Null);
             //Assert.That(m.IpDeviceTcpIp.IpDevice.CommunicationAdapter.CommunicationHandler, Is.Not.Null);
 
+            ArgumentNullException.ThrowIfNull(m.IpDeviceTcpIp.IpDevice.CommunicationAdapter);
+
             var package = m.IpDeviceTcpIp.Device.DataMessagingConfig.DataMessageProcessingPackage;
 
             Assert.That(package, Is.TypeOf<TncpDataMessageProcessingPackage>());
             //Assert.That(m.IpDeviceTcpIp.Device.OrderManager.OrderProcessor.CurrentDevice.DataMessagingConfig.DataMessageProcessingPackage, Is.TypeOf<TncpDataMessageProcessingPackage>());
-
-
 
             Assert.That(m.IpDeviceTcpIp.IpDevice.DataMessagingConfig, Is.Not.Null);
 
@@ -224,6 +224,7 @@ internal class BackendManagerTests
 
             ArgumentNullException.ThrowIfNull(m.IpDeviceUdp);
             ArgumentNullException.ThrowIfNull(m.IpDeviceUdp.IpDevice);
+            ArgumentNullException.ThrowIfNull(m.IpDeviceUdp.IpDevice.CommunicationAdapter);
             Assert.That(m.IpDeviceUdp.IpDevice, Is.Not.Null);
             Assert.That(m.IpDeviceUdp.IpDevice.DataMessagingConfig, Is.Not.Null);
 
@@ -235,6 +236,7 @@ internal class BackendManagerTests
             Assert.That(config.IpAddress, Is.EqualTo(deviceUdpConfig.IpAddress));
             Assert.That(config.Port, Is.EqualTo(deviceUdpConfig.Port));
             Assert.That(config.DataMessageProcessingPackage, Is.TypeOf<SfxpLoggedSortableDataMessageProcessingPackage>());
+            Assert.That(config.RaiseAppLayerDataMessageReceivedDelegate, Is.Not.Null);
         }
     }
 }

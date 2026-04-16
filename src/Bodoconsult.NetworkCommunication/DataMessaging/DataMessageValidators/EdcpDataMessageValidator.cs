@@ -17,6 +17,12 @@ public class EdcpDataMessageValidator : IDataMessageValidator
     /// <returns>True if the message was the handshake for the sent message</returns>
     public DataMessageValidatorResult IsMessageValid(IInboundMessage dataMessage)
     {
+        // Handshake message: always valid
+        if (dataMessage is EdcpInboundHandshakeMessage)
+        {
+            return new DataMessageValidatorResult(true, "Message is valid");
+        }
+
         // Update mode message or raw message: always valid
         if (dataMessage is RawInboundDataMessage)
         {

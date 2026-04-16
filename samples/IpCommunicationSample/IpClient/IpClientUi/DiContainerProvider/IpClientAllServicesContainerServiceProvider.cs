@@ -7,6 +7,7 @@ using Bodoconsult.App.CentralServices;
 using Bodoconsult.App.Factories;
 using Bodoconsult.App.Logging;
 using Bodoconsult.App.ReactiveUI.Interfaces;
+using Bodoconsult.NetworkCommunication.Interfaces;
 using IpClient.Bll.BusinessLogic;
 using IpClient.Bll.Interfaces;
 using IpClientUi.AppData;
@@ -37,13 +38,15 @@ public class IpClientAllServicesContainerServiceProvider : IDiContainerServicePr
         // Regions manager with all window types loaded with regions
         var rm = new AvaloniaRegionManager();
         rm.RegisterWindow<MainWindow, IpClientMainWindowViewModel>(["DocumentRegion", "MenuRegion"], null);
-        rm.RegisterWindow<Window1, Window1ViewModel>(["DocumentRegion", "MenuRegion"], () => new Window1());
+        //rm.RegisterWindow<Window1, Window1ViewModel>(["DocumentRegion", "MenuRegion"], () => new Window1());
 
         diContainer.AddSingleton<IRegionManager>(rm);
 
         // View models
         diContainer.AddTransient<IpClientMainWindowViewModel, IpClientMainWindowViewModel>();
         diContainer.AddTransient<FirstViewModel, FirstViewModel>();
+        diContainer.AddTransient<StartMessagingViewModel, StartMessagingViewModel>();
+        diContainer.AddTransient<StopMessagingViewModel, StopMessagingViewModel>();
 
         //diContainer.AddTransient<ViewModel1, ViewModel1>();
         //diContainer.AddTransient<ViewModel2, ViewModel2>();
@@ -51,7 +54,6 @@ public class IpClientAllServicesContainerServiceProvider : IDiContainerServicePr
         //diContainer.AddSingleton<IViewLocator, SimpleViewLocator>(); 
         diContainer.AddSingleton<IApplicationService, IpClientService>();
         
-
         // ...
     }
 
@@ -61,12 +63,20 @@ public class IpClientAllServicesContainerServiceProvider : IDiContainerServicePr
     /// <param name="diContainer"></param>
     public void LateBindObjects(DiContainer diContainer)
     {
-        //// Example 1: Load the job scheduler now
-        //var scheduler = diContainer.Get<IJobSchedulerManagementDelegate>();
-        //scheduler.StartJobScheduler();
+        var clientManager = diContainer.Get<IClientUiManager>();
 
-        //// Example 2: Load business transactions
-        //var btl = diContainer.Get<IBusinessTransactionLoader>();
-        //btl.LoadProviders();
+        var appGlobals = diContainer.Get<IAppGlobals>();
+
+        clientManager.BackendTcpIpConfig = new IpConfig
+        {
+            IpAddress = appGlobals.AppStartParameter.IpAddress,
+            Port = appGlobals.AppStartParameter.Port,
+        };
+
+        clientManager.LoadBackendTcpIp();
+
+        clientManager.LoadBusinessTransactions();
+
+        clientManager.StartBackendTcpIpCommunication();
     }
 }

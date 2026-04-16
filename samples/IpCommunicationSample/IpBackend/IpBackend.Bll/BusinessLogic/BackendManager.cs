@@ -5,10 +5,10 @@ using Bodoconsult.App.BusinessTransactions.RequestData;
 using Bodoconsult.App.Interfaces;
 using Bodoconsult.NetworkCommunication.Factories;
 using Bodoconsult.NetworkCommunication.Interfaces;
-using IpBackend.Bll.BusinessTransactions;
 using IpBackend.Bll.BusinessTransactions.Providers;
 using IpBackend.Bll.Communication;
 using IpBackend.Bll.Interfaces;
+using IpCommunicationSample.Common.BusinessTransactions;
 
 namespace IpBackend.Bll.BusinessLogic;
 
@@ -137,8 +137,8 @@ public class BackendManager : IBackendManager
         var duplexIoFactory = new IpDuplexIoFactory(_sendPacketProcessFactory);
 
         IOrderProcessorFactory orderProcessorFactory = new StateMachineOrderProcessorFactory(_dateService, _syncOrderManager, _clientNotificationManager, _appBenchProxy);
-        IOrderFactory orderFactory = new TncpOrderFactory(_orderIdGenerator) ;
-        IOrderManagerFactory orderManagerFactory = new OrderManagerFactory(orderProcessorFactory, _orderReceiverFactory, _requestStepProcessorFactoryFactory, 
+        IOrderFactory orderFactory = new TncpOrderFactory(_orderIdGenerator);
+        IOrderManagerFactory orderManagerFactory = new OrderManagerFactory(orderProcessorFactory, _orderReceiverFactory, _requestStepProcessorFactoryFactory,
             _requestProcessorFactoryFactory, _orderPipelineFactory, orderFactory);
         var m = new IpDeviceTcpIpClientStateMachineManager(duplexIoFactory, _monitorLoggerFactoryFactory, _logDataFactory, _appLoggerFactory,
             _appEventSourceFactory, _clientNotificationManager, _appLogger, orderManagerFactory, _socketProxyFactory);
@@ -165,7 +165,7 @@ public class BackendManager : IBackendManager
 
         m.ConfigureDevice(IpDeviceUdpConfig.Value.IpAddress, IpDeviceUdpConfig.Value.Port);
 
-        IpDeviceUdp= m;
+        IpDeviceUdp = m;
     }
 
     /// <summary>
@@ -181,7 +181,7 @@ public class BackendManager : IBackendManager
         var duplexIoFactory = new IpDuplexIoFactory(_sendPacketProcessFactory);
 
         var m = new ClientTcpIpServerManager(duplexIoFactory, _monitorLoggerFactoryFactory, _logDataFactory, _appLoggerFactory,
-            _appEventSourceFactory, _clientNotificationManager,  _appLogger, _businessTransactionManager, _socketProxyFactory);
+            _appEventSourceFactory, _clientNotificationManager, _appLogger, _businessTransactionManager, _socketProxyFactory);
 
         m.ConfigureDevice(ClientTcpIpConfig.Value.IpAddress, ClientTcpIpConfig.Value.Port);
 
@@ -217,7 +217,7 @@ public class BackendManager : IBackendManager
         // Send hello
         var request = new EmptyBusinessTransactionRequestData
         {
-            TransactionId = BackendBusinessTransactionCodes.SendClientHello
+            TransactionId = ServerSideBusinessTransactionIds.SendClientHello
         };
 
         var reply = _businessTransactionManager.RunBusinessTransaction(request.TransactionId, request);
@@ -236,7 +236,7 @@ public class BackendManager : IBackendManager
 
         IpDeviceTcpIp.Device.Start();
 
-        var newState = IpDeviceTcpIp.Device.CreateStateInstance( DefaultStateNames.DeviceOfflineState);
+        var newState = IpDeviceTcpIp.Device.CreateStateInstance(DefaultStateNames.DeviceOfflineState);
         IpDeviceTcpIp.Device.RequestState(newState);
 
         //ArgumentNullException.ThrowIfNull(IpDeviceTcpIp?.IpDevice);

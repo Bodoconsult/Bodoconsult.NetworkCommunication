@@ -89,7 +89,9 @@ internal class IpDeviceTcpIpClientStateMachineManagerTests
         using (Assert.EnterMultipleScope())
         {
             Assert.That(m.Device, Is.Not.Null);
+            ArgumentNullException.ThrowIfNull(m.Device);
             Assert.That(m.DeviceBusinessLogicAdapter, Is.Not.Null);
+            ArgumentNullException.ThrowIfNull(m.Device.DataMessagingConfig);
             Assert.That(m.Device.DataMessagingConfig.DataMessageProcessingPackage, Is.TypeOf<TncpDataMessageProcessingPackage>());
         }
     }

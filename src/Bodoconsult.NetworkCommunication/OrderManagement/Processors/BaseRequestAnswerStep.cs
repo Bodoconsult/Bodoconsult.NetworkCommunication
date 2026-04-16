@@ -52,7 +52,7 @@ public class BaseRequestAnswerStep : IRequestAnswerStep
     /// <summary>
     /// Total timeout for the answer(s) of a request in milliseconds
     /// </summary>
-    public int Timeout { get; set; } = DeviceCommunicationBasics.DefaultTimeout;
+    public int Timeout { get; set; } = 3 * DeviceCommunicationBasics.DefaultTimeout;
 
     /// <summary>
     /// Delegate for action after cancelling the request step

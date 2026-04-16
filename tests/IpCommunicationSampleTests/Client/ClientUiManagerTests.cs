@@ -90,10 +90,13 @@ internal class ClientUiManagerTests
         using (Assert.EnterMultipleScope())
         {
             Assert.That(m.BackendTcpIp, Is.Not.Null);
+            ArgumentNullException.ThrowIfNull(m.BackendTcpIp);
             Assert.That(m.BackendTcpIpConfig, Is.Not.Null);
 
             Assert.That(m.BackendTcpIp, Is.Not.Null);
             Assert.That(m.BackendTcpIp.IpDevice, Is.Not.Null);
+
+            ArgumentNullException.ThrowIfNull(m.BackendTcpIp.IpDevice);
             Assert.That(m.BackendTcpIp.IpDevice.DataMessagingConfig, Is.Not.Null);
 
             var config = (IIpDataMessagingConfig)m.BackendTcpIp.IpDevice.DataMessagingConfig;

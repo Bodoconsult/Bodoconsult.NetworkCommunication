@@ -107,7 +107,6 @@ public class IpBackendServiceService : IApplicationService
     /// </summary>
     public void SuspendApplication()
     {
-
         if (_isStopped)
         {
             return;

@@ -87,6 +87,8 @@ public class TcpIpServerDeviceConfigurator: BaseIpDeviceConfigurator
         Device = factory.CreateInstance(DataMessagingConfig);
 
         var adapter = businessLogicAdapterFactory.CreateInstance(Device);
+        DataMessagingConfig.RaiseAppLayerDataMessageReceivedDelegate = ((ISimpleDeviceBusinessLogicAdapter)adapter).DefaultReceiveMessage;
+
         Device.LoadDeviceBusinessLogicAdapter(adapter);
     }
 }

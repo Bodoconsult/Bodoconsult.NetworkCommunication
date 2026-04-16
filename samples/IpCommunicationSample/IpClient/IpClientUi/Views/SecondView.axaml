@@ -1,4 +1,5 @@
-﻿<reactiveUi:ReactiveUserControl x:TypeArguments="viewModels1:SecondViewModel" x:Class="IpClientUi.Views.SecondView"
+﻿<reactiveUi:ReactiveUserControl x:TypeArguments="viewModels1:SecondViewModel" 
+                                x:Class="IpClientUi.Views.SecondView"
                                 xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                                 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                                 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 

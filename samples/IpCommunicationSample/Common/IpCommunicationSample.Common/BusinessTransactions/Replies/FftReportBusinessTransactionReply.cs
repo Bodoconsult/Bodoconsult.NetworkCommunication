@@ -2,7 +2,7 @@
 
 using Bodoconsult.App.Abstractions.Interfaces;
 
-namespace IpCommunicationSample.Common.BusinessTransactions.Requests;
+namespace IpCommunicationSample.Common.BusinessTransactions.Replies;
 
 /// <summary>
 /// Request data for a FFT anylsis report

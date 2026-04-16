@@ -101,7 +101,9 @@ internal class TcpIpServerDeviceConfiguratorTests
         using (Assert.EnterMultipleScope())
         {
             Assert.That(conf.DataMessagingConfig, Is.Not.Null);
+            ArgumentNullException.ThrowIfNull(conf.DataMessagingConfig);
             Assert.That(conf.Device, Is.Not.Null);
+            Assert.That(conf.DataMessagingConfig.RaiseAppLayerDataMessageReceivedDelegate, Is.Not.Null);
         }
     }
 }

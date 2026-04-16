@@ -1,5 +1,6 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
+using System.Diagnostics;
 using Bodoconsult.App.Abstractions.Interfaces;
 using Bodoconsult.App.Abstractions.SyncExecution;
 using Bodoconsult.App.Helpers;
@@ -154,6 +155,8 @@ public abstract class BaseBtcpSimpleDeviceBusinessLogicAdapter : BaseSimpleDevic
             return;
         }
 
+        
+
         var syncData = _syncProcessManager.GetSyncProcessDataForProcess(reply.RequestData.TransactionGuid);
 
         if (syncData == null)
@@ -163,6 +166,8 @@ public abstract class BaseBtcpSimpleDeviceBusinessLogicAdapter : BaseSimpleDevic
 
         reply.RequestData = syncData.BusinessTransactionRequestData;
         syncData.TaskCompletionSource?.SetResult(reply);
+
+        Trace.TraceInformation($"BaseBtcpSimpleDeviceBusinessLogicAdapter: reply for BT {reply.RequestData.TransactionId}");
     }
 
     private void HandleRequestMessage(BtcpRequestInboundDataMessage btm)
@@ -174,6 +179,8 @@ public abstract class BaseBtcpSimpleDeviceBusinessLogicAdapter : BaseSimpleDevic
             AppLoggerProxy.LogError($"Received message is not a business transaction message: {btm.ToInfoString()}");
             return;
         }
+
+        Trace.TraceInformation($"BaseBtcpSimpleDeviceBusinessLogicAdapter: request for BT {internalRequest.TransactionId}");
 
         // Now execute the BT and then send a reply
         Task.Factory.StartNew(() => BusinessTransactionManager.RunBusinessTransaction(internalRequest.TransactionId, internalRequest))

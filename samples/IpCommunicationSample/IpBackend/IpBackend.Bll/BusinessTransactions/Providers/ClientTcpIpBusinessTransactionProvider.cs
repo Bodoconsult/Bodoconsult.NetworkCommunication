@@ -21,13 +21,10 @@ public class ClientTcpIpBusinessTransactionProvider : IBusinessTransactionProvid
         BusinessLogicAdapter = businessLogicAdapter;
 
         //// Load transaction delegates now
-        //CreateBusinessTransactionDelegates.Add(BackendBusinessTransactionCodes.StartStreaming,
-        //    Transaction1_StartStreaming);
-        //CreateBusinessTransactionDelegates.Add(BackendBusinessTransactionCodes.StopStreaming,
-        //    Transaction2_StopStreaming);
-        //CreateBusinessTransactionDelegates.Add(BackendBusinessTransactionCodes.StartSnapshot,
-        //    Transaction3_StartSnapshot);
-        //CreateBusinessTransactionDelegates.Add(BackendBusinessTransactionCodes.StopSnapshot, Transaction4_StopSnapshot);
+        //CreateBusinessTransactionDelegates.Add(ClientSideBusinessTransactionIds.StartStreaming, Transaction201_StartStreaming);
+        //CreateBusinessTransactionDelegates.Add(BackendBusinessTransactionCodes.StopStreaming, Transaction202_StopStreaming);
+        //CreateBusinessTransactionDelegates.Add(BackendBusinessTransactionCodes.StartSnapshot, Transaction203_StartSnapshot);
+        //CreateBusinessTransactionDelegates.Add(BackendBusinessTransactionCodes.StopSnapshot, Transaction204_StopSnapshot);
     }
 
     /// <summary>

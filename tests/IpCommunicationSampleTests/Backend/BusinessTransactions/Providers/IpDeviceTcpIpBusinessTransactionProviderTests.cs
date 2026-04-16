@@ -1,8 +1,8 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
-using IpBackend.Bll.BusinessTransactions;
 using IpBackend.Bll.BusinessTransactions.Providers;
 using IpBackend.Bll.Interfaces;
+using IpCommunicationSample.Common.BusinessTransactions;
 using Moq;
 
 namespace IpCommunicationSampleTests.Backend.BusinessTransactions.Providers;
@@ -40,13 +40,13 @@ internal class IpDeviceTcpIpBusinessTransactionProviderTests
         var provider = CreateProvider();
 
         // Act
-        var transaction = provider.Transaction1_StartStreaming();
+        var transaction = provider.Transaction201_StartStreaming();
 
         // Assert
         using (Assert.EnterMultipleScope())
         {
             Assert.That(transaction, Is.Not.Null);
-            Assert.That(transaction.Id, Is.EqualTo(BackendBusinessTransactionCodes.StartStreaming));
+            Assert.That(transaction.Id, Is.EqualTo(ClientSideBusinessTransactionIds.StartStreaming));
             Assert.That(transaction.RunBusinessTransactionDelegate, Is.Not.Null);
             Assert.That(transaction.AllowedRequestDataTypes, Has.Count.EqualTo(1));
         }
@@ -59,13 +59,13 @@ internal class IpDeviceTcpIpBusinessTransactionProviderTests
         var provider = CreateProvider();
 
         // Act
-        var transaction = provider.Transaction2_StopStreaming();
+        var transaction = provider.Transaction202_StopStreaming();
 
         // Assert
         using (Assert.EnterMultipleScope())
         {
             Assert.That(transaction, Is.Not.Null);
-            Assert.That(transaction.Id, Is.EqualTo(BackendBusinessTransactionCodes.StopStreaming));
+            Assert.That(transaction.Id, Is.EqualTo(ClientSideBusinessTransactionIds.StopStreaming));
             Assert.That(transaction.RunBusinessTransactionDelegate, Is.Not.Null);
             Assert.That(transaction.AllowedRequestDataTypes, Has.Count.EqualTo(1));
         }
@@ -78,13 +78,13 @@ internal class IpDeviceTcpIpBusinessTransactionProviderTests
         var provider = CreateProvider();
 
         // Act
-        var transaction = provider.Transaction3_StartSnapshot();
+        var transaction = provider.Transaction203_StartSnapshot();
 
         // Assert
         using (Assert.EnterMultipleScope())
         {
             Assert.That(transaction, Is.Not.Null);
-            Assert.That(transaction.Id, Is.EqualTo(BackendBusinessTransactionCodes.StartSnapshot));
+            Assert.That(transaction.Id, Is.EqualTo(ClientSideBusinessTransactionIds.StartSnapshot));
             Assert.That(transaction.RunBusinessTransactionDelegate, Is.Not.Null);
             Assert.That(transaction.AllowedRequestDataTypes, Has.Count.EqualTo(1));
         }
@@ -97,13 +97,13 @@ internal class IpDeviceTcpIpBusinessTransactionProviderTests
         var provider = CreateProvider();
 
         // Act
-        var transaction = provider.Transaction4_StopSnapshot();
+        var transaction = provider.Transaction204_StopSnapshot();
 
         // Assert
         using (Assert.EnterMultipleScope())
         {
             Assert.That(transaction, Is.Not.Null);
-          Assert.That(transaction.Id, Is.EqualTo(BackendBusinessTransactionCodes.StopSnapshot));
+          Assert.That(transaction.Id, Is.EqualTo(ClientSideBusinessTransactionIds.StopSnapshot));
             Assert.That(transaction.RunBusinessTransactionDelegate, Is.Not.Null);
             Assert.That(transaction.AllowedRequestDataTypes, Has.Count.EqualTo(1));
         }

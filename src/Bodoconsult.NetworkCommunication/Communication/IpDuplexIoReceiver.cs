@@ -65,6 +65,7 @@ public class IpDuplexIoReceiver : BaseDuplexIoReceiver
         var msg = $"Data in buffer: {DataMessageHelper.GetStringFromArrayCsharpStyle(ref _buffer)}";
         //Debug.Print(msg);
         Logger.LogDebug(msg);
+        Trace.TraceInformation($"DuplexIoReceiver: {msg}");
 
         while (DataMessageSplitter.TryReadCommand(ref _buffer, out var command))
         {
@@ -89,6 +90,7 @@ public class IpDuplexIoReceiver : BaseDuplexIoReceiver
                 msg = $"Parsing command failed with error code {codecResult.ErrorCode}: {codecResult.ErrorMessage}: {DataMessageHelper.GetStringFromArrayCsharpStyle(ref command)}";
                 //Debug.Print(msg);
                 Logger?.LogDebug(msg);
+                Trace.TraceError($"DuplexIoReceiver: {msg}");
                 ArrayPool.Return(array);
                 return;
             }
@@ -99,6 +101,7 @@ public class IpDuplexIoReceiver : BaseDuplexIoReceiver
                 msg = $"Parsed command {DataMessageHelper.GetStringFromArrayCsharpStyle(ref command)} NOT valid: {validationResult.ValidationResult}";
                 //Debug.Print(msg);
                 Logger?.LogDebug(msg);
+                Trace.TraceError($"DuplexIoReceiver: {msg}");
             }
             else
             {

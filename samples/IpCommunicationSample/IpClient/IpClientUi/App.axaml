@@ -3,10 +3,11 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:IpClient"
              xmlns:avalonia="https://github.com/avaloniaui"
+             xmlns:reactiveUi="clr-namespace:ReactiveUI;assembly=ReactiveUI"
              RequestedThemeVariant="Default">
-    <avalonia:Application.Resources>
-         
-    </avalonia:Application.Resources>
+    <avalonia:Application.DataTemplates>
+
+    </avalonia:Application.DataTemplates>
 
     <avalonia:Application.Styles>
         <avalonia:FluentTheme />

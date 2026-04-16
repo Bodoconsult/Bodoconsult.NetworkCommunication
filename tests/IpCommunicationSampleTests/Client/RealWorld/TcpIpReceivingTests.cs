@@ -2,19 +2,11 @@
 
 using Bodoconsult.App;
 using Bodoconsult.App.Abstractions.DependencyInjection;
-using Bodoconsult.App.Abstractions.Interfaces;
-using Bodoconsult.App.BusinessTransactions;
 using Bodoconsult.App.BusinessTransactions.RequestData;
 using Bodoconsult.App.Helpers;
-using Bodoconsult.App.Interfaces;
-using Bodoconsult.NetworkCommunication.Factories;
 using Bodoconsult.NetworkCommunication.Interfaces;
-using Bodoconsult.NetworkCommunication.OrderManagement.Processors;
-using Bodoconsult.NetworkCommunication.Protocols.TcpIp;
-using IpBackend.Bll.BusinessLogic.Adapters;
 using IpBackend.Bll.Interfaces;
 using IpBackendService.DiContainerProvider;
-using IpClient.Bll.BusinessLogic;
 using IpClient.Bll.Interfaces;
 using IpClientUi.DiContainerProvider;
 using IpCommunicationSampleTests.App;

@@ -546,7 +546,7 @@ public abstract class BaseOrderProcessor : IOrderProcessor
             }
         }
 
-        var timeout = GetOrderTimeout(order);
+        var timeout = 3* GetOrderTimeout(order);
 
         //#if DEBUG
         //            timeout = 5000;

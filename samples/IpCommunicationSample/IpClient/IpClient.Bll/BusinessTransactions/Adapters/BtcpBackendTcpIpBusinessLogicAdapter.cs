@@ -141,7 +141,7 @@ public class BtcpBackendTcpIpBusinessLogicAdapter : BaseOrderManagementDeviceBus
 
         var builder = new BtcpOrderBuilder();
 
-        var config = new OneRequestSpecNoOrOneStepOneAnswerConfiguration(orderName, BuiltinOrders.BtcpOrder, builder)
+        var config = new OneRequestSpecNoOrOneStepOneAnswerConfiguration(orderName, BuiltinOrders.NoAnswerBtcpOrder, builder)
         {
             HandleRequestAnswerOnSuccessDelegate = handleRequestAnswerDelegate,
             ParameterSet = ps

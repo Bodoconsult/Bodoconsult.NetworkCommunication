@@ -2,6 +2,7 @@
 
 using Bodoconsult.App.Helpers;
 using Bodoconsult.NetworkCommunication.Interfaces;
+using System.Diagnostics;
 
 namespace Bodoconsult.NetworkCommunication.DataMessaging.DataMessageProcessors;
 
@@ -29,6 +30,8 @@ public class LoggedDataMessageProcessor : BaseDataMessageProcessor
     /// <param name="message">Message to process</param>
     public override void ProcessMessage(IInboundMessage message)
     {
+        Trace.TraceInformation($"LoggedDataMessageProcessor: received message {message.MessageId}");
+
         // Handshake received
         if (message is IInboundHandShakeMessage handShake)
         {
