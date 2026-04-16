@@ -34,10 +34,10 @@ public class IpClientAllServicesDiContainerServiceProviderPackage : BaseDiContai
         ServiceProviders.Add(provider);
 
         // I18N
-        var factory = new IpClientI18NFactory();
-        provider = new I18NDiContainerServiceProvider(factory);
+        //var factory = new IpClientI18NFactory();
+        //provider = new I18NDiContainerServiceProvider(factory);
 
-        //provider = new DummyI18NDiContainerServiceProvider();
+        provider = new DummyI18NDiContainerServiceProvider();
         ServiceProviders.Add(provider);
 
         // Add networking features

@@ -15,7 +15,7 @@
 
     <controls:Grid>
 		<controls:StackPanel>
-			<controls:TextBox>Start messaging</controls:TextBox>
+			<controls:Label>Start messaging</controls:Label>
             <controls:CheckBox IsChecked="{controls:Binding Snapshot}">Snapshot?</controls:CheckBox>
 			<controls:CheckBox IsChecked="{controls:Binding Channel1}">Show channel 1?</controls:CheckBox>
 			<controls:CheckBox IsChecked="{controls:Binding Channel2}">Show channel 2?</controls:CheckBox>

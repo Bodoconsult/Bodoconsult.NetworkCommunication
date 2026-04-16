@@ -54,7 +54,7 @@ public partial class StopMessagingViewModel : ReactiveObject, IUiRegionViewModel
     }
 
     [ReactiveCommand]
-    public IObservable<Unit> StartMessaging()
+    public IObservable<Unit> StopMessaging()
     {
         var request = new EmptyBusinessTransactionRequestData
         {

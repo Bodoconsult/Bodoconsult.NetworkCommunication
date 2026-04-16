@@ -15,12 +15,12 @@ public static class DefaultBusinessSubStates
     /// <summary>
     /// Pinging the tower
     /// </summary>
-    public static BusinessSubState PingingTower = new(1, "Pinging the tower");
+    public static BusinessSubState PingingTower = new(1, "Pinging the device");
 
     /// <summary>
     /// Pinging the tower
     /// </summary>
-    public static BusinessSubState WaitingForNextPingingTower = new(2, "Waiting for the next pinging the tower");
+    public static BusinessSubState WaitingForNextPingingTower = new(2, "Waiting for the next pinging the device");
 
     /// <summary>
     /// Try to connect

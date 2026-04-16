@@ -53,7 +53,7 @@ public class IpClientAllServicesContainerServiceProvider : IDiContainerServicePr
 
         //diContainer.AddSingleton<IViewLocator, SimpleViewLocator>(); 
         diContainer.AddSingleton<IApplicationService, IpClientService>();
-        
+
         // ...
     }
 
@@ -63,20 +63,6 @@ public class IpClientAllServicesContainerServiceProvider : IDiContainerServicePr
     /// <param name="diContainer"></param>
     public void LateBindObjects(DiContainer diContainer)
     {
-        var clientManager = diContainer.Get<IClientUiManager>();
-
-        var appGlobals = diContainer.Get<IAppGlobals>();
-
-        clientManager.BackendTcpIpConfig = new IpConfig
-        {
-            IpAddress = appGlobals.AppStartParameter.IpAddress,
-            Port = appGlobals.AppStartParameter.Port,
-        };
-
-        clientManager.LoadBackendTcpIp();
-
-        clientManager.LoadBusinessTransactions();
-
-        clientManager.StartBackendTcpIpCommunication();
+        // Do nothing
     }
 }

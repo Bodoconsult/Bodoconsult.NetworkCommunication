@@ -94,6 +94,10 @@ public class IpBackendServiceService : IApplicationService
 
         _backendManager.LoadBusinessTransactions();
 
+        _backendManager.StartIpDeviceTcpIpCommunication();
+        _backendManager.StartIpDeviceUdpCommunication();
+        _backendManager.StartClientCommunication();
+
         _isStarting = false;
 
         while (!t.IsCancellationRequested)

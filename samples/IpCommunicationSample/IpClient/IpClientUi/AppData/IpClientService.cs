@@ -1,12 +1,15 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH.  All rights reserved.
 
-using System.Diagnostics;
 using Bodoconsult.App;
 using Bodoconsult.App.Abstractions.Delegates;
+using Bodoconsult.App.Abstractions.DependencyInjection;
 using Bodoconsult.App.Abstractions.Interfaces;
 using Bodoconsult.App.BusinessTransactions.RequestData;
 using Bodoconsult.App.Interfaces;
+using Bodoconsult.NetworkCommunication.Interfaces;
 using IpClient.Bll.App;
+using IpClient.Bll.Interfaces;
+using System.Diagnostics;
 
 namespace IpClientUi.AppData;
 
@@ -19,6 +22,7 @@ public class IpClientService : IApplicationService
     private bool _isStarting;
 
     private readonly IAppLoggerProxy _appLogger;
+    
 
     /// <summary>
     /// Default ctor
@@ -58,6 +62,29 @@ public class IpClientService : IApplicationService
     /// <param name="cancellationToken">Current cancellation token or null</param>
     public void StartApplication(CancellationToken? cancellationToken)
     {
+        // ToDo: check why this method is called 2 times. If cleared remove the lines until "Production"
+        if (AppGlobals.AppStartParameter.BackupPath != null)
+        {
+            return;
+        }
+
+        AppGlobals.AppStartParameter.BackupPath="Blubb";
+
+        // Production
+        var clientManager = AppGlobals.DiContainer.Get<IClientUiManager>();
+
+        clientManager.BackendTcpIpConfig = new IpConfig
+        {
+            IpAddress = AppGlobals.AppStartParameter.IpAddress,
+            Port = AppGlobals.AppStartParameter.Port,
+        };
+
+        clientManager.LoadBackendTcpIp();
+
+        clientManager.LoadBusinessTransactions();
+
+        clientManager.StartBackendTcpIpCommunication();
+
         //_isStarting = true;
 
         //if (_isStopped)
@@ -84,6 +111,11 @@ public class IpClientService : IApplicationService
 
         //// Fire app stop now if workload is done
         //AsyncHelper.FireAndForget(RequestApplicationStopDelegate.Invoke);
+    }
+
+    private void StatusMessageDelegate(string message)
+    {
+        // Do nothing
     }
 
     /// <summary>

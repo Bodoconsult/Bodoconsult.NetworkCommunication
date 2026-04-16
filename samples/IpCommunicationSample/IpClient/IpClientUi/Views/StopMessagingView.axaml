@@ -9,8 +9,12 @@
                                     xmlns:viewModels1="clr-namespace:IpClientUi.ViewModels"
                                     mc:Ignorable="d" 
                                     d:DesignHeight="450" d:DesignWidth="800">
+    <controls:Design.DataContext>
+        <viewModels1:StartMessagingViewModel/>
+    </controls:Design.DataContext>
+
     <controls:Grid>
-        <controls:TextBox>Stop messaging</controls:TextBox>
+        <controls:Label>Stop messaging</controls:Label>
         <controls:Button Command="{controls:Binding StopMessagingCommand}">Stop messaging</controls:Button>
     </controls:Grid>
 </reactiveUi:ReactiveUserControl>

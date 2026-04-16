@@ -50,7 +50,7 @@ public partial class IpClientMainWindowViewModel : MainWindowViewModel
     /// </summary>
     public override void DefineMenuItems()
     {
-        var groupItem = new GroupUiMenuItem("IpDevice");
+        var groupItem = new GroupUiMenuItem("SFX receiver");
         MenuItems.Add(groupItem);
 
         var command1 = new CommandUiMenuItem("Start streaming")

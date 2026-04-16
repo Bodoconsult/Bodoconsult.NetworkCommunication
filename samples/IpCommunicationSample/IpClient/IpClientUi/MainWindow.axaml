@@ -8,7 +8,7 @@
                       xmlns:controls1="https://github.com/avaloniaui"
                       xmlns:ipClient="clr-namespace:IpClient"
                       xmlns:viewModels1="clr-namespace:IpClientUi.ViewModels"
-                      Title="ReactiveUI.Routing" Height="360" Width="620">
+                      Title="IQ-SampleStream" Height="360" Width="620">
 
     <controls1:DockPanel>
         <controls:MenuControl x:Name="MainMenu" controls1:DockPanel.Dock="Top" />
