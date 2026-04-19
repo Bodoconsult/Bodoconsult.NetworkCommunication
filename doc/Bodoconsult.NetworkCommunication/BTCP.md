@@ -5,6 +5,8 @@ Business transaction communication protocol (BTCP)
 
 Business transaction communication protocol (BTCP) is intended as a protocol to simplify the communication of a client and a backend.
 
+![BTCP use cases](../../images/BTCP_use_cases.png)
+
 A business transaction is a piece of business logic in the backend you can access remotely via business transaction (BT) number and pass parameters you want to deliver to this BT.
 
 # Communication scheme

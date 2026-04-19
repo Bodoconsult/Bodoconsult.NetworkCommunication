@@ -10,6 +10,7 @@
 		<PackageReference Include="Bodoconsult.App.Abstractions" Version="1.0.9" />
 		<PackageReference Include="Bodoconsult.App.BackgroundService" Version="1.0.9" />
 		<PackageReference Include="Microsoft.Extensions.Hosting" Version="9.0.11" />
+		<PackageReference Include="Microsoft.Extensions.Hosting.WindowsServices" Version="9.0.11" />
 	</ItemGroup>
 	<ItemGroup>
 	  <ProjectReference Include="..\..\..\..\src\Bodoconsult.NetworkCommunication\Bodoconsult.NetworkCommunication.csproj" />

@@ -10,6 +10,8 @@ namespace IpBackendService;
 
 // https://learn.microsoft.com/en-us/dotnet/core/extensions/windows-service
 
+// https://learn.microsoft.com/en-us/dotnet/core/extensions/workers
+
 internal static class Program
 {
 

@@ -8,3 +8,7 @@ The state management is responsible for always knowing the state the device and 
 # A typical state management workflow
 
 ![A typical state management workflow](../../images/CommonStates.png)
+
+# A simple state management
+
+![Simple state management](../../images/SimpleStateManagement.png)

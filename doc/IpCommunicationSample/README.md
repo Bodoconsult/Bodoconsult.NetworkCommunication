@@ -7,6 +7,8 @@ IpCommunicationSample is a sample app shwoing how to use Bodoconsult.Network lib
 
 It demonstrates a three layer app containing an IP device, a backend and a client app. Communication between IP device and backend is based on TCP/IP for control tasks and on UDP for data streaming. Communication between backend and client is based on TCP/IP for control tasks and data streaming.
 
+![Structure of the sample app](../../images/IPCommunicationSample.png)
+
 For the TCP/IP communication between IP device and backend IpCommunicationSample is messaging based on the Telnet communication protocol (TNCP).
 
 TCP/IP communication between backend and client is based on bidirectional business transaction communication protocol (BTCP).

@@ -13,7 +13,18 @@ public class IpDeviceServiceAppBuilder : BaseBackgroundServiceAppBuilder
     /// </summary>
     /// <param name="appGlobals">Global app settings</param>
     public IpDeviceServiceAppBuilder(IAppGlobals appGlobals) : base(appGlobals)
-    { }
+    {
+        ConfigureHostBuilder(ConfigureAction);
+    }
+
+    private static void ConfigureAction(HostApplicationBuilder hostApplicationBuilder)
+    {
+        hostApplicationBuilder.Services.AddWindowsService(options =>
+        {
+            options.ServiceName = "IpDeviceService";
+        });
+
+    }
 
     /// <summary>
     /// Load the <see cref="IAppBuilder.DiContainerServiceProviderPackage"/>

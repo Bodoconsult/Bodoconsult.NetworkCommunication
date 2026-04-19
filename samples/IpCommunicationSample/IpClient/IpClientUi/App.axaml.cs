@@ -49,7 +49,7 @@ public partial class App : Application
 
         // Set additional app start parameters as required
         var param = globals.AppStartParameter;
-        param.AppName = "IpClient: Demo app";
+        param.AppName = "IpClient: demo app";
         param.SoftwareTeam = "Robert Leisner";
         param.LogoRessourcePath = "IpClient.Resources.logo.jpg";
         param.AppFolderName = "IpClient";
