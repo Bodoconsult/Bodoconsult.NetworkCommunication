@@ -337,6 +337,16 @@ public abstract class BaseStateMachineDevice : BaseOrderManagementDevice, IState
     }
 
     /// <summary>
+    ///  Get the next job state or null if none existing
+    /// </summary>
+    /// <returns>Job state or null</returns>
+    public IStateMachineState? GetNextJobState()
+    {
+        var success = _concurrentQueue.TryDequeue(out var state);
+        return success ? state : null;
+    }
+
+    /// <summary>
     /// Load the current <see cref="IDeviceBusinessLogicAdapter"/> instance
     /// </summary>
     /// <param name="businessLogicAdapter">Current <see cref="IDeviceBusinessLogicAdapter"/> instance</param>

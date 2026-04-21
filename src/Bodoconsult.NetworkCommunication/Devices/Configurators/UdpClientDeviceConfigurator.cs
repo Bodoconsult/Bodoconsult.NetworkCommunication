@@ -22,6 +22,7 @@ public class UdpClientDeviceConfigurator : BaseIpDeviceConfigurator
     private readonly IAppLoggerProxyFactory _appLoggerFactory;
     private readonly IAppLoggerProxy _appLoggerProxy;
     private readonly ISocketProxyFactory _socketProxyFactory;
+    private readonly IAppGlobals _appGlobals;
 
     /// <summary>
     /// Default ctor
@@ -34,6 +35,7 @@ public class UdpClientDeviceConfigurator : BaseIpDeviceConfigurator
     /// <param name="monitorLoggerFactoryFactory">Current factory for monitor logger factories</param>
     /// <param name="appLoggerProxy">Current app logger</param>
     /// <param name="socketProxyFactory">Current socket factory</param>
+    /// <param name="appGlobals">Current app globals</param>
     public UdpClientDeviceConfigurator(IDuplexIoFactory duplexIoFactory,
         IMonitorLoggerFactoryFactory monitorLoggerFactoryFactory,
         ILogDataFactory logDataFactory,
@@ -41,7 +43,8 @@ public class UdpClientDeviceConfigurator : BaseIpDeviceConfigurator
         IAppEventSourceFactory appEventSourceFactory,
         IOrderManagementClientNotificationManager clientNotificationManager,
         IAppLoggerProxy appLoggerProxy,
-        ISocketProxyFactory socketProxyFactory)
+        ISocketProxyFactory socketProxyFactory,
+        IAppGlobals appGlobals)
     {
         _duplexIoFactory = duplexIoFactory;
         _appEventSourceFactory = appEventSourceFactory;
@@ -52,6 +55,7 @@ public class UdpClientDeviceConfigurator : BaseIpDeviceConfigurator
         _logDataFactory = logDataFactory;
         _appLoggerProxy = appLoggerProxy;
         _socketProxyFactory = socketProxyFactory;
+        _appGlobals = appGlobals;
     }
 
     /// <summary>
@@ -70,13 +74,14 @@ public class UdpClientDeviceConfigurator : BaseIpDeviceConfigurator
         }
 
         DataMessagingConfig = new DefaultDataMessagingConfig();
-        DataMessagingConfig.LoggerId = loggerId.Replace(" ","");
+        DataMessagingConfig.LoggerId = loggerId;
         DataMessagingConfig.AppLogger = _appLoggerProxy;
-        DataMessagingConfig.MonitorLogger = CreateMonitorLogger(_monitorLoggerFactoryFactory, _appLoggerFactory, _logDataFactory, DataMessagingConfig.LoggerId);
+        DataMessagingConfig.MonitorLogger = CreateMonitorLogger(_monitorLoggerFactoryFactory, _appLoggerFactory, _logDataFactory, DataMessagingConfig.LoggerId.Replace(" ", "").Replace(":", ""));
         DataMessagingConfig.IpAddress = ipAddress;
         DataMessagingConfig.Port = port;
         DataMessagingConfig.IpProtocol = IpProtocolEnum.Udp;
         DataMessagingConfig.IsServer = false;
+        DataMessagingConfig.DataLoggingPath = _appGlobals.AppStartParameter.DataPath;
         DataMessagingConfig.DataMessageProcessingPackage = messageProcessingPackageFactory.CreateInstance(DataMessagingConfig);
     }
 

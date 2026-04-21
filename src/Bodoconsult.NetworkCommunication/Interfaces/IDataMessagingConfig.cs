@@ -128,7 +128,7 @@ public interface IDataMessagingConfig
     #region Data logging
 
     /// <summary>
-    /// The directory path for the export target. Default: Path.GetTempPath();
+    /// The directory path for the export target. Default: Path.GetTempPath()
     /// </summary>
     string? DataLoggingPath { get; set; }
 

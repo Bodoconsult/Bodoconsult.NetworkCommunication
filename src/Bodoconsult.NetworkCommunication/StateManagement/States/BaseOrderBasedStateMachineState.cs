@@ -48,11 +48,12 @@ public abstract class BaseOrderBasedStateMachineState : BaseStateMachineState, I
             for (var index = 0; index < OrderConfigurations.Count; index++)
             {
                 var ps = ParameterSets[index];
-                //Trace.TraceInformation($"{Name}: PS order ID {ps.CurrentOrder?.Id ?? 0}...");
+                
                 var orderConfigName = OrderConfigurations[index];
                 var order = orderFactory.CreateOrder(orderConfigName, ps);
+                //Trace.TraceInformation($"{Name}: PS order ID {ps.CurrentOrder?.Id ?? 0}...");
                 Orders.AddRange(order);
-                Trace.TraceInformation($"{Name}: order with index {index} was created!");
+                //Trace.TraceInformation($"{Name}: order ID {ps.CurrentOrder?.Id ?? 0} with index {index} was created!");
             }
         }
         catch (Exception e)

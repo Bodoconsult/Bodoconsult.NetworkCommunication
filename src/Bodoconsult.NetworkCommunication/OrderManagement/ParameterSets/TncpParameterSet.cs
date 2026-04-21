@@ -1,10 +1,12 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
-using System.ComponentModel.DataAnnotations;
-using System.Text;
-using System.Text.Json.Serialization;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataBlocks;
 using Bodoconsult.NetworkCommunication.Interfaces;
+using System.ComponentModel.DataAnnotations;
+using System.Diagnostics;
+using System.Text;
+using System.Text.Json.Serialization;
+using System.Xml.Linq;
 
 namespace Bodoconsult.NetworkCommunication.OrderManagement.ParameterSets;
 
@@ -27,6 +29,7 @@ public class TncpParameterSet : BasicOutboundDatablock, IParameterSet
     {
         if (CurrentOrder != null)
         {
+            Trace.TraceInformation($"TncpParameterSet: order ID {CurrentOrder?.Id ?? 0} set but {order?.Id?? 0} requested...");
             throw new ArgumentException("The order for a parameter set may be set only once!");
         }
         CurrentOrder = order;

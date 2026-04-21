@@ -42,7 +42,7 @@ internal class UdpClientDeviceConfiguratorTests
 
         // Act  
         var conf = new UdpClientDeviceConfigurator(duplexIoFactory, _monitorLoggerFactoryFactory, _logDataFactory, _appLoggerFactory, 
-            _appEventSourceFactory, _clientNotificationManager, _appLoggerProxy, socketFactory);
+            _appEventSourceFactory, _clientNotificationManager, _appLoggerProxy, socketFactory, Globals.Instance);
 
         // Assert
         using (Assert.EnterMultipleScope())
@@ -60,7 +60,7 @@ internal class UdpClientDeviceConfiguratorTests
         var socketFactory = new SocketProxyFactory(_tcpIpListenerManager);
 
         var conf = new UdpClientDeviceConfigurator(duplexIoFactory, _monitorLoggerFactoryFactory, _logDataFactory, 
-            _appLoggerFactory, _appEventSourceFactory, _clientNotificationManager, _appLoggerProxy, socketFactory);
+            _appLoggerFactory, _appEventSourceFactory, _clientNotificationManager, _appLoggerProxy, socketFactory, Globals.Instance);
 
         const string ip = "127.0.0.1";
         const int port = 9000;
@@ -88,7 +88,7 @@ internal class UdpClientDeviceConfiguratorTests
         var socketFactory = new SocketProxyFactory(_tcpIpListenerManager);
 
         var conf = new UdpClientDeviceConfigurator(duplexIoFactory, _monitorLoggerFactoryFactory, _logDataFactory, _appLoggerFactory, 
-            _appEventSourceFactory, _clientNotificationManager, _appLoggerProxy, socketFactory);
+            _appEventSourceFactory, _clientNotificationManager, _appLoggerProxy, socketFactory, Globals.Instance);
         conf.CreateMessagingConfig("TestDevice", "127.0.0.1", 9000, _messageProcessingPackageFactory);
 
         IDeviceBusinessLogicAdapterFactory businessLogicAdapterFactory = new TestIpDeviceAdapterFactory();

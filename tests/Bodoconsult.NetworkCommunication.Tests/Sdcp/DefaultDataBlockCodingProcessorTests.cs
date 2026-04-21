@@ -55,6 +55,7 @@ internal class DefaultDataBlockCodingProcessorTests
         using (Assert.EnterMultipleScope())
         {
             Assert.That(db, Is.Not.Null);
+            ArgumentNullException.ThrowIfNull(db);
             Assert.That(db.DataBlockType, Is.EqualTo('x'));
             Assert.That(db.Data.IsEqualTo(data[1..]));
         }

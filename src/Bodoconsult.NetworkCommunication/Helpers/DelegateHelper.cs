@@ -104,29 +104,31 @@ public static class DelegateHelper
     {
         while (!state.CancellationTokenSource?.IsCancellationRequested ?? false)
         {
+            var context = state.CurrentContext;
+
             // Check if there is a job state to restore after break
-            if (state.CurrentContext.SavedJobState != null)
+            if (context.SavedJobState != null)
             {
-                state.CurrentContext.RestoreSavedJobState();
+                context.RestoreSavedJobState();
                 return;
             }
 
             // Check if a job state is waiting. If yes, process it now
-            if (state.CurrentContext.JobStates.Count > 0)
+
+            // Get the first job state and process it
+            var newState = context.GetNextJobState();
+
+            // No state
+            if (newState == null)
             {
-                // Get the first job state and process it
-                var newState = state.CurrentContext.JobStates.First();
-
-                state.CurrentContext.JobStates.Remove(newState);
-
-                state.CurrentContext.RequestState(newState);
-
-                state.CancellationTokenSource?.Dispose();
-                return;
+                // Wait a bit then check again
+                Thread.Sleep(DeviceCommunicationBasics.JobStateCheckTimeout);
+                continue;
             }
 
-            // Wait a bit then check again
-            Thread.Sleep(DeviceCommunicationBasics.JobStateCheckTimeout);
+            // State found
+            context.RequestState(newState);
+            state.CancellationTokenSource?.Dispose();
         }
     }
 

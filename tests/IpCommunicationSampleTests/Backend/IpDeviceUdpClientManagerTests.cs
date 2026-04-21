@@ -50,7 +50,7 @@ internal class IpDeviceUdpClientManagerTests
         //IOrderPipelineFactory orderPipelineFactory = new OrderPipelineFactory(_dateService, _appLogger);
         // Act
         var m = new IpDeviceUdpClientManager(duplexIoFactory, _monitorLoggerFactoryFactory, _logDataFactory, _appLoggerFactory,
-            _appEventSourceFactory, _clientNotificationManager, _appLogger, socketFactory);
+            _appEventSourceFactory, _clientNotificationManager, _appLogger, socketFactory, Globals.Instance);
 
         // Assert
         using (Assert.EnterMultipleScope())
@@ -70,7 +70,7 @@ internal class IpDeviceUdpClientManagerTests
         //IOrderPipelineFactory orderPipelineFactory = new OrderPipelineFactory(_dateService, _appLogger);
 
         var m = new IpDeviceUdpClientManager(duplexIoFactory, _monitorLoggerFactoryFactory, _logDataFactory, _appLoggerFactory,
-            _appEventSourceFactory, _clientNotificationManager, _appLogger, socketFactory);
+            _appEventSourceFactory, _clientNotificationManager, _appLogger, socketFactory, Globals.Instance);
 
         const string ip = "127.0.0.1";
         const int port = 9000;

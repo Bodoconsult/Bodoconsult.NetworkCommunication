@@ -1,5 +1,6 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
+using System.Diagnostics;
 using Bodoconsult.App.Abstractions.Benchmarking;
 using Bodoconsult.NetworkCommunication.Delegates;
 using Bodoconsult.NetworkCommunication.EnumAndStates;
@@ -22,10 +23,11 @@ public class OmOrder : IOrder
     /// </summary>
     public OmOrder(long id, string name, IParameterSet parameterSet)
     {
-        ParameterSet = parameterSet;
+        Debug.Print("Create order "+id);
         Id = id;
         Name = name;
         TypeName = Name;
+        ParameterSet = parameterSet;
         ParameterSet.LoadOrder(this);
         DeviceId = "Device";
     }

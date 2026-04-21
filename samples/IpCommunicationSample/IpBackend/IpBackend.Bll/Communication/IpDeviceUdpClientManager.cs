@@ -22,6 +22,7 @@ public class IpDeviceUdpClientManager : ISimpleDeviceManager
     private readonly IAppLoggerProxyFactory _appLoggerFactory;
     private readonly IAppLoggerProxy _appLoggerProxy;
     private readonly ISocketProxyFactory _socketProxyFactory;
+    private readonly IAppGlobals _appGlobals;
 
     /// <summary>
     /// Default ctor
@@ -34,6 +35,7 @@ public class IpDeviceUdpClientManager : ISimpleDeviceManager
     /// <param name="monitorLoggerFactoryFactory">Current factory for monitor logger factories</param>
     /// <param name="appLoggerProxy">Current app logger</param>
     /// <param name="socketProxyFactory">Current socket factory</param>
+    /// <param name="appGlobals">Current app globals</param>
     public IpDeviceUdpClientManager(IDuplexIoFactory duplexIoFactory,
         IMonitorLoggerFactoryFactory monitorLoggerFactoryFactory,
         ILogDataFactory logDataFactory,
@@ -41,7 +43,8 @@ public class IpDeviceUdpClientManager : ISimpleDeviceManager
         IAppEventSourceFactory appEventSourceFactory,
         IOrderManagementClientNotificationManager clientNotificationManager,
         IAppLoggerProxy appLoggerProxy,
-        ISocketProxyFactory socketProxyFactory)
+        ISocketProxyFactory socketProxyFactory,
+        IAppGlobals appGlobals)
     {
         _duplexIoFactory = duplexIoFactory;
         _appEventSourceFactory = appEventSourceFactory;
@@ -52,6 +55,7 @@ public class IpDeviceUdpClientManager : ISimpleDeviceManager
         _logDataFactory = logDataFactory;
         _appLoggerProxy = appLoggerProxy;
         _socketProxyFactory = socketProxyFactory;
+        _appGlobals = appGlobals;
     }
 
     /// <summary>
@@ -72,9 +76,10 @@ public class IpDeviceUdpClientManager : ISimpleDeviceManager
     public void ConfigureDevice(string ipAddress, int port)
     {
         IDataMessageProcessingPackageFactory messageProcessingPackageFactory = new SfxpLoggedSortableDataMessageProcessingPackageFactory();
-        
-        var configurator = new UdpClientDeviceConfigurator(_duplexIoFactory, _monitorLoggerFactoryFactory, _logDataFactory, _appLoggerFactory, _appEventSourceFactory, 
-            _clientNotificationManager, _appLoggerProxy, _socketProxyFactory);
+
+        var configurator = new UdpClientDeviceConfigurator(_duplexIoFactory, _monitorLoggerFactoryFactory,
+            _logDataFactory, _appLoggerFactory, _appEventSourceFactory,
+            _clientNotificationManager, _appLoggerProxy, _socketProxyFactory, _appGlobals); 
 
         configurator.CreateMessagingConfig("IPDevice_UDP: ", ipAddress, port, messageProcessingPackageFactory);
 

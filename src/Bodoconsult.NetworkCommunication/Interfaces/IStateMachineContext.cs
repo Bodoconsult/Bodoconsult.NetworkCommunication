@@ -3,6 +3,8 @@
 
 // Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
+using System.Collections.Concurrent;
+
 namespace Bodoconsult.NetworkCommunication.Interfaces;
 
 /// <summary>
@@ -128,4 +130,10 @@ public interface IStateMachineContext
     /// </summary>
     /// <param name="stateMachineState">Current state</param>
     void SaveJobState(IStateMachineState stateMachineState);
+
+    /// <summary>
+    ///  Get the next job state or null if none existing
+    /// </summary>
+    /// <returns>Job state or null</returns>
+    IStateMachineState? GetNextJobState();
 }

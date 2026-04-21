@@ -100,14 +100,15 @@ public class UdpDatagramIpDuplexIoReceiver : BaseDuplexIoReceiver
         {
             msg = $"Parsed command {DataMessageHelper.GetStringFromArrayCsharpStyle(ref command)} NOT valid: {validationResult.ValidationResult}";
             //Debug.Print(msg);
-            Logger.LogDebug(msg);
+            Logger.LogError(msg);
         }
         else
         {
-            msg = $"Parsed command {DataMessageHelper.GetStringFromArrayCsharpStyle(ref command)}";
-            //Debug.Print(msg);
-            DataMessagingConfig.MonitorLogger.LogDebug(msg);
-
+//#if DEBUG
+//            msg = $"Parsed command {DataMessageHelper.GetStringFromArrayCsharpStyle(ref command)}";
+//            //Debug.Print(msg);
+//            DataMessagingConfig.MonitorLogger.LogDebug(msg);
+//#endif
             DataMessageProcessor.ProcessMessage(codecResult.DataMessage);
         }
 

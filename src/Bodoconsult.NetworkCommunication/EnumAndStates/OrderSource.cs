@@ -50,5 +50,4 @@ public class OrderSource
     /// An order created by a remote order call via plain text, JSON or XML based file and sent to device
     /// </summary>
     public static OrderSource RemoteOrderSource = new(0, "Order created by remote order");
-
 }

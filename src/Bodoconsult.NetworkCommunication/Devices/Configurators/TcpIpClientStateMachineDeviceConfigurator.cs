@@ -72,9 +72,9 @@ public class TcpIpClientStateMachineDeviceConfigurator : BaseIpDeviceConfigurato
         }
 
         DataMessagingConfig = new DefaultDataMessagingConfig();
-        DataMessagingConfig.LoggerId = loggerId.Replace(" ", "");
+        DataMessagingConfig.LoggerId = loggerId;
         DataMessagingConfig.AppLogger = _appLoggerProxy;
-        DataMessagingConfig.MonitorLogger = CreateMonitorLogger(_monitorLoggerFactoryFactory, _appLoggerFactory, _logDataFactory, DataMessagingConfig.LoggerId);
+        DataMessagingConfig.MonitorLogger = CreateMonitorLogger(_monitorLoggerFactoryFactory, _appLoggerFactory, _logDataFactory, DataMessagingConfig.LoggerId.Replace(" ", "").Replace(":", ""));
         DataMessagingConfig.IpAddress = ipAddress;
         DataMessagingConfig.Port = port;
         DataMessagingConfig.IpProtocol = IpProtocolEnum.Tcp;

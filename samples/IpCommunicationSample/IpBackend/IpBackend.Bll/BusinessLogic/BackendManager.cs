@@ -34,6 +34,7 @@ public class BackendManager : IBackendManager
     private readonly IOrderIdGenerator _orderIdGenerator;
     private readonly IBusinessTransactionManager _businessTransactionManager;
     private readonly ISocketProxyFactory _socketProxyFactory;
+    private readonly IAppGlobals _appGlobals;
 
     /// <summary>
     /// Default ctor
@@ -55,6 +56,7 @@ public class BackendManager : IBackendManager
     /// <param name="orderIdGenerator">Current order ID generator</param>
     /// <param name="businessTransactionManager">Current business transaction manager</param>
     /// <param name="socketProxyFactory">Current socket factory</param>
+    /// <param name="appGlobals">Current app globals</param>
     public BackendManager(IMonitorLoggerFactoryFactory monitorLoggerFactoryFactory,
         ILogDataFactory logDataFactory,
         IAppLoggerProxyFactory appLoggerFactory,
@@ -71,7 +73,8 @@ public class BackendManager : IBackendManager
         IOrderPipelineFactory orderPipelineFactory,
         IOrderIdGenerator orderIdGenerator,
         IBusinessTransactionManager businessTransactionManager,
-        ISocketProxyFactory socketProxyFactory
+        ISocketProxyFactory socketProxyFactory,
+        IAppGlobals appGlobals
     )
     {
         _appEventSourceFactory = appEventSourceFactory;
@@ -92,6 +95,7 @@ public class BackendManager : IBackendManager
         _orderIdGenerator = orderIdGenerator;
         _businessTransactionManager = businessTransactionManager;
         _socketProxyFactory = socketProxyFactory;
+        _appGlobals = appGlobals;
     }
 
     /// <summary>
@@ -161,7 +165,7 @@ public class BackendManager : IBackendManager
         var duplexIoFactory = new UdpDatagramIpDuplexIoFactory(_sendPacketProcessFactory);
 
         var m = new IpDeviceUdpClientManager(duplexIoFactory, _monitorLoggerFactoryFactory, _logDataFactory, _appLoggerFactory,
-            _appEventSourceFactory, _clientNotificationManager, _appLogger, _socketProxyFactory);
+            _appEventSourceFactory, _clientNotificationManager, _appLogger, _socketProxyFactory, _appGlobals);
 
         m.ConfigureDevice(IpDeviceUdpConfig.Value.IpAddress, IpDeviceUdpConfig.Value.Port);
 
@@ -195,7 +199,11 @@ public class BackendManager : IBackendManager
     {
         ArgumentNullException.ThrowIfNull(IpDeviceTcpIp);
         ArgumentNullException.ThrowIfNull(IpDeviceUdp);
-        ArgumentNullException.ThrowIfNull(IpDeviceUdpConfig);
+
+        if (IpDeviceUdpConfig == null)
+        {
+            throw new ArgumentNullException(nameof(IpDeviceUdpConfig));
+        }
 
         var adapter = (IIpDeviceTcpIpDeviceBusinessLogicAdapter?)IpDeviceTcpIp.DeviceBusinessLogicAdapter;
         var adapter2 = (IIpDeviceUdpDeviceBusinessLogicAdapter?)IpDeviceUdp.DeviceBusinessLogicAdapter;
@@ -212,6 +220,9 @@ public class BackendManager : IBackendManager
         _businessTransactionManager.AddProvider(provider);
     }
 
+    /// <summary>
+    /// Start the communication with the UDP device
+    /// </summary>
     public void StartIpDeviceUdpCommunication()
     {
         ArgumentNullException.ThrowIfNull(IpDeviceUdp?.IpDevice);
@@ -233,6 +244,9 @@ public class BackendManager : IBackendManager
         throw new Exception($"StartIpDeviceUdpCommunication failed:{reply.Message} {reply.ExceptionMessage}");
     }
 
+    /// <summary>
+    /// Start the communication with the IP device via UDP
+    /// </summary>
     public void StartIpDeviceTcpIpCommunication()
     {
         ArgumentNullException.ThrowIfNull(IpDeviceTcpIp?.Device?.StateMachineStateFactory);
@@ -246,6 +260,9 @@ public class BackendManager : IBackendManager
         //IpDeviceTcpIp.IpDevice.StartComm();
     }
 
+    /// <summary>
+    /// Start the communication with the client
+    /// </summary>
     public void StartClientCommunication()
     {
         ArgumentNullException.ThrowIfNull(Client?.IpDevice);
