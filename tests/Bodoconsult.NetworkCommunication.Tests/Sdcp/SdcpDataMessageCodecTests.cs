@@ -43,6 +43,13 @@ internal class SdcpDataMessageCodecTests
         {
             Assert.That(result, Is.Not.Null);
             Assert.That(result.ErrorCode, Is.Zero);
+
+            Assert.That(result.DataMessage, Is.Not.Null);
+            var sdcpMsg = (SdcpInboundDataMessage?)result.DataMessage;
+
+            Assert.That(sdcpMsg, Is.Not.Null);
+            ArgumentNullException.ThrowIfNull(sdcpMsg);
+            Assert.That(sdcpMsg.RawMessageData.Length, Is.Not.Zero);
         }
     }
 

@@ -1,6 +1,7 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
 using System.Diagnostics;
+using System.Runtime.CompilerServices;
 using Bodoconsult.NetworkCommunication.Delegates;
 using Bodoconsult.NetworkCommunication.Interfaces;
 
@@ -37,16 +38,31 @@ public abstract class BaseOrderBasedStateMachineState : BaseStateMachineState, I
         {
             throw new ArgumentException($"The number of parametersets {ParameterSets.Count} must equal the number of order configurations {OrderConfigurations.Count}!");
         }
+
         ArgumentNullException.ThrowIfNull(CurrentContext.OrderManager);
 
-        var orderFactory = CurrentContext.OrderManager.OrderFactory;
-
-        for (var index = 0; index < OrderConfigurations.Count; index++)
+        try
         {
-            var orderConfigName = OrderConfigurations[index];
-            var order = orderFactory.CreateOrder(orderConfigName, ParameterSets[index]);
-            Orders.AddRange(order);
+            var orderFactory = CurrentContext.OrderManager.OrderFactory;
+
+            for (var index = 0; index < OrderConfigurations.Count; index++)
+            {
+                var ps = ParameterSets[index];
+                //Trace.TraceInformation($"{Name}: PS order ID {ps.CurrentOrder?.Id ?? 0}...");
+                var orderConfigName = OrderConfigurations[index];
+                var order = orderFactory.CreateOrder(orderConfigName, ps);
+                Orders.AddRange(order);
+                Trace.TraceInformation($"{Name}: order with index {index} was created!");
+            }
         }
+        catch (Exception e)
+        {
+            var msg = $"{e}";
+            Debug.Print(msg);
+            Trace.TraceError($"BaseOrderBasedStateMachineState :{msg}");
+            throw;
+        }
+
     }
 
     /// <summary>

@@ -19,13 +19,21 @@ public class SfxpBackendUdpBusinessLogicAdapter : BaseSimpleDeviceBusinessLogicA
     private CancellationTokenSource? _cts;
     private Thread? _workerTask;
 
-
     /// <summary>
     /// Default ctor
     /// </summary>
     /// <param name="device">Current device</param>
     public SfxpBackendUdpBusinessLogicAdapter(IIpDevice device) : base(device)
     { }
+
+    /// <summary>
+    /// Default method to handle a received message from the device in business logic
+    /// </summary>
+    /// <param name="message">Received message</param>
+    public override void DefaultReceiveMessage(IInboundDataMessage message)
+    {
+        // Do nothing
+    }
 
     /// <summary>
     /// Start the UDP channel
@@ -57,12 +65,6 @@ public class SfxpBackendUdpBusinessLogicAdapter : BaseSimpleDeviceBusinessLogicA
     /// <param name="request">Empty request</param>
     /// <returns>Empty reply</returns>
     public IBusinessTransactionReply StartStreaming(IBusinessTransactionRequestData request)
-    {
-        // Do nothing
-        return new DefaultBusinessTransactionReply();
-    }
-
-    public IBusinessTransactionReply StartStreaming2(IBusinessTransactionRequestData request)
     {
         _cts = new CancellationTokenSource();
 

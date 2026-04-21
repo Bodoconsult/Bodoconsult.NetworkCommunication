@@ -56,6 +56,7 @@ internal class TncpDataMessageCodecTests
 
             var tncpMsg = (TncpInboundDataMessage)result.DataMessage;
 
+            Assert.That(tncpMsg.RawMessageData.Length, Is.Not.Zero);
             Assert.That(tncpMsg.TelnetCommand, Is.EqualTo(cmd));
         }
     }

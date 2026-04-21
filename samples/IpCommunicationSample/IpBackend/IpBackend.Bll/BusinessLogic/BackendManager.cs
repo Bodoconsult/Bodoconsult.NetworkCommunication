@@ -195,12 +195,15 @@ public class BackendManager : IBackendManager
     {
         ArgumentNullException.ThrowIfNull(IpDeviceTcpIp);
         ArgumentNullException.ThrowIfNull(IpDeviceUdp);
+        ArgumentNullException.ThrowIfNull(IpDeviceUdpConfig);
 
         var adapter = (IIpDeviceTcpIpDeviceBusinessLogicAdapter?)IpDeviceTcpIp.DeviceBusinessLogicAdapter;
         var adapter2 = (IIpDeviceUdpDeviceBusinessLogicAdapter?)IpDeviceUdp.DeviceBusinessLogicAdapter;
 
         ArgumentNullException.ThrowIfNull(adapter);
         ArgumentNullException.ThrowIfNull(adapter2);
+
+        adapter.UdpPort = IpDeviceUdpConfig.Value.Port;
 
         IBusinessTransactionProvider provider = new IpDeviceTcpIpBusinessTransactionProvider(adapter);
         _businessTransactionManager.AddProvider(provider);

@@ -251,7 +251,7 @@ public class UdpDatagramIpDuplexIoReceiver : BaseDuplexIoReceiver
             //Debug.Print("Got data");
 
             var dummy = _bufferPool.Dequeue();
-            dummy.Memory = data.ToArray().AsMemory();
+            dummy.Memory = data.AsSpan()[..messageLength].ToArray().AsMemory();
 
             _currentPipeline.Enqueue(dummy);
 

@@ -51,6 +51,7 @@ internal class EdcpDataMessageCodecTests
             Assert.That(edcpMsg, Is.Not.Null);
             ArgumentNullException.ThrowIfNull(edcpMsg);
             Assert.That(edcpMsg.BlockCode, Is.Not.Zero);
+            Assert.That(edcpMsg.RawMessageData.Length, Is.Not.Zero);
         }
     }
 

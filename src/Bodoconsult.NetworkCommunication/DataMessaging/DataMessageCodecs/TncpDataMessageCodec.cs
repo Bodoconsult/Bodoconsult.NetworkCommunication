@@ -79,7 +79,8 @@ public class TncpDataMessageCodec : BaseDataMessageCodec
 
             var dataMessage = new TncpInboundDataMessage
             {
-                DataBlock = dataBlock
+                DataBlock = dataBlock,
+                RawMessageData = data
             };
 
             if (dataBlock != null)

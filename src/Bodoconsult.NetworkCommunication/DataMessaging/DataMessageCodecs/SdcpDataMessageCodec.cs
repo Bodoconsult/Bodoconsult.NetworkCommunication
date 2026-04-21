@@ -86,7 +86,8 @@ public class SdcpDataMessageCodec : BaseDataMessageCodec
 
             var dataMessage = new SdcpInboundDataMessage
             {
-                DataBlock = dataBlock
+                DataBlock = dataBlock,
+                RawMessageData = data
             };
 
             result.DataMessage = dataMessage;

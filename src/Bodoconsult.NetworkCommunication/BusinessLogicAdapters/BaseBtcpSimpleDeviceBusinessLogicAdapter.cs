@@ -155,8 +155,6 @@ public abstract class BaseBtcpSimpleDeviceBusinessLogicAdapter : BaseSimpleDevic
             return;
         }
 
-        
-
         var syncData = _syncProcessManager.GetSyncProcessDataForProcess(reply.RequestData.TransactionGuid);
 
         if (syncData == null)

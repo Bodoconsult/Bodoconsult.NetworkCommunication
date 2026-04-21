@@ -38,10 +38,7 @@ public class OrderFactory : IOrderFactory
     {
         var config = GetConfiguration(configName);
         
-        if (config == null)
-        {
-            throw new ArgumentNullException(nameof(config), $"No config {configName} registered");
-        }
+        ArgumentNullException.ThrowIfNull(config, $"No config {configName} registered");
 
         config.ParameterSet = parameterSet;
 
@@ -62,7 +59,14 @@ public class OrderFactory : IOrderFactory
     /// <returns>Configuration or null if none found</returns>
     public IOrderConfiguration? GetConfiguration(string configName)
     {
-        return _configurations.GetValueOrDefault(configName);
+        var config = _configurations.GetValueOrDefault(configName);
+
+        if (config == null)
+        {
+            return null;
+        }
+
+        return (IOrderConfiguration)config.Clone();
     }
 
     /// <summary>

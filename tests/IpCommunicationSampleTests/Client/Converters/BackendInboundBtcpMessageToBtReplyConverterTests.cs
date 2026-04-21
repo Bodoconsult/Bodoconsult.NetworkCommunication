@@ -36,7 +36,7 @@ internal class BackendInboundBtcpMessageToBtReplyConverterTests
         // Arrange 
         var converter = new BackendInboundBtcpMessageToBtReplyConverter(_appLogger);
 
-        const int transactionid = 1;
+        const int transactionid = 100;
         var transactionuid = Guid.NewGuid();
 
         var msg = new BtcpReplyInboundDataMessage(transactionid, transactionuid)

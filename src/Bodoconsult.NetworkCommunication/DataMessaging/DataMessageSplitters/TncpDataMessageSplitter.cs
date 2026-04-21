@@ -77,7 +77,7 @@ public class TncpDataMessageSplitter : IDataMessageSplitter
             posEndByte++;
         }
 
-        if (posEndByte > 0 && posEndByte + 1 < buffer.Length)
+        if (posEndByte > 0 && posEndByte + 1 <= buffer.Length)
         {
             command = buffer.Slice(0, posEndByte + 1);
             return true;

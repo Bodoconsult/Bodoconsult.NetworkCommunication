@@ -189,7 +189,6 @@ public class IpDeviceServiceService : IApplicationService
             //_appLogger.LogError($"Performance logging could not be stopped", new object[]{e});
         }
 
-
         var gms = di.Get<IGeneralAppManagementManager>();
         var request = new EmptyBusinessTransactionRequestData();
 
@@ -199,25 +198,10 @@ public class IpDeviceServiceService : IApplicationService
             // ToDo: fill request with useful information for logging
             var result = gms.CreateLogDump(request);
 
-            if (result != null)
+            if (result != null && result.ErrorCode != 0)
             {
                 _appLogger?.LogWarning($"CreateLogDump: error code {result.ErrorCode}: {result.Message}");
             }
-        }
-        catch
-        {
-            // Do nothing
-        }
-
-        // Stop logging now
-        try
-        {
-            if (_appLogger != null)
-            {
-                _appLogger.StopLogging();
-                _appLogger.Dispose();
-            }
-
         }
         catch
         {
@@ -229,5 +213,4 @@ public class IpDeviceServiceService : IApplicationService
     /// Current <see cref="IApplicationService.LicenseMissingDelegate"/>
     /// </summary>
     public LicenseMissingDelegate LicenseMissingDelegate { get; set; }
-
 }

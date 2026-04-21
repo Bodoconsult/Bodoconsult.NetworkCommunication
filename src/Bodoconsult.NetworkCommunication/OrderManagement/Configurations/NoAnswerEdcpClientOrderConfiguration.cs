@@ -10,9 +10,23 @@ namespace Bodoconsult.NetworkCommunication.OrderManagement.Configurations;
 /// </summary>
 public class NoAnswerEdcpClientOrderConfiguration : OneRequestSpecNoOrOneStepOneAnswerConfiguration
 {
+    private static readonly IOrderBuilder Builder = new NoAnswerEdcpClientOrderBuilder();
+
     /// <summary>
     /// Default ctor
     /// </summary>
-    public NoAnswerEdcpClientOrderConfiguration() : base($"{BuiltinOrders.NoAnswerEdcpClientOrder}Configuration", BuiltinOrders.NoAnswerEdcpClientOrder, new NoAnswerEdcpClientOrderBuilder())
+    public NoAnswerEdcpClientOrderConfiguration() : base($"{BuiltinOrders.NoAnswerEdcpClientOrder}Configuration", BuiltinOrders.NoAnswerEdcpClientOrder, Builder)
     { }
+
+    /// <summary>Creates a new object that is a copy of the current instance.</summary>
+    /// <returns>A new object that is a copy of this instance.</returns>
+    public override object Clone()
+    {
+        return new NoAnswerEdcpClientOrderConfiguration
+        {
+            CreateParameterSetDelegate = CreateParameterSetDelegate,
+            HandleRequestAnswerOnSuccessDelegate = HandleRequestAnswerOnSuccessDelegate,
+            ParameterSet = null
+        };
+    }
 }

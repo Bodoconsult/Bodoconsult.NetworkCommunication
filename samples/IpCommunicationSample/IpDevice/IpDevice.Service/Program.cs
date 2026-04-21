@@ -16,19 +16,13 @@ internal static class Program
 
     private static void Main(string[] args)
     {
-
-        Debug.Print("Hello, World!");
-
-        Debug.Print("IpDeviceService initiation starts...");
-
         var globals = Globals.Instance;
         globals.LoggingConfig.AddDefaultLoggerProviderConfiguratorsForBackgroundServiceApp();
 
         // Set additional app start parameters as required
         var param = globals.AppStartParameter;
-        param.AppName = "IpDeviceService: Demo app";
+        param.AppName = "IpDeviceService";
         param.SoftwareTeam = "Robert Leisner";
-        param.LogoRessourcePath = "IpDeviceService.Resources.logo.jpg";
         param.AppFolderName = "IpDeviceService";
 
         const string performanceToken = "--PERF";
@@ -45,7 +39,7 @@ internal static class Program
 #endif
 
         // Load basic app metadata
-        builder.LoadBasicSettings(typeof(Program));
+        builder.LoadBasicSettings();
 
         // Process the config file
         builder.ProcessConfiguration();
@@ -56,22 +50,22 @@ internal static class Program
         // Write first log entry with default logger
         ArgumentNullException.ThrowIfNull(Globals.Instance.Logger);
         Globals.Instance.Logger.LogInformation($"{param.AppName} {param.AppVersion} starts...");
-        Console.WriteLine("Logging started...");
+        //Console.WriteLine("Logging started...");
 
-        // App is ready now for doing something
-        Console.WriteLine($"Connection string loaded: {param.DefaultConnectionString}");
+        //// App is ready now for doing something
+        //Console.WriteLine($"Connection string loaded: {param.DefaultConnectionString}");
 
-        Console.WriteLine("");
-        Console.WriteLine("");
+        //Console.WriteLine("");
+        //Console.WriteLine("");
 
-        Console.WriteLine($"App name loaded: {param.AppName}");
-        Console.WriteLine($"App version loaded: {param.AppVersion}");
-        Console.WriteLine($"App path loaded: {param.AppPath}");
+        //Console.WriteLine($"App name loaded: {param.AppName}");
+        //Console.WriteLine($"App version loaded: {param.AppVersion}");
+        //Console.WriteLine($"App path loaded: {param.AppPath}");
 
-        Console.WriteLine("");
-        Console.WriteLine("");
+        //Console.WriteLine("");
+        //Console.WriteLine("");
 
-        Console.WriteLine($"Logging config: {ObjectHelper.GetObjectPropertiesAsString(Globals.Instance.LoggingConfig)}");
+        //Console.WriteLine($"Logging config: {ObjectHelper.GetObjectPropertiesAsString(Globals.Instance.LoggingConfig)}");
 
         // Prepare the DI container package
         builder.LoadDiContainerServiceProviderPackage();

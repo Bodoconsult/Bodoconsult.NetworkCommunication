@@ -30,7 +30,7 @@ public class LoggedDataMessageProcessor : BaseDataMessageProcessor
     /// <param name="message">Message to process</param>
     public override void ProcessMessage(IInboundMessage message)
     {
-        Trace.TraceInformation($"LoggedDataMessageProcessor: received message {message.MessageId}");
+        Trace.TraceInformation($"LoggedDataMessageProcessor: received message {message.MessageId}: {message.RawMessageData.Length} bytes");
 
         // Handshake received
         if (message is IInboundHandShakeMessage handShake)
@@ -43,9 +43,13 @@ public class LoggedDataMessageProcessor : BaseDataMessageProcessor
         if (message is IInboundDataMessage dataMessage)
         {
             ProcessDataMessage(dataMessage);
+            return;
         }
 
         // No valid message
+        var s = $"message {message.MessageId} not valid: {message.GetType().Name}";
+        Config.MonitorLogger.LogError(s);
+        Trace.TraceInformation($"LoggedDataMessageProcessor: {s}");
     }
 
     private void ProcessDataMessage(IInboundDataMessage dataMessage)

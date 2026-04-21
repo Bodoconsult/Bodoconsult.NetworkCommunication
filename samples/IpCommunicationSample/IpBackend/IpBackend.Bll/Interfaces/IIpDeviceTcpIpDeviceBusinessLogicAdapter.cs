@@ -10,6 +10,11 @@ namespace IpBackend.Bll.Interfaces;
 /// </summary>
 public interface IIpDeviceTcpIpDeviceBusinessLogicAdapter: IStateMachineDeviceBusinessLogicAdapter
 {
+    /// <summary>
+    /// Current UDP port to use
+    /// </summary>
+    public int UdpPort { get; set; }
+
     #region Device order handling
 
     /// <summary>

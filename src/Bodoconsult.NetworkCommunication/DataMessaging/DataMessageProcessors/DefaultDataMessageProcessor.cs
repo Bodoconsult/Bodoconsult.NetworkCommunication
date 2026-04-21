@@ -24,7 +24,7 @@ public class DefaultDataMessageProcessor : BaseDataMessageProcessor
     /// <param name="message">Message to process</param>
     public override void ProcessMessage(IInboundMessage message)
     {
-        Trace.TraceInformation($"DefaultDataMessageProcessor: received message {message.MessageId}");
+        Trace.TraceInformation($"DefaultDataMessageProcessor: received message {message.MessageId}: {message.RawMessageData.Length} bytes");
 
         // Handshake received
         if (message is IInboundHandShakeMessage handShake)
@@ -37,16 +37,35 @@ public class DefaultDataMessageProcessor : BaseDataMessageProcessor
         if (message is IInboundDataMessage dataMessage)
         {
             ProcessDataMessage(dataMessage);
+            return;
         }
 
         // No valid message
+        var s = $"message {message.MessageId} not valid: {message.GetType().Name}";
+        Config.MonitorLogger.LogError(s);
+        Trace.TraceInformation($"DefaultDataMessageProcessor: {s}");
     }
 
     private void ProcessDataMessage(IInboundDataMessage dataMessage)
     {
         ArgumentNullException.ThrowIfNull(Config.RaiseCommLayerDataMessageReceivedDelegate);
 
+        //Config.RaiseCommLayerDataMessageReceivedDelegate.Invoke(dataMessage);
+        //return;
+
         // Now process the message
-        AsyncHelper.FireAndForget2(() => Config.RaiseCommLayerDataMessageReceivedDelegate.Invoke(dataMessage)).ContinueWith(Callback);
+        AsyncHelper.FireAndForget2(() =>
+        {
+            try
+            {
+                Config.RaiseCommLayerDataMessageReceivedDelegate.Invoke(dataMessage);
+            }
+            catch (Exception e)
+            {
+                var s = $" failed {dataMessage.MessageId}: {dataMessage.RawMessageData.Length} bytes: {e}";
+                Config.MonitorLogger.LogError(s);
+                Trace.TraceInformation($"DefaultDataMessageProcessor: {s}");
+            }
+        }).ContinueWith(Callback);
     }
 }

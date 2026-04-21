@@ -147,8 +147,6 @@ public class UdpServerSocketProxy : UpdSocketProxyBase
             var result = await UdpClient.ReceiveAsync(CancellationTokenSource.Token);
             SendEndPoint = result.RemoteEndPoint;
 
-            
-
             //Debug.Print($"UDPClient: received {result.Length} bytes from {SendEndPoint}");
 
             Buffer.BlockCopy(result.Buffer, 0, buffer, 0, result.Buffer.Length);

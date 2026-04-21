@@ -81,6 +81,7 @@ internal class BtcpDataMessageCodecTests
             Assert.That(btcpMsg.InfoMessage, Is.EqualTo("Blubb"));
             Assert.That(btcpMsg.ErrorMessage, Is.EqualTo("Blabb"));
             Assert.That(btcpMsg.Payload.Length, Is.Not.Zero);
+            Assert.That(btcpMsg.RawMessageData.Length, Is.Not.Zero);
         }
     }
 
@@ -112,6 +113,7 @@ internal class BtcpDataMessageCodecTests
             Assert.That(btcpMsg.DataBlock, Is.Not.Null);
             ArgumentNullException.ThrowIfNull(btcpMsg.DataBlock);
             Assert.That(btcpMsg.DataBlock.Data.Length, Is.EqualTo(11));
+            Assert.That(btcpMsg.RawMessageData.Length, Is.Not.Zero);
         }
     }
 
@@ -141,6 +143,7 @@ internal class BtcpDataMessageCodecTests
             ArgumentNullException.ThrowIfNull(btcpMsg);
             Assert.That(btcpMsg.BusinessTransactionId, Is.EqualTo(1));
             Assert.That(btcpMsg.DataBlock, Is.Null);
+            Assert.That(btcpMsg.RawMessageData.Length, Is.Not.Zero);
         }
     }
 

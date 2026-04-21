@@ -7,8 +7,10 @@ using Bodoconsult.NetworkCommunication.Testing;
 using IpDevice.Bll.Interfaces;
 using IpDeviceService.DiContainerProvider;
 using System.Net;
+using System.Text;
 using Bodoconsult.App.BusinessTransactions.RequestData;
 using Bodoconsult.App.Helpers;
+using DynamicData;
 using IpCommunicationSampleTests.App;
 
 namespace IpCommunicationSampleTests.Device.RealWorld;
@@ -17,6 +19,13 @@ namespace IpCommunicationSampleTests.Device.RealWorld;
 internal class UdpSendingTests
 {
     private IIpDeviceManager? _deviceManager;
+
+    // { 0x73, 0x65, 0x74, 0x2c, 0x73, 0x74, 0x72, 0x65, 0x61, 0x6d, 0x2c, 0x6e, 0x75, 0x6d, 0x62, 0x65, 0x72, 0x2c, 0x31, 0xd }
+
+    /// <summary>
+    /// Current UDP remote device to send data to the socket
+    /// </summary>
+    ITcpIpDevice? RemoteTcpIpDevice { get; set; }
 
     /// <summary>
     /// Current UDP remote device to send data to the socket
@@ -37,6 +46,7 @@ internal class UdpSendingTests
     public void Cleanup()
     {
         RemoteUdpDevice?.Dispose();
+        RemoteTcpIpDevice?.Dispose();
     }
 
     private void StartUdpClient()
@@ -45,6 +55,15 @@ internal class UdpSendingTests
         RemoteUdpDevice.Start();
         // Send cleint hello
         RemoteUdpDevice.Send([0x48, 0x65, 0x6c, 0x6c, 0x6f, 0x20, 0x66, 0x72, 0x6f, 0x6d, 0x20, 0x63, 0x6c, 0x69, 0x65, 0x6e, 0x74]);
+
+        //_cts = new CancellationTokenSource();
+        //Task.Run(UdpReceiving, _cts.Token);
+    }
+
+    private void StartTcpIpClient()
+    {
+        RemoteTcpIpDevice = new TcpTestClient(IPAddress.Parse(_startParams.IpAddress2), _startParams.Port2);
+        RemoteTcpIpDevice.Start();
 
         //_cts = new CancellationTokenSource();
         //Task.Run(UdpReceiving, _cts.Token);
@@ -101,11 +120,66 @@ internal class UdpSendingTests
         var request2 = new EmptyBusinessTransactionRequestData();
 
         // Act  
-        adapter.StartStreaming2(request);
+        adapter.StartStreaming(request);
 
         Wait.Until(CheckMessages);
 
         adapter.StopStreaming(request2);
+
+        // Assert
+        Assert.That(CheckMessages(), Is.True);
+
+        Debug.Print($"Messages received: {RemoteUdpDevice?.ReceivedMessages.Count}");
+    }
+
+    [Test]
+    public void TcpClientStartStreaming2_ValidSetup_MessagesSent()
+    {
+        //const string hello = "Hello from client";
+        //var bytes = Encoding.ASCII.GetBytes(hello);
+        //Debug.Print($"{ArrayHelper.GetStringFromArrayCsharpStyle(bytes)}");
+
+        // Arrange 
+        CreateAndStartDevice();
+        ArgumentNullException.ThrowIfNull(_deviceManager?.BackendUdp?.DeviceBusinessLogicAdapter);
+
+        StartTcpIpClient();
+        ArgumentNullException.ThrowIfNull(RemoteTcpIpDevice);
+
+        StartUdpClient();
+        ArgumentNullException.ThrowIfNull(RemoteUdpDevice);
+
+        // Act  
+        var data = new List<byte>();
+        data.AddRange( Encoding.UTF8.GetBytes("set,stream,number,4"));
+        data.Add([DeviceCommunicationBasics.Cr]);
+        AsyncHelper.FireAndForget(() =>
+        {
+            RemoteTcpIpDevice.Send(data.ToArray());
+        });
+
+        var data2 = new List<byte>();
+        data2.AddRange(Encoding.UTF8.GetBytes("set,stream,mode,snapshot,continious"));
+        data2.Add([DeviceCommunicationBasics.Cr]);
+
+        AsyncHelper.FireAndForget(() =>
+        {
+            RemoteTcpIpDevice.Send(data2.ToArray());
+        });
+
+        var data3 = new List<byte>();
+        data3.AddRange(Encoding.UTF8.GetBytes("set,status,start"));
+        data3.Add([DeviceCommunicationBasics.Cr]);
+        AsyncHelper.FireAndForget(() =>
+        {
+            RemoteTcpIpDevice.Send(data3.ToArray());
+        });
+
+        Task.Delay(5000);
+
+        Wait.Until(CheckMessages);
+
+        //adapter.StopStreaming(request2);
 
         // Assert
         Assert.That(CheckMessages(), Is.True);

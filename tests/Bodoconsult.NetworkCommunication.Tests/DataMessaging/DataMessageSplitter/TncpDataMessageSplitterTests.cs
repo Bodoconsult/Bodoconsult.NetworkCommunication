@@ -36,9 +36,36 @@ internal class TncpDataMessageSplitterTests
         var result = _splitter.TryReadCommand(ref ros, out var command);
 
         // Assert
-        Assert.That(result, Is.True);
-        Assert.That(command.Length, Is.EqualTo(4));
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(result, Is.True);
+            Assert.That(command.Length, Is.EqualTo(4));
+        }
     }
+
+    [Test]
+    public void TryReadCommand_ValidDataMessage2_CommandReturned()
+    {
+        // Arrange 
+        var data = new byte[]
+        {
+            0x73, 0x65, 0x74, 0x2c, 0x73, 0x74, 0x72, 0x65, 0x61, 0x6d, 0x2c, 0x6e, 0x75, 0x6d, 0x62, 0x65, 0x72, 0x2c,
+            0x31, 0xd, 0x99
+        };
+        var ros = new ReadOnlySequence<byte>(data);
+
+        // Act  
+        var result = _splitter.TryReadCommand(ref ros, out var command);
+
+        // Assert
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(result, Is.True);
+            Assert.That(command.Length, Is.EqualTo(data.Length - 1));
+        }
+    }
+
+
 
     [Test]
     public void TryReadCommand_ValidHandshakeAck_CommandReturned()
@@ -51,8 +78,11 @@ internal class TncpDataMessageSplitterTests
         var result = _splitter.TryReadCommand(ref ros, out var command);
 
         // Assert
-        Assert.That(result, Is.True);
-        Assert.That(command.Length, Is.EqualTo(1));
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(result, Is.True);
+            Assert.That(command.Length, Is.EqualTo(1));
+        }
     }
 
     [Test]
@@ -66,8 +96,11 @@ internal class TncpDataMessageSplitterTests
         var result = _splitter.TryReadCommand(ref ros, out var command);
 
         // Assert
-        Assert.That(result, Is.True);
-        Assert.That(command.Length, Is.EqualTo(1));
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(result, Is.True);
+            Assert.That(command.Length, Is.EqualTo(1));
+        }
     }
 
     [Test]
@@ -81,7 +114,10 @@ internal class TncpDataMessageSplitterTests
         var result = _splitter.TryReadCommand(ref ros, out var command);
 
         // Assert
-        Assert.That(result, Is.True);
-        Assert.That(command.Length, Is.EqualTo(1));
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(result, Is.True);
+            Assert.That(command.Length, Is.EqualTo(1));
+        }
     }
 }

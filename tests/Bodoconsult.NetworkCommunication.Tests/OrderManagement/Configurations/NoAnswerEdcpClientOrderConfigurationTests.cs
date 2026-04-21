@@ -17,8 +17,32 @@ internal class NoAnswerEdcpClientOrderConfigurationTests
         var config = new NoAnswerEdcpClientOrderConfiguration();
 
         // Assert
-        Assert.That(config.ConfigurationName, Is.EqualTo($"{BuiltinOrders.NoAnswerEdcpClientOrder}Configuration"));
-        Assert.That(config.OrderTypeName, Is.EqualTo(BuiltinOrders.NoAnswerEdcpClientOrder));
-        Assert.That(config.OrderBuilder.GetType().Name, Is.EqualTo($"{BuiltinOrders.NoAnswerEdcpClientOrder}Builder"));
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(config.ConfigurationName, Is.EqualTo($"{BuiltinOrders.NoAnswerEdcpClientOrder}Configuration"));
+            Assert.That(config.OrderTypeName, Is.EqualTo(BuiltinOrders.NoAnswerEdcpClientOrder));
+            Assert.That(config.OrderBuilder.GetType().Name,
+                Is.EqualTo($"{BuiltinOrders.NoAnswerEdcpClientOrder}Builder"));
+        }
+    }
+
+    [Test]
+    public void Clone_ValidSetup_ConfigCloned()
+    {
+        // Arrange 
+        var config = new NoAnswerEdcpClientOrderConfiguration();
+
+        // Act  
+        var clone = (NoAnswerEdcpClientOrderConfiguration)config.Clone();
+
+        // Assert
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(clone.ConfigurationName, Is.EqualTo($"{BuiltinOrders.NoAnswerEdcpClientOrder}Configuration"));
+            Assert.That(clone.OrderTypeName, Is.EqualTo(BuiltinOrders.NoAnswerEdcpClientOrder));
+            Assert.That(clone.OrderBuilder.GetType().Name, Is.EqualTo($"{BuiltinOrders.NoAnswerEdcpClientOrder}Builder"));
+            Assert.That(clone, Is.Not.EqualTo(config));
+            Assert.That(clone.ParameterSet, Is.Null);
+        }
     }
 }

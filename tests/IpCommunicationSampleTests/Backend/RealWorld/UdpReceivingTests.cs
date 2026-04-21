@@ -171,7 +171,7 @@ internal class UdpReceivingTests
         var request2 = new EmptyBusinessTransactionRequestData();
 
         // Act  
-        adapter.StartStreaming2(request);
+        adapter.StartStreaming(request);
 
         //Thread.Sleep(5000);
 

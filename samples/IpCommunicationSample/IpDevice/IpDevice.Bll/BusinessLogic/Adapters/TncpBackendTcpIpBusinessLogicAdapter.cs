@@ -21,7 +21,9 @@ public class TncpBackendTcpIpBusinessLogicAdapter : BaseSimpleDeviceBusinessLogi
     private readonly TncpCommandParser _parser = new();
     private readonly IBusinessTransactionManager _businessTransactionManager;
     private delegate void HandleTncpMessage(NetworkCommand command);
-    private readonly Dictionary<string, HandleTncpMessage> _commands = new();
+    private readonly Dictionary<int, HandleTncpMessage> _commands = new();
+
+    private UdpStarter? _udpStarter;
 
     /// <summary>
     /// Default ctor
@@ -32,11 +34,10 @@ public class TncpBackendTcpIpBusinessLogicAdapter : BaseSimpleDeviceBusinessLogi
     {
         _businessTransactionManager = businessTransactionManager;
 
-        _commands.Add(TncpCommands.GetConfig.ToLowerInvariant(), HandleGetConfigRequest);
-        _commands.Add(TncpCommands.StartStreaming.ToLowerInvariant(), HandleStartStreamingRequest);
-        _commands.Add(TncpCommands.StopStreaming.ToLowerInvariant(), HandleStopStreamingRequest);
-        _commands.Add(TncpCommands.StartSnapshot.ToLowerInvariant(), HandleStartSnapshotRequest);
-        _commands.Add(TncpCommands.StopSnapshot.ToLowerInvariant(), HandleStopSnapshotRequest);
+        _commands.Add(5, HandleGetConfigRequest);
+        _commands.Add(1, HandleStartStreamingRequest);
+        _commands.Add(2, HandleStopRequest);
+        _commands.Add(3, HandleStartSnapshotRequest);
     }
 
     /// <summary>
@@ -55,14 +56,27 @@ public class TncpBackendTcpIpBusinessLogicAdapter : BaseSimpleDeviceBusinessLogi
             return;
         }
 
+        if (tncp.TelnetCommand.StartsWith("set,stream,number", StringComparison.InvariantCultureIgnoreCase))
+        {
+            _udpStarter = new UdpStarter();
+            return;
+        }
+
+        ArgumentNullException.ThrowIfNull(_udpStarter);
+
+        _udpStarter.ParseCommand(tncp.TelnetCommand);
+
         var command = _parser.Parse(tncp.TelnetCommand);
 
-        var del = _commands.GetValueOrDefault(command.Command.ToLowerInvariant());
+
+        var del = _commands.GetValueOrDefault(_udpStarter.BusinessTransactionId);
 
         if (del == null)
         {
             return;
         }
+
+        _udpStarter = null;
 
         del.Invoke(command);
     }
@@ -87,7 +101,7 @@ public class TncpBackendTcpIpBusinessLogicAdapter : BaseSimpleDeviceBusinessLogi
         _businessTransactionManager.RunBusinessTransaction(request.TransactionId, request);
     }
 
-    private void HandleStopStreamingRequest(NetworkCommand command)
+    private void HandleStopRequest(NetworkCommand command)
     {
         var request = new EmptyBusinessTransactionRequestData
         {

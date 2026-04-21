@@ -17,9 +17,16 @@ public static class IpHelper
     /// <returns></returns>
     public static IPAddress GetLocalIpAddress()
     {
-        var ipHost = Dns.GetHostEntry(Dns.GetHostName());
-        var ipAddr = ipHost.AddressList[0];
-        return ipAddr;
+        var host = Dns.GetHostEntry(Dns.GetHostName());
+        foreach (var ip in host.AddressList)
+        {
+            if (ip.AddressFamily == AddressFamily.InterNetwork) // Nur IPv4-Adressen
+            {
+                return ip;
+            }
+        }
+
+        throw new ArgumentException("NO IP address for TCP/IP v4 found");
     }
 
     /// <summary>

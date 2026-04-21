@@ -52,9 +52,12 @@ internal class DefaultDataBlockCodingProcessorTests
         var db = dbcp.FromBytesToDataBlock(data);
 
         // Assert
-        Assert.That(db, Is.Not.Null);
-        Assert.That(db.DataBlockType, Is.EqualTo('x'));
-        Assert.That(db.Data.IsEqualTo(data[1..]));
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(db, Is.Not.Null);
+            Assert.That(db.DataBlockType, Is.EqualTo('x'));
+            Assert.That(db.Data.IsEqualTo(data[1..]));
+        }
     }
 
     [Test]

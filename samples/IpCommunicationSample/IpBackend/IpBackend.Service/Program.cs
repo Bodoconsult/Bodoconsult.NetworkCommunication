@@ -14,7 +14,6 @@ namespace IpBackendService;
 
 internal static class Program
 {
-
     private static void Main(string[] args)
     {
         var globals = Globals.Instance;
@@ -22,10 +21,9 @@ internal static class Program
 
         // Set additional app start parameters as required
         var param = globals.AppStartParameter;
-        param.AppName = "SfxBackgroundService";
+        param.AppName = "IpBackendService";
         param.SoftwareTeam = "Robert Leisner";
-        param.LogoRessourcePath = "SfxBackgroundService.Resources.logo.jpg";
-        param.AppFolderName = "SfxBackgroundService";
+        param.AppFolderName = "IpBackendService";
 
         const string performanceToken = "--PERF";
 
@@ -41,7 +39,7 @@ internal static class Program
 #endif
 
         // Load basic app metadata
-        builder.LoadBasicSettings(typeof(Program));
+        builder.LoadBasicSettings();
 
         // Process the config file
         builder.ProcessConfiguration();
@@ -51,22 +49,22 @@ internal static class Program
 
         // Write first log entry with default logger
         Globals.Instance.Logger?.LogInformation($"{param.AppName} {param.AppVersion} starts...");
-        Console.WriteLine("Logging started...");
+        //Console.WriteLine("Logging started...");
 
-        // App is ready now for doing something
-        Console.WriteLine($"Connection string loaded: {param.DefaultConnectionString}");
+        //// App is ready now for doing something
+        //Console.WriteLine($"Connection string loaded: {param.DefaultConnectionString}");
 
-        Console.WriteLine("");
-        Console.WriteLine("");
+        //Console.WriteLine("");
+        //Console.WriteLine("");
 
-        Console.WriteLine($"App name loaded: {param.AppName}");
-        Console.WriteLine($"App version loaded: {param.AppVersion}");
-        Console.WriteLine($"App path loaded: {param.AppPath}");
+        //Console.WriteLine($"App name loaded: {param.AppName}");
+        //Console.WriteLine($"App version loaded: {param.AppVersion}");
+        //Console.WriteLine($"App path loaded: {param.AppPath}");
 
-        Console.WriteLine("");
-        Console.WriteLine("");
+        //Console.WriteLine("");
+        //Console.WriteLine("");
 
-        Console.WriteLine($"Logging config: {ObjectHelper.GetObjectPropertiesAsString(Globals.Instance.LoggingConfig)}");
+        //Console.WriteLine($"Logging config: {ObjectHelper.GetObjectPropertiesAsString(Globals.Instance.LoggingConfig)}");
 
         // Prepare the DI container package
         builder.LoadDiContainerServiceProviderPackage();
@@ -75,8 +73,6 @@ internal static class Program
 
         // Now finally start the app and wait
         builder.StartApplication();
-
-        Environment.Exit(0);
     }
 }
 

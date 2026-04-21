@@ -23,7 +23,6 @@ public class IpDeviceServiceAppBuilder : BaseBackgroundServiceAppBuilder
         {
             options.ServiceName = "IpDeviceService";
         });
-
     }
 
     /// <summary>

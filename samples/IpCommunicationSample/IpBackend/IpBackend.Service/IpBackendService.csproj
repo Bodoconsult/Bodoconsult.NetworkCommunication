@@ -20,7 +20,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\..\..\..\src\Bodoconsult.NetworkCommunication\Bodoconsult.NetworkCommunication.csproj" />
-	  <ProjectReference Include="..\IpBackend.Bll\IpBackend.Bll.csproj" />
+		<ProjectReference Include="..\..\..\..\src\Bodoconsult.NetworkCommunication\Bodoconsult.NetworkCommunication.csproj" />
+		<ProjectReference Include="..\IpBackend.Bll\IpBackend.Bll.csproj" />
 	</ItemGroup>
 </Project>

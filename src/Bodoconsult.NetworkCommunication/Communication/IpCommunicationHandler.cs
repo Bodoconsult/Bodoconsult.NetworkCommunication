@@ -138,7 +138,7 @@ public class IpCommunicationHandler : ICommunicationHandler
     /// <param name="message">Data message received</param>
     public void OnReceivedMessage(IInboundDataMessage message)
     {
-        Trace.TraceInformation($"IpCommunicationHandler: received message {message.MessageId}");
+        Trace.TraceInformation($"IpCommunicationHandler: received message {message.MessageId}: {message.RawMessageData.Length} bytes");
 
         ArgumentNullException.ThrowIfNull(DataMessagingConfig.DataMessageProcessingPackage);
         ArgumentNullException.ThrowIfNull(_waitStateManager);
@@ -163,9 +163,11 @@ public class IpCommunicationHandler : ICommunicationHandler
             {
                 Trace.TraceWarning("IpCommunicationHandler: DataMessagingConfig.RaiseAppLayerDataMessageReceivedDelegate is null");
             }
-
-            AsyncHelper.FireAndForget(() => DataMessagingConfig.RaiseAppLayerDataMessageReceivedDelegate?.Invoke(message));
-
+            else
+            {
+                AsyncHelper.FireAndForget(() => DataMessagingConfig.RaiseAppLayerDataMessageReceivedDelegate.Invoke(message));
+            }
+            
             // Now log app performance measures (must be located after sending!)
             _appEventSource.ReportMetric(DataMessagingEventSourceProvider.DclReceivedDataMessageBytes, message.RawMessageData.Length);
             _appEventSource.ReportIncrement(DataMessagingEventSourceProvider.DclReceivedDataMessageCount);

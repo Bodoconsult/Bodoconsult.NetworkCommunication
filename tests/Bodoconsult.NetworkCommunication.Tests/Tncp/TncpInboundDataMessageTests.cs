@@ -20,8 +20,11 @@ internal class TncpInboundDataMessageTests
         var msg = new TncpInboundDataMessage();
 
         // Assert
-        Assert.That(msg.MessageId, Is.Not.Zero);
-        Assert.That(string.IsNullOrEmpty(msg.ToInfoString()), Is.False);
-        Assert.That(string.IsNullOrEmpty(msg.ToShortInfoString()), Is.False);
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(msg.MessageId, Is.Not.Zero);
+            Assert.That(string.IsNullOrEmpty(msg.ToInfoString()), Is.False);
+            Assert.That(string.IsNullOrEmpty(msg.ToShortInfoString()), Is.False);
+        }
     }
 }

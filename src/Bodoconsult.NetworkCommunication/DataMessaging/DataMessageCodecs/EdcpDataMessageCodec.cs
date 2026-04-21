@@ -86,7 +86,8 @@ public class EdcpDataMessageCodec : BaseDataMessageCodec
             var dataMessage = new EdcpInboundDataMessage
             {
                 DataBlock = dataBlock,
-                BlockCode = blockCode
+                BlockCode = blockCode,
+                RawMessageData = data
             };
 
             result.DataMessage = dataMessage;

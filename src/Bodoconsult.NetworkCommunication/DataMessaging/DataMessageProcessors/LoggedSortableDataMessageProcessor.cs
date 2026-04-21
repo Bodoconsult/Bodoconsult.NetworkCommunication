@@ -34,7 +34,7 @@ public class LoggedSortableDataMessageProcessor : BaseDataMessageProcessor
     /// <param name="message">Message to process</param>
     public override void ProcessMessage(IInboundMessage message)
     {
-        Trace.TraceInformation($"LoggedSortableDataMessageProcessor: received message {message.MessageId}");
+        Trace.TraceInformation($"LoggedSortableDataMessageProcessor: received message {message.MessageId}: {message.RawMessageData.Length} bytes");
 
         // Handshake received
         if (message is IInboundHandShakeMessage handShake)
@@ -47,9 +47,13 @@ public class LoggedSortableDataMessageProcessor : BaseDataMessageProcessor
         if (message is ISortableInboundDataMessage dataMessage)
         {
             ProcessSortableDataMessage(dataMessage);
+            return;
         }
 
         // No valid message
+        var s = $"message {message.MessageId} not valid: {message.GetType().Name}";
+        Config.MonitorLogger.LogError(s);
+        Trace.TraceInformation($"LoggedSortableDataMessageProcessor: {s}");
     }
 
     private void ProcessSortableDataMessage(ISortableInboundDataMessage dataMessage)

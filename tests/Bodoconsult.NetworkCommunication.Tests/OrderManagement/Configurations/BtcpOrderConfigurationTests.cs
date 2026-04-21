@@ -17,42 +17,31 @@ internal class BtcpOrderConfigurationTests
         var config = new BtcpOrderConfiguration();
 
         // Assert
-        Assert.That(config.ConfigurationName, Is.EqualTo($"{BuiltinOrders.BtcpOrder}Configuration"));
-        Assert.That(config.OrderTypeName, Is.EqualTo(BuiltinOrders.BtcpOrder));
-        Assert.That(config.OrderBuilder.GetType().Name, Is.EqualTo($"{BuiltinOrders.BtcpOrder}Builder"));
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(config.ConfigurationName, Is.EqualTo($"{BuiltinOrders.BtcpOrder}Configuration"));
+            Assert.That(config.OrderTypeName, Is.EqualTo(BuiltinOrders.BtcpOrder));
+            Assert.That(config.OrderBuilder.GetType().Name, Is.EqualTo($"{BuiltinOrders.BtcpOrder}Builder"));
+        }
     }
-}
-[TestFixture]
-internal class NoAnswerBtcpOrderConfigurationTests
-{
+
     [Test]
-    public void Ctor_ValidSetup_PropsSetCorrectly()
+    public void Clone_ValidSetup_ConfigCloned()
     {
         // Arrange 
+        var config = new BtcpOrderConfiguration();
 
         // Act  
-        var config = new NoAnswerBtcpOrderConfiguration();
+        var clone = (BtcpOrderConfiguration)config.Clone();
 
         // Assert
-        Assert.That(config.ConfigurationName, Is.EqualTo($"{BuiltinOrders.NoAnswerBtcpOrder}Configuration"));
-        Assert.That(config.OrderTypeName, Is.EqualTo(BuiltinOrders.NoAnswerBtcpOrder));
-        Assert.That(config.OrderBuilder.GetType().Name, Is.EqualTo($"{BuiltinOrders.NoAnswerBtcpOrder}Builder"));
-    }
-}
-[TestFixture]
-internal class NoHandshakeNoAnswerBtcpOrderConfigurationTests
-{
-    [Test]
-    public void Ctor_ValidSetup_PropsSetCorrectly()
-    {
-        // Arrange 
-
-        // Act  
-        var config = new NoHandshakeNoAnswerBtcpOrderConfiguration();
-
-        // Assert
-        Assert.That(config.ConfigurationName, Is.EqualTo($"{BuiltinOrders.NoHandshakeNoAnswerBtcpOrder}Configuration"));
-        Assert.That(config.OrderTypeName, Is.EqualTo(BuiltinOrders.NoHandshakeNoAnswerBtcpOrder));
-        Assert.That(config.OrderBuilder.GetType().Name, Is.EqualTo($"{BuiltinOrders.NoHandshakeNoAnswerBtcpOrder}Builder"));
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(clone.ConfigurationName, Is.EqualTo($"{BuiltinOrders.BtcpOrder}Configuration"));
+            Assert.That(clone.OrderTypeName, Is.EqualTo(BuiltinOrders.BtcpOrder));
+            Assert.That(clone.OrderBuilder.GetType().Name, Is.EqualTo($"{BuiltinOrders.BtcpOrder}Builder"));
+            Assert.That(clone, Is.Not.EqualTo(config));
+            Assert.That(clone.ParameterSet, Is.Null);
+        }
     }
 }

@@ -24,6 +24,11 @@ public class TncpIpDeviceTcpIpBusinessLogicAdapter : BaseStateMachineDeviceBusin
     public TncpIpDeviceTcpIpBusinessLogicAdapter(IStateMachineDevice device) : base(device)
     { }
 
+    /// <summary>
+    /// Current UDP port to use
+    /// </summary>
+    public int UdpPort { get; set; }
+
     #region Device order handling
 
     /// <summary>
@@ -226,8 +231,6 @@ public class TncpIpDeviceTcpIpBusinessLogicAdapter : BaseStateMachineDeviceBusin
         var orderConfigName = jobConfig.OrderConfigurations[index];
         var orderConfig = orderFactory.GetConfiguration(orderConfigName);
 
-        
-
         ArgumentNullException.ThrowIfNull(orderConfig, $"Order config for {orderConfigName} is null");
         ArgumentNullException.ThrowIfNull(orderConfig.CreateParameterSetDelegate);
 
@@ -235,23 +238,21 @@ public class TncpIpDeviceTcpIpBusinessLogicAdapter : BaseStateMachineDeviceBusin
 
         switch (index)
         {
-            //case 6:
+            //case 5:
             //    ps.TelnetCommand = "set,snapshot,4,4";   // 
             //    break;
-            case 5:
+            case 4:
                 ps.TelnetCommand = "set,status,start";   // 
                 break;
-            case 4:
+            case 3:
                 ps.TelnetCommand = $"set,stream,mode,{mode}";   // 
                 break;
-            case 3:
-                var appParams = (ThreeNetworkDevicesAppStartParameter)Globals.Instance.AppStartParameter;
-                ps.TelnetCommand = $"set,connection,{IpHelper.GetLocalIpAddress()},{appParams.Port}";   // 
-                break;
             case 2:
+                ps.TelnetCommand = $"set,connection,{IpHelper.GetLocalIpAddress().MapToIPv4()},{UdpPort}";   // 
+                break;
+            case 1:
                 ps.TelnetCommand = "set,snapshot,4,4";   // 
                 break;
-            //case 1:
             default:
                 ps.TelnetCommand = "set,stream,number,1";   // One channel
                 break;
@@ -314,7 +315,6 @@ public class TncpIpDeviceTcpIpBusinessLogicAdapter : BaseStateMachineDeviceBusin
                 ExceptionMessage = e.ToString()
             };
         }
-
     }
 
     /// <summary>

@@ -37,7 +37,7 @@ public static class AssemblySetup
 
         // Load basic app metadata
 
-        builder.LoadBasicSettings(typeof(AssemblySetup));
+        builder.LoadBasicSettings();
 
         // Process the config file
         builder.ProcessConfiguration();

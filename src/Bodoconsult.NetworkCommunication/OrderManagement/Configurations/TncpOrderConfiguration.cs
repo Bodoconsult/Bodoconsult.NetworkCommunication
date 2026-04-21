@@ -10,9 +10,23 @@ namespace Bodoconsult.NetworkCommunication.OrderManagement.Configurations;
 /// </summary>
 public class TncpOrderConfiguration : OneRequestSpecNoOrOneStepOneAnswerConfiguration
 {
+    private static readonly IOrderBuilder Builder = new TncpOrderBuilder();
+
     /// <summary>
     /// Default ctor
     /// </summary>
-    public TncpOrderConfiguration() : base($"{BuiltinOrders.TncpOrder}Configuration", BuiltinOrders.TncpOrder, new TncpOrderBuilder())
+    public TncpOrderConfiguration() : base($"{BuiltinOrders.TncpOrder}Configuration", BuiltinOrders.TncpOrder, Builder)
     { }
+
+    /// <summary>Creates a new object that is a copy of the current instance.</summary>
+    /// <returns>A new object that is a copy of this instance.</returns>
+    public override object Clone()
+    {
+        return new TncpOrderConfiguration
+        {
+            CreateParameterSetDelegate = CreateParameterSetDelegate,
+            HandleRequestAnswerOnSuccessDelegate = HandleRequestAnswerOnSuccessDelegate,
+            ParameterSet = null
+        };
+    }
 }
