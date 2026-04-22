@@ -12,9 +12,19 @@ namespace Bodoconsult.NetworkCommunication.Devices;
 /// </summary>
 public abstract class BaseOrderManagementDevice : IOrderManagementDevice
 {
+    /// <summary>
+    /// Is order processing avtivated?
+    /// </summary>
     protected bool IsOrderProcessingActivatedInternal;
 
+    /// <summary>
+    ///  Current app logger
+    /// </summary>
     protected readonly IAppLoggerProxy AppLogger;
+
+    /// <summary>
+    /// Current monitor logger
+    /// </summary>
     protected readonly IAppLoggerProxy MonitorLogger;
 
 
@@ -184,7 +194,7 @@ public abstract class BaseOrderManagementDevice : IOrderManagementDevice
     /// <param name="businessLogicAdapter">Current <see cref="IDeviceBusinessLogicAdapter"/> instance</param>
     public virtual void LoadDeviceBusinessLogicAdapter(IDeviceBusinessLogicAdapter businessLogicAdapter)
     {
-        if (businessLogicAdapter is not IOrderManagementDeviceBusinessLogicAdapter o)
+        if (businessLogicAdapter is not IOrderManagementDeviceBusinessLogicAdapter)
         {
             throw new ArgumentException($"businessLogicAdapter is not {nameof(IOrderManagementDeviceBusinessLogicAdapter)}");
         }
@@ -509,6 +519,9 @@ public abstract class BaseOrderManagementDevice : IOrderManagementDevice
         throw new NotImplementedException();
     }
 
+    /// <summary>
+    /// Cancel the currently running operation
+    /// </summary>
     public virtual void CancelRunningOperation()
     {
         throw new NotImplementedException();

@@ -11,6 +11,11 @@ namespace Bodoconsult.NetworkCommunication.DataMessaging.DataMessageValidators;
 /// </summary>
 public class SdcpDataMessageValidator : IDataMessageValidator
 {
+    /// <summary>
+    /// Check if a data message is valid data message to be processed
+    /// </summary>
+    /// <param name="dataMessage">Received data message</param>
+    /// <returns>True if the message was the handshake for the sent message</returns>
     public DataMessageValidatorResult IsMessageValid(IInboundMessage dataMessage)
     {
         // Handshake message: always valid

@@ -9,6 +9,9 @@ namespace Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
 /// </summary>
 public class BaseInboundHandShakeMessage: IInboundHandShakeMessage
 {
+    /// <summary>
+    /// Default ctor
+    /// </summary>
     public BaseInboundHandShakeMessage()
     {
         MessageId = DateTime.Now.ToFileTimeUtc();

@@ -7,6 +7,8 @@ using Bodoconsult.NetworkCommunication.Tests.Helpers;
 namespace Bodoconsult.NetworkCommunication.Tests.Udp.Sample;
 
 [TestFixture]
+[NonParallelizable]
+[SingleThreaded]
 internal class MulticastUdpClientTests
 {
     [Test]

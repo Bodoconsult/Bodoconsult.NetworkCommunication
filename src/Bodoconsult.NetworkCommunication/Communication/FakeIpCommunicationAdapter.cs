@@ -66,16 +66,25 @@ public class FakeIpCommunicationAdapter : ICommunicationAdapter
         return PingResult;
     }
 
+    /// <summary>
+    /// Close the communication channel with the device
+    /// </summary>
     public void ComDevClose()
     {
         // Do nothing
     }
 
+    /// <summary>
+    /// Reset the com dev to a defined state as if there were never a communication with the device. No logging for ComDevClose activated
+    /// </summary>
     public void ComDevReset()
     {
         // Do nothing
     }
 
+    /// <summary>
+    /// Reset the com dev without breaking the communication
+    /// </summary>
     public void ResetInternalState()
     {
         // Do nothing

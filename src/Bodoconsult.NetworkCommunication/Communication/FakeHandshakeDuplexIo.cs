@@ -15,6 +15,10 @@ public class FakeHandshakeDuplexIo : IDuplexIo
 
     private int _counter;
 
+    /// <summary>
+    /// Default ctor
+    /// </summary>
+    /// <param name="dataMessagingConfig">Current messaging config</param>
     public FakeHandshakeDuplexIo(IDataMessagingConfig dataMessagingConfig)
     {
         DataMessagingConfig = dataMessagingConfig;

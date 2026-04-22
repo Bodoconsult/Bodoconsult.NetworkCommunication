@@ -137,6 +137,10 @@ public abstract class BaseStateMachineDevice : BaseOrderManagementDevice, IState
         _concurrentQueue.Enqueue(jobState);
     }
 
+    /// <summary>
+    /// Request a new state
+    /// </summary>
+    /// <param name="newState">New request to load</param>
     public void RequestState(IStateMachineState newState)
     {
         // Activate or deactivate the regular state check

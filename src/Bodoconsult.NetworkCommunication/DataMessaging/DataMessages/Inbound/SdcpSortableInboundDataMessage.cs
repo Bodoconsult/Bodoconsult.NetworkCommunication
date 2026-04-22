@@ -68,6 +68,10 @@ public class SdcpSortableInboundDataMessage : ISortableInboundDataMessage
         return $"SdcpInboundDataMessage ID {MessageId} {RawMessageDataClearText}";
     }
 
+    /// <summary>
+    /// Create a short info string for logging
+    /// </summary>
+    /// <returns>Info string</returns>
     public string ToShortInfoString()
     {
         return $"SdcpInboundDataMessage ID {MessageId}";

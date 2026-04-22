@@ -21,6 +21,11 @@ public abstract class OrderManagementClientNotificationManagerBase : IOrderManag
 
     #endregion
 
+    /// <summary>
+    /// Send a string notification
+    /// </summary>
+    /// <param name="sender">Sender</param>
+    /// <param name="state">State to send to client</param>
     public void DoNotifyStateManagementStateEvent(object sender, IStateMachineState state)
     {
         var context = state.CurrentContext;

@@ -17,6 +17,8 @@ using IBackendTcpIpBusinessLogicAdapter = IpClient.Bll.Interfaces.IBackendTcpIpB
 namespace IpCommunicationSampleTests.Client.RealWorld;
 
 [TestFixture]
+[NonParallelizable]
+[SingleThreaded]
 internal class TcpIpReceivingTests
 {
     private IIpDeviceManager? _deviceManager;

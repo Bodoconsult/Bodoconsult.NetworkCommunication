@@ -11,6 +11,8 @@ namespace Bodoconsult.NetworkCommunication.Tests.Testing;
 // ToDO check why this tests make the next tests fail
 [Explicit]
 [TestFixture]
+[NonParallelizable]
+[SingleThreaded]
 internal class UdpTestMultiCastServerTests
 {
     [Test]

@@ -7,9 +7,19 @@ using Bodoconsult.NetworkCommunication.Interfaces;
 
 namespace Bodoconsult.NetworkCommunication.Devices;
 
+/// <summary>
+/// Base class for simple devices
+/// </summary>
 public abstract class BaseSimpleDevice : IIpDevice
 {
+    /// <summary>
+    ///  Current app logger
+    /// </summary>
     protected readonly IAppLoggerProxy AppLogger;
+
+    /// <summary>
+    /// Current monitor logger
+    /// </summary>
     protected readonly IAppLoggerProxy MonitorLogger;
 
     /// <summary>

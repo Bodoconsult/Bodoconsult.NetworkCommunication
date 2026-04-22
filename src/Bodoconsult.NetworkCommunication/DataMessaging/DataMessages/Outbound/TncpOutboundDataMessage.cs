@@ -69,6 +69,10 @@ public class TncpOutboundDataMessage : IOutboundDataMessage
         return $"TncpOutboundDataMessage ID {MessageId} Block {BlockCode}: {RawMessageDataClearText}";
     }
 
+    /// <summary>
+    /// Create a short info string for logging
+    /// </summary>
+    /// <returns>Info string</returns>
     public string ToShortInfoString()
     {
         return $"TncpOutboundDataMessage ID {MessageId} Block {BlockCode}";

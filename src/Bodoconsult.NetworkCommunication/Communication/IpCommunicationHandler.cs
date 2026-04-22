@@ -56,6 +56,9 @@ public class IpCommunicationHandler : ICommunicationHandler
     /// </summary>
     public IDataMessagingConfig DataMessagingConfig { get; }
 
+    /// <summary>
+    /// Update the device wait state config
+    /// </summary>
     public void UpdateDevice()
     {
         if (DataMessagingConfig.DataMessageProcessingPackage == null)
@@ -298,7 +301,10 @@ public class IpCommunicationHandler : ICommunicationHandler
     //}
 
 
-
+    /// <summary>
+    /// Dispose the instance
+    /// </summary>
+    /// <param name="disposing">Is disposing?</param>
     protected virtual void Dispose(bool disposing)
     {
         if (!disposing)

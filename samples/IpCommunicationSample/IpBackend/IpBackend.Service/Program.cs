@@ -12,6 +12,8 @@ namespace IpBackendService;
 
 // https://learn.microsoft.com/en-us/dotnet/core/extensions/workers
 
+// https://learn.microsoft.com/en-us/dotnet/core/deploying/single-file/overview?tabs=cli
+
 internal static class Program
 {
     private static void Main(string[] args)

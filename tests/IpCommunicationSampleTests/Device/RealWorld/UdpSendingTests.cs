@@ -16,6 +16,8 @@ using IpCommunicationSampleTests.App;
 namespace IpCommunicationSampleTests.Device.RealWorld;
 
 [TestFixture]
+[NonParallelizable]
+[SingleThreaded]
 internal class UdpSendingTests
 {
     private IIpDeviceManager? _deviceManager;

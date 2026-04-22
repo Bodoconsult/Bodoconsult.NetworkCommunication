@@ -63,6 +63,10 @@ public class SfxpOutboundDataMessage: IOutboundDataMessage
         return $"SfxpOutboundDataMessage ID {MessageId} {RawMessageDataClearText}";
     }
 
+    /// <summary>
+    /// Create a short info string for logging
+    /// </summary>
+    /// <returns>Info string</returns>
     public string ToShortInfoString()
     {
         return $"SfxpOutboundDataMessage ID {MessageId}";

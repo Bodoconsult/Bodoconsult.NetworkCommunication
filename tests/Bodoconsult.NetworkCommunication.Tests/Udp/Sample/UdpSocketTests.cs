@@ -9,9 +9,10 @@ namespace Bodoconsult.NetworkCommunication.Tests.Udp.Sample;
 
 [Explicit]
 [TestFixture]
-internal class SampleTests
+[NonParallelizable]
+[SingleThreaded]
+internal class UdpSocketTests
 {
-    
     [Test]
     public void Test()
     {

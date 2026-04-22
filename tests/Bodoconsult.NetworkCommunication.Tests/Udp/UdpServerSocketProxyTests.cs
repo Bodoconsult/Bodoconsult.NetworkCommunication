@@ -10,6 +10,8 @@ using Bodoconsult.NetworkCommunication.Tests.Helpers;
 namespace Bodoconsult.NetworkCommunication.Tests.Udp;
 
 [TestFixture]
+[NonParallelizable]
+[SingleThreaded]
 internal class UdpServerSocketProxyTests
 {
     [Test]

@@ -1,23 +1,23 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>net9.0</TargetFramework>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>net9.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Bodoconsult.App" Version="1.0.9" />
-    <PackageReference Include="Bodoconsult.App.Abstractions" Version="1.0.9" />
-  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Bodoconsult.App" Version="1.0.9" />
+		<PackageReference Include="Bodoconsult.App.Abstractions" Version="1.0.9" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\..\..\..\src\Bodoconsult.NetworkCommunication\Bodoconsult.NetworkCommunication.csproj" />
-    <ProjectReference Include="..\..\Common\IpCommunicationSample.Common\IpCommunicationSample.Common.csproj" />
-  </ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\..\..\..\src\Bodoconsult.NetworkCommunication\Bodoconsult.NetworkCommunication.csproj" />
+		<ProjectReference Include="..\..\Common\IpCommunicationSample.Common\IpCommunicationSample.Common.csproj" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="BusinessLogic\Converters\" />
-  </ItemGroup>
+	<ItemGroup>
+		<Folder Include="BusinessLogic\Converters\" />
+	</ItemGroup>
 
 </Project>

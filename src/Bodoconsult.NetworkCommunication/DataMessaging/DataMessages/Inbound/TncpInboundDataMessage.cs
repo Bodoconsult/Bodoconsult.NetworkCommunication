@@ -73,6 +73,10 @@ public class TncpInboundDataMessage : IInboundDataMessage
         return $"BtcpInboundDataMessage ID {MessageId} Command {TelnetCommand} {RawMessageDataClearText}";
     }
 
+    /// <summary>
+    /// Create a short info string for logging
+    /// </summary>
+    /// <returns>Info string</returns>
     public string ToShortInfoString()
     {
         return $"BtcpInboundDataMessage ID {MessageId} Command {TelnetCommand}";

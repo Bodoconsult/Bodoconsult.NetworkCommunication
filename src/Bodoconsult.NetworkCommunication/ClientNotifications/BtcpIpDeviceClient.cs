@@ -40,6 +40,11 @@ public class BtcpIpDeviceClient: IClient
         // Do nothing
     }
 
+    /// <summary>
+    /// Check if the notification is allowed to be sent to the client
+    /// </summary>
+    /// <param name="notification">Notification to check</param>
+    /// <returns>True if the notification should be sent to the client else false</returns>
     public bool CheckNotification(IClientNotification notification)
     {
         if (notification.NotificationObjectToSend == null)

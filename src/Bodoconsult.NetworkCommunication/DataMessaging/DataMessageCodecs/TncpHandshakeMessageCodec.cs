@@ -10,7 +10,9 @@ namespace Bodoconsult.NetworkCommunication.DataMessaging.DataMessageCodecs;
 /// </summary>
 public class TncpHandshakeMessageCodec : BaseDataMessageCodec
 {
-
+    /// <summary>
+    /// Default ctor
+    /// </summary>
     public TncpHandshakeMessageCodec()
     {
         ExpectedMinimumLength = 1;

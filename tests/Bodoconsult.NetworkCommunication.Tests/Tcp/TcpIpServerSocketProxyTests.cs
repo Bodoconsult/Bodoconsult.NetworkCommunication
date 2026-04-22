@@ -12,6 +12,8 @@ using System.Net;
 namespace Bodoconsult.NetworkCommunication.Tests.Tcp;
 
 [TestFixture]
+[NonParallelizable]
+[SingleThreaded]
 internal class TcpIpServerSocketProxyTests
 {
     [Test]

@@ -9,6 +9,8 @@ using Bodoconsult.NetworkCommunication.Tests.Helpers;
 namespace Bodoconsult.NetworkCommunication.Tests.Tcp;
 
 [TestFixture]
+[NonParallelizable]
+[SingleThreaded]
 internal class TcpIpClientSocketProxyTests
 {
     [Test]

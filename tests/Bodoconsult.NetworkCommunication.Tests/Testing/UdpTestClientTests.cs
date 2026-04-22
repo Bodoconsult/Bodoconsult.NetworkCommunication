@@ -9,6 +9,8 @@ using System.Net;
 namespace Bodoconsult.NetworkCommunication.Tests.Testing;
 
 [TestFixture]
+[NonParallelizable]
+[SingleThreaded]
 internal class UdpTestUniCastServerTests
 {
     [Test]

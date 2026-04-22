@@ -69,6 +69,10 @@ public class EdcpOutboundDataMessage : IOutboundDataMessage
         return $"EdcpOutboundDataMessage ID {MessageId} Block {BlockCode}: {RawMessageDataClearText}";
     }
 
+    /// <summary>
+    /// Create a short info string for logging
+    /// </summary>
+    /// <returns>Info string</returns>
     public string ToShortInfoString()
     {
         return $"EdcpOutboundDataMessage ID {MessageId} Block {BlockCode}";

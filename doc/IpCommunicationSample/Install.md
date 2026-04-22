@@ -38,11 +38,11 @@ Port2: port to use for TCP/IP comm to device
 
 Install .Net 9 runtime if needed. 
 
-If the service is installed already stop the Windows service SfxBackendService now.
+If the service is installed already stop the Windows service IpBackendService now.
 
 
 ``` powershell
-sc.exe stop "SfxBackendService"
+sc.exe stop "IpBackendService"
 ```
 
 Copy binaries to your target folder {Your Target folder}\{Backend}.
@@ -50,13 +50,13 @@ Copy binaries to your target folder {Your Target folder}\{Backend}.
 For a fresh installation register the service now:
 
 ``` powershell
-sc.exe create "SfxBackendService" binpath= "{Your Target folder}\{Backend}\IpBackendService.exe"
+sc.exe create "IpBackendService" binpath= "{Your Target folder}\{Backend}\IpBackendService.exe"
 ```
 
-Start the Windows service SfxBackendService.
+Start the Windows service IpBackendService.
 
 ``` powershell
-sc.exe start "SfxBackendService"
+sc.exe start "IpBackendService"
 ```
 
 ## Adjust appsettings.json
@@ -73,9 +73,10 @@ Port3: port to use for TCP/IP comm to client
 ## Uninstall the service
 
 ``` powershell
-sc.exe stop "SfxBackendService"
-sc.exe delete "SfxBackendService"
+sc.exe stop "IpBackendService"
+sc.exe delete "IpBackendService"
 ```
+
 
 # Client
 
@@ -84,6 +85,8 @@ sc.exe delete "SfxBackendService"
 Install .Net 9 runtime if needed. 
 
 Copy binaries to your target folder {Your Target folder}\{Client}.
+
+Create a link on desktop for file {Your Target folder}\{Client}\IpClientUi.exe.
 
 ## Adjust appsettings.json
 

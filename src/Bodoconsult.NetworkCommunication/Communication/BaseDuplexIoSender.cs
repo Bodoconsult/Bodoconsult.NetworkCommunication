@@ -58,6 +58,10 @@ public abstract class BaseDuplexIoSender : IDuplexIoSender
     /// </summary>
     public IDataMessageSplitter DataMessageSplitter { get; private set; }
 
+    /// <summary>
+    /// Default ctor
+    /// </summary>
+    /// <param name="dataMessagingConfig">Current messaging config</param>
     protected BaseDuplexIoSender(IDataMessagingConfig dataMessagingConfig)
     {
         DataMessagingConfig = dataMessagingConfig;

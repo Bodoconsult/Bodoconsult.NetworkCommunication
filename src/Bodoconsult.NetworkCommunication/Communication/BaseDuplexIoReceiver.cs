@@ -170,6 +170,9 @@ public class BaseDuplexIoReceiver : IDuplexIoReceiver
         throw new NotSupportedException();
     }
 
+    /// <summary>
+    /// Start the filling of pipeline for message receiving
+    /// </summary>
     public void StartFillMessagePipeline()
     {
         Debug.Print("StartFillMessagePipeline in progress");
@@ -213,13 +216,15 @@ public class BaseDuplexIoReceiver : IDuplexIoReceiver
         }
     }
 
+    /// <summary>
+    /// Start the filling of pipeline for sending messages to internal receivers
+    /// </summary>
     public void StartSendMessagePipeline()
     {
         Debug.Print("StartSendMessagePipeline in progress");
 
         try
         {
-
             //while (!_cancellationSource.Token.IsCancellationRequested)
             //{
 
