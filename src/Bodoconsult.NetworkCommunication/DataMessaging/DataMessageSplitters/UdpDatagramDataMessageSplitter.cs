@@ -32,6 +32,11 @@ public class UdpDatagramDataMessageSplitter : IDataMessageSplitter
         return command.Length > 0;
     }
 
+    /// <summary>
+    /// Compute data length
+    /// </summary>
+    /// <param name="messageBytes">Message bytes</param>
+    /// <returns>Length of the data</returns>
     public int ComputeDataLength(ref ReadOnlySequence<byte> messageBytes)
     {
         // Not needed here

@@ -57,7 +57,7 @@ public class FakeOrderManager : IOrderManager
     }
 
     /// <summary>
-    /// Event handling method for binding to <see cref="dataMessage"/>.NotifydeviceMessageReceived event
+    /// Event handling method for binding to NotifyDeviceMessageReceived event
     /// </summary>
     /// <param name="dataMessage">Received message</param>
     public void OnDeviceMessageReceived(IInboundDataMessage dataMessage)

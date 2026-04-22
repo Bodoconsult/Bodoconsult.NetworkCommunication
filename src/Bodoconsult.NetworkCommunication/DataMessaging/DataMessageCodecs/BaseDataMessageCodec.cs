@@ -39,6 +39,11 @@ public abstract class BaseDataMessageCodec: IDataMessageCodec
         throw new NotSupportedException();
     }
 
+    /// <summary>
+    /// Check the expected length
+    /// </summary>
+    /// <param name="length">Length to check</param>
+    /// <returns><see cref="InboundCodecResult"/> instance indicating the result by error code</returns>
     protected InboundCodecResult CheckExpectedLengths(int length)
     {
         var result = new InboundCodecResult();

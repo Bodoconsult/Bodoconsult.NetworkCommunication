@@ -92,8 +92,6 @@ public interface IOrderProcessor : IDisposable
     /// <returns>Request processor</returns>
     IRequestProcessor? GetRequestProcessorForOrder(long orderId);
 
-    long CurrentOrderExecutionDuration { get; }
-
     /// <summary>
     /// Number of orders in processing
     /// </summary>

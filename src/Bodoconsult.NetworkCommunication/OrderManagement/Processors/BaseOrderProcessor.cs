@@ -24,21 +24,55 @@ public abstract class BaseOrderProcessor : IOrderProcessor
     /// Is the runner stopped. DO NOT use this field internally. Use IsRunnerStopped property instead
     /// </summary>
     protected bool IsRunnerStoppedInternal;
+
+    /// <summary>
+    /// Lock for <see cref="IsRunnerStoppedInternal"/>
+    /// </summary>
     protected readonly Lock IsRunnerStoppedLock = new();
 
     /// <summary>
     /// true while the orders of StSys init are handled. Important to NOT start real order processing in <see cref="Runner "/> before checkslot was handled
     /// </summary>
     protected bool InitIsProcessing;
+
+    /// <summary>
+    /// Lock for <see cref="InitIsProcessing"/>
+    /// </summary>
     protected readonly Lock InitIsProcessingLock = new();
 
-    // Check if cancellation of running orders is already running to avoid endless loop with stack exception
+    /// <summary>
+    /// Check if cancellation of running orders is already running to avoid endless loop with stack exception
+    /// </summary>
     protected bool IsCancellationRunningOrdersInternal;
+
+    /// <summary>
+    /// Lock for <see cref="IsCancellationRunningOrdersInternal"/>
+    /// </summary>
     protected readonly Lock IsCancellationRunningOrdersLockObject = new();
+
+    /// <summary>
+    /// Current date and time service
+    /// </summary>
     protected readonly IAppDateService DateTimeService;
+
+    /// <summary>
+    /// Current app logger
+    /// </summary>
     protected readonly IAppLoggerProxy AppLogger;
+
+    /// <summary>
+    /// Current logger ID
+    /// </summary>
     protected readonly string LoggerId;
+
+    /// <summary>
+    /// Current monitor logger for the device
+    /// </summary>
     protected readonly IAppLoggerProxy MonitorLogger;
+
+    /// <summary>
+    /// Current benchmarking instance
+    /// </summary>
     protected readonly IAppBenchProxy AppBenchProxy;
 
     /// <summary>
@@ -68,6 +102,12 @@ public abstract class BaseOrderProcessor : IOrderProcessor
         ClientNotificationManager.DoNotifyOrderStateChanged(this, order);
     }
 
+    /// <summary>
+    /// Check the orders
+    /// </summary>
+    /// <param name="requestProcessors">Current request processor</param>
+    /// <param name="rm">Current message</param>
+    /// <returns>True if the messages is for the current processed order</returns>
     protected bool CheckOrders(IEnumerable<IRequestProcessor> requestProcessors, IInboundDataMessage? rm)
     {
         if (rm == null)
@@ -138,7 +178,10 @@ public abstract class BaseOrderProcessor : IOrderProcessor
     }
 
 
-
+    /// <summary>
+    /// Log debug
+    /// </summary>
+    /// <param name="message">Message to log</param>
     protected void LogDebug(string message)
     {
         MonitorLogger.LogInformation(message);
@@ -146,6 +189,10 @@ public abstract class BaseOrderProcessor : IOrderProcessor
         Debug.Print($"OP: {message}");
     }
 
+    /// <summary>
+    /// Log information
+    /// </summary>
+    /// <param name="message">Message to log</param>
     protected void LogInformation(string message)
     {
         MonitorLogger.LogInformation(message);
@@ -169,6 +216,11 @@ public abstract class BaseOrderProcessor : IOrderProcessor
         throw new NotSupportedException("Override method in derived classes!");
     }
 
+    /// <summary>
+    /// Stop the order execution of a sync running order
+    /// </summary>
+    /// <param name="orderId"></param>
+    /// <param name="erg"></param>
     protected void StopExecutionOfSyncOrder(long orderId, IOrderExecutionResultState erg)
     {
         var syncData = SyncOrderManager.GetSyncExecutionDataForOrder(orderId);
@@ -181,6 +233,9 @@ public abstract class BaseOrderProcessor : IOrderProcessor
         syncData.TaskCompletionSource?.SetResult(erg);
     }
 
+    /// <summary>
+    /// Is cancellation of running orders running?
+    /// </summary>
     protected bool IsCancellationRunningOrders
     {
         get
@@ -378,7 +433,6 @@ public abstract class BaseOrderProcessor : IOrderProcessor
                    OrderPipeline.WaitingPriorityOrders.Any(x => x.IsCancelledOndevicePropertyUpdate);
         }
     }
-    public long CurrentOrderExecutionDuration { get; set; }
 
     /// <summary>
     /// Number of orders in processing
@@ -524,6 +578,13 @@ public abstract class BaseOrderProcessor : IOrderProcessor
         return TryToExecuteOrderSync(order, doNotDisposeOrder, false);
     }
 
+    /// <summary>
+    /// Try to execute an order directly. Method is intended for unit testing. Depending on order priority the order is loaded to the priority queue or not
+    /// </summary>
+    /// <param name="order">Order to run</param>
+    /// <param name="doNotDisposeOrder">Do not dispose the order after running it (intended for unit testing)</param>
+    /// <param name="directRunOrder">Run the roder directly without using queue</param>
+    /// <returns>Order execution result</returns>
     public IOrderExecutionResultState TryToExecuteOrderSync(IOrder order, bool doNotDisposeOrder, bool directRunOrder)
     {
         var orderId = order.Id;
@@ -880,6 +941,10 @@ public abstract class BaseOrderProcessor : IOrderProcessor
         GC.SuppressFinalize(this);
     }
 
+    /// <summary>
+    /// Dispose the instance
+    /// </summary>
+    /// <param name="disposing">Is disposing?</param>
     protected virtual void Dispose(bool disposing)
     {
         if (!disposing)

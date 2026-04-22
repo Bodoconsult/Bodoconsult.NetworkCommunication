@@ -11,7 +11,10 @@ namespace Bodoconsult.NetworkCommunication.OrderManagement.Processors;
 /// </summary>
 public class NoAnswerDeviceRequestStepProcessor : INoAnswerDeviceRequestStepProcessor
 {
-    public const int WaitInterval = 20;
+    /// <summary>
+    /// Wait interval in ms. Default: 20ms
+    /// </summary>
+    public static int WaitInterval {get; set; } = 20;
 
     private bool _isCancelled;
     private readonly Lock _isCancelledLockObject = new();

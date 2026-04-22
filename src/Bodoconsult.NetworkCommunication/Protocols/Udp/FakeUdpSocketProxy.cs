@@ -81,7 +81,7 @@ public class FakeUdpSocketProxy : UpdSocketProxyBase
     public bool IsConnected { get; set; } = true;
 
     /// <summary>
-    /// Used to set return value for <see cref="Poll"/> method
+    /// Used to set return value for Poll method
     /// </summary>
     public bool IsPoll { get; set; }
 
@@ -250,11 +250,6 @@ public class FakeUdpSocketProxy : UpdSocketProxyBase
         });
 
         return i;
-    }
-
-    public override bool Poll()
-    {
-        return base.Poll();
     }
 
     ///// <summary>

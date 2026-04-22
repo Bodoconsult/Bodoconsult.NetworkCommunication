@@ -99,8 +99,18 @@ public delegate void RaiseStopSyncExecutionDelegate(MessageSendingResult result)
 
 // ****** Receiver delegates ****** 
 
-public delegate void RaisedeviceMessageNotReceivedDelegate(IInboundDataMessage message);
-public delegate void RaisedeviceMessageCorruptedDelegate(byte messageBlockAndRc, string reason);
+/// <summary>
+/// Delegate called if a messages was not reeivable
+/// </summary>
+/// <param name="message">Current message</param>
+public delegate void RaiseDeviceMessageNotReceivedDelegate(IInboundDataMessage message);
+
+/// <summary>
+/// Delegate called if a message is corruoted
+/// </summary>
+/// <param name="blockCode">Current block code</param>
+/// <param name="reason">A reason explaining the corruption (if possible)</param>
+public delegate void RaiseDeviceMessageCorruptedDelegate(byte blockCode, string reason);
 
 // ****** Sender delegates ****** 
 
@@ -202,6 +212,7 @@ public delegate void ResetOutboundDataMessageFactoryDelegate();
 /// If the message is the requested answer from the device the properties <see cref="IRequestAnswer.WasReceived"/>
 /// and <see cref="IRequestAnswer.ReceivedMessage"/> are set to true and the received message.
 /// </summary>
+/// <param name="requestAnswer">Current expected request answer definition</param>
 /// <param name="sentMessage">The message sent from the request to the device</param>
 /// <param name="receivedMessage">A received message from the device</param>
 /// <param name="errors">List with error messages to fill</param>

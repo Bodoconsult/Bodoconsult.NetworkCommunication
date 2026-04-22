@@ -18,11 +18,44 @@ To install device and backend background services you must have local admin perm
 
 # Test device digital twin
 
+# Test device digital twin
+
+The digital twin is only intended for testing the backend and client. For production environments it is NOT required.
+
 ## Installation
 
 Install .Net 9 runtime if needed.
 
 Copy binaries to your target folder {Your Target folder}\{Device}.
+
+If the service is installed already stop the Windows service IpDeviceService now.
+
+
+``` powershell
+sc.exe stop "IpDeviceService"
+```
+
+Copy binaries to your target folder {Your Target folder}\{Device}.
+
+For a fresh installation register the service now:
+
+``` powershell
+sc.exe create "IpDeviceService" binpath= "{Your Target folder}\{Device}\IpDeviceService.exe"
+```
+
+Start the Windows service IpDeviceService.
+
+``` powershell
+sc.exe start "IpDeviceService"
+```
+
+## Adjust appsettings.json
+
+IpAddress: IP address of the device
+Port: port to use for UPD comm to device
+
+IpAddress2: IP address of the device
+Port2: port to use for TCP/IP comm to device
 
 ## Adjust appsettings.json
 

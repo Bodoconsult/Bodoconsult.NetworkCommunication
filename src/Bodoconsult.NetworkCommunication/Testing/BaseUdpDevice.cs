@@ -22,6 +22,10 @@ public abstract class BaseUdpDevice : IUdpDevice
     protected bool IsDisposed;
 
     private readonly bool _isServer;
+
+    /// <summary>
+    /// Current type name
+    /// </summary>
     protected string TypeName;
 
     /// <summary>

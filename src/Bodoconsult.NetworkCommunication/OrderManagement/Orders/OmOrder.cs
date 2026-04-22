@@ -166,18 +166,21 @@ public class OmOrder : IOrder
     /// </summary>
     public bool IsCancelledOndevicePropertyUpdate { get; set; }
 
+    ///// <summary>
+    ///// Get the formatted user
+    ///// </summary>
+    ///// <returns></returns>
+    //protected string? GetFormattedUser()
+    //{
+    //    if (ParameterSet == null)
+    //    {
+    //        return "No user info";
+    //    }
 
-    protected string? GetFormattedUser()
-    {
-        if (ParameterSet == null)
-        {
-            return "No user info";
-        }
-
-        return string.IsNullOrEmpty(ParameterSet.UserRequestingTheOrderRun) ?
-            "" :
-            ParameterSet.UserRequestingTheOrderRun;
-    }
+    //    return string.IsNullOrEmpty(ParameterSet.UserRequestingTheOrderRun) ?
+    //        "" :
+    //        ParameterSet.UserRequestingTheOrderRun;
+    //}
 
     #endregion
 

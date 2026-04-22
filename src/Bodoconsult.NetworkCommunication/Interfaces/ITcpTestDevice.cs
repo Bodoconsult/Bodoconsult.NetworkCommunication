@@ -44,5 +44,9 @@ public interface ITcpIpDevice: IDisposable
     /// <returns>Received data</returns>
     Task<byte[]> Receive();
 
+    /// <summary>
+    /// Dispose the instance
+    /// </summary>
+    /// <param name="disposing">Is disposing?</param>
     void Dispose(bool disposing);
 }

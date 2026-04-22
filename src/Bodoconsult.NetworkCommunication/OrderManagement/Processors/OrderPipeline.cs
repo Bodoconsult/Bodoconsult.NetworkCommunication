@@ -98,6 +98,9 @@ public class OrderPipeline : IOrderPipeline
     /// </summary>
     public IList<IOrder> AllWaitingPriorityOrders => _ordersWithPriorityQueue.ToList();
 
+    /// <summary>
+    /// List of all uncancelled orders currently executed
+    /// </summary>
     public List<IOrder> UncancelledCurrentlyExecutedOrders
     {
         get
@@ -106,7 +109,6 @@ public class OrderPipeline : IOrderPipeline
             return result;
         }
     }
-
 
     /// <summary>
     /// Is a certain order type running or waiting for execution

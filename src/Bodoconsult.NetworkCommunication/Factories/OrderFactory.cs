@@ -21,6 +21,9 @@ public class OrderFactory : IOrderFactory
         OrderIdGenerator = orderIdGenerator;
     }
 
+    /// <summary>
+    /// Current order ID generator
+    /// </summary>
     public IOrderIdGenerator OrderIdGenerator { get; }
 
     /// <summary>

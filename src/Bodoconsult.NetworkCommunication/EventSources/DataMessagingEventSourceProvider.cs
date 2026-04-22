@@ -11,12 +11,24 @@ namespace Bodoconsult.NetworkCommunication.EventSources;
 /// </summary>
 public class DataMessagingEventSourceProvider : IEventSourceProvider
 {
+    /// <summary>
+    /// Count sent messages counter name
+    /// </summary>
     public const string DclSentDataMessageCount = "DCL.SentDataMessage.Count";
 
+    /// <summary>
+    /// Size in bytes for sent messages counter name
+    /// </summary>
     public const string DclSentDataMessageBytes = "DCL.SentDataMessage.Bytes";
 
+    /// <summary>
+    /// Count received messages counter name
+    /// </summary>
     public const string DclReceivedDataMessageCount = "DCL.ReceivedDataMessage.Count";
 
+    /// <summary>
+    /// Size in bytes for received messages counter name
+    /// </summary>
     public const string DclReceivedDataMessageBytes = "DCL.ReceivedDataMessage.Bytes";
 
     /// <summary>

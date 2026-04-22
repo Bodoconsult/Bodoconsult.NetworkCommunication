@@ -16,17 +16,19 @@ public class SendPacketProcessFactory : ISendPacketProcessFactory
     /// </summary>
     private readonly BufferPool<ISendPacketProcess> _bufferPool;
 
+    /// <summary>
+    /// Default ctor
+    /// </summary>
     public SendPacketProcessFactory()
     {
         _bufferPool = new BufferPool<ISendPacketProcess>(() => new SendPacketProcess());
-
         _bufferPool.Allocate(20);
     }
 
     /// <summary>
     /// Create an instance of <see cref="ISendPacketProcess "/> to send a message to the device
     /// </summary>
-    /// <param name="duplexIo">Current Duplex-IO instance</param>
+    /// <param name="duplexIo">Current DuplexIo instance</param>
     /// <param name="message">Current message to send</param>
     /// <param name="smddevice">Current device instance</param>
     /// <returns>A send packet process instance to hande the message to send</returns>

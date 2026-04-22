@@ -4,6 +4,9 @@ using Bodoconsult.NetworkCommunication.Interfaces;
 
 namespace Bodoconsult.NetworkCommunication.DataMessaging.DigitalTwins;
 
+/// <summary>
+/// Factory for a digital twin for SFXP messages
+/// </summary>
 public class SfxpDigitalTwinMessageFactory : IDigitalTwinMessageFactory
 {
     private long _messageId;

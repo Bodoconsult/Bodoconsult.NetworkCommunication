@@ -53,6 +53,10 @@ public abstract class BaseDataMessageProcessor : IDataMessageProcessor
 
     }
 
+    /// <summary>
+    /// Callback metho th free <see cref="_stopped"/>
+    /// </summary>
+    /// <param name="ar">Asny result (not handled)</param>
     protected void Callback(IAsyncResult ar)
     {
         _stopped.Set();

@@ -13,7 +13,9 @@ namespace Bodoconsult.NetworkCommunication.Helpers;
 /// </summary>
 public static class SocketUtility
 {
-    // for TaskCompletionSource<_Void> so we can use it with no result
+    /// <summary>
+    /// for TaskCompletionSource&lt;Void&gt; so we can use it with no result
+    /// </summary>
     public sealed class Void
     {
         //public Void() { }
@@ -28,7 +30,9 @@ public static class SocketUtility
     {
         awaitable.Reset();
         if (!socket.ReceiveAsync(awaitable.EventArgs))
+        {
             awaitable.IsCompleted = true;
+        }
         return awaitable;
     }
     /// <summary>
@@ -41,7 +45,9 @@ public static class SocketUtility
     {
         awaitable.Reset();
         if (!socket.SendAsync(awaitable.EventArgs))
+        {
             awaitable.IsCompleted = true;
+        }
         return awaitable;
     }
 
@@ -56,7 +62,6 @@ public static class SocketUtility
     {
         return socket.ReceiveAsync(buffer, 0, buffer.Length, SocketFlags.None);
     }
-
 
     /// <summary>
     /// Asynchronously receives data on a <see cref="Socket"/>

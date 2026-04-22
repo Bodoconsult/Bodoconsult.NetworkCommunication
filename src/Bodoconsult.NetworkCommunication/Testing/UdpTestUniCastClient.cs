@@ -27,6 +27,10 @@ public class UdpTestUniCastClient: BaseUdpDevice
         Listener.Connect(EndPoint);
     }
 
+    /// <summary>
+    /// Send byte array to the client
+    /// </summary>
+    /// <param name="data">Byte array to send</param>
     public override void Send(byte[] data)
     {
         if (IsDisposed)

@@ -7,7 +7,16 @@ namespace Bodoconsult.NetworkCommunication.Factories;
 /// </summary>
 public enum FakeSendPacketProcessEnum
 {
+    /// <summary>
+    /// Successful
+    /// </summary>
     Successful,
+    /// <summary>
+    /// Encoding error
+    /// </summary>
     EncodingError,
+    /// <summary>
+    /// Socket error
+    /// </summary>
     SocketError
 }

@@ -11,7 +11,10 @@ namespace Bodoconsult.NetworkCommunication.OrderManagement.Processors;
 /// </summary>
 public class NoHandshakeNoAnswerDeviceRequestStepProcessor : INoHandshakeNoAnswerDeviceRequestStepProcessor
 {
-    public const int WaitInterval = 20;
+    /// <summary>
+    /// Wait interval in ms. Default: 20ms
+    /// </summary>
+    public static int WaitInterval { get; set; } = 20;
 
     private bool _isCancelled;
     private readonly Lock _isCancelledLockObject = new();
@@ -24,10 +27,7 @@ public class NoHandshakeNoAnswerDeviceRequestStepProcessor : INoHandshakeNoAnswe
         RequestSpec = requestSpec;
         NoHandshakeNoAnswerDeviceRequestSpec = requestSpec;
 
-        if (RequestSpec.AppLogger == null)
-        {
-            throw new ArgumentNullException(nameof(RequestSpec.AppLogger));
-        }
+        ArgumentNullException.ThrowIfNull(RequestSpec.AppLogger);
     }
 
     /// <summary>

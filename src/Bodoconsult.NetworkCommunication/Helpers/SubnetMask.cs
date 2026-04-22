@@ -5,16 +5,35 @@ using System.Net;
 
 namespace Bodoconsult.NetworkCommunication.Helpers;
 
+/// <summary>
+/// Class representing a subnet mask
+/// </summary>
 public static class SubnetMask
 {
+    /// <summary>
+    /// Class A subnet mask 255.0.0.0
+    /// </summary>
     public static readonly IPAddress ClassA = IPAddress.Parse("255.0.0.0");
+
+    /// <summary>
+    /// Class B subnet mask 255.255.0.0"
+    /// </summary>
     public static readonly IPAddress ClassB = IPAddress.Parse("255.255.0.0");
+
+    /// <summary>
+    /// Class C subnet mask 255.255.255.0
+    /// </summary>
     public static readonly IPAddress ClassC = IPAddress.Parse("255.255.255.0");
 
+    /// <summary>
+    /// Create by host part bit length
+    /// </summary>
+    /// <param name="hostpartLength">Host part length</param>
+    /// <returns><see cref="IPAddress"/> instance</returns>
+    /// <exception cref="ArgumentException"></exception>
     public static IPAddress CreateByHostBitLength(int hostpartLength)
     {
-        var hostPartLength = hostpartLength;
-        var netPartLength = 32 - hostPartLength;
+        var netPartLength = 32 - hostpartLength;
 
         if (netPartLength < 2)
         {
@@ -43,12 +62,22 @@ public static class SubnetMask
         return new IPAddress(binaryMask);
     }
 
+    /// <summary>
+    /// Create IP address by net bit length
+    /// </summary>
+    /// <param name="netpartLength">Net part length</param>
+    /// <returns><see cref="IPAddress"/> instance</returns>
     public static IPAddress CreateByNetBitLength(int netpartLength)
     {
         var hostPartLength = 32 - netpartLength;
         return CreateByHostBitLength(hostPartLength);
     }
 
+    /// <summary>
+    /// Create IP address by host number
+    /// </summary>
+    /// <param name="numberOfHosts">Number of hosts</param>
+    /// <returns><see cref="IPAddress"/> instance</returns>
     public static IPAddress CreateByHostNumber(int numberOfHosts)
     {
         var maxNumber = numberOfHosts + 1;

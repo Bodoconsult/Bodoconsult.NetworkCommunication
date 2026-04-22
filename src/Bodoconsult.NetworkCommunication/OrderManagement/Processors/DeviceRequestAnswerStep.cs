@@ -14,9 +14,13 @@ public class DeviceRequestAnswerStep : BaseRequestAnswerStep, IDeviceRequestAnsw
 {
     private TaskCompletionSource<IOrderExecutionResultState>? _taskCompletionSource;
     private bool _wasSuccessful;
-    protected readonly IOrder Order;
     private readonly Lock _wasSuccessfulLock = new();
     private CancellationTokenSource? _ctsMain;
+
+    /// <summary>
+    /// Current order
+    /// </summary>
+    protected readonly IOrder Order;
 
     /// <summary>
     /// Default ctor
@@ -439,6 +443,10 @@ public class DeviceRequestAnswerStep : BaseRequestAnswerStep, IDeviceRequestAnsw
         }
     }
 
+    /// <summary>
+    /// Set the order execution result
+    /// </summary>
+    /// <param name="result">Order execution result</param>
     protected void SetResult(IOrderExecutionResultState result)
     {
         if (_taskCompletionSource == null)

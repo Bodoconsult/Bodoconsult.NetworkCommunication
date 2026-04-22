@@ -92,6 +92,13 @@ public static class IpHelper
         return success;
     }
 
+    /// <summary>
+    /// Get the broadcast address
+    /// </summary>
+    /// <param name="address">IP address</param>
+    /// <param name="subnetMask">subnet mask</param>
+    /// <returns>IP address</returns>
+    /// <exception cref="ArgumentException">Lengths of IP address and subnet mask do not match</exception>
     public static IPAddress GetBroadcastAddress(this IPAddress address, IPAddress subnetMask)
     {
         var ipAdressBytes = address.GetAddressBytes();
@@ -110,6 +117,13 @@ public static class IpHelper
         return new IPAddress(broadcastAddress);
     }
 
+    /// <summary>
+    /// Get the network address
+    /// </summary>
+    /// <param name="address">IP address</param>
+    /// <param name="subnetMask">subnet mask</param>
+    /// <returns>IP address</returns>
+    /// <exception cref="ArgumentException">Lengths of IP address and subnet mask do not match</exception>
     public static IPAddress GetNetworkAddress(this IPAddress address, IPAddress subnetMask)
     {
         var ipAdressBytes = address.GetAddressBytes();
@@ -128,9 +142,16 @@ public static class IpHelper
         return new IPAddress(broadcastAddress);
     }
 
-    public static bool IsInSameSubnet(this IPAddress address2, IPAddress address, IPAddress subnetMask)
+    /// <summary>
+    /// Check if two address are in the same subnet
+    /// </summary>
+    /// <param name="address2">Address 2</param>
+    /// <param name="address1">Address 1</param>
+    /// <param name="subnetMask"></param>
+    /// <returns></returns>
+    public static bool IsInSameSubnet(this IPAddress address1, IPAddress address2, IPAddress subnetMask)
     {
-        var network1 = address.GetNetworkAddress(subnetMask);
+        var network1 = address1.GetNetworkAddress(subnetMask);
         var network2 = address2.GetNetworkAddress(subnetMask);
 
         return network1.Equals(network2);

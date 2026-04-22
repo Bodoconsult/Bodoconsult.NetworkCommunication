@@ -42,7 +42,7 @@ public class FakeStateMachineStateFactory : IStateMachineStateFactory
 
 
     /// <summary>
-    /// Register a state configuration (and add it to <see cref="IStateMachineStateFactory.StateConfigurations"/>). <see cref="IStateConfiguration.CurrentContext"/> is always overriden with <see cref="IStateMachineStateFactory.CurrentContext"/>. So you do not have to set a value for <see cref="IStateConfiguration.CurrentContext"/> before calling <see cref="IStateMachineStateFactory.RegisterConfiguration"/>
+    /// Register a state configuration (and add it to <see cref="IStateMachineStateFactory.StateConfigurations"/>). <see cref="IStateConfiguration.CurrentContext"/> is always overriden with <see cref="IStateConfiguration.CurrentContext"/>. So you do not have to set a value for <see cref="IStateConfiguration.CurrentContext"/> before calling <see cref="IStateMachineStateFactory.RegisterConfiguration"/>
     /// </summary>
     /// <param name="config">Config to register</param>
     public void RegisterConfiguration(IStateConfiguration config)

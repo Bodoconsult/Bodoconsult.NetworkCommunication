@@ -9,6 +9,9 @@ namespace Bodoconsult.NetworkCommunication.DataMessaging.DataBlockCodingProcesso
 /// </summary>
 public class DefaultDataBlockCodingProcessor : IDataBlockCodingProcessor
 {
+    /// <summary>
+    /// Datablock codes registered
+    /// </summary>
     protected readonly Dictionary<char, IDataBlockCodec> DatablockCodecs = new();
 
     /// <summary>

@@ -125,8 +125,6 @@ public class FakeOrderProcessor : IOrderProcessor
         throw new NotImplementedException();
     }
 
-    public long CurrentOrderExecutionDuration { get; set; }
-
     /// <summary>
     /// Number of orders in processing
     /// </summary>

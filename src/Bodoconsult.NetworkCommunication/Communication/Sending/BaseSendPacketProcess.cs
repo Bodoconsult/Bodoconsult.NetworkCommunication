@@ -12,12 +12,19 @@ namespace Bodoconsult.NetworkCommunication.Communication.Sending;
 /// </summary>
 public abstract class BaseSendPacketProcess : ISendPacketProcess, IAsyncDisposable
 {
-    public IDuplexIo? DuplexIo;
+    /// <summary>
+    /// Current task completion source
+    /// </summary>
     protected TaskCompletionSource<bool>? TaskCompletionSource;
     private CancellationTokenSource? _ctsMain;
 
     private readonly Lock _resultLock = new();
     private IOrderExecutionResultState _processExecutionResult = OrderExecutionResultState.Unsuccessful;
+
+    /// <summary>
+    /// Current <see cref="IDuplexIo"/> instance
+    /// </summary>
+    public IDuplexIo? DuplexIo { get; private set; }
 
     /// <summary>
     /// Timeout for waiting for an ackknowledgement
@@ -409,6 +416,10 @@ public abstract class BaseSendPacketProcess : ISendPacketProcess, IAsyncDisposab
         DataMessagingConfig = null;
     }
 
+    /// <summary>
+    /// Performs application-defined tasks associated with freeing, releasing, or
+    /// resetting unmanaged resources asynchronously.</summary>
+    /// <returns>A task that represents the asynchronous dispose operation.</returns>
     public async ValueTask DisposeAsync()
     {
         if (DuplexIo != null)

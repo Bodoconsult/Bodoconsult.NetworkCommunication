@@ -26,7 +26,7 @@ public interface IInboundDataMessageToBusinessTransactionAdapter
     IBusinessTransactionManager BusinessTransactionManager { get; }
 
     /// <summary>
-    /// Current instance of <see cref="IInboundBtcpMessageToBtRequestDataConverter"/> to convert an inbound data message to a business transaction request
+    /// Current instance of <see cref="IInboundDataMessageToBtReplyConverter"/> to convert an inbound data message to a business transaction request
     /// </summary>
     IInboundDataMessageToBtReplyConverter InboundDataMessageConverter { get; }
 

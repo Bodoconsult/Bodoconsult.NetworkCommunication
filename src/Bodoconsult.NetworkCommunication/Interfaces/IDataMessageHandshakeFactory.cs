@@ -2,6 +2,9 @@
 
 namespace Bodoconsult.NetworkCommunication.Interfaces;
 
+/// <summary>
+/// Interface for a factory creating handshakes
+/// </summary>
 public interface IDataMessageHandshakeFactory
 {
     /// <summary>

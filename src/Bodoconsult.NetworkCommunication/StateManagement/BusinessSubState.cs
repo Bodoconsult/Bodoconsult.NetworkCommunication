@@ -32,6 +32,11 @@ public class BusinessSubState : IBusinessSubState
     /// <returns>A string that represents the current object.</returns>
     public override string ToString() => $"{Id} {Name}";
 
+    /// <summary>
+    /// Check if two business substates are equal
+    /// </summary>
+    /// <param name="other"></param>
+    /// <returns></returns>
     protected bool Equals(BusinessSubState other)
     {
         return Id == other.Id && Name == other.Name;

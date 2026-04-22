@@ -78,11 +78,17 @@ public class IpHighPerformanceDuplexIoReceiver : BaseDuplexIoReceiver
             catch (Exception e)
             {
                 Debug.Print(e.ToString());
-                Logger?.LogError(e, "Stopping receiver failed");
+                Logger.LogError(e, "Stopping receiver failed");
             }
         });
     }
 
+    /// <summary>
+    /// Receive messages from the device.
+    /// This method is not intended to be called directly from production code.
+    /// It is a unit test method.
+    /// </summary>
+    /// <returns>Received device message or null in case of any error</returns>
     public override async Task FillMessagePipeline()
     {
         // Wait until the socket is connected

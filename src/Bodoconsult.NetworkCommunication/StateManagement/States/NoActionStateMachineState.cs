@@ -35,6 +35,10 @@ public class NoActionStateMachineState : BaseStateMachineState, INoActionStateMa
         CheckJobstatesActionForStateDelegate?.Invoke(this);
     }
 
+    /// <summary>
+    /// Default ctor
+    /// </summary>
+    /// <param name="currentState">Current state</param>
     public void DefaultCheckJobstatesActionForState(INoActionStateMachineState currentState)
     {
         while (!CancellationTokenSource?.IsCancellationRequested ?? false)

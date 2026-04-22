@@ -149,8 +149,11 @@ public class FakeSendPacketProcess : ISendPacketProcess
         // Do nothing
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
     public void Reset()
     {
-  
+        // Do nothing
     }
 }

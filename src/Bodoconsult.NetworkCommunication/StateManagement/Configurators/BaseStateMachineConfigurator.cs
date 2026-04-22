@@ -15,6 +15,9 @@ public abstract class BaseStateMachineConfigurator: IStateMachineConfigurator
     /// </summary>
     protected IStateMachineStateFactory StateFactory = new StateMachineStateFactory();
 
+    /// <summary>
+    /// Current manager for state management devices
+    /// </summary>
     public IStateMachineDeviceBusinessLogicAdapter DeviceBusinessLogicAdapter{ get; }
 
     /// <summary>

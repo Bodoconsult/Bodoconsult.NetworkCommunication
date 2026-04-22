@@ -2,6 +2,9 @@
 
 namespace Bodoconsult.NetworkCommunication.Interfaces;
 
+/// <summary>
+/// Basic interface for device manager
+/// </summary>
 public interface IDeviceManager
 {
     /// <summary>

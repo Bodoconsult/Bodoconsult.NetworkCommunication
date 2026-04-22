@@ -34,6 +34,10 @@ public class UdpTestUniCastServer : BaseUdpDevice
         //SendEndPoint = new IPEndPoint(ipAddress, RemotePort);
     }
 
+    /// <summary>
+    /// Send byte array to the client
+    /// </summary>
+    /// <param name="data">Byte array to send</param>
     public override void Send(byte[] data)
     {
         if (IsDisposed || SenderEndPoint == null)

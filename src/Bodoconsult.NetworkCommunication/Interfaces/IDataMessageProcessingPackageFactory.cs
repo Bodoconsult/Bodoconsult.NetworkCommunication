@@ -3,6 +3,9 @@
 
 namespace Bodoconsult.NetworkCommunication.Interfaces;
 
+/// <summary>
+/// Interface for creating <see cref="IDataMessageProcessingPackage"/> instances
+/// </summary>
 public interface IDataMessageProcessingPackageFactory
 {
     /// <summary>

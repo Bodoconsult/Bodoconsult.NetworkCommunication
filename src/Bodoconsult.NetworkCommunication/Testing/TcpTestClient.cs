@@ -89,6 +89,10 @@ public class TcpTestClient :   BaseTcpIpDevice
         return msg;
     }
 
+    /// <summary>
+    /// Dispose the instance
+    /// </summary>
+    /// <param name="disposing">Is disposing?</param>
     public override void Dispose(bool disposing)
     {
         if (!disposing)

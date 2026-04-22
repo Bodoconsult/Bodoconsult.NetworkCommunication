@@ -27,6 +27,9 @@ public abstract class BaseStateMachineState : IStateMachineState
         Name = name;
     }
 
+    /// <summary>
+    /// Is an error handling running currently
+    /// </summary>
     protected bool IsErrorHandlingRunning
     {
         get

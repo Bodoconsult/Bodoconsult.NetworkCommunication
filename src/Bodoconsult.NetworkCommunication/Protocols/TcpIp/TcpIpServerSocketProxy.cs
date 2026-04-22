@@ -13,7 +13,6 @@ namespace Bodoconsult.NetworkCommunication.Protocols.TcpIp;
 public class TcpIpServerSocketProxy : TcpIpSocketProxyBase
 {
     private readonly byte[] _tmp = new byte[1];
-    public readonly ITcpIpListenerManager TcpIpListenerManager;
     private Socket? _listener;
     private bool _isBound;
 
@@ -24,6 +23,11 @@ public class TcpIpServerSocketProxy : TcpIpSocketProxyBase
     {
         TcpIpListenerManager = tcpIpListenerManager;
     }
+
+    /// <summary>
+    /// Current <see cref="ITcpIpListenerManager"/> instance
+    /// </summary>
+    public ITcpIpListenerManager TcpIpListenerManager { get; }
 
     /// <summary>
     /// Is the socket connected

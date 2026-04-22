@@ -5,6 +5,9 @@ using Bodoconsult.NetworkCommunication.Interfaces;
 
 namespace Bodoconsult.NetworkCommunication.OrderManagement.Processors;
 
+/// <summary>
+/// Helper class for creating typical <see cref="MessageSendingResult"/> instances
+/// </summary>
 public static class MessageSendingResultHelper
 {
     /// <summary>

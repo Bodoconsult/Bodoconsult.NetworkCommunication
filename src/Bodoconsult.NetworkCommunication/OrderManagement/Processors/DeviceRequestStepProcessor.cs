@@ -11,8 +11,6 @@ namespace Bodoconsult.NetworkCommunication.OrderManagement.Processors;
 /// </summary>
 public class DeviceRequestStepProcessor : IDeviceRequestStepProcessor
 {
-    public const int WaitInterval = 20;
-
     private bool _isCancelled;
     private readonly Lock _isCancelledLockObject = new();
     private CancellationTokenSource? _tcs;
@@ -29,6 +27,11 @@ public class DeviceRequestStepProcessor : IDeviceRequestStepProcessor
 
         ArgumentNullException.ThrowIfNull(RequestSpec.AppLogger);
     }
+
+    /// <summary>
+    /// Wait interval in ms
+    /// </summary>
+    public static int WaitInterval { get; set; } = 20;
 
     /// <summary>
     /// Current device request spec
@@ -449,6 +452,9 @@ public class DeviceRequestStepProcessor : IDeviceRequestStepProcessor
         return execResult;
     }
 
+    /// <summary>
+    ///  Proces sthe defined chain
+    /// </summary>
     public void ProcessChain()
     {
         var requestSpec = RequestSpec;

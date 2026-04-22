@@ -26,9 +26,9 @@ public class IpDuplexIoReceiver : BaseDuplexIoReceiver
     /// </summary>
     private readonly IDataMessageValidator _dataMessageValidator;
 
-
-    //public static int SendTimeout = 5;
-
+    /// <summary>
+    /// Timeout in ms for filling the receicer pipeline from check to check
+    /// </summary>
     public static int FillPipelineTimeout { get; set; } = 5;
 
     /// <summary>
@@ -53,6 +53,10 @@ public class IpDuplexIoReceiver : BaseDuplexIoReceiver
         _dataMessageValidator = deviceCommSettings.DataMessageProcessingPackage.DataMessageValidator;
     }
 
+    /// <summary>
+    /// Try to send received data to internal receiver
+    /// </summary>
+    /// <param name="data"></param>
     public void TryToSendReceivedData(DummyMemory data)
     {
         var chunk = new ChunkedSequence<byte>(_buffer);

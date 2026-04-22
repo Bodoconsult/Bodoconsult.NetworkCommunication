@@ -6,10 +6,21 @@ using System.Net.Sockets;
 
 namespace Bodoconsult.NetworkCommunication.Testing;
 
+/// <summary>
+/// Base class for TCP/IP devices
+/// </summary>
 public abstract class BaseTcpIpDevice : ITcpIpDevice
 {
     private Task? _thread;
+
+    /// <summary>
+    /// Current socket
+    /// </summary>
     protected Socket? Socket;
+
+    /// <summary>
+    /// Is this a server instance?
+    /// </summary>
     protected bool IsServer;
 
     /// <summary>
@@ -102,6 +113,10 @@ public abstract class BaseTcpIpDevice : ITcpIpDevice
         throw new NotSupportedException("Override in derived classes");
     }
 
+    /// <summary>
+    /// Dispose the instance
+    /// </summary>
+    /// <param name="disposing">Is disposing?</param>
     public virtual void Dispose(bool disposing)
     {
         throw new NotSupportedException("Override in derived classes");
