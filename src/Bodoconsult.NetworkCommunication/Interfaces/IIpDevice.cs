@@ -73,6 +73,11 @@ public interface IIpDevice
     /// </summary>
     void ResetInternalState();
 
+    /// <summary>
+    /// Connected devices
+    /// </summary>
+    List<IIpDevice> ConnectedDevices { get; }
+
 
     #region Logging
 

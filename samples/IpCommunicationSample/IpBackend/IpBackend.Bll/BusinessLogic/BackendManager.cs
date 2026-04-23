@@ -152,6 +152,14 @@ public class BackendManager : IBackendManager
         m.ConfigureDevice(IpDeviceTcpIpConfig.Value.IpAddress, IpDeviceTcpIpConfig.Value.Port);
 
         IpDeviceTcpIp = m;
+
+        ArgumentNullException.ThrowIfNull(IpDeviceTcpIp);
+        ArgumentNullException.ThrowIfNull(IpDeviceTcpIp.Device);
+        ArgumentNullException.ThrowIfNull(IpDeviceUdp);
+        ArgumentNullException.ThrowIfNull(IpDeviceUdp.IpDevice);
+
+        IpDeviceTcpIp.Device.ConnectedDevices.Add(IpDeviceUdp.IpDevice);
+
     }
 
     /// <summary>

@@ -138,6 +138,11 @@ public abstract class BaseSimpleDevice : IIpDevice
     }
 
     /// <summary>
+    /// Connected devices
+    /// </summary>
+    public List<IIpDevice> ConnectedDevices { get; } = [];
+
+    /// <summary>
     /// Log in DEBUG mode
     /// </summary>
     /// <param name="message">Message to log</param>

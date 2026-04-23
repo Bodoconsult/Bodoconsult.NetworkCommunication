@@ -320,6 +320,11 @@ public abstract class BaseOrderManagementDevice : IOrderManagementDevice
     }
 
     /// <summary>
+    /// Connected devices
+    /// </summary>
+    public List<IIpDevice> ConnectedDevices { get; } = [];
+
+    /// <summary>
     /// Start the software side of device init process
     /// </summary>
     public void RequestDeviceInit()

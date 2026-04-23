@@ -17,12 +17,17 @@ public abstract class BaseIpDeviceConfigurator : IIpDeviceConfigurator
     /// </summary>
     /// <param name="monitorLoggerFactoryFactory">Factory for monitor loggers</param>
     /// <param name="logDataFactory">Current log data factory</param>
-    /// <param name="loggerId">Logger ID of the device</param>
+    /// <param name="logFileName">Log filename (extension .log will be added if needed)</param>
     /// <param name="appLoggerFactory">Current logger proxy factory</param>
     /// <returns>Monitor logger instance</returns>
-    protected static IAppLoggerProxy CreateMonitorLogger(IMonitorLoggerFactoryFactory monitorLoggerFactoryFactory, IAppLoggerProxyFactory appLoggerFactory, ILogDataFactory logDataFactory, string loggerId)
+    protected static IAppLoggerProxy CreateMonitorLogger(IMonitorLoggerFactoryFactory monitorLoggerFactoryFactory, IAppLoggerProxyFactory appLoggerFactory, ILogDataFactory logDataFactory, string logFileName)
     {
-        var monitorLoggerFactory = monitorLoggerFactoryFactory.CreateInstance(loggerId);
+        if (logFileName.EndsWith(".log", StringComparison.InvariantCultureIgnoreCase))
+        {
+            logFileName += ".log";
+        }
+
+        var monitorLoggerFactory = monitorLoggerFactoryFactory.CreateInstance(logFileName);
         var logger = appLoggerFactory.CreateInstance(monitorLoggerFactory, logDataFactory);
         return logger;
     }

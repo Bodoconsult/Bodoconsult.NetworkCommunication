@@ -24,6 +24,6 @@ public class FakeOutboundDataMessageFactory : IOutboundDataMessageFactory
     /// </summary>
     public void Reset()
     {
-        throw new NotSupportedException();
+       // Do nothing
     }
 }

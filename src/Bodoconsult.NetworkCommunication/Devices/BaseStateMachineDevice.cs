@@ -5,6 +5,7 @@ using System.Diagnostics;
 using Bodoconsult.App.Helpers;
 using Bodoconsult.NetworkCommunication.Interfaces;
 using Bodoconsult.NetworkCommunication.StateManagement;
+using Microsoft.Diagnostics.Tracing.Parsers.MicrosoftAntimalwareEngine;
 
 namespace Bodoconsult.NetworkCommunication.Devices;
 
@@ -54,8 +55,16 @@ public abstract class BaseStateMachineDevice : BaseOrderManagementDevice, IState
         // Create offline state now
         var state = StateMachineStateFactory.CreateInstance(this, DefaultStateNames.DeviceOfflineState);
 
+        // Stop com for connected devices
+        foreach (var device in this.ConnectedDevices)
+        {
+            device.StopComm();
+        }
+
         // Register state
         RequestState(state);
+
+
 
         return false;
     }
