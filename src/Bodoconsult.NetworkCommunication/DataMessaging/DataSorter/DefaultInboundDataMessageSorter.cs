@@ -1,5 +1,7 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
+using System.Diagnostics;
+using Bodoconsult.App.Abstractions.Interfaces;
 using Bodoconsult.NetworkCommunication.Interfaces;
 
 namespace Bodoconsult.NetworkCommunication.DataMessaging.DataSorter;
@@ -10,6 +12,20 @@ namespace Bodoconsult.NetworkCommunication.DataMessaging.DataSorter;
 public class DefaultInboundDataMessageSorter : IInboundDataMessageSorter
 {
     private readonly Dictionary<long, ISortableInboundDataMessage> _inboundDataMessages = new();
+
+    /// <summary>
+    /// Default ctor
+    /// </summary>
+    /// <param name="logger">Current logger</param>
+    public DefaultInboundDataMessageSorter(IAppLoggerProxy logger)
+    {
+        Logger = logger;
+    }
+
+    /// <summary>
+    /// Current logger
+    /// </summary>
+    public IAppLoggerProxy Logger { get; }
 
     /// <summary>
     /// The maximum number of messages in the queue before the queue is sent and then cleared
@@ -50,8 +66,7 @@ public class DefaultInboundDataMessageSorter : IInboundDataMessageSorter
             if (_inboundDataMessages.Count > 0)
             {
                 // Check if order fits
-                _inboundDataMessages.Add(message.OriginalMessageId, message);
-
+                AddMessageInternal(message);
                 CheckMessagesinQueue(result);
                 return result;
             }
@@ -72,15 +87,29 @@ public class DefaultInboundDataMessageSorter : IInboundDataMessageSorter
             else
             {
                 // Check if order fits
-                _inboundDataMessages.Add(message.OriginalMessageId, message);
-
+                AddMessageInternal(message);
                 CheckMessagesinQueue(result);
-               
             }
         }
 
         return result;
     }
+
+    private void AddMessageInternal(ISortableInboundDataMessage message)
+    {
+        //try
+        //{
+        if (!_inboundDataMessages.TryAdd(message.OriginalMessageId, message))
+        {
+            Logger.LogError($"Queue contains already message with ID {message.OriginalMessageId}");
+        }
+        //}
+        //catch (Exception e)
+        //{
+        //    Logger.LogError($"Queue contains already message with ID {message.OriginalMessageId}", e);
+        //}
+    }
+
 
     private void CheckMessagesinQueue(List<ISortableInboundDataMessage> result)
     {
@@ -102,8 +131,6 @@ public class DefaultInboundDataMessageSorter : IInboundDataMessageSorter
                 {
                     fit = false;
                 }
-
-                
             }
         }
         else
@@ -119,7 +146,6 @@ public class DefaultInboundDataMessageSorter : IInboundDataMessageSorter
         result.AddRange(sorted);
         _inboundDataMessages.Clear();
         LastMessageId = sorted.Last().OriginalMessageId;
-        return;
     }
 
     /// <summary>

@@ -1,8 +1,5 @@
 ﻿using IpClientUi.ViewModels;
-using ReactiveUI;
 using ReactiveUI.Avalonia;
-using System.Reactive;
-using ReactiveUI.SourceGenerators;
 
 namespace IpClientUi.Views;
 

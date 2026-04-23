@@ -1,10 +1,12 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
 using Bodoconsult.App.Abstractions.Interfaces;
+using Bodoconsult.App.Logging;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig;
 using Bodoconsult.NetworkCommunication.EnumAndStates;
 using Bodoconsult.NetworkCommunication.Factories;
 using Bodoconsult.NetworkCommunication.Interfaces;
+using Microsoft.Extensions.Logging;
 
 namespace Bodoconsult.NetworkCommunication.Devices.Configurators;
 
@@ -71,7 +73,9 @@ public class TcpIpServerDeviceConfigurator: BaseIpDeviceConfigurator
         DataMessagingConfig = new DefaultDataMessagingConfig();
         DataMessagingConfig.LoggerId = loggerId;
         DataMessagingConfig.AppLogger = _appLoggerProxy;
+        //DataMessagingConfig.AppLogger = new AppLoggerProxy(new FakeLoggerFactory(), _logDataFactory);
         DataMessagingConfig.MonitorLogger = CreateMonitorLogger(_monitorLoggerFactoryFactory, _appLoggerFactory, _logDataFactory, DataMessagingConfig.LoggerId.Replace(" ", "").Replace(":", ""));
+        //DataMessagingConfig.MonitorLogger = new AppLoggerProxy(new FakeLoggerFactory(), _logDataFactory);
         DataMessagingConfig.IpAddress = ipAddress;
         DataMessagingConfig.Port = port;
         DataMessagingConfig.IpProtocol = IpProtocolEnum.Tcp;

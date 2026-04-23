@@ -23,7 +23,7 @@ public class OmOrder : IOrder
     /// </summary>
     public OmOrder(long id, string name, IParameterSet parameterSet)
     {
-        Debug.Print("Create order "+id);
+        //Debug.Print("Create order "+id);
         Id = id;
         Name = name;
         TypeName = Name;
@@ -31,7 +31,6 @@ public class OmOrder : IOrder
         ParameterSet.LoadOrder(this);
         DeviceId = "Device";
     }
-
 
     #region Order meta data
 

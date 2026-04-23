@@ -1,5 +1,7 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
+using Bodoconsult.App.Abstractions.Interfaces;
+
 namespace Bodoconsult.NetworkCommunication.Interfaces;
 
 /// <summary>
@@ -7,6 +9,11 @@ namespace Bodoconsult.NetworkCommunication.Interfaces;
 /// </summary>
 public interface IInboundDataMessageSorter
 {
+    /// <summary>
+    /// Current logger
+    /// </summary>
+    IAppLoggerProxy Logger { get; }
+
     /// <summary>
     /// The maximum number of messages in the queue before the queue is sent and then cleared
     /// </summary>

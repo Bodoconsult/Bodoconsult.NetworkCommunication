@@ -1,5 +1,6 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
+using Bodoconsult.App.Abstractions.Interfaces;
 using Bodoconsult.App.Helpers;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessageProcessingPackages;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessageProcessors;
@@ -15,6 +16,15 @@ internal class SortableDataMessageProcessorTests
 {
     private bool _wasDataMessageFired;
 
+    private readonly IAppLoggerProxy _logger = TestDataHelper.GetFakeAppLoggerProxy();
+
+    [OneTimeTearDown]
+    public void CleanUp()
+    {
+        _logger.Dispose();
+    }
+
+
     [SetUp]
     public void Setup()
     {
@@ -27,7 +37,7 @@ internal class SortableDataMessageProcessorTests
         // Arrange 
         var config = TestDataHelper.GetDataMessagingConfig();
         config.DataMessageProcessingPackage = new SdcpDataMessageProcessingPackage(config);
-        config.DataMessageProcessingPackage.DataMessageSorter = new DefaultInboundDataMessageSorter();
+        config.DataMessageProcessingPackage.DataMessageSorter = new DefaultInboundDataMessageSorter(_logger);
 
         // Act  
         var proc = new SortableDataMessageProcessor(config);
@@ -42,7 +52,7 @@ internal class SortableDataMessageProcessorTests
         // Arrange 
         var config = TestDataHelper.GetDataMessagingConfig();
         config.DataMessageProcessingPackage = new SdcpDataMessageProcessingPackage(config);
-        config.DataMessageProcessingPackage.DataMessageSorter = new DefaultInboundDataMessageSorter();
+        config.DataMessageProcessingPackage.DataMessageSorter = new DefaultInboundDataMessageSorter(_logger);
         config.RaiseCommLayerDataMessageReceivedDelegate = RaiseCommLayerDataMessageReceivedDelegate;
 
         var proc = new SortableDataMessageProcessor(config);
@@ -65,7 +75,7 @@ internal class SortableDataMessageProcessorTests
         // Arrange 
         var config = TestDataHelper.GetDataMessagingConfig();
         config.DataMessageProcessingPackage = new SdcpDataMessageProcessingPackage(config);
-        config.DataMessageProcessingPackage.DataMessageSorter = new DefaultInboundDataMessageSorter();
+        config.DataMessageProcessingPackage.DataMessageSorter = new DefaultInboundDataMessageSorter(_logger);
         config.RaiseCommLayerDataMessageReceivedDelegate = RaiseCommLayerDataMessageReceivedDelegate;
 
         var proc = new SortableDataMessageProcessor(config);

@@ -227,7 +227,7 @@ public class SfxpDigitalTwinMessageFactory : IDigitalTwinMessageFactory
     /// <returns></returns>
     private List<byte> GenerateChunk(int index)
     {
-        var result = new List<byte>(); index += 10;    // Add 10 to avoid issue with 0x9 sync byte
+        var result = new List<byte>(); index += 32;    // Add 32 to avoid issue with 0x9 sync byte and others
 
         for (var i = 0; i < DataChunkLength; i++)
         {

@@ -17,6 +17,13 @@ public interface IIpDeviceUdpDeviceBusinessLogicAdapter : ISimpleDeviceBusinessL
     /// </summary>
     /// <param name="requestData">Current request parameter</param>
     /// <returns>Reply</returns>
+    IBusinessTransactionReply CheckConnection(IBusinessTransactionRequestData requestData);
+
+    /// <summary>
+    /// Send the required client hello to the server
+    /// </summary>
+    /// <param name="requestData">Current request parameter</param>
+    /// <returns>Reply</returns>
     IBusinessTransactionReply SendClientHello(IBusinessTransactionRequestData requestData);
 
     #endregion

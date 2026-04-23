@@ -4,7 +4,6 @@ using Bodoconsult.App.Abstractions.Interfaces;
 using Bodoconsult.App.DependencyInjection;
 using Bodoconsult.I18N.DependencyInjection;
 using Bodoconsult.NetworkCommunication.DependencyInjection;
-using IpClientUi.I18N;
 
 namespace IpClientUi.DiContainerProvider;
 

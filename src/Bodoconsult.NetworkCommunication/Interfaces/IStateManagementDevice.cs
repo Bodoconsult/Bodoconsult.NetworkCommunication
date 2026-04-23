@@ -14,4 +14,10 @@ public interface IStateMachineDevice : IStateMachineContext, IOrderManagementDev
     /// Current <see cref="IOrderManagementDeviceBusinessLogicAdapter"/> instance
     /// </summary>
     public IStateMachineDeviceBusinessLogicAdapter? StateMachineDeviceBusinessLogicAdapter { get; }
+
+    /// <summary>
+    /// Check the connection: if not connected call request DeviceOfflineState
+    /// </summary>
+    /// <returns>True if the device is connected and false if not and DeviceOfflineState is requested</returns>
+    bool CheckConnection();
 }

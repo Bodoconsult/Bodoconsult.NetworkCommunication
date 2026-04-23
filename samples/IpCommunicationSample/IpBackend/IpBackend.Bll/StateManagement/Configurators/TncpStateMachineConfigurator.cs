@@ -218,6 +218,8 @@ public class TncpStateMachineConfigurator : BaseStateMachineConfigurator
         ArgumentNullException.ThrowIfNull(state.CurrentContext.CommunicationAdapter);
         ArgumentNullException.ThrowIfNull(state.CurrentContext.StateMachineStateFactory);
 
+        IStateMachineState? newState;
+
         try
         {
             state.CurrentContext.StartComm();
@@ -228,13 +230,16 @@ public class TncpStateMachineConfigurator : BaseStateMachineConfigurator
             //var newState = state.CurrentContext.StateMachineStateFactory.CreateInstance(state.CurrentContext, DefaultStateNames.DeviceInitState, [ps]);
             //state.CurrentContext.RequestState(newState);
 
-            var newState = state.CurrentContext.CreateStateInstance(DefaultStateNames.DeviceReadyState);
+            newState = state.CurrentContext.CreateStateInstance(state.CurrentContext.IsConnected ? 
+                DefaultStateNames.DeviceReadyState : 
+                DefaultStateNames.DeviceOfflineState);
+
             state.CurrentContext.RequestState(newState);
         }
         catch (Exception e)
         {
             Debug.Print(e.ToString());
-            var newState = state.CurrentContext.CreateStateInstance(DefaultStateNames.DeviceOfflineState);
+            newState = state.CurrentContext.CreateStateInstance(DefaultStateNames.DeviceOfflineState);
             state.CurrentContext.RequestState(newState);
         }
     }

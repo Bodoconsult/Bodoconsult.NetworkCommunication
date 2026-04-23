@@ -8,6 +8,11 @@ namespace Bodoconsult.NetworkCommunication.Interfaces;
 public interface ICommunicationHandler:  IDisposable
 {
     /// <summary>
+    /// Activate the received and sent messages logging. Should be turned off in production
+    /// </summary>
+    bool ActivateLogging { get; set; }
+
+    /// <summary>
     /// Current <see cref="IDuplexIo"/> instance to use
     /// </summary>
     IDuplexIo DuplexIo { get; }

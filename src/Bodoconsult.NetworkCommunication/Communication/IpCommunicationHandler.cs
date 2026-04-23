@@ -18,13 +18,13 @@ namespace Bodoconsult.NetworkCommunication.Communication;
 public class IpCommunicationHandler : ICommunicationHandler
 {
     private readonly IAppEventSource _appEventSource;
-    
+
     private IWaitStateManager? _waitStateManager;
     private bool _isInitialized;
 
     private readonly SyncProcessManager<long, MessageSendingResult> _syncProcessManager = new();
     private readonly ProducerConsumerQueue<IOutboundMessage> _queue = new();
-    
+
     /// <summary>
     /// Default ctor
     /// </summary>
@@ -45,6 +45,11 @@ public class IpCommunicationHandler : ICommunicationHandler
         DataMessagingConfig.RaiseCommLayerDataMessageReceivedDelegate = OnReceivedMessage;
         DataMessagingConfig.RaiseUnexpectedDataMessageReceivedDelegate = OnNotExpectedMessageReceivedEvent;
     }
+
+    /// <summary>
+    /// Activate the received and sent messages logging. Should be turned off in production
+    /// </summary>
+    public bool ActivateLogging { get; set; }
 
     /// <summary>
     /// Current <see cref="IDuplexIo"/> instance to use
@@ -93,9 +98,12 @@ public class IpCommunicationHandler : ICommunicationHandler
         try
         {
             // Todo: check if blocking
-            var s = $"Enqueue message {message.ToShortInfoString()}";
-            //Debug.Print(s);
-            DataMessagingConfig.MonitorLogger.LogDebug(s);
+            if (ActivateLogging)
+            {
+                var s = $"Enqueue message {message.ToShortInfoString()}";
+                //Debug.Print(s);
+                DataMessagingConfig.MonitorLogger.LogDebug(s);
+            }
 
             message.RaiseStopSyncExecutionDelegate = StopExecutionOfSyncOrder;
 
@@ -118,7 +126,7 @@ public class IpCommunicationHandler : ICommunicationHandler
         }
         catch (Exception e)
         {
-            Debug.Print(e.Message);
+            Trace.TraceError($"IpCommunicationHandler: SendMessage failed: {e}");
             throw;
         }
     }
@@ -162,7 +170,7 @@ public class IpCommunicationHandler : ICommunicationHandler
                 }
             }
 
-            if (DataMessagingConfig.RaiseAppLayerDataMessageReceivedDelegate==null)
+            if (DataMessagingConfig.RaiseAppLayerDataMessageReceivedDelegate == null)
             {
                 Trace.TraceWarning("IpCommunicationHandler: DataMessagingConfig.RaiseAppLayerDataMessageReceivedDelegate is null");
             }
@@ -170,14 +178,14 @@ public class IpCommunicationHandler : ICommunicationHandler
             {
                 AsyncHelper.FireAndForget(() => DataMessagingConfig.RaiseAppLayerDataMessageReceivedDelegate.Invoke(message));
             }
-            
+
             // Now log app performance measures (must be located after sending!)
             _appEventSource.ReportMetric(DataMessagingEventSourceProvider.DclReceivedDataMessageBytes, message.RawMessageData.Length);
             _appEventSource.ReportIncrement(DataMessagingEventSourceProvider.DclReceivedDataMessageCount);
         }
         catch (Exception e)
         {
-            DataMessagingConfig.MonitorLogger.LogError($"Received tower message {message.MessageId} but handling failed", e);
+            DataMessagingConfig.MonitorLogger.LogError($"IpCommunicationHandler: received message {message.MessageId} but handling failed", e);
         }
     }
 
@@ -210,15 +218,18 @@ public class IpCommunicationHandler : ICommunicationHandler
         try
         {
             // Todo: check if blocking
-            var s = $"Send message {message.ToShortInfoString()}";
-            Debug.Print(s);
-            DataMessagingConfig.MonitorLogger.LogDebug(s);
+            if (ActivateLogging)
+            {
+                var s = $"Send message {message.ToShortInfoString()}";
+                Debug.Print(s);
+                DataMessagingConfig.MonitorLogger.LogDebug(s);
+            }
 
             var erg = await DuplexIo.SendMessage(message);
 
-            //// Now log app performance measures (must be located after sending!)
-            //_appEventSource.ReportMetric(DataMessagingEventSourceProvider.DclSentDataMessageBytes, message.RawMessageData.Length);
-            //_appEventSource.ReportIncrement(DataMessagingEventSourceProvider.DclSentDataMessageCount);
+            // Now log app performance measures (must be located after sending!)
+            _appEventSource.ReportMetric(DataMessagingEventSourceProvider.DclSentDataMessageBytes, message.RawMessageData.Length);
+            _appEventSource.ReportIncrement(DataMessagingEventSourceProvider.DclSentDataMessageCount);
 
             message.RaiseStopSyncExecutionDelegate?.Invoke(erg);
 
@@ -226,6 +237,10 @@ public class IpCommunicationHandler : ICommunicationHandler
         }
         catch (Exception e)
         {
+            var s = $"Send message {message.ToShortInfoString()} failed";
+            Trace.TraceError($"IpCommunicationHandler: {s}");
+            DataMessagingConfig.MonitorLogger.LogError(s, e);
+
             message.RaiseStopSyncExecutionDelegate?.Invoke(
                 new MessageSendingResult(message, OrderExecutionResultState.Error)
                 {
@@ -247,26 +262,6 @@ public class IpCommunicationHandler : ICommunicationHandler
         _isInitialized = false;
     }
 
-    ///// <summary>
-    ///// Send a message to the tower.
-    ///// </summary>
-    ///// <param name="message">Current message to send</param>
-    //public MessageSendingResult SendMessage(IOutboundMessage message)
-    //{
-    //    var s = $"Send message {message.ToShortInfoString()}";
-    //    Debug.Print(s);
-    //    DataMessagingConfig.MonitorLogger.LogDebug(s);
-
-    //    var result = DuplexIo.SendMessage(message);
-    //    result.Wait(2000);
-
-    //    // Now log app performance measures (must be located after sending!)
-    //    _appEventSource.ReportMetric(DataMessagingEventSourceProvider.DclSentDataMessageBytes, message.RawMessageData.Length);
-    //    _appEventSource.ReportIncrement(DataMessagingEventSourceProvider.DclSentDataMessageCount);
-
-    //    return result.Result;
-    //}
-
     /// <summary>
     /// Is the device connected
     /// </summary>
@@ -276,30 +271,6 @@ public class IpCommunicationHandler : ICommunicationHandler
     /// Current socket proxy
     /// </summary>
     public ISocketProxy? SocketProxy => DuplexIo.DataMessagingConfig.SocketProxy;
-
-    ///// <summary>
-    ///// Read some bytes
-    ///// </summary>
-    ///// <param name="buffer">buffer to fill</param>
-    ///// <param name="offset">offset</param>
-    ///// <param name="expectedBytesLength">Expected length of the byte array</param>
-
-    //public async Task Receive(byte[] buffer, int offset, int expectedBytesLength)
-    //{
-    //    await SocketProxy.Receive(buffer, offset, expectedBytesLength);
-    //}
-
-    ///// <summary>
-    ///// Read a single byte
-    ///// </summary>
-    ///// <returns>Byte as int value</returns>
-    //public int ReadByte()
-    //{
-    //    var onebyte = new byte[1];
-    //    AsyncHelper.RunSync(() => SocketProxy.Receive(onebyte));
-    //    return onebyte[0];
-    //}
-
 
     /// <summary>
     /// Dispose the instance
@@ -322,7 +293,6 @@ public class IpCommunicationHandler : ICommunicationHandler
         }
 
         SocketProxy?.Dispose();
-
     }
 
     /// <summary>Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.</summary>

@@ -3,8 +3,6 @@
 
 // Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
-using System.Collections.Concurrent;
-
 namespace Bodoconsult.NetworkCommunication.Interfaces;
 
 /// <summary>

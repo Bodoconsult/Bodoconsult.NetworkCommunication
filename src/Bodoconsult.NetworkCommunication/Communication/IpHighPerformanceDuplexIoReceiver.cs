@@ -91,12 +91,19 @@ public class IpHighPerformanceDuplexIoReceiver : BaseDuplexIoReceiver
     /// <returns>Received device message or null in case of any error</returns>
     public override async Task FillMessagePipeline()
     {
-        // Wait until the socket is connected
-        if (!await WaitForSocketIsConnected())
+        try
+        {
+            // Wait until the socket is connected
+            if (!await WaitForSocketIsConnected())
+            {
+                return;
+            }
+        }
+        catch
         {
             return;
         }
-
+        
         Trace.TraceInformation("FillMessagePipeline started");
 
         //Debug.Print("Start fill message pipeline");
@@ -134,7 +141,7 @@ public class IpHighPerformanceDuplexIoReceiver : BaseDuplexIoReceiver
 
                 // Make the data available to the PipeReader.
                 var result = await writer.FlushAsync();
-                if (result.IsCompleted 
+                if (result.IsCompleted
                     || result.IsCanceled
                     || _isDone)
                 {

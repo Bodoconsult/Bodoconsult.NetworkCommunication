@@ -40,6 +40,27 @@ public abstract class BaseStateMachineDevice : BaseOrderManagementDevice, IState
     public IStateMachineDeviceBusinessLogicAdapter? StateMachineDeviceBusinessLogicAdapter { get; protected set; }
 
     /// <summary>
+    /// Check the connection: if not connected call request DeviceOfflineState
+    /// </summary>
+    public bool CheckConnection()
+    {
+        if (IsConnected)
+        {
+            return true;
+        }
+
+        ArgumentNullException.ThrowIfNull(StateMachineStateFactory);
+
+        // Create offline state now
+        var state = StateMachineStateFactory.CreateInstance(this, DefaultStateNames.DeviceOfflineState);
+
+        // Register state
+        RequestState(state);
+
+        return false;
+    }
+
+    /// <summary>
     /// The current state
     /// </summary>
     public virtual IStateMachineState? CurrentState
@@ -167,6 +188,9 @@ public abstract class BaseStateMachineDevice : BaseOrderManagementDevice, IState
 
         // Now set the new state and run it
         CurrentState = newState;
+
+        // Log the changes
+        LogStates();
 
         var isNoAction = CurrentState is INoActionStateMachineState;
         Debug.Print($"{CurrentState}: NoAction: {isNoAction}");

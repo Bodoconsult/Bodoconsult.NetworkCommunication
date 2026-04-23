@@ -1,9 +1,7 @@
 // Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
-using System.Diagnostics;
 using Bodoconsult.App.Abstractions.Interfaces;
 using Bodoconsult.App.Extensions;
-using Bodoconsult.App.Helpers;
 using IpDevice.Bll.App;
 
 namespace IpDeviceService;
@@ -78,10 +76,3 @@ internal static class Program
         Environment.Exit(0);
     }
 }
-
-
-
-
-
-
-

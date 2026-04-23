@@ -20,6 +20,7 @@ public class UdpDatagramIpDuplexIoReceiver : BaseDuplexIoReceiver
     private ReadOnlySequence<byte> _buffer = new([]);
     private static readonly ArrayPool<byte> ArrayPool = ArrayPool<byte>.Shared;
     private readonly ProducerConsumerQueue<DummyMemory> _currentPipeline = new();
+    private long _messageCounter;
 
     /// <summary>
     /// Current validator impl for data messages
@@ -54,6 +55,11 @@ public class UdpDatagramIpDuplexIoReceiver : BaseDuplexIoReceiver
     }
 
     /// <summary>
+    /// Activate the received messages logging. Should be turned off in production
+    /// </summary>
+    public bool ActivateReceiveLogging { get; set; }
+
+    /// <summary>
     /// Maximum buffer size for UDP datagram. Set this value lower if your datagrams do not reach the maximum length of 65536 byte for UDP diagrams defined by protocol specs
     /// </summary>
     public int MaxDatagramSize { get; set; } = 65536;
@@ -68,9 +74,31 @@ public class UdpDatagramIpDuplexIoReceiver : BaseDuplexIoReceiver
         chunk.Append(data.Memory);
         _buffer = chunk;
 
-        var msg = $"Data in buffer: {DataMessageHelper.GetStringFromArrayCsharpStyle(ref _buffer)}";
-        //Debug.Print(msg);
-        Logger.LogDebug(msg);
+        string msg;
+
+        if (ActivateReceiveLogging)
+        {
+            msg = $"Data in buffer: {DataMessageHelper.GetStringFromArrayCsharpStyle(ref _buffer)}";
+            //Debug.Print(msg);
+            Logger.LogDebug(msg);
+        }
+        else
+        {
+            _messageCounter++;
+
+            if (Math.Abs(_messageCounter % 100.0) < 0.1)
+            {
+                msg = $"Received message {_messageCounter}";
+                //Debug.Print(msg);
+                Logger.LogDebug(msg);
+                Trace.TraceInformation($"UdpDatagramIpDuplexIoReceiver: {msg}");
+            }
+
+            if (_messageCounter == long.MaxValue)
+            {
+                _messageCounter = 0;
+            }
+        }
 
         if (!DataMessageSplitter.TryReadCommand(ref _buffer, out var command))
         {
@@ -109,11 +137,12 @@ public class UdpDatagramIpDuplexIoReceiver : BaseDuplexIoReceiver
         }
         else
         {
-//#if DEBUG
-//            msg = $"Parsed command {DataMessageHelper.GetStringFromArrayCsharpStyle(ref command)}";
-//            //Debug.Print(msg);
-//            DataMessagingConfig.MonitorLogger.LogDebug(msg);
-//#endif
+            //if (ActivateReceiveLogging)
+            //{
+            //    msg = $"Parsed command {DataMessageHelper.GetStringFromArrayCsharpStyle(ref command)}";
+            //    //Debug.Print(msg);
+            //    DataMessagingConfig.MonitorLogger.LogDebug(msg);
+            //}
             DataMessageProcessor.ProcessMessage(codecResult.DataMessage);
         }
 
@@ -162,7 +191,7 @@ public class UdpDatagramIpDuplexIoReceiver : BaseDuplexIoReceiver
         {
             CancellationSource = null;
         }
-    
+
         FillPipelineTask = null;
         SendPipelineTask = null;
     }

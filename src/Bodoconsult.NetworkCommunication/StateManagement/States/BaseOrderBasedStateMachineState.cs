@@ -1,7 +1,6 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
 using System.Diagnostics;
-using System.Runtime.CompilerServices;
 using Bodoconsult.NetworkCommunication.Delegates;
 using Bodoconsult.NetworkCommunication.Interfaces;
 
@@ -63,7 +62,6 @@ public abstract class BaseOrderBasedStateMachineState : BaseStateMachineState, I
             Trace.TraceError($"BaseOrderBasedStateMachineState :{msg}");
             throw;
         }
-
     }
 
     /// <summary>

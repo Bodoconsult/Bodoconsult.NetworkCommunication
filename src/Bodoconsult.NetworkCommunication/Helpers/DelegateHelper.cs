@@ -113,6 +113,12 @@ public static class DelegateHelper
                 return;
             }
 
+            // If not connected leave
+            if (!context.CheckConnection())
+            {
+                state.CancellationTokenSource?.Cancel();
+            }
+
             // Check if a job state is waiting. If yes, process it now
 
             // Get the first job state and process it

@@ -1,6 +1,7 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
 using Bodoconsult.App.Interfaces;
+using System.Runtime.CompilerServices;
 
 namespace Bodoconsult.NetworkCommunication.Interfaces;
 
@@ -79,25 +80,49 @@ public interface IIpDevice
     /// Log in DEBUG mode
     /// </summary>
     /// <param name="message">Message to log</param>
-    public void LogDebug(string message);
+    /// <param name="memberName">Calling method name (filled automatically by compiler)</param>
+    /// <param name="filepath">Calling file name (filled automatically by compiler)</param>
+    /// <param name="lineNumber">Calling method line number (filled automatically by compiler)</param>
+    public void LogDebug(string message,
+        [CallerMemberName] string? memberName = null,
+        [CallerFilePath] string? filepath = null,
+        [CallerLineNumber] int lineNumber = 0);
 
     /// <summary>
     /// Log in INFORMATION mode
     /// </summary>
     /// <param name="message">Message to log</param>
-    public void LogInformation(string message);
+    /// <param name="memberName">Calling method name (filled automatically by compiler)</param>
+    /// <param name="filepath">Calling file name (filled automatically by compiler)</param>
+    /// <param name="lineNumber">Calling method line number (filled automatically by compiler)</param>
+    public void LogInformation(string message,
+        [CallerMemberName] string? memberName = null,
+        [CallerFilePath] string? filepath = null,
+        [CallerLineNumber] int lineNumber = 0);
 
     /// <summary>
     /// Log in WARNING mode
     /// </summary>
     /// <param name="message">Message to log</param>
-    public void LogWarning(string message);
+    /// <param name="memberName">Calling method name (filled automatically by compiler)</param>
+    /// <param name="filepath">Calling file name (filled automatically by compiler)</param>
+    /// <param name="lineNumber">Calling method line number (filled automatically by compiler)</param>
+    public void LogWarning(string message,
+        [CallerMemberName] string? memberName = null,
+        [CallerFilePath] string? filepath = null,
+        [CallerLineNumber] int lineNumber = 0);
 
     /// <summary>
     /// Log in ERROR mode
     /// </summary>
     /// <param name="message">Message to log</param>
-    public void LogError(string message);
+    /// <param name="memberName">Calling method name (filled automatically by compiler)</param>
+    /// <param name="filepath">Calling file name (filled automatically by compiler)</param>
+    /// <param name="lineNumber">Calling method line number (filled automatically by compiler)</param>
+    public void LogError(string message,
+        [CallerMemberName] string? memberName = null,
+        [CallerFilePath] string? filepath = null,
+        [CallerLineNumber] int lineNumber = 0);
 
     #endregion
 }

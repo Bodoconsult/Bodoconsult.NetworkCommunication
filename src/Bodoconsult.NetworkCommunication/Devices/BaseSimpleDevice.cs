@@ -1,9 +1,10 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
-using System.Diagnostics;
 using Bodoconsult.App.Abstractions.Interfaces;
 using Bodoconsult.App.Interfaces;
 using Bodoconsult.NetworkCommunication.Interfaces;
+using System.Diagnostics;
+using System.Runtime.CompilerServices;
 
 namespace Bodoconsult.NetworkCommunication.Devices;
 
@@ -140,44 +141,68 @@ public abstract class BaseSimpleDevice : IIpDevice
     /// Log in DEBUG mode
     /// </summary>
     /// <param name="message">Message to log</param>
-    public virtual void LogDebug(string message)
+    /// <param name="memberName">Calling method name (filled automatically by compiler)</param>
+    /// <param name="filepath">Calling file name (filled automatically by compiler)</param>
+    /// <param name="lineNumber">Calling method line number (filled automatically by compiler)</param>
+    public virtual void LogDebug(string message,
+        [CallerMemberName] string? memberName = null,
+        [CallerFilePath] string? filepath = null,
+        [CallerLineNumber] int lineNumber = 0)
     {
-        MonitorLogger.LogDebug(message);
+        MonitorLogger.LogDebug(message, memberName, filepath, lineNumber);
         AppLogger.LogDebug($"{DataMessagingConfig.LoggerId}{message}");
-        Debug.Print($"STS: {message}");
+        Debug.Print($"BaseSimpleDevice:  {message}");
     }
 
     /// <summary>
     /// Log in INFORMATION mode
     /// </summary>
     /// <param name="message">Message to log</param>
-    public virtual void LogInformation(string message)
+    /// <param name="memberName">Calling method name (filled automatically by compiler)</param>
+    /// <param name="filepath">Calling file name (filled automatically by compiler)</param>
+    /// <param name="lineNumber">Calling method line number (filled automatically by compiler)</param>
+    public virtual void LogInformation(string message,
+        [CallerMemberName] string? memberName = null,
+        [CallerFilePath] string? filepath = null,
+        [CallerLineNumber] int lineNumber = 0)
     {
-        MonitorLogger.LogInformation(message);
-        AppLogger.LogInformation($"{DataMessagingConfig.LoggerId}{message}");
-        Debug.Print($"STS: {message}");
+        MonitorLogger.LogInformation(message, memberName, filepath, lineNumber);
+        AppLogger.LogInformation($"{DataMessagingConfig.LoggerId}{message}", memberName, filepath, lineNumber);
+        Debug.Print($"BaseSimpleDevice:  {message}");
     }
 
     /// <summary>
     /// Log in WARNING mode
     /// </summary>
     /// <param name="message">Message to log</param>
-    public virtual void LogWarning(string message)
+    /// <param name="memberName">Calling method name (filled automatically by compiler)</param>
+    /// <param name="filepath">Calling file name (filled automatically by compiler)</param>
+    /// <param name="lineNumber">Calling method line number (filled automatically by compiler)</param>
+    public virtual void LogWarning(string message,
+        [CallerMemberName] string? memberName = null,
+        [CallerFilePath] string? filepath = null,
+        [CallerLineNumber] int lineNumber = 0)
     {
-        MonitorLogger.LogWarning(message);
-        AppLogger.LogWarning($"{DataMessagingConfig.LoggerId}{message}");
-        Debug.Print($"STS: {message}");
+        MonitorLogger.LogWarning(message, memberName, filepath, lineNumber);
+        AppLogger.LogWarning($"{DataMessagingConfig.LoggerId}{message}", memberName, filepath, lineNumber);
+        Debug.Print($"BaseSimpleDevice:  {message}");
     }
 
     /// <summary>
     /// Log in ERROR mode
     /// </summary>
     /// <param name="message">Message to log</param>
-    public virtual void LogError(string message)
+    /// <param name="memberName">Calling method name (filled automatically by compiler)</param>
+    /// <param name="filepath">Calling file name (filled automatically by compiler)</param>
+    /// <param name="lineNumber">Calling method line number (filled automatically by compiler)</param>
+    public virtual void LogError(string message,
+        [CallerMemberName] string? memberName = null,
+        [CallerFilePath] string? filepath = null,
+        [CallerLineNumber] int lineNumber = 0)
     {
-        MonitorLogger.LogError(message);
-        AppLogger.LogError($"{DataMessagingConfig.LoggerId}{message}");
-        Debug.Print($"STS: {message}");
+        MonitorLogger.LogError(message, memberName, filepath, lineNumber);
+        AppLogger.LogError($"{DataMessagingConfig.LoggerId}{message}", memberName, filepath, lineNumber);
+        Debug.Print($"BaseSimpleDevice:  {message}");
     }
 
     /// <summary>Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.</summary>

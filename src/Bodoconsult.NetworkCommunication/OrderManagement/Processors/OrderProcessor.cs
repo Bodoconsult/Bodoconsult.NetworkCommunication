@@ -170,12 +170,15 @@ public class OrderProcessor : BaseOrderProcessor
             {
                 _device.CheckIfThereAreOrdersToBeCreated();
             }
+
+            //LogInformation($"IsRunnerStopped {IsRunnerStopped}: IsNoOrderWaiting: {isNoOrderWaiting} IsInitInProcessing: {IsInitInProcessing}");
             return;
         }
 
         // Check if the device is ready for order running
         if (!_device.IsRunningOrdersAllowed)
         {
+            //LogInformation($"IsRunningOrdersAllowed: {_device.IsRunningOrdersAllowed}");
             return;
         }
 
@@ -184,6 +187,7 @@ public class OrderProcessor : BaseOrderProcessor
 
         if (order == null)
         {
+            //LogInformation("GetNextOrderToRun: null");
             return;
         }
 

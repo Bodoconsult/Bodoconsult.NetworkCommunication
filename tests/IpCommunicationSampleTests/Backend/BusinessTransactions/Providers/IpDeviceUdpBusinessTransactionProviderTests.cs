@@ -34,7 +34,7 @@ internal class IpDeviceUdpBusinessTransactionProviderTests
     }
 
     [Test]
-    public void Transaction5_SendClientHello_Always_ReturnsCorrectTransaction()
+    public void Transaction205_SendClientHello_Always_ReturnsCorrectTransaction()
     {
         // Arrange
         var provider = CreateProvider();
@@ -47,6 +47,25 @@ internal class IpDeviceUdpBusinessTransactionProviderTests
         {
             Assert.That(transaction, Is.Not.Null);
             Assert.That(transaction.Id, Is.EqualTo(ServerSideBusinessTransactionIds.SendClientHello));
+            Assert.That(transaction.RunBusinessTransactionDelegate, Is.Not.Null);
+            Assert.That(transaction.AllowedRequestDataTypes, Has.Count.EqualTo(1));
+        }
+    }
+
+    [Test]
+    public void Transaction206_CheckConnection_Always_ReturnsCorrectTransaction()
+    {
+        // Arrange
+        var provider = CreateProvider();
+
+        // Act
+        var transaction = provider.Transaction206_CheckConnection();
+
+        // Assert
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(transaction, Is.Not.Null);
+            Assert.That(transaction.Id, Is.EqualTo(ServerSideBusinessTransactionIds.CheckConnection));
             Assert.That(transaction.RunBusinessTransactionDelegate, Is.Not.Null);
             Assert.That(transaction.AllowedRequestDataTypes, Has.Count.EqualTo(1));
         }

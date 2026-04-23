@@ -38,11 +38,11 @@ public partial class App : Application
 
         base.OnFrameworkInitializationCompleted();
 
-        var type = typeof(App);
+        //var type = typeof(App);
 
-        Debug.Print("Hello, World!");
+        //Debug.Print("Hello, World!");
 
-        Console.WriteLine("IpClient initiation starts...");
+        //Console.WriteLine("IpClient initiation starts...");
 
         var globals = Globals.Instance;
         globals.LoggingConfig.AddDefaultLoggerProviderConfiguratorsForUiApp();
@@ -80,22 +80,22 @@ public partial class App : Application
 
         // Write first log entry with default logger
         Globals.Instance.Logger.LogInformation($"{param.AppName} {param.AppVersion} starts...");
-        Console.WriteLine("Logging started...");
+        //Console.WriteLine("Logging started...");
 
-        // App is ready now for doing something
-        Console.WriteLine($"Connection string loaded: {param.DefaultConnectionString}");
+        //// App is ready now for doing something
+        //Console.WriteLine($"Connection string loaded: {param.DefaultConnectionString}");
 
-        Console.WriteLine(string.Empty);
-        Console.WriteLine(string.Empty);
+        //Console.WriteLine(string.Empty);
+        //Console.WriteLine(string.Empty);
 
-        Console.WriteLine($"App name loaded: {param.AppName}");
-        Console.WriteLine($"App version loaded: {param.AppVersion}");
-        Console.WriteLine($"App path loaded: {param.AppPath}");
+        //Console.WriteLine($"App name loaded: {param.AppName}");
+        //Console.WriteLine($"App version loaded: {param.AppVersion}");
+        //Console.WriteLine($"App path loaded: {param.AppPath}");
 
-        Console.WriteLine(string.Empty);
-        Console.WriteLine(string.Empty);
+        //Console.WriteLine(string.Empty);
+        //Console.WriteLine(string.Empty);
 
-        Console.WriteLine($"Logging config: {ObjectHelper.GetObjectPropertiesAsString(Globals.Instance.LoggingConfig)}");
+        //Console.WriteLine($"Logging config: {ObjectHelper.GetObjectPropertiesAsString(Globals.Instance.LoggingConfig)}");
 
         // Prepare the DI container package
         builder.LoadDiContainerServiceProviderPackage();

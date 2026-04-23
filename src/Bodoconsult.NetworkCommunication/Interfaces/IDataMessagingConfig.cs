@@ -33,6 +33,11 @@ public interface IDataMessagingConfig
     /// </summary>
     IDataMessageProcessingPackage? DataMessageProcessingPackage { get; set; }
 
+    /// <summary>
+    /// Delegate sending a HELLO message to the device
+    /// </summary>
+    SendHelloMessageDelegate? SendHelloMessageDelegate { get; set; }
+    
     ///// <summary>
     ///// Data message procssing package
     ///// </summary>

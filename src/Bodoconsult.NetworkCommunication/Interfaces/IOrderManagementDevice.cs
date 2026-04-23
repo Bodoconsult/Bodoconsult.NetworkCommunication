@@ -12,7 +12,6 @@ public interface IOrderManagementDevice: IIpDevice
     /// </summary>
     IOrderManager? OrderManager { get; }
 
-
     /// <summary>
     /// Device states used for init process
     /// </summary>

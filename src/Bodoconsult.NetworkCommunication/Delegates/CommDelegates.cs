@@ -97,6 +97,12 @@ public delegate void RaiseStopSyncExecutionDelegate(MessageSendingResult result)
 
 // ****** Delegates for sender and reciever ****** 
 
+/// <summary>
+/// Delegate sending a HELLO message to the device
+/// </summary>
+/// <returns>True if the message was sent successfully else false</returns>
+public delegate bool SendHelloMessageDelegate();
+
 // ****** Receiver delegates ****** 
 
 /// <summary>

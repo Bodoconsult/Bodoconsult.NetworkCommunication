@@ -1,14 +1,13 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
-using Bodoconsult.App;
 using Bodoconsult.App.Abstractions.Interfaces;
 using Bodoconsult.App.BusinessTransactions.Replies;
 using Bodoconsult.NetworkCommunication.BusinessLogicAdapters;
 using Bodoconsult.NetworkCommunication.Helpers;
 using Bodoconsult.NetworkCommunication.Interfaces;
 using Bodoconsult.NetworkCommunication.OrderManagement.ParameterSets;
-using IpBackend.Bll.App;
 using IpBackend.Bll.Interfaces;
+using System.Security.Cryptography.X509Certificates;
 
 namespace IpBackend.Bll.BusinessLogic.Adapters;
 
@@ -48,8 +47,10 @@ public class TncpIpDeviceTcpIpBusinessLogicAdapter : BaseStateMachineDeviceBusin
     /// <param name="order">Current order</param>
     public void StopSnapshotUnsuccessfully(IStateMachineState state, IOrder order)
     {
-        // Do nothing
+        Device.CheckConnection();
     }
+
+
 
     /// <summary>
     /// Starting snapshot was successful
@@ -68,7 +69,7 @@ public class TncpIpDeviceTcpIpBusinessLogicAdapter : BaseStateMachineDeviceBusin
     /// <param name="order">Current order</param>
     public void StartSnapshotUnsuccessfully(IStateMachineState state, IOrder order)
     {
-        // Do nothing
+        Device.CheckConnection();
     }
 
     /// <summary>
@@ -88,7 +89,7 @@ public class TncpIpDeviceTcpIpBusinessLogicAdapter : BaseStateMachineDeviceBusin
     /// <param name="order">Current order</param>
     public void StartStreamingUnsuccessfully(IStateMachineState state, IOrder order)
     {
-        // Do nothing
+        Device.CheckConnection();
     }
 
     /// <summary>
@@ -108,7 +109,7 @@ public class TncpIpDeviceTcpIpBusinessLogicAdapter : BaseStateMachineDeviceBusin
     /// <param name="order">Current order</param>
     public void StopStreamingUnsuccessfully(IStateMachineState state, IOrder order)
     {
-        // Do nothing
+        Device.CheckConnection();
     }
 
     /// <summary>
@@ -128,7 +129,7 @@ public class TncpIpDeviceTcpIpBusinessLogicAdapter : BaseStateMachineDeviceBusin
     /// <param name="order">Current order</param>
     public void DeviceInitUnsuccessfully(IStateMachineState state, IOrder order)
     {
-        // Do nothing
+        Device.CheckConnection();
     }
 
     #endregion

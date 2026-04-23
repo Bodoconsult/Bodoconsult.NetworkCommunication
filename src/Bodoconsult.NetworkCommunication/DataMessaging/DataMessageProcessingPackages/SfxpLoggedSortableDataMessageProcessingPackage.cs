@@ -34,7 +34,7 @@ public class SfxpLoggedSortableDataMessageProcessingPackage : IDataMessageProces
         // Now setup the dependent objects
 
         // 0. Data sorter
-        DataMessageSorter = new DefaultInboundDataMessageSorter();
+        DataMessageSorter = new DefaultInboundDataMessageSorter(dataMessagingConfig.MonitorLogger);
 
         // 1. Message splitter
         DataMessageSplitter = new UdpDatagramDataMessageSplitter();

@@ -25,6 +25,7 @@ public class IpDeviceUdpBusinessTransactionProvider : IBusinessTransactionProvid
 
         // Load transaction delegates now
         CreateBusinessTransactionDelegates.Add(ServerSideBusinessTransactionIds.SendClientHello, Transaction205_SendClientHello);
+        CreateBusinessTransactionDelegates.Add(ServerSideBusinessTransactionIds.CheckConnection, Transaction206_CheckConnection);
     }
 
     /// <summary>
@@ -44,6 +45,24 @@ public class IpDeviceUdpBusinessTransactionProvider : IBusinessTransactionProvid
             Id = ServerSideBusinessTransactionIds.SendClientHello,
             Name = "Send client hello",
             RunBusinessTransactionDelegate = BusinessLogicAdapter.SendClientHello
+        };
+
+        transaction.AllowedRequestDataTypes.Add(nameof(EmptyBusinessTransactionRequestData));
+
+        return transaction;
+    }
+
+    /// <summary>
+    /// Create transaction 206: send client hello
+    /// </summary>
+    /// <returns>Business transaction</returns>
+    public BusinessTransaction Transaction206_CheckConnection()
+    {
+        var transaction = new BusinessTransaction
+        {
+            Id = ServerSideBusinessTransactionIds.CheckConnection,
+            Name = "CheckConnection",
+            RunBusinessTransactionDelegate = BusinessLogicAdapter.CheckConnection
         };
 
         transaction.AllowedRequestDataTypes.Add(nameof(EmptyBusinessTransactionRequestData));

@@ -96,6 +96,8 @@ public class BackendManager : IBackendManager
         _businessTransactionManager = businessTransactionManager;
         _socketProxyFactory = socketProxyFactory;
         _appGlobals = appGlobals;
+
+        _appLogger.LogWarning("Hallo");
     }
 
     /// <summary>
@@ -226,8 +228,17 @@ public class BackendManager : IBackendManager
     public void StartIpDeviceUdpCommunication()
     {
         ArgumentNullException.ThrowIfNull(IpDeviceUdp?.IpDevice);
-        IpDeviceUdp.IpDevice.StartComm();
 
+        IpDeviceUdp.IpDevice.DataMessagingConfig.SendHelloMessageDelegate = SendHelloMessageDelegate;
+        IpDeviceUdp.IpDevice.StartComm();
+    }
+
+    /// <summary>
+    /// Send a hello message to the UDP device on ComDevInit
+    /// </summary>
+    /// <returns>True if the emssage was sent successfully else false</returns>
+    private bool SendHelloMessageDelegate()
+    {
         // Send hello
         var request = new EmptyBusinessTransactionRequestData
         {
@@ -238,10 +249,12 @@ public class BackendManager : IBackendManager
 
         if (reply.ErrorCode == 0)
         {
-            return;
+            return true;
         }
 
-        throw new Exception($"StartIpDeviceUdpCommunication failed:{reply.Message} {reply.ExceptionMessage}");
+        ArgumentNullException.ThrowIfNull(IpDeviceUdp?.IpDevice);
+        IpDeviceUdp.IpDevice.DataMessagingConfig.AppLogger.LogError("HELLO message could NOT be sent");
+        return false;
     }
 
     /// <summary>

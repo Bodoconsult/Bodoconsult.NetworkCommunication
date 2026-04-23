@@ -7,12 +7,10 @@ using Bodoconsult.App.CentralServices;
 using Bodoconsult.App.Factories;
 using Bodoconsult.App.Logging;
 using Bodoconsult.App.ReactiveUI.Interfaces;
-using Bodoconsult.NetworkCommunication.Interfaces;
 using IpClient.Bll.BusinessLogic;
 using IpClient.Bll.Interfaces;
 using IpClientUi.AppData;
 using IpClientUi.ViewModels;
-using IpClientUi.Views;
 
 namespace IpClientUi.DiContainerProvider;
 

@@ -2,7 +2,6 @@
 
 using Bodoconsult.App;
 using Bodoconsult.App.Abstractions.Delegates;
-using Bodoconsult.App.Abstractions.DependencyInjection;
 using Bodoconsult.App.Abstractions.Interfaces;
 using Bodoconsult.App.BusinessTransactions.RequestData;
 using Bodoconsult.App.Interfaces;

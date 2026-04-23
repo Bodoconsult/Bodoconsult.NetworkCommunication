@@ -23,7 +23,9 @@ public class SfxpLoggedSortableDataMessageProcessingPackageFactory : IDataMessag
         var es = new ByteArrayDataExportService
         {
             FileName = string.IsNullOrEmpty(config.DataLoggingFileName) ? "DataLogging": config.DataLoggingFileName,
-            TargetPath = string.IsNullOrEmpty(config.DataLoggingPath) ? Path.GetTempPath(): config.DataLoggingPath
+            TargetPath = string.IsNullOrEmpty(config.DataLoggingPath) ? Path.GetTempPath(): config.DataLoggingPath,
+            CacheSize = 50,
+            FileExtension = "bin"
         };
 
         var logger = new OnlyDataBlockInboundDataLogger(es);

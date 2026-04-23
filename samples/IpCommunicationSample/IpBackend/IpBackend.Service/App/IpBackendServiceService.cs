@@ -4,9 +4,6 @@ using System.Diagnostics;
 using Bodoconsult.App;
 using Bodoconsult.App.Abstractions.Delegates;
 using Bodoconsult.App.Abstractions.Interfaces;
-using Bodoconsult.App.BusinessTransactions.Replies;
-using Bodoconsult.App.BusinessTransactions.RequestData;
-using Bodoconsult.App.Interfaces;
 using Bodoconsult.NetworkCommunication.Interfaces;
 using IpBackend.Bll.App;
 using IpBackend.Bll.Interfaces;
@@ -183,28 +180,27 @@ public class IpBackendServiceService : IApplicationService
             //_appLogger.LogError($"Performance logging could not be stopped", new object[]{e});
         }
 
+        //var gms = di.Get<IGeneralAppManagementManager>();
+        //var request = new EmptyBusinessTransactionRequestData();
 
-        var gms = di.Get<IGeneralAppManagementManager>();
-        var request = new EmptyBusinessTransactionRequestData();
+        //DefaultBusinessTransactionReply result;
 
-        DefaultBusinessTransactionReply result;
+        //// Create log dump on app stop
+        //try
+        //{
 
-        // Create log dump on app stop
-        try
-        {
+        //    // ToDo: fill request with useful information for logging
+        //    result = gms.CreateLogDump(request);
 
-            // ToDo: fill request with useful information for logging
-            result = gms.CreateLogDump(request);
-
-            if (result != null && result.ErrorCode != 0)
-            {
-                _appLogger?.LogWarning($"CreateLogDump: error code {result.ErrorCode}: {result.Message}");
-            }
-        }
-        catch
-        {
-            // Do nothing
-        }
+        //    if (result != null && result.ErrorCode != 0)
+        //    {
+        //        _appLogger?.LogWarning($"CreateLogDump: error code {result.ErrorCode}: {result.Message}");
+        //    }
+        //}
+        //catch
+        //{
+        //    // Do nothing
+        //}
 
         //// Stop logging now
         //try

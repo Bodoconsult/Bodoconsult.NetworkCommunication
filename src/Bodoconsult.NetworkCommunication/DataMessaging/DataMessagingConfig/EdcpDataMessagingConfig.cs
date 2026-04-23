@@ -33,6 +33,11 @@ public class EdcpDataMessagingConfig : IIpDataMessagingConfig
     /// </summary>
     public IDataMessageProcessingPackage? DataMessageProcessingPackage { get; set; }
 
+    /// <summary>
+    /// Delegate sending a HELLO message to the device
+    /// </summary>
+    public SendHelloMessageDelegate? SendHelloMessageDelegate { get; set; }
+
     ///// <summary>
     ///// Data message procssing package
     ///// </summary>

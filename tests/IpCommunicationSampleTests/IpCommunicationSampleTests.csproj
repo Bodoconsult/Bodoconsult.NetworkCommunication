@@ -11,6 +11,15 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+	  <Content Include="appsettings.json">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </Content>
+	  <Content Include="log4net.config">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </Content>
+	</ItemGroup>
+
+	<ItemGroup>
 		<PackageReference Include="Bodoconsult.App" Version="1.0.9" />
 		<PackageReference Include="Bodoconsult.App.Abstractions" Version="1.0.9" />
 		<PackageReference Include="coverlet.collector" Version="8.0.0">

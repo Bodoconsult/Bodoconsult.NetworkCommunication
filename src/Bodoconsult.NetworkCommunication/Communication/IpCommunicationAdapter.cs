@@ -13,7 +13,7 @@ namespace Bodoconsult.NetworkCommunication.Communication;
 /// </summary>
 public class IpCommunicationAdapter : ICommunicationAdapter
 {
-    
+
     private readonly ICommunicationHandlerFactory _communicationHandlerFactory;
     private IDeviceState _deviceState = DefaultDeviceStates.DeviceStateOffline;
     private readonly Lock _comDevActionLockObject = new();
@@ -184,9 +184,28 @@ public class IpCommunicationAdapter : ICommunicationAdapter
                 InitCommunicationObjects();
                 //Debug.Print("ComDevInit successful");
 
-                msg = "ComDevInit successful";
-                DataMessagingConfig.MonitorLogger.LogInformation(msg);
-                DataMessagingConfig.AppLogger.LogInformation($"{DataMessagingConfig.LoggerId}{msg}");
+                if (DataMessagingConfig.SendHelloMessageDelegate != null)
+                {
+                    var result = DataMessagingConfig.SendHelloMessageDelegate.Invoke();
+                    if (result)
+                    {
+                        msg = "ComDevInit successful";
+                        DataMessagingConfig.MonitorLogger.LogInformation(msg);
+                        DataMessagingConfig.AppLogger.LogInformation($"{DataMessagingConfig.LoggerId}{msg}");
+                    }
+                    else
+                    {
+                        msg = "ComDevInit unsuccessful";
+                        DataMessagingConfig.MonitorLogger.LogWarning(msg);
+                        DataMessagingConfig.AppLogger.LogWarning($"{DataMessagingConfig.LoggerId}{msg}");
+                    }
+                }
+                else
+                {
+                    msg = "ComDevInit successful";
+                    DataMessagingConfig.MonitorLogger.LogInformation(msg);
+                    DataMessagingConfig.AppLogger.LogInformation($"{DataMessagingConfig.LoggerId}{msg}");
+                }
             }
             catch (SocketException se)
             {

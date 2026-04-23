@@ -10,6 +10,7 @@ using Bodoconsult.NetworkCommunication.NetworkCommands;
 using IpCommunicationSample.Common;
 using IpDevice.Bll.BusinessTransactions;
 using IpDevice.Bll.Interfaces;
+using Microsoft.Diagnostics.Utilities;
 
 namespace IpDevice.Bll.BusinessLogic.Adapters;
 
@@ -24,6 +25,7 @@ public class TncpBackendTcpIpBusinessLogicAdapter : BaseSimpleDeviceBusinessLogi
     private readonly Dictionary<int, HandleTncpMessage> _commands = new();
 
     private UdpStarter? _udpStarter;
+    private readonly Lock _udpStarterLock = new();
 
     /// <summary>
     /// Default ctor
@@ -56,9 +58,21 @@ public class TncpBackendTcpIpBusinessLogicAdapter : BaseSimpleDeviceBusinessLogi
             return;
         }
 
+        NetworkCommand? command;
+        HandleTncpMessage? del;
+
+        if (tncp.TelnetCommand == "set,status,stop")
+        {
+            ExexcuteCommand(tncp.TelnetCommand, 2);
+            return;
+        }
+
         if (tncp.TelnetCommand.StartsWith("set,stream,number", StringComparison.InvariantCultureIgnoreCase))
         {
-            _udpStarter = new UdpStarter();
+            lock (_udpStarterLock)
+            {
+                _udpStarter = new UdpStarter();
+            }
             return;
         }
 
@@ -66,30 +80,41 @@ public class TncpBackendTcpIpBusinessLogicAdapter : BaseSimpleDeviceBusinessLogi
 
         _udpStarter.ParseCommand(tncp.TelnetCommand);
 
-        var command = _parser.Parse(tncp.TelnetCommand);
-
-
-        var del = _commands.GetValueOrDefault(_udpStarter.BusinessTransactionId);
-
-        if (del == null)
+        if (!ExexcuteCommand(tncp.TelnetCommand, _udpStarter.BusinessTransactionId))
         {
             return;
         }
 
-        _udpStarter = null;
-
-        del.Invoke(command);
-    }
-
-    private void HandleStopSnapshotRequest(NetworkCommand command)
-    {
-        var request = new EmptyBusinessTransactionRequestData
+        lock (_udpStarterLock)
         {
-            TransactionId = IpDeviceBusinessTransactionCodes.StopSnapshot
-        };
-
-        _businessTransactionManager.RunBusinessTransaction(request.TransactionId, request);
+            _udpStarter = null;
+        }
     }
+
+    private bool ExexcuteCommand(string cmd, int businessTransactionId)
+    {
+        var del = _commands.GetValueOrDefault(businessTransactionId);
+
+        if (del == null)
+        {
+            return false;
+        }
+
+        var command = _parser.Parse(cmd);
+        del.Invoke(command);
+
+        return true;
+    }
+
+    //private void HandleStopSnapshotRequest(NetworkCommand command)
+    //{
+    //    var request = new EmptyBusinessTransactionRequestData
+    //    {
+    //        TransactionId = IpDeviceBusinessTransactionCodes.StopSnapshot
+    //    };
+
+    //    _businessTransactionManager.RunBusinessTransaction(request.TransactionId, request);
+    //}
 
     private void HandleStartSnapshotRequest(NetworkCommand command)
     {
