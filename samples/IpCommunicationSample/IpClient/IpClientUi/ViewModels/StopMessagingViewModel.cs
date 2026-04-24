@@ -56,13 +56,14 @@ public partial class StopMessagingViewModel : ReactiveObject, IUiRegionViewModel
     [ReactiveCommand]
     public IObservable<Unit> StopMessaging()
     {
-        var request = new EmptyBusinessTransactionRequestData
+        return Observable.Start(() =>
         {
-            TransactionId = ClientSideBusinessTransactionIds.StopStreaming
-        };
+            var request = new EmptyBusinessTransactionRequestData
+            {
+                TransactionId = ClientSideBusinessTransactionIds.StopStreaming
+            };
 
-        _businessTransactionManager.RunBusinessTransaction(request.TransactionId, request);
-
-        return Observable.Return(Unit.Default);
+            _businessTransactionManager.RunBusinessTransaction(request.TransactionId, request);
+        });
     }
 }

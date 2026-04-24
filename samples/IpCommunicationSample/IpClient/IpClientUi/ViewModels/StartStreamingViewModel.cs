@@ -36,7 +36,7 @@ public partial class StartMessagingViewModel : ReactiveObject, IUiRegionViewMode
         _businessTransactionManager = Globals.Instance.DiContainer.Get<IBusinessTransactionManager>();
     }
 
-    // ToDO : remove service locator patetrn for BT manager
+    // ToDO : remove service locator pattern for BT manager
 
     public StartMessagingViewModel(IScreen screen)
     {
@@ -81,13 +81,14 @@ public partial class StartMessagingViewModel : ReactiveObject, IUiRegionViewMode
     [ReactiveCommand]
     public IObservable<Unit> StartMessaging()
     {
-        var request = new EmptyBusinessTransactionRequestData
+        return Observable.Start(() =>
         {
-            TransactionId = ClientSideBusinessTransactionIds.StartStreaming
-        };
+            var request = new EmptyBusinessTransactionRequestData
+            {
+                TransactionId = Snapshot ? ClientSideBusinessTransactionIds.StartStreaming : ClientSideBusinessTransactionIds.StopSnapshot
+            };
 
-        _businessTransactionManager.RunBusinessTransaction(request.TransactionId, request);
-
-        return Observable.Return(Unit.Default);
+            _businessTransactionManager.RunBusinessTransaction(request.TransactionId, request);
+        });
     }
 }
