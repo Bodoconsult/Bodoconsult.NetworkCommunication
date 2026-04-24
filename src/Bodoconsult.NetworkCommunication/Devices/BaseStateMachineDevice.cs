@@ -21,6 +21,7 @@ public abstract class BaseStateMachineDevice : BaseOrderManagementDevice, IState
 
     private IJobStateMachineState? _savedJobState;
     private readonly Lock _savedJobStateLockObj = new();
+    private readonly IOrderManagementClientNotificationManager _clientNotificationManager;
 
     /// <summary>
     /// Default ctor
@@ -33,6 +34,7 @@ public abstract class BaseStateMachineDevice : BaseOrderManagementDevice, IState
         IDeviceStateCheckManager deviceStateCheckManager) : base(dataMessagingConfig, clientNotificationManager)
     {
         DeviceStateCheckManager = deviceStateCheckManager;
+        _clientNotificationManager = clientNotificationManager;
     }
 
     /// <summary>
@@ -319,6 +321,10 @@ public abstract class BaseStateMachineDevice : BaseOrderManagementDevice, IState
     /// </summary>
     public virtual void LogStates()
     {
+        if (CurrentState != null)
+        {
+            _clientNotificationManager.DoNotifyStateManagementStateEvent(this, CurrentState);
+        }
         LogInformation($"State changed from {PreviousDeviceState}/{PreviousBusinessStateId}/{PreviousBusinessSubState} to {DeviceState}/{CurrentState}/{BusinessSubState}");
     }
 

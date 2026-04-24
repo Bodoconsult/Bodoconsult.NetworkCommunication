@@ -19,6 +19,11 @@ namespace Bodoconsult.NetworkCommunication.DependencyInjection;
 public class StateManagementDataMessagingDiContainerServiceProvider : IDiContainerServiceProvider
 {
     /// <summary>
+    /// Is the client notification system active?
+    /// </summary>
+    public bool IsClientNoticationActive { get; set; }
+
+    /// <summary>
     /// Add DI container services to a DI container
     /// </summary>
     /// <param name="diContainer">Current DI container</param>
@@ -34,9 +39,17 @@ public class StateManagementDataMessagingDiContainerServiceProvider : IDiContain
         diContainer.AddSingleton<ICommunicationAdapterFactory, IpCommunicationAdapterFactory>();
         diContainer.AddSingleton<IDuplexIoFactory, IpDuplexIoFactory>();
 
-        var cnm = new DoNothingOrderManagementClientNotificationManager();
-        diContainer.AddSingleton<ICentralClientNotificationManager>(cnm);
-        diContainer.AddSingleton<IOrderManagementClientNotificationManager>(cnm);
+        if (IsClientNoticationActive)
+        {
+            diContainer.AddSingleton<ICentralClientNotificationManager, BasicClientNotificationManager>();
+            diContainer.AddSingleton<IOrderManagementClientNotificationManager, BasicClientNotificationManager>();
+        }
+        else
+        {
+            var cnm = new DoNothingOrderManagementClientNotificationManager();
+            diContainer.AddSingleton<ICentralClientNotificationManager>(cnm);
+            diContainer.AddSingleton<IOrderManagementClientNotificationManager>(cnm);
+        }
 
         diContainer.AddSingleton<IOrderIdGenerator, DefaultOrderIdGenerator>();
         diContainer.AddSingleton<IOrderFactory, OrderFactory>();

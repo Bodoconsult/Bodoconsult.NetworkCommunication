@@ -3,6 +3,7 @@
 using Bodoconsult.App.Abstractions.Interfaces;
 using Bodoconsult.App.BusinessTransactions.RequestData;
 using Bodoconsult.App.Interfaces;
+using Bodoconsult.NetworkCommunication.ClientNotifications;
 using Bodoconsult.NetworkCommunication.Factories;
 using Bodoconsult.NetworkCommunication.Interfaces;
 using IpBackend.Bll.BusinessTransactions.Providers;
@@ -35,6 +36,7 @@ public class BackendManager : IBackendManager
     private readonly IBusinessTransactionManager _businessTransactionManager;
     private readonly ISocketProxyFactory _socketProxyFactory;
     private readonly IAppGlobals _appGlobals;
+    private readonly IClientManager _clientManager;
 
     /// <summary>
     /// Default ctor
@@ -57,6 +59,7 @@ public class BackendManager : IBackendManager
     /// <param name="businessTransactionManager">Current business transaction manager</param>
     /// <param name="socketProxyFactory">Current socket factory</param>
     /// <param name="appGlobals">Current app globals</param>
+    /// <param name="clientManager">Current client manager</param>
     public BackendManager(IMonitorLoggerFactoryFactory monitorLoggerFactoryFactory,
         ILogDataFactory logDataFactory,
         IAppLoggerProxyFactory appLoggerFactory,
@@ -74,7 +77,8 @@ public class BackendManager : IBackendManager
         IOrderIdGenerator orderIdGenerator,
         IBusinessTransactionManager businessTransactionManager,
         ISocketProxyFactory socketProxyFactory,
-        IAppGlobals appGlobals
+        IAppGlobals appGlobals,
+        IClientManager clientManager
     )
     {
         _appEventSourceFactory = appEventSourceFactory;
@@ -96,6 +100,7 @@ public class BackendManager : IBackendManager
         _businessTransactionManager = businessTransactionManager;
         _socketProxyFactory = socketProxyFactory;
         _appGlobals = appGlobals;
+        _clientManager = clientManager;
 
         _appLogger.LogWarning("Hallo");
     }
@@ -200,6 +205,11 @@ public class BackendManager : IBackendManager
         m.ConfigureDevice(ClientTcpIpConfig.Value.IpAddress, ClientTcpIpConfig.Value.Port);
 
         Client = m;
+
+        // Client notifications
+        ArgumentNullException.ThrowIfNull(m.IpDevice);
+        var nc = new BtcpIpDeviceClient(m.IpDevice, _appLogger);
+        _clientManager.AddClient(nc);
     }
 
     /// <summary>

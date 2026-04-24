@@ -11,5 +11,9 @@
 
     <avalonia:Application.Styles>
         <avalonia:FluentTheme />
+        <avalonia:Style Selector="avalonia|Label.h1">
+            <avalonia:Setter Property="FontSize" Value="24"/>
+            <avalonia:Setter Property="FontWeight" Value="Bold"/>
+        </avalonia:Style>
     </avalonia:Application.Styles>
 </avalonia:Application>

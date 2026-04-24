@@ -3,7 +3,9 @@
 using Bodoconsult.App.Abstractions.DependencyInjection;
 using Bodoconsult.App.Abstractions.Interfaces;
 using Bodoconsult.App.CentralServices;
+using Bodoconsult.App.ClientNotifications;
 using Bodoconsult.App.Factories;
+using Bodoconsult.NetworkCommunication.ClientNotifications;
 using IpBackend.Bll.BusinessLogic;
 using IpBackend.Bll.Interfaces;
 using IpBackendService.App;
@@ -25,7 +27,12 @@ public class IpBackendServiceAllServicesContainerServiceProvider : IDiContainerS
         diContainer.AddSingleton<IAppDateService, AppDateService>();
         diContainer.AddSingleton<IAppEventSourceFactory, FakeAppEventSourceFactory>();
         diContainer.AddSingleton<IBackendManager, BackendManager>();
-        
+
+        diContainer.AddSingleton<IClientNotificationLicenseManager, FakeClientNotificationLicenseManager>();
+        diContainer.AddSingleton<IClientMessagingService, BasicBtcpNetworkingClientMessagingService>();
+        diContainer.AddSingleton<IClientManager, ClientManager>();
+        diContainer.AddSingleton<IClientMessagingBusinessDelegate, ClientMessagingBusinessDelegate>();
+
         diContainer.AddSingleton<IApplicationService, IpBackendServiceService>();
 
         // ...

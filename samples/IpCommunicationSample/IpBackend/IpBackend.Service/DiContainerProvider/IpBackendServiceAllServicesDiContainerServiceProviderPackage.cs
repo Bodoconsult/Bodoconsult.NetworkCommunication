@@ -32,8 +32,11 @@ public class IpBackendServiceAllServicesDiContainerServiceProviderPackage : Base
         ServiceProviders.Add(provider);
 
         // Add networking features
-        provider = new StateManagementDataMessagingDiContainerServiceProvider();
-        ServiceProviders.Add(provider);
+        var provider1 = new StateManagementDataMessagingDiContainerServiceProvider
+        {
+            IsClientNoticationActive = true
+        };
+        ServiceProviders.Add(provider1);
 
         // SIpBackendService specific services
         provider = new IpBackendServiceAllServicesContainerServiceProvider();

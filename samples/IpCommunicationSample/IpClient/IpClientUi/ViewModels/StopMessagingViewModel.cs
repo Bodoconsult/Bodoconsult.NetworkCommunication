@@ -4,6 +4,7 @@ using Bodoconsult.App.BusinessTransactions.RequestData;
 using Bodoconsult.App.Interfaces;
 using Bodoconsult.App.ReactiveUI.Interfaces;
 using IpClient.Bll.App;
+using IpClientUi.Interfaces;
 using IpCommunicationSample.Common.BusinessTransactions;
 using ReactiveUI;
 using ReactiveUI.SourceGenerators;
@@ -15,7 +16,7 @@ namespace IpClientUi.ViewModels;
 /// <summary>
 /// View model for stop messaging dialog
 /// </summary>
-public partial class StopMessagingViewModel : ReactiveObject, IUiRegionViewModel
+public partial class StopMessagingViewModel : ReactiveObject, IUiRegionViewModel, IStopMessagingViewModel
 {
     private readonly IBusinessTransactionManager _businessTransactionManager;
 
@@ -31,17 +32,14 @@ public partial class StopMessagingViewModel : ReactiveObject, IUiRegionViewModel
     /// </summary>
     public IScreen HostScreen { get; private set; } = new DummyScreen();
 
-    public StopMessagingViewModel()
-    { 
-        _businessTransactionManager = Globals.Instance.DiContainer.Get<IBusinessTransactionManager>();
-    }
-
-    // ToDO : remove service locator patetrn for BT manager
-
-    public StopMessagingViewModel(IScreen screen)
+    /// <summary>
+    /// Default ctor
+    /// </summary>
+    /// <param name="businessTransactionManager">Current business transaction manager</param>
+    public StopMessagingViewModel(IBusinessTransactionManager businessTransactionManager)
     {
-        HostScreen = screen;
-        _businessTransactionManager = Globals.Instance.DiContainer.Get<IBusinessTransactionManager>();
+        _businessTransactionManager = businessTransactionManager;
+        StopMessagingCommand.InvokeCommand(BackCommand);
     }
 
     /// <summary>
@@ -53,6 +51,9 @@ public partial class StopMessagingViewModel : ReactiveObject, IUiRegionViewModel
         HostScreen = screen;
     }
 
+    /// <summary>
+    /// Command stopping the messaging
+    /// </summary>
     [ReactiveCommand]
     public IObservable<Unit> StopMessaging()
     {
@@ -65,5 +66,15 @@ public partial class StopMessagingViewModel : ReactiveObject, IUiRegionViewModel
 
             _businessTransactionManager.RunBusinessTransaction(request.TransactionId, request);
         });
+    }
+
+    /// <summary>
+    /// Command going back
+    /// </summary>
+    [ReactiveCommand]
+    public IObservable<Unit> Back()
+    {
+        HostScreen.Router.NavigateBack.Execute(Unit.Default);
+        return Observable.Return(Unit.Default);
     }
 }

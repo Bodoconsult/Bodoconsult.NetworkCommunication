@@ -15,7 +15,7 @@
 
         <controls1:StackPanel Orientation="Horizontal" Margin="15" controls1:DockPanel.Dock="Bottom" Height="50">
         <!-- Show state-->
-
+        <controls1:Label Content="{controls1:Binding UiStateHandler.StateMessage}"></controls1:Label>
 
         </controls1:StackPanel>
 

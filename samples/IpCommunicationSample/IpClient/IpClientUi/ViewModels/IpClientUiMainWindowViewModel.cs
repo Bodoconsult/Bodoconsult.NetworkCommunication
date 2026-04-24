@@ -1,12 +1,14 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
 using Avalonia.Controls;
+using Bodoconsult.App.Abstractions.DependencyInjection;
 using Bodoconsult.App.Abstractions.Interfaces;
 using Bodoconsult.App.ReactiveUI.Extensions;
 using Bodoconsult.App.ReactiveUI.Interfaces;
 using Bodoconsult.App.ReactiveUI.Menus;
 using Bodoconsult.App.ReactiveUI.Ui;
 using Bodoconsult.App.ReactiveUI.ViewModels;
+using IpClient.Bll.Interfaces;
 using ReactiveUI.SourceGenerators;
 using System.Reactive;
 using System.Reactive.Linq;
@@ -19,15 +21,28 @@ namespace IpClientUi.ViewModels;
 /// </summary>
 public partial class IpClientMainWindowViewModel : MainWindowViewModel
 {
+    private readonly IAppGlobals _appGlobals;
+
     /// <summary>
     /// Default ctor
     /// </summary>
     /// <param name="listener">Current app event listener</param>
     /// <param name="translationService">Translation service</param>
     /// <param name="regionManager">Region manager</param>
+    /// <param name="appGlobals">Current app globals</param>
+    /// <param name="uiStateHandler">Current UI state handler</param>
     public IpClientMainWindowViewModel(IAppEventListener listener, II18N translationService,
-        IRegionManager regionManager) : base(listener, translationService, regionManager)
-    { }
+        IRegionManager regionManager, IAppGlobals appGlobals, IUiStateHandler uiStateHandler) : base(listener, translationService, regionManager)
+    {
+        _appGlobals = appGlobals;
+        UiStateHandler = uiStateHandler;
+        UiStateHandler.StateMessage = "App loading...";
+    }
+
+    /// <summary>
+    /// Current UIStateHandler
+    /// </summary>
+    [Reactive] public partial IUiStateHandler UiStateHandler { get; set; }
 
     /// <summary>
     /// Create the main form of the application
@@ -42,6 +57,7 @@ public partial class IpClientMainWindowViewModel : MainWindowViewModel
         };
 
         WindowState = UiWindowState.Maximized;
+        UiStateHandler.StateMessage = "App is started!";
         return w;
     }
 
@@ -81,7 +97,6 @@ public partial class IpClientMainWindowViewModel : MainWindowViewModel
         };
 
         groupItem.AddChild(command4);
-
     }
 
     // Async commands 
@@ -97,18 +112,17 @@ public partial class IpClientMainWindowViewModel : MainWindowViewModel
 
         try
         {
-            var vm = new StartMessagingViewModel(Region1)
-            {
-                Snapshot = false
-            };
+            var vm = _appGlobals.DiContainer.Get<StartMessagingViewModel>();
+            vm.Snapshot = false;
+            vm.InjectScreen(Region1);
             Region1?.Navigate(vm);
-            return Observable.Return(Unit.Default);
         }
         catch (Exception e)
         {
-            Console.WriteLine(e);
-            throw;
+            _appGlobals.Logger.LogError("Navigating to StartMessagingView failed", e);
         }
+
+        return Observable.Return(Unit.Default);
     }
 
     [ReactiveCommand]
@@ -118,16 +132,16 @@ public partial class IpClientMainWindowViewModel : MainWindowViewModel
 
         try
         {
-            var vm = new StopMessagingViewModel(Region1);
+            var vm = _appGlobals.DiContainer.Get<StopMessagingViewModel>();
             vm.InjectScreen(Region1);
             Region1?.Navigate(vm);
-            return Observable.Return(Unit.Default);
         }
         catch (Exception e)
         {
-            Console.WriteLine(e);
-            throw;
+            _appGlobals.Logger.LogError("Navigating to StopMessagingView failed", e);
         }
+
+        return Observable.Return(Unit.Default);
     }
 
     [ReactiveCommand]
@@ -137,18 +151,17 @@ public partial class IpClientMainWindowViewModel : MainWindowViewModel
 
         try
         {
-            var vm = new StartMessagingViewModel(Region1)
-            {
-                Snapshot = true
-            };
+            var vm = _appGlobals.DiContainer.Get<StartMessagingViewModel>();
+            vm.Snapshot = true;
+            vm.InjectScreen(Region1);
             Region1?.Navigate(vm);
-            return Observable.Return(Unit.Default);
         }
         catch (Exception e)
         {
-            Console.WriteLine(e);
-            throw;
+            _appGlobals.Logger.LogError("Navigating to StartMessagingView failed", e);
         }
+
+        return Observable.Return(Unit.Default);
     }
 
     [ReactiveCommand]
@@ -158,14 +171,15 @@ public partial class IpClientMainWindowViewModel : MainWindowViewModel
 
         try
         {
-            var vm = new StopMessagingViewModel(Region1);
+            var vm = _appGlobals.DiContainer.Get<StopMessagingViewModel>();
+            vm.InjectScreen(Region1);
             Region1?.Navigate(vm);
-            return Observable.Return(Unit.Default);
         }
         catch (Exception e)
         {
-            Console.WriteLine(e);
-            throw;
+            _appGlobals.Logger.LogError("Navigating to StopMessagingView failed", e);
         }
+
+        return Observable.Return(Unit.Default);
     }
 }

@@ -10,6 +10,7 @@ using Bodoconsult.App.ReactiveUI.Interfaces;
 using IpClient.Bll.BusinessLogic;
 using IpClient.Bll.Interfaces;
 using IpClientUi.AppData;
+using IpClientUi.Handlers;
 using IpClientUi.ViewModels;
 
 namespace IpClientUi.DiContainerProvider;
@@ -39,6 +40,8 @@ public class IpClientAllServicesContainerServiceProvider : IDiContainerServicePr
         //rm.RegisterWindow<Window1, Window1ViewModel>(["DocumentRegion", "MenuRegion"], () => new Window1());
 
         diContainer.AddSingleton<IRegionManager>(rm);
+        diContainer.AddSingleton< IUiStateHandler, UiStateHandler>();
+
 
         // View models
         diContainer.AddTransient<IpClientMainWindowViewModel, IpClientMainWindowViewModel>();

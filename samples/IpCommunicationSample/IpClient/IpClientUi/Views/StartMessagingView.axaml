@@ -9,19 +9,24 @@
                                     xmlns:viewModels="clr-namespace:IpClientUi.ViewModels"
                                     mc:Ignorable="d"
                                     d:DesignHeight="450" d:DesignWidth="800">
-    <controls:Design.DataContext>
-		<viewModels:StartMessagingViewModel/>
-    </controls:Design.DataContext>
+	<controls:Design.DataContext>
+		<viewModels:FakeStartMessagingViewModel/>
+	</controls:Design.DataContext>
 
-    <controls:Grid>
+	<controls:Grid>
 		<controls:StackPanel>
-			<controls:Label>Start messaging</controls:Label>
-            <controls:CheckBox IsChecked="{controls:Binding Snapshot}">Snapshot?</controls:CheckBox>
+			<controls:Label Classes="h1">Start messaging</controls:Label>
+			<controls:CheckBox IsChecked="{controls:Binding Snapshot}">Snapshot?</controls:CheckBox>
 			<controls:CheckBox IsChecked="{controls:Binding Channel1}">Show channel 1?</controls:CheckBox>
 			<controls:CheckBox IsChecked="{controls:Binding Channel2}">Show channel 2?</controls:CheckBox>
 			<controls:CheckBox IsChecked="{controls:Binding Channel3}">Show channel 3?</controls:CheckBox>
 			<controls:CheckBox IsChecked="{controls:Binding Channel4}">Show channel 4?</controls:CheckBox>
-			<controls:Button Command="{controls:Binding StartMessagingCommand}">Start messaging</controls:Button>
+
+			<controls:StackPanel Orientation="Horizontal">
+				<controls:Button Command="{controls:Binding StartMessagingCommand}">Start messaging</controls:Button>
+
+				<controls:Button Command="{controls:Binding BackCommand}">Back</controls:Button>
+			</controls:StackPanel>
 		</controls:StackPanel>
 
 		<!--<controls:TextBlock x:Name="PathTextBlock" Foreground="Black" Margin="10" />-->

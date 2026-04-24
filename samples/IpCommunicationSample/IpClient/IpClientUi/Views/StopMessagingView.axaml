@@ -3,18 +3,21 @@
                                     xmlns:reactiveUi="http://reactiveui.net"
                                     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                                    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+                                    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                                     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                                     xmlns:controls="https://github.com/avaloniaui"
                                     xmlns:viewModels1="clr-namespace:IpClientUi.ViewModels"
-                                    mc:Ignorable="d" 
+                                    mc:Ignorable="d"
                                     d:DesignHeight="450" d:DesignWidth="800">
-    <controls:Design.DataContext>
-        <viewModels1:StartMessagingViewModel/>
-    </controls:Design.DataContext>
+	<controls:Design.DataContext>
+		<viewModels1:FakeStopMessagingViewModel/>
+	</controls:Design.DataContext>
 
-    <controls:Grid>
-        <controls:Label>Stop messaging</controls:Label>
-        <controls:Button Command="{controls:Binding StopMessagingCommand}">Stop messaging</controls:Button>
-    </controls:Grid>
+	<controls:Grid>
+		<controls:Label Classes="h1">Stop messaging</controls:Label>
+		<controls:StackPanel Orientation="Horizontal">
+			<controls:Button Command="{controls:Binding StopMessagingCommand}">Stop messaging</controls:Button>
+            <controls:Button Command="{controls:Binding BackCommand}">Back</controls:Button>
+		</controls:StackPanel>
+	</controls:Grid>
 </reactiveUi:ReactiveUserControl>

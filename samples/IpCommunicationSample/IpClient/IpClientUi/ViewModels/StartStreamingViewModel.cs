@@ -3,7 +3,7 @@
 using Bodoconsult.App.BusinessTransactions.RequestData;
 using Bodoconsult.App.Interfaces;
 using Bodoconsult.App.ReactiveUI.Interfaces;
-using IpClient.Bll.App;
+using IpClientUi.Interfaces;
 using IpCommunicationSample.Common.BusinessTransactions;
 using ReactiveUI;
 using ReactiveUI.SourceGenerators;
@@ -15,7 +15,7 @@ namespace IpClientUi.ViewModels;
 /// <summary>
 /// View model for stop messaging dialog
 /// </summary>
-public partial class StartMessagingViewModel : ReactiveObject, IUiRegionViewModel
+public partial class StartMessagingViewModel : ReactiveObject, IUiRegionViewModel, IStartMessagingViewModel
 {
     private readonly IBusinessTransactionManager _businessTransactionManager;
 
@@ -31,17 +31,14 @@ public partial class StartMessagingViewModel : ReactiveObject, IUiRegionViewMode
     /// </summary>
     public IScreen HostScreen { get; private set; } = new DummyScreen();
 
-    public StartMessagingViewModel()
+    /// <summary>
+    /// Default ctor
+    /// </summary>
+    /// <param name="businessTransactionManager">Current business transaction manager</param>
+    public StartMessagingViewModel(IBusinessTransactionManager businessTransactionManager)
     {
-        _businessTransactionManager = Globals.Instance.DiContainer.Get<IBusinessTransactionManager>();
-    }
-
-    // ToDO : remove service locator pattern for BT manager
-
-    public StartMessagingViewModel(IScreen screen)
-    {
-        HostScreen = screen;
-        _businessTransactionManager = Globals.Instance.DiContainer.Get<IBusinessTransactionManager>();
+        _businessTransactionManager = businessTransactionManager;
+        StartMessagingCommand.InvokeCommand(BackCommand);
     }
 
     /// <summary>
@@ -78,6 +75,9 @@ public partial class StartMessagingViewModel : ReactiveObject, IUiRegionViewMode
     /// </summary>
     [Reactive] public partial bool Channel4 { get; set; }
 
+    /// <summary>
+    /// Command starting the messaging
+    /// </summary>
     [ReactiveCommand]
     public IObservable<Unit> StartMessaging()
     {
@@ -90,5 +90,15 @@ public partial class StartMessagingViewModel : ReactiveObject, IUiRegionViewMode
 
             _businessTransactionManager.RunBusinessTransaction(request.TransactionId, request);
         });
+    }
+
+    /// <summary>
+    /// Command going back
+    /// </summary>
+    [ReactiveCommand]
+    public IObservable<Unit> Back()
+    {
+        HostScreen.Router.NavigateBack.Execute(Unit.Default);
+        return Observable.Return(Unit.Default);
     }
 }
