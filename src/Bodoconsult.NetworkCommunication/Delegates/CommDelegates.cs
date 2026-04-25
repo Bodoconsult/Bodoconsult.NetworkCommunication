@@ -286,11 +286,11 @@ public delegate MessageHandlingResult HandleAsyncMessageDelegate(IStateMachineSt
 public delegate void HandleAsyncBtcpMessageDelegate(IInboundBusinessTransactionDataMessage message);
 
 /// <summary>
-/// Handle an async received message without state machine
+/// Handle an async received message on app layer level
 /// </summary>
 /// <param name="message">Current received message</param>
 /// <returns>Message handling result</returns>
-public delegate MessageHandlingResult NoStateMachineHandleAsyncMessageDelegate(IInboundDataMessage? message);
+public delegate MessageHandlingResult AppLayerHandleAsyncMessageDelegate(IInboundDataMessage message);
 
 /// <summary>
 /// Handle an error message received from the device

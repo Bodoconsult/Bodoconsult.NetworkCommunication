@@ -285,7 +285,7 @@ public class OrderProcessor : BaseOrderProcessor
         //*********************
         // TOP 5 Last chance for message handling: async message handling
         //*********************
-        var result = _device.NoStateMachineHandleAsyncMessageDelegate?.Invoke(receivedMessage) ?? MessageHandlingResultHelper.Error("NoStateMachineHandleAsyncMessageDelegate is null");
+        var result = _device.DataMessagingConfig.AppLayerHandleAsyncMessageDelegate?.Invoke(receivedMessage);
 
         //IsRunnerStopped = false;
 

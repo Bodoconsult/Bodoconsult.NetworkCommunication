@@ -97,6 +97,12 @@ public class EdcpDataMessagingConfig : IIpDataMessagingConfig
     public RaiseDataMessageSentDelegate? RaiseDataMessageSentDelegate { get; set; }
 
     /// <summary>
+    /// Handle an async received message on app layer level
+    /// </summary>
+    /// <returns>Message handling result</returns>
+    public AppLayerHandleAsyncMessageDelegate? AppLayerHandleAsyncMessageDelegate { get; set; }
+
+    /// <summary>
     /// Delegate fired on comm level if a data message has been received. Should be used in <see cref="ICommunicationHandler"/> impls to implement there handshake responses and then forward to the next layer
     /// </summary>
     public RaiseDataMessageReceivedDelegate? RaiseCommLayerDataMessageReceivedDelegate { get; set; }

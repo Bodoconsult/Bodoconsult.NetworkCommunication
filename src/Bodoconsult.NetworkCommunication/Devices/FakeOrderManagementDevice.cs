@@ -24,7 +24,7 @@ public class FakeOrderManagementDevice : BaseOrderManagementDevice, IOnlyOrderMa
     /// <summary>
     /// Handle an async received message without state machine
     /// </summary>
-    public NoStateMachineHandleAsyncMessageDelegate? NoStateMachineHandleAsyncMessageDelegate { get; set; }
+    public AppLayerHandleAsyncMessageDelegate? NoStateMachineHandleAsyncMessageDelegate { get; set; }
 
     /// <summary>
     /// Handle an error message received from the device without state machine

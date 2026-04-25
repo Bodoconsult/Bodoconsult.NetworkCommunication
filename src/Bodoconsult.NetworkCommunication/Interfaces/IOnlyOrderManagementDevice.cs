@@ -12,7 +12,7 @@ public interface IOnlyOrderManagementDevice: IOrderManagementDevice
     /// <summary>
     /// Handle an async received message without state machine
     /// </summary>
-    NoStateMachineHandleAsyncMessageDelegate? NoStateMachineHandleAsyncMessageDelegate { get; set; }
+    AppLayerHandleAsyncMessageDelegate? NoStateMachineHandleAsyncMessageDelegate { get; set; }
 
     /// <summary>
     /// Handle an error message received from the device without state machine

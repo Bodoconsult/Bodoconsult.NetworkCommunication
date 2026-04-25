@@ -103,6 +103,13 @@ public interface IDataMessagingConfig
     /// </summary>
     RaiseDataMessageSentDelegate? RaiseDataMessageSentDelegate { get; set; }
 
+    /// <summary>
+    /// Handle an async received message on app layer level
+    /// </summary>
+    /// <returns>Message handling result</returns>
+    AppLayerHandleAsyncMessageDelegate? AppLayerHandleAsyncMessageDelegate { get; set; }
+
+
     #endregion
 
     #region Receiving messages

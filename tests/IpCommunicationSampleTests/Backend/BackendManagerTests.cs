@@ -3,6 +3,7 @@
 using Bodoconsult.App.Abstractions.Interfaces;
 using Bodoconsult.App.Benchmarking;
 using Bodoconsult.App.BusinessTransactions;
+using Bodoconsult.App.ClientNotifications;
 using Bodoconsult.App.Factories;
 using Bodoconsult.App.Interfaces;
 using Bodoconsult.App.Logging;
@@ -37,6 +38,8 @@ internal class BackendManagerTests
     private readonly FakeAppEventSourceFactory _appEventSourceFactory = new();
     private readonly TcpIpListenerManager _tcpIpListenerManager = new();
     private readonly IOrderIdGenerator _orderIdGenerator = TestDataHelper.DefaultOrderIdGenerator;
+    private readonly IClientNotificationLicenseManager _licenseManager = new DummyClientNotificationLicenseManager();
+    private readonly IClientMessagingService _clientMessagingService = new BasicBtcpNetworkingClientMessagingService();
 
 
     [OneTimeTearDown]
@@ -53,11 +56,14 @@ internal class BackendManagerTests
         var orderPipelineFactory = new OrderPipelineFactory(_dateService, _appLogger);
         IBusinessTransactionManager businessTransactionManager = new BusinessTransactionManager(_appLogger, _appEventSourceFactory);
         var socketFactory = new SocketProxyFactory(_tcpIpListenerManager);
+        var cm = new ClientManager(_licenseManager, _appLogger, _clientMessagingService);
+        IClientMessagingBusinessDelegate clientMessagingBusinessDelegate = new ClientMessagingBusinessDelegate(_clientMessagingService, cm);
 
         // Act
+
         var m = new BackendManager(_monitorLoggerFactoryFactory, _logDataFactory, _appLoggerFactory,
             _appEventSourceFactory, _clientNotificationManager, _appLogger, _sendPacketProcessFactory, _dateService, _syncOrderManager, _appBenchProxy, _orderReceiverFactory,
-            _requestProcessorFactoryFactory, _requestStepProcessorFactoryFactory, orderPipelineFactory, _orderIdGenerator, businessTransactionManager, socketFactory, Globals.Instance);
+            _requestProcessorFactoryFactory, _requestStepProcessorFactoryFactory, orderPipelineFactory, _orderIdGenerator, businessTransactionManager, socketFactory, Globals.Instance, cm, clientMessagingBusinessDelegate);
 
         // Assert
         using (Assert.EnterMultipleScope())
@@ -82,10 +88,12 @@ internal class BackendManagerTests
         var orderPipelineFactory = new OrderPipelineFactory(_dateService, _appLogger);
         IBusinessTransactionManager businessTransactionManager = new BusinessTransactionManager(_appLogger, _appEventSourceFactory);
         var socketFactory = new SocketProxyFactory(_tcpIpListenerManager);
+        var cm = new ClientManager(_licenseManager, _appLogger, _clientMessagingService);
+        IClientMessagingBusinessDelegate clientMessagingBusinessDelegate = new ClientMessagingBusinessDelegate(_clientMessagingService, cm);
 
         var m = new BackendManager(_monitorLoggerFactoryFactory, _logDataFactory, _appLoggerFactory,
             _appEventSourceFactory, _clientNotificationManager, _appLogger, _sendPacketProcessFactory, _dateService, _syncOrderManager, _appBenchProxy, _orderReceiverFactory,
-            _requestProcessorFactoryFactory, _requestStepProcessorFactoryFactory, orderPipelineFactory, _orderIdGenerator, businessTransactionManager, socketFactory, Globals.Instance)
+            _requestProcessorFactoryFactory, _requestStepProcessorFactoryFactory, orderPipelineFactory, _orderIdGenerator, businessTransactionManager, socketFactory, Globals.Instance, cm, clientMessagingBusinessDelegate)
             {
                 ClientTcpIpConfig = clientConfig,
                 IpDeviceTcpIpConfig = deviceTcpIpConfig,
@@ -133,10 +141,12 @@ internal class BackendManagerTests
         var orderPipelineFactory = new OrderPipelineFactory(_dateService, _appLogger);
         IBusinessTransactionManager businessTransactionManager = new BusinessTransactionManager(_appLogger, _appEventSourceFactory);
         var socketFactory = new SocketProxyFactory(_tcpIpListenerManager);
+        var cm = new ClientManager(_licenseManager, _appLogger, _clientMessagingService);
+        IClientMessagingBusinessDelegate clientMessagingBusinessDelegate = new ClientMessagingBusinessDelegate(_clientMessagingService, cm);
 
         var m = new BackendManager(_monitorLoggerFactoryFactory, _logDataFactory, _appLoggerFactory,
             _appEventSourceFactory, _clientNotificationManager, _appLogger, _sendPacketProcessFactory, _dateService, _syncOrderManager, _appBenchProxy, _orderReceiverFactory,
-            _requestProcessorFactoryFactory, _requestStepProcessorFactoryFactory, orderPipelineFactory, _orderIdGenerator, businessTransactionManager, socketFactory, Globals.Instance)
+            _requestProcessorFactoryFactory, _requestStepProcessorFactoryFactory, orderPipelineFactory, _orderIdGenerator, businessTransactionManager, socketFactory, Globals.Instance, cm, clientMessagingBusinessDelegate)
         {
             ClientTcpIpConfig = clientConfig,
             IpDeviceTcpIpConfig = deviceTcpIpConfig,
@@ -199,10 +209,12 @@ internal class BackendManagerTests
         var orderPipelineFactory = new OrderPipelineFactory(_dateService, _appLogger);
         IBusinessTransactionManager businessTransactionManager = new BusinessTransactionManager(_appLogger, _appEventSourceFactory);
         var socketFactory = new SocketProxyFactory(_tcpIpListenerManager);
+        var cm = new ClientManager(_licenseManager, _appLogger, _clientMessagingService);
+        IClientMessagingBusinessDelegate clientMessagingBusinessDelegate = new ClientMessagingBusinessDelegate(_clientMessagingService, cm);
 
         var m = new BackendManager(_monitorLoggerFactoryFactory, _logDataFactory, _appLoggerFactory,
             _appEventSourceFactory, _clientNotificationManager, _appLogger, _sendPacketProcessFactory, _dateService, _syncOrderManager, _appBenchProxy, _orderReceiverFactory,
-            _requestProcessorFactoryFactory, _requestStepProcessorFactoryFactory, orderPipelineFactory, _orderIdGenerator, businessTransactionManager, socketFactory, Globals.Instance)
+            _requestProcessorFactoryFactory, _requestStepProcessorFactoryFactory, orderPipelineFactory, _orderIdGenerator, businessTransactionManager, socketFactory, Globals.Instance, cm, clientMessagingBusinessDelegate)
         {
             ClientTcpIpConfig = clientConfig,
             IpDeviceTcpIpConfig = deviceTcpIpConfig,
