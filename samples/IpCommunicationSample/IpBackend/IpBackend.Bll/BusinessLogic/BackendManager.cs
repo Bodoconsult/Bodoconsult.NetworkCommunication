@@ -37,6 +37,7 @@ public class BackendManager : IBackendManager
     private readonly ISocketProxyFactory _socketProxyFactory;
     private readonly IAppGlobals _appGlobals;
     private readonly IClientManager _clientManager;
+    private readonly IClientMessagingBusinessDelegate _clientMessagingBusinessDelegate;
 
     /// <summary>
     /// Default ctor
@@ -60,6 +61,7 @@ public class BackendManager : IBackendManager
     /// <param name="socketProxyFactory">Current socket factory</param>
     /// <param name="appGlobals">Current app globals</param>
     /// <param name="clientManager">Current client manager</param>
+    /// <param name="clientMessagingBusinessDelegate">Current client messaging business delegate</param>
     public BackendManager(IMonitorLoggerFactoryFactory monitorLoggerFactoryFactory,
         ILogDataFactory logDataFactory,
         IAppLoggerProxyFactory appLoggerFactory,
@@ -78,7 +80,8 @@ public class BackendManager : IBackendManager
         IBusinessTransactionManager businessTransactionManager,
         ISocketProxyFactory socketProxyFactory,
         IAppGlobals appGlobals,
-        IClientManager clientManager
+        IClientManager clientManager,
+        IClientMessagingBusinessDelegate clientMessagingBusinessDelegate
     )
     {
         _appEventSourceFactory = appEventSourceFactory;
@@ -101,6 +104,7 @@ public class BackendManager : IBackendManager
         _socketProxyFactory = socketProxyFactory;
         _appGlobals = appGlobals;
         _clientManager = clientManager;
+        _clientMessagingBusinessDelegate = clientMessagingBusinessDelegate;
 
         _appLogger.LogWarning("Hallo");
     }
@@ -296,7 +300,11 @@ public class BackendManager : IBackendManager
     /// </summary>
     public void StartClientCommunication()
     {
+        // Start comm
         ArgumentNullException.ThrowIfNull(Client?.IpDevice);
         Client.IpDevice.StartComm();
+
+        // Start client notifications
+        _clientMessagingBusinessDelegate.StartClientMessaging();
     }
 }

@@ -546,13 +546,13 @@ public abstract class BaseOrderManagementDevice : IOrderManagementDevice
     }
 
     /// <summary>
-    /// Check if the message is an error message
+    /// Check if the message is an error message. Default implementaion returns always false. Override this method for other behaviour
     /// </summary>
     /// <param name="receivedMessage">Received message</param>
     /// <returns>True if the message was a handled as error message else false</returns>
-    public bool DoCheckForErrorMessage(IInboundDataMessage? receivedMessage)
+    public virtual bool DoCheckForErrorMessage(IInboundDataMessage? receivedMessage)
     {
-        throw new NotImplementedException();
+        return false;
     }
 
     /// <summary>
