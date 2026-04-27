@@ -44,7 +44,7 @@ public class OrderlessActionStateConfiguration : IOrderlessActionStateConfigurat
     /// <summary>
     /// Handle an error message received from the device
     /// </summary>
-    public HandleErrorMessageDelegate? HandleErrorMessageDelegate { get; set; } 
+    public HandleErrorMessageDelegate? HandleErrorMessageDelegate { get; set; }
 
     /// <summary>
     /// Handle an async received message

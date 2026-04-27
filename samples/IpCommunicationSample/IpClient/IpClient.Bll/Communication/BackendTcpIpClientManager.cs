@@ -5,6 +5,7 @@ using Bodoconsult.NetworkCommunication.DataMessaging.DataMessageProcessingPackag
 using Bodoconsult.NetworkCommunication.Devices.Configurators;
 using Bodoconsult.NetworkCommunication.Interfaces;
 using IpClient.Bll.BusinessTransactions.AdapterFactories;
+using IpClient.Bll.Interfaces;
 
 namespace IpClient.Bll.Communication;
 
@@ -23,6 +24,7 @@ public class BackendTcpIpClientManager : IOrderManagementDeviceManager
     private readonly IAppLoggerProxy _appLoggerProxy;
     private readonly IOrderManagerFactory _orderManagerFactory;
     private readonly ISocketProxyFactory _socketProxyFactory;
+    private readonly IUiStateHandler _uiStateHandler;
 
     /// <summary>
     /// Default ctor
@@ -37,6 +39,7 @@ public class BackendTcpIpClientManager : IOrderManagementDeviceManager
     /// <param name="orderManagerFactory">Current order manager factory</param>
     /// <param name="orderIdGenerator">Current order ID generator</param>
     /// <param name="socketProxyFactory">Current socket factory</param>
+    /// <param name="uiStateHandler">Current UI state handler</param>
     public BackendTcpIpClientManager(IDuplexIoFactory duplexIoFactory,
         IMonitorLoggerFactoryFactory monitorLoggerFactoryFactory,
         ILogDataFactory logDataFactory,
@@ -46,7 +49,7 @@ public class BackendTcpIpClientManager : IOrderManagementDeviceManager
         IAppLoggerProxy appLoggerProxy,
         IOrderManagerFactory orderManagerFactory,
         IOrderIdGenerator orderIdGenerator,
-        ISocketProxyFactory socketProxyFactory)
+        ISocketProxyFactory socketProxyFactory, IUiStateHandler uiStateHandler)
     {
         _duplexIoFactory = duplexIoFactory;
         _appEventSourceFactory = appEventSourceFactory;
@@ -59,6 +62,7 @@ public class BackendTcpIpClientManager : IOrderManagementDeviceManager
         _orderManagerFactory = orderManagerFactory;
         _orderIdGenerator = orderIdGenerator;
         _socketProxyFactory = socketProxyFactory;
+        _uiStateHandler = uiStateHandler;
     }
 
     /// <summary>
@@ -85,7 +89,7 @@ public class BackendTcpIpClientManager : IOrderManagementDeviceManager
 
         configurator.CreateMessagingConfig("Client_TCPIP", ipAddress, port, messageProcessingPackageFactory);
 
-        IDeviceBusinessLogicAdapterFactory businessLogicAdapterFactory = new BtcpBackendTcpIpBusinessLogicAdapterFactory(_orderIdGenerator);
+        IDeviceBusinessLogicAdapterFactory businessLogicAdapterFactory = new BtcpBackendTcpIpBusinessLogicAdapterFactory(_orderIdGenerator, _uiStateHandler);
         configurator.CreateDevice(businessLogicAdapterFactory);
 
         configurator.ConfigureOrderManagement(_orderManagerFactory);

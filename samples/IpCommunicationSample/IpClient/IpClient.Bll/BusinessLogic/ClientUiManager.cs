@@ -29,6 +29,7 @@ public class ClientUiManager: IClientUiManager
     private readonly IOrderIdGenerator _orderIdGenerator;
     private readonly IBusinessTransactionManager _businessTransactionManager;
     private readonly ISocketProxyFactory _socketProxyFactory;
+    private readonly IUiStateHandler _uiStateHandler;
 
     /// <summary>
     /// Default ctor
@@ -50,6 +51,7 @@ public class ClientUiManager: IClientUiManager
     /// <param name="orderIdGenerator">Current order ID generator</param>
     /// <param name="businessTransactionManager">Current business transaction manager</param>
     /// <param name="socketProxyFactory">Current socket factory</param>
+    /// <param name="uiStateHandler">Current UI state handler</param>
     public ClientUiManager(IMonitorLoggerFactoryFactory monitorLoggerFactoryFactory,
         ILogDataFactory logDataFactory,
         IAppLoggerProxyFactory appLoggerFactory,
@@ -66,7 +68,8 @@ public class ClientUiManager: IClientUiManager
         IOrderPipelineFactory orderPipelineFactory,
         IOrderIdGenerator orderIdGenerator,
         IBusinessTransactionManager businessTransactionManager,
-        ISocketProxyFactory socketProxyFactory
+        ISocketProxyFactory socketProxyFactory,
+        IUiStateHandler uiStateHandler
     )
     {
         _appEventSourceFactory = appEventSourceFactory;
@@ -87,6 +90,7 @@ public class ClientUiManager: IClientUiManager
         _orderIdGenerator = orderIdGenerator;
         _businessTransactionManager = businessTransactionManager;
         _socketProxyFactory = socketProxyFactory;
+        _uiStateHandler = uiStateHandler;
     }
 
     /// <summary>
@@ -116,7 +120,8 @@ public class ClientUiManager: IClientUiManager
         IOrderManagerFactory orderManagerFactory = new OrderManagerFactory(orderProcessorFactory, _orderReceiverFactory, _requestStepProcessorFactoryFactory,
             _requestProcessorFactoryFactory, _orderPipelineFactory, orderFactory);
         var m = new BackendTcpIpClientManager(duplexIoFactory, _monitorLoggerFactoryFactory, _logDataFactory, _appLoggerFactory,
-            _appEventSourceFactory, _clientNotificationManager, _appLogger, orderManagerFactory, _orderIdGenerator, _socketProxyFactory);
+            _appEventSourceFactory, _clientNotificationManager, _appLogger, orderManagerFactory, _orderIdGenerator, _socketProxyFactory,
+            _uiStateHandler);
 
         m.ConfigureDevice(BackendTcpIpConfig.Value.IpAddress, BackendTcpIpConfig.Value.Port);
 

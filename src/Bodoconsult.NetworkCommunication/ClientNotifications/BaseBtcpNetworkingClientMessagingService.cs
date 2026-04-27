@@ -39,7 +39,7 @@ public abstract class BaseBtcpNetworkingClientMessagingService: BaseClientMessag
 
         var db = new BasicOutboundDatablock
         {
-            Data = Encoding.UTF8.GetBytes($"{rd.Order.Id}\u0005{rd.Order.ExecutionState.Id}\u0005{rd.Order.ExecutionState.Name}\u0005{rd.Order.ExecutionResult.Id}\u0005{rd.Order.ExecutionResult.Name}")
+            Data = Encoding.UTF8.GetBytes($"o{rd.Order.Id}\u0005{rd.Order.ExecutionState.Id}\u0005{rd.Order.ExecutionState.Name}\u0005{rd.Order.ExecutionResult.Id}\u0005{rd.Order.ExecutionResult.Name}")
         };
 
         var message = new BtcpRequestOutboundDataMessage(TransactionId, Guid.NewGuid())
@@ -59,7 +59,7 @@ public abstract class BaseBtcpNetworkingClientMessagingService: BaseClientMessag
 
         var db = new BasicOutboundDatablock
         {
-            Data = Encoding.UTF8.GetBytes($"{rd.DeviceStateId}\u0005{rd.DeviceStateName}\u0005{rd.BusinessStateId}\u0005{rd.BusinessStateName}\u0005{rd.BusinessSubstateId}\u0005{rd.BusinessSubstateName}")
+            Data = Encoding.UTF8.GetBytes($"s{rd.DeviceStateId}\u0005{rd.DeviceStateName}\u0005{rd.BusinessStateId}\u0005{rd.BusinessStateName}\u0005{rd.BusinessSubstateId}\u0005{rd.BusinessSubstateName}")
         };
 
         var message = new BtcpRequestOutboundDataMessage(TransactionId, Guid.NewGuid())

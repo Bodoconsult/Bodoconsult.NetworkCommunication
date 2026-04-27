@@ -10,6 +10,8 @@ using Bodoconsult.NetworkCommunication.Interfaces;
 using Bodoconsult.NetworkCommunication.OrderManagement.Configurations;
 using Bodoconsult.NetworkCommunication.OrderManagement.OrderBuilders;
 using Bodoconsult.NetworkCommunication.OrderManagement.ParameterSets;
+using Bodoconsult.NetworkCommunication.StateManagement;
+using IpClient.Bll.BusinessTransactions.Converters;
 using IpClient.Bll.Delegates;
 using IpClient.Bll.Interfaces;
 using IpCommunicationSample.Common.BusinessTransactions;
@@ -23,22 +25,27 @@ namespace IpClient.Bll.BusinessTransactions.Adapters;
 public class BtcpBackendTcpIpBusinessLogicAdapter : BaseOrderManagementDeviceBusinessLogicAdapter, IBackendTcpIpBusinessLogicAdapter
 {
     private readonly IOrderIdGenerator _orderIdGenerator;
+    //private readonly IUiStateHandler _uiStateHandler;
+    private readonly DataBlockConverter _dataBlockConverter = new();
 
     /// <summary>
     /// Default ctor
     /// </summary>
     /// <param name="device">Current device supporting order management</param>
     /// <param name="orderIdGenerator">Current order ID generator</param>
-    public BtcpBackendTcpIpBusinessLogicAdapter(IOrderManagementDevice device, IOrderIdGenerator orderIdGenerator) :
+    /// <param name="uiStateHandler">Current UI state handler</param>
+    public BtcpBackendTcpIpBusinessLogicAdapter(IOrderManagementDevice device, IOrderIdGenerator orderIdGenerator, IUiStateHandler uiStateHandler) :
         base(device)
     {
         _orderIdGenerator = orderIdGenerator;
+        //_uiStateHandler = uiStateHandler;
+        StateChangedNotificationDelegate = uiStateHandler.StateChangedNotificationReceived;
     }
 
     /// <summary>
     /// Delegate fired when then state of the backend has changed
     /// </summary>
-    public StateChangedNotificationDelegate? StateChangedNotificationDelegate { get; set; }
+    public StateChangedNotificationDelegate? StateChangedNotificationDelegate { get; }
 
     /// <summary>
     /// Request a start streaming state
@@ -162,5 +169,26 @@ public class BtcpBackendTcpIpBusinessLogicAdapter : BaseOrderManagementDeviceBus
             Message = $"{orderName} was not successful",
             ExceptionMessage = $"Order exec result: {result.Id} {result.Name}"
         };
+    }
+
+    /// <summary>
+    /// Default method to handle an async received message
+    /// </summary>
+    /// <param name="message">Received message</param>
+    public override MessageHandlingResult DefaultHandleAsyncMessage(IInboundDataMessage? message)
+    {
+        if (message?.DataBlock == null)
+        {
+            return MessageHandlingResultHelper.Error("No message or no datablock in message received");
+        }
+
+        var request = _dataBlockConverter.ConvertToRequest(message.DataBlock);
+
+        if (request is StateChangedEventFiredBusinessTransactionRequestData sr)
+        {
+            StateChangedNotificationDelegate?.Invoke(sr);
+        }
+
+        return MessageHandlingResultHelper.Success();
     }
 }

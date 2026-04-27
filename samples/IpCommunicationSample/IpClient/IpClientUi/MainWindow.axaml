@@ -1,5 +1,5 @@
 ﻿<rxui:ReactiveWindow  x:TypeArguments="viewModels1:IpClientMainWindowViewModel "
-                      xmlns:rxui="http://reactiveui.net" 
+                      xmlns:rxui="http://reactiveui.net"
                       x:Class="IpClientUi.MainWindow"
                       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -10,25 +10,25 @@
                       xmlns:viewModels1="clr-namespace:IpClientUi.ViewModels"
                       Title="IQ-SampleStream" Height="360" Width="620">
 
-    <controls1:DockPanel>
-        <controls:MenuControl x:Name="MainMenu" controls1:DockPanel.Dock="Top" />
+	<controls1:DockPanel HorizontalAlignment="Stretch">
+		<controls:MenuControl x:Name="MainMenu" controls1:DockPanel.Dock="Top" HorizontalAlignment="Stretch" />
 
-        <controls1:StackPanel Orientation="Horizontal" Margin="15" controls1:DockPanel.Dock="Bottom" Height="50">
-        <!-- Show state-->
-        <controls1:Label Content="{controls1:Binding UiStateHandler.StateMessage}"></controls1:Label>
+			<controls1:Grid ColumnDefinitions="10*,10*" controls1:DockPanel.Dock="Bottom" HorizontalAlignment="Stretch" Classes="Bottom">
+				<!-- Show state-->
+				<controls1:Label Content="{controls1:Binding UiStateHandler.DeviceStateMessage}" controls1:Grid.Column="0" HorizontalAlignment="Stretch"></controls1:Label>
+				<controls1:Label Content="{controls1:Binding UiStateHandler.BackendStateMessage}" controls1:Grid.Column="1"  HorizontalAlignment="Stretch" Margin="25,0,0,0"></controls1:Label>
+			</controls1:Grid>
 
-        </controls1:StackPanel>
-
-        <controls1:Grid ColumnDefinitions="30*,70*">
-            <rxui:RoutedViewHost controls1:Grid.Column="0" x:Name="MenuRegion"
+		<controls1:Grid ColumnDefinitions="30*,70*" HorizontalAlignment="Stretch">
+			<rxui:RoutedViewHost controls1:Grid.Column="0" x:Name="MenuRegion"
                                  HorizontalContentAlignment="Stretch"
                                  VerticalContentAlignment="Stretch" />
-            <rxui:RoutedViewHost controls1:Grid.Column="1" x:Name="DocumentRegion"
+			<rxui:RoutedViewHost controls1:Grid.Column="1" x:Name="DocumentRegion"
                                  HorizontalContentAlignment="Stretch"
                                  VerticalContentAlignment="Stretch" />
-        </controls1:Grid>
+		</controls1:Grid>
 
-    </controls1:DockPanel>
+	</controls1:DockPanel>
 
 </rxui:ReactiveWindow>
 

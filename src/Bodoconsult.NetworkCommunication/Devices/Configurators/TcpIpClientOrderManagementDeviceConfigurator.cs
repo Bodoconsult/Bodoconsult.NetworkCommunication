@@ -114,6 +114,8 @@ public class TcpIpClientOrderManagementDeviceConfigurator : BaseIpDeviceConfigur
         Device.LoadDeviceBusinessLogicAdapter(adapter);
 
         _orderManagementDevice = smd;
+
+        DataMessagingConfig.AppLayerHandleAsyncMessageDelegate = adapter.DefaultHandleAsyncMessage;
     }
 
     /// <summary>

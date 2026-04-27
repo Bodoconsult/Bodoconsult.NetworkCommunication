@@ -14,6 +14,7 @@ using Bodoconsult.NetworkCommunication.OrderManagement.Processors;
 using Bodoconsult.NetworkCommunication.Protocols.TcpIp;
 using Bodoconsult.NetworkCommunication.Tests.Helpers;
 using IpClient.Bll.BusinessLogic;
+using IpClientUi.Handlers;
 using IpCommunicationSampleTests.App;
 
 namespace IpCommunicationSampleTests.Client;
@@ -36,6 +37,7 @@ internal class ClientUiManagerTests
     private readonly FakeAppEventSourceFactory _appEventSourceFactory = new();
     private readonly TcpIpListenerManager _tcpIpListenerManager = new();
     private readonly IOrderIdGenerator _orderIdGenerator = TestDataHelper.DefaultOrderIdGenerator;
+    private readonly UiStateHandler _uiStateHandler = new UiStateHandler();
 
 
     [OneTimeTearDown]
@@ -56,7 +58,7 @@ internal class ClientUiManagerTests
         // Act
         var m = new ClientUiManager(_monitorLoggerFactoryFactory, _logDataFactory, _appLoggerFactory,
             _appEventSourceFactory, _clientNotificationManager, _appLogger, _sendPacketProcessFactory, _dateService, _syncOrderManager, _appBenchProxy, _orderReceiverFactory,
-            _requestProcessorFactoryFactory, _requestStepProcessorFactoryFactory, orderPipelineFactory, _orderIdGenerator, businessTransactionManager, socketFactory);
+            _requestProcessorFactoryFactory, _requestStepProcessorFactoryFactory, orderPipelineFactory, _orderIdGenerator, businessTransactionManager, socketFactory, _uiStateHandler);
 
         // Assert
         using (Assert.EnterMultipleScope())
@@ -78,7 +80,7 @@ internal class ClientUiManagerTests
 
         var m = new ClientUiManager(_monitorLoggerFactoryFactory, _logDataFactory, _appLoggerFactory,
             _appEventSourceFactory, _clientNotificationManager, _appLogger, _sendPacketProcessFactory, _dateService, _syncOrderManager, _appBenchProxy, _orderReceiverFactory,
-            _requestProcessorFactoryFactory, _requestStepProcessorFactoryFactory, orderPipelineFactory, _orderIdGenerator, businessTransactionManager, socketFactory)
+            _requestProcessorFactoryFactory, _requestStepProcessorFactoryFactory, orderPipelineFactory, _orderIdGenerator, businessTransactionManager, socketFactory, _uiStateHandler)
         {
             BackendTcpIpConfig = clientConfig,
         };

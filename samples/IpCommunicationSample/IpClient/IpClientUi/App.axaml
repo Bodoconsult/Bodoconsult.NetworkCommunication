@@ -15,5 +15,9 @@
             <avalonia:Setter Property="FontSize" Value="24"/>
             <avalonia:Setter Property="FontWeight" Value="Bold"/>
         </avalonia:Style>
+
+        <avalonia:Style Selector="avalonia|Grid.Bottom">
+            <avalonia:Setter Property="Background" Value="LightGray"/>
+        </avalonia:Style>
     </avalonia:Application.Styles>
 </avalonia:Application>

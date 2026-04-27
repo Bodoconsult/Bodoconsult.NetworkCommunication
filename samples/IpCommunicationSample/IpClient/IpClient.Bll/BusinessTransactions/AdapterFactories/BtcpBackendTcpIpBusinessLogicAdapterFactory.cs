@@ -2,6 +2,7 @@
 
 using Bodoconsult.NetworkCommunication.Interfaces;
 using IpClient.Bll.BusinessTransactions.Adapters;
+using IpClient.Bll.Interfaces;
 
 namespace IpClient.Bll.BusinessTransactions.AdapterFactories;
 
@@ -11,14 +12,17 @@ namespace IpClient.Bll.BusinessTransactions.AdapterFactories;
 public class BtcpBackendTcpIpBusinessLogicAdapterFactory : IDeviceBusinessLogicAdapterFactory
 {
     private readonly IOrderIdGenerator _orderIdGenerator;
+    private readonly IUiStateHandler _uiStateHandler;
 
     /// <summary>
     /// Default ctor
     /// </summary>
     /// <param name="orderIdGenerator">Current order ID generator</param>
-    public BtcpBackendTcpIpBusinessLogicAdapterFactory(IOrderIdGenerator orderIdGenerator)
+    /// <param name="uiStateHandler">Current UI state handler</param>
+    public BtcpBackendTcpIpBusinessLogicAdapterFactory(IOrderIdGenerator orderIdGenerator, IUiStateHandler uiStateHandler)
     {
         _orderIdGenerator = orderIdGenerator;
+        _uiStateHandler = uiStateHandler;
     }
 
     /// <summary>
@@ -32,6 +36,6 @@ public class BtcpBackendTcpIpBusinessLogicAdapterFactory : IDeviceBusinessLogicA
             throw new ArgumentException($"device is not implementing {nameof(IOrderManagementDevice)}");
         }
 
-        return new BtcpBackendTcpIpBusinessLogicAdapter(orderManagementDevice, _orderIdGenerator);
+        return new BtcpBackendTcpIpBusinessLogicAdapter(orderManagementDevice, _orderIdGenerator, _uiStateHandler);
     }
 }

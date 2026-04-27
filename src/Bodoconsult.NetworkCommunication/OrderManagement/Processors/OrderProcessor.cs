@@ -289,12 +289,12 @@ public class OrderProcessor : BaseOrderProcessor
 
         //IsRunnerStopped = false;
 
-        //if (result == null)
-        //{
-        //    msg = $"{receivedMessage.ToShortInfoString()}: async processed unsuccessful. Message is disposed now";
-        //    LogInformation(msg);
-        //    return false;
-        //}
+        if (result == null)
+        {
+            msg = $"{receivedMessage.ToShortInfoString()}: async processed unsuccessful. Message is disposed now";
+            LogInformation(msg);
+            return false;
+        }
 
         msg = $"{receivedMessage.ToShortInfoString()}: async processed {result.ExecutionResult}{(result.ExecutionResult.Id == OrderExecutionResultState.Successful.Id ? "" : ". Message is disposed now")}";
         LogInformation(msg);

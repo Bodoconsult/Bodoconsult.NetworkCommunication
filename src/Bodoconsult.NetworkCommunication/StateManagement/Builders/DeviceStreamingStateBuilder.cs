@@ -42,6 +42,4 @@ public class DeviceStreamingStateBuilder : BaseNoActionStateMachineStateBuilder
         state.CancelStateDelegate = DelegateHelper.CancelStateDelegate;
         state.AllowedNextStates.AddRange(AllowedNextStatesInternal);
     }
-
-    
 }

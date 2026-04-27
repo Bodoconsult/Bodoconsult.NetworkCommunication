@@ -36,7 +36,7 @@ public partial class IpClientMainWindowViewModel : MainWindowViewModel
     {
         _appGlobals = appGlobals;
         UiStateHandler = uiStateHandler;
-        UiStateHandler.StateMessage = "App loading...";
+        UiStateHandler.DeviceStateMessage = "App loading...";
     }
 
     /// <summary>
@@ -57,7 +57,7 @@ public partial class IpClientMainWindowViewModel : MainWindowViewModel
         };
 
         WindowState = UiWindowState.Maximized;
-        UiStateHandler.StateMessage = "App is started!";
+        UiStateHandler.DeviceStateMessage = "App is started!";
         return w;
     }
 

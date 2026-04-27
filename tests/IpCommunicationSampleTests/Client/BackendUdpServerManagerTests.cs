@@ -11,6 +11,7 @@ using Bodoconsult.NetworkCommunication.OrderManagement.Processors;
 using Bodoconsult.NetworkCommunication.Protocols.TcpIp;
 using Bodoconsult.NetworkCommunication.Tests.Helpers;
 using IpClient.Bll.Communication;
+using IpClientUi.Handlers;
 using IpCommunicationSampleTests.App;
 
 namespace IpCommunicationSampleTests.Client;
@@ -34,6 +35,7 @@ internal class BackendTcpIpClientManagerTests
     private readonly FakeAppEventSourceFactory _appEventSourceFactory = new();
     private readonly IOrderIdGenerator _orderIdGenerator = TestDataHelper.DefaultOrderIdGenerator;
     private readonly TcpIpListenerManager _tcpIpListenerManager = new();
+    private readonly UiStateHandler _uiStateHandler = new UiStateHandler();
 
     [OneTimeTearDown]
     public void Cleanup()
@@ -54,7 +56,7 @@ internal class BackendTcpIpClientManagerTests
 
         // Act
         var m = new BackendTcpIpClientManager(duplexIoFactory, _monitorLoggerFactoryFactory, _logDataFactory, _appLoggerFactory,
-            _appEventSourceFactory, _clientNotificationManager, _appLogger, orderManagerFactory, _orderIdGenerator, socketFactory);
+            _appEventSourceFactory, _clientNotificationManager, _appLogger, orderManagerFactory, _orderIdGenerator, socketFactory, _uiStateHandler);
 
         // Assert
         using (Assert.EnterMultipleScope())
@@ -75,7 +77,7 @@ internal class BackendTcpIpClientManagerTests
         var socketFactory = new SocketProxyFactory(_tcpIpListenerManager);
 
         var m = new BackendTcpIpClientManager(duplexIoFactory, _monitorLoggerFactoryFactory, _logDataFactory, _appLoggerFactory,
-            _appEventSourceFactory, _clientNotificationManager,  _appLogger, orderManagerFactory, _orderIdGenerator, socketFactory);
+            _appEventSourceFactory, _clientNotificationManager,  _appLogger, orderManagerFactory, _orderIdGenerator, socketFactory, _uiStateHandler);
 
         const string ip = "127.0.0.1";
         const int port = 9000;

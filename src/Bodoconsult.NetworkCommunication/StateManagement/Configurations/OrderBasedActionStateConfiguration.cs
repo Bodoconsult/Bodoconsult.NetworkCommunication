@@ -44,12 +44,12 @@ public class OrderBasedActionStateConfiguration : IOrderBasedActionStateConfigur
     /// <summary>
     /// Handle an error message received from the device
     /// </summary>
-    public HandleErrorMessageDelegate? HandleErrorMessageDelegate { get; set; } 
+    public HandleErrorMessageDelegate? HandleErrorMessageDelegate { get; set; }
 
     /// <summary>
     /// Handle an async received message
     /// </summary>
-    public HandleAsyncMessageDelegate? HandleAsyncMessageDelegate { get; set; } 
+    public HandleAsyncMessageDelegate? HandleAsyncMessageDelegate { get; set; }
 
     /// <summary>
     /// Delegate for preparing orders for the regular state reqeust
