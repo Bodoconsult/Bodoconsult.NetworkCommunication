@@ -3,6 +3,7 @@
 using System.Buffers;
 using System.Diagnostics;
 using System.Net.Sockets;
+using System.Text;
 using Bodoconsult.App.BufferPool;
 using Bodoconsult.App.Helpers;
 using Bodoconsult.NetworkCommunication.Delegates;

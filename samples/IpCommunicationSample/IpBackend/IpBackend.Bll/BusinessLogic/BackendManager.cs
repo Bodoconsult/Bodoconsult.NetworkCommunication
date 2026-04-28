@@ -251,33 +251,33 @@ public class BackendManager : IBackendManager
     {
         ArgumentNullException.ThrowIfNull(IpDeviceUdp?.IpDevice);
 
-        IpDeviceUdp.IpDevice.DataMessagingConfig.SendHelloMessageDelegate = SendHelloMessageDelegate;
+        //IpDeviceUdp.IpDevice.DataMessagingConfig.SendHelloMessageDelegate = SendHelloMessageDelegate;
         IpDeviceUdp.IpDevice.StartComm();
     }
 
-    /// <summary>
-    /// Send a hello message to the UDP device on ComDevInit
-    /// </summary>
-    /// <returns>True if the emssage was sent successfully else false</returns>
-    private bool SendHelloMessageDelegate()
-    {
-        // Send hello
-        var request = new EmptyBusinessTransactionRequestData
-        {
-            TransactionId = ServerSideBusinessTransactionIds.SendClientHello
-        };
+    ///// <summary>
+    ///// Send a hello message to the UDP device on ComDevInit
+    ///// </summary>
+    ///// <returns>True if the emssage was sent successfully else false</returns>
+    //private bool SendHelloMessageDelegate()
+    //{
+    //    // Send hello
+    //    var request = new EmptyBusinessTransactionRequestData
+    //    {
+    //        TransactionId = ServerSideBusinessTransactionIds.SendClientHello
+    //    };
 
-        var reply = _businessTransactionManager.RunBusinessTransaction(request.TransactionId, request);
+    //    var reply = _businessTransactionManager.RunBusinessTransaction(request.TransactionId, request);
 
-        if (reply.ErrorCode == 0)
-        {
-            return true;
-        }
+    //    if (reply.ErrorCode == 0)
+    //    {
+    //        return true;
+    //    }
 
-        ArgumentNullException.ThrowIfNull(IpDeviceUdp?.IpDevice);
-        IpDeviceUdp.IpDevice.DataMessagingConfig.AppLogger.LogError("HELLO message could NOT be sent");
-        return false;
-    }
+    //    ArgumentNullException.ThrowIfNull(IpDeviceUdp?.IpDevice);
+    //    IpDeviceUdp.IpDevice.DataMessagingConfig.AppLogger.LogError("HELLO message could NOT be sent");
+    //    return false;
+    //}
 
     /// <summary>
     /// Start the communication with the IP device via UDP

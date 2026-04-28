@@ -25,6 +25,8 @@ public class IpDeviceManager : IIpDeviceManager
     private readonly IBusinessTransactionManager _businessTransactionManager;
     private readonly ISocketProxyFactory _socketProxyFactory;
 
+    private IAppGlobals _appGlobals;
+
     /// <summary>
     /// Default ctor
     /// </summary>
@@ -37,6 +39,7 @@ public class IpDeviceManager : IIpDeviceManager
     /// <param name="sendPacketProcessFactory">Current send packet process factory</param>
     /// <param name="businessTransactionManager">Current business transaction manager</param>
     /// <param name="socketProxyFactory">Current socket factory</param>
+    /// <param name="appGlobals">Current app globals</param>
     public IpDeviceManager(IMonitorLoggerFactoryFactory monitorLoggerFactoryFactory,
         ILogDataFactory logDataFactory,
         IAppLoggerProxyFactory appLoggerFactory,
@@ -45,7 +48,8 @@ public class IpDeviceManager : IIpDeviceManager
         IAppLoggerProxy appLogger,
         ISendPacketProcessFactory sendPacketProcessFactory,
         IBusinessTransactionManager businessTransactionManager,
-        ISocketProxyFactory socketProxyFactory
+        ISocketProxyFactory socketProxyFactory,
+        IAppGlobals appGlobals
         )
     {
         _appEventSourceFactory = appEventSourceFactory;
@@ -58,6 +62,7 @@ public class IpDeviceManager : IIpDeviceManager
         _sendPacketProcessFactory = sendPacketProcessFactory;
         _businessTransactionManager = businessTransactionManager;
         _socketProxyFactory = socketProxyFactory;
+        _appGlobals = appGlobals;
     }
 
     /// <summary>
@@ -114,7 +119,7 @@ public class IpDeviceManager : IIpDeviceManager
         var duplexIoFactory = new UdpDatagramIpDuplexIoFactory(_sendPacketProcessFactory);
 
         var m = new BackendUdpServerManager(duplexIoFactory, _monitorLoggerFactoryFactory, _logDataFactory, _appLoggerFactory,
-            _appEventSourceFactory, _clientNotificationManager, _appLogger, _socketProxyFactory);
+            _appEventSourceFactory, _clientNotificationManager, _appLogger, _socketProxyFactory, _appGlobals);
 
         // Act  
         m.ConfigureDevice(BackendUdpConfig.Value.IpAddress, BackendUdpConfig.Value.Port);

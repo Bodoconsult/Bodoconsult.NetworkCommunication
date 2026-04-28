@@ -14,47 +14,7 @@ namespace Bodoconsult.NetworkCommunication.Tests.Udp.Sample;
 internal class UdpSocketTests
 {
     [Test]
-    public void Test()
-    {
-        // Arrange 
-        var cts = new CancellationTokenSource(2000);
-
-        var port = TestDataHelper.GetRandomPort();
-
-        Task.Run(() =>
-        {
-            var udpServer = new UdpSocket("Server", "127.0.0.1", port, true);
-
-            while (!cts.IsCancellationRequested)
-            {
-                var data = udpServer.Receive(); // listen on port 11000
-                udpServer.Send("Blabb"); // reply back
-            }
-            udpServer.Dispose();
-
-        });
-
-        // Act  
-        var client = new UdpSocket("Client", "127.0.0.1", port, false);
-
-        while (!cts.IsCancellationRequested)
-        {
-            // send data
-            client.Send("Blubb");
-
-            // then receive data
-            client.Receive();
-        }
-
-        client.Dispose();
-
-        // Assert
-        Assert.Pass();
-    }
-
-
-    [Test]
-    public void Test2()
+    public void Test1_UdpClientWithHello_UdpMessagesSentToClient()
     {
         // Arrange 
         // Source - https://stackoverflow.com/q/20038943
@@ -99,10 +59,89 @@ internal class UdpSocketTests
         }
 
         // Assert
-            
+
         client.Dispose();
 
     }
 
+    [Test]
+    public void Test2_UdpSocketWithHello_UdpMessagesSentToClient()
+    {
+        // Arrange 
+        var cts = new CancellationTokenSource(2000);
+
+        var port = TestDataHelper.GetRandomPort();
+
+        Task.Run(() =>
+        {
+            var udpServer = new UdpSocket("Server", "127.0.0.1", port, true);
+
+            while (!cts.IsCancellationRequested)
+            {
+                var data = udpServer.Receive(); // listen on port 11000
+                udpServer.Send("Blabb"); // reply back
+            }
+            udpServer.Dispose();
+
+        });
+
+        // Act  
+        var client = new UdpSocket("Client", "127.0.0.1", port, false);
+
+        while (!cts.IsCancellationRequested)
+        {
+            // send data
+            client.Send("Blubb");
+
+            // then receive data
+            client.Receive();
+        }
+
+        client.Dispose();
+
+        // Assert
+        Assert.Pass();
+    }
+
+    [Test]
+    public void Test3_UdpSocket2WithHello_UdpMessagesSentToClient()
+    {
+        // Arrange 
+        var cts = new CancellationTokenSource(2000);
+
+        var port = TestDataHelper.GetRandomPort();
+
+        Task.Run(() =>
+        {
+            var client = new UdpSocket2("Client", "127.0.0.1", port, false);
+
+            Debug.Print("Client started...");
+
+            while (!cts.IsCancellationRequested)
+            {
+                //// send data
+                //client.Send("Blubb");
+
+                // then receive data
+                client.Receive();
+            }
+
+            client.Dispose();
+        });
+
+        // Act  
+        var udpServer = new UdpSocket2("Server", "127.0.0.1", port, true);
+
+        Debug.Print("Server started...");
+
+        while (!cts.IsCancellationRequested)
+        {
+            udpServer.Send("Blabb"); // reply back
+        }
+        udpServer.Dispose();
+
+        // Assert
+        Assert.Pass();
+    }
 
 }

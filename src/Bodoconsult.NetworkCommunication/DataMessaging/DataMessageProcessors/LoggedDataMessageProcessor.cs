@@ -77,7 +77,7 @@ public class LoggedDataMessageProcessor : BaseDataMessageProcessor
 
         }).ContinueWith(Callback);
 
-        var result = _stopped.WaitOne(TimeOut);
+        var result = Stopped.WaitOne(TimeOut);
         if (result)
         {
             return;

@@ -77,9 +77,9 @@ public class IpDeviceUdpClientManager : ISimpleDeviceManager
     {
         IDataMessageProcessingPackageFactory messageProcessingPackageFactory = new SfxpLoggedSortableDataMessageProcessingPackageFactory();
 
-        var configurator = new UdpClientDeviceConfigurator(_duplexIoFactory, _monitorLoggerFactoryFactory,
+        var configurator = new UdpServerDeviceConfigurator(_duplexIoFactory, _monitorLoggerFactoryFactory,
             _logDataFactory, _appLoggerFactory, _appEventSourceFactory,
-            _clientNotificationManager, _appLoggerProxy, _socketProxyFactory, _appGlobals); 
+            _clientNotificationManager, _appLoggerProxy, _socketProxyFactory); 
 
         configurator.CreateMessagingConfig("IPDevice_UDP: ", ipAddress, port, messageProcessingPackageFactory);
 

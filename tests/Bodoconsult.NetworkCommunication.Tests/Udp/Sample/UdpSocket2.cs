@@ -7,28 +7,28 @@ using System.Text;
 
 namespace Bodoconsult.NetworkCommunication.Tests.Udp.Sample;
 
-public class UdpSocket: IDisposable
+public class UdpSocket2 : IDisposable
 {
     private readonly UdpClient _socket;
-    private IPEndPoint _epFrom;
+    private IPEndPoint EpFrom { get; set; }
     private readonly string _name;
     private readonly bool _isServer;
 
-    public UdpSocket(string name, string ipAddress, int port, bool isServer)
+    public UdpSocket2(string name, string ipAddress, int port, bool isServer)
     {
         _name = name;
         _isServer = isServer;
 
         if (_isServer)
         {
-            _socket = new UdpClient(port);
-            _epFrom = new IPEndPoint(IPAddress.Any, port);
+            _socket = new UdpClient();
+            EpFrom = new IPEndPoint(IPAddress.Parse(ipAddress), port);
         }
         else
         {
-            _socket = new UdpClient();
-            _epFrom = new IPEndPoint(IPAddress.Parse(ipAddress), port);
-            _socket.Connect(_epFrom);
+            _socket = new UdpClient(port);
+            EpFrom = new IPEndPoint(IPAddress.Parse(ipAddress), port);
+            //_socket.Connect(EpFrom);
         }
     }
 
@@ -38,27 +38,31 @@ public class UdpSocket: IDisposable
 
         if (_isServer)
         {
-            _socket.Send([1], 1, _epFrom);
+            var x = _socket.Send([1], 1, EpFrom);
+            Debug.Print($"{_name}: sent to {EpFrom}: {x} bytes");
             return;
         }
 
-        _socket.Send(data, data.Length);
+        var y = _socket.Send(data, data.Length);
+        Debug.Print($"{_name}: sent to {EpFrom}: {y} bytes");
     }
 
     public byte[] Receive()
     {
         byte[] data;
 
+        var ep = EpFrom;
+
         if (_isServer)
         {
-            data = _socket.Receive(ref _epFrom);
+            data = _socket.Receive(ref ep);
         }
         else
         {
-            data = _socket.Receive(ref _epFrom);
+            data = _socket.Receive(ref ep);
         }
 
-        Debug.Print($"{_name}: receive data from {_epFrom}: {data.Length} bytes");
+        Debug.Print($"{_name}: receive data from {ep}: {data.Length} bytes");
         return data;
     }
 

@@ -1,0 +1,384 @@
+﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
+
+using System.Diagnostics;
+using System.Net;
+using System.Net.Sockets;
+using Bodoconsult.NetworkCommunication.Interfaces;
+
+namespace Bodoconsult.NetworkCommunication.Protocols.Udp;
+
+/// <summary>
+/// Current asynchronous implementation of <see cref="ISocketProxy"/> for UDP unicast server
+/// </summary>
+public class UdpServerWithHelloSocketProxy : UpdSocketProxyBase
+{
+    //private readonly byte[] _tmp = new byte[1];
+
+    /// <summary>
+    /// Endpoint for listening
+    /// </summary>
+    protected IPEndPoint? EndPoint;
+
+    /// <summary>
+    /// Endpoint for listening
+    /// </summary>
+    protected IPEndPoint? SendEndPoint;
+
+    private bool _isBound;
+
+    /// <summary>
+    /// Current socket (only for testing purposes, do not access directly in production code)
+    /// </summary>
+    public UdpClient? UdpClient { get; protected set; }
+
+    /// <summary>
+    /// Is the socket connected
+    /// </summary>
+    public override bool Connected => _isBound;
+
+    /// <summary>
+    /// The number of bytes available to read
+    /// </summary>
+    public override int BytesAvailable
+    {
+        get
+        {
+            try
+            {
+                //Debug.Print($"Bytes available: {UdpClient?.Client.Available ?? 0}");
+                return UdpClient?.Client.Available ?? 0;
+            }
+            catch
+            {
+                return 0;
+            }
+        }
+    }
+
+    /// <summary>
+    /// Close the socket
+    /// </summary>
+    public override void Close()
+    {
+        _isBound = false;
+        CancellationTokenSource.Cancel();
+
+        if (UdpClient == null)
+        {
+            return;
+        }
+
+        UdpClient.Client.Shutdown(SocketShutdown.Both);
+        UdpClient.Close();
+        UdpClient = null;
+    }
+
+    /// <summary>
+    /// Connect to an IP endpoint
+    /// </summary>
+    public override async Task Connect()
+    {
+        ArgumentNullException.ThrowIfNull(IpAddress);
+
+        await Task.Run(() =>
+        {
+            try
+            {
+                if (UdpClient != null)
+                {
+                    UdpClient.Client.Shutdown(SocketShutdown.Both);
+                    UdpClient.Close();
+                    UdpClient.Dispose();
+
+                    CancellationTokenSource = new CancellationTokenSource();
+                }
+            }
+            catch // (Exception ex)
+            {
+                // Do nothing
+            }
+            finally
+            {
+                UdpClient = null;
+            }
+
+            try
+            {
+                UdpClient = new UdpClient(Port);
+
+                // The following three lines allow multiple clients on the same PC
+                UdpClient.Client.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.ReuseAddress, true);
+                UdpClient.Client.Blocking = false;
+
+                EndPoint = new IPEndPoint(IPAddress.Any, Port);
+                _isBound = true;
+            }
+            catch (Exception e)
+            {
+                // ToDo: add logging
+                var s = e.ToString();
+                Trace.TraceError(s);
+                _isBound = false;
+                throw;
+            }
+        });
+    }
+
+    /// <summary>
+    /// Receive data from the socket
+    /// </summary>
+    /// <param name="buffer">Byte array to store the received byte data in</param>
+    /// <returns>Number of bytes received</returns>
+    public override async Task<int> Receive(byte[] buffer)
+    {
+        if (UdpClient == null)
+        {
+            return await Task.FromResult(0);
+        }
+
+        try
+        {
+            var result = await UdpClient.ReceiveAsync(CancellationTokenSource.Token);
+            SendEndPoint = result.RemoteEndPoint;
+
+            //Debug.Print($"UDPClient: received {result.Length} bytes from {SendEndPoint}");
+
+            Buffer.BlockCopy(result.Buffer, 0, buffer, 0, result.Buffer.Length);
+            Trace.TraceInformation($"UdpServerSocket: received {result.Buffer.Length} bytes");
+
+            return result.Buffer.Length;
+        }
+        catch (SocketException socketException)
+        {
+            if (socketException.ErrorCode != 10054)
+            {
+                Logger?.LogError("Receiving failed", socketException);
+                var s = socketException.ToString();
+                Trace.TraceError(s);
+            }
+            else
+            {
+                Logger?.LogDebug("No connection");
+            }
+
+            return 0;
+        }
+        catch (Exception e)
+        {
+            Logger?.LogError("Receiving failed", e);
+            var s = e.ToString();
+            Trace.TraceError(s);
+            return 0;
+        }
+    }
+
+    /// <summary>
+    /// Receive first data byte from the socket
+    /// </summary>
+    /// <param name="buffer">Byte array to store the received byte data in</param>
+    /// <returns>Number of bytes received</returns>
+    public override async Task<int> Receive(Memory<byte> buffer)
+    {
+        if (UdpClient == null)
+        {
+            return 0;
+        }
+
+        try
+        {
+            var result = await UdpClient.ReceiveAsync(CancellationTokenSource.Token);
+            SendEndPoint = result.RemoteEndPoint;
+
+            //Debug.Print($"UDPClient: received {result.Length} bytes from {SendEndPoint}");
+
+            result.Buffer.CopyTo(buffer);
+            Trace.TraceInformation($"UdpServerSocket: received {result.Buffer.Length} bytes");
+            return result.Buffer.Length;
+        }
+        catch (SocketException socketException)
+        {
+            if (socketException.ErrorCode != 10054)
+            {
+                Logger?.LogError("Receiving failed", socketException);
+                var s = socketException.ToString();
+                Trace.TraceError(s);
+            }
+            else
+            {
+                Logger?.LogDebug("No connection");
+            }
+
+            return 0;
+        }
+        catch (Exception e)
+        {
+            Logger?.LogError("Receiving failed", e);
+            var s = e.ToString();
+            Trace.TraceError(s);
+            return 0;
+        }
+    }
+
+    /// <summary>
+    /// Poll data
+    /// </summary>
+    /// <returns>True, if data can be read, else false</returns>
+    public override bool Poll()
+    {
+        try
+        {
+            return UdpClient != null && UdpClient.Client.Poll(1, SelectMode.SelectRead);
+        }
+        catch (Exception e)
+        {
+            Logger?.LogError("Polling failed", e);
+            var s = e.ToString();
+            Trace.TraceError(s);
+            return false;
+        }
+    }
+
+    ///// <summary>
+    ///// Receive data from the socket
+    ///// </summary>
+    ///// <param name="buffer">Byte array to store the received byte data in</param>
+    ///// <param name="offset">Offset</param>
+    ///// <param name="expectedBytesLength">Expected length of the byte data received</param>
+    ///// <returns>Number of bytes received</returns>
+    //public override async Task<int> Receive(byte[] buffer, int offset, int expectedBytesLength)
+    //{
+    //    if (UdpClient == null)
+    //    {
+    //        return 0;
+    //    }
+
+    //    try
+    //    {
+    //        var result = await UdpClient.ReceiveAsync(CancellationTokenSource.Token);
+    //        SendEndPoint = result.RemoteEndPoint;
+
+    //        //Debug.Print($"UDPClient: received {result.Length} bytes from {SendEndPoint}");
+
+    //        result.Buffer.AsSpan().Slice(offset, expectedBytesLength).CopyTo(buffer);
+    //        return expectedBytesLength;
+
+    //    }
+    //    catch (SocketException socketException)
+    //    {
+    //        if (socketException.ErrorCode != 10054)
+    //        {
+    //            Debug.Print(socketException.ToString());
+    //        }
+
+    //        return 0;
+    //    }
+    //    catch (Exception e)
+    //    {
+    //        Debug.Print(e.ToString());
+    //        return 0;
+    //    }
+    //}
+
+    /// <summary>
+    /// Send bytes
+    /// </summary>
+    /// <param name="bytesToSend">Byte array to send</param>
+    public override async Task<int> Send(byte[] bytesToSend)
+    {
+        if (UdpClient == null || SendEndPoint == null || Equals(SendEndPoint.Address, IPAddress.Any))
+        {
+            return 0;
+        }
+
+        try
+        {
+            var result = await UdpClient.SendAsync(bytesToSend, SendEndPoint, CancellationTokenSource.Token);
+            Trace.TraceInformation($"UdpServerSocket: sent {result} bytes");
+            return result;
+        }
+        catch (SocketException socketException)
+        {
+            if (socketException.ErrorCode != 10054)
+            {
+                Logger?.LogError("Sending failed", socketException);
+                var s = socketException.ToString();
+                Trace.TraceError(s);
+            }
+            else
+            {
+                Logger?.LogDebug("No connection");
+            }
+
+            return 0;
+        }
+        catch (Exception e)
+        {
+            Logger?.LogError("Sending failed", e);
+            var s = e.ToString();
+            Trace.TraceError(s);
+            return 0;
+        }
+    }
+
+    /// <summary>
+    /// Send bytes
+    /// </summary>
+    /// <param name="bytesToSend">Data to send</param>
+    public override async ValueTask<int> Send(ReadOnlyMemory<byte> bytesToSend)
+    {
+        if (UdpClient == null || SendEndPoint == null || Equals(SendEndPoint.Address, IPAddress.Any))
+        {
+            Trace.TraceWarning("UdpClient is null or SendEndPoint is null or address IPAddress.Any. No client request before?");
+            return 0;
+        }
+
+        try
+        {
+            var result = await UdpClient.SendAsync(bytesToSend, SendEndPoint, CancellationTokenSource.Token);
+            Trace.TraceInformation($"UdpServerSocket: sent {result} bytes");
+            return result;
+        }
+        catch (SocketException socketException)
+        {
+            if (socketException.ErrorCode != 10054)
+            {
+                Logger?.LogError("Sending failed", socketException);
+                var s = socketException.ToString();
+                Trace.TraceError(s);
+            }
+            else
+            {
+                Trace.TraceInformation("No connection");
+                Logger?.LogDebug("No connection");
+            }
+
+            return 0;
+        }
+        catch (Exception e)
+        {
+            Logger?.LogError("Sending failed", e);
+            var s = e.ToString();
+            Trace.TraceError(s);
+            return 0;
+        }
+    }
+
+    /// <summary>
+    /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+    /// </summary>
+    public override void Dispose()
+    {
+        CancellationTokenSource.Cancel();
+        IsDisposed = true;
+
+        if (UdpClient == null)
+        {
+            return;
+        }
+
+        UdpClient.Client.Shutdown(SocketShutdown.Both);
+        UdpClient.Close();
+        UdpClient.Dispose();
+        UdpClient = null;
+    }
+}

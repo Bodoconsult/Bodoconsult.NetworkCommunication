@@ -60,8 +60,8 @@ public class TncpBackendTcpIpBusinessLogicAdapter : BaseSimpleDeviceBusinessLogi
 
         Trace.TraceInformation($"TncpBackendTcpIpBusinessLogicAdapter: received command >>{tncp.TelnetCommand}<< with message {message.MessageId}");
 
-        NetworkCommand? command;
-        HandleTncpMessage? del;
+        //NetworkCommand? command;
+        //HandleTncpMessage? del;
 
         if (tncp.TelnetCommand == "set,status,stop")
         {
@@ -69,11 +69,11 @@ public class TncpBackendTcpIpBusinessLogicAdapter : BaseSimpleDeviceBusinessLogi
             return;
         }
 
-        if (tncp.TelnetCommand.StartsWith("set,stream,number", StringComparison.InvariantCultureIgnoreCase))
+        if (tncp.TelnetCommand.StartsWith("set,stream", StringComparison.InvariantCultureIgnoreCase))
         {
             lock (_udpStarterLock)
             {
-                _udpStarter = new UdpStarter();
+                _udpStarter ??= new UdpStarter();
             }
             return;
         }

@@ -92,7 +92,7 @@ public class LoggedSortableDataMessageProcessor : BaseDataMessageProcessor
 
             }).ContinueWith(Callback);
 
-            var result = _stopped.WaitOne(TimeOut);
+            var result = Stopped.WaitOne(TimeOut);
             if (result)
             {
                 continue;

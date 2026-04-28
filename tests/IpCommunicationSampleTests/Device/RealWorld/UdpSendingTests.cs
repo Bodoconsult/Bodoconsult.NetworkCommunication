@@ -53,10 +53,10 @@ internal class UdpSendingTests
 
     private void StartUdpClient()
     {
-        RemoteUdpDevice = new UdpTestUniCastClient(IPAddress.Parse(_startParams.IpAddress), _startParams.Port);
+        RemoteUdpDevice = new UdpTestUniCastServer(IPAddress.Parse(_startParams.IpAddress), _startParams.Port);
         RemoteUdpDevice.Start();
-        // Send cleint hello
-        RemoteUdpDevice.Send([0x48, 0x65, 0x6c, 0x6c, 0x6f, 0x20, 0x66, 0x72, 0x6f, 0x6d, 0x20, 0x63, 0x6c, 0x69, 0x65, 0x6e, 0x74]);
+        //// Send cleint hello
+        //RemoteUdpDevice.Send([0x48, 0x65, 0x6c, 0x6c, 0x6f, 0x20, 0x66, 0x72, 0x6f, 0x6d, 0x20, 0x63, 0x6c, 0x69, 0x65, 0x6e, 0x74]);
 
         //_cts = new CancellationTokenSource();
         //Task.Run(UdpReceiving, _cts.Token);
@@ -173,7 +173,7 @@ internal class UdpSendingTests
         Task.Delay(500);
 
         var data2 = new List<byte>();
-        data2.AddRange(Encoding.UTF8.GetBytes("set,stream,mode,snapshot,continious"));
+        data2.AddRange(Encoding.UTF8.GetBytes("set,stream,mode,continious"));
         data2.Add([DeviceCommunicationBasics.Cr]);
 
         AsyncHelper.FireAndForget(() =>

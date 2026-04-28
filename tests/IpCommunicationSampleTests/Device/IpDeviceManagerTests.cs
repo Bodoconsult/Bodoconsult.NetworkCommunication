@@ -45,8 +45,8 @@ internal class IpDeviceManagerTests
 
         // Act
         var m = new IpDeviceManager(_monitorLoggerFactoryFactory, _logDataFactory, _appLoggerFactory,
-            _appEventSourceFactory, _clientNotificationManager, _appLogger, _sendPacketProcessFactory,  btm, socketFactory);
-
+            _appEventSourceFactory, _clientNotificationManager, _appLogger, _sendPacketProcessFactory,  btm, socketFactory, Globals.Instance);
+        
         // Assert
         using (Assert.EnterMultipleScope())
         {
@@ -68,7 +68,7 @@ internal class IpDeviceManagerTests
         var socketFactory = new SocketProxyFactory(_tcpIpListenerManager);
 
         var m = new IpDeviceManager(_monitorLoggerFactoryFactory, _logDataFactory, _appLoggerFactory,
-            _appEventSourceFactory, _clientNotificationManager, _appLogger, _sendPacketProcessFactory, btm, socketFactory)
+            _appEventSourceFactory, _clientNotificationManager, _appLogger, _sendPacketProcessFactory, btm, socketFactory, Globals.Instance)
         {
             BackendTcpIpConfig = deviceTcpIpConfig,
             BackendUdpConfig = deviceUdpConfig
@@ -110,7 +110,7 @@ internal class IpDeviceManagerTests
         var socketFactory = new SocketProxyFactory(_tcpIpListenerManager);
 
         var m = new IpDeviceManager(_monitorLoggerFactoryFactory, _logDataFactory, _appLoggerFactory,
-            _appEventSourceFactory, _clientNotificationManager, _appLogger, _sendPacketProcessFactory, btm, socketFactory)
+            _appEventSourceFactory, _clientNotificationManager, _appLogger, _sendPacketProcessFactory, btm, socketFactory, Globals.Instance)
         {
             BackendTcpIpConfig = deviceTcpIpConfig,
             BackendUdpConfig = deviceUdpConfig
@@ -159,7 +159,7 @@ internal class IpDeviceManagerTests
         }
 
         var m = new IpDeviceManager(_monitorLoggerFactoryFactory, _logDataFactory, _appLoggerFactory,
-            _appEventSourceFactory, _clientNotificationManager, _appLogger, _sendPacketProcessFactory, btm, socketFactory)
+            _appEventSourceFactory, _clientNotificationManager, _appLogger, _sendPacketProcessFactory, btm, socketFactory, Globals.Instance)
         {
             BackendTcpIpConfig = deviceTcpIpConfig,
             BackendUdpConfig = deviceUdpConfig
