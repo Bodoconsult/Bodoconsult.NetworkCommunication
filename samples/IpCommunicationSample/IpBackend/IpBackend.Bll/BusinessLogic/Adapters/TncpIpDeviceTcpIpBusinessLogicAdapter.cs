@@ -7,7 +7,6 @@ using Bodoconsult.NetworkCommunication.Helpers;
 using Bodoconsult.NetworkCommunication.Interfaces;
 using Bodoconsult.NetworkCommunication.OrderManagement.ParameterSets;
 using IpBackend.Bll.Interfaces;
-using System.Security.Cryptography.X509Certificates;
 
 namespace IpBackend.Bll.BusinessLogic.Adapters;
 

@@ -144,7 +144,7 @@ public abstract class BaseUdpDevice : IUdpDevice
             //}
         }
 
-        Debug.Print("Exit waiting");
+        Trace.TraceInformation("Exit waiting");
     }
 
     /// <summary>
@@ -155,7 +155,7 @@ public abstract class BaseUdpDevice : IUdpDevice
     {
         if (IsDisposed)
         {
-            Debug.Print($"{TypeName}: nothing to receive");
+            Trace.TraceInformation($"{TypeName}: nothing to receive");
             return await Task.FromResult(Array.Empty<byte>());
         }
 
@@ -170,7 +170,7 @@ public abstract class BaseUdpDevice : IUdpDevice
                 return result.Buffer;
             }
 
-            Debug.Print($"{TypeName}: received {result.Buffer.Length} bytes");
+            Trace.TraceInformation($"{TypeName}: received {result.Buffer.Length} bytes");
 
             //Debug.Print($"{TypeName}: received {result.Buffer.Length} bytes from {SenderEndPoint}");
             //Debug.Print($" {Encoding.ASCII.GetString(bytes, 0, bytes.Length)}");
@@ -180,7 +180,7 @@ public abstract class BaseUdpDevice : IUdpDevice
         }
         catch (Exception e)
         {
-            Debug.Print(e.ToString());
+            Trace.TraceError(e.ToString());
             return [];
         }
     }
@@ -207,8 +207,6 @@ public abstract class BaseUdpDevice : IUdpDevice
     /// <summary>Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.</summary>
     public void Dispose()
     {
-
-
         IsDisposed = true;
         Dispose(true);
         GC.SuppressFinalize(this);

@@ -38,7 +38,7 @@ public class EdcpClientDataMessageProcessingPackage : IDataMessageProcessingPack
         // Now setup the dependent objects
 
         // 1. Message splitter
-        DataMessageSplitter = new TncpDataMessageSplitter();
+        DataMessageSplitter = new EdcpDataMessageSplitter();
 
         // 2. Codecs
         DataMessageCodingProcessor = new DefaultDataMessageCodingProcessor();

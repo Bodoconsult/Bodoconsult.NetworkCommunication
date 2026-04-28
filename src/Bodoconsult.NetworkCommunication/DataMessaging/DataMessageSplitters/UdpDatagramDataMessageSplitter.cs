@@ -21,6 +21,12 @@ public class UdpDatagramDataMessageSplitter : IDataMessageSplitter
     /// <returns>True if a command was successfuly extract from the buffer else false</returns>
     public virtual bool TryReadCommand(ref ReadOnlySequence<byte> buffer, out ReadOnlySequence<byte> command)
     {
+        if (buffer.Length == 0)
+        {
+            command = ReadOnlySequence<byte>.Empty;
+            return false;
+        }
+
         var array = ArrayPool.Rent((int)buffer.Length);
 
         buffer.CopyTo(array);

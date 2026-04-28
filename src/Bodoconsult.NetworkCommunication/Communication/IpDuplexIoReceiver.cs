@@ -71,9 +71,10 @@ public class IpDuplexIoReceiver : BaseDuplexIoReceiver
         Logger.LogDebug(msg);
         Trace.TraceInformation($"DuplexIoReceiver: {msg}");
 
+        //Trace.TraceInformation($"DuplexIoReceiver: data in buffer {Encoding.UTF8.GetString(_buffer)}");
+
         while (DataMessageSplitter.TryReadCommand(ref _buffer, out var command))
         {
-
             var length = (int)command.Length;
             if (length == 0)
             {
@@ -89,6 +90,9 @@ public class IpDuplexIoReceiver : BaseDuplexIoReceiver
 
             var codecResult = DataMessageCodingProcessor.DecodeDataMessage(mem);
 
+            //Trace.TraceInformation($"IpDuplexIoReceiver: parsed command {Encoding.UTF8.GetString(command)} to message {codecResult.DataMessage?.MessageId}. Buffer {_buffer.Length}: { Encoding.UTF8.GetString( _buffer)}");
+            //Trace.TraceInformation($"IpDuplexIoReceiver: parsed command {Encoding.UTF8.GetString(command)} to message {codecResult.DataMessage?.MessageId}");
+
             if (codecResult.ErrorCode != 0 || codecResult.DataMessage == null)
             {
                 msg = $"Parsing command failed with error code {codecResult.ErrorCode}: {codecResult.ErrorMessage}: {DataMessageHelper.GetStringFromArrayCsharpStyle(ref command)}";
@@ -103,20 +107,23 @@ public class IpDuplexIoReceiver : BaseDuplexIoReceiver
             if (!validationResult.IsMessageValid)
             {
                 msg = $"Parsed command {DataMessageHelper.GetStringFromArrayCsharpStyle(ref command)} NOT valid: {validationResult.ValidationResult}";
-                //Debug.Print(msg);
                 Logger?.LogDebug(msg);
                 Trace.TraceError($"DuplexIoReceiver: {msg}");
             }
             else
             {
                 msg = $"Parsed command {DataMessageHelper.GetStringFromArrayCsharpStyle(ref command)}";
-                //Debug.Print(msg);
                 DataMessagingConfig.MonitorLogger?.LogDebug(msg);
 
                 DataMessageProcessor.ProcessMessage(codecResult.DataMessage);
             }
 
             ArrayPool.Return(array);
+
+            if (_buffer.Length == 0)
+            {
+                break;
+            }
         }
     }
 

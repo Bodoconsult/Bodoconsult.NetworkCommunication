@@ -8,7 +8,7 @@ namespace Bodoconsult.NetworkCommunication.ClientNotifications;
 /// <summary>
 /// Basic implementation of <see cref="IOrderManagementClientNotificationManager"/>
 /// </summary>
-public class BasicClientNotificationManager : OrderManagementClientNotificationManagerBase
+public class BasicClientNotificationManager : BaseOrderManagementClientNotificationManager
 {
     /// <summary>
     /// Default ctor

@@ -3,6 +3,8 @@
 using Bodoconsult.App.Abstractions.DependencyInjection;
 using Bodoconsult.App.Abstractions.Interfaces;
 using Bodoconsult.App.CentralServices;
+using Bodoconsult.NetworkCommunication.ClientNotifications;
+using Bodoconsult.NetworkCommunication.Interfaces;
 using IpDevice.Bll;
 using IpDevice.Bll.Interfaces;
 using IpDeviceService.App;
@@ -27,6 +29,11 @@ public class IpDeviceServiceAllServicesContainerServiceProvider : IDiContainerSe
 
         // ToDo: move to base package
         diContainer.AddSingleton<IAppDateService, AppDateService>();
+
+        //diContainer.AddSingleton<IClientMessagingBusinessDelegate, ClientMessagingBusinessDelegate>();
+
+        //diContainer.AddSingleton<ICentralClientNotificationManager, BasicClientNotificationManager>();
+        diContainer.AddSingleton< IOrderManagementClientNotificationManager, DoNothingOrderManagementClientNotificationManager>();
 
         diContainer.AddSingleton<IIpDeviceManager, IpDeviceManager>();
 

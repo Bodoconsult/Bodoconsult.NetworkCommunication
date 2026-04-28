@@ -14,6 +14,7 @@ public class LoggedSortableDataMessageProcessor : BaseDataMessageProcessor
 {
     private readonly IInboundDataMessageSorter _dataMessageSorter;
     private readonly List<IInboundDataLogger> _dataLoggers;
+    private readonly string _loggerId;
 
     /// <summary>
     /// Default ctor
@@ -26,6 +27,7 @@ public class LoggedSortableDataMessageProcessor : BaseDataMessageProcessor
 
         _dataMessageSorter = Config.DataMessageProcessingPackage.DataMessageSorter;
         _dataLoggers = Config.DataMessageProcessingPackage.DataLoggers;
+        _loggerId = $"{config.LoggerId}: LoggedSortableDataMessageProcessor: ";
     }
 
     /// <summary>
@@ -75,7 +77,31 @@ public class LoggedSortableDataMessageProcessor : BaseDataMessageProcessor
         // Now process the messages
         foreach (var msg in messages)
         {
-            AsyncHelper.FireAndForget2(() => Config.RaiseCommLayerDataMessageReceivedDelegate?.Invoke(msg)).ContinueWith(Callback);
+            AsyncHelper.FireAndForget2(() =>
+            {
+                try
+                {
+                    Config.RaiseCommLayerDataMessageReceivedDelegate?.Invoke(msg);
+                }
+                catch (Exception e)
+                {
+                    var s = $" failed {dataMessage.MessageId}: {dataMessage.RawMessageData.Length} bytes: {e}";
+                    Config.MonitorLogger.LogError(s);
+                    Trace.TraceError($"{_loggerId}{s}");
+                }
+
+            }).ContinueWith(Callback);
+
+            var result = _stopped.WaitOne(TimeOut);
+            if (result)
+            {
+                continue;
+            }
+            var msg1 = $"{dataMessage}delivering to message receiver timed out";
+            Config.AppLogger.LogError($"{Config.LoggerId}{msg1}");
+            Config.MonitorLogger.LogError(msg1);
+            Trace.TraceError($"{_loggerId}{msg1}");
+            return;
         }
     }
 

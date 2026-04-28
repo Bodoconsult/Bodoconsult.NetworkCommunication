@@ -1,5 +1,6 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
+using System.Diagnostics;
 using System.Net;
 using System.Net.NetworkInformation;
 using System.Net.Sockets;
@@ -158,11 +159,11 @@ public static class IpHelper
     }
 
     /// <summary>
-    /// Check if a port is available
+    /// Check if a local port is available
     /// </summary>
-    /// <param name="port">Port to check</param>
-    /// <returns>True if port is free else false</returns>
-    public static bool IsPortAvailable(int port)
+    /// <param name="port">Local port to check</param>
+    /// <returns>True if local port is free else false</returns>
+    public static bool IsLocalPortAvailable(int port)
     {
         var ipGlobalProperties = IPGlobalProperties.GetIPGlobalProperties();
         var tcpConnInfoArray = ipGlobalProperties.GetActiveTcpConnections();
@@ -185,5 +186,77 @@ public static class IpHelper
         }
 
         return true;
+    }
+
+    /// <summary>
+    /// Checks if a remote TCP port is open (accepting connections).
+    /// </summary>
+    /// <param name="ipAddress">Remote IP address (e.g., "192.168.1.1")</param>
+    /// <param name="port">TCP port to check (0–65535)</param>
+    /// <param name="timeoutMilliseconds">Connection timeout in ms (default: 5000 ms)</param>
+    /// <returns>True if the port is open else false</returns>
+    public static async Task<bool> IsRemotePortOpenAsync(
+        string ipAddress,
+        int port,
+        int timeoutMilliseconds = 5000)
+    {
+        // Validate port range
+        if (port is < 0 or > 65535)
+        {
+            throw new ArgumentOutOfRangeException(nameof(port), "IpHelper: Port must be between 0 and 65535.");
+        }
+
+        // Resolve IP address (handles hostnames like "example.com")
+        if (!IPAddress.TryParse(ipAddress, out var ip))
+        {
+            var hostEntry = await Dns.GetHostEntryAsync(ipAddress);
+            ip = hostEntry.AddressList[0]; // Use the first IP (simplified)
+        }
+
+        using var client = new TcpClient();
+
+        try
+        {
+            // Attempt connection with timeout
+            var connectTask = client.ConnectAsync(ip, port);
+            var timeoutTask = Task.Delay(timeoutMilliseconds);
+
+            // Wait for either the connection to succeed or the timeout
+            var completedTask = await Task.WhenAny(connectTask, timeoutTask);
+
+            if (completedTask == timeoutTask)
+            {
+                // Timeout: Port is likely closed or unreachable
+                return false;
+            }
+
+            // If connectTask completed, check for success
+            await connectTask; // Throws if connection failed
+            return true; // Connection succeeded: port is open
+        }
+        catch (SocketException ex)
+        {
+            // Handle specific socket errors
+            switch (ex.SocketErrorCode)
+            {
+                case SocketError.ConnectionRefused:
+                    // Server rejected connection (port closed)
+                    return false;
+                case SocketError.HostUnreachable:
+                case SocketError.NetworkUnreachable:
+                    // Network issue (e.g., no route to host)
+                    return false;
+                default:
+                    // Unexpected error (e.g., firewall block)
+                    Trace.TraceError($"IpHelper: Socket error: {ex.SocketErrorCode}");
+                    return false;
+            }
+        }
+        catch (Exception ex)
+        {
+            // Catch-all for unexpected errors (e.g., invalid IP)
+            Trace.TraceError($"IpHelper: Error checking port: {ex.Message}");
+            return false;
+        }
     }
 }

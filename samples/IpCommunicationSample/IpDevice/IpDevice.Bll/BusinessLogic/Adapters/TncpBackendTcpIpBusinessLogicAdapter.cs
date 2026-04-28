@@ -1,5 +1,6 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
+using System.Diagnostics;
 using Bodoconsult.App.Abstractions.Interfaces;
 using Bodoconsult.App.BusinessTransactions.RequestData;
 using Bodoconsult.App.Interfaces;
@@ -10,7 +11,6 @@ using Bodoconsult.NetworkCommunication.NetworkCommands;
 using IpCommunicationSample.Common;
 using IpDevice.Bll.BusinessTransactions;
 using IpDevice.Bll.Interfaces;
-using Microsoft.Diagnostics.Utilities;
 
 namespace IpDevice.Bll.BusinessLogic.Adapters;
 
@@ -57,6 +57,8 @@ public class TncpBackendTcpIpBusinessLogicAdapter : BaseSimpleDeviceBusinessLogi
         {
             return;
         }
+
+        Trace.TraceInformation($"TncpBackendTcpIpBusinessLogicAdapter: received command >>{tncp.TelnetCommand}<< with message {message.MessageId}");
 
         NetworkCommand? command;
         HandleTncpMessage? del;

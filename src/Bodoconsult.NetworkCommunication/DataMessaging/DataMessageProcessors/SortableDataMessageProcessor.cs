@@ -13,6 +13,7 @@ namespace Bodoconsult.NetworkCommunication.DataMessaging.DataMessageProcessors;
 public class SortableDataMessageProcessor : BaseDataMessageProcessor
 {
     private readonly IInboundDataMessageSorter _dataMessageSorter;
+    private readonly string _loggerId;
 
     /// <summary>
     /// Default ctor
@@ -20,7 +21,9 @@ public class SortableDataMessageProcessor : BaseDataMessageProcessor
     public SortableDataMessageProcessor(IDataMessagingConfig config) : base(config)
     {
         ArgumentNullException.ThrowIfNull(Config.DataMessageProcessingPackage?.DataMessageSorter);
+
         _dataMessageSorter = Config.DataMessageProcessingPackage.DataMessageSorter;
+        _loggerId = $"{config.LoggerId}: SortableDataMessageProcessor: ";
     }
 
     /// <summary>
@@ -29,7 +32,7 @@ public class SortableDataMessageProcessor : BaseDataMessageProcessor
     /// <param name="message">Message to process</param>
     public override void ProcessMessage(IInboundMessage message)
     {
-        Trace.TraceInformation($"SortableDataMessageProcessor: received message {message.MessageId}: {message.RawMessageData.Length} bytes");
+        Trace.TraceInformation($"{_loggerId}received message {message.MessageId}: {message.RawMessageData.Length} bytes");
 
         // Handshake received
         if (message is IInboundHandShakeMessage handShake)
@@ -48,7 +51,7 @@ public class SortableDataMessageProcessor : BaseDataMessageProcessor
         // No valid message
         var s = $"message {message.MessageId} not valid: {message.GetType().Name}";
         Config.MonitorLogger.LogError(s);
-        Trace.TraceInformation($"SortableDataMessageProcessor: {s}");
+        Trace.TraceInformation($"{_loggerId}{s}");
     }
 
     private void ProcessSortableDataMessage(ISortableInboundDataMessage dataMessage)
@@ -64,7 +67,30 @@ public class SortableDataMessageProcessor : BaseDataMessageProcessor
         // Now process the message
         foreach (var msg in messages)
         {
-            AsyncHelper.FireAndForget2(() => Config.RaiseCommLayerDataMessageReceivedDelegate?.Invoke(msg)).ContinueWith(Callback);
+            AsyncHelper.FireAndForget2(() =>
+            {
+                try
+                {
+                    Config.RaiseCommLayerDataMessageReceivedDelegate?.Invoke(msg);
+                }
+                catch (Exception e)
+                {
+                    var s = $" failed {dataMessage.MessageId}: {dataMessage.RawMessageData.Length} bytes: {e}";
+                    Config.MonitorLogger.LogError(s);
+                    Trace.TraceError($"{_loggerId}{s}");
+                }
+            }).ContinueWith(Callback);
+
+            var result = _stopped.WaitOne(TimeOut);
+            if (result)
+            {
+                continue;
+            }
+            var msg1 = $"{dataMessage}delivering to message receiver timed out";
+            Config.AppLogger.LogError($"{Config.LoggerId}{msg1}");
+            Config.MonitorLogger.LogError(msg1);
+            Trace.TraceError($"{_loggerId}{msg1}");
+            return;
         }
     }
 }

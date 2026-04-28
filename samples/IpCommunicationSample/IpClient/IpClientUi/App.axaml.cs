@@ -1,11 +1,9 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH.  All rights reserved.
 
-using System.Diagnostics;
 using Avalonia;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Markup.Xaml;
 using Bodoconsult.App.Extensions;
-using Bodoconsult.App.Helpers;
 using Bodoconsult.App.ReactiveUI.Interfaces;
 using IpClient.Bll.App;
 

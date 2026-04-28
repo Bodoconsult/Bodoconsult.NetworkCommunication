@@ -1,7 +1,6 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
 using ReactiveUI;
-using ReactiveUI.SourceGenerators;
 
 namespace IpClientUi.Interfaces;
 

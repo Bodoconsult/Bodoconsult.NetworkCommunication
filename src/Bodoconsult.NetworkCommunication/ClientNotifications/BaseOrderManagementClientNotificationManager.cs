@@ -10,7 +10,7 @@ namespace Bodoconsult.NetworkCommunication.ClientNotifications;
 /// <summary>
 /// Current implementation of <see cref="IOrderManagementClientNotificationManager"/> for central event notification handling
 /// </summary>
-public abstract class OrderManagementClientNotificationManagerBase : IOrderManagementClientNotificationManager
+public abstract class BaseOrderManagementClientNotificationManager : IOrderManagementClientNotificationManager
 {
     #region Delegate definitions
 

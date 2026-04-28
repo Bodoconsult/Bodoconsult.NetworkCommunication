@@ -13,6 +13,7 @@ namespace Bodoconsult.NetworkCommunication.DataMessaging.DataMessageProcessors;
 public class LoggedDataMessageProcessor : BaseDataMessageProcessor
 {
     private readonly List<IInboundDataLogger> _dataLoggers;
+    private readonly string _loggerId;
 
     /// <summary>
     /// Default ctor
@@ -22,6 +23,7 @@ public class LoggedDataMessageProcessor : BaseDataMessageProcessor
         ArgumentNullException.ThrowIfNull(Config.DataMessageProcessingPackage);
 
         _dataLoggers = Config.DataMessageProcessingPackage.DataLoggers;
+        _loggerId = $"{config.LoggerId}: LoggedDataMessageProcessor: ";
     }
 
     /// <summary>
@@ -60,7 +62,30 @@ public class LoggedDataMessageProcessor : BaseDataMessageProcessor
         LogMessage(dataMessage);
 
         // Now process the messages
-        AsyncHelper.FireAndForget2(() => Config.RaiseCommLayerDataMessageReceivedDelegate?.Invoke(dataMessage)).ContinueWith(Callback);
+        AsyncHelper.FireAndForget2(() =>
+        {
+            try
+            {
+                Config.RaiseCommLayerDataMessageReceivedDelegate?.Invoke(dataMessage);
+            }
+            catch (Exception e)
+            {
+                var s = $" failed {dataMessage.MessageId}: {dataMessage.RawMessageData.Length} bytes: {e}";
+                Config.MonitorLogger.LogError(s);
+                Trace.TraceError($"{_loggerId}{s}");
+            }
+
+        }).ContinueWith(Callback);
+
+        var result = _stopped.WaitOne(TimeOut);
+        if (result)
+        {
+            return;
+        }
+        var msg1 = $"{dataMessage}delivering to message receiver timed out";
+        Config.AppLogger.LogError($"{Config.LoggerId}{msg1}");
+        Config.MonitorLogger.LogError(msg1);
+        Trace.TraceError($"{_loggerId}{msg1}");
     }
 
     private void LogMessage(IInboundDataMessage msg)

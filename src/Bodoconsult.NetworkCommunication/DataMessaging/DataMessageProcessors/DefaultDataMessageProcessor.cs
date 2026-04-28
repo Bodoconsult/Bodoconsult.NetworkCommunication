@@ -1,8 +1,8 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
-using System.Diagnostics;
 using Bodoconsult.App.Helpers;
 using Bodoconsult.NetworkCommunication.Interfaces;
+using System.Diagnostics;
 
 namespace Bodoconsult.NetworkCommunication.DataMessaging.DataMessageProcessors;
 
@@ -12,11 +12,15 @@ namespace Bodoconsult.NetworkCommunication.DataMessaging.DataMessageProcessors;
 /// </summary>
 public class DefaultDataMessageProcessor : BaseDataMessageProcessor
 {
+    private readonly string _loggerId;
+
     /// <summary>
     /// Default ctor
     /// </summary>
-    public DefaultDataMessageProcessor(IDataMessagingConfig config): base(config)
-    { }
+    public DefaultDataMessageProcessor(IDataMessagingConfig config) : base(config)
+    {
+        _loggerId = $"{config.LoggerId}: DefaultDataMessageProcessor: ";
+    }
 
     /// <summary>
     /// Process the message
@@ -24,7 +28,7 @@ public class DefaultDataMessageProcessor : BaseDataMessageProcessor
     /// <param name="message">Message to process</param>
     public override void ProcessMessage(IInboundMessage message)
     {
-        Trace.TraceInformation($"DefaultDataMessageProcessor: received message {message.MessageId}: {message.RawMessageData.Length} bytes");
+        Trace.TraceInformation($"{_loggerId}received message {message.MessageId}: {message.RawMessageData.Length} bytes");
 
         // Handshake received
         if (message is IInboundHandShakeMessage handShake)
@@ -43,7 +47,7 @@ public class DefaultDataMessageProcessor : BaseDataMessageProcessor
         // No valid message
         var s = $"message {message.MessageId} not valid: {message.GetType().Name}";
         Config.MonitorLogger.LogError(s);
-        Trace.TraceInformation($"DefaultDataMessageProcessor: {s}");
+        Trace.TraceInformation($"{_loggerId}{s}");
     }
 
     private void ProcessDataMessage(IInboundDataMessage dataMessage)
@@ -64,8 +68,18 @@ public class DefaultDataMessageProcessor : BaseDataMessageProcessor
             {
                 var s = $" failed {dataMessage.MessageId}: {dataMessage.RawMessageData.Length} bytes: {e}";
                 Config.MonitorLogger.LogError(s);
-                Trace.TraceInformation($"DefaultDataMessageProcessor: {s}");
+                Trace.TraceError($"{_loggerId}{s}");
             }
         }).ContinueWith(Callback);
+
+        var result = _stopped.WaitOne(TimeOut);
+        if (result)
+        {
+            return;
+        }
+        var msg = $"{dataMessage}delivering to message receiver timed out";
+        Config.AppLogger.LogError($"{Config.LoggerId}{msg}");
+        Config.MonitorLogger.LogError(msg);
+        Trace.TraceError($"{_loggerId}{msg}");
     }
 }

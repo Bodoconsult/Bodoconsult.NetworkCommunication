@@ -118,7 +118,7 @@ public abstract class BaseDuplexIo : IDuplexIo
 
         var count = await Sender.SendMessage(message);
 
-        Trace.TraceInformation($"BaseDuplexIo: message {message.MessageId} with {count} bytes sent");
+        //Trace.TraceInformation($"BaseDuplexIo: message {message.MessageId} with {count} bytes sent");
 
         var msr = count == 0 ? new MessageSendingResult(message, OrderExecutionResultState.Unsuccessful) : new MessageSendingResult(message, OrderExecutionResultState.Successful);
 

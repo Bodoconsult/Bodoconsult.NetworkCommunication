@@ -87,7 +87,7 @@ public static class TestDataHelper
         while (true)
         {
             var port = PortGenerator.Next(33000, 33049);
-            if (IpHelper.IsPortAvailable(port) || i >= 5)
+            if (IpHelper.IsLocalPortAvailable(port) || i >= 5)
             {
                 return port;
             }

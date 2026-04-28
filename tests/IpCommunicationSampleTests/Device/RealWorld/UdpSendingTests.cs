@@ -141,6 +141,16 @@ internal class UdpSendingTests
         //var bytes = Encoding.ASCII.GetBytes(hello);
         //Debug.Print($"{ArrayHelper.GetStringFromArrayCsharpStyle(bytes)}");
 
+        //var blubb = new byte[]
+        //    {
+        //        0x73, 0x65, 0x74, 0x2c, 0x73, 0x74, 0x72, 0x65, 0x61, 0x6d, 0x2c, 0x6d, 0x6f, 0x64, 0x65, 0x2c, 0x73,
+        //        0x6e, 0x61, 0x70, 0x73, 0x68, 0x6f, 0x74, 0x2c, 0x63, 0x6f, 0x6e, 0x74, 0x69, 0x6e, 0x69, 0x6f, 0x75,
+        //        0x73, 0xd, 0x73, 0x65, 0x74, 0x2c, 0x73, 0x74, 0x72, 0x65, 0x61, 0x6d, 0x2c, 0x6e, 0x75, 0x6d, 0x62,
+        //        0x65, 0x72, 0x2c, 0x34, 0xd, 0x73, 0x65, 0x74, 0x2c, 0x73, 0x74, 0x61, 0x74, 0x75, 0x73, 0x2c, 0x73,
+        //        0x74, 0x61, 0x72, 0x74, 0xd
+        //    };
+        //Debug.Print(Encoding.UTF8.GetString(blubb));
+
         // Arrange 
         CreateAndStartDevice();
         ArgumentNullException.ThrowIfNull(_deviceManager?.BackendUdp?.DeviceBusinessLogicAdapter);
@@ -160,6 +170,8 @@ internal class UdpSendingTests
             RemoteTcpIpDevice.Send(data.ToArray());
         });
 
+        Task.Delay(500);
+
         var data2 = new List<byte>();
         data2.AddRange(Encoding.UTF8.GetBytes("set,stream,mode,snapshot,continious"));
         data2.Add([DeviceCommunicationBasics.Cr]);
@@ -168,6 +180,8 @@ internal class UdpSendingTests
         {
             RemoteTcpIpDevice.Send(data2.ToArray());
         });
+
+        Task.Delay(500);
 
         var data3 = new List<byte>();
         data3.AddRange(Encoding.UTF8.GetBytes("set,status,start"));

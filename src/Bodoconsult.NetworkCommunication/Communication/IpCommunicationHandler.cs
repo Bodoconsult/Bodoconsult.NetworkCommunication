@@ -18,6 +18,9 @@ namespace Bodoconsult.NetworkCommunication.Communication;
 public class IpCommunicationHandler : ICommunicationHandler
 {
     private readonly IAppEventSource _appEventSource;
+    private readonly string _loggerId;
+    private readonly AutoResetEvent _stopped = new(false);
+    private const int TimeOut = 2000;
 
     private IWaitStateManager? _waitStateManager;
     private bool _isInitialized;
@@ -34,9 +37,10 @@ public class IpCommunicationHandler : ICommunicationHandler
     public IpCommunicationHandler(IDuplexIo duplexIo, IDataMessagingConfig dataMessagingConfig, IAppEventSourceFactory appEventSourceFactory)
     {
         _appEventSource = appEventSourceFactory.CreateInstance();
-
+        
         DuplexIo = duplexIo;
         DataMessagingConfig = dataMessagingConfig;
+        _loggerId = $"{DataMessagingConfig.LoggerId}: IpCommunicationHandler: ";
 
         UpdateDevice();
 
@@ -126,7 +130,7 @@ public class IpCommunicationHandler : ICommunicationHandler
         }
         catch (Exception e)
         {
-            Trace.TraceError($"IpCommunicationHandler: SendMessage failed: {e}");
+            Trace.TraceError($"{_loggerId}SendMessage failed: {e}");
             throw;
         }
     }
@@ -149,7 +153,7 @@ public class IpCommunicationHandler : ICommunicationHandler
     /// <param name="message">Data message received</param>
     public void OnReceivedMessage(IInboundDataMessage message)
     {
-        Trace.TraceInformation($"IpCommunicationHandler: received message {message.MessageId}: {message.RawMessageData.Length} bytes");
+        Trace.TraceInformation($"{_loggerId}received message {message.MessageId}: {message.RawMessageData.Length} bytes");
 
         ArgumentNullException.ThrowIfNull(DataMessagingConfig.DataMessageProcessingPackage);
         ArgumentNullException.ThrowIfNull(_waitStateManager);
@@ -172,11 +176,23 @@ public class IpCommunicationHandler : ICommunicationHandler
 
             if (DataMessagingConfig.RaiseAppLayerDataMessageReceivedDelegate == null)
             {
-                Trace.TraceWarning("IpCommunicationHandler: DataMessagingConfig.RaiseAppLayerDataMessageReceivedDelegate is null");
+                Trace.TraceWarning($"{_loggerId}DataMessagingConfig.RaiseAppLayerDataMessageReceivedDelegate is null");
             }
             else
             {
-                AsyncHelper.FireAndForget(() => DataMessagingConfig.RaiseAppLayerDataMessageReceivedDelegate.Invoke(message));
+                AsyncHelper.FireAndForget2(() =>
+                {
+                    try
+                    {
+                        DataMessagingConfig.RaiseAppLayerDataMessageReceivedDelegate.Invoke(message);
+                    }
+                    catch (Exception e)
+                    {
+                        Trace.TraceError($"{_loggerId}RaiseAppLayerDataMessageReceivedDelegate.Invoke: {e}");
+                    }
+                }).ContinueWith(Callback);
+
+                _stopped.WaitOne(TimeOut);
             }
 
             // Now log app performance measures (must be located after sending!)
@@ -185,8 +201,17 @@ public class IpCommunicationHandler : ICommunicationHandler
         }
         catch (Exception e)
         {
-            DataMessagingConfig.MonitorLogger.LogError($"IpCommunicationHandler: received message {message.MessageId} but handling failed", e);
+            DataMessagingConfig.MonitorLogger.LogError($"{_loggerId}received message {message.MessageId} but handling failed", e);
         }
+    }
+
+    /// <summary>
+    /// Callback metho th free <see cref="_stopped"/>
+    /// </summary>
+    /// <param name="ar">Asny result (not handled)</param>
+    protected void Callback(IAsyncResult ar)
+    {
+        _stopped.Set();
     }
 
     /// <summary>

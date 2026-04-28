@@ -10,9 +10,9 @@ namespace Bodoconsult.NetworkCommunication.DataMessaging.DataMessageProcessors;
 /// </summary>
 public abstract class BaseDataMessageProcessor : IDataMessageProcessor
 {
-    private readonly AutoResetEvent _stopped = new(false);
+    protected readonly AutoResetEvent _stopped = new(false);
 
-    private const int TimeOut = 2000;
+    protected const int TimeOut = 2000;
 
     /// <summary>
     /// Default ctor

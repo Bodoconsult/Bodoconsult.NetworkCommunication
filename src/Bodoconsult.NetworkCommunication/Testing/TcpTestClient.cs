@@ -62,7 +62,7 @@ public class TcpTestClient :   BaseTcpIpDevice
         var task = Socket.SendToAsync(data, _endPoint);
         task.Wait(CancellationTokenSource.Token);
 
-        Debug.Print($"TcpClient: sent {task.Result} byte(s)!");
+        //Trace.TraceInformation($"TcpClient: sent {task.Result} byte(s)!");
     }
 
     /// <summary>
@@ -84,7 +84,7 @@ public class TcpTestClient :   BaseTcpIpDevice
         }
 
         var msg = buffer.AsSpan()[..received].ToArray();
-        Debug.Print($"TcpClient: received {msg.Length} bytes");
+        //Trace.TraceInformation($"TcpClient: received {msg.Length} bytes");
         ReceivedMessages.Add(msg);
         return msg;
     }
