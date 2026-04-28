@@ -85,7 +85,7 @@ public partial class StartMessagingViewModel : ReactiveObject, IUiRegionViewMode
         {
             var request = new EmptyBusinessTransactionRequestData
             {
-                TransactionId = Snapshot ? ClientSideBusinessTransactionIds.StartStreaming : ClientSideBusinessTransactionIds.StopSnapshot
+                TransactionId = Snapshot ? ClientSideBusinessTransactionIds.StartSnapshot : ClientSideBusinessTransactionIds.StartStreaming
             };
 
             _businessTransactionManager.RunBusinessTransaction(request.TransactionId, request);
