@@ -126,7 +126,7 @@ public class RequestProcessor : IRequestProcessor
                 return ExitAction(order, OrderExecutionResultState.Unsuccessful);
             }
 
-            Trace.TraceInformation($"RP: {requestSpec.GetType().Name}: start execution...");
+            Trace.TraceInformation($"{_orderLoggerId}RP {requestSpec.Name}: start execution...");
 
             var result = requestSpec switch
             {
@@ -137,7 +137,7 @@ public class RequestProcessor : IRequestProcessor
                 _ => OrderExecutionResultState.NotProcessed
             };
 
-            Trace.TraceInformation($"RP: {requestSpec.GetType().Name}: execution ended with {result}");
+            Trace.TraceInformation($"{_orderLoggerId}RP: {requestSpec.Name}: execution ended with {result}");
 
             if (result.Id == OrderExecutionResultState.Successful.Id && !IsCancelled && !order.IsCancelled)
             {

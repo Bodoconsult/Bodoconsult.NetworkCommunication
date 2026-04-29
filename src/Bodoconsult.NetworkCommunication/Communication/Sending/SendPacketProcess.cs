@@ -71,9 +71,9 @@ public class SendPacketProcess : BaseSendPacketProcess
         _taskCompletionSourceWait = new TaskCompletionSource<IInboundHandShakeMessage?>(TaskCreationOptions.RunContinuationsAsynchronously);
         _taskCompletionSourceSend?.SetResult(true);
 
-        Trace.TraceInformation($"SSP:    start SEND waiting {DateTime.Now:O}");
+        //Trace.TraceInformation($"{LoggerId}SPP: start SEND waiting {DateTime.Now:O}");
         var taskResult = AsyncHelper.RunSync(() => _taskCompletionSourceWait.Task);
-        Trace.TraceInformation($"SSP:    stop SEND waiting {DateTime.Now:O}");
+        //Trace.TraceInformation($"{LoggerId}SPP: stop SEND waiting {DateTime.Now:O}");
         _taskCompletionSourceWait = null;
 
         if (taskResult == null)
@@ -151,7 +151,7 @@ public class SendPacketProcess : BaseSendPacketProcess
             return;
         }
 
-        Trace.TraceInformation($"SPP: Handshake received {DateTime.Now:O}");
+        Trace.TraceInformation($"{LoggerId}SPP: Handshake received {DateTime.Now:O}");
         //DataMessagingConfig.MonitorLogger?.LogDebug($"Message {Message.MessageId}: received handshake [{handshakeMessage.HandshakeMessageType:X2} {handshakeMessage.BlockAndRc:X2}]");
         DataMessagingConfig.MonitorLogger.LogDebug($"Message {Message.MessageId}: received handshake [{handshakeMessage.HandshakeMessageType:X2}]");
 

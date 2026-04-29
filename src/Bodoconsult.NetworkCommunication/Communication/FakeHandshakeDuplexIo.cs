@@ -12,7 +12,6 @@ namespace Bodoconsult.NetworkCommunication.Communication;
 /// </summary>
 public class FakeHandshakeDuplexIo : IDuplexIo
 {
-
     private int _counter;
 
     /// <summary>
@@ -23,7 +22,6 @@ public class FakeHandshakeDuplexIo : IDuplexIo
     {
         DataMessagingConfig = dataMessagingConfig;
     }
-
 
     /// <summary>
     /// The number of tries the handshake is received

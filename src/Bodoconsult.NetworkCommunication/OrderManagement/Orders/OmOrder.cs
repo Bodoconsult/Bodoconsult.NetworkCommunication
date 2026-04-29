@@ -24,8 +24,8 @@ public class OmOrder : IOrder
     {
         //Trace.TraceInformation("Create order "+id);
         Id = id;
+        TypeName = name;
         Name = name;
-        TypeName = Name;
         ParameterSet = parameterSet;
         ParameterSet.LoadOrder(this);
         DeviceId = "Device";

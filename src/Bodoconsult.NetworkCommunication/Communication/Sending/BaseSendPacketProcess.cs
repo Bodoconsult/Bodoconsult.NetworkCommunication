@@ -22,6 +22,11 @@ public abstract class BaseSendPacketProcess : ISendPacketProcess, IAsyncDisposab
     private IOrderExecutionResultState _processExecutionResult = OrderExecutionResultState.Unsuccessful;
 
     /// <summary>
+    /// Current logger ID
+    /// </summary>
+    protected string? LoggerId;
+
+    /// <summary>
     /// Current <see cref="IDuplexIo"/> instance
     /// </summary>
     public IDuplexIo? DuplexIo { get; private set; }
@@ -65,6 +70,7 @@ public abstract class BaseSendPacketProcess : ISendPacketProcess, IAsyncDisposab
         DuplexIo = duplexIo;
         ProcessExecutionResult = OrderExecutionResultState.NotProcessed;
         DataMessagingConfig = dataMessagingConfig;
+        LoggerId = $"{dataMessagingConfig.LoggerId}{(dataMessagingConfig.LoggerId.EndsWith(": ") ? string.Empty : ": ")}{GetType().Name}: ";
     }
 
     /// <summary>
@@ -169,10 +175,10 @@ public abstract class BaseSendPacketProcess : ISendPacketProcess, IAsyncDisposab
         // Call Context.ProcessDone() only if result was not TimeOut. Otherwise the repeated sending loop is broken
         if (ProcessExecutionResult == OrderExecutionResultState.Timeout)
         {
-            Trace.TraceInformation("BSSP: process unsuccessful");
+            Trace.TraceInformation($"{LoggerId}BSPP: process unsuccessful");
             return;
         }
-        Trace.TraceInformation("BSSP: process successful");
+        Trace.TraceInformation($"{LoggerId}BSPP: process successful");
 
         if (TaskCompletionSource is not
             {
@@ -184,7 +190,7 @@ public abstract class BaseSendPacketProcess : ISendPacketProcess, IAsyncDisposab
         {
             return;
         }
-        Trace.TraceInformation("BSSP: task completed true");
+        Trace.TraceInformation($"{LoggerId}BSPP: task completed true");
         TaskCompletionSource?.SetResult(true);
     }
 
@@ -215,7 +221,7 @@ public abstract class BaseSendPacketProcess : ISendPacketProcess, IAsyncDisposab
             //    return false;
             //}
 
-            Trace.TraceInformation($"BSPP:   send result {result.ProcessExecutionResult} {DateTime.Now:O}");
+            Trace.TraceInformation($"{LoggerId}BSPP: send result {result.ProcessExecutionResult} {DateTime.Now:O}");
 
             if (result.ProcessExecutionResult == OrderExecutionResultState.Successful)
             {
@@ -270,7 +276,7 @@ public abstract class BaseSendPacketProcess : ISendPacketProcess, IAsyncDisposab
             }
 
             ts.SetResult(false);
-            Trace.TraceInformation("BSPP: timeout");
+            Trace.TraceInformation($"{LoggerId}BSPP: timeout");
         });
     }
 
@@ -300,7 +306,7 @@ public abstract class BaseSendPacketProcess : ISendPacketProcess, IAsyncDisposab
     public void Execute()
     {
 
-        Trace.TraceInformation($"BSSP: start execution {DateTime.Now:O}");
+        Trace.TraceInformation($"{LoggerId}BSPP: start execution {DateTime.Now:O}");
 
         //Watch = Stopwatch.StartNew();
         CurrentSendAttempsCount = 0;
@@ -323,7 +329,7 @@ public abstract class BaseSendPacketProcess : ISendPacketProcess, IAsyncDisposab
         });
 
         // Now wait for execution success or timeout  (doing it in a non-blocking mannor)
-        Trace.TraceInformation($"BSSP: start MAIN waiting {DateTime.Now:O}");
+        Trace.TraceInformation($"{LoggerId}BSPP: start MAIN waiting {DateTime.Now:O}");
 
         var result = CreateWaitingTask(out TaskCompletionSource);
 
@@ -333,7 +339,7 @@ public abstract class BaseSendPacketProcess : ISendPacketProcess, IAsyncDisposab
         //Watch = null;
 
 
-        Trace.TraceInformation($"BSSP: left MAIN waiting {DateTime.Now:O}. Result {result}");
+        Trace.TraceInformation($"{LoggerId}BSPP: left MAIN waiting {DateTime.Now:O}. Result {result}");
 
         if (!result)
         {
@@ -343,7 +349,7 @@ public abstract class BaseSendPacketProcess : ISendPacketProcess, IAsyncDisposab
         // Unregister the wait state under all circumstances
         UnregisterWaitState();
 
-        Trace.TraceInformation($"BSSP: execution finished {DateTime.Now:O}");
+        Trace.TraceInformation($"{LoggerId}BSPP: execution finished {DateTime.Now:O}");
         
     }
 
@@ -354,7 +360,7 @@ public abstract class BaseSendPacketProcess : ISendPacketProcess, IAsyncDisposab
     {
         while (CurrentSendAttempsCount <= MaxSendAttemptCount)
         {
-            Trace.TraceInformation($"BSPP: current attempt {CurrentSendAttempsCount} at {DateTime.Now:hh:mm:ss}");
+            Trace.TraceInformation($"{LoggerId}BSPP: current attempt {CurrentSendAttempsCount} at {DateTime.Now:hh:mm:ss}");
 
             // Finished successful: break
             if (!IsDeviceReady)

@@ -18,7 +18,6 @@ public class DeviceRequestStepProcessor : IDeviceRequestStepProcessor
     private CancellationTokenSource? _tcs;
     private IDeviceRequestAnswerStep? _currentChainElement;
     private readonly Lock _currentChainElementObject = new();
-    private readonly string requestSpecName;
 
     /// <summary>
     /// Default ctor
@@ -27,8 +26,6 @@ public class DeviceRequestStepProcessor : IDeviceRequestStepProcessor
     {
         RequestSpec = requestSpec;
         DeviceRequestSpec = requestSpec;
-
-        requestSpecName = requestSpec.GetType().Name;
 
         ArgumentNullException.ThrowIfNull(RequestSpec.AppLogger);
     }
@@ -247,7 +244,7 @@ public class DeviceRequestStepProcessor : IDeviceRequestStepProcessor
         }
         catch (Exception e)
         {
-            RequestSpec.AppLogger?.LogError($"{RequestSpec.OrderLoggerId}{requestSpecName}: execution of requeststep failed", e);
+            RequestSpec.AppLogger?.LogError($"{RequestSpec.OrderLoggerId}{RequestSpec.Name}: execution of requeststep failed", e);
             return OrderExecutionResultState.Unsuccessful;
         }
     }
@@ -263,7 +260,7 @@ public class DeviceRequestStepProcessor : IDeviceRequestStepProcessor
         // Set the next request answer step
         requestSpec.CurrentSentMessage = message;
 
-        var s = $"{requestSpec.OrderLoggerId}{requestSpecName}ExecuteRequest: prepare start";
+        var s = $"{requestSpec.OrderLoggerId}{RequestSpec.Name}ExecuteRequest: prepare start";
         Trace.TraceInformation($"{s}");
         requestSpec.AppLogger?.LogDebug(s);
 
@@ -468,7 +465,7 @@ public class DeviceRequestStepProcessor : IDeviceRequestStepProcessor
 
         CurrentChainElement = (IDeviceRequestAnswerStep)DeviceRequestSpec.RequestAnswerSteps[0];
 
-        Trace.TraceInformation($"{RequestSpec.OrderLoggerId}RSP {requestSpecName}: chain started");
+        Trace.TraceInformation($"{RequestSpec.OrderLoggerId}RSP {RequestSpec.Name}: chain started");
         while (true)
         {
             var element = CurrentChainElement;
@@ -485,19 +482,19 @@ public class DeviceRequestStepProcessor : IDeviceRequestStepProcessor
                 // Call a delegate for failed steps now if available
                 element.HandleRequestAnswerStepFailedDelegate?.Invoke();
 
-                Trace.TraceInformation($"{RequestSpec.OrderLoggerId}RSP {requestSpecName}: chain done: Result {Result}");
+                Trace.TraceInformation($"{RequestSpec.OrderLoggerId}RSP {RequestSpec.Name}: chain done: Result {Result}");
                 break;
             }
 
             // Last chain element and success
             if (element.NextChainElement == null)
             {
-                Trace.TraceInformation($"{RequestSpec.OrderLoggerId}RSP {requestSpecName}: chain done");
+                Trace.TraceInformation($"{RequestSpec.OrderLoggerId}RSP {RequestSpec.Name}: chain done");
                 break;
             }
 
             // More chain elements existing
-            Trace.TraceInformation($"{RequestSpec.OrderLoggerId}RSP {requestSpecName}: next element in chain");
+            Trace.TraceInformation($"{RequestSpec.OrderLoggerId}RSP {RequestSpec.Name}: next element in chain");
             CurrentChainElement = element.NextChainElement;
             Result = OrderExecutionResultState.Unsuccessful;
         }
