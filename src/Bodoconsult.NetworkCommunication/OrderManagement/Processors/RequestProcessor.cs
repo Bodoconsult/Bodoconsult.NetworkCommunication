@@ -65,7 +65,7 @@ public class RequestProcessor : IRequestProcessor
         //{
         //    return;
         //}
-        _orderLoggerId = $"{_device.DataMessagingConfig.LoggerId}{Order.LoggerId}";
+        _orderLoggerId = $"{_device.DataMessagingConfig.LoggerId}{(_device.DataMessagingConfig.LoggerId.EndsWith(": ") ? string.Empty : ":")}{Order.LoggerId}";
         _appLogger = _device.DataMessagingConfig.AppLogger;
     }
 

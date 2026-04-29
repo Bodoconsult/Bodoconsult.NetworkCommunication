@@ -219,7 +219,7 @@ public class StateMachineOrderProcessor : BaseOrderProcessor
             StopExecutionOfSyncOrder(order.Id, erg);
         }
 
-        Trace.TraceInformation($"TOP: {OrderPipeline.CurrentOrderState}");
+        Trace.TraceInformation($"{LoggerId}OrderProcessingFinished: {OrderPipeline.CurrentOrderState}");
         _device.CurrentState?.RequestNextState();
     }
 

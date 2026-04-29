@@ -27,7 +27,7 @@ public class OrderManager : IOrderManager
         IOrderFactory orderFactory)
     {
         MessagingConfig = messagingConfig;
-        _loggerId = MessagingConfig.LoggerId;
+        _loggerId =  $"{MessagingConfig.LoggerId}{(MessagingConfig.LoggerId.EndsWith(": ") ? string.Empty : ": ")}{GetType().Name}: ";
         OrderProcessor = deviceOrderProcessor;
         OrderReceiver = deviceOrderReceiver;
         OrderFactory = orderFactory;
@@ -83,8 +83,8 @@ public class OrderManager : IOrderManager
     /// <param name="dataMessage">Received message</param>
     public void OnDeviceMessageReceived(IInboundDataMessage dataMessage)
     {
-        Trace.TraceInformation($"{_loggerId}message received: {dataMessage.ToInfoString()}");
-        _appLogger.LogDebug($"{_loggerId}message received: {dataMessage.ToInfoString()}");
+        //Trace.TraceInformation($"{_loggerId}message received: {dataMessage.ToInfoString()}");
+        //_appLogger.LogDebug($"{_loggerId}message received: {dataMessage.ToInfoString()}");
         OrderReceiver.AddReceivedMessage(dataMessage);
     }
 
