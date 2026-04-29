@@ -11,6 +11,11 @@ namespace Bodoconsult.NetworkCommunication.DataMessaging.DataMessageProcessors;
 public abstract class BaseDataMessageProcessor : IDataMessageProcessor
 {
     /// <summary>
+    /// Logger ID
+    /// </summary>
+    protected readonly string LoggerId;
+
+    /// <summary>
     /// Stopped event to wait for messages to be delivered to next step
     /// </summary>
     protected readonly AutoResetEvent Stopped = new(false);
@@ -26,6 +31,7 @@ public abstract class BaseDataMessageProcessor : IDataMessageProcessor
     protected BaseDataMessageProcessor(IDataMessagingConfig config)
     {
         Config = config;
+        LoggerId = $"{config.LoggerId}{(config.LoggerId.EndsWith(": ") ? string.Empty : ": ")}{GetType().Name}: ";
     }
 
     /// <summary>

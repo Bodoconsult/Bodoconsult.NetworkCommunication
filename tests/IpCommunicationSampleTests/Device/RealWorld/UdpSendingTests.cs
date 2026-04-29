@@ -164,7 +164,7 @@ internal class UdpSendingTests
         // Act  
         var data = new List<byte>();
         data.AddRange( Encoding.UTF8.GetBytes("set,stream,number,4"));
-        data.Add([DeviceCommunicationBasics.Cr]);
+        data.Add([DeviceCommunicationBasics.Lf]);
         AsyncHelper.FireAndForget(() =>
         {
             RemoteTcpIpDevice.Send(data.ToArray());
@@ -174,7 +174,7 @@ internal class UdpSendingTests
 
         var data2 = new List<byte>();
         data2.AddRange(Encoding.UTF8.GetBytes("set,stream,mode,continious"));
-        data2.Add([DeviceCommunicationBasics.Cr]);
+        data2.Add([DeviceCommunicationBasics.Lf]);
 
         AsyncHelper.FireAndForget(() =>
         {
@@ -185,7 +185,7 @@ internal class UdpSendingTests
 
         var data3 = new List<byte>();
         data3.AddRange(Encoding.UTF8.GetBytes("set,status,start"));
-        data3.Add([DeviceCommunicationBasics.Cr]);
+        data3.Add([DeviceCommunicationBasics.Lf]);
         AsyncHelper.FireAndForget(() =>
         {
             RemoteTcpIpDevice.Send(data3.ToArray());

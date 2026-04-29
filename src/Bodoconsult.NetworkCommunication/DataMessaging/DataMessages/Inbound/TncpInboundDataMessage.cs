@@ -70,7 +70,7 @@ public class TncpInboundDataMessage : IInboundDataMessage
     /// <returns>Info string</returns>
     public string ToInfoString()
     {
-        return $"BtcpInboundDataMessage ID {MessageId} Command {TelnetCommand} {RawMessageDataClearText}";
+        return $"TncpInboundDataMessage ID {MessageId} Command {RawMessageDataClearText}";
     }
 
     /// <summary>
@@ -79,7 +79,7 @@ public class TncpInboundDataMessage : IInboundDataMessage
     /// <returns>Info string</returns>
     public string ToShortInfoString()
     {
-        return $"BtcpInboundDataMessage ID {MessageId} Command {TelnetCommand}";
+        return $"TncpInboundDataMessage ID {MessageId} Command {TelnetCommand}";
     }
 
     /// <summary>

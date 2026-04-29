@@ -54,7 +54,7 @@ public class IpHighPerformanceDuplexIo : BaseDuplexIo, IDuplexPipe
             }
             catch (Exception e)
             {
-                Debug.Print(e.ToString());
+                Trace.TraceInformation(e.ToString());
                 _config.MonitorLogger?.LogError(e, "Starting comm failed");
             }
 

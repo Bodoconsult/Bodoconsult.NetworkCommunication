@@ -60,13 +60,13 @@ public class UdpDatagramIpDuplexIoSender : BaseDuplexIoSender
         string msg;
         try
         {
-            //Debug.Print("Send really");
+            //Trace.TraceInformation("Send really");
 
             if (EncodeMessage(message))
             {
                 msg = $"Encoding for message failed: {message.MessageId}";
                 DataMessagingConfig.MonitorLogger.LogError(msg);
-                Trace.TraceError(msg);
+                Trace.TraceError($"{LoggerId}{msg}");
                 return 0;
             }
 
@@ -82,7 +82,7 @@ public class UdpDatagramIpDuplexIoSender : BaseDuplexIoSender
             AsyncHelper.FireAndForget(() => DataMessagingConfig.RaiseDataMessageNotSentDelegate?.Invoke(message.RawMessageData, msg));
             DataMessagingConfig.MonitorLogger.LogError(msg);
             DataMessagingConfig.AppLogger.LogError($"{DataMessagingConfig.LoggerId}{msg}");
-            Trace.TraceError(msg);
+            Trace.TraceError($"{LoggerId}{msg}");
         }
         catch (Exception e)
         {
@@ -90,7 +90,7 @@ public class UdpDatagramIpDuplexIoSender : BaseDuplexIoSender
             AsyncHelper.FireAndForget(() => DataMessagingConfig.RaiseDataMessageNotSentDelegate?.Invoke(message.RawMessageData, msg));
             DataMessagingConfig.MonitorLogger.LogError(msg);
             DataMessagingConfig.AppLogger.LogError($"{DataMessagingConfig.LoggerId}{msg}");
-            Trace.TraceError(msg);
+            Trace.TraceError($"{LoggerId}{msg}");
         }
 
         return 0;
@@ -138,7 +138,7 @@ public class UdpDatagramIpDuplexIoSender : BaseDuplexIoSender
 
 #if DEBUG
             var s = $"{message.RawMessageDataClearText}  {message.ToShortInfoString()}";
-            //Debug.Print(s);
+            //Trace.TraceInformation(s);
             dataMessagingConfig.MonitorLogger.LogDebug($"Message sent {s}: {message.RawMessageData.Length}");
 #endif
             AsyncHelper.FireAndForget(() =>
@@ -153,7 +153,7 @@ public class UdpDatagramIpDuplexIoSender : BaseDuplexIoSender
                 _isSending = false;
             }
 
-            Trace.TraceError($"SendMessageInternal: {socketException}");
+            Trace.TraceError($"{LoggerId}SendMessageInternal: {socketException}");
             dataMessagingConfig.MonitorLogger.LogError("Send process failed", socketException);
             AsyncHelper.FireAndForget(() =>
             {
@@ -168,7 +168,7 @@ public class UdpDatagramIpDuplexIoSender : BaseDuplexIoSender
             {
                 _isSending = false;
             }
-            Trace.TraceError($"SendMessageInternal: {sendException}");
+            Trace.TraceError($"{LoggerId}SendMessageInternal: {sendException}");
             dataMessagingConfig.MonitorLogger.LogError("Send process failed", sendException);
             AsyncHelper.FireAndForget(() => dataMessagingConfig.RaiseDataMessageNotSentDelegate?.Invoke(message.RawMessageData, sendException.Message));
             throw;

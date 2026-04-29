@@ -13,7 +13,6 @@ namespace Bodoconsult.NetworkCommunication.DataMessaging.DataMessageProcessors;
 public class LoggedDataMessageProcessor : BaseDataMessageProcessor
 {
     private readonly List<IInboundDataLogger> _dataLoggers;
-    private readonly string _loggerId;
 
     /// <summary>
     /// Default ctor
@@ -23,7 +22,6 @@ public class LoggedDataMessageProcessor : BaseDataMessageProcessor
         ArgumentNullException.ThrowIfNull(Config.DataMessageProcessingPackage);
 
         _dataLoggers = Config.DataMessageProcessingPackage.DataLoggers;
-        _loggerId = $"{config.LoggerId}: LoggedDataMessageProcessor: ";
     }
 
     /// <summary>
@@ -32,7 +30,9 @@ public class LoggedDataMessageProcessor : BaseDataMessageProcessor
     /// <param name="message">Message to process</param>
     public override void ProcessMessage(IInboundMessage message)
     {
-        Trace.TraceInformation($"LoggedDataMessageProcessor: received message {message.MessageId}: {message.RawMessageData.Length} bytes");
+        Trace.TraceInformation($"{LoggerId}received message {message.MessageId}: {message.RawMessageData.Length} bytes");
+
+        Stopped.Reset();
 
         // Handshake received
         if (message is IInboundHandShakeMessage handShake)
@@ -72,7 +72,7 @@ public class LoggedDataMessageProcessor : BaseDataMessageProcessor
             {
                 var s = $" failed {dataMessage.MessageId}: {dataMessage.RawMessageData.Length} bytes: {e}";
                 Config.MonitorLogger.LogError(s);
-                Trace.TraceError($"{_loggerId}{s}");
+                Trace.TraceError($"{LoggerId}{s}");
             }
 
         }).ContinueWith(Callback);
@@ -85,7 +85,7 @@ public class LoggedDataMessageProcessor : BaseDataMessageProcessor
         var msg1 = $"{dataMessage}delivering to message receiver timed out";
         Config.AppLogger.LogError($"{Config.LoggerId}{msg1}");
         Config.MonitorLogger.LogError(msg1);
-        Trace.TraceError($"{_loggerId}{msg1}");
+        Trace.TraceError($"{LoggerId}{msg1}");
     }
 
     private void LogMessage(IInboundDataMessage msg)

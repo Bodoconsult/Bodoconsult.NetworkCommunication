@@ -18,6 +18,11 @@ public abstract class BaseWaitStateManager : IWaitStateManager
     /// Received handshakes queue
     /// </summary>
     protected readonly IProducerConsumerQueue<InboundHandshakeMessage> ReceivedHandshakes = new ProducerConsumerQueue<InboundHandshakeMessage>();
+
+    /// <summary>
+    /// Current loggerID
+    /// </summary>
+    protected string LoggerId;
     
     /// <summary>
     /// Registered wait states
@@ -32,6 +37,7 @@ public abstract class BaseWaitStateManager : IWaitStateManager
     protected BaseWaitStateManager(IDataMessagingConfig dataMessagingConfig)
     {
         DataMessagingConfig = dataMessagingConfig;
+        LoggerId = $"{dataMessagingConfig.LoggerId}{(dataMessagingConfig.LoggerId.EndsWith(": ") ? string.Empty : ": ")}{GetType().Name}: ";
 
         ReceivedHandshakes.ConsumerTaskDelegate = ConsumerTaskDelegate;
         ReceivedHandshakes.StartConsumer();
@@ -60,7 +66,7 @@ public abstract class BaseWaitStateManager : IWaitStateManager
     public virtual void OnHandshakeReceived(IInboundHandShakeMessage msg)
     {
 
-        Debug.Print("Handshake reached wait state manager 1");
+        Trace.TraceInformation($"{LoggerId}Handshake reached wait state manager 1");
 
         if (msg is not InboundHandshakeMessage handshake)
         {
@@ -85,7 +91,7 @@ public abstract class BaseWaitStateManager : IWaitStateManager
         catch (Exception e)
         {
             var msg1 = $"Handshake {handshake.HandshakeMessageType} received but handling error: {e}";
-            Trace.TraceError(msg1);
+            Trace.TraceError($"{LoggerId}{msg1}");
             DataMessagingConfig.MonitorLogger.LogError(msg1);
         }
     }
@@ -108,7 +114,7 @@ public abstract class BaseWaitStateManager : IWaitStateManager
             WaitStates.Add(state);
         }
         //Smddevice.MonitorLogger.LogInformation("WaitState registered");
-        Debug.Print($"WSM: WaitState registered: {Count}");
+        Trace.TraceInformation($"{LoggerId}WSM: WaitState registered: {Count}");
 
     }
 
@@ -151,7 +157,7 @@ public abstract class BaseWaitStateManager : IWaitStateManager
         // Get the counters at method start to avoid later change resulting from new input
         var waitStateCount = Count;
 
-        var msg = $"Handshake {handshake.HandshakeMessageType} reached wait state manager 2: ({waitStateCount} states waiting)";
+        var msg = $"{LoggerId}Handshake {handshake.HandshakeMessageType} reached wait state manager 2: ({waitStateCount} states waiting)";
         Trace.TraceInformation(msg);
 
         List<SendPacketProcess> waitStates;

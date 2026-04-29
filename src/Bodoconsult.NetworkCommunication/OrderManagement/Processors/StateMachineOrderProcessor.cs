@@ -219,7 +219,7 @@ public class StateMachineOrderProcessor : BaseOrderProcessor
             StopExecutionOfSyncOrder(order.Id, erg);
         }
 
-        Debug.Print($"TOP: {OrderPipeline.CurrentOrderState}");
+        Trace.TraceInformation($"TOP: {OrderPipeline.CurrentOrderState}");
         _device.CurrentState?.RequestNextState();
     }
 
@@ -242,7 +242,7 @@ public class StateMachineOrderProcessor : BaseOrderProcessor
         //    return false;
         //}
 
-        Debug.Print($"TOP: message received: {receivedMessage.ToInfoString()}");
+        Trace.TraceInformation($"{LoggerId}CheckReceivedMessage: message received: {receivedMessage.ToShortInfoString()}");
 
         //*********************
         // TOP 1 A X message with a error code of 0 makes no sense: throw this message away

@@ -361,7 +361,7 @@ public abstract class BaseOrderManagementDevice : IOrderManagementDevice
         var isInit = OrderProcessor.IsInitInProcessing;
 
         var s = $"{DataMessagingConfig.LoggerId}{OrderProcessor.OrderPipeline.CurrentOrderState} Init {isInit}";
-        Debug.Print(s);
+        Trace.TraceInformation(s);
         AppLogger.LogDebug(s);
 
         // ****************************
@@ -588,7 +588,7 @@ public abstract class BaseOrderManagementDevice : IOrderManagementDevice
     {
         MonitorLogger.LogDebug(message, memberName, filepath, lineNumber);
         AppLogger.LogDebug($"{DataMessagingConfig.LoggerId}{message}", memberName, filepath, lineNumber);
-        Debug.Print($"BaseOrdermanagementDevice: {message}");
+        Trace.TraceInformation($"BaseOrdermanagementDevice: {message}");
     }
 
     /// <summary>
@@ -605,7 +605,7 @@ public abstract class BaseOrderManagementDevice : IOrderManagementDevice
     {
         MonitorLogger.LogInformation(message, memberName, filepath, lineNumber);
         AppLogger.LogInformation($"{DataMessagingConfig.LoggerId}{message}", memberName, filepath, lineNumber);
-        Debug.Print($"BaseOrdermanagementDevice: {message}");
+        Trace.TraceInformation($"BaseOrdermanagementDevice: {message}");
     }
 
     /// <summary>
@@ -622,7 +622,7 @@ public abstract class BaseOrderManagementDevice : IOrderManagementDevice
     {
         MonitorLogger.LogWarning(message, memberName, filepath, lineNumber);
         AppLogger.LogWarning($"{DataMessagingConfig.LoggerId}{message}", memberName, filepath, lineNumber);
-        Debug.Print($"BaseOrdermanagementDevice: {message}");
+        Trace.TraceInformation($"BaseOrdermanagementDevice: {message}");
     }
 
     /// <summary>
@@ -639,7 +639,7 @@ public abstract class BaseOrderManagementDevice : IOrderManagementDevice
     {
         MonitorLogger.LogError(message, memberName, filepath, lineNumber);
         AppLogger.LogError($"{DataMessagingConfig.LoggerId}{message}", memberName, filepath, lineNumber);
-        Debug.Print($"BaseOrdermanagementDevice: {message}");
+        Trace.TraceInformation($"BaseOrdermanagementDevice: {message}");
     }
 
 

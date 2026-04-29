@@ -60,7 +60,7 @@ public class EdcpDataMessageSplitter : IDataMessageSplitter
 
     private bool TryReadCommandInternal(ref ReadOnlySequence<byte> buffer, out ReadOnlySequence<byte> command)
     {
-        //Debug.Print($"TryReadCommand: {GetStringFromArray(buffer.ToArray())}");
+        //Trace.TraceInformation($"TryReadCommand: {GetStringFromArray(buffer.ToArray())}");
 
         if (buffer.Length == 0)
         {

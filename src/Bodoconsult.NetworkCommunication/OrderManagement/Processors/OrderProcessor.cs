@@ -76,7 +76,7 @@ public class OrderProcessor : BaseOrderProcessor
             StopExecutionOfSyncOrder(order.Id, erg);
         }
 
-        Debug.Print($"TOP: {OrderPipeline.CurrentOrderState}");
+        Trace.TraceInformation($"TOP: {OrderPipeline.CurrentOrderState}");
     }
 
     /// <summary>
@@ -242,7 +242,7 @@ public class OrderProcessor : BaseOrderProcessor
         //    return false;
         //}
 
-        Debug.Print($"TOP: message received: {receivedMessage.ToInfoString()}");
+        Trace.TraceInformation( $"{LoggerId}message received: {receivedMessage.ToShortInfoString()}");
 
         //*********************
         // TOP 1 A X message with a error code of 0 makes no sense: throw this message away
@@ -314,10 +314,4 @@ public class OrderProcessor : BaseOrderProcessor
 
         _device .NoStateMachineHandleErrorMessageDelegate?.Invoke(msg);
     }
-
-
-
-
-
-
 }

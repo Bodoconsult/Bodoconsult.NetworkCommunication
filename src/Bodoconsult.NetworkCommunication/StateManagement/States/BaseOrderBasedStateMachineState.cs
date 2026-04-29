@@ -58,7 +58,7 @@ public abstract class BaseOrderBasedStateMachineState : BaseStateMachineState, I
         catch (Exception e)
         {
             var msg = $"{e}";
-            Debug.Print(msg);
+            Trace.TraceInformation(msg);
             Trace.TraceError($"BaseOrderBasedStateMachineState :{msg}");
             throw;
         }
@@ -173,7 +173,7 @@ public abstract class BaseOrderBasedStateMachineState : BaseStateMachineState, I
         }
         catch (Exception e)
         {
-            Debug.Print(e.ToString());
+            Trace.TraceInformation(e.ToString());
         }
     }
 

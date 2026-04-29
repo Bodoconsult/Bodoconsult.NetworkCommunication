@@ -75,7 +75,7 @@ public class UdpDatagramIpDuplexIo: BaseDuplexIo
     {
         try
         {
-            //Debug.Print($"IsWorkInProgress: {value}");
+            //Trace.TraceInformation($"IsWorkInProgress: {value}");
             lock (_lockObject)
             {
                 IsWorkInProgress = value;

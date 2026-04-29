@@ -169,10 +169,10 @@ public abstract class BaseSendPacketProcess : ISendPacketProcess, IAsyncDisposab
         // Call Context.ProcessDone() only if result was not TimeOut. Otherwise the repeated sending loop is broken
         if (ProcessExecutionResult == OrderExecutionResultState.Timeout)
         {
-            Debug.Print("BSSP: process unsuccessful");
+            Trace.TraceInformation("BSSP: process unsuccessful");
             return;
         }
-        Debug.Print("BSSP: process successful");
+        Trace.TraceInformation("BSSP: process successful");
 
         if (TaskCompletionSource is not
             {
@@ -184,7 +184,7 @@ public abstract class BaseSendPacketProcess : ISendPacketProcess, IAsyncDisposab
         {
             return;
         }
-        Debug.Print("BSSP: task completed true");
+        Trace.TraceInformation("BSSP: task completed true");
         TaskCompletionSource?.SetResult(true);
     }
 
@@ -215,7 +215,7 @@ public abstract class BaseSendPacketProcess : ISendPacketProcess, IAsyncDisposab
             //    return false;
             //}
 
-            Debug.Print($"BSPP:   send result {result.ProcessExecutionResult} {DateTime.Now:O}");
+            Trace.TraceInformation($"BSPP:   send result {result.ProcessExecutionResult} {DateTime.Now:O}");
 
             if (result.ProcessExecutionResult == OrderExecutionResultState.Successful)
             {
@@ -270,7 +270,7 @@ public abstract class BaseSendPacketProcess : ISendPacketProcess, IAsyncDisposab
             }
 
             ts.SetResult(false);
-            Debug.Print("BSPP: timeout");
+            Trace.TraceInformation("BSPP: timeout");
         });
     }
 
@@ -300,7 +300,7 @@ public abstract class BaseSendPacketProcess : ISendPacketProcess, IAsyncDisposab
     public void Execute()
     {
 
-        Debug.Print($"BSSP: start execution {DateTime.Now:O}");
+        Trace.TraceInformation($"BSSP: start execution {DateTime.Now:O}");
 
         //Watch = Stopwatch.StartNew();
         CurrentSendAttempsCount = 0;
@@ -323,7 +323,7 @@ public abstract class BaseSendPacketProcess : ISendPacketProcess, IAsyncDisposab
         });
 
         // Now wait for execution success or timeout  (doing it in a non-blocking mannor)
-        Debug.Print($"BSSP: start MAIN waiting {DateTime.Now:O}");
+        Trace.TraceInformation($"BSSP: start MAIN waiting {DateTime.Now:O}");
 
         var result = CreateWaitingTask(out TaskCompletionSource);
 
@@ -333,7 +333,7 @@ public abstract class BaseSendPacketProcess : ISendPacketProcess, IAsyncDisposab
         //Watch = null;
 
 
-        Debug.Print($"BSSP: left MAIN waiting {DateTime.Now:O}. Result {result}");
+        Trace.TraceInformation($"BSSP: left MAIN waiting {DateTime.Now:O}. Result {result}");
 
         if (!result)
         {
@@ -343,7 +343,7 @@ public abstract class BaseSendPacketProcess : ISendPacketProcess, IAsyncDisposab
         // Unregister the wait state under all circumstances
         UnregisterWaitState();
 
-        Debug.Print($"BSSP: execution finished {DateTime.Now:O}");
+        Trace.TraceInformation($"BSSP: execution finished {DateTime.Now:O}");
         
     }
 
@@ -354,7 +354,7 @@ public abstract class BaseSendPacketProcess : ISendPacketProcess, IAsyncDisposab
     {
         while (CurrentSendAttempsCount <= MaxSendAttemptCount)
         {
-            Debug.Print($"BSPP: current attempt {CurrentSendAttempsCount} at {DateTime.Now:hh:mm:ss}");
+            Trace.TraceInformation($"BSPP: current attempt {CurrentSendAttempsCount} at {DateTime.Now:hh:mm:ss}");
 
             // Finished successful: break
             if (!IsDeviceReady)

@@ -22,7 +22,7 @@ public class OmOrder : IOrder
     /// </summary>
     public OmOrder(long id, string name, IParameterSet parameterSet)
     {
-        //Debug.Print("Create order "+id);
+        //Trace.TraceInformation("Create order "+id);
         Id = id;
         Name = name;
         TypeName = Name;

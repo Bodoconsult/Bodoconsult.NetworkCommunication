@@ -8,7 +8,7 @@ namespace Bodoconsult.NetworkCommunication.Protocols.TcpIp;
 /// <summary>
 /// Fake implementation of <see cref="ISocketProxy"/>
 /// </summary>
-public class FakeTcpIpSocketProxy : TcpIpSocketProxyBase
+public class FakeTcpIpSocketProxy : BaseTcpIpSocketProxy
 {
     /// <summary>
     /// Data for receiving methods

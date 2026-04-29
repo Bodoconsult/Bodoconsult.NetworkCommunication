@@ -152,7 +152,7 @@ public class IpCommunicationAdapter : ICommunicationAdapter
     /// <returns>True if the initialiazation was successfull else false</returns>
     public bool ComDevInit()
     {
-        //Debug.Print("ComDevInit");
+        //Trace.TraceInformation("ComDevInit");
 
         string msg;
 
@@ -182,7 +182,7 @@ public class IpCommunicationAdapter : ICommunicationAdapter
                 SetOrderProcessingStateDelegate?.Invoke(false);
 
                 InitCommunicationObjects();
-                //Debug.Print("ComDevInit successful");
+                //Trace.TraceInformation("ComDevInit successful");
 
                 if (DataMessagingConfig.SendHelloMessageDelegate != null)
                 {
@@ -343,7 +343,7 @@ public class IpCommunicationAdapter : ICommunicationAdapter
                 const string msg = "ComDevClose: all steps performed";
                 DataMessagingConfig.MonitorLogger.LogError(msg);
                 DataMessagingConfig.AppLogger.LogError($"{DataMessagingConfig.LoggerId}{msg}");
-                //Debug.Print($"ComDevClose: tower state {TowerState}");
+                //Trace.TraceInformation($"ComDevClose: tower state {TowerState}");
                 //DataMessagingConfig.AppLogger.LogInformation($"{DataMessagingConfig.LoggerId}ComDevClose: all steps performed ");
             }
         }

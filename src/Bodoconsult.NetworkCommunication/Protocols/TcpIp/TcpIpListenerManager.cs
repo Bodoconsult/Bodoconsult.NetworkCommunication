@@ -174,7 +174,7 @@ public class TcpIpListenerManager : ITcpIpListenerManager
             }
             catch (Exception e)
             {
-                Debug.Print(e.ToString());
+                Trace.TraceInformation(e.ToString());
             }
         });
 

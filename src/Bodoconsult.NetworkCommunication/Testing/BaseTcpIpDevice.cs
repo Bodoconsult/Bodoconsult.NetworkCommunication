@@ -76,7 +76,7 @@ public abstract class BaseTcpIpDevice : ITcpIpDevice
             }
             //catch (Exception e)
             //{
-            //    Debug.Print(e.ToString());
+            //    Trace.TraceInformation(e.ToString());
             //}
         }
     }

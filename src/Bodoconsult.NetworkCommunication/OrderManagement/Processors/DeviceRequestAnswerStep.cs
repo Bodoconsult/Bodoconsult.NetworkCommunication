@@ -124,18 +124,24 @@ public class DeviceRequestAnswerStep : BaseRequestAnswerStep, IDeviceRequestAnsw
 
                 if (answer.HandleRequestAnswerOnSuccessDelegate == null)
                 {
+                    //return new MessageHandlingResult
+                    //{
+                    //    Error = 5,
+                    //    ExecutionResult = OrderExecutionResultState.Unsuccessful,
+                    //    ErrorDescription = "HandleRequestAnswerOnSuccessDelegate is null"
+                    //};
+
                     return new MessageHandlingResult
                     {
-                        Error = 5,
-                        ExecutionResult = OrderExecutionResultState.Unsuccessful,
-                        ErrorDescription = "HandleRequestAnswerOnSuccessDelegate is null"
+                        Error = 0,
+                        ExecutionResult = OrderExecutionResultState.Successful
                     };
                 }
 
-                Debug.Print($"{answer.HandleRequestAnswerOnSuccessDelegate.Method.Name}");
-                Debug.Print("Start delegate...");
+                Trace.TraceInformation($"{answer.HandleRequestAnswerOnSuccessDelegate.Method.Name}");
+                Trace.TraceInformation("Start delegate...");
                 result = answer.HandleRequestAnswerOnSuccessDelegate.Invoke(answer.ReceivedMessage, requestSpec.TransportObject, requestSpec.ParameterSet);
-                Debug.Print("End delegate...");
+                Trace.TraceInformation("End delegate...");
             }
             catch (Exception e)
             {
@@ -178,21 +184,21 @@ public class DeviceRequestAnswerStep : BaseRequestAnswerStep, IDeviceRequestAnsw
 
         var errors = new List<string>();
 
-        Debug.Print("RAS: CheckReceivedMessage");
+        Trace.TraceInformation("RAS: CheckReceivedMessage");
 
         //#if DEBUG
         //            var i = RequestSpec.RequestAnswerSteps.IndexOf(this);
 
-        //            Debug.Print($"RAS.CheckReceivedMessage step: {i}");
+        //            Trace.TraceInformation($"RAS.CheckReceivedMessage step: {i}");
         //            foreach (var s in AllowedRequestAnswers)
         //            {
-        //                Debug.Print($"RAS.CheckReceivedMessage step: {i}: {s.Command}");
+        //                Trace.TraceInformation($"RAS.CheckReceivedMessage step: {i}: {s.Command}");
         //            }
         //#endif
 
 
         var success = CheckReceivedMessage(DeviceRequestSpec.CurrentSentMessage, receivedMessage, errors);
-        //Debug.Print($"RSP: check message: command {receivedMessage?.ToInfoString()}: {success} ");
+        //Trace.TraceInformation($"RSP: check message: command {receivedMessage?.ToInfoString()}: {success} ");
 
         // Check if received message is a breaking async message
         if (receivedMessage != null && !success)
@@ -209,7 +215,7 @@ public class DeviceRequestAnswerStep : BaseRequestAnswerStep, IDeviceRequestAnsw
 
             return errors;
 
-            //Debug.Print($"Break: {_isBreak}");
+            //Trace.TraceInformation($"Break: {_isBreak}");
             // Do not process the async message here. Let it proceed to AsyncMessageHandler
         }
 
@@ -221,9 +227,9 @@ public class DeviceRequestAnswerStep : BaseRequestAnswerStep, IDeviceRequestAnsw
 
         WasSuccessful = true;
         SetResult(OrderExecutionResultState.Successful);
-        Debug.Print("RAS: successful");
+        Trace.TraceInformation("RAS: successful");
 
-        //Debug.Print($"RSP: waiting for action result finished: {_isStepDone} ");
+        //Trace.TraceInformation($"RSP: waiting for action result finished: {_isStepDone} ");
         return errors;
     }
 
@@ -275,12 +281,12 @@ public class DeviceRequestAnswerStep : BaseRequestAnswerStep, IDeviceRequestAnsw
             {
                 continue;
             }
-            Debug.Print($"RAS.CheckReceivedMessage answer: {answer.GetType().Name}");
+            Trace.TraceInformation($"RAS.CheckReceivedMessage answer: {answer.GetType().Name}");
             AcceptedMessage = receivedMessage;
             return true;
         }
 
-        Debug.Print("RAS.CheckReceivedMessage step: not successful");
+        Trace.TraceInformation("RAS.CheckReceivedMessage step: not successful");
         return false;
     }
 
@@ -350,7 +356,7 @@ public class DeviceRequestAnswerStep : BaseRequestAnswerStep, IDeviceRequestAnsw
     /// </summary>
     public override void Cancel()
     {
-        Debug.Print("RAS: cancel");
+        Trace.TraceInformation("RAS: cancel");
         SetResult(OrderExecutionResultState.Unsuccessful);
     }
 
@@ -364,8 +370,8 @@ public class DeviceRequestAnswerStep : BaseRequestAnswerStep, IDeviceRequestAnsw
         //    rsp.AppLogger?.LogDebug($"{rsp.OrderLoggerId}Request step processor disposed at step {this}");
         //}
 
-        Debug.Print("RAS: dispose");
-        //Debug.Print($"RAS: dispose {Environment.StackTrace}");
+        Trace.TraceInformation("RAS: dispose");
+        //Trace.TraceInformation($"RAS: dispose {Environment.StackTrace}");
 
         NextChainElement = null;
 
@@ -403,7 +409,7 @@ public class DeviceRequestAnswerStep : BaseRequestAnswerStep, IDeviceRequestAnsw
         //try
         //{
 
-        Debug.Print($"RAS: start with timeout of {Timeout} ms");
+        Trace.TraceInformation($"RAS: start with timeout of {Timeout} ms");
 
         // Now wait for incoming messages (doing it in a non-blocking mannor)
         var taskResult = AsyncHelper.RunSync(CreateWaitingTask);
@@ -412,7 +418,7 @@ public class DeviceRequestAnswerStep : BaseRequestAnswerStep, IDeviceRequestAnsw
         _ctsMain?.Dispose();
         _ctsMain = null;
 
-        Debug.Print($"RAS: left waiting with result: {taskResult}");
+        Trace.TraceInformation($"RAS: left waiting with result: {taskResult}");
 
         RequestSpec.AppLogger?.LogDebug($"Left waiting. Order: {Order.Id} Step: {AllowedRequestAnswers.Count} StepSuccessful {WasSuccessful} Result: {taskResult}");
 
@@ -465,7 +471,7 @@ public class DeviceRequestAnswerStep : BaseRequestAnswerStep, IDeviceRequestAnsw
         _ctsMain = new CancellationTokenSource(Timeout);
         _ctsMain.Token.Register(() =>
         {
-            Debug.Print($"RAS: timeout ({Timeout}ms)");
+            Trace.TraceInformation($"RAS: timeout ({Timeout}ms)");
             SetResult(OrderExecutionResultState.Timeout);
         });
 

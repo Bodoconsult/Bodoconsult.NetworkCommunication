@@ -49,7 +49,7 @@ public class TncpDataMessageCodec : BaseDataMessageCodec
         {
             ITypedInboundDataBlock? dataBlock;
 
-            if (data.Length == 1)
+            if (data.Length <= 2)
             {
                 result.ErrorMessage = "DataBlock decoding failed: no data";
                 result.ErrorCode = 3;
@@ -61,9 +61,9 @@ public class TncpDataMessageCodec : BaseDataMessageCodec
 
             dataBlockBytes[0] = 0x78;
 
-            for (var i = 0; i < data.Length - 1; i++)
+            for (var i = 1; i < dataBlockBytes.Length; i++)
             {
-                dataBlockBytes[i + 1] = data.Slice(i, 1).Span[0];
+                dataBlockBytes[i] = data.Slice(i- 1, 1).Span[0];
             }
 
             try
@@ -145,7 +145,7 @@ public class TncpDataMessageCodec : BaseDataMessageCodec
                         return result;
                     }
 
-                    DataBlockCodingProcessor.FromDataBlockToBytes(data, tMessage.DataBlock);
+                    data.AddRange(tMessage.DataBlock.Data.Span);
                 }
             }
             else
@@ -162,7 +162,7 @@ public class TncpDataMessageCodec : BaseDataMessageCodec
         }
 
         // Add the final CR now
-        data.Add(DeviceCommunicationBasics.Cr);
+        data.Add(DeviceCommunicationBasics.Lf);
 
         tMessage.RawMessageData = data.ToArray().AsMemory();
 

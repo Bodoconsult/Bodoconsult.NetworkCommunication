@@ -60,7 +60,7 @@ public class TncpDataMessageSplitter : IDataMessageSplitter
 
     private bool TryReadCommandInternal(ref ReadOnlySequence<byte> buffer, out ReadOnlySequence<byte> command)
     {
-        //Debug.Print($"TryReadCommand: {GetStringFromArray(buffer.ToArray())}");
+        //Trace.TraceInformation($"TryReadCommand: {GetStringFromArray(buffer.ToArray())}");
 
         if (buffer.Length == 0)
         {
@@ -75,7 +75,7 @@ public class TncpDataMessageSplitter : IDataMessageSplitter
         {
             firstByte = buffer.Slice(i, 1).FirstSpan[0];
             // First byte is message start byte
-            if (firstByte == DeviceCommunicationBasics.Cr)
+            if (firstByte == DeviceCommunicationBasics.Lf)
             {
                 break;
             }

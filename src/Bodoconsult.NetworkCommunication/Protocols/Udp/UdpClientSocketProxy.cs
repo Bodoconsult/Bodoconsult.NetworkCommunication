@@ -16,7 +16,7 @@ namespace Bodoconsult.NetworkCommunication.Protocols.Udp;
 /// <summary>
 /// Current asynchronous implementation of <see cref="ISocketProxy"/> for UDP unicast
 /// </summary>
-public class UdpClientSocketProxy : UpdSocketProxyBase
+public class UdpClientSocketProxy : BaseUpdSocketProxy
 {
 
     //private readonly byte[] _tmp = new byte[1];
@@ -25,6 +25,11 @@ public class UdpClientSocketProxy : UpdSocketProxyBase
     /// Endpoint for listening
     /// </summary>
     protected IPEndPoint? EndPoint;
+
+    /// <summary>
+    /// Endpoint for listening
+    /// </summary>
+    public IPEndPoint? SendEndPoint { get; set; }
 
     private bool _isBound;
 
@@ -67,9 +72,11 @@ public class UdpClientSocketProxy : UpdSocketProxyBase
             return 0;
         }
 
+        ArgumentNullException.ThrowIfNull(SendEndPoint);
+
         try
         {
-            var result = await UdpClient.SendAsync(bytesToSend, CancellationTokenSource.Token);
+            var result = await UdpClient.Client.SendToAsync(bytesToSend, SendEndPoint);
             Trace.TraceInformation($"UdpClientSocket: sent {result} bytes");
             return result;
         }
@@ -108,10 +115,12 @@ public class UdpClientSocketProxy : UpdSocketProxyBase
             return 0;
         }
 
+        ArgumentNullException.ThrowIfNull(SendEndPoint);
+
         try
         {
-            var result = await UdpClient.SendAsync(bytesToSend, CancellationTokenSource.Token);
-            Trace.TraceInformation($"UdpClientSocket: sent {result} bytes");
+            var result = await UdpClient.Client.SendToAsync(bytesToSend, SendEndPoint);
+            Trace.TraceInformation($"{LoggerId}sent {result} bytes");
             return result;
         }
         catch (SocketException socketException)
@@ -120,7 +129,7 @@ public class UdpClientSocketProxy : UpdSocketProxyBase
             {
                 Logger?.LogError("Sending failed", socketException);
                 var s = socketException.ToString();
-                Trace.TraceError(s);
+                Trace.TraceError($"{LoggerId}{s}");
             }
             else
             {
@@ -133,7 +142,7 @@ public class UdpClientSocketProxy : UpdSocketProxyBase
         {
             Logger?.LogError("Sending failed", e);
             var s = e.ToString();
-            Trace.TraceError(s);
+            Trace.TraceError($"{LoggerId}{s}");
             return 0;
         }
     }
@@ -209,16 +218,17 @@ public class UdpClientSocketProxy : UpdSocketProxyBase
                 UdpClient.Client.Blocking = false;
 
                 EndPoint = new IPEndPoint(IpAddress, Port);
-                UdpClient.Connect(EndPoint);
-                Debug.Print($"UDPClient: connect to {IpAddress}:{Port}");
-                _isBound = UdpClient.Client.Connected;
+                SendEndPoint = EndPoint;
 
+                //UdpClient.Connect(EndPoint);
+                Trace.TraceInformation($"UDPClient: connect to {IpAddress}:{Port}");
+                _isBound = true;
             }
             catch (Exception e)
             {
                 // ToDo: add logging
                 var s = e.ToString();
-                Trace.TraceError(s);
+                Trace.TraceError($"{LoggerId}{s}");
                 _isBound = false;
                 throw;
             }
@@ -237,16 +247,15 @@ public class UdpClientSocketProxy : UpdSocketProxyBase
             return await Task.FromResult(0);
         }
 
+        ArgumentNullException.ThrowIfNull(EndPoint);
+
         try
         {
-            var result = await UdpClient.ReceiveAsync(CancellationTokenSource.Token);
-            //SendEndPoint = result.RemoteEndPoint;
+            var result = await UdpClient.Client.ReceiveFromAsync(buffer, EndPoint);
+            SendEndPoint = EndPoint;
 
-            //Debug.Print($"UDPClient: received {result.Length} bytes from {SendEndPoint}");
-
-            Buffer.BlockCopy(result.Buffer, 0, buffer, 0, result.Buffer.Length);
-            Trace.TraceInformation($"UdpClientSocket: received {result.Buffer.Length} bytes");
-            return result.Buffer.Length;
+            Trace.TraceInformation($"{LoggerId}received {result.ReceivedBytes} bytes");
+            return result.ReceivedBytes;
         }
         catch (SocketException socketException)
         {
@@ -254,7 +263,7 @@ public class UdpClientSocketProxy : UpdSocketProxyBase
             {
                 Logger?.LogError("Receiving failed", socketException);
                 var s = socketException.ToString();
-                Trace.TraceError(s);
+                Trace.TraceError($"{LoggerId}{s}");
             }
             else
             {
@@ -267,7 +276,7 @@ public class UdpClientSocketProxy : UpdSocketProxyBase
         {
             Logger?.LogError("Receiving failed", e);
             var s = e.ToString();
-            Trace.TraceError(s);
+            Trace.TraceError($"{LoggerId}{s}");
             return 0;
         }
     }
@@ -284,15 +293,17 @@ public class UdpClientSocketProxy : UpdSocketProxyBase
             return 0;
         }
 
+        ArgumentNullException.ThrowIfNull(EndPoint);
+
         try
         {
             var result = await UdpClient.ReceiveAsync(CancellationTokenSource.Token);
             //SendEndPoint = result.RemoteEndPoint;
 
-            //Debug.Print($"UDPClient: received {result.Length} bytes from {SendEndPoint}");
+            //Trace.TraceInformation($"UDPClient: received {result.Length} bytes from {SendEndPoint}");
 
             result.Buffer.CopyTo(buffer);
-            Trace.TraceInformation($"UdpClientSocket: received {result.Buffer.Length} bytes");
+            Trace.TraceInformation($"{LoggerId}received {result.Buffer.Length} bytes");
             return result.Buffer.Length;
         }
         catch (SocketException socketException)
@@ -301,7 +312,7 @@ public class UdpClientSocketProxy : UpdSocketProxyBase
             {
                 Logger?.LogError("Receiving failed", socketException);
                 var s = socketException.ToString();
-                Trace.TraceError(s);
+                Trace.TraceError($"{LoggerId}{s}");
             }
             else
             {
@@ -314,7 +325,7 @@ public class UdpClientSocketProxy : UpdSocketProxyBase
         {
             Logger?.LogError("Receiving failed", e);
             var s = e.ToString();
-            Trace.TraceError(s);
+            Trace.TraceError($"{LoggerId}{s}");
             return 0;
         }
     }
@@ -333,7 +344,7 @@ public class UdpClientSocketProxy : UpdSocketProxyBase
         {
             Logger?.LogError("Polling failed", e);
             var s = e.ToString();
-            Trace.TraceError(s);
+            Trace.TraceError($"{LoggerId}{s}");
             return false;
         }
     }
@@ -357,7 +368,7 @@ public class UdpClientSocketProxy : UpdSocketProxyBase
     //        var result = await UdpClient.ReceiveAsync(CancellationTokenSource.Token);
     //        //SendEndPoint = result.RemoteEndPoint;
 
-    //        //Debug.Print($"UDPClient: received {result.Length} bytes from {SendEndPoint}");
+    //        //Trace.TraceInformation($"UDPClient: received {result.Length} bytes from {SendEndPoint}");
 
     //        result.Buffer.AsSpan().Slice(offset, expectedBytesLength).CopyTo(buffer);
     //        return expectedBytesLength;
@@ -366,14 +377,14 @@ public class UdpClientSocketProxy : UpdSocketProxyBase
     //    {
     //        if (socketException.ErrorCode != 10054)
     //        {
-    //            Debug.Print(socketException.ToString());
+    //            Trace.TraceInformation(socketException.ToString());
     //        }
 
     //        return 0;
     //    }
     //    catch (Exception e)
     //    {
-    //        Debug.Print(e.ToString());
+    //        Trace.TraceInformation(e.ToString());
     //        return 0;
     //    }
     //}

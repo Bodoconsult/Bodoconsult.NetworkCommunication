@@ -259,7 +259,7 @@ public class DeviceRequestStepProcessor : IDeviceRequestStepProcessor
         requestSpec.CurrentSentMessage = message;
 
         var s = $"{requestSpec.OrderLoggerId}ExecuteRequest: prepare start";
-        Debug.Print($"{s}");
+        Trace.TraceInformation($"{s}");
         requestSpec.AppLogger?.LogDebug(s);
 
         // ******************
@@ -304,7 +304,7 @@ public class DeviceRequestStepProcessor : IDeviceRequestStepProcessor
         {
             s = $"{requestSpec.OrderLoggerId}sending message ended with unexpected handshake {execResult} {result.Message}"
                 .TrimEnd();
-            Debug.Print(s);
+            Trace.TraceInformation(s);
             requestSpec.AppLogger?.LogDebug(s);
 
             //CancelTask(task);
@@ -324,13 +324,13 @@ public class DeviceRequestStepProcessor : IDeviceRequestStepProcessor
 
         // The requested handshake was received
         s = $"{requestSpec.OrderLoggerId}sent message {message.ToInfoString()}";
-        Debug.Print(s);
+        Trace.TraceInformation(s);
         requestSpec.AppLogger?.LogDebug(s);
 
         var result2 = Wait(task);
 
         s = $"{requestSpec.OrderLoggerId}wait for answer done: {result2}";
-        Debug.Print(s);
+        Trace.TraceInformation(s);
         requestSpec.AppLogger?.LogDebug(s);
 
         return result2;
@@ -342,10 +342,10 @@ public class DeviceRequestStepProcessor : IDeviceRequestStepProcessor
         {
             try
             {
-                //Debug.Print("Start waiting for answer");
+                //Trace.TraceInformation("Start waiting for answer");
                 processor.ProcessChain();
 
-                Debug.Print($"RSP: left chain processing: {processor.Result}");
+                Trace.TraceInformation($"RSP: left chain processing: {processor.Result}");
                 return processor.Result;
             }
             catch (Exception e)
@@ -412,7 +412,7 @@ public class DeviceRequestStepProcessor : IDeviceRequestStepProcessor
         if (execResult.Id != OrderExecutionResultState.Successful.Id)
         {
             s = $"{requestSpec.OrderLoggerId}sending: NACK / CAN handled as success for command {message.ToInfoString()}";
-            Debug.Print(s);
+            Trace.TraceInformation(s);
             requestSpec.AppLogger?.LogDebug(s);
         }
 
@@ -447,7 +447,7 @@ public class DeviceRequestStepProcessor : IDeviceRequestStepProcessor
         }
 
         s = $"{requestSpec.OrderLoggerId}sending: NACK / CAN handled as success for command {message.ToInfoString()}";
-        Debug.Print(s);
+        Trace.TraceInformation(s);
 
         return execResult;
     }
@@ -461,7 +461,7 @@ public class DeviceRequestStepProcessor : IDeviceRequestStepProcessor
 
         CurrentChainElement = (IDeviceRequestAnswerStep)DeviceRequestSpec.RequestAnswerSteps[0];
 
-        Debug.Print($"RSP {requestSpec.GetType().Name}: chain started");
+        Trace.TraceInformation($"RSP {requestSpec.GetType().Name}: chain started");
         while (true)
         {
             var element = CurrentChainElement;
@@ -478,19 +478,19 @@ public class DeviceRequestStepProcessor : IDeviceRequestStepProcessor
                 // Call a delegate for failed steps now if available
                 element.HandleRequestAnswerStepFailedDelegate?.Invoke();
 
-                Debug.Print($"RSP {requestSpec.GetType().Name}: chain done: Result {Result}");
+                Trace.TraceInformation($"RSP {requestSpec.GetType().Name}: chain done: Result {Result}");
                 break;
             }
 
             // Last chain element and success
             if (element.NextChainElement == null)
             {
-                Debug.Print($"RSP {requestSpec.GetType().Name}: chain done");
+                Trace.TraceInformation($"RSP {requestSpec.GetType().Name}: chain done");
                 break;
             }
 
             // More chain elements existing
-            Debug.Print($"RSP {requestSpec.GetType().Name}: next element in chain");
+            Trace.TraceInformation($"RSP {requestSpec.GetType().Name}: next element in chain");
             CurrentChainElement = element.NextChainElement;
             Result = OrderExecutionResultState.Unsuccessful;
         }
@@ -593,7 +593,7 @@ public class DeviceRequestStepProcessor : IDeviceRequestStepProcessor
         //var localRequestSpec = requestSpec;
 
         var errorMsg = errors.Aggregate("", (current, msg) => $"{current}{msg}\r\n");
-        Debug.Print(errorMsg);
+        Trace.TraceInformation(errorMsg);
 
         //if (localRequestSpec == null)
         //{

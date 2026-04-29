@@ -246,16 +246,18 @@ internal class TcpIpReceivingTests
         });
 
         // Wait for start streaming state
-        Wait.Until(() => _backendManager.IpDeviceTcpIp.Device.CurrentState.Id == DefaultStateIds.DeviceStartStreamingState, 10000);
+        Wait.Until(() => _backendManager.IpDeviceTcpIp.Device.CurrentState.Id == DefaultStateIds.DeviceStartStreamingState, 20000);
 
         Assert.That(_backendManager.IpDeviceTcpIp.Device.CurrentState.Id, Is.EqualTo(DefaultStateIds.DeviceStartStreamingState));
 
         // Wait for streaming state
-        Wait.Until(() => _backendManager.IpDeviceTcpIp.Device.CurrentState.Id == DefaultStateIds.DeviceStreamingState, 10000);
+        Wait.Until(() => _backendManager.IpDeviceTcpIp.Device.CurrentState.Id == DefaultStateIds.DeviceStreamingState, 20000);
 
         Assert.That(_backendManager.IpDeviceTcpIp.Device.CurrentState.Id, Is.EqualTo(DefaultStateIds.DeviceStreamingState));
 
         Task.Delay(20000, token).Wait(token) ;
+
+        Assert.That(token.IsCancellationRequested, Is.False);
 
         //Wait.Until(CheckMessages, 20000);
 

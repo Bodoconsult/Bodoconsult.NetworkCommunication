@@ -12,6 +12,11 @@ namespace Bodoconsult.NetworkCommunication.Interfaces;
 public interface ISocketProxy: IDisposable
 {
     /// <summary>
+    /// Logger ID or null
+    /// </summary>
+    public string? LoggerId { get; set; }
+
+    /// <summary>
     /// Minimum buffer size
     /// </summary>
     int MinimumBufferSize { get; set; } 

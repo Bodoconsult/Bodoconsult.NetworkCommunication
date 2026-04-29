@@ -58,6 +58,9 @@ public class TncpBackendTcpIpBusinessLogicAdapter : BaseSimpleDeviceBusinessLogi
             return;
         }
 
+        // Send an answer message
+        SendAnswer(tncp.TelnetCommand);
+        
         Trace.TraceInformation($"TncpBackendTcpIpBusinessLogicAdapter: received command >>{tncp.TelnetCommand}<< with message {message.MessageId}");
 
         //NetworkCommand? command;
@@ -91,6 +94,19 @@ public class TncpBackendTcpIpBusinessLogicAdapter : BaseSimpleDeviceBusinessLogi
         {
             _udpStarter = null;
         }
+    }
+
+    private void SendAnswer(string telnetCommand)
+    {
+        ArgumentNullException.ThrowIfNull(IpDevice.CommunicationAdapter);
+
+        var msg = new TncpOutboundDataMessage
+        {
+            TelnetCommand = $"<BEGIN>{telnetCommand}",
+            WaitForAcknowledgement = false
+        };
+
+        IpDevice.CommunicationAdapter.SendDataMessage(msg);
     }
 
     private bool ExexcuteCommand(string cmd, int businessTransactionId)

@@ -126,7 +126,7 @@ public class RequestProcessor : IRequestProcessor
                 return ExitAction(order, OrderExecutionResultState.Unsuccessful);
             }
 
-            Debug.Print($"RP: {requestSpec.GetType().Name}: start execution...");
+            Trace.TraceInformation($"RP: {requestSpec.GetType().Name}: start execution...");
 
             var result = requestSpec switch
             {
@@ -137,7 +137,7 @@ public class RequestProcessor : IRequestProcessor
                 _ => OrderExecutionResultState.NotProcessed
             };
 
-            Debug.Print($"RP: {requestSpec.GetType().Name}: execution ended with {result}");
+            Trace.TraceInformation($"RP: {requestSpec.GetType().Name}: execution ended with {result}");
 
             if (result.Id == OrderExecutionResultState.Successful.Id && !IsCancelled && !order.IsCancelled)
             {
@@ -261,13 +261,13 @@ public class RequestProcessor : IRequestProcessor
         {
             _transportObject = processor.RequestSpec.ResultTransportObject;
             processor.Dispose();
-            Debug.Print("ExecuteRequest successful");
+            Trace.TraceInformation("ExecuteRequest successful");
             return OrderExecutionResultState.Successful;
         }
 
         // ToDo: add logging
 
-        Debug.Print("ExecuteRequest failed");
+        Trace.TraceInformation("ExecuteRequest failed");
 
         // If the order has been finished already or is disposable: do not change order state again
         if (order.IsFinished || order.IsDisposable)
@@ -324,13 +324,13 @@ public class RequestProcessor : IRequestProcessor
         {
             _transportObject = processor.RequestSpec.ResultTransportObject;
             processor.Dispose();
-            Debug.Print("ExecuteRequest successful");
+            Trace.TraceInformation("ExecuteRequest successful");
             return OrderExecutionResultState.Successful;
         }
 
         // ToDo: add logging
 
-        Debug.Print("ExecuteRequest failed");
+        Trace.TraceInformation("ExecuteRequest failed");
 
         // If the order has been finished already or is disposable: do not change order state again
         if (order.IsFinished || order.IsDisposable)
@@ -386,13 +386,13 @@ public class RequestProcessor : IRequestProcessor
         {
             _transportObject = processor.RequestSpec.ResultTransportObject;
             processor.Dispose();
-            Debug.Print("ExecuteRequest successful");
+            Trace.TraceInformation("ExecuteRequest successful");
             return OrderExecutionResultState.Successful;
         }
 
         // ToDo: add logging
 
-        Debug.Print("ExecuteRequest failed");
+        Trace.TraceInformation("ExecuteRequest failed");
 
         // If the order has been finished already or is disposable: do not change order state again
         if (order.IsFinished || order.IsDisposable)
@@ -447,13 +447,13 @@ public class RequestProcessor : IRequestProcessor
         {
             _transportObject = processor.RequestSpec.ResultTransportObject;
             processor.Dispose();
-            Debug.Print("ExecuteRequest successful");
+            Trace.TraceInformation("ExecuteRequest successful");
             return OrderExecutionResultState.Successful;
         }
 
         // ToDo: add logging
 
-        Debug.Print("ExecuteRequest failed");
+        Trace.TraceInformation("ExecuteRequest failed");
 
         // If the order has been finished already or is disposable: do not change order state again
         if (order.IsFinished || order.IsDisposable)

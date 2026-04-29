@@ -12,15 +12,11 @@ namespace Bodoconsult.NetworkCommunication.DataMessaging.DataMessageProcessors;
 /// </summary>
 public class DefaultDataMessageProcessor : BaseDataMessageProcessor
 {
-    private readonly string _loggerId;
-
     /// <summary>
     /// Default ctor
     /// </summary>
     public DefaultDataMessageProcessor(IDataMessagingConfig config) : base(config)
-    {
-        _loggerId = $"{config.LoggerId}: DefaultDataMessageProcessor: ";
-    }
+    { }
 
     /// <summary>
     /// Process the message
@@ -28,7 +24,9 @@ public class DefaultDataMessageProcessor : BaseDataMessageProcessor
     /// <param name="message">Message to process</param>
     public override void ProcessMessage(IInboundMessage message)
     {
-        Trace.TraceInformation($"{_loggerId}received message {message.MessageId}: {message.RawMessageData.Length} bytes");
+        Trace.TraceInformation($"{LoggerId}received message {message.MessageId}: {message.RawMessageData.Length} bytes");
+
+        Stopped.Reset();
 
         // Handshake received
         if (message is IInboundHandShakeMessage handShake)
@@ -47,7 +45,7 @@ public class DefaultDataMessageProcessor : BaseDataMessageProcessor
         // No valid message
         var s = $"message {message.MessageId} not valid: {message.GetType().Name}";
         Config.MonitorLogger.LogError(s);
-        Trace.TraceInformation($"{_loggerId}{s}");
+        Trace.TraceInformation($"{LoggerId}{s}");
     }
 
     private void ProcessDataMessage(IInboundDataMessage dataMessage)
@@ -68,7 +66,7 @@ public class DefaultDataMessageProcessor : BaseDataMessageProcessor
             {
                 var s = $" failed {dataMessage.MessageId}: {dataMessage.RawMessageData.Length} bytes: {e}";
                 Config.MonitorLogger.LogError(s);
-                Trace.TraceError($"{_loggerId}{s}");
+                Trace.TraceError($"{LoggerId}{s}");
             }
         }).ContinueWith(Callback);
 
@@ -80,6 +78,6 @@ public class DefaultDataMessageProcessor : BaseDataMessageProcessor
         var msg = $"{dataMessage}delivering to message receiver timed out";
         Config.AppLogger.LogError($"{Config.LoggerId}{msg}");
         Config.MonitorLogger.LogError(msg);
-        Trace.TraceError($"{_loggerId}{msg}");
+        Trace.TraceError($"{LoggerId}{msg}");
     }
 }

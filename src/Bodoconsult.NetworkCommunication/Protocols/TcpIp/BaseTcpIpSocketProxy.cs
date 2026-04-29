@@ -4,23 +4,28 @@ using System.Net;
 using Bodoconsult.App.Abstractions.Interfaces;
 using Bodoconsult.NetworkCommunication.Interfaces;
 
-namespace Bodoconsult.NetworkCommunication.Protocols.Udp;
+namespace Bodoconsult.NetworkCommunication.Protocols.TcpIp;
 
 /// <summary>
 /// Base class for <see cref="ISocketProxy"/> implementations
 /// </summary>
-public abstract class UpdSocketProxyBase : ISocketProxy
+public abstract class BaseTcpIpSocketProxy : ISocketProxy
 {
+    /// <summary>
+    /// Logger ID or null
+    /// </summary>
+    public string? LoggerId { get; set; }
+
     /// <summary>
     /// Minimum buffer size
     /// </summary>
-    public int MinimumBufferSize { get; set; } = 0x10000;
+    public int MinimumBufferSize { get; set; } = 512;
 
     /// <summary>
     /// IP address of the server
     /// </summary>
     public IPAddress? IpAddress { get; set; }
-
+    
     /// <summary>
     /// Port the current device listens on
     /// </summary>
@@ -39,8 +44,7 @@ public abstract class UpdSocketProxyBase : ISocketProxy
     /// <summary>
     /// The number of bytes available to read
     /// </summary>
-    public virtual int BytesAvailable => 0;
-
+    public virtual int BytesAvailable { get; } = 0;
 
     /// <summary>
     /// Send timeout in milliseconds. -1 means infinite.
@@ -55,7 +59,7 @@ public abstract class UpdSocketProxyBase : ISocketProxy
     /// <summary>
     /// Is the socket connected
     /// </summary>
-    public virtual bool Connected { get; } = true;
+    public virtual bool Connected => false;
 
     /// <summary>
     /// Current cancellation token
@@ -85,14 +89,6 @@ public abstract class UpdSocketProxyBase : ISocketProxy
         throw new NotSupportedException();
     }
 
-    ///// <summary>
-    ///// Shut the socket down
-    ///// </summary>
-    //public virtual void Shutdown()
-    //{
-    //    throw new NotSupportedException();
-    //}
-
     /// <summary>
     /// Close the socket
     /// </summary>
@@ -102,7 +98,7 @@ public abstract class UpdSocketProxyBase : ISocketProxy
     }
 
     /// <summary>
-    /// Connect to an IP endpoint
+    /// Connect to the IP endpoint
     /// </summary>
     public virtual Task Connect()
     {
@@ -125,15 +121,6 @@ public abstract class UpdSocketProxyBase : ISocketProxy
     /// <param name="buffer">Byte array to store the received byte data in</param>
     /// <returns>Number of bytes received</returns>
     public virtual Task<int> Receive(Memory<byte> buffer)
-    {
-        throw new NotSupportedException();
-    }
-
-    /// <summary>
-    /// Poll data
-    /// </summary>
-    /// <returns>True, if data can be read, else false</returns>
-    public virtual bool Poll()
     {
         throw new NotSupportedException();
     }
@@ -162,14 +149,14 @@ public abstract class UpdSocketProxyBase : ISocketProxy
     //    throw new NotSupportedException();
     //}
 
-    ///// <summary>
-    ///// Poll data
-    ///// </summary>
-    ///// <returns>True, if data can be read, else false</returns>
-    //public virtual bool Poll()
-    //{
-    //    throw new NotSupportedException();
-    //}
+    /// <summary>
+    /// Poll data
+    /// </summary>
+    /// <returns>True, if data can be read, else false</returns>
+    public virtual bool Poll()
+    {
+        throw new NotSupportedException();
+    }
 
     ///// <summary>
     ///// Send a file

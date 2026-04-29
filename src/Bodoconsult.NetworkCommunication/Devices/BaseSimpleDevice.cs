@@ -156,7 +156,7 @@ public abstract class BaseSimpleDevice : IIpDevice
     {
         MonitorLogger.LogDebug(message, memberName, filepath, lineNumber);
         AppLogger.LogDebug($"{DataMessagingConfig.LoggerId}{message}");
-        Debug.Print($"BaseSimpleDevice:  {message}");
+        Trace.TraceInformation($"BaseSimpleDevice:  {message}");
     }
 
     /// <summary>
@@ -173,7 +173,7 @@ public abstract class BaseSimpleDevice : IIpDevice
     {
         MonitorLogger.LogInformation(message, memberName, filepath, lineNumber);
         AppLogger.LogInformation($"{DataMessagingConfig.LoggerId}{message}", memberName, filepath, lineNumber);
-        Debug.Print($"BaseSimpleDevice:  {message}");
+        Trace.TraceInformation($"BaseSimpleDevice:  {message}");
     }
 
     /// <summary>
@@ -190,7 +190,7 @@ public abstract class BaseSimpleDevice : IIpDevice
     {
         MonitorLogger.LogWarning(message, memberName, filepath, lineNumber);
         AppLogger.LogWarning($"{DataMessagingConfig.LoggerId}{message}", memberName, filepath, lineNumber);
-        Debug.Print($"BaseSimpleDevice:  {message}");
+        Trace.TraceInformation($"BaseSimpleDevice:  {message}");
     }
 
     /// <summary>
@@ -207,7 +207,7 @@ public abstract class BaseSimpleDevice : IIpDevice
     {
         MonitorLogger.LogError(message, memberName, filepath, lineNumber);
         AppLogger.LogError($"{DataMessagingConfig.LoggerId}{message}", memberName, filepath, lineNumber);
-        Debug.Print($"BaseSimpleDevice:  {message}");
+        Trace.TraceInformation($"BaseSimpleDevice:  {message}");
     }
 
     /// <summary>Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.</summary>

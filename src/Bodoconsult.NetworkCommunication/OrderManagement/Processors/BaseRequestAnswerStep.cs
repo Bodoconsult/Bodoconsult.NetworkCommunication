@@ -46,13 +46,13 @@ public class BaseRequestAnswerStep : IRequestAnswerStep
     /// </summary>
     public virtual void Cancel()
     {
-        Debug.Print("RAS: cancel");
+        Trace.TraceInformation("RAS: cancel");
     }
 
     /// <summary>
     /// Total timeout for the answer(s) of a request in milliseconds
     /// </summary>
-    public int Timeout { get; set; } = 3 * DeviceCommunicationBasics.DefaultTimeout;
+    public int Timeout { get; set; } = 4 * DeviceCommunicationBasics.DefaultTimeout;
 
     /// <summary>
     /// Delegate for action after cancelling the request step

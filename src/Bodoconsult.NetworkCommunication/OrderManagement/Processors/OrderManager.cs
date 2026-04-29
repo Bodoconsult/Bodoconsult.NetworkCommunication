@@ -83,7 +83,7 @@ public class OrderManager : IOrderManager
     /// <param name="dataMessage">Received message</param>
     public void OnDeviceMessageReceived(IInboundDataMessage dataMessage)
     {
-        Debug.Print($"{_loggerId}message received: {dataMessage.ToInfoString()}");
+        Trace.TraceInformation($"{_loggerId}message received: {dataMessage.ToInfoString()}");
         _appLogger.LogDebug($"{_loggerId}message received: {dataMessage.ToInfoString()}");
         OrderReceiver.AddReceivedMessage(dataMessage);
     }

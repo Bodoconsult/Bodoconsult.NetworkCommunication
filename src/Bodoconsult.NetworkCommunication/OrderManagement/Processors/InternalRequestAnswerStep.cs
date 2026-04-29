@@ -89,10 +89,10 @@ public class InternalRequestAnswerStep : BaseRequestAnswerStep, IInternalRequest
                         ErrorDescription = "Received message is null"
                     };
                 }
-                Debug.Print($"{answer.HandleRequestAnswerOnSuccessDelegate.Method.Name}");
-                Debug.Print("Start delegate...");
+                Trace.TraceInformation($"{answer.HandleRequestAnswerOnSuccessDelegate.Method.Name}");
+                Trace.TraceInformation("Start delegate...");
                 result = answer.HandleRequestAnswerOnSuccessDelegate.Invoke(answer.ReceivedMessage, requestSpec.TransportObject, requestSpec.ParameterSet);
-                Debug.Print("End delegate...");
+                Trace.TraceInformation("End delegate...");
             }
             catch (Exception e)
             {

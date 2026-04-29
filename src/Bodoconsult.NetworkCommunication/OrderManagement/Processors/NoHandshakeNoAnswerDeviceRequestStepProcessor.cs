@@ -198,7 +198,7 @@ public class NoHandshakeNoAnswerDeviceRequestStepProcessor : INoHandshakeNoAnswe
         requestSpec.CurrentSentMessage = message;
 
         var s = $"{requestSpec.OrderLoggerId}ExecuteRequest: prepare start";
-        Debug.Print($"{s}");
+        Trace.TraceInformation($"{s}");
         requestSpec.AppLogger?.LogDebug(s);
 
         return !IsCancelled ? RunStep1(message, requestSpec) : OrderExecutionResultState.Unsuccessful;
@@ -230,7 +230,7 @@ public class NoHandshakeNoAnswerDeviceRequestStepProcessor : INoHandshakeNoAnswe
 
         // The requested handshake was received
         var s = $"{requestSpec.OrderLoggerId}sent message {message.ToInfoString()} and received result {execResult}";
-        Debug.Print(s);
+        Trace.TraceInformation(s);
         requestSpec.AppLogger?.LogDebug(s);
 
         return execResult;

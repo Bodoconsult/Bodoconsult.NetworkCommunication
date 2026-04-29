@@ -68,9 +68,9 @@ public class IpDuplexIoReceiver : BaseDuplexIoReceiver
         _buffer = chunk;
 
         var msg = $"Data in buffer: {DataMessageHelper.GetStringFromArrayCsharpStyle(ref _buffer)}";
-        //Debug.Print(msg);
+        //Trace.TraceInformation(msg);
         Logger.LogDebug(msg);
-        Trace.TraceInformation($"DuplexIoReceiver: {msg}");
+        Trace.TraceInformation($"{LoggerId}{msg}");
 
         //Trace.TraceInformation($"DuplexIoReceiver: data in buffer {Encoding.UTF8.GetString(_buffer)}");
 
@@ -97,9 +97,9 @@ public class IpDuplexIoReceiver : BaseDuplexIoReceiver
             if (codecResult.ErrorCode != 0 || codecResult.DataMessage == null)
             {
                 msg = $"Parsing command failed with error code {codecResult.ErrorCode}: {codecResult.ErrorMessage}: {DataMessageHelper.GetStringFromArrayCsharpStyle(ref command)}";
-                //Debug.Print(msg);
+                //Trace.TraceInformation(msg);
                 Logger?.LogDebug(msg);
-                Trace.TraceError($"DuplexIoReceiver: {msg}");
+                Trace.TraceError($"{LoggerId}DuplexIoReceiver: {msg}");
                 ArrayPool.Return(array);
                 return;
             }
@@ -109,7 +109,7 @@ public class IpDuplexIoReceiver : BaseDuplexIoReceiver
             {
                 msg = $"Parsed command {DataMessageHelper.GetStringFromArrayCsharpStyle(ref command)} NOT valid: {validationResult.ValidationResult}";
                 Logger?.LogDebug(msg);
-                Trace.TraceError($"DuplexIoReceiver: {msg}");
+                Trace.TraceError($"{LoggerId}DuplexIoReceiver: {msg}");
             }
             else
             {
@@ -192,7 +192,7 @@ public class IpDuplexIoReceiver : BaseDuplexIoReceiver
             return;
         }
 
-        Trace.TraceInformation("FillMessagePipeline started");
+        Trace.TraceInformation($"{LoggerId}FillMessagePipeline started");
 
         //try
         //{
@@ -201,7 +201,7 @@ public class IpDuplexIoReceiver : BaseDuplexIoReceiver
         {
             var socketProxy = DataMessagingConfig.SocketProxy;
 
-            //Debug.Print("FillMessagePipeline in progress");
+            //Trace.TraceInformation("FillMessagePipeline in progress");
             try
             {
                 if (CancellationSource?.Token.IsCancellationRequested ?? true)
@@ -210,19 +210,19 @@ public class IpDuplexIoReceiver : BaseDuplexIoReceiver
                     {
                         await socketProxy.CancellationTokenSource.CancelAsync();
                     }
-                    //Debug.Print("FillMessagePipeline cancelled");
+                    //Trace.TraceInformation("FillMessagePipeline cancelled");
                     return;
                 }
             }
             catch (Exception e)
             {
-                Trace.TraceError($"FillMessagePipeline exception: {e}");
+                Trace.TraceError($"{LoggerId}FillMessagePipeline exception: {e}");
                 return;
             }
 
             if (socketProxy is not { Connected: true } || socketProxy.IsDisposed)
             {
-                // Debug.Print("Not connected");
+                // Trace.TraceInformation("Not connected");
                 DuplexIoNoDataDelegate.Invoke();
                 await RaiseException(new SocketException());
                 return;
@@ -230,7 +230,7 @@ public class IpDuplexIoReceiver : BaseDuplexIoReceiver
 
             if (DuplexIoIsWorkInProgressDelegate.Invoke())
             {
-                Trace.TraceWarning("Other operation in progress");
+                Trace.TraceWarning($"{LoggerId}Other operation in progress");
                 AsyncHelper.Delay(FillPipelineTimeout);
                 continue;
             }
@@ -239,7 +239,7 @@ public class IpDuplexIoReceiver : BaseDuplexIoReceiver
             if (availableData == 0)
             {
                 DuplexIoNoDataDelegate.Invoke();
-                //Debug.Print("No data");
+                //Trace.TraceInformation("No data");
                 AsyncHelper.Delay(FillPipelineTimeout);
                 continue;
             }
@@ -257,7 +257,7 @@ public class IpDuplexIoReceiver : BaseDuplexIoReceiver
                 continue;
             }
 
-            //Debug.Print("Got data");
+            //Trace.TraceInformation("Got data");
 
             var dummy = _bufferPool.Dequeue();
             dummy.Memory = data;
@@ -287,7 +287,9 @@ public class IpDuplexIoReceiver : BaseDuplexIoReceiver
         catch (Exception e)
         {
             // Do nothing
+            var msg = "DuplexIoSetNotInProgressDelegate raised an exception";
             DataMessagingConfig.MonitorLogger.LogError("DuplexIoSetNotInProgressDelegate raised an exception", e);
+            Trace.TraceError($"{LoggerId}{msg}");
         }
 
         AsyncHelper.FireAndForget(() => DataMessagingConfig.DuplexIoErrorHandlerDelegate?.Invoke(ex));

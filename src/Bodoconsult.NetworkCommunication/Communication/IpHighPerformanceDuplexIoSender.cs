@@ -92,7 +92,7 @@ public class IpHighPerformanceDuplexIoSender : BaseDuplexIoSender
                 return 0;
             }
 
-            //Debug.Print($"SendMessage: {messageBytes.Length}");
+            //Trace.TraceInformation($"SendMessage: {messageBytes.Length}");
 
             await _pipe.Writer.WriteAsync(message.RawMessageData);
 
@@ -139,7 +139,7 @@ public class IpHighPerformanceDuplexIoSender : BaseDuplexIoSender
 
                 var buffer = read.Buffer;
 
-                //Debug.Print($"Buffer: {buffer.Length}");
+                //Trace.TraceInformation($"Buffer: {buffer.Length}");
 
                 if (buffer.IsEmpty && read.IsCompleted)
                 {
@@ -155,12 +155,12 @@ public class IpHighPerformanceDuplexIoSender : BaseDuplexIoSender
                 
                 _pipe.Reader.AdvanceTo(buffer.Start, buffer.End);
 
-                ////Debug.Print($"Parsed command: {SmddeviceMessageHelper.GetStringFromArrayCsharpStyle(ref buffer)}");
+                ////Trace.TraceInformation($"Parsed command: {SmddeviceMessageHelper.GetStringFromArrayCsharpStyle(ref buffer)}");
 
                 //while (DataMessageSplitter.TryReadCommand( ref buffer, out var command))
                 //{
 
-                //    //Debug.Print($"Command: length 1: {command.Length}");
+                //    //Trace.TraceInformation($"Command: length 1: {command.Length}");
                 //    command = SmddeviceMessageHelper.CheckCommandForNullAtTheEnd(command);
 
                 //    if (command.Length > 0)
@@ -216,7 +216,7 @@ public class IpHighPerformanceDuplexIoSender : BaseDuplexIoSender
             try
             {
                 sent = await _socketProxy.Send(readOnlyMemory);
-                Debug.Print($"command: {command.Length} bytes: {sent} bytes sent");
+                Trace.TraceInformation($"command: {command.Length} bytes: {sent} bytes sent");
             }
             catch (SocketException socketException)
             {

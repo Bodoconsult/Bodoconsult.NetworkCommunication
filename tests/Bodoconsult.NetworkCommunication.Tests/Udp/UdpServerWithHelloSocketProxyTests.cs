@@ -12,7 +12,7 @@ namespace Bodoconsult.NetworkCommunication.Tests.Udp;
 [TestFixture]
 [NonParallelizable]
 [SingleThreaded]
-internal class UdpServerSocketProxyTests
+internal class UdpServerWithHelloSocketProxyTests
 {
     /// <summary>
     /// Timeout in ms for waiting for messages to be delivered to next step
@@ -40,7 +40,7 @@ internal class UdpServerSocketProxyTests
         Task.Run(async () =>
 #pragma warning restore CS4014 // Because this call is not awaited, execution of the current method continues before the call is completed
         {
-            var udpServer = new UdpServerSocketProxy();
+            var udpServer = new UdpServerWithHelloSocketProxy();
             udpServer.IpAddress = ip;
             udpServer.Port = port;
             await udpServer.Connect();
@@ -79,7 +79,6 @@ internal class UdpServerSocketProxyTests
 
         // Act  
         var client = new UdpTestUniCastClient(ip, port);
-
         //client.Start();
 
         while (!cts.IsCancellationRequested)
@@ -123,7 +122,7 @@ internal class UdpServerSocketProxyTests
         Task.Run(async () =>
 #pragma warning restore CS4014 // Because this call is not awaited, execution of the current method continues before the call is completed
         {
-            var udpServer = new UdpServerSocketProxy();
+            var udpServer = new UdpServerWithHelloSocketProxy();
             udpServer.IpAddress = ip;
             udpServer.Port = port;
             await udpServer.Connect();
@@ -144,8 +143,8 @@ internal class UdpServerSocketProxyTests
 
                     Debug.Print($"Server: received {data.Length} bytes");
 
-                    //var sent = await udpServer.Send(serverData); // reply back
-                    //Debug.Print($"Server: sent {sent} bytes");
+                    var sent = await udpServer.Send(serverData); // reply back
+                    Debug.Print($"Server: sent {sent} bytes");
                 }
             }
             catch (Exception e)
@@ -163,7 +162,7 @@ internal class UdpServerSocketProxyTests
         started.Reset();
 
         // Act  
-        var udpClient = new UdpClientSocketProxy();
+        var udpClient = new UdpClientWithHelloSocketProxy();
         udpClient.IpAddress = ip;
         udpClient.Port = port;
 
@@ -177,18 +176,16 @@ internal class UdpServerSocketProxyTests
             var sent = await udpClient.Send(clientData);
             Debug.Print($"Client: sent {sent} bytes");
 
-            //// then receive data
-            //var data = new byte[10];
-            //var count = await udpClient.Receive(data);
+            // then receive data
+            var data = new byte[10];
+            var count = await udpClient.Receive(data);
 
-            //if (count > 0)
-            //{
-            //    clientReceivedMessages.Add(data);
-            //}
+            if (count > 0)
+            {
+                clientReceivedMessages.Add(data);
+            }
 
-            //Debug.Print($"Client: received {data.Length} bytes");
-
-
+            Debug.Print($"Client: received {data.Length} bytes");
         }
 
         udpClient.Dispose();

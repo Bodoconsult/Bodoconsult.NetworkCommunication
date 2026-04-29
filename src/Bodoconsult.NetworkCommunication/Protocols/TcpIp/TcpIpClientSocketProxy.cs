@@ -12,7 +12,7 @@ namespace Bodoconsult.NetworkCommunication.Protocols.TcpIp;
 /// <summary>
 /// Current asynchronous implementation of <see cref="ISocketProxy"/> for a TCP client
 /// </summary>
-public class TcpIpClientSocketProxy : TcpIpSocketProxyBase
+public class TcpIpClientSocketProxy : BaseTcpIpSocketProxy
 {
     private readonly byte[] _tmp = new byte[1];
 
@@ -99,7 +99,7 @@ public class TcpIpClientSocketProxy : TcpIpSocketProxyBase
         try
         {
             var result = await Socket.SendAsync(bytesToSend, CancellationTokenSource.Token);
-            Trace.TraceInformation($"TcpClientSocket: Sent {bytesToSend.Length} bytes");
+            Trace.TraceInformation($"{LoggerId}TcpClientSocket: Sent {bytesToSend.Length} bytes");
             return result;
         }
         catch (SocketException socketException)
@@ -140,7 +140,7 @@ public class TcpIpClientSocketProxy : TcpIpSocketProxyBase
         try
         {
             var result = await Socket.SendAsync(bytesToSend, CancellationTokenSource.Token);
-            Trace.TraceInformation($"TcpClientSocket: Sent {bytesToSend.Length} bytes");
+            Trace.TraceInformation($"{LoggerId}TcpClientSocket: Sent {bytesToSend.Length} bytes");
             return result;
         }
         catch (SocketException socketException)
@@ -149,7 +149,7 @@ public class TcpIpClientSocketProxy : TcpIpSocketProxyBase
             {
                 Logger?.LogError("Sending failed", socketException);
                 var s = socketException.ToString();
-                Trace.TraceError(s);
+                Trace.TraceError($"{LoggerId}{s}");
             }
             else
             {
@@ -162,7 +162,7 @@ public class TcpIpClientSocketProxy : TcpIpSocketProxyBase
         {
             Logger?.LogError("Sending failed", e);
             var s = e.ToString();
-            Trace.TraceError(s);
+            Trace.TraceError($"{LoggerId}{s}");
             return 0;
         }
     }
@@ -181,7 +181,7 @@ public class TcpIpClientSocketProxy : TcpIpSocketProxyBase
         {
             Logger?.LogError("Polling failed", e);
             var s = e.ToString();
-            Trace.TraceError(s);
+            Trace.TraceError($"{LoggerId}{s}");
             return false;
         }
     }
@@ -247,7 +247,7 @@ public class TcpIpClientSocketProxy : TcpIpSocketProxyBase
         catch (Exception e)
         {
             var s = e.ToString();
-            Trace.TraceError(s);
+            Trace.TraceError($"{LoggerId}{s}");
         }
     }
 
@@ -266,7 +266,7 @@ public class TcpIpClientSocketProxy : TcpIpSocketProxyBase
         try
         {
             var result = await Socket.ReceiveAsync(buffer, CancellationTokenSource.Token);
-            Trace.TraceInformation($"TcpClientSocket: received {result} bytes");
+            Trace.TraceInformation($"{LoggerId}TcpClientSocket: received {result} bytes");
             return result;
         }
         catch (SocketException socketException)
@@ -275,7 +275,7 @@ public class TcpIpClientSocketProxy : TcpIpSocketProxyBase
             {
                 Logger?.LogError("Receiving failed", socketException);
                 var s = socketException.ToString();
-                Trace.TraceError(s);
+                Trace.TraceError($"{LoggerId}{s}");
             }
             else
             {
@@ -288,7 +288,7 @@ public class TcpIpClientSocketProxy : TcpIpSocketProxyBase
         {
             Logger?.LogError("Receiving failed", e);
             var s = e.ToString();
-            Trace.TraceError(s);
+            Trace.TraceError($"{LoggerId}{s}");
             return 0;
         }
     }
@@ -307,7 +307,7 @@ public class TcpIpClientSocketProxy : TcpIpSocketProxyBase
         try
         {
             var result = await Socket.ReceiveAsync(buffer, SocketFlags.None, CancellationTokenSource.Token);
-            Trace.TraceInformation($"TcpClientSocket: received {result} bytes");
+            Trace.TraceInformation($"{LoggerId}TcpClientSocket: received {result} bytes");
             return result;
         }
         catch (SocketException socketException)
@@ -323,7 +323,7 @@ public class TcpIpClientSocketProxy : TcpIpSocketProxyBase
         catch (Exception e)
         {
             var s = e.ToString();
-            Trace.TraceError(s);
+            Trace.TraceError($"{LoggerId}{s}");
             return 0;
         }
     }

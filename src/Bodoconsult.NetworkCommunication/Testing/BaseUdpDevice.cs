@@ -140,7 +140,7 @@ public abstract class BaseUdpDevice : IUdpDevice
             //}
             //catch (Exception e)
             //{
-            //    Debug.Print(e.ToString());
+            //    Trace.TraceInformation(e.ToString());
             //}
         }
 
@@ -172,8 +172,8 @@ public abstract class BaseUdpDevice : IUdpDevice
 
             Trace.TraceInformation($"{TypeName}: received {result.Buffer.Length} bytes");
 
-            //Debug.Print($"{TypeName}: received {result.Buffer.Length} bytes from {SenderEndPoint}");
-            //Debug.Print($" {Encoding.ASCII.GetString(bytes, 0, bytes.Length)}");
+            //Trace.TraceInformation($"{TypeName}: received {result.Buffer.Length} bytes from {SenderEndPoint}");
+            //Trace.TraceInformation($" {Encoding.ASCII.GetString(bytes, 0, bytes.Length)}");
 
             ReceivedMessages.Add(result.Buffer.AsMemory());
             return result.Buffer;

@@ -123,7 +123,7 @@ public abstract class BaseOrderProcessor : IOrderProcessor
 
             if (procLocal.IsCancelled || order.IsDisposable)
             {
-                LogDebug($"message received: order {order?.Id} skipped due to disposed or cancelled");
+                LogDebug($"message received: order {order.Id} skipped due to disposed or cancelled");
                 continue;
             }
 
@@ -132,7 +132,7 @@ public abstract class BaseOrderProcessor : IOrderProcessor
             var success = procLocal.CheckReceivedMessage(rm);
             if (!success)
             {
-                Debug.Print($"{rm.ToShortInfoString()} processed unsuccessfully with order {order.Id}.");
+                Trace.TraceInformation($"{rm.ToShortInfoString()} processed unsuccessfully with order {order.Id}.");
                 continue;
             }
 
@@ -186,7 +186,7 @@ public abstract class BaseOrderProcessor : IOrderProcessor
     {
         MonitorLogger.LogInformation(message);
         AppLogger.LogDebug($"{LoggerId}{message}");
-        Debug.Print($"OP: {message}");
+        Trace.TraceInformation($"{LoggerId}{message}");
     }
 
     /// <summary>
@@ -197,14 +197,14 @@ public abstract class BaseOrderProcessor : IOrderProcessor
     {
         MonitorLogger.LogInformation(message);
         AppLogger.LogInformation($"{LoggerId}{message}");
-        Debug.Print($"OP: {message}");
+        Trace.TraceInformation($"{LoggerId}{message}");
     }
 
     //protected void LogWarning(string message)
     //{
     //    _smddevice.MonitorLogger.LogWarning(message);
     //    _appLogger.LogWarning($"{_loggerId}{message}");
-    //    Debug.Print($"TOP: {message}");
+    //    Trace.TraceInformation($"TOP: {message}");
     //}
 
     /// <summary>
@@ -275,7 +275,7 @@ public abstract class BaseOrderProcessor : IOrderProcessor
         ClientNotificationManager = clientNotificationManager;
         DateTimeService = dateTimeService;
         AppLogger = deviceServer.DataMessagingConfig.AppLogger;
-        LoggerId = deviceServer.DataMessagingConfig.LoggerId;
+        LoggerId = $"{deviceServer.DataMessagingConfig.LoggerId}{(deviceServer.DataMessagingConfig.LoggerId.EndsWith(": ") ? string.Empty : ": ")}{GetType().Name}: ";
         MonitorLogger = deviceServer.DataMessagingConfig.MonitorLogger;
         AppBenchProxy = appBenchProxy;
     }
@@ -822,7 +822,7 @@ public abstract class BaseOrderProcessor : IOrderProcessor
             return;
         }
 
-        Debug.Print($"AddOrder: {OrderPipeline.CurrentOrderState}");
+        Trace.TraceInformation($"{LoggerId}AddOrder: {OrderPipeline.CurrentOrderState}");
         ClientNotificationManager?.DoNotifyOrderStateChanged(this, order);
     }
 
@@ -916,7 +916,7 @@ public abstract class BaseOrderProcessor : IOrderProcessor
         CurrentDevice.CancelRunningOrders(errorCode);
 
         var s = $"{LoggerId}running orders cancelled. {OrderPipeline.CurrentOrderState} error code {errorCode}";
-        Debug.Print(s);
+        Trace.TraceInformation(s);
         AppLogger.LogDebug(s);
 
         IsCancellationRunningOrders = false;

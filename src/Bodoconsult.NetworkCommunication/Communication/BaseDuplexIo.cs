@@ -102,7 +102,7 @@ public abstract class BaseDuplexIo : IDuplexIo
         }
         catch (Exception e)
         {
-            Debug.Print(e.ToString());
+            Trace.TraceInformation(e.ToString());
             throw;
         }
 
@@ -226,7 +226,7 @@ public abstract class BaseDuplexIo : IDuplexIo
             msg = $"{DataMessagingConfig.LoggerId}Exception: {exception.Message}: {exception.StackTrace}";
         }
 
-        //Debug.Print(msg);
+        //Trace.TraceInformation(msg);
         DataMessagingConfig.AppLogger.LogError(msg);
         DataMessagingConfig.MonitorLogger.LogError(msg);
     }

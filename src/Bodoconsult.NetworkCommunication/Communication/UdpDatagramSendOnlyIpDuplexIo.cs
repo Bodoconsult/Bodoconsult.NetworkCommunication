@@ -1,6 +1,5 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
-
 using Bodoconsult.App.Helpers;
 using Bodoconsult.NetworkCommunication.Delegates;
 using Bodoconsult.NetworkCommunication.Interfaces;
@@ -8,10 +7,10 @@ using Bodoconsult.NetworkCommunication.Interfaces;
 namespace Bodoconsult.NetworkCommunication.Communication;
 
 /// <summary>
-/// Duplex implementation for IP based networks (TCP or UDP) based on own pipeline implementation receiving data from TCP or UDP stream.
-/// Receiving data with this implementation requires a recognizable end (STX, ETX, ...) of a message / datagram
-/// </summary> 
-public class IpDuplexIo : BaseDuplexIo
+/// Duplex implementation for IP based networks (UDP only) sending only messages. No receiving.
+/// Receiving data with this implementation requires NO recognizable end (STX, ETX, ...) of a datagram
+/// </summary>
+public class UdpDatagramSendOnlyIpDuplexIo : BaseDuplexIo
 {
     private readonly DuplexIoIsWorkInProgressDelegate _duplexIoIsWorkInProgressDelegate;
     private readonly DuplexIoNoDataDelegate _duplexIoNoDataDelegate;
@@ -30,7 +29,7 @@ public class IpDuplexIo : BaseDuplexIo
     /// <summary>
     /// Default ctor
     /// </summary>
-    public IpDuplexIo(IDataMessagingConfig dataMessaging, ISendPacketProcessFactory sendPacketProcessFactory) : base(dataMessaging, sendPacketProcessFactory)
+    public UdpDatagramSendOnlyIpDuplexIo(IDataMessagingConfig dataMessaging, ISendPacketProcessFactory sendPacketProcessFactory) : base(dataMessaging, sendPacketProcessFactory)
     {
         _duplexIoIsWorkInProgressDelegate = DuplexIoIsWorkInProgress;
         _duplexIoNoDataDelegate = DuplexIoSetNotInProgress;
@@ -105,13 +104,11 @@ public class IpDuplexIo : BaseDuplexIo
         {
             try
             {
-                Receiver ??= new IpDuplexIoReceiver(DataMessagingConfig,
-                    _duplexIoIsWorkInProgressDelegate,
-                    _duplexIoNoDataDelegate);
+                Receiver ??= new DoNothingDuplexIoReceiver();
 
                 await Receiver.StartReceiver();
 
-                Sender ??= new IpDuplexIoSender(DataMessagingConfig,
+                Sender ??= new UdpDatagramIpDuplexIoSender(DataMessagingConfig,
                     _duplexIoIsWorkInProgressDelegate,
                     _duplexIoNoDataDelegate);
             }
@@ -140,7 +137,7 @@ public class IpDuplexIo : BaseDuplexIo
         {
             await Receiver.StopReceiver();
         }
-        
+
         IsCommunicationStarted = false;
     }
 

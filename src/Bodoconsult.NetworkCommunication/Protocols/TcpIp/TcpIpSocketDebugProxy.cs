@@ -230,7 +230,7 @@
 //        /// <param name="msg"></param>
 //        private void Log(string msg)
 //        {
-//            //Debug.Print($"{_socketId}:{msg}");
+//            //Trace.TraceInformation($"{_socketId}:{msg}");
 //            _log.LogInformation($"{_socketId}:{msg}");
 //        }
 
@@ -254,7 +254,7 @@
 //            }
 
 //            var msg = s.ToString();
-//            //Debug.Print(msg);
+//            //Trace.TraceInformation(msg);
 //            _log.LogInformation(msg);
 //        }
 //    }

@@ -31,7 +31,7 @@ internal class TncpDataMessageSplitterTests
     public void TryReadCommand_ValidDataMessage_CommandReturned()
     {
         // Arrange 
-        var data = new byte[] { 0x1, 0x99, 0x99, DeviceCommunicationBasics.Cr, 0x99 };
+        var data = new byte[] { 0x1, 0x99, 0x99, DeviceCommunicationBasics.Lf, 0x99 };
         var ros = new ReadOnlySequence<byte>(data);
 
         // Act  

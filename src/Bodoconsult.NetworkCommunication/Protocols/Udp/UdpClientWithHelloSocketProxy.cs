@@ -1,29 +1,24 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
+using Bodoconsult.NetworkCommunication.Interfaces;
 using System.Diagnostics;
 using System.Net;
 using System.Net.Sockets;
-using Bodoconsult.NetworkCommunication.Interfaces;
 
 namespace Bodoconsult.NetworkCommunication.Protocols.Udp;
 
 /// <summary>
-/// Current asynchronous implementation of <see cref="ISocketProxy"/> for UDP unicast server  using a HELLO message sent by the client to the server to set up the connection.
-/// The content of the HELLO message does not care, but it has to be sent as first message from client to server
+/// Current asynchronous implementation of <see cref="ISocketProxy"/> for UDP unicast using a HELLO message sent by the client to the server to set up the connection. The content of the HELLO message does not care, but it has to be sent as first message from client to server
 /// </summary>
-public class UdpServerWithHelloSocketProxy : BaseUpdSocketProxy
+public class UdpClientWithHelloSocketProxy : BaseUpdSocketProxy
 {
+
     //private readonly byte[] _tmp = new byte[1];
 
     /// <summary>
     /// Endpoint for listening
     /// </summary>
     protected IPEndPoint? EndPoint;
-
-    /// <summary>
-    /// Endpoint for listening
-    /// </summary>
-    protected IPEndPoint? SendEndPoint;
 
     private bool _isBound;
 
@@ -46,8 +41,7 @@ public class UdpServerWithHelloSocketProxy : BaseUpdSocketProxy
         {
             try
             {
-                //Trace.TraceInformation($"Bytes available: {UdpClient?.Client.Available ?? 0}");
-                return UdpClient?.Client.Available ?? 0;
+                return UdpClient?.Available ?? 0;
             }
             catch
             {
@@ -55,6 +49,106 @@ public class UdpServerWithHelloSocketProxy : BaseUpdSocketProxy
             }
         }
     }
+
+    /// <summary>
+    /// Send bytes
+    /// </summary>
+    /// <param name="bytesToSend">Byte array to send</param>
+    public override async Task<int> Send(byte[] bytesToSend)
+    {
+        if (UdpClient == null)
+        {
+            return 0;
+        }
+
+        try
+        {
+            var result = await UdpClient.SendAsync(bytesToSend, CancellationTokenSource.Token);
+            Trace.TraceInformation($"UdpClientSocket: sent {result} bytes");
+            return result;
+        }
+        catch (SocketException socketException)
+        {
+            if (socketException.ErrorCode != 10054)
+            {
+                Logger?.LogError("Sending failed", socketException);
+                var s = socketException.ToString();
+                Trace.TraceError(s);
+            }
+            else
+            {
+                Logger?.LogDebug("No connection");
+            }
+
+            return 0;
+        }
+        catch (Exception e)
+        {
+            Logger?.LogError("Sending failed", e);
+            var s = e.ToString();
+            Trace.TraceError(s);
+            return 0;
+        }
+    }
+
+    /// <summary>
+    /// Send bytes
+    /// </summary>
+    /// <param name="bytesToSend">Data to send</param>
+    public override async ValueTask<int> Send(ReadOnlyMemory<byte> bytesToSend)
+    {
+        if (UdpClient == null)
+        {
+            return 0;
+        }
+
+        try
+        {
+            var result = await UdpClient.SendAsync(bytesToSend, CancellationTokenSource.Token);
+            Trace.TraceInformation($"UdpClientSocket: sent {result} bytes");
+            return result;
+        }
+        catch (SocketException socketException)
+        {
+            if (socketException.ErrorCode != 10054)
+            {
+                Logger?.LogError("Sending failed", socketException);
+                var s = socketException.ToString();
+                Trace.TraceError(s);
+            }
+            else
+            {
+                Logger?.LogDebug("No connection");
+            }
+
+            return 0;
+        }
+        catch (Exception e)
+        {
+            Logger?.LogError("Sending failed", e);
+            var s = e.ToString();
+            Trace.TraceError(s);
+            return 0;
+        }
+    }
+
+    ///// <summary>
+    ///// Send bytes 
+    ///// </summary>
+    ///// <param name="bytesToSend">Byte array to send</param>
+    ///// <param name="offset">Offset</param>
+    ///// <param name="messageBytesLength">Number of message bytes length to send</param>
+    ///// <returns></returns>
+    //public override Task<int> Send(byte[] bytesToSend, int offset, int messageBytesLength)
+    //{
+    //    if (UdpClient == null)
+    //    {
+    //        return Task.FromResult(0);
+    //    }
+
+    //    var datagram = bytesToSend.AsMemory().Slice(offset, messageBytesLength);
+    //    return UdpClient.Client.SendAsync(datagram.ToArray());
+    //}
 
     /// <summary>
     /// Close the socket
@@ -71,7 +165,6 @@ public class UdpServerWithHelloSocketProxy : BaseUpdSocketProxy
 
         UdpClient.Client.Shutdown(SocketShutdown.Both);
         UdpClient.Close();
-        UdpClient = null;
     }
 
     /// <summary>
@@ -105,14 +198,15 @@ public class UdpServerWithHelloSocketProxy : BaseUpdSocketProxy
 
             try
             {
-                UdpClient = new UdpClient(Port);
-
-                // The following three lines allow multiple clients on the same PC
+                UdpClient = new UdpClient();
                 UdpClient.Client.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.ReuseAddress, true);
                 UdpClient.Client.Blocking = false;
 
-                EndPoint = new IPEndPoint(IPAddress.Any, Port);
-                _isBound = true;
+                EndPoint = new IPEndPoint(IpAddress, Port);
+                UdpClient.Connect(EndPoint);
+
+                Trace.TraceInformation($"UDPClient: connect to {IpAddress}:{Port}");
+                _isBound = UdpClient.Client.Connected;
             }
             catch (Exception e)
             {
@@ -140,13 +234,12 @@ public class UdpServerWithHelloSocketProxy : BaseUpdSocketProxy
         try
         {
             var result = await UdpClient.ReceiveAsync(CancellationTokenSource.Token);
-            SendEndPoint = result.RemoteEndPoint;
+            //SendEndPoint = result.RemoteEndPoint;
 
             //Trace.TraceInformation($"UDPClient: received {result.Length} bytes from {SendEndPoint}");
 
             Buffer.BlockCopy(result.Buffer, 0, buffer, 0, result.Buffer.Length);
-            Trace.TraceInformation($"UdpServerSocket: received {result.Buffer.Length} bytes");
-
+            Trace.TraceInformation($"UdpClientSocket: received {result.Buffer.Length} bytes");
             return result.Buffer.Length;
         }
         catch (SocketException socketException)
@@ -188,12 +281,12 @@ public class UdpServerWithHelloSocketProxy : BaseUpdSocketProxy
         try
         {
             var result = await UdpClient.ReceiveAsync(CancellationTokenSource.Token);
-            SendEndPoint = result.RemoteEndPoint;
+            //SendEndPoint = result.RemoteEndPoint;
 
             //Trace.TraceInformation($"UDPClient: received {result.Length} bytes from {SendEndPoint}");
 
             result.Buffer.CopyTo(buffer);
-            Trace.TraceInformation($"UdpServerSocket: received {result.Buffer.Length} bytes");
+            Trace.TraceInformation($"UdpClientSocket: received {result.Buffer.Length} bytes");
             return result.Buffer.Length;
         }
         catch (SocketException socketException)
@@ -256,13 +349,12 @@ public class UdpServerWithHelloSocketProxy : BaseUpdSocketProxy
     //    try
     //    {
     //        var result = await UdpClient.ReceiveAsync(CancellationTokenSource.Token);
-    //        SendEndPoint = result.RemoteEndPoint;
+    //        //SendEndPoint = result.RemoteEndPoint;
 
     //        //Trace.TraceInformation($"UDPClient: received {result.Length} bytes from {SendEndPoint}");
 
     //        result.Buffer.AsSpan().Slice(offset, expectedBytesLength).CopyTo(buffer);
     //        return expectedBytesLength;
-
     //    }
     //    catch (SocketException socketException)
     //    {
@@ -281,105 +373,15 @@ public class UdpServerWithHelloSocketProxy : BaseUpdSocketProxy
     //}
 
     /// <summary>
-    /// Send bytes
-    /// </summary>
-    /// <param name="bytesToSend">Byte array to send</param>
-    public override async Task<int> Send(byte[] bytesToSend)
-    {
-        if (UdpClient == null || SendEndPoint == null || Equals(SendEndPoint.Address, IPAddress.Any))
-        {
-            return 0;
-        }
-
-        try
-        {
-            var result = await UdpClient.SendAsync(bytesToSend, SendEndPoint, CancellationTokenSource.Token);
-            Trace.TraceInformation($"UdpServerSocket: sent {result} bytes");
-            return result;
-        }
-        catch (SocketException socketException)
-        {
-            if (socketException.ErrorCode != 10054)
-            {
-                Logger?.LogError("Sending failed", socketException);
-                var s = socketException.ToString();
-                Trace.TraceError(s);
-            }
-            else
-            {
-                Logger?.LogDebug("No connection");
-            }
-
-            return 0;
-        }
-        catch (Exception e)
-        {
-            Logger?.LogError("Sending failed", e);
-            var s = e.ToString();
-            Trace.TraceError(s);
-            return 0;
-        }
-    }
-
-    /// <summary>
-    /// Send bytes
-    /// </summary>
-    /// <param name="bytesToSend">Data to send</param>
-    public override async ValueTask<int> Send(ReadOnlyMemory<byte> bytesToSend)
-    {
-        if (UdpClient == null || SendEndPoint == null || Equals(SendEndPoint.Address, IPAddress.Any))
-        {
-            Trace.TraceWarning("UdpClient is null or SendEndPoint is null or address IPAddress.Any. No client request before?");
-            return 0;
-        }
-
-        try
-        {
-            var result = await UdpClient.SendAsync(bytesToSend, SendEndPoint, CancellationTokenSource.Token);
-            Trace.TraceInformation($"UdpServerSocket: sent {result} bytes");
-            return result;
-        }
-        catch (SocketException socketException)
-        {
-            if (socketException.ErrorCode != 10054)
-            {
-                Logger?.LogError("Sending failed", socketException);
-                var s = socketException.ToString();
-                Trace.TraceError(s);
-            }
-            else
-            {
-                Trace.TraceInformation("No connection");
-                Logger?.LogDebug("No connection");
-            }
-
-            return 0;
-        }
-        catch (Exception e)
-        {
-            Logger?.LogError("Sending failed", e);
-            var s = e.ToString();
-            Trace.TraceError(s);
-            return 0;
-        }
-    }
-
-    /// <summary>
     /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
     /// </summary>
     public override void Dispose()
     {
         CancellationTokenSource.Cancel();
         IsDisposed = true;
-
-        if (UdpClient == null)
-        {
-            return;
-        }
-
-        UdpClient.Client.Shutdown(SocketShutdown.Both);
-        UdpClient.Close();
-        UdpClient.Dispose();
+        UdpClient?.Close();
+        UdpClient?.Dispose();
         UdpClient = null;
+        _isBound = false;
     }
 }

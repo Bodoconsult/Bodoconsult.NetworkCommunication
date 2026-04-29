@@ -41,7 +41,7 @@ public class SocketProxyFactory : ISocketProxyFactory
                 return new UdpServerSocketProxy
                 {
                     IpAddress = ipAddress,
-                    Port = port
+                    Port = port,
                 };
             }
 

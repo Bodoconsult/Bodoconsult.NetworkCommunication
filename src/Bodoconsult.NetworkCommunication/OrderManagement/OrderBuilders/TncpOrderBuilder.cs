@@ -52,10 +52,8 @@ public class TncpOrderBuilder : BaseOrderBuilder
 
     private List<IOutboundDataMessage> CreateMessagesToSentDelegate(IParameterSet? parameterSet)
     {
-        if (parameterSet == null)
-        {
-            throw new ArgumentNullException(nameof(parameterSet));
-        }
+        ArgumentNullException.ThrowIfNull(parameterSet);
+
         var msg = _outboundDataMessageFactory.CreateInstance(parameterSet);
         msg.WaitForAcknowledgement = true;
         return [msg];
@@ -71,16 +69,43 @@ public class TncpOrderBuilder : BaseOrderBuilder
     /// <param name="receivedMessage">A received message from the device</param>
     /// <param name="errors">List with error messages to fill</param>
     /// <returns>True if the message was as expected as answer of the sent message else false</returns>
-    private static bool CheckReceivedMessageDelegate(IRequestAnswer requestAnswer, IOutboundDataMessage sentMessage, IInboundDataMessage? receivedMessage, IList<string> errors)
+    public static bool CheckReceivedMessageDelegate(IRequestAnswer requestAnswer, IOutboundDataMessage sentMessage, IInboundDataMessage? receivedMessage, IList<string> errors)
     {
-        if (receivedMessage is not SdcpInboundDataMessage rm)
+        if (receivedMessage is not TncpInboundDataMessage rm)
         {
             return false;
         }
 
-        if (sentMessage is not SdcpOutboundDataMessage)
+        if (sentMessage is not TncpOutboundDataMessage sm)
         {
             return false;
+        }
+
+        if (rm.TelnetCommand == null)
+        {
+            return false;
+        }
+
+        if (rm.TelnetCommand.StartsWith("<BEGIN>", StringComparison.InvariantCultureIgnoreCase))
+        {
+            var send = sm.TelnetCommand;
+
+            if (send == null)
+            {
+                if (sm.DataBlock is TncpParameterSet ps)
+                {
+                    send = ps.TelnetCommand;
+                }
+            }
+
+            if (send == null)
+            {
+                return false;
+            }
+
+            var cmd = rm.TelnetCommand[7..];
+            var result = send == cmd;
+            return result;
         }
 
         requestAnswer.SetWasReceived(rm);

@@ -61,7 +61,7 @@ public class IpHighPerformanceDuplexIoReceiver : BaseDuplexIoReceiver
         {
             try
             {
-                Debug.Print("Wait for completion");
+                Trace.TraceInformation("Wait for completion");
 
                 if (FillPipelineTask == null)
                 {
@@ -73,11 +73,11 @@ public class IpHighPerformanceDuplexIoReceiver : BaseDuplexIoReceiver
                 FillPipelineTask = null;
                 SendPipelineTask = null;
 
-                Debug.Print("Completed");
+                Trace.TraceInformation("Completed");
             }
             catch (Exception e)
             {
-                Debug.Print(e.ToString());
+                Trace.TraceInformation(e.ToString());
                 Logger.LogError(e, "Stopping receiver failed");
             }
         });
@@ -106,7 +106,7 @@ public class IpHighPerformanceDuplexIoReceiver : BaseDuplexIoReceiver
         
         Trace.TraceInformation("FillMessagePipeline started");
 
-        //Debug.Print("Start fill message pipeline");
+        //Trace.TraceInformation("Start fill message pipeline");
         var writer = _pipe.Writer;
         var memSize = DataMessagingConfig.SocketProxy?.MinimumBufferSize ?? 512;
 
@@ -121,7 +121,7 @@ public class IpHighPerformanceDuplexIoReceiver : BaseDuplexIoReceiver
                     continue;
                 }
 
-                Debug.Print($"{_isDone}");
+                Trace.TraceInformation($"{_isDone}");
                 if (_isDone)
                 {
                     break;
@@ -131,7 +131,7 @@ public class IpHighPerformanceDuplexIoReceiver : BaseDuplexIoReceiver
 
 
                 var bytesRead = await _socketProxy.Receive(memory);
-                //Debug.Print($"Socket bytes read: {bytesRead}");
+                //Trace.TraceInformation($"Socket bytes read: {bytesRead}");
 
                 if (bytesRead > 0)
                 {
@@ -165,7 +165,7 @@ public class IpHighPerformanceDuplexIoReceiver : BaseDuplexIoReceiver
         // By completing PipeWriter, tell the PipeReader that there's no more data coming.
         await writer.CompleteAsync();
 
-        //Debug.Print("Completed fill message pipeline");
+        //Trace.TraceInformation("Completed fill message pipeline");
     }
 
 
@@ -178,7 +178,7 @@ public class IpHighPerformanceDuplexIoReceiver : BaseDuplexIoReceiver
     public override async Task SendMessagePipeline()
     {
         var reader = _pipe.Reader;
-        //Debug.Print("Start send message pipeline");
+        //Trace.TraceInformation("Start send message pipeline");
         while (!_isDone)
         {
             var result = await reader.ReadAsync();
@@ -195,10 +195,10 @@ public class IpHighPerformanceDuplexIoReceiver : BaseDuplexIoReceiver
                 continue;
             }
 
-            //Debug.Print($"Raw command: {ArrayHelper.GetStringFromArrayCsharpStyle(ref buffer)}");
+            //Trace.TraceInformation($"Raw command: {ArrayHelper.GetStringFromArrayCsharpStyle(ref buffer)}");
             Logger?.LogInformation($"Raw command: {DataMessageHelper.GetStringFromArrayCsharpStyle(ref buffer)}");
 
-            //Debug.Print($"Buffer: pre-length: {buffer.Length}");
+            //Trace.TraceInformation($"Buffer: pre-length: {buffer.Length}");
 
             // In the event that no message is parsed successfully, mark consumed
             // as nothing and examined as the entire buffer.
@@ -227,7 +227,7 @@ public class IpHighPerformanceDuplexIoReceiver : BaseDuplexIoReceiver
                 if (codecResult.ErrorCode != 0 || codecResult.DataMessage == null)
                 {
                     msg = $"Parsing command failed with error code {codecResult.ErrorCode}: {codecResult.ErrorMessage}: {DataMessageHelper.GetStringFromArrayCsharpStyle(ref command)}";
-                    Debug.Print(msg);
+                    Trace.TraceInformation(msg);
                     Logger?.LogDebug(msg);
                 }
                 else
@@ -236,13 +236,13 @@ public class IpHighPerformanceDuplexIoReceiver : BaseDuplexIoReceiver
                     if (!validationResult.IsMessageValid)
                     {
                         msg = $"Parsed command {DataMessageHelper.GetStringFromArrayCsharpStyle(ref command)} NOT valid: {validationResult.ValidationResult}. Message was NOT processed.";
-                        Debug.Print(msg);
+                        Trace.TraceInformation(msg);
                         Logger?.LogDebug(msg);
                     }
                     else
                     {
                         msg = $"Parsed command {DataMessageHelper.GetStringFromArrayCsharpStyle(ref command)}";
-                        Debug.Print(msg);
+                        Trace.TraceInformation(msg);
                         Logger?.LogDebug(msg);
 
                         DataMessageProcessor.ProcessMessage(codecResult.DataMessage);
@@ -256,7 +256,7 @@ public class IpHighPerformanceDuplexIoReceiver : BaseDuplexIoReceiver
             // Tell the PipeReader how much of the buffer has been consumed.
             reader.AdvanceTo(buffer.Start, buffer.End);
 
-            //Debug.Print($"Buffer: post-length: {buffer.Length}");
+            //Trace.TraceInformation($"Buffer: post-length: {buffer.Length}");
 
 
             // Stop reading if there's no more data coming.
@@ -269,7 +269,7 @@ public class IpHighPerformanceDuplexIoReceiver : BaseDuplexIoReceiver
         // Mark the PipeReader as complete.
         await reader.CompleteAsync();
 
-        //Debug.Print("Completed send message pipeline");
+        //Trace.TraceInformation("Completed send message pipeline");
     }
 
 

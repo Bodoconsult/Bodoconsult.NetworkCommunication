@@ -179,7 +179,7 @@ public class InternalRequestStepProcessor : IInternalRequestStepProcessor
         var step = requestSpec.RequestAnswerSteps[0];
 
         var s = $"{OrderLoggerId}RequestAnswerStep {0}: prepare start";
-        Debug.Print(s);
+        Trace.TraceInformation(s);
         AppLogger.LogDebug(s);
 
         if (IsCancelled)

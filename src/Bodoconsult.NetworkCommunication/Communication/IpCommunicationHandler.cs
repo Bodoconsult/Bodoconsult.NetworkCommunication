@@ -40,7 +40,7 @@ public class IpCommunicationHandler : ICommunicationHandler
         
         DuplexIo = duplexIo;
         DataMessagingConfig = dataMessagingConfig;
-        _loggerId = $"{DataMessagingConfig.LoggerId}: IpCommunicationHandler: ";
+        _loggerId = $"{DataMessagingConfig.LoggerId}{(dataMessagingConfig.LoggerId.EndsWith(": ") ? "": ": ")}IpCommunicationHandler: ";
 
         UpdateDevice();
 
@@ -105,7 +105,7 @@ public class IpCommunicationHandler : ICommunicationHandler
             if (ActivateLogging)
             {
                 var s = $"Enqueue message {message.ToShortInfoString()}";
-                //Debug.Print(s);
+                //Trace.TraceInformation(s);
                 DataMessagingConfig.MonitorLogger.LogDebug(s);
             }
 
@@ -180,6 +180,8 @@ public class IpCommunicationHandler : ICommunicationHandler
             }
             else
             {
+                _stopped.Reset();
+
                 AsyncHelper.FireAndForget2(() =>
                 {
                     try
@@ -246,7 +248,7 @@ public class IpCommunicationHandler : ICommunicationHandler
             if (ActivateLogging)
             {
                 var s = $"Send message {message.ToShortInfoString()}";
-                Debug.Print(s);
+                Trace.TraceInformation(s);
                 DataMessagingConfig.MonitorLogger.LogDebug(s);
             }
 

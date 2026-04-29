@@ -8,7 +8,7 @@ namespace Bodoconsult.NetworkCommunication.Protocols.Udp;
 /// <summary>
 /// Fake implementation of <see cref="ISocketProxy"/>
 /// </summary>
-public class FakeUdpSocketProxy : UpdSocketProxyBase
+public class FakeUdpSocketProxy : BaseUpdSocketProxy
 {
     /// <summary>
     /// Data for receiving methods
@@ -84,7 +84,6 @@ public class FakeUdpSocketProxy : UpdSocketProxyBase
     /// Used to set return value for Poll method
     /// </summary>
     public bool IsPoll { get; set; }
-
 
     /// <summary>
     /// Is the socket connected

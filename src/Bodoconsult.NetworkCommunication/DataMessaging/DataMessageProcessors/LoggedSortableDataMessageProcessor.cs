@@ -14,7 +14,6 @@ public class LoggedSortableDataMessageProcessor : BaseDataMessageProcessor
 {
     private readonly IInboundDataMessageSorter _dataMessageSorter;
     private readonly List<IInboundDataLogger> _dataLoggers;
-    private readonly string _loggerId;
 
     /// <summary>
     /// Default ctor
@@ -27,7 +26,6 @@ public class LoggedSortableDataMessageProcessor : BaseDataMessageProcessor
 
         _dataMessageSorter = Config.DataMessageProcessingPackage.DataMessageSorter;
         _dataLoggers = Config.DataMessageProcessingPackage.DataLoggers;
-        _loggerId = $"{config.LoggerId}: LoggedSortableDataMessageProcessor: ";
     }
 
     /// <summary>
@@ -36,7 +34,9 @@ public class LoggedSortableDataMessageProcessor : BaseDataMessageProcessor
     /// <param name="message">Message to process</param>
     public override void ProcessMessage(IInboundMessage message)
     {
-        Trace.TraceInformation($"LoggedSortableDataMessageProcessor: received message {message.MessageId}: {message.RawMessageData.Length} bytes");
+        Trace.TraceInformation($"{LoggerId}received message {message.MessageId}: {message.RawMessageData.Length} bytes");
+
+        Stopped.Reset();
 
         // Handshake received
         if (message is IInboundHandShakeMessage handShake)
@@ -55,7 +55,7 @@ public class LoggedSortableDataMessageProcessor : BaseDataMessageProcessor
         // No valid message
         var s = $"message {message.MessageId} not valid: {message.GetType().Name}";
         Config.MonitorLogger.LogError(s);
-        Trace.TraceInformation($"LoggedSortableDataMessageProcessor: {s}");
+        Trace.TraceInformation($"{LoggerId}{s}");
     }
 
     private void ProcessSortableDataMessage(ISortableInboundDataMessage dataMessage)
@@ -87,7 +87,7 @@ public class LoggedSortableDataMessageProcessor : BaseDataMessageProcessor
                 {
                     var s = $" failed {dataMessage.MessageId}: {dataMessage.RawMessageData.Length} bytes: {e}";
                     Config.MonitorLogger.LogError(s);
-                    Trace.TraceError($"{_loggerId}{s}");
+                    Trace.TraceError($"{LoggerId}{s}");
                 }
 
             }).ContinueWith(Callback);
@@ -100,7 +100,7 @@ public class LoggedSortableDataMessageProcessor : BaseDataMessageProcessor
             var msg1 = $"{dataMessage}delivering to message receiver timed out";
             Config.AppLogger.LogError($"{Config.LoggerId}{msg1}");
             Config.MonitorLogger.LogError(msg1);
-            Trace.TraceError($"{_loggerId}{msg1}");
+            Trace.TraceError($"{LoggerId}{msg1}");
             return;
         }
     }

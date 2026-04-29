@@ -25,7 +25,7 @@ public class IpDeviceManager : IIpDeviceManager
     private readonly IBusinessTransactionManager _businessTransactionManager;
     private readonly ISocketProxyFactory _socketProxyFactory;
 
-    private IAppGlobals _appGlobals;
+    private readonly IAppGlobals _appGlobals;
 
     /// <summary>
     /// Default ctor
@@ -116,7 +116,7 @@ public class IpDeviceManager : IIpDeviceManager
             throw new ArgumentNullException(nameof(BackendUdpConfig));
         }
 
-        var duplexIoFactory = new UdpDatagramIpDuplexIoFactory(_sendPacketProcessFactory);
+        var duplexIoFactory = new UdpDatagramSendOnlyIpDuplexIoFactory(_sendPacketProcessFactory);
 
         var m = new BackendUdpServerManager(duplexIoFactory, _monitorLoggerFactoryFactory, _logDataFactory, _appLoggerFactory,
             _appEventSourceFactory, _clientNotificationManager, _appLogger, _socketProxyFactory, _appGlobals);

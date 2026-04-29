@@ -13,6 +13,10 @@ namespace Bodoconsult.NetworkCommunication.Communication;
 /// </summary>
 public class BaseDuplexIoReceiver : IDuplexIoReceiver
 {
+    /// <summary>
+    /// Logger ID
+    /// </summary>
+    protected string LoggerId;
 
     /// <summary>
     /// Current polling timeout in seconds
@@ -52,7 +56,7 @@ public class BaseDuplexIoReceiver : IDuplexIoReceiver
         {
             if (CancellationSource?.Token.IsCancellationRequested ?? true)
             {
-                //Debug.Print("FillMessagePipeline cancelled");
+                //Trace.TraceInformation("FillMessagePipeline cancelled");
                 return false;
             }
 
@@ -83,6 +87,8 @@ public class BaseDuplexIoReceiver : IDuplexIoReceiver
     public BaseDuplexIoReceiver(IDataMessagingConfig dataMessagingConfig)
     {
         ArgumentNullException.ThrowIfNull(dataMessagingConfig.DataMessageProcessingPackage);
+
+        LoggerId = $"{dataMessagingConfig.LoggerId}{(dataMessagingConfig.LoggerId.EndsWith(": ") ? string.Empty: ": ")}{GetType().Name}: ";
 
         DataMessagingConfig = dataMessagingConfig;
         DataMessageCodingProcessor = DataMessagingConfig.DataMessageProcessingPackage.DataMessageCodingProcessor;
@@ -175,7 +181,7 @@ public class BaseDuplexIoReceiver : IDuplexIoReceiver
     /// </summary>
     public void StartFillMessagePipeline()
     {
-        Debug.Print("StartFillMessagePipeline in progress");
+        Trace.TraceInformation($"{LoggerId}StartFillMessagePipeline in progress");
 
         try
         {
@@ -197,7 +203,7 @@ public class BaseDuplexIoReceiver : IDuplexIoReceiver
                 }
                 catch (Exception e)
                 {
-                    Debug.Print(e.ToString());
+                    Trace.TraceError($"{LoggerId}StartFillMessagePipeline failed: {e}");
                 }
             });
 
@@ -212,7 +218,17 @@ public class BaseDuplexIoReceiver : IDuplexIoReceiver
         }
         catch (Exception exception)
         {
-            AsyncHelper.FireAndForget(() => DataMessagingConfig.DuplexIoErrorHandlerDelegate?.Invoke(exception));
+            AsyncHelper.FireAndForget(() =>
+            {
+                try
+                {
+                    DataMessagingConfig.DuplexIoErrorHandlerDelegate?.Invoke(exception);
+                }
+                catch (Exception e)
+                {
+                    Trace.TraceError($"{LoggerId}StartFillMessagePipeline failed: {e}");
+                }
+            });
         }
     }
 
@@ -221,7 +237,7 @@ public class BaseDuplexIoReceiver : IDuplexIoReceiver
     /// </summary>
     public void StartSendMessagePipeline()
     {
-        Debug.Print("StartSendMessagePipeline in progress");
+        Trace.TraceInformation("StartSendMessagePipeline in progress");
 
         try
         {
@@ -245,7 +261,17 @@ public class BaseDuplexIoReceiver : IDuplexIoReceiver
         }
         catch (Exception exception)
         {
-            AsyncHelper.FireAndForget(() => DataMessagingConfig.DuplexIoErrorHandlerDelegate?.Invoke(exception));
+            AsyncHelper.FireAndForget(() =>
+            {
+                try
+                {
+                    DataMessagingConfig.DuplexIoErrorHandlerDelegate?.Invoke(exception);
+                }
+                catch (Exception e)
+                {
+                    Trace.TraceError($"{LoggerId}StartFillMessagePipeline failed: {e}");
+                }
+            });
         }
     }
 

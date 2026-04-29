@@ -23,7 +23,7 @@ public class TcpTestClient :   BaseTcpIpDevice
     {
         IsServer = false;
 
-        Debug.Print($"Client: port {port}");
+        Trace.TraceInformation($"Client: port {port}");
 
         Socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp)
         {
