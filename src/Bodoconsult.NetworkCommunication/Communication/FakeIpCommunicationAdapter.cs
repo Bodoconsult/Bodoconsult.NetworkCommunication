@@ -42,6 +42,11 @@ public class FakeIpCommunicationAdapter : ICommunicationAdapter
     public bool IsConnected => PingResult;
 
     /// <summary>
+    /// Is the communication started?
+    /// </summary>
+    public bool IsStarted { get; set; }
+
+    /// <summary>
     /// Current communication handler
     /// </summary>
     public ICommunicationHandler? CommunicationHandler { get; set; }

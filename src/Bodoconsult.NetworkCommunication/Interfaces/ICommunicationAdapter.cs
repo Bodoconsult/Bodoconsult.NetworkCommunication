@@ -15,6 +15,11 @@ public interface ICommunicationAdapter : IDisposable
     IIpDataMessagingConfig? DataMessagingConfig { get; }
 
     /// <summary>
+    /// Is the communication started?
+    /// </summary>
+    bool IsStarted { get; }
+
+    /// <summary>
     /// Current communication handler
     /// </summary>
     public ICommunicationHandler? CommunicationHandler { get; }

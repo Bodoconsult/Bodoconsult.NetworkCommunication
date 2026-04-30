@@ -161,17 +161,19 @@ public class UdpServerSocketProxy : BaseUpdSocketProxy
         }
         catch (SocketException socketException)
         {
-            if (socketException.ErrorCode != 10054)
+            switch (socketException.ErrorCode)
             {
-                Logger?.LogError("Receiving failed", socketException);
-                var s = socketException.ToString();
-                Trace.TraceError($"{LoggerId}{s}");
+                case 10054:
+                case 995:
+                    Trace.TraceInformation($"{LoggerId}no connection");
+                    Logger?.LogDebug("No connection");
+                    break;
+                default:
+                    Logger?.LogError("Receiving failed", socketException);
+                    var s = socketException.ToString();
+                    Trace.TraceError($"{LoggerId}{s}");
+                    break;
             }
-            else
-            {
-                Logger?.LogDebug("No connection");
-            }
-
             return 0;
         }
         catch (Exception e)
@@ -210,17 +212,19 @@ public class UdpServerSocketProxy : BaseUpdSocketProxy
         }
         catch (SocketException socketException)
         {
-            if (socketException.ErrorCode != 10054)
+            switch (socketException.ErrorCode)
             {
-                Logger?.LogError("Receiving failed", socketException);
-                var s = socketException.ToString();
-                Trace.TraceError($"{LoggerId}{s}");
+                case 10054:
+                case 995:
+                    Logger?.LogDebug("No connection");
+                    Trace.TraceInformation($"{LoggerId}no connection");
+                    break;
+                default:
+                    Logger?.LogError("Receiving failed", socketException);
+                    var s = socketException.ToString();
+                    Trace.TraceError($"{LoggerId}{s}");
+                    break;
             }
-            else
-            {
-                Logger?.LogDebug("No connection");
-            }
-
             return 0;
         }
         catch (Exception e)

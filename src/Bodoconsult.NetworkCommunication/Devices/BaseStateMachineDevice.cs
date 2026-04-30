@@ -56,16 +56,14 @@ public abstract class BaseStateMachineDevice : BaseOrderManagementDevice, IState
         // Create offline state now
         var state = StateMachineStateFactory.CreateInstance(this, DefaultStateNames.DeviceOfflineState);
 
-        // Stop com for connected devices
-        foreach (var device in this.ConnectedDevices)
-        {
-            device.StopComm();
-        }
+        //// Stop com for connected devices
+        //foreach (var device in ConnectedDevices)
+        //{
+        //    device.StopComm();
+        //}
 
         // Register state
         RequestState(state);
-
-
 
         return false;
     }

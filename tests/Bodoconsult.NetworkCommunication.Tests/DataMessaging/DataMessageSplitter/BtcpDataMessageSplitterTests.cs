@@ -36,9 +36,29 @@ internal class BtcpDataMessageSplitterTests
         var result = _splitter.TryReadCommand(ref ros, out var command);
 
         // Assert
-        Assert.That(result, Is.True);
-        Assert.That(command.Length, Is.EqualTo(5));
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(result, Is.True);
+            Assert.That(command.Length, Is.EqualTo(5));
+        }
+    }
 
+    [Test]
+    public void TryReadCommand_ValidDataMessageRealWorld1_CommandReturned()
+    {
+        // Arrange 
+        var data = new byte[] { DeviceCommunicationBasics.Stx, 0x1, 0x99, 0x99, DeviceCommunicationBasics.Etx, 0x99 };
+        var ros = new ReadOnlySequence<byte>(data);
+
+        // Act  
+        var result = _splitter.TryReadCommand(ref ros, out var command);
+
+        // Assert
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(result, Is.True);
+            Assert.That(command.Length, Is.EqualTo(5));
+        }
     }
 
     [Test]
@@ -52,8 +72,11 @@ internal class BtcpDataMessageSplitterTests
         var result = _splitter.TryReadCommand(ref ros, out var command);
 
         // Assert
-        Assert.That(result, Is.True);
-        Assert.That(command.Length, Is.EqualTo(1));
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(result, Is.True);
+            Assert.That(command.Length, Is.EqualTo(1));
+        }
     }
 
     [Test]
@@ -67,8 +90,11 @@ internal class BtcpDataMessageSplitterTests
         var result = _splitter.TryReadCommand(ref ros, out var command);
 
         // Assert
-        Assert.That(result, Is.True);
-        Assert.That(command.Length, Is.EqualTo(1));
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(result, Is.True);
+            Assert.That(command.Length, Is.EqualTo(1));
+        }
     }
 
     [Test]
@@ -82,7 +108,10 @@ internal class BtcpDataMessageSplitterTests
         var result = _splitter.TryReadCommand(ref ros, out var command);
 
         // Assert
-        Assert.That(result, Is.True);
-        Assert.That(command.Length, Is.EqualTo(1));
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(result, Is.True);
+            Assert.That(command.Length, Is.EqualTo(1));
+        }
     }
 }

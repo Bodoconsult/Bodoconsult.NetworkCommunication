@@ -90,7 +90,7 @@ public class IpDeviceTcpIpClientStateMachineManager: IStateMachineDeviceManager
         var configurator = new TcpIpClientStateMachineDeviceConfigurator(_duplexIoFactory, _monitorLoggerFactoryFactory, _logDataFactory, _appLoggerFactory, 
             _appEventSourceFactory, _clientNotificationManager, _appLoggerProxy, _socketProxyFactory);
 
-        configurator.CreateMessagingConfig("IPDevice_TCPIP: ", ipAddress, port, messageProcessingPackageFactory);
+        configurator.CreateMessagingConfig("Backend_Device_TCPIP: ", ipAddress, port, messageProcessingPackageFactory);
 
         IDeviceBusinessLogicAdapterFactory businessLogicAdapterFactory = new TncpIpDeviceTcpIpBusinessLogicAdapterFactory(_businessTransactionManager);
         configurator.CreateDevice(businessLogicAdapterFactory);

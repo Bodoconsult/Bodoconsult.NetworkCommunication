@@ -70,11 +70,20 @@ public class TncpDataMessageSplitter : IDataMessageSplitter
 
         // Find the end byte 
         byte firstByte;
+
         var posEndByte = 0;
         for (var i = 0; i < buffer.Length; i++)
         {
             firstByte = buffer.Slice(i, 1).FirstSpan[0];
             // First byte is message start byte
+
+            if (DeviceCommunicationBasics.HandshakeMessageStartTokens.Contains(firstByte))
+            {
+                command = buffer.Slice(i, 1);
+                buffer = buffer.Slice(i);
+                return true;
+            }
+
             if (firstByte == DeviceCommunicationBasics.Lf)
             {
                 break;

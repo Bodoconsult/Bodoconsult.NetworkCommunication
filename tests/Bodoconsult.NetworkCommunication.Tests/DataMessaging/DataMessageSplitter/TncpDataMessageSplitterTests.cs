@@ -99,6 +99,40 @@ internal class TncpDataMessageSplitterTests
         }
     }
 
+    [Test]
+    public void TryReadCommand_ValidDataMessage4_CommandReturned()
+    {
+        // Arrange 
+        var data = new byte[] { 0x6, 0x3c, 0x42, 0x45, 0x47, 0x49, 0x4e, 0x3e, 0x73, 0x65, 0x74, 0x2c, 0x73, 0x74, 0x72, 0x65, 0x61, 0x6d, 0x2c, 0x6e, 0x75, 0x6d, 0x62, 0x65, 0x72, 0x2c, 0x31, 0xa };
+        var ros = new ReadOnlySequence<byte>(data);
+
+        // Act  
+        var result = _splitter.TryReadCommand(ref ros, out var command);
+
+        // Assert
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(result, Is.True);
+            Assert.That(command.Length, Is.EqualTo(1));
+            Assert.That(ros.Length, Is.EqualTo(27));
+            Debug.Print(Encoding.UTF8.GetString(command));
+        }
+
+        Debug.Print(Encoding.UTF8.GetString(ros));
+
+        // Act  
+        var result2 = _splitter.TryReadCommand(ref ros, out var command2);
+
+        Debug.Print(Encoding.UTF8.GetString(command2));
+
+        // Assert
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(result2, Is.True);
+            Assert.That(command2.Length, Is.EqualTo(27));
+            
+        }
+    }
 
 
     [Test]

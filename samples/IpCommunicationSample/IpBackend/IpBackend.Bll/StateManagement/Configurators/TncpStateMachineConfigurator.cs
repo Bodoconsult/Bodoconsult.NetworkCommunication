@@ -234,20 +234,20 @@ public class TncpStateMachineConfigurator : BaseStateMachineConfigurator
             {
                 newState = state.CurrentContext.CreateStateInstance(DefaultStateNames.DeviceReadyState);
 
-                // Start com for connected devices
-                foreach (var device in state.CurrentContext.ConnectedDevices)
-                {
-                    ArgumentNullException.ThrowIfNull(device.CommunicationAdapter);
+                //// Start com for connected devices
+                //foreach (var device in state.CurrentContext.ConnectedDevices)
+                //{
+                //    ArgumentNullException.ThrowIfNull(device.CommunicationAdapter);
 
-                    if (device.CommunicationAdapter.IsConnected)
-                    {
-                        device.CommunicationAdapter.ComDevReset();
-                    }
-                    device.CommunicationAdapter.ComDevInit();
-                }
+                //    if (device.CommunicationAdapter.IsStarted)
+                //    {
+                //        continue;
+                //    }
+                //    device.CommunicationAdapter.ComDevClose();
+                //    device.CommunicationAdapter.ComDevInit();
+                //}
             }
             else
-
             {
                 newState = state.CurrentContext.CreateStateInstance(DefaultStateNames.DeviceOfflineState);
             }

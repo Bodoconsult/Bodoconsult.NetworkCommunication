@@ -80,20 +80,21 @@ public class TncpDataMessageCodec : BaseDataMessageCodec
             var dataMessage = new TncpInboundDataMessage
             {
                 DataBlock = dataBlock,
-                RawMessageData = data
+                RawMessageData = data,
+                AnswerWithAcknowledgement = true
             };
 
             if (dataBlock != null)
             {
                 dataMessage.TelnetCommand = Encoding.UTF8.GetString(dataBlock.Data.Span);
+                if (dataMessage.TelnetCommand.StartsWith("<BEGIN>", StringComparison.InvariantCultureIgnoreCase))
+                {
+                    dataMessage.AnswerWithAcknowledgement = false;
+                }
             }
 
             result.DataMessage = dataMessage;
-
-
-
             return result;
-
         }
         catch (Exception exception)
         {

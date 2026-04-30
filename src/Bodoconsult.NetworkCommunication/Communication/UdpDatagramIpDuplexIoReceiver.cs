@@ -284,12 +284,12 @@ public class UdpDatagramIpDuplexIoReceiver : BaseDuplexIoReceiver
 
             if (messageLength <= 0)
             {
-                //Trace.TraceInformation($"{LoggerId}No data");
+                Trace.TraceInformation($"{LoggerId}No data");
                 AsyncHelper.Delay(FillPipelineTimeout);
                 continue;
             }
 
-            //Trace.TraceInformation($"{LoggerId}Got data");
+            Trace.TraceInformation($"{LoggerId}Got data");
 
             var dummy = _bufferPool.Dequeue();
             dummy.Memory = data.AsSpan()[..messageLength].ToArray().AsMemory();

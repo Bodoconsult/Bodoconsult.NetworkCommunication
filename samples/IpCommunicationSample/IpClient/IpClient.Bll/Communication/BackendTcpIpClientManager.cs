@@ -87,7 +87,7 @@ public class BackendTcpIpClientManager : IOrderManagementDeviceManager
         var configurator = new TcpIpClientOrderManagementDeviceConfigurator(_duplexIoFactory, _monitorLoggerFactoryFactory, _logDataFactory, _appLoggerFactory, _appEventSourceFactory, 
             _clientNotificationManager, _appLoggerProxy, _socketProxyFactory);
 
-        configurator.CreateMessagingConfig("Client_TCPIP", ipAddress, port, messageProcessingPackageFactory);
+        configurator.CreateMessagingConfig("Client_Backend_TCPIP", ipAddress, port, messageProcessingPackageFactory);
 
         IDeviceBusinessLogicAdapterFactory businessLogicAdapterFactory = new BtcpBackendTcpIpBusinessLogicAdapterFactory(_orderIdGenerator, _uiStateHandler);
         configurator.CreateDevice(businessLogicAdapterFactory);

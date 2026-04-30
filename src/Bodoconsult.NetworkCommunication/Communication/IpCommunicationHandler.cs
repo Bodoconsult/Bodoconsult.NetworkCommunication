@@ -293,7 +293,7 @@ public class IpCommunicationHandler : ICommunicationHandler
         _inboundQueue.StopConsumer();
         _outBoundQueue.StopConsumer();
 
-        DuplexIo.StopCommunication().Wait(2000);
+        DuplexIo.StopCommunication().Wait(5000);
         SocketProxy?.Close();
         DataMessagingConfig.MonitorLogger.LogDebug($"{DataMessagingConfig.LoggerId}disconnect - Socket has been closed.");
         _isInitialized = false;

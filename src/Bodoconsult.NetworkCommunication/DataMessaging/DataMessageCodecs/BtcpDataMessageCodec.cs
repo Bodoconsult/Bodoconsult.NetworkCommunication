@@ -94,7 +94,8 @@ public class BtcpDataMessageCodec : BaseDataMessageCodec
             var dataMessage = new BtcpRequestInboundDataMessage(bt, uid)
             {
                 DataBlock = dataBlock,
-                RawMessageData = data
+                RawMessageData = data,
+                AnswerWithAcknowledgement = true
             };
 
             result.DataMessage = dataMessage;

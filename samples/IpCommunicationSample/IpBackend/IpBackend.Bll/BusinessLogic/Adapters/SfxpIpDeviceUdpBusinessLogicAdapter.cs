@@ -59,35 +59,37 @@ public class SfxpIpDeviceUdpBusinessLogicAdapter : BaseSimpleDeviceBusinessLogic
     /// <returns>Reply</returns>
     public IBusinessTransactionReply CheckConnection(IBusinessTransactionRequestData requestData)
     {
-        ArgumentNullException.ThrowIfNull(IpDevice.CommunicationAdapter);
+        //ArgumentNullException.ThrowIfNull(IpDevice.CommunicationAdapter);
 
-        if (IpDevice.CommunicationAdapter.IsConnected)
-        {
-            if (IpDevice.CommunicationAdapter.CommunicationHandler == null)
-            {
-                IpDevice.CommunicationAdapter.ComDevInit();
-            }
-            else
-            {
-                IpDevice.CommunicationAdapter.CommunicationHandler.Disconnect();
-                IpDevice.CommunicationAdapter.CommunicationHandler.Connect();
+        ////if (IpDevice.CommunicationAdapter.IsConnected)
+        ////{
+        ////    if (IpDevice.CommunicationAdapter.CommunicationHandler == null)
+        ////    {
+        ////        IpDevice.CommunicationAdapter.ComDevInit();
+        ////    }
+        ////    else
+        ////    {
+        ////        IpDevice.CommunicationAdapter.ComDevInit();
 
-                Trace.TraceInformation("SfxpIpDeviceUdpBusinessLogicAdapter: Connection reset");
-            }
+        ////        //IpDevice.CommunicationAdapter.CommunicationHandler.Disconnect();
+        ////        //IpDevice.CommunicationAdapter.CommunicationHandler.Connect();
 
+        ////        Trace.TraceInformation("SfxpIpDeviceUdpBusinessLogicAdapter: Connection reset");
+        ////    }
+
+        ////    return new DefaultBusinessTransactionReply();
+        ////}
+
+        //if (IpDevice.CommunicationAdapter.ComDevInit())
+        //{
             return new DefaultBusinessTransactionReply();
-        }
+        //}
 
-        if (IpDevice.CommunicationAdapter.ComDevInit())
-        {
-            return new DefaultBusinessTransactionReply();
-        }
-
-        return new DefaultBusinessTransactionReply
-        {
-            ErrorCode = 1,
-            Message = "No connection"
-        };
+        //return new DefaultBusinessTransactionReply
+        //{
+        //    ErrorCode = 1,
+        //    Message = "No connection"
+        //};
     }
 
     /// <summary>

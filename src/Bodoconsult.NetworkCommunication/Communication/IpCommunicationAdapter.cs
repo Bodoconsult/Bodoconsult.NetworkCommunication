@@ -1,5 +1,6 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
+using System.Diagnostics;
 using System.Net;
 using System.Net.NetworkInformation;
 using System.Net.Sockets;
@@ -23,6 +24,7 @@ public class IpCommunicationAdapter : ICommunicationAdapter
     private bool _isComDevActionInProgress;
 
     private int _errorCounter;
+    private readonly string _loggerId;
 
     /// <summary>
     /// Default ctor
@@ -31,6 +33,8 @@ public class IpCommunicationAdapter : ICommunicationAdapter
         ICommunicationHandlerFactory communicationHandlerFactory)
     {
         DataMessagingConfig = dataMessagingConfig;
+
+        _loggerId = $"{dataMessagingConfig.LoggerId}{(dataMessagingConfig.LoggerId.EndsWith(": ") ? string.Empty : ": ")}{GetType().Name}: ";
         _communicationHandlerFactory = communicationHandlerFactory;
 
         ////DataMessagingConfig.GetTowerStateDelegate = GetTowerState;
@@ -49,6 +53,11 @@ public class IpCommunicationAdapter : ICommunicationAdapter
     {
         return _deviceState == DefaultDeviceStates.DeviceStateOnline;
     }
+
+    /// <summary>
+    /// Is the communication started?
+    /// </summary>
+    public bool IsStarted { get; private set; }
 
     /// <summary>
     /// Current communication handler
@@ -100,7 +109,7 @@ public class IpCommunicationAdapter : ICommunicationAdapter
     /// <summary>
     /// This property returns whether the communication object is valid and can be used
     /// </summary>
-    public bool IsCommunicationHandlerNotNull => CommunicationHandler != null;
+    public bool IsCommunicationHandlerNotNull { get; private set; } = true;
 
     /// <summary>
     /// Is the adapter connected
@@ -151,7 +160,7 @@ public class IpCommunicationAdapter : ICommunicationAdapter
     /// <returns>True if the initialiazation was successfull else false</returns>
     public bool ComDevInit()
     {
-        //Trace.TraceInformation("ComDevInit");
+        Trace.TraceInformation($"{_loggerId}ComDevInit: IsCommunicationHandlerNotNull={IsCommunicationHandlerNotNull}");
 
         string msg;
 
@@ -168,6 +177,7 @@ public class IpCommunicationAdapter : ICommunicationAdapter
                 msg = "ComDev for device is not valid. Request ComDevClose";
                 DataMessagingConfig.MonitorLogger.LogWarning(msg);
                 DataMessagingConfig.AppLogger.LogWarning($"{DataMessagingConfig.LoggerId}{msg}");
+                Trace.TraceInformation($"{_loggerId}ComDevInit: ComDevCloseInternal");
                 ComDevCloseInternal();
             }
 
@@ -197,6 +207,7 @@ public class IpCommunicationAdapter : ICommunicationAdapter
                         msg = "ComDevInit unsuccessful";
                         DataMessagingConfig.MonitorLogger.LogWarning(msg);
                         DataMessagingConfig.AppLogger.LogWarning($"{DataMessagingConfig.LoggerId}{msg}");
+                        isCloseRequired = true;
                     }
                 }
                 else
@@ -225,7 +236,7 @@ public class IpCommunicationAdapter : ICommunicationAdapter
                 }
 
                 isCloseRequired = true;
-
+                Trace.TraceError($"{_loggerId}ComDevInit failed: {se}");
             }
             catch (Exception e)
             {
@@ -242,6 +253,7 @@ public class IpCommunicationAdapter : ICommunicationAdapter
                 DataMessagingConfig.AppLogger.LogWarning($"{DataMessagingConfig.LoggerId}{msg}");
 
                 isCloseRequired = true;
+                Trace.TraceError($"{_loggerId}ComDevInit failed: {e}");
             }
             finally
             {
@@ -252,12 +264,14 @@ public class IpCommunicationAdapter : ICommunicationAdapter
             // Leave here if no error happened before
             if (!isCloseRequired)
             {
+                IsStarted = true;
                 _deviceState = DefaultDeviceStates.DeviceStateOnline;
                 return IsCommunicationHandlerNotNull;
             }
 
             // Close tower comm otherwise
             ComDevCloseInternal(true);
+            Trace.TraceInformation($"{_loggerId}ComDevInit2: ComDevCloseInternal");
 
             IsComDevActionInProgress = false;
             SetOrderProcessingStateDelegate?.Invoke(true);
@@ -270,6 +284,7 @@ public class IpCommunicationAdapter : ICommunicationAdapter
             DataMessagingConfig.AppLogger.LogError($"{DataMessagingConfig.LoggerId}{msg}", e);
 
             CommunicationHandler = null;
+            IsCommunicationHandlerNotNull = false;
             IsComDevActionInProgress = false;
             SetOrderProcessingStateDelegate?.Invoke(true);
         }
@@ -287,6 +302,7 @@ public class IpCommunicationAdapter : ICommunicationAdapter
             return;
         }
 
+        Trace.TraceInformation($"{_loggerId}ComDevClose: ComDevCloseInternal");
         ComDevCloseInternal();
         IsComDevActionInProgress = false;
     }
@@ -328,10 +344,12 @@ public class IpCommunicationAdapter : ICommunicationAdapter
         {
             // RL: Comm handler has to be reset in every case!!!!!!!
             CommunicationHandler = null;
+            IsCommunicationHandlerNotNull = false;
 
             SetOrderProcessingStateDelegate?.Invoke(true);
 
             IsComDevActionInProgress = false;
+            IsStarted = false;
 
             // Handle the communication break on higher business logic levels
             DataMessagingConfig.ResetOutboundDataMessageFactoryDelegate?.Invoke();
@@ -356,10 +374,12 @@ public class IpCommunicationAdapter : ICommunicationAdapter
             CommunicationHandler.Disconnect();
             CommunicationHandler.Dispose();
             CommunicationHandler = null;
+            IsCommunicationHandlerNotNull = false;
         }
 
         CommunicationHandler = _communicationHandlerFactory.CreateInstance(DataMessagingConfig);
         CommunicationHandler.Connect();
+        IsCommunicationHandlerNotNull = true;
 
         var connectionEstablishedMessage = $"{DataMessagingConfig.LoggerId}connection to {DataMessagingConfig.IpAddress}:{DataMessagingConfig.Port} established: {CommunicationHandler?.IsConnected}.";
         DataMessagingConfig.AppLogger.LogInformation(connectionEstablishedMessage);
@@ -425,6 +445,7 @@ public class IpCommunicationAdapter : ICommunicationAdapter
     /// </summary>
     public void ComDevReset()
     {
+        Trace.TraceInformation($"{_loggerId}ComDevReset: ComDevCloseInternal");
         ComDevCloseInternal(true);
     }
 
