@@ -19,14 +19,15 @@ public class IpCommunicationHandler : ICommunicationHandler
 {
     private readonly IAppEventSource _appEventSource;
     private readonly string _loggerId;
-    private readonly AutoResetEvent _stopped = new(false);
+    //private readonly AutoResetEvent _stopped = new(false);
     private const int TimeOut = 2000;
 
     private IWaitStateManager? _waitStateManager;
     private bool _isInitialized;
 
     private readonly SyncProcessManager<long, MessageSendingResult> _syncProcessManager = new();
-    private readonly ProducerConsumerQueue<IOutboundMessage> _queue = new();
+    private readonly ProducerConsumerQueue<IOutboundMessage> _outBoundQueue = new();
+    private readonly ProducerConsumerQueue<IInboundDataMessage> _inboundQueue = new();
 
     /// <summary>
     /// Default ctor
@@ -111,7 +112,7 @@ public class IpCommunicationHandler : ICommunicationHandler
 
             message.RaiseStopSyncExecutionDelegate = StopExecutionOfSyncOrder;
 
-            _queue.Enqueue(message);
+            _outBoundQueue.Enqueue(message);
 
             var syncData = _syncProcessManager.AddSyncProcess(message.MessageId, 5000);
 
@@ -153,68 +154,18 @@ public class IpCommunicationHandler : ICommunicationHandler
     /// <param name="message">Data message received</param>
     public void OnReceivedMessage(IInboundDataMessage message)
     {
+        _inboundQueue.Enqueue(message);
         Trace.TraceInformation($"{_loggerId}received message {message.MessageId}: {message.RawMessageData.Length} bytes");
-
-        ArgumentNullException.ThrowIfNull(DataMessagingConfig.DataMessageProcessingPackage);
-        ArgumentNullException.ThrowIfNull(_waitStateManager);
-
-        try
-        {
-            _waitStateManager.LastMessageTimeStamp = new DateTimeOffset(DateTime.UtcNow).ToUnixTimeMilliseconds();
-
-            // Send only a handshake if the message requires it
-            if (message.AnswerWithAcknowledgement)
-            {
-                var response = DataMessagingConfig.DataMessageProcessingPackage.DataMessageHandshakeFactory.GetAckResponse(message);
-
-                if (response is not DoNotSendOutboundHandshakeMessage)
-                {
-                    // Fire and forget
-                    _queue.Enqueue(response);
-                }
-            }
-
-            if (DataMessagingConfig.RaiseAppLayerDataMessageReceivedDelegate == null)
-            {
-                Trace.TraceWarning($"{_loggerId}DataMessagingConfig.RaiseAppLayerDataMessageReceivedDelegate is null");
-            }
-            else
-            {
-                _stopped.Reset();
-
-                AsyncHelper.FireAndForget2(() =>
-                {
-                    try
-                    {
-                        DataMessagingConfig.RaiseAppLayerDataMessageReceivedDelegate.Invoke(message);
-                    }
-                    catch (Exception e)
-                    {
-                        Trace.TraceError($"{_loggerId}RaiseAppLayerDataMessageReceivedDelegate.Invoke: {e}");
-                    }
-                }).ContinueWith(Callback);
-
-                _stopped.WaitOne(TimeOut);
-            }
-
-            // Now log app performance measures (must be located after sending!)
-            _appEventSource.ReportMetric(DataMessagingEventSourceProvider.DclReceivedDataMessageBytes, message.RawMessageData.Length);
-            _appEventSource.ReportIncrement(DataMessagingEventSourceProvider.DclReceivedDataMessageCount);
-        }
-        catch (Exception e)
-        {
-            DataMessagingConfig.MonitorLogger.LogError($"{_loggerId}received message {message.MessageId} but handling failed", e);
-        }
     }
 
-    /// <summary>
-    /// Callback metho th free <see cref="_stopped"/>
-    /// </summary>
-    /// <param name="ar">Asny result (not handled)</param>
-    protected void Callback(IAsyncResult ar)
-    {
-        _stopped.Set();
-    }
+    ///// <summary>
+    ///// Callback metho th free <see cref="_stopped"/>
+    ///// </summary>
+    ///// <param name="ar">Asny result (not handled)</param>
+    //protected void Callback(IAsyncResult ar)
+    //{
+    //    _stopped.Set();
+    //}
 
     /// <summary>
     /// Connect to the tower
@@ -234,13 +185,71 @@ public class IpCommunicationHandler : ICommunicationHandler
         // Start the communication in sync manner
         AsyncHelper.RunSync(() => DuplexIo.StartCommunication());
 
-        _queue.ConsumerTaskDelegate = ConsumerTaskDelegate;
-        _queue.StartConsumer();
+        _inboundQueue.ConsumerTaskDelegate = InboundConsumerTaskDelegate;
+        _inboundQueue.StartConsumer();
+
+        _outBoundQueue.ConsumerTaskDelegate = OutboundConsumerTaskDelegate;
+        _outBoundQueue.StartConsumer();
 
         _isInitialized = true;
     }
 
-    private async void ConsumerTaskDelegate(IOutboundMessage message)
+    private void InboundConsumerTaskDelegate(IInboundDataMessage message)
+    {
+        ArgumentNullException.ThrowIfNull(DataMessagingConfig.DataMessageProcessingPackage);
+        ArgumentNullException.ThrowIfNull(_waitStateManager);
+
+        try
+        {
+            _waitStateManager.LastMessageTimeStamp = new DateTimeOffset(DateTime.UtcNow).ToUnixTimeMilliseconds();
+
+            // Send only a handshake if the message requires it
+            if (message.AnswerWithAcknowledgement)
+            {
+                var response = DataMessagingConfig.DataMessageProcessingPackage.DataMessageHandshakeFactory.GetAckResponse(message);
+
+                if (response is not DoNotSendOutboundHandshakeMessage)
+                {
+                    // Fire and forget
+                    _outBoundQueue.Enqueue(response);
+                }
+            }
+
+            if (DataMessagingConfig.RaiseAppLayerDataMessageReceivedDelegate == null)
+            {
+                Trace.TraceWarning($"{_loggerId}DataMessagingConfig.RaiseAppLayerDataMessageReceivedDelegate is null");
+            }
+            else
+            {
+                //_stopped.Reset();
+
+                AsyncHelper.FireAndForget2(() =>
+                {
+                    try
+                    {
+                        DataMessagingConfig.RaiseAppLayerDataMessageReceivedDelegate.Invoke(message);
+                    }
+                    catch (Exception e)
+                    {
+                        Trace.TraceError($"{_loggerId}RaiseAppLayerDataMessageReceivedDelegate.Invoke: {e}");
+                    }
+                });
+                //.ContinueWith(Callback);
+
+                //_stopped.WaitOne(TimeOut);
+            }
+
+            // Now log app performance measures (must be located after sending!)
+            _appEventSource.ReportMetric(DataMessagingEventSourceProvider.DclReceivedDataMessageBytes, message.RawMessageData.Length);
+            _appEventSource.ReportIncrement(DataMessagingEventSourceProvider.DclReceivedDataMessageCount);
+        }
+        catch (Exception e)
+        {
+            DataMessagingConfig.MonitorLogger.LogError($"{_loggerId}received message {message.MessageId} but handling failed", e);
+        }
+    }
+
+    private async void OutboundConsumerTaskDelegate(IOutboundMessage message)
     {
         try
         {
@@ -281,7 +290,8 @@ public class IpCommunicationHandler : ICommunicationHandler
     /// </summary>
     public void Disconnect()
     {
-        _queue.StopConsumer();
+        _inboundQueue.StopConsumer();
+        _outBoundQueue.StopConsumer();
 
         DuplexIo.StopCommunication().Wait(2000);
         SocketProxy?.Close();

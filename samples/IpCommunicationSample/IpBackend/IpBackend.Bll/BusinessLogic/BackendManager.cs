@@ -156,7 +156,7 @@ public class BackendManager : IBackendManager
         IOrderManagerFactory orderManagerFactory = new OrderManagerFactory(orderProcessorFactory, _orderReceiverFactory, _requestStepProcessorFactoryFactory,
             _requestProcessorFactoryFactory, _orderPipelineFactory, orderFactory);
         var m = new IpDeviceTcpIpClientStateMachineManager(duplexIoFactory, _monitorLoggerFactoryFactory, _logDataFactory, _appLoggerFactory,
-            _appEventSourceFactory, _clientNotificationManager, _appLogger, orderManagerFactory, _socketProxyFactory);
+            _appEventSourceFactory, _clientNotificationManager, _appLogger, orderManagerFactory, _socketProxyFactory, _businessTransactionManager);
 
         m.ConfigureDevice(IpDeviceTcpIpConfig.Value.IpAddress, IpDeviceTcpIpConfig.Value.Port);
 
@@ -168,7 +168,6 @@ public class BackendManager : IBackendManager
         ArgumentNullException.ThrowIfNull(IpDeviceUdp.IpDevice);
 
         IpDeviceTcpIp.Device.ConnectedDevices.Add(IpDeviceUdp.IpDevice);
-
     }
 
     /// <summary>

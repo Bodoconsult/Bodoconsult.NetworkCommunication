@@ -34,8 +34,9 @@ public interface IDeviceRequestAnswerStep : IRequestAnswerStep
     /// </summary>
     /// <param name="sentMessage">The message sent from the request to the device</param>
     /// <param name="receivedMessage">A received message from the device</param>
-    /// <param name="errors">List with error messages to fill</param> <returns>True if the message was as expected as answer of the sent message else false</returns>
-    bool CheckReceivedMessage(IOutboundDataMessage sentMessage, IInboundDataMessage? receivedMessage, IList<string> errors);
+    /// <param name="errors">List with error messages to fill</param>
+    /// <returns>True if the message was as expected as answer of the sent message else false</returns>
+    bool CheckReceivedMessage(IOutboundDataMessage sentMessage, IInboundDataMessage? receivedMessage, List<string> errors);
 
     /// <summary>
     /// Process the current request answer step in a chain

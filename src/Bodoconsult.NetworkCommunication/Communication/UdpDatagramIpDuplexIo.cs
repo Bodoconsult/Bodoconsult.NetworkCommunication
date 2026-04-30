@@ -104,6 +104,8 @@ public class UdpDatagramIpDuplexIo: BaseDuplexIo
         {
             try
             {
+                SetInProgress(false);
+
                 Receiver ??= new UdpDatagramIpDuplexIoReceiver(DataMessagingConfig,
                     _duplexIoIsWorkInProgressDelegate,
                     _duplexIoNoDataDelegate);

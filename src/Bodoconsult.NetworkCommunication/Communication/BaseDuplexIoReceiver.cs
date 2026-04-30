@@ -62,7 +62,7 @@ public class BaseDuplexIoReceiver : IDuplexIoReceiver
 
             if (socketProxy?.Connected ?? false)
             {
-                break;
+                return true;
             }
 
             socketProxy = DataMessagingConfig.SocketProxy;
@@ -76,8 +76,6 @@ public class BaseDuplexIoReceiver : IDuplexIoReceiver
                 await Task.Delay(50);
             }
         }
-
-        return true;
     }
 
     /// <summary>
@@ -182,6 +180,8 @@ public class BaseDuplexIoReceiver : IDuplexIoReceiver
     public void StartFillMessagePipeline()
     {
         Trace.TraceInformation($"{LoggerId}StartFillMessagePipeline in progress");
+
+        DuplexIoNoDataDelegate?.Invoke();
 
         try
         {

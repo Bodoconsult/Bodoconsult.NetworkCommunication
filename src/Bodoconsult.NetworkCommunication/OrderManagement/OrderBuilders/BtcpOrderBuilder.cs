@@ -71,9 +71,9 @@ public class BtcpOrderBuilder : BaseOrderBuilder
     /// <param name="receivedMessage">A received message from the device</param>
     /// <param name="errors">List with error messages to fill</param>
     /// <returns>True if the message was as expected as answer of the sent message else false</returns>
-    private static bool CheckReceivedMessageDelegate(IRequestAnswer requestAnswer, IOutboundDataMessage sentMessage, IInboundDataMessage? receivedMessage, IList<string> errors)
+    public static bool CheckReceivedMessageDelegate(IRequestAnswer requestAnswer, IOutboundDataMessage sentMessage, IInboundDataMessage? receivedMessage, List<string> errors)
     {
-        if (receivedMessage is not BtcpRequestInboundDataMessage rm)
+        if (receivedMessage is not BtcpReplyInboundDataMessage rm)
         {
             return false;
         }
@@ -84,12 +84,6 @@ public class BtcpOrderBuilder : BaseOrderBuilder
         }
 
         var erg = sm.BusinessTransactionId == rm.BusinessTransactionId;
-
-        if (erg)
-        {
-            requestAnswer.SetWasReceived(rm);
-        }
-
         return erg;
     }
 }

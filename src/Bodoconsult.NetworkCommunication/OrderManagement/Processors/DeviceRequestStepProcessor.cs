@@ -188,7 +188,7 @@ public class DeviceRequestStepProcessor : IDeviceRequestStepProcessor
                     repeatCount++;
                     result = ExecuteRequest(message, requestSpec);
 
-                    RequestSpec.AppLogger?.LogDebug($"{RequestSpec.OrderLoggerId}{requestSpec}: ExecuteRequest: {result} at {repeatCount} try");
+                    RequestSpec.AppLogger?.LogDebug($"{RequestSpec.OrderLoggerId}: ExecuteRequest: {result} at {repeatCount} try");
 
                     if (result.Id == OrderExecutionResultState.Successful.Id ||
                         repeatCount >= requestSpec.NumberOfRepeatsInCaseOfNoSuccess)
@@ -244,7 +244,7 @@ public class DeviceRequestStepProcessor : IDeviceRequestStepProcessor
         }
         catch (Exception e)
         {
-            RequestSpec.AppLogger?.LogError($"{RequestSpec.OrderLoggerId}{RequestSpec.Name}: execution of requeststep failed", e);
+            RequestSpec.AppLogger?.LogError($"{RequestSpec.OrderLoggerId}: execution of requeststep failed", e);
             return OrderExecutionResultState.Unsuccessful;
         }
     }
@@ -260,7 +260,7 @@ public class DeviceRequestStepProcessor : IDeviceRequestStepProcessor
         // Set the next request answer step
         requestSpec.CurrentSentMessage = message;
 
-        var s = $"{requestSpec.OrderLoggerId}{RequestSpec.Name}ExecuteRequest: prepare start";
+        var s = $"{requestSpec.OrderLoggerId}ExecuteRequest: prepare start";
         Trace.TraceInformation($"{s}");
         requestSpec.AppLogger?.LogDebug(s);
 
@@ -465,7 +465,7 @@ public class DeviceRequestStepProcessor : IDeviceRequestStepProcessor
 
         CurrentChainElement = (IDeviceRequestAnswerStep)DeviceRequestSpec.RequestAnswerSteps[0];
 
-        Trace.TraceInformation($"{RequestSpec.OrderLoggerId}RSP {RequestSpec.Name}: chain started");
+        Trace.TraceInformation($"{RequestSpec.OrderLoggerId}chain started");
         while (true)
         {
             var element = CurrentChainElement;
@@ -482,19 +482,19 @@ public class DeviceRequestStepProcessor : IDeviceRequestStepProcessor
                 // Call a delegate for failed steps now if available
                 element.HandleRequestAnswerStepFailedDelegate?.Invoke();
 
-                Trace.TraceInformation($"{RequestSpec.OrderLoggerId}RSP {RequestSpec.Name}: chain done: Result {Result}");
+                Trace.TraceInformation($"{RequestSpec.OrderLoggerId}chain done: Result {Result}");
                 break;
             }
 
             // Last chain element and success
             if (element.NextChainElement == null)
             {
-                Trace.TraceInformation($"{RequestSpec.OrderLoggerId}RSP {RequestSpec.Name}: chain done");
+                Trace.TraceInformation($"{RequestSpec.OrderLoggerId}chain done");
                 break;
             }
 
             // More chain elements existing
-            Trace.TraceInformation($"{RequestSpec.OrderLoggerId}RSP {RequestSpec.Name}: next element in chain");
+            Trace.TraceInformation($"{RequestSpec.OrderLoggerId}next element in chain");
             CurrentChainElement = element.NextChainElement;
             Result = OrderExecutionResultState.Unsuccessful;
         }

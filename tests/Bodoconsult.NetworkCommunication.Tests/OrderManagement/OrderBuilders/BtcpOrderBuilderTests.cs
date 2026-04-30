@@ -1,10 +1,12 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
+using Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
 using Bodoconsult.NetworkCommunication.Interfaces;
 using Bodoconsult.NetworkCommunication.OrderManagement.Configurations;
 using Bodoconsult.NetworkCommunication.OrderManagement.OrderBuilders;
 using Bodoconsult.NetworkCommunication.OrderManagement.Orders;
 using Bodoconsult.NetworkCommunication.OrderManagement.ParameterSets;
+using Bodoconsult.NetworkCommunication.OrderManagement.Processors;
 
 namespace Bodoconsult.NetworkCommunication.Tests.OrderManagement.OrderBuilders;
 
@@ -189,6 +191,28 @@ internal class BtcpOrderBuilderTests: OrderBuilderTestsBase
             Assert.That(ra.Name, Is.EqualTo(raName));
             Assert.That(ra.CheckReceivedMessageDelegate, Is.Not.Null);
             Assert.That(ras.AllowedRequestAnswers.Count, Is.EqualTo(1));
+        }
+    }
+
+    [Test]
+    public void CheckReceivedMessageDelegate_ValidSetup_ReturnsTrue()
+    {
+        // Arrange 
+
+        IRequestAnswer requestAnswer = new RequestAnswer(true, null, "Test", BtcpOrderBuilder.CheckReceivedMessageDelegate);
+        var sentMessage = new BtcpRequestOutboundDataMessage(99, Guid.NewGuid());
+
+        var replyMessage = new BtcpReplyInboundDataMessage(99, sentMessage.BusinessTransactionUid);
+        var errors = new List<string>();
+
+        // Act  
+        var result = BtcpOrderBuilder.CheckReceivedMessageDelegate(requestAnswer, sentMessage, replyMessage, errors);
+
+        // Assert
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(result, Is.True);
+            Assert.That(errors.Count, Is.Zero);
         }
     }
 }

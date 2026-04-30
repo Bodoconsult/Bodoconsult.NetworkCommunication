@@ -84,12 +84,6 @@ public class EdcpClientOrderBuilder : BaseOrderBuilder
         }
 
         var erg =  sm.BlockCode == rm.BlockCode;
-
-        if (erg)
-        {
-            requestAnswer.SetWasReceived(rm);
-        }
-
         return erg;
     }
 }

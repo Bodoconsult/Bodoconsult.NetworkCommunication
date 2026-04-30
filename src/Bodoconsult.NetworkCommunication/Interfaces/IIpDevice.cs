@@ -11,6 +11,11 @@ namespace Bodoconsult.NetworkCommunication.Interfaces;
 public interface IIpDevice
 {
     /// <summary>
+    /// Current logger ID
+    /// </summary>
+    string LoggerId { get; }
+
+    /// <summary>
     /// Device configuration for data messaging
     /// </summary>
     IDataMessagingConfig DataMessagingConfig { get; }

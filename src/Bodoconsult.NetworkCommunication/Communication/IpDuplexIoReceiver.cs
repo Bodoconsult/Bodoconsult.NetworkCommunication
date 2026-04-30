@@ -107,7 +107,7 @@ public class IpDuplexIoReceiver : BaseDuplexIoReceiver
             var validationResult = _dataMessageValidator.IsMessageValid(codecResult.DataMessage);
             if (!validationResult.IsMessageValid)
             {
-                msg = $"Parsed command {DataMessageHelper.GetStringFromArrayCsharpStyle(ref command)} NOT valid: {validationResult.ValidationResult}";
+                msg = $"Parsed command NOT valid: {validationResult.ValidationResult}: {DataMessageHelper.GetStringFromArrayCsharpStyle(ref command)}";
                 Logger?.LogDebug(msg);
                 Trace.TraceError($"{LoggerId}DuplexIoReceiver: {msg}");
             }

@@ -28,7 +28,6 @@ public abstract class BaseOrderManagementDevice : IOrderManagementDevice
     /// </summary>
     protected readonly IAppLoggerProxy MonitorLogger;
 
-
     /// <summary>
     /// Default ctor
     /// </summary>
@@ -40,7 +39,14 @@ public abstract class BaseOrderManagementDevice : IOrderManagementDevice
         AppLogger = dataMessagingConfig.AppLogger;
         MonitorLogger = dataMessagingConfig.MonitorLogger;
         ClientNotificationManager = clientNotificationManager;
-    }
+
+        LoggerId = $"{dataMessagingConfig.LoggerId}{(dataMessagingConfig.LoggerId.EndsWith(": ") ? string.Empty : ": ")}{GetType().Name}: ";
+	}
+
+    /// <summary>
+    /// Current logger ID
+    /// </summary>
+    public string LoggerId { get; }
 
     /// <summary>
     /// Device configuration for data messaging
@@ -156,8 +162,8 @@ public abstract class BaseOrderManagementDevice : IOrderManagementDevice
             if (IsOrderProcessingActivatedInternal != value)
             {
                 AppLogger.LogInformation(value
-                    ? $"{DataMessagingConfig.LoggerId}order processing is activated now"
-                    : $"{DataMessagingConfig.LoggerId}order processing is deactivated now");
+                    ? $"{LoggerId}order processing is activated now"
+                    : $"{LoggerId}order processing is deactivated now");
 
                 IsOrderProcessingActivatedInternal = value;
             }
@@ -360,7 +366,7 @@ public abstract class BaseOrderManagementDevice : IOrderManagementDevice
         //var isState = DeviceStatesInitProcess.Contains(DeviceState);
         var isInit = OrderProcessor.IsInitInProcessing;
 
-        var s = $"{DataMessagingConfig.LoggerId}{OrderProcessor.OrderPipeline.CurrentOrderState} Init {isInit}";
+        var s = $"{LoggerId}{OrderProcessor.OrderPipeline.CurrentOrderState} Init {isInit}";
         Trace.TraceInformation(s);
         AppLogger.LogDebug(s);
 
@@ -441,7 +447,7 @@ public abstract class BaseOrderManagementDevice : IOrderManagementDevice
         //}
 
         order.ExecutionState = OrderState.FinishedSuccessfully;
-        AppLogger.LogDebug($"{DataMessagingConfig.LoggerId}{order.LoggerId}has finished successful");
+        AppLogger.LogDebug($"{LoggerId}{order.LoggerId}has finished successful");
         //MessagingBusinessDelegate?.DoNotifyOrderStateChanged(this, order);
     }
 
@@ -570,7 +576,7 @@ public abstract class BaseOrderManagementDevice : IOrderManagementDevice
     {
         // ToDo: new delegate
         //SlotCheckBusinessDelegate?.CheckCurrentAbortedUnloadOrLoadOrder();
-        AppLogger.LogDebug($"{DataMessagingConfig.LoggerId}Run SlotCheck.CheckCurrentAbortedUnloadOrLoadOrder");
+        AppLogger.LogDebug($"{LoggerId}Run SlotCheck.CheckCurrentAbortedUnloadOrLoadOrder");
     }
 
 
@@ -587,8 +593,9 @@ public abstract class BaseOrderManagementDevice : IOrderManagementDevice
         [CallerLineNumber] int lineNumber = 0)
     {
         MonitorLogger.LogDebug(message, memberName, filepath, lineNumber);
-        AppLogger.LogDebug($"{DataMessagingConfig.LoggerId}{message}", memberName, filepath, lineNumber);
-        Trace.TraceInformation($"BaseOrdermanagementDevice: {message}");
+        var s = $"{LoggerId}{message}";
+        AppLogger.LogDebug(s, memberName, filepath, lineNumber);
+        Trace.TraceInformation(s);
     }
 
     /// <summary>
@@ -604,8 +611,9 @@ public abstract class BaseOrderManagementDevice : IOrderManagementDevice
         [CallerLineNumber] int lineNumber = 0)
     {
         MonitorLogger.LogInformation(message, memberName, filepath, lineNumber);
-        AppLogger.LogInformation($"{DataMessagingConfig.LoggerId}{message}", memberName, filepath, lineNumber);
-        Trace.TraceInformation($"BaseOrdermanagementDevice: {message}");
+        var s = $"{LoggerId}{message}";
+        AppLogger.LogInformation(s, memberName, filepath, lineNumber);
+        Trace.TraceInformation(s);
     }
 
     /// <summary>
@@ -621,8 +629,9 @@ public abstract class BaseOrderManagementDevice : IOrderManagementDevice
         [CallerLineNumber] int lineNumber = 0)
     {
         MonitorLogger.LogWarning(message, memberName, filepath, lineNumber);
-        AppLogger.LogWarning($"{DataMessagingConfig.LoggerId}{message}", memberName, filepath, lineNumber);
-        Trace.TraceInformation($"BaseOrdermanagementDevice: {message}");
+        var s = $"{LoggerId}{message}";
+        AppLogger.LogWarning(s, memberName, filepath, lineNumber);
+        Trace.TraceInformation(s);
     }
 
     /// <summary>
@@ -638,8 +647,9 @@ public abstract class BaseOrderManagementDevice : IOrderManagementDevice
         [CallerLineNumber] int lineNumber = 0)
     {
         MonitorLogger.LogError(message, memberName, filepath, lineNumber);
-        AppLogger.LogError($"{DataMessagingConfig.LoggerId}{message}", memberName, filepath, lineNumber);
-        Trace.TraceInformation($"BaseOrdermanagementDevice: {message}");
+        var s = $"{LoggerId}{message}";
+        AppLogger.LogError(s, memberName, filepath, lineNumber);
+        Trace.TraceInformation(s);
     }
 
 
@@ -727,7 +737,7 @@ public abstract class BaseOrderManagementDevice : IOrderManagementDevice
     {
         //_statusWatchdog?.StopWatchDog();
         OrderManager?.StopOrderProcessing();
-        MonitorLogger.LogError($"{DataMessagingConfig.LoggerId}DeviceServer stopped - ComDevClose called");
+        MonitorLogger.LogError($"{LoggerId}DeviceServer stopped - ComDevClose called");
         StopComm();
     }
 
@@ -752,7 +762,7 @@ public abstract class BaseOrderManagementDevice : IOrderManagementDevice
     //    //}
     //    //catch (Exception e)
     //    //{
-    //    //    _appLogger.LogError($"{DataMessagingConfig.LoggerId}: exception {e.Message} happened", e);
+    //    //    _appLogger.LogError($"{LoggerId}: exception {e.Message} happened", e);
     //    //}
 
     //    //var terminal = 1;

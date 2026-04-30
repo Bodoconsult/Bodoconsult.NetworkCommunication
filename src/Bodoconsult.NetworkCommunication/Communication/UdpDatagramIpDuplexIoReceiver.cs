@@ -212,8 +212,11 @@ public class UdpDatagramIpDuplexIoReceiver : BaseDuplexIoReceiver
         // Wait until the socket is connected
         if (!await WaitForSocketIsConnected())
         {
+            Trace.TraceInformation($"{LoggerId}FillMessagePipeline stopped");
             return;
         }
+
+        DuplexIoNoDataDelegate.Invoke();
 
         Trace.TraceInformation($"{LoggerId}FillMessagePipeline started");
 
@@ -281,11 +284,12 @@ public class UdpDatagramIpDuplexIoReceiver : BaseDuplexIoReceiver
 
             if (messageLength <= 0)
             {
+                //Trace.TraceInformation($"{LoggerId}No data");
                 AsyncHelper.Delay(FillPipelineTimeout);
                 continue;
             }
 
-            //Trace.TraceInformation("Got data");
+            //Trace.TraceInformation($"{LoggerId}Got data");
 
             var dummy = _bufferPool.Dequeue();
             dummy.Memory = data.AsSpan()[..messageLength].ToArray().AsMemory();

@@ -2,11 +2,15 @@
 
 using Bodoconsult.App.Abstractions.Interfaces;
 using Bodoconsult.App.BusinessTransactions.Replies;
+using Bodoconsult.App.BusinessTransactions.RequestData;
+using Bodoconsult.App.Helpers;
+using Bodoconsult.App.Interfaces;
 using Bodoconsult.NetworkCommunication.BusinessLogicAdapters;
 using Bodoconsult.NetworkCommunication.Helpers;
 using Bodoconsult.NetworkCommunication.Interfaces;
 using Bodoconsult.NetworkCommunication.OrderManagement.ParameterSets;
 using IpBackend.Bll.Interfaces;
+using IpCommunicationSample.Common.BusinessTransactions;
 
 namespace IpBackend.Bll.BusinessLogic.Adapters;
 
@@ -15,12 +19,18 @@ namespace IpBackend.Bll.BusinessLogic.Adapters;
 /// </summary>
 public class TncpIpDeviceTcpIpBusinessLogicAdapter : BaseStateMachineDeviceBusinessLogicAdapter, IIpDeviceTcpIpDeviceBusinessLogicAdapter
 {
+    private IBusinessTransactionManager _businessTransactionManager;
+
     /// <summary>
     /// Default ctor
     /// </summary>
     /// <param name="device">Current device</param>
-    public TncpIpDeviceTcpIpBusinessLogicAdapter(IStateMachineDevice device) : base(device)
-    { }
+    /// <param name="businessTransactionManager">Current business transaction manager</param>
+    public TncpIpDeviceTcpIpBusinessLogicAdapter(IStateMachineDevice device,
+        IBusinessTransactionManager businessTransactionManager) : base(device)
+    {
+        _businessTransactionManager = businessTransactionManager;
+    }
 
     /// <summary>
     /// Current UDP port to use
@@ -49,8 +59,6 @@ public class TncpIpDeviceTcpIpBusinessLogicAdapter : BaseStateMachineDeviceBusin
         Device.CheckConnection();
     }
 
-
-
     /// <summary>
     /// Starting snapshot was successful
     /// </summary>
@@ -58,7 +66,8 @@ public class TncpIpDeviceTcpIpBusinessLogicAdapter : BaseStateMachineDeviceBusin
     /// <param name="order">Current order</param>
     public void StartSnapshotSuccessfully(IStateMachineState state, IOrder order)
     {
-        // Do nothing
+        // Check UDP connection now
+        CheckUdpConnection();
     }
 
     /// <summary>
@@ -78,7 +87,8 @@ public class TncpIpDeviceTcpIpBusinessLogicAdapter : BaseStateMachineDeviceBusin
     /// <param name="order">Current order</param>
     public void StartStreamingSuccessfully(IStateMachineState state, IOrder order)
     {
-        // Do nothing
+        // Check UDP connection now
+        CheckUdpConnection();
     }
 
     /// <summary>
@@ -178,6 +188,27 @@ public class TncpIpDeviceTcpIpBusinessLogicAdapter : BaseStateMachineDeviceBusin
                 ExceptionMessage = e.ToString()
             };
         }
+    }
+
+    /// <summary>
+    /// Check the UDP connection now
+    /// </summary>
+    private void CheckUdpConnection()
+    {
+        AsyncHelper.FireAndForget(() =>
+        {
+            try
+            {
+                var request = new EmptyBusinessTransactionRequestData();
+                _businessTransactionManager.RunBusinessTransaction(ServerSideBusinessTransactionIds.CheckConnection, request);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+
+        });
     }
 
     /// <summary>

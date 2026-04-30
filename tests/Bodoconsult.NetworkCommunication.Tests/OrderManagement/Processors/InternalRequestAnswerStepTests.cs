@@ -52,7 +52,7 @@ internal class InternalRequestAnswerStepTests
 
         var irs = new InternalRequestAnswerStep(ir);
         irs.AllowedRequestAnswers.Add(answer);
-        IList<string> errors = new List<string>();
+        var errors = new List<string>();
 
         ArgumentNullException.ThrowIfNull(answer.CheckReceivedMessageDelegate);
         answer.CheckReceivedMessageDelegate.Invoke(answer, sentMessage, receicedMessage, errors);

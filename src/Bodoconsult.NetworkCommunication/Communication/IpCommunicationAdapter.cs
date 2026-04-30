@@ -13,7 +13,6 @@ namespace Bodoconsult.NetworkCommunication.Communication;
 /// </summary>
 public class IpCommunicationAdapter : ICommunicationAdapter
 {
-
     private readonly ICommunicationHandlerFactory _communicationHandlerFactory;
     private IDeviceState _deviceState = DefaultDeviceStates.DeviceStateOffline;
     private readonly Lock _comDevActionLockObject = new();

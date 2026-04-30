@@ -29,12 +29,31 @@ public class BtcpDataMessageValidator : IDataMessageValidator
             return new DataMessageValidatorResult(true, "Message is valid");
         }
 
-        // No SDCP data message: always valid
+        // BTCP reply?
+        if (dataMessage is BtcpReplyInboundDataMessage br)
+        {
+            // Now check reply details
+            if (br.BusinessTransactionId == 0)
+            {
+                return new DataMessageValidatorResult(false, "Message is NOT a valid BTCP reply message (ID=0)");
+            }
+
+            if (br.BusinessTransactionUid == Guid.Empty)
+            {
+                return new DataMessageValidatorResult(false, "Message is NOT a valid BTCP reply message (UID=Guid.Empty)");
+            }
+
+            return new DataMessageValidatorResult(true, "Message is a valid BTCP reply message");
+        }
+
+
+        // No BTCP request data message: leave now
         if (dataMessage is not BtcpRequestInboundDataMessage bt)
         {
             return new DataMessageValidatorResult(false, "Message is NOT a valid BTCP message");
         }
 
+        // Now check request details
         if (bt.BusinessTransactionId == 0)
         {
             return new DataMessageValidatorResult(false, "Message is NOT a valid BTCP message (ID=0)");

@@ -82,8 +82,6 @@ public class SdcpOrderBuilder : BaseOrderBuilder
         {
             return false;
         }
-
-        requestAnswer.SetWasReceived(rm);
         return true;
     }
 }

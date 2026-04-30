@@ -223,7 +223,7 @@ public delegate void ResetOutboundDataMessageFactoryDelegate();
 /// <param name="receivedMessage">A received message from the device</param>
 /// <param name="errors">List with error messages to fill</param>
 /// <returns>True if the message was as expected as answer of the sent message else false</returns>
-public delegate bool CheckReceivedMessageDelegate(IRequestAnswer requestAnswer, IOutboundDataMessage sentMessage, IInboundDataMessage? receivedMessage, IList<string> errors);
+public delegate bool CheckReceivedMessageDelegate(IRequestAnswer requestAnswer, IOutboundDataMessage sentMessage, IInboundDataMessage? receivedMessage, List<string> errors);
 
 /// <summary>
 /// Delegate for creating data messages to sent to the device

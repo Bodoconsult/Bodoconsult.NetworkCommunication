@@ -334,6 +334,10 @@ public class OmOrder : IOrder
     /// </summary>
     public Bench? Benchmark { get; set; }
 
+    /// <summary>
+    /// Total timeout in ms for the complete order in ms. Set by the order processor
+    /// </summary>
+    public int TotalTimeOut { get; set; } = 10000;
 
     #endregion
 

@@ -244,5 +244,10 @@ public interface IOrder : IDisposable
     /// </summary>
     Bench? Benchmark { get; set; }
 
+    /// <summary>
+    /// Total timeout in ms for the complete order in ms. Set by the order processor
+    /// </summary>
+    int TotalTimeOut { get; set; }
+
     #endregion
 }

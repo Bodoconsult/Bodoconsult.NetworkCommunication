@@ -607,13 +607,13 @@ public abstract class BaseOrderProcessor : IOrderProcessor
             }
         }
 
-        var timeout = 3* GetOrderTimeout(order);
+        
 
         //#if DEBUG
         //            timeout = 5000;
         //#endif
 
-        var syncData = SyncOrderManager.AddSyncExecutionOrder(orderId, timeout);
+        var syncData = SyncOrderManager.AddSyncExecutionOrder(orderId, order.TotalTimeOut);
 
         // Now wait for order execution (doing it in a non-blocking mannor)
         var erg = AsyncHelper.RunSync(syncData.CreateWaitingTask);
@@ -726,6 +726,9 @@ public abstract class BaseOrderProcessor : IOrderProcessor
             return;
         }
 
+        // Timeout
+        order.TotalTimeOut = 3 * GetOrderTimeout(order);
+
         // Now finally run the order
         RunOrder(order);
     }
@@ -815,6 +818,8 @@ public abstract class BaseOrderProcessor : IOrderProcessor
             return;
         }
 
+        order.TotalTimeOut = 3 * GetOrderTimeout(order);
+
         OrderPipeline.AddOrder(order);
         AppLogger.LogInformation($"{LoggerId}{order.LoggerId} added to queue. {OrderPipeline.CurrentOrderState}. {json}");
         if (order.IsClientNotificationTurnedOff)
@@ -847,6 +852,8 @@ public abstract class BaseOrderProcessor : IOrderProcessor
         }
         else
         {
+            order.TotalTimeOut = 3 * GetOrderTimeout(order);
+
             OrderPipeline.AddPriorityOrder(order);
             ClientNotificationManager?.DoNotifyOrderStateChanged(this, order);
             AppLogger.LogInformation($"{LoggerId}{order.LoggerId} added to priority queue. {OrderPipeline.CurrentOrderState}. {json}");

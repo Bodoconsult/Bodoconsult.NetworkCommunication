@@ -1,5 +1,7 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
+using Bodoconsult.App.BusinessTransactions;
+using Bodoconsult.App.Factories;
 using Bodoconsult.NetworkCommunication.Interfaces;
 using Bodoconsult.NetworkCommunication.Tests.Helpers;
 using IpBackend.Bll.BusinessLogic.AdapterFactories;
@@ -13,22 +15,28 @@ internal class TncpIpDeviceDeviceBusinessLogicAdapterFactoryTests
     public void Ctor_ValidSetup_PropsSetCorrectly()
     {
         // Arrange 
+        var bt = new BusinessTransactionManager(TestDataHelper.GetFakeAppLoggerProxy(),
+            new FakeAppEventSourceFactory());
         var device = TestDataHelper.CreateStateMachineDevice();
-        var dsm = new TncpIpDeviceTcpIpBusinessLogicAdapterFactory();
+        var dsm = new TncpIpDeviceTcpIpBusinessLogicAdapterFactory(bt);
 
         // Act  
         var result = dsm.CreateInstance(device);
 
         // Assert
-        Assert.That(result.IpDevice, Is.EqualTo(device));
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(result.IpDevice, Is.EqualTo(device));
 
-        Assert.That(result is IStateMachineDeviceBusinessLogicAdapter, Is.True);
+            Assert.That(result is IStateMachineDeviceBusinessLogicAdapter, Is.True);
 
-        var adapter = result as IStateMachineDeviceBusinessLogicAdapter;
+            var adapter = result as IStateMachineDeviceBusinessLogicAdapter;
 
-        Assert.That(adapter, Is.Not.Null);
-        Assert.That(adapter.IpDevice, Is.EqualTo(device));
-        Assert.That(adapter.Device, Is.EqualTo(device));
-        Assert.That(adapter.StateFactory, Is.Null);
+            Assert.That(adapter, Is.Not.Null);
+            ArgumentNullException.ThrowIfNull(adapter);
+            Assert.That(adapter.IpDevice, Is.EqualTo(device));
+            Assert.That(adapter.Device, Is.EqualTo(device));
+            Assert.That(adapter.StateFactory, Is.Null);
+        }
     }
 }

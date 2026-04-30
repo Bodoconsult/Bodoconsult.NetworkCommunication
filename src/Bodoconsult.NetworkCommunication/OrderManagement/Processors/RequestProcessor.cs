@@ -65,8 +65,11 @@ public class RequestProcessor : IRequestProcessor
         //{
         //    return;
         //}
-        _orderLoggerId = $"{_device.DataMessagingConfig.LoggerId}{(_device.DataMessagingConfig.LoggerId.EndsWith(": ") ? string.Empty : ":")}{Order.LoggerId}";
+        _orderLoggerId = $"{_device.LoggerId}{(_device.LoggerId.EndsWith(": ") ? string.Empty : ": ")}{Order.LoggerId}";
         _appLogger = _device.DataMessagingConfig.AppLogger;
+
+
+        CancellationTokenSource =  new(Order.TotalTimeOut);
     }
 
     /// <summary>
@@ -261,13 +264,13 @@ public class RequestProcessor : IRequestProcessor
         {
             _transportObject = processor.RequestSpec.ResultTransportObject;
             processor.Dispose();
-            Trace.TraceInformation("ExecuteRequest successful");
+            Trace.TraceInformation($"{_orderLoggerId}RSP: {requestSpec.Name}: ExecuteRequest successful");
             return OrderExecutionResultState.Successful;
         }
 
         // ToDo: add logging
 
-        Trace.TraceInformation("ExecuteRequest failed");
+        Trace.TraceInformation($"{_orderLoggerId}RSP: {requestSpec.Name}: ExecuteRequest failed {result}");
 
         // If the order has been finished already or is disposable: do not change order state again
         if (order.IsFinished || order.IsDisposable)
@@ -324,13 +327,13 @@ public class RequestProcessor : IRequestProcessor
         {
             _transportObject = processor.RequestSpec.ResultTransportObject;
             processor.Dispose();
-            Trace.TraceInformation("ExecuteRequest successful");
+            Trace.TraceInformation($"{_orderLoggerId}RSP: {requestSpec.Name}: ExecuteRequest failed {result}");
             return OrderExecutionResultState.Successful;
         }
 
         // ToDo: add logging
 
-        Trace.TraceInformation("ExecuteRequest failed");
+        Trace.TraceInformation($"{_orderLoggerId}RSP: {requestSpec.Name}: ExecuteRequest failed {result}");
 
         // If the order has been finished already or is disposable: do not change order state again
         if (order.IsFinished || order.IsDisposable)
@@ -386,13 +389,13 @@ public class RequestProcessor : IRequestProcessor
         {
             _transportObject = processor.RequestSpec.ResultTransportObject;
             processor.Dispose();
-            Trace.TraceInformation("ExecuteRequest successful");
+            Trace.TraceInformation($"{_orderLoggerId}RSP: {requestSpec.Name}: ExecuteRequest failed {result}");
             return OrderExecutionResultState.Successful;
         }
 
         // ToDo: add logging
 
-        Trace.TraceInformation("ExecuteRequest failed");
+        Trace.TraceInformation($"{_orderLoggerId}RSP: {requestSpec.Name}: ExecuteRequest failed {result}");
 
         // If the order has been finished already or is disposable: do not change order state again
         if (order.IsFinished || order.IsDisposable)
@@ -447,13 +450,13 @@ public class RequestProcessor : IRequestProcessor
         {
             _transportObject = processor.RequestSpec.ResultTransportObject;
             processor.Dispose();
-            Trace.TraceInformation("ExecuteRequest successful");
+            Trace.TraceInformation($"{_orderLoggerId}RSP: {requestSpec.Name}: ExecuteRequest successful");
             return OrderExecutionResultState.Successful;
         }
 
         // ToDo: add logging
 
-        Trace.TraceInformation("ExecuteRequest failed");
+        Trace.TraceInformation($"{_orderLoggerId}RSP: {requestSpec.Name}: ExecuteRequest failed {result}");
 
         // If the order has been finished already or is disposable: do not change order state again
         if (order.IsFinished || order.IsDisposable)
@@ -628,7 +631,7 @@ public class RequestProcessor : IRequestProcessor
     /// <summary>
     /// Used to cancel <see cref="IRequestProcessor.CurrentTask"/> if required
     /// </summary>
-    public CancellationTokenSource CancellationTokenSource { get; } = new(5000);
+    public CancellationTokenSource CancellationTokenSource { get; }
 
     /// <summary>Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.</summary>
     public void Dispose()

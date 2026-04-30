@@ -1,6 +1,7 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
 using Bodoconsult.App.Abstractions.Interfaces;
+using Bodoconsult.App.Interfaces;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessageProcessingPackages;
 using Bodoconsult.NetworkCommunication.Devices.Configurators;
 using Bodoconsult.NetworkCommunication.Interfaces;
@@ -23,6 +24,7 @@ public class IpDeviceTcpIpClientStateMachineManager: IStateMachineDeviceManager
     private readonly IAppLoggerProxy _appLoggerProxy;
     private readonly IOrderManagerFactory _orderManagerFactory;
     private readonly ISocketProxyFactory _socketProxyFactory;
+    private IBusinessTransactionManager _businessTransactionManager;
 
     /// <summary>
     /// Default ctor
@@ -36,6 +38,7 @@ public class IpDeviceTcpIpClientStateMachineManager: IStateMachineDeviceManager
     /// <param name="appLoggerProxy">Current app logger</param>
     /// <param name="orderManagerFactory"></param>
     /// <param name="socketProxyFactory">Current socket factory</param>
+    /// <param name="businessTransactionManager">Current business transaction manager</param>
     public IpDeviceTcpIpClientStateMachineManager(IDuplexIoFactory duplexIoFactory,
         IMonitorLoggerFactoryFactory monitorLoggerFactoryFactory,
         ILogDataFactory logDataFactory,
@@ -44,7 +47,8 @@ public class IpDeviceTcpIpClientStateMachineManager: IStateMachineDeviceManager
         IOrderManagementClientNotificationManager clientNotificationManager,
         IAppLoggerProxy appLoggerProxy, 
         IOrderManagerFactory orderManagerFactory,
-        ISocketProxyFactory socketProxyFactory)
+        ISocketProxyFactory socketProxyFactory,
+        IBusinessTransactionManager businessTransactionManager)
     {
         _duplexIoFactory = duplexIoFactory;
         _appEventSourceFactory = appEventSourceFactory;
@@ -56,6 +60,7 @@ public class IpDeviceTcpIpClientStateMachineManager: IStateMachineDeviceManager
         _appLoggerProxy = appLoggerProxy;
         _orderManagerFactory = orderManagerFactory;
         _socketProxyFactory = socketProxyFactory;
+        _businessTransactionManager = businessTransactionManager;
     }
 
     /// <summary>
@@ -87,7 +92,7 @@ public class IpDeviceTcpIpClientStateMachineManager: IStateMachineDeviceManager
 
         configurator.CreateMessagingConfig("IPDevice_TCPIP: ", ipAddress, port, messageProcessingPackageFactory);
 
-        IDeviceBusinessLogicAdapterFactory businessLogicAdapterFactory = new TncpIpDeviceTcpIpBusinessLogicAdapterFactory();
+        IDeviceBusinessLogicAdapterFactory businessLogicAdapterFactory = new TncpIpDeviceTcpIpBusinessLogicAdapterFactory(_businessTransactionManager);
         configurator.CreateDevice(businessLogicAdapterFactory);
 
         // Order management

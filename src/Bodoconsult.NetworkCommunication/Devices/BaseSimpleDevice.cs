@@ -34,7 +34,13 @@ public abstract class BaseSimpleDevice : IIpDevice
         AppLogger = dataMessagingConfig.AppLogger;
         MonitorLogger = dataMessagingConfig.MonitorLogger;
         ClientNotificationManager = clientNotificationManager;
+        LoggerId = $"{dataMessagingConfig.LoggerId}{(dataMessagingConfig.LoggerId.EndsWith(": ") ? string.Empty : ": ")}{GetType().Name}: ";
     }
+
+    /// <summary>
+    /// Current logger ID
+    /// </summary>
+    public string LoggerId { get; }
 
     /// <summary>
     /// Device configuration for data messaging
@@ -155,8 +161,9 @@ public abstract class BaseSimpleDevice : IIpDevice
         [CallerLineNumber] int lineNumber = 0)
     {
         MonitorLogger.LogDebug(message, memberName, filepath, lineNumber);
-        AppLogger.LogDebug($"{DataMessagingConfig.LoggerId}{message}");
-        Trace.TraceInformation($"BaseSimpleDevice:  {message}");
+        var s = $"{LoggerId}{message}";
+        AppLogger.LogDebug(s);
+        Trace.TraceInformation(s);
     }
 
     /// <summary>
@@ -172,8 +179,9 @@ public abstract class BaseSimpleDevice : IIpDevice
         [CallerLineNumber] int lineNumber = 0)
     {
         MonitorLogger.LogInformation(message, memberName, filepath, lineNumber);
-        AppLogger.LogInformation($"{DataMessagingConfig.LoggerId}{message}", memberName, filepath, lineNumber);
-        Trace.TraceInformation($"BaseSimpleDevice:  {message}");
+        var s = $"{LoggerId}{message}";
+        AppLogger.LogInformation(s, memberName, filepath, lineNumber);
+        Trace.TraceInformation(s);
     }
 
     /// <summary>
@@ -189,8 +197,9 @@ public abstract class BaseSimpleDevice : IIpDevice
         [CallerLineNumber] int lineNumber = 0)
     {
         MonitorLogger.LogWarning(message, memberName, filepath, lineNumber);
-        AppLogger.LogWarning($"{DataMessagingConfig.LoggerId}{message}", memberName, filepath, lineNumber);
-        Trace.TraceInformation($"BaseSimpleDevice:  {message}");
+        var s = $"{LoggerId}{message}";
+        AppLogger.LogWarning(s, memberName, filepath, lineNumber);
+        Trace.TraceInformation(s);
     }
 
     /// <summary>
@@ -206,8 +215,9 @@ public abstract class BaseSimpleDevice : IIpDevice
         [CallerLineNumber] int lineNumber = 0)
     {
         MonitorLogger.LogError(message, memberName, filepath, lineNumber);
-        AppLogger.LogError($"{DataMessagingConfig.LoggerId}{message}", memberName, filepath, lineNumber);
-        Trace.TraceInformation($"BaseSimpleDevice:  {message}");
+        var s = $"{LoggerId}{message}";
+        AppLogger.LogError(s, memberName, filepath, lineNumber);
+        Trace.TraceInformation(s);
     }
 
     /// <summary>Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.</summary>

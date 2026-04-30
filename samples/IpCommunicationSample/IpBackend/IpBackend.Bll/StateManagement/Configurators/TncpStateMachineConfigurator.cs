@@ -237,7 +237,13 @@ public class TncpStateMachineConfigurator : BaseStateMachineConfigurator
                 // Start com for connected devices
                 foreach (var device in state.CurrentContext.ConnectedDevices)
                 {
-                    device.StartComm();
+                    ArgumentNullException.ThrowIfNull(device.CommunicationAdapter);
+
+                    if (device.CommunicationAdapter.IsConnected)
+                    {
+                        device.CommunicationAdapter.ComDevReset();
+                    }
+                    device.CommunicationAdapter.ComDevInit();
                 }
             }
             else

@@ -36,8 +36,8 @@ public class IpHighPerformanceDuplexIo : BaseDuplexIo, IDuplexPipe
     /// <returns>Task</returns>
     public override async Task StartCommunication()
     {
-        await Task.Run(async () =>
-        {
+        //await Task.Run(async () =>
+        //{
             try
             {
                 if (Receiver == null)
@@ -55,10 +55,10 @@ public class IpHighPerformanceDuplexIo : BaseDuplexIo, IDuplexPipe
             catch (Exception e)
             {
                 Trace.TraceInformation(e.ToString());
-                _config.MonitorLogger?.LogError(e, "Starting comm failed");
+                _config.MonitorLogger.LogError(e, "Starting comm failed");
             }
 
-        });
+        //});
 
         IsCommunicationStarted = true;
     }

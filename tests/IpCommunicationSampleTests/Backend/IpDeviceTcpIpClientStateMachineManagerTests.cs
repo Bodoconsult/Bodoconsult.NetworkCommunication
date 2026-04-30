@@ -2,6 +2,7 @@
 
 using Bodoconsult.App.Abstractions.Interfaces;
 using Bodoconsult.App.Benchmarking;
+using Bodoconsult.App.BusinessTransactions;
 using Bodoconsult.App.Factories;
 using Bodoconsult.App.Logging;
 using Bodoconsult.NetworkCommunication.ClientNotifications;
@@ -53,10 +54,12 @@ internal class IpDeviceTcpIpClientStateMachineManagerTests
         IOrderPipelineFactory orderPipelineFactory = new OrderPipelineFactory(_dateService, _appLogger);
         IOrderManagerFactory orderManagerFactory = new OrderManagerFactory(orderProcessorFactory, _orderReceiverFactory, _requestStepProcessorFactoryFactory, _requestProcessorFactoryFactory, orderPipelineFactory, _orderFactory);
         var socketFactory = new SocketProxyFactory(_tcpIpListenerManager);
+        var bt = new BusinessTransactionManager(TestDataHelper.GetFakeAppLoggerProxy(),
+            new FakeAppEventSourceFactory());
 
         // Act
         var m = new IpDeviceTcpIpClientStateMachineManager(duplexIoFactory, _monitorLoggerFactoryFactory, _logDataFactory, _appLoggerFactory,
-            _appEventSourceFactory, _clientNotificationManager, _appLogger, orderManagerFactory, socketFactory);
+            _appEventSourceFactory, _clientNotificationManager, _appLogger, orderManagerFactory, socketFactory, bt);
 
         // Assert
         using (Assert.EnterMultipleScope())
@@ -75,9 +78,11 @@ internal class IpDeviceTcpIpClientStateMachineManagerTests
         IOrderPipelineFactory orderPipelineFactory = new OrderPipelineFactory(_dateService, _appLogger);
         IOrderManagerFactory orderManagerFactory = new OrderManagerFactory(orderProcessorFactory, _orderReceiverFactory, _requestStepProcessorFactoryFactory, _requestProcessorFactoryFactory, orderPipelineFactory, _orderFactory);
         var socketFactory = new SocketProxyFactory(_tcpIpListenerManager);
+        var bt = new BusinessTransactionManager(TestDataHelper.GetFakeAppLoggerProxy(),
+            new FakeAppEventSourceFactory());
 
         var m = new IpDeviceTcpIpClientStateMachineManager(duplexIoFactory, _monitorLoggerFactoryFactory, _logDataFactory, _appLoggerFactory,
-            _appEventSourceFactory, _clientNotificationManager, _appLogger, orderManagerFactory, socketFactory);
+            _appEventSourceFactory, _clientNotificationManager, _appLogger, orderManagerFactory, socketFactory, bt);
 
         const string ip = "127.0.0.1";
         const int port = 9000;

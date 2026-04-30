@@ -1,10 +1,12 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
+using Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
 using Bodoconsult.NetworkCommunication.Interfaces;
 using Bodoconsult.NetworkCommunication.OrderManagement.Configurations;
 using Bodoconsult.NetworkCommunication.OrderManagement.OrderBuilders;
 using Bodoconsult.NetworkCommunication.OrderManagement.Orders;
 using Bodoconsult.NetworkCommunication.OrderManagement.ParameterSets;
+using Bodoconsult.NetworkCommunication.OrderManagement.Processors;
 
 namespace Bodoconsult.NetworkCommunication.Tests.OrderManagement.OrderBuilders;
 
@@ -20,8 +22,11 @@ internal class TncpOrderBuilderTests : OrderBuilderTestsBase
         var builder = new TncpOrderBuilder();
 
         // Assert
-        Assert.That(builder.OrderTypeName, Is.EqualTo(BuiltinOrders.TncpOrder));
-        Assert.That(builder.ParameterSetType, Is.EqualTo(typeof(TncpParameterSet)));
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(builder.OrderTypeName, Is.EqualTo(BuiltinOrders.TncpOrder));
+            Assert.That(builder.ParameterSetType, Is.EqualTo(typeof(TncpParameterSet)));
+        }
     }
 
     [Test]
@@ -41,18 +46,21 @@ internal class TncpOrderBuilderTests : OrderBuilderTestsBase
         // Act  
         var order = builder.CreateOrder(config, 1);
 
-		// Assert
-		Assert.That(order, Is.Not.Null);
-        Assert.That(order.ParameterSet, Is.EqualTo(ps));
-        Assert.That(order.ParameterSet?.CurrentOrder, Is.EqualTo(order));
+        // Assert
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(order, Is.Not.Null);
+            Assert.That(order.ParameterSet, Is.EqualTo(ps));
+            Assert.That(order.ParameterSet?.CurrentOrder, Is.EqualTo(order));
 
-        Assert.That(order.RequestSpecs.Count, Is.EqualTo(1));
+            Assert.That(order.RequestSpecs.Count, Is.EqualTo(1));
 
-        var rs = (IDeviceRequestSpec)order.RequestSpecs.First();
-        Assert.That(rs.RequestAnswerSteps.Count, Is.EqualTo(1));
+            var rs = (IDeviceRequestSpec)order.RequestSpecs.First();
+            Assert.That(rs.RequestAnswerSteps.Count, Is.EqualTo(1));
 
-        var ras = rs.RequestAnswerSteps.First();
-        Assert.That(ras.AllowedRequestAnswers.Count, Is.EqualTo(1));
+            var ras = rs.RequestAnswerSteps.First();
+            Assert.That(ras.AllowedRequestAnswers.Count, Is.EqualTo(1));
+        }
     }
 
     [Test]
@@ -71,9 +79,12 @@ internal class TncpOrderBuilderTests : OrderBuilderTestsBase
         var requestSpec = builder.CreateDeviceRequestSpec(order, name);
 
         // Assert
-        Assert.That(requestSpec, Is.Not.Null);
-        Assert.That(requestSpec.ParameterSet, Is.EqualTo(ps));
-        Assert.That(order.RequestSpecs.Count, Is.EqualTo(1));
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(requestSpec, Is.Not.Null);
+            Assert.That(requestSpec.ParameterSet, Is.EqualTo(ps));
+            Assert.That(order.RequestSpecs.Count, Is.EqualTo(1));
+        }
     }
 
     [Test]
@@ -143,9 +154,12 @@ internal class TncpOrderBuilderTests : OrderBuilderTestsBase
         var ras = builder.CreateDeviceRequestAnswerStep(requestSpec, rasName);
 
         // Assert
-        Assert.That(ras, Is.Not.Null);
-        Assert.That(ras.DeviceRequestSpec, Is.EqualTo(requestSpec));
-        Assert.That(requestSpec.RequestAnswerSteps.Count, Is.EqualTo(1));
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(ras, Is.Not.Null);
+            Assert.That(ras.DeviceRequestSpec, Is.EqualTo(requestSpec));
+            Assert.That(requestSpec.RequestAnswerSteps.Count, Is.EqualTo(1));
+        }
     }
 
     [Test]
@@ -172,8 +186,40 @@ internal class TncpOrderBuilderTests : OrderBuilderTestsBase
         var ra = builder.CreateRequestAnswer(ras, raName, CheckReceivedMessageDelegate, HandleRequestAnswerOnSuccessDelegate);
 
         // Assert
-        Assert.That(ra.Name, Is.EqualTo(raName));
-        Assert.That(ra.CheckReceivedMessageDelegate, Is.Not.Null);
-        Assert.That(ras.AllowedRequestAnswers.Count, Is.EqualTo(1));
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(ra.Name, Is.EqualTo(raName));
+            Assert.That(ra.CheckReceivedMessageDelegate, Is.Not.Null);
+            Assert.That(ras.AllowedRequestAnswers.Count, Is.EqualTo(1));
+        }
+    }
+
+    [Test]
+    public void CheckReceivedMessageDelegate_ValidSetup_ReturnsTrue()
+    {
+        // Arrange 
+
+        IRequestAnswer requestAnswer = new RequestAnswer(true, null, "Test", BtcpOrderBuilder.CheckReceivedMessageDelegate);
+        var sentMessage = new TncpOutboundDataMessage
+        {
+            TelnetCommand = "Blubb"
+        };
+
+        var replyMessage = new TncpInboundDataMessage
+        {
+            TelnetCommand = "<BEGIN>Blubb"
+        };
+        
+        var errors = new List<string>();
+
+        // Act  
+        var result = TncpOrderBuilder.CheckReceivedMessageDelegate(requestAnswer, sentMessage, replyMessage, errors);
+
+        // Assert
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(result, Is.True);
+            Assert.That(errors.Count, Is.Zero);
+        }
     }
 }

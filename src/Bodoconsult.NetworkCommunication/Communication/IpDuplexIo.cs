@@ -105,6 +105,8 @@ public class IpDuplexIo : BaseDuplexIo
         {
             try
             {
+                SetInProgress(false);
+
                 Receiver ??= new IpDuplexIoReceiver(DataMessagingConfig,
                     _duplexIoIsWorkInProgressDelegate,
                     _duplexIoNoDataDelegate);

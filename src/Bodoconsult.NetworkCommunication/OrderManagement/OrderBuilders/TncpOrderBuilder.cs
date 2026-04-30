@@ -107,8 +107,6 @@ public class TncpOrderBuilder : BaseOrderBuilder
             var result = send == cmd;
             return result;
         }
-
-        requestAnswer.SetWasReceived(rm);
         return true;
     }
 }

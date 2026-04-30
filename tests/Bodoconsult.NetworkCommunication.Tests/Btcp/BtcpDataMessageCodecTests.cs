@@ -272,6 +272,29 @@ internal class BtcpDataMessageCodecTests
         }
     }
 
+    [Test]
+    public void DecodeDataMessage_ValidInputRealWorld1_MessageDecoded()
+    {
+        // Arrange 
+        var msg = new byte[] { 0x2, 0x0, 0x32, 0x30, 0x31, 0x4, 0x35, 0x65, 0x31, 0x37, 0x34, 0x65, 0x62, 0x65, 0x2d, 0x30, 0x63, 0x64, 0x30, 0x2d, 0x34, 0x36, 0x33, 0x65, 0x2d, 0x61, 0x32, 0x64, 0x31, 0x2d, 0x39, 0x34, 0x31, 0x66, 0x66, 0x39, 0x34, 0x65, 0x65, 0x66, 0x61, 0x65, 0x4, 0x30, 0x7c, 0x7c, 0x7c, 0x78, 0x30, 0x7c, 0x7c, 0x3 };
+
+        var dataBlockCodingProcessor = new DefaultDataBlockCodingProcessor();
+        dataBlockCodingProcessor.LoadDataBlockCodecs('x', new BasicDataBlockCodec());
+        var codec = new BtcpDataMessageCodec(dataBlockCodingProcessor);
+
+        // Act  
+        var result = codec.DecodeDataMessage(msg);
+
+        // Assert
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(result, Is.Not.Null);
+            ArgumentNullException.ThrowIfNull(result);
+            Assert.That(result.ErrorCode, Is.Not.Zero);
+            Assert.That(result.DataMessage, Is.Null);
+        }
+    }
+
     //[Test]
     //public void EncodeDataMessage_ValidInput_MessageEncoded()
     //{

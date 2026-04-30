@@ -3,6 +3,7 @@
 using System.Diagnostics;
 using Bodoconsult.App.Abstractions.Interfaces;
 using Bodoconsult.App.BusinessTransactions.RequestData;
+using Bodoconsult.App.Helpers;
 using Bodoconsult.App.Interfaces;
 using Bodoconsult.NetworkCommunication.BusinessLogicAdapters;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
@@ -119,8 +120,19 @@ public class TncpBackendTcpIpBusinessLogicAdapter : BaseSimpleDeviceBusinessLogi
         }
 
         var command = _parser.Parse(cmd);
-        del.Invoke(command);
 
+        AsyncHelper.FireAndForget(() =>
+        {
+            try
+            {
+                Task.Delay(200);
+                del.Invoke(command);
+            }
+            catch (Exception e)
+            {
+                Trace.TraceInformation($"TncpBackendTcpIpBusinessLogicAdapter: {command}: {e}");
+            }
+        });
         return true;
     }
 
