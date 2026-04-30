@@ -36,9 +36,39 @@ internal class EdcpDataMessageSplitterTests
         var result = _splitter.TryReadCommand(ref ros, out var command);
 
         // Assert
-        Assert.That(result, Is.True);
-        Assert.That(command.Length, Is.EqualTo(5));
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(result, Is.True);
+            Assert.That(command.Length, Is.EqualTo(5));
+        }
+    }
 
+    [Test]
+    public void TryReadCommand_ValidDataMessage2_CommandReturned()
+    {
+        // Arrange 
+        var data = new byte[] { DeviceCommunicationBasics.Ack, 0x0, DeviceCommunicationBasics.Stx, 0x1, 0x99, 0x99, DeviceCommunicationBasics.Etx, 0x99 };
+        var ros = new ReadOnlySequence<byte>(data);
+
+        // Act  
+        var result = _splitter.TryReadCommand(ref ros, out var command);
+
+        // Assert
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(result, Is.True);
+            Assert.That(command.Length, Is.EqualTo(2));
+        }
+
+        // Act  
+        var result2 = _splitter.TryReadCommand(ref ros, out var command2);
+
+        // Assert
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(result2, Is.True);
+            Assert.That(command2.Length, Is.EqualTo(5));
+        }
     }
 
     [Test]
@@ -52,8 +82,11 @@ internal class EdcpDataMessageSplitterTests
         var result = _splitter.TryReadCommand(ref ros, out var command);
 
         // Assert
-        Assert.That(result, Is.True);
-        Assert.That(command.Length, Is.EqualTo(2));
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(result, Is.True);
+            Assert.That(command.Length, Is.EqualTo(2));
+        }
     }
 
     [Test]
@@ -67,8 +100,11 @@ internal class EdcpDataMessageSplitterTests
         var result = _splitter.TryReadCommand(ref ros, out var command);
 
         // Assert
-        Assert.That(result, Is.True);
-        Assert.That(command.Length, Is.EqualTo(2));
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(result, Is.True);
+            Assert.That(command.Length, Is.EqualTo(2));
+        }
     }
 
     [Test]
@@ -82,7 +118,10 @@ internal class EdcpDataMessageSplitterTests
         var result = _splitter.TryReadCommand(ref ros, out var command);
 
         // Assert
-        Assert.That(result, Is.True);
-        Assert.That(command.Length, Is.EqualTo(2));
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(result, Is.True);
+            Assert.That(command.Length, Is.EqualTo(2));
+        }
     }
 }

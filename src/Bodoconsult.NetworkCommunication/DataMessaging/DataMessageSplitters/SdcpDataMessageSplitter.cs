@@ -70,9 +70,19 @@ public class SdcpDataMessageSplitter : IDataMessageSplitter
 
         var firstByte = buffer.Slice(0, 1).FirstSpan[0];
 
+        // Handshake
+        if (DeviceCommunicationBasics.HandshakeMessageStartTokens.Contains(firstByte))
+        {
+            command = buffer.Slice(0, 1);
+            buffer = buffer.Slice(0);
+            return true;
+        }
+
         // First byte is no message start: remove byte until next message start
         while (true)
         {
+
+
             // First byte is message start byte
             if (DeviceCommunicationBasics.MessageStartTokens.Contains(firstByte))
             {
