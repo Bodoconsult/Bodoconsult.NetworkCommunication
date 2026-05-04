@@ -84,7 +84,7 @@ public abstract class BaseTcpIpSocketProxy : ISocketProxy
     /// Send bytes
     /// </summary>
     /// <param name="bytesToSend">Data to send</param>
-    public virtual ValueTask<int> Send(ReadOnlyMemory<byte> bytesToSend)
+    public virtual Task<int> Send(ReadOnlyMemory<byte> bytesToSend)
     {
         throw new NotSupportedException();
     }

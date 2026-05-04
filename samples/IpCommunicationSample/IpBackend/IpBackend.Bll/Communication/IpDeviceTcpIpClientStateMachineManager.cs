@@ -24,7 +24,7 @@ public class IpDeviceTcpIpClientStateMachineManager: IStateMachineDeviceManager
     private readonly IAppLoggerProxy _appLoggerProxy;
     private readonly IOrderManagerFactory _orderManagerFactory;
     private readonly ISocketProxyFactory _socketProxyFactory;
-    private IBusinessTransactionManager _businessTransactionManager;
+    private readonly IBusinessTransactionManager _businessTransactionManager;
 
     /// <summary>
     /// Default ctor

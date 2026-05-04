@@ -130,7 +130,7 @@ public class TcpIpClientSocketProxy : BaseTcpIpSocketProxy
     /// Send bytes
     /// </summary>
     /// <param name="bytesToSend">Data to send</param>
-    public override async ValueTask<int> Send(ReadOnlyMemory<byte> bytesToSend)
+    public override async Task<int> Send(ReadOnlyMemory<byte> bytesToSend)
     {
         if (Socket is not { Connected: true })
         {
@@ -139,7 +139,7 @@ public class TcpIpClientSocketProxy : BaseTcpIpSocketProxy
 
         try
         {
-            var result = await Socket.SendAsync(bytesToSend, CancellationTokenSource.Token);
+            var result = await Socket.SendAsync(bytesToSend, CancellationTokenSource.Token).AsTask();
             Trace.TraceInformation($"{LoggerId}TcpClientSocket: Sent {bytesToSend.Length} bytes");
             return result;
         }
@@ -240,9 +240,12 @@ public class TcpIpClientSocketProxy : BaseTcpIpSocketProxy
         Socket.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.ReuseAddress, true);
 
         EndPoint ep = new IPEndPoint(IpAddress, Port);
+
+
         try
         {
             await Socket.ConnectAsync(ep);
+            Trace.TraceInformation($"{LoggerId}connected to {IpAddress}:{Port}");
         }
         catch (Exception e)
         {
@@ -306,7 +309,7 @@ public class TcpIpClientSocketProxy : BaseTcpIpSocketProxy
         }
         try
         {
-            var result = await Socket.ReceiveAsync(buffer, SocketFlags.None, CancellationTokenSource.Token);
+            var result = await Socket.ReceiveAsync(buffer, SocketFlags.None, CancellationTokenSource.Token).AsTask();
             Trace.TraceInformation($"{LoggerId}TcpClientSocket: received {result} bytes");
             return result;
         }

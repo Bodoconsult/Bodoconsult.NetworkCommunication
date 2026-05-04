@@ -77,7 +77,7 @@ public class TncpStateMachineConfigurator : BaseStateMachineConfigurator
             HandleErrorMessageDelegate = _deviceBusinessLogicAdapter.DefaultHandleErrorMessage,
             HandleRegularStateRequestAnswerDelegate = DelegateHelper.HandleRegularStateRequestAnswerDelegate,
             PrepareRegularStateRequestDelegate = DelegateHelper.PrepareRegularStateRequestDelegate,
-            OrderFinishedSucessfullyDelegate = _deviceBusinessLogicAdapter.StopSnapshotSuccessfully,
+            OrderFinishedSucessfullyDelegate = DelegateHelper.OrderFinishedSucessfullyDelegate,
             OrderFinishedUnsucessfullyDelegate = _deviceBusinessLogicAdapter.StopSnapshotUnsuccessfully,
         };
 
@@ -107,7 +107,7 @@ public class TncpStateMachineConfigurator : BaseStateMachineConfigurator
             HandleErrorMessageDelegate = _deviceBusinessLogicAdapter.DefaultHandleErrorMessage,
             HandleRegularStateRequestAnswerDelegate = DelegateHelper.HandleRegularStateRequestAnswerDelegate,
             PrepareRegularStateRequestDelegate = DelegateHelper.PrepareRegularStateRequestDelegate,
-            OrderFinishedSucessfullyDelegate = _deviceBusinessLogicAdapter.StartSnapshotSuccessfully,
+            OrderFinishedSucessfullyDelegate = DelegateHelper.OrderFinishedSucessfullyDelegate,
             OrderFinishedUnsucessfullyDelegate = _deviceBusinessLogicAdapter.StartSnapshotUnsuccessfully,
         };
 
@@ -131,7 +131,7 @@ public class TncpStateMachineConfigurator : BaseStateMachineConfigurator
             HandleErrorMessageDelegate = _deviceBusinessLogicAdapter.DefaultHandleErrorMessage,
             HandleRegularStateRequestAnswerDelegate = DelegateHelper.HandleRegularStateRequestAnswerDelegate,
             PrepareRegularStateRequestDelegate = DelegateHelper.PrepareRegularStateRequestDelegate,
-            OrderFinishedSucessfullyDelegate = _deviceBusinessLogicAdapter.StopStreamingSuccessfully,
+            OrderFinishedSucessfullyDelegate = DelegateHelper.OrderFinishedSucessfullyDelegate,
             OrderFinishedUnsucessfullyDelegate = _deviceBusinessLogicAdapter.StopStreamingUnsuccessfully,
         };
 
@@ -161,7 +161,7 @@ public class TncpStateMachineConfigurator : BaseStateMachineConfigurator
             HandleErrorMessageDelegate = _deviceBusinessLogicAdapter.DefaultHandleErrorMessage,
             HandleRegularStateRequestAnswerDelegate = DelegateHelper.HandleRegularStateRequestAnswerDelegate,
             PrepareRegularStateRequestDelegate = DelegateHelper.PrepareRegularStateRequestDelegate,
-            OrderFinishedSucessfullyDelegate = _deviceBusinessLogicAdapter.StartStreamingSuccessfully,
+            OrderFinishedSucessfullyDelegate = DelegateHelper.OrderFinishedSucessfullyDelegate,
             OrderFinishedUnsucessfullyDelegate = _deviceBusinessLogicAdapter.StartStreamingUnsuccessfully,
         };
 

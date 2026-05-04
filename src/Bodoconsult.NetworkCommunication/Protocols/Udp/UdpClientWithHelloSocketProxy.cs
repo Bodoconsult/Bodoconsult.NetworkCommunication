@@ -95,7 +95,7 @@ public class UdpClientWithHelloSocketProxy : BaseUpdSocketProxy
     /// Send bytes
     /// </summary>
     /// <param name="bytesToSend">Data to send</param>
-    public override async ValueTask<int> Send(ReadOnlyMemory<byte> bytesToSend)
+    public override async Task<int> Send(ReadOnlyMemory<byte> bytesToSend)
     {
         if (UdpClient == null)
         {
@@ -104,7 +104,7 @@ public class UdpClientWithHelloSocketProxy : BaseUpdSocketProxy
 
         try
         {
-            var result = await UdpClient.SendAsync(bytesToSend, CancellationTokenSource.Token);
+            var result = await UdpClient.SendAsync(bytesToSend, CancellationTokenSource.Token).AsTask();
             Trace.TraceInformation($"UdpClientSocket: sent {result} bytes");
             return result;
         }

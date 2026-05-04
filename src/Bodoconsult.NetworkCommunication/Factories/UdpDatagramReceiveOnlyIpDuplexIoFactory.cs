@@ -6,16 +6,16 @@ using Bodoconsult.NetworkCommunication.Interfaces;
 namespace Bodoconsult.NetworkCommunication.Factories;
 
 /// <summary>
-/// Factory for <see cref="UdpDatagramSendOnlyIpDuplexIo"/> instances
+/// Factory for <see cref="UdpDatagramReceiveOnlyIpDuplexIo"/> instances
 /// </summary>
-public class UdpDatagramSendOnlyIpDuplexIoFactory : IDuplexIoFactory
+public class UdpDatagramReceiveOnlyIpDuplexIoFactory : IDuplexIoFactory
 {
     private readonly ISendPacketProcessFactory _sendPacketProcessFactory;
 
     /// <summary>
     /// Default ctor
     /// </summary>
-    public UdpDatagramSendOnlyIpDuplexIoFactory(ISendPacketProcessFactory sendPacketProcessFactory)
+    public UdpDatagramReceiveOnlyIpDuplexIoFactory(ISendPacketProcessFactory sendPacketProcessFactory)
     {
         _sendPacketProcessFactory = sendPacketProcessFactory;
     }
@@ -27,6 +27,6 @@ public class UdpDatagramSendOnlyIpDuplexIoFactory : IDuplexIoFactory
     /// <returns>Instance of <see cref="IDuplexIo"/></returns>
     public IDuplexIo CreateInstance(IDataMessagingConfig config)
     {
-        return new UdpDatagramSendOnlyIpDuplexIo(config, _sendPacketProcessFactory);
+        return new UdpDatagramReceiveOnlyIpDuplexIo(config, _sendPacketProcessFactory);
     }
 }

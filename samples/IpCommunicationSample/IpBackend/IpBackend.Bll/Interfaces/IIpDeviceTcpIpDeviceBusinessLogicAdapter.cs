@@ -18,25 +18,11 @@ public interface IIpDeviceTcpIpDeviceBusinessLogicAdapter: IStateMachineDeviceBu
     #region Device order handling
 
     /// <summary>
-    /// Stopping snapshot was successful
-    /// </summary>
-    /// <param name="state">Current state</param>
-    /// <param name="order">Current order</param>
-    void StopSnapshotSuccessfully(IStateMachineState state, IOrder order);
-
-    /// <summary>
     /// Stopping snapshot was unsuccessful
     /// </summary>
     /// <param name="state">Current state</param>
     /// <param name="order">Current order</param>
     void StopSnapshotUnsuccessfully(IStateMachineState state, IOrder order);
-
-    /// <summary>
-    /// Starting snapshot was successful
-    /// </summary>
-    /// <param name="state">Current state</param>
-    /// <param name="order">Current order</param>
-    void StartSnapshotSuccessfully(IStateMachineState state, IOrder order);
 
     /// <summary>
     /// Starting snapshot was unsuccessful
@@ -46,25 +32,11 @@ public interface IIpDeviceTcpIpDeviceBusinessLogicAdapter: IStateMachineDeviceBu
     void StartSnapshotUnsuccessfully(IStateMachineState state, IOrder order);
 
     /// <summary>
-    /// Starting streaming was successful
-    /// </summary>
-    /// <param name="state">Current state</param>
-    /// <param name="order">Current order</param>
-    void StartStreamingSuccessfully(IStateMachineState state, IOrder order);
-
-    /// <summary>
     /// Starting streaming was unsuccessful
     /// </summary>
     /// <param name="state">Current state</param>
     /// <param name="order">Current order</param>
     void StartStreamingUnsuccessfully(IStateMachineState state, IOrder order);
-
-    /// <summary>
-    /// Stopping streaming was successful
-    /// </summary>
-    /// <param name="state">Current state</param>
-    /// <param name="order">Current order</param>
-    void StopStreamingSuccessfully(IStateMachineState state, IOrder order);
 
     /// <summary>
     /// Stopping streaming was unsuccessful

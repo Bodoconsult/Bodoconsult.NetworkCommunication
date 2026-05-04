@@ -187,7 +187,7 @@ public class UdpServerWithHelloSocketProxy : BaseUpdSocketProxy
 
         try
         {
-            var result = await UdpClient.ReceiveAsync(CancellationTokenSource.Token);
+            var result = await UdpClient.ReceiveAsync(CancellationTokenSource.Token).AsTask();
             SendEndPoint = result.RemoteEndPoint;
 
             //Trace.TraceInformation($"UDPClient: received {result.Length} bytes from {SendEndPoint}");
@@ -325,7 +325,7 @@ public class UdpServerWithHelloSocketProxy : BaseUpdSocketProxy
     /// Send bytes
     /// </summary>
     /// <param name="bytesToSend">Data to send</param>
-    public override async ValueTask<int> Send(ReadOnlyMemory<byte> bytesToSend)
+    public override async Task<int> Send(ReadOnlyMemory<byte> bytesToSend)
     {
         if (UdpClient == null || SendEndPoint == null || Equals(SendEndPoint.Address, IPAddress.Any))
         {
@@ -335,7 +335,7 @@ public class UdpServerWithHelloSocketProxy : BaseUpdSocketProxy
 
         try
         {
-            var result = await UdpClient.SendAsync(bytesToSend, SendEndPoint, CancellationTokenSource.Token);
+            var result = await UdpClient.SendAsync(bytesToSend, SendEndPoint, CancellationTokenSource.Token).AsTask();
             Trace.TraceInformation($"UdpServerSocket: sent {result} bytes");
             return result;
         }

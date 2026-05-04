@@ -59,7 +59,11 @@ public class SfxpIpDeviceUdpBusinessLogicAdapter : BaseSimpleDeviceBusinessLogic
     /// <returns>Reply</returns>
     public IBusinessTransactionReply CheckConnection(IBusinessTransactionRequestData requestData)
     {
-        //ArgumentNullException.ThrowIfNull(IpDevice.CommunicationAdapter);
+        ArgumentNullException.ThrowIfNull(IpDevice.CommunicationAdapter);
+        IpDevice.CommunicationAdapter.ComDevClose();
+        IpDevice.CommunicationAdapter.ComDevInit();
+
+        //
 
         ////if (IpDevice.CommunicationAdapter.IsConnected)
         ////{
@@ -82,7 +86,7 @@ public class SfxpIpDeviceUdpBusinessLogicAdapter : BaseSimpleDeviceBusinessLogic
 
         //if (IpDevice.CommunicationAdapter.ComDevInit())
         //{
-            return new DefaultBusinessTransactionReply();
+        return new DefaultBusinessTransactionReply();
         //}
 
         //return new DefaultBusinessTransactionReply

@@ -72,9 +72,13 @@ internal class UdpSocketTests
 
         var port = TestDataHelper.GetRandomPort();
 
+        AutoResetEvent started = new(false);
+
         Task.Run(() =>
         {
             var udpServer = new UdpSocket("Server", "127.0.0.1", port, true);
+
+            started.Set();
 
             while (!cts.IsCancellationRequested)
             {
@@ -84,6 +88,8 @@ internal class UdpSocketTests
             udpServer.Dispose();
 
         });
+
+        started.WaitOne(2000);
 
         // Act  
         var client = new UdpSocket("Client", "127.0.0.1", port, false);
@@ -104,7 +110,66 @@ internal class UdpSocketTests
     }
 
     [Test]
-    public void Test3_UdpSocket2WithHello_UdpMessagesSentToClient()
+    public void Test2_UdpSocketNoHello_UdpMessagesSentToClient()
+    {
+        // Arrange 
+        var cts = new CancellationTokenSource(2000);
+
+        var port = TestDataHelper.GetRandomPort();
+
+        AutoResetEvent started = new(false);
+
+        Task.Run(() =>
+        {
+            var client = new UdpSocket("Client", "127.0.0.1", port, false);
+
+            var isSet = false;
+
+            while (!cts.IsCancellationRequested)
+            {
+                // send data
+                client.Send("BlubbBlabb");
+
+                //// then receive data
+                //client.Receive();
+
+                if (isSet)
+                {
+                    continue;
+                }
+
+                started.Set();
+                isSet = true;
+            }
+
+            client.Dispose();
+
+        });
+
+        started.WaitOne(2000);
+
+        // Act  
+        var udpServer = new UdpSocket("Server", "127.0.0.1", port, true);
+
+        
+
+        while (!cts.IsCancellationRequested)
+        {
+            var data = udpServer.Receive(); // listen on port 11000
+            //udpServer.Send("Blabb"); // reply back
+        }
+        udpServer.Dispose();
+
+        
+
+
+
+        // Assert
+        Assert.Pass();
+    }
+
+    [Test]
+    public void Test3_UdpSocket2WithNoHello_UdpMessagesSentToClient()
     {
         // Arrange 
         var cts = new CancellationTokenSource(2000);
@@ -143,5 +208,54 @@ internal class UdpSocketTests
         // Assert
         Assert.Pass();
     }
+
+    [Test]
+    public void Test4_UdpSocket2WithNoHelloClientStartedFirst_UdpMessagesSentToClient()
+    {
+        // Arrange 
+        var cts = new CancellationTokenSource(2000);
+
+        var port = TestDataHelper.GetRandomPort();
+
+        AutoResetEvent started = new(false);
+
+        Task.Run(() =>
+        {
+            var client = new UdpSocket2("Client", "127.0.0.1", port, false);
+
+            Debug.Print("Client started...");
+
+            started.Set();
+
+            while (!cts.IsCancellationRequested)
+            {
+                //// send data
+                //client.Send("Blubb");
+
+                // then receive data
+                client.Receive();
+            }
+
+            client.Dispose();
+        });
+
+        // 
+        started.WaitOne(1000);
+
+        // Act  
+        var udpServer = new UdpSocket2("Server", "127.0.0.1", port, true);
+
+        Debug.Print("Server started...");
+
+        while (!cts.IsCancellationRequested)
+        {
+            udpServer.Send("Blabb"); // reply back
+        }
+        udpServer.Dispose();
+
+        // Assert
+        Assert.Pass();
+    }
+
 
 }

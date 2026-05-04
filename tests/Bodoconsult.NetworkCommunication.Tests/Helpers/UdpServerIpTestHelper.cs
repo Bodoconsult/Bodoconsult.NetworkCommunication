@@ -56,6 +56,8 @@ internal static class UdpServerIpTestHelper
 
         //testSetup.Server.WaitForConnections().GetAwaiter().GetResult();
 
+        ArgumentNullException.ThrowIfNull(testSetup.IpAddress);
+
         // Close socket if necessary
         try
         {
@@ -71,6 +73,8 @@ internal static class UdpServerIpTestHelper
         socket.IpAddress = testSetup.IpAddress;
         ArgumentNullException.ThrowIfNull(testSetup.DataMessagingConfig);
         socket.Port = testSetup.DataMessagingConfig.Port;
+        socket.SendEndPoint = new IPEndPoint(testSetup.IpAddress, testSetup.DataMessagingConfig.Port);
+
         testSetup.Socket = socket;
 
         testSetup.Socket.Connect().Wait();

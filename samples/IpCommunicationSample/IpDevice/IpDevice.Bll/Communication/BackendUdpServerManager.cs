@@ -21,7 +21,7 @@ public class BackendUdpServerManager : ISimpleDeviceManager
     private readonly IAppLoggerProxyFactory _appLoggerFactory;
     private readonly IAppLoggerProxy _appLoggerProxy;
     private readonly ISocketProxyFactory _socketProxyFactory;
-    private IAppGlobals _appGlobals;
+    private readonly IAppGlobals _appGlobals;
 
     /// <summary>
     /// Default ctor

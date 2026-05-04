@@ -34,15 +34,19 @@ public class UdpSocket: IDisposable
 
     public void Send(string text)
     {
+        int result;
         var data = Encoding.ASCII.GetBytes(text);
 
         if (_isServer)
         {
-            _socket.Send([1], 1, _epFrom);
+            
+            result = _socket.Send([1], 1, _epFrom);
+            Debug.Print($"{_name}: sent {result} bytes");
             return;
         }
 
-        _socket.Send(data, data.Length);
+        result = _socket.Send(data, data.Length);
+        Debug.Print($"{_name}: sent {result} bytes");
     }
 
     public byte[] Receive()

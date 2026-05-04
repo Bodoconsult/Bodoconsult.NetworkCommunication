@@ -81,7 +81,7 @@ public interface ISocketProxy: IDisposable
     /// Send bytes
     /// </summary>
     /// <param name="bytesToSend">Data to send</param>
-    ValueTask<int> Send(ReadOnlyMemory<byte> bytesToSend);
+    Task<int> Send(ReadOnlyMemory<byte> bytesToSend);
 
     ///// <summary>
     ///// Shut the socket down

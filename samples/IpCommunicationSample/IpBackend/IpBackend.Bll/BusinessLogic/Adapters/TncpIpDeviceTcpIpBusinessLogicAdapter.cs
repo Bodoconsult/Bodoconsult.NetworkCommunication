@@ -19,7 +19,7 @@ namespace IpBackend.Bll.BusinessLogic.Adapters;
 /// </summary>
 public class TncpIpDeviceTcpIpBusinessLogicAdapter : BaseStateMachineDeviceBusinessLogicAdapter, IIpDeviceTcpIpDeviceBusinessLogicAdapter
 {
-    private IBusinessTransactionManager _businessTransactionManager;
+    private readonly IBusinessTransactionManager _businessTransactionManager;
 
     /// <summary>
     /// Default ctor
@@ -40,16 +40,6 @@ public class TncpIpDeviceTcpIpBusinessLogicAdapter : BaseStateMachineDeviceBusin
     #region Device order handling
 
     /// <summary>
-    /// Stopping snapshot was successful
-    /// </summary>
-    /// <param name="state">Current state</param>
-    /// <param name="order">Current order</param>
-    public void StopSnapshotSuccessfully(IStateMachineState state, IOrder order)
-    {
-        // Do nothing
-    }
-
-    /// <summary>
     /// Stopping snapshot was unsuccessful
     /// </summary>
     /// <param name="state">Current state</param>
@@ -57,17 +47,6 @@ public class TncpIpDeviceTcpIpBusinessLogicAdapter : BaseStateMachineDeviceBusin
     public void StopSnapshotUnsuccessfully(IStateMachineState state, IOrder order)
     {
         Device.CheckConnection();
-    }
-
-    /// <summary>
-    /// Starting snapshot was successful
-    /// </summary>
-    /// <param name="state">Current state</param>
-    /// <param name="order">Current order</param>
-    public void StartSnapshotSuccessfully(IStateMachineState state, IOrder order)
-    {
-        // Check UDP connection now
-        CheckUdpConnection();
     }
 
     /// <summary>
@@ -81,17 +60,6 @@ public class TncpIpDeviceTcpIpBusinessLogicAdapter : BaseStateMachineDeviceBusin
     }
 
     /// <summary>
-    /// Starting streaming was successful
-    /// </summary>
-    /// <param name="state">Current state</param>
-    /// <param name="order">Current order</param>
-    public void StartStreamingSuccessfully(IStateMachineState state, IOrder order)
-    {
-        // Check UDP connection now
-        CheckUdpConnection();
-    }
-
-    /// <summary>
     /// Starting streaming was unsuccessful
     /// </summary>
     /// <param name="state">Current state</param>
@@ -99,16 +67,6 @@ public class TncpIpDeviceTcpIpBusinessLogicAdapter : BaseStateMachineDeviceBusin
     public void StartStreamingUnsuccessfully(IStateMachineState state, IOrder order)
     {
         Device.CheckConnection();
-    }
-
-    /// <summary>
-    /// Stopping streaming was successful
-    /// </summary>
-    /// <param name="state">Current state</param>
-    /// <param name="order">Current order</param>
-    public void StopStreamingSuccessfully(IStateMachineState state, IOrder order)
-    {
-        // Do nothing
     }
 
     /// <summary>

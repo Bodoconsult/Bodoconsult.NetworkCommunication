@@ -154,8 +154,6 @@ public class IpDuplexIoReceiver : BaseDuplexIoReceiver
 
         _currentPipeline.StopConsumer();
 
-        await Task.Run(FillMessagePipeline);
-
         SendPipelineTask?.Join();
 
         try

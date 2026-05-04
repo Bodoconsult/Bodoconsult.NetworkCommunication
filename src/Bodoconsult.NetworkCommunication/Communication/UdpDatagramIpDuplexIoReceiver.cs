@@ -79,7 +79,7 @@ public class UdpDatagramIpDuplexIoReceiver : BaseDuplexIoReceiver
         if (ActivateReceiveLogging)
         {
             msg = $"Data in buffer: {DataMessageHelper.GetStringFromArrayCsharpStyle(ref _buffer)}";
-            //Trace.TraceInformation(msg);
+            Trace.TraceInformation($"{LoggerId}{msg}");
             Logger.LogDebug(msg);
         }
         else
@@ -208,102 +208,100 @@ public class UdpDatagramIpDuplexIoReceiver : BaseDuplexIoReceiver
     {
         ArgumentNullException.ThrowIfNull(DuplexIoIsWorkInProgressDelegate);
         ArgumentNullException.ThrowIfNull(DuplexIoNoDataDelegate);
+        ArgumentNullException.ThrowIfNull(DataMessagingConfig.SocketProxy);
 
-        // Wait until the socket is connected
-        if (!await WaitForSocketIsConnected())
-        {
-            Trace.TraceInformation($"{LoggerId}FillMessagePipeline stopped");
-            return;
-        }
+        //// Wait until the socket is connected
+        //if (!await WaitForSocketIsConnected())
+        //{
+        //    Trace.TraceInformation($"{LoggerId}FillMessagePipeline stopped");
+        //    return;
+        //}
 
         DuplexIoNoDataDelegate.Invoke();
 
         Trace.TraceInformation($"{LoggerId}FillMessagePipeline started");
 
-        //try
-        //{
-
-        ISocketProxy? socketProxy;
-
-        while (true)
+        try
         {
-            socketProxy = DataMessagingConfig.SocketProxy;
 
-            //Trace.TraceInformation("FillMessagePipeline in progress");
-            try
+            while (true)
             {
-                if (CancellationSource?.Token.IsCancellationRequested ?? true)
+                var socketProxy = DataMessagingConfig.SocketProxy;
+
+                //Trace.TraceInformation("FillMessagePipeline in progress");
+                try
                 {
-                    if (socketProxy?.CancellationTokenSource != null)
+                    if (CancellationSource?.Token.IsCancellationRequested ?? true)
                     {
-                        await socketProxy.CancellationTokenSource.CancelAsync();
+                        if (socketProxy?.CancellationTokenSource != null)
+                        {
+                            await socketProxy.CancellationTokenSource.CancelAsync();
+                        }
+                        Trace.TraceInformation($"{LoggerId}FillMessagePipeline cancelled");
+                        return;
                     }
-                    Trace.TraceInformation($"{LoggerId}FillMessagePipeline cancelled");
+                }
+                catch (Exception e)
+                {
+                    Trace.TraceError($"{LoggerId}FillMessagePipeline exception: {e}");
                     return;
                 }
-            }
-            catch (Exception e)
-            {
-                Trace.TraceError($"{LoggerId}FillMessagePipeline exception: {e}");
-                return;
-            }
 
-            if (socketProxy is not { Connected: true } || socketProxy.IsDisposed)
-            {
-                Trace.TraceInformation($"{LoggerId}Not connected");
+                //if (socketProxy is not { Connected: true } || socketProxy.IsDisposed)
+                //{
+                //    Trace.TraceInformation($"{LoggerId}Not connected");
+                //    DuplexIoNoDataDelegate.Invoke();
+                //    await RaiseException(new SocketException());
+                //    return;
+                //}
+
+                if (DuplexIoIsWorkInProgressDelegate.Invoke())
+                {
+                    Trace.TraceInformation($"{LoggerId}Other operation in progress");
+                    AsyncHelper.Delay(FillPipelineTimeout);
+                    continue;
+                }
+
+                //var availableData = socketProxy.BytesAvailable;
+                //if (availableData == 0)
+                //{
+                //    //Trace.TraceInformation($"No {availableData} bytes");
+                //    DuplexIoNoDataDelegate.Invoke();
+                //    //Trace.TraceInformation("No data");
+                //    AsyncHelper.Delay(FillPipelineTimeout);
+                //    continue;
+                //}
+
+                //Trace.TraceInformation($"Received {availableData} bytes");
+
+                var data = ArrayPool.Rent(MaxDatagramSize);
+
+                var messageLength = await socketProxy.Receive(data);
+
+                // Give the socket free
                 DuplexIoNoDataDelegate.Invoke();
-                await RaiseException(new SocketException());
-                return;
+
+                if (messageLength <= 0)
+                {
+                    //Trace.TraceInformation($"{LoggerId}No data");
+                    AsyncHelper.Delay(FillPipelineTimeout);
+                    continue;
+                }
+
+                Trace.TraceInformation($"{LoggerId}Got data");
+
+                var dummy = _bufferPool.Dequeue();
+                dummy.Memory = data.AsSpan()[..messageLength].ToArray().AsMemory();
+
+                _currentPipeline.Enqueue(dummy);
+
+                ArrayPool.Return(data);
             }
-
-            if (DuplexIoIsWorkInProgressDelegate.Invoke())
-            {
-                Trace.TraceInformation($"{LoggerId}Other operation in progress");
-                AsyncHelper.Delay(FillPipelineTimeout);
-                continue;
-            }
-
-            //var availableData = socketProxy.BytesAvailable;
-            //if (availableData == 0)
-            //{
-            //    //Trace.TraceInformation($"No {availableData} bytes");
-            //    DuplexIoNoDataDelegate.Invoke();
-            //    //Trace.TraceInformation("No data");
-            //    AsyncHelper.Delay(FillPipelineTimeout);
-            //    continue;
-            //}
-
-            //Trace.TraceInformation($"Received {availableData} bytes");
-
-            var data = ArrayPool.Rent(MaxDatagramSize);
-
-            var messageLength = await socketProxy.Receive(data);
-
-            // Give the socket free
-            DuplexIoNoDataDelegate.Invoke();
-
-            if (messageLength <= 0)
-            {
-                Trace.TraceInformation($"{LoggerId}No data");
-                AsyncHelper.Delay(FillPipelineTimeout);
-                continue;
-            }
-
-            Trace.TraceInformation($"{LoggerId}Got data");
-
-            var dummy = _bufferPool.Dequeue();
-            dummy.Memory = data.AsSpan()[..messageLength].ToArray().AsMemory();
-
-            _currentPipeline.Enqueue(dummy);
-
-            ArrayPool.Return(data);
         }
-        //}
-        //catch (Exception e)
-        //{
-        //    Console.WriteLine(e);
-        //    throw;
-        //}
+        catch (Exception e)
+        {
+            Trace.TraceError($"{LoggerId}FillMessagePipeline: {e}");
+        }
     }
 
     private Task RaiseException(Exception ex)

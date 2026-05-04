@@ -204,19 +204,19 @@ public class BaseUdpTests : IUdpTests
 
         DuplexIo.StartCommunication().Wait();
 
-        // Send a recognition message to the server
-        var msg = new SdcpOutboundDataMessage
-        {
-            WaitForAcknowledgement = false,
-            DataBlock = new BasicOutboundDatablock
-            {
-                Data = new Memory<byte>([0x0, 0x1, 0x2, 0x3, 0x4]),
-                DataBlockType = 'x'
-            },
-            RawMessageData = new Memory<byte>([0x78, 0x0, 0x1, 0x2, 0x3, 0x4])
-        };
+        //// Send a recognition message to the server
+        //var msg = new SdcpOutboundDataMessage
+        //{
+        //    WaitForAcknowledgement = false,
+        //    DataBlock = new BasicOutboundDatablock
+        //    {
+        //        Data = new Memory<byte>([0x0, 0x1, 0x2, 0x3, 0x4]),
+        //        DataBlockType = 'x'
+        //    },
+        //    RawMessageData = new Memory<byte>([0x78, 0x0, 0x1, 0x2, 0x3, 0x4])
+        //};
 
-        RemoteUdpDevice.Send(msg.RawMessageData.ToArray());
+        //RemoteUdpDevice.Send(msg.RawMessageData.ToArray());
 
         var cts = new CancellationTokenSource();
 

@@ -38,10 +38,10 @@ public class IpCommunicationHandler : ICommunicationHandler
     public IpCommunicationHandler(IDuplexIo duplexIo, IDataMessagingConfig dataMessagingConfig, IAppEventSourceFactory appEventSourceFactory)
     {
         _appEventSource = appEventSourceFactory.CreateInstance();
-        
+
         DuplexIo = duplexIo;
         DataMessagingConfig = dataMessagingConfig;
-        _loggerId = $"{DataMessagingConfig.LoggerId}{(dataMessagingConfig.LoggerId.EndsWith(": ") ? "": ": ")}IpCommunicationHandler: ";
+        _loggerId = $"{DataMessagingConfig.LoggerId}{(dataMessagingConfig.LoggerId.EndsWith(": ") ? "" : ": ")}IpCommunicationHandler: ";
 
         UpdateDevice();
 
@@ -180,10 +180,34 @@ public class IpCommunicationHandler : ICommunicationHandler
         ArgumentNullException.ThrowIfNull(SocketProxy);
 
         // Connect the socket in sync manner
-        AsyncHelper.RunSync(() => SocketProxy?.Connect());
+        AsyncHelper.RunSync(() =>
+        {
+            try
+            {
+                return SocketProxy.Connect();
+            }
+            catch (Exception e)
+            {
+                Trace.TraceError($"{_loggerId}:SocketConnect:{e}");
+                return Task.CompletedTask;
+            }
+
+        });
 
         // Start the communication in sync manner
-        AsyncHelper.RunSync(() => DuplexIo.StartCommunication());
+        AsyncHelper.RunSync(() =>
+        {
+            try
+            {
+                return DuplexIo.StartCommunication();
+            }
+            catch (Exception e)
+            {
+                Trace.TraceError($"{_loggerId}:StartCommunication: {e}");
+                return Task.CompletedTask;
+            }
+
+        });
 
         _inboundQueue.ConsumerTaskDelegate = InboundConsumerTaskDelegate;
         _inboundQueue.StartConsumer();

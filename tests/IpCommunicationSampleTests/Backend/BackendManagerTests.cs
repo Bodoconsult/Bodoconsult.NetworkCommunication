@@ -251,4 +251,60 @@ internal class BackendManagerTests
             Assert.That(config.RaiseAppLayerDataMessageReceivedDelegate, Is.Not.Null);
         }
     }
+
+    [Test]
+    public void StartIpDeviceUdpCommunication_ValidSetup_IpDeviceUdpLoaded()
+    {
+        // Arrange 
+        var clientConfig = new IpConfig { IpAddress = "127.0.0.1", Port = 33000 };
+        var deviceTcpIpConfig = new IpConfig { IpAddress = "127.0.0.1", Port = 33001 };
+        var deviceUdpConfig = new IpConfig { IpAddress = "127.0.0.1", Port = 33002 };
+
+        var orderPipelineFactory = new OrderPipelineFactory(_dateService, _appLogger);
+        IBusinessTransactionManager businessTransactionManager = new BusinessTransactionManager(_appLogger, _appEventSourceFactory);
+        var socketFactory = new SocketProxyFactory(_tcpIpListenerManager);
+        var cm = new ClientManager(_licenseManager, _appLogger, _clientMessagingService);
+        IClientMessagingBusinessDelegate clientMessagingBusinessDelegate = new ClientMessagingBusinessDelegate(_clientMessagingService, cm);
+
+        var m = new BackendManager(_monitorLoggerFactoryFactory, _logDataFactory, _appLoggerFactory,
+            _appEventSourceFactory, _clientNotificationManager, _appLogger, _sendPacketProcessFactory, _dateService, _syncOrderManager, _appBenchProxy, _orderReceiverFactory,
+            _requestProcessorFactoryFactory, _requestStepProcessorFactoryFactory, orderPipelineFactory, _orderIdGenerator, businessTransactionManager, socketFactory, Globals.Instance, cm, clientMessagingBusinessDelegate)
+        {
+            ClientTcpIpConfig = clientConfig,
+            IpDeviceTcpIpConfig = deviceTcpIpConfig,
+            IpDeviceUdpConfig = deviceUdpConfig
+        };
+
+        m.LoadIpDeviceUdp();
+
+        // Act
+        m.StartIpDeviceUdpCommunication();
+
+        // Assert
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(m.IpDeviceTcpIp, Is.Null);
+            Assert.That(m.IpDeviceUdp, Is.Not.Null);
+            Assert.That(m.Client, Is.Null);
+            Assert.That(m.IpDeviceTcpIpConfig, Is.Not.Null);
+            Assert.That(m.IpDeviceUdpConfig, Is.Not.Null);
+            Assert.That(m.ClientTcpIpConfig, Is.Not.Null);
+
+            ArgumentNullException.ThrowIfNull(m.IpDeviceUdp);
+            ArgumentNullException.ThrowIfNull(m.IpDeviceUdp.IpDevice);
+            ArgumentNullException.ThrowIfNull(m.IpDeviceUdp.IpDevice.CommunicationAdapter);
+            Assert.That(m.IpDeviceUdp.IpDevice, Is.Not.Null);
+            Assert.That(m.IpDeviceUdp.IpDevice.DataMessagingConfig, Is.Not.Null);
+
+            var config = (IIpDataMessagingConfig)m.IpDeviceUdp.IpDevice.DataMessagingConfig;
+
+            Assert.That(m.IpDeviceUdp.IpDevice.CommunicationAdapter, Is.Not.Null);
+            Assert.That(m.IpDeviceUdp.IpDevice.CommunicationAdapter.DataMessagingConfig, Is.EqualTo(config));
+
+            Assert.That(config.IpAddress, Is.EqualTo(deviceUdpConfig.IpAddress));
+            Assert.That(config.Port, Is.EqualTo(deviceUdpConfig.Port));
+            Assert.That(config.DataMessageProcessingPackage, Is.TypeOf<SfxpLoggedSortableDataMessageProcessingPackage>());
+            Assert.That(config.RaiseAppLayerDataMessageReceivedDelegate, Is.Not.Null);
+        }
+    }
 }

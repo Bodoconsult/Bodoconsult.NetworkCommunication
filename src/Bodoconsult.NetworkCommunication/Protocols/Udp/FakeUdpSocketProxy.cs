@@ -125,7 +125,7 @@ public class FakeUdpSocketProxy : BaseUpdSocketProxy
     /// Send bytes
     /// </summary>
     /// <param name="bytesToSend">Byte array to send</param>
-    public override async ValueTask<int> Send(ReadOnlyMemory<byte> bytesToSend)
+    public override async Task<int> Send(ReadOnlyMemory<byte> bytesToSend)
     {
         if (SenderThrowSocketException)
         {

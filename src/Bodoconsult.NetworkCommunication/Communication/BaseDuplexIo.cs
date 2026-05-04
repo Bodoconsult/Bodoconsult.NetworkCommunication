@@ -19,9 +19,9 @@ public abstract class BaseDuplexIo : IDuplexIo
     /// <summary>
     /// Default ctor
     /// </summary>
-    protected BaseDuplexIo(IDataMessagingConfig deviceCommSettings, ISendPacketProcessFactory sendPacketProcessFactory)
+    protected BaseDuplexIo(IDataMessagingConfig dataMessagingConfig, ISendPacketProcessFactory sendPacketProcessFactory)
     {
-        DataMessagingConfig = deviceCommSettings ?? throw new ArgumentNullException(nameof(deviceCommSettings));
+        DataMessagingConfig = dataMessagingConfig ?? throw new ArgumentNullException(nameof(dataMessagingConfig));
 
         if (DataMessagingConfig.DataMessageProcessingPackage == null)
         {
@@ -31,7 +31,14 @@ public abstract class BaseDuplexIo : IDuplexIo
         DataMessagingConfig.DuplexIoErrorHandlerDelegate = CentralErrorHandling;
         SocketProxy = DataMessagingConfig.SocketProxy;
         _sendPacketProcessFactory = sendPacketProcessFactory;
+
+        LoggerId = $"{dataMessagingConfig.LoggerId}{(dataMessagingConfig.LoggerId.EndsWith(": ") ? string.Empty : ": ")}{GetType().Name}: ";
     }
+
+    /// <summary>
+    /// Logger ID
+    /// </summary>
+    protected string LoggerId;
 
     /// <summary>
     /// Current data messaging config

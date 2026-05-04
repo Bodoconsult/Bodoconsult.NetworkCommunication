@@ -28,7 +28,7 @@ public class UdpServerSocketProxy : BaseUpdSocketProxy
     /// <summary>
     /// Endpoint for listening
     /// </summary>
-    protected IPEndPoint? SendEndPoint;
+    public IPEndPoint? SendEndPoint { get; set; }
 
     private bool _isBound;
 
@@ -112,11 +112,15 @@ public class UdpServerSocketProxy : BaseUpdSocketProxy
             {
                 UdpClient = new UdpClient(Port);
 
-                // The following three lines allow multiple clients on the same PC
-                UdpClient.Client.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.ReuseAddress, true);
-                UdpClient.Client.Blocking = false;
+                //// The following three lines allow multiple clients on the same PC
+                //UdpClient.Client.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.ReuseAddress, true);
+                //UdpClient.Client.Blocking = false;
 
                 EndPoint = new IPEndPoint(IPAddress.Any, Port);
+                Trace.TraceInformation($"{LoggerId}bound to IPAddress.Any:{Port}");
+
+                //EndPoint = new IPEndPoint(IpAddress, Port);
+
                 //SendEndPoint = EndPoint;
                 _isBound = true;
             }
@@ -147,17 +151,19 @@ public class UdpServerSocketProxy : BaseUpdSocketProxy
 
         try
         {
-            var ep = EndPoint;
+            //if (UdpClient.Available == 0)
+            //{
+            //    return 0;
+            //}
 
-            var result = await UdpClient.Client.ReceiveFromAsync(buffer, ep);
-            //SendEndPoint = ep;
+            var result = await UdpClient.ReceiveAsync();
+            SendEndPoint = result.RemoteEndPoint;
 
-            //Trace.TraceInformation($"UDPClient: received {result.Length} bytes from {SendEndPoint}");
+            //var result = await UdpClient.Client.ReceiveFromAsync(buffer, ep);
 
-
-            Trace.TraceInformation($"{LoggerId}received {result.ReceivedBytes} bytes");
-
-            return result.ReceivedBytes;
+            Trace.TraceInformation($"{LoggerId}received {result.Buffer.Length} bytes");
+            Buffer.BlockCopy(result.Buffer, 0, buffer, 0, result.Buffer.Length);
+            return result.Buffer.Length;
         }
         catch (SocketException socketException)
         {
@@ -263,13 +269,14 @@ public class UdpServerSocketProxy : BaseUpdSocketProxy
     {
         if (UdpClient == null || SendEndPoint == null)
         {
+            Trace.TraceWarning($"{LoggerId}UdpClient is null or SendEndPoint is null or address IPAddress.Any. No client request before?");
             return 0;
         }
 
         try
         {
             var result = await UdpClient.SendAsync(bytesToSend, SendEndPoint, CancellationTokenSource.Token);
-            Trace.TraceInformation($"{LoggerId}UdpServerSocket: sent {result} bytes");
+            Trace.TraceInformation($"{LoggerId}sent {result} bytes");
             return result;
         }
         catch (SocketException socketException)
@@ -300,7 +307,7 @@ public class UdpServerSocketProxy : BaseUpdSocketProxy
     /// Send bytes
     /// </summary>
     /// <param name="bytesToSend">Data to send</param>
-    public override async ValueTask<int> Send(ReadOnlyMemory<byte> bytesToSend)
+    public override async Task<int> Send(ReadOnlyMemory<byte> bytesToSend)
     {
         if (UdpClient == null || SendEndPoint == null || Equals(SendEndPoint.Address, IPAddress.Any))
         {
@@ -310,7 +317,7 @@ public class UdpServerSocketProxy : BaseUpdSocketProxy
 
         try
         {
-            var result = await UdpClient.SendAsync(bytesToSend, SendEndPoint, CancellationTokenSource.Token);
+            var result = await UdpClient.SendAsync(bytesToSend, SendEndPoint, CancellationTokenSource.Token).AsTask();
             Trace.TraceInformation($"{LoggerId}sent {result} bytes");
             return result;
         }

@@ -109,7 +109,7 @@ public class IpCommunicationAdapter : ICommunicationAdapter
     /// <summary>
     /// This property returns whether the communication object is valid and can be used
     /// </summary>
-    public bool IsCommunicationHandlerNotNull { get; private set; } = true;
+    public bool IsCommunicationHandlerNotNull { get; private set; }
 
     /// <summary>
     /// Is the adapter connected
@@ -354,15 +354,17 @@ public class IpCommunicationAdapter : ICommunicationAdapter
             // Handle the communication break on higher business logic levels
             DataMessagingConfig.ResetOutboundDataMessageFactoryDelegate?.Invoke();
 
+            const string msg = "ComDevClose: all steps performed";
+
             // ReSharper disable once InvertIf
-            if (!noLogging)
+            if (noLogging)
             {
-                const string msg = "ComDevClose: all steps performed";
                 DataMessagingConfig.MonitorLogger.LogError(msg);
                 DataMessagingConfig.AppLogger.LogError($"{DataMessagingConfig.LoggerId}{msg}");
-                //Trace.TraceInformation($"ComDevClose: tower state {TowerState}");
                 //DataMessagingConfig.AppLogger.LogInformation($"{DataMessagingConfig.LoggerId}ComDevClose: all steps performed ");
             }
+
+            Trace.TraceInformation($"{_loggerId}{msg}");
         }
     }
 

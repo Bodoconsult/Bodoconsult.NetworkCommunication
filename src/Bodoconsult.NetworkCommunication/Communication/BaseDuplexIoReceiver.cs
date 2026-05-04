@@ -86,7 +86,7 @@ public class BaseDuplexIoReceiver : IDuplexIoReceiver
     {
         ArgumentNullException.ThrowIfNull(dataMessagingConfig.DataMessageProcessingPackage);
 
-        LoggerId = $"{dataMessagingConfig.LoggerId}{(dataMessagingConfig.LoggerId.EndsWith(": ") ? string.Empty: ": ")}{GetType().Name}: ";
+        LoggerId = $"{dataMessagingConfig.LoggerId}{(dataMessagingConfig.LoggerId.EndsWith(": ") ? string.Empty : ": ")}{GetType().Name}: ";
 
         DataMessagingConfig = dataMessagingConfig;
         DataMessageCodingProcessor = DataMessagingConfig.DataMessageProcessingPackage.DataMessageCodingProcessor;
@@ -130,6 +130,8 @@ public class BaseDuplexIoReceiver : IDuplexIoReceiver
     /// </summary>
     public virtual async Task StartReceiver()
     {
+        string msg;
+
         if (CancellationSource != null)
         {
             try
@@ -139,7 +141,9 @@ public class BaseDuplexIoReceiver : IDuplexIoReceiver
             }
             catch (Exception e)
             {
-                Logger.LogError("CancellationToken cancelling failed", e);
+                msg = $"CancellationToken cancelling failed: {e}";
+                Logger.LogError(msg);
+                Trace.TraceError($"{LoggerId}{msg}");
             }
         }
 
@@ -147,22 +151,40 @@ public class BaseDuplexIoReceiver : IDuplexIoReceiver
 
         await Task.Run(() =>
         {
-            FillPipelineTask = new Thread(StartSendMessagePipeline)
+            try
             {
-                Priority = ThreadPriority.Normal,
-                IsBackground = true
-            };
-            FillPipelineTask.Start();
+                FillPipelineTask = new Thread(StartSendMessagePipeline)
+                {
+                    Priority = ThreadPriority.Normal,
+                    IsBackground = true
+                };
+                FillPipelineTask.Start();
+            }
+            catch (Exception e)
+            {
+                msg = $"Running StartSendMessagePipeline failed: {e}";
+                Logger.LogError(msg);
+                Trace.TraceError($"{LoggerId}{msg}");
+            }
         });
 
         await Task.Run(() =>
         {
-            FillPipelineTask = new Thread(StartFillMessagePipeline)
+            try
             {
-                Priority = ThreadPriority.AboveNormal,
-                IsBackground = true
-            };
-            FillPipelineTask.Start();
+                FillPipelineTask = new Thread(StartFillMessagePipeline)
+                {
+                    Priority = ThreadPriority.AboveNormal,
+                    IsBackground = true
+                };
+                FillPipelineTask.Start();
+            }
+            catch (Exception e)
+            {
+                msg = $"Running StartFillMessagePipeline failed: {e}";
+                Logger.LogError(msg);
+                Trace.TraceError($"{LoggerId}{msg}");
+            }
         });
     }
 
@@ -195,7 +217,7 @@ public class BaseDuplexIoReceiver : IDuplexIoReceiver
             //        break;
             //    }
 
-            AsyncHelper.FireAndForget(async void ()=>
+            AsyncHelper.FireAndForget(async void () =>
             {
                 try
                 {
@@ -237,7 +259,7 @@ public class BaseDuplexIoReceiver : IDuplexIoReceiver
     /// </summary>
     public void StartSendMessagePipeline()
     {
-        Trace.TraceInformation("StartSendMessagePipeline in progress");
+        Trace.TraceInformation($"{LoggerId}StartSendMessagePipeline in progress");
 
         try
         {

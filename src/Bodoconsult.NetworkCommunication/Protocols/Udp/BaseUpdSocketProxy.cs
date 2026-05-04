@@ -12,6 +12,14 @@ namespace Bodoconsult.NetworkCommunication.Protocols.Udp;
 public abstract class BaseUpdSocketProxy : ISocketProxy
 {
     /// <summary>
+    /// Default ctor
+    /// </summary>
+    protected BaseUpdSocketProxy()
+    {
+        LoggerId = $"{GetType().Name}: ";
+    }
+
+    /// <summary>
     /// Logger ID or null
     /// </summary>
     public string? LoggerId { get; set; }
@@ -85,7 +93,7 @@ public abstract class BaseUpdSocketProxy : ISocketProxy
     /// Send bytes
     /// </summary>
     /// <param name="bytesToSend">Data to send</param>
-    public virtual ValueTask<int> Send(ReadOnlyMemory<byte> bytesToSend)
+    public virtual Task<int> Send(ReadOnlyMemory<byte> bytesToSend)
     {
         throw new NotSupportedException();
     }

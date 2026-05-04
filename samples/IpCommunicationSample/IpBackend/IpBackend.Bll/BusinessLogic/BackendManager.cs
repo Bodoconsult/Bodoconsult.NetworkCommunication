@@ -180,7 +180,7 @@ public class BackendManager : IBackendManager
             throw new ArgumentNullException(nameof(IpDeviceUdpConfig));
         }
 
-        var duplexIoFactory = new UdpDatagramIpDuplexIoFactory(_sendPacketProcessFactory);
+        var duplexIoFactory = new UdpDatagramReceiveOnlyIpDuplexIoFactory(_sendPacketProcessFactory);
 
         var m = new IpDeviceUdpClientManager(duplexIoFactory, _monitorLoggerFactoryFactory, _logDataFactory, _appLoggerFactory,
             _appEventSourceFactory, _clientNotificationManager, _appLogger, _socketProxyFactory, _appGlobals);

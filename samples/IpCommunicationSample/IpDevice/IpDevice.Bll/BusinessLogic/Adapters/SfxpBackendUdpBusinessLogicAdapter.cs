@@ -8,6 +8,7 @@ using Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
 using Bodoconsult.NetworkCommunication.DataMessaging.DigitalTwins;
 using Bodoconsult.NetworkCommunication.Interfaces;
 using IpDevice.Bll.Interfaces;
+using Microsoft.Diagnostics.Tracing;
 
 namespace IpDevice.Bll.BusinessLogic.Adapters;
 
@@ -171,6 +172,8 @@ public class SfxpBackendUdpBusinessLogicAdapter : BaseSimpleDeviceBusinessLogicA
     {
         ArgumentNullException.ThrowIfNull(IpDevice.CommunicationAdapter);
         ArgumentNullException.ThrowIfNull(_cts);
+
+        Task.Delay(100);
 
         var digitalTwin = new SfxpDigitalTwinMessageFactory();
 

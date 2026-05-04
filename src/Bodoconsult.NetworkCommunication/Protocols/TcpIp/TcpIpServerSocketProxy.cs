@@ -141,7 +141,7 @@ public class TcpIpServerSocketProxy : BaseTcpIpSocketProxy
     /// Send bytes
     /// </summary>
     /// <param name="bytesToSend">Data to send</param>
-    public override async ValueTask<int> Send(ReadOnlyMemory<byte> bytesToSend)
+    public override async Task<int> Send(ReadOnlyMemory<byte> bytesToSend)
     {
         if (Socket is not { Connected: true })
         {
@@ -150,7 +150,7 @@ public class TcpIpServerSocketProxy : BaseTcpIpSocketProxy
 
         try
         {
-            var result = await Socket.SendAsync(bytesToSend, CancellationTokenSource.Token);
+            var result = await Socket.SendAsync(bytesToSend, CancellationTokenSource.Token).AsTask();
             Trace.TraceInformation($"{LoggerId}sent {result} bytes");
             return result;
         }
@@ -245,8 +245,9 @@ public class TcpIpServerSocketProxy : BaseTcpIpSocketProxy
                 Socket = null;
             }
 
-            Trace.TraceInformation($"Server: port {Port}");
+            
             _listener = TcpIpListenerManager.RegisterListener(Port, AcceptDelegate);
+            Trace.TraceInformation($"{LoggerId}bound to IPAddress.Any:{Port}");
             _isBound = _listener != null;
         });
     }
@@ -314,7 +315,7 @@ public class TcpIpServerSocketProxy : BaseTcpIpSocketProxy
 
         try
         {
-            var result = await Socket.ReceiveAsync(buffer, SocketFlags.None, CancellationTokenSource.Token);
+            var result = await Socket.ReceiveAsync(buffer, SocketFlags.None, CancellationTokenSource.Token).AsTask();
             Trace.TraceInformation($"{LoggerId}received {result} bytes");
             return result;
         }
