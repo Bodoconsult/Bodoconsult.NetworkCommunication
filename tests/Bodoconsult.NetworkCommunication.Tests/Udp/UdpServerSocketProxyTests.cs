@@ -112,105 +112,105 @@ internal class UdpServerSocketProxyTests
         }
     }
 
-//    [Test]
-//    public async Task SendReceive_PermanentMode_MessageReceived()
-//    {
-//        // Arrange 
-//        ConcurrentBag<ReadOnlyMemory<byte>> serverReceivedMessages = [];
-//        ConcurrentBag<ReadOnlyMemory<byte>> clientReceivedMessages = [];
+    //    [Test]
+    //    public async Task SendReceive_PermanentMode_MessageReceived()
+    //    {
+    //        // Arrange 
+    //        ConcurrentBag<ReadOnlyMemory<byte>> serverReceivedMessages = [];
+    //        ConcurrentBag<ReadOnlyMemory<byte>> clientReceivedMessages = [];
 
-//        var serverData = new byte[] { 0x0, 0x1, 0x2 };
-//        var clientData = new byte[] { 0x0, 0x1, 0x2, 0x3, 0x4, 0x5 };
+    //        var serverData = new byte[] { 0x0, 0x1, 0x2 };
+    //        var clientData = new byte[] { 0x0, 0x1, 0x2, 0x3, 0x4, 0x5 };
 
-//        var ip = IPAddress.Parse("127.0.0.1");
-//        var port = TestDataHelper.GetRandomPort();
+    //        var ip = IPAddress.Parse("127.0.0.1");
+    //        var port = TestDataHelper.GetRandomPort();
 
-//        var cts = new CancellationTokenSource(5000);
+    //        var cts = new CancellationTokenSource(5000);
 
-//        AutoResetEvent started = new(false);
+    //        AutoResetEvent started = new(false);
 
-//#pragma warning disable CS4014 // Because this call is not awaited, execution of the current method continues before the call is completed
-//        // ReSharper disable once MethodSupportsCancellation
-//        Task.Run(async () =>
-//#pragma warning restore CS4014 // Because this call is not awaited, execution of the current method continues before the call is completed
-//        {
-//            var udpServer = new UdpServerSocketProxy();
-//            udpServer.IpAddress = ip;
-//            udpServer.Port = port;
-//            await udpServer.Connect();
+    //#pragma warning disable CS4014 // Because this call is not awaited, execution of the current method continues before the call is completed
+    //        // ReSharper disable once MethodSupportsCancellation
+    //        Task.Run(async () =>
+    //#pragma warning restore CS4014 // Because this call is not awaited, execution of the current method continues before the call is completed
+    //        {
+    //            var udpServer = new UdpServerSocketProxy();
+    //            udpServer.IpAddress = ip;
+    //            udpServer.Port = port;
+    //            await udpServer.Connect();
 
-//            started.Set();
+    //            started.Set();
 
-//            try
-//            {
-//                while (!cts.IsCancellationRequested)
-//                {
-//                    var data = new byte[10];
-//                    var count = await udpServer.Receive(data);
+    //            try
+    //            {
+    //                while (!cts.IsCancellationRequested)
+    //                {
+    //                    var data = new byte[10];
+    //                    var count = await udpServer.Receive(data);
 
-//                    if (count > 0)
-//                    {
-//                        serverReceivedMessages.Add(data);
-//                    }
+    //                    if (count > 0)
+    //                    {
+    //                        serverReceivedMessages.Add(data);
+    //                    }
 
-//                    Debug.Print($"Server: received {data.Length} bytes");
+    //                    Debug.Print($"Server: received {data.Length} bytes");
 
-//                    var sent = await udpServer.Send(serverData); // reply back
-//                    Debug.Print($"Server: sent {sent} bytes");
-//                }
-//            }
-//            catch (Exception e)
-//            {
-//                Debug.Print(e.ToString());
-//            }
-//            finally
-//            {
-//                udpServer.Dispose();
-//            }
-//        });
+    //                    var sent = await udpServer.Send(serverData); // reply back
+    //                    Debug.Print($"Server: sent {sent} bytes");
+    //                }
+    //            }
+    //            catch (Exception e)
+    //            {
+    //                Debug.Print(e.ToString());
+    //            }
+    //            finally
+    //            {
+    //                udpServer.Dispose();
+    //            }
+    //        });
 
-//        // ReSharper disable once MethodSupportsCancellation
-//        started.WaitOne(TimeOut);
-//        started.Reset();
+    //        // ReSharper disable once MethodSupportsCancellation
+    //        started.WaitOne(TimeOut);
+    //        started.Reset();
 
-//        // Act  
-//        var udpClient = new UdpClientSocketProxy();
-//        udpClient.IpAddress = ip;
-//        udpClient.Port = port;
+    //        // Act  
+    //        var udpClient = new UdpClientSocketProxy();
+    //        udpClient.IpAddress = ip;
+    //        udpClient.Port = port;
 
-//        await udpClient.Connect();
+    //        await udpClient.Connect();
 
-//        //client.Start();
+    //        //client.Start();
 
-//        while (!cts.IsCancellationRequested)
-//        {
-//            // send data
-//            var sent = await udpClient.Send(clientData);
-//            Debug.Print($"Client: sent {sent} bytes");
+    //        while (!cts.IsCancellationRequested)
+    //        {
+    //            // send data
+    //            var sent = await udpClient.Send(clientData);
+    //            Debug.Print($"Client: sent {sent} bytes");
 
-//            // then receive data
-//            var data = new byte[10];
-//            var count = await udpClient.Receive(data);
+    //            // then receive data
+    //            var data = new byte[10];
+    //            var count = await udpClient.Receive(data);
 
-//            if (count > 0)
-//            {
-//                clientReceivedMessages.Add(data);
-//            }
+    //            if (count > 0)
+    //            {
+    //                clientReceivedMessages.Add(data);
+    //            }
 
-//            Debug.Print($"Client: received {data.Length} bytes");
+    //            Debug.Print($"Client: received {data.Length} bytes");
 
 
-//        }
+    //        }
 
-//        udpClient.Dispose();
+    //        udpClient.Dispose();
 
-//        // Assert
-//        using (Assert.EnterMultipleScope())
-//        {
-//            Assert.That(serverReceivedMessages.Count, Is.GreaterThan(3));
-//            Assert.That(clientReceivedMessages.Count, Is.GreaterThan(3));
-//        }
-//    }
+    //        // Assert
+    //        using (Assert.EnterMultipleScope())
+    //        {
+    //            Assert.That(serverReceivedMessages.Count, Is.GreaterThan(3));
+    //            Assert.That(clientReceivedMessages.Count, Is.GreaterThan(3));
+    //        }
+    //    }
 
     [Test]
     public async Task SendReceive_PermanentModeClientStartsEarlier_MessageReceived()
@@ -259,7 +259,7 @@ internal class UdpServerSocketProxyTests
                     //var sent = await udpServer.Send(serverData); // reply back
                     //Debug.Print($"Server: sent {sent} bytes");
 
-                    
+
                 }
             }
             catch (Exception e)
@@ -273,7 +273,7 @@ internal class UdpServerSocketProxyTests
         });
 
         // ReSharper disable once MethodSupportsCancellation
-        
+
         started.Reset();
 
         // Act  
@@ -348,12 +348,12 @@ internal class UdpServerSocketProxyTests
         Task.Run(async () =>
 #pragma warning restore CS4014 // Because this call is not awaited, execution of the current method continues before the call is completed
         {
-            
+
             var udpServer = new UdpServerSocketProxy();
             serverConfig.SocketProxy = udpServer;
             udpServer.IpAddress = ip;
             udpServer.Port = port;
-            
+
 
             var serverDuplexIo = new UdpDatagramReceiveOnlyIpDuplexIo(serverConfig, new SendPacketProcessFactory());
             await serverDuplexIo.StartCommunication();
@@ -543,7 +543,7 @@ internal class UdpServerSocketProxyTests
         //ConcurrentBag<ReadOnlyMemory<byte>> clientReceivedMessages = [];
 
         //var serverData = new byte[] { 0x0, 0x1, 0x2 };
-        var clientData = new byte[]{ 0x0, 0x48, 0x49, 0x50, 0x51, 0x52};
+        var clientData = new byte[] { 0x0, 0x48, 0x49, 0x50, 0x51, 0x52 };
 
 
         var ip = IPAddress.Parse("127.0.0.1");
@@ -576,20 +576,19 @@ internal class UdpServerSocketProxyTests
 #pragma warning restore CS4014 // Because this call is not awaited, execution of the current method continues before the call is completed
         {
 
+            started.WaitOne(3 * TimeOut);
+
             var udpServer = new UdpServerSocketProxy();
             serverConfig.SocketProxy = udpServer;
             udpServer.IpAddress = ip;
             udpServer.Port = port;
-
 
             var serverDuplexIo = new UdpDatagramReceiveOnlyIpDuplexIo(serverConfig, new SendPacketProcessFactory());
             await serverDuplexIo.StartCommunication();
 
             await udpServer.Connect();
 
-            started.WaitOne(TimeOut);
-
-            await Task.Delay(100);
+           await Task.Delay(100);
 
             try
             {
@@ -620,11 +619,9 @@ internal class UdpServerSocketProxyTests
 
         await udpClient.Connect();
 
-        started.Set();
-
         var msg = new SdcpOutboundDataMessage
         {
-            DataBlock =new BasicOutboundDatablock
+            DataBlock = new BasicOutboundDatablock
             {
                 Data = clientData
             }
@@ -634,6 +631,7 @@ internal class UdpServerSocketProxyTests
 
         await clientDuplexIo.StartCommunication();
 
+        var count = 0;
         while (!cts.IsCancellationRequested)
         {
             // send data
@@ -641,8 +639,6 @@ internal class UdpServerSocketProxyTests
             var result = await clientDuplexIo.SendMessageDirect(msg);
 
             Debug.Print($"Client: sent {result.ProcessExecutionResult}");
-
-
 
             //// then receive data
             //var data = new byte[10];
@@ -655,7 +651,11 @@ internal class UdpServerSocketProxyTests
 
             //Debug.Print($"Client: received {data.Length} bytes");
 
-
+            if (count == 10)
+            {
+                started.Set();
+            }
+            count++;
         }
 
         udpClient.Dispose();

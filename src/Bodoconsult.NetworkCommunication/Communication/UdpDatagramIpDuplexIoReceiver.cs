@@ -288,7 +288,7 @@ public class UdpDatagramIpDuplexIoReceiver : BaseDuplexIoReceiver
                     continue;
                 }
 
-                Trace.TraceInformation($"{LoggerId}Got data");
+                //Trace.TraceInformation($"{LoggerId}Got data");
 
                 var dummy = _bufferPool.Dequeue();
                 dummy.Memory = data.AsSpan()[..messageLength].ToArray().AsMemory();
@@ -304,27 +304,27 @@ public class UdpDatagramIpDuplexIoReceiver : BaseDuplexIoReceiver
         }
     }
 
-    private Task RaiseException(Exception ex)
-    {
-        //await StopReceiver();
+    //private Task RaiseException(Exception ex)
+    //{
+    //    //await StopReceiver();
 
-        CancellationSource?.Cancel();
+    //    CancellationSource?.Cancel();
 
-        try
-        {
-            DuplexIoNoDataDelegate?.Invoke();
-        }
-        catch (Exception e)
-        {
-            // Do nothing
-            DataMessagingConfig.MonitorLogger.LogError("DuplexIoSetNotInProgressDelegate raised an exception", e);
-            Trace.TraceError($"{LoggerId}DuplexIoNoDataDelegate?.Invoke: {e}");
-        }
+    //    try
+    //    {
+    //        DuplexIoNoDataDelegate?.Invoke();
+    //    }
+    //    catch (Exception e)
+    //    {
+    //        // Do nothing
+    //        DataMessagingConfig.MonitorLogger.LogError("DuplexIoSetNotInProgressDelegate raised an exception", e);
+    //        Trace.TraceError($"{LoggerId}DuplexIoNoDataDelegate?.Invoke: {e}");
+    //    }
 
-        AsyncHelper.FireAndForget(() => DataMessagingConfig.DuplexIoErrorHandlerDelegate?.Invoke(ex));
+    //    AsyncHelper.FireAndForget(() => DataMessagingConfig.DuplexIoErrorHandlerDelegate?.Invoke(ex));
 
-        return Task.CompletedTask;
-    }
+    //    return Task.CompletedTask;
+    //}
 
     /// <summary>
     /// Process the messages received from device internally

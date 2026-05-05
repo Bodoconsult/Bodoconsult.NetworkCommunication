@@ -112,16 +112,13 @@ public class UdpServerSocketProxy : BaseUpdSocketProxy
             {
                 UdpClient = new UdpClient(Port);
 
-                //// The following three lines allow multiple clients on the same PC
-                //UdpClient.Client.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.ReuseAddress, true);
-                //UdpClient.Client.Blocking = false;
+                // The following three lines allow multiple clients on the same PC
+                UdpClient.Client.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.ReuseAddress, true);
+                UdpClient.Client.Blocking = false;
 
                 EndPoint = new IPEndPoint(IPAddress.Any, Port);
                 Trace.TraceInformation($"{LoggerId}bound to IPAddress.Any:{Port}");
 
-                //EndPoint = new IPEndPoint(IpAddress, Port);
-
-                //SendEndPoint = EndPoint;
                 _isBound = true;
             }
             catch (Exception e)
@@ -151,10 +148,10 @@ public class UdpServerSocketProxy : BaseUpdSocketProxy
 
         try
         {
-            //if (UdpClient.Available == 0)
-            //{
-            //    return 0;
-            //}
+            if (UdpClient.Available == 0)
+            {
+                return 0;
+            }
 
             var result = await UdpClient.ReceiveAsync();
             SendEndPoint = result.RemoteEndPoint;

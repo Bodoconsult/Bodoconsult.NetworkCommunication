@@ -218,8 +218,8 @@ public class UdpClientSocketProxy : BaseUpdSocketProxy
             try
             {
                 UdpClient = new UdpClient();
-                //UdpClient.Client.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.ReuseAddress, true);
-                //UdpClient.Client.Blocking = false;
+                UdpClient.Client.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.ReuseAddress, true);
+                UdpClient.Client.Blocking = false;
 
                 EndPoint = new IPEndPoint(IpAddress, Port);
                 SendEndPoint = EndPoint;
@@ -256,10 +256,6 @@ public class UdpClientSocketProxy : BaseUpdSocketProxy
         try
         {
             var result = await UdpClient.ReceiveAsync(CancellationTokenSource.Token);
-            SendEndPoint = result.RemoteEndPoint;
-
-            //Trace.TraceInformation($"UDPClient: received {result.Length} bytes from {SendEndPoint}");
-
             result.Buffer.CopyTo(buffer, 0);
             Trace.TraceInformation($"{LoggerId}received {result.Buffer.Length} bytes");
             return result.Buffer.Length;
@@ -305,10 +301,6 @@ public class UdpClientSocketProxy : BaseUpdSocketProxy
         try
         {
             var result = await UdpClient.ReceiveAsync(CancellationTokenSource.Token).AsTask();
-            //SendEndPoint = result.RemoteEndPoint;
-
-            //Trace.TraceInformation($"UDPClient: received {result.Length} bytes from {SendEndPoint}");
-
             result.Buffer.CopyTo(buffer);
             Trace.TraceInformation($"{LoggerId}received {result.Buffer.Length} bytes");
             return result.Buffer.Length;
