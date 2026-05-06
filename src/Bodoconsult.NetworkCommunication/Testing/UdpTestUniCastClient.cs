@@ -7,7 +7,7 @@ using System.Net.Sockets;
 namespace Bodoconsult.NetworkCommunication.Testing;
 
 /// <summary>
-/// A simple UDP unicast client for testing
+/// A simple UDP unicast client for testing. Receiving only!
 /// </summary>
 public class UdpTestUniCastClient: BaseUdpDevice
 {
@@ -24,7 +24,7 @@ public class UdpTestUniCastClient: BaseUdpDevice
         Listener.Client.Blocking = false;
 
         EndPoint = new IPEndPoint(ipAddress, Port);
-        Listener.Connect(EndPoint);
+        //Listener.Connect(EndPoint);
     }
 
     /// <summary>
@@ -33,12 +33,12 @@ public class UdpTestUniCastClient: BaseUdpDevice
     /// <param name="data">Byte array to send</param>
     public override void Send(byte[] data)
     {
-        if (IsDisposed)
+        if (IsDisposed || data.Length==0)
         {
             return;
         }
 
-        var result = Listener.Send(data, data.Length);
+        var result = Listener.Send(data, data.Length, SenderEndPoint);
         Trace.TraceInformation($"{TypeName}: sent {result} byte(s)!");
     }
 }

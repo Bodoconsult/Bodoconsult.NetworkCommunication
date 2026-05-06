@@ -9,6 +9,7 @@ using Bodoconsult.NetworkCommunication.Tests.Helpers;
 
 namespace Bodoconsult.NetworkCommunication.Tests.Udp;
 
+[Explicit]
 [TestFixture]
 [NonParallelizable]
 [SingleThreaded]

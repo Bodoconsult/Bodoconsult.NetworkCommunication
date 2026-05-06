@@ -264,8 +264,6 @@ public abstract class BaseUdpIpDuplexIoTests : BaseUdpTests
         }
     }
 
-    // ToDo : fix this test
-    //[Explicit]
     [Test, CancelAfter(10000)]
     public void SendMessage_MultipleSdcpMessages_Sent(CancellationToken cancellationToken)
     {

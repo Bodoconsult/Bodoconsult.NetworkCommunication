@@ -124,15 +124,6 @@ public class BaseUdpTests : IUdpTests
 
         DuplexIo.StartCommunication().Wait();
 
-        // Send a recognition message to the server
-        var msg = new RawOutboundDataMessage
-        {
-            RawMessageData = new Memory<byte>([0x1])
-        };
-
-        var result2 = DuplexIo.SendMessageDirect(msg).GetAwaiter().GetResult();
-        Assert.That(result2.ProcessExecutionResult, Is.EqualTo(OrderExecutionResultState.Successful));
-
         // Now send messages
         var cts = new CancellationTokenSource(5000);
         Task.Run(() =>

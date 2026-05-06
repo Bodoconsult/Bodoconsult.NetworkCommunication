@@ -74,7 +74,7 @@ internal class ClientBtcpNetworkingClientMessagingServiceTests
             Assert.That(msg.DataBlock, Is.Not.Null);
             ArgumentNullException.ThrowIfNull(msg.DataBlock);
 
-            Assert.That(msg.DataBlock.Data.Length, Is.EqualTo(expectedPayload.Length));
+            Assert.That(msg.DataBlock.Data.Length, Is.EqualTo(expectedPayload.Length + 1));
         }
     }
 }

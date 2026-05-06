@@ -81,7 +81,6 @@ internal class RequestProcessorTests
         var task = Task.Run(() =>
         {
             result = rp.ExecuteOrder();
-
         });
 
         // Act  

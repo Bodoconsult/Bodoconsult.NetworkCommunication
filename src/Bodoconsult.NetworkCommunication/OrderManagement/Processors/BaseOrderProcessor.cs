@@ -1,11 +1,12 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
-using System.Diagnostics;
 using Bodoconsult.App.Abstractions.Benchmarking;
 using Bodoconsult.App.Abstractions.Interfaces;
 using Bodoconsult.App.Helpers;
 using Bodoconsult.NetworkCommunication.Helpers;
 using Bodoconsult.NetworkCommunication.Interfaces;
+using System.Diagnostics;
+using System.Runtime.CompilerServices;
 
 
 namespace Bodoconsult.NetworkCommunication.OrderManagement.Processors;
@@ -177,30 +178,42 @@ public abstract class BaseOrderProcessor : IOrderProcessor
         return ps?.IsValid.Count != 0;
     }
 
-
     /// <summary>
     /// Log debug
     /// </summary>
+    /// <param name="memberName">Calling method name (filled automatically by compiler)</param>
+    /// <param name="filepath">Calling file name (filled automatically by compiler)</param>
+    /// <param name="lineNumber">Calling method line number (filled automatically by compiler)</param>
     /// <param name="message">Message to log</param>
-    protected void LogDebug(string message)
+    protected void LogDebug(string message, [CallerMemberName] string memberName = "", [CallerFilePath] string filepath = "", [CallerLineNumber] int lineNumber = 0)
     {
-        MonitorLogger.LogInformation(message);
-        AppLogger.LogDebug($"{LoggerId}{message}");
+        MonitorLogger.LogInformation(message, memberName, filepath, lineNumber);
+        AppLogger.LogDebug($"{LoggerId}{message}", memberName, filepath, lineNumber);
         Trace.TraceInformation($"{LoggerId}{message}");
     }
 
     /// <summary>
     /// Log information
     /// </summary>
+    /// <param name="memberName">Calling method name (filled automatically by compiler)</param>
+    /// <param name="filepath">Calling file name (filled automatically by compiler)</param>
+    /// <param name="lineNumber">Calling method line number (filled automatically by compiler)</param>
     /// <param name="message">Message to log</param>
-    protected void LogInformation(string message)
+    protected void LogInformation(string message, [CallerMemberName] string memberName = "", [CallerFilePath] string filepath = "", [CallerLineNumber] int lineNumber = 0)
     {
-        MonitorLogger.LogInformation(message);
-        AppLogger.LogInformation($"{LoggerId}{message}");
+        MonitorLogger.LogInformation(message, memberName, filepath, lineNumber);
+        AppLogger.LogInformation($"{LoggerId}{message}", memberName, filepath, lineNumber);
         Trace.TraceInformation($"{LoggerId}{message}");
     }
 
-    //protected void LogWarning(string message)
+    ///// <summary>
+    ///// Log warning
+    ///// </summary>
+    ///// <param name="memberName">Calling method name (filled automatically by compiler)</param>
+    ///// <param name="filepath">Calling file name (filled automatically by compiler)</param>
+    ///// <param name="lineNumber">Calling method line number (filled automatically by compiler)</param>
+    ///// <param name="message">Message to log</param>
+    //protected void LogWarning(string message, [CallerMemberName] string memberName = "", [CallerFilePath] string filepath = "", [CallerLineNumber] int lineNumber = 0)
     //{
     //    _smddevice.MonitorLogger.LogWarning(message);
     //    _appLogger.LogWarning($"{_loggerId}{message}");

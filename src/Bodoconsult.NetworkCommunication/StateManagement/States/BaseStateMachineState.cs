@@ -15,6 +15,11 @@ public abstract class BaseStateMachineState : IStateMachineState
     private readonly Lock _isErrorHandlingRunningLock = new();
 
     /// <summary>
+    /// Current logger ID
+    /// </summary>
+    protected string LoggerId;
+
+    /// <summary>
     /// Default ctor
     /// </summary>
     /// <param name="currentContext">Current context</param>
@@ -25,6 +30,7 @@ public abstract class BaseStateMachineState : IStateMachineState
         CurrentContext = currentContext;
         Id = id;
         Name = name;
+        LoggerId = $"{currentContext.LoggerId}{(currentContext.LoggerId.EndsWith(": ") ? string.Empty : ": ")}{GetType().Name}: ";
     }
 
     /// <summary>

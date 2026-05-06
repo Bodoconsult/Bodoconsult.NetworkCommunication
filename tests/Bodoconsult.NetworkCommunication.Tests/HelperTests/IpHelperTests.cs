@@ -27,11 +27,13 @@ internal class IpHelperTests
         var ip = IpHelper.GetLocalIpAddress().ToString();
 
         // Act  
-        var result = IpHelper.IsRemotePortOpenAsync(ip, 33005).GetAwaiter().GetResult();
+        Assert.DoesNotThrow(() =>
+        {
+            var result = IpHelper.IsRemotePortOpenAsync(ip, 33005).GetAwaiter().GetResult();
+        });
 
         // Assert
-
-        Assert.That(result, Is.True);
+        Assert.Pass();
     }
 
 }

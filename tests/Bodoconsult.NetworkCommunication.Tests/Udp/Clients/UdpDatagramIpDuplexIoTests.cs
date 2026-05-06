@@ -11,7 +11,7 @@ namespace Bodoconsult.NetworkCommunication.Tests.Udp.Clients;
 [TestFixture]
 [NonParallelizable]
 [SingleThreaded]
-public class UdpDatagramIpDuplexIoTests : BaseUdpIpDuplexIoTests
+public class UdpDatagramReceiveOnlyIpDuplexIoTests : BaseUdpIpDuplexIoTests
 {
     [SetUp]
     public void TestSetup()
@@ -43,7 +43,7 @@ public class UdpDatagramIpDuplexIoTests : BaseUdpIpDuplexIoTests
         BindDelegates();
 
         ISendPacketProcessFactory sendPacketProcessFactory = new FakeSendPacketProcessFactory();
-        return new UdpDatagramIpDuplexIo(DataMessagingConfig, sendPacketProcessFactory);
+        return new UdpDatagramReceiveOnlyIpDuplexIo(DataMessagingConfig, sendPacketProcessFactory);
     }
 
     /// <summary>

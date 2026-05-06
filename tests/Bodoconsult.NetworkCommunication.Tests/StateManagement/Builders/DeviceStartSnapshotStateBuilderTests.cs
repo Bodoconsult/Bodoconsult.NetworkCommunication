@@ -186,7 +186,7 @@ internal class DeviceStartSnapshotStateBuilderTests
 
         var ps = new TncpParameterSet();
         var ps2 = new TncpParameterSet();
-        
+
         var builder = new DeviceStartSnapshotStateBuilder();
 
         var config = new JobStateConfiguration(DefaultStateNames.DeviceStartSnapshotState, builder)

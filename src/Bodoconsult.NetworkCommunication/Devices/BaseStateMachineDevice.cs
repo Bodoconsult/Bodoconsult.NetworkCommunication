@@ -187,6 +187,8 @@ public abstract class BaseStateMachineDevice : BaseOrderManagementDevice, IState
 
         // Save previous business state ID
         PreviousBusinessStateId = CurrentState?.Id ?? 0;
+        PreviousDeviceState = DeviceState;
+        PreviousBusinessSubState = BusinessSubState;
 
         // Now set the initial states
         newState.SetInitalStates();

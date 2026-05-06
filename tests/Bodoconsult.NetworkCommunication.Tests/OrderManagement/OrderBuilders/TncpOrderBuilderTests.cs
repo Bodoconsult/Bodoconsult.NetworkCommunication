@@ -222,4 +222,33 @@ internal class TncpOrderBuilderTests : OrderBuilderTestsBase
             Assert.That(errors.Count, Is.Zero);
         }
     }
+
+    [Test]
+    public void CheckReceivedMessageDelegate_ValidCommandContainsSpaces_ReturnsTrue()
+    {
+        // Arrange 
+
+        IRequestAnswer requestAnswer = new RequestAnswer(true, null, "Test", BtcpOrderBuilder.CheckReceivedMessageDelegate);
+        var sentMessage = new TncpOutboundDataMessage
+        {
+            TelnetCommand = "Blubb"
+        };
+
+        var replyMessage = new TncpInboundDataMessage
+        {
+            TelnetCommand = "<BEGIN> Blubb"
+        };
+
+        var errors = new List<string>();
+
+        // Act  
+        var result = TncpOrderBuilder.CheckReceivedMessageDelegate(requestAnswer, sentMessage, replyMessage, errors);
+
+        // Assert
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(result, Is.True);
+            Assert.That(errors.Count, Is.Zero);
+        }
+    }
 }

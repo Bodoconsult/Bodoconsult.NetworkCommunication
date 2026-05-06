@@ -59,7 +59,7 @@ internal static class UdpClientIpTestHelper
         socket.Port = testSetup.DataMessagingConfig.Port;
         testSetup.Socket = socket;
 
-        testSetup.Socket.Connect().Wait();
+        socket.Connect().Wait();
 
         testSetup.Logger = Logger;
     }

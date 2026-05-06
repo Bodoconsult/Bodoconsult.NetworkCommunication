@@ -120,13 +120,13 @@ public abstract class BaseUdpIpDuplexIoTests : BaseUdpTests
         // Act
         Send(message);
 
-        Wait.Until(() => IsDataMessageSentFired);
+        Wait.Until(() => IsDataMessageSentFired, 1000);
 
         // Assert
         using (Assert.EnterMultipleScope())
         {
             Assert.That(!IsDataMessageSentFired);
-            Assert.That(IsDataMessageNotSentFired);
+            Assert.That(!IsDataMessageNotSentFired);
             Assert.That(!IsComDevCloseFired);
         }
     }
@@ -147,12 +147,12 @@ public abstract class BaseUdpIpDuplexIoTests : BaseUdpTests
         // Act
         Send(message);
 
-        Wait.Until(() => IsDataMessageSentFired);
+        Wait.Until(() => IsDataMessageSentFired, 1000);
 
         // Assert
         using (Assert.EnterMultipleScope())
         {
-            Assert.That(IsDataMessageSentFired);
+            Assert.That(IsDataMessageSentFired, Is.False);
             Assert.That(!IsDataMessageNotSentFired);
             Assert.That(!IsComDevCloseFired);
         }

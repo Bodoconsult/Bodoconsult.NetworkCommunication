@@ -44,7 +44,7 @@ public class OrderPipeline : IOrderPipeline
     /// The internal queue to hold the messages with higher priority until they are processed
     /// </summary>
     private readonly ConcurrentQueue<IOrder> _ordersWithPriorityQueue = new();
-    
+
     /// <summary>
     /// The current execution list of orders.
     /// Do not access ExecutionQueue directly.
@@ -214,7 +214,7 @@ public class OrderPipeline : IOrderPipeline
 
             foreach (var proc in _executionQueue.ToList())
             {
-                var order = proc.Value?.Order;
+                var order = proc.Value.Order;
                 if (order is not { IsCancelled: true })
                 {
                     continue;
@@ -460,7 +460,7 @@ public class OrderPipeline : IOrderPipeline
         //    return;
         //}
 
-        var proc = _executionQueue.Values.ToList().FirstOrDefault(x => x.Order!= null && x.Order.Id == order.Id && !x.Order.IsCancelled);
+        var proc = _executionQueue.Values.ToList().FirstOrDefault(x => x.Order.Id == order.Id && !x.Order.IsCancelled);
 
         // Cancel running order
         if (proc != null)
@@ -589,7 +589,7 @@ public class OrderPipeline : IOrderPipeline
     {
         rp = _requestProcessorFactory.CreateRequestProcessor(order);
         rp.OrderProcessingFinishedDelegate = orderProcessingFinishedDelegate;
-        
+
         if (_executionQueue.TryAdd(order.Id, rp))
         {
             return false;
@@ -626,7 +626,17 @@ public class OrderPipeline : IOrderPipeline
         // Serialize before starting order. Otherwise it will fail due to changes in the parameterSet
         var json = JsonHelper.JsonSerialize(order.ParameterSet);
 
-        AsyncHelper.FireAndForget(()=> task.Start());
+        AsyncHelper.FireAndForget(() =>
+        {
+            try
+            {
+                task.Start();
+            }
+            catch (Exception e)
+            {
+                _appLogger.LogError($"{_loggerId}{order.LoggerId}execution failed: {e}");
+            }
+        });
 
         _appLogger.LogInformation($"{_loggerId}{order.LoggerId}execution started: {json}");
 

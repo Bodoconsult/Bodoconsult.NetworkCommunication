@@ -61,7 +61,7 @@ public abstract class BaseUdpDevice : IUdpDevice
         }
         else
         {
-            Listener = _isServer ? new UdpClient(port) : new UdpClient();
+            Listener = _isServer ? new UdpClient() : new UdpClient(port);
         }
 
 
@@ -155,12 +155,17 @@ public abstract class BaseUdpDevice : IUdpDevice
     {
         if (IsDisposed)
         {
-            Trace.TraceInformation($"{TypeName}: nothing to receive");
-            return await Task.FromResult(Array.Empty<byte>());
+            Trace.TraceInformation($"{TypeName}: disposed");
+            return [];
         }
 
         try
         {
+            if (Listener.Available == 0)
+            {
+                return [];
+            }
+                
             var result = await Listener.ReceiveAsync(CancellationTokenSource.Token);
             SenderEndPoint = result.RemoteEndPoint;
 
@@ -180,7 +185,7 @@ public abstract class BaseUdpDevice : IUdpDevice
         }
         catch (Exception e)
         {
-            Trace.TraceError(e.ToString());
+            Trace.TraceError($"{TypeName}: {e}");
             return [];
         }
     }
@@ -207,6 +212,7 @@ public abstract class BaseUdpDevice : IUdpDevice
     /// <summary>Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.</summary>
     public void Dispose()
     {
+        ReceivedMessages.Clear();
         IsDisposed = true;
         Dispose(true);
         GC.SuppressFinalize(this);

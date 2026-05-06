@@ -160,9 +160,6 @@ internal class UdpSocketTests
         }
         udpServer.Dispose();
 
-        
-
-
 
         // Assert
         Assert.Pass();
@@ -257,5 +254,106 @@ internal class UdpSocketTests
         Assert.Pass();
     }
 
+    [Test]
+    public void Test5_UdpSocket3WithNoHelloClientStartedFirst_UdpMessagesSentToClient()
+    {
+        // Arrange 
+        var cts = new CancellationTokenSource(2000);
 
+        var port = TestDataHelper.GetRandomPort();
+
+        AutoResetEvent started = new(false);
+
+        Task.Run(() =>
+        {
+            var client = new UdpSocket3("Client", "127.0.0.1", port, false);
+
+            Debug.Print("Client started...");
+
+            started.Set();
+
+            while (!cts.IsCancellationRequested)
+            {
+                // then receive data
+                client.Receive();
+            }
+
+            client.Dispose();
+        });
+
+        // 
+        started.WaitOne(1000);
+
+        // Act  
+        var udpServer = new UdpSocket3("Server", "127.0.0.1", port, true);
+
+        Debug.Print("Server started...");
+
+        while (!cts.IsCancellationRequested)
+        {
+            udpServer.Send("Blabb"); // reply back
+
+            //// then receive data
+            //udpServer.Receive();
+        }
+        udpServer.Dispose();
+
+        // Assert
+        Assert.Pass();
+    }
+
+    [Test]
+    public void Test6_UdpSocket3WithNoHello_UdpMessagesSentToClient()
+    {
+        // Arrange 
+        var cts = new CancellationTokenSource(2000);
+
+        var port = TestDataHelper.GetRandomPort();
+
+        AutoResetEvent started = new(false);
+
+        Task.Run(() =>
+        {
+            var client = new UdpSocket3("Client", "127.0.0.1", port, false);
+
+            Debug.Print("Client started...");
+
+            started.WaitOne(1000);
+            
+
+            while (!cts.IsCancellationRequested)
+            {
+                // then receive data
+                client.Receive();
+            }
+
+            client.Dispose();
+        });
+
+        // Act  
+        var udpServer = new UdpSocket3("Server", "127.0.0.1", port, true);
+
+        Debug.Print("Server started...");
+        
+
+        var i = 0;
+        while (!cts.IsCancellationRequested)
+        {
+            udpServer.Send("Blabb"); // reply back
+
+            i++;
+
+            if (i == 5)
+            {
+                started.Set();
+            }
+
+            //// then receive data
+            //udpServer.Receive();
+        }
+        udpServer.Dispose();
+
+        // Assert
+        Assert.Pass();
+    }
 }

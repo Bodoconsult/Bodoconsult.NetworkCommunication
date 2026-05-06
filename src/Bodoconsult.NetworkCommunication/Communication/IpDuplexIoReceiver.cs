@@ -69,7 +69,7 @@ public class IpDuplexIoReceiver : BaseDuplexIoReceiver
 
         var msg = $"Data in buffer: {DataMessageHelper.GetStringFromArrayCsharpStyle(ref _buffer)}";
         //Trace.TraceInformation(msg);
-        Logger.LogDebug(msg);
+        Logger.LogInformation(msg);
         Trace.TraceInformation($"{LoggerId}{msg}");
 
         //Trace.TraceInformation($"DuplexIoReceiver: data in buffer {Encoding.UTF8.GetString(_buffer)}");

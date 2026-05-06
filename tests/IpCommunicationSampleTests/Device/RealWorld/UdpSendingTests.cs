@@ -53,7 +53,7 @@ internal class UdpSendingTests
 
     private void StartUdpClient()
     {
-        RemoteUdpDevice = new UdpTestUniCastServer(IPAddress.Parse(_startParams.IpAddress), _startParams.Port);
+        RemoteUdpDevice = new UdpTestUniCastClient(IPAddress.Parse(_startParams.IpAddress), _startParams.Port);
         RemoteUdpDevice.Start();
         //// Send cleint hello
         //RemoteUdpDevice.Send([0x48, 0x65, 0x6c, 0x6c, 0x6f, 0x20, 0x66, 0x72, 0x6f, 0x6d, 0x20, 0x63, 0x6c, 0x69, 0x65, 0x6e, 0x74]);
@@ -163,14 +163,14 @@ internal class UdpSendingTests
 
         // Act  
         var data = new List<byte>();
-        data.AddRange( Encoding.UTF8.GetBytes("set,stream,number,4"));
+        data.AddRange(Encoding.UTF8.GetBytes("set,stream,number,4"));
         data.Add([DeviceCommunicationBasics.Lf]);
         AsyncHelper.FireAndForget(() =>
         {
             RemoteTcpIpDevice.Send(data.ToArray());
         });
 
-        Task.Delay(500);
+        Task.Delay(100);
 
         var data2 = new List<byte>();
         data2.AddRange(Encoding.UTF8.GetBytes("set,stream,mode,continious"));
@@ -181,7 +181,7 @@ internal class UdpSendingTests
             RemoteTcpIpDevice.Send(data2.ToArray());
         });
 
-        Task.Delay(500);
+        Task.Delay(100);
 
         var data3 = new List<byte>();
         data3.AddRange(Encoding.UTF8.GetBytes("set,status,start"));
@@ -191,7 +191,7 @@ internal class UdpSendingTests
             RemoteTcpIpDevice.Send(data3.ToArray());
         });
 
-        Task.Delay(5000);
+        Task.Delay(1000);
 
         Wait.Until(CheckMessages);
 
@@ -205,16 +205,8 @@ internal class UdpSendingTests
 
     private bool CheckMessages()
     {
+        //Debug.Print($"RemoteUdpDevice?.ReceivedMessages.Count {RemoteUdpDevice?.ReceivedMessages.Count}");
         return RemoteUdpDevice?.ReceivedMessages.Count > 5;
     }
-
-    //private void UdpReceiving()
-    //{
-    //    while (!_cts.Token.IsCancellationRequested)
-    //    {
-    //        RemoteUdpDevice.ReceivedMessages
-
-    //    }
-    //}
 
 }

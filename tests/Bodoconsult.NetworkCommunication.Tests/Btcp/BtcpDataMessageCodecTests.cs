@@ -290,8 +290,8 @@ internal class BtcpDataMessageCodecTests
         {
             Assert.That(result, Is.Not.Null);
             ArgumentNullException.ThrowIfNull(result);
-            Assert.That(result.ErrorCode, Is.Not.Zero);
-            Assert.That(result.DataMessage, Is.Null);
+            Assert.That(result.ErrorCode, Is.Zero);
+            Assert.That(result.DataMessage, Is.Not.Null);
         }
     }
 

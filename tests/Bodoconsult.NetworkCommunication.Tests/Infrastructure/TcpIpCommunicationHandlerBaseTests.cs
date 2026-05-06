@@ -119,7 +119,7 @@ public abstract class TcpIpCommunicationHandlerBaseTests : BaseTcpTests
                     tcs1.SetResult(true);
                     return;
                 }
-                Task.Delay(50, cts.Token);
+                Task.Delay(5, cts.Token);
             }
 
             tcs1.SetResult(false);

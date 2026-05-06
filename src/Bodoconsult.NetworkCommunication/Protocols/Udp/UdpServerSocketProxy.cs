@@ -14,7 +14,7 @@ using Bodoconsult.NetworkCommunication.Interfaces;
 namespace Bodoconsult.NetworkCommunication.Protocols.Udp;
 
 /// <summary>
-/// Current asynchronous implementation of <see cref="ISocketProxy"/> for UDP unicast server
+/// Current asynchronous implementation of <see cref="ISocketProxy"/> for UDP unicast server only sending to one client. No receiving of data
 /// </summary>
 public class UdpServerSocketProxy : BaseUpdSocketProxy
 {
@@ -110,14 +110,15 @@ public class UdpServerSocketProxy : BaseUpdSocketProxy
 
             try
             {
-                UdpClient = new UdpClient(Port);
+                UdpClient = new UdpClient();
 
                 // The following three lines allow multiple clients on the same PC
                 UdpClient.Client.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.ReuseAddress, true);
                 UdpClient.Client.Blocking = false;
 
-                EndPoint = new IPEndPoint(IPAddress.Any, Port);
-                Trace.TraceInformation($"{LoggerId}bound to IPAddress.Any:{Port}");
+                EndPoint = new IPEndPoint(IpAddress, Port);
+                SendEndPoint = EndPoint;
+                Trace.TraceInformation($"{LoggerId}sending to {IpAddress}:{Port}");
 
                 _isBound = true;
             }
@@ -137,55 +138,57 @@ public class UdpServerSocketProxy : BaseUpdSocketProxy
     /// </summary>
     /// <param name="buffer">Byte array to store the received byte data in</param>
     /// <returns>Number of bytes received</returns>
-    public override async Task<int> Receive(byte[] buffer)
+    public override Task<int> Receive(byte[] buffer)
     {
-        if (UdpClient == null)
-        {
-            return await Task.FromResult(0);
-        }
+        throw new NotSupportedException();
 
-        ArgumentNullException.ThrowIfNull(EndPoint);
+        //if (UdpClient == null)
+        //{
+        //    return await Task.FromResult(0);
+        //}
 
-        try
-        {
-            if (UdpClient.Available == 0)
-            {
-                return 0;
-            }
+        //ArgumentNullException.ThrowIfNull(EndPoint);
 
-            var result = await UdpClient.ReceiveAsync();
-            SendEndPoint = result.RemoteEndPoint;
+        //try
+        //{
+        //    if (UdpClient.Available == 0)
+        //    {
+        //        return 0;
+        //    }
 
-            //var result = await UdpClient.Client.ReceiveFromAsync(buffer, ep);
+        //    var result = await UdpClient.ReceiveAsync();
+        //    SendEndPoint = result.RemoteEndPoint;
 
-            Trace.TraceInformation($"{LoggerId}received {result.Buffer.Length} bytes");
-            Buffer.BlockCopy(result.Buffer, 0, buffer, 0, result.Buffer.Length);
-            return result.Buffer.Length;
-        }
-        catch (SocketException socketException)
-        {
-            switch (socketException.ErrorCode)
-            {
-                case 10054:
-                case 995:
-                    Trace.TraceInformation($"{LoggerId}no connection");
-                    Logger?.LogDebug("No connection");
-                    break;
-                default:
-                    Logger?.LogError("Receiving failed", socketException);
-                    var s = socketException.ToString();
-                    Trace.TraceError($"{LoggerId}{s}");
-                    break;
-            }
-            return 0;
-        }
-        catch (Exception e)
-        {
-            Logger?.LogError("Receiving failed", e);
-            var s = e.ToString();
-            Trace.TraceError($"{LoggerId}{s}");
-            return 0;
-        }
+        //    //var result = await UdpClient.Client.ReceiveFromAsync(buffer, ep);
+
+        //    Trace.TraceInformation($"{LoggerId}received {result.Buffer.Length} bytes");
+        //    Buffer.BlockCopy(result.Buffer, 0, buffer, 0, result.Buffer.Length);
+        //    return result.Buffer.Length;
+        //}
+        //catch (SocketException socketException)
+        //{
+        //    switch (socketException.ErrorCode)
+        //    {
+        //        case 10054:
+        //        case 995:
+        //            Trace.TraceInformation($"{LoggerId}no connection");
+        //            Logger?.LogDebug("No connection");
+        //            break;
+        //        default:
+        //            Logger?.LogError("Receiving failed", socketException);
+        //            var s = socketException.ToString();
+        //            Trace.TraceError($"{LoggerId}{s}");
+        //            break;
+        //    }
+        //    return 0;
+        //}
+        //catch (Exception e)
+        //{
+        //    Logger?.LogError("Receiving failed", e);
+        //    var s = e.ToString();
+        //    Trace.TraceError($"{LoggerId}{s}");
+        //    return 0;
+        //}
     }
 
     /// <summary>
@@ -193,50 +196,52 @@ public class UdpServerSocketProxy : BaseUpdSocketProxy
     /// </summary>
     /// <param name="buffer">Byte array to store the received byte data in</param>
     /// <returns>Number of bytes received</returns>
-    public override async Task<int> Receive(Memory<byte> buffer)
+    public override Task<int> Receive(Memory<byte> buffer)
     {
-        if (UdpClient == null)
-        {
-            return 0;
-        }
+        throw new NotSupportedException();
 
-        ArgumentNullException.ThrowIfNull(EndPoint);
+        //if (UdpClient == null)
+        //{
+        //    return 0;
+        //}
 
-        try
-        {
-            var result = await UdpClient.ReceiveAsync(CancellationTokenSource.Token);
-            SendEndPoint = result.RemoteEndPoint;
+        //ArgumentNullException.ThrowIfNull(EndPoint);
 
-            //Trace.TraceInformation($"UDPClient: received {result.Length} bytes from {SendEndPoint}");
+        //try
+        //{
+        //    var result = await UdpClient.ReceiveAsync(CancellationTokenSource.Token);
+        //    SendEndPoint = result.RemoteEndPoint;
 
-            result.Buffer.CopyTo(buffer);
-            Trace.TraceInformation($"{LoggerId}received {result.Buffer.Length} bytes");
-            return result.Buffer.Length;
-        }
-        catch (SocketException socketException)
-        {
-            switch (socketException.ErrorCode)
-            {
-                case 10054:
-                case 995:
-                    Logger?.LogDebug("No connection");
-                    Trace.TraceInformation($"{LoggerId}no connection");
-                    break;
-                default:
-                    Logger?.LogError("Receiving failed", socketException);
-                    var s = socketException.ToString();
-                    Trace.TraceError($"{LoggerId}{s}");
-                    break;
-            }
-            return 0;
-        }
-        catch (Exception e)
-        {
-            Logger?.LogError("Receiving failed", e);
-            var s = e.ToString();
-            Trace.TraceError($"{LoggerId}{s}");
-            return 0;
-        }
+        //    //Trace.TraceInformation($"UDPClient: received {result.Length} bytes from {SendEndPoint}");
+
+        //    result.Buffer.CopyTo(buffer);
+        //    Trace.TraceInformation($"{LoggerId}received {result.Buffer.Length} bytes");
+        //    return result.Buffer.Length;
+        //}
+        //catch (SocketException socketException)
+        //{
+        //    switch (socketException.ErrorCode)
+        //    {
+        //        case 10054:
+        //        case 995:
+        //            Logger?.LogDebug("No connection");
+        //            Trace.TraceInformation($"{LoggerId}no connection");
+        //            break;
+        //        default:
+        //            Logger?.LogError("Receiving failed", socketException);
+        //            var s = socketException.ToString();
+        //            Trace.TraceError($"{LoggerId}{s}");
+        //            break;
+        //    }
+        //    return 0;
+        //}
+        //catch (Exception e)
+        //{
+        //    Logger?.LogError("Receiving failed", e);
+        //    var s = e.ToString();
+        //    Trace.TraceError($"{LoggerId}{s}");
+        //    return 0;
+        //}
     }
 
     /// <summary>

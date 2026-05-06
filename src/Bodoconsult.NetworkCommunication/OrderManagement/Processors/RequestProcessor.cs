@@ -1,11 +1,12 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
-using System.Diagnostics;
 using Bodoconsult.App.Abstractions.Interfaces;
 using Bodoconsult.App.Helpers;
 using Bodoconsult.NetworkCommunication.Delegates;
 using Bodoconsult.NetworkCommunication.EnumAndStates;
 using Bodoconsult.NetworkCommunication.Interfaces;
+using System.Diagnostics;
+using System.Runtime.CompilerServices;
 
 namespace Bodoconsult.NetworkCommunication.OrderManagement.Processors;
 
@@ -68,7 +69,6 @@ public class RequestProcessor : IRequestProcessor
         _orderLoggerId = $"{_device.LoggerId}{(_device.LoggerId.EndsWith(": ") ? string.Empty : ": ")}{Order.LoggerId}";
         _appLogger = _device.DataMessagingConfig.AppLogger;
 
-
         CancellationTokenSource =  new(Order.TotalTimeOut);
     }
 
@@ -125,11 +125,11 @@ public class RequestProcessor : IRequestProcessor
 
             if (IsCancelled || order.IsCancelled)
             {
-                _appLogger.LogInformation($"{_orderLoggerId}{requestSpec.Name} was cancelled");
+                LogInfo($"{_orderLoggerId}{requestSpec.Name} was cancelled");
                 return ExitAction(order, OrderExecutionResultState.Unsuccessful);
             }
 
-            Trace.TraceInformation($"{_orderLoggerId}RP {requestSpec.Name}: start execution...");
+            LogInfo($"{_orderLoggerId}RP {requestSpec.Name}: start execution...");
 
             var result = requestSpec switch
             {
@@ -140,7 +140,7 @@ public class RequestProcessor : IRequestProcessor
                 _ => OrderExecutionResultState.NotProcessed
             };
 
-            Trace.TraceInformation($"{_orderLoggerId}RP: {requestSpec.Name}: execution ended with {result}");
+            LogInfo($"{_orderLoggerId}RP: {requestSpec.Name}: execution ended with {result}");
 
             if (result.Id == OrderExecutionResultState.Successful.Id && !IsCancelled && !order.IsCancelled)
             {
@@ -149,15 +149,15 @@ public class RequestProcessor : IRequestProcessor
 
             if (IsCancelled || order.IsCancelled)
             {
-                _appLogger.LogInformation($"{_orderLoggerId} was cancelled");
+                LogInfo($"{_orderLoggerId} was cancelled");
                 return ExitAction(order, OrderExecutionResultState.Unsuccessful);
             }
 
-            _appLogger.LogInformation($"{_orderLoggerId}exit {requestSpec.Name} with code {result}");
+            LogInfo($"{_orderLoggerId}exit {requestSpec.Name} with code {result}");
             return ExitAction(order, result);
         }
 
-        _appLogger.LogInformation($"{_orderLoggerId} finished successful");
+        LogInfo($"{_orderLoggerId} finished successful");
 
         // If all requests were successful, the complete order was successful
         if (order.RequestSpecs.All(x => x.WasSuccessful))
@@ -241,7 +241,7 @@ public class RequestProcessor : IRequestProcessor
         requestSpec.SendDataMessageDelegate = _device.CommunicationAdapter.SendDataMessage;
         requestSpec.CancelRunningOperationDelegate = _device.CommunicationAdapter.CancelRunningOperation;
         requestSpec.AppLogger = _appLogger;
-        requestSpec.OrderLoggerId = $"{_orderLoggerId}RSP: {requestSpec.Name} ";
+        requestSpec.OrderLoggerId = $"{_orderLoggerId}RP: {requestSpec.Name}: ";
 
         var processor = _requestStepProcessorFactory.CreateNoHandshakeNoAnswerDeviceProcessor(requestSpec);
         requestSpec.RequestStepProcessorSetResultDelegate = processor.SetResult;
@@ -264,13 +264,13 @@ public class RequestProcessor : IRequestProcessor
         {
             _transportObject = processor.RequestSpec.ResultTransportObject;
             processor.Dispose();
-            Trace.TraceInformation($"{_orderLoggerId}RSP: {requestSpec.Name}: ExecuteRequest successful");
+            LogInfo($"{_orderLoggerId}RP: {requestSpec.Name}: ExecuteRequest successful");
             return OrderExecutionResultState.Successful;
         }
 
         // ToDo: add logging
 
-        Trace.TraceInformation($"{_orderLoggerId}RSP: {requestSpec.Name}: ExecuteRequest failed {result}");
+        LogInfo($"{_orderLoggerId}RP: {requestSpec.Name}: ExecuteRequest failed {result}");
 
         // If the order has been finished already or is disposable: do not change order state again
         if (order.IsFinished || order.IsDisposable)
@@ -304,7 +304,7 @@ public class RequestProcessor : IRequestProcessor
         requestSpec.SendDataMessageDelegate = _device.CommunicationAdapter.SendDataMessage;
         requestSpec.CancelRunningOperationDelegate = _device.CommunicationAdapter.CancelRunningOperation;
         requestSpec.AppLogger = _appLogger;
-        requestSpec.OrderLoggerId = $"{_orderLoggerId}RSP: {requestSpec.Name} ";
+        requestSpec.OrderLoggerId = $"{_orderLoggerId}RP: {requestSpec.Name} ";
 
         var processor = _requestStepProcessorFactory.CreateNoAnswerDeviceProcessor(requestSpec);
         requestSpec.RequestStepProcessorSetResultDelegate = processor.SetResult;
@@ -327,13 +327,13 @@ public class RequestProcessor : IRequestProcessor
         {
             _transportObject = processor.RequestSpec.ResultTransportObject;
             processor.Dispose();
-            Trace.TraceInformation($"{_orderLoggerId}RSP: {requestSpec.Name}: ExecuteRequest failed {result}");
+            LogInfo($"{_orderLoggerId}RP: {requestSpec.Name}: ExecuteRequest failed {result}");
             return OrderExecutionResultState.Successful;
         }
 
         // ToDo: add logging
 
-        Trace.TraceInformation($"{_orderLoggerId}RSP: {requestSpec.Name}: ExecuteRequest failed {result}");
+        LogInfo($"{_orderLoggerId}RP: {requestSpec.Name}: ExecuteRequest failed {result}");
 
         // If the order has been finished already or is disposable: do not change order state again
         if (order.IsFinished || order.IsDisposable)
@@ -366,7 +366,7 @@ public class RequestProcessor : IRequestProcessor
         requestSpec.SendDataMessageDelegate = _device.CommunicationAdapter.SendDataMessage;
         requestSpec.CancelRunningOperationDelegate = _device.CommunicationAdapter.CancelRunningOperation;
         requestSpec.AppLogger = _appLogger;
-        requestSpec.OrderLoggerId = $"{_orderLoggerId}RSP: {requestSpec.Name} ";
+        requestSpec.OrderLoggerId = $"{_orderLoggerId}RP: {requestSpec.Name} ";
 
         var processor = _requestStepProcessorFactory.CreateDeviceProcessor(requestSpec);
         requestSpec.RequestStepProcessorSetResultDelegate = processor.SetResult;
@@ -389,13 +389,13 @@ public class RequestProcessor : IRequestProcessor
         {
             _transportObject = processor.RequestSpec.ResultTransportObject;
             processor.Dispose();
-            Trace.TraceInformation($"{_orderLoggerId}RSP: {requestSpec.Name}: ExecuteRequest failed {result}");
+            LogInfo($"{_orderLoggerId}RP: {requestSpec.Name}: ExecuteRequest successful {result}");
             return OrderExecutionResultState.Successful;
         }
 
         // ToDo: add logging
 
-        Trace.TraceInformation($"{_orderLoggerId}RSP: {requestSpec.Name}: ExecuteRequest failed {result}");
+        LogInfo($"{_orderLoggerId}RP: {requestSpec.Name}: ExecuteRequest failed {result}");
 
         // If the order has been finished already or is disposable: do not change order state again
         if (order.IsFinished || order.IsDisposable)
@@ -427,7 +427,7 @@ public class RequestProcessor : IRequestProcessor
         //requestSpec.DoNotifyDelegate = _device.DoNotify;
         requestSpec.CancelRunningOperationDelegate = _device.CommunicationAdapter.CancelRunningOperation;
         requestSpec.AppLogger = _appLogger;
-        requestSpec.OrderLoggerId = $"{_orderLoggerId}RSP: {requestSpec.Name} ";
+        requestSpec.OrderLoggerId = $"{_orderLoggerId}RP: {requestSpec.Name} ";
 
         var processor = _requestStepProcessorFactory.CreateInternalProcessor(requestSpec);
         requestSpec.RequestStepProcessorSetResultDelegate = processor.SetResult;
@@ -450,13 +450,13 @@ public class RequestProcessor : IRequestProcessor
         {
             _transportObject = processor.RequestSpec.ResultTransportObject;
             processor.Dispose();
-            Trace.TraceInformation($"{_orderLoggerId}RSP: {requestSpec.Name}: ExecuteRequest successful");
+            LogInfo($"{_orderLoggerId}RP: {requestSpec.Name}: ExecuteRequest successful");
             return OrderExecutionResultState.Successful;
         }
 
         // ToDo: add logging
 
-        Trace.TraceInformation($"{_orderLoggerId}RSP: {requestSpec.Name}: ExecuteRequest failed {result}");
+        LogInfo($"{_orderLoggerId}RP: {requestSpec.Name}: ExecuteRequest failed {result}");
 
         // If the order has been finished already or is disposable: do not change order state again
         if (order.IsFinished || order.IsDisposable)
@@ -483,6 +483,18 @@ public class RequestProcessor : IRequestProcessor
         return order.ExecutionResult;
     }
 
+    private void LogInfo(string msg, [CallerMemberName] string memberName = "", [CallerFilePath] string filepath = "", [CallerLineNumber] int lineNumber = 0)
+    {
+        _appLogger.LogInformation(msg, memberName, filepath, lineNumber);
+        Trace.TraceInformation(msg);
+    }
+
+    private void LogDebug(string msg, [CallerMemberName] string memberName = "", [CallerFilePath] string filepath = "", [CallerLineNumber] int lineNumber = 0)
+    {
+        _appLogger.LogDebug(msg, memberName, filepath, lineNumber);
+        Trace.TraceInformation(msg);
+    }
+
     /// <summary>
     /// Check a received message
     /// </summary>
@@ -496,7 +508,7 @@ public class RequestProcessor : IRequestProcessor
         // Fetch the order here to avoid multithread issues
         var order = Order;
 
-        _device.DataMessagingConfig.AppLogger.LogDebug($"{_orderLoggerId}receiving message {receivedMessage.ToShortInfoString()} with order ID {order.Id}!");
+        LogDebug($"{_orderLoggerId}receiving message {receivedMessage.ToShortInfoString()} with order ID {order.Id}!");
 
         if (_isDisposing || IsCancelled)
         {
@@ -508,20 +520,18 @@ public class RequestProcessor : IRequestProcessor
         var isFinished = order.IsFinished;
         var isCancelled = order.IsCancelled;
 
-
         if (isCancelled)
         {
             //Order.ExecutionResult = OrderExecutionResultState.Unsuccessful;
-            _device.DataMessagingConfig.AppLogger.LogDebug($"{_orderLoggerId}receiving message {receivedMessage.ToShortInfoString()} failed: order is cancelled already");
+            LogDebug($"{_orderLoggerId}receiving message {receivedMessage.ToShortInfoString()} failed: order is cancelled already");
             return false;
         }
-
 
         var stepProcessor = CurrentRequestStepProcessor;
         if (stepProcessor == null)
         {
             //Order.ExecutionResult = OrderExecutionResultState.Unsuccessful;
-            _device.DataMessagingConfig.AppLogger.LogDebug($"{_orderLoggerId}receiving message {receivedMessage.ToShortInfoString()} failed: no request step processor");
+            LogDebug($"{_orderLoggerId}receiving message {receivedMessage.ToShortInfoString()} failed: no request step processor");
             return false;
         }
 
@@ -536,10 +546,9 @@ public class RequestProcessor : IRequestProcessor
         // If the order has been finished already or is disposable: do not change order state again
         if (isDisposable || isFinished)
         {
-            _device.DataMessagingConfig.AppLogger.LogDebug($"{_orderLoggerId}receiving message {receivedMessage.ToShortInfoString()} failed: order is disposable or finished already");
+            LogDebug($"{_orderLoggerId}receiving message {receivedMessage.ToShortInfoString()} failed: order is disposable or finished already");
             return result;
         }
-
 
         if (order.RequestSpecs.All(x => x is { WasSuccessful: true }))
         {
@@ -548,7 +557,7 @@ public class RequestProcessor : IRequestProcessor
 
         if (!order.WasSuccessful)
         {
-            _device.DataMessagingConfig.AppLogger.LogDebug($"{_orderLoggerId}receiving message {receivedMessage.ToShortInfoString()} result: {result}");
+            LogDebug($"{_orderLoggerId}receiving message {receivedMessage.ToShortInfoString()} result: {result}");
             return result;
         }
 

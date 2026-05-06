@@ -148,9 +148,7 @@ public class DeviceRequestStepProcessor : IDeviceRequestStepProcessor
         try
         {
             // Fetch the request spec here to avoid multithread issues
-
             var requestSpec = DeviceRequestSpec;
-
 
             if (IsCancelled)
             {
@@ -164,13 +162,12 @@ public class DeviceRequestStepProcessor : IDeviceRequestStepProcessor
             // Only request sending to device proceed here
             requestSpec.CreateMessagesToSend();
 
-
             if (IsCancelled)
             {
                 return OrderExecutionResultState.Unsuccessful;
             }
 
-            var send = requestSpec.SentMessage.ToList();
+            var send = requestSpec.SentMessage;
             NumberOfMessagesToBeSent = send.Count;
 
             // Process all messages for the request in the same way
@@ -279,16 +276,15 @@ public class DeviceRequestStepProcessor : IDeviceRequestStepProcessor
 
         if (!IsCancelled)
         {
+            // ******************
+            // Start step 1: send the message and wait for handshake
+            // ******************
             return RunStep1(message, requestSpec, task, _tcs);
         }
 
         _tcs.Dispose();
         Wait(task);
         return OrderExecutionResultState.Unsuccessful;
-
-        // ******************
-        // Start step 1: send the message and wait for handshake
-        // ******************
     }
 
     private static IOrderExecutionResultState RunStep1(IOutboundDataMessage message, IDeviceRequestSpec requestSpec,
@@ -641,5 +637,7 @@ public class DeviceRequestStepProcessor : IDeviceRequestStepProcessor
     public void Dispose()
     {
         CurrentChainElement = null;
+        DeviceRequestSpec.SendDataMessageDelegate = null;
+        DeviceRequestSpec.SentMessage.Clear();
     }
 }

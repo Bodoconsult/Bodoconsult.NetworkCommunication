@@ -76,8 +76,8 @@ public class BackendUdpServerManager : ISimpleDeviceManager
     {
         IDataMessageProcessingPackageFactory messageProcessingPackageFactory = new SfxpDataMessageProcessingPackageFactory();
 
-        var configurator = new UdpClientDeviceConfigurator(_duplexIoFactory, _monitorLoggerFactoryFactory, _logDataFactory, _appLoggerFactory,
-            _appEventSourceFactory, _clientNotificationManager, _appLoggerProxy, _socketProxyFactory, _appGlobals);
+        var configurator = new UdpServerDeviceConfigurator(_duplexIoFactory, _monitorLoggerFactoryFactory, _logDataFactory, _appLoggerFactory,
+            _appEventSourceFactory, _clientNotificationManager, _appLoggerProxy, _socketProxyFactory);
 
         configurator.CreateMessagingConfig("Device_Backend_UDP", ipAddress, port, messageProcessingPackageFactory);
 

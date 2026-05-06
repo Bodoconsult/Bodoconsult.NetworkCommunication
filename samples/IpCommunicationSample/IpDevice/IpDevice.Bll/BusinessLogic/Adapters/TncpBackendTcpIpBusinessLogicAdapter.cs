@@ -61,11 +61,16 @@ public class TncpBackendTcpIpBusinessLogicAdapter : BaseSimpleDeviceBusinessLogi
 
         // Send an answer message
         SendAnswer(tncp.TelnetCommand);
-        
+
         Trace.TraceInformation($"TncpBackendTcpIpBusinessLogicAdapter: received command >>{tncp.TelnetCommand}<< with message {message.MessageId}");
 
         //NetworkCommand? command;
         //HandleTncpMessage? del;
+
+        if (tncp.TelnetCommand == "set,status,start" && _udpStarter == null)
+        {
+            return;
+        }
 
         if (tncp.TelnetCommand == "set,status,stop")
         {

@@ -7,7 +7,7 @@ using System.Net.Sockets;
 namespace Bodoconsult.NetworkCommunication.Testing;
 
 /// <summary>
-/// Simple unicast UDP server for testing purposes
+/// Simple unicast UDP server for testing purposes: Sending only!
 /// </summary>
 public class UdpTestUniCastServer : BaseUdpDevice
 {
@@ -28,7 +28,8 @@ public class UdpTestUniCastServer : BaseUdpDevice
         Listener.Client.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.ReuseAddress, true);
         Listener.Client.Blocking = false;
 
-        EndPoint = new IPEndPoint(IPAddress.Any, Port);
+        EndPoint = new IPEndPoint(ipAddress, Port);
+        SenderEndPoint = EndPoint;
 
         //// Remove
         //SendEndPoint = new IPEndPoint(ipAddress, RemotePort);

@@ -86,27 +86,28 @@ public class TncpOrderBuilder : BaseOrderBuilder
             return false;
         }
 
-        if (rm.TelnetCommand.StartsWith("<BEGIN>", StringComparison.InvariantCultureIgnoreCase))
+        if (!rm.TelnetCommand.StartsWith("<BEGIN>", StringComparison.InvariantCultureIgnoreCase))
         {
-            var send = sm.TelnetCommand;
-
-            if (send == null)
-            {
-                if (sm.DataBlock is TncpParameterSet ps)
-                {
-                    send = ps.TelnetCommand;
-                }
-            }
-
-            if (send == null)
-            {
-                return false;
-            }
-
-            var cmd = rm.TelnetCommand[7..];
-            var result = send == cmd;
-            return result;
+            return true;
         }
-        return true;
+
+        var send = sm.TelnetCommand?.Replace(" ", string.Empty);
+
+        if (send == null)
+        {
+            if (sm.DataBlock is TncpParameterSet ps)
+            {
+                send = ps.TelnetCommand?.Replace(" ", string.Empty);
+            }
+        }
+
+        if (send == null)
+        {
+            return false;
+        }
+
+        var cmd = rm.TelnetCommand[7..].Replace(" ", string.Empty);
+        var result = send == cmd;
+        return result;
     }
 }

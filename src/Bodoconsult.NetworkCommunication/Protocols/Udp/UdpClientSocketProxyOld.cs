@@ -1,10 +1,4 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
-// Licence MIT
-
-// https://gist.github.com/darkguy2008/413a6fea3a5b4e67e5e0d96f750088a9
-// https://dev.to/chakewitz/c-networking-raw-sockets-tcp-and-udp-programming-46oc
-// https://learn.microsoft.com/de-de/dotnet/framework/network-programming/using-udp-services
-// https://enclave.io/high-performance-udp-sockets-net6/
 
 using System.Diagnostics;
 using System.Net;
@@ -16,7 +10,7 @@ namespace Bodoconsult.NetworkCommunication.Protocols.Udp;
 /// <summary>
 /// Current asynchronous implementation of <see cref="ISocketProxy"/> for UDP unicast
 /// </summary>
-public class UdpClientSocketProxy : BaseUpdSocketProxy
+public class UdpClientSocketProxyOld : BaseUpdSocketProxy
 {
 
     //private readonly byte[] _tmp = new byte[1];
@@ -65,94 +59,90 @@ public class UdpClientSocketProxy : BaseUpdSocketProxy
     /// Send bytes
     /// </summary>
     /// <param name="bytesToSend">Byte array to send</param>
-    public override Task<int> Send(byte[] bytesToSend)
+    public override async Task<int> Send(byte[] bytesToSend)
     {
-        throw new NotSupportedException();
+        if (UdpClient == null)
+        {
+            return 0;
+        }
 
-        //if (UdpClient == null)
-        //{
-        //    return 0;
-        //}
+        ArgumentNullException.ThrowIfNull(SendEndPoint);
 
-        //ArgumentNullException.ThrowIfNull(SendEndPoint);
+        try
+        {
+            var result = await UdpClient.SendAsync(bytesToSend, bytesToSend.Length);
 
-        //try
-        //{
-        //    var result = await UdpClient.SendAsync(bytesToSend, bytesToSend.Length, SendEndPoint);
+            //var result = await UdpClient.Client.SendToAsync(bytesToSend, SendEndPoint);
+            Trace.TraceInformation($"{LoggerId}sent {result} bytes to {SendEndPoint}");
+            return result;
+        }
+        catch (SocketException socketException)
+        {
+            if (socketException.ErrorCode != 10054)
+            {
+                Logger?.LogError("Sending failed", socketException);
+                var s = socketException.ToString();
+                Trace.TraceError($"{LoggerId}{s}");
+            }
+            else
+            {
+                Logger?.LogDebug("No connection");
+            }
 
-        //    //var result = await UdpClient.Client.SendToAsync(bytesToSend, SendEndPoint);
-        //    Trace.TraceInformation($"{LoggerId}sent {result} bytes to {SendEndPoint}");
-        //    return result;
-        //}
-        //catch (SocketException socketException)
-        //{
-        //    if (socketException.ErrorCode != 10054)
-        //    {
-        //        Logger?.LogError("Sending failed", socketException);
-        //        var s = socketException.ToString();
-        //        Trace.TraceError($"{LoggerId}{s}");
-        //    }
-        //    else
-        //    {
-        //        Logger?.LogDebug("No connection");
-        //    }
-
-        //    return 0;
-        //}
-        //catch (Exception e)
-        //{
-        //    Logger?.LogError("Sending failed", e);
-        //    var s = e.ToString();
-        //    Trace.TraceError($"{LoggerId}{s}");
-        //    return 0;
-        //}
+            return 0;
+        }
+        catch (Exception e)
+        {
+            Logger?.LogError("Sending failed", e);
+            var s = e.ToString();
+            Trace.TraceError($"{LoggerId}{s}");
+            return 0;
+        }
     }
 
     /// <summary>
     /// Send bytes
     /// </summary>
     /// <param name="bytesToSend">Data to send</param>
-    public override Task<int> Send(ReadOnlyMemory<byte> bytesToSend)
+    public override async Task<int> Send(ReadOnlyMemory<byte> bytesToSend)
     {
-        throw new NotSupportedException();
+        if (UdpClient == null)
+        {
+            return 0;
+        }
 
-        //if (UdpClient == null)
-        //{
-        //    return 0;
-        //}
+        ArgumentNullException.ThrowIfNull(SendEndPoint);
 
-        //ArgumentNullException.ThrowIfNull(SendEndPoint);
+        try
+        {
+            //var result = await UdpClient.Client.SendToAsync(bytesToSend, SendEndPoint);
 
-        //try
-        //{
-        //    //var result = await UdpClient.Client.SendToAsync(bytesToSend, SendEndPoint);
+            var result = await UdpClient.SendAsync(bytesToSend).AsTask();
+            Trace.TraceInformation($"{LoggerId}sent {result} bytes");
+            return result;
+        }
+        catch (SocketException socketException)
+        {
+            if (socketException.ErrorCode != 10054)
+            {
+                Logger?.LogError("Sending failed", socketException);
+                var s = socketException.ToString();
+                Trace.TraceError($"{LoggerId}{s}");
+            }
+            else
+            {
+                Logger?.LogDebug("No connection");
+            }
 
-        //    var result = await UdpClient.SendAsync(bytesToSend, SendEndPoint).AsTask();
-        //    Trace.TraceInformation($"{LoggerId}sent {result} bytes");
-        //    return result;
-        //}
-        //catch (SocketException socketException)
-        //{
-        //    if (socketException.ErrorCode != 10054)
-        //    {
-        //        Logger?.LogError("Sending failed", socketException);
-        //        var s = socketException.ToString();
-        //        Trace.TraceError($"{LoggerId}{s}");
-        //    }
-        //    else
-        //    {
-        //        Logger?.LogDebug("No connection");
-        //    }
-
-        //    return 0;
-        //}
-        //catch (Exception e)
-        //{
-        //    Logger?.LogError("Sending failed", e);
-        //    var s = e.ToString();
-        //    Trace.TraceError($"{LoggerId}{s}");
-        //    return 0;
-        //}
+            return 0;
+        }
+        catch (Exception e)
+        {
+            Logger?.LogError("Sending failed", e);
+            var s = e.ToString();
+            Trace.TraceError($"{LoggerId}{s}");
+            return 0;
+        }
     }
 
     ///// <summary>
@@ -221,15 +211,15 @@ public class UdpClientSocketProxy : BaseUpdSocketProxy
 
             try
             {
-                UdpClient = new UdpClient(Port);
+                UdpClient = new UdpClient();
                 UdpClient.Client.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.ReuseAddress, true);
                 UdpClient.Client.Blocking = false;
 
                 EndPoint = new IPEndPoint(IpAddress, Port);
                 SendEndPoint = EndPoint;
 
-                //UdpClient.Connect(EndPoint);
-                Trace.TraceInformation($"{LoggerId}connected to IPAddress.Any:{Port}");
+                UdpClient.Connect(EndPoint);
+                Trace.TraceInformation($"{LoggerId}connected to {IpAddress}:{Port}");
                 _isBound = true;
             }
             catch (Exception e)
@@ -250,10 +240,12 @@ public class UdpClientSocketProxy : BaseUpdSocketProxy
     /// <returns>Number of bytes received</returns>
     public override async Task<int> Receive(byte[] buffer)
     {
-        if (UdpClient == null || UdpClient.Available == 0)
+        if (UdpClient == null)
         {
             return await Task.FromResult(0);
         }
+
+        ArgumentNullException.ThrowIfNull(EndPoint);
 
         try
         {
@@ -293,10 +285,12 @@ public class UdpClientSocketProxy : BaseUpdSocketProxy
     /// <returns>Number of bytes received</returns>
     public override async Task<int> Receive(Memory<byte> buffer)
     {
-        if (UdpClient == null || UdpClient.Available == 0)
+        if (UdpClient == null)
         {
-            return await Task.FromResult(0);
+            return 0;
         }
+
+        ArgumentNullException.ThrowIfNull(EndPoint);
 
         try
         {

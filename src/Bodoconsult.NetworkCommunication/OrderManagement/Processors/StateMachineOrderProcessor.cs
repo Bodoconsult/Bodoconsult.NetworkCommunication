@@ -175,7 +175,7 @@ public class StateMachineOrderProcessor : BaseOrderProcessor
         requestProcessor.OrderProcessingFinishedDelegate = null;
 
         var order = requestProcessor.Order;
-        order.ExecutionResult ??= OrderExecutionResultState.Unsuccessful;
+        //order.ExecutionResult ??= OrderExecutionResultState.Unsuccessful;
         order.Benchmark?.AddStep("Order processing finished");
 
         AppLogger.LogDebug($"{LoggerId}{order.LoggerId}has finished. {OrderPipeline.CurrentOrderState}");

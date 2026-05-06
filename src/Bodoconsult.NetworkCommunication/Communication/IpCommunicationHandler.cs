@@ -49,6 +49,12 @@ public class IpCommunicationHandler : ICommunicationHandler
 
         DataMessagingConfig.RaiseCommLayerDataMessageReceivedDelegate = OnReceivedMessage;
         DataMessagingConfig.RaiseUnexpectedDataMessageReceivedDelegate = OnNotExpectedMessageReceivedEvent;
+
+        _inboundQueue.ConsumerTaskDelegate = InboundConsumerTaskDelegate;
+        _inboundQueue.StartConsumer();
+
+        _outBoundQueue.ConsumerTaskDelegate = OutboundConsumerTaskDelegate;
+        _outBoundQueue.StartConsumer();
     }
 
     /// <summary>
@@ -209,11 +215,17 @@ public class IpCommunicationHandler : ICommunicationHandler
 
         });
 
-        _inboundQueue.ConsumerTaskDelegate = InboundConsumerTaskDelegate;
-        _inboundQueue.StartConsumer();
+        if (!_inboundQueue.IsActivated)
+        {
+            _inboundQueue.ConsumerTaskDelegate = InboundConsumerTaskDelegate;
+            _inboundQueue.StartConsumer();
+        }
 
-        _outBoundQueue.ConsumerTaskDelegate = OutboundConsumerTaskDelegate;
-        _outBoundQueue.StartConsumer();
+        if (!_outBoundQueue.IsActivated)
+        {
+            _outBoundQueue.ConsumerTaskDelegate = OutboundConsumerTaskDelegate;
+            _outBoundQueue.StartConsumer();
+        }
 
         _isInitialized = true;
     }

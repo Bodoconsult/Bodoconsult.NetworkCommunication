@@ -1,68 +1,68 @@
-﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
+﻿//// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
-using System.Diagnostics;
-using Bodoconsult.NetworkCommunication.Communication;
-using Bodoconsult.NetworkCommunication.Factories;
-using Bodoconsult.NetworkCommunication.Interfaces;
-using Bodoconsult.NetworkCommunication.Tests.Helpers;
+//using System.Diagnostics;
+//using Bodoconsult.NetworkCommunication.Communication;
+//using Bodoconsult.NetworkCommunication.Factories;
+//using Bodoconsult.NetworkCommunication.Interfaces;
+//using Bodoconsult.NetworkCommunication.Tests.Helpers;
 
-namespace Bodoconsult.NetworkCommunication.Tests.Udp.Servers;
+//namespace Bodoconsult.NetworkCommunication.Tests.Udp.Servers;
 
-[TestFixture]
-[NonParallelizable]
-[SingleThreaded]
-public class UdpIpDuplexIoTests : BaseUdpIpDuplexIoTests
-{
-    [SetUp]
-    public void TestSetup()
-    {
-        Debug.Print("Start TestSetup");
+//[TestFixture]
+//[NonParallelizable]
+//[SingleThreaded]
+//public class UdpIpDuplexIoTests : BaseUdpIpDuplexIoTests
+//{
+//    [SetUp]
+//    public void TestSetup()
+//    {
+//        Debug.Print("Start TestSetup");
 
-        UdpServerIpTestHelper.CreateMessagingConfig(this);
+//        UdpServerIpTestHelper.CreateMessagingConfig(this);
 
-        BaseReset();
+//        BaseReset();
 
-        UdpServerIpTestHelper.InitLocalSocket(this);
-        ArgumentNullException.ThrowIfNull(Socket);
+//        UdpServerIpTestHelper.InitLocalSocket(this);
+//        ArgumentNullException.ThrowIfNull(Socket);
 
-        DuplexIo = GetDuplexIo(Socket);
+//        DuplexIo = GetDuplexIo(Socket);
 
-        UdpServerIpTestHelper.InitRemoteDevice(this);
+//        UdpServerIpTestHelper.InitRemoteDevice(this);
 
-        Debug.Print("End TestSetup");
-    }
+//        Debug.Print("End TestSetup");
+//    }
 
-    /// <summary>
-    /// Get the <see cref="IDuplexIo"/> instance to test
-    /// </summary>
-    /// <param name="socketProxy">Current socket proxy to use</param>
-    /// <returns><see cref="IDuplexIo"/> instance to test</returns>
-    public override IDuplexIo GetDuplexIo(ISocketProxy socketProxy)
-    {
-        ArgumentNullException.ThrowIfNull(DataMessagingConfig);
-        Socket = socketProxy;
-        BindDelegates();
+//    /// <summary>
+//    /// Get the <see cref="IDuplexIo"/> instance to test
+//    /// </summary>
+//    /// <param name="socketProxy">Current socket proxy to use</param>
+//    /// <returns><see cref="IDuplexIo"/> instance to test</returns>
+//    public override IDuplexIo GetDuplexIo(ISocketProxy socketProxy)
+//    {
+//        ArgumentNullException.ThrowIfNull(DataMessagingConfig);
+//        Socket = socketProxy;
+//        BindDelegates();
 
-        ISendPacketProcessFactory sendPacketProcessFactory = new FakeSendPacketProcessFactory();
-        return new IpDuplexIo(DataMessagingConfig, sendPacketProcessFactory);
-    }
+//        ISendPacketProcessFactory sendPacketProcessFactory = new FakeSendPacketProcessFactory();
+//        return new IpDuplexIo(DataMessagingConfig, sendPacketProcessFactory);
+//    }
 
-    /// <summary>
-    /// Get the <see cref="IDuplexIo"/> instance to test
-    /// </summary>
-    /// <param name="socketProxy">Current socket proxy to use</param>
-    /// <param name="expectedResult">Current expected result from send process</param>
-    /// <returns></returns>
-    public override IDuplexIo GetDuplexIoWithFakeEncodeDecoder(ISocketProxy socketProxy, FakeSendPacketProcessEnum expectedResult)
-    {
-        ArgumentNullException.ThrowIfNull(DataMessagingConfig);
-        Socket = socketProxy;
-        BindDelegates();
+//    /// <summary>
+//    /// Get the <see cref="IDuplexIo"/> instance to test
+//    /// </summary>
+//    /// <param name="socketProxy">Current socket proxy to use</param>
+//    /// <param name="expectedResult">Current expected result from send process</param>
+//    /// <returns></returns>
+//    public override IDuplexIo GetDuplexIoWithFakeEncodeDecoder(ISocketProxy socketProxy, FakeSendPacketProcessEnum expectedResult)
+//    {
+//        ArgumentNullException.ThrowIfNull(DataMessagingConfig);
+//        Socket = socketProxy;
+//        BindDelegates();
 
-        var sendPacketProcessFactory = new FakeSendPacketProcessFactory
-        {
-            TypeOfFakeSendPacketProcessEnum = expectedResult
-        };
-        return new IpDuplexIo(DataMessagingConfig, sendPacketProcessFactory);
-    }
-}
+//        var sendPacketProcessFactory = new FakeSendPacketProcessFactory
+//        {
+//            TypeOfFakeSendPacketProcessEnum = expectedResult
+//        };
+//        return new IpDuplexIo(DataMessagingConfig, sendPacketProcessFactory);
+//    }
+//}

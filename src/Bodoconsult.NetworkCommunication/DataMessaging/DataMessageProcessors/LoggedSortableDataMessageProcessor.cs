@@ -34,7 +34,9 @@ public class LoggedSortableDataMessageProcessor : BaseDataMessageProcessor
     /// <param name="message">Message to process</param>
     public override void ProcessMessage(IInboundMessage message)
     {
-        Trace.TraceInformation($"{LoggerId}received message {message.MessageId}: {message.RawMessageData.Length} bytes");
+        var s = $"received message {message.MessageId}: {message.RawMessageData.Length} bytes";
+        Config.MonitorLogger.LogInformation(s);
+        Trace.TraceInformation($"{LoggerId}");
 
         Stopped.Reset();
 
@@ -53,7 +55,7 @@ public class LoggedSortableDataMessageProcessor : BaseDataMessageProcessor
         }
 
         // No valid message
-        var s = $"message {message.MessageId} not valid: {message.GetType().Name}";
+        s = $"message {message.MessageId} not valid: {message.GetType().Name}";
         Config.MonitorLogger.LogError(s);
         Trace.TraceInformation($"{LoggerId}{s}");
     }

@@ -18,31 +18,26 @@ internal class UdpTestUniCastServerTests
     {
         // Arrange 
         var serverData = new byte[] { 0x0, 0x1, 0x2 };
-        var clientData = new byte[] { 0x0, 0x1, 0x2, 0x3, 0x4, 0x5 };
 
         var ip = IPAddress.Parse("127.0.0.1");
         var port = TestDataHelper.GetRandomPort();
-        var serverCount = 0;
 
         var cts = new CancellationTokenSource(5000);
 
+        AutoResetEvent started = new(false);
+
 #pragma warning disable CS4014 // Because this call is not awaited, execution of the current method continues before the call is completed
-        var task = Task.Run(async () =>
+        var task = Task.Run(() =>
 #pragma warning restore CS4014 // Because this call is not awaited, execution of the current method continues before the call is completed
         {
-
             var udpServer = new UdpTestUniCastServer(ip, port);
-
+            started.Set();
             try
             {
                 while (!cts.IsCancellationRequested)
                 {
-                    await udpServer.Receive(); // listen on port 11000
                     udpServer.Send(serverData); // reply back
                 }
-
-                serverCount = udpServer.ReceivedMessages.Count;
-
             }
             catch (Exception e)
             {
@@ -54,7 +49,7 @@ internal class UdpTestUniCastServerTests
             }
         });
 
-        await Task.Delay(100);
+        started.WaitOne(1000);
 
         // Act  
         var client = new UdpTestUniCastClient(ip, port);
@@ -62,13 +57,11 @@ internal class UdpTestUniCastServerTests
 
         while (!cts.IsCancellationRequested)
         {
-            // send data
-            client.Send(clientData);
-
             // then receive data
             await client.Receive();
         }
 
+        var result = client.ReceivedMessages.Count;
         client.Dispose();
 
         task.Wait(5000);
@@ -76,49 +69,76 @@ internal class UdpTestUniCastServerTests
         // Assert
         using (Assert.EnterMultipleScope())
         {
-            Assert.That(client.ReceivedMessages.Count, Is.GreaterThan(3));
-            Assert.That(serverCount, Is.GreaterThan(3));
+            Assert.That(result, Is.GreaterThan(3));
         }
     }
 
     [Test]
-    public void SendReceive_SingleMessages_MessageReceived()
+    public async Task SendReceive_SingleMessages_MessageReceived()
     {
         // Arrange 
-        var data = new byte[] { 0x0, 0x1, 0x2 };
+        var serverData = new byte[] { 0x0, 0x1, 0x2 };
 
         var ip = IPAddress.Parse("127.0.0.1");
         var port = TestDataHelper.GetRandomPort();
 
-        var server = new UdpTestUniCastServer(ip, port);
-        server.Start();
+        AutoResetEvent started = new(false);
 
-        var client = new UdpTestUniCastClient(ip, port);
-        client.Start();
-        client.Send(data);
+        var cts = new CancellationTokenSource(5000);
 
-        Wait.Until(()=>!server.ReceivedMessages.IsEmpty);
+#pragma warning disable CS4014 // Because this call is not awaited, execution of the current method continues before the call is completed
+        var task = Task.Run(() =>
+#pragma warning restore CS4014 // Because this call is not awaited, execution of the current method continues before the call is completed
+        {
+            var udpServer = new UdpTestUniCastServer(ip, port);
+
+            started.Set();
+            try
+            {
+                udpServer.Send(serverData); // reply back
+            }
+            catch (Exception e)
+            {
+                Debug.Print(e.ToString());
+            }
+            finally
+            {
+                udpServer.Dispose();
+            }
+        });
+
+        started.WaitOne(100);
 
         // Act  
-        server.Send(data);
+        var client = new UdpTestUniCastClient(ip, port);
 
-        Wait.Until(() => false, 500);
+        while (!cts.IsCancellationRequested)
+        {
+            // then receive data
+            var data = await client.Receive();
+            if (data.Length > 0)
+            {
+                await cts.CancelAsync();
+            }
+        }
+
+        var result = client.ReceivedMessages.Count;
+        var success = client.ReceivedMessages.TryTake(out var msg);
+
 
         // Assert
-        Assert.That(client.ReceivedMessages.Count, Is.GreaterThan(0));
-
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(result, Is.Not.Zero);
+            Assert.That(success, Is.True);
+            Assert.That(msg.Length, Is.EqualTo(serverData.Length));
+            Assert.That(msg.Span[0], Is.EqualTo(serverData[0]));
+            Assert.That(msg.Span[1], Is.EqualTo(serverData[1]));
+            Assert.That(msg.Span[2], Is.EqualTo(serverData[2]));
+        }
 
         client.Dispose();
 
-        var success = client.ReceivedMessages.TryTake(out var msg);
 
-        using (Assert.EnterMultipleScope())
-        {
-            Assert.That(success, Is.True);
-            Assert.That(msg.Length, Is.EqualTo(data.Length));
-            Assert.That(msg.Span[0], Is.EqualTo(data[0]));
-            Assert.That(msg.Span[1], Is.EqualTo(data[1]));
-            Assert.That(msg.Span[2], Is.EqualTo(data[2]));
-        }
     }
 }

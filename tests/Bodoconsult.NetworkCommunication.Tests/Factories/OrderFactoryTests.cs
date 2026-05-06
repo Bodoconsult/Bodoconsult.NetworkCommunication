@@ -79,12 +79,10 @@ internal class OrderFactoryTests
     public void GetConfiguration_ValidSetup_ReturnsConfig()
     {
         // Arrange 
-        const string configName = "TestConfig";
+        const string configName = "SdcpOrderConfiguration";
         var factory = new OrderFactory(TestDataHelper.DefaultOrderIdGenerator);
 
-        var builder = new SdcpOrderBuilder();
-
-        var config = new OneRequestSpecNoOrOneStepOneAnswerConfiguration(configName, BuiltinOrders.SdcpOrder, builder)
+        var config = new SdcpOrderConfiguration
         {
         //    Device = TestDataHelper.CreateStateMachineDevice(),
             HandleRequestAnswerOnSuccessDelegate = DelegateHelper.HandleRequestAnswerOnSuccessDelegate,
