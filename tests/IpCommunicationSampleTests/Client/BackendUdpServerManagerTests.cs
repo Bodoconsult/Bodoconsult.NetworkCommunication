@@ -9,6 +9,7 @@ using Bodoconsult.NetworkCommunication.Factories;
 using Bodoconsult.NetworkCommunication.Interfaces;
 using Bodoconsult.NetworkCommunication.OrderManagement.Processors;
 using Bodoconsult.NetworkCommunication.Protocols.TcpIp;
+using Bodoconsult.NetworkCommunication.Tests.App;
 using Bodoconsult.NetworkCommunication.Tests.Helpers;
 using IpClient.Bll.Communication;
 using IpClientUi.Handlers;
@@ -19,7 +20,7 @@ namespace IpCommunicationSampleTests.Client;
 [TestFixture]
 internal class BackendTcpIpClientManagerTests
 {
-    private readonly IAppLoggerProxy _appLogger = TestDataHelper.GetFakeAppLoggerProxy();
+    private readonly IAppLoggerProxy _appLogger = TestDataHelper.Logger;
     private readonly IAppDateService _dateService = TestDataHelper.AppDateService;
     private readonly SyncOrderManager _syncOrderManager = new();
     private readonly IOrderManagementClientNotificationManager _clientNotificationManager = new DoNothingOrderManagementClientNotificationManager();

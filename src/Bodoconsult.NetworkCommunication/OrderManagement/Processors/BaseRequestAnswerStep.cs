@@ -1,6 +1,5 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
-using System.Diagnostics;
 using Bodoconsult.NetworkCommunication.Delegates;
 using Bodoconsult.NetworkCommunication.EnumAndStates;
 using Bodoconsult.NetworkCommunication.Interfaces;
@@ -46,7 +45,7 @@ public class BaseRequestAnswerStep : IRequestAnswerStep
     /// </summary>
     public virtual void Cancel()
     {
-        Trace.TraceInformation("RAS: cancel");
+        // Do nothing
     }
 
     /// <summary>

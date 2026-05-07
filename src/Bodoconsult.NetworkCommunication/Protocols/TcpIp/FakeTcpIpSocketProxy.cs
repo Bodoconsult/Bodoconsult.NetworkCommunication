@@ -1,7 +1,8 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
-using System.Net.Sockets;
+using Bodoconsult.App.Abstractions.Interfaces;
 using Bodoconsult.NetworkCommunication.Interfaces;
+using System.Net.Sockets;
 
 namespace Bodoconsult.NetworkCommunication.Protocols.TcpIp;
 
@@ -15,11 +16,12 @@ public class FakeTcpIpSocketProxy : BaseTcpIpSocketProxy
     /// </summary>
     private Memory<byte> _data = Array.Empty<byte>();
 
-    ///// <summary>
-    ///// Default ctor
-    ///// </summary>
-    //public FakeTcpIpSocketProxy()
-    //{ }
+    /// <summary>
+    /// Default ctor
+    /// </summary>
+    /// <param name="logger">Current monitor logger</param>
+    public FakeTcpIpSocketProxy(IAppLoggerProxy logger) : base(logger)
+    { }
 
     /// <summary>
     /// Bytes available on the socket

@@ -8,8 +8,10 @@ using IpDevice.Bll.Interfaces;
 using IpDeviceService.DiContainerProvider;
 using System.Net;
 using System.Text;
+using Bodoconsult.App.Abstractions.Interfaces;
 using Bodoconsult.App.BusinessTransactions.RequestData;
 using Bodoconsult.App.Helpers;
+using Bodoconsult.NetworkCommunication.Tests.App;
 using DynamicData;
 using IpCommunicationSampleTests.App;
 

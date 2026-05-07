@@ -14,9 +14,10 @@ public abstract class BaseUpdSocketProxy : ISocketProxy
     /// <summary>
     /// Default ctor
     /// </summary>
-    protected BaseUpdSocketProxy()
+    protected BaseUpdSocketProxy(IAppLoggerProxy logger)
     {
         LoggerId = $"{GetType().Name}: ";
+        Logger = logger;
     }
 
     /// <summary>
@@ -78,7 +79,7 @@ public abstract class BaseUpdSocketProxy : ISocketProxy
     /// <summary>
     /// Current logger to use or null. This logger logs only exceptions but NO data due to potential performance issues
     /// </summary>
-    public IAppLoggerProxy? Logger { get; set; }
+    public IAppLoggerProxy Logger { get; }
 
     /// <summary>
     /// Send bytes

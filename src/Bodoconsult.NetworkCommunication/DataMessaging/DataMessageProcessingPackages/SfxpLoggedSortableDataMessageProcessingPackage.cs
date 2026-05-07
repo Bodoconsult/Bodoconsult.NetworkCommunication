@@ -40,7 +40,7 @@ public class SfxpLoggedSortableDataMessageProcessingPackage : IDataMessageProces
         DataMessageSplitter = new UdpDatagramDataMessageSplitter();
 
         // 2. Codecs
-        DataMessageCodingProcessor = new DefaultDataMessageCodingProcessor();
+        DataMessageCodingProcessor = new DefaultDataMessageCodingProcessor(DataMessagingConfig.MonitorLogger);
         DataBlockCodingProcessor = new DefaultDataBlockCodingProcessor();
         LoadCodecs();
 

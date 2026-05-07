@@ -1,11 +1,10 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
-using System.Diagnostics;
-using System.Net.Sockets;
-using System.Security;
 using Bodoconsult.App.Helpers;
 using Bodoconsult.NetworkCommunication.EnumAndStates;
 using Bodoconsult.NetworkCommunication.Interfaces;
+using System.Net.Sockets;
+using System.Security;
 
 namespace Bodoconsult.NetworkCommunication.Communication;
 
@@ -109,7 +108,7 @@ public abstract class BaseDuplexIo : IDuplexIo
         }
         catch (Exception e)
         {
-            Trace.TraceInformation(e.ToString());
+            DataMessagingConfig.MonitorLogger.LogError(e.ToString());
             throw;
         }
 

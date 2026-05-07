@@ -15,7 +15,7 @@ namespace Bodoconsult.NetworkCommunication.Tests.Factories;
 [TestFixture]
 internal class OrderManagerFactoryTests
 {
-    private readonly IAppLoggerProxy _appLogger = TestDataHelper.GetFakeAppLoggerProxy();
+    private readonly IAppLoggerProxy _appLogger = TestDataHelper.Logger;
     private readonly IAppDateService _dateService = TestDataHelper.AppDateService;
     private readonly SyncOrderManager _syncOrderManager = new();
     private readonly IOrderManagementClientNotificationManager _centralClientNotificationManager = new DoNothingOrderManagementClientNotificationManager();

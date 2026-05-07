@@ -17,7 +17,7 @@ internal class UdpDatagramIpDuplexIoFactoryTests
         ISendPacketProcessFactory sendPacketProcessFactory = new FakeSendPacketProcessFactory();
         var factory = new UdpDatagramIpDuplexIoFactory(sendPacketProcessFactory);
 
-        var socketProxy = new FakeTcpIpSocketProxy();
+        var socketProxy = new FakeTcpIpSocketProxy(TestDataHelper.Logger);
 
         var config = TestDataHelper.GetDataMessagingConfig();
 

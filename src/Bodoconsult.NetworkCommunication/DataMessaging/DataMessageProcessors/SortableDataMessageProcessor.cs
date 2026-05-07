@@ -2,7 +2,6 @@
 
 using Bodoconsult.App.Helpers;
 using Bodoconsult.NetworkCommunication.Interfaces;
-using System.Diagnostics;
 
 namespace Bodoconsult.NetworkCommunication.DataMessaging.DataMessageProcessors;
 
@@ -32,7 +31,6 @@ public class SortableDataMessageProcessor : BaseDataMessageProcessor
     {
         var s = $"received message {message.MessageId}: {message.RawMessageData.Length} bytes";
         Config.MonitorLogger.LogInformation(s);
-        Trace.TraceInformation($"{LoggerId}");
 
         Stopped.Reset();
 
@@ -53,11 +51,12 @@ public class SortableDataMessageProcessor : BaseDataMessageProcessor
         // No valid message
         s = $"message {message.MessageId} not valid: {message.GetType().Name}";
         Config.MonitorLogger.LogError(s);
-        Trace.TraceInformation($"{LoggerId}{s}");
     }
 
     private void ProcessSortableDataMessage(ISortableInboundDataMessage dataMessage)
     {
+        string msg1;
+
         // Sort messages
         var messages = _dataMessageSorter.AddMessage(dataMessage);
 
@@ -77,9 +76,9 @@ public class SortableDataMessageProcessor : BaseDataMessageProcessor
                 }
                 catch (Exception e)
                 {
-                    var s = $" failed {dataMessage.MessageId}: {dataMessage.RawMessageData.Length} bytes: {e}";
-                    Config.MonitorLogger.LogError(s);
-                    Trace.TraceError($"{LoggerId}{s}");
+                    msg1 = $"failed {dataMessage.MessageId}: {dataMessage.RawMessageData.Length} bytes: {e}";
+                    Config.AppLogger.LogError($"{Config.LoggerId}{msg1}");
+                    Config.MonitorLogger.LogError(msg1);
                 }
             }).ContinueWith(Callback);
 
@@ -88,10 +87,9 @@ public class SortableDataMessageProcessor : BaseDataMessageProcessor
             {
                 continue;
             }
-            var msg1 = $"{dataMessage}delivering to message receiver timed out";
+            msg1 = $"{dataMessage}delivering to message receiver timed out";
             Config.AppLogger.LogError($"{Config.LoggerId}{msg1}");
             Config.MonitorLogger.LogError(msg1);
-            Trace.TraceError($"{LoggerId}{msg1}");
             return;
         }
     }

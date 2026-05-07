@@ -3,7 +3,6 @@
 using Bodoconsult.App.Abstractions.Interfaces;
 using Bodoconsult.App.Interfaces;
 using Bodoconsult.NetworkCommunication.Interfaces;
-using System.Diagnostics;
 using System.Runtime.CompilerServices;
 
 namespace Bodoconsult.NetworkCommunication.Devices;
@@ -163,7 +162,6 @@ public abstract class BaseSimpleDevice : IIpDevice
         MonitorLogger.LogDebug(message, memberName, filepath, lineNumber);
         var s = $"{LoggerId}{message}";
         AppLogger.LogDebug(s);
-        Trace.TraceInformation(s);
     }
 
     /// <summary>
@@ -181,7 +179,6 @@ public abstract class BaseSimpleDevice : IIpDevice
         MonitorLogger.LogInformation(message, memberName, filepath, lineNumber);
         var s = $"{LoggerId}{message}";
         AppLogger.LogInformation(s, memberName, filepath, lineNumber);
-        Trace.TraceInformation(s);
     }
 
     /// <summary>
@@ -199,7 +196,6 @@ public abstract class BaseSimpleDevice : IIpDevice
         MonitorLogger.LogWarning(message, memberName, filepath, lineNumber);
         var s = $"{LoggerId}{message}";
         AppLogger.LogWarning(s, memberName, filepath, lineNumber);
-        Trace.TraceInformation(s);
     }
 
     /// <summary>
@@ -217,7 +213,6 @@ public abstract class BaseSimpleDevice : IIpDevice
         MonitorLogger.LogError(message, memberName, filepath, lineNumber);
         var s = $"{LoggerId}{message}";
         AppLogger.LogError(s, memberName, filepath, lineNumber);
-        Trace.TraceInformation(s);
     }
 
     /// <summary>Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.</summary>

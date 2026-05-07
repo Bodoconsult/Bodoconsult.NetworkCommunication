@@ -118,7 +118,9 @@ public class UdpDatagramIpDuplexIo: BaseDuplexIo
             }
             catch (Exception e)
             {
-                DataMessagingConfig.AppLogger.LogError(e, "starting communication failed");
+                var msg = $"StartCommunication: {e}";
+                DataMessagingConfig.AppLogger.LogError(msg);
+                DataMessagingConfig.MonitorLogger.LogError($"{LoggerId}{msg}");
                 throw;
             }
         });

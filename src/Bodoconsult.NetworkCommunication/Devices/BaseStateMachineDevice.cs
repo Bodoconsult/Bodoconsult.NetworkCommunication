@@ -203,7 +203,7 @@ public abstract class BaseStateMachineDevice : BaseOrderManagementDevice, IState
         LogStates();
 
         var isNoAction = CurrentState is INoActionStateMachineState;
-        Trace.TraceInformation($"{LoggerId}{CurrentState}: NoAction: {isNoAction}");
+        LogDebug($"{LoggerId}{CurrentState}: NoAction: {isNoAction}");
 
         if (newState is
             // Do the request action for the state now
@@ -217,7 +217,7 @@ public abstract class BaseStateMachineDevice : BaseOrderManagementDevice, IState
                 }
                 catch (Exception e)
                 {
-                    Trace.TraceInformation($"{LoggerId}{e}");
+                    LogError($"{LoggerId}{e}");
                     newState.CurrentContext.DataMessagingConfig.AppLogger.LogError(
                         "IOrderBasedActionStateMachineState execute failed", e);
                 }
@@ -233,7 +233,7 @@ public abstract class BaseStateMachineDevice : BaseOrderManagementDevice, IState
                 }
                 catch (Exception e)
                 {
-                    Trace.TraceInformation($"{LoggerId}{e}");
+                    LogError($"{LoggerId}{e}");
                     newState.CurrentContext.DataMessagingConfig.AppLogger.LogError(
                         "IOrderlessActionStateMachineState execute failed", e);
                 }
@@ -241,7 +241,7 @@ public abstract class BaseStateMachineDevice : BaseOrderManagementDevice, IState
         }
         else if (newState is INoActionStateMachineState nas)
         {
-            Trace.TraceInformation($"{nas}: NoAction: {isNoAction}");
+            LogInformation($"{nas}: NoAction: {isNoAction}");
 
             AsyncHelper.FireAndForget(() =>
             {
@@ -251,7 +251,7 @@ public abstract class BaseStateMachineDevice : BaseOrderManagementDevice, IState
                 }
                 catch (Exception e)
                 {
-                    Trace.TraceInformation($"{LoggerId}{e}");
+                    LogError($"{LoggerId}{e}");
                     newState.CurrentContext.DataMessagingConfig.AppLogger.LogError(
                         "INoActionStateMachineState execute failed", e);
                 }

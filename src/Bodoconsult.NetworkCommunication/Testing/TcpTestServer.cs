@@ -71,7 +71,7 @@ public class TcpTestServer : BaseTcpIpDevice
         }
         catch (Exception e)
         {
-            Trace.TraceInformation(e.Message);
+            Debug.Print(e.Message);
         }
     }
 
@@ -89,7 +89,7 @@ public class TcpTestServer : BaseTcpIpDevice
         var task = Socket.SendAsync(data);
         task.Wait(CancellationTokenSource.Token);
 
-        Trace.TraceInformation($"TcpServer: sent {task.Result} byte(s)!");
+        Debug.Print($"TcpServer: sent {task.Result} byte(s)!");
     }
 
     /// <summary>
@@ -111,7 +111,7 @@ public class TcpTestServer : BaseTcpIpDevice
         }
 
         var msg = buffer.AsSpan()[..received].ToArray();
-        Trace.TraceInformation($"TcpServer: received {msg.Length} bytes");
+        Debug.Print($"TcpServer: received {msg.Length} bytes");
         ReceivedMessages.Add(msg);
         return msg;
     }

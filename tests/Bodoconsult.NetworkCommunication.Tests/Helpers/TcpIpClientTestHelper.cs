@@ -13,7 +13,7 @@ namespace Bodoconsult.NetworkCommunication.Tests.Helpers;
 
 public static class TcpIpClientTestHelper
 {
-    private static readonly IAppLoggerProxy Logger = TestDataHelper.GetFakeAppLoggerProxy();
+    private static readonly IAppLoggerProxy Logger = TestDataHelper.Logger;
 
     /// <summary>
     /// Initialize the IP communication
@@ -57,7 +57,7 @@ public static class TcpIpClientTestHelper
         ArgumentNullException.ThrowIfNull(testSetup.DataMessagingConfig);
 
         // Load socket
-        var socket = new TcpIpClientSocketProxy();
+        var socket = new TcpIpClientSocketProxy(TestDataHelper.Logger);
         socket.IpAddress = testSetup.IpAddress;
         socket.Port = testSetup.DataMessagingConfig.Port;
         testSetup.Socket = socket;

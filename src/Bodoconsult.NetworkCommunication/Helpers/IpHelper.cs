@@ -248,14 +248,14 @@ public static class IpHelper
                     return false;
                 default:
                     // Unexpected error (e.g., firewall block)
-                    Trace.TraceError($"IpHelper: Socket error: {ex.SocketErrorCode}");
+                    Debug.Print($"IpHelper: Socket error: {ex.SocketErrorCode}");
                     return false;
             }
         }
         catch (Exception ex)
         {
             // Catch-all for unexpected errors (e.g., invalid IP)
-            Trace.TraceError($"IpHelper: Error checking port: {ex.Message}");
+            Debug.Print($"IpHelper: Error checking port: {ex.Message}");
             return false;
         }
     }

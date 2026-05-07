@@ -41,7 +41,7 @@ internal class UdpServerWithHelloSocketProxyTests
         Task.Run(async () =>
 #pragma warning restore CS4014 // Because this call is not awaited, execution of the current method continues before the call is completed
         {
-            var udpServer = new UdpServerWithHelloSocketProxy();
+            var udpServer = new UdpServerWithHelloSocketProxy(TestDataHelper.Logger);
             udpServer.IpAddress = ip;
             udpServer.Port = port;
             await udpServer.Connect();
@@ -123,7 +123,7 @@ internal class UdpServerWithHelloSocketProxyTests
         Task.Run(async () =>
 #pragma warning restore CS4014 // Because this call is not awaited, execution of the current method continues before the call is completed
         {
-            var udpServer = new UdpServerWithHelloSocketProxy();
+            var udpServer = new UdpServerWithHelloSocketProxy(TestDataHelper.Logger);
             udpServer.IpAddress = ip;
             udpServer.Port = port;
             await udpServer.Connect();
@@ -163,7 +163,7 @@ internal class UdpServerWithHelloSocketProxyTests
         started.Reset();
 
         // Act  
-        var udpClient = new UdpClientWithHelloSocketProxy();
+        var udpClient = new UdpClientWithHelloSocketProxy(TestDataHelper.Logger);
         udpClient.IpAddress = ip;
         udpClient.Port = port;
 

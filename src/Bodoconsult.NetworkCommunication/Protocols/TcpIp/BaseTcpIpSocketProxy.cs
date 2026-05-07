@@ -12,6 +12,15 @@ namespace Bodoconsult.NetworkCommunication.Protocols.TcpIp;
 public abstract class BaseTcpIpSocketProxy : ISocketProxy
 {
     /// <summary>
+    /// Default ctor
+    /// </summary>
+    /// <param name="logger">Current monitor logger</param>
+    protected BaseTcpIpSocketProxy(IAppLoggerProxy logger)
+    {
+        Logger = logger;
+    }
+
+    /// <summary>
     /// Logger ID or null
     /// </summary>
     public string? LoggerId { get; set; }
@@ -25,7 +34,7 @@ public abstract class BaseTcpIpSocketProxy : ISocketProxy
     /// IP address of the server
     /// </summary>
     public IPAddress? IpAddress { get; set; }
-    
+
     /// <summary>
     /// Port the current device listens on
     /// </summary>
@@ -69,7 +78,7 @@ public abstract class BaseTcpIpSocketProxy : ISocketProxy
     /// <summary>
     /// Current logger to use or null. This logger logs only exceptions but NO data due to potential performance issues
     /// </summary>
-    public IAppLoggerProxy? Logger { get; set; }
+    public IAppLoggerProxy Logger { get; }
 
     /// <summary>
     /// Send bytes

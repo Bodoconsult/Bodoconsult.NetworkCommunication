@@ -1,7 +1,7 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
 
-using System.Diagnostics;
+using Bodoconsult.App.Abstractions.Interfaces;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
 using Bodoconsult.NetworkCommunication.Interfaces;
 
@@ -12,6 +12,20 @@ namespace Bodoconsult.NetworkCommunication.DataMessaging.DataMessageCodingProces
 /// </summary>
 public class DefaultDataMessageCodingProcessor : IDataMessageCodingProcessor
 {
+    /// <summary>
+    /// Default ctor
+    /// </summary>
+    /// <param name="logger">Current logger</param>
+    public DefaultDataMessageCodingProcessor(IAppLoggerProxy logger)
+    {
+        Logger = logger;
+    }
+
+    /// <summary>
+    /// Current logger
+    /// </summary>
+    public IAppLoggerProxy Logger { get; }
+
     /// <summary>
     /// All loaded message codecs
     /// </summary>
@@ -98,7 +112,7 @@ public class DefaultDataMessageCodingProcessor : IDataMessageCodingProcessor
             catch (Exception e)
             {
                 var s = e.ToString();
-                Trace.TraceError(s);
+                Logger.LogError(s);
                 return new OutboundCodecResult
                 {
                     ErrorCode = 1,

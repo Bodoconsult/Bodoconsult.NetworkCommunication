@@ -15,7 +15,7 @@ namespace IpCommunicationSampleTests.Backend.Adapter;
 [TestFixture]
 internal class BtcpClientTcpIpBusinessLogicAdapterTests
 {
-    private readonly IAppLoggerProxy _logger = TestDataHelper.GetFakeAppLoggerProxy();
+    private readonly IAppLoggerProxy _logger = TestDataHelper.Logger;
     private readonly IIpDevice _device = TestDataHelper.CreateSimpleDevice();
     private readonly FakeBusinessTransactionManager _businessTransactionManager = new();
 

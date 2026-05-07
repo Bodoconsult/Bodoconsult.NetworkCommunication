@@ -1,8 +1,6 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
 using System.Buffers;
-using System.Diagnostics;
-using System.Net.Sockets;
 using Bodoconsult.App.BufferPool;
 using Bodoconsult.App.Helpers;
 using Bodoconsult.NetworkCommunication.Delegates;
@@ -79,8 +77,7 @@ public class UdpDatagramIpDuplexIoReceiver : BaseDuplexIoReceiver
         if (ActivateReceiveLogging)
         {
             msg = $"Data in buffer: {DataMessageHelper.GetStringFromArrayCsharpStyle(ref _buffer)}";
-            Trace.TraceInformation($"{LoggerId}{msg}");
-            Logger.LogDebug(msg);
+            MonitorLogger.LogDebug(msg);
         }
         else
         {
@@ -90,8 +87,7 @@ public class UdpDatagramIpDuplexIoReceiver : BaseDuplexIoReceiver
             {
                 msg = $"Received message {_messageCounter}";
                 //Trace.TraceInformation(msg);
-                Logger.LogDebug(msg);
-                Trace.TraceInformation($"{LoggerId}UdpDatagramIpDuplexIoReceiver: {msg}");
+                MonitorLogger.LogDebug(msg);
             }
 
             if (_messageCounter == long.MaxValue)
@@ -122,9 +118,8 @@ public class UdpDatagramIpDuplexIoReceiver : BaseDuplexIoReceiver
         if (codecResult.ErrorCode != 0 || codecResult.DataMessage == null)
         {
             msg = $"Parsing command failed with error code {codecResult.ErrorCode}: {codecResult.ErrorMessage}: {DataMessageHelper.GetStringFromArrayCsharpStyle(ref command)}";
-            //Trace.TraceInformation(msg);
-            Logger.LogDebug(msg);
-            Trace.TraceWarning($"{LoggerId}{msg}");
+            MonitorLogger.LogError(msg);
+            DataMessagingConfig.AppLogger.LogError($"{LoggerId}{msg}");
             ArrayPool.Return(array);
             return;
         }
@@ -133,9 +128,8 @@ public class UdpDatagramIpDuplexIoReceiver : BaseDuplexIoReceiver
         if (!validationResult.IsMessageValid)
         {
             msg = $"Parsed command {DataMessageHelper.GetStringFromArrayCsharpStyle(ref command)} NOT valid: {validationResult.ValidationResult}";
-            //Trace.TraceInformation(msg);
-            Logger.LogError(msg);
-            Trace.TraceError($"{LoggerId}{msg}");
+            MonitorLogger.LogError(msg);
+            DataMessagingConfig.AppLogger.LogError($"{LoggerId}{msg}");
         }
         else
         {
@@ -187,7 +181,7 @@ public class UdpDatagramIpDuplexIoReceiver : BaseDuplexIoReceiver
         }
         catch (Exception e)
         {
-            Logger.LogError("CancellationToken cancelling failed", e);
+            MonitorLogger.LogError("CancellationToken cancelling failed", e);
         }
         finally
         {
@@ -219,7 +213,7 @@ public class UdpDatagramIpDuplexIoReceiver : BaseDuplexIoReceiver
 
         DuplexIoNoDataDelegate.Invoke();
 
-        Trace.TraceInformation($"{LoggerId}FillMessagePipeline started");
+        MonitorLogger.LogInformation($"{LoggerId}FillMessagePipeline started");
 
         try
         {
@@ -237,13 +231,13 @@ public class UdpDatagramIpDuplexIoReceiver : BaseDuplexIoReceiver
                         {
                             await socketProxy.CancellationTokenSource.CancelAsync();
                         }
-                        Trace.TraceInformation($"{LoggerId}FillMessagePipeline cancelled");
+                        MonitorLogger.LogInformation($"{LoggerId}FillMessagePipeline cancelled");
                         return;
                     }
                 }
                 catch (Exception e)
                 {
-                    Trace.TraceError($"{LoggerId}FillMessagePipeline exception: {e}");
+                    MonitorLogger.LogError($"{LoggerId}FillMessagePipeline exception: {e}");
                     return;
                 }
 
@@ -257,7 +251,7 @@ public class UdpDatagramIpDuplexIoReceiver : BaseDuplexIoReceiver
 
                 if (DuplexIoIsWorkInProgressDelegate.Invoke())
                 {
-                    Trace.TraceInformation($"{LoggerId}Other operation in progress");
+                    MonitorLogger.LogDebug($"{LoggerId}Other operation in progress");
                     AsyncHelper.Delay(FillPipelineTimeout);
                     continue;
                 }
@@ -300,7 +294,7 @@ public class UdpDatagramIpDuplexIoReceiver : BaseDuplexIoReceiver
         }
         catch (Exception e)
         {
-            Trace.TraceError($"{LoggerId}FillMessagePipeline: {e}");
+            MonitorLogger.LogError($"{LoggerId}FillMessagePipeline: {e}");
         }
     }
 
@@ -361,7 +355,7 @@ public class UdpDatagramIpDuplexIoReceiver : BaseDuplexIoReceiver
         }
         catch (Exception e)
         {
-            Logger.LogError("CancellationToken cancelling failed", e);
+            MonitorLogger.LogError("CancellationToken cancelling failed", e);
         }
         finally
         {

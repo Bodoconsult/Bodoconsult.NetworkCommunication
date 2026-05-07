@@ -7,6 +7,7 @@ using Bodoconsult.NetworkCommunication.DataMessaging.DataMessageCodecs;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessageCodingProcessors;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
 using Bodoconsult.NetworkCommunication.Interfaces;
+using Bodoconsult.NetworkCommunication.Tests.Helpers;
 
 namespace Bodoconsult.NetworkCommunication.Tests.DataMessaging.DataMessagingCodingProcessor;
 
@@ -20,7 +21,7 @@ internal class DefaultDataMessageCodingProcessorTests
         IDataBlockCodingProcessor dataBlockCodingProcessor = new DefaultDataBlockCodingProcessor();
         dataBlockCodingProcessor.LoadDataBlockCodecs('x', new BasicDataBlockCodec());
 
-        var processor = new DefaultDataMessageCodingProcessor();
+        var processor = new DefaultDataMessageCodingProcessor(TestDataHelper.Logger);
         processor.MessageCodecs.Add(new BtcpHandshakeMessageCodec());
         processor.MessageCodecs.Add(new BtcpDataMessageCodec(dataBlockCodingProcessor));
 
@@ -46,7 +47,7 @@ internal class DefaultDataMessageCodingProcessorTests
         IDataBlockCodingProcessor dataBlockCodingProcessor = new DefaultDataBlockCodingProcessor();
         dataBlockCodingProcessor.LoadDataBlockCodecs('x', new BasicDataBlockCodec());
 
-        var processor = new DefaultDataMessageCodingProcessor();
+        var processor = new DefaultDataMessageCodingProcessor(TestDataHelper.Logger);
         processor.MessageCodecs.Add(new BtcpHandshakeMessageCodec());
         processor.MessageCodecs.Add(new BtcpDataMessageCodec(dataBlockCodingProcessor));
 
@@ -81,7 +82,7 @@ internal class DefaultDataMessageCodingProcessorTests
         IDataBlockCodingProcessor dataBlockCodingProcessor = new DefaultDataBlockCodingProcessor();
         dataBlockCodingProcessor.LoadDataBlockCodecs('x', new BasicDataBlockCodec());
 
-        var processor = new DefaultDataMessageCodingProcessor();
+        var processor = new DefaultDataMessageCodingProcessor(TestDataHelper.Logger);
         processor.MessageCodecs.Add(new BtcpHandshakeMessageCodec());
         processor.MessageCodecs.Add(new BtcpDataMessageCodec(dataBlockCodingProcessor));
 
@@ -118,7 +119,7 @@ internal class DefaultDataMessageCodingProcessorTests
         IDataBlockCodingProcessor dataBlockCodingProcessor = new DefaultDataBlockCodingProcessor();
         dataBlockCodingProcessor.LoadDataBlockCodecs('x', new BasicDataBlockCodec());
 
-        var processor = new DefaultDataMessageCodingProcessor();
+        var processor = new DefaultDataMessageCodingProcessor(TestDataHelper.Logger);
         processor.MessageCodecs.Add(new SdcpHandshakeMessageCodec());
         processor.MessageCodecs.Add(new SdcpDataMessageCodec(dataBlockCodingProcessor));
 
@@ -144,7 +145,7 @@ internal class DefaultDataMessageCodingProcessorTests
         IDataBlockCodingProcessor dataBlockCodingProcessor = new DefaultDataBlockCodingProcessor();
         dataBlockCodingProcessor.LoadDataBlockCodecs('x', new BasicDataBlockCodec());
 
-        var processor = new DefaultDataMessageCodingProcessor();
+        var processor = new DefaultDataMessageCodingProcessor(TestDataHelper.Logger);
         processor.MessageCodecs.Add(new SdcpHandshakeMessageCodec());
         processor.MessageCodecs.Add(new SdcpDataMessageCodec(dataBlockCodingProcessor));
 
@@ -170,7 +171,7 @@ internal class DefaultDataMessageCodingProcessorTests
         IDataBlockCodingProcessor dataBlockCodingProcessor = new DefaultDataBlockCodingProcessor();
         dataBlockCodingProcessor.LoadDataBlockCodecs('x', new BasicDataBlockCodec());
 
-        var processor = new DefaultDataMessageCodingProcessor();
+        var processor = new DefaultDataMessageCodingProcessor(TestDataHelper.Logger);
         processor.MessageCodecs.Add(new SdcpHandshakeMessageCodec());
         processor.MessageCodecs.Add(new SdcpDataMessageCodec(dataBlockCodingProcessor));
 
@@ -205,7 +206,7 @@ internal class DefaultDataMessageCodingProcessorTests
         IDataBlockCodingProcessor dataBlockCodingProcessor = new DefaultDataBlockCodingProcessor();
         dataBlockCodingProcessor.LoadDataBlockCodecs('x', new BasicDataBlockCodec());
 
-        var processor = new DefaultDataMessageCodingProcessor();
+        var processor = new DefaultDataMessageCodingProcessor(TestDataHelper.Logger);
         processor.MessageCodecs.Add(new EdcpHandshakeMessageCodec());
         processor.MessageCodecs.Add(new EdcpDataMessageCodec(dataBlockCodingProcessor));
 
@@ -231,7 +232,7 @@ internal class DefaultDataMessageCodingProcessorTests
         IDataBlockCodingProcessor dataBlockCodingProcessor = new DefaultDataBlockCodingProcessor();
         dataBlockCodingProcessor.LoadDataBlockCodecs('x', new BasicDataBlockCodec());
 
-        var processor = new DefaultDataMessageCodingProcessor();
+        var processor = new DefaultDataMessageCodingProcessor(TestDataHelper.Logger);
         processor.MessageCodecs.Add(new EdcpHandshakeMessageCodec());
         processor.MessageCodecs.Add(new EdcpDataMessageCodec(dataBlockCodingProcessor));
 
@@ -257,7 +258,7 @@ internal class DefaultDataMessageCodingProcessorTests
         var dataBlockCodingProcessor = new DefaultDataBlockCodingProcessor();
         dataBlockCodingProcessor.LoadDataBlockCodecs('x', new BasicDataBlockCodec());
 
-        var processor = new DefaultDataMessageCodingProcessor();
+        var processor = new DefaultDataMessageCodingProcessor(TestDataHelper.Logger);
         processor.MessageCodecs.Add(new EdcpHandshakeMessageCodec());
         processor.MessageCodecs.Add(new EdcpDataMessageCodec(dataBlockCodingProcessor));
 
@@ -293,7 +294,7 @@ internal class DefaultDataMessageCodingProcessorTests
         IDataBlockCodingProcessor dataBlockCodingProcessor = new DefaultDataBlockCodingProcessor();
         dataBlockCodingProcessor.LoadDataBlockCodecs('x', new BasicDataBlockCodec());
 
-        var processor = new DefaultDataMessageCodingProcessor();
+        var processor = new DefaultDataMessageCodingProcessor(TestDataHelper.Logger);
         processor.MessageCodecs.Add(new BtcpHandshakeMessageCodec());
         processor.MessageCodecs.Add(new BtcpDataMessageCodec(dataBlockCodingProcessor));
 
@@ -321,7 +322,7 @@ internal class DefaultDataMessageCodingProcessorTests
         IDataBlockCodingProcessor dataBlockCodingProcessor = new DefaultDataBlockCodingProcessor();
         dataBlockCodingProcessor.LoadDataBlockCodecs('x', new BasicDataBlockCodec());
 
-        var processor = new DefaultDataMessageCodingProcessor();
+        var processor = new DefaultDataMessageCodingProcessor(TestDataHelper.Logger);
         processor.MessageCodecs.Add(new BtcpHandshakeMessageCodec());
         processor.MessageCodecs.Add(new BtcpDataMessageCodec(dataBlockCodingProcessor));
 

@@ -26,7 +26,7 @@ namespace Bodoconsult.NetworkCommunication.Tests.OrderManagement.Processors;
 internal class StateMachineOrderProcessorTests
 {
     private StateMachineOrderProcessor? _processor;
-    private readonly IAppLoggerProxy _appLogger = TestDataHelper.GetFakeAppLoggerProxy();
+    private readonly IAppLoggerProxy _appLogger = TestDataHelper.Logger;
     private readonly IList<IInboundDataMessage> _receivedMessage = new List<IInboundDataMessage>();
 
     private FakeIpCommunicationAdapter? _commAdapter;

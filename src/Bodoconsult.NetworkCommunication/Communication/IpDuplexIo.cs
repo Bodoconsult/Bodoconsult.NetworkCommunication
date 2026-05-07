@@ -4,7 +4,6 @@
 using Bodoconsult.App.Helpers;
 using Bodoconsult.NetworkCommunication.Delegates;
 using Bodoconsult.NetworkCommunication.Interfaces;
-using System.Diagnostics;
 
 namespace Bodoconsult.NetworkCommunication.Communication;
 
@@ -120,9 +119,9 @@ public class IpDuplexIo : BaseDuplexIo
             }
             catch (Exception e)
             {
-                var msg = $"{LoggerId}StartCommunication:{e}";
+                var msg = $"StartCommunication: {e}";
                 DataMessagingConfig.AppLogger.LogError(msg);
-                Trace.TraceError(msg);
+                DataMessagingConfig.MonitorLogger.LogError($"{LoggerId}{msg}");
                 throw;
             }
         });

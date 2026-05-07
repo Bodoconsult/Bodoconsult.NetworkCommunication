@@ -1,11 +1,9 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
-using System.Diagnostics;
 using System.Net.Sockets;
 using Bodoconsult.App.Helpers;
 using Bodoconsult.NetworkCommunication.Delegates;
 using Bodoconsult.NetworkCommunication.Interfaces;
-using Microsoft.VisualBasic;
 
 namespace Bodoconsult.NetworkCommunication.Communication;
 
@@ -57,6 +55,8 @@ public class IpDuplexIoSender : BaseDuplexIoSender
     /// <param name="message">Current message to send</param>
     public override async Task<int> SendMessage(IOutboundMessage message)
     {
+        string msg;
+
         ArgumentNullException.ThrowIfNull(DataMessagingConfig.SocketProxy);
 
         var sent = 0;
@@ -79,7 +79,7 @@ public class IpDuplexIoSender : BaseDuplexIoSender
                 {
                     (sent, isSent) = await SendMessageInternal(DataMessagingConfig, _duplexIoNoDataDelegate, message);
 
-                    Trace.TraceInformation($"{LoggerId}Sent: {sent} // {isSent}");
+                    DataMessagingConfig.MonitorLogger.LogInformation($"Sent: {sent} // {isSent}");
 
                     if (isSent)
                     {
@@ -101,16 +101,18 @@ public class IpDuplexIoSender : BaseDuplexIoSender
             {
                 return sent;
             }
-            var msg = $"message could not be sent via TCP socket. Only {0} bytes of {message.RawMessageData.Length} bytes are sent.";
+            
+            msg = "message could not be sent via socket";
             AsyncHelper.FireAndForget(() => DataMessagingConfig.RaiseDataMessageNotSentDelegate?.Invoke(message.RawMessageData, msg));
             DataMessagingConfig.MonitorLogger.LogError(msg);
             DataMessagingConfig.AppLogger.LogError($"{DataMessagingConfig.LoggerId}{msg}");
-            Trace.TraceError($"{LoggerId}{msg}");
             return sent;
         }
         catch (Exception exception)
         {
-            Trace.TraceError($"{LoggerId}{exception}");
+            msg = "message could not be sent via socket";
+            DataMessagingConfig.MonitorLogger.LogError(msg);
+            DataMessagingConfig.AppLogger.LogError($"{DataMessagingConfig.LoggerId}{msg}");
             _duplexIoNoDataDelegate();
             AsyncHelper.FireAndForget(() => DataMessagingConfig.DuplexIoErrorHandlerDelegate?.Invoke(exception));
             return 0;
@@ -119,6 +121,7 @@ public class IpDuplexIoSender : BaseDuplexIoSender
 
     private async Task<(int sent, bool isSent)> SendMessageInternal(IDataMessagingConfig dataMessagingConfig, DuplexIoNoDataDelegate duplexIoNoDataDelegate, IOutboundMessage message)
     {
+        string msg;
         int sent;
         bool isSent;
         try
@@ -133,18 +136,32 @@ public class IpDuplexIoSender : BaseDuplexIoSender
                 return (sent, false);
             }
 
-            var s = $"{message.RawMessageDataClearText}  {message.ToShortInfoString()}";
-            //Trace.TraceInformation(s);
-            dataMessagingConfig.MonitorLogger.LogInformation($"Message sent: {s}");
+            msg = $"{message.RawMessageDataClearText}  {message.ToShortInfoString()}";
+            dataMessagingConfig.MonitorLogger.LogInformation($"Message sent: {msg}");
 
-            AsyncHelper.FireAndForget(() => dataMessagingConfig.RaiseDataMessageSentDelegate?.Invoke(message.RawMessageData));
+            AsyncHelper.FireAndForget(() =>
+            {
+                try
+                {
+dataMessagingConfig.RaiseDataMessageSentDelegate?.Invoke(message.RawMessageData);
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e);
+                    throw;
+                }
+                
+            });
 
             isSent = true;
             //Trace.TraceInformation($"Z:Sent: {sent} // {isSent}");
         }
         catch (SocketException socketException)
         {
-            Trace.TraceError($"{LoggerId}{socketException}");
+            msg = $"message {message.ToShortInfoString()} not sent: {socketException}";
+            dataMessagingConfig.MonitorLogger.LogInformation(msg);
+            dataMessagingConfig.AppLogger.LogError($"{dataMessagingConfig.LoggerId}{msg}");
+
             AsyncHelper.FireAndForget(() =>
             {
                 dataMessagingConfig.RaiseComDevCloseRequestDelegate?.Invoke("IpDuplexIoSender");
@@ -154,7 +171,10 @@ public class IpDuplexIoSender : BaseDuplexIoSender
         }
         catch (Exception sendException)
         {
-            Trace.TraceError($"{LoggerId}{sendException}");
+            msg = $"message {message.ToShortInfoString()} not sent: {sendException}";
+            dataMessagingConfig.MonitorLogger.LogInformation(msg);
+            dataMessagingConfig.AppLogger.LogError($"{dataMessagingConfig.LoggerId}{msg}");
+
             AsyncHelper.FireAndForget(() => dataMessagingConfig.RaiseDataMessageNotSentDelegate?.Invoke(message.RawMessageData, sendException.Message));
             isSent = false;
             sent = 0;

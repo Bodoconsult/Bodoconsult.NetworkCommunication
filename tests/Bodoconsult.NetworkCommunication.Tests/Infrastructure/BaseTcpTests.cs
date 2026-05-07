@@ -59,7 +59,7 @@ public class BaseTcpTests : ITcpTests
     /// <summary>
     /// General log file
     /// </summary>
-    public IAppLoggerProxy Logger { get; set; } = TestDataHelper.GetFakeAppLoggerProxy();
+    public IAppLoggerProxy Logger { get; set; } = TestDataHelper.Logger;
 
     /// <summary>
     ///  Bind the delegates for testing

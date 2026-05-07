@@ -69,7 +69,7 @@ public interface ISocketProxy: IDisposable
     /// <summary>
     /// Current logger to use or null. This logger logs only exceptions but NO data due to potential performance issues
     /// </summary>
-    IAppLoggerProxy? Logger { get; set; }
+    IAppLoggerProxy Logger { get; }
 
     /// <summary>
     /// Send bytes

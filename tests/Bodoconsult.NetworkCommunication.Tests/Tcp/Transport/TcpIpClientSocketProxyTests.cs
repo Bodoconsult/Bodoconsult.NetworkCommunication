@@ -1,8 +1,9 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
 using Bodoconsult.NetworkCommunication.Protocols.TcpIp;
-using System.Net;
 using Bodoconsult.NetworkCommunication.Testing;
+using Bodoconsult.NetworkCommunication.Tests.Helpers;
+using System.Net;
 
 namespace Bodoconsult.NetworkCommunication.Tests.Tcp.Transport;
 
@@ -32,7 +33,7 @@ public class TcpIpClientSocketProxyTests : BaseTestsTcpIpSocket
     [SetUp]
     public void TestSetup()
     {
-        Socket = new TcpIpClientSocketProxy();
+        Socket = new TcpIpClientSocketProxy(TestDataHelper.Logger);
         Socket.IpAddress = IPAddress.Parse(IpAddress);
         Socket.Port = Port;
 

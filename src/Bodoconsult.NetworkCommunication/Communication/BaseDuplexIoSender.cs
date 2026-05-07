@@ -1,6 +1,5 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
-using System.Diagnostics;
 using Bodoconsult.NetworkCommunication.Interfaces;
 
 namespace Bodoconsult.NetworkCommunication.Communication;
@@ -10,11 +9,6 @@ namespace Bodoconsult.NetworkCommunication.Communication;
 /// </summary>
 public abstract class BaseDuplexIoSender : IDuplexIoSender
 {
-    /// <summary>
-    /// Current logger ID
-    /// </summary>
-    protected string LoggerId;
-
     /// <summary>
     /// Encode the data message
     /// </summary>
@@ -30,7 +24,7 @@ public abstract class BaseDuplexIoSender : IDuplexIoSender
             if (result.ErrorCode != 0)
             {
                 var s = result.ErrorMessage ?? "Unknown";
-                Trace.TraceError($"Encoding for message failed: {message.MessageId}: {s}");
+                DataMessagingConfig.MonitorLogger.LogError($"Encoding for message failed: {message.MessageId}: {s}");
                 DataMessagingConfig.RaiseDataMessageNotSentDelegate?.Invoke(message.RawMessageData, s);
                 DataMessagingConfig.DuplexIoErrorHandlerDelegate?.Invoke(new Exception(s));
                 return true;
@@ -38,7 +32,6 @@ public abstract class BaseDuplexIoSender : IDuplexIoSender
         }
         catch (Exception encodeException)
         {
-            Trace.TraceError($"Encoding for message failed: {message.MessageId}: {encodeException}");
             DataMessagingConfig.MonitorLogger.LogError("Encoding message to send failed", encodeException);
             DataMessagingConfig.RaiseDataMessageNotSentDelegate?.Invoke(null, encodeException.Message);
             DataMessagingConfig.DuplexIoErrorHandlerDelegate?.Invoke(encodeException);
@@ -73,8 +66,6 @@ public abstract class BaseDuplexIoSender : IDuplexIoSender
         ArgumentNullException.ThrowIfNull(DataMessagingConfig.DataMessageProcessingPackage);
         DataMessageCodingProcessor = DataMessagingConfig.DataMessageProcessingPackage.DataMessageCodingProcessor;
         DataMessageSplitter = DataMessagingConfig.DataMessageProcessingPackage.DataMessageSplitter;
-
-        LoggerId = $"{dataMessagingConfig.LoggerId}{(dataMessagingConfig.LoggerId.EndsWith(": ") ? string.Empty : ": ")}{GetType().Name}: ";
     }
 
     /// <summary>

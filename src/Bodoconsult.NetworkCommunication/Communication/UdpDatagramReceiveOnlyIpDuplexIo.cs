@@ -1,6 +1,5 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
-using System.Diagnostics;
 using Bodoconsult.App.Helpers;
 using Bodoconsult.NetworkCommunication.Delegates;
 using Bodoconsult.NetworkCommunication.Interfaces;
@@ -114,8 +113,9 @@ public class UdpDatagramReceiveOnlyIpDuplexIo : BaseDuplexIo
             catch (Exception e)
             {
                 var msg = $"{LoggerId}StartCommunication:{e}";
-                DataMessagingConfig.AppLogger.LogError(msg);
-                Trace.TraceError(msg);
+                DataMessagingConfig.MonitorLogger.LogError(msg);
+                DataMessagingConfig.AppLogger.LogError($"{DataMessagingConfig.LoggerId}{msg}");
+
                 throw;
             }
         });

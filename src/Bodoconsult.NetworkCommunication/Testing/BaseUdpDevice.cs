@@ -140,11 +140,11 @@ public abstract class BaseUdpDevice : IUdpDevice
             //}
             //catch (Exception e)
             //{
-            //    Trace.TraceInformation(e.ToString());
+            //    Debug.Print(e.ToString());
             //}
         }
 
-        Trace.TraceInformation("Exit waiting");
+        Debug.Print("Exit waiting");
     }
 
     /// <summary>
@@ -155,7 +155,7 @@ public abstract class BaseUdpDevice : IUdpDevice
     {
         if (IsDisposed)
         {
-            Trace.TraceInformation($"{TypeName}: disposed");
+            Debug.Print($"{TypeName}: disposed");
             return [];
         }
 
@@ -175,7 +175,7 @@ public abstract class BaseUdpDevice : IUdpDevice
                 return result.Buffer;
             }
 
-            Trace.TraceInformation($"{TypeName}: received {result.Buffer.Length} bytes");
+            Debug.Print($"{TypeName}: received {result.Buffer.Length} bytes");
 
             //Trace.TraceInformation($"{TypeName}: received {result.Buffer.Length} bytes from {SenderEndPoint}");
             //Trace.TraceInformation($" {Encoding.ASCII.GetString(bytes, 0, bytes.Length)}");
@@ -185,7 +185,7 @@ public abstract class BaseUdpDevice : IUdpDevice
         }
         catch (Exception e)
         {
-            Trace.TraceError($"{TypeName}: {e}");
+            Debug.Print($"{TypeName}: {e}");
             return [];
         }
     }

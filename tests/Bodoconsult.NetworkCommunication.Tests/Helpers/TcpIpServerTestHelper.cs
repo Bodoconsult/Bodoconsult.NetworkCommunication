@@ -12,7 +12,7 @@ namespace Bodoconsult.NetworkCommunication.Tests.Helpers;
 
 public static class TcpIpServerTestHelper
 {
-    private static readonly IAppLoggerProxy Logger = TestDataHelper.GetFakeAppLoggerProxy();
+    private static readonly IAppLoggerProxy Logger = TestDataHelper.Logger;
 
     /// <summary>
     /// Default ctor
@@ -82,7 +82,7 @@ public static class TcpIpServerTestHelper
         ArgumentNullException.ThrowIfNull(testSetup.DataMessagingConfig);
         
 
-        var socket = new TcpIpServerSocketProxy(TcpIpListenerManager);
+        var socket = new TcpIpServerSocketProxy(TcpIpListenerManager, TestDataHelper.Logger);
         socket.IpAddress = testSetup.IpAddress;
         socket.Port = testSetup.DataMessagingConfig.Port;
         socket.Connect().Wait(1000);

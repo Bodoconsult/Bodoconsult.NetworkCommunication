@@ -62,7 +62,7 @@ public class TncpBackendTcpIpBusinessLogicAdapter : BaseSimpleDeviceBusinessLogi
         // Send an answer message
         SendAnswer(tncp.TelnetCommand);
 
-        Trace.TraceInformation($"TncpBackendTcpIpBusinessLogicAdapter: received command >>{tncp.TelnetCommand}<< with message {message.MessageId}");
+        IpDevice.DataMessagingConfig.MonitorLogger.LogInformation($"TncpBackendTcpIpBusinessLogicAdapter: received command >>{tncp.TelnetCommand}<< with message {message.MessageId}");
 
         //NetworkCommand? command;
         //HandleTncpMessage? del;
@@ -135,7 +135,7 @@ public class TncpBackendTcpIpBusinessLogicAdapter : BaseSimpleDeviceBusinessLogi
             }
             catch (Exception e)
             {
-                Trace.TraceInformation($"TncpBackendTcpIpBusinessLogicAdapter: {command}: {e}");
+                IpDevice.DataMessagingConfig.MonitorLogger.LogError($"TncpBackendTcpIpBusinessLogicAdapter: {command}: {e}");
             }
         });
         return true;

@@ -14,7 +14,7 @@ namespace Bodoconsult.NetworkCommunication.Tests.Factories;
 internal class StateMachineOrderProcessorFactoryTests
 {
     private readonly IAppDateService _dateTimeService = TestDataHelper.AppDateService;
-    private readonly IAppLoggerProxy _appLogger = TestDataHelper.GetFakeAppLoggerProxy();
+    private readonly IAppLoggerProxy _appLogger = TestDataHelper.Logger;
     private readonly OrderPipeline _orderPipeline;
 
     private readonly IAppBenchProxy _benchLogger = TestDataHelper.GetFakeAppBenchProxy();

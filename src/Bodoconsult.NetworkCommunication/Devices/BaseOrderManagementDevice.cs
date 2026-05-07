@@ -3,7 +3,6 @@
 using Bodoconsult.App.Abstractions.Interfaces;
 using Bodoconsult.App.Interfaces;
 using Bodoconsult.NetworkCommunication.Interfaces;
-using System.Diagnostics;
 using System.Runtime.CompilerServices;
 
 namespace Bodoconsult.NetworkCommunication.Devices;
@@ -367,7 +366,6 @@ public abstract class BaseOrderManagementDevice : IOrderManagementDevice
         var isInit = OrderProcessor.IsInitInProcessing;
 
         var s = $"{LoggerId}{OrderProcessor.OrderPipeline.CurrentOrderState} Init {isInit}";
-        Trace.TraceInformation(s);
         AppLogger.LogDebug(s);
 
         // ****************************
@@ -595,7 +593,6 @@ public abstract class BaseOrderManagementDevice : IOrderManagementDevice
         MonitorLogger.LogDebug(message, memberName, filepath, lineNumber);
         var s = $"{LoggerId}{message}";
         AppLogger.LogDebug(s, memberName, filepath, lineNumber);
-        Trace.TraceInformation(s);
     }
 
     /// <summary>
@@ -613,7 +610,6 @@ public abstract class BaseOrderManagementDevice : IOrderManagementDevice
         MonitorLogger.LogInformation(message, memberName, filepath, lineNumber);
         var s = $"{LoggerId}{message}";
         AppLogger.LogInformation(s, memberName, filepath, lineNumber);
-        Trace.TraceInformation(s);
     }
 
     /// <summary>
@@ -631,7 +627,6 @@ public abstract class BaseOrderManagementDevice : IOrderManagementDevice
         MonitorLogger.LogWarning(message, memberName, filepath, lineNumber);
         var s = $"{LoggerId}{message}";
         AppLogger.LogWarning(s, memberName, filepath, lineNumber);
-        Trace.TraceInformation(s);
     }
 
     /// <summary>
@@ -649,7 +644,6 @@ public abstract class BaseOrderManagementDevice : IOrderManagementDevice
         MonitorLogger.LogError(message, memberName, filepath, lineNumber);
         var s = $"{LoggerId}{message}";
         AppLogger.LogError(s, memberName, filepath, lineNumber);
-        Trace.TraceInformation(s);
     }
 
 

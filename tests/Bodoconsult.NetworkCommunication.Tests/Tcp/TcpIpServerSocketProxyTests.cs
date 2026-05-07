@@ -35,7 +35,7 @@ internal class TcpIpServerSocketProxyTests
         Task.Run(async () =>
 #pragma warning restore CS4014 // Because this call is not awaited, execution of the current method continues before the call is completed
         {
-            var tcpServer = new TcpIpServerSocketProxy(new TcpIpListenerManager());
+            var tcpServer = new TcpIpServerSocketProxy(new TcpIpListenerManager(), TestDataHelper.Logger);
             tcpServer.IpAddress = ip;
             tcpServer.Port = port;
             tcpServer.Connect().GetAwaiter().GetResult();
@@ -115,7 +115,7 @@ internal class TcpIpServerSocketProxyTests
         Task.Run(async () =>
 #pragma warning restore CS4014 // Because this call is not awaited, execution of the current method continues before the call is completed
         {
-            var tcpServer = new TcpIpServerSocketProxy(new TcpIpListenerManager());
+            var tcpServer = new TcpIpServerSocketProxy(new TcpIpListenerManager(), TestDataHelper.Logger);
             tcpServer.IpAddress = ip;
             tcpServer.Port = port;
             tcpServer.Connect().GetAwaiter().GetResult();
@@ -154,7 +154,7 @@ internal class TcpIpServerSocketProxyTests
         await Task.Delay(100);
 
         // Act  
-        var tcpClient = new TcpIpClientSocketProxy();
+        var tcpClient = new TcpIpClientSocketProxy(TestDataHelper.Logger);
         tcpClient.IpAddress = ip;
         tcpClient.Port = port;
         tcpClient.Connect().GetAwaiter().GetResult();
@@ -215,7 +215,7 @@ internal class TcpIpServerSocketProxyTests
         Task.Run(async () =>
 #pragma warning restore CS4014 // Because this call is not awaited, execution of the current method continues before the call is completed
         {
-            var tcpServer = new TcpIpServerSocketProxy(new TcpIpListenerManager());
+            var tcpServer = new TcpIpServerSocketProxy(new TcpIpListenerManager(), TestDataHelper.Logger);
             tcpServer.IpAddress = ip;
             tcpServer.Port = port2;
             tcpServer.Connect().GetAwaiter().GetResult();
@@ -253,7 +253,7 @@ internal class TcpIpServerSocketProxyTests
         Task.Run(async () =>
 #pragma warning restore CS4014 // Because this call is not awaited, execution of the current method continues before the call is completed
         {
-            var udpServer = new UdpServerSocketProxy();
+            var udpServer = new UdpServerSocketProxy(TestDataHelper.Logger);
             udpServer.IpAddress = ip;
             udpServer.Port = port;
             udpServer.Connect().GetAwaiter().GetResult();
@@ -290,12 +290,12 @@ internal class TcpIpServerSocketProxyTests
         await Task.Delay(100);
 
         // Act  
-        var tcpClient = new TcpIpClientSocketProxy();
+        var tcpClient = new TcpIpClientSocketProxy(TestDataHelper.Logger);
         tcpClient.IpAddress = ip;
         tcpClient.Port = port2;
         tcpClient.Connect().GetAwaiter().GetResult();
 
-        var udpClient = new UdpClientSocketProxy();
+        var udpClient = new UdpClientSocketProxy(TestDataHelper.Logger);
         udpClient.IpAddress = ip;
         udpClient.Port = port;
         udpClient.Connect().GetAwaiter().GetResult();

@@ -6,10 +6,11 @@
 // https://learn.microsoft.com/de-de/dotnet/framework/network-programming/using-udp-services
 // https://enclave.io/high-performance-udp-sockets-net6/
 
+using Bodoconsult.App.Abstractions.Interfaces;
+using Bodoconsult.NetworkCommunication.Interfaces;
 using System.Diagnostics;
 using System.Net;
 using System.Net.Sockets;
-using Bodoconsult.NetworkCommunication.Interfaces;
 
 namespace Bodoconsult.NetworkCommunication.Protocols.Udp;
 
@@ -19,6 +20,7 @@ namespace Bodoconsult.NetworkCommunication.Protocols.Udp;
 public class UdpServerSocketProxy : BaseUpdSocketProxy
 {
     //private readonly byte[] _tmp = new byte[1];
+    private bool _isBound;
 
     /// <summary>
     /// Endpoint for listening
@@ -26,11 +28,16 @@ public class UdpServerSocketProxy : BaseUpdSocketProxy
     protected IPEndPoint? EndPoint;
 
     /// <summary>
+    /// Default ctor
+    /// </summary>
+    /// <param name="logger">Current monitor logger</param>
+    public UdpServerSocketProxy(IAppLoggerProxy logger) : base(logger)
+    { }
+
+    /// <summary>
     /// Endpoint for listening
     /// </summary>
     public IPEndPoint? SendEndPoint { get; set; }
-
-    private bool _isBound;
 
     /// <summary>
     /// Current socket (only for testing purposes, do not access directly in production code)
@@ -118,15 +125,13 @@ public class UdpServerSocketProxy : BaseUpdSocketProxy
 
                 EndPoint = new IPEndPoint(IpAddress, Port);
                 SendEndPoint = EndPoint;
-                Trace.TraceInformation($"{LoggerId}sending to {IpAddress}:{Port}");
+                Logger.LogInformation($"{LoggerId}sending to {IpAddress}:{Port}");
 
                 _isBound = true;
             }
             catch (Exception e)
             {
-                // ToDo: add logging
-                var s = e.ToString();
-                Trace.TraceError($"{LoggerId}{s}");
+                Logger.LogError($"{LoggerId}{e}");
                 _isBound = false;
                 throw;
             }
@@ -256,9 +261,7 @@ public class UdpServerSocketProxy : BaseUpdSocketProxy
         }
         catch (Exception e)
         {
-            Logger?.LogError("Polling failed", e);
-            var s = e.ToString();
-            Trace.TraceError($"{LoggerId}{s}");
+            Logger.LogError($"{LoggerId}Polling failed", e);
             return false;
         }
     }
@@ -271,36 +274,32 @@ public class UdpServerSocketProxy : BaseUpdSocketProxy
     {
         if (UdpClient == null || SendEndPoint == null)
         {
-            Trace.TraceWarning($"{LoggerId}UdpClient is null or SendEndPoint is null or address IPAddress.Any. No client request before?");
+            Logger.LogWarning($"{LoggerId}UdpClient is null or SendEndPoint is null or address IPAddress.Any. No client request before?");
             return 0;
         }
 
         try
         {
             var result = await UdpClient.SendAsync(bytesToSend, SendEndPoint, CancellationTokenSource.Token);
-            Trace.TraceInformation($"{LoggerId}sent {result} bytes");
+            Logger.LogInformation($"{LoggerId}sent {result} bytes");
             return result;
         }
         catch (SocketException socketException)
         {
             if (socketException.ErrorCode != 10054)
             {
-                Logger?.LogError("Sending failed", socketException);
-                var s = socketException.ToString();
-                Trace.TraceError($"{LoggerId}{s}");
+                Logger.LogError($"{LoggerId}Sending failed", socketException);
             }
             else
             {
-                Logger?.LogDebug("No connection");
+                Logger.LogDebug($"{LoggerId}No connection");
             }
 
             return 0;
         }
         catch (Exception e)
         {
-            Logger?.LogError("Sending failed", e);
-            var s = e.ToString();
-            Trace.TraceError($"{LoggerId}{s}");
+            Logger.LogError($"{LoggerId}Sending failed", e);
             return 0;
         }
     }
@@ -313,37 +312,32 @@ public class UdpServerSocketProxy : BaseUpdSocketProxy
     {
         if (UdpClient == null || SendEndPoint == null || Equals(SendEndPoint.Address, IPAddress.Any))
         {
-            Trace.TraceWarning($"{LoggerId}UdpClient is null or SendEndPoint is null or address IPAddress.Any. No client request before?");
+            Logger.LogWarning($"{LoggerId}UdpClient is null or SendEndPoint is null or address IPAddress.Any. No client request before?");
             return 0;
         }
 
         try
         {
             var result = await UdpClient.SendAsync(bytesToSend, SendEndPoint, CancellationTokenSource.Token).AsTask();
-            Trace.TraceInformation($"{LoggerId}sent {result} bytes");
+            Logger.LogInformation($"{LoggerId}sent {result} bytes");
             return result;
         }
         catch (SocketException socketException)
         {
             if (socketException.ErrorCode != 10054)
             {
-                Logger?.LogError("Sending failed", socketException);
-                var s = socketException.ToString();
-                Trace.TraceError($"{LoggerId}{s}");
+                Logger.LogError($"{LoggerId}Sending failed", socketException);
             }
             else
             {
-                Trace.TraceInformation("No connection");
-                Logger?.LogDebug("No connection");
+                Logger.LogDebug($"{LoggerId}No connection");
             }
 
             return 0;
         }
         catch (Exception e)
         {
-            Logger?.LogError("Sending failed", e);
-            var s = e.ToString();
-            Trace.TraceError($"{LoggerId}{s}");
+            Logger.LogError($"{LoggerId}Sending failed", e);
             return 0;
         }
     }

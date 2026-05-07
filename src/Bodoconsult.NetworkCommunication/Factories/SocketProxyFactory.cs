@@ -1,6 +1,7 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
 using System.Net;
+using Bodoconsult.App.Abstractions.Interfaces;
 using Bodoconsult.NetworkCommunication.EnumAndStates;
 using Bodoconsult.NetworkCommunication.Interfaces;
 using Bodoconsult.NetworkCommunication.Protocols.TcpIp;
@@ -31,14 +32,15 @@ public class SocketProxyFactory : ISocketProxyFactory
     /// <param name="protocol">IP base protocol to be used</param>
     /// <param name="ipAddress">IP address</param>
     /// <param name="port">Port</param>
+    /// <param name="monitorlogger">Current monitor logger</param>
     /// <returns>Instance of <see cref="ISocketProxy"/></returns>
-    public ISocketProxy CreateInstance(bool isServer, IpProtocolEnum protocol, IPAddress ipAddress, int port)
+    public ISocketProxy CreateInstance(bool isServer, IpProtocolEnum protocol, IPAddress ipAddress, int port, IAppLoggerProxy monitorlogger)
     {
         if (isServer)
         {
             if (protocol == IpProtocolEnum.Udp)
             {
-                return new UdpServerSocketProxy
+                return new UdpServerSocketProxy(monitorlogger)
                 {
                     IpAddress = ipAddress,
                     Port = port,
@@ -47,7 +49,7 @@ public class SocketProxyFactory : ISocketProxyFactory
 
             ArgumentNullException.ThrowIfNull(_tcpIpListenerManager);
 
-            return new TcpIpServerSocketProxy(_tcpIpListenerManager)
+            return new TcpIpServerSocketProxy(_tcpIpListenerManager, monitorlogger)
             {
                 IpAddress = ipAddress,
                 Port = port
@@ -57,14 +59,14 @@ public class SocketProxyFactory : ISocketProxyFactory
 
         if (protocol == IpProtocolEnum.Udp)
         {
-            return new UdpClientSocketProxy
+            return new UdpClientSocketProxy(monitorlogger)
                 {
                     IpAddress = ipAddress,
                     Port = port
                 };
         }
 
-        return new TcpIpClientSocketProxy
+        return new TcpIpClientSocketProxy(monitorlogger)
             {
                 IpAddress = ipAddress,
                 Port = port

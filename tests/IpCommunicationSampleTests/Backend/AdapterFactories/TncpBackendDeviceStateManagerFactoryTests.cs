@@ -15,7 +15,7 @@ internal class TncpIpDeviceDeviceBusinessLogicAdapterFactoryTests
     public void Ctor_ValidSetup_PropsSetCorrectly()
     {
         // Arrange 
-        var bt = new BusinessTransactionManager(TestDataHelper.GetFakeAppLoggerProxy(),
+        var bt = new BusinessTransactionManager(TestDataHelper.Logger,
             new FakeAppEventSourceFactory());
         var device = TestDataHelper.CreateStateMachineDevice();
         var dsm = new TncpIpDeviceTcpIpBusinessLogicAdapterFactory(bt);

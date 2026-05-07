@@ -1,6 +1,5 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
-using System.Diagnostics;
 using Bodoconsult.App.Helpers;
 using Bodoconsult.NetworkCommunication.Delegates;
 using Bodoconsult.NetworkCommunication.Interfaces;
@@ -59,7 +58,7 @@ public abstract class BaseOrderBasedStateMachineState : BaseStateMachineState, I
         catch (Exception e)
         {
             var msg = $"{e}";
-            Trace.TraceError($"{LoggerId}{msg}");
+            CurrentContext.LogError(msg);
             throw;
         }
     }
@@ -159,7 +158,6 @@ public abstract class BaseOrderBasedStateMachineState : BaseStateMachineState, I
                     {
                         var msg = $"RunNextOrder: {e}";
                         CurrentContext.LogError(msg);
-                        Trace.TraceError($"{LoggerId}{msg}");
                     }
                 });
                 
@@ -188,8 +186,7 @@ public abstract class BaseOrderBasedStateMachineState : BaseStateMachineState, I
         }
         catch (Exception e)
         {
-            
-            Trace.TraceError($"{LoggerId}{e}");
+            CurrentContext.LogError($"failed: {e}");
         }
     }
 

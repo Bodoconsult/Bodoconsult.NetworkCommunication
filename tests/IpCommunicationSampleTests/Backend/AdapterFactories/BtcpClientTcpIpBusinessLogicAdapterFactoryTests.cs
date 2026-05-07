@@ -13,7 +13,7 @@ namespace IpCommunicationSampleTests.Backend.AdapterFactories;
 [TestFixture]
 internal class BtcpClientTcpIpBusinessLogicAdapterFactoryTests
 {
-    private readonly IAppLoggerProxy _appLogger = TestDataHelper.GetFakeAppLoggerProxy();
+    private readonly IAppLoggerProxy _appLogger = TestDataHelper.Logger;
     private readonly FakeAppEventSourceFactory _appEventSourceFactory = new();
 
     [OneTimeTearDown]

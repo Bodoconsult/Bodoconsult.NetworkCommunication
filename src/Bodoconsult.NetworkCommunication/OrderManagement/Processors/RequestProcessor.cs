@@ -5,7 +5,6 @@ using Bodoconsult.App.Helpers;
 using Bodoconsult.NetworkCommunication.Delegates;
 using Bodoconsult.NetworkCommunication.EnumAndStates;
 using Bodoconsult.NetworkCommunication.Interfaces;
-using System.Diagnostics;
 using System.Runtime.CompilerServices;
 
 namespace Bodoconsult.NetworkCommunication.OrderManagement.Processors;
@@ -486,13 +485,11 @@ public class RequestProcessor : IRequestProcessor
     private void LogInfo(string msg, [CallerMemberName] string memberName = "", [CallerFilePath] string filepath = "", [CallerLineNumber] int lineNumber = 0)
     {
         _appLogger.LogInformation(msg, memberName, filepath, lineNumber);
-        Trace.TraceInformation(msg);
     }
 
     private void LogDebug(string msg, [CallerMemberName] string memberName = "", [CallerFilePath] string filepath = "", [CallerLineNumber] int lineNumber = 0)
     {
         _appLogger.LogDebug(msg, memberName, filepath, lineNumber);
-        Trace.TraceInformation(msg);
     }
 
     /// <summary>

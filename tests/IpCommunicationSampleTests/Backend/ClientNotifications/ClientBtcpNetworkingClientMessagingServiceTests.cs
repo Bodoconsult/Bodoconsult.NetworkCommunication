@@ -10,7 +10,7 @@ namespace IpCommunicationSampleTests.Backend.ClientNotifications;
 [TestFixture]
 internal class ClientBtcpNetworkingClientMessagingServiceTests
 {
-    //private readonly IAppLoggerProxy _appLogger = TestDataHelper.GetFakeAppLoggerProxy();
+    //private readonly IAppLoggerProxy _appLogger = TestDataHelper.Logger;
 
     //[OneTimeTearDown]
     //public void Cleanup()

@@ -1,6 +1,5 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
-using System.Diagnostics;
 using Bodoconsult.NetworkCommunication.EnumAndStates;
 using Bodoconsult.NetworkCommunication.Interfaces;
 
@@ -197,7 +196,6 @@ public class NoAnswerDeviceRequestStepProcessor : INoAnswerDeviceRequestStepProc
         requestSpec.CurrentSentMessage = message;
 
         var s = $"{requestSpec.OrderLoggerId}ExecuteRequest: prepare start";
-        Trace.TraceInformation($"{s}");
         requestSpec.AppLogger?.LogDebug(s);
 
         // ******************
@@ -240,7 +238,6 @@ public class NoAnswerDeviceRequestStepProcessor : INoAnswerDeviceRequestStepProc
         {
             s = $"{requestSpec.OrderLoggerId}sending message ended with unexpected handshake {execResult} {result.Message}"
                 .TrimEnd();
-            Trace.TraceInformation(s);
             requestSpec.AppLogger?.LogDebug(s);
 
             //CancelTask(task);
@@ -250,7 +247,6 @@ public class NoAnswerDeviceRequestStepProcessor : INoAnswerDeviceRequestStepProc
 
         // The requested handshake was received
         s = $"{requestSpec.OrderLoggerId}sent message {message.ToInfoString()} and received correct handshake";
-        Trace.TraceInformation(s);
         requestSpec.AppLogger?.LogDebug(s);
 
         return result.ProcessExecutionResult;

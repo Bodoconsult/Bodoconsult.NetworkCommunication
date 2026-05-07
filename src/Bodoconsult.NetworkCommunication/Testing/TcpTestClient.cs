@@ -23,7 +23,7 @@ public class TcpTestClient :   BaseTcpIpDevice
     {
         IsServer = false;
 
-        Trace.TraceInformation($"Client: port {port}");
+        Debug.Print($"Client: port {port}");
 
         Socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp)
         {
@@ -62,7 +62,7 @@ public class TcpTestClient :   BaseTcpIpDevice
         var task = Socket.SendToAsync(data, _endPoint);
         task.Wait(CancellationTokenSource.Token);
 
-        //Trace.TraceInformation($"TcpClient: sent {task.Result} byte(s)!");
+        //Debug.Print($"TcpClient: sent {task.Result} byte(s)!");
     }
 
     /// <summary>
@@ -84,7 +84,7 @@ public class TcpTestClient :   BaseTcpIpDevice
         }
 
         var msg = buffer.AsSpan()[..received].ToArray();
-        //Trace.TraceInformation($"TcpClient: received {msg.Length} bytes");
+        //Debug.Print($"TcpClient: received {msg.Length} bytes");
         ReceivedMessages.Add(msg);
         return msg;
     }

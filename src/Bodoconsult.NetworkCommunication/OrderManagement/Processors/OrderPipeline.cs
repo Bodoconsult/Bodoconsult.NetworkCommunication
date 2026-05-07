@@ -207,12 +207,14 @@ public class OrderPipeline : IOrderPipeline
     {
         try
         {
-            if (_executionQueue.IsEmpty)
+            var data = _executionQueue.ToList();
+
+            if (data.Count == 0)
             {
                 return;
             }
 
-            foreach (var proc in _executionQueue.ToList())
+            foreach (var proc in data)
             {
                 var order = proc.Value.Order;
                 if (order is not { IsCancelled: true })

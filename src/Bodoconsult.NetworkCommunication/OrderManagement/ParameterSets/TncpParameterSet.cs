@@ -28,7 +28,7 @@ public class TncpParameterSet : BasicOutboundDatablock, IParameterSet
     {
         if (CurrentOrder != null)
         {
-            Trace.TraceInformation($"TncpParameterSet: order ID {CurrentOrder?.Id ?? 0} set but {order?.Id?? 0} requested...");
+            Debug.Print($"TncpParameterSet: order ID {CurrentOrder?.Id ?? 0} set but {order?.Id?? 0} requested...");
             throw new ArgumentException("The order for a parameter set may be set only once!");
         }
         CurrentOrder = order;

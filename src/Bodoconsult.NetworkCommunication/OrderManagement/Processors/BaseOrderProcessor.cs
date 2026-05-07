@@ -5,7 +5,6 @@ using Bodoconsult.App.Abstractions.Interfaces;
 using Bodoconsult.App.Helpers;
 using Bodoconsult.NetworkCommunication.Helpers;
 using Bodoconsult.NetworkCommunication.Interfaces;
-using System.Diagnostics;
 using System.Runtime.CompilerServices;
 
 
@@ -59,12 +58,12 @@ public abstract class BaseOrderProcessor : IOrderProcessor
     /// <summary>
     /// Current app logger
     /// </summary>
-    protected readonly IAppLoggerProxy AppLogger;
+    private readonly IAppLoggerProxy _appLogger;
 
     /// <summary>
     /// Current logger ID
     /// </summary>
-    protected readonly string LoggerId;
+    private readonly string _loggerId;
 
     /// <summary>
     /// Current monitor logger for the device
@@ -128,12 +127,12 @@ public abstract class BaseOrderProcessor : IOrderProcessor
                 continue;
             }
 
-            LogDebug($"message received: check order {order.Id}");
+            //LogDebug($"message received: check order {order.Id}");
 
             var success = procLocal.CheckReceivedMessage(rm);
             if (!success)
             {
-                Trace.TraceInformation($"{rm.ToShortInfoString()} processed unsuccessfully with order {order.Id}.");
+                LogInformation( $"received message {rm.ToShortInfoString()} processed unsuccessfully with order {order.Id}.");
                 continue;
             }
 
@@ -141,7 +140,7 @@ public abstract class BaseOrderProcessor : IOrderProcessor
             Wait.Until(() => order.IsFinished);
 
             // Now log that
-            var msg = $"{rm.ToShortInfoString()} processed successfully with order {order.Id}.";
+            var msg = $"received message {rm.ToShortInfoString()} processed successfully with order {order.Id}.";
             LogInformation(msg);
             return true;
         }
@@ -188,8 +187,7 @@ public abstract class BaseOrderProcessor : IOrderProcessor
     protected void LogDebug(string message, [CallerMemberName] string memberName = "", [CallerFilePath] string filepath = "", [CallerLineNumber] int lineNumber = 0)
     {
         MonitorLogger.LogInformation(message, memberName, filepath, lineNumber);
-        AppLogger.LogDebug($"{LoggerId}{message}", memberName, filepath, lineNumber);
-        Trace.TraceInformation($"{LoggerId}{message}");
+        _appLogger.LogDebug($"{_loggerId}{message}", memberName, filepath, lineNumber);
     }
 
     /// <summary>
@@ -202,8 +200,7 @@ public abstract class BaseOrderProcessor : IOrderProcessor
     protected void LogInformation(string message, [CallerMemberName] string memberName = "", [CallerFilePath] string filepath = "", [CallerLineNumber] int lineNumber = 0)
     {
         MonitorLogger.LogInformation(message, memberName, filepath, lineNumber);
-        AppLogger.LogInformation($"{LoggerId}{message}", memberName, filepath, lineNumber);
-        Trace.TraceInformation($"{LoggerId}{message}");
+        _appLogger.LogInformation($"{_loggerId}{message}", memberName, filepath, lineNumber);
     }
 
     ///// <summary>
@@ -287,8 +284,8 @@ public abstract class BaseOrderProcessor : IOrderProcessor
         _messageProcessingWatchdog = new WatchDog(runner, 10);
         ClientNotificationManager = clientNotificationManager;
         DateTimeService = dateTimeService;
-        AppLogger = deviceServer.DataMessagingConfig.AppLogger;
-        LoggerId = $"{deviceServer.DataMessagingConfig.LoggerId}{(deviceServer.DataMessagingConfig.LoggerId.EndsWith(": ") ? string.Empty : ": ")}{GetType().Name}: ";
+        _appLogger = deviceServer.DataMessagingConfig.AppLogger;
+        _loggerId = $"{deviceServer.DataMessagingConfig.LoggerId}{(deviceServer.DataMessagingConfig.LoggerId.EndsWith(": ") ? string.Empty : ": ")}{GetType().Name}: ";
         MonitorLogger = deviceServer.DataMessagingConfig.MonitorLogger;
         AppBenchProxy = appBenchProxy;
     }
@@ -350,7 +347,7 @@ public abstract class BaseOrderProcessor : IOrderProcessor
 
             if (!stopped && value)
             {
-                AppLogger.LogInformation($"{LoggerId}runner is deactivated now");
+                _appLogger.LogInformation($"{_loggerId}runner is deactivated now");
             }
             //else
             //{
@@ -502,7 +499,7 @@ public abstract class BaseOrderProcessor : IOrderProcessor
                 InitIsProcessing = value;
             }
 
-            AppLogger.LogDebug($"{LoggerId}: IsInitInProcessing: {InitIsProcessing}");
+            _appLogger.LogDebug($"{_loggerId}: IsInitInProcessing: {InitIsProcessing}");
         }
     }
 
@@ -558,7 +555,7 @@ public abstract class BaseOrderProcessor : IOrderProcessor
         }
         catch (Exception e)
         {
-            AppLogger.LogError("cancelling order failed", e);
+            _appLogger.LogError("cancelling order failed", e);
         }
     }
 
@@ -638,11 +635,11 @@ public abstract class BaseOrderProcessor : IOrderProcessor
         if (OrderPipeline.CheckIfOrderIsRunning(orderId))
         {
             OrderPipeline.CancelOrder(orderId);
-            AppLogger.LogInformation($"{LoggerId}{order.LoggerId}order has been cancelled");
+            _appLogger.LogInformation($"{_loggerId}{order.LoggerId}order has been cancelled");
         }
         else
         {
-            AppLogger.LogDebug($"{LoggerId}{order.LoggerId}order has been finished {erg}");
+            _appLogger.LogDebug($"{_loggerId}{order.LoggerId}order has been finished {erg}");
         }
 
         // Dispose the order now if needed
@@ -709,12 +706,12 @@ public abstract class BaseOrderProcessor : IOrderProcessor
 
         if (IsInitInProcessing)
         {
-            AppLogger.LogInformation($"{LoggerId}{order.LoggerId}: init is processing, order is cancelled");
+            _appLogger.LogInformation($"{_loggerId}{order.LoggerId}: init is processing, order is cancelled");
             order.IsCancelled = true;
             return;
         }
 
-        AppLogger.LogInformation($"{LoggerId}{order.LoggerId}: check parallel running orders");
+        _appLogger.LogInformation($"{_loggerId}{order.LoggerId}: check parallel running orders");
 
         var runningOrders = OrderPipeline.RunningOrders.ToList();
 
@@ -734,7 +731,7 @@ public abstract class BaseOrderProcessor : IOrderProcessor
                 continue;
             }
 
-            AppLogger.LogInformation($"{LoggerId}{order.LoggerId} NOT allowed to run parallel with order {rOrder.LoggerId}");
+            _appLogger.LogInformation($"{_loggerId}{order.LoggerId} NOT allowed to run parallel with order {rOrder.LoggerId}");
             order.IsCancelled = true;
             return;
         }
@@ -821,26 +818,25 @@ public abstract class BaseOrderProcessor : IOrderProcessor
 
         if (CheckOrder(order))
         {
-            AppLogger.LogInformation($"{LoggerId}{order.LoggerId}NOT added to queue: {json}");
+            _appLogger.LogInformation($"{_loggerId}{order.LoggerId}NOT added to queue: {json}");
             return;
         }
 
         if (OrderPipeline.AllWaitingOrders.Contains(order))
         {
-            AppLogger.LogInformation($"{LoggerId}{order.LoggerId}NOT added to queue: order is already existing");
+            _appLogger.LogInformation($"{_loggerId}{order.LoggerId}NOT added to queue: order is already existing");
             return;
         }
 
         order.TotalTimeOut = 3 * GetOrderTimeout(order);
 
         OrderPipeline.AddOrder(order);
-        AppLogger.LogInformation($"{LoggerId}{order.LoggerId} added to queue. {OrderPipeline.CurrentOrderState}. {json}");
+        _appLogger.LogInformation($"{_loggerId}AddOrder: {order.LoggerId} added to queue. {OrderPipeline.CurrentOrderState}. {json}");
         if (order.IsClientNotificationTurnedOff)
         {
             return;
         }
 
-        Trace.TraceInformation($"{LoggerId}AddOrder: {OrderPipeline.CurrentOrderState}");
         ClientNotificationManager?.DoNotifyOrderStateChanged(this, order);
     }
 
@@ -861,7 +857,7 @@ public abstract class BaseOrderProcessor : IOrderProcessor
 
         if (CheckOrder(order))
         {
-            AppLogger.LogInformation($"{LoggerId}{order.LoggerId} NOT added to priority queue. {json}");
+            _appLogger.LogInformation($"{_loggerId}{order.LoggerId} NOT added to priority queue. {json}");
         }
         else
         {
@@ -869,7 +865,7 @@ public abstract class BaseOrderProcessor : IOrderProcessor
 
             OrderPipeline.AddPriorityOrder(order);
             ClientNotificationManager?.DoNotifyOrderStateChanged(this, order);
-            AppLogger.LogInformation($"{LoggerId}{order.LoggerId} added to priority queue. {OrderPipeline.CurrentOrderState}. {json}");
+            _appLogger.LogInformation($"{_loggerId}{order.LoggerId} added to priority queue. {OrderPipeline.CurrentOrderState}. {json}");
         }
     }
 
@@ -935,9 +931,8 @@ public abstract class BaseOrderProcessor : IOrderProcessor
         //// Cancel all running orders first
         CurrentDevice.CancelRunningOrders(errorCode);
 
-        var s = $"{LoggerId}running orders cancelled. {OrderPipeline.CurrentOrderState} error code {errorCode}";
-        Trace.TraceInformation(s);
-        AppLogger.LogDebug(s);
+        var s = $"{_loggerId}running orders cancelled. {OrderPipeline.CurrentOrderState} error code {errorCode}";
+        _appLogger.LogDebug(s);
 
         IsCancellationRunningOrders = false;
         IsRunnerStopped = isRunnerStopped;

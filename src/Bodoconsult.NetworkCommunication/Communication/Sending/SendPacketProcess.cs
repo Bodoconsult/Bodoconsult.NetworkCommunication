@@ -129,7 +129,12 @@ public class SendPacketProcess : BaseSendPacketProcess
             }
             catch (Exception e)
             {
-                Trace.TraceError(e.ToString());
+                if (DataMessagingConfig != null)
+                {
+                    var msg = $"failed: {e}";
+                    DataMessagingConfig.AppLogger.LogError($"{DataMessagingConfig.LoggerId}: {msg}");
+                    DataMessagingConfig.MonitorLogger.LogError(msg);
+                }
             }
         });
     }
@@ -151,7 +156,7 @@ public class SendPacketProcess : BaseSendPacketProcess
             return;
         }
 
-        Trace.TraceInformation($"{LoggerId}SPP: Handshake received {DateTime.Now:O}");
+        //Trace.TraceInformation($"{LoggerId}SPP: Handshake received {DateTime.Now:O}");
         //DataMessagingConfig.MonitorLogger?.LogDebug($"Message {Message.MessageId}: received handshake [{handshakeMessage.HandshakeMessageType:X2} {handshakeMessage.BlockAndRc:X2}]");
         DataMessagingConfig.MonitorLogger.LogDebug($"Message {Message.MessageId}: received handshake [{handshakeMessage.HandshakeMessageType:X2}]");
 

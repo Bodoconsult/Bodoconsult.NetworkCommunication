@@ -19,6 +19,8 @@ using Bodoconsult.NetworkCommunication.OrderManagement.OrderBuilders;
 using Bodoconsult.NetworkCommunication.OrderManagement.ParameterSets;
 using Bodoconsult.NetworkCommunication.OrderManagement.Processors;
 using Bodoconsult.NetworkCommunication.StateManagement.StateCheckManagers;
+using Bodoconsult.NetworkCommunication.Tests.App;
+using Microsoft.Extensions.Logging;
 
 
 namespace Bodoconsult.NetworkCommunication.Tests.Helpers;
@@ -44,21 +46,24 @@ public static class TestDataHelper
 
     public static LoggingConfig LoggingConfig { get; }
 
-    /// <summary>
-    /// Get a full set up fake logger
-    /// </summary>
-    /// <returns>Logger instance</returns>
-    public static AppLoggerProxy GetFakeAppLoggerProxy()
-    {
-        if (_logger != null)
-        {
-            return _logger;
-        }
-        _logger = new AppLoggerProxy(new FakeLoggerFactory(), LogDataFactory);
-        return _logger;
-    }
+    ///// <summary>
+    ///// Get a full set up fake logger
+    ///// </summary>
+    ///// <returns>Logger instance</returns>
+    //public static IAppLoggerProxy Logger
+    //{
+    //    //if (_logger != null)
+    //    //{
+    //    //    return _logger;
+    //    //}
 
-    private static AppLoggerProxy? _logger;
+    //    //ArgumentNullException.ThrowIfNull(Globals.Instance.Logger);
+
+    //    //_logger = Globals.Instance.Logger;
+    //    return Logger;
+    //}
+
+    public static IAppLoggerProxy Logger { get; set; } = new AppLoggerProxy(new FakeLoggerFactory(), LogDataFactory);
 
     /// <summary>
     /// Get a full set up fake bench logger
@@ -77,7 +82,7 @@ public static class TestDataHelper
     private static AppBenchProxy? _bench;
 
     /// <summary>
-    ///  Get a random port (range should be configured in Wiondws Firewall for TCP and UDP). Remember: for UDP is a second port number calculated as port number 2 = port number 1 plus 1 required
+    ///  Get a random port (range should be configured in Windows Firewall for TCP and UDP)
     /// </summary>
     /// <returns></returns>
     public static int GetRandomPort()
@@ -105,7 +110,7 @@ public static class TestDataHelper
         var config = new DefaultDataMessagingConfig();
 
         config.DataMessageProcessingPackage = new SdcpDataMessageProcessingPackage(config);
-        config.AppLogger = GetFakeAppLoggerProxy();
+        config.AppLogger = Logger;
         config.MonitorLogger = config.AppLogger;
 
         return config;
@@ -120,7 +125,7 @@ public static class TestDataHelper
         var config = new DefaultDataMessagingConfig();
 
         config.DataMessageProcessingPackage = new SfxpLoggedSortableDataMessageProcessingPackage(config);
-        config.AppLogger = GetFakeAppLoggerProxy();
+        config.AppLogger = Logger;
         config.MonitorLogger = config.AppLogger;
 
         return config;
@@ -144,7 +149,7 @@ public static class TestDataHelper
             config.DataMessageProcessingPackage = new EdcpClientDataMessageProcessingPackage(config);
         }
 
-        config.AppLogger = GetFakeAppLoggerProxy();
+        config.AppLogger = Logger;
         config.MonitorLogger = config.AppLogger;
 
         return config;

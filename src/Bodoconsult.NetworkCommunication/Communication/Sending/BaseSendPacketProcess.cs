@@ -1,6 +1,5 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
-using System.Diagnostics;
 using Bodoconsult.App.Helpers;
 using Bodoconsult.NetworkCommunication.EnumAndStates;
 using Bodoconsult.NetworkCommunication.Interfaces;
@@ -106,8 +105,13 @@ public abstract class BaseSendPacketProcess : ISendPacketProcess, IAsyncDisposab
     {
         get
         {
+            if (DataMessagingConfig == null)
+            {
+                return false;
+            }
+
             var result = false;
-            if (DataMessagingConfig?.CheckIfDeviceIsReadyDelegate != null)
+            if (DataMessagingConfig.CheckIfDeviceIsReadyDelegate != null)
             {
                 result = DataMessagingConfig.CheckIfDeviceIsReadyDelegate.Invoke();
             }
@@ -175,10 +179,10 @@ public abstract class BaseSendPacketProcess : ISendPacketProcess, IAsyncDisposab
         // Call Context.ProcessDone() only if result was not TimeOut. Otherwise the repeated sending loop is broken
         if (ProcessExecutionResult == OrderExecutionResultState.Timeout)
         {
-            Trace.TraceInformation($"{LoggerId}BSPP: process unsuccessful");
+            DataMessagingConfig?.MonitorLogger.LogDebug($"{LoggerId}BSPP: process unsuccessful");
             return;
         }
-        Trace.TraceInformation($"{LoggerId}BSPP: process successful");
+        DataMessagingConfig?.MonitorLogger.LogDebug($"{LoggerId}BSPP: process successful");
 
         if (TaskCompletionSource is not
             {
@@ -190,7 +194,7 @@ public abstract class BaseSendPacketProcess : ISendPacketProcess, IAsyncDisposab
         {
             return;
         }
-        Trace.TraceInformation($"{LoggerId}BSPP: task completed true");
+        DataMessagingConfig?.MonitorLogger.LogDebug($"{LoggerId}BSPP: task completed true");
         TaskCompletionSource?.SetResult(true);
     }
 
@@ -221,7 +225,7 @@ public abstract class BaseSendPacketProcess : ISendPacketProcess, IAsyncDisposab
             //    return false;
             //}
 
-            Trace.TraceInformation($"{LoggerId}BSPP: send result {result.ProcessExecutionResult} {DateTime.Now:O}");
+            DataMessagingConfig?.MonitorLogger.LogDebug($"{LoggerId}BSPP: send result {result.ProcessExecutionResult} {DateTime.Now:O}");
 
             if (result.ProcessExecutionResult == OrderExecutionResultState.Successful)
             {
@@ -276,7 +280,7 @@ public abstract class BaseSendPacketProcess : ISendPacketProcess, IAsyncDisposab
             }
 
             ts.SetResult(false);
-            Trace.TraceInformation($"{LoggerId}BSPP: timeout");
+            DataMessagingConfig?.MonitorLogger.LogDebug($"{LoggerId}BSPP: timeout");
         });
     }
 
@@ -306,7 +310,7 @@ public abstract class BaseSendPacketProcess : ISendPacketProcess, IAsyncDisposab
     public void Execute()
     {
 
-        Trace.TraceInformation($"{LoggerId}BSPP: start execution {DateTime.Now:O}");
+        DataMessagingConfig?.MonitorLogger.LogDebug($"{LoggerId}BSPP: start execution {DateTime.Now:O}");
 
         //Watch = Stopwatch.StartNew();
         CurrentSendAttempsCount = 0;
@@ -329,7 +333,7 @@ public abstract class BaseSendPacketProcess : ISendPacketProcess, IAsyncDisposab
         });
 
         // Now wait for execution success or timeout  (doing it in a non-blocking mannor)
-        Trace.TraceInformation($"{LoggerId}BSPP: start MAIN waiting {DateTime.Now:O}");
+        DataMessagingConfig?.MonitorLogger.LogDebug($"{LoggerId}BSPP: start MAIN waiting {DateTime.Now:O}");
 
         var result = CreateWaitingTask(out TaskCompletionSource);
 
@@ -339,7 +343,7 @@ public abstract class BaseSendPacketProcess : ISendPacketProcess, IAsyncDisposab
         //Watch = null;
 
 
-        Trace.TraceInformation($"{LoggerId}BSPP: left MAIN waiting {DateTime.Now:O}. Result {result}");
+        DataMessagingConfig?.MonitorLogger.LogDebug($"{LoggerId}BSPP: left MAIN waiting {DateTime.Now:O}. Result {result}");
 
         if (!result)
         {
@@ -349,7 +353,7 @@ public abstract class BaseSendPacketProcess : ISendPacketProcess, IAsyncDisposab
         // Unregister the wait state under all circumstances
         UnregisterWaitState();
 
-        Trace.TraceInformation($"{LoggerId}BSPP: execution finished {DateTime.Now:O}");
+        DataMessagingConfig?.MonitorLogger.LogDebug($"{LoggerId}BSPP: execution finished {DateTime.Now:O}");
         
     }
 
@@ -360,7 +364,7 @@ public abstract class BaseSendPacketProcess : ISendPacketProcess, IAsyncDisposab
     {
         while (CurrentSendAttempsCount <= MaxSendAttemptCount)
         {
-            Trace.TraceInformation($"{LoggerId}BSPP: current attempt {CurrentSendAttempsCount} at {DateTime.Now:hh:mm:ss}");
+            DataMessagingConfig?.MonitorLogger.LogDebug($"{LoggerId}BSPP: current attempt {CurrentSendAttempsCount} at {DateTime.Now:hh:mm:ss}");
 
             // Finished successful: break
             if (!IsDeviceReady)

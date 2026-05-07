@@ -1,8 +1,8 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 // Licence MIT
 
-using System.Diagnostics;
 using System.Net.Sockets;
+using Bodoconsult.App.Abstractions.Interfaces;
 using Bodoconsult.NetworkCommunication.Interfaces;
 
 namespace Bodoconsult.NetworkCommunication.Protocols.TcpIp;
@@ -19,7 +19,7 @@ public class TcpIpServerSocketProxy : BaseTcpIpSocketProxy
     /// <summary>
     /// Default ctor
     /// </summary>
-    public TcpIpServerSocketProxy(ITcpIpListenerManager tcpIpListenerManager)
+    public TcpIpServerSocketProxy(ITcpIpListenerManager tcpIpListenerManager, IAppLoggerProxy logger): base(logger)
     {
         TcpIpListenerManager = tcpIpListenerManager;
     }
@@ -112,27 +112,25 @@ public class TcpIpServerSocketProxy : BaseTcpIpSocketProxy
         try
         {
             var result = await Socket.SendAsync(bytesToSend, CancellationTokenSource.Token);
-            Trace.TraceInformation($"{LoggerId}sent {result} bytes");
+            Logger.LogInformation($"{LoggerId}sent {result} bytes");
             return result;
         }
         catch (SocketException socketException)
         {
             if (socketException.ErrorCode != 10054)
             {
-                Logger?.LogError("Sending failed", socketException);
-                Trace.TraceError($"{LoggerId}{socketException}");
+                Logger.LogError($"{LoggerId}Sending failed", socketException);
             }
             else
             {
-                Logger?.LogDebug("No connection");
+                Logger.LogDebug($"{LoggerId}No connection");
             }
 
             return 0;
         }
         catch (Exception e)
         {
-            Logger?.LogError("Sending failed", e);
-            Trace.TraceError($"{LoggerId}{e}");
+            Logger.LogError($"{LoggerId}Sending failed", e);
             return 0;
         }
     }
@@ -151,28 +149,25 @@ public class TcpIpServerSocketProxy : BaseTcpIpSocketProxy
         try
         {
             var result = await Socket.SendAsync(bytesToSend, CancellationTokenSource.Token).AsTask();
-            Trace.TraceInformation($"{LoggerId}sent {result} bytes");
+            Logger.LogInformation($"{LoggerId}sent {result} bytes");
             return result;
         }
         catch (SocketException socketException)
         {
             if (socketException.ErrorCode != 10054)
             {
-                Logger?.LogError("Sending failed", socketException);
-                Trace.TraceError($"{LoggerId}{socketException}");
+                Logger.LogError($"{LoggerId}Sending failed", socketException);
             }
             else
             {
-                Logger?.LogDebug("No connection");
+                Logger.LogDebug($"{LoggerId}No connection");
             }
 
             return 0;
         }
         catch (Exception e)
         {
-            Logger?.LogError("Sending failed", e);
-            var s = e.ToString();
-            Trace.TraceError($"{LoggerId}{s}");
+            Logger.LogError($"{LoggerId}Sending failed", e);
             return 0;
         }
     }
@@ -189,9 +184,7 @@ public class TcpIpServerSocketProxy : BaseTcpIpSocketProxy
         }
         catch (Exception e)
         {
-            Logger?.LogError("Polling failed", e);
-            var s = e.ToString();
-            Trace.TraceError($"{LoggerId}{s}");
+            Logger.LogError($"{LoggerId}Polling failed", e);
             return false;
         }
     }
@@ -236,8 +229,7 @@ public class TcpIpServerSocketProxy : BaseTcpIpSocketProxy
             }
             catch (Exception e)
             {
-                var s = e.ToString();
-                Trace.TraceError($"{LoggerId}{s}");
+                Logger.LogError($"{LoggerId}{e}");
                 // Do nothing
             }
             finally
@@ -247,7 +239,7 @@ public class TcpIpServerSocketProxy : BaseTcpIpSocketProxy
 
             
             _listener = TcpIpListenerManager.RegisterListener(Port, AcceptDelegate);
-            Trace.TraceInformation($"{LoggerId}bound to IPAddress.Any:{Port}");
+            Logger.LogInformation($"{LoggerId}bound to IPAddress.Any:{Port}");
             _isBound = _listener != null;
         });
     }
@@ -274,29 +266,25 @@ public class TcpIpServerSocketProxy : BaseTcpIpSocketProxy
         try
         {
             var result = await Socket.ReceiveAsync(buffer, CancellationTokenSource.Token);
-            Trace.TraceInformation($"{LoggerId}TcpServerSocket: received {result} bytes");
+            Logger.LogInformation($"{LoggerId}TcpServerSocket: received {result} bytes");
             return result;
         }
         catch (SocketException socketException)
         {
             if (socketException.ErrorCode != 10054)
             {
-                Logger?.LogError("Receiving failed", socketException);
-                var s = socketException.ToString();
-                Trace.TraceError($"{LoggerId}{s}");
+                Logger.LogError($"{LoggerId}Receiving failed", socketException);
             }
             else
             {
-                Logger?.LogDebug("No connection");
+                Logger.LogDebug($"{LoggerId}No connection");
             }
 
             return 0;
         }
         catch (Exception e)
         {
-            Logger?.LogError("Receiving failed", e);
-            var s = e.ToString();
-            Trace.TraceError($"{LoggerId}{s}");
+            Logger.LogError($"{LoggerId}Receiving failed", e);
             return 0;
         }
     }
@@ -316,30 +304,25 @@ public class TcpIpServerSocketProxy : BaseTcpIpSocketProxy
         try
         {
             var result = await Socket.ReceiveAsync(buffer, SocketFlags.None, CancellationTokenSource.Token).AsTask();
-            Trace.TraceInformation($"{LoggerId}received {result} bytes");
+            Logger.LogInformation($"{LoggerId}received {result} bytes");
             return result;
         }
         catch (SocketException socketException)
         {
             if (socketException.ErrorCode != 10054)
             {
-                Logger?.LogError("Receiving failed", socketException);
-                var s = socketException.ToString();
-                Trace.TraceError(s);
-
+                Logger.LogError($"{LoggerId}Receiving failed", socketException);
             }
             else
             {
-                Logger?.LogDebug("No connection");
+                Logger          .LogDebug($"{LoggerId}No connection");
             }
 
             return 0;
         }
         catch (Exception e)
         {
-            Logger?.LogError("Receiving failed", e);
-            var s = e.ToString();
-            Trace.TraceError(s);
+            Logger.LogError($"{LoggerId}Receiving failed", e);
             return 0;
         }
     }

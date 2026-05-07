@@ -1,6 +1,5 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
-using System.Diagnostics;
 using System.IO.Pipelines;
 using Bodoconsult.NetworkCommunication.Interfaces;
 
@@ -13,7 +12,6 @@ public class IpHighPerformanceDuplexIo : BaseDuplexIo, IDuplexPipe
 {
     private readonly Pipe _readPipe;
     private readonly Pipe _writePipe;
-    private readonly IDataMessagingConfig _config;
 
     /// <summary>
     /// Timeout for polling in milliseconds
@@ -27,7 +25,6 @@ public class IpHighPerformanceDuplexIo : BaseDuplexIo, IDuplexPipe
     {
         _readPipe = new Pipe();
         _writePipe = new Pipe();
-        _config = config;
     }
 
     /// <summary>
@@ -38,26 +35,26 @@ public class IpHighPerformanceDuplexIo : BaseDuplexIo, IDuplexPipe
     {
         //await Task.Run(async () =>
         //{
-            try
+        try
+        {
+            if (Receiver == null)
             {
-                if (Receiver == null)
-                {
-                    Receiver = new IpHighPerformanceDuplexIoReceiver(_readPipe, DataMessagingConfig, PollingTimeout);
-                    await Receiver.StartReceiver();
-                }
-
-                if (Sender == null)
-                {
-                    Sender = new IpHighPerformanceDuplexIoSender(_writePipe, DataMessagingConfig, PollingTimeout);
-                    await Sender.StartSender();
-                }
+                Receiver = new IpHighPerformanceDuplexIoReceiver(_readPipe, DataMessagingConfig, PollingTimeout);
+                await Receiver.StartReceiver();
             }
-            catch (Exception e)
+
+            if (Sender == null)
             {
-                var msg = $"{LoggerId}StartCommunication:{e}";
-                DataMessagingConfig.AppLogger.LogError(msg);
-                Trace.TraceError(msg);
-                throw;
+                Sender = new IpHighPerformanceDuplexIoSender(_writePipe, DataMessagingConfig, PollingTimeout);
+                await Sender.StartSender();
+            }
+        }
+        catch (Exception e)
+        {
+            var msg = $"StartCommunication: {e}";
+            DataMessagingConfig.AppLogger.LogError(msg);
+            DataMessagingConfig.MonitorLogger.LogError($"{LoggerId}{msg}");
+            throw;
         }
 
         //});

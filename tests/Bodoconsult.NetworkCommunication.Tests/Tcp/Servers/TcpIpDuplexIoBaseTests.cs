@@ -1,13 +1,14 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
-using System.Diagnostics;
 using Bodoconsult.App.Helpers;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataBlocks;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
 using Bodoconsult.NetworkCommunication.Factories;
 using Bodoconsult.NetworkCommunication.Interfaces;
 using Bodoconsult.NetworkCommunication.Protocols.Udp;
+using Bodoconsult.NetworkCommunication.Tests.Helpers;
 using Bodoconsult.NetworkCommunication.Tests.Infrastructure;
+using System.Diagnostics;
 
 namespace Bodoconsult.NetworkCommunication.Tests.Tcp.Servers;
 
@@ -295,7 +296,7 @@ public abstract class TcpIpDuplexIoBaseTests : BaseTcpTests
     public virtual void SendMessage_SocketError_Fails()
     {
         // Arrange
-        var socket = new FakeUdpSocketProxy();
+        var socket = new FakeUdpSocketProxy(TestDataHelper.Logger);
         socket.SenderThrowSocketException = true;
 
         DuplexIo = GetDuplexIoWithFakeEncodeDecoder(socket, FakeSendPacketProcessEnum.SocketError);

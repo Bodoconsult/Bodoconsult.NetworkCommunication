@@ -14,7 +14,7 @@ namespace Bodoconsult.NetworkCommunication.Tests.OrderManagement.Processors;
 internal class OrderReceiverTests
 {
     private readonly List<IInboundDataMessage> _receivedMessage = [];
-    private readonly IAppLoggerProxy _logger = TestDataHelper.GetFakeAppLoggerProxy();
+    private readonly IAppLoggerProxy _logger = TestDataHelper.Logger;
 
     private bool _wasFired;
 

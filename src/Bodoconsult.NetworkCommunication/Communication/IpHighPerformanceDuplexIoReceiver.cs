@@ -61,7 +61,7 @@ public class IpHighPerformanceDuplexIoReceiver : BaseDuplexIoReceiver
         {
             try
             {
-                Trace.TraceInformation("Wait for completion");
+                MonitorLogger.LogDebug("Wait for completion");
 
                 if (FillPipelineTask == null)
                 {
@@ -73,12 +73,13 @@ public class IpHighPerformanceDuplexIoReceiver : BaseDuplexIoReceiver
                 FillPipelineTask = null;
                 SendPipelineTask = null;
 
-                Trace.TraceInformation("Completed");
+                MonitorLogger.LogDebug("Completed");
             }
             catch (Exception e)
             {
-                Trace.TraceInformation(e.ToString());
-                Logger.LogError(e, "Stopping receiver failed");
+                var msg = $"Stopping receiver failed: {e}";
+                MonitorLogger.LogError(msg);
+                DataMessagingConfig.AppLogger.LogError($"{LoggerId}{msg}");
             }
         });
     }
@@ -103,8 +104,8 @@ public class IpHighPerformanceDuplexIoReceiver : BaseDuplexIoReceiver
         {
             return;
         }
-        
-        Trace.TraceInformation("FillMessagePipeline started");
+
+        MonitorLogger.LogDebug("FillMessagePipeline started");
 
         //Trace.TraceInformation("Start fill message pipeline");
         var writer = _pipe.Writer;
@@ -121,7 +122,7 @@ public class IpHighPerformanceDuplexIoReceiver : BaseDuplexIoReceiver
                     continue;
                 }
 
-                Trace.TraceInformation($"{_isDone}");
+                MonitorLogger?.LogDebug($"{_isDone}");
                 if (_isDone)
                 {
                     break;
@@ -150,15 +151,17 @@ public class IpHighPerformanceDuplexIoReceiver : BaseDuplexIoReceiver
             }
             catch (SocketException socketException)
             {
-                Trace.TraceError($"FillMessagePipeline failed: {socketException}");
-                Logger?.LogError("filling pipe failed", socketException);
+                var msg = $"FillMessagePipeline failed: {socketException}";
+                MonitorLogger?.LogError(msg);
+                DataMessagingConfig.AppLogger.LogError($"{LoggerId}{msg}");
                 _isDone = true;
                 break;
             }
             catch (Exception otherException)
             {
-                Trace.TraceError($"FillMessagePipeline failed: {otherException}");
-                Logger?.LogError("filling pipe failed", otherException);
+                var msg = $"FillMessagePipeline failed: {otherException}";
+                MonitorLogger?.LogError(msg);
+                DataMessagingConfig.AppLogger.LogError($"{LoggerId}{msg}");
             }
         }
 
@@ -196,7 +199,7 @@ public class IpHighPerformanceDuplexIoReceiver : BaseDuplexIoReceiver
             }
 
             //Trace.TraceInformation($"Raw command: {ArrayHelper.GetStringFromArrayCsharpStyle(ref buffer)}");
-            Logger?.LogInformation($"Raw command: {DataMessageHelper.GetStringFromArrayCsharpStyle(ref buffer)}");
+            MonitorLogger?.LogInformation($"Raw command: {DataMessageHelper.GetStringFromArrayCsharpStyle(ref buffer)}");
 
             //Trace.TraceInformation($"Buffer: pre-length: {buffer.Length}");
 
@@ -227,8 +230,8 @@ public class IpHighPerformanceDuplexIoReceiver : BaseDuplexIoReceiver
                 if (codecResult.ErrorCode != 0 || codecResult.DataMessage == null)
                 {
                     msg = $"Parsing command failed with error code {codecResult.ErrorCode}: {codecResult.ErrorMessage}: {DataMessageHelper.GetStringFromArrayCsharpStyle(ref command)}";
-                    Trace.TraceInformation(msg);
-                    Logger?.LogDebug(msg);
+                    MonitorLogger?.LogDebug(msg);
+                    DataMessagingConfig.AppLogger.LogError($"{LoggerId}{msg}");
                 }
                 else
                 {
@@ -236,14 +239,15 @@ public class IpHighPerformanceDuplexIoReceiver : BaseDuplexIoReceiver
                     if (!validationResult.IsMessageValid)
                     {
                         msg = $"Parsed command {DataMessageHelper.GetStringFromArrayCsharpStyle(ref command)} NOT valid: {validationResult.ValidationResult}. Message was NOT processed.";
-                        Trace.TraceInformation(msg);
-                        Logger?.LogDebug(msg);
+                        MonitorLogger?.LogError(msg);
+                        DataMessagingConfig.AppLogger.LogError($"{LoggerId}{msg}");
                     }
                     else
                     {
+#if DEBUG
                         msg = $"Parsed command {DataMessageHelper.GetStringFromArrayCsharpStyle(ref command)}";
-                        Trace.TraceInformation(msg);
-                        Logger?.LogDebug(msg);
+                        MonitorLogger?.LogDebug(msg);
+#endif
 
                         DataMessageProcessor.ProcessMessage(codecResult.DataMessage);
                     }
@@ -255,9 +259,6 @@ public class IpHighPerformanceDuplexIoReceiver : BaseDuplexIoReceiver
 
             // Tell the PipeReader how much of the buffer has been consumed.
             reader.AdvanceTo(buffer.Start, buffer.End);
-
-            //Trace.TraceInformation($"Buffer: post-length: {buffer.Length}");
-
 
             // Stop reading if there's no more data coming.
             if (result.Buffer.IsEmpty && result.IsCompleted)

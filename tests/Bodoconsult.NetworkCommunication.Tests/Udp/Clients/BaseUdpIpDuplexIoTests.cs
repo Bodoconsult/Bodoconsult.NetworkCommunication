@@ -2,11 +2,12 @@
 
 using Bodoconsult.App.Helpers;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataBlocks;
+using Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
 using Bodoconsult.NetworkCommunication.Factories;
 using Bodoconsult.NetworkCommunication.Interfaces;
 using Bodoconsult.NetworkCommunication.Protocols.Udp;
+using Bodoconsult.NetworkCommunication.Tests.Helpers;
 using Bodoconsult.NetworkCommunication.Tests.Infrastructure;
-using Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
 
 namespace Bodoconsult.NetworkCommunication.Tests.Udp.Clients;
 
@@ -190,7 +191,7 @@ public abstract class BaseUdpIpDuplexIoTests : BaseUdpTests
     public virtual void SendMessage_SocketError_Fails()
     {
         // Arrange
-        var socket = new FakeUdpSocketProxy();
+        var socket = new FakeUdpSocketProxy(TestDataHelper.Logger);
         socket.SenderThrowSocketException = true;
 
         DuplexIo = GetDuplexIoWithFakeEncodeDecoder(socket, FakeSendPacketProcessEnum.SocketError);

@@ -11,6 +11,7 @@ using Bodoconsult.NetworkCommunication.Factories;
 using Bodoconsult.NetworkCommunication.Interfaces;
 using Bodoconsult.NetworkCommunication.OrderManagement.Processors;
 using Bodoconsult.NetworkCommunication.Protocols.TcpIp;
+using Bodoconsult.NetworkCommunication.Tests.App;
 using Bodoconsult.NetworkCommunication.Tests.Helpers;
 using IpBackend.Bll.Communication;
 using IpCommunicationSampleTests.App;
@@ -21,7 +22,7 @@ namespace IpCommunicationSampleTests.Backend;
 [TestFixture]
 internal class IpDeviceTcpIpClientStateMachineManagerTests
 {
-    private readonly IAppLoggerProxy _appLogger = TestDataHelper.GetFakeAppLoggerProxy();
+    private readonly IAppLoggerProxy _appLogger = TestDataHelper.Logger;
     private readonly IAppDateService _dateService = TestDataHelper.AppDateService;
     private readonly SyncOrderManager _syncOrderManager = new();
     private readonly IOrderManagementClientNotificationManager _clientNotificationManager = new DoNothingOrderManagementClientNotificationManager();
@@ -54,7 +55,7 @@ internal class IpDeviceTcpIpClientStateMachineManagerTests
         IOrderPipelineFactory orderPipelineFactory = new OrderPipelineFactory(_dateService, _appLogger);
         IOrderManagerFactory orderManagerFactory = new OrderManagerFactory(orderProcessorFactory, _orderReceiverFactory, _requestStepProcessorFactoryFactory, _requestProcessorFactoryFactory, orderPipelineFactory, _orderFactory);
         var socketFactory = new SocketProxyFactory(_tcpIpListenerManager);
-        var bt = new BusinessTransactionManager(TestDataHelper.GetFakeAppLoggerProxy(),
+        var bt = new BusinessTransactionManager(TestDataHelper.Logger,
             new FakeAppEventSourceFactory());
 
         // Act
@@ -78,7 +79,7 @@ internal class IpDeviceTcpIpClientStateMachineManagerTests
         IOrderPipelineFactory orderPipelineFactory = new OrderPipelineFactory(_dateService, _appLogger);
         IOrderManagerFactory orderManagerFactory = new OrderManagerFactory(orderProcessorFactory, _orderReceiverFactory, _requestStepProcessorFactoryFactory, _requestProcessorFactoryFactory, orderPipelineFactory, _orderFactory);
         var socketFactory = new SocketProxyFactory(_tcpIpListenerManager);
-        var bt = new BusinessTransactionManager(TestDataHelper.GetFakeAppLoggerProxy(),
+        var bt = new BusinessTransactionManager(TestDataHelper.Logger,
             new FakeAppEventSourceFactory());
 
         var m = new IpDeviceTcpIpClientStateMachineManager(duplexIoFactory, _monitorLoggerFactoryFactory, _logDataFactory, _appLoggerFactory,

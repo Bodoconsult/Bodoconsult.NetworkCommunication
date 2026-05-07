@@ -16,7 +16,7 @@ public class OrderPipelineTests
 {
     private readonly IAppDateService _dateTimeService = TestDataHelper.AppDateService;
     private readonly IRequestProcessorFactory _requestProcessorFactory;
-    private readonly IAppLoggerProxy _appLogger = TestDataHelper.GetFakeAppLoggerProxy();
+    private readonly IAppLoggerProxy _appLogger = TestDataHelper.Logger;
     private const string LoggerId = "001234";
     private readonly AppBenchProxy _benchLogger = TestDataHelper.GetFakeAppBenchProxy();
 

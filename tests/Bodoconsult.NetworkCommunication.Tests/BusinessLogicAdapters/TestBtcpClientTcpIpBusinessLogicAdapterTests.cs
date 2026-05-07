@@ -14,7 +14,7 @@ namespace Bodoconsult.NetworkCommunication.Tests.BusinessLogicAdapters;
 [TestFixture]
 internal class TestBtcpClientTcpIpBusinessLogicAdapterTests
 {
-    private readonly IAppLoggerProxy _logger = TestDataHelper.GetFakeAppLoggerProxy();
+    private readonly IAppLoggerProxy _logger = TestDataHelper.Logger;
     private readonly IIpDevice _device = TestDataHelper.CreateSimpleDevice();
     private readonly FakeBusinessTransactionManager _businessTransactionManager = new();
 

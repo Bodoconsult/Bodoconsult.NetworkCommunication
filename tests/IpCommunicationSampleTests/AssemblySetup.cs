@@ -1,7 +1,9 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
 using Bodoconsult.App.Extensions;
-using IpCommunicationSampleTests.App;
+using Bodoconsult.NetworkCommunication.Tests.App;
+using Bodoconsult.NetworkCommunication.Tests.Helpers;
+using MyDebugAppBuilder = IpCommunicationSampleTests.App.MyDebugAppBuilder;
 
 namespace IpCommunicationSampleTests;
 
@@ -44,5 +46,6 @@ public static class AssemblySetup
 
         ArgumentNullException.ThrowIfNull(Globals.Instance.Logger);
         Globals.Instance.Logger.LogInformation("Starting tests...");
+        TestDataHelper.Logger = Globals.Instance.Logger;
     }
 }

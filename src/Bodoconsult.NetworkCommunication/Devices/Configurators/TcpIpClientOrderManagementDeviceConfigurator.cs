@@ -74,9 +74,7 @@ public class TcpIpClientOrderManagementDeviceConfigurator : BaseIpDeviceConfigur
         DataMessagingConfig.LoggerId = loggerId;
         
         DataMessagingConfig.AppLogger = _appLoggerProxy;
-        //DataMessagingConfig.AppLogger = new AppLoggerProxy(new FakeLoggerFactory(), _logDataFactory);
         DataMessagingConfig.MonitorLogger = CreateMonitorLogger(_monitorLoggerFactoryFactory, _appLoggerFactory, _logDataFactory, DataMessagingConfig.LoggerId.Replace(" ", "").Replace(":", ""));
-        //DataMessagingConfig.MonitorLogger = new AppLoggerProxy(new FakeLoggerFactory(), _logDataFactory);
         DataMessagingConfig.IpAddress = ipAddress;
         DataMessagingConfig.Port = port;
         DataMessagingConfig.IpProtocol = IpProtocolEnum.Tcp;

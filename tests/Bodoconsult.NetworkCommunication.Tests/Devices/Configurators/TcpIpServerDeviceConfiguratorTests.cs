@@ -18,7 +18,7 @@ namespace Bodoconsult.NetworkCommunication.Tests.Devices.Configurators;
 internal class TcpIpServerDeviceConfiguratorTests
 {
     private readonly IMonitorLoggerFactoryFactory _monitorLoggerFactoryFactory = new MonitorLoggerFactoryFactory(Globals.Instance);
-    private readonly IAppLoggerProxy _appLoggerProxy = TestDataHelper.GetFakeAppLoggerProxy();
+    private readonly IAppLoggerProxy _appLoggerProxy = TestDataHelper.Logger;
     private readonly ISendPacketProcessFactory _sendPacketProcessFactory = new FakeSendPacketProcessFactory();
     private readonly FakeAppEventSourceFactory _appEventSourceFactory = new();
     private readonly TcpIpListenerManager _tcpIpListenerManager = new();

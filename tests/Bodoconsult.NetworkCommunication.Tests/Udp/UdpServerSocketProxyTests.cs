@@ -11,7 +11,6 @@ using Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig;
 using Bodoconsult.NetworkCommunication.Factories;
 using Bodoconsult.NetworkCommunication.Interfaces;
 using Bodoconsult.NetworkCommunication.Protocols.Udp;
-using Bodoconsult.NetworkCommunication.Testing;
 using Bodoconsult.NetworkCommunication.Tests.Helpers;
 
 namespace Bodoconsult.NetworkCommunication.Tests.Udp;
@@ -46,7 +45,7 @@ internal class UdpServerSocketProxyTests
         Task.Run(async () =>
 #pragma warning restore CS4014 // Because this call is not awaited, execution of the current method continues before the call is completed
         {
-            var udpServer = new UdpServerSocketProxy();
+            var udpServer = new UdpServerSocketProxy(TestDataHelper.Logger);
             udpServer.IpAddress = ip;
             udpServer.Port = port;
             await udpServer.Connect();
@@ -84,7 +83,7 @@ internal class UdpServerSocketProxyTests
         started.WaitOne(TimeOut);
 
         // Act  
-        var client = new UdpClientSocketProxy();
+        var client = new UdpClientSocketProxy(TestDataHelper.Logger);
         client.IpAddress = ip;
         client.Port = port;
         await client.Connect();
@@ -136,7 +135,7 @@ internal class UdpServerSocketProxyTests
         Task.Run(async () =>
 #pragma warning restore CS4014 // Because this call is not awaited, execution of the current method continues before the call is completed
         {
-            var udpServer = new UdpServerSocketProxy();
+            var udpServer = new UdpServerSocketProxy(TestDataHelper.Logger);
             udpServer.IpAddress = ip;
             udpServer.Port = port;
             await udpServer.Connect();
@@ -164,7 +163,7 @@ internal class UdpServerSocketProxyTests
         });
 
         // Act  
-        var udpClient = new UdpClientSocketProxy();
+        var udpClient = new UdpClientSocketProxy(TestDataHelper.Logger);
         udpClient.IpAddress = ip;
         udpClient.Port = port;
 
@@ -251,7 +250,7 @@ internal class UdpServerSocketProxyTests
 
             started.WaitOne(3 * TimeOut);
 
-            var udpServer = new UdpServerSocketProxy();
+            var udpServer = new UdpServerSocketProxy(TestDataHelper.Logger);
             serverConfig.SocketProxy = udpServer;
             udpServer.IpAddress = ip;
             udpServer.Port = port;
@@ -285,7 +284,7 @@ internal class UdpServerSocketProxyTests
         // ReSharper disable once MethodSupportsCancellation
 
         // Act  
-        var udpClient = new UdpClientSocketProxy();
+        var udpClient = new UdpClientSocketProxy(TestDataHelper.Logger);
         udpClient.IpAddress = ip;
         udpClient.Port = port;
         clientConfig.SocketProxy = udpClient;
@@ -368,7 +367,7 @@ internal class UdpServerSocketProxyTests
 
             started.WaitOne(3 * TimeOut);
 
-            var udpServer = new UdpServerSocketProxy();
+            var udpServer = new UdpServerSocketProxy(TestDataHelper.Logger);
             serverConfig.SocketProxy = udpServer;
             udpServer.IpAddress = ip;
             udpServer.Port = port;
@@ -402,7 +401,7 @@ internal class UdpServerSocketProxyTests
         // ReSharper disable once MethodSupportsCancellation
 
         // Act  
-        var udpClient = new UdpClientSocketProxy();
+        var udpClient = new UdpClientSocketProxy(TestDataHelper.Logger);
         udpClient.IpAddress = ip;
         udpClient.Port = port;
         clientConfig.SocketProxy = udpClient;

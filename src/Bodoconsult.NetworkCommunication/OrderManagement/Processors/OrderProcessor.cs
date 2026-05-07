@@ -1,6 +1,5 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
-using System.Diagnostics;
 using Bodoconsult.App.Abstractions.Interfaces;
 using Bodoconsult.NetworkCommunication.EnumAndStates;
 using Bodoconsult.NetworkCommunication.Interfaces;
@@ -28,7 +27,7 @@ public class OrderProcessor : BaseOrderProcessor
 
             StopExecutionOfSyncOrder(orderId, erg);
 
-            AppLogger.LogDebug($"{LoggerId}order {orderId} has finished but request processor wasn't found");
+            LogDebug($"order {orderId} has finished but request processor wasn't found");
             return;
         }
 
@@ -38,7 +37,7 @@ public class OrderProcessor : BaseOrderProcessor
         var order = requestProcessor.Order;
         order.Benchmark?.AddStep("Order processing finished");
 
-        AppLogger.LogDebug($"{LoggerId}{order.LoggerId}has finished. {OrderPipeline.CurrentOrderState}");
+        LogDebug($"{order.LoggerId}has finished. {OrderPipeline.CurrentOrderState}");
 
         // Process successful orders
         if (order.ExecutionResult.Id == OrderExecutionResultState.Successful.Id)
@@ -76,7 +75,7 @@ public class OrderProcessor : BaseOrderProcessor
             StopExecutionOfSyncOrder(order.Id, erg);
         }
 
-        Trace.TraceInformation($"{LoggerId}OrderProcessingFinished: {OrderPipeline.CurrentOrderState}");
+        LogInformation( $"OrderProcessingFinished: {OrderPipeline.CurrentOrderState}");
     }
 
     /// <summary>
@@ -117,12 +116,12 @@ public class OrderProcessor : BaseOrderProcessor
             }
         }
 
-        AppLogger.LogInformation($"{LoggerId}execution queue cleared for device hardware init");
+        LogInformation($"execution queue cleared for device hardware init");
 
         // Is no hardware init required set externally for unit testing
         if (IsNoHardWareInitRequired)
         {
-            AppLogger.LogDebug($"{LoggerId}runner restarted");
+            LogInformation($"runner restarted");
             IsRunnerStopped = false;
             return null;
         }
@@ -145,7 +144,7 @@ public class OrderProcessor : BaseOrderProcessor
         CheckAndRunOrder(order);
 
         _device.DoNotifyHardwareInitRequested();
-        AppLogger.LogInformation($"{LoggerId}{order.LoggerId}order execution started");
+        LogInformation($"{order.LoggerId}order execution started");
 
         return order;
     }
@@ -242,7 +241,7 @@ public class OrderProcessor : BaseOrderProcessor
         //    return false;
         //}
 
-        Trace.TraceInformation( $"{LoggerId}message received: {receivedMessage.ToShortInfoString()}");
+        LogInformation( $"message received: {receivedMessage.ToShortInfoString()}");
 
         //*********************
         // TOP 1 A X message with a error code of 0 makes no sense: throw this message away
@@ -253,7 +252,7 @@ public class OrderProcessor : BaseOrderProcessor
             return true;
         }
 
-        var msg = $"received {receivedMessage.ToInfoString()} {OrderPipeline.CurrentOrderState}";
+        var msg = $"received {receivedMessage.ToShortInfoString()} {OrderPipeline.CurrentOrderState}";
         LogInformation(msg);
 
         //*********************

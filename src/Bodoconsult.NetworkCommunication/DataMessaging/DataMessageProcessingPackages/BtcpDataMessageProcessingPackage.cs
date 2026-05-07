@@ -35,7 +35,7 @@ public class BtcpDataMessageProcessingPackage : IDataMessageProcessingPackage
         DataMessageSplitter = new BtcpDataMessageSplitter();
 
         // 2. Codecs
-        DataMessageCodingProcessor = new DefaultDataMessageCodingProcessor();
+        DataMessageCodingProcessor = new DefaultDataMessageCodingProcessor(DataMessagingConfig.MonitorLogger);
         DataBlockCodingProcessor = new DefaultDataBlockCodingProcessor();
         LoadCodecs();
 

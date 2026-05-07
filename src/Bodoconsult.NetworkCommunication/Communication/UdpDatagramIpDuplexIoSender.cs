@@ -1,6 +1,5 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
-using System.Diagnostics;
 using System.Net.Sockets;
 using Bodoconsult.App.Helpers;
 using Bodoconsult.NetworkCommunication.Delegates;
@@ -65,8 +64,8 @@ public class UdpDatagramIpDuplexIoSender : BaseDuplexIoSender
             if (EncodeMessage(message))
             {
                 msg = $"Encoding for message failed: {message.MessageId}";
-                DataMessagingConfig.MonitorLogger.LogError(msg);
-                Trace.TraceError($"{LoggerId}{msg}");
+                DataMessagingConfig.MonitorLogger.LogInformation(msg);
+                DataMessagingConfig.AppLogger.LogError($"{DataMessagingConfig.LoggerId}{msg}");
                 return 0;
             }
 
@@ -82,7 +81,6 @@ public class UdpDatagramIpDuplexIoSender : BaseDuplexIoSender
             AsyncHelper.FireAndForget(() => DataMessagingConfig.RaiseDataMessageNotSentDelegate?.Invoke(message.RawMessageData, msg));
             DataMessagingConfig.MonitorLogger.LogError(msg);
             DataMessagingConfig.AppLogger.LogError($"{DataMessagingConfig.LoggerId}{msg}");
-            Trace.TraceError($"{LoggerId}{msg}");
         }
         catch (Exception e)
         {
@@ -90,7 +88,6 @@ public class UdpDatagramIpDuplexIoSender : BaseDuplexIoSender
             AsyncHelper.FireAndForget(() => DataMessagingConfig.RaiseDataMessageNotSentDelegate?.Invoke(message.RawMessageData, msg));
             DataMessagingConfig.MonitorLogger.LogError(msg);
             DataMessagingConfig.AppLogger.LogError($"{DataMessagingConfig.LoggerId}{msg}");
-            Trace.TraceError($"{LoggerId}{msg}");
         }
 
         return 0;
@@ -98,6 +95,7 @@ public class UdpDatagramIpDuplexIoSender : BaseDuplexIoSender
 
     private async Task<int> SendMessageInternal(IDataMessagingConfig dataMessagingConfig, DuplexIoNoDataDelegate duplexIoNoDataDelegate, IOutboundMessage message)
     {
+        string msg;
         int sent;
         try
         {
@@ -137,9 +135,8 @@ public class UdpDatagramIpDuplexIoSender : BaseDuplexIoSender
             }
 
 #if DEBUG
-            var s = $"{message.RawMessageDataClearText}  {message.ToShortInfoString()}";
-            //Trace.TraceInformation(s);
-            dataMessagingConfig.MonitorLogger.LogDebug($"Message sent {s}: {message.RawMessageData.Length}");
+            msg = $"{message.RawMessageDataClearText}  {message.ToShortInfoString()}";
+            dataMessagingConfig.MonitorLogger.LogDebug($"Message sent {msg}: {message.RawMessageData.Length}");
 #endif
             AsyncHelper.FireAndForget(() =>
             {
@@ -153,8 +150,10 @@ public class UdpDatagramIpDuplexIoSender : BaseDuplexIoSender
                 _isSending = false;
             }
 
-            Trace.TraceError($"{LoggerId}SendMessageInternal: {socketException}");
-            dataMessagingConfig.MonitorLogger.LogError("Send process failed", socketException);
+            msg = $"message {message.ToShortInfoString()} not sent: {socketException}";
+            dataMessagingConfig.MonitorLogger.LogInformation(msg);
+            dataMessagingConfig.AppLogger.LogError($"{dataMessagingConfig.LoggerId}{msg}");
+
             AsyncHelper.FireAndForget(() =>
             {
                 dataMessagingConfig.RaiseComDevCloseRequestDelegate?.Invoke("UdpDatagramIpDuplexIoSender");
@@ -168,8 +167,11 @@ public class UdpDatagramIpDuplexIoSender : BaseDuplexIoSender
             {
                 _isSending = false;
             }
-            Trace.TraceError($"{LoggerId}SendMessageInternal: {sendException}");
-            dataMessagingConfig.MonitorLogger.LogError("Send process failed", sendException);
+
+            msg = $"message {message.ToShortInfoString()} not sent: {sendException}";
+            dataMessagingConfig.MonitorLogger.LogInformation(msg);
+            dataMessagingConfig.AppLogger.LogError($"{dataMessagingConfig.LoggerId}{msg}");
+
             AsyncHelper.FireAndForget(() => dataMessagingConfig.RaiseDataMessageNotSentDelegate?.Invoke(message.RawMessageData, sendException.Message));
             throw;
         }

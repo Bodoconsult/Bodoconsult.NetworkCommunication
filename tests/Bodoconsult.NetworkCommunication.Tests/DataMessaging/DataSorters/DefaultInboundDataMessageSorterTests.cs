@@ -10,7 +10,7 @@ namespace Bodoconsult.NetworkCommunication.Tests.DataMessaging.DataSorters;
 [TestFixture]
 internal class DefaultInboundDataMessageSorterTests
 {
-    private readonly IAppLoggerProxy _logger = TestDataHelper.GetFakeAppLoggerProxy();
+    private readonly IAppLoggerProxy _logger = TestDataHelper.Logger;
 
     [OneTimeTearDown]
     public void CleanUp()

@@ -17,7 +17,7 @@ internal class LoggedSortableDataMessageProcessorTests
 {
     private bool _wasDataMessageFired;
 
-    private readonly IAppLoggerProxy _logger = TestDataHelper.GetFakeAppLoggerProxy();
+    private readonly IAppLoggerProxy _logger = TestDataHelper.Logger;
 
     [OneTimeTearDown]
     public void CleanUp()

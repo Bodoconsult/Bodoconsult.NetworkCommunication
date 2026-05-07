@@ -35,7 +35,7 @@ public class TncpDataMessageProcessingPackage : IDataMessageProcessingPackage
         DataMessageSplitter = new TncpDataMessageSplitter();
 
         // 2. Codecs
-        DataMessageCodingProcessor = new DefaultDataMessageCodingProcessor();
+        DataMessageCodingProcessor = new DefaultDataMessageCodingProcessor(DataMessagingConfig.MonitorLogger);
         DataBlockCodingProcessor = new DefaultDataBlockCodingProcessor();
         LoadCodecs();
 

@@ -2,7 +2,6 @@
 
 using Bodoconsult.App.Helpers;
 using Bodoconsult.NetworkCommunication.Interfaces;
-using System.Diagnostics;
 
 namespace Bodoconsult.NetworkCommunication.DataMessaging.DataMessageProcessors;
 
@@ -26,7 +25,6 @@ public class DefaultDataMessageProcessor : BaseDataMessageProcessor
     {
         var s = $"received message {message.MessageId}: {message.RawMessageData.Length} bytes";
         Config.MonitorLogger.LogInformation(s);
-        Trace.TraceInformation($"{LoggerId}");
 
         Stopped.Reset();
 
@@ -47,7 +45,6 @@ public class DefaultDataMessageProcessor : BaseDataMessageProcessor
         // No valid message
         s = $"message {message.MessageId} not valid: {message.GetType().Name}";
         Config.MonitorLogger.LogError(s);
-        Trace.TraceInformation($"{LoggerId}{s}");
     }
 
     private void ProcessDataMessage(IInboundDataMessage dataMessage)
@@ -68,7 +65,6 @@ public class DefaultDataMessageProcessor : BaseDataMessageProcessor
             {
                 var s = $" failed {dataMessage.MessageId}: {dataMessage.RawMessageData.Length} bytes: {e}";
                 Config.MonitorLogger.LogError(s);
-                Trace.TraceError($"{LoggerId}{s}");
             }
         }).ContinueWith(Callback);
 
@@ -80,6 +76,5 @@ public class DefaultDataMessageProcessor : BaseDataMessageProcessor
         var msg = $"{dataMessage}delivering to message receiver timed out";
         Config.AppLogger.LogError($"{Config.LoggerId}{msg}");
         Config.MonitorLogger.LogError(msg);
-        Trace.TraceError($"{LoggerId}{msg}");
     }
 }

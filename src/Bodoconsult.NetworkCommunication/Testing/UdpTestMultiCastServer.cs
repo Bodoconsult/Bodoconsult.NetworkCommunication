@@ -40,7 +40,7 @@ public class UdpTestMultiCastServer : BaseUdpDevice
     public override void Send(byte[] data)
     {
         var result = Listener.Send(data, data.Length, EndPoint);
-        Trace.TraceInformation($"{TypeName}: sent {result} byte(s)!");
+        Debug.Print($"{TypeName}: sent {result} byte(s)!");
     }
 
     /// <summary>
@@ -51,7 +51,7 @@ public class UdpTestMultiCastServer : BaseUdpDevice
     {
         if (IsDisposed)
         {
-            Trace.TraceInformation($"{TypeName}: nothing to receive");
+            Debug.Print($"{TypeName}: nothing to receive");
             return [];
         }
 
@@ -63,8 +63,8 @@ public class UdpTestMultiCastServer : BaseUdpDevice
             return [];
         }
 
-        Trace.TraceInformation($"{TypeName}: received {bytes.Buffer.Length} bytes from {bytes.RemoteEndPoint}");
-        //Trace.TraceInformation($" {Encoding.ASCII.GetString(bytes, 0, bytes.Length)}");
+        Debug.Print($"{TypeName}: received {bytes.Buffer.Length} bytes from {bytes.RemoteEndPoint}");
+        //Debug.Print($" {Encoding.ASCII.GetString(bytes, 0, bytes.Length)}");
 
         ReceivedMessages.Add(bytes.Buffer.AsMemory());
         return bytes.Buffer;

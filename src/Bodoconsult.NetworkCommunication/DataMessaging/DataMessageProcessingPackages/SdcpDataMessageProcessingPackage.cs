@@ -36,7 +36,7 @@ public class SdcpDataMessageProcessingPackage : IDataMessageProcessingPackage
         DataMessageSplitter = new SdcpDataMessageSplitter();
 
         // 2. Codecs
-        DataMessageCodingProcessor = new DefaultDataMessageCodingProcessor();
+        DataMessageCodingProcessor = new DefaultDataMessageCodingProcessor(DataMessagingConfig.MonitorLogger);
         DataBlockCodingProcessor = new DefaultDataBlockCodingProcessor();
         LoadCodecs();
 

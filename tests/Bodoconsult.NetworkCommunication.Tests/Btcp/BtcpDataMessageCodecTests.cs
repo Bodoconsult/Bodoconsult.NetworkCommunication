@@ -499,7 +499,7 @@ internal class BtcpDataMessageCodecTests
 
 internal class BtcpIpDeviceClientTests
 {
-    private readonly IAppLoggerProxy _appLogger = TestDataHelper.GetFakeAppLoggerProxy();
+    private readonly IAppLoggerProxy _appLogger = TestDataHelper.Logger;
 
     [OneTimeTearDown]
     public void Cleanup()

@@ -1,6 +1,5 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
-using System.Diagnostics;
 using Bodoconsult.App.Abstractions.Interfaces;
 using Bodoconsult.App.Helpers;
 using Bodoconsult.NetworkCommunication.Delegates;
@@ -41,7 +40,7 @@ public class BaseDuplexIoReceiver : IDuplexIoReceiver
     /// <summary>
     /// Current logger
     /// </summary>
-    protected IAppLoggerProxy Logger;
+    protected IAppLoggerProxy MonitorLogger;
 
     /// <summary>
     /// Check and wait until the socket is connected
@@ -92,7 +91,7 @@ public class BaseDuplexIoReceiver : IDuplexIoReceiver
         DataMessageCodingProcessor = DataMessagingConfig.DataMessageProcessingPackage.DataMessageCodingProcessor;
         DataMessageProcessor = DataMessagingConfig.DataMessageProcessingPackage.DataMessageProcessor;
         DataMessageSplitter = DataMessagingConfig.DataMessageProcessingPackage.DataMessageSplitter;
-        Logger = DataMessagingConfig.MonitorLogger;
+        MonitorLogger = DataMessagingConfig.MonitorLogger;
     }
 
     /// <summary>
@@ -142,8 +141,8 @@ public class BaseDuplexIoReceiver : IDuplexIoReceiver
             catch (Exception e)
             {
                 msg = $"CancellationToken cancelling failed: {e}";
-                Logger.LogError(msg);
-                Trace.TraceError($"{LoggerId}{msg}");
+                MonitorLogger.LogError(msg);
+                DataMessagingConfig.AppLogger.LogError($"{LoggerId}{msg}");
             }
         }
 
@@ -163,8 +162,7 @@ public class BaseDuplexIoReceiver : IDuplexIoReceiver
             catch (Exception e)
             {
                 msg = $"Running StartSendMessagePipeline failed: {e}";
-                Logger.LogError(msg);
-                Trace.TraceError($"{LoggerId}{msg}");
+                MonitorLogger.LogError(msg);
             }
         });
 
@@ -182,8 +180,7 @@ public class BaseDuplexIoReceiver : IDuplexIoReceiver
             catch (Exception e)
             {
                 msg = $"Running StartFillMessagePipeline failed: {e}";
-                Logger.LogError(msg);
-                Trace.TraceError($"{LoggerId}{msg}");
+                MonitorLogger.LogError(msg);
             }
         });
     }
@@ -201,7 +198,7 @@ public class BaseDuplexIoReceiver : IDuplexIoReceiver
     /// </summary>
     public void StartFillMessagePipeline()
     {
-        Trace.TraceInformation($"{LoggerId}StartFillMessagePipeline in progress");
+        MonitorLogger.LogInformation($"{LoggerId}StartFillMessagePipeline in progress");
 
         DuplexIoNoDataDelegate?.Invoke();
 
@@ -225,7 +222,7 @@ public class BaseDuplexIoReceiver : IDuplexIoReceiver
                 }
                 catch (Exception e)
                 {
-                    Trace.TraceError($"{LoggerId}StartFillMessagePipeline failed: {e}");
+                    MonitorLogger.LogError($"StartFillMessagePipeline failed: {e}");
                 }
             });
 
@@ -248,7 +245,7 @@ public class BaseDuplexIoReceiver : IDuplexIoReceiver
                 }
                 catch (Exception e)
                 {
-                    Trace.TraceError($"{LoggerId}StartFillMessagePipeline failed: {e}");
+                    MonitorLogger.LogError($"StartFillMessagePipeline failed: {e}");
                 }
             });
         }
@@ -259,7 +256,8 @@ public class BaseDuplexIoReceiver : IDuplexIoReceiver
     /// </summary>
     public void StartSendMessagePipeline()
     {
-        Trace.TraceInformation($"{LoggerId}StartSendMessagePipeline in progress");
+        var msg = $"{LoggerId}StartSendMessagePipeline in progress";
+        MonitorLogger.LogInformation(msg);
 
         try
         {
@@ -291,7 +289,9 @@ public class BaseDuplexIoReceiver : IDuplexIoReceiver
                 }
                 catch (Exception e)
                 {
-                    Trace.TraceError($"{LoggerId}StartFillMessagePipeline failed: {e}");
+                    msg = $"StartFillMessagePipeline failed: {e}";
+                    MonitorLogger.LogError(msg);
+                    DataMessagingConfig.AppLogger.LogError($"{LoggerId}{msg}");
                 }
             });
         }

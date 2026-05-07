@@ -8,7 +8,6 @@ using Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
 using Bodoconsult.NetworkCommunication.DataMessaging.DigitalTwins;
 using Bodoconsult.NetworkCommunication.Interfaces;
 using IpDevice.Bll.Interfaces;
-using Microsoft.Diagnostics.Tracing;
 
 namespace IpDevice.Bll.BusinessLogic.Adapters;
 

@@ -8,7 +8,6 @@ using Bodoconsult.NetworkCommunication.EnumAndStates;
 using Bodoconsult.NetworkCommunication.EventSources;
 using Bodoconsult.NetworkCommunication.Helpers;
 using Bodoconsult.NetworkCommunication.Interfaces;
-using System.Diagnostics;
 
 namespace Bodoconsult.NetworkCommunication.Communication;
 
@@ -28,6 +27,7 @@ public class IpCommunicationHandler : ICommunicationHandler
     private readonly SyncProcessManager<long, MessageSendingResult> _syncProcessManager = new();
     private readonly ProducerConsumerQueue<IOutboundMessage> _outBoundQueue = new();
     private readonly ProducerConsumerQueue<IInboundDataMessage> _inboundQueue = new();
+    private readonly IAppLoggerProxy _monitorLogger;
 
     /// <summary>
     /// Default ctor
@@ -41,6 +41,7 @@ public class IpCommunicationHandler : ICommunicationHandler
 
         DuplexIo = duplexIo;
         DataMessagingConfig = dataMessagingConfig;
+        _monitorLogger = DataMessagingConfig.MonitorLogger;
         _loggerId = $"{DataMessagingConfig.LoggerId}{(dataMessagingConfig.LoggerId.EndsWith(": ") ? "" : ": ")}IpCommunicationHandler: ";
 
         UpdateDevice();
@@ -91,7 +92,7 @@ public class IpCommunicationHandler : ICommunicationHandler
     /// <param name="reason">The reason why the message was not sent</param>
     public void OnMessageNotSent(ReadOnlyMemory<byte> message, string? reason)
     {
-        DataMessagingConfig.MonitorLogger.LogWarning($"message not sent: '{DataMessageHelper.GetStringFromArrayCsharpStyle(message)}' \n Reason: '{reason}'");
+        _monitorLogger.LogWarning($"message not sent: '{DataMessageHelper.GetStringFromArrayCsharpStyle(message)}' \n Reason: '{reason}'");
     }
 
     private void OnNotExpectedMessageReceivedEvent(IInboundDataMessage e)
@@ -113,7 +114,7 @@ public class IpCommunicationHandler : ICommunicationHandler
             {
                 var s = $"Enqueue message {message.ToShortInfoString()}";
                 //Trace.TraceInformation(s);
-                DataMessagingConfig.MonitorLogger.LogDebug(s);
+                _monitorLogger.LogDebug(s);
             }
 
             message.RaiseStopSyncExecutionDelegate = StopExecutionOfSyncOrder;
@@ -137,7 +138,9 @@ public class IpCommunicationHandler : ICommunicationHandler
         }
         catch (Exception e)
         {
-            Trace.TraceError($"{_loggerId}SendMessage failed: {e}");
+            var msg = $"SendMessage failed: {e}";
+            _monitorLogger.LogError(msg);
+            DataMessagingConfig.AppLogger.LogError($"{_loggerId}{msg}");
             throw;
         }
     }
@@ -161,7 +164,7 @@ public class IpCommunicationHandler : ICommunicationHandler
     public void OnReceivedMessage(IInboundDataMessage message)
     {
         _inboundQueue.Enqueue(message);
-        Trace.TraceInformation($"{_loggerId}received message {message.MessageId}: {message.RawMessageData.Length} bytes");
+        _monitorLogger.LogDebug($"received message {message.MessageId}: {message.RawMessageData.Length} bytes");
     }
 
     ///// <summary>
@@ -194,7 +197,9 @@ public class IpCommunicationHandler : ICommunicationHandler
             }
             catch (Exception e)
             {
-                Trace.TraceError($"{_loggerId}:SocketConnect:{e}");
+                var msg = $"connecting failed: {e}";
+                _monitorLogger.LogError(msg);
+                DataMessagingConfig.AppLogger.LogError($"{_loggerId}{msg}");
                 return Task.CompletedTask;
             }
 
@@ -209,7 +214,9 @@ public class IpCommunicationHandler : ICommunicationHandler
             }
             catch (Exception e)
             {
-                Trace.TraceError($"{_loggerId}:StartCommunication: {e}");
+                var msg = $"StartCommunication failed: {e}";
+                _monitorLogger.LogError(msg);
+                DataMessagingConfig.AppLogger.LogError($"{_loggerId}{msg}");
                 return Task.CompletedTask;
             }
 
@@ -253,7 +260,7 @@ public class IpCommunicationHandler : ICommunicationHandler
 
             if (DataMessagingConfig.RaiseAppLayerDataMessageReceivedDelegate == null)
             {
-                Trace.TraceWarning($"{_loggerId}DataMessagingConfig.RaiseAppLayerDataMessageReceivedDelegate is null");
+                _monitorLogger.LogDebug($"{_loggerId}DataMessagingConfig.RaiseAppLayerDataMessageReceivedDelegate is null");
             }
             else
             {
@@ -267,7 +274,9 @@ public class IpCommunicationHandler : ICommunicationHandler
                     }
                     catch (Exception e)
                     {
-                        Trace.TraceError($"{_loggerId}RaiseAppLayerDataMessageReceivedDelegate.Invoke: {e}");
+                        var msg = $"RaiseAppLayerDataMessageReceivedDelegate.Invoke: {e}";
+                        _monitorLogger.LogError(msg);
+                        DataMessagingConfig.AppLogger.LogError($"{_loggerId}{msg}");
                     }
                 });
                 //.ContinueWith(Callback);
@@ -281,20 +290,23 @@ public class IpCommunicationHandler : ICommunicationHandler
         }
         catch (Exception e)
         {
-            DataMessagingConfig.MonitorLogger.LogError($"{_loggerId}received message {message.MessageId} but handling failed", e);
+            var msg = $"received message {message.MessageId} but handling failed: {e}";
+            _monitorLogger.LogError(msg);
+            DataMessagingConfig.AppLogger.LogError($"{_loggerId}{msg}");
         }
     }
 
     private async void OutboundConsumerTaskDelegate(IOutboundMessage message)
     {
+        string msg;
+
         try
         {
             // Todo: check if blocking
             if (ActivateLogging)
             {
-                var s = $"Send message {message.ToShortInfoString()}";
-                Trace.TraceInformation(s);
-                DataMessagingConfig.MonitorLogger.LogDebug(s);
+                msg = $"Send message {message.ToShortInfoString()}";
+                _monitorLogger.LogDebug(msg);
             }
 
             var erg = await DuplexIo.SendMessage(message);
@@ -309,9 +321,9 @@ public class IpCommunicationHandler : ICommunicationHandler
         }
         catch (Exception e)
         {
-            var s = $"Send message {message.ToShortInfoString()} failed";
-            Trace.TraceError($"IpCommunicationHandler: {s}");
-            DataMessagingConfig.MonitorLogger.LogError(s, e);
+            msg = $"sending message {message.MessageId} failed: {e}";
+            _monitorLogger.LogError(msg);
+            DataMessagingConfig.AppLogger.LogError($"{_loggerId}{msg}");
 
             message.RaiseStopSyncExecutionDelegate?.Invoke(
                 new MessageSendingResult(message, OrderExecutionResultState.Error)
@@ -331,7 +343,7 @@ public class IpCommunicationHandler : ICommunicationHandler
 
         DuplexIo.StopCommunication().Wait(5000);
         SocketProxy?.Close();
-        DataMessagingConfig.MonitorLogger.LogDebug($"{DataMessagingConfig.LoggerId}disconnect - Socket has been closed.");
+        _monitorLogger.LogDebug("disconnecting - Socket has been closed.");
         _isInitialized = false;
     }
 

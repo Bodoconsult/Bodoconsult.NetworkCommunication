@@ -1,7 +1,6 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
 using Bodoconsult.App.Abstractions.Interfaces;
-using Bodoconsult.App.BusinessTransactions.RequestData;
 using Bodoconsult.App.Interfaces;
 using Bodoconsult.NetworkCommunication.ClientNotifications;
 using Bodoconsult.NetworkCommunication.Factories;
@@ -9,7 +8,6 @@ using Bodoconsult.NetworkCommunication.Interfaces;
 using IpBackend.Bll.BusinessTransactions.Providers;
 using IpBackend.Bll.Communication;
 using IpBackend.Bll.Interfaces;
-using IpCommunicationSample.Common.BusinessTransactions;
 
 namespace IpBackend.Bll.BusinessLogic;
 

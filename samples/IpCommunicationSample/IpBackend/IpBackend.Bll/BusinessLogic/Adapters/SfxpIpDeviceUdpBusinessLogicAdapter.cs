@@ -2,7 +2,6 @@
 
 using Bodoconsult.App.Abstractions.Interfaces;
 using Bodoconsult.App.BusinessTransactions.Replies;
-using Bodoconsult.App.Interfaces;
 using Bodoconsult.NetworkCommunication.BusinessLogicAdapters;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
 using Bodoconsult.NetworkCommunication.EnumAndStates;
@@ -41,7 +40,6 @@ public class SfxpIpDeviceUdpBusinessLogicAdapter : BaseSimpleDeviceBusinessLogic
             var msg = $"Received message {_messageCounter} with {message.RawMessageData.Length} bytes";
             //Debug.Print(msg);
             IpDevice.DataMessagingConfig.AppLogger.LogInformation(msg);
-            Trace.TraceInformation($"SfxpIpDeviceUdpBusinessLogicAdapter: {msg}");
         }
 
         if (_messageCounter == long.MaxValue)

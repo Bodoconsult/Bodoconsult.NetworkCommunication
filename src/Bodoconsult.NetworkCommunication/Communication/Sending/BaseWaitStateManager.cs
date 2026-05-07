@@ -1,6 +1,5 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
-using System.Diagnostics;
 using Bodoconsult.App.Abstractions.Interfaces;
 using Bodoconsult.App.Helpers;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
@@ -65,8 +64,7 @@ public abstract class BaseWaitStateManager : IWaitStateManager
     /// <param name="msg">Data message</param>
     public virtual void OnHandshakeReceived(IInboundHandShakeMessage msg)
     {
-
-        Trace.TraceInformation($"{LoggerId}Handshake reached wait state manager 1");
+        DataMessagingConfig.MonitorLogger.LogInformation($"{LoggerId}Handshake reached wait state manager 1");
 
         if (msg is not InboundHandshakeMessage handshake)
         {
@@ -91,7 +89,6 @@ public abstract class BaseWaitStateManager : IWaitStateManager
         catch (Exception e)
         {
             var msg1 = $"Handshake {handshake.HandshakeMessageType} received but handling error: {e}";
-            Trace.TraceError($"{LoggerId}{msg1}");
             DataMessagingConfig.MonitorLogger.LogError(msg1);
         }
     }
@@ -114,8 +111,7 @@ public abstract class BaseWaitStateManager : IWaitStateManager
             WaitStates.Add(state);
         }
         //Smddevice.MonitorLogger.LogInformation("WaitState registered");
-        Trace.TraceInformation($"{LoggerId}WSM: WaitState registered: {Count}");
-
+        DataMessagingConfig.MonitorLogger.LogInformation($"{LoggerId}WSM: WaitState registered: {Count}");
     }
 
     /// <summary>
@@ -158,7 +154,7 @@ public abstract class BaseWaitStateManager : IWaitStateManager
         var waitStateCount = Count;
 
         var msg = $"{LoggerId}Handshake {handshake.HandshakeMessageType} reached wait state manager 2: ({waitStateCount} states waiting)";
-        Trace.TraceInformation(msg);
+        DataMessagingConfig.MonitorLogger.LogDebug(msg);
 
         List<SendPacketProcess> waitStates;
 

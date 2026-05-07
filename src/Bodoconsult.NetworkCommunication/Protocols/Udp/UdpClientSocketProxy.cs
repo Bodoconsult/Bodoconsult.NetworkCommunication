@@ -6,10 +6,10 @@
 // https://learn.microsoft.com/de-de/dotnet/framework/network-programming/using-udp-services
 // https://enclave.io/high-performance-udp-sockets-net6/
 
-using System.Diagnostics;
+using Bodoconsult.App.Abstractions.Interfaces;
+using Bodoconsult.NetworkCommunication.Interfaces;
 using System.Net;
 using System.Net.Sockets;
-using Bodoconsult.NetworkCommunication.Interfaces;
 
 namespace Bodoconsult.NetworkCommunication.Protocols.Udp;
 
@@ -18,13 +18,17 @@ namespace Bodoconsult.NetworkCommunication.Protocols.Udp;
 /// </summary>
 public class UdpClientSocketProxy : BaseUpdSocketProxy
 {
-
-    //private readonly byte[] _tmp = new byte[1];
-
     /// <summary>
     /// Endpoint for listening
     /// </summary>
     protected IPEndPoint? EndPoint;
+
+    /// <summary>
+    /// Default ctor
+    /// </summary>
+    /// <param name="logger">Current monitor logger</param>
+    public UdpClientSocketProxy(IAppLoggerProxy logger) : base(logger)
+    { }
 
     /// <summary>
     /// Endpoint for listening
@@ -229,14 +233,13 @@ public class UdpClientSocketProxy : BaseUpdSocketProxy
                 SendEndPoint = EndPoint;
 
                 //UdpClient.Connect(EndPoint);
-                Trace.TraceInformation($"{LoggerId}connected to IPAddress.Any:{Port}");
+                Logger.LogInformation($"{LoggerId}connected to IPAddress.Any:{Port}");
                 _isBound = true;
             }
             catch (Exception e)
             {
                 // ToDo: add logging
-                var s = e.ToString();
-                Trace.TraceError($"{LoggerId}{s}");
+                Logger.LogError($"{LoggerId}{e}");
                 _isBound = false;
                 throw;
             }
@@ -259,29 +262,25 @@ public class UdpClientSocketProxy : BaseUpdSocketProxy
         {
             var result = await UdpClient.ReceiveAsync(CancellationTokenSource.Token);
             result.Buffer.CopyTo(buffer, 0);
-            Trace.TraceInformation($"{LoggerId}received {result.Buffer.Length} bytes");
+            Logger.LogInformation($"{LoggerId}received {result.Buffer.Length} bytes");
             return result.Buffer.Length;
         }
         catch (SocketException socketException)
         {
             if (socketException.ErrorCode != 10054)
             {
-                Logger?.LogError("Receiving failed", socketException);
-                var s = socketException.ToString();
-                Trace.TraceError($"{LoggerId}{s}");
+                Logger.LogError($"{LoggerId}Receiving failed", socketException);
             }
             else
             {
-                Logger?.LogDebug("No connection");
+                Logger.LogDebug($"{LoggerId}No connection");
             }
 
             return 0;
         }
         catch (Exception e)
         {
-            Logger?.LogError("Receiving failed", e);
-            var s = e.ToString();
-            Trace.TraceError($"{LoggerId}{s}");
+            Logger.LogError($"{LoggerId}Receiving failed", e);
             return 0;
         }
     }
@@ -302,29 +301,25 @@ public class UdpClientSocketProxy : BaseUpdSocketProxy
         {
             var result = await UdpClient.ReceiveAsync(CancellationTokenSource.Token).AsTask();
             result.Buffer.CopyTo(buffer);
-            Trace.TraceInformation($"{LoggerId}received {result.Buffer.Length} bytes");
+            Logger.LogInformation($"{LoggerId}received {result.Buffer.Length} bytes");
             return result.Buffer.Length;
         }
         catch (SocketException socketException)
         {
             if (socketException.ErrorCode != 10054)
             {
-                Logger?.LogError("Receiving failed", socketException);
-                var s = socketException.ToString();
-                Trace.TraceError($"{LoggerId}{s}");
+                Logger.LogError($"{LoggerId}Receiving failed", socketException);
             }
             else
             {
-                Logger?.LogDebug("No connection");
+                Logger.LogDebug($"{LoggerId}No connection");
             }
 
             return 0;
         }
         catch (Exception e)
         {
-            Logger?.LogError("Receiving failed", e);
-            var s = e.ToString();
-            Trace.TraceError($"{LoggerId}{s}");
+            Logger.LogError($"{LoggerId}Receiving failed", e);
             return 0;
         }
     }
@@ -341,9 +336,7 @@ public class UdpClientSocketProxy : BaseUpdSocketProxy
         }
         catch (Exception e)
         {
-            Logger?.LogError("Polling failed", e);
-            var s = e.ToString();
-            Trace.TraceError($"{LoggerId}{s}");
+            Logger.LogError($"{LoggerId}Polling failed", e);
             return false;
         }
     }

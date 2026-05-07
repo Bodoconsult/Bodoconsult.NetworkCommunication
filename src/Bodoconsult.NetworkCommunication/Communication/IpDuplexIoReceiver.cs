@@ -3,7 +3,6 @@
 using System.Buffers;
 using System.Diagnostics;
 using System.Net.Sockets;
-using System.Text;
 using Bodoconsult.App.BufferPool;
 using Bodoconsult.App.Helpers;
 using Bodoconsult.NetworkCommunication.Delegates;
@@ -68,11 +67,8 @@ public class IpDuplexIoReceiver : BaseDuplexIoReceiver
         _buffer = chunk;
 
         var msg = $"Data in buffer: {DataMessageHelper.GetStringFromArrayCsharpStyle(ref _buffer)}";
-        //Trace.TraceInformation(msg);
-        Logger.LogInformation(msg);
-        Trace.TraceInformation($"{LoggerId}{msg}");
+        MonitorLogger.LogInformation(msg);
 
-        //Trace.TraceInformation($"DuplexIoReceiver: data in buffer {Encoding.UTF8.GetString(_buffer)}");
 
         while (DataMessageSplitter.TryReadCommand(ref _buffer, out var command))
         {
@@ -98,8 +94,8 @@ public class IpDuplexIoReceiver : BaseDuplexIoReceiver
             {
                 msg = $"Parsing command failed with error code {codecResult.ErrorCode}: {codecResult.ErrorMessage}: {DataMessageHelper.GetStringFromArrayCsharpStyle(ref command)}";
                 //Trace.TraceInformation(msg);
-                Logger?.LogDebug(msg);
-                Trace.TraceError($"{LoggerId}DuplexIoReceiver: {msg}");
+                MonitorLogger?.LogError(msg);
+                DataMessagingConfig.AppLogger.LogError($"{LoggerId}{msg}");
                 ArrayPool.Return(array);
                 return;
             }
@@ -108,13 +104,15 @@ public class IpDuplexIoReceiver : BaseDuplexIoReceiver
             if (!validationResult.IsMessageValid)
             {
                 msg = $"Parsed command NOT valid: {validationResult.ValidationResult}: {DataMessageHelper.GetStringFromArrayCsharpStyle(ref command)}";
-                Logger?.LogDebug(msg);
-                Trace.TraceError($"{LoggerId}DuplexIoReceiver: {msg}");
+                MonitorLogger?.LogError(msg);
+                DataMessagingConfig.AppLogger.LogError($"{LoggerId}{msg}");
             }
             else
             {
+#if DEBUG
                 msg = $"Parsed command {DataMessageHelper.GetStringFromArrayCsharpStyle(ref command)}";
                 DataMessagingConfig.MonitorLogger?.LogDebug(msg);
+#endif
 
                 DataMessageProcessor.ProcessMessage(codecResult.DataMessage);
             }
@@ -162,7 +160,7 @@ public class IpDuplexIoReceiver : BaseDuplexIoReceiver
         }
         catch (Exception e)
         {
-            Logger.LogError("CancellationToken cancelling failed", e);
+            MonitorLogger.LogError("CancellationToken cancelling failed", e);
         }
         finally
         {
@@ -181,6 +179,8 @@ public class IpDuplexIoReceiver : BaseDuplexIoReceiver
     /// <returns>Received device message or null in case of any error</returns>
     public override async Task FillMessagePipeline()
     {
+        string msg;
+
         ArgumentNullException.ThrowIfNull(DuplexIoIsWorkInProgressDelegate);
         ArgumentNullException.ThrowIfNull(DuplexIoNoDataDelegate);
 
@@ -190,7 +190,7 @@ public class IpDuplexIoReceiver : BaseDuplexIoReceiver
             return;
         }
 
-        Trace.TraceInformation($"{LoggerId}FillMessagePipeline started");
+        MonitorLogger.LogInformation($"{LoggerId}FillMessagePipeline started");
 
         //try
         //{
@@ -214,7 +214,9 @@ public class IpDuplexIoReceiver : BaseDuplexIoReceiver
             }
             catch (Exception e)
             {
-                Trace.TraceError($"{LoggerId}FillMessagePipeline exception: {e}");
+                msg = $"{LoggerId}FillMessagePipeline exception: {e}";
+                MonitorLogger?.LogError(msg);
+                DataMessagingConfig.AppLogger.LogError($"{LoggerId}{msg}");
                 return;
             }
 
@@ -228,7 +230,9 @@ public class IpDuplexIoReceiver : BaseDuplexIoReceiver
 
             if (DuplexIoIsWorkInProgressDelegate.Invoke())
             {
-                Trace.TraceWarning($"{LoggerId}Other operation in progress");
+                msg = "Other operation in progress";
+                MonitorLogger?.LogError(msg);
+                DataMessagingConfig.AppLogger.LogError($"{LoggerId}{msg}");
                 AsyncHelper.Delay(FillPipelineTimeout);
                 continue;
             }
@@ -273,10 +277,9 @@ public class IpDuplexIoReceiver : BaseDuplexIoReceiver
 
     private Task RaiseException(Exception ex)
     {
-        //await StopReceiver();
+        string msg;
 
         CancellationSource?.Cancel();
-        Trace.TraceError(ex.ToString());
 
         try
         {
@@ -285,12 +288,28 @@ public class IpDuplexIoReceiver : BaseDuplexIoReceiver
         catch (Exception e)
         {
             // Do nothing
-            var msg = "DuplexIoSetNotInProgressDelegate raised an exception";
-            DataMessagingConfig.MonitorLogger.LogError("DuplexIoSetNotInProgressDelegate raised an exception", e);
-            Trace.TraceError($"{LoggerId}{msg}");
+            msg = $"DuplexIoSetNotInProgressDelegate failed: {e}";
+            MonitorLogger.LogError(msg);
+            DataMessagingConfig.AppLogger.LogError($"{LoggerId}{msg}");
         }
 
-        AsyncHelper.FireAndForget(() => DataMessagingConfig.DuplexIoErrorHandlerDelegate?.Invoke(ex));
+        AsyncHelper.FireAndForget(() =>
+        {
+            try
+            {
+                DataMessagingConfig.DuplexIoErrorHandlerDelegate?.Invoke(ex);
+            }
+            catch (Exception e)
+            {
+                msg = $"DuplexIoErrorHandlerDelegate failed: {e}";
+                MonitorLogger.LogError(msg);
+                DataMessagingConfig.AppLogger.LogError($"{LoggerId}{msg}");
+            }
+        });
+
+        msg = "Device not connected";
+        MonitorLogger.LogError(msg);
+        DataMessagingConfig.AppLogger.LogError($"{LoggerId}{msg}");
 
         return Task.CompletedTask;
     }

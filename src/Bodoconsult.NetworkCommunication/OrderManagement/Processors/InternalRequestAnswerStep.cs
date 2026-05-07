@@ -1,6 +1,5 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
-using System.Diagnostics;
 using Bodoconsult.NetworkCommunication.EnumAndStates;
 using Bodoconsult.NetworkCommunication.Interfaces;
 
@@ -89,10 +88,17 @@ public class InternalRequestAnswerStep : BaseRequestAnswerStep, IInternalRequest
                         ErrorDescription = "Received message is null"
                     };
                 }
-                Trace.TraceInformation($"{answer.HandleRequestAnswerOnSuccessDelegate.Method.Name}");
-                Trace.TraceInformation("Start delegate...");
+
+#if DEBUG
+                RequestSpec.AppLogger?.LogDebug($"Start delegate {answer.HandleRequestAnswerOnSuccessDelegate.Method.Name}...");
+#endif
+
+                // Call the delegate now
                 result = answer.HandleRequestAnswerOnSuccessDelegate.Invoke(answer.ReceivedMessage, requestSpec.TransportObject, requestSpec.ParameterSet);
-                Trace.TraceInformation("End delegate...");
+
+#if DEBUG
+                RequestSpec.AppLogger?.LogDebug("End delegate...");
+#endif
             }
             catch (Exception e)
             {

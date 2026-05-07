@@ -2,8 +2,6 @@
 
 using Bodoconsult.App.Abstractions.Interfaces;
 using Bodoconsult.App.Helpers;
-using Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
-using Bodoconsult.NetworkCommunication.EnumAndStates;
 using Bodoconsult.NetworkCommunication.Interfaces;
 using Bodoconsult.NetworkCommunication.Tests.Helpers;
 using Bodoconsult.NetworkCommunication.Tests.Interfaces;
@@ -11,7 +9,6 @@ using System.Diagnostics;
 using System.Net;
 using System.Net.Sockets;
 using System.Security;
-using Bodoconsult.NetworkCommunication.DataMessaging.DataBlocks;
 
 namespace Bodoconsult.NetworkCommunication.Tests.Infrastructure;
 
@@ -67,7 +64,7 @@ public class BaseUdpTests : IUdpTests
     /// <summary>
     /// General log file
     /// </summary>
-    public IAppLoggerProxy Logger { get; set; } = TestDataHelper.GetFakeAppLoggerProxy();
+    public IAppLoggerProxy Logger { get; set; } = TestDataHelper.Logger;
 
     /// <summary>
     ///  Bind the delegates for testing
@@ -140,7 +137,7 @@ public class BaseUdpTests : IUdpTests
 
             Wait.Until(() => MessageCounter >= expectedCount);
 
-            Trace.TraceInformation($"Waited for {MessageCounter} messages!");
+            Debug.Print($"Waited for {MessageCounter} messages!");
 
             cts.Cancel();
         });
@@ -157,7 +154,7 @@ public class BaseUdpTests : IUdpTests
                 if (MessageCounter >= expectedCount)
                 {
                     tcs1.SetResult(true);
-                    Trace.TraceInformation($"Exit waiting with {MessageCounter} messages!");
+                    Debug.Print($"Exit waiting with {MessageCounter} messages!");
                     return;
                 }
 
@@ -166,7 +163,7 @@ public class BaseUdpTests : IUdpTests
                     continue;
                 }
 
-                Trace.TraceInformation($"Exit: {RemoteUdpDevice.ReceivedMessages.Count}");
+                Debug.Print($"Exit: {RemoteUdpDevice.ReceivedMessages.Count}");
                 break;
             }
 
@@ -224,7 +221,7 @@ public class BaseUdpTests : IUdpTests
                 {
                     if (RemoteUdpDevice.ReceivedMessages.Count >= expectedCount)
                     {
-                        Trace.TraceInformation("Successful received  messages");
+                        Debug.Print("Successful received  messages");
                         tcs1.SetResult(true);
                         return;
                     }
@@ -235,7 +232,7 @@ public class BaseUdpTests : IUdpTests
                         continue;
                     }
 
-                    Trace.TraceInformation($"Exit: {RemoteUdpDevice.ReceivedMessages.Count}");
+                    Debug.Print($"Exit: {RemoteUdpDevice.ReceivedMessages.Count}");
                     break;
                 }
 
@@ -243,7 +240,7 @@ public class BaseUdpTests : IUdpTests
             }
             catch (Exception e)
             {
-                Trace.TraceInformation($"Exit2: {RemoteUdpDevice.ReceivedMessages.Count}: {e}");
+                Debug.Print($"Exit2: {RemoteUdpDevice.ReceivedMessages.Count}: {e}");
                 tcs1.SetResult(false);
             }
         });
@@ -260,7 +257,7 @@ public class BaseUdpTests : IUdpTests
 
                     await DuplexIo.SendMessage(message);
                     s = $"UdpServer: send message {index}";
-                    Trace.TraceInformation(s);
+                    Debug.Print(s);
 
                     if (cancellationToken?.IsCancellationRequested ?? false)
                     {
@@ -270,14 +267,14 @@ public class BaseUdpTests : IUdpTests
                 }
 
                 s = $"Left send loop: CancelRequest: {cts.Token.IsCancellationRequested}";
-                Trace.TraceInformation(s);
+                Debug.Print(s);
 
                 //Trace.Assert(!cts.Token.IsCancellationRequested);
 
                 Wait.Until(() => RemoteUdpDevice.ReceivedMessages.Count >= expectedCount, 10000);
 
                 s = $"Waited for messages received: {RemoteUdpDevice.ReceivedMessages.Count} / {expectedCount}";
-                Trace.TraceInformation(s);
+                Debug.Print(s);
 
                 //Trace.Assert(RemoteUdpDevice.ReceivedMessages.Count >= expectedCount);
 

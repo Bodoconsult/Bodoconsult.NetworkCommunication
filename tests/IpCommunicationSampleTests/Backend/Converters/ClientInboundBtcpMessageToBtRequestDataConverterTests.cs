@@ -18,7 +18,7 @@ internal class ClientInboundBtcpMessageToBtRequestDataConverterTests
     //{
     //}
 
-    private readonly IAppLoggerProxy _appLogger = TestDataHelper.GetFakeAppLoggerProxy();
+    private readonly IAppLoggerProxy _appLogger = TestDataHelper.Logger;
 
     [OneTimeTearDown]
     public void Cleanup()

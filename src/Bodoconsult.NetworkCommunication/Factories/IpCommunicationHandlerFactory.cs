@@ -42,9 +42,8 @@ public class IpCommunicationHandlerFactory : ICommunicationHandlerFactory
     /// <returns>An instance implementing <see cref="ICommunicationHandler"/></returns>
     public ICommunicationHandler CreateInstance(IIpDataMessagingConfig dataMessagingConfig)
     {
-        var socketProxy = _socketProxyFactory.CreateInstance(dataMessagingConfig.IsServer, dataMessagingConfig.IpProtocol, IPAddress.Parse(dataMessagingConfig.IpAddress), dataMessagingConfig.Port);
-        socketProxy.LoggerId = $"{dataMessagingConfig.LoggerId}{(dataMessagingConfig.LoggerId.EndsWith(": ") ? string.Empty: ": ")}{socketProxy.GetType().Name}: ";
-        socketProxy.Logger = dataMessagingConfig.MonitorLogger;
+        var socketProxy = _socketProxyFactory.CreateInstance(dataMessagingConfig.IsServer, dataMessagingConfig.IpProtocol, IPAddress.Parse(dataMessagingConfig.IpAddress), dataMessagingConfig.Port, dataMessagingConfig.MonitorLogger);
+        socketProxy.LoggerId = $"{dataMessagingConfig.LoggerId}{(dataMessagingConfig.LoggerId.EndsWith(": ") ? string.Empty: ": ")}";
 
         //if (dataMessagingConfig.MonitorLogger == null)
         //{

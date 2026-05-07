@@ -26,7 +26,7 @@ internal class ClientSocketProxyFactoryTests
         var protocol = IpProtocolEnum.Tcp;
 
         // Act  
-        var result = factory.CreateInstance(false,protocol, _ipAddress, _port);
+        var result = factory.CreateInstance(false,protocol, _ipAddress, _port, TestDataHelper.Logger);
 
         // Assert
         using (Assert.EnterMultipleScope())
@@ -45,7 +45,7 @@ internal class ClientSocketProxyFactoryTests
         var protocol = IpProtocolEnum.Udp;
 
         // Act  
-        var result = factory.CreateInstance(false,protocol, _ipAddress, _port);
+        var result = factory.CreateInstance(false,protocol, _ipAddress, _port, TestDataHelper.Logger);
 
         // Assert
         using (Assert.EnterMultipleScope())
@@ -64,7 +64,7 @@ internal class ClientSocketProxyFactoryTests
         var protocol = IpProtocolEnum.Tcp;
 
         // Act  
-        var result = factory.CreateInstance(true, protocol, _ipAddress, _port);
+        var result = factory.CreateInstance(true, protocol, _ipAddress, _port, TestDataHelper.Logger);
 
         // Assert
         Assert.That(result, Is.Not.Null);
@@ -80,7 +80,7 @@ internal class ClientSocketProxyFactoryTests
         var protocol = IpProtocolEnum.Udp;
 
         // Act  
-        var result = factory.CreateInstance(true, protocol, _ipAddress, _port);
+        var result = factory.CreateInstance(true, protocol, _ipAddress, _port, TestDataHelper.Logger);
 
         // Assert
         Assert.That(result, Is.Not.Null);

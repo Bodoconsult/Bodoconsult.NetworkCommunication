@@ -1,12 +1,10 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
 using System.Buffers;
-using System.Diagnostics;
 using System.IO.Pipelines;
 using System.Net.Sockets;
 using System.Runtime.InteropServices;
 using Bodoconsult.App.Helpers;
-using Bodoconsult.NetworkCommunication.Helpers;
 using Bodoconsult.NetworkCommunication.Interfaces;
 
 namespace Bodoconsult.NetworkCommunication.Communication;
@@ -206,7 +204,7 @@ public class IpHighPerformanceDuplexIoSender : BaseDuplexIoSender
     /// <returns></returns>
     protected async Task SendMessageInternal(ReadOnlySequence<byte> command)
     {
-
+        string msg;
         var success = SequenceMarshal.TryGetReadOnlyMemory(command, out var readOnlyMemory);
 
         var sent = 0;
@@ -216,11 +214,13 @@ public class IpHighPerformanceDuplexIoSender : BaseDuplexIoSender
             try
             {
                 sent = await _socketProxy.Send(readOnlyMemory);
-                Trace.TraceInformation($"command: {command.Length} bytes: {sent} bytes sent");
             }
             catch (SocketException socketException)
             {
-                Trace.TraceError(socketException.ToString());
+                msg = $"FillMessagePipeline failed: {socketException}";
+                DataMessagingConfig.MonitorLogger.LogError(msg);
+                DataMessagingConfig.AppLogger.LogError($"{DataMessagingConfig.LoggerId}: {msg}");
+
                 AsyncHelper.FireAndForget(() => DataMessagingConfig.RaiseComDevCloseRequestDelegate?.Invoke("TcpIpDuplexIoSender"));
                 AsyncHelper.FireAndForget(() => DataMessagingConfig.RaiseDataMessageNotSentDelegate?.Invoke(command.ToArray(), socketException.Message));
                 AsyncHelper.FireAndForget(() => DataMessagingConfig.DuplexIoErrorHandlerDelegate?.Invoke(socketException));
@@ -228,7 +228,9 @@ public class IpHighPerformanceDuplexIoSender : BaseDuplexIoSender
             }
             catch (Exception e)
             {
-                Trace.TraceError(e.ToString());
+                msg = $"FillMessagePipeline failed: {e}";
+                DataMessagingConfig.MonitorLogger.LogError(msg);
+                DataMessagingConfig.AppLogger.LogError($"{DataMessagingConfig.LoggerId}: {msg}");
                 AsyncHelper.FireAndForget(() => DataMessagingConfig.RaiseDataMessageNotSentDelegate?.Invoke(command.ToArray(), e.Message));
                 AsyncHelper.FireAndForget(() => DataMessagingConfig.DuplexIoErrorHandlerDelegate?.Invoke(e));
                 return;
@@ -239,13 +241,13 @@ public class IpHighPerformanceDuplexIoSender : BaseDuplexIoSender
         {
             AsyncHelper.FireAndForget(() => DataMessagingConfig.RaiseDataMessageNotSentDelegate?.Invoke(command.ToArray(), "Reason unknown"));
 
-            const string s = "message could not be sent via TCP socket.";
-            Trace.TraceError(s);
-            DataMessagingConfig.MonitorLogger.LogError(s);
+            msg = "message could not be sent via socket: unknown reason";
+            DataMessagingConfig.MonitorLogger.LogError(msg);
+            DataMessagingConfig.AppLogger.LogError($"{DataMessagingConfig.LoggerId}: {msg}");
             return;
         }
 
-        DataMessagingConfig.MonitorLogger.LogInformation($"sent to device: {DataMessageHelper.GetStringFromArrayCsharpStyle(command.ToArray())}");
+        DataMessagingConfig.MonitorLogger.LogInformation($"sent {command.Length} bytes to device");
     }
 
     /// <summary>

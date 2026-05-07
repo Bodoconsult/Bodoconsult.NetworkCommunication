@@ -149,7 +149,7 @@ public static class JsonHelper
         }
         catch (Exception e)
         {
-            Trace.TraceInformation(e.ToString());
+            Debug.Print(e.ToString());
             return default;
         }
     }
@@ -184,7 +184,7 @@ public static class JsonHelper
         //}
         //catch (Exception e)
         //{
-        //    Trace.TraceInformation(e.ToString());
+        //    Debug.Print(e.ToString());
         //    return default;
         //}
 
@@ -197,7 +197,7 @@ public static class JsonHelper
         }
         catch (Exception e)
         {
-            Trace.TraceInformation(e.ToString());
+            Debug.Print(e.ToString());
             return default;
         }
     }
@@ -239,7 +239,7 @@ public static class JsonHelper
         }
         catch (Exception e)
         {
-            Trace.TraceInformation(e.ToString());
+            Debug.Print(e.ToString());
             return default;
         }
     }
@@ -271,7 +271,7 @@ public static class JsonHelper
         }
         catch (Exception e)
         {
-            Trace.TraceInformation(e.ToString());
+            Debug.Print(e.ToString());
             return default;
         }
     }
@@ -318,7 +318,7 @@ public static class JsonHelper
         }
         catch (Exception e)
         {
-            Trace.TraceInformation(e.ToString());
+            Debug.Print(e.ToString());
             return null;
         }
 
@@ -343,7 +343,7 @@ public static class JsonHelper
         }
         catch (Exception e)
         {
-            Trace.TraceInformation(e.ToString());
+            Debug.Print(e.ToString());
             return null;
         }
     }
@@ -377,7 +377,7 @@ public static class JsonHelper
         }
         catch (Exception e)
         {
-            Trace.TraceInformation(e.ToString());
+            Debug.Print(e.ToString());
             return null;
         }
     }

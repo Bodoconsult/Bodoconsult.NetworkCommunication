@@ -41,7 +41,7 @@ public class EdcpServerDataMessageProcessingPackage : IDataMessageProcessingPack
         DataMessageSplitter = new EdcpDataMessageSplitter();
 
         // 2. Codecs
-        DataMessageCodingProcessor = new DefaultDataMessageCodingProcessor();
+        DataMessageCodingProcessor = new DefaultDataMessageCodingProcessor(DataMessagingConfig.MonitorLogger);
         DataBlockCodingProcessor = new DefaultDataBlockCodingProcessor();
         LoadCodecs();
 

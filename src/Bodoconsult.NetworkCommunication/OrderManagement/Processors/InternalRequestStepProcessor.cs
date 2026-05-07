@@ -1,6 +1,5 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
-using System.Diagnostics;
 using Bodoconsult.App.Abstractions.Interfaces;
 using Bodoconsult.NetworkCommunication.EnumAndStates;
 using Bodoconsult.NetworkCommunication.Interfaces;
@@ -179,7 +178,6 @@ public class InternalRequestStepProcessor : IInternalRequestStepProcessor
         var step = requestSpec.RequestAnswerSteps[0];
 
         var s = $"{OrderLoggerId}RequestAnswerStep {0}: prepare start";
-        Trace.TraceInformation(s);
         AppLogger.LogDebug(s);
 
         if (IsCancelled)

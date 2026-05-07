@@ -10,7 +10,7 @@ namespace IpCommunicationSampleTests.Client.Converters;
 [TestFixture]
 internal class BackendInboundBtcpMessageToBtReplyConverterTests
 {
-    private readonly IAppLoggerProxy _appLogger = TestDataHelper.GetFakeAppLoggerProxy();
+    private readonly IAppLoggerProxy _appLogger = TestDataHelper.Logger;
 
     [OneTimeTearDown]
     public void Cleanup()

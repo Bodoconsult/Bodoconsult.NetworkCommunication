@@ -14,7 +14,7 @@ namespace IpCommunicationSampleTests.Backend.Converters;
 [TestFixture]
 internal class ClientBtReplyToOutboundDataMessageConverterTests
 {
-    private readonly IAppLoggerProxy _appLogger = TestDataHelper.GetFakeAppLoggerProxy();
+    private readonly IAppLoggerProxy _appLogger = TestDataHelper.Logger;
 
     [OneTimeTearDown]
     public void Cleanup()

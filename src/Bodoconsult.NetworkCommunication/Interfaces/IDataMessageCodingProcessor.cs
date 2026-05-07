@@ -2,6 +2,8 @@
 // Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 // Licence MIT
 
+using Bodoconsult.App.Abstractions.Interfaces;
+
 namespace Bodoconsult.NetworkCommunication.Interfaces;
 
 /// <summary>
@@ -9,6 +11,11 @@ namespace Bodoconsult.NetworkCommunication.Interfaces;
 /// </summary>
 public interface IDataMessageCodingProcessor
 {
+    /// <summary>
+    /// Current logger
+    /// </summary>
+    IAppLoggerProxy Logger { get; }
+
     /// <summary>
     /// All loaded message codecs
     /// </summary>

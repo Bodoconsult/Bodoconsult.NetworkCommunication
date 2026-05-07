@@ -2,6 +2,7 @@
 // Licence MIT
 
 using System.Net;
+using Bodoconsult.App.Abstractions.Interfaces;
 using Bodoconsult.NetworkCommunication.EnumAndStates;
 
 namespace Bodoconsult.NetworkCommunication.Interfaces;
@@ -18,6 +19,8 @@ public interface ISocketProxyFactory
     /// <param name="protocol">IP base protocol to be used</param>
     /// <param name="ipAddress">IP address</param>
     /// <param name="port">Port</param>
+    /// <param name="monitorlogger"></param>
     /// <returns>Instance of <see cref="ISocketProxy"/></returns>
-    ISocketProxy CreateInstance(bool isServer, IpProtocolEnum protocol, IPAddress ipAddress, int port);
+    ISocketProxy CreateInstance(bool isServer, IpProtocolEnum protocol, IPAddress ipAddress, int port,
+        IAppLoggerProxy monitorlogger);
 }

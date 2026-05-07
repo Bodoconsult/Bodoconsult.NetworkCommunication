@@ -5,6 +5,7 @@ using Bodoconsult.App.Abstractions.DependencyInjection;
 using Bodoconsult.App.BusinessTransactions.RequestData;
 using Bodoconsult.App.Helpers;
 using Bodoconsult.NetworkCommunication.Interfaces;
+using Bodoconsult.NetworkCommunication.Tests.App;
 using IpBackend.Bll.BusinessLogic.Adapters;
 using IpBackend.Bll.Interfaces;
 using IpBackendService.DiContainerProvider;

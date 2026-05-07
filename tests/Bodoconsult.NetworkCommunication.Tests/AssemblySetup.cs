@@ -2,6 +2,7 @@
 
 using Bodoconsult.App.Extensions;
 using Bodoconsult.NetworkCommunication.Tests.App;
+using Bodoconsult.NetworkCommunication.Tests.Helpers;
 using System.Diagnostics;
 
 namespace Bodoconsult.NetworkCommunication.Tests;
@@ -45,22 +46,24 @@ public static class AssemblySetup
         // Now load the globally needed settings
         builder.LoadGlobalSettings();
 
-        Globals.Instance.Logger?.LogInformation("Starting tests...");
+        ArgumentNullException.ThrowIfNull(Globals.Instance.Logger);
+        Globals.Instance.Logger.LogInformation("Starting tests...");
+        TestDataHelper.Logger = Globals.Instance.Logger;
 
-        var traceFile = Path.Combine(param.LogfilePath,"TraceLog.txt");
+        //var traceFile = Path.Combine(param.LogfilePath,"TraceLog.txt");
 
-        if (File.Exists(traceFile))
-        {
-            try
-            {
-                File.Delete(traceFile);
-            }
-            catch (Exception e)
-            {
-                Debug.Print(e.ToString());
-            }
-        }
+        //if (File.Exists(traceFile))
+        //{
+        //    try
+        //    {
+        //        File.Delete(traceFile);
+        //    }
+        //    catch (Exception e)
+        //    {
+        //        Debug.Print(e.ToString());
+        //    }
+        //}
 
-        Trace.Listeners.Add(new TextWriterTraceListener(traceFile));
+        //Trace.Listeners.Add(new TextWriterTraceListener(traceFile));
     }
 }

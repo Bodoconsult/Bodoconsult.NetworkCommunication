@@ -1,6 +1,7 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
 using System.Net.Sockets;
+using Bodoconsult.App.Abstractions.Interfaces;
 using Bodoconsult.NetworkCommunication.Interfaces;
 
 namespace Bodoconsult.NetworkCommunication.Protocols.Udp;
@@ -15,11 +16,12 @@ public class FakeUdpSocketProxy : BaseUpdSocketProxy
     /// </summary>
     private Memory<byte> _data = Array.Empty<byte>();
 
-    ///// <summary>
-    ///// Default ctor
-    ///// </summary>
-    //public FakeUdpSocketProxy()
-    //{ }
+    /// <summary>
+    /// Default ctor
+    /// </summary>
+    /// <param name="logger">Current monitor logger</param>
+    public FakeUdpSocketProxy(IAppLoggerProxy logger): base(logger)
+    { }
 
     /// <summary>
     /// Bytes available on the socket

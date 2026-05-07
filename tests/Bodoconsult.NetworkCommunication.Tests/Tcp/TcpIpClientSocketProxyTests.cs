@@ -34,7 +34,7 @@ internal class TcpIpClientSocketProxyTests
             Task.Run(async () =>
 #pragma warning restore CS4014 // Because this call is not awaited, execution of the current method continues before the call is completed
             {
-                var client = new TcpIpClientSocketProxy();
+                var client = new TcpIpClientSocketProxy(TestDataHelper.Logger);
                 client.IpAddress = ip;
                 client.Port = port;
                 client.Connect().GetAwaiter().GetResult();

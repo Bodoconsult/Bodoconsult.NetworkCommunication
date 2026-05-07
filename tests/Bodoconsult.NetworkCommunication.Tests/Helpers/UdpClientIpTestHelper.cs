@@ -12,7 +12,7 @@ namespace Bodoconsult.NetworkCommunication.Tests.Helpers;
 
 internal static class UdpClientIpTestHelper
 {
-    private static readonly IAppLoggerProxy Logger =  TestDataHelper.GetFakeAppLoggerProxy();
+    private static readonly IAppLoggerProxy Logger =  TestDataHelper.Logger;
     
     /// <summary>
     /// Initialize the IP communication
@@ -53,7 +53,7 @@ internal static class UdpClientIpTestHelper
         }
 
         // Load socket
-        var socket = new UdpClientSocketProxy();
+        var socket = new UdpClientSocketProxy(TestDataHelper.Logger);
         socket.IpAddress = testSetup.IpAddress;
         ArgumentNullException.ThrowIfNull(testSetup.DataMessagingConfig);
         socket.Port = testSetup.DataMessagingConfig.Port;

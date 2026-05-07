@@ -1,7 +1,8 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
-using System.Net;
 using Bodoconsult.NetworkCommunication.Protocols.TcpIp;
+using Bodoconsult.NetworkCommunication.Tests.Helpers;
+using System.Net;
 
 namespace Bodoconsult.NetworkCommunication.Tests.Tcp.Transport;
 
@@ -16,7 +17,7 @@ public class FakeTcpIpSocketProxyTests : BaseTestsTcpIpSocket
     [SetUp]
     public void TestSetup()
     {
-        Socket = new FakeTcpIpSocketProxy();
+        Socket = new FakeTcpIpSocketProxy(TestDataHelper.Logger);
         Socket.IpAddress = IPAddress.Parse(IpAddress);
         Socket.Port = Port;
 

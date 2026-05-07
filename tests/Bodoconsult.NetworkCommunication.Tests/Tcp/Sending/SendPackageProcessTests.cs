@@ -8,6 +8,7 @@ using Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig;
 using Bodoconsult.NetworkCommunication.EnumAndStates;
 using Bodoconsult.NetworkCommunication.Interfaces;
+using Bodoconsult.NetworkCommunication.Tests.Helpers;
 using Bodoconsult.NetworkCommunication.Tests.TestData;
 
 namespace Bodoconsult.NetworkCommunication.Tests.Tcp.Sending;
@@ -17,7 +18,7 @@ namespace Bodoconsult.NetworkCommunication.Tests.Tcp.Sending;
 [SingleThreaded]
 public class SendPackageProcessDuplexIoTests
 {
-    private readonly IAppLoggerProxy _logger = new AppLoggerProxy(new FakeLoggerFactory(), new LogDataFactory());
+    private readonly IAppLoggerProxy _logger = TestDataHelper.Logger;
 
     [OneTimeTearDown]
     public void CleanUp()

@@ -1,7 +1,7 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
+using Bodoconsult.App.Abstractions.Interfaces;
 using Bodoconsult.NetworkCommunication.Interfaces;
-using System.Diagnostics;
 using System.Net;
 using System.Net.Sockets;
 
@@ -21,6 +21,13 @@ public class UdpClientWithHelloSocketProxy : BaseUpdSocketProxy
     protected IPEndPoint? EndPoint;
 
     private bool _isBound;
+
+    /// <summary>
+    /// Default ctor
+    /// </summary>
+    /// <param name="logger">Current monitor logger</param>
+    public UdpClientWithHelloSocketProxy(IAppLoggerProxy logger) : base(logger)
+    { }
 
     /// <summary>
     /// Current socket (only for testing purposes, do not access directly in production code)
@@ -64,29 +71,25 @@ public class UdpClientWithHelloSocketProxy : BaseUpdSocketProxy
         try
         {
             var result = await UdpClient.SendAsync(bytesToSend, CancellationTokenSource.Token);
-            Trace.TraceInformation($"UdpClientSocket: sent {result} bytes");
+            Logger.LogInformation($"{LoggerId}sent {result} bytes");
             return result;
         }
         catch (SocketException socketException)
         {
             if (socketException.ErrorCode != 10054)
             {
-                Logger?.LogError("Sending failed", socketException);
-                var s = socketException.ToString();
-                Trace.TraceError(s);
-            }
+                Logger.LogError($"{LoggerId}Sending failed", socketException);
+            }   
             else
             {
-                Logger?.LogDebug("No connection");
+                Logger.LogDebug($"{LoggerId}No connection");
             }
 
             return 0;
         }
         catch (Exception e)
         {
-            Logger?.LogError("Sending failed", e);
-            var s = e.ToString();
-            Trace.TraceError(s);
+            Logger.LogError($"{LoggerId}Sending failed", e);
             return 0;
         }
     }
@@ -105,29 +108,25 @@ public class UdpClientWithHelloSocketProxy : BaseUpdSocketProxy
         try
         {
             var result = await UdpClient.SendAsync(bytesToSend, CancellationTokenSource.Token).AsTask();
-            Trace.TraceInformation($"UdpClientSocket: sent {result} bytes");
+            Logger.LogInformation($"{LoggerId}sent {result} bytes");
             return result;
         }
         catch (SocketException socketException)
         {
             if (socketException.ErrorCode != 10054)
             {
-                Logger?.LogError("Sending failed", socketException);
-                var s = socketException.ToString();
-                Trace.TraceError(s);
+                Logger.LogError($"{LoggerId}Sending failed", socketException);
             }
             else
             {
-                Logger?.LogDebug("No connection");
+                Logger.LogDebug($"{LoggerId}No connection");
             }
 
             return 0;
         }
         catch (Exception e)
         {
-            Logger?.LogError("Sending failed", e);
-            var s = e.ToString();
-            Trace.TraceError(s);
+            Logger.LogError($"{LoggerId}Sending failed", e);
             return 0;
         }
     }
@@ -205,14 +204,12 @@ public class UdpClientWithHelloSocketProxy : BaseUpdSocketProxy
                 EndPoint = new IPEndPoint(IpAddress, Port);
                 UdpClient.Connect(EndPoint);
 
-                Trace.TraceInformation($"UDPClient: connect to {IpAddress}:{Port}");
+                Logger.LogInformation($"{LoggerId}connect to {IpAddress}:{Port}");
                 _isBound = UdpClient.Client.Connected;
             }
             catch (Exception e)
             {
-                // ToDo: add logging
-                var s = e.ToString();
-                Trace.TraceError(s);
+                Logger.LogError($"{LoggerId}{e}");
                 _isBound = false;
                 throw;
             }
@@ -239,29 +236,25 @@ public class UdpClientWithHelloSocketProxy : BaseUpdSocketProxy
             //Trace.TraceInformation($"UDPClient: received {result.Length} bytes from {SendEndPoint}");
 
             Buffer.BlockCopy(result.Buffer, 0, buffer, 0, result.Buffer.Length);
-            Trace.TraceInformation($"UdpClientSocket: received {result.Buffer.Length} bytes");
+            Logger.LogInformation($"{LoggerId}received {result.Buffer.Length} bytes");
             return result.Buffer.Length;
         }
         catch (SocketException socketException)
         {
             if (socketException.ErrorCode != 10054)
             {
-                Logger?.LogError("Receiving failed", socketException);
-                var s = socketException.ToString();
-                Trace.TraceError(s);
+                Logger.LogError($"{LoggerId}Receiving failed", socketException);
             }
             else
             {
-                Logger?.LogDebug("No connection");
+                Logger.LogDebug($"{LoggerId}No connection");
             }
 
             return 0;
         }
         catch (Exception e)
         {
-            Logger?.LogError("Receiving failed", e);
-            var s = e.ToString();
-            Trace.TraceError(s);
+            Logger.LogError($"{LoggerId}Receiving failed", e);
             return 0;
         }
     }
@@ -281,34 +274,26 @@ public class UdpClientWithHelloSocketProxy : BaseUpdSocketProxy
         try
         {
             var result = await UdpClient.ReceiveAsync(CancellationTokenSource.Token);
-            //SendEndPoint = result.RemoteEndPoint;
-
-            //Trace.TraceInformation($"UDPClient: received {result.Length} bytes from {SendEndPoint}");
-
             result.Buffer.CopyTo(buffer);
-            Trace.TraceInformation($"UdpClientSocket: received {result.Buffer.Length} bytes");
+            Logger.LogInformation($"{LoggerId} received {result.Buffer.Length} bytes");
             return result.Buffer.Length;
         }
         catch (SocketException socketException)
         {
             if (socketException.ErrorCode != 10054)
             {
-                Logger?.LogError("Receiving failed", socketException);
-                var s = socketException.ToString();
-                Trace.TraceError(s);
+                Logger.LogError($"{LoggerId}Receiving failed", socketException);
             }
             else
             {
-                Logger?.LogDebug("No connection");
+                Logger.LogDebug($"{LoggerId}No connection");
             }
 
             return 0;
         }
         catch (Exception e)
         {
-            Logger?.LogError("Receiving failed", e);
-            var s = e.ToString();
-            Trace.TraceError(s);
+            Logger.LogError($"{LoggerId}Receiving failed", e);
             return 0;
         }
     }
@@ -325,9 +310,7 @@ public class UdpClientWithHelloSocketProxy : BaseUpdSocketProxy
         }
         catch (Exception e)
         {
-            Logger?.LogError("Polling failed", e);
-            var s = e.ToString();
-            Trace.TraceError(s);
+            Logger.LogError($"{LoggerId}Polling failed", e);
             return false;
         }
     }

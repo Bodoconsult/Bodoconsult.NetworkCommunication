@@ -17,7 +17,7 @@ internal class IpDuplexIoFactoryTests
         ISendPacketProcessFactory sendPacketProcessFactory = new FakeSendPacketProcessFactory();
         var factory = new IpDuplexIoFactory(sendPacketProcessFactory);
 
-        var socketProxy = new FakeTcpIpSocketProxy();
+        var socketProxy = new FakeTcpIpSocketProxy(TestDataHelper.Logger);
 
         var config = TestDataHelper.GetDataMessagingConfig();
 
