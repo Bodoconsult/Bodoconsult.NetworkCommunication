@@ -119,7 +119,8 @@ public class UdpServerSocketProxy : BaseUpdSocketProxy
             {
                 UdpClient = new UdpClient();
 
-                // The following three lines allow multiple clients on the same PC
+                // The following three lines allow multiple clients on
+                // the same PC
                 UdpClient.Client.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.ReuseAddress, true);
                 UdpClient.Client.Blocking = false;
 

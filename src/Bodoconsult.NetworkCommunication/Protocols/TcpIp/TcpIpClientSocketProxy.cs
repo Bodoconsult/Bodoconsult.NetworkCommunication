@@ -299,6 +299,7 @@ public class TcpIpClientSocketProxy : BaseTcpIpSocketProxy
         {
             return Task.FromResult(0).GetAwaiter().GetResult();
         }
+
         try
         {
             var result = await Socket.ReceiveAsync(buffer, SocketFlags.None, CancellationTokenSource.Token).AsTask();
