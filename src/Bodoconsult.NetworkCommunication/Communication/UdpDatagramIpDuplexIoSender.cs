@@ -140,7 +140,16 @@ public class UdpDatagramIpDuplexIoSender : BaseDuplexIoSender
 #endif
             AsyncHelper.FireAndForget(() =>
             {
-                dataMessagingConfig.RaiseDataMessageSentDelegate?.Invoke(message.RawMessageData);
+                try
+                {
+                    dataMessagingConfig.RaiseDataMessageSentDelegate?.Invoke(message.RawMessageData);
+                }
+                catch (Exception e)
+                {
+                    msg = $"dataMessagingConfig.RaiseDataMessageSentDelegate failed: {e}";
+                    dataMessagingConfig.MonitorLogger.LogInformation(msg);
+                    dataMessagingConfig.AppLogger.LogError($"{dataMessagingConfig.LoggerId}{msg}");
+                }
             });
         }
         catch (SocketException socketException)
@@ -156,6 +165,16 @@ public class UdpDatagramIpDuplexIoSender : BaseDuplexIoSender
 
             AsyncHelper.FireAndForget(() =>
             {
+                try
+                {
+                    dataMessagingConfig.MonitorLogger.LogInformation(msg);
+                    dataMessagingConfig.AppLogger.LogError($"{dataMessagingConfig.LoggerId}{msg}");
+                }
+                catch (Exception e)
+                {
+                    msg = $"firing delegates failed: {e}";
+
+                }
                 dataMessagingConfig.RaiseComDevCloseRequestDelegate?.Invoke("UdpDatagramIpDuplexIoSender");
                 dataMessagingConfig.RaiseDataMessageNotSentDelegate?.Invoke(message.RawMessageData, socketException.Message);
             });
@@ -172,7 +191,19 @@ public class UdpDatagramIpDuplexIoSender : BaseDuplexIoSender
             dataMessagingConfig.MonitorLogger.LogInformation(msg);
             dataMessagingConfig.AppLogger.LogError($"{dataMessagingConfig.LoggerId}{msg}");
 
-            AsyncHelper.FireAndForget(() => dataMessagingConfig.RaiseDataMessageNotSentDelegate?.Invoke(message.RawMessageData, sendException.Message));
+            AsyncHelper.FireAndForget(() =>
+            {
+                try
+                {
+                    dataMessagingConfig.RaiseDataMessageNotSentDelegate?.Invoke(message.RawMessageData, sendException.Message);
+                }
+                catch (Exception e)
+                {
+                    msg = $"dataMessagingConfig.RaiseDataMessageNotSentDelegate failed: {e}";
+                    dataMessagingConfig.MonitorLogger.LogInformation(msg);
+                    dataMessagingConfig.AppLogger.LogError($"{dataMessagingConfig.LoggerId}{msg}");
+                }
+            });
             throw;
         }
 

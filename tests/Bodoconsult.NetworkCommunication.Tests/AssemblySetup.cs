@@ -28,7 +28,7 @@ public static class AssemblySetup
         param.SoftwareTeam = "Robert Leisner";
         //param.LogoRessourcePath = "WinFormsConsoleApp1.Resources.logo.jpg";
         param.AppFolderName = "NetworkTests";
-        param.DataPath = "NetworkTests";
+        param.DataPath = "NetworkCommunicationTests";
 
         // Now start the app building process
         var builder = new MyDebugAppBuilder(globals);

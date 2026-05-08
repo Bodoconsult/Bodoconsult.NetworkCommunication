@@ -25,6 +25,7 @@ public static class AssemblySetup
         // Set additional app start parameters as required
         var param = globals.AppStartParameter;
         param.AppName = "IpCommunicationSampleTests: Demo app";
+        param.DataPath = "NetworkCommunicationTests";
         param.SoftwareTeam = "Robert Leisner";
         //param.LogoRessourcePath = "WinFormsConsoleApp1.Resources.logo.jpg";
         param.AppFolderName = "IpCommunicationSampleTests";

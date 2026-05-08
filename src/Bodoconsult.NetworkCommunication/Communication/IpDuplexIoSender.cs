@@ -1,9 +1,10 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
-using System.Net.Sockets;
 using Bodoconsult.App.Helpers;
 using Bodoconsult.NetworkCommunication.Delegates;
 using Bodoconsult.NetworkCommunication.Interfaces;
+using System.Net.Sockets;
+using System.Runtime.InteropServices;
 
 namespace Bodoconsult.NetworkCommunication.Communication;
 
@@ -101,7 +102,7 @@ public class IpDuplexIoSender : BaseDuplexIoSender
             {
                 return sent;
             }
-            
+
             msg = "message could not be sent via socket";
             AsyncHelper.FireAndForget(() => DataMessagingConfig.RaiseDataMessageNotSentDelegate?.Invoke(message.RawMessageData, msg));
             DataMessagingConfig.MonitorLogger.LogError(msg);
@@ -136,21 +137,23 @@ public class IpDuplexIoSender : BaseDuplexIoSender
                 return (sent, false);
             }
 
-            msg = $"{message.RawMessageDataClearText}  {message.ToShortInfoString()}";
-            dataMessagingConfig.MonitorLogger.LogInformation($"Message sent: {msg}");
+
+            //msg = $"{message.RawMessageDataClearText}  {message.ToShortInfoString()}";
+            //dataMessagingConfig.MonitorLogger.LogInformation($"Message sent: {msg}");
 
             AsyncHelper.FireAndForget(() =>
             {
                 try
                 {
-dataMessagingConfig.RaiseDataMessageSentDelegate?.Invoke(message.RawMessageData);
+                    dataMessagingConfig.RaiseDataMessageSentDelegate?.Invoke(message.RawMessageData);
                 }
                 catch (Exception e)
                 {
-                    Console.WriteLine(e);
-                    throw;
+                    msg = $"message could not be sent via socket: {e}";
+                    DataMessagingConfig.MonitorLogger.LogError(msg);
+                    DataMessagingConfig.AppLogger.LogError($"{DataMessagingConfig.LoggerId}{msg}");
                 }
-                
+
             });
 
             isSent = true;
@@ -164,8 +167,17 @@ dataMessagingConfig.RaiseDataMessageSentDelegate?.Invoke(message.RawMessageData)
 
             AsyncHelper.FireAndForget(() =>
             {
-                dataMessagingConfig.RaiseComDevCloseRequestDelegate?.Invoke("IpDuplexIoSender");
-                dataMessagingConfig.RaiseDataMessageNotSentDelegate?.Invoke(message.RawMessageData, socketException.Message);
+                try
+                {
+                    dataMessagingConfig.RaiseComDevCloseRequestDelegate?.Invoke("IpDuplexIoSender");
+                    dataMessagingConfig.RaiseDataMessageNotSentDelegate?.Invoke(message.RawMessageData, socketException.Message);
+                }
+                catch (Exception e)
+                {
+                    msg = $"firing delegates failed: {e}";
+                    dataMessagingConfig.MonitorLogger.LogInformation(msg);
+                    dataMessagingConfig.AppLogger.LogError($"{dataMessagingConfig.LoggerId}{msg}");
+                }
             });
             throw;
         }
@@ -175,7 +187,20 @@ dataMessagingConfig.RaiseDataMessageSentDelegate?.Invoke(message.RawMessageData)
             dataMessagingConfig.MonitorLogger.LogInformation(msg);
             dataMessagingConfig.AppLogger.LogError($"{dataMessagingConfig.LoggerId}{msg}");
 
-            AsyncHelper.FireAndForget(() => dataMessagingConfig.RaiseDataMessageNotSentDelegate?.Invoke(message.RawMessageData, sendException.Message));
+            AsyncHelper.FireAndForget(() =>
+            {
+                try
+                {
+                    dataMessagingConfig.RaiseDataMessageNotSentDelegate?.Invoke(message.RawMessageData, sendException.Message);
+                }
+                catch (Exception e)
+                {
+                    msg = $"dataMessagingConfig.RaiseDataMessageNotSentDelegate failed: {e}";
+                    dataMessagingConfig.MonitorLogger.LogInformation(msg);
+                    dataMessagingConfig.AppLogger.LogError($"{dataMessagingConfig.LoggerId}{msg}");
+                }
+
+            });
             isSent = false;
             sent = 0;
             //Trace.TraceInformation($"X: Sent: {sent} // {isSent}");

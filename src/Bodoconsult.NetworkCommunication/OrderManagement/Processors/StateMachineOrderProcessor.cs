@@ -52,12 +52,12 @@ public class StateMachineOrderProcessor : BaseOrderProcessor
             }
         }
 
-        LogInformation($"execution queue cleared for device hardware init");
+        LogInformation("execution queue cleared for device hardware init");
 
         // Is no hardware init required set externally for unit testing
         if (IsNoHardWareInitRequired)
         {
-            LogDebug($"runner restarted");
+            LogDebug("runner restarted");
             IsRunnerStopped = false;
             return null;
         }
@@ -166,7 +166,7 @@ public class StateMachineOrderProcessor : BaseOrderProcessor
 
             StopExecutionOfSyncOrder(orderId, erg);
 
-            LogDebug($"order {orderId} has finished but request processor wasn't found");
+            LogDebug($"{orderId}order has finished but request processor wasn't found");
             return;
         }
 

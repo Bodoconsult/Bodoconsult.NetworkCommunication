@@ -36,7 +36,7 @@ public class IpCommunicationAdapter : ICommunicationAdapter
         DataMessagingConfig = dataMessagingConfig;
         _monitorLogger = DataMessagingConfig.MonitorLogger;
 
-        _loggerId = $"{dataMessagingConfig.LoggerId}{(dataMessagingConfig.LoggerId.EndsWith(": ") ? string.Empty : ": ")}{GetType().Name}: ";
+        _loggerId = $"{dataMessagingConfig.LoggerId}{(dataMessagingConfig.LoggerId.EndsWith(": ") ? string.Empty : ": ")} ";
         _communicationHandlerFactory = communicationHandlerFactory;
 
         ////DataMessagingConfig.GetTowerStateDelegate = GetTowerState;
@@ -162,7 +162,7 @@ public class IpCommunicationAdapter : ICommunicationAdapter
     /// <returns>True if the initialiazation was successfull else false</returns>
     public bool ComDevInit()
     {
-        var msg = $"ComDevInit: IsCommunicationHandlerNotNull={IsCommunicationHandlerNotNull}";
+        var msg = $"{_loggerId}ComDevInit: IsCommunicationHandlerNotNull={IsCommunicationHandlerNotNull}";
 
         DataMessagingConfig.AppLogger.LogInformation(msg);
         _monitorLogger.LogInformation(msg);
@@ -173,7 +173,7 @@ public class IpCommunicationAdapter : ICommunicationAdapter
             {
                 msg = "ComDevInit not possible due to another call to ComDevInit or ComDevClose in progress";
                 _monitorLogger.LogWarning(msg);
-                DataMessagingConfig.AppLogger.LogWarning($"{DataMessagingConfig.LoggerId}{msg}");
+                DataMessagingConfig.AppLogger.LogWarning($"{_loggerId}{msg}");
                 return IsCommunicationHandlerNotNull;
             }
 
@@ -181,7 +181,7 @@ public class IpCommunicationAdapter : ICommunicationAdapter
             {
                 msg = "ComDev for device is not valid. Request ComDevClose";
                 DataMessagingConfig.MonitorLogger.LogWarning(msg);
-                DataMessagingConfig.AppLogger.LogWarning($"{DataMessagingConfig.LoggerId}{msg}");
+                DataMessagingConfig.AppLogger.LogWarning($"{_loggerId}{msg}");
                 ComDevCloseInternal();
             }
 
@@ -203,13 +203,13 @@ public class IpCommunicationAdapter : ICommunicationAdapter
                     {
                         msg = "ComDevInit successful";
                         _monitorLogger.LogInformation(msg);
-                        DataMessagingConfig.AppLogger.LogInformation($"{DataMessagingConfig.LoggerId}{msg}");
+                        DataMessagingConfig.AppLogger.LogInformation($"{_loggerId}{msg}");
                     }
                     else
                     {
                         msg = "ComDevInit unsuccessful";
                         _monitorLogger.LogWarning(msg);
-                        DataMessagingConfig.AppLogger.LogWarning($"{DataMessagingConfig.LoggerId}{msg}");
+                        DataMessagingConfig.AppLogger.LogWarning($"{_loggerId}{msg}");
                         isCloseRequired = true;
                     }
                 }
@@ -217,7 +217,7 @@ public class IpCommunicationAdapter : ICommunicationAdapter
                 {
                     msg = "ComDevInit successful";
                     _monitorLogger.LogInformation(msg);
-                    DataMessagingConfig.AppLogger.LogInformation($"{DataMessagingConfig.LoggerId}{msg}");
+                    DataMessagingConfig.AppLogger.LogInformation($"{_loggerId}{msg}");
                 }
             }
             catch (SocketException se)
@@ -230,7 +230,7 @@ public class IpCommunicationAdapter : ICommunicationAdapter
                 {
                     msg = $"socket connection to {DataMessagingConfig.IpAddress}:{DataMessagingConfig.Port} failed: error code {se.ErrorCode}. Request ComDevClose";
                     _monitorLogger.LogWarning(msg);
-                    DataMessagingConfig.AppLogger.LogWarning($"{DataMessagingConfig.LoggerId}{msg}");
+                    DataMessagingConfig.AppLogger.LogWarning($"{_loggerId}{msg}");
                 }
 
                 if (_errorCounter > 10)
@@ -241,7 +241,7 @@ public class IpCommunicationAdapter : ICommunicationAdapter
                 isCloseRequired = true;
                 msg = $"{_loggerId}ComDevInit failed: {se}";
                 DataMessagingConfig.MonitorLogger.LogWarning(msg);
-                DataMessagingConfig.AppLogger.LogWarning($"{DataMessagingConfig.LoggerId}{msg}");
+                DataMessagingConfig.AppLogger.LogWarning($"{_loggerId}{msg}");
             }
             catch (Exception e)
             {
@@ -255,7 +255,7 @@ public class IpCommunicationAdapter : ICommunicationAdapter
                 }
 
                 DataMessagingConfig.MonitorLogger.LogWarning(msg);
-                DataMessagingConfig.AppLogger.LogWarning($"{DataMessagingConfig.LoggerId}{msg}");
+                DataMessagingConfig.AppLogger.LogWarning($"{_loggerId}{msg}");
 
                 isCloseRequired = true;
             }
@@ -284,7 +284,7 @@ public class IpCommunicationAdapter : ICommunicationAdapter
         {
             msg = "ComDevInit failed";
             DataMessagingConfig.MonitorLogger.LogError(msg, e);
-            DataMessagingConfig.AppLogger.LogError($"{DataMessagingConfig.LoggerId}{msg}", e);
+            DataMessagingConfig.AppLogger.LogError($"{_loggerId}{msg}", e);
 
             CommunicationHandler = null;
             IsCommunicationHandlerNotNull = false;
@@ -362,7 +362,7 @@ public class IpCommunicationAdapter : ICommunicationAdapter
             if (noLogging)
             {
                 DataMessagingConfig.MonitorLogger.LogError(msg);
-                DataMessagingConfig.AppLogger.LogError($"{DataMessagingConfig.LoggerId}{msg}");
+                DataMessagingConfig.AppLogger.LogError($"{_loggerId}{msg}");
                 //DataMessagingConfig.AppLogger.LogInformation($"{DataMessagingConfig.LoggerId}ComDevClose: all steps performed ");
             }
         }
@@ -383,16 +383,16 @@ public class IpCommunicationAdapter : ICommunicationAdapter
         CommunicationHandler.Connect();
         IsCommunicationHandlerNotNull = true;
 
-        var msg = $"{DataMessagingConfig.LoggerId}connection to {DataMessagingConfig.IpAddress}:{DataMessagingConfig.Port} established: {CommunicationHandler?.IsConnected}.";
+        var msg = $"connection to {DataMessagingConfig.IpAddress}:{DataMessagingConfig.Port} established: {CommunicationHandler?.IsConnected}.";
         _monitorLogger.LogInformation(msg);
-        DataMessagingConfig.AppLogger.LogInformation(msg);
+        DataMessagingConfig.AppLogger.LogInformation($"{_loggerId}{msg}");
     }
 
     private void OnRequestComDevClose(string requestSource)
     {
         try
         {
-            _monitorLogger.LogWarning($"{DataMessagingConfig.LoggerId}CLOSE requested for connection because of error while reading bytes on socket. Close reason: {requestSource}.");
+            _monitorLogger.LogWarning($"CLOSE requested for connection because of error while reading bytes on socket. Close reason: {requestSource}.");
             ComDevClose();
         }
         catch (Exception e)
@@ -432,7 +432,6 @@ public class IpCommunicationAdapter : ICommunicationAdapter
             }
 
             pingResult = await ping.SendPingAsync(ipObject, DeviceCommunicationBasics.PingTimeout);
-
         }
 
         return pingResult is { Status: IPStatus.Success };
