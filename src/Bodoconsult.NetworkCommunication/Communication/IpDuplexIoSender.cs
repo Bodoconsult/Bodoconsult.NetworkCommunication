@@ -162,7 +162,7 @@ public class IpDuplexIoSender : BaseDuplexIoSender
         catch (SocketException socketException)
         {
             msg = $"message {message.ToShortInfoString()} not sent: {socketException}";
-            dataMessagingConfig.MonitorLogger.LogInformation(msg);
+            dataMessagingConfig.MonitorLogger.LogError(msg);
             dataMessagingConfig.AppLogger.LogError($"{dataMessagingConfig.LoggerId}{msg}");
 
             AsyncHelper.FireAndForget(() =>
@@ -175,7 +175,7 @@ public class IpDuplexIoSender : BaseDuplexIoSender
                 catch (Exception e)
                 {
                     msg = $"firing delegates failed: {e}";
-                    dataMessagingConfig.MonitorLogger.LogInformation(msg);
+                    dataMessagingConfig.MonitorLogger.LogError(msg);
                     dataMessagingConfig.AppLogger.LogError($"{dataMessagingConfig.LoggerId}{msg}");
                 }
             });
@@ -184,7 +184,7 @@ public class IpDuplexIoSender : BaseDuplexIoSender
         catch (Exception sendException)
         {
             msg = $"message {message.ToShortInfoString()} not sent: {sendException}";
-            dataMessagingConfig.MonitorLogger.LogInformation(msg);
+            dataMessagingConfig.MonitorLogger.LogError(msg);
             dataMessagingConfig.AppLogger.LogError($"{dataMessagingConfig.LoggerId}{msg}");
 
             AsyncHelper.FireAndForget(() =>
@@ -196,7 +196,7 @@ public class IpDuplexIoSender : BaseDuplexIoSender
                 catch (Exception e)
                 {
                     msg = $"dataMessagingConfig.RaiseDataMessageNotSentDelegate failed: {e}";
-                    dataMessagingConfig.MonitorLogger.LogInformation(msg);
+                    dataMessagingConfig.MonitorLogger.LogError(msg);
                     dataMessagingConfig.AppLogger.LogError($"{dataMessagingConfig.LoggerId}{msg}");
                 }
 

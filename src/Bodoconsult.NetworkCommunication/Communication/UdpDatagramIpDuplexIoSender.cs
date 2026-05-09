@@ -64,7 +64,7 @@ public class UdpDatagramIpDuplexIoSender : BaseDuplexIoSender
             if (EncodeMessage(message))
             {
                 msg = $"Encoding for message failed: {message.MessageId}";
-                DataMessagingConfig.MonitorLogger.LogInformation(msg);
+                DataMessagingConfig.MonitorLogger.LogError(msg);
                 DataMessagingConfig.AppLogger.LogError($"{DataMessagingConfig.LoggerId}{msg}");
                 return 0;
             }
@@ -147,7 +147,7 @@ public class UdpDatagramIpDuplexIoSender : BaseDuplexIoSender
                 catch (Exception e)
                 {
                     msg = $"dataMessagingConfig.RaiseDataMessageSentDelegate failed: {e}";
-                    dataMessagingConfig.MonitorLogger.LogInformation(msg);
+                    dataMessagingConfig.MonitorLogger.LogError(msg);
                     dataMessagingConfig.AppLogger.LogError($"{dataMessagingConfig.LoggerId}{msg}");
                 }
             });
@@ -160,23 +160,23 @@ public class UdpDatagramIpDuplexIoSender : BaseDuplexIoSender
             }
 
             msg = $"message {message.ToShortInfoString()} not sent: {socketException}";
-            dataMessagingConfig.MonitorLogger.LogInformation(msg);
+            dataMessagingConfig.MonitorLogger.LogError(msg);
             dataMessagingConfig.AppLogger.LogError($"{dataMessagingConfig.LoggerId}{msg}");
 
             AsyncHelper.FireAndForget(() =>
             {
                 try
                 {
-                    dataMessagingConfig.MonitorLogger.LogInformation(msg);
-                    dataMessagingConfig.AppLogger.LogError($"{dataMessagingConfig.LoggerId}{msg}");
+                    dataMessagingConfig.RaiseComDevCloseRequestDelegate?.Invoke("UdpDatagramIpDuplexIoSender");
+                    dataMessagingConfig.RaiseDataMessageNotSentDelegate?.Invoke(message.RawMessageData, socketException.Message);
                 }
                 catch (Exception e)
                 {
                     msg = $"firing delegates failed: {e}";
-
+                    dataMessagingConfig.MonitorLogger.LogError(msg);
+                    dataMessagingConfig.AppLogger.LogError($"{dataMessagingConfig.LoggerId}{msg}");
                 }
-                dataMessagingConfig.RaiseComDevCloseRequestDelegate?.Invoke("UdpDatagramIpDuplexIoSender");
-                dataMessagingConfig.RaiseDataMessageNotSentDelegate?.Invoke(message.RawMessageData, socketException.Message);
+
             });
             throw;
         }
@@ -188,7 +188,7 @@ public class UdpDatagramIpDuplexIoSender : BaseDuplexIoSender
             }
 
             msg = $"message {message.ToShortInfoString()} not sent: {sendException}";
-            dataMessagingConfig.MonitorLogger.LogInformation(msg);
+            dataMessagingConfig.MonitorLogger.LogError(msg);
             dataMessagingConfig.AppLogger.LogError($"{dataMessagingConfig.LoggerId}{msg}");
 
             AsyncHelper.FireAndForget(() =>
@@ -200,7 +200,7 @@ public class UdpDatagramIpDuplexIoSender : BaseDuplexIoSender
                 catch (Exception e)
                 {
                     msg = $"dataMessagingConfig.RaiseDataMessageNotSentDelegate failed: {e}";
-                    dataMessagingConfig.MonitorLogger.LogInformation(msg);
+                    dataMessagingConfig.MonitorLogger.LogError(msg);
                     dataMessagingConfig.AppLogger.LogError($"{dataMessagingConfig.LoggerId}{msg}");
                 }
             });

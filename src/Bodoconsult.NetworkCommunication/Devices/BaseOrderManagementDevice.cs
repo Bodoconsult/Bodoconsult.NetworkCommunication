@@ -572,11 +572,8 @@ public abstract class BaseOrderManagementDevice : IOrderManagementDevice
     /// </summary>
     public virtual void CheckIfThereAreOrdersToBeCreated()
     {
-        // ToDo: new delegate
-        //SlotCheckBusinessDelegate?.CheckCurrentAbortedUnloadOrLoadOrder();
-        AppLogger.LogDebug($"{LoggerId}Run SlotCheck.CheckCurrentAbortedUnloadOrLoadOrder");
+        // Do nothing
     }
-
 
     /// <summary>
     /// Log in DEBUG mode
