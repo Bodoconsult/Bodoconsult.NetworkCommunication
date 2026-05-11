@@ -5,6 +5,7 @@ using System.Net.NetworkInformation;
 using System.Net.Sockets;
 using Bodoconsult.App.Abstractions.Interfaces;
 using Bodoconsult.NetworkCommunication.Delegates;
+using Bodoconsult.NetworkCommunication.Helpers;
 using Bodoconsult.NetworkCommunication.Interfaces;
 
 namespace Bodoconsult.NetworkCommunication.Communication;
@@ -401,8 +402,6 @@ public class IpCommunicationAdapter : ICommunicationAdapter
         }
     }
 
-    private readonly Dictionary<string, Ping> _pingInstances = new();
-
     /// <summary>
     /// Is the tower pingable. Each IP address uses its own PING instance
     /// </summary>
@@ -410,31 +409,9 @@ public class IpCommunicationAdapter : ICommunicationAdapter
     public async Task<bool> IsPingableAsync()
     {
         var ipAddress = DataMessagingConfig.IpAddress;
+        return await IpHelper.IsPingableAsync(ipAddress);
 
-        // Do not ping localhost
-        if (ipAddress == "127.0.0.1")
-        {
-            return true;
-        }
-
-        var ipObject = IPAddress.Parse(ipAddress);
-
-        PingReply pingResult;
-
-        //lock (PingLock)
-        {
-            var success = _pingInstances.TryGetValue(ipAddress, out var ping);
-
-            if (!success || ping == null)
-            {
-                ping = new Ping();
-                _pingInstances.Add(ipAddress, ping);
-            }
-
-            pingResult = await ping.SendPingAsync(ipObject, DeviceCommunicationBasics.PingTimeout);
-        }
-
-        return pingResult is { Status: IPStatus.Success };
+        //return await IpHelper.IsConnectableAsync(ipAddress, DataMessagingConfig.Port);
     }
 
     ///// <summary>

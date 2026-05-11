@@ -588,8 +588,8 @@ public abstract class BaseOrderManagementDevice : IOrderManagementDevice
         [CallerLineNumber] int lineNumber = 0)
     {
         MonitorLogger.LogDebug(message, memberName, filepath, lineNumber);
-        var s = $"{LoggerId}{message}";
-        AppLogger.LogDebug(s, memberName, filepath, lineNumber);
+        //var s = $"{LoggerId}{message}";
+        //AppLogger.LogDebug(s, memberName, filepath, lineNumber);
     }
 
     /// <summary>
@@ -605,8 +605,8 @@ public abstract class BaseOrderManagementDevice : IOrderManagementDevice
         [CallerLineNumber] int lineNumber = 0)
     {
         MonitorLogger.LogInformation(message, memberName, filepath, lineNumber);
-        var s = $"{LoggerId}{message}";
-        AppLogger.LogInformation(s, memberName, filepath, lineNumber);
+        //var s = $"{LoggerId}{message}";
+        //AppLogger.LogInformation(s, memberName, filepath, lineNumber);
     }
 
     /// <summary>
@@ -669,15 +669,6 @@ public abstract class BaseOrderManagementDevice : IOrderManagementDevice
         }
     }
 
-    ///// <summary>
-    ///// Load Device master order factory instance as current <see cref="MasterOrderFactory"/> instance
-    ///// </summary>
-    ///// <param name="masterOrderFactory">Current master order factory to load</param>
-    //public void LoadMasterOrderFactory(IMasterOrderFactory masterOrderFactory)
-    //{
-    //    MasterOrderFactory = masterOrderFactory;
-    //}
-
     /// <summary>
     /// Load the Device order manager to use for this device
     /// </summary>
@@ -690,17 +681,6 @@ public abstract class BaseOrderManagementDevice : IOrderManagementDevice
 
         IsOrderProcessingActivated = true;
     }
-
-    ///// <summary>
-    ///// Create a new order of a requested type
-    ///// </summary>
-    ///// <param name="orderType">Order type</param>
-    ///// <param name="parameterSet">Current parameter set to use for the newly created order</param>
-    ///// <returns>An order to let it execute by TOM</returns>
-    //public IOrder CreateOrder(Type orderType, IParameterSet parameterSet)
-    //{
-    //    return MasterOrderFactory.GetOrder(orderType.Name, parameterSet);
-    //}
 
     /// <summary>
     /// Cancel ongoing Device order task

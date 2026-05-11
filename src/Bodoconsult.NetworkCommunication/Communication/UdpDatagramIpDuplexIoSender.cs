@@ -135,8 +135,8 @@ public class UdpDatagramIpDuplexIoSender : BaseDuplexIoSender
             }
 
 #if DEBUG
-            msg = $"{message.RawMessageDataClearText}  {message.ToShortInfoString()}";
-            dataMessagingConfig.MonitorLogger.LogDebug($"Message sent {msg}: {message.RawMessageData.Length}");
+            msg = $"Message {message.ToShortInfoString()} sent: {message.RawMessageData.Length} bytes";
+            dataMessagingConfig.MonitorLogger.LogDebug(msg);
 #endif
             AsyncHelper.FireAndForget(() =>
             {

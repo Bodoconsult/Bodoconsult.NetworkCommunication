@@ -1,5 +1,6 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
+using Bodoconsult.NetworkCommunication.Interfaces;
 using System.Diagnostics;
 using System.Net;
 using System.Net.NetworkInformation;
@@ -12,6 +13,62 @@ namespace Bodoconsult.NetworkCommunication.Helpers;
 /// </summary>
 public static class IpHelper
 {
+    private static readonly Dictionary<string, Ping> PingInstances = new();
+
+    /// <summary>
+    /// Is a device pingable. Each IP address uses its own PING instance. Remember: PING is not always available as it is seen as a security risk by MS starting Win11
+    /// </summary>
+    /// <returns>True if the tower is pingable</returns>
+    public static async Task<bool> IsPingableAsync(string ipAddress)
+    {
+        // Do not ping localhost
+        if (ipAddress == "127.0.0.1")
+        {
+            return true;
+        }
+
+        var ipObject = IPAddress.Parse(ipAddress);
+
+        PingReply pingResult;
+
+        //lock (PingLock)
+        {
+            var success = PingInstances.TryGetValue(ipAddress, out var ping);
+
+            if (!success || ping == null)
+            {
+                ping = new Ping();
+                PingInstances.Add(ipAddress, ping);
+            }
+
+            pingResult = await ping.SendPingAsync(ipObject, DeviceCommunicationBasics.PingTimeout);
+        }
+
+        return pingResult is { Status: IPStatus.Success };
+    }
+
+    /// <summary>
+    /// Is a device connectable
+    /// </summary>
+    /// <param name="ipAddress">IP address</param>
+    /// <param name="port">Port</param>
+    /// <returns>True if the device is reachable on the requested port</returns>
+    public static async Task<bool> IsConnectableAsync(string ipAddress, int port)
+    {
+        var cts = new CancellationTokenSource(1000);
+
+        try
+        {
+            using var server = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+            await server.ConnectAsync(new IPEndPoint(IPAddress.Parse(ipAddress), port), cts.Token);
+            return server.Connected;
+        }
+        catch
+        {
+            return false;
+        }
+    }
+
     /// <summary>
     /// Get the IP address of the local network interface
     /// </summary>

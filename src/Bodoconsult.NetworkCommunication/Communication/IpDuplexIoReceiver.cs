@@ -1,7 +1,6 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
 using System.Buffers;
-using System.Diagnostics;
 using System.Net.Sockets;
 using Bodoconsult.App.BufferPool;
 using Bodoconsult.App.Helpers;
@@ -110,7 +109,7 @@ public class IpDuplexIoReceiver : BaseDuplexIoReceiver
             else
             {
 #if DEBUG
-                msg = $"Parsed command {DataMessageHelper.GetStringFromArrayCsharpStyle(ref command)}";
+                msg = $"Parsed command: {codecResult.DataMessage.ToShortInfoString()}: {command.Length} bytes";
                 DataMessagingConfig.MonitorLogger?.LogDebug(msg);
 #endif
 
@@ -192,86 +191,86 @@ public class IpDuplexIoReceiver : BaseDuplexIoReceiver
 
         MonitorLogger.LogInformation($"{LoggerId}FillMessagePipeline started");
 
-        //try
-        //{
-
-        while (true)
+        try
         {
-            var socketProxy = DataMessagingConfig.SocketProxy;
-
-            //Trace.TraceInformation("FillMessagePipeline in progress");
-            try
+            while (true)
             {
-                if (CancellationSource?.Token.IsCancellationRequested ?? true)
+                var socketProxy = DataMessagingConfig.SocketProxy;
+
+                //Trace.TraceInformation("FillMessagePipeline in progress");
+                try
                 {
-                    if (socketProxy?.CancellationTokenSource != null)
+                    if (CancellationSource?.Token.IsCancellationRequested ?? true)
                     {
-                        await socketProxy.CancellationTokenSource.CancelAsync();
+                        if (socketProxy?.CancellationTokenSource != null)
+                        {
+                            await socketProxy.CancellationTokenSource.CancelAsync();
+                        }
+                        //Trace.TraceInformation("FillMessagePipeline cancelled");
+                        return;
                     }
-                    //Trace.TraceInformation("FillMessagePipeline cancelled");
+                }
+                catch (Exception e)
+                {
+                    msg = $"{LoggerId}FillMessagePipeline exception: {e}";
+                    MonitorLogger?.LogError(msg);
+                    DataMessagingConfig.AppLogger.LogError($"{LoggerId}{msg}");
                     return;
                 }
-            }
-            catch (Exception e)
-            {
-                msg = $"{LoggerId}FillMessagePipeline exception: {e}";
-                MonitorLogger?.LogError(msg);
-                DataMessagingConfig.AppLogger.LogError($"{LoggerId}{msg}");
-                return;
-            }
 
-            if (socketProxy is not { Connected: true } || socketProxy.IsDisposed)
-            {
-                // Trace.TraceInformation("Not connected");
+                if (socketProxy is not { Connected: true } || socketProxy.IsDisposed)
+                {
+                    // Trace.TraceInformation("Not connected");
+                    DuplexIoNoDataDelegate.Invoke();
+                    await RaiseException(new SocketException());
+                    return;
+                }
+
+                if (DuplexIoIsWorkInProgressDelegate.Invoke())
+                {
+                    msg = "Other operation in progress";
+                    MonitorLogger?.LogError(msg);
+                    DataMessagingConfig.AppLogger.LogError($"{LoggerId}{msg}");
+                    AsyncHelper.Delay(FillPipelineTimeout);
+                    continue;
+                }
+
+                var availableData = socketProxy.BytesAvailable;
+                if (availableData == 0)
+                {
+                    DuplexIoNoDataDelegate.Invoke();
+                    //Trace.TraceInformation("No data");
+                    AsyncHelper.Delay(FillPipelineTimeout);
+                    continue;
+                }
+
+                var data = new byte[availableData].AsMemory();
+
+                var messageLength = await socketProxy.Receive(data);
+
+                // Give the socket free
                 DuplexIoNoDataDelegate.Invoke();
-                await RaiseException(new SocketException());
-                return;
+
+                if (messageLength <= 0)
+                {
+                    AsyncHelper.Delay(FillPipelineTimeout);
+                    continue;
+                }
+
+                //Trace.TraceInformation("Got data");
+
+                var dummy = _bufferPool.Dequeue();
+                dummy.Memory = data;
+
+                _currentPipeline.Enqueue(dummy);
             }
-
-            if (DuplexIoIsWorkInProgressDelegate.Invoke())
-            {
-                msg = "Other operation in progress";
-                MonitorLogger?.LogError(msg);
-                DataMessagingConfig.AppLogger.LogError($"{LoggerId}{msg}");
-                AsyncHelper.Delay(FillPipelineTimeout);
-                continue;
-            }
-
-            var availableData = socketProxy.BytesAvailable;
-            if (availableData == 0)
-            {
-                DuplexIoNoDataDelegate.Invoke();
-                //Trace.TraceInformation("No data");
-                AsyncHelper.Delay(FillPipelineTimeout);
-                continue;
-            }
-
-            var data = new byte[availableData].AsMemory();
-
-            var messageLength = await socketProxy.Receive(data);
-
-            // Give the socket free
-            DuplexIoNoDataDelegate.Invoke();
-
-            if (messageLength <= 0)
-            {
-                AsyncHelper.Delay(FillPipelineTimeout);
-                continue;
-            }
-
-            //Trace.TraceInformation("Got data");
-
-            var dummy = _bufferPool.Dequeue();
-            dummy.Memory = data;
-
-            _currentPipeline.Enqueue(dummy);
         }
-        //}
-        //catch (Exception e)
-        //{
-        //    Console.WriteLine(e);
-        //    throw;
-        //}
+        catch (Exception e)
+        {
+            msg = $"{LoggerId}FillMessagePipeline exception: {e}";
+            MonitorLogger.LogError(msg);
+            DataMessagingConfig.AppLogger.LogError($"{LoggerId}{msg}");
+        }
     }
 
 
