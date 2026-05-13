@@ -138,6 +138,7 @@ public class SfxpDataMessageProcessingPackage : IDataMessageProcessingPackage
     public virtual void LoadCustomDataBlockCodecs()
     {
         // Load your datablock codes here
+        DataBlockCodingProcessor.LoadDataBlockCodecs('s', new SfxpDataBlockCodec());
         DataBlockCodingProcessor.LoadDataBlockCodecs('x', new BasicDataBlockCodec());
     }
 }

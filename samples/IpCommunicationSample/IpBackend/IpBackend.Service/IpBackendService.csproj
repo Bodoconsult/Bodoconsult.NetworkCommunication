@@ -14,6 +14,13 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+		<Content Include="LICENSE.md">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+			<ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+		</Content>
+	</ItemGroup>
+
+	<ItemGroup>
 		<PackageReference Include="Bodoconsult.App" Version="1.0.9" />
 		<PackageReference Include="Bodoconsult.App.Abstractions" Version="1.0.9" />
 		<PackageReference Include="Bodoconsult.App.BackgroundService" Version="1.0.9" />

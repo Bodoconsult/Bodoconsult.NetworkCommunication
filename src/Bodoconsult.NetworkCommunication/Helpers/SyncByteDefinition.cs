@@ -1,6 +1,6 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
-namespace Bodoconsult.NetworkCommunication.DataMessaging.DigitalTwins;
+namespace Bodoconsult.NetworkCommunication.Helpers;
 
 /// <summary>
 /// Definition for sync bytes and sync byte blocks

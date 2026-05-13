@@ -149,5 +149,10 @@ public interface IDataMessagingConfig
     /// </summary>
     string? DataLoggingFileName { get; set; }
 
+    /// <summary>
+    /// Current data loggers. May contain zero or more loggers. Each message can be logged only by one logger (or none)
+    /// </summary>
+    List<IInboundDataLogger> DataLoggers { get; } 
+
     #endregion
 }

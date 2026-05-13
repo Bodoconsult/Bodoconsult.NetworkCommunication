@@ -146,4 +146,9 @@ public class DefaultDataMessagingConfig: IIpDataMessagingConfig
     /// Is the device configured as IP server. True = server, false = client. Default: false
     /// </summary>
     public bool IsServer { get; set; }
+
+    /// <summary>
+    /// Current data loggers. May contain zero or more loggers. Each message can be logged only by one logger (or none)
+    /// </summary>
+    public List<IInboundDataLogger> DataLoggers { get; } = [];
 }

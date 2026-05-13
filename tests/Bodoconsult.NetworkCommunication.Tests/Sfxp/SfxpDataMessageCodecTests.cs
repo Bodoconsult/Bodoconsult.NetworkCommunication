@@ -63,6 +63,7 @@ internal class SfxpDataMessageCodecTests
 
         IDataBlockCodingProcessor dataBlockCodingProcessor = new DefaultDataBlockCodingProcessor();
         dataBlockCodingProcessor.LoadDataBlockCodecs('x', new BasicDataBlockCodec());
+        dataBlockCodingProcessor.LoadDataBlockCodecs('s', new SfxpDataBlockCodec());
         var codec = new SfxpDataMessageCodec(dataBlockCodingProcessor);
 
         // Act  
@@ -89,6 +90,9 @@ internal class SfxpDataMessageCodecTests
             }
 
             Assert.That(msg2.DataBlock.Data.Length, Is.EqualTo(msg.Length-8));
+
+            var db = (SfxpInboundDatablock)msg2.DataBlock;
+            Assert.That(db.DataChunks.Count, Is.Not.Zero);
         }
     }
 

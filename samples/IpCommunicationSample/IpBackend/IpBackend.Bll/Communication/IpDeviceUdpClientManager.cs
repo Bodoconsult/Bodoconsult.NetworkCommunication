@@ -1,6 +1,8 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
 using Bodoconsult.App.Abstractions.Interfaces;
+using Bodoconsult.App.DataExportServices;
+using Bodoconsult.NetworkCommunication.DataMessaging.DataLoggers;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessageProcessingPackages;
 using Bodoconsult.NetworkCommunication.Devices.Configurators;
 using Bodoconsult.NetworkCommunication.Interfaces;
@@ -75,6 +77,10 @@ public class IpDeviceUdpClientManager : ISimpleDeviceManager
     /// <param name="port">Port</param>
     public void ConfigureDevice(string ipAddress, int port)
     {
+
+
+
+
         IDataMessageProcessingPackageFactory messageProcessingPackageFactory = new SfxpLoggedSortableDataMessageProcessingPackageFactory();
 
         var configurator = new UdpClientDeviceConfigurator(_duplexIoFactory, _monitorLoggerFactoryFactory,
@@ -85,11 +91,17 @@ public class IpDeviceUdpClientManager : ISimpleDeviceManager
 
         IDeviceBusinessLogicAdapterFactory businessLogicAdapterFactory = new SfxpIpDeviceUdpBusinessLogicAdapterFactory();
         configurator.CreateDevice(businessLogicAdapterFactory);
-
+        
         var device = configurator.GetDevice();
 
-        device.DataMessagingConfig.DataLoggingFileName = $"IPDevice_{ipAddress.Replace(".", "_", StringComparison.InvariantCultureIgnoreCase)}";
-        device.DataMessagingConfig.DataLoggingPath = Globals.Instance.DataPath;
+        var config = device.DataMessagingConfig;
+
+        CreateLoggerChannel(0, ipAddress, config);
+        //CreateLoggerChannel(1, ipAddress, config);
+        //CreateLoggerChannel(2, ipAddress, config);
+        //CreateLoggerChannel(3, ipAddress, config);
+        //CreateLoggerChannel(4, ipAddress, config);
+
 
         if (device.DeviceBusinessLogicAdapter is not ISimpleDeviceBusinessLogicAdapter dbla)
         {
@@ -98,5 +110,23 @@ public class IpDeviceUdpClientManager : ISimpleDeviceManager
 
         IpDevice = device;
         DeviceBusinessLogicAdapter= dbla;
+    }
+
+    private static void CreateLoggerChannel(byte channel, string ipAddress, IDataMessagingConfig config)
+    {
+        config.DataLoggingFileName = $"IPDevice_{ipAddress.Replace(".", "_", StringComparison.InvariantCultureIgnoreCase)}_Channel{channel}";
+        config.DataLoggingPath = Globals.Instance.DataPath;
+
+        var es = new ByteArrayDataExportService
+        {
+            FileName = config.DataLoggingFileName,
+            TargetPath = config.DataLoggingPath,
+            CacheSize = 50,
+            FileExtension = "bin"
+        };
+
+        var logger = new OnlyDataBlockInboundDataLogger(es);
+        logger.Start();
+        config.DataLoggers.Add(logger);
     }
 }

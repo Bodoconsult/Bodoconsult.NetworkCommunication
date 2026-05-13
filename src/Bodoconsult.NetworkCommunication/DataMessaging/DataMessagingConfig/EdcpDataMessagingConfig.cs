@@ -166,4 +166,9 @@ public class EdcpDataMessagingConfig : IIpDataMessagingConfig
     /// The maximum blockcode sent by the server
     /// </summary>
     public int ServerSendMaximumBlockCode { get; set; } = 127;
+
+    /// <summary>
+    /// Current data loggers. May contain zero or more loggers. Each message can be logged only by one logger (or none)
+    /// </summary>
+    public List<IInboundDataLogger> DataLoggers { get; } = [];
 }

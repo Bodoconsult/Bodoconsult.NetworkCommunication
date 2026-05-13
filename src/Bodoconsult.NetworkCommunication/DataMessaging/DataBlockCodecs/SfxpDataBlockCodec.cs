@@ -1,14 +1,16 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
 using Bodoconsult.NetworkCommunication.DataMessaging.DataBlocks;
+using Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
+using Bodoconsult.NetworkCommunication.Helpers;
 using Bodoconsult.NetworkCommunication.Interfaces;
 
 namespace Bodoconsult.NetworkCommunication.DataMessaging.DataBlockCodecs;
 
 /// <summary>
-/// Basic datablock codec for SDCP, EDCP, TNCP and BTCP protocol
+/// Basic datablock codec for SFXP protocol
 /// </summary>
-public class BasicDataBlockCodec : IDataBlockCodec
+public class SfxpDataBlockCodec : IDataBlockCodec
 {
     /// <summary>
     /// Method encode an instance of Datablock in bytes array.
@@ -44,24 +46,64 @@ public class BasicDataBlockCodec : IDataBlockCodec
     /// <returns>Datablock object</returns>
     public ITypedInboundDataBlock DecodeDataBlock(Memory<byte> datablockBytes)
     {
-
-        // You should add some datablock validation here
-
-        // 
-
         // Now create your datablock as request by specs here
         if (datablockBytes.Length < 2)
         {
-            return new BasicInboundDatablock
+            return new SfxpInboundDatablock
             {
                 Data = Array.Empty<byte>(),
-                DataBlockType = 'x'
+                DataBlockType = 's'
             };
         }
-        return new BasicInboundDatablock
+
+        var db = new SfxpInboundDatablock
         {
             Data = datablockBytes[1..],
-            DataBlockType = 'x'
+            DataBlockType = 's'
         };
+
+        ParseDataChunks(db);
+
+        return db;
+    }
+
+    private void ParseDataChunks(SfxpInboundDatablock db)
+    {
+        var data = db.Data;
+
+        for (var i = 0; i < data.Length; i++)
+        {
+            var firstByte = data.Slice(i, 1).Span[0];
+
+            // 0x0 sync byte
+            if (firstByte == SfxpProtocolHelper.RegularSyncByte.SyncByte)
+            {
+                continue;
+            }
+
+            // 0x9 sync byte
+            if (firstByte == SfxpProtocolHelper.SampleCounterSyncByteBlock.SyncByte)
+            {
+                i += SfxpProtocolHelper.SampleCounterSyncByteBlock.SyncByte - 1;
+                continue;
+            }
+
+            if (i + SfxpProtocolHelper.DataChunkLength >= data.Length)
+            {
+                return;
+            }
+
+            var chunk = data.Slice(i, SfxpProtocolHelper.DataChunkLength);
+
+            var dataChunk = new DataChunk
+            {
+                Data = chunk,
+                // ToDo: correct channel
+                Channel = 1
+            };
+
+            db.DataChunks.Add(dataChunk);
+            i += SfxpProtocolHelper.DataChunkLength - 1;
+        }
     }
 }

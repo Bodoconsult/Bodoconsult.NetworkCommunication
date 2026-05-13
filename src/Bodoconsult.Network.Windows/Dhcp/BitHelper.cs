@@ -47,12 +47,19 @@ internal static class BitHelper
     public static long ReadIntVar(byte[] buffer, int index, int length)
     {
         if (buffer == null)
+        {
             throw new ArgumentNullException(nameof(buffer));
+        }
+
         if (buffer.Length < index + length)
+        {
             throw new ArgumentOutOfRangeException(nameof(length));
+        }
 
         if (length > 8)
+        {
             throw new ArgumentOutOfRangeException(nameof(length));
+        }
 
         var value = default(long);
         var offset = (length - 1) * 8;
@@ -71,12 +78,19 @@ internal static class BitHelper
         // read variable length integer from memory in network-order
 
         if (pointer == IntPtr.Zero)
+        {
             throw new ArgumentNullException(nameof(pointer));
-        if (length > 8 || length < 0)
+        }
+
+        if (length is > 8 or < 0)
+        {
             throw new ArgumentOutOfRangeException(nameof(length));
+        }
 
         if (length == 0)
+        {
             return 0;
+        }
 
         var value = Marshal.ReadInt64(pointer, offset);
 
@@ -105,10 +119,8 @@ internal static class BitHelper
                    ((long)buffer[index++] << 8) |
                    buffer[index];
         }
-        else
-        {
-            return BitConverter.ToInt64(buffer, index);
-        }
+
+        return BitConverter.ToInt64(buffer, index);
     }
 
     public static ulong ReadUInt64(byte[] buffer, int index) => (ulong)ReadInt64(buffer, index);
@@ -122,8 +134,8 @@ internal static class BitHelper
                    (buffer[index++] << 8) |
                    buffer[index];
         }
-        else
-            return BitConverter.ToInt32(buffer, index);
+
+        return BitConverter.ToInt32(buffer, index);
     }
 
     public static uint ReadUInt32(byte[] buffer, int index) => (uint)ReadInt32(buffer, index);
@@ -131,9 +143,10 @@ internal static class BitHelper
     public static short ReadInt16(byte[] buffer, int index)
     {
         if (BitConverter.IsLittleEndian)
+        {
             return (short)((buffer[index++] << 8) | buffer[index]);
-        else
-            return BitConverter.ToInt16(buffer, index);
+        }
+        return BitConverter.ToInt16(buffer, index);
     }
 
     public static ushort ReadUInt16(byte[] buffer, int index)
@@ -182,24 +195,20 @@ internal static class BitHelper
                 indexEnd = ++i;
                 return;
             }
-            else
-            {
-                if (lc++ != 0)
-                    builder.Append('.');
 
-                // is pointer?
-                if ((ls & 0b11000000) != 0)
-                {
-                    ReadDnsLabelsUncompressedString(builder, buffer, ls & 0b00111111, out _);
-                    indexEnd = ++i;
-                    return;
-                }
-                else
-                {
-                    builder.Append(Encoding.ASCII.GetString(buffer, ++i, ls));
-                    i += ls;
-                }
+            if (lc++ != 0)
+                builder.Append('.');
+
+            // is pointer?
+            if ((ls & 0b11000000) != 0)
+            {
+                ReadDnsLabelsUncompressedString(builder, buffer, ls & 0b00111111, out _);
+                indexEnd = ++i;
+                return;
             }
+
+            builder.Append(Encoding.ASCII.GetString(buffer, ++i, ls));
+            i += ls;
         }
 
         throw new ArgumentException("Dns label not correctly terminated");
@@ -218,20 +227,20 @@ internal static class BitHelper
                 indexEnd = ++i;
                 return;
             }
-            else
-            {
-                // is pointer?
-                if ((ls & 0b11000000) != 0)
-                    throw new ArgumentException("Dns label buffer references a pointer", nameof(buffer));
-                else
-                {
-                    if (lc++ != 0)
-                        builder.Append('.');
 
-                    builder.Append(Encoding.ASCII.GetString(buffer, ++i, ls));
-                    i += ls;
-                }
+            // is pointer?
+            if ((ls & 0b11000000) != 0)
+            {
+                throw new ArgumentException("Dns label buffer references a pointer", nameof(buffer));
             }
+
+            if (lc++ != 0)
+            {
+                builder.Append('.');
+            }
+
+            builder.Append(Encoding.ASCII.GetString(buffer, ++i, ls));
+            i += ls;
         }
 
         throw new ArgumentException("Dns label not correctly terminated");
@@ -241,20 +250,14 @@ internal static class BitHelper
     {
         var length = index;
         for (; length < index + maxLength && buffer[length] != 0; length++) ;
-        if (length == index)
-            return string.Empty;
-        else
-            return Encoding.ASCII.GetString(buffer, index, length - index);
+        return length == index ? string.Empty : Encoding.ASCII.GetString(buffer, index, length - index);
     }
 
     public static string ReadUtf8String(byte[] buffer, int index, int maxLength)
     {
         var length = index;
         for (; buffer[length] != 0 && length < index + maxLength; length++) ;
-        if (length == index)
-            return string.Empty;
-        else
-            return Encoding.UTF8.GetString(buffer, index, length - index);
+        return length == index ? string.Empty : Encoding.UTF8.GetString(buffer, index, length - index);
     }
 
     public static DhcpServerIpAddress ReadIpAddress(byte[] buffer, int index) => DhcpServerIpAddress.FromNative(ReadInt32(buffer, index));
@@ -262,15 +265,20 @@ internal static class BitHelper
     public static string ReadHexString(ulong buffer, int index, int length)
     {
         if (index + length > 8)
+        {
             throw new ArgumentOutOfRangeException(nameof(length));
+        }
+
         if (length == 0)
+        {
             return string.Empty;
+        }
 
         var builder = new StringBuilder(length * 2);
         var end = index + length;
         for (var i = index; i < end; i++)
         {
-            var b = (byte)(buffer >> (56 - (i * 8)));
+            var b = (byte)(buffer >> (56 - i * 8));
 
             builder.AppendHex(b);
         }
@@ -281,9 +289,14 @@ internal static class BitHelper
     public static string ReadHexString(ulong buffer, int index, int length, char seperator)
     {
         if (index + length > 8)
+        {
             throw new ArgumentOutOfRangeException(nameof(length));
+        }
+
         if (length == 0)
+        {
             return string.Empty;
+        }
 
         var builder = new StringBuilder(length * 2);
         var end = index + length;
@@ -292,7 +305,7 @@ internal static class BitHelper
             if (i != index)
                 builder.Append(seperator);
 
-            var b = (byte)(buffer >> (56 - (i * 8)));
+            var b = (byte)(buffer >> (56 - i * 8));
 
             builder.AppendHex(b);
         }
@@ -303,9 +316,14 @@ internal static class BitHelper
     public static string ReadHexString(ulong buffer1, ulong buffer2, int index, int length)
     {
         if (index + length > 16)
+        {
             throw new ArgumentOutOfRangeException(nameof(length));
+        }
+
         if (length == 0)
+        {
             return string.Empty;
+        }
 
         var builder = new StringBuilder(length * 2);
         var end = index + length;
@@ -313,9 +331,13 @@ internal static class BitHelper
         {
             byte b;
             if (i < 8)
-                b = (byte)(buffer1 >> (56 - (i * 8)));
+            {
+                b = (byte)(buffer1 >> (56 - i * 8));
+            }
             else
-                b = (byte)(buffer2 >> (56 - ((i - 8) * 8)));
+            {
+                b = (byte)(buffer2 >> (56 - (i - 8) * 8));
+            }
 
             builder.AppendHex(b);
         }
@@ -326,9 +348,14 @@ internal static class BitHelper
     public static string ReadHexString(ulong buffer1, ulong buffer2, int index, int length, char seperator)
     {
         if (index + length > 16)
+        {
             throw new ArgumentOutOfRangeException(nameof(length));
+        }
+
         if (length == 0)
+        {
             return string.Empty;
+        }
 
         var builder = new StringBuilder(length * 2 + (length - 1));
         var end = index + length;
@@ -339,9 +366,9 @@ internal static class BitHelper
 
             byte b;
             if (i < 8)
-                b = (byte)(buffer1 >> (56 - (i * 8)));
+                b = (byte)(buffer1 >> (56 - i * 8));
             else
-                b = (byte)(buffer2 >> (56 - ((i - 8) * 8)));
+                b = (byte)(buffer2 >> (56 - (i - 8) * 8));
 
             builder.AppendHex(b);
         }
@@ -352,16 +379,26 @@ internal static class BitHelper
     public static string ReadHexString(byte[] buffer, int index, int length)
     {
         if (buffer == null)
+        {
             throw new ArgumentNullException(nameof(buffer));
+        }
+
         if (buffer.Length < index + length)
+        {
             throw new ArgumentOutOfRangeException(nameof(length));
+        }
+
         if (length == 0)
+        {
             return string.Empty;
+        }
 
         var builder = new StringBuilder(length * 2);
         var end = index + length;
         for (var i = index; i < end; i++)
+        {
             builder.AppendHex(buffer[i]);
+        }
 
         return builder.ToString();
     }
@@ -369,18 +406,28 @@ internal static class BitHelper
     public static string ReadHexString(byte[] buffer, int index, int length, char seperator)
     {
         if (buffer == null)
+        {
             throw new ArgumentNullException(nameof(buffer));
-        if (buffer.Length < index + length)
-            throw new ArgumentOutOfRangeException(nameof(length));
-        if (length == 0)
-            return string.Empty;
+        }
 
-        var builder = new StringBuilder((length * 2) + length - 1);
+        if (buffer.Length < index + length)
+        {
+            throw new ArgumentOutOfRangeException(nameof(length));
+        }
+
+        if (length == 0)
+        {
+            return string.Empty;
+        }
+
+        var builder = new StringBuilder(length * 2 + length - 1);
         var end = index + length;
         for (var i = index; i < end; i++)
         {
             if (i != index)
+            {
                 builder.Append(seperator);
+            }
 
             builder.AppendHex(buffer[i]);
         }
@@ -392,18 +439,16 @@ internal static class BitHelper
 
     public static string ReadHexString(byte[] buffer)
     {
-        if (buffer == null)
-            throw new ArgumentNullException(nameof(buffer));
-
-        return ReadHexString(buffer, 0, buffer.Length);
+        return buffer == null
+            ? throw new ArgumentNullException(nameof(buffer))
+            : ReadHexString(buffer, 0, buffer.Length);
     }
 
     public static string ReadHexString(byte[] buffer, char seperator)
     {
-        if (buffer == null)
-            throw new ArgumentNullException(nameof(buffer));
-
-        return ReadHexString(buffer, 0, buffer.Length, seperator);
+        return buffer == null
+            ? throw new ArgumentNullException(nameof(buffer))
+            : ReadHexString(buffer, 0, buffer.Length, seperator);
     }
 
     public static void AppendHex(this StringBuilder builder, byte buffer) => builder.Append(HexStringTable[buffer]);
@@ -416,7 +461,9 @@ internal static class BitHelper
         for (var i = index; i < length;)
         {
             if (builder.Length != 0)
+            {
                 builder.Append(seperator);
+            }
 
             ReadDnsLabelsString(builder, buffer, i, out i);
         }
@@ -444,7 +491,7 @@ internal static class BitHelper
 
         var end = valueIndex + valueLength;
         for (var i = valueIndex; i < end; i++)
-            buffer[index++] = (byte)(value >> (56 - (i * 8)));
+            buffer[index++] = (byte)(value >> (56 - i * 8));
     }
 
     public static void Write(byte[] buffer, int index, ulong value1, ulong value2, int valueIndex, int valueLength)
@@ -461,9 +508,9 @@ internal static class BitHelper
         for (var i = valueIndex; i < end; i++)
         {
             if (i < 8)
-                buffer[index++] = (byte)(value1 >> (56 - (i * 8)));
+                buffer[index++] = (byte)(value1 >> (56 - i * 8));
             else
-                buffer[index++] = (byte)(value2 >> (56 - ((i - 8) * 8)));
+                buffer[index++] = (byte)(value2 >> (56 - (i - 8) * 8));
         }
     }
 
@@ -477,7 +524,7 @@ internal static class BitHelper
         buffer[index++] = (byte)(value >> 24);
         buffer[index++] = (byte)(value >> 16);
         buffer[index++] = (byte)(value >> 8);
-        buffer[index] = (byte)(value);
+        buffer[index] = (byte)value;
     }
 
     public static void Write(byte[] buffer, int index, long value) => Write(buffer, index, (ulong)value);
@@ -487,7 +534,7 @@ internal static class BitHelper
         buffer[index++] = (byte)(value >> 24);
         buffer[index++] = (byte)(value >> 16);
         buffer[index++] = (byte)(value >> 8);
-        buffer[index] = (byte)(value);
+        buffer[index] = (byte)value;
     }
 
     public static void Write(byte[] buffer, int index, int value) => Write(buffer, index, (uint)value);
@@ -495,7 +542,7 @@ internal static class BitHelper
     public static void Write(byte[] buffer, int index, ushort value)
     {
         buffer[index++] = (byte)(value >> 8);
-        buffer[index] = (byte)(value);
+        buffer[index] = (byte)value;
     }
 
     public static void Write(byte[] buffer, int index, short value) => Write(buffer, index, (ushort)value);
@@ -600,11 +647,19 @@ internal static class BitHelper
     public static uint StringToIpAddress(string address, int index, int length)
     {
         if (string.IsNullOrEmpty(address))
+        {
             throw new ArgumentNullException(nameof(address));
+        }
+
         if (address.Length < index + length)
+        {
             throw new ArgumentOutOfRangeException(nameof(length));
-        if (length > 15 || length < 7)
+        }
+
+        if (length is > 15 or < 7)
+        {
             throw new ArgumentOutOfRangeException(nameof(address));
+        }
 
         var result = 0U;
         var shiftAmount = 24;
@@ -618,8 +673,10 @@ internal static class BitHelper
 
             if (ipChar == '.')
             {
-                if ((i - octetIndex) < 1 || (i - octetIndex) > 3 || shiftAmount <= 0 || octetValue > 255)
+                if (i - octetIndex < 1 || i - octetIndex > 3 || shiftAmount <= 0 || octetValue > 255)
+                {
                     throw new ArgumentOutOfRangeException(nameof(address));
+                }
 
                 result |= (uint)(octetValue << shiftAmount);
                 shiftAmount -= 8;
@@ -628,14 +685,19 @@ internal static class BitHelper
             }
             else
             {
-                if (ipChar < '0' || ipChar > '9')
+                if (ipChar is < '0' or > '9')
+                {
                     throw new ArgumentOutOfRangeException(nameof(address));
+                }
 
-                octetValue = (octetValue * 10) + (ipChar - '0');
+                octetValue = octetValue * 10 + (ipChar - '0');
             }
         }
-        if ((indexEnd - octetIndex) < 1 || (indexEnd - octetIndex) > 3 || shiftAmount != 0 || octetValue > 255)
+
+        if (indexEnd - octetIndex < 1 || indexEnd - octetIndex > 3 || shiftAmount != 0 || octetValue > 255)
+        {
             throw new ArgumentOutOfRangeException(nameof(address));
+        }
 
         result |= (uint)octetValue;
 
@@ -655,27 +717,42 @@ internal static class BitHelper
         result = 0;
 
         if (string.IsNullOrEmpty(s))
+        {
             return false;
+        }
+
         if (index < 0 || index + length > s.Length)
+        {
             return false;
-        if (length < 1 || length > 3)
+        }
+
+        if (length is < 1 or > 3)
+        {
             return false;
+        }
 
         var value = 0;
         var indexEnd = index + length;
-        for (var i = 0; (index < indexEnd && i < 3); i++)
+        for (var i = 0; index < indexEnd && i < 3; i++)
         {
             var c = s[index] - 48;
             if (c > 9)
+            {
                 return false;
-            value = (value * 10) + c;
+            }
+            value = value * 10 + c;
             index++;
         }
+
         if (index != indexEnd || value > 255 || value < 0)
+        {
             return false;
+        }
 
         result = (byte)value;
-        return true;
+        {
+            return true;
+        }
     }
 
     /// <summary>
@@ -689,83 +766,149 @@ internal static class BitHelper
     public static bool TryParseByteFromHexSubstring(string s, int index, int length, out byte result)
     {
         result = 0;
-        if (length == 0)
-            return true; // shortcut
+        switch (length)
+        {
+            case 0:
+                return true; // shortcut
+            case < 1 or > 2:
+                return false;
+        }
 
-        if (length < 1 || length > 2)
-            return false;
         if (string.IsNullOrEmpty(s))
+        {
             return false;
+        }
+
         if (index < 0 || index + length > s.Length)
+        {
             return false;
-        if (length < 1 || length > 3)
+        }
+
+        if (length is < 1 or > 3)
+        {
             return false;
+        }
 
         var c = s[index++];
         if (c >= 48 && c <= 57) // handle 0-9
-            result = (byte)(c - 48);
-        else if (c >= 65 && c <= 70) // handle A-Z (10-15)
-            result = (byte)(c - 55);
-        else if (c >= 97 && c <= 102) // handle a-z (10-15)
-            result = (byte)(c - 87);
-        else
-            return false;
-
-        if (length == 2)
         {
-            result <<= 4; // left shift first bits
+            result = (byte)(c - 48);
+        }
+        else if (c >= 65 && c <= 70) // handle A-Z (10-15)
+        {
+            result = (byte)(c - 55);
+        }
+        else if (c >= 97 && c <= 102) // handle a-z (10-15)
+        {
+            result = (byte)(c - 87);
+        }
+        else
+        {
+            return false;
+        }
 
-            c = s[index];
-            if (c >= 48 && c <= 57) // handle 0-9
-                result |= (byte)(c - 48);
-            else if (c >= 65 && c <= 70) // handle A-Z (10-15)
-                result |= (byte)(c - 55);
-            else if (c >= 97 && c <= 102) // handle a-z (10-15)
-                result |= (byte)(c - 87);
-            else
-                return false;
+        if (length != 2)
+        {
+            return true;
+        }
+
+        result <<= 4; // left shift first bits
+
+        c = s[index];
+        if (c >= 48 && c <= 57) // handle 0-9
+        {
+            result |= (byte)(c - 48);
+        }
+        else if (c >= 65 && c <= 70) // handle A-Z (10-15)
+        {
+            result |= (byte)(c - 55);
+        }
+        else if (c >= 97 && c <= 102) // handle a-z (10-15)
+        {
+            result |= (byte)(c - 87);
+        }
+        else
+        {
+            return false;
         }
 
         return true;
     }
 
+    /// <summary>
+    /// Get the high significant bits
+    /// </summary>
+    /// <param name="value">Value</param>
+    /// <returns>Value representing the high significant bits</returns>
     public static int HighSignificantBits(uint value)
     {
         var sb = 0;
 
         if ((value & 0xFFFF0000) == 0xFFFF0000)
+        {
             sb = 16;
+        }
         else
+        {
             value >>= 16;
+        }
 
         if ((value & 0xFF00) == 0xFF00)
+        {
             sb += 8;
+        }
         else
+        {
             value >>= 8;
+        }
 
         if ((value & 0xF0) == 0xF0)
+        {
             sb += 4;
+        }
         else
+        {
             value >>= 4;
+        }
 
         if ((value & 0xC) == 0xC)
+        {
             sb += 2;
+        }
         else
+        {
             value >>= 2;
+        }
 
         if ((value & 2) == 2)
+        {
             sb += 1;
+        }
         else
+        {
             value >>= 1;
+        }
 
         if ((value & 1) == 1)
+        {
             sb += 1;
+        }
 
         return sb;
     }
 
+    /// <summary>
+    /// Get the high insignificant bits
+    /// </summary>
+    /// <param name="value">Value</param>
+    /// <returns>Value representing the high insignificant bits</returns>
     public static int HighInsignificantBits(uint value) => HighSignificantBits(~value);
 
+    /// <summary>
+    /// Get the low insignificant bits
+    /// </summary>
+    /// <param name="value">Value</param>
+    /// <returns>Value representing the low insignificant bits</returns>
     public static int LowInsignificantBits(uint value)
     {
         var sb = 0;
@@ -800,6 +943,11 @@ internal static class BitHelper
         return sb;
     }
 
+    /// <summary>
+    /// Get the low significant bits
+    /// </summary>
+    /// <param name="value">Value</param>
+    /// <returns>Value representing the low significant bits</returns>
     public static int LowSignificantBits(uint value) => LowInsignificantBits(~value);
 
     public static void DebugDump(IntPtr pointer, int length)
@@ -818,6 +966,6 @@ internal static class BitHelper
             builder.AppendLine();
         }
 
-        global::System.Diagnostics.Debug.WriteLine(builder.ToString());
+        System.Diagnostics.Debug.WriteLine(builder.ToString());
     }
 }

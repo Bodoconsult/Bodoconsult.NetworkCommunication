@@ -143,6 +143,7 @@ public class SfxpLoggedSortableDataMessageProcessingPackage : IDataMessageProces
     public virtual void LoadCustomDataBlockCodecs()
     {
         // Load your datablock codes here
+        DataBlockCodingProcessor.LoadDataBlockCodecs('s', new SfxpDataBlockCodec());
         DataBlockCodingProcessor.LoadDataBlockCodecs('x', new BasicDataBlockCodec());
     }
 }
