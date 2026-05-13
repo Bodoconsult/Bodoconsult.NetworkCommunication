@@ -63,7 +63,11 @@ internal class SfxpDataMessageCodecTests
 
         IDataBlockCodingProcessor dataBlockCodingProcessor = new DefaultDataBlockCodingProcessor();
         dataBlockCodingProcessor.LoadDataBlockCodecs('x', new BasicDataBlockCodec());
-        dataBlockCodingProcessor.LoadDataBlockCodecs('s', new SfxpDataBlockCodec());
+
+        var sfxpCodec = new SfxpDataBlockCodec();
+        sfxpCodec.LoadMask([0x0, 0x1, 0x2, 0x3, 0xC, 0xF]);
+
+        dataBlockCodingProcessor.LoadDataBlockCodecs('s', sfxpCodec);
         var codec = new SfxpDataMessageCodec(dataBlockCodingProcessor);
 
         // Act  
@@ -93,6 +97,7 @@ internal class SfxpDataMessageCodecTests
 
             var db = (SfxpInboundDatablock)msg2.DataBlock;
             Assert.That(db.DataChunks.Count, Is.Not.Zero);
+            Assert.That(db.DataChunks.Any(x=> x.Channel>0), Is.True);
         }
     }
 

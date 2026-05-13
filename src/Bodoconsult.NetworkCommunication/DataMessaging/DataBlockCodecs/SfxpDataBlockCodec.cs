@@ -4,6 +4,7 @@ using Bodoconsult.NetworkCommunication.DataMessaging.DataBlocks;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
 using Bodoconsult.NetworkCommunication.Helpers;
 using Bodoconsult.NetworkCommunication.Interfaces;
+using System.Threading.Tasks;
 
 namespace Bodoconsult.NetworkCommunication.DataMessaging.DataBlockCodecs;
 
@@ -12,6 +13,22 @@ namespace Bodoconsult.NetworkCommunication.DataMessaging.DataBlockCodecs;
 /// </summary>
 public class SfxpDataBlockCodec : IDataBlockCodec
 {
+    /// <summary>
+    /// Byte mask for the mapping of the chunk to channel relationship
+    /// </summary>
+    private byte[] _mask = [];
+
+    private byte _currentIndex = 0;
+
+    /// <summary>
+    /// Load the byte mask for the mapping of the chunk to channel relationship
+    /// </summary>
+    /// <param name="mask">Mask to load</param>
+    public void LoadMask(byte[] mask)
+    {
+        _mask = mask;
+    }
+
     /// <summary>
     /// Method encode an instance of Datablock in bytes array.
     /// Method is called when a message is sent to the device
@@ -69,6 +86,11 @@ public class SfxpDataBlockCodec : IDataBlockCodec
 
     private void ParseDataChunks(SfxpInboundDatablock db)
     {
+        if (_mask.Length == 0)
+        {
+            return;
+        }
+
         var data = db.Data;
 
         for (var i = 0; i < data.Length; i++)
@@ -79,12 +101,14 @@ public class SfxpDataBlockCodec : IDataBlockCodec
             if (firstByte == SfxpProtocolHelper.RegularSyncByte.SyncByte)
             {
                 continue;
+                _currentIndex = 0;
             }
 
             // 0x9 sync byte
             if (firstByte == SfxpProtocolHelper.SampleCounterSyncByteBlock.SyncByte)
             {
                 i += SfxpProtocolHelper.SampleCounterSyncByteBlock.SyncByte - 1;
+                _currentIndex = 0;
                 continue;
             }
 
@@ -99,8 +123,14 @@ public class SfxpDataBlockCodec : IDataBlockCodec
             {
                 Data = chunk,
                 // ToDo: correct channel
-                Channel = 1
+                Channel = _mask[_currentIndex]
             };
+
+            _currentIndex++;
+            if (_currentIndex == _mask.Length)
+            {
+                _currentIndex = 0;
+            }
 
             db.DataChunks.Add(dataChunk);
             i += SfxpProtocolHelper.DataChunkLength - 1;
