@@ -8,6 +8,8 @@ namespace IpCommunicationSample.Common.BusinessTransactions;
 public static class ServerSideBusinessTransactionIds
 {
     public static int NotificationFired => 100;
+
+    public static int ReportDeviceError = 101;
     
     public const int SendClientHello = 205;
 

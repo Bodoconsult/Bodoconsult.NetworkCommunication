@@ -1,8 +1,10 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
+using System.Text;
 using Bodoconsult.NetworkCommunication.BusinessTransactions.Requests;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataBlocks;
 using IpClient.Bll.BusinessTransactions.Converters;
+using IpCommunicationSample.Common.BusinessTransactions.Requests;
 
 namespace IpCommunicationSampleTests.Client.Converters;
 
@@ -10,7 +12,7 @@ namespace IpCommunicationSampleTests.Client.Converters;
 internal class DataBlockConverterTests
 {
     [Test]
-    public void Ctor_ValidSetup_PropsSetCorrectly()
+    public void ConvertToRequest_StateChangedEventFiredBusinessTransactionRequestData_ReturnsRequest()
     {
         // Arrange 
         var converter = new DataBlockConverter();
@@ -24,6 +26,41 @@ internal class DataBlockConverterTests
         var request = converter.ConvertToRequest(dataBlock);
 
         // Assert
-        Assert.That(request, Is.TypeOf<StateChangedEventFiredBusinessTransactionRequestData>());
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(request, Is.TypeOf<StateChangedEventFiredBusinessTransactionRequestData>());
+        }
+    }
+
+    [Test]
+    public void ConvertToRequest_ErrorBusinessTransactionRequestData_ReturnsRequest()
+    {
+        // Arrange 
+        var converter = new DataBlockConverter();
+
+        const string command = "TelnetCommand";
+        const string addInfo = "AddInfo";
+
+        const string requestData = $"e{command}|{addInfo}";
+
+        var dataBlock = new BasicInboundDatablock
+        {
+            Data = new Memory<byte>(Encoding.UTF8.GetBytes(requestData))
+        };
+
+        // Act  
+        var request = converter.ConvertToRequest(dataBlock);
+
+        // Assert
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(request, Is.TypeOf<ErrorBusinessTransactionRequestData>());
+
+            ArgumentNullException.ThrowIfNull(request);
+            var err = (ErrorBusinessTransactionRequestData)request;
+
+            Assert.That(err.TelnetCommand, Is.EqualTo(command));
+            Assert.That(err.TelnetAdditionalInfo, Is.EqualTo(addInfo));
+        }
     }
 }

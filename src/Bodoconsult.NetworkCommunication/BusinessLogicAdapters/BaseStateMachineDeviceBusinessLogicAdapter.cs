@@ -4,6 +4,7 @@
 // Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
 using Bodoconsult.App.Abstractions.Interfaces;
+using Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
 using Bodoconsult.NetworkCommunication.Interfaces;
 using Bodoconsult.NetworkCommunication.StateManagement;
 
@@ -14,6 +15,8 @@ namespace Bodoconsult.NetworkCommunication.BusinessLogicAdapters;
 /// </summary>
 public abstract class BaseStateMachineDeviceBusinessLogicAdapter : IStateMachineDeviceBusinessLogicAdapter
 {
+    private readonly string _loggerId;
+
     /// <summary>
     /// Default ctor
     /// </summary>
@@ -22,6 +25,7 @@ public abstract class BaseStateMachineDeviceBusinessLogicAdapter : IStateMachine
     {
         IpDevice = IpDevice = device;
         Device = device;
+        _loggerId = $"{Device.LoggerId}{(Device.LoggerId.EndsWith(": ", StringComparison.InvariantCultureIgnoreCase) ? "" : ": ")}";
         AppLogger = device.DataMessagingConfig.AppLogger;
     }
 
@@ -100,7 +104,32 @@ public abstract class BaseStateMachineDeviceBusinessLogicAdapter : IStateMachine
     /// </summary>
     public virtual MessageHandlingResult DefaultHandleAsyncMessage(IStateMachineState state, IInboundDataMessage? message)
     {
+
+        if (message is TncpInboundDataMessage tncp)
+        {
+            return HandleTncpMessage(tncp);
+        }
+
         // Do nothing
+        return MessageHandlingResultHelper.Success();
+    }
+
+    private MessageHandlingResult HandleTncpMessage(TncpInboundDataMessage tncp)
+    {
+        if (tncp.TelnetCommand == null)
+        {
+            return MessageHandlingResultHelper.Success();
+        }
+
+        // Error message received
+        if (tncp.TelnetCommand.StartsWith("<BEGIN>AUTO"))
+        {
+            Device.DataMessagingConfig.AppLogger.LogError($"{_loggerId} Telnet: {tncp.TelnetCommand} AddInfo: {tncp.TelnetAdditionalInfo}");
+            
+
+
+        }
+
         return MessageHandlingResultHelper.Success();
     }
 

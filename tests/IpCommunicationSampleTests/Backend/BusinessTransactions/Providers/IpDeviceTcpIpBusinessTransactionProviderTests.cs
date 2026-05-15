@@ -103,7 +103,7 @@ internal class IpDeviceTcpIpBusinessTransactionProviderTests
         using (Assert.EnterMultipleScope())
         {
             Assert.That(transaction, Is.Not.Null);
-          Assert.That(transaction.Id, Is.EqualTo(ClientSideBusinessTransactionIds.StopSnapshot));
+            Assert.That(transaction.Id, Is.EqualTo(ClientSideBusinessTransactionIds.StopSnapshot));
             Assert.That(transaction.RunBusinessTransactionDelegate, Is.Not.Null);
             Assert.That(transaction.AllowedRequestDataTypes, Has.Count.EqualTo(1));
         }
@@ -111,8 +111,8 @@ internal class IpDeviceTcpIpBusinessTransactionProviderTests
 
     private static IpDeviceTcpIpBusinessTransactionProvider CreateProvider()
     {
-        var articleGroupDelegate = new Mock<IIpDeviceTcpIpDeviceBusinessLogicAdapter>();
-        var provider = new IpDeviceTcpIpBusinessTransactionProvider(articleGroupDelegate.Object);
+        var adapter = new Mock<IIpDeviceTcpIpDeviceBusinessLogicAdapter>();
+        var provider = new IpDeviceTcpIpBusinessTransactionProvider(adapter.Object);
 
         return provider;
     }

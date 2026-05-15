@@ -1,8 +1,13 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
+using System.Text;
+using Bodoconsult.App.Abstractions.Extensions;
 using Bodoconsult.App.Abstractions.Interfaces;
+using Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
 using Bodoconsult.NetworkCommunication.Tests.Helpers;
 using IpBackend.Bll.BusinessLogic.Converters;
+using IpCommunicationSample.Common;
+using IpCommunicationSample.Common.BusinessTransactions.Requests;
 
 namespace IpCommunicationSampleTests.Backend.Converters;
 
@@ -29,6 +34,40 @@ internal class ClientBtRequestDataToOutboundBtcpMessageConverterTests
         // Assert
         Assert.That(conv.AppLogger, Is.EqualTo(_appLogger));
     }
+
+    [Test]
+    public void MapToOutboundDataMessage_ErrorBusinessTransactionRequestData_CorrectMessage()
+    {
+        // Arrange 
+        var conv = new ClientBtRequestDataToOutboundBtcpMessageConverter(_appLogger);
+
+        const int transactionId = 99;
+        var transactionUid = Guid.NewGuid();
+
+        var request = new ErrorBusinessTransactionRequestData
+        {
+            TransactionId = transactionId,
+            TransactionGuid = transactionUid,
+            TelnetCommand = "telenetCommand",
+            TelnetAdditionalInfo = "AddInfo"
+        };
+
+        var expectedPayload = Encoding.UTF8.GetBytes($"e{request.TelnetCommand}|{request.TelnetAdditionalInfo}");
+
+        // Act  
+        var result = (BtcpRequestOutboundDataMessage)conv.MapToOutboundDataMessage(request);
+
+        // Assert
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(result, Is.Not.Null);
+            Assert.That(result.BusinessTransactionId, Is.EqualTo(transactionId));
+            Assert.That(result.DataBlock, Is.Not.Null);
+            Assert.That(result.DataBlock?.DataBlockType, Is.EqualTo('x'));
+            Assert.That(result.DataBlock?.Data.IsEqualTo(expectedPayload), Is.True);
+        }
+    }
+
 
     //[Test]
     //public void MapToBusinessTransactionRequestData_StateChangedEventFired_ReturnsRequestData()

@@ -220,6 +220,7 @@ public class BackendManager : IBackendManager
     {
         ArgumentNullException.ThrowIfNull(IpDeviceTcpIp);
         ArgumentNullException.ThrowIfNull(IpDeviceUdp);
+        ArgumentNullException.ThrowIfNull(Client);
 
         if (IpDeviceUdpConfig == null)
         {
@@ -228,13 +229,18 @@ public class BackendManager : IBackendManager
 
         var adapter = (IIpDeviceTcpIpDeviceBusinessLogicAdapter?)IpDeviceTcpIp.DeviceBusinessLogicAdapter;
         var adapter2 = (IIpDeviceUdpDeviceBusinessLogicAdapter?)IpDeviceUdp.DeviceBusinessLogicAdapter;
+        var adapter3 = (IClientTcpIpDeviceBusinessLogicAdapter?)Client.DeviceBusinessLogicAdapter;
 
         ArgumentNullException.ThrowIfNull(adapter);
         ArgumentNullException.ThrowIfNull(adapter2);
+        ArgumentNullException.ThrowIfNull(adapter3);
 
         adapter.UdpPort = IpDeviceUdpConfig.Value.Port;
 
-        IBusinessTransactionProvider provider = new IpDeviceTcpIpBusinessTransactionProvider(adapter);
+        IBusinessTransactionProvider provider = new ClientTcpIpBusinessTransactionProvider(adapter3);
+        _businessTransactionManager.AddProvider(provider);
+
+        provider = new IpDeviceTcpIpBusinessTransactionProvider(adapter);
         _businessTransactionManager.AddProvider(provider);
 
         provider = new IpDeviceUdpBusinessTransactionProvider(adapter2);

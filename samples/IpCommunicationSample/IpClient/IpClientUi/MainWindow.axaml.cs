@@ -76,7 +76,7 @@ public partial class MainWindow : ReactiveWindow<IpClientMainWindowViewModel>, I
         viewModel.Region2 = window.FindRegion(MenuRegion.Name);
 
         ArgumentNullException.ThrowIfNull(viewModel.Region1);
-        ArgumentNullException.ThrowIfNull(viewModel.Region2);
+        //ArgumentNullException.ThrowIfNull(viewModel.Region2);
 
         // Bind regions
         this.OneWayBind<IpClientMainWindowViewModel, MainWindow, RoutingState, RoutingState>(viewModel, p => p.Region1!.Router, xy => xy.DocumentRegion.Router!)

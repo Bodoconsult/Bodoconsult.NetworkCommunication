@@ -40,12 +40,18 @@ public class BtcpBackendTcpIpBusinessLogicAdapter : BaseOrderManagementDeviceBus
         _orderIdGenerator = orderIdGenerator;
         //_uiStateHandler = uiStateHandler;
         StateChangedNotificationDelegate = uiStateHandler.StateChangedNotificationReceived;
+        ReportDeviceErrorDelegate = uiStateHandler.ReportDeviceErrorReceived;
     }
 
     /// <summary>
     /// Delegate fired when then state of the backend has changed
     /// </summary>
     public StateChangedNotificationDelegate? StateChangedNotificationDelegate { get; }
+
+    /// <summary>
+    /// Delegate fired when the device reported an error to the backend
+    /// </summary>
+    public ReportDeviceErrorDelegate? ReportDeviceErrorDelegate { get; }
 
     /// <summary>
     /// Request a start streaming state
@@ -187,6 +193,11 @@ public class BtcpBackendTcpIpBusinessLogicAdapter : BaseOrderManagementDeviceBus
         if (request is StateChangedEventFiredBusinessTransactionRequestData sr)
         {
             StateChangedNotificationDelegate?.Invoke(sr);
+        }
+
+        if (request is ErrorBusinessTransactionRequestData err)
+        {
+            ReportDeviceErrorDelegate?.Invoke(err);
         }
 
         return MessageHandlingResultHelper.Success();

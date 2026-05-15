@@ -1,8 +1,12 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
+using Bodoconsult.App.BusinessTransactions;
+using Bodoconsult.App.BusinessTransactions.RequestData;
 using Bodoconsult.App.Delegates;
 using Bodoconsult.App.Interfaces;
 using IpBackend.Bll.Interfaces;
+using IpCommunicationSample.Common.BusinessTransactions;
+using IpCommunicationSample.Common.BusinessTransactions.Requests;
 
 namespace IpBackend.Bll.BusinessTransactions.Providers;
 
@@ -21,10 +25,25 @@ public class ClientTcpIpBusinessTransactionProvider : IBusinessTransactionProvid
         BusinessLogicAdapter = businessLogicAdapter;
 
         //// Load transaction delegates now
-        //CreateBusinessTransactionDelegates.Add(ClientSideBusinessTransactionIds.StartStreaming, Transaction201_StartStreaming);
-        //CreateBusinessTransactionDelegates.Add(BackendBusinessTransactionCodes.StopStreaming, Transaction202_StopStreaming);
-        //CreateBusinessTransactionDelegates.Add(BackendBusinessTransactionCodes.StartSnapshot, Transaction203_StartSnapshot);
-        //CreateBusinessTransactionDelegates.Add(BackendBusinessTransactionCodes.StopSnapshot, Transaction204_StopSnapshot);
+        CreateBusinessTransactionDelegates.Add(ServerSideBusinessTransactionIds.ReportDeviceError, Transaction101_ReportDeviceError);
+    }
+
+    /// <summary>
+    /// Create transaction 101: report device error
+    /// </summary>
+    /// <returns>Business transaction</returns>
+    public BusinessTransaction Transaction101_ReportDeviceError()
+    {
+        var transaction = new BusinessTransaction
+        {
+            Id = ServerSideBusinessTransactionIds.ReportDeviceError,
+            Name = "Report device error",
+            RunBusinessTransactionDelegate = BusinessLogicAdapter.ReportDeviceError
+        };
+
+        transaction.AllowedRequestDataTypes.Add(nameof(ErrorBusinessTransactionRequestData));
+
+        return transaction;
     }
 
     /// <summary>

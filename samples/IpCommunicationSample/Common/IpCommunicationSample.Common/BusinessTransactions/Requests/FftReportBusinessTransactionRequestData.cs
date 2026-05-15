@@ -11,34 +11,3 @@ public class FftReportBusinessTransactionRequestData : BaseBusinessTransactionRe
 {
 
 }
-
-/// <summary>
-/// Request data for starting device communication
-/// </summary>
-public class StartMessagingReportBusinessTransactionRequestData : BaseBusinessTransactionRequestData
-{
-    /// <summary>
-    /// Is the request for snapshot (false) or streaming (true)
-    /// </summary>
-    public bool Snapshot { get; set; }
-
-    /// <summary>
-    /// Show channel 1?
-    /// </summary>
-    public bool Channel1 { get; set; }
-
-    /// <summary>
-    /// Show channel 2?
-    /// </summary>
-    public bool Channel2 { get; set; }
-
-    /// <summary>
-    /// Show channel 3?
-    /// </summary>
-    public bool Channel3 { get; set; }
-
-    /// <summary>
-    /// Show channel 4?
-    /// </summary>
-    public bool Channel4 { get; set; }
-}

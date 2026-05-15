@@ -10,7 +10,7 @@
                       xmlns:viewModels1="clr-namespace:IpClientUi.ViewModels"
                       Title="IQ-SampleStream" Height="360" Width="620">
 
-	<controls1:DockPanel HorizontalAlignment="Stretch">
+	<controls1:DockPanel HorizontalAlignment="Stretch" Margin="10, 10, 10, 10">
 		<controls:MenuControl x:Name="MainMenu" controls1:DockPanel.Dock="Top" HorizontalAlignment="Stretch" />
 
 			<controls1:Grid ColumnDefinitions="10*,10*" controls1:DockPanel.Dock="Bottom" HorizontalAlignment="Stretch" Classes="Bottom">
@@ -19,13 +19,21 @@
 				<controls1:Label Content="{controls1:Binding UiStateHandler.BackendStateMessage}" controls1:Grid.Column="1"  HorizontalAlignment="Stretch" Margin="25,0,0,0"></controls1:Label>
 			</controls1:Grid>
 
-		<controls1:Grid ColumnDefinitions="30*,70*" HorizontalAlignment="Stretch">
-			<rxui:RoutedViewHost controls1:Grid.Column="0" x:Name="MenuRegion"
+		<controls1:Grid ColumnDefinitions="70*,30*" HorizontalAlignment="Stretch">
+			<rxui:RoutedViewHost controls1:Grid.Column="0" x:Name="DocumentRegion"
                                  HorizontalContentAlignment="Stretch"
                                  VerticalContentAlignment="Stretch" />
-			<rxui:RoutedViewHost controls1:Grid.Column="1" x:Name="DocumentRegion"
-                                 HorizontalContentAlignment="Stretch"
-                                 VerticalContentAlignment="Stretch" />
+
+			<controls1:StackPanel controls1:Grid.Column="1">
+                <controls1:Label Content="Device errors:" HorizontalAlignment="Stretch"></controls1:Label>
+                <controls1:Label Content="{controls1:Binding UiStateHandler.ErrorCount}" HorizontalAlignment="Stretch"></controls1:Label>
+                <controls1:Label Content="Last device error:" HorizontalAlignment="Stretch"></controls1:Label>
+                <controls1:Label Content="{controls1:Binding UiStateHandler.LastDeviceError}" HorizontalAlignment="Stretch"></controls1:Label>
+
+                <rxui:RoutedViewHost x:Name="MenuRegion"
+                                     HorizontalContentAlignment="Stretch"
+                                     VerticalContentAlignment="Stretch" />
+            </controls1:StackPanel>
 		</controls1:Grid>
 
 	</controls1:DockPanel>

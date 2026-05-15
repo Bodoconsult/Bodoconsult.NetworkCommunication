@@ -4,6 +4,7 @@ using System.Text;
 using Bodoconsult.App.Abstractions.Interfaces;
 using Bodoconsult.NetworkCommunication.BusinessTransactions.Requests;
 using Bodoconsult.NetworkCommunication.Interfaces;
+using IpCommunicationSample.Common.BusinessTransactions.Requests;
 
 namespace IpClient.Bll.BusinessTransactions.Converters;
 
@@ -19,12 +20,41 @@ public class DataBlockConverter
     /// <returns>Request data or null if not convertable</returns>
     public IBusinessTransactionRequestData? ConvertToRequest(IInboundDataBlock dataBlock)
     {
-        if (dataBlock.Data[..1].Span[0] == 0x73)
+        var data = dataBlock.Data[1..];
+        var firstByte = dataBlock.Data.Span[0];
+
+        if (firstByte == 0x73)
         {
-            return ConvertToStateStateChangedEventFired(dataBlock.Data[1..].Span);
+            return ConvertToStateStateChangedEventFired(data.Span);
+        }
+
+        if (firstByte == 0x65)
+        {
+            return ConvertToErrorReported(data.Span);
         }
 
         return null;
+    }
+
+    private IBusinessTransactionRequestData? ConvertToErrorReported(Span<byte> span)
+    {
+        var rd = new ErrorBusinessTransactionRequestData();
+
+        var payload = Encoding.UTF8.GetString(span);
+
+        var i = payload.IndexOf("|", StringComparison.InvariantCultureIgnoreCase);
+
+        if (i >= 0)
+        {
+            rd.TelnetCommand = payload[..i];
+            rd.TelnetAdditionalInfo = payload[(i + 1)..];
+        }
+        else
+        {
+            rd.TelnetCommand =payload;
+        }
+        
+        return rd;
     }
 
 
