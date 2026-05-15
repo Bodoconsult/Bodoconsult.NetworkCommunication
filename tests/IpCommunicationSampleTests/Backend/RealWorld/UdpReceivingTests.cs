@@ -9,7 +9,6 @@ using Bodoconsult.NetworkCommunication.Tests.App;
 using IpBackend.Bll.BusinessLogic.Adapters;
 using IpBackend.Bll.Interfaces;
 using IpBackendService.DiContainerProvider;
-using IpCommunicationSampleTests.App;
 using IpDevice.Bll.Interfaces;
 using IpDeviceService.DiContainerProvider;
 

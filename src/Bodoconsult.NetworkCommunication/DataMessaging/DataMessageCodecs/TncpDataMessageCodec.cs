@@ -57,13 +57,13 @@ public class TncpDataMessageCodec : BaseDataMessageCodec
             }
 
             // Now get the delivered datablock
-            var dataBlockBytes = new byte[data.Length];
+            var dataBlockBytes = new byte[data.Length + 1];
 
             dataBlockBytes[0] = 0x78;
 
             for (var i = 1; i < dataBlockBytes.Length; i++)
             {
-                dataBlockBytes[i] = data.Slice(i- 1, 1).Span[0];
+                dataBlockBytes[i] = data.Slice(i - 1, 1).Span[0];
             }
 
             try
@@ -86,11 +86,8 @@ public class TncpDataMessageCodec : BaseDataMessageCodec
 
             if (dataBlock != null)
             {
-                dataMessage.TelnetCommand = Encoding.UTF8.GetString(dataBlock.Data.Span);
-                if (dataMessage.TelnetCommand.StartsWith("<BEGIN>", StringComparison.InvariantCultureIgnoreCase))
-                {
-                    dataMessage.AnswerWithAcknowledgement = false;
-                }
+                ParseCommand(dataMessage, dataBlock.Data.Span);
+
             }
 
             result.DataMessage = dataMessage;
@@ -102,6 +99,53 @@ public class TncpDataMessageCodec : BaseDataMessageCodec
             result.ErrorCode = 5;
             return result;
         }
+    }
+
+    /// <summary>
+    /// Parse a TNCP command
+    /// </summary>
+    /// <param name="dataMessage"></param>
+    /// <param name="data"></param>
+    /// <returns></returns>
+    private static void ParseCommand(TncpInboundDataMessage dataMessage, Span<byte> data)
+    {
+        var s = Encoding.UTF8.GetString(data)
+            .Replace("\u0010", string.Empty, StringComparison.InvariantCultureIgnoreCase)
+            .Replace("\r", string.Empty, StringComparison.InvariantCultureIgnoreCase)
+            .Replace("\n", string.Empty, StringComparison.InvariantCultureIgnoreCase );
+
+        // Request?
+        if (!s.StartsWith("<BEGIN>", StringComparison.InvariantCultureIgnoreCase))
+        {
+            dataMessage.TelnetCommand = s;
+            return;
+        }
+
+        // Response
+        dataMessage.AnswerWithAcknowledgement = false;
+
+        var i = s.IndexOf("<END>", StringComparison.InvariantCultureIgnoreCase);
+
+        // No end (should not happen)
+        if (i == -1)
+        {
+            dataMessage.TelnetCommand = s;
+            return;
+        }
+
+        // Additional data
+        var block = s.Substring(7, i - 7);
+
+        i = block.IndexOf("<", StringComparison.InvariantCultureIgnoreCase);
+        if (i == -1)
+        {
+            dataMessage.TelnetCommand = block;
+            return;
+        }
+
+        dataMessage.TelnetCommand = block[..i];
+        dataMessage.TelnetAdditionalInfo = block[i..];
+
     }
 
     /// <summary>

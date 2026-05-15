@@ -2,7 +2,6 @@
 
 using System.Net;
 using Bodoconsult.NetworkCommunication.Helpers;
-using Microsoft.AspNetCore.DataProtection;
 using System.Net.Sockets;
 
 namespace Bodoconsult.NetworkCommunication.Tests.HelperTests;

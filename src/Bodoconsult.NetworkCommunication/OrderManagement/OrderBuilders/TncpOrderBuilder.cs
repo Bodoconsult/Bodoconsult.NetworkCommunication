@@ -47,7 +47,7 @@ public class TncpOrderBuilder : BaseOrderBuilder
 
         var requestAnswerStep = CreateDeviceRequestAnswerStep(requestSpec, "SendAndWaitAnswerStep");
 
-        var requestAnswer = CreateRequestAnswer(requestAnswerStep, "ReceivedMessage", CheckReceivedMessageDelegate, oc.HandleRequestAnswerOnSuccessDelegate);
+        CreateRequestAnswer(requestAnswerStep, "ReceivedMessage", CheckReceivedMessageDelegate, oc.HandleRequestAnswerOnSuccessDelegate);
     }
 
     private List<IOutboundDataMessage> CreateMessagesToSentDelegate(IParameterSet? parameterSet)
@@ -69,7 +69,7 @@ public class TncpOrderBuilder : BaseOrderBuilder
     /// <param name="receivedMessage">A received message from the device</param>
     /// <param name="errors">List with error messages to fill</param>
     /// <returns>True if the message was as expected as answer of the sent message else false</returns>
-    public static bool CheckReceivedMessageDelegate(IRequestAnswer requestAnswer, IOutboundDataMessage sentMessage, IInboundDataMessage? receivedMessage, IList<string> errors)
+    public static bool CheckReceivedMessageDelegate(IRequestAnswer requestAnswer, IOutboundDataMessage sentMessage, IInboundDataMessage? receivedMessage, List<string> errors)
     {
         if (receivedMessage is not TncpInboundDataMessage rm)
         {
@@ -86,11 +86,13 @@ public class TncpOrderBuilder : BaseOrderBuilder
             return false;
         }
 
+        // Request?
         if (!rm.TelnetCommand.StartsWith("<BEGIN>", StringComparison.InvariantCultureIgnoreCase))
         {
-            return true;
+            return false;
         }
 
+        // Response handling
         var send = sm.TelnetCommand?.Replace(" ", string.Empty);
 
         if (send == null)
@@ -108,6 +110,19 @@ public class TncpOrderBuilder : BaseOrderBuilder
 
         var cmd = rm.TelnetCommand[7..].Replace(" ", string.Empty);
         var result = send == cmd;
-        return result;
+
+        if (!result)
+        {
+            return false;
+        }
+
+        if (string.IsNullOrEmpty(rm.TelnetAdditionalInfo))
+        {
+            return true;
+        }
+
+        errors.Add(rm.TelnetAdditionalInfo);
+        return false;
+
     }
 }

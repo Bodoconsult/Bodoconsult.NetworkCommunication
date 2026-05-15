@@ -195,7 +195,7 @@ internal class TncpOrderBuilderTests : OrderBuilderTestsBase
     }
 
     [Test]
-    public void CheckReceivedMessageDelegate_ValidSetup_ReturnsTrue()
+    public void CheckReceivedMessageDelegate_ValidSetupNoEnd_ReturnsTrue()
     {
         // Arrange 
 
@@ -210,6 +210,35 @@ internal class TncpOrderBuilderTests : OrderBuilderTestsBase
             TelnetCommand = "<BEGIN>Blubb"
         };
         
+        var errors = new List<string>();
+
+        // Act  
+        var result = TncpOrderBuilder.CheckReceivedMessageDelegate(requestAnswer, sentMessage, replyMessage, errors);
+
+        // Assert
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(result, Is.True);
+            Assert.That(errors.Count, Is.Zero);
+        }
+    }
+
+    [Test]
+    public void CheckReceivedMessageDelegate_ValidSetup_ReturnsTrue()
+    {
+        // Arrange 
+
+        IRequestAnswer requestAnswer = new RequestAnswer(true, null, "Test", BtcpOrderBuilder.CheckReceivedMessageDelegate);
+        var sentMessage = new TncpOutboundDataMessage
+        {
+            TelnetCommand = "Blubb"
+        };
+
+        var replyMessage = new TncpInboundDataMessage
+        {
+            TelnetCommand = "<BEGIN>Blubb"
+        };
+
         var errors = new List<string>();
 
         // Act  
@@ -249,6 +278,36 @@ internal class TncpOrderBuilderTests : OrderBuilderTestsBase
         {
             Assert.That(result, Is.True);
             Assert.That(errors.Count, Is.Zero);
+        }
+    }
+
+    [Test]
+    public void CheckReceivedMessageDelegate_ValidCommandWithError_ReturnsFalse()
+    {
+        // Arrange 
+
+        IRequestAnswer requestAnswer = new RequestAnswer(true, null, "Test", BtcpOrderBuilder.CheckReceivedMessageDelegate);
+        var sentMessage = new TncpOutboundDataMessage
+        {
+            TelnetCommand = "Blubb"
+        };
+
+        var replyMessage = new TncpInboundDataMessage
+        {
+            TelnetCommand = "<BEGIN>Blubb",
+            TelnetAdditionalInfo = "<ERROR>Invalid command<END>"
+        };
+
+        var errors = new List<string>();
+
+        // Act  
+        var result = TncpOrderBuilder.CheckReceivedMessageDelegate(requestAnswer, sentMessage, replyMessage, errors);
+
+        // Assert
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(result, Is.False);
+            Assert.That(errors.Count, Is.Not.Zero);
         }
     }
 }

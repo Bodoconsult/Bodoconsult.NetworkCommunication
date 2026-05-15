@@ -1,7 +1,5 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
-using Bodoconsult.App.DataExportServices;
-using Bodoconsult.NetworkCommunication.DataMessaging.DataLoggers;
 using Bodoconsult.NetworkCommunication.Interfaces;
 
 namespace Bodoconsult.NetworkCommunication.DataMessaging.DataMessageProcessingPackages;
@@ -19,20 +17,7 @@ public class SfxpLoggedSortableDataMessageProcessingPackageFactory : IDataMessag
     public IDataMessageProcessingPackage CreateInstance(IDataMessagingConfig config)
     {
         var package = new SfxpLoggedSortableDataMessageProcessingPackage(config);
-
-        var es = new ByteArrayDataExportService
-        {
-            FileName = string.IsNullOrEmpty(config.DataLoggingFileName) ? "DataLogging": config.DataLoggingFileName,
-            TargetPath = string.IsNullOrEmpty(config.DataLoggingPath) ? Path.GetTempPath(): config.DataLoggingPath,
-            CacheSize = 50,
-            FileExtension = "bin"
-        };
-
-        var logger = new OnlyDataBlockInboundDataLogger(es);
-        logger.Start();
-
-        package.DataLoggers.Add(logger);
-
+        package.DataLoggers.AddRange(config.DataLoggers);
         return package;
     }
 }

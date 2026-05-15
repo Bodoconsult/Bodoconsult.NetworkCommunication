@@ -1,14 +1,16 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
 using Bodoconsult.App.Abstractions.Interfaces;
+using Bodoconsult.NetworkCommunication.DataMessaging.DataBlocks;
+using Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
 using Bodoconsult.NetworkCommunication.Interfaces;
 
 namespace Bodoconsult.NetworkCommunication.DataMessaging.DataLoggers;
 
 /// <summary>
-/// Implementation of <see cref="IInboundDataLogger"/> to log the datablock content of all inbound data messages to file
+/// Implementation of <see cref="IInboundDataLogger"/> to log the datachunk content of all inbound SFXP messages for a certain channel to file
 /// </summary>
-public class OnlyDataBlockInboundDataLogger : IInboundDataLogger
+public class SfxpDataChunkInboundDataLogger : IInboundDataLogger
 {
     private readonly IMemoryDataExportService _dataExportService;
 
@@ -16,7 +18,7 @@ public class OnlyDataBlockInboundDataLogger : IInboundDataLogger
     /// Default ctor
     /// </summary>
     /// <param name="dataExportService">Current data export service</param>
-    public OnlyDataBlockInboundDataLogger(IDataExportService<byte[]> dataExportService)
+    public SfxpDataChunkInboundDataLogger(IDataExportService<byte[]> dataExportService)
     {
         if (dataExportService is not IMemoryDataExportService byteArrayDataExportService)
         {
@@ -26,6 +28,11 @@ public class OnlyDataBlockInboundDataLogger : IInboundDataLogger
         DataExportService = dataExportService;
         _dataExportService = byteArrayDataExportService;
     }
+
+    /// <summary>
+    /// Channel to log
+    /// </summary>
+    public byte Channel { get; set; } = 0xFF;
 
     /// <summary>
     /// Current data export service
@@ -55,8 +62,18 @@ public class OnlyDataBlockInboundDataLogger : IInboundDataLogger
     /// <returns>True if the message is a candiate for logging with the current logger else false</returns>
     public bool CheckIfMessageIsToLog(IInboundDataMessage message)
     {
+        if (message is not SfxpInboundDataMessage sfxp)
+        {
+            return false;
+        }
+
+        if (sfxp.DataBlock is not SfxpInboundDatablock db)
+        {
+            return false;
+        }
+
         // Do not filter anything but messages without datablock
-        return message.DataBlock != null;
+        return db.DataChunks.Any(x => x.Channel == Channel);
     }
 
     /// <summary>
@@ -65,11 +82,22 @@ public class OnlyDataBlockInboundDataLogger : IInboundDataLogger
     /// <param name="message">Data message to log</param>
     public void LogTheMessage(IInboundDataMessage message)
     {
-        if (message.DataBlock == null)
+        if (message is not SfxpInboundDataMessage sfxp)
         {
             return;
         }
 
-        _dataExportService.Add(message.DataBlock.Data);
+        if (sfxp.DataBlock is not SfxpInboundDatablock db)
+        {
+            return;
+        }
+
+        foreach (var chunk in db.DataChunks.Where(x => x.Channel == Channel))
+        {
+            if (chunk.Data.HasValue)
+            {
+                _dataExportService.Add(chunk.Data.Value);
+            }
+        }
     }
 }

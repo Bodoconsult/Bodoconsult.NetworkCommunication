@@ -9,7 +9,7 @@ using Bodoconsult.NetworkCommunication.Interfaces;
 using IpBackend.Bll.Interfaces;
 using IpCommunicationSample.Common.BusinessTransactions.Replies;
 using IpCommunicationSample.Common.BusinessTransactions.Requests;
-using System.Diagnostics;
+using Bodoconsult.NetworkCommunication.DataMessaging.DataBlocks;
 
 namespace IpBackend.Bll.BusinessLogic.Adapters;
 
@@ -33,6 +33,20 @@ public class SfxpIpDeviceUdpBusinessLogicAdapter : BaseSimpleDeviceBusinessLogic
     /// <param name="message">Received message</param>
     public override void DefaultReceiveMessage(IInboundDataMessage message)
     {
+        // No SFXP message
+        if (message is not SfxpInboundDataMessage sfxp)
+        {
+            return;
+        }
+
+        // No datablock
+        if (sfxp.DataBlock is not SfxpInboundDatablock db)
+        {
+            return;
+        }
+
+
+        // Reduced logging to avoid performance issues
         _messageCounter++;
 
         if (Math.Abs(_messageCounter % 1000.0) < 0.1)
@@ -47,7 +61,15 @@ public class SfxpIpDeviceUdpBusinessLogicAdapter : BaseSimpleDeviceBusinessLogic
             _messageCounter = 0;
         }
 
+        // Process data from datablock here
         // ToDo: add your business logic
+
+        // Return chunks to pool
+        foreach (var chunk in db.DataChunks)
+        {
+            chunk.ReturnDataChunkDelegate?.Invoke(chunk);
+        }
+        db.DataChunks.Clear();
     }
 
     /// <summary>

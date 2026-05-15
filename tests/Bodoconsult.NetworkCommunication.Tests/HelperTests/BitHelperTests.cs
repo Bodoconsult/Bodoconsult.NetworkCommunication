@@ -1,9 +1,5 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
-using System.Buffers.Binary;
-using System.Collections;
-using System.Diagnostics;
-using System.Text;
 using Bodoconsult.NetworkCommunication.Helpers;
 
 namespace Bodoconsult.NetworkCommunication.Tests.HelperTests;

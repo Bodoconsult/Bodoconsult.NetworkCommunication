@@ -69,7 +69,41 @@ internal class TncpDataMessageCodecTests
         // Arrange 
         var cmd = "log,charstat";
 
-        var msg = Encoding.UTF8.GetBytes($"{cmd}\u0010");
+        var msg = Encoding.UTF8.GetBytes($"{cmd}\n");
+
+        IDataBlockCodingProcessor dataBlockCodingProcessor = new DefaultDataBlockCodingProcessor();
+        dataBlockCodingProcessor.LoadDataBlockCodecs('x', new BasicDataBlockCodec());
+
+        var codec = new TncpDataMessageCodec(dataBlockCodingProcessor);
+
+        // Act  
+        var result = codec.DecodeDataMessage(msg);
+
+        // Assert
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(result, Is.Not.Null);
+            Assert.That(result.ErrorCode, Is.Zero);
+
+            ArgumentNullException.ThrowIfNull(result.DataMessage);
+
+            Assert.That(result.DataMessage, Is.Not.Null);
+
+            var tncpMsg = (TncpInboundDataMessage)result.DataMessage;
+
+            Assert.That(tncpMsg.RawMessageData.Length, Is.Not.Zero);
+            Assert.That(tncpMsg.TelnetCommand, Is.EqualTo(cmd));
+        }
+    }
+
+    [Test]
+    public void DecodeDataMessage_ValidResponseCommand_MessageDecoded()
+    {
+        // Arrange 
+        var cmd = "log,charstat";
+        var response = $"<BEGIN>{cmd}\n<END>";
+
+        var msg = Encoding.UTF8.GetBytes(response);
 
         IDataBlockCodingProcessor dataBlockCodingProcessor = new DefaultDataBlockCodingProcessor();
         dataBlockCodingProcessor.LoadDataBlockCodecs('x', new BasicDataBlockCodec());
@@ -116,6 +150,42 @@ internal class TncpDataMessageCodecTests
             Assert.That(result, Is.Not.Null);
             Assert.That(result.ErrorCode, Is.Not.Zero);
             Assert.That(result.DataMessage, Is.Null);
+        }
+    }
+
+    [Test]
+    public void DecodeDataMessage_ValidResponseCommandWithError_MessageDecoded()
+    {
+        // Arrange 
+        var cmd = "log,charstat";
+        var error = "<ERROR>Invalid command foo";
+        var response = $"<BEGIN>{cmd}\n{error}\n<END>";
+
+        var msg = Encoding.UTF8.GetBytes(response);
+
+        IDataBlockCodingProcessor dataBlockCodingProcessor = new DefaultDataBlockCodingProcessor();
+        dataBlockCodingProcessor.LoadDataBlockCodecs('x', new BasicDataBlockCodec());
+
+        var codec = new TncpDataMessageCodec(dataBlockCodingProcessor);
+
+        // Act  
+        var result = codec.DecodeDataMessage(msg);
+
+        // Assert
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(result, Is.Not.Null);
+            Assert.That(result.ErrorCode, Is.Zero);
+
+            ArgumentNullException.ThrowIfNull(result.DataMessage);
+
+            Assert.That(result.DataMessage, Is.Not.Null);
+
+            var tncpMsg = (TncpInboundDataMessage)result.DataMessage;
+
+            Assert.That(tncpMsg.RawMessageData.Length, Is.Not.Zero);
+            Assert.That(tncpMsg.TelnetCommand, Is.EqualTo(cmd));
+            Assert.That(tncpMsg.TelnetAdditionalInfo, Is.EqualTo(error));
         }
     }
 

@@ -3,7 +3,6 @@
 using Bodoconsult.App.Extensions;
 using Bodoconsult.NetworkCommunication.Tests.App;
 using Bodoconsult.NetworkCommunication.Tests.Helpers;
-using System.Diagnostics;
 
 namespace Bodoconsult.NetworkCommunication.Tests;
 

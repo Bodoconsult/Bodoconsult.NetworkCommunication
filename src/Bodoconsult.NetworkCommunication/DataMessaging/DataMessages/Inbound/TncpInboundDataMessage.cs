@@ -91,4 +91,9 @@ public class TncpInboundDataMessage : IInboundDataMessage
     /// Telnet command to send
     /// </summary>
     public string? TelnetCommand { get; set; }
+
+    /// <summary>
+    /// Additional info send with a telnet command
+    /// </summary>
+    public string? TelnetAdditionalInfo { get; set; }
 }

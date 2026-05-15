@@ -10,7 +10,6 @@ using IpBackend.Bll.Interfaces;
 using IpBackendService.DiContainerProvider;
 using IpClient.Bll.Interfaces;
 using IpClientUi.DiContainerProvider;
-using IpCommunicationSampleTests.App;
 using IpDevice.Bll.Interfaces;
 using IpDeviceService.DiContainerProvider;
 using IBackendTcpIpBusinessLogicAdapter = IpClient.Bll.Interfaces.IBackendTcpIpBusinessLogicAdapter;

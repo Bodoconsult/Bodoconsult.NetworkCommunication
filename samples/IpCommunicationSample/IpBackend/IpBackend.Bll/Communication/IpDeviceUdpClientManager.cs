@@ -63,7 +63,7 @@ public class IpDeviceUdpClientManager : ISimpleDeviceManager
     /// <summary>
     /// Current <see cref="ISimpleDeviceBusinessLogicAdapter"/> instance
     /// </summary>
-    public ISimpleDeviceBusinessLogicAdapter? DeviceBusinessLogicAdapter{ get; private set; }
+    public ISimpleDeviceBusinessLogicAdapter? DeviceBusinessLogicAdapter { get; private set; }
 
     /// <summary>
     /// Current device
@@ -85,22 +85,22 @@ public class IpDeviceUdpClientManager : ISimpleDeviceManager
 
         var configurator = new UdpClientDeviceConfigurator(_duplexIoFactory, _monitorLoggerFactoryFactory,
             _logDataFactory, _appLoggerFactory, _appEventSourceFactory,
-            _clientNotificationManager, _appLoggerProxy, _socketProxyFactory, _appGlobals); 
+            _clientNotificationManager, _appLoggerProxy, _socketProxyFactory, _appGlobals);
 
         configurator.CreateMessagingConfig("Backend_Device_UDP: ", ipAddress, port, messageProcessingPackageFactory);
 
         IDeviceBusinessLogicAdapterFactory businessLogicAdapterFactory = new SfxpIpDeviceUdpBusinessLogicAdapterFactory();
         configurator.CreateDevice(businessLogicAdapterFactory);
-        
+
         var device = configurator.GetDevice();
 
         var config = device.DataMessagingConfig;
 
-        CreateLoggerChannel(0, ipAddress, config);
-        //CreateLoggerChannel(1, ipAddress, config);
-        //CreateLoggerChannel(2, ipAddress, config);
-        //CreateLoggerChannel(3, ipAddress, config);
-        //CreateLoggerChannel(4, ipAddress, config);
+        CreateLoggerChannel(0x0, ipAddress, config, "Channel1");
+        CreateLoggerChannel(0x1, ipAddress, config, "Channel2");
+        CreateLoggerChannel(0x2, ipAddress, config, "Channel3");
+        CreateLoggerChannel(0x3, ipAddress, config, "Channel4");
+        CreateLoggerChannel(0xC, ipAddress, config, "ADD");
 
 
         if (device.DeviceBusinessLogicAdapter is not ISimpleDeviceBusinessLogicAdapter dbla)
@@ -109,12 +109,12 @@ public class IpDeviceUdpClientManager : ISimpleDeviceManager
         }
 
         IpDevice = device;
-        DeviceBusinessLogicAdapter= dbla;
+        DeviceBusinessLogicAdapter = dbla;
     }
 
-    private static void CreateLoggerChannel(byte channel, string ipAddress, IDataMessagingConfig config)
+    private static void CreateLoggerChannel(byte channel, string ipAddress, IDataMessagingConfig config, string channelName)
     {
-        config.DataLoggingFileName = $"IPDevice_{ipAddress.Replace(".", "_", StringComparison.InvariantCultureIgnoreCase)}_Channel{channel}";
+        config.DataLoggingFileName = $"IPDevice_{ipAddress.Replace(".", "_", StringComparison.InvariantCultureIgnoreCase)}_{channelName}";
         config.DataLoggingPath = Globals.Instance.DataPath;
 
         var es = new ByteArrayDataExportService
@@ -125,7 +125,10 @@ public class IpDeviceUdpClientManager : ISimpleDeviceManager
             FileExtension = "bin"
         };
 
-        var logger = new OnlyDataBlockInboundDataLogger(es);
+        var logger = new SfxpDataChunkInboundDataLogger(es)
+        {
+            Channel = channel
+        };
         logger.Start();
         config.DataLoggers.Add(logger);
     }

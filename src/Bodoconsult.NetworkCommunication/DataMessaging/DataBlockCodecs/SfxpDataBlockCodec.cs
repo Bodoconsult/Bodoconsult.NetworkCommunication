@@ -1,32 +1,57 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
+using Bodoconsult.App.BufferPool;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataBlocks;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
 using Bodoconsult.NetworkCommunication.Helpers;
 using Bodoconsult.NetworkCommunication.Interfaces;
-using System.Threading.Tasks;
+using System.Diagnostics;
 
 namespace Bodoconsult.NetworkCommunication.DataMessaging.DataBlockCodecs;
 
 /// <summary>
-/// Basic datablock codec for SFXP protocol
+/// Basic datablock codec for SFXP protocol. 
 /// </summary>
 public class SfxpDataBlockCodec : IDataBlockCodec
 {
-    /// <summary>
-    /// Byte mask for the mapping of the chunk to channel relationship
-    /// </summary>
-    private byte[] _mask = [];
-
-    private byte _currentIndex = 0;
+    private readonly BufferPool<DataChunk> _bufferPool = new();
 
     /// <summary>
-    /// Load the byte mask for the mapping of the chunk to channel relationship
+    /// Default ctor
     /// </summary>
-    /// <param name="mask">Mask to load</param>
+    public SfxpDataBlockCodec()
+    {
+        _bufferPool.LoadFactoryMethod(() => new DataChunk()
+        {
+            ReturnDataChunkDelegate = ReturnDataChunkDelegate
+        });
+        _bufferPool.Allocate(200);
+    }
+
+    /// <summary>
+    /// Byte mask for the mapping of the chunk to channel relationship. Mask may have a maximum length of 254 bytes
+    /// </summary>
+    public byte[] Mask { get; private set; } = [];
+
+    /// <summary>
+    /// Load the byte mask for the mapping of the chunk to channel relationship. Mask may have a maximum length of 254 bytes
+    /// </summary>
+    /// <param name="mask">Mask to load. Mask may have a maximum length of 254 bytes</param>
     public void LoadMask(byte[] mask)
     {
-        _mask = mask;
+        var result = new List<byte>();
+
+        foreach (var b in mask)
+        {
+            if (b == 0xF || result.Count == 254)
+            {
+                break;
+            }
+
+            result.Add(b);
+        }
+
+        Mask = result.ToArray();
     }
 
     /// <summary>
@@ -86,10 +111,12 @@ public class SfxpDataBlockCodec : IDataBlockCodec
 
     private void ParseDataChunks(SfxpInboundDatablock db)
     {
-        if (_mask.Length == 0)
+        if (Mask.Length == 0)
         {
             return;
         }
+
+        var currentIndex = (byte)0xff;
 
         var data = db.Data;
 
@@ -100,40 +127,68 @@ public class SfxpDataBlockCodec : IDataBlockCodec
             // 0x0 sync byte
             if (firstByte == SfxpProtocolHelper.RegularSyncByte.SyncByte)
             {
+                currentIndex = 0;
                 continue;
-                _currentIndex = 0;
             }
 
             // 0x9 sync byte
             if (firstByte == SfxpProtocolHelper.SampleCounterSyncByteBlock.SyncByte)
             {
                 i += SfxpProtocolHelper.SampleCounterSyncByteBlock.SyncByte - 1;
-                _currentIndex = 0;
+                currentIndex = 0;
                 continue;
             }
 
             if (i + SfxpProtocolHelper.DataChunkLength >= data.Length)
             {
-                return;
+                break;
             }
 
             var chunk = data.Slice(i, SfxpProtocolHelper.DataChunkLength);
 
-            var dataChunk = new DataChunk
-            {
-                Data = chunk,
-                // ToDo: correct channel
-                Channel = _mask[_currentIndex]
-            };
+            var dataChunk = _bufferPool.Dequeue();
+            dataChunk.Data = chunk;
+            dataChunk.Channel = currentIndex == 0xFF ? (byte)0xFF : Mask[currentIndex];
 
-            _currentIndex++;
-            if (_currentIndex == _mask.Length)
+            if (currentIndex != 255)
             {
-                _currentIndex = 0;
+                currentIndex++;
+                if (currentIndex == Mask.Length)
+                {
+                    currentIndex = 0;
+                }
             }
 
             db.DataChunks.Add(dataChunk);
             i += SfxpProtocolHelper.DataChunkLength - 1;
         }
+
+        // Now check if the chunks have type 255 0xFF
+        var indexMask = Mask.Length -1;
+        for (var index = db.DataChunks.Count - 1; index >= 0; index--)
+        {
+            var chunk = db.DataChunks[index];
+
+            if (chunk.Channel != 0xFF)
+            {
+                continue;
+            }
+
+            chunk.Channel = Mask[indexMask];
+
+            Debug.Print($"{index}: {chunk.Channel}");
+
+            indexMask--;
+            if (indexMask < 0)
+            {
+                indexMask = Mask.Length - 1;
+            }
+        }
+    }
+
+    private void ReturnDataChunkDelegate(DataChunk chunk)
+    {
+        chunk.Reset();
+        _bufferPool.Enqueue(chunk);
     }
 }

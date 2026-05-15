@@ -2,6 +2,7 @@
 
 using System.Net.Sockets;
 using Bodoconsult.NetworkCommunication.Communication.Sending;
+using Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
 using Bodoconsult.NetworkCommunication.Interfaces;
 
 namespace Bodoconsult.NetworkCommunication.Delegates;
@@ -232,8 +233,11 @@ public delegate bool CheckReceivedMessageDelegate(IRequestAnswer requestAnswer, 
 /// <returns>List with orders to send to the device</returns>
 public delegate List<IOutboundDataMessage> CreateMessagesToSentDelegate(IParameterSet? parameterSet);
 
-
-
+/// <summary>
+/// Delegate for returning a <see cref="DataChunk"/> instance to the pool
+/// </summary>
+/// <param name="chunk"><see cref="DataChunk"/> instance to be returned to the pool</param>
+public delegate void ReturnDataChunkDelegate(DataChunk chunk);
 
 #endregion
 

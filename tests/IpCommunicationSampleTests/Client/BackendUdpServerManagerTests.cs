@@ -13,7 +13,6 @@ using Bodoconsult.NetworkCommunication.Tests.App;
 using Bodoconsult.NetworkCommunication.Tests.Helpers;
 using IpClient.Bll.Communication;
 using IpClientUi.Handlers;
-using IpCommunicationSampleTests.App;
 
 namespace IpCommunicationSampleTests.Client;
 
