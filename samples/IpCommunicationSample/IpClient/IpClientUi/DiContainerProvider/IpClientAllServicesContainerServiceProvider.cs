@@ -7,6 +7,7 @@ using Bodoconsult.App.CentralServices;
 using Bodoconsult.App.Factories;
 using Bodoconsult.App.Logging;
 using Bodoconsult.App.ReactiveUI.Interfaces;
+using Bodoconsult.App.ReactiveUI.ViewModels;
 using IpClient.Bll.BusinessLogic;
 using IpClient.Bll.Interfaces;
 using IpClientUi.AppData;
@@ -48,6 +49,7 @@ public class IpClientAllServicesContainerServiceProvider : IDiContainerServicePr
         diContainer.AddTransient<FirstViewModel, FirstViewModel>();
         diContainer.AddTransient<StartMessagingViewModel, StartMessagingViewModel>();
         diContainer.AddTransient<StopMessagingViewModel, StopMessagingViewModel>();
+        diContainer.AddTransient<CopyrightViewModel, CopyrightViewModel>();
 
         //diContainer.AddTransient<ViewModel1, ViewModel1>();
         //diContainer.AddTransient<ViewModel2, ViewModel2>();

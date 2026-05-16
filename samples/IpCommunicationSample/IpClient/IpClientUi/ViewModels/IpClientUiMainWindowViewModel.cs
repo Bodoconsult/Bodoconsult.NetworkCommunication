@@ -8,9 +8,12 @@ using Bodoconsult.App.ReactiveUI.Menus;
 using Bodoconsult.App.ReactiveUI.Ui;
 using Bodoconsult.App.ReactiveUI.ViewModels;
 using IpClient.Bll.Interfaces;
+using ReactiveUI;
 using ReactiveUI.SourceGenerators;
 using System.Reactive;
 using System.Reactive.Linq;
+using Bodoconsult.App.Avalonia.ReactiveUI.Views;
+using IpClient.Bll.App;
 
 namespace IpClientUi.ViewModels;
 
@@ -95,6 +98,17 @@ public partial class IpClientMainWindowViewModel : MainWindowViewModel
         };
 
         groupItem.AddChild(command4);
+
+        // Group Help
+        var helpGroupItem = new GroupUiMenuItem("Help");
+        MenuItems.Add(helpGroupItem);
+
+        var command5 = new CommandUiMenuItem("Copyright")
+        {
+            CommandDefinition = new UiCommandDefinition(GoToCopyright, null)
+        };
+
+        helpGroupItem.AddChild(command5);
     }
 
     // Async commands 
@@ -179,5 +193,23 @@ public partial class IpClientMainWindowViewModel : MainWindowViewModel
         }
 
         return Observable.Return(Unit.Default);
+    }
+
+    [ReactiveCommand]
+    public IObservable<Unit> GoToCopyright()
+    {
+        return Observable.Start(() =>
+        {
+            var vm = Globals.Instance.DiContainer.Get<CopyrightViewModel>();
+            vm.LoadLicenseInfo();
+            vm.LoadToolInfo();
+
+            var window = new CopyrightWindow
+            {
+                DataContext = vm,
+                WindowState = Avalonia.Controls.WindowState.Normal
+            };
+            window.Show();
+        }, RxSchedulers.MainThreadScheduler);
     }
 }
