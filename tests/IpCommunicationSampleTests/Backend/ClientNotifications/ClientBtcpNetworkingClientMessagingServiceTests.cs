@@ -3,6 +3,7 @@
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
 using System.Text;
 using Bodoconsult.NetworkCommunication.ClientNotifications.Notifications;
+using Bodoconsult.NetworkCommunication.Tests.App;
 using IpBackend.Bll.ClientNotifications;
 
 namespace IpCommunicationSampleTests.Backend.ClientNotifications;
@@ -25,7 +26,7 @@ internal class ClientBtcpNetworkingClientMessagingServiceTests
         // Arrange 
 
         // Act  
-        var conv = new ClientBtcpNetworkingClientMessagingService();
+        var conv = new ClientBtcpNetworkingClientMessagingService(Globals.Instance);
 
         // Assert
         Assert.That(conv.ConversionRules.Count, Is.Not.Zero);
@@ -35,7 +36,8 @@ internal class ClientBtcpNetworkingClientMessagingServiceTests
     public void MapToBusinessTransactionRequestData_StateChangedEventFired_ReturnsRequestData()
     {
         // Arrange 
-        var conv = new ClientBtcpNetworkingClientMessagingService();
+        var appGlobals = Globals.Instance;
+        var conv = new ClientBtcpNetworkingClientMessagingService(appGlobals);
 
         const int deviceStateId = 2;
         const int businessStateId = 3;
@@ -56,7 +58,7 @@ internal class ClientBtcpNetworkingClientMessagingServiceTests
 
         var expectedPayload =
             Encoding.UTF8.GetBytes(
-                $"{deviceStateId}\u0005{deviceStateName}\u0005{businessStateId}\u0005{businessStateName}\u0005{businessSubstateId}\u0005{businessSubstateName}");
+                $"{deviceStateId}\u0005{deviceStateName}\u0005{businessStateId}\u0005{businessStateName}\u0005{businessSubstateId}\u0005{businessSubstateName}\u0005{appGlobals.AppStartParameter.AppName} {appGlobals.AppStartParameter.AppVersion}");
 
         // Act  
         var result = conv.Convert(request);

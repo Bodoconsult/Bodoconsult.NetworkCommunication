@@ -6,6 +6,7 @@ using Bodoconsult.App.Helpers;
 using Bodoconsult.NetworkCommunication.Communication;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
 using Bodoconsult.NetworkCommunication.Interfaces;
+using Bodoconsult.NetworkCommunication.Tests.App;
 using Bodoconsult.NetworkCommunication.Tests.Fakes.Converters;
 using Bodoconsult.NetworkCommunication.Tests.Helpers;
 
@@ -35,7 +36,7 @@ internal class TestBtcpClientTcpIpBusinessLogicAdapterTests
         // Arrange 
         IInboundMessageToBtRequestDataConverter inboundDataMessageToBtRequestConverter = new TestInboundBtcpMessageToBtRequestDataConverter(_logger);
         IInboundDataMessageToBtReplyConverter inboundDataMessageToBtReplyConverter = new TestInboundBtcpMessageToBtReplyConverter(_logger);
-        IBtRequestDataToOutboundDataMessageConverter outboundBtRequestToOutboundDataMessageConverter = new TestBtRequestDataToOutboundBtcpMessageConverter(_logger);
+        IBtRequestDataToOutboundDataMessageConverter outboundBtRequestToOutboundDataMessageConverter = new TestBtRequestDataToOutboundBtcpMessageConverter(_logger, Globals.Instance);
         IBtReplyToOutboundDataMessageConverter outboundBtReplyDataMessageConverter = new TestBtReplyToOutboundDataMessageConverter(_logger);
 
         // Act  
@@ -70,7 +71,7 @@ internal class TestBtcpClientTcpIpBusinessLogicAdapterTests
 
         IInboundMessageToBtRequestDataConverter inboundDataMessageToBtRequestConverter = new TestInboundBtcpMessageToBtRequestDataConverter(_logger);
         IInboundDataMessageToBtReplyConverter inboundDataMessageToBtReplyConverter = new TestInboundBtcpMessageToBtReplyConverter(_logger);
-        IBtRequestDataToOutboundDataMessageConverter outboundBtRequestToOutboundDataMessageConverter = new TestBtRequestDataToOutboundBtcpMessageConverter(_logger);
+        IBtRequestDataToOutboundDataMessageConverter outboundBtRequestToOutboundDataMessageConverter = new TestBtRequestDataToOutboundBtcpMessageConverter(_logger, Globals.Instance);
         IBtReplyToOutboundDataMessageConverter outboundBtReplyDataMessageConverter = new TestBtReplyToOutboundDataMessageConverter(_logger);
 
         var adapter = new TestBtcpClientTcpIpBusinessLogicAdapter(_device, _businessTransactionManager,

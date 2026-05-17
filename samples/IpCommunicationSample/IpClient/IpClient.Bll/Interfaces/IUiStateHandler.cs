@@ -1,7 +1,6 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
 using Bodoconsult.NetworkCommunication.BusinessTransactions.Requests;
-using IpClient.Bll.Delegates;
 using IpCommunicationSample.Common.BusinessTransactions.Requests;
 
 namespace IpClient.Bll.Interfaces;
@@ -31,8 +30,10 @@ public interface IUiStateHandler
     /// </summary>
     string BackendStateMessage { get; set; }
 
-
-    int DeviceErrorCounter { get; set; }
+    /// <summary>
+    /// Device error counter as string
+    /// </summary>
+    string DeviceErrorCounterString { get; set; }
 
     /// <summary>
     /// Last device error reported

@@ -4,6 +4,7 @@ using Bodoconsult.App.Abstractions.Interfaces;
 using Bodoconsult.App.Benchmarking;
 using Bodoconsult.App.Factories;
 using Bodoconsult.App.Logging;
+using Bodoconsult.App.ReactiveUI.ViewModels;
 using Bodoconsult.NetworkCommunication.ClientNotifications;
 using Bodoconsult.NetworkCommunication.Factories;
 using Bodoconsult.NetworkCommunication.Interfaces;
@@ -35,7 +36,7 @@ internal class BackendTcpIpClientManagerTests
     private readonly FakeAppEventSourceFactory _appEventSourceFactory = new();
     private readonly IOrderIdGenerator _orderIdGenerator = TestDataHelper.DefaultOrderIdGenerator;
     private readonly TcpIpListenerManager _tcpIpListenerManager = new();
-    private readonly UiStateHandler _uiStateHandler = new UiStateHandler();
+    private readonly UiStateHandler _uiStateHandler = new(new CopyrightViewModel(Globals.Instance));
 
     [OneTimeTearDown]
     public void Cleanup()

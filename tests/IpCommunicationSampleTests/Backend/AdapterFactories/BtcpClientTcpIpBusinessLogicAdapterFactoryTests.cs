@@ -5,6 +5,7 @@ using Bodoconsult.App.BusinessTransactions;
 using Bodoconsult.App.Factories;
 using Bodoconsult.App.Interfaces;
 using Bodoconsult.NetworkCommunication.Interfaces;
+using Bodoconsult.NetworkCommunication.Tests.App;
 using Bodoconsult.NetworkCommunication.Tests.Helpers;
 using IpBackend.Bll.BusinessLogic.AdapterFactories;
 
@@ -30,19 +31,22 @@ internal class BtcpClientTcpIpBusinessLogicAdapterFactoryTests
         device.LoadCommAdapter(TestDataHelper.FakeIpCommunicationAdapter);
 
         IBusinessTransactionManager businessTransactionManager = new BusinessTransactionManager(_appLogger, _appEventSourceFactory);
-        var dsm = new BtcpClientTcpIpBusinessLogicAdapterFactory(businessTransactionManager);
+        var dsm = new BtcpClientTcpIpBusinessLogicAdapterFactory(businessTransactionManager, Globals.Instance);
 
         // Act  
         var result = dsm.CreateInstance(device);
 
         // Assert
-        Assert.That(result.IpDevice, Is.EqualTo(device));
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(result.IpDevice, Is.EqualTo(device));
 
-        Assert.That(result is ISimpleDeviceBusinessLogicAdapter, Is.True);
+            Assert.That(result is ISimpleDeviceBusinessLogicAdapter, Is.True);
 
-        var adapter = result as ISimpleDeviceBusinessLogicAdapter;
+            var adapter = result as ISimpleDeviceBusinessLogicAdapter;
 
-        Assert.That(adapter, Is.Not.Null);
-        Assert.That(adapter.IpDevice, Is.EqualTo(device));
+            Assert.That(adapter, Is.Not.Null);
+            Assert.That(adapter.IpDevice, Is.EqualTo(device));
+        }
     }
 }

@@ -26,7 +26,7 @@
 
 			<controls1:StackPanel controls1:Grid.Column="1">
                 <controls1:Label Content="Device errors:" HorizontalAlignment="Stretch"></controls1:Label>
-                <controls1:Label Content="{controls1:Binding UiStateHandler.ErrorCount}" HorizontalAlignment="Stretch"></controls1:Label>
+                <controls1:Label Content="{controls1:Binding UiStateHandler.DeviceErrorCounterString}" HorizontalAlignment="Stretch"></controls1:Label>
                 <controls1:Label Content="Last device error:" HorizontalAlignment="Stretch"></controls1:Label>
                 <controls1:Label Content="{controls1:Binding UiStateHandler.LastDeviceError}" HorizontalAlignment="Stretch"></controls1:Label>
 

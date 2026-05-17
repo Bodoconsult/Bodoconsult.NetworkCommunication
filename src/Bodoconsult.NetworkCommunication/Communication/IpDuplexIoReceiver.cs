@@ -60,12 +60,13 @@ public class IpDuplexIoReceiver : BaseDuplexIoReceiver
     {
         var chunk = new ChunkedSequence<byte>(_buffer);
         chunk.Append(data.Memory);
+        data.Reset();
 
         _bufferPool.Enqueue(data);
 
         _buffer = chunk;
 
-        var msg = $"Data in buffer: {DataMessageHelper.GetStringFromArrayCsharpStyle(ref _buffer)}";
+        var msg = $"{LoggerId}Data in buffer: {DataMessageHelper.GetStringFromArrayCsharpStyle(ref _buffer)}";
         MonitorLogger.LogInformation(msg);
 
 
@@ -78,13 +79,20 @@ public class IpDuplexIoReceiver : BaseDuplexIoReceiver
             }
 
             // Take a copy of the command to avoid errors if the pipeline socket is closed before processing the command
-            var array = ArrayPool.Rent(length);
-
-            command.CopyTo(array);
-
+            var array = command.ToArray();
             var mem = ((Memory<byte>)array)[..length];
-
             var codecResult = DataMessageCodingProcessor.DecodeDataMessage(mem);
+
+            //// Take a copy of the command to avoid errors if the pipeline socket is closed before processing the command
+            //var array = ArrayPool.Rent(length);
+
+            //command.CopyTo(array);
+
+            //var mem = ((Memory<byte>)array)[..length];
+
+            //var codecResult = DataMessageCodingProcessor.DecodeDataMessage(mem);
+
+            //ArrayPool.Return(array);
 
             //Trace.TraceInformation($"IpDuplexIoReceiver: parsed command {Encoding.UTF8.GetString(command)} to message {codecResult.DataMessage?.MessageId}. Buffer {_buffer.Length}: { Encoding.UTF8.GetString( _buffer)}");
             //Trace.TraceInformation($"IpDuplexIoReceiver: parsed command {Encoding.UTF8.GetString(command)} to message {codecResult.DataMessage?.MessageId}");
@@ -95,7 +103,7 @@ public class IpDuplexIoReceiver : BaseDuplexIoReceiver
                 //Trace.TraceInformation(msg);
                 MonitorLogger?.LogError(msg);
                 DataMessagingConfig.AppLogger.LogError($"{LoggerId}{msg}");
-                ArrayPool.Return(array);
+                
                 return;
             }
 
@@ -109,14 +117,12 @@ public class IpDuplexIoReceiver : BaseDuplexIoReceiver
             else
             {
 #if DEBUG
-                msg = $"Parsed command: {codecResult.DataMessage.ToShortInfoString()}: {command.Length} bytes";
+                msg = $"{LoggerId}Parsed command: {codecResult.DataMessage.ToShortInfoString()}: {command.Length} bytes: {DataMessageHelper.GetStringFromArrayCsharpStyle(ref command)}";
                 DataMessagingConfig.MonitorLogger?.LogDebug(msg);
 #endif
 
                 DataMessageProcessor.ProcessMessage(codecResult.DataMessage);
             }
-
-            ArrayPool.Return(array);
 
             if (_buffer.Length == 0)
             {

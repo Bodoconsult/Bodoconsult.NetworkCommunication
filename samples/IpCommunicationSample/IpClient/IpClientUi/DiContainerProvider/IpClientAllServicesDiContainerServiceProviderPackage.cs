@@ -44,7 +44,7 @@ public class IpClientAllServicesDiContainerServiceProviderPackage : BaseDiContai
         ServiceProviders.Add(provider);
 
         // App specific services
-        provider = new IpClientAllServicesContainerServiceProvider();
+        provider = new IpClientAllServicesContainerServiceProvider(appGlobals);
         ServiceProviders.Add(provider);
     }
 }

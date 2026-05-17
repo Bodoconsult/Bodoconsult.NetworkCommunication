@@ -201,8 +201,6 @@ public partial class IpClientMainWindowViewModel : MainWindowViewModel
         return Observable.Start(() =>
         {
             var vm = Globals.Instance.DiContainer.Get<CopyrightViewModel>();
-            vm.LoadLicenseInfo();
-            vm.LoadToolInfo();
 
             var window = new CopyrightWindow
             {

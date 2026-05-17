@@ -201,7 +201,7 @@ public class BackendManager : IBackendManager
         var duplexIoFactory = new IpDuplexIoFactory(_sendPacketProcessFactory);
 
         var m = new ClientTcpIpServerManager(duplexIoFactory, _monitorLoggerFactoryFactory, _logDataFactory, _appLoggerFactory,
-            _appEventSourceFactory, _clientNotificationManager, _appLogger, _businessTransactionManager, _socketProxyFactory);
+            _appEventSourceFactory, _clientNotificationManager, _appLogger, _businessTransactionManager, _socketProxyFactory, _appGlobals);
 
         m.ConfigureDevice(ClientTcpIpConfig.Value.IpAddress, ClientTcpIpConfig.Value.Port);
 

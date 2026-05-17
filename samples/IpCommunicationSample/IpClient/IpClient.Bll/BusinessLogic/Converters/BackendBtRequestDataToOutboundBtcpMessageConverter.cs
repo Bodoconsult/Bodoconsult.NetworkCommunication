@@ -11,6 +11,7 @@ public class BackendBtRequestDataToOutboundBtcpMessageConverter : BaseBtRequestD
     /// Default ctor
     /// </summary>
     /// <param name="appLogger">Current app logger</param>
-    public BackendBtRequestDataToOutboundBtcpMessageConverter(IAppLoggerProxy appLogger) : base(appLogger)
+    /// <param name="appGlobals">Current app globals</param>
+    public BackendBtRequestDataToOutboundBtcpMessageConverter(IAppLoggerProxy appLogger,IAppGlobals appGlobals) : base(appLogger, appGlobals)
     { }
 }

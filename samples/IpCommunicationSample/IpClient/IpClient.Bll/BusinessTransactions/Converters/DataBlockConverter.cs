@@ -66,9 +66,9 @@ public class DataBlockConverter
 
         var tokens = payload.Split('\u0005');
 
-        if (tokens.Length != 6)
+        if (tokens.Length < 6)
         {
-            throw new ArgumentException("Payload invalid: does not have 6 tokens");
+            throw new ArgumentException("Payload invalid: does have less than 6 tokens");
         }
 
         rd.DeviceStateId = Convert.ToInt32(tokens[0]);
@@ -79,6 +79,8 @@ public class DataBlockConverter
 
         rd.BusinessSubstateId = Convert.ToInt32(tokens[4]);
         rd.BusinessSubstateName = tokens[5];
+
+        rd.ModuleInfo = tokens.Length == 6 ? string.Empty : tokens[6];
 
         return rd;
     }

@@ -2,7 +2,6 @@
 
 using Bodoconsult.App.Abstractions.Interfaces;
 using Bodoconsult.NetworkCommunication.BusinessTransactions.Converters;
-using Bodoconsult.NetworkCommunication.BusinessTransactions.Requests;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataBlocks;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
 using Bodoconsult.NetworkCommunication.Interfaces;
@@ -17,7 +16,8 @@ public class ClientBtRequestDataToOutboundBtcpMessageConverter : BaseBtRequestDa
     /// Default ctor
     /// </summary>
     /// <param name="appLogger">Current app logger</param>
-    public ClientBtRequestDataToOutboundBtcpMessageConverter(IAppLoggerProxy appLogger) : base(appLogger)
+    /// <param name="appGlobals">Current app globals</param>
+    public ClientBtRequestDataToOutboundBtcpMessageConverter(IAppLoggerProxy appLogger, IAppGlobals appGlobals) : base(appLogger, appGlobals)
     {
         AllBusinessTransactionRequestDataDelegates.Add(nameof(ErrorBusinessTransactionRequestData), CreateError);
     }

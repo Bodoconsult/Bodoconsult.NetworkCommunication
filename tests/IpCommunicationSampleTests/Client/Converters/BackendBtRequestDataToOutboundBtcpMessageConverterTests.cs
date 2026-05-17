@@ -5,6 +5,7 @@ using Bodoconsult.App.Abstractions.Interfaces;
 using Bodoconsult.App.BusinessTransactions.RequestData;
 using Bodoconsult.NetworkCommunication.BusinessTransactions.Requests;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
+using Bodoconsult.NetworkCommunication.Tests.App;
 using Bodoconsult.NetworkCommunication.Tests.Helpers;
 using IpClient.Bll.BusinessLogic.Converters;
 using IpCommunicationSample.Common.BusinessTransactions;
@@ -29,7 +30,7 @@ internal class BackendBtRequestDataToOutboundBtcpMessageConverterTests
         // Arrange 
 
         // Act  
-        var conv = new BackendBtRequestDataToOutboundBtcpMessageConverter(_appLogger);
+        var conv = new BackendBtRequestDataToOutboundBtcpMessageConverter(_appLogger, Globals.Instance);
 
         // Assert
         Assert.That(conv.AppLogger, Is.EqualTo(_appLogger));
@@ -39,7 +40,7 @@ internal class BackendBtRequestDataToOutboundBtcpMessageConverterTests
     public void MapToBusinessTransactionRequestData_GetConfig_ReturnsRequestMessage()
     {
         // Arrange 
-        var conv = new BackendBtRequestDataToOutboundBtcpMessageConverter(_appLogger);
+        var conv = new BackendBtRequestDataToOutboundBtcpMessageConverter(_appLogger, Globals.Instance);
 
         var transactionId = ClientSideBusinessTransactionIds.GetConfig;
 
@@ -65,7 +66,7 @@ internal class BackendBtRequestDataToOutboundBtcpMessageConverterTests
     public void MapToBusinessTransactionRequestData_StartStreaming_ReturnsRequestMessage()
     {
         // Arrange 
-        var conv = new BackendBtRequestDataToOutboundBtcpMessageConverter(_appLogger);
+        var conv = new BackendBtRequestDataToOutboundBtcpMessageConverter(_appLogger, Globals.Instance);
 
         var transactionId = ClientSideBusinessTransactionIds.StartStreaming;
         var transactionUid = Guid.NewGuid();
@@ -93,7 +94,7 @@ internal class BackendBtRequestDataToOutboundBtcpMessageConverterTests
     public void MapToBusinessTransactionRequestData_StopStreaming_ReturnsRequestMessage()
     {
         // Arrange 
-        var conv = new BackendBtRequestDataToOutboundBtcpMessageConverter(_appLogger);
+        var conv = new BackendBtRequestDataToOutboundBtcpMessageConverter(_appLogger, Globals.Instance);
 
         var transactionId = ClientSideBusinessTransactionIds.StopStreaming;
         var transactionUid = Guid.NewGuid();
@@ -121,7 +122,7 @@ internal class BackendBtRequestDataToOutboundBtcpMessageConverterTests
     public void MapToBusinessTransactionRequestData_StartSnapshot_ReturnsRequestMessage()
     {
         // Arrange 
-        var conv = new BackendBtRequestDataToOutboundBtcpMessageConverter(_appLogger);
+        var conv = new BackendBtRequestDataToOutboundBtcpMessageConverter(_appLogger, Globals.Instance);
 
         var transactionId = ClientSideBusinessTransactionIds.StartSnapshot;
         var transactionUid = Guid.NewGuid();
@@ -149,7 +150,7 @@ internal class BackendBtRequestDataToOutboundBtcpMessageConverterTests
     public void MapToBusinessTransactionRequestData_StopSnapshot_ReturnsRequestMessage()
     {
         // Arrange 
-        var conv = new BackendBtRequestDataToOutboundBtcpMessageConverter(_appLogger);
+        var conv = new BackendBtRequestDataToOutboundBtcpMessageConverter(_appLogger, Globals.Instance);
 
         var transactionId = ClientSideBusinessTransactionIds.StopSnapshot;
         var transactionUid = Guid.NewGuid();
@@ -177,7 +178,7 @@ internal class BackendBtRequestDataToOutboundBtcpMessageConverterTests
     public void MapToBusinessTransactionRequestData_NotificationFired_ReturnsRequestMessage()
     {
         // Arrange 
-        var conv = new BackendBtRequestDataToOutboundBtcpMessageConverter(_appLogger);
+        var conv = new BackendBtRequestDataToOutboundBtcpMessageConverter(_appLogger, Globals.Instance);
 
         var transactionId = ServerSideBusinessTransactionIds.NotificationFired;
         var transactionUid = Guid.NewGuid();

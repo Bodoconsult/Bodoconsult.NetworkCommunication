@@ -39,7 +39,7 @@ internal class BackendManagerTests
     private readonly TcpIpListenerManager _tcpIpListenerManager = new();
     private readonly IOrderIdGenerator _orderIdGenerator = TestDataHelper.DefaultOrderIdGenerator;
     private readonly IClientNotificationLicenseManager _licenseManager = new DummyClientNotificationLicenseManager();
-    private readonly IClientMessagingService _clientMessagingService = new BasicBtcpNetworkingClientMessagingService();
+    private readonly IClientMessagingService _clientMessagingService = new BasicBtcpNetworkingClientMessagingService(Globals.Instance);
 
 
     [OneTimeTearDown]

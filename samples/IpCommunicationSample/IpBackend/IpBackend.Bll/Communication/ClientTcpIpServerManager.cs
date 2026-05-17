@@ -23,6 +23,7 @@ public class ClientTcpIpServerManager : ISimpleDeviceManager
     private readonly IAppLoggerProxy _appLoggerProxy;
     private readonly IBusinessTransactionManager _bridgeTransactionManager;
     private readonly ISocketProxyFactory _socketProxyFactory;
+    private readonly IAppGlobals _appGlobals;
 
     /// <summary>
     /// Default ctor
@@ -36,6 +37,7 @@ public class ClientTcpIpServerManager : ISimpleDeviceManager
     /// <param name="appLoggerProxy">Current app logger</param>
     /// <param name="businessTransactionManager">Current business transaction manager</param>
     /// <param name="socketProxyFactory">Current socket factory</param>
+    /// <param name="appGlobals">Current app globals</param>
     public ClientTcpIpServerManager(IDuplexIoFactory duplexIoFactory,
         IMonitorLoggerFactoryFactory monitorLoggerFactoryFactory,
         ILogDataFactory logDataFactory,
@@ -44,7 +46,8 @@ public class ClientTcpIpServerManager : ISimpleDeviceManager
         IOrderManagementClientNotificationManager clientNotificationManager,
         IAppLoggerProxy appLoggerProxy,
         IBusinessTransactionManager businessTransactionManager,
-        ISocketProxyFactory socketProxyFactory)
+        ISocketProxyFactory socketProxyFactory,
+        IAppGlobals appGlobals)
     {
         _duplexIoFactory = duplexIoFactory;
         _appEventSourceFactory = appEventSourceFactory;
@@ -56,6 +59,7 @@ public class ClientTcpIpServerManager : ISimpleDeviceManager
         _appLoggerProxy = appLoggerProxy;
         _bridgeTransactionManager = businessTransactionManager;
         _socketProxyFactory = socketProxyFactory;
+        _appGlobals = appGlobals;
     }
 
     /// <summary>
@@ -87,7 +91,7 @@ public class ClientTcpIpServerManager : ISimpleDeviceManager
 
         configurator.CreateMessagingConfig("Backend_Client_TCPIP: ", ipAddress, port, messageProcessingPackageFactory);
 
-        IDeviceBusinessLogicAdapterFactory businessLogicAdapterFactory = new BtcpClientTcpIpBusinessLogicAdapterFactory(_bridgeTransactionManager);
+        IDeviceBusinessLogicAdapterFactory businessLogicAdapterFactory = new BtcpClientTcpIpBusinessLogicAdapterFactory(_bridgeTransactionManager, _appGlobals);
         configurator.CreateDevice(businessLogicAdapterFactory);
 
         var device = configurator.GetDevice();

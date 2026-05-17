@@ -74,6 +74,7 @@ public class BackendInboundBtcpMessageToBtRequestDataConverter : BaseInboundBtcp
             BusinessStateName = tokens[3],
             BusinessSubstateId = Convert.ToInt32(tokens[4]),
             BusinessSubstateName = tokens[5],
+            ModuleInfo = tokens.Length==6 ? string.Empty : tokens[6]
         };
 
         return rd;

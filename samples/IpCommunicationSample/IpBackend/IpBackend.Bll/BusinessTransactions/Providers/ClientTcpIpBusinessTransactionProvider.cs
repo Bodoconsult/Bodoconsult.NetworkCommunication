@@ -1,7 +1,6 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
 using Bodoconsult.App.BusinessTransactions;
-using Bodoconsult.App.BusinessTransactions.RequestData;
 using Bodoconsult.App.Delegates;
 using Bodoconsult.App.Interfaces;
 using IpBackend.Bll.Interfaces;

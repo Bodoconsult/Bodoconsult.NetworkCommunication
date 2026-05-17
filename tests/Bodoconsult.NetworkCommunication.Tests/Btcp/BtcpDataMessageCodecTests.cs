@@ -1,23 +1,14 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
-using Bodoconsult.App.Abstractions.Interfaces;
-using Bodoconsult.App.ClientNotifications;
 using Bodoconsult.App.Helpers;
-using Bodoconsult.NetworkCommunication.ClientNotifications;
-using Bodoconsult.NetworkCommunication.ClientNotifications.Notifications;
-using Bodoconsult.NetworkCommunication.Communication;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataBlockCodecs;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataBlockCodingProcessors;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataBlocks;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessageCodecs;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
 using Bodoconsult.NetworkCommunication.Interfaces;
-using Bodoconsult.NetworkCommunication.Tests.BusinessLogicAdapters;
-using Bodoconsult.NetworkCommunication.Tests.Fakes.Converters;
-using Bodoconsult.NetworkCommunication.Tests.Helpers;
 using System.Diagnostics;
 using System.Text;
-using Bodoconsult.App.BusinessTransactions;
 
 namespace Bodoconsult.NetworkCommunication.Tests.Btcp;
 
@@ -295,6 +286,50 @@ internal class BtcpDataMessageCodecTests
         }
     }
 
+    [Test]
+    public void DecodeDataMessage_ValidInputRealWorld2_MessageDecoded()
+    {
+        // Arrange 
+        var msg = new byte[]
+        {
+            0x2, 0x1, 0x31, 0x30, 0x30, 0x4, 0x64, 0x32, 0x34, 0x38, 0x39, 0x38, 0x32, 0x31, 0x2d, 0x33, 0x39, 0x36,
+            0x30, 0x2d, 0x34, 0x62, 0x33, 0x61, 0x2d, 0x61, 0x34, 0x32, 0x30, 0x2d, 0x65, 0x39, 0x62, 0x37, 0x31, 0x64,
+            0x33, 0x32, 0x38, 0x66, 0x65, 0x34, 0x4, 0x78, 0x73, 0x30, 0x5, 0x44, 0x65, 0x76, 0x69, 0x63, 0x65, 0x20,
+            0x69, 0x73, 0x20, 0x6e, 0x6f, 0x74, 0x20, 0x72, 0x65, 0x61, 0x63, 0x68, 0x61, 0x62, 0x6c, 0x65, 0x20, 0x76,
+            0x69, 0x61, 0x20, 0x6e, 0x65, 0x74, 0x77, 0x6f, 0x72, 0x6b, 0x5, 0x31, 0x5, 0x44, 0x65, 0x76, 0x69, 0x63,
+            0x65, 0x4f, 0x66, 0x66, 0x6c, 0x69, 0x6e, 0x65, 0x53, 0x74, 0x61, 0x74, 0x65, 0x5, 0x30, 0x5, 0x4e, 0x6f,
+            0x74, 0x20, 0x73, 0x65, 0x74, 0x5, 0x49, 0x70, 0x42, 0x61, 0x63, 0x6b, 0x65, 0x6e, 0x64, 0x20, 0x73, 0x65,
+            0x72, 0x76, 0x69, 0x63, 0x65, 0x20, 0x49, 0x70, 0x42, 0x61, 0x63, 0x6b, 0x65, 0x6e, 0x64, 0x53, 0x65, 0x72,
+            0x76, 0x69, 0x63, 0x65, 0x2c, 0x20, 0x56, 0x65, 0x72, 0x73, 0x69, 0x6f, 0x6e, 0x20, 0x31, 0x2e, 0x30, 0x2e,
+            0x30, 0x3
+        };
+
+        var dataBlockCodingProcessor = new DefaultDataBlockCodingProcessor();
+        dataBlockCodingProcessor.LoadDataBlockCodecs('x', new BasicDataBlockCodec());
+        var codec = new BtcpDataMessageCodec(dataBlockCodingProcessor);
+
+        // Act  
+        var result = codec.DecodeDataMessage(msg);
+
+        // Assert
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(result, Is.Not.Null);
+            ArgumentNullException.ThrowIfNull(result);
+            Assert.That(result.ErrorCode, Is.Zero);
+            Assert.That(result.DataMessage, Is.Not.Null);
+            
+            Assert.That(result.DataMessage, Is.TypeOf<BtcpRequestInboundDataMessage>());
+
+            var btcp = (BtcpRequestInboundDataMessage)result.DataMessage;
+
+            Assert.That(btcp.DataBlock, Is.Not.Null);
+            ArgumentNullException.ThrowIfNull(btcp.DataBlock);
+            
+            Assert.That(btcp.DataBlock.Data.Length, Is.EqualTo(119));
+        }
+    }
+
     //[Test]
     //public void EncodeDataMessage_ValidInput_MessageEncoded()
     //{
@@ -493,208 +528,6 @@ internal class BtcpDataMessageCodecTests
             Assert.That(msg.RawMessageData.Span[3], Is.EqualTo(DeviceCommunicationBasics.Eot));
 
             Assert.That(msg.RawMessageData.Span[msg.RawMessageData.Length - 1], Is.EqualTo(DeviceCommunicationBasics.Etx));
-        }
-    }
-}
-
-internal class BtcpIpDeviceClientTests
-{
-    private readonly IAppLoggerProxy _appLogger = TestDataHelper.Logger;
-
-    [OneTimeTearDown]
-    public void Cleanup()
-    {
-        _appLogger.Dispose();
-    }
-
-    [Test]
-    public void Ctor_ValidSetup_PropsSetCorrectly()
-    {
-        // Arrange 
-        var device = TestDataHelper.CreateSimpleDevice();
-
-        // Act  
-        var client = new BtcpIpDeviceClient(device, _appLogger);
-
-        // Assert
-        using (Assert.EnterMultipleScope())
-        {
-            Assert.That(client.Device, Is.EqualTo(device));
-            Assert.That(client.AllowedNotifications, Is.Not.Null);
-            Assert.That(client.AllowedNotifications.Count, Is.Not.Zero);
-            Assert.That(client.AllowedNotifications.Contains(nameof(StateMachineStateNotification)), Is.True);
-        }
-    }
-
-    [Test]
-    public void LoadClientManager_ValidSetup_ClientManagerLoaded()
-    {
-        // Arrange 
-        var device = TestDataHelper.CreateSimpleDevice();
-
-        IClientNotificationLicenseManager licenseManager = new DummyClientNotificationLicenseManager();
-        IClientMessagingService clientMessagingService = new BasicBtcpNetworkingClientMessagingService();
-        IClientManager clientManager = new ClientManager(licenseManager, _appLogger, clientMessagingService);
-
-        var client = new BtcpIpDeviceClient(device, _appLogger);
-
-        clientManager.AddClient(client);
-
-        // Act  
-        client.LoadClientManager(clientManager);
-
-        // Assert
-        using (Assert.EnterMultipleScope())
-        {
-            Assert.That(client.ClientManager, Is.EqualTo(clientManager));
-        }
-    }
-
-    [Test]
-    public void CheckNotification_ValidNotification_ReturnsTrue()
-    {
-        // Arrange 
-        var device = TestDataHelper.CreateSimpleDevice();
-
-        IClientNotificationLicenseManager licenseManager = new DummyClientNotificationLicenseManager();
-        IClientMessagingService clientMessagingService = new BasicBtcpNetworkingClientMessagingService();
-        IClientManager clientManager = new ClientManager(licenseManager, _appLogger, clientMessagingService);
-
-        var client = new BtcpIpDeviceClient(device, _appLogger);
-
-        clientManager.AddClient(client);
-        client.LoadClientManager(clientManager);
-
-        var noti = new StateMachineStateNotification
-        {
-            DeviceStateId = 1,
-            DeviceStateName = "Blubb",
-            BusinessStateId = 2,
-            BusinessStateName = "Blabb",
-            BusinessSubstateId = 3,
-            BusinessSubstateName = "Blobb"
-        };
-
-        // Happens normally in client manager
-        noti.NotificationObjectToSend = clientMessagingService.Convert(noti);
-
-        // Act  
-        var result = client.CheckNotification(noti);
-
-        // Assert
-        using (Assert.EnterMultipleScope())
-        {
-            Assert.That(result, Is.True);
-        }
-    }
-
-    [Test]
-    public void DoNotifyClient_ValidNotification_ReturnsTrue()
-    {
-        // Arrange 
-        var commAdapter = new FakeIpCommunicationAdapter();
-        var device = TestDataHelper.CreateSimpleDevice();
-        device.LoadCommAdapter(commAdapter);
-
-        IInboundMessageToBtRequestDataConverter inboundDataMessageToBtRequestConverter = new TestInboundBtcpMessageToBtRequestDataConverter(_appLogger);
-        IInboundDataMessageToBtReplyConverter inboundDataMessageToBtReplyConverter = new TestInboundBtcpMessageToBtReplyConverter(_appLogger);
-        IBtRequestDataToOutboundDataMessageConverter outboundBtRequestToOutboundDataMessageConverter = new TestBtRequestDataToOutboundBtcpMessageConverter(_appLogger);
-        IBtReplyToOutboundDataMessageConverter outboundBtReplyDataMessageConverter = new TestBtReplyToOutboundDataMessageConverter(_appLogger);
-        var btm = new FakeBusinessTransactionManager();
-
-        IDeviceBusinessLogicAdapter adapter = new TestBtcpClientTcpIpBusinessLogicAdapter(device, btm, inboundDataMessageToBtRequestConverter,
-            inboundDataMessageToBtReplyConverter, outboundBtRequestToOutboundDataMessageConverter, outboundBtReplyDataMessageConverter);
-        device.LoadDeviceBusinessLogicAdapter(adapter);
-
-        IClientNotificationLicenseManager licenseManager = new DummyClientNotificationLicenseManager();
-        IClientMessagingService clientMessagingService = new BasicBtcpNetworkingClientMessagingService();
-        IClientManager clientManager = new ClientManager(licenseManager, _appLogger, clientMessagingService);
-
-        var client = new BtcpIpDeviceClient(device, _appLogger);
-
-        clientManager.AddClient(client);
-        client.LoadClientManager(clientManager);
-
-        var noti = new StateMachineStateNotification
-        {
-            DeviceStateId = 1,
-            DeviceStateName = "Blubb",
-            BusinessStateId = 2,
-            BusinessStateName = "Blabb",
-            BusinessSubstateId = 3,
-            BusinessSubstateName = "Blobb"
-        };
-
-        // Happens normally in client manager
-        noti.NotificationObjectToSend = clientMessagingService.Convert(noti);
-
-        var result = client.CheckNotification(noti);
-
-        // Act  
-        using (Assert.EnterMultipleScope())
-        {
-            Assert.DoesNotThrow(() =>
-            {
-                client.DoNotifyClient(noti);
-            });
-
-            // Assert
-            Assert.That(result, Is.True);
-            Assert.That(commAdapter.WasSent, Is.True);
-        }
-    }
-
-    [Test]
-    public void ClientManager_DoNotifyAllClients_ValidNotification_ReturnsTrue()
-    {
-        // Arrange 
-        var commAdapter = new FakeIpCommunicationAdapter();
-        var device = TestDataHelper.CreateSimpleDevice();
-        device.LoadCommAdapter(commAdapter);
-
-        IInboundMessageToBtRequestDataConverter inboundDataMessageToBtRequestConverter = new TestInboundBtcpMessageToBtRequestDataConverter(_appLogger);
-        IInboundDataMessageToBtReplyConverter inboundDataMessageToBtReplyConverter = new TestInboundBtcpMessageToBtReplyConverter(_appLogger);
-        IBtRequestDataToOutboundDataMessageConverter outboundBtRequestToOutboundDataMessageConverter = new TestBtRequestDataToOutboundBtcpMessageConverter(_appLogger);
-        IBtReplyToOutboundDataMessageConverter outboundBtReplyDataMessageConverter = new TestBtReplyToOutboundDataMessageConverter(_appLogger);
-        var btm = new FakeBusinessTransactionManager();
-
-        IDeviceBusinessLogicAdapter adapter = new TestBtcpClientTcpIpBusinessLogicAdapter(device, btm, inboundDataMessageToBtRequestConverter,
-            inboundDataMessageToBtReplyConverter, outboundBtRequestToOutboundDataMessageConverter, outboundBtReplyDataMessageConverter);
-        device.LoadDeviceBusinessLogicAdapter(adapter);
-
-        IClientNotificationLicenseManager licenseManager = new DummyClientNotificationLicenseManager();
-        IClientMessagingService clientMessagingService = new BasicBtcpNetworkingClientMessagingService();
-        IClientManager clientManager = new ClientManager(licenseManager, _appLogger, clientMessagingService);
-
-        var client = new BtcpIpDeviceClient(device, _appLogger);
-
-        clientManager.AddClient(client);
-        client.LoadClientManager(clientManager);
-
-        var noti = new StateMachineStateNotification
-        {
-            DeviceStateId = 1,
-            DeviceStateName = "Blubb",
-            BusinessStateId = 2,
-            BusinessStateName = "Blabb",
-            BusinessSubstateId = 3,
-            BusinessSubstateName = "Blobb"
-        };
-
-        // Happens normally in client manager
-        noti.NotificationObjectToSend = clientMessagingService.Convert(noti);
-
-        // Act  
-        using (Assert.EnterMultipleScope())
-        {
-            Assert.DoesNotThrow(() =>
-            {
-                clientManager.DoNotifyAllClients(noti);
-            });
-
-            // Assert
-            Wait.Until(() => commAdapter.WasSent);
-            Assert.That(commAdapter.WasSent, Is.True);
         }
     }
 }

@@ -21,6 +21,17 @@ namespace IpClientUi.DiContainerProvider;
 /// </summary>
 public class IpClientAllServicesContainerServiceProvider : IDiContainerServiceProvider
 {
+    private readonly IAppGlobals _appGlobals;
+
+    /// <summary>
+    /// Default ctor
+    /// </summary>
+    /// <param name="appGlobals"></param>
+    public IpClientAllServicesContainerServiceProvider(IAppGlobals appGlobals)
+    {
+        _appGlobals = appGlobals;
+    }
+
     /// <summary>
     /// Add DI container services to a DI container
     /// </summary>
@@ -49,7 +60,11 @@ public class IpClientAllServicesContainerServiceProvider : IDiContainerServicePr
         diContainer.AddTransient<FirstViewModel, FirstViewModel>();
         diContainer.AddTransient<StartMessagingViewModel, StartMessagingViewModel>();
         diContainer.AddTransient<StopMessagingViewModel, StopMessagingViewModel>();
-        diContainer.AddTransient<CopyrightViewModel, CopyrightViewModel>();
+
+        var copyright = new CopyrightViewModel(_appGlobals);
+        copyright.LoadLicenseInfo();
+        copyright.LoadToolInfo();
+        diContainer.AddSingleton(copyright);
 
         //diContainer.AddTransient<ViewModel1, ViewModel1>();
         //diContainer.AddTransient<ViewModel2, ViewModel2>();

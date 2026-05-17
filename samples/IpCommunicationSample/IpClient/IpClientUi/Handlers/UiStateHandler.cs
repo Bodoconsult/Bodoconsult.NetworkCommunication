@@ -5,7 +5,7 @@ using IpClient.Bll.Interfaces;
 using ReactiveUI;
 using ReactiveUI.SourceGenerators;
 using System.Text;
-using IpClient.Bll.Delegates;
+using Bodoconsult.App.ReactiveUI.ViewModels;
 using IpCommunicationSample.Common.BusinessTransactions.Requests;
 
 namespace IpClientUi.Handlers;
@@ -15,21 +15,29 @@ namespace IpClientUi.Handlers;
 /// </summary>
 public partial class UiStateHandler : ReactiveObject, IUiStateHandler
 {
+    private readonly CopyrightViewModel _copyrightViewModel;
+
+    /// <summary>
+    /// Counter for device errors
+    /// </summary>
+    private int _deviceErrorCounter;
+
     /// <summary>
     /// Default ctor
     /// </summary>
-    public UiStateHandler()
+    public UiStateHandler(CopyrightViewModel copyrightViewModel)
     {
         DeviceStateMessage = "App is loading...";
         BackendStateMessage = DeviceStateMessage;
         LastDeviceError = string.Empty;
+        _copyrightViewModel = copyrightViewModel;
+        DeviceErrorCounterString = "0";
     }
 
     /// <summary>
     /// Current state changed fired request data or null
     /// </summary>
     public StateChangedEventFiredBusinessTransactionRequestData? CurrentRequestData { get; private set; }
-
 
     /// <summary>
     /// Current request data for the device reported an error to the backend
@@ -47,9 +55,9 @@ public partial class UiStateHandler : ReactiveObject, IUiStateHandler
     [Reactive] public partial string BackendStateMessage { get; set; }
 
     /// <summary>
-    /// Counter for device errors
+    /// Device error counter as string
     /// </summary>
-    [Reactive] public partial int DeviceErrorCounter { get; set; }
+    [Reactive] public partial string DeviceErrorCounterString { get; set; }
 
     /// <summary>
     /// Last device error reported
@@ -64,6 +72,7 @@ public partial class UiStateHandler : ReactiveObject, IUiStateHandler
     {
         DeviceStateMessage = string.Empty;
         BackendStateMessage = string.Empty;
+        
 
         CurrentRequestData = requestData;
 
@@ -78,18 +87,26 @@ public partial class UiStateHandler : ReactiveObject, IUiStateHandler
 
         DeviceStateMessage = $"Device state:  {requestData.DeviceStateId} {requestData.DeviceStateName}";
         BackendStateMessage = msg.ToString();
+
+        if (requestData.ModuleInfo == null)
+        {
+            return;
+        }
+
+        _copyrightViewModel.LoadModule(requestData.ModuleInfo);
     }
 
     public void ReportDeviceErrorReceived(ErrorBusinessTransactionRequestData requestData)
     {
         ErrorBusinessTransactionRequestData = requestData;
 
-        if (DeviceErrorCounter == int.MaxValue)
+        if (_deviceErrorCounter == int.MaxValue)
         {
-            DeviceErrorCounter = 0;
+            _deviceErrorCounter = 0;
         }
 
-        DeviceErrorCounter++;
+        _deviceErrorCounter++;
+        DeviceErrorCounterString = _deviceErrorCounter.ToString("0,000");
         LastDeviceError = $"Command: {requestData.TelnetCommand}\r\nAdditional info:\r\n{requestData.TelnetAdditionalInfo}";
     }
 }

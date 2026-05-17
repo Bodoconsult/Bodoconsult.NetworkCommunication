@@ -70,6 +70,10 @@ public class UdpDatagramIpDuplexIoReceiver : BaseDuplexIoReceiver
     {
         var chunk = new ChunkedSequence<byte>(_buffer);
         chunk.Append(data.Memory);
+
+        data.Reset();
+        _bufferPool.Enqueue(data);
+
         _buffer = chunk;
 
         string msg;

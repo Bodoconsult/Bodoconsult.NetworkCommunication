@@ -2,6 +2,8 @@
 
 ## Nuget package library Bodoconsult.App by Robert Leisner
 
+Copyright: Bodoconsult EDV-Dienstleistungen GmbH
+
 Package providing basic functionality like logging, application performance measuring etc. for layered apps in a client server scenario
 
 License: MIT
@@ -11,6 +13,8 @@ License-Url: https://licenses.nuget.org/MIT
 Project-Url: https://github.com/Bodoconsult/Bodoconsult.AppInfrastructure
 
 ## Nuget package library Bodoconsult.App.Abstractions by Robert Leisner
+
+Copyright: Bodoconsult EDV-Dienstleistungen GmbH
 
 Package providing abstarctions for basic functionality like logging, application performance measuring etc. for layered apps in a client server scenario
 
@@ -22,6 +26,8 @@ Project-Url: https://github.com/Bodoconsult/Bodoconsult.AppInfrastructure
 
 ## Nuget package library coverlet.collector by tonerdo
 
+Copyright: (c) 2018 Toni Solarin-Sodara
+
 Coverlet is a cross platform code coverage library for .NET, with support for line, branch and method coverage.
 
 License: MIT
@@ -31,6 +37,8 @@ License-Url: https://licenses.nuget.org/MIT
 Project-Url: https://github.com/coverlet-coverage/coverlet.git
 
 ## Nuget package library Microsoft.NET.Test.Sdk by Microsoft
+
+Copyright: © Microsoft Corporation. All rights reserved.
 
 The MSbuild targets and properties for building .NET test projects.
 
@@ -42,6 +50,8 @@ Project-Url: https://github.com/microsoft/vstest
 
 ## Nuget package library Moq by Daniel Cazzulino,  kzu
 
+Copyright: Copyright (c) 2007, Clarius Consulting, Manas Technology Solutions, InSTEDD, and Contributors. All rights reserved.
+
 Moq is the most popular and friendly mocking framework for .NET.
 
 License: BSD-3-Clause
@@ -51,6 +61,8 @@ License-Url: https://licenses.nuget.org/BSD-3-Clause
 Project-Url: https://github.com/moq/moq
 
 ## Nuget package library NUnit by Charlie Poole,  Rob Prouse
+
+Copyright: Copyright (c) Charlie Poole, Rob Prouse and Contributors. MIT License.
 
 NUnit is a unit-testing framework for all .NET languages.
             It can run on macOS, Linux and Windows operating systems.
@@ -74,6 +86,8 @@ Project-Url: https://github.com/nunit/nunit
 
 ## Nuget package library NUnit.Analyzers by NUnit
 
+Copyright: Copyright (c) 2018-2025 NUnit project
+
 This package includes analyzers and code fixes for test projects using NUnit 3+. The analyzers will mark wrong usages when writing tests, and the code fixes can be used to used to correct these usages. They will also aid in the transition from NUnit 3 to NUnit 4.
 
 Version 3.0 and upwards works in Visual Studio 2019 (version 16.3) or newer and also enables supression of compiler errors such as errors arising from nullable reference types. For Visual Studio 2017 one must use versions below 3.0 - note that these versions are no longer updated, so version 2.10.0 is the last version that works in Visual Studio 2017.
@@ -85,6 +99,8 @@ License-Url: https://licenses.nuget.org/MIT
 Project-Url: https://github.com/nunit/nunit.analyzers
 
 ## Nuget package library NUnit3TestAdapter by Charlie Poole,  Terje Sandstrom
+
+Copyright: Copyright (c) 2011-2021 Charlie Poole, 2014-2026 Terje Sandstrom
 
 The NUnit3 TestAdapter for Visual Studio, all versions from 2012 and onwards, and DotNet (incl. .Net core), versions .net framework 4.6.2 or higher, .net 8 or higher.
 

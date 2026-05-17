@@ -16,6 +16,8 @@ namespace Bodoconsult.NetworkCommunication.BusinessTransactions.Converters;
 /// </summary>
 public abstract class BaseBtRequestDataToOutboundBtcpMessageConverter : IBtRequestDataToOutboundDataMessageConverter
 {
+    private readonly IAppGlobals _appGlobals;
+
     /// <summary>
     /// Delegate for creating <see cref="IBusinessTransactionRequestData"/> instances
     /// </summary>
@@ -37,21 +39,23 @@ public abstract class BaseBtRequestDataToOutboundBtcpMessageConverter : IBtReque
     /// Default ctor
     /// </summary>
     /// <param name="appLogger">Current app logger</param>
-    protected BaseBtRequestDataToOutboundBtcpMessageConverter(IAppLoggerProxy appLogger)
+    /// <param name="appGlobals">Current app globals</param>
+    protected BaseBtRequestDataToOutboundBtcpMessageConverter(IAppLoggerProxy appLogger, IAppGlobals appGlobals)
     {
+        _appGlobals = appGlobals;
         AppLogger = appLogger;
         AllBusinessTransactionRequestDataDelegates.Add(nameof(EmptyBusinessTransactionRequestData), CreateEmptyBtcpRequestMessage);
         AllBusinessTransactionRequestDataDelegates.Add(nameof(StateChangedEventFiredBusinessTransactionRequestData), CreateStateChangedEventFired);
     }
 
-    private static IOutboundBusinessTransactionDataMessage CreateStateChangedEventFired(IBusinessTransactionRequestData request)
+    private IOutboundBusinessTransactionDataMessage CreateStateChangedEventFired(IBusinessTransactionRequestData request)
     {
         if (request is not StateChangedEventFiredBusinessTransactionRequestData rd)
         {
             throw new ArgumentException($"Request must be {nameof(StateChangedEventFiredBusinessTransactionRequestData)}");
         }
 
-        var bytes = Encoding.UTF8.GetBytes($"s{rd.DeviceStateId}\u0005{rd.DeviceStateName}\u0005{rd.BusinessStateId}\u0005{rd.BusinessStateName}\u0005{rd.BusinessSubstateId}\u0005{rd.BusinessSubstateName}");
+        var bytes = Encoding.UTF8.GetBytes($"s{rd.DeviceStateId}\u0005{rd.DeviceStateName}\u0005{rd.BusinessStateId}\u0005{rd.BusinessStateName}\u0005{rd.BusinessSubstateId}\u0005{rd.BusinessSubstateName}\u0005{_appGlobals.AppStartParameter.AppName} {_appGlobals.AppStartParameter.AppVersion}");
 
         var db = new BasicOutboundDatablock
         {

@@ -2,6 +2,8 @@
 
 ## Nuget package library Microsoft.AspNetCore.SystemWebAdapters by Microsoft
 
+Copyright: © Microsoft Corporation. All rights reserved.
+
 A collection of adapters that help with migrating from System.Web.dll based ASP.NET projects to ASP.NET Core projects by providing implementations of common System.Web APIs for use in ASP.NET Core apps.
 
 License: MIT
@@ -11,6 +13,8 @@ License-Url: https://licenses.nuget.org/MIT
 Project-Url: https://github.com/dotnet/systemweb-adapters
 
 ## Nuget package library Microsoft.AspNetCore.SystemWebAdapters.CoreServices by Microsoft
+
+Copyright: © Microsoft Corporation. All rights reserved.
 
 A collection of services to provide support for enabling configuration for Microsoft.AspNetCore.SystemWebAdapters.
 
@@ -22,6 +26,8 @@ Project-Url: https://github.com/dotnet/systemweb-adapters
 
 ## Nuget package library Microsoft.Management.Infrastructure by Microsoft
 
+Copyright: © Microsoft Corporation. All rights reserved.
+
 Runtime for Microsoft.Management.Infrastructure
 
 License: MIT
@@ -31,6 +37,8 @@ License-Url: https://licenses.nuget.org/MIT
 Project-Url: 
 
 ## Nuget package library Newtonsoft.Json by James Newton-King
+
+Copyright: Copyright © James Newton-King 2008
 
 Json.NET is a popular high-performance JSON framework for .NET
 
@@ -42,6 +50,8 @@ Project-Url: https://github.com/JamesNK/Newtonsoft.Json
 
 ## Nuget package library SnmpSharpNet-core by Adolfo Marinucci
 
+Copyright: 
+
 .NET implementation of SNMP protocol. This is a fork of the great original library SnmpShartNet (http://www.snmpsharpnet.com)
 
 License: 
@@ -51,6 +61,8 @@ License-Url: https://github.com/adospace/SnmpSharpNetCore/blob/master/LICENSE
 Project-Url: 
 
 ## Nuget package library System.Data.DataSetExtensions by Microsoft
+
+Copyright: © Microsoft Corporation.  All rights reserved.
 
 Provides extensions to form LINQ expressions and method queries against DataTable objects.
 
@@ -75,6 +87,8 @@ Project-Url:
 
 ## Nuget package library System.DirectoryServices by Microsoft
 
+Copyright: © Microsoft Corporation. All rights reserved.
+
 Provides easy access to Active Directory Domain Services.
 
 Commonly Used Types:
@@ -95,6 +109,8 @@ Project-Url: https://github.com/dotnet/runtime
 
 ## Nuget package library System.DirectoryServices.AccountManagement by Microsoft
 
+Copyright: © Microsoft Corporation. All rights reserved.
+
 Provides uniform access and manipulation of user, computer, and group security principals across the multiple principal stores: Active Directory Domain Services (AD DS), Active Directory Lightweight Directory Services (AD LDS), and Machine SAM (MSAM).
 
 License: MIT
@@ -104,6 +120,8 @@ License-Url: https://licenses.nuget.org/MIT
 Project-Url: https://github.com/dotnet/runtime
 
 ## Nuget package library System.Management by Microsoft
+
+Copyright: © Microsoft Corporation. All rights reserved.
 
 Provides access to a rich set of management information and management events about the system, devices, and applications instrumented to the Windows Management Instrumentation (WMI) infrastructure.
 

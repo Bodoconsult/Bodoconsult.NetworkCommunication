@@ -4,9 +4,9 @@ using System.Text;
 using Bodoconsult.App.Abstractions.Extensions;
 using Bodoconsult.App.Abstractions.Interfaces;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
+using Bodoconsult.NetworkCommunication.Tests.App;
 using Bodoconsult.NetworkCommunication.Tests.Helpers;
 using IpBackend.Bll.BusinessLogic.Converters;
-using IpCommunicationSample.Common;
 using IpCommunicationSample.Common.BusinessTransactions.Requests;
 
 namespace IpCommunicationSampleTests.Backend.Converters;
@@ -29,7 +29,7 @@ internal class ClientBtRequestDataToOutboundBtcpMessageConverterTests
         // Arrange 
 
         // Act  
-        var conv = new ClientBtRequestDataToOutboundBtcpMessageConverter(_appLogger);
+        var conv = new ClientBtRequestDataToOutboundBtcpMessageConverter(_appLogger, Globals.Instance);
 
         // Assert
         Assert.That(conv.AppLogger, Is.EqualTo(_appLogger));
@@ -39,7 +39,7 @@ internal class ClientBtRequestDataToOutboundBtcpMessageConverterTests
     public void MapToOutboundDataMessage_ErrorBusinessTransactionRequestData_CorrectMessage()
     {
         // Arrange 
-        var conv = new ClientBtRequestDataToOutboundBtcpMessageConverter(_appLogger);
+        var conv = new ClientBtRequestDataToOutboundBtcpMessageConverter(_appLogger, Globals.Instance);
 
         const int transactionId = 99;
         var transactionUid = Guid.NewGuid();

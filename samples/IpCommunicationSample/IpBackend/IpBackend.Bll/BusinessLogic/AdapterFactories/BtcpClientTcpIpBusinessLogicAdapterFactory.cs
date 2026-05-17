@@ -1,5 +1,6 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
+using Bodoconsult.App.Abstractions.Interfaces;
 using Bodoconsult.App.Interfaces;
 using Bodoconsult.NetworkCommunication.Interfaces;
 using IpBackend.Bll.BusinessLogic.Adapters;
@@ -13,14 +14,17 @@ namespace IpBackend.Bll.BusinessLogic.AdapterFactories;
 public class BtcpClientTcpIpBusinessLogicAdapterFactory : IDeviceBusinessLogicAdapterFactory
 {
     private readonly IBusinessTransactionManager _businessTransactionManager;
+    private readonly IAppGlobals _appGlobals;
 
     /// <summary>
     /// Default ctor
     /// </summary>
     /// <param name="businessTransactionManager">Current business transaction manager</param>
-    public BtcpClientTcpIpBusinessLogicAdapterFactory(IBusinessTransactionManager businessTransactionManager)
+    /// <param name="appGlobals">Current app globals</param>
+    public BtcpClientTcpIpBusinessLogicAdapterFactory(IBusinessTransactionManager businessTransactionManager, IAppGlobals appGlobals)
     {
         _businessTransactionManager = businessTransactionManager;
+        _appGlobals = appGlobals;
     }
 
     /// <summary>
@@ -33,7 +37,7 @@ public class BtcpClientTcpIpBusinessLogicAdapterFactory : IDeviceBusinessLogicAd
 
         IInboundMessageToBtRequestDataConverter inboundDataMessageToBtRequestConverter = new ClientInboundBtcpMessageToBtRequestDataConverter(logger);
         IInboundDataMessageToBtReplyConverter inboundDataMessageToBtReplyConverter = new ClientInboundBtcpMessageToBtReplyConverter(logger);
-        IBtRequestDataToOutboundDataMessageConverter outboundBtRequestToOutboundDataMessageConverter = new ClientBtRequestDataToOutboundBtcpMessageConverter(logger);
+        IBtRequestDataToOutboundDataMessageConverter outboundBtRequestToOutboundDataMessageConverter = new ClientBtRequestDataToOutboundBtcpMessageConverter(logger, _appGlobals);
         IBtReplyToOutboundDataMessageConverter outboundBtReplyDataMessageConverter = new ClientBtReplyToOutboundDataMessageConverter(logger);
         
         return new BtcpClientTcpIpBusinessLogicAdapter(device, _businessTransactionManager, 

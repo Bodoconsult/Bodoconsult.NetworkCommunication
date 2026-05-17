@@ -14,6 +14,8 @@ namespace Bodoconsult.NetworkCommunication.ClientNotifications;
 /// </summary>
 public abstract class BaseBtcpNetworkingClientMessagingService: BaseClientMessagingService
 {
+    private readonly IAppGlobals _appGlobals;
+
     /// <summary>
     /// Transaction ID to use for BTCP transaction message. Default 100
     /// </summary>
@@ -22,8 +24,10 @@ public abstract class BaseBtcpNetworkingClientMessagingService: BaseClientMessag
     /// <summary>
     /// Default ctor loading <see cref="StateMachineStateNotification"/> notifications
     /// </summary>
-    protected BaseBtcpNetworkingClientMessagingService()
+    protected BaseBtcpNetworkingClientMessagingService(IAppGlobals appGlobals)
     {
+        _appGlobals = appGlobals;
+
         ConversionRules.Add(nameof(StateMachineStateNotification), CreateMessageForStateMachineStateNotification);
         ConversionRules.Add(nameof(OrderExecutionNotification), CreateMessageForOrderExecutionNotification);
     }
@@ -59,7 +63,7 @@ public abstract class BaseBtcpNetworkingClientMessagingService: BaseClientMessag
 
         var db = new BasicOutboundDatablock
         {
-            Data = Encoding.UTF8.GetBytes($"s{rd.DeviceStateId}\u0005{rd.DeviceStateName}\u0005{rd.BusinessStateId}\u0005{rd.BusinessStateName}\u0005{rd.BusinessSubstateId}\u0005{rd.BusinessSubstateName}")
+            Data = Encoding.UTF8.GetBytes($"s{rd.DeviceStateId}\u0005{rd.DeviceStateName}\u0005{rd.BusinessStateId}\u0005{rd.BusinessStateName}\u0005{rd.BusinessSubstateId}\u0005{rd.BusinessSubstateName}\u0005{_appGlobals.AppStartParameter.AppName} {_appGlobals.AppStartParameter.AppVersion}")
         };
 
         var message = new BtcpRequestOutboundDataMessage(TransactionId, Guid.NewGuid())

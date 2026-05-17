@@ -2,6 +2,8 @@
 
 ## Nuget package library SnmpSharpNet by msinadinovic
 
+Copyright: 
+
 Simple Network Management Protocol Open Source library written in c# with support for SNMP version 1, 2c and 3.
 
 Support for Get, Get-Next, Get-Bulk and Set requests, Response and Report replies and Trap, V2Trap and Inform Notifications is implemented. SNMP version 1 Traps have a dedicated packet class SnmpV1TrapPacket because they are substantially different from other SNMP version 1 packets. SNMP version 2 and 3 V2Trap parsing is included in the general request/response parsing class for each protocol. Inform handling for both SNMP version 2 and 3 is included and tested. In version 3, V2Trap and Inform support for authentication and privacy is included.
