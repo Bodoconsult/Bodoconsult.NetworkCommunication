@@ -22,10 +22,10 @@ public interface IOrderFactory
     /// <summary>
     /// Create a device order
     /// </summary>
-    /// <param name="configName">Name of the requested configuration</param>
+    /// <param name="config">Order configuration instance</param>
     /// <param name="parameterSet">Parameter set to use for the device order</param>
     /// <returns></returns>
-    IOrder CreateOrder(string configName, IParameterSet parameterSet);
+    public IOrder CreateOrder(IOrderConfiguration config, IParameterSet parameterSet);
 
     /// <summary>
     /// Get an order configuration i.e. for calling <see cref="CreateParameterSetDelegate"/>

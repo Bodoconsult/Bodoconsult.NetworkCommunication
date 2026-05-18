@@ -33,13 +33,13 @@ public abstract class BaseJobStateMachineStateBuilder : BaseStateMachineStateBui
         }
 
         // Set the parametersets for the orders to be created
-        if (config1.ParameterSets.Count != config1.OrderConfigurations.Count)
+        if (config1.ParameterSets.Count != config1.OrderConfigurationInstances.Count)
         {
-            throw new ArgumentException($"The number of parametersets {config1.ParameterSets.Count} must equal the number of order configurations {config1.OrderConfigurations.Count}!");
+            throw new ArgumentException($"The number of parametersets {config1.ParameterSets.Count} must equal the number of order configurations {config1.OrderConfigurationInstances.Count}!");
         }
         
         state1.ParameterSets.AddRange(config1.ParameterSets);
-        state1.OrderConfigurations.AddRange(config1.OrderConfigurations);
+        state1.OrderConfigurations.AddRange(config1.OrderConfigurationInstances);
 
         ConfigureOrderBasedActionState(state1, config1);
     }

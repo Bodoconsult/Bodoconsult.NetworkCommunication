@@ -114,12 +114,14 @@ public class TncpOrderBuilder : BaseOrderBuilder
             return false;
         }
 
-        if (string.IsNullOrEmpty(rm.TelnetAdditionalInfo))
+        var info = rm.TelnetAdditionalInfo ?? "";
+
+        if (string.IsNullOrEmpty(info) || info.StartsWith("<CONFIG>", StringComparison.InvariantCultureIgnoreCase))
         {
             return true;
         }
 
-        errors.Add(rm.TelnetAdditionalInfo);
+        errors.Add(info);
         return false;
 
     }

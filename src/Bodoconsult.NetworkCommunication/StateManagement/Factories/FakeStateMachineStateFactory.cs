@@ -32,10 +32,9 @@ public class FakeStateMachineStateFactory : IStateMachineStateFactory
     /// Create an order based state instance of the requested type
     /// </summary>
     /// <param name="currentContext">Current context</param>
-    /// <param name="stateName">Name of the request state</param>
-    /// <param name="parameterSets">Current parametersets to load in the orders to execute (if needed)</param>
+    /// <param name="config"></param>
     /// <returns>State instance of the requested type</returns>
-    public IStateMachineState CreateInstance(IStateMachineDevice currentContext, string stateName, List<IParameterSet> parameterSets)
+    public IStateMachineState CreateInstance(IStateMachineDevice currentContext, IStateConfiguration config)
     {
         throw new NotImplementedException();
     }

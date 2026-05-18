@@ -29,4 +29,10 @@ public interface IOrderBasedActionStateConfiguration: IStateConfiguration
     /// The number of <see cref="ParameterSets"/> must equal the number of <see cref="OrderConfigurations"/>
     /// </summary>
     List<string> OrderConfigurations { get; }
+
+    /// <summary>
+    /// All configuration instances for orders to be executed for the state to be configured. Sort order is important! The first configuration added is executed as first order etc.
+    /// The number of <see cref="IOrderBasedActionStateConfiguration.ParameterSets"/> must equal the number of <see cref="IOrderBasedActionStateConfiguration.OrderConfigurationInstances"/>
+    /// </summary>
+    List<IOrderConfiguration> OrderConfigurationInstances { get; }
 }

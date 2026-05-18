@@ -38,10 +38,11 @@ public class ClientInboundBtcpMessageToBtRequestDataConverter : BaseInboundBtcpM
     {
         ArgumentNullException.ThrowIfNull(request.DataBlock);
 
-        var rd = request.DataBlock.Data.ToStartMessagingReportBusinessTransactionRequestData();
-
-        rd.TransactionId = request.BusinessTransactionId;
-        rd.TransactionGuid = request.BusinessTransactionUid;
+        var rd = new EmptyBusinessTransactionRequestData
+        {
+            TransactionId = request.BusinessTransactionId,
+            TransactionGuid = request.BusinessTransactionUid
+        };
 
         return rd;
     }

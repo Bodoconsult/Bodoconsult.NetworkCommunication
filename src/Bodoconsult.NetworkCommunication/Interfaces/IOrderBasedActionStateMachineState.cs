@@ -22,7 +22,7 @@ public interface IOrderBasedActionStateMachineState : IStateMachineState
     /// <summary>
     /// All configurations for orders to be executed for the state to be configured. Sort order is important! The first configuration added is executed as first order etc.
     /// </summary>
-    List<string> OrderConfigurations { get; }
+    List<IOrderConfiguration> OrderConfigurations { get; }
 
     /// <summary>
     /// Orders to be handled by the current state

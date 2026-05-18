@@ -34,15 +34,11 @@ public class OrderFactory : IOrderFactory
     /// <summary>
     /// Create a device order
     /// </summary>
-    /// <param name="configName">Name of the requested configuration</param>
+    /// <param name="config">Order configuration instance</param>
     /// <param name="parameterSet">Parameter set to use for the device order</param>
     /// <returns></returns>
-    public IOrder CreateOrder(string configName, IParameterSet parameterSet)
+    public IOrder CreateOrder(IOrderConfiguration config, IParameterSet parameterSet)
     {
-        var config = GetConfiguration(configName);
-        
-        ArgumentNullException.ThrowIfNull(config, $"No config {configName} registered");
-
         config.ParameterSet = parameterSet;
 
         ArgumentNullException.ThrowIfNull(config.ParameterSet);

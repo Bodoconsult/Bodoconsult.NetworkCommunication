@@ -48,8 +48,8 @@ public abstract class BaseOrderBasedStateMachineState : BaseStateMachineState, I
             {
                 var ps = ParameterSets[index];
                 
-                var orderConfigName = OrderConfigurations[index];
-                var order = orderFactory.CreateOrder(orderConfigName, ps);
+                var orderConfig = OrderConfigurations[index];
+                var order = orderFactory.CreateOrder(orderConfig, ps);
                 //Trace.TraceInformation($"{Name}: PS order ID {ps.CurrentOrder?.Id ?? 0}...");
                 Orders.AddRange(order);
                 //Trace.TraceInformation($"{Name}: order ID {ps.CurrentOrder?.Id ?? 0} with index {index} was created!");
@@ -71,7 +71,7 @@ public abstract class BaseOrderBasedStateMachineState : BaseStateMachineState, I
     /// <summary>
     /// All configurations for orders to be executed for the state to be configured. Sort order is important! The first configuration added is executed as first order etc.
     /// </summary>
-    public List<string> OrderConfigurations { get; } = [];
+    public List<IOrderConfiguration> OrderConfigurations { get; } = [];
 
     /// <summary>
     /// Orders to be handled by the current state

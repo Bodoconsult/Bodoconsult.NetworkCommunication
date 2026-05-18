@@ -117,13 +117,12 @@ public abstract class BaseStateMachineDeviceBusinessLogicAdapter : IStateMachine
     /// </summary>
     /// <param name="device">Current device</param>
     /// <param name="stateFactory">Current state factory</param>
-    /// <param name="parameterSets">Required parametersets</param>
-    /// <param name="stateName">Requested state name</param>
-    /// <returns>State configuration</returns>
+    /// <param name="config">Current state config</param>
+    /// <returns>State instance</returns>
     /// <exception cref="ArgumentException">Thrown if configuration does not implement IJobStateConfiguration</exception>
-    protected static void CreateAndRegisterState(IStateMachineDevice device, IStateMachineStateFactory stateFactory, List<IParameterSet> parameterSets, string stateName)
+    protected static void CreateAndRegisterState(IStateMachineDevice device, IStateMachineStateFactory stateFactory, IStateConfiguration config)
     {
-        var state = stateFactory.CreateInstance(device, stateName, parameterSets);
+        var state = stateFactory.CreateInstance(device, config);
 
         if (state is not IJobStateMachineState jobState)
         {

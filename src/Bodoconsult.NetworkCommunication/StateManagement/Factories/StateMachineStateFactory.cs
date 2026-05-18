@@ -53,29 +53,20 @@ public class StateMachineStateFactory : IStateMachineStateFactory
     /// Create an order based state instance of the requested type
     /// </summary>
     /// <param name="currentContext">Current context</param>
-    /// <param name="stateName">Name of the request state</param>
-    /// <param name="parameterSets">Current parametersets to load in the orders to execute (if needed)</param>
+    /// <param name="config">Current state config</param>
     /// <returns>State instance of the requested type</returns>
-    public IStateMachineState CreateInstance(IStateMachineDevice currentContext, string stateName, List<IParameterSet> parameterSets)
+    public IStateMachineState CreateInstance(IStateMachineDevice currentContext, IStateConfiguration config)
     {
         ArgumentNullException.ThrowIfNull(currentContext);
 
-        if (!_stateConfigurations.TryGetValue(stateName, out var config))
-        {
-            throw new ArgumentException($"Builder for state {stateName} is not registered");
-        }
-
-        if (config is not IOrderBasedActionStateConfiguration)
+        if (config is not IOrderBasedActionStateConfiguration obas)
         {
             throw new ArgumentException("Use other overload of the method NOT providing an IParameterSet instance for an order");
         }
 
-        var obas = (IOrderBasedActionStateConfiguration)config.Clone();
-
         ArgumentNullException.ThrowIfNull(obas.StateBuilderBuilder);
 
         obas.CurrentContext = currentContext;
-        obas.ParameterSets.AddRange( parameterSets);
 
         return obas.StateBuilderBuilder.BuildState(obas);
     }

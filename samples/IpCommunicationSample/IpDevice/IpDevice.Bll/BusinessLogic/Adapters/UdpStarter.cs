@@ -4,6 +4,9 @@ namespace IpDevice.Bll.BusinessLogic.Adapters
 {
     public class UdpStarter
     {
+
+        private bool _isReadyToStart;
+
         /// <summary>
         /// Current business transaction ID
         /// </summary>
@@ -23,7 +26,13 @@ namespace IpDevice.Bll.BusinessLogic.Adapters
 
             if (command == "set,status,start")
             {
+                _isReadyToStart = true;
+            } 
+            
+            if (command == "show,streamconfig" && _isReadyToStart)
+            {
                 BusinessTransactionId = Snapshot ? 3 : 1;
+                _isReadyToStart = false;
             }
 
             if (command == "set,status,stop")

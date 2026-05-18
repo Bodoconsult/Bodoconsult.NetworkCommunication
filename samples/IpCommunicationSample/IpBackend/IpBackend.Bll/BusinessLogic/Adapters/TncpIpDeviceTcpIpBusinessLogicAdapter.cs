@@ -129,15 +129,13 @@ public class TncpIpDeviceTcpIpBusinessLogicAdapter : BaseStateMachineDeviceBusin
             var jobConfig = GetConfiguration(StateFactory, stateName);
 
             // Get the required parametersets now
-            var parameterSets = new List<IParameterSet>();
-
             for (var index = 0; index < jobConfig.OrderConfigurations.Count; index++)
             {
-                CreateStartOrders(jobConfig, index, parameterSets, OrderFactory, startRequest);
+                CreateStartOrders(jobConfig, index, OrderFactory, startRequest);
             }
 
             // Now create the state
-            CreateAndRegisterState(Device, StateFactory, parameterSets, stateName);
+            CreateAndRegisterState(Device, StateFactory, jobConfig);
 
             return new DefaultBusinessTransactionReply
             {
@@ -200,15 +198,13 @@ public class TncpIpDeviceTcpIpBusinessLogicAdapter : BaseStateMachineDeviceBusin
             var jobConfig = GetConfiguration(StateFactory, stateName);
 
             // Get the required parametersets now
-            var parameterSets = new List<IParameterSet>();
-
             for (var index = 0; index < jobConfig.OrderConfigurations.Count; index++)
             {
-                CreateStartOrders(jobConfig, index, parameterSets, OrderFactory, startRequest);
+                CreateStartOrders(jobConfig, index, OrderFactory, startRequest);
             }
 
             // Now create the state
-            CreateAndRegisterState(Device, StateFactory, parameterSets, stateName);
+            CreateAndRegisterState(Device, StateFactory, jobConfig);
 
             return new DefaultBusinessTransactionReply
             {
@@ -227,11 +223,14 @@ public class TncpIpDeviceTcpIpBusinessLogicAdapter : BaseStateMachineDeviceBusin
         }
     }
 
-    private void CreateStartOrders(IJobStateConfiguration jobConfig, int index, List<IParameterSet> parameterSets,
-        IOrderFactory orderFactory, StartMessagingReportBusinessTransactionRequestData startRequest)
+    private void CreateStartOrders(IJobStateConfiguration jobConfig, int index, IOrderFactory orderFactory, StartMessagingReportBusinessTransactionRequestData startRequest)
     {
         var orderConfigName = jobConfig.OrderConfigurations[index];
         var orderConfig = orderFactory.GetConfiguration(orderConfigName);
+
+        ArgumentNullException.ThrowIfNull(orderConfig);
+
+        jobConfig.OrderConfigurationInstances.Add(orderConfig);
 
         ArgumentNullException.ThrowIfNull(orderConfig, $"Order config for {orderConfigName} is null");
         ArgumentNullException.ThrowIfNull(orderConfig.CreateParameterSetDelegate);
@@ -255,7 +254,7 @@ public class TncpIpDeviceTcpIpBusinessLogicAdapter : BaseStateMachineDeviceBusin
                 // 
                 break;
             case 2:
-                ps.TelnetCommand = $"set,stream,mode,{(startRequest.Snapshot ? "snapshot":  "continious")}";  // 
+                ps.TelnetCommand = $"set,stream,mode,{(startRequest.Snapshot ? "snapshot" : "continious")}";  // 
                 break;
             case 1:
                 ps.TelnetCommand = $"set,connection,{IpHelper.GetLocalIpAddress().MapToIPv4()},{UdpPort}";    // 
@@ -267,7 +266,7 @@ public class TncpIpDeviceTcpIpBusinessLogicAdapter : BaseStateMachineDeviceBusin
                 break;
         }
 
-        parameterSets.Add(ps);
+        jobConfig.ParameterSets.Add(ps);
     }
 
     private MessageHandlingResult HandleRequestAnswerOnSuccessDelegate(IInboundDataMessage? message, object? transportObject, IParameterSet? parameterSet)
@@ -331,26 +330,27 @@ public class TncpIpDeviceTcpIpBusinessLogicAdapter : BaseStateMachineDeviceBusin
             var jobConfig = GetConfiguration(StateFactory, stateName);
 
             // Get the required parametersets now
-            var parameterSets = new List<IParameterSet>();
-
             foreach (var orderConfigName in jobConfig.OrderConfigurations)
             {
                 var orderConfig = OrderFactory.GetConfiguration(orderConfigName);
+
+                ArgumentNullException.ThrowIfNull(orderConfig);
+                jobConfig.OrderConfigurationInstances.Add(orderConfig);
 
                 ArgumentNullException.ThrowIfNull(orderConfig, $"Order config for {orderConfigName} is null");
                 ArgumentNullException.ThrowIfNull(orderConfig.CreateParameterSetDelegate);
 
                 var ps = (TncpParameterSet)orderConfig.CreateParameterSetDelegate.Invoke();
 
-                ps.TelnetCommand = ps.TelnetCommand = "set,status,stop"; 
+                ps.TelnetCommand = ps.TelnetCommand = "set,status,stop";
 
                 // ps.TelnetCommand = "StopStreaming";
 
-                parameterSets.Add(ps);
+                jobConfig.ParameterSets.Add(ps);
             }
 
             // Now create the state
-            CreateAndRegisterState(Device, StateFactory, parameterSets, stateName);
+            CreateAndRegisterState(Device, StateFactory, jobConfig);
 
             return new DefaultBusinessTransactionReply
             {
@@ -387,11 +387,11 @@ public class TncpIpDeviceTcpIpBusinessLogicAdapter : BaseStateMachineDeviceBusin
             var jobConfig = GetConfiguration(StateFactory, stateName);
 
             // Get the required parametersets now
-            var parameterSets = new List<IParameterSet>();
-
             foreach (var orderConfigName in jobConfig.OrderConfigurations)
             {
                 var orderConfig = OrderFactory.GetConfiguration(orderConfigName);
+                ArgumentNullException.ThrowIfNull(orderConfig);
+                jobConfig.OrderConfigurationInstances.Add(orderConfig);
 
                 ArgumentNullException.ThrowIfNull(orderConfig, $"Order config for {orderConfigName} is null");
                 ArgumentNullException.ThrowIfNull(orderConfig.CreateParameterSetDelegate);
@@ -400,11 +400,11 @@ public class TncpIpDeviceTcpIpBusinessLogicAdapter : BaseStateMachineDeviceBusin
 
                 ps.TelnetCommand = "set,status,stop";
 
-                parameterSets.Add(ps);
+                jobConfig.ParameterSets.Add(ps);
             }
 
             // Now create the state
-            CreateAndRegisterState(Device, StateFactory, parameterSets, stateName);
+            CreateAndRegisterState(Device, StateFactory, jobConfig);
 
             return new DefaultBusinessTransactionReply
             {
@@ -475,7 +475,7 @@ public class TncpIpDeviceTcpIpBusinessLogicAdapter : BaseStateMachineDeviceBusin
                 Config = config
             };
 
-                    _businessTransactionManager.RunBusinessTransactionFireAndForget(request.TransactionId, request);
+            _businessTransactionManager.RunBusinessTransactionFireAndForget(request.TransactionId, request);
 
             Device.DataMessagingConfig.AppLogger.LogInformation($"{LoggerId} Telnet: {tncp.TelnetCommand} AddInfo: {tncp.TelnetAdditionalInfo}");
         }
