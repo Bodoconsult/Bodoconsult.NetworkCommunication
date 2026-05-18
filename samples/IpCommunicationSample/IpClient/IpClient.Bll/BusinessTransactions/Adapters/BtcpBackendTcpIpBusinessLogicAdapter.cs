@@ -17,12 +17,8 @@ using IpClient.Bll.Delegates;
 using IpClient.Bll.Interfaces;
 using IpCommunicationSample.Common.BusinessTransactions;
 using IpCommunicationSample.Common.BusinessTransactions.Requests;
-using System;
 using System.Diagnostics;
-using Bodoconsult.App.Extensions;
-using Bodoconsult.NetworkCommunication.DataMessaging.DataBlocks;
 using IpCommunicationSample.Common.Extensions;
-using Microsoft.Diagnostics.Tracing;
 
 namespace IpClient.Bll.BusinessTransactions.Adapters;
 

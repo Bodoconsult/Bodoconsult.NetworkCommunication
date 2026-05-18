@@ -126,7 +126,42 @@ internal class TncpDataMessageCodecTests
             var tncpMsg = (TncpInboundDataMessage)result.DataMessage;
 
             Assert.That(tncpMsg.RawMessageData.Length, Is.Not.Zero);
-            Assert.That(tncpMsg.TelnetCommand, Is.EqualTo(cmd));
+            Assert.That(tncpMsg.TelnetCommand, Is.EqualTo($"<BEGIN>{cmd}"));
+        }
+    }
+
+    [Test]
+    public void DecodeDataMessage_ValidResponseCommandRealWorld1_MessageDecoded()
+    {
+        // Arrange 
+        var cmd = "set,stream,order,1,2,3,4";
+        var response = $"<BEGIN>{cmd}\n<END>\n";
+
+        var msg = Encoding.UTF8.GetBytes(response);
+
+        IDataBlockCodingProcessor dataBlockCodingProcessor = new DefaultDataBlockCodingProcessor();
+        dataBlockCodingProcessor.LoadDataBlockCodecs('x', new BasicDataBlockCodec());
+
+        var codec = new TncpDataMessageCodec(dataBlockCodingProcessor);
+
+        // Act  
+        var result = codec.DecodeDataMessage(msg);
+
+        // Assert
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(result, Is.Not.Null);
+            Assert.That(result.ErrorCode, Is.Zero);
+
+            ArgumentNullException.ThrowIfNull(result.DataMessage);
+
+            Assert.That(result.DataMessage, Is.Not.Null);
+
+            var tncpMsg = (TncpInboundDataMessage)result.DataMessage;
+
+            Assert.That(tncpMsg.RawMessageData.Length, Is.Not.Zero);
+            Assert.That(tncpMsg.TelnetCommand, Is.EqualTo($"<BEGIN>{cmd}"));
+            Assert.That(tncpMsg.TelnetAdditionalInfo, Is.Null);
         }
     }
 
@@ -184,7 +219,7 @@ internal class TncpDataMessageCodecTests
             var tncpMsg = (TncpInboundDataMessage)result.DataMessage;
 
             Assert.That(tncpMsg.RawMessageData.Length, Is.Not.Zero);
-            Assert.That(tncpMsg.TelnetCommand, Is.EqualTo(cmd));
+            Assert.That(tncpMsg.TelnetCommand, Is.EqualTo($"<BEGIN>{cmd}"));
             Assert.That(tncpMsg.TelnetAdditionalInfo, Is.EqualTo(error));
         }
     }
@@ -220,7 +255,7 @@ internal class TncpDataMessageCodecTests
             var tncpMsg = (TncpInboundDataMessage)result.DataMessage;
 
             Assert.That(tncpMsg.RawMessageData.Length, Is.Not.Zero);
-            Assert.That(tncpMsg.TelnetCommand, Is.EqualTo(cmd));
+            Assert.That(tncpMsg.TelnetCommand, Is.EqualTo($"<BEGIN>{cmd}"));
             Assert.That(tncpMsg.TelnetAdditionalInfo, Is.EqualTo(config));
         }
     }
@@ -256,7 +291,7 @@ internal class TncpDataMessageCodecTests
             var tncpMsg = (TncpInboundDataMessage)result.DataMessage;
 
             Assert.That(tncpMsg.RawMessageData.Length, Is.Not.Zero);
-            Assert.That(tncpMsg.TelnetCommand, Is.EqualTo(cmd));
+            Assert.That(tncpMsg.TelnetCommand, Is.EqualTo($"<BEGIN>{cmd}"));
             Assert.That(tncpMsg.TelnetAdditionalInfo, Is.EqualTo(config));
         }
     }
@@ -292,7 +327,7 @@ internal class TncpDataMessageCodecTests
             var tncpMsg = (TncpInboundDataMessage)result.DataMessage;
 
             Assert.That(tncpMsg.RawMessageData.Length, Is.Not.Zero);
-            Assert.That(tncpMsg.TelnetCommand, Is.EqualTo(cmd));
+            Assert.That(tncpMsg.TelnetCommand, Is.EqualTo($"<BEGIN>{cmd}"));
             Assert.That(tncpMsg.TelnetAdditionalInfo, Is.EqualTo(config));
         }
     }

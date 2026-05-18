@@ -13,7 +13,7 @@ public class DeviceStreamingStateBuilder : BaseNoActionStateMachineStateBuilder
     /// <summary>
     /// Allowed next states internal
     /// </summary>
-    public static readonly List<string> AllowedNextStatesInternal = [DefaultStateNames.DeviceStopStreamingState, DefaultStateNames.DeviceOfflineState];
+    public static readonly List<string> AllowedNextStatesInternal = [DefaultStateNames.DeviceStopMessagingState, DefaultStateNames.DeviceOfflineState];
 
     /// <summary>
     /// Default ctor
@@ -28,7 +28,7 @@ public class DeviceStreamingStateBuilder : BaseNoActionStateMachineStateBuilder
     /// <param name="config">Current state configuration</param>
     public override void ConfigureNoActionState(INoActionStateMachineState state, INoActionStateConfiguration config)
     {
-        state.InitialDeviceState = DefaultDeviceStates.DeviceStateReady;
+        state.InitialDeviceState = DefaultDeviceStates.DeviceMessagingRuns;
         state.InitialBusinessSubState = DefaultBusinessSubStates.NotSet;
 
         state.HandleAsyncMessageDelegate = config.HandleAsyncMessageDelegate;

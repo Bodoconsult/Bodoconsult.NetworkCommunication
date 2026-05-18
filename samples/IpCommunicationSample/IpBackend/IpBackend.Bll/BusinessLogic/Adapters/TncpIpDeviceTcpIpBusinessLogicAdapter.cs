@@ -2,13 +2,13 @@
 
 using Bodoconsult.App.Abstractions.Interfaces;
 using Bodoconsult.App.BusinessTransactions.Replies;
-using Bodoconsult.App.BusinessTransactions.RequestData;
 using Bodoconsult.App.Helpers;
 using Bodoconsult.App.Interfaces;
 using Bodoconsult.NetworkCommunication.BusinessLogicAdapters;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
 using Bodoconsult.NetworkCommunication.Helpers;
 using Bodoconsult.NetworkCommunication.Interfaces;
+using Bodoconsult.NetworkCommunication.OrderManagement.Configurations;
 using Bodoconsult.NetworkCommunication.OrderManagement.ParameterSets;
 using Bodoconsult.NetworkCommunication.StateManagement;
 using IpBackend.Bll.Interfaces;
@@ -133,7 +133,7 @@ public class TncpIpDeviceTcpIpBusinessLogicAdapter : BaseStateMachineDeviceBusin
 
             for (var index = 0; index < jobConfig.OrderConfigurations.Count; index++)
             {
-                CreateStartOrders(jobConfig, index, parameterSets, OrderFactory, "continious", startRequest);
+                CreateStartOrders(jobConfig, index, parameterSets, OrderFactory, startRequest);
             }
 
             // Now create the state
@@ -204,7 +204,7 @@ public class TncpIpDeviceTcpIpBusinessLogicAdapter : BaseStateMachineDeviceBusin
 
             for (var index = 0; index < jobConfig.OrderConfigurations.Count; index++)
             {
-                CreateStartOrders(jobConfig, index, parameterSets, OrderFactory, "snapshot", startRequest);
+                CreateStartOrders(jobConfig, index, parameterSets, OrderFactory, startRequest);
             }
 
             // Now create the state
@@ -228,7 +228,7 @@ public class TncpIpDeviceTcpIpBusinessLogicAdapter : BaseStateMachineDeviceBusin
     }
 
     private void CreateStartOrders(IJobStateConfiguration jobConfig, int index, List<IParameterSet> parameterSets,
-        IOrderFactory orderFactory, string mode, StartMessagingReportBusinessTransactionRequestData startRequest)
+        IOrderFactory orderFactory, StartMessagingReportBusinessTransactionRequestData startRequest)
     {
         var orderConfigName = jobConfig.OrderConfigurations[index];
         var orderConfig = orderFactory.GetConfiguration(orderConfigName);
@@ -244,6 +244,10 @@ public class TncpIpDeviceTcpIpBusinessLogicAdapter : BaseStateMachineDeviceBusin
             //    ps.TelnetCommand = "set,snapshot,4,4";   // 
             //    break;
             case 4:
+                if (orderConfig is OneRequestSpecNoOrOneStepOneAnswerConfiguration one)
+                {
+                    one.HandleRequestAnswerOnSuccessDelegate = HandleRequestAnswerOnSuccessDelegate;
+                }
                 ps.TelnetCommand = "show,streamconfig";   // 
                 break;
             case 3:
@@ -251,17 +255,62 @@ public class TncpIpDeviceTcpIpBusinessLogicAdapter : BaseStateMachineDeviceBusin
                 // 
                 break;
             case 2:
-                ps.TelnetCommand = $"set,stream,mode,{mode}";  // 
+                ps.TelnetCommand = $"set,stream,mode,{(startRequest.Snapshot ? "snapshot":  "continious")}";  // 
                 break;
             case 1:
                 ps.TelnetCommand = $"set,connection,{IpHelper.GetLocalIpAddress().MapToIPv4()},{UdpPort}";    // 
                 break;
             default:
-                ps.TelnetCommand = "set,stream,order,1";   // One channel
+                var param = GetPaths(startRequest);
+
+                ps.TelnetCommand = $"set,stream,order,{param}";   // One channel
                 break;
         }
 
         parameterSets.Add(ps);
+    }
+
+    private MessageHandlingResult HandleRequestAnswerOnSuccessDelegate(IInboundDataMessage? message, object? transportObject, IParameterSet? parameterSet)
+    {
+        if (message is TncpInboundDataMessage tncp)
+        {
+            return HandleTncpMessage(tncp);
+        }
+
+        return MessageHandlingResultHelper.Success();
+    }
+
+    /// <summary>
+    /// Get paths
+    /// </summary>
+    /// <param name="startRequest">Start request</param>
+    /// <returns>String with paths as required for Telnet command</returns>
+    public static string GetPaths(StartMessagingReportBusinessTransactionRequestData startRequest)
+    {
+        var paths = new List<string>();
+
+        if (startRequest.Channel1)
+        {
+            paths.Add("1");
+        }
+
+        if (startRequest.Channel2)
+        {
+            paths.Add("2");
+        }
+
+        if (startRequest.Channel3)
+        {
+            paths.Add("3");
+        }
+
+        if (startRequest.Channel4)
+        {
+            paths.Add("4");
+        }
+
+        var param = string.Join(',', paths);
+        return param;
     }
 
     /// <summary>
@@ -276,7 +325,7 @@ public class TncpIpDeviceTcpIpBusinessLogicAdapter : BaseStateMachineDeviceBusin
             ArgumentNullException.ThrowIfNull(StateFactory, "StateFactory is null. Call LoadStateFactory() before!");
             ArgumentNullException.ThrowIfNull(OrderFactory);
 
-            const string stateName = DefaultStateNames.DeviceStopStreamingState;
+            const string stateName = DefaultStateNames.DeviceStopMessagingState;
 
             // Get the state config
             var jobConfig = GetConfiguration(StateFactory, stateName);
@@ -332,7 +381,7 @@ public class TncpIpDeviceTcpIpBusinessLogicAdapter : BaseStateMachineDeviceBusin
             ArgumentNullException.ThrowIfNull(StateFactory, "StateFactory is null. Call LoadStateFactory() before!");
             ArgumentNullException.ThrowIfNull(OrderFactory);
 
-            const string stateName = DefaultStateNames.DeviceStopSnapshotState;
+            const string stateName = DefaultStateNames.DeviceStopMessagingState;
 
             // Get the state config
             var jobConfig = GetConfiguration(StateFactory, stateName);

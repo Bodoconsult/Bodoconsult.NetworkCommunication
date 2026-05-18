@@ -36,9 +36,9 @@ public static class DefaultStateNames
     public const string DeviceStreamingState = "DeviceStreamingState";
 
     /// <summary>
-    /// Device state stop streaming
+    /// Device state stop messaging
     /// </summary>
-    public const string DeviceStopStreamingState = "DeviceStopStreamingState";
+    public const string DeviceStopMessagingState = "DeviceStopMessagingState";
 
     /// <summary>
     /// Device state start snapshot
@@ -50,10 +50,10 @@ public static class DefaultStateNames
     /// </summary>
     public const string DeviceSnapshotState = "DeviceSnapshotState";
 
-    /// <summary>
-    /// Device state stop snapshot
-    /// </summary>
-    public const string DeviceStopSnapshotState = "DeviceStopSnapshotState";
+    ///// <summary>
+    ///// Device state stop snapshot
+    ///// </summary>
+    //public const string DeviceStopSnapshotState = "DeviceStopSnapshotState";
 }
 
 /// <summary>
@@ -92,9 +92,9 @@ public static class DefaultStateIds
     public const int DeviceStreamingState = 6;
 
     /// <summary>
-    /// ID of the device state stop streaming
+    /// ID of the device state stop messaging
     /// </summary>
-    public const int DeviceStopStreamingState = 7;
+    public const int DeviceStopMessagingState = 7;
 
     /// <summary>
     /// ID of the device state start snapshot
@@ -106,8 +106,8 @@ public static class DefaultStateIds
     /// </summary>
     public const int DeviceSnapshotState = 9;
 
-    /// <summary>
-    /// ID of the device state stop snapshot
-    /// </summary>
-    public const int DeviceStopSnapshotState = 10;
+    ///// <summary>
+    ///// ID of the device state stop snapshot
+    ///// </summary>
+    //public const int DeviceStopSnapshotState = 10;
 }

@@ -42,10 +42,9 @@ public class TncpStateMachineConfigurator : BaseStateMachineConfigurator
         AddDeviceReadyStateBuilder();
         AddDeviceStartStreamingStateBuilder();
         AddDeviceStreamingStateBuilder();
-        AddDeviceStopStreamingStateBuilder();
+        AddDeviceStopMessagingStateBuilder();
         AddDeviceStartSnapshotStateBuilder();
         AddDeviceSnapshotStateBuilder();
-        AddDeviceStopSnapshotStateBuilder();
     }
 
     private void AddDeviceInitStateBuilder()
@@ -67,24 +66,24 @@ public class TncpStateMachineConfigurator : BaseStateMachineConfigurator
         StateFactory.RegisterConfiguration(config);
     }
 
-    private void AddDeviceStopSnapshotStateBuilder()
-    {
-        var config = new JobStateConfiguration(DefaultStateNames.DeviceStopSnapshotState, new DeviceStopSnapshotStateBuilder())
-        {
-            CurrentContext = DeviceBusinessLogicAdapter.Device,
-            HandleAsyncMessageDelegate = _deviceBusinessLogicAdapter.DefaultHandleAsyncMessage,
-            HandleComDevCloseDelegate = _deviceBusinessLogicAdapter.DefaultHandleComDevClose,
-            HandleErrorMessageDelegate = _deviceBusinessLogicAdapter.DefaultHandleErrorMessage,
-            HandleRegularStateRequestAnswerDelegate = DelegateHelper.HandleRegularStateRequestAnswerDelegate,
-            PrepareRegularStateRequestDelegate = DelegateHelper.PrepareRegularStateRequestDelegate,
-            OrderFinishedSucessfullyDelegate = DelegateHelper.OrderFinishedSucessfullyDelegate,
-            OrderFinishedUnsucessfullyDelegate = _deviceBusinessLogicAdapter.StopMessagingUnsuccessfully,
-        };
+    //private void AddDeviceStopSnapshotStateBuilder()
+    //{
+    //    var config = new JobStateConfiguration(DefaultStateNames.DeviceStopSnapshotState, new DeviceStopSnapshotStateBuilder())
+    //    {
+    //        CurrentContext = DeviceBusinessLogicAdapter.Device,
+    //        HandleAsyncMessageDelegate = _deviceBusinessLogicAdapter.DefaultHandleAsyncMessage,
+    //        HandleComDevCloseDelegate = _deviceBusinessLogicAdapter.DefaultHandleComDevClose,
+    //        HandleErrorMessageDelegate = _deviceBusinessLogicAdapter.DefaultHandleErrorMessage,
+    //        HandleRegularStateRequestAnswerDelegate = DelegateHelper.HandleRegularStateRequestAnswerDelegate,
+    //        PrepareRegularStateRequestDelegate = DelegateHelper.PrepareRegularStateRequestDelegate,
+    //        OrderFinishedSucessfullyDelegate = DelegateHelper.OrderFinishedSucessfullyDelegate,
+    //        OrderFinishedUnsucessfullyDelegate = _deviceBusinessLogicAdapter.StopMessagingUnsuccessfully,
+    //    };
 
-        config.OrderConfigurations.Add("NoAnswerTncpOrderConfiguration");
+    //    config.OrderConfigurations.Add("NoAnswerTncpOrderConfiguration");
 
-        StateFactory.RegisterConfiguration(config);
-    }
+    //    StateFactory.RegisterConfiguration(config);
+    //}
 
     private void AddDeviceSnapshotStateBuilder()
     {
@@ -121,9 +120,9 @@ public class TncpStateMachineConfigurator : BaseStateMachineConfigurator
         StateFactory.RegisterConfiguration(config);
     }
 
-    private void AddDeviceStopStreamingStateBuilder()
+    private void AddDeviceStopMessagingStateBuilder()
     {
-        var config = new JobStateConfiguration(DefaultStateNames.DeviceStopStreamingState, new DeviceStopStreamingStateBuilder())
+        var config = new JobStateConfiguration(DefaultStateNames.DeviceStopMessagingState, new DeviceStopMessagingStateBuilder())
         {
             CurrentContext = DeviceBusinessLogicAdapter.Device,
             HandleAsyncMessageDelegate = _deviceBusinessLogicAdapter.DefaultHandleAsyncMessage,

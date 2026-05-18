@@ -31,4 +31,14 @@ public static class DefaultBusinessSubStates
     /// Device connected
     /// </summary>
     public static BusinessSubState Connected = new(4, "Connected");
+
+    /// <summary>
+    /// Try to stop messaging
+    /// </summary>
+    public static BusinessSubState TryToStopMessaging = new(5, "Try to stop messaging");
+
+    /// <summary>
+    /// Try to stop messaging
+    /// </summary>
+    public static BusinessSubState TryToStartMessaging = new(6, "Try to start messaging");
 }

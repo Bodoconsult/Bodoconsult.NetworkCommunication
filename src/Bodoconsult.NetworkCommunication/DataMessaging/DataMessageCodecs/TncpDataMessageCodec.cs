@@ -134,9 +134,9 @@ public class TncpDataMessageCodec : BaseDataMessageCodec
         }
 
         // Additional data
-        var block = s.Substring(7, i - 7);
+        var block = s.Substring(0, i);
 
-        i = block.IndexOf("<", StringComparison.InvariantCultureIgnoreCase);
+        i = block.IndexOf("<", 1, StringComparison.InvariantCultureIgnoreCase);
         if (i == -1)
         {
             dataMessage.TelnetCommand = block;

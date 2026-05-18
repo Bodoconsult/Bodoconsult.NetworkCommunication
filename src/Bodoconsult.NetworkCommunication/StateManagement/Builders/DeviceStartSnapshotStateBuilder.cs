@@ -29,7 +29,7 @@ public class DeviceStartSnapshotStateBuilder : BaseJobStateMachineStateBuilder
     public override void ConfigureOrderBasedActionState(IJobStateMachineState state, IJobStateConfiguration config)
     {
         state.InitialDeviceState = DefaultDeviceStates.DeviceStateOnline;
-        state.InitialBusinessSubState = DefaultBusinessSubStates.TryToConnect;
+        state.InitialBusinessSubState = DefaultBusinessSubStates.TryToStartMessaging;
 
         state.HandleAsyncMessageDelegate = config.HandleAsyncMessageDelegate;
         state.HandleComDevCloseDelegate = config.HandleComDevCloseDelegate;

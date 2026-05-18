@@ -22,7 +22,6 @@ public class TncpOrderBuilder : BaseOrderBuilder
     public TncpOrderBuilder() : base(typeof(TncpParameterSet), BuiltinOrders.TncpOrder)
     { }
 
-
     /// <summary>
     /// Configure the order. Implementation of this method may require to add dependencies to your business logic layer
     /// </summary>
@@ -32,8 +31,7 @@ public class TncpOrderBuilder : BaseOrderBuilder
     {
         if (config is not OneRequestSpecNoOrOneStepOneAnswerConfiguration oc)
         {
-            throw new ArgumentException(
-                $"Config must be {nameof(OneRequestSpecNoOrOneStepOneAnswerConfiguration)} but was {{config.GetType().Name}}");
+            throw new ArgumentException($"Config must be {nameof(OneRequestSpecNoOrOneStepOneAnswerConfiguration)} but was {config.GetType().Name}");
         }
 
         // Tracing

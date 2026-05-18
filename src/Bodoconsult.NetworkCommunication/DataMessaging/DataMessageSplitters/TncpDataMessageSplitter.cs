@@ -72,6 +72,9 @@ public class TncpDataMessageSplitter : IDataMessageSplitter
         byte firstByte;
 
         var posEndByte = 0;
+
+        var isReply = false;
+
         for (var i = 0; i < buffer.Length; i++)
         {
             firstByte = buffer.Slice(i, 1).FirstSpan[0];
@@ -84,9 +87,25 @@ public class TncpDataMessageSplitter : IDataMessageSplitter
                 return true;
             }
 
+            if (i == 0)
+            {
+                isReply = CheckIfReply(buffer, i);
+            }
+
             if (firstByte == DeviceCommunicationBasics.Lf)
             {
-                break;
+                if (isReply)
+                {
+                    if (CheckIfEnd(buffer, i))
+                    {
+                        break;
+                    }
+                }
+                else
+                {
+                    break;
+                }
+
             }
 
             posEndByte++;
@@ -120,6 +139,82 @@ public class TncpDataMessageSplitter : IDataMessageSplitter
 
         command = default;
         return false;
+    }
+
+    /// <summary>
+    /// Check if the buffer end with END before LF
+    /// </summary>
+    /// <param name="buffer">Current buffer</param>
+    /// <param name="i">Position of LF</param>
+    /// <returns>True if the chars before LF are END</returns>
+    public static bool CheckIfEnd(ReadOnlySequence<byte> buffer, int i)
+    {
+        if (i - 6 < 0)
+        {
+            return false;
+        }
+
+        if (buffer.Slice(i - 5, 1).FirstSpan[0] != 0x3c) // <
+        {
+            return false;
+        }
+
+        if (buffer.Slice(i - 4, 1).FirstSpan[0] != 0x45) // E
+        {
+            return false;
+        }
+
+        if (buffer.Slice(i - 3, 1).FirstSpan[0] != 0x4e) // N
+        {
+            return false;
+        }
+
+        if (buffer.Slice(i - 2, 1).FirstSpan[0] != 0x44) // D
+        {
+            return false;
+        }
+
+        if (buffer.Slice(i - 1, 1).FirstSpan[0] != 0x3e) // <
+        {
+            return false;
+        }
+
+        return true;
+    }
+
+    /// <summary>
+    /// Check if the buffer starts with BEGIN
+    /// </summary>
+    /// <param name="buffer">Current buffer</param>
+    /// <param name="i">Position</param>
+    /// <returns>True if the chars after are BEGIN</returns>
+    public static bool CheckIfReply(ReadOnlySequence<byte> buffer, int i)
+    {
+        if (buffer.Slice(i, 1).FirstSpan[0] != 0x3c) // <
+        {
+            return false;
+        }
+        if (buffer.Slice(i + 1, 1).FirstSpan[0] != 0x42) // B
+        {
+            return false;
+        }
+        if (buffer.Slice(i + 2, 1).FirstSpan[0] != 0x45) // E
+        {
+            return false;
+        }
+        if (buffer.Slice(i + 3, 1).FirstSpan[0] != 0x47) // G
+        {
+            return false;
+        }
+        if (buffer.Slice(i + 4, 1).FirstSpan[0] != 0x49) // I
+        {
+            return false;
+        }
+        if (buffer.Slice(i + 5, 1).FirstSpan[0] != 0x4e) // N
+        {
+            return false;
+        }
+        return buffer.Slice(i + 6, 1).FirstSpan[0] == 0x3e; // >
     }
 
     /// <summary>

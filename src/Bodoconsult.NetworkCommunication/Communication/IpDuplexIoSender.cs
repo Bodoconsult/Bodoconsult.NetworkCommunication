@@ -83,6 +83,10 @@ public class IpDuplexIoSender : BaseDuplexIoSender
 
                     if (isSent)
                     {
+#if DEBUG
+                        DataMessagingConfig.MonitorLogger.LogInformation($"Sent: {message.ToInfoString()}");
+#endif
+
                         break;
                     }
                 }

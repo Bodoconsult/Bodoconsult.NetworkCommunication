@@ -11,10 +11,7 @@ using Bodoconsult.NetworkCommunication.NetworkCommands;
 using IpCommunicationSample.Common;
 using IpDevice.Bll.BusinessTransactions;
 using IpDevice.Bll.Interfaces;
-using System.Collections.Immutable;
 using System.Text;
-using System.Xml;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace IpDevice.Bll.BusinessLogic.Adapters;
 
@@ -135,7 +132,7 @@ public class TncpBackendTcpIpBusinessLogicAdapter : BaseSimpleDeviceBusinessLogi
     public StringBuilder CreateTncpReply(string telnetCommand)
     {
         var cmd = new StringBuilder();
-        cmd.Append($"<BEGIN>{telnetCommand}\u0010");
+        cmd.Append($"<BEGIN>{telnetCommand}\n");
 
         if (telnetCommand.StartsWith("show,streamconfig", StringComparison.InvariantCultureIgnoreCase))
         {
@@ -145,6 +142,8 @@ public class TncpBackendTcpIpBusinessLogicAdapter : BaseSimpleDeviceBusinessLogi
             {
                 cmd.Append($"0x{b:X}");
             }
+
+            cmd.Append('\n');
         }
 
         cmd.Append("<END>");

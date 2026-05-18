@@ -18,14 +18,14 @@ internal class DeviceStopStreamingStateBuilderTests
         // Arrange 
 
         // Act  
-        var builder = new DeviceStopStreamingStateBuilder();
+        var builder = new DeviceStopMessagingStateBuilder();
 
         // Assert
         using (Assert.EnterMultipleScope())
         {
             Assert.That(string.IsNullOrEmpty(builder.StateName), Is.False);
-            Assert.That(builder.StateName, Is.EqualTo(DefaultStateNames.DeviceStopStreamingState));
-            Assert.That(builder.StateId, Is.EqualTo(DefaultStateIds.DeviceStopStreamingState));
+            Assert.That(builder.StateName, Is.EqualTo(DefaultStateNames.DeviceStopMessagingState));
+            Assert.That(builder.StateId, Is.EqualTo(DefaultStateIds.DeviceStopMessagingState));
         }
     }
 
@@ -33,7 +33,7 @@ internal class DeviceStopStreamingStateBuilderTests
     public void BuildState_WrongStatenameInConfig_ThrowsException()
     {
         // Arrange 
-        var builder = new DeviceStopStreamingStateBuilder();
+        var builder = new DeviceStopMessagingStateBuilder();
 
         var config = new OrderlessActionStateConfiguration(DefaultStateNames.DeviceOnlineState, builder);
 
@@ -50,11 +50,11 @@ internal class DeviceStopStreamingStateBuilderTests
         // Arrange 
         var device = TestDataHelper.CreateStateMachineDevice(); 
         
-        var builder = new DeviceStopStreamingStateBuilder();
+        var builder = new DeviceStopMessagingStateBuilder();
 
         var ps = new SdcpParameterSet();
 
-        var config = new JobStateConfiguration(DefaultStateNames.DeviceStopStreamingState, builder)
+        var config = new JobStateConfiguration(DefaultStateNames.DeviceStopMessagingState, builder)
         {
             CurrentContext = device,
             HandleAsyncMessageDelegate = DelegateHelper.HandleAsyncMessageDelegate,
@@ -80,7 +80,7 @@ internal class DeviceStopStreamingStateBuilderTests
         {
             Assert.That(state.CurrentContext, Is.EqualTo(device));
             Assert.That(state, Is.Not.Null);
-            Assert.That(state.Id, Is.EqualTo(DefaultStateIds.DeviceStopStreamingState));
+            Assert.That(state.Id, Is.EqualTo(DefaultStateIds.DeviceStopMessagingState));
 
             Assert.That(state.HandleAsyncMessageDelegate, Is.Not.Null);
             Assert.That(state.HandleComDevCloseDelegate, Is.Not.Null);
@@ -105,9 +105,9 @@ internal class DeviceStopStreamingStateBuilderTests
         var ps = new TncpParameterSet();
         var ps2 = new TncpParameterSet();
 
-        var builder = new DeviceStopStreamingStateBuilder();
+        var builder = new DeviceStopMessagingStateBuilder();
 
-        var config = new JobStateConfiguration(DefaultStateNames.DeviceStopStreamingState, builder)
+        var config = new JobStateConfiguration(DefaultStateNames.DeviceStopMessagingState, builder)
         {
             CurrentContext = device,
             HandleAsyncMessageDelegate = DelegateHelper.HandleAsyncMessageDelegate,

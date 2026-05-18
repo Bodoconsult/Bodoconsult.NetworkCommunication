@@ -1,16 +1,11 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
-using IpDevice.Bll.BusinessLogic.Adapters;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Bodoconsult.App.BusinessTransactions;
 using Bodoconsult.NetworkCommunication.ClientNotifications;
 using Bodoconsult.NetworkCommunication.Devices;
 using Bodoconsult.NetworkCommunication.Tests.Helpers;
+using IpDevice.Bll.BusinessLogic.Adapters;
+using System.Diagnostics;
 
 namespace IpCommunicationSampleTests.Device.Adapter
 {
@@ -61,6 +56,5 @@ namespace IpCommunicationSampleTests.Device.Adapter
 
             Debug.Print(result.ToString());
         }
-
     }
 }

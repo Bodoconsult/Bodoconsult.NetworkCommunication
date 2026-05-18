@@ -6,9 +6,9 @@ using Bodoconsult.NetworkCommunication.Interfaces;
 namespace Bodoconsult.NetworkCommunication.StateManagement.Builders;
 
 /// <summary>
-/// Builder for the default state DeviceStopStreamingState
+/// Builder for the default state DeviceStopMessagingState
 /// </summary>
-public class DeviceStopStreamingStateBuilder : BaseJobStateMachineStateBuilder
+public class DeviceStopMessagingStateBuilder : BaseJobStateMachineStateBuilder
 {
     /// <summary>
     /// Allowed next states internal
@@ -18,7 +18,7 @@ public class DeviceStopStreamingStateBuilder : BaseJobStateMachineStateBuilder
     /// <summary>
     /// Default ctor
     /// </summary>
-    public DeviceStopStreamingStateBuilder() : base(DefaultStateIds.DeviceStopStreamingState, DefaultStateNames.DeviceStopStreamingState)
+    public DeviceStopMessagingStateBuilder() : base(DefaultStateIds.DeviceStopMessagingState, DefaultStateNames.DeviceStopMessagingState)
     { }
 
     /// <summary>
@@ -29,7 +29,7 @@ public class DeviceStopStreamingStateBuilder : BaseJobStateMachineStateBuilder
     public override void ConfigureOrderBasedActionState(IJobStateMachineState state, IJobStateConfiguration config)
     {
         state.InitialDeviceState = DefaultDeviceStates.DeviceStateOnline;
-        state.InitialBusinessSubState = DefaultBusinessSubStates.TryToConnect;
+        state.InitialBusinessSubState = DefaultBusinessSubStates.TryToStopMessaging;
 
         state.HandleAsyncMessageDelegate = config.HandleAsyncMessageDelegate;
         state.HandleComDevCloseDelegate = config.HandleComDevCloseDelegate;

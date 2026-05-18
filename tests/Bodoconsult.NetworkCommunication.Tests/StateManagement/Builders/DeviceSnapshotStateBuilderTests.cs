@@ -85,7 +85,7 @@ internal class DeviceSnapshotStateBuilderTests
             Assert.That(state.PrepareRegularStateRequestDelegate, Is.Not.Null);
 
             Assert.That(state.AllowedNextStates, Does.Contain(DefaultStateNames.DeviceOfflineState));
-            Assert.That(state.AllowedNextStates, Does.Contain(DefaultStateNames.DeviceStopSnapshotState));
+            Assert.That(state.AllowedNextStates, Does.Contain(DefaultStateNames.DeviceStopMessagingState));
 
         }
     }

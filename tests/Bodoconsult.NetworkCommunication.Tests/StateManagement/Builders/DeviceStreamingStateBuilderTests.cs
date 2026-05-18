@@ -82,7 +82,7 @@ internal class DeviceStreamingStateBuilderTests
             //Assert.That(state.OrderFinishedUnsucessfullyDelegate, Is.Not.Null);
 
             Assert.That(state.AllowedNextStates, Does.Contain(DefaultStateNames.DeviceOfflineState));
-            Assert.That(state.AllowedNextStates, Does.Contain(DefaultStateNames.DeviceStopStreamingState));
+            Assert.That(state.AllowedNextStates, Does.Contain(DefaultStateNames.DeviceStopMessagingState));
         }
     }
 }

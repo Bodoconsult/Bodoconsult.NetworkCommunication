@@ -23,4 +23,9 @@ public static class DefaultDeviceStates
     /// </summary>
     public static DeviceState DeviceStateReady = new(3, "Device is ready for order processing");
 
+    /// <summary>
+    /// Device is running messaging. Hardware code: not existing 
+    /// </summary>
+    public static DeviceState DeviceMessagingRuns = new(1, "Messaging is running");
+
 }

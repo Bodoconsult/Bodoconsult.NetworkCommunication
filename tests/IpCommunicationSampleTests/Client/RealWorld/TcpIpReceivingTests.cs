@@ -282,10 +282,10 @@ internal class TcpIpReceivingTests
 
         //
 
-        //AsyncHelper.FireAndForget(() =>
-        //{
-        //    adapter.RequestDeviceStopStreamingState(request2);
-        //});
+        AsyncHelper.FireAndForget(() =>
+        {
+            adapter.RequestDeviceStopMessagingState(request2);
+        });
 
         //Wait.Until(() => _backendManager.IpDeviceTcpIp.Device.CurrentState.Id == DefaultStateIds.DeviceReadyState, 10000);
 

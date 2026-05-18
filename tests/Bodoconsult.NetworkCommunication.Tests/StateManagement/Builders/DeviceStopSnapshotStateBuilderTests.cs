@@ -1,136 +1,136 @@
-﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
+﻿//// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
-using Bodoconsult.NetworkCommunication.Helpers;
-using Bodoconsult.NetworkCommunication.Interfaces;
-using Bodoconsult.NetworkCommunication.OrderManagement.ParameterSets;
-using Bodoconsult.NetworkCommunication.StateManagement.Builders;
-using Bodoconsult.NetworkCommunication.StateManagement.Configurations;
-using Bodoconsult.NetworkCommunication.Tests.Helpers;
+//using Bodoconsult.NetworkCommunication.Helpers;
+//using Bodoconsult.NetworkCommunication.Interfaces;
+//using Bodoconsult.NetworkCommunication.OrderManagement.ParameterSets;
+//using Bodoconsult.NetworkCommunication.StateManagement.Builders;
+//using Bodoconsult.NetworkCommunication.StateManagement.Configurations;
+//using Bodoconsult.NetworkCommunication.Tests.Helpers;
 
-namespace Bodoconsult.NetworkCommunication.Tests.StateManagement.Builders;
+//namespace Bodoconsult.NetworkCommunication.Tests.StateManagement.Builders;
 
-[TestFixture]
-internal class DeviceStopSnapshotStateBuilderTests
-{
-    [Test]
-    public void Ctor_ValidSetup_PropsSetCorrectly()
-    {
-        // Arrange 
+//[TestFixture]
+//internal class DeviceStopSnapshotStateBuilderTests
+//{
+//    [Test]
+//    public void Ctor_ValidSetup_PropsSetCorrectly()
+//    {
+//        // Arrange 
 
-        // Act  
-        var builder = new DeviceStopSnapshotStateBuilder();
+//        // Act  
+//        var builder = new DeviceStopSnapshotStateBuilder();
 
-        // Assert
-        using (Assert.EnterMultipleScope())
-        {
-            Assert.That(string.IsNullOrEmpty(builder.StateName), Is.False);
-            Assert.That(builder.StateName, Is.EqualTo(DefaultStateNames.DeviceStopSnapshotState));
-            Assert.That(builder.StateId, Is.EqualTo(DefaultStateIds.DeviceStopSnapshotState));
-        }
-    }
+//        // Assert
+//        using (Assert.EnterMultipleScope())
+//        {
+//            Assert.That(string.IsNullOrEmpty(builder.StateName), Is.False);
+//            Assert.That(builder.StateName, Is.EqualTo(DefaultStateNames.DeviceStopMessagingState));
+//            Assert.That(builder.StateId, Is.EqualTo(DefaultStateIds.DeviceStopMessagingState));
+//        }
+//    }
 
-    [Test]
-    public void BuildState_WrongStatenameInConfig_ThrowsException()
-    {
-        // Arrange 
-        var builder = new DeviceStopStreamingStateBuilder();
+//    [Test]
+//    public void BuildState_WrongStatenameInConfig_ThrowsException()
+//    {
+//        // Arrange 
+//        var builder = new DeviceStopStreamingStateBuilder();
 
-        var config = new OrderlessActionStateConfiguration(DefaultStateNames.DeviceOnlineState, builder);
+//        var config = new OrderlessActionStateConfiguration(DefaultStateNames.DeviceOnlineState, builder);
 
-        // Act and assert
-        Assert.Throws<ArgumentException>(() =>
-        {
-            builder.BuildState(config);
-        });
-    }
+//        // Act and assert
+//        Assert.Throws<ArgumentException>(() =>
+//        {
+//            builder.BuildState(config);
+//        });
+//    }
 
-    [Test]
-    public void BuildState_ValidSetup_StateBuilded()
-    {
-        // Arrange 
-        var device = TestDataHelper.CreateStateMachineDevice(); 
+//    [Test]
+//    public void BuildState_ValidSetup_StateBuilded()
+//    {
+//        // Arrange 
+//        var device = TestDataHelper.CreateStateMachineDevice(); 
         
-        var builder = new DeviceStopStreamingStateBuilder();
+//        var builder = new DeviceStopStreamingStateBuilder();
 
-        var ps = new SdcpParameterSet();
+//        var ps = new SdcpParameterSet();
 
-        var config = new JobStateConfiguration(DefaultStateNames.DeviceStopStreamingState, builder)
-        {
-            CurrentContext = device,
-            HandleAsyncMessageDelegate = DelegateHelper.HandleAsyncMessageDelegate,
-            HandleComDevCloseDelegate = DelegateHelper.HandleComDevCloseDelegate,
-            HandleErrorMessageDelegate = DelegateHelper.HandleErrorMessageDelegate,
-            HandleRegularStateRequestAnswerDelegate = DelegateHelper.HandleRegularStateRequestAnswerDelegate,
-            PrepareRegularStateRequestDelegate = DelegateHelper.PrepareRegularStateRequestDelegate,
-            OrderFinishedSucessfullyDelegate = DelegateHelper.OrderFinishedSucessfullyDelegate,
-            OrderFinishedUnsucessfullyDelegate = DelegateHelper.OrderFinishedUnsucessfullyDelegate
-        };
+//        var config = new JobStateConfiguration(DefaultStateNames.DeviceStopMessagingState, builder)
+//        {
+//            CurrentContext = device,
+//            HandleAsyncMessageDelegate = DelegateHelper.HandleAsyncMessageDelegate,
+//            HandleComDevCloseDelegate = DelegateHelper.HandleComDevCloseDelegate,
+//            HandleErrorMessageDelegate = DelegateHelper.HandleErrorMessageDelegate,
+//            HandleRegularStateRequestAnswerDelegate = DelegateHelper.HandleRegularStateRequestAnswerDelegate,
+//            PrepareRegularStateRequestDelegate = DelegateHelper.PrepareRegularStateRequestDelegate,
+//            OrderFinishedSucessfullyDelegate = DelegateHelper.OrderFinishedSucessfullyDelegate,
+//            OrderFinishedUnsucessfullyDelegate = DelegateHelper.OrderFinishedUnsucessfullyDelegate
+//        };
 
-        config.OrderConfigurations.Add($"{BuiltinOrders.TncpOrder}Configuration");
-        config.OrderConfigurations.Add($"{BuiltinOrders.TncpOrder}Configuration");
+//        config.OrderConfigurations.Add($"{BuiltinOrders.TncpOrder}Configuration");
+//        config.OrderConfigurations.Add($"{BuiltinOrders.TncpOrder}Configuration");
 
-        config.ParameterSets.Add(ps);
-        config.ParameterSets.Add(ps);
+//        config.ParameterSets.Add(ps);
+//        config.ParameterSets.Add(ps);
 
-        // Act  
-        var state = (IOrderBasedActionStateMachineState)builder.BuildState(config);
+//        // Act  
+//        var state = (IOrderBasedActionStateMachineState)builder.BuildState(config);
 
-        // Assert
-        using (Assert.EnterMultipleScope())
-        {
-            Assert.That(state.CurrentContext, Is.EqualTo(device));
-            Assert.That(state, Is.Not.Null);
-            Assert.That(state.Id, Is.EqualTo(builder.StateId));
+//        // Assert
+//        using (Assert.EnterMultipleScope())
+//        {
+//            Assert.That(state.CurrentContext, Is.EqualTo(device));
+//            Assert.That(state, Is.Not.Null);
+//            Assert.That(state.Id, Is.EqualTo(builder.StateId));
 
-            Assert.That(state.HandleAsyncMessageDelegate, Is.Not.Null);
-            Assert.That(state.HandleComDevCloseDelegate, Is.Not.Null);
-            Assert.That(state.HandleErrorMessageDelegate, Is.Not.Null);
-            Assert.That(state.HandleRegularStateRequestAnswerDelegate, Is.Not.Null);
-            Assert.That(state.PrepareRegularStateRequestDelegate, Is.Not.Null);
+//            Assert.That(state.HandleAsyncMessageDelegate, Is.Not.Null);
+//            Assert.That(state.HandleComDevCloseDelegate, Is.Not.Null);
+//            Assert.That(state.HandleErrorMessageDelegate, Is.Not.Null);
+//            Assert.That(state.HandleRegularStateRequestAnswerDelegate, Is.Not.Null);
+//            Assert.That(state.PrepareRegularStateRequestDelegate, Is.Not.Null);
 
-            Assert.That(state.OrderFinishedSucessfullyDelegate, Is.Not.Null);
-            Assert.That(state.OrderFinishedUnsucessfullyDelegate, Is.Not.Null);
-        }
-    }
+//            Assert.That(state.OrderFinishedSucessfullyDelegate, Is.Not.Null);
+//            Assert.That(state.OrderFinishedUnsucessfullyDelegate, Is.Not.Null);
+//        }
+//    }
 
-    [Test]
-    public void InitiateState_ValidSetup_StateBuilded()
-    {
-        // Arrange 
-        var device = TestDataHelper.CreateStateMachineDevice();
+//    [Test]
+//    public void InitiateState_ValidSetup_StateBuilded()
+//    {
+//        // Arrange 
+//        var device = TestDataHelper.CreateStateMachineDevice();
 
-        var ps = new TncpParameterSet();
-        var ps2 = new TncpParameterSet();
+//        var ps = new TncpParameterSet();
+//        var ps2 = new TncpParameterSet();
 
-        var builder = new DeviceStopSnapshotStateBuilder();
+//        var builder = new DeviceStopSnapshotStateBuilder();
 
-        var config = new JobStateConfiguration(DefaultStateNames.DeviceStopSnapshotState, builder)
-        {
-            CurrentContext = device,
-            HandleAsyncMessageDelegate = DelegateHelper.HandleAsyncMessageDelegate,
-            HandleComDevCloseDelegate = DelegateHelper.HandleComDevCloseDelegate,
-            HandleErrorMessageDelegate = DelegateHelper.HandleErrorMessageDelegate,
-            HandleRegularStateRequestAnswerDelegate = DelegateHelper.HandleRegularStateRequestAnswerDelegate,
-            PrepareRegularStateRequestDelegate = DelegateHelper.PrepareRegularStateRequestDelegate,
-            OrderFinishedSucessfullyDelegate = DelegateHelper.OrderFinishedSucessfullyDelegate,
-            OrderFinishedUnsucessfullyDelegate = DelegateHelper.OrderFinishedUnsucessfullyDelegate,
-        };
+//        var config = new JobStateConfiguration(DefaultStateNames.DeviceStopSnapshotState, builder)
+//        {
+//            CurrentContext = device,
+//            HandleAsyncMessageDelegate = DelegateHelper.HandleAsyncMessageDelegate,
+//            HandleComDevCloseDelegate = DelegateHelper.HandleComDevCloseDelegate,
+//            HandleErrorMessageDelegate = DelegateHelper.HandleErrorMessageDelegate,
+//            HandleRegularStateRequestAnswerDelegate = DelegateHelper.HandleRegularStateRequestAnswerDelegate,
+//            PrepareRegularStateRequestDelegate = DelegateHelper.PrepareRegularStateRequestDelegate,
+//            OrderFinishedSucessfullyDelegate = DelegateHelper.OrderFinishedSucessfullyDelegate,
+//            OrderFinishedUnsucessfullyDelegate = DelegateHelper.OrderFinishedUnsucessfullyDelegate,
+//        };
 
-        config.OrderConfigurations.Add($"{BuiltinOrders.TncpOrder}Configuration");
-        config.OrderConfigurations.Add($"{BuiltinOrders.TncpOrder}Configuration");
+//        config.OrderConfigurations.Add($"{BuiltinOrders.TncpOrder}Configuration");
+//        config.OrderConfigurations.Add($"{BuiltinOrders.TncpOrder}Configuration");
 
-        config.ParameterSets.Add(ps);
-        config.ParameterSets.Add(ps2);
+//        config.ParameterSets.Add(ps);
+//        config.ParameterSets.Add(ps2);
 
-        var state = (IOrderBasedActionStateMachineState)builder.BuildState(config);
+//        var state = (IOrderBasedActionStateMachineState)builder.BuildState(config);
 
-        // Act  
-        state.InitiateState();
+//        // Act  
+//        state.InitiateState();
 
-        // Assert
-        using (Assert.EnterMultipleScope())
-        {
-            Assert.That(state.Orders.Count, Is.EqualTo(state.OrderConfigurations.Count));
-        }
-    }
-}
+//        // Assert
+//        using (Assert.EnterMultipleScope())
+//        {
+//            Assert.That(state.Orders.Count, Is.EqualTo(state.OrderConfigurations.Count));
+//        }
+//    }
+//}
