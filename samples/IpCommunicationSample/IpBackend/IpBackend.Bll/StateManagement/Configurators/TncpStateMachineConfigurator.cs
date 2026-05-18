@@ -78,7 +78,7 @@ public class TncpStateMachineConfigurator : BaseStateMachineConfigurator
             HandleRegularStateRequestAnswerDelegate = DelegateHelper.HandleRegularStateRequestAnswerDelegate,
             PrepareRegularStateRequestDelegate = DelegateHelper.PrepareRegularStateRequestDelegate,
             OrderFinishedSucessfullyDelegate = DelegateHelper.OrderFinishedSucessfullyDelegate,
-            OrderFinishedUnsucessfullyDelegate = _deviceBusinessLogicAdapter.StopSnapshotUnsuccessfully,
+            OrderFinishedUnsucessfullyDelegate = _deviceBusinessLogicAdapter.StopMessagingUnsuccessfully,
         };
 
         config.OrderConfigurations.Add("NoAnswerTncpOrderConfiguration");
@@ -108,7 +108,7 @@ public class TncpStateMachineConfigurator : BaseStateMachineConfigurator
             HandleRegularStateRequestAnswerDelegate = DelegateHelper.HandleRegularStateRequestAnswerDelegate,
             PrepareRegularStateRequestDelegate = DelegateHelper.PrepareRegularStateRequestDelegate,
             OrderFinishedSucessfullyDelegate = DelegateHelper.OrderFinishedSucessfullyDelegate,
-            OrderFinishedUnsucessfullyDelegate = _deviceBusinessLogicAdapter.StartSnapshotUnsuccessfully,
+            OrderFinishedUnsucessfullyDelegate = _deviceBusinessLogicAdapter.StartMessagingUnsuccessfully,
         };
 
         config.OrderConfigurations.Add("TncpOrderConfiguration");
@@ -132,7 +132,7 @@ public class TncpStateMachineConfigurator : BaseStateMachineConfigurator
             HandleRegularStateRequestAnswerDelegate = DelegateHelper.HandleRegularStateRequestAnswerDelegate,
             PrepareRegularStateRequestDelegate = DelegateHelper.PrepareRegularStateRequestDelegate,
             OrderFinishedSucessfullyDelegate = DelegateHelper.OrderFinishedSucessfullyDelegate,
-            OrderFinishedUnsucessfullyDelegate = _deviceBusinessLogicAdapter.StopStreamingUnsuccessfully,
+            OrderFinishedUnsucessfullyDelegate = _deviceBusinessLogicAdapter.StopMessagingUnsuccessfully,
         };
 
         config.OrderConfigurations.Add("NoAnswerTncpOrderConfiguration");
@@ -162,7 +162,7 @@ public class TncpStateMachineConfigurator : BaseStateMachineConfigurator
             HandleRegularStateRequestAnswerDelegate = DelegateHelper.HandleRegularStateRequestAnswerDelegate,
             PrepareRegularStateRequestDelegate = DelegateHelper.PrepareRegularStateRequestDelegate,
             OrderFinishedSucessfullyDelegate = DelegateHelper.OrderFinishedSucessfullyDelegate,
-            OrderFinishedUnsucessfullyDelegate = _deviceBusinessLogicAdapter.StartStreamingUnsuccessfully,
+            OrderFinishedUnsucessfullyDelegate = _deviceBusinessLogicAdapter.StartMessagingUnsuccessfully,
         };
 
         // Two orders required because of two telent commands to send

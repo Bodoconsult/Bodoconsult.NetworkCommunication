@@ -1,17 +1,18 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
-using System.Diagnostics;
 using Bodoconsult.App;
-using Bodoconsult.NetworkCommunication.Interfaces;
-using Bodoconsult.NetworkCommunication.Testing;
-using IpDevice.Bll.Interfaces;
-using IpDeviceService.DiContainerProvider;
-using System.Net;
-using System.Text;
 using Bodoconsult.App.BusinessTransactions.RequestData;
 using Bodoconsult.App.Helpers;
+using Bodoconsult.NetworkCommunication.Interfaces;
+using Bodoconsult.NetworkCommunication.Testing;
 using Bodoconsult.NetworkCommunication.Tests.App;
 using DynamicData;
+using IpCommunicationSample.Common.BusinessTransactions.Requests;
+using IpDevice.Bll.Interfaces;
+using IpDeviceService.DiContainerProvider;
+using System.Diagnostics;
+using System.Net;
+using System.Text;
 
 namespace IpCommunicationSampleTests.Device.RealWorld;
 
@@ -118,7 +119,14 @@ internal class UdpSendingTests
 
         var adapter = (IBackendUdpBusinessLogicAdapter)_deviceManager.BackendUdp.DeviceBusinessLogicAdapter;
 
-        var request = new EmptyBusinessTransactionRequestData();
+        var request = new StartMessagingReportBusinessTransactionRequestData
+        {
+            Channel1 = true,
+            Channel2 = true,
+            Channel3 = true,
+            Channel4 = true
+        };
+
         var request2 = new EmptyBusinessTransactionRequestData();
 
         // Act  
@@ -163,7 +171,7 @@ internal class UdpSendingTests
 
         // Act  
         var data = new List<byte>();
-        data.AddRange(Encoding.UTF8.GetBytes("set,stream,number,4"));
+        data.AddRange(Encoding.UTF8.GetBytes("set,stream,order,1,2,3,4"));
         data.Add([DeviceCommunicationBasics.Lf]);
         AsyncHelper.FireAndForget(() =>
         {
@@ -189,6 +197,16 @@ internal class UdpSendingTests
         AsyncHelper.FireAndForget(() =>
         {
             RemoteTcpIpDevice.Send(data3.ToArray());
+        });
+
+        Task.Delay(1000);
+
+        var data4 = new List<byte>();
+        data4.AddRange(Encoding.UTF8.GetBytes("show,streamconfig"));
+        data4.Add([DeviceCommunicationBasics.Lf]);
+        AsyncHelper.FireAndForget(() =>
+        {
+            RemoteTcpIpDevice.Send(data4.ToArray());
         });
 
         Task.Delay(1000);

@@ -190,6 +190,114 @@ internal class TncpDataMessageCodecTests
     }
 
     [Test]
+    public void DecodeDataMessage_ValidResponseCommandWithConfig1_MessageDecoded()
+    {
+        // Arrange 
+        var cmd = "show,streamconfig";
+        var config = "<CONFIG>0x00x10x20x30xC0xF";
+        var response = $"<BEGIN>{cmd}\n{config}\n<END>";
+
+        var msg = Encoding.UTF8.GetBytes(response);
+
+        IDataBlockCodingProcessor dataBlockCodingProcessor = new DefaultDataBlockCodingProcessor();
+        dataBlockCodingProcessor.LoadDataBlockCodecs('x', new BasicDataBlockCodec());
+
+        var codec = new TncpDataMessageCodec(dataBlockCodingProcessor);
+
+        // Act  
+        var result = codec.DecodeDataMessage(msg);
+
+        // Assert
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(result, Is.Not.Null);
+            Assert.That(result.ErrorCode, Is.Zero);
+
+            ArgumentNullException.ThrowIfNull(result.DataMessage);
+
+            Assert.That(result.DataMessage, Is.Not.Null);
+
+            var tncpMsg = (TncpInboundDataMessage)result.DataMessage;
+
+            Assert.That(tncpMsg.RawMessageData.Length, Is.Not.Zero);
+            Assert.That(tncpMsg.TelnetCommand, Is.EqualTo(cmd));
+            Assert.That(tncpMsg.TelnetAdditionalInfo, Is.EqualTo(config));
+        }
+    }
+
+    [Test]
+    public void DecodeDataMessage_ValidResponseCommandWithConfig2_MessageDecoded()
+    {
+        // Arrange 
+        var cmd = "show,streamconfig";
+        var config = "<CONFIG>0x00x00x00xC0xF";
+        var response = $"<BEGIN>{cmd}\n{config}\n<END>";
+
+        var msg = Encoding.UTF8.GetBytes(response);
+
+        IDataBlockCodingProcessor dataBlockCodingProcessor = new DefaultDataBlockCodingProcessor();
+        dataBlockCodingProcessor.LoadDataBlockCodecs('x', new BasicDataBlockCodec());
+
+        var codec = new TncpDataMessageCodec(dataBlockCodingProcessor);
+
+        // Act  
+        var result = codec.DecodeDataMessage(msg);
+
+        // Assert
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(result, Is.Not.Null);
+            Assert.That(result.ErrorCode, Is.Zero);
+
+            ArgumentNullException.ThrowIfNull(result.DataMessage);
+
+            Assert.That(result.DataMessage, Is.Not.Null);
+
+            var tncpMsg = (TncpInboundDataMessage)result.DataMessage;
+
+            Assert.That(tncpMsg.RawMessageData.Length, Is.Not.Zero);
+            Assert.That(tncpMsg.TelnetCommand, Is.EqualTo(cmd));
+            Assert.That(tncpMsg.TelnetAdditionalInfo, Is.EqualTo(config));
+        }
+    }
+
+    [Test]
+    public void DecodeDataMessage_ValidResponseCommandWithConfig3_MessageDecoded()
+    {
+        // Arrange 
+        var cmd = "show,streamconfig";
+        var config = "<CONFIG>0x00xC0xF";
+        var response = $"<BEGIN>{cmd}\n{config}\n<END>";
+
+        var msg = Encoding.UTF8.GetBytes(response);
+
+        IDataBlockCodingProcessor dataBlockCodingProcessor = new DefaultDataBlockCodingProcessor();
+        dataBlockCodingProcessor.LoadDataBlockCodecs('x', new BasicDataBlockCodec());
+
+        var codec = new TncpDataMessageCodec(dataBlockCodingProcessor);
+
+        // Act  
+        var result = codec.DecodeDataMessage(msg);
+
+        // Assert
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(result, Is.Not.Null);
+            Assert.That(result.ErrorCode, Is.Zero);
+
+            ArgumentNullException.ThrowIfNull(result.DataMessage);
+
+            Assert.That(result.DataMessage, Is.Not.Null);
+
+            var tncpMsg = (TncpInboundDataMessage)result.DataMessage;
+
+            Assert.That(tncpMsg.RawMessageData.Length, Is.Not.Zero);
+            Assert.That(tncpMsg.TelnetCommand, Is.EqualTo(cmd));
+            Assert.That(tncpMsg.TelnetAdditionalInfo, Is.EqualTo(config));
+        }
+    }
+
+    [Test]
     public void EncodeDataMessage_ValidDataBlockInput_MessageEncoded()
     {
         // Arrange 

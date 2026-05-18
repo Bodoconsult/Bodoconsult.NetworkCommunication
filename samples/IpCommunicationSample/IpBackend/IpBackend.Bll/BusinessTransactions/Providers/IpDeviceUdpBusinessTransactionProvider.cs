@@ -6,6 +6,7 @@ using Bodoconsult.App.Delegates;
 using Bodoconsult.App.Interfaces;
 using IpBackend.Bll.Interfaces;
 using IpCommunicationSample.Common.BusinessTransactions;
+using IpCommunicationSample.Common.BusinessTransactions.Requests;
 
 namespace IpBackend.Bll.BusinessTransactions.Providers;
 
@@ -66,6 +67,24 @@ public class IpDeviceUdpBusinessTransactionProvider : IBusinessTransactionProvid
         };
 
         transaction.AllowedRequestDataTypes.Add(nameof(EmptyBusinessTransactionRequestData));
+
+        return transaction;
+    }
+
+    /// <summary>
+    /// Create transaction 207: load streaming config
+    /// </summary>
+    /// <returns>Business transaction</returns>
+    public BusinessTransaction Transaction207_LoadStreamConfig()
+    {
+        var transaction = new BusinessTransaction
+        {
+            Id = ServerSideBusinessTransactionIds.LoadStreamConfig,
+            Name = "Load stream config",
+            RunBusinessTransactionDelegate = BusinessLogicAdapter.LoadStreamingConfig
+        };
+
+        transaction.AllowedRequestDataTypes.Add(nameof(LoadStreamingConfigBusinessTransactionRequestData));
 
         return transaction;
     }

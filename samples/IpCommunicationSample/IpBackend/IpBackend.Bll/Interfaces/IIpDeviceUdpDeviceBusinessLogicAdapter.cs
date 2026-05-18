@@ -26,6 +26,13 @@ public interface IIpDeviceUdpDeviceBusinessLogicAdapter : ISimpleDeviceBusinessL
     /// <returns>Reply</returns>
     IBusinessTransactionReply SendClientHello(IBusinessTransactionRequestData requestData);
 
+    /// <summary>
+    /// Load the streaming config
+    /// </summary>
+    /// <param name="requestData">Current request parameter</param>
+    /// <returns>Reply</returns>
+    IBusinessTransactionReply LoadStreamingConfig(IBusinessTransactionRequestData requestData);
+
     #endregion
 
 

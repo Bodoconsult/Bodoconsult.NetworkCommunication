@@ -23,6 +23,11 @@ public class BtcpOutboundDataMessageFactory : IOutboundDataMessageFactory
             throw new ArgumentException($"ParameterSet is not of type {nameof(BtcpParameterSet)}");
         }
 
+        if (ps.Data.Length == 0)
+        {
+            ps.ToDataBlock();
+        }
+
         var transactionUid = Guid.NewGuid();
 
         var msg = new BtcpRequestOutboundDataMessage(ps.BusinessTransactionId, transactionUid)

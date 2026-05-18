@@ -320,6 +320,7 @@ internal class BtcpDataMessageCodecTests
             Assert.That(result.DataMessage, Is.Not.Null);
             
             Assert.That(result.DataMessage, Is.TypeOf<BtcpRequestInboundDataMessage>());
+            ArgumentNullException.ThrowIfNull(result.DataMessage);
 
             var btcp = (BtcpRequestInboundDataMessage)result.DataMessage;
 

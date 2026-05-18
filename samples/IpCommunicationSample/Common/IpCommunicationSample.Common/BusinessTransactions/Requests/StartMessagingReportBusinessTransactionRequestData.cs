@@ -33,4 +33,6 @@ public class StartMessagingReportBusinessTransactionRequestData : BaseBusinessTr
     /// Show channel 4?
     /// </summary>
     public bool Channel4 { get; set; }
+
+
 }

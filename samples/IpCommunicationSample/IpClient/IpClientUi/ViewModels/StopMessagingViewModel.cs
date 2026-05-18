@@ -60,7 +60,7 @@ public partial class StopMessagingViewModel : ReactiveObject, IUiRegionViewModel
         {
             var request = new EmptyBusinessTransactionRequestData
             {
-                TransactionId = ClientSideBusinessTransactionIds.StopStreaming
+                TransactionId = ClientSideBusinessTransactionIds.StopMessaging
             };
 
             _businessTransactionManager.RunBusinessTransaction(request.TransactionId, request);

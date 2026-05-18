@@ -24,10 +24,8 @@ public class IpDeviceTcpIpBusinessTransactionProvider : IBusinessTransactionProv
         BusinessLogicAdapter = businessLogicAdapter;
 
         // Load transaction delegates now
-        CreateBusinessTransactionDelegates.Add(ClientSideBusinessTransactionIds.StartStreaming, Transaction201_StartStreaming);
-        CreateBusinessTransactionDelegates.Add(ClientSideBusinessTransactionIds.StopStreaming, Transaction202_StopStreaming);
-        CreateBusinessTransactionDelegates.Add(ClientSideBusinessTransactionIds.StartSnapshot, Transaction203_StartSnapshot);
-        CreateBusinessTransactionDelegates.Add(ClientSideBusinessTransactionIds.StopSnapshot, Transaction204_StopSnapshot);
+        CreateBusinessTransactionDelegates.Add(ClientSideBusinessTransactionIds.StartMessaging, Transaction201_StartStreaming);
+        CreateBusinessTransactionDelegates.Add(ClientSideBusinessTransactionIds.StopMessaging, Transaction202_StopMessaging);
     }
 
     /// <summary>
@@ -44,9 +42,9 @@ public class IpDeviceTcpIpBusinessTransactionProvider : IBusinessTransactionProv
     {
         var transaction = new BusinessTransaction
         {
-            Id = ClientSideBusinessTransactionIds.StartStreaming,
+            Id = ClientSideBusinessTransactionIds.StartMessaging,
             Name = "Start streaming",
-            RunBusinessTransactionDelegate = BusinessLogicAdapter.RequestDeviceStartStreamingState
+            RunBusinessTransactionDelegate = BusinessLogicAdapter.RequestDeviceStartMessagingState
         };
 
         transaction.AllowedRequestDataTypes.Add(nameof(EmptyBusinessTransactionRequestData));
@@ -55,52 +53,16 @@ public class IpDeviceTcpIpBusinessTransactionProvider : IBusinessTransactionProv
     }
 
     /// <summary>
-    /// Create transaction 202: stop streaming
+    /// Create transaction 202: stop messaging
     /// </summary>
     /// <returns>Business transaction</returns>
-    public BusinessTransaction Transaction202_StopStreaming()
+    public BusinessTransaction Transaction202_StopMessaging()
     {
         var transaction = new BusinessTransaction
         {
-            Id = ClientSideBusinessTransactionIds.StopStreaming,
-            Name = "Stop streaming",
-            RunBusinessTransactionDelegate = BusinessLogicAdapter.RequestDeviceStopStreamingState
-        };
-
-        transaction.AllowedRequestDataTypes.Add(nameof(EmptyBusinessTransactionRequestData));
-
-        return transaction;
-    }
-
-    /// <summary>
-    /// Create transaction 203: start snapshot
-    /// </summary>
-    /// <returns>Business transaction</returns>
-    public BusinessTransaction Transaction203_StartSnapshot()
-    {
-        var transaction = new BusinessTransaction
-        {
-            Id = ClientSideBusinessTransactionIds.StartSnapshot,
-            Name = "Start snapshot",
-            RunBusinessTransactionDelegate = BusinessLogicAdapter.RequestDeviceStartSnapshotState
-        };
-
-        transaction.AllowedRequestDataTypes.Add(nameof(EmptyBusinessTransactionRequestData));
-
-        return transaction;
-    }
-
-    /// <summary>
-    /// Create transaction 204: stop snapshot
-    /// </summary>
-    /// <returns>Business transaction</returns>
-    public BusinessTransaction Transaction204_StopSnapshot()
-    {
-        var transaction = new BusinessTransaction
-        {
-            Id = ClientSideBusinessTransactionIds.StopSnapshot,
-            Name = "Stop snapshot",
-            RunBusinessTransactionDelegate = BusinessLogicAdapter.RequestDeviceStopSnapshotState
+            Id = ClientSideBusinessTransactionIds.StopMessaging,
+            Name = "Stop messaging",
+            RunBusinessTransactionDelegate = BusinessLogicAdapter.RequestDeviceStopMessagingState
         };
 
         transaction.AllowedRequestDataTypes.Add(nameof(EmptyBusinessTransactionRequestData));

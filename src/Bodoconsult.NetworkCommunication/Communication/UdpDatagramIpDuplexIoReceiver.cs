@@ -111,9 +111,7 @@ public class UdpDatagramIpDuplexIoReceiver : BaseDuplexIoReceiver
             return;
         }
 
-        var array = ArrayPool.Rent(length);
-
-        command.CopyTo(array);
+        var array = command.ToArray();
 
         var mem = ((Memory<byte>)array)[..length];
 
@@ -124,7 +122,6 @@ public class UdpDatagramIpDuplexIoReceiver : BaseDuplexIoReceiver
             msg = $"Parsing command failed with error code {codecResult.ErrorCode}: {codecResult.ErrorMessage}: {DataMessageHelper.GetStringFromArrayCsharpStyle(ref command)}";
             MonitorLogger.LogError(msg);
             DataMessagingConfig.AppLogger.LogError($"{LoggerId}{msg}");
-            ArrayPool.Return(array);
             return;
         }
 
@@ -145,8 +142,6 @@ public class UdpDatagramIpDuplexIoReceiver : BaseDuplexIoReceiver
             //}
             DataMessageProcessor.ProcessMessage(codecResult.DataMessage);
         }
-
-        ArrayPool.Return(array);
     }
 
     /// <summary>

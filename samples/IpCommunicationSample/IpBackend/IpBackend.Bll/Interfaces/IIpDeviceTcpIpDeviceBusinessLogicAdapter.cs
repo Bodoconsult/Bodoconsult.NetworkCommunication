@@ -18,32 +18,18 @@ public interface IIpDeviceTcpIpDeviceBusinessLogicAdapter: IStateMachineDeviceBu
     #region Device order handling
 
     /// <summary>
-    /// Stopping snapshot was unsuccessful
-    /// </summary>
-    /// <param name="state">Current state</param>
-    /// <param name="order">Current order</param>
-    void StopSnapshotUnsuccessfully(IStateMachineState state, IOrder order);
-
-    /// <summary>
-    /// Starting snapshot was unsuccessful
-    /// </summary>
-    /// <param name="state">Current state</param>
-    /// <param name="order">Current order</param>
-    void StartSnapshotUnsuccessfully(IStateMachineState state, IOrder order);
-
-    /// <summary>
     /// Starting streaming was unsuccessful
     /// </summary>
     /// <param name="state">Current state</param>
     /// <param name="order">Current order</param>
-    void StartStreamingUnsuccessfully(IStateMachineState state, IOrder order);
+    void StartMessagingUnsuccessfully(IStateMachineState state, IOrder order);
 
     /// <summary>
     /// Stopping streaming was unsuccessful
     /// </summary>
     /// <param name="state">Current state</param>
     /// <param name="order">Current order</param>
-    void StopStreamingUnsuccessfully(IStateMachineState state, IOrder order);
+    void StopMessagingUnsuccessfully(IStateMachineState state, IOrder order);
 
     /// <summary>
     /// Init device was successful
@@ -64,11 +50,11 @@ public interface IIpDeviceTcpIpDeviceBusinessLogicAdapter: IStateMachineDeviceBu
     #region State management
 
     /// <summary>
-    /// Request a start streaming state
+    /// Request a start messaging state
     /// </summary>
     /// <param name="request">Current request</param>
     /// <returns>Empty reply</returns>
-    IBusinessTransactionReply RequestDeviceStartStreamingState(IBusinessTransactionRequestData request);
+    IBusinessTransactionReply RequestDeviceStartMessagingState(IBusinessTransactionRequestData request);
 
     /// <summary>
     /// Request a start snapshot state
@@ -82,7 +68,7 @@ public interface IIpDeviceTcpIpDeviceBusinessLogicAdapter: IStateMachineDeviceBu
     /// </summary>
     /// <param name="request">Current request</param>
     /// <returns>Empty reply</returns>
-    IBusinessTransactionReply RequestDeviceStopStreamingState(IBusinessTransactionRequestData request);
+    IBusinessTransactionReply RequestDeviceStopMessagingState(IBusinessTransactionRequestData request);
 
     /// <summary>
     /// Request a stop snapshot state

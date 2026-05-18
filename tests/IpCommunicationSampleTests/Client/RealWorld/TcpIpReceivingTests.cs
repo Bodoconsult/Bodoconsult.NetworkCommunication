@@ -10,6 +10,7 @@ using IpBackend.Bll.Interfaces;
 using IpBackendService.DiContainerProvider;
 using IpClient.Bll.Interfaces;
 using IpClientUi.DiContainerProvider;
+using IpCommunicationSample.Common.BusinessTransactions.Requests;
 using IpDevice.Bll.Interfaces;
 using IpDeviceService.DiContainerProvider;
 using IBackendTcpIpBusinessLogicAdapter = IpClient.Bll.Interfaces.IBackendTcpIpBusinessLogicAdapter;
@@ -199,17 +200,24 @@ internal class TcpIpReceivingTests
 
         var adapter = (IBackendTcpIpBusinessLogicAdapter)_clientManager.BackendTcpIp.DeviceBusinessLogicAdapter;
 
-        var request = new EmptyBusinessTransactionRequestData();
+        var request = new StartMessagingReportBusinessTransactionRequestData
+        {
+            Channel1 = true,
+            Channel2 = true,
+            Channel3 = true,
+            Channel4 = true
+        };
+
         var request2 = new EmptyBusinessTransactionRequestData();
 
         // Act  
-        adapter.RequestDeviceStartStreamingState(request);
+        adapter.RequestDeviceStartMessagingState(request);
 
         //Thread.Sleep(5000);
 
         Wait.Until(CheckMessages);
 
-        adapter.RequestDeviceStopStreamingState(request2);
+        adapter.RequestDeviceStartMessagingState(request2);
 
         // Assert
         Assert.That(CheckMessages(), Is.True);
@@ -234,7 +242,14 @@ internal class TcpIpReceivingTests
 
         var adapter = (IBackendTcpIpBusinessLogicAdapter)_clientManager.BackendTcpIp.DeviceBusinessLogicAdapter;
 
-        var request = new EmptyBusinessTransactionRequestData();
+        var request = new StartMessagingReportBusinessTransactionRequestData
+        {
+            Channel1 = true,
+            Channel2 = true,
+            Channel3 = true,
+            Channel4 = true
+        };
+
         var request2 = new EmptyBusinessTransactionRequestData();
 
         Wait.Until(() => _backendManager.IpDeviceTcpIp.Device.CurrentState.Id == DefaultStateIds.DeviceReadyState, 10000);
@@ -242,7 +257,7 @@ internal class TcpIpReceivingTests
         // Act  
         AsyncHelper.FireAndForget(() =>
         {
-            adapter.RequestDeviceStartStreamingState(request);
+            adapter.RequestDeviceStartMessagingState(request);
         });
 
         // Wait for start streaming state

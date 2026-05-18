@@ -11,18 +11,18 @@ namespace Bodoconsult.NetworkCommunication.Tests.Sfxp;
 internal class SfxpDataBlockCodecTests
 {
     [Test]
-    public void LoadMask_ValidSetup_PropsSetCorrectly()
+    public void LoadStreamingConfig_ValidSetup_PropsSetCorrectly()
     {
         // Arrange 
         var codec = new SfxpDataBlockCodec();
         var mask = new byte[] { 0x0, 0x1, 0x2, 0x3, 0xC, 0xF };
         // Act  
-        codec.LoadMask(mask);
+        codec.LoadStreamingConfig(mask);
 
         // Assert
         using (Assert.EnterMultipleScope())
         {
-            Assert.That(codec.Mask.Length, Is.EqualTo(mask.Length - 1));
+            Assert.That(codec.StreamingConfig.Length, Is.EqualTo(mask.Length - 1));
         }
     }
 
@@ -37,8 +37,8 @@ internal class SfxpDataBlockCodecTests
         // Assert
         using (Assert.EnterMultipleScope())
         {
-            Assert.That(codec.Mask, Is.Not.Null);
-            Assert.That(codec.Mask.Length, Is.Zero);
+            Assert.That(codec.StreamingConfig, Is.Not.Null);
+            Assert.That(codec.StreamingConfig.Length, Is.Zero);
         }
     }
 
@@ -61,7 +61,7 @@ internal class SfxpDataBlockCodecTests
         data.AddRange(msg.AsMemory(7).Span);
 
         var codec = new SfxpDataBlockCodec();
-        codec.LoadMask([0x0, 0x1, 0x2, 0x3, 0xC, 0xF]);
+        codec.LoadStreamingConfig([0x0, 0x1, 0x2, 0x3, 0xC, 0xF]);
 
         // Act  
         var result = codec.DecodeDataBlock(data.ToArray());
@@ -94,8 +94,5 @@ internal class SfxpDataBlockCodecTests
             }
             db.DataChunks.Clear();
         }
-
-
-
     }
 }

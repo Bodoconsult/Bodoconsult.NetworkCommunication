@@ -46,7 +46,6 @@
 		<Folder Include="Client\AdapterFactories\" />
 		<Folder Include="Client\Adapter\" />
 		<Folder Include="Client\Configurators\" />
-		<Folder Include="Device\Adapter\" />
 		<Folder Include="Device\AdapterFactories\" />
 	</ItemGroup>
 

@@ -20,28 +20,16 @@ public interface IBackendTcpIpBusinessLogicAdapter : IOrderManagementDeviceBusin
     #region State management
 
     /// <summary>
-    /// Request a start streaming state
+    /// Request a start messaging state
     /// </summary>
     /// <param name="request">Current request</param>
-    IBusinessTransactionReply RequestDeviceStartStreamingState(IBusinessTransactionRequestData request);
+    IBusinessTransactionReply RequestDeviceStartMessagingState(IBusinessTransactionRequestData request);
 
     /// <summary>
-    /// Request a start snapshot state
+    /// Request a stop messaging state
     /// </summary>
     /// <param name="request">Current request</param>
-    IBusinessTransactionReply RequestDeviceStartSnapshotState(IBusinessTransactionRequestData request);
-
-    /// <summary>
-    /// Request a stop streaming state
-    /// </summary>
-    /// <param name="request">Current request</param>
-    IBusinessTransactionReply RequestDeviceStopStreamingState(IBusinessTransactionRequestData request);
-
-    /// <summary>
-    /// Request a stop snapshot state
-    /// </summary>
-    /// <param name="request">Current request</param>
-    IBusinessTransactionReply RequestDeviceStopSnapshotState(IBusinessTransactionRequestData request);
+    IBusinessTransactionReply RequestDeviceStopMessagingState(IBusinessTransactionRequestData request);
 
 
     #endregion

@@ -46,64 +46,26 @@ internal class IpDeviceTcpIpBusinessTransactionProviderTests
         using (Assert.EnterMultipleScope())
         {
             Assert.That(transaction, Is.Not.Null);
-            Assert.That(transaction.Id, Is.EqualTo(ClientSideBusinessTransactionIds.StartStreaming));
+            Assert.That(transaction.Id, Is.EqualTo(ClientSideBusinessTransactionIds.StartMessaging));
             Assert.That(transaction.RunBusinessTransactionDelegate, Is.Not.Null);
             Assert.That(transaction.AllowedRequestDataTypes, Has.Count.EqualTo(1));
         }
     }
 
     [Test]
-    public void Transaction2_StopStreaming_Always_ReturnsCorrectTransaction()
+    public void Transaction2_StopMessaging_Always_ReturnsCorrectTransaction()
     {
         // Arrange
         var provider = CreateProvider();
 
         // Act
-        var transaction = provider.Transaction202_StopStreaming();
+        var transaction = provider.Transaction202_StopMessaging();
 
         // Assert
         using (Assert.EnterMultipleScope())
         {
             Assert.That(transaction, Is.Not.Null);
-            Assert.That(transaction.Id, Is.EqualTo(ClientSideBusinessTransactionIds.StopStreaming));
-            Assert.That(transaction.RunBusinessTransactionDelegate, Is.Not.Null);
-            Assert.That(transaction.AllowedRequestDataTypes, Has.Count.EqualTo(1));
-        }
-    }
-
-    [Test]
-    public void Transaction3_StartSnapshot_Always_ReturnsCorrectTransaction()
-    {
-        // Arrange
-        var provider = CreateProvider();
-
-        // Act
-        var transaction = provider.Transaction203_StartSnapshot();
-
-        // Assert
-        using (Assert.EnterMultipleScope())
-        {
-            Assert.That(transaction, Is.Not.Null);
-            Assert.That(transaction.Id, Is.EqualTo(ClientSideBusinessTransactionIds.StartSnapshot));
-            Assert.That(transaction.RunBusinessTransactionDelegate, Is.Not.Null);
-            Assert.That(transaction.AllowedRequestDataTypes, Has.Count.EqualTo(1));
-        }
-    }
-
-    [Test]
-    public void Transaction4_StopSnapshot_Always_ReturnsCorrectTransaction()
-    {
-        // Arrange
-        var provider = CreateProvider();
-
-        // Act
-        var transaction = provider.Transaction204_StopSnapshot();
-
-        // Assert
-        using (Assert.EnterMultipleScope())
-        {
-            Assert.That(transaction, Is.Not.Null);
-            Assert.That(transaction.Id, Is.EqualTo(ClientSideBusinessTransactionIds.StopSnapshot));
+            Assert.That(transaction.Id, Is.EqualTo(ClientSideBusinessTransactionIds.StopMessaging));
             Assert.That(transaction.RunBusinessTransactionDelegate, Is.Not.Null);
             Assert.That(transaction.AllowedRequestDataTypes, Has.Count.EqualTo(1));
         }

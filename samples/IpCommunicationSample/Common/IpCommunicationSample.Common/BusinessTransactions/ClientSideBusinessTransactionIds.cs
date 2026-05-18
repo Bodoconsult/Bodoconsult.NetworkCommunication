@@ -8,10 +8,8 @@ namespace IpCommunicationSample.Common.BusinessTransactions;
 public static class ClientSideBusinessTransactionIds
 {
     public static int GetConfig => 200;
-    public static int StartStreaming => 201;
-    public static int StopStreaming => 202;
-    public static int StartSnapshot => 203;
-    public static int StopSnapshot => 204;
+    public static int StartMessaging => 201;
+    public static int StopMessaging => 202;
 
     public static int CreateFftAnalysisReport => 250;
 }

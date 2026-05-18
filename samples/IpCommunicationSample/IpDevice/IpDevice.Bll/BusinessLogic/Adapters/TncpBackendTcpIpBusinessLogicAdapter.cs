@@ -11,6 +11,10 @@ using Bodoconsult.NetworkCommunication.NetworkCommands;
 using IpCommunicationSample.Common;
 using IpDevice.Bll.BusinessTransactions;
 using IpDevice.Bll.Interfaces;
+using System.Collections.Immutable;
+using System.Text;
+using System.Xml;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace IpDevice.Bll.BusinessLogic.Adapters;
 
@@ -19,6 +23,7 @@ namespace IpDevice.Bll.BusinessLogic.Adapters;
 /// </summary>
 public class TncpBackendTcpIpBusinessLogicAdapter : BaseSimpleDeviceBusinessLogicAdapter, IBackendTcpIpBusinessLogicAdapter
 {
+    private byte[] _streamingConfig = [0x0, 0x1, 0x2, 0x3, 0xC, 0xF];
     private readonly TncpCommandParser _parser = new();
     private readonly IBusinessTransactionManager _businessTransactionManager;
     private delegate void HandleTncpMessage(NetworkCommand command);
@@ -66,6 +71,13 @@ public class TncpBackendTcpIpBusinessLogicAdapter : BaseSimpleDeviceBusinessLogi
         //NetworkCommand? command;
         //HandleTncpMessage? del;
 
+        if (tncp.TelnetCommand.StartsWith("set,stream,order", StringComparison.InvariantCultureIgnoreCase))
+        {
+            var config = tncp.TelnetCommand[17..];
+            _streamingConfig = GetConfig(config);
+        }
+
+
         if (tncp.TelnetCommand == "set,status,start" && _udpStarter == null)
         {
             return;
@@ -76,6 +88,10 @@ public class TncpBackendTcpIpBusinessLogicAdapter : BaseSimpleDeviceBusinessLogi
             ExexcuteCommand(tncp.TelnetCommand, 2);
             return;
         }
+
+        // Get the current streaming config
+
+
 
         if (tncp.TelnetCommand.StartsWith("set,stream", StringComparison.InvariantCultureIgnoreCase))
         {
@@ -105,13 +121,56 @@ public class TncpBackendTcpIpBusinessLogicAdapter : BaseSimpleDeviceBusinessLogi
     {
         ArgumentNullException.ThrowIfNull(IpDevice.CommunicationAdapter);
 
+        var cmd = CreateTncpReply(telnetCommand);
+
         var msg = new TncpOutboundDataMessage
         {
-            TelnetCommand = $"<BEGIN>{telnetCommand}",
+            TelnetCommand = cmd.ToString(),
             WaitForAcknowledgement = false
         };
 
         IpDevice.CommunicationAdapter.SendDataMessage(msg);
+    }
+
+    public StringBuilder CreateTncpReply(string telnetCommand)
+    {
+        var cmd = new StringBuilder();
+        cmd.Append($"<BEGIN>{telnetCommand}\u0010");
+
+        if (telnetCommand.StartsWith("show,streamconfig", StringComparison.InvariantCultureIgnoreCase))
+        {
+            cmd.Append("<CONFIG>");
+
+            foreach (var b in _streamingConfig)
+            {
+                cmd.Append($"0x{b:X}");
+            }
+        }
+
+        cmd.Append("<END>");
+        return cmd;
+    }
+
+    /// <summary>
+    /// Get the streaming config from a string
+    /// </summary>
+    /// <param name="config">Config string with comma separated</param>
+    /// <returns>Config byte array</returns>
+    public static byte[] GetConfig(string config)
+    {
+        var s = config.Split(',', StringSplitOptions.RemoveEmptyEntries);
+
+        var data = new List<byte>();
+
+        foreach (var s2 in s)
+        {
+            data.Add(Convert.ToByte(s2));
+        }
+
+        data.Add(0xC);
+        data.Add(0xF);
+
+        return data.ToArray();
     }
 
     private bool ExexcuteCommand(string cmd, int businessTransactionId)

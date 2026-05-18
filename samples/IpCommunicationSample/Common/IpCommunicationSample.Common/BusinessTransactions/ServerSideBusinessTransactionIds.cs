@@ -14,4 +14,6 @@ public static class ServerSideBusinessTransactionIds
     public const int SendClientHello = 205;
 
     public const int CheckConnection = 206;
+
+    public const int LoadStreamConfig = 206;
 }

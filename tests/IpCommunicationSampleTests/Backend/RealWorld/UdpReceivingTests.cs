@@ -206,7 +206,7 @@ internal class UdpReceivingTests
         // Act  
         AsyncHelper.FireAndForget(() =>
         {
-            adapter.RequestDeviceStartStreamingState(request);
+            adapter.RequestDeviceStartMessagingState(request);
         });
 
         Task.Delay(1000);
@@ -222,7 +222,7 @@ internal class UdpReceivingTests
 
         AsyncHelper.FireAndForget(() =>
         {
-            adapter.RequestDeviceStopStreamingState(request2);
+            adapter.RequestDeviceStopMessagingState(request2);
         });
             
         Wait.Until(() => _backendManager.IpDeviceTcpIp.Device.CurrentState.Id == DefaultStateIds.DeviceReadyState, 10000);

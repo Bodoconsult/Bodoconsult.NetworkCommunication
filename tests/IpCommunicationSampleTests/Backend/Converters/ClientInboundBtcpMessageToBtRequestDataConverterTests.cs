@@ -66,7 +66,7 @@ internal class ClientInboundBtcpMessageToBtRequestDataConverterTests
         // Arrange 
         var conv = new ClientInboundBtcpMessageToBtRequestDataConverter(_appLogger);
 
-        var transactionId = ClientSideBusinessTransactionIds.StartStreaming;
+        var transactionId = ClientSideBusinessTransactionIds.StartMessaging;
         var transactionUid = Guid.NewGuid();
 
         var message = new BtcpRequestInboundDataMessage(transactionId, transactionUid);
@@ -88,51 +88,7 @@ internal class ClientInboundBtcpMessageToBtRequestDataConverterTests
         // Arrange 
         var conv = new ClientInboundBtcpMessageToBtRequestDataConverter(_appLogger);
 
-        var transactionId = ClientSideBusinessTransactionIds.StopStreaming;
-        var transactionUid = Guid.NewGuid();
-
-        var message = new BtcpRequestInboundDataMessage(transactionId, transactionUid);
-
-        // Act  
-        var result = (EmptyBusinessTransactionRequestData?)conv.MapToBusinessTransactionRequestData(message);
-
-        // Assert
-        using (Assert.EnterMultipleScope())
-        {
-            Assert.That(result, Is.Not.Null);
-            Assert.That(result?.TransactionId, Is.EqualTo(transactionId));
-        }
-    }
-
-    [Test]
-    public void MapToBusinessTransactionRequestData_StartSnapshot_ReturnsRequestData()
-    {
-        // Arrange 
-        var conv = new ClientInboundBtcpMessageToBtRequestDataConverter(_appLogger);
-
-        var transactionId = ClientSideBusinessTransactionIds.StopSnapshot;
-        var transactionUid = Guid.NewGuid();
-
-        var message = new BtcpRequestInboundDataMessage(transactionId, transactionUid);
-
-        // Act  
-        var result = (EmptyBusinessTransactionRequestData?)conv.MapToBusinessTransactionRequestData(message);
-
-        // Assert
-        using (Assert.EnterMultipleScope())
-        {
-            Assert.That(result, Is.Not.Null);
-            Assert.That(result?.TransactionId, Is.EqualTo(transactionId));
-        }
-    }
-
-    [Test]
-    public void MapToBusinessTransactionRequestData_StopSnapshot_ReturnsRequestData()
-    {
-        // Arrange 
-        var conv = new ClientInboundBtcpMessageToBtRequestDataConverter(_appLogger);
-
-        var transactionId = ClientSideBusinessTransactionIds.StopSnapshot;
+        var transactionId = ClientSideBusinessTransactionIds.StopMessaging;
         var transactionUid = Guid.NewGuid();
 
         var message = new BtcpRequestInboundDataMessage(transactionId, transactionUid);

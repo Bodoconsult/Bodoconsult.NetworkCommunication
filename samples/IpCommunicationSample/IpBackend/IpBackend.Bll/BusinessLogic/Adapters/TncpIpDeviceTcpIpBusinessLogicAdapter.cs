@@ -6,11 +6,14 @@ using Bodoconsult.App.BusinessTransactions.RequestData;
 using Bodoconsult.App.Helpers;
 using Bodoconsult.App.Interfaces;
 using Bodoconsult.NetworkCommunication.BusinessLogicAdapters;
+using Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
 using Bodoconsult.NetworkCommunication.Helpers;
 using Bodoconsult.NetworkCommunication.Interfaces;
 using Bodoconsult.NetworkCommunication.OrderManagement.ParameterSets;
+using Bodoconsult.NetworkCommunication.StateManagement;
 using IpBackend.Bll.Interfaces;
 using IpCommunicationSample.Common.BusinessTransactions;
+using IpCommunicationSample.Common.BusinessTransactions.Requests;
 
 namespace IpBackend.Bll.BusinessLogic.Adapters;
 
@@ -64,7 +67,7 @@ public class TncpIpDeviceTcpIpBusinessLogicAdapter : BaseStateMachineDeviceBusin
     /// </summary>
     /// <param name="state">Current state</param>
     /// <param name="order">Current order</param>
-    public void StartStreamingUnsuccessfully(IStateMachineState state, IOrder order)
+    public void StartMessagingUnsuccessfully(IStateMachineState state, IOrder order)
     {
         Device.CheckConnection();
     }
@@ -74,7 +77,7 @@ public class TncpIpDeviceTcpIpBusinessLogicAdapter : BaseStateMachineDeviceBusin
     /// </summary>
     /// <param name="state">Current state</param>
     /// <param name="order">Current order</param>
-    public void StopStreamingUnsuccessfully(IStateMachineState state, IOrder order)
+    public void StopMessagingUnsuccessfully(IStateMachineState state, IOrder order)
     {
         Device.CheckConnection();
     }
@@ -107,10 +110,15 @@ public class TncpIpDeviceTcpIpBusinessLogicAdapter : BaseStateMachineDeviceBusin
     /// Request a start streaming state
     /// </summary>
     /// <param name="request">Current request</param>
-    public IBusinessTransactionReply RequestDeviceStartStreamingState(IBusinessTransactionRequestData request)
+    public IBusinessTransactionReply RequestDeviceStartMessagingState(IBusinessTransactionRequestData request)
     {
         try
         {
+            if (request is not StartMessagingReportBusinessTransactionRequestData startRequest)
+            {
+                throw new ArgumentException($"request is not {nameof(StartMessagingReportBusinessTransactionRequestData)}");
+            }
+
             ArgumentNullException.ThrowIfNull(Device);
             ArgumentNullException.ThrowIfNull(StateFactory, "StateFactory is null. Call LoadStateFactory() before!");
             ArgumentNullException.ThrowIfNull(OrderFactory);
@@ -125,7 +133,7 @@ public class TncpIpDeviceTcpIpBusinessLogicAdapter : BaseStateMachineDeviceBusin
 
             for (var index = 0; index < jobConfig.OrderConfigurations.Count; index++)
             {
-                CreateStartOrders(jobConfig, index, parameterSets, OrderFactory, "continious");
+                CreateStartOrders(jobConfig, index, parameterSets, OrderFactory, "continious", startRequest);
             }
 
             // Now create the state
@@ -148,26 +156,26 @@ public class TncpIpDeviceTcpIpBusinessLogicAdapter : BaseStateMachineDeviceBusin
         }
     }
 
-    /// <summary>
-    /// Check the UDP connection now
-    /// </summary>
-    private void CheckUdpConnection()
-    {
-        AsyncHelper.FireAndForget(() =>
-        {
-            try
-            {
-                var request = new EmptyBusinessTransactionRequestData();
-                _businessTransactionManager.RunBusinessTransaction(ServerSideBusinessTransactionIds.CheckConnection, request);
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e);
-                throw;
-            }
+    ///// <summary>
+    ///// Check the UDP connection now
+    ///// </summary>
+    //private void CheckUdpConnection()
+    //{
+    //    AsyncHelper.FireAndForget(() =>
+    //    {
+    //        try
+    //        {
+    //            var request = new EmptyBusinessTransactionRequestData();
+    //            _businessTransactionManager.RunBusinessTransaction(ServerSideBusinessTransactionIds.CheckConnection, request);
+    //        }
+    //        catch (Exception e)
+    //        {
+    //            Console.WriteLine(e);
+    //            throw;
+    //        }
 
-        });
-    }
+    //    });
+    //}
 
     /// <summary>
     /// Request a start streamin state
@@ -177,6 +185,11 @@ public class TncpIpDeviceTcpIpBusinessLogicAdapter : BaseStateMachineDeviceBusin
     {
         try
         {
+            if (request is not StartMessagingReportBusinessTransactionRequestData startRequest)
+            {
+                throw new ArgumentException($"request is not {nameof(StartMessagingReportBusinessTransactionRequestData)}");
+            }
+
             ArgumentNullException.ThrowIfNull(Device);
             ArgumentNullException.ThrowIfNull(StateFactory, "StateFactory is null. Call LoadStateFactory() before!");
             ArgumentNullException.ThrowIfNull(OrderFactory);
@@ -191,7 +204,7 @@ public class TncpIpDeviceTcpIpBusinessLogicAdapter : BaseStateMachineDeviceBusin
 
             for (var index = 0; index < jobConfig.OrderConfigurations.Count; index++)
             {
-                CreateStartOrders(jobConfig, index, parameterSets, OrderFactory, "snapshot");
+                CreateStartOrders(jobConfig, index, parameterSets, OrderFactory, "snapshot", startRequest);
             }
 
             // Now create the state
@@ -215,7 +228,7 @@ public class TncpIpDeviceTcpIpBusinessLogicAdapter : BaseStateMachineDeviceBusin
     }
 
     private void CreateStartOrders(IJobStateConfiguration jobConfig, int index, List<IParameterSet> parameterSets,
-        IOrderFactory orderFactory, string mode)
+        IOrderFactory orderFactory, string mode, StartMessagingReportBusinessTransactionRequestData startRequest)
     {
         var orderConfigName = jobConfig.OrderConfigurations[index];
         var orderConfig = orderFactory.GetConfiguration(orderConfigName);
@@ -231,19 +244,20 @@ public class TncpIpDeviceTcpIpBusinessLogicAdapter : BaseStateMachineDeviceBusin
             //    ps.TelnetCommand = "set,snapshot,4,4";   // 
             //    break;
             case 4:
-                ps.TelnetCommand = "set,status,start";   // 
+                ps.TelnetCommand = "show,streamconfig";   // 
                 break;
             case 3:
-                ps.TelnetCommand = $"set,stream,mode,{mode}";   // 
+                ps.TelnetCommand = "set,status,start";
+                // 
                 break;
             case 2:
-                ps.TelnetCommand = $"set,connection,{IpHelper.GetLocalIpAddress().MapToIPv4()},{UdpPort}";   // 
+                ps.TelnetCommand = $"set,stream,mode,{mode}";  // 
                 break;
             case 1:
-                ps.TelnetCommand = "set,snapshot,4,4";   // 
+                ps.TelnetCommand = $"set,connection,{IpHelper.GetLocalIpAddress().MapToIPv4()},{UdpPort}";    // 
                 break;
             default:
-                ps.TelnetCommand = "set,stream,number,1";   // One channel
+                ps.TelnetCommand = "set,stream,order,1";   // One channel
                 break;
         }
 
@@ -254,7 +268,7 @@ public class TncpIpDeviceTcpIpBusinessLogicAdapter : BaseStateMachineDeviceBusin
     /// Request a stop streamin state
     /// </summary>
     /// <param name="request">Current request</param>
-    public IBusinessTransactionReply RequestDeviceStopStreamingState(IBusinessTransactionRequestData request)
+    public IBusinessTransactionReply RequestDeviceStopMessagingState(IBusinessTransactionRequestData request)
     {
         try
         {
@@ -279,7 +293,7 @@ public class TncpIpDeviceTcpIpBusinessLogicAdapter : BaseStateMachineDeviceBusin
 
                 var ps = (TncpParameterSet)orderConfig.CreateParameterSetDelegate.Invoke();
 
-                ps.TelnetCommand = ps.TelnetCommand = "set,status,stop"; ;
+                ps.TelnetCommand = ps.TelnetCommand = "set,status,stop"; 
 
                 // ps.TelnetCommand = "StopStreaming";
 
@@ -359,6 +373,65 @@ public class TncpIpDeviceTcpIpBusinessLogicAdapter : BaseStateMachineDeviceBusin
             };
         }
 
+    }
+
+    #endregion
+
+    #region Received messages handling
+
+    /// <summary>
+    /// Default method to handle an async received message
+    /// </summary>
+    public override MessageHandlingResult DefaultHandleAsyncMessage(IStateMachineState state, IInboundDataMessage? message)
+    {
+
+        if (message is TncpInboundDataMessage tncp)
+        {
+            return HandleTncpMessage(tncp);
+        }
+
+        // Do nothing
+        return MessageHandlingResultHelper.Success();
+    }
+
+    private MessageHandlingResult HandleTncpMessage(TncpInboundDataMessage tncp)
+    {
+        if (tncp.TelnetCommand == null)
+        {
+            return MessageHandlingResultHelper.Success();
+        }
+
+        // Error message received
+        if (tncp.TelnetCommand.StartsWith("<BEGIN>AUTO"))
+        {
+            Device.DataMessagingConfig.AppLogger.LogError($"{LoggerId} Telnet: {tncp.TelnetCommand} AddInfo: {tncp.TelnetAdditionalInfo}");
+        }
+
+        // Error message received
+        if (tncp.TelnetCommand.StartsWith("<<BEGIN>show,streamconfig"))
+        {
+            if (string.IsNullOrEmpty(tncp.TelnetAdditionalInfo))
+            {
+                return MessageHandlingResultHelper.Error("No data provided for tncp.TelnetAdditionalInfo");
+            }
+
+            var configString = tncp.TelnetAdditionalInfo.Replace("<CONFIG>", string.Empty,
+                StringComparison.InvariantCultureIgnoreCase);
+
+            var config = ArrayHelper.GetBytes(configString);
+
+            var request = new LoadStreamingConfigBusinessTransactionRequestData
+            {
+                TransactionId = ServerSideBusinessTransactionIds.LoadStreamConfig,
+                Config = config
+            };
+
+                    _businessTransactionManager.RunBusinessTransactionFireAndForget(request.TransactionId, request);
+
+            Device.DataMessagingConfig.AppLogger.LogInformation($"{LoggerId} Telnet: {tncp.TelnetCommand} AddInfo: {tncp.TelnetAdditionalInfo}");
+        }
+
+        return MessageHandlingResultHelper.Success();
     }
 
     #endregion

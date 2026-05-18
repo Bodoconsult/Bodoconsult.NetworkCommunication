@@ -250,7 +250,9 @@ public class IpDuplexIoReceiver : BaseDuplexIoReceiver
                     continue;
                 }
 
-                var data = new byte[availableData].AsMemory();
+                //var data = new byte[availableData].AsMemory();
+
+                var data = ArrayPool.Rent(availableData);
 
                 var messageLength = await socketProxy.Receive(data);
 
@@ -259,6 +261,7 @@ public class IpDuplexIoReceiver : BaseDuplexIoReceiver
 
                 if (messageLength <= 0)
                 {
+                    ArrayPool.Return(data);
                     AsyncHelper.Delay(FillPipelineTimeout);
                     continue;
                 }
@@ -266,9 +269,10 @@ public class IpDuplexIoReceiver : BaseDuplexIoReceiver
                 //Trace.TraceInformation("Got data");
 
                 var dummy = _bufferPool.Dequeue();
-                dummy.Memory = data;
-
+                dummy.Memory = data.AsSpan()[..messageLength].ToArray().AsMemory();
+                
                 _currentPipeline.Enqueue(dummy);
+                ArrayPool.Return(data);
             }
         }
         catch (Exception e)

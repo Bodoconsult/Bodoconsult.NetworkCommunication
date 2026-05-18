@@ -19,6 +19,10 @@ using IpCommunicationSample.Common.BusinessTransactions;
 using IpCommunicationSample.Common.BusinessTransactions.Requests;
 using System;
 using System.Diagnostics;
+using Bodoconsult.App.Extensions;
+using Bodoconsult.NetworkCommunication.DataMessaging.DataBlocks;
+using IpCommunicationSample.Common.Extensions;
+using Microsoft.Diagnostics.Tracing;
 
 namespace IpClient.Bll.BusinessTransactions.Adapters;
 
@@ -57,51 +61,34 @@ public class BtcpBackendTcpIpBusinessLogicAdapter : BaseOrderManagementDeviceBus
     public ReportDeviceErrorDelegate? ReportDeviceErrorDelegate { get; }
 
     /// <summary>
-    /// Request a start streaming state
+    /// Request a start messaging state
     /// </summary>
     /// <param name="request">Current request</param>
-    public IBusinessTransactionReply RequestDeviceStartStreamingState(IBusinessTransactionRequestData request)
+    public IBusinessTransactionReply RequestDeviceStartMessagingState(IBusinessTransactionRequestData request)
     {
-        var transactionId = ClientSideBusinessTransactionIds.StartStreaming;
-        const string orderName = "RequestDeviceStartStreamingState";
+        if (request is not StartMessagingReportBusinessTransactionRequestData startRequest)
+        {
+            throw new ArgumentException($"request is not {nameof(StartMessagingReportBusinessTransactionRequestData)}");
+        }
 
-        return CreateAndExecuteOrder(transactionId, orderName);
-    }
+        var transactionId = ClientSideBusinessTransactionIds.StartMessaging;
+        const string orderName = "RequestDeviceStartMessaging";
 
-    /// <summary>
-    /// Request a start snapshot state
-    /// </summary>
-    /// <param name="request">Current request</param>
-    public IBusinessTransactionReply RequestDeviceStartSnapshotState(IBusinessTransactionRequestData request)
-    {
-        var transactionId = ClientSideBusinessTransactionIds.StartSnapshot;
-        const string orderName = "RequestDeviceStartSnapshotState";
+        var data = startRequest.GetBytes();
 
-        return CreateAndExecuteOrder(transactionId, orderName);
+        return CreateAndExecuteOrder(transactionId, orderName, data);
     }
 
     /// <summary>
     /// Request a stop streaming state
     /// </summary>
     /// <param name="request">Current request</param>
-    public IBusinessTransactionReply RequestDeviceStopStreamingState(IBusinessTransactionRequestData request)
+    public IBusinessTransactionReply RequestDeviceStopMessagingState(IBusinessTransactionRequestData request)
     {
-        var transactionId = ClientSideBusinessTransactionIds.StopStreaming;
-        const string orderName = "RequestDeviceStopStreamingState";
+        var transactionId = ClientSideBusinessTransactionIds.StopMessaging;
+        const string orderName = "RequestDeviceStopMessaging";
 
-        return CreateAndExecuteOrder(transactionId, orderName);
-    }
-
-    /// <summary>
-    /// Request a stop snapshot state
-    /// </summary>
-    /// <param name="request">Current request</param>
-    public IBusinessTransactionReply RequestDeviceStopSnapshotState(IBusinessTransactionRequestData request)
-    {
-        var transactionId = ClientSideBusinessTransactionIds.StopSnapshot;
-        const string orderName = "RequestDeviceStopSnapshotState";
-
-        return CreateAndExecuteOrder(transactionId, orderName);
+        return CreateAndExecuteOrder(transactionId, orderName, []);
     }
 
     /// <summary>
@@ -136,10 +123,10 @@ public class BtcpBackendTcpIpBusinessLogicAdapter : BaseOrderManagementDeviceBus
 
         ArgumentNullException.ThrowIfNull(Device.OrderManager);
 
-        var transactionId = ClientSideBusinessTransactionIds.StopSnapshot;
+        var transactionId = ClientSideBusinessTransactionIds.CreateFftAnalysisReport;
         var orderName = "CreateFftAnalysisReport";
 
-        return CreateAndExecuteOrder(transactionId, orderName, HandleRequestAnswerDelegate);
+        return CreateAndExecuteOrder(transactionId, orderName, [], HandleRequestAnswerDelegate);
     }
 
     private MessageHandlingResult HandleRequestAnswerDelegate(IInboundDataMessage? message, object? transportObject, IParameterSet? parameterSet)
@@ -148,12 +135,13 @@ public class BtcpBackendTcpIpBusinessLogicAdapter : BaseOrderManagementDeviceBus
         throw new NotImplementedException();
     }
 
-    private IBusinessTransactionReply CreateAndExecuteOrder(int transactionId, string orderName, HandleRequestAnswerDelegate? handleRequestAnswerDelegate = null)
+    private IBusinessTransactionReply CreateAndExecuteOrder(int transactionId, string orderName, byte[] data, HandleRequestAnswerDelegate? handleRequestAnswerDelegate = null)
     {
         ArgumentNullException.ThrowIfNull(Device.OrderManager);
 
         var ps = new BtcpParameterSet();
         ps.BusinessTransactionId = transactionId;
+        
 
         var builder = new BtcpOrderBuilder();
 
@@ -162,6 +150,12 @@ public class BtcpBackendTcpIpBusinessLogicAdapter : BaseOrderManagementDeviceBus
             HandleRequestAnswerOnSuccessDelegate = handleRequestAnswerDelegate,
             ParameterSet = ps
         };
+
+        // Add payload
+        if (data.Length > 0)
+        {
+            ps.Payload = data;
+        }
 
         var order = builder.CreateOrder(config, _orderIdGenerator.NextId());
 

@@ -71,6 +71,25 @@ internal class IpDeviceUdpBusinessTransactionProviderTests
         }
     }
 
+    [Test]
+    public void Transaction207_LoadStreamConfig_Always_ReturnsCorrectTransaction()
+    {
+        // Arrange
+        var provider = CreateProvider();
+
+        // Act
+        var transaction = provider.Transaction207_LoadStreamConfig();
+
+        // Assert
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(transaction, Is.Not.Null);
+            Assert.That(transaction.Id, Is.EqualTo(ServerSideBusinessTransactionIds.LoadStreamConfig));
+            Assert.That(transaction.RunBusinessTransactionDelegate, Is.Not.Null);
+            Assert.That(transaction.AllowedRequestDataTypes, Has.Count.EqualTo(1));
+        }
+    }
+
     private static IpDeviceUdpBusinessTransactionProvider CreateProvider()
     {
         var articleGroupDelegate = new Mock<IIpDeviceUdpDeviceBusinessLogicAdapter>();

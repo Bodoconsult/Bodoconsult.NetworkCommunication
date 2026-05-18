@@ -9,6 +9,7 @@ using ReactiveUI;
 using ReactiveUI.SourceGenerators;
 using System.Reactive;
 using System.Reactive.Linq;
+using IpCommunicationSample.Common.BusinessTransactions.Requests;
 
 namespace IpClientUi.ViewModels;
 
@@ -83,9 +84,19 @@ public partial class StartMessagingViewModel : ReactiveObject, IUiRegionViewMode
     {
         return Observable.Start(() =>
         {
-            var request = new EmptyBusinessTransactionRequestData
+            if (Channel1 == false && Channel2 == false && Channel3 == false && Channel4 == false)
             {
-                TransactionId = Snapshot ? ClientSideBusinessTransactionIds.StartSnapshot : ClientSideBusinessTransactionIds.StartStreaming
+                Channel1 = true;
+            }
+
+            var request = new StartMessagingReportBusinessTransactionRequestData
+            {
+                TransactionId = ClientSideBusinessTransactionIds.StartMessaging,
+                Snapshot = Snapshot,
+                Channel1 = Channel1,
+                Channel2 = Channel2,
+                Channel3 = Channel3,
+                Channel4 = Channel4,
             };
 
             _businessTransactionManager.RunBusinessTransaction(request.TransactionId, request);

@@ -41,11 +41,14 @@ internal class BtcpClientTcpIpBusinessLogicAdapterFactoryTests
         {
             Assert.That(result.IpDevice, Is.EqualTo(device));
 
-            Assert.That(result is ISimpleDeviceBusinessLogicAdapter, Is.True);
+            Assert.That(result, Is.InstanceOf<ISimpleDeviceBusinessLogicAdapter>());
 
             var adapter = result as ISimpleDeviceBusinessLogicAdapter;
+            ArgumentNullException.ThrowIfNull(adapter);
 
             Assert.That(adapter, Is.Not.Null);
+
+            ArgumentNullException.ThrowIfNull(adapter.IpDevice);
             Assert.That(adapter.IpDevice, Is.EqualTo(device));
         }
     }

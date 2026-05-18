@@ -65,7 +65,7 @@ internal class SfxpDataMessageCodecTests
         dataBlockCodingProcessor.LoadDataBlockCodecs('x', new BasicDataBlockCodec());
 
         var sfxpCodec = new SfxpDataBlockCodec();
-        sfxpCodec.LoadMask([0x0, 0x1, 0x2, 0x3, 0xC, 0xF]);
+        sfxpCodec.LoadStreamingConfig([0x0, 0x1, 0x2, 0x3, 0xC, 0xF]);
 
         dataBlockCodingProcessor.LoadDataBlockCodecs('s', sfxpCodec);
         var codec = new SfxpDataMessageCodec(dataBlockCodingProcessor);

@@ -6,6 +6,7 @@ using Bodoconsult.NetworkCommunication.BusinessTransactions.Converters;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
 using IpCommunicationSample.Common.BusinessTransactions;
 using IpCommunicationSample.Common.BusinessTransactions.Requests;
+using IpCommunicationSample.Common.Extensions;
 
 namespace IpBackend.Bll.BusinessLogic.Converters;
 
@@ -18,14 +19,12 @@ public class ClientInboundBtcpMessageToBtRequestDataConverter : BaseInboundBtcpM
     public ClientInboundBtcpMessageToBtRequestDataConverter(IAppLoggerProxy appLogger) : base(appLogger)
     {
         AllBusinessTransactionRequestDataDelegates.Add(ClientSideBusinessTransactionIds.GetConfig, CreateGetConfigBusinessTransaction);
-        AllBusinessTransactionRequestDataDelegates.Add(ClientSideBusinessTransactionIds.StartStreaming, CreateStartStreamingBusinessTransaction);
-        AllBusinessTransactionRequestDataDelegates.Add(ClientSideBusinessTransactionIds.StopStreaming, CreateStopStreamingBusinessTransaction);
-        AllBusinessTransactionRequestDataDelegates.Add(ClientSideBusinessTransactionIds.StartSnapshot, CreateStartSnapshotBusinessTransaction);
-        AllBusinessTransactionRequestDataDelegates.Add(ClientSideBusinessTransactionIds.StopSnapshot, CreateStopSnapshotBusinessTransaction);
+        AllBusinessTransactionRequestDataDelegates.Add(ClientSideBusinessTransactionIds.StartMessaging, CreateStartMessagingBusinessTransaction);
+        AllBusinessTransactionRequestDataDelegates.Add(ClientSideBusinessTransactionIds.StopMessaging, CreateStopMessagingBusinessTransaction);
         AllBusinessTransactionRequestDataDelegates.Add(ClientSideBusinessTransactionIds.CreateFftAnalysisReport, CreateFftAnalysisReport);
     }
 
-    private IBusinessTransactionRequestData? CreateFftAnalysisReport(BtcpRequestInboundDataMessage request)
+    private IBusinessTransactionRequestData CreateFftAnalysisReport(BtcpRequestInboundDataMessage request)
     {
         var rd = new FftReportBusinessTransactionRequestData
         {
@@ -35,43 +34,26 @@ public class ClientInboundBtcpMessageToBtRequestDataConverter : BaseInboundBtcpM
         return rd;
     }
 
-    private IBusinessTransactionRequestData CreateStopSnapshotBusinessTransaction(BtcpRequestInboundDataMessage request)
+    private IBusinessTransactionRequestData CreateStopMessagingBusinessTransaction(BtcpRequestInboundDataMessage request)
     {
-        var rd = new EmptyBusinessTransactionRequestData
-        {
-            TransactionId = request.BusinessTransactionId,
-            TransactionGuid = request.BusinessTransactionUid
-        };
+        ArgumentNullException.ThrowIfNull(request.DataBlock);
+
+        var rd = request.DataBlock.Data.ToStartMessagingReportBusinessTransactionRequestData();
+
+        rd.TransactionId = request.BusinessTransactionId;
+        rd.TransactionGuid = request.BusinessTransactionUid;
+
         return rd;
     }
 
-    private IBusinessTransactionRequestData CreateStartSnapshotBusinessTransaction(BtcpRequestInboundDataMessage request)
+    private IBusinessTransactionRequestData CreateStartMessagingBusinessTransaction(BtcpRequestInboundDataMessage request)
     {
-        var rd = new EmptyBusinessTransactionRequestData
-        {
-            TransactionId = request.BusinessTransactionId,
-            TransactionGuid = request.BusinessTransactionUid
-        };
-        return rd;
-    }
+        ArgumentNullException.ThrowIfNull(request.DataBlock);
+        
+        var rd = request.DataBlock.Data.ToStartMessagingReportBusinessTransactionRequestData();
+        rd.TransactionId = request.BusinessTransactionId;
+        rd.TransactionGuid = request.BusinessTransactionUid;
 
-    private IBusinessTransactionRequestData CreateStopStreamingBusinessTransaction(BtcpRequestInboundDataMessage request)
-    {
-        var rd = new EmptyBusinessTransactionRequestData
-        {
-            TransactionId = request.BusinessTransactionId,
-            TransactionGuid = request.BusinessTransactionUid
-        };
-        return rd;
-    }
-
-    private IBusinessTransactionRequestData CreateStartStreamingBusinessTransaction(BtcpRequestInboundDataMessage request)
-    {
-        var rd = new EmptyBusinessTransactionRequestData
-        {
-            TransactionId = request.BusinessTransactionId,
-            TransactionGuid = request.BusinessTransactionUid
-        };
         return rd;
     }
 

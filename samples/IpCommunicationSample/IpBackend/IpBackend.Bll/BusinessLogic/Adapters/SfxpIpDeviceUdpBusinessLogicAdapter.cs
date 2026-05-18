@@ -3,6 +3,7 @@
 using Bodoconsult.App.Abstractions.Interfaces;
 using Bodoconsult.App.BusinessTransactions.Replies;
 using Bodoconsult.NetworkCommunication.BusinessLogicAdapters;
+using Bodoconsult.NetworkCommunication.DataMessaging.DataBlockCodecs;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
 using Bodoconsult.NetworkCommunication.EnumAndStates;
 using Bodoconsult.NetworkCommunication.Interfaces;
@@ -114,6 +115,35 @@ public class SfxpIpDeviceUdpBusinessLogicAdapter : BaseSimpleDeviceBusinessLogic
         //    ErrorCode = 1,
         //    Message = "No connection"
         //};
+    }
+
+    /// <summary>
+    /// Send the required client hello to the server
+    /// </summary>
+    /// <param name="requestData">Current request parameter</param>
+    /// <returns>Reply</returns>
+    public IBusinessTransactionReply LoadStreamingConfig(IBusinessTransactionRequestData requestData)
+    {
+        ArgumentNullException.ThrowIfNull(IpDevice.DataMessagingConfig.DataMessageProcessingPackage);
+
+        if (requestData is not LoadStreamingConfigBusinessTransactionRequestData request)
+        {
+            throw new ArgumentException($"requestData is not {nameof(LoadStreamingConfigBusinessTransactionRequestData)}");
+        }
+
+        // Now find the datablock codec
+        var codec = IpDevice.DataMessagingConfig.DataMessageProcessingPackage.DataBlockCodingProcessor
+            .GetDatablockCodecCanBeNull('s');
+
+        if (codec is not SfxpDataBlockCodec sfxp)
+        {
+            throw new ArgumentException($"codec is not {nameof(SfxpDataBlockCodec)}");
+        }
+
+        // Now load the streaming config
+        sfxp.LoadStreamingConfig(request.Config);
+
+        return new DefaultBusinessTransactionReply();
     }
 
     /// <summary>
