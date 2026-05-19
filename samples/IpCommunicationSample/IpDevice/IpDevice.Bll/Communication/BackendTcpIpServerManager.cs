@@ -80,8 +80,15 @@ public class BackendTcpIpServerManager : ISimpleDeviceManager
         var configurator = new TcpIpServerDeviceConfigurator(_duplexIoFactory, _monitorLoggerFactoryFactory, _logDataFactory, _appLoggerFactory, 
             _appEventSourceFactory, _clientNotificationManager, _appLoggerProxy, _socketProxyFactory);
 
-        configurator.CreateMessagingConfig("Device_Backend_TCPIP", ipAddress, port, messageProcessingPackageFactory);
+        // Create config now
+        configurator.CreateMessagingConfig("Device_Backend_TCPIP", ipAddress, port);
 
+        // Add more config settings if needed
+
+        // Data messaging package
+        configurator.CreateDataMessagingPackage(messageProcessingPackageFactory);
+
+        // Create the device 
         IDeviceBusinessLogicAdapterFactory businessLogicAdapterFactory = new TncpBackendTcpIpBusinessLogicAdapterFactory(_businessTransactionManager);
         configurator.CreateDevice(businessLogicAdapterFactory);
 
@@ -89,7 +96,7 @@ public class BackendTcpIpServerManager : ISimpleDeviceManager
 
         if (device.DeviceBusinessLogicAdapter is not ISimpleDeviceBusinessLogicAdapter dbla)
         {
-            throw new ArgumentNullException($"device.DeviceBusinessLogicAdapter does not implement {nameof(ISimpleDeviceBusinessLogicAdapter)}");
+            throw new ArgumentException($"device.DeviceBusinessLogicAdapter does not implement {nameof(ISimpleDeviceBusinessLogicAdapter)}");
         }
 
         IpDevice = device;

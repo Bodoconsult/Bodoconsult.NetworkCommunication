@@ -11,6 +11,7 @@
 	</PropertyGroup>
 	<PropertyGroup>
 		<DebugType>embedded</DebugType>
+		<ErrorOnDuplicatePublishOutputFiles>false</ErrorOnDuplicatePublishOutputFiles>
 	</PropertyGroup>
 	<ItemGroup>
 	  <Content Include="LICENSE.md">

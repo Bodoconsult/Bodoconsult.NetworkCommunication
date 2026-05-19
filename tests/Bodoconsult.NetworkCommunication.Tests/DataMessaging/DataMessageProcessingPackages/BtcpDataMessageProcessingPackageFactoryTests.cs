@@ -13,11 +13,13 @@ internal class BtcpDataMessageProcessingPackageFactoryTests
     {
         // Arrange 
         var factory = new BtcpDataMessageProcessingPackageFactory();
+        var config = TestDataHelper.GetDataMessagingConfig();
 
         // Act  
-        var result = factory.CreateInstance(TestDataHelper.GetDataMessagingConfig());
+        factory.CreateInstance(config);
 
         // Assert
-        Assert.That(result.GetType(), Is.EqualTo(typeof(BtcpDataMessageProcessingPackage)));
+        ArgumentNullException.ThrowIfNull(config.DataMessageProcessingPackage);
+        Assert.That(config.DataMessageProcessingPackage.GetType(), Is.EqualTo(typeof(BtcpDataMessageProcessingPackage)));
     }
 }

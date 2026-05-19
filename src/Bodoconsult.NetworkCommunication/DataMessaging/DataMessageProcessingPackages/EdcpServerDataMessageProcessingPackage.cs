@@ -33,6 +33,7 @@ public class EdcpServerDataMessageProcessingPackage : IDataMessageProcessingPack
         }
 
         DataMessagingConfig = dataMessagingConfig;
+        DataMessagingConfig.DataMessageProcessingPackage = this;
 
         // *******************************
         // Now setup the dependent objects

@@ -21,7 +21,7 @@
 		<PackageId>Bodoconsult.NetworkCommunication</PackageId>
 		<PackageTags>TCP/IP,UDP,network,communication,infrastructure,socket</PackageTags>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-		<Description>TCP/IP and UDP based network communication infrastructure</Description>
+		<Description>Provides TCP/IP and UDP based network communication infrastructure</Description>
 		<PackageReleaseNotes>First draft</PackageReleaseNotes>
 		<PackageProjectUrl>https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication</PackageProjectUrl>
 		<PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>

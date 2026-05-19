@@ -216,7 +216,7 @@ public class OrderPipeline : IOrderPipeline
 
             foreach (var proc in data)
             {
-                var order = proc.Value.Order;
+                var order = proc.Value?.Order;
                 if (order is not { IsCancelled: true })
                 {
                     continue;

@@ -2,6 +2,7 @@
 
 using Bodoconsult.NetworkCommunication.Helpers;
 using Bodoconsult.NetworkCommunication.Interfaces;
+using Bodoconsult.NetworkCommunication.OrderManagement.Configurations;
 using Bodoconsult.NetworkCommunication.OrderManagement.ParameterSets;
 using Bodoconsult.NetworkCommunication.StateManagement.Builders;
 using Bodoconsult.NetworkCommunication.StateManagement.Configurations;
@@ -69,6 +70,9 @@ internal class DeviceStartSnapshotStateBuilderTests
         config.OrderConfigurations.Add($"{BuiltinOrders.TncpOrder}Configuration");
         config.OrderConfigurations.Add($"{BuiltinOrders.TncpOrder}Configuration");
 
+        config.OrderConfigurationInstances.Add(new TncpOrderConfiguration());
+        config.OrderConfigurationInstances.Add(new TncpOrderConfiguration());
+
         config.ParameterSets.Add(ps);
         config.ParameterSets.Add(ps);
 
@@ -122,6 +126,9 @@ internal class DeviceStartSnapshotStateBuilderTests
         config.OrderConfigurations.Add($"{BuiltinOrders.TncpOrder}Configuration");
         config.OrderConfigurations.Add($"{BuiltinOrders.TncpOrder}Configuration");
 
+        config.OrderConfigurationInstances.Add(new TncpOrderConfiguration());
+        config.OrderConfigurationInstances.Add(new TncpOrderConfiguration());
+
         config.ParameterSets.Add(ps);
         config.ParameterSets.Add(ps2);
 
@@ -160,6 +167,7 @@ internal class DeviceStartSnapshotStateBuilderTests
         };
 
         config.OrderConfigurations.Add($"{BuiltinOrders.TncpOrder}Configuration");
+        config.OrderConfigurationInstances.Add(new TncpOrderConfiguration());
 
         config.ParameterSets.Add(ps);
 
@@ -174,7 +182,7 @@ internal class DeviceStartSnapshotStateBuilderTests
         using (Assert.EnterMultipleScope())
         {
             Assert.That(state.Orders.Count, Is.EqualTo(state.OrderConfigurations.Count));
-            Assert.That(state.CurrentOrderIndex, Is.EqualTo(state.OrderConfigurations.Count));
+            Assert.That(state.CurrentOrderIndex, Is.Zero);
         }
     }
 
@@ -204,6 +212,9 @@ internal class DeviceStartSnapshotStateBuilderTests
         config.OrderConfigurations.Add($"{BuiltinOrders.TncpOrder}Configuration");
         config.OrderConfigurations.Add($"{BuiltinOrders.TncpOrder}Configuration");
 
+        config.OrderConfigurationInstances.Add(new TncpOrderConfiguration());
+        config.OrderConfigurationInstances.Add(new TncpOrderConfiguration());
+
         config.ParameterSets.Add(ps);
         config.ParameterSets.Add(ps2);
 
@@ -218,7 +229,67 @@ internal class DeviceStartSnapshotStateBuilderTests
         using (Assert.EnterMultipleScope())
         {
             Assert.That(state.Orders.Count, Is.EqualTo(state.OrderConfigurations.Count));
-            Assert.That(state.CurrentOrderIndex, Is.EqualTo(state.OrderConfigurations.Count));
+            Assert.That(state.CurrentOrderIndex, Is.Zero);
+        }
+    }
+
+    [Test]
+    public void RunNextOrder_ThreeOrders_Successful()
+    {
+        // Arrange 
+        var device = TestDataHelper.CreateStateMachineDevice();
+
+        var ps = new TncpParameterSet();
+        var ps2 = new TncpParameterSet();
+        var ps3 = new TncpParameterSet();
+
+        var builder = new DeviceStartSnapshotStateBuilder();
+
+        var config = new JobStateConfiguration(DefaultStateNames.DeviceStartSnapshotState, builder)
+        {
+            CurrentContext = device,
+            HandleAsyncMessageDelegate = DelegateHelper.HandleAsyncMessageDelegate,
+            HandleComDevCloseDelegate = DelegateHelper.HandleComDevCloseDelegate,
+            HandleErrorMessageDelegate = DelegateHelper.HandleErrorMessageDelegate,
+            HandleRegularStateRequestAnswerDelegate = DelegateHelper.HandleRegularStateRequestAnswerDelegate,
+            PrepareRegularStateRequestDelegate = DelegateHelper.PrepareRegularStateRequestDelegate,
+            OrderFinishedSucessfullyDelegate = DelegateHelper.OrderFinishedSucessfullyDelegate,
+            OrderFinishedUnsucessfullyDelegate = DelegateHelper.OrderFinishedUnsucessfullyDelegate,
+        };
+
+        config.OrderConfigurations.Add($"{BuiltinOrders.TncpOrder}Configuration");
+        config.OrderConfigurations.Add($"{BuiltinOrders.TncpOrder}Configuration");
+        config.OrderConfigurations.Add($"{BuiltinOrders.TncpOrder}Configuration");
+
+        config.OrderConfigurationInstances.Add(new TncpOrderConfiguration());
+        config.OrderConfigurationInstances.Add(new TncpOrderConfiguration());
+        config.OrderConfigurationInstances.Add(new TncpOrderConfiguration());
+
+        config.ParameterSets.Add(ps);
+        config.ParameterSets.Add(ps2);
+        config.ParameterSets.Add(ps3);
+
+        var state = (IOrderBasedActionStateMachineState)builder.BuildState(config);
+        state.InitiateState();
+        device.SetFakeState(state);
+
+        // Act  
+        state.RunNextOrder();
+
+        // Assert
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(state.Orders.Count, Is.EqualTo(state.OrderConfigurations.Count));
+            Assert.That(state.CurrentOrderIndex, Is.Zero);
+        }
+
+        // Act 2
+        state.RunNextOrder();
+
+        // Assert
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(state.CurrentOrderIndex, Is.EqualTo(1));
         }
     }
 }

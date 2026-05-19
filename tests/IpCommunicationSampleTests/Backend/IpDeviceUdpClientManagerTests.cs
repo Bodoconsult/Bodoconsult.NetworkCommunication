@@ -5,6 +5,7 @@ using Bodoconsult.App.Benchmarking;
 using Bodoconsult.App.Factories;
 using Bodoconsult.App.Logging;
 using Bodoconsult.NetworkCommunication.ClientNotifications;
+using Bodoconsult.NetworkCommunication.DataMessaging.DataMessageProcessingPackages;
 using Bodoconsult.NetworkCommunication.Factories;
 using Bodoconsult.NetworkCommunication.Interfaces;
 using Bodoconsult.NetworkCommunication.Protocols.TcpIp;
@@ -83,6 +84,10 @@ internal class IpDeviceUdpClientManagerTests
         {
             Assert.That(m.IpDevice, Is.Not.Null);
             Assert.That(m.DeviceBusinessLogicAdapter, Is.Not.Null);
+            ArgumentNullException.ThrowIfNull(m.IpDevice);
+            Assert.That(m.IpDevice.DataMessagingConfig, Is.Not.Null);
+            ArgumentNullException.ThrowIfNull(m.IpDevice.DataMessagingConfig);
+            Assert.That(m.IpDevice.DataMessagingConfig.DataMessageProcessingPackage, Is.TypeOf<SfxpLoggedSortableDataMessageProcessingPackage>());
         }
     }
 }

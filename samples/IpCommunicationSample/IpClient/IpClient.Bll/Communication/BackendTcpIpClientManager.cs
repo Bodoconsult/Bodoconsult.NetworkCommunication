@@ -87,8 +87,15 @@ public class BackendTcpIpClientManager : IOrderManagementDeviceManager
         var configurator = new TcpIpClientOrderManagementDeviceConfigurator(_duplexIoFactory, _monitorLoggerFactoryFactory, _logDataFactory, _appLoggerFactory, _appEventSourceFactory, 
             _clientNotificationManager, _appLoggerProxy, _socketProxyFactory);
 
-        configurator.CreateMessagingConfig("Client_Backend_TCPIP", ipAddress, port, messageProcessingPackageFactory);
+        // Create the config now
+        configurator.CreateMessagingConfig("Client_Backend_TCPIP", ipAddress, port);
 
+        // Add more config settings if needed
+
+        // Data messaging package
+        configurator.CreateDataMessagingPackage(messageProcessingPackageFactory);
+
+        // Create the device
         IDeviceBusinessLogicAdapterFactory businessLogicAdapterFactory = new BtcpBackendTcpIpBusinessLogicAdapterFactory(_orderIdGenerator, _uiStateHandler);
         configurator.CreateDevice(businessLogicAdapterFactory);
 
@@ -98,12 +105,12 @@ public class BackendTcpIpClientManager : IOrderManagementDeviceManager
 
         if (device is not IOrderManagementDevice od)
         {
-            throw new ArgumentNullException($"device does not implement {nameof(IOrderManagementDevice)}");
+            throw new ArgumentException($"device does not implement {nameof(IOrderManagementDevice)}");
         }
 
         if (device.DeviceBusinessLogicAdapter is not IOrderManagementDeviceBusinessLogicAdapter dbla)
         {
-            throw new ArgumentNullException($"device.DeviceBusinessLogicAdapter does not implement {nameof(IOrderManagementDeviceBusinessLogicAdapter)}");
+            throw new ArgumentException($"device.DeviceBusinessLogicAdapter does not implement {nameof(IOrderManagementDeviceBusinessLogicAdapter)}");
         }
 
         IpDevice = device;

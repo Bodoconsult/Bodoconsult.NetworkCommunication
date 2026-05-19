@@ -20,7 +20,7 @@ public abstract class BaseOrderBasedStateMachineState : BaseStateMachineState, I
     protected BaseOrderBasedStateMachineState(IStateMachineDevice currentContext, int id, string name) : base(
         currentContext, id, name)
     {
-        CurrentOrderIndex = 0;
+        CurrentOrderIndex = -1;
     }
 
     /// <summary>
@@ -90,6 +90,8 @@ public abstract class BaseOrderBasedStateMachineState : BaseStateMachineState, I
 
         ArgumentNullException.ThrowIfNull(CurrentContext.OrderManager);
 
+        CurrentOrderIndex++;
+
         if (CurrentOrderIndex >= Orders.Count)
         {
             Orders.Clear();
@@ -102,9 +104,6 @@ public abstract class BaseOrderBasedStateMachineState : BaseStateMachineState, I
         //{
         //    return;
         //}
-
-        // Update index before adding the order. Otherwise unit tests fail (due to faking out async behavior)
-        CurrentOrderIndex++;
 
         if (order.IsHighPriorityOrder)
         {

@@ -454,33 +454,58 @@ public class TncpIpDeviceTcpIpBusinessLogicAdapter : BaseStateMachineDeviceBusin
         if (tncp.TelnetCommand.StartsWith("<BEGIN>AUTO"))
         {
             Device.DataMessagingConfig.AppLogger.LogError($"{LoggerId} Telnet: {tncp.TelnetCommand} AddInfo: {tncp.TelnetAdditionalInfo}");
+            return MessageHandlingResultHelper.Success();
         }
 
         // Error message received
-        if (tncp.TelnetCommand.StartsWith("<<BEGIN>show,streamconfig"))
+        if (!tncp.TelnetCommand.StartsWith("<BEGIN>show,streamconfig"))
         {
-            if (string.IsNullOrEmpty(tncp.TelnetAdditionalInfo))
-            {
-                return MessageHandlingResultHelper.Error("No data provided for tncp.TelnetAdditionalInfo");
-            }
-
-            var configString = tncp.TelnetAdditionalInfo.Replace("<CONFIG>", string.Empty,
-                StringComparison.InvariantCultureIgnoreCase);
-
-            var config = ArrayHelper.GetBytes(configString);
-
-            var request = new LoadStreamingConfigBusinessTransactionRequestData
-            {
-                TransactionId = ServerSideBusinessTransactionIds.LoadStreamConfig,
-                Config = config
-            };
-
-            _businessTransactionManager.RunBusinessTransactionFireAndForget(request.TransactionId, request);
-
-            Device.DataMessagingConfig.AppLogger.LogInformation($"{LoggerId} Telnet: {tncp.TelnetCommand} AddInfo: {tncp.TelnetAdditionalInfo}");
+            return MessageHandlingResultHelper.Success();
         }
 
+        // show,streamconfig with additional data
+        if (string.IsNullOrEmpty(tncp.TelnetAdditionalInfo))
+        {
+            return MessageHandlingResultHelper.Error("No data provided for tncp.TelnetAdditionalInfo");
+        }
+
+        var config = GetConfig(tncp.TelnetAdditionalInfo);
+
+        var request = new LoadStreamingConfigBusinessTransactionRequestData
+        {
+            TransactionId = ServerSideBusinessTransactionIds.LoadStreamConfig,
+            Config = config
+        };
+
+        //var reply = _businessTransactionManager.RunBusinessTransaction(request.TransactionId, request);
+        _businessTransactionManager.RunBusinessTransactionFireAndForget(request.TransactionId, request);
+
+        Device.DataMessagingConfig.AppLogger.LogInformation($"{LoggerId} Telnet: {tncp.TelnetCommand} AddInfo: {tncp.TelnetAdditionalInfo}");
+
         return MessageHandlingResultHelper.Success();
+    }
+
+    /// <summary>
+    /// Get the config from a config string
+    /// </summary>
+    /// <param name="telnetCommand">Current telnet command</param>
+    /// <returns>Config array</returns>
+    public static byte[] GetConfig(string telnetCommand)
+    {
+        var configString = telnetCommand.Replace("<CONFIG>", string.Empty, StringComparison.InvariantCultureIgnoreCase);
+
+        var config = ArrayHelper.GetBytes(configString);
+
+        for (var index = 0; index < config.Length; index++)
+        {
+            var b = config[index];
+            if (b < 5)
+            {
+                config[index] = (byte)(config[index] - 1);
+            }
+        }
+
+        return config;
     }
 
     #endregion

@@ -50,11 +50,19 @@ public abstract class BaseIpDeviceConfigurator : IIpDeviceConfigurator
     /// <param name="loggerId">Logger ID</param>
     /// <param name="ipAddress">IP address</param>
     /// <param name="port">Port</param>
-    /// <param name="messageProcessingPackageFactory">Current data messaging package factory</param>
-    public virtual void CreateMessagingConfig(string loggerId, string ipAddress, int port,
-        IDataMessageProcessingPackageFactory messageProcessingPackageFactory)
+    public virtual void CreateMessagingConfig(string loggerId, string ipAddress, int port)
     {
         throw new NotSupportedException("Override in derived classes!");
+    }
+
+    /// <summary>
+    /// Create the data messaging package and add it to the config
+    /// </summary>
+    /// <param name="messageProcessingPackageFactory">Current data messaging package factory</param>
+    public virtual void CreateDataMessagingPackage(IDataMessageProcessingPackageFactory messageProcessingPackageFactory)
+    {
+        ArgumentNullException.ThrowIfNull(DataMessagingConfig);
+        messageProcessingPackageFactory.CreateInstance(DataMessagingConfig);
     }
 
     /// <summary>

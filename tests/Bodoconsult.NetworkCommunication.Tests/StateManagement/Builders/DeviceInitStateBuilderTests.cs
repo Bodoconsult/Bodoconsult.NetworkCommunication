@@ -2,6 +2,7 @@
 
 using Bodoconsult.NetworkCommunication.Helpers;
 using Bodoconsult.NetworkCommunication.Interfaces;
+using Bodoconsult.NetworkCommunication.OrderManagement.Configurations;
 using Bodoconsult.NetworkCommunication.OrderManagement.ParameterSets;
 using Bodoconsult.NetworkCommunication.StateManagement.Builders;
 using Bodoconsult.NetworkCommunication.StateManagement.Configurations;
@@ -69,6 +70,9 @@ internal class DeviceInitStateBuilderTests
         config.OrderConfigurations.Add($"{BuiltinOrders.TncpOrder}Configuration");
         config.OrderConfigurations.Add($"{BuiltinOrders.TncpOrder}Configuration");
 
+        config.OrderConfigurationInstances.Add(new TncpOrderConfiguration());
+        config.OrderConfigurationInstances.Add(new TncpOrderConfiguration());
+
         config.ParameterSets.Add(ps);
         config.ParameterSets.Add(ps);
 
@@ -121,6 +125,9 @@ internal class DeviceInitStateBuilderTests
 
         config.OrderConfigurations.Add($"{BuiltinOrders.TncpOrder}Configuration");
         config.OrderConfigurations.Add($"{BuiltinOrders.TncpOrder}Configuration");
+
+        config.OrderConfigurationInstances.Add(new TncpOrderConfiguration());
+        config.OrderConfigurationInstances.Add(new TncpOrderConfiguration());
 
         config.ParameterSets.Add(ps);
         config.ParameterSets.Add(ps2);

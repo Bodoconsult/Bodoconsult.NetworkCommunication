@@ -17,13 +17,13 @@ internal class SfxpLoggedSortableDataMessageProcessingPackageFactoryTests
         var config = TestDataHelper.GetSfxpSortableLoggerDataMessagingConfig();
         
         // Act  
-        var result = factory.CreateInstance(config);
+        factory.CreateInstance(config);
 
         // Assert
         using (Assert.EnterMultipleScope())
         {
-            Assert.That(result.GetType(), Is.EqualTo(typeof(SfxpLoggedSortableDataMessageProcessingPackage)));
-            Assert.That(result.DataLoggers.Count, Is.EqualTo(1));
+            Assert.That(config.DataMessageProcessingPackage?.GetType(), Is.EqualTo(typeof(SfxpLoggedSortableDataMessageProcessingPackage)));
+            Assert.That(config.DataMessageProcessingPackage?.DataLoggers.Count, Is.EqualTo(1));
         }
     }
 }

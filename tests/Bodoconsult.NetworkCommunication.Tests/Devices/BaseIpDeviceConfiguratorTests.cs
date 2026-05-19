@@ -29,14 +29,13 @@ internal class BaseIpDeviceConfiguratorTests
     {
         // Arrange 
         var config = new TestIpDeviceConfigurator();
-        IDataMessageProcessingPackageFactory messageProcessingPackageFactory = new TncpDataMessageProcessingPackageFactory();
 
         // Act  
         using (Assert.EnterMultipleScope())
         {
             Assert.Throws<NotSupportedException>(() =>
             {
-                config.CreateMessagingConfig("TestDevice", "127.0.0.1", 9000, messageProcessingPackageFactory);
+                config.CreateMessagingConfig("TestDevice", "127.0.0.1", 9000);
             });
 
             // Assert

@@ -7,6 +7,7 @@ using Bodoconsult.App.Factories;
 using Bodoconsult.App.Logging;
 using Bodoconsult.NetworkCommunication.ClientNotifications;
 using Bodoconsult.NetworkCommunication.Communication;
+using Bodoconsult.NetworkCommunication.DataMessaging.DataLoggers;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessageProcessingPackages;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig;
 using Bodoconsult.NetworkCommunication.Devices;
@@ -125,6 +126,7 @@ public static class TestDataHelper
         config.DataMessageProcessingPackage = new SfxpLoggedSortableDataMessageProcessingPackage(config);
         config.AppLogger = Logger;
         config.MonitorLogger = config.AppLogger;
+        config.DataLoggers.Add(new FakeInboundDataLogger());
 
         return config;
     }

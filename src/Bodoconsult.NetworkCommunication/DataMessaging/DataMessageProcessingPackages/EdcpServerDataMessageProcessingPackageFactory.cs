@@ -14,8 +14,9 @@ public class EdcpServerDataMessageProcessingPackageFactory : IDataMessageProcess
     /// </summary>
     /// <param name="config">Current config to use</param>
     /// <returns>New instance of <see cref="IDataMessageProcessingPackage"/></returns>
-    public IDataMessageProcessingPackage CreateInstance(IDataMessagingConfig config)
+    public void CreateInstance(IDataMessagingConfig config)
     {
-        return new EdcpServerDataMessageProcessingPackage(config);
+        var package = new EdcpServerDataMessageProcessingPackage(config);
+        package.DataLoggers.AddRange(config.DataLoggers);
     }
 }

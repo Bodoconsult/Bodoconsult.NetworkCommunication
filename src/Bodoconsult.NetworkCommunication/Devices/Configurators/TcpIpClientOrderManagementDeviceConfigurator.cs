@@ -61,9 +61,7 @@ public class TcpIpClientOrderManagementDeviceConfigurator : BaseIpDeviceConfigur
     /// <param name="loggerId">Logger ID</param>
     /// <param name="ipAddress">IP address</param>
     /// <param name="port">Port</param>
-    /// <param name="messageProcessingPackageFactory">Current data messaging package factory</param>
-    public override void CreateMessagingConfig(string loggerId, string ipAddress, int port,
-        IDataMessageProcessingPackageFactory messageProcessingPackageFactory)
+    public override void CreateMessagingConfig(string loggerId, string ipAddress, int port)
     {
         if (loggerId.Length == 0)
         {
@@ -79,7 +77,6 @@ public class TcpIpClientOrderManagementDeviceConfigurator : BaseIpDeviceConfigur
         DataMessagingConfig.Port = port;
         DataMessagingConfig.IpProtocol = IpProtocolEnum.Tcp;
         DataMessagingConfig.IsServer = false;
-        DataMessagingConfig.DataMessageProcessingPackage = messageProcessingPackageFactory.CreateInstance(DataMessagingConfig);
     }
 
     /// <summary>

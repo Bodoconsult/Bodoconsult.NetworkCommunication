@@ -13,11 +13,11 @@ internal class SfxpDataMessageProcessingPackageFactoryTests
     {
         // Arrange 
         var factory = new SfxpDataMessageProcessingPackageFactory();
-
+        var config = TestDataHelper.GetDataMessagingConfig();
         // Act  
-        var result = factory.CreateInstance(TestDataHelper.GetDataMessagingConfig());
+        factory.CreateInstance(config);
 
         // Assert
-        Assert.That(result.GetType(), Is.EqualTo(typeof(SfxpDataMessageProcessingPackage)));
+        Assert.That(config.DataMessageProcessingPackage?.GetType(), Is.EqualTo(typeof(SfxpDataMessageProcessingPackage)));
     }
 }

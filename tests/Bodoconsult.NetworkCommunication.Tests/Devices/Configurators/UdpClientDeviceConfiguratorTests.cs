@@ -66,7 +66,7 @@ internal class UdpClientDeviceConfiguratorTests
         const int port = 9000;
 
         // Act  
-        conf.CreateMessagingConfig("TestDevice", ip, port, _messageProcessingPackageFactory);
+        conf.CreateMessagingConfig("TestDevice", ip, port);
 
         // Assert
         using (Assert.EnterMultipleScope())
@@ -76,6 +76,33 @@ internal class UdpClientDeviceConfiguratorTests
             Assert.That(conf.Device, Is.Null);
             Assert.That(conf.DataMessagingConfig.IpAddress, Is.EqualTo(ip));
             Assert.That(conf.DataMessagingConfig.Port, Is.EqualTo(port));
+            Assert.That(conf.DataMessagingConfig.DataMessageProcessingPackage, Is.Null);
+        }
+    }
+
+    [Test]
+    public void CreateDataMessagingPackage_ValidSetup_MessagingConfigIsCreated()
+    {
+        // Arrange 
+        var duplexIoFactory = new IpDuplexIoFactory(_sendPacketProcessFactory);
+        var socketFactory = new SocketProxyFactory(_tcpIpListenerManager);
+
+        var conf = new UdpClientDeviceConfigurator(duplexIoFactory, _monitorLoggerFactoryFactory, _logDataFactory,
+            _appLoggerFactory, _appEventSourceFactory, _clientNotificationManager, _appLoggerProxy, socketFactory, Globals.Instance);
+
+        const string ip = "127.0.0.1";
+        const int port = 9000;
+
+        conf.CreateMessagingConfig("TestDevice", ip, port);
+
+        // Act  
+        conf.CreateDataMessagingPackage(_messageProcessingPackageFactory);
+
+        // Assert
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(conf.DataMessagingConfig, Is.Not.Null);
+            ArgumentNullException.ThrowIfNull(conf.DataMessagingConfig);
             Assert.That(conf.DataMessagingConfig.DataMessageProcessingPackage, Is.Not.Null);
         }
     }
@@ -89,7 +116,8 @@ internal class UdpClientDeviceConfiguratorTests
 
         var conf = new UdpClientDeviceConfigurator(duplexIoFactory, _monitorLoggerFactoryFactory, _logDataFactory, _appLoggerFactory, 
             _appEventSourceFactory, _clientNotificationManager, _appLoggerProxy, socketFactory, Globals.Instance);
-        conf.CreateMessagingConfig("TestDevice", "127.0.0.1", 9000, _messageProcessingPackageFactory);
+        conf.CreateMessagingConfig("TestDevice", "127.0.0.1", 9000);
+        conf.CreateDataMessagingPackage(_messageProcessingPackageFactory);
 
         IDeviceBusinessLogicAdapterFactory businessLogicAdapterFactory = new TestIpDeviceAdapterFactory();
 

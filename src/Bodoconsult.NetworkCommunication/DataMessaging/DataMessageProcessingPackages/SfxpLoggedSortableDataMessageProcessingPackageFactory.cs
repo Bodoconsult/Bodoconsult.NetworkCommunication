@@ -14,10 +14,9 @@ public class SfxpLoggedSortableDataMessageProcessingPackageFactory : IDataMessag
     /// </summary>
     /// <param name="config">Current config to use</param>
     /// <returns>New instance of <see cref="IDataMessageProcessingPackage"/></returns>
-    public IDataMessageProcessingPackage CreateInstance(IDataMessagingConfig config)
+    public void CreateInstance(IDataMessagingConfig config)
     {
         var package = new SfxpLoggedSortableDataMessageProcessingPackage(config);
         package.DataLoggers.AddRange(config.DataLoggers);
-        return package;
     }
 }

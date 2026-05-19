@@ -13,11 +13,12 @@ internal class SdcpDataMessageProcessingPackageFactoryTests
     {
         // Arrange 
         var factory = new SdcpDataMessageProcessingPackageFactory();
+        var config = TestDataHelper.GetDataMessagingConfig();
 
         // Act  
-        var result = factory.CreateInstance(TestDataHelper.GetDataMessagingConfig());
+        factory.CreateInstance(config);
 
         // Assert
-        Assert.That(result.GetType(), Is.EqualTo(typeof(SdcpDataMessageProcessingPackage)));
+        Assert.That(config.DataMessageProcessingPackage?.GetType(), Is.EqualTo(typeof(SdcpDataMessageProcessingPackage)));
     }
 }

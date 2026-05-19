@@ -14,11 +14,12 @@ internal class TncpDataMessageProcessingPackageFactoryTests
     {
         // Arrange 
         var factory = new TncpDataMessageProcessingPackageFactory();
+        var config = TestDataHelper.GetDataMessagingConfig();
 
         // Act  
-        var result = factory.CreateInstance(TestDataHelper.GetDataMessagingConfig());
+        factory.CreateInstance(config);
 
         // Assert
-        Assert.That(result.GetType(), Is.EqualTo(typeof(TncpDataMessageProcessingPackage)));
+        Assert.That(config.DataMessageProcessingPackage?.GetType(), Is.EqualTo(typeof(TncpDataMessageProcessingPackage)));
     }
 }

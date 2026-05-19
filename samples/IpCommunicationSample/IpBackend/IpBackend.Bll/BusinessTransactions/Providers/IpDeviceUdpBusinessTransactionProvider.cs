@@ -27,6 +27,7 @@ public class IpDeviceUdpBusinessTransactionProvider : IBusinessTransactionProvid
         // Load transaction delegates now
         CreateBusinessTransactionDelegates.Add(ServerSideBusinessTransactionIds.SendClientHello, Transaction205_SendClientHello);
         CreateBusinessTransactionDelegates.Add(ServerSideBusinessTransactionIds.CheckConnection, Transaction206_CheckConnection);
+        CreateBusinessTransactionDelegates.Add(ServerSideBusinessTransactionIds.LoadStreamConfig, Transaction207_LoadStreamConfig);
     }
 
     /// <summary>

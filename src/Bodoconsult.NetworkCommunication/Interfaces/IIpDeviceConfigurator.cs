@@ -23,8 +23,13 @@ public interface IIpDeviceConfigurator
     /// <param name="loggerId">Logger ID</param>
     /// <param name="ipAddress">IP address</param>
     /// <param name="port">Port</param>
+    void CreateMessagingConfig(string loggerId, string ipAddress, int port);
+
+    /// <summary>
+    /// Create the data messaging package and add it to the config
+    /// </summary>
     /// <param name="messageProcessingPackageFactory">Current data messaging package factory</param>
-    void CreateMessagingConfig(string loggerId, string ipAddress, int port, IDataMessageProcessingPackageFactory messageProcessingPackageFactory);
+    void CreateDataMessagingPackage(IDataMessageProcessingPackageFactory messageProcessingPackageFactory);
 
     /// <summary>
     /// Create the device with basic settings

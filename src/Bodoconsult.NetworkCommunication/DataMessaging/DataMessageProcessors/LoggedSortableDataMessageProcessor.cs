@@ -116,7 +116,6 @@ public class LoggedSortableDataMessageProcessor : BaseDataMessageProcessor
             }
 
             logger.LogTheMessage(msg);
-            break;
         }
     }
 }

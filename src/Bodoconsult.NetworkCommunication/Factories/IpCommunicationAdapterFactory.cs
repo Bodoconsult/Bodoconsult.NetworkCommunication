@@ -27,15 +27,8 @@ public class IpCommunicationAdapterFactory : ICommunicationAdapterFactory
     /// <returns>An instance implementing <see cref="IpCommunicationAdapter"/></returns>
     public ICommunicationAdapter CreateInstance(IIpDataMessagingConfig dataMessagingConfig)
     {
-        if (dataMessagingConfig == null)
-        {
-            throw new NullReferenceException("dataMessagingConfig may not be NULL");
-        }
-
-        if (dataMessagingConfig.DataMessageProcessingPackage?.OutboundDataMessageFactory == null)
-        {
-            throw new NullReferenceException("dataMessagingConfig.DataMessageProcessingPackage?.OutboundDataMessageFactory may not be NULL");
-        }
+        ArgumentNullException.ThrowIfNull(dataMessagingConfig, "dataMessagingConfig may not be NULL");
+        ArgumentNullException.ThrowIfNull(dataMessagingConfig.DataMessageProcessingPackage?.OutboundDataMessageFactory, $"{dataMessagingConfig.LoggerId}: dataMessagingConfig.DataMessageProcessingPackage?.OutboundDataMessageFactory may not be NULL");
 
         return new IpCommunicationAdapter(dataMessagingConfig, _communicationHandlerFactory);
     }

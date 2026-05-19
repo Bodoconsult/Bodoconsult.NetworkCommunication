@@ -2,6 +2,7 @@
 
 using Bodoconsult.NetworkCommunication.Helpers;
 using Bodoconsult.NetworkCommunication.Interfaces;
+using Bodoconsult.NetworkCommunication.OrderManagement.Configurations;
 using Bodoconsult.NetworkCommunication.OrderManagement.ParameterSets;
 using Bodoconsult.NetworkCommunication.StateManagement;
 using Bodoconsult.NetworkCommunication.StateManagement.Builders;
@@ -136,6 +137,9 @@ internal class BaseStateManagementDeviceTests
         config.OrderConfigurations.Add($"{BuiltinOrders.TncpOrder}Configuration");
         config.OrderConfigurations.Add($"{BuiltinOrders.TncpOrder}Configuration");
 
+        config.OrderConfigurationInstances.Add(new TncpOrderConfiguration());
+        config.OrderConfigurationInstances.Add(new TncpOrderConfiguration());
+
         config.ParameterSets.Add(ps);
         config.ParameterSets.Add(ps2);
 
@@ -153,7 +157,7 @@ internal class BaseStateManagementDeviceTests
             ArgumentNullException.ThrowIfNull(device.CurrentState);
             Assert.That(device.CurrentState.Name, Is.EqualTo(newState.Name));
             Assert.That(device.DeviceState, Is.EqualTo(DefaultDeviceStates.DeviceStateOnline));
-            Assert.That(device.BusinessSubState, Is.EqualTo(DefaultBusinessSubStates.TryToConnect));
+            Assert.That(device.BusinessSubState, Is.EqualTo(DefaultBusinessSubStates.TryToStartMessaging));
 
             Assert.That(os.Orders.Count, Is.EqualTo(os.OrderConfigurations.Count));
         }
@@ -219,6 +223,9 @@ internal class BaseStateManagementDeviceTests
         config.OrderConfigurations.Add($"{BuiltinOrders.TncpOrder}Configuration");
         config.OrderConfigurations.Add($"{BuiltinOrders.TncpOrder}Configuration");
 
+        config.OrderConfigurationInstances.Add(new TncpOrderConfiguration());
+        config.OrderConfigurationInstances.Add(new TncpOrderConfiguration());
+
         config.ParameterSets.Add(ps);
         config.ParameterSets.Add(ps);
 
@@ -277,6 +284,9 @@ internal class BaseStateManagementDeviceTests
         config.OrderConfigurations.Add($"{BuiltinOrders.TncpOrder}Configuration");
         config.OrderConfigurations.Add($"{BuiltinOrders.TncpOrder}Configuration");
 
+        config.OrderConfigurationInstances.Add(new TncpOrderConfiguration());
+        config.OrderConfigurationInstances.Add(new TncpOrderConfiguration());
+
         config.ParameterSets.Add(ps);
         config.ParameterSets.Add(ps);
 
@@ -316,6 +326,9 @@ internal class BaseStateManagementDeviceTests
 
         config.OrderConfigurations.Add($"{BuiltinOrders.TncpOrder}Configuration");
         config.OrderConfigurations.Add($"{BuiltinOrders.TncpOrder}Configuration");
+
+        config.OrderConfigurationInstances.Add(new TncpOrderConfiguration());
+        config.OrderConfigurationInstances.Add(new TncpOrderConfiguration());
 
         config.ParameterSets.Add(ps);
         config.ParameterSets.Add(ps);

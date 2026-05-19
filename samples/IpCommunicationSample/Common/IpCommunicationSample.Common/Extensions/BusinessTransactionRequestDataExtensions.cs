@@ -2,44 +2,43 @@
 
 using IpCommunicationSample.Common.BusinessTransactions.Requests;
 
-namespace IpCommunicationSample.Common.Extensions
+namespace IpCommunicationSample.Common.Extensions;
+
+/// <summary>
+/// Extension methods for 
+/// </summary>
+public static class BusinessTransactionRequestDataExtensions
 {
-    /// <summary>
-    /// Extension methods for 
-    /// </summary>
-    public static class BusinessTransactionRequestDataExtensions
+    private const byte Zero = 0x0;
+    private const byte One = 0x1;
+
+    public static byte[] GetBytes(this StartMessagingReportBusinessTransactionRequestData data)
     {
-        private const byte Zero = 0x0;
-        private const byte One = 0x1;
+        return
+        [
+            data.Snapshot ? One : Zero,
+            data.Channel1 ? One : Zero, 
+            data.Channel2 ? One : Zero, 
+            data.Channel3 ? One : Zero,
+            data.Channel1 ? One : Zero
+        ];
+    }
 
-        public static byte[] GetBytes(this StartMessagingReportBusinessTransactionRequestData data)
+    public static StartMessagingReportBusinessTransactionRequestData ToStartMessagingReportBusinessTransactionRequestData(this Memory<byte> data)
+    {
+        if (data.Length < 5)
         {
-            return
-            [
-                data.Snapshot ? One : Zero,
-                data.Channel1 ? One : Zero, 
-                data.Channel2 ? One : Zero, 
-                data.Channel3 ? One : Zero,
-                data.Channel1 ? One : Zero
-            ];
+            throw new ArgumentException($"data to short for conversion to {nameof(StartMessagingReportBusinessTransactionRequestData)}");
         }
-
-        public static StartMessagingReportBusinessTransactionRequestData ToStartMessagingReportBusinessTransactionRequestData(this Memory<byte> data)
+        var result = new StartMessagingReportBusinessTransactionRequestData
         {
-            if (data.Length < 5)
-            {
-                throw new ArgumentException($"data to short for conversion to {nameof(StartMessagingReportBusinessTransactionRequestData)}");
-            }
-            var result = new StartMessagingReportBusinessTransactionRequestData
-            {
-                Snapshot = data[..1].Span[0] == 0x1,
-                Channel1 = data.Slice(1,1).Span[0] == 0x1,
-                Channel2 = data.Slice(2, 1).Span[0] == 0x1,
-                Channel3 = data.Slice(3, 1).Span[0] == 0x1,
-                Channel4 = data.Slice(4, 1).Span[0] == 0x1
-            };
+            Snapshot = data[..1].Span[0] == 0x1,
+            Channel1 = data.Slice(1,1).Span[0] == 0x1,
+            Channel2 = data.Slice(2, 1).Span[0] == 0x1,
+            Channel3 = data.Slice(3, 1).Span[0] == 0x1,
+            Channel4 = data.Slice(4, 1).Span[0] == 0x1
+        };
 
-            return result;
-        }
+        return result;
     }
 }

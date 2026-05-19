@@ -90,8 +90,12 @@ public class IpDeviceTcpIpClientStateMachineManager: IStateMachineDeviceManager
         var configurator = new TcpIpClientStateMachineDeviceConfigurator(_duplexIoFactory, _monitorLoggerFactoryFactory, _logDataFactory, _appLoggerFactory, 
             _appEventSourceFactory, _clientNotificationManager, _appLoggerProxy, _socketProxyFactory);
 
-        configurator.CreateMessagingConfig("Backend_Device_TCPIP: ", ipAddress, port, messageProcessingPackageFactory);
+        configurator.CreateMessagingConfig("Backend_Device_TCPIP: ", ipAddress, port);
 
+        // Data messaging package
+        configurator.CreateDataMessagingPackage(messageProcessingPackageFactory);
+
+        // Create device
         IDeviceBusinessLogicAdapterFactory businessLogicAdapterFactory = new TncpIpDeviceTcpIpBusinessLogicAdapterFactory(_businessTransactionManager);
         configurator.CreateDevice(businessLogicAdapterFactory);
 
@@ -102,6 +106,7 @@ public class IpDeviceTcpIpClientStateMachineManager: IStateMachineDeviceManager
         IStateMachineConfiguratorFactory stateMachineConfiguratorFactory = new TncpStateMachineConfiguratorFactory();
         configurator.ConfigureStateManagement(stateMachineConfiguratorFactory);
 
+        // Get the device
         var device = configurator.GetDevice();
 
         if (device is not IStateMachineDevice od)

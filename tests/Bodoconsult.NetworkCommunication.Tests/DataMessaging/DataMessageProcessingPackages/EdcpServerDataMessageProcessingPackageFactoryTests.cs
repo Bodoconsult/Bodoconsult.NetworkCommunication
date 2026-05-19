@@ -13,11 +13,12 @@ internal class EdcpServerDataMessageProcessingPackageFactoryTests
     {
         // Arrange 
         var factory = new EdcpServerDataMessageProcessingPackageFactory();
+        var config = TestDataHelper.GetEdcpDataMessagingConfig(true);
 
         // Act  
-        var result = factory.CreateInstance(TestDataHelper.GetEdcpDataMessagingConfig(true));
+        factory.CreateInstance(config);
 
         // Assert
-        Assert.That(result.GetType(), Is.EqualTo(typeof(EdcpServerDataMessageProcessingPackage)));
+        Assert.That(config.DataMessageProcessingPackage?.GetType(), Is.EqualTo(typeof(EdcpServerDataMessageProcessingPackage)));
     }
 }

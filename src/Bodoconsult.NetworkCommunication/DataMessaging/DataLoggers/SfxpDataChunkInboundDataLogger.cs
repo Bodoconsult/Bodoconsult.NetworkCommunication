@@ -1,5 +1,7 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
+using System.Diagnostics;
+using System.Reflection.Metadata;
 using Bodoconsult.App.Abstractions.Interfaces;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataBlocks;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
@@ -67,13 +69,7 @@ public class SfxpDataChunkInboundDataLogger : IInboundDataLogger
             return false;
         }
 
-        if (sfxp.DataBlock is not SfxpInboundDatablock db)
-        {
-            return false;
-        }
-
-        // Do not filter anything but messages without datablock
-        return db.DataChunks.Any(x => x.Channel == Channel);
+        return sfxp.DataBlock is SfxpInboundDatablock;
     }
 
     /// <summary>
@@ -92,12 +88,15 @@ public class SfxpDataChunkInboundDataLogger : IInboundDataLogger
             return;
         }
 
-        foreach (var chunk in db.DataChunks.Where(x => x.Channel == Channel))
+        foreach (var chunk in db.DataChunks.Where(x => x.Channel == Channel).ToList())
         {
-            if (chunk.Data.HasValue)
+            if (!chunk.Data.HasValue)
             {
-                _dataExportService.Add(chunk.Data.Value);
+                continue;
             }
+            //Debug.Print($"{chunk.Channel}: {chunk.Data.Value.Length}");
+
+            _dataExportService.Add(chunk.Data.Value);
         }
     }
 }

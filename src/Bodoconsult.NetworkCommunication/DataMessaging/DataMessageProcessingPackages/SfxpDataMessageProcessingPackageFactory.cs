@@ -14,8 +14,9 @@ public class SfxpDataMessageProcessingPackageFactory : IDataMessageProcessingPac
     /// </summary>
     /// <param name="config">Current config to use</param>
     /// <returns>New instance of <see cref="IDataMessageProcessingPackage"/></returns>
-    public IDataMessageProcessingPackage CreateInstance(IDataMessagingConfig config)
+    public void CreateInstance(IDataMessagingConfig config)
     {
-        return new SfxpDataMessageProcessingPackage(config);
+        var package = new SfxpDataMessageProcessingPackage(config);
+        package.DataLoggers.AddRange(config.DataLoggers);
     }
 }

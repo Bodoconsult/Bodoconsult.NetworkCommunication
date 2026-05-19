@@ -3,7 +3,6 @@
 using System.Buffers;
 using System.Diagnostics;
 using System.Text;
-using Bodoconsult.App.Helpers;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessageSplitters;
 using Bodoconsult.NetworkCommunication.Interfaces;
 

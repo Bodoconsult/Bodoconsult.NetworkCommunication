@@ -89,8 +89,14 @@ public class ClientTcpIpServerManager : ISimpleDeviceManager
         var configurator = new TcpIpServerDeviceConfigurator(_duplexIoFactory, _monitorLoggerFactoryFactory, _logDataFactory, _appLoggerFactory, 
             _appEventSourceFactory, _clientNotificationManager, _appLoggerProxy, _socketProxyFactory);
 
-        configurator.CreateMessagingConfig("Backend_Client_TCPIP: ", ipAddress, port, messageProcessingPackageFactory);
+        configurator.CreateMessagingConfig("Backend_Client_TCPIP: ", ipAddress, port);
 
+        // Add more config settings if needed
+
+        // Data messaging package
+        configurator.CreateDataMessagingPackage(messageProcessingPackageFactory);
+
+        // Create the device
         IDeviceBusinessLogicAdapterFactory businessLogicAdapterFactory = new BtcpClientTcpIpBusinessLogicAdapterFactory(_bridgeTransactionManager, _appGlobals);
         configurator.CreateDevice(businessLogicAdapterFactory);
 

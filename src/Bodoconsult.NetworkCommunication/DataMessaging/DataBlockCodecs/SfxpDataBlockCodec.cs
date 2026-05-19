@@ -15,6 +15,9 @@ namespace Bodoconsult.NetworkCommunication.DataMessaging.DataBlockCodecs;
 public class SfxpDataBlockCodec : IDataBlockCodec
 {
     private readonly BufferPool<DataChunk> _bufferPool = new();
+    private readonly Lock _streamingConfigLock = new();
+    private byte[] _streamingConfig = [];
+    private int _streamingConfigLength;
 
     /// <summary>
     /// Default ctor
@@ -31,7 +34,24 @@ public class SfxpDataBlockCodec : IDataBlockCodec
     /// <summary>
     /// Byte mask for the mapping of the chunk to channel relationship. Mask may have a maximum length of 254 bytes
     /// </summary>
-    public byte[] StreamingConfig { get; private set; } = [];
+    public byte[] StreamingConfig
+    {
+        get
+        {
+            lock (_streamingConfigLock)
+            {
+                return _streamingConfig;
+            }
+        }
+        private set
+        {
+            lock (_streamingConfigLock)
+            {
+                _streamingConfig = value;
+                _streamingConfigLength = value.Length;
+            }
+        }
+    }
 
     /// <summary>
     /// Load the byte mask for the mapping of the chunk to channel relationship. Mask may have a maximum length of 254 bytes
@@ -55,7 +75,7 @@ public class SfxpDataBlockCodec : IDataBlockCodec
     }
 
     /// <summary>
-    /// Method encode an instance of Datablock in bytes array.
+    /// Method encodes an instance of Datablock in bytes array.
     /// Method is called when a message is sent to the device
     /// </summary>
     /// <param name="data">The array as list to add the datablock to</param>
@@ -111,7 +131,7 @@ public class SfxpDataBlockCodec : IDataBlockCodec
 
     private void ParseDataChunks(SfxpInboundDatablock db)
     {
-        if (StreamingConfig.Length == 0)
+        if (_streamingConfigLength == 0)
         {
             return;
         }
@@ -153,7 +173,7 @@ public class SfxpDataBlockCodec : IDataBlockCodec
             if (currentIndex != 255)
             {
                 currentIndex++;
-                if (currentIndex == StreamingConfig.Length)
+                if (currentIndex == _streamingConfigLength)
                 {
                     currentIndex = 0;
                 }
@@ -164,7 +184,7 @@ public class SfxpDataBlockCodec : IDataBlockCodec
         }
 
         // Now check if the chunks have type 255 0xFF
-        var indexMask = StreamingConfig.Length -1;
+        var indexMask = _streamingConfigLength - 1;
         for (var index = db.DataChunks.Count - 1; index >= 0; index--)
         {
             var chunk = db.DataChunks[index];
@@ -176,12 +196,12 @@ public class SfxpDataBlockCodec : IDataBlockCodec
 
             chunk.Channel = StreamingConfig[indexMask];
 
-            Debug.Print($"{index}: {chunk.Channel}");
+            //Debug.Print($"{index}: {chunk.Channel}");
 
             indexMask--;
             if (indexMask < 0)
             {
-                indexMask = StreamingConfig.Length - 1;
+                indexMask = _streamingConfigLength - 1;
             }
         }
     }
