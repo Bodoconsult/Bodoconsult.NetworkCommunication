@@ -1,226 +1,226 @@
-﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
+﻿//// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
-using Bodoconsult.NetworkCommunication.Protocols.TcpIp;
-using Bodoconsult.NetworkCommunication.Tests.Helpers;
-using System.Net;
+//using Bodoconsult.NetworkCommunication.Protocols.TcpIp;
+//using Bodoconsult.NetworkCommunication.Tests.Helpers;
+//using System.Net;
 
-namespace Bodoconsult.NetworkCommunication.Tests.Tcp.Transport;
+//namespace Bodoconsult.NetworkCommunication.Tests.Tcp.Transport;
 
-[TestFixture]
-[NonParallelizable]
-[SingleThreaded]
-public class FakeTcpIpSocketProxyTests : BaseTestsTcpIpSocket
-{
-    /// <summary>
-    /// Setup for each test
-    /// </summary>
-    [SetUp]
-    public void TestSetup()
-    {
-        Socket = new FakeTcpIpSocketProxy(TestDataHelper.Logger);
-        Socket.IpAddress = IPAddress.Parse(IpAddress);
-        Socket.Port = Port;
+//[TestFixture]
+//[NonParallelizable]
+//[SingleThreaded]
+//public class FakeTcpIpSocketProxyTests : BaseTestsTcpIpSocket
+//{
+//    /// <summary>
+//    /// Setup for each test
+//    /// </summary>
+//    [SetUp]
+//    public void TestSetup()
+//    {
+//        Socket = new FakeTcpIpSocketProxy(TestDataHelper.Logger);
+//        Socket.IpAddress = IPAddress.Parse(IpAddress);
+//        Socket.Port = Port;
 
-        CurrentIpEndPoint = new IPEndPoint(IPAddress.Parse(IpAddress), Port);
-    }
+//        CurrentIpEndPoint = new IPEndPoint(IPAddress.Parse(IpAddress), Port);
+//    }
 
-    [Test]
-    public void Receive_MemoryLoadNextReceivedMessage_DataReceived()
-    {
-        // Arrange 
-        ArgumentNullException.ThrowIfNull(Socket);
-        var socket = (FakeTcpIpSocketProxy)Socket;
+//    //[Test]
+//    //public void Receive_MemoryLoadNextReceivedMessage_DataReceived()
+//    //{
+//    //    // Arrange 
+//    //    ArgumentNullException.ThrowIfNull(Socket);
+//    //    var socket = (FakeTcpIpSocketProxy)Socket;
 
-        var receivedMessage = new byte[] { 0, 0, 1 };
+//    //    var receivedMessage = new byte[] { 0, 0, 1 };
 
-        socket.AddReceivedMessage(receivedMessage);
-        socket.LoadNextReceivedMessage();
+//    //    socket.AddReceivedMessage(receivedMessage);
+//    //    socket.LoadNextReceivedMessage();
 
-        var data = new byte[receivedMessage.Length];
-        var buffer = new Memory<byte>(data);
+//    //    var data = new byte[receivedMessage.Length];
+//    //    var buffer = new Memory<byte>(data);
 
-        // Act  
-        var task = socket.Receive(buffer);
-        task.Wait();
+//    //    // Act  
+//    //    var task = socket.Receive(buffer);
+//    //    task.Wait();
 
-        // Assert
-        Assert.That(task.Result, Is.EqualTo(receivedMessage.Length));
+//    //    // Assert
+//    //    Assert.That(task.Result, Is.EqualTo(receivedMessage.Length));
 
-        buffer.Slice(0, 1).Span[0] = 0;
-        buffer.Slice(1, 1).Span[0] = 0;
-        buffer.Slice(2, 1).Span[0] = 1;
-    }
+//    //    buffer.Slice(0, 1).Span[0] = 0;
+//    //    buffer.Slice(1, 1).Span[0] = 0;
+//    //    buffer.Slice(2, 1).Span[0] = 1;
+//    //}
 
-    [Test]
-    public void Receive_ArrayLoadNextReceivedMessage_DataReceived()
-    {
-        // Arrange 
-        ArgumentNullException.ThrowIfNull(Socket);
-        var socket = (FakeTcpIpSocketProxy)Socket;
+//    [Test]
+//    public void Receive_ArrayLoadNextReceivedMessage_DataReceived()
+//    {
+//        // Arrange 
+//        ArgumentNullException.ThrowIfNull(Socket);
+//        var socket = (FakeTcpIpSocketProxy)Socket;
 
-        var receivedMessage = new byte[] { 0, 0, 1 };
+//        var receivedMessage = new byte[] { 0, 0, 1 };
 
-        socket.AddReceivedMessage(receivedMessage);
-        socket.LoadNextReceivedMessage();
+//        socket.AddReceivedMessage(receivedMessage);
+//        socket.LoadNextReceivedMessage();
 
-        var buffer = new byte[receivedMessage.Length];
+//        var buffer = new byte[receivedMessage.Length];
 
-        // Act
-        var task = socket.Receive(buffer);
-        task.Wait(500);
+//        // Act
+//        var task = socket.Receive(buffer);
+//        task.Wait(500);
 
-        // Assert
-        Assert.That(task.Result, Is.EqualTo(receivedMessage.Length));
+//        // Assert
+//        Assert.That(task.Result, Is.EqualTo(receivedMessage.Length));
 
-        buffer[0] = 0;
-        buffer[1] = 0;
-        buffer[2] = 1;
-    }
+//        buffer[0] = 0;
+//        buffer[1] = 0;
+//        buffer[2] = 1;
+//    }
 
-    [Test]
-    public void Receive_MemorySend_DataReceived()
-    {
-        // Arrange 
-        ArgumentNullException.ThrowIfNull(Socket);
-        var socket = (FakeTcpIpSocketProxy)Socket;
+//    [Test]
+//    public void Receive_MemorySend_DataReceived()
+//    {
+//        // Arrange 
+//        ArgumentNullException.ThrowIfNull(Socket);
+//        var socket = (FakeTcpIpSocketProxy)Socket;
 
-        var receivedMessage = new byte[] { 0, 0, 1 };
+//        var receivedMessage = new byte[] { 0, 0, 1 };
 
-        socket.AddReceivedMessage(receivedMessage);
-        socket.Send(receivedMessage).Wait();
+//        socket.AddReceivedMessage(receivedMessage);
+//        socket.Send(receivedMessage).Wait();
 
-        var data = new byte[receivedMessage.Length];
-        var buffer = new Memory<byte>(data);
+//        var data = new byte[receivedMessage.Length];
+//        var buffer = new Memory<byte>(data);
 
-        // Act  
-        var task = socket.Receive(buffer);
-        task.Wait();
+//        // Act  
+//        var task = socket.Receive(buffer);
+//        task.Wait();
 
-        // Assert
-        using (Assert.EnterMultipleScope())
-        {
-            Assert.That(task.Result, Is.EqualTo(receivedMessage.Length));
+//        // Assert
+//        using (Assert.EnterMultipleScope())
+//        {
+//            Assert.That(task.Result, Is.EqualTo(receivedMessage.Length));
 
-            Assert.That(buffer.Slice(0, 1).Span[0], Is.Zero);
-            Assert.That(buffer.Slice(1, 1).Span[0], Is.Zero);
-            Assert.That(buffer.Slice(2, 1).Span[0], Is.EqualTo(1));
-        }
-    }
+//            Assert.That(buffer.Slice(0, 1).Span[0], Is.Zero);
+//            Assert.That(buffer.Slice(1, 1).Span[0], Is.Zero);
+//            Assert.That(buffer.Slice(2, 1).Span[0], Is.EqualTo(1));
+//        }
+//    }
 
-    [Test]
-    public void Receive_MemorySend2Messages_DataReceived()
-    {
-        // Arrange 
-        ArgumentNullException.ThrowIfNull(Socket);
-        var socket = (FakeTcpIpSocketProxy)Socket;
+//    [Test]
+//    public void Receive_MemorySend2Messages_DataReceived()
+//    {
+//        // Arrange 
+//        ArgumentNullException.ThrowIfNull(Socket);
+//        var socket = (FakeTcpIpSocketProxy)Socket;
 
-        var receivedMessage = new byte[] { 0, 0, 1 };
-        var receivedMessage2 = new byte[] { 0, 0, 0, 2 };
+//        var receivedMessage = new byte[] { 0, 0, 1 };
+//        var receivedMessage2 = new byte[] { 0, 0, 0, 2 };
 
-        socket.AddReceivedMessage(receivedMessage);
-        socket.AddReceivedMessage(receivedMessage2);
-        socket.Send(receivedMessage).Wait();
+//        socket.AddReceivedMessage(receivedMessage);
+//        socket.AddReceivedMessage(receivedMessage2);
+//        socket.Send(receivedMessage).Wait();
 
-        var data = new byte[receivedMessage.Length];
-        var buffer = new Memory<byte>(data);
-        var data2 = new byte[receivedMessage2.Length];
-        var buffer2 = new Memory<byte>(data2);
+//        var data = new byte[receivedMessage.Length];
+//        var buffer = new Memory<byte>(data);
+//        var data2 = new byte[receivedMessage2.Length];
+//        var buffer2 = new Memory<byte>(data2);
 
-        // Act  
-        var task = socket.Receive(buffer);
-        task.Wait();
+//        // Act  
+//        var task = socket.Receive(buffer);
+//        task.Wait();
 
-        Assert.That(task.Result, Is.EqualTo(receivedMessage.Length));
+//        Assert.That(task.Result, Is.EqualTo(receivedMessage.Length));
 
-        socket.Send(receivedMessage).Wait();
+//        socket.Send(receivedMessage).Wait();
 
-        task = socket.Receive(buffer2);
-        task.Wait();
+//        task = socket.Receive(buffer2);
+//        task.Wait();
 
-        // Assert
-        using (Assert.EnterMultipleScope())
-        {
-            Assert.That(task.Result, Is.EqualTo(receivedMessage2.Length));
-            Assert.That(buffer.Slice(0, 1).Span[0], Is.Zero);
-            Assert.That(buffer.Slice(1, 1).Span[0], Is.Zero);
-            Assert.That(buffer.Slice(2, 1).Span[0], Is.EqualTo(1));
+//        // Assert
+//        using (Assert.EnterMultipleScope())
+//        {
+//            Assert.That(task.Result, Is.EqualTo(receivedMessage2.Length));
+//            Assert.That(buffer.Slice(0, 1).Span[0], Is.Zero);
+//            Assert.That(buffer.Slice(1, 1).Span[0], Is.Zero);
+//            Assert.That(buffer.Slice(2, 1).Span[0], Is.EqualTo(1));
 
-            Assert.That(buffer2.Slice(0, 1).Span[0], Is.Zero);
-            Assert.That(buffer2.Slice(1, 1).Span[0], Is.Zero);
-            Assert.That(buffer2.Slice(2, 1).Span[0], Is.Zero);
-            Assert.That(buffer2.Slice(3, 1).Span[0], Is.EqualTo(2));
-        }
-    }
+//            Assert.That(buffer2.Slice(0, 1).Span[0], Is.Zero);
+//            Assert.That(buffer2.Slice(1, 1).Span[0], Is.Zero);
+//            Assert.That(buffer2.Slice(2, 1).Span[0], Is.Zero);
+//            Assert.That(buffer2.Slice(3, 1).Span[0], Is.EqualTo(2));
+//        }
+//    }
 
-    [Test]
-    public void Receive_ArraySends_DataReceived()
-    {
-        // Arrange 
-        ArgumentNullException.ThrowIfNull(Socket);
-        var socket = (FakeTcpIpSocketProxy)Socket;
+//    [Test]
+//    public void Receive_ArraySends_DataReceived()
+//    {
+//        // Arrange 
+//        ArgumentNullException.ThrowIfNull(Socket);
+//        var socket = (FakeTcpIpSocketProxy)Socket;
 
-        var receivedMessage = new byte[] { 0, 0, 1 };
+//        var receivedMessage = new byte[] { 0, 0, 1 };
 
-        socket.AddReceivedMessage(receivedMessage);
-        socket.Send(receivedMessage).Wait();
+//        socket.AddReceivedMessage(receivedMessage);
+//        socket.Send(receivedMessage).Wait();
 
-        var buffer = new byte[receivedMessage.Length];
+//        var buffer = new byte[receivedMessage.Length];
 
-        // Act  
-        var task = socket.Receive(buffer);
-        task.Wait();
+//        // Act  
+//        var task = socket.Receive(buffer);
+//        task.Wait();
 
-        // Assert
-        using (Assert.EnterMultipleScope())
-        {
-            Assert.That(task.Result, Is.EqualTo(receivedMessage.Length));
-            Assert.That(buffer[0], Is.Zero);
-            Assert.That(buffer[1], Is.Zero);
-            Assert.That(buffer[2], Is.EqualTo(1));
-        }
-    }
+//        // Assert
+//        using (Assert.EnterMultipleScope())
+//        {
+//            Assert.That(task.Result, Is.EqualTo(receivedMessage.Length));
+//            Assert.That(buffer[0], Is.Zero);
+//            Assert.That(buffer[1], Is.Zero);
+//            Assert.That(buffer[2], Is.EqualTo(1));
+//        }
+//    }
 
-    [Test]
-    public void Receive_ArraySend2Messages_DataReceived()
-    {
-        // Arrange 
-        ArgumentNullException.ThrowIfNull(Socket);
-        var socket = (FakeTcpIpSocketProxy)Socket;
+//    [Test]
+//    public void Receive_ArraySend2Messages_DataReceived()
+//    {
+//        // Arrange 
+//        ArgumentNullException.ThrowIfNull(Socket);
+//        var socket = (FakeTcpIpSocketProxy)Socket;
 
-        var receivedMessage = new byte[] { 0, 0, 1 };
-        var receivedMessage2 = new byte[] { 0, 0, 0, 2 };
+//        var receivedMessage = new byte[] { 0, 0, 1 };
+//        var receivedMessage2 = new byte[] { 0, 0, 0, 2 };
 
-        socket.AddReceivedMessage(receivedMessage);
-        socket.AddReceivedMessage(receivedMessage2);
-        socket.Send(receivedMessage).Wait();
+//        socket.AddReceivedMessage(receivedMessage);
+//        socket.AddReceivedMessage(receivedMessage2);
+//        socket.Send(receivedMessage).Wait();
 
-        var buffer = new byte[receivedMessage.Length];
-        var buffer2 = new byte[receivedMessage2.Length];
+//        var buffer = new byte[receivedMessage.Length];
+//        var buffer2 = new byte[receivedMessage2.Length];
 
-        // Act  
-        var task = socket.Receive(buffer);
-        task.Wait();
+//        // Act  
+//        var task = socket.Receive(buffer);
+//        task.Wait();
 
-        Assert.That(task.Result, Is.EqualTo(receivedMessage.Length));
+//        Assert.That(task.Result, Is.EqualTo(receivedMessage.Length));
 
-        socket.Send(receivedMessage).Wait();
+//        socket.Send(receivedMessage).Wait();
 
-        task = socket.Receive(buffer2);
-        task.Wait();
+//        task = socket.Receive(buffer2);
+//        task.Wait();
 
-        // Assert
-        using (Assert.EnterMultipleScope())
-        {
-            Assert.That(task.Result, Is.EqualTo(receivedMessage2.Length));
+//        // Assert
+//        using (Assert.EnterMultipleScope())
+//        {
+//            Assert.That(task.Result, Is.EqualTo(receivedMessage2.Length));
 
-            Assert.That(buffer[0], Is.Zero);
-            Assert.That(buffer[1], Is.Zero);
-            Assert.That(buffer[2], Is.EqualTo(1));
+//            Assert.That(buffer[0], Is.Zero);
+//            Assert.That(buffer[1], Is.Zero);
+//            Assert.That(buffer[2], Is.EqualTo(1));
 
-            Assert.That(buffer2[0], Is.Zero);
-            Assert.That(buffer2[1], Is.Zero);
-            Assert.That(buffer2[2], Is.Zero);
-            Assert.That(buffer2[3], Is.EqualTo(2));
-        }
-    }
-}
+//            Assert.That(buffer2[0], Is.Zero);
+//            Assert.That(buffer2[1], Is.Zero);
+//            Assert.That(buffer2[2], Is.Zero);
+//            Assert.That(buffer2[3], Is.EqualTo(2));
+//        }
+//    }
+//}

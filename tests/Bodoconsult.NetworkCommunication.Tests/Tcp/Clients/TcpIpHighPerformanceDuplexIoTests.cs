@@ -11,7 +11,7 @@ namespace Bodoconsult.NetworkCommunication.Tests.Tcp.Clients;
 [TestFixture]
 [NonParallelizable]
 [SingleThreaded]
-public class TcpIpHighPerformanceDuplexIoTests : TcpIpDuplexIoBaseTests
+public class TcpIpHighPerformanceDuplexIoTests : BaseTcpIpDuplexIoTests
 {
     [SetUp]
     protected void TestSetup()

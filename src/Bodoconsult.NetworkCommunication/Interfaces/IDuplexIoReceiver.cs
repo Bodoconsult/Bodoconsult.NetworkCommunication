@@ -7,15 +7,15 @@ namespace Bodoconsult.NetworkCommunication.Interfaces;
 /// </summary>
 public interface IDuplexIoReceiver : IAsyncDisposable, IDisposable
 {
-    /// <summary>
-    /// Thread filling receiver pipeline
-    /// </summary>
-    Thread? FillPipelineTask { get; }
+    ///// <summary>
+    ///// Thread filling receiver pipeline
+    ///// </summary>
+    //Thread? FillPipelineTask { get; }
 
-    /// <summary>
-    /// Thread sending messages from receiver pipeline to app internal consumers
-    /// </summary>
-    Thread? SendPipelineTask { get; }
+    ///// <summary>
+    ///// Thread sending messages from receiver pipeline to app internal consumers
+    ///// </summary>
+    //Thread? SendPipelineTask { get; }
 
     /// <summary>
     /// Start the internal receiver
@@ -27,20 +27,20 @@ public interface IDuplexIoReceiver : IAsyncDisposable, IDisposable
     /// </summary>
     Task StopReceiver();
 
-    /// <summary>
-    /// Receive messages from the device.
-    /// This method is not intended to be called directly from production code.
-    /// It is a unit test method.
-    /// </summary>
-    /// <returns>Received device message or null in case of any error</returns>
-    Task FillMessagePipeline();
+    ///// <summary>
+    ///// Receive messages from the device.
+    ///// This method is not intended to be called directly from production code.
+    ///// It is a unit test method.
+    ///// </summary>
+    ///// <returns>Received device message or null in case of any error</returns>
+    //Task FillMessagePipeline();
 
-    /// <summary>
-    /// Process the messages received from device internally
-    /// This method is not intended to be called directly from production code.
-    /// It is a unit test method.
-    /// </summary>
-    Task SendMessagePipeline();
+    ///// <summary>
+    ///// Process the messages received from device internally
+    ///// This method is not intended to be called directly from production code.
+    ///// It is a unit test method.
+    ///// </summary>
+    //Task SendMessagePipeline();
 
     /// <summary>
     /// Update the data message processing package

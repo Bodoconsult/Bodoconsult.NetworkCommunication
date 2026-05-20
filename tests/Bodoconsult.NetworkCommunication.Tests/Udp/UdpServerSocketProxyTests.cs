@@ -26,6 +26,24 @@ internal class UdpServerSocketProxyTests
     private const int TimeOut = 2000;
 
     private readonly ConcurrentBag<ReadOnlyMemory<byte>> _clientReceivedMessages = [];
+    private readonly ConcurrentBag<ReadOnlyMemory<byte>> _serverReceivedMessages = [];
+
+    [SetUp]
+    public void Setup()
+    {
+        _clientReceivedMessages.Clear();
+        _serverReceivedMessages.Clear();
+    }
+
+    private void ClientSocketReceivedDataDelegate(Memory<byte> data)
+    {
+        _clientReceivedMessages.Add(data);
+    }
+
+    private void ServerSocketReceivedDataDelegate(Memory<byte> data)
+    {
+        _serverReceivedMessages.Add(data);
+    }
 
     [Test]
     public async Task SendReceive_PermanentModeTestClient_MessageReceived()
@@ -49,6 +67,7 @@ internal class UdpServerSocketProxyTests
             udpServer.IpAddress = ip;
             udpServer.Port = port;
             await udpServer.Connect();
+            udpServer.StartReceiverLoop(ServerSocketReceivedDataDelegate);
 
             started.Set();
 
@@ -56,15 +75,6 @@ internal class UdpServerSocketProxyTests
             {
                 while (!cts.IsCancellationRequested)
                 {
-                    //var data = new byte[10];
-                    //var count = await udpServer.Receive(data);
-
-                    //if (count > 0)
-                    //{
-                    //    _serverReceivedMessages.Add(data);
-                    //}
-                    //Debug.Print($"Server: received {data.Length} bytes");
-
                     var sent = await udpServer.Send(serverData); // reply back
                     Debug.Print($"Server: sent {sent} bytes");
                 }
@@ -87,6 +97,7 @@ internal class UdpServerSocketProxyTests
         client.IpAddress = ip;
         client.Port = port;
         await client.Connect();
+        client.StartReceiverLoop(ClientSocketReceivedDataDelegate);
 
         //client.Start();
 
@@ -95,15 +106,7 @@ internal class UdpServerSocketProxyTests
             //// send data
             //client.Send(clientData);
 
-            var data = new byte[10];
-
-            // then receive data
-            var result = await client.Receive(data);
-
-            if (result > 0)
-            {
-                _clientReceivedMessages.Add(data);
-            }
+            await Task.Delay(200);
         }
 
         client.Dispose();
@@ -112,8 +115,10 @@ internal class UdpServerSocketProxyTests
         using (Assert.EnterMultipleScope())
         {
             Assert.That(_clientReceivedMessages.Count, Is.GreaterThan(3));
+            Assert.That(_serverReceivedMessages.Count, Is.Zero);
         }
     }
+
 
     [Test]
     public async Task SendReceive_PermanentModeClientStartsEarlier_MessageReceived()
@@ -139,6 +144,7 @@ internal class UdpServerSocketProxyTests
             udpServer.IpAddress = ip;
             udpServer.Port = port;
             await udpServer.Connect();
+            udpServer.StartReceiverLoop(ServerSocketReceivedDataDelegate);
 
             started.WaitOne(TimeOut);
 
@@ -166,8 +172,8 @@ internal class UdpServerSocketProxyTests
         var udpClient = new UdpClientSocketProxy(TestDataHelper.Logger);
         udpClient.IpAddress = ip;
         udpClient.Port = port;
-
         await udpClient.Connect();
+        udpClient.StartReceiverLoop(ClientSocketReceivedDataDelegate);
 
         started.Set();
 
@@ -177,18 +183,18 @@ internal class UdpServerSocketProxyTests
             //var sent = await udpClient.Send(clientData);
             //Debug.Print($"Client: sent {sent} bytes");
 
-            // then receive data
-            var data = new byte[10];
-            var count = await udpClient.Receive(data);
+            //// then receive data
+            //var data = new byte[10];
+            //var count = await udpClient.Receive(data);
 
-            if (count > 0)
-            {
-                _clientReceivedMessages.Add(data);
-            }
+            //if (count > 0)
+            //{
+            //    _clientReceivedMessages.Add(data);
+            //}
 
-            Debug.Print($"Client: received {data.Length} bytes");
+            //Debug.Print($"Client: received {data.Length} bytes");
 
-
+            await Task.Delay(200);
         }
 
         udpClient.Dispose();
@@ -254,12 +260,12 @@ internal class UdpServerSocketProxyTests
             serverConfig.SocketProxy = udpServer;
             udpServer.IpAddress = ip;
             udpServer.Port = port;
+            await udpServer.Connect();
+            udpServer.StartReceiverLoop(ServerSocketReceivedDataDelegate);
 
             var serverDuplexIo = new UdpDatagramSendOnlyIpDuplexIo(serverConfig, new SendPacketProcessFactory());
             await serverDuplexIo.StartCommunication();
-
-            await udpServer.Connect();
-
+            
             await Task.Delay(100);
 
             try
@@ -288,12 +294,11 @@ internal class UdpServerSocketProxyTests
         udpClient.IpAddress = ip;
         udpClient.Port = port;
         clientConfig.SocketProxy = udpClient;
-
         await udpClient.Connect();
+        udpClient.StartReceiverLoop(ClientSocketReceivedDataDelegate);
 
 
         var clientDuplexIo = new UdpDatagramReceiveOnlyIpDuplexIo(clientConfig, new SendPacketProcessFactory());
-
         await clientDuplexIo.StartCommunication();
 
         var count = 0;
@@ -371,12 +376,11 @@ internal class UdpServerSocketProxyTests
             serverConfig.SocketProxy = udpServer;
             udpServer.IpAddress = ip;
             udpServer.Port = port;
+            await udpServer.Connect();
 
             var serverDuplexIo = new UdpDatagramSendOnlyIpDuplexIo(serverConfig, new SendPacketProcessFactory());
             await serverDuplexIo.StartCommunication();
-
-            await udpServer.Connect();
-
+            
             await Task.Delay(100);
 
             try
@@ -402,15 +406,13 @@ internal class UdpServerSocketProxyTests
 
         // Act  
         var udpClient = new UdpClientSocketProxy(TestDataHelper.Logger);
+        clientConfig.SocketProxy = udpClient;
         udpClient.IpAddress = ip;
         udpClient.Port = port;
-        clientConfig.SocketProxy = udpClient;
-
         await udpClient.Connect();
-
+        udpClient.StartReceiverLoop(ClientSocketReceivedDataDelegate);
 
         var clientDuplexIo = new UdpDatagramReceiveOnlyIpDuplexIo(clientConfig, new SendPacketProcessFactory());
-
         await clientDuplexIo.StartCommunication();
 
         var count = 0;

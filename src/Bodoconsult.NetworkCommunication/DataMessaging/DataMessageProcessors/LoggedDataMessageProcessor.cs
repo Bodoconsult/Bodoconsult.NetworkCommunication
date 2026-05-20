@@ -94,13 +94,14 @@ public class LoggedDataMessageProcessor : BaseDataMessageProcessor
     {
         foreach (var logger in _dataLoggers)
         {
-            if (!logger.CheckIfMessageIsToLog(msg))
+            var chunks = logger.CheckIfMessageIsToLog(msg);
+
+            if (chunks.Count == 0)
             {
                 continue;
             }
 
-            logger.LogTheMessage(msg);
-            break;
+            logger.LogTheMessages(chunks);
         }
     }
 }

@@ -81,7 +81,6 @@ public static class TcpIpServerTestHelper
         // Load socket
         ArgumentNullException.ThrowIfNull(testSetup.DataMessagingConfig);
         
-
         var socket = new TcpIpServerSocketProxy(TcpIpListenerManager, TestDataHelper.Logger);
         socket.IpAddress = testSetup.IpAddress;
         socket.Port = testSetup.DataMessagingConfig.Port;

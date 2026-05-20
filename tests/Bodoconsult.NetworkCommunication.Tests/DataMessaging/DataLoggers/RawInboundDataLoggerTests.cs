@@ -4,6 +4,7 @@ using Bodoconsult.NetworkCommunication.DataMessaging.DataLoggers;
 using Bodoconsult.App.Abstractions.Interfaces;
 using Bodoconsult.App.DataExportServices;
 using Bodoconsult.App.Helpers;
+using Bodoconsult.NetworkCommunication.DataMessaging.DataBlocks;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
 
 namespace Bodoconsult.NetworkCommunication.Tests.DataMessaging.DataLoggers;
@@ -32,13 +33,37 @@ internal class RawInboundDataLoggerTests
 
         var logger = new RawInboundDataLogger(dataExportService);
 
+        var dataBlock = new BasicInboundDatablock
+        { Data = new Memory<byte>([0x5, 0x6, 0x7]) };
+
+        var msg = new SdcpSortableInboundDataMessage
+        {
+            DataBlock = dataBlock,
+            RawMessageData = dataBlock.Data
+        };
+
+        // Act  
+        var result = logger.CheckIfMessageIsToLog(msg);
+
+        // Assert
+        Assert.That(result.Count, Is.Not.Zero);
+    }
+
+    [Test]
+    public void CheckIfMessageIsToLog_ValidMessage_ReturnsFalse()
+    {
+        // Arrange 
+        IDataExportService<byte[]> dataExportService = new FakeDataExportService();
+
+        var logger = new RawInboundDataLogger(dataExportService);
+
         var msg = new SdcpSortableInboundDataMessage();
 
         // Act  
         var result = logger.CheckIfMessageIsToLog(msg);
 
         // Assert
-        Assert.That(result, Is.True);
+        Assert.That(result.Count, Is.Zero);
     }
 
     [Test]
@@ -53,10 +78,8 @@ internal class RawInboundDataLoggerTests
 
         var result = logger.CheckIfMessageIsToLog(msg);
 
-        Assert.That(result, Is.True);
-
         // Act  
-        logger.LogTheMessage(msg);
+        logger.LogTheMessages(result);
 
         // Assert
         Wait.Until(() => dataExportService.WasLogged);

@@ -15,7 +15,7 @@ namespace Bodoconsult.NetworkCommunication.Tests.Tcp.Servers;
 [TestFixture]
 [NonParallelizable]
 [SingleThreaded]
-public abstract class TcpIpDuplexIoBaseTests : BaseTcpTests
+public abstract class BaseTcpIpDuplexIoTests : BaseTcpTests
 {
     /// <summary>
     /// Holds the duplex IO channel implementation (see <see cref="IDuplexIo"/>) to use
@@ -209,8 +209,6 @@ public abstract class TcpIpDuplexIoBaseTests : BaseTcpTests
             Assert.That(DuplexIo.Receiver, Is.Not.Null);
             Assert.That(DuplexIo.Sender, Is.Not.Null);
             ArgumentNullException.ThrowIfNull(DuplexIo.Receiver);
-            Assert.That(DuplexIo.Receiver.FillPipelineTask, Is.Null);
-            Assert.That(DuplexIo.Receiver.SendPipelineTask, Is.Null);
         }
     }
 

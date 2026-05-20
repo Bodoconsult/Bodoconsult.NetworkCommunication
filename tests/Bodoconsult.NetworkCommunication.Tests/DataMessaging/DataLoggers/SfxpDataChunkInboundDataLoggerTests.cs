@@ -53,7 +53,7 @@ internal class SfxpDataChunkInboundDataLoggerTests
         var result = logger.CheckIfMessageIsToLog(msg);
 
         // Assert
-        Assert.That(result, Is.True);
+        Assert.That(result.Count, Is.EqualTo(1));
     }
 
     [Test]
@@ -74,7 +74,7 @@ internal class SfxpDataChunkInboundDataLoggerTests
         var result = logger.CheckIfMessageIsToLog(msg);
 
         // Assert
-        Assert.That(result, Is.False);
+        Assert.That(result.Count, Is.Zero);
     }
 
     [Test]
@@ -105,7 +105,7 @@ internal class SfxpDataChunkInboundDataLoggerTests
         var result = logger.CheckIfMessageIsToLog(msg);
 
         // Assert
-        Assert.That(result, Is.False);
+        Assert.That(result.Count, Is.Zero);
     }
     [Test]
     public void LogTheMessage_ValidMessage_DataLogged()
@@ -133,10 +133,8 @@ internal class SfxpDataChunkInboundDataLoggerTests
 
         var result = logger.CheckIfMessageIsToLog(msg);
 
-        Assert.That(result, Is.True);
-
         // Act  
-        logger.LogTheMessage(msg);
+        logger.LogTheMessages(result);
 
         // Assert
         Wait.Until(() => dataExportService.WasLogged);

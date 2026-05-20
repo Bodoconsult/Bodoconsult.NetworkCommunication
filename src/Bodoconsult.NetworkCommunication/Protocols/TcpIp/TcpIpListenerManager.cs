@@ -196,21 +196,29 @@ public class TcpIpListenerManager : ITcpIpListenerManager
     {
         while (!token.IsCancellationRequested)
         {
-            var clientSocket = await listener.AcceptAsync(token);
-
-            // Now deliver the client socket to the consumer
-            if (!_listeners.TryGetValue(listener, out var data))
+            try
             {
-                return;
-            }
+                var clientSocket = await listener.AcceptAsync(token);
 
-            foreach (var consumer in data.CurrentConsumers)
-            {
-                if (consumer.Invoke(clientSocket))
+                // Now deliver the client socket to the consumer
+                if (!_listeners.TryGetValue(listener, out var data))
                 {
                     return;
                 }
+
+                foreach (var consumer in data.CurrentConsumers)
+                {
+                    if (await consumer.Invoke(clientSocket))
+                    {
+                        return;
+                    }
+                }
             }
+            catch (Exception e)
+            {
+                Debug.Print(e.ToString());
+            }
+
         }
     }
 

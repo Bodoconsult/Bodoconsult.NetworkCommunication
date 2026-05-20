@@ -13,7 +13,7 @@ namespace Bodoconsult.NetworkCommunication.Delegates;
 /// A delegate fired when a TCP/IP client connection was accepted
 /// </summary>
 /// <param name="clientSocket">Client connection socket to use by <see cref="ISocketProxy"/> implementation</param>
-public delegate bool ClientConnectionAcceptedDelegate(Socket clientSocket);
+public delegate Task<bool> ClientConnectionAcceptedDelegate(Socket clientSocket);
 
 /// <summary>
 /// Work is in progress delegate for DuplexIO
@@ -97,6 +97,12 @@ public delegate void RaiseStopSyncExecutionDelegate(MessageSendingResult result)
 #endregion
 
 // ****** Delegates for sender and reciever ****** 
+
+/// <summary>
+/// Delegate fired if the socket was receiving data
+/// </summary>
+/// <param name="data">Received data</param>
+public delegate void SocketReceivedDataDelegate(Memory<byte> data);
 
 /// <summary>
 /// Delegate sending a HELLO message to the device

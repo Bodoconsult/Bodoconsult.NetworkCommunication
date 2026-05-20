@@ -16,13 +16,26 @@ namespace Bodoconsult.NetworkCommunication.Tests.Tcp;
 [SingleThreaded]
 internal class TcpIpServerSocketProxyTests
 {
+    private readonly ConcurrentBag<ReadOnlyMemory<byte>> _serverReceivedMessages = [];
+    private readonly ConcurrentBag<ReadOnlyMemory<byte>> _clientReceivedMessages = [];
+    private readonly ConcurrentBag<ReadOnlyMemory<byte>> _udpServerReceivedMessages = [];
+    private readonly ConcurrentBag<ReadOnlyMemory<byte>> _udpClientReceivedMessages = [];
+
+    [SetUp]
+    public void Setup()
+    {
+        _clientReceivedMessages.Clear();
+        _serverReceivedMessages.Clear();
+        _udpClientReceivedMessages.Clear();
+        _udpServerReceivedMessages.Clear();
+    }
+
     [Test]
     public async Task SendReceive_PermanentModeTestClient_MessageReceived()
     {
         // Arrange 
-        ConcurrentBag<ReadOnlyMemory<byte>> serverReceivedMessages = [];
 
-    var serverData = new byte[] { 0x0, 0x1, 0x2 };
+        var serverData = new byte[] { 0x0, 0x1, 0x2 };
         var clientData = new byte[] { 0x0, 0x1, 0x2, 0x3, 0x4, 0x5 };
 
         var ip = IPAddress.Parse("127.0.0.1");
@@ -36,6 +49,7 @@ internal class TcpIpServerSocketProxyTests
 #pragma warning restore CS4014 // Because this call is not awaited, execution of the current method continues before the call is completed
         {
             var tcpServer = new TcpIpServerSocketProxy(new TcpIpListenerManager(), TestDataHelper.Logger);
+            tcpServer.StartReceiverLoop(ServerSocketReceivedDataDelegate);
             tcpServer.IpAddress = ip;
             tcpServer.Port = port;
             tcpServer.Connect().GetAwaiter().GetResult();
@@ -44,15 +58,6 @@ internal class TcpIpServerSocketProxyTests
             {
                 while (!cts.IsCancellationRequested)
                 {
-                    var data = new byte[10];
-                    var count = await tcpServer.Receive(data);
-
-                    if (count > 0)
-                    {
-                        serverReceivedMessages.Add(data);
-                    }
-                    Debug.Print($"Server: received {data.Length} bytes");
-
                     var sent = await tcpServer.Send(serverData); // reply back
                     Debug.Print($"Server: sent {sent} bytes");
                 }
@@ -89,7 +94,7 @@ internal class TcpIpServerSocketProxyTests
         using (Assert.EnterMultipleScope())
         {
             Assert.That(client.ReceivedMessages.Count, Is.GreaterThan(3));
-            Assert.That(serverReceivedMessages.Count, Is.GreaterThan(3));
+            Assert.That(_serverReceivedMessages.Count, Is.GreaterThan(3));
         }
     }
 
@@ -97,14 +102,13 @@ internal class TcpIpServerSocketProxyTests
     public async Task SendReceive_PermanentMode_MessageReceived()
     {
         // Arrange 
-        ConcurrentBag<ReadOnlyMemory<byte>> serverReceivedMessages = [];
-        ConcurrentBag<ReadOnlyMemory<byte>> clientReceivedMessages = [];
-
         var serverData = new byte[] { 0x0, 0x1, 0x2 };
         var clientData = new byte[] { 0x0, 0x1, 0x2, 0x3, 0x4, 0x5 };
 
         var ip = IPAddress.Parse("127.0.0.1");
         var port = TestDataHelper.GetRandomPort();
+
+        AutoResetEvent stopped = new(false);
 
         const int timeout = 5000;
 
@@ -116,28 +120,24 @@ internal class TcpIpServerSocketProxyTests
 #pragma warning restore CS4014 // Because this call is not awaited, execution of the current method continues before the call is completed
         {
             var tcpServer = new TcpIpServerSocketProxy(new TcpIpListenerManager(), TestDataHelper.Logger);
+            tcpServer.LoggerId = "Server: ";
             tcpServer.IpAddress = ip;
             tcpServer.Port = port;
-            tcpServer.Connect().GetAwaiter().GetResult();
+            await tcpServer.Connect();
+            tcpServer.StartReceiverLoop(ServerSocketReceivedDataDelegate);
 
-            var connected = tcpServer.Connected;
+            stopped.Set();
+
+            //var connected = tcpServer.Connected;
 
             try
             {
                 while (!cts.IsCancellationRequested)
                 {
-                    var data = new byte[10];
-                    var count = await tcpServer.Receive(data);
-
-                    if (count > 0)
-                    {
-                        serverReceivedMessages.Add(data);
-                    }
-
-                    Debug.Print($"Server: received {data.Length} bytes");
-
-                    var sent = await tcpServer.Send(serverData); // reply back
+                    var sent = await tcpServer.Send(serverData); // send
                     Debug.Print($"Server: sent {sent} bytes");
+
+                    await Task.Delay(20);
                 }
             }
             catch (Exception e)
@@ -151,54 +151,54 @@ internal class TcpIpServerSocketProxyTests
         });
 
         // ReSharper disable once MethodSupportsCancellation
-        await Task.Delay(100);
+        stopped.WaitOne( 1000);
 
         // Act  
         var tcpClient = new TcpIpClientSocketProxy(TestDataHelper.Logger);
+        tcpClient.LoggerId = "Client: ";
         tcpClient.IpAddress = ip;
         tcpClient.Port = port;
-        tcpClient.Connect().GetAwaiter().GetResult();
+        await tcpClient.Connect();
+        tcpClient.StartReceiverLoop(ClientSocketReceivedDataDelegate);
 
         //client.Start();
 
         // TCP client handling
-            while (!cts.IsCancellationRequested)
-            {
-                // send data
-                var sent = await tcpClient.Send(clientData);
-                Debug.Print($"Client: sent {sent} bytes");
+        while (!cts.IsCancellationRequested)
+        {
+            // send data
+            var sent = await tcpClient.Send(clientData);
+            Debug.Print($"Client: sent {sent} bytes");
 
-                // then receive data
-                var data = new byte[10];
-                var count = await tcpClient.Receive(data);
+            await Task.Delay(20);
+        }
 
-                if (count > 0)
-                {
-                    clientReceivedMessages.Add(data);
-                }
+        tcpClient.Dispose();
 
-                Debug.Print($"Client: received {data.Length} bytes");
-            }
-
-            tcpClient.Dispose();
-       
         // Assert
         using (Assert.EnterMultipleScope())
         {
-            Assert.That(serverReceivedMessages.Count, Is.GreaterThan(3));
-            Assert.That(clientReceivedMessages.Count, Is.GreaterThan(3));
+            Assert.That(_serverReceivedMessages.Count, Is.GreaterThan(3));
+            Assert.That(_clientReceivedMessages.Count, Is.GreaterThan(3));
         }
+    }
+
+    private void ServerSocketReceivedDataDelegate(Memory<byte> data)
+    {
+        _serverReceivedMessages.Add(data);
+        Debug.Print($"Server: received {data.Length} bytes");
+    }
+
+    private void ClientSocketReceivedDataDelegate(Memory<byte> data)
+    {
+        _clientReceivedMessages.Add(data);
+        Debug.Print($"Client: received {data.Length} bytes");
     }
 
     [Test]
     public async Task SendReceive_PermanentModeUdpParallel_MessageReceived()
     {
         // Arrange 
-        ConcurrentBag<ReadOnlyMemory<byte>> tcpServerReceivedMessages = [];
-        ConcurrentBag<ReadOnlyMemory<byte>> tcpClientReceivedMessages = [];
-        ConcurrentBag<ReadOnlyMemory<byte>> udpServerReceivedMessages = [];
-        ConcurrentBag<ReadOnlyMemory<byte>> udpClientReceivedMessages = [];
-
         var serverData = new byte[] { 0x0, 0x1, 0x2 };
         var clientData = new byte[] { 0x0, 0x1, 0x2, 0x3, 0x4, 0x5 };
 
@@ -216,24 +216,16 @@ internal class TcpIpServerSocketProxyTests
 #pragma warning restore CS4014 // Because this call is not awaited, execution of the current method continues before the call is completed
         {
             var tcpServer = new TcpIpServerSocketProxy(new TcpIpListenerManager(), TestDataHelper.Logger);
+            
             tcpServer.IpAddress = ip;
             tcpServer.Port = port2;
             tcpServer.Connect().GetAwaiter().GetResult();
+            tcpServer.StartReceiverLoop(ServerSocketReceivedDataDelegate);
 
             try
             {
                 while (!cts.IsCancellationRequested)
                 {
-                    var data = new byte[10];
-                    var count = await tcpServer.Receive(data);
-
-                    if (count > 0)
-                    {
-                        tcpServerReceivedMessages.Add(data);
-                    }
-
-                    Debug.Print($"TcpServer: received {data.Length} bytes");
-
                     var sent = await tcpServer.Send(serverData); // reply back
                     Debug.Print($"TcpServer: sent {sent} bytes");
                 }
@@ -256,21 +248,22 @@ internal class TcpIpServerSocketProxyTests
             var udpServer = new UdpServerSocketProxy(TestDataHelper.Logger);
             udpServer.IpAddress = ip;
             udpServer.Port = port;
-            udpServer.Connect().GetAwaiter().GetResult();
+            await udpServer.Connect();
+            udpServer.StartReceiverLoop(UdpServerSocketReceivedDataDelegate);
 
             try
             {
                 while (!cts.IsCancellationRequested)
                 {
-                    var data = new byte[10];
-                    var count = await udpServer.Receive(data);
+                    //var data = new byte[10];
+                    //var count = await udpServer.Receive(data);
 
-                    if (count > 0)
-                    {
-                        udpServerReceivedMessages.Add(data);
-                    }
+                    //if (count > 0)
+                    //{
+                    //    udpServerReceivedMessages.Add(data);
+                    //}
 
-                    Debug.Print($"UdpServer: received {data.Length} bytes");
+                    //Debug.Print($"UdpServer: received {data.Length} bytes");
 
                     var sent = await udpServer.Send(serverData); // reply back
                     Debug.Print($"UdpServer: sent {sent} bytes");
@@ -293,12 +286,14 @@ internal class TcpIpServerSocketProxyTests
         var tcpClient = new TcpIpClientSocketProxy(TestDataHelper.Logger);
         tcpClient.IpAddress = ip;
         tcpClient.Port = port2;
-        tcpClient.Connect().GetAwaiter().GetResult();
+        await tcpClient.Connect();
+        tcpClient.StartReceiverLoop(ClientSocketReceivedDataDelegate);
 
         var udpClient = new UdpClientSocketProxy(TestDataHelper.Logger);
         udpClient.IpAddress = ip;
         udpClient.Port = port;
-        udpClient.Connect().GetAwaiter().GetResult();
+        await udpClient.Connect();
+        udpClient.StartReceiverLoop(UdpClientSocketReceivedDataDelegate);
 
         // TCP client handling
         var tcpClientTask = Task.Run(async () =>
@@ -308,17 +303,6 @@ internal class TcpIpServerSocketProxyTests
                 // send data
                 var sent = await tcpClient.Send(clientData);
                 Debug.Print($"TcpClient: sent {sent} bytes");
-
-                // then receive data
-                var data = new byte[10];
-                var count = await tcpClient.Receive(data);
-
-                if (count > 0)
-                {
-                    tcpClientReceivedMessages.Add(data);
-                }
-
-                Debug.Print($"TcpClient: received {data.Length} bytes");
             }
 
             tcpClient.Dispose();
@@ -331,17 +315,6 @@ internal class TcpIpServerSocketProxyTests
                 // send data
                 var sent = await udpClient.Send(clientData);
                 Debug.Print($"UdpClient: sent {sent} bytes");
-
-                // then receive data
-                var data = new byte[10];
-                var count = await udpClient.Receive(data);
-
-                if (count > 0)
-                {
-                    udpClientReceivedMessages.Add(data);
-                }
-
-                Debug.Print($"UdpClient: received {data.Length} bytes");
             }
 
             udpClient.Dispose();
@@ -353,10 +326,22 @@ internal class TcpIpServerSocketProxyTests
         // Assert
         using (Assert.EnterMultipleScope())
         {
-            Assert.That(tcpServerReceivedMessages.Count, Is.GreaterThan(3));
-            Assert.That(tcpClientReceivedMessages.Count, Is.GreaterThan(3));
-            Assert.That(udpServerReceivedMessages.Count, Is.GreaterThan(3));
-            Assert.That(udpClientReceivedMessages.Count, Is.GreaterThan(3));
+            Assert.That(_serverReceivedMessages.Count, Is.GreaterThan(3));
+            Assert.That(_clientReceivedMessages.Count, Is.GreaterThan(3));
+            Assert.That(_udpServerReceivedMessages.Count, Is.GreaterThan(3));
+            Assert.That(_udpClientReceivedMessages.Count, Is.GreaterThan(3));
         }
+    }
+
+    private void UdpClientSocketReceivedDataDelegate(Memory<byte> data)
+    {
+        _udpClientReceivedMessages.Add(data);
+        Debug.Print($"UdpClient: received {data.Length} bytes");
+    }
+
+    private void UdpServerSocketReceivedDataDelegate(Memory<byte> data)
+    {
+        _udpServerReceivedMessages.Add(data);
+        Debug.Print($"UdpServer: received {data.Length} bytes");
     }
 }

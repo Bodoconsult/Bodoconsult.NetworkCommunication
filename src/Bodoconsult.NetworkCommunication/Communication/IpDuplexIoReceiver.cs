@@ -1,7 +1,6 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
 using System.Buffers;
-using System.Net.Sockets;
 using Bodoconsult.App.BufferPool;
 using Bodoconsult.App.Helpers;
 using Bodoconsult.NetworkCommunication.Delegates;
@@ -40,6 +39,9 @@ public class IpDuplexIoReceiver : BaseDuplexIoReceiver
         DuplexIoIsWorkInProgressDelegate duplexIoIsWorkInProgressDelegate,
         DuplexIoNoDataDelegate duplexIoSetNotInProgressDelegate) : base(deviceCommSettings)
     {
+        ArgumentNullException.ThrowIfNull(deviceCommSettings.SocketProxy);
+        deviceCommSettings.SocketProxy.StartReceiverLoop(SocketReceivedDataDelegate);
+
         DuplexIoIsWorkInProgressDelegate = duplexIoIsWorkInProgressDelegate;
         DuplexIoNoDataDelegate = duplexIoSetNotInProgressDelegate;
 
@@ -50,6 +52,18 @@ public class IpDuplexIoReceiver : BaseDuplexIoReceiver
         ArgumentNullException.ThrowIfNull(deviceCommSettings.DataMessageProcessingPackage);
 
         _dataMessageValidator = deviceCommSettings.DataMessageProcessingPackage.DataMessageValidator;
+    }
+
+    private void SocketReceivedDataDelegate(Memory<byte> data)
+    {
+        if (data.IsEmpty)
+        {
+            return;
+        }
+
+        var dummy = _bufferPool.Dequeue();
+        dummy.Memory = data.ToArray().AsMemory();
+        _currentPipeline.Enqueue(dummy);
     }
 
     /// <summary>
@@ -132,14 +146,40 @@ public class IpDuplexIoReceiver : BaseDuplexIoReceiver
     }
 
     /// <summary>
+    /// Start the internal receiver
+    /// </summary>
+    public override async Task StartReceiver()
+    {
+        string msg;
+
+        if (CancellationSource != null)
+        {
+            try
+            {
+                await CancellationSource.CancelAsync();
+                CancellationSource?.Dispose();
+            }
+            catch (Exception e)
+            {
+                msg = $"CancellationToken cancelling failed: {e}";
+                MonitorLogger.LogError(msg);
+                DataMessagingConfig.AppLogger.LogError($"{LoggerId}{msg}");
+            }
+        }
+
+        CancellationSource = new();
+        _currentPipeline.StartConsumer();
+    }
+
+    /// <summary>
     /// Stop the internal receiver
     /// </summary>
     public override async Task StopReceiver()
     {
-        if (FillPipelineTask == null && SendPipelineTask == null)
-        {
-            return;
-        }
+        //if (FillPipelineTask == null && SendPipelineTask == null)
+        //{
+        //    return;
+        //}
 
         try
         {
@@ -153,11 +193,11 @@ public class IpDuplexIoReceiver : BaseDuplexIoReceiver
             // Do nothing
         }
 
-        FillPipelineTask?.Join();
+        //FillPipelineTask?.Join();
 
         _currentPipeline.StopConsumer();
 
-        SendPipelineTask?.Join();
+        //SendPipelineTask?.Join();
 
         try
         {
@@ -172,167 +212,172 @@ public class IpDuplexIoReceiver : BaseDuplexIoReceiver
             CancellationSource = null;
         }
 
-        FillPipelineTask = null;
-        SendPipelineTask = null;
+        //FillPipelineTask = null;
+        //SendPipelineTask = null;
     }
 
-    /// <summary>
-    /// Receive messages from the device.
-    /// This method is not intended to be called directly from production code.
-    /// It is a unit test method.
-    /// </summary>
-    /// <returns>Received device message or null in case of any error</returns>
-    public override async Task FillMessagePipeline()
-    {
-        string msg;
+    ///// <summary>
+    ///// Receive messages from the device.
+    ///// This method is not intended to be called directly from production code.
+    ///// It is a unit test method.
+    ///// </summary>
+    ///// <returns>Received device message or null in case of any error</returns>
+    //public override async Task FillMessagePipeline()
+    //{
+    //    while (!CancellationSource?.IsCancellationRequested ?? false)
+    //    {
+    //        await Task.Delay(2000);
+    //    }
 
-        ArgumentNullException.ThrowIfNull(DuplexIoIsWorkInProgressDelegate);
-        ArgumentNullException.ThrowIfNull(DuplexIoNoDataDelegate);
+    //    //string msg;
 
-        // Wait until the socket is connected
-        if (!await WaitForSocketIsConnected())
-        {
-            return;
-        }
+    //    //ArgumentNullException.ThrowIfNull(DuplexIoIsWorkInProgressDelegate);
+    //    //ArgumentNullException.ThrowIfNull(DuplexIoNoDataDelegate);
 
-        MonitorLogger.LogInformation($"{LoggerId}FillMessagePipeline started");
+    //    //// Wait until the socket is connected
+    //    //if (!await WaitForSocketIsConnected())
+    //    //{
+    //    //    return;
+    //    //}
 
-        try
-        {
-            while (true)
-            {
-                var socketProxy = DataMessagingConfig.SocketProxy;
+    //    //MonitorLogger.LogInformation($"{LoggerId}FillMessagePipeline started");
 
-                //Trace.TraceInformation("FillMessagePipeline in progress");
-                try
-                {
-                    if (CancellationSource?.Token.IsCancellationRequested ?? true)
-                    {
-                        if (socketProxy?.CancellationTokenSource != null)
-                        {
-                            await socketProxy.CancellationTokenSource.CancelAsync();
-                        }
-                        //Trace.TraceInformation("FillMessagePipeline cancelled");
-                        return;
-                    }
-                }
-                catch (Exception e)
-                {
-                    msg = $"{LoggerId}FillMessagePipeline exception: {e}";
-                    MonitorLogger?.LogError(msg);
-                    DataMessagingConfig.AppLogger.LogError($"{LoggerId}{msg}");
-                    return;
-                }
+    //    //try
+    //    //{
+    //    //    while (true)
+    //    //    {
+    //    //        var socketProxy = DataMessagingConfig.SocketProxy;
 
-                if (socketProxy is not { Connected: true } || socketProxy.IsDisposed)
-                {
-                    // Trace.TraceInformation("Not connected");
-                    DuplexIoNoDataDelegate.Invoke();
-                    await RaiseException(new SocketException());
-                    return;
-                }
+    //    //        //Trace.TraceInformation("FillMessagePipeline in progress");
+    //    //        try
+    //    //        {
+    //    //            if (CancellationSource?.Token.IsCancellationRequested ?? true)
+    //    //            {
+    //    //                if (socketProxy?.CancellationTokenSource != null)
+    //    //                {
+    //    //                    await socketProxy.CancellationTokenSource.CancelAsync();
+    //    //                }
+    //    //                //Trace.TraceInformation("FillMessagePipeline cancelled");
+    //    //                return;
+    //    //            }
+    //    //        }
+    //    //        catch (Exception e)
+    //    //        {
+    //    //            msg = $"{LoggerId}FillMessagePipeline exception: {e}";
+    //    //            MonitorLogger?.LogError(msg);
+    //    //            DataMessagingConfig.AppLogger.LogError($"{LoggerId}{msg}");
+    //    //            return;
+    //    //        }
 
-                if (DuplexIoIsWorkInProgressDelegate.Invoke())
-                {
-                    msg = "Other operation in progress";
-                    MonitorLogger?.LogError(msg);
-                    DataMessagingConfig.AppLogger.LogError($"{LoggerId}{msg}");
-                    AsyncHelper.Delay(FillPipelineTimeout);
-                    continue;
-                }
+    //    //        if (socketProxy is not { Connected: true } || socketProxy.IsDisposed)
+    //    //        {
+    //    //            // Trace.TraceInformation("Not connected");
+    //    //            DuplexIoNoDataDelegate.Invoke();
+    //    //            await RaiseException(new SocketException());
+    //    //            return;
+    //    //        }
 
-                var availableData = socketProxy.BytesAvailable;
-                if (availableData == 0)
-                {
-                    DuplexIoNoDataDelegate.Invoke();
-                    //Trace.TraceInformation("No data");
-                    AsyncHelper.Delay(FillPipelineTimeout);
-                    continue;
-                }
+    //    //        if (DuplexIoIsWorkInProgressDelegate.Invoke())
+    //    //        {
+    //    //            msg = "Other operation in progress";
+    //    //            MonitorLogger?.LogError(msg);
+    //    //            DataMessagingConfig.AppLogger.LogError($"{LoggerId}{msg}");
+    //    //            AsyncHelper.Delay(FillPipelineTimeout);
+    //    //            continue;
+    //    //        }
 
-                //var data = new byte[availableData].AsMemory();
+    //    //        var availableData = socketProxy.BytesAvailable;
+    //    //        if (availableData == 0)
+    //    //        {
+    //    //            DuplexIoNoDataDelegate.Invoke();
+    //    //            //Trace.TraceInformation("No data");
+    //    //            AsyncHelper.Delay(FillPipelineTimeout);
+    //    //            continue;
+    //    //        }
 
-                var data = ArrayPool.Rent(availableData);
+    //    //        //var data = new byte[availableData].AsMemory();
 
-                var messageLength = await socketProxy.Receive(data);
+    //    //        var data = ArrayPool.Rent(availableData);
 
-                // Give the socket free
-                DuplexIoNoDataDelegate.Invoke();
+    //    //        var messageLength = await socketProxy.Receive(data);
 
-                if (messageLength <= 0)
-                {
-                    ArrayPool.Return(data);
-                    AsyncHelper.Delay(FillPipelineTimeout);
-                    continue;
-                }
+    //    //        // Give the socket free
+    //    //        DuplexIoNoDataDelegate.Invoke();
 
-                //Trace.TraceInformation("Got data");
+    //    //        if (messageLength <= 0)
+    //    //        {
+    //    //            ArrayPool.Return(data);
+    //    //            AsyncHelper.Delay(FillPipelineTimeout);
+    //    //            continue;
+    //    //        }
 
-                var dummy = _bufferPool.Dequeue();
-                dummy.Memory = data.AsSpan()[..messageLength].ToArray().AsMemory();
+    //    //        //Trace.TraceInformation("Got data");
+
+    //    //        var dummy = _bufferPool.Dequeue();
+    //    //        dummy.Memory = data.AsSpan()[..messageLength].ToArray().AsMemory();
                 
-                _currentPipeline.Enqueue(dummy);
-                ArrayPool.Return(data);
-            }
-        }
-        catch (Exception e)
-        {
-            msg = $"{LoggerId}FillMessagePipeline exception: {e}";
-            MonitorLogger.LogError(msg);
-            DataMessagingConfig.AppLogger.LogError($"{LoggerId}{msg}");
-        }
-    }
+    //    //        _currentPipeline.Enqueue(dummy);
+    //    //        ArrayPool.Return(data);
+    //    //    }
+    //    //}
+    //    //catch (Exception e)
+    //    //{
+    //    //    msg = $"{LoggerId}FillMessagePipeline exception: {e}";
+    //    //    MonitorLogger.LogError(msg);
+    //    //    DataMessagingConfig.AppLogger.LogError($"{LoggerId}{msg}");
+    //    //}
+    //}
 
 
-    private Task RaiseException(Exception ex)
-    {
-        string msg;
+    //private Task RaiseException(Exception ex)
+    //{
+    //    string msg;
 
-        CancellationSource?.Cancel();
+    //    CancellationSource?.Cancel();
 
-        try
-        {
-            DuplexIoNoDataDelegate?.Invoke();
-        }
-        catch (Exception e)
-        {
-            // Do nothing
-            msg = $"DuplexIoSetNotInProgressDelegate failed: {e}";
-            MonitorLogger.LogError(msg);
-            DataMessagingConfig.AppLogger.LogError($"{LoggerId}{msg}");
-        }
+    //    try
+    //    {
+    //        DuplexIoNoDataDelegate?.Invoke();
+    //    }
+    //    catch (Exception e)
+    //    {
+    //        // Do nothing
+    //        msg = $"DuplexIoSetNotInProgressDelegate failed: {e}";
+    //        MonitorLogger.LogError(msg);
+    //        DataMessagingConfig.AppLogger.LogError($"{LoggerId}{msg}");
+    //    }
 
-        AsyncHelper.FireAndForget(() =>
-        {
-            try
-            {
-                DataMessagingConfig.DuplexIoErrorHandlerDelegate?.Invoke(ex);
-            }
-            catch (Exception e)
-            {
-                msg = $"DuplexIoErrorHandlerDelegate failed: {e}";
-                MonitorLogger.LogError(msg);
-                DataMessagingConfig.AppLogger.LogError($"{LoggerId}{msg}");
-            }
-        });
+    //    AsyncHelper.FireAndForget(() =>
+    //    {
+    //        try
+    //        {
+    //            DataMessagingConfig.DuplexIoErrorHandlerDelegate?.Invoke(ex);
+    //        }
+    //        catch (Exception e)
+    //        {
+    //            msg = $"DuplexIoErrorHandlerDelegate failed: {e}";
+    //            MonitorLogger.LogError(msg);
+    //            DataMessagingConfig.AppLogger.LogError($"{LoggerId}{msg}");
+    //        }
+    //    });
 
-        msg = "Device not connected";
-        MonitorLogger.LogError(msg);
-        DataMessagingConfig.AppLogger.LogError($"{LoggerId}{msg}");
+    //    msg = "Device not connected";
+    //    MonitorLogger.LogError(msg);
+    //    DataMessagingConfig.AppLogger.LogError($"{LoggerId}{msg}");
 
-        return Task.CompletedTask;
-    }
+    //    return Task.CompletedTask;
+    //}
 
-    /// <summary>
-    /// Process the messages received from device internally
-    /// This method is not intended to be called directly from production code.
-    /// It is a unit test method.
-    /// </summary>
-    public override Task SendMessagePipeline()
-    {
-        _currentPipeline.StartConsumer();
-        return Task.CompletedTask;
-    }
+    ///// <summary>
+    ///// Process the messages received from device internally
+    ///// This method is not intended to be called directly from production code.
+    ///// It is a unit test method.
+    ///// </summary>
+    //public override Task SendMessagePipeline()
+    //{
+    //    _currentPipeline.StartConsumer();
+    //    return Task.CompletedTask;
+    //}
 
     /// <summary>
     /// Current implementation of disposing
@@ -347,10 +392,10 @@ public class IpDuplexIoReceiver : BaseDuplexIoReceiver
 
         await StopReceiver();
 
-        await Task.Run(() =>
-        {
-            FillPipelineTask = null;
-        });
+        //await Task.Run(() =>
+        //{
+        //    FillPipelineTask = null;
+        //});
 
         CancellationSource?.Dispose();
         CancellationSource = null;

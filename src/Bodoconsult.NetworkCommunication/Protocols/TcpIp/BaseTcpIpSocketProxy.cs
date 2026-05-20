@@ -1,8 +1,9 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
-using System.Net;
 using Bodoconsult.App.Abstractions.Interfaces;
+using Bodoconsult.NetworkCommunication.Delegates;
 using Bodoconsult.NetworkCommunication.Interfaces;
+using System.Net;
 
 namespace Bodoconsult.NetworkCommunication.Protocols.TcpIp;
 
@@ -19,6 +20,16 @@ public abstract class BaseTcpIpSocketProxy : ISocketProxy
     {
         Logger = logger;
     }
+
+    /// <summary>
+    /// Delegate fired if the socket was receiving data
+    /// </summary>
+    public SocketReceivedDataDelegate? SocketReceivedDataDelegate { get; protected set; }
+
+    /// <summary>
+    /// Maximum buffer size for TCP packages. Set this value lower if your packages do not reach the maximum length of 65536 byte for UDP diagrams defined by protocol specs
+    /// </summary>
+    public int MaxPacketSize { get; set; } = 65536;
 
     /// <summary>
     /// Logger ID or null
@@ -81,6 +92,25 @@ public abstract class BaseTcpIpSocketProxy : ISocketProxy
     public IAppLoggerProxy Logger { get; }
 
     /// <summary>
+    /// Start the receiver loop
+    /// </summary>
+    /// <param name="socketReceivedDataDelegate">Delegate for forwarding received messages</param>
+    public virtual void StartReceiverLoop(SocketReceivedDataDelegate socketReceivedDataDelegate)
+    {
+        throw new NotSupportedException();
+    }
+
+    /// <summary>
+    /// Run the receiver loop
+    /// </summary>
+    /// <param name="waitForLoopStarted"></param>
+    /// <returns></returns>
+    public virtual Task ReceiverLoop(AutoResetEvent waitForLoopStarted)
+    {
+        throw new NotSupportedException();
+    }
+
+    /// <summary>
     /// Send bytes
     /// </summary>
     /// <param name="bytesToSend">Byte array to send</param>
@@ -114,25 +144,25 @@ public abstract class BaseTcpIpSocketProxy : ISocketProxy
         throw new NotSupportedException();
     }
 
-    /// <summary>
-    /// Receive data from the socket
-    /// </summary>
-    /// <param name="buffer">Byte array to store the received byte data in</param>
-    /// <returns>Number of bytes received</returns>
-    public virtual Task<int> Receive(byte[] buffer)
-    {
-        throw new NotSupportedException();
-    }
+    ///// <summary>
+    ///// Receive data from the socket
+    ///// </summary>
+    ///// <param name="buffer">Byte array to store the received byte data in</param>
+    ///// <returns>Number of bytes received</returns>
+    //public virtual Task<int> Receive(byte[] buffer)
+    //{
+    //    throw new NotSupportedException();
+    //}
 
-    /// <summary>
-    /// Receive first data byte from the socket
-    /// </summary>
-    /// <param name="buffer">Byte array to store the received byte data in</param>
-    /// <returns>Number of bytes received</returns>
-    public virtual Task<int> Receive(Memory<byte> buffer)
-    {
-        throw new NotSupportedException();
-    }
+    ///// <summary>
+    ///// Receive first data byte from the socket
+    ///// </summary>
+    ///// <param name="buffer">Byte array to store the received byte data in</param>
+    ///// <returns>Number of bytes received</returns>
+    //public virtual Task<int> Receive(Memory<byte> buffer)
+    //{
+    //    throw new NotSupportedException();
+    //}
 
     ///// <summary>
     ///// Receive data from the socket

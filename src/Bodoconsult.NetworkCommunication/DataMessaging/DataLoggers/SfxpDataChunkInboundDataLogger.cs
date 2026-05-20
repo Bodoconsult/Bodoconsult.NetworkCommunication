@@ -1,7 +1,5 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
-using System.Diagnostics;
-using System.Reflection.Metadata;
 using Bodoconsult.App.Abstractions.Interfaces;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataBlocks;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
@@ -57,37 +55,20 @@ public class SfxpDataChunkInboundDataLogger : IInboundDataLogger
         DataExportService.Stop();
     }
 
+
     /// <summary>
     /// Check if the message is to log. A message can be logged by zero or one logger maximum.
     /// </summary>
     /// <param name="message">Data message to check for logging</param>
-    /// <returns>True if the message is a candiate for logging with the current logger else false</returns>
-    public bool CheckIfMessageIsToLog(IInboundDataMessage message)
+    /// <returns>A list with array items to log or empty list</returns>
+    public List<Memory<byte>> CheckIfMessageIsToLog(IInboundDataMessage message)
     {
-        if (message is not SfxpInboundDataMessage sfxp)
+        if (message is not SfxpInboundDataMessage sfxp || sfxp.DataBlock is not SfxpInboundDatablock db)
         {
-            return false;
+            return [];
         }
 
-        return sfxp.DataBlock is SfxpInboundDatablock;
-    }
-
-    /// <summary>
-    /// Log a data message
-    /// </summary>
-    /// <param name="message">Data message to log</param>
-    public void LogTheMessage(IInboundDataMessage message)
-    {
-        if (message is not SfxpInboundDataMessage sfxp)
-        {
-            return;
-        }
-
-        if (sfxp.DataBlock is not SfxpInboundDatablock db)
-        {
-            return;
-        }
-
+        var chunks = new List<Memory<byte>>();
         foreach (var chunk in db.DataChunks.Where(x => x.Channel == Channel).ToList())
         {
             if (!chunk.Data.HasValue)
@@ -96,7 +77,23 @@ public class SfxpDataChunkInboundDataLogger : IInboundDataLogger
             }
             //Debug.Print($"{chunk.Channel}: {chunk.Data.Value.Length}");
 
-            _dataExportService.Add(chunk.Data.Value);
+            chunks.Add(chunk.Data.Value);
+        }
+
+        return chunks;
+    }
+
+    /// <summary>
+    /// Log messages
+    /// </summary>
+    /// <param name="messages">Messages to log</param>
+    public void LogTheMessages(List<Memory<byte>> messages)
+    {
+        foreach (var message in messages)
+        {
+            //Debug.Print($"{chunk.Channel}: {chunk.Data.Value.Length}");
+
+            _dataExportService.Add(message);
         }
     }
 }

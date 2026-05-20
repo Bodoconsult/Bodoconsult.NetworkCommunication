@@ -13,6 +13,8 @@ namespace Bodoconsult.NetworkCommunication.Tests.Tcp;
 [SingleThreaded]
 internal class TcpIpClientSocketProxyTests
 {
+    private int _serverCount;
+
     [Test]
     public async Task SendReceive_PermanentMode_MessageReceived()
     {
@@ -24,7 +26,7 @@ internal class TcpIpClientSocketProxyTests
 
             var ip = IPAddress.Parse("127.0.0.1");
             var port = TestDataHelper.GetRandomPort();
-            var serverCount = 0;
+            
 
             var cts = new CancellationTokenSource(5000);
 
@@ -37,7 +39,8 @@ internal class TcpIpClientSocketProxyTests
                 var client = new TcpIpClientSocketProxy(TestDataHelper.Logger);
                 client.IpAddress = ip;
                 client.Port = port;
-                client.Connect().GetAwaiter().GetResult();
+                await client.Connect();
+                client.StartReceiverLoop(SocketReceivedDataDelegate);
 
                 try
                 {
@@ -45,11 +48,6 @@ internal class TcpIpClientSocketProxyTests
                     {
                         var sent = await client.Send(serverData); // reply back
                         Debug.Print($"Client: sent {sent} bytes");
-
-                        var data = new byte[10];
-                        var received = await client.Receive(data); ; // listen on port 11000
-
-                        Debug.Print($"Client: received {received} bytes");
                     }
                 }
                 catch (Exception e)
@@ -74,11 +72,11 @@ internal class TcpIpClientSocketProxyTests
                 tcpIpServer.Send(clientData);
             }
 
-            serverCount = tcpIpServer.ReceivedMessages.Count;
+            _serverCount = tcpIpServer.ReceivedMessages.Count;
             tcpIpServer.Dispose();
 
             // Assert
-            Assert.That(serverCount, Is.GreaterThan(3));
+            Assert.That(_serverCount, Is.GreaterThan(3));
         }
         catch (Exception e)
         {
@@ -86,6 +84,11 @@ internal class TcpIpClientSocketProxyTests
             Assert.Fail(e.ToString());
         }
 
+    }
+
+    private void SocketReceivedDataDelegate(Memory<byte> data)
+    {
+        Debug.Print($"Client: received {data.Length} bytes");
     }
 
     //[Test]

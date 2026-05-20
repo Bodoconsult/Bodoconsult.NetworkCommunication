@@ -53,23 +53,26 @@ public class OnlyDataBlockInboundDataLogger : IInboundDataLogger
     /// </summary>
     /// <param name="message">Data message to check for logging</param>
     /// <returns>True if the message is a candiate for logging with the current logger else false</returns>
-    public bool CheckIfMessageIsToLog(IInboundDataMessage message)
+    public List<Memory<byte>> CheckIfMessageIsToLog(IInboundDataMessage message)
     {
-        // Do not filter anything but messages without datablock
-        return message.DataBlock != null;
+        if (message.DataBlock != null)
+        {
+            return [message.DataBlock.Data];
+        }
+        return [];
     }
 
     /// <summary>
-    /// Log a data message
+    /// Log messages
     /// </summary>
-    /// <param name="message">Data message to log</param>
-    public void LogTheMessage(IInboundDataMessage message)
+    /// <param name="messages">Messages to log</param>
+    public void LogTheMessages(List<Memory<byte>> messages)
     {
-        if (message.DataBlock == null)
+        foreach (var message in messages)
         {
-            return;
-        }
+            //Debug.Print($"{chunk.Channel}: {chunk.Data.Value.Length}");
 
-        _dataExportService.Add(message.DataBlock.Data);
+            _dataExportService.Add(message);
+        }
     }
 }

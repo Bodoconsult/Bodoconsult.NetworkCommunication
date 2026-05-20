@@ -2,6 +2,7 @@
 
 using System.Net;
 using Bodoconsult.App.Abstractions.Interfaces;
+using Bodoconsult.NetworkCommunication.Delegates;
 using Bodoconsult.NetworkCommunication.Interfaces;
 
 namespace Bodoconsult.NetworkCommunication.Protocols.Udp;
@@ -19,6 +20,11 @@ public abstract class BaseUpdSocketProxy : ISocketProxy
         LoggerId = $"{GetType().Name}: ";
         Logger = logger;
     }
+
+    /// <summary>
+    /// Delegate fired if the socket was receiving data
+    /// </summary>
+    public SocketReceivedDataDelegate? SocketReceivedDataDelegate { get; protected set; }
 
     /// <summary>
     /// Logger ID or null
@@ -82,6 +88,25 @@ public abstract class BaseUpdSocketProxy : ISocketProxy
     public IAppLoggerProxy Logger { get; }
 
     /// <summary>
+    /// Start the receiver loop
+    /// </summary>
+    /// <param name="socketReceivedDataDelegate">Delegate for forwarding received messages</param>
+    public virtual void StartReceiverLoop(SocketReceivedDataDelegate socketReceivedDataDelegate)
+    {
+        throw new NotSupportedException("Override in derived classes");
+    }
+
+    /// <summary>
+    /// Run the receiver loop
+    /// </summary>
+    /// <param name="waitForLoopStarted"></param>
+    /// <returns></returns>
+    public virtual Task ReceiverLoop(AutoResetEvent waitForLoopStarted)
+    {
+        throw new NotSupportedException("Override in derived classes");
+    }
+
+    /// <summary>
     /// Send bytes
     /// </summary>
     /// <param name="bytesToSend">Byte array to send</param>
@@ -123,25 +148,25 @@ public abstract class BaseUpdSocketProxy : ISocketProxy
         throw new NotSupportedException();
     }
 
-    /// <summary>
-    /// Receive data from the socket
-    /// </summary>
-    /// <param name="buffer">Byte array to store the received byte data in</param>
-    /// <returns>Number of bytes received</returns>
-    public virtual Task<int> Receive(byte[] buffer)
-    {
-        throw new NotSupportedException();
-    }
+    ///// <summary>
+    ///// Receive data from the socket
+    ///// </summary>
+    ///// <param name="buffer">Byte array to store the received byte data in</param>
+    ///// <returns>Number of bytes received</returns>
+    //public virtual Task<int> Receive(byte[] buffer)
+    //{
+    //    throw new NotSupportedException();
+    //}
 
-    /// <summary>
-    /// Receive first data byte from the socket
-    /// </summary>
-    /// <param name="buffer">Byte array to store the received byte data in</param>
-    /// <returns>Number of bytes received</returns>
-    public virtual Task<int> Receive(Memory<byte> buffer)
-    {
-        throw new NotSupportedException();
-    }
+    ///// <summary>
+    ///// Receive first data byte from the socket
+    ///// </summary>
+    ///// <param name="buffer">Byte array to store the received byte data in</param>
+    ///// <returns>Number of bytes received</returns>
+    //public virtual Task<int> Receive(Memory<byte> buffer)
+    //{
+    //    throw new NotSupportedException();
+    //}
 
     /// <summary>
     /// Poll data

@@ -20,12 +20,30 @@ internal class UdpServerWithHelloSocketProxyTests
     /// </summary>
     private const int TimeOut = 2000;
 
+    private readonly ConcurrentBag<ReadOnlyMemory<byte>> _clientReceivedMessages = [];
+    private readonly ConcurrentBag<ReadOnlyMemory<byte>> _serverReceivedMessages = [];
+
+    private void ClientSocketReceivedDataDelegate(Memory<byte> data)
+    {
+        _clientReceivedMessages.Add(data);
+    }
+
+    private void ServerSocketReceivedDataDelegate(Memory<byte> data)
+    {
+        _serverReceivedMessages.Add(data);
+    }
+
+    [SetUp]
+    public void Setup()
+    {
+        _clientReceivedMessages.Clear();
+        _serverReceivedMessages.Clear();
+    }
+
     [Test]
     public async Task SendReceive_PermanentModeTestClient_MessageReceived()
     {
         // Arrange 
-        ConcurrentBag<ReadOnlyMemory<byte>> serverReceivedMessages = [];
-
         var serverData = new byte[] { 0x0, 0x1, 0x2 };
         var clientData = new byte[] { 0x0, 0x1, 0x2, 0x3, 0x4, 0x5 };
 
@@ -45,6 +63,7 @@ internal class UdpServerWithHelloSocketProxyTests
             udpServer.IpAddress = ip;
             udpServer.Port = port;
             await udpServer.Connect();
+            udpServer.StartReceiverLoop(ServerSocketReceivedDataDelegate);
 
             started.Set();
 
@@ -52,15 +71,6 @@ internal class UdpServerWithHelloSocketProxyTests
             {
                 while (!cts.IsCancellationRequested)
                 {
-                    var data = new byte[10];
-                    var count = await udpServer.Receive(data);
-
-                    if (count > 0)
-                    {
-                        serverReceivedMessages.Add(data);
-                    }
-                    Debug.Print($"Server: received {data.Length} bytes");
-
                     var sent = await udpServer.Send(serverData); // reply back
                     Debug.Print($"Server: sent {sent} bytes");
                 }
@@ -97,7 +107,7 @@ internal class UdpServerWithHelloSocketProxyTests
         using (Assert.EnterMultipleScope())
         {
             Assert.That(client.ReceivedMessages.Count, Is.GreaterThan(3));
-            Assert.That(serverReceivedMessages.Count, Is.GreaterThan(3));
+            Assert.That(_serverReceivedMessages.Count, Is.GreaterThan(3));
         }
     }
 
@@ -105,9 +115,6 @@ internal class UdpServerWithHelloSocketProxyTests
     public async Task SendReceive_PermanentMode_MessageReceived()
     {
         // Arrange 
-        ConcurrentBag<ReadOnlyMemory<byte>> serverReceivedMessages = [];
-        ConcurrentBag<ReadOnlyMemory<byte>> clientReceivedMessages = [];
-
         var serverData = new byte[] { 0x0, 0x1, 0x2 };
         var clientData = new byte[] { 0x0, 0x1, 0x2, 0x3, 0x4, 0x5 };
 
@@ -127,6 +134,7 @@ internal class UdpServerWithHelloSocketProxyTests
             udpServer.IpAddress = ip;
             udpServer.Port = port;
             await udpServer.Connect();
+            udpServer.StartReceiverLoop(ServerSocketReceivedDataDelegate);
 
             started.Set();
 
@@ -134,16 +142,6 @@ internal class UdpServerWithHelloSocketProxyTests
             {
                 while (!cts.IsCancellationRequested)
                 {
-                    var data = new byte[10];
-                    var count = await udpServer.Receive(data);
-
-                    if (count > 0)
-                    {
-                        serverReceivedMessages.Add(data);
-                    }
-
-                    Debug.Print($"Server: received {data.Length} bytes");
-
                     var sent = await udpServer.Send(serverData); // reply back
                     Debug.Print($"Server: sent {sent} bytes");
                 }
@@ -166,8 +164,8 @@ internal class UdpServerWithHelloSocketProxyTests
         var udpClient = new UdpClientWithHelloSocketProxy(TestDataHelper.Logger);
         udpClient.IpAddress = ip;
         udpClient.Port = port;
-
         await udpClient.Connect();
+        udpClient.StartReceiverLoop(ClientSocketReceivedDataDelegate);
 
         //client.Start();
 
@@ -176,17 +174,6 @@ internal class UdpServerWithHelloSocketProxyTests
             // send data
             var sent = await udpClient.Send(clientData);
             Debug.Print($"Client: sent {sent} bytes");
-
-            // then receive data
-            var data = new byte[10];
-            var count = await udpClient.Receive(data);
-
-            if (count > 0)
-            {
-                clientReceivedMessages.Add(data);
-            }
-
-            Debug.Print($"Client: received {data.Length} bytes");
         }
 
         udpClient.Dispose();
@@ -194,8 +181,8 @@ internal class UdpServerWithHelloSocketProxyTests
         // Assert
         using (Assert.EnterMultipleScope())
         {
-            Assert.That(serverReceivedMessages.Count, Is.GreaterThan(3));
-            Assert.That(clientReceivedMessages.Count, Is.GreaterThan(3));
+            Assert.That(_serverReceivedMessages.Count, Is.GreaterThan(3));
+            Assert.That(_clientReceivedMessages.Count, Is.GreaterThan(3));
         }
     }
 }

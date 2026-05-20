@@ -2,6 +2,8 @@
 // Licence MIT
 
 using Bodoconsult.App.Abstractions.Interfaces;
+using Bodoconsult.App.Helpers;
+using Bodoconsult.NetworkCommunication.Delegates;
 using Bodoconsult.NetworkCommunication.Helpers;
 using Bodoconsult.NetworkCommunication.Interfaces;
 using System.Net;
@@ -43,7 +45,7 @@ public class TcpIpClientSocketProxy : BaseTcpIpSocketProxy
                 var blockingState = Socket.Blocking;
                 try
                 {
-                    Socket.Blocking = false;
+
                     Socket.Send(_tmp, 0, 0);
                     //Console.WriteLine("Connected!");
                 }
@@ -250,77 +252,158 @@ public class TcpIpClientSocketProxy : BaseTcpIpSocketProxy
     }
 
     /// <summary>
-    /// Receive data from the socket
+    /// Start the receiver loop
     /// </summary>
-    /// <param name="buffer">Byte array to store the received byte data in</param>
-    /// <returns>Number of bytes received</returns>
-    public override async Task<int> Receive(byte[] buffer)
+    /// <param name="socketReceivedDataDelegate">Delegate for forwarding received messages</param>
+    public override void StartReceiverLoop(SocketReceivedDataDelegate socketReceivedDataDelegate)
     {
-        if (Socket is not { Connected: true })
-        {
-            return 0;
-        }
+        SocketReceivedDataDelegate = socketReceivedDataDelegate;
 
-        try
-        {
-            var result = await Socket.ReceiveAsync(buffer, CancellationTokenSource.Token);
-            Logger.LogInformation($"{LoggerId}received {result} bytes");
-            return result;
-        }
-        catch (SocketException socketException)
-        {
-            if (socketException.ErrorCode != 10054)
-            {
-                Logger.LogError($"{LoggerId}Receiving failed", socketException);
-            }
-            else
-            {
-                Logger.LogDebug($"{LoggerId}No connection");
-            }
+        AutoResetEvent wait = new(false);
 
-            return 0;
-        }
-        catch (Exception e)
+        // Start receive loop now
+        Task.Run(async () =>
         {
-            Logger.LogError($"{LoggerId}Receiving failed", e);
-            return 0;
-        }
+            await ReceiverLoop(wait);
+        });
+
+        wait.WaitOne(100);
     }
 
     /// <summary>
-    /// Receive first data byte from the socket
+    /// Run the receiver loop
     /// </summary>
-    /// <param name="buffer">Byte array to store the received byte data in</param>
-    /// <returns>Number of bytes received</returns>
-    public override async Task<int> Receive(Memory<byte> buffer)
+    /// <param name="waitForLoopStarted"></param>
+    /// <returns></returns>
+    public override async Task ReceiverLoop(AutoResetEvent waitForLoopStarted)
     {
-        if (Socket is not { Connected: true })
-        {
-            return Task.FromResult(0).GetAwaiter().GetResult();
-        }
-
         try
         {
-            var result = await Socket.ReceiveAsync(buffer, SocketFlags.None, CancellationTokenSource.Token).AsTask();
-            Logger.LogInformation($"{LoggerId}TcpClientSocket: received {result} bytes");
-            return result;
-        }
-        catch (SocketException socketException)
-        {
-            if (socketException.ErrorCode != 10054)
-            {
-                var s = $"{LoggerId}{socketException}";
-                Logger.LogError(s);
-            }
+            ArgumentNullException.ThrowIfNull(Socket, $"{LoggerId}Socket is null");
+            ArgumentNullException.ThrowIfNull(SocketReceivedDataDelegate, $"{LoggerId}SocketReceivedDataDelegate is null");
 
-            return 0;
+            Logger.LogInformation($"{LoggerId}ReceiverLoop started");
+
+            waitForLoopStarted.Set();
+
+            while (!CancellationTokenSource.IsCancellationRequested)
+            {
+                var result = 0;
+                var buffer = new byte[MaxPacketSize].AsMemory();
+                try
+                {
+                    result = await Socket.ReceiveAsync(buffer, SocketFlags.None, CancellationTokenSource.Token);
+                    Logger.LogInformation($"{LoggerId}received {result} bytes");
+                }
+                catch (OperationCanceledException)
+                {
+                    break;
+                }
+                catch (Exception e)
+                {
+                    Logger.LogError($"{LoggerId}Receiving failed ", e);
+                }
+
+                if (result == 0)
+                {
+                    await Task.Delay(5);
+                }
+
+                AsyncHelper.FireAndForget(() =>
+                {
+                    try
+                    {
+                        SocketReceivedDataDelegate.Invoke(buffer[..result].ToArray());
+                    }
+                    catch (Exception e)
+                    {
+                        Logger.LogError($"{LoggerId}Forwarding received data failed", e);
+                    }
+                });
+            }
+        }
+        catch (OperationCanceledException)
+        {
+
         }
         catch (Exception e)
         {
-            Logger.LogError($"{LoggerId}{e}");
-            return 0;
+            Logger.LogError($"{LoggerId}Receiver loop failed", e);
         }
     }
+
+    ///// <summary>
+    ///// Receive data from the socket
+    ///// </summary>
+    ///// <param name="buffer">Byte array to store the received byte data in</param>
+    ///// <returns>Number of bytes received</returns>
+    //public override async Task<int> Receive(byte[] buffer)
+    //{
+    //    if (Socket is not { Connected: true })
+    //    {
+    //        return 0;
+    //    }
+
+    //    try
+    //    {
+    //        var result = await Socket.ReceiveAsync(buffer, CancellationTokenSource.Token);
+    //        Logger.LogInformation($"{LoggerId}received {result} bytes");
+    //        return result;
+    //    }
+    //    catch (SocketException socketException)
+    //    {
+    //        if (socketException.ErrorCode != 10054)
+    //        {
+    //            Logger.LogError($"{LoggerId}Receiving failed", socketException);
+    //        }
+    //        else
+    //        {
+    //            Logger.LogDebug($"{LoggerId}No connection");
+    //        }
+
+    //        return 0;
+    //    }
+    //    catch (Exception e)
+    //    {
+    //        Logger.LogError($"{LoggerId}Receiving failed", e);
+    //        return 0;
+    //    }
+    //}
+
+    ///// <summary>
+    ///// Receive first data byte from the socket
+    ///// </summary>
+    ///// <param name="buffer">Byte array to store the received byte data in</param>
+    ///// <returns>Number of bytes received</returns>
+    //public override async Task<int> Receive(Memory<byte> buffer)
+    //{
+    //    if (Socket is not { Connected: true })
+    //    {
+    //        return Task.FromResult(0).GetAwaiter().GetResult();
+    //    }
+
+    //    try
+    //    {
+    //        var result = await Socket.ReceiveAsync(buffer, SocketFlags.None, CancellationTokenSource.Token).AsTask();
+    //        Logger.LogInformation($"{LoggerId}TcpClientSocket: received {result} bytes");
+    //        return result;
+    //    }
+    //    catch (SocketException socketException)
+    //    {
+    //        if (socketException.ErrorCode != 10054)
+    //        {
+    //            var s = $"{LoggerId}{socketException}";
+    //            Logger.LogError(s);
+    //        }
+
+    //        return 0;
+    //    }
+    //    catch (Exception e)
+    //    {
+    //        Logger.LogError($"{LoggerId}{e}");
+    //        return 0;
+    //    }
+    //}
 
     /// <summary>
     /// Current socket (only for testing purposes, do not access directly in production code)
@@ -332,7 +415,7 @@ public class TcpIpClientSocketProxy : BaseTcpIpSocketProxy
     /// </summary>
     public override void Dispose()
     {
-        CancellationTokenSource.Cancel();
+        CancellationTokenSource.Cancel(false);
         IsDisposed = true;
         Socket?.Close();
         Socket?.Dispose();

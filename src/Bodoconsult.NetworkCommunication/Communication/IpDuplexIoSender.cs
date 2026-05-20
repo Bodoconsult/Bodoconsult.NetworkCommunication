@@ -75,21 +75,18 @@ public class IpDuplexIoSender : BaseDuplexIoSender
             //Create a byte array from message according to current protocol
             while (i < 3)
             {
-                if (!_duplexIoIsWorkInProgressDelegate())
+                (sent, isSent) = await SendMessageInternal(DataMessagingConfig, _duplexIoNoDataDelegate, _duplexIoIsWorkInProgressDelegate, message);
+
+                if (isSent)
                 {
-                    (sent, isSent) = await SendMessageInternal(DataMessagingConfig, _duplexIoNoDataDelegate, message);
-
-                    DataMessagingConfig.MonitorLogger.LogInformation($"Sent: {sent} // {isSent}");
-
-                    if (isSent)
-                    {
-#if DEBUG
-                        DataMessagingConfig.MonitorLogger.LogInformation($"Sent: {message.ToInfoString()}");
-#endif
-
-                        break;
-                    }
+                    //#if DEBUG
+                    DataMessagingConfig.MonitorLogger.LogInformation($"{LoggerId}Sent: {message.ToInfoString()}");
+                    //#endif
+                    break;
                 }
+
+                DataMessagingConfig.MonitorLogger.LogInformation($"{LoggerId}Sent: {sent} // {isSent}");
+
 
                 AsyncHelper.Delay(10);
                 i++;
@@ -123,15 +120,24 @@ public class IpDuplexIoSender : BaseDuplexIoSender
         }
     }
 
-    private async Task<(int sent, bool isSent)> SendMessageInternal(IDataMessagingConfig dataMessagingConfig, DuplexIoNoDataDelegate duplexIoNoDataDelegate, IOutboundMessage message)
+    private static async Task<(int sent, bool isSent)> SendMessageInternal(IDataMessagingConfig dataMessagingConfig,
+        DuplexIoNoDataDelegate duplexIoNoDataDelegate,
+        DuplexIoIsWorkInProgressDelegate duplexIoIsWorkInProgressDelegate, IOutboundMessage message)
     {
         string msg;
         int sent;
         bool isSent;
         try
         {
-            sent = await dataMessagingConfig.SocketProxy!.Send(message.RawMessageData);
-            duplexIoNoDataDelegate();
+            //if (!duplexIoIsWorkInProgressDelegate())
+            //{
+                sent = await dataMessagingConfig.SocketProxy!.Send(message.RawMessageData);
+                duplexIoNoDataDelegate();
+            //}
+            //else
+            //{
+            //    sent = 0;
+            //}
 
             if (sent == 0)
             {
@@ -139,7 +145,6 @@ public class IpDuplexIoSender : BaseDuplexIoSender
                 //    $"Y:Sent: {sent} // {isSent}  // {message.RawMessageData.Length} bytes // {ArrayHelper.GetStringFromArrayCsharpStyle(message.RawMessageData)}");
                 return (sent, false);
             }
-
 
             //msg = $"{message.RawMessageDataClearText}  {message.ToShortInfoString()}";
             //dataMessagingConfig.MonitorLogger.LogInformation($"Message sent: {msg}");
@@ -153,8 +158,8 @@ public class IpDuplexIoSender : BaseDuplexIoSender
                 catch (Exception e)
                 {
                     msg = $"message could not be sent via socket: {e}";
-                    DataMessagingConfig.MonitorLogger.LogError(msg);
-                    DataMessagingConfig.AppLogger.LogError($"{DataMessagingConfig.LoggerId}{msg}");
+                    dataMessagingConfig.MonitorLogger.LogError(msg);
+                    dataMessagingConfig.AppLogger.LogError($"{dataMessagingConfig.LoggerId}{msg}");
                 }
 
             });
@@ -164,6 +169,7 @@ public class IpDuplexIoSender : BaseDuplexIoSender
         }
         catch (SocketException socketException)
         {
+            duplexIoNoDataDelegate();
             msg = $"message {message.ToShortInfoString()} not sent: {socketException}";
             dataMessagingConfig.MonitorLogger.LogError(msg);
             dataMessagingConfig.AppLogger.LogError($"{dataMessagingConfig.LoggerId}{msg}");
@@ -173,7 +179,8 @@ public class IpDuplexIoSender : BaseDuplexIoSender
                 try
                 {
                     dataMessagingConfig.RaiseComDevCloseRequestDelegate?.Invoke("IpDuplexIoSender");
-                    dataMessagingConfig.RaiseDataMessageNotSentDelegate?.Invoke(message.RawMessageData, socketException.Message);
+                    dataMessagingConfig.RaiseDataMessageNotSentDelegate?.Invoke(message.RawMessageData,
+                        socketException.Message);
                 }
                 catch (Exception e)
                 {
@@ -186,6 +193,7 @@ public class IpDuplexIoSender : BaseDuplexIoSender
         }
         catch (Exception sendException)
         {
+            duplexIoNoDataDelegate();
             msg = $"message {message.ToShortInfoString()} not sent: {sendException}";
             dataMessagingConfig.MonitorLogger.LogError(msg);
             dataMessagingConfig.AppLogger.LogError($"{dataMessagingConfig.LoggerId}{msg}");
@@ -194,7 +202,8 @@ public class IpDuplexIoSender : BaseDuplexIoSender
             {
                 try
                 {
-                    dataMessagingConfig.RaiseDataMessageNotSentDelegate?.Invoke(message.RawMessageData, sendException.Message);
+                    dataMessagingConfig.RaiseDataMessageNotSentDelegate?.Invoke(message.RawMessageData,
+                        sendException.Message);
                 }
                 catch (Exception e)
                 {
@@ -207,6 +216,10 @@ public class IpDuplexIoSender : BaseDuplexIoSender
             isSent = false;
             sent = 0;
             //Trace.TraceInformation($"X: Sent: {sent} // {isSent}");
+        }
+        finally
+        {
+            duplexIoNoDataDelegate();
         }
 
         return (sent, isSent);

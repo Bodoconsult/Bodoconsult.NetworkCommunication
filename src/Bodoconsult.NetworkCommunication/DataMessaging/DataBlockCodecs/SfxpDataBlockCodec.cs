@@ -5,7 +5,6 @@ using Bodoconsult.NetworkCommunication.DataMessaging.DataBlocks;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
 using Bodoconsult.NetworkCommunication.Helpers;
 using Bodoconsult.NetworkCommunication.Interfaces;
-using System.Diagnostics;
 
 namespace Bodoconsult.NetworkCommunication.DataMessaging.DataBlockCodecs;
 

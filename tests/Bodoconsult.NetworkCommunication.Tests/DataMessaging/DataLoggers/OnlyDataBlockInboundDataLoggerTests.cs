@@ -45,11 +45,11 @@ internal class OnlyDataBlockInboundDataLoggerTests
         var result = logger.CheckIfMessageIsToLog(msg);
 
         // Assert
-        Assert.That(result, Is.True);
+        Assert.That(result.Count, Is.Not.Zero);
     }
 
     [Test]
-    public void CheckIfMessageIsToLog_MessageWithoutDatablock_ReturnFals()
+    public void CheckIfMessageIsToLog_MessageWithoutDatablock_ReturnFalse()
     {
         // Arrange 
         IDataExportService<byte[]> dataExportService = new FakeDataExportService();
@@ -62,7 +62,7 @@ internal class OnlyDataBlockInboundDataLoggerTests
         var result = logger.CheckIfMessageIsToLog(msg);
 
         // Assert
-        Assert.That(result, Is.False);
+        Assert.That(result.Count, Is.Zero);
     }
 
     [Test]
@@ -83,10 +83,8 @@ internal class OnlyDataBlockInboundDataLoggerTests
 
         var result = logger.CheckIfMessageIsToLog(msg);
 
-        Assert.That(result, Is.True);
-
         // Act  
-        logger.LogTheMessage(msg);
+        logger.LogTheMessages(result);
 
         // Assert
         Wait.Until(() => dataExportService.WasLogged);

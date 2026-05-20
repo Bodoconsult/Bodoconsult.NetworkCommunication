@@ -3,6 +3,7 @@
 
 using System.Net;
 using Bodoconsult.App.Abstractions.Interfaces;
+using Bodoconsult.NetworkCommunication.Delegates;
 
 namespace Bodoconsult.NetworkCommunication.Interfaces;
 
@@ -12,9 +13,14 @@ namespace Bodoconsult.NetworkCommunication.Interfaces;
 public interface ISocketProxy: IDisposable
 {
     /// <summary>
+    /// Delegate fired if the socket was receiving data
+    /// </summary>
+    SocketReceivedDataDelegate? SocketReceivedDataDelegate  { get; }
+
+    /// <summary>
     /// Logger ID or null
     /// </summary>
-    public string? LoggerId { get; set; }
+    string? LoggerId { get; set; }
 
     /// <summary>
     /// Minimum buffer size
@@ -72,6 +78,19 @@ public interface ISocketProxy: IDisposable
     IAppLoggerProxy Logger { get; }
 
     /// <summary>
+    /// Start the receiver loop
+    /// </summary>
+    /// <param name="socketReceivedDataDelegate">Delegate for forwarding received messages</param>
+    void StartReceiverLoop(SocketReceivedDataDelegate socketReceivedDataDelegate);
+
+    /// <summary>
+    /// Run the receiver loop
+    /// </summary>
+    /// <param name="waitForLoopStarted"><see cref="AutoResetEvent"/> to wait until the loop has been started</param>
+    /// <returns></returns>
+    Task ReceiverLoop(AutoResetEvent waitForLoopStarted);
+
+    /// <summary>
     /// Send bytes
     /// </summary>
     /// <param name="bytesToSend">Byte array to send</param>
@@ -98,19 +117,19 @@ public interface ISocketProxy: IDisposable
     /// </summary>
     Task Connect();
 
-    /// <summary>
-    /// Receive first data byte from the socket
-    /// </summary>
-    /// <param name="buffer">Byte array to store the received byte data in</param>
-    /// <returns>Number of bytes received</returns>
-    Task<int> Receive(byte[] buffer);
+    ///// <summary>
+    ///// Receive first data byte from the socket
+    ///// </summary>
+    ///// <param name="buffer">Byte array to store the received byte data in</param>
+    ///// <returns>Number of bytes received</returns>
+    //Task<int> Receive(byte[] buffer);
 
-    /// <summary>
-    /// Receive first data byte from the socket
-    /// </summary>
-    /// <param name="buffer">Byte array to store the received byte data in</param>
-    /// <returns>Number of bytes received</returns>
-    Task<int> Receive(Memory<byte> buffer);
+    ///// <summary>
+    ///// Receive first data byte from the socket
+    ///// </summary>
+    ///// <param name="buffer">Byte array to store the received byte data in</param>
+    ///// <returns>Number of bytes received</returns>
+    //Task<int> Receive(Memory<byte> buffer);
 
     ///// <summary>
     ///// Receive data from the socket

@@ -41,18 +41,18 @@ public class FakeInboundDataLogger : IInboundDataLogger
     /// Check if the message is to log. A message can be logged by zero or one logger maximum.
     /// </summary>
     /// <param name="message">Data message to check for logging</param>
-    /// <returns>True if the message is a candiate for logging with the current logger else false</returns>
-    public bool CheckIfMessageIsToLog(IInboundDataMessage message)
+    /// <returns>A list with array items to log or empty list</returns>
+    public List<Memory<byte>> CheckIfMessageIsToLog(IInboundDataMessage message)
     {
         // Do not filter anything
-        return true;
+        return [message.RawMessageData];
     }
 
     /// <summary>
-    /// Log a data message
+    /// Log messages
     /// </summary>
-    /// <param name="message">Data message to log</param>
-    public void LogTheMessage(IInboundDataMessage message)
+    /// <param name="messages">Messages to log</param>
+    public void LogTheMessages(List<Memory<byte>> messages)
     {
         WasLogged = true;
     }

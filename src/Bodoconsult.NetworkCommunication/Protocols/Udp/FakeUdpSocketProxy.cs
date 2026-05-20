@@ -169,41 +169,41 @@ public class FakeUdpSocketProxy : BaseUpdSocketProxy
         });
     }
 
-    /// <summary>
-    /// Receive data from the socket (simulate TCP-IP implementation behaviour)
-    /// </summary>
-    /// <param name="buffer">Byte array to store the received byte data in</param>
-    /// <returns>Number of bytes received</returns>
-    public override async Task<int> Receive(byte[] buffer)
-    {
-        if (ReceiverThrowSocketException)
-        {
-            throw new SocketException(999);
-        }
+    ///// <summary>
+    ///// Receive data from the socket (simulate TCP-IP implementation behaviour)
+    ///// </summary>
+    ///// <param name="buffer">Byte array to store the received byte data in</param>
+    ///// <returns>Number of bytes received</returns>
+    //public override async Task<int> Receive(byte[] buffer)
+    //{
+    //    if (ReceiverThrowSocketException)
+    //    {
+    //        throw new SocketException(999);
+    //    }
 
-        var i = await Task.Run(() =>
-        {
+    //    var i = await Task.Run(() =>
+    //    {
 
 
-            var length = buffer.Length;
-            // Copy only data with length of buffer (like the TCP-IP implementation)
-            if (_data.Length >= buffer.Length)
-            {
-                Buffer.BlockCopy(_data.ToArray(), 0, buffer, 0, buffer.Length);
-            }
-            else
-            {
-                length = _data.Length;
-                Buffer.BlockCopy(_data.ToArray(), 0, buffer, 0, _data.Length);
-            }
+    //        var length = buffer.Length;
+    //        // Copy only data with length of buffer (like the TCP-IP implementation)
+    //        if (_data.Length >= buffer.Length)
+    //        {
+    //            Buffer.BlockCopy(_data.ToArray(), 0, buffer, 0, buffer.Length);
+    //        }
+    //        else
+    //        {
+    //            length = _data.Length;
+    //            Buffer.BlockCopy(_data.ToArray(), 0, buffer, 0, _data.Length);
+    //        }
 
-            _data = Array.Empty<byte>();
-            return length;
-        });
+    //        _data = Array.Empty<byte>();
+    //        return length;
+    //    });
 
-        return i;
+    //    return i;
 
-    }
+    //}
 
     ///// <summary>
     ///// Receive data from the socket
@@ -232,26 +232,26 @@ public class FakeUdpSocketProxy : BaseUpdSocketProxy
 
     //}
 
-    /// <summary>
-    /// Receive first data byte from the socket
-    /// </summary>
-    /// <param name="buffer">Byte array to store the received byte data in</param>
-    /// <returns>Number of bytes received</returns>
-    public override async Task<int> Receive(Memory<byte> buffer)
-    {
-        if (ReceiverThrowSocketException)
-        {
-            throw new SocketException(999);
-        }
+    ///// <summary>
+    ///// Receive first data byte from the socket
+    ///// </summary>
+    ///// <param name="buffer">Byte array to store the received byte data in</param>
+    ///// <returns>Number of bytes received</returns>
+    //public override async Task<int> Receive(Memory<byte> buffer)
+    //{
+    //    if (ReceiverThrowSocketException)
+    //    {
+    //        throw new SocketException(999);
+    //    }
 
-        var i = await Task.Run(() =>
-        {
-            _data.CopyTo(buffer);
-            return _data.Length;
-        });
+    //    var i = await Task.Run(() =>
+    //    {
+    //        _data.CopyTo(buffer);
+    //        return _data.Length;
+    //    });
 
-        return i;
-    }
+    //    return i;
+    //}
 
     ///// <summary>
     ///// Send bytes 

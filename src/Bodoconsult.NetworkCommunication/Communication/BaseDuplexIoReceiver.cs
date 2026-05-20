@@ -1,7 +1,6 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
 using Bodoconsult.App.Abstractions.Interfaces;
-using Bodoconsult.App.Helpers;
 using Bodoconsult.NetworkCommunication.Delegates;
 using Bodoconsult.NetworkCommunication.Interfaces;
 
@@ -114,15 +113,15 @@ public class BaseDuplexIoReceiver : IDuplexIoReceiver
     /// </summary>
     public IDataMessageProcessor DataMessageProcessor { get; private set; }
 
-    /// <summary>
-    /// Thread filling receiver pipeline
-    /// </summary>
-    public Thread? FillPipelineTask { get; protected set; }
+    ///// <summary>
+    ///// Thread filling receiver pipeline
+    ///// </summary>
+    //public Thread? FillPipelineTask { get; protected set; }
 
-    /// <summary>
-    /// Thread sending messages from receiver pipeline to app internal consumers
-    /// </summary>
-    public Thread? SendPipelineTask { get; protected set; }
+    ///// <summary>
+    ///// Thread sending messages from receiver pipeline to app internal consumers
+    ///// </summary>
+    //public Thread? SendPipelineTask { get; protected set; }
 
     /// <summary>
     /// Start the internal receiver
@@ -148,41 +147,41 @@ public class BaseDuplexIoReceiver : IDuplexIoReceiver
 
         CancellationSource = new();
 
-        await Task.Run(() =>
-        {
-            try
-            {
-                FillPipelineTask = new Thread(StartSendMessagePipeline)
-                {
-                    Priority = ThreadPriority.Normal,
-                    IsBackground = true
-                };
-                FillPipelineTask.Start();
-            }
-            catch (Exception e)
-            {
-                msg = $"Running StartSendMessagePipeline failed: {e}";
-                MonitorLogger.LogError(msg);
-            }
-        });
+        //await Task.Run(() =>
+        //{
+        //    try
+        //    {
+        //        FillPipelineTask = new Thread(StartSendMessagePipeline)
+        //        {
+        //            Priority = ThreadPriority.Normal,
+        //            IsBackground = true
+        //        };
+        //        FillPipelineTask.Start();
+        //    }
+        //    catch (Exception e)
+        //    {
+        //        msg = $"Running StartSendMessagePipeline failed: {e}";
+        //        MonitorLogger.LogError(msg);
+        //    }
+        //});
 
-        await Task.Run(() =>
-        {
-            try
-            {
-                FillPipelineTask = new Thread(StartFillMessagePipeline)
-                {
-                    Priority = ThreadPriority.AboveNormal,
-                    IsBackground = true
-                };
-                FillPipelineTask.Start();
-            }
-            catch (Exception e)
-            {
-                msg = $"Running StartFillMessagePipeline failed: {e}";
-                MonitorLogger.LogError(msg);
-            }
-        });
+        //await Task.Run(() =>
+        //{
+        //    try
+        //    {
+        //        FillPipelineTask = new Thread(StartFillMessagePipeline)
+        //        {
+        //            Priority = ThreadPriority.AboveNormal,
+        //            IsBackground = true
+        //        };
+        //        FillPipelineTask.Start();
+        //    }
+        //    catch (Exception e)
+        //    {
+        //        msg = $"Running StartFillMessagePipeline failed: {e}";
+        //        MonitorLogger.LogError(msg);
+        //    }
+        //});
     }
 
     /// <summary>
@@ -193,130 +192,130 @@ public class BaseDuplexIoReceiver : IDuplexIoReceiver
         throw new NotSupportedException();
     }
 
-    /// <summary>
-    /// Start the filling of pipeline for message receiving
-    /// </summary>
-    public void StartFillMessagePipeline()
-    {
-        MonitorLogger.LogInformation($"{LoggerId}StartFillMessagePipeline in progress");
+    ///// <summary>
+    ///// Start the filling of pipeline for message receiving
+    ///// </summary>
+    //public void StartFillMessagePipeline()
+    //{
+    //    MonitorLogger.LogInformation($"{LoggerId}StartFillMessagePipeline in progress");
 
-        DuplexIoNoDataDelegate?.Invoke();
+    //    DuplexIoNoDataDelegate?.Invoke();
 
-        try
-        {
+    //    try
+    //    {
 
-            //while (!_cancellationSource.Token.IsCancellationRequested)
-            //{
+    //        //while (!_cancellationSource.Token.IsCancellationRequested)
+    //        //{
 
-            //    if (!DataMessagingConfig.SocketProxy.Connected)
-            //    {
-            //        AsyncHelper.FireAndForget(() => DataMessagingConfig.DuplexIoErrorHandlerDelegate?.Invoke(new SocketException()));
-            //        break;
-            //    }
+    //        //    if (!DataMessagingConfig.SocketProxy.Connected)
+    //        //    {
+    //        //        AsyncHelper.FireAndForget(() => DataMessagingConfig.DuplexIoErrorHandlerDelegate?.Invoke(new SocketException()));
+    //        //        break;
+    //        //    }
 
-            AsyncHelper.FireAndForget(async void () =>
-            {
-                try
-                {
-                    await FillMessagePipeline();
-                }
-                catch (Exception e)
-                {
-                    MonitorLogger.LogError($"StartFillMessagePipeline failed: {e}");
-                }
-            });
+    //        AsyncHelper.FireAndForget(async void () =>
+    //        {
+    //            try
+    //            {
+    //                await FillMessagePipeline();
+    //            }
+    //            catch (Exception e)
+    //            {
+    //                MonitorLogger.LogError($"StartFillMessagePipeline failed: {e}");
+    //            }
+    //        });
 
-            //var task = Task.Run(FillMessagePipeline);
-            //task.Wait();
-            //task.Dispose();
+    //        //var task = Task.Run(FillMessagePipeline);
+    //        //task.Wait();
+    //        //task.Dispose();
 
-            //AsyncHelper.Delay(FillPipelineTimeout);
+    //        //AsyncHelper.Delay(FillPipelineTimeout);
 
-            //}
+    //        //}
 
-        }
-        catch (Exception exception)
-        {
-            AsyncHelper.FireAndForget(() =>
-            {
-                try
-                {
-                    DataMessagingConfig.DuplexIoErrorHandlerDelegate?.Invoke(exception);
-                }
-                catch (Exception e)
-                {
-                    MonitorLogger.LogError($"StartFillMessagePipeline failed: {e}");
-                }
-            });
-        }
-    }
+    //    }
+    //    catch (Exception exception)
+    //    {
+    //        AsyncHelper.FireAndForget(() =>
+    //        {
+    //            try
+    //            {
+    //                DataMessagingConfig.DuplexIoErrorHandlerDelegate?.Invoke(exception);
+    //            }
+    //            catch (Exception e)
+    //            {
+    //                MonitorLogger.LogError($"StartFillMessagePipeline failed: {e}");
+    //            }
+    //        });
+    //    }
+    //}
 
-    /// <summary>
-    /// Start the filling of pipeline for sending messages to internal receivers
-    /// </summary>
-    public void StartSendMessagePipeline()
-    {
-        var msg = $"{LoggerId}StartSendMessagePipeline in progress";
-        MonitorLogger.LogInformation(msg);
+    ///// <summary>
+    ///// Start the filling of pipeline for sending messages to internal receivers
+    ///// </summary>
+    //public void StartSendMessagePipeline()
+    //{
+    //    var msg = $"{LoggerId}StartSendMessagePipeline in progress";
+    //    MonitorLogger.LogInformation(msg);
 
-        try
-        {
-            //while (!_cancellationSource.Token.IsCancellationRequested)
-            //{
+    //    try
+    //    {
+    //        //while (!_cancellationSource.Token.IsCancellationRequested)
+    //        //{
 
-            //    if (!DataMessagingConfig.SocketProxy.Connected)
-            //    {
-            //        AsyncHelper.FireAndForget(() => DataMessagingConfig.DuplexIoErrorHandlerDelegate?.Invoke(new SocketException()));
-            //        break;
-            //    }
+    //        //    if (!DataMessagingConfig.SocketProxy.Connected)
+    //        //    {
+    //        //        AsyncHelper.FireAndForget(() => DataMessagingConfig.DuplexIoErrorHandlerDelegate?.Invoke(new SocketException()));
+    //        //        break;
+    //        //    }
 
-            var task = Task.Run(SendMessagePipeline);
-            task.Wait();
-            task.Dispose();
+    //        var task = Task.Run(SendMessagePipeline);
+    //        task.Wait();
+    //        task.Dispose();
 
-            //AsyncHelper.Delay(FillPipelineTimeout);
+    //        //AsyncHelper.Delay(FillPipelineTimeout);
 
-            //}
+    //        //}
 
-        }
-        catch (Exception exception)
-        {
-            AsyncHelper.FireAndForget(() =>
-            {
-                try
-                {
-                    DataMessagingConfig.DuplexIoErrorHandlerDelegate?.Invoke(exception);
-                }
-                catch (Exception e)
-                {
-                    msg = $"StartFillMessagePipeline failed: {e}";
-                    MonitorLogger.LogError(msg);
-                    DataMessagingConfig.AppLogger.LogError($"{LoggerId}{msg}");
-                }
-            });
-        }
-    }
+    //    }
+    //    catch (Exception exception)
+    //    {
+    //        AsyncHelper.FireAndForget(() =>
+    //        {
+    //            try
+    //            {
+    //                DataMessagingConfig.DuplexIoErrorHandlerDelegate?.Invoke(exception);
+    //            }
+    //            catch (Exception e)
+    //            {
+    //                msg = $"StartFillMessagePipeline failed: {e}";
+    //                MonitorLogger.LogError(msg);
+    //                DataMessagingConfig.AppLogger.LogError($"{LoggerId}{msg}");
+    //            }
+    //        });
+    //    }
+    //}
 
-    /// <summary>
-    /// Receive messages from the device.
-    /// This method is not intended to be called directly from production code.
-    /// It is a unit test method.
-    /// </summary>
-    /// <returns>Received device message or null in case of any error</returns>
-    public virtual Task FillMessagePipeline()
-    {
-        throw new NotSupportedException();
-    }
+    ///// <summary>
+    ///// Receive messages from the device.
+    ///// This method is not intended to be called directly from production code.
+    ///// It is a unit test method.
+    ///// </summary>
+    ///// <returns>Received device message or null in case of any error</returns>
+    //public virtual Task FillMessagePipeline()
+    //{
+    //    throw new NotSupportedException();
+    //}
 
-    /// <summary>
-    /// Process the messages received from device internally
-    /// This method is not intended to be called directly from production code.
-    /// It is a unit test method.
-    /// </summary>
-    public virtual Task SendMessagePipeline()
-    {
-        throw new NotSupportedException();
-    }
+    ///// <summary>
+    ///// Process the messages received from device internally
+    ///// This method is not intended to be called directly from production code.
+    ///// It is a unit test method.
+    ///// </summary>
+    //public virtual Task SendMessagePipeline()
+    //{
+    //    throw new NotSupportedException();
+    //}
 
     /// <summary>
     /// Update the data message processing package

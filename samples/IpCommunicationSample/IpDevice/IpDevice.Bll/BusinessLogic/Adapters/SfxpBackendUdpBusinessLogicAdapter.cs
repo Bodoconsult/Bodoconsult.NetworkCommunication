@@ -2,6 +2,7 @@
 
 using Bodoconsult.App.Abstractions.Interfaces;
 using Bodoconsult.App.BusinessTransactions.Replies;
+using Bodoconsult.App.Helpers;
 using Bodoconsult.NetworkCommunication.BusinessLogicAdapters;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataBlocks;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
@@ -153,18 +154,18 @@ public class SfxpBackendUdpBusinessLogicAdapter : BaseSimpleDeviceBusinessLogicA
     private void SendMessage(SfxpOutboundDataMessage msg)
     {
         ArgumentNullException.ThrowIfNull(IpDevice.CommunicationAdapter);
-        IpDevice.CommunicationAdapter.SendDataMessage(msg);
-        //AsyncHelper.FireAndForget(() =>
-        //{
-        //    try
-        //    {
-        //        IpDevice.CommunicationAdapter.SendDataMessage(msg);
-        //    }
-        //    catch (Exception e)
-        //    {
-        //        AppLogger.LogError($"Send message failed: {msg.ToShortInfoString()}", e);
-        //    }
-        //});
+        //IpDevice.CommunicationAdapter.SendDataMessage(msg);
+        AsyncHelper.FireAndForget(() =>
+        {
+            try
+            {
+                IpDevice.CommunicationAdapter.SendDataMessage(msg);
+            }
+            catch (Exception e)
+            {
+                AppLogger.LogError($"Send message failed: {msg.ToShortInfoString()}", e);
+            }
+        });
     }
 
     private void RunStreaming()

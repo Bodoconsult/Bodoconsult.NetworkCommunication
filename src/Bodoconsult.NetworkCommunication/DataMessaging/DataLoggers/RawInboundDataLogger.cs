@@ -10,13 +10,21 @@ namespace Bodoconsult.NetworkCommunication.DataMessaging.DataLoggers;
 /// </summary>
 public class RawInboundDataLogger: IInboundDataLogger
 {
+    private readonly IMemoryDataExportService _dataExportService;
+
     /// <summary>
     /// Default ctor
     /// </summary>
     /// <param name="dataExportService">Current data export service</param>
     public RawInboundDataLogger(IDataExportService<byte[]> dataExportService)
     {
+        if (dataExportService is not IMemoryDataExportService byteArrayDataExportService)
+        {
+            throw new ArgumentException("dataExportService is not ByteArrayDataExportService");
+        }
+
         DataExportService = dataExportService;
+        _dataExportService = byteArrayDataExportService;
     }
 
     /// <summary>
@@ -40,23 +48,31 @@ public class RawInboundDataLogger: IInboundDataLogger
         DataExportService.Stop();
     }
 
+
     /// <summary>
     /// Check if the message is to log. A message can be logged by zero or one logger maximum.
     /// </summary>
     /// <param name="message">Data message to check for logging</param>
-    /// <returns>True if the message is a candiate for logging with the current logger else false</returns>
-    public bool CheckIfMessageIsToLog(IInboundDataMessage message)
+    /// <returns>A list with array items to log or empty list</returns>
+    public List<Memory<byte>> CheckIfMessageIsToLog(IInboundDataMessage message)
     {
-        // Do not filter anything
-        return true;
+        if (message.RawMessageData.Length == 0)
+        {
+            return [];
+        }
+        return [message.RawMessageData];
     }
 
+
     /// <summary>
-    /// Log a data message
+    /// Log messages
     /// </summary>
-    /// <param name="message">Data message to log</param>
-    public void LogTheMessage(IInboundDataMessage message)
+    /// <param name="messages">Messages to log</param>
+    public void LogTheMessages(List<Memory<byte>> messages)
     {
-        DataExportService.Add(message.RawMessageData.ToArray());
+        foreach (var message in messages)
+        {
+            _dataExportService.Add(message);
+        }
     }
 }

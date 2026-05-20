@@ -26,7 +26,7 @@ using Bodoconsult.App.Abstractions.Interfaces;
 namespace Bodoconsult.NetworkCommunication.Communication;
 
 /// <summary>
-/// Helepr class for <see cref="IpDuplexIoReceiver"/>
+/// Helper class for <see cref="IpDuplexIoReceiver"/>
 /// </summary>
 public class DummyMemory: IResetable
 {

@@ -9,6 +9,12 @@ namespace Bodoconsult.NetworkCommunication.Communication;
 /// </summary>
 public abstract class BaseDuplexIoSender : IDuplexIoSender
 {
+
+    /// <summary>
+    /// Logger ID
+    /// </summary>
+    protected string LoggerId;
+
     /// <summary>
     /// Encode the data message
     /// </summary>
@@ -63,6 +69,7 @@ public abstract class BaseDuplexIoSender : IDuplexIoSender
     protected BaseDuplexIoSender(IDataMessagingConfig dataMessagingConfig)
     {
         DataMessagingConfig = dataMessagingConfig;
+        LoggerId = $"{dataMessagingConfig.LoggerId}{(dataMessagingConfig.LoggerId.EndsWith(": ") ? string.Empty : ": ")}{GetType().Name}: ";
         ArgumentNullException.ThrowIfNull(DataMessagingConfig.DataMessageProcessingPackage);
         DataMessageCodingProcessor = DataMessagingConfig.DataMessageProcessingPackage.DataMessageCodingProcessor;
         DataMessageSplitter = DataMessagingConfig.DataMessageProcessingPackage.DataMessageSplitter;

@@ -20,12 +20,30 @@ public class IpDuplexIo : BaseDuplexIo
     /// <summary>
     /// Is currently a send process or a receive process in progress
     /// </summary>
-    public bool IsWorkInProgress { get; private set; }
+    public bool IsWorkInProgress
+    {
+        get
+        {
+            lock (_lockObject)
+            {
+                return _isWorkInProgress;
+            }
+        }
+        private set
+        {
+            lock (_lockObject)
+            {
+                _isWorkInProgress = value;
+            }
+        }
+    }
 
     /// <summary>
     /// Lock object for work in progress management
     /// </summary>
     private readonly Lock _lockObject = new();
+
+    private bool _isWorkInProgress;
 
     /// <summary>
     /// Default ctor
@@ -77,11 +95,7 @@ public class IpDuplexIo : BaseDuplexIo
         try
         {
             //Trace.TraceInformation($"IsWorkInProgress: {value}");
-            lock (_lockObject)
-            {
-                IsWorkInProgress = value;
-            }
-
+            IsWorkInProgress = value;
             return;
         }
         catch
@@ -89,10 +103,7 @@ public class IpDuplexIo : BaseDuplexIo
             AsyncHelper.Delay(5);
         }
 
-        lock (_lockObject)
-        {
-            IsWorkInProgress = value;
-        }
+        IsWorkInProgress = value;
     }
 
     /// <summary>
@@ -101,32 +112,33 @@ public class IpDuplexIo : BaseDuplexIo
     /// <returns>Task</returns>
     public override async Task StartCommunication()
     {
-        await Task.Run(async () =>
+        try
         {
-            try
-            {
-                SetInProgress(false);
+            SetInProgress(false);
 
-                Receiver ??= new IpDuplexIoReceiver(DataMessagingConfig,
-                    _duplexIoIsWorkInProgressDelegate,
-                    _duplexIoNoDataDelegate);
+            Receiver ??= new IpDuplexIoReceiver(DataMessagingConfig,
+                _duplexIoIsWorkInProgressDelegate,
+                _duplexIoNoDataDelegate);
 
-                await Receiver.StartReceiver();
+            await Receiver.StartReceiver();
 
-                Sender ??= new IpDuplexIoSender(DataMessagingConfig,
-                    _duplexIoIsWorkInProgressDelegate,
-                    _duplexIoNoDataDelegate);
-            }
-            catch (Exception e)
-            {
-                var msg = $"StartCommunication: {e}";
-                DataMessagingConfig.AppLogger.LogError(msg);
-                DataMessagingConfig.MonitorLogger.LogError($"{LoggerId}{msg}");
-                throw;
-            }
-        });
+            Sender ??= new IpDuplexIoSender(DataMessagingConfig,
+                _duplexIoIsWorkInProgressDelegate,
+                _duplexIoNoDataDelegate);
 
-        IsCommunicationStarted = true;
+            IsCommunicationStarted = true;
+        }
+        catch (Exception e)
+        {
+            var msg = $"StartCommunication: {e}";
+            DataMessagingConfig.AppLogger.LogError(msg);
+            DataMessagingConfig.MonitorLogger.LogError($"{LoggerId}{msg}");
+
+            IsCommunicationStarted = false;
+            throw;
+        }
+
+        
     }
 
     /// <summary>
@@ -144,7 +156,7 @@ public class IpDuplexIo : BaseDuplexIo
         {
             await Receiver.StopReceiver();
         }
-        
+
         IsCommunicationStarted = false;
     }
 

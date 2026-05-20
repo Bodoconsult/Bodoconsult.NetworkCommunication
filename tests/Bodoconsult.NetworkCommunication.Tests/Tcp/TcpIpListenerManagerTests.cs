@@ -148,13 +148,13 @@ internal class TcpIpListenerManagerTests
         lm.Dispose();
     }
 
-    private bool AcceptDelegate1(Socket clientSocket)
+    private Task<bool> AcceptDelegate1(Socket clientSocket)
     {
-        return true;
+        return Task.FromResult(true);
     }
 
-    private bool AcceptDelegate2(Socket clientSocket)
+    private Task<bool> AcceptDelegate2(Socket clientSocket)
     {
-        return true;
+        return Task.FromResult(true);
     }
 }
