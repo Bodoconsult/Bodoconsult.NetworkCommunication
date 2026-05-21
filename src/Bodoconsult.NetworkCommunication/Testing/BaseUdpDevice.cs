@@ -14,8 +14,6 @@ namespace Bodoconsult.NetworkCommunication.Testing;
 /// </summary>
 public abstract class BaseUdpDevice : IUdpDevice
 {
-    private Task? _thread;
-
     /// <summary>
     /// Is the socket already disposed?
     /// </summary>
@@ -112,94 +110,22 @@ public abstract class BaseUdpDevice : IUdpDevice
     public ConcurrentBag<ReadOnlyMemory<byte>> ReceivedMessages { get; } = [];
 
     /// <summary>
-    /// Start the client
+    /// Start the receiver loop
     /// </summary>
-    public void Start()
+    public virtual void StartReceiverLoop()
     {
-        _thread = Task.Run(WaitForMessages);
-        Task.Delay(100);
-    }
-
-    private async Task WaitForMessages()
-    {
-        while (!CancellationTokenSource.Token.IsCancellationRequested)
-        {
-            //if (CancellationTokenSource.Token.IsCancellationRequested)
-            //{
-            //    return;
-            //}
-
-            //try
-            //{
-            var bytes = await Receive();
-
-            if (!_isServer && ReplyToReceivedMessage)
-            {
-                Send(bytes);
-            }
-            //}
-            //catch (Exception e)
-            //{
-            //    Debug.Print(e.ToString());
-            //}
-        }
-
-        Debug.Print("Exit waiting");
+        throw new NotSupportedException("Override in derived classes");
     }
 
     /// <summary>
-    /// Receive data
+    /// Run the receiver loop
     /// </summary>
-    /// <returns>Received data</returns>
-    public virtual async Task<byte[]> Receive()
+    /// <param name="waitForLoopStarted"></param>
+    /// <returns></returns>
+    public virtual Task ReceiverLoop(AutoResetEvent waitForLoopStarted)
     {
-        if (IsDisposed)
-        {
-            Debug.Print($"{TypeName}: disposed");
-            return [];
-        }
-
-        try
-        {
-            if (Listener.Available == 0)
-            {
-                return [];
-            }
-                
-            var result = await Listener.ReceiveAsync(CancellationTokenSource.Token);
-            SenderEndPoint = result.RemoteEndPoint;
-
-            // No data received?
-            if (result.Buffer.Length == 0)
-            {
-                return result.Buffer;
-            }
-
-            Debug.Print($"{TypeName}: received {result.Buffer.Length} bytes");
-
-            //Trace.TraceInformation($"{TypeName}: received {result.Buffer.Length} bytes from {SenderEndPoint}");
-            //Trace.TraceInformation($" {Encoding.ASCII.GetString(bytes, 0, bytes.Length)}");
-
-            ReceivedMessages.Add(result.Buffer.AsMemory());
-            return result.Buffer;
-        }
-        catch (Exception e)
-        {
-            Debug.Print($"{TypeName}: {e}");
-            return [];
-        }
+        throw new NotSupportedException("Override in derived classes");
     }
-
-    //public async Task<Received> Receive()
-    //{
-    //    var result = await Listener.ReceiveAsync();
-    //    return new Received()
-    //    {
-    //        Message = Encoding.ASCII.GetString(result.Buffer, 0, result.Buffer.Length),
-    //        Sender = result.RemoteEndPoint
-    //    };
-    //}
-
     /// <summary>
     /// Send byte array to the client
     /// </summary>
@@ -229,8 +155,6 @@ public abstract class BaseUdpDevice : IUdpDevice
         try
         {
             CancellationTokenSource.Cancel();
-
-            Wait.Until(() => _thread?.IsCompleted ?? true);
         }
         catch
         {

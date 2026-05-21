@@ -30,7 +30,7 @@ public static class TcpIpClientTestHelper
 
         testSetup.RemoteTcpIpDevice?.Dispose();
         testSetup.RemoteTcpIpDevice = new TcpTestServer(testSetup.IpAddress, testSetup.DataMessagingConfig.Port);
-        testSetup.RemoteTcpIpDevice.Start();
+        testSetup.RemoteTcpIpDevice.StartReceiverLoop();
     }
 
 

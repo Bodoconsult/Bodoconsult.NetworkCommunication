@@ -29,17 +29,17 @@ internal class UdpTestMultiCastServerTests
         var cts = new CancellationTokenSource(5000);
 
 #pragma warning disable CS4014 // Because this call is not awaited, execution of the current method continues before the call is completed
-        var task = Task.Run(async () =>
+        var task = Task.Run(() =>
 #pragma warning restore CS4014 // Because this call is not awaited, execution of the current method continues before the call is completed
         {
 
             var udpServer = new UdpTestMultiCastServer(ip, port);
+            udpServer.StartReceiverLoop();
 
             try
             {
                 while (!cts.IsCancellationRequested)
                 {
-                    await udpServer.Receive(); // listen on port 11000
                     udpServer.Send(serverData); // reply back
                 }
 
@@ -60,21 +60,15 @@ internal class UdpTestMultiCastServerTests
 
         // Act  
         var client = new UdpTestMultiCastClient(ip, port);
-        //client.Start();
+        client.StartReceiverLoop();
 
         while (!cts.IsCancellationRequested)
         {
             // send data
             client.Send(clientData);
-
-            // then receive data
-            await client.Receive();
         }
 
         client.Dispose();
-
-        // ReSharper disable once MethodHasAsyncOverloadWithCancellation
-        task.Wait();
 
         // Assert
         using (Assert.EnterMultipleScope())
@@ -94,10 +88,10 @@ internal class UdpTestMultiCastServerTests
         var port = TestDataHelper.GetRandomPort();
 
         var server = new UdpTestMultiCastServer(ip, port);
-        server.Start();
+        server.StartReceiverLoop();
 
         var client = new UdpTestMultiCastClient(ip, port);
-        client.Start();
+        client.StartReceiverLoop();
         client.Send(data);
 
         Wait.Until(() => !server.ReceivedMessages.IsEmpty);

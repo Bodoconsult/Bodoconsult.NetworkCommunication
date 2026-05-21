@@ -11,7 +11,6 @@ namespace Bodoconsult.NetworkCommunication.DataMessaging.DataMessageSplitters;
 /// </summary>
 public class TncpDataMessageSplitter : IDataMessageSplitter
 {
-
     // Array pool is okay as shared instance here
     private static readonly ArrayPool<byte> ArrayPool = ArrayPool<byte>.Shared;
 
@@ -87,15 +86,40 @@ public class TncpDataMessageSplitter : IDataMessageSplitter
                 return true;
             }
 
+            // Only at position 0
             if (i == 0)
             {
+                // First byte is LF
+                if (firstByte == 0xa)
+                {
+                    command = default;
+                    return false;
+                }
+
+                // Check if <BEGIN> follows
                 isReply = CheckIfReply(buffer, i);
             }
 
+            // LF?
             if (firstByte == DeviceCommunicationBasics.Lf)
             {
+                if (i == buffer.Length - 1)
+                {
+                    break;
+                }
+
+                if (buffer.Slice(i + 1, 1).FirstSpan[0] != 0x3c)
+                {
+                    break;
+                }
+
                 if (isReply)
                 {
+                    if (i > 0 && i < buffer.Length - 6 && CheckIfReply(buffer, i + 1))
+                    {
+                        break;
+                    }
+
                     if (CheckIfEnd(buffer, i))
                     {
                         break;
@@ -105,7 +129,6 @@ public class TncpDataMessageSplitter : IDataMessageSplitter
                 {
                     break;
                 }
-
             }
 
             posEndByte++;
@@ -116,27 +139,6 @@ public class TncpDataMessageSplitter : IDataMessageSplitter
             command = buffer.Slice(0, posEndByte + 1);
             return true;
         }
-
-        // Handshake
-        posEndByte = 0;
-        for (var i = 0; i < buffer.Length; i++)
-        {
-            firstByte = buffer.Slice(i, 1).FirstSpan[0];
-            // First byte is message start byte
-            if (DeviceCommunicationBasics.HandshakeMessageStartTokens.Contains(firstByte))
-            {
-                break;
-            }
-
-            posEndByte++;
-        }
-
-        if (posEndByte > 0 && posEndByte + HandshakeLength < buffer.Length)
-        {
-            command = buffer.Slice(posEndByte, HandshakeLength);
-            return true;
-        }
-
         command = default;
         return false;
     }

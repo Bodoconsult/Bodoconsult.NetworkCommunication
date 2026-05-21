@@ -18,7 +18,7 @@ public class TcpIpClientSocketProxyTests : BaseTestsTcpIpSocket
     public TcpIpClientSocketProxyTests()
     {
         _server = new TcpTestServer(IPAddress.Parse(IpAddress), Port);
-        _server.Start();
+        _server.StartReceiverLoop();
     }
 
     [OneTimeTearDown]

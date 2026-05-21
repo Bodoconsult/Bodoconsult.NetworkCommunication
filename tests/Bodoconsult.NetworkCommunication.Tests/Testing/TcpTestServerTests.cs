@@ -90,10 +90,10 @@ internal class TcpTestServerTests
         var port = TestDataHelper.GetRandomPort();
 
         var server = new TcpTestServer(ip, port);
-        server.Start();
+        server.StartReceiverLoop();
 
         var client = new TcpTestClient(ip, port);
-        client.Start();
+        client.StartReceiverLoop();
         client.Send(data);
 
         Wait.Until(() => !server.ReceivedMessages.IsEmpty);

@@ -53,7 +53,7 @@ public static class TcpIpServerTestHelper
         testSetup.RemoteTcpIpDevice?.Dispose();
         testSetup.RemoteTcpIpDevice = new TcpTestClient(testSetup.IpAddress, testSetup.DataMessagingConfig.Port);
         testSetup.Logger = Logger;
-        testSetup.RemoteTcpIpDevice.Start();
+        testSetup.RemoteTcpIpDevice.StartReceiverLoop();
     }
 
     public static void InitSocket(ITcpTests testSetup)

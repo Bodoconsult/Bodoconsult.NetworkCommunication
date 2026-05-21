@@ -20,7 +20,7 @@ public static class BusinessTransactionRequestDataExtensions
             data.Channel1 ? One : Zero, 
             data.Channel2 ? One : Zero, 
             data.Channel3 ? One : Zero,
-            data.Channel1 ? One : Zero
+            data.Channel4 ? One : Zero
         ];
     }
 

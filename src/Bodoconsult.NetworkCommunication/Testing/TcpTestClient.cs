@@ -1,6 +1,8 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
 
+using Bodoconsult.App.Helpers;
+using Bodoconsult.NetworkCommunication.Delegates;
 using System.Diagnostics;
 using System.Net;
 using System.Net.Sockets;
@@ -22,8 +24,9 @@ public class TcpTestClient :   BaseTcpIpDevice
     public TcpTestClient(IPAddress ipAddress, int port)
     {
         IsServer = false;
+        LoggerId = "TcpClient";
 
-        Debug.Print($"Client: port {port}");
+        Debug.Print($"{LoggerId}: port {port}");
 
         Socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp)
         {
@@ -36,6 +39,73 @@ public class TcpTestClient :   BaseTcpIpDevice
 
         _endPoint = new IPEndPoint(ipAddress, port);
         Socket.ConnectAsync(_endPoint).Wait(5000);
+    }
+
+    /// <summary>
+    /// Start the receiver loop
+    /// </summary>
+    public override void StartReceiverLoop()
+    {
+        AutoResetEvent wait = new(false);
+
+        // Start receive loop now
+        Task.Run(async () =>
+        {
+            await ReceiverLoop(wait);
+        });
+
+        wait.WaitOne(100);
+    }
+
+    /// <summary>
+    /// Run the receiver loop
+    /// </summary>
+    /// <param name="waitForLoopStarted"></param>
+    /// <returns></returns>
+    public override async Task ReceiverLoop(AutoResetEvent waitForLoopStarted)
+    {
+        try
+        {
+            ArgumentNullException.ThrowIfNull(Socket, $"{LoggerId}Socket is null");
+
+            Debug.Print($"{LoggerId}Error: ReceiverLoop started");
+
+            waitForLoopStarted.Set();
+
+            while (!CancellationTokenSource.IsCancellationRequested)
+            {
+                var result = 0;
+                var buffer = new byte[MaxPacketSize].AsMemory();
+                try
+                {
+                    result = await Socket.ReceiveAsync(buffer, SocketFlags.None, CancellationTokenSource.Token);
+                    Debug.Print($"{LoggerId}Error: received {result} bytes");
+                }
+                catch (OperationCanceledException)
+                {
+                    break;
+                }
+                catch (Exception e)
+                {
+                    Debug.Print($"{LoggerId}Error: Receiving failed ", e);
+                }
+
+                if (result == 0)
+                {
+                    await Task.Delay(5);
+                }
+
+                ReceivedMessages.Add(buffer[..result].ToArray());
+            }
+        }
+        catch (OperationCanceledException)
+        {
+
+        }
+        catch (Exception e)
+        {
+            Debug.Print($"{LoggerId}Error: Receiver loop failed", e);
+        }
     }
 
     /// <summary>
@@ -63,30 +133,6 @@ public class TcpTestClient :   BaseTcpIpDevice
         task.Wait(CancellationTokenSource.Token);
 
         //Debug.Print($"TcpClient: sent {task.Result} byte(s)!");
-    }
-
-    /// <summary>
-    /// Receive data
-    /// </summary>
-    /// <returns>Received data</returns>
-    public override async Task<byte[]> Receive()
-    {
-        var buffer = new byte[16384];
-        if (Socket is not { Connected: true })
-        {
-            return [];
-        }
-
-        var received = await Socket.ReceiveAsync(buffer);
-        if (received == 0)
-        {
-            return [];
-        }
-
-        var msg = buffer.AsSpan()[..received].ToArray();
-        //Debug.Print($"TcpClient: received {msg.Length} bytes");
-        ReceivedMessages.Add(msg);
-        return msg;
     }
 
     /// <summary>

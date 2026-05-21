@@ -43,30 +43,30 @@ public class UdpTestMultiCastClient : BaseUdpDevice
         Debug.Print($"{TypeName}: sent {result} byte(s)!");
     }
 
-    /// <summary>
-    /// Receive data
-    /// </summary>
-    /// <returns>Received data</returns>
-    public override async Task<byte[]> Receive()
-    {
-        if (IsDisposed)
-        {
-            Debug.Print($"{TypeName}: nothing to receive");
-            return [];
-        }
+    ///// <summary>
+    ///// Receive data
+    ///// </summary>
+    ///// <returns>Received data</returns>
+    //public override async Task<byte[]> Receive()
+    //{
+    //    if (IsDisposed)
+    //    {
+    //        Debug.Print($"{TypeName}: nothing to receive");
+    //        return [];
+    //    }
 
-        var bytes = await Listener.ReceiveAsync();
+    //    var bytes = await Listener.ReceiveAsync();
 
-        // No data received?
-        if (bytes.Buffer.Length == 0)
-        {
-            return [];
-        }
+    //    // No data received?
+    //    if (bytes.Buffer.Length == 0)
+    //    {
+    //        return [];
+    //    }
 
-        Debug.Print($"{TypeName}: received {bytes.Buffer.Length} bytes from {bytes.RemoteEndPoint}");
-        //Debug.Print($" {Encoding.ASCII.GetString(bytes, 0, bytes.Length)}");
+    //    Debug.Print($"{TypeName}: received {bytes.Buffer.Length} bytes from {bytes.RemoteEndPoint}");
+    //    //Debug.Print($" {Encoding.ASCII.GetString(bytes, 0, bytes.Length)}");
 
-        ReceivedMessages.Add(bytes.Buffer.AsMemory());
-        return bytes.Buffer;
-    }
+    //    ReceivedMessages.Add(bytes.Buffer.AsMemory());
+    //    return bytes.Buffer;
+    //}
 }

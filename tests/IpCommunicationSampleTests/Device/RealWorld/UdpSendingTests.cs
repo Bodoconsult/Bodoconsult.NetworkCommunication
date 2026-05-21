@@ -55,7 +55,7 @@ internal class UdpSendingTests
     private void StartUdpClient()
     {
         RemoteUdpDevice = new UdpTestUniCastClient(IPAddress.Parse(_startParams.IpAddress), _startParams.Port);
-        RemoteUdpDevice.Start();
+        RemoteUdpDevice.StartReceiverLoop();
         //// Send cleint hello
         //RemoteUdpDevice.Send([0x48, 0x65, 0x6c, 0x6c, 0x6f, 0x20, 0x66, 0x72, 0x6f, 0x6d, 0x20, 0x63, 0x6c, 0x69, 0x65, 0x6e, 0x74]);
 
@@ -66,7 +66,7 @@ internal class UdpSendingTests
     private void StartTcpIpClient()
     {
         RemoteTcpIpDevice = new TcpTestClient(IPAddress.Parse(_startParams.IpAddress2), _startParams.Port2);
-        RemoteTcpIpDevice.Start();
+        RemoteTcpIpDevice.StartReceiverLoop();
 
         //_cts = new CancellationTokenSource();
         //Task.Run(UdpReceiving, _cts.Token);

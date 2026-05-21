@@ -61,6 +61,11 @@ public class IpDuplexIoReceiver : BaseDuplexIoReceiver
             return;
         }
 
+#if DEBUG
+        var msg = $"{LoggerId}received: {data.Length} byte";
+        MonitorLogger.LogInformation(msg);
+#endif
+
         var dummy = _bufferPool.Dequeue();
         dummy.Memory = data.ToArray().AsMemory();
         _currentPipeline.Enqueue(dummy);
@@ -80,7 +85,7 @@ public class IpDuplexIoReceiver : BaseDuplexIoReceiver
 
         _buffer = chunk;
 
-        var msg = $"{LoggerId}Data in buffer: {DataMessageHelper.GetStringFromArrayCsharpStyle(ref _buffer)}";
+        var msg = $"{LoggerId}Data in buffer: {_buffer.Length} byte: {DataMessageHelper.GetStringFromArrayCsharpStyle(ref _buffer)}";
         MonitorLogger.LogInformation(msg);
 
 

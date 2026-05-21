@@ -1,11 +1,13 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
+using Bodoconsult.NetworkCommunication.Delegates;
+
 namespace Bodoconsult.NetworkCommunication.Interfaces;
 
 /// <summary>
 /// Interface for TCP/IP devices for testing
 /// </summary>
-public interface ITcpIpDevice: IDisposable
+public interface ITcpIpDevice : IDisposable
 {
     /// <summary>
     /// Current cancellation token
@@ -23,9 +25,16 @@ public interface ITcpIpDevice: IDisposable
     int ReceiveTimeout { get; set; }
 
     /// <summary>
-    /// Start the server mode
+    /// Start the receiver loop
     /// </summary>
-    void Start();
+    void StartReceiverLoop();
+
+    /// <summary>
+    /// Run the receiver loop
+    /// </summary>
+    /// <param name="waitForLoopStarted"></param>
+    /// <returns></returns>
+    Task ReceiverLoop(AutoResetEvent waitForLoopStarted);
 
     /// <summary>
     /// Reset the client socket if necessary
@@ -37,12 +46,6 @@ public interface ITcpIpDevice: IDisposable
     /// </summary>
     /// <param name="data">Byte array to send</param>
     void Send(byte[] data);
-
-    /// <summary>
-    /// Receive data
-    /// </summary>
-    /// <returns>Received data</returns>
-    Task<byte[]> Receive();
 
     /// <summary>
     /// Dispose the instance

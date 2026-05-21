@@ -57,7 +57,7 @@ internal class UdpTestUniCastServerTests
         while (!cts.IsCancellationRequested)
         {
             // then receive data
-            await client.Receive();
+            await Task.Delay(20);
         }
 
         var result = client.ReceivedMessages.Count;
@@ -114,11 +114,7 @@ internal class UdpTestUniCastServerTests
         while (!cts.IsCancellationRequested)
         {
             // then receive data
-            var data = await client.Receive();
-            if (data.Length > 0)
-            {
-                await cts.CancelAsync();
-            }
+            await Task.Delay(20);
         }
 
         var result = client.ReceivedMessages.Count;
@@ -137,7 +133,5 @@ internal class UdpTestUniCastServerTests
         }
 
         client.Dispose();
-
-
     }
 }

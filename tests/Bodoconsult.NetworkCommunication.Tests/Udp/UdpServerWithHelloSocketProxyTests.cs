@@ -41,7 +41,7 @@ internal class UdpServerWithHelloSocketProxyTests
     }
 
     [Test]
-    public async Task SendReceive_PermanentModeTestClient_MessageReceived()
+    public void SendReceive_PermanentModeTestClient_MessageReceived()
     {
         // Arrange 
         var serverData = new byte[] { 0x0, 0x1, 0x2 };
@@ -97,8 +97,6 @@ internal class UdpServerWithHelloSocketProxyTests
             // send data
             client.Send(clientData);
 
-            // then receive data
-            await client.Receive();
         }
 
         client.Dispose();

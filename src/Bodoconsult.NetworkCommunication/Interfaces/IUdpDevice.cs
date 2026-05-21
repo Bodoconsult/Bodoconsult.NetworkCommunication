@@ -1,5 +1,6 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
+using Bodoconsult.NetworkCommunication.Delegates;
 using System.Collections.Concurrent;
 using System.Net;
 
@@ -41,19 +42,20 @@ public interface IUdpDevice: IDisposable
     ConcurrentBag<ReadOnlyMemory<byte>> ReceivedMessages { get; }
 
     /// <summary>
-    /// Start the client
+    /// Start the receiver loop
     /// </summary>
-    void Start();
+    void StartReceiverLoop();
+
+    /// <summary>
+    /// Run the receiver loop
+    /// </summary>
+    /// <param name="waitForLoopStarted"></param>
+    /// <returns></returns>
+    Task ReceiverLoop(AutoResetEvent waitForLoopStarted);
 
     /// <summary>
     /// Send byte array to the client
     /// </summary>
     /// <param name="data">Byte array to send</param>
     void Send(byte[] data);
-
-    /// <summary>
-    /// Receive data
-    /// </summary>
-    /// <returns>Received data</returns>
-    Task<byte[]> Receive();
 }

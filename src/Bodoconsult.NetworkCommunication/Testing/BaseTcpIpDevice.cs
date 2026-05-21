@@ -1,7 +1,10 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
+using Bodoconsult.App.Helpers;
+using Bodoconsult.NetworkCommunication.Delegates;
 using Bodoconsult.NetworkCommunication.Interfaces;
 using System.Collections.Concurrent;
+using System.Diagnostics;
 using System.Net.Sockets;
 
 namespace Bodoconsult.NetworkCommunication.Testing;
@@ -11,8 +14,6 @@ namespace Bodoconsult.NetworkCommunication.Testing;
 /// </summary>
 public abstract class BaseTcpIpDevice : ITcpIpDevice
 {
-    private Task? _thread;
-
     /// <summary>
     /// Current socket
     /// </summary>
@@ -22,6 +23,16 @@ public abstract class BaseTcpIpDevice : ITcpIpDevice
     /// Is this a server instance?
     /// </summary>
     protected bool IsServer;
+
+    /// <summary>
+    /// Current logger ID
+    /// </summary>
+    protected string LoggerId =string.Empty;
+
+    /// <summary>
+    /// Maximum buffer size for TCP packages. Set this value lower if your packages do not reach the maximum length of 65536 byte for UDP diagrams defined by protocol specs
+    /// </summary>
+    public int MaxPacketSize { get; set; } = 65536;
 
     /// <summary>
     /// All received messages
@@ -49,38 +60,22 @@ public abstract class BaseTcpIpDevice : ITcpIpDevice
     public bool ReplyToReceivedMessage { get; set; }
 
     /// <summary>
-    /// Start the client
+    /// Start the receiver loop
     /// </summary>
-    public void Start()
+    public virtual void StartReceiverLoop()
     {
-        _thread = Task.Run(WaitForMessages);
-        Task.Delay(100);
+        throw new NotSupportedException("Override in derived classes");
     }
 
-    private async Task WaitForMessages()
+    /// <summary>
+    /// Run the receiver loop
+    /// </summary>
+    /// <param name="waitForLoopStarted"></param>
+    /// <returns></returns>
+    public virtual Task ReceiverLoop(AutoResetEvent waitForLoopStarted)
     {
-        while (!CancellationTokenSource.Token.IsCancellationRequested)
-        {
-            //if (CancellationTokenSource.Token.IsCancellationRequested)
-            //{
-            //    return;
-            //}
-
-            //try
-            //{
-            var bytes = await Receive();
-
-            if (!IsServer && ReplyToReceivedMessage)
-            {
-                Send(bytes);
-            }
-            //catch (Exception e)
-            //{
-            //    Trace.TraceInformation(e.ToString());
-            //}
-        }
+        throw new NotSupportedException("Override in derived classes");
     }
-
 
     /// <summary>
     /// Reset the client socket if necessary
@@ -125,15 +120,6 @@ public abstract class BaseTcpIpDevice : ITcpIpDevice
     /// <summary>Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.</summary>
     public void Dispose()
     {
-        try
-        {
-            _thread?.Dispose();
-        }
-        catch
-        {
-            // Do nothing
-        }
-
         Dispose(true);
         GC.SuppressFinalize(this);
     }

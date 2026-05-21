@@ -141,7 +141,7 @@ internal class IpCommunicationHandlerTests : TcpIpCommunicationHandlerBaseTests
         // Act  
         ch.Connect();
         TcpIpServerTestHelper.InitClient(this);
-        RemoteTcpIpDevice.Start();
+        RemoteTcpIpDevice.StartReceiverLoop();
 
 
         Wait.Until(() => ch.IsConnected);

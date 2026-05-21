@@ -44,7 +44,7 @@ internal static class UdpServerIpTestHelper
 
         testSetup.RemoteUdpDevice?.Dispose();
         testSetup.RemoteUdpDevice = new UdpTestUniCastClient(testSetup.IpAddress, testSetup.DataMessagingConfig.Port);
-        testSetup.RemoteUdpDevice.Start();
+        testSetup.RemoteUdpDevice.StartReceiverLoop();
     }
 
     public static void InitLocalSocket(IUdpTests testSetup)
