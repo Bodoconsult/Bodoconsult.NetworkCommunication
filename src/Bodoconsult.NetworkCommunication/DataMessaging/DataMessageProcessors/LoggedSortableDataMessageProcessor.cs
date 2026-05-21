@@ -33,7 +33,7 @@ public class LoggedSortableDataMessageProcessor : BaseDataMessageProcessor
     /// <param name="message">Message to process</param>
     public override void ProcessMessage(IInboundMessage message)
     {
-        var s = $"received message {message.MessageId}: {message.RawMessageData.Length} bytes";
+        var s = $"{LoggerId}received message {message.ToShortInfoString()}";
         Config.MonitorLogger.LogInformation(s);
 
         Stopped.Reset();

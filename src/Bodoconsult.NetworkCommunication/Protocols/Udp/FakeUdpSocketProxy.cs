@@ -1,8 +1,9 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
-using System.Net.Sockets;
 using Bodoconsult.App.Abstractions.Interfaces;
+using Bodoconsult.NetworkCommunication.Delegates;
 using Bodoconsult.NetworkCommunication.Interfaces;
+using System.Net.Sockets;
 
 namespace Bodoconsult.NetworkCommunication.Protocols.Udp;
 
@@ -169,107 +170,12 @@ public class FakeUdpSocketProxy : BaseUpdSocketProxy
         });
     }
 
-    ///// <summary>
-    ///// Receive data from the socket (simulate TCP-IP implementation behaviour)
-    ///// </summary>
-    ///// <param name="buffer">Byte array to store the received byte data in</param>
-    ///// <returns>Number of bytes received</returns>
-    //public override async Task<int> Receive(byte[] buffer)
-    //{
-    //    if (ReceiverThrowSocketException)
-    //    {
-    //        throw new SocketException(999);
-    //    }
-
-    //    var i = await Task.Run(() =>
-    //    {
-
-
-    //        var length = buffer.Length;
-    //        // Copy only data with length of buffer (like the TCP-IP implementation)
-    //        if (_data.Length >= buffer.Length)
-    //        {
-    //            Buffer.BlockCopy(_data.ToArray(), 0, buffer, 0, buffer.Length);
-    //        }
-    //        else
-    //        {
-    //            length = _data.Length;
-    //            Buffer.BlockCopy(_data.ToArray(), 0, buffer, 0, _data.Length);
-    //        }
-
-    //        _data = Array.Empty<byte>();
-    //        return length;
-    //    });
-
-    //    return i;
-
-    //}
-
-    ///// <summary>
-    ///// Receive data from the socket
-    ///// </summary>
-    ///// <param name="buffer">Byte array to store the received byte data in</param>
-    ///// <param name="offset">Offset</param>
-    ///// <param name="expectedBytesLength">Expected length of the byte data received</param>
-    ///// <returns>Number of bytes received</returns>
-    //public override async Task<int> Receive(byte[] buffer, int offset, int expectedBytesLength)
-    //{
-    //    if (ReceiverThrowSocketException)
-    //    {
-    //        throw new SocketException(999);
-    //    }
-
-    //    var i = await Task.Run(() =>
-    //    {
-    //        Buffer.BlockCopy(_data.ToArray(), 0, buffer, offset, expectedBytesLength);
-    //        return expectedBytesLength;
-    //    });
-
-    //    _data = Array.Empty<byte>();
-    //    LoadNextReceivedMessage();
-    //    return i;
-
-
-    //}
-
-    ///// <summary>
-    ///// Receive first data byte from the socket
-    ///// </summary>
-    ///// <param name="buffer">Byte array to store the received byte data in</param>
-    ///// <returns>Number of bytes received</returns>
-    //public override async Task<int> Receive(Memory<byte> buffer)
-    //{
-    //    if (ReceiverThrowSocketException)
-    //    {
-    //        throw new SocketException(999);
-    //    }
-
-    //    var i = await Task.Run(() =>
-    //    {
-    //        _data.CopyTo(buffer);
-    //        return _data.Length;
-    //    });
-
-    //    return i;
-    //}
-
-    ///// <summary>
-    ///// Send bytes 
-    ///// </summary>
-    ///// <param name="bytesToSend">Byte array to send</param>
-    ///// <param name="offset">Offset</param>
-    ///// <param name="messageBytesLength">Number of message bytes length to send</param>
-    ///// <returns></returns>
-    //public override async Task<int> Send(byte[] bytesToSend, int offset, int messageBytesLength)
-    //{
-    //    if (SenderThrowSocketException)
-    //    {
-    //        throw new SocketException(999);
-    //    }
-
-    //    // Do nothing
-    //    var i = await Task.Run(() => DataLengthSent == int.MinValue ? bytesToSend.Length : DataLengthSent);
-    //    _data = Array.Empty<byte>();
-    //    return i;
-    //}
+    /// <summary>
+    /// Start the receiver loop
+    /// </summary>
+    /// <param name="socketReceivedDataDelegate">Delegate for forwarding received messages</param>
+    public override void StartReceiverLoop(SocketReceivedDataDelegate socketReceivedDataDelegate)
+    {
+        // Do nothing
+    }
 }

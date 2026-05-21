@@ -252,6 +252,7 @@ public class BtcpDataMessageCodec : BaseDataMessageCodec
         try
         {
             data.Add(DeviceCommunicationBasics.Eot);
+            data.Add(0x78); // add x for Basic datablock
 
             // Now add the default reply
             var defaultReply = $"{reply.ErrorCode}|{reply.InfoMessage}|{reply.ErrorMessage}|";

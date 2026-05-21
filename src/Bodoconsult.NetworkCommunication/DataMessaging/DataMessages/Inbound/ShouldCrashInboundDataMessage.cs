@@ -62,7 +62,7 @@ public class ShouldCrashInboundDataMessage : IInboundDataMessage
     /// <returns>Info string</returns>
     public string ToInfoString()
     {
-        return $"ShouldCrashDataMessage {MessageId} Length:{RawMessageData.Length} Data:{RawMessageDataClearText}";
+        return $"ShouldCrashDataMessage {MessageId} ({RawMessageData.Length} bytes) Data:{RawMessageDataClearText}";
     }
 
     /// <summary>
@@ -71,6 +71,6 @@ public class ShouldCrashInboundDataMessage : IInboundDataMessage
     /// <returns>Info string</returns>
     public string ToShortInfoString()
     {
-        return $"ShouldCrashDataMessage {MessageId} Length:{RawMessageData.Length}";
+        return $"ShouldCrashDataMessage {MessageId} ({RawMessageData.Length} bytes)";
     }
 }

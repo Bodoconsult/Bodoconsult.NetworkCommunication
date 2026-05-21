@@ -65,7 +65,7 @@ public class SdcpOutboundDataMessage: IOutboundDataMessage
     /// <returns>Info string</returns>
     public string ToInfoString()
     {
-        return $"SdcpOutboundDataMessage ID {MessageId} {RawMessageDataClearText}";
+        return $"SdcpOutboundDataMessage ID {MessageId} ({RawMessageData.Length} bytes) {RawMessageDataClearText}";
     }
 
     /// <summary>
@@ -74,7 +74,7 @@ public class SdcpOutboundDataMessage: IOutboundDataMessage
     /// <returns>Info string</returns>
     public string ToShortInfoString()
     {
-        return $"SdcpOutboundDataMessage ID {MessageId}";
+        return $"SdcpOutboundDataMessage ID {MessageId} ({RawMessageData.Length} bytes)";
     }
 
     /// <summary>

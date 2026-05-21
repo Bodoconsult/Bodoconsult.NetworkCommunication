@@ -62,7 +62,7 @@ public class RawInboundDataMessage : IInboundDataMessage
     /// <returns>Info string</returns>
     public string ToInfoString()
     {
-        return $"RawInboundDataMessage {MessageId} Length:{RawMessageData.Length} Data:{RawMessageDataClearText}";
+        return $"RawInboundDataMessage {MessageId} ({RawMessageData.Length} bytes) Data:{RawMessageDataClearText}";
     }
 
     /// <summary>
@@ -71,6 +71,6 @@ public class RawInboundDataMessage : IInboundDataMessage
     /// <returns>Info string</returns>
     public string ToShortInfoString()
     {
-        return $"RawInboundDataMessage {MessageId} Length:{RawMessageData.Length}";
+        return $"RawInboundDataMessage {MessageId} ({RawMessageData.Length} bytes)";
     }
 }

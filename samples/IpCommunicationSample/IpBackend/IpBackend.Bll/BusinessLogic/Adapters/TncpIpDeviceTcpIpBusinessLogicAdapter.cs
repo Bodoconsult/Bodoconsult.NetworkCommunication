@@ -114,9 +114,19 @@ public class TncpIpDeviceTcpIpBusinessLogicAdapter : BaseStateMachineDeviceBusin
     {
         try
         {
-            if (request is not StartMessagingReportBusinessTransactionRequestData startRequest)
+            if (request is not StartMessagingBusinessTransactionRequestData startRequest)
             {
-                throw new ArgumentException($"request is not {nameof(StartMessagingReportBusinessTransactionRequestData)}");
+                throw new ArgumentException($"request is not {nameof(StartMessagingBusinessTransactionRequestData)}");
+            }
+
+            if ((Device.CurrentState?.Id ?? 0) != DefaultStateIds.DeviceReadyState)
+            {
+                return new DefaultBusinessTransactionReply
+                {
+                    RequestData = request,
+                    ErrorCode = 1001,
+                    Message = $"Start of the transaction is not allowed as the state is not {DefaultStateNames.DeviceReadyState}"
+                };
             }
 
             ArgumentNullException.ThrowIfNull(Device);
@@ -183,9 +193,19 @@ public class TncpIpDeviceTcpIpBusinessLogicAdapter : BaseStateMachineDeviceBusin
     {
         try
         {
-            if (request is not StartMessagingReportBusinessTransactionRequestData startRequest)
+            if (request is not StartMessagingBusinessTransactionRequestData startRequest)
             {
-                throw new ArgumentException($"request is not {nameof(StartMessagingReportBusinessTransactionRequestData)}");
+                throw new ArgumentException($"request is not {nameof(StartMessagingBusinessTransactionRequestData)}");
+            }
+
+            if ((Device.CurrentState?.Id ?? 0) != DefaultStateIds.DeviceReadyState)
+            {
+                return new DefaultBusinessTransactionReply
+                {
+                    RequestData = request,
+                    ErrorCode = 1001,
+                    Message = $"Start of the transaction is not allowed as the state is not {DefaultStateNames.DeviceReadyState}"
+                };
             }
 
             ArgumentNullException.ThrowIfNull(Device);
@@ -223,7 +243,7 @@ public class TncpIpDeviceTcpIpBusinessLogicAdapter : BaseStateMachineDeviceBusin
         }
     }
 
-    private void CreateStartOrders(IJobStateConfiguration jobConfig, int index, IOrderFactory orderFactory, StartMessagingReportBusinessTransactionRequestData startRequest)
+    private void CreateStartOrders(IJobStateConfiguration jobConfig, int index, IOrderFactory orderFactory, StartMessagingBusinessTransactionRequestData startRequest)
     {
         var orderConfigName = jobConfig.OrderConfigurations[index];
         var orderConfig = orderFactory.GetConfiguration(orderConfigName);
@@ -284,7 +304,7 @@ public class TncpIpDeviceTcpIpBusinessLogicAdapter : BaseStateMachineDeviceBusin
     /// </summary>
     /// <param name="startRequest">Start request</param>
     /// <returns>String with paths as required for Telnet command</returns>
-    public static string GetPaths(StartMessagingReportBusinessTransactionRequestData startRequest)
+    public static string GetPaths(StartMessagingBusinessTransactionRequestData startRequest)
     {
         var paths = new List<string>();
 
@@ -323,6 +343,16 @@ public class TncpIpDeviceTcpIpBusinessLogicAdapter : BaseStateMachineDeviceBusin
             ArgumentNullException.ThrowIfNull(Device);
             ArgumentNullException.ThrowIfNull(StateFactory, "StateFactory is null. Call LoadStateFactory() before!");
             ArgumentNullException.ThrowIfNull(OrderFactory);
+
+            if ((Device.CurrentState?.Id ?? 0) is not (DefaultStateIds.DeviceStreamingState or DefaultStateIds.DeviceSnapshotState))
+            {
+                return new DefaultBusinessTransactionReply
+                {
+                    RequestData = request,
+                    ErrorCode = 1001,
+                    Message = $"Start of the transaction is not allowed as the state is not {DefaultStateNames.DeviceStreamingState} or {DefaultStateNames.DeviceSnapshotState}"
+                };
+            }
 
             const string stateName = DefaultStateNames.DeviceStopMessagingState;
 

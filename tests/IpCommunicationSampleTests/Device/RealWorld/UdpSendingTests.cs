@@ -119,7 +119,7 @@ internal class UdpSendingTests
 
         var adapter = (IBackendUdpBusinessLogicAdapter)_deviceManager.BackendUdp.DeviceBusinessLogicAdapter;
 
-        var request = new StartMessagingReportBusinessTransactionRequestData
+        var request = new StartMessagingBusinessTransactionRequestData
         {
             Channel1 = true,
             Channel2 = true,

@@ -117,7 +117,7 @@ public class IpDeviceUdpClientManager : ISimpleDeviceManager
     private static void CreateLoggerChannel(byte channel, string ipAddress, IDataMessagingConfig config, string channelName)
     {
         config.DataLoggingFileName = $"IPDevice_{ipAddress.Replace(".", "_", StringComparison.InvariantCultureIgnoreCase)}_{channelName}";
-        config.DataLoggingPath = Globals.Instance.AppStartParameter.DataPath;
+        config.DataLoggingPath = config.DataLoggingPath;
 
         var es = new ByteArrayDataExportService
         {

@@ -66,7 +66,7 @@ public class TncpOutboundDataMessage : IOutboundDataMessage
     /// <returns>Info string</returns>
     public string ToInfoString()
     {
-        return $"TncpOutboundDataMessage ID {MessageId} Block {BlockCode}: {RawMessageDataClearText}";
+        return $"TncpOutboundDataMessage ID {MessageId} ({RawMessageData.Length} bytes) {RawMessageDataClearText}";
     }
 
     /// <summary>
@@ -75,7 +75,7 @@ public class TncpOutboundDataMessage : IOutboundDataMessage
     /// <returns>Info string</returns>
     public string ToShortInfoString()
     {
-        return $"TncpOutboundDataMessage ID {MessageId} Block {BlockCode}";
+        return $"TncpOutboundDataMessage ID {MessageId} ({RawMessageData.Length} bytes)";
     }
 
     /// <summary>

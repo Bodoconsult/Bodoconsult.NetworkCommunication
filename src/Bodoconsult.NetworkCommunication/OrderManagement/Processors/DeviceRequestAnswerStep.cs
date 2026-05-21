@@ -199,6 +199,8 @@ public class DeviceRequestAnswerStep : BaseRequestAnswerStep, IDeviceRequestAnsw
 
 
         var success = CheckReceivedMessage(DeviceRequestSpec.CurrentSentMessage, receivedMessage, errors);
+
+
         RequestSpec.AppLogger?.LogDebug($"{RequestSpec.OrderLoggerId}{DeviceRequestSpec.OrderLoggerId}RSP: check message: command {receivedMessage?.ToShortInfoString()}: {success} ");
 
         // Check if received message is a breaking async message

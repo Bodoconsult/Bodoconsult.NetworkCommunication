@@ -36,6 +36,14 @@ public class UdpTestUniCastServer : BaseUdpDevice
     }
 
     /// <summary>
+    /// Start the receiver loop
+    /// </summary>
+    public override void StartReceiverLoop()
+    {
+        // Do nothing
+    }
+
+    /// <summary>
     /// Send byte array to the client
     /// </summary>
     /// <param name="data">Byte array to send</param>

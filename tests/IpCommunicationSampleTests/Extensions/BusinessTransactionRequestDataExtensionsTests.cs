@@ -18,7 +18,7 @@ internal class BusinessTransactionRequestDataExtensionsTests
     public void GetBytes_Snapshot_ReturnsCorrectArray()
     {
         // Arrange 
-        var request = new StartMessagingReportBusinessTransactionRequestData()
+        var request = new StartMessagingBusinessTransactionRequestData()
         {
             Snapshot = true,
             Channel1 = false,
@@ -38,7 +38,7 @@ internal class BusinessTransactionRequestDataExtensionsTests
     public void GetBytes_Channel1_ReturnsCorrectArray()
     {
         // Arrange 
-        var request = new StartMessagingReportBusinessTransactionRequestData()
+        var request = new StartMessagingBusinessTransactionRequestData()
         {
             Snapshot = false,
             Channel1 = true,
@@ -58,7 +58,7 @@ internal class BusinessTransactionRequestDataExtensionsTests
     public void GetBytes_Channel2_ReturnsCorrectArray()
     {
         // Arrange 
-        var request = new StartMessagingReportBusinessTransactionRequestData()
+        var request = new StartMessagingBusinessTransactionRequestData()
         {
             Snapshot = false,
             Channel1 = false,
@@ -78,7 +78,7 @@ internal class BusinessTransactionRequestDataExtensionsTests
     public void GetBytes_Channel3_ReturnsCorrectArray()
     {
         // Arrange 
-        var request = new StartMessagingReportBusinessTransactionRequestData()
+        var request = new StartMessagingBusinessTransactionRequestData()
         {
             Snapshot = false,
             Channel1 = false,
@@ -98,7 +98,7 @@ internal class BusinessTransactionRequestDataExtensionsTests
     public void GetBytes_Channel4_ReturnsCorrectArray()
     {
         // Arrange 
-        var request = new StartMessagingReportBusinessTransactionRequestData()
+        var request = new StartMessagingBusinessTransactionRequestData()
         {
             Snapshot = false,
             Channel1 = false,

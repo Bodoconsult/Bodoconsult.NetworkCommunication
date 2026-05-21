@@ -74,7 +74,10 @@ internal class RawInboundDataLoggerTests
 
         var logger = new RawInboundDataLogger(dataExportService);
 
-        var msg = new SdcpSortableInboundDataMessage();
+        var msg = new SdcpSortableInboundDataMessage
+        {
+            RawMessageData = new byte[] { 0x0, 0x1 }
+        };
 
         var result = logger.CheckIfMessageIsToLog(msg);
 

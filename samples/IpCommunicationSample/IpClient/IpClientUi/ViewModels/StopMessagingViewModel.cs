@@ -3,6 +3,7 @@
 using Bodoconsult.App.BusinessTransactions.RequestData;
 using Bodoconsult.App.Interfaces;
 using Bodoconsult.App.ReactiveUI.Interfaces;
+using Bodoconsult.App.ReactiveUI.Regions;
 using IpClientUi.Interfaces;
 using IpCommunicationSample.Common.BusinessTransactions;
 using ReactiveUI;
@@ -45,10 +46,16 @@ public partial class StopMessagingViewModel : ReactiveObject, IUiRegionViewModel
     /// Method based late injection of <see cref="ReactiveUI.IScreen"/> instance for navigation
     /// </summary>
     /// <param name="screen"></param>
-    public void InjectScreen(IScreen screen)
+    public void InjectScreen(UiRegion screen)
     {
         HostScreen = screen;
+        UiRegion = screen;
     }
+
+    /// <summary>
+    /// UI region the viewmodel is loaded in
+    /// </summary>
+    public UiRegion? UiRegion { get; private set; }
 
     /// <summary>
     /// Command stopping the messaging
@@ -63,7 +70,14 @@ public partial class StopMessagingViewModel : ReactiveObject, IUiRegionViewModel
                 TransactionId = ClientSideBusinessTransactionIds.StopMessaging
             };
 
-            _businessTransactionManager.RunBusinessTransaction(request.TransactionId, request);
+            var reply = _businessTransactionManager.RunBusinessTransaction(request.TransactionId, request);
+
+            if (reply.ErrorCode == 0 || UiRegion == null)
+            {
+                return;
+            }
+
+            UiRegion.UiWindow.ShowInfoDialog(reply.Message);
         });
     }
 

@@ -23,7 +23,7 @@ internal class IpDeviceTcpIpBusinessTransactionProviderTests
         {
 
             Assert.That(delegates, Is.Not.Null);
-            Assert.That(delegates, Has.Count.EqualTo(4));
+            Assert.That(delegates, Has.Count.EqualTo(2));
 
             foreach (var item in delegates)
             {

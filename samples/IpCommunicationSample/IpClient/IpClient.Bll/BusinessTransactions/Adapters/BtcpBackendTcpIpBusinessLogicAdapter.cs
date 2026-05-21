@@ -62,9 +62,9 @@ public class BtcpBackendTcpIpBusinessLogicAdapter : BaseOrderManagementDeviceBus
     /// <param name="request">Current request</param>
     public IBusinessTransactionReply RequestDeviceStartMessagingState(IBusinessTransactionRequestData request)
     {
-        if (request is not StartMessagingReportBusinessTransactionRequestData startRequest)
+        if (request is not StartMessagingBusinessTransactionRequestData startRequest)
         {
-            throw new ArgumentException($"request is not {nameof(StartMessagingReportBusinessTransactionRequestData)}");
+            throw new ArgumentException($"request is not {nameof(StartMessagingBusinessTransactionRequestData)}");
         }
 
         var transactionId = ClientSideBusinessTransactionIds.StartMessaging;
@@ -141,7 +141,7 @@ public class BtcpBackendTcpIpBusinessLogicAdapter : BaseOrderManagementDeviceBus
 
         var builder = new BtcpOrderBuilder();
 
-        var config = new OneRequestSpecNoOrOneStepOneAnswerConfiguration(orderName, BuiltinOrders.NoAnswerBtcpOrder, builder)
+        var config = new OneRequestSpecNoOrOneStepOneAnswerConfiguration(orderName, BuiltinOrders.BtcpOrder, builder)
         {
             HandleRequestAnswerOnSuccessDelegate = handleRequestAnswerDelegate,
             ParameterSet = ps

@@ -55,7 +55,7 @@ public class BackendTcpIpBusinessTransactionProvider : IBusinessTransactionProvi
 
         };
 
-        transaction.AllowedRequestDataTypes.Add(nameof(StartMessagingReportBusinessTransactionRequestData));
+        transaction.AllowedRequestDataTypes.Add(nameof(StartMessagingBusinessTransactionRequestData));
 
         return transaction;
     }

@@ -1,10 +1,7 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH.  All rights reserved.
 
-using System.Reactive;
-using System.Reactive.Disposables;
-using System.Reactive.Disposables.Fluent;
-using System.Reactive.Linq;
 using Avalonia.Controls;
+using Bodoconsult.App.Avalonia.Helpers;
 using Bodoconsult.App.Avalonia.ReactiveUI.Regions;
 using Bodoconsult.App.ReactiveUI.Extensions;
 using Bodoconsult.App.ReactiveUI.Interfaces;
@@ -12,6 +9,10 @@ using Bodoconsult.App.ReactiveUI.Regions;
 using IpClientUi.ViewModels;
 using ReactiveUI;
 using ReactiveUI.Avalonia;
+using System.Reactive;
+using System.Reactive.Disposables;
+using System.Reactive.Disposables.Fluent;
+using System.Reactive.Linq;
 
 namespace IpClientUi.Views;
 
@@ -82,6 +83,15 @@ public partial class Window1 : ReactiveWindow<Window1ViewModel>, IUiWindow
         var vm2 = new SecondViewModel(viewModel.Region2);
 
         viewModel.Region2.Navigate(vm2);
+    }
+
+    /// <summary>
+    /// Show an info dialog
+    /// </summary>
+    /// <param name="message">Message to show</param>
+    public async Task<bool?> ShowInfoDialog(string message)
+    {
+        return await DialogHelper.ShowInfoDialog(this, message);
     }
 
     /// <summary>

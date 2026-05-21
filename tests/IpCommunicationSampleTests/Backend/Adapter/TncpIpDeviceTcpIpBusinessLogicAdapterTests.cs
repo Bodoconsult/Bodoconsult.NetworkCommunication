@@ -13,7 +13,7 @@ internal class TncpIpDeviceTcpIpBusinessLogicAdapterTests
     public void GetPaths_Channels1And3_ReturnsArray()
     {
         // Arrange 
-        var request = new StartMessagingReportBusinessTransactionRequestData()
+        var request = new StartMessagingBusinessTransactionRequestData()
         {
             Snapshot = true,
             Channel1 = true,
@@ -31,7 +31,7 @@ internal class TncpIpDeviceTcpIpBusinessLogicAdapterTests
     public void GetPaths_AllChannels_ReturnsArray()
     {
         // Arrange 
-        var request = new StartMessagingReportBusinessTransactionRequestData()
+        var request = new StartMessagingBusinessTransactionRequestData()
         {
             Snapshot = true,
             Channel1 = true,

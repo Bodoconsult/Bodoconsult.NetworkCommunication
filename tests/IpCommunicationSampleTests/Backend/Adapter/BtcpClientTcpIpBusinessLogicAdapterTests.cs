@@ -4,6 +4,7 @@ using Bodoconsult.App.Abstractions.Interfaces;
 using Bodoconsult.App.BusinessTransactions;
 using Bodoconsult.App.Helpers;
 using Bodoconsult.NetworkCommunication.Communication;
+using Bodoconsult.NetworkCommunication.DataMessaging.DataBlocks;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
 using Bodoconsult.NetworkCommunication.Interfaces;
 using Bodoconsult.NetworkCommunication.Tests.App;
@@ -79,10 +80,18 @@ internal class BtcpClientTcpIpBusinessLogicAdapterTests
             inboundDataMessageToBtRequestConverter, inboundDataMessageToBtReplyConverter,
             outboundBtRequestToOutboundDataMessageConverter, outboundBtReplyDataMessageConverter);
 
-        var msg = new BtcpRequestInboundDataMessage(transactionId, transactionUid);
+        var db = new BasicInboundDatablock
+        {
+            Data = new byte[] { 0x0 }
+        };
+
+        var message = new BtcpRequestInboundDataMessage(transactionId, transactionUid)
+        {
+            DataBlock = db
+        };
 
         // Act  
-        adapter.DefaultReceiveMessage(msg);
+        adapter.DefaultReceiveMessage(message);
 
         // Assert
         Wait.Until(() => _businessTransactionManager.RequestedTransactionId > 0);

@@ -1,5 +1,6 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
+using Bodoconsult.App.ReactiveUI.Regions;
 using ReactiveUI;
 
 namespace IpClientUi.Interfaces;
@@ -35,5 +36,10 @@ public interface IStopMessagingViewModel
     /// Method based late injection of <see cref="IScreen"/> instance for navigation
     /// </summary>
     /// <param name="screen"></param>
-    void InjectScreen(IScreen screen);
+    void InjectScreen(UiRegion screen);
+
+    /// <summary>
+    /// UI region the viewmodel is loaded in
+    /// </summary>
+    public UiRegion? UiRegion { get; }
 }

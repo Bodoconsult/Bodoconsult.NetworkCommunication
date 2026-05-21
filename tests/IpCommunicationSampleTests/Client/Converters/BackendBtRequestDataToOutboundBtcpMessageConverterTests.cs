@@ -122,6 +122,7 @@ internal class BackendBtRequestDataToOutboundBtcpMessageConverterTests
     public void MapToBusinessTransactionRequestData_NotificationFired_ReturnsRequestMessage()
     {
         // Arrange 
+        var appName = $"{Globals.Instance.AppStartParameter.AppName} {Globals.Instance.AppStartParameter.AppVersion}";
         var conv = new BackendBtRequestDataToOutboundBtcpMessageConverter(_appLogger, Globals.Instance);
 
         var transactionId = ServerSideBusinessTransactionIds.NotificationFired;
@@ -152,7 +153,7 @@ internal class BackendBtRequestDataToOutboundBtcpMessageConverterTests
             Assert.That(result.DataBlock.Data.Length, Is.Not.Zero);
 
             var s = Encoding.UTF8.GetString(result.DataBlock.Data.Span);
-            Assert.That(s, Is.EqualTo($"s1\u0005Blubb\u00052\u0005Blabb\u00053\u0005Blobb"));
+            Assert.That(s, Is.EqualTo($"s1\u0005Blubb\u00052\u0005Blabb\u00053\u0005Blobb\u0005{appName}"));
         }
     }
 }

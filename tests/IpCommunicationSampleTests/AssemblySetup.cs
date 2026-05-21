@@ -36,6 +36,8 @@ public static class AssemblySetup
         AppDomain.CurrentDomain.UnhandledException += builder.CurrentDomainOnUnhandledException;
 #endif
 
+
+
         // Load basic app metadata
         builder.LoadBasicSettings();
 

@@ -2,6 +2,7 @@
 
 using Bodoconsult.App.Abstractions.Interfaces;
 using Bodoconsult.App.BusinessTransactions.RequestData;
+using Bodoconsult.NetworkCommunication.DataMessaging.DataBlocks;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
 using Bodoconsult.NetworkCommunication.Tests.Helpers;
 using IpBackend.Bll.BusinessLogic.Converters;
@@ -47,10 +48,18 @@ internal class ClientInboundBtcpMessageToBtRequestDataConverterTests
         var transactionId = ClientSideBusinessTransactionIds.GetConfig;
         var transactionUid = Guid.NewGuid();
 
-        var message = new BtcpRequestInboundDataMessage(transactionId, transactionUid);
+        var db = new BasicInboundDatablock
+        {
+            Data = new Memory<byte>([0x0, 0x1, 0x0, 0x0, 0x0])
+        };
+
+        var message = new BtcpRequestInboundDataMessage(transactionId, transactionUid)
+        {
+            DataBlock = db
+        };
 
         // Act  
-        var result = (EmptyBusinessTransactionRequestData?)conv.MapToBusinessTransactionRequestData(message);
+        var result = (StartMessagingBusinessTransactionRequestData?)conv.MapToBusinessTransactionRequestData(message);
 
         // Assert
         using (Assert.EnterMultipleScope())
@@ -69,10 +78,19 @@ internal class ClientInboundBtcpMessageToBtRequestDataConverterTests
         var transactionId = ClientSideBusinessTransactionIds.StartMessaging;
         var transactionUid = Guid.NewGuid();
 
-        var message = new BtcpRequestInboundDataMessage(transactionId, transactionUid);
+        var db = new BasicInboundDatablock
+        {
+            Data = new Memory<byte>([0x0, 0x1, 0x0, 0x0, 0x0])
+        };
+
+        var message = new BtcpRequestInboundDataMessage(transactionId, transactionUid)
+        {
+            DataBlock = db
+        };
+
 
         // Act  
-        var result = (EmptyBusinessTransactionRequestData?)conv.MapToBusinessTransactionRequestData(message);
+        var result = (StartMessagingBusinessTransactionRequestData?)conv.MapToBusinessTransactionRequestData(message);
 
         // Assert
         using (Assert.EnterMultipleScope())
@@ -91,7 +109,15 @@ internal class ClientInboundBtcpMessageToBtRequestDataConverterTests
         var transactionId = ClientSideBusinessTransactionIds.StopMessaging;
         var transactionUid = Guid.NewGuid();
 
-        var message = new BtcpRequestInboundDataMessage(transactionId, transactionUid);
+        var db = new BasicInboundDatablock
+        {
+            Data = new byte[]{ 0x0}
+        };
+
+        var message = new BtcpRequestInboundDataMessage(transactionId, transactionUid)
+        {
+            DataBlock = db
+        };
 
         // Act  
         var result = (EmptyBusinessTransactionRequestData?)conv.MapToBusinessTransactionRequestData(message);

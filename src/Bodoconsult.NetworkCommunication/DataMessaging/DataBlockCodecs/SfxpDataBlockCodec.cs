@@ -23,7 +23,7 @@ public class SfxpDataBlockCodec : IDataBlockCodec
     /// </summary>
     public SfxpDataBlockCodec()
     {
-        _bufferPool.LoadFactoryMethod(() => new DataChunk()
+        _bufferPool.LoadFactoryMethod(() => new DataChunk
         {
             ReturnDataChunkDelegate = ReturnDataChunkDelegate
         });

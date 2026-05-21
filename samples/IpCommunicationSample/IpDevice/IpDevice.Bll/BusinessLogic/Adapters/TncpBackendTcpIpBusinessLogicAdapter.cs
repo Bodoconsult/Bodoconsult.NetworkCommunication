@@ -87,10 +87,7 @@ public class TncpBackendTcpIpBusinessLogicAdapter : BaseSimpleDeviceBusinessLogi
         }
 
         // Get the current streaming config
-
-
-
-        if (tncp.TelnetCommand.StartsWith("set,stream", StringComparison.InvariantCultureIgnoreCase))
+        if (tncp.TelnetCommand.StartsWith("set,stream,order", StringComparison.InvariantCultureIgnoreCase))
         {
             lock (_udpStarterLock)
             {

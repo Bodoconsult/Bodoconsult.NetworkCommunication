@@ -200,7 +200,7 @@ internal class TcpIpReceivingTests
 
         var adapter = (IBackendTcpIpBusinessLogicAdapter)_clientManager.BackendTcpIp.DeviceBusinessLogicAdapter;
 
-        var request = new StartMessagingReportBusinessTransactionRequestData
+        var request = new StartMessagingBusinessTransactionRequestData
         {
             Channel1 = true,
             Channel2 = true,
@@ -242,7 +242,7 @@ internal class TcpIpReceivingTests
 
         var adapter = (IBackendTcpIpBusinessLogicAdapter)_clientManager.BackendTcpIp.DeviceBusinessLogicAdapter;
 
-        var request = new StartMessagingReportBusinessTransactionRequestData
+        var request = new StartMessagingBusinessTransactionRequestData
         {
             Channel1 = true,
             Channel2 = true,

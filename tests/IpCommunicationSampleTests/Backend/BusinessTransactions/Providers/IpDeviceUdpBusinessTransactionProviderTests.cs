@@ -21,9 +21,8 @@ internal class IpDeviceUdpBusinessTransactionProviderTests
 
         using (Assert.EnterMultipleScope())
         {
-
             Assert.That(delegates, Is.Not.Null);
-            Assert.That(delegates, Has.Count.EqualTo(2));
+            Assert.That(delegates, Has.Count.EqualTo(3));
 
             foreach (var item in delegates)
             {

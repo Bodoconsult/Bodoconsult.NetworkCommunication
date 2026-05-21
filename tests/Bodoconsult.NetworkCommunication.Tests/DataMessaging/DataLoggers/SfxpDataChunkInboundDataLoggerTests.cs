@@ -107,8 +107,43 @@ internal class SfxpDataChunkInboundDataLoggerTests
         // Assert
         Assert.That(result.Count, Is.Zero);
     }
+
     [Test]
-    public void LogTheMessage_ValidMessage_DataLogged()
+    public void LogTheMessage_ValidMessage1_DataLogged()
+    {
+        // Arrange 
+        byte[] data = [0x5, 0x6, 0x7];
+        const byte channel = 1;
+        var dataExportService = new FakeDataExportService();
+
+        var logger = new SfxpDataChunkInboundDataLogger(dataExportService)
+        {
+            Channel = channel
+        };
+
+        var dataBlock = new SfxpInboundDatablock
+        {
+            Data = new Memory<byte>(data),
+            DataChunks = { new DataChunk { Channel = channel, Data = data } }
+        };
+
+        var msg = new SfxpInboundDataMessage
+        {
+            DataBlock = dataBlock
+        };
+
+        var result = logger.CheckIfMessageIsToLog(msg);
+
+        // Act  
+        logger.LogTheMessages(result);
+
+        // Assert
+        Wait.Until(() => dataExportService.WasLogged);
+        Assert.That(dataExportService.WasLogged, Is.True);
+    }
+
+    [Test]
+    public void LogTheMessage_ValidMessage2_DataLogged()
     {
         // Arrange 
         byte[] data = [0x5, 0x6, 0x7];

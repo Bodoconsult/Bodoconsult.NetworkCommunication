@@ -1,6 +1,7 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
 using System.Reactive;
+using Bodoconsult.App.ReactiveUI.Regions;
 using IpClientUi.Interfaces;
 using ReactiveUI;
 
@@ -62,8 +63,13 @@ public class FakeStartMessagingViewModel : IStartMessagingViewModel
     /// Method based late injection of <see cref="ReactiveUI.IScreen"/> instance for navigation
     /// </summary>
     /// <param name="screen"></param>
-    public void InjectScreen(IScreen screen)
+    public void InjectScreen(UiRegion screen)
     {
         throw new NotImplementedException();
     }
+
+    /// <summary>
+    /// UI region the viewmodel is loaded in
+    /// </summary>
+    public UiRegion? UiRegion { get; set; }
 }

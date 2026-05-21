@@ -7,7 +7,7 @@ namespace IpCommunicationSample.Common.BusinessTransactions.Requests;
 /// <summary>
 /// Request data for starting device communication
 /// </summary>
-public class StartMessagingReportBusinessTransactionRequestData : BaseBusinessTransactionRequestData
+public class StartMessagingBusinessTransactionRequestData : BaseBusinessTransactionRequestData
 {
     /// <summary>
     /// Is the request for snapshot (false) or streaming (true)

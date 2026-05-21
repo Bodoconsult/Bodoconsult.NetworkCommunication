@@ -12,7 +12,7 @@ public static class BusinessTransactionRequestDataExtensions
     private const byte Zero = 0x0;
     private const byte One = 0x1;
 
-    public static byte[] GetBytes(this StartMessagingReportBusinessTransactionRequestData data)
+    public static byte[] GetBytes(this StartMessagingBusinessTransactionRequestData data)
     {
         return
         [
@@ -24,13 +24,13 @@ public static class BusinessTransactionRequestDataExtensions
         ];
     }
 
-    public static StartMessagingReportBusinessTransactionRequestData ToStartMessagingReportBusinessTransactionRequestData(this Memory<byte> data)
+    public static StartMessagingBusinessTransactionRequestData ToStartMessagingReportBusinessTransactionRequestData(this Memory<byte> data)
     {
         if (data.Length < 5)
         {
-            throw new ArgumentException($"data to short for conversion to {nameof(StartMessagingReportBusinessTransactionRequestData)}");
+            throw new ArgumentException($"data to short for conversion to {nameof(StartMessagingBusinessTransactionRequestData)}");
         }
-        var result = new StartMessagingReportBusinessTransactionRequestData
+        var result = new StartMessagingBusinessTransactionRequestData
         {
             Snapshot = data[..1].Span[0] == 0x1,
             Channel1 = data.Slice(1,1).Span[0] == 0x1,

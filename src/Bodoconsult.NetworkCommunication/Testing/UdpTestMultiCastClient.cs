@@ -34,6 +34,22 @@ public class UdpTestMultiCastClient : BaseUdpDevice
     }
 
     /// <summary>
+    /// Start the receiver loop
+    /// </summary>
+    public override void StartReceiverLoop()
+    {
+        AutoResetEvent wait = new(false);
+
+        // Start receive loop now
+        Task.Run(async () =>
+        {
+            await ReceiverLoop(wait);
+        });
+
+        wait.WaitOne(100);
+    }
+
+    /// <summary>
     /// Send byte array to the client
     /// </summary>
     /// <param name="data">Byte array to send</param>

@@ -1,8 +1,6 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH.  All rights reserved.
 
-using System.Reactive.Disposables;
-using System.Reactive.Disposables.Fluent;
-using System.Reactive.Linq;
+using Bodoconsult.App.Avalonia.Helpers;
 using Bodoconsult.App.Avalonia.ReactiveUI.Converters;
 using Bodoconsult.App.Avalonia.ReactiveUI.Menus;
 using Bodoconsult.App.Avalonia.ReactiveUI.Regions;
@@ -13,6 +11,9 @@ using Bodoconsult.App.ReactiveUI.Regions;
 using IpClientUi.ViewModels;
 using ReactiveUI;
 using ReactiveUI.Avalonia;
+using System.Reactive.Disposables;
+using System.Reactive.Disposables.Fluent;
+using System.Reactive.Linq;
 
 namespace IpClientUi;
 
@@ -104,6 +105,15 @@ public partial class MainWindow : ReactiveWindow<IpClientMainWindowViewModel>, I
     }
 
     /// <summary>
+    /// Show an info dialog
+    /// </summary>
+    /// <param name="message">Message to show</param>
+    public async Task<bool?> ShowInfoDialog(string message)
+    {
+        return await DialogHelper.ShowInfoDialog(this, message);
+    }
+
+    /// <summary>
     /// Window instance name
     /// </summary>
     public string? InstanceName { get; set; }
@@ -138,12 +148,12 @@ public partial class MainWindow : ReactiveWindow<IpClientMainWindowViewModel>, I
         }
     }
 
+    /// <summary>Load the region manager</summary>
+    /// <param name="regionManager">Current region manager instance</param>
     public void LoadRegionManager(IRegionManager regionManager)
     {
-        throw new NotImplementedException();
+        RegionManager = regionManager;
     }
-
-    public bool IsRegistered { get; }
 
     ///// <summary>
     ///// Allows the ViewModel to be used on the XAML via a dependency property

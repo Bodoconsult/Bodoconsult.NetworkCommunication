@@ -24,6 +24,13 @@ public partial class IpClientMainWindowViewModel : MainWindowViewModel
 {
     private readonly IAppGlobals _appGlobals;
 
+    private readonly Interaction<string, bool> confirm;
+
+    /// <summary>
+    /// Show a confirm dialog
+    /// </summary>
+    public Interaction<string, bool> Confirm => confirm;
+
     /// <summary>
     /// Default ctor
     /// </summary>
@@ -38,6 +45,8 @@ public partial class IpClientMainWindowViewModel : MainWindowViewModel
         _appGlobals = appGlobals;
         UiStateHandler = uiStateHandler;
         UiStateHandler.DeviceStateMessage = "App loading...";
+
+        confirm = new Interaction<string, bool>();
     }
 
     /// <summary>
@@ -167,6 +176,8 @@ public partial class IpClientMainWindowViewModel : MainWindowViewModel
             vm.Snapshot = true;
             vm.InjectScreen(Region1);
             Region1?.Navigate(vm);
+
+            
         }
         catch (Exception e)
         {

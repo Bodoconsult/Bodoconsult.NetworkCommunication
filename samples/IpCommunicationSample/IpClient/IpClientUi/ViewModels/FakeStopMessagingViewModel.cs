@@ -1,6 +1,7 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
 using System.Reactive;
+using Bodoconsult.App.ReactiveUI.Regions;
 using IpClientUi.Interfaces;
 using ReactiveUI;
 
@@ -24,8 +25,13 @@ public class FakeStopMessagingViewModel : IStopMessagingViewModel
     public IScreen HostScreen { get; set; } = null!;
     public ReactiveCommand<Unit, Unit> StopMessagingCommand { get; set; } = null!;
     public ReactiveCommand<Unit, Unit> BackCommand { get; set; } = null!;
-    public void InjectScreen(IScreen screen)
+    public void InjectScreen(UiRegion screen)
     {
         throw new NotImplementedException();
     }
+
+    /// <summary>
+    /// UI region the viewmodel is loaded in
+    /// </summary>
+    public UiRegion? UiRegion { get; set; }
 }

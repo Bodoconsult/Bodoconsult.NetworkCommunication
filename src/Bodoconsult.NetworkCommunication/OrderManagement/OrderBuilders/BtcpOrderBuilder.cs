@@ -84,6 +84,17 @@ public class BtcpOrderBuilder : BaseOrderBuilder
         }
 
         var erg = sm.BusinessTransactionId == rm.BusinessTransactionId;
-        return erg;
+
+        if (!erg)
+        {
+            return false;
+        }
+
+        if (rm.ErrorCode > 0)
+        {
+            errors.Add(rm.InfoMessage ?? "Unknown error sent from device");
+        }
+        return true;
+
     }
 }

@@ -65,9 +65,6 @@ internal class TcpIpClientSocketProxyTests
             // Act
             while (!cts.IsCancellationRequested)
             {
-                // then receive data
-                await tcpIpServer.Receive();
-
                 // send data
                 tcpIpServer.Send(clientData);
             }
