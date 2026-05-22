@@ -31,7 +31,7 @@ public class IpHighPerformanceDuplexIoReceiver : BaseDuplexIoReceiver
         PollingTimeOut = pollingTimeOut;
 
         _socketProxy = config.SocketProxy ?? throw new ArgumentNullException(nameof(config.SocketProxy));
-        _socketProxy.StartReceiverLoop(SocketReceivedDataDelegate);
+        _socketProxy.StartReceiverLoop(SocketReceivedData);
 
 
         if (config.DataMessageProcessingPackage == null)
@@ -42,7 +42,11 @@ public class IpHighPerformanceDuplexIoReceiver : BaseDuplexIoReceiver
         _dataMessageValidator = config.DataMessageProcessingPackage.DataMessageValidator;
     }
 
-    private void SocketReceivedDataDelegate(Memory<byte> data)
+    /// <summary>
+    /// Handle data the socket has received
+    /// </summary>
+    /// <param name="data">Received data</param>
+    public override void SocketReceivedData(Memory<byte> data)
     {
         //var writer = _pipe.Writer;
         //var memory = writer.GetMemory(data.Length);

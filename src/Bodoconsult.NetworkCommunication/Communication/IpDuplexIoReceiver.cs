@@ -40,7 +40,7 @@ public class IpDuplexIoReceiver : BaseDuplexIoReceiver
         DuplexIoNoDataDelegate duplexIoSetNotInProgressDelegate) : base(deviceCommSettings)
     {
         ArgumentNullException.ThrowIfNull(deviceCommSettings.SocketProxy);
-        deviceCommSettings.SocketProxy.StartReceiverLoop(SocketReceivedDataDelegate);
+        deviceCommSettings.SocketProxy.StartReceiverLoop(SocketReceivedData);
 
         DuplexIoIsWorkInProgressDelegate = duplexIoIsWorkInProgressDelegate;
         DuplexIoNoDataDelegate = duplexIoSetNotInProgressDelegate;
@@ -54,7 +54,12 @@ public class IpDuplexIoReceiver : BaseDuplexIoReceiver
         _dataMessageValidator = deviceCommSettings.DataMessageProcessingPackage.DataMessageValidator;
     }
 
-    private void SocketReceivedDataDelegate(Memory<byte> data)
+
+    /// <summary>
+    /// Handle data the socket has received
+    /// </summary>
+    /// <param name="data">Received data</param>
+    public override void SocketReceivedData(Memory<byte> data)
     {
         if (data.IsEmpty)
         {

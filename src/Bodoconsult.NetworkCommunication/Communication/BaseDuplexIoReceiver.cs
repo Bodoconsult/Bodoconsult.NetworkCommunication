@@ -1,6 +1,7 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
 using Bodoconsult.App.Abstractions.Interfaces;
+using Bodoconsult.App.BufferPool;
 using Bodoconsult.NetworkCommunication.Delegates;
 using Bodoconsult.NetworkCommunication.Interfaces;
 
@@ -122,6 +123,15 @@ public class BaseDuplexIoReceiver : IDuplexIoReceiver
     ///// Thread sending messages from receiver pipeline to app internal consumers
     ///// </summary>
     //public Thread? SendPipelineTask { get; protected set; }
+
+    /// <summary>
+    /// Handle data the socket has received
+    /// </summary>
+    /// <param name="data">Received data</param>
+    public virtual void SocketReceivedData(Memory<byte> data)
+    {
+        throw new NotSupportedException("Override in derived classes");
+    }
 
     /// <summary>
     /// Start the internal receiver

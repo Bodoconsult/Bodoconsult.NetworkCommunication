@@ -35,6 +35,15 @@ public class DoNothingDuplexIoReceiver : IDuplexIoReceiver
     public Thread? SendPipelineTask { get; set; }
 
     /// <summary>
+    /// Handle data the socket has received
+    /// </summary>
+    /// <param name="data">Received data</param>
+    public void SocketReceivedData(Memory<byte> data)
+    {
+        // Do nothing
+    }
+
+    /// <summary>
     /// Start the internal receiver
     /// </summary>
     public Task StartReceiver()
