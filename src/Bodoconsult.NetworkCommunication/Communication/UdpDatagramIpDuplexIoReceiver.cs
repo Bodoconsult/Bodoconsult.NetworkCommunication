@@ -44,7 +44,7 @@ public class UdpDatagramIpDuplexIoReceiver : BaseDuplexIoReceiver
         DuplexIoNoDataDelegate = duplexIoSetNotInProgressDelegate;
 
         ArgumentNullException.ThrowIfNull(config.SocketProxy);
-        config.SocketProxy.StartReceiverLoop(SocketReceivedData);
+        //config.SocketProxy.StartReceiverLoop(SocketReceivedData);
 
         _currentPipeline.ConsumerTaskDelegate = TryToSendReceivedData;
         _bufferPool.LoadFactoryMethod(() => new DummyMemory());

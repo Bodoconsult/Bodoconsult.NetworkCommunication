@@ -8,14 +8,11 @@ using Bodoconsult.NetworkCommunication.Delegates;
 namespace Bodoconsult.NetworkCommunication.Interfaces;
 
 /// <summary>
-/// Interface for TCP/IP socket implementations
+/// Base interface for IP socket implementations
 /// </summary>
 public interface ISocketProxy: IDisposable
 {
-    /// <summary>
-    /// Delegate fired if the socket was receiving data
-    /// </summary>
-    SocketReceivedDataDelegate? SocketReceivedDataDelegate  { get; }
+
 
     /// <summary>
     /// Logger ID or null
@@ -78,19 +75,6 @@ public interface ISocketProxy: IDisposable
     IAppLoggerProxy Logger { get; }
 
     /// <summary>
-    /// Start the receiver loop
-    /// </summary>
-    /// <param name="socketReceivedDataDelegate">Delegate for forwarding received messages</param>
-    void StartReceiverLoop(SocketReceivedDataDelegate socketReceivedDataDelegate);
-
-    /// <summary>
-    /// Run the receiver loop
-    /// </summary>
-    /// <param name="waitForLoopStarted"><see cref="AutoResetEvent"/> to wait until the loop has been started</param>
-    /// <returns></returns>
-    Task ReceiverLoop(AutoResetEvent waitForLoopStarted);
-
-    /// <summary>
     /// Send bytes
     /// </summary>
     /// <param name="bytesToSend">Byte array to send</param>
@@ -102,11 +86,6 @@ public interface ISocketProxy: IDisposable
     /// <param name="bytesToSend">Data to send</param>
     Task<int> Send(ReadOnlyMemory<byte> bytesToSend);
 
-    ///// <summary>
-    ///// Shut the socket down
-    ///// </summary>
-    //void Shutdown();
-
     /// <summary>
     /// Close the socket
     /// </summary>
@@ -117,53 +96,9 @@ public interface ISocketProxy: IDisposable
     /// </summary>
     Task Connect();
 
-    ///// <summary>
-    ///// Receive first data byte from the socket
-    ///// </summary>
-    ///// <param name="buffer">Byte array to store the received byte data in</param>
-    ///// <returns>Number of bytes received</returns>
-    //Task<int> Receive(byte[] buffer);
-
-    ///// <summary>
-    ///// Receive first data byte from the socket
-    ///// </summary>
-    ///// <param name="buffer">Byte array to store the received byte data in</param>
-    ///// <returns>Number of bytes received</returns>
-    //Task<int> Receive(Memory<byte> buffer);
-
-    ///// <summary>
-    ///// Receive data from the socket
-    ///// </summary>
-    ///// <param name="buffer">Byte array to store the received byte data in</param>
-    ///// <param name="offset">Offset</param>
-    ///// <param name="expectedBytesLength">Expected length of the byte data received</param>
-    ///// <returns>Number of bytes received</returns>
-    //Task<int> Receive(byte[] buffer, int offset, int expectedBytesLength);
-
-    ///// <summary>
-    ///// Send bytes 
-    ///// </summary>
-    ///// <param name="bytesToSend">Byte array to send</param>
-    ///// <param name="offset">Offset</param>
-    ///// <param name="messageBytesLength">Number of message bytes length to send</param>
-    ///// <returns></returns>
-    //Task<int> Send(byte[] bytesToSend, int offset, int messageBytesLength);
-
     /// <summary>
     /// Poll data
     /// </summary>
     /// <returns>True, if data can be read, else false</returns>
     bool Poll();
-
-    ///// <summary>
-    ///// Send a file
-    ///// </summary>
-    ///// <param name="fileName">Full file path</param>
-    //void SendFile(string fileName);
-
-    ///// <summary>
-    ///// Prepare the answer of the socket for testing
-    ///// </summary>
-    ///// <param name="testData">Test data to use</param>
-    //void PrepareAnswer(byte[] testData);
 }

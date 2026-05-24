@@ -1,8 +1,6 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
 using System.Buffers;
-using Bodoconsult.App.BufferPool;
-using Bodoconsult.App.Helpers;
 using Bodoconsult.NetworkCommunication.Delegates;
 using Bodoconsult.NetworkCommunication.Helpers;
 using Bodoconsult.NetworkCommunication.Interfaces;
@@ -14,11 +12,6 @@ namespace Bodoconsult.NetworkCommunication.Communication;
 /// </summary>
 public class IpDuplexIoReceiver : BaseDuplexIoReceiver
 {
-    private readonly BufferPool<DummyMemory> _bufferPool = new();
-    private ReadOnlySequence<byte> _buffer = new([]);
-    private static readonly ArrayPool<byte> ArrayPool = ArrayPool<byte>.Shared;
-    private readonly ProducerConsumerQueue<DummyMemory> _currentPipeline = new();
-
     /// <summary>
     /// Current validator impl for data messages
     /// </summary>
@@ -40,61 +33,27 @@ public class IpDuplexIoReceiver : BaseDuplexIoReceiver
         DuplexIoNoDataDelegate duplexIoSetNotInProgressDelegate) : base(deviceCommSettings)
     {
         ArgumentNullException.ThrowIfNull(deviceCommSettings.SocketProxy);
-        deviceCommSettings.SocketProxy.StartReceiverLoop(SocketReceivedData);
+
+        if (deviceCommSettings.SocketProxy is not ITcpIpSocketProxy tcpIpSocketProxy)
+        {
+            throw new ArgumentException("SocketProxy is not ITcpIpSocketProxy");
+        }
+
+        tcpIpSocketProxy.Pipeline.SocketReceivedDataDelegate = TryToSendReceivedDataDekegate;
 
         DuplexIoIsWorkInProgressDelegate = duplexIoIsWorkInProgressDelegate;
         DuplexIoNoDataDelegate = duplexIoSetNotInProgressDelegate;
-
-        _currentPipeline.ConsumerTaskDelegate = TryToSendReceivedData;
-        _bufferPool.LoadFactoryMethod(() => new DummyMemory());
-        _bufferPool.Allocate(3);
 
         ArgumentNullException.ThrowIfNull(deviceCommSettings.DataMessageProcessingPackage);
 
         _dataMessageValidator = deviceCommSettings.DataMessageProcessingPackage.DataMessageValidator;
     }
 
-
-    /// <summary>
-    /// Handle data the socket has received
-    /// </summary>
-    /// <param name="data">Received data</param>
-    public override void SocketReceivedData(Memory<byte> data)
+    private void TryToSendReceivedDataDekegate(ref ReadOnlySequence<byte> data)
     {
-        if (data.IsEmpty)
-        {
-            return;
-        }
+        string msg;
 
-#if DEBUG
-        var msg = $"{LoggerId}received: {data.Length} byte";
-        MonitorLogger.LogInformation(msg);
-#endif
-
-        var dummy = _bufferPool.Dequeue();
-        dummy.Memory = data.ToArray().AsMemory();
-        _currentPipeline.Enqueue(dummy);
-    }
-
-    /// <summary>
-    /// Try to send received data to internal receiver
-    /// </summary>
-    /// <param name="data"></param>
-    public void TryToSendReceivedData(DummyMemory data)
-    {
-        var chunk = new ChunkedSequence<byte>(_buffer);
-        chunk.Append(data.Memory);
-        data.Reset();
-
-        _bufferPool.Enqueue(data);
-
-        _buffer = chunk;
-
-        var msg = $"{LoggerId}Data in buffer: {_buffer.Length} byte: {DataMessageHelper.GetStringFromArrayCsharpStyle(ref _buffer)}";
-        MonitorLogger.LogInformation(msg);
-
-
-        while (DataMessageSplitter.TryReadCommand(ref _buffer, out var command))
+        while (DataMessageSplitter.TryReadCommand(ref data, out var command))
         {
             var length = (int)command.Length;
             if (length == 0)
@@ -127,7 +86,7 @@ public class IpDuplexIoReceiver : BaseDuplexIoReceiver
                 //Trace.TraceInformation(msg);
                 MonitorLogger?.LogError(msg);
                 DataMessagingConfig.AppLogger.LogError($"{LoggerId}{msg}");
-                
+
                 return;
             }
 
@@ -148,13 +107,12 @@ public class IpDuplexIoReceiver : BaseDuplexIoReceiver
                 DataMessageProcessor.ProcessMessage(codecResult.DataMessage);
             }
 
-            if (_buffer.Length == 0)
+            if (data.Length == 0)
             {
                 break;
             }
         }
     }
-
     /// <summary>
     /// Start the internal receiver
     /// </summary>
@@ -178,7 +136,6 @@ public class IpDuplexIoReceiver : BaseDuplexIoReceiver
         }
 
         CancellationSource = new();
-        _currentPipeline.StartConsumer();
     }
 
     /// <summary>
@@ -202,12 +159,6 @@ public class IpDuplexIoReceiver : BaseDuplexIoReceiver
         {
             // Do nothing
         }
-
-        //FillPipelineTask?.Join();
-
-        _currentPipeline.StopConsumer();
-
-        //SendPipelineTask?.Join();
 
         try
         {

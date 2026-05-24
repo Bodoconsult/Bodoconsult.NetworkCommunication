@@ -38,11 +38,6 @@ public class UdpServerWithHelloSocketProxy : BaseUpdSocketProxy
     { }
 
     /// <summary>
-    /// Current socket (only for testing purposes, do not access directly in production code)
-    /// </summary>
-    public UdpClient? UdpClient { get; protected set; }
-
-    /// <summary>
     /// Is the socket connected
     /// </summary>
     public override bool Connected => _isBound;

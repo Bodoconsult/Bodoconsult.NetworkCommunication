@@ -10,7 +10,7 @@ namespace Bodoconsult.NetworkCommunication.Protocols.TcpIp;
 /// <summary>
 /// Base class for <see cref="ISocketProxy"/> implementations
 /// </summary>
-public abstract class BaseTcpIpSocketProxy : ISocketProxy
+public abstract class BaseTcpIpSocketProxy : ITcpIpSocketProxy
 {
     /// <summary>
     /// Default ctor
@@ -19,6 +19,7 @@ public abstract class BaseTcpIpSocketProxy : ISocketProxy
     protected BaseTcpIpSocketProxy(IAppLoggerProxy logger)
     {
         Logger = logger;
+        Pipeline = new StreamPipeline();
     }
 
     /// <summary>
@@ -90,25 +91,6 @@ public abstract class BaseTcpIpSocketProxy : ISocketProxy
     /// Current logger to use or null. This logger logs only exceptions but NO data due to potential performance issues
     /// </summary>
     public IAppLoggerProxy Logger { get; }
-
-    /// <summary>
-    /// Start the receiver loop
-    /// </summary>
-    /// <param name="socketReceivedDataDelegate">Delegate for forwarding received messages</param>
-    public virtual void StartReceiverLoop(SocketReceivedDataDelegate socketReceivedDataDelegate)
-    {
-        throw new NotSupportedException();
-    }
-
-    /// <summary>
-    /// Run the receiver loop
-    /// </summary>
-    /// <param name="waitForLoopStarted"></param>
-    /// <returns></returns>
-    public virtual Task ReceiverLoop(AutoResetEvent waitForLoopStarted)
-    {
-        throw new NotSupportedException();
-    }
 
     /// <summary>
     /// Send bytes
@@ -221,4 +203,9 @@ public abstract class BaseTcpIpSocketProxy : ISocketProxy
         // Do nothing
         IsDisposed = true;
     }
+
+    /// <summary>
+    /// Stream pipeline
+    /// </summary>
+    public IStreamPipeline Pipeline { get; }
 }

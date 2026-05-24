@@ -1,7 +1,6 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
 using Bodoconsult.App.Abstractions.Interfaces;
-using Bodoconsult.NetworkCommunication.Delegates;
 using Bodoconsult.NetworkCommunication.Interfaces;
 using System.Net.Sockets;
 
@@ -167,28 +166,4 @@ public class FakeTcpIpSocketProxy : BaseTcpIpSocketProxy
         });
     }
 
-    /// <summary>
-    /// Start the receiver loop
-    /// </summary>
-    /// <param name="socketReceivedDataDelegate">Delegate for forwarding received messages</param>
-    public override void StartReceiverLoop(SocketReceivedDataDelegate socketReceivedDataDelegate)
-    {
-        SocketReceivedDataDelegate = socketReceivedDataDelegate;
-    }
-
-    /// <summary>
-    /// Run the receiver loop
-    /// </summary>
-    /// <param name="waitForLoopStarted"></param>
-    /// <returns></returns>
-    public override Task ReceiverLoop(AutoResetEvent waitForLoopStarted)
-    {
-        if (SenderThrowSocketException)
-        {
-            throw new SocketException(999);
-        }
-
-        SocketReceivedDataDelegate?.Invoke(new byte[]{0x5, 0x6});
-        return Task.CompletedTask;
-    }
 }

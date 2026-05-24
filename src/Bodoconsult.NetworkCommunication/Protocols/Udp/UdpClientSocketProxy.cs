@@ -10,7 +10,6 @@ using Bodoconsult.App.Abstractions.Interfaces;
 using Bodoconsult.App.Helpers;
 using Bodoconsult.NetworkCommunication.Delegates;
 using Bodoconsult.NetworkCommunication.Interfaces;
-using System.Diagnostics;
 using System.Net;
 using System.Net.Sockets;
 
@@ -41,11 +40,6 @@ public class UdpClientSocketProxy : BaseUpdSocketProxy
     private bool _isBound;
 
     /// <summary>
-    /// Current socket (only for testing purposes, do not access directly in production code)
-    /// </summary>
-    public UdpClient? UdpClient { get; protected set; }
-
-    /// <summary>
     /// Is the socket connected
     /// </summary>
     public override bool Connected => _isBound;
@@ -65,6 +59,78 @@ public class UdpClientSocketProxy : BaseUpdSocketProxy
             {
                 return 0;
             }
+        }
+    }
+
+
+    /// <summary>
+    /// Run the receiver loop
+    /// </summary>
+    /// <param name="waitForLoopStarted"></param>
+    /// <returns></returns>
+    public override async Task ReceiverLoop(AutoResetEvent waitForLoopStarted)
+    {
+        try
+        {
+            ArgumentNullException.ThrowIfNull(UdpClient, $"{LoggerId}UdpClient is null");
+            ArgumentNullException.ThrowIfNull(SocketReceivedDataDelegate, $"{LoggerId}SocketReceivedDataDelegate is null");
+
+            Logger.LogInformation($"{LoggerId}ReceiverLoop started");
+
+            waitForLoopStarted.Set();
+
+            while (!CancellationTokenSource.IsCancellationRequested)
+            {
+                var result = 0;
+
+                var buffer = Pipeline.GetBuffer();
+
+                try
+                {
+
+                    var udpResult = await UdpClient.ReceiveAsync(CancellationTokenSource.Token).AsTask();
+                    result = udpResult.Buffer.Length;
+                    if (result != 0)
+                    {
+                        SendEndPoint = udpResult.RemoteEndPoint;
+                        udpResult.Buffer.CopyTo(buffer.Memory);
+                    }
+                }
+                catch (OperationCanceledException)
+                {
+                    break;
+                }
+                catch (Exception e)
+                {
+                    Logger.LogError($"{LoggerId}Receiving failed ", e);
+                }
+
+                if (result <= 0)
+                {
+                    await Task.Delay(5);
+                    continue;
+                }
+
+                AsyncHelper.FireAndForget(() =>
+                {
+                    try
+                    {
+                        SocketReceivedDataDelegate.Invoke(buffer.Memory.ToArray());
+                    }
+                    catch (Exception e)
+                    {
+                        Logger.LogError($"{LoggerId}Forwarding received data failed", e);
+                    }
+                });
+            }
+        }
+        catch (OperationCanceledException)
+        {
+
+        }
+        catch (Exception e)
+        {
+            Logger.LogError($"{LoggerId}Receiver loop failed", e);
         }
     }
 
@@ -162,24 +228,6 @@ public class UdpClientSocketProxy : BaseUpdSocketProxy
         //}
     }
 
-    ///// <summary>
-    ///// Send bytes 
-    ///// </summary>
-    ///// <param name="bytesToSend">Byte array to send</param>
-    ///// <param name="offset">Offset</param>
-    ///// <param name="messageBytesLength">Number of message bytes length to send</param>
-    ///// <returns></returns>
-    //public override Task<int> Send(byte[] bytesToSend, int offset, int messageBytesLength)
-    //{
-    //    if (UdpClient == null)
-    //    {
-    //        return Task.FromResult(0);
-    //    }
-
-    //    var datagram = bytesToSend.AsMemory().Slice(offset, messageBytesLength);
-    //    return UdpClient.Client.SendAsync(datagram.ToArray());
-    //}
-
     /// <summary>
     /// Close the socket
     /// </summary>
@@ -269,155 +317,6 @@ public class UdpClientSocketProxy : BaseUpdSocketProxy
     }
 
     /// <summary>
-    /// Run the receiver loop
-    /// </summary>
-    /// <param name="waitForLoopStarted"></param>
-    /// <returns></returns>
-    public override async Task ReceiverLoop(AutoResetEvent waitForLoopStarted)
-    {
-        try
-        {
-            ArgumentNullException.ThrowIfNull(UdpClient);
-            ArgumentNullException.ThrowIfNull(SocketReceivedDataDelegate);
-
-            Logger.LogInformation($"{LoggerId}ReceiverLoop started");
-
-            waitForLoopStarted.Set();
-
-            while (!CancellationTokenSource.IsCancellationRequested)
-            {
-                var result = 0;
-                var buffer = new byte[MinimumBufferSize].AsMemory();
-                try
-                {
-                    var udpResult = await UdpClient.ReceiveAsync(CancellationTokenSource.Token).AsTask();
-                    result = udpResult.Buffer.Length;
-                    if (result != 0)
-                    {
-                        SendEndPoint = udpResult.RemoteEndPoint;
-                        udpResult.Buffer.CopyTo(buffer);
-                    }
-                }
-                catch (OperationCanceledException)
-                {
-                    break;
-                }
-                catch (Exception e)
-                {
-                    Logger.LogError($"{LoggerId}Receiving failed ", e);
-                }
-
-                // var result = await Socket.ReceiveAsync(buffer, SocketFlags.None, CancellationTokenSource.Token);
-
-                if (result == 0)
-                {
-                    await Task.Delay(5);
-                }
-
-                Debug.Print($"Server: Received {result} byte");
-
-                AsyncHelper.FireAndForget(() =>
-                {
-                    try
-                    {
-                        SocketReceivedDataDelegate.Invoke(buffer[..result]);
-                    }
-                    catch (Exception e)
-                    {
-                        Logger.LogError($"{LoggerId}Forwarding received data failed", e);
-                    }
-                });
-            }
-        }
-        catch (OperationCanceledException)
-        {
-
-        }
-        catch (Exception e)
-        {
-            Logger.LogError($"{LoggerId}Receiver loop failed", e);
-        }
-    }
-
-    ///// <summary>
-    ///// Receive data from the socket
-    ///// </summary>
-    ///// <param name="buffer">Byte array to store the received byte data in</param>
-    ///// <returns>Number of bytes received</returns>
-    //public override async Task<int> Receive(byte[] buffer)
-    //{
-    //    if (UdpClient == null || UdpClient.Available == 0)
-    //    {
-    //        return await Task.FromResult(0);
-    //    }
-
-    //    try
-    //    {
-    //        var result = await UdpClient.ReceiveAsync(CancellationTokenSource.Token);
-    //        result.Buffer.CopyTo(buffer, 0);
-    //        Logger.LogInformation($"{LoggerId}received {result.Buffer.Length} bytes");
-    //        return result.Buffer.Length;
-    //    }
-    //    catch (SocketException socketException)
-    //    {
-    //        if (socketException.ErrorCode != 10054)
-    //        {
-    //            Logger.LogError($"{LoggerId}Receiving failed", socketException);
-    //        }
-    //        else
-    //        {
-    //            Logger.LogDebug($"{LoggerId}No connection");
-    //        }
-
-    //        return 0;
-    //    }
-    //    catch (Exception e)
-    //    {
-    //        Logger.LogError($"{LoggerId}Receiving failed", e);
-    //        return 0;
-    //    }
-    //}
-
-    ///// <summary>
-    ///// Receive first data byte from the socket
-    ///// </summary>
-    ///// <param name="buffer">Byte array to store the received byte data in</param>
-    ///// <returns>Number of bytes received</returns>
-    //public override async Task<int> Receive(Memory<byte> buffer)
-    //{
-    //    if (UdpClient == null || UdpClient.Available == 0)
-    //    {
-    //        return await Task.FromResult(0);
-    //    }
-
-    //    try
-    //    {
-    //        var result = await UdpClient.ReceiveAsync(CancellationTokenSource.Token).AsTask();
-    //        result.Buffer.CopyTo(buffer);
-    //        Logger.LogInformation($"{LoggerId}received {result.Buffer.Length} bytes");
-    //        return result.Buffer.Length;
-    //    }
-    //    catch (SocketException socketException)
-    //    {
-    //        if (socketException.ErrorCode != 10054)
-    //        {
-    //            Logger.LogError($"{LoggerId}Receiving failed", socketException);
-    //        }
-    //        else
-    //        {
-    //            Logger.LogDebug($"{LoggerId}No connection");
-    //        }
-
-    //        return 0;
-    //    }
-    //    catch (Exception e)
-    //    {
-    //        Logger.LogError($"{LoggerId}Receiving failed", e);
-    //        return 0;
-    //    }
-    //}
-
-    /// <summary>
     /// Poll data
     /// </summary>
     /// <returns>True, if data can be read, else false</returns>
@@ -433,46 +332,6 @@ public class UdpClientSocketProxy : BaseUpdSocketProxy
             return false;
         }
     }
-
-    ///// <summary>
-    ///// Receive data from the socket
-    ///// </summary>
-    ///// <param name="buffer">Byte array to store the received byte data in</param>
-    ///// <param name="offset">Offset</param>
-    ///// <param name="expectedBytesLength">Expected length of the byte data received</param>
-    ///// <returns>Number of bytes received</returns>
-    //public override async Task<int> Receive(byte[] buffer, int offset, int expectedBytesLength)
-    //{
-    //    if (UdpClient == null)
-    //    {
-    //        return 0;
-    //    }
-
-    //    try
-    //    {
-    //        var result = await UdpClient.ReceiveAsync(CancellationTokenSource.Token);
-    //        //SendEndPoint = result.RemoteEndPoint;
-
-    //        //Trace.TraceInformation($"UDPClient: received {result.Length} bytes from {SendEndPoint}");
-
-    //        result.Buffer.AsSpan().Slice(offset, expectedBytesLength).CopyTo(buffer);
-    //        return expectedBytesLength;
-    //    }
-    //    catch (SocketException socketException)
-    //    {
-    //        if (socketException.ErrorCode != 10054)
-    //        {
-    //            Trace.TraceInformation(socketException.ToString());
-    //        }
-
-    //        return 0;
-    //    }
-    //    catch (Exception e)
-    //    {
-    //        Trace.TraceInformation(e.ToString());
-    //        return 0;
-    //    }
-    //}
 
     /// <summary>
     /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.

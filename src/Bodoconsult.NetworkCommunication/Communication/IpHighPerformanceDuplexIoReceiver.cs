@@ -31,7 +31,6 @@ public class IpHighPerformanceDuplexIoReceiver : BaseDuplexIoReceiver
         PollingTimeOut = pollingTimeOut;
 
         _socketProxy = config.SocketProxy ?? throw new ArgumentNullException(nameof(config.SocketProxy));
-        _socketProxy.StartReceiverLoop(SocketReceivedData);
 
 
         if (config.DataMessageProcessingPackage == null)
@@ -48,9 +47,8 @@ public class IpHighPerformanceDuplexIoReceiver : BaseDuplexIoReceiver
     /// <param name="data">Received data</param>
     public override void SocketReceivedData(Memory<byte> data)
     {
-        //var writer = _pipe.Writer;
-        //var memory = writer.GetMemory(data.Length);
-
+        var writer = _pipe.Writer;
+        var memory = writer.GetMemory(data.Length);
 
         //var bytesRead = await _socketProxy.Receive(memory);
         ////Trace.TraceInformation($"Socket bytes read: {bytesRead}");
@@ -199,11 +197,11 @@ public class IpHighPerformanceDuplexIoReceiver : BaseDuplexIoReceiver
 
 
 
-//    /// <summary>
-//    /// Process the messages received from device internally
-//    /// This method is not intended to be called directly from production code.
-//    /// It is a unit test method.
-//    /// </summary>
+    //    /// <summary>
+    //    /// Process the messages received from device internally
+    //    /// This method is not intended to be called directly from production code.
+    //    /// It is a unit test method.
+    //    /// </summary>
 //    public override async Task SendMessagePipeline()
 //    {
 //        var reader = _pipe.Reader;
@@ -224,8 +222,9 @@ public class IpHighPerformanceDuplexIoReceiver : BaseDuplexIoReceiver
 //                continue;
 //            }
 
-//            //Trace.TraceInformation($"Raw command: {ArrayHelper.GetStringFromArrayCsharpStyle(ref buffer)}");
-//            MonitorLogger?.LogInformation($"Raw command: {DataMessageHelper.GetStringFromArrayCsharpStyle(ref buffer)}");
+////Trace.TraceInformation($"Raw command: {ArrayHelper.GetStringFromArrayCsharpStyle(ref buffer)}");
+//            MonitorLogger?.LogInformation(
+//                $"Raw command: {DataMessageHelper.GetStringFromArrayCsharpStyle(ref buffer)}");
 
 //            //Trace.TraceInformation($"Buffer: pre-length: {buffer.Length}");
 
@@ -243,11 +242,11 @@ public class IpHighPerformanceDuplexIoReceiver : BaseDuplexIoReceiver
 
 //                var mem = new Memory<byte>(command.ToArray());
 
-//                //var array = ArrayPool.Rent(length);
+////var array = ArrayPool.Rent(length);
 
-//                //command.CopyTo(array);
+////command.CopyTo(array);
 
-//                //var mem = ((Memory<byte>)array)[..length];
+////var mem = ((Memory<byte>)array)[..length];
 
 //                string msg;
 
@@ -255,7 +254,8 @@ public class IpHighPerformanceDuplexIoReceiver : BaseDuplexIoReceiver
 
 //                if (codecResult.ErrorCode != 0 || codecResult.DataMessage == null)
 //                {
-//                    msg = $"Parsing command failed with error code {codecResult.ErrorCode}: {codecResult.ErrorMessage}: {DataMessageHelper.GetStringFromArrayCsharpStyle(ref command)}";
+//                    msg =
+//                        $"Parsing command failed with error code {codecResult.ErrorCode}: {codecResult.ErrorMessage}: {DataMessageHelper.GetStringFromArrayCsharpStyle(ref command)}";
 //                    MonitorLogger?.LogDebug(msg);
 //                    DataMessagingConfig.AppLogger.LogError($"{LoggerId}{msg}");
 //                }
@@ -264,7 +264,8 @@ public class IpHighPerformanceDuplexIoReceiver : BaseDuplexIoReceiver
 //                    var validationResult = _dataMessageValidator.IsMessageValid(codecResult.DataMessage);
 //                    if (!validationResult.IsMessageValid)
 //                    {
-//                        msg = $"Parsed command {DataMessageHelper.GetStringFromArrayCsharpStyle(ref command)} NOT valid: {validationResult.ValidationResult}. Message was NOT processed.";
+//                        msg =
+//                            $"Parsed command {DataMessageHelper.GetStringFromArrayCsharpStyle(ref command)} NOT valid: {validationResult.ValidationResult}. Message was NOT processed.";
 //                        MonitorLogger?.LogError(msg);
 //                        DataMessagingConfig.AppLogger.LogError($"{LoggerId}{msg}");
 //                    }
@@ -286,7 +287,7 @@ public class IpHighPerformanceDuplexIoReceiver : BaseDuplexIoReceiver
 //            // Tell the PipeReader how much of the buffer has been consumed.
 //            reader.AdvanceTo(buffer.Start, buffer.End);
 
-//            // Stop reading if there's no more data coming.
+//// Stop reading if there's no more data coming.
 //            if (result.Buffer.IsEmpty && result.IsCompleted)
 //            {
 //                break;
@@ -296,15 +297,15 @@ public class IpHighPerformanceDuplexIoReceiver : BaseDuplexIoReceiver
 //        // Mark the PipeReader as complete.
 //        await reader.CompleteAsync();
 
-//        //Trace.TraceInformation("Completed send message pipeline");
+////        //Trace.TraceInformation("Completed send message pipeline");
+////    }
 //    }
 
-
     /// <summary>
-    /// Current implementation of disposing
-    /// </summary>
-    /// <param name="disposing">True if diposing should run</param>
-    protected override async Task Dispose(bool disposing)
+/// Current implementation of disposing
+/// </summary>
+/// <param name="disposing">True if diposing should run</param>
+protected override async Task Dispose(bool disposing)
     {
         if (!disposing)
         {

@@ -2,10 +2,7 @@
 // Licence MIT
 
 using Bodoconsult.App.Abstractions.Interfaces;
-using Bodoconsult.App.Helpers;
-using Bodoconsult.NetworkCommunication.Delegates;
 using Bodoconsult.NetworkCommunication.Interfaces;
-using System.Diagnostics;
 using System.Net.Sockets;
 
 namespace Bodoconsult.NetworkCommunication.Protocols.TcpIp;
@@ -254,96 +251,14 @@ public class TcpIpServerSocketProxy : BaseTcpIpSocketProxy
             // ToDo: check remote IP address
             Socket = clientSocket;
 
-            AutoResetEvent wait = new(false);
-
-            // Start receive loop now
-            Task.Run(async () =>
-            {
-                await ReceiverLoop(wait);
-            });
-
             _isBound = Socket != null;
-
-            wait.WaitOne(100);
 
             return true;
         });
 
         return task;
     }
-
-    /// <summary>
-    /// Start the receiver loop
-    /// </summary>
-    /// <param name="socketReceivedDataDelegate">Delegate for forwarding received messages</param>
-    public override void StartReceiverLoop(SocketReceivedDataDelegate socketReceivedDataDelegate)
-    {
-        SocketReceivedDataDelegate = socketReceivedDataDelegate;
-    }
-
-    /// <summary>
-    /// Run the receiver loop
-    /// </summary>
-    /// <param name="waitForLoopStarted"></param>
-    /// <returns></returns>
-    public override async Task ReceiverLoop(AutoResetEvent waitForLoopStarted)
-    {
-        try
-        {
-            ArgumentNullException.ThrowIfNull(Socket, $"{LoggerId}Socket is null");
-            ArgumentNullException.ThrowIfNull(SocketReceivedDataDelegate, $"{LoggerId}SocketReceivedDataDelegate is null");
-
-            Logger.LogInformation($"{LoggerId}ReceiverLoop started");
-
-            waitForLoopStarted.Set();
-
-            while (!CancellationTokenSource.IsCancellationRequested)
-            {
-                var result = 0;
-                var buffer = new byte[MaxPacketSize].AsMemory();
-                try
-                {
-                    result = await Socket.ReceiveAsync(buffer, SocketFlags.None, CancellationTokenSource.Token);
-                    Logger.LogInformation($"{LoggerId}received {result} bytes");
-                }
-                catch (OperationCanceledException)
-                {
-                    break;
-                }
-                catch (Exception e)
-                {
-                    Logger.LogError($"{LoggerId}Receiving failed ", e);
-                }
-
-                if (result == 0)
-                {
-                    await Task.Delay(5);
-                }
-
-                Debug.Print($"Server: Received {result} byte");
-
-                AsyncHelper.FireAndForget(() =>
-                {
-                    try
-                    {
-                        SocketReceivedDataDelegate.Invoke(buffer[..result].ToArray());
-                    }
-                    catch (Exception e)
-                    {
-                        Logger.LogError($"{LoggerId}Forwarding received data failed", e);
-                    }
-                });
-            }
-        }
-        catch (OperationCanceledException)
-        {
-
-        }
-        catch (Exception e)
-        {
-            Logger.LogError($"{LoggerId}Receiver loop failed", e);
-        }
-    }
+   
 
     /// <summary>
     /// Current socket (only for testing purposes, do not access directly in production code)

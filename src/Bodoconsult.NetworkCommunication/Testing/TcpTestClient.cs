@@ -1,8 +1,6 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
 
-using Bodoconsult.App.Helpers;
-using Bodoconsult.NetworkCommunication.Delegates;
 using System.Diagnostics;
 using System.Net;
 using System.Net.Sockets;

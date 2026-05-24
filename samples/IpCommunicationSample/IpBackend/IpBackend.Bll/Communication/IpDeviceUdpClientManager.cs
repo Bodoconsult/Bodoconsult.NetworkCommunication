@@ -6,7 +6,6 @@ using Bodoconsult.NetworkCommunication.DataMessaging.DataLoggers;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessageProcessingPackages;
 using Bodoconsult.NetworkCommunication.Devices.Configurators;
 using Bodoconsult.NetworkCommunication.Interfaces;
-using IpBackend.Bll.App;
 using IpBackend.Bll.BusinessLogic.AdapterFactories;
 
 namespace IpBackend.Bll.Communication;

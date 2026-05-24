@@ -1,9 +1,10 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
-using System.Net.Sockets;
 using Bodoconsult.NetworkCommunication.Communication.Sending;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
 using Bodoconsult.NetworkCommunication.Interfaces;
+using System.Buffers;
+using System.Net.Sockets;
 
 namespace Bodoconsult.NetworkCommunication.Delegates;
 
@@ -103,6 +104,12 @@ public delegate void RaiseStopSyncExecutionDelegate(MessageSendingResult result)
 /// </summary>
 /// <param name="data">Received data</param>
 public delegate void SocketReceivedDataDelegate(Memory<byte> data);
+
+/// <summary>
+/// Delegate to receive data from socket
+/// </summary>
+/// <param name="data">Received data</param>
+public delegate void SocketReceivedDataDelegate2(ref ReadOnlySequence<byte> data);
 
 /// <summary>
 /// Delegate sending a HELLO message to the device

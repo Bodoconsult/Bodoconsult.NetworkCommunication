@@ -1,5 +1,6 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
+using System.Buffers;
 using System.Diagnostics;
 using System.Net;
 using Bodoconsult.NetworkCommunication.Protocols.TcpIp;
@@ -40,7 +41,7 @@ internal class TcpIpClientSocketProxyTests
                 client.IpAddress = ip;
                 client.Port = port;
                 await client.Connect();
-                client.StartReceiverLoop(SocketReceivedDataDelegate);
+                client.Pipeline.SocketReceivedDataDelegate = SocketReceivedDataDelegate;
 
                 try
                 {
@@ -81,6 +82,11 @@ internal class TcpIpClientSocketProxyTests
             Assert.Fail(e.ToString());
         }
 
+    }
+
+    private void SocketReceivedDataDelegate(ref ReadOnlySequence<byte> data)
+    {
+        throw new NotImplementedException();
     }
 
     private void SocketReceivedDataDelegate(Memory<byte> data)

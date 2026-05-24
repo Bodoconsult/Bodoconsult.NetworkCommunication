@@ -1,17 +1,23 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
-using System.Net;
 using Bodoconsult.App.Abstractions.Interfaces;
 using Bodoconsult.NetworkCommunication.Delegates;
 using Bodoconsult.NetworkCommunication.Interfaces;
+using System.Net;
+using System.Net.Sockets;
 
 namespace Bodoconsult.NetworkCommunication.Protocols.Udp;
 
 /// <summary>
 /// Base class for <see cref="ISocketProxy"/> implementations
 /// </summary>
-public abstract class BaseUpdSocketProxy : ISocketProxy
+public abstract class BaseUpdSocketProxy : IUdpSocketProxy
 {
+    /// <summary>
+    /// Current socket (only for testing purposes, do not access directly in production code)
+    /// </summary>
+    protected UdpClient? UdpClient;
+
     /// <summary>
     /// Default ctor
     /// </summary>
@@ -19,6 +25,7 @@ public abstract class BaseUpdSocketProxy : ISocketProxy
     {
         LoggerId = $"{GetType().Name}: ";
         Logger = logger;
+        Pipeline = new DatagramPipline();
     }
 
     /// <summary>
@@ -112,7 +119,7 @@ public abstract class BaseUpdSocketProxy : ISocketProxy
     /// <param name="bytesToSend">Byte array to send</param>
     public virtual Task<int> Send(byte[] bytesToSend)
     {
-        throw new NotSupportedException();
+        throw new NotSupportedException("Override in derived classes");
     }
 
     /// <summary>
@@ -121,16 +128,8 @@ public abstract class BaseUpdSocketProxy : ISocketProxy
     /// <param name="bytesToSend">Data to send</param>
     public virtual Task<int> Send(ReadOnlyMemory<byte> bytesToSend)
     {
-        throw new NotSupportedException();
+        throw new NotSupportedException("Override in derived classes");
     }
-
-    ///// <summary>
-    ///// Shut the socket down
-    ///// </summary>
-    //public virtual void Shutdown()
-    //{
-    //    throw new NotSupportedException();
-    //}
 
     /// <summary>
     /// Close the socket
@@ -148,26 +147,6 @@ public abstract class BaseUpdSocketProxy : ISocketProxy
         throw new NotSupportedException();
     }
 
-    ///// <summary>
-    ///// Receive data from the socket
-    ///// </summary>
-    ///// <param name="buffer">Byte array to store the received byte data in</param>
-    ///// <returns>Number of bytes received</returns>
-    //public virtual Task<int> Receive(byte[] buffer)
-    //{
-    //    throw new NotSupportedException();
-    //}
-
-    ///// <summary>
-    ///// Receive first data byte from the socket
-    ///// </summary>
-    ///// <param name="buffer">Byte array to store the received byte data in</param>
-    ///// <returns>Number of bytes received</returns>
-    //public virtual Task<int> Receive(Memory<byte> buffer)
-    //{
-    //    throw new NotSupportedException();
-    //}
-
     /// <summary>
     /// Poll data
     /// </summary>
@@ -177,61 +156,15 @@ public abstract class BaseUpdSocketProxy : ISocketProxy
         throw new NotSupportedException();
     }
 
-    ///// <summary>
-    ///// Receive data from the socket
-    ///// </summary>
-    ///// <param name="buffer">Byte array to store the received byte data in</param>
-    ///// <param name="offset">Offset</param>
-    ///// <param name="expectedBytesLength">Expected length of the byte data received</param>
-    ///// <returns>Number of bytes received</returns>
-    //public virtual Task<int> Receive(byte[] buffer, int offset, int expectedBytesLength)
-    //{
-    //    throw new NotSupportedException();
-    //}
-
-    ///// <summary>
-    ///// Send bytes 
-    ///// </summary>
-    ///// <param name="bytesToSend">Byte array to send</param>
-    ///// <param name="offset">Offset</param>
-    ///// <param name="messageBytesLength">Number of message bytes length to send</param>
-    ///// <returns></returns>
-    //public virtual Task<int> Send(byte[] bytesToSend, int offset, int messageBytesLength)
-    //{
-    //    throw new NotSupportedException();
-    //}
-
-    ///// <summary>
-    ///// Poll data
-    ///// </summary>
-    ///// <returns>True, if data can be read, else false</returns>
-    //public virtual bool Poll()
-    //{
-    //    throw new NotSupportedException();
-    //}
-
-    ///// <summary>
-    ///// Send a file
-    ///// </summary>
-    ///// <param name="fileName">Full file path</param>
-    //public virtual void SendFile(string fileName)
-    //{
-    //    throw new NotSupportedException();
-    //}
-
-    ///// <summary>
-    ///// Prepare the answer of the socket for testing
-    ///// </summary>
-    ///// <param name="testData">Test data to use</param>
-    //public virtual void PrepareAnswer(byte[] testData)
-    //{
-    //    throw new NotSupportedException();
-    //}
-
     /// <summary>Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.</summary>
     public virtual void Dispose()
     {
         // Do nothing
         IsDisposed = true;
     }
+
+    /// <summary>
+    /// Datagrampipeline
+    /// </summary>
+    public IDatagramPipeline Pipeline { get; }
 }
