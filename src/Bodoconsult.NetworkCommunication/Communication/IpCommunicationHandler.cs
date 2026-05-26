@@ -1,5 +1,6 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
+using System.Diagnostics;
 using Bodoconsult.App.Abstractions.Interfaces;
 using Bodoconsult.App.Abstractions.SyncExecution;
 using Bodoconsult.App.Helpers;
@@ -8,6 +9,7 @@ using Bodoconsult.NetworkCommunication.EnumAndStates;
 using Bodoconsult.NetworkCommunication.EventSources;
 using Bodoconsult.NetworkCommunication.Helpers;
 using Bodoconsult.NetworkCommunication.Interfaces;
+using Microsoft.Diagnostics.Tracing.Parsers.MicrosoftWindowsTCPIP;
 
 namespace Bodoconsult.NetworkCommunication.Communication;
 
@@ -18,7 +20,7 @@ public class IpCommunicationHandler : ICommunicationHandler
 {
     private readonly IAppEventSource _appEventSource;
     private readonly string _loggerId;
-    //private readonly AutoResetEvent _stopped = new(false);
+    private readonly AutoResetEvent _stopped = new(false);
     private const int TimeOut = 2000;
 
     private IWaitStateManager? _waitStateManager;
@@ -105,7 +107,7 @@ public class IpCommunicationHandler : ICommunicationHandler
     /// Send a message to the device
     /// </summary>
     /// <param name="message">Current message to send</param>
-    public MessageSendingResult SendMessage(IOutboundDataMessage message)
+    public async Task<MessageSendingResult> SendMessage(IOutboundDataMessage message)
     {
         try
         {
@@ -117,24 +119,34 @@ public class IpCommunicationHandler : ICommunicationHandler
                 _monitorLogger.LogDebug(s);
             }
 
-            message.RaiseStopSyncExecutionDelegate = StopExecutionOfSyncOrder;
+            var erg = await DuplexIo.SendMessage(message);
 
-            _outBoundQueue.Enqueue(message);
+            //message.RaiseStopSyncExecutionDelegate?.Invoke(erg);
 
-            var syncData = _syncProcessManager.AddSyncProcess(message.MessageId, 5000);
+            // Now log app performance measures (must be located after sending!)
+            _appEventSource.ReportMetric(DataMessagingEventSourceProvider.DclSentDataMessageBytes, message.RawMessageData.Length);
+            _appEventSource.ReportIncrement(DataMessagingEventSourceProvider.DclSentDataMessageCount);
 
-            // Now wait for order execution (doing it in a non-blocking mannor)
-            var erg = AsyncHelper.RunSync(syncData.CreateWaitingTask);
+            return erg;
 
-            // Remove the order from waiting queue
-            _syncProcessManager.RemoveSyncProcess(message.MessageId);
+            //var syncData = _syncProcessManager.AddSyncProcess(message.MessageId, 5000);
+            //message.RaiseStopSyncExecutionDelegate = StopExecutionOfSyncOrder;
 
-            //// Now log app performance measures (must be located after sending!)
-            //_appEventSource.ReportMetric(DataMessagingEventSourceProvider.DclSentDataMessageBytes, message.RawMessageData.Length);
-            //_appEventSource.ReportIncrement(DataMessagingEventSourceProvider.DclSentDataMessageCount);
+            //_outBoundQueue.Enqueue(message);
 
-            return erg ?? new MessageSendingResult(message, OrderExecutionResultState.Error);
-            //return x;
+            //// Now wait for order execution (doing it in a non-blocking mannor)
+            //var erg = AsyncHelper.RunSync(syncData.CreateWaitingTask);
+            //Debug.Print($"Send message {message.ToShortInfoString()}: {erg.ProcessExecutionResult}");
+
+            //// Remove the order from waiting queue
+            //_syncProcessManager.RemoveSyncProcess(message.MessageId);
+
+            ////// Now log app performance measures (must be located after sending!)
+            ////_appEventSource.ReportMetric(DataMessagingEventSourceProvider.DclSentDataMessageBytes, message.RawMessageData.Length);
+            ////_appEventSource.ReportIncrement(DataMessagingEventSourceProvider.DclSentDataMessageCount);
+
+            //return erg ?? new MessageSendingResult(message, OrderExecutionResultState.Error);
+            ////return x;
         }
         catch (Exception e)
         {
@@ -151,9 +163,12 @@ public class IpCommunicationHandler : ICommunicationHandler
 
         if (syncData == null)
         {
+            DataMessagingConfig.AppLogger.LogError($"{_loggerId}MsgID {result.Message?.MessageId}: no syncdata found");
             return;
         }
 
+        DataMessagingConfig.AppLogger.LogInformation(
+            $"{_loggerId}MsgID {result.Message?.MessageId}: SetResult: {result.ProcessExecutionResult}");
         syncData.TaskCompletionSource?.SetResult(result);
     }
 
@@ -167,14 +182,14 @@ public class IpCommunicationHandler : ICommunicationHandler
         _monitorLogger.LogDebug($"received message {message.MessageId}: {message.RawMessageData.Length} bytes");
     }
 
-    ///// <summary>
-    ///// Callback metho th free <see cref="_stopped"/>
-    ///// </summary>
-    ///// <param name="ar">Asny result (not handled)</param>
-    //protected void Callback(IAsyncResult ar)
-    //{
-    //    _stopped.Set();
-    //}
+    /// <summary>
+    /// Callback metho th free <see cref="_stopped"/>
+    /// </summary>
+    /// <param name="ar">Asny result (not handled)</param>
+    protected void Callback(IAsyncResult ar)
+    {
+        _stopped.Set();
+    }
 
     /// <summary>
     /// Connect to the tower
@@ -254,7 +269,21 @@ public class IpCommunicationHandler : ICommunicationHandler
                 if (response is not DoNotSendOutboundHandshakeMessage)
                 {
                     // Fire and forget
-                    _outBoundQueue.Enqueue(response);
+                    AsyncHelper.FireAndForget(async void () =>
+                    {
+                        try
+                        {
+                            await DuplexIo.SendMessage(response);
+                        }
+                        catch (Exception e)
+                        {
+                            var msg = $"DuplexIo.SendMessage: Handshake sending failed: {e}";
+                            _monitorLogger.LogError(msg);
+                            DataMessagingConfig.AppLogger.LogError($"{_loggerId}{msg}");
+                        }
+                    }); 
+                        
+                        
                 }
             }
 
@@ -264,7 +293,7 @@ public class IpCommunicationHandler : ICommunicationHandler
             }
             else
             {
-                //_stopped.Reset();
+                _stopped.Reset();
 
                 AsyncHelper.FireAndForget2(() =>
                 {
@@ -278,10 +307,10 @@ public class IpCommunicationHandler : ICommunicationHandler
                         _monitorLogger.LogError(msg);
                         DataMessagingConfig.AppLogger.LogError($"{_loggerId}{msg}");
                     }
-                });
-                //.ContinueWith(Callback);
+                })
+                .ContinueWith(Callback);
 
-                //_stopped.WaitOne(TimeOut);
+                _stopped.WaitOne(TimeOut);
             }
 
             // Now log app performance measures (must be located after sending!)
@@ -296,7 +325,7 @@ public class IpCommunicationHandler : ICommunicationHandler
         }
     }
 
-    private async void OutboundConsumerTaskDelegate(IOutboundMessage message)
+    private void OutboundConsumerTaskDelegate(IOutboundMessage message)
     {
         string msg;
 
@@ -309,13 +338,13 @@ public class IpCommunicationHandler : ICommunicationHandler
                 _monitorLogger.LogDebug(msg);
             }
 
-            var erg = await DuplexIo.SendMessage(message);
+            //var erg = await DuplexIo.SendMessage(message);
 
-            // Now log app performance measures (must be located after sending!)
-            _appEventSource.ReportMetric(DataMessagingEventSourceProvider.DclSentDataMessageBytes, message.RawMessageData.Length);
-            _appEventSource.ReportIncrement(DataMessagingEventSourceProvider.DclSentDataMessageCount);
+            ////message.RaiseStopSyncExecutionDelegate?.Invoke(erg);
 
-            message.RaiseStopSyncExecutionDelegate?.Invoke(erg);
+            //// Now log app performance measures (must be located after sending!)
+            //_appEventSource.ReportMetric(DataMessagingEventSourceProvider.DclSentDataMessageBytes, message.RawMessageData.Length);
+            //_appEventSource.ReportIncrement(DataMessagingEventSourceProvider.DclSentDataMessageCount);
 
             //return x;
         }

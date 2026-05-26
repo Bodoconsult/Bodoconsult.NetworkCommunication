@@ -75,12 +75,12 @@ public interface ISendPacketProcess : IResetable, IDisposable
     /// <summary>
     /// Send the message
     /// </summary>
-    bool SendMessage();
+    Task<bool> SendMessage();
 
     /// <summary>
     /// Excute the process
     /// </summary>
-    public void Execute();
+    Task Execute();
 
     /// <summary>
     /// The execution result of the send process

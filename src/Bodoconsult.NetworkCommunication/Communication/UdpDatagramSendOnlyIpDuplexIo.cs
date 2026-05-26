@@ -12,8 +12,6 @@ namespace Bodoconsult.NetworkCommunication.Communication;
 /// </summary>
 public class UdpDatagramSendOnlyIpDuplexIo : BaseDuplexIo
 {
-    private readonly DuplexIoIsWorkInProgressDelegate _duplexIoIsWorkInProgressDelegate;
-    private readonly DuplexIoNoDataDelegate _duplexIoNoDataDelegate;
     private const int NumberOfRetriesSetWorkinProgress = 100;
 
     /// <summary>
@@ -30,69 +28,7 @@ public class UdpDatagramSendOnlyIpDuplexIo : BaseDuplexIo
     /// Default ctor
     /// </summary>
     public UdpDatagramSendOnlyIpDuplexIo(IDataMessagingConfig dataMessaging, ISendPacketProcessFactory sendPacketProcessFactory) : base(dataMessaging, sendPacketProcessFactory)
-    {
-        _duplexIoIsWorkInProgressDelegate = DuplexIoIsWorkInProgress;
-        _duplexIoNoDataDelegate = DuplexIoSetNotInProgress;
-    }
-
-    /// <summary>
-    /// Set <see cref="IsWorkInProgress"/> to false
-    /// </summary>
-    private void DuplexIoSetNotInProgress()
-    {
-        SetInProgress(false);
-    }
-
-    /// <summary>
-    /// Check if <see cref="IsWorkInProgress"/> is false or true
-    /// </summary>
-    /// <returns>False if no work is in progress currently else true</returns>
-    private bool DuplexIoIsWorkInProgress()
-    {
-        if (!IsWorkInProgress)
-        {
-            SetInProgress(true);
-            return false;
-        }
-
-        var i = 0;
-        while (i < NumberOfRetriesSetWorkinProgress)
-        {
-            if (!IsWorkInProgress)
-            {
-                SetInProgress(true);
-                return false;
-            }
-
-            AsyncHelper.Delay(5);
-            i++;
-        }
-
-        return true;
-    }
-
-    private void SetInProgress(bool value)
-    {
-        try
-        {
-            //Trace.TraceInformation($"IsWorkInProgress: {value}");
-            lock (_lockObject)
-            {
-                IsWorkInProgress = value;
-            }
-
-            return;
-        }
-        catch
-        {
-            AsyncHelper.Delay(5);
-        }
-
-        lock (_lockObject)
-        {
-            IsWorkInProgress = value;
-        }
-    }
+    { }
 
     /// <summary>
     /// Start the duplex communication
@@ -108,9 +44,7 @@ public class UdpDatagramSendOnlyIpDuplexIo : BaseDuplexIo
 
                 await Receiver.StartReceiver();
 
-                Sender ??= new UdpDatagramIpDuplexIoSender(DataMessagingConfig,
-                    _duplexIoIsWorkInProgressDelegate,
-                    _duplexIoNoDataDelegate);
+                Sender ??= new UdpDatagramIpDuplexIoSender(DataMessagingConfig);
             }
             catch (Exception e)
             {

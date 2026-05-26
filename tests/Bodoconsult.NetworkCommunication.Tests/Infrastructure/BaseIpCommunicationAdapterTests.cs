@@ -67,7 +67,7 @@ public abstract class BaseIpCommunicationAdapterTests : BaseTcpTests
     public virtual void Send(IOutboundDataMessage message)
     {
         ArgumentNullException.ThrowIfNull(IpCommunicationAdapter);
-        IpCommunicationAdapter.SendDataMessage(message);
+        IpCommunicationAdapter.SendDataMessage(message).GetAwaiter().GetResult();
 
         var task = Task.Run(() =>
         {

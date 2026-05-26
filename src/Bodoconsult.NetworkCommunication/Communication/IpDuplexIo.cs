@@ -13,98 +13,11 @@ namespace Bodoconsult.NetworkCommunication.Communication;
 /// </summary> 
 public class IpDuplexIo : BaseDuplexIo
 {
-    private readonly DuplexIoIsWorkInProgressDelegate _duplexIoIsWorkInProgressDelegate;
-    private readonly DuplexIoNoDataDelegate _duplexIoNoDataDelegate;
-    private const int NumberOfRetriesSetWorkinProgress = 100;
-
-    /// <summary>
-    /// Is currently a send process or a receive process in progress
-    /// </summary>
-    public bool IsWorkInProgress
-    {
-        get
-        {
-            lock (_lockObject)
-            {
-                return _isWorkInProgress;
-            }
-        }
-        private set
-        {
-            lock (_lockObject)
-            {
-                _isWorkInProgress = value;
-            }
-        }
-    }
-
-    /// <summary>
-    /// Lock object for work in progress management
-    /// </summary>
-    private readonly Lock _lockObject = new();
-
-    private bool _isWorkInProgress;
-
     /// <summary>
     /// Default ctor
     /// </summary>
     public IpDuplexIo(IDataMessagingConfig dataMessaging, ISendPacketProcessFactory sendPacketProcessFactory) : base(dataMessaging, sendPacketProcessFactory)
-    {
-        _duplexIoIsWorkInProgressDelegate = DuplexIoIsWorkInProgress;
-        _duplexIoNoDataDelegate = DuplexIoSetNotInProgress;
-    }
-
-    /// <summary>
-    /// Set <see cref="IsWorkInProgress"/> to false
-    /// </summary>
-    private void DuplexIoSetNotInProgress()
-    {
-        SetInProgress(false);
-    }
-
-    /// <summary>
-    /// Check if <see cref="IsWorkInProgress"/> is false or true
-    /// </summary>
-    /// <returns>False if no work is in progress currently else true</returns>
-    private bool DuplexIoIsWorkInProgress()
-    {
-        if (!IsWorkInProgress)
-        {
-            SetInProgress(true);
-            return false;
-        }
-
-        var i = 0;
-        while (i < NumberOfRetriesSetWorkinProgress)
-        {
-            if (!IsWorkInProgress)
-            {
-                SetInProgress(true);
-                return false;
-            }
-
-            AsyncHelper.Delay(5);
-            i++;
-        }
-
-        return true;
-    }
-
-    private void SetInProgress(bool value)
-    {
-        try
-        {
-            //Trace.TraceInformation($"IsWorkInProgress: {value}");
-            IsWorkInProgress = value;
-            return;
-        }
-        catch
-        {
-            AsyncHelper.Delay(5);
-        }
-
-        IsWorkInProgress = value;
-    }
+    { }
 
     /// <summary>
     /// Start the duplex communication
@@ -114,17 +27,11 @@ public class IpDuplexIo : BaseDuplexIo
     {
         try
         {
-            SetInProgress(false);
-
-            Receiver ??= new IpDuplexIoReceiver(DataMessagingConfig,
-                _duplexIoIsWorkInProgressDelegate,
-                _duplexIoNoDataDelegate);
+            Receiver ??= new IpDuplexIoReceiver(DataMessagingConfig);
 
             await Receiver.StartReceiver();
 
-            Sender ??= new IpDuplexIoSender(DataMessagingConfig,
-                _duplexIoIsWorkInProgressDelegate,
-                _duplexIoNoDataDelegate);
+            Sender ??= new IpDuplexIoSender(DataMessagingConfig);
 
             IsCommunicationStarted = true;
         }
@@ -137,8 +44,6 @@ public class IpDuplexIo : BaseDuplexIo
             IsCommunicationStarted = false;
             throw;
         }
-
-        
     }
 
     /// <summary>

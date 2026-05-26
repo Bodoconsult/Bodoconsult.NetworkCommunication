@@ -213,7 +213,7 @@ public delegate MessageSendingResult CancelRunningOperationDelegate();
 /// </summary>
 /// <param name="command">Command to send</param>
 /// <returns>Reply of the device</returns>
-public delegate MessageSendingResult SendDataMessageDelegate(IOutboundDataMessage command);
+public delegate Task<MessageSendingResult> SendDataMessageDelegate(IOutboundDataMessage command);
 
 /// <summary>
 /// Reset the <see cref="IOutboundDataMessageFactory"/>

@@ -31,6 +31,31 @@ internal class SfxpDigitalTwinMessageFactoryTests
         }
     }
 
+    [Test]
+    public void GenerateNextMessage_ValidSetup_ReturnsMessagesAsExpected()
+    {
+        // Arrange 
+        var dt = new SfxpDigitalTwinMessageFactory();
+        const int numberOfMessages = 1000;
+
+        var messages = new List<Memory<byte>>();
+
+        // Act  
+        for (var i = 0; i < numberOfMessages; i++)
+        {
+            var msg = dt.GenerateNextMessage();
+
+            if (msg.Length > 0)
+            {
+                messages.Add(msg);
+            }
+        }
+
+
+        // Assert
+        Assert.That(messages.Count, Is.EqualTo(numberOfMessages));
+    }
+
     [Explicit]
     [Test]
     public void Test()

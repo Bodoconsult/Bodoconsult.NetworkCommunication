@@ -40,7 +40,7 @@ internal class RequestProcessorTests
     }
 
     [Test]
-    public void ExecuteOrder_NoMessageReceived_Timeout()
+    public async Task ExecuteOrder_NoMessageReceived_Timeout()
     {
         // Arrange 
         var device = TestDataHelper.CreateOrderManagementDevice();
@@ -55,7 +55,7 @@ internal class RequestProcessorTests
         var rp = new RequestProcessor(order, requestStepProcessorFactory, device);
 
         // Act  
-        var result = rp.ExecuteOrder();
+        var result = await rp.ExecuteOrder();
 
         // Assert
         Assert.That(result, Is.EqualTo(OrderExecutionResultState.Timeout));
@@ -78,9 +78,9 @@ internal class RequestProcessorTests
 
         IOrderExecutionResultState result = OrderExecutionResultState.NotProcessed;
 
-        var task = Task.Run(() =>
+        var task = Task.Run(async () =>
         {
-            result = rp.ExecuteOrder();
+            result = await rp.ExecuteOrder();
         });
 
         // Act  
@@ -96,7 +96,7 @@ internal class RequestProcessorTests
     }
 
     [Test]
-    public void ExecuteOrder_NoAnswerOrder_Successful()
+    public async Task ExecuteOrder_NoAnswerOrder_Successful()
     {
         // Arrange 
         var device = TestDataHelper.CreateOrderManagementDevice();
@@ -111,14 +111,14 @@ internal class RequestProcessorTests
         var rp = new RequestProcessor(order, requestStepProcessorFactory, device);
 
         // Act  
-        var result = rp.ExecuteOrder();
+        var result = await rp.ExecuteOrder();
 
         // Assert
         Assert.That(result, Is.EqualTo(OrderExecutionResultState.Successful));
     }
 
     [Test]
-    public void ExecuteOrder_NoHandshakeNoAnswerOrder_Successful()
+    public async Task ExecuteOrder_NoHandshakeNoAnswerOrder_Successful()
     {
         // Arrange 
         var device = TestDataHelper.CreateOrderManagementDevice();
@@ -133,7 +133,7 @@ internal class RequestProcessorTests
         var rp = new RequestProcessor(order, requestStepProcessorFactory, device);
 
         // Act  
-        var result = rp.ExecuteOrder();
+        var result = await rp.ExecuteOrder();
 
         // Assert
         Assert.That(result, Is.EqualTo(OrderExecutionResultState.Successful));

@@ -3,6 +3,7 @@
 using Bodoconsult.App.Helpers;
 using Bodoconsult.NetworkCommunication.Delegates;
 using Bodoconsult.NetworkCommunication.Interfaces;
+using Bodoconsult.NetworkCommunication.OrderManagement.Orders;
 
 namespace Bodoconsult.NetworkCommunication.StateManagement.States;
 
@@ -47,7 +48,7 @@ public abstract class BaseOrderBasedStateMachineState : BaseStateMachineState, I
             for (var index = 0; index < OrderConfigurations.Count; index++)
             {
                 var ps = ParameterSets[index];
-                
+
                 var orderConfig = OrderConfigurations[index];
                 var order = orderFactory.CreateOrder(orderConfig, ps);
                 //Trace.TraceInformation($"{Name}: PS order ID {ps.CurrentOrder?.Id ?? 0}...");
@@ -105,6 +106,7 @@ public abstract class BaseOrderBasedStateMachineState : BaseStateMachineState, I
         //    return;
         //}
 
+
         if (order.IsHighPriorityOrder)
         {
             CurrentContext.OrderManager.OrderProcessor.AddOrderWithPriority(order);
@@ -159,7 +161,7 @@ public abstract class BaseOrderBasedStateMachineState : BaseStateMachineState, I
                         CurrentContext.LogError(msg);
                     }
                 });
-                
+
                 return;
             }
 

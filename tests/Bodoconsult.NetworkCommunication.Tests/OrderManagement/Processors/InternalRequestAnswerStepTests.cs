@@ -38,7 +38,7 @@ internal class InternalRequestAnswerStepTests
     }
 
     [Test]
-    public void HandleResult_ValidSetup_Successful()
+    public async Task HandleResult_ValidSetup_Successful()
     {
         // Arrange 
         var ps = new EmptyParameterSet();
@@ -58,7 +58,7 @@ internal class InternalRequestAnswerStepTests
         answer.CheckReceivedMessageDelegate.Invoke(answer, sentMessage, receicedMessage, errors);
 
         // Act  
-        var result = irs.HandleResult();
+        var result = await irs.HandleResult();
 
 		// Assert
         using (Assert.EnterMultipleScope())
@@ -80,7 +80,7 @@ internal class InternalRequestAnswerStepTests
     }
 
     [Test]
-    public void HandleResult_NoAnswer_Unsuccessful()
+    public async Task HandleResult_NoAnswer_Unsuccessful()
     {
         // Arrange 
         var ps = new EmptyParameterSet();
@@ -89,7 +89,7 @@ internal class InternalRequestAnswerStepTests
         var irs = new InternalRequestAnswerStep(ir);
 
         // Act  
-        var result = irs.HandleResult();
+        var result = await irs.HandleResult();
 
 		// Assert
         using (Assert.EnterMultipleScope())

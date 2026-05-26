@@ -29,8 +29,7 @@ public class TncpIpDeviceTcpIpBusinessLogicAdapter : BaseStateMachineDeviceBusin
     /// </summary>
     /// <param name="device">Current device</param>
     /// <param name="businessTransactionManager">Current business transaction manager</param>
-    public TncpIpDeviceTcpIpBusinessLogicAdapter(IStateMachineDevice device,
-        IBusinessTransactionManager businessTransactionManager) : base(device)
+    public TncpIpDeviceTcpIpBusinessLogicAdapter(IStateMachineDevice device, IBusinessTransactionManager businessTransactionManager) : base(device)
     {
         _businessTransactionManager = businessTransactionManager;
     }
@@ -118,6 +117,11 @@ public class TncpIpDeviceTcpIpBusinessLogicAdapter : BaseStateMachineDeviceBusin
             {
                 throw new ArgumentException($"request is not {nameof(StartMessagingBusinessTransactionRequestData)}");
             }
+
+            //return new DefaultBusinessTransactionReply
+            //{
+            //    RequestData = request
+            //};
 
             if ((Device.CurrentState?.Id ?? 0) != DefaultStateIds.DeviceReadyState)
             {

@@ -97,7 +97,7 @@ public class NoHandshakeNoAnswerDeviceRequestStepProcessor : INoHandshakeNoAnswe
     /// Execute the request
     /// </summary>
     /// <returns>Execution result</returns>
-    public IOrderExecutionResultState ExecuteRequest()
+    public async Task<IOrderExecutionResultState> ExecuteRequest()
     {
         try
         {
@@ -139,7 +139,7 @@ public class NoHandshakeNoAnswerDeviceRequestStepProcessor : INoHandshakeNoAnswe
                     }
 
                     repeatCount++;
-                    result = ExecuteRequest(message, requestSpec);
+                    result = await ExecuteRequest(message, requestSpec);
 
                     RequestSpec.AppLogger?.LogDebug($"{RequestSpec.OrderLoggerId}ExecuteRequest: {result} at {repeatCount} try");
 
@@ -191,7 +191,7 @@ public class NoHandshakeNoAnswerDeviceRequestStepProcessor : INoHandshakeNoAnswe
     /// <returns>Execution result</returns>
     /// <remarks>The execution of a request step consists of two major steps. Step 1 is sending a message to the device. Step 2 is waiting for the answer of the device. The device is normally responsive.
     /// A timelag between step1 and step2 may lead to failing device orders due to "lost" device messages. Therefore we start step 2 before step 1 is fired.</remarks>
-    public IOrderExecutionResultState ExecuteRequest(IOutboundDataMessage message, INoHandshakeNoAnswerDeviceRequestSpec requestSpec)
+    public async Task<IOrderExecutionResultState> ExecuteRequest(IOutboundDataMessage message, INoHandshakeNoAnswerDeviceRequestSpec requestSpec)
     {
         // Set the next request answer step
         requestSpec.CurrentSentMessage = message;
@@ -199,14 +199,16 @@ public class NoHandshakeNoAnswerDeviceRequestStepProcessor : INoHandshakeNoAnswe
         var s = $"{requestSpec.OrderLoggerId}ExecuteRequest: prepare start";
         requestSpec.AppLogger?.LogDebug(s);
 
-        return !IsCancelled ? RunStep1(message, requestSpec) : OrderExecutionResultState.Unsuccessful;
+        return !IsCancelled ? await RunStep1(message, requestSpec) : OrderExecutionResultState.Unsuccessful;
     }
 
-    private static IOrderExecutionResultState RunStep1(IOutboundDataMessage message, INoHandshakeNoAnswerDeviceRequestSpec requestSpec)
+    private static async Task<IOrderExecutionResultState> RunStep1(IOutboundDataMessage message, INoHandshakeNoAnswerDeviceRequestSpec requestSpec)
     {
         message.WaitForAcknowledgement = false;
 
-        var result = requestSpec.SendDataMessageDelegate?.Invoke(message) ?? MessageSendingResultHelper.Error("SendDataMessageDelegate is null");
+        ArgumentNullException.ThrowIfNull(requestSpec.SendDataMessageDelegate);
+
+        var result = await requestSpec.SendDataMessageDelegate.Invoke(message);
         requestSpec.AppLogger?.LogInformation($"{requestSpec.OrderLoggerId}message sent {requestSpec.CurrentSentMessage?.ToShortInfoString()} with result {result.ProcessExecutionResult}");
 
         var execResult = result.ProcessExecutionResult;

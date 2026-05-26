@@ -28,7 +28,7 @@ public class InternalRequestAnswerStep : BaseRequestAnswerStep, IInternalRequest
     /// Handles the answer of the request
     /// </summary>
     /// <returns>Message handling result</returns>
-    public override MessageHandlingResult HandleResult()
+    public override async Task<MessageHandlingResult> HandleResult()
     {
         var requestSpec = InternalRequestSpec;
 
@@ -94,7 +94,7 @@ public class InternalRequestAnswerStep : BaseRequestAnswerStep, IInternalRequest
 #endif
 
                 // Call the delegate now
-                result = answer.HandleRequestAnswerOnSuccessDelegate.Invoke(answer.ReceivedMessage, requestSpec.TransportObject, requestSpec.ParameterSet);
+                result = await Task.Run(()=> answer.HandleRequestAnswerOnSuccessDelegate.Invoke(answer.ReceivedMessage, requestSpec.TransportObject, requestSpec.ParameterSet));
 
 #if DEBUG
                 RequestSpec.AppLogger?.LogDebug("End delegate...");

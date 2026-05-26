@@ -82,7 +82,7 @@ public class BaseRequestAnswerStep : IRequestAnswerStep
     /// Handles the answer of the request
     /// </summary>
     /// <returns>Message handling result</returns>
-    public virtual MessageHandlingResult HandleResult()
+    public virtual Task<MessageHandlingResult> HandleResult()
     {
         throw new NotSupportedException("Override in derived classes");
     }

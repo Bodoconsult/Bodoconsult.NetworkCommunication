@@ -69,7 +69,7 @@ public class SfxpOutboundDataMessage: IOutboundDataMessage
     /// <returns>Info string</returns>
     public string ToShortInfoString()
     {
-        return $"SfxpOutboundDataMessage ID ({RawMessageData.Length} bytes) {MessageId}";
+        return $"SfxpOutboundDataMessage ID {MessageId} ({RawMessageData.Length} bytes)";
     }
 
     /// <summary>

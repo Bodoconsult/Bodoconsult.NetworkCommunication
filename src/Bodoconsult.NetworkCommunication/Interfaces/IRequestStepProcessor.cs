@@ -26,7 +26,7 @@ public interface IRequestStepProcessor : IDisposable
     /// Execute the request
     /// </summary>
     /// <returns>Execution result</returns>
-    IOrderExecutionResultState ExecuteRequest();
+    Task<IOrderExecutionResultState> ExecuteRequest();
 
     /// <summary>
     /// Cancel the current request step processor

@@ -38,7 +38,7 @@ public interface IRequestAnswerStep : IDisposable
     /// Handles the answer of the request step
     /// </summary>
     /// <returns>Message handling result</returns>
-    MessageHandlingResult HandleResult();
+    Task<MessageHandlingResult> HandleResult();
 
     /// <summary>
     /// Reset the answers for a step

@@ -206,19 +206,16 @@ public abstract class BaseSendPacketProcess : ISendPacketProcess, IAsyncDisposab
     /// <summary>
     /// Send the message
     /// </summary>
-    public bool SendMessage()
+    public async Task<bool> SendMessage()
     {
-        if (Message == null || DuplexIo==null)
+        if (Message == null || DuplexIo == null)
         {
             return false;
         }
 
         if (IsSocketConnected)
         {
-            var task = DuplexIo.SendMessageDirect(Message);
-            task.Wait(SendTimeout);
-
-            var result = task.Result;
+            var result = await DuplexIo.SendMessageDirect(Message);
 
             //if (result == null)
             //{
@@ -285,76 +282,63 @@ public abstract class BaseSendPacketProcess : ISendPacketProcess, IAsyncDisposab
     }
 
     /// <summary>
-    /// Create a waiting task, then wait and at the end return the result
-    /// </summary>
-    /// <typeparam name="T"></typeparam>
-    /// <param name="taskCompletionSource"><see cref="TaskCompletionSource"/> to be handled by the consumer of the waiting task</param>
-    /// <returns>Result of the waiting task</returns>
-    public static T CreateWaitingTask<T>(out TaskCompletionSource<T>? taskCompletionSource)
-    {
-        // Now wait
-        var result = new TaskCompletionSource<T>(TaskCreationOptions.RunContinuationsAsynchronously);
-        taskCompletionSource = result;
-
-        // Wait
-        var taskResult = AsyncHelper.RunSync(() => result.Task);
-        taskCompletionSource = null;
-
-        return taskResult;
-    }
-
-
-    /// <summary>
     /// Excute the process
     /// </summary>
-    public void Execute()
+    public async Task Execute()
     {
-
-        DataMessagingConfig?.MonitorLogger.LogDebug($"{LoggerId}BSPP: start execution {DateTime.Now:O}");
-
-        //Watch = Stopwatch.StartNew();
-        CurrentSendAttempsCount = 0;
-
-        // Now prepare waiting for execution
-        CreateCancellationToken();
-
-        // Now execute the state chain and if needed repeat it
-        AsyncHelper.FireAndForget(() =>
+        try
         {
-            try
+            DataMessagingConfig?.MonitorLogger.LogDebug($"{LoggerId}BSPP: start execution {DateTime.Now:O}");
+
+            //Watch = Stopwatch.StartNew();
+            CurrentSendAttempsCount = 0;
+
+            // Now prepare waiting for execution
+            CreateCancellationToken();
+
+            // Now execute the state chain and if needed repeat it
+            AsyncHelper.FireAndForget(() =>
             {
-                ExecuteRepeatLoop();
-            }
-            catch (Exception e)
+                try
+                {
+                    ExecuteRepeatLoop();
+                }
+                catch (Exception e)
+                {
+                    DataMessagingConfig?.AppLogger.LogError($"{DataMessagingConfig.LoggerId}execution failed", e);
+                    throw;
+                }
+            });
+
+            // Now wait for execution success or timeout  (doing it in a non-blocking mannor)
+            DataMessagingConfig?.MonitorLogger.LogDebug($"{LoggerId}BSPP: start MAIN waiting {DateTime.Now:O}");
+
+            TaskCompletionSource = new TaskCompletionSource<bool>(TaskCreationOptions.RunContinuationsAsynchronously);
+
+            var result = await TaskCompletionSource.Task;
+
+            _ctsMain?.Dispose();
+            _ctsMain = null;
+            TaskCompletionSource = null;
+            //Watch = null;
+
+
+            DataMessagingConfig?.MonitorLogger.LogDebug($"{LoggerId}BSPP: left MAIN waiting {DateTime.Now:O}. Result {result}");
+
+            if (!result)
             {
-                DataMessagingConfig?.AppLogger.LogError($"{DataMessagingConfig.LoggerId}execution failed", e);
-                throw;
+                ProcessExecutionResult = OrderExecutionResultState.Timeout;
             }
-        });
 
-        // Now wait for execution success or timeout  (doing it in a non-blocking mannor)
-        DataMessagingConfig?.MonitorLogger.LogDebug($"{LoggerId}BSPP: start MAIN waiting {DateTime.Now:O}");
+            // Unregister the wait state under all circumstances
+            UnregisterWaitState();
 
-        var result = CreateWaitingTask(out TaskCompletionSource);
-
-        _ctsMain?.Dispose();
-        _ctsMain = null;
-        TaskCompletionSource = null;
-        //Watch = null;
-
-
-        DataMessagingConfig?.MonitorLogger.LogDebug($"{LoggerId}BSPP: left MAIN waiting {DateTime.Now:O}. Result {result}");
-
-        if (!result)
-        {
-            ProcessExecutionResult = OrderExecutionResultState.Timeout;
+            DataMessagingConfig?.MonitorLogger.LogDebug($"{LoggerId}BSPP: execution finished {DateTime.Now:O}");
         }
-
-        // Unregister the wait state under all circumstances
-        UnregisterWaitState();
-
-        DataMessagingConfig?.MonitorLogger.LogDebug($"{LoggerId}BSPP: execution finished {DateTime.Now:O}");
-        
+        catch (Exception e)
+        {
+            DataMessagingConfig?.MonitorLogger.LogError($"{LoggerId}BSPP: execution failed: {e}");
+        }
     }
 
     /// <summary>

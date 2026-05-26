@@ -43,7 +43,7 @@ public class DeviceRequestAnswerStep : BaseRequestAnswerStep, IDeviceRequestAnsw
     /// Handles the answer of the request
     /// </summary>
     /// <returns>Message handling result</returns>
-    public override MessageHandlingResult HandleResult()
+    public override async Task<MessageHandlingResult> HandleResult()
     {
         //if (requestSpec == null)
         //{
@@ -138,7 +138,8 @@ public class DeviceRequestAnswerStep : BaseRequestAnswerStep, IDeviceRequestAnsw
 #endif
 
                 // Call the delegate now
-                result = answer.HandleRequestAnswerOnSuccessDelegate.Invoke(answer.ReceivedMessage, RequestSpec.TransportObject, RequestSpec.ParameterSet);
+                result = await Task.Run(() => answer.HandleRequestAnswerOnSuccessDelegate.Invoke(answer.ReceivedMessage,
+                    RequestSpec.TransportObject, RequestSpec.ParameterSet));
 
 #if DEBUG
                 RequestSpec.AppLogger?.LogDebug($"{RequestSpec.OrderLoggerId}End delegate...");
@@ -365,7 +366,7 @@ public class DeviceRequestAnswerStep : BaseRequestAnswerStep, IDeviceRequestAnsw
     /// </summary>
     public override void Cancel()
     {
-        RequestSpec.AppLogger?.LogDebug($"{RequestSpec.OrderLoggerId}{DeviceRequestSpec.Name} cancel");
+        RequestSpec.AppLogger?.LogDebug($"{RequestSpec.OrderLoggerId}cancel");
         SetResult(OrderExecutionResultState.Unsuccessful);
     }
 
@@ -404,7 +405,7 @@ public class DeviceRequestAnswerStep : BaseRequestAnswerStep, IDeviceRequestAnsw
     /// <summary>
     /// Process the current request answer step in a chain
     /// </summary>
-    public void ProcessChainElement()
+    public async Task ProcessChainElement()
     {
         WasSuccessful = false;
 
@@ -438,7 +439,7 @@ public class DeviceRequestAnswerStep : BaseRequestAnswerStep, IDeviceRequestAnsw
         }
 
         // Process the business logic for the step
-        var result = HandleResult();
+        var result = await HandleResult();
 
 
 

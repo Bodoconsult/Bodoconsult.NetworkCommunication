@@ -132,11 +132,11 @@ public class IpCommunicationAdapter : ICommunicationAdapter
     /// </summary>
     /// <param name="command">Command to send</param>
     /// <returns>Reply of the device</returns>
-    public MessageSendingResult SendDataMessage(IOutboundDataMessage command)
+    public async Task<MessageSendingResult> SendDataMessage(IOutboundDataMessage command)
     {
         ArgumentNullException.ThrowIfNull(CommunicationHandler);
 
-        return CommunicationHandler.SendMessage(command);
+        return await CommunicationHandler.SendMessage(command);
     }
 
     /// <summary>

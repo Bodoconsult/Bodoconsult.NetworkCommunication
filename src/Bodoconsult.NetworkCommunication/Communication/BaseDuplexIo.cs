@@ -96,12 +96,12 @@ public abstract class BaseDuplexIo : IDuplexIo
             if (message is not IOutboundDataMessage { WaitForAcknowledgement: true } msg)
             {
                 // Send without handshake
-                result = await Task.Run(() => SendMessageDirect(message));
+                result = await SendMessageDirect(message);
             }
             else
             {
                 // Send and wait for handshake
-                result = await Task.Run(() => StartMessageSendingProcess(msg));
+                result = await StartMessageSendingProcess(msg);
             }
             
             return result;
@@ -141,7 +141,7 @@ public abstract class BaseDuplexIo : IDuplexIo
     /// </summary>
     /// <param name="message">Current message to send</param>
     /// <returns>Result of the message sending process</returns>
-    public MessageSendingResult StartMessageSendingProcess(IOutboundDataMessage message)
+    public async Task<MessageSendingResult> StartMessageSendingProcess(IOutboundDataMessage message)
     {
         // New send process
         var currentSendPacketProcess = _sendPacketProcessFactory.CreateInstance(this,
@@ -149,7 +149,7 @@ public abstract class BaseDuplexIo : IDuplexIo
             DataMessagingConfig);
 
         // Send the message and wait for ACK
-        currentSendPacketProcess.Execute();
+        await currentSendPacketProcess.Execute();
 
         // Result
         var result = new MessageSendingResult(message, currentSendPacketProcess.ProcessExecutionResult);

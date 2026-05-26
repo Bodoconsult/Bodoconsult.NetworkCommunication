@@ -23,16 +23,6 @@ public class BaseDuplexIoReceiver : IDuplexIoReceiver
     protected int PollingTimeOut;
 
     /// <summary>
-    /// Work is in progress delegate for DuplexIO
-    /// </summary>
-    protected DuplexIoIsWorkInProgressDelegate? DuplexIoIsWorkInProgressDelegate;
-
-    /// <summary>
-    /// No data available delegate for DuplexIO
-    /// </summary>
-    protected DuplexIoNoDataDelegate? DuplexIoNoDataDelegate;
-
-    /// <summary>
     /// Current cancellation token source
     /// </summary>
     protected CancellationTokenSource? CancellationSource;

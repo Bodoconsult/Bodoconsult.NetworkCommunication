@@ -9,6 +9,7 @@ using Bodoconsult.NetworkCommunication.Tests.App;
 using IpBackend.Bll.BusinessLogic.Adapters;
 using IpBackend.Bll.Interfaces;
 using IpBackendService.DiContainerProvider;
+using IpCommunicationSample.Common.BusinessTransactions.Requests;
 using IpDevice.Bll.Interfaces;
 using IpDeviceService.DiContainerProvider;
 
@@ -200,7 +201,10 @@ internal class UdpReceivingTests
 
         var adapter = (TncpIpDeviceTcpIpBusinessLogicAdapter)_backendManager.IpDeviceTcpIp.DeviceBusinessLogicAdapter;
 
-        var request = new EmptyBusinessTransactionRequestData();
+        var request = new StartMessagingBusinessTransactionRequestData()
+        {
+            Channel1 = true
+        };
         var request2 = new EmptyBusinessTransactionRequestData();
 
         // Act  
@@ -224,7 +228,7 @@ internal class UdpReceivingTests
         {
             adapter.RequestDeviceStopMessagingState(request2);
         });
-            
+
         Wait.Until(() => _backendManager.IpDeviceTcpIp.Device.CurrentState.Id == DefaultStateIds.DeviceReadyState, 10000);
 
         // Assert

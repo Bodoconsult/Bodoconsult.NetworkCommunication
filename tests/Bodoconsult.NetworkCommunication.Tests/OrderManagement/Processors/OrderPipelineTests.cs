@@ -458,6 +458,7 @@ public class OrderPipelineTests
     public void GetFromExecutionQueue_ValidOrder_RequestProcessorIsRemoved()
     {
         // Arrange 
+        _isOrderProcessingFinishedDelegateFired = false;
         var op = new OrderPipeline(_dateTimeService, _requestProcessorFactory, _appLogger, LoggerId);
 
         var ps = new SdcpParameterSet();
@@ -468,8 +469,11 @@ public class OrderPipelineTests
 
         var success = op.PrepareOrderStart(order, OrderProcessingFinishedDelegate, out var rp);
 
-        Assert.That(success, Is.False);
-        Assert.That(rp, Is.Not.Null);
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(success, Is.False);
+            Assert.That(rp, Is.Not.Null);
+        }
 
         op.ExecuteOrder(rp);
 

@@ -16,7 +16,6 @@ public class IpDuplexIoReceiver : BaseDuplexIoReceiver
 {
     private readonly BufferPool<DummyMemory> _bufferPool = new();
     private ReadOnlySequence<byte> _buffer = new([]);
-    private static readonly ArrayPool<byte> ArrayPool = ArrayPool<byte>.Shared;
     private readonly ProducerConsumerQueue<DummyMemory> _currentPipeline = new();
 
     /// <summary>
@@ -25,25 +24,13 @@ public class IpDuplexIoReceiver : BaseDuplexIoReceiver
     private readonly IDataMessageValidator _dataMessageValidator;
 
     /// <summary>
-    /// Timeout in ms for filling the receicer pipeline from check to check
-    /// </summary>
-    public static int FillPipelineTimeout { get; set; } = 5;
-
-    /// <summary>
     /// Default ctor
     /// </summary>
     /// <param name="deviceCommSettings">Current device comm settings</param>
-    /// <param name="duplexIoIsWorkInProgressDelegate">Delegate for checking if the socket is wokring currently</param>
-    /// <param name="duplexIoSetNotInProgressDelegate">Delegate to set socket state to no work in progress</param>
-    public IpDuplexIoReceiver(IDataMessagingConfig deviceCommSettings,
-        DuplexIoIsWorkInProgressDelegate duplexIoIsWorkInProgressDelegate,
-        DuplexIoNoDataDelegate duplexIoSetNotInProgressDelegate) : base(deviceCommSettings)
+    public IpDuplexIoReceiver(IDataMessagingConfig deviceCommSettings) : base(deviceCommSettings)
     {
         ArgumentNullException.ThrowIfNull(deviceCommSettings.SocketProxy);
         deviceCommSettings.SocketProxy.StartReceiverLoop(SocketReceivedData);
-
-        DuplexIoIsWorkInProgressDelegate = duplexIoIsWorkInProgressDelegate;
-        DuplexIoNoDataDelegate = duplexIoSetNotInProgressDelegate;
 
         _currentPipeline.ConsumerTaskDelegate = TryToSendReceivedData;
         _bufferPool.LoadFactoryMethod(() => new DummyMemory());
@@ -106,17 +93,6 @@ public class IpDuplexIoReceiver : BaseDuplexIoReceiver
             var array = command.ToArray();
             var mem = ((Memory<byte>)array)[..length];
             var codecResult = DataMessageCodingProcessor.DecodeDataMessage(mem);
-
-            //// Take a copy of the command to avoid errors if the pipeline socket is closed before processing the command
-            //var array = ArrayPool.Rent(length);
-
-            //command.CopyTo(array);
-
-            //var mem = ((Memory<byte>)array)[..length];
-
-            //var codecResult = DataMessageCodingProcessor.DecodeDataMessage(mem);
-
-            //ArrayPool.Return(array);
 
             //Trace.TraceInformation($"IpDuplexIoReceiver: parsed command {Encoding.UTF8.GetString(command)} to message {codecResult.DataMessage?.MessageId}. Buffer {_buffer.Length}: { Encoding.UTF8.GetString( _buffer)}");
             //Trace.TraceInformation($"IpDuplexIoReceiver: parsed command {Encoding.UTF8.GetString(command)} to message {codecResult.DataMessage?.MessageId}");

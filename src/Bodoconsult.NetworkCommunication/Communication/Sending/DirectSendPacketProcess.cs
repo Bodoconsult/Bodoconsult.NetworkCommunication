@@ -16,7 +16,7 @@ public class DirectSendPacketProcess : BaseSendPacketProcess
     /// <returns>True if a handshake was received else false</returns>
     protected override bool ExecuteSendAndWait()
     {
-        var result = SendMessage();
+        var result = SendMessage().GetAwaiter().GetResult();
 
         if (!result)
         {

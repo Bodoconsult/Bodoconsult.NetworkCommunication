@@ -13,22 +13,12 @@ namespace Bodoconsult.NetworkCommunication.Communication;
 public class IpDuplexIoSender : BaseDuplexIoSender
 {
 
-    private readonly DuplexIoIsWorkInProgressDelegate _duplexIoIsWorkInProgressDelegate;
-    private readonly DuplexIoNoDataDelegate _duplexIoNoDataDelegate;
-
     /// <summary>
     /// Default ctor
     /// </summary>
     /// <param name="dataMessagingConfig">Current device comm settings</param>
-    /// <param name="duplexIoIsWorkInProgressDelegate">Delegate for checking if the socket is wokring currently</param>
-    /// <param name="duplexIoNoDataDelegate">Delegate to set socket state to no work in progress</param>
-    public IpDuplexIoSender(IDataMessagingConfig dataMessagingConfig,
-        DuplexIoIsWorkInProgressDelegate duplexIoIsWorkInProgressDelegate,
-        DuplexIoNoDataDelegate duplexIoNoDataDelegate) : base(dataMessagingConfig)
-    {
-        _duplexIoIsWorkInProgressDelegate = duplexIoIsWorkInProgressDelegate;
-        _duplexIoNoDataDelegate = duplexIoNoDataDelegate;
-    }
+    public IpDuplexIoSender(IDataMessagingConfig dataMessagingConfig) : base(dataMessagingConfig)
+    { }
 
     /// <summary>
     /// Start the message sender
@@ -75,7 +65,7 @@ public class IpDuplexIoSender : BaseDuplexIoSender
             //Create a byte array from message according to current protocol
             while (i < 3)
             {
-                (sent, isSent) = await SendMessageInternal(DataMessagingConfig, _duplexIoNoDataDelegate, _duplexIoIsWorkInProgressDelegate, message);
+                (sent, isSent) = await SendMessageInternal(DataMessagingConfig, message);
 
                 if (isSent)
                 {
@@ -114,30 +104,19 @@ public class IpDuplexIoSender : BaseDuplexIoSender
             msg = "message could not be sent via socket";
             DataMessagingConfig.MonitorLogger.LogError(msg);
             DataMessagingConfig.AppLogger.LogError($"{DataMessagingConfig.LoggerId}{msg}");
-            _duplexIoNoDataDelegate();
             AsyncHelper.FireAndForget(() => DataMessagingConfig.DuplexIoErrorHandlerDelegate?.Invoke(exception));
             return 0;
         }
     }
 
-    private static async Task<(int sent, bool isSent)> SendMessageInternal(IDataMessagingConfig dataMessagingConfig,
-        DuplexIoNoDataDelegate duplexIoNoDataDelegate,
-        DuplexIoIsWorkInProgressDelegate duplexIoIsWorkInProgressDelegate, IOutboundMessage message)
+    private static async Task<(int sent, bool isSent)> SendMessageInternal(IDataMessagingConfig dataMessagingConfig, IOutboundMessage message)
     {
         string msg;
         int sent;
         bool isSent;
         try
         {
-            //if (!duplexIoIsWorkInProgressDelegate())
-            //{
-                sent = await dataMessagingConfig.SocketProxy!.Send(message.RawMessageData);
-                duplexIoNoDataDelegate();
-            //}
-            //else
-            //{
-            //    sent = 0;
-            //}
+            sent = await dataMessagingConfig.SocketProxy!.Send(message.RawMessageData);
 
             if (sent == 0)
             {
@@ -161,7 +140,6 @@ public class IpDuplexIoSender : BaseDuplexIoSender
                     dataMessagingConfig.MonitorLogger.LogError(msg);
                     dataMessagingConfig.AppLogger.LogError($"{dataMessagingConfig.LoggerId}{msg}");
                 }
-
             });
 
             isSent = true;
@@ -169,7 +147,6 @@ public class IpDuplexIoSender : BaseDuplexIoSender
         }
         catch (SocketException socketException)
         {
-            duplexIoNoDataDelegate();
             msg = $"message {message.ToShortInfoString()} not sent: {socketException}";
             dataMessagingConfig.MonitorLogger.LogError(msg);
             dataMessagingConfig.AppLogger.LogError($"{dataMessagingConfig.LoggerId}{msg}");
@@ -189,11 +166,11 @@ public class IpDuplexIoSender : BaseDuplexIoSender
                     dataMessagingConfig.AppLogger.LogError($"{dataMessagingConfig.LoggerId}{msg}");
                 }
             });
-            throw;
+            isSent = false;
+            sent = 0;
         }
         catch (Exception sendException)
         {
-            duplexIoNoDataDelegate();
             msg = $"message {message.ToShortInfoString()} not sent: {sendException}";
             dataMessagingConfig.MonitorLogger.LogError(msg);
             dataMessagingConfig.AppLogger.LogError($"{dataMessagingConfig.LoggerId}{msg}");
@@ -216,10 +193,6 @@ public class IpDuplexIoSender : BaseDuplexIoSender
             isSent = false;
             sent = 0;
             //Trace.TraceInformation($"X: Sent: {sent} // {isSent}");
-        }
-        finally
-        {
-            duplexIoNoDataDelegate();
         }
 
         return (sent, isSent);

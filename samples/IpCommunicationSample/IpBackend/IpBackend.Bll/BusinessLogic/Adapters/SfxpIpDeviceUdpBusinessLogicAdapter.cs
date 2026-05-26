@@ -2,6 +2,7 @@
 
 using Bodoconsult.App.Abstractions.Interfaces;
 using Bodoconsult.App.BusinessTransactions.Replies;
+using Bodoconsult.App.Helpers;
 using Bodoconsult.NetworkCommunication.BusinessLogicAdapters;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataBlockCodecs;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
@@ -160,7 +161,9 @@ public class SfxpIpDeviceUdpBusinessLogicAdapter : BaseSimpleDeviceBusinessLogic
             RawMessageData = new Memory<byte>([0x48, 0x65, 0x6c, 0x6c, 0x6f, 0x20, 0x66, 0x72, 0x6f, 0x6d, 0x20, 0x63, 0x6c, 0x69, 0x65, 0x6e, 0x74])
         };
 
-        var result = IpDevice.CommunicationAdapter.SendDataMessage(msg);
+
+        var task = IpDevice.CommunicationAdapter.SendDataMessage(msg);
+        var result = task.GetAwaiter().GetResult();
 
         if (result.ProcessExecutionResult.Id == OrderExecutionResultState.Successful.Id)
         {

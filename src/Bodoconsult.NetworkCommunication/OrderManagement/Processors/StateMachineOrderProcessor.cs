@@ -179,6 +179,7 @@ public class StateMachineOrderProcessor : BaseOrderProcessor
 
         LogDebug($"{order.LoggerId}has finished. {OrderPipeline.CurrentOrderState}");
 
+        // Now do the acton required if order was / was not successful
         if (_device.CurrentState is IOrderBasedActionStateMachineState state)
         {
             // Process successful orders
@@ -203,8 +204,10 @@ public class StateMachineOrderProcessor : BaseOrderProcessor
         order.IsFinished = true;
         order.Benchmark?.AddStep("Disposing now");
 
-        // Async order: dispose now
+        //// Log state now
+        //LogInformation($"OrderProcessingFinished: {OrderPipeline.CurrentOrderState}");
 
+        // Async order: dispose now
         if (!order.IsRunningSync)
         {
             order.Dispose();
@@ -218,7 +221,6 @@ public class StateMachineOrderProcessor : BaseOrderProcessor
             StopExecutionOfSyncOrder(order.Id, erg);
         }
 
-        LogInformation($"OrderProcessingFinished: {OrderPipeline.CurrentOrderState}");
         _device.CurrentState?.RequestNextState();
     }
 

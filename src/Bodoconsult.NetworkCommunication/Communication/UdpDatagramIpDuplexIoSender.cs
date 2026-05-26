@@ -12,7 +12,6 @@ namespace Bodoconsult.NetworkCommunication.Communication;
 /// </summary>
 public class UdpDatagramIpDuplexIoSender : BaseDuplexIoSender
 {
-    private readonly DuplexIoNoDataDelegate _duplexIoNoDataDelegate;
     private bool _isSending;
     private readonly Lock _isSendingLock = new();
 
@@ -20,14 +19,8 @@ public class UdpDatagramIpDuplexIoSender : BaseDuplexIoSender
     /// Default ctor
     /// </summary>
     /// <param name="dataMessagingConfig">Current device comm settings</param>
-    /// <param name="duplexIoIsWorkInProgressDelegate">Delegate for checking if the socket is wokring currently</param>
-    /// <param name="duplexIoNoDataDelegate">Delegate to set socket state to no work in progress</param>
-    public UdpDatagramIpDuplexIoSender(IDataMessagingConfig dataMessagingConfig,
-        DuplexIoIsWorkInProgressDelegate duplexIoIsWorkInProgressDelegate,
-        DuplexIoNoDataDelegate duplexIoNoDataDelegate) : base(dataMessagingConfig)
-    {
-        _duplexIoNoDataDelegate = duplexIoNoDataDelegate;
-    }
+    public UdpDatagramIpDuplexIoSender(IDataMessagingConfig dataMessagingConfig) : base(dataMessagingConfig)
+    { }
 
     /// <summary>
     /// Start the message sender
@@ -63,28 +56,28 @@ public class UdpDatagramIpDuplexIoSender : BaseDuplexIoSender
 
             if (EncodeMessage(message))
             {
-                msg = $"Encoding for message failed: {message.MessageId}";
+                msg = $"Encoding for message {message.ToShortInfoString()} failed: {message.MessageId}";
                 DataMessagingConfig.MonitorLogger.LogError(msg);
                 DataMessagingConfig.AppLogger.LogError($"{DataMessagingConfig.LoggerId}{msg}");
                 return 0;
             }
 
             // Send message
-            var sent = await SendMessageInternal(DataMessagingConfig, _duplexIoNoDataDelegate, message);
+            var sent = await SendMessageInternal(DataMessagingConfig,  message);
 
             if (sent > 0)
             {
                 return sent;
             }
 
-            msg = "message could not be sent via UDP socket";
+            msg = $"Message {message.ToShortInfoString()} could not be sent via UDP socket";
             AsyncHelper.FireAndForget(() => DataMessagingConfig.RaiseDataMessageNotSentDelegate?.Invoke(message.RawMessageData, msg));
             DataMessagingConfig.MonitorLogger.LogError(msg);
-            DataMessagingConfig.AppLogger.LogError($"{DataMessagingConfig.LoggerId}{msg}");
+            DataMessagingConfig.AppLogger.LogError($"{DataMessagingConfig.LoggerId}: {msg}");
         }
         catch (Exception e)
         {
-            msg = $"message could not be sent via UDP socket: {e}";
+            msg = $"Message {message.ToShortInfoString()} could not be sent via UDP socket: {e}";
             AsyncHelper.FireAndForget(() => DataMessagingConfig.RaiseDataMessageNotSentDelegate?.Invoke(message.RawMessageData, msg));
             DataMessagingConfig.MonitorLogger.LogError(msg);
             DataMessagingConfig.AppLogger.LogError($"{DataMessagingConfig.LoggerId}{msg}");
@@ -93,10 +86,10 @@ public class UdpDatagramIpDuplexIoSender : BaseDuplexIoSender
         return 0;
     }
 
-    private async Task<int> SendMessageInternal(IDataMessagingConfig dataMessagingConfig, DuplexIoNoDataDelegate duplexIoNoDataDelegate, IOutboundMessage message)
+    private async Task<int> SendMessageInternal(IDataMessagingConfig dataMessagingConfig, IOutboundMessage message)
     {
         string msg;
-        int sent;
+        var sent = 0;
         try
         {
             lock (_isSendingLock)
@@ -122,7 +115,6 @@ public class UdpDatagramIpDuplexIoSender : BaseDuplexIoSender
             }
 
             sent = await dataMessagingConfig.SocketProxy!.Send(message.RawMessageData);
-            duplexIoNoDataDelegate();
 
             lock (_isSendingLock)
             {
@@ -131,7 +123,7 @@ public class UdpDatagramIpDuplexIoSender : BaseDuplexIoSender
 
             if (sent == 0)
             {
-                return sent;
+                return 0;
             }
 
 #if DEBUG
@@ -178,7 +170,6 @@ public class UdpDatagramIpDuplexIoSender : BaseDuplexIoSender
                 }
 
             });
-            throw;
         }
         catch (Exception sendException)
         {
@@ -204,7 +195,6 @@ public class UdpDatagramIpDuplexIoSender : BaseDuplexIoSender
                     dataMessagingConfig.AppLogger.LogError($"{dataMessagingConfig.LoggerId}{msg}");
                 }
             });
-            throw;
         }
 
         return sent;

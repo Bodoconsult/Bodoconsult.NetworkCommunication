@@ -96,7 +96,7 @@ public abstract class BaseBtcpSimpleDeviceBusinessLogicAdapter : BaseSimpleDevic
         // Remove the order from waiting queue
         _syncProcessManager.RemoveSyncProcess(request.TransactionGuid);
 
-        return SendMessage(message);
+        return SendMessage(message).GetAwaiter().GetResult();
     }
 
     /// <summary>
@@ -106,7 +106,7 @@ public abstract class BaseBtcpSimpleDeviceBusinessLogicAdapter : BaseSimpleDevic
     /// <returns>Message sending result</returns>
     public MessageSendingResult SendBtRequestNotWaitingForAnswer(BtcpRequestOutboundDataMessage message)
     {
-        return SendMessage(message);
+        return SendMessage(message).GetAwaiter().GetResult();
     }
 
     /// <summary>
@@ -123,7 +123,7 @@ public abstract class BaseBtcpSimpleDeviceBusinessLogicAdapter : BaseSimpleDevic
             return MessageSendingResultHelper.Error("No outbound message was created");
         }
 
-        return SendMessage(message);
+        return SendMessage(message).GetAwaiter().GetResult();
     }
 
     /// <summary>
@@ -193,7 +193,7 @@ public abstract class BaseBtcpSimpleDeviceBusinessLogicAdapter : BaseSimpleDevic
                         return;
                     }
 
-                    SendMessage(replyMessage);
+                    SendMessage(replyMessage).GetAwaiter().GetResult();
                 }
                 catch (Exception e)
                 {

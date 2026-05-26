@@ -46,7 +46,7 @@ internal class DeviceRequestAnswerStepTests
     }
 
     [Test]
-    public void HandleResult_ValidSetup_Successful()
+    public async Task HandleResult_ValidSetup_Successful()
     {
         // Arrange 
         var order = TestDataHelper.CreateSdcpOrder();
@@ -64,7 +64,7 @@ internal class DeviceRequestAnswerStepTests
         order.IsCancelled = true;
 
         // Act  
-        var result = irs.HandleResult();
+        var result = await irs.HandleResult();
 
         // Assert
         Assert.That(result.Error, Is.EqualTo(2));
@@ -73,7 +73,7 @@ internal class DeviceRequestAnswerStepTests
     }
 
     [Test]
-    public void HandleResult_NoAnswer_Unsuccessful()
+    public async Task HandleResult_NoAnswer_Unsuccessful()
     {
         // Arrange 
         var order = TestDataHelper.CreateSdcpOrder();
@@ -85,7 +85,7 @@ internal class DeviceRequestAnswerStepTests
         var irs = new DeviceRequestAnswerStep(dr);
 
         // Act  
-        var result = irs.HandleResult();
+        var result = await irs.HandleResult();
 
         // Assert
         Assert.That(result.Error, Is.Not.Zero);

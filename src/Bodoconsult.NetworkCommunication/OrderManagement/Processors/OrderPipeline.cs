@@ -32,7 +32,7 @@ public class OrderPipeline : IOrderPipeline
         _dateTimeService = dateTimeService;
         _requestProcessorFactory = requestProcessorFactory;
         _appLogger = appLogger;
-        _loggerId = loggerId;
+        _loggerId = $"{loggerId}{(loggerId.EndsWith(": ") ? string.Empty : ": ")}";
     }
 
     /// <summary>
@@ -622,7 +622,18 @@ public class OrderPipeline : IOrderPipeline
 
         order.StartTime = _dateTimeService.Now;
 
-        var task = new Task(() => requestProcessor.ExecuteOrder(), requestProcessor.CancellationTokenSource.Token);
+        var task = new Task(async void () =>
+        {
+            try
+            {
+                await requestProcessor.ExecuteOrder();
+            }
+            catch (Exception e)
+            {
+                _appLogger.LogError($"{_loggerId}{order.LoggerId}order execution failed: {e}");
+            }
+
+        }, requestProcessor.CancellationTokenSource.Token);
         requestProcessor.CurrentTask = task;
 
         // Serialize before starting order. Otherwise it will fail due to changes in the parameterSet

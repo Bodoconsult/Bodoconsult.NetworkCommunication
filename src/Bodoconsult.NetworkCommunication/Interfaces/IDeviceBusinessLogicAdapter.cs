@@ -27,5 +27,5 @@ public interface IDeviceBusinessLogicAdapter
     /// </summary>
     /// <param name="message">Outbound datamessage</param>
     /// <returns>Message sending result</returns>
-    public MessageSendingResult SendMessage(IOutboundDataMessage message);
+    public Task<MessageSendingResult> SendMessage(IOutboundDataMessage message);
 }

@@ -314,7 +314,7 @@ public class UdpClientSocketProxy : BaseUpdSocketProxy
                     await Task.Delay(5);
                 }
 
-                Debug.Print($"Server: Received {result} byte");
+                //Debug.Print($"{LoggerId}Received {result} byte");
 
                 AsyncHelper.FireAndForget(() =>
                 {

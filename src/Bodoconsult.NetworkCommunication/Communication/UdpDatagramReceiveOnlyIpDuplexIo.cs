@@ -104,7 +104,7 @@ public class UdpDatagramReceiveOnlyIpDuplexIo : BaseDuplexIo
         {
             try
             {
-                Receiver ??= new UdpDatagramIpDuplexIoReceiver(DataMessagingConfig, _duplexIoIsWorkInProgressDelegate, _duplexIoNoDataDelegate);
+                Receiver ??= new UdpDatagramIpDuplexIoReceiver(DataMessagingConfig);
 
                 await Receiver.StartReceiver();
 

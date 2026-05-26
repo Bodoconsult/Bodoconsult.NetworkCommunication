@@ -68,7 +68,7 @@ public class RequestProcessor : IRequestProcessor
         _orderLoggerId = $"{_device.LoggerId}{(_device.LoggerId.EndsWith(": ") ? string.Empty : ": ")}{Order.LoggerId}";
         _appLogger = _device.DataMessagingConfig.AppLogger;
 
-        CancellationTokenSource =  new(Order.TotalTimeOut);
+        CancellationTokenSource = new(Order.TotalTimeOut);
     }
 
     /// <summary>
@@ -101,7 +101,7 @@ public class RequestProcessor : IRequestProcessor
     /// Execute the order request by request
     /// </summary>
     /// <returns>Execution result</returns>
-    public IOrderExecutionResultState ExecuteOrder()
+    public async Task<IOrderExecutionResultState> ExecuteOrder()
     {
         // Fetch the order here to avoid multithread issues
         var order = Order;
@@ -132,10 +132,10 @@ public class RequestProcessor : IRequestProcessor
 
             var result = requestSpec switch
             {
-                IInternalRequestSpec irs => ExecuteRequest(irs),
-                IDeviceRequestSpec drs => ExecuteRequest(drs),
-                INoAnswerDeviceRequestSpec ndrs => ExecuteRequest(ndrs),
-                INoHandshakeNoAnswerDeviceRequestSpec hdrs => ExecuteRequest(hdrs),
+                IInternalRequestSpec irs => await ExecuteRequest(irs),
+                IDeviceRequestSpec drs => await ExecuteRequest(drs),
+                INoAnswerDeviceRequestSpec ndrs => await ExecuteRequest(ndrs),
+                INoHandshakeNoAnswerDeviceRequestSpec hdrs => await ExecuteRequest(hdrs),
                 _ => OrderExecutionResultState.NotProcessed
             };
 
@@ -209,7 +209,18 @@ public class RequestProcessor : IRequestProcessor
             order.ExecutionResult = currentState;
 
             // Inform device order processor: order is done
-            OrderProcessingFinishedDelegate?.Invoke(order.Id);
+            AsyncHelper.FireAndForget(() =>
+            {
+                try
+                {
+                    OrderProcessingFinishedDelegate?.Invoke(order.Id);
+                }
+                catch (Exception e)
+                {
+                    LogDebug($"{_orderLoggerId} failed: {e}");
+                }
+                
+            });
         }
 
         // Deactivate informing device order processor for safety reasons. OrderProcessingFinished should not be called more than one times
@@ -224,7 +235,7 @@ public class RequestProcessor : IRequestProcessor
     /// </summary>
     /// <param name="requestSpec">Current request spec</param>
     /// <returns>Execution result</returns>
-    public IOrderExecutionResultState ExecuteRequest(INoHandshakeNoAnswerDeviceRequestSpec requestSpec)
+    public async Task<IOrderExecutionResultState> ExecuteRequest(INoHandshakeNoAnswerDeviceRequestSpec requestSpec)
     {
         ArgumentNullException.ThrowIfNull(_device.CommunicationAdapter);
 
@@ -257,7 +268,7 @@ public class RequestProcessor : IRequestProcessor
             return SetUnsuccessful(order);
         }
 
-        var result = processor.ExecuteRequest();
+        var result = await processor.ExecuteRequest();
 
         if (result.Id == OrderExecutionResultState.Successful.Id)
         {
@@ -287,7 +298,7 @@ public class RequestProcessor : IRequestProcessor
     /// </summary>
     /// <param name="requestSpec">Current request spec</param>
     /// <returns>Execution result</returns>
-    public IOrderExecutionResultState ExecuteRequest(INoAnswerDeviceRequestSpec requestSpec)
+    public async Task<IOrderExecutionResultState> ExecuteRequest(INoAnswerDeviceRequestSpec requestSpec)
     {
         ArgumentNullException.ThrowIfNull(_device.CommunicationAdapter);
 
@@ -303,7 +314,7 @@ public class RequestProcessor : IRequestProcessor
         requestSpec.SendDataMessageDelegate = _device.CommunicationAdapter.SendDataMessage;
         requestSpec.CancelRunningOperationDelegate = _device.CommunicationAdapter.CancelRunningOperation;
         requestSpec.AppLogger = _appLogger;
-        requestSpec.OrderLoggerId = $"{_orderLoggerId}RP: {requestSpec.Name} ";
+        requestSpec.OrderLoggerId = $"{_orderLoggerId}RP: {requestSpec.Name}: ";
 
         var processor = _requestStepProcessorFactory.CreateNoAnswerDeviceProcessor(requestSpec);
         requestSpec.RequestStepProcessorSetResultDelegate = processor.SetResult;
@@ -320,7 +331,7 @@ public class RequestProcessor : IRequestProcessor
             return SetUnsuccessful(order);
         }
 
-        var result = processor.ExecuteRequest();
+        var result = await processor.ExecuteRequest();
 
         if (result.Id == OrderExecutionResultState.Successful.Id)
         {
@@ -349,7 +360,7 @@ public class RequestProcessor : IRequestProcessor
     /// </summary>
     /// <param name="requestSpec">Current request spec</param>
     /// <returns>Execution result</returns>
-    public IOrderExecutionResultState ExecuteRequest(IDeviceRequestSpec requestSpec)
+    public async Task<IOrderExecutionResultState> ExecuteRequest(IDeviceRequestSpec requestSpec)
     {
         ArgumentNullException.ThrowIfNull(_device.CommunicationAdapter);
 
@@ -365,7 +376,7 @@ public class RequestProcessor : IRequestProcessor
         requestSpec.SendDataMessageDelegate = _device.CommunicationAdapter.SendDataMessage;
         requestSpec.CancelRunningOperationDelegate = _device.CommunicationAdapter.CancelRunningOperation;
         requestSpec.AppLogger = _appLogger;
-        requestSpec.OrderLoggerId = $"{_orderLoggerId}RP: {requestSpec.Name} ";
+        requestSpec.OrderLoggerId = $"{_orderLoggerId}RP: {requestSpec.Name}: ";
 
         var processor = _requestStepProcessorFactory.CreateDeviceProcessor(requestSpec);
         requestSpec.RequestStepProcessorSetResultDelegate = processor.SetResult;
@@ -382,7 +393,7 @@ public class RequestProcessor : IRequestProcessor
             return SetUnsuccessful(order);
         }
 
-        var result = processor.ExecuteRequest();
+        var result = await processor.ExecuteRequest();
 
         if (result.Id == OrderExecutionResultState.Successful.Id)
         {
@@ -411,7 +422,7 @@ public class RequestProcessor : IRequestProcessor
     /// </summary>
     /// <param name="requestSpec">Current request spec</param>
     /// <returns>Execution result</returns>
-    public IOrderExecutionResultState ExecuteRequest(IInternalRequestSpec requestSpec)
+    public async Task<IOrderExecutionResultState> ExecuteRequest(IInternalRequestSpec requestSpec)
     {
         ArgumentNullException.ThrowIfNull(_device.CommunicationAdapter);
 
@@ -426,7 +437,7 @@ public class RequestProcessor : IRequestProcessor
         //requestSpec.DoNotifyDelegate = _device.DoNotify;
         requestSpec.CancelRunningOperationDelegate = _device.CommunicationAdapter.CancelRunningOperation;
         requestSpec.AppLogger = _appLogger;
-        requestSpec.OrderLoggerId = $"{_orderLoggerId}RP: {requestSpec.Name} ";
+        requestSpec.OrderLoggerId = $"{_orderLoggerId}RP: {requestSpec.Name}: ";
 
         var processor = _requestStepProcessorFactory.CreateInternalProcessor(requestSpec);
         requestSpec.RequestStepProcessorSetResultDelegate = processor.SetResult;
@@ -443,7 +454,7 @@ public class RequestProcessor : IRequestProcessor
             return SetUnsuccessful(order);
         }
 
-        var result = processor.ExecuteRequest();
+        var result = await processor.ExecuteRequest();
 
         if (result.Id == OrderExecutionResultState.Successful.Id)
         {

@@ -109,7 +109,7 @@ public class SendPacketProcess : BaseSendPacketProcess
         // Create the waiting task for sending (preparing waiting has to be done)
         _taskCompletionSourceSend = new TaskCompletionSource<bool>(TaskCreationOptions.RunContinuationsAsynchronously);
 
-        AsyncHelper.FireAndForget(() =>
+        AsyncHelper.FireAndForget(async void () =>
         {
             try
             {
@@ -122,9 +122,9 @@ public class SendPacketProcess : BaseSendPacketProcess
                     return;
                 }
 
-                Task.Delay(50).Wait();
+                await Task.Delay(50);
 
-                SendMessage();
+                await SendMessage();
             }
             catch (Exception e)
             {

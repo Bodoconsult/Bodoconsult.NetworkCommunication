@@ -41,5 +41,5 @@ public interface IDeviceRequestAnswerStep : IRequestAnswerStep
     /// <summary>
     /// Process the current request answer step in a chain
     /// </summary>
-    public void ProcessChainElement();
+    public Task ProcessChainElement();
 }

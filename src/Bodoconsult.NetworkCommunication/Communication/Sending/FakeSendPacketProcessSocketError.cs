@@ -14,23 +14,25 @@ public class FakeSendPacketProcessSocketError : FakeSendPacketProcess
     /// <summary>
     /// Excute the step
     /// </summary>
-    public override void Execute()
+    public override Task Execute()
     {
-        SendMessage();
-        ProcessExecutionResult = OrderExecutionResultState.Unsuccessful;
+        return Task.Run(() =>
+        {
+            SendMessage();
+            ProcessExecutionResult = OrderExecutionResultState.Unsuccessful;
+        });
     }
 
     /// <summary>
     /// Send the message
     /// </summary>
-    public override bool SendMessage()
+    public override Task<bool> SendMessage()
     {
         ArgumentNullException.ThrowIfNull(DataMessagingConfig);
         ArgumentNullException.ThrowIfNull(Message);
 
         DataMessagingConfig.RaiseDataMessageNotSentDelegate?.Invoke(new ReadOnlyMemory<byte>(Message.RawMessageData.ToArray()), "Blubb");
         DataMessagingConfig.RaiseComDevCloseRequestDelegate?.Invoke("Blubb");
-        return true;
+        return Task.FromResult(true);
     }
-
 }

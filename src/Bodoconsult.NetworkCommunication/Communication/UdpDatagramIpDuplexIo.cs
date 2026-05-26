@@ -106,15 +106,11 @@ public class UdpDatagramIpDuplexIo: BaseDuplexIo
             {
                 SetInProgress(false);
 
-                Receiver ??= new UdpDatagramIpDuplexIoReceiver(DataMessagingConfig,
-                    _duplexIoIsWorkInProgressDelegate,
-                    _duplexIoNoDataDelegate);
+                Receiver ??= new UdpDatagramIpDuplexIoReceiver(DataMessagingConfig);
 
                 await Receiver.StartReceiver();
 
-                Sender ??= new UdpDatagramIpDuplexIoSender(DataMessagingConfig,
-                    _duplexIoIsWorkInProgressDelegate,
-                    _duplexIoNoDataDelegate);
+                Sender ??= new UdpDatagramIpDuplexIoSender(DataMessagingConfig);
             }
             catch (Exception e)
             {

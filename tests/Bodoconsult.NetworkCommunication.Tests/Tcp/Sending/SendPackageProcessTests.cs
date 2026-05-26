@@ -15,7 +15,7 @@ namespace Bodoconsult.NetworkCommunication.Tests.Tcp.Sending;
 [TestFixture]
 [NonParallelizable]
 [SingleThreaded]
-public class SendPackageProcessDuplexIoTests
+public class SendPackageProcessTests
 {
     private readonly IAppLoggerProxy _logger = TestDataHelper.Logger;
 
@@ -97,7 +97,7 @@ public class SendPackageProcessDuplexIoTests
     }
 
     [Test]
-    public void Execute_ValidSetup_PropsSetCorrectly()
+    public async Task Execute_ValidSetup_PropsSetCorrectly()
     {
         // Arrange 
         IDataMessagingConfig dataMessagingConfig = new DefaultDataMessagingConfig();
@@ -117,7 +117,7 @@ public class SendPackageProcessDuplexIoTests
         p.RegisterWaitState();
 
         // Act  
-        p.Execute();
+        await p.Execute();
 
         // Assert
         Assert.That(p.ProcessExecutionResult, Is.SameAs(OrderExecutionResultState.Successful));
@@ -125,7 +125,7 @@ public class SendPackageProcessDuplexIoTests
     }
 
     [Test]
-    public void Execute_ValidSetupNoHandshakeReceived_PropsSetCorrectly()
+    public async Task Execute_ValidSetupNoHandshakeReceived_PropsSetCorrectly()
     {
         // Arrange 
         IDataMessagingConfig dataMessagingConfig = new DefaultDataMessagingConfig();
@@ -148,7 +148,7 @@ public class SendPackageProcessDuplexIoTests
         p.RegisterWaitState();
 
         // Act  
-        p.Execute();
+        await p.Execute();
 
         // Assert
         using (Assert.EnterMultipleScope())
@@ -160,7 +160,7 @@ public class SendPackageProcessDuplexIoTests
 
 
     [Test]
-    public void Execute_ValidSetupHandshakeReceivedAfter2ndTry_PropsSetCorrectly()
+    public async Task Execute_ValidSetupHandshakeReceivedAfter2ndTry_PropsSetCorrectly()
     {
         // Arrange 
         IDataMessagingConfig dataMessagingConfig = new DefaultDataMessagingConfig();
@@ -183,14 +183,14 @@ public class SendPackageProcessDuplexIoTests
         p.RegisterWaitState();
 
         // Act  
-        p.Execute();
+        await p.Execute();
 
         // Assert
         Assert.That(p.ProcessExecutionResult, Is.SameAs(OrderExecutionResultState.Successful));
     }
 
     [Test]
-    public void Execute_ValidSetupDelayedHandshake_PropsSetCorrectly()
+    public async Task Execute_ValidSetupDelayedHandshake_PropsSetCorrectly()
     {
         // Arrange 
         IDataMessagingConfig dataMessagingConfig = new DefaultDataMessagingConfig();
@@ -211,7 +211,7 @@ public class SendPackageProcessDuplexIoTests
         p.RegisterWaitState();
 
         // Act  
-        p.Execute();
+        await p.Execute();
 
         // Assert
         Assert.That(p.ProcessExecutionResult, Is.SameAs(OrderExecutionResultState.Successful));

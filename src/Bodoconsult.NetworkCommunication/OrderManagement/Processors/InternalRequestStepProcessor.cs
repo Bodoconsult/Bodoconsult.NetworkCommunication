@@ -109,7 +109,7 @@ public class InternalRequestStepProcessor : IInternalRequestStepProcessor
     /// Execute the request
     /// </summary>
     /// <returns>Execution result</returns>
-    public IOrderExecutionResultState ExecuteRequest()
+    public async Task<IOrderExecutionResultState> ExecuteRequest()
     {
         try
         {
@@ -121,7 +121,7 @@ public class InternalRequestStepProcessor : IInternalRequestStepProcessor
                 return OrderExecutionResultState.Unsuccessful;
             }
 
-            var result = ExecuteInternalLoop(requestSpec);
+            var result = await ExecuteInternalLoop(requestSpec);
 
             if (result.Id == OrderExecutionResultState.Successful.Id)
             {
@@ -143,7 +143,7 @@ public class InternalRequestStepProcessor : IInternalRequestStepProcessor
     /// </summary>
     /// <param name="requestSpec">Current request spec</param>
     /// <returns>Execution result</returns>
-    private IOrderExecutionResultState ExecuteInternalLoop(IInternalRequestSpec requestSpec)
+    private async Task<IOrderExecutionResultState> ExecuteInternalLoop(IInternalRequestSpec requestSpec)
     {
         var repeatCount = 0;
         IOrderExecutionResultState result;
@@ -155,7 +155,7 @@ public class InternalRequestStepProcessor : IInternalRequestStepProcessor
                 return OrderExecutionResultState.Unsuccessful;
             }
 
-            result = ExecuteInternal(requestSpec);
+            result = await ExecuteInternal(requestSpec);
             repeatCount++;
 
             if (result.Id == OrderExecutionResultState.Successful.Id ||
@@ -173,8 +173,10 @@ public class InternalRequestStepProcessor : IInternalRequestStepProcessor
     /// </summary>
     /// <param name="requestSpec"></param>
     /// <returns></returns>
-    private IOrderExecutionResultState ExecuteInternal(IInternalRequestSpec requestSpec)
+    private async Task<IOrderExecutionResultState> ExecuteInternal(IInternalRequestSpec requestSpec)
     {
+
+
         var step = requestSpec.RequestAnswerSteps[0];
 
         var s = $"{OrderLoggerId}RequestAnswerStep {0}: prepare start";
@@ -186,9 +188,23 @@ public class InternalRequestStepProcessor : IInternalRequestStepProcessor
         }
 
         // Call action before step is executed if necessary
-        step.BeforeExecuteActionDelegate?.Invoke(requestSpec.TransportObject, requestSpec.ParameterSet);
+        var result = await Task.Run(() =>
+        {
+            try
+            {
+                step.BeforeExecuteActionDelegate?.Invoke(requestSpec.TransportObject, requestSpec.ParameterSet);
+                return OrderExecutionResultState.Successful;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
 
-        if (IsCancelled)
+
+        });
+
+        if (result != OrderExecutionResultState.Successful|| IsCancelled)
         {
             return OrderExecutionResultState.Unsuccessful;
         }
@@ -197,8 +213,8 @@ public class InternalRequestStepProcessor : IInternalRequestStepProcessor
         step.WasSuccessful = true;
 
         // Now execute the internal request
-        var result = step.HandleResult();
-        return result.ExecutionResult;
+        var result2 = await step.HandleResult();
+        return result2.ExecutionResult;
     }
 
 

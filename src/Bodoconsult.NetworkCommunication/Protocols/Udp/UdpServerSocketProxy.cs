@@ -166,6 +166,7 @@ public class UdpServerSocketProxy : BaseUpdSocketProxy
     /// <returns></returns>
     public override Task ReceiverLoop(AutoResetEvent waitForLoopStarted)
     {
+        waitForLoopStarted.Set();
         return Task.CompletedTask;
 
         //try

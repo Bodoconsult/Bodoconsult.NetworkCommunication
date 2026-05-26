@@ -75,9 +75,9 @@ public abstract class BaseSimpleDeviceBusinessLogicAdapter : ISimpleDeviceBusine
     /// </summary>
     /// <param name="message">Outbound datamessage</param>
     /// <returns>Message sending result</returns>
-    public virtual MessageSendingResult SendMessage(IOutboundDataMessage message)
+    public virtual async Task<MessageSendingResult> SendMessage(IOutboundDataMessage message)
     {
         ArgumentNullException.ThrowIfNull(IpDevice.CommunicationAdapter);
-        return IpDevice.CommunicationAdapter.SendDataMessage(message);
+        return await IpDevice.CommunicationAdapter.SendDataMessage(message);
     }
 }

@@ -13,22 +13,25 @@ public class FakeSendPacketProcessEncodingError : FakeSendPacketProcess
     /// <summary>
     /// Excute the step
     /// </summary>
-    public override void Execute()
+    public override Task Execute()
     {
-        SendMessage();
-        ProcessExecutionResult = OrderExecutionResultState.Unsuccessful;
+        return Task.Run(() =>
+        {
+            SendMessage();
+            ProcessExecutionResult = OrderExecutionResultState.Unsuccessful;
+        });
     }
 
     /// <summary>
     /// Send the message
     /// </summary>
-    public override bool SendMessage()
+    public override Task<bool> SendMessage()
     {
         ArgumentNullException.ThrowIfNull(DataMessagingConfig);
         ArgumentNullException.ThrowIfNull(Message);
 
         DataMessagingConfig.RaiseDataMessageSentDelegate?.Invoke(new ReadOnlyMemory<byte>(Message.RawMessageData.ToArray()));
-        return true;
+        return Task.FromResult(true);
     }
 
 }

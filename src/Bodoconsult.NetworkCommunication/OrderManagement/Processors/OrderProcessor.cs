@@ -60,6 +60,9 @@ public class OrderProcessor : BaseOrderProcessor
         order.IsFinished = true;
         order.Benchmark?.AddStep("Disposing now");
 
+        //// Log state now
+        //LogInformation($"OrderProcessingFinished: {OrderPipeline.CurrentOrderState}");
+
         // Async order: dispose now
 
         if (!order.IsRunningSync)
@@ -75,7 +78,7 @@ public class OrderProcessor : BaseOrderProcessor
             StopExecutionOfSyncOrder(order.Id, erg);
         }
 
-        LogInformation( $"OrderProcessingFinished: {OrderPipeline.CurrentOrderState}");
+        //LogInformation( $"OrderProcessingFinished: {OrderPipeline.CurrentOrderState}");
     }
 
     /// <summary>

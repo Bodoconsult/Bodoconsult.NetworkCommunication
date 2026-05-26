@@ -110,10 +110,10 @@ public class FakeIpCommunicationAdapter : ICommunicationAdapter
     /// </summary>
     /// <param name="command">Command to send</param>
     /// <returns>Reply of the device</returns>
-    public MessageSendingResult SendDataMessage(IOutboundDataMessage command)
+    public async Task<MessageSendingResult> SendDataMessage(IOutboundDataMessage command)
     {
         WasSent = true;
-        Task.Delay(500);
+        await Task.Delay(500);
         return new MessageSendingResult(command, OrderExecutionResultState.Successful);
     }
 

@@ -42,7 +42,7 @@ public class OrderManager : IOrderManager
             throw new NullReferenceException("Data messaging config may not be null");
         }
 
-        MessagingConfig.RaiseAppLayerDataMessageReceivedDelegate = OnDeviceMessageReceived;
+        MessagingConfig.RaiseAppLayerDataMessageReceivedDelegate = OrderReceiver.AddReceivedMessage; ;
         _appLogger.LogDebug($"{_loggerId}Order processing bound to receiver");
     }
 
@@ -76,16 +76,16 @@ public class OrderManager : IOrderManager
         OrderProcessor.AddOrder(order);
     }
 
-    /// <summary>
-    /// Event handling method for binding to <see cref="IOrderManager.MessagingConfig"/>.NotifydeviceMessageReceivedDelegate
-    /// </summary>
-    /// <param name="dataMessage">Received message</param>
-    public void OnDeviceMessageReceived(IInboundDataMessage dataMessage)
-    {
-        //Trace.TraceInformation($"{_loggerId}message received: {dataMessage.ToInfoString()}");
-        //_appLogger.LogDebug($"{_loggerId}message received: {dataMessage.ToInfoString()}");
-        OrderReceiver.AddReceivedMessage(dataMessage);
-    }
+    ///// <summary>
+    ///// Event handling method for binding to <see cref="IOrderManager.MessagingConfig"/>.NotifydeviceMessageReceivedDelegate
+    ///// </summary>
+    ///// <param name="dataMessage">Received message</param>
+    //public void OnDeviceMessageReceived(IInboundDataMessage dataMessage)
+    //{
+    //    //Trace.TraceInformation($"{_loggerId}message received: {dataMessage.ToInfoString()}");
+    //    //_appLogger.LogDebug($"{_loggerId}message received: {dataMessage.ToInfoString()}");
+    //    OrderReceiver.AddReceivedMessage(dataMessage);
+    //}
 
     /// <summary>
     /// Starts the watchdog for the order processing

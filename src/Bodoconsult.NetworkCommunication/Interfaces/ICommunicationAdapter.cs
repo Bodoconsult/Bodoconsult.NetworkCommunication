@@ -72,7 +72,7 @@ public interface ICommunicationAdapter : IDisposable
     /// </summary>
     /// <param name="command">Command to send</param>
     /// <returns>Reply of the device</returns>
-    MessageSendingResult SendDataMessage(IOutboundDataMessage command);
+    Task<MessageSendingResult> SendDataMessage(IOutboundDataMessage command);
 
     /// <summary>
     /// Cancel the currently running operation on the device

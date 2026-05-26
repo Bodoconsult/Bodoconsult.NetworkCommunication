@@ -141,7 +141,7 @@ public class DeviceRequestStepProcessor : IDeviceRequestStepProcessor
     /// Execute the request
     /// </summary>
     /// <returns>Execution result</returns>
-    public IOrderExecutionResultState ExecuteRequest()
+    public async Task<IOrderExecutionResultState> ExecuteRequest()
     {
         try
         {
@@ -181,7 +181,7 @@ public class DeviceRequestStepProcessor : IDeviceRequestStepProcessor
                     }
 
                     repeatCount++;
-                    result = ExecuteRequest(message, requestSpec);
+                    result = await ExecuteRequest(message, requestSpec);
 
                     RequestSpec.AppLogger?.LogDebug($"{RequestSpec.OrderLoggerId}: ExecuteRequest: {result} at {repeatCount} try");
 
@@ -250,103 +250,127 @@ public class DeviceRequestStepProcessor : IDeviceRequestStepProcessor
     /// <returns>Execution result</returns>
     /// <remarks>The execution of a request step consists of two major steps. Step 1 is sending a message to the device. Step 2 is waiting for the answer of the device. The device is normally responsive.
     /// A timelag between step1 and step2 may lead to failing device orders due to "lost" device messages. Therefore we start step 2 before step 1 is fired.</remarks>
-    public IOrderExecutionResultState ExecuteRequest(IOutboundDataMessage message, IDeviceRequestSpec requestSpec)
+    public async Task<IOrderExecutionResultState> ExecuteRequest(IOutboundDataMessage message, IDeviceRequestSpec requestSpec)
     {
-        // Set the next request answer step
-        requestSpec.CurrentSentMessage = message;
-
-        var s = $"{requestSpec.OrderLoggerId}ExecuteRequest: prepare start";
-        requestSpec.AppLogger?.LogDebug(s);
-
-        // ******************
-        // Start step 2: start the message receiver process on order execution side and wait for incoming messages
-        // ******************
-        var timeout = CalculateTimeout(requestSpec.Timeout);
-
-        if (IsCancelled)
+        try
         {
-            return OrderExecutionResultState.Unsuccessful;
-        }
+            // Set the next request answer step
+            requestSpec.CurrentSentMessage = message;
 
-        _tcs = new CancellationTokenSource(timeout);
-        var task = RunStep2Task(this, _tcs);
-
-        if (!IsCancelled)
-        {
-            // ******************
-            // Start step 1: send the message and wait for handshake
-            // ******************
-            return RunStep1(message, requestSpec, task, _tcs);
-        }
-
-        _tcs.Dispose();
-        Wait(task);
-        return OrderExecutionResultState.Unsuccessful;
-    }
-
-    private static IOrderExecutionResultState RunStep1(IOutboundDataMessage message, IDeviceRequestSpec requestSpec,
-        Task<IOrderExecutionResultState> task, CancellationTokenSource tcs)
-    {
-        var rs = requestSpec.GetType().Name;
-
-        string s;
-        var result = requestSpec.SendDataMessageDelegate?.Invoke(message) ?? MessageSendingResultHelper.Error();
-        requestSpec.AppLogger?.LogInformation($"{requestSpec.OrderLoggerId}{rs}: message sent {requestSpec.CurrentSentMessage?.ToShortInfoString()} with result {result.ProcessExecutionResult}");
-
-        // Handle result from sending
-        var execResult = result.ProcessExecutionResult;
-
-        // If the expected handshake for the sent message is NOT correct
-        if (!requestSpec.ExpectedHandshakeForSentMessage.Contains(execResult))
-        {
-            s = $"{requestSpec.OrderLoggerId}{rs}: sending message ended with unexpected handshake {execResult} {result.Message}"
-                .TrimEnd();
+            var s = $"{requestSpec.OrderLoggerId}ExecuteRequest: prepare start";
             requestSpec.AppLogger?.LogDebug(s);
 
-            //CancelTask(task);
-            tcs.Dispose();
-            Wait(task);
-            return result.ProcessExecutionResult;
-        }
+            // ******************
+            // Start step 2: start the message receiver process on order execution side and wait for incoming messages
+            // ******************
+            var timeout = CalculateTimeout(requestSpec.Timeout);
 
-        // A NACK was received
-        if (requestSpec.RequestRequiresOnlyAHandshakeAsAnswer && execResult == OrderExecutionResultState.Nack)
+            if (IsCancelled)
+            {
+                return OrderExecutionResultState.Unsuccessful;
+            }
+
+            _tcs = new CancellationTokenSource(timeout);
+            var task = RunStep2Task(this, _tcs);
+
+            if (!IsCancelled)
+            {
+                // ******************
+                // Start step 1: send the message and wait for handshake
+                // ******************
+                var result = await RunStep1(message, requestSpec, task, _tcs);
+                return result;
+            }
+
+            _tcs.Dispose();
+            Wait(task);
+            return OrderExecutionResultState.Unsuccessful;
+        }
+        catch (Exception e)
         {
-            //CancelTask(task);
-            tcs.Dispose();
-            Wait(task);
-            return HandleNack(requestSpec, message, execResult);
+            Console.WriteLine(e);
+            return OrderExecutionResultState.Unsuccessful;
+        }
+        
+    }
+
+    private static async Task<IOrderExecutionResultState> RunStep1(IOutboundDataMessage message, IDeviceRequestSpec requestSpec,
+        Task<IOrderExecutionResultState> task, CancellationTokenSource tcs)
+    {
+        try
+        {
+            var rs = requestSpec.GetType().Name;
+
+            ArgumentNullException.ThrowIfNull(requestSpec.SendDataMessageDelegate);
+
+            string s;
+            var result = await requestSpec.SendDataMessageDelegate.Invoke(message);
+            requestSpec.AppLogger?.LogInformation($"{requestSpec.OrderLoggerId}{rs}: message sent {requestSpec.CurrentSentMessage?.ToShortInfoString()} with result {result.ProcessExecutionResult}");
+
+            // Handle result from sending
+            var execResult = result.ProcessExecutionResult;
+
+            // If the expected handshake for the sent message is NOT correct
+            if (!requestSpec.ExpectedHandshakeForSentMessage.Contains(execResult))
+            {
+                s = $"{requestSpec.OrderLoggerId}{rs}: sending message ended with unexpected handshake {execResult} {result.Message}"
+                    .TrimEnd();
+                requestSpec.AppLogger?.LogDebug(s);
+
+                //CancelTask(task);
+                tcs.Dispose();
+                Wait(task);
+                return result.ProcessExecutionResult;
+            }
+
+            // A NACK was received
+            if (requestSpec.RequestRequiresOnlyAHandshakeAsAnswer && execResult == OrderExecutionResultState.Nack)
+            {
+                //CancelTask(task);
+                tcs.Dispose();
+                Wait(task);
+                return HandleNack(requestSpec, message, execResult);
+            }
+
+            // The requested handshake was received
+            s = $"{requestSpec.OrderLoggerId}{rs}:sent message {message.ToShortInfoString()}";
+            requestSpec.AppLogger?.LogDebug(s);
+
+            var result2 = Wait(task);
+
+            s = $"{requestSpec.OrderLoggerId}{rs}: wait for answer done: {result2}";
+            requestSpec.AppLogger?.LogDebug(s);
+
+            return result2;
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            throw;
         }
 
-        // The requested handshake was received
-        s = $"{requestSpec.OrderLoggerId}{rs}:sent message {message.ToShortInfoString()}";
-        requestSpec.AppLogger?.LogDebug(s);
-
-        var result2 = Wait(task);
-
-        s = $"{requestSpec.OrderLoggerId}{rs}: wait for answer done: {result2}";
-        requestSpec.AppLogger?.LogDebug(s);
-
-        return result2;
+        
     }
 
     private static Task<IOrderExecutionResultState> RunStep2Task(DeviceRequestStepProcessor processor, CancellationTokenSource tcs)
     {
-        return Task.Run(() =>
+        return Task.Run(async () =>
         {
             try
             {
-                processor.ProcessChain();
+                await processor.ProcessChain();
 
-                processor.RequestSpec.AppLogger?.LogDebug($"{processor.RequestSpec.OrderLoggerId}RSP: left chain processing: {processor.Result}");
+                processor.RequestSpec.AppLogger?.LogDebug(
+                    $"{processor.RequestSpec.OrderLoggerId}RSP: left chain processing: {processor.Result}");
                 return processor.Result;
             }
             catch (Exception e)
             {
-                processor.RequestSpec.AppLogger?.LogError($"{processor.RequestSpec.OrderLoggerId}processing chain failed", e);
+                processor.RequestSpec.AppLogger?.LogError(
+                    $"{processor.RequestSpec.OrderLoggerId}processing chain failed", e);
                 return OrderExecutionResultState.Unsuccessful;
             }
-        }, tcs.Token);
+        });
     }
 
     private static int CalculateTimeout(int timeout)
@@ -372,6 +396,7 @@ public class DeviceRequestStepProcessor : IDeviceRequestStepProcessor
                 return OrderExecutionResultState.Unsuccessful;
             }
             task.Wait();
+
             return task.Result;
         }
         catch
@@ -447,7 +472,7 @@ public class DeviceRequestStepProcessor : IDeviceRequestStepProcessor
     /// <summary>
     ///  Proces sthe defined chain
     /// </summary>
-    public void ProcessChain()
+    public async Task ProcessChain()
     {
         var requestSpec = RequestSpec;
 
@@ -462,7 +487,7 @@ public class DeviceRequestStepProcessor : IDeviceRequestStepProcessor
             StepHasChanged(CurrentChainElement, requestSpec);
 
             // Now process the step
-            element.ProcessChainElement();
+            await element.ProcessChainElement();
 
             // An error has happend: leave chain here
             if (!Result.Equals(OrderExecutionResultState.Successful))

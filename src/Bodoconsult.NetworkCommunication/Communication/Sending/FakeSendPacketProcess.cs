@@ -11,15 +11,16 @@ namespace Bodoconsult.NetworkCommunication.Communication.Sending;
 /// </summary>
 public class FakeSendPacketProcess : ISendPacketProcess
 {
-
-
     /// <summary>
     /// Excute the step
     /// </summary>
-    public virtual void Execute()
+    public virtual Task Execute()
     {
-        SendMessage();
-        ProcessExecutionResult = OrderExecutionResultState.Successful;
+        return Task.Run(() =>
+        {
+            SendMessage();
+            ProcessExecutionResult = OrderExecutionResultState.Successful;
+        });
     }
 
     /// <summary>
@@ -98,14 +99,14 @@ public class FakeSendPacketProcess : ISendPacketProcess
     /// <summary>
     /// Send the message
     /// </summary>
-    public virtual bool SendMessage()
+    public virtual Task<bool> SendMessage()
     {
         ArgumentNullException.ThrowIfNull(DataMessagingConfig);
         ArgumentNullException.ThrowIfNull(Message);
 
         // Do nothing
         DataMessagingConfig.RaiseDataMessageSentDelegate?.Invoke(Message.RawMessageData);
-        return true;
+        return Task.FromResult(true);
     }
 
     /// <summary>

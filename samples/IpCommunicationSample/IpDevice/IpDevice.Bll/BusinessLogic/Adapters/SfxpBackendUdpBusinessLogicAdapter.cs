@@ -1,5 +1,6 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
+using System.Diagnostics;
 using Bodoconsult.App.Abstractions.Interfaces;
 using Bodoconsult.App.BusinessTransactions.Replies;
 using Bodoconsult.App.Helpers;
@@ -159,6 +160,7 @@ public class SfxpBackendUdpBusinessLogicAdapter : BaseSimpleDeviceBusinessLogicA
         {
             try
             {
+                Debug.Print($"Send message {msg.ToShortInfoString()}");
                 IpDevice.CommunicationAdapter.SendDataMessage(msg);
             }
             catch (Exception e)

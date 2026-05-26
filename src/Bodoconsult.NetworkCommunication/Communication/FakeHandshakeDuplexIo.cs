@@ -29,7 +29,7 @@ public class FakeHandshakeDuplexIo : IDuplexIo
     public int NumberOfTriesTheHandshakeIsReceived { get; set; }
 
     /// <summary>
-    /// The handshale message to be "received" on sending a message
+    /// The  message to be "received" on sending a message
     /// </summary>
     public IInboundHandShakeMessage HandShakeDataMessage { get; set; } = new InboundHandshakeMessage();
 

@@ -16,7 +16,6 @@ public class UdpDatagramIpDuplexIoReceiver : BaseDuplexIoReceiver
 {
     private readonly BufferPool<DummyMemory> _bufferPool = new();
     private ReadOnlySequence<byte> _buffer = new([]);
-    private static readonly ArrayPool<byte> ArrayPool = ArrayPool<byte>.Shared;
     private readonly ProducerConsumerQueue<DummyMemory> _currentPipeline = new();
     private long _messageCounter;
 
@@ -34,14 +33,8 @@ public class UdpDatagramIpDuplexIoReceiver : BaseDuplexIoReceiver
     /// Default ctor
     /// </summary>
     /// <param name="config">Current device comm settings</param>
-    /// <param name="duplexIoIsWorkInProgressDelegate">Delegate for checking if the socket is wokring currently</param>
-    /// <param name="duplexIoSetNotInProgressDelegate">Delegate to set socket state to no work in progress</param>
-    public UdpDatagramIpDuplexIoReceiver(IDataMessagingConfig config,
-        DuplexIoIsWorkInProgressDelegate duplexIoIsWorkInProgressDelegate,
-        DuplexIoNoDataDelegate duplexIoSetNotInProgressDelegate) : base(config)
+    public UdpDatagramIpDuplexIoReceiver(IDataMessagingConfig config) : base(config)
     {
-        DuplexIoIsWorkInProgressDelegate = duplexIoIsWorkInProgressDelegate;
-        DuplexIoNoDataDelegate = duplexIoSetNotInProgressDelegate;
 
         ArgumentNullException.ThrowIfNull(config.SocketProxy);
         config.SocketProxy.StartReceiverLoop(SocketReceivedData);
