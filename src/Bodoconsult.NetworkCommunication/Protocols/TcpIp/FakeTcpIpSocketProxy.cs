@@ -165,5 +165,4 @@ public class FakeTcpIpSocketProxy : BaseTcpIpSocketProxy
             // Do nothing
         });
     }
-
 }

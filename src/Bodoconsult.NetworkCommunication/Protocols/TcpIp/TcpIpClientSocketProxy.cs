@@ -2,6 +2,7 @@
 // Licence MIT
 
 using Bodoconsult.App.Abstractions.Interfaces;
+using Bodoconsult.App.Helpers;
 using Bodoconsult.NetworkCommunication.Helpers;
 using Bodoconsult.NetworkCommunication.Interfaces;
 using System.Net;
@@ -242,17 +243,14 @@ public class TcpIpClientSocketProxy : BaseTcpIpSocketProxy
         {
             await Socket.ConnectAsync(ep);
             Logger.LogInformation($"{LoggerId}connected to {IpAddress}:{Port}");
+
+            StartReceiverLoop();
         }
         catch (Exception e)
         {
             Logger.LogError($"{LoggerId}{e}");
         }
     }
-
-    /// <summary>
-    /// Current socket (only for testing purposes, do not access directly in production code)
-    /// </summary>
-    public Socket? Socket { get; protected set; }
 
     /// <summary>
     /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.

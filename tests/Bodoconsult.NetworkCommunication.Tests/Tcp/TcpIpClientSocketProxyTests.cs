@@ -1,11 +1,13 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
-using System.Buffers;
-using System.Diagnostics;
-using System.Net;
 using Bodoconsult.NetworkCommunication.Protocols.TcpIp;
 using Bodoconsult.NetworkCommunication.Testing;
 using Bodoconsult.NetworkCommunication.Tests.Helpers;
+using System.Buffers;
+using System.Collections.Concurrent;
+using System.Diagnostics;
+using System.Net;
+using Bodoconsult.NetworkCommunication.Interfaces;
 
 namespace Bodoconsult.NetworkCommunication.Tests.Tcp;
 
@@ -15,6 +17,9 @@ namespace Bodoconsult.NetworkCommunication.Tests.Tcp;
 internal class TcpIpClientSocketProxyTests
 {
     private int _serverCount;
+
+    private readonly ConcurrentBag<Memory<byte>> _serverReceivedMessages = [];
+    private readonly ConcurrentBag<Memory<byte>> _clientReceivedMessages = [];
 
     [Test]
     public async Task SendReceive_PermanentMode_MessageReceived()
@@ -27,7 +32,7 @@ internal class TcpIpClientSocketProxyTests
 
             var ip = IPAddress.Parse("127.0.0.1");
             var port = TestDataHelper.GetRandomPort();
-            
+
 
             var cts = new CancellationTokenSource(5000);
 
@@ -41,7 +46,9 @@ internal class TcpIpClientSocketProxyTests
                 client.IpAddress = ip;
                 client.Port = port;
                 await client.Connect();
-                client.Pipeline.SocketReceivedDataDelegate = SocketReceivedDataDelegate;
+                client.Pipeline.SocketReceivedDataDelegate = ClientSocketReceivedDataDelegate;
+
+                SimulateSubscriber(client);
 
                 try
                 {
@@ -75,6 +82,7 @@ internal class TcpIpClientSocketProxyTests
 
             // Assert
             Assert.That(_serverCount, Is.GreaterThan(3));
+            Assert.That(_clientReceivedMessages.Count, Is.GreaterThan(3));
         }
         catch (Exception e)
         {
@@ -84,14 +92,18 @@ internal class TcpIpClientSocketProxyTests
 
     }
 
-    private void SocketReceivedDataDelegate(ref ReadOnlySequence<byte> data)
+    private void SimulateSubscriber(ITcpIpSocketProxy socketProxy)
     {
-        throw new NotImplementedException();
+        while (!socketProxy.CancellationTokenSource.IsCancellationRequested)
+        {
+            socketProxy.Pipeline.ReadBuffer();
+        }
     }
 
-    private void SocketReceivedDataDelegate(Memory<byte> data)
+    private void ClientSocketReceivedDataDelegate(ref ReadOnlySequence<byte> data)
     {
-        Debug.Print($"Client: received {data.Length} bytes");
+        _clientReceivedMessages.Add(data.ToArray());
+        data = data.Slice()
     }
 
     //[Test]

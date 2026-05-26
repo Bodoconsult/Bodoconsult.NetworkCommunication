@@ -22,9 +22,9 @@ public class TcpTestClient :   BaseTcpIpDevice
     public TcpTestClient(IPAddress ipAddress, int port)
     {
         IsServer = false;
-        LoggerId = "TcpClient";
+        LoggerId = "TcpClient ";
 
-        Debug.Print($"{LoggerId}: port {port}");
+        Debug.Print($"{LoggerId}port {port}");
 
         Socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp)
         {

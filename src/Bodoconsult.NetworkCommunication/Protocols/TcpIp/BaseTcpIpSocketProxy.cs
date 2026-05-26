@@ -1,9 +1,11 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
 using Bodoconsult.App.Abstractions.Interfaces;
+using Bodoconsult.App.Helpers;
 using Bodoconsult.NetworkCommunication.Delegates;
 using Bodoconsult.NetworkCommunication.Interfaces;
 using System.Net;
+using System.Net.Sockets;
 
 namespace Bodoconsult.NetworkCommunication.Protocols.TcpIp;
 
@@ -21,6 +23,11 @@ public abstract class BaseTcpIpSocketProxy : ITcpIpSocketProxy
         Logger = logger;
         Pipeline = new StreamPipeline();
     }
+
+    /// <summary>
+    /// Current socket (only for testing purposes, do not access directly in production code)
+    /// </summary>
+    public Socket? Socket { get; protected set; }
 
     /// <summary>
     /// Delegate fired if the socket was receiving data
@@ -208,4 +215,73 @@ public abstract class BaseTcpIpSocketProxy : ITcpIpSocketProxy
     /// Stream pipeline
     /// </summary>
     public IStreamPipeline Pipeline { get; }
+
+    /// <summary>
+    /// Start the receiver loop
+    /// </summary>
+    public void StartReceiverLoop()
+    {
+        AutoResetEvent wait = new(false);
+
+        // Start receive loop now
+        Task.Run(async () =>
+        {
+            await ReceiverLoop(wait);
+        });
+
+        wait.WaitOne(100);
+    }
+
+    /// <summary>
+    /// Run the receiver loop </summary>
+    /// <param name="waitForLoopStarted"></param>
+    /// <returns></returns>
+    public async Task ReceiverLoop(AutoResetEvent waitForLoopStarted)
+    {
+        try
+        {
+            ArgumentNullException.ThrowIfNull(Socket, $"{LoggerId}UdpClient is null");
+
+            Logger.LogInformation($"{LoggerId}ReceiverLoop started");
+
+            waitForLoopStarted.Set();
+
+            while (!CancellationTokenSource.IsCancellationRequested)
+            {
+                var result = 0;
+
+                var buffer = Pipeline.GetBuffer();
+
+                try
+                {
+                    result = await Socket.ReceiveAsync(buffer, SocketFlags.None);
+                    Logger.LogInformation($"{LoggerId}Received {result} bytes");
+                }
+                catch (OperationCanceledException)
+                {
+                    break;
+                }
+                catch (Exception e)
+                {
+                    Logger.LogError($"{LoggerId}Receiving failed ", e);
+                }
+
+                if (result <= 0)
+                {
+                    //await Task.Delay(5);
+                    continue;
+                }
+
+                await Pipeline.WriteToPipeline(result);
+            }
+        }
+        catch (OperationCanceledException)
+        {
+
+        }
+        catch (Exception e)
+        {
+            Logger.LogError($"{LoggerId}Receiver loop failed", e);
+        }
+    }
 }

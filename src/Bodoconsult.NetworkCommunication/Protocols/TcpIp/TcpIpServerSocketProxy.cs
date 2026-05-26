@@ -253,17 +253,13 @@ public class TcpIpServerSocketProxy : BaseTcpIpSocketProxy
 
             _isBound = Socket != null;
 
+            StartReceiverLoop();
+
             return true;
         });
 
         return task;
     }
-   
-
-    /// <summary>
-    /// Current socket (only for testing purposes, do not access directly in production code)
-    /// </summary>
-    public Socket? Socket { get; protected set; }
 
     /// <summary>
     /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.

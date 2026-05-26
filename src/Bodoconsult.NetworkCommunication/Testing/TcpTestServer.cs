@@ -24,9 +24,9 @@ public class TcpTestServer : BaseTcpIpDevice
     public TcpTestServer(IPAddress ipAddress, int port)
     {
         IsServer = true;
-        LoggerId = "TcpServer";
+        LoggerId = "TcpServer: ";
 
-        Debug.Print($"{LoggerId}: port {port}");
+        Debug.Print($"{LoggerId}port {port}");
 
         _listener = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp)
         {
@@ -77,9 +77,9 @@ public class TcpTestServer : BaseTcpIpDevice
     {
         try
         {
-            ArgumentNullException.ThrowIfNull(Socket, $"TcpClient: Socket is null");
+            ArgumentNullException.ThrowIfNull(Socket, $"{LoggerId}Socket is null");
 
-            Debug.Print($"TcppClient: Error: ReceiverLoop started");
+            Debug.Print($"{LoggerId}Error: ReceiverLoop started");
 
             waitForLoopStarted.Set();
 
@@ -90,7 +90,7 @@ public class TcpTestServer : BaseTcpIpDevice
                 try
                 {
                     result = await Socket.ReceiveAsync(buffer, SocketFlags.None, CancellationTokenSource.Token);
-                    Debug.Print($"TcppClient: Error: received {result} bytes");
+                    Debug.Print($"{LoggerId}Error: received {result} bytes");
                 }
                 catch (OperationCanceledException)
                 {
@@ -98,7 +98,7 @@ public class TcpTestServer : BaseTcpIpDevice
                 }
                 catch (Exception e)
                 {
-                    Debug.Print($"TcppClient: Error: Receiving failed ", e);
+                    Debug.Print($"{LoggerId}Error: Receiving failed ", e);
                 }
 
                 if (result == 0)
@@ -115,7 +115,7 @@ public class TcpTestServer : BaseTcpIpDevice
         }
         catch (Exception e)
         {
-            Debug.Print($"TcppClient: Error: Receiver loop failed", e);
+            Debug.Print($"{LoggerId}Error: Receiver loop failed", e);
         }
     }
 

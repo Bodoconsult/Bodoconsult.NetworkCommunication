@@ -14,11 +14,12 @@ namespace Bodoconsult.NetworkCommunication.Protocols
     public class StreamPipeline : IStreamPipeline
     {
         private readonly Pipe _pipe = new();
+        private bool _isStarted;
 
         /// <summary>
         /// Buffer size to use
         /// </summary>
-        public int BufferSize { get; set; } = 1024;
+        public int BufferSize { get; set; } = 512;
 
         /// <summary>
         /// Delegate to receive data from socket
@@ -39,47 +40,63 @@ namespace Bodoconsult.NetworkCommunication.Protocols
         /// </summary>
         /// <param name="length">Length of the received data</param>
         /// <returns></returns>
-        public void WriteToPipeline(int length)
+        public async Task WriteToPipeline(int length)
         {
             // Tell the PipeWriter how much was read from the Socket.
             _pipe.Writer.Advance(length);
+
+            // Now flush the writer to forward the data to the reader
+            var result = await _pipe.Writer.FlushAsync();
+
+            if (result is { IsCompleted: false, IsCanceled: false } && !_isStarted)
+            {
+                _isStarted = true;
+            }
         }
 
         /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
-        public async Task ReadBuffer()
+        public async Task<bool> ReadBuffer()
         {
+            if (!_isStarted)
+            {
+                return false;
+            }
+
             var reader = _pipe.Reader;
 
-            var result = await reader.ReadAsync();
-            var buffer = result.Buffer;
-
-            // Stop reading if there's no more data coming.
-            if (buffer.IsEmpty && (result.IsCompleted))
+            try
             {
-                return;
-            }
+                var result = await reader.ReadAsync();
+                var buffer = result.Buffer;
 
-            if (buffer.IsEmpty)
+                if (buffer.IsEmpty)
+                {
+                    return result.IsCompleted;
+                }
+
+                ////Trace.TraceInformation($"Raw command: {ArrayHelper.GetStringFromArrayCsharpStyle(ref buffer)}");
+                //MonitorLogger?.LogInformation(
+                //    $"Raw command: {DataMessageHelper.GetStringFromArrayCsharpStyle(ref buffer)}");
+
+                SocketReceivedDataDelegate?.Invoke(ref buffer);
+
+                reader.AdvanceTo(buffer.Start, buffer.End);
+
+                return result.IsCompleted;
+            }
+            catch (Exception e)
             {
-                return;
+                return false;
             }
-
-            ////Trace.TraceInformation($"Raw command: {ArrayHelper.GetStringFromArrayCsharpStyle(ref buffer)}");
-            //MonitorLogger?.LogInformation(
-            //    $"Raw command: {DataMessageHelper.GetStringFromArrayCsharpStyle(ref buffer)}");
-
-            SocketReceivedDataDelegate?.Invoke(ref buffer);
-
-
-            reader.AdvanceTo(buffer.Start, buffer.End);
         }
 
         /// <summary>Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.</summary>
         public void Dispose()
         {
+            _isStarted = false;
             _pipe.Writer.Complete();
             // Do nothing
         }
@@ -106,13 +123,13 @@ namespace Bodoconsult.NetworkCommunication.Protocols
         /// </summary>
         /// <param name="length">Length of the received data</param>
         /// <returns></returns>
-        void WriteToPipeline(int length);
+        Task WriteToPipeline(int length);
 
         /// <summary>
         /// Read the buffer
         /// </summary>
         /// <returns>Read data sequence</returns>
-        Task ReadBuffer();
+        Task<bool> ReadBuffer();
     }
 
     /// <summary>
