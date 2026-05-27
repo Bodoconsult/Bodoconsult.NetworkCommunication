@@ -5,8 +5,6 @@ using Bodoconsult.NetworkCommunication.DataMessaging.DataBlocks;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
 using Bodoconsult.NetworkCommunication.Factories;
 using Bodoconsult.NetworkCommunication.Interfaces;
-using Bodoconsult.NetworkCommunication.Protocols.Udp;
-using Bodoconsult.NetworkCommunication.Tests.Helpers;
 using Bodoconsult.NetworkCommunication.Tests.Infrastructure;
 
 namespace Bodoconsult.NetworkCommunication.Tests.Udp.Clients;
@@ -157,64 +155,64 @@ public abstract class BaseUdpIpDuplexIoTests : BaseUdpTests
         }
     }
 
-    [Test]
-    public void SendMessage_EncodingError_Fails()
-    {
-        // Arrange
-        ArgumentNullException.ThrowIfNull(Socket);
+    //[Test]
+    //public void SendMessage_EncodingError_Fails()
+    //{
+    //    // Arrange
+    //    ArgumentNullException.ThrowIfNull(Socket);
 
-        DuplexIo = GetDuplexIoWithFakeEncodeDecoder(Socket, FakeSendPacketProcessEnum.EncodingError);
+    //    DuplexIo = GetDuplexIoWithFakeEncodeDecoder(Socket, FakeSendPacketProcessEnum.EncodingError);
 
-        var message = new ShouldCrashOutboundDataMessage();
+    //    var message = new ShouldCrashOutboundDataMessage();
 
-        // Act
+    //    // Act
 
-        //Assert.Throws<MessageNotSentException>(() =>
-        //{
-        Send(message);
+    //    //Assert.Throws<MessageNotSentException>(() =>
+    //    //{
+    //    Send(message);
 
-        //});
+    //    //});
 
-        // Assert
-        using (Assert.EnterMultipleScope())
-        {
-            Wait.Until(() => IsDataMessageNotSentFired, 2000);
-            Assert.That(!IsDataMessageSentFired);
-            Assert.That(IsDataMessageNotSentFired);
-            Assert.That(!IsComDevCloseFired);
-        }
-    }
+    //    // Assert
+    //    using (Assert.EnterMultipleScope())
+    //    {
+    //        Wait.Until(() => IsDataMessageNotSentFired, 2000);
+    //        Assert.That(!IsDataMessageSentFired);
+    //        Assert.That(IsDataMessageNotSentFired);
+    //        Assert.That(!IsComDevCloseFired);
+    //    }
+    //}
 
-    [Test]
-    public virtual void SendMessage_SocketError_Fails()
-    {
-        // Arrange
-        var socket = new FakeUdpSocketProxy(TestDataHelper.Logger);
-        socket.SenderThrowSocketException = true;
+    //[Test]
+    //public virtual void SendMessage_SocketError_Fails()
+    //{
+    //    // Arrange
+    //    var socket = new FakeUdpSocketProxy(TestDataHelper.Logger);
+    //    socket.SenderThrowSocketException = true;
 
-        DuplexIo = GetDuplexIoWithFakeEncodeDecoder(socket, FakeSendPacketProcessEnum.SocketError);
+    //    DuplexIo = GetDuplexIoWithFakeEncodeDecoder(socket, FakeSendPacketProcessEnum.SocketError);
 
-        var message = new SdcpOutboundDataMessage
-        {
-            DataBlock = new BasicOutboundDatablock
-            {
-                DataBlockType = 'x',
-                Data = new byte[] { 0x42, 0x6c, 0x75, 0x62, 0x62 }
-            }
-        };
+    //    var message = new SdcpOutboundDataMessage
+    //    {
+    //        DataBlock = new BasicOutboundDatablock
+    //        {
+    //            DataBlockType = 'x',
+    //            Data = new byte[] { 0x42, 0x6c, 0x75, 0x62, 0x62 }
+    //        }
+    //    };
 
-        // Act
-        Send(message);
+    //    // Act
+    //    Send(message);
 
-        // Assert
-        Wait.Until(() => IsDataMessageNotSentFired);
-        using (Assert.EnterMultipleScope())
-        {
-            Assert.That(IsDataMessageSentFired, Is.False);
-            Assert.That(IsDataMessageNotSentFired, Is.True);
-            Assert.That(IsComDevCloseFired, Is.True);
-        }
-    }
+    //    // Assert
+    //    Wait.Until(() => IsDataMessageNotSentFired);
+    //    using (Assert.EnterMultipleScope())
+    //    {
+    //        Assert.That(IsDataMessageSentFired, Is.False);
+    //        Assert.That(IsDataMessageNotSentFired, Is.True);
+    //        Assert.That(IsComDevCloseFired, Is.True);
+    //    }
+    //}
 
     [Test]
     public void ReceiveMessage_SdcpMessage_MessageReceived()

@@ -17,11 +17,11 @@ public interface IDuplexIoReceiver : IAsyncDisposable, IDisposable
     ///// </summary>
     //Thread? SendPipelineTask { get; }
 
-    /// <summary>
-    /// Handle data the socket has received
-    /// </summary>
-    /// <param name="data">Received data</param>
-    void SocketReceivedData(Memory<byte> data);
+    ///// <summary>
+    ///// Handle data the socket has received
+    ///// </summary>
+    ///// <param name="data">Received data</param>
+    //void SocketReceivedData(Memory<byte> data);
 
     /// <summary>
     /// Start the internal receiver

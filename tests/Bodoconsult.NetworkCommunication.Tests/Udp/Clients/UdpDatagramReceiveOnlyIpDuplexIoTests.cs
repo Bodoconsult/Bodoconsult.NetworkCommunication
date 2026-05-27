@@ -62,7 +62,7 @@ public class UdpDatagramReceiveOnlyIpDuplexIoTests : BaseUdpIpDuplexIoTests
         {
             TypeOfFakeSendPacketProcessEnum = expectedResult
         };
-        return new IpDuplexIo(DataMessagingConfig, sendPacketProcessFactory);
+        return new UdpDatagramReceiveOnlyIpDuplexIo(DataMessagingConfig, sendPacketProcessFactory);
     }
 
     //public override void SendDataAndReceive(byte[] data, byte[] data2 = null)

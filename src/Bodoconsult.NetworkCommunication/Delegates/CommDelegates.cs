@@ -99,10 +99,16 @@ public delegate void RaiseStopSyncExecutionDelegate(MessageSendingResult result)
 // ****** Delegates for sender and reciever ****** 
 
 /// <summary>
-/// Delegate fired if the socket was receiving data
+/// Delegate fired if the socket has received data
 /// </summary>
 /// <param name="data">Received data</param>
 public delegate void SocketReceivedDataDelegate(Memory<byte> data);
+
+/// <summary>
+/// Delegate fired if the socket has received data
+/// </summary>
+
+public delegate Task<bool> SocketReceivedDataDelegate2();
 
 /// <summary>
 /// Delegate sending a HELLO message to the device

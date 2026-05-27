@@ -184,7 +184,7 @@ public interface IOrderPipeline : IDisposable
     /// </summary>
     /// <param name="orderId">ID of the order</param>
     /// <returns>Removed request processor</returns>
-    void RemoveFromExecutionQueue(long orderId);
+    IRequestProcessor? RemoveFromExecutionQueue(long orderId);
 
     /// <summary>
     /// Check if a certain order is running currently by its ID

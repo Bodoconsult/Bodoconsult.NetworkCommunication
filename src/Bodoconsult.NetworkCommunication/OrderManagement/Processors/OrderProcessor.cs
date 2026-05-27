@@ -19,7 +19,7 @@ public class OrderProcessor : BaseOrderProcessor
     /// <param name="orderId"></param>
     protected override void OrderProcessingFinished(long orderId)
     {
-        var requestProcessor = OrderPipeline.GetFromExecutionQueue(orderId);
+        var requestProcessor = OrderPipeline.RemoveFromExecutionQueue(orderId);
 
         if (requestProcessor == null)
         {
@@ -51,8 +51,6 @@ public class OrderProcessor : BaseOrderProcessor
             order.Benchmark?.AddStep("Order finished Unsuccessful");
         }
 
-        // Now clean the execution queue
-        OrderPipeline.RemoveFromExecutionQueue(orderId);
         requestProcessor.Dispose();
 
         // Set the order running endtime

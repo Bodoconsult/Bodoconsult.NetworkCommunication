@@ -1,10 +1,7 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
-using Bodoconsult.App.Helpers;
-using Bodoconsult.NetworkCommunication.Delegates;
 using Bodoconsult.NetworkCommunication.Interfaces;
 using System.Collections.Concurrent;
-using System.Diagnostics;
 using System.Net.Sockets;
 
 namespace Bodoconsult.NetworkCommunication.Testing;
@@ -95,15 +92,6 @@ public abstract class BaseTcpIpDevice : ITcpIpDevice
     /// </summary>
     /// <param name="data">Byte array to send</param>
     public virtual void Send(byte[] data)
-    {
-        throw new NotSupportedException("Override in derived classes");
-    }
-
-    /// <summary>
-    /// Receive data
-    /// </summary>
-    /// <returns>Received data</returns>
-    public virtual Task<byte[]> Receive()
     {
         throw new NotSupportedException("Override in derived classes");
     }

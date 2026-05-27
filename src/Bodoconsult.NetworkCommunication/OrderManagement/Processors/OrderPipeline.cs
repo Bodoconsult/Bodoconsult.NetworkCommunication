@@ -677,13 +677,16 @@ public class OrderPipeline : IOrderPipeline
     /// Remove an order request processor from the execution queue by order ID
     /// </summary>
     /// <param name="orderId">ID of the order</param>
-    public void RemoveFromExecutionQueue(long orderId)
+    public IRequestProcessor? RemoveFromExecutionQueue(long orderId)
     {
-        var success = _executionQueue.TryRemove(orderId, out _);
-        if (!success)
+        var success = _executionQueue.TryRemove(orderId, out var rp);
+        if (success)
         {
-            _appLogger.LogWarning($"{_loggerId}RequestProcessor could not be removed");
+            return rp;
         }
+        _appLogger.LogWarning($"{_loggerId}RequestProcessor could not be removed");
+        return null;
+
     }
 
     /// <summary>

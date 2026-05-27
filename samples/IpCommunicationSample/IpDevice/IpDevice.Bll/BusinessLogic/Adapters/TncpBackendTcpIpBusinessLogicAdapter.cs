@@ -1,5 +1,6 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
+using System.Diagnostics;
 using Bodoconsult.App.Abstractions.Interfaces;
 using Bodoconsult.App.BusinessTransactions.RequestData;
 using Bodoconsult.App.Helpers;
@@ -115,6 +116,8 @@ public class TncpBackendTcpIpBusinessLogicAdapter : BaseSimpleDeviceBusinessLogi
     {
         ArgumentNullException.ThrowIfNull(IpDevice.CommunicationAdapter);
 
+
+        Debug.Print("Reply for "+telnetCommand);
         var cmd = CreateTncpReply(telnetCommand);
 
         var msg = new TncpOutboundDataMessage
@@ -123,7 +126,7 @@ public class TncpBackendTcpIpBusinessLogicAdapter : BaseSimpleDeviceBusinessLogi
             WaitForAcknowledgement = false
         };
 
-        IpDevice.CommunicationAdapter.SendDataMessage(msg);
+        IpDevice.CommunicationAdapter.SendDataMessage(msg).GetAwaiter().GetResult();
     }
 
     public StringBuilder CreateTncpReply(string telnetCommand)

@@ -243,7 +243,7 @@ public class FakeOrderPipeline : IOrderPipeline
     /// </summary>
     /// <param name="orderId">ID of the order</param>
     /// <returns>Removed request processor</returns>
-    public void RemoveFromExecutionQueue(long orderId)
+    public IRequestProcessor? RemoveFromExecutionQueue(long orderId)
     {
         throw new NotImplementedException();
     }

@@ -1,9 +1,9 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 // Licence MIT
 
-using System.Net;
 using Bodoconsult.App.Abstractions.Interfaces;
 using Bodoconsult.NetworkCommunication.Delegates;
+using System.Net;
 
 namespace Bodoconsult.NetworkCommunication.Interfaces;
 
@@ -13,9 +13,9 @@ namespace Bodoconsult.NetworkCommunication.Interfaces;
 public interface ISocketProxy: IDisposable
 {
     /// <summary>
-    /// Delegate fired if the socket was receiving data
+    /// Current receiver pipeline
     /// </summary>
-    SocketReceivedDataDelegate? SocketReceivedDataDelegate  { get; }
+    IPipeline ReceiverPipeline { get; }
 
     /// <summary>
     /// Logger ID or null
@@ -25,7 +25,12 @@ public interface ISocketProxy: IDisposable
     /// <summary>
     /// Minimum buffer size
     /// </summary>
-    int MinimumBufferSize { get; set; } 
+    int MinimumBufferSize { get; set; }
+
+    /// <summary>
+    /// Maximum buffer size for IP packages. Set this value lower if your packages do not reach the maximum length of 65536 byte for UDP diagrams defined by protocol specs
+    /// </summary>
+    int MaxPacketSize { get; set; }
 
     /// <summary>
     /// IP address of the remote device
@@ -76,12 +81,6 @@ public interface ISocketProxy: IDisposable
     /// Current logger to use or null. This logger logs only exceptions but NO data due to potential performance issues
     /// </summary>
     IAppLoggerProxy Logger { get; }
-
-    /// <summary>
-    /// Start the receiver loop
-    /// </summary>
-    /// <param name="socketReceivedDataDelegate">Delegate for forwarding received messages</param>
-    void StartReceiverLoop(SocketReceivedDataDelegate socketReceivedDataDelegate);
 
     /// <summary>
     /// Run the receiver loop
@@ -166,4 +165,38 @@ public interface ISocketProxy: IDisposable
     ///// </summary>
     ///// <param name="testData">Test data to use</param>
     //void PrepareAnswer(byte[] testData);
+}
+
+/// <summary>
+/// Interface for UDP implementations of <see cref="ISocketProxy"/>
+/// </summary>
+public interface IUdpSocketProxy: ISocketProxy
+{
+    /// <summary>
+    /// Delegate fired if the socket was receiving data
+    /// </summary>
+    SocketReceivedDataDelegate? SocketReceivedDataDelegate { get; }
+
+    /// <summary>
+    /// Start the receiver loop
+    /// </summary>
+    /// <param name="socketReceivedDataDelegate">Delegate for forwarding received messages</param>
+    void StartReceiverLoop(SocketReceivedDataDelegate socketReceivedDataDelegate);
+}
+
+/// <summary>
+/// Interface for UDP implementations of <see cref="ISocketProxy"/>
+/// </summary>
+public interface ITcpSocketProxy : ISocketProxy
+{
+    /// <summary>
+    /// Delegate fired if the socket was receiving data
+    /// </summary>
+    SocketReceivedDataDelegate2? SocketReceivedDataDelegate { get; }
+
+    /// <summary>
+    /// Start the receiver loop
+    /// </summary>
+    /// <param name="socketReceivedDataDelegate">Delegate for forwarding received messages</param>
+    void StartReceiverLoop(SocketReceivedDataDelegate2 socketReceivedDataDelegate);
 }

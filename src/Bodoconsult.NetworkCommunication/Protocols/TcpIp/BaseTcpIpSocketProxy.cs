@@ -10,26 +10,33 @@ namespace Bodoconsult.NetworkCommunication.Protocols.TcpIp;
 /// <summary>
 /// Base class for <see cref="ISocketProxy"/> implementations
 /// </summary>
-public abstract class BaseTcpIpSocketProxy : ISocketProxy
+public abstract class BaseTcpIpSocketProxy : ITcpSocketProxy
 {
     /// <summary>
     /// Default ctor
     /// </summary>
     /// <param name="logger">Current monitor logger</param>
-    protected BaseTcpIpSocketProxy(IAppLoggerProxy logger)
+    /// <param name="receiverPipeline">Current receiver pipeline</param>
+    protected BaseTcpIpSocketProxy(IAppLoggerProxy logger, IPipeline receiverPipeline)
     {
         Logger = logger;
+        ReceiverPipeline = receiverPipeline;
     }
+
+    /// <summary>
+    /// Current receiver pipeline
+    /// </summary>
+    public IPipeline ReceiverPipeline { get; set; }
 
     /// <summary>
     /// Delegate fired if the socket was receiving data
     /// </summary>
-    public SocketReceivedDataDelegate? SocketReceivedDataDelegate { get; protected set; }
+    public SocketReceivedDataDelegate2? SocketReceivedDataDelegate { get; protected set; }
 
     /// <summary>
-    /// Maximum buffer size for TCP packages. Set this value lower if your packages do not reach the maximum length of 65536 byte for UDP diagrams defined by protocol specs
+    /// Maximum buffer size for IP packages. Set this value lower if your packages do not reach the maximum length of 65536 byte for TCP defined by protocol specs. Default: 512
     /// </summary>
-    public int MaxPacketSize { get; set; } = 65536;
+    public int MaxPacketSize { get; set; } = 512;
 
     /// <summary>
     /// Logger ID or null
@@ -95,7 +102,7 @@ public abstract class BaseTcpIpSocketProxy : ISocketProxy
     /// Start the receiver loop
     /// </summary>
     /// <param name="socketReceivedDataDelegate">Delegate for forwarding received messages</param>
-    public virtual void StartReceiverLoop(SocketReceivedDataDelegate socketReceivedDataDelegate)
+    public virtual void StartReceiverLoop(SocketReceivedDataDelegate2 socketReceivedDataDelegate)
     {
         throw new NotSupportedException();
     }

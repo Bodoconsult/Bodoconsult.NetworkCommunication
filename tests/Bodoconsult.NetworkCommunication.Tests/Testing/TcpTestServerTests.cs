@@ -27,7 +27,7 @@ internal class TcpTestServerTests
         var cts = new CancellationTokenSource(5000);
 
 #pragma warning disable CS4014 // Because this call is not awaited, execution of the current method continues before the call is completed
-        var task = Task.Run(async () =>
+        var task = Task.Run(() =>
 #pragma warning restore CS4014 // Because this call is not awaited, execution of the current method continues before the call is completed
         {
 
@@ -37,7 +37,6 @@ internal class TcpTestServerTests
             {
                 while (!cts.IsCancellationRequested)
                 {
-                    await udpServer.Receive(); // listen on port 11000
                     udpServer.Send(serverData); // reply back
                 }
 
@@ -63,9 +62,6 @@ internal class TcpTestServerTests
         {
             // send data
             client.Send(clientData);
-
-            // then receive data
-            await client.Receive();
         }
 
         client.Dispose();

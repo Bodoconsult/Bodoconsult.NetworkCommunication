@@ -60,11 +60,20 @@ public static class TcpIpClientTestHelper
         var socket = new TcpIpClientSocketProxy(TestDataHelper.Logger);
         socket.IpAddress = testSetup.IpAddress;
         socket.Port = testSetup.DataMessagingConfig.Port;
+        socket.StartReceiverLoop(SocketReceivedDataDelegate);
+        //TestDataHelper.StartWaiting(cts, socket.ReceiverPipeline, _serverReceivedMessages);
+
         testSetup.Socket = socket;
 
         testSetup.Socket.Connect().Wait();
 
         testSetup.Logger = Logger;
+    }
+
+    private static Task<bool> SocketReceivedDataDelegate()
+    {
+        // Do nothing
+        return Task.FromResult(true);
     }
 
     /// <summary>

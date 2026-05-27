@@ -2,11 +2,6 @@
 
 using IpCommunicationSample.Common.BusinessTransactions.Requests;
 using IpCommunicationSample.Common.Extensions;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Bodoconsult.App.Abstractions.Extensions;
 
 namespace IpCommunicationSampleTests.Extensions;

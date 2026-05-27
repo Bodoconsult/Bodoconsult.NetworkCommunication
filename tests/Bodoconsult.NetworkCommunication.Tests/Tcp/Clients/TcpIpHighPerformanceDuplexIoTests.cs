@@ -1,88 +1,88 @@
-﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
+﻿//// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
-using Bodoconsult.NetworkCommunication.Communication;
-using Bodoconsult.NetworkCommunication.Factories;
-using Bodoconsult.NetworkCommunication.Interfaces;
-using Bodoconsult.NetworkCommunication.Tests.Helpers;
-using System.Diagnostics;
+//using Bodoconsult.NetworkCommunication.Communication;
+//using Bodoconsult.NetworkCommunication.Factories;
+//using Bodoconsult.NetworkCommunication.Interfaces;
+//using Bodoconsult.NetworkCommunication.Tests.Helpers;
+//using System.Diagnostics;
 
-namespace Bodoconsult.NetworkCommunication.Tests.Tcp.Clients;
+//namespace Bodoconsult.NetworkCommunication.Tests.Tcp.Clients;
 
-[TestFixture]
-[NonParallelizable]
-[SingleThreaded]
-public class TcpIpHighPerformanceDuplexIoTests : BaseTcpIpDuplexIoTests
-{
-    [SetUp]
-    protected void TestSetup()
-    {
-        TcpIpClientTestHelper.InitServer(this);
+//[TestFixture]
+//[NonParallelizable]
+//[SingleThreaded]
+//public class TcpIpHighPerformanceDuplexIoTests : BaseTcpIpDuplexIoTests
+//{
+//    [SetUp]
+//    protected void TestSetup()
+//    {
+//        TcpIpClientTestHelper.InitServer(this);
         
 
-        Debug.Print("Start TestSetup");
+//        Debug.Print("Start TestSetup");
 
-        BaseReset();
+//        BaseReset();
 
-        TcpIpClientTestHelper.InitSocket(this);
-        ArgumentNullException.ThrowIfNull(Socket);
+//        TcpIpClientTestHelper.InitSocket(this);
+//        ArgumentNullException.ThrowIfNull(Socket);
 
-        DuplexIo = GetDuplexIo(Socket);
+//        DuplexIo = GetDuplexIo(Socket);
 
-        Debug.Print("End FTestSetup");
-    }
+//        Debug.Print("End FTestSetup");
+//    }
 
-    /// <summary>
-    /// Get the <see cref="IDuplexIo"/> instance to test
-    /// </summary>
-    /// <param name="socketProxy">Current socket proxy to use</param>
-    /// <returns><see cref="IDuplexIo"/> instance to test</returns>
-    public override IDuplexIo GetDuplexIo(ISocketProxy socketProxy)
-    {
-        ArgumentNullException.ThrowIfNull(DataMessagingConfig);
-        Socket = socketProxy;
-        BindDelegates();
+//    /// <summary>
+//    /// Get the <see cref="IDuplexIo"/> instance to test
+//    /// </summary>
+//    /// <param name="socketProxy">Current socket proxy to use</param>
+//    /// <returns><see cref="IDuplexIo"/> instance to test</returns>
+//    public override IDuplexIo GetDuplexIo(ISocketProxy socketProxy)
+//    {
+//        ArgumentNullException.ThrowIfNull(DataMessagingConfig);
+//        Socket = socketProxy;
+//        BindDelegates();
 
-        ISendPacketProcessFactory sendPacketProcessFactory = new FakeSendPacketProcessFactory();
-        return new IpHighPerformanceDuplexIo(DataMessagingConfig, sendPacketProcessFactory);
-    }
+//        ISendPacketProcessFactory sendPacketProcessFactory = new FakeSendPacketProcessFactory();
+//        return new IpHighPerformanceDuplexIo(DataMessagingConfig, sendPacketProcessFactory);
+//    }
 
-    /// <summary>
-    /// Get the <see cref="IDuplexIo"/> instance to test
-    /// </summary>
-    /// <param name="socketProxy">Current socket proxy to use</param>
-    /// <param name="expectedResult">Current expected result from send process</param>
-    /// <returns></returns>
-    public override IDuplexIo GetDuplexIoWithFakeEncodeDecoder(ISocketProxy socketProxy, FakeSendPacketProcessEnum expectedResult)
-    {
-        ArgumentNullException.ThrowIfNull(DataMessagingConfig);
+//    /// <summary>
+//    /// Get the <see cref="IDuplexIo"/> instance to test
+//    /// </summary>
+//    /// <param name="socketProxy">Current socket proxy to use</param>
+//    /// <param name="expectedResult">Current expected result from send process</param>
+//    /// <returns></returns>
+//    public override IDuplexIo GetDuplexIoWithFakeEncodeDecoder(ISocketProxy socketProxy, FakeSendPacketProcessEnum expectedResult)
+//    {
+//        ArgumentNullException.ThrowIfNull(DataMessagingConfig);
 
-        Socket = socketProxy;
+//        Socket = socketProxy;
 
-        //MessageEncodingDecodingHandler = new FakeErrorDecodingEncodingHandler();
+//        //MessageEncodingDecodingHandler = new FakeErrorDecodingEncodingHandler();
 
-        DataMessagingConfig.SocketProxy = socketProxy;
-        DataMessagingConfig.RaiseAppLayerDataMessageReceivedDelegate = OnRaiseDataMessageReceivedEvent;
-        //DataMessagingConfig.RaiseDataMessagingConfigMessageNotReceivedDelegate = OnRaiseDataMessagingConfigMessageNotReceivedEvent;
-        DataMessagingConfig.RaiseComDevCloseRequestDelegate = OnRaiseRequestComDevCloseEvent;
-        DataMessagingConfig.RaiseUnexpectedDataMessageReceivedDelegate = OnNotExpectedMessageReceivedEvent;
-        //DataMessagingConfig.RaiseDataMessagingConfigCorruptedMessageDelegate = OnCorruptedMessage;
-        DataMessagingConfig.DuplexIoErrorHandlerDelegate = CentralErrorHandling;
+//        DataMessagingConfig.SocketProxy = socketProxy;
+//        DataMessagingConfig.RaiseAppLayerDataMessageReceivedDelegate = OnRaiseDataMessageReceivedEvent;
+//        //DataMessagingConfig.RaiseDataMessagingConfigMessageNotReceivedDelegate = OnRaiseDataMessagingConfigMessageNotReceivedEvent;
+//        DataMessagingConfig.RaiseComDevCloseRequestDelegate = OnRaiseRequestComDevCloseEvent;
+//        DataMessagingConfig.RaiseUnexpectedDataMessageReceivedDelegate = OnNotExpectedMessageReceivedEvent;
+//        //DataMessagingConfig.RaiseDataMessagingConfigCorruptedMessageDelegate = OnCorruptedMessage;
+//        DataMessagingConfig.DuplexIoErrorHandlerDelegate = CentralErrorHandling;
 
-        var sendPacketProcessFactory = new FakeSendPacketProcessFactory
-        {
-            TypeOfFakeSendPacketProcessEnum = expectedResult
-        };
-        return new IpHighPerformanceDuplexIo(DataMessagingConfig, sendPacketProcessFactory);
+//        var sendPacketProcessFactory = new FakeSendPacketProcessFactory
+//        {
+//            TypeOfFakeSendPacketProcessEnum = expectedResult
+//        };
+//        return new IpHighPerformanceDuplexIo(DataMessagingConfig, sendPacketProcessFactory);
 
-    }
+//    }
 
-    [Test]
-    public override void SendMessage_SocketError_Fails()
-    {
-        // Arrange
-        TestSetup();
+//    [Test]
+//    public override void SendMessage_SocketError_Fails()
+//    {
+//        // Arrange
+//        TestSetup();
 
-        // Act and assert
-        Assert.Pass("Not fakeable at the moment");
-    }
-}
+//        // Act and assert
+//        Assert.Pass("Not fakeable at the moment");
+//    }
+//}

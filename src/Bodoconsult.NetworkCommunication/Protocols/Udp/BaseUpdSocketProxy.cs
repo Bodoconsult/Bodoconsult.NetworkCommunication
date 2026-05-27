@@ -10,16 +10,24 @@ namespace Bodoconsult.NetworkCommunication.Protocols.Udp;
 /// <summary>
 /// Base class for <see cref="ISocketProxy"/> implementations
 /// </summary>
-public abstract class BaseUpdSocketProxy : ISocketProxy
+public abstract class BaseUpdSocketProxy : IUdpSocketProxy
 {
     /// <summary>
     /// Default ctor
     /// </summary>
-    protected BaseUpdSocketProxy(IAppLoggerProxy logger)
+    /// <param name="logger">Current monitor logger</param>
+    /// <param name="receiverPipeline">Current receiver pipeline</param>
+    protected BaseUpdSocketProxy(IAppLoggerProxy logger, IPipeline receiverPipeline)
     {
         LoggerId = $"{GetType().Name}: ";
         Logger = logger;
+        ReceiverPipeline = receiverPipeline;
     }
+
+    /// <summary>
+    /// Current receiver pipeline
+    /// </summary>
+    public IPipeline ReceiverPipeline { get; protected set; }
 
     /// <summary>
     /// Delegate fired if the socket was receiving data
@@ -34,7 +42,12 @@ public abstract class BaseUpdSocketProxy : ISocketProxy
     /// <summary>
     /// Minimum buffer size
     /// </summary>
-    public int MinimumBufferSize { get; set; } = 0x10000;
+    public int MinimumBufferSize { get; set; } = 512;
+
+    /// <summary>
+    /// Maximum buffer size for IP packages. Set this value lower if your packages do not reach the maximum length of 65536 byte for UDP diagrams defined by protocol specs. Default: 65536
+    /// </summary>
+    public int MaxPacketSize { get; set; } = 65536;
 
     /// <summary>
     /// IP address of the server

@@ -1,5 +1,7 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
+using System.Buffers;
+using System.Collections.Concurrent;
 using Bodoconsult.App.Abstractions.Interfaces;
 using Bodoconsult.App.Benchmarking;
 using Bodoconsult.App.CentralServices;
@@ -403,5 +405,32 @@ public static class TestDataHelper
         device.LoadCommAdapter(commAdapter);
         device.LoadDeviceOrderManager(om);
         return device;
+    }
+
+    /// <summary>
+    /// Start waiting for socket data
+    /// </summary>
+    /// <param name="cts"></param>
+    /// <param name="pipeline"></param>
+    /// <param name="receivedMessages"></param>
+    public static void StartWaiting(CancellationTokenSource cts, IPipeline pipeline,
+        ConcurrentBag<ReadOnlySequence<byte>> receivedMessages)
+    {
+        var sp = (IStreamPipeline)pipeline;
+
+        Task.Run(() =>
+        {
+            while (!cts.IsCancellationRequested)
+            {
+
+                if (sp.Buffer.Length == 0)
+                {
+                    continue;
+                }
+
+                receivedMessages.Add(sp.Buffer);
+                sp.Buffer = ReadOnlySequence<byte>.Empty;
+            }
+        });
     }
 }

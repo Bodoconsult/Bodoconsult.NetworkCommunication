@@ -21,7 +21,7 @@ public class FakeUdpSocketProxy : BaseUpdSocketProxy
     /// Default ctor
     /// </summary>
     /// <param name="logger">Current monitor logger</param>
-    public FakeUdpSocketProxy(IAppLoggerProxy logger): base(logger)
+    public FakeUdpSocketProxy(IAppLoggerProxy logger): base(logger, new DatagramPipeline())
     { }
 
     /// <summary>

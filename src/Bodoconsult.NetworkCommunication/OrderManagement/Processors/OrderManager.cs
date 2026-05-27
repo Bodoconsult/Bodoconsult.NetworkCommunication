@@ -33,7 +33,7 @@ public class OrderManager : IOrderManager
         _appLogger = MessagingConfig.AppLogger;
 
         // Connect order processor and receiver
-        OrderReceiver.OrderReceiverCheckMessageDelegate = receivedMessage => OrderProcessor.CheckReceivedMessage(receivedMessage);
+        OrderReceiver.OrderReceiverCheckMessageDelegate = OrderProcessor.CheckReceivedMessage;
 
         // Bind message receiving 
         //CommunicationAdapter.NotifydeviceMessageReceived += OndeviceMessageReceived;

@@ -127,6 +127,11 @@ public abstract class BaseOrderProcessor : IOrderProcessor
                 continue;
             }
 
+            if (procLocal.Order.IsFinished)
+            {
+                continue;
+            }
+
             //LogDebug($"message received: check order {order.Id}");
 
             var success = procLocal.CheckReceivedMessage(rm);

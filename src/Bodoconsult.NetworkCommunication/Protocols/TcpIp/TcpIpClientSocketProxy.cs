@@ -2,7 +2,6 @@
 // Licence MIT
 
 using Bodoconsult.App.Abstractions.Interfaces;
-using Bodoconsult.App.Helpers;
 using Bodoconsult.NetworkCommunication.Delegates;
 using Bodoconsult.NetworkCommunication.Helpers;
 using Bodoconsult.NetworkCommunication.Interfaces;
@@ -17,13 +16,17 @@ namespace Bodoconsult.NetworkCommunication.Protocols.TcpIp;
 public class TcpIpClientSocketProxy : BaseTcpIpSocketProxy
 {
     private readonly byte[] _tmp = new byte[1];
+    private readonly StreamPipeline _pipeline;
 
     /// <summary>
     /// Default ctor
     /// </summary>
     /// <param name="logger">Current monitor logger</param>
-    public TcpIpClientSocketProxy(IAppLoggerProxy logger) : base(logger)
-    { }
+    public TcpIpClientSocketProxy(IAppLoggerProxy logger) : base(logger, new StreamPipeline())
+    {
+        _pipeline = (StreamPipeline)ReceiverPipeline;
+        _pipeline.BufferSize = MaxPacketSize;
+    }
 
     /// <summary>
     /// Is the socket connected
@@ -255,7 +258,7 @@ public class TcpIpClientSocketProxy : BaseTcpIpSocketProxy
     /// Start the receiver loop
     /// </summary>
     /// <param name="socketReceivedDataDelegate">Delegate for forwarding received messages</param>
-    public override void StartReceiverLoop(SocketReceivedDataDelegate socketReceivedDataDelegate)
+    public override void StartReceiverLoop(SocketReceivedDataDelegate2 socketReceivedDataDelegate)
     {
         SocketReceivedDataDelegate = socketReceivedDataDelegate;
 
@@ -288,38 +291,45 @@ public class TcpIpClientSocketProxy : BaseTcpIpSocketProxy
 
             while (!CancellationTokenSource.IsCancellationRequested)
             {
-                var result = 0;
-                var buffer = new byte[MaxPacketSize].AsMemory();
+                var buffer = _pipeline.GetBuffer();
+
                 try
                 {
-                    result = await Socket.ReceiveAsync(buffer, SocketFlags.None, CancellationTokenSource.Token);
-                    Logger.LogInformation($"{LoggerId}received {result} bytes");
+                    var pipeLen = _pipeline.Buffer.Length;
+                    var result = await Socket.ReceiveAsync(buffer.Memory, SocketFlags.None, CancellationTokenSource.Token);
+                    
+                    _pipeline.AddMemory(buffer, result);
+                    await SocketReceivedDataDelegate.Invoke();
+
+                    Logger.LogInformation($"{LoggerId}TCPC: received {result} bytes: buffer before {pipeLen} bytes after {_pipeline.Buffer.Length} bytes");
                 }
                 catch (OperationCanceledException)
                 {
+                    _pipeline.ReleaseBuffer(buffer);
                     break;
                 }
                 catch (Exception e)
                 {
+                    _pipeline.ReleaseBuffer(buffer);
                     Logger.LogError($"{LoggerId}Receiving failed ", e);
                 }
 
-                if (result == 0)
-                {
-                    await Task.Delay(5);
-                }
+                //if (result == 0)
+                //{
+                //    await Task.Delay(5);
+                //}
 
-                AsyncHelper.FireAndForget(() =>
-                {
-                    try
-                    {
-                        SocketReceivedDataDelegate.Invoke(buffer[..result].ToArray());
-                    }
-                    catch (Exception e)
-                    {
-                        Logger.LogError($"{LoggerId}Forwarding received data failed", e);
-                    }
-                });
+                //AsyncHelper.FireAndForget(() =>
+                //{
+                //    try
+                //    {
+                //        SocketReceivedDataDelegate.Invoke(buffer[..result].ToArray());
+                //    }
+                //    catch (Exception e)
+                //    {
+                //        Logger.LogError($"{LoggerId}Forwarding received data failed", e);
+                //    }
+                //});
             }
         }
         catch (OperationCanceledException)

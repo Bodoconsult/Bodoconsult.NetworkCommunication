@@ -1,5 +1,7 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
+using System.Buffers;
+using System.Collections.Concurrent;
 using System.Diagnostics;
 using System.Net;
 using Bodoconsult.NetworkCommunication.Protocols.TcpIp;
@@ -20,13 +22,15 @@ internal class TcpIpClientSocketProxyTests
     {
         try
         {
+            ConcurrentBag<ReadOnlySequence<byte>> clientReceivedMessages = [];
+
             // Arrange 
             var serverData = new byte[] { 0x0, 0x1, 0x2 };
             var clientData = new byte[] { 0x0, 0x1, 0x2, 0x3, 0x4, 0x5 };
 
             var ip = IPAddress.Parse("127.0.0.1");
             var port = TestDataHelper.GetRandomPort();
-            
+
 
             var cts = new CancellationTokenSource(5000);
 
@@ -41,6 +45,8 @@ internal class TcpIpClientSocketProxyTests
                 client.Port = port;
                 await client.Connect();
                 client.StartReceiverLoop(SocketReceivedDataDelegate);
+
+                TestDataHelper.StartWaiting(cts, client.ReceiverPipeline, clientReceivedMessages);
 
                 try
                 {
@@ -73,7 +79,11 @@ internal class TcpIpClientSocketProxyTests
             tcpIpServer.Dispose();
 
             // Assert
-            Assert.That(_serverCount, Is.GreaterThan(3));
+            using (Assert.EnterMultipleScope())
+            {
+                Assert.That(_serverCount, Is.GreaterThan(3));
+                Assert.That(clientReceivedMessages.Count, Is.GreaterThan(3));
+            }
         }
         catch (Exception e)
         {
@@ -83,9 +93,10 @@ internal class TcpIpClientSocketProxyTests
 
     }
 
-    private void SocketReceivedDataDelegate(Memory<byte> data)
+    private Task<bool> SocketReceivedDataDelegate()
     {
-        Debug.Print($"Client: received {data.Length} bytes");
+        Debug.Print("Client: received data");
+        return Task.FromResult(true);
     }
 
     //[Test]

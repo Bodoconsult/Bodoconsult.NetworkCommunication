@@ -3,7 +3,6 @@
 using Bodoconsult.App.Helpers;
 using Bodoconsult.NetworkCommunication.Delegates;
 using Bodoconsult.NetworkCommunication.Interfaces;
-using Bodoconsult.NetworkCommunication.OrderManagement.Orders;
 
 namespace Bodoconsult.NetworkCommunication.StateManagement.States;
 
@@ -148,11 +147,12 @@ public abstract class BaseOrderBasedStateMachineState : BaseStateMachineState, I
 
             if (CurrentOrderIndex < Orders.Count)
             {
-                Task.Delay(50);
                 AsyncHelper.FireAndForget(() =>
                 {
                     try
                     {
+                        Task.Delay(1000);
+
                         RunNextOrder();
                     }
                     catch (Exception e)

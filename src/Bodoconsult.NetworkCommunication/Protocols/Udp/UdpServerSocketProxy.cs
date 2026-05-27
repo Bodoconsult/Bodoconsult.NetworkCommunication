@@ -31,7 +31,7 @@ public class UdpServerSocketProxy : BaseUpdSocketProxy
     /// Default ctor
     /// </summary>
     /// <param name="logger">Current monitor logger</param>
-    public UdpServerSocketProxy(IAppLoggerProxy logger) : base(logger)
+    public UdpServerSocketProxy(IAppLoggerProxy logger) : base(logger, new DatagramPipeline())
     { }
 
     /// <summary>

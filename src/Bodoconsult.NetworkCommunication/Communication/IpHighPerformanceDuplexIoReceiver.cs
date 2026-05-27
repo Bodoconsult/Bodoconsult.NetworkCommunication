@@ -1,316 +1,316 @@
-﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
+﻿//// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
-using Bodoconsult.NetworkCommunication.Interfaces;
-using System.IO.Pipelines;
+//using Bodoconsult.NetworkCommunication.Interfaces;
+//using System.IO.Pipelines;
 
-namespace Bodoconsult.NetworkCommunication.Communication;
+//namespace Bodoconsult.NetworkCommunication.Communication;
 
-/// <summary>
-/// Comm adapter subsystem for message receiving base on high-performance pipeline implementation
-/// </summary>
-public class IpHighPerformanceDuplexIoReceiver : BaseDuplexIoReceiver
-{
-    private readonly Pipe _pipe;
-    private bool _isDone;
-    private readonly ISocketProxy _socketProxy;
+///// <summary>
+///// Comm adapter subsystem for message receiving base on high-performance pipeline implementation
+///// </summary>
+//public class IpHighPerformanceDuplexIoReceiver : BaseDuplexIoReceiver
+//{
+//    private readonly Pipe _pipe;
+//    private bool _isDone;
+//    private readonly ISocketProxy _socketProxy;
 
-    /// <summary>
-    /// Current validator impl for data messages
-    /// </summary>
-    private readonly IDataMessageValidator _dataMessageValidator;
+//    /// <summary>
+//    /// Current validator impl for data messages
+//    /// </summary>
+//    private readonly IDataMessageValidator _dataMessageValidator;
 
-    /// <summary>
-    /// Default ctor
-    /// </summary>
-    /// <param name="pipe">Current pipe</param>
-    /// <param name="config">Current config</param>
-    /// <param name="pollingTimeOut">Polling timeout in seconds</param>
-    public IpHighPerformanceDuplexIoReceiver(Pipe pipe, IDataMessagingConfig config, int pollingTimeOut) : base(config)
-    {
-        _pipe = pipe;
-        PollingTimeOut = pollingTimeOut;
+//    /// <summary>
+//    /// Default ctor
+//    /// </summary>
+//    /// <param name="pipe">Current pipe</param>
+//    /// <param name="config">Current config</param>
+//    /// <param name="pollingTimeOut">Polling timeout in seconds</param>
+//    public IpHighPerformanceDuplexIoReceiver(Pipe pipe, IDataMessagingConfig config, int pollingTimeOut) : base(config)
+//    {
+//        _pipe = pipe;
+//        PollingTimeOut = pollingTimeOut;
 
-        _socketProxy = config.SocketProxy ?? throw new ArgumentNullException(nameof(config.SocketProxy));
-        _socketProxy.StartReceiverLoop(SocketReceivedData);
-
-
-        if (config.DataMessageProcessingPackage == null)
-        {
-            throw new ArgumentNullException(nameof(config.DataMessageProcessingPackage));
-        }
-
-        _dataMessageValidator = config.DataMessageProcessingPackage.DataMessageValidator;
-    }
-
-    /// <summary>
-    /// Handle data the socket has received
-    /// </summary>
-    /// <param name="data">Received data</param>
-    public override void SocketReceivedData(Memory<byte> data)
-    {
-        //var writer = _pipe.Writer;
-        //var memory = writer.GetMemory(data.Length);
+//        _socketProxy = config.SocketProxy ?? throw new ArgumentNullException(nameof(config.SocketProxy));
+//        _socketProxy.StartReceiverLoop(SocketReceivedData);
 
 
-        //var bytesRead = await _socketProxy.Receive(memory);
-        ////Trace.TraceInformation($"Socket bytes read: {bytesRead}");
+//        if (config.DataMessageProcessingPackage == null)
+//        {
+//            throw new ArgumentNullException(nameof(config.DataMessageProcessingPackage));
+//        }
 
-        //if (data.Length > 0)
-        //{
-        //    // Tell the PipeWriter how much was read from the Socket.
-        //    writer.Advance(data.Length);
-        //}
+//        _dataMessageValidator = config.DataMessageProcessingPackage.DataMessageValidator;
+//    }
 
-        //// Make the data available to the PipeReader.
-        //var result = await writer.FlushAsync();
-        //if (result.IsCompleted
-        //    || result.IsCanceled
-        //    || _isDone)
-        //{
-        //    break;
-        //}
-    }
-
-    //private bool IsCompleted()
-    //{
-    //    return FillPipelineTask is not { IsAlive: true };
-    //}
-
-    /// <summary>
-    /// Stop the internal receiver
-    /// </summary>
-    public override async Task StopReceiver()
-    {
-        _isDone = true;
-
-        await Task.Run(() =>
-        {
-            try
-            {
-                MonitorLogger.LogDebug("Wait for completion");
-
-                //if (FillPipelineTask == null)
-                //{
-                //    return;
-                //}
-
-                //Wait.Until(IsCompleted, 1000);
-
-                //FillPipelineTask = null;
-                //SendPipelineTask = null;
-
-                MonitorLogger.LogDebug("Completed");
-            }
-            catch (Exception e)
-            {
-                var msg = $"Stopping receiver failed: {e}";
-                MonitorLogger.LogError(msg);
-                DataMessagingConfig.AppLogger.LogError($"{LoggerId}{msg}");
-            }
-        });
-    }
-
-    ///// <summary>
-    ///// Receive messages from the device.
-    ///// This method is not intended to be called directly from production code.
-    ///// It is a unit test method.
-    ///// </summary>
-    ///// <returns>Received device message or null in case of any error</returns>
-    //public override async Task FillMessagePipeline()
-    //{
-    //    try
-    //    {
-    //        // Wait until the socket is connected
-    //        if (!await WaitForSocketIsConnected())
-    //        {
-    //            return;
-    //        }
-    //    }
-    //    catch
-    //    {
-    //        return;
-    //    }
-
-    //    MonitorLogger.LogDebug("FillMessagePipeline started");
-
-    //    //Trace.TraceInformation("Start fill message pipeline");
-    //    var writer = _pipe.Writer;
-    //    var memSize = DataMessagingConfig.SocketProxy?.MinimumBufferSize ?? 512;
-
-    //    while (!_isDone)
-    //    {
-    //        // Allocate at least 512 bytes from the PipeWriter.
-    //        try
-    //        {
-    //            if (!_socketProxy.Connected)
-    //            {
-    //                AsyncHelper.Delay(5);
-    //                continue;
-    //            }
-
-    //            MonitorLogger?.LogDebug($"{_isDone}");
-    //            if (_isDone)
-    //            {
-    //                break;
-    //            }
-
-    //            var memory = writer.GetMemory(memSize);
+//    /// <summary>
+//    /// Handle data the socket has received
+//    /// </summary>
+//    /// <param name="data">Received data</param>
+//    public override void SocketReceivedData(Memory<byte> data)
+//    {
+//        //var writer = _pipe.Writer;
+//        //var memory = writer.GetMemory(data.Length);
 
 
-    //            var bytesRead = await _socketProxy.Receive(memory);
-    //            //Trace.TraceInformation($"Socket bytes read: {bytesRead}");
+//        //var bytesRead = await _socketProxy.Receive(memory);
+//        ////Trace.TraceInformation($"Socket bytes read: {bytesRead}");
 
-    //            if (bytesRead > 0)
-    //            {
-    //                // Tell the PipeWriter how much was read from the Socket.
-    //                writer.Advance(bytesRead);
-    //            }
+//        //if (data.Length > 0)
+//        //{
+//        //    // Tell the PipeWriter how much was read from the Socket.
+//        //    writer.Advance(data.Length);
+//        //}
 
-    //            // Make the data available to the PipeReader.
-    //            var result = await writer.FlushAsync();
-    //            if (result.IsCompleted
-    //                || result.IsCanceled
-    //                || _isDone)
-    //            {
-    //                break;
-    //            }
-    //        }
-    //        catch (SocketException socketException)
-    //        {
-    //            var msg = $"FillMessagePipeline failed: {socketException}";
-    //            MonitorLogger?.LogError(msg);
-    //            DataMessagingConfig.AppLogger.LogError($"{LoggerId}{msg}");
-    //            _isDone = true;
-    //            break;
-    //        }
-    //        catch (Exception otherException)
-    //        {
-    //            var msg = $"FillMessagePipeline failed: {otherException}";
-    //            MonitorLogger?.LogError(msg);
-    //            DataMessagingConfig.AppLogger.LogError($"{LoggerId}{msg}");
-    //        }
-    //    }
+//        //// Make the data available to the PipeReader.
+//        //var result = await writer.FlushAsync();
+//        //if (result.IsCompleted
+//        //    || result.IsCanceled
+//        //    || _isDone)
+//        //{
+//        //    break;
+//        //}
+//    }
 
-    //    // By completing PipeWriter, tell the PipeReader that there's no more data coming.
-    //    await writer.CompleteAsync();
+//    //private bool IsCompleted()
+//    //{
+//    //    return FillPipelineTask is not { IsAlive: true };
+//    //}
 
-    //    //Trace.TraceInformation("Completed fill message pipeline");
-    //}
+//    /// <summary>
+//    /// Stop the internal receiver
+//    /// </summary>
+//    public override async Task StopReceiver()
+//    {
+//        _isDone = true;
 
+//        await Task.Run(() =>
+//        {
+//            try
+//            {
+//                MonitorLogger.LogDebug("Wait for completion");
+
+//                //if (FillPipelineTask == null)
+//                //{
+//                //    return;
+//                //}
+
+//                //Wait.Until(IsCompleted, 1000);
+
+//                //FillPipelineTask = null;
+//                //SendPipelineTask = null;
+
+//                MonitorLogger.LogDebug("Completed");
+//            }
+//            catch (Exception e)
+//            {
+//                var msg = $"Stopping receiver failed: {e}";
+//                MonitorLogger.LogError(msg);
+//                DataMessagingConfig.AppLogger.LogError($"{LoggerId}{msg}");
+//            }
+//        });
+//    }
+
+//    ///// <summary>
+//    ///// Receive messages from the device.
+//    ///// This method is not intended to be called directly from production code.
+//    ///// It is a unit test method.
+//    ///// </summary>
+//    ///// <returns>Received device message or null in case of any error</returns>
+//    //public override async Task FillMessagePipeline()
+//    //{
+//    //    try
+//    //    {
+//    //        // Wait until the socket is connected
+//    //        if (!await WaitForSocketIsConnected())
+//    //        {
+//    //            return;
+//    //        }
+//    //    }
+//    //    catch
+//    //    {
+//    //        return;
+//    //    }
+
+//    //    MonitorLogger.LogDebug("FillMessagePipeline started");
+
+//    //    //Trace.TraceInformation("Start fill message pipeline");
+//    //    var writer = _pipe.Writer;
+//    //    var memSize = DataMessagingConfig.SocketProxy?.MinimumBufferSize ?? 512;
+
+//    //    while (!_isDone)
+//    //    {
+//    //        // Allocate at least 512 bytes from the PipeWriter.
+//    //        try
+//    //        {
+//    //            if (!_socketProxy.Connected)
+//    //            {
+//    //                AsyncHelper.Delay(5);
+//    //                continue;
+//    //            }
+
+//    //            MonitorLogger?.LogDebug($"{_isDone}");
+//    //            if (_isDone)
+//    //            {
+//    //                break;
+//    //            }
+
+//    //            var memory = writer.GetMemory(memSize);
+
+
+//    //            var bytesRead = await _socketProxy.Receive(memory);
+//    //            //Trace.TraceInformation($"Socket bytes read: {bytesRead}");
+
+//    //            if (bytesRead > 0)
+//    //            {
+//    //                // Tell the PipeWriter how much was read from the Socket.
+//    //                writer.Advance(bytesRead);
+//    //            }
+
+//    //            // Make the data available to the PipeReader.
+//    //            var result = await writer.FlushAsync();
+//    //            if (result.IsCompleted
+//    //                || result.IsCanceled
+//    //                || _isDone)
+//    //            {
+//    //                break;
+//    //            }
+//    //        }
+//    //        catch (SocketException socketException)
+//    //        {
+//    //            var msg = $"FillMessagePipeline failed: {socketException}";
+//    //            MonitorLogger?.LogError(msg);
+//    //            DataMessagingConfig.AppLogger.LogError($"{LoggerId}{msg}");
+//    //            _isDone = true;
+//    //            break;
+//    //        }
+//    //        catch (Exception otherException)
+//    //        {
+//    //            var msg = $"FillMessagePipeline failed: {otherException}";
+//    //            MonitorLogger?.LogError(msg);
+//    //            DataMessagingConfig.AppLogger.LogError($"{LoggerId}{msg}");
+//    //        }
+//    //    }
+
+//    //    // By completing PipeWriter, tell the PipeReader that there's no more data coming.
+//    //    await writer.CompleteAsync();
+
+//    //    //Trace.TraceInformation("Completed fill message pipeline");
+//    //}
+
+
+
+////    /// <summary>
+////    /// Process the messages received from device internally
+////    /// This method is not intended to be called directly from production code.
+////    /// It is a unit test method.
+////    /// </summary>
+////    public override async Task SendMessagePipeline()
+////    {
+////        var reader = _pipe.Reader;
+////        //Trace.TraceInformation("Start send message pipeline");
+////        while (!_isDone)
+////        {
+////            var result = await reader.ReadAsync();
+////            var buffer = result.Buffer;
+
+////            // Stop reading if there's no more data coming.
+////            if (buffer.IsEmpty && (result.IsCompleted || _isDone))
+////            {
+////                break;
+////            }
+
+////            if (buffer.IsEmpty)
+////            {
+////                continue;
+////            }
+
+////            //Trace.TraceInformation($"Raw command: {ArrayHelper.GetStringFromArrayCsharpStyle(ref buffer)}");
+////            MonitorLogger?.LogInformation($"Raw command: {DataMessageHelper.GetStringFromArrayCsharpStyle(ref buffer)}");
+
+////            //Trace.TraceInformation($"Buffer: pre-length: {buffer.Length}");
+
+////            // In the event that no message is parsed successfully, mark consumed
+////            // as nothing and examined as the entire buffer.
+
+////            while (DataMessageSplitter.TryReadCommand(ref buffer, out var command))
+////            {
+
+////                var length = (int)command.Length;
+////                if (length == 0)
+////                {
+////                    continue;
+////                }
+
+////                var mem = new Memory<byte>(command.ToArray());
+
+////                //var array = ArrayPool.Rent(length);
+
+////                //command.CopyTo(array);
+
+////                //var mem = ((Memory<byte>)array)[..length];
+
+////                string msg;
+
+////                var codecResult = DataMessageCodingProcessor.DecodeDataMessage(mem);
+
+////                if (codecResult.ErrorCode != 0 || codecResult.DataMessage == null)
+////                {
+////                    msg = $"Parsing command failed with error code {codecResult.ErrorCode}: {codecResult.ErrorMessage}: {DataMessageHelper.GetStringFromArrayCsharpStyle(ref command)}";
+////                    MonitorLogger?.LogDebug(msg);
+////                    DataMessagingConfig.AppLogger.LogError($"{LoggerId}{msg}");
+////                }
+////                else
+////                {
+////                    var validationResult = _dataMessageValidator.IsMessageValid(codecResult.DataMessage);
+////                    if (!validationResult.IsMessageValid)
+////                    {
+////                        msg = $"Parsed command {DataMessageHelper.GetStringFromArrayCsharpStyle(ref command)} NOT valid: {validationResult.ValidationResult}. Message was NOT processed.";
+////                        MonitorLogger?.LogError(msg);
+////                        DataMessagingConfig.AppLogger.LogError($"{LoggerId}{msg}");
+////                    }
+////                    else
+////                    {
+////#if DEBUG
+////                        msg = $"Parsed command {DataMessageHelper.GetStringFromArrayCsharpStyle(ref command)}";
+////                        MonitorLogger?.LogDebug(msg);
+////#endif
+
+////                        DataMessageProcessor.ProcessMessage(codecResult.DataMessage);
+////                    }
+////                }
+
+////                //ArrayPool.Return(array);
+
+////            }
+
+////            // Tell the PipeReader how much of the buffer has been consumed.
+////            reader.AdvanceTo(buffer.Start, buffer.End);
+
+////            // Stop reading if there's no more data coming.
+////            if (result.Buffer.IsEmpty && result.IsCompleted)
+////            {
+////                break;
+////            }
+////        }
+
+////        // Mark the PipeReader as complete.
+////        await reader.CompleteAsync();
+
+////        //Trace.TraceInformation("Completed send message pipeline");
+////    }
 
 
 //    /// <summary>
-//    /// Process the messages received from device internally
-//    /// This method is not intended to be called directly from production code.
-//    /// It is a unit test method.
+//    /// Current implementation of disposing
 //    /// </summary>
-//    public override async Task SendMessagePipeline()
+//    /// <param name="disposing">True if diposing should run</param>
+//    protected override async Task Dispose(bool disposing)
 //    {
-//        var reader = _pipe.Reader;
-//        //Trace.TraceInformation("Start send message pipeline");
-//        while (!_isDone)
+//        if (!disposing)
 //        {
-//            var result = await reader.ReadAsync();
-//            var buffer = result.Buffer;
-
-//            // Stop reading if there's no more data coming.
-//            if (buffer.IsEmpty && (result.IsCompleted || _isDone))
-//            {
-//                break;
-//            }
-
-//            if (buffer.IsEmpty)
-//            {
-//                continue;
-//            }
-
-//            //Trace.TraceInformation($"Raw command: {ArrayHelper.GetStringFromArrayCsharpStyle(ref buffer)}");
-//            MonitorLogger?.LogInformation($"Raw command: {DataMessageHelper.GetStringFromArrayCsharpStyle(ref buffer)}");
-
-//            //Trace.TraceInformation($"Buffer: pre-length: {buffer.Length}");
-
-//            // In the event that no message is parsed successfully, mark consumed
-//            // as nothing and examined as the entire buffer.
-
-//            while (DataMessageSplitter.TryReadCommand(ref buffer, out var command))
-//            {
-
-//                var length = (int)command.Length;
-//                if (length == 0)
-//                {
-//                    continue;
-//                }
-
-//                var mem = new Memory<byte>(command.ToArray());
-
-//                //var array = ArrayPool.Rent(length);
-
-//                //command.CopyTo(array);
-
-//                //var mem = ((Memory<byte>)array)[..length];
-
-//                string msg;
-
-//                var codecResult = DataMessageCodingProcessor.DecodeDataMessage(mem);
-
-//                if (codecResult.ErrorCode != 0 || codecResult.DataMessage == null)
-//                {
-//                    msg = $"Parsing command failed with error code {codecResult.ErrorCode}: {codecResult.ErrorMessage}: {DataMessageHelper.GetStringFromArrayCsharpStyle(ref command)}";
-//                    MonitorLogger?.LogDebug(msg);
-//                    DataMessagingConfig.AppLogger.LogError($"{LoggerId}{msg}");
-//                }
-//                else
-//                {
-//                    var validationResult = _dataMessageValidator.IsMessageValid(codecResult.DataMessage);
-//                    if (!validationResult.IsMessageValid)
-//                    {
-//                        msg = $"Parsed command {DataMessageHelper.GetStringFromArrayCsharpStyle(ref command)} NOT valid: {validationResult.ValidationResult}. Message was NOT processed.";
-//                        MonitorLogger?.LogError(msg);
-//                        DataMessagingConfig.AppLogger.LogError($"{LoggerId}{msg}");
-//                    }
-//                    else
-//                    {
-//#if DEBUG
-//                        msg = $"Parsed command {DataMessageHelper.GetStringFromArrayCsharpStyle(ref command)}";
-//                        MonitorLogger?.LogDebug(msg);
-//#endif
-
-//                        DataMessageProcessor.ProcessMessage(codecResult.DataMessage);
-//                    }
-//                }
-
-//                //ArrayPool.Return(array);
-
-//            }
-
-//            // Tell the PipeReader how much of the buffer has been consumed.
-//            reader.AdvanceTo(buffer.Start, buffer.End);
-
-//            // Stop reading if there's no more data coming.
-//            if (result.Buffer.IsEmpty && result.IsCompleted)
-//            {
-//                break;
-//            }
+//            return;
 //        }
 
-//        // Mark the PipeReader as complete.
-//        await reader.CompleteAsync();
-
-//        //Trace.TraceInformation("Completed send message pipeline");
+//        await StopReceiver();
 //    }
-
-
-    /// <summary>
-    /// Current implementation of disposing
-    /// </summary>
-    /// <param name="disposing">True if diposing should run</param>
-    protected override async Task Dispose(bool disposing)
-    {
-        if (!disposing)
-        {
-            return;
-        }
-
-        await StopReceiver();
-    }
-}
+//}

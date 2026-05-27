@@ -85,7 +85,16 @@ public static class TcpIpServerTestHelper
         socket.IpAddress = testSetup.IpAddress;
         socket.Port = testSetup.DataMessagingConfig.Port;
         socket.Connect().Wait(1000);
+        socket.StartReceiverLoop(SocketReceivedDataDelegate);
+
         testSetup.Socket = socket;
+
+    }
+
+    private static Task<bool> SocketReceivedDataDelegate()
+    {
+        // Do nothing
+        return Task.FromResult(true);
     }
 
     /// <summary>

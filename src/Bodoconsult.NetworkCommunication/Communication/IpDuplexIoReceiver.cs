@@ -1,143 +1,212 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
-using System.Buffers;
-using Bodoconsult.App.BufferPool;
-using Bodoconsult.App.Helpers;
-using Bodoconsult.NetworkCommunication.Delegates;
 using Bodoconsult.NetworkCommunication.Helpers;
 using Bodoconsult.NetworkCommunication.Interfaces;
+using System;
+using System.Buffers;
+using System.IO.Pipelines;
 
 namespace Bodoconsult.NetworkCommunication.Communication;
 
 /// <summary>
-/// Comm adapter subsystem for message receiving for IP based networks (UDP/TCP) without timer
+/// Comm adapter subsystem for message receiving for TCP/IP based networks without timer
 /// </summary>
 public class IpDuplexIoReceiver : BaseDuplexIoReceiver
 {
-    private readonly BufferPool<DummyMemory> _bufferPool = new();
-    private ReadOnlySequence<byte> _buffer = new([]);
-    private readonly ProducerConsumerQueue<DummyMemory> _currentPipeline = new();
+    //private readonly BufferPool<DummyMemory> _bufferPool = new();
+    //private ReadOnlySequence<byte> _buffer = new([]);
+    //private readonly ProducerConsumerQueue<DummyMemory> _currentPipeline = new();
 
     /// <summary>
     /// Current validator impl for data messages
     /// </summary>
     private readonly IDataMessageValidator _dataMessageValidator;
 
+    private readonly IStreamPipeline _pipeline;
+
     /// <summary>
     /// Default ctor
     /// </summary>
-    /// <param name="deviceCommSettings">Current device comm settings</param>
-    public IpDuplexIoReceiver(IDataMessagingConfig deviceCommSettings) : base(deviceCommSettings)
+    /// <param name="config">Current device comm settings</param>
+    public IpDuplexIoReceiver(IDataMessagingConfig config) : base(config)
     {
-        ArgumentNullException.ThrowIfNull(deviceCommSettings.SocketProxy);
-        deviceCommSettings.SocketProxy.StartReceiverLoop(SocketReceivedData);
+        ArgumentNullException.ThrowIfNull(config.SocketProxy);
 
-        _currentPipeline.ConsumerTaskDelegate = TryToSendReceivedData;
-        _bufferPool.LoadFactoryMethod(() => new DummyMemory());
-        _bufferPool.Allocate(3);
+        if (config.SocketProxy is not ITcpSocketProxy socketProxy)
+        {
+            throw new ArgumentException("deviceCommSettings.SocketProxy is not ITcpSocketProxy");
+        }
 
-        ArgumentNullException.ThrowIfNull(deviceCommSettings.DataMessageProcessingPackage);
+        socketProxy.StartReceiverLoop(SocketReceivedData);
 
-        _dataMessageValidator = deviceCommSettings.DataMessageProcessingPackage.DataMessageValidator;
+        if (socketProxy.ReceiverPipeline is not IStreamPipeline pipeline)
+        {
+            throw new ArgumentException("_socketProxy.ReceiverPipeline is not IStreamPipeline");
+        }
+
+        _pipeline = pipeline;
+
+        //_currentPipeline.ConsumerTaskDelegate = TryToSendReceivedData;
+        //_bufferPool.LoadFactoryMethod(() => new DummyMemory());
+        //_bufferPool.Allocate(3);
+
+        ArgumentNullException.ThrowIfNull(config.DataMessageProcessingPackage);
+
+        _dataMessageValidator = config.DataMessageProcessingPackage.DataMessageValidator;
     }
-
 
     /// <summary>
     /// Handle data the socket has received
     /// </summary>
-    /// <param name="data">Received data</param>
-    public override void SocketReceivedData(Memory<byte> data)
+    public Task<bool> SocketReceivedData()
     {
-        if (data.IsEmpty)
+        var task = Task.Run(() =>
         {
-            return;
-        }
+            var buffer = _pipeline.Buffer;
 
-#if DEBUG
-        var msg = $"{LoggerId}received: {data.Length} byte";
-        MonitorLogger.LogInformation(msg);
-#endif
-
-        var dummy = _bufferPool.Dequeue();
-        dummy.Memory = data.ToArray().AsMemory();
-        _currentPipeline.Enqueue(dummy);
-    }
-
-    /// <summary>
-    /// Try to send received data to internal receiver
-    /// </summary>
-    /// <param name="data"></param>
-    public void TryToSendReceivedData(DummyMemory data)
-    {
-        var chunk = new ChunkedSequence<byte>(_buffer);
-        chunk.Append(data.Memory);
-        data.Reset();
-
-        _bufferPool.Enqueue(data);
-
-        _buffer = chunk;
-
-        var msg = $"{LoggerId}Data in buffer: {_buffer.Length} byte: {DataMessageHelper.GetStringFromArrayCsharpStyle(ref _buffer)}";
-        MonitorLogger.LogInformation(msg);
-
-
-        while (DataMessageSplitter.TryReadCommand(ref _buffer, out var command))
-        {
-            var length = (int)command.Length;
-            if (length == 0)
+            if (buffer.IsEmpty)
             {
-                continue;
+                return Task.FromResult(false);
             }
 
-            // Take a copy of the command to avoid errors if the pipeline socket is closed before processing the command
-            var array = command.ToArray();
-            var mem = ((Memory<byte>)array)[..length];
-            var codecResult = DataMessageCodingProcessor.DecodeDataMessage(mem);
+            var msg =
+                $"{LoggerId}Data in buffer: {buffer.Length} byte: {DataMessageHelper.GetStringFromArrayCsharpStyle(ref buffer)}";
+            MonitorLogger.LogInformation(msg);
 
-            //Trace.TraceInformation($"IpDuplexIoReceiver: parsed command {Encoding.UTF8.GetString(command)} to message {codecResult.DataMessage?.MessageId}. Buffer {_buffer.Length}: { Encoding.UTF8.GetString( _buffer)}");
-            //Trace.TraceInformation($"IpDuplexIoReceiver: parsed command {Encoding.UTF8.GetString(command)} to message {codecResult.DataMessage?.MessageId}");
 
-            if (codecResult.ErrorCode != 0 || codecResult.DataMessage == null)
+            while (DataMessageSplitter.TryReadCommand(ref buffer, out var command))
             {
-                msg = $"Parsing command failed with error code {codecResult.ErrorCode}: {codecResult.ErrorMessage}: {DataMessageHelper.GetStringFromArrayCsharpStyle(ref command)}";
-                //Trace.TraceInformation(msg);
-                MonitorLogger?.LogError(msg);
-                DataMessagingConfig.AppLogger.LogError($"{LoggerId}{msg}");
+                var length = (int)command.Length;
+                if (length == 0)
+                {
+                    continue;
+                }
+
+                // Take a copy of the command to avoid errors if the pipeline socket is closed before processing the command
+                var array = command.ToArray();
+                var mem = ((Memory<byte>)array)[..length];
+                var codecResult = DataMessageCodingProcessor.DecodeDataMessage(mem);
+
+                //Trace.TraceInformation($"IpDuplexIoReceiver: parsed command {Encoding.UTF8.GetString(command)} to message {codecResult.DataMessage?.MessageId}. Buffer {_buffer.Length}: { Encoding.UTF8.GetString( _buffer)}");
+                //Trace.TraceInformation($"IpDuplexIoReceiver: parsed command {Encoding.UTF8.GetString(command)} to message {codecResult.DataMessage?.MessageId}");
+
+                if (codecResult.ErrorCode != 0 || codecResult.DataMessage == null)
+                {
+                    msg =
+                        $"Parsing command failed with error code {codecResult.ErrorCode}: {codecResult.ErrorMessage}: {DataMessageHelper.GetStringFromArrayCsharpStyle(ref command)}";
+                    //Trace.TraceInformation(msg);
+                    MonitorLogger?.LogError(msg);
+                    DataMessagingConfig.AppLogger.LogError($"{LoggerId}{msg}");
+
+                    _pipeline.MoveForward(buffer.Length);
+                    return Task.FromResult(false);
+                }
+
+                var validationResult = _dataMessageValidator.IsMessageValid(codecResult.DataMessage);
+                if (!validationResult.IsMessageValid)
+                {
+                    msg =
+                        $"Parsed command NOT valid: {validationResult.ValidationResult}: {DataMessageHelper.GetStringFromArrayCsharpStyle(ref command)}";
+                    MonitorLogger?.LogError(msg);
+                    DataMessagingConfig.AppLogger.LogError($"{LoggerId}{msg}");
+                }
+                else
+                {
+#if DEBUG
+                    msg = $"{LoggerId}Parsed command: {codecResult.DataMessage.ToShortInfoString()}: buffer {buffer.Length} bytes: {DataMessageHelper.GetStringFromArrayCsharpStyle(ref command)}";
+                    DataMessagingConfig.MonitorLogger?.LogDebug(msg);
+#endif
+
+                    DataMessageProcessor.ProcessMessage(codecResult.DataMessage);
+                }
+
+                if (buffer.Length == 0)
+                {
+                    break;
+                }
+            }
+
+            _pipeline.MoveForward(buffer.Length);
+
+            return Task.FromResult(true);
+        });
+
+        return task;
+    }
+
+//    /// <summary>
+//    /// Try to send received data to internal receiver
+//    /// </summary>
+//    /// <param name="data"></param>
+//    public void TryToSendReceivedData(DummyMemory data)
+//    {
+//        var chunk = new ChunkedSequence<byte>(_buffer);
+//        chunk.Append(data.Memory);
+//        data.Reset();
+
+//        _bufferPool.Enqueue(data);
+
+//        _buffer = chunk;
+
+//        var msg = $"{LoggerId}Data in buffer: {_buffer.Length} byte: {DataMessageHelper.GetStringFromArrayCsharpStyle(ref _buffer)}";
+//        MonitorLogger.LogInformation(msg);
+
+
+//        while (DataMessageSplitter.TryReadCommand(ref _buffer, out var command))
+//        {
+//            var length = (int)command.Length;
+//            if (length == 0)
+//            {
+//                continue;
+//            }
+
+//            // Take a copy of the command to avoid errors if the pipeline socket is closed before processing the command
+//            var array = command.ToArray();
+//            var mem = ((Memory<byte>)array)[..length];
+//            var codecResult = DataMessageCodingProcessor.DecodeDataMessage(mem);
+
+//            //Trace.TraceInformation($"IpDuplexIoReceiver: parsed command {Encoding.UTF8.GetString(command)} to message {codecResult.DataMessage?.MessageId}. Buffer {_buffer.Length}: { Encoding.UTF8.GetString( _buffer)}");
+//            //Trace.TraceInformation($"IpDuplexIoReceiver: parsed command {Encoding.UTF8.GetString(command)} to message {codecResult.DataMessage?.MessageId}");
+
+//            if (codecResult.ErrorCode != 0 || codecResult.DataMessage == null)
+//            {
+//                msg = $"Parsing command failed with error code {codecResult.ErrorCode}: {codecResult.ErrorMessage}: {DataMessageHelper.GetStringFromArrayCsharpStyle(ref command)}";
+//                //Trace.TraceInformation(msg);
+//                MonitorLogger?.LogError(msg);
+//                DataMessagingConfig.AppLogger.LogError($"{LoggerId}{msg}");
                 
-                return;
-            }
+//                return;
+//            }
 
-            var validationResult = _dataMessageValidator.IsMessageValid(codecResult.DataMessage);
-            if (!validationResult.IsMessageValid)
-            {
-                msg = $"Parsed command NOT valid: {validationResult.ValidationResult}: {DataMessageHelper.GetStringFromArrayCsharpStyle(ref command)}";
-                MonitorLogger?.LogError(msg);
-                DataMessagingConfig.AppLogger.LogError($"{LoggerId}{msg}");
-            }
-            else
-            {
-#if DEBUG
-                msg = $"{LoggerId}Parsed command: {codecResult.DataMessage.ToShortInfoString()}: {command.Length} bytes: {DataMessageHelper.GetStringFromArrayCsharpStyle(ref command)}";
-                DataMessagingConfig.MonitorLogger?.LogDebug(msg);
-#endif
+//            var validationResult = _dataMessageValidator.IsMessageValid(codecResult.DataMessage);
+//            if (!validationResult.IsMessageValid)
+//            {
+//                msg = $"Parsed command NOT valid: {validationResult.ValidationResult}: {DataMessageHelper.GetStringFromArrayCsharpStyle(ref command)}";
+//                MonitorLogger?.LogError(msg);
+//                DataMessagingConfig.AppLogger.LogError($"{LoggerId}{msg}");
+//            }
+//            else
+//            {
+//#if DEBUG
+//                msg = $"{LoggerId}Parsed command: {codecResult.DataMessage.ToShortInfoString()}: {command.Length} bytes: {DataMessageHelper.GetStringFromArrayCsharpStyle(ref command)}";
+//                DataMessagingConfig.MonitorLogger?.LogDebug(msg);
+//#endif
 
-                DataMessageProcessor.ProcessMessage(codecResult.DataMessage);
-            }
+//                DataMessageProcessor.ProcessMessage(codecResult.DataMessage);
+//            }
 
-            if (_buffer.Length == 0)
-            {
-                break;
-            }
-        }
-    }
+//            if (_buffer.Length == 0)
+//            {
+//                break;
+//            }
+//        }
+//    }
 
     /// <summary>
     /// Start the internal receiver
     /// </summary>
     public override async Task StartReceiver()
     {
-        string msg;
-
         if (CancellationSource != null)
         {
             try
@@ -147,14 +216,14 @@ public class IpDuplexIoReceiver : BaseDuplexIoReceiver
             }
             catch (Exception e)
             {
-                msg = $"CancellationToken cancelling failed: {e}";
+                var msg = $"CancellationToken cancelling failed: {e}";
                 MonitorLogger.LogError(msg);
                 DataMessagingConfig.AppLogger.LogError($"{LoggerId}{msg}");
             }
         }
 
         CancellationSource = new();
-        _currentPipeline.StartConsumer();
+        //_currentPipeline.StartConsumer();
     }
 
     /// <summary>
@@ -181,7 +250,7 @@ public class IpDuplexIoReceiver : BaseDuplexIoReceiver
 
         //FillPipelineTask?.Join();
 
-        _currentPipeline.StopConsumer();
+        //_currentPipeline.StopConsumer();
 
         //SendPipelineTask?.Join();
 

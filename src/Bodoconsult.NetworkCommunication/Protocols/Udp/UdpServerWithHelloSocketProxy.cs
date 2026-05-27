@@ -1,10 +1,8 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
 using Bodoconsult.App.Abstractions.Interfaces;
-using Bodoconsult.App.Helpers;
 using Bodoconsult.NetworkCommunication.Delegates;
 using Bodoconsult.NetworkCommunication.Interfaces;
-using System.Diagnostics;
 using System.Net;
 using System.Net.Sockets;
 
@@ -16,7 +14,7 @@ namespace Bodoconsult.NetworkCommunication.Protocols.Udp;
 /// </summary>
 public class UdpServerWithHelloSocketProxy : BaseUpdSocketProxy
 {
-    //private readonly byte[] _tmp = new byte[1];
+    private readonly IDatagramPipeline _pipeline;
 
     /// <summary>
     /// Endpoint for listening
@@ -34,8 +32,11 @@ public class UdpServerWithHelloSocketProxy : BaseUpdSocketProxy
     /// Default ctor
     /// </summary>
     /// <param name="logger">Current monitor logger</param>
-    public UdpServerWithHelloSocketProxy(IAppLoggerProxy logger) : base(logger)
-    { }
+    public UdpServerWithHelloSocketProxy(IAppLoggerProxy logger) : base(logger, new DatagramPipeline())
+    {
+        _pipeline = (IDatagramPipeline)ReceiverPipeline;
+        _pipeline.BufferSize = MaxPacketSize;
+    }
 
     /// <summary>
     /// Current socket (only for testing purposes, do not access directly in production code)
@@ -170,23 +171,30 @@ public class UdpServerWithHelloSocketProxy : BaseUpdSocketProxy
             while (!CancellationTokenSource.IsCancellationRequested)
             {
                 var result = 0;
-                var buffer = new byte[MinimumBufferSize].AsMemory();
+                var buffer = _pipeline.GetBuffer();
                 try
                 {
                     var udpResult = await UdpClient.ReceiveAsync(CancellationTokenSource.Token).AsTask();
                     result = udpResult.Buffer.Length;
                     if (result != 0)
                     {
-                        SendEndPoint = udpResult.RemoteEndPoint;
-                        udpResult.Buffer.CopyTo(buffer);
+                        udpResult.Buffer.CopyTo(buffer.Memory);
+
+                        _pipeline.AddMemory(buffer, udpResult.Buffer.Length);
+                    }
+                    else
+                    {
+                        _pipeline.ReleaseBuffer(buffer);
                     }
                 }
                 catch (OperationCanceledException)
                 {
+                    _pipeline.ReleaseBuffer(buffer);
                     break;
                 }
                 catch (Exception e)
                 {
+                    _pipeline.ReleaseBuffer(buffer);
                     Logger.LogError($"{LoggerId}Receiving failed ", e);
                 }
 
@@ -197,19 +205,19 @@ public class UdpServerWithHelloSocketProxy : BaseUpdSocketProxy
                     await Task.Delay(5);
                 }
 
-                Debug.Print($"Server: Received {result} byte");
+                //Debug.Print($"{LoggerId}Received {result} byte");
 
-                AsyncHelper.FireAndForget(() =>
-                {
-                    try
-                    {
-                        SocketReceivedDataDelegate.Invoke(buffer[..result]);
-                    }
-                    catch (Exception e)
-                    {
-                        Logger.LogError($"{LoggerId}Forwarding received data failed", e);
-                    }
-                });
+                //AsyncHelper.FireAndForget(() =>
+                //{
+                //    try
+                //    {
+                //        SocketReceivedDataDelegate.Invoke(buffer[..result]);
+                //    }
+                //    catch (Exception e)
+                //    {
+                //        Logger.LogError($"{LoggerId}Forwarding received data failed", e);
+                //    }
+                //});
             }
         }
         catch (OperationCanceledException)

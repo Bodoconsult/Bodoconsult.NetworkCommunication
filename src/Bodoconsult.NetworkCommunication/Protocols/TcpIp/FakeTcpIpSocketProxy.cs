@@ -21,7 +21,7 @@ public class FakeTcpIpSocketProxy : BaseTcpIpSocketProxy
     /// Default ctor
     /// </summary>
     /// <param name="logger">Current monitor logger</param>
-    public FakeTcpIpSocketProxy(IAppLoggerProxy logger) : base(logger)
+    public FakeTcpIpSocketProxy(IAppLoggerProxy logger) : base(logger, new StreamPipeline())
     { }
 
     /// <summary>
@@ -171,7 +171,7 @@ public class FakeTcpIpSocketProxy : BaseTcpIpSocketProxy
     /// Start the receiver loop
     /// </summary>
     /// <param name="socketReceivedDataDelegate">Delegate for forwarding received messages</param>
-    public override void StartReceiverLoop(SocketReceivedDataDelegate socketReceivedDataDelegate)
+    public override void StartReceiverLoop(SocketReceivedDataDelegate2 socketReceivedDataDelegate)
     {
         SocketReceivedDataDelegate = socketReceivedDataDelegate;
     }
@@ -188,7 +188,7 @@ public class FakeTcpIpSocketProxy : BaseTcpIpSocketProxy
             throw new SocketException(999);
         }
 
-        SocketReceivedDataDelegate?.Invoke(new byte[]{0x5, 0x6});
+        SocketReceivedDataDelegate?.Invoke();
         return Task.CompletedTask;
     }
 }

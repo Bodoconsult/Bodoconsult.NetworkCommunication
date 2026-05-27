@@ -158,7 +158,7 @@ public class StateMachineOrderProcessor : BaseOrderProcessor
     /// <param name="orderId"></param>
     protected override void OrderProcessingFinished(long orderId)
     {
-        var requestProcessor = OrderPipeline.GetFromExecutionQueue(orderId);
+        var requestProcessor = OrderPipeline.RemoveFromExecutionQueue(orderId);
 
         if (requestProcessor == null)
         {
@@ -195,8 +195,6 @@ public class StateMachineOrderProcessor : BaseOrderProcessor
             }
         }
 
-        // Now clean the execution queue
-        OrderPipeline.RemoveFromExecutionQueue(orderId);
         requestProcessor.Dispose();
 
         // Set the order running endtime
@@ -243,7 +241,7 @@ public class StateMachineOrderProcessor : BaseOrderProcessor
         //    return false;
         //}
 
-        LogDebug($"CheckReceivedMessage: message received: {receivedMessage.ToShortInfoString()}");
+        LogDebug($"CheckReceivedMessage: message {receivedMessage.ToShortInfoString()} received");
 
         //*********************
         // TOP 1 A X message with a error code of 0 makes no sense: throw this message away
@@ -254,7 +252,7 @@ public class StateMachineOrderProcessor : BaseOrderProcessor
             return true;
         }
 
-        var msg = $"received {receivedMessage.ToInfoString()} {OrderPipeline.CurrentOrderState}";
+        var msg = $"received {receivedMessage.ToShortInfoString()} {OrderPipeline.CurrentOrderState}";
         LogInformation(msg);
 
         //*********************

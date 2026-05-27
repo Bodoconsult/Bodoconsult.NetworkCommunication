@@ -1,9 +1,5 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
-using System.Buffers;
-using Bodoconsult.App.BufferPool;
-using Bodoconsult.App.Helpers;
-using Bodoconsult.NetworkCommunication.Delegates;
 using Bodoconsult.NetworkCommunication.Helpers;
 using Bodoconsult.NetworkCommunication.Interfaces;
 
@@ -14,9 +10,6 @@ namespace Bodoconsult.NetworkCommunication.Communication;
 /// </summary>
 public class UdpDatagramIpDuplexIoReceiver : BaseDuplexIoReceiver
 {
-    private readonly BufferPool<DummyMemory> _bufferPool = new();
-    private ReadOnlySequence<byte> _buffer = new([]);
-    private readonly ProducerConsumerQueue<DummyMemory> _currentPipeline = new();
     private long _messageCounter;
 
     /// <summary>
@@ -35,13 +28,22 @@ public class UdpDatagramIpDuplexIoReceiver : BaseDuplexIoReceiver
     /// <param name="config">Current device comm settings</param>
     public UdpDatagramIpDuplexIoReceiver(IDataMessagingConfig config) : base(config)
     {
-
         ArgumentNullException.ThrowIfNull(config.SocketProxy);
-        config.SocketProxy.StartReceiverLoop(SocketReceivedData);
 
-        _currentPipeline.ConsumerTaskDelegate = TryToSendReceivedData;
-        _bufferPool.LoadFactoryMethod(() => new DummyMemory());
-        _bufferPool.Allocate(3);
+        if (config.SocketProxy is not IUdpSocketProxy socketProxy)
+        {
+            throw new ArgumentException("deviceCommSettings.SocketProxy is not IUdpSocketProxy");
+        }
+
+        socketProxy.StartReceiverLoop(SocketReceivedData);
+
+        if (socketProxy.ReceiverPipeline is not IDatagramPipeline pipeline)
+        {
+            throw new ArgumentException("_socketProxy.ReceiverPipeline is not IStreamPipeline");
+        }
+
+        socketProxy.StartReceiverLoop(SocketReceivedData);
+        pipeline.StartReceiverLoop(SocketReceivedData);
 
         ArgumentNullException.ThrowIfNull(config.DataMessageProcessingPackage);
 
@@ -52,52 +54,23 @@ public class UdpDatagramIpDuplexIoReceiver : BaseDuplexIoReceiver
     /// Handle data the socket has received
     /// </summary>
     /// <param name="data">Received data</param>
-    public override void SocketReceivedData(Memory<byte> data)
+    public void SocketReceivedData(Memory<byte> data)
     {
         if (data.IsEmpty)
         {
             return;
         }
 
-//#if DEBUG
-//        var msg = $"{LoggerId}received: {data.Length} byte";
-//        MonitorLogger.LogInformation(msg);
-//#endif
-
-        var dummy = _bufferPool.Dequeue();
-        dummy.Memory = data.ToArray().AsMemory();
-        _currentPipeline.Enqueue(dummy);
-    }
-
-    /// <summary>
-    /// Activate the received messages logging. Should be turned off in production
-    /// </summary>
-    public bool ActivateReceiveLogging { get; set; }
-
-    /// <summary>
-    /// Maximum buffer size for UDP datagram. Set this value lower if your datagrams do not reach the maximum length of 65536 byte for UDP diagrams defined by protocol specs
-    /// </summary>
-    public int MaxDatagramSize { get; set; } = 65536;
-
-    /// <summary>
-    /// Try to send received data as message to internal receivers
-    /// </summary>
-    /// <param name="data">Data received</param>
-    public void TryToSendReceivedData(DummyMemory data)
-    {
-        var chunk = new ChunkedSequence<byte>(_buffer);
-        chunk.Append(data.Memory);
-
-        data.Reset();
-        _bufferPool.Enqueue(data);
-
-        _buffer = chunk;
-
         string msg;
+
+        //#if DEBUG
+        //        var msg = $"{LoggerId}received: {data.Length} byte";
+        //        MonitorLogger.LogInformation(msg);
+        //#endif
 
         if (ActivateReceiveLogging)
         {
-            msg = $"Data in buffer: {DataMessageHelper.GetStringFromArrayCsharpStyle(ref _buffer)}";
+            msg = $"Data in buffer: {DataMessageHelper.GetStringFromArrayCsharpStyle(data)}";
             MonitorLogger.LogDebug(msg);
         }
         else
@@ -117,26 +90,11 @@ public class UdpDatagramIpDuplexIoReceiver : BaseDuplexIoReceiver
             }
         }
 
-        if (!DataMessageSplitter.TryReadCommand(ref _buffer, out var command))
-        {
-            return;
-        }
-
-        var length = (int)command.Length;
-        if (length == 0)
-        {
-            return;
-        }
-
-        var array = command.ToArray();
-
-        var mem = ((Memory<byte>)array)[..length];
-
-        var codecResult = DataMessageCodingProcessor.DecodeDataMessage(mem);
+        var codecResult = DataMessageCodingProcessor.DecodeDataMessage(data);
 
         if (codecResult.ErrorCode != 0 || codecResult.DataMessage == null)
         {
-            msg = $"Parsing command failed with error code {codecResult.ErrorCode}: {codecResult.ErrorMessage}: {DataMessageHelper.GetStringFromArrayCsharpStyle(ref command)}";
+            msg = $"Parsing command failed with error code {codecResult.ErrorCode}: {codecResult.ErrorMessage}: {DataMessageHelper.GetStringFromArrayCsharpStyle(data)}";
             MonitorLogger.LogError(msg);
             DataMessagingConfig.AppLogger.LogError($"{LoggerId}{msg}");
             return;
@@ -145,7 +103,7 @@ public class UdpDatagramIpDuplexIoReceiver : BaseDuplexIoReceiver
         var validationResult = _dataMessageValidator.IsMessageValid(codecResult.DataMessage);
         if (!validationResult.IsMessageValid)
         {
-            msg = $"Parsed command {DataMessageHelper.GetStringFromArrayCsharpStyle(ref command)} NOT valid: {validationResult.ValidationResult}";
+            msg = $"Parsed command {DataMessageHelper.GetStringFromArrayCsharpStyle(data)} NOT valid: {validationResult.ValidationResult}";
             MonitorLogger.LogError(msg);
             DataMessagingConfig.AppLogger.LogError($"{LoggerId}{msg}");
         }
@@ -159,15 +117,101 @@ public class UdpDatagramIpDuplexIoReceiver : BaseDuplexIoReceiver
             //}
             DataMessageProcessor.ProcessMessage(codecResult.DataMessage);
         }
+
     }
+
+    /// <summary>
+    /// Activate the received messages logging. Should be turned off in production
+    /// </summary>
+    public bool ActivateReceiveLogging { get; set; }
+
+    ///// <summary>
+    ///// Try to send received data as message to internal receivers
+    ///// </summary>
+    ///// <param name="data">Data received</param>
+    //public void TryToSendReceivedData(DummyMemory data)
+    //{
+    //    var chunk = new ChunkedSequence<byte>(_buffer);
+    //    chunk.Append(data.Memory);
+
+    //    data.Reset();
+    //    _bufferPool.Enqueue(data);
+
+    //    _buffer = chunk;
+
+    //    string msg;
+
+    //    if (ActivateReceiveLogging)
+    //    {
+    //        msg = $"Data in buffer: {DataMessageHelper.GetStringFromArrayCsharpStyle(ref _buffer)}";
+    //        MonitorLogger.LogDebug(msg);
+    //    }
+    //    else
+    //    {
+    //        _messageCounter++;
+
+    //        if (Math.Abs(_messageCounter % 100.0) < 0.1)
+    //        {
+    //            msg = $"Received message {_messageCounter}";
+    //            //Trace.TraceInformation(msg);
+    //            MonitorLogger.LogDebug(msg);
+    //        }
+
+    //        if (_messageCounter == long.MaxValue)
+    //        {
+    //            _messageCounter = 0;
+    //        }
+    //    }
+
+    //    if (!DataMessageSplitter.TryReadCommand(ref _buffer, out var command))
+    //    {
+    //        return;
+    //    }
+
+    //    var length = (int)command.Length;
+    //    if (length == 0)
+    //    {
+    //        return;
+    //    }
+
+    //    var array = command.ToArray();
+
+    //    var mem = ((Memory<byte>)array)[..length];
+
+    //    var codecResult = DataMessageCodingProcessor.DecodeDataMessage(mem);
+
+    //    if (codecResult.ErrorCode != 0 || codecResult.DataMessage == null)
+    //    {
+    //        msg = $"Parsing command failed with error code {codecResult.ErrorCode}: {codecResult.ErrorMessage}: {DataMessageHelper.GetStringFromArrayCsharpStyle(ref command)}";
+    //        MonitorLogger.LogError(msg);
+    //        DataMessagingConfig.AppLogger.LogError($"{LoggerId}{msg}");
+    //        return;
+    //    }
+
+    //    var validationResult = _dataMessageValidator.IsMessageValid(codecResult.DataMessage);
+    //    if (!validationResult.IsMessageValid)
+    //    {
+    //        msg = $"Parsed command {DataMessageHelper.GetStringFromArrayCsharpStyle(ref command)} NOT valid: {validationResult.ValidationResult}";
+    //        MonitorLogger.LogError(msg);
+    //        DataMessagingConfig.AppLogger.LogError($"{LoggerId}{msg}");
+    //    }
+    //    else
+    //    {
+    //        //if (ActivateReceiveLogging)
+    //        //{
+    //        //    msg = $"Parsed command {DataMessageHelper.GetStringFromArrayCsharpStyle(ref command)}";
+    //        //    //Trace.TraceInformation(msg);
+    //        //    DataMessagingConfig.MonitorLogger.LogDebug(msg);
+    //        //}
+    //        DataMessageProcessor.ProcessMessage(codecResult.DataMessage);
+    //    }
+    //}
 
     /// <summary>
     /// Start the internal receiver
     /// </summary>
     public override async Task StartReceiver()
     {
-        string msg;
-
         if (CancellationSource != null)
         {
             try
@@ -177,14 +221,13 @@ public class UdpDatagramIpDuplexIoReceiver : BaseDuplexIoReceiver
             }
             catch (Exception e)
             {
-                msg = $"CancellationToken cancelling failed: {e}";
+                var msg = $"CancellationToken cancelling failed: {e}";
                 MonitorLogger.LogError(msg);
                 DataMessagingConfig.AppLogger.LogError($"{LoggerId}{msg}");
             }
         }
 
         CancellationSource = new();
-        _currentPipeline.StartConsumer();
     }
 
     /// <summary>
@@ -211,7 +254,7 @@ public class UdpDatagramIpDuplexIoReceiver : BaseDuplexIoReceiver
 
         //FillPipelineTask?.Join();
 
-        _currentPipeline.StopConsumer();
+        //_currentPipeline.StopConsumer();
 
         //await Task.Run(FillMessagePipeline);
 

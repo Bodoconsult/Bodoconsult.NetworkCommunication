@@ -4,7 +4,6 @@ using System.Collections.Concurrent;
 using System.Diagnostics;
 using System.Net;
 using System.Net.Sockets;
-using Bodoconsult.App.Helpers;
 using Bodoconsult.NetworkCommunication.Interfaces;
 
 namespace Bodoconsult.NetworkCommunication.Testing;
@@ -80,6 +79,11 @@ public abstract class BaseUdpDevice : IUdpDevice
     public bool ReplyToReceivedMessage { get; set; }
 
     /// <summary>
+    /// Maximum package size. Default: 512
+    /// </summary>
+    public int MaxPackageSize { get; set; }  = 512;
+
+    /// <summary>
     /// IP address of the server
     /// </summary>
     public IPAddress IpAddress { get; }
@@ -124,8 +128,32 @@ public abstract class BaseUdpDevice : IUdpDevice
     /// <returns></returns>
     public virtual Task ReceiverLoop(AutoResetEvent waitForLoopStarted)
     {
-        throw new NotSupportedException("Override in derived classes");
+        return Task.Run(async void () =>
+        {
+
+            try
+            {
+                while (!CancellationTokenSource.IsCancellationRequested)
+                {
+                    var buffer = new byte[MaxPackageSize];
+
+                    var result = await Listener.ReceiveAsync(CancellationTokenSource.Token);
+
+                    if (result.Buffer.Length == 0)
+                    {
+                        continue;
+                    }
+
+                    ReceivedMessages.Add(buffer);
+                }
+            }
+            catch (Exception e)
+            {
+                Debug.Print(e.ToString());
+            }
+        });
     }
+
     /// <summary>
     /// Send byte array to the client
     /// </summary>
