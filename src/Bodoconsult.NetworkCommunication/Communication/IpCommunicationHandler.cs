@@ -92,9 +92,9 @@ public class IpCommunicationHandler : ICommunicationHandler
     /// </summary>
     /// <param name="message">Message not sent</param>
     /// <param name="reason">The reason why the message was not sent</param>
-    public void OnMessageNotSent(ReadOnlyMemory<byte> message, string? reason)
+    public virtual void OnMessageNotSent(ReadOnlyMemory<byte> message, string? reason)
     {
-        _monitorLogger.LogWarning($"message not sent: '{DataMessageHelper.GetStringFromArrayCsharpStyle(message)}' \n Reason: '{reason}'");
+        // Do nothing
     }
 
     private void OnNotExpectedMessageReceivedEvent(IInboundDataMessage e)
