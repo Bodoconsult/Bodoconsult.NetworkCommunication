@@ -218,6 +218,8 @@ internal class TncpDataMessageSplitterTests
         }
     }
 
+    // 
+
     [Test]
     public void TryReadCommand_ValidDataReplyMessage7WithAck_CommandReturned()
     {
@@ -227,6 +229,48 @@ internal class TncpDataMessageSplitterTests
         var data = new byte[]
         {
             0x3c, 0x42, 0x45, 0x47, 0x49, 0x4e, 0x3e, 0x73, 0x65, 0x74, 0x2c, 0x73, 0x74, 0x72, 0x65, 0x61, 0x6d, 0x2c, 0x6f, 0x72, 0x64, 0x65, 0x72, 0x2c, 0x31, 0x2c, 0x34, 0xa, 0x6
+        };
+        var ros = new ReadOnlySequence<byte>(data);
+
+        // Act  
+        var result = _splitter.TryReadCommand(ref ros, out var command);
+
+        // Assert
+        Debug.Print(Encoding.UTF8.GetString(data));
+        Debug.Print($"{data.Length} bytes");
+        Debug.Print(Encoding.UTF8.GetString(command));
+
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(result, Is.True);
+            Assert.That(command.Length, Is.EqualTo(reply.Length));
+            Assert.That(ros.Length, Is.EqualTo(1));
+        }
+
+        // Act  
+        var result2 = _splitter.TryReadCommand(ref ros, out var command2);
+
+        // Assert
+        Debug.Print($"{data.Length} bytes");
+        Debug.Print(Encoding.UTF8.GetString(command2));
+
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(result2, Is.True);
+            Assert.That(command2.Length, Is.Not.Zero);
+            Assert.That(ros.Length, Is.EqualTo(0));
+        }
+    }
+
+    [Test]
+    public void TryReadCommand_ValidDataReplyMessage8_CommandReturned()
+    {
+        // Arrange 
+        const string reply = "<BEGIN>set,stream,order,3\n<END>\n";
+
+        var data = new byte[]
+        {
+             0x3c, 0x42, 0x45, 0x47, 0x49, 0x4e, 0x3e, 0x73, 0x65, 0x74, 0x2c, 0x73, 0x74, 0x72, 0x65, 0x61, 0x6d, 0x2c, 0x6f, 0x72, 0x64, 0x65, 0x72, 0x2c, 0x33, 0xa, 0x3c, 0x45, 0x4e, 0x44, 0x3e, 0xa, 0x6
         };
         var ros = new ReadOnlySequence<byte>(data);
 

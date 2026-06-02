@@ -1,15 +1,15 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
+using System.Text;
 using Bodoconsult.NetworkCommunication.EnumAndStates;
 using Bodoconsult.NetworkCommunication.Interfaces;
-using System.Text;
 
 namespace Bodoconsult.NetworkCommunication.OrderManagement.Processors;
 
 /// <summary>
 /// Current implementation of <see cref="IRequestStepProcessor"/> for device request steps
 /// </summary>
-public class DeviceRequestStepProcessor : IDeviceRequestStepProcessor
+public class OnlyAnswerDeviceRequestStepProcessor : IOnlyAnswerDeviceRequestStepProcessor
 {
     private bool _isCancelled;
     private readonly Lock _isCancelledLockObject = new();
@@ -20,7 +20,7 @@ public class DeviceRequestStepProcessor : IDeviceRequestStepProcessor
     /// <summary>
     /// Default ctor
     /// </summary>
-    public DeviceRequestStepProcessor(IDeviceRequestSpec requestSpec)
+    public OnlyAnswerDeviceRequestStepProcessor(IOnlyAnswerDeviceRequestSpec requestSpec)
     {
         RequestSpec = requestSpec;
         DeviceRequestSpec = requestSpec;
@@ -36,7 +36,7 @@ public class DeviceRequestStepProcessor : IDeviceRequestStepProcessor
     /// <summary>
     /// Current device request spec
     /// </summary>
-    public IDeviceRequestSpec DeviceRequestSpec { get; }
+    public IOnlyAnswerDeviceRequestSpec DeviceRequestSpec { get; }
 
     /// <summary>
     /// The current processed chain element
@@ -181,7 +181,7 @@ public class DeviceRequestStepProcessor : IDeviceRequestStepProcessor
                     }
 
                     repeatCount++;
-                    result = await ExecuteRequest(message, requestSpec);
+                    result = await ExecuteRequestWithChain(message, requestSpec);
 
                     RequestSpec.AppLogger?.LogDebug($"{RequestSpec.OrderLoggerId}: ExecuteRequest: {result} at {repeatCount} try");
 
@@ -250,7 +250,7 @@ public class DeviceRequestStepProcessor : IDeviceRequestStepProcessor
     /// <returns>Execution result</returns>
     /// <remarks>The execution of a request step consists of two major steps. Step 1 is sending a message to the device. Step 2 is waiting for the answer of the device. The device is normally responsive.
     /// A timelag between step1 and step2 may lead to failing device orders due to "lost" device messages. Therefore we start step 2 before step 1 is fired.</remarks>
-    public async Task<IOrderExecutionResultState> ExecuteRequest(IOutboundDataMessage message, IDeviceRequestSpec requestSpec)
+    public async Task<IOrderExecutionResultState> ExecuteRequestWithChain(IOutboundDataMessage message, IOnlyAnswerDeviceRequestSpec requestSpec)
     {
         try
         {
@@ -294,8 +294,7 @@ public class DeviceRequestStepProcessor : IDeviceRequestStepProcessor
 
     }
 
-    private static async Task<IOrderExecutionResultState> RunStep1(IOutboundDataMessage message, IDeviceRequestSpec requestSpec,
-        Task<IOrderExecutionResultState> task, CancellationTokenSource tcs)
+    private static async Task<IOrderExecutionResultState> RunStep1(IOutboundDataMessage message, IOnlyAnswerDeviceRequestSpec requestSpec, Task<IOrderExecutionResultState> task, CancellationTokenSource tcs)
     {
         try
         {
@@ -303,37 +302,25 @@ public class DeviceRequestStepProcessor : IDeviceRequestStepProcessor
 
             ArgumentNullException.ThrowIfNull(requestSpec.SendDataMessageDelegate);
 
-            string s;
+            message.WaitForAcknowledgement = false;
+
             var result = await requestSpec.SendDataMessageDelegate.Invoke(message);
             requestSpec.AppLogger?.LogInformation($"{requestSpec.OrderLoggerId}{rs}: message sent {requestSpec.CurrentSentMessage?.ToShortInfoString()} with result {result.ProcessExecutionResult}");
 
             // Handle result from sending
             var execResult = result.ProcessExecutionResult;
 
-            // If the expected handshake for the sent message is NOT correct
-            if (!requestSpec.ExpectedHandshakeForSentMessage.Contains(execResult))
-            {
-                s = $"{requestSpec.OrderLoggerId}{rs}: sending message ended with unexpected handshake {execResult} {result.Message}"
-                    .TrimEnd();
-                requestSpec.AppLogger?.LogDebug(s);
-
-                //CancelTask(task);
-                tcs.Dispose();
-                Wait(task);
-                return result.ProcessExecutionResult;
-            }
-
-            // A NACK was received
-            if (requestSpec.RequestRequiresOnlyAHandshakeAsAnswer && execResult == OrderExecutionResultState.Nack)
+            // Message was sent?
+            if (execResult != OrderExecutionResultState.Successful)
             {
                 //CancelTask(task);
                 tcs.Dispose();
                 Wait(task);
-                return HandleNack(requestSpec, message, execResult);
+                return execResult;
             }
 
             // The requested handshake was received
-            s = $"{requestSpec.OrderLoggerId}{rs}:sent message {message.ToShortInfoString()}";
+            var s = $"{requestSpec.OrderLoggerId}{rs}:sent message {message.ToShortInfoString()}";
             requestSpec.AppLogger?.LogDebug(s);
 
             var result2 = Wait(task);
@@ -352,7 +339,7 @@ public class DeviceRequestStepProcessor : IDeviceRequestStepProcessor
 
     }
 
-    private static Task<IOrderExecutionResultState> RunStep2Task(DeviceRequestStepProcessor processor, CancellationTokenSource tcs)
+    private static Task<IOrderExecutionResultState> RunStep2Task(OnlyAnswerDeviceRequestStepProcessor processor, CancellationTokenSource tcs)
     {
         return Task.Run(async () =>
         {

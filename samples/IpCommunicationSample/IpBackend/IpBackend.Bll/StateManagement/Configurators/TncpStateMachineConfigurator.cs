@@ -110,11 +110,11 @@ public class TncpStateMachineConfigurator : BaseStateMachineConfigurator
             OrderFinishedUnsucessfullyDelegate = _deviceBusinessLogicAdapter.StartMessagingUnsuccessfully,
         };
 
-        config.OrderConfigurations.Add("TncpOrderConfiguration");
-        config.OrderConfigurations.Add("TncpOrderConfiguration");
-        config.OrderConfigurations.Add("TncpOrderConfiguration");
-        config.OrderConfigurations.Add("TncpOrderConfiguration");
-        config.OrderConfigurations.Add("TncpOrderConfiguration");
+        config.OrderConfigurations.Add("OnlyAnswerTncpOrderConfiguration");
+        config.OrderConfigurations.Add("OnlyAnswerTncpOrderConfiguration");
+        config.OrderConfigurations.Add("OnlyAnswerTncpOrderConfiguration");
+        config.OrderConfigurations.Add("OnlyAnswerTncpOrderConfiguration");
+        config.OrderConfigurations.Add("OnlyAnswerTncpOrderConfiguration");
         // config.OrderConfigurations.Add("TncpOrderConfiguration"); // if order-command is coming
 
         StateFactory.RegisterConfiguration(config);
@@ -165,11 +165,11 @@ public class TncpStateMachineConfigurator : BaseStateMachineConfigurator
         };
 
         // Two orders required because of two telent commands to send
-        config.OrderConfigurations.Add("TncpOrderConfiguration");
-        config.OrderConfigurations.Add("TncpOrderConfiguration");
-        config.OrderConfigurations.Add("TncpOrderConfiguration");
-        config.OrderConfigurations.Add("TncpOrderConfiguration");
-        config.OrderConfigurations.Add("TncpOrderConfiguration");
+        config.OrderConfigurations.Add("OnlyAnswerTncpOrderConfiguration");
+        config.OrderConfigurations.Add("OnlyAnswerTncpOrderConfiguration");
+        config.OrderConfigurations.Add("OnlyAnswerTncpOrderConfiguration");
+        config.OrderConfigurations.Add("OnlyAnswerTncpOrderConfiguration");
+        config.OrderConfigurations.Add("OnlyAnswerTncpOrderConfiguration");
         // config.OrderConfigurations.Add("NoAnswerTncpOrderConfiguration"); // if order-command is coming
 
         StateFactory.RegisterConfiguration(config);

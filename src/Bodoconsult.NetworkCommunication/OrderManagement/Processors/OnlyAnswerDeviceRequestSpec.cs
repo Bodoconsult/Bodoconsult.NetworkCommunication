@@ -6,16 +6,16 @@ using Bodoconsult.NetworkCommunication.Interfaces;
 namespace Bodoconsult.NetworkCommunication.OrderManagement.Processors;
 
 /// <summary>
-/// Current implementation of <see cref="INoHandshakeNoAnswerDeviceRequestSpec"/> not expecting a handshake nor an answer
+/// Current implementation of <see cref="INoHandshakeNoAnswerDeviceRequestSpec"/> expecting only an answer but no handshake
 /// </summary>
-public class NoAnswerDeviceRequestSpec : BaseRequestSpec, INoAnswerDeviceRequestSpec
+public class OnlyAnswerDeviceRequestSpec : BaseRequestSpec, IOnlyAnswerDeviceRequestSpec
 {
     /// <summary>
     /// Default ctor
     /// </summary>
     /// <param name="name">Request name</param>
     /// <param name="parameterSet">Current parameter set</param>
-    public NoAnswerDeviceRequestSpec(string name, IParameterSet? parameterSet) : base(name, parameterSet)
+    public OnlyAnswerDeviceRequestSpec(string name, IParameterSet? parameterSet) : base(name, parameterSet)
     { }
 
     /// <summary>
@@ -38,6 +38,11 @@ public class NoAnswerDeviceRequestSpec : BaseRequestSpec, INoAnswerDeviceRequest
     /// Send a data message to the device
     /// </summary>
     public SendDataMessageDelegate? SendDataMessageDelegate { get; set; }
+
+    /// <summary>
+    /// The next step in the chain
+    /// </summary>
+    public IRequestAnswerStep? NextChainElement { get; set; }
 
     ///// <summary>
     ///// The next step in the chain

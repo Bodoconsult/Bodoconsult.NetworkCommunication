@@ -1,5 +1,7 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
+using Bodoconsult.NetworkCommunication.OrderManagement.Processors;
+
 namespace Bodoconsult.NetworkCommunication.Interfaces;
 
 /// <summary>
@@ -34,4 +36,11 @@ public interface IRequestStepProcessorFactory
     /// <param name="requestSpec">Current request</param>
     /// <returns>A valid device request step processor instance</returns>
     IInternalRequestStepProcessor CreateInternalProcessor(IInternalRequestSpec requestSpec);
+
+    /// <summary>
+    /// Create an only answer request processor
+    /// </summary>
+    /// <param name="requestSpec">Current request</param>
+    /// <returns>A valid tower request step processor instance</returns>
+    IOnlyAnswerDeviceRequestStepProcessor CreateOnlyAnswerProcessor(IOnlyAnswerDeviceRequestSpec requestSpec);
 }

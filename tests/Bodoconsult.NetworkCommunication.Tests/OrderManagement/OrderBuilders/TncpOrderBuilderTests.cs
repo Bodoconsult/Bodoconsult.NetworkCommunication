@@ -1,5 +1,10 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
+using System.Reflection.Metadata;
+using Bodoconsult.NetworkCommunication.DataMessaging.DataBlockCodecs;
+using Bodoconsult.NetworkCommunication.DataMessaging.DataBlockCodingProcessors;
+using Bodoconsult.NetworkCommunication.DataMessaging.DataBlocks;
+using Bodoconsult.NetworkCommunication.DataMessaging.DataMessageCodecs;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
 using Bodoconsult.NetworkCommunication.Interfaces;
 using Bodoconsult.NetworkCommunication.OrderManagement.Configurations;
@@ -41,7 +46,7 @@ internal class TncpOrderBuilderTests : OrderBuilderTestsBase
             //Device = TestDataHelper.CreateStateMachineDevice(),
             HandleRequestAnswerOnSuccessDelegate = HandleRequestAnswerOnSuccessDelegate,
             ParameterSet = ps
-		};
+        };
 
         // Act  
         var order = builder.CreateOrder(config, 1);
@@ -209,7 +214,7 @@ internal class TncpOrderBuilderTests : OrderBuilderTestsBase
         {
             TelnetCommand = "<BEGIN>Blubb"
         };
-        
+
         var errors = new List<string>();
 
         // Act  
@@ -295,7 +300,7 @@ internal class TncpOrderBuilderTests : OrderBuilderTestsBase
         var replyMessage = new TncpInboundDataMessage
         {
             TelnetCommand = "<BEGIN>Blubb",
-            TelnetAdditionalInfo = "<ERROR>Invalid command<END>"
+            TelnetAdditionalInfo = "<ERROR>Invalid command"
         };
 
         var errors = new List<string>();
@@ -308,6 +313,90 @@ internal class TncpOrderBuilderTests : OrderBuilderTestsBase
         {
             Assert.That(result, Is.False);
             Assert.That(errors.Count, Is.Not.Zero);
+        }
+    }
+
+    [Test]
+    public void CheckReceivedMessageDelegate_ValidCommandWithConfig_ReturnsTrue()
+    {
+        // Arrange 
+
+        IRequestAnswer requestAnswer = new RequestAnswer(true, null, "Test", BtcpOrderBuilder.CheckReceivedMessageDelegate);
+        var sentMessage = new TncpOutboundDataMessage
+        {
+            TelnetCommand = "Blubb"
+        };
+
+        var replyMessage = new TncpInboundDataMessage
+        {
+            TelnetCommand = "<BEGIN>Blubb",
+            TelnetAdditionalInfo = "<CONFIG>Invalid command"
+        };
+
+        var errors = new List<string>();
+
+        // Act  
+        var result = TncpOrderBuilder.CheckReceivedMessageDelegate(requestAnswer, sentMessage, replyMessage, errors);
+
+        // Assert
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(result, Is.True);
+            Assert.That(errors.Count, Is.Zero);
+        }
+    }
+
+    [Test]
+    public void CheckReceivedMessageDelegate_ValidCommandRealWorld_ReturnsTrue()
+    {
+        // Arrange 
+
+        IRequestAnswer requestAnswer = new RequestAnswer(true, null, "Test", BtcpOrderBuilder.CheckReceivedMessageDelegate);
+
+        var outData = new byte[]
+        {
+            0x73, 0x65, 0x74, 0x2c, 0x73, 0x74, 0x72, 0x65, 0x61, 0x6d, 0x2c, 0x6f, 0x72, 0x64, 0x65, 0x72, 0x2c, 0x33,
+            0xa
+        };
+
+        var dataBlockCodingProcessor = new DefaultDataBlockCodingProcessor();
+        dataBlockCodingProcessor.LoadDataBlockCodecs('x', new BasicDataBlockCodec());
+
+        var codec = new TncpDataMessageCodec(dataBlockCodingProcessor);
+
+        var sentMessage = new TncpOutboundDataMessage
+        {
+            TelnetCommand = "set,stream,order,3\n"
+        };
+
+
+
+        var codecResult = codec.DecodeDataMessage(outData);
+        Assert.That(codecResult.ErrorCode, Is.Zero);
+
+        var inData = new byte[]
+            {
+                0x3c, 0x42, 0x45, 0x47, 0x49, 0x4e, 0x3e, 0x73, 0x65, 0x74, 0x2c, 0x73, 0x74, 0x72, 0x65, 0x61, 0x6d, 0x2c,
+                0x6f, 0x72, 0x64, 0x65, 0x72, 0x2c, 0x33, 0xa, 0x3c, 0x45, 0x4e, 0x44, 0x3e, 0xa
+        };
+
+        var replyMessage1 = codec.DecodeDataMessage(inData);
+
+        var errors = new List<string>();
+
+        if (replyMessage1.DataMessage is not IInboundDataMessage replyMessage)
+        {
+            throw new ArgumentException("replyMessage1.DataMessage is not IInboundDataMessage");
+        }
+
+        // Act  
+        var result = TncpOrderBuilder.CheckReceivedMessageDelegate(requestAnswer, sentMessage, replyMessage, errors);
+
+        // Assert
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(result, Is.True);
+            Assert.That(errors.Count, Is.Zero);
         }
     }
 }

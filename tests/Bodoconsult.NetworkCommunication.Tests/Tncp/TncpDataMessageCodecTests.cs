@@ -209,6 +209,44 @@ internal class TncpDataMessageCodecTests
     }
 
     [Test]
+    public void DecodeDataMessage_ValidResponseCommandRealWorld3_MessageDecoded()
+    {
+        // Arrange 
+        var msg = new byte[]
+        {
+            0x3c, 0x42, 0x45, 0x47, 0x49, 0x4e, 0x3e, 0x73, 0x65, 0x74, 0x2c, 0x73, 0x74, 0x72, 0x65, 0x61, 0x6d, 0x2c, 0x6f, 0x72, 0x64, 0x65, 0x72, 0x2c, 0x33, 0xa, 0x3c, 0x45, 0x4e, 0x44, 0x3e, 0xa
+        };
+
+        IDataBlockCodingProcessor dataBlockCodingProcessor = new DefaultDataBlockCodingProcessor();
+        dataBlockCodingProcessor.LoadDataBlockCodecs('x', new BasicDataBlockCodec());
+
+        var codec = new TncpDataMessageCodec(dataBlockCodingProcessor);
+
+        // Act  
+        var result = codec.DecodeDataMessage(msg);
+
+        // Assert
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(result, Is.Not.Null);
+            Assert.That(result.ErrorCode, Is.Zero);
+
+            ArgumentNullException.ThrowIfNull(result.DataMessage);
+
+            Assert.That(result.DataMessage, Is.Not.Null);
+
+            var tncpMsg = (TncpInboundDataMessage)result.DataMessage;
+
+            Debug.Print($"{tncpMsg.TelnetCommand}");
+            Debug.Print($"{tncpMsg.TelnetAdditionalInfo}");
+
+            Assert.That(tncpMsg.RawMessageData.Length, Is.Not.Zero);
+            Assert.That(tncpMsg.TelnetCommand, Is.EqualTo("<BEGIN>set,stream,order,3"));
+            Assert.That(tncpMsg.TelnetAdditionalInfo, Is.Null);
+        }
+    }
+
+    [Test]
     public void DecodeDataMessage_InvalidInput_MessageNotDecoded()
     {
         // Arrange 

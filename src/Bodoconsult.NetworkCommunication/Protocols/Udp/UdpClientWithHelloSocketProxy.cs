@@ -3,6 +3,7 @@
 using Bodoconsult.App.Abstractions.Interfaces;
 using Bodoconsult.NetworkCommunication.Delegates;
 using Bodoconsult.NetworkCommunication.Interfaces;
+using System;
 using System.Net;
 using System.Net.Sockets;
 
@@ -77,17 +78,9 @@ public class UdpClientWithHelloSocketProxy : BaseUpdSocketProxy
             Logger.LogInformation($"{LoggerId}sent {result} bytes");
             return result;
         }
-        catch (SocketException socketException)
+        catch (SocketException se)
         {
-            if (socketException.ErrorCode != 10054)
-            {
-                Logger.LogError($"{LoggerId}Sending failed", socketException);
-            }   
-            else
-            {
-                Logger.LogDebug($"{LoggerId}No connection");
-            }
-
+            Logger.LogError($"{LoggerId}Sending failed: socket error {se.ErrorCode}: {se.Message}");
             return 0;
         }
         catch (Exception e)
@@ -133,24 +126,6 @@ public class UdpClientWithHelloSocketProxy : BaseUpdSocketProxy
             return 0;
         }
     }
-
-    ///// <summary>
-    ///// Send bytes 
-    ///// </summary>
-    ///// <param name="bytesToSend">Byte array to send</param>
-    ///// <param name="offset">Offset</param>
-    ///// <param name="messageBytesLength">Number of message bytes length to send</param>
-    ///// <returns></returns>
-    //public override Task<int> Send(byte[] bytesToSend, int offset, int messageBytesLength)
-    //{
-    //    if (UdpClient == null)
-    //    {
-    //        return Task.FromResult(0);
-    //    }
-
-    //    var datagram = bytesToSend.AsMemory().Slice(offset, messageBytesLength);
-    //    return UdpClient.Client.SendAsync(datagram.ToArray());
-    //}
 
     /// <summary>
     /// Close the socket
@@ -265,17 +240,18 @@ public class UdpClientWithHelloSocketProxy : BaseUpdSocketProxy
                     if (result != 0)
                     {
                         udpResult.Buffer.CopyTo(buffer.Memory);
-
                         _pipeline.AddMemory(buffer, udpResult.Buffer.Length);
-                    }
-                    else
-                    {
-                        _pipeline.ReleaseBuffer(buffer);
                     }
                 }
                 catch (OperationCanceledException)
                 {
                     _pipeline.ReleaseBuffer(buffer);
+                    break;
+                }
+                catch (SocketException se)
+                {
+                    _pipeline.ReleaseBuffer(buffer);
+                    Logger.LogError($"{LoggerId}Receiving failed: socket error {se.ErrorCode}: {se.Message}");
                     break;
                 }
                 catch (Exception e)
@@ -310,93 +286,15 @@ public class UdpClientWithHelloSocketProxy : BaseUpdSocketProxy
         {
 
         }
+        catch (SocketException se)
+        {
+            Logger.LogError($"{LoggerId}Receiving failed: socket error {se.ErrorCode}: {se.Message}");
+        }
         catch (Exception e)
         {
             Logger.LogError($"{LoggerId}Receiver loop failed", e);
         }
     }
-
-    ///// <summary>
-    ///// Receive data from the socket
-    ///// </summary>
-    ///// <param name="buffer">Byte array to store the received byte data in</param>
-    ///// <returns>Number of bytes received</returns>
-    //public override async Task<int> Receive(byte[] buffer)
-    //{
-    //    if (UdpClient == null)
-    //    {
-    //        return await Task.FromResult(0);
-    //    }
-
-    //    try
-    //    {
-    //        var result = await UdpClient.ReceiveAsync(CancellationTokenSource.Token);
-    //        //SendEndPoint = result.RemoteEndPoint;
-
-    //        //Trace.TraceInformation($"UDPClient: received {result.Length} bytes from {SendEndPoint}");
-
-    //        Buffer.BlockCopy(result.Buffer, 0, buffer, 0, result.Buffer.Length);
-    //        Logger.LogInformation($"{LoggerId}received {result.Buffer.Length} bytes");
-    //        return result.Buffer.Length;
-    //    }
-    //    catch (SocketException socketException)
-    //    {
-    //        if (socketException.ErrorCode != 10054)
-    //        {
-    //            Logger.LogError($"{LoggerId}Receiving failed", socketException);
-    //        }
-    //        else
-    //        {
-    //            Logger.LogDebug($"{LoggerId}No connection");
-    //        }
-
-    //        return 0;
-    //    }
-    //    catch (Exception e)
-    //    {
-    //        Logger.LogError($"{LoggerId}Receiving failed", e);
-    //        return 0;
-    //    }
-    //}
-
-    ///// <summary>
-    ///// Receive first data byte from the socket
-    ///// </summary>
-    ///// <param name="buffer">Byte array to store the received byte data in</param>
-    ///// <returns>Number of bytes received</returns>
-    //public override async Task<int> Receive(Memory<byte> buffer)
-    //{
-    //    if (UdpClient == null)
-    //    {
-    //        return 0;
-    //    }
-
-    //    try
-    //    {
-    //        var result = await UdpClient.ReceiveAsync(CancellationTokenSource.Token);
-    //        result.Buffer.CopyTo(buffer);
-    //        Logger.LogInformation($"{LoggerId} received {result.Buffer.Length} bytes");
-    //        return result.Buffer.Length;
-    //    }
-    //    catch (SocketException socketException)
-    //    {
-    //        if (socketException.ErrorCode != 10054)
-    //        {
-    //            Logger.LogError($"{LoggerId}Receiving failed", socketException);
-    //        }
-    //        else
-    //        {
-    //            Logger.LogDebug($"{LoggerId}No connection");
-    //        }
-
-    //        return 0;
-    //    }
-    //    catch (Exception e)
-    //    {
-    //        Logger.LogError($"{LoggerId}Receiving failed", e);
-    //        return 0;
-    //    }
-    //}
 
     /// <summary>
     /// Poll data
@@ -414,46 +312,6 @@ public class UdpClientWithHelloSocketProxy : BaseUpdSocketProxy
             return false;
         }
     }
-
-    ///// <summary>
-    ///// Receive data from the socket
-    ///// </summary>
-    ///// <param name="buffer">Byte array to store the received byte data in</param>
-    ///// <param name="offset">Offset</param>
-    ///// <param name="expectedBytesLength">Expected length of the byte data received</param>
-    ///// <returns>Number of bytes received</returns>
-    //public override async Task<int> Receive(byte[] buffer, int offset, int expectedBytesLength)
-    //{
-    //    if (UdpClient == null)
-    //    {
-    //        return 0;
-    //    }
-
-    //    try
-    //    {
-    //        var result = await UdpClient.ReceiveAsync(CancellationTokenSource.Token);
-    //        //SendEndPoint = result.RemoteEndPoint;
-
-    //        //Trace.TraceInformation($"UDPClient: received {result.Length} bytes from {SendEndPoint}");
-
-    //        result.Buffer.AsSpan().Slice(offset, expectedBytesLength).CopyTo(buffer);
-    //        return expectedBytesLength;
-    //    }
-    //    catch (SocketException socketException)
-    //    {
-    //        if (socketException.ErrorCode != 10054)
-    //        {
-    //            Trace.TraceInformation(socketException.ToString());
-    //        }
-
-    //        return 0;
-    //    }
-    //    catch (Exception e)
-    //    {
-    //        Trace.TraceInformation(e.ToString());
-    //        return 0;
-    //    }
-    //}
 
     /// <summary>
     /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.

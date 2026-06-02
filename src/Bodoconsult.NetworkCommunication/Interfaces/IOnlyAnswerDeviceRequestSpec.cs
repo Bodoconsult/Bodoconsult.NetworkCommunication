@@ -5,19 +5,29 @@ using Bodoconsult.NetworkCommunication.Delegates;
 namespace Bodoconsult.NetworkCommunication.Interfaces;
 
 /// <summary>
-/// Interface for device request specifications waiting for no answer(s)
+/// Interface for device request specifications waiting for only an answer
 /// </summary>
-public interface INoAnswerDeviceRequestSpec : IRequestSpec
+public interface IOnlyAnswerDeviceRequestSpec : IRequestSpec
 {
+    /// <summary>
+    /// Delegate for handling request answer messages
+    /// </summary>
+    HandleRequestAnswerDelegate? HandleRequestAnswerOnSuccessDelegate { get; set; }
+
     /// <summary>
     /// The expected handshake if the message was sent
     /// </summary>
     List<IOrderExecutionResultState> ExpectedHandshakeForSentMessage { get; }
 
     /// <summary>
-    /// Delegate for handling request answer messages
+    /// Does the request require only a (valid) handshake as answer to be successful
     /// </summary>
-    HandleRequestAnswerDelegate? HandleRequestAnswerOnSuccessDelegate { get; set; }
+    bool RequestRequiresOnlyAHandshakeAsAnswer { get; set; }
+
+    /// <summary>
+    /// Represents a timeline of request answers
+    /// </summary>
+    List<IRequestAnswerStep> RequestAnswerSteps { get; }
 
     /// <summary>
     /// Current sent message
@@ -35,10 +45,10 @@ public interface INoAnswerDeviceRequestSpec : IRequestSpec
     /// </summary>
     SendDataMessageDelegate? SendDataMessageDelegate { get; set; }
 
-    ///// <summary>
-    ///// The next step in the chain
-    ///// </summary>
-    //IRequestAnswerStep? NextChainElement { get; set; }
+    /// <summary>
+    /// The next step in the chain
+    /// </summary>
+    IRequestAnswerStep? NextChainElement { get; set; }
 
     /// <summary>
     /// Delegate for creating data messages to sent to the device

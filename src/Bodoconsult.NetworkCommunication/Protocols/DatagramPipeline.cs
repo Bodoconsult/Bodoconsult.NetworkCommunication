@@ -55,7 +55,7 @@ public class DatagramPipeline : IDatagramPipeline
     /// </summary>
     public void StopReceiverLoop()
     {
-        
+
     }
 
     /// <summary>
@@ -84,13 +84,22 @@ public class DatagramPipeline : IDatagramPipeline
     /// <param name="data">Buffer entity</param>
     public void ReleaseBuffer(IMemoryOwner<byte> data)
     {
-        // ToDo: release array to pool
-        for(var i = 0; i < data.Memory.Length;  i++)
+        try
         {
-            data.Memory.Span[i] = 0x0;
+            // ToDo: release array to pool
+            for (var i = 0; i < data.Memory.Length; i++)
+            {
+                data.Memory.Span[i] = 0x0;
+            }
+
+            data.Dispose();
+        }
+        catch //(Exception e)
+        {
+            //Console.WriteLine(e);
+            //throw;
         }
 
-        data.Dispose();
     }
 
 

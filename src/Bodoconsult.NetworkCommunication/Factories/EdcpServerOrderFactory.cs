@@ -16,6 +16,12 @@ public class EdcpServerOrderFactory : OrderFactory
     /// </summary>
     public EdcpServerOrderFactory(IOrderIdGenerator orderIdGenerator) : base(orderIdGenerator)
     {
+        var config0 = new OnlyAnswerEdcpServerOrderConfiguration
+        {
+            CreateParameterSetDelegate = () => new EdcpParameterSet()
+        };
+        RegisterConfiguration(config0);
+
         var config1 = new EdcpServerOrderConfiguration
         {
             CreateParameterSetDelegate = () => new EdcpParameterSet()

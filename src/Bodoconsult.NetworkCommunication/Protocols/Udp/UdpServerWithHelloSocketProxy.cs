@@ -192,6 +192,11 @@ public class UdpServerWithHelloSocketProxy : BaseUpdSocketProxy
                     _pipeline.ReleaseBuffer(buffer);
                     break;
                 }
+                catch (SocketException se)
+                {
+                    _pipeline.ReleaseBuffer(buffer);
+                    Logger.LogError($"{LoggerId}Receiving failed: socket error {se.ErrorCode}: {se.Message}");
+                }
                 catch (Exception e)
                 {
                     _pipeline.ReleaseBuffer(buffer);
@@ -230,88 +235,6 @@ public class UdpServerWithHelloSocketProxy : BaseUpdSocketProxy
         }
     }
 
-    ///// <summary>
-    ///// Receive data from the socket
-    ///// </summary>
-    ///// <param name="buffer">Byte array to store the received byte data in</param>
-    ///// <returns>Number of bytes received</returns>
-    //public override async Task<int> Receive(byte[] buffer)
-    //{
-    //    if (UdpClient == null)
-    //    {
-    //        return await Task.FromResult(0);
-    //    }
-
-    //    try
-    //    {
-    //        var result = await UdpClient.ReceiveAsync(CancellationTokenSource.Token);
-    //        SendEndPoint = result.RemoteEndPoint;
-
-    //        Buffer.BlockCopy(result.Buffer, 0, buffer, 0, result.Buffer.Length);
-    //        Logger.LogInformation($"{LoggerId}received {result.Buffer.Length} bytes");
-
-    //        return result.Buffer.Length;
-    //    }
-    //    catch (SocketException socketException)
-    //    {
-    //        if (socketException.ErrorCode != 10054)
-    //        {
-    //            Logger.LogError($"{LoggerId}Receiving failed", socketException);
-    //        }
-    //        else
-    //        {
-    //            Logger.LogDebug($"{LoggerId}No connection");
-    //        }
-
-    //        return 0;
-    //    }
-    //    catch (Exception e)
-    //    {
-    //        Logger.LogError($"{LoggerId}Receiving failed", e);
-    //        return 0;
-    //    }
-    //}
-
-    ///// <summary>
-    ///// Receive first data byte from the socket
-    ///// </summary>
-    ///// <param name="buffer">Byte array to store the received byte data in</param>
-    ///// <returns>Number of bytes received</returns>
-    //public override async Task<int> Receive(Memory<byte> buffer)
-    //{
-    //    if (UdpClient == null)
-    //    {
-    //        return 0;
-    //    }
-
-    //    try
-    //    {
-    //        var result = await UdpClient.ReceiveAsync(CancellationTokenSource.Token).AsTask();
-    //        SendEndPoint = result.RemoteEndPoint;
-    //        result.Buffer.CopyTo(buffer);
-    //        Logger.LogInformation($"{LoggerId}received {result.Buffer.Length} bytes");
-    //        return result.Buffer.Length;
-    //    }
-    //    catch (SocketException socketException)
-    //    {
-    //        if (socketException.ErrorCode != 10054)
-    //        {
-    //            Logger.LogError($"{LoggerId}Receiving failed", socketException);
-    //        }
-    //        else
-    //        {
-    //            Logger.LogDebug($"{LoggerId}No connection");
-    //        }
-
-    //        return 0;
-    //    }
-    //    catch (Exception e)
-    //    {
-    //        Logger.LogError($"{LoggerId}Receiving failed", e);
-    //        return 0;
-    //    }
-    //}
-
     /// <summary>
     /// Poll data
     /// </summary>
@@ -328,47 +251,6 @@ public class UdpServerWithHelloSocketProxy : BaseUpdSocketProxy
             return false;
         }
     }
-
-    ///// <summary>
-    ///// Receive data from the socket
-    ///// </summary>
-    ///// <param name="buffer">Byte array to store the received byte data in</param>
-    ///// <param name="offset">Offset</param>
-    ///// <param name="expectedBytesLength">Expected length of the byte data received</param>
-    ///// <returns>Number of bytes received</returns>
-    //public override async Task<int> Receive(byte[] buffer, int offset, int expectedBytesLength)
-    //{
-    //    if (UdpClient == null)
-    //    {
-    //        return 0;
-    //    }
-
-    //    try
-    //    {
-    //        var result = await UdpClient.ReceiveAsync(CancellationTokenSource.Token);
-    //        SendEndPoint = result.RemoteEndPoint;
-
-    //        //Trace.TraceInformation($"UDPClient: received {result.Length} bytes from {SendEndPoint}");
-
-    //        result.Buffer.AsSpan().Slice(offset, expectedBytesLength).CopyTo(buffer);
-    //        return expectedBytesLength;
-
-    //    }
-    //    catch (SocketException socketException)
-    //    {
-    //        if (socketException.ErrorCode != 10054)
-    //        {
-    //            Trace.TraceInformation(socketException.ToString());
-    //        }
-
-    //        return 0;
-    //    }
-    //    catch (Exception e)
-    //    {
-    //        Trace.TraceInformation(e.ToString());
-    //        return 0;
-    //    }
-    //}
 
     /// <summary>
     /// Send bytes
@@ -387,17 +269,9 @@ public class UdpServerWithHelloSocketProxy : BaseUpdSocketProxy
             Logger.LogInformation($"{LoggerId}sent {result} bytes");
             return result;
         }
-        catch (SocketException socketException)
+        catch (SocketException se)
         {
-            if (socketException.ErrorCode != 10054)
-            {
-                Logger.LogError($"{LoggerId}Sending failed", socketException);
-            }
-            else
-            {
-                Logger.LogDebug($"{LoggerId}No connection");
-            }
-
+            Logger.LogError($"{LoggerId}Sending failed: socket error {se.ErrorCode}: {se.Message}");
             return 0;
         }
         catch (Exception e)
@@ -425,18 +299,9 @@ public class UdpServerWithHelloSocketProxy : BaseUpdSocketProxy
             Logger.LogInformation($"{LoggerId}sent {result} bytes");
             return result;
         }
-        catch (SocketException socketException)
+        catch (SocketException se)
         {
-            if (socketException.ErrorCode != 10054)
-            {
-                Logger.LogError($"{LoggerId}Sending failed", socketException);
-
-            }
-            else
-            {
-                Logger.LogDebug($"{LoggerId}No connection");
-            }
-
+            Logger.LogError($"{LoggerId}Sending failed: socket error {se.ErrorCode}: {se.Message}");
             return 0;
         }
         catch (Exception e)

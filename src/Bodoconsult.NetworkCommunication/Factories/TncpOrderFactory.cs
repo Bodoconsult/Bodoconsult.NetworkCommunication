@@ -16,6 +16,12 @@ public class TncpOrderFactory: OrderFactory
     /// </summary>
     public TncpOrderFactory(IOrderIdGenerator orderIdGenerator) : base(orderIdGenerator)
     {
+        var config0 = new OnlyAnswerTncpOrderConfiguration
+        {
+            CreateParameterSetDelegate = () => new TncpParameterSet()
+        };
+        RegisterConfiguration(config0);
+
         var config1 = new TncpOrderConfiguration
         {
             CreateParameterSetDelegate = () => new TncpParameterSet()

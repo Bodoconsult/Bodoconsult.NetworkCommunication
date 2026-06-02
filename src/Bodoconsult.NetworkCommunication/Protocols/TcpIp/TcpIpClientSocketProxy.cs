@@ -5,6 +5,7 @@ using Bodoconsult.App.Abstractions.Interfaces;
 using Bodoconsult.NetworkCommunication.Delegates;
 using Bodoconsult.NetworkCommunication.Helpers;
 using Bodoconsult.NetworkCommunication.Interfaces;
+using System;
 using System.Net;
 using System.Net.Sockets;
 
@@ -297,16 +298,22 @@ public class TcpIpClientSocketProxy : BaseTcpIpSocketProxy
                 {
                     var pipeLen = _pipeline.Buffer.Length;
                     var result = await Socket.ReceiveAsync(buffer.Memory, SocketFlags.None, CancellationTokenSource.Token);
-                    
+
                     _pipeline.AddMemory(buffer, result);
                     await SocketReceivedDataDelegate.Invoke();
 
-                    Logger.LogInformation($"{LoggerId}TCPC: received {result} bytes: buffer before {pipeLen} bytes after {_pipeline.Buffer.Length} bytes");
+                    Logger.LogInformation(
+                        $"{LoggerId}TCPC: received {result} bytes: buffer before {pipeLen} bytes after {_pipeline.Buffer.Length} bytes");
                 }
                 catch (OperationCanceledException)
                 {
                     _pipeline.ReleaseBuffer(buffer);
                     break;
+                }
+                catch (SocketException se)
+                {
+                    _pipeline.ReleaseBuffer(buffer);
+                    Logger.LogError($"{LoggerId}Receiving failed: socket error {se.ErrorCode}: {se.Message}");
                 }
                 catch (Exception e)
                 {
@@ -335,6 +342,10 @@ public class TcpIpClientSocketProxy : BaseTcpIpSocketProxy
         catch (OperationCanceledException)
         {
 
+        }
+        catch (SocketException se)
+        {
+            Logger.LogError($"{LoggerId}Receiver loop failed: socket error {se.ErrorCode}: {se.Message}");
         }
         catch (Exception e)
         {

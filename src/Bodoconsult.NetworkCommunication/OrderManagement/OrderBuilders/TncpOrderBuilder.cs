@@ -81,6 +81,7 @@ public class TncpOrderBuilder : BaseOrderBuilder
 
         if (rm.TelnetCommand == null)
         {
+            errors.Add("received command is NULL");
             return false;
         }
 
@@ -91,26 +92,28 @@ public class TncpOrderBuilder : BaseOrderBuilder
         }
 
         // Response handling
-        var send = sm.TelnetCommand?.Replace(" ", string.Empty);
+        var send = sm.TelnetCommand?.Replace(" ", string.Empty).Replace("\n", string.Empty);
 
         if (send == null)
         {
             if (sm.DataBlock is TncpParameterSet ps)
             {
-                send = ps.TelnetCommand?.Replace(" ", string.Empty);
+                send = ps.TelnetCommand?.Replace(" ", string.Empty).Replace("\n", string.Empty);
             }
         }
 
         if (send == null)
         {
+            errors.Add("sent command is NULL");
             return false;
         }
 
-        var cmd = rm.TelnetCommand[7..].Replace(" ", string.Empty);
+        var cmd = rm.TelnetCommand[7..].Replace(" ", string.Empty).Replace("\n", string.Empty);
         var result = send == cmd;
 
         if (!result)
         {
+            errors.Add($">>{send}<< unequal to >>{cmd}<<");
             return false;
         }
 
@@ -123,6 +126,5 @@ public class TncpOrderBuilder : BaseOrderBuilder
 
         errors.Add(info);
         return false;
-
     }
 }

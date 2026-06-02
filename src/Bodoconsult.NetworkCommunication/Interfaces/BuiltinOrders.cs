@@ -106,4 +106,29 @@ public static class BuiltinOrders
     /// Dummy order name
     /// </summary>
     public const string DummyOrder = "DummyOrder";
+
+    /// <summary>
+    /// Only answer SDCP order name
+    /// </summary>
+    public const string OnlyAnswerSdcpOrder = "OnlyAnswerSdcpOrder";
+
+    /// <summary>
+    /// Only answer EDCP client order name
+    /// </summary>
+    public const string OnlyAnswerEdcpClientOrder = "OnlyAnswerEdcpClientOrder";
+
+    /// <summary>
+    /// Only answer EDCP server order name
+    /// </summary>
+    public const string OnlyAnswerEdcpServerOrder = "OnlyAnswerEdcpServerOrder";
+
+    /// <summary>
+    /// Only answer BTCP order name
+    /// </summary>
+    public const string OnlyAnswerBtcpOrder = "OnlyAnswerBtcpOrder";
+
+    /// <summary>
+    /// Only answer TNCP order name
+    /// </summary>
+    public const string OnlyAnswerTncpOrder = "OnlyAnswerTncpOrder";
 }

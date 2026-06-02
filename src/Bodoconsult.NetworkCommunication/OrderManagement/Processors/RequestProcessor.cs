@@ -132,8 +132,9 @@ public class RequestProcessor : IRequestProcessor
 
             var result = requestSpec switch
             {
-                IInternalRequestSpec irs => await ExecuteRequest(irs),
+                IOnlyAnswerDeviceRequestSpec ors => await ExecuteRequest(ors),
                 IDeviceRequestSpec drs => await ExecuteRequest(drs),
+                IInternalRequestSpec irs => await ExecuteRequest(irs),
                 INoAnswerDeviceRequestSpec ndrs => await ExecuteRequest(ndrs),
                 INoHandshakeNoAnswerDeviceRequestSpec hdrs => await ExecuteRequest(hdrs),
                 _ => OrderExecutionResultState.NotProcessed
@@ -172,6 +173,64 @@ public class RequestProcessor : IRequestProcessor
         //    return ExitAction(order, OrderExecutionResultState.Unsuccessful);
         //}
     }
+
+    private async Task<IOrderExecutionResultState> ExecuteRequest(IOnlyAnswerDeviceRequestSpec requestSpec)
+    {
+        ArgumentNullException.ThrowIfNull(_device.CommunicationAdapter);
+
+        // Fetch the order here to avoid multithread issues
+        var order = Order;
+
+        if (IsCancelled || order.IsCancelled)
+        {
+            return SetUnsuccessful(order);
+        }
+
+        //requestSpec.DoNotifyDelegate = _device.DoNotify;
+        requestSpec.SendDataMessageDelegate = _device.CommunicationAdapter.SendDataMessage;
+        requestSpec.CancelRunningOperationDelegate = _device.CommunicationAdapter.CancelRunningOperation;
+        requestSpec.AppLogger = _appLogger;
+        requestSpec.OrderLoggerId = $"{_orderLoggerId}RP: {requestSpec.Name}: ";
+
+        var processor = _requestStepProcessorFactory.CreateOnlyAnswerProcessor(requestSpec);
+        requestSpec.RequestStepProcessorSetResultDelegate = processor.SetResult;
+        requestSpec.RequestStepProcessorIsCancelledDelegate = processor.CheckIsCancelled;
+        //processor.PrepareTheChain();
+
+        processor.RequestSpec.SetTransportObject(_transportObject);
+
+        CurrentRequestStepProcessor = processor;
+
+        if (IsCancelled || order.IsCancelled)
+        {
+            processor.Cancel();
+            return SetUnsuccessful(order);
+        }
+
+        var result = await processor.ExecuteRequest();
+
+        if (result.Id == OrderExecutionResultState.Successful.Id)
+        {
+            _transportObject = processor.RequestSpec.ResultTransportObject;
+            processor.Dispose();
+            LogInfo($"{_orderLoggerId}RP: {requestSpec.Name}: ExecuteRequest successful {result}");
+            return OrderExecutionResultState.Successful;
+        }
+
+        // ToDo: add logging
+
+        LogInfo($"{_orderLoggerId}RP: {requestSpec.Name}: ExecuteRequest failed {result}");
+
+        // If the order has been finished already or is disposable: do not change order state again
+        if (order.IsFinished || order.IsDisposable)
+        {
+            return order.ExecutionResult;
+        }
+
+        order.ExecutionResult = result;
+        return result;
+    }
+
 
     /// <summary>
     /// Prepare the request processor for correct exit

@@ -61,6 +61,16 @@ public interface IOrderBuilder
     INoHandshakeNoAnswerDeviceRequestSpec CreateNoHandshakeNoAnswerDeviceRequestSpec(IOrder order, string name, HandleRequestAnswerDelegate? handleRequestAnswerOnSuccessDelegate);
 
     /// <summary>
+    /// Create an <see cref="DeviceRequestSpec"/> instance and add it to the order
+    /// </summary>
+    /// <param name="order">Current order</param>
+    /// <param name="name">Name of the request spec</param>
+    /// <param name="handleRequestAnswerOnSuccessDelegate">Delegate fired if the order was eceuted successfully</param>
+    /// <returns><see cref="DeviceRequestSpec"/> instance </returns>
+    IDeviceRequestSpec CreateOnlyAnswerDeviceRequestSpec(IOrder order, string name,
+        HandleRequestAnswerDelegate? handleRequestAnswerOnSuccessDelegate);
+
+    /// <summary>
     /// Create an <see cref="InternalRequestSpec"/> instance and add it to the order
     /// </summary>
     /// <param name="order">Current order</param>

@@ -81,6 +81,7 @@ public abstract class BaseOrderBuilder : IOrderBuilder
         }
 
         var rs = new DeviceRequestSpec(name, order.ParameterSet);
+        //rs.HandleRequestAnswerOnSuccessDelegate = handleRequestAnswerOnSuccessDelegate;
         order.RequestSpecs.Add(rs);
         return rs;
     }
@@ -122,6 +123,27 @@ public abstract class BaseOrderBuilder : IOrderBuilder
 
         var rs = new NoHandshakeNoAnswerDeviceRequestSpec(name, order.ParameterSet);
         rs.HandleRequestAnswerOnSuccessDelegate = handleRequestAnswerOnSuccessDelegate;
+        order.RequestSpecs.Add(rs);
+        return rs;
+    }
+
+    /// <summary>
+    /// Create an <see cref="DeviceRequestSpec"/> instance and add it to the order
+    /// </summary>
+    /// <param name="order">Current order</param>
+    /// <param name="name">Name of the request spec</param>
+    /// <param name="handleRequestAnswerOnSuccessDelegate">Delegate fired if the order was eceuted successfully</param>
+    /// <returns><see cref="DeviceRequestSpec"/> instance </returns>
+    public IDeviceRequestSpec CreateOnlyAnswerDeviceRequestSpec(IOrder order, string name,
+        HandleRequestAnswerDelegate? handleRequestAnswerOnSuccessDelegate)
+    {
+        if (order.ParameterSet == null)
+        {
+            throw new ArgumentNullException(nameof(order.ParameterSet));
+        }
+
+        var rs = new DeviceRequestSpec(name, order.ParameterSet);
+        //rs.HandleRequestAnswerOnSuccessDelegate = handleRequestAnswerOnSuccessDelegate;
         order.RequestSpecs.Add(rs);
         return rs;
     }

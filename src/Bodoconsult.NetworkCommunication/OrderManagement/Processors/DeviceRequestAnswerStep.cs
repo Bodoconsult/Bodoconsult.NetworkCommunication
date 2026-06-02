@@ -288,6 +288,7 @@ public class DeviceRequestAnswerStep : BaseRequestAnswerStep, IDeviceRequestAnsw
         {
             if (!answer.CheckReceivedMessageDelegate?.Invoke(answer, sentMessage, receivedMessage, errors) ?? false)
             {
+                RequestSpec.AppLogger?.LogDebug($"{RequestSpec.OrderLoggerId}CheckReceivedMessage: answer {answer.GetType().Name} NOT successful {string.Join("-", errors)}");
                 continue;
             }
             answer.SetWasReceived(receivedMessage);

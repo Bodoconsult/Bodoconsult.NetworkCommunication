@@ -16,6 +16,12 @@ public class BtcpOrderFactory : OrderFactory
     /// </summary>
     public BtcpOrderFactory(IOrderIdGenerator orderIdGenerator) : base(orderIdGenerator)
     {
+        var config0 = new OnlyAnswerBtcpOrderConfiguration
+        {
+            CreateParameterSetDelegate = () => new BtcpParameterSet()
+        };
+        RegisterConfiguration(config0);
+
         var config1 = new BtcpOrderConfiguration
         {
             CreateParameterSetDelegate = () => new BtcpParameterSet()

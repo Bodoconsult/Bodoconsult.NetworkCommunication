@@ -49,4 +49,14 @@ public class RequestStepProcessorFactory : IRequestStepProcessorFactory
     {
             return new InternalRequestStepProcessor(requestSpec);
     }
+
+    /// <summary>
+    /// Create an only answer request processor
+    /// </summary>
+    /// <param name="requestSpec">Current request</param>
+    /// <returns>A valid tower request step processor instance</returns>
+    public IOnlyAnswerDeviceRequestStepProcessor CreateOnlyAnswerProcessor(IOnlyAnswerDeviceRequestSpec requestSpec)
+    {
+        return new OnlyAnswerDeviceRequestStepProcessor(requestSpec);
+    }
 }
