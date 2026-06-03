@@ -13,6 +13,7 @@ namespace Bodoconsult.NetworkCommunication.Devices;
 public abstract class BaseStateMachineDevice : BaseOrderManagementDevice, IStateMachineDevice
 {
     private readonly ConcurrentQueue<IJobStateMachineState> _concurrentQueue = new();
+    private readonly WatchDog _watchDog;
 
     private IStateMachineState? _currentState;
     private readonly Lock _currentStateLockObj = new();
@@ -20,6 +21,8 @@ public abstract class BaseStateMachineDevice : BaseOrderManagementDevice, IState
     private IJobStateMachineState? _savedJobState;
     private readonly Lock _savedJobStateLockObj = new();
     private readonly IOrderManagementClientNotificationManager _clientNotificationManager;
+
+    private readonly Lock _stateNotiLock = new();
 
     /// <summary>
     /// Default ctor
@@ -33,6 +36,14 @@ public abstract class BaseStateMachineDevice : BaseOrderManagementDevice, IState
     {
         DeviceStateCheckManager = deviceStateCheckManager;
         _clientNotificationManager = clientNotificationManager;
+
+        _watchDog = new WatchDog(WatchDogRunnerDelegate, 5000);
+        _watchDog.StartWatchDog();
+    }
+
+    private void WatchDogRunnerDelegate()
+    {
+        InformState();
     }
 
     /// <summary>
@@ -319,11 +330,34 @@ public abstract class BaseStateMachineDevice : BaseOrderManagementDevice, IState
     /// </summary>
     public virtual void LogStates()
     {
-        if (CurrentState != null)
+        InformState(true);
+    }
+
+    private void InformState(bool logIt = false)
+    {
+        try
         {
-            _clientNotificationManager.DoNotifyStateManagementStateEvent(this, CurrentState);
+            var state = CurrentState;
+            if (state == null)
+            {
+                return;
+            }
+
+            // Notification to client
+            lock (_stateNotiLock)
+            {
+                _clientNotificationManager.DoNotifyStateManagementStateEvent(this, state);
+            }
+
+            if (logIt)
+            {
+                LogInformation($"State changed from {PreviousDeviceState}/{PreviousBusinessStateId}/{PreviousBusinessSubState} to {DeviceState}/{state}/{BusinessSubState}");
+            }
         }
-        LogInformation($"State changed from {PreviousDeviceState}/{PreviousBusinessStateId}/{PreviousBusinessSubState} to {DeviceState}/{CurrentState}/{BusinessSubState}");
+        catch //(Exception e)
+        {
+            LogError("Notification to client is locked");
+        }
     }
 
     /// <summary>
@@ -400,5 +434,12 @@ public abstract class BaseStateMachineDevice : BaseOrderManagementDevice, IState
 
         DeviceBusinessLogicAdapter = o;
         StateMachineDeviceBusinessLogicAdapter = o;
+    }
+
+    /// <summary>Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.</summary>
+    public override void Dispose()
+    {
+        _watchDog.StopWatchDog();
+        base.Dispose();
     }
 }

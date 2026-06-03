@@ -645,7 +645,7 @@ public abstract class BaseOrderManagementDevice : IOrderManagementDevice
 
 
     /// <summary>Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.</summary>
-    public void Dispose()
+    public virtual void Dispose()
     {
         //Stop();
         //_statusWatchdog?.StopWatchDog();

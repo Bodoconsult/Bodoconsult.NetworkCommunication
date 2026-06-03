@@ -12,7 +12,7 @@
 		<DebugType>embedded</DebugType>
 		<IncludeNativeLibrariesForSelfExtract>true</IncludeNativeLibrariesForSelfExtract>
 		<ErrorOnDuplicatePublishOutputFiles>false</ErrorOnDuplicatePublishOutputFiles>
-		<Version>0.0.3</Version>
+		<Version>0.0.5</Version>
 	</PropertyGroup>
 
 	<ItemGroup>
