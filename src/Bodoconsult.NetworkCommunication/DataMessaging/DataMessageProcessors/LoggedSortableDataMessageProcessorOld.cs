@@ -9,7 +9,7 @@ namespace Bodoconsult.NetworkCommunication.DataMessaging.DataMessageProcessors;
 /// Current implementation of <see cref="IDataMessageProcessor"/> for sortable data messages with data logging. Delivers messages in the order of reaching it via <see cref="ProcessMessage"/>
 /// Should invoke IDataMessagingConfig.RaiseDataMessageReceivedDelegate for data messages and IDataMessagingConfig.DataMessageProcessingPackage.WaitStateManager?.OnHandshakeReceived for handshakes
 /// </summary>
-public class LoggedSortableDataMessageProcessor : BaseDataMessageProcessor
+public class LoggedSortableDataMessageProcessorOld : BaseDataMessageProcessor
 {
     private readonly IInboundDataMessageSorter _dataMessageSorter;
     private readonly List<IInboundDataLogger> _dataLoggers;
@@ -17,7 +17,7 @@ public class LoggedSortableDataMessageProcessor : BaseDataMessageProcessor
     /// <summary>
     /// Default ctor
     /// </summary>
-    public LoggedSortableDataMessageProcessor(IDataMessagingConfig config) : base(config)
+    public LoggedSortableDataMessageProcessorOld(IDataMessagingConfig config) : base(config)
     {
         ArgumentNullException.ThrowIfNull(Config.DataMessageProcessingPackage);
         ArgumentNullException.ThrowIfNull(Config.DataMessageProcessingPackage.DataMessageSorter);
@@ -53,12 +53,14 @@ public class LoggedSortableDataMessageProcessor : BaseDataMessageProcessor
         }
 
         // No valid message
-        s = $"{message.ToShortInfoString()} no valid message type";
+        s = $"message {message.MessageId} not valid: {message.GetType().Name}";
         Config.MonitorLogger.LogError(s);
     }
 
     private void ProcessSortableDataMessage(ISortableInboundDataMessage dataMessage)
     {
+        string msg1;
+
         // Sort messages
         var messages = _dataMessageSorter.AddMessage(dataMessage);
 
@@ -67,45 +69,41 @@ public class LoggedSortableDataMessageProcessor : BaseDataMessageProcessor
             return;
         }
 
+        // Log messages
+        foreach (var msg in messages)
+        {
+            LogMessage(msg);
+        }
+
         // Now process the messages
         foreach (var msg in messages)
         {
-            // Log messages
-            LogMessage(msg);
-
-            // Now forward the message to the message receiver
-            ForwardToMessageReceiver(msg);
-        }
-    }
-
-    private void ForwardToMessageReceiver(ISortableInboundDataMessage msg)
-    {
-        string msg1;
-
-        AsyncHelper.FireAndForget2(() =>
-        {
-            try
+            AsyncHelper.FireAndForget2(() =>
             {
-                Config.RaiseCommLayerDataMessageReceivedDelegate?.Invoke(msg);
-            }
-            catch (Exception e)
+                try
+                {
+                    Config.RaiseCommLayerDataMessageReceivedDelegate?.Invoke(msg);
+                }
+                catch (Exception e)
+                {
+                    msg1 = $" failed {dataMessage.MessageId}: {dataMessage.RawMessageData.Length} bytes: {e}";
+                    Config.MonitorLogger.LogError(msg1);
+                    Config.AppLogger.LogError($"{LoggerId}{msg1}");
+                }
+
+            }).ContinueWith(Callback);
+
+            var result = Stopped.WaitOne(TimeOut);
+            if (result)
             {
-                msg1 = $" failed {msg.ToShortInfoString()}: {e}";
-                Config.MonitorLogger.LogError(msg1);
-                Config.AppLogger.LogError($"{LoggerId}{msg1}");
+                continue;
             }
 
-        }).ContinueWith(Callback);
-
-        var result = Stopped.WaitOne(TimeOut);
-        if (result)
-        {
+            msg1 = $"{dataMessage}delivering to message receiver timed out";
+            Config.AppLogger.LogError($"{Config.LoggerId}{msg1}");
+            Config.MonitorLogger.LogError(msg1);
             return;
         }
-
-        msg1 = $"{msg.ToShortInfoString()}delivering to message receiver timed out";
-        Config.AppLogger.LogError($"{Config.LoggerId}{msg1}");
-        Config.MonitorLogger.LogError(msg1);
     }
 
     private void LogMessage(ISortableInboundDataMessage msg)

@@ -192,7 +192,6 @@ public class OrderProcessor : BaseOrderProcessor
 
         // Run the order now
         CheckAndRunOrder(order);
-
     }
 
     /// <summary>
@@ -242,14 +241,14 @@ public class OrderProcessor : BaseOrderProcessor
         //    return false;
         //}
 
-        LogInformation( $"message received: {receivedMessage.ToShortInfoString()}");
-
+        
         //*********************
-        // TOP 1 A X message with a error code of 0 makes no sense: throw this message away
+        // TOP 1 A X message with an error code of 0 makes no sense: throw this message away
         // This other X messages should be given to the order pipeline first and after that it should be handled befor given to async message handler
         //*********************
         if (CurrentDevice.DoBasicCheckForReceivedMessage(receivedMessage))
         {
+            LogInformation($"{receivedMessage.ToShortInfoString()} thrown away");
             return true;
         }
 

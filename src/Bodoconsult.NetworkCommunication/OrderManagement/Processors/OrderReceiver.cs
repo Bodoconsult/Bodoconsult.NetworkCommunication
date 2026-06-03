@@ -60,7 +60,7 @@ public class OrderReceiver : IOrderReceiver
     public void AddReceivedMessage(IInboundDataMessage receivedMessage)
     {
         _messageQueue.Enqueue(receivedMessage);
-        _appLogger.LogInformation($"Received message added to queue: {receivedMessage.ToShortInfoString()}");
+        _appLogger.LogInformation($"{receivedMessage.ToShortInfoString()}: added to queue: ");
     }
 
     /// <summary>Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.</summary>

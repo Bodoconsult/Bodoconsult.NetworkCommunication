@@ -124,7 +124,7 @@ public class RequestProcessor : IRequestProcessor
 
             if (IsCancelled || order.IsCancelled)
             {
-                LogInfo($"{_orderLoggerId}{requestSpec.Name} was cancelled");
+                LogInfo($"{_orderLoggerId}RP {requestSpec.Name}: was cancelled");
                 return ExitAction(order, OrderExecutionResultState.Unsuccessful);
             }
 
@@ -140,7 +140,7 @@ public class RequestProcessor : IRequestProcessor
                 _ => OrderExecutionResultState.NotProcessed
             };
 
-            LogInfo($"{_orderLoggerId}RP: {requestSpec.Name}: execution ended with {result}");
+            LogInfo($"{_orderLoggerId}RP {requestSpec.Name}: execution ended with {result}");
 
             if (result.Id == OrderExecutionResultState.Successful.Id && !IsCancelled && !order.IsCancelled)
             {
@@ -149,11 +149,11 @@ public class RequestProcessor : IRequestProcessor
 
             if (IsCancelled || order.IsCancelled)
             {
-                LogInfo($"{_orderLoggerId} was cancelled");
+                LogInfo($"{_orderLoggerId}RP {requestSpec.Name}: was cancelled");
                 return ExitAction(order, OrderExecutionResultState.Unsuccessful);
             }
 
-            LogInfo($"{_orderLoggerId}exit {requestSpec.Name} with code {result}");
+            LogInfo($"{_orderLoggerId}RP {requestSpec.Name}: exit with code {result}");
             return ExitAction(order, result);
         }
 
@@ -213,13 +213,13 @@ public class RequestProcessor : IRequestProcessor
         {
             _transportObject = processor.RequestSpec.ResultTransportObject;
             processor.Dispose();
-            LogInfo($"{_orderLoggerId}RP: {requestSpec.Name}: ExecuteRequest successful {result}");
+            LogInfo($"{requestSpec.OrderLoggerId}ExecuteRequest successful {result}");
             return OrderExecutionResultState.Successful;
         }
 
         // ToDo: add logging
 
-        LogInfo($"{_orderLoggerId}RP: {requestSpec.Name}: ExecuteRequest failed {result}");
+        LogInfo($"{requestSpec.OrderLoggerId}ExecuteRequest failed {result}");
 
         // If the order has been finished already or is disposable: do not change order state again
         if (order.IsFinished || order.IsDisposable)
@@ -333,13 +333,13 @@ public class RequestProcessor : IRequestProcessor
         {
             _transportObject = processor.RequestSpec.ResultTransportObject;
             processor.Dispose();
-            LogInfo($"{_orderLoggerId}RP: {requestSpec.Name}: ExecuteRequest successful");
+            LogInfo($"{requestSpec.OrderLoggerId}ExecuteRequest successful");
             return OrderExecutionResultState.Successful;
         }
 
         // ToDo: add logging
 
-        LogInfo($"{_orderLoggerId}RP: {requestSpec.Name}: ExecuteRequest failed {result}");
+        LogInfo($"{requestSpec.OrderLoggerId}ExecuteRequest failed {result}");
 
         // If the order has been finished already or is disposable: do not change order state again
         if (order.IsFinished || order.IsDisposable)
@@ -396,13 +396,13 @@ public class RequestProcessor : IRequestProcessor
         {
             _transportObject = processor.RequestSpec.ResultTransportObject;
             processor.Dispose();
-            LogInfo($"{_orderLoggerId}RP: {requestSpec.Name}: ExecuteRequest failed {result}");
+            LogInfo($"{requestSpec.OrderLoggerId}ExecuteRequest failed {result}");
             return OrderExecutionResultState.Successful;
         }
 
         // ToDo: add logging
 
-        LogInfo($"{_orderLoggerId}RP: {requestSpec.Name}: ExecuteRequest failed {result}");
+        LogInfo($"{requestSpec.OrderLoggerId}ExecuteRequest failed {result}");
 
         // If the order has been finished already or is disposable: do not change order state again
         if (order.IsFinished || order.IsDisposable)
@@ -458,13 +458,13 @@ public class RequestProcessor : IRequestProcessor
         {
             _transportObject = processor.RequestSpec.ResultTransportObject;
             processor.Dispose();
-            LogInfo($"{_orderLoggerId}RP: {requestSpec.Name}: ExecuteRequest successful {result}");
+            LogInfo($"{requestSpec.OrderLoggerId}ExecuteRequest successful {result}");
             return OrderExecutionResultState.Successful;
         }
 
         // ToDo: add logging
 
-        LogInfo($"{_orderLoggerId}RP: {requestSpec.Name}: ExecuteRequest failed {result}");
+        LogInfo($"{requestSpec.OrderLoggerId}ExecuteRequest failed {result}");
 
         // If the order has been finished already or is disposable: do not change order state again
         if (order.IsFinished || order.IsDisposable)
@@ -519,13 +519,13 @@ public class RequestProcessor : IRequestProcessor
         {
             _transportObject = processor.RequestSpec.ResultTransportObject;
             processor.Dispose();
-            LogInfo($"{_orderLoggerId}RP: {requestSpec.Name}: ExecuteRequest successful");
+            LogInfo($"{requestSpec.OrderLoggerId}ExecuteRequest successful");
             return OrderExecutionResultState.Successful;
         }
 
         // ToDo: add logging
 
-        LogInfo($"{_orderLoggerId}RP: {requestSpec.Name}: ExecuteRequest failed {result}");
+        LogInfo($"{requestSpec.OrderLoggerId}ExecuteRequest failed {result}");
 
         // If the order has been finished already or is disposable: do not change order state again
         if (order.IsFinished || order.IsDisposable)
@@ -575,7 +575,7 @@ public class RequestProcessor : IRequestProcessor
         // Fetch the order here to avoid multithread issues
         var order = Order;
 
-        LogDebug($"{_orderLoggerId}receiving message {receivedMessage.ToShortInfoString()} with order ID {order.Id}!");
+        LogDebug($"{_orderLoggerId}checking {receivedMessage.ToShortInfoString()} with order ID {order.Id}!");
 
         if (_isDisposing || IsCancelled)
         {
@@ -590,7 +590,7 @@ public class RequestProcessor : IRequestProcessor
         if (isCancelled)
         {
             //Order.ExecutionResult = OrderExecutionResultState.Unsuccessful;
-            LogDebug($"{_orderLoggerId}receiving message {receivedMessage.ToShortInfoString()} failed: order is cancelled already");
+            LogDebug($"{_orderLoggerId}checking {receivedMessage.ToShortInfoString()} failed: order is cancelled already");
             return false;
         }
 
@@ -598,7 +598,7 @@ public class RequestProcessor : IRequestProcessor
         if (stepProcessor == null)
         {
             //Order.ExecutionResult = OrderExecutionResultState.Unsuccessful;
-            LogDebug($"{_orderLoggerId}receiving message {receivedMessage.ToShortInfoString()} failed: no request step processor");
+            LogDebug($"{_orderLoggerId}checking {receivedMessage.ToShortInfoString()} failed: no request step processor");
             return false;
         }
 
@@ -613,7 +613,7 @@ public class RequestProcessor : IRequestProcessor
         // If the order has been finished already or is disposable: do not change order state again
         if (isDisposable || isFinished)
         {
-            LogDebug($"{_orderLoggerId}receiving message {receivedMessage.ToShortInfoString()} failed: order is disposable or finished already");
+            LogDebug($"{_orderLoggerId}checking {receivedMessage.ToShortInfoString()} failed: order is disposable or finished already");
             return result;
         }
 
@@ -624,7 +624,7 @@ public class RequestProcessor : IRequestProcessor
 
         if (!order.WasSuccessful)
         {
-            LogDebug($"{_orderLoggerId}receiving message {receivedMessage.ToShortInfoString()} result: {result}");
+            LogDebug($"{_orderLoggerId}checking {receivedMessage.ToShortInfoString()} result: {result}");
             return result;
         }
 

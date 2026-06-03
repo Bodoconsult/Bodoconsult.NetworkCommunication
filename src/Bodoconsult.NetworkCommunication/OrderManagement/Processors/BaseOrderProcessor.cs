@@ -622,8 +622,6 @@ public abstract class BaseOrderProcessor : IOrderProcessor
             }
         }
 
-        
-
         //#if DEBUG
         //            timeout = 5000;
         //#endif

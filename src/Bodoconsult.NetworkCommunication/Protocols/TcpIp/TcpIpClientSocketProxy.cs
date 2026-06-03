@@ -17,6 +17,8 @@ public class TcpIpClientSocketProxy : BaseTcpIpSocketProxy
 {
     private readonly byte[] _tmp = new byte[1];
     private readonly StreamPipeline _pipeline;
+    private int _lastErrorCode;
+    private readonly Lock _lastErrorCodeLock = new();
 
     /// <summary>
     /// Default ctor
@@ -48,7 +50,6 @@ public class TcpIpClientSocketProxy : BaseTcpIpSocketProxy
                 var blockingState = Socket.Blocking;
                 try
                 {
-
                     Socket.Send(_tmp, 0, 0);
                     //Console.WriteLine("Connected!");
                 }
@@ -116,13 +117,20 @@ public class TcpIpClientSocketProxy : BaseTcpIpSocketProxy
         }
         catch (SocketException socketException)
         {
-            if (socketException.ErrorCode != 10054)
+            lock (_lastErrorCodeLock)
             {
-                Logger.LogError($"{LoggerId}Sending failed", socketException);
-            }
-            else
-            {
-                Logger.LogDebug($"{LoggerId}No connection");
+                if (_lastErrorCode == socketException.ErrorCode)
+                {
+                    return 0;
+                }
+                if (socketException.ErrorCode != 10054)
+                {
+                    Logger.LogError($"{LoggerId}Sending failed", socketException);
+                }
+                else
+                {
+                    Logger.LogDebug($"{LoggerId}No connection");
+                }
             }
 
             return 0;
@@ -153,13 +161,20 @@ public class TcpIpClientSocketProxy : BaseTcpIpSocketProxy
         }
         catch (SocketException socketException)
         {
-            if (socketException.ErrorCode != 10054)
+            lock (_lastErrorCodeLock)
             {
-                Logger.LogError($"{LoggerId}Sending failed", socketException);
-            }
-            else
-            {
-                Logger.LogDebug($"{LoggerId}No connection");
+                if (_lastErrorCode == socketException.ErrorCode)
+                {
+                    return 0;
+                }
+                if (socketException.ErrorCode != 10054)
+                {
+                    Logger.LogError($"{LoggerId}Sending failed", socketException);
+                }
+                else
+                {
+                    Logger.LogDebug($"{LoggerId}No connection");
+                }
             }
 
             return 0;
@@ -301,8 +316,12 @@ public class TcpIpClientSocketProxy : BaseTcpIpSocketProxy
                     _pipeline.AddMemory(buffer, result);
                     await SocketReceivedDataDelegate.Invoke();
 
-                    Logger.LogInformation(
-                        $"{LoggerId}TCPC: received {result} bytes: buffer before {pipeLen} bytes after {_pipeline.Buffer.Length} bytes");
+                    Logger.LogInformation($"{LoggerId}received {result} bytes: buffer bytes: before {pipeLen} / after {_pipeline.Buffer.Length}");
+
+                    lock (_lastErrorCodeLock)
+                    {
+                        _lastErrorCode = 0;
+                    }
                 }
                 catch (OperationCanceledException)
                 {
@@ -312,12 +331,19 @@ public class TcpIpClientSocketProxy : BaseTcpIpSocketProxy
                 catch (SocketException se)
                 {
                     _pipeline.ReleaseBuffer(buffer);
-                    Logger.LogError($"{LoggerId}Receiving failed: socket error {se.ErrorCode}: {se.Message}");
+                    lock (_lastErrorCodeLock)
+                    {
+                        if (_lastErrorCode != se.ErrorCode)
+                        {
+                            _lastErrorCode = se.ErrorCode;
+                            Logger.LogError($"{LoggerId}Receiving failed: socket error {se.ErrorCode}: {se.Message}");
+                        }
+                    }
                 }
                 catch (Exception e)
                 {
                     _pipeline.ReleaseBuffer(buffer);
-                    Logger.LogError($"{LoggerId}Receiving failed ", e);
+                    Logger.LogError($"{LoggerId}Receiving failed", e);
                 }
 
                 //if (result == 0)

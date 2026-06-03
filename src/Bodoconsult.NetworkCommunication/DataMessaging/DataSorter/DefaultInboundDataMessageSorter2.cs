@@ -8,15 +8,15 @@ namespace Bodoconsult.NetworkCommunication.DataMessaging.DataSorter;
 /// <summary>
 /// Default implementation of a data message sorter soting the received messages by OriginalMessageId
 /// </summary>
-public class DefaultInboundDataMessageSorter : IInboundDataMessageSorter
+public class DefaultInboundDataMessageSorter2 : IInboundDataMessageSorter
 {
-    private readonly SortedList<long, ISortableInboundDataMessage> _inboundDataMessages = new();
+    private readonly Dictionary<long, ISortableInboundDataMessage> _inboundDataMessages = new();
 
     /// <summary>
     /// Default ctor
     /// </summary>
     /// <param name="logger">Current logger</param>
-    public DefaultInboundDataMessageSorter(IAppLoggerProxy logger)
+    public DefaultInboundDataMessageSorter2(IAppLoggerProxy logger)
     {
         Logger = logger;
     }
@@ -50,7 +50,7 @@ public class DefaultInboundDataMessageSorter : IInboundDataMessageSorter
         {
             if (_inboundDataMessages.Count > 0)
             {
-                result.AddRange(_inboundDataMessages.Values);
+                result.AddRange(_inboundDataMessages.Values.OrderBy(x => x.OriginalMessageId));
                 _inboundDataMessages.Clear();
             }
 
@@ -66,7 +66,7 @@ public class DefaultInboundDataMessageSorter : IInboundDataMessageSorter
             {
                 // Check if order fits
                 AddMessageInternal(message);
-                CheckMessagesInQueue(result);
+                CheckMessagesinQueue(result);
                 return result;
             }
             LastMessageId = message.OriginalMessageId;
@@ -74,22 +74,21 @@ public class DefaultInboundDataMessageSorter : IInboundDataMessageSorter
             return result;
         }
 
-        if (message.OriginalMessageId <= LastMessageId + 1 && message.OriginalMessageId >= LastMessageId)
-        {
-            return result;
-        }
 
         // No messages waiting and ID not valid: add to queue
-        if (_inboundDataMessages.Count == 0)
+        if (message.OriginalMessageId > LastMessageId + 1 || message.OriginalMessageId < LastMessageId)
         {
-            _inboundDataMessages.Add(message.OriginalMessageId, message);
-            //LastMessageId = message.OriginalMessageId;
-        }
-        else
-        {
-            // Check if order fits
-            AddMessageInternal(message);
-            CheckMessagesInQueue(result);
+            if (_inboundDataMessages.Count == 0)
+            {
+                _inboundDataMessages.Add(message.OriginalMessageId, message);
+                //LastMessageId = message.OriginalMessageId;
+            }
+            else
+            {
+                // Check if order fits
+                AddMessageInternal(message);
+                CheckMessagesinQueue(result);
+            }
         }
 
         return result;
@@ -111,9 +110,9 @@ public class DefaultInboundDataMessageSorter : IInboundDataMessageSorter
     }
 
 
-    private void CheckMessagesInQueue(List<ISortableInboundDataMessage> result)
+    private void CheckMessagesinQueue(List<ISortableInboundDataMessage> result)
     {
-        var sorted = _inboundDataMessages.Values;
+        var sorted = _inboundDataMessages.Values.OrderBy(x => x.OriginalMessageId).ToList();
 
         var oldMsg = sorted.First();
         var messageId = oldMsg.OriginalMessageId;
@@ -145,7 +144,7 @@ public class DefaultInboundDataMessageSorter : IInboundDataMessageSorter
 
         result.AddRange(sorted);
         _inboundDataMessages.Clear();
-        LastMessageId = result.Last().OriginalMessageId;
+        LastMessageId = sorted.Last().OriginalMessageId;
     }
 
     /// <summary>
