@@ -74,6 +74,9 @@ public class TcpIpServerDeviceConfigurator: BaseIpDeviceConfigurator
         DataMessagingConfig.Port = port;
         DataMessagingConfig.IpProtocol = IpProtocolEnum.Tcp;
         DataMessagingConfig.IsServer = true;
+        DataMessagingConfig.AnswerWithAcknowledgement = true;
+        DataMessagingConfig.WaitForAcknowledgement = true;
+
     }
 
     /// <summary>

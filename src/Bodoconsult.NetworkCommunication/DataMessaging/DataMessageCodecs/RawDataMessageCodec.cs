@@ -30,7 +30,7 @@ public class RawDataMessageCodec : BaseDataMessageCodec
         {
             DataMessage =new RawInboundDataMessage
             {
-                RawMessageData = data
+                RawMessageData = data,
             },
             ErrorCode = 0
         };

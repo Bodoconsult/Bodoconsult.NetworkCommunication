@@ -61,7 +61,7 @@ public class TncpStateMachineConfigurator : BaseStateMachineConfigurator
             OrderFinishedUnsucessfullyDelegate = _deviceBusinessLogicAdapter.DeviceInitUnsuccessfully,
         };
 
-        config.OrderConfigurations.Add("NoAnswerTncpOrderConfiguration");
+        config.OrderConfigurations.Add("OnlyAnswerTncpOrderConfiguration");
 
         StateFactory.RegisterConfiguration(config);
     }
@@ -134,7 +134,7 @@ public class TncpStateMachineConfigurator : BaseStateMachineConfigurator
             OrderFinishedUnsucessfullyDelegate = _deviceBusinessLogicAdapter.StopMessagingUnsuccessfully,
         };
 
-        config.OrderConfigurations.Add("NoAnswerTncpOrderConfiguration");
+        config.OrderConfigurations.Add("OnlyAnswerTncpOrderConfiguration");
 
         StateFactory.RegisterConfiguration(config);
     }

@@ -95,7 +95,7 @@ public class BtcpDataMessageCodec : BaseDataMessageCodec
             {
                 DataBlock = dataBlock,
                 RawMessageData = data,
-                AnswerWithAcknowledgement = true
+                AnswerWithAcknowledgement = AnswerWithAcknowledgement
             };
 
             result.DataMessage = dataMessage;
@@ -281,10 +281,12 @@ public class BtcpDataMessageCodec : BaseDataMessageCodec
 
     private void EncodeRequest(BtcpRequestOutboundDataMessage request, OutboundCodecResult result)
     {
+        request.WaitForAcknowledgement = WaitForAcknowledgement;
+
         var data = new List<byte>
         {
             DeviceCommunicationBasics.Stx,
-            1 
+            1
         };
 
         // Now add the business transaction ID
@@ -300,11 +302,11 @@ public class BtcpDataMessageCodec : BaseDataMessageCodec
         // Add the datablock now if required
         //try
         //{
-            if (request.DataBlock != null)
-            {
-                data.Add(DeviceCommunicationBasics.Eot);
-                DataBlockCodingProcessor.FromDataBlockToBytes(data, request.DataBlock);
-            }
+        if (request.DataBlock != null)
+        {
+            data.Add(DeviceCommunicationBasics.Eot);
+            DataBlockCodingProcessor.FromDataBlockToBytes(data, request.DataBlock);
+        }
         //}
         //catch (Exception exception)
         //{

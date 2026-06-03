@@ -80,7 +80,7 @@ internal class UdpStarterTests
     {
         // Arrange 
         var udpStarter = new UdpStarter();
-        udpStarter.ParseCommand("set,stream,mode,continious");
+        udpStarter.ParseCommand("set,stream,mode,continuous");
 
         // Act  
         udpStarter.ParseCommand("set,status,start");

@@ -23,7 +23,7 @@ public abstract class BaseDataMessageProcessor : IDataMessageProcessor
     /// <summary>
     /// Timeout in ms for waiting for messages to be delivered to next step
     /// </summary>
-    protected const int TimeOut = 2000;
+    protected const int TimeOut = 5000;
 
     /// <summary>
     /// Default ctor

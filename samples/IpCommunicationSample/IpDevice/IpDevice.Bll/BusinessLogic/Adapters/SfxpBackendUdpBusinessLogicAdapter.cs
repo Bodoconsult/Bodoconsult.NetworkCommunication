@@ -20,13 +20,37 @@ public class SfxpBackendUdpBusinessLogicAdapter : BaseSimpleDeviceBusinessLogicA
 {
     private CancellationTokenSource? _cts;
     private Thread? _workerTask;
+    private readonly ProducerConsumerQueue<IOutboundDataMessage> _inboundQueue = new();
 
     /// <summary>
     /// Default ctor
     /// </summary>
     /// <param name="device">Current device</param>
     public SfxpBackendUdpBusinessLogicAdapter(IIpDevice device) : base(device)
-    { }
+    {
+        _inboundQueue.ConsumerTaskDelegate = ConsumerTaskDelegate;
+        _inboundQueue.StartConsumer();
+    }
+
+    private void ConsumerTaskDelegate(IOutboundDataMessage msg)
+    {
+        if (_cts?.IsCancellationRequested ?? true)
+        {
+            return;
+        }
+
+        ArgumentNullException.ThrowIfNull(IpDevice.CommunicationAdapter);
+
+        try
+        {
+            //Debug.Print($"Send message {msg.ToShortInfoString()}");
+            IpDevice.CommunicationAdapter.SendDataMessage(msg);
+        }
+        catch (Exception e)
+        {
+            AppLogger.LogError($"Send message failed: {msg.ToShortInfoString()}", e);
+        }
+    }
 
     /// <summary>
     /// Default method to handle a received message from the device in business logic
@@ -90,7 +114,7 @@ public class SfxpBackendUdpBusinessLogicAdapter : BaseSimpleDeviceBusinessLogicA
     public IBusinessTransactionReply StopStreaming(IBusinessTransactionRequestData request)
     {
         ArgumentNullException.ThrowIfNull(_cts);
-        _cts.Cancel();
+        _cts.Cancel(false);
         return new DefaultBusinessTransactionReply();
     }
 
@@ -123,7 +147,7 @@ public class SfxpBackendUdpBusinessLogicAdapter : BaseSimpleDeviceBusinessLogicA
     public IBusinessTransactionReply StopSnapshot(IBusinessTransactionRequestData request)
     {
         ArgumentNullException.ThrowIfNull(_cts);
-        _cts.Cancel();
+        _cts.Cancel(false);
         return new DefaultBusinessTransactionReply();
     }
 
@@ -148,27 +172,30 @@ public class SfxpBackendUdpBusinessLogicAdapter : BaseSimpleDeviceBusinessLogicA
                 DataBlock = dataBlock
             };
 
-            SendMessage(msg);
+            _inboundQueue.Enqueue(msg);
         }
     }
 
-    private void SendMessage(SfxpOutboundDataMessage msg)
-    {
-        ArgumentNullException.ThrowIfNull(IpDevice.CommunicationAdapter);
-        //IpDevice.CommunicationAdapter.SendDataMessage(msg);
-        AsyncHelper.FireAndForget(() =>
-        {
-            try
-            {
-                Debug.Print($"Send message {msg.ToShortInfoString()}");
-                IpDevice.CommunicationAdapter.SendDataMessage(msg);
-            }
-            catch (Exception e)
-            {
-                AppLogger.LogError($"Send message failed: {msg.ToShortInfoString()}", e);
-            }
-        });
-    }
+    //private void SendMessage(SfxpOutboundDataMessage msg)
+    //{
+    //    ArgumentNullException.ThrowIfNull(IpDevice.CommunicationAdapter);
+    //    //IpDevice.CommunicationAdapter.SendDataMessage(msg);
+
+
+    //    // ToDo: replace this with a produce-consumer-queue handling the _cts correctly
+    //    AsyncHelper.FireAndForget(() =>
+    //    {
+    //        try
+    //        {
+    //            Debug.Print($"Send message {msg.ToShortInfoString()}");
+    //            IpDevice.CommunicationAdapter.SendDataMessage(msg);
+    //        }
+    //        catch (Exception e)
+    //        {
+    //            AppLogger.LogError($"Send message failed: {msg.ToShortInfoString()}", e);
+    //        }
+    //    });
+    //}
 
     private void RunStreaming()
     {
@@ -194,7 +221,7 @@ public class SfxpBackendUdpBusinessLogicAdapter : BaseSimpleDeviceBusinessLogicA
                 OriginalMessageId = id
             };
 
-            SendMessage(msg);
+            _inboundQueue.Enqueue(msg);
 
             if (id == long.MaxValue)
             {
@@ -205,5 +232,7 @@ public class SfxpBackendUdpBusinessLogicAdapter : BaseSimpleDeviceBusinessLogicA
                 id++;
             }
         }
+
+        Debug.Print("Streaming stopped");
     }
 }

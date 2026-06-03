@@ -134,7 +134,7 @@ public abstract class BaseOrderBuilder : IOrderBuilder
     /// <param name="name">Name of the request spec</param>
     /// <param name="handleRequestAnswerOnSuccessDelegate">Delegate fired if the order was eceuted successfully</param>
     /// <returns><see cref="DeviceRequestSpec"/> instance </returns>
-    public IDeviceRequestSpec CreateOnlyAnswerDeviceRequestSpec(IOrder order, string name,
+    public IOnlyAnswerDeviceRequestSpec CreateOnlyAnswerDeviceRequestSpec(IOrder order, string name,
         HandleRequestAnswerDelegate? handleRequestAnswerOnSuccessDelegate)
     {
         if (order.ParameterSet == null)
@@ -142,8 +142,8 @@ public abstract class BaseOrderBuilder : IOrderBuilder
             throw new ArgumentNullException(nameof(order.ParameterSet));
         }
 
-        var rs = new DeviceRequestSpec(name, order.ParameterSet);
-        //rs.HandleRequestAnswerOnSuccessDelegate = handleRequestAnswerOnSuccessDelegate;
+        var rs = new OnlyAnswerDeviceRequestSpec(name, order.ParameterSet);
+        rs.HandleRequestAnswerOnSuccessDelegate = handleRequestAnswerOnSuccessDelegate;
         order.RequestSpecs.Add(rs);
         return rs;
     }
@@ -173,6 +173,19 @@ public abstract class BaseOrderBuilder : IOrderBuilder
     /// <param name="name">Name of the request spec</param>
     /// <returns><see cref="DeviceRequestAnswerStep"/> instance </returns>
     public IDeviceRequestAnswerStep CreateDeviceRequestAnswerStep(IDeviceRequestSpec requestSpec, string name)
+    {
+        var ras = new DeviceRequestAnswerStep(requestSpec);
+        requestSpec.RequestAnswerSteps.Add(ras);
+        return ras;
+    }
+
+    /// <summary>
+    /// Create an <see cref="DeviceRequestAnswerStep"/> instance and add it to a request spec in the order
+    /// </summary>
+    /// <param name="requestSpec">Current request spec</param>
+    /// <param name="name">Name of the request spec</param>
+    /// <returns><see cref="DeviceRequestAnswerStep"/> instance </returns>
+    public IDeviceRequestAnswerStep CreateDeviceRequestAnswerStep(IOnlyAnswerDeviceRequestSpec requestSpec, string name)
     {
         var ras = new DeviceRequestAnswerStep(requestSpec);
         requestSpec.RequestAnswerSteps.Add(ras);

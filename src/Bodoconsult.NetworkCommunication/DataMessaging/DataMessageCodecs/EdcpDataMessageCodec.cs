@@ -87,7 +87,8 @@ public class EdcpDataMessageCodec : BaseDataMessageCodec
             {
                 DataBlock = dataBlock,
                 BlockCode = blockCode,
-                RawMessageData = data
+                RawMessageData = data,
+                AnswerWithAcknowledgement = AnswerWithAcknowledgement
             };
 
             result.DataMessage = dataMessage;
@@ -110,6 +111,8 @@ public class EdcpDataMessageCodec : BaseDataMessageCodec
     /// <returns>Byte array as optimized <see cref="ReadOnlyMemory{T}"/> to send</returns>
     public override OutboundCodecResult EncodeDataMessage(IOutboundMessage message)
     {
+        
+
         var result = new OutboundCodecResult();
         if (message is not EdcpOutboundDataMessage tMessage)
         {
@@ -117,6 +120,8 @@ public class EdcpDataMessageCodec : BaseDataMessageCodec
             result.ErrorCode = 1;
             return result;
         }
+
+        tMessage.WaitForAcknowledgement = WaitForAcknowledgement;
 
         var data = new List<byte> { DeviceCommunicationBasics.Stx, tMessage.BlockCode };
 

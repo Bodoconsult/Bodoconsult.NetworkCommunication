@@ -95,6 +95,27 @@ public abstract class BaseOrderBasedStateMachineState : BaseStateMachineState, I
         if (CurrentOrderIndex >= Orders.Count)
         {
             Orders.Clear();
+
+            if (NextState == null)
+            {
+                if (string.IsNullOrEmpty(StateNameOnSuccess))
+                {
+                    ArgumentNullException.ThrowIfNull(NextState);
+                }
+
+                if (CurrentContext.StateMachineStateFactory == null)
+                {
+                    return;
+                }
+
+                ArgumentNullException.ThrowIfNull(StateNameOnSuccess);
+
+                var newState = CurrentContext.CreateStateInstance(StateNameOnSuccess);
+                NextState = newState;
+            }
+
+            RequestNextState();
+
             return;
         }
 

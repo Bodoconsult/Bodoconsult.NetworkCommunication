@@ -1,12 +1,11 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
 using Bodoconsult.App.Abstractions.Interfaces;
-using Bodoconsult.App.Abstractions.SyncExecution;
 using Bodoconsult.App.Helpers;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
-using Bodoconsult.NetworkCommunication.EnumAndStates;
 using Bodoconsult.NetworkCommunication.EventSources;
 using Bodoconsult.NetworkCommunication.Interfaces;
+using System.Diagnostics;
 
 namespace Bodoconsult.NetworkCommunication.Communication;
 
@@ -18,13 +17,13 @@ public class IpCommunicationHandler : ICommunicationHandler
     private readonly IAppEventSource _appEventSource;
     private readonly string _loggerId;
     private readonly AutoResetEvent _stopped = new(false);
-    private const int TimeOut = 2000;
+    private const int TimeOut = 3000;
 
     private IWaitStateManager? _waitStateManager;
     private bool _isInitialized;
 
-    private readonly SyncProcessManager<long, MessageSendingResult> _syncProcessManager = new();
-    private readonly ProducerConsumerQueue<IOutboundMessage> _outBoundQueue = new();
+    //private readonly SyncProcessManager<long, MessageSendingResult> _syncProcessManager = new();
+    //private readonly ProducerConsumerQueue<IOutboundMessage> _outBoundQueue = new();
     private readonly ProducerConsumerQueue<IInboundDataMessage> _inboundQueue = new();
     private readonly IAppLoggerProxy _monitorLogger;
 
@@ -50,11 +49,11 @@ public class IpCommunicationHandler : ICommunicationHandler
         DataMessagingConfig.RaiseCommLayerDataMessageReceivedDelegate = OnReceivedMessage;
         DataMessagingConfig.RaiseUnexpectedDataMessageReceivedDelegate = OnNotExpectedMessageReceivedEvent;
 
-        _inboundQueue.ConsumerTaskDelegate = InboundConsumerTaskDelegate;
+        _inboundQueue.ConsumerTaskDelegate = InboundMessageReachedQueue;
         _inboundQueue.StartConsumer();
 
-        _outBoundQueue.ConsumerTaskDelegate = OutboundConsumerTaskDelegate;
-        _outBoundQueue.StartConsumer();
+        //_outBoundQueue.ConsumerTaskDelegate = OutboundConsumerTaskDelegate;
+        //_outBoundQueue.StartConsumer();
     }
 
     /// <summary>
@@ -154,20 +153,20 @@ public class IpCommunicationHandler : ICommunicationHandler
         }
     }
 
-    private void StopExecutionOfSyncOrder(MessageSendingResult result)
-    {
-        var syncData = _syncProcessManager.GetSyncProcessDataForProcess(result.Message?.MessageId ?? 0);
+    //private void StopExecutionOfSyncOrder(MessageSendingResult result)
+    //{
+    //    var syncData = _syncProcessManager.GetSyncProcessDataForProcess(result.Message?.MessageId ?? 0);
 
-        if (syncData == null)
-        {
-            DataMessagingConfig.AppLogger.LogError($"{_loggerId}MsgID {result.Message?.MessageId}: no syncdata found");
-            return;
-        }
+    //    if (syncData == null)
+    //    {
+    //        DataMessagingConfig.AppLogger.LogError($"{_loggerId}MsgID {result.Message?.MessageId}: no syncdata found");
+    //        return;
+    //    }
 
-        DataMessagingConfig.AppLogger.LogInformation(
-            $"{_loggerId}MsgID {result.Message?.MessageId}: SetResult: {result.ProcessExecutionResult}");
-        syncData.TaskCompletionSource?.SetResult(result);
-    }
+    //    DataMessagingConfig.AppLogger.LogInformation(
+    //        $"{_loggerId}MsgID {result.Message?.MessageId}: SetResult: {result.ProcessExecutionResult}");
+    //    syncData.TaskCompletionSource?.SetResult(result);
+    //}
 
     /// <summary>
     /// This method should check if sending a handshake is required and send it if yes
@@ -176,7 +175,7 @@ public class IpCommunicationHandler : ICommunicationHandler
     public void OnReceivedMessage(IInboundDataMessage message)
     {
         _inboundQueue.Enqueue(message);
-        _monitorLogger.LogDebug($"received message {message.MessageId}: {message.RawMessageData.Length} bytes");
+        _monitorLogger.LogDebug($"{_loggerId}received {message.ToShortInfoString()}");
     }
 
     /// <summary>
@@ -236,26 +235,32 @@ public class IpCommunicationHandler : ICommunicationHandler
 
         if (!_inboundQueue.IsActivated)
         {
-            _inboundQueue.ConsumerTaskDelegate = InboundConsumerTaskDelegate;
+            _inboundQueue.ConsumerTaskDelegate = InboundMessageReachedQueue;
             _inboundQueue.StartConsumer();
         }
 
-        if (!_outBoundQueue.IsActivated)
-        {
-            _outBoundQueue.ConsumerTaskDelegate = OutboundConsumerTaskDelegate;
-            _outBoundQueue.StartConsumer();
-        }
+        //if (!_outBoundQueue.IsActivated)
+        //{
+        //    _outBoundQueue.ConsumerTaskDelegate = OutboundConsumerTaskDelegate;
+        //    _outBoundQueue.StartConsumer();
+        //}
 
         _isInitialized = true;
     }
 
-    private void InboundConsumerTaskDelegate(IInboundDataMessage message)
+    private void InboundMessageReachedQueue(IInboundDataMessage message)
     {
         ArgumentNullException.ThrowIfNull(DataMessagingConfig.DataMessageProcessingPackage);
         ArgumentNullException.ThrowIfNull(_waitStateManager);
 
+        if (message is TncpInboundDataMessage)
+        {
+            Debug.Print($"TNCP: 0 {message.ToShortInfoString()}");
+        }
+
         try
         {
+            _stopped.Reset();
             _waitStateManager.LastMessageTimeStamp = new DateTimeOffset(DateTime.UtcNow).ToUnixTimeMilliseconds();
 
             // Send only a handshake if the message requires it
@@ -274,40 +279,59 @@ public class IpCommunicationHandler : ICommunicationHandler
                         }
                         catch (Exception e)
                         {
-                            var msg = $"DuplexIo.SendMessage: Handshake sending failed: {e}";
+                            var msg = $"DuplexIo.SendMessage: {message.ToShortInfoString()}: Sending failed: {e}";
                             _monitorLogger.LogError(msg);
                             DataMessagingConfig.AppLogger.LogError($"{_loggerId}{msg}");
                         }
                     }); 
-                        
-                        
                 }
+            }
+
+            if (message is TncpInboundDataMessage)
+            {
+                Debug.Print($"TNCP: 0 {message.ToShortInfoString()}");
             }
 
             if (DataMessagingConfig.RaiseAppLayerDataMessageReceivedDelegate == null)
             {
+                if (message is TncpInboundDataMessage)
+                {
+                    Debug.Print($"TNCP: 1 {message.ToShortInfoString()}");
+                }
                 _monitorLogger.LogDebug($"{_loggerId}DataMessagingConfig.RaiseAppLayerDataMessageReceivedDelegate is null");
             }
             else
             {
-                _stopped.Reset();
-
-                AsyncHelper.FireAndForget2(() =>
+                if (message is TncpInboundDataMessage)
                 {
-                    try
-                    {
-                        DataMessagingConfig.RaiseAppLayerDataMessageReceivedDelegate.Invoke(message);
-                    }
-                    catch (Exception e)
-                    {
-                        var msg = $"RaiseAppLayerDataMessageReceivedDelegate.Invoke: {e}";
-                        _monitorLogger.LogError(msg);
-                        DataMessagingConfig.AppLogger.LogError($"{_loggerId}{msg}");
-                    }
-                })
-                .ContinueWith(Callback);
+                    Debug.Print($"TNCP: 2 {message.ToShortInfoString()}");
+                }
+                DataMessagingConfig.RaiseAppLayerDataMessageReceivedDelegate.Invoke(message);
+                if (message is TncpInboundDataMessage)
+                {
+                    Debug.Print($"TNCP: 3 {message.ToShortInfoString()}");
+                }
 
-                _stopped.WaitOne(TimeOut);
+                //AsyncHelper.FireAndForget2(() =>
+                //{
+                //    try
+                //    {
+                //        if (message is TncpInboundDataMessage)
+                //        {
+                //            Debug.Print($"TNCP: 2 {message.ToShortInfoString()}");
+                //        }
+                //        DataMessagingConfig.RaiseAppLayerDataMessageReceivedDelegate.Invoke(message);
+                //    }
+                //    catch (Exception e)
+                //    {
+                //        var msg = $"RaiseAppLayerDataMessageReceivedDelegate.Invoke: {message.ToShortInfoString()}: {e}";
+                //        _monitorLogger.LogError(msg);
+                //        DataMessagingConfig.AppLogger.LogError($"{_loggerId}{msg}");
+                //    }
+                //})
+                //.ContinueWith(Callback);
+
+                //_stopped.WaitOne(TimeOut);
             }
 
             // Now log app performance measures (must be located after sending!)
@@ -316,48 +340,48 @@ public class IpCommunicationHandler : ICommunicationHandler
         }
         catch (Exception e)
         {
-            var msg = $"received message {message.MessageId} but handling failed: {e}";
+            var msg = $"{message.ToShortInfoString()} received, but handling failed: {e}";
             _monitorLogger.LogError(msg);
             DataMessagingConfig.AppLogger.LogError($"{_loggerId}{msg}");
         }
     }
 
-    private void OutboundConsumerTaskDelegate(IOutboundMessage message)
-    {
-        string msg;
+    //private void OutboundConsumerTaskDelegate(IOutboundMessage message)
+    //{
+    //    string msg;
 
-        try
-        {
-            // Todo: check if blocking
-            if (ActivateLogging)
-            {
-                msg = $"Send message {message.ToShortInfoString()}";
-                _monitorLogger.LogDebug(msg);
-            }
+    //    try
+    //    {
+    //        // Todo: check if blocking
+    //        if (ActivateLogging)
+    //        {
+    //            msg = $"Send message {message.ToShortInfoString()}";
+    //            _monitorLogger.LogDebug(msg);
+    //        }
 
-            //var erg = await DuplexIo.SendMessage(message);
+    //        //var erg = await DuplexIo.SendMessage(message);
 
-            ////message.RaiseStopSyncExecutionDelegate?.Invoke(erg);
+    //        ////message.RaiseStopSyncExecutionDelegate?.Invoke(erg);
 
-            //// Now log app performance measures (must be located after sending!)
-            //_appEventSource.ReportMetric(DataMessagingEventSourceProvider.DclSentDataMessageBytes, message.RawMessageData.Length);
-            //_appEventSource.ReportIncrement(DataMessagingEventSourceProvider.DclSentDataMessageCount);
+    //        //// Now log app performance measures (must be located after sending!)
+    //        //_appEventSource.ReportMetric(DataMessagingEventSourceProvider.DclSentDataMessageBytes, message.RawMessageData.Length);
+    //        //_appEventSource.ReportIncrement(DataMessagingEventSourceProvider.DclSentDataMessageCount);
 
-            //return x;
-        }
-        catch (Exception e)
-        {
-            msg = $"sending message {message.MessageId} failed: {e}";
-            _monitorLogger.LogError(msg);
-            DataMessagingConfig.AppLogger.LogError($"{_loggerId}{msg}");
+    //        //return x;
+    //    }
+    //    catch (Exception e)
+    //    {
+    //        msg = $"sending message {message.MessageId} failed: {e}";
+    //        _monitorLogger.LogError(msg);
+    //        DataMessagingConfig.AppLogger.LogError($"{_loggerId}{msg}");
 
-            message.RaiseStopSyncExecutionDelegate?.Invoke(
-                new MessageSendingResult(message, OrderExecutionResultState.Error)
-                {
-                    Information = e.ToString()
-                });
-        }
-    }
+    //        message.RaiseStopSyncExecutionDelegate?.Invoke(
+    //            new MessageSendingResult(message, OrderExecutionResultState.Error)
+    //            {
+    //                Information = e.ToString()
+    //            });
+    //    }
+    //}
 
     /// <summary>
     /// Disconnect from tower
@@ -365,7 +389,7 @@ public class IpCommunicationHandler : ICommunicationHandler
     public void Disconnect()
     {
         _inboundQueue.StopConsumer();
-        _outBoundQueue.StopConsumer();
+        //_outBoundQueue.StopConsumer();
 
         DuplexIo.StopCommunication().Wait(5000);
         SocketProxy?.Close();

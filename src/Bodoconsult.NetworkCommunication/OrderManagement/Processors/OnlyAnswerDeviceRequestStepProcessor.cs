@@ -24,6 +24,7 @@ public class OnlyAnswerDeviceRequestStepProcessor : IOnlyAnswerDeviceRequestStep
     {
         RequestSpec = requestSpec;
         DeviceRequestSpec = requestSpec;
+        OnlyAnswerDeviceRequestSpec = requestSpec;
 
         ArgumentNullException.ThrowIfNull(RequestSpec.AppLogger);
     }
@@ -36,7 +37,7 @@ public class OnlyAnswerDeviceRequestStepProcessor : IOnlyAnswerDeviceRequestStep
     /// <summary>
     /// Current device request spec
     /// </summary>
-    public IOnlyAnswerDeviceRequestSpec DeviceRequestSpec { get; }
+    public IDeviceRequestSpec DeviceRequestSpec { get; }
 
     /// <summary>
     /// The current processed chain element
@@ -181,7 +182,7 @@ public class OnlyAnswerDeviceRequestStepProcessor : IOnlyAnswerDeviceRequestStep
                     }
 
                     repeatCount++;
-                    result = await ExecuteRequestWithChain(message, requestSpec);
+                    result = await ExecuteRequestWithChain(message, OnlyAnswerDeviceRequestSpec);
 
                     RequestSpec.AppLogger?.LogDebug($"{RequestSpec.OrderLoggerId}: ExecuteRequest: {result} at {repeatCount} try");
 
@@ -643,4 +644,9 @@ public class OnlyAnswerDeviceRequestStepProcessor : IOnlyAnswerDeviceRequestStep
         DeviceRequestSpec.SendDataMessageDelegate = null;
         DeviceRequestSpec.SentMessage.Clear();
     }
+
+    /// <summary>
+    /// Current device request spec
+    /// </summary>
+    public IOnlyAnswerDeviceRequestSpec OnlyAnswerDeviceRequestSpec { get; }
 }

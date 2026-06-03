@@ -17,9 +17,25 @@ public interface IDataMessageCodingProcessor
     IAppLoggerProxy Logger { get; }
 
     /// <summary>
+    /// Should an acknowledgement be sent if a request message is received
+    /// </summary>
+    bool AnswerWithAcknowledgement { get; }
+
+    /// <summary>
+    /// Is waiting for acknowledgement by the device required for the request message
+    /// </summary>
+    bool WaitForAcknowledgement { get; }
+
+    /// <summary>
     /// All loaded message codecs
     /// </summary>
     IList<IDataMessageCodec> MessageCodecs { get; }
+
+    /// <summary>
+    /// Add a message codex
+    /// </summary>
+    /// <param name="codec">Codec to add</param>
+    void AddMessageCodec (IDataMessageCodec codec);
 
     /// <summary>
     /// Decode a data message

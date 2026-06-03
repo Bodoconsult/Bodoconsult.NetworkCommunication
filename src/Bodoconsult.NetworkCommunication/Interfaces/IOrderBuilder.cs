@@ -67,7 +67,7 @@ public interface IOrderBuilder
     /// <param name="name">Name of the request spec</param>
     /// <param name="handleRequestAnswerOnSuccessDelegate">Delegate fired if the order was eceuted successfully</param>
     /// <returns><see cref="DeviceRequestSpec"/> instance </returns>
-    IDeviceRequestSpec CreateOnlyAnswerDeviceRequestSpec(IOrder order, string name,
+    IOnlyAnswerDeviceRequestSpec CreateOnlyAnswerDeviceRequestSpec(IOrder order, string name,
         HandleRequestAnswerDelegate? handleRequestAnswerOnSuccessDelegate);
 
     /// <summary>

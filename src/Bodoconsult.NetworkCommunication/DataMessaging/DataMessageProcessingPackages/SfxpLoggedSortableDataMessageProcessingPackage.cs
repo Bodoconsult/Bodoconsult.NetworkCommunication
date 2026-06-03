@@ -40,7 +40,11 @@ public class SfxpLoggedSortableDataMessageProcessingPackage : IDataMessageProces
         DataMessageSplitter = new UdpDatagramDataMessageSplitter();
 
         // 2. Codecs
-        DataMessageCodingProcessor = new DefaultDataMessageCodingProcessor(DataMessagingConfig.MonitorLogger);
+        DataMessageCodingProcessor = new DefaultDataMessageCodingProcessor(DataMessagingConfig.MonitorLogger)
+        {
+            AnswerWithAcknowledgement = dataMessagingConfig.AnswerWithAcknowledgement,
+            WaitForAcknowledgement = dataMessagingConfig.WaitForAcknowledgement
+        };
         DataBlockCodingProcessor = new DefaultDataBlockCodingProcessor();
         LoadCodecs();
 
@@ -70,11 +74,11 @@ public class SfxpLoggedSortableDataMessageProcessingPackage : IDataMessageProces
         LoadCustomDataBlockCodecs();
 
         var deviceMessageCodec = new SfxpDataMessageCodec(DataBlockCodingProcessor);
-        DataMessageCodingProcessor.MessageCodecs.Add(deviceMessageCodec);
+        DataMessageCodingProcessor.AddMessageCodec(deviceMessageCodec);
 
         // Needed for client hello
         var rawCodec = new RawDataMessageCodec();
-        DataMessageCodingProcessor.MessageCodecs.Add(rawCodec);
+        DataMessageCodingProcessor.AddMessageCodec(rawCodec);
     }
 
     /// <summary>

@@ -38,7 +38,7 @@ public class EdcpInboundDataMessage : IInboundDataMessage
     /// <returns>True if the message was as expected as answer of the sent message else false</returns>
     public bool CheckReceivedMessage(IOutboundDataMessage sentMessage, IList<string> errors)
     {
-        return sentMessage is TncpOutboundDataMessage;
+        return sentMessage is EdcpOutboundDataMessage;
     }
 
     /// <summary>

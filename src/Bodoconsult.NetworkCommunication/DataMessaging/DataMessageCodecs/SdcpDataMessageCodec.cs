@@ -87,7 +87,8 @@ public class SdcpDataMessageCodec : BaseDataMessageCodec
             var dataMessage = new SdcpInboundDataMessage
             {
                 DataBlock = dataBlock,
-                RawMessageData = data
+                RawMessageData = data,
+                AnswerWithAcknowledgement = AnswerWithAcknowledgement
             };
 
             result.DataMessage = dataMessage;
@@ -117,6 +118,8 @@ public class SdcpDataMessageCodec : BaseDataMessageCodec
             result.ErrorCode = 1;
             return result;
         }
+
+        tMessage.WaitForAcknowledgement = WaitForAcknowledgement;
 
         var data = new List<byte> { DeviceCommunicationBasics.Stx };
 

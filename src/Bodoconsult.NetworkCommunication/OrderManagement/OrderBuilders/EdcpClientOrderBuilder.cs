@@ -32,7 +32,7 @@ public class EdcpClientOrderBuilder : BaseOrderBuilder
         if (config is not OneRequestSpecNoOrOneStepOneAnswerConfiguration oc)
         {
             throw new ArgumentException(
-                $"Config must be {nameof(OneRequestSpecNoOrOneStepOneAnswerConfiguration)} but was {{config.GetType().Name}}");
+                $"Config must be {nameof(OneRequestSpecNoOrOneStepOneAnswerConfiguration)} but was {config.GetType().Name}");
         }
 
         // Tracing
@@ -78,7 +78,7 @@ public class EdcpClientOrderBuilder : BaseOrderBuilder
             return false;
         }
 
-        if (sentMessage is not TncpOutboundDataMessage sm)
+        if (sentMessage is not EdcpOutboundDataMessage sm)
         {
             return false;
         }

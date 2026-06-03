@@ -26,9 +26,30 @@ public class DefaultDataMessageCodingProcessor : IDataMessageCodingProcessor
     public IAppLoggerProxy Logger { get; }
 
     /// <summary>
+    /// Should an acknowledgement be sent if a request message is received
+    /// </summary>
+    public bool AnswerWithAcknowledgement { get; set; }
+
+    /// <summary>
+    /// Is waiting for acknowledgement by the device required for the request message
+    /// </summary>
+    public bool WaitForAcknowledgement { get; set; }
+
+    /// <summary>
     /// All loaded message codecs
     /// </summary>
     public IList<IDataMessageCodec> MessageCodecs { get; } = new List<IDataMessageCodec>();
+
+    /// <summary>
+    /// Add a message codex
+    /// </summary>
+    /// <param name="codec">Codec to add</param>
+    public void AddMessageCodec(IDataMessageCodec codec)
+    {
+        codec.AnswerWithAcknowledgement = AnswerWithAcknowledgement;
+        codec.WaitForAcknowledgement = WaitForAcknowledgement;
+        MessageCodecs.Add(codec);
+    }
 
     /// <summary>
     /// Decode a data message

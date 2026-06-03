@@ -36,7 +36,13 @@ public class BtcpDataMessageProcessingPackage : IDataMessageProcessingPackage
         DataMessageSplitter = new BtcpDataMessageSplitter();
 
         // 2. Codecs
-        DataMessageCodingProcessor = new DefaultDataMessageCodingProcessor(DataMessagingConfig.MonitorLogger);
+        DataMessageCodingProcessor = new DefaultDataMessageCodingProcessor(DataMessagingConfig.MonitorLogger)
+        {
+            AnswerWithAcknowledgement = dataMessagingConfig.AnswerWithAcknowledgement,
+            WaitForAcknowledgement = dataMessagingConfig.WaitForAcknowledgement
+        };
+
+
         DataBlockCodingProcessor = new DefaultDataBlockCodingProcessor();
         LoadCodecs();
 
@@ -62,15 +68,15 @@ public class BtcpDataMessageProcessingPackage : IDataMessageProcessingPackage
     private void LoadCodecs()
     {
         var handShakeCodec = new BtcpHandshakeMessageCodec();
-        DataMessageCodingProcessor.MessageCodecs.Add(handShakeCodec);
+        DataMessageCodingProcessor.AddMessageCodec(handShakeCodec);
 
         LoadCustomDataBlockCodecs();
 
         var deviceMessageCodec = new BtcpDataMessageCodec(DataBlockCodingProcessor);
-        DataMessageCodingProcessor.MessageCodecs.Add(deviceMessageCodec);
+        DataMessageCodingProcessor.AddMessageCodec(deviceMessageCodec);
 
         var rawCodec = new RawDataMessageCodec();
-        DataMessageCodingProcessor.MessageCodecs.Add(rawCodec);
+        DataMessageCodingProcessor.AddMessageCodec(rawCodec);
     }
 
     /// <summary>

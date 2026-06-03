@@ -20,6 +20,16 @@ public abstract class BaseDataMessageCodec: IDataMessageCodec
     public int ExpectedMaximumLength { get; protected set; }
 
     /// <summary>
+    /// Should an acknowledgement be sent if a request message is received
+    /// </summary>
+    public bool AnswerWithAcknowledgement { get; set; }
+
+    /// <summary>
+    /// Is waiting for acknowledgement by the device required for the request message
+    /// </summary>
+    public bool WaitForAcknowledgement { get; set; }
+
+    /// <summary>
     /// Decode a data message to an <see cref="IInboundDataMessage"/> instance
     /// </summary>
     /// <param name="data">Data message bytes received</param>

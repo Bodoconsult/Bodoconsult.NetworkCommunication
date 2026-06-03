@@ -278,7 +278,7 @@ public class TncpIpDeviceTcpIpBusinessLogicAdapter : BaseStateMachineDeviceBusin
                 // 
                 break;
             case 2:
-                ps.TelnetCommand = $"set,stream,mode,{(startRequest.Snapshot ? "snapshot" : "continious")}";  // 
+                ps.TelnetCommand = $"set,stream,mode,{(startRequest.Snapshot ? "snapshot" : "continuous")}";  // 
                 break;
             case 1:
                 ps.TelnetCommand = $"set,connection,{IpHelper.GetLocalIpAddress().MapToIPv4()},{UdpPort}";    // 

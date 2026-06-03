@@ -76,7 +76,8 @@ public class SfxpDataMessageCodec : BaseDataMessageCodec
             {
                 RawMessageData = data,
                 OriginalMessageId = messageId,
-                DataBlock = dataBlock
+                DataBlock = dataBlock,
+                AnswerWithAcknowledgement = AnswerWithAcknowledgement
             };
 
             result.DataMessage = dataMessage;
@@ -105,6 +106,8 @@ public class SfxpDataMessageCodec : BaseDataMessageCodec
             result.ErrorCode = 1;
             return result;
         }
+
+        tMessage.WaitForAcknowledgement = WaitForAcknowledgement;
 
         var data = new List<byte>();
 

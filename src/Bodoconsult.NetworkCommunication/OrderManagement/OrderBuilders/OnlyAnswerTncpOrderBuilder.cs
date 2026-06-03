@@ -1,6 +1,5 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
-using Bodoconsult.NetworkCommunication.Delegates;
 using Bodoconsult.NetworkCommunication.EnumAndStates;
 using Bodoconsult.NetworkCommunication.Factories;
 using Bodoconsult.NetworkCommunication.Interfaces;
@@ -59,7 +58,6 @@ public class OnlyAnswerTncpOrderBuilder : BaseOrderBuilder
         }
 
         var msg = _outboundDataMessageFactory.CreateInstance(parameterSet);
-        msg.WaitForAcknowledgement = true;
         return [msg];
     }
 }

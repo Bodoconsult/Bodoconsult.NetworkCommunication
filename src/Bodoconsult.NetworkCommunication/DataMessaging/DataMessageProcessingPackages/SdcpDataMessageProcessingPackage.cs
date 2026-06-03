@@ -37,7 +37,11 @@ public class SdcpDataMessageProcessingPackage : IDataMessageProcessingPackage
         DataMessageSplitter = new SdcpDataMessageSplitter();
 
         // 2. Codecs
-        DataMessageCodingProcessor = new DefaultDataMessageCodingProcessor(DataMessagingConfig.MonitorLogger);
+        DataMessageCodingProcessor = new DefaultDataMessageCodingProcessor(DataMessagingConfig.MonitorLogger)
+        {
+            AnswerWithAcknowledgement = dataMessagingConfig.AnswerWithAcknowledgement,
+            WaitForAcknowledgement = dataMessagingConfig.WaitForAcknowledgement
+        };
         DataBlockCodingProcessor = new DefaultDataBlockCodingProcessor();
         LoadCodecs();
 
@@ -63,17 +67,17 @@ public class SdcpDataMessageProcessingPackage : IDataMessageProcessingPackage
     private void LoadCodecs()
     {
         var handShakeCodec = new SdcpHandshakeMessageCodec();
-        DataMessageCodingProcessor.MessageCodecs.Add(handShakeCodec);
+        DataMessageCodingProcessor.AddMessageCodec(handShakeCodec);
 
         DataBlockCodingProcessor = new DefaultDataBlockCodingProcessor();
 
         LoadCustomDataBlockCodecs();
 
         var deviceMessageCodec = new SdcpDataMessageCodec(DataBlockCodingProcessor);
-        DataMessageCodingProcessor.MessageCodecs.Add(deviceMessageCodec);
+        DataMessageCodingProcessor.AddMessageCodec(deviceMessageCodec);
 
         var rawCodec = new RawDataMessageCodec();
-        DataMessageCodingProcessor.MessageCodecs.Add(rawCodec);
+        DataMessageCodingProcessor.AddMessageCodec(rawCodec);
     }
 
     /// <summary>

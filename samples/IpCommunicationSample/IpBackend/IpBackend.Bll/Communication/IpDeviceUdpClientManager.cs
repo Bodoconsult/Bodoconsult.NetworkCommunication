@@ -89,6 +89,12 @@ public class IpDeviceUdpClientManager : ISimpleDeviceManager
 
         ArgumentNullException.ThrowIfNull(config);
 
+        ArgumentNullException.ThrowIfNull(configurator.DataMessagingConfig);
+
+        // No handshakes
+        config.AnswerWithAcknowledgement = false;
+        config.WaitForAcknowledgement = false;
+
         CreateLoggerChannel(0x0, ipAddress, config, "Channel1");
         CreateLoggerChannel(0x1, ipAddress, config, "Channel2");
         CreateLoggerChannel(0x2, ipAddress, config, "Channel3");

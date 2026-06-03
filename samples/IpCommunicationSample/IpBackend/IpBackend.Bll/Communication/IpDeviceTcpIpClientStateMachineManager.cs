@@ -92,6 +92,12 @@ public class IpDeviceTcpIpClientStateMachineManager: IStateMachineDeviceManager
 
         configurator.CreateMessagingConfig("Backend_Device_TCPIP: ", ipAddress, port);
 
+        ArgumentNullException.ThrowIfNull(configurator.DataMessagingConfig);
+
+        // No handshakes
+        configurator.DataMessagingConfig.AnswerWithAcknowledgement = false;
+        configurator.DataMessagingConfig.WaitForAcknowledgement = false;
+
         // Data messaging package
         configurator.CreateDataMessagingPackage(messageProcessingPackageFactory);
 

@@ -20,6 +20,16 @@ public interface IDataMessageCodec
     int ExpectedMaximumLength { get;  }
 
     /// <summary>
+    /// Should an acknowledgement be sent if a request message is received
+    /// </summary>
+    bool AnswerWithAcknowledgement { get; set; }
+
+    /// <summary>
+    /// Is waiting for acknowledgement by the device required for the request message
+    /// </summary>
+    bool WaitForAcknowledgement { get; set; }
+
+    /// <summary>
     /// Decode a data message to an <see cref="IInboundDataMessage"/> instance
     /// </summary>
     /// <param name="data">Data message bytes received</param>

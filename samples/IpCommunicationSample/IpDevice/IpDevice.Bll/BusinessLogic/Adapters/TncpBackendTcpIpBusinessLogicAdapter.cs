@@ -61,6 +61,11 @@ public class TncpBackendTcpIpBusinessLogicAdapter : BaseSimpleDeviceBusinessLogi
             return;
         }
 
+        if (tncp.TelnetCommand == "set,status,stop")
+        {
+            Debug.Print(tncp.TelnetCommand);
+        }
+
         // Send an answer message
         SendAnswer(tncp.TelnetCommand);
 
@@ -117,7 +122,7 @@ public class TncpBackendTcpIpBusinessLogicAdapter : BaseSimpleDeviceBusinessLogi
         ArgumentNullException.ThrowIfNull(IpDevice.CommunicationAdapter);
 
 
-        Debug.Print("Reply for "+telnetCommand);
+        Debug.Print("Reply for " + telnetCommand);
         var cmd = CreateTncpReply(telnetCommand);
 
         var msg = new TncpOutboundDataMessage
@@ -181,32 +186,56 @@ public class TncpBackendTcpIpBusinessLogicAdapter : BaseSimpleDeviceBusinessLogi
             return false;
         }
 
-        var command = _parser.Parse(cmd);
+        var waiter = new AutoResetEvent(false);
 
         AsyncHelper.FireAndForget(() =>
         {
             try
             {
-                Task.Delay(200);
-                del.Invoke(command);
+                var x = del;
+                var command = _parser.Parse(cmd);
+
+                waiter.Set();
+
+                x.Invoke(command);
             }
             catch (Exception e)
             {
-                IpDevice.DataMessagingConfig.MonitorLogger.LogError($"TncpBackendTcpIpBusinessLogicAdapter: {command}: {e}");
+                IpDevice.DataMessagingConfig.MonitorLogger.LogError($"TncpBackendTcpIpBusinessLogicAdapter: {cmd}: {e}");
             }
         });
+        waiter.WaitOne(1000);
+        return true;
+
+        //var del = _commands.GetValueOrDefault(businessTransactionId);
+
+        //if (del == null)
+        //{
+        //    return false;
+        //}
+
+        //var command = _parser.Parse(cmd);
+
+        ////del.BeginInvoke(command, null, null);
+
+        //del.Invoke(command);
+
+        ////AsyncHelper.FireAndForget(() =>
+        ////{
+        ////    try
+        ////    {
+        ////        var x = del;
+        ////        var y = command;
+        ////        x.Invoke(y);
+        ////    }
+        ////    catch (Exception e)
+        ////    {
+        ////        IpDevice.DataMessagingConfig.MonitorLogger.LogError($"TncpBackendTcpIpBusinessLogicAdapter: {command}: {e}");
+        ////    }
+        ////});
+        ////Task.Delay(50);
         return true;
     }
-
-    //private void HandleStopSnapshotRequest(NetworkCommand command)
-    //{
-    //    var request = new EmptyBusinessTransactionRequestData
-    //    {
-    //        TransactionId = IpDeviceBusinessTransactionCodes.StopSnapshot
-    //    };
-
-    //    _businessTransactionManager.RunBusinessTransaction(request.TransactionId, request);
-    //}
 
     private void HandleStartSnapshotRequest(NetworkCommand command)
     {

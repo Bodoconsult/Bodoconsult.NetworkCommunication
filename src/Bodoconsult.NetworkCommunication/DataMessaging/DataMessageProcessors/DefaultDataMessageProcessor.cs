@@ -23,7 +23,7 @@ public class DefaultDataMessageProcessor : BaseDataMessageProcessor
     /// <param name="message">Message to process</param>
     public override void ProcessMessage(IInboundMessage message)
     {
-        var s = $"received message {message.MessageId}: {message.RawMessageData.Length} bytes";
+        var s = $"received {message.MessageId}: {message.RawMessageData.Length} bytes";
         Config.MonitorLogger.LogInformation(s);
 
         Stopped.Reset();
@@ -55,26 +55,28 @@ public class DefaultDataMessageProcessor : BaseDataMessageProcessor
         //return;
 
         // Now process the message
-        AsyncHelper.FireAndForget2(() =>
-        {
-            try
-            {
-                Config.RaiseCommLayerDataMessageReceivedDelegate.Invoke(dataMessage);
-            }
-            catch (Exception e)
-            {
-                var s = $" failed {dataMessage.MessageId}: {dataMessage.RawMessageData.Length} bytes: {e}";
-                Config.MonitorLogger.LogError(s);
-            }
-        }).ContinueWith(Callback);
+        Config.RaiseCommLayerDataMessageReceivedDelegate.Invoke(dataMessage);
 
-        var result = Stopped.WaitOne(TimeOut);
-        if (result)
-        {
-            return;
-        }
-        var msg = $"{dataMessage}delivering to message receiver timed out";
-        Config.AppLogger.LogError($"{Config.LoggerId}{msg}");
-        Config.MonitorLogger.LogError(msg);
+        //AsyncHelper.FireAndForget2(() =>
+        //{
+        //    try
+        //    {
+        //        Config.RaiseCommLayerDataMessageReceivedDelegate.Invoke(dataMessage);
+        //    }
+        //    catch (Exception e)
+        //    {
+        //        var s = $" failed {dataMessage.MessageId}: {dataMessage.RawMessageData.Length} bytes: {e}";
+        //        Config.MonitorLogger.LogError(s);
+        //    }
+        //}).ContinueWith(Callback);
+
+        //var result = Stopped.WaitOne(TimeOut);
+        //if (result)
+        //{
+        //    return;
+        //}
+        //var msg = $"{dataMessage.ToShortInfoString()}: delivering to receiver timed out";
+        //Config.AppLogger.LogError($"{Config.LoggerId}{msg}");
+        //Config.MonitorLogger.LogError(msg);
     }
 }

@@ -1,7 +1,5 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
-using Bodoconsult.NetworkCommunication.OrderManagement.Processors;
-
 namespace Bodoconsult.NetworkCommunication.Interfaces;
 
 /// <summary>

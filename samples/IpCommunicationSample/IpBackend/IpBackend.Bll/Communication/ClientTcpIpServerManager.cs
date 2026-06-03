@@ -91,6 +91,12 @@ public class ClientTcpIpServerManager : ISimpleDeviceManager
 
         configurator.CreateMessagingConfig("Backend_Client_TCPIP: ", ipAddress, port);
 
+        ArgumentNullException.ThrowIfNull(configurator.DataMessagingConfig);
+
+        // Activate handshakes
+        configurator.DataMessagingConfig.AnswerWithAcknowledgement = true;
+        configurator.DataMessagingConfig.WaitForAcknowledgement = true;
+
         // Add more config settings if needed
 
         // Data messaging package

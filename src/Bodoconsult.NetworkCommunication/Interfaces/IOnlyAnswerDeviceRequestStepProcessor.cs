@@ -5,10 +5,10 @@ namespace Bodoconsult.NetworkCommunication.Interfaces;
 /// <summary>
 /// Interface for executing request steps of a device request
 /// </summary>
-public interface IOnlyAnswerDeviceRequestStepProcessor : IRequestStepProcessor
+public interface IOnlyAnswerDeviceRequestStepProcessor : IDeviceRequestStepProcessor
 {
     /// <summary>
-    /// Current only answer request spec
+    /// Current device request spec
     /// </summary>
-    IOnlyAnswerDeviceRequestSpec DeviceRequestSpec { get; }
+    public IOnlyAnswerDeviceRequestSpec OnlyAnswerDeviceRequestSpec { get; }
 }

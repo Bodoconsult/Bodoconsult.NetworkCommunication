@@ -26,11 +26,6 @@ public class SdcpInboundDataMessage: IInboundDataMessage
     public long MessageId { get; }
 
     /// <summary>
-    /// Is waiting for acknowledgement by the device required for the message
-    /// </summary>
-    public bool WaitForAcknowledgement { get; set; }
-
-    /// <summary>
     /// Should an acknowledgement be sent if the message is received
     /// </summary>
     public bool AnswerWithAcknowledgement { get; set; }

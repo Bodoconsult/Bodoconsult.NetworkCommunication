@@ -151,4 +151,14 @@ public class DefaultDataMessagingConfig: IIpDataMessagingConfig
     /// Current data loggers. May contain zero or more loggers. Each message can be logged only by one logger (or none)
     /// </summary>
     public List<IInboundDataLogger> DataLoggers { get; } = [];
+
+    /// <summary>
+    /// Should an acknowledgement be sent if a request message is received
+    /// </summary>
+    public bool AnswerWithAcknowledgement { get; set; }
+
+    /// <summary>
+    /// Is waiting for acknowledgement by the device required for the request message
+    /// </summary>
+    public bool WaitForAcknowledgement { get; set; }
 }

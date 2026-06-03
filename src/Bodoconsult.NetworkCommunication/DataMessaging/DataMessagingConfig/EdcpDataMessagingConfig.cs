@@ -103,6 +103,16 @@ public class EdcpDataMessagingConfig : IIpDataMessagingConfig
     public AppLayerHandleAsyncMessageDelegate? AppLayerHandleAsyncMessageDelegate { get; set; }
 
     /// <summary>
+    /// Should an acknowledgement be sent if a request message is received
+    /// </summary>
+    public bool AnswerWithAcknowledgement { get; set; }
+
+    /// <summary>
+    /// Is waiting for acknowledgement by the device required for the request message
+    /// </summary>
+    public bool WaitForAcknowledgement { get; set; }
+
+    /// <summary>
     /// Delegate fired on comm level if a data message has been received. Should be used in <see cref="ICommunicationHandler"/> impls to implement there handshake responses and then forward to the next layer
     /// </summary>
     public RaiseDataMessageReceivedDelegate? RaiseCommLayerDataMessageReceivedDelegate { get; set; }

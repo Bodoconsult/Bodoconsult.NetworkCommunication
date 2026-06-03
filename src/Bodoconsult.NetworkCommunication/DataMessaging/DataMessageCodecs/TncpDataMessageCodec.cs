@@ -81,7 +81,7 @@ public class TncpDataMessageCodec : BaseDataMessageCodec
             {
                 DataBlock = dataBlock,
                 RawMessageData = data,
-                AnswerWithAcknowledgement = true
+                AnswerWithAcknowledgement = AnswerWithAcknowledgement
             };
 
             if (dataBlock != null)
@@ -107,7 +107,7 @@ public class TncpDataMessageCodec : BaseDataMessageCodec
     /// <param name="dataMessage"></param>
     /// <param name="data"></param>
     /// <returns></returns>
-    private static void ParseCommand(TncpInboundDataMessage dataMessage, Span<byte> data)
+    private void ParseCommand(TncpInboundDataMessage dataMessage, Span<byte> data)
     {
         var s = Encoding.UTF8.GetString(data)
             .Replace("\u0010", string.Empty, StringComparison.InvariantCultureIgnoreCase)
@@ -118,6 +118,7 @@ public class TncpDataMessageCodec : BaseDataMessageCodec
         if (!s.StartsWith("<BEGIN>", StringComparison.InvariantCultureIgnoreCase))
         {
             dataMessage.TelnetCommand = s;
+            dataMessage.AnswerWithAcknowledgement = AnswerWithAcknowledgement;
             return;
         }
 
@@ -134,7 +135,7 @@ public class TncpDataMessageCodec : BaseDataMessageCodec
         }
 
         // Additional data
-        var block = s.Substring(0, i);
+        var block = s[..i];
 
         i = block.IndexOf("<", 1, StringComparison.InvariantCultureIgnoreCase);
         if (i == -1)
@@ -162,6 +163,8 @@ public class TncpDataMessageCodec : BaseDataMessageCodec
             result.ErrorCode = 1;
             return result;
         }
+
+        tMessage.WaitForAcknowledgement = WaitForAcknowledgement;
 
         var data = new List<byte>();
 

@@ -82,6 +82,12 @@ public class BackendUdpServerManager : ISimpleDeviceManager
         // Create config now
         configurator.CreateMessagingConfig("Device_Backend_UDP", ipAddress, port);
 
+        ArgumentNullException.ThrowIfNull(configurator.DataMessagingConfig);
+
+        // No handshakes
+        configurator.DataMessagingConfig.AnswerWithAcknowledgement = false;
+        configurator.DataMessagingConfig.WaitForAcknowledgement = false;
+
         // Add more config settings if needed
 
         // Data messaging package

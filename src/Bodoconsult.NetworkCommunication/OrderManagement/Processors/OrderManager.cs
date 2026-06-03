@@ -42,7 +42,7 @@ public class OrderManager : IOrderManager
             throw new NullReferenceException("Data messaging config may not be null");
         }
 
-        MessagingConfig.RaiseAppLayerDataMessageReceivedDelegate = OrderReceiver.AddReceivedMessage; ;
+        MessagingConfig.RaiseAppLayerDataMessageReceivedDelegate = OrderReceiver.AddReceivedMessage;
         _appLogger.LogDebug($"{_loggerId}Order processing bound to receiver");
     }
 

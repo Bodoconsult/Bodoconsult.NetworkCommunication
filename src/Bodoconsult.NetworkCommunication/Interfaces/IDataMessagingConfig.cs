@@ -37,7 +37,7 @@ public interface IDataMessagingConfig
     /// Delegate sending a HELLO message to the device
     /// </summary>
     SendHelloMessageDelegate? SendHelloMessageDelegate { get; set; }
-    
+
     ///// <summary>
     ///// Data message procssing package
     ///// </summary>
@@ -109,7 +109,16 @@ public interface IDataMessagingConfig
     /// <returns>Message handling result</returns>
     AppLayerHandleAsyncMessageDelegate? AppLayerHandleAsyncMessageDelegate { get; set; }
 
+    /// <summary>
+    /// Should an acknowledgement be sent if a request message is received
+    /// </summary>
+    bool AnswerWithAcknowledgement { get; set; }
 
+    /// <summary>
+    /// Is waiting for acknowledgement by the device required for the request message
+    /// </summary>
+    bool WaitForAcknowledgement { get; set; }
+    
     #endregion
 
     #region Receiving messages
@@ -152,7 +161,7 @@ public interface IDataMessagingConfig
     /// <summary>
     /// Current data loggers. May contain zero or more loggers. Each message can be logged only by one logger (or none)
     /// </summary>
-    List<IInboundDataLogger> DataLoggers { get; } 
+    List<IInboundDataLogger> DataLoggers { get; }
 
     #endregion
 }

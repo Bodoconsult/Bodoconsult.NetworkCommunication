@@ -181,7 +181,7 @@ internal class UdpSendingTests
         Task.Delay(100);
 
         var data2 = new List<byte>();
-        data2.AddRange(Encoding.UTF8.GetBytes("set,stream,mode,continious"));
+        data2.AddRange(Encoding.UTF8.GetBytes("set,stream,mode,continuous"));
         data2.Add([DeviceCommunicationBasics.Lf]);
 
         AsyncHelper.FireAndForget(() =>
