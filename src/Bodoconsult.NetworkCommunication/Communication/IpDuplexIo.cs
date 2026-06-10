@@ -31,6 +31,8 @@ public class IpDuplexIo : BaseDuplexIo
 
             Sender ??= new IpDuplexIoSender(DataMessagingConfig);
 
+            await Sender.StartSender();
+
             IsCommunicationStarted = true;
         }
         catch (Exception e)

@@ -1,5 +1,6 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
+using Bodoconsult.NetworkCommunication.EnumAndStates;
 using Bodoconsult.NetworkCommunication.Interfaces;
 
 namespace Bodoconsult.NetworkCommunication.Communication;
@@ -28,9 +29,9 @@ public class DoNothingDuplexIoSender : IDuplexIoSender
     /// Send a message to the device
     /// </summary>
     /// <param name="message">Current message to send</param>
-    public Task<int> SendMessage(IOutboundMessage message)
+    public Task<MessageSendingResult> SendMessage(IOutboundMessage message)
     {
-        return Task.FromResult(0);
+        return Task.FromResult(new MessageSendingResult(message, OrderExecutionResultState.Unsuccessful));
     }
 
     /// <summary>

@@ -122,7 +122,7 @@ public class TncpBackendTcpIpBusinessLogicAdapter : BaseSimpleDeviceBusinessLogi
         ArgumentNullException.ThrowIfNull(IpDevice.CommunicationAdapter);
 
 
-        Debug.Print("Reply for " + telnetCommand);
+        Debug.Print($"Reply for {telnetCommand}");
         var cmd = CreateTncpReply(telnetCommand);
 
         var msg = new TncpOutboundDataMessage
@@ -168,7 +168,21 @@ public class TncpBackendTcpIpBusinessLogicAdapter : BaseSimpleDeviceBusinessLogi
 
         foreach (var s2 in s)
         {
-            data.Add(Convert.ToByte(s2));
+            switch (s2)
+            {
+                case "1":
+                    data.Add(0);
+                    break;
+                case "2":
+                    data.Add(1);
+                    break;
+                case "3":
+                    data.Add(2);
+                    break;
+                case "4":
+                    data.Add(3);
+                    break;
+            }
         }
 
         data.Add(0xC);
@@ -234,7 +248,7 @@ public class TncpBackendTcpIpBusinessLogicAdapter : BaseSimpleDeviceBusinessLogi
         ////    }
         ////});
         ////Task.Delay(50);
-        return true;
+        //return true;
     }
 
     private void HandleStartSnapshotRequest(NetworkCommand command)

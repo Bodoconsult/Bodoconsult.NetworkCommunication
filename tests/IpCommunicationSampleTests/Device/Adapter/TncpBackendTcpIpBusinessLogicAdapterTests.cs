@@ -22,7 +22,14 @@ internal class TncpBackendTcpIpBusinessLogicAdapterTests
         var result = TncpBackendTcpIpBusinessLogicAdapter.GetConfig(config);
 
         // Assert
-        Assert.That(result.Length, Is.EqualTo(6));
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(result.Length, Is.EqualTo(6));
+            Assert.That(result[0], Is.Zero);
+            Assert.That(result[1], Is.EqualTo(1));
+            Assert.That(result[2], Is.EqualTo(2));
+            Assert.That(result[3], Is.EqualTo(3));
+        }
     }
 
     [Test]
@@ -35,7 +42,13 @@ internal class TncpBackendTcpIpBusinessLogicAdapterTests
         var result = TncpBackendTcpIpBusinessLogicAdapter.GetConfig(config);
 
         // Assert
-        Assert.That(result.Length, Is.EqualTo(5));
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(result.Length, Is.EqualTo(5));
+            Assert.That(result[0], Is.Zero);
+            Assert.That(result[1], Is.EqualTo(1));
+            Assert.That(result[2], Is.EqualTo(3));
+        }
     }
 
     [Test]

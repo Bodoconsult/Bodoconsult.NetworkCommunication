@@ -146,7 +146,6 @@ public class TncpDataMessageCodec : BaseDataMessageCodec
 
         dataMessage.TelnetCommand = block[..i];
         dataMessage.TelnetAdditionalInfo = block[i..];
-
     }
 
     /// <summary>

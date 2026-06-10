@@ -32,4 +32,9 @@ public class MessageSendingResult
     /// Additonal information
     /// </summary>
     public string? Information { get; set; }
+
+    /// <summary>
+    /// Number of bytes sent
+    /// </summary>
+    public int BytesSent { get; set; }
 }

@@ -26,13 +26,13 @@ public class UdpStarter
 
         if (command == "set,status,start")
         {
-            _isReadyToStart = true;
+            BusinessTransactionId = Snapshot ? 3 : 1;
+            _isReadyToStart = false;
         } 
             
         if (command == "show,streamconfig" && _isReadyToStart)
         {
-            BusinessTransactionId = Snapshot ? 3 : 1;
-            _isReadyToStart = false;
+            _isReadyToStart = true;
         }
 
         if (command == "set,status,stop")

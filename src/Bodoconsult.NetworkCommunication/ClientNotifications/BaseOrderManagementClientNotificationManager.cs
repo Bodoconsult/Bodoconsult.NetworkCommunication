@@ -28,6 +28,11 @@ public abstract class BaseOrderManagementClientNotificationManager : IOrderManag
     /// <param name="state">State to send to client</param>
     public void DoNotifyStateManagementStateEvent(object sender, IStateMachineState state)
     {
+        if (NotifyClient == null)
+        {
+            return;
+        }
+
         var context = state.CurrentContext;
 
         var notification = new StateMachineStateNotification
@@ -40,7 +45,7 @@ public abstract class BaseOrderManagementClientNotificationManager : IOrderManag
             BusinessSubstateName = context.BusinessSubState.Name
         };
 
-        NotifyClient?.Invoke(sender, notification);
+        NotifyClient.Invoke(sender, notification);
     }
 
     /// <summary>
@@ -52,6 +57,11 @@ public abstract class BaseOrderManagementClientNotificationManager : IOrderManag
     /// <param name="complete">Is completed?</param>
     public void DoNotifyProgressEvent(object sender, int currentProgressType, int percentage, bool complete)
     {
+        if (NotifyClient == null)
+        {
+            return;
+        }
+
         var notification = new ProgressNotification
         {
             Completed = complete,
@@ -59,7 +69,7 @@ public abstract class BaseOrderManagementClientNotificationManager : IOrderManag
             Progress = percentage
         };
 
-        NotifyClient?.Invoke(sender, notification);
+        NotifyClient.Invoke(sender, notification);
     }
 
     /// <summary>
@@ -69,12 +79,17 @@ public abstract class BaseOrderManagementClientNotificationManager : IOrderManag
     /// <param name="e">Exception to report</param>
     public void DoNotifyException(object sender, Exception e)
     {
+        if (NotifyClient == null)
+        {
+            return;
+        }
+
         var notification = new ExceptionNotification
         {
             Exception = e
         };
 
-        NotifyClient?.Invoke(sender, notification);
+        NotifyClient.Invoke(sender, notification);
     }
 
     /// <summary>
@@ -84,11 +99,16 @@ public abstract class BaseOrderManagementClientNotificationManager : IOrderManag
     /// <param name="order">Current order</param>
     public void DoNotifyOrderStateChanged(object sender, IOrder order)
     {
+        if (NotifyClient == null)
+        {
+            return;
+        }
+
         var notification = new OrderExecutionNotification
         {
             Order = order,
         };
 
-        NotifyClient?.Invoke(sender, notification);
+        NotifyClient.Invoke(sender, notification);
     }
 }

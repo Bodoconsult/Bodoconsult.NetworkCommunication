@@ -263,6 +263,10 @@ public class TcpIpClientSocketProxy : BaseTcpIpSocketProxy
             await Socket.ConnectAsync(ep);
             Logger.LogInformation($"{LoggerId}connected to {IpAddress}:{Port}");
         }
+        catch (SocketException e)        
+        {
+            Logger.LogError($"{LoggerId}Connecting failed: socket error {e.ErrorCode} {e.Message}");
+        }
         catch (Exception e)
         {
             Logger.LogError($"{LoggerId}{e}");

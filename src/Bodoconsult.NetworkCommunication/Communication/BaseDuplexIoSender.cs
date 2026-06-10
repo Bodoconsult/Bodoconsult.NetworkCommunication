@@ -1,6 +1,12 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
+using Bodoconsult.App.Abstractions.Interfaces;
+using Bodoconsult.App.Abstractions.SyncExecution;
+using Bodoconsult.App.Helpers;
+using Bodoconsult.NetworkCommunication.EnumAndStates;
 using Bodoconsult.NetworkCommunication.Interfaces;
+using System.Collections.Generic;
+using System.Net.Sockets;
 
 namespace Bodoconsult.NetworkCommunication.Communication;
 
@@ -9,11 +15,86 @@ namespace Bodoconsult.NetworkCommunication.Communication;
 /// </summary>
 public abstract class BaseDuplexIoSender : IDuplexIoSender
 {
+    private readonly SyncProcessManager<long, MessageSendingResult> _outboundProcessManager = new();
+    private readonly ProducerConsumerQueue<IOutboundMessage> _outboundConsumerQueue = new();
 
     /// <summary>
     /// Logger ID
     /// </summary>
     protected string LoggerId;
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="message"></param>
+    /// <returns></returns>
+    protected async Task<MessageSendingResult> SendMessageInternal(IOutboundMessage message)
+    {
+        string msg;
+        MessageSendingResult sent;
+        try
+        {
+            var syncData = _outboundProcessManager.AddSyncProcess(message.MessageId, 2000);
+            message.SyncData = syncData;
+
+            _outboundConsumerQueue.Enqueue(message);
+
+            sent = await syncData.CreateWaitingTask() ?? new MessageSendingResult(message, OrderExecutionResultState.Timeout);
+
+            if (sent.ProcessExecutionResult == OrderExecutionResultState.Unsuccessful)
+            {
+                return sent;
+            }
+
+#if DEBUG
+            DataMessagingConfig.MonitorLogger.LogDebug($"{LoggerId}{message.ToShortInfoString()} sent {sent.BytesSent} bytes with result {sent.ProcessExecutionResult}");
+#endif
+
+//#if DEBUG
+//            msg = $"Message {message.ToShortInfoString()} sent: {sent.BytesSent} bytes";
+//            DataMessagingConfig.MonitorLogger.LogDebug(msg);
+//#endif
+            AsyncHelper.FireAndForget(() =>
+            {
+                try
+                {
+                    DataMessagingConfig.RaiseDataMessageSentDelegate?.Invoke(message.RawMessageData);
+                }
+                catch (Exception e)
+                {
+                    msg = $"dataMessagingConfig.RaiseDataMessageSentDelegate failed: {e}";
+                    DataMessagingConfig.MonitorLogger.LogError(msg);
+                    DataMessagingConfig.AppLogger.LogError($"{DataMessagingConfig.LoggerId}{msg}");
+                }
+            });
+
+            return sent;
+        }
+        catch (Exception sendException)
+        {
+            msg = $"message {message.ToShortInfoString()} not sent: {sendException}";
+            DataMessagingConfig.MonitorLogger.LogError(msg);
+            DataMessagingConfig.AppLogger.LogError($"{DataMessagingConfig.LoggerId}{msg}");
+
+            AsyncHelper.FireAndForget(() =>
+            {
+                try
+                {
+                    DataMessagingConfig.RaiseDataMessageNotSentDelegate?.Invoke(message.RawMessageData, sendException.Message);
+                }
+                catch (Exception e)
+                {
+                    msg = $"dataMessagingConfig.RaiseDataMessageNotSentDelegate failed: {e}";
+                    DataMessagingConfig.MonitorLogger.LogError(msg);
+                    DataMessagingConfig.AppLogger.LogError($"{DataMessagingConfig.LoggerId}{msg}");
+                }
+            });
+
+            sent = new MessageSendingResult(message, OrderExecutionResultState.Unsuccessful);
+        }
+
+        return sent;
+    }
 
     /// <summary>
     /// Encode the data message
@@ -75,29 +156,101 @@ public abstract class BaseDuplexIoSender : IDuplexIoSender
         DataMessageSplitter = DataMessagingConfig.DataMessageProcessingPackage.DataMessageSplitter;
     }
 
+    private void ConsumerTaskDelegate(IOutboundMessage message)
+    {
+        try
+        {
+            var sent = DataMessagingConfig.SocketProxy!.Send(message.RawMessageData).GetAwaiter().GetResult();
+
+            if (message.SyncData == null)
+            {
+                return;
+            }
+
+            var msr = sent > 0
+                ? new MessageSendingResult(message, OrderExecutionResultState.Successful)
+                : new MessageSendingResult(message, OrderExecutionResultState.Unsuccessful);
+            msr.BytesSent = sent;
+
+            message.SyncData.TaskCompletionSource.SetResult(msr);
+        }
+        catch (SocketException socketException)
+        {
+            var msg = $"message {message.ToShortInfoString()} not sent: {socketException}";
+            DataMessagingConfig.MonitorLogger.LogError(msg);
+            DataMessagingConfig.AppLogger.LogError($"{DataMessagingConfig.LoggerId}{msg}");
+
+            AsyncHelper.FireAndForget(() =>
+            {
+                try
+                {
+                    DataMessagingConfig.RaiseComDevCloseRequestDelegate?.Invoke("IpDuplexIoSender");
+                    DataMessagingConfig.RaiseDataMessageNotSentDelegate?.Invoke(message.RawMessageData, socketException.Message);
+                }
+                catch (Exception e)
+                {
+                    msg = $"firing delegates failed: {e}";
+                    DataMessagingConfig.MonitorLogger.LogError(msg);
+                    DataMessagingConfig.AppLogger.LogError($"{DataMessagingConfig.LoggerId}{msg}");
+                }
+            });
+
+            if (message.SyncData == null)
+            {
+                return;
+            }
+
+            message.SyncData.SetResult(new MessageSendingResult(message, OrderExecutionResultState.Unsuccessful));
+        }
+        catch (Exception e)
+        {
+            var msg = $"Message {message.ToShortInfoString()} could not be sent: {e}";
+            AsyncHelper.FireAndForget(() => DataMessagingConfig.RaiseDataMessageNotSentDelegate?.Invoke(message.RawMessageData, msg));
+            DataMessagingConfig.MonitorLogger.LogError(msg);
+            DataMessagingConfig.AppLogger.LogError($"{DataMessagingConfig.LoggerId}: {msg}");
+
+            if (message.SyncData == null)
+            {
+                return;
+            }
+            message.SyncData.SetResult(new MessageSendingResult(message, OrderExecutionResultState.Unsuccessful));
+        }
+    }
+
     /// <summary>
     /// Send a message to the device
     /// </summary>
     /// <param name="message">Current message to send</param>
-    public virtual Task<int> SendMessage(IOutboundMessage message)
+    public virtual Task<MessageSendingResult> SendMessage(IOutboundMessage message)
     {
         throw new NotSupportedException();
     }
 
+
+
     /// <summary>
     /// Start the message sender
     /// </summary>
-    public virtual Task StartSender()
+    public virtual async Task StartSender()
     {
-        throw new NotSupportedException();
+        // Do nothing
+        await Task.Run(() =>
+        {
+            _outboundConsumerQueue.ConsumerTaskDelegate = ConsumerTaskDelegate;
+            _outboundConsumerQueue.StartConsumer();
+        });
     }
 
     /// <summary>
     /// Stop the message sender
     /// </summary>
-    public virtual Task StopSender()
+    public async Task StopSender()
     {
-        throw new NotSupportedException();
+        // Do nothing
+        await Task.Run(() =>
+        {
+            _outboundConsumerQueue.StopConsumer();
+        });
     }
 
     /// <summary>

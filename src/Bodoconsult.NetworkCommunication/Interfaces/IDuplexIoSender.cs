@@ -6,13 +6,12 @@ namespace Bodoconsult.NetworkCommunication.Interfaces;
 /// Interface for the sender side of an <see cref="IDuplexIo"/> based communication interface
 /// </summary>
 public interface IDuplexIoSender: IAsyncDisposable, IDisposable
-
 {
     /// <summary>
     /// Send a message to the device
     /// </summary>
     /// <param name="message">Current message to send</param>
-    Task<int> SendMessage(IOutboundMessage message);
+    Task<MessageSendingResult> SendMessage(IOutboundMessage message);
 
     /// <summary>
     /// Start the message sender

@@ -149,6 +149,8 @@ public abstract class BaseBtcpSimpleDeviceBusinessLogicAdapter : BaseSimpleDevic
     {
         var reply = InboundDataMessageToBtReplyConverter.MapToBusinessTransactionReply(btm);
 
+        AppLoggerProxy.LogDebug($"BT {btm.BusinessTransactionId} / {btm.BusinessTransactionUid} received");
+
         if (reply == null)
         {
             return;

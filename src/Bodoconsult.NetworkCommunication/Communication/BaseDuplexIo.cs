@@ -122,11 +122,9 @@ public abstract class BaseDuplexIo : IDuplexIo
     {
         ArgumentNullException.ThrowIfNull(Sender);
 
-        var count = await Sender.SendMessage(message);
+        var msr = await Sender.SendMessage(message);
 
         //Trace.TraceInformation($"BaseDuplexIo: message {message.MessageId} with {count} bytes sent");
-
-        var msr = count == 0 ? new MessageSendingResult(message, OrderExecutionResultState.Unsuccessful) : new MessageSendingResult(message, OrderExecutionResultState.Successful);
 
         AsyncHelper.FireAndForget(() =>
         {
@@ -247,7 +245,6 @@ public abstract class BaseDuplexIo : IDuplexIo
     {
         throw new NotSupportedException();
     }
-
 
     /// <summary>Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources asynchronously.</summary>
     /// <returns>A task that represents the asynchronous dispose operation.</returns>

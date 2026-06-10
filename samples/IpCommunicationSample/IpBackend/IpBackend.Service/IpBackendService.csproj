@@ -13,6 +13,7 @@
 		<IncludeNativeLibrariesForSelfExtract>true</IncludeNativeLibrariesForSelfExtract>
 		<ErrorOnDuplicatePublishOutputFiles>false</ErrorOnDuplicatePublishOutputFiles>
 		<Version>0.0.5</Version>
+		<ServerGarbageCollection>true</ServerGarbageCollection>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -26,8 +27,8 @@
 		<PackageReference Include="Bodoconsult.App" Version="1.0.9" />
 		<PackageReference Include="Bodoconsult.App.Abstractions" Version="1.0.9" />
 		<PackageReference Include="Bodoconsult.App.BackgroundService" Version="1.0.9" />
-		<PackageReference Include="Microsoft.Extensions.Hosting" Version="9.0.11" />
-		<PackageReference Include="Microsoft.Extensions.Hosting.WindowsServices" Version="9.0.11" />
+		<PackageReference Include="Microsoft.Extensions.Hosting" Version="10.0.8" />
+		<PackageReference Include="Microsoft.Extensions.Hosting.WindowsServices" Version="10.0.8" />
 	</ItemGroup>
 
 	<ItemGroup>

@@ -9,6 +9,7 @@
 		<RuntimeIdentifier>win-x64</RuntimeIdentifier>
 		<PlatformTarget>x64</PlatformTarget>
 		<Version>0.0.5</Version>
+		<ServerGarbageCollection>true</ServerGarbageCollection>
 	</PropertyGroup>
 	<PropertyGroup>
 		<DebugType>embedded</DebugType>
@@ -24,8 +25,8 @@
 		<PackageReference Include="Bodoconsult.App" Version="1.0.9" />
 		<PackageReference Include="Bodoconsult.App.Abstractions" Version="1.0.9" />
 		<PackageReference Include="Bodoconsult.App.BackgroundService" Version="1.0.9" />
-		<PackageReference Include="Microsoft.Extensions.Hosting" Version="9.0.11" />
-		<PackageReference Include="Microsoft.Extensions.Hosting.WindowsServices" Version="9.0.11" />
+		<PackageReference Include="Microsoft.Extensions.Hosting" Version="10.0.8" />
+		<PackageReference Include="Microsoft.Extensions.Hosting.WindowsServices" Version="10.0.8" />
 	</ItemGroup>
 	<ItemGroup>
 		<ProjectReference Include="..\..\..\..\src\Bodoconsult.NetworkCommunication\Bodoconsult.NetworkCommunication.csproj" />

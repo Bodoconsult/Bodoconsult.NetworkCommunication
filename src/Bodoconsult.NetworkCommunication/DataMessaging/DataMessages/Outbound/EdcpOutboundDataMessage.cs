@@ -1,5 +1,6 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH.  All rights reserved.
 
+using Bodoconsult.App.Abstractions.Interfaces;
 using Bodoconsult.NetworkCommunication.Delegates;
 using Bodoconsult.NetworkCommunication.Helpers;
 using Bodoconsult.NetworkCommunication.Interfaces;
@@ -59,6 +60,11 @@ public class EdcpOutboundDataMessage : IOutboundDataMessage
     /// Delegate fired if a message was sent to an IP device
     /// </summary>
     public RaiseStopSyncExecutionDelegate? RaiseStopSyncExecutionDelegate { get; set; }
+
+    /// <summary>
+    /// Sync process data
+    /// </summary>
+    public SyncProcessData<long, MessageSendingResult>? SyncData { get; set; }
 
     /// <summary>
     /// Create an info string for logging

@@ -109,6 +109,8 @@ public class UdpDatagramReceiveOnlyIpDuplexIo : BaseDuplexIo
                 await Receiver.StartReceiver();
 
                 Sender ??= new DoNothingDuplexIoSender();
+
+                await Sender.StartSender();
             }
             catch (Exception e)
             {

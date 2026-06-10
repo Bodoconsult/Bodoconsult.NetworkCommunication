@@ -148,6 +148,10 @@ public class UdpClientSocketProxy : BaseUpdSocketProxy
                 Logger.LogInformation($"{LoggerId}connected to IPAddress.Any:{Port}");
                 _isBound = true;
             }
+            catch (SocketException e)
+            {
+                Logger.LogError($"{LoggerId}Connecting failed: socket error {e.SocketErrorCode}");
+            }
             catch (Exception e)
             {
                 // ToDo: add logging

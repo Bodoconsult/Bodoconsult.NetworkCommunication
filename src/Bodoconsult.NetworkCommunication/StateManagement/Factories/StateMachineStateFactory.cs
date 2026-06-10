@@ -1,5 +1,6 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
+using System.Configuration;
 using Bodoconsult.NetworkCommunication.Interfaces;
 using Bodoconsult.NetworkCommunication.StateManagement.Configurations;
 
@@ -108,6 +109,14 @@ public class StateMachineStateFactory : IStateMachineStateFactory
     /// <returns>State configuration</returns>
     public IStateConfiguration? GetConfiguration(string stateName)
     {
-        return _stateConfigurations.GetValueOrDefault(stateName);
+        var config = _stateConfigurations.GetValueOrDefault(stateName);
+
+        if (config == null)
+        {
+            return null;
+        }
+
+        var x = (IStateConfiguration)config.Clone();
+        return x;
     }
 }

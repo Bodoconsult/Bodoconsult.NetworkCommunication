@@ -267,15 +267,14 @@ public class TncpIpDeviceTcpIpBusinessLogicAdapter : BaseStateMachineDeviceBusin
             //    ps.TelnetCommand = "set,snapshot,4,4";   // 
             //    break;
             case 4:
+                ps.TelnetCommand = "set,status,start";
+                break;
+            case 3:
                 if (orderConfig is OneRequestSpecNoOrOneStepOneAnswerConfiguration one)
                 {
                     one.HandleRequestAnswerOnSuccessDelegate = HandleRequestAnswerOnSuccessDelegate;
                 }
                 ps.TelnetCommand = "show,streamconfig";   // 
-                break;
-            case 3:
-                ps.TelnetCommand = "set,status,start";
-                // 
                 break;
             case 2:
                 ps.TelnetCommand = $"set,stream,mode,{(startRequest.Snapshot ? "snapshot" : "continuous")}";  // 
@@ -529,16 +528,6 @@ public class TncpIpDeviceTcpIpBusinessLogicAdapter : BaseStateMachineDeviceBusin
         var configString = telnetCommand.Replace("<CONFIG>", string.Empty, StringComparison.InvariantCultureIgnoreCase);
 
         var config = ArrayHelper.GetBytes(configString);
-
-        for (var index = 0; index < config.Length; index++)
-        {
-            var b = config[index];
-            if (b < 5)
-            {
-                config[index] = (byte)(config[index] - 1);
-            }
-        }
-
         return config;
     }
 

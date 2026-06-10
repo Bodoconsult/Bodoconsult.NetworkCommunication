@@ -101,6 +101,7 @@ public class IpDeviceUdpClientManager : ISimpleDeviceManager
         CreateLoggerChannel(0x3, ipAddress, config, "Channel4");
         CreateLoggerChannel(0xC, ipAddress, config, "ADD");
 
+
         // Create messaging package
         configurator.CreateDataMessagingPackage(messageProcessingPackageFactory);
 
@@ -121,6 +122,9 @@ public class IpDeviceUdpClientManager : ISimpleDeviceManager
 
     private static void CreateLoggerChannel(byte channel, string ipAddress, IDataMessagingConfig config, string channelName)
     {
+
+        config.AppLogger.LogInformation($"{config.LoggerId}: storing bin data for {channelName} to {config.DataLoggingPath}");
+
         config.DataLoggingFileName = $"IPDevice_{ipAddress.Replace(".", "_", StringComparison.InvariantCultureIgnoreCase)}_{channelName}";
         config.DataLoggingPath = config.DataLoggingPath;
 
