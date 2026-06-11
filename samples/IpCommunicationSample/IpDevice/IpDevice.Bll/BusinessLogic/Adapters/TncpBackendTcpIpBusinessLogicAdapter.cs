@@ -166,24 +166,33 @@ public class TncpBackendTcpIpBusinessLogicAdapter : BaseSimpleDeviceBusinessLogi
 
         var data = new List<byte>();
 
-        foreach (var s2 in s)
+        while (true)
         {
-            switch (s2)
+            foreach (var s2 in s)
             {
-                case "1":
-                    data.Add(0);
-                    break;
-                case "2":
-                    data.Add(1);
-                    break;
-                case "3":
-                    data.Add(2);
-                    break;
-                case "4":
-                    data.Add(3);
-                    break;
+                switch (s2)
+                {
+                    case "1":
+                        data.Add(0);
+                        break;
+                    case "2":
+                        data.Add(1);
+                        break;
+                    case "3":
+                        data.Add(2);
+                        break;
+                    case "4":
+                        data.Add(3);
+                        break;
+                }
+            }
+
+            if (data.Count >= 253 - s.Length)
+            {
+                break;
             }
         }
+
 
         data.Add(0xC);
         data.Add(0xF);

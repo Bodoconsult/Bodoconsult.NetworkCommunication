@@ -26,7 +26,7 @@ internal class SfxpDigitalTwinMessageFactoryTests
         {
             var message = result[index].ToArray();
             Debug.Print($"{message.Length} bytes");
-            Debug.Print(ArrayHelper.GetStringFromArrayCsharpStyle(message));
+            Debug.Print(ArrayHelper.GetStringFromArrayCsharpStyle(message, false));
             WriteToFile(index, message);
         }
     }
@@ -62,6 +62,27 @@ internal class SfxpDigitalTwinMessageFactoryTests
     {
         // Arrange 
         var data = ResourceHelper.GetByteResource("Bodoconsult.NetworkCommunication.Tests.Resources.sfx0.bin");
+
+        // Act  
+        for (var i = 0; i < data.Length; i++)
+        {
+            if (data[i] != 0x9)
+            {
+                continue;
+            }
+            var section = data.AsSpan(i, 40);
+            Debug.Print(ArrayHelper.GetStringFromArrayCsharpStyle(section.ToArray()));
+        }
+
+        // Assert
+    }
+
+    [Explicit]
+    [Test]
+    public void Test1()
+    {
+        // Arrange 
+        var data = ResourceHelper.GetByteResource("Bodoconsult.NetworkCommunication.Tests.Resources.msg.bin");
 
         // Act  
         for (var i = 0; i < data.Length; i++)

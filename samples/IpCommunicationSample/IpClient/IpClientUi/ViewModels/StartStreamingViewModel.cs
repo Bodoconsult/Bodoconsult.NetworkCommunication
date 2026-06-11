@@ -83,6 +83,21 @@ public partial class StartMessagingViewModel : ReactiveObject, IUiRegionViewMode
     [Reactive] public partial bool Channel4 { get; set; }
 
     /// <summary>
+    /// Use a software defined snapshot
+    /// </summary>
+    [Reactive] public partial bool UseSoftwareSnapshot { get; set; }
+
+    /// <summary>
+    /// Use a software defined snapshot
+    /// </summary>
+    [Reactive] public partial bool IsDataLoggingActivated { get; set; }
+
+    /// <summary>
+    /// Is data presentation as chart activated?
+    /// </summary>
+    [Reactive] public partial bool IsChartActivated { get; set; }
+
+    /// <summary>
     /// Command starting the messaging
     /// </summary>
     [ReactiveCommand]
@@ -95,6 +110,18 @@ public partial class StartMessagingViewModel : ReactiveObject, IUiRegionViewMode
                 Channel1 = true;
             }
 
+            // ToDo: remove this condition if chart is implemented
+            if (IsChartActivated && !IsDataLoggingActivated)
+            {
+                IsChartActivated = false;
+                IsDataLoggingActivated = true;
+            }
+
+            if (!IsChartActivated && !IsDataLoggingActivated)
+            {
+                IsDataLoggingActivated = true;
+            }
+
             var request = new StartMessagingBusinessTransactionRequestData
             {
                 TransactionId = ClientSideBusinessTransactionIds.StartMessaging,
@@ -103,6 +130,9 @@ public partial class StartMessagingViewModel : ReactiveObject, IUiRegionViewMode
                 Channel2 = Channel2,
                 Channel3 = Channel3,
                 Channel4 = Channel4,
+                IsDataLoggingActivated = IsDataLoggingActivated,
+                IsChartActivated = IsChartActivated,
+                UseSoftwareSnapshot = UseSoftwareSnapshot
             };
 
             var reply = _businessTransactionManager.RunBusinessTransaction(request.TransactionId, request);

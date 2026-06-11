@@ -181,4 +181,9 @@ public class EdcpDataMessagingConfig : IIpDataMessagingConfig
     /// Current data loggers. May contain zero or more loggers. Each message can be logged only by one logger (or none)
     /// </summary>
     public List<IInboundDataLogger> DataLoggers { get; } = [];
+
+    /// <summary>
+    /// Is the data logging activated. Default: false
+    /// </summary>
+    public bool IsDataLoggingActivated { get; set; }
 }

@@ -1,5 +1,6 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
+using Bodoconsult.App.Helpers;
 using Bodoconsult.NetworkCommunication.Helpers;
 using Bodoconsult.NetworkCommunication.Interfaces;
 
@@ -50,7 +51,7 @@ public class SfxpInboundDataMessage : ISortableInboundDataMessage
         set
         {
             _rawMessageData = value;
-            RawMessageDataClearText = DataMessageHelper.GetStringFromArrayCsharpStyle(_rawMessageData);
+            RawMessageDataClearText = ArrayHelper.GetStringFromArrayCsharpStyle(_rawMessageData, false);
         }
     }
 

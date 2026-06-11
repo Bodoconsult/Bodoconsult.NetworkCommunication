@@ -1,5 +1,6 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
+using System.Diagnostics;
 using Bodoconsult.App.BufferPool;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataBlocks;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
@@ -62,7 +63,7 @@ public class SfxpDataBlockCodec : IDataBlockCodec
 
         foreach (var b in config)
         {
-            if (b == 0xF || result.Count == 254)
+            if (b == 0xF || result.Count == 255)
             {
                 break;
             }
@@ -135,7 +136,7 @@ public class SfxpDataBlockCodec : IDataBlockCodec
             return;
         }
 
-        var currentIndex = (byte)0xff;
+        var currentIndex = (byte)0xFF;
 
         var data = db.Data;
 
@@ -153,21 +154,25 @@ public class SfxpDataBlockCodec : IDataBlockCodec
             // 0x9 sync byte
             if (firstByte == SfxpProtocolHelper.SampleCounterSyncByteBlock.SyncByte)
             {
-                i += SfxpProtocolHelper.SampleCounterSyncByteBlock.SyncByte - 1;
+                i += SfxpProtocolHelper.SampleCounterSyncByteBlock.Length- 1;
                 currentIndex = 0;
                 continue;
             }
 
-            if (i + SfxpProtocolHelper.DataChunkLength >= data.Length)
+            if (i + SfxpProtocolHelper.DataChunkLength > data.Length)
             {
                 break;
             }
 
             var chunk = data.Slice(i, SfxpProtocolHelper.DataChunkLength);
 
+            //Debug.Print($"{i} => {currentIndex}");
+
             var dataChunk = _bufferPool.Dequeue();
             dataChunk.Data = chunk;
             dataChunk.Channel = currentIndex == 0xFF ? (byte)0xFF : StreamingConfig[currentIndex];
+
+            //Debug.Print($"{i} => {currentIndex} => {StreamingConfig[currentIndex]}");
 
             if (currentIndex != 255)
             {

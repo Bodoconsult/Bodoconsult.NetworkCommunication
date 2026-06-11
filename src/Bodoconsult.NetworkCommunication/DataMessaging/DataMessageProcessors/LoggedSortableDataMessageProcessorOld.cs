@@ -69,10 +69,14 @@ public class LoggedSortableDataMessageProcessorOld : BaseDataMessageProcessor
             return;
         }
 
-        // Log messages
-        foreach (var msg in messages)
+        // Logging activated?
+        if (Config.IsDataLoggingActivated)
         {
-            LogMessage(msg);
+            // Log messages
+            foreach (var msg in messages)
+            {
+                LogMessage(msg);
+            }
         }
 
         // Now process the messages

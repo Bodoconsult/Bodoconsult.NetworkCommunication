@@ -67,12 +67,25 @@ public class LoggedSortableDataMessageProcessor : BaseDataMessageProcessor
             return;
         }
 
+        // Logging activated?
+        if (Config.IsDataLoggingActivated)
+        {
+            // Now process the messages
+            foreach (var msg in messages)
+            {
+                // Log messages
+                LogMessage(msg);
+
+                // Now forward the message to the message receiver
+                ForwardToMessageReceiver(msg);
+            }
+
+            return;
+        }
+
         // Now process the messages
         foreach (var msg in messages)
         {
-            // Log messages
-            LogMessage(msg);
-
             // Now forward the message to the message receiver
             ForwardToMessageReceiver(msg);
         }

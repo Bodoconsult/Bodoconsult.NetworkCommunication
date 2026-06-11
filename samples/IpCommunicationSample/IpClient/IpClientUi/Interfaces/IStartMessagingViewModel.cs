@@ -48,6 +48,21 @@ public interface IStartMessagingViewModel
     bool Channel4 { get; set; }
 
     /// <summary>
+    /// Use a software defined snapshot
+    /// </summary>
+    bool UseSoftwareSnapshot { get; set; }
+
+    /// <summary>
+    /// Use a software defined snapshot
+    /// </summary>
+    bool IsDataLoggingActivated { get; set; }
+
+    /// <summary>
+    /// Is data presentation as chart activated?
+    /// </summary>
+    bool IsChartActivated { get; set; }
+
+    /// <summary>
     /// Start messaging command
     /// </summary>
     ReactiveCommand<System.Reactive.Unit, System.Reactive.Unit> StartMessagingCommand { get; }

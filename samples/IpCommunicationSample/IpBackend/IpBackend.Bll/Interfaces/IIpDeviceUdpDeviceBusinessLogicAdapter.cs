@@ -33,6 +33,20 @@ public interface IIpDeviceUdpDeviceBusinessLogicAdapter : ISimpleDeviceBusinessL
     /// <returns>Reply</returns>
     IBusinessTransactionReply LoadStreamingConfig(IBusinessTransactionRequestData requestData);
 
+    /// <summary>
+    /// Start data logging
+    /// </summary>
+    /// <param name="requestData">Empty request</param>
+    /// <returns>Reply</returns>
+    IBusinessTransactionReply StartDataLogging(IBusinessTransactionRequestData requestData);
+
+    /// <summary>
+    /// Stop data logging
+    /// </summary>
+    /// <param name="requestData">Empty request</param>
+    /// <returns>Reply</returns>
+    IBusinessTransactionReply StopDataLogging(IBusinessTransactionRequestData requestData);
+
     #endregion
 
 

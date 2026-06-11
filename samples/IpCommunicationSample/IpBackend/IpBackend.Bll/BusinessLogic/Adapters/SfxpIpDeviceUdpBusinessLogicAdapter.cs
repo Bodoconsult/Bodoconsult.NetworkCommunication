@@ -118,6 +118,28 @@ public class SfxpIpDeviceUdpBusinessLogicAdapter : BaseSimpleDeviceBusinessLogic
     }
 
     /// <summary>
+    /// Start data logging
+    /// </summary>
+    /// <param name="requestData">Empty request</param>
+    /// <returns>Reply</returns>
+    public IBusinessTransactionReply StartDataLogging(IBusinessTransactionRequestData requestData)
+    {
+        IpDevice.DataMessagingConfig.IsDataLoggingActivated = true;
+        return new DefaultBusinessTransactionReply();
+    }
+
+    /// <summary>
+    /// Stop data logging
+    /// </summary>
+    /// <param name="requestData">Empty request</param>
+    /// <returns>Reply</returns>
+    public IBusinessTransactionReply StopDataLogging(IBusinessTransactionRequestData requestData)
+    {
+        IpDevice.DataMessagingConfig.IsDataLoggingActivated = false;
+        return new DefaultBusinessTransactionReply();
+    }
+
+    /// <summary>
     /// Send the required client hello to the server
     /// </summary>
     /// <param name="requestData">Current request parameter</param>

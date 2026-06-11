@@ -61,7 +61,10 @@ public class LoggedDataMessageProcessor : BaseDataMessageProcessor
         // Sort messages
 
         // Log messages
-        LogMessage(dataMessage);
+        if (Config.IsDataLoggingActivated)
+        {
+            LogMessage(dataMessage);
+        }
 
         // Now process the messages
         AsyncHelper.FireAndForget2(() =>

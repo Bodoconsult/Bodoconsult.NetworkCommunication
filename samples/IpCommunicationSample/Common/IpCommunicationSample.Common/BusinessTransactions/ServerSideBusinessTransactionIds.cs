@@ -16,4 +16,8 @@ public static class ServerSideBusinessTransactionIds
     public const int CheckConnection = 206;
 
     public const int LoadStreamConfig = 207;
+
+    public const int StartDataLogging = 208;
+
+    public const int StopDataLogging = 209;
 }

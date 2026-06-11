@@ -15,6 +15,21 @@ public class StartMessagingBusinessTransactionRequestData : BaseBusinessTransact
     public bool Snapshot { get; set; }
 
     /// <summary>
+    /// Use a software defined snapshot
+    /// </summary>
+    public bool UseSoftwareSnapshot { get; set; }
+
+    /// <summary>
+    /// Use a software defined snapshot
+    /// </summary>
+    public bool IsDataLoggingActivated { get; set; }
+
+    /// <summary>
+    /// Is data presentation as chart activated?
+    /// </summary>
+    public bool IsChartActivated { get; set; }
+
+    /// <summary>
     /// Show channel 1?
     /// </summary>
     public bool Channel1 { get; set; }

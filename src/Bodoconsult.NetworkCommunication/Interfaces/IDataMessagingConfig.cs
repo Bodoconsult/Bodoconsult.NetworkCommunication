@@ -163,5 +163,10 @@ public interface IDataMessagingConfig
     /// </summary>
     List<IInboundDataLogger> DataLoggers { get; }
 
+    /// <summary>
+    /// Is the data logging activated
+    /// </summary>
+    bool IsDataLoggingActivated { get; set; }
+
     #endregion
 }

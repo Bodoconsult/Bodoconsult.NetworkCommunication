@@ -50,6 +50,21 @@ public class FakeStartMessagingViewModel : IStartMessagingViewModel
     public bool Channel4 { get; set; }
 
     /// <summary>
+    /// Use a software defined snapshot
+    /// </summary>
+    public bool UseSoftwareSnapshot { get; set; }
+
+    /// <summary>
+    /// Use a software defined snapshot
+    /// </summary>
+    public bool IsDataLoggingActivated { get; set; }
+
+    /// <summary>
+    /// Is data presentation as chart activated?
+    /// </summary>
+    public bool IsChartActivated { get; set; }
+
+    /// <summary>
     /// Start messaging command
     /// </summary>
     public ReactiveCommand<Unit, Unit> StartMessagingCommand { get; set; } = null!;

@@ -7,6 +7,7 @@ using Bodoconsult.NetworkCommunication.DataMessaging.DataMessageProcessingPackag
 using Bodoconsult.NetworkCommunication.Devices.Configurators;
 using Bodoconsult.NetworkCommunication.Interfaces;
 using IpBackend.Bll.BusinessLogic.AdapterFactories;
+using IpBackend.Bll.Interfaces;
 
 namespace IpBackend.Bll.Communication;
 
@@ -95,11 +96,13 @@ public class IpDeviceUdpClientManager : ISimpleDeviceManager
         config.AnswerWithAcknowledgement = false;
         config.WaitForAcknowledgement = false;
 
-        CreateLoggerChannel(0x0, ipAddress, config, "Channel1");
-        CreateLoggerChannel(0x1, ipAddress, config, "Channel2");
-        CreateLoggerChannel(0x2, ipAddress, config, "Channel3");
-        CreateLoggerChannel(0x3, ipAddress, config, "Channel4");
-        CreateLoggerChannel(0xC, ipAddress, config, "ADD");
+        var fileSize = ((IBackendAppGlobals)_appGlobals).MaxDataLoggingFileSize;
+
+        CreateLoggerChannel(0x0, ipAddress, config, "Channel1", fileSize);
+        CreateLoggerChannel(0x1, ipAddress, config, "Channel2", fileSize);
+        CreateLoggerChannel(0x2, ipAddress, config, "Channel3", fileSize);
+        CreateLoggerChannel(0x3, ipAddress, config, "Channel4", fileSize);
+        CreateLoggerChannel(0xC, ipAddress, config, "ADD", fileSize);
 
 
         // Create messaging package
@@ -120,7 +123,7 @@ public class IpDeviceUdpClientManager : ISimpleDeviceManager
         DeviceBusinessLogicAdapter = dbla;
     }
 
-    private static void CreateLoggerChannel(byte channel, string ipAddress, IDataMessagingConfig config, string channelName)
+    private static void CreateLoggerChannel(byte channel, string ipAddress, IDataMessagingConfig config, string channelName, long size)
     {
 
         config.AppLogger.LogInformation($"{config.LoggerId}: storing bin data for {channelName} to {config.DataLoggingPath}");
@@ -133,7 +136,8 @@ public class IpDeviceUdpClientManager : ISimpleDeviceManager
             FileName = config.DataLoggingFileName,
             TargetPath = config.DataLoggingPath,
             CacheSize = 50,
-            FileExtension = "bin"
+            FileExtension = "bin",
+            MaxFileSize = size
         };
 
         var logger = new SfxpDataChunkInboundDataLogger(es)

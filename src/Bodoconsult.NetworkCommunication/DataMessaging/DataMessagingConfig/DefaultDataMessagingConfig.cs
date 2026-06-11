@@ -153,6 +153,11 @@ public class DefaultDataMessagingConfig: IIpDataMessagingConfig
     public List<IInboundDataLogger> DataLoggers { get; } = [];
 
     /// <summary>
+    /// Is the data logging activated. Default: false
+    /// </summary>
+    public bool IsDataLoggingActivated { get; set; }
+
+    /// <summary>
     /// Should an acknowledgement be sent if a request message is received
     /// </summary>
     public bool AnswerWithAcknowledgement { get; set; }

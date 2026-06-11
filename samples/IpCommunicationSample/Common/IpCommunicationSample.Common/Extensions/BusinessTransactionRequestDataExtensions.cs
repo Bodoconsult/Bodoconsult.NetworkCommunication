@@ -20,13 +20,16 @@ public static class BusinessTransactionRequestDataExtensions
             data.Channel1 ? One : Zero, 
             data.Channel2 ? One : Zero, 
             data.Channel3 ? One : Zero,
-            data.Channel4 ? One : Zero
+            data.Channel4 ? One : Zero,
+            data.IsDataLoggingActivated ? One: Zero,
+            data.IsChartActivated ? One: Zero,
+            data.UseSoftwareSnapshot ? One : Zero,
         ];
     }
 
     public static StartMessagingBusinessTransactionRequestData ToStartMessagingReportBusinessTransactionRequestData(this Memory<byte> data)
     {
-        if (data.Length < 5)
+        if (data.Length < 8)
         {
             throw new ArgumentException($"data to short for conversion to {nameof(StartMessagingBusinessTransactionRequestData)}");
         }
@@ -36,7 +39,10 @@ public static class BusinessTransactionRequestDataExtensions
             Channel1 = data.Slice(1,1).Span[0] == 0x1,
             Channel2 = data.Slice(2, 1).Span[0] == 0x1,
             Channel3 = data.Slice(3, 1).Span[0] == 0x1,
-            Channel4 = data.Slice(4, 1).Span[0] == 0x1
+            Channel4 = data.Slice(4, 1).Span[0] == 0x1,
+            IsDataLoggingActivated = data.Slice(5, 1).Span[0] == 0x1,
+            IsChartActivated = data.Slice(6, 1).Span[0] == 0x1,
+            UseSoftwareSnapshot = data.Slice(7, 1).Span[0] == 0x1
         };
 
         return result;

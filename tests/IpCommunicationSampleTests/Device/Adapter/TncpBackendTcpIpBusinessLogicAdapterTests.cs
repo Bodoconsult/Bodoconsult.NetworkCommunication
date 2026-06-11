@@ -24,7 +24,7 @@ internal class TncpBackendTcpIpBusinessLogicAdapterTests
         // Assert
         using (Assert.EnterMultipleScope())
         {
-            Assert.That(result.Length, Is.EqualTo(6));
+            Assert.That(result.Length, Is.EqualTo(254));
             Assert.That(result[0], Is.Zero);
             Assert.That(result[1], Is.EqualTo(1));
             Assert.That(result[2], Is.EqualTo(2));
@@ -44,7 +44,7 @@ internal class TncpBackendTcpIpBusinessLogicAdapterTests
         // Assert
         using (Assert.EnterMultipleScope())
         {
-            Assert.That(result.Length, Is.EqualTo(5));
+            Assert.That(result.Length, Is.EqualTo(254));
             Assert.That(result[0], Is.Zero);
             Assert.That(result[1], Is.EqualTo(1));
             Assert.That(result[2], Is.EqualTo(3));

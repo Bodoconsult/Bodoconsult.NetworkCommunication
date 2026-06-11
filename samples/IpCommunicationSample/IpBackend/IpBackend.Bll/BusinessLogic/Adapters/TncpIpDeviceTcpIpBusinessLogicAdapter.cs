@@ -2,6 +2,7 @@
 
 using Bodoconsult.App.Abstractions.Interfaces;
 using Bodoconsult.App.BusinessTransactions.Replies;
+using Bodoconsult.App.BusinessTransactions.RequestData;
 using Bodoconsult.App.Helpers;
 using Bodoconsult.App.Interfaces;
 using Bodoconsult.NetworkCommunication.BusinessLogicAdapters;
@@ -133,6 +134,8 @@ public class TncpIpDeviceTcpIpBusinessLogicAdapter : BaseStateMachineDeviceBusin
                 };
             }
 
+            StartLogging();
+
             ArgumentNullException.ThrowIfNull(Device);
             ArgumentNullException.ThrowIfNull(StateFactory, "StateFactory is null. Call LoadStateFactory() before!");
             ArgumentNullException.ThrowIfNull(OrderFactory);
@@ -166,6 +169,24 @@ public class TncpIpDeviceTcpIpBusinessLogicAdapter : BaseStateMachineDeviceBusin
                 ExceptionMessage = e.ToString()
             };
         }
+    }
+
+    private void StartLogging()
+    {
+        var request = new EmptyBusinessTransactionRequestData
+        {
+            TransactionId = ServerSideBusinessTransactionIds.StartDataLogging
+        };
+        _businessTransactionManager.RunBusinessTransaction(ServerSideBusinessTransactionIds.StartDataLogging, request);
+    }
+
+    private void StopLogging()
+    {
+        var request = new EmptyBusinessTransactionRequestData
+        {
+            TransactionId = ServerSideBusinessTransactionIds.StopDataLogging
+        };
+        _businessTransactionManager.RunBusinessTransaction(ServerSideBusinessTransactionIds.StopDataLogging, request);
     }
 
     ///// <summary>
@@ -215,6 +236,8 @@ public class TncpIpDeviceTcpIpBusinessLogicAdapter : BaseStateMachineDeviceBusin
             ArgumentNullException.ThrowIfNull(Device);
             ArgumentNullException.ThrowIfNull(StateFactory, "StateFactory is null. Call LoadStateFactory() before!");
             ArgumentNullException.ThrowIfNull(OrderFactory);
+
+            StartLogging();
 
             const string stateName = DefaultStateNames.DeviceStartSnapshotState;
 
@@ -385,6 +408,9 @@ public class TncpIpDeviceTcpIpBusinessLogicAdapter : BaseStateMachineDeviceBusin
             // Now create the state
             CreateAndRegisterState(Device, StateFactory, jobConfig);
 
+            // Stop logging now
+            StopLogging();
+
             return new DefaultBusinessTransactionReply
             {
                 RequestData = request
@@ -412,6 +438,7 @@ public class TncpIpDeviceTcpIpBusinessLogicAdapter : BaseStateMachineDeviceBusin
         {
             ArgumentNullException.ThrowIfNull(Device);
             ArgumentNullException.ThrowIfNull(StateFactory, "StateFactory is null. Call LoadStateFactory() before!");
+
             ArgumentNullException.ThrowIfNull(OrderFactory);
 
             const string stateName = DefaultStateNames.DeviceStopMessagingState;
@@ -438,6 +465,9 @@ public class TncpIpDeviceTcpIpBusinessLogicAdapter : BaseStateMachineDeviceBusin
 
             // Now create the state
             CreateAndRegisterState(Device, StateFactory, jobConfig);
+
+            // Stop logging now
+            StopLogging();
 
             return new DefaultBusinessTransactionReply
             {

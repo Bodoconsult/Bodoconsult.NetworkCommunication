@@ -5,13 +5,14 @@ using Bodoconsult.App.Abstractions.Delegates;
 using Bodoconsult.App.Abstractions.DependencyInjection;
 using Bodoconsult.App.Abstractions.Interfaces;
 using Bodoconsult.App.Logging;
+using IpBackend.Bll.Interfaces;
 
 namespace IpBackend.Bll.App;
 
 /// <summary>
 /// App global values
 /// </summary>
-public class Globals : IAppGlobals
+public class Globals : IBackendAppGlobals
 {
 
     #region Singleton factory
@@ -162,4 +163,9 @@ public class Globals : IAppGlobals
     /// Externally registered version
     /// </summary>
     public string? ProductVersion { get; set; }
+
+    /// <summary>
+    /// The maximum filesize of a data logging file in bytes
+    /// </summary>
+    public long MaxDataLoggingFileSize { get; set; } = 1000000000;
 }

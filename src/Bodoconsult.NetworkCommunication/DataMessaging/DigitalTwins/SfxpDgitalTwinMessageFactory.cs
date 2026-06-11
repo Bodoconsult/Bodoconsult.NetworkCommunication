@@ -1,5 +1,6 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
+using System.Diagnostics;
 using Bodoconsult.NetworkCommunication.Helpers;
 using Bodoconsult.NetworkCommunication.Interfaces;
 
@@ -12,20 +13,18 @@ public class SfxpDigitalTwinMessageFactory : IDigitalTwinMessageFactory
 {
     private long _messageId;
     private int _lastChunkId;
-    private int _syncByteCounter;
-    private int _lastSampleCounter;
+    private int _syncByteCounter = -1;
+    private int _lastSampleCounter = -1;
 
     /// <summary>
     /// The interval for sending sample counter instead of regular sync byte
     /// </summary>
     public double SendSampleCounterInterval { get; set; } = 5.0;
 
-
     /// <summary>
     /// The number of messages created
     /// </summary>
     public int NumberOfMessagesCreated { get; set; } = 10;
-
 
     /// <summary>
     /// Generate a set of messages as defined with <see cref="NumberOfMessagesCreated"/>
@@ -120,14 +119,18 @@ public class SfxpDigitalTwinMessageFactory : IDigitalTwinMessageFactory
         SyncByteDefinition sd;
         byte[] syncBytes;
 
+        _syncByteCounter++;
+
         //var test = _lastSampleCounter % SendSampleCounterInterval;
-        if (_syncByteCounter >= SendSampleCounterInterval && _syncByteCounter % SendSampleCounterInterval < 0.0001)
+        if (_syncByteCounter >= SendSampleCounterInterval && (_syncByteCounter) % SendSampleCounterInterval < 0.0001)
         {
             //Trace.TraceInformation($"1dS: {_syncByteCounter} // {_lastSampleCounter}");
             // Send sample counter
-            sd = SfxpProtocolHelper.RegularSyncByte;
-            syncBytes = [sd.SyncByte, 0x1, 0x1, sd.SyncByte, 0x1, 0x1, sd.SyncByte, 0x1, 0x1, sd.SyncByte, 0x1, 0x1];
-            _lastSampleCounter = _syncByteCounter;
+
+            Debug.Print($"Sample sync byte: {_syncByteCounter} // {_lastSampleCounter}  // {(_syncByteCounter) % SendSampleCounterInterval}");
+            sd = SfxpProtocolHelper.SampleCounterSyncByteBlock;
+            syncBytes = [sd.SyncByte, 0x1, sd.SyncByte, 0x1, sd.SyncByte, 0x1, sd.SyncByte, 0x1];
+            _lastSampleCounter = _syncByteCounter ;
         }
         else
         {
@@ -135,26 +138,28 @@ public class SfxpDigitalTwinMessageFactory : IDigitalTwinMessageFactory
             if (_syncByteCounter > SendSampleCounterInterval && _lastSampleCounter + 1 == _syncByteCounter)
             {
                 //Trace.TraceInformation($"2dS: {_syncByteCounter} // {_lastSampleCounter}");
-                sd = SfxpProtocolHelper.RegularSyncByte;
-                syncBytes = [sd.SyncByte, 0x1, 0x1, sd.SyncByte, 0x1, 0x1, sd.SyncByte, 0x1, 0x1, sd.SyncByte, 0x1, 0x1];
+                Debug.Print($"Repeat sample sync byte:  {_syncByteCounter} // {_lastSampleCounter}");
+                sd = SfxpProtocolHelper.SampleCounterSyncByteBlock;
+                syncBytes = [sd.SyncByte, 0x2, sd.SyncByte, 0x2, sd.SyncByte, 0x2, sd.SyncByte, 0x2];
+                _lastSampleCounter = _syncByteCounter;
             }
             else
             {
                 //Trace.TraceInformation($"N: {_syncByteCounter} // {_lastSampleCounter}");
                 // Normal sync byte
-                sd = SfxpProtocolHelper.SampleCounterSyncByteBlock;
+                Debug.Print($"Normal sync byte: {_syncByteCounter} // {_lastSampleCounter}");
+                sd = SfxpProtocolHelper.RegularSyncByte;
                 syncBytes = [sd.SyncByte];
             }
         }
 
         if (data.Count > SfxpProtocolHelper.MaximumMessageLength - sd.Length)
         {
+            _syncByteCounter--;
             return true;
         }
 
         data.AddRange(syncBytes);
-
-        _syncByteCounter++;
         return false;
     }
 
