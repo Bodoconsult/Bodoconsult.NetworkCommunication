@@ -1,5 +1,6 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
+using System.Diagnostics;
 using Bodoconsult.App.Abstractions.Helpers;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataBlockCodecs;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataBlocks;
@@ -132,10 +133,14 @@ internal class SfxpDataBlockCodecTests
         // Arrange 
         var data = new List<byte> { 0x73 };
 
-        var config = new byte[256];
-        config[254] = 0xc;
-        config[255] = 0xf;
-        
+        //var config = new byte[256];
+        //config[254] = 0xc;
+        //config[255] = 0xf;
+
+        var config = new byte[254];
+        config[252] = 0xc;
+        config[253] = 0xf;
+
 
         var msg = ResourceHelper.GetByteResource($"Bodoconsult.NetworkCommunication.Tests.Resources.sfx{number}.bin");
         data.AddRange(msg.AsMemory(7).Span);
@@ -178,25 +183,26 @@ internal class SfxpDataBlockCodecTests
         }
     }
 
-    [TestCase(0,new byte[]{}, TestName = "DecodeDataMessage_RealConfigRealData_Sfx0_MessageDecoded")]
-    [TestCase(1,new byte[] { }, TestName = "DecodeDataMessage_RealConfigRealData_Sfx1_essageDecoded")]
-    [TestCase(2,new byte[] { }, TestName = "DecodeDataMessage_RealConfigRealData_Sfx2_MessageDecoded")]
-    [TestCase(3,new byte[] { }, TestName = "DecodeDataMessage_RealConfigRealData_Sfx3_MessageDecoded")]
-    [TestCase(4,new byte[] { }, TestName = "DecodeDataMessage_RealConfigRealData_Sfx4_MessageDecoded")]
-    [TestCase(5, new byte[] { }, TestName = "DecodeDataMessage_RealConfigRealData_Sfx5_MessageDecoded")]
-    [TestCase(6,new byte[] { }, TestName = "DecodeDataMessage_RealConfigRealData_Sfx6_MessageDecoded")]
-    [TestCase(7, new byte[] { }, TestName = "DecodeDataMessage_RealConfigRealData_Sfx7_MessageDecoded")]
-    [TestCase(8, new byte[] { }, TestName = "DecodeDataMessage_RealConfigRealData_Sfx8_MessageDecoded")]
-    [TestCase(9, new byte[] { }, TestName = "DecodeDataMessage_RealConfigRealData_Sfx9_MessageDecoded")]
-    public void DecodeDataMessage_RealConfigRealData_Sfx_MessageDecoded(int counter, byte[] msg)
+    [TestCase("0", TestName = "DecodeDataMessage_RealWorldSfx0_MessageDecoded")]
+    [TestCase("1", TestName = "DecodeDataMessage_RealWorldSfx1_MessageDecoded")]
+    [TestCase("2", TestName = "DecodeDataMessage_RealWorldSfx2_MessageDecoded")]
+    [TestCase("3", TestName = "DecodeDataMessage_RealWorldSfx3_MessageDecoded")]
+    [TestCase("4", TestName = "DecodeDataMessage_RealWorldSfx4_MessageDecoded")]
+    [TestCase("5", TestName = "DecodeDataMessage_RealWorldSfx5_MessageDecoded")]
+    [TestCase("6", TestName = "DecodeDataMessage_RealWorldSfx6_MessageDecoded")]
+    [TestCase("7", TestName = "DecodeDataMessage_RealWorldSfx7_MessageDecoded")]
+    [TestCase("8", TestName = "DecodeDataMessage_RealWorldSfx8_MessageDecoded")]
+    [TestCase("9", TestName = "DecodeDataMessage_RealWorldSfx9_MessageDecoded")]
+    public void DecodeDataMessage_SfxRealWorld_MessageDecoded(string number)
     {
         // Arrange 
         var data = new List<byte> { 0x73 };
 
-        var config = new byte[254];
-        config[252] = 0xc;
-        config[253] = 0xf;
+        var config = new byte[256];
+        config[254] = 0xc;
+        config[255] = 0xf;
 
+        var msg = ResourceHelper.GetByteResource($"Bodoconsult.NetworkCommunication.Tests.Resources.sfx{number}RealWorld.bin");
         data.AddRange(msg.AsMemory(7).Span);
 
         var codec = new SfxpDataBlockCodec();
@@ -215,7 +221,7 @@ internal class SfxpDataBlockCodecTests
             Assert.That(db, Is.Not.Null);
             ArgumentNullException.ThrowIfNull(db);
 
-            if (counter == 0)
+            if (number == "0")
             {
                 Assert.That(db.Data.Span[0], Is.EqualTo(DeviceCommunicationBasics.Null));
             }
@@ -227,7 +233,6 @@ internal class SfxpDataBlockCodecTests
             Assert.That(db.DataChunks.Any(x => x.Channel == 0xc), Is.True);
             Assert.That(db.DataChunks.Any(x => x.Channel == 255), Is.False);
 
-
             // Return chunks to pool
             foreach (var chunk in db.DataChunks)
             {
@@ -235,5 +240,33 @@ internal class SfxpDataBlockCodecTests
             }
             db.DataChunks.Clear();
         }
+    }
+
+    [Explicit]
+    [Test]
+    public void CreateTestData()
+    {
+        // Arrange 
+        var index = 0;
+
+        var data = new byte[]
+        {
+
+        };
+
+        // Act  
+        WriteToFile(index, data);
+
+        // Assert
+        Assert.Pass();
+    }
+
+    private static void WriteToFile(int index, byte[] message)
+    {
+        var filePath = $"C:\\temp\\sfx{index}RealWorld.bin";
+
+        Debug.Print($"Length: {message.Length}B");
+
+        File.WriteAllBytes(filePath, message);
     }
 }

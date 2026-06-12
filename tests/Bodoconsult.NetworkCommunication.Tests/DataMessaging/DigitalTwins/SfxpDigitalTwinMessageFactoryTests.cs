@@ -25,7 +25,7 @@ internal class SfxpDigitalTwinMessageFactoryTests
         for (var index = 0; index < result.Count; index++)
         {
             var message = result[index].ToArray();
-            Debug.Print($"{message.Length} bytes");
+            Debug.Print($"{message.Length}B");
             Debug.Print(ArrayHelper.GetStringFromArrayCsharpStyle(message, false));
             WriteToFile(index, message);
         }

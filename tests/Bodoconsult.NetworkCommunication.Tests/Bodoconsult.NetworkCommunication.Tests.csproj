@@ -24,15 +24,25 @@
     <None Remove="appsettings.json" />
     <None Remove="log4net.config" />
     <None Remove="Resources\sfx0.bin" />
+    <None Remove="Resources\sfx0RealWorld.bin" />
     <None Remove="Resources\sfx1.bin" />
+    <None Remove="Resources\sfx1RealWorld.bin" />
     <None Remove="Resources\sfx2.bin" />
+    <None Remove="Resources\sfx2RealWorld.bin" />
     <None Remove="Resources\sfx3.bin" />
+    <None Remove="Resources\sfx3RealWorld.bin" />
     <None Remove="Resources\sfx4.bin" />
+    <None Remove="Resources\sfx4RealWorld.bin" />
     <None Remove="Resources\sfx5.bin" />
+    <None Remove="Resources\sfx5RealWorld.bin" />
     <None Remove="Resources\sfx6.bin" />
+    <None Remove="Resources\sfx6RealWorld.bin" />
     <None Remove="Resources\sfx7.bin" />
+    <None Remove="Resources\sfx7RealWorld.bin" />
     <None Remove="Resources\sfx8.bin" />
+    <None Remove="Resources\sfx8RealWorld.bin" />
     <None Remove="Resources\sfx9.bin" />
+    <None Remove="Resources\sfx9RealWorld.bin" />
   </ItemGroup>
 
   <ItemGroup>
@@ -46,15 +56,25 @@
 
   <ItemGroup>
     <EmbeddedResource Include="Resources\sfx0.bin" />
+    <EmbeddedResource Include="Resources\sfx0RealWorld.bin" />
     <EmbeddedResource Include="Resources\sfx1.bin" />
+    <EmbeddedResource Include="Resources\sfx1RealWorld.bin" />
     <EmbeddedResource Include="Resources\sfx2.bin" />
+    <EmbeddedResource Include="Resources\sfx2RealWorld.bin" />
     <EmbeddedResource Include="Resources\sfx3.bin" />
+    <EmbeddedResource Include="Resources\sfx3RealWorld.bin" />
     <EmbeddedResource Include="Resources\sfx4.bin" />
+    <EmbeddedResource Include="Resources\sfx4RealWorld.bin" />
     <EmbeddedResource Include="Resources\sfx5.bin" />
+    <EmbeddedResource Include="Resources\sfx5RealWorld.bin" />
     <EmbeddedResource Include="Resources\sfx6.bin" />
+    <EmbeddedResource Include="Resources\sfx6RealWorld.bin" />
     <EmbeddedResource Include="Resources\sfx7.bin" />
+    <EmbeddedResource Include="Resources\sfx7RealWorld.bin" />
     <EmbeddedResource Include="Resources\sfx8.bin" />
+    <EmbeddedResource Include="Resources\sfx8RealWorld.bin" />
     <EmbeddedResource Include="Resources\sfx9.bin" />
+    <EmbeddedResource Include="Resources\sfx9RealWorld.bin" />
   </ItemGroup>
 
   <ItemGroup>

@@ -247,7 +247,7 @@
 //            return;
 //        }
 
-//        DataMessagingConfig.MonitorLogger.LogInformation($"sent {command.Length} bytes to device");
+//        DataMessagingConfig.MonitorLogger.LogInformation($"sent {command.Length}B to device");
 //    }
 
 //    /// <summary>

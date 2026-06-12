@@ -85,7 +85,7 @@ public class BtcpRequestOutboundDataMessage : IOutboundBusinessTransactionDataMe
     /// <returns>Info string</returns>
     public string ToInfoString()
     {
-        return $"BtcpOutboundDataMessage ID {MessageId} ({RawMessageData.Length} bytes) BT {BusinessTransactionId} / {BusinessTransactionUid}: {RawMessageDataClearText}";
+        return $"BtcpOutboundDataMessage ID {MessageId} ({RawMessageData.Length}B) BT {BusinessTransactionId} / {BusinessTransactionUid}: {RawMessageDataClearText}";
     }
 
     /// <summary>
@@ -94,6 +94,6 @@ public class BtcpRequestOutboundDataMessage : IOutboundBusinessTransactionDataMe
     /// <returns>Info string</returns>
     public string ToShortInfoString()
     {
-        return $"BtcpOutboundDataMessage ID {MessageId} ({RawMessageData.Length} bytes) BT {BusinessTransactionId} / {BusinessTransactionUid}";
+        return $"BtcpOutboundDataMessage ID {MessageId} ({RawMessageData.Length}B) BT {BusinessTransactionId} / {BusinessTransactionUid}";
     }
 }

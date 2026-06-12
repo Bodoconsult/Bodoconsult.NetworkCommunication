@@ -47,11 +47,11 @@ public abstract class BaseDuplexIoSender : IDuplexIoSender
             }
 
 #if DEBUG
-            DataMessagingConfig.MonitorLogger.LogDebug($"{LoggerId}{message.ToShortInfoString()} sent {sent.BytesSent} bytes with result {sent.ProcessExecutionResult}");
+            DataMessagingConfig.MonitorLogger.LogDebug($"{LoggerId}{message.ToShortInfoString()} sent {sent.BytesSent}B with result {sent.ProcessExecutionResult}");
 #endif
 
 //#if DEBUG
-//            msg = $"Message {message.ToShortInfoString()} sent: {sent.BytesSent} bytes";
+//            msg = $"Message {message.ToShortInfoString()} sent: {sent.BytesSent}B";
 //            DataMessagingConfig.MonitorLogger.LogDebug(msg);
 //#endif
             AsyncHelper.FireAndForget(() =>

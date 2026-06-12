@@ -18,7 +18,7 @@ public interface IDhcpServerPacket
     DhcpServerHardwareType HardwareAddressType { get; }
         
     /// <summary>
-    /// Length (in bytes) of the Hardware Address (HLEN)
+    /// Length (inB) of the Hardware Address (HLEN)
     /// </summary>
     byte HardwareAddressLength { get; }
         

@@ -154,19 +154,19 @@ public class SfxpDataBlockCodec : IDataBlockCodec
             // 0x9 sync byte
             if (firstByte == SfxpProtocolHelper.SampleCounterSyncByteBlock.SyncByte)
             {
-                i += SfxpProtocolHelper.SampleCounterSyncByteBlock.Length- 1;
+                i += SfxpProtocolHelper.SampleCounterSyncByteBlock.Length - 1;
                 currentIndex = 0;
                 continue;
             }
 
-            if (i + SfxpProtocolHelper.DataChunkLength > data.Length)
-            {
-                break;
-            }
+            //if (i + SfxpProtocolHelper.DataChunkLength > data.Length)
+            //{
+            //    break;
+            //}
 
             var chunk = data.Slice(i, SfxpProtocolHelper.DataChunkLength);
 
-            //Debug.Print($"{i} => {currentIndex}");
+            Debug.Print($"{i} => {currentIndex} => Channel {(currentIndex == 0xFF ? (byte)0xFF : StreamingConfig[currentIndex])}");
 
             var dataChunk = _bufferPool.Dequeue();
             dataChunk.Data = chunk;
@@ -176,10 +176,13 @@ public class SfxpDataBlockCodec : IDataBlockCodec
 
             if (currentIndex != 255)
             {
-                currentIndex++;
                 if (currentIndex == _streamingConfigLength)
                 {
                     currentIndex = 0;
+                }
+                else
+                {
+                    currentIndex++;
                 }
             }
 

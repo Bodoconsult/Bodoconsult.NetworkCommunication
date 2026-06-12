@@ -16,7 +16,7 @@ public interface IDhcpServerPacketWritable : IDhcpServerPacket
     new DhcpServerHardwareType HardwareAddressType { get; set; }
 
     /// <summary>
-    /// Length (in bytes) of the Hardware Address (HLEN)
+    /// Length (inB) of the Hardware Address (HLEN)
     /// </summary>
     new byte HardwareAddressLength { get; set; }
 

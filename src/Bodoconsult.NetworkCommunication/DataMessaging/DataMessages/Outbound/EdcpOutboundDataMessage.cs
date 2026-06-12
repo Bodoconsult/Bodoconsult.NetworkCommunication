@@ -72,7 +72,7 @@ public class EdcpOutboundDataMessage : IOutboundDataMessage
     /// <returns>Info string</returns>
     public string ToInfoString()
     {
-        return $"EdcpOutboundDataMessage ID {MessageId} ({RawMessageData.Length} bytes) Block {BlockCode}: {RawMessageDataClearText}";
+        return $"EdcpOutboundDataMessage ID {MessageId} ({RawMessageData.Length}B) Block {BlockCode}: {RawMessageDataClearText}";
     }
 
     /// <summary>
@@ -81,7 +81,7 @@ public class EdcpOutboundDataMessage : IOutboundDataMessage
     /// <returns>Info string</returns>
     public string ToShortInfoString()
     {
-        return $"EdcpOutboundDataMessage ID {MessageId} ({RawMessageData.Length} bytes) Block {BlockCode}";
+        return $"EdcpOutboundDataMessage ID {MessageId} ({RawMessageData.Length}B) Block {BlockCode}";
     }
 
     /// <summary>

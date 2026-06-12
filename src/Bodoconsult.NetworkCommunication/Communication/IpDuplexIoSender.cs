@@ -106,7 +106,7 @@ public class IpDuplexIoSender : BaseDuplexIoSender
     //        if (sent == 0)
     //        {
     //            //Trace.TraceInformation(
-    //            //    $"Y:Sent: {sent} // {isSent}  // {message.RawMessageData.Length} bytes // {ArrayHelper.GetStringFromArrayCsharpStyle(message.RawMessageData)}");
+    //            //    $"Y:Sent: {sent} // {isSent}  // {message.RawMessageData.Length}B// {ArrayHelper.GetStringFromArrayCsharpStyle(message.RawMessageData)}");
     //            return (sent, false);
     //        }
 

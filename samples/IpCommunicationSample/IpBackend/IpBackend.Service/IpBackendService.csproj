@@ -12,7 +12,6 @@
 		<DebugType>embedded</DebugType>
 		<IncludeNativeLibrariesForSelfExtract>true</IncludeNativeLibrariesForSelfExtract>
 		<ErrorOnDuplicatePublishOutputFiles>false</ErrorOnDuplicatePublishOutputFiles>
-		<Version>0.0.6</Version>
 		<ServerGarbageCollection>true</ServerGarbageCollection>
 	</PropertyGroup>
 

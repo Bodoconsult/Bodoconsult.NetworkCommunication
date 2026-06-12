@@ -127,7 +127,7 @@ public class SfxpDigitalTwinMessageFactory : IDigitalTwinMessageFactory
             //Trace.TraceInformation($"1dS: {_syncByteCounter} // {_lastSampleCounter}");
             // Send sample counter
 
-            Debug.Print($"Sample sync byte: {_syncByteCounter} // {_lastSampleCounter}  // {(_syncByteCounter) % SendSampleCounterInterval}");
+            //Debug.Print($"Sample sync byte: {_syncByteCounter} // {_lastSampleCounter}  // {(_syncByteCounter) % SendSampleCounterInterval}");
             sd = SfxpProtocolHelper.SampleCounterSyncByteBlock;
             syncBytes = [sd.SyncByte, 0x1, sd.SyncByte, 0x1, sd.SyncByte, 0x1, sd.SyncByte, 0x1];
             _lastSampleCounter = _syncByteCounter ;
@@ -138,7 +138,7 @@ public class SfxpDigitalTwinMessageFactory : IDigitalTwinMessageFactory
             if (_syncByteCounter > SendSampleCounterInterval && _lastSampleCounter + 1 == _syncByteCounter)
             {
                 //Trace.TraceInformation($"2dS: {_syncByteCounter} // {_lastSampleCounter}");
-                Debug.Print($"Repeat sample sync byte:  {_syncByteCounter} // {_lastSampleCounter}");
+                //Debug.Print($"Repeat sample sync byte:  {_syncByteCounter} // {_lastSampleCounter}");
                 sd = SfxpProtocolHelper.SampleCounterSyncByteBlock;
                 syncBytes = [sd.SyncByte, 0x2, sd.SyncByte, 0x2, sd.SyncByte, 0x2, sd.SyncByte, 0x2];
                 _lastSampleCounter = _syncByteCounter;
@@ -147,7 +147,7 @@ public class SfxpDigitalTwinMessageFactory : IDigitalTwinMessageFactory
             {
                 //Trace.TraceInformation($"N: {_syncByteCounter} // {_lastSampleCounter}");
                 // Normal sync byte
-                Debug.Print($"Normal sync byte: {_syncByteCounter} // {_lastSampleCounter}");
+                //Debug.Print($"Normal sync byte: {_syncByteCounter} // {_lastSampleCounter}");
                 sd = SfxpProtocolHelper.RegularSyncByte;
                 syncBytes = [sd.SyncByte];
             }

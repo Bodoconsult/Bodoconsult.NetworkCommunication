@@ -76,7 +76,7 @@ public class EdcpInboundDataMessage : IInboundDataMessage
     /// <returns>Info string</returns>
     public string ToInfoString()
     {
-        return $"TncpInboundDataMessage ID {MessageId} Block {BlockCode} ({RawMessageData.Length} bytes) {RawMessageDataClearText}";
+        return $"TncpInboundDataMessage ID {MessageId} Block {BlockCode} ({RawMessageData.Length}B) {RawMessageDataClearText}";
     }
 
     /// <summary>
@@ -85,7 +85,7 @@ public class EdcpInboundDataMessage : IInboundDataMessage
     /// <returns>Info string</returns>
     public string ToShortInfoString()
     {
-        return $"TncpInboundDataMessage ID {MessageId} Block {BlockCode} ({RawMessageData.Length} bytes)";
+        return $"TncpInboundDataMessage ID {MessageId} Block {BlockCode} ({RawMessageData.Length}B)";
     }
 
     /// <summary>

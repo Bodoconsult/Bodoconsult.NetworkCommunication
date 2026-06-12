@@ -100,7 +100,7 @@ public class BtcpReplyOutboundDataMessage : IOutboundBusinessTransactionDataMess
     /// <returns>Info string</returns>
     public string ToInfoString()
     {
-        return $"BtcpReplyOutboundDataMessage ID {MessageId} ({RawMessageData.Length} bytes) BT {BusinessTransactionId} / {BusinessTransactionUid} Error {ErrorCode}: {RawMessageDataClearText}";
+        return $"BtcpReplyOutboundDataMessage ID {MessageId} ({RawMessageData.Length}B) BT {BusinessTransactionId} / {BusinessTransactionUid} Error {ErrorCode}: {RawMessageDataClearText}";
     }
 
     /// <summary>
@@ -109,6 +109,6 @@ public class BtcpReplyOutboundDataMessage : IOutboundBusinessTransactionDataMess
     /// <returns>Info string</returns>
     public string ToShortInfoString()
     {
-        return $"BtcpReplyOutboundDataMessage ID {MessageId} ({RawMessageData.Length} bytes) BT {BusinessTransactionId} / {BusinessTransactionUid} Error {ErrorCode}";
+        return $"BtcpReplyOutboundDataMessage ID {MessageId} ({RawMessageData.Length}B) BT {BusinessTransactionId} / {BusinessTransactionUid} Error {ErrorCode}";
     }
 }

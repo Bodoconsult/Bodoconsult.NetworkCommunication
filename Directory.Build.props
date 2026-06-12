@@ -1,0 +1,14 @@
+<Project>
+	<PropertyGroup>
+		<Version>0.0.7</Version>
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
+		<PackageOutputPath>..\..\packages\</PackageOutputPath>
+		<Copyright>Bodoconsult EDV-Dienstleistungen GmbH</Copyright>
+		<Authors>Robert Leisner</Authors>
+		<Company>Bodoconsult EDV-Dienstleistungen GmbH</Company>
+
+		<RepositoryUrl>https://github.com/Bodoconsult/Bodoconsult.NetworkCommunication</RepositoryUrl>
+		<RepositoryType>git</RepositoryType>
+		<NeutralLanguage>en</NeutralLanguage>
+	</PropertyGroup>
+</Project>
