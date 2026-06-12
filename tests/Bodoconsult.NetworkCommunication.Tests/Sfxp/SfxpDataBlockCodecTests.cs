@@ -119,7 +119,7 @@ internal class SfxpDataBlockCodecTests
     }
 
     [TestCase("0", TestName = "DecodeDataMessage_RealConfig_Sfx0_MessageDecoded")]
-    [TestCase("1", TestName = "DecodeDataMessage_RealConfig_Sfx1_essageDecoded")]
+    [TestCase("1", TestName = "DecodeDataMessage_RealConfig_Sfx1_MessageDecoded")]
     [TestCase("2", TestName = "DecodeDataMessage_RealConfig_Sfx2_MessageDecoded")]
     [TestCase("3", TestName = "DecodeDataMessage_RealConfig_Sfx3_MessageDecoded")]
     [TestCase("4", TestName = "DecodeDataMessage_RealConfig_Sfx4_MessageDecoded")]

@@ -48,7 +48,7 @@ public class SfxpDataBlockCodec : IDataBlockCodec
             lock (_streamingConfigLock)
             {
                 _streamingConfig = value;
-                _streamingConfigLength = value.Length;
+                _streamingConfigLength = value.Length - 1;
             }
         }
     }
@@ -136,7 +136,8 @@ public class SfxpDataBlockCodec : IDataBlockCodec
             return;
         }
 
-        var currentIndex = (byte)0xFF;
+        const byte identifier = 0xFF;
+        var currentIndex = identifier;
 
         var data = db.Data;
 
@@ -166,28 +167,46 @@ public class SfxpDataBlockCodec : IDataBlockCodec
 
             var chunk = data.Slice(i, SfxpProtocolHelper.DataChunkLength);
 
-            Debug.Print($"{i} => {currentIndex} => Channel {(currentIndex == 0xFF ? (byte)0xFF : StreamingConfig[currentIndex])}");
+            //try
+            //{
+            //    Debug.Print($"{i} => {currentIndex} => Channel {(currentIndex == identifier ? identifier : StreamingConfig[currentIndex])} CurrentIndex: {currentIndex}");
+            //}
+            //catch (Exception e)
+            //{
+            //    Console.WriteLine(e);
+            //    throw;
+            //}
+            
 
             var dataChunk = _bufferPool.Dequeue();
             dataChunk.Data = chunk;
-            dataChunk.Channel = currentIndex == 0xFF ? (byte)0xFF : StreamingConfig[currentIndex];
+            dataChunk.Channel = currentIndex == identifier ? identifier : StreamingConfig[currentIndex];
 
             //Debug.Print($"{i} => {currentIndex} => {StreamingConfig[currentIndex]}");
 
-            if (currentIndex != 255)
+            //if (currentIndex == 252)
+            //{
+            //    Debug.Print("Hallo");
+            //}
+
+            if (currentIndex != identifier)
             {
-                if (currentIndex == _streamingConfigLength)
+                if (currentIndex < _streamingConfigLength)
                 {
-                    currentIndex = 0;
+                    currentIndex++;
                 }
                 else
                 {
-                    currentIndex++;
+                    currentIndex = 0;
                 }
             }
 
             db.DataChunks.Add(dataChunk);
             i += SfxpProtocolHelper.DataChunkLength - 1;
+            if (i >= data.Length- SfxpProtocolHelper.DataChunkLength)
+            {
+                break;
+            }
         }
 
         // Now check if the chunks have type 255 0xFF
