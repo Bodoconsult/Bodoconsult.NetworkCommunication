@@ -1,11 +1,9 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
-using Bodoconsult.App.Abstractions.Interfaces;
 using Bodoconsult.App.Abstractions.SyncExecution;
 using Bodoconsult.App.Helpers;
 using Bodoconsult.NetworkCommunication.EnumAndStates;
 using Bodoconsult.NetworkCommunication.Interfaces;
-using System.Collections.Generic;
 using System.Net.Sockets;
 
 namespace Bodoconsult.NetworkCommunication.Communication;

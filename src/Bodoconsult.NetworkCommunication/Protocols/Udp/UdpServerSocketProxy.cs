@@ -202,7 +202,7 @@ public class UdpServerSocketProxy : BaseUpdSocketProxy
         try
         {
             var result = await UdpClient.SendAsync(bytesToSend, SendEndPoint, CancellationTokenSource.Token);
-            Logger.LogInformation($"{LoggerId}sent {result} bytes");
+            Logger.LogInformation($"{LoggerId}sent {result}B");
             return result;
         }
         catch (SocketException socketException)
@@ -240,7 +240,7 @@ public class UdpServerSocketProxy : BaseUpdSocketProxy
         try
         {
             var result = await UdpClient.SendAsync(bytesToSend, SendEndPoint, CancellationTokenSource.Token).AsTask();
-            Logger.LogInformation($"{LoggerId}sent {result} bytes");
+            Logger.LogInformation($"{LoggerId}sent {result}B");
             return result;
         }
         catch (SocketException se)

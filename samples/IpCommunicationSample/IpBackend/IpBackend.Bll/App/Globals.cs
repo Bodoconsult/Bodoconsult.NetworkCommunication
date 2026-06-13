@@ -1,18 +1,17 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
-using Bodoconsult.App;
 using Bodoconsult.App.Abstractions.Delegates;
 using Bodoconsult.App.Abstractions.DependencyInjection;
 using Bodoconsult.App.Abstractions.Interfaces;
 using Bodoconsult.App.Logging;
-using IpBackend.Bll.Interfaces;
+using Microsoft.Extensions.Configuration;
 
 namespace IpBackend.Bll.App;
 
 /// <summary>
 /// App global values
 /// </summary>
-public class Globals : IBackendAppGlobals
+public class Globals : IAppGlobals
 {
 
     #region Singleton factory
@@ -72,7 +71,7 @@ public class Globals : IBackendAppGlobals
     /// <summary>
     /// App start parameter
     /// </summary>
-    public IAppStartParameter AppStartParameter { get; set; } = new ThreeNetworkDevicesAppStartParameter();
+    public IAppStartParameter AppStartParameter { get; set; } = new BackendAppStartParameter();
 
     /// <summary>
     /// Current log data entry factory
@@ -165,7 +164,7 @@ public class Globals : IBackendAppGlobals
     public string? ProductVersion { get; set; }
 
     /// <summary>
-    /// The maximum filesize of a data logging file in bytes
+    /// The current configuration loaded from appsettings.json
     /// </summary>
-    public long MaxDataLoggingFileSize { get; set; } = 1000000000;
+    public IConfigurationRoot? ConfigurationRoot { get; set; }
 }

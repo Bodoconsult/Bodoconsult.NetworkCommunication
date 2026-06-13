@@ -40,7 +40,7 @@ public class IpCommunicationHandler : ICommunicationHandler
         DuplexIo = duplexIo;
         DataMessagingConfig = dataMessagingConfig;
         _monitorLogger = DataMessagingConfig.MonitorLogger;
-        _loggerId = $"{DataMessagingConfig.LoggerId}{(dataMessagingConfig.LoggerId.EndsWith(": ") ? "" : ": ")}IpCommunicationHandler: ";
+        _loggerId = $"{DataMessagingConfig.LoggerId}{(dataMessagingConfig.LoggerId.EndsWith(": ") ? "" : ": ")}";
 
         UpdateDevice();
 

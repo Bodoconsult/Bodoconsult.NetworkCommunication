@@ -6,8 +6,8 @@ using Bodoconsult.NetworkCommunication.DataMessaging.DataLoggers;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessageProcessingPackages;
 using Bodoconsult.NetworkCommunication.Devices.Configurators;
 using Bodoconsult.NetworkCommunication.Interfaces;
+using IpBackend.Bll.App;
 using IpBackend.Bll.BusinessLogic.AdapterFactories;
-using IpBackend.Bll.Interfaces;
 
 namespace IpBackend.Bll.Communication;
 
@@ -89,21 +89,20 @@ public class IpDeviceUdpClientManager : ISimpleDeviceManager
         var config = configurator.DataMessagingConfig;
 
         ArgumentNullException.ThrowIfNull(config);
-
         ArgumentNullException.ThrowIfNull(configurator.DataMessagingConfig);
 
         // No handshakes
         config.AnswerWithAcknowledgement = false;
         config.WaitForAcknowledgement = false;
 
-        var fileSize = ((IBackendAppGlobals)_appGlobals).MaxDataLoggingFileSize;
+        // Create data loggers
+        var fileSize = ((BackendAppStartParameter)_appGlobals.AppStartParameter).MaxDataLoggingFileSize;
 
         CreateLoggerChannel(0x0, ipAddress, config, "Channel1", fileSize);
         CreateLoggerChannel(0x1, ipAddress, config, "Channel2", fileSize);
         CreateLoggerChannel(0x2, ipAddress, config, "Channel3", fileSize);
         CreateLoggerChannel(0x3, ipAddress, config, "Channel4", fileSize);
         CreateLoggerChannel(0xC, ipAddress, config, "ADD", fileSize);
-
 
         // Create messaging package
         configurator.CreateDataMessagingPackage(messageProcessingPackageFactory);
@@ -125,7 +124,6 @@ public class IpDeviceUdpClientManager : ISimpleDeviceManager
 
     private static void CreateLoggerChannel(byte channel, string ipAddress, IDataMessagingConfig config, string channelName, long size)
     {
-
         config.AppLogger.LogInformation($"{config.LoggerId}: storing bin data for {channelName} to {config.DataLoggingPath}");
 
         config.DataLoggingFileName = $"IPDevice_{ipAddress.Replace(".", "_", StringComparison.InvariantCultureIgnoreCase)}_{channelName}";

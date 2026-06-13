@@ -1,6 +1,5 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
-using Bodoconsult.App.Helpers;
 using Bodoconsult.NetworkCommunication.Interfaces;
 
 namespace Bodoconsult.NetworkCommunication.DataMessaging.DataMessageProcessors;
@@ -23,7 +22,7 @@ public class DefaultDataMessageProcessor : BaseDataMessageProcessor
     /// <param name="message">Message to process</param>
     public override void ProcessMessage(IInboundMessage message)
     {
-        var s = $"received {message.MessageId}: {message.RawMessageData.Length} bytes";
+        var s = $"received {message.ToInfoString()}";
         Config.MonitorLogger.LogInformation(s);
 
         Stopped.Reset();

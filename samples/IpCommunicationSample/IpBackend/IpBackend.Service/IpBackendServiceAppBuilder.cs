@@ -1,7 +1,9 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH.  All rights reserved.
 
+using Bodoconsult.App;
 using Bodoconsult.App.Abstractions.Interfaces;
 using Bodoconsult.App.BackgroundService.App;
+using IpBackend.Bll.App;
 using IpBackendService.DiContainerProvider;
 
 namespace IpBackendService;
@@ -32,5 +34,30 @@ public class IpBackendServiceAppBuilder : BaseBackgroundServiceAppBuilder
     {
         var factory = new IpBackendServiceProductionDiContainerServiceProviderPackageFactory(AppGlobals);
         DiContainerServiceProviderPackage = factory.CreateInstance();
+    }
+
+    /// <summary>
+    /// Process the configuration from <see cref="IAppStartParameter.ConfigFile"/>
+    /// </summary>
+    public override void ProcessConfiguration()
+    {
+        // Load basic config
+        base.ProcessConfiguration();
+
+        // Now get the root configuration element
+        var root = AppStartProvider.AppConfigurationProvider.Configuration;
+
+        if (root == null)
+        {
+            return;
+        }
+
+        var section = root.GetSection("AppStartParameter");
+
+        // Get your derived IAppGlobals instance here to access added properties
+        var appStartParams= (BackendAppStartParameter)AppGlobals.AppStartParameter;
+
+        // Now get the requested config elements out of the root config element
+        appStartParams.MaxDataLoggingFileSize = DefaultAppStartProvider.ReadLongProperty(section, "MaxDataLoggingFileSize", appStartParams.MaxDataLoggingFileSize);
     }
 }

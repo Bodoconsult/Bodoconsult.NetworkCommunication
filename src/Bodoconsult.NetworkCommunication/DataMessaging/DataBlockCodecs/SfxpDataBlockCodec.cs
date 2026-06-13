@@ -1,6 +1,5 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
-using System.Diagnostics;
 using Bodoconsult.App.BufferPool;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataBlocks;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
@@ -176,7 +175,7 @@ public class SfxpDataBlockCodec : IDataBlockCodec
             //    Console.WriteLine(e);
             //    throw;
             //}
-            
+
 
             var dataChunk = _bufferPool.Dequeue();
             dataChunk.Data = chunk;
@@ -210,7 +209,7 @@ public class SfxpDataBlockCodec : IDataBlockCodec
         }
 
         // Now check if the chunks have type 255 0xFF
-        var indexMask = _streamingConfigLength - 1;
+        var indexMask = _streamingConfigLength;
         for (var index = db.DataChunks.Count - 1; index >= 0; index--)
         {
             var chunk = db.DataChunks[index];
@@ -227,7 +226,7 @@ public class SfxpDataBlockCodec : IDataBlockCodec
             indexMask--;
             if (indexMask < 0)
             {
-                indexMask = _streamingConfigLength - 1;
+                indexMask = _streamingConfigLength;
             }
         }
     }

@@ -31,7 +31,7 @@ public abstract class BaseDataMessageProcessor : IDataMessageProcessor
     protected BaseDataMessageProcessor(IDataMessagingConfig config)
     {
         Config = config;
-        LoggerId = $"{config.LoggerId}{(config.LoggerId.EndsWith(": ") ? string.Empty : ": ")}{GetType().Name}: ";
+        LoggerId = $"{config.LoggerId}{(config.LoggerId.EndsWith(": ") ? string.Empty : ": ")}";
     }
 
     /// <summary>
