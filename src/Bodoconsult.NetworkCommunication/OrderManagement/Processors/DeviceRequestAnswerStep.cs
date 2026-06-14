@@ -420,7 +420,7 @@ public class DeviceRequestAnswerStep : BaseRequestAnswerStep, IDeviceRequestAnsw
         //try
         //{
 
-        RequestSpec.AppLogger?.LogDebug($"{RequestSpec.OrderLoggerId}start with timeout of {Timeout} ms");
+        RequestSpec.AppLogger?.LogDebug($"{RequestSpec.OrderLoggerId}started (timeout {Timeout}ms)");
 
         // Now wait for incoming messages (doing it in a non-blocking mannor)
         var taskResult = AsyncHelper.RunSync(CreateWaitingTask);

@@ -39,7 +39,7 @@ public abstract class BaseOrderManagementDevice : IOrderManagementDevice
         MonitorLogger = dataMessagingConfig.MonitorLogger;
         ClientNotificationManager = clientNotificationManager;
 
-        LoggerId = $"{dataMessagingConfig.LoggerId}{(dataMessagingConfig.LoggerId.EndsWith(": ") ? string.Empty : ": ")}{GetType().Name}: ";
+        LoggerId = $"{dataMessagingConfig.LoggerId}{(dataMessagingConfig.LoggerId.EndsWith(": ") ? string.Empty : ": ")}";
 	}
 
     /// <summary>

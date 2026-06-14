@@ -1,5 +1,6 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
+using System.Diagnostics;
 using Bodoconsult.App.Abstractions.Interfaces;
 using Bodoconsult.NetworkCommunication.Interfaces;
 
@@ -99,9 +100,12 @@ public class DefaultInboundDataMessageSorter : IInboundDataMessageSorter
     {
         //try
         //{
+
+        //Debug.Print($"MsgId: {message.OriginalMessageId}");
+
         if (!_inboundDataMessages.TryAdd(message.OriginalMessageId, message))
         {
-            Logger.LogError($"Queue contains already message with ID {message.OriginalMessageId}");
+            Logger.LogError($"Queue contains already message ID {message.OriginalMessageId}");
         }
         //}
         //catch (Exception e)

@@ -45,7 +45,7 @@ public abstract class BaseDuplexIoSender : IDuplexIoSender
             }
 
 #if DEBUG
-            DataMessagingConfig.MonitorLogger.LogDebug($"{LoggerId}{message.ToShortInfoString()} sent {sent.BytesSent}B with result {sent.ProcessExecutionResult}");
+            DataMessagingConfig.MonitorLogger.LogDebug($"{LoggerId}{message.ToShortInfoString()} sent {sent.BytesSent}B: {sent.ProcessExecutionResult}");
 #endif
 
 //#if DEBUG
@@ -70,7 +70,7 @@ public abstract class BaseDuplexIoSender : IDuplexIoSender
         }
         catch (Exception sendException)
         {
-            msg = $"message {message.ToShortInfoString()} not sent: {sendException}";
+            msg = $"{message.ToShortInfoString()} not sent: {sendException}";
             DataMessagingConfig.MonitorLogger.LogError(msg);
             DataMessagingConfig.AppLogger.LogError($"{DataMessagingConfig.LoggerId}{msg}");
 

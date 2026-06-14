@@ -36,8 +36,7 @@ public class DeviceStreamingStateBuilder : BaseNoActionStateMachineStateBuilder
         state.HandleErrorMessageDelegate = config.HandleErrorMessageDelegate;
         state.HandleRegularStateRequestAnswerDelegate = config.HandleRegularStateRequestAnswerDelegate;
         state.PrepareRegularStateRequestDelegate = config.PrepareRegularStateRequestDelegate;
-        state.CheckJobstatesActionForStateDelegate =
-            config.CheckJobstatesActionForStateDelegate ?? DelegateHelper.DefaultCheckJobstatesActionForStateDelegate;
+        state.CheckJobstatesActionForStateDelegate = config.CheckJobstatesActionForStateDelegate ?? DelegateHelper.DefaultCheckJobstatesActionForStateDelegate;
 
         state.CancelStateDelegate = DelegateHelper.CancelStateDelegate;
         state.AllowedNextStates.AddRange(AllowedNextStatesInternal);

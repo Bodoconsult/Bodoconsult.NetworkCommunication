@@ -115,7 +115,9 @@ public class UdpDatagramIpDuplexIoReceiver : BaseDuplexIoReceiver
             {
                 //if (ActivateReceiveLogging)
                 //{
-                msg = $"Parsed command {codecResult.DataMessage.RawMessageDataClearText}";
+                //msg = $"Parsed command {codecResult.DataMessage.RawMessageDataClearText}";
+
+                msg = $"Parsed: {codecResult.DataMessage.ToShortInfoString()}";
                 //Trace.TraceInformation(msg);
                 DataMessagingConfig.MonitorLogger.LogDebug(msg);
                 //}

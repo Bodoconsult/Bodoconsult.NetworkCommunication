@@ -35,7 +35,7 @@ public class IpCommunicationAdapter : ICommunicationAdapter
         DataMessagingConfig = dataMessagingConfig;
         _monitorLogger = DataMessagingConfig.MonitorLogger;
 
-        _loggerId = $"{dataMessagingConfig.LoggerId}{(dataMessagingConfig.LoggerId.EndsWith(": ") ? string.Empty : ": ")} ";
+        _loggerId = $"{dataMessagingConfig.LoggerId}{(dataMessagingConfig.LoggerId.EndsWith(": ") ? string.Empty : ": ")}";
         _communicationHandlerFactory = communicationHandlerFactory;
 
         ////DataMessagingConfig.GetTowerStateDelegate = GetTowerState;

@@ -7,8 +7,6 @@ namespace Bodoconsult.NetworkCommunication.Interfaces;
 /// </summary>
 public static class DeviceCommunicationBasics
 {
-        
-
     #region Messaging
 
     /// <summary>
@@ -54,7 +52,7 @@ public static class DeviceCommunicationBasics
     /// <summary>
     /// Timeout for checking if there is are new jobs during to execute
     /// </summary>
-    public static int JobStateCheckTimeout => 5000;
+    public static int JobStateCheckTimeout { get; set; } = 25;
 
     /// <summary>
     /// Watchdog interval in ms for device status checks
@@ -68,7 +66,7 @@ public static class DeviceCommunicationBasics
     /// <summary>
     /// All tokens a message can start with
     /// </summary>
-    public static List<byte> MessageStartTokens =
+    public static List<byte> MessageStartTokens =>
     [
         Ack,
         Can,
@@ -79,7 +77,7 @@ public static class DeviceCommunicationBasics
     /// <summary>
     /// All tokens a handshake message can start with
     /// </summary>
-    public static List<byte> HandshakeMessageStartTokens =
+    public static List<byte> HandshakeMessageStartTokens =>
     [
         Ack,
         Can,

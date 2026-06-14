@@ -651,7 +651,7 @@ public class OrderPipeline : IOrderPipeline
             }
         });
 
-        _appLogger.LogInformation($"{_loggerId}{order.LoggerId}execution started: {json}");
+        _appLogger.LogInformation($"{_loggerId}{order.LoggerId}started: {json}");
 
         order.ExecutionState = OrderState.Started;
     }

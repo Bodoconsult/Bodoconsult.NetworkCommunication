@@ -5,7 +5,6 @@ using Bodoconsult.App.Helpers;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
 using Bodoconsult.NetworkCommunication.EventSources;
 using Bodoconsult.NetworkCommunication.Interfaces;
-using System.Diagnostics;
 
 namespace Bodoconsult.NetworkCommunication.Communication;
 
@@ -253,10 +252,10 @@ public class IpCommunicationHandler : ICommunicationHandler
         ArgumentNullException.ThrowIfNull(DataMessagingConfig.DataMessageProcessingPackage);
         ArgumentNullException.ThrowIfNull(_waitStateManager);
 
-        if (message is TncpInboundDataMessage)
-        {
-            Debug.Print($"TNCP: 0 {message.ToShortInfoString()}");
-        }
+        //if (message is TncpInboundDataMessage)
+        //{
+        //    Debug.Print($"TNCP: 0 {message.ToShortInfoString()}");
+        //}
 
         try
         {
@@ -287,30 +286,30 @@ public class IpCommunicationHandler : ICommunicationHandler
                 }
             }
 
-            if (message is TncpInboundDataMessage)
-            {
-                Debug.Print($"TNCP: 0 {message.ToShortInfoString()}");
-            }
+            //if (message is TncpInboundDataMessage)
+            //{
+            //    Debug.Print($"TNCP: 0 {message.ToShortInfoString()}");
+            //}
 
             if (DataMessagingConfig.RaiseAppLayerDataMessageReceivedDelegate == null)
             {
-                if (message is TncpInboundDataMessage)
-                {
-                    Debug.Print($"TNCP: 1 {message.ToShortInfoString()}");
-                }
+                //if (message is TncpInboundDataMessage)
+                //{
+                //    Debug.Print($"TNCP: 1 {message.ToShortInfoString()}");
+                //}
                 _monitorLogger.LogDebug($"{_loggerId}DataMessagingConfig.RaiseAppLayerDataMessageReceivedDelegate is null");
             }
             else
             {
-                if (message is TncpInboundDataMessage)
-                {
-                    Debug.Print($"TNCP: 2 {message.ToShortInfoString()}");
-                }
+                //if (message is TncpInboundDataMessage)
+                //{
+                //    Debug.Print($"TNCP: 2 {message.ToShortInfoString()}");
+                //}
                 DataMessagingConfig.RaiseAppLayerDataMessageReceivedDelegate.Invoke(message);
-                if (message is TncpInboundDataMessage)
-                {
-                    Debug.Print($"TNCP: 3 {message.ToShortInfoString()}");
-                }
+                //if (message is TncpInboundDataMessage)
+                //{
+                //    Debug.Print($"TNCP: 3 {message.ToShortInfoString()}");
+                //}
 
                 //AsyncHelper.FireAndForget2(() =>
                 //{

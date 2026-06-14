@@ -128,7 +128,7 @@ public static class DelegateHelper
             if (newState == null)
             {
                 // Wait a bit then check again
-                Thread.Sleep(DeviceCommunicationBasics.JobStateCheckTimeout);
+                Task.Delay(DeviceCommunicationBasics.JobStateCheckTimeout).Wait();
                 continue;
             }
 

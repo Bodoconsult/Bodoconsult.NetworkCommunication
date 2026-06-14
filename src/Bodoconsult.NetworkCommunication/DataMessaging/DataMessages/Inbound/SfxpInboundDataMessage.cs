@@ -65,7 +65,7 @@ public class SfxpInboundDataMessage : ISortableInboundDataMessage
     /// <returns>Info string</returns>
     public string ToInfoString()
     {
-        return $"SfxpInboundDataMessage ID {MessageId} ({RawMessageData.Length}B) {RawMessageDataClearText}";
+        return $"SfxpInboundDataMessage ID {MessageId} OID {OriginalMessageId} ({RawMessageData.Length}B) {RawMessageDataClearText}";
     }
 
     /// <summary>
@@ -74,7 +74,7 @@ public class SfxpInboundDataMessage : ISortableInboundDataMessage
     /// <returns>Info string</returns>
     public string ToShortInfoString()
     {
-        return $"SfxpInboundDataMessage ID {MessageId} ({RawMessageData.Length}B)";
+        return $"SfxpInboundDataMessage ID {MessageId} OID {OriginalMessageId} ({RawMessageData.Length}B)";
     }
 
     /// <summary>

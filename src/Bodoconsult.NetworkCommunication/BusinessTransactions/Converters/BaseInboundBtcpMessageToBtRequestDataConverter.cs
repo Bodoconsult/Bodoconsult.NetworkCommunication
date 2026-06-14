@@ -77,15 +77,15 @@ public abstract class BaseInboundBtcpMessageToBtRequestDataConverter : IInboundM
             // Store transaction iD to request
             internalRequest.TransactionId = btm.BusinessTransactionId;
 
-            s.Append($" ({internalRequest.TransactionGuid})");
+            s.Append($" / {internalRequest.TransactionGuid} ");
 
             try
             {
-                s.Append($" requested: {ObjectHelper.GetObjectPropertiesAsString(internalRequest)}");
+                s.Append($"requested: {ObjectHelper.GetObjectPropertiesAsString(internalRequest)}");
             }
             catch //(Exception e)
             {
-                s.Append($"Object serialization for logging failed {internalRequest.GetType().Name}");
+                s.Append($"object serialization for logging failed {internalRequest.GetType().Name}");
             }
 
             AppLogger.LogInformation(s.ToString());
@@ -103,5 +103,4 @@ public abstract class BaseInboundBtcpMessageToBtRequestDataConverter : IInboundM
 
         return null;
     }
-
 }

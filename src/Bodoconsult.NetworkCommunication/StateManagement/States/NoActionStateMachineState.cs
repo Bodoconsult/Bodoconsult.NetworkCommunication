@@ -65,7 +65,7 @@ public class NoActionStateMachineState : BaseStateMachineState, INoActionStateMa
             }
 
             // Wait a bit then check again
-            Thread.Sleep(DeviceCommunicationBasics.JobStateCheckTimeout);
+            Task.Delay(DeviceCommunicationBasics.JobStateCheckTimeout);
         }
     }
 }

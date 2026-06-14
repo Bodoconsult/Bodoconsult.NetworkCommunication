@@ -64,14 +64,14 @@ public abstract class BaseInboundBtcpMessageToBtReplyConverter : IInboundDataMes
             }
 
             var s = new StringBuilder();
-            s.Append($"Reply for BT {btm.BusinessTransactionId}");
+            s.Append($"Reply for BT {btm.BusinessTransactionId} / {btm.BusinessTransactionUid} ");
 
             // Create the internal request
             var internalRequest = kvp.Value.Invoke(btm);
 
             if (internalRequest == null)
             {
-                s.Append($" mapping for reply data {kvp.Key} returns null");
+                s.Append($"mapping for reply data {kvp.Key} returns null");
                 return null;
             }
 
@@ -82,15 +82,13 @@ public abstract class BaseInboundBtcpMessageToBtReplyConverter : IInboundDataMes
             //// Store transaction iD to request
             //internalRequest.RequestData.TransactionId = btm.BusinessTransactionId;
 
-            s.Append($" ({btm.BusinessTransactionId} \\ {btm.BusinessTransactionUid})");
-
             try
             {
-                s.Append($" requested: {ObjectHelper.GetObjectPropertiesAsString(internalRequest)}");
+                s.Append($"requested: {ObjectHelper.GetObjectPropertiesAsString(internalRequest)}");
             }
             catch //(Exception e)
             {
-                s.Append($"Object serialization for logging failed {internalRequest.GetType().Name}");
+                s.Append($"object serialization for logging failed {internalRequest.GetType().Name}");
             }
 
             AppLogger.LogInformation(s.ToString());

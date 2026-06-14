@@ -2,7 +2,6 @@
 // Licence MIT
 
 using Bodoconsult.App.Abstractions.Interfaces;
-using Bodoconsult.NetworkCommunication.Delegates;
 using System.Net;
 
 namespace Bodoconsult.NetworkCommunication.Interfaces;
@@ -165,38 +164,4 @@ public interface ISocketProxy: IDisposable
     ///// </summary>
     ///// <param name="testData">Test data to use</param>
     //void PrepareAnswer(byte[] testData);
-}
-
-/// <summary>
-/// Interface for UDP implementations of <see cref="ISocketProxy"/>
-/// </summary>
-public interface IUdpSocketProxy: ISocketProxy
-{
-    /// <summary>
-    /// Delegate fired if the socket was receiving data
-    /// </summary>
-    SocketReceivedDataDelegate? SocketReceivedDataDelegate { get; }
-
-    /// <summary>
-    /// Start the receiver loop
-    /// </summary>
-    /// <param name="socketReceivedDataDelegate">Delegate for forwarding received messages</param>
-    void StartReceiverLoop(SocketReceivedDataDelegate socketReceivedDataDelegate);
-}
-
-/// <summary>
-/// Interface for UDP implementations of <see cref="ISocketProxy"/>
-/// </summary>
-public interface ITcpSocketProxy : ISocketProxy
-{
-    /// <summary>
-    /// Delegate fired if the socket was receiving data
-    /// </summary>
-    SocketReceivedDataDelegate2? SocketReceivedDataDelegate { get; }
-
-    /// <summary>
-    /// Start the receiver loop
-    /// </summary>
-    /// <param name="socketReceivedDataDelegate">Delegate for forwarding received messages</param>
-    void StartReceiverLoop(SocketReceivedDataDelegate2 socketReceivedDataDelegate);
 }

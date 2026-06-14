@@ -66,7 +66,7 @@ public class SfxpOutboundDataMessage: IOutboundDataMessage
     /// <returns>Info string</returns>
     public string ToInfoString()
     {
-        return $"SfxpOutboundDataMessage ID {MessageId} ({RawMessageData.Length}B) {RawMessageDataClearText}";
+        return $"SfxpOutboundDataMessage ID {MessageId} OID {OriginalMessageId} ({RawMessageData.Length}B) {RawMessageDataClearText}";
     }
 
     /// <summary>
@@ -75,7 +75,7 @@ public class SfxpOutboundDataMessage: IOutboundDataMessage
     /// <returns>Info string</returns>
     public string ToShortInfoString()
     {
-        return $"SfxpOutboundDataMessage ID {MessageId} ({RawMessageData.Length}B)";
+        return $"SfxpOutboundDataMessage ID {MessageId} OID {OriginalMessageId } ({RawMessageData.Length}B)";
     }
 
     /// <summary>

@@ -119,6 +119,7 @@ public class UdpServerWithHelloSocketProxy : BaseUpdSocketProxy
 
                 // The following three lines allow multiple clients on the same PC
                 UdpClient.Client.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.ReuseAddress, true);
+                UdpClient.Client.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.ReceiveBuffer, ReceiveBufferSize);
                 UdpClient.Client.Blocking = false;
 
                 EndPoint = new IPEndPoint(IPAddress.Any, Port);
@@ -170,64 +171,36 @@ public class UdpServerWithHelloSocketProxy : BaseUpdSocketProxy
 
             while (!CancellationTokenSource.IsCancellationRequested)
             {
-                var result = 0;
-                var buffer = _pipeline.GetBuffer();
+                //var buffer = _pipeline.GetBuffer();
                 try
                 {
-                    var udpResult = await UdpClient.ReceiveAsync(CancellationTokenSource.Token).AsTask();
-                    result = udpResult.Buffer.Length;
-                    if (result != 0)
-                    {
-                        udpResult.Buffer.CopyTo(buffer.Memory);
+                    var udpResult = await UdpClient.ReceiveAsync(CancellationTokenSource.Token);
+                    SendEndPoint = udpResult.RemoteEndPoint;
+                    _pipeline.AddMemory(udpResult);
 
-                        _pipeline.AddMemory(buffer, udpResult.Buffer.Length);
-                    }
-                    else
-                    {
-                        _pipeline.ReleaseBuffer(buffer);
-                    }
                 }
                 catch (OperationCanceledException)
                 {
-                    _pipeline.ReleaseBuffer(buffer);
                     break;
                 }
                 catch (SocketException se)
                 {
-                    _pipeline.ReleaseBuffer(buffer);
                     Logger.LogError($"{LoggerId}Receiving failed: socket error {se.ErrorCode}: {se.Message}");
+                    break;
                 }
                 catch (Exception e)
                 {
-                    _pipeline.ReleaseBuffer(buffer);
-                    Logger.LogError($"{LoggerId}Receiving failed ", e);
+                    Logger.LogError($"{LoggerId}Receiving failed", e);
                 }
-
-                // var result = await Socket.ReceiveAsync(buffer, SocketFlags.None, CancellationTokenSource.Token);
-
-                if (result == 0)
-                {
-                    await Task.Delay(5);
-                }
-
-                //Debug.Print($"{LoggerId}Received {result} byte");
-
-                //AsyncHelper.FireAndForget(() =>
-                //{
-                //    try
-                //    {
-                //        SocketReceivedDataDelegate.Invoke(buffer[..result]);
-                //    }
-                //    catch (Exception e)
-                //    {
-                //        Logger.LogError($"{LoggerId}Forwarding received data failed", e);
-                //    }
-                //});
             }
         }
         catch (OperationCanceledException)
         {
 
+        }
+        catch (SocketException se)
+        {
+            Logger.LogError($"{LoggerId}Receiver loop failed: socket error {se.ErrorCode}: {se.Message}");
         }
         catch (Exception e)
         {

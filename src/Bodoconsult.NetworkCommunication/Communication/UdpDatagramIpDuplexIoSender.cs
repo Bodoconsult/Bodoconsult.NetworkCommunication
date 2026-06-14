@@ -11,8 +11,6 @@ namespace Bodoconsult.NetworkCommunication.Communication;
 /// </summary>
 public class UdpDatagramIpDuplexIoSender : BaseDuplexIoSender
 {
-
-
     /// <summary>
     /// Default ctor
     /// </summary>
@@ -35,23 +33,17 @@ public class UdpDatagramIpDuplexIoSender : BaseDuplexIoSender
 
             if (EncodeMessage(message))
             {
-                msg = $"Encoding for message {message.ToShortInfoString()} failed: {message.MessageId}";
-                DataMessagingConfig.MonitorLogger.LogError(msg);
-                DataMessagingConfig.AppLogger.LogError($"{DataMessagingConfig.LoggerId}{msg}");
                 return new MessageSendingResult(message, OrderExecutionResultState.Unsuccessful);
             }
 
             // Send message
             var sent = await SendMessageInternal(message);
-
-
-
             return sent;
 
         }
         catch (Exception e)
         {
-            msg = $"Message {message.ToShortInfoString()} could not be sent via UDP socket: {e}";
+            msg = $"{message.ToShortInfoString()} could not be sent via UDP socket: {e}";
             AsyncHelper.FireAndForget(() => DataMessagingConfig.RaiseDataMessageNotSentDelegate?.Invoke(message.RawMessageData, msg));
             DataMessagingConfig.MonitorLogger.LogError(msg);
             DataMessagingConfig.AppLogger.LogError($"{DataMessagingConfig.LoggerId}{msg}");

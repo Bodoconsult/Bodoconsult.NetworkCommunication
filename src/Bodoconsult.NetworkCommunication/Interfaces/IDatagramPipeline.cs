@@ -3,6 +3,7 @@
 
 // Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
+using System.Net.Sockets;
 using Bodoconsult.NetworkCommunication.Delegates;
 
 namespace Bodoconsult.NetworkCommunication.Interfaces;
@@ -28,10 +29,17 @@ public interface IDatagramPipeline : IPipeline
     /// </summary>
     void StopReceiverLoop();
 
+    ///// <summary>
+    ///// Run the receiver loop
+    ///// </summary>
+    ///// <param name="waitForLoopStarted"><see cref="AutoResetEvent"/> to wait until the loop has been started</param>
+    ///// <returns></returns>
+    //Task ReceiverLoop(AutoResetEvent waitForLoopStarted);
+    
+    
     /// <summary>
-    /// Run the receiver loop
+    /// Add the received data to the queue
     /// </summary>
-    /// <param name="waitForLoopStarted"><see cref="AutoResetEvent"/> to wait until the loop has been started</param>
-    /// <returns></returns>
-    Task ReceiverLoop(AutoResetEvent waitForLoopStarted);
+    /// <param name="udpResult">Received result</param>
+    void AddMemory(UdpReceiveResult udpResult);
 }

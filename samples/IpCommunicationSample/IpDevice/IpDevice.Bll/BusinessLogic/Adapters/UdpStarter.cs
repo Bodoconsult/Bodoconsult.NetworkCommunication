@@ -30,7 +30,7 @@ public class UdpStarter
             _isReadyToStart = false;
         } 
             
-        if (command == "show,streamconfig" && _isReadyToStart)
+        if (command == "show,streamconfig")
         {
             _isReadyToStart = true;
         }

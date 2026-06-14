@@ -3,7 +3,7 @@
 using Bodoconsult.App.Helpers;
 using Bodoconsult.NetworkCommunication.Delegates;
 using Bodoconsult.NetworkCommunication.Interfaces;
-using System.Buffers;
+using System.Net.Sockets;
 
 namespace Bodoconsult.NetworkCommunication.Protocols;
 
@@ -12,8 +12,7 @@ namespace Bodoconsult.NetworkCommunication.Protocols;
 /// </summary>
 public class DatagramPipeline : IDatagramPipeline
 {
-    private readonly ProducerConsumerQueue2<QueueItem> _currentPipeline = new();
-    private readonly MemoryPool<byte> _pool = MemoryPool<byte>.Shared;
+    private readonly ProducerConsumerQueue2<UdpReceiveResult> _currentPipeline = new();
 
     /// <summary>
     /// Default ctor
@@ -43,101 +42,36 @@ public class DatagramPipeline : IDatagramPipeline
         SocketReceivedDataDelegate = socketReceivedDataDelegate;
     }
 
-    private void ConsumerTaskDelegate(QueueItem item)
+    private void ConsumerTaskDelegate(UdpReceiveResult item)
     {
         // Make a copy of the byte data here
-        SocketReceivedDataDelegate?.Invoke(item.Data.Memory[..item.Length].ToArray());
-        ReleaseBuffer(item.Data);
+        SocketReceivedDataDelegate?.Invoke(item.Buffer.AsMemory()[..item.Buffer.Length]);
     }
 
     /// <summary>
     /// Stop the receiver loop
     /// </summary>
     public void StopReceiverLoop()
-    {
-
-    }
+    { }
 
     /// <summary>
-    /// Run the receiver loop
+    /// Add the received data to the queue
     /// </summary>
-    /// <param name="waitForLoopStarted"><see cref="AutoResetEvent"/> to wait until the loop has been started</param>
-    /// <returns></returns>
-    public Task ReceiverLoop(AutoResetEvent waitForLoopStarted)
+    /// <param name="udpResult">Received result</param>
+    public void AddMemory(UdpReceiveResult udpResult)
     {
-        throw new NotImplementedException();
-    }
-
-    /// <summary>
-    /// Get an entity from entity
-    /// </summary>
-    /// <returns></returns>
-    public IMemoryOwner<byte> GetBuffer()
-    {
-        var result = _pool.Rent(BufferSize);
-        return result;
-    }
-
-    /// <summary>
-    /// Release the buffer
-    /// </summary>
-    /// <param name="data">Buffer entity</param>
-    public void ReleaseBuffer(IMemoryOwner<byte> data)
-    {
-        try
+        if (udpResult.Buffer.Length == 0)
         {
-            // ToDo: release array to pool
-            for (var i = 0; i < data.Memory.Length; i++)
-            {
-                data.Memory.Span[i] = 0x0;
-            }
-
-            data.Dispose();
-        }
-        catch //(Exception e)
-        {
-            //Console.WriteLine(e);
-            //throw;
+            return;
         }
 
-    }
-
-
-    /// <summary>
-    /// Add memory to the buffer
-    /// </summary>
-    /// <param name="data">Data to add to the buffer</param>
-    /// <param name="length">Length of the data to add (may not be equal to the length of the data buffer!)</param>
-    public void AddMemory(IMemoryOwner<byte> data, int length)
-    {
-        _currentPipeline.Enqueue(new QueueItem
-        {
-            Data = data,
-            Length = length
-        });
+        _currentPipeline.Enqueue(udpResult);
     }
 
     /// <summary>Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.</summary>
     public void Dispose()
     {
-        _pool.Dispose();
         _currentPipeline.StopConsumer();
         _currentPipeline.Dispose();
-    }
-
-    /// <summary>
-    /// Internal queue item
-    /// </summary>
-    private struct QueueItem
-    {
-        /// <summary>
-        /// Memory
-        /// </summary>
-        public IMemoryOwner<byte> Data { get; init; }
-
-        /// <summary>
-        /// Length of the data stored in <see cref="Data"/>
-        /// </summary>
-        public int Length { get; init; }
     }
 }
