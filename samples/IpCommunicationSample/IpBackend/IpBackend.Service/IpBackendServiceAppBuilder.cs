@@ -59,5 +59,25 @@ public class IpBackendServiceAppBuilder : BaseBackgroundServiceAppBuilder
 
         // Now get the requested config elements out of the root config element
         appStartParams.MaxDataLoggingFileSize = DefaultAppStartProvider.ReadLongProperty(section, "MaxDataLoggingFileSize", appStartParams.MaxDataLoggingFileSize);
+        appStartParams.DataLoggingPath = DefaultAppStartProvider.ReadStringProperty(section, "DataLoggingPath", appStartParams.DataLoggingPath);
+
+        if (appStartParams.DataLoggingPath.Contains("%USERPROFILE%", StringComparison.InvariantCultureIgnoreCase))
+        {
+            appStartParams.DataLoggingPath = appStartParams.DataLoggingPath.Replace("%USERPROFILE%", Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), StringComparison.InvariantCultureIgnoreCase);
+        }
+
+        if (Directory.Exists(appStartParams.DataLoggingPath))
+        {
+            return;
+        }
+
+        try
+        {
+            Directory.CreateDirectory(appStartParams.DataLoggingPath);
+        }
+        catch //(Exception e)
+        {
+            // Do nothing
+        }
     }
 }
