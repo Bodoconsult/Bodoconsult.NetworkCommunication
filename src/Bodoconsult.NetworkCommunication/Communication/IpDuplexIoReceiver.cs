@@ -67,8 +67,7 @@ public class IpDuplexIoReceiver : BaseDuplexIoReceiver
                 return Task.FromResult(false);
             }
 
-            var msg =
-                $"{LoggerId}Data in buffer: {buffer.Length} byte: {DataMessageHelper.GetStringFromArrayCsharpStyle(ref buffer)}";
+            var msg = $"{LoggerId}Buffer ({buffer.Length}B): {DataMessageHelper.GetStringFromArrayCsharpStyle(ref buffer)}";
             MonitorLogger.LogInformation(msg);
 
 

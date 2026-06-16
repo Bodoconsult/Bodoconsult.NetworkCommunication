@@ -40,7 +40,7 @@ public class OrderReceiver : IOrderReceiver
         }
 
         var result = OrderReceiverCheckMessageDelegate?.Invoke(message) ?? false;
-        _appLogger.LogInformation($"Received message was processed {(result ? "successfully" : "unsucessfully")}: {message.ToShortInfoString()}");
+        _appLogger.LogInformation($"{message.ToShortInfoString()}: processed {(result ? "successfully" : "unsucessfully")}: ");
     }
 
     /// <summary>
@@ -60,7 +60,7 @@ public class OrderReceiver : IOrderReceiver
     public void AddReceivedMessage(IInboundDataMessage receivedMessage)
     {
         _messageQueue.Enqueue(receivedMessage);
-        _appLogger.LogInformation($"{receivedMessage.ToShortInfoString()}: added to queue: ");
+        _appLogger.LogInformation($"{receivedMessage.ToShortInfoString()}: added to queue");
     }
 
     /// <summary>Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.</summary>

@@ -123,7 +123,7 @@ public abstract class BaseOrderProcessor : IOrderProcessor
 
             if (procLocal.IsCancelled || order.IsDisposable)
             {
-                LogDebug($"message received: order {order.Id} skipped due to disposed or cancelled");
+                LogDebug($"{rm.ToShortInfoString()}order {order.Id} skipped due to disposed or cancelled");
                 continue;
             }
 
@@ -137,7 +137,7 @@ public abstract class BaseOrderProcessor : IOrderProcessor
             var success = procLocal.CheckReceivedMessage(rm);
             if (!success)
             {
-                LogInformation( $"received message {rm.ToShortInfoString()} processed unsuccessfully with order {order.Id}.");
+                LogInformation( $"{rm.ToShortInfoString()} processed unsuccessfully with order {order.Id}");
                 continue;
             }
 
@@ -145,7 +145,7 @@ public abstract class BaseOrderProcessor : IOrderProcessor
             Wait.Until(() => order.IsFinished);
 
             // Now log that
-            var msg = $"received message {rm.ToShortInfoString()} processed successfully with order {order.Id}.";
+            var msg = $"{rm.ToShortInfoString()} processed successfully with order {order.Id}";
             LogInformation(msg);
             return true;
         }
@@ -330,7 +330,7 @@ public abstract class BaseOrderProcessor : IOrderProcessor
     }
 
     /// <summary>
-    /// Is the currently runner stopped? 
+    /// Is the runner currently stopped? 
     /// </summary>
     public bool IsRunnerStopped
     {

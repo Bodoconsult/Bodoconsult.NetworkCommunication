@@ -73,7 +73,7 @@ public class UdpDatagramIpDuplexIoReceiver : BaseDuplexIoReceiver
 
         if (ActivateReceiveLogging)
         {
-            msg = $"Data in buffer: {DataMessageHelper.GetStringFromArrayCsharpStyle(data)}";
+            msg = $"Buffer ({data.Length}B): {ArrayHelper.GetStringFromArrayCsharpStyle(data, false)}";
             MonitorLogger.LogDebug(msg);
         }
         else
@@ -121,13 +121,12 @@ public class UdpDatagramIpDuplexIoReceiver : BaseDuplexIoReceiver
                 //Trace.TraceInformation(msg);
                 DataMessagingConfig.MonitorLogger.LogDebug(msg);
                 //}
-            }
 
-            if (_count == int.MaxValue)
-            {
-                _count = 0;
+                if (_count < 15)
+                {
+                    _count++;
+                }
             }
-            _count++;
 
             DataMessageProcessor.ProcessMessage(codecResult.DataMessage);
         }

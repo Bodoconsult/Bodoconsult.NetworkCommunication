@@ -64,7 +64,7 @@ public abstract class BaseWaitStateManager : IWaitStateManager
     /// <param name="msg">Data message</param>
     public virtual void OnHandshakeReceived(IInboundHandShakeMessage msg)
     {
-        DataMessagingConfig.MonitorLogger.LogInformation($"{LoggerId}Handshake reached wait state manager 1");
+        DataMessagingConfig.MonitorLogger.LogInformation($"{LoggerId}Handshake reached state 1");
 
         if (msg is not InboundHandshakeMessage handshake)
         {
@@ -111,7 +111,7 @@ public abstract class BaseWaitStateManager : IWaitStateManager
             WaitStates.Add(state);
         }
         //Smddevice.MonitorLogger.LogInformation("WaitState registered");
-        DataMessagingConfig.MonitorLogger.LogInformation($"{LoggerId}WSM: WaitState registered: {Count}");
+        DataMessagingConfig.MonitorLogger.LogInformation($"{LoggerId}WaitState registered: {Count}");
     }
 
     /// <summary>
@@ -153,7 +153,7 @@ public abstract class BaseWaitStateManager : IWaitStateManager
         // Get the counters at method start to avoid later change resulting from new input
         var waitStateCount = Count;
 
-        var msg = $"{LoggerId}Handshake {handshake.HandshakeMessageType} reached wait state manager 2: ({waitStateCount} states waiting)";
+        var msg = $"{LoggerId}Handshake {handshake.HandshakeMessageType} reached state 2: ({waitStateCount} states waiting)";
         DataMessagingConfig.MonitorLogger.LogDebug(msg);
 
         List<SendPacketProcess> waitStates;

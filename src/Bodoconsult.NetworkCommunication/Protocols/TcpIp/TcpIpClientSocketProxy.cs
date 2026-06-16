@@ -112,7 +112,7 @@ public class TcpIpClientSocketProxy : BaseTcpIpSocketProxy
         try
         {
             var result = await Socket.SendAsync(bytesToSend, CancellationTokenSource.Token);
-            Logger.LogDebug($"{LoggerId}sent {bytesToSend.Length} bytes");
+            Logger.LogDebug($"{LoggerId}sent {bytesToSend.Length}B");
             return result;
         }
         catch (SocketException socketException)
@@ -156,7 +156,7 @@ public class TcpIpClientSocketProxy : BaseTcpIpSocketProxy
         try
         {
             var result = await Socket.SendAsync(bytesToSend, CancellationTokenSource.Token).AsTask();
-            Logger.LogDebug($"{LoggerId}sent {bytesToSend.Length} bytes");
+            Logger.LogDebug($"{LoggerId}sent {bytesToSend.Length}B");
             return result;
         }
         catch (SocketException socketException)
@@ -320,7 +320,7 @@ public class TcpIpClientSocketProxy : BaseTcpIpSocketProxy
                     _pipeline.AddMemory(buffer, result);
                     await SocketReceivedDataDelegate.Invoke();
 
-                    Logger.LogInformation($"{LoggerId}received {result} bytes: buffer bytes: before {pipeLen} / after {_pipeline.Buffer.Length}");
+                    Logger.LogInformation($"{LoggerId}received {result}B (buffer: before {pipeLen}B / after {_pipeline.Buffer.Length}B)");
 
                     lock (_lastErrorCodeLock)
                     {

@@ -144,7 +144,6 @@ public interface IOrderProcessor : IDisposable
     /// <returns>device hardware init order</returns>
     IOrder? InitiateHardwareInit(bool runTheOrder);
 
-
     /// <summary>
     /// Cancel all queued and currently running orders
     /// </summary>

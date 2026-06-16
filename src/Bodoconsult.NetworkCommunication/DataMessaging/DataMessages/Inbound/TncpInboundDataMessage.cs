@@ -70,7 +70,7 @@ public class TncpInboundDataMessage : IInboundDataMessage
     /// <returns>Info string</returns>
     public string ToInfoString()
     {
-        return $"TncpInboundDataMessage ID {MessageId} ({RawMessageData.Length}B) Command {RawMessageDataClearText}";
+        return $"TncpInboundDataMessage ID {MessageId} ({RawMessageData.Length}B, Cmd: {RawMessageDataClearText})";
     }
 
     /// <summary>
@@ -79,7 +79,7 @@ public class TncpInboundDataMessage : IInboundDataMessage
     /// <returns>Info string</returns>
     public string ToShortInfoString()
     {
-        return $"TncpInboundDataMessage ID {MessageId} ({RawMessageData.Length}B) Command {TelnetCommand}";
+        return $"TncpInboundDataMessage ID {MessageId} ({RawMessageData.Length}B, Cmd: {TelnetCommand})";
     }
 
     /// <summary>

@@ -186,12 +186,12 @@ public class StateMachineOrderProcessor : BaseOrderProcessor
             if (order.ExecutionResult.Id == OrderExecutionResultState.Successful.Id)
             {
                 state.OrderFinishedSucessfully(order.Id);
-                order.Benchmark?.AddStep("Order finished Successful");
+                order.Benchmark?.AddStep("Order finished successful");
             }
             else // Process unsuccessful orders
             {
                 state.OrderFinishedUnsucessfully(order.Id);
-                order.Benchmark?.AddStep("Order finished Unsuccessful");
+                order.Benchmark?.AddStep("Order finished unsuccessful");
             }
         }
 

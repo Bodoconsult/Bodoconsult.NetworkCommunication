@@ -1,5 +1,6 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
+using System.Numerics;
 using Bodoconsult.NetworkCommunication.Helpers;
 
 namespace Bodoconsult.NetworkCommunication.Tests.HelperTests;
@@ -237,5 +238,30 @@ internal class BitHelperTests
         var result3 = value >> 4;
 
         Assert.That(result3, Is.EqualTo(0xb));
+    }
+
+
+    [Test]
+    public void Test1()
+    {
+        const long value = 0xb9;
+
+        var result1 = value & 0x0f;
+
+        Assert.That(result1, Is.EqualTo(0x9));
+
+        var result2 = value & 0xf0;
+
+        Assert.That(result2, Is.EqualTo(0xb0));
+
+        var result3 = value >> 4;
+
+        Assert.That(result3, Is.EqualTo(0xb));
+
+
+        //var c = new Complex();
+
+        double x;
+
     }
 }
