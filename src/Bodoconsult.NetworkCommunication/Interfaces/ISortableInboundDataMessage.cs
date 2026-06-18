@@ -10,5 +10,5 @@ public interface ISortableInboundDataMessage : IInboundDataMessage
     /// <summary>
     /// Original message ID received from the device
     /// </summary>
-    long OriginalMessageId { get; set; }
+    ulong OriginalMessageId { get; set; }
 }

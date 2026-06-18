@@ -12,7 +12,7 @@ public static class SfxpProtocolHelper
     /// </summary>
     public static SyncByteDefinition RegularSyncByte { get; } = new()
     {
-        Length = 1,
+        Length = 8,
         SyncByte = 0x0
     };
 

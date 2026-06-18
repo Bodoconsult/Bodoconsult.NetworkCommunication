@@ -10,7 +10,7 @@ namespace Bodoconsult.NetworkCommunication.DataMessaging.DataSorter;
 /// </summary>
 public class DefaultInboundDataMessageSorter2 : IInboundDataMessageSorter
 {
-    private readonly Dictionary<long, ISortableInboundDataMessage> _inboundDataMessages = new();
+    private readonly Dictionary<ulong, ISortableInboundDataMessage> _inboundDataMessages = new();
 
     /// <summary>
     /// Default ctor
@@ -34,7 +34,7 @@ public class DefaultInboundDataMessageSorter2 : IInboundDataMessageSorter
     /// <summary>
     /// The last incoming message ID returned correctly
     /// </summary>
-    public long LastMessageId { get; set; } = long.MinValue;
+    public ulong LastMessageId { get; set; } = ulong.MinValue;
 
     /// <summary>
     /// Add a message to the sorter and return zero, one or more messages waiting in the internal queue in the correct sort order
@@ -46,7 +46,7 @@ public class DefaultInboundDataMessageSorter2 : IInboundDataMessageSorter
         var result = new List<ISortableInboundDataMessage>();
 
         // First message
-        if (LastMessageId == long.MinValue)
+        if (LastMessageId == ulong.MinValue)
         {
             if (_inboundDataMessages.Count > 0)
             {
@@ -152,6 +152,6 @@ public class DefaultInboundDataMessageSorter2 : IInboundDataMessageSorter
     /// </summary>
     public void ResetLastMessageId()
     {
-        LastMessageId = long.MinValue;
+        LastMessageId = ulong.MinValue;
     }
 }

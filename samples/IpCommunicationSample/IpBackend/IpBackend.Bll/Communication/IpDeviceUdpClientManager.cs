@@ -96,8 +96,10 @@ public class IpDeviceUdpClientManager : ISimpleDeviceManager
         config.WaitForAcknowledgement = false;
 
         // Create data loggers
-        var appStartParams = ((BackendAppStartParameter)_appGlobals.AppStartParameter);
+        var appStartParams = (BackendAppStartParameter)_appGlobals.AppStartParameter;
         config.DataLoggingPath = appStartParams.DataLoggingPath;
+
+        _appGlobals.Logger?.LogInformation($"Data logging to folder {appStartParams.DataLoggingPath}");
 
         var fileSize = appStartParams.MaxDataLoggingFileSize;
 

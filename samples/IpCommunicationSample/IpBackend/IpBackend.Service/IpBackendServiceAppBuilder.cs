@@ -66,6 +66,11 @@ public class IpBackendServiceAppBuilder : BaseBackgroundServiceAppBuilder
             appStartParams.DataLoggingPath = appStartParams.DataLoggingPath.Replace("%USERPROFILE%", Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), StringComparison.InvariantCultureIgnoreCase);
         }
 
+        if (appStartParams.DataLoggingPath.Contains("%CommonDocuments%", StringComparison.InvariantCultureIgnoreCase))
+        {
+            appStartParams.DataLoggingPath = appStartParams.DataLoggingPath.Replace("%MyDocuments%", Environment.GetFolderPath(Environment.SpecialFolder.CommonDocuments), StringComparison.InvariantCultureIgnoreCase);
+        }
+
         if (Directory.Exists(appStartParams.DataLoggingPath))
         {
             return;
@@ -75,9 +80,10 @@ public class IpBackendServiceAppBuilder : BaseBackgroundServiceAppBuilder
         {
             Directory.CreateDirectory(appStartParams.DataLoggingPath);
         }
-        catch //(Exception e)
+        catch (Exception e)
         {
             // Do nothing
+            AppGlobals.Logger?.LogError($"Creating folder {appStartParams.DataLoggingPath} failed", e);
         }
     }
 }

@@ -1,0 +1,259 @@
+﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
+
+using System.Diagnostics;
+using Bodoconsult.App.BufferPool;
+using Bodoconsult.App.Helpers;
+using Bodoconsult.NetworkCommunication.DataMessaging.DataBlocks;
+using Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
+using Bodoconsult.NetworkCommunication.Helpers;
+using Bodoconsult.NetworkCommunication.Interfaces;
+
+namespace Bodoconsult.NetworkCommunication.DataMessaging.DataBlockCodecs;
+
+/// <summary>
+/// Basic datablock codec for SFXP protocol. 
+/// </summary>
+public class SfxpDataBlockCodec1: IDataBlockCodec
+{
+    private readonly BufferPool<DataChunk> _bufferPool = new();
+    private readonly Lock _streamingConfigLock = new();
+    private byte[] _streamingConfig = [];
+    private int _streamingConfigLength;
+
+    private const ulong CompareValueSampleCounter = 0b_0000000_00001001_00000000_00001001_00000000_00001001_00000000_00001001;
+    private const ulong ResultValueSampleCounter = 0b_00000000_00001001_00000000_00001001_00000000_00001001_0000000_000001001;
+
+    /// <summary>
+    /// Default ctor
+    /// </summary>
+    public SfxpDataBlockCodec1()
+    {
+        _bufferPool.LoadFactoryMethod(() => new DataChunk
+        {
+            ReturnDataChunkDelegate = ReturnDataChunkDelegate
+        });
+        _bufferPool.Allocate(200);
+    }
+
+    /// <summary>
+    /// Byte mask for the mapping of the chunk to channel relationship. Mask may have a maximum length of 254 bytes
+    /// </summary>
+    public byte[] StreamingConfig
+    {
+        get
+        {
+            lock (_streamingConfigLock)
+            {
+                return _streamingConfig;
+            }
+        }
+        private set
+        {
+            lock (_streamingConfigLock)
+            {
+                _streamingConfig = value;
+                _streamingConfigLength = value.Length - 1;
+            }
+        }
+    }
+
+    /// <summary>
+    /// Load the byte mask for the mapping of the chunk to channel relationship. Mask may have a maximum length of 254 bytes
+    /// </summary>
+    /// <param name="config">Mask to load. Mask may have a maximum length of 254 bytes</param>
+    public void LoadStreamingConfig(byte[] config)
+    {
+        var result = new List<byte>();
+
+        foreach (var b in config)
+        {
+            if (b == 0xF || result.Count == 255)
+            {
+                break;
+            }
+
+            result.Add(b);
+        }
+
+        StreamingConfig = result.ToArray();
+    }
+
+    /// <summary>
+    /// Method encodes an instance of Datablock in bytes array.
+    /// Method is called when a message is sent to the device
+    /// </summary>
+    /// <param name="data">The array as list to add the datablock to</param>
+    /// <param name="datablock">Current datablock object</param>
+    /// <returns>a byte array with datablock infos</returns>
+    public void EncodeDataBlock(List<byte> data, ITypedOutboundDataBlock datablock)
+    {
+        if (datablock is not BasicOutboundDatablock db)
+        {
+            throw new ArgumentException("Wrong type of datablock");
+        }
+
+        // You should add some datablock validation here
+
+        // Add data block type
+        data.Add(Convert.ToByte(datablock.DataBlockType));
+
+        // Now add the data or place any logic here to create byte array from your specific datablock
+        foreach (var b in db.Data.Span)
+        {
+            data.Add(b);
+        }
+    }
+
+    /// <summary>
+    /// Method decodes an incoming bytes array to an instance of Datablock object
+    /// Method is used while receiving bytes from device
+    /// </summary>
+    /// <param name="datablockBytes">Datablock bytes received</param>
+    /// <returns>Datablock object</returns>
+    public ITypedInboundDataBlock DecodeDataBlock(Memory<byte> datablockBytes)
+    {
+        // Now create your datablock as request by specs here
+        if (datablockBytes.Length < 2)
+        {
+            return new SfxpInboundDatablock
+            {
+                Data = Array.Empty<byte>(),
+                DataBlockType = 's'
+            };
+        }
+
+        var db = new SfxpInboundDatablock
+        {
+            Data = datablockBytes[1..],
+            DataBlockType = 's'
+        };
+
+        ParseDataChunks(db);
+
+        return db;
+    }
+
+    private void ParseDataChunks(SfxpInboundDatablock db)
+    {
+        if (_streamingConfigLength == 0)
+        {
+            return;
+        }
+
+        const byte identifier = 0xFF;
+        var currentIndex = identifier;
+
+        var data = db.Data;
+
+        for (var i = 0; i < data.Length; i++)
+        {
+            var firstByte = data.Slice(i, 1).Span[0];
+
+            // 0x0 sync byte
+            if (firstByte == SfxpProtocolHelper.RegularSyncByte.SyncByte)
+            {
+                var block = BitConverter.ToUInt64(data.Slice(i, SfxpProtocolHelper.RegularSyncByte.Length).ToArray());
+
+                if (block == 0)
+                {
+                    Debug.Print($"SyncChunk 0x0 {i}");
+                    i += SfxpProtocolHelper.RegularSyncByte.Length - 1;
+                    currentIndex = 0;
+                    continue;
+                }
+            }
+
+            // 0x9 sync byte
+            if (firstByte == SfxpProtocolHelper.SampleCounterSyncByteBlock.SyncByte)
+            {
+                var block = BitConverter.ToUInt64(data.Slice(i, SfxpProtocolHelper.SampleCounterSyncByteBlock.Length).ToArray());
+
+                if ((block & CompareValueSampleCounter) == ResultValueSampleCounter)
+                {
+                    Debug.Print($"SynChunk 0x9 {i} {ArrayHelper.GetStringFromArrayCsharpStyle(data.Slice(i, SfxpProtocolHelper.SampleCounterSyncByteBlock.Length))}");
+                    i += SfxpProtocolHelper.SampleCounterSyncByteBlock.Length - 1;
+                    currentIndex = 0;
+                    continue;
+                }
+            }
+
+            //if (i + SfxpProtocolHelper.DataChunkLength > data.Length)
+            //{
+            //    break;
+            //}
+
+            var chunk = data.Slice(i, SfxpProtocolHelper.DataChunkLength);
+
+            try
+            {
+                Debug.Print($"DataChunk {i} => {currentIndex} => Channel {(currentIndex == identifier ? identifier : StreamingConfig[currentIndex])} CurrentIndex: {currentIndex}");
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+
+
+            var dataChunk = _bufferPool.Dequeue();
+            dataChunk.Data = chunk;
+            dataChunk.Channel = currentIndex == identifier ? identifier : StreamingConfig[currentIndex];
+
+            //Debug.Print($"{i} => {currentIndex} => {StreamingConfig[currentIndex]}");
+
+            //if (currentIndex == 252)
+            //{
+            //    Debug.Print("Hallo");
+            //}
+
+            if (currentIndex != identifier)
+            {
+                if (currentIndex < _streamingConfigLength)
+                {
+                    currentIndex++;
+                }
+                else
+                {
+                    currentIndex = 0;
+                }
+            }
+
+            //Debug.Print("DataChunk");
+
+            db.DataChunks.Add(dataChunk);
+            i += SfxpProtocolHelper.DataChunkLength - 1;
+            if (i >= data.Length - SfxpProtocolHelper.DataChunkLength)
+            {
+                break;
+            }
+        }
+
+        // Now check if the chunks have type 255 0xFF
+        var indexMask = _streamingConfigLength;
+        for (var index = db.DataChunks.Count - 1; index >= 0; index--)
+        {
+            var chunk = db.DataChunks[index];
+
+            if (chunk.Channel != 0xFF)
+            {
+                continue;
+            }
+
+            chunk.Channel = StreamingConfig[indexMask];
+
+            //Debug.Print($"{index}: {chunk.Channel}");
+
+            indexMask--;
+            if (indexMask < 0)
+            {
+                indexMask = _streamingConfigLength;
+            }
+        }
+    }
+
+    private void ReturnDataChunkDelegate(DataChunk chunk)
+    {
+        chunk.Reset();
+        _bufferPool.Enqueue(chunk);
+    }
+}

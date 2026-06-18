@@ -49,14 +49,7 @@ public class SfxpDataMessageCodec : BaseDataMessageCodec
 
             var rawBytes = data.Slice(0, 8).ToArray();
 
-            var messageId = BitHelper.ToInt64FromBigEndian(rawBytes);
-
-            //if (BitConverter.IsLittleEndian)
-            //{
-            //    Array.Reverse(rawBytes);
-            //}
-
-            //var messageId = BitConverter.ToInt64(rawBytes, 0);
+            var messageId = BitConverter.ToUInt64(rawBytes);
 
             var dataBlockBytes = data.Slice(6, data.Length - 7);
             dataBlockBytes.Span[0] = 0x73;  // s

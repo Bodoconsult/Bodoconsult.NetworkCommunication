@@ -14,6 +14,8 @@ public class BackendAppStartParameter: ThreeNetworkDevicesAppStartParameter
     /// </summary>
     public long MaxDataLoggingFileSize { get; set; } = 1000000000;
 
-
-    public string DataLoggingPath { get; set; } = $"{Environment.GetFolderPath(Environment.SpecialFolder.UserProfile)}\\Documents\\IpBackendService";
+    /// <summary>
+    /// Path for data logging
+    /// </summary>
+    public string DataLoggingPath { get; set; } = $"{Environment.GetFolderPath(Environment.SpecialFolder.CommonDocuments)}\\IpBackendService";
 }

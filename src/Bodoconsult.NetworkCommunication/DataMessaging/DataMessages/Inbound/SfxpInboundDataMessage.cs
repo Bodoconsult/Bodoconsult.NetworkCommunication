@@ -85,5 +85,5 @@ public class SfxpInboundDataMessage : ISortableInboundDataMessage
     /// <summary>
     /// Original message ID received from the device
     /// </summary>
-    public long OriginalMessageId { get; set; }
+    public ulong OriginalMessageId { get; set; }
 }

@@ -28,6 +28,21 @@ public static class BitHelper
     }
 
     /// <summary>
+    /// Convert big endian byte array to ulong value
+    /// </summary>
+    /// <param name="rawBytes">Big endian byte array representing the number</param>
+    /// <returns>Number</returns>
+    public static ulong ToUInt64FromBigEndian(byte[] rawBytes)
+    {
+        if (IsLittleEndian)
+        {
+            Array.Reverse(rawBytes);
+        }
+
+        return BitConverter.ToUInt64(rawBytes, 0);
+    }
+
+    /// <summary>
     /// Convert big endian byte array to long value
     /// </summary>
     /// <param name="rawBytes">Big endian byte array representing the number</param>
@@ -43,7 +58,37 @@ public static class BitHelper
     }
 
     /// <summary>
-    /// Convert big endian byte array to long value
+    /// Convert big endian byte array to uint value
+    /// </summary>
+    /// <param name="rawBytes">Big endian byte array representing the number</param>
+    /// <returns>Number</returns>
+    public static uint ToUInt32FromBigEndian(byte[] rawBytes)
+    {
+        if (IsLittleEndian)
+        {
+            Array.Reverse(rawBytes);
+        }
+
+        return BitConverter.ToUInt32(rawBytes, 0);
+    }
+
+    /// <summary>
+    /// Convert big endian byte array to ushort value
+    /// </summary>
+    /// <param name="rawBytes">Big endian byte array representing the number</param>
+    /// <returns>Number</returns>
+    public static ushort ToUInt16FromBigEndian(byte[] rawBytes)
+    {
+        if (IsLittleEndian)
+        {
+            Array.Reverse(rawBytes);
+        }
+
+        return BitConverter.ToUInt16(rawBytes, 0);
+    }
+
+    /// <summary>
+    /// Convert big endian byte array to short value
     /// </summary>
     /// <param name="rawBytes">Big endian byte array representing the number</param>
     /// <returns>Number</returns>

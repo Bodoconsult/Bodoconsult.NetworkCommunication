@@ -11,6 +11,11 @@ namespace Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
 public class DataChunk: IResetable
 {
     /// <summary>
+    /// Channel not set identifier
+    /// </summary>
+    public const byte Identifier = 0xFF;
+
+    /// <summary>
     /// Channele the data chunk is bound to
     /// </summary>
     public byte Channel { get; set; } = 0xFF;
@@ -19,6 +24,11 @@ public class DataChunk: IResetable
     /// Data of the data chunk
     /// </summary>
     public Memory<byte>? Data { get; set; }
+
+    /// <summary>
+    /// Type of data chunk
+    /// </summary>
+    public DataChunkType DataChunkType { get; set; } = DataChunkType.DataChunk;
 
     /// <summary>
     /// Delegate for returning a <see cref="DataChunk"/> instance to the pool
@@ -30,5 +40,6 @@ public class DataChunk: IResetable
     {
         Channel = 0xFF;
         Data = null;
+        DataChunkType = DataChunkType.DataChunk;
     }
 }

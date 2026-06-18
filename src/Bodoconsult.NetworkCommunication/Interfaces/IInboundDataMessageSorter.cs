@@ -22,7 +22,7 @@ public interface IInboundDataMessageSorter
     /// <summary>
     /// The last incoming message ID returned correctly
     /// </summary>
-    long LastMessageId { get; set; }
+    ulong LastMessageId { get; set; }
 
     /// <summary>
     /// Add a message to the sorter and return zero, one or more messages waiting in the internal queue in the correct sort order
