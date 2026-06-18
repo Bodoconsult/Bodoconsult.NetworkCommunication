@@ -20,7 +20,7 @@ public class SfxpBackendUdpBusinessLogicAdapter : BaseSimpleDeviceBusinessLogicA
 {
     private CancellationTokenSource? _cts;
     private Thread? _workerTask;
-    private readonly ProducerConsumerQueue<IOutboundDataMessage> _inboundQueue = new();
+    private readonly ProducerConsumerQueue<IOutboundDataMessage> _outboundQueue = new();
 
     /// <summary>
     /// Default ctor
@@ -28,8 +28,8 @@ public class SfxpBackendUdpBusinessLogicAdapter : BaseSimpleDeviceBusinessLogicA
     /// <param name="device">Current device</param>
     public SfxpBackendUdpBusinessLogicAdapter(IIpDevice device) : base(device)
     {
-        _inboundQueue.ConsumerTaskDelegate = ConsumerTaskDelegate;
-        _inboundQueue.StartConsumer();
+        _outboundQueue.ConsumerTaskDelegate = ConsumerTaskDelegate;
+        _outboundQueue.StartConsumer();
     }
 
     private void ConsumerTaskDelegate(IOutboundDataMessage msg)
@@ -172,7 +172,7 @@ public class SfxpBackendUdpBusinessLogicAdapter : BaseSimpleDeviceBusinessLogicA
                 DataBlock = dataBlock
             };
 
-            _inboundQueue.Enqueue(msg);
+            _outboundQueue.Enqueue(msg);
         }
     }
 
@@ -221,7 +221,7 @@ public class SfxpBackendUdpBusinessLogicAdapter : BaseSimpleDeviceBusinessLogicA
                 OriginalMessageId = id
             };
 
-            _inboundQueue.Enqueue(msg);
+            _outboundQueue.Enqueue(msg);
 
             if (id == long.MaxValue)
             {

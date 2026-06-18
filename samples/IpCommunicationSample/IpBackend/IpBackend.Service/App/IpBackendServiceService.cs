@@ -163,10 +163,12 @@ public class IpBackendServiceService : IApplicationService
 
         _isStopped = true;
 
-
-
         // Do all needed to stop youe app correctly
         var di = Globals.Instance.DiContainer;
+
+        // Close network connections
+        var bm = di.Get<IBackendManager>();
+        bm.Dispose();
 
         try
         {

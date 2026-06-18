@@ -71,6 +71,11 @@ public class IpBackendServiceAppBuilder : BaseBackgroundServiceAppBuilder
             appStartParams.DataLoggingPath = appStartParams.DataLoggingPath.Replace("%MyDocuments%", Environment.GetFolderPath(Environment.SpecialFolder.CommonDocuments), StringComparison.InvariantCultureIgnoreCase);
         }
 
+        if (appStartParams.DataLoggingPath.Contains("%DataPath%", StringComparison.InvariantCultureIgnoreCase))
+        {
+            appStartParams.DataLoggingPath = appStartParams.DataLoggingPath.Replace("%DataPath%", Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData), StringComparison.InvariantCultureIgnoreCase);
+        }
+
         if (Directory.Exists(appStartParams.DataLoggingPath))
         {
             return;

@@ -3,6 +3,7 @@
 using System.Net.Sockets;
 using Bodoconsult.App.Abstractions.Interfaces;
 using Bodoconsult.NetworkCommunication.Delegates;
+using Bodoconsult.NetworkCommunication.EnumAndStates;
 using Bodoconsult.NetworkCommunication.Helpers;
 using Bodoconsult.NetworkCommunication.Interfaces;
 
@@ -134,7 +135,10 @@ public class IpCommunicationAdapter : ICommunicationAdapter
     /// <returns>Reply of the device</returns>
     public async Task<MessageSendingResult> SendDataMessage(IOutboundDataMessage command)
     {
-        ArgumentNullException.ThrowIfNull(CommunicationHandler);
+        if (CommunicationHandler == null)
+        {
+            return new MessageSendingResult(command, OrderExecutionResultState.Error);
+        }
 
         return await CommunicationHandler.SendMessage(command);
     }

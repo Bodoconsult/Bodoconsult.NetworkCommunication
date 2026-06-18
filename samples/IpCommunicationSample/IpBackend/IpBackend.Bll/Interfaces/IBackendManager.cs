@@ -4,7 +4,7 @@ using Bodoconsult.NetworkCommunication.Interfaces;
 
 namespace IpBackend.Bll.Interfaces;
 
-public interface IBackendManager
+public interface IBackendManager: IDisposable
 {
     /// <summary>
     /// Current IP config of the IP device for TCP/IP

@@ -53,7 +53,7 @@ public class LoggedSortableDataMessageProcessor : BaseDataMessageProcessor
         }
 
         // No valid message
-        s = $"{message.ToShortInfoString()} no valid message type";
+        s = $"{message.ToShortInfoString()}: not valid: {message.RawMessageDataClearText}";
         Config.MonitorLogger.LogError(s);
     }
 
@@ -103,7 +103,7 @@ public class LoggedSortableDataMessageProcessor : BaseDataMessageProcessor
             }
             catch (Exception e)
             {
-                msg1 = $" failed {msg.ToShortInfoString()}: {e}";
+                msg1 = $"failed {msg.ToShortInfoString()}: {e}";
                 Config.MonitorLogger.LogError(msg1);
                 Config.AppLogger.LogError($"{LoggerId}{msg1}");
             }
@@ -116,7 +116,7 @@ public class LoggedSortableDataMessageProcessor : BaseDataMessageProcessor
             return;
         }
 
-        msg1 = $"{msg.ToShortInfoString()}delivering to message receiver timed out";
+        msg1 = $"{msg.ToShortInfoString()}: delivering to message receiver timed out";
         Config.AppLogger.LogError($"{Config.LoggerId}{msg1}");
         Config.MonitorLogger.LogError(msg1);
     }

@@ -7,7 +7,7 @@ namespace IpClient.Bll.Interfaces;
 /// <summary>
 /// Interface for the client UI management
 /// </summary>
-public interface IClientUiManager
+public interface IClientUiManager: IDisposable
 {
     /// <summary>
     /// Current IP config of the backend for TCP/IP

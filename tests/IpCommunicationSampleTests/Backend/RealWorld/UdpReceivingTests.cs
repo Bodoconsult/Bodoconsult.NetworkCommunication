@@ -44,6 +44,8 @@ internal class UdpReceivingTests
     public void Cleanup()
     {
         _messageCounter = 0;
+        _deviceManager?.Dispose();
+        _backendManager?.Dispose();
     }
 
     //private void StartUdpClient()

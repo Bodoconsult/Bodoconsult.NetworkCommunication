@@ -177,6 +177,10 @@ public class IpDeviceServiceService : IApplicationService
         // Do all needed to stop youe app correctly
         var di = Globals.Instance.DiContainer;
 
+        // Stop communication
+        var im = di.Get<IIpDeviceManager>();
+        im.Dispose();
+
         try
         {
             // Stop performance logging

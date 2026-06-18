@@ -154,4 +154,9 @@ public class ClientUiManager: IClientUiManager
         BackendTcpIp.IpDevice.StartComm();
         BackendTcpIp.Device.Start();
     }
+
+    public void Dispose()
+    {
+        BackendTcpIp?.Device?.Stop();
+    }
 }

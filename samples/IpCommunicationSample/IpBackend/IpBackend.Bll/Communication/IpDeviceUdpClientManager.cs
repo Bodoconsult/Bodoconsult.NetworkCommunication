@@ -103,11 +103,11 @@ public class IpDeviceUdpClientManager : ISimpleDeviceManager
 
         var fileSize = appStartParams.MaxDataLoggingFileSize;
 
-        CreateLoggerChannel(0x0, ipAddress, config, "Channel1", fileSize);
-        CreateLoggerChannel(0x1, ipAddress, config, "Channel2", fileSize);
-        CreateLoggerChannel(0x2, ipAddress, config, "Channel3", fileSize);
-        CreateLoggerChannel(0x3, ipAddress, config, "Channel4", fileSize);
-        CreateLoggerChannel(0xC, ipAddress, config, "ADD", fileSize);
+        CreateLoggerChannel(0x0, ipAddress, config, "Channel1", fileSize, 2050);
+        CreateLoggerChannel(0x1, ipAddress, config, "Channel2", fileSize, 2050);
+        CreateLoggerChannel(0x2, ipAddress, config, "Channel3", fileSize, 2050);
+        CreateLoggerChannel(0x3, ipAddress, config, "Channel4", fileSize, 2050);
+        CreateLoggerChannel(0xC, ipAddress, config, "ADD", fileSize, 20);
 
         // Create messaging package
         configurator.CreateDataMessagingPackage(messageProcessingPackageFactory);
@@ -127,7 +127,7 @@ public class IpDeviceUdpClientManager : ISimpleDeviceManager
         DeviceBusinessLogicAdapter = dbla;
     }
 
-    private static void CreateLoggerChannel(byte channel, string ipAddress, IDataMessagingConfig config, string channelName, long size)
+    private static void CreateLoggerChannel(byte channel, string ipAddress, IDataMessagingConfig config, string channelName, long size, int cacheSize)
     {
         config.AppLogger.LogInformation($"{config.LoggerId}: storing bin data for {channelName} to {config.DataLoggingPath}");
 
@@ -138,7 +138,7 @@ public class IpDeviceUdpClientManager : ISimpleDeviceManager
         {
             FileName = config.DataLoggingFileName,
             TargetPath = config.DataLoggingPath,
-            CacheSize = 50,
+            CacheSize = cacheSize,
             FileExtension = "bin",
             MaxFileSize = size
         };

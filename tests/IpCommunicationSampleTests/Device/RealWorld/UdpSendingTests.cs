@@ -50,6 +50,7 @@ internal class UdpSendingTests
     {
         RemoteUdpDevice?.Dispose();
         RemoteTcpIpDevice?.Dispose();
+        _deviceManager?.Dispose();
     }
 
     private void StartUdpClient()

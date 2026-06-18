@@ -1,5 +1,6 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
+using Bodoconsult.App.Helpers;
 using Bodoconsult.NetworkCommunication.Interfaces;
 
 namespace Bodoconsult.NetworkCommunication.DataMessaging.DataMessageProcessors;
@@ -42,7 +43,7 @@ public class DefaultDataMessageProcessor : BaseDataMessageProcessor
         }
 
         // No valid message
-        s = $"message {message.MessageId} not valid: {message.GetType().Name}";
+        s = $"{message.ToShortInfoString()}: not valid: {message.GetType().Name}: {message.RawMessageDataClearText}";
         Config.MonitorLogger.LogError(s);
     }
 
@@ -64,7 +65,7 @@ public class DefaultDataMessageProcessor : BaseDataMessageProcessor
         //    }
         //    catch (Exception e)
         //    {
-        //        var s = $" failed {dataMessage.MessageId}: {dataMessage.RawMessageData.Length} bytes: {e}";
+        //        var s = $" failed {dataMessage.ToShortInfoString()}: {e}";
         //        Config.MonitorLogger.LogError(s);
         //    }
         //}).ContinueWith(Callback);

@@ -140,4 +140,10 @@ public class IpDeviceManager : IIpDeviceManager
         var provider = new BackendUdpBusinessTransactionProvider(adapter);
         _businessTransactionManager.AddProvider(provider);
     }
+
+    public void Dispose()
+    {
+        BackendUdp?.IpDevice?.StopComm();
+        BackendTcpIp?.IpDevice?.StopComm();
+    }
 }

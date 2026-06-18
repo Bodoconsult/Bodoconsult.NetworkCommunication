@@ -186,6 +186,9 @@ public class IpClientService : IApplicationService
         // Do all needed to stop youe app correctly
         var di = Globals.Instance.DiContainer;
 
+        // Stop communication
+        var cm = di.Get<IClientUiManager>();
+
         try
         {
             // Stop performance logging

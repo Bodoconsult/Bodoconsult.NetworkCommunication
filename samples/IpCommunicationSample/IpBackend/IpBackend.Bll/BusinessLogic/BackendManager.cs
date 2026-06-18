@@ -310,4 +310,23 @@ public class BackendManager : IBackendManager
         // Start client notifications
         _clientMessagingBusinessDelegate.StartClientMessaging();
     }
+
+    /// <summary>Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.</summary>
+    public void Dispose()
+    {
+        IpDeviceUdp?.IpDevice?.StopComm();
+        IpDeviceTcpIp?.Device?.Start();
+        Client?.IpDevice?.StopComm();
+
+        var config = IpDeviceUdp?.IpDevice?.DataMessagingConfig;
+        if (config == null)
+        {
+            return;
+        }
+
+        foreach (var logger in config.DataLoggers)
+        {
+            logger.Stop();
+        }
+    }
 }

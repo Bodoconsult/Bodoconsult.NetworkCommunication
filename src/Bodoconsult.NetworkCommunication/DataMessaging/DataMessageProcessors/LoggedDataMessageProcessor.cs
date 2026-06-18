@@ -49,7 +49,7 @@ public class LoggedDataMessageProcessor : BaseDataMessageProcessor
         }
 
         // No valid message
-        s = $"message {message.MessageId} not valid: {message.GetType().Name}";
+        s = $"{message.ToShortInfoString()}: not valid: {message.GetType().Name}: {message.RawMessageDataClearText}";
         Config.MonitorLogger.LogError(s);
     }
 
@@ -75,7 +75,7 @@ public class LoggedDataMessageProcessor : BaseDataMessageProcessor
             }
             catch (Exception e)
             {
-                msg = $" failed {dataMessage.MessageId}: {dataMessage.RawMessageData.Length} bytes: {e}";
+                msg = $" failed {dataMessage.ToShortInfoString()}: {e}";
                 Config.MonitorLogger.LogError(msg);
                 Config.AppLogger.LogError($"{LoggerId}{msg}");
             }
@@ -88,7 +88,7 @@ public class LoggedDataMessageProcessor : BaseDataMessageProcessor
             return;
         }
 
-        msg = $"{dataMessage}delivering to message receiver timed out";
+        msg = $"{dataMessage.ToShortInfoString()}: delivering to message receiver timed out";
         Config.AppLogger.LogError($"{Config.LoggerId}{msg}");
         Config.MonitorLogger.LogError(msg);
     }

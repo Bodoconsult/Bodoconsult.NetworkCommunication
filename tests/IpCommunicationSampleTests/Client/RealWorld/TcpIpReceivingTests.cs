@@ -50,6 +50,9 @@ internal class TcpIpReceivingTests
     public void Cleanup()
     {
         _messageCounter = 0;
+        _deviceManager?.Dispose();
+        _backendManager?.Dispose();
+        _clientManager?.Dispose();
     }
 
     //private void StartUdpClient()
