@@ -13,6 +13,13 @@ public interface IIpDeviceUdpDeviceBusinessLogicAdapter : ISimpleDeviceBusinessL
     #region Basics
 
     /// <summary>
+    /// Flush the binary data loggers
+    /// </summary>
+    /// <param name="requestData">Empty request parameter</param>
+    /// <returns>Reply</returns>
+    public IBusinessTransactionReply FlushDataLoggers(IBusinessTransactionRequestData requestData);
+
+    /// <summary>
     /// Send the required client hello to the server
     /// </summary>
     /// <param name="requestData">Current request parameter</param>

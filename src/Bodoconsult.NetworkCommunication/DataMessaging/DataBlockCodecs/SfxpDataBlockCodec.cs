@@ -20,6 +20,7 @@ public class SfxpDataBlockCodec : IDataBlockCodec
     private readonly Lock _streamingConfigLock = new();
     private byte[] _streamingConfig = [];
     private int _streamingConfigLength;
+    private int _syncChunkPos;
 
     private const ulong CompareValueSampleCounter = 0b_00000000_00001001_00000000_00001001_00000000_00001001_00000000_00001001;
     private const ulong ResultValueSampleCounter = 0b_00000000_00001001_00000000_00001001_00000000_00001001_0000000_000001001;
@@ -54,6 +55,7 @@ public class SfxpDataBlockCodec : IDataBlockCodec
             {
                 _streamingConfig = value;
                 _streamingConfigLength = value.Length - 1;
+                _syncChunkPos = _streamingConfigLength;
             }
         }
     }
@@ -151,7 +153,7 @@ public class SfxpDataBlockCodec : IDataBlockCodec
         CheckPotentialSyncChunks(syncChunks, db.DataChunks);
 
         // Apply channels to chunks
-        ApplyChannelsToChunks(db.DataChunks);
+        ApplyChannelsToChunks(db.DataChunks, syncChunks);
 
         // Remove the sync chunks now
         RemoveSyncChunks(db.DataChunks, syncChunks);
@@ -210,22 +212,22 @@ public class SfxpDataBlockCodec : IDataBlockCodec
         {
             path.Add(chunk);
         }
-        
+
         return path;
     }
 
-    private void ApplyChannelsToChunks(List<DataChunk> chunks)
+    private void ApplyChannelsToChunks(List<DataChunk> chunks, IEnumerable<int> syncChunks)
     {
         var currentIndex = 0;
 
-        foreach (var chunk in chunks)
+        var firstSyncChunk = syncChunks.First();
+
+        // Skip all chunks before the first sync byte
+        for (var index = firstSyncChunk + 1; index < chunks.Count; index++)
         {
-            // If sync chunk reset current index
-            if (chunk.DataChunkType != DataChunkType.DataChunk)
-            {
-                currentIndex = 0;
-                continue;
-            }
+            var chunk = chunks[index];
+
+            //Debug.Print($"Chunk {index}: {chunk.DataChunkType}: {StreamingConfig[currentIndex]}");
 
             // if data chunk
             chunk.Channel = StreamingConfig[currentIndex];
@@ -234,28 +236,34 @@ public class SfxpDataBlockCodec : IDataBlockCodec
             {
                 currentIndex = 0;
             }
-            currentIndex++;
+            else
+            {
+                currentIndex++;
+            }
         }
 
         // Now check if the data chunks have type 255 0xFF
         var indexMask = _streamingConfigLength;
-        for (var index = chunks.Count - 1; index >= 0; index--)
+        for (var index = firstSyncChunk; index >= 0; index--)
         {
             var chunk = chunks[index];
 
-            if (chunk.Channel != 0xFF || chunk.DataChunkType == DataChunkType.DataChunk)
-            {
-                continue;
-            }
+            //if (chunk.Channel != 0xFF || chunk.DataChunkType == DataChunkType.DataChunk)
+            //{
+            //    continue;
+            //}
 
             chunk.Channel = StreamingConfig[indexMask];
 
-            //Debug.Print($"{index}: {chunk.Channel}");
+            //Debug.Print($"OxFF: {index}: {chunk.DataChunkType}:{chunk.Channel}");
 
-            indexMask--;
-            if (indexMask < 0)
+            if (indexMask == 0)
             {
                 indexMask = _streamingConfigLength;
+            }
+            else
+            {
+                indexMask--;
             }
         }
     }
@@ -264,7 +272,7 @@ public class SfxpDataBlockCodec : IDataBlockCodec
     {
         var data = db.Data;
 
-        Debug.Print($"{ArrayHelper.GetStringFromArray(db.Data)}");
+        //Debug.Print($"{ArrayHelper.GetStringFromArray(db.Data)}");
 
         var len = data.Length;
 
@@ -283,10 +291,16 @@ public class SfxpDataBlockCodec : IDataBlockCodec
 
     private static void RemoveSyncChunks(List<DataChunk> chunks, List<int> syncChunks)
     {
-        for (var i = 0; i < syncChunks.Count; i++)
+        for (var index = syncChunks.Count - 1; index >= 0; index--)
         {
+            var i = syncChunks[index];
             var chunk = chunks[i];
 
+            if (chunk.DataChunkType != DataChunkType.RegularSyncChunk)
+            {
+                continue;
+            }
+            //Debug.Print($"{i} {chunk.DataChunkType}");
             chunks.Remove(chunk);
         }
     }
@@ -326,7 +340,6 @@ public class SfxpDataBlockCodec : IDataBlockCodec
             // No 0x9 sync byte
             if (firstByte != SfxpProtocolHelper.SampleCounterSyncByteBlock.SyncByte)
             {
-
                 continue;
             }
 
@@ -341,7 +354,7 @@ public class SfxpDataBlockCodec : IDataBlockCodec
 
             // 0x9 sync chunk
             syncChunks.Add(i);
-            //Debug.Print($"SynChunk 0x9 {i}");
+            //Debug.Print($"SyncChunk 0x9 {i}");
             chunk.DataChunkType = DataChunkType.SampleCounterSyncChunk;
         }
 

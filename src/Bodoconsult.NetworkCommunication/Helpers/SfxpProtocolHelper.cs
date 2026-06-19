@@ -38,5 +38,5 @@ public static class SfxpProtocolHelper
     /// <summary>
     /// The number of data chunks sent before the enxt sync byte is sent
     /// </summary>
-    public static int NumberOfChunksBeforeSyncByteIsSent { get; set; } = 254;
+    public static int NumberOfChunksBeforeSyncByteIsSent { get; set; } = 252;
 }

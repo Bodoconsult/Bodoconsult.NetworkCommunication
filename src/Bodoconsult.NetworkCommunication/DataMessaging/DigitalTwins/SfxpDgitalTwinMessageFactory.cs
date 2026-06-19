@@ -1,5 +1,6 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
+using System.Diagnostics;
 using Bodoconsult.NetworkCommunication.Helpers;
 using Bodoconsult.NetworkCommunication.Interfaces;
 
@@ -60,17 +61,16 @@ public class SfxpDigitalTwinMessageFactory : IDigitalTwinMessageFactory
 
         data.AddRange(intBytes);
 
+        //
+        if (_messageId == 0)
+        {
+            //Debug.Print($"Normal sync chunk: {_syncByteCounter} // {_lastSampleCounter}");
+            var sd = SfxpProtocolHelper.RegularSyncByte;
+            data.AddRange([sd.SyncByte, sd.SyncByte, sd.SyncByte, sd.SyncByte, sd.SyncByte, sd.SyncByte, sd.SyncByte, sd.SyncByte]);
+        }
+
         while (true)
         {
-            // Add sync byte
-            if (_lastChunkId == 0)
-            {
-                if (AddSyncChunk(data))
-                {
-                    break;
-                }
-            }
-
             if (data.Count == SfxpProtocolHelper.MaximumMessageLength - 1)
             {
                 break;
@@ -80,6 +80,17 @@ public class SfxpDigitalTwinMessageFactory : IDigitalTwinMessageFactory
             {
                 break;
             }
+
+            // Add sync byte
+            if (AddSyncChunk(data))
+            {
+                break;
+            }
+
+            //if (data.Count == SfxpProtocolHelper.MaximumMessageLength - 1)
+            //{
+            //    break;
+            //}
         }
 
         SetNextMessageId();

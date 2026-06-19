@@ -45,6 +45,9 @@ public class DatagramPipeline : IDatagramPipeline
     private void ConsumerTaskDelegate(UdpReceiveResult item)
     {
         // Make a copy of the byte data here
+        //var ms = item.Buffer.AsMemory()[..item.Buffer.Length].ToArray();
+        //SocketReceivedDataDelegate?.Invoke(item.Buffer.AsMemory()[..item.Buffer.Length]);
+
         SocketReceivedDataDelegate?.Invoke(item.Buffer.AsMemory()[..item.Buffer.Length]);
     }
 

@@ -6,11 +6,13 @@
 // https://learn.microsoft.com/de-de/dotnet/framework/network-programming/using-udp-services
 // https://enclave.io/high-performance-udp-sockets-net6/
 
+using System.Diagnostics;
 using Bodoconsult.App.Abstractions.Interfaces;
 using Bodoconsult.NetworkCommunication.Delegates;
 using Bodoconsult.NetworkCommunication.Interfaces;
 using System.Net;
 using System.Net.Sockets;
+using Bodoconsult.App.Helpers;
 
 namespace Bodoconsult.NetworkCommunication.Protocols.Udp;
 
@@ -240,6 +242,10 @@ public class UdpServerSocketProxy : BaseUpdSocketProxy
         try
         {
             var result = await UdpClient.SendAsync(bytesToSend, SendEndPoint, CancellationTokenSource.Token).AsTask();
+//#if DEBUG
+//            var s = ArrayHelper.GetStringFromArrayCsharpStyle(bytesToSend, false);
+//            Debug.Print($"\r\n{s}\r\n");
+//#endif
             Logger.LogInformation($"{LoggerId}sent {result}B");
             return result;
         }

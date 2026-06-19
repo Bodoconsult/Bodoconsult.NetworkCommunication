@@ -1,8 +1,10 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
+using System.Diagnostics;
 using Bodoconsult.App.Helpers;
 using Bodoconsult.NetworkCommunication.Helpers;
 using Bodoconsult.NetworkCommunication.Interfaces;
+using Microsoft.Diagnostics.Tracing.Parsers.MicrosoftAntimalwareAMFilter;
 
 namespace Bodoconsult.NetworkCommunication.Communication;
 
@@ -12,16 +14,19 @@ namespace Bodoconsult.NetworkCommunication.Communication;
 public class UdpDatagramIpDuplexIoReceiver : BaseDuplexIoReceiver
 {
     private long _messageCounter;
+    private int _count;
 
     /// <summary>
     /// Current validator impl for data messages
     /// </summary>
     private readonly IDataMessageValidator _dataMessageValidator;
 
-    /// <summary>
-    /// Fill pipeline timeout in ms from check to check
-    /// </summary>
-    public static int FillPipelineTimeout { get; set; } = 5;
+    private readonly ProducerConsumerQueue2<Memory<byte>> _queue = new ProducerConsumerQueue2<Memory<byte>>();
+
+    ///// <summary>
+    ///// Fill pipeline timeout in ms from check to check
+    ///// </summary>
+    //public static int FillPipelineTimeout { get; set; } = 5;
 
     /// <summary>
     /// Default ctor
@@ -49,21 +54,14 @@ public class UdpDatagramIpDuplexIoReceiver : BaseDuplexIoReceiver
         ArgumentNullException.ThrowIfNull(config.DataMessageProcessingPackage);
 
         _dataMessageValidator = config.DataMessageProcessingPackage.DataMessageValidator;
+
+        _queue.ConsumerTaskDelegate = ConsumerTaskDelegate;
+        _queue.StartConsumer();
+
     }
 
-    private int _count = 0;
-
-    /// <summary>
-    /// Handle data the socket has received
-    /// </summary>
-    /// <param name="data">Received data</param>
-    public void SocketReceivedData(Memory<byte> data)
+    private void ConsumerTaskDelegate(Memory<byte> data)
     {
-        if (data.IsEmpty)
-        {
-            return;
-        }
-
         string msg;
 
         //#if DEBUG
@@ -92,7 +90,17 @@ public class UdpDatagramIpDuplexIoReceiver : BaseDuplexIoReceiver
             }
         }
 
-        var codecResult = DataMessageCodingProcessor.DecodeDataMessage(data);
+        InboundCodecResult? codecResult;
+
+        try
+        {
+            codecResult = DataMessageCodingProcessor.DecodeDataMessage(data);
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            throw;
+        }
 
         if (codecResult.ErrorCode != 0 || codecResult.DataMessage == null)
         {
@@ -117,6 +125,8 @@ public class UdpDatagramIpDuplexIoReceiver : BaseDuplexIoReceiver
                 //{
                 //msg = $"Parsed command {codecResult.DataMessage.RawMessageDataClearText}";
 
+                Debug.Print(ArrayHelper.GetStringFromArrayCsharpStyle(codecResult.DataMessage.RawMessageData));
+
                 msg = $"Parsed {codecResult.DataMessage.ToShortInfoString()}: {codecResult.DataMessage.RawMessageDataClearText}";
                 //Trace.TraceInformation(msg);
                 DataMessagingConfig.MonitorLogger.LogDebug(msg);
@@ -130,6 +140,20 @@ public class UdpDatagramIpDuplexIoReceiver : BaseDuplexIoReceiver
 
             DataMessageProcessor.ProcessMessage(codecResult.DataMessage);
         }
+    }
+
+    /// <summary>
+    /// Handle data the socket has received
+    /// </summary>
+    /// <param name="data">Received data</param>
+    public void SocketReceivedData(Memory<byte> data)
+    {
+        if (data.IsEmpty)
+        {
+            return;
+        }
+
+        _queue.Enqueue(data);
     }
 
     /// <summary>
@@ -204,6 +228,8 @@ public class UdpDatagramIpDuplexIoReceiver : BaseDuplexIoReceiver
         {
             return;
         }
+
+        _queue.StopConsumer();
 
         await StopReceiver();
 

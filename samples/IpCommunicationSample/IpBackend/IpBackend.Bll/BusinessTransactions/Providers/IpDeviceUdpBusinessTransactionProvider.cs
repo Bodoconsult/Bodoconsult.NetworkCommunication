@@ -30,6 +30,7 @@ public class IpDeviceUdpBusinessTransactionProvider : IBusinessTransactionProvid
         CreateBusinessTransactionDelegates.Add(ServerSideBusinessTransactionIds.LoadStreamConfig, Transaction207_LoadStreamConfig);
         CreateBusinessTransactionDelegates.Add(ServerSideBusinessTransactionIds.StartDataLogging, Transaction208_StartDataLogging);
         CreateBusinessTransactionDelegates.Add(ServerSideBusinessTransactionIds.StopDataLogging, Transaction209_StopDataLogging);
+        CreateBusinessTransactionDelegates.Add(ServerSideBusinessTransactionIds.FlúshDataLoggers, Transaction210_FlushDataLoggers);
     }
 
     /// <summary>
@@ -121,6 +122,24 @@ public class IpDeviceUdpBusinessTransactionProvider : IBusinessTransactionProvid
             Id = ServerSideBusinessTransactionIds.StopDataLogging,
             Name = "Stop data logging",
             RunBusinessTransactionDelegate = BusinessLogicAdapter.StopDataLogging
+        };
+
+        transaction.AllowedRequestDataTypes.Add(nameof(EmptyBusinessTransactionRequestData));
+
+        return transaction;
+    }
+
+    /// <summary>
+    /// Create transaction 210: flush data loggers
+    /// </summary>
+    /// <returns>Business transaction</returns>
+    public BusinessTransaction Transaction210_FlushDataLoggers()
+    {
+        var transaction = new BusinessTransaction
+        {
+            Id = ServerSideBusinessTransactionIds.FlúshDataLoggers,
+            Name = "Flush data loggers",
+            RunBusinessTransactionDelegate = BusinessLogicAdapter.FlushDataLoggers
         };
 
         transaction.AllowedRequestDataTypes.Add(nameof(EmptyBusinessTransactionRequestData));

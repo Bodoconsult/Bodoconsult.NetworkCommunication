@@ -103,10 +103,12 @@ public class IpDeviceUdpClientManager : ISimpleDeviceManager
 
         var fileSize = appStartParams.MaxDataLoggingFileSize;
 
-        CreateLoggerChannel(0x0, ipAddress, config, "Channel1", fileSize, 2050);
-        CreateLoggerChannel(0x1, ipAddress, config, "Channel2", fileSize, 2050);
-        CreateLoggerChannel(0x2, ipAddress, config, "Channel3", fileSize, 2050);
-        CreateLoggerChannel(0x3, ipAddress, config, "Channel4", fileSize, 2050);
+        const int cacheSize = 5000;
+
+        CreateLoggerChannel(0x0, ipAddress, config, "Channel1", fileSize, cacheSize);
+        CreateLoggerChannel(0x1, ipAddress, config, "Channel2", fileSize, cacheSize);
+        CreateLoggerChannel(0x2, ipAddress, config, "Channel3", fileSize, cacheSize);
+        CreateLoggerChannel(0x3, ipAddress, config, "Channel4", fileSize, cacheSize);
         CreateLoggerChannel(0xC, ipAddress, config, "ADD", fileSize, 20);
 
         // Create messaging package

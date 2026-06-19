@@ -46,13 +46,12 @@ public class SfxpIpDeviceUdpBusinessLogicAdapter : BaseSimpleDeviceBusinessLogic
             return;
         }
 
-
         // Reduced logging to avoid performance issues
         _messageCounter++;
 
         if (Math.Abs(_messageCounter % 1000.0) < 0.1)
         {
-            var msg = $"Received message {_messageCounter} with {message.RawMessageData.Length} bytes";
+            var msg = $"Received message {_messageCounter} ({message.RawMessageData.Length}B)";
             //Debug.Print(msg);
             IpDevice.DataMessagingConfig.AppLogger.LogInformation(msg);
         }
@@ -71,6 +70,24 @@ public class SfxpIpDeviceUdpBusinessLogicAdapter : BaseSimpleDeviceBusinessLogic
             chunk.ReturnDataChunkDelegate?.Invoke(chunk);
         }
         db.DataChunks.Clear();
+    }
+
+
+    /// <summary>
+    /// Flush the binary data loggers
+    /// </summary>
+    /// <param name="requestData">Empty request parameter</param>
+    /// <returns>Reply</returns>
+    public IBusinessTransactionReply FlushDataLoggers(IBusinessTransactionRequestData requestData)
+    {
+        var loggers = IpDevice.DataMessagingConfig.DataLoggers;
+
+        foreach (var logger in loggers)
+        {
+            logger.FlushCache();
+        }
+
+        return new DefaultBusinessTransactionReply();
     }
 
     /// <summary>
@@ -136,6 +153,14 @@ public class SfxpIpDeviceUdpBusinessLogicAdapter : BaseSimpleDeviceBusinessLogic
     public IBusinessTransactionReply StopDataLogging(IBusinessTransactionRequestData requestData)
     {
         IpDevice.DataMessagingConfig.IsDataLoggingActivated = false;
+
+        var loggers = IpDevice.DataMessagingConfig.DataLoggers;
+
+        foreach (var logger in loggers)
+        {
+            logger.FlushCache();
+        }
+
         return new DefaultBusinessTransactionReply();
     }
 

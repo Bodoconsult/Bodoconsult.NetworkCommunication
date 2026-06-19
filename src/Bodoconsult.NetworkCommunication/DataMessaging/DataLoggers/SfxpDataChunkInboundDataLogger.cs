@@ -1,9 +1,11 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
 using Bodoconsult.App.Abstractions.Interfaces;
+using Bodoconsult.App.Helpers;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataBlocks;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
 using Bodoconsult.NetworkCommunication.Interfaces;
+using System.Diagnostics;
 
 namespace Bodoconsult.NetworkCommunication.DataMessaging.DataLoggers;
 
@@ -48,13 +50,20 @@ public class SfxpDataChunkInboundDataLogger : IInboundDataLogger
     }
 
     /// <summary>
+    /// Flush the cache to disk
+    /// </summary>
+    public void FlushCache()
+    {
+        DataExportService.FlushCache();
+    }
+
+    /// <summary>
     /// Save all data and then stop the data export
     /// </summary>
     public void Stop()
     {
         DataExportService.Stop();
     }
-
 
     /// <summary>
     /// Check if the message is to log. A message can be logged by zero or one logger maximum.
@@ -63,7 +72,7 @@ public class SfxpDataChunkInboundDataLogger : IInboundDataLogger
     /// <returns>A list with array items to log or empty list</returns>
     public List<Memory<byte>> CheckIfMessageIsToLog(IInboundDataMessage message)
     {
-        if (message is not SfxpInboundDataMessage sfxp || sfxp.DataBlock is not SfxpInboundDatablock db)
+        if (message is not SfxpInboundDataMessage { DataBlock: SfxpInboundDatablock db })
         {
             return [];
         }
@@ -78,6 +87,8 @@ public class SfxpDataChunkInboundDataLogger : IInboundDataLogger
             //Debug.Print($"{chunk.Channel}: {chunk.Data.Value.Length}");
 
             chunks.Add(chunk.Data.Value);
+
+            //Debug.Print(ArrayHelper.GetStringFromArray(chunk.Data.Value));
         }
 
         return chunks;

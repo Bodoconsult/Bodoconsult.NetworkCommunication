@@ -41,6 +41,14 @@ public class OnlyDataBlockInboundDataLogger : IInboundDataLogger
     }
 
     /// <summary>
+    /// Flush the cache to disk
+    /// </summary>
+    public void FlushCache()
+    {
+        DataExportService.FlushCache();
+    }
+
+    /// <summary>
     /// Save all data and then stop the data export
     /// </summary>
     public void Stop()

@@ -20,6 +20,11 @@ public interface IInboundDataLogger
     void Start();
 
     /// <summary>
+    /// Flush the cache to disk
+    /// </summary>
+    void FlushCache();
+
+    /// <summary>
     /// Save all data and then stop the data export
     /// </summary>
     void Stop();

@@ -47,11 +47,11 @@ public class SfxpDataMessageCodec : BaseDataMessageCodec
         {
             ITypedInboundDataBlock? dataBlock;
 
-            var rawBytes = data.Slice(0, 8).ToArray();
+            var rawBytes = data[..8].ToArray();
 
             var messageId = BitConverter.ToUInt64(rawBytes);
 
-            var dataBlockBytes = data.Slice(6, data.Length - 7);
+            var dataBlockBytes = data[7..];
             dataBlockBytes.Span[0] = 0x73;  // s
 
             try
@@ -103,6 +103,9 @@ public class SfxpDataMessageCodec : BaseDataMessageCodec
         tMessage.WaitForAcknowledgement = WaitForAcknowledgement;
 
         var data = new List<byte>();
+
+
+
 
         // Add the datablock now if required
         try

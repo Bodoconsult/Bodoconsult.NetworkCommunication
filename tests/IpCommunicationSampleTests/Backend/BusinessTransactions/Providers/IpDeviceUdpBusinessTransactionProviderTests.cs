@@ -22,7 +22,7 @@ internal class IpDeviceUdpBusinessTransactionProviderTests
         using (Assert.EnterMultipleScope())
         {
             Assert.That(delegates, Is.Not.Null);
-            Assert.That(delegates, Has.Count.EqualTo(5));
+            Assert.That(delegates, Has.Count.EqualTo(6));
 
             foreach (var item in delegates)
             {
@@ -122,6 +122,25 @@ internal class IpDeviceUdpBusinessTransactionProviderTests
         {
             Assert.That(transaction, Is.Not.Null);
             Assert.That(transaction.Id, Is.EqualTo(ServerSideBusinessTransactionIds.StopDataLogging));
+            Assert.That(transaction.RunBusinessTransactionDelegate, Is.Not.Null);
+            Assert.That(transaction.AllowedRequestDataTypes, Has.Count.EqualTo(1));
+        }
+    }
+
+    [Test]
+    public void Transaction210_FlushDataLoggers_Always_ReturnsCorrectTransaction()
+    {
+        // Arrange
+        var provider = CreateProvider();
+
+        // Act
+        var transaction = provider.Transaction210_FlushDataLoggers();
+
+        // Assert
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(transaction, Is.Not.Null);
+            Assert.That(transaction.Id, Is.EqualTo(ServerSideBusinessTransactionIds.FlúshDataLoggers));
             Assert.That(transaction.RunBusinessTransactionDelegate, Is.Not.Null);
             Assert.That(transaction.AllowedRequestDataTypes, Has.Count.EqualTo(1));
         }
