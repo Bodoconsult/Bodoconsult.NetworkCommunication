@@ -1,12 +1,8 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH.  All rights reserved.
 
-using Bodoconsult.App.Abstractions.Interfaces;
-using Bodoconsult.App.Avalonia.ReactiveUI.App;
-using Bodoconsult.App.ReactiveUI.Interfaces;
 using IpClientUi.DiContainerProvider;
 using IpClientUi.ViewModels;
 using IpClientUi.Views;
-using ReactiveUI;
 
 namespace IpClientUi;
 

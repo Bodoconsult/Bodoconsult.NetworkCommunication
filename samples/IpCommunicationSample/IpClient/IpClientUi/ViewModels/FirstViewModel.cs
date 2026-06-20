@@ -1,9 +1,4 @@
-﻿using Bodoconsult.App.ReactiveUI.Interfaces;
-using Bodoconsult.App.ReactiveUI.Regions;
-using ReactiveUI;
-using ReactiveUI.SourceGenerators;
-
-namespace IpClientUi.ViewModels;
+﻿namespace IpClientUi.ViewModels;
 
 public partial class FirstViewModel : ReactiveObject, IUiRegionViewModel
 {

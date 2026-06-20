@@ -1,8 +1,5 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
-using Bodoconsult.App.ReactiveUI.Regions;
-using ReactiveUI;
-
 namespace IpClientUi.Interfaces;
 
 /// <summary>

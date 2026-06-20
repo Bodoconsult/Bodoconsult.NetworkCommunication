@@ -1,7 +1,6 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH.  All rights reserved.
 
 using IpClientUi.ViewModels;
-using ReactiveUI.Avalonia;
 
 namespace IpClientUi.Views;
 

@@ -1,13 +1,10 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
 using Bodoconsult.App.BufferPool;
-using Bodoconsult.App.Helpers;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataBlocks;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
 using Bodoconsult.NetworkCommunication.Helpers;
 using Bodoconsult.NetworkCommunication.Interfaces;
-using System.Diagnostics;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Bodoconsult.NetworkCommunication.DataMessaging.DataBlockCodecs;
 
@@ -20,7 +17,6 @@ public class SfxpDataBlockCodec : IDataBlockCodec
     private readonly Lock _streamingConfigLock = new();
     private byte[] _streamingConfig = [];
     private int _streamingConfigLength;
-    private int _syncChunkPos;
 
     private const ulong CompareValueSampleCounter = 0b_00000000_00001001_00000000_00001001_00000000_00001001_00000000_00001001;
     private const ulong ResultValueSampleCounter = 0b_00000000_00001001_00000000_00001001_00000000_00001001_0000000_000001001;
@@ -34,7 +30,7 @@ public class SfxpDataBlockCodec : IDataBlockCodec
         {
             ReturnDataChunkDelegate = ReturnDataChunkDelegate
         });
-        _bufferPool.Allocate(2100);
+        _bufferPool.Allocate(2500);
     }
 
     /// <summary>
@@ -55,7 +51,6 @@ public class SfxpDataBlockCodec : IDataBlockCodec
             {
                 _streamingConfig = value;
                 _streamingConfigLength = value.Length - 1;
-                _syncChunkPos = _streamingConfigLength;
             }
         }
     }
@@ -248,11 +243,6 @@ public class SfxpDataBlockCodec : IDataBlockCodec
         {
             var chunk = chunks[index];
 
-            //if (chunk.Channel != 0xFF || chunk.DataChunkType == DataChunkType.DataChunk)
-            //{
-            //    continue;
-            //}
-
             chunk.Channel = StreamingConfig[indexMask];
 
             //Debug.Print($"OxFF: {index}: {chunk.DataChunkType}:{chunk.Channel}");
@@ -291,16 +281,21 @@ public class SfxpDataBlockCodec : IDataBlockCodec
 
     private static void RemoveSyncChunks(List<DataChunk> chunks, List<int> syncChunks)
     {
-        for (var index = syncChunks.Count - 1; index >= 0; index--)
-        {
-            var i = syncChunks[index];
-            var chunk = chunks[i];
+        //for (var index = syncChunks.Count - 1; index >= 0; index--)
+        //{
+        //    var i = syncChunks[index];
+        //    var chunk = chunks[i];
 
-            if (chunk.DataChunkType != DataChunkType.RegularSyncChunk)
-            {
-                continue;
-            }
-            //Debug.Print($"{i} {chunk.DataChunkType}");
+        //    if (chunk.DataChunkType != DataChunkType.RegularSyncChunk)
+        //    {
+        //        continue;
+        //    }
+        //    //Debug.Print($"{i} {chunk.DataChunkType}");
+        //    chunks.Remove(chunk);
+        //}
+
+        foreach(var chunk in chunks.Where(x=> x.DataChunkType == DataChunkType.RegularSyncChunk).ToList())
+        {
             chunks.Remove(chunk);
         }
     }

@@ -39,7 +39,6 @@ public class IpCommunicationAdapter : ICommunicationAdapter
         _loggerId = $"{dataMessagingConfig.LoggerId}{(dataMessagingConfig.LoggerId.EndsWith(": ") ? string.Empty : ": ")}";
         _communicationHandlerFactory = communicationHandlerFactory;
 
-        ////DataMessagingConfig.GetTowerStateDelegate = GetTowerState;
         DataMessagingConfig.CheckIfCommunicationIsOnlineDelegate = CheckIfCommunicationIsOnline;
         DataMessagingConfig.CheckIfDeviceIsReadyDelegate = CheckIfDeviceIsReady;
 
@@ -276,7 +275,7 @@ public class IpCommunicationAdapter : ICommunicationAdapter
                 return IsCommunicationHandlerNotNull;
             }
 
-            // Close tower comm otherwise
+            // Close comm otherwise
             ComDevCloseInternal(true);
 
             IsComDevActionInProgress = false;
@@ -299,7 +298,7 @@ public class IpCommunicationAdapter : ICommunicationAdapter
     }
 
     /// <summary>
-    /// Method for closing the communication channel with the tower
+    /// Method for closing the communication channel with the device
     /// </summary>
     public void ComDevClose()
     {

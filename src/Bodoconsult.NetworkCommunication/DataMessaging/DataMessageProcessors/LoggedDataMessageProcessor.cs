@@ -88,7 +88,7 @@ public class LoggedDataMessageProcessor : BaseDataMessageProcessor
             return;
         }
 
-        msg = $"{dataMessage.ToShortInfoString()}: delivering to message receiver timed out";
+        msg = $"{dataMessage.ToShortInfoString()}: delivering to receiver timed out";
         Config.AppLogger.LogError($"{Config.LoggerId}{msg}");
         Config.MonitorLogger.LogError(msg);
     }

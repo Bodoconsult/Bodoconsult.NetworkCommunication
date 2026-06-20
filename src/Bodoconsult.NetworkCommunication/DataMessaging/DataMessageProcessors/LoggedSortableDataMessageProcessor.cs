@@ -116,7 +116,7 @@ public class LoggedSortableDataMessageProcessor : BaseDataMessageProcessor
             return;
         }
 
-        msg1 = $"{msg.ToShortInfoString()}: delivering to message receiver timed out";
+        msg1 = $"{msg.ToShortInfoString()}: delivering to receiver timed out";
         Config.AppLogger.LogError($"{Config.LoggerId}{msg1}");
         Config.MonitorLogger.LogError(msg1);
     }
@@ -126,12 +126,6 @@ public class LoggedSortableDataMessageProcessor : BaseDataMessageProcessor
         foreach (var logger in _dataLoggers)
         {
             var chunks = logger.CheckIfMessageIsToLog(msg);
-
-            if (chunks.Count == 0)
-            {
-                continue;
-            }
-
             logger.LogTheMessages(chunks);
         }
     }

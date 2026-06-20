@@ -2,6 +2,7 @@
 
 using Bodoconsult.App.Abstractions.Interfaces;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
+using Bodoconsult.NetworkCommunication.Exceptions;
 using Bodoconsult.NetworkCommunication.Interfaces;
 
 namespace Bodoconsult.NetworkCommunication.DataMessaging.DataMessageCodingProcessors;
@@ -58,30 +59,37 @@ public class DefaultDataMessageCodingProcessor : IDataMessageCodingProcessor
     /// <returns>Coding result with a <see cref="IInboundDataMessage"/> instance if coding was successful</returns>
     public InboundCodecResult DecodeDataMessage(Memory<byte> data)
     {
-        if (MessageCodecs.Count == 0)
+        try
         {
+            if (MessageCodecs.Count == 0)
+            {
+                return new InboundCodecResult
+                {
+                    ErrorCode = 1,
+                    ErrorMessage = "No codecs loaded"
+                };
+            }
+
+            foreach (var codec in MessageCodecs)
+            {
+                var result = codec.DecodeDataMessage(data);
+
+                if (result.ErrorCode == 0)
+                {
+                    return result;
+                }
+            }
+
             return new InboundCodecResult
             {
-                ErrorCode = 1,
-                ErrorMessage = "No codecs loaded"
+                ErrorCode = 2,
+                ErrorMessage = "No codecs found for the message"
             };
         }
-
-        foreach (var codec in MessageCodecs)
+        catch (Exception e)
         {
-            var result = codec.DecodeDataMessage(data);
-
-            if (result.ErrorCode == 0)
-            {
-                return result;
-            }
+            throw new DatablockCodecException("Decoding error", e);
         }
-
-        return new InboundCodecResult
-        {
-            ErrorCode = 2,
-            ErrorMessage = "No codecs found for the message"
-        };
     }
 
     /// <summary>
@@ -91,60 +99,68 @@ public class DefaultDataMessageCodingProcessor : IDataMessageCodingProcessor
     /// <returns>A result set with the message as byte array </returns>
     public OutboundCodecResult EncodeDataMessage(IOutboundMessage dataMessage)
     {
-        if (dataMessage is RawOutboundDataMessage raw)
+        try
         {
-            if (raw.RawMessageData.Length == 0)
+            if (dataMessage is RawOutboundDataMessage raw)
             {
+                if (raw.RawMessageData.Length == 0)
+                {
+                    return new OutboundCodecResult
+                    {
+                        ErrorCode = 2,
+                        ErrorMessage = "raw.RawMessageData.Length is zero"
+                    };
+                }
+
                 return new OutboundCodecResult
                 {
-                    ErrorCode = 2,
-                    ErrorMessage = "raw.RawMessageData.Length is zero"
+                    ErrorCode = 0
                 };
             }
 
-            return new OutboundCodecResult
-            {
-                ErrorCode = 0
-            };
-        }
 
-
-        if (MessageCodecs.Count == 0)
-        {
-            return new OutboundCodecResult
+            if (MessageCodecs.Count == 0)
             {
-                ErrorCode = 1,
-                ErrorMessage = "No codecs loaded"
-            };
-        }
-
-        foreach (var codec in MessageCodecs)
-        {
-            try
-            {
-                var result = codec.EncodeDataMessage(dataMessage);
-
-                if (result.ErrorCode == 0)
-                {
-                    return result;
-                }
-            }
-            catch (Exception e)
-            {
-                var s = e.ToString();
-                Logger.LogError(s);
                 return new OutboundCodecResult
                 {
                     ErrorCode = 1,
-                    ErrorMessage = $"Exception{s}"
+                    ErrorMessage = "No codecs loaded"
                 };
             }
-        }
 
-        return new OutboundCodecResult
+            foreach (var codec in MessageCodecs)
+            {
+                try
+                {
+                    var result = codec.EncodeDataMessage(dataMessage);
+
+                    if (result.ErrorCode == 0)
+                    {
+                        return result;
+                    }
+                }
+                catch (Exception e)
+                {
+                    var s = e.ToString();
+                    Logger.LogError(s);
+                    return new OutboundCodecResult
+                    {
+                        ErrorCode = 1,
+                        ErrorMessage = $"Exception{s}"
+                    };
+                }
+            }
+
+            return new OutboundCodecResult
             {
                 ErrorCode = 1,
                 ErrorMessage = "No codecs found for the message"
             };
+
+        }
+        catch (Exception e)
+        {
+            throw new DatablockCodecException("Encoding error", e);
         }
     }
+}

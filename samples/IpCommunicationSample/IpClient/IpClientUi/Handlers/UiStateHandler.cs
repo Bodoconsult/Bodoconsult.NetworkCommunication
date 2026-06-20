@@ -1,12 +1,7 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
-using Bodoconsult.NetworkCommunication.BusinessTransactions.Requests;
 using IpClient.Bll.Interfaces;
-using ReactiveUI;
-using ReactiveUI.SourceGenerators;
 using System.Text;
-using Bodoconsult.App.ReactiveUI.ViewModels;
-using IpCommunicationSample.Common.BusinessTransactions.Requests;
 
 namespace IpClientUi.Handlers;
 

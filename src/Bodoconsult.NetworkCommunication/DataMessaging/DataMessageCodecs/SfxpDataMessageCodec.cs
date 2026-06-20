@@ -1,7 +1,8 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
+using Bodoconsult.App.Helpers;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
-using Bodoconsult.NetworkCommunication.Helpers;
+using Bodoconsult.NetworkCommunication.Exceptions;
 using Bodoconsult.NetworkCommunication.Interfaces;
 
 namespace Bodoconsult.NetworkCommunication.DataMessaging.DataMessageCodecs;
@@ -45,8 +46,6 @@ public class SfxpDataMessageCodec : BaseDataMessageCodec
 
         try
         {
-            ITypedInboundDataBlock? dataBlock;
-
             var rawBytes = data[..8].ToArray();
 
             var messageId = BitConverter.ToUInt64(rawBytes);
@@ -54,16 +53,7 @@ public class SfxpDataMessageCodec : BaseDataMessageCodec
             var dataBlockBytes = data[7..];
             dataBlockBytes.Span[0] = 0x73;  // s
 
-            try
-            {
-                dataBlock = DataBlockCodingProcessor.FromBytesToDataBlock(dataBlockBytes);
-            }
-            catch (Exception dataBlockException)
-            {
-                result.ErrorMessage = $"DataBlock {DataMessageHelper.ByteArrayToString(dataBlockBytes)}: decoding failed: {dataBlockException}";
-                result.ErrorCode = 4;
-                return result;
-            }
+            var dataBlock = DataBlockCodingProcessor.FromBytesToDataBlock(dataBlockBytes);
 
             var dataMessage = new SfxpInboundDataMessage
             {
@@ -77,9 +67,15 @@ public class SfxpDataMessageCodec : BaseDataMessageCodec
             return result;
 
         }
+        catch (DatablockCodecException dataBlockException)
+        {
+            result.ErrorMessage = $"DataMessage {ArrayHelper.GetStringFromArrayCsharpStyle(data, false)}: decoding failed: {dataBlockException}";
+            result.ErrorCode = 4;
+            return result;
+        }
         catch (Exception exception)
         {
-            result.ErrorMessage = $"DataMessage {DataMessageHelper.ByteArrayToString(data)}: decoding failed: {exception.Message}";
+            result.ErrorMessage = $"DataMessage {ArrayHelper.GetStringFromArrayCsharpStyle(data, false)}: decoding failed: {exception}";
             result.ErrorCode = 5;
             return result;
         }
@@ -103,9 +99,6 @@ public class SfxpDataMessageCodec : BaseDataMessageCodec
         tMessage.WaitForAcknowledgement = WaitForAcknowledgement;
 
         var data = new List<byte>();
-
-
-
 
         // Add the datablock now if required
         try

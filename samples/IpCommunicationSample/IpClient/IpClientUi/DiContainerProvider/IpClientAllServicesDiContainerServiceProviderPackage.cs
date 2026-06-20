@@ -1,10 +1,5 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
-using Bodoconsult.App.Abstractions.Interfaces;
-using Bodoconsult.App.DependencyInjection;
-using Bodoconsult.I18N.DependencyInjection;
-using Bodoconsult.NetworkCommunication.DependencyInjection;
-
 namespace IpClientUi.DiContainerProvider;
 
 /// <summary>

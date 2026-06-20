@@ -1,7 +1,5 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH.  All rights reserved.
 
-using Avalonia;
-
 namespace IpClientUi;
 
 internal sealed class Program

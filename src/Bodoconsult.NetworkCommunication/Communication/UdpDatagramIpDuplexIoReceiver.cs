@@ -1,10 +1,7 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
-using System.Diagnostics;
 using Bodoconsult.App.Helpers;
-using Bodoconsult.NetworkCommunication.Helpers;
 using Bodoconsult.NetworkCommunication.Interfaces;
-using Microsoft.Diagnostics.Tracing.Parsers.MicrosoftAntimalwareAMFilter;
 
 namespace Bodoconsult.NetworkCommunication.Communication;
 
@@ -20,13 +17,6 @@ public class UdpDatagramIpDuplexIoReceiver : BaseDuplexIoReceiver
     /// Current validator impl for data messages
     /// </summary>
     private readonly IDataMessageValidator _dataMessageValidator;
-
-    private readonly ProducerConsumerQueue2<Memory<byte>> _queue = new ProducerConsumerQueue2<Memory<byte>>();
-
-    ///// <summary>
-    ///// Fill pipeline timeout in ms from check to check
-    ///// </summary>
-    //public static int FillPipelineTimeout { get; set; } = 5;
 
     /// <summary>
     /// Default ctor
@@ -54,92 +44,6 @@ public class UdpDatagramIpDuplexIoReceiver : BaseDuplexIoReceiver
         ArgumentNullException.ThrowIfNull(config.DataMessageProcessingPackage);
 
         _dataMessageValidator = config.DataMessageProcessingPackage.DataMessageValidator;
-
-        _queue.ConsumerTaskDelegate = ConsumerTaskDelegate;
-        _queue.StartConsumer();
-
-    }
-
-    private void ConsumerTaskDelegate(Memory<byte> data)
-    {
-        string msg;
-
-        //#if DEBUG
-        //        var msg = $"{LoggerId}received: {data.Length} byte";
-        //        MonitorLogger.LogInformation(msg);
-        //#endif
-
-        if (ActivateReceiveLogging)
-        {
-            msg = $"Buffer ({data.Length}B): {ArrayHelper.GetStringFromArrayCsharpStyle(data, false)}";
-            MonitorLogger.LogDebug(msg);
-        }
-        else
-        {
-            if (_messageCounter == long.MaxValue)
-            {
-                _messageCounter = -1;
-            }
-            _messageCounter++;
-
-            if (Math.Abs(_messageCounter % 100.0) < 0.1)
-            {
-                msg = $"Received message {_messageCounter}";
-                //Trace.TraceInformation(msg);
-                MonitorLogger.LogDebug(msg);
-            }
-        }
-
-        InboundCodecResult? codecResult;
-
-        try
-        {
-            codecResult = DataMessageCodingProcessor.DecodeDataMessage(data);
-        }
-        catch (Exception e)
-        {
-            Console.WriteLine(e);
-            throw;
-        }
-
-        if (codecResult.ErrorCode != 0 || codecResult.DataMessage == null)
-        {
-            msg = $"Parsing command failed with error code {codecResult.ErrorCode}: {codecResult.ErrorMessage}: {ArrayHelper.GetStringFromArrayCsharpStyle(data, false)}";
-            MonitorLogger.LogError(msg);
-            DataMessagingConfig.AppLogger.LogError($"{LoggerId}{msg}");
-            return;
-        }
-
-        var validationResult = _dataMessageValidator.IsMessageValid(codecResult.DataMessage);
-        if (!validationResult.IsMessageValid)
-        {
-            msg = $"Parsed command {ArrayHelper.GetStringFromArrayCsharpStyle(data, false)} NOT valid: {validationResult.ValidationResult}";
-            MonitorLogger.LogError(msg);
-            DataMessagingConfig.AppLogger.LogError($"{LoggerId}{msg}");
-        }
-        else
-        {
-            if (_count < 15)
-            {
-                //if (ActivateReceiveLogging)
-                //{
-                //msg = $"Parsed command {codecResult.DataMessage.RawMessageDataClearText}";
-
-                Debug.Print(ArrayHelper.GetStringFromArrayCsharpStyle(codecResult.DataMessage.RawMessageData));
-
-                msg = $"Parsed {codecResult.DataMessage.ToShortInfoString()}: {codecResult.DataMessage.RawMessageDataClearText}";
-                //Trace.TraceInformation(msg);
-                DataMessagingConfig.MonitorLogger.LogDebug(msg);
-                //}
-
-                if (_count < 15)
-                {
-                    _count++;
-                }
-            }
-
-            DataMessageProcessor.ProcessMessage(codecResult.DataMessage);
-        }
     }
 
     /// <summary>
@@ -153,7 +57,85 @@ public class UdpDatagramIpDuplexIoReceiver : BaseDuplexIoReceiver
             return;
         }
 
-        _queue.Enqueue(data);
+        string msg;
+
+        try
+        {
+            //#if DEBUG
+            //        var msg = $"{LoggerId}received: {data.Length} byte";
+            //        MonitorLogger.LogInformation(msg);
+            //#endif
+
+            if (ActivateReceiveLogging)
+            {
+                msg = $"Buffer ({data.Length}B): {ArrayHelper.GetStringFromArrayCsharpStyle(data, false)}";
+                MonitorLogger.LogDebug(msg);
+            }
+            else
+            {
+                if (_messageCounter == long.MaxValue)
+                {
+                    _messageCounter = -1;
+                }
+
+                _messageCounter++;
+
+                if (Math.Abs(_messageCounter % 100.0) < 0.1)
+                {
+                    msg = $"Received message {_messageCounter}";
+                    //Trace.TraceInformation(msg);
+                    MonitorLogger.LogDebug(msg);
+                }
+            }
+
+            // Decode
+            var codecResult = DataMessageCodingProcessor.DecodeDataMessage(data);
+
+            if (codecResult.ErrorCode != 0 || codecResult.DataMessage == null)
+            {
+                msg = $"Parsing command failed with error code {codecResult.ErrorCode}: {codecResult.ErrorMessage}: {ArrayHelper.GetStringFromArrayCsharpStyle(data, false)}";
+                MonitorLogger.LogError(msg);
+                DataMessagingConfig.AppLogger.LogError($"{LoggerId}{msg}");
+                return;
+            }
+
+            var validationResult = _dataMessageValidator.IsMessageValid(codecResult.DataMessage);
+            if (!validationResult.IsMessageValid)
+            {
+                msg = $"Parsed command NOT valid: {ArrayHelper.GetStringFromArrayCsharpStyle(data, false)}: {validationResult.ValidationResult}";
+                MonitorLogger.LogError(msg);
+                DataMessagingConfig.AppLogger.LogError($"{LoggerId}{msg}");
+            }
+            else
+            {
+                if (_count < 15)
+                {
+                    //if (ActivateReceiveLogging)
+                    //{
+                    //msg = $"Parsed command {codecResult.DataMessage.RawMessageDataClearText}";
+
+                    //Debug.Print(ArrayHelper.GetStringFromArrayCsharpStyle(codecResult.DataMessage.RawMessageData));
+
+                    msg = $"Parsed {codecResult.DataMessage.ToShortInfoString()}: {codecResult.DataMessage.RawMessageDataClearText}";
+                    //Trace.TraceInformation(msg);
+                    DataMessagingConfig.MonitorLogger.LogDebug(msg);
+                    //}
+
+                    if (_count < 15)
+                    {
+                        _count++;
+                    }
+                }
+
+                DataMessageProcessor.ProcessMessage(codecResult.DataMessage);
+            }
+        }
+        catch (Exception e)
+        {
+            msg = $"Parsing command failed: {ArrayHelper.GetStringFromArrayCsharpStyle(data, false)}\r\n{e}";
+            MonitorLogger.LogError(msg);
+            DataMessagingConfig.AppLogger.LogError($"{LoggerId}{msg}");
+        }
     }
 
     /// <summary>
@@ -213,9 +195,6 @@ public class UdpDatagramIpDuplexIoReceiver : BaseDuplexIoReceiver
         {
             CancellationSource = null;
         }
-
-        //FillPipelineTask = null;
-        //SendPipelineTask = null;
     }
 
     /// <summary>
@@ -228,8 +207,6 @@ public class UdpDatagramIpDuplexIoReceiver : BaseDuplexIoReceiver
         {
             return;
         }
-
-        _queue.StopConsumer();
 
         await StopReceiver();
 

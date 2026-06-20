@@ -11,10 +11,6 @@ namespace Bodoconsult.NetworkCommunication.Communication;
 /// </summary>
 public class IpDuplexIoReceiver : BaseDuplexIoReceiver
 {
-    //private readonly BufferPool<DummyMemory> _bufferPool = new();
-    //private ReadOnlySequence<byte> _buffer = new([]);
-    //private readonly ProducerConsumerQueue<DummyMemory> _currentPipeline = new();
-
     /// <summary>
     /// Current validator impl for data messages
     /// </summary>
@@ -43,10 +39,6 @@ public class IpDuplexIoReceiver : BaseDuplexIoReceiver
         }
 
         _pipeline = pipeline;
-
-        //_currentPipeline.ConsumerTaskDelegate = TryToSendReceivedData;
-        //_bufferPool.LoadFactoryMethod(() => new DummyMemory());
-        //_bufferPool.Allocate(3);
 
         ArgumentNullException.ThrowIfNull(config.DataMessageProcessingPackage);
 
@@ -110,7 +102,7 @@ public class IpDuplexIoReceiver : BaseDuplexIoReceiver
                 else
                 {
 #if DEBUG
-                    msg = $"{LoggerId}Parsed command: {codecResult.DataMessage.ToShortInfoString()}: buffer {buffer.Length} bytes: {DataMessageHelper.GetStringFromArrayCsharpStyle(ref command)}";
+                    msg = $"{LoggerId}Parsed {codecResult.DataMessage.ToShortInfoString()}: buffer {buffer.Length}B: {DataMessageHelper.GetStringFromArrayCsharpStyle(ref command)}";
                     DataMessagingConfig.MonitorLogger?.LogDebug(msg);
 #endif
 
@@ -130,74 +122,6 @@ public class IpDuplexIoReceiver : BaseDuplexIoReceiver
 
         return task;
     }
-
-//    /// <summary>
-//    /// Try to send received data to internal receiver
-//    /// </summary>
-//    /// <param name="data"></param>
-//    public void TryToSendReceivedData(DummyMemory data)
-//    {
-//        var chunk = new ChunkedSequence<byte>(_buffer);
-//        chunk.Append(data.Memory);
-//        data.Reset();
-
-//        _bufferPool.Enqueue(data);
-
-//        _buffer = chunk;
-
-//        var msg = $"{LoggerId}Data in buffer: {_buffer.Length} byte: {DataMessageHelper.GetStringFromArrayCsharpStyle(ref _buffer)}";
-//        MonitorLogger.LogInformation(msg);
-
-
-//        while (DataMessageSplitter.TryReadCommand(ref _buffer, out var command))
-//        {
-//            var length = (int)command.Length;
-//            if (length == 0)
-//            {
-//                continue;
-//            }
-
-//            // Take a copy of the command to avoid errors if the pipeline socket is closed before processing the command
-//            var array = command.ToArray();
-//            var mem = ((Memory<byte>)array)[..length];
-//            var codecResult = DataMessageCodingProcessor.DecodeDataMessage(mem);
-
-//            //Trace.TraceInformation($"IpDuplexIoReceiver: parsed command {Encoding.UTF8.GetString(command)} to message {codecResult.DataMessage?.MessageId}. Buffer {_buffer.Length}: { Encoding.UTF8.GetString( _buffer)}");
-//            //Trace.TraceInformation($"IpDuplexIoReceiver: parsed command {Encoding.UTF8.GetString(command)} to message {codecResult.DataMessage?.MessageId}");
-
-//            if (codecResult.ErrorCode != 0 || codecResult.DataMessage == null)
-//            {
-//                msg = $"Parsing command failed with error code {codecResult.ErrorCode}: {codecResult.ErrorMessage}: {DataMessageHelper.GetStringFromArrayCsharpStyle(ref command)}";
-//                //Trace.TraceInformation(msg);
-//                MonitorLogger?.LogError(msg);
-//                DataMessagingConfig.AppLogger.LogError($"{LoggerId}{msg}");
-                
-//                return;
-//            }
-
-//            var validationResult = _dataMessageValidator.IsMessageValid(codecResult.DataMessage);
-//            if (!validationResult.IsMessageValid)
-//            {
-//                msg = $"Parsed command NOT valid: {validationResult.ValidationResult}: {DataMessageHelper.GetStringFromArrayCsharpStyle(ref command)}";
-//                MonitorLogger?.LogError(msg);
-//                DataMessagingConfig.AppLogger.LogError($"{LoggerId}{msg}");
-//            }
-//            else
-//            {
-//#if DEBUG
-//                msg = $"{LoggerId}Parsed command: {codecResult.DataMessage.ToShortInfoString()}: {command.Length} bytes: {DataMessageHelper.GetStringFromArrayCsharpStyle(ref command)}";
-//                DataMessagingConfig.MonitorLogger?.LogDebug(msg);
-//#endif
-
-//                DataMessageProcessor.ProcessMessage(codecResult.DataMessage);
-//            }
-
-//            if (_buffer.Length == 0)
-//            {
-//                break;
-//            }
-//        }
-//    }
 
     /// <summary>
     /// Start the internal receiver
@@ -220,7 +144,6 @@ public class IpDuplexIoReceiver : BaseDuplexIoReceiver
         }
 
         CancellationSource = new();
-        //_currentPipeline.StartConsumer();
     }
 
     /// <summary>
@@ -228,11 +151,6 @@ public class IpDuplexIoReceiver : BaseDuplexIoReceiver
     /// </summary>
     public override async Task StopReceiver()
     {
-        //if (FillPipelineTask == null && SendPipelineTask == null)
-        //{
-        //    return;
-        //}
-
         try
         {
             if (CancellationSource != null)
@@ -244,12 +162,6 @@ public class IpDuplexIoReceiver : BaseDuplexIoReceiver
         {
             // Do nothing
         }
-
-        //FillPipelineTask?.Join();
-
-        //_currentPipeline.StopConsumer();
-
-        //SendPipelineTask?.Join();
 
         try
         {
@@ -263,173 +175,7 @@ public class IpDuplexIoReceiver : BaseDuplexIoReceiver
         {
             CancellationSource = null;
         }
-
-        //FillPipelineTask = null;
-        //SendPipelineTask = null;
     }
-
-    ///// <summary>
-    ///// Receive messages from the device.
-    ///// This method is not intended to be called directly from production code.
-    ///// It is a unit test method.
-    ///// </summary>
-    ///// <returns>Received device message or null in case of any error</returns>
-    //public override async Task FillMessagePipeline()
-    //{
-    //    while (!CancellationSource?.IsCancellationRequested ?? false)
-    //    {
-    //        await Task.Delay(2000);
-    //    }
-
-    //    //string msg;
-
-    //    //ArgumentNullException.ThrowIfNull(DuplexIoIsWorkInProgressDelegate);
-    //    //ArgumentNullException.ThrowIfNull(DuplexIoNoDataDelegate);
-
-    //    //// Wait until the socket is connected
-    //    //if (!await WaitForSocketIsConnected())
-    //    //{
-    //    //    return;
-    //    //}
-
-    //    //MonitorLogger.LogInformation($"{LoggerId}FillMessagePipeline started");
-
-    //    //try
-    //    //{
-    //    //    while (true)
-    //    //    {
-    //    //        var socketProxy = DataMessagingConfig.SocketProxy;
-
-    //    //        //Trace.TraceInformation("FillMessagePipeline in progress");
-    //    //        try
-    //    //        {
-    //    //            if (CancellationSource?.Token.IsCancellationRequested ?? true)
-    //    //            {
-    //    //                if (socketProxy?.CancellationTokenSource != null)
-    //    //                {
-    //    //                    await socketProxy.CancellationTokenSource.CancelAsync();
-    //    //                }
-    //    //                //Trace.TraceInformation("FillMessagePipeline cancelled");
-    //    //                return;
-    //    //            }
-    //    //        }
-    //    //        catch (Exception e)
-    //    //        {
-    //    //            msg = $"{LoggerId}FillMessagePipeline exception: {e}";
-    //    //            MonitorLogger?.LogError(msg);
-    //    //            DataMessagingConfig.AppLogger.LogError($"{LoggerId}{msg}");
-    //    //            return;
-    //    //        }
-
-    //    //        if (socketProxy is not { Connected: true } || socketProxy.IsDisposed)
-    //    //        {
-    //    //            // Trace.TraceInformation("Not connected");
-    //    //            DuplexIoNoDataDelegate.Invoke();
-    //    //            await RaiseException(new SocketException());
-    //    //            return;
-    //    //        }
-
-    //    //        if (DuplexIoIsWorkInProgressDelegate.Invoke())
-    //    //        {
-    //    //            msg = "Other operation in progress";
-    //    //            MonitorLogger?.LogError(msg);
-    //    //            DataMessagingConfig.AppLogger.LogError($"{LoggerId}{msg}");
-    //    //            AsyncHelper.Delay(FillPipelineTimeout);
-    //    //            continue;
-    //    //        }
-
-    //    //        var availableData = socketProxy.BytesAvailable;
-    //    //        if (availableData == 0)
-    //    //        {
-    //    //            DuplexIoNoDataDelegate.Invoke();
-    //    //            //Trace.TraceInformation("No data");
-    //    //            AsyncHelper.Delay(FillPipelineTimeout);
-    //    //            continue;
-    //    //        }
-
-    //    //        //var data = new byte[availableData].AsMemory();
-
-    //    //        var data = ArrayPool.Rent(availableData);
-
-    //    //        var messageLength = await socketProxy.Receive(data);
-
-    //    //        // Give the socket free
-    //    //        DuplexIoNoDataDelegate.Invoke();
-
-    //    //        if (messageLength <= 0)
-    //    //        {
-    //    //            ArrayPool.Return(data);
-    //    //            AsyncHelper.Delay(FillPipelineTimeout);
-    //    //            continue;
-    //    //        }
-
-    //    //        //Trace.TraceInformation("Got data");
-
-    //    //        var dummy = _bufferPool.Dequeue();
-    //    //        dummy.Memory = data.AsSpan()[..messageLength].ToArray().AsMemory();
-                
-    //    //        _currentPipeline.Enqueue(dummy);
-    //    //        ArrayPool.Return(data);
-    //    //    }
-    //    //}
-    //    //catch (Exception e)
-    //    //{
-    //    //    msg = $"{LoggerId}FillMessagePipeline exception: {e}";
-    //    //    MonitorLogger.LogError(msg);
-    //    //    DataMessagingConfig.AppLogger.LogError($"{LoggerId}{msg}");
-    //    //}
-    //}
-
-
-    //private Task RaiseException(Exception ex)
-    //{
-    //    string msg;
-
-    //    CancellationSource?.Cancel();
-
-    //    try
-    //    {
-    //        DuplexIoNoDataDelegate?.Invoke();
-    //    }
-    //    catch (Exception e)
-    //    {
-    //        // Do nothing
-    //        msg = $"DuplexIoSetNotInProgressDelegate failed: {e}";
-    //        MonitorLogger.LogError(msg);
-    //        DataMessagingConfig.AppLogger.LogError($"{LoggerId}{msg}");
-    //    }
-
-    //    AsyncHelper.FireAndForget(() =>
-    //    {
-    //        try
-    //        {
-    //            DataMessagingConfig.DuplexIoErrorHandlerDelegate?.Invoke(ex);
-    //        }
-    //        catch (Exception e)
-    //        {
-    //            msg = $"DuplexIoErrorHandlerDelegate failed: {e}";
-    //            MonitorLogger.LogError(msg);
-    //            DataMessagingConfig.AppLogger.LogError($"{LoggerId}{msg}");
-    //        }
-    //    });
-
-    //    msg = "Device not connected";
-    //    MonitorLogger.LogError(msg);
-    //    DataMessagingConfig.AppLogger.LogError($"{LoggerId}{msg}");
-
-    //    return Task.CompletedTask;
-    //}
-
-    ///// <summary>
-    ///// Process the messages received from device internally
-    ///// This method is not intended to be called directly from production code.
-    ///// It is a unit test method.
-    ///// </summary>
-    //public override Task SendMessagePipeline()
-    //{
-    //    _currentPipeline.StartConsumer();
-    //    return Task.CompletedTask;
-    //}
 
     /// <summary>
     /// Current implementation of disposing
@@ -443,11 +189,6 @@ public class IpDuplexIoReceiver : BaseDuplexIoReceiver
         }
 
         await StopReceiver();
-
-        //await Task.Run(() =>
-        //{
-        //    FillPipelineTask = null;
-        //});
 
         CancellationSource?.Dispose();
         CancellationSource = null;

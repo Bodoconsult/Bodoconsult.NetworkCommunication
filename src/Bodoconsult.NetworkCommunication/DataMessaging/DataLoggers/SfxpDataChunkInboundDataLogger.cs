@@ -1,11 +1,9 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
 using Bodoconsult.App.Abstractions.Interfaces;
-using Bodoconsult.App.Helpers;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataBlocks;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
 using Bodoconsult.NetworkCommunication.Interfaces;
-using System.Diagnostics;
 
 namespace Bodoconsult.NetworkCommunication.DataMessaging.DataLoggers;
 
@@ -77,19 +75,22 @@ public class SfxpDataChunkInboundDataLogger : IInboundDataLogger
             return [];
         }
 
-        var chunks = new List<Memory<byte>>();
-        foreach (var chunk in db.DataChunks.Where(x => x.Channel == Channel).ToList())
-        {
-            if (!chunk.Data.HasValue)
-            {
-                continue;
-            }
-            //Debug.Print($"{chunk.Channel}: {chunk.Data.Value.Length}");
+        var chunks = db.DataChunks.Where(x => x.Channel == Channel && x.Data.HasValue).Select(x=> x.Data!.Value).ToList();
 
-            chunks.Add(chunk.Data.Value);
+        //var chunks = new List<Memory<byte>>();
 
-            //Debug.Print(ArrayHelper.GetStringFromArray(chunk.Data.Value));
-        }
+        //foreach (var chunk in db.DataChunks.Where(x => x.Channel == Channel && x.Data.HasValue))
+        //{
+        //    if (!chunk.Data.HasValue)
+        //    {
+        //        continue;
+        //    }
+        //    //Debug.Print($"{chunk.Channel}: {chunk.Data.Value.Length}");
+
+        //    chunks.Add(chunk.Data.Value);
+
+        //    //Debug.Print(ArrayHelper.GetStringFromArray(chunk.Data.Value));
+        //}
 
         return chunks;
     }
@@ -100,11 +101,12 @@ public class SfxpDataChunkInboundDataLogger : IInboundDataLogger
     /// <param name="messages">Messages to log</param>
     public void LogTheMessages(List<Memory<byte>> messages)
     {
-        foreach (var message in messages)
-        {
-            //Debug.Print($"{chunk.Channel}: {chunk.Data.Value.Length}");
+        //foreach (var message in messages)
+        //{
+        //    //Debug.Print($"{chunk.Channel}: {chunk.Data.Value.Length}");
+        ////    _dataExportService.Add(message);
+        //}
 
-            _dataExportService.Add(message);
-        }
+        _dataExportService.AddRange(messages);
     }
 }

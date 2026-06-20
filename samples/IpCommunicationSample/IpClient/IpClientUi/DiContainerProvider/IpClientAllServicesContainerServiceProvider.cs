@@ -1,13 +1,5 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
-using Bodoconsult.App.Abstractions.DependencyInjection;
-using Bodoconsult.App.Abstractions.Interfaces;
-using Bodoconsult.App.Avalonia.ReactiveUI.Regions;
-using Bodoconsult.App.CentralServices;
-using Bodoconsult.App.Factories;
-using Bodoconsult.App.Logging;
-using Bodoconsult.App.ReactiveUI.Interfaces;
-using Bodoconsult.App.ReactiveUI.ViewModels;
 using IpClient.Bll.BusinessLogic;
 using IpClient.Bll.Interfaces;
 using IpClientUi.AppData;
