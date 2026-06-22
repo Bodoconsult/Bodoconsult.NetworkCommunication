@@ -1,5 +1,10 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH.  All rights reserved.
 
+using Bodoconsult.App.ReactiveUI.Interfaces;
+using Bodoconsult.App.ReactiveUI.Regions;
+using ReactiveUI;
+using ReactiveUI.SourceGenerators;
+
 namespace IpClientUi.ViewModels;
 
 public partial class SecondViewModel : ReactiveObject, IUiRegionViewModel

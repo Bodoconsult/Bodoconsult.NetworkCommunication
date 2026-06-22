@@ -1,6 +1,19 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH.  All rights reserved.
 
+using System.Reactive.Disposables;
+using System.Reactive.Disposables.Fluent;
+using System.Reactive.Linq;
+using Bodoconsult.App.Avalonia.Helpers;
+using Bodoconsult.App.Avalonia.ReactiveUI.Converters;
+using Bodoconsult.App.Avalonia.ReactiveUI.Menus;
+using Bodoconsult.App.Avalonia.ReactiveUI.Regions;
+using Bodoconsult.App.Avalonia.ReactiveUI.ViewModels;
+using Bodoconsult.App.ReactiveUI.Extensions;
+using Bodoconsult.App.ReactiveUI.Interfaces;
+using Bodoconsult.App.ReactiveUI.Regions;
 using IpClientUi.ViewModels;
+using ReactiveUI;
+using ReactiveUI.Avalonia;
 
 namespace IpClientUi;
 

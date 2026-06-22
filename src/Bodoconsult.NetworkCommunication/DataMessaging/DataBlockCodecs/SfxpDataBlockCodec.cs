@@ -1,6 +1,8 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
+using System.Diagnostics;
 using Bodoconsult.App.BufferPool;
+using Bodoconsult.App.Helpers;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataBlocks;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
 using Bodoconsult.NetworkCommunication.Helpers;
@@ -17,9 +19,6 @@ public class SfxpDataBlockCodec : IDataBlockCodec
     private readonly Lock _streamingConfigLock = new();
     private byte[] _streamingConfig = [];
     private int _streamingConfigLength;
-
-    private const ulong CompareValueSampleCounter = 0b_00000000_00001001_00000000_00001001_00000000_00001001_00000000_00001001;
-    private const ulong ResultValueSampleCounter = 0b_00000000_00001001_00000000_00001001_00000000_00001001_0000000_000001001;
 
     /// <summary>
     /// Default ctor
@@ -339,13 +338,19 @@ public class SfxpDataBlockCodec : IDataBlockCodec
             }
 
             // 0x9 sync byte found: check for 0x9 sync chunk
-            block = BitConverter.ToUInt64(chunk.Data.Value.ToArray());
-
-            // No 0x9 sync chunk
-            if ((block & CompareValueSampleCounter) != ResultValueSampleCounter)
+            if (!CheckForSampleCounterChunk(chunk.Data.Value))
             {
                 continue;
             }
+
+
+            //block = BitConverter.ToUInt64(chunk.Data.Value.ToArray());
+
+            //// No 0x9 sync chunk
+            //if ((block & CompareValueSampleCounter) != ResultValueSampleCounter)
+            //{
+            //    continue;
+            //}
 
             // 0x9 sync chunk
             syncChunks.Add(i);
@@ -354,6 +359,27 @@ public class SfxpDataBlockCodec : IDataBlockCodec
         }
 
         return syncChunks;
+    }
+
+    /// <summary>
+    /// Check if a chunk is a sample counter chunk
+    /// </summary>
+    /// <param name="chunk">Chunk to check</param>
+    /// <returns>True if a chunk is a sample counter chunk</returns>
+    public static bool CheckForSampleCounterChunk(Memory<byte> chunk)
+    {
+        //Debug.Print(ArrayHelper.GetStringFromArrayCsharpStyle(chunk, false));
+
+        // No 0x9 sync chunk
+        if (chunk.Slice(0,1).Span[0] == 0x9 && 
+            chunk.Slice(2, 1).Span[0] == 0x9 && 
+            chunk.Slice(4, 1).Span[0] == 0x9 && 
+            chunk.Slice(6, 1).Span[0] == 0x9)
+        {
+            return true;
+        }
+
+        return false;
     }
 
     private void ReturnDataChunkDelegate(DataChunk chunk)

@@ -1,6 +1,15 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
+using System.Reactive;
+using System.Reactive.Linq;
+using Bodoconsult.App.BusinessTransactions.RequestData;
+using Bodoconsult.App.Interfaces;
+using Bodoconsult.App.ReactiveUI.Interfaces;
+using Bodoconsult.App.ReactiveUI.Regions;
 using IpClientUi.Interfaces;
+using IpCommunicationSample.Common.BusinessTransactions;
+using ReactiveUI;
+using ReactiveUI.SourceGenerators;
 
 namespace IpClientUi.ViewModels;
 
