@@ -40,6 +40,5 @@ public interface IDatagramPipeline : IPipeline
     /// <summary>
     /// Add the received data to the queue
     /// </summary>
-    /// <param name="udpResult">Received result</param>
-    void AddMemory(UdpReceiveResult udpResult);
+    void AddMemory(byte[] data);
 }

@@ -6,7 +6,7 @@ using Bodoconsult.NetworkCommunication.Interfaces;
 namespace Bodoconsult.NetworkCommunication.DataMessaging.DataMessageProcessors;
 
 /// <summary>
-/// Current implementation of <see cref="IDataMessageProcessor"/> for sortable data messages. Delivers messages in the order of reaching it via <see cref="ProcessMessage"/>
+/// Current implementation of <see cref="IDataMessageProcessor"/> for sortable data messages. Delivers messages in the order of reaching it via AddMessageToQueue
 /// Should invoke IDataMessagingConfig.RaiseDataMessageReceivedDelegate for data messages and IDataMessagingConfig.DataMessageProcessingPackage.WaitStateManager?.OnHandshakeReceived for handshakes
 /// </summary>
 public class SortableDataMessageProcessor : BaseDataMessageProcessor
@@ -32,8 +32,6 @@ public class SortableDataMessageProcessor : BaseDataMessageProcessor
         var s = $"received {message.ToShortInfoString()}";
         Config.MonitorLogger.LogInformation(s);
 
-        Stopped.Reset();
-
         // Handshake received
         if (message is IInboundHandShakeMessage handShake)
         {
@@ -55,8 +53,6 @@ public class SortableDataMessageProcessor : BaseDataMessageProcessor
 
     private void ProcessSortableDataMessage(ISortableInboundDataMessage dataMessage)
     {
-        string msg1;
-
         // Sort messages
         var messages = _dataMessageSorter.AddMessage(dataMessage);
 
@@ -68,29 +64,7 @@ public class SortableDataMessageProcessor : BaseDataMessageProcessor
         // Now process the message
         foreach (var msg in messages)
         {
-            AsyncHelper.FireAndForget2(() =>
-            {
-                try
-                {
-                    Config.RaiseCommLayerDataMessageReceivedDelegate?.Invoke(msg);
-                }
-                catch (Exception e)
-                {
-                    msg1 = $"failed: {dataMessage.ToShortInfoString()}: {e}";
-                    Config.AppLogger.LogError($"{Config.LoggerId}{msg1}");
-                    Config.MonitorLogger.LogError(msg1);
-                }
-            }).ContinueWith(Callback);
-
-            var result = Stopped.WaitOne(TimeOut);
-            if (result)
-            {
-                continue;
-            }
-            msg1 = $"{dataMessage.ToShortInfoString()}: delivering to message receiver timed out";
-            Config.AppLogger.LogError($"{Config.LoggerId}{msg1}");
-            Config.MonitorLogger.LogError(msg1);
-            return;
+            Config.RaiseCommLayerDataMessageReceivedDelegate?.Invoke(msg);
         }
     }
 }

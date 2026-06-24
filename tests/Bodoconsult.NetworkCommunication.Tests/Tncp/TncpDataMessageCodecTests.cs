@@ -615,7 +615,7 @@ internal class TncpDataMessageCodecTests
     public void EncodeDataMessage_InalidParameterSetInput_MessageNotEncoded()
     {
         // Arrange 
-        const string cmd = "log,charstat";
+        //const string cmd = "log,charstat";
 
         var ps = new TncpParameterSet();
         ps.TelnetCommand = null;

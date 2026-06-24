@@ -261,7 +261,7 @@ public class DeviceRequestAnswerStep : BaseRequestAnswerStep, IDeviceRequestAnsw
             RequestSpec.RequestAnswerStepIsStartedDelegate.Invoke();
         });
 
-        Thread.Sleep(DeviceRequestStepProcessor.WaitInterval);
+        AsyncHelper.Delay(DeviceRequestStepProcessor.WaitInterval);
     }
 
     /// <summary>

@@ -91,6 +91,40 @@ public class SfxpIpDeviceUdpBusinessLogicAdapter : BaseSimpleDeviceBusinessLogic
     }
 
     /// <summary>
+    /// Start the binary data loggers
+    /// </summary>
+    /// <param name="requestData">Empty request parameter</param>
+    /// <returns>Reply</returns>
+    public IBusinessTransactionReply StartDataLoggers(IBusinessTransactionRequestData requestData)
+    {
+        var loggers = IpDevice.DataMessagingConfig.DataLoggers;
+
+        foreach (var logger in loggers)
+        {
+            logger.Start();
+        }
+
+        return new DefaultBusinessTransactionReply();
+    }
+
+    /// <summary>
+    /// Stop the binary data loggers
+    /// </summary>
+    /// <param name="requestData">Empty request parameter</param>
+    /// <returns>Reply</returns>
+    public IBusinessTransactionReply StopDataLoggers(IBusinessTransactionRequestData requestData)
+    {
+        var loggers = IpDevice.DataMessagingConfig.DataLoggers;
+
+        foreach (var logger in loggers)
+        {
+            logger.Stop();
+        }
+
+        return new DefaultBusinessTransactionReply();
+    }
+
+    /// <summary>
     /// Send the required client hello to the server
     /// </summary>
     /// <param name="requestData">Current request parameter</param>
@@ -141,7 +175,10 @@ public class SfxpIpDeviceUdpBusinessLogicAdapter : BaseSimpleDeviceBusinessLogic
     /// <returns>Reply</returns>
     public IBusinessTransactionReply StartDataLogging(IBusinessTransactionRequestData requestData)
     {
+        StartDataLoggers(requestData);
+
         IpDevice.DataMessagingConfig.IsDataLoggingActivated = true;
+
         return new DefaultBusinessTransactionReply();
     }
 
@@ -158,7 +195,7 @@ public class SfxpIpDeviceUdpBusinessLogicAdapter : BaseSimpleDeviceBusinessLogic
 
         foreach (var logger in loggers)
         {
-            logger.FlushCache();
+            logger.Stop();
         }
 
         return new DefaultBusinessTransactionReply();

@@ -713,7 +713,7 @@ public class RequestProcessor : IRequestProcessor
     public void Dispose()
     {
         _isDisposing = true;
-        Thread.Sleep(20);
+        AsyncHelper.Delay(20);
 
         CurrentRequestStepProcessor?.Dispose();
         CurrentRequestStepProcessor = null;

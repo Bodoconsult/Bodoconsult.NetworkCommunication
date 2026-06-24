@@ -106,7 +106,7 @@ public class IpDuplexIoReceiver : BaseDuplexIoReceiver
                     DataMessagingConfig.MonitorLogger?.LogDebug(msg);
 #endif
 
-                    DataMessageProcessor.ProcessMessage(codecResult.DataMessage);
+                    DataMessageProcessor.AddMessageToQueue(codecResult.DataMessage);
                 }
 
                 if (buffer.Length == 0)

@@ -22,7 +22,7 @@ internal class IpDeviceUdpBusinessTransactionProviderTests
         using (Assert.EnterMultipleScope())
         {
             Assert.That(delegates, Is.Not.Null);
-            Assert.That(delegates, Has.Count.EqualTo(6));
+            Assert.That(delegates, Has.Count.EqualTo(8));
 
             foreach (var item in delegates)
             {
@@ -140,7 +140,45 @@ internal class IpDeviceUdpBusinessTransactionProviderTests
         using (Assert.EnterMultipleScope())
         {
             Assert.That(transaction, Is.Not.Null);
-            Assert.That(transaction.Id, Is.EqualTo(ServerSideBusinessTransactionIds.FlúshDataLoggers));
+            Assert.That(transaction.Id, Is.EqualTo(ServerSideBusinessTransactionIds.FlushDataLoggers));
+            Assert.That(transaction.RunBusinessTransactionDelegate, Is.Not.Null);
+            Assert.That(transaction.AllowedRequestDataTypes, Has.Count.EqualTo(1));
+        }
+    }
+
+    [Test]
+    public void Transaction211_StartDataLoggers_Always_ReturnsCorrectTransaction()
+    {
+        // Arrange
+        var provider = CreateProvider();
+
+        // Act
+        var transaction = provider.Transaction211_StartDataLoggers();
+
+        // Assert
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(transaction, Is.Not.Null);
+            Assert.That(transaction.Id, Is.EqualTo(ServerSideBusinessTransactionIds.StartDataLoggers));
+            Assert.That(transaction.RunBusinessTransactionDelegate, Is.Not.Null);
+            Assert.That(transaction.AllowedRequestDataTypes, Has.Count.EqualTo(1));
+        }
+    }
+
+    [Test]
+    public void Transaction212_StopDataLoggers_Always_ReturnsCorrectTransaction()
+    {
+        // Arrange
+        var provider = CreateProvider();
+
+        // Act
+        var transaction = provider.Transaction212_StopDataLoggers();
+
+        // Assert
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(transaction, Is.Not.Null);
+            Assert.That(transaction.Id, Is.EqualTo(ServerSideBusinessTransactionIds.StopDataLoggers));
             Assert.That(transaction.RunBusinessTransactionDelegate, Is.Not.Null);
             Assert.That(transaction.AllowedRequestDataTypes, Has.Count.EqualTo(1));
         }

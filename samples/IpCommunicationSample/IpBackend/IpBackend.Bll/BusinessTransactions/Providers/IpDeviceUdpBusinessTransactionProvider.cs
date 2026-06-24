@@ -30,7 +30,9 @@ public class IpDeviceUdpBusinessTransactionProvider : IBusinessTransactionProvid
         CreateBusinessTransactionDelegates.Add(ServerSideBusinessTransactionIds.LoadStreamConfig, Transaction207_LoadStreamConfig);
         CreateBusinessTransactionDelegates.Add(ServerSideBusinessTransactionIds.StartDataLogging, Transaction208_StartDataLogging);
         CreateBusinessTransactionDelegates.Add(ServerSideBusinessTransactionIds.StopDataLogging, Transaction209_StopDataLogging);
-        CreateBusinessTransactionDelegates.Add(ServerSideBusinessTransactionIds.FlúshDataLoggers, Transaction210_FlushDataLoggers);
+        CreateBusinessTransactionDelegates.Add(ServerSideBusinessTransactionIds.FlushDataLoggers, Transaction210_FlushDataLoggers);
+        CreateBusinessTransactionDelegates.Add(ServerSideBusinessTransactionIds.StartDataLoggers, Transaction211_StartDataLoggers);
+        CreateBusinessTransactionDelegates.Add(ServerSideBusinessTransactionIds.StopDataLoggers, Transaction212_StopDataLoggers);
     }
 
     /// <summary>
@@ -137,9 +139,45 @@ public class IpDeviceUdpBusinessTransactionProvider : IBusinessTransactionProvid
     {
         var transaction = new BusinessTransaction
         {
-            Id = ServerSideBusinessTransactionIds.FlúshDataLoggers,
+            Id = ServerSideBusinessTransactionIds.FlushDataLoggers,
             Name = "Flush data loggers",
             RunBusinessTransactionDelegate = BusinessLogicAdapter.FlushDataLoggers
+        };
+
+        transaction.AllowedRequestDataTypes.Add(nameof(EmptyBusinessTransactionRequestData));
+
+        return transaction;
+    }
+
+    /// <summary>
+    /// Create transaction 211: start data loggers
+    /// </summary>
+    /// <returns>Business transaction</returns>
+    public BusinessTransaction Transaction211_StartDataLoggers()
+    {
+        var transaction = new BusinessTransaction
+        {
+            Id = ServerSideBusinessTransactionIds.StartDataLoggers,
+            Name = "Start data loggers",
+            RunBusinessTransactionDelegate = BusinessLogicAdapter.StartDataLoggers
+        };
+
+        transaction.AllowedRequestDataTypes.Add(nameof(EmptyBusinessTransactionRequestData));
+
+        return transaction;
+    }
+
+    /// <summary>
+    /// Create transaction 212: stop data loggers
+    /// </summary>
+    /// <returns>Business transaction</returns>
+    public BusinessTransaction Transaction212_StopDataLoggers()
+    {
+        var transaction = new BusinessTransaction
+        {
+            Id = ServerSideBusinessTransactionIds.StopDataLoggers,
+            Name = "Stop data loggers",
+            RunBusinessTransactionDelegate = BusinessLogicAdapter.StopDataLoggers
         };
 
         transaction.AllowedRequestDataTypes.Add(nameof(EmptyBusinessTransactionRequestData));

@@ -21,5 +21,8 @@ public static class ServerSideBusinessTransactionIds
 
     public const int StopDataLogging = 209;
 
-    public const int FlúshDataLoggers = 210;
+    public const int FlushDataLoggers = 210;
+
+    public const int StartDataLoggers = 211;
+    public const int StopDataLoggers = 212;
 }

@@ -143,6 +143,8 @@ public class SfxpDataBlockCodec : IDataBlockCodec
         // Find potential sync chunks
         var syncChunks = FindPotentialSyncChunks(db.DataChunks);
 
+        //var chunk = db.DataChunks[655];
+
         // Check the potential sync chunks now if they are really sync chunks
         CheckPotentialSyncChunks(syncChunks, db.DataChunks);
 
@@ -150,7 +152,7 @@ public class SfxpDataBlockCodec : IDataBlockCodec
         ApplyChannelsToChunks(db.DataChunks, syncChunks);
 
         // Remove the sync chunks now
-        RemoveSyncChunks(db.DataChunks, syncChunks);
+        RemoveSyncChunks(db.DataChunks);
     }
 
 
@@ -267,7 +269,7 @@ public class SfxpDataBlockCodec : IDataBlockCodec
 
         for (var i = 0; i < len; i += SfxpProtocolHelper.DataChunkLength)
         {
-            var chunk = data.Slice(i, SfxpProtocolHelper.DataChunkLength);
+            var chunk = data.Slice(i, SfxpProtocolHelper.DataChunkLength).ToArray();
 
             //Debug.Print($"{i}: "+ArrayHelper.GetStringFromArray(chunk));
 
@@ -278,21 +280,8 @@ public class SfxpDataBlockCodec : IDataBlockCodec
         }
     }
 
-    private static void RemoveSyncChunks(List<DataChunk> chunks, List<int> syncChunks)
+    private static void RemoveSyncChunks(List<DataChunk> chunks)
     {
-        //for (var index = syncChunks.Count - 1; index >= 0; index--)
-        //{
-        //    var i = syncChunks[index];
-        //    var chunk = chunks[i];
-
-        //    if (chunk.DataChunkType != DataChunkType.RegularSyncChunk)
-        //    {
-        //        continue;
-        //    }
-        //    //Debug.Print($"{i} {chunk.DataChunkType}");
-        //    chunks.Remove(chunk);
-        //}
-
         foreach(var chunk in chunks.Where(x=> x.DataChunkType == DataChunkType.RegularSyncChunk).ToList())
         {
             chunks.Remove(chunk);
@@ -312,17 +301,16 @@ public class SfxpDataBlockCodec : IDataBlockCodec
                 continue;
             }
 
-            var firstByte = chunk.Data.Value.Slice(0, 1).Span[0];
+            var value = chunk.Data.Value;
+            var lastByte = value.Slice(7, 1).Span[0];
 
             // 0x0 sync byte found
-            ulong block;
-            if (firstByte == SfxpProtocolHelper.RegularSyncByte.SyncByte)
+            if (lastByte == SfxpProtocolHelper.RegularSyncByte.SyncByte)
             {
-
                 // Check for 00x0 sync byte chunk
-                block = BitConverter.ToUInt64(chunk.Data.Value.ToArray());
+                var block = CheckForRegularSyncChunk(value);
 
-                if (block == 0)
+                if (block)
                 {
                     syncChunks.Add(i);
                     //Debug.Print($"SyncChunk 0x0 {i}");
@@ -332,25 +320,16 @@ public class SfxpDataBlockCodec : IDataBlockCodec
             }
 
             // No 0x9 sync byte
-            if (firstByte != SfxpProtocolHelper.SampleCounterSyncByteBlock.SyncByte)
+            if (lastByte != SfxpProtocolHelper.SampleCounterSyncByteBlock.SyncByte)
             {
                 continue;
             }
 
             // 0x9 sync byte found: check for 0x9 sync chunk
-            if (!CheckForSampleCounterChunk(chunk.Data.Value))
+            if (!CheckForSampleCounterChunk(value))
             {
                 continue;
             }
-
-
-            //block = BitConverter.ToUInt64(chunk.Data.Value.ToArray());
-
-            //// No 0x9 sync chunk
-            //if ((block & CompareValueSampleCounter) != ResultValueSampleCounter)
-            //{
-            //    continue;
-            //}
 
             // 0x9 sync chunk
             syncChunks.Add(i);
@@ -371,10 +350,36 @@ public class SfxpDataBlockCodec : IDataBlockCodec
         //Debug.Print(ArrayHelper.GetStringFromArrayCsharpStyle(chunk, false));
 
         // No 0x9 sync chunk
-        if (chunk.Slice(0,1).Span[0] == 0x9 && 
-            chunk.Slice(2, 1).Span[0] == 0x9 && 
-            chunk.Slice(4, 1).Span[0] == 0x9 && 
-            chunk.Slice(6, 1).Span[0] == 0x9)
+        if (chunk.Slice(7,1).Span[0] == 0x9 && 
+            chunk.Slice(5, 1).Span[0] == 0x9 && 
+            chunk.Slice(3, 1).Span[0] == 0x9 && 
+            chunk.Slice(1, 1).Span[0] == 0x9)
+        {
+            return true;
+        }
+
+        return false;
+    }
+
+    /// <summary>
+    /// Check if a chunk is a sample counter chunk
+    /// </summary>
+    /// <param name="chunk">Chunk to check</param>
+    /// <returns>True if a chunk is a sample counter chunk</returns>
+    public static bool CheckForRegularSyncChunk(Memory<byte> chunk)
+    {
+        //Debug.Print(ArrayHelper.GetStringFromArrayCsharpStyle(chunk, false));
+
+        // No 0x9 sync chunk
+        if (chunk.Slice(7, 1).Span[0] == 0x0 &&
+            chunk.Slice(6, 1).Span[0] == 0x0 &&
+            chunk.Slice(5, 1).Span[0] == 0x0 &&
+            chunk.Slice(4, 1).Span[0] == 0x0 &&
+            chunk.Slice(3, 1).Span[0] == 0x0 &&
+            chunk.Slice(2, 1).Span[0] == 0x0 &&
+            chunk.Slice(1, 1).Span[0] == 0x0 &&
+            chunk.Slice(0, 1).Span[0] == 0x0
+            )
         {
             return true;
         }

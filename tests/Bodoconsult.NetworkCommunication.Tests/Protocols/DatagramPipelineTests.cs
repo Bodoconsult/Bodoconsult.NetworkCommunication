@@ -1,7 +1,5 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
-using System.Net;
-using System.Net.Sockets;
 using Bodoconsult.App.Helpers;
 using Bodoconsult.NetworkCommunication.Protocols;
 
@@ -42,12 +40,11 @@ internal class DatagramPipelineTests
         pipe.StartReceiverLoop(SocketReceivedData);
 
         var data = new byte[] { 0x0, 0x1 };
-        var udpResult = new UdpReceiveResult(data, new IPEndPoint(0, 33333));
 
         // Act and assert 
         Assert.DoesNotThrow(() =>
         {
-            pipe.AddMemory(udpResult);
+            pipe.AddMemory(data);
         });
 
         // Assert

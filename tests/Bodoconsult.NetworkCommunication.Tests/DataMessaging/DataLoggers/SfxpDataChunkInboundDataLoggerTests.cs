@@ -139,7 +139,11 @@ internal class SfxpDataChunkInboundDataLoggerTests
 
         // Assert
         Wait.Until(() => dataExportService.WasLogged);
-        Assert.That(dataExportService.WasLogged, Is.True);
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(dataExportService.WasLogged, Is.True);
+            Assert.That(dataExportService.BytesLogged, Is.EqualTo(data.Length));
+        }
     }
 
     [Test]
@@ -173,6 +177,10 @@ internal class SfxpDataChunkInboundDataLoggerTests
 
         // Assert
         Wait.Until(() => dataExportService.WasLogged);
-        Assert.That(dataExportService.WasLogged, Is.True);
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(dataExportService.WasLogged, Is.True);
+            Assert.That(dataExportService.BytesLogged, Is.EqualTo(data.Length));
+        }
     }
 }

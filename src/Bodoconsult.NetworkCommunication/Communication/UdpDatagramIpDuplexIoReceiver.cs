@@ -1,5 +1,6 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
+using System.Diagnostics;
 using Bodoconsult.App.Helpers;
 using Bodoconsult.NetworkCommunication.Interfaces;
 
@@ -57,6 +58,11 @@ public class UdpDatagramIpDuplexIoReceiver : BaseDuplexIoReceiver
             return;
         }
 
+        //string msgId = ArrayHelper.GetStringFromArrayCsharpStyle(data.Slice(0, 8), false);
+
+        ////Debug.Print($"Buffer ({data.Length}B): {msgId}");
+        //return;
+
         string msg;
 
         try
@@ -71,25 +77,29 @@ public class UdpDatagramIpDuplexIoReceiver : BaseDuplexIoReceiver
                 msg = $"Buffer ({data.Length}B): {ArrayHelper.GetStringFromArrayCsharpStyle(data, false)}";
                 MonitorLogger.LogDebug(msg);
             }
-            else
-            {
-                if (_messageCounter == long.MaxValue)
-                {
-                    _messageCounter = -1;
-                }
+            //else
+            //{
+            //    if (_messageCounter == long.MaxValue)
+            //    {
+            //        _messageCounter = -1;
+            //    }
 
-                _messageCounter++;
+            //    _messageCounter++;
 
-                if (Math.Abs(_messageCounter % 100.0) < 0.1)
-                {
-                    msg = $"Received message {_messageCounter}";
-                    //Trace.TraceInformation(msg);
-                    MonitorLogger.LogDebug(msg);
-                }
-            }
+            //    if (Math.Abs(_messageCounter % 100.0) < 0.1)
+            //    {
+            //        msg = $"Received message {_messageCounter}";
+            //        //Trace.TraceInformation(msg);
+            //        MonitorLogger.LogDebug(msg);
+            //    }
+            //}
+
+            //Debug.Print($"Before decoding: {msgId}");
 
             // Decode
             var codecResult = DataMessageCodingProcessor.DecodeDataMessage(data);
+
+            //Debug.Print($"After decoding: {msgId}");
 
             if (codecResult.ErrorCode != 0 || codecResult.DataMessage == null)
             {
@@ -100,13 +110,7 @@ public class UdpDatagramIpDuplexIoReceiver : BaseDuplexIoReceiver
             }
 
             var validationResult = _dataMessageValidator.IsMessageValid(codecResult.DataMessage);
-            if (!validationResult.IsMessageValid)
-            {
-                msg = $"Parsed command NOT valid: {ArrayHelper.GetStringFromArrayCsharpStyle(data, false)}: {validationResult.ValidationResult}";
-                MonitorLogger.LogError(msg);
-                DataMessagingConfig.AppLogger.LogError($"{LoggerId}{msg}");
-            }
-            else
+            if (validationResult.IsMessageValid)
             {
                 if (_count < 15)
                 {
@@ -127,7 +131,14 @@ public class UdpDatagramIpDuplexIoReceiver : BaseDuplexIoReceiver
                     }
                 }
 
+                //Debug.Print($"Before processing: {msgId}");
                 DataMessageProcessor.ProcessMessage(codecResult.DataMessage);
+            }
+            else
+            {
+                msg = $"Parsed command NOT valid: {ArrayHelper.GetStringFromArrayCsharpStyle(data, false)}: {validationResult.ValidationResult}";
+                MonitorLogger.LogError(msg);
+                DataMessagingConfig.AppLogger.LogError($"{LoggerId}{msg}");
             }
         }
         catch (Exception e)

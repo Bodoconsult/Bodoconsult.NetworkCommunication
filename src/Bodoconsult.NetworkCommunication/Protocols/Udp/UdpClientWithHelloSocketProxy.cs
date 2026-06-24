@@ -235,7 +235,7 @@ public class UdpClientWithHelloSocketProxy : BaseUpdSocketProxy
                 try
                 {
                     var udpResult = await UdpClient.ReceiveAsync(CancellationTokenSource.Token);
-                    _pipeline.AddMemory(udpResult);
+                    _pipeline.AddMemory(udpResult.Buffer.AsMemory()[..udpResult.Buffer.Length].ToArray());
 
                 }
                 catch (OperationCanceledException)

@@ -32,8 +32,6 @@ public class LoggedDataMessageProcessor : BaseDataMessageProcessor
         var s = $"received {message.ToShortInfoString()}";
         Config.MonitorLogger.LogInformation(s);
 
-        Stopped.Reset();
-
         // Handshake received
         if (message is IInboundHandShakeMessage handShake)
         {
@@ -55,9 +53,6 @@ public class LoggedDataMessageProcessor : BaseDataMessageProcessor
 
     private void ProcessDataMessage(IInboundDataMessage dataMessage)
     {
-
-        string msg;
-
         // Sort messages
 
         // Log messages
@@ -67,30 +62,7 @@ public class LoggedDataMessageProcessor : BaseDataMessageProcessor
         }
 
         // Now process the messages
-        AsyncHelper.FireAndForget2(() =>
-        {
-            try
-            {
-                Config.RaiseCommLayerDataMessageReceivedDelegate?.Invoke(dataMessage);
-            }
-            catch (Exception e)
-            {
-                msg = $" failed {dataMessage.ToShortInfoString()}: {e}";
-                Config.MonitorLogger.LogError(msg);
-                Config.AppLogger.LogError($"{LoggerId}{msg}");
-            }
-
-        }).ContinueWith(Callback);
-
-        var result = Stopped.WaitOne(TimeOut);
-        if (result)
-        {
-            return;
-        }
-
-        msg = $"{dataMessage.ToShortInfoString()}: delivering to receiver timed out";
-        Config.AppLogger.LogError($"{Config.LoggerId}{msg}");
-        Config.MonitorLogger.LogError(msg);
+        Config.RaiseCommLayerDataMessageReceivedDelegate?.Invoke(dataMessage);
     }
 
     private void LogMessage(IInboundDataMessage msg)

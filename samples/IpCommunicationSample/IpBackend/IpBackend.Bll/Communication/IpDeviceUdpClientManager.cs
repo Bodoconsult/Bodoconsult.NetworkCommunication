@@ -149,7 +149,6 @@ public class IpDeviceUdpClientManager : ISimpleDeviceManager
         {
             Channel = channel
         };
-        logger.Start();
         config.DataLoggers.Add(logger);
     }
 }

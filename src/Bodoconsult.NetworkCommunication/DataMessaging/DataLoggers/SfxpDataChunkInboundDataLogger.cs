@@ -1,5 +1,6 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
+using System.Diagnostics;
 using Bodoconsult.App.Abstractions.Interfaces;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataBlocks;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
@@ -70,13 +71,20 @@ public class SfxpDataChunkInboundDataLogger : IInboundDataLogger
     /// <returns>A list with array items to log or empty list</returns>
     public List<Memory<byte>> CheckIfMessageIsToLog(IInboundDataMessage message)
     {
-        if (message is not SfxpInboundDataMessage { DataBlock: SfxpInboundDatablock db })
+        if (message is not SfxpInboundDataMessage { DataBlock: SfxpInboundDatablock db } msg)
         {
+            Debug.Print($"No SFXP message");
             return [];
         }
 
-        var chunks = db.DataChunks.Where(x => x.Channel == Channel && x.Data.HasValue).Select(x=> x.Data!.Value).ToList();
+        var chunks = db.DataChunks.Where(x => x.Channel == Channel && x.Data.HasValue).Select(x => x.Data!.Value).ToList();
 
+        //if (chunks.Count == 0)
+        //{
+        //    return [];
+        //}
+
+        // Debug.Print($"Logged OID {msg.OriginalMessageId}: Ch{Channel}: {chunks.Count} chunks with {chunks.Count * 8}B");
         //var chunks = new List<Memory<byte>>();
 
         //foreach (var chunk in db.DataChunks.Where(x => x.Channel == Channel && x.Data.HasValue))

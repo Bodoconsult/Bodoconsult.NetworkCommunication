@@ -10,15 +10,17 @@ namespace Bodoconsult.NetworkCommunication.DataMessaging.DataMessageProcessors;
 /// </summary>
 public abstract class BaseDataMessageProcessor : IDataMessageProcessor
 {
+    private readonly ProducerConsumerQueue<IInboundMessage> _queue = new();
+
     /// <summary>
     /// Logger ID
     /// </summary>
     protected readonly string LoggerId;
 
-    /// <summary>
-    /// Stopped event to wait for messages to be delivered to next step
-    /// </summary>
-    protected readonly AutoResetEvent Stopped = new(false);
+    ///// <summary>
+    ///// Stopped event to wait for messages to be delivered to next step
+    ///// </summary>
+    //protected readonly AutoResetEvent Stopped = new(false);
 
     /// <summary>
     /// Timeout in ms for waiting for messages to be delivered to next step
@@ -32,12 +34,24 @@ public abstract class BaseDataMessageProcessor : IDataMessageProcessor
     {
         Config = config;
         LoggerId = $"{config.LoggerId}{(config.LoggerId.EndsWith(": ") ? string.Empty : ": ")}";
+
+        _queue.ConsumerTaskDelegate = ProcessMessage;
+        _queue.StartConsumer();
     }
 
     /// <summary>
     /// Current <see cref="IDataMessagingConfig"/> instance
     /// </summary>
     public readonly IDataMessagingConfig Config;
+
+    /// <summary>
+    /// Add the message to the queue for processing
+    /// </summary>
+    /// <param name="message">Message to process</param>
+    public void AddMessageToQueue(IInboundMessage message)
+    {
+        _queue.Enqueue(message);
+    }
 
     /// <summary>
     /// Process the message
@@ -57,20 +71,15 @@ public abstract class BaseDataMessageProcessor : IDataMessageProcessor
     {
         ArgumentNullException.ThrowIfNull(Config.DataMessageProcessingPackage);
 
-        // fire and forget but let CallBack() be run at the end
-        AsyncHelper.FireAndForget2(() => Config.DataMessageProcessingPackage.WaitStateManager.OnHandshakeReceived(handShake))
-            .ContinueWith(Callback);
-        Stopped.WaitOne(TimeOut);
-        //Config.MonitorLogger?.LogInformation($"received handshake message [{hs.HandshakeMessageType:X2}]");
-
+        Config.DataMessageProcessingPackage.WaitStateManager.OnHandshakeReceived(handShake);
     }
 
-    /// <summary>
-    /// Callback metho th free <see cref="Stopped"/>
-    /// </summary>
-    /// <param name="ar">Asny result (not handled)</param>
-    protected void Callback(IAsyncResult ar)
-    {
-        Stopped.Set();
-    }
+    ///// <summary>
+    ///// Callback metho th free <see cref="Stopped"/>
+    ///// </summary>
+    ///// <param name="ar">Asny result (not handled)</param>
+    //protected void Callback(IAsyncResult ar)
+    //{
+    //    Stopped.Set();
+    //}
 }

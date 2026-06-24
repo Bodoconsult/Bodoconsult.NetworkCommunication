@@ -1,8 +1,9 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
-using System.Text;
+using Bodoconsult.App.Helpers;
 using Bodoconsult.NetworkCommunication.EnumAndStates;
 using Bodoconsult.NetworkCommunication.Interfaces;
+using System.Text;
 
 namespace Bodoconsult.NetworkCommunication.OrderManagement.Processors;
 
@@ -210,7 +211,7 @@ public class OnlyAnswerDeviceRequestStepProcessor : IOnlyAnswerDeviceRequestStep
                     // This sleep has been added because of a synchronization issue when more than one messages are added in a RequestSpec.
                     // In that case all messages inside RequestSpec are sent one after the other without waiting for sending their associated ACK message to the device. 
                     // => it might be not a big issue in a real life because apparently a device is not waiting any more for ACK messages ... but the device simulator did ... 
-                    Thread.Sleep(WaitInterval);
+                    AsyncHelper.Delay(WaitInterval);
                     CurrentNumberOfMessagesSent++;
                     continue;
                 }

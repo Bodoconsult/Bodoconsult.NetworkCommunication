@@ -6,11 +6,13 @@
 // https://learn.microsoft.com/de-de/dotnet/framework/network-programming/using-udp-services
 // https://enclave.io/high-performance-udp-sockets-net6/
 
+using System.Diagnostics;
 using Bodoconsult.App.Abstractions.Interfaces;
 using Bodoconsult.NetworkCommunication.Delegates;
 using Bodoconsult.NetworkCommunication.Interfaces;
 using System.Net;
 using System.Net.Sockets;
+using Bodoconsult.App.Helpers;
 
 namespace Bodoconsult.NetworkCommunication.Protocols.Udp;
 
@@ -173,11 +175,29 @@ public class UdpClientSocketProxy : BaseUpdSocketProxy
 
         AutoResetEvent wait = new(false);
 
-        // Start receive loop now
+        // Start receive loop 1 now
         Task.Run(async () =>
         {
             await ReceiverLoop(wait);
         });
+
+        //// Start receive loop 2 now
+        //Task.Run(async () =>
+        //{
+        //    await ReceiverLoop(wait);
+        //});
+
+        //// Start receive loop 3 now
+        //Task.Run(async () =>
+        //{
+        //    await ReceiverLoop(wait);
+        //});
+
+        //// Start receive loop 4 now
+        //Task.Run(async () =>
+        //{
+        //    await ReceiverLoop(wait);
+        //});
 
         wait.WaitOne(100);
     }
@@ -204,7 +224,12 @@ public class UdpClientSocketProxy : BaseUpdSocketProxy
                 {
                     var udpResult = await UdpClient.ReceiveAsync(CancellationTokenSource.Token);
                     SendEndPoint = udpResult.RemoteEndPoint;
-                    _pipeline.AddMemory(udpResult);
+
+                    var buffer = new byte[udpResult.Buffer.Length];
+                    udpResult.Buffer.CopyTo(buffer,0);
+
+                    //Debug.Print($"Receive {ArrayHelper.GetStringFromArrayCsharpStyle(buffer.AsMemory().Slice(0,8), false)}");
+                    _pipeline.AddMemory(buffer);
                 }
                 catch (OperationCanceledException)
                 {

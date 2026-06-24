@@ -12,12 +12,27 @@ public interface IIpDeviceUdpDeviceBusinessLogicAdapter : ISimpleDeviceBusinessL
 {
     #region Basics
 
+
+    /// <summary>
+    /// Start the binary data loggers
+    /// </summary>
+    /// <param name="requestData">Empty request parameter</param>
+    /// <returns>Reply</returns>
+    public IBusinessTransactionReply StartDataLoggers(IBusinessTransactionRequestData requestData);
+
     /// <summary>
     /// Flush the binary data loggers
     /// </summary>
     /// <param name="requestData">Empty request parameter</param>
     /// <returns>Reply</returns>
     public IBusinessTransactionReply FlushDataLoggers(IBusinessTransactionRequestData requestData);
+    
+    /// <summary>
+    /// Stop the binary data loggers
+    /// </summary>
+    /// <param name="requestData">Empty request parameter</param>
+    /// <returns>Reply</returns>
+    public IBusinessTransactionReply StopDataLoggers(IBusinessTransactionRequestData requestData);
 
     /// <summary>
     /// Send the required client hello to the server

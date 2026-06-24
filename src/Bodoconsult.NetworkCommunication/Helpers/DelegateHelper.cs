@@ -171,7 +171,7 @@ public static class DelegateHelper
             }
 
             context.SetBusinessSubState(DefaultBusinessSubStates.WaitingForNextPingingTower);
-            Thread.Sleep(DeviceCommunicationBasics.PingRepeatInterval);
+            Task.Delay(DeviceCommunicationBasics.PingRepeatInterval).Wait(state.CancellationTokenSource.Token);
         }
 
         // New state now

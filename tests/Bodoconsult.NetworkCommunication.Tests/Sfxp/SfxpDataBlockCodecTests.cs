@@ -16,7 +16,7 @@ internal class SfxpDataBlockCodecTests
     public void CheckForSampleCounterChunk_ValidChunk_ReturnsTrue()
     {
         // Arrange 
-        var mask = new byte[] { 0x9, 0x1, 0x9, 0x3, 0x9, 0xF, 0x9, 0x1 };
+        var mask = new byte[] {  0x1, 0x9, 0x1, 0x9, 0x3, 0x9, 0xF, 0x9 };
 
         // Act  
         var result = SfxpDataBlockCodec.CheckForSampleCounterChunk(mask);
@@ -29,7 +29,7 @@ internal class SfxpDataBlockCodecTests
     public void CheckForSampleCounterChunk_ValidChunk1_ReturnsTrue()
     {
         // Arrange 
-        var mask = new byte[] { 0x9, 0x0, 0x9, 0x0, 0x9, 0x0, 0x9, 0x0 };
+        byte[] mask = [0x0, 0x9, 0x0, 0x9, 0x0, 0x9, 0x0, 0x9];
 
         // Act  
         var result = SfxpDataBlockCodec.CheckForSampleCounterChunk(mask);
@@ -55,7 +55,7 @@ internal class SfxpDataBlockCodecTests
     public void CheckForSampleCounterChunk_InvalidChunkRealWorld1_ReturnsFalse()
     {
         // Arrange 
-        var mask = new byte[] { 0x9, 0x3c, 0x0, 0x1, 0xf, 0x12, 0x3d, 0x20 };
+        var mask = new byte[] { 0x20, 0x3c, 0x0, 0x1, 0xf, 0x12, 0x3d, 0x9 };
 
         // Act  
         var result = SfxpDataBlockCodec.CheckForSampleCounterChunk(mask);
@@ -310,16 +310,16 @@ internal class SfxpDataBlockCodecTests
     //}
 
 
-    [TestCase("0", false, TestName = "DecodeDataMessage_RealWorldSfx0_MessageDecoded")]
+    [TestCase("0", true, TestName = "DecodeDataMessage_RealWorldSfx0_MessageDecoded")]
     [TestCase("1", false, TestName = "DecodeDataMessage_RealWorldSfx1_MessageDecoded")]
-    //[TestCase("2", true, TestName = "DecodeDataMessage_RealWorldSfx2_MessageDecoded")]
-    //[TestCase("3", true,TestName = "DecodeDataMessage_RealWorldSfx3_MessageDecoded")]
-    //[TestCase("4", true,TestName = "DecodeDataMessage_RealWorldSfx4_MessageDecoded")]
-    //[TestCase("5", true,TestName = "DecodeDataMessage_RealWorldSfx5_MessageDecoded")]
-    //[TestCase("6", true,TestName = "DecodeDataMessage_RealWorldSfx6_MessageDecoded")]
-    //[TestCase("7", true,TestName = "DecodeDataMessage_RealWorldSfx7_MessageDecoded")]
-    //[TestCase("8", true,TestName = "DecodeDataMessage_RealWorldSfx8_MessageDecoded")]
-    //[TestCase("9", true,TestName = "DecodeDataMessage_RealWorldSfx9_MessageDecoded")]
+    [TestCase("2", false, TestName = "DecodeDataMessage_RealWorldSfx2_MessageDecoded")]
+    [TestCase("3", false, TestName = "DecodeDataMessage_RealWorldSfx3_MessageDecoded")]
+    [TestCase("4", false, TestName = "DecodeDataMessage_RealWorldSfx4_MessageDecoded")]
+    [TestCase("5", false, TestName = "DecodeDataMessage_RealWorldSfx5_MessageDecoded")]
+    [TestCase("6", false, TestName = "DecodeDataMessage_RealWorldSfx6_MessageDecoded")]
+    [TestCase("7", false, TestName = "DecodeDataMessage_RealWorldSfx7_MessageDecoded")]
+    [TestCase("8", false, TestName = "DecodeDataMessage_RealWorldSfx8_MessageDecoded")]
+    [TestCase("9", false, TestName = "DecodeDataMessage_RealWorldSfx9_MessageDecoded")]
     public void DecodeDataMessage_SfxRealWorld_MessageDecoded(string number, bool isSampleCounter)
     {
         // Arrange 
@@ -360,6 +360,11 @@ internal class SfxpDataBlockCodecTests
             Assert.That(db.DataChunks.Any(x => x.Channel == 0), Is.True);
             Assert.That(db.DataChunks.Any(x => x is { Channel: 0xc }), Is.EqualTo(isSampleCounter));
             Assert.That(db.DataChunks.Any(x => x.Channel == 255), Is.False);
+
+            Debug.Print($"Stored data {db.DataChunks.Count * 8}B");
+            Debug.Print($"Stored data channel1 {db.DataChunks.Count(x => x.Channel == 0) * 8}B");
+            Debug.Print($"Stored data ADD {db.DataChunks.Count(x => x.Channel == 0xc) * 8}B");
+
 
             // Return chunks to pool
             foreach (var chunk in db.DataChunks)

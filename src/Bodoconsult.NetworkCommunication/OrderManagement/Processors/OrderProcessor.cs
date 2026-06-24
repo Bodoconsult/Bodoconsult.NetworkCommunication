@@ -1,6 +1,7 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
 using Bodoconsult.App.Abstractions.Interfaces;
+using Bodoconsult.App.Helpers;
 using Bodoconsult.NetworkCommunication.EnumAndStates;
 using Bodoconsult.NetworkCommunication.Interfaces;
 
@@ -113,7 +114,7 @@ public class OrderProcessor : BaseOrderProcessor
                     break;
                 }
 
-                Thread.Sleep(5);
+                AsyncHelper.Delay(5, cts.Token);
             }
         }
 

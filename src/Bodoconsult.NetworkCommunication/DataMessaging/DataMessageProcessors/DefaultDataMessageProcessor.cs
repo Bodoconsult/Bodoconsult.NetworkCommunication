@@ -25,7 +25,7 @@ public class DefaultDataMessageProcessor : BaseDataMessageProcessor
         var s = $"received {message.ToInfoString()}";
         Config.MonitorLogger.LogInformation(s);
 
-        Stopped.Reset();
+        //Stopped.Reset();
 
         // Handshake received
         if (message is IInboundHandShakeMessage handShake)
@@ -50,32 +50,7 @@ public class DefaultDataMessageProcessor : BaseDataMessageProcessor
     {
         ArgumentNullException.ThrowIfNull(Config.RaiseCommLayerDataMessageReceivedDelegate);
 
-        //Config.RaiseCommLayerDataMessageReceivedDelegate.Invoke(dataMessage);
-        //return;
-
         // Now process the message
         Config.RaiseCommLayerDataMessageReceivedDelegate.Invoke(dataMessage);
-
-        //AsyncHelper.FireAndForget2(() =>
-        //{
-        //    try
-        //    {
-        //        Config.RaiseCommLayerDataMessageReceivedDelegate.Invoke(dataMessage);
-        //    }
-        //    catch (Exception e)
-        //    {
-        //        var s = $" failed {dataMessage.ToShortInfoString()}: {e}";
-        //        Config.MonitorLogger.LogError(s);
-        //    }
-        //}).ContinueWith(Callback);
-
-        //var result = Stopped.WaitOne(TimeOut);
-        //if (result)
-        //{
-        //    return;
-        //}
-        //var msg = $"{dataMessage.ToShortInfoString()}: delivering to receiver timed out";
-        //Config.AppLogger.LogError($"{Config.LoggerId}{msg}");
-        //Config.MonitorLogger.LogError(msg);
     }
 }

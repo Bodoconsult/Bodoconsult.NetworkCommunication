@@ -9,6 +9,12 @@ namespace Bodoconsult.NetworkCommunication.Interfaces;
 public interface IDataMessageProcessor
 {
     /// <summary>
+    /// Add the message to the queue for processing
+    /// </summary>
+    /// <param name="message">Message to process</param>
+    public void AddMessageToQueue(IInboundMessage message);
+
+    /// <summary>
     /// Process the message
     /// </summary>
     /// <param name="message">Message to process</param>

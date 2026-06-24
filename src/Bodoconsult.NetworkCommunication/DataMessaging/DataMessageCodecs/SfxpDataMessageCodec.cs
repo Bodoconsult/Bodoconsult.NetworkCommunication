@@ -50,8 +50,8 @@ public class SfxpDataMessageCodec : BaseDataMessageCodec
 
             var messageId = BitConverter.ToUInt64(rawBytes);
 
-            var dataBlockBytes = data[7..];
-            dataBlockBytes.Span[0] = 0x73;  // s
+            var dataBlockBytes = data[7..].ToArray(); // ToArray is important to not change the original data
+            dataBlockBytes[0] = 0x73;  // s
 
             var dataBlock = DataBlockCodingProcessor.FromBytesToDataBlock(dataBlockBytes);
 

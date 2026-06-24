@@ -52,7 +52,7 @@ internal class LoggedDefaultDataMessageProcessorTests
         // Act  
         Assert.DoesNotThrow(() =>
         {
-            proc.ProcessMessage(msg);
+            proc.AddMessageToQueue(msg);
         });
 
         // Assert
@@ -78,7 +78,7 @@ internal class LoggedDefaultDataMessageProcessorTests
         var msg = new SdcpInboundDataMessage();
 
         // Act  
-        proc.ProcessMessage(msg);
+        proc.AddMessageToQueue(msg);
 
         // Assert
         Wait.Until(() => _wasDataMessageFired);

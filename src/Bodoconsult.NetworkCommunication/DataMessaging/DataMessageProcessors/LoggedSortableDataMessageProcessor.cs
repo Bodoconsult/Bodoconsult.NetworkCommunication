@@ -1,5 +1,6 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
+using System.Diagnostics;
 using Bodoconsult.App.Helpers;
 using Bodoconsult.NetworkCommunication.Interfaces;
 
@@ -35,8 +36,6 @@ public class LoggedSortableDataMessageProcessor : BaseDataMessageProcessor
     {
         var s = $"{LoggerId}received {message.ToShortInfoString()}";
         Config.MonitorLogger.LogInformation(s);
-
-        Stopped.Reset();
 
         // Handshake received
         if (message is IInboundHandShakeMessage handShake)
@@ -93,32 +92,7 @@ public class LoggedSortableDataMessageProcessor : BaseDataMessageProcessor
 
     private void ForwardToMessageReceiver(ISortableInboundDataMessage msg)
     {
-        string msg1;
-
-        AsyncHelper.FireAndForget2(() =>
-        {
-            try
-            {
-                Config.RaiseCommLayerDataMessageReceivedDelegate?.Invoke(msg);
-            }
-            catch (Exception e)
-            {
-                msg1 = $"failed {msg.ToShortInfoString()}: {e}";
-                Config.MonitorLogger.LogError(msg1);
-                Config.AppLogger.LogError($"{LoggerId}{msg1}");
-            }
-
-        }).ContinueWith(Callback);
-
-        var result = Stopped.WaitOne(TimeOut);
-        if (result)
-        {
-            return;
-        }
-
-        msg1 = $"{msg.ToShortInfoString()}: delivering to receiver timed out";
-        Config.AppLogger.LogError($"{Config.LoggerId}{msg1}");
-        Config.MonitorLogger.LogError(msg1);
+        Config.RaiseCommLayerDataMessageReceivedDelegate?.Invoke(msg);
     }
 
     private void LogMessage(ISortableInboundDataMessage msg)

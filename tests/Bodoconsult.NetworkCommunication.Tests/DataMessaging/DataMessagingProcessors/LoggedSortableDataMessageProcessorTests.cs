@@ -70,7 +70,7 @@ internal class LoggedSortableDataMessageProcessorTests
         // Act  
         Assert.DoesNotThrow(() =>
         {
-            proc.ProcessMessage(msg);
+            proc.AddMessageToQueue(msg);
         });
 
         // Assert
@@ -97,7 +97,7 @@ internal class LoggedSortableDataMessageProcessorTests
         var msg = new SdcpSortableInboundDataMessage();
 
         // Act  
-        proc.ProcessMessage(msg);
+        proc.AddMessageToQueue(msg);
 
         // Assert
         Wait.Until(() => _wasDataMessageFired);
