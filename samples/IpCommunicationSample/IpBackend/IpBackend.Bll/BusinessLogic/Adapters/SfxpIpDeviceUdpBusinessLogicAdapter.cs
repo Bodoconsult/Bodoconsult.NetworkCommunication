@@ -2,15 +2,17 @@
 
 using Bodoconsult.App.Abstractions.Interfaces;
 using Bodoconsult.App.BusinessTransactions.Replies;
+using Bodoconsult.App.Helpers;
 using Bodoconsult.NetworkCommunication.BusinessLogicAdapters;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataBlockCodecs;
+using Bodoconsult.NetworkCommunication.DataMessaging.DataBlocks;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
 using Bodoconsult.NetworkCommunication.EnumAndStates;
 using Bodoconsult.NetworkCommunication.Interfaces;
 using IpBackend.Bll.Interfaces;
 using IpCommunicationSample.Common.BusinessTransactions.Replies;
 using IpCommunicationSample.Common.BusinessTransactions.Requests;
-using Bodoconsult.NetworkCommunication.DataMessaging.DataBlocks;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace IpBackend.Bll.BusinessLogic.Adapters;
 
@@ -227,6 +229,7 @@ public class SfxpIpDeviceUdpBusinessLogicAdapter : BaseSimpleDeviceBusinessLogic
         // Now load the streaming config
         sfxp.LoadStreamingConfig(request.Config);
 
+        IpDevice.DataMessagingConfig.MonitorLogger.LogInformation($"Received config: {ArrayHelper.GetStringFromArrayCsharpStyle(request.Config, false)}");
         return new DefaultBusinessTransactionReply();
     }
 

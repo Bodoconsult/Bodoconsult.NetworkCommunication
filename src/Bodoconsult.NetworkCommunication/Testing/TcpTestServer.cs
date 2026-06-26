@@ -161,7 +161,7 @@ public class TcpTestServer : BaseTcpIpDevice
         var task = Socket.SendAsync(data);
         task.Wait(CancellationTokenSource.Token);
 
-        Debug.Print($"{LoggerId}sent {task.Result} byte(s)!");
+        Debug.Print($"{LoggerId}sent {task.Result}B!");
     }
 
     /// <summary>

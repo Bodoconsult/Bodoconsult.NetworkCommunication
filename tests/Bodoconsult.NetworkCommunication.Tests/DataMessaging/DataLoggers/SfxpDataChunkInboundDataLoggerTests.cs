@@ -29,7 +29,7 @@ internal class SfxpDataChunkInboundDataLoggerTests
     public void CheckIfMessageIsToLog_ValidMessage_ReturnsTrue()
     {
         // Arrange 
-        byte[] data = [0x5, 0x6, 0x7];
+        byte[] data = [0x5, 0x6, 0x7, 0x8, 0x9, 0x1, 0x2, 0x3];
         const byte channel = 1;
         IDataExportService<byte[]> dataExportService = new FakeDataExportService();
 
@@ -41,7 +41,12 @@ internal class SfxpDataChunkInboundDataLoggerTests
         var dataBlock = new SfxpInboundDatablock
         {
             Data = new Memory<byte>(data),
-            DataChunks = { new DataChunk { Channel = channel, Data = data } }
+            DataChunks =
+            {
+                new DataChunk { Channel = channel, Data = data },
+                new DataChunk { Channel = channel, Data = data },
+                new DataChunk { Channel = channel, Data = data }
+            }
         };
 
         var msg = new SfxpInboundDataMessage
@@ -53,7 +58,21 @@ internal class SfxpDataChunkInboundDataLoggerTests
         var result = logger.CheckIfMessageIsToLog(msg);
 
         // Assert
-        Assert.That(result.Count, Is.EqualTo(1));
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(result.Count, Is.EqualTo(1));
+
+            var mem = result[0];
+
+            Assert.That(mem.Length, Is.EqualTo(dataBlock.DataChunks.Count * data.Length));
+
+            Assert.That(mem.Span[0], Is.EqualTo(0x5));
+            Assert.That(mem.Span[1], Is.EqualTo(0x6));
+            Assert.That(mem.Span[8], Is.EqualTo(0x5));
+            Assert.That(mem.Span[9], Is.EqualTo(0x6));
+            Assert.That(mem.Span[16], Is.EqualTo(0x5));
+            Assert.That(mem.Span[17], Is.EqualTo(0x6));
+        }
     }
 
     [Test]

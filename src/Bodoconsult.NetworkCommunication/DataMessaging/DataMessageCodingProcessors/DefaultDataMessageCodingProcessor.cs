@@ -1,9 +1,11 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
 using Bodoconsult.App.Abstractions.Interfaces;
+using Bodoconsult.NetworkCommunication.DataMessaging.DataMessageCodecs;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
 using Bodoconsult.NetworkCommunication.Exceptions;
 using Bodoconsult.NetworkCommunication.Interfaces;
+using Microsoft.Diagnostics.Tracing.Parsers.MicrosoftAntimalwareEngine;
 
 namespace Bodoconsult.NetworkCommunication.DataMessaging.DataMessageCodingProcessors;
 
@@ -61,6 +63,18 @@ public class DefaultDataMessageCodingProcessor : IDataMessageCodingProcessor
     {
         try
         {
+            foreach (var codec in MessageCodecs)
+            {
+                var result = codec.DecodeDataMessage(data);
+
+                if (result.ErrorCode == 0 || result.ErrorCode == DataMessageCodecErrorCodes.MessageAlreadyReceived)
+                {
+                    return result;
+                }
+
+                Logger.LogDebug($"DecodeDataMessage: {result.ErrorCode} {result.ErrorMessage}");
+            }
+
             if (MessageCodecs.Count == 0)
             {
                 return new InboundCodecResult
@@ -68,16 +82,6 @@ public class DefaultDataMessageCodingProcessor : IDataMessageCodingProcessor
                     ErrorCode = 1,
                     ErrorMessage = "No codecs loaded"
                 };
-            }
-
-            foreach (var codec in MessageCodecs)
-            {
-                var result = codec.DecodeDataMessage(data);
-
-                if (result.ErrorCode == 0)
-                {
-                    return result;
-                }
             }
 
             return new InboundCodecResult

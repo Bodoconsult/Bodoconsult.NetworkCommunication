@@ -1,8 +1,6 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
-using System.Diagnostics;
 using Bodoconsult.App.BufferPool;
-using Bodoconsult.App.Helpers;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataBlocks;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
 using Bodoconsult.NetworkCommunication.Helpers;
@@ -29,7 +27,7 @@ public class SfxpDataBlockCodec : IDataBlockCodec
         {
             ReturnDataChunkDelegate = ReturnDataChunkDelegate
         });
-        _bufferPool.Allocate(2500);
+        _bufferPool.Allocate(10000);
     }
 
     /// <summary>
@@ -73,6 +71,8 @@ public class SfxpDataBlockCodec : IDataBlockCodec
         }
 
         StreamingConfig = result.ToArray();
+
+
     }
 
     /// <summary>
@@ -121,7 +121,7 @@ public class SfxpDataBlockCodec : IDataBlockCodec
 
         var db = new SfxpInboundDatablock
         {
-            Data = datablockBytes[1..],
+            Data = datablockBytes,
             DataBlockType = 's'
         };
 
@@ -269,7 +269,7 @@ public class SfxpDataBlockCodec : IDataBlockCodec
 
         for (var i = 0; i < len; i += SfxpProtocolHelper.DataChunkLength)
         {
-            var chunk = data.Slice(i, SfxpProtocolHelper.DataChunkLength).ToArray();
+            var chunk = data.Slice(i, SfxpProtocolHelper.DataChunkLength); //.ToArray();
 
             //Debug.Print($"{i}: "+ArrayHelper.GetStringFromArray(chunk));
 
@@ -282,7 +282,7 @@ public class SfxpDataBlockCodec : IDataBlockCodec
 
     private static void RemoveSyncChunks(List<DataChunk> chunks)
     {
-        foreach(var chunk in chunks.Where(x=> x.DataChunkType == DataChunkType.RegularSyncChunk).ToList())
+        foreach (var chunk in chunks.Where(x => x.DataChunkType == DataChunkType.RegularSyncChunk).ToList())
         {
             chunks.Remove(chunk);
         }
@@ -302,7 +302,7 @@ public class SfxpDataBlockCodec : IDataBlockCodec
             }
 
             var value = chunk.Data.Value;
-            var lastByte = value.Slice(7, 1).Span[0];
+            var lastByte = value.Span[7];
 
             // 0x0 sync byte found
             if (lastByte == SfxpProtocolHelper.RegularSyncByte.SyncByte)
@@ -350,13 +350,22 @@ public class SfxpDataBlockCodec : IDataBlockCodec
         //Debug.Print(ArrayHelper.GetStringFromArrayCsharpStyle(chunk, false));
 
         // No 0x9 sync chunk
-        if (chunk.Slice(7,1).Span[0] == 0x9 && 
-            chunk.Slice(5, 1).Span[0] == 0x9 && 
-            chunk.Slice(3, 1).Span[0] == 0x9 && 
-            chunk.Slice(1, 1).Span[0] == 0x9)
+        if (chunk.Span[7] == 0x9 &&
+            chunk.Span[5] == 0x9 &&
+            chunk.Span[3] == 0x9 &&
+            chunk.Span[1] == 0x9)
         {
             return true;
         }
+
+        //// No 0x9 sync chunk
+        //if (chunk.Slice(7, 1).Span[0] == 0x9 &&
+        //    chunk.Slice(5, 1).Span[0] == 0x9 &&
+        //    chunk.Slice(3, 1).Span[0] == 0x9 &&
+        //    chunk.Slice(1, 1).Span[0] == 0x9)
+        //{
+        //    return true;
+        //}
 
         return false;
     }
@@ -371,14 +380,14 @@ public class SfxpDataBlockCodec : IDataBlockCodec
         //Debug.Print(ArrayHelper.GetStringFromArrayCsharpStyle(chunk, false));
 
         // No 0x9 sync chunk
-        if (chunk.Slice(7, 1).Span[0] == 0x0 &&
-            chunk.Slice(6, 1).Span[0] == 0x0 &&
-            chunk.Slice(5, 1).Span[0] == 0x0 &&
-            chunk.Slice(4, 1).Span[0] == 0x0 &&
-            chunk.Slice(3, 1).Span[0] == 0x0 &&
-            chunk.Slice(2, 1).Span[0] == 0x0 &&
-            chunk.Slice(1, 1).Span[0] == 0x0 &&
-            chunk.Slice(0, 1).Span[0] == 0x0
+        if (chunk.Span[7] == 0x0 &&
+            chunk.Span[6] == 0x0 &&
+            chunk.Span[5] == 0x0 &&
+            chunk.Span[4] == 0x0 &&
+            chunk.Span[3] == 0x0 &&
+            chunk.Span[2] == 0x0 &&
+            chunk.Span[1] == 0x0 &&
+            chunk.Span[0] == 0x0
             )
         {
             return true;

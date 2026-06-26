@@ -29,9 +29,17 @@ public interface IDataBlockCodingProcessor
     IDataBlockCodec? GetDatablockCodecCanBeNull(char datablockType);
 
     /// <summary>
-    /// Decode a given datablock as byte array to the related internal datablock object
+    /// Decode a given datablock including a datablock identifier as first byte  as byte array to the related internal datablock object
     /// </summary>
     /// <param name="dataBlockBytes">Received datablock as byte array</param>
     /// <returns>Datablock object or null if no fitting codec was found</returns>
     ITypedInboundDataBlock? FromBytesToDataBlock(Memory<byte> dataBlockBytes);
+
+    /// <summary>
+    /// Decode a given datablock not including a datablock identifier as first byte  as byte array to the related internal datablock object
+    /// </summary>
+    /// <param name="dataBlockBytes">Received datablock as byte array</param>
+    /// <param name="dataBlockType">Type of the datablock</param>
+    /// <returns>Datablock object or null if no fitting codec was found</returns>
+    ITypedInboundDataBlock? FromBytesToDataBlock(Memory<byte> dataBlockBytes, char dataBlockType);
 }

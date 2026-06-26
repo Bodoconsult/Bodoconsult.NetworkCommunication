@@ -37,17 +37,17 @@ public class LoggedSortableDataMessageProcessor : BaseDataMessageProcessor
         var s = $"{LoggerId}received {message.ToShortInfoString()}";
         Config.MonitorLogger.LogInformation(s);
 
-        // Handshake received
-        if (message is IInboundHandShakeMessage handShake)
-        {
-            ProcessHandshakes(handShake);
-            return;
-        }
-
         // Data message received
         if (message is ISortableInboundDataMessage dataMessage)
         {
             ProcessSortableDataMessage(dataMessage);
+            return;
+        }
+
+        // Handshake received
+        if (message is IInboundHandShakeMessage handShake)
+        {
+            ProcessHandshakes(handShake);
             return;
         }
 
@@ -97,10 +97,20 @@ public class LoggedSortableDataMessageProcessor : BaseDataMessageProcessor
 
     private void LogMessage(ISortableInboundDataMessage msg)
     {
+        // ReSharper disable once ConditionIsAlwaysTrueOrFalse
         foreach (var logger in _dataLoggers)
         {
             var chunks = logger.CheckIfMessageIsToLog(msg);
+
+            if (chunks.Count <= 0)
+            {
+                //Debug.Print($"Logged: OID {msg.OriginalMessageId}: 0 chunks");
+                continue;
+            }
+
             logger.LogTheMessages(chunks);
+            //Debug.Print($"Logged: OID {msg.OriginalMessageId}: {chunks.Count} chunks with {chunks[0].Length}B");
+
         }
     }
 }

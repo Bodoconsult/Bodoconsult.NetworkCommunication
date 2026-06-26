@@ -69,6 +69,7 @@ public class SfxpDataMessageProcessingPackage : IDataMessageProcessingPackage
 
         LoadCustomDataBlockCodecs();
 
+        // SFXP codec
         var deviceMessageCodec = new SfxpDataMessageCodec(DataBlockCodingProcessor);
         DataMessageCodingProcessor.AddMessageCodec(deviceMessageCodec);
 

@@ -55,7 +55,7 @@ public class UdpTestUniCastServer : BaseUdpDevice
         }
 
         var result = Listener.Send(data, data.Length, SenderEndPoint);
-        Debug.Print($"{TypeName}: sent {result} byte(s)!");
+        Debug.Print($"{TypeName}: sent {result}B!");
     }
 }
 

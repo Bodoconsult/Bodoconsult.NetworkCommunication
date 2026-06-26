@@ -57,7 +57,7 @@ public class DefaultDataBlockCodingProcessor : IDataBlockCodingProcessor
     }
 
     /// <summary>
-    /// Decode a given datablock as byte array to the related internal datablock object
+    /// Decode a given datablock including a datablock identifier as first byte as byte array to the related internal datablock object
     /// </summary>
     /// <param name="dataBlockBytes">Received datablock as byte array</param>
     /// <returns>Datablock object or null if no fitting codec was found</returns>
@@ -68,14 +68,29 @@ public class DefaultDataBlockCodingProcessor : IDataBlockCodingProcessor
             return null;
         }
 
-        var dataBlockType = Convert.ToChar(dataBlockBytes[..1].Span[0]);
+        var dataBlockType = Convert.ToChar(dataBlockBytes.Span[0]);
         var dataBlockCodec = GetDatablockCodecCanBeNull(dataBlockType);
-        if (dataBlockCodec == null)
+
+        var dataBlock = dataBlockCodec?.DecodeDataBlock(dataBlockBytes[1..]);
+        return dataBlock;
+    }
+
+    /// <summary>
+    /// Decode a given datablock not including a datablock identifier as first byte as byte array to the related internal datablock object
+    /// </summary>
+    /// <param name="dataBlockBytes">Received datablock as byte array</param>
+    /// <param name="dataBlockType">Type of the datablock</param>
+    /// <returns>Datablock object or null if no fitting codec was found</returns>
+    public ITypedInboundDataBlock? FromBytesToDataBlock(Memory<byte> dataBlockBytes, char dataBlockType)
+    {
+        if (dataBlockBytes.Length == 0)
         {
             return null;
         }
 
-        var dataBlock = dataBlockCodec.DecodeDataBlock(dataBlockBytes);
+        var dataBlockCodec = GetDatablockCodecCanBeNull(dataBlockType);
+
+        var dataBlock = dataBlockCodec?.DecodeDataBlock(dataBlockBytes);
         return dataBlock;
     }
 }

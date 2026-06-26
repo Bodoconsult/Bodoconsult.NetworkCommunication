@@ -23,5 +23,5 @@ public class SfxpInboundDatablock : ITypedInboundDataBlock
     /// <summary>
     /// List of data chunks
     /// </summary>
-    public List<DataChunk> DataChunks { get; } = new();
+    public List<DataChunk> DataChunks { get; } = new(2048);
 }

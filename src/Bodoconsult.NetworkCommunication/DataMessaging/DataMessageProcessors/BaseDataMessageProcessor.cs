@@ -10,7 +10,15 @@ namespace Bodoconsult.NetworkCommunication.DataMessaging.DataMessageProcessors;
 /// </summary>
 public abstract class BaseDataMessageProcessor : IDataMessageProcessor
 {
-    private readonly ProducerConsumerQueue<IInboundMessage> _queue = new();
+    private readonly ProducerConsumerQueue<IInboundMessage> _queue = new()
+    {
+        ThreadPriority = ThreadPriority.AboveNormal
+    };
+
+    /// <summary>
+    /// Current queue count
+    /// </summary>
+    protected int CurrentQueueCount => _queue.InternalQueue.Count;
 
     /// <summary>
     /// Logger ID

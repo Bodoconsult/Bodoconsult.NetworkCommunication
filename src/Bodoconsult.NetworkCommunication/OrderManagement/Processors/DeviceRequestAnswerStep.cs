@@ -249,19 +249,24 @@ public class DeviceRequestAnswerStep : BaseRequestAnswerStep, IDeviceRequestAnsw
             return;
         }
 
-        AsyncHelper.Delay(200);
+        //AsyncHelper.Delay(200);
 
         if (_taskCompletionSource == null || _taskCompletionSource.Task.IsCanceled)
         {
             return;
         }
 
+        AutoResetEvent wait = new(false);
+
         AsyncHelper.FireAndForget(() =>
         {
+            wait.Set();
             RequestSpec.RequestAnswerStepIsStartedDelegate.Invoke();
         });
 
-        AsyncHelper.Delay(DeviceRequestStepProcessor.WaitInterval);
+        wait.WaitOne(DeviceRequestStepProcessor.WaitInterval);
+
+        //AsyncHelper.Delay(DeviceRequestStepProcessor.WaitInterval);
     }
 
     /// <summary>

@@ -53,14 +53,15 @@ public class UdpDatagramIpDuplexIoReceiver : BaseDuplexIoReceiver
     /// <param name="data">Received data</param>
     public void SocketReceivedData(Memory<byte> data)
     {
-        if (data.IsEmpty)
-        {
-            return;
-        }
+        //if (data.IsEmpty)
+        //{
+        //    return;
+        //}
 
-        //string msgId = ArrayHelper.GetStringFromArrayCsharpStyle(data.Slice(0, 8), false);
+        //var msg = $"OID: {BitConverter.ToUInt64(data[..8].Span)} ";
+        //MonitorLogger.LogInformation(msg);
 
-        ////Debug.Print($"Buffer ({data.Length}B): {msgId}");
+        //Debug.Print($"Buffer ({data.Length}B): {msgId}");
         //return;
 
         string msg;
@@ -72,11 +73,11 @@ public class UdpDatagramIpDuplexIoReceiver : BaseDuplexIoReceiver
             //        MonitorLogger.LogInformation(msg);
             //#endif
 
-            if (ActivateReceiveLogging)
-            {
-                msg = $"Buffer ({data.Length}B): {ArrayHelper.GetStringFromArrayCsharpStyle(data, false)}";
-                MonitorLogger.LogDebug(msg);
-            }
+            //if (ActivateReceiveLogging)
+            //{
+            //    msg = $"Buffer ({data.Length}B): {ArrayHelper.GetStringFromArrayCsharpStyle(data, false)}";
+            //    MonitorLogger.LogDebug(msg);
+            //}
             //else
             //{
             //    if (_messageCounter == long.MaxValue)
@@ -101,42 +102,44 @@ public class UdpDatagramIpDuplexIoReceiver : BaseDuplexIoReceiver
 
             //Debug.Print($"After decoding: {msgId}");
 
-            if (codecResult.ErrorCode != 0 || codecResult.DataMessage == null)
+            if (codecResult is { ErrorCode: 0, DataMessage: not null })
             {
-                msg = $"Parsing command failed with error code {codecResult.ErrorCode}: {codecResult.ErrorMessage}: {ArrayHelper.GetStringFromArrayCsharpStyle(data, false)}";
-                MonitorLogger.LogError(msg);
-                DataMessagingConfig.AppLogger.LogError($"{LoggerId}{msg}");
-                return;
-            }
-
-            var validationResult = _dataMessageValidator.IsMessageValid(codecResult.DataMessage);
-            if (validationResult.IsMessageValid)
-            {
-                if (_count < 15)
+                var validationResult = _dataMessageValidator.IsMessageValid(codecResult.DataMessage);
+                if (validationResult.IsMessageValid)
                 {
-                    //if (ActivateReceiveLogging)
+                    //if (_count < 15)
                     //{
-                    //msg = $"Parsed command {codecResult.DataMessage.RawMessageDataClearText}";
+                    //    //if (ActivateReceiveLogging)
+                    //    //{
+                    //    //msg = $"Parsed command {codecResult.DataMessage.RawMessageDataClearText}";
 
-                    //Debug.Print(ArrayHelper.GetStringFromArrayCsharpStyle(codecResult.DataMessage.RawMessageData));
+                    //    //Debug.Print(ArrayHelper.GetStringFromArrayCsharpStyle(codecResult.DataMessage.RawMessageData));
 
-                    msg = $"Parsed {codecResult.DataMessage.ToShortInfoString()}: {codecResult.DataMessage.RawMessageDataClearText}";
-                    //Trace.TraceInformation(msg);
-                    DataMessagingConfig.MonitorLogger.LogDebug(msg);
+                    //    msg = $"Parsed {codecResult.DataMessage.ToShortInfoString()}: {codecResult.DataMessage.RawMessageDataClearText}";
+                    //    //Trace.TraceInformation(msg);
+                    //    DataMessagingConfig.MonitorLogger.LogDebug(msg);
+                    //    //}
+
+                    //    if (_count < 15)
+                    //    {
+                    //        _count++;
+                    //    }
                     //}
 
-                    if (_count < 15)
-                    {
-                        _count++;
-                    }
-                }
+                    //Debug.Print($"Before processing: {codecResult.DataMessage.ToShortInfoString()}");
+                    DataMessageProcessor.ProcessMessage(codecResult.DataMessage);
 
-                //Debug.Print($"Before processing: {msgId}");
-                DataMessageProcessor.ProcessMessage(codecResult.DataMessage);
+                    msg = $"{codecResult.DataMessage.ToShortInfoString()}: start processing";
+                    MonitorLogger.LogDebug(msg);
+                }
+            }
+            else if (codecResult.ErrorCode == 6)
+            {
+                // Do nothing: message already handled
             }
             else
             {
-                msg = $"Parsed command NOT valid: {ArrayHelper.GetStringFromArrayCsharpStyle(data, false)}: {validationResult.ValidationResult}";
+                msg = $"Parsing command failed with error code {codecResult.ErrorCode}: {codecResult.ErrorMessage}: {ArrayHelper.GetStringFromArrayCsharpStyle(data, false)}";
                 MonitorLogger.LogError(msg);
                 DataMessagingConfig.AppLogger.LogError($"{LoggerId}{msg}");
             }

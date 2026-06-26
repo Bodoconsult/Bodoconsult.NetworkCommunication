@@ -29,7 +29,7 @@ public class DefaultInboundDataMessageSorter : IInboundDataMessageSorter
     /// <summary>
     /// The maximum number of messages in the queue before the queue is sent and then cleared
     /// </summary>
-    public int MaxNumberOfMessagesInQueue { get; set; } = 5;
+    public int MaxNumberOfMessagesInQueue { get; set; } = 10;
 
     /// <summary>
     /// The last incoming message ID returned correctly
@@ -97,20 +97,15 @@ public class DefaultInboundDataMessageSorter : IInboundDataMessageSorter
 
     private void AddMessageInternal(ISortableInboundDataMessage message)
     {
-        //try
-        //{
-
-        //Debug.Print($"MsgId: {message.OriginalMessageId}");
-
-        if (!_inboundDataMessages.TryAdd(message.OriginalMessageId, message))
+        if (_inboundDataMessages.TryAdd(message.OriginalMessageId, message))
         {
-            Logger.LogError($"Queue contains already message ID {message.OriginalMessageId}");
+            return;
         }
-        //}
-        //catch (Exception e)
-        //{
-        //    Logger.LogError($"Queue contains already message with ID {message.OriginalMessageId}", e);
-        //}
+
+#if DEBUG
+        Logger.LogWarning($"Queue contains already message ID {message.OriginalMessageId}");
+#endif
+
     }
 
 

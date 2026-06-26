@@ -44,9 +44,9 @@ public abstract class BaseDuplexIoSender : IDuplexIoSender
                 return sent;
             }
 
-#if DEBUG
-            DataMessagingConfig.MonitorLogger.LogDebug($"{LoggerId}{message.ToShortInfoString()} sent {sent.BytesSent}B: {sent.ProcessExecutionResult}");
-#endif
+//#if DEBUG
+//            DataMessagingConfig.MonitorLogger.LogDebug($"{LoggerId}{message.ToShortInfoString()} sent: {sent.ProcessExecutionResult}");
+//#endif
 
 //#if DEBUG
 //            msg = $"Message {message.ToShortInfoString()} sent: {sent.BytesSent}B";

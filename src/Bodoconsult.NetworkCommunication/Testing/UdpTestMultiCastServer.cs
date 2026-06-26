@@ -48,7 +48,7 @@ public class UdpTestMultiCastServer : BaseUdpDevice
     public override void Send(byte[] data)
     {
         var result = Listener.Send(data, data.Length, EndPoint);
-        Debug.Print($"{TypeName}: sent {result} byte(s)!");
+        Debug.Print($"{TypeName}: sent {result}B");
     }
 
     ///// <summary>

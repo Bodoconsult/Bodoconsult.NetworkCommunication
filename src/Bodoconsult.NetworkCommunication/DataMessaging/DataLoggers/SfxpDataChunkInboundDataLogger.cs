@@ -14,6 +14,7 @@ namespace Bodoconsult.NetworkCommunication.DataMessaging.DataLoggers;
 public class SfxpDataChunkInboundDataLogger : IInboundDataLogger
 {
     private readonly IMemoryDataExportService _dataExportService;
+    private long _loggedBytes;
 
     /// <summary>
     /// Default ctor
@@ -61,6 +62,7 @@ public class SfxpDataChunkInboundDataLogger : IInboundDataLogger
     /// </summary>
     public void Stop()
     {
+        Debug.Print($"SfxpDataChunkInboundDataLogger: {_loggedBytes}B");
         DataExportService.Stop();
     }
 
@@ -71,36 +73,41 @@ public class SfxpDataChunkInboundDataLogger : IInboundDataLogger
     /// <returns>A list with array items to log or empty list</returns>
     public List<Memory<byte>> CheckIfMessageIsToLog(IInboundDataMessage message)
     {
-        if (message is not SfxpInboundDataMessage { DataBlock: SfxpInboundDatablock db } msg)
+        var list = new List<Memory<byte>>(1);
+
+        if (message is not SfxpInboundDataMessage { DataBlock: SfxpInboundDatablock db })
         {
             Debug.Print($"No SFXP message");
-            return [];
+            return list;
         }
 
         var chunks = db.DataChunks.Where(x => x.Channel == Channel && x.Data.HasValue).Select(x => x.Data!.Value).ToList();
 
-        //if (chunks.Count == 0)
-        //{
-        //    return [];
-        //}
+        if (chunks.Count == 0)
+        {
+            return list;
+        }
 
-        // Debug.Print($"Logged OID {msg.OriginalMessageId}: Ch{Channel}: {chunks.Count} chunks with {chunks.Count * 8}B");
-        //var chunks = new List<Memory<byte>>();
+        var result = new byte[chunks.Count * 8];
 
-        //foreach (var chunk in db.DataChunks.Where(x => x.Channel == Channel && x.Data.HasValue))
-        //{
-        //    if (!chunk.Data.HasValue)
-        //    {
-        //        continue;
-        //    }
-        //    //Debug.Print($"{chunk.Channel}: {chunk.Data.Value.Length}");
+        // ReSharper disable once ConditionIsAlwaysTrueOrFalse
+        if (result.Length + _loggedBytes  > long.MaxValue)
+        {
+            _loggedBytes = 0;
+        }
 
-        //    chunks.Add(chunk.Data.Value);
+        _loggedBytes += result.Length;
 
-        //    //Debug.Print(ArrayHelper.GetStringFromArray(chunk.Data.Value));
-        //}
+        Span<byte> resultSpan = result;
 
-        return chunks;
+        foreach (var chunk in chunks)
+        {
+            chunk.Span.CopyTo(resultSpan);
+            resultSpan = resultSpan[chunk.Length..]; // Move span forward
+        }
+
+        list.Add(result.AsMemory());
+        return list;
     }
 
     /// <summary>
@@ -109,12 +116,6 @@ public class SfxpDataChunkInboundDataLogger : IInboundDataLogger
     /// <param name="messages">Messages to log</param>
     public void LogTheMessages(List<Memory<byte>> messages)
     {
-        //foreach (var message in messages)
-        //{
-        //    //Debug.Print($"{chunk.Channel}: {chunk.Data.Value.Length}");
-        ////    _dataExportService.Add(message);
-        //}
-
         _dataExportService.AddRange(messages);
     }
 }

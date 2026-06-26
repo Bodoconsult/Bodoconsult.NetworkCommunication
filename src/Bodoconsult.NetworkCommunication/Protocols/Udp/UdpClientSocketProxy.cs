@@ -6,13 +6,12 @@
 // https://learn.microsoft.com/de-de/dotnet/framework/network-programming/using-udp-services
 // https://enclave.io/high-performance-udp-sockets-net6/
 
-using System.Diagnostics;
 using Bodoconsult.App.Abstractions.Interfaces;
+using Bodoconsult.App.Extensions;
 using Bodoconsult.NetworkCommunication.Delegates;
 using Bodoconsult.NetworkCommunication.Interfaces;
 using System.Net;
 using System.Net.Sockets;
-using Bodoconsult.App.Helpers;
 
 namespace Bodoconsult.NetworkCommunication.Protocols.Udp;
 
@@ -22,6 +21,7 @@ namespace Bodoconsult.NetworkCommunication.Protocols.Udp;
 public class UdpClientSocketProxy : BaseUpdSocketProxy
 {
     private readonly IDatagramPipeline _pipeline;
+    private bool _isBound;
 
     /// <summary>
     /// Endpoint for listening
@@ -39,11 +39,14 @@ public class UdpClientSocketProxy : BaseUpdSocketProxy
     }
 
     /// <summary>
+    /// Number of receiver tasks to employ
+    /// </summary>
+    public byte NumberOfReceiverTasks { get; set; } = 1;
+
+    /// <summary>
     /// Endpoint for listening
     /// </summary>
     public IPEndPoint? SendEndPoint { get; set; }
-
-    private bool _isBound;
 
     /// <summary>
     /// Current socket (only for testing purposes, do not access directly in production code)
@@ -173,31 +176,21 @@ public class UdpClientSocketProxy : BaseUpdSocketProxy
     {
         SocketReceivedDataDelegate = socketReceivedDataDelegate;
 
+        // Start receiver loop 1 now
+        StartReceiverLoopInternal();
+
+        // Start the rest of the receiver loop tasks if necessary
+        for (var i = 2; i <= NumberOfReceiverTasks; i++)
+        {
+            StartReceiverLoopInternal();
+        }
+    }
+
+    private void StartReceiverLoopInternal()
+    {
         AutoResetEvent wait = new(false);
 
-        // Start receive loop 1 now
-        Task.Run(async () =>
-        {
-            await ReceiverLoop(wait);
-        });
-
-        //// Start receive loop 2 now
-        //Task.Run(async () =>
-        //{
-        //    await ReceiverLoop(wait);
-        //});
-
-        //// Start receive loop 3 now
-        //Task.Run(async () =>
-        //{
-        //    await ReceiverLoop(wait);
-        //});
-
-        //// Start receive loop 4 now
-        //Task.Run(async () =>
-        //{
-        //    await ReceiverLoop(wait);
-        //});
+        Task.Run(async () => { await ReceiverLoop(wait); }).Forget();
 
         wait.WaitOne(100);
     }
@@ -206,7 +199,7 @@ public class UdpClientSocketProxy : BaseUpdSocketProxy
     /// Run the receiver loop
     /// </summary>
     /// <param name="waitForLoopStarted"></param>
-    /// <returns></returns>
+    /// <returns>Task</returns>
     public override async Task ReceiverLoop(AutoResetEvent waitForLoopStarted)
     {
         try
@@ -218,18 +211,15 @@ public class UdpClientSocketProxy : BaseUpdSocketProxy
 
             waitForLoopStarted.Set();
 
+            var queue = _pipeline.InboundQueue;
+
             while (!CancellationTokenSource.IsCancellationRequested)
             {
                 try
                 {
-                    var udpResult = await UdpClient.ReceiveAsync(CancellationTokenSource.Token);
-                    SendEndPoint = udpResult.RemoteEndPoint;
-
-                    var buffer = new byte[udpResult.Buffer.Length];
-                    udpResult.Buffer.CopyTo(buffer,0);
-
-                    //Debug.Print($"Receive {ArrayHelper.GetStringFromArrayCsharpStyle(buffer.AsMemory().Slice(0,8), false)}");
-                    _pipeline.AddMemory(buffer);
+                    var udpResult = await UdpClient.ReceiveAsync(CancellationTokenSource.Token).ConfigureAwait(continueOnCapturedContext: false);
+                    queue.Enqueue(udpResult);
+                    //SendEndPoint = udpResult.RemoteEndPoint;
                 }
                 catch (OperationCanceledException)
                 {

@@ -12,6 +12,9 @@ namespace Bodoconsult.NetworkCommunication.DataMessaging.DataMessageCodecs;
 /// </summary>
 public class SfxpDataMessageCodec : BaseDataMessageCodec
 {
+    private const int Length = 10000;
+    private readonly List<ulong> _messageIds = new(Length);
+
     /// <summary>
     /// Current <see cref="IDataBlockCodingProcessor"/> instance
     /// </summary>
@@ -46,14 +49,29 @@ public class SfxpDataMessageCodec : BaseDataMessageCodec
 
         try
         {
-            var rawBytes = data[..8].ToArray();
+            var rawBytes = data[..8].Span;
 
             var messageId = BitConverter.ToUInt64(rawBytes);
 
-            var dataBlockBytes = data[7..].ToArray(); // ToArray is important to not change the original data
-            dataBlockBytes[0] = 0x73;  // s
+            // Check if the current message ID was handled already
+            if (_messageIds.Contains(messageId))
+            {
+                result.ErrorMessage = "Message ID already exists";
+                result.ErrorCode = DataMessageCodecErrorCodes.MessageAlreadyReceived;
+                return result;
+            }
 
-            var dataBlock = DataBlockCodingProcessor.FromBytesToDataBlock(dataBlockBytes);
+            // Store the current message ID
+            if (_messageIds.Count == Length)
+            {
+                _messageIds.Remove(_messageIds[0]);
+            }
+
+            _messageIds.Add(messageId);
+
+            // Now process decoding
+            var dataBlockBytes = data.Slice(8); 
+            var dataBlock = DataBlockCodingProcessor.FromBytesToDataBlock(dataBlockBytes, (char)0x73);
 
             var dataMessage = new SfxpInboundDataMessage
             {

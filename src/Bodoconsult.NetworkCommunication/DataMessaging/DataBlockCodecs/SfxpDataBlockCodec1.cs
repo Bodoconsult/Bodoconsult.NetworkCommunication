@@ -110,7 +110,7 @@ public class SfxpDataBlockCodec1: IDataBlockCodec
     /// </summary>
     /// <param name="datablockBytes">Datablock bytes received</param>
     /// <returns>Datablock object</returns>
-    public ITypedInboundDataBlock DecodeDataBlock(Memory<byte> datablockBytes)
+    public ITypedInboundDataBlock? DecodeDataBlock(Memory<byte> datablockBytes)
     {
         // Now create your datablock as request by specs here
         if (datablockBytes.Length < 2)

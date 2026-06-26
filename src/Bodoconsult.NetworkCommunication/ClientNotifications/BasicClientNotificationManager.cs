@@ -16,6 +16,6 @@ public class BasicClientNotificationManager : BaseOrderManagementClientNotificat
     /// <param name="clientMessagingBusinessDelegate">Client messaging business delegate</param>
     public BasicClientNotificationManager(IClientMessagingBusinessDelegate clientMessagingBusinessDelegate)
     {
-        NotifyClient = clientMessagingBusinessDelegate.MessagingBusinessManagerOnNotifyClient;
+        //NotifyClient = clientMessagingBusinessDelegate.MessagingBusinessManagerOnNotifyClient;
     }
 }

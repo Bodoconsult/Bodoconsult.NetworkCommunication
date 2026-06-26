@@ -11,6 +11,8 @@ namespace Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
 public class SfxpInboundDataMessage : ISortableInboundDataMessage
 {
     private Memory<byte> _rawMessageData;
+    private ulong _originalMessageId;
+    private string _shortInfoString;
 
     /// <summary>
     /// Default ctor
@@ -18,6 +20,7 @@ public class SfxpInboundDataMessage : ISortableInboundDataMessage
     public SfxpInboundDataMessage()
     {
         MessageId = DateTime.Now.ToFileTimeUtc();
+        _shortInfoString = $"SfxpInboundDataMessage ID {MessageId}";
     }
 
     /// <summary>
@@ -51,6 +54,7 @@ public class SfxpInboundDataMessage : ISortableInboundDataMessage
         {
             _rawMessageData = value;
             RawMessageDataClearText = ArrayHelper.GetStringFromArrayCsharpStyle(_rawMessageData, false);
+            _shortInfoString = $"SfxpInboundDataMessage ID {MessageId} OID {_originalMessageId} ({RawMessageData.Length}B)";
         }
     }
 
@@ -65,7 +69,7 @@ public class SfxpInboundDataMessage : ISortableInboundDataMessage
     /// <returns>Info string</returns>
     public string ToInfoString()
     {
-        return $"SfxpInboundDataMessage ID {MessageId} OID {OriginalMessageId} ({RawMessageData.Length}B) {RawMessageDataClearText}";
+        return $"{_shortInfoString} {RawMessageDataClearText}";
     }
 
     /// <summary>
@@ -74,7 +78,7 @@ public class SfxpInboundDataMessage : ISortableInboundDataMessage
     /// <returns>Info string</returns>
     public string ToShortInfoString()
     {
-        return $"SfxpInboundDataMessage ID {MessageId} OID {OriginalMessageId} ({RawMessageData.Length}B)";
+        return _shortInfoString;
     }
 
     /// <summary>
@@ -85,5 +89,13 @@ public class SfxpInboundDataMessage : ISortableInboundDataMessage
     /// <summary>
     /// Original message ID received from the device
     /// </summary>
-    public ulong OriginalMessageId { get; set; }
+    public ulong OriginalMessageId
+    {
+        get => _originalMessageId;
+        set
+        {
+            _originalMessageId = value;
+            _shortInfoString = $"SfxpInboundDataMessage ID {MessageId} OID {_originalMessageId} ({RawMessageData.Length}B)";
+        }
+    }
 }

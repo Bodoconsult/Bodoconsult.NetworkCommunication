@@ -3,8 +3,9 @@
 
 // Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
-using System.Net.Sockets;
+using Bodoconsult.App.Helpers;
 using Bodoconsult.NetworkCommunication.Delegates;
+using System.Net.Sockets;
 
 namespace Bodoconsult.NetworkCommunication.Interfaces;
 
@@ -13,6 +14,11 @@ namespace Bodoconsult.NetworkCommunication.Interfaces;
 /// </summary>
 public interface IDatagramPipeline : IPipeline
 {
+    /// <summary>
+    /// Inbound queue for received UDP result
+    /// </summary>
+    public ProducerConsumerQueue2<UdpReceiveResult> InboundQueue { get; }
+
     /// <summary>
     /// Delegate fired if the socket was receiving data
     /// </summary>
@@ -40,5 +46,11 @@ public interface IDatagramPipeline : IPipeline
     /// <summary>
     /// Add the received data to the queue
     /// </summary>
-    void AddMemory(byte[] data);
+    void AddMemory(Memory<byte> data);
+
+    /// <summary>
+    /// Add a received UDP result to the inbound queue
+    /// </summary>
+    /// <param name="result">Received UDP result</param>
+    void AddResult(UdpReceiveResult result);
 }

@@ -103,13 +103,13 @@ public class IpDeviceUdpClientManager : ISimpleDeviceManager
 
         var fileSize = appStartParams.MaxDataLoggingFileSize;
 
-        const int cacheSize = 5000;
+        const int cacheSize = 10;
 
-        CreateLoggerChannel(0x0, ipAddress, config, "Channel1", fileSize, cacheSize);
-        CreateLoggerChannel(0x1, ipAddress, config, "Channel2", fileSize, cacheSize);
-        CreateLoggerChannel(0x2, ipAddress, config, "Channel3", fileSize, cacheSize);
-        CreateLoggerChannel(0x3, ipAddress, config, "Channel4", fileSize, cacheSize);
-        CreateLoggerChannel(0xC, ipAddress, config, "ADD", fileSize, 20);
+        CreateLoggerChannel(0x0, ipAddress, config, "Channel1", fileSize, cacheSize, true);
+        CreateLoggerChannel(0x1, ipAddress, config, "Channel2", fileSize, cacheSize, true);
+        CreateLoggerChannel(0x2, ipAddress, config, "Channel3", fileSize, cacheSize, true);
+        CreateLoggerChannel(0x3, ipAddress, config, "Channel4", fileSize, cacheSize, true);
+        CreateLoggerChannel(0xC, ipAddress, config, "ADD", fileSize, 5, false);
 
         // Create messaging package
         configurator.CreateDataMessagingPackage(messageProcessingPackageFactory);
@@ -129,7 +129,7 @@ public class IpDeviceUdpClientManager : ISimpleDeviceManager
         DeviceBusinessLogicAdapter = dbla;
     }
 
-    private static void CreateLoggerChannel(byte channel, string ipAddress, IDataMessagingConfig config, string channelName, long size, int cacheSize)
+    private static void CreateLoggerChannel(byte channel, string ipAddress, IDataMessagingConfig config, string channelName, long size, int cacheSize, bool isHigherPriority)
     {
         config.AppLogger.LogInformation($"{config.LoggerId}: storing bin data for {channelName} to {config.DataLoggingPath}");
 
@@ -144,6 +144,11 @@ public class IpDeviceUdpClientManager : ISimpleDeviceManager
             FileExtension = "bin",
             MaxFileSize = size
         };
+
+        if (isHigherPriority)
+        {
+            es.ThreadPriority = ThreadPriority.AboveNormal;
+        }
 
         var logger = new SfxpDataChunkInboundDataLogger(es)
         {

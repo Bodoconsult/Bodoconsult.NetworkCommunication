@@ -42,7 +42,7 @@ public class BasicDataBlockCodec : IDataBlockCodec
     /// </summary>
     /// <param name="datablockBytes">Datablock bytes received</param>
     /// <returns>Datablock object</returns>
-    public ITypedInboundDataBlock DecodeDataBlock(Memory<byte> datablockBytes)
+    public ITypedInboundDataBlock? DecodeDataBlock(Memory<byte> datablockBytes)
     {
 
         // You should add some datablock validation here
@@ -60,7 +60,7 @@ public class BasicDataBlockCodec : IDataBlockCodec
         }
         return new BasicInboundDatablock
         {
-            Data = datablockBytes[1..],
+            Data = datablockBytes,
             DataBlockType = 'x'
         };
     }

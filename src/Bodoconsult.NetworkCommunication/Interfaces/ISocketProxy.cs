@@ -85,7 +85,7 @@ public interface ISocketProxy: IDisposable
     /// Run the receiver loop
     /// </summary>
     /// <param name="waitForLoopStarted"><see cref="AutoResetEvent"/> to wait until the loop has been started</param>
-    /// <returns></returns>
+    /// <returns>Task</returns>
     Task ReceiverLoop(AutoResetEvent waitForLoopStarted);
 
     /// <summary>

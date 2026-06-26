@@ -118,7 +118,7 @@ public abstract class BaseUpdSocketProxy : IUdpSocketProxy
     /// Run the receiver loop
     /// </summary>
     /// <param name="waitForLoopStarted"></param>
-    /// <returns></returns>
+    /// <returns>Task</returns>
     public virtual Task ReceiverLoop(AutoResetEvent waitForLoopStarted)
     {
         throw new NotSupportedException("Override in derived classes");

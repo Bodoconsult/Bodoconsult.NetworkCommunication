@@ -176,7 +176,11 @@ public class UdpServerWithHelloSocketProxy : BaseUpdSocketProxy
                 {
                     var udpResult = await UdpClient.ReceiveAsync(CancellationTokenSource.Token);
                     SendEndPoint = udpResult.RemoteEndPoint;
-                    _pipeline.AddMemory(udpResult.Buffer.AsMemory()[..udpResult.Buffer.Length].ToArray());
+                    Memory<byte> buffer = new byte[udpResult.Buffer.Length];
+                    udpResult.Buffer.AsMemory().CopyTo(buffer);
+
+                    //Debug.Print($"Receive {ArrayHelper.GetStringFromArrayCsharpStyle(buffer.AsMemory().Slice(0,8), false)}");
+                    _pipeline.AddMemory(buffer);
                 }
                 catch (OperationCanceledException)
                 {

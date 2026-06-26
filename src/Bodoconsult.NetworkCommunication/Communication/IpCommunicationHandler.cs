@@ -15,8 +15,8 @@ public class IpCommunicationHandler : ICommunicationHandler
 {
     private readonly IAppEventSource _appEventSource;
     private readonly string _loggerId;
-    private readonly AutoResetEvent _stopped = new(false);
-    private const int TimeOut = 3000;
+    //private readonly AutoResetEvent _stopped = new(false);
+    //private const int TimeOut = 3000;
 
     private IWaitStateManager? _waitStateManager;
     private bool _isInitialized;
@@ -174,17 +174,17 @@ public class IpCommunicationHandler : ICommunicationHandler
     public void OnReceivedMessage(IInboundDataMessage message)
     {
         _inboundQueue.Enqueue(message);
-        _monitorLogger.LogDebug($"{_loggerId}received {message.ToShortInfoString()}");
+        //_monitorLogger.LogDebug($"{_loggerId}received {message.ToShortInfoString()}");
     }
 
-    /// <summary>
-    /// Callback metho th free <see cref="_stopped"/>
-    /// </summary>
-    /// <param name="ar">Asny result (not handled)</param>
-    protected void Callback(IAsyncResult ar)
-    {
-        _stopped.Set();
-    }
+    ///// <summary>
+    ///// Callback metho th free <see cref="_stopped"/>
+    ///// </summary>
+    ///// <param name="ar">Asny result (not handled)</param>
+    //protected void Callback(IAsyncResult ar)
+    //{
+    //    _stopped.Set();
+    //}
 
     /// <summary>
     /// Connect to the tower
@@ -259,7 +259,7 @@ public class IpCommunicationHandler : ICommunicationHandler
 
         try
         {
-            _stopped.Reset();
+            //_stopped.Reset();
             _waitStateManager.LastMessageTimeStamp = new DateTimeOffset(DateTime.UtcNow).ToUnixTimeMilliseconds();
 
             // Send only a handshake if the message requires it

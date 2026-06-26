@@ -24,5 +24,5 @@ public interface IDataBlockCodec
     /// </summary>
     /// <param name="datablockBytes">Datablock bytes received</param>
     /// <returns>Datablock object</returns>
-    ITypedInboundDataBlock DecodeDataBlock(Memory<byte> datablockBytes);
+    ITypedInboundDataBlock? DecodeDataBlock(Memory<byte> datablockBytes);
 }
