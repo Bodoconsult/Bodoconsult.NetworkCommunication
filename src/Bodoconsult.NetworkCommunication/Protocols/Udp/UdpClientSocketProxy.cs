@@ -179,11 +179,15 @@ public class UdpClientSocketProxy : BaseUpdSocketProxy
         // Start receiver loop 1 now
         StartReceiverLoopInternal();
 
+#if DEBUG
+
+#else
         // Start the rest of the receiver loop tasks if necessary
         for (var i = 2; i <= NumberOfReceiverTasks; i++)
         {
             StartReceiverLoopInternal();
         }
+#endif
     }
 
     private void StartReceiverLoopInternal()

@@ -12,7 +12,6 @@ using Bodoconsult.NetworkCommunication.Interfaces;
 using IpBackend.Bll.Interfaces;
 using IpCommunicationSample.Common.BusinessTransactions.Replies;
 using IpCommunicationSample.Common.BusinessTransactions.Requests;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace IpBackend.Bll.BusinessLogic.Adapters;
 

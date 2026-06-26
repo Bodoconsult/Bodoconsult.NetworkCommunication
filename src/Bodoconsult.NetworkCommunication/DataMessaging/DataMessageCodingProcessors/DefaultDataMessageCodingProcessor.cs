@@ -5,7 +5,6 @@ using Bodoconsult.NetworkCommunication.DataMessaging.DataMessageCodecs;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
 using Bodoconsult.NetworkCommunication.Exceptions;
 using Bodoconsult.NetworkCommunication.Interfaces;
-using Microsoft.Diagnostics.Tracing.Parsers.MicrosoftAntimalwareEngine;
 
 namespace Bodoconsult.NetworkCommunication.DataMessaging.DataMessageCodingProcessors;
 
