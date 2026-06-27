@@ -1,6 +1,8 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
+using System.Diagnostics;
 using Bodoconsult.App.BufferPool;
+using Bodoconsult.App.Helpers;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataBlocks;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
 using Bodoconsult.NetworkCommunication.Helpers;
@@ -168,6 +170,7 @@ public class SfxpDataBlockCodec : IDataBlockCodec
 
             if (path.Count == 0)
             {
+                Debug.Print("All sync chunks");
                 continue;
             }
 
@@ -175,9 +178,11 @@ public class SfxpDataBlockCodec : IDataBlockCodec
             {
                 if (path.Contains(syncChunk))
                 {
+                    Debug.Print($"Sync {syncChunk}");
                     continue;
                 }
 
+                Debug.Print($"No sync {syncChunk}");
                 allChunks[syncChunk].DataChunkType = DataChunkType.DataChunk;
             }
 
@@ -192,9 +197,9 @@ public class SfxpDataBlockCodec : IDataBlockCodec
 
         foreach (var c in syncChunks)
         {
-            var result = c % streamingConfigLength;
-            //Debug.Print($"{c} {result}");
-            if (result == 0)
+            var result = c % (double)streamingConfigLength;
+            Debug.Print($"{c} {result:0.00000}");
+            if (result < 0.0000001)
             {
                 path.Add(c);
             }
@@ -313,7 +318,7 @@ public class SfxpDataBlockCodec : IDataBlockCodec
                 if (block)
                 {
                     syncChunks.Add(i);
-                    //Debug.Print($"SyncChunk 0x0 {i}");
+                    Debug.Print($"SyncChunk 0x0 {i} {ArrayHelper.GetStringFromArrayCsharpStyle(value, false)}");
                     chunk.DataChunkType = DataChunkType.RegularSyncChunk;
                     continue;
                 }
@@ -333,7 +338,7 @@ public class SfxpDataBlockCodec : IDataBlockCodec
 
             // 0x9 sync chunk
             syncChunks.Add(i);
-            //Debug.Print($"SyncChunk 0x9 {i}");
+            Debug.Print($"SyncChunk 0x9 {i} {ArrayHelper.GetStringFromArrayCsharpStyle(value, false)}");
             chunk.DataChunkType = DataChunkType.SampleCounterSyncChunk;
         }
 
