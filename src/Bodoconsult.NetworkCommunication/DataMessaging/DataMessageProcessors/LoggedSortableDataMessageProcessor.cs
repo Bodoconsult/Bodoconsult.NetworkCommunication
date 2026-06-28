@@ -100,7 +100,7 @@ public class LoggedSortableDataMessageProcessor : BaseDataMessageProcessor
         {
             var chunks = logger.CheckIfMessageIsToLog(msg);
 
-            if (chunks.Count <= 0)
+            if (chunks.Count == 0)
             {
                 //Debug.Print($"Logged: OID {msg.OriginalMessageId}: 0 chunks");
                 continue;
@@ -108,7 +108,6 @@ public class LoggedSortableDataMessageProcessor : BaseDataMessageProcessor
 
             logger.LogTheMessages(chunks);
             //Debug.Print($"Logged: OID {msg.OriginalMessageId}: {chunks.Count} chunks with {chunks[0].Length}B");
-
         }
     }
 }

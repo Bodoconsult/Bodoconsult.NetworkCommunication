@@ -73,8 +73,6 @@ public class SfxpDataBlockCodec : IDataBlockCodec
         }
 
         StreamingConfig = result.ToArray();
-
-
     }
 
     /// <summary>
@@ -170,7 +168,7 @@ public class SfxpDataBlockCodec : IDataBlockCodec
 
             if (path.Count == 0)
             {
-                Debug.Print("All sync chunks");
+                //Debug.Print("All sync chunks");
                 continue;
             }
 
@@ -178,17 +176,16 @@ public class SfxpDataBlockCodec : IDataBlockCodec
             {
                 if (path.Contains(syncChunk))
                 {
-                    Debug.Print($"Sync {syncChunk}");
+                    //Debug.Print($"Sync {syncChunk}");
                     continue;
                 }
 
-                Debug.Print($"No sync {syncChunk}");
+                //Debug.Print($"No sync {syncChunk}");
                 allChunks[syncChunk].DataChunkType = DataChunkType.DataChunk;
             }
 
             return;
         }
-
     }
 
     private static List<int> CheckPotentialSyncChunkItem(IEnumerable<int> syncChunks, int chunk, int streamingConfigLength)
@@ -197,9 +194,9 @@ public class SfxpDataBlockCodec : IDataBlockCodec
 
         foreach (var c in syncChunks)
         {
-            var result = c % (double)streamingConfigLength;
-            Debug.Print($"{c} {result:0.00000}");
-            if (result < 0.0000001)
+            var result = c % streamingConfigLength;
+            //Debug.Print($"{c} {result:0}");
+            if (result ==0)
             {
                 path.Add(c);
             }
@@ -318,7 +315,7 @@ public class SfxpDataBlockCodec : IDataBlockCodec
                 if (block)
                 {
                     syncChunks.Add(i);
-                    Debug.Print($"SyncChunk 0x0 {i} {ArrayHelper.GetStringFromArrayCsharpStyle(value, false)}");
+                    //Debug.Print($"SyncChunk 0x0 {i} {ArrayHelper.GetStringFromArrayCsharpStyle(value, false)}");
                     chunk.DataChunkType = DataChunkType.RegularSyncChunk;
                     continue;
                 }
@@ -338,7 +335,7 @@ public class SfxpDataBlockCodec : IDataBlockCodec
 
             // 0x9 sync chunk
             syncChunks.Add(i);
-            Debug.Print($"SyncChunk 0x9 {i} {ArrayHelper.GetStringFromArrayCsharpStyle(value, false)}");
+            //Debug.Print($"SyncChunk 0x9 {i} {ArrayHelper.GetStringFromArrayCsharpStyle(value, false)}");
             chunk.DataChunkType = DataChunkType.SampleCounterSyncChunk;
         }
 

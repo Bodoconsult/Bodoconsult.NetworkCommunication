@@ -25,11 +25,6 @@ public abstract class BaseDataMessageProcessor : IDataMessageProcessor
     /// </summary>
     protected readonly string LoggerId;
 
-    ///// <summary>
-    ///// Stopped event to wait for messages to be delivered to next step
-    ///// </summary>
-    //protected readonly AutoResetEvent Stopped = new(false);
-
     /// <summary>
     /// Timeout in ms for waiting for messages to be delivered to next step
     /// </summary>
@@ -81,13 +76,4 @@ public abstract class BaseDataMessageProcessor : IDataMessageProcessor
 
         Config.DataMessageProcessingPackage.WaitStateManager.OnHandshakeReceived(handShake);
     }
-
-    ///// <summary>
-    ///// Callback metho th free <see cref="Stopped"/>
-    ///// </summary>
-    ///// <param name="ar">Asny result (not handled)</param>
-    //protected void Callback(IAsyncResult ar)
-    //{
-    //    Stopped.Set();
-    //}
 }

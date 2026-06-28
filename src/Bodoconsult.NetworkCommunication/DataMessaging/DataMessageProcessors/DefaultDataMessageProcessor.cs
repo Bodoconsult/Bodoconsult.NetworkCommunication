@@ -25,8 +25,6 @@ public class DefaultDataMessageProcessor : BaseDataMessageProcessor
         var s = $"received {message.ToInfoString()}";
         Config.MonitorLogger.LogInformation(s);
 
-        //Stopped.Reset();
-
         // Handshake received
         if (message is IInboundHandShakeMessage handShake)
         {
