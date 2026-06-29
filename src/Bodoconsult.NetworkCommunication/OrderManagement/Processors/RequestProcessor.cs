@@ -278,7 +278,7 @@ public class RequestProcessor : IRequestProcessor
                 {
                     LogDebug($"{_orderLoggerId} failed: {e}");
                 }
-                
+
             });
         }
 
@@ -575,8 +575,6 @@ public class RequestProcessor : IRequestProcessor
         // Fetch the order here to avoid multithread issues
         var order = Order;
 
-        LogDebug($"{_orderLoggerId}checking {receivedMessage.ToShortInfoString()} with order ID {order.Id}!");
-
         if (_isDisposing || IsCancelled)
         {
             //Order.ExecutionResult = OrderExecutionResultState.Unsuccessful;
@@ -587,7 +585,7 @@ public class RequestProcessor : IRequestProcessor
         var isFinished = order.IsFinished;
         var isCancelled = order.IsCancelled;
 
-        if (isCancelled)
+        if (isCancelled || isDisposable || isFinished)
         {
             //Order.ExecutionResult = OrderExecutionResultState.Unsuccessful;
             LogDebug($"{_orderLoggerId}checking {receivedMessage.ToShortInfoString()} failed: order is cancelled already");
@@ -602,20 +600,21 @@ public class RequestProcessor : IRequestProcessor
             return false;
         }
 
+        LogDebug($"{_orderLoggerId}checking {receivedMessage.ToShortInfoString()} with order ID {order.Id}!");
+
         if (stepProcessor is not IDeviceRequestStepProcessor drsp)
         {
             return false;
         }
 
         var result = drsp.CheckReceivedMessage(receivedMessage);
-
-
-        // If the order has been finished already or is disposable: do not change order state again
-        if (isDisposable || isFinished)
-        {
-            LogDebug($"{_orderLoggerId}checking {receivedMessage.ToShortInfoString()} failed: order is disposable or finished already");
-            return result;
-        }
+        
+        //// If the order has been finished already or is disposable: do not change order state again
+        //if (isDisposable || isFinished)
+        //{
+        //    LogDebug($"{_orderLoggerId}checking {receivedMessage.ToShortInfoString()} failed: order is disposable or finished already");
+        //    return result;
+        //}
 
         if (order.RequestSpecs.All(x => x is { WasSuccessful: true }))
         {

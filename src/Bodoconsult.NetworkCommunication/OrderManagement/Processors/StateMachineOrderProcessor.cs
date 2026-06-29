@@ -228,13 +228,8 @@ public class StateMachineOrderProcessor : BaseOrderProcessor
     /// </summary>
     /// <param name="receivedMessage">A message received from the device</param>
     /// <returns>True if the message was an expected answer of the current request</returns>
-    public override bool CheckReceivedMessage(IInboundDataMessage? receivedMessage)
+    public override bool CheckReceivedMessage(IInboundDataMessage receivedMessage)
     {
-        if (receivedMessage == null)
-        {
-            return false;
-        }
-
         //if (receivedMessage is not IInboundDataMessage rm)
         //{
         //    msg = $"received {receivedMessage.ToInfoString()} {OrderPipeline.CurrentOrderState}";

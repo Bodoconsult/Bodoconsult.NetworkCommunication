@@ -11,6 +11,7 @@ namespace Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
 public class BtcpRequestInboundDataMessage : IInboundBusinessTransactionDataMessage
 {
     private Memory<byte> _rawMessageData;
+    private string _shortInfoString;
 
     /// <summary>
     /// Default ctor
@@ -22,6 +23,7 @@ public class BtcpRequestInboundDataMessage : IInboundBusinessTransactionDataMess
         MessageId = DateTime.Now.ToFileTimeUtc();
         BusinessTransactionId = businessTransactionId;
         BusinessTransactionUid = businessTransactionUid;
+        _shortInfoString = $"BtcpRequestInboundDataMessage ID {MessageId} BT {BusinessTransactionId} / {BusinessTransactionUid}";
     }
 
     /// <summary>
@@ -78,6 +80,7 @@ public class BtcpRequestInboundDataMessage : IInboundBusinessTransactionDataMess
         {
             _rawMessageData = value;
             RawMessageDataClearText = DataMessageHelper.GetStringFromArrayCsharpStyle(_rawMessageData);
+            _shortInfoString = $"BtcpRequestInboundDataMessage ID {MessageId} ({_rawMessageData.Length}B) BT {BusinessTransactionId} / {BusinessTransactionUid}";
         }
     }
 
@@ -92,7 +95,7 @@ public class BtcpRequestInboundDataMessage : IInboundBusinessTransactionDataMess
     /// <returns>Info string</returns>
     public string ToInfoString()
     {
-        return $"BtcpRequestInboundDataMessage ID {MessageId} ({RawMessageData.Length}B) BT {BusinessTransactionId} / {BusinessTransactionUid}: {RawMessageDataClearText}";
+        return $"{_shortInfoString}: {RawMessageDataClearText}";
     }
 
     /// <summary>
@@ -101,6 +104,6 @@ public class BtcpRequestInboundDataMessage : IInboundBusinessTransactionDataMess
     /// <returns>Info string</returns>
     public string ToShortInfoString()
     {
-        return $"BtcpRequestInboundDataMessage ID {MessageId} ({RawMessageData.Length}B) BT {BusinessTransactionId} / {BusinessTransactionUid}";
+        return _shortInfoString;
     }
 }

@@ -127,14 +127,14 @@ public interface IOrderManagementDevice: IIpDevice
     /// </summary>
     /// <param name="receivedMessage">Received message</param>
     /// <returns>True if the message was an expected answer of the current request or should not be handled at all else false</returns>
-    bool DoBasicCheckForReceivedMessage(IInboundDataMessage? receivedMessage);
+    bool DoBasicCheckForReceivedMessage(IInboundDataMessage receivedMessage);
 
     /// <summary>
     /// Check if the message is an error message
     /// </summary>
     /// <param name="receivedMessage">Received message</param>
     /// <returns>True if the message was a handled as error message else false</returns>
-    bool DoCheckForErrorMessage(IInboundDataMessage? receivedMessage);
+    bool DoCheckForErrorMessage(IInboundDataMessage receivedMessage);
 
     /// <summary>
     /// Cancel the currently running operation

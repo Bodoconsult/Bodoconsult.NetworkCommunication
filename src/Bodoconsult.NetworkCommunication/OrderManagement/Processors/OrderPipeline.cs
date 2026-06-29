@@ -610,15 +610,8 @@ public class OrderPipeline : IOrderPipeline
     {
         var order = requestProcessor.Order;
 
-        if (order == null)
-        {
-            throw new ArgumentNullException(nameof(order));
-        }
-
-        if (requestProcessor.CancellationTokenSource == null)
-        {
-            throw new ArgumentNullException(nameof(requestProcessor.CancellationTokenSource));
-        }
+        ArgumentNullException.ThrowIfNull(order);
+        ArgumentNullException.ThrowIfNull(requestProcessor.CancellationTokenSource);
 
         order.StartTime = _dateTimeService.Now;
 

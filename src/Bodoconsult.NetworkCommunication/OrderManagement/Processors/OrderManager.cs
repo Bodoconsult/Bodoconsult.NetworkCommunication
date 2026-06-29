@@ -36,7 +36,6 @@ public class OrderManager : IOrderManager
         OrderReceiver.OrderReceiverCheckMessageDelegate = OrderProcessor.CheckReceivedMessage;
 
         // Bind message receiving 
-        //CommunicationAdapter.NotifydeviceMessageReceived += OndeviceMessageReceived;
         if (MessagingConfig == null)
         {
             throw new NullReferenceException("Data messaging config may not be null");
@@ -75,17 +74,6 @@ public class OrderManager : IOrderManager
         _appLogger.LogDebug($"{_loggerId}order received: {order.LoggerId}");
         OrderProcessor.AddOrder(order);
     }
-
-    ///// <summary>
-    ///// Event handling method for binding to <see cref="IOrderManager.MessagingConfig"/>.NotifydeviceMessageReceivedDelegate
-    ///// </summary>
-    ///// <param name="dataMessage">Received message</param>
-    //public void OnDeviceMessageReceived(IInboundDataMessage dataMessage)
-    //{
-    //    //Trace.TraceInformation($"{_loggerId}message received: {dataMessage.ToInfoString()}");
-    //    //_appLogger.LogDebug($"{_loggerId}message received: {dataMessage.ToInfoString()}");
-    //    OrderReceiver.AddReceivedMessage(dataMessage);
-    //}
 
     /// <summary>
     /// Starts the watchdog for the order processing

@@ -11,6 +11,8 @@ namespace Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
 public class TncpInboundDataMessage : IInboundDataMessage
 {
     private Memory<byte> _rawMessageData;
+    private string _shortInfoString;
+    private string? _telnetCommand;
 
     /// <summary>
     /// Default ctor
@@ -18,6 +20,7 @@ public class TncpInboundDataMessage : IInboundDataMessage
     public TncpInboundDataMessage()
     {
         MessageId = DateTime.Now.ToFileTimeUtc();
+        _shortInfoString = $"TncpInboundDataMessage ID {MessageId}";
     }
 
     /// <summary>
@@ -56,6 +59,7 @@ public class TncpInboundDataMessage : IInboundDataMessage
         {
             _rawMessageData = value;
             RawMessageDataClearText = DataMessageHelper.GetStringFromArrayCsharpStyle(_rawMessageData);
+            _shortInfoString = $"TncpInboundDataMessage ID {MessageId} ({RawMessageData.Length}B)";
         }
     }
 
@@ -70,7 +74,7 @@ public class TncpInboundDataMessage : IInboundDataMessage
     /// <returns>Info string</returns>
     public string ToInfoString()
     {
-        return $"TncpInboundDataMessage ID {MessageId} ({RawMessageData.Length}B, Cmd: {RawMessageDataClearText})";
+        return $"{_shortInfoString} Cmd: {RawMessageDataClearText})";
     }
 
     /// <summary>
@@ -79,7 +83,7 @@ public class TncpInboundDataMessage : IInboundDataMessage
     /// <returns>Info string</returns>
     public string ToShortInfoString()
     {
-        return $"TncpInboundDataMessage ID {MessageId} ({RawMessageData.Length}B, Cmd: {TelnetCommand})";
+        return _shortInfoString;
     }
 
     /// <summary>
@@ -90,7 +94,15 @@ public class TncpInboundDataMessage : IInboundDataMessage
     /// <summary>
     /// Telnet command to send
     /// </summary>
-    public string? TelnetCommand { get; set; }
+    public string? TelnetCommand
+    {
+        get => _telnetCommand;
+        set
+        {
+            _telnetCommand = value; 
+            _shortInfoString = $"TncpInboundDataMessage ID {MessageId} ({RawMessageData.Length}B) Cmd: {_telnetCommand}";
+        }
+    }
 
     /// <summary>
     /// Additional info send with a telnet command

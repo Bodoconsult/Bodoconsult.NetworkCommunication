@@ -228,13 +228,8 @@ public class OrderProcessor : BaseOrderProcessor
     /// </summary>
     /// <param name="receivedMessage">A message received from the device</param>
     /// <returns>True if the message was an expected answer of the current request</returns>
-    public override bool CheckReceivedMessage(IInboundDataMessage? receivedMessage)
+    public override bool CheckReceivedMessage(IInboundDataMessage receivedMessage)
     {
-        if (receivedMessage == null)
-        {
-            return false;
-        }
-
         //if (receivedMessage is not IInboundDataMessage rm)
         //{
         //    msg = $"received {receivedMessage.ToInfoString()} {OrderPipeline.CurrentOrderState}";
@@ -242,7 +237,6 @@ public class OrderProcessor : BaseOrderProcessor
         //    return false;
         //}
 
-        
         //*********************
         // TOP 1 A X message with an error code of 0 makes no sense: throw this message away
         // This other X messages should be given to the order pipeline first and after that it should be handled befor given to async message handler

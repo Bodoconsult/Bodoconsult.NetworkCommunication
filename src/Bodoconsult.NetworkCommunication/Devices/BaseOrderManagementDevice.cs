@@ -543,7 +543,7 @@ public abstract class BaseOrderManagementDevice : IOrderManagementDevice
     /// </summary>
     /// <param name="receivedMessage">Received message</param>
     /// <returns>True if the message was an expected answer of the current request or should not be handled at all else false</returns>
-    public virtual bool DoBasicCheckForReceivedMessage(IInboundDataMessage? receivedMessage)
+    public virtual bool DoBasicCheckForReceivedMessage(IInboundDataMessage receivedMessage)
     {
         // Do nothing
         return false;
@@ -554,7 +554,7 @@ public abstract class BaseOrderManagementDevice : IOrderManagementDevice
     /// </summary>
     /// <param name="receivedMessage">Received message</param>
     /// <returns>True if the message was a handled as error message else false</returns>
-    public virtual bool DoCheckForErrorMessage(IInboundDataMessage? receivedMessage)
+    public virtual bool DoCheckForErrorMessage(IInboundDataMessage receivedMessage)
     {
         return false;
     }

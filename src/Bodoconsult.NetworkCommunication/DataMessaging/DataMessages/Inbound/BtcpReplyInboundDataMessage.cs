@@ -11,6 +11,8 @@ namespace Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
 public class BtcpReplyInboundDataMessage : IInboundBusinessTransactionDataMessage
 {
     private Memory<byte> _rawMessageData;
+    private string _shortInfoString;
+    private int _errorCode;
 
     /// <summary>
     /// Default ctor
@@ -22,6 +24,7 @@ public class BtcpReplyInboundDataMessage : IInboundBusinessTransactionDataMessag
         MessageId = DateTime.Now.ToFileTimeUtc();
         BusinessTransactionId = businessTransactionId;
         BusinessTransactionUid = businessTransactionUid;
+        _shortInfoString = $"BtcpReplyInboundDataMessage ID {MessageId} BT {BusinessTransactionId} / {BusinessTransactionUid}";
     }
 
     /// <summary>
@@ -52,7 +55,15 @@ public class BtcpReplyInboundDataMessage : IInboundBusinessTransactionDataMessag
     /// <summary>
     /// Provided error code
     /// </summary>
-    public int ErrorCode { get; set; }
+    public int ErrorCode
+    {
+        get => _errorCode;
+        set
+        {
+            _errorCode = value;
+            _shortInfoString = $"BtcpReplyInboundDataMessage ID {MessageId} ({RawMessageData.Length}B) BT {BusinessTransactionId} / {BusinessTransactionUid} Error {ErrorCode}";
+        }
+    }
 
     /// <summary>
     /// Provided info message or null
@@ -95,6 +106,7 @@ public class BtcpReplyInboundDataMessage : IInboundBusinessTransactionDataMessag
         {
             _rawMessageData = value;
             RawMessageDataClearText = DataMessageHelper.GetStringFromArrayCsharpStyle(_rawMessageData);
+            _shortInfoString = $"BtcpReplyInboundDataMessage ID {MessageId} ({RawMessageData.Length}B) BT {BusinessTransactionId} / {BusinessTransactionUid}";
         }
     }
 
@@ -109,7 +121,7 @@ public class BtcpReplyInboundDataMessage : IInboundBusinessTransactionDataMessag
     /// <returns>Info string</returns>
     public string ToInfoString()
     {
-        return $"BtcpReplyInboundDataMessage ID {MessageId} ({RawMessageData.Length}B) BT {BusinessTransactionId} / {BusinessTransactionUid} Error {ErrorCode}: {RawMessageDataClearText}";
+        return $"{_shortInfoString}: {RawMessageDataClearText}";
     }
 
     /// <summary>
@@ -118,6 +130,6 @@ public class BtcpReplyInboundDataMessage : IInboundBusinessTransactionDataMessag
     /// <returns>Info string</returns>
     public string ToShortInfoString()
     {
-        return $"BtcpReplyInboundDataMessage ID {MessageId} ({RawMessageData.Length}B) BT {BusinessTransactionId} / {BusinessTransactionUid} Error {ErrorCode}";
+        return _shortInfoString;
     }
 }

@@ -19,7 +19,6 @@ public interface IOrderReceiver: IDisposable
     /// </summary>
     bool IsReceivedMessageProcessingActivated { get; set; }
 
-
     /// <summary>
     /// Adds a received message to the receiver queue for further processing
     /// </summary>

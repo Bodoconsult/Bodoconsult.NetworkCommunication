@@ -108,13 +108,8 @@ public abstract class BaseOrderProcessor : IOrderProcessor
     /// <param name="requestProcessors">Current request processor</param>
     /// <param name="rm">Current message</param>
     /// <returns>True if the messages is for the current processed order</returns>
-    protected bool CheckOrders(IEnumerable<IRequestProcessor> requestProcessors, IInboundDataMessage? rm)
+    protected bool CheckOrders(IEnumerable<IRequestProcessor> requestProcessors, IInboundDataMessage rm)
     {
-        if (rm == null)
-        {
-            return false;
-        }
-
         foreach (var proc in requestProcessors)
         {
             // Keep request processor local due to asnyc access
@@ -877,7 +872,7 @@ public abstract class BaseOrderProcessor : IOrderProcessor
     /// </summary>
     /// <param name="receivedMessage">A message received from the device</param>
     /// <returns>True if the message was an expected answer of the current request</returns>
-    public virtual bool CheckReceivedMessage(IInboundDataMessage? receivedMessage)
+    public virtual bool CheckReceivedMessage(IInboundDataMessage receivedMessage)
     {
         throw new NotSupportedException("Override method in derived classes!");
     }
