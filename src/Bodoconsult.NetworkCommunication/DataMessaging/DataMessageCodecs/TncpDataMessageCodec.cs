@@ -57,18 +57,20 @@ public class TncpDataMessageCodec : BaseDataMessageCodec
             }
 
             // Now get the delivered datablock
-            var dataBlockBytes = new byte[data.Length + 1];
+            //var dataBlockBytes = new byte[data.Length + 1];
 
-            dataBlockBytes[0] = 0x78;
+            //dataBlockBytes[0] = 0x78;
 
-            for (var i = 1; i < dataBlockBytes.Length; i++)
-            {
-                dataBlockBytes[i] = data.Slice(i - 1, 1).Span[0];
-            }
+            //for (var i = 1; i < dataBlockBytes.Length; i++)
+            //{
+            //    dataBlockBytes[i] = data.Slice(i - 1, 1).Span[0];
+            //}
+
+            var dataBlockBytes = data;
 
             try
             {
-                dataBlock = DataBlockCodingProcessor.FromBytesToDataBlock(dataBlockBytes);
+                dataBlock = DataBlockCodingProcessor.FromBytesToDataBlock(dataBlockBytes, (char)0x78);
             }
             catch (Exception dataBlockException)
             {

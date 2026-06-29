@@ -359,16 +359,6 @@ public class SfxpDataBlockCodec : IDataBlockCodec
         {
             return true;
         }
-
-        //// No 0x9 sync chunk
-        //if (chunk.Slice(7, 1).Span[0] == 0x9 &&
-        //    chunk.Slice(5, 1).Span[0] == 0x9 &&
-        //    chunk.Slice(3, 1).Span[0] == 0x9 &&
-        //    chunk.Slice(1, 1).Span[0] == 0x9)
-        //{
-        //    return true;
-        //}
-
         return false;
     }
 

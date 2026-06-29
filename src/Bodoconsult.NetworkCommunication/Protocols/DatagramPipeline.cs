@@ -20,7 +20,10 @@ public class DatagramPipeline : IDatagramPipeline
     /// <summary>
     /// Inbound queue for received UDP result
     /// </summary>
-    public ProducerConsumerQueue2<UdpReceiveResult> InboundQueue { get; } = new();
+    public ProducerConsumerQueue2<UdpReceiveResult> InboundQueue { get; } = new()
+    {
+        ThreadPriority = ThreadPriority.Highest
+    };
 
     /// <summary>
     /// Default ctor

@@ -48,14 +48,14 @@ public class BtcpDataMessageCodec : BaseDataMessageCodec
         //try
         //{
 
-        var isRequest = data.Slice(1, 1).Span[0] == 1;
+        var isRequest = data.Span[1] == 1;
 
         ITypedInboundDataBlock? dataBlock = null;
 
         var posEot = FindNextEot(data, 2);
 
         // Find business transaction ID
-        var nArray = data.Slice(2, posEot - 2).ToArray();
+        var nArray = data.Slice(2, posEot - 2).Span;
 
         var s = _encoding.GetString(nArray);
 
@@ -65,7 +65,7 @@ public class BtcpDataMessageCodec : BaseDataMessageCodec
         var altPosEot = posEot + 1;
         posEot = FindNextEot(data, altPosEot);
 
-        nArray = data.Slice(altPosEot, posEot - altPosEot).ToArray();
+        nArray = data.Slice(altPosEot, posEot - altPosEot).Span;
 
         s = _encoding.GetString(nArray);
 
@@ -132,7 +132,7 @@ public class BtcpDataMessageCodec : BaseDataMessageCodec
         var pos = 0;
         for (var i = data.Length - 1; i >= 0; i--)
         {
-            if (data.Slice(i, 1).Span[0] == 0x7c)
+            if (data.Span[i] == 0x7c)
             {
                 pos = i;
                 break;
@@ -147,7 +147,7 @@ public class BtcpDataMessageCodec : BaseDataMessageCodec
 
         dataMessage.Payload = data.Slice(pos + 1, data.Length - pos - 1);
 
-        var bytes = data.Slice(0, pos);
+        var bytes = data[..pos];
 
         var s = Encoding.UTF8.GetString(bytes.Span);
 
@@ -167,7 +167,7 @@ public class BtcpDataMessageCodec : BaseDataMessageCodec
     {
         for (var i = startPos; i < data.Length; i++)
         {
-            var b = data.Slice(i, 1).Span[0];
+            var b = data.Span[i];
             if (b is DeviceCommunicationBasics.Eot or DeviceCommunicationBasics.Etx)
             {
                 return i;
@@ -180,7 +180,7 @@ public class BtcpDataMessageCodec : BaseDataMessageCodec
     private InboundCodecResult BasicInboundChecks(Memory<byte> data)
     {
         // Check STX
-        if (data[..1].Span[0] != DeviceCommunicationBasics.Stx)
+        if (data.Span[0] != DeviceCommunicationBasics.Stx)
         {
             return new InboundCodecResult
             {
@@ -190,7 +190,7 @@ public class BtcpDataMessageCodec : BaseDataMessageCodec
         }
 
         // Check ETX
-        if (data.Slice(data.Length - 1, 1).Span[0] != DeviceCommunicationBasics.Etx)
+        if (data.Span[data.Length - 1] != DeviceCommunicationBasics.Etx)
         {
             return new InboundCodecResult
             {

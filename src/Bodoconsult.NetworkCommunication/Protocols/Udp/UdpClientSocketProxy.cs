@@ -221,7 +221,7 @@ public class UdpClientSocketProxy : BaseUpdSocketProxy
             {
                 try
                 {
-                    var udpResult = await UdpClient.ReceiveAsync(CancellationTokenSource.Token).ConfigureAwait(continueOnCapturedContext: false);
+                    var udpResult = await UdpClient.ReceiveAsync(CancellationTokenSource.Token);
                     queue.Enqueue(udpResult);
                     //SendEndPoint = udpResult.RemoteEndPoint;
                 }

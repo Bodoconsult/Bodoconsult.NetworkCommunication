@@ -42,13 +42,8 @@ public class BasicDataBlockCodec : IDataBlockCodec
     /// </summary>
     /// <param name="datablockBytes">Datablock bytes received</param>
     /// <returns>Datablock object</returns>
-    public ITypedInboundDataBlock? DecodeDataBlock(Memory<byte> datablockBytes)
+    public ITypedInboundDataBlock DecodeDataBlock(Memory<byte> datablockBytes)
     {
-
-        // You should add some datablock validation here
-
-        // 
-
         // Now create your datablock as request by specs here
         if (datablockBytes.Length < 2)
         {

@@ -157,6 +157,7 @@ public class SfxpBackendUdpBusinessLogicAdapter : BaseSimpleDeviceBusinessLogicA
         ArgumentNullException.ThrowIfNull(IpDevice.CommunicationAdapter);
         ArgumentNullException.ThrowIfNull(_cts);
 
+        Task.Delay(100).Wait();
 
         var digitalTwin = new SfxpDigitalTwinMessageFactory();
 
@@ -202,7 +203,7 @@ public class SfxpBackendUdpBusinessLogicAdapter : BaseSimpleDeviceBusinessLogicA
         ArgumentNullException.ThrowIfNull(IpDevice.CommunicationAdapter);
         ArgumentNullException.ThrowIfNull(_cts);
 
-        Task.Delay(100);
+        Task.Delay(100).Wait();
 
         var digitalTwin = new SfxpDigitalTwinMessageFactory();
 
