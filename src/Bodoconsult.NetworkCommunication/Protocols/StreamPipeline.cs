@@ -1,6 +1,8 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
+using Bodoconsult.App.Helpers;
 using Bodoconsult.NetworkCommunication.Communication;
+using Bodoconsult.NetworkCommunication.Delegates;
 using Bodoconsult.NetworkCommunication.Interfaces;
 using System.Buffers;
 
@@ -14,6 +16,43 @@ public class StreamPipeline : IStreamPipeline
     private ReadOnlySequence<byte> _buffer = new([]);
     private readonly Lock _bufferLock = new();
     private readonly MemoryPool<byte> _pool = MemoryPool<byte>.Shared;
+    private readonly ProducerConsumerQueue2<Memory<byte>> _queue = new();
+    private readonly ProducerConsumerQueue<IMemoryOwner<byte>> _bufferQueue= new ();
+
+    /// <summary>
+    /// Default ctor
+    /// </summary>
+    public StreamPipeline()
+    {
+        _queue.ConsumerTaskDelegate = ConsumerTaskDelegate;
+        _queue.StartConsumer();
+
+        _bufferQueue.ConsumerTaskDelegate = ConsumerTaskDelegate2;
+    }
+
+    private void ConsumerTaskDelegate2(IMemoryOwner<byte> data)
+    {
+        ReleaseBuffer(data);
+    }
+
+
+    private void ConsumerTaskDelegate(Memory<byte> data)
+    {
+        lock (_bufferLock)
+        {
+            var chunk = new ChunkedSequence<byte>(_buffer);
+            chunk.Append(data);
+            _buffer = chunk;
+        }
+
+        SocketReceivedDataDelegate?.Invoke();
+    }
+
+
+    /// <summary>
+    /// Delegate fired if the socket was receiving data
+    /// </summary>
+    public SocketReceivedDataDelegate2? SocketReceivedDataDelegate { get; set; }
 
     /// <summary>
     /// Get an entity from entity
@@ -47,13 +86,8 @@ public class StreamPipeline : IStreamPipeline
     /// <param name="dataLength"></param>
     public void AddMemory(IMemoryOwner<byte> data, int dataLength)
     {
-        lock(_bufferLock)
-        {
-            var chunk = new ChunkedSequence<byte>(_buffer);
-            chunk.Append(data.Memory[..dataLength].ToArray());
-            _buffer = chunk;
-        }
-        ReleaseBuffer(data);
+        _queue.Enqueue(data.Memory[..dataLength].ToArray());
+        _bufferQueue.Enqueue(data);
     }
 
     /// <summary>
@@ -93,7 +127,8 @@ public class StreamPipeline : IStreamPipeline
     /// <summary>Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.</summary>
     public void Dispose()
     {
-        // Do nothing
+        _queue.StopConsumer();
+        _bufferQueue.StopConsumer();
     }
 
     /// <summary>

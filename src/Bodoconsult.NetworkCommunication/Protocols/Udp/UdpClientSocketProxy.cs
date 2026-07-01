@@ -10,6 +10,8 @@ using Bodoconsult.App.Abstractions.Interfaces;
 using Bodoconsult.App.Extensions;
 using Bodoconsult.NetworkCommunication.Delegates;
 using Bodoconsult.NetworkCommunication.Interfaces;
+using Microsoft.AspNetCore.DataProtection;
+using System.Diagnostics;
 using System.Net;
 using System.Net.Sockets;
 
@@ -41,7 +43,7 @@ public class UdpClientSocketProxy : BaseUpdSocketProxy
     /// <summary>
     /// Number of receiver tasks to employ
     /// </summary>
-    public byte NumberOfReceiverTasks { get; set; } = 1;
+    public byte NumberOfReceiverTasks { get; set; } = 4;
 
     /// <summary>
     /// Endpoint for listening
@@ -145,7 +147,10 @@ public class UdpClientSocketProxy : BaseUpdSocketProxy
                 UdpClient = new UdpClient(Port);
                 UdpClient.Client.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.ReuseAddress, true);
                 UdpClient.Client.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.ReceiveBuffer, ReceiveBufferSize);
+                UdpClient.Client.SetSocketOption(SocketOptionLevel.Udp, SocketOptionName.NoChecksum, 0);
                 UdpClient.Client.Blocking = false;
+                UdpClient.Client.DontFragment = true;
+                // No delay settings possible here
 
                 EndPoint = new IPEndPoint(IpAddress, Port);
                 SendEndPoint = EndPoint;
@@ -194,7 +199,19 @@ public class UdpClientSocketProxy : BaseUpdSocketProxy
     {
         AutoResetEvent wait = new(false);
 
-        Task.Run(async () => { await ReceiverLoop(wait); }).Forget();
+        var thread = new Thread(async void () =>
+        {
+            await ReceiverLoop(wait);
+        })
+        {
+            IsBackground = true,
+            Priority = ThreadPriority.Highest
+        };
+
+        thread.Start();
+
+
+        //Task.Run(async () => { await ReceiverLoop(wait); }).Forget();
 
         wait.WaitOne(100);
     }
@@ -222,7 +239,8 @@ public class UdpClientSocketProxy : BaseUpdSocketProxy
                 try
                 {
                     var udpResult = await UdpClient.ReceiveAsync(CancellationTokenSource.Token);
-                    queue.Enqueue(udpResult);
+                    //Debug.Print($"US {udpResult.Buffer[0]}");
+                    queue.Enqueue(udpResult.Buffer);
                     //SendEndPoint = udpResult.RemoteEndPoint;
                 }
                 catch (OperationCanceledException)

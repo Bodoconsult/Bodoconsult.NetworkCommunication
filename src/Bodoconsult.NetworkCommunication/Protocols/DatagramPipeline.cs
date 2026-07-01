@@ -1,5 +1,6 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
+using System.Diagnostics;
 using Bodoconsult.App.Helpers;
 using Bodoconsult.NetworkCommunication.Delegates;
 using Bodoconsult.NetworkCommunication.Interfaces;
@@ -20,7 +21,7 @@ public class DatagramPipeline : IDatagramPipeline
     /// <summary>
     /// Inbound queue for received UDP result
     /// </summary>
-    public ProducerConsumerQueue2<UdpReceiveResult> InboundQueue { get; } = new()
+    public ProducerConsumerQueue<byte[]> InboundQueue { get; } = new()
     {
         ThreadPriority = ThreadPriority.Highest
     };
@@ -75,17 +76,19 @@ public class DatagramPipeline : IDatagramPipeline
     }
 
 
-    private void ConsumerTaskDelegate2(UdpReceiveResult r)
+    private void ConsumerTaskDelegate2(byte[] data)
     {
-        if (r.Buffer.Length == 0)
+        if (data.Length == 0)
         {
             return;
         }
 
-        Memory<byte> buffer = new byte[r.Buffer.Length];
-        r.Buffer.AsMemory().CopyTo(buffer);
+        //Debug.Print($"DP {data[0]}");
+
+        //Memory<byte> buffer = new byte[data.Length];
+        //data.AsMemory().CopyTo(buffer);
         //Debug.Print($"Receive {ArrayHelper.GetStringFromArrayCsharpStyle(buffer.AsMemory().Slice(0,8), false)}");
-        AddMemory(buffer);
+        AddMemory(data);
     }
 
     /// <summary>
@@ -112,7 +115,7 @@ public class DatagramPipeline : IDatagramPipeline
     /// Add a received UDP result to the inbound queue
     /// </summary>
     /// <param name="result">Received UDP result</param>
-    public void AddResult(UdpReceiveResult result)
+    public void AddResult(byte[] result)
     {
         InboundQueue.Enqueue(result);
     }

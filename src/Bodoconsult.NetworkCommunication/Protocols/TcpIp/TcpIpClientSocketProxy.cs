@@ -2,7 +2,6 @@
 // Licence MIT
 
 using Bodoconsult.App.Abstractions.Interfaces;
-using Bodoconsult.NetworkCommunication.Delegates;
 using Bodoconsult.NetworkCommunication.Helpers;
 using Bodoconsult.NetworkCommunication.Interfaces;
 using System.Net;
@@ -276,11 +275,8 @@ public class TcpIpClientSocketProxy : BaseTcpIpSocketProxy
     /// <summary>
     /// Start the receiver loop
     /// </summary>
-    /// <param name="socketReceivedDataDelegate">Delegate for forwarding received messages</param>
-    public override void StartReceiverLoop(SocketReceivedDataDelegate2 socketReceivedDataDelegate)
+    public override void StartReceiverLoop()
     {
-        SocketReceivedDataDelegate = socketReceivedDataDelegate;
-
         AutoResetEvent wait = new(false);
 
         // Start receive loop now
@@ -302,7 +298,6 @@ public class TcpIpClientSocketProxy : BaseTcpIpSocketProxy
         try
         {
             ArgumentNullException.ThrowIfNull(Socket, $"{LoggerId}Socket is null");
-            ArgumentNullException.ThrowIfNull(SocketReceivedDataDelegate, $"{LoggerId}SocketReceivedDataDelegate is null");
 
             Logger.LogInformation($"{LoggerId}ReceiverLoop started");
 
@@ -318,9 +313,8 @@ public class TcpIpClientSocketProxy : BaseTcpIpSocketProxy
                     var result = await Socket.ReceiveAsync(buffer.Memory, SocketFlags.None, CancellationTokenSource.Token);
 
                     _pipeline.AddMemory(buffer, result);
-                    await SocketReceivedDataDelegate.Invoke();
 
-                    Logger.LogInformation($"{LoggerId}received {result}B (buffer: before {pipeLen}B / after {_pipeline.Buffer.Length}B)");
+                    //Logger.LogInformation($"{LoggerId}received {result}B (buffer: before {pipeLen}B / after {_pipeline.Buffer.Length}B)");
 
                     lock (_lastErrorCodeLock)
                     {
@@ -349,23 +343,6 @@ public class TcpIpClientSocketProxy : BaseTcpIpSocketProxy
                     _pipeline.ReleaseBuffer(buffer);
                     Logger.LogError($"{LoggerId}Receiving failed", e);
                 }
-
-                //if (result == 0)
-                //{
-                //    await Task.Delay(5);
-                //}
-
-                //AsyncHelper.FireAndForget(() =>
-                //{
-                //    try
-                //    {
-                //        SocketReceivedDataDelegate.Invoke(buffer[..result].ToArray());
-                //    }
-                //    catch (Exception e)
-                //    {
-                //        Logger.LogError($"{LoggerId}Forwarding received data failed", e);
-                //    }
-                //});
             }
         }
         catch (OperationCanceledException)

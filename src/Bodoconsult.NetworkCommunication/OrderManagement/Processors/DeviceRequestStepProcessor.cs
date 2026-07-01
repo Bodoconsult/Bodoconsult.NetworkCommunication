@@ -288,7 +288,7 @@ public class DeviceRequestStepProcessor : IDeviceRequestStepProcessor
         }
         catch (Exception e)
         {
-            Console.WriteLine(e);
+            requestSpec.AppLogger?.LogError("Running task 1 failed",e);
             return OrderExecutionResultState.Unsuccessful;
         }
 
@@ -360,14 +360,12 @@ public class DeviceRequestStepProcessor : IDeviceRequestStepProcessor
             {
                 await processor.ProcessChain();
 
-                processor.RequestSpec.AppLogger?.LogDebug(
-                    $"{processor.RequestSpec.OrderLoggerId}RSP: left chain processing: {processor.Result}");
+                //processor.RequestSpec.AppLogger?.LogDebug($"{processor.RequestSpec.OrderLoggerId}RSP: left chain processing: {processor.Result}");
                 return processor.Result;
             }
             catch (Exception e)
             {
-                processor.RequestSpec.AppLogger?.LogError(
-                    $"{processor.RequestSpec.OrderLoggerId}processing chain failed", e);
+                processor.RequestSpec.AppLogger?.LogError($"{processor.RequestSpec.OrderLoggerId}processing chain failed", e);
                 return OrderExecutionResultState.Unsuccessful;
             }
         });
@@ -405,31 +403,12 @@ public class DeviceRequestStepProcessor : IDeviceRequestStepProcessor
         }
     }
 
-    //private void CancelTask(Task task)
-    //{
-    //    try
-    //    {
-    //        if (task.IsCompleted || task.IsCanceled || task.IsCompletedSuccessfully || task.IsFaulted)
-    //        {
-    //            _token.Dispose();
-    //            return;
-    //        }
-
-    //        _token.Cancel(true);
-    //        _token.Dispose();
-    //    }
-    //    catch
-    //    {
-    //        // Do nothing
-    //    }
-    //}
-
     private static IOrderExecutionResultState HandleNack(IDeviceRequestSpec requestSpec, IOutboundDataMessage message, IOrderExecutionResultState execResult)
     {
         string s;
         if (execResult.Id != OrderExecutionResultState.Successful.Id)
         {
-            s = $"{requestSpec.OrderLoggerId}sending: NACK / CAN handled as success for command {message.ToInfoString()}";
+            s = $"{requestSpec.OrderLoggerId}sending: NACK / CAN handled as success for command {message.ToShortInfoString()}";
             requestSpec.AppLogger?.LogDebug(s);
         }
 
@@ -463,7 +442,7 @@ public class DeviceRequestStepProcessor : IDeviceRequestStepProcessor
             execResult = r.ExecutionResult;
         }
 
-        s = $"{requestSpec.OrderLoggerId}sending: NACK / CAN handled as success for command {message.ToInfoString()}";
+        s = $"{requestSpec.OrderLoggerId}sending: NACK / CAN handled as success for command {message.ToShortInfoString()}";
         requestSpec.AppLogger?.LogDebug(s);
 
         return execResult;
@@ -478,7 +457,7 @@ public class DeviceRequestStepProcessor : IDeviceRequestStepProcessor
 
         CurrentChainElement = (IDeviceRequestAnswerStep)DeviceRequestSpec.RequestAnswerSteps[0];
 
-        requestSpec.AppLogger?.LogDebug($"{RequestSpec.OrderLoggerId}chain started");
+        //requestSpec.AppLogger?.LogDebug($"{RequestSpec.OrderLoggerId}chain started");
         while (true)
         {
             var element = CurrentChainElement;
@@ -490,7 +469,7 @@ public class DeviceRequestStepProcessor : IDeviceRequestStepProcessor
             await element.ProcessChainElement();
 
             // An error has happend: leave chain here
-            if (!Result.Equals(OrderExecutionResultState.Successful))
+            if (Result.Id != OrderExecutionResultState.Successful.Id)
             {
                 // Call a delegate for failed steps now if available
                 element.HandleRequestAnswerStepFailedDelegate?.Invoke();
@@ -516,18 +495,17 @@ public class DeviceRequestStepProcessor : IDeviceRequestStepProcessor
     private static void StepHasChanged(IRequestAnswerStep step, IRequestSpec requestSpec)
     {
         // Call action before executing if necessary
-        step.BeforeExecuteActionDelegate?.Invoke(requestSpec.TransportObject,
-            requestSpec.ParameterSet);
+        step.BeforeExecuteActionDelegate?.Invoke(requestSpec.TransportObject, requestSpec.ParameterSet);
 
-        // If no state notication has to be sent before running the step leave here
-        if (step.StateToNotifyBeforeRunning == DefaultDeviceStates.DeviceStateOffline)
-        {
-            return;
-        }
+        //// If no state notication has to be sent before running the step leave here
+        //if (step.StateToNotifyBeforeRunning == DefaultDeviceStates.DeviceStateOffline)
+        //{
+        //    return;
+        //}
 
-        // If an app notification is required before running the current step
-        var s = $"{requestSpec.OrderLoggerId}RequestAnswerStep {step}: send state {step.StateToNotifyBeforeRunning} to app before sending message";
-        requestSpec.AppLogger?.LogDebug(s);
+        //// If an app notification is required before running the current step
+        //var s = $"{requestSpec.OrderLoggerId}RequestAnswerStep {step}: send state {step.StateToNotifyBeforeRunning} to app before sending message";
+        //requestSpec.AppLogger?.LogDebug(s);
         // ToDo: needed??
         //requestSpec.DoNotifyDelegate?.Invoke(step.StateToNotifyBeforeRunning);
     }
@@ -537,30 +515,17 @@ public class DeviceRequestStepProcessor : IDeviceRequestStepProcessor
     /// </summary>
     /// <param name="receivedMessage">A message received from the device</param>
     /// <returns>True if the message was an expected answer of the current request</returns>
-    public bool CheckReceivedMessage(IInboundDataMessage? receivedMessage)
+    public bool CheckReceivedMessage(IInboundDataMessage receivedMessage)
     {
         var requestSpec = RequestSpec;
 
-        var errors = new List<string>();
-
-        //if (requestSpec == null)
-        //{
-        //    errors.Add("No RequestSpec");
-        //    LogErrors(errors, null);
-        //    return false;
-        //}
+        var errors = new List<string>(5);
 
         if (IsCancelled)
         {
             errors.Add("Request step processor was cancelled");
             LogErrors(errors, requestSpec);
             return false;
-        }
-
-        // internal request
-        if (receivedMessage == null)
-        {
-            return true;
         }
 
         var chain = CurrentChainElement;
@@ -628,14 +593,9 @@ public class DeviceRequestStepProcessor : IDeviceRequestStepProcessor
 
         CurrentChainElement?.Cancel();
 
-        var steps = DeviceRequestSpec.RequestAnswerSteps;
+        var steps = DeviceRequestSpec.RequestAnswerSteps.Where(x => x.WasSuccessful);
 
-        //if (steps == null)
-        //{
-        //    return;
-        //}
-
-        foreach (var x in steps.Where(x => x.WasSuccessful))
+        foreach (var x in steps)
         {
             x.Cancel();
         }

@@ -17,8 +17,8 @@ public abstract class BaseOrderBasedStateMachineState : BaseStateMachineState, I
     /// <param name="currentContext">Current context</param>
     /// <param name="id">ID of the current state</param>
     /// <param name="name">Name of the current state</param>
-    protected BaseOrderBasedStateMachineState(IStateMachineDevice currentContext, int id, string name) : base(
-        currentContext, id, name)
+    protected BaseOrderBasedStateMachineState(IStateMachineDevice currentContext, int id, string name) : 
+        base(currentContext, id, name)
     {
         CurrentOrderIndex = -1;
     }
@@ -83,57 +83,57 @@ public abstract class BaseOrderBasedStateMachineState : BaseStateMachineState, I
     /// </summary>
     public virtual void RunNextOrder()
     {
-        if (Orders.Count == 0)
+        try
         {
-            throw new ArgumentException("No orders loaded. Call InitiateState() before RunNextOrder()");
-        }
-
-        ArgumentNullException.ThrowIfNull(CurrentContext.OrderManager);
-
-        CurrentOrderIndex++;
-
-        if (CurrentOrderIndex >= Orders.Count)
-        {
-            Orders.Clear();
-
-            if (NextState == null)
+            if (Orders.Count == 0)
             {
-                if (string.IsNullOrEmpty(StateNameOnSuccess))
-                {
-                    ArgumentNullException.ThrowIfNull(NextState);
-                }
-
-                if (CurrentContext.StateMachineStateFactory == null)
-                {
-                    return;
-                }
-
-                ArgumentNullException.ThrowIfNull(StateNameOnSuccess);
-
-                var newState = CurrentContext.CreateStateInstance(StateNameOnSuccess);
-                NextState = newState;
+                throw new ArgumentException("No orders loaded. Call InitiateState() before RunNextOrder()");
             }
 
-            RequestNextState();
+            CurrentOrderIndex++;
 
-            return;
+            if (CurrentOrderIndex >= Orders.Count)
+            {
+                Orders.Clear();
+
+                if (NextState == null)
+                {
+                    if (string.IsNullOrEmpty(StateNameOnSuccess))
+                    {
+                        ArgumentNullException.ThrowIfNull(NextState);
+                    }
+
+                    if (CurrentContext.StateMachineStateFactory == null)
+                    {
+                        return;
+                    }
+
+                    ArgumentNullException.ThrowIfNull(StateNameOnSuccess);
+
+                    var newState = CurrentContext.CreateStateInstance(StateNameOnSuccess);
+                    NextState = newState;
+                }
+
+                RequestNextState();
+
+                return;
+            }
+
+            ArgumentNullException.ThrowIfNull(CurrentContext.OrderManager);
+
+            var order = Orders[CurrentOrderIndex];
+            if (order.IsHighPriorityOrder)
+            {
+                CurrentContext.OrderManager.OrderProcessor.AddOrderWithPriority(order);
+            }
+            else
+            {
+                CurrentContext.OrderManager.OrderProcessor.AddOrder(order);
+            }
         }
-
-        var order = Orders[CurrentOrderIndex];
-
-        //if (order == null)
-        //{
-        //    return;
-        //}
-
-
-        if (order.IsHighPriorityOrder)
+        catch (Exception e)
         {
-            CurrentContext.OrderManager.OrderProcessor.AddOrderWithPriority(order);
-        }
-        else
-        {
-            CurrentContext.OrderManager.OrderProcessor.AddOrder(order);
+            CurrentContext.LogError($"RunNextOrder: {e.Message}");
         }
     }
 
@@ -164,25 +164,23 @@ public abstract class BaseOrderBasedStateMachineState : BaseStateMachineState, I
             }
 
             // Now call business logic
-            OrderFinishedSucessfullyDelegate?.Invoke(this, order);
+            AsyncHelper.FireAndForget(() =>
+            {
+                try
+                {
+                    OrderFinishedSucessfullyDelegate?.Invoke(this, order);
+                }
+                catch (Exception e)
+                {
+                    var msg = $"OrderFinishedSucessfullyDelegate?.Invoke: {e}";
+                    CurrentContext.LogError(msg);
+                }
+            });
+            
 
             if (CurrentOrderIndex < Orders.Count)
             {
-                AsyncHelper.FireAndForget(() =>
-                {
-                    try
-                    {
-                        Task.Delay(1000);
-
-                        RunNextOrder();
-                    }
-                    catch (Exception e)
-                    {
-                        var msg = $"RunNextOrder: {e}";
-                        CurrentContext.LogError(msg);
-                    }
-                });
-
+                AsyncHelper.FireAndForget(RunNextOrder);
                 return;
             }
 
@@ -233,7 +231,18 @@ public abstract class BaseOrderBasedStateMachineState : BaseStateMachineState, I
         }
 
         // Now call business logic
-        OrderFinishedUnsucessfullyDelegate?.Invoke(this, order);
+        AsyncHelper.FireAndForget(() =>
+        {
+            try
+            {
+                OrderFinishedUnsucessfullyDelegate?.Invoke(this, order);
+            }
+            catch (Exception e)
+            {
+                var msg = $"OrderFinishedUnsucessfullyDelegate?.Invoke: {e}";
+                CurrentContext.LogError(msg);
+            }
+        });
     }
 
     /// <summary>

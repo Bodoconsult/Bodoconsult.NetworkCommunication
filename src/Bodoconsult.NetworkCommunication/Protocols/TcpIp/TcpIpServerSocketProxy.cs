@@ -2,7 +2,6 @@
 // Licence MIT
 
 using Bodoconsult.App.Abstractions.Interfaces;
-using Bodoconsult.NetworkCommunication.Delegates;
 using Bodoconsult.NetworkCommunication.Interfaces;
 using System.Net.Sockets;
 
@@ -292,10 +291,10 @@ public class TcpIpServerSocketProxy : BaseTcpIpSocketProxy
     /// <summary>
     /// Start the receiver loop
     /// </summary>
-    /// <param name="socketReceivedDataDelegate">Delegate for forwarding received messages</param>
-    public override void StartReceiverLoop(SocketReceivedDataDelegate2 socketReceivedDataDelegate)
+
+    public override void StartReceiverLoop()
     {
-        SocketReceivedDataDelegate = socketReceivedDataDelegate;
+        // Do nothing. Receiver loop is started during accept
     }
 
     /// <summary>
@@ -308,7 +307,6 @@ public class TcpIpServerSocketProxy : BaseTcpIpSocketProxy
         try
         {
             ArgumentNullException.ThrowIfNull(Socket, $"{LoggerId}Socket is null");
-            ArgumentNullException.ThrowIfNull(SocketReceivedDataDelegate, $"{LoggerId}SocketReceivedDataDelegate is null");
 
             Logger.LogInformation($"{LoggerId}ReceiverLoop started");
 
@@ -325,9 +323,8 @@ public class TcpIpServerSocketProxy : BaseTcpIpSocketProxy
                         await Socket.ReceiveAsync(buffer.Memory, SocketFlags.None, CancellationTokenSource.Token);
 
                     _pipeline.AddMemory(buffer, result);
-                    await SocketReceivedDataDelegate.Invoke();
 
-                    Logger.LogInformation($"{LoggerId}received {result}B (buffer: before {pipeLen}B / after {_pipeline.Buffer.Length}B)");
+                    //Logger.LogInformation($"{LoggerId}received {result}B (buffer: before {pipeLen}B / after {_pipeline.Buffer.Length}B)");
 
                     lock (_lastErrorCodeLock)
                     {

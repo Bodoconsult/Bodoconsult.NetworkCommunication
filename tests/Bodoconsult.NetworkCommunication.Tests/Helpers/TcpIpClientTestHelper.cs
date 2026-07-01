@@ -60,7 +60,7 @@ public static class TcpIpClientTestHelper
         var socket = new TcpIpClientSocketProxy(TestDataHelper.Logger);
         socket.IpAddress = testSetup.IpAddress;
         socket.Port = testSetup.DataMessagingConfig.Port;
-        socket.StartReceiverLoop(SocketReceivedDataDelegate);
+        socket.StartReceiverLoop();
         //TestDataHelper.StartWaiting(cts, socket.ReceiverPipeline, _serverReceivedMessages);
 
         testSetup.Socket = socket;

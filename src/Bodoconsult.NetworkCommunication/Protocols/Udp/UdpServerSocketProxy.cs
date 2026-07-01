@@ -123,7 +123,8 @@ public class UdpServerSocketProxy : BaseUpdSocketProxy
                 // the same PC
                 UdpClient.Client.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.ReuseAddress, true);
                 UdpClient.Client.Blocking = false;
-                //UdpClient.Client.NoDelay = true;
+                UdpClient.Client.DontFragment = true;
+                // No delay settings possible here
 
                 EndPoint = new IPEndPoint(IpAddress, Port);
                 SendEndPoint = EndPoint;

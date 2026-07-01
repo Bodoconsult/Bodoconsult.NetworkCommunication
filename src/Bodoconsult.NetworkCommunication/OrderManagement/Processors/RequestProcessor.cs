@@ -101,7 +101,7 @@ public class RequestProcessor : IRequestProcessor
     /// Execute the order request by request
     /// </summary>
     /// <returns>Execution result</returns>
-    public async Task<IOrderExecutionResultState> ExecuteOrder()
+    public async Task ExecuteOrder()
     {
         // Fetch the order here to avoid multithread issues
         var order = Order;
@@ -110,22 +110,24 @@ public class RequestProcessor : IRequestProcessor
         //{
         if (order.IsCancelled || _isDisposing)
         {
-            return ExitAction(order, OrderExecutionResultState.Unsuccessful);
+            ExitAction(order, OrderExecutionResultState.Unsuccessful);
+            return;
         }
 
         // Run all request specs
         foreach (var requestSpec in order.RequestSpecs)
         {
-
             if (order.IsDisposable)
             {
-                return ExitAction(order, OrderExecutionResultState.Unsuccessful);
+                ExitAction(order, OrderExecutionResultState.Unsuccessful);
+                return;
             }
 
             if (IsCancelled || order.IsCancelled)
             {
                 LogInfo($"{_orderLoggerId}RP {requestSpec.Name}: was cancelled");
-                return ExitAction(order, OrderExecutionResultState.Unsuccessful);
+                ExitAction(order, OrderExecutionResultState.Unsuccessful);
+                return;
             }
 
             LogInfo($"{_orderLoggerId}RP {requestSpec.Name}: start execution...");
@@ -150,11 +152,13 @@ public class RequestProcessor : IRequestProcessor
             if (IsCancelled || order.IsCancelled)
             {
                 LogInfo($"{_orderLoggerId}RP {requestSpec.Name}: was cancelled");
-                return ExitAction(order, OrderExecutionResultState.Unsuccessful);
+                ExitAction(order, OrderExecutionResultState.Unsuccessful);
+                return;
             }
 
             LogInfo($"{_orderLoggerId}RP {requestSpec.Name}: exit with code {result}");
-            return ExitAction(order, result);
+            ExitAction(order, result);
+            return;
         }
 
         LogInfo($"{_orderLoggerId} finished successful");
@@ -165,7 +169,7 @@ public class RequestProcessor : IRequestProcessor
             order.WasSuccessful = true;
         }
 
-        return ExitAction(order, OrderExecutionResultState.Successful);
+        ExitAction(order, OrderExecutionResultState.Successful);
         //}
         //catch (Exception e)
         //{
@@ -238,7 +242,7 @@ public class RequestProcessor : IRequestProcessor
     /// <param name="order">The current order</param>
     /// <param name="currentState">Current state of the order</param>
     /// <returns>Current state of the order</returns>
-    private IOrderExecutionResultState ExitAction(IOrder order, IOrderExecutionResultState currentState)
+    private void ExitAction(IOrder order, IOrderExecutionResultState currentState)
     {
         // Safety check
         if (!order.WasSuccessful && currentState.Id == OrderExecutionResultState.Successful.Id)
@@ -250,7 +254,7 @@ public class RequestProcessor : IRequestProcessor
         {
             if (_isExitActionFired)
             {
-                return order.ExecutionResult;
+                return;
             }
             _isExitActionFired = true;
         }
@@ -258,35 +262,25 @@ public class RequestProcessor : IRequestProcessor
         CurrentRequestStepProcessor?.Cancel();
 
         // If the order has been finished already or is disposable: do not change order state again
-        if (order.IsFinished ||
-            order.IsDisposable)
+        if (order.IsFinished || order.IsDisposable)
         {
-            currentState = order.ExecutionResult;
+            return;
         }
-        else
-        {
-            order.ExecutionResult = currentState;
 
-            // Inform device order processor: order is done
-            AsyncHelper.FireAndForget(() =>
+        order.ExecutionResult = currentState;
+
+        // Inform device order processor: order is done
+        AsyncHelper.FireAndForget(() =>
+        {
+            try
             {
-                try
-                {
-                    OrderProcessingFinishedDelegate?.Invoke(order.Id);
-                }
-                catch (Exception e)
-                {
-                    LogDebug($"{_orderLoggerId} failed: {e}");
-                }
-
-            });
-        }
-
-        // Deactivate informing device order processor for safety reasons. OrderProcessingFinished should not be called more than one times
-        //CurrentRequestStepProcessor = null;
-        //Order = null;
-        //OrderProcessingFinishedDelegate = null;
-        return currentState;
+                OrderProcessingFinishedDelegate?.Invoke(order.Id);
+            }
+            catch (Exception e)
+            {
+                LogDebug($"{_orderLoggerId} failed: {e}");
+            }
+        });
     }
 
     /// <summary>
@@ -588,7 +582,17 @@ public class RequestProcessor : IRequestProcessor
         if (isCancelled || isDisposable || isFinished)
         {
             //Order.ExecutionResult = OrderExecutionResultState.Unsuccessful;
-            LogDebug($"{_orderLoggerId}checking {receivedMessage.ToShortInfoString()} failed: order is cancelled already");
+            if (isCancelled)
+            {
+                LogDebug($"{_orderLoggerId}checking {receivedMessage.ToShortInfoString()} failed: order is cancelled already");
+            }
+            else
+            {
+                if (isFinished || isDisposable)
+                {
+                    LogDebug($"{_orderLoggerId}checking {receivedMessage.ToShortInfoString()} failed: order is finished already");
+                }
+            }
             return false;
         }
 
@@ -608,7 +612,7 @@ public class RequestProcessor : IRequestProcessor
         }
 
         var result = drsp.CheckReceivedMessage(receivedMessage);
-        
+
         //// If the order has been finished already or is disposable: do not change order state again
         //if (isDisposable || isFinished)
         //{

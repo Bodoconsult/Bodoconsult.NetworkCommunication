@@ -55,10 +55,10 @@ internal class RequestProcessorTests
         var rp = new RequestProcessor(order, requestStepProcessorFactory, device);
 
         // Act  
-        var result = await rp.ExecuteOrder();
+        await rp.ExecuteOrder();
 
         // Assert
-        Assert.That(result, Is.EqualTo(OrderExecutionResultState.Timeout));
+        Assert.That(order.ExecutionResult, Is.EqualTo(OrderExecutionResultState.Timeout));
     }
 
     [Test]
@@ -76,11 +76,9 @@ internal class RequestProcessorTests
 
         var rp = new RequestProcessor(order, requestStepProcessorFactory, device);
 
-        IOrderExecutionResultState result = OrderExecutionResultState.NotProcessed;
-
         var task = Task.Run(async () =>
         {
-            result = await rp.ExecuteOrder();
+            await rp.ExecuteOrder();
         });
 
         // Act  
@@ -92,7 +90,7 @@ internal class RequestProcessorTests
         task.Wait(5000);
 
         // Assert
-        Assert.That(result, Is.EqualTo(OrderExecutionResultState.Successful));
+        Assert.That(order.ExecutionResult, Is.EqualTo(OrderExecutionResultState.Successful));
     }
 
     [Test]
@@ -111,10 +109,10 @@ internal class RequestProcessorTests
         var rp = new RequestProcessor(order, requestStepProcessorFactory, device);
 
         // Act  
-        var result = await rp.ExecuteOrder();
+        await rp.ExecuteOrder();
 
         // Assert
-        Assert.That(result, Is.EqualTo(OrderExecutionResultState.Successful));
+        Assert.That(order.ExecutionResult, Is.EqualTo(OrderExecutionResultState.Successful));
     }
 
     [Test]
@@ -133,9 +131,9 @@ internal class RequestProcessorTests
         var rp = new RequestProcessor(order, requestStepProcessorFactory, device);
 
         // Act  
-        var result = await rp.ExecuteOrder();
+        await rp.ExecuteOrder();
 
         // Assert
-        Assert.That(result, Is.EqualTo(OrderExecutionResultState.Successful));
+        Assert.That(order.ExecutionResult, Is.EqualTo(OrderExecutionResultState.Successful));
     }
 }

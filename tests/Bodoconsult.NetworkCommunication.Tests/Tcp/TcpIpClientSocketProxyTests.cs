@@ -1,12 +1,13 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
+using Bodoconsult.NetworkCommunication.Interfaces;
+using Bodoconsult.NetworkCommunication.Protocols.TcpIp;
+using Bodoconsult.NetworkCommunication.Testing;
+using Bodoconsult.NetworkCommunication.Tests.Helpers;
 using System.Buffers;
 using System.Collections.Concurrent;
 using System.Diagnostics;
 using System.Net;
-using Bodoconsult.NetworkCommunication.Protocols.TcpIp;
-using Bodoconsult.NetworkCommunication.Testing;
-using Bodoconsult.NetworkCommunication.Tests.Helpers;
 
 namespace Bodoconsult.NetworkCommunication.Tests.Tcp;
 
@@ -44,7 +45,9 @@ internal class TcpIpClientSocketProxyTests
                 client.IpAddress = ip;
                 client.Port = port;
                 await client.Connect();
-                client.StartReceiverLoop(SocketReceivedDataDelegate);
+                ((IStreamPipeline)client.ReceiverPipeline).SocketReceivedDataDelegate = SocketReceivedDataDelegate;
+                client.StartReceiverLoop();
+
 
                 TestDataHelper.StartWaiting(cts, client.ReceiverPipeline, clientReceivedMessages);
 
@@ -93,10 +96,9 @@ internal class TcpIpClientSocketProxyTests
 
     }
 
-    private Task<bool> SocketReceivedDataDelegate()
+    private void SocketReceivedDataDelegate()
     {
         Debug.Print("Client: received data");
-        return Task.FromResult(true);
     }
 
     //[Test]

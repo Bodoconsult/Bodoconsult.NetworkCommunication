@@ -112,7 +112,7 @@ public abstract class BaseUpdSocketProxy : IUdpSocketProxy
     /// <summary>
     /// Receive buffer size in byte
     /// </summary>
-    public int ReceiveBufferSize { get; set; } = 100000;
+    public int ReceiveBufferSize { get; set; } = 200000;
 
     /// <summary>
     /// Run the receiver loop

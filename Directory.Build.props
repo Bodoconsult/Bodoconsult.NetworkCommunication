@@ -1,6 +1,6 @@
 <Project>
 	<PropertyGroup>
-		<Version>0.0.15</Version>
+		<Version>0.0.16</Version>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 		<PackageOutputPath>..\..\packages\</PackageOutputPath>
 		<Copyright>Bodoconsult EDV-Dienstleistungen GmbH</Copyright>

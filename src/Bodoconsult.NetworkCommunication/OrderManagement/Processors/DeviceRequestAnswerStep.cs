@@ -45,26 +45,6 @@ public class DeviceRequestAnswerStep : BaseRequestAnswerStep, IDeviceRequestAnsw
     /// <returns>Message handling result</returns>
     public override async Task<MessageHandlingResult> HandleResult()
     {
-        //if (requestSpec == null)
-        //{
-        //    return new MessageHandlingResult
-        //    {
-        //        Error = 1,
-        //        ExecutionResult = OrderExecutionResultState.Unsuccessful,
-        //        ErrorDescription = "No RequestSpec instance"
-        //    };
-        //}
-
-        //var rsp = requestSpec.CurrentRequestStepProcessor;
-        //if (rsp == null)
-        //{
-        //    return new MessageHandlingResult
-        //    {
-        //        ExecutionResult = OrderExecutionResultState.Unsuccessful,
-        //        ErrorDescription = "No CurrentRequestStepProcessor instance"
-        //    };
-        //}
-
         var answer = AllowedRequestAnswers.FirstOrDefault(x => x.WasReceived);
 
         if (answer == null)
@@ -89,14 +69,6 @@ public class DeviceRequestAnswerStep : BaseRequestAnswerStep, IDeviceRequestAnsw
         var run = 0;
         while (true)
         {
-            //if (Order == null)
-            //{
-            //    return new MessageHandlingResult
-            //    {
-            //        ExecutionResult = OrderExecutionResultState.Unsuccessful
-            //    };
-            //}
-
             if (RequestSpec.RequestStepProcessorIsCancelledDelegate?.Invoke() ?? Order.IsFinished || Order.IsCancelled)
             {
                 return new MessageHandlingResult
@@ -133,17 +105,17 @@ public class DeviceRequestAnswerStep : BaseRequestAnswerStep, IDeviceRequestAnsw
                         ExecutionResult = OrderExecutionResultState.Successful
                     };
                 }
-#if DEBUG
-                RequestSpec.AppLogger?.LogDebug($"{RequestSpec.OrderLoggerId}Start delegate {answer.HandleRequestAnswerOnSuccessDelegate.Method.Name}...");
-#endif
+//#if DEBUG
+//                RequestSpec.AppLogger?.LogDebug($"{RequestSpec.OrderLoggerId}Start delegate {answer.HandleRequestAnswerOnSuccessDelegate.Method.Name}...");
+//#endif
 
                 // Call the delegate now
                 result = await Task.Run(() => answer.HandleRequestAnswerOnSuccessDelegate.Invoke(answer.ReceivedMessage,
                     RequestSpec.TransportObject, RequestSpec.ParameterSet));
 
-#if DEBUG
-                RequestSpec.AppLogger?.LogDebug($"{RequestSpec.OrderLoggerId}End delegate...");
-#endif
+//#if DEBUG
+//                RequestSpec.AppLogger?.LogDebug($"{RequestSpec.OrderLoggerId}End delegate...");
+//#endif
             }
             catch (Exception e)
             {
@@ -186,21 +158,20 @@ public class DeviceRequestAnswerStep : BaseRequestAnswerStep, IDeviceRequestAnsw
 
         var errors = new List<string>();
 
-        //Trace.TraceInformation("{DeviceRequestSpec.Name} CheckReceivedMessage");
+        //RequestSpec.AppLogger?.LogDebug(("{DeviceRequestSpec.Name} CheckReceivedMessage");
 
         //#if DEBUG
         //            var i = RequestSpec.RequestAnswerSteps.IndexOf(this);
 
-        //            Trace.TraceInformation($"{DeviceRequestSpec.Name}CheckReceivedMessage step: {i}");
+        //            RequestSpec.AppLogger?.LogDebug(($"{DeviceRequestSpec.Name}CheckReceivedMessage step: {i}");
         //            foreach (var s in AllowedRequestAnswers)
         //            {
-        //                Trace.TraceInformation($"{DeviceRequestSpec.Name}CheckReceivedMessage step: {i}: {s.Command}");
+        //                RequestSpec.AppLogger?.LogDebug(($"{DeviceRequestSpec.Name}CheckReceivedMessage step: {i}: {s.Command}");
         //            }
         //#endif
 
 
         var success = CheckReceivedMessage(DeviceRequestSpec.CurrentSentMessage, receivedMessage, errors);
-
 
         RequestSpec.AppLogger?.LogDebug($"{RequestSpec.OrderLoggerId}{DeviceRequestSpec.OrderLoggerId}RSP: check message: command {receivedMessage?.ToShortInfoString()}: {success} ");
 
@@ -238,18 +209,11 @@ public class DeviceRequestAnswerStep : BaseRequestAnswerStep, IDeviceRequestAnsw
 
     private void SendRequestForNextReceivedMessage()
     {
-        //if (RequestSpec == null)
-        //{
-        //    return;
-        //}
-
         // For testing purposes only: call the next answer data
         if (RequestSpec.RequestAnswerStepIsStartedDelegate == null)
         {
             return;
         }
-
-        //AsyncHelper.Delay(200);
 
         if (_taskCompletionSource == null || _taskCompletionSource.Task.IsCanceled)
         {
@@ -265,8 +229,6 @@ public class DeviceRequestAnswerStep : BaseRequestAnswerStep, IDeviceRequestAnsw
         });
 
         wait.WaitOne(DeviceRequestStepProcessor.WaitInterval);
-
-        //AsyncHelper.Delay(DeviceRequestStepProcessor.WaitInterval);
     }
 
     /// <summary>
@@ -335,11 +297,6 @@ public class DeviceRequestAnswerStep : BaseRequestAnswerStep, IDeviceRequestAnsw
                 _wasSuccessful = value;
             }
 
-            //if (DeviceRequestSpec == null)
-            //{
-            //    return;
-            //}
-
             if (!value)
             {
                 DeviceRequestSpec.WasSuccessful = false;
@@ -379,15 +336,7 @@ public class DeviceRequestAnswerStep : BaseRequestAnswerStep, IDeviceRequestAnsw
     /// <summary>Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.</summary>
     public override void Dispose()
     {
-        //var rsp = RequestSpec.CurrentRequestStepProcessor;
-
-        //if (rsp != null)
-        //{
-        //    rsp.AppLogger?.LogDebug($"{rsp.OrderLoggerId}Request step processor disposed at step {this}");
-        //}
-
         RequestSpec.AppLogger?.LogDebug($"{RequestSpec.OrderLoggerId}dispose");
-        //Trace.TraceInformation($"{DeviceRequestSpec.Name} dispose {Environment.StackTrace}");
 
         NextChainElement = null;
 
@@ -415,13 +364,6 @@ public class DeviceRequestAnswerStep : BaseRequestAnswerStep, IDeviceRequestAnsw
     {
         WasSuccessful = false;
 
-        //var rsp = RequestSpec.CurrentRequestStepProcessor;
-
-        //if (rsp == null)
-        //{
-        //    return;
-        //}
-
         //try
         //{
 
@@ -434,28 +376,24 @@ public class DeviceRequestAnswerStep : BaseRequestAnswerStep, IDeviceRequestAnsw
         _ctsMain?.Dispose();
         _ctsMain = null;
 
-        var msg = $"{RequestSpec.OrderLoggerId}Left waiting. Order: {Order.Id} Step: {AllowedRequestAnswers.Count} StepSuccessful {WasSuccessful} Result: {taskResult}";
-        RequestSpec.AppLogger?.LogDebug(msg);
+        string msg;
 
         if (taskResult.Id != OrderExecutionResultState.Successful.Id)
         {
             WasSuccessful = false;
             RequestSpec.RequestStepProcessorSetResultDelegate?.Invoke(taskResult);
+            msg = $"{RequestSpec.OrderLoggerId}Left waiting failed. Result: {taskResult}";
+            RequestSpec.AppLogger?.LogDebug(msg);
             return;
         }
 
         // Process the business logic for the step
         var result = await HandleResult();
-
-
-
         if (result.ExecutionResult.Id != OrderExecutionResultState.Successful.Id)
         {
-            RequestSpec.AppLogger?.LogInformation($"{RequestSpec.OrderLoggerId}handle business logic for step was unsuccessful: {result.ErrorDescription}");
             WasSuccessful = false;
-
             RequestSpec.RequestStepProcessorSetResultDelegate?.Invoke(result.ExecutionResult);
-
+            RequestSpec.AppLogger?.LogInformation($"{RequestSpec.OrderLoggerId}Left waiting but handling of business logic for step was unsuccessful: {result.ErrorDescription}");
             return;
         }
 
@@ -465,7 +403,7 @@ public class DeviceRequestAnswerStep : BaseRequestAnswerStep, IDeviceRequestAnsw
             RequestSpec.ResultTransportObject = result.TransportObject;
         }
 
-        msg = $"{RequestSpec.OrderLoggerId}Step: {AllowedRequestAnswers.Count} StepSuccessful {WasSuccessful} Result: {result.ExecutionResult}";
+        msg = $"{RequestSpec.OrderLoggerId}Left waiting was successful. Step: {AllowedRequestAnswers.Count} StepSuccessful {WasSuccessful} Result: {result.ExecutionResult}";
         RequestSpec.AppLogger?.LogInformation(msg);
     }
 
@@ -475,12 +413,7 @@ public class DeviceRequestAnswerStep : BaseRequestAnswerStep, IDeviceRequestAnsw
     /// <param name="result">Order execution result</param>
     protected void SetResult(IOrderExecutionResultState result)
     {
-        if (_taskCompletionSource == null)
-        {
-            return;
-        }
-
-        if (_taskCompletionSource.Task is { IsCompleted: false, IsCanceled: false })
+        if (_taskCompletionSource?.Task is { IsCompleted: false, IsCanceled: false })
         {
             _taskCompletionSource.SetResult(result);
         }

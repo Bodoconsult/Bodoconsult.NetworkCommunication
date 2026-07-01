@@ -7,6 +7,7 @@ using Bodoconsult.NetworkCommunication.DataMessaging.DataBlocks;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
 using Bodoconsult.NetworkCommunication.Helpers;
 using Bodoconsult.NetworkCommunication.Interfaces;
+using Microsoft.Diagnostics.Tracing.Parsers.AspNet;
 
 namespace Bodoconsult.NetworkCommunication.DataMessaging.DataBlockCodecs;
 
@@ -151,8 +152,13 @@ public class SfxpDataBlockCodec : IDataBlockCodec
         // Apply channels to chunks
         ApplyChannelsToChunks(db.DataChunks, syncChunks);
 
+        //ListChunks(db.DataChunks);
+
         // Remove the sync chunks now
         RemoveSyncChunks(db.DataChunks);
+
+        // Remove not identified chunks now
+        RemoveNotIdentifiedChunks(db.DataChunks);
     }
 
 
@@ -214,9 +220,14 @@ public class SfxpDataBlockCodec : IDataBlockCodec
         return path;
     }
 
-    private void ApplyChannelsToChunks(List<DataChunk> chunks, IEnumerable<int> syncChunks)
+    private void ApplyChannelsToChunks(List<DataChunk> chunks, List<int> syncChunks)
     {
         var currentIndex = 0;
+
+        if (syncChunks.Count==0)
+        {
+            return;
+        }
 
         var firstSyncChunk = syncChunks.First();
 
@@ -273,7 +284,7 @@ public class SfxpDataBlockCodec : IDataBlockCodec
         {
             var chunk = data.Slice(i, SfxpProtocolHelper.DataChunkLength); //.ToArray();
 
-            //Debug.Print($"{i}: "+ArrayHelper.GetStringFromArray(chunk));
+            //Debug.Print($"{i}: " + ArrayHelper.GetStringFromArray(chunk));
 
             var dataChunk = _bufferPool.Dequeue();
             dataChunk.Data = chunk;
@@ -287,6 +298,23 @@ public class SfxpDataBlockCodec : IDataBlockCodec
         foreach (var chunk in chunks.Where(x => x.DataChunkType == DataChunkType.RegularSyncChunk).ToList())
         {
             chunks.Remove(chunk);
+        }
+    }
+
+    private static void RemoveNotIdentifiedChunks(List<DataChunk> chunks)
+    {
+        foreach (var chunk in chunks.Where(x => x.Channel == DataChunk.Identifier).ToList())
+        {
+            chunks.Remove(chunk);
+        }
+    }
+
+    private static void ListChunks(List<DataChunk> chunks)
+    {
+        for (var i = 0; i < chunks.Count; i++)
+        {
+            var chunk = chunks[i];
+            Debug.Print($"{i}: {chunk.DataChunkType} CH{chunk.Channel}" + ArrayHelper.GetStringFromArrayCsharpStyle(chunk.Data!.Value, false));
         }
     }
 
@@ -315,7 +343,7 @@ public class SfxpDataBlockCodec : IDataBlockCodec
                 if (block)
                 {
                     syncChunks.Add(i);
-                    //Debug.Print($"SyncChunk 0x0 {i} {ArrayHelper.GetStringFromArrayCsharpStyle(value, false)}");
+                    Debug.Print($"SyncChunk 0x0 {i} {ArrayHelper.GetStringFromArrayCsharpStyle(value, false)}");
                     chunk.DataChunkType = DataChunkType.RegularSyncChunk;
                     continue;
                 }
@@ -335,7 +363,7 @@ public class SfxpDataBlockCodec : IDataBlockCodec
 
             // 0x9 sync chunk
             syncChunks.Add(i);
-            //Debug.Print($"SyncChunk 0x9 {i} {ArrayHelper.GetStringFromArrayCsharpStyle(value, false)}");
+            Debug.Print($"SyncChunk 0x9 {i} {ArrayHelper.GetStringFromArrayCsharpStyle(value, false)}");
             chunk.DataChunkType = DataChunkType.SampleCounterSyncChunk;
         }
 

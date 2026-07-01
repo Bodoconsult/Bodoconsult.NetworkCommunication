@@ -28,7 +28,7 @@ public interface IRequestProcessor: IDisposable
     /// Execute the order request by request
     /// </summary>
     /// <returns>Execution result</returns>
-    Task<IOrderExecutionResultState> ExecuteOrder();
+    Task ExecuteOrder();
 
     /// <summary>
     /// Check a received message

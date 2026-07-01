@@ -5,7 +5,6 @@ using Bodoconsult.App.Abstractions.Interfaces;
 using Bodoconsult.App.Helpers;
 using Bodoconsult.NetworkCommunication.Delegates;
 using Bodoconsult.NetworkCommunication.EnumAndStates;
-using Bodoconsult.NetworkCommunication.Helpers;
 using Bodoconsult.NetworkCommunication.Interfaces;
 
 
@@ -243,7 +242,6 @@ public class OrderPipeline : IOrderPipeline
             // Do nothing
             //_appLogger.LogError("Removing cancelled orders failed", e);
         }
-
     }
 
     /// <summary>
@@ -260,10 +258,6 @@ public class OrderPipeline : IOrderPipeline
         {
             foreach (var order in _ordersWithPriorityQueue.Where(x => !x.IsCancelled).ToList())
             {
-                //if (order == null)
-                //{
-                //    continue;
-                //}
                 order.IsCancelled = true;
                 CancelOrderInternal(order);
             }
@@ -289,10 +283,6 @@ public class OrderPipeline : IOrderPipeline
         {
             foreach (var order in _orderQueue.Where(x => !x.IsCancelled).ToList())
             {
-                //if (order == null)
-                //{
-                //    continue;
-                //}
                 CancelOrderInternal(order);
             }
         }
@@ -392,15 +382,6 @@ public class OrderPipeline : IOrderPipeline
         {
             var order = proc.Order;
 
-            //if (order == null )
-            //{
-            //    if (!proc.IsCancelled)
-            //    {
-            //        proc.Cancel(true, false);
-            //    }
-            //    continue;
-            //}
-
             if (order.Id != orderId)
             {
                 continue;
@@ -457,11 +438,6 @@ public class OrderPipeline : IOrderPipeline
     /// <param name="errorCode">Error code to set for the order</param>
     public void CancelOrder(IOrder order, int errorCode)
     {
-        //if (order == null)
-        //{
-        //    return;
-        //}
-
         var proc = _executionQueue.Values.ToList().FirstOrDefault(x => x.Order.Id == order.Id && !x.Order.IsCancelled);
 
         // Cancel running order
@@ -497,7 +473,6 @@ public class OrderPipeline : IOrderPipeline
         {
             o.IsCancelled = true;
             o.ExecutionResult = OrderExecutionResultState.Unsuccessful;
-            //_deviceServer.deviceOrderManager.StSysdeviceBusinessState = StSysdeviceHardwareState.OrderProcessingError;
             _appLogger.LogInformation($"{_loggerId}{o.LoggerId}: order cancelled");
         }
         catch (Exception e)
@@ -610,7 +585,7 @@ public class OrderPipeline : IOrderPipeline
     {
         var order = requestProcessor.Order;
 
-        ArgumentNullException.ThrowIfNull(order);
+        //ArgumentNullException.ThrowIfNull(order);
         ArgumentNullException.ThrowIfNull(requestProcessor.CancellationTokenSource);
 
         order.StartTime = _dateTimeService.Now;
@@ -629,8 +604,8 @@ public class OrderPipeline : IOrderPipeline
         }, requestProcessor.CancellationTokenSource.Token);
         requestProcessor.CurrentTask = task;
 
-        // Serialize before starting order. Otherwise it will fail due to changes in the parameterSet
-        var json = JsonHelper.JsonSerialize(order.ParameterSet);
+        //// Serialize before starting order. Otherwise it will fail due to changes in the parameterSet
+        //var json = JsonHelper.JsonSerialize(order.ParameterSet);
 
         AsyncHelper.FireAndForget(() =>
         {
@@ -644,7 +619,7 @@ public class OrderPipeline : IOrderPipeline
             }
         });
 
-        _appLogger.LogInformation($"{_loggerId}{order.LoggerId}started: {json}");
+        _appLogger.LogInformation($"{_loggerId}{order.LoggerId}started");
 
         order.ExecutionState = OrderState.Started;
     }

@@ -1,7 +1,5 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
-using Bodoconsult.NetworkCommunication.Delegates;
-
 namespace Bodoconsult.NetworkCommunication.Interfaces;
 
 /// <summary>
@@ -10,13 +8,7 @@ namespace Bodoconsult.NetworkCommunication.Interfaces;
 public interface ITcpSocketProxy : ISocketProxy
 {
     /// <summary>
-    /// Delegate fired if the socket was receiving data
-    /// </summary>
-    SocketReceivedDataDelegate2? SocketReceivedDataDelegate { get; }
-
-    /// <summary>
     /// Start the receiver loop
     /// </summary>
-    /// <param name="socketReceivedDataDelegate">Delegate for forwarding received messages</param>
-    void StartReceiverLoop(SocketReceivedDataDelegate2 socketReceivedDataDelegate);
+    void StartReceiverLoop();
 }

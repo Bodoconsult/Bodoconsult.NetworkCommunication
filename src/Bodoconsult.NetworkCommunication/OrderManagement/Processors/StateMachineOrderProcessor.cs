@@ -238,7 +238,7 @@ public class StateMachineOrderProcessor : BaseOrderProcessor
         //}
 
         //*********************
-        // TOP 1 A X message with a error code of 0 makes no sense: throw this message away
+        // TOP 1 A X message with an error code of 0 makes no sense: throw this message away
         // This other X messages should be given to the order pipeline first and after that it should be handled befor given to async message handler
         //*********************
         if (CurrentDevice.DoBasicCheckForReceivedMessage(receivedMessage))
@@ -278,7 +278,6 @@ public class StateMachineOrderProcessor : BaseOrderProcessor
         //*********************
         // TOP 5 Last chance for message handling: async message handling
         //*********************
-
         if (_device.CurrentState == null)
         {
             return false;
@@ -286,11 +285,16 @@ public class StateMachineOrderProcessor : BaseOrderProcessor
 
         var result = _device.CurrentState.HandleAsyncMessage(receivedMessage);
 
-        msg = $"{receivedMessage.ToShortInfoString()}: async processed {result.ExecutionResult}{(result.ExecutionResult.Id == OrderExecutionResultState.Successful.Id ? "" : ". Message is disposed now")}";
+        if (result.ExecutionResult.Id == OrderExecutionResultState.Successful.Id)
+        {
+            msg = $"{receivedMessage.ToShortInfoString()}: async processed successful";
+            LogInformation(msg);
+            return true;
+        }
+
+        msg = $"{receivedMessage.ToShortInfoString()}: async processed unsuccessful. Message is disposed now";
         LogInformation(msg);
-
-        return result.ExecutionResult.Id == OrderExecutionResultState.Successful.Id;
-
+        return false;
     }
 
     /// <summary>

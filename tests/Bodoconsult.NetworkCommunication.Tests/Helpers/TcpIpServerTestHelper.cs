@@ -1,12 +1,13 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
-using System.Net;
 using Bodoconsult.App.Abstractions.Interfaces;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessageProcessingPackages;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessagingConfig;
+using Bodoconsult.NetworkCommunication.Interfaces;
 using Bodoconsult.NetworkCommunication.Protocols.TcpIp;
 using Bodoconsult.NetworkCommunication.Testing;
 using Bodoconsult.NetworkCommunication.Tests.Interfaces;
+using System.Net;
 
 namespace Bodoconsult.NetworkCommunication.Tests.Helpers;
 
@@ -85,16 +86,16 @@ public static class TcpIpServerTestHelper
         socket.IpAddress = testSetup.IpAddress;
         socket.Port = testSetup.DataMessagingConfig.Port;
         socket.Connect().Wait(1000);
-        socket.StartReceiverLoop(SocketReceivedDataDelegate);
+        ((IStreamPipeline)socket.ReceiverPipeline).SocketReceivedDataDelegate = SocketReceivedDataDelegate;
+        socket.StartReceiverLoop();
 
         testSetup.Socket = socket;
 
     }
 
-    private static Task<bool> SocketReceivedDataDelegate()
+    private static void SocketReceivedDataDelegate()
     {
         // Do nothing
-        return Task.FromResult(true);
     }
 
     /// <summary>

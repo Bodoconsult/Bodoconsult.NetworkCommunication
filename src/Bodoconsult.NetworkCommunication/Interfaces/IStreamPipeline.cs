@@ -1,5 +1,6 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
+using Bodoconsult.NetworkCommunication.Delegates;
 using System.Buffers;
 
 namespace Bodoconsult.NetworkCommunication.Interfaces;
@@ -9,10 +10,10 @@ namespace Bodoconsult.NetworkCommunication.Interfaces;
 /// </summary>
 public interface IStreamPipeline : IPipeline
 {
-    ///// <summary>
-    ///// Delegate to receive data from socket
-    ///// </summary>
-    //SocketReceivedDataDelegate2? SocketReceivedDataDelegate { get; set; }
+    /// <summary>
+    /// Delegate fired if the socket was receiving data
+    /// </summary>
+    SocketReceivedDataDelegate2? SocketReceivedDataDelegate { get; set; }
 
     /// <summary>
     /// Get a buffer

@@ -108,7 +108,7 @@ public delegate void SocketReceivedDataDelegate(Memory<byte> data);
 /// Delegate fired if the socket has received data
 /// </summary>
 
-public delegate Task<bool> SocketReceivedDataDelegate2();
+public delegate void SocketReceivedDataDelegate2();
 
 /// <summary>
 /// Delegate sending a HELLO message to the device

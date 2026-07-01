@@ -230,13 +230,6 @@ public class OrderProcessor : BaseOrderProcessor
     /// <returns>True if the message was an expected answer of the current request</returns>
     public override bool CheckReceivedMessage(IInboundDataMessage receivedMessage)
     {
-        //if (receivedMessage is not IInboundDataMessage rm)
-        //{
-        //    msg = $"received {receivedMessage.ToInfoString()} {OrderPipeline.CurrentOrderState}";
-        //    LogInformation(msg);
-        //    return false;
-        //}
-
         //*********************
         // TOP 1 A X message with an error code of 0 makes no sense: throw this message away
         // This other X messages should be given to the order pipeline first and after that it should be handled befor given to async message handler
@@ -244,11 +237,11 @@ public class OrderProcessor : BaseOrderProcessor
         if (CurrentDevice.DoBasicCheckForReceivedMessage(receivedMessage))
         {
             LogInformation($"{receivedMessage.ToShortInfoString()} thrown away");
-            return true;
+            return false;
         }
 
-        var msg = $"received {receivedMessage.ToShortInfoString()} {OrderPipeline.CurrentOrderState}";
-        LogInformation(msg);
+        //var msg = $"received {receivedMessage.ToShortInfoString()} {OrderPipeline.CurrentOrderState}";
+        //LogInformation(msg);
 
         //*********************
         // TOP 2 Deliver message to order pipeline with all running orders with higher priority to check
@@ -282,17 +275,18 @@ public class OrderProcessor : BaseOrderProcessor
 
         //IsRunnerStopped = false;
 
-        if (result == null)
+        string msg;
+        if (result == null || result.ExecutionResult.Id != OrderExecutionResultState.Successful.Id)
         {
             msg = $"{receivedMessage.ToShortInfoString()}: async processed unsuccessful. Message is disposed now";
             LogInformation(msg);
             return false;
         }
 
-        msg = $"{receivedMessage.ToShortInfoString()}: async processed {result.ExecutionResult}{(result.ExecutionResult.Id == OrderExecutionResultState.Successful.Id ? "" : ". Message is disposed now")}";
+        msg = $"{receivedMessage.ToShortInfoString()}: async processed successful";
         LogInformation(msg);
 
-        return result.ExecutionResult.Id == OrderExecutionResultState.Successful.Id;
+        return true;
     }
 
     /// <summary>

@@ -37,5 +37,5 @@ public interface IDeviceRequestStepProcessor : IRequestStepProcessor
     /// </summary>
     /// <param name="receivedMessage">A message received from the device</param>
     /// <returns>True if the message was an expected answer of the current request</returns>
-    bool CheckReceivedMessage(IInboundDataMessage? receivedMessage);
+    bool CheckReceivedMessage(IInboundDataMessage receivedMessage);
 }

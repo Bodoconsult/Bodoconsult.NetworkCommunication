@@ -17,7 +17,7 @@ public interface IDatagramPipeline : IPipeline
     /// <summary>
     /// Inbound queue for received UDP result
     /// </summary>
-    public ProducerConsumerQueue2<UdpReceiveResult> InboundQueue { get; }
+    public ProducerConsumerQueue<byte[]> InboundQueue { get; }
 
     /// <summary>
     /// Delegate fired if the socket was receiving data
@@ -52,5 +52,5 @@ public interface IDatagramPipeline : IPipeline
     /// Add a received UDP result to the inbound queue
     /// </summary>
     /// <param name="result">Received UDP result</param>
-    void AddResult(UdpReceiveResult result);
+    void AddResult(byte[] result);
 }
