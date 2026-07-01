@@ -1,6 +1,7 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
 using Bodoconsult.App.Helpers;
+using Bodoconsult.NetworkCommunication.DataMessaging.DataBlocks;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
 using Bodoconsult.NetworkCommunication.Exceptions;
 using Bodoconsult.NetworkCommunication.Interfaces;
@@ -72,6 +73,13 @@ public class SfxpDataMessageCodec : BaseDataMessageCodec
             // Now process decoding
             var dataBlockBytes = data.Slice(8); 
             var dataBlock = DataBlockCodingProcessor.FromBytesToDataBlock(dataBlockBytes, (char)0x73);
+
+            if (dataBlock==null || ((SfxpInboundDatablock)dataBlock).DataChunks.Count==0)
+            {
+                result.ErrorMessage = "No datachunks";
+                result.ErrorCode = DataMessageCodecErrorCodes.MessageHasNoDataChunks;
+                return result;
+            }
 
             var dataMessage = new SfxpInboundDataMessage
             {

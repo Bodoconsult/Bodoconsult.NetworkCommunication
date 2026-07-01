@@ -7,11 +7,8 @@
 // https://enclave.io/high-performance-udp-sockets-net6/
 
 using Bodoconsult.App.Abstractions.Interfaces;
-using Bodoconsult.App.Extensions;
 using Bodoconsult.NetworkCommunication.Delegates;
 using Bodoconsult.NetworkCommunication.Interfaces;
-using Microsoft.AspNetCore.DataProtection;
-using System.Diagnostics;
 using System.Net;
 using System.Net.Sockets;
 
@@ -184,22 +181,22 @@ public class UdpClientSocketProxy : BaseUpdSocketProxy
         // Start receiver loop 1 now
         StartReceiverLoopInternal();
 
-#if DEBUG
+//#if DEBUG
 
-#else
-        // Start the rest of the receiver loop tasks if necessary
-        for (var i = 2; i <= NumberOfReceiverTasks; i++)
-        {
-            StartReceiverLoopInternal();
-        }
-#endif
+//#else
+//        // Start the rest of the receiver loop tasks if necessary
+//        for (var i = 2; i <= NumberOfReceiverTasks; i++)
+//        {
+//            StartReceiverLoopInternal();
+//        }
+//#endif
     }
 
     private void StartReceiverLoopInternal()
     {
         AutoResetEvent wait = new(false);
 
-        var thread = new Thread(async void () =>
+        var thread = new Thread(async () =>
         {
             await ReceiverLoop(wait);
         })

@@ -11,4 +11,9 @@ public class DataMessageCodecErrorCodes
     /// Message has been received already
     /// </summary>
     public const int MessageAlreadyReceived = 6;
+
+    /// <summary>
+    /// Message has no data chunks
+    /// </summary>
+    public const int MessageHasNoDataChunks = 7;
 }

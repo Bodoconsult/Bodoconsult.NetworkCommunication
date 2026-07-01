@@ -1,10 +1,8 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
-using System.Diagnostics;
 using Bodoconsult.App.Helpers;
 using Bodoconsult.NetworkCommunication.Delegates;
 using Bodoconsult.NetworkCommunication.Interfaces;
-using System.Net.Sockets;
 
 namespace Bodoconsult.NetworkCommunication.Protocols;
 
@@ -85,9 +83,6 @@ public class DatagramPipeline : IDatagramPipeline
 
         //Debug.Print($"DP {data[0]}");
 
-        //Memory<byte> buffer = new byte[data.Length];
-        //data.AsMemory().CopyTo(buffer);
-        //Debug.Print($"Receive {ArrayHelper.GetStringFromArrayCsharpStyle(buffer.AsMemory().Slice(0,8), false)}");
         AddMemory(data);
     }
 

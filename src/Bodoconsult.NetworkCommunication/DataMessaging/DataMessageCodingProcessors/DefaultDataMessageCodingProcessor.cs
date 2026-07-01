@@ -66,7 +66,7 @@ public class DefaultDataMessageCodingProcessor : IDataMessageCodingProcessor
             {
                 var result = codec.DecodeDataMessage(data);
 
-                if (result.ErrorCode == 0 || result.ErrorCode == DataMessageCodecErrorCodes.MessageAlreadyReceived)
+                if (result.ErrorCode is 0 or DataMessageCodecErrorCodes.MessageAlreadyReceived or DataMessageCodecErrorCodes.MessageHasNoDataChunks)
                 {
                     return result;
                 }

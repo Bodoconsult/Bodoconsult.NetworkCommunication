@@ -7,7 +7,6 @@ using Bodoconsult.NetworkCommunication.DataMessaging.DataBlocks;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
 using Bodoconsult.NetworkCommunication.Helpers;
 using Bodoconsult.NetworkCommunication.Interfaces;
-using Microsoft.Diagnostics.Tracing.Parsers.AspNet;
 
 namespace Bodoconsult.NetworkCommunication.DataMessaging.DataBlockCodecs;
 
@@ -343,7 +342,7 @@ public class SfxpDataBlockCodec : IDataBlockCodec
                 if (block)
                 {
                     syncChunks.Add(i);
-                    Debug.Print($"SyncChunk 0x0 {i} {ArrayHelper.GetStringFromArrayCsharpStyle(value, false)}");
+                    //Debug.Print($"SyncChunk 0x0 {i} {ArrayHelper.GetStringFromArrayCsharpStyle(value, false)}");
                     chunk.DataChunkType = DataChunkType.RegularSyncChunk;
                     continue;
                 }
@@ -363,7 +362,7 @@ public class SfxpDataBlockCodec : IDataBlockCodec
 
             // 0x9 sync chunk
             syncChunks.Add(i);
-            Debug.Print($"SyncChunk 0x9 {i} {ArrayHelper.GetStringFromArrayCsharpStyle(value, false)}");
+            //Debug.Print($"SyncChunk 0x9 {i} {ArrayHelper.GetStringFromArrayCsharpStyle(value, false)}");
             chunk.DataChunkType = DataChunkType.SampleCounterSyncChunk;
         }
 
