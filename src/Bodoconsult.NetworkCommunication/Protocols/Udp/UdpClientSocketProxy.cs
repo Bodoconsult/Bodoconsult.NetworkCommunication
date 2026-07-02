@@ -6,6 +6,7 @@
 // https://learn.microsoft.com/de-de/dotnet/framework/network-programming/using-udp-services
 // https://enclave.io/high-performance-udp-sockets-net6/
 
+using System.Diagnostics;
 using Bodoconsult.App.Abstractions.Interfaces;
 using Bodoconsult.NetworkCommunication.Delegates;
 using Bodoconsult.NetworkCommunication.Interfaces;
@@ -40,7 +41,7 @@ public class UdpClientSocketProxy : BaseUpdSocketProxy
     /// <summary>
     /// Number of receiver tasks to employ
     /// </summary>
-    public byte NumberOfReceiverTasks { get; set; } = 4;
+    public byte NumberOfReceiverTasks { get; set; } = 2;
 
     /// <summary>
     /// Endpoint for listening
@@ -141,7 +142,12 @@ public class UdpClientSocketProxy : BaseUpdSocketProxy
 
             try
             {
+
+                EndPoint = new IPEndPoint(IpAddress, Port);
+
                 UdpClient = new UdpClient(Port);
+                //UdpClient = new UdpClient();
+                //UdpClient.Client.Bind(EndPoint);
                 UdpClient.Client.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.ReuseAddress, true);
                 UdpClient.Client.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.ReceiveBuffer, ReceiveBufferSize);
                 UdpClient.Client.SetSocketOption(SocketOptionLevel.Udp, SocketOptionName.NoChecksum, 0);
@@ -149,7 +155,7 @@ public class UdpClientSocketProxy : BaseUpdSocketProxy
                 UdpClient.Client.DontFragment = true;
                 // No delay settings possible here
 
-                EndPoint = new IPEndPoint(IpAddress, Port);
+                
                 SendEndPoint = EndPoint;
 
                 //UdpClient.Connect(EndPoint);
@@ -181,31 +187,36 @@ public class UdpClientSocketProxy : BaseUpdSocketProxy
         // Start receiver loop 1 now
         StartReceiverLoopInternal();
 
-//#if DEBUG
+////#if DEBUG
 
-//#else
+////#else
 //        // Start the rest of the receiver loop tasks if necessary
 //        for (var i = 2; i <= NumberOfReceiverTasks; i++)
 //        {
 //            StartReceiverLoopInternal();
 //        }
-//#endif
+////#endif
     }
 
     private void StartReceiverLoopInternal()
     {
         AutoResetEvent wait = new(false);
 
-        var thread = new Thread(async () =>
+        //var thread = new Thread(async () =>
+        //{
+        //    await ReceiverLoop(wait);
+        //})
+        //{
+        //    IsBackground = true,
+        //    Priority = ThreadPriority.Highest
+        //};
+
+        //thread.Start();
+
+        Task.Factory.StartNew(async () =>
         {
             await ReceiverLoop(wait);
-        })
-        {
-            IsBackground = true,
-            Priority = ThreadPriority.Highest
-        };
-
-        thread.Start();
+        }, TaskCreationOptions.LongRunning);
 
 
         //Task.Run(async () => { await ReceiverLoop(wait); }).Forget();
@@ -222,6 +233,8 @@ public class UdpClientSocketProxy : BaseUpdSocketProxy
     {
         try
         {
+            Thread.CurrentThread.Priority = ThreadPriority.Highest;
+
             ArgumentNullException.ThrowIfNull(UdpClient);
             ArgumentNullException.ThrowIfNull(SocketReceivedDataDelegate);
 
@@ -236,8 +249,8 @@ public class UdpClientSocketProxy : BaseUpdSocketProxy
                 try
                 {
                     var udpResult = await UdpClient.ReceiveAsync(CancellationTokenSource.Token);
-                    //Debug.Print($"US {udpResult.Buffer[0]}");
                     queue.Enqueue(udpResult.Buffer);
+                    //Debug.Print($"US {BitConverter.ToUInt64(udpResult.Buffer.AsMemory().Slice(0,8).Span)}, ");
                     //SendEndPoint = udpResult.RemoteEndPoint;
                 }
                 catch (OperationCanceledException)

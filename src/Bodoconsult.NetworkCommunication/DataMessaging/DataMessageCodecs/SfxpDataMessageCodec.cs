@@ -13,7 +13,7 @@ namespace Bodoconsult.NetworkCommunication.DataMessaging.DataMessageCodecs;
 /// </summary>
 public class SfxpDataMessageCodec : BaseDataMessageCodec
 {
-    private const int Length = 10000;
+    private const int Length = 500;
     private readonly List<ulong> _messageIds = new(Length);
 
     /// <summary>
@@ -91,7 +91,6 @@ public class SfxpDataMessageCodec : BaseDataMessageCodec
 
             result.DataMessage = dataMessage;
             return result;
-
         }
         catch (DatablockCodecException dataBlockException)
         {

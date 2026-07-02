@@ -103,7 +103,7 @@ public class IpDeviceUdpClientManager : ISimpleDeviceManager
 
         var fileSize = appStartParams.MaxDataLoggingFileSize;
 
-        const int cacheSize = 10;
+        const int cacheSize = 5;
 
         CreateLoggerChannel(0x0, ipAddress, config, "Channel1", fileSize, cacheSize, true);
         CreateLoggerChannel(0x1, ipAddress, config, "Channel2", fileSize, cacheSize, true);
@@ -142,7 +142,8 @@ public class IpDeviceUdpClientManager : ISimpleDeviceManager
             TargetPath = config.DataLoggingPath,
             CacheSize = cacheSize,
             FileExtension = "bin",
-            MaxFileSize = size
+            MaxFileSize = size,
+            FlushInterval = 5
         };
 
         if (isHigherPriority)

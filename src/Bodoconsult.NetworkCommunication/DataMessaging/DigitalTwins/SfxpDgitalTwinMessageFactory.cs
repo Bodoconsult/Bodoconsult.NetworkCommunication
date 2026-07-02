@@ -1,5 +1,6 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
+using System.Diagnostics;
 using Bodoconsult.NetworkCommunication.Helpers;
 using Bodoconsult.NetworkCommunication.Interfaces;
 
@@ -58,6 +59,8 @@ public class SfxpDigitalTwinMessageFactory : IDigitalTwinMessageFactory
         // MessageId (as big endian)
         var intBytes = GetMessageIdAsBytes();
 
+        //Debug.Print(_messageId.ToString());
+
         data.AddRange(intBytes);
 
         //
@@ -99,7 +102,7 @@ public class SfxpDigitalTwinMessageFactory : IDigitalTwinMessageFactory
 
     private bool CreateChunks(List<byte> data)
     {
-        var counter = 1;
+        //var counter = 1;
 
         // Create chunks
         for (var j = _lastChunkId; j < SfxpProtocolHelper.NumberOfChunksBeforeSyncByteIsSent; j++)
@@ -116,7 +119,7 @@ public class SfxpDigitalTwinMessageFactory : IDigitalTwinMessageFactory
             }
 
             data.AddRange(chunk);
-            counter++;
+            //counter++;
         }
 
         //Debug.Print($"{counter - 1} chunks");

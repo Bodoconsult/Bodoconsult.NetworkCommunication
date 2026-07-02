@@ -1,5 +1,6 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
+using System.Diagnostics;
 using Bodoconsult.NetworkCommunication.Interfaces;
 
 namespace Bodoconsult.NetworkCommunication.DataMessaging.DataMessageProcessors;
@@ -63,6 +64,8 @@ public class LoggedSortableDataMessageProcessor : BaseDataMessageProcessor
         {
             return;
         }
+
+        Debug.Print($"LoggedSortableDataMessageProcessor: {messages.Count}");
 
         // Logging activated?
         if (Config.IsDataLoggingActivated)

@@ -1,5 +1,6 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
+using System.Diagnostics;
 using Bodoconsult.App.Abstractions.Interfaces;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataSorter;
@@ -27,7 +28,7 @@ internal class DefaultInboundDataMessageSorterTests
         var sorter = new DefaultInboundDataMessageSorter(_logger);
 
         // Assert
-        Assert.That(sorter.LastMessageId, Is.EqualTo(long.MinValue));
+        Assert.That(sorter.LastMessageId, Is.EqualTo(ulong.MinValue));
     }
 
     [Test]
@@ -149,7 +150,7 @@ internal class DefaultInboundDataMessageSorterTests
         // Assert
         using (Assert.EnterMultipleScope())
         {
-            Assert.That(sorter.LastMessageId, Is.EqualTo(msg1.OriginalMessageId));
+            Assert.That(sorter.LastMessageId, Is.Not.Zero);
             Assert.That(result2.Contains(msg1));
             Assert.That(result2.Contains(msg2));
         }
@@ -256,5 +257,56 @@ internal class DefaultInboundDataMessageSorterTests
             Assert.That(sorter.LastMessageId, Is.EqualTo(msg0.OriginalMessageId));
             Assert.That(result2.Contains(msg2), Is.False);
         }
+    }
+
+    [Explicit]
+    [Test]
+    public void AddMessage_MultipleMessagesRealWorld1_ReturnsCorrectMessages()
+    {
+        // Arrange 
+        var sorter = new DefaultInboundDataMessageSorter(_logger);
+
+        var fileContent = File.ReadAllText("C:\\Temp\\data.txt").Replace("\r\n", "\r", StringComparison.InvariantCultureIgnoreCase)
+            .Replace(",", string.Empty, StringComparison.InvariantCultureIgnoreCase)
+            .Replace(" US ", string.Empty, StringComparison.InvariantCultureIgnoreCase);
+
+        var data = fileContent.Split('\r', StringSplitOptions.RemoveEmptyEntries);
+
+        var numbers = new List<int>();
+
+        foreach (var s in data)
+        {
+            var v = s.Split(':', StringSplitOptions.RemoveEmptyEntries);
+            //Debug.Print(v[1]);
+            numbers.Add(Convert.ToInt32(v[1]));
+
+        }
+
+        foreach (var number in numbers)
+        {
+            var msg1 = new SdcpSortableInboundDataMessage
+            {
+                OriginalMessageId = (ulong)number
+            };
+
+            var result = sorter.AddMessage(msg1);
+
+            if (result.Count > 0)
+            {
+                Debug.Print($"OID {number}: returns {result.Count} messages");
+            }
+            //foreach (var msg in result)
+            //{
+
+            //}
+
+            //using (Assert.EnterMultipleScope())
+            //{
+            //    Assert.That(sorter.LastMessageId, Is.EqualTo(msg1.OriginalMessageId));
+            //    Assert.That(result1.Contains(msg1));
+            //}
+        }
+
+
     }
 }

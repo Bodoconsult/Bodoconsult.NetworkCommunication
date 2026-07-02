@@ -245,7 +245,7 @@ public class UdpServerSocketProxy : BaseUpdSocketProxy
 //            var s = ArrayHelper.GetStringFromArrayCsharpStyle(bytesToSend, false);
 //            Debug.Print($"\r\n{s}\r\n");
 //#endif
-            Logger.LogInformation($"{LoggerId}sent {result}B");
+            //Logger.LogInformation($"{LoggerId}sent {result}B");
             return result;
         }
         catch (SocketException se)

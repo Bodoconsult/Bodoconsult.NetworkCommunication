@@ -1,5 +1,6 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
+using System.Diagnostics;
 using Bodoconsult.App.Abstractions.SyncExecution;
 using Bodoconsult.App.Helpers;
 using Bodoconsult.NetworkCommunication.EnumAndStates;
@@ -44,14 +45,14 @@ public abstract class BaseDuplexIoSender : IDuplexIoSender
                 return sent;
             }
 
-//#if DEBUG
-//            DataMessagingConfig.MonitorLogger.LogDebug($"{LoggerId}{message.ToShortInfoString()} sent: {sent.ProcessExecutionResult}");
-//#endif
+            //#if DEBUG
+            //            DataMessagingConfig.MonitorLogger.LogDebug($"{LoggerId}{message.ToShortInfoString()} sent: {sent.ProcessExecutionResult}");
+            //#endif
 
-//#if DEBUG
-//            msg = $"Message {message.ToShortInfoString()} sent: {sent.BytesSent}B";
-//            DataMessagingConfig.MonitorLogger.LogDebug(msg);
-//#endif
+            //#if DEBUG
+            //            msg = $"Message {message.ToShortInfoString()} sent: {sent.BytesSent}B";
+            //            DataMessagingConfig.MonitorLogger.LogDebug(msg);
+            //#endif
             AsyncHelper.FireAndForget(() =>
             {
                 try

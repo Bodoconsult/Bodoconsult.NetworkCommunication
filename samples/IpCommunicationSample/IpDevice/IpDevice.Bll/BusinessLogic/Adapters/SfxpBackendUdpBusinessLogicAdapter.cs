@@ -19,7 +19,6 @@ namespace IpDevice.Bll.BusinessLogic.Adapters;
 public class SfxpBackendUdpBusinessLogicAdapter : BaseSimpleDeviceBusinessLogicAdapter, IBackendUdpBusinessLogicAdapter
 {
     private CancellationTokenSource? _cts;
-    private Thread? _workerTask;
     private readonly ProducerConsumerQueue<IOutboundDataMessage> _outboundQueue = new();
 
     /// <summary>
@@ -93,16 +92,7 @@ public class SfxpBackendUdpBusinessLogicAdapter : BaseSimpleDeviceBusinessLogicA
     public IBusinessTransactionReply StartStreaming(IBusinessTransactionRequestData request)
     {
         _cts = new CancellationTokenSource();
-
-        //AsyncHelper.FireAndForget(() =>
-        //{
-        _workerTask = new Thread(RunStreaming)
-        {
-            Priority = ThreadPriority.AboveNormal,
-            IsBackground = true
-        };
-        _workerTask.Start();
-        //});
+        Task.Factory.StartNew(RunStreaming, TaskCreationOptions.LongRunning);
         return new DefaultBusinessTransactionReply();
     }
 
@@ -126,16 +116,7 @@ public class SfxpBackendUdpBusinessLogicAdapter : BaseSimpleDeviceBusinessLogicA
     public IBusinessTransactionReply StartSnapshot(IBusinessTransactionRequestData request)
     {
         _cts = new CancellationTokenSource();
-
-        //AsyncHelper.FireAndForget(() =>
-        //{
-        _workerTask = new Thread(RunSnapshot)
-        {
-            Priority = ThreadPriority.AboveNormal,
-            IsBackground = true
-        };
-        _workerTask.Start();
-        //});
+        Task.Factory.StartNew(RunSnapshot, TaskCreationOptions.LongRunning);
         return new DefaultBusinessTransactionReply();
     }
 
@@ -157,7 +138,7 @@ public class SfxpBackendUdpBusinessLogicAdapter : BaseSimpleDeviceBusinessLogicA
         ArgumentNullException.ThrowIfNull(IpDevice.CommunicationAdapter);
         ArgumentNullException.ThrowIfNull(_cts);
 
-        Task.Delay(5000).Wait();
+        Task.Delay(2000).Wait();
 
         var digitalTwin = new SfxpDigitalTwinMessageFactory();
 
@@ -203,11 +184,11 @@ public class SfxpBackendUdpBusinessLogicAdapter : BaseSimpleDeviceBusinessLogicA
         ArgumentNullException.ThrowIfNull(IpDevice.CommunicationAdapter);
         ArgumentNullException.ThrowIfNull(_cts);
 
-        Task.Delay(5000).Wait();
+        Task.Delay(2000).Wait();
 
         var digitalTwin = new SfxpDigitalTwinMessageFactory();
 
-        long id = 0;
+        ulong id = 0;
 
         while (!_cts.IsCancellationRequested)
         {
@@ -222,9 +203,11 @@ public class SfxpBackendUdpBusinessLogicAdapter : BaseSimpleDeviceBusinessLogicA
                 OriginalMessageId = id
             };
 
+            //Debug.Print(id.ToString());
+
             _outboundQueue.Enqueue(msg);
 
-            if (id == long.MaxValue)
+            if (id == ulong.MaxValue)
             {
                 id = 0;
             }

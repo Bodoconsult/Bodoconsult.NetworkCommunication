@@ -1,5 +1,6 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
+using System.Diagnostics;
 using Bodoconsult.App.Abstractions.Interfaces;
 using Bodoconsult.NetworkCommunication.Interfaces;
 
@@ -11,6 +12,7 @@ namespace Bodoconsult.NetworkCommunication.DataMessaging.DataSorter;
 public class DefaultInboundDataMessageSorter : IInboundDataMessageSorter
 {
     private readonly SortedList<ulong, ISortableInboundDataMessage> _inboundDataMessages = new();
+    private bool _isNoStart;
 
     /// <summary>
     /// Default ctor
@@ -29,7 +31,7 @@ public class DefaultInboundDataMessageSorter : IInboundDataMessageSorter
     /// <summary>
     /// The maximum number of messages in the queue before the queue is sent and then cleared
     /// </summary>
-    public int MaxNumberOfMessagesInQueue { get; set; } = 10;
+    public int MaxNumberOfMessagesInQueue { get; set; } = 100;
 
     /// <summary>
     /// The last incoming message ID returned correctly
@@ -45,8 +47,13 @@ public class DefaultInboundDataMessageSorter : IInboundDataMessageSorter
     {
         var result = new List<ISortableInboundDataMessage>();
 
+        //if (message.OriginalMessageId == 2)
+        //{
+        //    Debug.Print("Yes");
+        //}
+
         // First message
-        if (LastMessageId == ulong.MinValue)
+        if (!_isNoStart)
         {
             if (_inboundDataMessages.Count > 0)
             {
@@ -54,95 +61,106 @@ public class DefaultInboundDataMessageSorter : IInboundDataMessageSorter
                 _inboundDataMessages.Clear();
             }
 
-            LastMessageId = message.OriginalMessageId;
             result.Add(message);
-            return result;
-        }
-
-        // Message is the expected one
-        if (LastMessageId + 1 == message.OriginalMessageId)
-        {
-            if (_inboundDataMessages.Count > 0)
-            {
-                // Check if order fits
-                AddMessageInternal(message);
-                CheckMessagesInQueue(result);
-                return result;
-            }
             LastMessageId = message.OriginalMessageId;
+            _isNoStart = true;
+            return result;
+        }
+
+        // Shortcut: Next message and no message waiting
+        if (_inboundDataMessages.Count == 0 && message.OriginalMessageId == LastMessageId + 1)
+        {
             result.Add(message);
+            LastMessageId = message.OriginalMessageId;
             return result;
         }
 
-        if (message.OriginalMessageId <= LastMessageId + 1 && message.OriginalMessageId >= LastMessageId)
+        if (_inboundDataMessages.TryAdd(message.OriginalMessageId, message))
         {
-            return result;
-        }
-
-        // No messages waiting and ID not valid: add to queue
-        if (_inboundDataMessages.Count == 0)
-        {
-            _inboundDataMessages.Add(message.OriginalMessageId, message);
-            //LastMessageId = message.OriginalMessageId;
-        }
-        else
-        {
-            // Check if order fits
-            AddMessageInternal(message);
+            //Debug.Print($"$New value: {message.OriginalMessageId}");
             CheckMessagesInQueue(result);
+            //return result;
         }
 
         return result;
-    }
-
-    private void AddMessageInternal(ISortableInboundDataMessage message)
-    {
-        if (_inboundDataMessages.TryAdd(message.OriginalMessageId, message))
-        {
-            return;
-        }
-
-#if DEBUG
-        Logger.LogWarning($"Queue contains already message ID {message.OriginalMessageId}");
-#endif
 
     }
-
 
     private void CheckMessagesInQueue(List<ISortableInboundDataMessage> result)
     {
-        var sorted = _inboundDataMessages.Values;
+        var sorted = _inboundDataMessages.ToList();
 
-        var oldMsg = sorted.First();
-        var messageId = oldMsg.OriginalMessageId;
+        //var oldMsg = sorted.First();
+        var messageId = LastMessageId;
 
         var fit = true;
+        var lastFitIndex = -1;
 
-        if (messageId == LastMessageId + 1)
+        for (var index = 0; index < sorted.Count; index++)
         {
-            for (var index = 1; index < sorted.Count; index++)
+            var msg = sorted[index];
+            if (msg.Value.OriginalMessageId != messageId + 1)
             {
-                messageId++;
-
-                var msg = sorted[index];
-                if (msg.OriginalMessageId != messageId)
-                {
-                    fit = false;
-                }
+                fit = false;
+                break;
             }
-        }
-        else
-        {
-            fit = false;
+
+            lastFitIndex = index;
+            messageId = msg.Value.OriginalMessageId;
         }
 
-        if (!fit && sorted.Count < MaxNumberOfMessagesInQueue)
+        // Full fit
+        if (fit)
+        {
+            foreach (var msg in sorted)
+            {
+                if (msg.Value.OriginalMessageId >= LastMessageId)
+                {
+                    result.Add(msg.Value);
+                }
+                _inboundDataMessages.Remove(msg.Key);
+            }
+
+            LastMessageId = result.Last().OriginalMessageId;
+            return;
+        }
+
+        // No fit but some are fitting
+        if (lastFitIndex >= 0)
+        {
+            foreach (var msg in sorted.GetRange(0, lastFitIndex + 1))
+            {
+                if (msg.Value.OriginalMessageId > LastMessageId)
+                {
+                    result.Add(msg.Value);
+                }
+                _inboundDataMessages.Remove(msg.Key);
+            }
+
+            LastMessageId = result.Last().OriginalMessageId;
+            return;
+        }
+
+        // Queue has some free places
+        if (sorted.Count <= MaxNumberOfMessagesInQueue)
         {
             return;
         }
 
-        result.AddRange(sorted);
-        _inboundDataMessages.Clear();
+        // No more free places: clear the queue
+        foreach (var msg in sorted)
+        {
+            if (msg.Value.OriginalMessageId > LastMessageId)
+            {
+                result.Add(msg.Value);
+            }
+            _inboundDataMessages.Remove(msg.Key);
+        }
+
+        if (result.Count == 0)
+        {
+            return;
+        }
         LastMessageId = result.Last().OriginalMessageId;
     }
 

@@ -11,6 +11,8 @@ namespace Bodoconsult.NetworkCommunication.Communication;
 /// </summary>
 public class UdpDatagramIpDuplexIoSender : BaseDuplexIoSender
 {
+    private ulong _sendCounter;
+
     /// <summary>
     /// Default ctor
     /// </summary>
@@ -38,8 +40,19 @@ public class UdpDatagramIpDuplexIoSender : BaseDuplexIoSender
 
             // Send message
             var sent = await SendMessageInternal(message);
-            return sent;
+            if (_sendCounter == ulong.MaxValue)
+            {
+                _sendCounter = 0;
+            }
 
+            _sendCounter++;
+
+            if (_sendCounter % 100 == 0)
+            {
+                DataMessagingConfig.MonitorLogger.LogInformation($"sent {_sendCounter} messages");
+            }
+
+            return sent;
         }
         catch (Exception e)
         {

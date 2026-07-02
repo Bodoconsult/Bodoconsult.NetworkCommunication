@@ -196,12 +196,13 @@ public class SfxpDataBlockCodec : IDataBlockCodec
     private static List<int> CheckPotentialSyncChunkItem(IEnumerable<int> syncChunks, int chunk, int streamingConfigLength)
     {
         var path = new List<int>();
+        var offSet = streamingConfigLength - chunk;
 
         foreach (var c in syncChunks)
         {
-            var result = c % streamingConfigLength;
-            //Debug.Print($"{c} {result:0}");
-            if (result ==0)
+            var result = (c + offSet) % streamingConfigLength;
+            //Debug.Print($"{c + offSet} {result:0}");
+            if (result == 0)
             {
                 path.Add(c);
             }
@@ -223,7 +224,7 @@ public class SfxpDataBlockCodec : IDataBlockCodec
     {
         var currentIndex = 0;
 
-        if (syncChunks.Count==0)
+        if (syncChunks.Count == 0)
         {
             return;
         }

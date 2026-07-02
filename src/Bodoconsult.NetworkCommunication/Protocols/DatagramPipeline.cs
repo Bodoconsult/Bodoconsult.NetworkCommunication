@@ -3,6 +3,7 @@
 using Bodoconsult.App.Helpers;
 using Bodoconsult.NetworkCommunication.Delegates;
 using Bodoconsult.NetworkCommunication.Interfaces;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Bodoconsult.NetworkCommunication.Protocols;
 
@@ -19,10 +20,7 @@ public class DatagramPipeline : IDatagramPipeline
     /// <summary>
     /// Inbound queue for received UDP result
     /// </summary>
-    public ProducerConsumerQueue<byte[]> InboundQueue { get; } = new()
-    {
-        ThreadPriority = ThreadPriority.Highest
-    };
+    public ProducerConsumerQueue<byte[]> InboundQueue { get; } = new();
 
     /// <summary>
     /// Default ctor

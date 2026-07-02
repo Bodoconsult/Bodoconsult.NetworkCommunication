@@ -7,6 +7,8 @@ namespace Bodoconsult.NetworkCommunication.EnumAndStates;
 /// </summary>
 public class OrderSource
 {
+    private readonly string _msg;
+
     /// <summary>
     /// Default ctor
     /// </summary>
@@ -14,6 +16,7 @@ public class OrderSource
     {
         Id = id;
         Name = name;
+        _msg = string.Intern($"{Id} {Name}");
     }
 
     /// <summary>
@@ -28,7 +31,7 @@ public class OrderSource
 
     /// <summary>Returns a string that represents the current object.</summary>
     /// <returns>A string that represents the current object.</returns>
-    public override string ToString() => $"{Id} {Name}";
+    public override string ToString() => _msg;
 
 
     /// <summary>
