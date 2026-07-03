@@ -41,7 +41,7 @@ public class UdpClientSocketProxy : BaseUpdSocketProxy
     /// <summary>
     /// Number of receiver tasks to employ
     /// </summary>
-    public byte NumberOfReceiverTasks { get; set; } = 2;
+    public byte NumberOfReceiverTasks { get; set; } = 3;
 
     /// <summary>
     /// Endpoint for listening
@@ -187,15 +187,15 @@ public class UdpClientSocketProxy : BaseUpdSocketProxy
         // Start receiver loop 1 now
         StartReceiverLoopInternal();
 
-////#if DEBUG
+#if DEBUG
 
-////#else
-//        // Start the rest of the receiver loop tasks if necessary
-//        for (var i = 2; i <= NumberOfReceiverTasks; i++)
-//        {
-//            StartReceiverLoopInternal();
-//        }
-////#endif
+#else
+        // Start the rest of the receiver loop tasks if necessary
+        for (var i = 2; i <= NumberOfReceiverTasks; i++)
+        {
+            StartReceiverLoopInternal();
+        }
+#endif
     }
 
     private void StartReceiverLoopInternal()

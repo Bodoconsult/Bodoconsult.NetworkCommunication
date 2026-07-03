@@ -88,7 +88,7 @@ public class DefaultInboundDataMessageSorter : IInboundDataMessageSorter
 
     private void CheckMessagesInQueue(List<ISortableInboundDataMessage> result)
     {
-        var sorted = _inboundDataMessages.ToList();
+        var sorted = _inboundDataMessages.Take(10).ToList();
 
         //var oldMsg = sorted.First();
         var messageId = LastMessageId;
@@ -142,13 +142,13 @@ public class DefaultInboundDataMessageSorter : IInboundDataMessageSorter
         }
 
         // Queue has some free places
-        if (sorted.Count <= MaxNumberOfMessagesInQueue)
+        if (_inboundDataMessages.Count <= MaxNumberOfMessagesInQueue)
         {
             return;
         }
 
         // No more free places: clear the queue
-        foreach (var msg in sorted)
+        foreach (var msg in _inboundDataMessages.ToList())
         {
             if (msg.Value.OriginalMessageId > LastMessageId)
             {

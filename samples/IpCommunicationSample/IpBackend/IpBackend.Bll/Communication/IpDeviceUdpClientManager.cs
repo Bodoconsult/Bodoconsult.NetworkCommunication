@@ -143,7 +143,7 @@ public class IpDeviceUdpClientManager : ISimpleDeviceManager
             CacheSize = cacheSize,
             FileExtension = "bin",
             MaxFileSize = size,
-            FlushInterval = 5
+            FlushInterval = 3
         };
 
         if (isHigherPriority)

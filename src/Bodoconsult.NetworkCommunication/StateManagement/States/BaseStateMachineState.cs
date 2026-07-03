@@ -13,6 +13,7 @@ public abstract class BaseStateMachineState : IStateMachineState
     
     private bool _isErrorHandlingRunning;
     private readonly Lock _isErrorHandlingRunningLock = new();
+    private readonly string _info;
 
     /// <summary>
     /// Current logger ID
@@ -31,6 +32,7 @@ public abstract class BaseStateMachineState : IStateMachineState
         Id = id;
         Name = name;
         LoggerId = $"{currentContext.LoggerId}{(currentContext.LoggerId.EndsWith(": ") ? string.Empty : ": ")}{GetType().Name}: ";
+        _info = $"{Id} {Name}";
     }
 
     /// <summary>
@@ -289,6 +291,6 @@ public abstract class BaseStateMachineState : IStateMachineState
     /// <returns>A string that represents the current object.</returns>
     public override string ToString()
     {
-        return $"{Id} {Name}";
+        return _info;
     }
 }
