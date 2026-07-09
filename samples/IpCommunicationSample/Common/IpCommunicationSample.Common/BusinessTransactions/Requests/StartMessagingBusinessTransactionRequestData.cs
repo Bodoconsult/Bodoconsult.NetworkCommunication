@@ -49,5 +49,13 @@ public class StartMessagingBusinessTransactionRequestData : BaseBusinessTransact
     /// </summary>
     public bool Channel4 { get; set; }
 
+    /// <summary>
+    /// Data collection time interval in ms
+    /// </summary>
+    public int CollectionInterval { get; set; } = 5000;
 
+    /// <summary>
+    /// Data collection time period in ms
+    /// </summary>
+    public int CollectionTime { get; set; } = 1000;
 }

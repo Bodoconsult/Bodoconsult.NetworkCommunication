@@ -33,6 +33,8 @@ public class IpDeviceUdpBusinessTransactionProvider : IBusinessTransactionProvid
         CreateBusinessTransactionDelegates.Add(ServerSideBusinessTransactionIds.FlushDataLoggers, Transaction210_FlushDataLoggers);
         CreateBusinessTransactionDelegates.Add(ServerSideBusinessTransactionIds.StartDataLoggers, Transaction211_StartDataLoggers);
         CreateBusinessTransactionDelegates.Add(ServerSideBusinessTransactionIds.StopDataLoggers, Transaction212_StopDataLoggers);
+        CreateBusinessTransactionDelegates.Add(ServerSideBusinessTransactionIds.StartDataCollector, Transaction213_StartDataCollector);
+        CreateBusinessTransactionDelegates.Add(ServerSideBusinessTransactionIds.StopDataCollector, Transaction214_StopDataCollector);
     }
 
     /// <summary>
@@ -178,6 +180,42 @@ public class IpDeviceUdpBusinessTransactionProvider : IBusinessTransactionProvid
             Id = ServerSideBusinessTransactionIds.StopDataLoggers,
             Name = "Stop data loggers",
             RunBusinessTransactionDelegate = BusinessLogicAdapter.StopDataLoggers
+        };
+
+        transaction.AllowedRequestDataTypes.Add(nameof(EmptyBusinessTransactionRequestData));
+
+        return transaction;
+    }
+
+    /// <summary>
+    /// Create transaction 213: start data collector
+    /// </summary>
+    /// <returns>Business transaction</returns>
+    public BusinessTransaction Transaction213_StartDataCollector()
+    {
+        var transaction = new BusinessTransaction
+        {
+            Id = ServerSideBusinessTransactionIds.StartDataCollector,
+            Name = "Start data collector",
+            RunBusinessTransactionDelegate = BusinessLogicAdapter.StartDataCollector
+        };
+
+        transaction.AllowedRequestDataTypes.Add(nameof(StartCollectorBusinessTransactionRequestData));
+
+        return transaction;
+    }
+
+    /// <summary>
+    /// Create transaction 214: stop data collector
+    /// </summary>
+    /// <returns>Business transaction</returns>
+    public BusinessTransaction Transaction214_StopDataCollector()
+    {
+        var transaction = new BusinessTransaction
+        {
+            Id = ServerSideBusinessTransactionIds.StopDataCollector,
+            Name = "Stop data collector",
+            RunBusinessTransactionDelegate = BusinessLogicAdapter.StopDataCollector
         };
 
         transaction.AllowedRequestDataTypes.Add(nameof(EmptyBusinessTransactionRequestData));

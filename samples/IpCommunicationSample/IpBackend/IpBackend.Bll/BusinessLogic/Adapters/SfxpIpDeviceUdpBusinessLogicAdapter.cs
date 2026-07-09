@@ -1,7 +1,9 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
+using System.Runtime.InteropServices.JavaScript;
 using Bodoconsult.App.Abstractions.Interfaces;
 using Bodoconsult.App.BusinessTransactions.Replies;
+using Bodoconsult.App.DataCollectionServices;
 using Bodoconsult.App.Helpers;
 using Bodoconsult.NetworkCommunication.BusinessLogicAdapters;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataBlockCodecs;
@@ -12,6 +14,7 @@ using Bodoconsult.NetworkCommunication.Interfaces;
 using IpBackend.Bll.Interfaces;
 using IpCommunicationSample.Common.BusinessTransactions.Replies;
 using IpCommunicationSample.Common.BusinessTransactions.Requests;
+using Microsoft.VisualBasic;
 
 namespace IpBackend.Bll.BusinessLogic.Adapters;
 
@@ -21,13 +24,21 @@ namespace IpBackend.Bll.BusinessLogic.Adapters;
 public class SfxpIpDeviceUdpBusinessLogicAdapter : BaseSimpleDeviceBusinessLogicAdapter, IIpDeviceUdpDeviceBusinessLogicAdapter
 {
     private long _messageCounter;
+    private readonly DataCollectionService<byte[]> _dataCollectionService;
+
+    private void ForwardCollectDataDelegate(List<byte[]> data)
+    {
+        // Do nothing currently
+    }
 
     /// <summary>
     /// Default ctor
     /// </summary>
     /// <param name="device">Current device</param>
     public SfxpIpDeviceUdpBusinessLogicAdapter(IIpDevice device) : base(device)
-    { }
+    {
+        _dataCollectionService = new DataCollectionService<byte[]>(ForwardCollectDataDelegate);
+    }
 
     /// <summary>
     /// Default method to handle a received message from the device in business logic
@@ -62,8 +73,10 @@ public class SfxpIpDeviceUdpBusinessLogicAdapter : BaseSimpleDeviceBusinessLogic
             _messageCounter = 0;
         }
 
+        var result = GetArray(db.DataChunks.Where(x => x.Channel != 0xc).ToList());
+
         // Process data from datablock here
-        // ToDo: add your business logic
+        _dataCollectionService.Add(result);
 
         // Return chunks to pool
         foreach (var chunk in db.DataChunks)
@@ -71,6 +84,29 @@ public class SfxpIpDeviceUdpBusinessLogicAdapter : BaseSimpleDeviceBusinessLogic
             chunk.ReturnDataChunkDelegate?.Invoke(chunk);
         }
         db.DataChunks.Clear();
+    }
+
+    /// <summary>
+    /// Get an array from the data chunks
+    /// </summary>
+    /// <param name="chunks">List with data chunks</param>
+    /// <returns>Array with a list chunks are rendered to 9 bytes each: first byte is the channel and the next 8 bytes are chunk data</returns>
+    public static byte[] GetArray(List<DataChunk> chunks)
+    {
+        var result = new byte[chunks.Count * 9];
+
+        Span<byte> resultSpan = result;
+
+        foreach (var chunk in chunks)
+        {
+            resultSpan[0] = chunk.Channel;
+            resultSpan = resultSpan[1..]; // Move span forward
+
+            chunk.Data!.Value.Span.CopyTo(resultSpan);
+            resultSpan = resultSpan[chunk.Data!.Value.Span.Length..]; // Move span forward
+        }
+
+        return result;
     }
 
 
@@ -121,6 +157,36 @@ public class SfxpIpDeviceUdpBusinessLogicAdapter : BaseSimpleDeviceBusinessLogic
         {
             logger.Stop();
         }
+
+        return new DefaultBusinessTransactionReply();
+    }
+
+    /// <summary>
+    /// Start the binary data collector
+    /// </summary>
+    /// <param name="requestData">Start collector request parameter</param>
+    /// <returns>Reply</returns>
+    public IBusinessTransactionReply StartDataCollector(IBusinessTransactionRequestData requestData)
+    {
+        if (requestData is StartCollectorBusinessTransactionRequestData startRequest)
+        {
+            _dataCollectionService.CollectionInterval = startRequest.CollectionInterval;
+            _dataCollectionService.CollectionTime = startRequest.CollectionTime;
+        }
+
+        _dataCollectionService.Start();
+
+        return new DefaultBusinessTransactionReply();
+    }
+
+    /// <summary>
+    /// Stop the binary data collector
+    /// </summary>
+    /// <param name="requestData">Empty request parameter</param>
+    /// <returns>Reply</returns>
+    public IBusinessTransactionReply StopDataCollector(IBusinessTransactionRequestData requestData)
+    {
+        _dataCollectionService.Stop();
 
         return new DefaultBusinessTransactionReply();
     }

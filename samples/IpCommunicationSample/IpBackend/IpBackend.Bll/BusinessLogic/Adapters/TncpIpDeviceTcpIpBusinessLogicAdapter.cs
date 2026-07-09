@@ -134,7 +134,15 @@ public class TncpIpDeviceTcpIpBusinessLogicAdapter : BaseStateMachineDeviceBusin
                 };
             }
 
-            StartLogging();
+            if (startRequest.IsDataLoggingActivated)
+            {
+                StartLogging();
+            }
+
+            if (startRequest.IsChartActivated)
+            {
+                StartCollector(startRequest.CollectionInterval, startRequest.CollectionTime);
+            }
 
             ArgumentNullException.ThrowIfNull(Device);
             ArgumentNullException.ThrowIfNull(StateFactory, "StateFactory is null. Call LoadStateFactory() before!");
@@ -169,6 +177,27 @@ public class TncpIpDeviceTcpIpBusinessLogicAdapter : BaseStateMachineDeviceBusin
                 ExceptionMessage = e.ToString()
             };
         }
+    }
+
+
+    private void StartCollector(int collectionInterval, int collectionTime)
+    {
+        var request = new StartCollectorBusinessTransactionRequestData
+        {
+            TransactionId = ServerSideBusinessTransactionIds.StartDataCollector,
+            CollectionInterval = collectionInterval,
+            CollectionTime = collectionTime
+        };
+        _businessTransactionManager.RunBusinessTransaction(ServerSideBusinessTransactionIds.StartDataCollector, request);
+    }
+
+    private void StopCollector()
+    {
+        var request = new EmptyBusinessTransactionRequestData
+        {
+            TransactionId = ServerSideBusinessTransactionIds.StopDataCollector
+        };
+        _businessTransactionManager.RunBusinessTransaction(ServerSideBusinessTransactionIds.StopDataCollector, request);
     }
 
     private void StartLogging()
@@ -237,7 +266,15 @@ public class TncpIpDeviceTcpIpBusinessLogicAdapter : BaseStateMachineDeviceBusin
             ArgumentNullException.ThrowIfNull(StateFactory, "StateFactory is null. Call LoadStateFactory() before!");
             ArgumentNullException.ThrowIfNull(OrderFactory);
 
-            StartLogging();
+            if (startRequest.IsDataLoggingActivated)
+            {
+                StartLogging();
+            }
+
+            if (startRequest.IsChartActivated)
+            {
+                StartCollector(startRequest.CollectionInterval, startRequest.CollectionTime);
+            }
 
             const string stateName = DefaultStateNames.DeviceStartSnapshotState;
 
@@ -411,6 +448,9 @@ public class TncpIpDeviceTcpIpBusinessLogicAdapter : BaseStateMachineDeviceBusin
             // Stop logging now
             StopLogging();
 
+            // Stop collector
+            StopCollector();
+
             return new DefaultBusinessTransactionReply
             {
                 RequestData = request
@@ -468,6 +508,9 @@ public class TncpIpDeviceTcpIpBusinessLogicAdapter : BaseStateMachineDeviceBusin
 
             // Stop logging now
             StopLogging();
+
+            // Stop collector
+            StopCollector();
 
             return new DefaultBusinessTransactionReply
             {

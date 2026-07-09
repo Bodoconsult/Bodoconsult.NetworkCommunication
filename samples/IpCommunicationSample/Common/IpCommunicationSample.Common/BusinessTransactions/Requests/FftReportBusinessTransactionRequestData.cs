@@ -9,5 +9,8 @@ namespace IpCommunicationSample.Common.BusinessTransactions.Requests;
 /// </summary>
 public class FftReportBusinessTransactionRequestData : BaseBusinessTransactionRequestData
 {
-
+    /// <summary>
+    /// Array with a list chunks are rendered to 9 bytes each: first byte is the channel and the next 8 bytes are chunk data
+    /// </summary>
+    public byte[] Bytes { get; set; } = [];
 }

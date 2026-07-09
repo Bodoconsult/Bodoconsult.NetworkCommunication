@@ -41,7 +41,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<Folder Include="Backend\BusinessLogic\Adap\" />
 		<Folder Include="Backend\Configurators\" />
 		<Folder Include="Client\AdapterFactories\" />
 		<Folder Include="Client\Adapter\" />

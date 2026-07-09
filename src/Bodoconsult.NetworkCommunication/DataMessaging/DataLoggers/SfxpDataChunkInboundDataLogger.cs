@@ -91,7 +91,7 @@ public class SfxpDataChunkInboundDataLogger : IInboundDataLogger
         var result = new byte[chunks.Count * 8];
 
         // ReSharper disable once ConditionIsAlwaysTrueOrFalse
-        if (result.Length + _loggedBytes  > long.MaxValue)
+        if (_loggedBytes >= long.MaxValue - result.Length)
         {
             _loggedBytes = 0;
         }

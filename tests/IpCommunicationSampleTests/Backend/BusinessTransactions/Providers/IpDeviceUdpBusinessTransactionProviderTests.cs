@@ -22,7 +22,7 @@ internal class IpDeviceUdpBusinessTransactionProviderTests
         using (Assert.EnterMultipleScope())
         {
             Assert.That(delegates, Is.Not.Null);
-            Assert.That(delegates, Has.Count.EqualTo(8));
+            Assert.That(delegates, Has.Count.EqualTo(10));
 
             foreach (var item in delegates)
             {
@@ -179,6 +179,44 @@ internal class IpDeviceUdpBusinessTransactionProviderTests
         {
             Assert.That(transaction, Is.Not.Null);
             Assert.That(transaction.Id, Is.EqualTo(ServerSideBusinessTransactionIds.StopDataLoggers));
+            Assert.That(transaction.RunBusinessTransactionDelegate, Is.Not.Null);
+            Assert.That(transaction.AllowedRequestDataTypes, Has.Count.EqualTo(1));
+        }
+    }
+
+    [Test]
+    public void Transaction213_StartDataCollector_Always_ReturnsCorrectTransaction()
+    {
+        // Arrange
+        var provider = CreateProvider();
+
+        // Act
+        var transaction = provider.Transaction213_StartDataCollector();
+
+        // Assert
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(transaction, Is.Not.Null);
+            Assert.That(transaction.Id, Is.EqualTo(ServerSideBusinessTransactionIds.StartDataCollector));
+            Assert.That(transaction.RunBusinessTransactionDelegate, Is.Not.Null);
+            Assert.That(transaction.AllowedRequestDataTypes, Has.Count.EqualTo(1));
+        }
+    }
+
+    [Test]
+    public void Transaction214_StopDataCollector_Always_ReturnsCorrectTransaction()
+    {
+        // Arrange
+        var provider = CreateProvider();
+
+        // Act
+        var transaction = provider.Transaction214_StopDataCollector();
+
+        // Assert
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(transaction, Is.Not.Null);
+            Assert.That(transaction.Id, Is.EqualTo(ServerSideBusinessTransactionIds.StopDataCollector));
             Assert.That(transaction.RunBusinessTransactionDelegate, Is.Not.Null);
             Assert.That(transaction.AllowedRequestDataTypes, Has.Count.EqualTo(1));
         }

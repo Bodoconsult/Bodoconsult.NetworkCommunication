@@ -25,4 +25,7 @@ public static class ServerSideBusinessTransactionIds
 
     public const int StartDataLoggers = 211;
     public const int StopDataLoggers = 212;
+
+    public const int StartDataCollector = 213;
+    public const int StopDataCollector = 214;
 }

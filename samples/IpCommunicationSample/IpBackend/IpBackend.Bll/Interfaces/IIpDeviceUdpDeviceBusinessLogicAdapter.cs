@@ -1,6 +1,8 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
 using Bodoconsult.App.Abstractions.Interfaces;
+using Bodoconsult.App.BusinessTransactions.Replies;
+using Bodoconsult.App.DataCollectionServices;
 using Bodoconsult.NetworkCommunication.Interfaces;
 
 namespace IpBackend.Bll.Interfaces;
@@ -12,27 +14,40 @@ public interface IIpDeviceUdpDeviceBusinessLogicAdapter : ISimpleDeviceBusinessL
 {
     #region Basics
 
-
     /// <summary>
     /// Start the binary data loggers
     /// </summary>
     /// <param name="requestData">Empty request parameter</param>
     /// <returns>Reply</returns>
-    public IBusinessTransactionReply StartDataLoggers(IBusinessTransactionRequestData requestData);
+    IBusinessTransactionReply StartDataLoggers(IBusinessTransactionRequestData requestData);
 
     /// <summary>
     /// Flush the binary data loggers
     /// </summary>
     /// <param name="requestData">Empty request parameter</param>
     /// <returns>Reply</returns>
-    public IBusinessTransactionReply FlushDataLoggers(IBusinessTransactionRequestData requestData);
+    IBusinessTransactionReply FlushDataLoggers(IBusinessTransactionRequestData requestData);
     
     /// <summary>
     /// Stop the binary data loggers
     /// </summary>
     /// <param name="requestData">Empty request parameter</param>
     /// <returns>Reply</returns>
-    public IBusinessTransactionReply StopDataLoggers(IBusinessTransactionRequestData requestData);
+    IBusinessTransactionReply StopDataLoggers(IBusinessTransactionRequestData requestData);
+
+    /// <summary>
+    /// Start the binary data collector
+    /// </summary>
+    /// <param name="requestData">Empty request parameter</param>
+    /// <returns>Reply</returns>
+    IBusinessTransactionReply StartDataCollector(IBusinessTransactionRequestData requestData);
+
+    /// <summary>
+    /// Stop the binary data collector
+    /// </summary>
+    /// <param name="requestData">Empty request parameter</param>
+    /// <returns>Reply</returns>
+    IBusinessTransactionReply StopDataCollector(IBusinessTransactionRequestData requestData);
 
     /// <summary>
     /// Send the required client hello to the server
@@ -70,7 +85,6 @@ public interface IIpDeviceUdpDeviceBusinessLogicAdapter : ISimpleDeviceBusinessL
     IBusinessTransactionReply StopDataLogging(IBusinessTransactionRequestData requestData);
 
     #endregion
-
 
     #region Reporting
 
