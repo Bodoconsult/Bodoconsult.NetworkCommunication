@@ -65,6 +65,16 @@ public class FakeStartMessagingViewModel : IStartMessagingViewModel
     public bool IsChartActivated { get; set; }
 
     /// <summary>
+    /// Data collection time interval in ms
+    /// </summary>
+    public int CollectionInterval { get; set; } = 5000;
+
+    /// <summary>
+    /// Data collection time period in ms
+    /// </summary>
+    public int CollectionTime { get; set; } = 1000;
+
+    /// <summary>
     /// Start messaging command
     /// </summary>
     public ReactiveCommand<Unit, Unit> StartMessagingCommand { get; set; } = null!;

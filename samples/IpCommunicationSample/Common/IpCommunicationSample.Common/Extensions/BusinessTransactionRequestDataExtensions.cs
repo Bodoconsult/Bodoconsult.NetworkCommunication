@@ -14,17 +14,22 @@ public static class BusinessTransactionRequestDataExtensions
 
     public static byte[] GetBytes(this StartMessagingBusinessTransactionRequestData data)
     {
-        return
-        [
+        var result = new List<byte>
+        {
             data.Snapshot ? One : Zero,
-            data.Channel1 ? One : Zero, 
-            data.Channel2 ? One : Zero, 
+            data.Channel1 ? One : Zero,
+            data.Channel2 ? One : Zero,
             data.Channel3 ? One : Zero,
             data.Channel4 ? One : Zero,
-            data.IsDataLoggingActivated ? One: Zero,
-            data.IsChartActivated ? One: Zero,
-            data.UseSoftwareSnapshot ? One : Zero,
-        ];
+            data.IsDataLoggingActivated ? One : Zero,
+            data.IsChartActivated ? One : Zero,
+            data.UseSoftwareSnapshot ? One : Zero
+        };
+
+        result.AddRange(BitConverter.GetBytes(data.CollectionInterval));
+        result.AddRange(BitConverter.GetBytes(data.CollectionTime));
+
+        return result.ToArray() ;
     }
 
     public static StartMessagingBusinessTransactionRequestData ToStartMessagingReportBusinessTransactionRequestData(this Memory<byte> data)
@@ -42,7 +47,9 @@ public static class BusinessTransactionRequestDataExtensions
             Channel4 = data.Slice(4, 1).Span[0] == 0x1,
             IsDataLoggingActivated = data.Slice(5, 1).Span[0] == 0x1,
             IsChartActivated = data.Slice(6, 1).Span[0] == 0x1,
-            UseSoftwareSnapshot = data.Slice(7, 1).Span[0] == 0x1
+            UseSoftwareSnapshot = data.Slice(7, 1).Span[0] == 0x1,
+            CollectionInterval = BitConverter.ToInt32(data.Slice(8, 4).Span),
+            CollectionTime = BitConverter.ToInt32(data.Slice(12, 4).Span)
         };
 
         return result;

@@ -40,6 +40,8 @@ public partial class StartMessagingViewModel : ReactiveObject, IUiRegionViewMode
     {
         _businessTransactionManager = businessTransactionManager;
         StartMessagingCommand.InvokeCommand(BackCommand);
+        CollectionInterval = 5000;
+        CollectionTime = 1000;
     }
 
     /// <summary>
@@ -98,6 +100,16 @@ public partial class StartMessagingViewModel : ReactiveObject, IUiRegionViewMode
     [Reactive] public partial bool IsChartActivated { get; set; }
 
     /// <summary>
+    /// Data collection time interval in ms
+    /// </summary>
+    [Reactive] public partial int CollectionInterval { get; set; } 
+
+    /// <summary>
+    /// Data collection time period in ms
+    /// </summary>
+    [Reactive] public partial int CollectionTime { get; set; }
+
+    /// <summary>
     /// Command starting the messaging
     /// </summary>
     [ReactiveCommand]
@@ -122,6 +134,16 @@ public partial class StartMessagingViewModel : ReactiveObject, IUiRegionViewMode
                 IsDataLoggingActivated = true;
             }
 
+            if (CollectionInterval <= 0)
+            {
+                CollectionInterval = 5000;
+            }
+
+            if (CollectionTime <= 0)
+            {
+                CollectionTime = 1000;
+            }
+
             var request = new StartMessagingBusinessTransactionRequestData
             {
                 TransactionId = ClientSideBusinessTransactionIds.StartMessaging,
@@ -132,7 +154,9 @@ public partial class StartMessagingViewModel : ReactiveObject, IUiRegionViewMode
                 Channel4 = Channel4,
                 IsDataLoggingActivated = IsDataLoggingActivated,
                 IsChartActivated = IsChartActivated,
-                UseSoftwareSnapshot = UseSoftwareSnapshot
+                UseSoftwareSnapshot = UseSoftwareSnapshot,
+                CollectionInterval = CollectionInterval,
+                CollectionTime = CollectionTime
             };
 
             var reply = _businessTransactionManager.RunBusinessTransaction(request.TransactionId, request);

@@ -63,6 +63,16 @@ public interface IStartMessagingViewModel
     bool IsChartActivated { get; set; }
 
     /// <summary>
+    /// Data collection time interval in ms
+    /// </summary>
+    int CollectionInterval { get; set; } 
+
+    /// <summary>
+    /// Data collection time period in ms
+    /// </summary>
+    int CollectionTime { get; set; }
+
+    /// <summary>
     /// Start messaging command
     /// </summary>
     ReactiveCommand<System.Reactive.Unit, System.Reactive.Unit> StartMessagingCommand { get; }
