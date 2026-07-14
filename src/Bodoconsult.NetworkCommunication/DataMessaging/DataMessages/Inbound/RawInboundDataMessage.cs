@@ -1,6 +1,7 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
 using Bodoconsult.App.Helpers;
+using Bodoconsult.NetworkCommunication.Helpers;
 using Bodoconsult.NetworkCommunication.Interfaces;
 
 namespace Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
@@ -47,7 +48,14 @@ public class RawInboundDataMessage : IInboundDataMessage
         set
         {
             _rawMessageData = value;
-            RawMessageDataClearText = ArrayHelper.GetStringFromArrayCsharpStyle(_rawMessageData, false);
+            if (_rawMessageData.Length < DeviceCommunicationBasics.DataMessageMaxLoggedSize)
+            {
+                RawMessageDataClearText = DataMessageHelper.GetStringFromArrayCsharpStyle(_rawMessageData);
+            }
+            else
+            {
+                RawMessageDataClearText = $"{DataMessageHelper.GetStringFromArrayCsharpStyle(_rawMessageData[..DeviceCommunicationBasics.DataMessageMaxLoggedSize])}...";
+            }
         }
     }
 

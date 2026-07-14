@@ -58,7 +58,14 @@ public class TncpInboundDataMessage : IInboundDataMessage
         set
         {
             _rawMessageData = value;
-            RawMessageDataClearText = DataMessageHelper.GetStringFromArrayCsharpStyle(_rawMessageData);
+            if (_rawMessageData.Length < DeviceCommunicationBasics.DataMessageMaxLoggedSize)
+            {
+                RawMessageDataClearText = DataMessageHelper.GetStringFromArrayCsharpStyle(_rawMessageData);
+            }
+            else
+            {
+                RawMessageDataClearText = $"{DataMessageHelper.GetStringFromArrayCsharpStyle(_rawMessageData[..DeviceCommunicationBasics.DataMessageMaxLoggedSize])}...";
+            }
             _shortInfoString = $"TncpInboundDataMessage ID {MessageId} ({RawMessageData.Length}B)";
         }
     }

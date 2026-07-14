@@ -239,6 +239,23 @@ internal class BitHelperTests
         Assert.That(result3, Is.EqualTo(0xb));
     }
 
+    [Test]
+    public void Test2()
+    {
+        const long value = 0xf5;
+
+        var result1 = value & 0x0f;
+
+        Assert.That(result1, Is.EqualTo(0x5));
+
+        var result2 = value & 0xf0;
+
+        Assert.That(result2, Is.EqualTo(0xf0));
+
+        var result3 = value >> 4;
+
+        Assert.That(result3, Is.EqualTo(0xf));
+    }
 
     [Test]
     public void Test1()

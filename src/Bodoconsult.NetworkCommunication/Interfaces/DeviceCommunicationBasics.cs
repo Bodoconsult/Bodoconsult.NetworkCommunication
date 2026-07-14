@@ -24,6 +24,12 @@ public static class DeviceCommunicationBasics
     /// </summary>
     public static int DataMessageMaxPacketSize { get; set; } = 1000;
 
+    /// <summary>
+    /// The maximum size of a data message array to be logged 
+    /// </summary>
+    public static int DataMessageMaxLoggedSize { get; set; } = 300;
+
+
     #endregion
 
 

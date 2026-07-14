@@ -1,5 +1,6 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
+using System.Numerics;
 using Bodoconsult.App.Abstractions.Interfaces;
 using Bodoconsult.App.BusinessTransactions;
 using Bodoconsult.App.BusinessTransactions.Replies;
@@ -12,6 +13,7 @@ using Bodoconsult.NetworkCommunication.DataMessaging.DataBlocks;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
 using Bodoconsult.NetworkCommunication.EnumAndStates;
 using Bodoconsult.NetworkCommunication.Interfaces;
+using IpBackend.Bll.BusinessLogic.Fft;
 using IpBackend.Bll.Interfaces;
 using IpCommunicationSample.Common.BusinessTransactions;
 using IpCommunicationSample.Common.BusinessTransactions.Replies;
@@ -26,26 +28,43 @@ public class SfxpIpDeviceUdpBusinessLogicAdapter : BaseSimpleDeviceBusinessLogic
 {
     private readonly IBusinessTransactionManager _businessTransactionManager;
     private long _messageCounter;
-    private readonly DataCollectionService<byte[]> _dataCollectionService;
+    private readonly DataCollectionService<Complex[]> _dataCollectionService;
 
-    private void ForwardCollectDataDelegate(List<byte[]> data)
+    /// <summary>
+    /// Forward the collected data
+    /// </summary>
+    /// <param name="data">List with arrays of complex numbers</param>
+    public void ForwardCollectDataDelegate(List<Complex[]> data)
     {
-        var result = new List<byte> { 
-            0x66 // f 
-        };
+        var result = new List<Complex> { };
 
         foreach (var item in data)
         {
             result.AddRange(item);
         }
 
-        var request = new FftReportBusinessTransactionRequestData
-        {
-            TransactionId = ServerSideBusinessTransactionIds.ReportFftData,
-            Bytes = result.ToArray()
-        };
+        CheckListLengthForFft(result);
 
-        _businessTransactionManager.RunBusinessTransaction(ServerSideBusinessTransactionIds.ReportFftData, request);
+        var allNumbers = result.ToArray();
+
+        //var request = new FftReportBusinessTransactionRequestData
+        //{
+        //    TransactionId = ServerSideBusinessTransactionIds.ReportFftData,
+        //    Bytes = result.ToArray()
+        //};
+
+        //_businessTransactionManager.RunBusinessTransaction(ServerSideBusinessTransactionIds.ReportFftData, request);
+    }
+
+    public static void CheckListLengthForFft(List<Complex> result)
+    {
+        var number = FftManager.LastPowerOf2SmallerThanNumber((uint)result.Count);
+        var count = result.Count;
+
+        for (var i = number ; i < count; i++)
+        {
+            result.Remove(result[0]);
+        }
     }
 
     /// <summary>
@@ -55,7 +74,7 @@ public class SfxpIpDeviceUdpBusinessLogicAdapter : BaseSimpleDeviceBusinessLogic
     /// <param name="businessTransactionManager">Current business transaction manager</param>
     public SfxpIpDeviceUdpBusinessLogicAdapter(IIpDevice device, IBusinessTransactionManager businessTransactionManager) : base(device)
     {
-        _dataCollectionService = new DataCollectionService<byte[]>(ForwardCollectDataDelegate);
+        _dataCollectionService = new DataCollectionService<Complex[]>(ForwardCollectDataDelegate);
         _businessTransactionManager = businessTransactionManager;
     }
 
@@ -110,23 +129,50 @@ public class SfxpIpDeviceUdpBusinessLogicAdapter : BaseSimpleDeviceBusinessLogic
     /// </summary>
     /// <param name="chunks">List with data chunks</param>
     /// <returns>Array with a list chunks are rendered to 9 bytes each: first byte is the channel and the next 8 bytes are chunk data</returns>
-    public static byte[] GetArray(List<DataChunk> chunks)
+    public static Complex[] GetArray(List<DataChunk> chunks)
     {
-        var result = new byte[chunks.Count * 9];
-
-        Span<byte> resultSpan = result;
+        var result = new List<Complex>();
 
         foreach (var chunk in chunks)
         {
-            resultSpan[0] = chunk.Channel;
-            resultSpan = resultSpan[1..]; // Move span forward
+            var value = chunk.Data!.Value;
+            var c = GetComplex(value.Span[0]);
+            result.Add(c);
 
-            chunk.Data!.Value.Span.CopyTo(resultSpan);
-            resultSpan = resultSpan[chunk.Data!.Value.Span.Length..]; // Move span forward
+            c = GetComplex(value.Span[1]);
+            result.Add(c);
+
+            c = GetComplex(value.Span[2]);
+            result.Add(c);
+
+            c = GetComplex(value.Span[3]);
+            result.Add(c);
+
+            c = GetComplex(value.Span[4]);
+            result.Add(c);
+
+            c = GetComplex(value.Span[5]);
+            result.Add(c);
+
+            c = GetComplex(value.Span[6]);
+            result.Add(c);
+
+            c = GetComplex(value.Span[7]);
+            result.Add(c);
         }
 
-        return result;
+        return result.ToArray();
     }
+
+    public static Complex GetComplex(byte b)
+    {
+        var i = Convert.ToDouble(b & 0x0f);
+
+        var q = Convert.ToDouble((b & 0xf0) >> 4);
+
+        return new Complex(i, q);
+    }
+
 
 
     /// <summary>

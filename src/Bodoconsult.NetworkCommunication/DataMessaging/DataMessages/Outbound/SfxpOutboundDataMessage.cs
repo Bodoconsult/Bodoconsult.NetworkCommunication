@@ -3,6 +3,7 @@
 using Bodoconsult.App.Abstractions.Interfaces;
 using Bodoconsult.App.Helpers;
 using Bodoconsult.NetworkCommunication.Delegates;
+using Bodoconsult.NetworkCommunication.Helpers;
 using Bodoconsult.NetworkCommunication.Interfaces;
 
 namespace Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
@@ -41,7 +42,14 @@ public class SfxpOutboundDataMessage: IOutboundDataMessage
         set
         {
             _rawMessageData = value;
-            RawMessageDataClearText = ArrayHelper.GetStringFromArrayCsharpStyle(_rawMessageData, false);
+            if (_rawMessageData.Length < DeviceCommunicationBasics.DataMessageMaxLoggedSize)
+            {
+                RawMessageDataClearText = DataMessageHelper.GetStringFromArrayCsharpStyle(_rawMessageData);
+            }
+            else
+            {
+                RawMessageDataClearText = $"{DataMessageHelper.GetStringFromArrayCsharpStyle(_rawMessageData[..DeviceCommunicationBasics.DataMessageMaxLoggedSize])}...";
+            }
         }
     }
 

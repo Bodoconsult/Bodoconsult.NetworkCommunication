@@ -69,6 +69,7 @@ public class BtcpClientTcpIpBusinessLogicAdapter : BaseBtcpSimpleDeviceBusinessL
 
         return SendMessage(request, message);
     }
+
     private DefaultBusinessTransactionReply SendMessage(IBusinessTransactionRequestData request, IOutboundDataMessage? message)
     {
         if (message is not BtcpRequestOutboundDataMessage msg)

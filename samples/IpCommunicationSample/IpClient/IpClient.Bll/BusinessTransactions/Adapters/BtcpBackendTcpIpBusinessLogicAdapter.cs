@@ -18,6 +18,7 @@ using IpClient.Bll.Interfaces;
 using IpCommunicationSample.Common.BusinessTransactions;
 using IpCommunicationSample.Common.BusinessTransactions.Requests;
 using System.Diagnostics;
+using Bodoconsult.App.Helpers;
 using IpCommunicationSample.Common.Extensions;
 
 namespace IpClient.Bll.BusinessTransactions.Adapters;
@@ -180,8 +181,8 @@ public class BtcpBackendTcpIpBusinessLogicAdapter : BaseOrderManagementDeviceBus
             return MessageHandlingResultHelper.Error("No message or no datablock in message received");
         }
 
-        var msg = $"{message.ToShortInfoString()}: {DataMessageHelper.GetStringFromArrayCsharpStyle(message.DataBlock.Data)}";
-        Debug.Print(msg);
+        var msg = $"{message.ToShortInfoString()}: {ArrayHelper.GetStringFromArrayCsharpStyle(message.DataBlock.Data, false)}";
+        //Debug.Print(msg);
         Device.DataMessagingConfig.MonitorLogger.LogInformation(msg);
 
         var request = _dataBlockConverter.ConvertToRequest(message.DataBlock);

@@ -38,7 +38,14 @@ public class RawOutboundDataMessage : IOutboundDataMessage
         set
         {
             _rawMessageData = value;
-            RawMessageDataClearText = DataMessageHelper.GetStringFromArrayCsharpStyle(_rawMessageData);
+            if (_rawMessageData.Length < DeviceCommunicationBasics.DataMessageMaxLoggedSize)
+            {
+                RawMessageDataClearText = DataMessageHelper.GetStringFromArrayCsharpStyle(_rawMessageData);
+            }
+            else
+            {
+                RawMessageDataClearText = $"{DataMessageHelper.GetStringFromArrayCsharpStyle(_rawMessageData[..DeviceCommunicationBasics.DataMessageMaxLoggedSize])}...";
+            }
         }
     }
 

@@ -16,7 +16,7 @@ Project-Url: https://github.com/Bodoconsult/Bodoconsult.AppInfrastructure
 
 Copyright: Bodoconsult EDV-Dienstleistungen GmbH
 
-Package providing abstarctions for basic functionality like logging, application performance measuring etc. for layered apps in a client server scenario
+Package providing abstractions for basic functionality like logging, application performance measuring etc. for layered apps in a client server scenario
 
 License: MIT
 
@@ -86,7 +86,7 @@ Project-Url: https://github.com/nunit/nunit
 
 ## Nuget package library NUnit.Analyzers by NUnit
 
-Copyright: Copyright (c) 2018-2025 NUnit project
+Copyright: Copyright (c) 2018-2026 NUnit project
 
 This package includes analyzers and code fixes for test projects using NUnit 3+. The analyzers will mark wrong usages when writing tests, and the code fixes can be used to used to correct these usages. They will also aid in the transition from NUnit 3 to NUnit 4.
 

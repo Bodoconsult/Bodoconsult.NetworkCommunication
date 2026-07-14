@@ -79,7 +79,15 @@ public class BtcpRequestInboundDataMessage : IInboundBusinessTransactionDataMess
         set
         {
             _rawMessageData = value;
-            RawMessageDataClearText = DataMessageHelper.GetStringFromArrayCsharpStyle(_rawMessageData);
+
+            if (_rawMessageData.Length < DeviceCommunicationBasics.DataMessageMaxLoggedSize)
+            {
+                RawMessageDataClearText = DataMessageHelper.GetStringFromArrayCsharpStyle(_rawMessageData);
+            }
+            else
+            {
+                RawMessageDataClearText = $"{DataMessageHelper.GetStringFromArrayCsharpStyle(_rawMessageData[..DeviceCommunicationBasics.DataMessageMaxLoggedSize])}...";
+            }
             _shortInfoString = $"BtcpRequestInboundDataMessage ID {MessageId} ({_rawMessageData.Length}B) BT {BusinessTransactionId} / {BusinessTransactionUid}";
         }
     }
