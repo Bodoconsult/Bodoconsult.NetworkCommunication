@@ -16,4 +16,11 @@ public interface IClientTcpIpDeviceBusinessLogicAdapter : ISimpleDeviceBusinessL
     /// <param name="request">Error request</param>
     /// <returns>Default transaction reply</returns>
     IBusinessTransactionReply ReportDeviceError(IBusinessTransactionRequestData request);
+
+    /// <summary>
+    /// Report received FFT data to the client
+    /// </summary>
+    /// <param name="request">FFT data request</param>
+    /// <returns>Default transaction reply</returns>
+    IBusinessTransactionReply ReportFftData(IBusinessTransactionRequestData request);
 }

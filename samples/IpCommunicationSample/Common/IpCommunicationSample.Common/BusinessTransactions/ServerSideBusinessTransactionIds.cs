@@ -10,7 +10,8 @@ public static class ServerSideBusinessTransactionIds
     public static int NotificationFired => 100;
 
     public static int ReportDeviceError = 101;
-    
+    public static int ReportFftData = 102;
+
     public const int SendClientHello = 205;
 
     public const int CheckConnection = 206;

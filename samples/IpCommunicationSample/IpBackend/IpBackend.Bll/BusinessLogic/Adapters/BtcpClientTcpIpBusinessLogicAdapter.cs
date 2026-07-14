@@ -36,7 +36,6 @@ public class BtcpClientTcpIpBusinessLogicAdapter : BaseBtcpSimpleDeviceBusinessL
             inboundDataMessageToBtReplyConverter, outboundBtRequestToOutboundDataMessageConverter, outboundBtReplyDataMessageConverter)
     {}
 
-
     /// <summary>
     /// Report an error reported by the device to the client
     /// </summary>
@@ -51,6 +50,27 @@ public class BtcpClientTcpIpBusinessLogicAdapter : BaseBtcpSimpleDeviceBusinessL
 
         var message = OutboundBtRequestToOutboundDataMessageConverter.MapToOutboundDataMessage(err);
 
+        return SendMessage(request, message);
+    }
+
+    /// <summary>
+    /// Report received FFT data to the client
+    /// </summary>
+    /// <param name="request">FFT data request</param>
+    /// <returns>Default transaction reply</returns>
+    public IBusinessTransactionReply ReportFftData(IBusinessTransactionRequestData request)
+    {
+        if (request is not FftReportBusinessTransactionRequestData err)
+        {
+            throw new ArgumentException("request is not FftReportBusinessTransactionRequestData");
+        }
+
+        var message = OutboundBtRequestToOutboundDataMessageConverter.MapToOutboundDataMessage(err);
+
+        return SendMessage(request, message);
+    }
+    private DefaultBusinessTransactionReply SendMessage(IBusinessTransactionRequestData request, IOutboundDataMessage? message)
+    {
         if (message is not BtcpRequestOutboundDataMessage msg)
         {
             return new DefaultBusinessTransactionReply

@@ -2,7 +2,9 @@
 
 using Bodoconsult.App.Abstractions.Interfaces;
 using Bodoconsult.App.Benchmarking;
+using Bodoconsult.App.BusinessTransactions;
 using Bodoconsult.App.Factories;
+using Bodoconsult.App.Interfaces;
 using Bodoconsult.App.Logging;
 using Bodoconsult.NetworkCommunication.ClientNotifications;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessageProcessingPackages;
@@ -33,6 +35,7 @@ internal class IpDeviceUdpClientManagerTests
     private readonly AppLoggerProxyFactory _appLoggerFactory = new();
     private readonly FakeAppEventSourceFactory _appEventSourceFactory = new();
     private readonly TcpIpListenerManager _tcpIpListenerManager = new();
+    private readonly IBusinessTransactionManager _businessTransactionManager = new FakeBusinessTransactionManager();
 
     [OneTimeTearDown]
     public void Cleanup()
@@ -51,7 +54,7 @@ internal class IpDeviceUdpClientManagerTests
         //IOrderPipelineFactory orderPipelineFactory = new OrderPipelineFactory(_dateService, _appLogger);
         // Act
         var m = new IpDeviceUdpClientManager(duplexIoFactory, _monitorLoggerFactoryFactory, _logDataFactory, _appLoggerFactory,
-            _appEventSourceFactory, _clientNotificationManager, _appLogger, socketFactory, Globals.Instance);
+            _appEventSourceFactory, _clientNotificationManager, _appLogger, socketFactory, Globals.Instance, _businessTransactionManager);
 
         // Assert
         using (Assert.EnterMultipleScope())
@@ -71,7 +74,7 @@ internal class IpDeviceUdpClientManagerTests
         //IOrderPipelineFactory orderPipelineFactory = new OrderPipelineFactory(_dateService, _appLogger);
 
         var m = new IpDeviceUdpClientManager(duplexIoFactory, _monitorLoggerFactoryFactory, _logDataFactory, _appLoggerFactory,
-            _appEventSourceFactory, _clientNotificationManager, _appLogger, socketFactory, Globals.Instance);
+            _appEventSourceFactory, _clientNotificationManager, _appLogger, socketFactory, Globals.Instance, _businessTransactionManager);
 
         const string ip = "127.0.0.1";
         const int port = 9000;

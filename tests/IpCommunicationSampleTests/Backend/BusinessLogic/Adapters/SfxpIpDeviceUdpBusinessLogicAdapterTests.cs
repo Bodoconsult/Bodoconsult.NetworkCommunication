@@ -2,13 +2,6 @@
 
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
 using IpBackend.Bll.BusinessLogic.Adapters;
-using IpBackend.Bll.ClientNotifications;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml;
 
 namespace IpCommunicationSampleTests.Backend.BusinessLogic.Adapters
 {

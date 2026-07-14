@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 18
-VisualStudioVersion = 18.6.11822.322 stable
+VisualStudioVersion = 18.6.11822.322
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bodoconsult.Network.Windows", "src\Bodoconsult.Network.Windows\Bodoconsult.Network.Windows.csproj", "{CDE91EAA-18F2-405B-B72E-D782417C8AAE}"
 EndProject
@@ -32,9 +32,6 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "IpClient", "IpClient", "{D49DD780-B38D-4C41-B593-21E391D69CCE}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "IpBackend", "IpBackend", "{4A0C4F67-EF21-4169-ADEC-0B1A30CA36EA}"
-	ProjectSection(SolutionItems) = preProject
-		samples\IpCommunicationSample\IpClient\IpCommunicationSample.Client.Bll\BtRequestDataToOutboundBtcpMessageConverter.cs = samples\IpCommunicationSample\IpClient\IpCommunicationSample.Client.Bll\BtRequestDataToOutboundBtcpMessageConverter.cs
-	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "IpDevice", "IpDevice", "{41663B8D-CA4E-48E3-99DC-D95E855AC87E}"
 EndProject

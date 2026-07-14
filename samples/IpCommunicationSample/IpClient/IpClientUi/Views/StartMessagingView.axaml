@@ -16,17 +16,46 @@
 	<controls:Grid>
 		<controls:StackPanel>
 			<controls:Label Classes="h1">Start messaging</controls:Label>
+
+            <controls:Label Classes="h2">Data source</controls:Label>
+
 			<controls:CheckBox IsChecked="{controls:Binding Snapshot}">Snapshot?</controls:CheckBox>
             <controls:CheckBox IsChecked="{controls:Binding UseSoftwareSnapshot}">Use software defined snapshot</controls:CheckBox>
-			<controls:CheckBox IsChecked="{controls:Binding Channel1}">Show channel 1?</controls:CheckBox>
-			<controls:CheckBox IsChecked="{controls:Binding Channel2}">Show channel 2?</controls:CheckBox>
-			<controls:CheckBox IsChecked="{controls:Binding Channel3}">Show channel 3?</controls:CheckBox>
-			<controls:CheckBox IsChecked="{controls:Binding Channel4}">Show channel 4?</controls:CheckBox>
+
+            <controls:Label Classes="h2">Channels to select</controls:Label>
+
+			<controls:CheckBox IsChecked="{controls:Binding Channel1}">Select channel 1?</controls:CheckBox>
+			<controls:CheckBox IsChecked="{controls:Binding Channel2}">Select channel 2?</controls:CheckBox>
+			<controls:CheckBox IsChecked="{controls:Binding Channel3}">Select channel 3?</controls:CheckBox>
+			<controls:CheckBox IsChecked="{controls:Binding Channel4}">Select channel 4?</controls:CheckBox>
+
+            <controls:Label Classes="h2">Data logging</controls:Label>
 
             <controls:CheckBox IsChecked="{controls:Binding IsDataLoggingActivated}">Activate data logging</controls:CheckBox>
-            <controls:CheckBox IsChecked="{controls:Binding IsChartActivated}">Show data chart</controls:CheckBox>
 
-			<controls:StackPanel Orientation="Horizontal">
+            <controls:Label Classes="h2">FFT charting</controls:Label>
+            <controls:CheckBox IsChecked="{controls:Binding IsChartActivated}">Show FFT data chart</controls:CheckBox>
+
+
+            <controls:Grid>
+                <controls:Grid.ColumnDefinitions>
+                    <controls:ColumnDefinition Width="300"></controls:ColumnDefinition>
+                    <controls:ColumnDefinition Width="150"></controls:ColumnDefinition>
+                </controls:Grid.ColumnDefinitions>
+
+                <controls:Grid.RowDefinitions>
+                    <controls:RowDefinition Height="Auto"></controls:RowDefinition>
+                    <controls:RowDefinition Height="Auto"></controls:RowDefinition>
+                </controls:Grid.RowDefinitions>
+
+                <controls:Label Content="Collection interval in ms" controls:Grid.Row="0" controls:Grid.Column="0"/>
+                <controls:TextBox Text="{controls:Binding CollectionInterval}" controls:Grid.Row="0" controls:Grid.Column="1"></controls:TextBox>
+
+                <controls:Label Content="Collection period in ms" controls:Grid.Row="1" controls:Grid.Column="0" />
+                <controls:TextBox Text="{controls:Binding CollectionTime}" controls:Grid.Row="1" controls:Grid.Column="1"></controls:TextBox>
+            </controls:Grid>
+
+			<controls:StackPanel Orientation="Horizontal" Margin="0, 20, 0, 0">
 				<controls:Button Command="{controls:Binding StartMessagingCommand}">Start messaging</controls:Button>
 
 				<controls:Button Command="{controls:Binding BackCommand}">Back</controls:Button>

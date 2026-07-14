@@ -89,7 +89,6 @@ public class BtcpDataMessageSplitter : IDataMessageSplitter
             }
 
             firstByte = buffer.Slice(0, 1).FirstSpan[0];
-
         }
 
         // No other
@@ -120,7 +119,6 @@ public class BtcpDataMessageSplitter : IDataMessageSplitter
                 command = buffer.Slice(0, i);
                 return true;
             }
-
 
             command = default;
             return false;
@@ -159,11 +157,25 @@ public class BtcpDataMessageSplitter : IDataMessageSplitter
         var etxFound = false;
         for (etxPos = 0; etxPos < buffer.Length; etxPos++)
         {
-            if (buffer.Slice(etxPos, 1).FirstSpan[0] == DeviceCommunicationBasics.Etx)
+            // ETX found?
+            if (buffer.Slice(etxPos, 1).FirstSpan[0] != DeviceCommunicationBasics.Etx)
             {
-                etxFound = true;
-                break;
+                continue;
             }
+
+            // ETX is first byte?
+            if (etxPos <= 0)
+            {
+                continue;
+            }
+
+            // ETX is not the first byte: search if char before is EOT
+            if (buffer.Slice(etxPos - 1, 1).FirstSpan[0] != DeviceCommunicationBasics.Eot)
+            {
+                continue;
+            }
+            etxFound = true;
+            break;
         }
 
         if (!etxFound)

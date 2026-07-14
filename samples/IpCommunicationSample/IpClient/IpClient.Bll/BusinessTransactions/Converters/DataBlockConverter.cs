@@ -33,6 +33,11 @@ public class DataBlockConverter
             return ConvertToErrorReported(data.Span);
         }
 
+        if (firstByte == 0x66)
+        {
+            return ConvertToFftReported(data[1..].Span);
+        }
+
         return null;
     }
 
@@ -54,6 +59,16 @@ public class DataBlockConverter
             rd.TelnetCommand =payload;
         }
         
+        return rd;
+    }
+
+    private IBusinessTransactionRequestData? ConvertToFftReported(Span<byte> span)
+    {
+        var rd = new FftReportBusinessTransactionRequestData
+        {
+            Bytes = span.ToArray()
+        };
+
         return rd;
     }
 

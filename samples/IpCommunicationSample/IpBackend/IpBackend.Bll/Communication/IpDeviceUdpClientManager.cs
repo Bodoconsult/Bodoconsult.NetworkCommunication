@@ -2,6 +2,7 @@
 
 using Bodoconsult.App.Abstractions.Interfaces;
 using Bodoconsult.App.DataExportServices;
+using Bodoconsult.App.Interfaces;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataLoggers;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessageProcessingPackages;
 using Bodoconsult.NetworkCommunication.Devices.Configurators;
@@ -25,6 +26,7 @@ public class IpDeviceUdpClientManager : ISimpleDeviceManager
     private readonly IAppLoggerProxy _appLoggerProxy;
     private readonly ISocketProxyFactory _socketProxyFactory;
     private readonly IAppGlobals _appGlobals;
+    private readonly IBusinessTransactionManager _businessTransactionManager;
 
     /// <summary>
     /// Default ctor
@@ -38,6 +40,7 @@ public class IpDeviceUdpClientManager : ISimpleDeviceManager
     /// <param name="appLoggerProxy">Current app logger</param>
     /// <param name="socketProxyFactory">Current socket factory</param>
     /// <param name="appGlobals">Current app globals</param>
+    /// <param name="businessTransactionManager">Current business transaction manager</param>
     public IpDeviceUdpClientManager(IDuplexIoFactory duplexIoFactory,
         IMonitorLoggerFactoryFactory monitorLoggerFactoryFactory,
         ILogDataFactory logDataFactory,
@@ -46,7 +49,8 @@ public class IpDeviceUdpClientManager : ISimpleDeviceManager
         IOrderManagementClientNotificationManager clientNotificationManager,
         IAppLoggerProxy appLoggerProxy,
         ISocketProxyFactory socketProxyFactory,
-        IAppGlobals appGlobals)
+        IAppGlobals appGlobals,
+        IBusinessTransactionManager businessTransactionManager)
     {
         _duplexIoFactory = duplexIoFactory;
         _appEventSourceFactory = appEventSourceFactory;
@@ -58,6 +62,7 @@ public class IpDeviceUdpClientManager : ISimpleDeviceManager
         _appLoggerProxy = appLoggerProxy;
         _socketProxyFactory = socketProxyFactory;
         _appGlobals = appGlobals;
+        _businessTransactionManager = businessTransactionManager;
     }
 
     /// <summary>
@@ -115,7 +120,7 @@ public class IpDeviceUdpClientManager : ISimpleDeviceManager
         configurator.CreateDataMessagingPackage(messageProcessingPackageFactory);
 
         // Create the device now
-        IDeviceBusinessLogicAdapterFactory businessLogicAdapterFactory = new SfxpIpDeviceUdpBusinessLogicAdapterFactory();
+        IDeviceBusinessLogicAdapterFactory businessLogicAdapterFactory = new SfxpIpDeviceUdpBusinessLogicAdapterFactory(_businessTransactionManager);
         configurator.CreateDevice(businessLogicAdapterFactory);
 
         var device = configurator.GetDevice();

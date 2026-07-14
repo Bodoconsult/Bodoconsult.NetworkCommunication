@@ -1,8 +1,6 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
 using Bodoconsult.App.Abstractions.Interfaces;
-using Bodoconsult.App.BusinessTransactions.Replies;
-using Bodoconsult.App.DataCollectionServices;
 using Bodoconsult.NetworkCommunication.Interfaces;
 
 namespace IpBackend.Bll.Interfaces;

@@ -25,6 +25,7 @@ public class ClientTcpIpBusinessTransactionProvider : IBusinessTransactionProvid
 
         //// Load transaction delegates now
         CreateBusinessTransactionDelegates.Add(ServerSideBusinessTransactionIds.ReportDeviceError, Transaction101_ReportDeviceError);
+        CreateBusinessTransactionDelegates.Add(ServerSideBusinessTransactionIds.ReportFftData, Transaction102_ReportFftData);
     }
 
     /// <summary>
@@ -41,6 +42,24 @@ public class ClientTcpIpBusinessTransactionProvider : IBusinessTransactionProvid
         };
 
         transaction.AllowedRequestDataTypes.Add(nameof(ErrorBusinessTransactionRequestData));
+
+        return transaction;
+    }
+
+    /// <summary>
+    /// Create transaction 102: report FFT data
+    /// </summary>
+    /// <returns>Business transaction</returns>
+    public BusinessTransaction Transaction102_ReportFftData()
+    {
+        var transaction = new BusinessTransaction
+        {
+            Id = ServerSideBusinessTransactionIds.ReportFftData,
+            Name = "Report FFT data",
+            RunBusinessTransactionDelegate = BusinessLogicAdapter.ReportFftData
+        };
+
+        transaction.AllowedRequestDataTypes.Add(nameof(FftReportBusinessTransactionRequestData));
 
         return transaction;
     }

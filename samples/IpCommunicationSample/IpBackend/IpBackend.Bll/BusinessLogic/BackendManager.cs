@@ -180,8 +180,9 @@ public class BackendManager : IBackendManager
 
         var duplexIoFactory = new UdpDatagramReceiveOnlyIpDuplexIoFactory(_sendPacketProcessFactory);
 
-        var m = new IpDeviceUdpClientManager(duplexIoFactory, _monitorLoggerFactoryFactory, _logDataFactory, _appLoggerFactory,
-            _appEventSourceFactory, _clientNotificationManager, _appLogger, _socketProxyFactory, _appGlobals);
+        var m = new IpDeviceUdpClientManager(duplexIoFactory, _monitorLoggerFactoryFactory, _logDataFactory,
+            _appLoggerFactory,
+            _appEventSourceFactory, _clientNotificationManager, _appLogger, _socketProxyFactory, _appGlobals, _businessTransactionManager); 
 
         m.ConfigureDevice(IpDeviceUdpConfig.Value.IpAddress, IpDeviceUdpConfig.Value.Port);
 

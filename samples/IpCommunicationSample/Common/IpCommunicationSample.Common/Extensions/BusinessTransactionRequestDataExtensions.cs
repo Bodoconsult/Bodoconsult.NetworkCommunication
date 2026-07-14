@@ -40,14 +40,14 @@ public static class BusinessTransactionRequestDataExtensions
         }
         var result = new StartMessagingBusinessTransactionRequestData
         {
-            Snapshot = data[..1].Span[0] == 0x1,
-            Channel1 = data.Slice(1,1).Span[0] == 0x1,
-            Channel2 = data.Slice(2, 1).Span[0] == 0x1,
-            Channel3 = data.Slice(3, 1).Span[0] == 0x1,
-            Channel4 = data.Slice(4, 1).Span[0] == 0x1,
-            IsDataLoggingActivated = data.Slice(5, 1).Span[0] == 0x1,
-            IsChartActivated = data.Slice(6, 1).Span[0] == 0x1,
-            UseSoftwareSnapshot = data.Slice(7, 1).Span[0] == 0x1,
+            Snapshot = data.Span[0] == 0x1,
+            Channel1 = data.Span[1] == 0x1,
+            Channel2 = data.Span[2] == 0x1,
+            Channel3 = data.Span[3] == 0x1,
+            Channel4 = data.Span[4] == 0x1,
+            IsDataLoggingActivated = data.Span[5] == 0x1,
+            IsChartActivated = data.Span[6] == 0x1,
+            UseSoftwareSnapshot = data.Span[7] == 0x1,
             CollectionInterval = BitConverter.ToInt32(data.Slice(8, 4).Span),
             CollectionTime = BitConverter.ToInt32(data.Slice(12, 4).Span)
         };

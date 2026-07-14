@@ -20,6 +20,27 @@ public class ClientBtRequestDataToOutboundBtcpMessageConverter : BaseBtRequestDa
     public ClientBtRequestDataToOutboundBtcpMessageConverter(IAppLoggerProxy appLogger, IAppGlobals appGlobals) : base(appLogger, appGlobals)
     {
         AllBusinessTransactionRequestDataDelegates.Add(nameof(ErrorBusinessTransactionRequestData), CreateError);
+        AllBusinessTransactionRequestDataDelegates.Add(nameof(FftReportBusinessTransactionRequestData), CreateFft);
+    }
+
+    private static IOutboundBusinessTransactionDataMessage CreateFft(IBusinessTransactionRequestData request)
+    {
+        if (request is not FftReportBusinessTransactionRequestData fft)
+        {
+            throw new ArgumentException($"Request must be {nameof(FftReportBusinessTransactionRequestData)}");
+        }
+
+        var db = new BasicOutboundDatablock
+        {
+            Data = fft.Bytes
+        };
+
+        var message = new BtcpRequestOutboundDataMessage(fft.TransactionId, fft.TransactionGuid)
+        {
+            DataBlock = db
+        };
+
+        return message;
     }
 
     private static IOutboundBusinessTransactionDataMessage CreateError(IBusinessTransactionRequestData request)

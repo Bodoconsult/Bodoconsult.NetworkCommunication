@@ -314,7 +314,7 @@ public class SfxpDataBlockCodec : IDataBlockCodec
         for (var i = 0; i < chunks.Count; i++)
         {
             var chunk = chunks[i];
-            Debug.Print($"{i}: {chunk.DataChunkType} CH{chunk.Channel}" + ArrayHelper.GetStringFromArrayCsharpStyle(chunk.Data!.Value, false));
+            Debug.Print($"{i}: {chunk.DataChunkType} CH{chunk.Channel}{ArrayHelper.GetStringFromArrayCsharpStyle(chunk.Data!.Value, false)}");
         }
     }
 

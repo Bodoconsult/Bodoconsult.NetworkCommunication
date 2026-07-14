@@ -59,14 +59,6 @@ public class DatagramPipeline : IDatagramPipeline
             return;
         }
 
-        // Debug.Print($"Pipe: Q1 {_currentPipeline.InternalQueue.Count} Q2 {InboundQueue.InternalQueue.Count}");
-
-        // Make a copy of the byte data here
-        //var ms = item.Buffer.AsMemory()[..item.Buffer.Length].ToArray();
-        //SocketReceivedDataDelegate?.Invoke(item.Buffer.AsMemory()[..item.Buffer.Length]);
-
-        //Debug.Print($"Pipeline: {ArrayHelper.GetStringFromArrayCsharpStyle(item.AsMemory().Slice(0,8 ), false)}");
-
         SocketReceivedDataDelegate?.Invoke(item);
     }
 

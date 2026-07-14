@@ -23,7 +23,7 @@ internal class ClientTcpIpBusinessTransactionProviderTests
         {
 
             Assert.That(delegates, Is.Not.Null);
-            Assert.That(delegates, Has.Count.EqualTo(1));
+            Assert.That(delegates, Has.Count.EqualTo(2));
 
             foreach (var item in delegates)
             {
@@ -34,7 +34,7 @@ internal class ClientTcpIpBusinessTransactionProviderTests
     }
 
     [Test]
-    public void Transaction1_StartStreaming_Always_ReturnsCorrectTransaction()
+    public void Transaction101_StartStreaming_Always_ReturnsCorrectTransaction()
     {
         // Arrange
         var provider = CreateProvider();
@@ -47,6 +47,25 @@ internal class ClientTcpIpBusinessTransactionProviderTests
         {
             Assert.That(transaction, Is.Not.Null);
             Assert.That(transaction.Id, Is.EqualTo(ServerSideBusinessTransactionIds.ReportDeviceError));
+            Assert.That(transaction.RunBusinessTransactionDelegate, Is.Not.Null);
+            Assert.That(transaction.AllowedRequestDataTypes, Has.Count.EqualTo(1));
+        }
+    }
+
+    [Test]
+    public void Transaction102_ReportFftData_Always_ReturnsCorrectTransaction()
+    {
+        // Arrange
+        var provider = CreateProvider();
+
+        // Act
+        var transaction = provider.Transaction102_ReportFftData();
+
+        // Assert
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(transaction, Is.Not.Null);
+            Assert.That(transaction.Id, Is.EqualTo(ServerSideBusinessTransactionIds.ReportFftData));
             Assert.That(transaction.RunBusinessTransactionDelegate, Is.Not.Null);
             Assert.That(transaction.AllowedRequestDataTypes, Has.Count.EqualTo(1));
         }

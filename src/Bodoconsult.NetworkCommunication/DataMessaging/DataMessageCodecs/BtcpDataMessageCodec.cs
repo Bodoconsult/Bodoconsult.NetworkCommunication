@@ -72,10 +72,15 @@ public class BtcpDataMessageCodec : BaseDataMessageCodec
         var uid = new Guid(s);
 
         // Datablock delivered?
-        if (posEot != data.Length - 1)
+        if (posEot < data.Length - 2)
         {
             // Now get the delivered datablock
             var dataBlockBytes = data.Slice(posEot + 1, data.Length - posEot - 2);
+
+            if (dataBlockBytes.Span[dataBlockBytes.Length - 1] == 0x4)
+            {
+                dataBlockBytes = dataBlockBytes.Slice(0, dataBlockBytes.Length - 1);
+            }
 
             try
             {
@@ -313,6 +318,9 @@ public class BtcpDataMessageCodec : BaseDataMessageCodec
         //    result.ErrorMessage = $"BtcpDataMessageCodec: exception raised during encoding: {exception}";
         //    result.ErrorCode = 4;
         //}
+
+        // Add final EOT
+        data.Add(DeviceCommunicationBasics.Eot);
 
         // Add the final ETX now
         data.Add(DeviceCommunicationBasics.Etx);

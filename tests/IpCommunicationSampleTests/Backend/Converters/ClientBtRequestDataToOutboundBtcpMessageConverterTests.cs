@@ -69,6 +69,39 @@ internal class ClientBtRequestDataToOutboundBtcpMessageConverterTests
     }
 
 
+    [Test]
+    public void MapToOutboundDataMessage_FftReportBusinessTransactionRequestData_CorrectMessage()
+    {
+        // Arrange 
+        var conv = new ClientBtRequestDataToOutboundBtcpMessageConverter(_appLogger, Globals.Instance);
+
+        const int transactionId = 99;
+        var transactionUid = Guid.NewGuid();
+
+        var request = new FftReportBusinessTransactionRequestData
+        {
+            TransactionId = transactionId,
+            TransactionGuid = transactionUid,
+            Bytes = [0x0, 0x1, 0x1, 0x2, 0x2, 0x3, 0x3, 0x4, 0x4]
+        };
+
+        var expectedPayload = request.Bytes;
+
+        // Act  
+        var result = (BtcpRequestOutboundDataMessage)conv.MapToOutboundDataMessage(request);
+
+        // Assert
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(result, Is.Not.Null);
+            Assert.That(result.BusinessTransactionId, Is.EqualTo(transactionId));
+            Assert.That(result.DataBlock, Is.Not.Null);
+            Assert.That(result.DataBlock?.DataBlockType, Is.EqualTo('x'));
+            Assert.That(result.DataBlock?.Data.IsEqualTo(expectedPayload), Is.True);
+        }
+    }
+
+
     //[Test]
     //public void MapToBusinessTransactionRequestData_StateChangedEventFired_ReturnsRequestData()
     //{

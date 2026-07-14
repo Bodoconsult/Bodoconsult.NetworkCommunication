@@ -126,7 +126,7 @@ public class UdpDatagramIpDuplexIoReceiver : BaseDuplexIoReceiver
                     //}
 
                     //Debug.Print($"Before processing: {codecResult.DataMessage.ToShortInfoString()}");
-                    DataMessageProcessor.ProcessMessage(codecResult.DataMessage);
+                    DataMessageProcessor.AddMessageToQueue(codecResult.DataMessage);
 
                     //msg = $"{codecResult.DataMessage.ToShortInfoString()}: start processing";
                     //MonitorLogger.LogDebug(msg);

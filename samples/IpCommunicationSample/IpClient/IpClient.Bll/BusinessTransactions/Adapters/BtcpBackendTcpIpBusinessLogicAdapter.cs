@@ -138,7 +138,6 @@ public class BtcpBackendTcpIpBusinessLogicAdapter : BaseOrderManagementDeviceBus
         var ps = new BtcpParameterSet();
         ps.BusinessTransactionId = transactionId;
         
-
         var builder = new BtcpOrderBuilder();
 
         var config = new OneRequestSpecNoOrOneStepOneAnswerConfiguration(orderName, BuiltinOrders.BtcpOrder, builder)
@@ -187,16 +186,23 @@ public class BtcpBackendTcpIpBusinessLogicAdapter : BaseOrderManagementDeviceBus
 
         var request = _dataBlockConverter.ConvertToRequest(message.DataBlock);
 
+        if (request is FftReportBusinessTransactionRequestData fft)
+        {
+            //ReportDeviceErrorDelegate?.Invoke(err);
+            return MessageHandlingResultHelper.Success();
+        }
+
         if (request is StateChangedEventFiredBusinessTransactionRequestData sr)
         {
             StateChangedNotificationDelegate?.Invoke(sr);
+            return MessageHandlingResultHelper.Success();
         }
 
         if (request is ErrorBusinessTransactionRequestData err)
         {
             ReportDeviceErrorDelegate?.Invoke(err);
         }
-
+        
         return MessageHandlingResultHelper.Success();
     }
 }

@@ -79,8 +79,7 @@ public class IpDuplexIoReceiver : BaseDuplexIoReceiver
 
             if (codecResult.ErrorCode != 0 || codecResult.DataMessage == null)
             {
-                msg =
-                    $"Parsing command failed with error code {codecResult.ErrorCode}: {codecResult.ErrorMessage}: {DataMessageHelper.GetStringFromArrayCsharpStyle(ref command)}";
+                msg = $"Parsing command failed with error code {codecResult.ErrorCode}: {codecResult.ErrorMessage}: {DataMessageHelper.GetStringFromArrayCsharpStyle(ref command)}";
                 //Trace.TraceInformation(msg);
                 MonitorLogger?.LogError(msg);
                 DataMessagingConfig.AppLogger.LogError($"{LoggerId}{msg}");
@@ -92,8 +91,7 @@ public class IpDuplexIoReceiver : BaseDuplexIoReceiver
             var validationResult = _dataMessageValidator.IsMessageValid(codecResult.DataMessage);
             if (!validationResult.IsMessageValid)
             {
-                msg =
-                    $"Parsed command NOT valid: {validationResult.ValidationResult}: {DataMessageHelper.GetStringFromArrayCsharpStyle(ref command)}";
+                msg = $"Parsed command NOT valid: {validationResult.ValidationResult}: {DataMessageHelper.GetStringFromArrayCsharpStyle(ref command)}";
                 MonitorLogger?.LogError(msg);
                 DataMessagingConfig.AppLogger.LogError($"{LoggerId}{msg}");
             }

@@ -16,6 +16,12 @@
             <avalonia:Setter Property="FontWeight" Value="Bold"/>
         </avalonia:Style>
 
+        <avalonia:Style Selector="avalonia|Label.h2">
+            <avalonia:Setter Property="FontSize" Value="14"/>
+            <avalonia:Setter Property="FontWeight" Value="Bold"/>
+            <avalonia:Setter Property="Margin" Value="0, 20, 10, 0"/>
+        </avalonia:Style>
+
         <avalonia:Style Selector="avalonia|Grid.Bottom">
             <avalonia:Setter Property="Background" Value="LightGray"/>
         </avalonia:Style>

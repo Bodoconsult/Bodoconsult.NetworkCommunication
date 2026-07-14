@@ -1,10 +1,11 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
-using System.Runtime.InteropServices.JavaScript;
 using Bodoconsult.App.Abstractions.Interfaces;
+using Bodoconsult.App.BusinessTransactions;
 using Bodoconsult.App.BusinessTransactions.Replies;
 using Bodoconsult.App.DataCollectionServices;
 using Bodoconsult.App.Helpers;
+using Bodoconsult.App.Interfaces;
 using Bodoconsult.NetworkCommunication.BusinessLogicAdapters;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataBlockCodecs;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataBlocks;
@@ -12,9 +13,9 @@ using Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
 using Bodoconsult.NetworkCommunication.EnumAndStates;
 using Bodoconsult.NetworkCommunication.Interfaces;
 using IpBackend.Bll.Interfaces;
+using IpCommunicationSample.Common.BusinessTransactions;
 using IpCommunicationSample.Common.BusinessTransactions.Replies;
 using IpCommunicationSample.Common.BusinessTransactions.Requests;
-using Microsoft.VisualBasic;
 
 namespace IpBackend.Bll.BusinessLogic.Adapters;
 
@@ -23,21 +24,39 @@ namespace IpBackend.Bll.BusinessLogic.Adapters;
 /// </summary>
 public class SfxpIpDeviceUdpBusinessLogicAdapter : BaseSimpleDeviceBusinessLogicAdapter, IIpDeviceUdpDeviceBusinessLogicAdapter
 {
+    private readonly IBusinessTransactionManager _businessTransactionManager;
     private long _messageCounter;
     private readonly DataCollectionService<byte[]> _dataCollectionService;
 
     private void ForwardCollectDataDelegate(List<byte[]> data)
     {
-        // Do nothing currently
+        var result = new List<byte> { 
+            0x66 // f 
+        };
+
+        foreach (var item in data)
+        {
+            result.AddRange(item);
+        }
+
+        var request = new FftReportBusinessTransactionRequestData
+        {
+            TransactionId = ServerSideBusinessTransactionIds.ReportFftData,
+            Bytes = result.ToArray()
+        };
+
+        _businessTransactionManager.RunBusinessTransaction(ServerSideBusinessTransactionIds.ReportFftData, request);
     }
 
     /// <summary>
     /// Default ctor
     /// </summary>
     /// <param name="device">Current device</param>
-    public SfxpIpDeviceUdpBusinessLogicAdapter(IIpDevice device) : base(device)
+    /// <param name="businessTransactionManager">Current business transaction manager</param>
+    public SfxpIpDeviceUdpBusinessLogicAdapter(IIpDevice device, IBusinessTransactionManager businessTransactionManager) : base(device)
     {
         _dataCollectionService = new DataCollectionService<byte[]>(ForwardCollectDataDelegate);
+        _businessTransactionManager = businessTransactionManager;
     }
 
     /// <summary>
