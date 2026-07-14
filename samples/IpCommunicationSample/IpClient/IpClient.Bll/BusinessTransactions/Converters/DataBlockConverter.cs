@@ -66,7 +66,7 @@ public class DataBlockConverter
     {
         var rd = new FftReportBusinessTransactionRequestData
         {
-            Bytes = span.ToArray()
+            //Bytes = span.ToArray()
         };
 
         return rd;

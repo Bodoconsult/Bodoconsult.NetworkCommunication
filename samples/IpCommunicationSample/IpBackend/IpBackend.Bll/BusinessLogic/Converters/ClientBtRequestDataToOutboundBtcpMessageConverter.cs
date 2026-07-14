@@ -32,7 +32,7 @@ public class ClientBtRequestDataToOutboundBtcpMessageConverter : BaseBtRequestDa
 
         var db = new BasicOutboundDatablock
         {
-            Data = fft.Bytes
+            Data = GetBytes(fft)
         };
 
         var message = new BtcpRequestOutboundDataMessage(fft.TransactionId, fft.TransactionGuid)
@@ -41,6 +41,25 @@ public class ClientBtRequestDataToOutboundBtcpMessageConverter : BaseBtRequestDa
         };
 
         return message;
+    }
+
+    private static Memory<byte> GetBytes(FftReportBusinessTransactionRequestData fft)
+    {
+        var list = new List<byte>();
+
+        foreach (var item in fft.Psd)
+        {
+            list.AddRange(BitConverter.GetBytes(item));
+        }
+
+        list.Add(DeviceCommunicationBasics.Eqn);
+
+        foreach (var item in fft.FrequencyScale)
+        {
+            list.AddRange(BitConverter.GetBytes(item));
+        }
+
+        return list.ToArray();
     }
 
     private static IOutboundBusinessTransactionDataMessage CreateError(IBusinessTransactionRequestData request)

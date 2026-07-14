@@ -10,7 +10,12 @@ namespace IpCommunicationSample.Common.BusinessTransactions.Requests;
 public class FftReportBusinessTransactionRequestData : BaseBusinessTransactionRequestData
 {
     /// <summary>
-    /// Array with a list chunks are rendered to 9 bytes each: first byte is the channel and the next 8 bytes are chunk data
+    /// Power spectrum density (PSD)
     /// </summary>
-    public byte[] Bytes { get; set; } = [];
+    public double[] Psd { get; set; } = [];
+
+    /// <summary>
+    /// Frequency scale
+    /// </summary>
+    public double[] FrequencyScale { get; set; } = [];
 }

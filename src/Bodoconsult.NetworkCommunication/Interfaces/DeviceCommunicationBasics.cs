@@ -115,6 +115,11 @@ public static class DeviceCommunicationBasics
     public const byte Eot = 4;      // 0x04
 
     /// <summary>
+    /// Intra payload separator
+    /// </summary>
+    public const byte Eqn = 5;      // 0x05
+
+    /// <summary>
     /// Handshake ACK
     /// </summary>
     public const byte Ack = 6;      // 0x06
